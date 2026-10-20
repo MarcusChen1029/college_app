@@ -35,18 +35,18 @@ select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, 'required_option', '8812f1b
  ('DUOLINGO', 115, null)) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, room_board_usd, total_coa_usd, intl_aid_policy, intl_need_aid, merit_scholarships, merit_separate_app, notes, source_id) values
  ('caa9a1af-8f82-5061-8a81-0334c772233f', '2026-2027', 18214, 57484, 57484, 16640, 54674, 'need_aware_limited', true, true, false, 'Tuition & fees for the newest cohort; nonresidents (incl. international) add Nonresident Supplemental Tuition of $39,270. Housing in a residence hall; health insurance $5,066 extra. Total shown is the California-resident cost of attendance.; International students can''t get federal, state or general need-based university aid, but are automatically considered for a few institutional scholarships (Regents'' & Chancellor''s, Robinson International Scholars, International Leaders, Swaniker Scholars).', '3613cb36-b894-58a5-99ed-30c44380bade');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, v.* from (values
- ('general', 'A'),
- ('computer_science', 'S'),
- ('engineering', 'S'),
- ('business', 'A'),
- ('biology_life_sci', 'A'),
- ('pre_med', 'A'),
- ('economics', 'A'),
- ('math_physics', 'S'),
- ('humanities', 'A'),
- ('arts_design', 'B')) v;
+ ('general', 'A', 'Admit rate 11.4%'),
+ ('computer_science', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('engineering', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('business', 'S', 'Haas undergraduate program is consistently a top-5 US undergraduate business program.'),
+ ('biology_life_sci', 'S', 'Molecular & Cell Biology / Integrative Biology are among the strongest US life-science departments.'),
+ ('pre_med', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'S', 'Berkeley economics is a top-5 department nationally.'),
+ ('math_physics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (institution_id, id, program, category_key, admit_model, capped, internal_transfer, notes)
 select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, v.* from (values
  ('5c82a39a-9e63-5d3e-a2c7-a9cc2ff22a9a'::uuid, 'EECS (College of Engineering)', 'computer_science', 'direct_major', true, 'very_hard', null),
@@ -110,18 +110,18 @@ select '1ad8cde2-72f3-52c3-b937-9ec013f2677d'::uuid, 'required_option', '13a73cd
  ('CAMBRIDGE', 191, '{"each_section": 191}'::jsonb, null)) v;
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, other_usd, intl_aid_policy, intl_need_aid, meets_full_need, merit_scholarships, notes, source_id) values
  ('1ad8cde2-72f3-52c3-b937-9ec013f2677d', '2025-2026', 67020, 1756, 18894, 1000, 1400, 'need_aware_full_need', true, true, true, 'CDS G1 first-year column (H6 checkboxes not legible in the PDF; intl aid policy from the financial aid site).; Merit scholarships and need-based grants are available to students of all nationalities.', '535a410f-57a2-5cb6-a954-de668bd5fc38');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select '1ad8cde2-72f3-52c3-b937-9ec013f2677d'::uuid, v.* from (values
- ('general', 'A'),
- ('computer_science', 'S'),
- ('engineering', 'S'),
- ('business', 'A'),
- ('biology_life_sci', 'B'),
- ('pre_med', 'B'),
- ('economics', 'A'),
- ('math_physics', 'A'),
- ('humanities', 'B'),
- ('arts_design', 'S')) v;
+ ('general', 'A', 'Admit rate 11.1%; SAT middle 50% 1500-1560'),
+ ('computer_science', 'S', 'School of Computer Science is a top-3 US CS program.'),
+ ('engineering', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('business', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('biology_life_sci', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'S', 'School of Drama, School of Design and School of Architecture are among the best in the US.')) v;
 insert into major_admissions (institution_id, admit_model, id, program, category_key, capped, internal_transfer, notes)
 select '1ad8cde2-72f3-52c3-b937-9ec013f2677d'::uuid, 'school_college', v.* from (values
  ('18499ef5-ee9b-5a2b-b8f8-fc1f247c1e7b'::uuid, 'Computer Science (School of Computer Science)', 'computer_science', true, 'very_hard', 'Apply directly to SCS; very limited internal transfer.'),
@@ -189,18 +189,18 @@ select '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0'::uuid, v.* from (values
  ('DUOLINGO', 'accepted', null, null, 'Supplementary only — does not satisfy the USG requirement.', '74a16a80-235b-55e1-89b4-43c4aa54bc7a'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, required_fees_usd, room_board_usd, intl_aid_policy, intl_need_aid, merit_scholarships, merit_separate_app, notes, source_id) values
  ('71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', '2026-2027', 10618, 34604, 35610, 1516, 14628, 'none', false, true, false, 'CDS G1 first-year column. H6: institutional scholarship/grant aid NOT available to nonresidents.', '54dc5586-7cc8-5481-9887-850193c6a770');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0'::uuid, v.* from (values
- ('general', 'A'),
- ('computer_science', 'A'),
- ('engineering', 'S'),
- ('business', 'B'),
- ('biology_life_sci', 'B'),
- ('pre_med', 'C'),
- ('economics', 'C'),
- ('math_physics', 'B'),
- ('humanities', 'C'),
- ('arts_design', 'B')) v;
+ ('general', 'A', 'Admit rate 13.3%; SAT middle 50% 1370-1530'),
+ ('computer_science', 'A', 'Top-10 CS program; just outside the top-5 group.'),
+ ('engineering', 'S', 'Top-5 US engineering school across most disciplines.'),
+ ('business', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('biology_life_sci', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (id, institution_id, program, admit_model, capped, internal_transfer, notes) values
  ('5f848938-749f-5b3e-a760-8ca23952144c', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'All majors', 'direct_major', false, 'moderate', 'Applicants choose a major on the application; changing majors is generally possible.');
 
@@ -253,18 +253,17 @@ insert into english_policies (institution_id, policy, waiver_notes, source_id) v
  ('e4c745cc-3156-52c3-aba3-bad66da2ea76', 'not_required', 'Not required for first-year applicants; scores may be submitted. English tests cannot satisfy the SAT/ACT requirement.', 'a8767aef-4f5f-54b1-9f36-2979250b3814');
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, other_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('e4c745cc-3156-52c3-aba3-bad66da2ea76', '2026-2027', 62226, 6216, 23192, 1000, 2500, 'need_blind_full_need', true, 805, 83013, true, false, 'Housing $14,250 + food $8,942. Transportation $0–5,000 extra.; CDS G1 cost fields left blank by Harvard; see financial aid site. H6: need-based aid available to nonresidents.', 'daf2cc97-60e4-5f62-8ab1-8a50cd5355a4');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select 'e4c745cc-3156-52c3-aba3-bad66da2ea76'::uuid, v.* from (values
- ('general', 'S'),
- ('computer_science', 'A'),
- ('engineering', 'B'),
- ('business', 'B'),
- ('biology_life_sci', 'S'),
- ('pre_med', 'S'),
- ('economics', 'S'),
- ('math_physics', 'S'),
- ('humanities', 'S'),
- ('arts_design', 'A')) v;
+ ('general', 'S', 'Admit rate 4.2%'),
+ ('computer_science', 'A', 'Strong CS within SEAS, below the MIT/Stanford/CMU/Berkeley group.'),
+ ('engineering', 'B', 'SEAS is solid but smaller and less highly ranked than its sciences.'),
+ ('biology_life_sci', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (id, institution_id, program, admit_model, capped, internal_transfer, notes) values
  ('94c57bf2-a91b-5776-81ff-e8c043e990fb', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'All concentrations', 'undeclared_open', false, 'open', 'Concentration declared in sophomore year.');
 
@@ -325,18 +324,18 @@ select '415a0c1f-3b07-5a52-94a0-6bd450bba6c5'::uuid, 'recommended_option', '7ee9
  ('DUOLINGO', 120, 125, null)) v;
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, other_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('415a0c1f-3b07-5a52-94a0-6bd450bba6c5', '2026-2027', 66720, 420, 22194, 930, 2496, 'need_blind_full_need', true, 411, 81991, true, false, 'CDS G1 food & housing on-campus. H6: institutional need-based aid available to nonresidents (2025-26 estimated).', '870b2695-01ad-54eb-bc79-39cc428bf4bb');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select '415a0c1f-3b07-5a52-94a0-6bd450bba6c5'::uuid, v.* from (values
- ('general', 'S'),
- ('computer_science', 'S'),
- ('engineering', 'S'),
- ('business', 'A'),
- ('biology_life_sci', 'S'),
- ('pre_med', 'A'),
- ('economics', 'S'),
- ('math_physics', 'S'),
- ('humanities', 'B'),
- ('arts_design', 'B')) v;
+ ('general', 'S', 'Admit rate 4.6%; SAT middle 50% 1520-1570'),
+ ('computer_science', 'S', 'EECS is a top-3 US CS program.'),
+ ('engineering', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('business', 'S', 'Sloan''s undergraduate management/finance programs are consistently ranked among the top few in the US.'),
+ ('biology_life_sci', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'B', 'Strong in linguistics/philosophy, but humanities are not the focus of the curriculum.'),
+ ('arts_design', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (id, institution_id, program, admit_model, capped, internal_transfer, notes) values
  ('5800a4ff-086c-54f9-bc8a-dc1abdb60e79', '415a0c1f-3b07-5a52-94a0-6bd450bba6c5', 'All majors', 'undeclared_open', false, 'open', 'Students are admitted to MIT, not a major, and declare at the end of first year.');
 
@@ -396,19 +395,19 @@ select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, 'required_option', 'a8a0b1a
  ('PTE', 70, null, null)) v;
 insert into cost_aid (institution_id, year, tuition_usd, room_board_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', '2026-2027', 68574, 25250, 'need_aware_limited', true, 342, 36562, true, true, 'CDS G1 (2026-27). Tuition & fees vary by school — e.g. Stern $70,464, Tisch $75,326 (NYU cost-of-attendance page). H6: need-based and non-need-based aid available to nonresidents.; NYU Promise: 100% of demonstrated need met for first-year students admitted to the New York campus.', '6cc348b4-0b2c-5cd2-9e79-fe426275c348');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, v.* from (values
- ('general', 'A'),
- ('computer_science', 'B'),
- ('engineering', 'C'),
- ('business', 'A'),
- ('biology_life_sci', 'B'),
- ('pre_med', 'B'),
- ('economics', 'A'),
- ('math_physics', 'A'),
- ('humanities', 'A'),
- ('arts_design', 'S'),
- ('nursing', 'A')) v;
+ ('general', 'A', 'Admit rate 9.1%; SAT middle 50% 1480-1550'),
+ ('computer_science', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('engineering', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('business', 'S', 'Stern is consistently a top-5 US undergraduate business program.'),
+ ('biology_life_sci', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'A', 'Courant Institute makes NYU a leading applied-math department.'),
+ ('humanities', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'S', 'Tisch School of the Arts is among the leading US arts schools.'),
+ ('nursing', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (institution_id, admit_model, id, program, category_key, capped, internal_transfer, notes)
 select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, 'school_college', v.* from (values
  ('d783ffd0-5c4f-5c54-9564-a5e70436fda7'::uuid, 'Stern School of Business', 'business', true, 'very_hard', null),
@@ -471,19 +470,19 @@ select 'd7b0e604-36c4-57ec-8afa-11e1217143fe'::uuid, 'required_option', 'b79d9a9
  ('DUOLINGO', null, 115, '{"each_subscore": 110}'::jsonb, '"Generally" 115 — typical, not a hard minimum')) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, required_fees_usd, room_board_usd, intl_aid_policy, intl_need_aid, merit_scholarships, notes, source_id) values
  ('d7b0e604-36c4-57ec-8afa-11e1217143fe', '2026-2027', 9718, 28520, 31830, 274, 16734, 'none', false, false, 'CDS G1 West Lafayette block (H6 checkboxes not captured in the spreadsheet; intl aid policy from the admissions site).; In general, international undergraduate students are not eligible for financial aid, including scholarships.', 'b816c2aa-061b-50bd-833b-8c4ea0081573');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select 'd7b0e604-36c4-57ec-8afa-11e1217143fe'::uuid, v.* from (values
- ('general', 'B'),
- ('computer_science', 'A'),
- ('engineering', 'A'),
- ('business', 'B'),
- ('biology_life_sci', 'C'),
- ('pre_med', 'C'),
- ('economics', 'C'),
- ('math_physics', 'B'),
- ('humanities', 'C'),
- ('arts_design', 'C'),
- ('nursing', 'B')) v;
+ ('general', 'B', 'Admit rate 43.4%; SAT middle 50% 1220-1470'),
+ ('computer_science', 'A', 'Strong CS within the top ~20.'),
+ ('engineering', 'A', 'Top-10 engineering (aerospace especially strong).'),
+ ('business', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('biology_life_sci', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('nursing', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (institution_id, capped, id, program, category_key, admit_model, internal_transfer, notes)
 select 'd7b0e604-36c4-57ec-8afa-11e1217143fe'::uuid, true, v.* from (values
  ('51017493-b224-5c22-8849-eed2739bdc2d'::uuid, 'Computer Science', 'computer_science', 'direct_major', 'very_hard', null),
@@ -542,18 +541,17 @@ insert into english_policies (institution_id, policy, waiver_notes, source_id) v
  ('03e19bf0-cc16-5613-af62-bc77fcd4412d', 'not_required', 'No English proficiency exam required; scores from any exam may be self-reported. Fluency in English is a prerequisite.', '5864a089-640e-5e95-98a0-24555a654bb2');
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('03e19bf0-cc16-5613-af62-bc77fcd4412d', '2026-2027', 67731, 843, 22944, 855, 'need_aware_full_need', true, 260, 85424, true, false, 'CDS H6: need-based and non-need-based institutional aid available to nonresidents.', 'bb35cdf0-e148-5298-9310-819562e5dab0');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select '03e19bf0-cc16-5613-af62-bc77fcd4412d'::uuid, v.* from (values
- ('general', 'S'),
- ('computer_science', 'S'),
- ('engineering', 'S'),
- ('business', 'B'),
- ('biology_life_sci', 'S'),
- ('pre_med', 'S'),
- ('economics', 'S'),
- ('math_physics', 'S'),
- ('humanities', 'S'),
- ('arts_design', 'A')) v;
+ ('general', 'S', 'Admit rate 3.8%; SAT middle 50% 1520-1570'),
+ ('computer_science', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('engineering', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('biology_life_sci', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'S', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'A', 'Product design and art practice strong; no conservatory-style arts school.')) v;
 insert into major_admissions (id, institution_id, program, admit_model, capped, internal_transfer, notes) values
  ('55b64ea0-2b80-55ba-b719-dfa11ad7a566', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'All majors', 'undeclared_open', false, 'open', 'Students declare a major by the end of sophomore year.');
 
@@ -614,18 +612,18 @@ select '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d'::uuid, 'required_option', '5dd703d
  ('DUOLINGO', 'Admitted class profile ranges ~130–145 by college. Transfer minimum 130 (subscores 125+).')) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, required_fees_usd, room_board_usd, intl_aid_policy, intl_need_aid, intl_merit_aid, merit_scholarships, notes, source_id) values
  ('4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2025-2026', 12992, 33344, 34338, 5054, 15184, 'merit_only', false, true, true, 'Base tuition; many majors (engineering, business, CS) carry differential tuition. H6: only non-need-based (merit) institutional aid for nonresidents.', 'aa34bdc6-0943-59cc-a7ed-978a22436316');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d'::uuid, v.* from (values
- ('general', 'B'),
- ('computer_science', 'S'),
- ('engineering', 'S'),
- ('business', 'B'),
- ('biology_life_sci', 'B'),
- ('pre_med', 'B'),
- ('economics', 'B'),
- ('math_physics', 'A'),
- ('humanities', 'B'),
- ('arts_design', 'B')) v;
+ ('general', 'B', 'Admit rate 36.6%; SAT middle 50% 1390-1520'),
+ ('computer_science', 'S', 'Grainger CS is a top-5 US program.'),
+ ('engineering', 'S', 'Grainger College of Engineering is a top-5 US engineering school.'),
+ ('business', 'A', 'Gies College of Business is a top-15 undergraduate business program (accountancy especially strong).'),
+ ('biology_life_sci', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (institution_id, admit_model, capped, id, program, category_key, internal_transfer, notes)
 select '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d'::uuid, 'direct_major', true, v.* from (values
  ('140461a1-8d16-5078-a879-d4f221841410'::uuid, 'Computer Science (Grainger)', 'computer_science', 'very_hard', 'Also CS + X programs in other colleges.'),
@@ -691,24 +689,23 @@ select '2347bb33-a0d0-572c-b800-0e821b009b7e'::uuid, 'required_option', 'd1f3049
  ('CAMBRIDGE', 185, '{"each_section": 180}'::jsonb, 'C1 Advanced / C2 Proficiency')) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, required_fees_usd, intl_extra_fees_usd, room_board_usd, books_usd, intl_aid_policy, intl_need_aid, merit_scholarships, notes, source_id) values
  ('2347bb33-a0d0-572c-b800-0e821b009b7e', '2026-2027', 18402, 66602, 494, 1000, 17220, 1220, 'none', false, false, 'CDS G1 lower-division column (upper-division: $19,588 in-state / $68,953 out-of-state). H6: institutional scholarship/grant aid NOT available to nonresidents.', 'fe5ca2d4-b5f3-5f28-82ba-480e03c536d6');
-insert into institution_tiers (institution_id, category_key, tier_code)
+insert into institution_tiers (institution_id, category_key, tier_code, rationale)
 select '2347bb33-a0d0-572c-b800-0e821b009b7e'::uuid, v.* from (values
- ('general', 'A'),
- ('computer_science', 'A'),
- ('engineering', 'A'),
- ('business', 'S'),
- ('biology_life_sci', 'A'),
- ('pre_med', 'A'),
- ('economics', 'A'),
- ('math_physics', 'A'),
- ('humanities', 'A'),
- ('arts_design', 'B'),
- ('nursing', 'A')) v;
+ ('general', 'A', 'Admit rate 16.4%; SAT middle 50% 1370-1530'),
+ ('computer_science', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('engineering', 'A', 'Top-10 engineering college; just outside the top-5 group.'),
+ ('business', 'S', 'Ross BBA is a top-5 US undergraduate business program.'),
+ ('biology_life_sci', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('pre_med', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('economics', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('math_physics', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('humanities', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('arts_design', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)'),
+ ('nursing', 'A', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 insert into major_admissions (institution_id, id, program, category_key, admit_model, capped, internal_transfer, notes)
 select '2347bb33-a0d0-572c-b800-0e821b009b7e'::uuid, v.* from (values
  ('10de4441-427a-583a-a08e-112df7c50a30'::uuid, 'Ross BBA', 'business', 'school_college', true, 'very_hard', 'Apply directly to Ross as a first-year.'),
  ('761a003a-f961-5af7-af06-7ceeb67ec5f7'::uuid, 'Engineering (incl. CS-Eng)', 'engineering', 'school_college', true, 'hard', null),
  ('07026050-c3dd-58df-8373-8fbfbad6ee76'::uuid, 'LSA (incl. CS-LSA)', 'computer_science', 'school_college', false, 'moderate', null),
  ('6ee0d022-314a-5764-afc5-548df397e95c'::uuid, 'Nursing', 'nursing', 'direct_major', true, 'very_hard', null)) v;
-update institution_tiers set rationale = 'Editorial v0 tier — review' where rationale is null;
 commit;

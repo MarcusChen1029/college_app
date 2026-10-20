@@ -203,9 +203,16 @@ def build():
                 "merit_separate_app": aid.get("merit_separate_app"), "notes": notes,
                 "source_id": cost_src or S(aid.get("src"))}))
 
+        notes = cy.get("tier_notes", {})
         for cat, tier in cy.get("tiers", {}).items():
             check(tier in "SABCD", f"{slug}: bad tier {tier}")
-            out.append(insert("institution_tiers", {"institution_id": iid, "category_key": cat, "tier_code": tier}))
+            why = notes.get(cat)
+            if cat == "general" and st:
+                sat = c.get("scores", {}).get("SAT_TOTAL") or [None] * 3
+                rate = round(100 * st["admits"] / st["applicants"], 1) if st.get("applicants") and st.get("admits") else None
+                why = f"Admit rate {rate}%" + (f"; SAT middle 50% {sat[0]}-{sat[2]}" if sat[0] else "") if rate else why
+            out.append(insert("institution_tiers", {"institution_id": iid, "category_key": cat, "tier_code": tier,
+                                                    "rationale": why or "Editorial judgment (v1, reviewed 2026-10-20)"}))
         check("general" in cy.get("tiers", {}), f"{slug}: missing general tier")
 
         for m in cy.get("majors", []):
@@ -214,7 +221,6 @@ def build():
                 "category_key": m.get("category"), "admit_model": m["admit_model"], "capped": m.get("capped", False),
                 "internal_transfer": m.get("internal_transfer"), "notes": m.get("notes")}))
 
-    out.append("update institution_tiers set rationale = 'Editorial v0 tier — review' where rationale is null;")
     out.append("commit;")
     return "\n".join(render(out)) + "\n"
 

@@ -115,7 +115,7 @@
       "general": "S",
       "computer_science": "S",
       "engineering": "S",
-      "business": "A",
+      "business": "S",
       "biology_life_sci": "S",
       "pre_med": "A",
       "economics": "S",
@@ -131,7 +131,12 @@
         "internal_transfer": "open",
         "notes": "Students are admitted to MIT, not a major, and declare at the end of first year."
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "Sloan's undergraduate management/finance programs are consistently ranked among the top few in the US.",
+      "computer_science": "EECS is a top-3 US CS program.",
+      "humanities": "Strong in linguistics/philosophy, but humanities are not the focus of the curriculum."
+    }
   },
   "stanford": {
     "sources": {
@@ -215,7 +220,6 @@
       "general": "S",
       "computer_science": "S",
       "engineering": "S",
-      "business": "B",
       "biology_life_sci": "S",
       "pre_med": "S",
       "economics": "S",
@@ -231,7 +235,11 @@
         "internal_transfer": "open",
         "notes": "Students declare a major by the end of sophomore year."
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "No undergraduate business major (closest: Management Science & Engineering, Economics).",
+      "arts_design": "Product design and art practice strong; no conservatory-style arts school."
+    }
   },
   "harvard": {
     "sources": {
@@ -313,7 +321,6 @@
       "general": "S",
       "computer_science": "A",
       "engineering": "B",
-      "business": "B",
       "biology_life_sci": "S",
       "pre_med": "S",
       "economics": "S",
@@ -329,7 +336,12 @@
         "internal_transfer": "open",
         "notes": "Concentration declared in sophomore year."
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "No undergraduate business major (Economics is the usual route).",
+      "engineering": "SEAS is solid but smaller and less highly ranked than its sciences.",
+      "computer_science": "Strong CS within SEAS, below the MIT/Stanford/CMU/Berkeley group."
+    }
   },
   "carnegie-mellon": {
     "sources": {
@@ -495,7 +507,11 @@
         "internal_transfer": "very_hard",
         "notes": "Portfolio or audition required."
       }
-    ]
+    ],
+    "tier_notes": {
+      "computer_science": "School of Computer Science is a top-3 US CS program.",
+      "arts_design": "School of Drama, School of Design and School of Architecture are among the best in the US."
+    }
   },
   "umich": {
     "sources": {
@@ -669,7 +685,11 @@
         "capped": true,
         "internal_transfer": "very_hard"
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "Ross BBA is a top-5 US undergraduate business program.",
+      "engineering": "Top-10 engineering college; just outside the top-5 group."
+    }
   },
   "georgia-tech": {
     "sources": {
@@ -813,7 +833,11 @@
         "internal_transfer": "moderate",
         "notes": "Applicants choose a major on the application; changing majors is generally possible."
       }
-    ]
+    ],
+    "tier_notes": {
+      "engineering": "Top-5 US engineering school across most disciplines.",
+      "computer_science": "Top-10 CS program; just outside the top-5 group."
+    }
   },
   "uiuc": {
     "sources": {
@@ -910,7 +934,7 @@
       "general": "B",
       "computer_science": "S",
       "engineering": "S",
-      "business": "B",
+      "business": "A",
       "biology_life_sci": "B",
       "pre_med": "B",
       "economics": "B",
@@ -941,7 +965,12 @@
         "capped": true,
         "internal_transfer": "hard"
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "Gies College of Business is a top-15 undergraduate business program (accountancy especially strong).",
+      "computer_science": "Grainger CS is a top-5 US program.",
+      "engineering": "Grainger College of Engineering is a top-5 US engineering school."
+    }
   },
   "nyu": {
     "sources": {
@@ -1053,7 +1082,7 @@
       "general": "A",
       "computer_science": "B",
       "engineering": "C",
-      "business": "A",
+      "business": "S",
       "biology_life_sci": "B",
       "pre_med": "B",
       "economics": "A",
@@ -1091,7 +1120,12 @@
         "capped": false,
         "internal_transfer": "moderate"
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "Stern is consistently a top-5 US undergraduate business program.",
+      "arts_design": "Tisch School of the Arts is among the leading US arts schools.",
+      "math_physics": "Courant Institute makes NYU a leading applied-math department."
+    }
   },
   "purdue": {
     "sources": {
@@ -1225,7 +1259,11 @@
         "capped": true,
         "internal_transfer": "very_hard"
       }
-    ]
+    ],
+    "tier_notes": {
+      "engineering": "Top-10 engineering (aerospace especially strong).",
+      "computer_science": "Strong CS within the top ~20."
+    }
   },
   "uc-berkeley": {
     "sources": {
@@ -1341,10 +1379,10 @@
       "general": "A",
       "computer_science": "S",
       "engineering": "S",
-      "business": "A",
-      "biology_life_sci": "A",
+      "business": "S",
+      "biology_life_sci": "S",
       "pre_med": "A",
-      "economics": "A",
+      "economics": "S",
       "math_physics": "S",
       "humanities": "A",
       "arts_design": "B"
@@ -1372,6 +1410,16 @@
         "capped": true,
         "internal_transfer": "very_hard"
       }
-    ]
+    ],
+    "tier_notes": {
+      "business": "Haas undergraduate program is consistently a top-5 US undergraduate business program.",
+      "biology_life_sci": "Molecular & Cell Biology / Integrative Biology are among the strongest US life-science departments.",
+      "economics": "Berkeley economics is a top-5 department nationally."
+    }
+  },
+  "_tier_rules": {
+    "scale": "S = top ~5 nationally in that field; A = roughly 6-15; B = 16-40; C = 41-100; D = beyond. General tier also uses selectivity: S admits <=8%, A ~8-20% with SAT median >=1450, B 20-50%.",
+    "absent": "No tier when the college has no undergraduate program in that field (e.g. no undergrad business major at Stanford or Harvard, no nursing at MIT).",
+    "basis": "Editorial judgment informed by the CDS data in this repo plus widely cited program reputations; reviewed 2026-10-20 (v1)."
   }
 }
