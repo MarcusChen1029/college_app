@@ -11,8 +11,8 @@ Australia, etc. without a rewrite.
 
 | Phase | Scope | Outcome |
 |---|---|---|
-| **1. Demo (now)** | 10 US colleges, schema + seed data in Supabase, simple read-only browse/compare UI | Proves the data model and data-collection workflow |
-| 2. Student tracking | Supabase Auth, "my list", per-college status (researching → applied → decision), personal deadline view | The actual "tracker" part |
+| **1. Demo ✅ built** | 10 US colleges in Supabase; browse / detail / compare / my-list UI; reach-target-safety labels | Proves the data model and data-collection workflow |
+| 2. Student accounts | Supabase Auth; move the demo's localStorage list/profile into `student_profiles` / `student_colleges` (tables + RLS already exist); checklists, reminders | Sync across devices |
 | 3. All US colleges | Bulk import base data (name, location, size) from IPEDS / College Scorecard; CDS stats added school by school | Coverage |
 | 4. International | UK (UCAS), Canada, Australia: new deadline types, grade systems (A-levels, IB, ATAR), English-test rules | Multi-country |
 
@@ -30,7 +30,15 @@ Australia, etc. without a rewrite.
 | **GPA** | Common Data Set **C11 / C12** | ⚠️ CDS does **not** publish GPA 25/50/75. It gives the **average** GPA (C12) and the **distribution by band** (C11: % with 4.0, 3.75–3.99, 3.5–3.74, …). We store both and can *derive* an approximate percentile from the bands, clearly labelled as derived |
 | ED / ED II / EA / REA / RD deadlines & notification dates | CDS **C21 / C22** + admissions site (CDS lags a year, so the current cycle is confirmed on the site) | |
 | English test requirements (TOEFL, IELTS, Duolingo, PTE, Cambridge…) | Admissions site (not in CDS) | Minimum totals, sub-score minimums, waiver rules, "recommended vs required" |
-| Admit rate, applicants, enrolled (bonus, cheap to add) | CDS **C1** | Useful context next to the tiers |
+| Admit rate, applicants, enrolled | CDS **C1** | Plus in-state / out-of-state / **international** splits where reported |
+| **ED admit rate**, waitlist offered/accepted/admitted | CDS **C21**, **C2** | |
+| **Test policy per cycle** (required / recommended / optional / flexible / blind) | CDS **C8** + admissions site | Many schools reinstated testing |
+| **Admission factors** (rigor, essays, demonstrated interest, …) | CDS **C7** | Drives the "demonstrated interest counts" tip |
+| **Application requirements** (platform, essays, recs, interview, portfolio, fee, CSS/FAFSA, midyear) | Admissions site | |
+| **Extra deadlines** (priority, scholarship, financial-aid, deposit) | Admissions / aid site | Shown in a timeline |
+| **Cost & aid** (tuition by residency, fees, housing, COA, intl aid policy, # intl aided + avg award) | CDS **G1**, **H6** + aid site | Need-blind / need-aware / merit-only / none |
+| **How majors are admitted** (direct / school / undeclared / pre-major; capped; internal-transfer difficulty) | Admissions site (editorial v0) | e.g. UIUC CS, CMU SCS, Ross |
+| **Fit label** (reach / target / safety) | Computed from student scores vs SAT/ACT 25–75 + (international) admit rate | `web/lib/fit.ts`, reasoning shown on hover |
 
 **Provenance is first-class:** every stat row links to a `sources` record (URL, CDS year,
 date accessed). If a value can't be confirmed from an official document it is left
@@ -59,7 +67,9 @@ Tiers live in a lookup table so labels/thresholds can change without touching da
 
 ---
 
-## 4. Supabase schema (draft)
+## 4. Supabase schema
+
+Implemented in `supabase/migrations/0001–0004` (project `college-tracker`, ref `eyvmtaggayqizllaseiu`). Draft below for orientation; beyond it there are `admission_factors`, `test_policies`, `application_requirements`, `english_policies`, `cost_aid`, `major_admissions`, `student_profiles`, and the `college_summary` view.
 
 Generic where it matters for later expansion (countries, test types, deadline
 plan types are lookup values, not hard-coded columns).
@@ -116,10 +126,10 @@ Covers private/public, East/West/Midwest/South, and several subject-tier contras
 1. Download the latest published CDS PDF from the school's institutional-research page.
 2. Extract C1 (counts), C9 (SAT/ACT percentiles), C11/C12 (GPA), C21/C22 (ED/EA).
 3. Confirm current-cycle deadlines and English requirements on the admissions site.
-4. Write the values into `supabase/seed/<slug>.sql` with source URLs, then load.
-5. A check script flags missing or out-of-range values (e.g. SAT p25 > p75).
+4. Record values in `data/colleges/<slug>.json` (CDS) and `data/cycle_2026_27.json` (current cycle), each with source URLs.
+5. `python3 scripts/build_seed.py` validates (percentile order, GPA bands sum to ~100%, deadlines before notifications, etc.) and writes the idempotent seed.
 
-Seed data lives in git as SQL, so every number is reviewable and re-loadable.
+Lessons from the first 10: CDS formats vary (HTML, PDF, xlsx, Google Sheets); PDF checkboxes sometimes don't survive extraction — those fields stay NULL and are confirmed on the school's site. Some schools omit fields entirely (MIT and UIUC: no GPA; Harvard: no SAT composite; NYU: no section G). Berkeley's CDS Google Sheet couldn't be machine-read, so its stats come from the admissions site for now.
 
 ---
 
@@ -134,13 +144,12 @@ Seed data lives in git as SQL, so every number is reviewable and re-loadable.
 ## 8. Repo layout
 
 ```
-supabase/
-  migrations/0001_init.sql     schema + RLS
-  seed/lookups.sql             countries, tiers, categories, plans, tests
-  seed/<college-slug>.sql      one file per college
-scripts/validate_seed.ts
-web/                           Next.js app
-PLAN.md
+data/colleges/<slug>.json      CDS extracts + sources
+data/cycle_2026_27.json        current-cycle data, tiers, major admission
+scripts/build_seed.py          validate + generate seed
+supabase/migrations/           0001 schema+RLS · 0002 extra fields · 0003 summary view · 0004 indexes
+supabase/seed/                 00_lookups.sql · 10_colleges.sql (generated)
+web/                           Next.js 16 app
 ```
 
 ---
@@ -152,9 +161,14 @@ PLAN.md
 3. **Tiers:** letter scale S / A / B / C / D.
 4. **Frontend:** Next.js + TypeScript + Tailwind on Vercel.
 
-## 10. Next steps
+## 10. Status & next steps
 
-1. Create the Supabase project, write `0001_init.sql`, apply it and run the security advisors.
-2. Seed the lookup tables.
-3. Collect CDS and admissions-site data for the 10 colleges and seed it with sources.
-4. Scaffold the Next.js browse, detail and compare pages.
+Done: Supabase project + schema + RLS (security advisor clean), 10 colleges seeded with 42 sources, Next.js app (list / detail / compare / my list) with unit tests.
+
+Open data gaps to fill by hand: Berkeley CDS (C7/C9/C11, undergrad count), UIUC RD deadline, NYU waitlist/ED counts and average GPA, intl aid policy for Berkeley, MIT/Stanford/Harvard EA/RD notification exact dates.
+
+Next:
+1. Review the editorial tiers and major-admission summaries.
+2. Deploy `web/` to Vercel (env vars from `web/.env.example`).
+3. Phase 2: Supabase Auth + migrate My list to `student_colleges`.
+4. Phase 3: IPEDS/Scorecard bulk import for base rows, then CDS per school.

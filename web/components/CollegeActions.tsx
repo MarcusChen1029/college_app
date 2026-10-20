@@ -1,0 +1,29 @@
+"use client";
+
+import { computeFit, type FitInput } from "@/lib/fit";
+import { useStudent } from "@/lib/student-store";
+import { FitBadge } from "./badges";
+
+export function CollegeActions({ slug, fitInput }: { slug: string; fitInput: FitInput }) {
+  const student = useStudent();
+  const inList = student.has(slug);
+  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const fit = hasScores ? computeFit(student.profile, fitInput) : null;
+  return (
+    <div className="flex flex-col items-end gap-2">
+      <button
+        className={`rounded-md px-3 py-1.5 text-sm font-medium ${inList ? "bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"}`}
+        onClick={() => (inList ? student.remove(slug) : student.add(slug))}
+      >
+        {inList ? "✓ In my list (remove)" : "+ Add to my list"}
+      </button>
+      {fit ? (
+        <div className="max-w-xs text-right text-xs text-zinc-500">
+          <FitBadge fit={fit.fit} /> <span className="ml-1">{fit.reason}</span>
+        </div>
+      ) : (
+        <div className="text-xs text-zinc-400">Add your scores on the Colleges page to see your fit.</div>
+      )}
+    </div>
+  );
+}
