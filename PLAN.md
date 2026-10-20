@@ -38,20 +38,20 @@ date accessed). If a value can't be confirmed from an official document it is le
 
 ---
 
-## 3. Tier definitions (proposal — editable)
+## 3. Tier definitions (letter tiers — editable)
 
 One scale used for both the general tier and each subject tier:
 
-| Tier | Label | Rough meaning (general) |
-|---|---|---|
-| 1 | Elite | Admit rate ≲ 8%, global top-name (e.g. MIT, Stanford, Harvard) |
-| 2 | Highly selective | Top ~25 national universities / top LACs |
-| 3 | Very selective | Top ~26–60, strong flagships |
-| 4 | Selective | Top ~61–120 |
-| 5 | Accessible | Broad admissions |
+| Tier | Rough meaning (general) |
+|---|---|
+| **S** | Admit rate ≲ 8%, global top-name (e.g. MIT, Stanford, Harvard) |
+| **A** | Top ~25 national universities / top LACs |
+| **B** | Top ~26–60, strong flagships |
+| **C** | Top ~61–120 |
+| **D** | Broad admissions |
 
-Subject tiers use the same 1–5 scale but judged per field — e.g. Georgia Tech can be
-General T2 but Engineering T1. Initial categories:
+Subject tiers use the same S–D scale but judged per field — e.g. Georgia Tech can be
+General A but Engineering S. Initial categories:
 `computer_science, engineering, business, biology_life_sci, pre_med, economics,
 math_physics, humanities, arts_design, nursing`.
 
@@ -69,9 +69,9 @@ countries              (code PK 'US','GB','CA','AU', name)
 institutions           (id, slug, name, short_name, country_code FK, state_region,
                         city, latitude, longitude, setting, control public/private,
                         website, ipeds_unit_id, undergrad_enrollment, created_at, updated_at)
-tiers                  (level PK 1..5, label, description)
+tiers                  (code PK 'S','A','B','C','D', sort_order, description)
 tier_categories        (key PK 'general','computer_science',..., label)
-institution_tiers      (institution_id, category_key, tier_level, rationale)  PK(inst, category)
+institution_tiers      (institution_id, category_key, tier_code FK, rationale)  PK(inst, category)
 
 sources                (id, institution_id, kind 'cds'|'admissions_site'|'ipeds'|...,
                         url, cds_year e.g. '2024-2025', accessed_on)
@@ -101,7 +101,7 @@ writes only via service role / migrations. `student_colleges` gets per-user RLS.
 
 ---
 
-## 5. Demo college list (proposal: 10, spread across tiers)
+## 5. Demo college list (confirmed)
 
 MIT · Stanford · Harvard · Carnegie Mellon · UC Berkeley · Univ. of Michigan ·
 Georgia Tech · UIUC · NYU · Purdue
@@ -145,16 +145,16 @@ PLAN.md
 
 ---
 
-## 9. Open decisions
+## 9. Decisions
 
-1. **Supabase project** — both existing projects are paused. Restore one, or create a new dedicated project?
-2. **College list** — is the proposed 10 OK?
-3. **Tier scale** — 5 levels as above, or different labels/thresholds?
-4. **Frontend** — Next.js on Vercel OK, or something else (e.g. Vite + React, mobile)?
+1. **Supabase:** a new dedicated project (`college-tracker`).
+2. **Colleges:** the 10 listed in §5.
+3. **Tiers:** letter scale S / A / B / C / D.
+4. **Frontend:** Next.js + TypeScript + Tailwind on Vercel.
 
-## 10. Next steps once decided
+## 10. Next steps
 
-1. Write `0001_init.sql`, apply to Supabase, run security advisors.
-2. Seed lookups.
-3. Collect CDS + admissions data for the 10 colleges; seed with sources.
-4. Scaffold the Next.js browse/detail/compare pages.
+1. Create the Supabase project, write `0001_init.sql`, apply it and run the security advisors.
+2. Seed the lookup tables.
+3. Collect CDS and admissions-site data for the 10 colleges and seed it with sources.
+4. Scaffold the Next.js browse, detail and compare pages.
