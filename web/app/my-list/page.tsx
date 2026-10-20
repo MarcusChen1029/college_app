@@ -14,7 +14,7 @@ export default function MyListPage() {
     <div className="space-y-4">
       <div>
         <h1 className="text-2xl font-semibold">My list</h1>
-        <p className="text-sm text-zinc-500">Saved in this browser for the demo — accounts and sync come next.</p>
+        <p className="text-sm text-zinc-500">Plan, status, checklist and deadlines for every college you are considering.</p>
       </div>
       <Suspense fallback={<div className="h-64 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />}>
         <Data />

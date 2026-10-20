@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AccountLink } from "@/components/AccountPanel";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -36,6 +37,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/my-list" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white">
               My list
             </Link>
+            <span className="ml-auto">
+              <AccountLink />
+            </span>
           </nav>
         </header>
         <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">{children}</main>

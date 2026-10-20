@@ -180,7 +180,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                   <td className="p-2 text-right">
                     <button
                       className={`rounded-md px-2 py-1 text-xs font-medium ${inList ? "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300" : "bg-blue-600 text-white hover:bg-blue-700"}`}
-                      onClick={() => (inList ? student.remove(c.slug) : student.add(c.slug))}
+                      onClick={() => (inList ? student.remove(c.slug) : student.add(c))}
                     >
                       {inList ? "✓ In list" : "+ My list"}
                     </button>

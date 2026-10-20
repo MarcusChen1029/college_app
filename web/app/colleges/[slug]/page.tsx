@@ -77,7 +77,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             </div>
           </div>
         </div>
-        <CollegeActions slug={c.slug} fitInput={fitInputFrom(c, stats?.cds_year, policy?.policy ?? null)} />
+        <CollegeActions slug={c.slug} id={c.id} fitInput={fitInputFrom(c, stats?.cds_year, policy?.policy ?? null)} />
       </header>
 
       {/* Key numbers */}

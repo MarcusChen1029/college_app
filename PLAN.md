@@ -12,7 +12,7 @@ Australia, etc. without a rewrite.
 | Phase | Scope | Outcome |
 |---|---|---|
 | **1. Demo ✅ built** | 10 US colleges in Supabase; browse / detail / compare / my-list UI; reach-target-safety labels | Proves the data model and data-collection workflow |
-| 2. Student accounts | Supabase Auth; move the demo's localStorage list/profile into `student_profiles` / `student_colleges` (tables + RLS already exist); checklists, reminders | Sync across devices |
+| **2. Student accounts ✅ built** | Email-link sign-in (Supabase Auth); profile + list + application checklist stored in `student_profiles` / `student_colleges` with per-user RLS; local data merged on first sign-in. Still to do: deadline reminder emails | Sync across devices |
 | 3. All US colleges | Bulk import base data (name, location, size) from IPEDS / College Scorecard; CDS stats added school by school | Coverage |
 | 4. International | UK (UCAS), Canada, Australia: new deadline types, grade systems (A-levels, IB, ATAR), English-test rules | Multi-country |
 
@@ -163,12 +163,17 @@ web/                           Next.js 16 app
 
 ## 10. Status & next steps
 
-Done: Supabase project + schema + RLS (security advisor clean), 10 colleges seeded with 42 sources, Next.js app (list / detail / compare / my list) with unit tests.
+Done:
+- Supabase project, schema and RLS (security advisor clean). RLS on the student tables tested: users see and edit only their own rows; anonymous visitors see none.
+- 10 colleges seeded with sources.
+- Next.js app: list / detail / compare / my list / account, with unit tests and browser tests run against a local API stub.
+- Data gaps filled in the repo: NYU average GPA and 2026-27 costs, Berkeley enrollment / nonresident tuition / international aid, UIUC RD date. **Not yet applied to the live database** — run `supabase/patches/2026-10-20_fill_data_gaps.sql` (the Supabase tool needs the owner to approve UPDATE statements).
 
-Open data gaps to fill by hand: Berkeley CDS (C7/C9/C11, undergrad count), UIUC RD deadline, NYU waitlist/ED counts and average GPA, intl aid policy for Berkeley, MIT/Stanford/Harvard EA/RD notification exact dates.
+Remaining data gaps: Berkeley CDS sections C7/C9/C11 (Google Sheet not machine-readable). NYU doesn't publish waitlist or ED counts.
 
 Next:
-1. Review the editorial tiers and major-admission summaries.
-2. Deploy `web/` to Vercel (env vars from `web/.env.example`).
-3. Phase 2: Supabase Auth + migrate My list to `student_colleges`.
-4. Phase 3: IPEDS/Scorecard bulk import for base rows, then CDS per school.
+1. Apply the data patch; review the editorial tiers and major-admission summaries.
+2. Supabase Auth settings: Site URL and redirect URLs, plus custom SMTP before launch.
+3. Deploy `web/` to Vercel (env vars from `web/.env.example`).
+4. Deadline reminder emails (Supabase scheduled Edge Function).
+5. Phase 3: bulk import base rows from IPEDS / College Scorecard, then add CDS data school by school.
