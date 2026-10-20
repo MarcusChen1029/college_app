@@ -24,7 +24,7 @@ Georgia Tech, UIUC, NYU, Purdue. Plan: all US colleges next, then UK/CA/AU.
   - Server data reads are in `web/lib/data.ts`: `await connection()` then a `"use cache"` + `cacheLife("hours")` function.
     Builds never touch Supabase; pages wrap data in `<Suspense>`.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
-    signed in (email magic link, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
+    signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
   - Fit labels: `web/lib/fit.ts` (uses the international admit rate when the student is international). GPA percentile estimate: `web/lib/gpa.ts`.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS) + `data/cycle_2026_27.json` (current cycle, tiers, tier_notes,
   `_tier_rules`) → `python3 scripts/build_seed.py` (validates) → `supabase/seed/10_colleges.sql` (idempotent: deletes + reinserts those colleges).
@@ -50,7 +50,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 
 ## Current status (2026-10-20)
 Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my-list/account),
-email sign-in + synced list + checklist, reminder function + cron. All SQL patches have been run on the live DB.
+sign-in + synced list + checklist, reminder function + cron. All SQL patches have been run on the live DB.
 
 **Open issue (Vercel):** the deployed site shows "A server error occurred". Cause confirmed: env vars are missing in Vercel.
 Fix: add `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (Production + Preview), set Root Directory `web`,
@@ -60,7 +60,7 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 `http://localhost:3000/**`), custom SMTP (Resend), and the reminder function secrets. Details in `LOCAL_SETUP.md` / `DEPLOY.md`.
 
 ## Next tasks (suggested order)
-1. Help the owner verify the Vercel fix and sign-in flow end to end (real magic-link email).
+1. Help the owner verify the Vercel fix and Google sign-in end to end (Google provider must be enabled in Supabase first; see `DEPLOY.md` §3).
 2. Add a friendly error/config page: when env vars are missing, show a clear message instead of the generic error
    (e.g. check in `app/layout.tsx` and add `app/error.tsx`).
 3. Fill data gaps: Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.

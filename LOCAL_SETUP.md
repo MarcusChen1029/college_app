@@ -54,8 +54,8 @@ Other commands (run inside `web/`):
 
 Pages: `/` colleges list · `/colleges/mit` detail · `/compare?c=mit,purdue` · `/my-list` · `/account` (sign in).
 
-**Signing in locally:** the email link redirects to `http://localhost:3000/account`, which only works if
-that URL is allowed in Supabase (see §4).
+**Signing in locally:** "Continue with Google" returns to `http://localhost:3000/profile`, which only works
+once the Google provider is set up and that URL is allowed in Supabase (see §4).
 
 ---
 
@@ -85,16 +85,14 @@ Supabase project: **college-tracker** (ref `eyvmtaggayqizllaseiu`, region Tokyo)
 - Site URL: your Vercel URL (e.g. `https://your-app.vercel.app`)
 - Redirect URLs: `https://your-app.vercel.app/**` and `http://localhost:3000/**`
 
-**b. Email sending:** the built-in sender only allows a few emails per hour. For real users:
-1. Create a free account at resend.com, verify your domain, and create an API key.
-2. Authentication → Emails → SMTP Settings: host `smtp.resend.com`, port `465`, user `resend`,
-   password = the API key, sender = `something@your-verified-domain`.
+**b. Google sign-in:** Authentication → Sign In / Providers → Google. Steps for the Google OAuth
+client (redirect URI `https://eyvmtaggayqizllaseiu.supabase.co/auth/v1/callback`) are in `DEPLOY.md` §3.
 
 **c. Deadline reminder emails:** Edge Functions → Secrets → add:
 
 | Secret | Value |
 |---|---|
-| `RESEND_API_KEY` | the same Resend key |
+| `RESEND_API_KEY` | a Resend API key (free account at resend.com; verify your sending domain first) |
 | `REMINDER_FROM` | `College Tracker <reminders@your-verified-domain>` |
 | `APP_URL` | your Vercel URL |
 

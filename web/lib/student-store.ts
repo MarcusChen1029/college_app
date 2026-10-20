@@ -270,8 +270,9 @@ export function useStudent() {
             .eq("institution_id", entry.institutionId),
         );
     },
-    async signIn(email: string) {
-      const { error } = await db().auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/profile` } });
+    /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). */
+    async signInWithGoogle() {
+      const { error } = await db().auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${window.location.origin}/profile` } });
       return error?.message ?? null;
     },
     async signOut() {

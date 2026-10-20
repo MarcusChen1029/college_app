@@ -25,8 +25,13 @@ Both are safe to re-run.
 - **Authentication → URL Configuration**
   - Site URL: your Vercel production URL
   - Redirect URLs: `https://<your-domain>/**`, `https://*-<your-vercel-team>.vercel.app/**` (preview deploys), `http://localhost:3000/**`
-- **Authentication → Sign In / Providers → Email:** keep enabled. "Confirm email" can stay on; the magic link confirms the address.
-- **Authentication → Emails → SMTP Settings:** the built-in sender only allows a few emails per hour. For real users, enable custom SMTP. With Resend: host `smtp.resend.com`, port `465`, user `resend`, password = Resend API key, sender = an address on a domain you've verified in Resend.
+- **Authentication → Sign In / Providers → Google:** turn it on. It needs a Google OAuth client:
+  1. [Google Cloud Console](https://console.cloud.google.com/apis/credentials) → Create credentials → OAuth client ID → type **Web application** (set up the OAuth consent screen first if asked: app name, support email, "External").
+  2. Authorized JavaScript origins: your Vercel URL and `http://localhost:3000`.
+  3. Authorized redirect URI: `https://eyvmtaggayqizllaseiu.supabase.co/auth/v1/callback`
+  4. Paste the Client ID and Client secret into the Supabase Google provider and save.
+  5. While the consent screen is in "Testing", only test users you add can sign in; publish it for everyone.
+- Sign-in is Google only, so Supabase's auth email sender (SMTP settings) isn't needed for it. Reminder emails are sent separately (§4).
 
 ## 4. Deadline reminder emails
 
