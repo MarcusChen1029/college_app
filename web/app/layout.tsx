@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AccountLink } from "@/components/AccountPanel";
+import { missingSupabaseEnv } from "@/lib/config";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const missingEnv = missingSupabaseEnv();
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
@@ -42,7 +44,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </span>
           </nav>
         </header>
-        <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">{children}</main>
+        <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">
+          {missingEnv.length > 0 ? (
+            <div className="mx-auto max-w-xl py-16 text-center">
+              <h1 className="text-2xl font-semibold">Setup incomplete</h1>
+              <p className="mt-2 text-sm text-zinc-500">
+                This deployment is missing environment variables: <code>{missingEnv.join(", ")}</code>.
+                Add them (copy from <code>web/.env.example</code>), then redeploy — they are baked in at build time.
+              </p>
+            </div>
+          ) : (
+            children
+          )}
+        </main>
         <footer className="border-t border-zinc-200 px-4 py-4 text-center text-xs text-zinc-500 dark:border-zinc-800">
           Data from official Common Data Sets and admissions websites — always confirm on the college&apos;s site before applying.
         </footer>
