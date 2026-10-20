@@ -173,3 +173,15 @@ export type Lookups = {
   plans: { key: string; label: string; binding: boolean }[];
   englishTests: { key: string; name: string; max_score: number | null }[];
 };
+
+// Per-college English-test summary for the map card: policy plus minimum totals by test.
+export type EnglishSummary = {
+  policy: string | null;
+  toefl: number | null; // TOEFL iBT, 0–120
+  toefl2026: number | null; // TOEFL iBT new 1–6 scale
+  ielts: number | null;
+  duolingo: number | null;
+};
+
+// Estimated SAT total percentiles, summed from the section (ERW + Math) percentiles.
+export type SatEstimate = { p25: number; p50: number; p75: number };

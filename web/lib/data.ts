@@ -2,7 +2,7 @@ import "server-only";
 import { cacheLife, cacheTag } from "next/cache";
 import { connection } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import type { CollegeDetail, CollegeSummary, Deadline, Lookups } from "./types";
+import type { CollegeDetail, CollegeSummary, Deadline, EnglishSummary, Lookups, SatEstimate } from "./types";
 
 // Reference data is public (RLS: read-only for anon), so the publishable key is enough.
 function supabase() {
@@ -55,6 +55,45 @@ async function cachedDeadlines(): Promise<Deadline[]> {
   return unwrap(res, "deadlines");
 }
 
+async function cachedEnglish(): Promise<Record<string, EnglishSummary>> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges");
+  const db = supabase();
+  const [reqs, policies] = await Promise.all([
+    db.from("english_requirements").select("institution_id, test_key, min_total"),
+    db.from("english_policies").select("institution_id, policy"),
+  ]);
+  const out: Record<string, EnglishSummary> = {};
+  const slot = (id: string) => (out[id] ??= { policy: null, toefl: null, toefl2026: null, ielts: null, duolingo: null });
+  for (const p of unwrap(policies, "english policies")) slot(p.institution_id).policy = p.policy;
+  for (const r of unwrap(reqs, "english requirements")) {
+    const key = { TOEFL_IBT: "toefl", TOEFL_IBT_2026: "toefl2026", IELTS: "ielts", DUOLINGO: "duolingo" }[r.test_key as string] as keyof EnglishSummary | undefined;
+    if (key && key !== "policy") slot(r.institution_id)[key] = r.min_total == null ? null : Number(r.min_total);
+  }
+  return out;
+}
+
+// Some colleges publish only SAT section percentiles (no total). Adding the two section values is an
+// estimate of the total, so the UI labels it as such.
+async function cachedSatEstimates(): Promise<Record<string, SatEstimate>> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges");
+  const res = await supabase().from("test_score_percentiles").select("institution_id, cds_year, test, p25, p50, p75").in("test", ["SAT_ERW", "SAT_MATH"]);
+  const rows = unwrap(res, "SAT section scores");
+  const latest = new Map<string, string>();
+  for (const r of rows) if (!latest.has(r.institution_id) || r.cds_year > latest.get(r.institution_id)!) latest.set(r.institution_id, r.cds_year);
+  const out: Record<string, SatEstimate> = {};
+  for (const [id, year] of latest) {
+    const erw = rows.find((r) => r.institution_id === id && r.cds_year === year && r.test === "SAT_ERW");
+    const math = rows.find((r) => r.institution_id === id && r.cds_year === year && r.test === "SAT_MATH");
+    if (!erw || !math || erw.p25 == null || erw.p50 == null || erw.p75 == null || math.p25 == null || math.p50 == null || math.p75 == null) continue;
+    out[id] = { p25: erw.p25 + math.p25, p50: erw.p50 + math.p50, p75: erw.p75 + math.p75 };
+  }
+  return out;
+}
+
 async function cachedLookups(): Promise<Lookups> {
   "use cache";
   cacheLife("days");
@@ -91,4 +130,14 @@ export async function getDeadlines() {
 export async function getLookups() {
   await connection();
   return cachedLookups();
+}
+
+export async function getEnglishSummaries() {
+  await connection();
+  return cachedEnglish();
+}
+
+export async function getSatEstimates() {
+  await connection();
+  return cachedSatEstimates();
 }

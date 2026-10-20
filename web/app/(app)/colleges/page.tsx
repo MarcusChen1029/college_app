@@ -1,13 +1,13 @@
 import { Suspense } from "react";
-import { CollegeBrowser } from "@/components/CollegeBrowser";
+import { CollegeExplorer } from "@/components/CollegeExplorer";
 import { ProfileForm } from "@/components/ProfileForm";
-import { getLookups, getSummaries } from "@/lib/data";
+import { getEnglishSummaries, getLookups, getSatEstimates, getSummaries } from "@/lib/data";
 
 export const metadata = { title: "Colleges" };
 
 async function Colleges() {
-  const [colleges, lookups] = await Promise.all([getSummaries(), getLookups()]);
-  return <CollegeBrowser colleges={colleges} lookups={lookups} />;
+  const [colleges, lookups, english, satEstimates] = await Promise.all([getSummaries(), getLookups(), getEnglishSummaries(), getSatEstimates()]);
+  return <CollegeExplorer colleges={colleges} lookups={lookups} english={english} satEstimates={satEstimates} />;
 }
 
 export default function CollegesPage() {
@@ -17,7 +17,7 @@ export default function CollegesPage() {
         <div>
           <h1 className="text-3xl font-bold">Colleges</h1>
           <p className="mt-1 max-w-xl text-sm text-zinc-600">
-            Filter by tier, subject tier, testing and deadlines. Add your scores and each college is marked reach, target or safety for you.
+            Click a pin or pick a college to see how you fit. Add your scores and each one is marked reach, target or safety for you.
           </p>
         </div>
         <ProfileForm />
