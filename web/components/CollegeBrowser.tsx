@@ -178,12 +178,18 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                   <td className="p-2 text-xs">{c.intl_aid_policy ? INTL_AID[c.intl_aid_policy] : <span className="text-zinc-400">Unknown</span>}</td>
                   <td className="p-2">{fit ? <FitBadge fit={fit.fit} reason={fit.reason} /> : <span className="text-xs text-zinc-400">{hasScores ? "—" : "add scores"}</span>}</td>
                   <td className="p-2 text-right">
+                    {!inList && !student.canAdd ? (
+                      <Link href="/pricing" className="whitespace-nowrap rounded-md border border-blue-600 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-50" title={`Your ${student.plan.name} plan list is full`}>
+                        Upgrade
+                      </Link>
+                    ) : (
                     <button
                       className={`rounded-md px-2 py-1 text-xs font-medium ${inList ? "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300" : "bg-blue-600 text-white hover:bg-blue-700"}`}
                       onClick={() => (inList ? student.remove(c.slug) : student.add(c))}
                     >
                       {inList ? "✓ In list" : "+ My list"}
                     </button>
+                    )}
                   </td>
                 </tr>
               );

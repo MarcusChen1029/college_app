@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
-import { progress } from "@/lib/checklist";
+import { progress, type Checklist } from "@/lib/checklist";
 import { registerColleges, shownStatus, STATUS_OPTIONS, useStudent, type Status } from "@/lib/student-store";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { FitBadge, Pill, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT } from "./ChecklistPanel";
+import { Modal } from "./Modal";
 import { SchoolCodes } from "./SchoolCodes";
 
 const noop = () => () => {};
@@ -31,6 +32,18 @@ const STATUS_LABEL: Record<Status, string> = {
 const statusOptions = (current: Status): readonly Status[] =>
   (STATUS_OPTIONS as readonly Status[]).includes(shownStatus(current)) ? STATUS_OPTIONS : [...STATUS_OPTIONS, current];
 
+function ProgressBadge({ checklist }: { checklist: Checklist }) {
+  const { done, total, missing } = progress(checklist);
+  return (
+    <div className="flex items-center gap-2 whitespace-nowrap text-xs">
+      <span className="tabular-nums text-zinc-600 dark:text-zinc-300">
+        {done}/{total}
+      </span>
+      {missing === 0 ? <Pill tone="green">all done</Pill> : <Pill>{missing} missing</Pill>}
+    </div>
+  );
+}
+
 export function MyList({
   colleges,
   deadlines,
@@ -44,13 +57,7 @@ export function MyList({
 }) {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  const toggle = (slug: string) =>
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (!next.delete(slug)) next.add(slug);
-      return next;
-    });
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   if (!mounted || !student.ready) return null;
 
@@ -71,9 +78,23 @@ export function MyList({
           to keep your list on every device.
         </span>
       )}
-      {listed.length > 0 && (
-        <span className="ml-auto">
-          <SchoolCodes colleges={listed} codes={codes} />
+      <span className="ml-auto flex items-center gap-3">
+        <span className="text-xs text-zinc-500">
+          <span className={`tabular-nums ${student.canAdd ? "" : "font-medium text-amber-700 dark:text-amber-300"}`}>
+            {student.list.length}
+            {student.plan.limit != null && ` / ${student.plan.limit}`} colleges
+          </span>{" "}
+          · {student.plan.name} plan ·{" "}
+          <Link href="/pricing" className="text-blue-600 underline dark:text-blue-400">
+            {student.plan.key === "senior" ? "Plans" : "Upgrade"}
+          </Link>
+        </span>
+        {listed.length > 0 && <SchoolCodes colleges={listed} codes={codes} />}
+      </span>
+      {student.plan.limit != null && student.list.length > student.plan.limit && (
+        <span className="w-full rounded bg-amber-50 px-2 py-1 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">
+          Your list has more colleges than the {student.plan.name} plan allows ({student.plan.limit}). You keep them all, but can&apos;t add more
+          until you remove some or upgrade.
         </span>
       )}
       {student.error && (
@@ -121,11 +142,40 @@ export function MyList({
     )
     .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!));
 
+  const opened = entries.find(({ entry }) => entry.slug === openSlug);
   const planOptions = (c: CollegeSummary) => plans.filter((p) => (c.plans ?? []).includes(p.key));
 
   return (
     <>
     {banner}
+    {opened && (
+      <Modal
+        key={opened.entry.slug}
+        onClose={() => setOpenSlug(null)}
+        title={
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <TierBadge tier={opened.college.general_tier} size="sm" />
+            <Link href={`/colleges/${opened.college.slug}`} className="text-lg font-semibold hover:underline">
+              {opened.college.name}
+            </Link>
+            {fits.get(opened.college.slug) && <FitBadge fit={fits.get(opened.college.slug)!.fit} reason={fits.get(opened.college.slug)!.reason} />}
+            <ProgressBadge checklist={opened.entry.checklist} />
+          </div>
+        }
+      >
+        <ChecklistPanel
+          key={student.auth?.userId ?? "local"}
+          entry={opened.entry}
+          college={opened.college}
+          international={!!student.profile.international}
+          onChange={(patch) => student.update(opened.entry.slug, patch)}
+          onRemove={() => {
+            setOpenSlug(null);
+            student.remove(opened.entry.slug);
+          }}
+        />
+      </Modal>
+    )}
     <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
       <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
         <table className="w-full min-w-[560px] text-sm">
@@ -142,14 +192,12 @@ export function MyList({
           <tbody>
             {entries.map(({ entry, college }) => {
               const fit = fits.get(college.slug);
-              const { done, total, missing } = progress(entry.checklist);
-              const open = expanded.has(entry.slug);
               return (
-                <Fragment key={entry.slug}>
                 <tr
+                  key={entry.slug}
                   className="cursor-pointer border-t border-zinc-100 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900/60"
                   onClick={(e) => {
-                    if (!(e.target as HTMLElement).closest("a, select, input, button")) toggle(entry.slug);
+                    if (!(e.target as HTMLElement).closest("a, select, input, button")) setOpenSlug(entry.slug);
                   }}
                 >
                   <td className="p-2">
@@ -192,39 +240,19 @@ export function MyList({
                     </select>
                   </td>
                   <td className="p-2">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-xs">
-                      <span className="tabular-nums text-zinc-600 dark:text-zinc-300">
-                        {done}/{total}
-                      </span>
-                      {missing === 0 ? <Pill tone="green">all done</Pill> : <Pill>{missing} missing</Pill>}
-                    </div>
+                    <ProgressBadge checklist={entry.checklist} />
                   </td>
                   <td className="p-2 text-right">
                     <button
                       className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
-                      onClick={() => toggle(entry.slug)}
-                      aria-expanded={open}
-                      aria-label={`${open ? "Hide" : "Show"} checklist for ${college.name}`}
+                      onClick={() => setOpenSlug(entry.slug)}
+                      aria-haspopup="dialog"
+                      aria-label={`Open checklist for ${college.name}`}
                     >
-                      <span className={`inline-block transition-transform ${open ? "rotate-90" : ""}`}>▸</span>
+                      ▸
                     </button>
                   </td>
                 </tr>
-                {open && (
-                  <tr className="bg-zinc-50/60 dark:bg-zinc-900/40">
-                    <td colSpan={6} className="p-3">
-                      <ChecklistPanel
-                        key={student.auth?.userId ?? "local"}
-                        entry={entry}
-                        college={college}
-                        international={!!student.profile.international}
-                        onChange={(patch) => student.update(entry.slug, patch)}
-                        onRemove={() => student.remove(entry.slug)}
-                      />
-                    </td>
-                  </tr>
-                )}
-                </Fragment>
               );
             })}
           </tbody>

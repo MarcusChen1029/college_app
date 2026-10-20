@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { computeFit, type FitInput } from "@/lib/fit";
 import { useStudent } from "@/lib/student-store";
 import { FitBadge } from "./badges";
@@ -11,12 +12,18 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
   const fit = hasScores ? computeFit(student.profile, fitInput) : null;
   return (
     <div className="flex flex-col items-end gap-2">
+      {!inList && !student.canAdd ? (
+        <Link href="/pricing" className="rounded-md border border-blue-600 px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50">
+          List full ({student.plan.name} plan) · Upgrade
+        </Link>
+      ) : (
       <button
         className={`rounded-md px-3 py-1.5 text-sm font-medium ${inList ? "bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"}`}
         onClick={() => (inList ? student.remove(slug) : student.add({ slug, id }))}
       >
         {inList ? "✓ In my list (remove)" : "+ Add to my list"}
       </button>
+      )}
       {fit ? (
         <div className="max-w-xs text-right text-xs text-zinc-500">
           <FitBadge fit={fit.fit} /> <span className="ml-1">{fit.reason}</span>

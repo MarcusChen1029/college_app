@@ -209,6 +209,11 @@ function DetailCard({
       </div>
 
       <div className="mt-4 flex gap-2">
+        {!inList && !student.canAdd ? (
+          <Link href="/pricing" className="flex-1 rounded-full border-2 border-blue-600 px-4 py-2 text-center text-sm font-semibold text-blue-700 hover:bg-blue-50">
+            List full · Upgrade
+          </Link>
+        ) : (
         <button
           type="button"
           onClick={() => (inList ? student.remove(college.slug) : student.add({ slug: college.slug, id: college.id }))}
@@ -216,6 +221,7 @@ function DetailCard({
         >
           {inList ? "✓ In my list" : "+ Add to my list"}
         </button>
+        )}
         <Link href={`/colleges/${college.slug}`} className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-blue-50">
           Full details
         </Link>

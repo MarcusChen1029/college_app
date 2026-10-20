@@ -3,12 +3,15 @@
 
 export type Fit = "reach" | "target" | "safety";
 
+import type { PlanKey } from "./plans";
+
 export type StudentProfile = {
   sat?: number | null;
   act?: number | null;
   gpa?: number | null; // unweighted, 4.0 scale
   international?: boolean;
   reminderEmails?: boolean; // account setting; defaults to on
+  plan?: PlanKey; // defaults to free
 };
 
 export type FitInput = {

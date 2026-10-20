@@ -27,6 +27,7 @@ const NAV = [
   ["/compare", "Compare"],
   ["/my-list", "My list"],
   ["/profile", "Profile"],
+  ["/pricing", "Pricing"],
 ] as const;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

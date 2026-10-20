@@ -7,6 +7,7 @@
 import { useSyncExternalStore } from "react";
 import type { Checklist } from "./checklist";
 import type { StudentProfile } from "./fit";
+import { canAddMore, DEFAULT_PLAN, getPlan, type PlanKey } from "./plans";
 import { browserSupabase } from "./supabase-browser";
 
 export const STATUSES = [
@@ -97,6 +98,7 @@ type ProfileRow = {
   gpa_unweighted: number | null;
   is_international: boolean;
   reminder_emails: boolean;
+  plan: PlanKey;
 };
 type CollegeRow = {
   institution_id: string;
@@ -117,6 +119,7 @@ const toProfile = (r: ProfileRow): StudentProfile => ({
   gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
   international: r.is_international,
   reminderEmails: r.reminder_emails,
+  plan: r.plan,
 });
 const fromProfile = (userId: string, p: StudentProfile) => ({
   user_id: userId,
@@ -125,6 +128,7 @@ const fromProfile = (userId: string, p: StudentProfile) => ({
   gpa_unweighted: p.gpa ?? null,
   is_international: !!p.international,
   reminder_emails: p.reminderEmails ?? true,
+  plan: p.plan ?? DEFAULT_PLAN,
 });
 const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.institutions?.slug ?? "",
@@ -157,7 +161,7 @@ async function loadRemote(userId: string, email: string | null) {
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails").eq("user_id", userId).maybeSingle(),
+      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan").eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;
@@ -243,22 +247,33 @@ export function registerColleges(colleges: CollegeRef[]) {
 export function useStudent() {
   const s = useSyncExternalStore(subscribe, () => state, () => EMPTY);
   const db = () => browserSupabase();
+  const setProfile = (profile: StudentProfile) => {
+    emit({ profile });
+    const a = state.auth;
+    if (a) void remote(() => db().from("student_profiles").upsert(fromProfile(a.userId, profile)));
+  };
   return {
     ...s,
-    setProfile(profile: StudentProfile) {
-      emit({ profile });
-      const a = state.auth;
-      if (a) void remote(() => db().from("student_profiles").upsert(fromProfile(a.userId, profile)));
+    plan: getPlan(s.profile.plan),
+    /** False once the list is full for the current plan. */
+    canAdd: canAddMore(s.profile.plan, s.list.length),
+    setProfile,
+    /** No payment yet: choosing a plan just saves it. */
+    setPlan(plan: PlanKey) {
+      setProfile({ ...state.profile, plan });
     },
     has(slug: string) {
       return s.list.some((e) => e.slug === slug);
     },
+    /** Returns false (and adds nothing) when the plan's college limit is reached. */
     add(college: CollegeRef) {
-      if (state.list.some((e) => e.slug === college.slug)) return;
+      if (state.list.some((e) => e.slug === college.slug)) return true;
+      if (!canAddMore(state.profile.plan, state.list.length)) return false;
       const entry: ListEntry = { slug: college.slug, institutionId: college.id, plan: null, status: "in_progress", notes: "", checklist: {}, portal: EMPTY_PORTAL, addedAt: new Date().toISOString() };
       emit({ list: [...state.list, entry] });
       const a = state.auth;
       if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
+      return true;
     },
     remove(slug: string) {
       const entry = state.list.find((e) => e.slug === slug);
