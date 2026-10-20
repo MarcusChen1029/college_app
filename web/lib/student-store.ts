@@ -271,7 +271,7 @@ export function useStudent() {
         );
     },
     async signIn(email: string) {
-      const { error } = await db().auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/account` } });
+      const { error } = await db().auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/profile` } });
       return error?.message ?? null;
     },
     async signOut() {

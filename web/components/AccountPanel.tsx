@@ -107,7 +107,7 @@ export function AccountLink() {
   const cls = "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
   if (!mounted || !student.ready) return <span className="w-14" />;
   return (
-    <Link href="/account" className={cls}>
+    <Link href="/profile#account" className={cls}>
       {student.auth ? "Account" : "Sign in"}
     </Link>
   );

@@ -415,7 +415,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         </ol>
       </Section>
 
-      <Link href="/" className="inline-block text-sm text-blue-600 hover:underline dark:text-blue-400">
+      <Link href="/colleges" className="inline-block text-sm text-blue-600 hover:underline dark:text-blue-400">
         ← All colleges
       </Link>
     </article>

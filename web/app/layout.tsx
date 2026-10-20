@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AccountLink } from "@/components/AccountPanel";
+import { Wave } from "@/components/Doodles";
 import { missingSupabaseEnv } from "@/lib/config";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const body = Figtree({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -20,45 +22,59 @@ export const metadata: Metadata = {
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
 
+const NAV = [
+  ["/colleges", "Colleges"],
+  ["/compare", "Compare"],
+  ["/my-list", "My list"],
+  ["/profile", "Profile"],
+] as const;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const missingEnv = missingSupabaseEnv();
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
-        <header className="border-b border-zinc-200 dark:border-zinc-800">
-          <nav className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-3 text-sm">
-            <Link href="/" className="text-base font-semibold">
-              🎓 College Tracker
+    <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-white text-ink">
+        <header className="sticky top-0 z-20 border-b border-blue-100 bg-white/90 backdrop-blur">
+          <nav className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm font-medium">
+            <Link href="/" className="font-display text-lg font-bold tracking-tight">
+              <span aria-hidden className="mr-1.5 inline-block rounded-md bg-blue-500 px-1.5 text-white">
+                C
+              </span>
+              College Tracker
             </Link>
-            <Link href="/" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white">
-              Colleges
-            </Link>
-            <Link href="/compare" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white">
-              Compare
-            </Link>
-            <Link href="/my-list" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white">
-              My list
-            </Link>
-            <span className="ml-auto">
+            <div className="flex items-center gap-5">
+              {NAV.map(([href, label]) => (
+                <Link key={href} href={href} className="text-zinc-600 hover:text-blue-600">
+                  {label}
+                </Link>
+              ))}
+            </div>
+            <span className="ml-auto flex items-center gap-4">
               <AccountLink />
+              <Link href="/start" className="rounded-full bg-ink px-4 py-1.5 text-white hover:bg-blue-700">
+                Get started
+              </Link>
             </span>
           </nav>
         </header>
-        <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">
+        <main className="flex-1">
           {missingEnv.length > 0 ? (
-            <div className="mx-auto max-w-xl py-16 text-center">
-              <h1 className="text-2xl font-semibold">Setup incomplete</h1>
-              <p className="mt-2 text-sm text-zinc-500">
-                This deployment is missing environment variables: <code>{missingEnv.join(", ")}</code>.
-                Add them (copy from <code>web/.env.example</code>), then redeploy — they are baked in at build time.
+            <div className="mx-auto max-w-xl px-4 py-24 text-center">
+              <h1 className="text-3xl font-bold">Setup incomplete</h1>
+              <p className="mt-3 text-zinc-500">
+                This deployment is missing environment variables: <code>{missingEnv.join(", ")}</code>. Add them (copy from{" "}
+                <code>web/.env.example</code>), then redeploy — they are baked in at build time.
               </p>
             </div>
           ) : (
             children
           )}
         </main>
-        <footer className="border-t border-zinc-200 px-4 py-4 text-center text-xs text-zinc-500 dark:border-zinc-800">
-          Data from official Common Data Sets and admissions websites — always confirm on the college&apos;s site before applying.
+        <footer className="relative mt-0 bg-zinc-100 pb-6 pt-2 text-center text-xs text-zinc-500">
+          <Wave className="absolute -top-[39px] left-0 h-10 w-full" fill="#e9f2fa" />
+          <p className="mx-auto max-w-2xl px-4 pt-6">
+            Data comes from official Common Data Sets and admissions websites. Always confirm on the college&apos;s own site before applying.
+          </p>
         </footer>
       </body>
     </html>

@@ -40,7 +40,7 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
       ) : (
         <span className="text-zinc-500">
           Saved in this browser only.{" "}
-          <Link href="/account" className="text-blue-600 underline dark:text-blue-400">
+          <Link href="/profile#account" className="text-blue-600 underline dark:text-blue-400">
             Sign in
           </Link>{" "}
           to keep your list on every device.
@@ -67,7 +67,7 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
       {banner}
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500 dark:border-zinc-700">
         Your list is empty. Add colleges from the{" "}
-        <Link href="/" className="text-blue-600 underline dark:text-blue-400">
+        <Link href="/colleges" className="text-blue-600 underline dark:text-blue-400">
           Colleges
         </Link>{" "}
         page.

@@ -41,7 +41,7 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
           ))}
         </div>
         <p className="text-zinc-500">
-          Or tick colleges on the <Link className="text-blue-600 underline dark:text-blue-400" href="/">Colleges</Link> page and press Compare.
+          Or tick colleges on the <Link className="text-blue-600 underline dark:text-blue-400" href="/colleges">Colleges</Link> page and press Compare.
         </p>
       </div>
     );
