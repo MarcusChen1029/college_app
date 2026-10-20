@@ -2,28 +2,63 @@
   "slug": "uc-berkeley",
   "name": "University of California, Berkeley",
   "short_name": "UC Berkeley",
-  "state_region": "CA", "city": "Berkeley",
-  "latitude": 37.871899, "longitude": -122.258540,
-  "setting": "urban", "control": "public",
-  "website": "https://www.berkeley.edu", "admissions_url": "https://admissions.berkeley.edu",
+  "state_region": "CA",
+  "city": "Berkeley",
+  "latitude": 37.871899,
+  "longitude": -122.25854,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.berkeley.edu",
+  "admissions_url": "https://admissions.berkeley.edu",
   "ipeds_unit_id": 110635,
-  "undergrad_enrollment": null, "intl_undergrads": null, "student_faculty_ratio": null, "academic_calendar": "semester",
+  "undergrad_enrollment": 33122,
+  "intl_undergrads": 3251,
+  "student_faculty_ratio": null,
+  "academic_calendar": "semester",
   "sources": {
-    "cds": {"kind": "cds", "title": "UC Berkeley Common Data Set 2025-2026 (Google Sheets)", "url": "https://docs.google.com/spreadsheets/d/1INsGFH6MhaO-MFMBZ1Dngcn84FeN-hc0BLS0-v8TL_k/edit", "cds_year": "2025-2026"},
-    "profile": {"kind": "admissions_site", "title": "Berkeley Admissions — Student Profile (data as of 8/2026)", "url": "https://admissions.berkeley.edu/apply-to-berkeley/student-profile/"}
+    "cds": {
+      "kind": "cds",
+      "title": "UC Berkeley Common Data Set 2025-2026 (Google Sheets)",
+      "url": "https://docs.google.com/spreadsheets/d/1INsGFH6MhaO-MFMBZ1Dngcn84FeN-hc0BLS0-v8TL_k/edit",
+      "cds_year": "2025-2026"
+    },
+    "profile": {
+      "kind": "admissions_site",
+      "title": "Berkeley Admissions — Student Profile (data as of 8/2026)",
+      "url": "https://admissions.berkeley.edu/apply-to-berkeley/student-profile/"
+    },
+    "facts": {
+      "kind": "other",
+      "title": "UC Berkeley Quick Facts (Office of Planning & Analysis)",
+      "url": "https://opa.berkeley.edu/campus-data/uc-berkeley-quick-facts"
+    }
   },
   "stats": {
-    "cds_year": "2025-2026", "source": "profile",
-    "applicants": 126843, "admits": 14502, "enrolled": null,
-    "gpa_avg": null, "pct_reporting_gpa": null, "gpa_distribution": null,
+    "cds_year": "2025-2026",
+    "source": "profile",
+    "applicants": 126843,
+    "admits": 14502,
+    "enrolled": null,
+    "gpa_avg": null,
+    "pct_reporting_gpa": null,
+    "gpa_distribution": null,
     "notes": "Counts from Berkeley Admissions student profile (fall 2025 entry). Berkeley's CDS is published as a multi-tab Google Sheet that could not be machine-read for this import; C7/C9/C11 values pending manual entry. UC campuses are test-blind, so there are no SAT/ACT percentiles."
   },
   "stats_extra": [
-    {"cds_year": "2026-2027", "source": "profile", "applicants": 133157, "admits": 13992,
-     "notes": "Fall 2026 entry, from admissions student profile. Middle 50% of admits: unweighted GPA 3.90–4.00, weighted 4.36–4.72. 74% from public schools, 23% first generation."}
+    {
+      "cds_year": "2026-2027",
+      "source": "profile",
+      "applicants": 133157,
+      "admits": 13992,
+      "notes": "Fall 2026 entry, from admissions student profile. Middle 50% of admits: unweighted GPA 3.90–4.00, weighted 4.36–4.72. 74% from public schools, 23% first generation."
+    }
   ],
   "scores": {},
   "factors": {},
-  "cds_test_policy": {"cycle": "2026-27", "policy": "blind", "notes": "University of California does not consider SAT/ACT scores in admission."},
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "University of California does not consider SAT/ACT scores in admission."
+  },
   "cost": null
 }

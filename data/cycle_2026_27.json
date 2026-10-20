@@ -831,6 +831,11 @@
         "kind": "admissions_site",
         "title": "Illinois — International Requirements",
         "url": "https://www.admissions.illinois.edu/international-requirements/"
+      },
+      "dates": {
+        "kind": "admissions_site",
+        "title": "Illinois — First-Year Dates & Deadlines",
+        "url": "https://www.admissions.illinois.edu/first-year-dates/"
       }
     },
     "requirements": {
@@ -847,15 +852,23 @@
         "kind": "application",
         "plan": "EA",
         "due": "2026-11-01",
-        "notify": "2027-01-30",
-        "notes": "Per CDS C22 (notification 1/30). Materials must arrive by Nov 7.",
-        "src": "apply"
+        "notify": "2027-01-29",
+        "notes": "All required materials due by Nov 7.",
+        "src": "dates"
       },
       {
         "kind": "application",
         "plan": "RD",
-        "notes": "Regular Decision date not yet captured — check the admissions site.",
-        "src": "apply"
+        "due": "2027-01-05",
+        "notify": "2027-02-26",
+        "notes": "All required materials due by Jan 11.",
+        "src": "dates"
+      },
+      {
+        "kind": "deposit",
+        "label": "Enrollment deposit",
+        "due": "2027-05-01",
+        "src": "dates"
       }
     ],
     "english_policy": {
@@ -1030,16 +1043,6 @@
         "src": "eng"
       }
     ],
-    "cost": {
-      "year": "2026-2027",
-      "tuition_usd": 70464,
-      "room_board_usd": 26438,
-      "books_usd": 1492,
-      "other_usd": 4492,
-      "total_coa_usd": 102886,
-      "notes": "Stern School of Business figures (tuition & fees $70,464); varies by school — Tisch tuition & fees $75,326.",
-      "src": "cost"
-    },
     "aid": {
       "intl_aid_policy": "need_aware_limited",
       "meets_full_need": true,
@@ -1245,6 +1248,11 @@
         "kind": "financial_aid_site",
         "title": "Berkeley Financial Aid — Student Budgets 2026-27",
         "url": "https://financialaid.berkeley.edu/how-aid-works/student-budgets-cost-of-attendance/"
+      },
+      "intl_aid": {
+        "kind": "financial_aid_site",
+        "title": "Berkeley — Scholarship Opportunities for International Students",
+        "url": "https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/regents-and-chancellors-scholarship/international-student-scholarships/"
       }
     },
     "test_policy": {
@@ -1316,14 +1324,18 @@
       "tuition_usd": 18214,
       "room_board_usd": 16640,
       "total_coa_usd": 54674,
-      "notes": "California-resident tuition & fees for the newest cohort living in a residence hall (first table on the budget page; UC tuition varies by entering cohort). Housing figure covers housing; health insurance $5,066 extra. Nonresident supplemental tuition not captured.",
-      "src": "cost"
+      "notes": "Tuition & fees for the newest cohort; nonresidents (incl. international) add Nonresident Supplemental Tuition of $39,270. Housing in a residence hall; health insurance $5,066 extra. Total shown is the California-resident cost of attendance.",
+      "src": "cost",
+      "tuition_out_of_state_usd": 57484,
+      "tuition_intl_usd": 57484
     },
     "aid": {
-      "intl_aid_policy": null,
-      "intl_need_aid": null,
-      "merit_scholarships": null,
-      "notes": "International aid policy not yet verified."
+      "intl_aid_policy": "need_aware_limited",
+      "intl_need_aid": true,
+      "merit_scholarships": true,
+      "merit_separate_app": false,
+      "notes": "International students can't get federal, state or general need-based university aid, but are automatically considered for a few institutional scholarships (Regents' & Chancellor's, Robinson International Scholars, International Leaders, Swaniker Scholars).",
+      "src": "intl_aid"
     },
     "tiers": {
       "general": "A",

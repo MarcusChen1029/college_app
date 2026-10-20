@@ -3,15 +3,17 @@ begin;
 delete from institutions where slug in ('uc-berkeley', 'carnegie-mellon', 'georgia-tech', 'harvard', 'mit', 'nyu', 'purdue', 'stanford', 'uiuc', 'umich');
 
 -- ── University of California, Berkeley ──
-insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, academic_calendar) values
- ('caa9a1af-8f82-5061-8a81-0334c772233f', 'uc-berkeley', 'University of California, Berkeley', 'UC Berkeley', 'US', 'CA', 'Berkeley', 37.871899, -122.25854, 'urban', 'public', 'https://www.berkeley.edu', 'https://admissions.berkeley.edu', 110635, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, academic_calendar) values
+ ('caa9a1af-8f82-5061-8a81-0334c772233f', 'uc-berkeley', 'University of California, Berkeley', 'UC Berkeley', 'US', 'CA', 'Berkeley', 37.871899, -122.25854, 'urban', 'public', 'https://www.berkeley.edu', 'https://admissions.berkeley.edu', 110635, 33122, 9.82, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('87c8ba4f-c5d7-536c-bf3f-6bbe59a03258', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'cds', 'UC Berkeley Common Data Set 2025-2026 (Google Sheets)', 'https://docs.google.com/spreadsheets/d/1INsGFH6MhaO-MFMBZ1Dngcn84FeN-hc0BLS0-v8TL_k/edit', '2025-2026', '2026-10-20'),
  ('d8a555f5-b057-5b6c-b588-531acf514b1f', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'Berkeley Admissions — Student Profile (data as of 8/2026)', 'https://admissions.berkeley.edu/apply-to-berkeley/student-profile/', null, '2026-10-20'),
+ ('631d6315-3ae6-578b-a4ba-6eaf9fca4191', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'other', 'UC Berkeley Quick Facts (Office of Planning & Analysis)', 'https://opa.berkeley.edu/campus-data/uc-berkeley-quick-facts', null, '2026-10-20'),
  ('d4be697a-bfc2-579c-93b6-4279b274895f', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'UC Admissions — First-year Dates & Deadlines', 'https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html', null, '2026-10-20'),
  ('4f8cd24c-34ab-512b-81d0-c1e7f0ab7154', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'UC Admissions — Apply now (fees)', 'https://admission.universityofcalifornia.edu/apply-now.html', null, '2026-10-20'),
  ('8812f1b7-841d-50ed-9cc0-ffb5ed2e107c', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'UC Admissions — English language proficiency', 'https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html', null, '2026-10-20'),
- ('3613cb36-b894-58a5-99ed-30c44380bade', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'financial_aid_site', 'Berkeley Financial Aid — Student Budgets 2026-27', 'https://financialaid.berkeley.edu/how-aid-works/student-budgets-cost-of-attendance/', null, '2026-10-20');
+ ('3613cb36-b894-58a5-99ed-30c44380bade', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'financial_aid_site', 'Berkeley Financial Aid — Student Budgets 2026-27', 'https://financialaid.berkeley.edu/how-aid-works/student-budgets-cost-of-attendance/', null, '2026-10-20'),
+ ('e870406f-2ba8-50c7-84ac-73a0fe775230', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'financial_aid_site', 'Berkeley — Scholarship Opportunities for International Students', 'https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/regents-and-chancellors-scholarship/international-student-scholarships/', null, '2026-10-20');
 insert into admission_stats (institution_id, source_id, source_note, cds_year, applicants, admits, notes)
 select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, 'd8a555f5-b057-5b6c-b588-531acf514b1f'::uuid, 'admissions_site', v.* from (values
  ('2025-2026', 126843, 14502, 'Counts from Berkeley Admissions student profile (fall 2025 entry). Berkeley''s CDS is published as a multi-tab Google Sheet that could not be machine-read for this import; C7/C9/C11 values pending manual entry. UC campuses are test-blind, so there are no SAT/ACT percentiles.'),
@@ -31,8 +33,8 @@ select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, 'required_option', '8812f1b
  ('TOEFL_IBT_2026', 4.5, null),
  ('IELTS', 6.5, null),
  ('DUOLINGO', 115, null)) v;
-insert into cost_aid (institution_id, year, tuition_usd, room_board_usd, total_coa_usd, notes, source_id) values
- ('caa9a1af-8f82-5061-8a81-0334c772233f', '2026-2027', 18214, 16640, 54674, 'California-resident tuition & fees for the newest cohort living in a residence hall (first table on the budget page; UC tuition varies by entering cohort). Housing figure covers housing; health insurance $5,066 extra. Nonresident supplemental tuition not captured.; International aid policy not yet verified.', '3613cb36-b894-58a5-99ed-30c44380bade');
+insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, room_board_usd, total_coa_usd, intl_aid_policy, intl_need_aid, merit_scholarships, merit_separate_app, notes, source_id) values
+ ('caa9a1af-8f82-5061-8a81-0334c772233f', '2026-2027', 18214, 57484, 57484, 16640, 54674, 'need_aware_limited', true, true, false, 'Tuition & fees for the newest cohort; nonresidents (incl. international) add Nonresident Supplemental Tuition of $39,270. Housing in a residence hall; health insurance $5,066 extra. Total shown is the California-resident cost of attendance.; International students can''t get federal, state or general need-based university aid, but are automatically considered for a few institutional scholarships (Regents'' & Chancellor''s, Robinson International Scholars, International Leaders, Swaniker Scholars).', '3613cb36-b894-58a5-99ed-30c44380bade');
 insert into institution_tiers (institution_id, category_key, tier_code)
 select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, v.* from (values
  ('general', 'A'),
@@ -342,13 +344,13 @@ insert into major_admissions (id, institution_id, program, admit_model, capped, 
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
  ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'nyu', 'New York University', 'NYU', 'US', 'NY', 'New York', 40.729513, -73.996461, 'urban', 'private_nonprofit', 'https://www.nyu.edu', 'https://www.nyu.edu/admissions/undergraduate-admissions.html', 193900, 29471, 25.55, 12, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
- ('6cc348b4-0b2c-5cd2-9e79-fe426275c348', 'a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'cds', 'NYU Common Data Set 2025-2026 (published without section G)', 'https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20%28no%20G%29.pdf', '2025-2026', '2026-10-20'),
+ ('6cc348b4-0b2c-5cd2-9e79-fe426275c348', 'a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'cds', 'NYU Common Data Set 2025-2026 (final, incl. section G, July 2026)', 'https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).xlsx', '2025-2026', '2026-10-20'),
  ('a168203d-0270-571e-a2cd-e40e0c56b7d1', 'a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'admissions_site', 'NYU — First-Year Applicants', 'https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html', null, '2026-10-20'),
  ('49b0444e-560b-5fb2-9812-4f382fb52723', 'a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'admissions_site', 'NYU — Standardized Tests', 'https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html', null, '2026-10-20'),
  ('a8a0b1a2-4516-5463-928d-13b0b7edcb60', 'a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'admissions_site', 'NYU — English Language Testing', 'https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests/english-language-testing.html', null, '2026-10-20'),
  ('5013c02b-918c-51d3-887b-a5ee6be50411', 'a89d4ad5-df02-5c82-9adc-dc8b82e72709', 'financial_aid_site', 'NYU — Cost of Attendance 2026-27', 'https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html', null, '2026-10-20');
-insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, pct_submit_sat, pct_submit_act, pct_reporting_gpa, gpa_distribution, notes, source_id) values
- ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', '2025-2026', 114125, 10340, 5662, 27, 10, 100, '{"4.0": 17.2, "3.75-3.99": 54.7, "3.50-3.74": 21.4, "3.25-3.49": 5.2, "3.00-3.24": 1.0, "2.50-2.99": 0.4, "2.0-2.49": 0.1}'::jsonb, 'ED I 11/1 → 12/15; ED II 1/1 → 2/15; no EA. Waitlist counts, ED applicant counts and average GPA not legible in the published PDF. For portfolio/audition programs artistic talent is Very Important.', '6cc348b4-0b2c-5cd2-9e79-fe426275c348');
+insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, pct_submit_sat, pct_submit_act, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
+ ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', '2025-2026', 114125, 10340, 5662, 27, 10, 3.81, 100, '{"4.0": 17.2, "3.75-3.99": 54.7, "3.50-3.74": 21.4, "3.25-3.49": 5.2, "3.00-3.24": 1.0, "2.50-2.99": 0.4, "2.0-2.49": 0.1}'::jsonb, 'ED I 11/1 → 12/15; ED II 1/1 → 2/15; no EA. NYU does not report waitlist or ED applicant counts. For portfolio/audition programs artistic talent is Very Important.', '6cc348b4-0b2c-5cd2-9e79-fe426275c348');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
 select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, '2025-2026', '6cc348b4-0b2c-5cd2-9e79-fe426275c348'::uuid, v.* from (values
  ('SAT_TOTAL', 1480, 1520, 1550),
@@ -392,8 +394,8 @@ select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, 'required_option', 'a8a0b1a
  ('DUOLINGO', 135, null, null),
  ('IELTS', 7.5, null, null),
  ('PTE', 70, null, null)) v;
-insert into cost_aid (institution_id, year, tuition_usd, room_board_usd, books_usd, other_usd, total_coa_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
- ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', '2026-2027', 70464, 26438, 1492, 4492, 102886, 'need_aware_limited', true, 342, 36562, true, true, 'Stern School of Business figures (tuition & fees $70,464); varies by school — Tisch tuition & fees $75,326.; NYU''s published CDS omits section G (costs); see financial aid site. H6: need-based and non-need-based aid available to nonresidents.; NYU Promise: 100% of demonstrated need met for first-year students admitted to the New York campus.', '5013c02b-918c-51d3-887b-a5ee6be50411');
+insert into cost_aid (institution_id, year, tuition_usd, room_board_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
+ ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', '2026-2027', 68574, 25250, 'need_aware_limited', true, 342, 36562, true, true, 'CDS G1 (2026-27). Tuition & fees vary by school — e.g. Stern $70,464, Tisch $75,326 (NYU cost-of-attendance page). H6: need-based and non-need-based aid available to nonresidents.; NYU Promise: 100% of demonstrated need met for first-year students admitted to the New York campus.', '6cc348b4-0b2c-5cd2-9e79-fe426275c348');
 insert into institution_tiers (institution_id, category_key, tier_code)
 select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, v.* from (values
  ('general', 'A'),
@@ -562,7 +564,8 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('aa34bdc6-0943-59cc-a7ed-978a22436316', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'cds', 'University of Illinois Common Data Set 2025-26 (xlsx)', 'https://uofi.box.com/shared/static/orx4vnmzkt2drmgoiksxpfs39pr42uor.xlsx', '2025-2026', '2026-10-20'),
  ('702df334-7171-5f97-b725-f5db8584f11b', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'admissions_site', 'Illinois — How to Apply: First-Year', 'https://www.admissions.illinois.edu/first-year-apply/', null, '2026-10-20'),
  ('5dd703d6-bfbd-55d5-823a-2b26d43db100', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'admissions_site', 'Illinois — General Admission Policies (English competence)', 'https://www.admissions.illinois.edu/general-admission-policies/', null, '2026-10-20'),
- ('fc124522-b5a6-5b5d-ab44-c14afe266338', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'admissions_site', 'Illinois — International Requirements', 'https://www.admissions.illinois.edu/international-requirements/', null, '2026-10-20');
+ ('fc124522-b5a6-5b5d-ab44-c14afe266338', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'admissions_site', 'Illinois — International Requirements', 'https://www.admissions.illinois.edu/international-requirements/', null, '2026-10-20'),
+ ('65f4d179-3890-533f-85a7-7e0ad6a3ce2e', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'admissions_site', 'Illinois — First-Year Dates & Deadlines', 'https://www.admissions.illinois.edu/first-year-dates/', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, waitlist_offered, waitlist_accepted, waitlist_admitted, pct_submit_sat, pct_submit_act, notes, source_id) values
  ('4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2025-2026', 83045, 30384, 9207, 6826, 4317, 1, 42.59, 14.07, 'UIUC does not report GPA in C11/C12. Residency breakdown in the CDS contains spreadsheet errors (#REF!) and is not used. EA closes 11/1, notification 1/30; no ED. Application fee $50 domestic / $75 international.', 'aa34bdc6-0943-59cc-a7ed-978a22436316');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -597,9 +600,10 @@ insert into test_policies (institution_id, cycle, policy, notes, source_id) valu
  ('4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', 'optional', 'CDS C8A (Fall 2027): not required, considered if submitted.', 'aa34bdc6-0943-59cc-a7ed-978a22436316');
 insert into application_requirements (institution_id, cycle, platforms, app_fee_usd, fee_waiver, notes, source_id) values
  ('4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', array['common_app']::text[], 75, true, 'Self-report highest ACT composite / SAT total; official scores only if you enroll.', '702df334-7171-5f97-b725-f5db8584f11b');
-insert into deadlines (id, institution_id, cycle, kind, plan_key, due_date, notification_date, notes, source_id) values
- ('620461ae-744c-5e39-a389-93d7cf70ae5e', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', 'application', 'EA', '2026-11-01', '2027-01-30', 'Per CDS C22 (notification 1/30). Materials must arrive by Nov 7.', '702df334-7171-5f97-b725-f5db8584f11b'),
- ('2daa6b50-a78a-5142-8385-066030b184f5', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', 'application', 'RD', null, null, 'Regular Decision date not yet captured — check the admissions site.', '702df334-7171-5f97-b725-f5db8584f11b');
+insert into deadlines (id, institution_id, cycle, kind, plan_key, label, due_date, notification_date, notes, source_id) values
+ ('620461ae-744c-5e39-a389-93d7cf70ae5e', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', 'application', 'EA', null, '2026-11-01', '2027-01-29', 'All required materials due by Nov 7.', '65f4d179-3890-533f-85a7-7e0ad6a3ce2e'),
+ ('2daa6b50-a78a-5142-8385-066030b184f5', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', 'application', 'RD', null, '2027-01-05', '2027-02-26', 'All required materials due by Jan 11.', '65f4d179-3890-533f-85a7-7e0ad6a3ce2e'),
+ ('b70dda1f-ddde-5cde-b72c-e60abdcf2c42', '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2026-27', 'deposit', null, 'Enrollment deposit', '2027-05-01', null, null, '65f4d179-3890-533f-85a7-7e0ad6a3ce2e');
 insert into english_policies (institution_id, policy, waiver_notes, source_id) values
  ('4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', 'required_nonnative', 'Required if you did not complete grades 10–12 in an approved English-speaking country and do not report SAT/ACT; strongly encouraged even when reporting SAT/ACT. Cannot be waived. No published first-year minimum; subscores considered.', '5dd703d6-bfbd-55d5-823a-2b26d43db100');
 insert into english_requirements (institution_id, status, source_id, test_key, notes)

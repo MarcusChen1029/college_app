@@ -2,36 +2,98 @@
   "slug": "nyu",
   "name": "New York University",
   "short_name": "NYU",
-  "state_region": "NY", "city": "New York",
-  "latitude": 40.729513, "longitude": -73.996461,
-  "setting": "urban", "control": "private_nonprofit",
-  "website": "https://www.nyu.edu", "admissions_url": "https://www.nyu.edu/admissions/undergraduate-admissions.html",
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.729513,
+  "longitude": -73.996461,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.nyu.edu",
+  "admissions_url": "https://www.nyu.edu/admissions/undergraduate-admissions.html",
   "ipeds_unit_id": 193900,
-  "undergrad_enrollment": 29471, "intl_undergrads": 7531, "student_faculty_ratio": 12, "academic_calendar": "semester",
+  "undergrad_enrollment": 29471,
+  "intl_undergrads": 7531,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
   "sources": {
-    "cds": {"kind": "cds", "title": "NYU Common Data Set 2025-2026 (published without section G)", "url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20%28no%20G%29.pdf", "cds_year": "2025-2026"}
+    "cds": {
+      "kind": "cds",
+      "title": "NYU Common Data Set 2025-2026 (final, incl. section G, July 2026)",
+      "url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).xlsx",
+      "cds_year": "2025-2026"
+    }
   },
   "stats": {
-    "cds_year": "2025-2026", "source": "cds",
-    "applicants": 114125, "admits": 10340, "enrolled": 5662,
-    "pct_submit_sat": 27, "pct_submit_act": 10,
-    "gpa_avg": null, "pct_reporting_gpa": 100,
-    "gpa_distribution": {"4.0": 17.2, "3.75-3.99": 54.7, "3.50-3.74": 21.4, "3.25-3.49": 5.2, "3.00-3.24": 1.0, "2.50-2.99": 0.4, "2.0-2.49": 0.1},
-    "notes": "ED I 11/1 → 12/15; ED II 1/1 → 2/15; no EA. Waitlist counts, ED applicant counts and average GPA not legible in the published PDF. For portfolio/audition programs artistic talent is Very Important."
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 114125,
+    "admits": 10340,
+    "enrolled": 5662,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 10,
+    "gpa_avg": 3.81,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 17.2,
+      "3.75-3.99": 54.7,
+      "3.50-3.74": 21.4,
+      "3.25-3.49": 5.2,
+      "3.00-3.24": 1.0,
+      "2.50-2.99": 0.4,
+      "2.0-2.49": 0.1
+    },
+    "notes": "ED I 11/1 → 12/15; ED II 1/1 → 2/15; no EA. NYU does not report waitlist or ED applicant counts. For portfolio/audition programs artistic talent is Very Important."
   },
   "scores": {
-    "SAT_TOTAL": [1480, 1520, 1550], "SAT_ERW": [730, 750, 770], "SAT_MATH": [750, 780, 790],
-    "ACT_COMPOSITE": [34, 35, 35]
+    "SAT_TOTAL": [
+      1480,
+      1520,
+      1550
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      750,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ]
   },
   "factors": {
-    "rigor": "VI", "class_rank": "NC", "gpa": "VI", "test_scores": "I", "essay": "VI", "recommendations": "VI",
-    "interview": "NC", "extracurriculars": "C", "talent_ability": "C", "character": "VI",
-    "first_generation": "C", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "NC",
-    "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "C"
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
   },
   "cost": {
-    "year": "2025-2026", "source": "cds",
-    "intl_need_aid": true, "intl_need_aid_awarded": 342, "intl_avg_award_usd": 36562,
-    "notes": "NYU's published CDS omits section G (costs); see financial aid site. H6: need-based and non-need-based aid available to nonresidents."
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 68574,
+    "room_board_usd": 25250,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 342,
+    "intl_avg_award_usd": 36562,
+    "notes": "CDS G1 (2026-27). Tuition & fees vary by school — e.g. Stern $70,464, Tisch $75,326 (NYU cost-of-attendance page). H6: need-based and non-need-based aid available to nonresidents."
   }
 }
