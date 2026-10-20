@@ -53,18 +53,18 @@ export default function Home() {
       <section className="relative overflow-hidden bg-white">
         <div aria-hidden className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-100" />
         <div aria-hidden className="absolute -left-32 top-64 h-80 w-80 rounded-full bg-blue-50" />
-        <GradCap className="drift absolute left-[5%] top-24 hidden w-28 md:block" style={{ "--r": "-8deg" } as React.CSSProperties} />
-        <Calendar className="drift absolute right-[6%] top-20 hidden w-24 md:block" style={{ "--r": "6deg", animationDelay: "-2s" } as React.CSSProperties} />
-        <Star className="drift absolute right-[20%] top-[26rem] hidden w-12 md:block" style={{ animationDelay: "-4s" } as React.CSSProperties} />
-        <Pencil className="drift absolute bottom-24 left-[8%] hidden w-36 md:block" style={{ "--r": "-18deg", animationDelay: "-1s" } as React.CSSProperties} />
-        <PaperPlane className="drift absolute bottom-20 right-[8%] hidden w-28 md:block" style={{ "--r": "8deg", animationDelay: "-3s" } as React.CSSProperties} />
+        <GradCap className="drift absolute left-[5%] top-24 hidden w-28 xl:block" style={{ "--r": "-8deg" } as React.CSSProperties} />
+        <Calendar className="drift absolute right-[6%] top-20 hidden w-24 xl:block" style={{ "--r": "6deg", animationDelay: "-2s" } as React.CSSProperties} />
+        <Star className="drift absolute right-[20%] top-[26rem] hidden w-12 xl:block" style={{ animationDelay: "-4s" } as React.CSSProperties} />
+        <Pencil className="drift absolute bottom-24 left-[8%] hidden w-36 xl:block" style={{ "--r": "-18deg", animationDelay: "-1s" } as React.CSSProperties} />
+        <PaperPlane className="drift absolute bottom-20 right-[8%] hidden w-28 xl:block" style={{ "--r": "8deg", animationDelay: "-3s" } as React.CSSProperties} />
 
         <div className="relative mx-auto max-w-4xl px-4 pb-28 pt-20 text-center md:pt-28">
           <h1 className="text-5xl font-extrabold leading-[1.05] sm:text-6xl md:text-7xl">
             Build your{" "}
-            <span className="relative inline-block px-3">
+            <span className="relative inline-block px-5">
               college list
-              <Scribble className="absolute -inset-x-6 -inset-y-3 h-[calc(100%+1.5rem)] w-[calc(100%+3rem)]" />
+              <Scribble className="absolute -inset-x-9 -inset-y-5 h-[calc(100%+2.5rem)] w-[calc(100%+4.5rem)]" />
             </span>{" "}
             without the chaos.
           </h1>
@@ -154,7 +154,7 @@ export default function Home() {
         <Star className="absolute bottom-10 right-[14%] hidden w-14 md:block" />
         <div className="relative mx-auto max-w-2xl px-4">
           <h2 className="text-4xl font-bold sm:text-5xl">
-            Your list, <span className="marker text-ink">sorted</span> by tonight.
+            Your list, <span className="inline-block -rotate-2 rounded-lg bg-sun px-3 text-ink">sorted</span> by tonight.
           </h2>
           <p className="mt-4 text-blue-100">It takes about a minute, and you don&apos;t need an account.</p>
           <Link href="/start" className="mt-8 inline-block rounded-full bg-sun px-8 py-3.5 font-semibold text-ink hover:bg-white">
