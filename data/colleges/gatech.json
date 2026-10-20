@@ -1,0 +1,44 @@
+{
+  "slug": "georgia-tech",
+  "name": "Georgia Institute of Technology",
+  "short_name": "Georgia Tech",
+  "state_region": "GA", "city": "Atlanta",
+  "latitude": 33.775618, "longitude": -84.396285,
+  "setting": "urban", "control": "public",
+  "website": "https://www.gatech.edu", "admissions_url": "https://admission.gatech.edu",
+  "ipeds_unit_id": 139755,
+  "undergrad_enrollment": 21028, "intl_undergrads": 1589, "student_faculty_ratio": 20, "academic_calendar": "semester",
+  "sources": {
+    "cds": {"kind": "cds", "title": "Georgia Tech Common Data Set 2025-2026 (Final R4)", "url": "https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf", "cds_year": "2025-2026"}
+  },
+  "stats": {
+    "cds_year": "2025-2026", "source": "cds",
+    "applicants": 66881, "admits": 8921, "enrolled": 4071,
+    "in_state_applicants": 12527, "in_state_admits": 3691,
+    "out_state_applicants": 44596, "out_state_admits": 4513,
+    "intl_applicants": 9758, "intl_admits": 716,
+    "waitlist_offered": 7651, "waitlist_accepted": 4875, "waitlist_admitted": 653,
+    "pct_submit_sat": null, "pct_submit_act": null,
+    "gpa_avg": 4.17, "pct_reporting_gpa": 95.31,
+    "gpa_distribution": {"4.0": 95.85, "3.75-3.99": 3.25, "3.50-3.74": 0.39, "3.25-3.49": 0.10, "3.00-3.24": 0.23, "2.50-2.99": 0.18},
+    "notes": "Average GPA 4.17 is on GT's recalculated (weighted) scale. In-state admit rate ~29% vs out-of-state ~10% vs international ~7%. Portfolio required for Music Technology; optional for Architecture, Industrial Design, Arts/Entertainment & Creative Technologies."
+  },
+  "scores": {
+    "SAT_TOTAL": [1370, 1460, 1530], "SAT_ERW": [680, 730, 760], "SAT_MATH": [700, 750, 790],
+    "ACT_COMPOSITE": [31, 33, 35], "ACT_MATH": [29, 33, 35], "ACT_ENGLISH": [31, 34, 35]
+  },
+  "factors": {
+    "rigor": "VI", "class_rank": "NC", "gpa": "VI", "test_scores": "C", "essay": "I", "recommendations": "C",
+    "interview": "NC", "extracurriculars": "I", "talent_ability": "C", "character": "VI",
+    "first_generation": "NC", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "VI",
+    "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "CDS C8A (Fall 2027): SAT or ACT required."},
+  "cost": {
+    "year": "2026-2027", "source": "cds",
+    "tuition_usd": 10618, "tuition_out_of_state_usd": 34604, "tuition_intl_usd": 35610, "required_fees_usd": 1516,
+    "room_board_usd": 14628,
+    "intl_need_aid": false,
+    "notes": "CDS G1 first-year column. H6: institutional scholarship/grant aid NOT available to nonresidents."
+  }
+}

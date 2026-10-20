@@ -1,0 +1,39 @@
+{
+  "slug": "harvard",
+  "name": "Harvard University",
+  "short_name": "Harvard",
+  "state_region": "MA", "city": "Cambridge",
+  "latitude": 42.374443, "longitude": -71.116943,
+  "setting": "urban", "control": "private_nonprofit",
+  "website": "https://www.harvard.edu", "admissions_url": "https://college.harvard.edu/admissions",
+  "ipeds_unit_id": 166027,
+  "undergrad_enrollment": 6738, "intl_undergrads": 1077, "student_faculty_ratio": 11, "academic_calendar": "semester",
+  "sources": {
+    "cds": {"kind": "cds", "title": "Harvard University Common Data Set 2025-2026", "url": "https://oira.harvard.edu/files/2026/07/CDS_2025-2026.pdf", "cds_year": "2025-2026"}
+  },
+  "stats": {
+    "cds_year": "2025-2026", "source": "cds",
+    "applicants": 47893, "admits": 2003, "enrolled": 1675,
+    "waitlist_offered": null, "waitlist_accepted": null, "waitlist_admitted": 75,
+    "pct_submit_sat": 79, "pct_submit_act": 27,
+    "gpa_avg": 4.22, "pct_reporting_gpa": 99.1,
+    "gpa_distribution": {"4.0": 74.70, "3.75-3.99": 20.38, "3.50-3.74": 3.49, "3.25-3.49": 0.98, "3.00-3.24": 0.18, "2.50-2.99": 0.18, "2.0-2.49": 0.09},
+    "notes": "Average GPA reported as 4.22 (likely weighted despite the CDS 4.0-scale instruction). SAT composite percentiles left blank in the CDS; only section scores reported. Waitlist offered/accepted not reported. Restrictive early action 11/1 → 12/16."
+  },
+  "scores": {
+    "SAT_TOTAL": [null, null, null], "SAT_ERW": [720, 750, 770], "SAT_MATH": [730, 770, 790],
+    "ACT_COMPOSITE": [33, 35, 35], "ACT_MATH": [31, 34, 35], "ACT_ENGLISH": [34, 35, 36]
+  },
+  "factors": {
+    "rigor": "C", "class_rank": "NC", "gpa": "C", "test_scores": "C", "essay": "C", "recommendations": "C",
+    "interview": "C", "extracurriculars": "C", "talent_ability": "C", "character": "C",
+    "first_generation": "C", "alumni_relation": "C", "geographic_residence": "C", "state_residency": "NC",
+    "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "CDS C8A (Fall 2027): SAT or ACT required."},
+  "cost": {
+    "year": "2025-2026", "source": "cds",
+    "intl_need_aid": true, "intl_need_aid_awarded": 805, "intl_avg_award_usd": 83013,
+    "notes": "CDS G1 cost fields left blank by Harvard; see financial aid site. H6: need-based aid available to nonresidents."
+  }
+}

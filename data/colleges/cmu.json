@@ -1,0 +1,40 @@
+{
+  "slug": "carnegie-mellon",
+  "name": "Carnegie Mellon University",
+  "short_name": "CMU",
+  "state_region": "PA", "city": "Pittsburgh",
+  "latitude": 40.443322, "longitude": -79.943583,
+  "setting": "urban", "control": "private_nonprofit",
+  "website": "https://www.cmu.edu", "admissions_url": "https://www.cmu.edu/admission",
+  "ipeds_unit_id": 211440,
+  "undergrad_enrollment": 7728, "intl_undergrads": 1716, "student_faculty_ratio": 6, "academic_calendar": "semester",
+  "sources": {
+    "cds": {"kind": "cds", "title": "Carnegie Mellon Common Data Set 2025-26", "url": "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds_2025_full_pdf.pdf", "cds_year": "2025-2026"}
+  },
+  "stats": {
+    "cds_year": "2025-2026", "source": "cds",
+    "applicants": 34867, "admits": 3859, "enrolled": 1804,
+    "ed_applicants": 2680, "ed_admits": 553,
+    "waitlist_offered": 7117, "waitlist_accepted": 4937, "waitlist_admitted": 36,
+    "pct_submit_sat": 65.5, "pct_submit_act": 18.1,
+    "gpa_avg": 3.89, "pct_reporting_gpa": 99.7,
+    "gpa_distribution": {"4.0": 43.9, "3.75-3.99": 41.7, "3.50-3.74": 10.9, "3.25-3.49": 2.2, "3.00-3.24": 1.0, "2.50-2.99": 0.3},
+    "notes": "Pittsburgh campus. ED closes Nov 1 (not available for Acting, Directing, Dramaturgy, Music Theater, School of Music); no EA."
+  },
+  "scores": {
+    "SAT_TOTAL": [1500, 1540, 1560], "SAT_ERW": [730, 750, 770], "SAT_MATH": [770, 790, 800],
+    "ACT_COMPOSITE": [34, 35, 36], "ACT_MATH": [33, 35, 36], "ACT_ENGLISH": [33, 35, 36]
+  },
+  "factors": {
+    "rigor": "VI", "class_rank": "VI", "gpa": "VI", "test_scores": "C", "essay": "I", "recommendations": "I",
+    "interview": "NC", "extracurriculars": "VI", "talent_ability": "I", "character": "VI",
+    "first_generation": "I", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "NC",
+    "religious_affiliation": "NC", "volunteer_work": "VI", "work_experience": "C", "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2025-2026", "source": "cds",
+    "tuition_usd": 67020, "required_fees_usd": 1756, "room_board_usd": 18894, "books_usd": 1000, "other_usd": 1400,
+    "intl_need_aid": null,
+    "notes": "CDS G1 first-year column. H6 checkboxes not legible in the published PDF; confirm intl aid policy on the financial aid site."
+  }
+}

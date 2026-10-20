@@ -1,0 +1,40 @@
+{
+  "slug": "uiuc",
+  "name": "University of Illinois Urbana-Champaign",
+  "short_name": "UIUC",
+  "state_region": "IL", "city": "Champaign",
+  "latitude": 40.102000, "longitude": -88.227200,
+  "setting": "urban", "control": "public",
+  "website": "https://illinois.edu", "admissions_url": "https://admissions.illinois.edu",
+  "ipeds_unit_id": 145637,
+  "undergrad_enrollment": 38572, "intl_undergrads": 5401, "student_faculty_ratio": 20, "academic_calendar": "semester",
+  "sources": {
+    "cds": {"kind": "cds", "title": "University of Illinois Common Data Set 2025-26 (xlsx)", "url": "https://uofi.box.com/shared/static/orx4vnmzkt2drmgoiksxpfs39pr42uor.xlsx", "cds_year": "2025-2026"}
+  },
+  "stats": {
+    "cds_year": "2025-2026", "source": "cds",
+    "applicants": 83045, "admits": 30384, "enrolled": 9207,
+    "waitlist_offered": 6826, "waitlist_accepted": 4317, "waitlist_admitted": 1,
+    "pct_submit_sat": 42.59, "pct_submit_act": 14.07,
+    "gpa_avg": null, "pct_reporting_gpa": null, "gpa_distribution": null,
+    "notes": "UIUC does not report GPA in C11/C12. Residency breakdown in the CDS contains spreadsheet errors (#REF!) and is not used. EA closes 11/1, notification 1/30; no ED. Application fee $50 domestic / $75 international."
+  },
+  "scores": {
+    "SAT_TOTAL": [1390, 1442, 1520], "SAT_ERW": [690, 720, 750], "SAT_MATH": [700, 760, 790],
+    "ACT_COMPOSITE": [31, 32.3, 34], "ACT_MATH": [29, 32, 35], "ACT_ENGLISH": [32, 34, 35]
+  },
+  "factors": {
+    "rigor": "VI", "class_rank": "NC", "gpa": "VI", "test_scores": "C", "essay": "I", "recommendations": "NC",
+    "interview": "NC", "extracurriculars": "VI", "talent_ability": "VI", "character": "VI",
+    "first_generation": "VI", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "C",
+    "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {"cycle": "2026-27", "policy": "optional", "notes": "CDS C8A (Fall 2027): not required, considered if submitted."},
+  "cost": {
+    "year": "2025-2026", "source": "cds",
+    "tuition_usd": 12992, "tuition_out_of_state_usd": 33344, "tuition_intl_usd": 34338, "required_fees_usd": 5054,
+    "room_board_usd": 15184,
+    "intl_need_aid": false, "intl_merit_aid": true,
+    "notes": "Base tuition; many majors (engineering, business, CS) carry differential tuition. H6: only non-need-based (merit) institutional aid for nonresidents."
+  }
+}

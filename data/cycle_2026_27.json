@@ -1,0 +1,1367 @@
+{
+  "_about": "Current-cycle (2026-27 = entering fall 2027) data from admissions / financial-aid websites, accessed 2026-10-20. Tiers and major-admission summaries are editorial (v0) and should be reviewed.",
+  "mit": {
+    "sources": {
+      "adm": {
+        "kind": "admissions_site",
+        "title": "MIT Admissions — Deadlines & requirements",
+        "url": "https://mitadmissions.org/apply/firstyear/deadlines-requirements/"
+      },
+      "eng": {
+        "kind": "admissions_site",
+        "title": "MIT Admissions — Tests & scores",
+        "url": "https://mitadmissions.org/apply/firstyear/tests-scores/"
+      }
+    },
+    "test_policy": {
+      "policy": "required",
+      "notes": "SAT or ACT required. Take tests before Nov 30 (EA) / Dec 31 (RA).",
+      "src": "adm"
+    },
+    "requirements": {
+      "platforms": [
+        "own"
+      ],
+      "teacher_recs": 2,
+      "counselor_rec": true,
+      "interview": "by_invitation",
+      "app_fee_usd": 75,
+      "fee_waiver": true,
+      "supplemental_essays": "Several short-answer essays in the MIT application",
+      "notes": "Recommend one math/science and one humanities/social science/language teacher. Interviews offered by Educational Counselors when available.",
+      "src": "adm"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "EA",
+        "due": "2026-11-01",
+        "note": "mid-December",
+        "src": "adm"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "label": "Regular Action",
+        "due": "2027-01-04",
+        "note": "mid-March",
+        "src": "adm"
+      },
+      {
+        "kind": "other",
+        "label": "English proficiency test (RA) taken by",
+        "due": "2027-01-31",
+        "src": "adm"
+      }
+    ],
+    "english_policy": {
+      "policy": "recommended",
+      "waiver_notes": "Strongly recommended if you have used English for fewer than five years or do not speak English at home or in school.",
+      "src": "eng"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "recommended_option",
+        "min": 90,
+        "rec": 100,
+        "notes": "Tests taken before 2026-01-21",
+        "src": "eng"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "recommended_option",
+        "min": 5,
+        "rec": 5.5,
+        "notes": "1–6 scale, tests taken on/after 2026-01-21",
+        "src": "eng"
+      },
+      {
+        "test": "IELTS",
+        "status": "recommended_option",
+        "min": 7,
+        "rec": 7.5,
+        "src": "eng"
+      },
+      {
+        "test": "PTE",
+        "status": "recommended_option",
+        "min": 65,
+        "rec": 70,
+        "src": "eng"
+      },
+      {
+        "test": "CAMBRIDGE",
+        "status": "recommended_option",
+        "min": 185,
+        "rec": 190,
+        "notes": "C1 Advanced or C2 Proficiency",
+        "src": "eng"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "recommended_option",
+        "min": 120,
+        "rec": 125,
+        "src": "eng"
+      }
+    ],
+    "aid": {
+      "intl_aid_policy": "need_blind_full_need",
+      "meets_full_need": true,
+      "merit_scholarships": false
+    },
+    "tiers": {
+      "general": "S",
+      "computer_science": "S",
+      "engineering": "S",
+      "business": "A",
+      "biology_life_sci": "S",
+      "pre_med": "A",
+      "economics": "S",
+      "math_physics": "S",
+      "humanities": "B",
+      "arts_design": "B"
+    },
+    "majors": [
+      {
+        "program": "All majors",
+        "admit_model": "undeclared_open",
+        "capped": false,
+        "internal_transfer": "open",
+        "notes": "Students are admitted to MIT, not a major, and declare at the end of first year."
+      }
+    ]
+  },
+  "stanford": {
+    "sources": {
+      "adm": {
+        "kind": "admissions_site",
+        "title": "Stanford — First-Year Applicants",
+        "url": "https://admission.stanford.edu/apply/first-year/"
+      },
+      "recs": {
+        "kind": "admissions_site",
+        "title": "Stanford — Transcript, School Report, and Recommendations",
+        "url": "https://admission.stanford.edu/apply/first-year/forms.html"
+      },
+      "intl": {
+        "kind": "admissions_site",
+        "title": "Stanford — International Applicants FAQ",
+        "url": "https://admission.stanford.edu/apply/international/index.html"
+      }
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "teacher_recs": 2,
+      "counselor_rec": true,
+      "app_fee_usd": 100,
+      "fee_waiver": true,
+      "portfolio": "Optional arts portfolio (earlier deadlines)",
+      "src": "recs"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "REA",
+        "label": "REA with optional arts portfolio",
+        "due": "2026-10-15",
+        "note": "by mid-December",
+        "src": "adm"
+      },
+      {
+        "kind": "application",
+        "plan": "REA",
+        "due": "2026-11-01",
+        "note": "by mid-December",
+        "src": "adm"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "label": "RD with optional arts portfolio",
+        "due": "2026-12-05",
+        "note": "by early April",
+        "src": "adm"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-05",
+        "note": "by early April",
+        "src": "adm"
+      },
+      {
+        "kind": "deposit",
+        "label": "Student reply date",
+        "due": "2027-05-01",
+        "src": "adm"
+      }
+    ],
+    "english_policy": {
+      "policy": "not_required",
+      "waiver_notes": "No English proficiency exam required; scores from any exam may be self-reported. Fluency in English is a prerequisite.",
+      "src": "intl"
+    },
+    "english": [],
+    "aid": {
+      "intl_aid_policy": "need_aware_full_need",
+      "meets_full_need": true,
+      "merit_scholarships": false
+    },
+    "tiers": {
+      "general": "S",
+      "computer_science": "S",
+      "engineering": "S",
+      "business": "B",
+      "biology_life_sci": "S",
+      "pre_med": "S",
+      "economics": "S",
+      "math_physics": "S",
+      "humanities": "S",
+      "arts_design": "A"
+    },
+    "majors": [
+      {
+        "program": "All majors",
+        "admit_model": "undeclared_open",
+        "capped": false,
+        "internal_transfer": "open",
+        "notes": "Students declare a major by the end of sophomore year."
+      }
+    ]
+  },
+  "harvard": {
+    "sources": {
+      "adm": {
+        "kind": "admissions_site",
+        "title": "Harvard College — Application Requirements",
+        "url": "https://college.harvard.edu/admissions/apply/application-requirements"
+      },
+      "dates": {
+        "kind": "admissions_site",
+        "title": "Harvard College — First-Year Applicants",
+        "url": "https://college.harvard.edu/admissions/apply/first-year-applicants"
+      },
+      "intl": {
+        "kind": "admissions_site",
+        "title": "Harvard College — International Applicants",
+        "url": "https://college.harvard.edu/admissions/apply/international-applicants"
+      },
+      "cost": {
+        "kind": "financial_aid_site",
+        "title": "Harvard College — How Aid Works (cost of attendance)",
+        "url": "https://college.harvard.edu/financial-aid/how-aid-works"
+      }
+    },
+    "test_policy": {
+      "policy": "required",
+      "notes": "SAT or ACT required; AP/IB/A-level etc. accepted only when SAT/ACT are not accessible.",
+      "src": "adm"
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "teacher_recs": 2,
+      "counselor_rec": true,
+      "fee_waiver": true,
+      "midyear_report": true,
+      "supplemental_essays": "5 required short answers, 150 words each",
+      "notes": "Optional supplementary materials (music, art, academic work) may be reviewed by faculty.",
+      "src": "adm"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "REA",
+        "due": "2026-11-01",
+        "note": "mid-December",
+        "src": "dates"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-01",
+        "src": "dates"
+      }
+    ],
+    "english_policy": {
+      "policy": "not_required",
+      "waiver_notes": "Not required for first-year applicants; scores may be submitted. English tests cannot satisfy the SAT/ACT requirement.",
+      "src": "intl"
+    },
+    "english": [],
+    "cost": {
+      "year": "2026-2027",
+      "tuition_usd": 62226,
+      "required_fees_usd": 6216,
+      "room_board_usd": 23192,
+      "books_usd": 1000,
+      "other_usd": 2500,
+      "notes": "Housing $14,250 + food $8,942. Transportation $0–5,000 extra.",
+      "src": "cost"
+    },
+    "aid": {
+      "intl_aid_policy": "need_blind_full_need",
+      "meets_full_need": true,
+      "merit_scholarships": false
+    },
+    "tiers": {
+      "general": "S",
+      "computer_science": "A",
+      "engineering": "B",
+      "business": "B",
+      "biology_life_sci": "S",
+      "pre_med": "S",
+      "economics": "S",
+      "math_physics": "S",
+      "humanities": "S",
+      "arts_design": "A"
+    },
+    "majors": [
+      {
+        "program": "All concentrations",
+        "admit_model": "undeclared_open",
+        "capped": false,
+        "internal_transfer": "open",
+        "notes": "Concentration declared in sophomore year."
+      }
+    ]
+  },
+  "carnegie-mellon": {
+    "sources": {
+      "dates": {
+        "kind": "admissions_site",
+        "title": "CMU — Application Plans & Deadlines",
+        "url": "https://www.cmu.edu/admission/admission/application-plans-deadlines"
+      },
+      "tests": {
+        "kind": "admissions_site",
+        "title": "CMU — Standardized Testing",
+        "url": "https://www.cmu.edu/admission/admission/standardized-testing"
+      },
+      "aid": {
+        "kind": "financial_aid_site",
+        "title": "CMU — International Student Funding",
+        "url": "https://www.cmu.edu/sfs/financial-aid/international/index.html"
+      }
+    },
+    "test_policy": {
+      "policy": "flexible",
+      "notes": "Varies by college: School of Computer Science requires SAT/ACT; Engineering, Dietrich, Heinz IS, MCS and Tepper are test flexible (SAT/ACT/IB/AP/A-level/French Bac); College of Fine Arts is test optional.",
+      "src": "tests"
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "portfolio": "College of Fine Arts requires portfolio or audition",
+      "src": "tests"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "ED",
+        "due": "2026-11-02",
+        "notify": "2026-12-15",
+        "notes": "Not available for School of Drama, BXA Design or School of Music. Enroll by Feb 1.",
+        "src": "dates"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "label": "Regular Decision — Drama & Music",
+        "due": "2026-12-01",
+        "note": "no later than April 1",
+        "src": "dates"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-04",
+        "note": "no later than April 1",
+        "src": "dates"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_nonnative",
+      "waiver_notes": "Required if English is not your native language. Scores ≤2 years old. TOEFL MyBest not used.",
+      "src": "tests"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "min": 102,
+        "subs": {
+          "each_section": 25
+        },
+        "notes": "Before 2026-01-21; subscores 25+ considered",
+        "src": "tests"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "min": 5,
+        "subs": {
+          "each_section": 5
+        },
+        "notes": "On/after 2026-01-21",
+        "src": "tests"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "min": 7.5,
+        "subs": {
+          "each_band": 7.5
+        },
+        "src": "tests"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "required_option",
+        "min": 135,
+        "subs": {
+          "literacy": 135,
+          "conversation": 135,
+          "comprehension": 135,
+          "production": 135
+        },
+        "src": "tests"
+      },
+      {
+        "test": "CAMBRIDGE",
+        "status": "required_option",
+        "min": 191,
+        "subs": {
+          "each_section": 191
+        },
+        "src": "tests"
+      }
+    ],
+    "aid": {
+      "intl_need_aid": true,
+      "intl_aid_policy": "need_aware_full_need",
+      "meets_full_need": true,
+      "merit_scholarships": true,
+      "notes": "Merit scholarships and need-based grants are available to students of all nationalities.",
+      "src": "aid"
+    },
+    "tiers": {
+      "general": "A",
+      "computer_science": "S",
+      "engineering": "S",
+      "business": "A",
+      "biology_life_sci": "B",
+      "pre_med": "B",
+      "economics": "A",
+      "math_physics": "A",
+      "humanities": "B",
+      "arts_design": "S"
+    },
+    "majors": [
+      {
+        "program": "Computer Science (School of Computer Science)",
+        "category": "computer_science",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "very_hard",
+        "notes": "Apply directly to SCS; very limited internal transfer."
+      },
+      {
+        "program": "Engineering (CIT)",
+        "category": "engineering",
+        "admit_model": "school_college",
+        "capped": false,
+        "internal_transfer": "moderate",
+        "notes": "Engineering major chosen after first year."
+      },
+      {
+        "program": "Business (Tepper)",
+        "category": "business",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "hard"
+      },
+      {
+        "program": "Drama / Music / Art / Design (CFA)",
+        "category": "arts_design",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "very_hard",
+        "notes": "Portfolio or audition required."
+      }
+    ]
+  },
+  "umich": {
+    "sources": {
+      "plans": {
+        "kind": "admissions_site",
+        "title": "U-M — First-year Application Plans",
+        "url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans"
+      },
+      "eng": {
+        "kind": "admissions_site",
+        "title": "U-M — Exams & Visas",
+        "url": "https://admissions.umich.edu/apply/international-applicants/exams-visas"
+      }
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "app_fee_usd": 75,
+      "fee_waiver": true,
+      "css_profile_required": true,
+      "fafsa_required": true,
+      "portfolio": "Required for Art & Design, Architecture; Ross also requires additional materials",
+      "src": "plans"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "ED",
+        "due": "2026-11-01",
+        "notify": "2026-12-24",
+        "notes": "New binding plan. Commitment Jan 6. CSS Profile + FAFSA by Nov 15.",
+        "src": "plans"
+      },
+      {
+        "kind": "financial_aid",
+        "plan": "ED",
+        "label": "ED financial aid deadline",
+        "due": "2026-11-15",
+        "src": "plans"
+      },
+      {
+        "kind": "application",
+        "plan": "EA",
+        "due": "2026-11-01",
+        "notify": "2027-01-29",
+        "notes": "Decision by Jan 29.",
+        "src": "plans"
+      },
+      {
+        "kind": "financial_aid",
+        "label": "Suggested aid filing date (EA/RD)",
+        "due": "2026-12-15",
+        "src": "plans"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-02-01",
+        "notify": "2027-04-02",
+        "notes": "Decision by April 2.",
+        "src": "plans"
+      },
+      {
+        "kind": "financial_aid",
+        "label": "Financial aid deadline (EA/RD)",
+        "due": "2027-03-01",
+        "src": "plans"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_nonnative",
+      "waiver_notes": "Exempt with SAT ERW ≥650 or ACT Reading & English ≥27 plus four recent years of study in listed English-speaking countries.",
+      "src": "eng"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "rec": 100,
+        "subs": {
+          "listening": 23,
+          "reading": 23,
+          "speaking": 21,
+          "writing": 21
+        },
+        "notes": "Published as a general score range, not a hard minimum",
+        "src": "eng"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "rec": 5,
+        "subs": {
+          "each_section": 5
+        },
+        "notes": "5–6 range (CEFR C1)",
+        "src": "eng"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "rec": 7,
+        "subs": {
+          "each_band": 6.5
+        },
+        "src": "eng"
+      },
+      {
+        "test": "PTE",
+        "status": "required_option",
+        "rec": 68,
+        "src": "eng"
+      },
+      {
+        "test": "CAMBRIDGE",
+        "status": "required_option",
+        "rec": 185,
+        "subs": {
+          "each_section": 180
+        },
+        "notes": "C1 Advanced / C2 Proficiency",
+        "src": "eng"
+      }
+    ],
+    "aid": {
+      "intl_need_aid": false,
+      "intl_aid_policy": "none",
+      "merit_scholarships": false,
+      "notes": "CDS H6: institutional scholarship/grant aid not available to nonresidents."
+    },
+    "tiers": {
+      "general": "A",
+      "computer_science": "A",
+      "engineering": "A",
+      "business": "S",
+      "biology_life_sci": "A",
+      "pre_med": "A",
+      "economics": "A",
+      "math_physics": "A",
+      "humanities": "A",
+      "arts_design": "B",
+      "nursing": "A"
+    },
+    "majors": [
+      {
+        "program": "Ross BBA",
+        "category": "business",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "very_hard",
+        "notes": "Apply directly to Ross as a first-year."
+      },
+      {
+        "program": "Engineering (incl. CS-Eng)",
+        "category": "engineering",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "hard"
+      },
+      {
+        "program": "LSA (incl. CS-LSA)",
+        "category": "computer_science",
+        "admit_model": "school_college",
+        "capped": false,
+        "internal_transfer": "moderate"
+      },
+      {
+        "program": "Nursing",
+        "category": "nursing",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "very_hard"
+      }
+    ]
+  },
+  "georgia-tech": {
+    "sources": {
+      "dates": {
+        "kind": "admissions_site",
+        "title": "Georgia Tech — First-Year Application Plans and Deadlines",
+        "url": "https://admission.gatech.edu/first-year/deadlines"
+      },
+      "intl": {
+        "kind": "admissions_site",
+        "title": "Georgia Tech — International First-Year Admission",
+        "url": "https://admission.gatech.edu/international/first-year"
+      },
+      "usg": {
+        "kind": "other",
+        "title": "USG English Proficiency Requirements",
+        "url": "https://www.usg.edu/international-education/esl-programs/english-proficiency-requirements/"
+      }
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "interview": "optional_evaluative",
+      "portfolio": "Required for Music Technology; optional for Architecture, Industrial Design, Arts/Creative Tech",
+      "notes": "International applicants encouraged to submit an unscripted interview (InitialView/Vericant).",
+      "src": "intl"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "EA",
+        "label": "Early Action 1",
+        "due": "2026-10-15",
+        "note": "Early December",
+        "notes": "Document deadline Oct 30. Check eligibility for EA1 vs EA2 on the admissions site.",
+        "src": "dates"
+      },
+      {
+        "kind": "application",
+        "plan": "EA",
+        "label": "Early Action 2",
+        "due": "2026-11-02",
+        "note": "Late January",
+        "notes": "Document deadline Nov 16.",
+        "src": "dates"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-06",
+        "note": "Mid-March",
+        "notes": "Document deadline Jan 22.",
+        "src": "dates"
+      },
+      {
+        "kind": "scholarship",
+        "label": "Merit scholarships (Stamps, Scheller) — apply via an EA plan",
+        "due": "2026-11-02",
+        "notes": "No separate scholarship application.",
+        "src": "dates"
+      },
+      {
+        "kind": "deposit",
+        "label": "Enrollment deposit",
+        "due": "2027-05-01",
+        "src": "dates"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_all_international",
+      "waiver_notes": "University System of Georgia requires all international applicants to demonstrate English proficiency via an approved method; waiver possible for completed English-medium instruction. Duolingo and interviews are considered in review but do not satisfy the USG requirement.",
+      "src": "intl"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "min": 69,
+        "rec": 79,
+        "notes": "Before 2026",
+        "src": "usg"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "min": 3.5,
+        "rec": 4.0,
+        "src": "usg"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "min": 6,
+        "rec": 6.5,
+        "src": "usg"
+      },
+      {
+        "test": "PTE",
+        "status": "required_option",
+        "min": 53,
+        "rec": 58,
+        "src": "usg"
+      },
+      {
+        "test": "CAMBRIDGE",
+        "status": "required_option",
+        "min": 169,
+        "rec": 177,
+        "src": "usg"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "accepted",
+        "notes": "Supplementary only — does not satisfy the USG requirement.",
+        "src": "intl"
+      }
+    ],
+    "aid": {
+      "intl_aid_policy": "merit_only",
+      "merit_scholarships": true,
+      "merit_separate_app": false
+    },
+    "tiers": {
+      "general": "A",
+      "computer_science": "A",
+      "engineering": "S",
+      "business": "B",
+      "biology_life_sci": "B",
+      "pre_med": "C",
+      "economics": "C",
+      "math_physics": "B",
+      "humanities": "C",
+      "arts_design": "B"
+    },
+    "majors": [
+      {
+        "program": "All majors",
+        "admit_model": "direct_major",
+        "capped": false,
+        "internal_transfer": "moderate",
+        "notes": "Applicants choose a major on the application; changing majors is generally possible."
+      }
+    ]
+  },
+  "uiuc": {
+    "sources": {
+      "apply": {
+        "kind": "admissions_site",
+        "title": "Illinois — How to Apply: First-Year",
+        "url": "https://www.admissions.illinois.edu/first-year-apply/"
+      },
+      "eng": {
+        "kind": "admissions_site",
+        "title": "Illinois — General Admission Policies (English competence)",
+        "url": "https://www.admissions.illinois.edu/general-admission-policies/"
+      },
+      "intl": {
+        "kind": "admissions_site",
+        "title": "Illinois — International Requirements",
+        "url": "https://www.admissions.illinois.edu/international-requirements/"
+      }
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "app_fee_usd": 75,
+      "fee_waiver": true,
+      "notes": "Self-report highest ACT composite / SAT total; official scores only if you enroll.",
+      "src": "apply"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "EA",
+        "due": "2026-11-01",
+        "notify": "2027-01-30",
+        "notes": "Per CDS C22 (notification 1/30). Materials must arrive by Nov 7.",
+        "src": "apply"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-05",
+        "notes": "Confirm RD date on the admissions site.",
+        "src": "apply"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_nonnative",
+      "waiver_notes": "Required if you did not complete grades 10–12 in an approved English-speaking country and do not report SAT/ACT; strongly encouraged even when reporting SAT/ACT. Cannot be waived. No published first-year minimum; subscores considered.",
+      "src": "eng"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "notes": "No published first-year minimum (transfer minimum: 100, subscores 20+). MyBest not accepted.",
+        "src": "eng"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "notes": "Transfer minimum 5.0 with subscores 4.5+.",
+        "src": "eng"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "notes": "Academic or Indicator. Transfer minimum 7.5 (subscores 6.5+).",
+        "src": "eng"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "required_option",
+        "notes": "Admitted class profile ranges ~130–145 by college. Transfer minimum 130 (subscores 125+).",
+        "src": "eng"
+      }
+    ],
+    "aid": {
+      "intl_aid_policy": "merit_only",
+      "merit_scholarships": true
+    },
+    "tiers": {
+      "general": "B",
+      "computer_science": "S",
+      "engineering": "S",
+      "business": "B",
+      "biology_life_sci": "B",
+      "pre_med": "B",
+      "economics": "B",
+      "math_physics": "A",
+      "humanities": "B",
+      "arts_design": "B"
+    },
+    "majors": [
+      {
+        "program": "Computer Science (Grainger)",
+        "category": "computer_science",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "very_hard",
+        "notes": "Also CS + X programs in other colleges."
+      },
+      {
+        "program": "Engineering (Grainger)",
+        "category": "engineering",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "hard"
+      },
+      {
+        "program": "Gies Business",
+        "category": "business",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "hard"
+      }
+    ]
+  },
+  "nyu": {
+    "sources": {
+      "apply": {
+        "kind": "admissions_site",
+        "title": "NYU — First-Year Applicants",
+        "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html"
+      },
+      "tests": {
+        "kind": "admissions_site",
+        "title": "NYU — Standardized Tests",
+        "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html"
+      },
+      "eng": {
+        "kind": "admissions_site",
+        "title": "NYU — English Language Testing",
+        "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests/english-language-testing.html"
+      },
+      "cost": {
+        "kind": "financial_aid_site",
+        "title": "NYU — Cost of Attendance 2026-27",
+        "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html"
+      }
+    },
+    "test_policy": {
+      "policy": "optional",
+      "notes": "Test-optional through the 2027-28 cycle; flexible policy (submit one form of testing). SAT/ACT superscored.",
+      "src": "tests"
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "app_fee_usd": 100,
+      "src": "apply"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "ED",
+        "label": "Early Decision I",
+        "due": "2026-11-01",
+        "notify": "2026-12-15",
+        "src": "apply"
+      },
+      {
+        "kind": "application",
+        "plan": "ED2",
+        "label": "Early Decision II",
+        "due": "2027-01-01",
+        "notify": "2027-02-15",
+        "src": "apply"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-05",
+        "notify": "2027-04-01",
+        "src": "apply"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_nonnative",
+      "src": "eng"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "min": 100,
+        "notes": "Taken on or before 2026-01-20",
+        "src": "eng"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "min": 5,
+        "subs": {
+          "each_section": 5
+        },
+        "src": "eng"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "required_option",
+        "min": 135,
+        "src": "eng"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "min": 7.5,
+        "src": "eng"
+      },
+      {
+        "test": "PTE",
+        "status": "required_option",
+        "min": 70,
+        "src": "eng"
+      }
+    ],
+    "cost": {
+      "year": "2026-2027",
+      "tuition_usd": 70464,
+      "room_board_usd": 26438,
+      "books_usd": 1492,
+      "other_usd": 4492,
+      "total_coa_usd": 102886,
+      "notes": "Stern School of Business figures (tuition & fees $70,464); varies by school — Tisch tuition & fees $75,326.",
+      "src": "cost"
+    },
+    "aid": {
+      "intl_aid_policy": "need_aware_limited",
+      "meets_full_need": true,
+      "merit_scholarships": true,
+      "notes": "NYU Promise: 100% of demonstrated need met for first-year students admitted to the New York campus."
+    },
+    "tiers": {
+      "general": "A",
+      "computer_science": "B",
+      "engineering": "C",
+      "business": "A",
+      "biology_life_sci": "B",
+      "pre_med": "B",
+      "economics": "A",
+      "math_physics": "A",
+      "humanities": "A",
+      "arts_design": "S",
+      "nursing": "A"
+    },
+    "majors": [
+      {
+        "program": "Stern School of Business",
+        "category": "business",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "very_hard"
+      },
+      {
+        "program": "Tisch School of the Arts",
+        "category": "arts_design",
+        "admit_model": "school_college",
+        "capped": true,
+        "internal_transfer": "very_hard",
+        "notes": "Portfolio/audition required."
+      },
+      {
+        "program": "Tandon School of Engineering",
+        "category": "engineering",
+        "admit_model": "school_college",
+        "capped": false,
+        "internal_transfer": "moderate"
+      },
+      {
+        "program": "College of Arts & Science",
+        "admit_model": "school_college",
+        "capped": false,
+        "internal_transfer": "moderate"
+      }
+    ]
+  },
+  "purdue": {
+    "sources": {
+      "dates": {
+        "kind": "admissions_site",
+        "title": "Purdue — First-Year Deadlines",
+        "url": "https://admissions.purdue.edu/deadlines/first-year-college-student/"
+      },
+      "eng": {
+        "kind": "admissions_site",
+        "title": "Purdue — English Proficiency",
+        "url": "https://admissions.purdue.edu/become-student/english-proficiency/"
+      },
+      "aid": {
+        "kind": "admissions_site",
+        "title": "Purdue — First-year Scholarships",
+        "url": "https://admissions.purdue.edu/cost-financial-aid/scholarships/"
+      }
+    },
+    "requirements": {
+      "platforms": [
+        "common_app"
+      ],
+      "app_fee_usd": 60,
+      "src": "dates"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "EA",
+        "due": "2026-11-01",
+        "notify": "2027-01-15",
+        "notes": "Also the merit scholarship / Honors College deadline and priority deadline for Engineering, Computer Science and Nursing.",
+        "src": "dates"
+      },
+      {
+        "kind": "application",
+        "plan": "RD",
+        "due": "2027-01-15",
+        "notify": "2027-03-31",
+        "notes": "Decision by March 31.",
+        "src": "dates"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_nonnative",
+      "waiver_notes": "Students admitted without a formal English test may be placed into an English exam on enrollment. ACT English 26+ also accepted.",
+      "src": "eng"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "min": 88,
+        "subs": {
+          "each_section": 20
+        },
+        "notes": "Before 2026-01-21",
+        "src": "eng"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "min": 4.5,
+        "subs": {
+          "each_section": 4.0
+        },
+        "src": "eng"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "rec": 6.5,
+        "subs": {
+          "each_band": 6.0
+        },
+        "notes": "\"Generally\" 6.5 — typical, not a hard minimum",
+        "src": "eng"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "required_option",
+        "rec": 115,
+        "subs": {
+          "each_subscore": 110
+        },
+        "notes": "\"Generally\" 115 — typical, not a hard minimum",
+        "src": "eng"
+      }
+    ],
+    "aid": {
+      "intl_need_aid": false,
+      "intl_aid_policy": "none",
+      "merit_scholarships": false,
+      "notes": "In general, international undergraduate students are not eligible for financial aid, including scholarships.",
+      "src": "aid"
+    },
+    "tiers": {
+      "general": "B",
+      "computer_science": "A",
+      "engineering": "A",
+      "business": "B",
+      "biology_life_sci": "C",
+      "pre_med": "C",
+      "economics": "C",
+      "math_physics": "B",
+      "humanities": "C",
+      "arts_design": "C",
+      "nursing": "B"
+    },
+    "majors": [
+      {
+        "program": "Computer Science",
+        "category": "computer_science",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "very_hard"
+      },
+      {
+        "program": "First-Year Engineering",
+        "category": "engineering",
+        "admit_model": "pre_major_competitive",
+        "capped": true,
+        "internal_transfer": "moderate",
+        "notes": "Students enter First-Year Engineering, then transfer to a discipline; some disciplines are competitive."
+      },
+      {
+        "program": "Nursing",
+        "category": "nursing",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "very_hard"
+      }
+    ]
+  },
+  "uc-berkeley": {
+    "sources": {
+      "uc_dates": {
+        "kind": "admissions_site",
+        "title": "UC Admissions — First-year Dates & Deadlines",
+        "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html"
+      },
+      "uc_fee": {
+        "kind": "admissions_site",
+        "title": "UC Admissions — Apply now (fees)",
+        "url": "https://admission.universityofcalifornia.edu/apply-now.html"
+      },
+      "uc_eng": {
+        "kind": "admissions_site",
+        "title": "UC Admissions — English language proficiency",
+        "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html"
+      },
+      "cost": {
+        "kind": "financial_aid_site",
+        "title": "Berkeley Financial Aid — Student Budgets 2026-27",
+        "url": "https://financialaid.berkeley.edu/how-aid-works/student-budgets-cost-of-attendance/"
+      }
+    },
+    "test_policy": {
+      "policy": "blind",
+      "notes": "UC does not use SAT/ACT in admission decisions."
+    },
+    "requirements": {
+      "platforms": [
+        "uc_app"
+      ],
+      "teacher_recs": 0,
+      "counselor_rec": false,
+      "app_fee_usd": 80,
+      "fee_waiver": true,
+      "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8)",
+      "notes": "Fee is $95 for international applicants.",
+      "src": "uc_fee"
+    },
+    "deadlines": [
+      {
+        "kind": "application",
+        "plan": "RD",
+        "label": "UC filing period closes",
+        "due": "2026-11-30",
+        "notes": "Filing period Oct 1 – Nov 30. No early plans.",
+        "src": "uc_dates"
+      },
+      {
+        "kind": "deposit",
+        "label": "Statement of Intent to Register (SIR)",
+        "due": "2027-05-01",
+        "src": "uc_dates"
+      }
+    ],
+    "english_policy": {
+      "policy": "required_nonnative",
+      "waiver_notes": "Required if all secondary school was in a country where English is not the language of instruction. IB English A (SL 6–7 / HL 5–7) also satisfies it.",
+      "src": "uc_eng"
+    },
+    "english": [
+      {
+        "test": "TOEFL_IBT",
+        "status": "required_option",
+        "min": 80,
+        "notes": "Before January 2026",
+        "src": "uc_eng"
+      },
+      {
+        "test": "TOEFL_IBT_2026",
+        "status": "required_option",
+        "min": 4.5,
+        "src": "uc_eng"
+      },
+      {
+        "test": "IELTS",
+        "status": "required_option",
+        "min": 6.5,
+        "src": "uc_eng"
+      },
+      {
+        "test": "DUOLINGO",
+        "status": "required_option",
+        "min": 115,
+        "src": "uc_eng"
+      }
+    ],
+    "cost": {
+      "year": "2026-2027",
+      "tuition_usd": 18214,
+      "room_board_usd": 16640,
+      "total_coa_usd": 54674,
+      "notes": "California-resident tuition & fees for the newest cohort living in a residence hall (first table on the budget page; UC tuition varies by entering cohort). Housing figure covers housing; health insurance $5,066 extra. Nonresident supplemental tuition not captured.",
+      "src": "cost"
+    },
+    "aid": {
+      "intl_aid_policy": null,
+      "intl_need_aid": null,
+      "merit_scholarships": null,
+      "notes": "International aid policy not yet verified."
+    },
+    "tiers": {
+      "general": "A",
+      "computer_science": "S",
+      "engineering": "S",
+      "business": "A",
+      "biology_life_sci": "A",
+      "pre_med": "A",
+      "economics": "A",
+      "math_physics": "S",
+      "humanities": "A",
+      "arts_design": "B"
+    },
+    "majors": [
+      {
+        "program": "EECS (College of Engineering)",
+        "category": "computer_science",
+        "admit_model": "direct_major",
+        "capped": true,
+        "internal_transfer": "very_hard"
+      },
+      {
+        "program": "Computer Science (L&S)",
+        "category": "computer_science",
+        "admit_model": "pre_major_competitive",
+        "capped": false,
+        "internal_transfer": "hard",
+        "notes": "Declared after completing prerequisite courses with a minimum GPA."
+      },
+      {
+        "program": "Haas Business (direct-admit tracks)",
+        "category": "business",
+        "admit_model": "pre_major_competitive",
+        "capped": true,
+        "internal_transfer": "very_hard"
+      }
+    ]
+  }
+}
