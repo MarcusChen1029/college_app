@@ -2,38 +2,116 @@
   "slug": "stanford",
   "name": "Stanford University",
   "short_name": "Stanford",
-  "state_region": "CA", "city": "Stanford",
-  "latitude": 37.427475, "longitude": -122.169719,
-  "setting": "suburban", "control": "private_nonprofit",
-  "website": "https://www.stanford.edu", "admissions_url": "https://admission.stanford.edu",
+  "state_region": "CA",
+  "city": "Stanford",
+  "latitude": 37.427475,
+  "longitude": -122.169719,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.stanford.edu",
+  "admissions_url": "https://admission.stanford.edu",
   "ipeds_unit_id": 243744,
-  "undergrad_enrollment": 7346, "intl_undergrads": 965, "student_faculty_ratio": 10, "academic_calendar": "quarter",
+  "undergrad_enrollment": 7346,
+  "intl_undergrads": 965,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "quarter",
   "sources": {
-    "cds": {"kind": "cds", "title": "Stanford Common Data Set 2025-2026", "url": "https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view", "cds_year": "2025-2026"}
+    "cds": {
+      "kind": "cds",
+      "title": "Stanford Common Data Set 2025-2026",
+      "url": "https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view",
+      "cds_year": "2025-2026"
+    }
   },
   "stats": {
-    "cds_year": "2025-2026", "source": "cds",
-    "applicants": 60646, "admits": 2302, "enrolled": 1839,
-    "waitlist_offered": 669, "waitlist_accepted": 573, "waitlist_admitted": 57,
-    "pct_submit_sat": 55.57, "pct_submit_act": 20.94,
-    "gpa_avg": 3.94, "pct_reporting_gpa": 69.6,
-    "gpa_distribution": {"4.0": 72.97, "3.75-3.99": 16.17, "3.50-3.74": 7.89, "3.25-3.49": 2.89, "3.00-3.24": 0.08},
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 60646,
+    "admits": 2302,
+    "enrolled": 1839,
+    "waitlist_offered": 669,
+    "waitlist_accepted": 573,
+    "waitlist_admitted": 57,
+    "pct_submit_sat": 55.57,
+    "pct_submit_act": 20.94,
+    "gpa_avg": 3.94,
+    "pct_reporting_gpa": 69.6,
+    "gpa_distribution": {
+      "4.0": 72.97,
+      "3.75-3.99": 16.17,
+      "3.50-3.74": 7.89,
+      "3.25-3.49": 2.89,
+      "3.00-3.24": 0.08
+    },
     "notes": "Restrictive early action (no ED). CDS C22 lists EA closing 11/1, notification 12/15."
   },
   "scores": {
-    "SAT_TOTAL": [1520, 1550, 1570], "SAT_ERW": [750, 760, 780], "SAT_MATH": [770, 790, 800],
-    "ACT_COMPOSITE": [34, 35, 36], "ACT_MATH": [33, 35, 36], "ACT_ENGLISH": [35, 35, 36]
+    "SAT_TOTAL": [
+      1520,
+      1550,
+      1570
+    ],
+    "SAT_ERW": [
+      750,
+      760,
+      780
+    ],
+    "SAT_MATH": [
+      770,
+      790,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      35,
+      36
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ]
   },
   "factors": {
-    "rigor": "VI", "class_rank": "VI", "gpa": "VI", "test_scores": "VI", "essay": "VI", "recommendations": "VI",
-    "interview": "C", "extracurriculars": "VI", "talent_ability": "VI", "character": "VI",
-    "first_generation": "C", "alumni_relation": "C", "geographic_residence": "C", "state_residency": "NC",
-    "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
   },
   "cost": {
-    "year": "2026-2027", "source": "cds",
-    "tuition_usd": 67731, "required_fees_usd": 843, "room_board_usd": 22944, "books_usd": 855,
-    "intl_need_aid": true, "intl_need_aid_awarded": 260, "intl_avg_award_usd": 85424,
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 67731,
+    "required_fees_usd": 843,
+    "room_board_usd": 22944,
+    "books_usd": 855,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 260,
+    "intl_avg_award_usd": 85424,
     "notes": "CDS H6: need-based and non-need-based institutional aid available to nonresidents."
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "required",
+    "notes": "CDS C8A: SAT or ACT required for admission."
   }
 }

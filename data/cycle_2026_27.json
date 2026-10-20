@@ -624,8 +624,7 @@
     "aid": {
       "intl_need_aid": false,
       "intl_aid_policy": "none",
-      "merit_scholarships": false,
-      "notes": "CDS H6: institutional scholarship/grant aid not available to nonresidents."
+      "merit_scholarships": false
     },
     "tiers": {
       "general": "A",
@@ -790,7 +789,7 @@
       }
     ],
     "aid": {
-      "intl_aid_policy": "merit_only",
+      "intl_aid_policy": "none",
       "merit_scholarships": true,
       "merit_separate_app": false
     },
@@ -855,8 +854,7 @@
       {
         "kind": "application",
         "plan": "RD",
-        "due": "2027-01-05",
-        "notes": "Confirm RD date on the admissions site.",
+        "notes": "Regular Decision date not yet captured — check the admissions site.",
         "src": "apply"
       }
     ],

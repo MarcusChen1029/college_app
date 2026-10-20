@@ -2,43 +2,124 @@
   "slug": "purdue",
   "name": "Purdue University–West Lafayette",
   "short_name": "Purdue",
-  "state_region": "IN", "city": "West Lafayette",
-  "latitude": 40.423705, "longitude": -86.921195,
-  "setting": "suburban", "control": "public",
-  "website": "https://www.purdue.edu", "admissions_url": "https://admissions.purdue.edu",
+  "state_region": "IN",
+  "city": "West Lafayette",
+  "latitude": 40.423705,
+  "longitude": -86.921195,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.purdue.edu",
+  "admissions_url": "https://admissions.purdue.edu",
   "ipeds_unit_id": 243780,
-  "undergrad_enrollment": 43633, "intl_undergrads": 4050, "student_faculty_ratio": 14, "academic_calendar": "semester",
+  "undergrad_enrollment": 43633,
+  "intl_undergrads": 4050,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
   "sources": {
-    "cds": {"kind": "cds", "title": "Purdue University Common Data Set 2025-2026 (xlsx)", "url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx", "cds_year": "2025-2026"}
+    "cds": {
+      "kind": "cds",
+      "title": "Purdue University Common Data Set 2025-2026 (xlsx)",
+      "url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
+      "cds_year": "2025-2026"
+    }
   },
   "stats": {
-    "cds_year": "2025-2026", "source": "cds",
-    "applicants": 87220, "admits": 37881, "enrolled": 9656,
-    "in_state_applicants": 12040, "in_state_admits": 8559,
-    "out_state_applicants": 58853, "out_state_admits": 25650,
-    "intl_applicants": 16327, "intl_admits": 3672,
-    "waitlist_offered": 8981, "waitlist_accepted": 4047, "waitlist_admitted": 3916,
-    "pct_submit_sat": 84, "pct_submit_act": 23,
-    "gpa_avg": 3.81, "pct_reporting_gpa": 92.8,
-    "gpa_distribution": {"4.0": 43, "3.75-3.99": 28, "3.50-3.74": 16, "3.25-3.49": 8, "3.00-3.24": 3, "2.50-2.99": 2, "2.0-2.49": 0.19, "1.0-1.99": 0.03},
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 87220,
+    "admits": 37881,
+    "enrolled": 9656,
+    "in_state_applicants": 12040,
+    "in_state_admits": 8559,
+    "out_state_applicants": 58853,
+    "out_state_admits": 25650,
+    "intl_applicants": 16327,
+    "intl_admits": 3672,
+    "waitlist_offered": 8981,
+    "waitlist_accepted": 4047,
+    "waitlist_admitted": 3916,
+    "pct_submit_sat": 84,
+    "pct_submit_act": 23,
+    "gpa_avg": 3.81,
+    "pct_reporting_gpa": 92.8,
+    "gpa_distribution": {
+      "4.0": 43,
+      "3.75-3.99": 28,
+      "3.50-3.74": 16,
+      "3.25-3.49": 8,
+      "3.00-3.24": 3,
+      "2.50-2.99": 2,
+      "2.0-2.49": 0.19,
+      "1.0-1.99": 0.03
+    },
     "notes": "Early action closes 11/1 with decisions by mid-January; no ED. Admission is to a specific college/major; many engineering, CS and nursing seats are capacity-limited."
   },
   "scores": {
-    "SAT_TOTAL": [1220, 1360, 1470], "SAT_ERW": [610, 670, 730], "SAT_MATH": [600, 680, 760],
-    "ACT_COMPOSITE": [28, 32, 34], "ACT_MATH": [27, 31, 34], "ACT_ENGLISH": [27, 32, 35]
+    "SAT_TOTAL": [
+      1220,
+      1360,
+      1470
+    ],
+    "SAT_ERW": [
+      610,
+      670,
+      730
+    ],
+    "SAT_MATH": [
+      600,
+      680,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_ENGLISH": [
+      27,
+      32,
+      35
+    ]
   },
   "factors": {
-    "rigor": "VI", "class_rank": "C", "gpa": "VI", "test_scores": "I", "essay": "VI", "recommendations": "I",
-    "interview": "NC", "extracurriculars": "I", "talent_ability": "C", "character": "I",
-    "first_generation": "I", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "C",
-    "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "C"
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
   },
-  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "CDS C8A (Fall 2027): SAT or ACT required."},
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "required",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT required."
+  },
   "cost": {
-    "year": "2026-2027", "source": "cds",
-    "tuition_usd": 9718, "tuition_out_of_state_usd": 28520, "tuition_intl_usd": 31830, "required_fees_usd": 274,
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9718,
+    "tuition_out_of_state_usd": 28520,
+    "tuition_intl_usd": 31830,
+    "required_fees_usd": 274,
     "room_board_usd": 16734,
     "intl_need_aid": null,
-    "notes": "CDS G1 West Lafayette block. H6 checkboxes not captured in the spreadsheet export; confirm intl aid policy on the financial aid site."
+    "notes": "CDS G1 West Lafayette block (H6 checkboxes not captured in the spreadsheet; intl aid policy from the admissions site)."
   }
 }
