@@ -167,12 +167,12 @@ Done:
 - Supabase project, schema and RLS (security advisor clean). RLS on the student tables tested: users see and edit only their own rows; anonymous visitors see none.
 - 10 colleges seeded with sources.
 - Next.js app: list / detail / compare / my list / account, with unit tests and browser tests run against a local API stub.
-- Data gaps filled in the repo: NYU average GPA and 2026-27 costs, Berkeley enrollment / nonresident tuition / international aid, UIUC RD date. **Not yet applied to the live database** — run `supabase/patches/2026-10-20_fill_data_gaps.sql` (the Supabase tool needs the owner to approve UPDATE statements).
+- Data gaps filled in the repo: NYU average GPA and 2026-27 costs, Berkeley enrollment / nonresident tuition / international aid, UIUC RD date. Applied to the live database via `supabase/patches/2026-10-20_fill_data_gaps.sql` (run in the SQL editor; the Supabase connector can't confirm UPDATEs from cloud sessions).
 
 Remaining data gaps: Berkeley CDS sections C7/C9/C11 (Google Sheet not machine-readable). NYU doesn't publish waitlist or ED counts.
 
 Next:
-1. Apply the data patch; review the editorial tiers and major-admission summaries.
+1. Review the editorial tiers and major-admission summaries.
 2. Supabase Auth settings: Site URL and redirect URLs, plus custom SMTP before launch.
 3. Deploy `web/` to Vercel (env vars from `web/.env.example`).
 4. Deadline reminder emails (Supabase scheduled Edge Function).
