@@ -185,3 +185,7 @@ export type EnglishSummary = {
 
 // Estimated SAT total percentiles, summed from the section (ERW + Math) percentiles.
 export type SatEstimate = { p25: number; p50: number; p75: number };
+
+// Score-reporting code for one college and test (SAT/ACT/TOEFL use numeric codes; most others pick the school by name).
+export type ScoreCodeTest = "sat" | "act" | "toefl" | "ielts" | "duolingo" | "pte";
+export type ScoreCode = { institution_id: string; test_key: ScoreCodeTest; code: string | null; notes: string | null; source_url: string | null };

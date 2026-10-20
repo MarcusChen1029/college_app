@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useSyncExternalStore } from "react";
+import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
-import { CHECKLIST, registerColleges, STATUSES, useStudent, type Status } from "@/lib/student-store";
-import type { CollegeSummary, Deadline, Lookups } from "@/lib/types";
+import { progress } from "@/lib/checklist";
+import { registerColleges, shownStatus, STATUS_OPTIONS, useStudent, type Status } from "@/lib/student-store";
+import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { FitBadge, Pill, TierBadge } from "./badges";
+import { ChecklistPanel, SELECT } from "./ChecklistPanel";
+import { SchoolCodes } from "./SchoolCodes";
 
 const noop = () => () => {};
 
@@ -24,12 +27,34 @@ const STATUS_LABEL: Record<Status, string> = {
   enrolled: "Enrolled",
 };
 
-export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummary[]; deadlines: Deadline[]; plans: Lookups["plans"] }) {
+// Old entries can hold a status with no current equivalent (e.g. rejected); keep it selectable for that row.
+const statusOptions = (current: Status): readonly Status[] =>
+  (STATUS_OPTIONS as readonly Status[]).includes(shownStatus(current)) ? STATUS_OPTIONS : [...STATUS_OPTIONS, current];
+
+export function MyList({
+  colleges,
+  deadlines,
+  plans,
+  codes,
+}: {
+  colleges: CollegeSummary[];
+  deadlines: Deadline[];
+  plans: Lookups["plans"];
+  codes: ScoreCode[];
+}) {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const toggle = (slug: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (!next.delete(slug)) next.add(slug);
+      return next;
+    });
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   if (!mounted || !student.ready) return null;
 
+  const listed = student.list.flatMap((e) => colleges.filter((c) => c.slug === e.slug));
   const banner = (
     <div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
       {student.auth ? (
@@ -44,6 +69,11 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
             Sign in
           </Link>{" "}
           to keep your list on every device.
+        </span>
+      )}
+      {listed.length > 0 && (
+        <span className="ml-auto">
+          <SchoolCodes colleges={listed} codes={codes} />
         </span>
       )}
       {student.error && (
@@ -98,7 +128,7 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
     {banner}
     <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
       <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
-        <table className="w-full min-w-[640px] text-sm">
+        <table className="w-full min-w-[560px] text-sm">
           <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500 dark:bg-zinc-900">
             <tr>
               <th className="p-2">College</th>
@@ -106,17 +136,22 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
               <th className="p-2">Plan</th>
               <th className="p-2">Status</th>
               <th className="p-2">Checklist</th>
-              <th className="p-2">Notes</th>
-              <th className="p-2" />
+              <th className="w-8 p-2" />
             </tr>
           </thead>
           <tbody>
             {entries.map(({ entry, college }) => {
               const fit = fits.get(college.slug);
-              const done = CHECKLIST.filter(([k]) => entry.checklist[k]).length;
+              const { done, total, missing } = progress(entry.checklist);
+              const open = expanded.has(entry.slug);
               return (
                 <Fragment key={entry.slug}>
-                <tr className="border-t border-zinc-100 align-top dark:border-zinc-800">
+                <tr
+                  className="cursor-pointer border-t border-zinc-100 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900/60"
+                  onClick={(e) => {
+                    if (!(e.target as HTMLElement).closest("a, select, input, button")) toggle(entry.slug);
+                  }}
+                >
                   <td className="p-2">
                     <div className="flex items-center gap-2">
                       <TierBadge tier={college.general_tier} size="sm" />
@@ -128,7 +163,7 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
                   <td className="p-2">{fit ? <FitBadge fit={fit.fit} reason={fit.reason} /> : <span className="text-xs text-zinc-400">—</span>}</td>
                   <td className="p-2">
                     <select
-                      className="rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                      className={SELECT}
                       value={entry.plan ?? ""}
                       onChange={(e) => student.update(entry.slug, { plan: e.target.value || null })}
                       aria-label={`Plan for ${college.name}`}
@@ -144,53 +179,51 @@ export function MyList({ colleges, deadlines, plans }: { colleges: CollegeSummar
                   </td>
                   <td className="p-2">
                     <select
-                      className="rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                      value={entry.status}
+                      className={SELECT}
+                      value={shownStatus(entry.status)}
                       onChange={(e) => student.update(entry.slug, { status: e.target.value as Status })}
                       aria-label={`Status for ${college.name}`}
                     >
-                      {STATUSES.map((s) => (
+                      {statusOptions(entry.status).map((s) => (
                         <option key={s} value={s}>
                           {STATUS_LABEL[s]}
                         </option>
                       ))}
                     </select>
                   </td>
-                  <td className="p-2 text-xs tabular-nums text-zinc-500">
-                    {done}/{CHECKLIST.length}
-                  </td>
                   <td className="p-2">
-                    <input
-                      key={student.auth?.userId ?? "local"}
-                      className="w-full min-w-40 rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                      defaultValue={entry.notes}
-                      placeholder="Essay ideas, recommenders…"
-                      onBlur={(e) => student.update(entry.slug, { notes: e.target.value })}
-                    />
+                    <div className="flex items-center gap-2 whitespace-nowrap text-xs">
+                      <span className="tabular-nums text-zinc-600 dark:text-zinc-300">
+                        {done}/{total}
+                      </span>
+                      {missing === 0 ? <Pill tone="green">all done</Pill> : <Pill>{missing} missing</Pill>}
+                    </div>
                   </td>
                   <td className="p-2 text-right">
-                    <button className="text-xs text-zinc-500 hover:text-rose-600" onClick={() => student.remove(entry.slug)}>
-                      Remove
+                    <button
+                      className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+                      onClick={() => toggle(entry.slug)}
+                      aria-expanded={open}
+                      aria-label={`${open ? "Hide" : "Show"} checklist for ${college.name}`}
+                    >
+                      <span className={`inline-block transition-transform ${open ? "rotate-90" : ""}`}>▸</span>
                     </button>
                   </td>
                 </tr>
-                <tr className="text-xs">
-                  <td />
-                  <td colSpan={6} className="pb-2">
-                    <div className="flex flex-wrap gap-x-4 gap-y-1">
-                      {CHECKLIST.map(([k, label]) => (
-                        <label key={k} className="flex items-center gap-1 text-zinc-600 dark:text-zinc-300">
-                          <input
-                            type="checkbox"
-                            checked={!!entry.checklist[k]}
-                            onChange={(e) => student.update(entry.slug, { checklist: { ...entry.checklist, [k]: e.target.checked } })}
-                          />
-                          {label}
-                        </label>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
+                {open && (
+                  <tr className="bg-zinc-50/60 dark:bg-zinc-900/40">
+                    <td colSpan={6} className="p-3">
+                      <ChecklistPanel
+                        key={student.auth?.userId ?? "local"}
+                        entry={entry}
+                        college={college}
+                        international={!!student.profile.international}
+                        onChange={(patch) => student.update(entry.slug, patch)}
+                        onRemove={() => student.remove(entry.slug)}
+                      />
+                    </td>
+                  </tr>
+                )}
                 </Fragment>
               );
             })}

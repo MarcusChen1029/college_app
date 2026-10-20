@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
-import { CHECKLIST, useStudent } from "@/lib/student-store";
+import { CHECKLIST, progress } from "@/lib/checklist";
+import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { AccountPanel } from "./AccountPanel";
 import { ProfileForm } from "./ProfileForm";
@@ -39,7 +40,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     });
 
   const checklistTotal = entries.length * CHECKLIST.length;
-  const checklistDone = entries.reduce((n, { entry }) => n + CHECKLIST.filter(([k]) => entry.checklist[k]).length, 0);
+  const checklistDone = entries.reduce((n, { entry }) => n + progress(entry.checklist).done, 0);
   const submitted = entries.filter(({ entry }) => ["submitted", "interview", "admitted", "deferred", "waitlisted", "rejected", "enrolled"].includes(entry.status)).length;
 
   const upcoming = entries

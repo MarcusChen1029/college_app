@@ -2,7 +2,7 @@ import "server-only";
 import { cacheLife, cacheTag } from "next/cache";
 import { connection } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import type { CollegeDetail, CollegeSummary, Deadline, EnglishSummary, Lookups, SatEstimate } from "./types";
+import type { CollegeDetail, CollegeSummary, Deadline, EnglishSummary, Lookups, SatEstimate, ScoreCode } from "./types";
 
 // Reference data is public (RLS: read-only for anon), so the publishable key is enough.
 function supabase() {
@@ -94,6 +94,15 @@ async function cachedSatEstimates(): Promise<Record<string, SatEstimate>> {
   return out;
 }
 
+async function cachedScoreCodes(): Promise<ScoreCode[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges", "score-codes");
+  const res = await supabase().from("score_codes").select("institution_id, test_key, code, notes, sources(url)");
+  type Row = Omit<ScoreCode, "source_url"> & { sources: { url: string } | null };
+  return (unwrap(res, "score codes") as unknown as Row[]).map(({ sources, ...r }) => ({ ...r, source_url: sources?.url ?? null }));
+}
+
 async function cachedLookups(): Promise<Lookups> {
   "use cache";
   cacheLife("days");
@@ -140,4 +149,9 @@ export async function getEnglishSummaries() {
 export async function getSatEstimates() {
   await connection();
   return cachedSatEstimates();
+}
+
+export async function getScoreCodes() {
+  await connection();
+  return cachedScoreCodes();
 }

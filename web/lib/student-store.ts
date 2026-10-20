@@ -5,6 +5,7 @@
 // student_colleges, per-user RLS); anything saved locally is merged in on first sign-in.
 
 import { useSyncExternalStore } from "react";
+import type { Checklist } from "./checklist";
 import type { StudentProfile } from "./fit";
 import { browserSupabase } from "./supabase-browser";
 
@@ -23,17 +24,14 @@ export const STATUSES = [
 ] as const;
 export type Status = (typeof STATUSES)[number];
 
-export const CHECKLIST = [
-  ["essays", "Essays"],
-  ["recommendations", "Recommendations"],
-  ["transcript", "Transcript sent"],
-  ["test_scores", "Test scores sent"],
-  ["english_test", "English test sent"],
-  ["fee", "Fee paid / waived"],
-  ["aid_forms", "Aid forms (CSS / FAFSA)"],
-  ["interview", "Interview"],
-] as const;
-export type ChecklistKey = (typeof CHECKLIST)[number][0];
+/** The statuses students pick from. Older entries may hold others; shownStatus maps them where there is an equivalent. */
+export const STATUS_OPTIONS = ["in_progress", "submitted", "admitted", "deferred", "waitlisted"] as const satisfies readonly Status[];
+const STATUS_ALIAS: Partial<Record<Status, Status>> = { researching: "in_progress", planning: "in_progress", interview: "submitted", enrolled: "admitted" };
+export const shownStatus = (s: Status): Status => STATUS_ALIAS[s] ?? s;
+
+export { CHECKLIST, type Checklist, type ChecklistKey } from "./checklist";
+
+export type Portal = { url: string; username: string; password: string };
 
 export type ListEntry = {
   slug: string;
@@ -41,7 +39,8 @@ export type ListEntry = {
   plan: string | null;
   status: Status;
   notes: string;
-  checklist: Partial<Record<ChecklistKey, boolean>>;
+  checklist: Checklist;
+  portal: Portal;
   addedAt: string;
 };
 
@@ -51,6 +50,7 @@ type Auth = { userId: string; email: string | null } | null;
 type State = { profile: StudentProfile; list: ListEntry[]; auth: Auth; ready: boolean; syncing: boolean; error: string | null };
 
 const KEY = "college-tracker:v1";
+const EMPTY_PORTAL: Portal = { url: "", username: "", password: "" };
 const EMPTY: State = { profile: {}, list: [], auth: null, ready: false, syncing: false, error: null };
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
@@ -68,7 +68,7 @@ function loadLocal(): Pick<State, "profile" | "list"> {
     if (!raw) return { profile: {}, list: [] };
     const parsed = JSON.parse(raw);
     // v1 entries predate institutionId/checklist; keep what we can.
-    const list = (parsed.list ?? []).map((e: Partial<ListEntry>) => ({ checklist: {}, institutionId: "", ...e }));
+    const list = (parsed.list ?? []).map((e: Partial<ListEntry>) => ({ checklist: {}, institutionId: "", portal: EMPTY_PORTAL, ...e }));
     return { profile: parsed.profile ?? {}, list };
   } catch {
     return { profile: {}, list: [] };
@@ -103,7 +103,10 @@ type CollegeRow = {
   plan_key: string | null;
   status: Status;
   notes: string | null;
-  checklist: Partial<Record<ChecklistKey, boolean>> | null;
+  checklist: Checklist | null;
+  portal_url: string | null;
+  portal_username: string | null;
+  portal_password: string | null;
   created_at: string;
   institutions: { slug: string } | null;
 };
@@ -130,6 +133,7 @@ const toEntry = (r: CollegeRow): ListEntry => ({
   status: r.status,
   notes: r.notes ?? "",
   checklist: r.checklist ?? {},
+  portal: { url: r.portal_url ?? "", username: r.portal_username ?? "", password: r.portal_password ?? "" },
   addedAt: r.created_at,
 });
 const fromEntry = (userId: string, e: ListEntry) => ({
@@ -139,6 +143,12 @@ const fromEntry = (userId: string, e: ListEntry) => ({
   status: e.status,
   notes: e.notes || null,
   checklist: e.checklist,
+  ...portalColumns(e.portal),
+});
+const portalColumns = (p: Portal) => ({
+  portal_url: p.url || null,
+  portal_username: p.username || null,
+  portal_password: p.password || null,
 });
 
 async function loadRemote(userId: string, email: string | null) {
@@ -148,7 +158,7 @@ async function loadRemote(userId: string, email: string | null) {
     const local = loadLocal();
     const [p, l] = await Promise.all([
       db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails").eq("user_id", userId).maybeSingle(),
-      db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)").order("created_at"),
+      db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;
     if (l.error) throw l.error;
@@ -245,7 +255,7 @@ export function useStudent() {
     },
     add(college: CollegeRef) {
       if (state.list.some((e) => e.slug === college.slug)) return;
-      const entry: ListEntry = { slug: college.slug, institutionId: college.id, plan: null, status: "researching", notes: "", checklist: {}, addedAt: new Date().toISOString() };
+      const entry: ListEntry = { slug: college.slug, institutionId: college.id, plan: null, status: "in_progress", notes: "", checklist: {}, portal: EMPTY_PORTAL, addedAt: new Date().toISOString() };
       emit({ list: [...state.list, entry] });
       const a = state.auth;
       if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
@@ -256,7 +266,7 @@ export function useStudent() {
       const a = state.auth;
       if (a && entry) void remote(() => db().from("student_colleges").delete().eq("institution_id", entry.institutionId));
     },
-    update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist">>) {
+    update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist" | "portal">>) {
       const entry = state.list.find((e) => e.slug === slug);
       if (!entry) return;
       const next = { ...entry, ...patch };
@@ -266,7 +276,7 @@ export function useStudent() {
         void remote(() =>
           db()
             .from("student_colleges")
-            .update({ plan_key: next.plan, status: next.status, notes: next.notes || null, checklist: next.checklist })
+            .update({ plan_key: next.plan, status: next.status, notes: next.notes || null, checklist: next.checklist, ...portalColumns(next.portal) })
             .eq("institution_id", entry.institutionId),
         );
     },
