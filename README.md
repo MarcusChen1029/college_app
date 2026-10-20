@@ -12,4 +12,4 @@ Helps students research and track colleges. The demo has 10 US colleges. See [PL
 
 To update data: edit the JSON, run `python3 scripts/build_seed.py`, then apply `supabase/seed/*.sql` to the project.
 
-**Start here:** [LOCAL_SETUP.md](LOCAL_SETUP.md) (run locally, fix Vercel, remaining setup). Deployment details: [DEPLOY.md](DEPLOY.md).
+**Start here:** [LOCAL_CLAUDE.md](LOCAL_CLAUDE.md) (continue with Claude Code locally) · [LOCAL_SETUP.md](LOCAL_SETUP.md) (run locally, fix Vercel, remaining setup). Deployment details: [DEPLOY.md](DEPLOY.md).
