@@ -11,6 +11,11 @@
         "kind": "admissions_site",
         "title": "MIT Admissions — Tests & scores",
         "url": "https://mitadmissions.org/apply/firstyear/tests-scores/"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (mitadmissions.org)",
+        "url": "https://mitadmissions.org/help/faq/mit-test-codes/"
       }
     },
     "test_policy": {
@@ -136,6 +141,37 @@
       "business": "Sloan's undergraduate management/finance programs are consistently ranked among the top few in the US.",
       "computer_science": "EECS is a top-3 US CS program.",
       "humanities": "Strong in linguistics/philosophy, but humanities are not the focus of the curriculum."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "3514",
+        "note": "MIT does not require official score sending; scores are self-reported and verified on enrollment (https://mitadmissions.org/apply/firstyear/tests-scores/).",
+        "src": "codes1"
+      },
+      "act": {
+        "code": "1858",
+        "src": "codes1"
+      },
+      "toefl": {
+        "code": "D021",
+        "note": "Code is alphanumeric (D021), not numeric. MIT does not require official sending; self-report on the application.",
+        "src": "codes1"
+      },
+      "ielts": {
+        "code": null,
+        "note": "No IELTS code on MIT's page. MIT says applicants need not officially send English proficiency scores; self-report on the application.",
+        "src": "eng"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "No DET code or recipient instruction on MIT's page. Self-report on the application; official sending not required.",
+        "src": "eng"
+      },
+      "pte": {
+        "code": null,
+        "note": "No PTE code on MIT's page. Self-report on the application; official sending not required.",
+        "src": "eng"
+      }
     }
   },
   "stanford": {
@@ -154,6 +190,11 @@
         "kind": "admissions_site",
         "title": "Stanford — International Applicants FAQ",
         "url": "https://admission.stanford.edu/apply/international/index.html"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (admit.stanford.edu)",
+        "url": "https://admit.stanford.edu/next-steps"
       }
     },
     "requirements": {
@@ -239,6 +280,38 @@
     "tier_notes": {
       "business": "No undergraduate business major (closest: Management Science & Engineering, Economics).",
       "arts_design": "Product design and art practice strong; no conservatory-style arts school."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "4704",
+        "note": "Stanford does not require official scores for review; self-report, official scores only if enrolling (https://admission.stanford.edu/apply/first-year/testing.html).",
+        "src": "codes1"
+      },
+      "act": {
+        "code": "0434",
+        "note": "Keep the leading zero.",
+        "src": "codes1"
+      },
+      "toefl": {
+        "code": null,
+        "note": "No TOEFL code found on any official Stanford admissions page loaded. Stanford does not require English proficiency exams; scores may be self-reported.",
+        "src": "intl"
+      },
+      "ielts": {
+        "code": null,
+        "note": "Not required; self-report. No code or recipient instruction published.",
+        "src": "intl"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "Not required; self-report. No code or recipient instruction published.",
+        "src": "intl"
+      },
+      "pte": {
+        "code": null,
+        "note": "Not required; self-report. No code or recipient instruction published.",
+        "src": "intl"
+      }
     }
   },
   "harvard": {
@@ -262,6 +335,11 @@
         "kind": "financial_aid_site",
         "title": "Harvard College — How Aid Works (cost of attendance)",
         "url": "https://college.harvard.edu/financial-aid/how-aid-works"
+      },
+      "codes1": {
+        "kind": "other",
+        "title": "Score-reporting codes (college.harvard.edu)",
+        "url": "https://college.harvard.edu/resources/faq/are-standardized-tests-required-part-visiting-undergraduate-student-vus-application"
       }
     },
     "test_policy": {
@@ -341,6 +419,36 @@
       "business": "No undergraduate business major (Economics is the usual route).",
       "engineering": "SEAS is solid but smaller and less highly ranked than its sciences.",
       "computer_science": "Strong CS within SEAS, below the MIT/Stanford/CMU/Berkeley group."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "3434",
+        "src": "adm"
+      },
+      "act": {
+        "code": "1840",
+        "src": "adm"
+      },
+      "toefl": {
+        "code": "3434",
+        "note": "Listed by Harvard College Admissions (visiting-student FAQ); English tests are optional for first-year applicants.",
+        "src": "codes1"
+      },
+      "ielts": {
+        "code": null,
+        "note": "English proficiency exams are optional for first-year applicants; no IELTS code or recipient instruction published.",
+        "src": "intl"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "Optional; no DET code or recipient instruction published.",
+        "src": "intl"
+      },
+      "pte": {
+        "code": null,
+        "note": "Optional; no PTE code or recipient instruction published.",
+        "src": "intl"
+      }
     }
   },
   "carnegie-mellon": {
@@ -359,6 +467,11 @@
         "kind": "financial_aid_site",
         "title": "CMU — International Student Funding",
         "url": "https://www.cmu.edu/sfs/financial-aid/international/index.html"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (www.cmu.edu)",
+        "url": "https://www.cmu.edu/admission/admission/international-applicants"
       }
     },
     "test_policy": {
@@ -511,6 +624,37 @@
     "tier_notes": {
       "computer_science": "School of Computer Science is a top-3 US CS program.",
       "arts_design": "School of Drama, School of Design and School of Architecture are among the best in the US."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "2074",
+        "note": "Official scores only needed if enrolling; self-reporting allowed.",
+        "src": "tests"
+      },
+      "act": {
+        "code": "3534",
+        "src": "tests"
+      },
+      "toefl": {
+        "code": "2074",
+        "note": "Same code for TOEFL iBT, iBT Home Edition and TOEFL Essentials.",
+        "src": "tests"
+      },
+      "ielts": {
+        "code": null,
+        "note": "No numeric code. Official page: choose 'Carnegie Mellon University - Office of Undergraduate Admission' as the recipient.",
+        "src": "tests"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "Page gives required scores but no code or recipient instruction.",
+        "src": "codes1"
+      },
+      "pte": {
+        "code": null,
+        "note": "PTE is not listed among CMU's accepted English tests (TOEFL, IELTS, Cambridge, Duolingo).",
+        "src": "codes1"
+      }
     }
   },
   "umich": {
@@ -524,6 +668,16 @@
         "kind": "admissions_site",
         "title": "U-M — Exams & Visas",
         "url": "https://admissions.umich.edu/apply/international-applicants/exams-visas"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (admissions.umich.edu)",
+        "url": "https://admissions.umich.edu/apply/first-year-applicants/requirements-deadlines"
+      },
+      "codes2": {
+        "kind": "other",
+        "title": "Score-reporting codes (teamdynamix.umich.edu)",
+        "url": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/ArticleDet?ID=7504"
       }
     },
     "requirements": {
@@ -689,6 +843,37 @@
     "tier_notes": {
       "business": "Ross BBA is a top-5 US undergraduate business program.",
       "engineering": "Top-10 engineering college; just outside the top-5 group."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "1839",
+        "note": "Test-optional; self-reported scores allowed, official scores required only if enrolling.",
+        "src": "codes1"
+      },
+      "act": {
+        "code": "2062",
+        "src": "codes1"
+      },
+      "toefl": {
+        "code": "1839",
+        "note": "From U-M's English proficiency help article. No My Best Scores or superscoring.",
+        "src": "codes2"
+      },
+      "ielts": {
+        "code": null,
+        "note": "IELTS accepted (about 7.0, sections 6.5+) but no code or recipient instruction published.",
+        "src": "eng"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "U-M states the Duolingo English Test is NOT accepted for undergraduate admission.",
+        "src": "codes2"
+      },
+      "pte": {
+        "code": null,
+        "note": "PTE Academic accepted (68) but no code or recipient instruction published.",
+        "src": "eng"
+      }
     }
   },
   "georgia-tech": {
@@ -707,6 +892,16 @@
         "kind": "other",
         "title": "USG English Proficiency Requirements",
         "url": "https://www.usg.edu/international-education/esl-programs/english-proficiency-requirements/"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (admission.gatech.edu)",
+        "url": "https://admission.gatech.edu/first-year/standardized-tests"
+      },
+      "codes2": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (admission.gatech.edu)",
+        "url": "https://admission.gatech.edu/apply/documents"
       }
     },
     "requirements": {
@@ -837,6 +1032,38 @@
     "tier_notes": {
       "engineering": "Top-5 US engineering school across most disciplines.",
       "computer_science": "Top-10 CS program; just outside the top-5 group."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "5248",
+        "note": "Self-reporting allowed; official scores needed if enrolling.",
+        "src": "codes1"
+      },
+      "act": {
+        "code": "0818",
+        "note": "Keep the leading zero.",
+        "src": "codes1"
+      },
+      "toefl": {
+        "code": null,
+        "note": "Admissions pages say TOEFL/IELTS can be self-reported; no first-year TOEFL code published. A Digital Media program page (https://dm.lmc.gatech.edu/admissions/international-students/) lists 'Georgia Tech Institution Code #5248 LMC', which is program-specific, so left null.",
+        "src": "codes2"
+      },
+      "ielts": {
+        "code": null,
+        "note": "Self-report on the application or portal; no code published.",
+        "src": "codes2"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "Submit by the document deadline for your plan; no code or recipient instruction published (admission@gatech.edu for details).",
+        "src": "codes2"
+      },
+      "pte": {
+        "code": null,
+        "note": "No PTE information or code published on the admissions pages checked.",
+        "src": "codes2"
+      }
     }
   },
   "uiuc": {
@@ -970,6 +1197,37 @@
       "business": "Gies College of Business is a top-15 undergraduate business program (accountancy especially strong).",
       "computer_science": "Grainger CS is a top-5 US program.",
       "engineering": "Grainger College of Engineering is a top-5 US engineering school."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "1836",
+        "note": "Official scores only needed if you enroll.",
+        "src": "apply"
+      },
+      "act": {
+        "code": "1154",
+        "src": "apply"
+      },
+      "toefl": {
+        "code": "1836",
+        "note": "Official scores only needed if you enroll.",
+        "src": "apply"
+      },
+      "ielts": {
+        "code": null,
+        "note": "No numeric code. Send electronically to 'University of Illinois Urbana Champaign Undergraduate'.",
+        "src": "apply"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "No numeric code. Send electronically to 'University of Illinois, Urbana Champaign Undergraduate Admissions'.",
+        "src": "apply"
+      },
+      "pte": {
+        "code": null,
+        "note": "PTE is not listed on the first-year apply page (only TOEFL iBT, IELTS, Duolingo).",
+        "src": "apply"
+      }
     }
   },
   "nyu": {
@@ -1125,6 +1383,37 @@
       "business": "Stern is consistently a top-5 US undergraduate business program.",
       "arts_design": "Tisch School of the Arts is among the leading US arts schools.",
       "math_physics": "Courant Institute makes NYU a leading applied-math department."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "2562",
+        "note": "Test-optional through 2027-28; official scores only for matriculating students.",
+        "src": "tests"
+      },
+      "act": {
+        "code": "2838",
+        "src": "tests"
+      },
+      "toefl": {
+        "code": "2562",
+        "note": "TOEFL iBT (in-person or Home Edition). My Best scores not accepted.",
+        "src": "eng"
+      },
+      "ielts": {
+        "code": null,
+        "note": "No numeric code. Search for 'New York University' and release to Undergraduate Admissions, not a school/college.",
+        "src": "eng"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "No numeric code. Follow Duolingo's 'send results to institutions' instructions to send to NYU (free).",
+        "src": "eng"
+      },
+      "pte": {
+        "code": null,
+        "note": "No numeric code. Select 'New York University' (searching 'NYU' returns nothing), not a specific NYU school.",
+        "src": "eng"
+      }
     }
   },
   "purdue": {
@@ -1143,6 +1432,11 @@
         "kind": "admissions_site",
         "title": "Purdue — First-year Scholarships",
         "url": "https://admissions.purdue.edu/cost-financial-aid/scholarships/"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (admissions.purdue.edu)",
+        "url": "https://admissions.purdue.edu/become-student/first-year-criteria/"
       }
     },
     "requirements": {
@@ -1263,6 +1557,35 @@
     "tier_notes": {
       "engineering": "Top-10 engineering (aerospace especially strong).",
       "computer_science": "Strong CS within the top ~20."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "1631",
+        "src": "codes1"
+      },
+      "act": {
+        "code": "1230",
+        "src": "codes1"
+      },
+      "toefl": {
+        "code": "1631",
+        "src": "eng"
+      },
+      "ielts": {
+        "code": null,
+        "note": "No numeric code. Page says to send official scores to 'Purdue University - Office of International Students and Scholars' (self-reporting also allowed).",
+        "src": "eng"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "No numeric code. Request results be sent to 'Purdue University Undergraduate Admissions' from your DET account.",
+        "src": "eng"
+      },
+      "pte": {
+        "code": null,
+        "note": "PTE is not listed among Purdue's English proficiency options.",
+        "src": "eng"
+      }
     }
   },
   "uc-berkeley": {
@@ -1291,6 +1614,16 @@
         "kind": "financial_aid_site",
         "title": "Berkeley — Scholarship Opportunities for International Students",
         "url": "https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/regents-and-chancellors-scholarship/international-student-scholarships/"
+      },
+      "codes1": {
+        "kind": "admissions_site",
+        "title": "Score-reporting codes (admissions.berkeley.edu)",
+        "url": "https://admissions.berkeley.edu/apply-to-berkeley/international-students/requirements-for-international-students/"
+      },
+      "codes2": {
+        "kind": "other",
+        "title": "Score-reporting codes (ceu.berkeley.edu)",
+        "url": "https://ceu.berkeley.edu/transfer-credit/examinations/"
       }
     },
     "test_policy": {
@@ -1415,6 +1748,38 @@
       "business": "Haas undergraduate program is consistently a top-5 US undergraduate business program.",
       "biology_life_sci": "Molecular & Cell Biology / Integrative Biology are among the strongest US life-science departments.",
       "economics": "Berkeley economics is a top-5 department nationally."
+    },
+    "score_codes": {
+      "sat": {
+        "code": "4833",
+        "note": "Berkeley is test-free: SAT/ACT are not used in admissions; scores are only used for placement/credit after admission.",
+        "src": "codes1"
+      },
+      "act": {
+        "code": "0444",
+        "note": "From Berkeley's Central Evaluation Unit. Berkeley is test-free; scores are used only for placement/credit after admission.",
+        "src": "codes2"
+      },
+      "toefl": {
+        "code": "4833",
+        "note": "Page says 'Our code to submit official TOEFL and SAT scores through ETS is 4833.' UC site says self-report English scores in the UC application and send official scores after admission only to the campus where you enroll.",
+        "src": "codes1"
+      },
+      "ielts": {
+        "code": null,
+        "note": "No IELTS code published. Self-report in the UC application; send official scores after admission to the enrolling campus only.",
+        "src": "uc_eng"
+      },
+      "duolingo": {
+        "code": null,
+        "note": "Berkeley accepts DET (min 115) but no code published. Self-report in the UC application; send official scores after admission to the enrolling campus only.",
+        "src": "uc_eng"
+      },
+      "pte": {
+        "code": null,
+        "note": "PTE is not listed among Berkeley's accepted English proficiency exams (TOEFL, IELTS, DET).",
+        "src": "codes1"
+      }
     }
   },
   "_tier_rules": {

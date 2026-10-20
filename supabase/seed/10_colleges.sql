@@ -13,7 +13,9 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('4f8cd24c-34ab-512b-81d0-c1e7f0ab7154', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'UC Admissions — Apply now (fees)', 'https://admission.universityofcalifornia.edu/apply-now.html', null, '2026-10-20'),
  ('8812f1b7-841d-50ed-9cc0-ffb5ed2e107c', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'UC Admissions — English language proficiency', 'https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html', null, '2026-10-20'),
  ('3613cb36-b894-58a5-99ed-30c44380bade', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'financial_aid_site', 'Berkeley Financial Aid — Student Budgets 2026-27', 'https://financialaid.berkeley.edu/how-aid-works/student-budgets-cost-of-attendance/', null, '2026-10-20'),
- ('e870406f-2ba8-50c7-84ac-73a0fe775230', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'financial_aid_site', 'Berkeley — Scholarship Opportunities for International Students', 'https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/regents-and-chancellors-scholarship/international-student-scholarships/', null, '2026-10-20');
+ ('e870406f-2ba8-50c7-84ac-73a0fe775230', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'financial_aid_site', 'Berkeley — Scholarship Opportunities for International Students', 'https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/regents-and-chancellors-scholarship/international-student-scholarships/', null, '2026-10-20'),
+ ('0e525c26-8427-58c1-80c5-12ed9d41ca57', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'admissions_site', 'Score-reporting codes (admissions.berkeley.edu)', 'https://admissions.berkeley.edu/apply-to-berkeley/international-students/requirements-for-international-students/', null, '2026-10-20'),
+ ('d8ef477e-1526-5319-b78a-3ca5a9280a76', 'caa9a1af-8f82-5061-8a81-0334c772233f', 'other', 'Score-reporting codes (ceu.berkeley.edu)', 'https://ceu.berkeley.edu/transfer-credit/examinations/', null, '2026-10-20');
 insert into admission_stats (institution_id, source_id, source_note, cds_year, applicants, admits, notes)
 select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, 'd8a555f5-b057-5b6c-b588-531acf514b1f'::uuid, 'admissions_site', v.* from (values
  ('2025-2026', 126843, 14502, 'Counts from Berkeley Admissions student profile (fall 2025 entry). Berkeley''s CDS is published as a multi-tab Google Sheet that could not be machine-read for this import; C7/C9/C11 values pending manual entry. UC campuses are test-blind, so there are no SAT/ACT percentiles.'),
@@ -33,6 +35,14 @@ select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, 'required_option', '8812f1b
  ('TOEFL_IBT_2026', 4.5, null),
  ('IELTS', 6.5, null),
  ('DUOLINGO', 115, null)) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select 'caa9a1af-8f82-5061-8a81-0334c772233f'::uuid, v.* from (values
+ ('sat', '4833', 'Berkeley is test-free: SAT/ACT are not used in admissions; scores are only used for placement/credit after admission.', '0e525c26-8427-58c1-80c5-12ed9d41ca57'::uuid),
+ ('act', '0444', 'From Berkeley''s Central Evaluation Unit. Berkeley is test-free; scores are used only for placement/credit after admission.', 'd8ef477e-1526-5319-b78a-3ca5a9280a76'::uuid),
+ ('toefl', '4833', 'Page says ''Our code to submit official TOEFL and SAT scores through ETS is 4833.'' UC site says self-report English scores in the UC application and send official scores after admission only to the campus where you enroll.', '0e525c26-8427-58c1-80c5-12ed9d41ca57'::uuid),
+ ('ielts', null, 'No IELTS code published. Self-report in the UC application; send official scores after admission to the enrolling campus only.', '8812f1b7-841d-50ed-9cc0-ffb5ed2e107c'::uuid),
+ ('duolingo', null, 'Berkeley accepts DET (min 115) but no code published. Self-report in the UC application; send official scores after admission to the enrolling campus only.', '8812f1b7-841d-50ed-9cc0-ffb5ed2e107c'::uuid),
+ ('pte', null, 'PTE is not listed among Berkeley''s accepted English proficiency exams (TOEFL, IELTS, DET).', '0e525c26-8427-58c1-80c5-12ed9d41ca57'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, room_board_usd, total_coa_usd, intl_aid_policy, intl_need_aid, merit_scholarships, merit_separate_app, notes, source_id) values
  ('caa9a1af-8f82-5061-8a81-0334c772233f', '2026-2027', 18214, 57484, 57484, 16640, 54674, 'need_aware_limited', true, true, false, 'Tuition & fees for the newest cohort; nonresidents (incl. international) add Nonresident Supplemental Tuition of $39,270. Housing in a residence hall; health insurance $5,066 extra. Total shown is the California-resident cost of attendance.; International students can''t get federal, state or general need-based university aid, but are automatically considered for a few institutional scholarships (Regents'' & Chancellor''s, Robinson International Scholars, International Leaders, Swaniker Scholars).', '3613cb36-b894-58a5-99ed-30c44380bade');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -60,7 +70,8 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('535a410f-57a2-5cb6-a954-de668bd5fc38', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'cds', 'Carnegie Mellon Common Data Set 2025-26', 'https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds_2025_full_pdf.pdf', '2025-2026', '2026-10-20'),
  ('23833da6-b56d-5ed0-9895-a820c9b93118', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'admissions_site', 'CMU — Application Plans & Deadlines', 'https://www.cmu.edu/admission/admission/application-plans-deadlines', null, '2026-10-20'),
  ('13a73cde-fc46-5724-be60-bd56921aa876', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'admissions_site', 'CMU — Standardized Testing', 'https://www.cmu.edu/admission/admission/standardized-testing', null, '2026-10-20'),
- ('0452bc8f-e629-5a88-9b0d-9d8ee285edc3', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'financial_aid_site', 'CMU — International Student Funding', 'https://www.cmu.edu/sfs/financial-aid/international/index.html', null, '2026-10-20');
+ ('0452bc8f-e629-5a88-9b0d-9d8ee285edc3', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'financial_aid_site', 'CMU — International Student Funding', 'https://www.cmu.edu/sfs/financial-aid/international/index.html', null, '2026-10-20'),
+ ('260ddd68-12b3-5eda-b16a-38572d966eba', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'admissions_site', 'Score-reporting codes (www.cmu.edu)', 'https://www.cmu.edu/admission/admission/international-applicants', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, ed_applicants, ed_admits, waitlist_offered, waitlist_accepted, waitlist_admitted, pct_submit_sat, pct_submit_act, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
  ('1ad8cde2-72f3-52c3-b937-9ec013f2677d', '2025-2026', 34867, 3859, 1804, 2680, 553, 7117, 4937, 36, 65.5, 18.1, 3.89, 99.7, '{"4.0": 43.9, "3.75-3.99": 41.7, "3.50-3.74": 10.9, "3.25-3.49": 2.2, "3.00-3.24": 1.0, "2.50-2.99": 0.3}'::jsonb, 'Pittsburgh campus. ED closes Nov 1 (not available for Acting, Directing, Dramaturgy, Music Theater, School of Music); no EA.', '535a410f-57a2-5cb6-a954-de668bd5fc38');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -108,6 +119,14 @@ select '1ad8cde2-72f3-52c3-b937-9ec013f2677d'::uuid, 'required_option', '13a73cd
  ('IELTS', 7.5, '{"each_band": 7.5}'::jsonb, null),
  ('DUOLINGO', 135, '{"literacy": 135, "conversation": 135, "comprehension": 135, "production": 135}'::jsonb, null),
  ('CAMBRIDGE', 191, '{"each_section": 191}'::jsonb, null)) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select '1ad8cde2-72f3-52c3-b937-9ec013f2677d'::uuid, v.* from (values
+ ('sat', '2074', 'Official scores only needed if enrolling; self-reporting allowed.', '13a73cde-fc46-5724-be60-bd56921aa876'::uuid),
+ ('act', '3534', null, '13a73cde-fc46-5724-be60-bd56921aa876'::uuid),
+ ('toefl', '2074', 'Same code for TOEFL iBT, iBT Home Edition and TOEFL Essentials.', '13a73cde-fc46-5724-be60-bd56921aa876'::uuid),
+ ('ielts', null, 'No numeric code. Official page: choose ''Carnegie Mellon University - Office of Undergraduate Admission'' as the recipient.', '13a73cde-fc46-5724-be60-bd56921aa876'::uuid),
+ ('duolingo', null, 'Page gives required scores but no code or recipient instruction.', '260ddd68-12b3-5eda-b16a-38572d966eba'::uuid),
+ ('pte', null, 'PTE is not listed among CMU''s accepted English tests (TOEFL, IELTS, Cambridge, Duolingo).', '260ddd68-12b3-5eda-b16a-38572d966eba'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, other_usd, intl_aid_policy, intl_need_aid, meets_full_need, merit_scholarships, notes, source_id) values
  ('1ad8cde2-72f3-52c3-b937-9ec013f2677d', '2025-2026', 67020, 1756, 18894, 1000, 1400, 'need_aware_full_need', true, true, true, 'CDS G1 first-year column (H6 checkboxes not legible in the PDF; intl aid policy from the financial aid site).; Merit scholarships and need-based grants are available to students of all nationalities.', '535a410f-57a2-5cb6-a954-de668bd5fc38');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -136,7 +155,9 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('54dc5586-7cc8-5481-9887-850193c6a770', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'cds', 'Georgia Tech Common Data Set 2025-2026 (Final R4)', 'https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf', '2025-2026', '2026-10-20'),
  ('614eac20-16c1-54ed-82f6-52bbb3a5a8b7', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'admissions_site', 'Georgia Tech — First-Year Application Plans and Deadlines', 'https://admission.gatech.edu/first-year/deadlines', null, '2026-10-20'),
  ('74a16a80-235b-55e1-89b4-43c4aa54bc7a', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'admissions_site', 'Georgia Tech — International First-Year Admission', 'https://admission.gatech.edu/international/first-year', null, '2026-10-20'),
- ('269716f2-3a05-5b5d-8fc5-7f2bcfcf937f', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'other', 'USG English Proficiency Requirements', 'https://www.usg.edu/international-education/esl-programs/english-proficiency-requirements/', null, '2026-10-20');
+ ('269716f2-3a05-5b5d-8fc5-7f2bcfcf937f', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'other', 'USG English Proficiency Requirements', 'https://www.usg.edu/international-education/esl-programs/english-proficiency-requirements/', null, '2026-10-20'),
+ ('0e37c07b-c0d1-5797-8606-9e7fac2f341d', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'admissions_site', 'Score-reporting codes (admission.gatech.edu)', 'https://admission.gatech.edu/first-year/standardized-tests', null, '2026-10-20'),
+ ('31ea6644-193b-58af-a403-41208d80fa20', '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', 'admissions_site', 'Score-reporting codes (admission.gatech.edu)', 'https://admission.gatech.edu/apply/documents', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, intl_applicants, intl_admits, in_state_applicants, in_state_admits, out_state_applicants, out_state_admits, waitlist_offered, waitlist_accepted, waitlist_admitted, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
  ('71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', '2025-2026', 66881, 8921, 4071, 9758, 716, 12527, 3691, 44596, 4513, 7651, 4875, 653, 4.17, 95.31, '{"4.0": 95.85, "3.75-3.99": 3.25, "3.50-3.74": 0.39, "3.25-3.49": 0.1, "3.00-3.24": 0.23, "2.50-2.99": 0.18}'::jsonb, 'Average GPA 4.17 is on GT''s recalculated (weighted) scale. In-state admit rate ~29% vs out-of-state ~10% vs international ~7%. Portfolio required for Music Technology; optional for Architecture, Industrial Design, Arts/Entertainment & Creative Technologies.', '54dc5586-7cc8-5481-9887-850193c6a770');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -187,6 +208,14 @@ select '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0'::uuid, v.* from (values
  ('PTE', 'required_option', 53, 58, null, '269716f2-3a05-5b5d-8fc5-7f2bcfcf937f'::uuid),
  ('CAMBRIDGE', 'required_option', 169, 177, null, '269716f2-3a05-5b5d-8fc5-7f2bcfcf937f'::uuid),
  ('DUOLINGO', 'accepted', null, null, 'Supplementary only — does not satisfy the USG requirement.', '74a16a80-235b-55e1-89b4-43c4aa54bc7a'::uuid)) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select '71d87d83-bb3c-50f5-9315-7ebfb79b3ed0'::uuid, v.* from (values
+ ('sat', '5248', 'Self-reporting allowed; official scores needed if enrolling.', '0e37c07b-c0d1-5797-8606-9e7fac2f341d'::uuid),
+ ('act', '0818', 'Keep the leading zero.', '0e37c07b-c0d1-5797-8606-9e7fac2f341d'::uuid),
+ ('toefl', null, 'Admissions pages say TOEFL/IELTS can be self-reported; no first-year TOEFL code published. A Digital Media program page (https://dm.lmc.gatech.edu/admissions/international-students/) lists ''Georgia Tech Institution Code #5248 LMC'', which is program-specific, so left null.', '31ea6644-193b-58af-a403-41208d80fa20'::uuid),
+ ('ielts', null, 'Self-report on the application or portal; no code published.', '31ea6644-193b-58af-a403-41208d80fa20'::uuid),
+ ('duolingo', null, 'Submit by the document deadline for your plan; no code or recipient instruction published (admission@gatech.edu for details).', '31ea6644-193b-58af-a403-41208d80fa20'::uuid),
+ ('pte', null, 'No PTE information or code published on the admissions pages checked.', '31ea6644-193b-58af-a403-41208d80fa20'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, required_fees_usd, room_board_usd, intl_aid_policy, intl_need_aid, merit_scholarships, merit_separate_app, notes, source_id) values
  ('71d87d83-bb3c-50f5-9315-7ebfb79b3ed0', '2026-2027', 10618, 34604, 35610, 1516, 14628, 'none', false, true, false, 'CDS G1 first-year column. H6: institutional scholarship/grant aid NOT available to nonresidents.', '54dc5586-7cc8-5481-9887-850193c6a770');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -212,7 +241,8 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('41293cc4-cef9-5b47-9305-a934ec5d4a3c', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'admissions_site', 'Harvard College — Application Requirements', 'https://college.harvard.edu/admissions/apply/application-requirements', null, '2026-10-20'),
  ('66abe856-5433-5716-aac2-463733e9456e', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'admissions_site', 'Harvard College — First-Year Applicants', 'https://college.harvard.edu/admissions/apply/first-year-applicants', null, '2026-10-20'),
  ('a8767aef-4f5f-54b1-9f36-2979250b3814', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'admissions_site', 'Harvard College — International Applicants', 'https://college.harvard.edu/admissions/apply/international-applicants', null, '2026-10-20'),
- ('daf2cc97-60e4-5f62-8ab1-8a50cd5355a4', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'financial_aid_site', 'Harvard College — How Aid Works (cost of attendance)', 'https://college.harvard.edu/financial-aid/how-aid-works', null, '2026-10-20');
+ ('daf2cc97-60e4-5f62-8ab1-8a50cd5355a4', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'financial_aid_site', 'Harvard College — How Aid Works (cost of attendance)', 'https://college.harvard.edu/financial-aid/how-aid-works', null, '2026-10-20'),
+ ('9a5d5002-4f8b-5231-ab62-75b5d63fedbc', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', 'other', 'Score-reporting codes (college.harvard.edu)', 'https://college.harvard.edu/resources/faq/are-standardized-tests-required-part-visiting-undergraduate-student-vus-application', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, waitlist_admitted, pct_submit_sat, pct_submit_act, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
  ('e4c745cc-3156-52c3-aba3-bad66da2ea76', '2025-2026', 47893, 2003, 1675, 75, 79, 27, 4.22, 99.1, '{"4.0": 74.7, "3.75-3.99": 20.38, "3.50-3.74": 3.49, "3.25-3.49": 0.98, "3.00-3.24": 0.18, "2.50-2.99": 0.18, "2.0-2.49": 0.09}'::jsonb, 'Average GPA reported as 4.22 (likely weighted despite the CDS 4.0-scale instruction). SAT composite percentiles left blank in the CDS; only section scores reported. Waitlist offered/accepted not reported. Restrictive early action 11/1 → 12/16.', '8e5ac2cd-1800-58fa-b539-4d0990e66c8b');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -251,6 +281,14 @@ insert into deadlines (id, institution_id, cycle, kind, plan_key, due_date, noti
  ('9a2bbdd7-5209-5487-89d2-c029f3cdd47a', 'e4c745cc-3156-52c3-aba3-bad66da2ea76', '2026-27', 'application', 'RD', '2027-01-01', null, '66abe856-5433-5716-aac2-463733e9456e');
 insert into english_policies (institution_id, policy, waiver_notes, source_id) values
  ('e4c745cc-3156-52c3-aba3-bad66da2ea76', 'not_required', 'Not required for first-year applicants; scores may be submitted. English tests cannot satisfy the SAT/ACT requirement.', 'a8767aef-4f5f-54b1-9f36-2979250b3814');
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select 'e4c745cc-3156-52c3-aba3-bad66da2ea76'::uuid, v.* from (values
+ ('sat', '3434', null, '41293cc4-cef9-5b47-9305-a934ec5d4a3c'::uuid),
+ ('act', '1840', null, '41293cc4-cef9-5b47-9305-a934ec5d4a3c'::uuid),
+ ('toefl', '3434', 'Listed by Harvard College Admissions (visiting-student FAQ); English tests are optional for first-year applicants.', '9a5d5002-4f8b-5231-ab62-75b5d63fedbc'::uuid),
+ ('ielts', null, 'English proficiency exams are optional for first-year applicants; no IELTS code or recipient instruction published.', 'a8767aef-4f5f-54b1-9f36-2979250b3814'::uuid),
+ ('duolingo', null, 'Optional; no DET code or recipient instruction published.', 'a8767aef-4f5f-54b1-9f36-2979250b3814'::uuid),
+ ('pte', null, 'Optional; no PTE code or recipient instruction published.', 'a8767aef-4f5f-54b1-9f36-2979250b3814'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, other_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('e4c745cc-3156-52c3-aba3-bad66da2ea76', '2026-2027', 62226, 6216, 23192, 1000, 2500, 'need_blind_full_need', true, 805, 83013, true, false, 'Housing $14,250 + food $8,942. Transportation $0–5,000 extra.; CDS G1 cost fields left blank by Harvard; see financial aid site. H6: need-based aid available to nonresidents.', 'daf2cc97-60e4-5f62-8ab1-8a50cd5355a4');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -273,7 +311,8 @@ insert into institutions (id, slug, name, short_name, country_code, state_region
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('870b2695-01ad-54eb-bc79-39cc428bf4bb', '415a0c1f-3b07-5a52-94a0-6bd450bba6c5', 'cds', 'MIT Common Data Set 2025-26', 'https://ir.mit.edu/projects/2025-26-common-data-set/', '2025-2026', '2026-10-20'),
  ('bf485cdd-3f00-5c2d-9063-f36f4db2e852', '415a0c1f-3b07-5a52-94a0-6bd450bba6c5', 'admissions_site', 'MIT Admissions — Deadlines & requirements', 'https://mitadmissions.org/apply/firstyear/deadlines-requirements/', null, '2026-10-20'),
- ('7ee93e92-bdb7-5457-bbbe-83ed51d0cf41', '415a0c1f-3b07-5a52-94a0-6bd450bba6c5', 'admissions_site', 'MIT Admissions — Tests & scores', 'https://mitadmissions.org/apply/firstyear/tests-scores/', null, '2026-10-20');
+ ('7ee93e92-bdb7-5457-bbbe-83ed51d0cf41', '415a0c1f-3b07-5a52-94a0-6bd450bba6c5', 'admissions_site', 'MIT Admissions — Tests & scores', 'https://mitadmissions.org/apply/firstyear/tests-scores/', null, '2026-10-20'),
+ ('4b8d4121-a160-5388-8103-814cd5039dd7', '415a0c1f-3b07-5a52-94a0-6bd450bba6c5', 'admissions_site', 'Score-reporting codes (mitadmissions.org)', 'https://mitadmissions.org/help/faq/mit-test-codes/', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, waitlist_offered, waitlist_accepted, waitlist_admitted, pct_submit_sat, pct_submit_act, notes, source_id) values
  ('415a0c1f-3b07-5a52-94a0-6bd450bba6c5', '2025-2026', 29281, 1334, 1152, 561, 468, 10, 83, 31, 'MIT reports GPA as N/Av in C11/C12. Residency breakdown of applicants not reported.', '870b2695-01ad-54eb-bc79-39cc428bf4bb');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -322,6 +361,14 @@ select '415a0c1f-3b07-5a52-94a0-6bd450bba6c5'::uuid, 'recommended_option', '7ee9
  ('PTE', 65, 70, null),
  ('CAMBRIDGE', 185, 190, 'C1 Advanced or C2 Proficiency'),
  ('DUOLINGO', 120, 125, null)) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select '415a0c1f-3b07-5a52-94a0-6bd450bba6c5'::uuid, v.* from (values
+ ('sat', '3514', 'MIT does not require official score sending; scores are self-reported and verified on enrollment (https://mitadmissions.org/apply/firstyear/tests-scores/).', '4b8d4121-a160-5388-8103-814cd5039dd7'::uuid),
+ ('act', '1858', null, '4b8d4121-a160-5388-8103-814cd5039dd7'::uuid),
+ ('toefl', 'D021', 'Code is alphanumeric (D021), not numeric. MIT does not require official sending; self-report on the application.', '4b8d4121-a160-5388-8103-814cd5039dd7'::uuid),
+ ('ielts', null, 'No IELTS code on MIT''s page. MIT says applicants need not officially send English proficiency scores; self-report on the application.', '7ee93e92-bdb7-5457-bbbe-83ed51d0cf41'::uuid),
+ ('duolingo', null, 'No DET code or recipient instruction on MIT''s page. Self-report on the application; official sending not required.', '7ee93e92-bdb7-5457-bbbe-83ed51d0cf41'::uuid),
+ ('pte', null, 'No PTE code on MIT''s page. Self-report on the application; official sending not required.', '7ee93e92-bdb7-5457-bbbe-83ed51d0cf41'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, other_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('415a0c1f-3b07-5a52-94a0-6bd450bba6c5', '2026-2027', 66720, 420, 22194, 930, 2496, 'need_blind_full_need', true, 411, 81991, true, false, 'CDS G1 food & housing on-campus. H6: institutional need-based aid available to nonresidents (2025-26 estimated).', '870b2695-01ad-54eb-bc79-39cc428bf4bb');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -393,6 +440,14 @@ select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, 'required_option', 'a8a0b1a
  ('DUOLINGO', 135, null, null),
  ('IELTS', 7.5, null, null),
  ('PTE', 70, null, null)) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, v.* from (values
+ ('sat', '2562', 'Test-optional through 2027-28; official scores only for matriculating students.', '49b0444e-560b-5fb2-9812-4f382fb52723'::uuid),
+ ('act', '2838', null, '49b0444e-560b-5fb2-9812-4f382fb52723'::uuid),
+ ('toefl', '2562', 'TOEFL iBT (in-person or Home Edition). My Best scores not accepted.', 'a8a0b1a2-4516-5463-928d-13b0b7edcb60'::uuid),
+ ('ielts', null, 'No numeric code. Search for ''New York University'' and release to Undergraduate Admissions, not a school/college.', 'a8a0b1a2-4516-5463-928d-13b0b7edcb60'::uuid),
+ ('duolingo', null, 'No numeric code. Follow Duolingo''s ''send results to institutions'' instructions to send to NYU (free).', 'a8a0b1a2-4516-5463-928d-13b0b7edcb60'::uuid),
+ ('pte', null, 'No numeric code. Select ''New York University'' (searching ''NYU'' returns nothing), not a specific NYU school.', 'a8a0b1a2-4516-5463-928d-13b0b7edcb60'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, room_board_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('a89d4ad5-df02-5c82-9adc-dc8b82e72709', '2026-2027', 68574, 25250, 'need_aware_limited', true, 342, 36562, true, true, 'CDS G1 (2026-27). Tuition & fees vary by school — e.g. Stern $70,464, Tisch $75,326 (NYU cost-of-attendance page). H6: need-based and non-need-based aid available to nonresidents.; NYU Promise: 100% of demonstrated need met for first-year students admitted to the New York campus.', '6cc348b4-0b2c-5cd2-9e79-fe426275c348');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -422,7 +477,8 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('b816c2aa-061b-50bd-833b-8c4ea0081573', 'd7b0e604-36c4-57ec-8afa-11e1217143fe', 'cds', 'Purdue University Common Data Set 2025-2026 (xlsx)', 'https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx', '2025-2026', '2026-10-20'),
  ('be57587d-90c1-52fc-9c59-9093cdaeb421', 'd7b0e604-36c4-57ec-8afa-11e1217143fe', 'admissions_site', 'Purdue — First-Year Deadlines', 'https://admissions.purdue.edu/deadlines/first-year-college-student/', null, '2026-10-20'),
  ('b79d9a94-638e-57f4-b5db-919da5d069ab', 'd7b0e604-36c4-57ec-8afa-11e1217143fe', 'admissions_site', 'Purdue — English Proficiency', 'https://admissions.purdue.edu/become-student/english-proficiency/', null, '2026-10-20'),
- ('cee90550-d32e-5bdd-94f1-9e156bea38e4', 'd7b0e604-36c4-57ec-8afa-11e1217143fe', 'admissions_site', 'Purdue — First-year Scholarships', 'https://admissions.purdue.edu/cost-financial-aid/scholarships/', null, '2026-10-20');
+ ('cee90550-d32e-5bdd-94f1-9e156bea38e4', 'd7b0e604-36c4-57ec-8afa-11e1217143fe', 'admissions_site', 'Purdue — First-year Scholarships', 'https://admissions.purdue.edu/cost-financial-aid/scholarships/', null, '2026-10-20'),
+ ('ae641113-306c-5d7d-bedd-3ad1fce7bb5e', 'd7b0e604-36c4-57ec-8afa-11e1217143fe', 'admissions_site', 'Score-reporting codes (admissions.purdue.edu)', 'https://admissions.purdue.edu/become-student/first-year-criteria/', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, intl_applicants, intl_admits, in_state_applicants, in_state_admits, out_state_applicants, out_state_admits, waitlist_offered, waitlist_accepted, waitlist_admitted, pct_submit_sat, pct_submit_act, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
  ('d7b0e604-36c4-57ec-8afa-11e1217143fe', '2025-2026', 87220, 37881, 9656, 16327, 3672, 12040, 8559, 58853, 25650, 8981, 4047, 3916, 84, 23, 3.81, 92.8, '{"4.0": 43, "3.75-3.99": 28, "3.50-3.74": 16, "3.25-3.49": 8, "3.00-3.24": 3, "2.50-2.99": 2, "2.0-2.49": 0.19, "1.0-1.99": 0.03}'::jsonb, 'Early action closes 11/1 with decisions by mid-January; no ED. Admission is to a specific college/major; many engineering, CS and nursing seats are capacity-limited.', 'b816c2aa-061b-50bd-833b-8c4ea0081573');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -468,6 +524,14 @@ select 'd7b0e604-36c4-57ec-8afa-11e1217143fe'::uuid, 'required_option', 'b79d9a9
  ('TOEFL_IBT_2026', 4.5, null, '{"each_section": 4.0}'::jsonb, null),
  ('IELTS', null, 6.5, '{"each_band": 6.0}'::jsonb, '"Generally" 6.5 — typical, not a hard minimum'),
  ('DUOLINGO', null, 115, '{"each_subscore": 110}'::jsonb, '"Generally" 115 — typical, not a hard minimum')) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select 'd7b0e604-36c4-57ec-8afa-11e1217143fe'::uuid, v.* from (values
+ ('sat', '1631', null, 'ae641113-306c-5d7d-bedd-3ad1fce7bb5e'::uuid),
+ ('act', '1230', null, 'ae641113-306c-5d7d-bedd-3ad1fce7bb5e'::uuid),
+ ('toefl', '1631', null, 'b79d9a94-638e-57f4-b5db-919da5d069ab'::uuid),
+ ('ielts', null, 'No numeric code. Page says to send official scores to ''Purdue University - Office of International Students and Scholars'' (self-reporting also allowed).', 'b79d9a94-638e-57f4-b5db-919da5d069ab'::uuid),
+ ('duolingo', null, 'No numeric code. Request results be sent to ''Purdue University Undergraduate Admissions'' from your DET account.', 'b79d9a94-638e-57f4-b5db-919da5d069ab'::uuid),
+ ('pte', null, 'PTE is not listed among Purdue''s English proficiency options.', 'b79d9a94-638e-57f4-b5db-919da5d069ab'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, required_fees_usd, room_board_usd, intl_aid_policy, intl_need_aid, merit_scholarships, notes, source_id) values
  ('d7b0e604-36c4-57ec-8afa-11e1217143fe', '2026-2027', 9718, 28520, 31830, 274, 16734, 'none', false, false, 'CDS G1 West Lafayette block (H6 checkboxes not captured in the spreadsheet; intl aid policy from the admissions site).; In general, international undergraduate students are not eligible for financial aid, including scholarships.', 'b816c2aa-061b-50bd-833b-8c4ea0081573');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -496,7 +560,8 @@ insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on
  ('bb35cdf0-e148-5298-9310-819562e5dab0', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'cds', 'Stanford Common Data Set 2025-2026', 'https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view', '2025-2026', '2026-10-20'),
  ('343b610e-0dd6-515d-a699-e6d749acb289', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'admissions_site', 'Stanford — First-Year Applicants', 'https://admission.stanford.edu/apply/first-year/', null, '2026-10-20'),
  ('12f27889-a0a2-5bb7-bc8e-9367b2c5b525', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'admissions_site', 'Stanford — Transcript, School Report, and Recommendations', 'https://admission.stanford.edu/apply/first-year/forms.html', null, '2026-10-20'),
- ('5864a089-640e-5e95-98a0-24555a654bb2', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'admissions_site', 'Stanford — International Applicants FAQ', 'https://admission.stanford.edu/apply/international/index.html', null, '2026-10-20');
+ ('5864a089-640e-5e95-98a0-24555a654bb2', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'admissions_site', 'Stanford — International Applicants FAQ', 'https://admission.stanford.edu/apply/international/index.html', null, '2026-10-20'),
+ ('2bdbeae2-f930-5fe0-9982-0ea99eeac667', '03e19bf0-cc16-5613-af62-bc77fcd4412d', 'admissions_site', 'Score-reporting codes (admit.stanford.edu)', 'https://admit.stanford.edu/next-steps', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, waitlist_offered, waitlist_accepted, waitlist_admitted, pct_submit_sat, pct_submit_act, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
  ('03e19bf0-cc16-5613-af62-bc77fcd4412d', '2025-2026', 60646, 2302, 1839, 669, 573, 57, 55.57, 20.94, 3.94, 69.6, '{"4.0": 72.97, "3.75-3.99": 16.17, "3.50-3.74": 7.89, "3.25-3.49": 2.89, "3.00-3.24": 0.08}'::jsonb, 'Restrictive early action (no ED). CDS C22 lists EA closing 11/1, notification 12/15.', 'bb35cdf0-e148-5298-9310-819562e5dab0');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -539,6 +604,14 @@ insert into deadlines (id, institution_id, cycle, kind, plan_key, label, due_dat
  ('62945bbb-f688-591b-89d9-ec82fd164b86', '03e19bf0-cc16-5613-af62-bc77fcd4412d', '2026-27', 'deposit', null, 'Student reply date', '2027-05-01', null, '343b610e-0dd6-515d-a699-e6d749acb289');
 insert into english_policies (institution_id, policy, waiver_notes, source_id) values
  ('03e19bf0-cc16-5613-af62-bc77fcd4412d', 'not_required', 'No English proficiency exam required; scores from any exam may be self-reported. Fluency in English is a prerequisite.', '5864a089-640e-5e95-98a0-24555a654bb2');
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select '03e19bf0-cc16-5613-af62-bc77fcd4412d'::uuid, v.* from (values
+ ('sat', '4704', 'Stanford does not require official scores for review; self-report, official scores only if enrolling (https://admission.stanford.edu/apply/first-year/testing.html).', '2bdbeae2-f930-5fe0-9982-0ea99eeac667'::uuid),
+ ('act', '0434', 'Keep the leading zero.', '2bdbeae2-f930-5fe0-9982-0ea99eeac667'::uuid),
+ ('toefl', null, 'No TOEFL code found on any official Stanford admissions page loaded. Stanford does not require English proficiency exams; scores may be self-reported.', '5864a089-640e-5e95-98a0-24555a654bb2'::uuid),
+ ('ielts', null, 'Not required; self-report. No code or recipient instruction published.', '5864a089-640e-5e95-98a0-24555a654bb2'::uuid),
+ ('duolingo', null, 'Not required; self-report. No code or recipient instruction published.', '5864a089-640e-5e95-98a0-24555a654bb2'::uuid),
+ ('pte', null, 'Not required; self-report. No code or recipient instruction published.', '5864a089-640e-5e95-98a0-24555a654bb2'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, required_fees_usd, room_board_usd, books_usd, intl_aid_policy, intl_need_aid, intl_need_aid_awarded, intl_avg_award_usd, meets_full_need, merit_scholarships, notes, source_id) values
  ('03e19bf0-cc16-5613-af62-bc77fcd4412d', '2026-2027', 67731, 843, 22944, 855, 'need_aware_full_need', true, 260, 85424, true, false, 'CDS H6: need-based and non-need-based institutional aid available to nonresidents.', 'bb35cdf0-e148-5298-9310-819562e5dab0');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -610,6 +683,14 @@ select '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d'::uuid, 'required_option', '5dd703d
  ('TOEFL_IBT_2026', 'Transfer minimum 5.0 with subscores 4.5+.'),
  ('IELTS', 'Academic or Indicator. Transfer minimum 7.5 (subscores 6.5+).'),
  ('DUOLINGO', 'Admitted class profile ranges ~130–145 by college. Transfer minimum 130 (subscores 125+).')) v;
+insert into score_codes (institution_id, source_id, test_key, code, notes)
+select '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d'::uuid, '702df334-7171-5f97-b725-f5db8584f11b'::uuid, v.* from (values
+ ('sat', '1836', 'Official scores only needed if you enroll.'),
+ ('act', '1154', null),
+ ('toefl', '1836', 'Official scores only needed if you enroll.'),
+ ('ielts', null, 'No numeric code. Send electronically to ''University of Illinois Urbana Champaign Undergraduate''.'),
+ ('duolingo', null, 'No numeric code. Send electronically to ''University of Illinois, Urbana Champaign Undergraduate Admissions''.'),
+ ('pte', null, 'PTE is not listed on the first-year apply page (only TOEFL iBT, IELTS, Duolingo).')) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, tuition_intl_usd, required_fees_usd, room_board_usd, intl_aid_policy, intl_need_aid, intl_merit_aid, merit_scholarships, notes, source_id) values
  ('4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d', '2025-2026', 12992, 33344, 34338, 5054, 15184, 'merit_only', false, true, true, 'Base tuition; many majors (engineering, business, CS) carry differential tuition. H6: only non-need-based (merit) institutional aid for nonresidents.', 'aa34bdc6-0943-59cc-a7ed-978a22436316');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
@@ -636,7 +717,9 @@ insert into institutions (id, slug, name, short_name, country_code, state_region
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fe5ca2d4-b5f3-5f28-82ba-480e03c536d6', '2347bb33-a0d0-572c-b800-0e821b009b7e', 'cds', 'University of Michigan Common Data Set 2025-26', 'https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf', '2025-2026', '2026-10-20'),
  ('3e2162fa-4a08-59f0-9ae1-ad7aa7aed2dc', '2347bb33-a0d0-572c-b800-0e821b009b7e', 'admissions_site', 'U-M — First-year Application Plans', 'https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans', null, '2026-10-20'),
- ('d1f30490-0ec2-5d16-a2ac-a545d229de4e', '2347bb33-a0d0-572c-b800-0e821b009b7e', 'admissions_site', 'U-M — Exams & Visas', 'https://admissions.umich.edu/apply/international-applicants/exams-visas', null, '2026-10-20');
+ ('d1f30490-0ec2-5d16-a2ac-a545d229de4e', '2347bb33-a0d0-572c-b800-0e821b009b7e', 'admissions_site', 'U-M — Exams & Visas', 'https://admissions.umich.edu/apply/international-applicants/exams-visas', null, '2026-10-20'),
+ ('95216ecd-b9ce-59e3-a818-112f2663feb0', '2347bb33-a0d0-572c-b800-0e821b009b7e', 'admissions_site', 'Score-reporting codes (admissions.umich.edu)', 'https://admissions.umich.edu/apply/first-year-applicants/requirements-deadlines', null, '2026-10-20'),
+ ('b0fda596-30d5-529c-858e-290c3b743475', '2347bb33-a0d0-572c-b800-0e821b009b7e', 'other', 'Score-reporting codes (teamdynamix.umich.edu)', 'https://teamdynamix.umich.edu/TDClient/154/Portal/KB/ArticleDet?ID=7504', null, '2026-10-20');
 insert into admission_stats (institution_id, cds_year, applicants, admits, enrolled, waitlist_offered, waitlist_accepted, waitlist_admitted, pct_submit_sat, pct_submit_act, gpa_avg, pct_reporting_gpa, gpa_distribution, notes, source_id) values
  ('2347bb33-a0d0-572c-b800-0e821b009b7e', '2025-2026', 109112, 17915, 8178, 24447, 18435, 1663, 55, 18, 3.9, 97.8, '{"4.0": 38.8, "3.75-3.99": 55.1, "3.50-3.74": 4.8, "3.25-3.49": 0.7, "3.00-3.24": 0.4, "2.50-2.99": 0.2}'::jsonb, 'Fall 2025 cycle: EA closed 11/1 (notification by 1/31), RD 2/1, no ED — ED was added for 2026-27. Portfolio required for Art, Architecture and Ross; some Music/Theatre/Dance and Engineering applicants may be interviewed.', 'fe5ca2d4-b5f3-5f28-82ba-480e03c536d6');
 insert into test_score_percentiles (institution_id, cds_year, source_id, test, p25, p50, p75)
@@ -687,6 +770,14 @@ select '2347bb33-a0d0-572c-b800-0e821b009b7e'::uuid, 'required_option', 'd1f3049
  ('IELTS', 7, '{"each_band": 6.5}'::jsonb, null),
  ('PTE', 68, null, null),
  ('CAMBRIDGE', 185, '{"each_section": 180}'::jsonb, 'C1 Advanced / C2 Proficiency')) v;
+insert into score_codes (institution_id, test_key, code, notes, source_id)
+select '2347bb33-a0d0-572c-b800-0e821b009b7e'::uuid, v.* from (values
+ ('sat', '1839', 'Test-optional; self-reported scores allowed, official scores required only if enrolling.', '95216ecd-b9ce-59e3-a818-112f2663feb0'::uuid),
+ ('act', '2062', null, '95216ecd-b9ce-59e3-a818-112f2663feb0'::uuid),
+ ('toefl', '1839', 'From U-M''s English proficiency help article. No My Best Scores or superscoring.', 'b0fda596-30d5-529c-858e-290c3b743475'::uuid),
+ ('ielts', null, 'IELTS accepted (about 7.0, sections 6.5+) but no code or recipient instruction published.', 'd1f30490-0ec2-5d16-a2ac-a545d229de4e'::uuid),
+ ('duolingo', null, 'U-M states the Duolingo English Test is NOT accepted for undergraduate admission.', 'b0fda596-30d5-529c-858e-290c3b743475'::uuid),
+ ('pte', null, 'PTE Academic accepted (68) but no code or recipient instruction published.', 'd1f30490-0ec2-5d16-a2ac-a545d229de4e'::uuid)) v;
 insert into cost_aid (institution_id, year, tuition_usd, tuition_out_of_state_usd, required_fees_usd, intl_extra_fees_usd, room_board_usd, books_usd, intl_aid_policy, intl_need_aid, merit_scholarships, notes, source_id) values
  ('2347bb33-a0d0-572c-b800-0e821b009b7e', '2026-2027', 18402, 66602, 494, 1000, 17220, 1220, 'none', false, false, 'CDS G1 lower-division column (upper-division: $19,588 in-state / $68,953 out-of-state). H6: institutional scholarship/grant aid NOT available to nonresidents.', 'fe5ca2d4-b5f3-5f28-82ba-480e03c536d6');
 insert into institution_tiers (institution_id, category_key, tier_code, rationale)
