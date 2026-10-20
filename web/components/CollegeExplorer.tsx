@@ -8,7 +8,8 @@ import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate, TierCode } from "@/lib/types";
 import { CollegeBrowser } from "./CollegeBrowser";
 import { FitBadge, Pill, TierBadge } from "./badges";
-import { TIER_FILL, USMap } from "./USMap";
+import { TIER_FILL } from "./USMap";
+import { USMap3D } from "./USMap3D";
 
 type Sort = "tier" | "admit" | "name";
 const TIER_ORDER: TierCode[] = ["S", "A", "B", "C", "D"];
@@ -361,7 +362,7 @@ export function CollegeExplorer({
       </aside>
 
       <div className="h-[58dvh] lg:h-full">
-        <USMap pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
+        <USMap3D pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
           <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
             <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold shadow-sm backdrop-blur" aria-label="Tier colours">
               {TIER_ORDER.map((t) => (
@@ -398,7 +399,7 @@ export function CollegeExplorer({
               <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} side={side} onClose={() => setSelected(null)} />
             </div>
           )}
-        </USMap>
+        </USMap3D>
       </div>
     </div>
   );
