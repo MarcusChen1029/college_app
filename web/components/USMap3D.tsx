@@ -596,8 +596,9 @@ export function USMap3D(props: {
       for (const r of ripples) (r.material as THREE.MeshBasicMaterial).color.set(fillOf(next.tier));
       if (reduced) return;
       if (prev && prev !== next) launchArc(prev, next, Math.max(700, dur * 0.85));
-      // The pin squashes and throws confetti as the camera lands.
-      next.pop = performance.now() + dur * 0.8;
+      // Only the chosen college has a pin: it drops in as the camera arrives, squashing and throwing confetti on impact.
+      next.born = performance.now() + dur * 0.45;
+      next.pop = next.born + 330;
       next.confetti = true;
     };
 
@@ -624,7 +625,7 @@ export function USMap3D(props: {
     const pick = () => {
       ray.setFromCamera(ndc, camera);
       const hits = ray.intersectObjects(
-        [...pinMap.values()].filter((p) => p.leaving == null).map((p) => p.hit),
+        [...pinMap.values()].filter((p) => p.leaving == null && p.root.visible).map((p) => p.hit),
         false,
       );
       const pin = hits.length ? pinMap.get(hits[0].object.userData.slug as string) ?? null : null;
@@ -733,7 +734,10 @@ export function USMap3D(props: {
         const isSel = p === selPin;
         p.hover += ((p === hoverPin ? 1 : 0) - p.hover) * k;
         p.sel += ((isSel ? 1 : 0) - p.sel) * k;
-        let s = pinScale * (1 + 0.25 * p.hover + 0.25 * p.sel);
+        // Unselected pins stay hidden; a deselected one shrinks away.
+        const show = isSel ? 1 : reduced ? 0 : p.sel;
+        p.root.visible = show > 0.02;
+        let s = pinScale * (1 + 0.25 * p.hover + 0.25 * p.sel) * show;
         let drop = 0;
         if (!reduced) {
           const t = clamp01((now - p.born) / 900);
@@ -883,7 +887,7 @@ export function USMap3D(props: {
     api.current?.select(selected, cardSide);
   }, [selected, cardSide]);
 
-  if (failed) return <USMap {...props} />;
+  if (failed) return <USMap {...props} pins={pins.filter((p) => p.slug === selected)} />;
 
   return (
     <div
@@ -891,7 +895,7 @@ export function USMap3D(props: {
       className="map-sky relative h-full min-h-[420px] w-full touch-none overflow-hidden rounded-3xl border-2 border-blue-100"
     >
       <div className="pointer-events-none absolute inset-0">
-        {pins.map((p) => (
+        {pins.filter((p) => p.slug === selected).map((p) => (
           <button
             key={p.slug}
             ref={(node) => {

@@ -385,7 +385,8 @@ export function CollegeExplorer({
 
           {!current && (
             <p className="pointer-events-none absolute inset-x-0 bottom-4 mx-auto w-fit rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-lg">
-              Pick a college or click a pin
+              <span className="lg:hidden">Pick a college below to see it on the map</span>
+              <span className="max-lg:hidden">Pick a college from the list to see it on the map</span>
             </p>
           )}
 
