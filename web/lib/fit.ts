@@ -8,6 +8,7 @@ export type StudentProfile = {
   act?: number | null;
   gpa?: number | null; // unweighted, 4.0 scale
   international?: boolean;
+  reminderEmails?: boolean; // account setting; defaults to on
 };
 
 export type FitInput = {

@@ -91,7 +91,13 @@ function clearLocal() {
 
 // ── Supabase mapping ──
 
-type ProfileRow = { sat_total: number | null; act_composite: number | null; gpa_unweighted: number | null; is_international: boolean };
+type ProfileRow = {
+  sat_total: number | null;
+  act_composite: number | null;
+  gpa_unweighted: number | null;
+  is_international: boolean;
+  reminder_emails: boolean;
+};
 type CollegeRow = {
   institution_id: string;
   plan_key: string | null;
@@ -107,6 +113,7 @@ const toProfile = (r: ProfileRow): StudentProfile => ({
   act: r.act_composite,
   gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
   international: r.is_international,
+  reminderEmails: r.reminder_emails,
 });
 const fromProfile = (userId: string, p: StudentProfile) => ({
   user_id: userId,
@@ -114,6 +121,7 @@ const fromProfile = (userId: string, p: StudentProfile) => ({
   act_composite: p.act ?? null,
   gpa_unweighted: p.gpa ?? null,
   is_international: !!p.international,
+  reminder_emails: p.reminderEmails ?? true,
 });
 const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.institutions?.slug ?? "",
@@ -139,7 +147,7 @@ async function loadRemote(userId: string, email: string | null) {
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international").eq("user_id", userId).maybeSingle(),
+      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails").eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;

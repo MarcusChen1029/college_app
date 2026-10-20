@@ -12,7 +12,7 @@ Australia, etc. without a rewrite.
 | Phase | Scope | Outcome |
 |---|---|---|
 | **1. Demo ✅ built** | 10 US colleges in Supabase; browse / detail / compare / my-list UI; reach-target-safety labels | Proves the data model and data-collection workflow |
-| **2. Student accounts ✅ built** | Email-link sign-in (Supabase Auth); profile + list + application checklist stored in `student_profiles` / `student_colleges` with per-user RLS; local data merged on first sign-in. Still to do: deadline reminder emails | Sync across devices |
+| **2. Student accounts ✅ built** | Email-link sign-in (Supabase Auth); profile + list + application checklist stored in `student_profiles` / `student_colleges` with per-user RLS; local data merged on first sign-in; daily deadline reminder emails (Edge Function + pg_cron, opt-out on /account) | Sync across devices |
 | 3. All US colleges | Bulk import base data (name, location, size) from IPEDS / College Scorecard; CDS stats added school by school | Coverage |
 | 4. International | UK (UCAS), Canada, Australia: new deadline types, grade systems (A-levels, IB, ATAR), English-test rules | Multi-country |
 
@@ -64,6 +64,8 @@ General A but Engineering S. Initial categories:
 math_physics, humanities, arts_design, nursing`.
 
 Tiers live in a lookup table so labels/thresholds can change without touching data.
+
+**Review v1 (2026-10-20):** subject tiers follow S = top ~5 nationally in the field, A ≈ 6–15, B ≈ 16–40, C ≈ 41–100, D beyond. A college gets no tier for a field it has no undergraduate program in (e.g. business at Stanford/Harvard, nursing at MIT). Changes from v0: Haas, Stern and Sloan business → S; Gies → A; Berkeley biology and economics → S; Stanford and Harvard business removed. Every tier now stores a rationale. For the general tier that's the admit rate and SAT range. Rules are in `data/cycle_2026_27.json` → `_tier_rules`.
 
 ---
 
@@ -171,9 +173,7 @@ Done:
 
 Remaining data gaps: Berkeley CDS sections C7/C9/C11 (Google Sheet not machine-readable). NYU doesn't publish waitlist or ED counts.
 
-Next:
-1. Review the editorial tiers and major-admission summaries.
-2. Supabase Auth settings: Site URL and redirect URLs, plus custom SMTP before launch.
-3. Deploy `web/` to Vercel (env vars from `web/.env.example`).
-4. Deadline reminder emails (Supabase scheduled Edge Function).
-5. Phase 3: bulk import base rows from IPEDS / College Scorecard, then add CDS data school by school.
+Also done: tier review v1 and deadline reminder emails (dry run until Resend secrets are set).
+
+Next (owner steps, see DEPLOY.md): run the tier patch and migration 0006, import to Vercel, set the Supabase Auth URLs and SMTP, add the Resend secrets.
+Later: Phase 3 bulk import (IPEDS / College Scorecard).

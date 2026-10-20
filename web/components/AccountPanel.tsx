@@ -26,6 +26,20 @@ export function AccountPanel() {
           Your scores and college list are saved to your account{student.syncing ? " (syncing…)" : ""}. Anything you had saved in this
           browser before signing in was added to it.
         </p>
+        <label className="flex items-start gap-2 text-sm">
+          <input
+            type="checkbox"
+            className="mt-1"
+            checked={student.profile.reminderEmails ?? true}
+            onChange={(e) => student.setProfile({ ...student.profile, reminderEmails: e.target.checked })}
+          />
+          <span>
+            Email me deadline reminders
+            <span className="block text-xs text-zinc-500">
+              14, 3 and 1 days before each deadline for colleges on my list (only the plan I picked; skipped once I&apos;ve applied).
+            </span>
+          </span>
+        </label>
         {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
         <div className="flex gap-3">
           <Link href="/my-list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">

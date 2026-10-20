@@ -11,3 +11,5 @@ Helps students research and track colleges. The demo has 10 US colleges. See [PL
 | `web/` | Next.js app |
 
 To update data: edit the JSON, run `python3 scripts/build_seed.py`, then apply `supabase/seed/*.sql` to the project.
+
+Deployment, sign-in settings and reminder emails: see [DEPLOY.md](DEPLOY.md).
