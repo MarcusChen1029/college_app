@@ -5,6 +5,7 @@ export type Fit = "super_reach" | "reach" | "target" | "safety";
 
 export const FIT_LABEL: Record<Fit, string> = { super_reach: "Super reach", reach: "Reach", target: "Target", safety: "Safety" };
 
+import type { ActivityData } from "./activities";
 import type { PlanKey } from "./plans";
 import type { TestDetails } from "./scores";
 
@@ -17,6 +18,7 @@ export type StudentProfile = {
   plan?: PlanKey; // defaults to free
   tests?: TestDetails; // section scores + English tests
   interested?: string[]; // college slugs being considered but not on the list
+  activities?: Partial<ActivityData>; // Common App + UC activity lists
 };
 
 export type FitInput = {

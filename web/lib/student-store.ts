@@ -9,6 +9,7 @@ import type { Checklist } from "./checklist";
 import type { StudentProfile } from "./fit";
 import { canAddMore, DEFAULT_PLAN, getPlan, type PlanKey } from "./plans";
 import type { TestDetails } from "./scores";
+import type { ActivityData } from "./activities";
 import { browserSupabase } from "./supabase-browser";
 
 export const STATUSES = [
@@ -102,6 +103,7 @@ type ProfileRow = {
   plan: PlanKey;
   test_details: TestDetails | null;
   interested: string[] | null;
+  activities: Partial<ActivityData> | null;
 };
 type CollegeRow = {
   institution_id: string;
@@ -125,6 +127,7 @@ const toProfile = (r: ProfileRow): StudentProfile => ({
   plan: r.plan,
   tests: r.test_details ?? {},
   interested: r.interested ?? [],
+  activities: r.activities ?? {},
 });
 const fromProfile = (userId: string, p: StudentProfile) => ({
   user_id: userId,
@@ -136,6 +139,7 @@ const fromProfile = (userId: string, p: StudentProfile) => ({
   plan: p.plan ?? DEFAULT_PLAN,
   test_details: p.tests ?? {},
   interested: p.interested ?? [],
+  activities: p.activities ?? {},
 });
 const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.institutions?.slug ?? "",
@@ -168,7 +172,7 @@ async function loadRemote(userId: string, email: string | null) {
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan, test_details, interested").eq("user_id", userId).maybeSingle(),
+      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan, test_details, interested, activities").eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;
@@ -275,6 +279,10 @@ export function useStudent() {
     /** False once the list is full for the current plan. */
     canAdd: canAddMore(s.profile.plan, s.list.length),
     setProfile,
+    /** Merges into the latest saved profile, so back-to-back edits don't overwrite each other. */
+    updateProfile(patch: Partial<StudentProfile>) {
+      setProfile({ ...state.profile, ...patch });
+    },
     /** No payment yet: choosing a plan just saves it. */
     setPlan(plan: PlanKey) {
       setProfile({ ...state.profile, plan });
