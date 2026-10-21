@@ -7,8 +7,8 @@
 export type Login = { url: string; username: string; password: string };
 export const EMPTY_LOGIN: Login = { url: "", username: "", password: "" };
 
-export type PortalGroup = "application" | "testing";
-export const GROUP_TITLES: Record<PortalGroup, string> = { application: "Application systems", testing: "Testing & financial aid" };
+/** "application" systems are always listed; "optional" ones (testing, aid) are added under Other when needed. */
+export type PortalGroup = "application" | "optional";
 
 export type PortalSystem = { key: string; name: string; group: PortalGroup; url: string | null; hint: string; campuses?: string[] };
 
@@ -39,13 +39,13 @@ export const SYSTEMS: PortalSystem[] = [
     url: null,
     hint: "No central login: each college that uses it (e.g. Clemson, Virginia Tech, Oregon) links to it from its applicant portal. One record can be shared.",
   },
-  { key: "collegeboard", name: "College Board (SAT, AP, score sends)", group: "testing", url: "https://www.collegeboard.org", hint: "SAT and AP scores and score sending." },
-  { key: "act", name: "MyACT", group: "testing", url: "https://my.act.org", hint: "ACT registration and score sending." },
-  { key: "toefl", name: "TOEFL (ETS account)", group: "testing", url: "https://www.ets.org/toefl", hint: "TOEFL registration and score sending." },
-  { key: "ielts", name: "IELTS", group: "testing", url: null, hint: "Login is with the test centre you booked through." },
-  { key: "duolingo", name: "Duolingo English Test", group: "testing", url: "https://englishtest.duolingo.com", hint: "Taking the test and sending results." },
-  { key: "css", name: "CSS Profile", group: "testing", url: "https://cssprofile.collegeboard.org", hint: "Uses your College Board login; needed for aid at many private colleges." },
-  { key: "fafsa", name: "FAFSA (StudentAid.gov)", group: "testing", url: "https://studentaid.gov", hint: "US citizens and eligible non-citizens only." },
+  { key: "collegeboard", name: "College Board (SAT, AP, score sends)", group: "optional", url: "https://www.collegeboard.org", hint: "SAT and AP scores and score sending." },
+  { key: "act", name: "MyACT", group: "optional", url: "https://my.act.org", hint: "ACT registration and score sending." },
+  { key: "toefl", name: "TOEFL (ETS account)", group: "optional", url: "https://www.ets.org/toefl", hint: "TOEFL registration and score sending." },
+  { key: "ielts", name: "IELTS", group: "optional", url: null, hint: "Login is with the test centre you booked through." },
+  { key: "duolingo", name: "Duolingo English Test", group: "optional", url: "https://englishtest.duolingo.com", hint: "Taking the test and sending results." },
+  { key: "css", name: "CSS Profile", group: "optional", url: "https://cssprofile.collegeboard.org", hint: "Uses your College Board login; needed for aid at many private colleges." },
+  { key: "fafsa", name: "FAFSA (StudentAid.gov)", group: "optional", url: "https://studentaid.gov", hint: "US citizens and eligible non-citizens only." },
 ];
 
 export type CustomPortal = Login & { id: string; name: string };

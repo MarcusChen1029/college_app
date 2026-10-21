@@ -153,7 +153,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
                   </div>
                   <p className="mt-2 text-sm text-zinc-600">
                     {submitted} of {entries.length} applications submitted.{" "}
-                    <Link href="/my-list" className="font-semibold text-blue-700 underline underline-offset-4">
+                    <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
                       Open my list
                     </Link>
                   </p>

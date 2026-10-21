@@ -84,7 +84,7 @@ export function PricingPlans() {
       {justChose && current === justChose && (
         <p className="rounded-md bg-emerald-50 p-3 text-sm text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200" role="status">
           You&apos;re on the {PLANS.find((p) => p.key === justChose)!.name} plan.{" "}
-          <Link href="/my-list" className="underline">
+          <Link href="/application/list" className="underline">
             Go to My list
           </Link>
         </p>

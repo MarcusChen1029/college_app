@@ -40,7 +40,7 @@ export function AccountPanel() {
         </label>
         {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
         <div className="flex gap-3">
-          <Link href="/my-list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
+          <Link href="/application/list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
             Go to my list
           </Link>
           <button className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm dark:border-zinc-700" onClick={() => student.signOut()}>

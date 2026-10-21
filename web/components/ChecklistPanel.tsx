@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   ENGLISH_PLANS,
   ESSAY_STATUSES,
@@ -14,7 +13,7 @@ import {
   type TestPlan,
 } from "@/lib/checklist";
 import { ENGLISH_POLICY, TEST_POLICY } from "@/lib/format";
-import type { ListEntry, Portal } from "@/lib/student-store";
+import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 
 export const SELECT = "rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
@@ -32,7 +31,7 @@ type Props = {
   entry: ListEntry;
   college: CollegeSummary;
   international: boolean;
-  onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "portal">>) => void;
+  onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes">>) => void;
   onRemove: () => void;
 };
 
@@ -127,8 +126,6 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
         </Check>
       </Section>
 
-      <PortalSection portal={entry.portal} name={college.name} onChange={(portal) => onChange({ portal })} />
-
       <Section title="Recommendations" done={isDone("recommendations", c)}>
         <Check checked={!!c.recommendations} onChange={(v) => set({ recommendations: v })}>
           All recommendations submitted
@@ -200,62 +197,6 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
         </div>
       </div>
     </div>
-  );
-}
-
-function PortalSection({ portal, name, onChange }: { portal: Portal; name: string; onChange: (p: Portal) => void }) {
-  const [show, setShow] = useState(false);
-  const save = (patch: Partial<Portal>) => {
-    const next = { ...portal, ...patch };
-    if (next.url !== portal.url || next.username !== portal.username || next.password !== portal.password) onChange(next);
-  };
-  const link = safeLink(portal.url);
-  return (
-    <section className="rounded-md border border-zinc-200 bg-white p-2.5 md:col-span-2 dark:border-zinc-800 dark:bg-zinc-950">
-      <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-300">Application portal</h3>
-      <div className="flex flex-wrap items-center gap-2">
-        <div className="flex min-w-60 flex-[2] items-center gap-2">
-          <input
-            type="url"
-            className={`${INPUT} min-w-0 flex-1`}
-            defaultValue={portal.url}
-            placeholder="Portal link, e.g. https://apply.example.edu"
-            aria-label={`Application portal link for ${name}`}
-            onBlur={(e) => save({ url: e.target.value.trim() })}
-          />
-          {link && (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="shrink-0 text-xs text-blue-600 underline dark:text-blue-400">
-              Open ↗
-            </a>
-          )}
-        </div>
-        <input
-          className={`${INPUT} min-w-36 flex-1`}
-          defaultValue={portal.username}
-          placeholder="Username / email"
-          autoComplete="off"
-          aria-label={`Portal username for ${name}`}
-          onBlur={(e) => save({ username: e.target.value.trim() })}
-        />
-        <div className="flex min-w-36 flex-1 items-center gap-1">
-          <input
-            type={show ? "text" : "password"}
-            className={`${INPUT} min-w-0 flex-1`}
-            defaultValue={portal.password}
-            placeholder="Password"
-            autoComplete="new-password"
-            aria-label={`Portal password for ${name}`}
-            onBlur={(e) => save({ password: e.target.value })}
-          />
-          <button className="shrink-0 rounded px-1 text-xs text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200" onClick={() => setShow((v) => !v)}>
-            {show ? "Hide" : "Show"}
-          </button>
-        </div>
-      </div>
-      <p className="mt-1.5 text-[11px] text-zinc-400">
-        Saved to your account (or this browser when signed out) without extra encryption. Use a password you don&apos;t use anywhere else.
-      </p>
-    </section>
   );
 }
 

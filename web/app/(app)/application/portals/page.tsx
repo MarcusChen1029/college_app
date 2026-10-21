@@ -12,10 +12,7 @@ async function Data() {
 export default function PortalsRoute() {
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-semibold">Portals</h1>
-        <p className="text-sm text-zinc-500">Every login in one place: your colleges, the UC and Texas systems, STARS, testing and aid sites.</p>
-      </div>
+      <p className="text-sm text-zinc-500">Click a portal&apos;s name to open it; click anywhere else on its row to see or edit the login.</p>
       <Suspense fallback={<div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />}>
         <Data />
       </Suspense>

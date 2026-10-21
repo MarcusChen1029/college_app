@@ -5,7 +5,8 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
 import { progress, type Checklist } from "@/lib/checklist";
-import { registerColleges, shownStatus, STATUS_OPTIONS, useStudent, type Status } from "@/lib/student-store";
+import { hasDecision, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
+import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { FitBadge, Pill, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT } from "./ChecklistPanel";
@@ -14,23 +15,33 @@ import { SchoolCodes } from "./SchoolCodes";
 
 const noop = () => () => {};
 
-const STATUS_LABEL: Record<Status, string> = {
-  researching: "Researching",
-  planning: "Planning",
-  in_progress: "In progress",
-  submitted: "Submitted",
-  interview: "Interview",
-  admitted: "Admitted",
-  deferred: "Deferred",
-  waitlisted: "Waitlisted",
-  rejected: "Rejected",
-  withdrawn: "Withdrawn",
-  enrolled: "Enrolled",
-};
-
-// Old entries can hold a status with no current equivalent (e.g. rejected); keep it selectable for that row.
-const statusOptions = (current: Status): readonly Status[] =>
-  (STATUS_OPTIONS as readonly Status[]).includes(shownStatus(current)) ? STATUS_OPTIONS : [...STATUS_OPTIONS, current];
+/** In progress → Ready (checklist complete) → Submitted. Decisions are recorded on Results. */
+function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string; onSubmit: (submitted: boolean) => void }) {
+  if (hasDecision(entry.status)) {
+    return (
+      <Link href="/application/results" className="hover:underline">
+        <Pill tone={entry.status === "admitted" || entry.status === "enrolled" ? "green" : entry.status === "rejected" ? "red" : "blue"}>
+          {RESULT_LABEL[resultStatus(entry.status)]}
+        </Pill>
+      </Link>
+    );
+  }
+  const st = stage(entry.status, entry.checklist);
+  return (
+    <select
+      className={`${SELECT} ${st === "ready" ? "border-emerald-400 bg-emerald-50 font-semibold text-emerald-800" : st === "submitted" ? "border-blue-300 bg-blue-50 text-blue-800" : ""}`}
+      value={st === "submitted" ? "submitted" : "working"}
+      onChange={(e) => onSubmit(e.target.value === "submitted")}
+      aria-label={`Status for ${name}`}
+      title={st === "in_progress" ? "Finish every checklist item to mark it Ready, then Submitted." : undefined}
+    >
+      <option value="working">{st === "ready" ? "✓ Ready" : "In progress"}</option>
+      <option value="submitted" disabled={st === "in_progress"}>
+        Submitted
+      </option>
+    </select>
+  );
+}
 
 function ProgressBadge({ checklist }: { checklist: Checklist }) {
   const { done, total, missing } = progress(checklist);
@@ -226,18 +237,11 @@ export function MyList({
                     </select>
                   </td>
                   <td className="p-2">
-                    <select
-                      className={SELECT}
-                      value={shownStatus(entry.status)}
-                      onChange={(e) => student.update(entry.slug, { status: e.target.value as Status })}
-                      aria-label={`Status for ${college.name}`}
-                    >
-                      {statusOptions(entry.status).map((s) => (
-                        <option key={s} value={s}>
-                          {STATUS_LABEL[s]}
-                        </option>
-                      ))}
-                    </select>
+                    <StatusCell
+                      entry={entry}
+                      name={college.name}
+                      onSubmit={(submitted) => student.update(entry.slug, { status: submitted ? "submitted" : "in_progress" })}
+                    />
                   </td>
                   <td className="p-2">
                     <ProgressBadge checklist={entry.checklist} />

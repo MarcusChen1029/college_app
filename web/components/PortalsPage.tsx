@@ -2,22 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { safeLink } from "@/lib/checklist";
-import {
-  campusesOf,
-  campusKey,
-  EMPTY_LOGIN,
-  GROUP_TITLES,
-  openUrl,
-  savedCount,
-  SYSTEMS,
-  type CustomPortal,
-  type Login,
-  type PortalData,
-  type PortalGroup,
-  type PortalSystem,
-} from "@/lib/portals";
 import { newId } from "@/lib/activities";
+import { isSubmitted } from "@/lib/application";
+import { safeLink } from "@/lib/checklist";
+import { campusesOf, campusKey, EMPTY_LOGIN, openUrl, savedCount, SYSTEMS, type CustomPortal, type Login, type PortalData, type PortalSystem } from "@/lib/portals";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 
@@ -43,7 +31,10 @@ function CopyButton({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** One portal: link, username and password, each saved on blur. */
+/**
+ * One portal as a collapsible box. The name opens the portal in a new tab; clicking anywhere
+ * else on the box shows the saved login for checking or editing (saved on blur).
+ */
 function LoginRow({
   name,
   hint,
@@ -63,73 +54,106 @@ function LoginRow({
   onRename?: (name: string) => void;
   indent?: boolean;
 }) {
+  const [open, setOpen] = useState(!name && !!onRename);
   const [show, setShow] = useState(false);
   const save = (patch: Partial<Login>) => {
     const next = { ...login, ...patch };
     if (next.url !== login.url || next.username !== login.username || next.password !== login.password) onSave(next);
   };
   const link = safeLink(openUrl(login, official ?? null));
+  const label = name || "Untitled portal";
   return (
-    <li className={`py-3 ${indent ? "ml-6 border-l-2 border-blue-100 pl-4" : ""}`}>
-      <div className="mb-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        {onRename ? (
-          <input
-            className={`${input} font-semibold`}
-            defaultValue={name}
-            placeholder="Portal name"
-            aria-label="Portal name"
-            onBlur={(e) => e.target.value.trim() !== name && onRename(e.target.value.trim())}
-          />
-        ) : (
-          <span className="font-semibold">{name}</span>
-        )}
-        {link && (
-          <a href={link} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline">
-            Open ↗
-          </a>
-        )}
-        {hint && <span className="text-xs text-zinc-500">{hint}</span>}
-        {onRemove && (
-          <button type="button" className="ml-auto text-xs text-zinc-500 hover:text-rose-600" onClick={onRemove}>
-            Remove
-          </button>
-        )}
-      </div>
-      <div className="grid gap-2 sm:grid-cols-[2fr_1.5fr_1.5fr]">
-        <input
-          type="url"
-          className={input}
-          defaultValue={login.url}
-          placeholder={official ?? "Portal link"}
-          aria-label={`Link for ${name}`}
-          onBlur={(e) => save({ url: e.target.value.trim() })}
-        />
-        <div className="flex items-center gap-1">
-          <input
-            className={`${input} flex-1`}
-            defaultValue={login.username}
-            placeholder="Username / email"
-            autoComplete="off"
-            aria-label={`Username for ${name}`}
-            onBlur={(e) => save({ username: e.target.value.trim() })}
-          />
-          <CopyButton value={login.username} label={`username for ${name}`} />
+    <li className={indent ? "ml-6" : ""}>
+      <div className={`rounded-xl border ${open ? "border-blue-300 bg-blue-50/40" : "border-zinc-200"}`}>
+        <div
+          role="button"
+          tabIndex={0}
+          aria-expanded={open}
+          aria-label={`${open ? "Hide" : "Show"} login for ${label}`}
+          className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-zinc-50"
+          onClick={() => setOpen((v) => !v)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setOpen((v) => !v);
+            }
+          }}
+        >
+          {link ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-blue-700 hover:underline"
+              onClick={(e) => e.stopPropagation()}
+              title={`Open ${label}`}
+            >
+              {label} ↗
+            </a>
+          ) : (
+            <span className="font-semibold">{label}</span>
+          )}
+          <span className="min-w-0 flex-1 truncate text-xs text-zinc-500">{login.username || (link ? "No login saved" : "No link or login saved")}</span>
+          <span aria-hidden className="text-zinc-400">
+            {open ? "▾" : "▸"}
+          </span>
         </div>
-        <div className="flex items-center gap-1">
-          <input
-            type={show ? "text" : "password"}
-            className={`${input} flex-1`}
-            defaultValue={login.password}
-            placeholder="Password"
-            autoComplete="new-password"
-            aria-label={`Password for ${name}`}
-            onBlur={(e) => save({ password: e.target.value })}
-          />
-          <button type="button" className="shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100" onClick={() => setShow((v) => !v)}>
-            {show ? "Hide" : "Show"}
-          </button>
-          <CopyButton value={login.password} label={`password for ${name}`} />
-        </div>
+        {open && (
+          <div className="space-y-2 border-t border-zinc-100 px-3 pb-3 pt-2">
+            {hint && <p className="text-xs text-zinc-500">{hint}</p>}
+            {onRename && (
+              <input
+                className={`${input} w-full font-semibold`}
+                defaultValue={name}
+                placeholder="Portal name, e.g. Scholarship portal"
+                aria-label="Portal name"
+                autoFocus={!name}
+                onBlur={(e) => e.target.value.trim() !== name && onRename(e.target.value.trim())}
+              />
+            )}
+            <div className="grid gap-2 sm:grid-cols-[2fr_1.5fr_1.5fr]">
+              <input
+                type="url"
+                className={input}
+                defaultValue={login.url}
+                placeholder={official ?? "Portal link"}
+                aria-label={`Link for ${label}`}
+                onBlur={(e) => save({ url: e.target.value.trim() })}
+              />
+              <div className="flex items-center gap-1">
+                <input
+                  className={`${input} flex-1`}
+                  defaultValue={login.username}
+                  placeholder="Username / email"
+                  autoComplete="off"
+                  aria-label={`Username for ${label}`}
+                  onBlur={(e) => save({ username: e.target.value.trim() })}
+                />
+                <CopyButton value={login.username} label={`username for ${label}`} />
+              </div>
+              <div className="flex items-center gap-1">
+                <input
+                  type={show ? "text" : "password"}
+                  className={`${input} flex-1`}
+                  defaultValue={login.password}
+                  placeholder="Password"
+                  autoComplete="new-password"
+                  aria-label={`Password for ${label}`}
+                  onBlur={(e) => save({ password: e.target.value })}
+                />
+                <button type="button" className="shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100" onClick={() => setShow((v) => !v)}>
+                  {show ? "Hide" : "Show"}
+                </button>
+                <CopyButton value={login.password} label={`password for ${label}`} />
+              </div>
+            </div>
+            {onRemove && (
+              <button type="button" className="text-xs text-zinc-500 hover:text-rose-600" onClick={onRemove}>
+                Remove
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </li>
   );
@@ -138,7 +162,7 @@ function LoginRow({
 function Section({ title, aside, children }: { title: string; aside?: React.ReactNode; children: React.ReactNode }) {
   return (
     <section className="rounded-3xl border-2 border-zinc-200 p-5">
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="mb-3 flex flex-wrap items-center gap-3">
         <h2 className="text-xl font-bold">{title}</h2>
         <span className="ml-auto">{aside}</span>
       </div>
@@ -146,6 +170,8 @@ function Section({ title, aside, children }: { title: string; aside?: React.Reac
     </section>
   );
 }
+
+const OPTIONAL = SYSTEMS.filter((s) => s.group === "optional");
 
 export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const student = useStudent();
@@ -155,7 +181,12 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
 
   const data: PortalData = student.profile.portals ?? {};
   const save = (patch: Partial<PortalData>) => student.updateProfile({ portals: { ...data, ...patch } });
-  const setSystem = (key: string, login: Login) => save({ systems: { ...data.systems, [key]: login } });
+  const setSystem = (key: string, login: Login | null) => {
+    const systems = { ...data.systems };
+    if (login) systems[key] = login;
+    else delete systems[key];
+    save({ systems });
+  };
   const setCampus = (key: string, login: Login | null) => {
     const campuses = { ...data.campuses };
     if (login) campuses[key] = login;
@@ -165,9 +196,10 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const custom = data.custom ?? [];
   const setCustom = (next: CustomPortal[]) => save({ custom: next });
 
-  const listed = student.list.flatMap((e) => {
+  // A college's portal joins this page once its application is submitted.
+  const submitted = student.list.flatMap((e) => {
     const college = colleges.find((c) => c.slug === e.slug);
-    return college ? [{ entry: e, college }] : [];
+    return college && isSubmitted(e.status) ? [{ entry: e, college }] : [];
   });
 
   const systemRows = (s: PortalSystem) => {
@@ -186,7 +218,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         />
       )),
       remaining.length > 0 && (
-        <li key={`${s.key}-add`} className="ml-6 border-l-2 border-blue-100 pb-3 pl-4">
+        <li key={`${s.key}-add`} className="ml-6">
           <select
             className={`${input} text-xs`}
             value=""
@@ -203,33 +235,32 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     ];
   };
 
+  const optionalAdded = OPTIONAL.filter((s) => data.systems?.[s.key]);
+  const optionalLeft = OPTIONAL.filter((s) => !data.systems?.[s.key]);
+
   return (
     <div className="space-y-6">
       <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900">
         {student.auth ? "Saved to your account" : "Saved in this browser only"} without extra encryption. Use passwords you don&apos;t use anywhere else.
         {" · "}
-        {savedCount(data) + listed.filter(({ entry }) => entry.portal.username.trim()).length} logins saved
+        {(() => {
+          const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
+          return `${n} ${n === 1 ? "login" : "logins"} saved`;
+        })()}
       </p>
 
-      <Section
-        title="My colleges"
-        aside={
-          <Link href="/my-list" className="text-sm text-blue-600 underline">
-            Open my list
-          </Link>
-        }
-      >
-        {listed.length === 0 ? (
-          <p className="mt-2 text-sm text-zinc-500">
-            No colleges on your list yet. Add some from the{" "}
-            <Link href="/colleges" className="text-blue-600 underline">
-              Colleges
-            </Link>{" "}
-            page; each one gets a portal row here.
+      <Section title="Submitted colleges">
+        {submitted.length === 0 ? (
+          <p className="text-sm text-zinc-500">
+            A college&apos;s applicant portal shows up here once you mark it Submitted on{" "}
+            <Link href="/application/list" className="text-blue-600 underline">
+              My list
+            </Link>
+            . Its login usually arrives by email after you apply.
           </p>
         ) : (
-          <ul className="divide-y divide-zinc-100">
-            {listed.map(({ entry, college }) => (
+          <ul className="space-y-2">
+            {submitted.map(({ entry, college }) => (
               <LoginRow
                 key={college.slug}
                 name={college.short_name ?? college.name}
@@ -242,28 +273,48 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         )}
       </Section>
 
-      {(Object.keys(GROUP_TITLES) as PortalGroup[]).map((g) => (
-        <Section key={g} title={GROUP_TITLES[g]}>
-          <ul className="divide-y divide-zinc-100">{SYSTEMS.filter((s) => s.group === g).flatMap(systemRows)}</ul>
-        </Section>
-      ))}
+      <Section title="Application systems">
+        <ul className="space-y-2">{SYSTEMS.filter((s) => s.group === "application").flatMap(systemRows)}</ul>
+      </Section>
 
       <Section
         title="Other"
         aside={
-          <button
-            type="button"
+          <select
             className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
-            onClick={() => setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "" }])}
+            value=""
+            aria-label="Add a portal"
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "" }]);
+              else if (v) setSystem(v, EMPTY_LOGIN);
+            }}
           >
-            + Add portal
-          </button>
+            <option value="">+ Add portal</option>
+            {optionalLeft.map((s) => (
+              <option key={s.key} value={s.key}>
+                {s.name}
+              </option>
+            ))}
+            <option value="custom">Something else…</option>
+          </select>
         }
       >
-        {custom.length === 0 ? (
-          <p className="mt-2 text-sm text-zinc-500">Scholarships, interview scheduling, housing… anything else with a login.</p>
+        {optionalAdded.length === 0 && custom.length === 0 ? (
+          <p className="text-sm text-zinc-500">Testing and aid sites (College Board, ACT, TOEFL, CSS Profile…), scholarships, housing — add only the ones you use.</p>
         ) : (
-          <ul className="divide-y divide-zinc-100">
+          <ul className="space-y-2">
+            {optionalAdded.map((s) => (
+              <LoginRow
+                key={s.key}
+                name={s.name}
+                hint={s.hint}
+                official={s.url}
+                login={data.systems![s.key]}
+                onSave={(l) => setSystem(s.key, l)}
+                onRemove={() => window.confirm(`Remove ${s.name}?`) && setSystem(s.key, null)}
+              />
+            ))}
             {custom.map((p) => (
               <LoginRow
                 key={p.id}

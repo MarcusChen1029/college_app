@@ -12,11 +12,11 @@ async function Data() {
 export default function MyListPage() {
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-semibold">My list</h1>
-        <p className="text-sm text-zinc-500">Plan, status, checklist and deadlines for every college you are considering.</p>
-      </div>
-      <Suspense fallback={<div className="h-64 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />}>
+      <p className="text-sm text-zinc-500">
+        Plan and checklist for every college you&apos;re applying to. A college is <strong>Ready</strong> once its checklist is complete, and only then
+        can it be marked Submitted.
+      </p>
+      <Suspense fallback={<div className="h-64 animate-pulse rounded-lg bg-zinc-100" />}>
         <Data />
       </Suspense>
     </div>

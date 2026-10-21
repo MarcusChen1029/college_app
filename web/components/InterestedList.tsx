@@ -35,7 +35,7 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
       {!student.canAdd && (
         <p className="rounded bg-amber-50 px-3 py-2 text-xs text-amber-800">
           Your list is full on the {student.plan.name} plan. Remove a college from{" "}
-          <Link href="/my-list" className="underline">
+          <Link href="/application/list" className="underline">
             My list
           </Link>{" "}
           or{" "}
