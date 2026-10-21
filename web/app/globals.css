@@ -235,3 +235,8 @@ h3,
     transition: none;
   }
 }
+
+/* Resume prints with letter-size margins. */
+@page {
+  margin: 0.6in;
+}

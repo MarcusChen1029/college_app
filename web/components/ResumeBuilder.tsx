@@ -1,0 +1,166 @@
+"use client";
+
+import Link from "next/link";
+import { useState, useSyncExternalStore } from "react";
+import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER, resumeText, type ResumeHeader, type ResumeOptions, type ResumeSource } from "@/lib/resume";
+import { useStudent } from "@/lib/student-store";
+
+const noop = () => () => {};
+// The global h1–h3 rule sets the display font; resume headings follow the serif body instead.
+const plainHeading = { fontFamily: "inherit", letterSpacing: "normal" };
+const input = "w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
+
+const HEADER_FIELDS: [keyof ResumeHeader, string, string][] = [
+  ["fullName", "Full name", "Alex Lin"],
+  ["email", "Email", "alex@example.com"],
+  ["phone", "Phone", "+886 912 345 678"],
+  ["location", "City, country", "Taipei, Taiwan"],
+  ["school", "High school", "Taipei American School"],
+  ["gradYear", "Class of", "2027"],
+];
+
+const SOURCES: Record<ResumeSource, string> = { both: "Both (no duplicates)", common: "Common App only", uc: "UC only" };
+
+export function ResumeBuilder() {
+  const student = useStudent();
+  const mounted = useSyncExternalStore(noop, () => true, () => false);
+  const [copied, setCopied] = useState(false);
+  if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
+
+  const settings = student.profile.resume ?? {};
+  const header: ResumeHeader = { ...EMPTY_HEADER, ...settings.header };
+  const options: ResumeOptions = { ...DEFAULT_OPTIONS, ...settings.options };
+  const resume = buildResume(student.profile, header, options);
+  const setHeader = (patch: Partial<ResumeHeader>) => student.updateProfile({ resume: { ...settings, header: { ...header, ...patch } } });
+  const setOptions = (patch: Partial<ResumeOptions>) => student.updateProfile({ resume: { ...settings, options: { ...options, ...patch } } });
+  const empty = resume.sections.length === 0;
+  const contact = [header.email, header.phone, header.location].filter(Boolean);
+
+  return (
+    <div className="grid gap-8 lg:grid-cols-[18rem_1fr]">
+      <aside className="space-y-6 print:hidden">
+        <section className="space-y-3">
+          <h2 className="font-bold">Header</h2>
+          {HEADER_FIELDS.map(([key, label, placeholder]) => (
+            <label key={key} className="flex flex-col gap-1">
+              <span className="text-xs text-zinc-500">{label}</span>
+              <input
+                className={input}
+                placeholder={placeholder}
+                defaultValue={header[key]}
+                onBlur={(e) => e.target.value.trim() !== header[key] && setHeader({ [key]: e.target.value.trim() })}
+              />
+            </label>
+          ))}
+        </section>
+
+        <section className="space-y-2 text-sm">
+          <h2 className="font-bold">Content</h2>
+          <fieldset className="space-y-1">
+            <legend className="mb-1 text-xs text-zinc-500">Activities from</legend>
+            {(Object.keys(SOURCES) as ResumeSource[]).map((s) => (
+              <label key={s} className="flex items-center gap-2">
+                <input type="radio" name="source" checked={options.source === s} onChange={() => setOptions({ source: s })} />
+                {SOURCES[s]}
+              </label>
+            ))}
+          </fieldset>
+          <label className="flex items-center gap-2 pt-1">
+            <input type="checkbox" checked={options.showScores} onChange={(e) => setOptions({ showScores: e.target.checked })} />
+            GPA and test scores
+          </label>
+          <label className="flex items-center gap-2">
+            <input type="checkbox" checked={options.showHours} onChange={(e) => setOptions({ showHours: e.target.checked })} />
+            Hours per week / weeks per year
+          </label>
+          <p className="pt-1 text-xs text-zinc-500">
+            Scores come from your{" "}
+            <Link href="/profile" className="text-blue-600 underline">
+              Profile
+            </Link>
+            ; entries from{" "}
+            <Link href="/activities" className="text-blue-600 underline">
+              Activities
+            </Link>
+            .
+          </p>
+        </section>
+
+        <section className="flex flex-col gap-2">
+          <button type="button" onClick={() => window.print()} className="rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700">
+            Print / save as PDF
+          </button>
+          <button
+            type="button"
+            onClick={async () => {
+              await navigator.clipboard.writeText(resumeText(header, resume));
+              setCopied(true);
+              setTimeout(() => setCopied(false), 2000);
+            }}
+            className="rounded-md border border-zinc-300 px-3 py-2 text-sm font-medium hover:bg-zinc-50"
+          >
+            {copied ? "Copied ✓" : "Copy as plain text"}
+          </button>
+          <p className="text-xs text-zinc-500">In the print dialog, choose &quot;Save as PDF&quot; and turn off headers and footers.</p>
+        </section>
+      </aside>
+
+      <article className="mx-auto w-full max-w-[8.5in] rounded-lg border border-zinc-200 bg-white p-10 font-serif text-[13px] leading-snug text-zinc-900 shadow-sm print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none">
+        <header className="text-center">
+          <h2 className="text-2xl font-bold" style={{ ...plainHeading, letterSpacing: "0.025em" }}>{header.fullName || <span className="text-zinc-300 print:hidden">Your name</span>}</h2>
+          {contact.length > 0 && <p className="mt-1 text-zinc-600">{contact.join("  ·  ")}</p>}
+        </header>
+
+        {(header.school || resume.education.lines.length > 0) && (
+          <ResumeSection title="Education">
+            <div className="flex justify-between gap-4">
+              <span className="font-bold">{header.school}</span>
+              {header.gradYear && <span className="shrink-0">Class of {header.gradYear}</span>}
+            </div>
+            {resume.education.lines.map((l) => (
+              <p key={l}>{l}</p>
+            ))}
+          </ResumeSection>
+        )}
+
+        {resume.sections.map((s) => (
+          <ResumeSection key={s.key} title={s.title}>
+            <ul className="space-y-2">
+              {s.items.map((item, i) => (
+                <li key={i} className="break-inside-avoid">
+                  <div className="flex justify-between gap-4">
+                    <span>
+                      <span className="font-bold">{item.title}</span>
+                      {item.organization && <span>, {item.organization}</span>}
+                    </span>
+                    {item.meta && <span className="shrink-0 text-right text-zinc-600">{item.meta}</span>}
+                  </div>
+                  {item.description && <p className="mt-0.5 text-zinc-800">{item.description}</p>}
+                </li>
+              ))}
+            </ul>
+          </ResumeSection>
+        ))}
+
+        {empty && (
+          <p className="mt-8 text-center font-sans text-sm text-zinc-500 print:hidden">
+            No activities yet. Add them on the{" "}
+            <Link href="/activities" className="text-blue-600 underline">
+              Activities
+            </Link>{" "}
+            page and they&apos;ll appear here.
+          </p>
+        )}
+      </article>
+    </div>
+  );
+}
+
+function ResumeSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="mt-5">
+      <h3 style={{ ...plainHeading, letterSpacing: "0.15em" }} className="mb-2 border-b border-zinc-800 pb-0.5 text-xs font-bold uppercase">{title}</h3>
+      {children}
+    </section>
+  );
+}
