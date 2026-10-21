@@ -25,8 +25,8 @@ test("english test: not required counts as done, otherwise it must be sent", () 
 });
 
 test("progress counts done and missing categories", () => {
-  assert.deepEqual(progress({}), { done: 0, total: 8, missing: 8 });
-  assert.deepEqual(progress({ transcript: true, no_essays: true, test_plan: "optional" }), { done: 3, total: 8, missing: 5 });
+  assert.deepEqual(progress({}), { done: 0, total: 5, missing: 5 });
+  assert.deepEqual(progress({ transcript: true, no_essays: true, test_plan: "optional" }), { done: 3, total: 5, missing: 2 });
 });
 
 test("only http(s) links are clickable", () => {

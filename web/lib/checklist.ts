@@ -8,9 +8,6 @@ export const CHECKLIST = [
   ["transcript", "Transcript sent"],
   ["test_scores", "Test scores"],
   ["english_test", "English test"],
-  ["fee", "Fee paid / waived"],
-  ["aid_forms", "Aid forms (CSS / FAFSA)"],
-  ["interview", "Interview"],
 ] as const;
 export type ChecklistKey = (typeof CHECKLIST)[number][0];
 

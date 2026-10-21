@@ -9,7 +9,6 @@ import {
   safeLink,
   TEST_PLANS,
   type Checklist,
-  type ChecklistKey,
   type Essay,
   type EnglishPlan,
   type TestPlan,
@@ -180,20 +179,6 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
         {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
           <Warn>Required for all international applicants — check the waiver rules.</Warn>
         )}
-      </Section>
-
-      <Section title="Other" done={(["fee", "aid_forms", "interview"] as ChecklistKey[]).every((k) => isDone(k, c))}>
-        <div className="flex flex-wrap gap-x-4 gap-y-1">
-          <Check checked={!!c.fee} onChange={(v) => set({ fee: v })}>
-            Fee paid / waived
-          </Check>
-          <Check checked={!!c.aid_forms} onChange={(v) => set({ aid_forms: v })}>
-            Aid forms (CSS / FAFSA)
-          </Check>
-          <Check checked={!!c.interview} onChange={(v) => set({ interview: v })}>
-            Interview
-          </Check>
-        </div>
       </Section>
 
       <div className="md:col-span-2">
