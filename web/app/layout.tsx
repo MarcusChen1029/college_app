@@ -29,6 +29,7 @@ const NAV = [
   ["/my-list", "My list"],
   ["/activities", "Activities"],
   ["/resume", "Resume"],
+  ["/portals", "Portals"],
   ["/profile", "Profile"],
   ["/pricing", "Pricing"],
 ] as const;

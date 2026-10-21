@@ -10,6 +10,7 @@ import type { StudentProfile } from "./fit";
 import { canAddMore, DEFAULT_PLAN, getPlan, type PlanKey } from "./plans";
 import type { TestDetails } from "./scores";
 import type { ActivityData } from "./activities";
+import type { PortalData } from "./portals";
 import type { ResumeSettings } from "./resume";
 import { browserSupabase } from "./supabase-browser";
 
@@ -106,6 +107,7 @@ type ProfileRow = {
   interested: string[] | null;
   activities: Partial<ActivityData> | null;
   resume: ResumeSettings | null;
+  portals: PortalData | null;
 };
 type CollegeRow = {
   institution_id: string;
@@ -131,6 +133,7 @@ const toProfile = (r: ProfileRow): StudentProfile => ({
   interested: r.interested ?? [],
   activities: r.activities ?? {},
   resume: r.resume ?? {},
+  portals: r.portals ?? {},
 });
 const fromProfile = (userId: string, p: StudentProfile) => ({
   user_id: userId,
@@ -144,6 +147,7 @@ const fromProfile = (userId: string, p: StudentProfile) => ({
   interested: p.interested ?? [],
   activities: p.activities ?? {},
   resume: p.resume ?? {},
+  portals: p.portals ?? {},
 });
 const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.institutions?.slug ?? "",
@@ -176,7 +180,7 @@ async function loadRemote(userId: string, email: string | null) {
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan, test_details, interested, activities, resume").eq("user_id", userId).maybeSingle(),
+      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan, test_details, interested, activities, resume, portals").eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;

@@ -7,6 +7,7 @@ export const FIT_LABEL: Record<Fit, string> = { super_reach: "Super reach", reac
 
 import type { ActivityData } from "./activities";
 import type { PlanKey } from "./plans";
+import type { PortalData } from "./portals";
 import type { ResumeSettings } from "./resume";
 import type { TestDetails } from "./scores";
 
@@ -21,6 +22,7 @@ export type StudentProfile = {
   interested?: string[]; // college slugs being considered but not on the list
   activities?: Partial<ActivityData>; // Common App + UC activity lists
   resume?: ResumeSettings; // resume generator header + options
+  portals?: PortalData; // shared system, campus and custom portal logins
 };
 
 export type FitInput = {
