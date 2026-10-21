@@ -1,9 +1,12 @@
-// Rough reach / target / safety label from a student's scores and a college's CDS profile.
+// Rough super reach / reach / target / safety label from a student's scores and a college's CDS profile.
 // Deliberately simple and transparent — the UI shows the reasoning next to the label.
 
-export type Fit = "reach" | "target" | "safety";
+export type Fit = "super_reach" | "reach" | "target" | "safety";
+
+export const FIT_LABEL: Record<Fit, string> = { super_reach: "Super reach", reach: "Reach", target: "Target", safety: "Safety" };
 
 import type { PlanKey } from "./plans";
+import type { TestDetails } from "./scores";
 
 export type StudentProfile = {
   sat?: number | null;
@@ -12,6 +15,8 @@ export type StudentProfile = {
   international?: boolean;
   reminderEmails?: boolean; // account setting; defaults to on
   plan?: PlanKey; // defaults to free
+  tests?: TestDetails; // section scores + English tests
+  interested?: string[]; // college slugs being considered but not on the list
 };
 
 export type FitInput = {
@@ -57,9 +62,14 @@ export function computeFit(student: StudentProfile, college: FitInput): FitResul
 
   const why = (s: string) => [rateLabel, scoreLabel, s].filter(Boolean).join("; ");
 
-  if (rate < 15) return { fit: "reach", reason: why("under 15% is a reach for everyone") };
+  if (rate < 10) return { fit: "super_reach", reason: why("under 10% is a long shot for everyone") };
+  if (rate < 15) {
+    if (scoreBand === "below") return { fit: "super_reach", reason: why("") };
+    return { fit: "reach", reason: why("under 15% is a reach for everyone") };
+  }
   if (rate < 30) {
     if (scoreBand === "above") return { fit: "target", reason: why("") };
+    if (scoreBand === "below") return { fit: "super_reach", reason: why("") };
     return { fit: "reach", reason: why(scoreBand === "unknown" ? "no comparable score" : "") };
   }
   if (rate < 60) {

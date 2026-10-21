@@ -8,6 +8,7 @@ import { useSyncExternalStore } from "react";
 import type { Checklist } from "./checklist";
 import type { StudentProfile } from "./fit";
 import { canAddMore, DEFAULT_PLAN, getPlan, type PlanKey } from "./plans";
+import type { TestDetails } from "./scores";
 import { browserSupabase } from "./supabase-browser";
 
 export const STATUSES = [
@@ -99,6 +100,8 @@ type ProfileRow = {
   is_international: boolean;
   reminder_emails: boolean;
   plan: PlanKey;
+  test_details: TestDetails | null;
+  interested: string[] | null;
 };
 type CollegeRow = {
   institution_id: string;
@@ -120,6 +123,8 @@ const toProfile = (r: ProfileRow): StudentProfile => ({
   international: r.is_international,
   reminderEmails: r.reminder_emails,
   plan: r.plan,
+  tests: r.test_details ?? {},
+  interested: r.interested ?? [],
 });
 const fromProfile = (userId: string, p: StudentProfile) => ({
   user_id: userId,
@@ -129,6 +134,8 @@ const fromProfile = (userId: string, p: StudentProfile) => ({
   is_international: !!p.international,
   reminder_emails: p.reminderEmails ?? true,
   plan: p.plan ?? DEFAULT_PLAN,
+  test_details: p.tests ?? {},
+  interested: p.interested ?? [],
 });
 const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.institutions?.slug ?? "",
@@ -161,7 +168,7 @@ async function loadRemote(userId: string, email: string | null) {
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan").eq("user_id", userId).maybeSingle(),
+      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan, test_details, interested").eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;
@@ -247,6 +254,16 @@ export function registerColleges(colleges: CollegeRef[]) {
 export function useStudent() {
   const s = useSyncExternalStore(subscribe, () => state, () => EMPTY);
   const db = () => browserSupabase();
+  /** Returns false (and adds nothing) when the plan's college limit is reached. */
+  const add = (college: CollegeRef) => {
+    if (state.list.some((e) => e.slug === college.slug)) return true;
+    if (!canAddMore(state.profile.plan, state.list.length)) return false;
+    const entry: ListEntry = { slug: college.slug, institutionId: college.id, plan: null, status: "in_progress", notes: "", checklist: {}, portal: EMPTY_PORTAL, addedAt: new Date().toISOString() };
+    emit({ list: [...state.list, entry] });
+    const a = state.auth;
+    if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
+    return true;
+  };
   const setProfile = (profile: StudentProfile) => {
     emit({ profile });
     const a = state.auth;
@@ -265,16 +282,22 @@ export function useStudent() {
     has(slug: string) {
       return s.list.some((e) => e.slug === slug);
     },
-    /** Returns false (and adds nothing) when the plan's college limit is reached. */
-    add(college: CollegeRef) {
-      if (state.list.some((e) => e.slug === college.slug)) return true;
-      if (!canAddMore(state.profile.plan, state.list.length)) return false;
-      const entry: ListEntry = { slug: college.slug, institutionId: college.id, plan: null, status: "in_progress", notes: "", checklist: {}, portal: EMPTY_PORTAL, addedAt: new Date().toISOString() };
-      emit({ list: [...state.list, entry] });
-      const a = state.auth;
-      if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
+    /** Colleges being considered but not committed to; kept apart from the list and its plan limit. */
+    interested: s.profile.interested ?? [],
+    isInterested(slug: string) {
+      return (s.profile.interested ?? []).includes(slug);
+    },
+    toggleInterested(slug: string) {
+      const cur = state.profile.interested ?? [];
+      setProfile({ ...state.profile, interested: cur.includes(slug) ? cur.filter((x) => x !== slug) : [...cur, slug] });
+    },
+    /** Moves an interested college onto the list. Returns false when the plan's limit is reached. */
+    promote(college: CollegeRef) {
+      if (!add(college)) return false;
+      setProfile({ ...state.profile, interested: (state.profile.interested ?? []).filter((x) => x !== college.slug) });
       return true;
     },
+    add,
     remove(slug: string) {
       const entry = state.list.find((e) => e.slug === slug);
       emit({ list: state.list.filter((e) => e.slug !== slug) });

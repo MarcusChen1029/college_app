@@ -129,7 +129,7 @@ export function MyList({
 
   const hasScores = student.profile.sat != null || student.profile.act != null;
   const fits = new Map(entries.map(({ college }) => [college.slug, hasScores ? computeFit(student.profile, college) : null]));
-  const counts = { reach: 0, target: 0, safety: 0 };
+  const counts = { super_reach: 0, reach: 0, target: 0, safety: 0 };
   fits.forEach((f) => f && counts[f.fit]++);
 
   // Upcoming dates for listed colleges. If a plan is chosen, show only that plan's application deadline.
@@ -259,7 +259,7 @@ export function MyList({
         </table>
         {hasScores && (
           <p className="border-t border-zinc-100 p-2 text-xs text-zinc-500 dark:border-zinc-800">
-            Balance: {counts.reach} reach · {counts.target} target · {counts.safety} safety
+            Balance: {counts.super_reach} super reach · {counts.reach} reach · {counts.target} target · {counts.safety} safety
             {counts.safety === 0 && " — consider adding at least one safety."}
           </p>
         )}

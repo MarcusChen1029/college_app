@@ -222,6 +222,17 @@ function DetailCard({
           {inList ? "✓ In my list" : "+ Add to my list"}
         </button>
         )}
+        {!inList && (
+          <button
+            type="button"
+            onClick={() => student.toggleInterested(college.slug)}
+            aria-label={student.isInterested(college.slug) ? "Remove from Interested" : "Add to Interested"}
+            title="Keep it on your Interested page while you decide"
+            className={`rounded-full border-2 px-3 py-2 text-sm font-semibold ${student.isInterested(college.slug) ? "border-amber-400 bg-amber-100 text-amber-800" : "border-zinc-300 hover:bg-zinc-50"}`}
+          >
+            {student.isInterested(college.slug) ? "★" : "☆"}
+          </button>
+        )}
         <Link href={`/colleges/${college.slug}`} className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-blue-50">
           Full details
         </Link>
@@ -315,7 +326,7 @@ export function CollegeExplorer({
               Your stats: {stats.join(" · ")} · <span className="text-blue-700 underline">edit</span>
             </>
           ) : (
-            "Add your scores to see reach, target and safety →"
+            "Add your scores to see super reach, reach, target and safety →"
           )}
         </Link>
         <input

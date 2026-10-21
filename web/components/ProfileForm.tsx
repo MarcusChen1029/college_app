@@ -19,26 +19,6 @@ export function ProfileForm() {
   return (
     <form key={mounted ? "client" : "server"} className="flex flex-wrap items-end gap-3 text-sm" onSubmit={(e) => e.preventDefault()}>
       <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">SAT</span>
-        <input
-          className={field}
-          inputMode="numeric"
-          placeholder="1450"
-          defaultValue={profile.sat ?? ""}
-          onBlur={(e) => setProfile({ ...profile, sat: num(e.target.value, 400, 1600) })}
-        />
-      </label>
-      <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">ACT</span>
-        <input
-          className={field}
-          inputMode="numeric"
-          placeholder="33"
-          defaultValue={profile.act ?? ""}
-          onBlur={(e) => setProfile({ ...profile, act: num(e.target.value, 1, 36) })}
-        />
-      </label>
-      <label className="flex flex-col gap-1">
         <span className="text-xs text-zinc-500">GPA (unweighted)</span>
         <input
           className={field}

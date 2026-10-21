@@ -24,6 +24,15 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
         {inList ? "✓ In my list (remove)" : "+ Add to my list"}
       </button>
       )}
+      {!inList && (
+        <button
+          className={`rounded-md px-3 py-1 text-xs font-medium ${student.isInterested(slug) ? "bg-amber-100 text-amber-800" : "border border-zinc-300 text-zinc-700 hover:bg-zinc-50"}`}
+          onClick={() => student.toggleInterested(slug)}
+          title="Keep it on your Interested page while you decide"
+        >
+          {student.isInterested(slug) ? "★ Interested (remove)" : "☆ Interested"}
+        </button>
+      )}
       {fit ? (
         <div className="max-w-xs text-right text-xs text-zinc-500">
           <FitBadge fit={fit.fit} /> <span className="ml-1">{fit.reason}</span>

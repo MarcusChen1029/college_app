@@ -1,4 +1,4 @@
-import type { Fit } from "@/lib/fit";
+import { FIT_LABEL, type Fit } from "@/lib/fit";
 import type { TierCode } from "@/lib/types";
 
 const TIER_STYLE: Record<TierCode, string> = {
@@ -20,6 +20,7 @@ export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undef
 }
 
 const FIT_STYLE: Record<Fit, string> = {
+  super_reach: "bg-rose-600 text-white ring-rose-700 dark:bg-rose-700 dark:ring-rose-500",
   reach: "bg-rose-100 text-rose-800 ring-rose-300 dark:bg-rose-950 dark:text-rose-200 dark:ring-rose-800",
   target: "bg-amber-100 text-amber-800 ring-amber-300 dark:bg-amber-950 dark:text-amber-200 dark:ring-amber-800",
   safety: "bg-emerald-100 text-emerald-800 ring-emerald-300 dark:bg-emerald-950 dark:text-emerald-200 dark:ring-emerald-800",
@@ -27,8 +28,8 @@ const FIT_STYLE: Record<Fit, string> = {
 
 export function FitBadge({ fit, reason }: { fit: Fit; reason?: string }) {
   return (
-    <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium capitalize ring-1 ${FIT_STYLE[fit]}`} title={reason}>
-      {fit}
+    <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ring-1 ${FIT_STYLE[fit]}`} title={reason}>
+      {FIT_LABEL[fit]}
     </span>
   );
 }

@@ -25,6 +25,7 @@ export const metadata: Metadata = {
 const NAV = [
   ["/colleges", "Colleges"],
   ["/compare", "Compare"],
+  ["/interested", "Interested"],
   ["/my-list", "My list"],
   ["/profile", "Profile"],
   ["/pricing", "Pricing"],

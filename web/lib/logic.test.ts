@@ -9,8 +9,14 @@ const purdue = { admit_rate: 43.43, intl_admit_rate: 22.49, sat_p25: 1220, sat_p
 const berkeley = { admit_rate: 10.51, intl_admit_rate: null, sat_p25: null, sat_p75: null, act_p25: null, act_p75: null, test_policy: "blind" };
 
 test("very selective schools are always a reach", () => {
-  assert.equal(computeFit({ sat: 1600 }, mit)?.fit, "reach");
+  assert.equal(computeFit({ sat: 1600 }, mit)?.fit, "super_reach");
   assert.equal(computeFit({ sat: 1600 }, berkeley)?.fit, "reach");
+});
+
+test("a score below the 25th percentile at a selective school is a super reach", () => {
+  assert.equal(computeFit({ sat: 1100, international: true }, purdue)?.fit, "super_reach");
+  assert.equal(computeFit({ sat: 1100 }, { ...mit, admit_rate: 12 })?.fit, "super_reach");
+  assert.equal(computeFit({ sat: 1550 }, { ...mit, admit_rate: 12 })?.fit, "reach");
 });
 
 test("mid-selectivity school depends on score band", () => {

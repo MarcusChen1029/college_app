@@ -5,18 +5,21 @@ import { useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
 import { CHECKLIST, progress } from "@/lib/checklist";
+import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { AccountPanel } from "./AccountPanel";
 import { ProfileForm } from "./ProfileForm";
+import { TestScoresForm } from "./TestScoresForm";
 
 const noop = () => () => {};
 
-function Stat({ label, value, tint }: { label: string; value: string | number; tint: string }) {
+function Stat({ label, value, sub, tint }: { label: string; value: string | number; sub?: string; tint: string }) {
   return (
     <div className={`rounded-2xl p-4 ${tint}`}>
       <p className="text-xs font-medium text-ink/70">{label}</p>
       <p className="mt-1 font-display text-3xl font-bold">{value}</p>
+      {sub && <p className="mt-0.5 truncate text-xs text-ink/70">{sub}</p>}
     </div>
   );
 }
@@ -32,7 +35,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     .filter((x): x is { entry: typeof x.entry; college: CollegeSummary } => !!x.college);
 
   const hasScores = profile.sat != null || profile.act != null;
-  const counts = { reach: 0, target: 0, safety: 0 };
+  const counts = { super_reach: 0, reach: 0, target: 0, safety: 0 };
   if (hasScores)
     entries.forEach(({ college }) => {
       const f = computeFit(profile, college);
@@ -52,6 +55,9 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     )
     .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!))
     .slice(0, 5);
+
+  const englishKey = ENGLISH_TEST_KEYS.find((k) => profile.tests?.english?.[k]?.total != null);
+  const english = englishKey ? profile.tests!.english![englishKey]! : null;
 
   const name = student.auth?.email?.split("@")[0] ?? "Guest";
 
@@ -74,10 +80,16 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
         </Link>
       </section>
 
-      <section aria-label="Your numbers" className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <section aria-label="Your numbers" className="grid grid-cols-2 gap-3 md:grid-cols-5">
         <Stat label="GPA (unweighted)" value={profile.gpa ?? "—"} tint="bg-sun/60" />
-        <Stat label="SAT" value={profile.sat ?? "—"} tint="bg-mint/50" />
-        <Stat label="ACT" value={profile.act ?? "—"} tint="bg-lilac/40" />
+        <Stat label="SAT" value={profile.sat ?? "—"} sub={sectionSummary(SAT_SCALE, profile.tests?.sat)} tint="bg-mint/50" />
+        <Stat label="ACT" value={profile.act ?? "—"} sub={sectionSummary(ACT_SCALE, profile.tests?.act)} tint="bg-lilac/40" />
+        <Stat
+          label={englishKey ? ENGLISH_TESTS[englishKey].label : "English test"}
+          value={english?.total ?? "—"}
+          sub={englishKey ? sectionSummary(ENGLISH_TESTS[englishKey], english?.sections) : undefined}
+          tint="bg-blue-100"
+        />
         <Stat label="Colleges on my list" value={entries.length} tint="bg-coral/40" />
       </section>
 
@@ -87,6 +99,12 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             <h2 className="text-xl font-bold">Edit my numbers</h2>
             <p className="mb-4 text-sm text-zinc-600">Changes save when you leave a field.</p>
             <ProfileForm />
+          </section>
+
+          <section className="rounded-3xl border-2 border-zinc-200 p-6">
+            <h2 className="text-xl font-bold">Testing</h2>
+            <p className="mb-4 text-sm text-zinc-600">Totals and section scores, plus any English proficiency tests. Saves when you leave a field.</p>
+            <TestScoresForm />
           </section>
 
           <section className="rounded-3xl border-2 border-zinc-200 p-6">
@@ -102,7 +120,11 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             ) : (
               <>
                 {hasScores ? (
-                  <div className="mt-4 grid grid-cols-3 gap-3 text-center">
+                  <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
+                    <div className="rounded-2xl bg-rose-300 p-3">
+                      <p className="font-display text-3xl font-bold">{counts.super_reach}</p>
+                      <p className="text-xs font-medium">Super reach</p>
+                    </div>
                     <div className="rounded-2xl bg-rose-100 p-3">
                       <p className="font-display text-3xl font-bold">{counts.reach}</p>
                       <p className="text-xs font-medium">Reach</p>
@@ -117,7 +139,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
                     </div>
                   </div>
                 ) : (
-                  <p className="mt-2 text-sm text-zinc-600">Add an SAT or ACT score above to see reach, target and safety counts.</p>
+                  <p className="mt-2 text-sm text-zinc-600">Add an SAT or ACT score above to see super reach, reach, target and safety counts.</p>
                 )}
                 <div className="mt-5">
                   <div className="flex justify-between text-sm">

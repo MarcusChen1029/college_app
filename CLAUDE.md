@@ -40,7 +40,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0010**) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0011**) **and** apply it to the project.
 - **Supabase MCP quirk:** INSERT/SELECT/DDL via `execute_sql`/`apply_migration` work. UPDATE/DELETE/DROP wait for the
   owner's approval and time out after 60 s if nobody approves. Approve the prompt when it appears, or put the SQL in
   `supabase/patches/` and have the owner run it in the dashboard SQL Editor.

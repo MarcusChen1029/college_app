@@ -13,7 +13,7 @@ const STEPS = [
   },
   {
     title: "See where you fit",
-    body: "Every college is marked reach, target or safety for you, with the reasoning shown next to the label.",
+    body: "Every college is marked super reach, reach, target or safety for you, with the reasoning shown next to the label.",
     tint: "bg-mint/70",
   },
   {
