@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 const TABS = [
   ["/application/interested", "Interested"],
   ["/application/list", "My list"],
-  ["/application/results", "Results"],
   ["/application/portals", "Portals"],
+  ["/application/results", "Results"],
 ] as const;
 
 export function ApplicationTabs() {
