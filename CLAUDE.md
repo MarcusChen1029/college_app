@@ -58,8 +58,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 100 colleges live in Supabase (row counts verified against the local data). Baseline-only colleges (IPEDS fall 2023,
 no CDS SAT total/GPA/ED yet): arizona, brown, cu-boulder, fordham, johns-hopkins, miami, ohio-state, pomona.
 UConn has no 2026-27 deadlines (its admissions site was down). New colleges without a short_name show IPEDS names
-(e.g. "University of California-Riverside"). Temporary table `public._seed_chunks` (used to load the seed; locked,
-no access for anon/authenticated) can be dropped.
+(e.g. "University of California-Riverside").
 
 ### Earlier status (2026-10-20)
 Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my-list/account),
