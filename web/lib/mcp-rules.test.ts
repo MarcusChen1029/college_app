@@ -307,11 +307,11 @@ test("stale tab refresh: throttled to 30 s, skipped while saving or loading or s
   assert.equal(shouldRefresh({ ...base, signedIn: false }), false);
 });
 
-test("authorization id must be a UUID; redirect host is shown", async () => {
+test("authorization id must be a URL-safe token; redirect host is shown", async () => {
   const { isAuthorizationId, redirectHost } = await import("./connect-ai.ts");
   assert.equal(isAuthorizationId("123e4567-e89b-12d3-a456-426614174000"), true);
-  assert.equal(isAuthorizationId("123E4567-E89B-12D3-A456-426614174000"), true);
-  for (const bad of ["abc", "", null, undefined, "123e4567-e89b-12d3-a456-42661417400", "123e4567-e89b-12d3-a456-426614174000/../x", "javascript:1"]) assert.equal(isAuthorizationId(bad), false, String(bad));
+  assert.equal(isAuthorizationId("Xk3_9fQ-2bLmZp7aR"), true);
+  for (const bad of ["abc", "", null, undefined, "123e4567/../x", "../../user", "a%2F..%2Fuser", "javascript:1", "a".repeat(257)]) assert.equal(isAuthorizationId(bad), false, String(bad));
   assert.equal(redirectHost("https://claude.ai/api/mcp/auth_callback"), "claude.ai");
   assert.equal(redirectHost("not a url"), null);
 });

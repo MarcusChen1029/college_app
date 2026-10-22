@@ -27,8 +27,11 @@ export const AI_EXAMPLES = [
   "Which of my colleges have the earliest deadlines, and what's still missing for each?",
 ] as const;
 
-/** Supabase authorization ids are UUIDs; anything else is never sent to Supabase. */
-export const isAuthorizationId = (v: string | null | undefined): v is string => !!v && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
+/**
+ * Supabase doesn't document the id's format, so accept any URL-safe token. The id goes into a request path
+ * (/oauth/authorizations/<id>), so slashes, dots and other characters are never sent to Supabase.
+ */
+export const isAuthorizationId = (v: string | null | undefined): v is string => !!v && /^[A-Za-z0-9_-]{8,256}$/.test(v);
 
 /** The host an approval will send the student back to, or null when the address can't be read. */
 export function redirectHost(uri: string): string | null {
