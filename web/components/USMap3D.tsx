@@ -407,6 +407,9 @@ export function USMap3D(props: {
     );
     confetti.frustumCulled = false;
     confetti.visible = false;
+    // The colour buffer is created now, not at the first burst: having one changes the shader, which would then
+    // compile in the middle of the first selection.
+    for (let i = 0; i < BITS; i++) confetti.setColorAt(i, WHITE);
     scene.add(confetti);
     const bits = Array.from({ length: BITS }, () => ({
       p: new THREE.Vector3(),
@@ -909,7 +912,32 @@ export function USMap3D(props: {
     setPins(latest.current.pins);
     if (latest.current.selected) select(latest.current.selected, latest.current.cardSide);
 
+    // Pins and the selection effects stay hidden until a college is picked, and the first selection used to freeze for
+    // a few hundred milliseconds: shaders were built on first use, and the first draw of each object costs the graphics
+    // driver more again. Show them just long enough to compile in parallel with the intro, then draw them once.
+    let disposed = false;
+    const unseen = [beam, confetti, arcHead, ...ripples];
+    const wasShown = unseen.map((o) => o.visible);
+    unseen.forEach((o) => (o.visible = true));
+    const compiled = renderer.compileAsync(scene, camera);
+    unseen.forEach((o, i) => (o.visible = wasShown[i]));
+    compiled
+      .then(() => {
+        if (disposed) return;
+        const hidden: THREE.Object3D[] = [];
+        scene.traverse((o) => {
+          if (!o.visible) hidden.push(o);
+        });
+        hidden.forEach((o) => (o.visible = true));
+        renderer.render(scene, camera);
+        hidden.forEach((o) => (o.visible = false));
+        // The canvas keeps whatever was drawn last while the loop sleeps, so put the real frame back.
+        renderer.render(scene, camera);
+      })
+      .catch(() => undefined);
+
     return () => {
+      disposed = true;
       api.current = null;
       renderer.setAnimationLoop(null);
       ro.disconnect();

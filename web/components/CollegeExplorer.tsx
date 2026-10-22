@@ -170,7 +170,7 @@ function DetailCard({
 
   return (
     <article
-      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-3xl border-2 border-ink bg-white/95 p-5 shadow-[6px_6px_0_0_#cdeafc] backdrop-blur max-lg:rounded-b-none"
+      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-3xl border-2 border-ink bg-white p-5 shadow-[6px_6px_0_0_#cdeafc] max-lg:rounded-b-none"
       style={{ "--from": side === "right" ? "28px" : "-28px" } as React.CSSProperties}
     >
       <header className="flex items-start gap-3">
@@ -439,7 +439,7 @@ export function CollegeExplorer({
       <div className="h-[58dvh] lg:h-full">
         <USMap3D key={region} region={region} pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
           <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
-            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold shadow-sm backdrop-blur" aria-label="Tier colours">
+            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold shadow-sm" aria-label="Tier colours">
               {TIER_ORDER.map((t) => (
                 <li key={t} className="flex items-center gap-1">
                   <span className="h-2.5 w-2.5 rounded-full" style={{ background: TIER_FILL[t] }} />
@@ -451,7 +451,7 @@ export function CollegeExplorer({
               <button
                 type="button"
                 onClick={() => setSelected(null)}
-                className="pointer-events-auto rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold shadow-sm backdrop-blur hover:bg-blue-50"
+                className="pointer-events-auto rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold shadow-sm hover:bg-blue-50"
               >
                 Whole map
               </button>
