@@ -1,0 +1,124 @@
+{
+  "slug": "american",
+  "name": "American University",
+  "short_name": null,
+  "state_region": "DC",
+  "city": "Washington",
+  "latitude": 38.936005,
+  "longitude": -77.088875,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.american.edu/",
+  "admissions_url": "https://www.american.edu/admissions/",
+  "ipeds_unit_id": 131159,
+  "undergrad_enrollment": 7266,
+  "intl_undergrads": 382,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "American University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.american.edu/provost/oira/upload/CDS-PDF-2025-2026_PDF_American-University_WEB_FINAL_04-23-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=131159",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?131159",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 20960,
+    "admits": 13741,
+    "enrolled": 1545,
+    "in_state_applicants": 441,
+    "in_state_admits": 197,
+    "out_state_applicants": 19194,
+    "out_state_admits": 12864,
+    "intl_applicants": 1297,
+    "intl_admits": 655,
+    "waitlist_offered": 4928,
+    "waitlist_accepted": 1785,
+    "waitlist_admitted": 1182,
+    "ed_applicants": 392,
+    "ed_admits": 316,
+    "pct_submit_sat": 15.92,
+    "pct_submit_act": 6.08,
+    "notes": "CDS C9 percentages are of enrolled first-years (most enrollees did not submit scores; test-optional). GPA (C11/C12) was left blank in the CDS. ED counts are as printed in C21, which the CDS template labels 'Fall 2024 entering class'. ED I closes 11/1 (decision 12/31); ED II 1/15 (2/15); EA closes 11/1 (decision 1/31)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1320,
+      1380,
+      1440
+    ],
+    "SAT_ERW": [
+      630,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      680,
+      710,
+      740
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      32,
+      33
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 62242,
+    "books_usd": 1200,
+    "room_board_usd": 18618,
+    "other_usd": 1620,
+    "total_coa_usd": 79369,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "VI"
+  }
+}

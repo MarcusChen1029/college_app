@@ -1,0 +1,97 @@
+{
+  "slug": "ut-austin",
+  "name": "The University of Texas at Austin",
+  "short_name": null,
+  "state_region": "TX",
+  "city": "Austin",
+  "latitude": 30.282825,
+  "longitude": -97.738273,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utexas.edu/",
+  "admissions_url": "https://www.admissions.utexas.edu/",
+  "ipeds_unit_id": 228778,
+  "undergrad_enrollment": 42855,
+  "intl_undergrads": 1868,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228778",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?228778",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UT Austin Common Data Set 2025-2026 (pdf, hosted on utexas.box.com)",
+      "url": "https://utexas.box.com/s/z5p8zzbr6yk4eluam3v3dt2wyaha3cja",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 90690,
+    "admits": 20154,
+    "enrolled": 9900,
+    "in_state_applicants": 46879,
+    "in_state_admits": 16828,
+    "out_state_applicants": 35268,
+    "out_state_admits": 2653,
+    "intl_applicants": 8543,
+    "intl_admits": 673,
+    "pct_submit_sat": null,
+    "pct_submit_act": null,
+    "gpa_avg": null,
+    "pct_reporting_gpa": null,
+    "notes": "UT's CDS leaves C9 (test scores), C11/C12 (GPA), C2 (waitlist) and C21 blank. Its C7 boxes mark almost every factor 'Considered' (only interview, alumni, religion and interest 'Not considered'), which looks like a default fill, so no factors are recorded. Enrolled by residency: 8,958 in-state, 758 out-of-state, 184 international. SAT/ACT percentiles kept from the earlier IPEDS baseline (scores_source ipeds)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      620,
+      680,
+      730
+    ],
+    "SAT_MATH": [
+      610,
+      690,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      26,
+      32,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      29,
+      33
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 11656,
+    "books_usd": 720,
+    "room_board_usd": 15420,
+    "other_usd": 5346,
+    "total_coa_usd": 31951,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 44816
+  }
+}

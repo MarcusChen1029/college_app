@@ -1,0 +1,160 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Dates & deadlines 2026-27",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (application fees & waivers)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_test": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - First-year requirements (standardized tests)",
+   "url": "https://admission.universityofcalifornia.edu/counselors/preparing-freshman-students/freshman-requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fill": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Filling out the application",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/filling-out-the-application.html",
+   "accessed": "2026-10-21"
+  },
+  "uci_intl": {
+   "kind": "admissions_site",
+   "title": "UCI Admissions - International Students",
+   "url": "https://admissions.uci.edu/apply/international-students.php",
+   "accessed": "2026-10-21"
+  },
+  "uci_first": {
+   "kind": "admissions_site",
+   "title": "UCI Admissions - First-Year Students",
+   "url": "https://admissions.uci.edu/apply/first-year-students/index.php",
+   "accessed": "2026-10-21"
+  },
+  "uci_faq": {
+   "kind": "admissions_site",
+   "title": "UCI Admissions - Admitted Student FAQs (College Board / ACT codes)",
+   "url": "https://admissions.uci.edu/admitted/faq.php",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC does not consider SAT or ACT scores in admission decisions or scholarships. Scores may be self-reported only after submitting the application, and are used for eligibility alternatives or placement after enrollment.",
+  "src": "uc_test"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 80,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8)",
+  "notes": "Fee is $80 per campus, $95 for international applicants; fee waivers cover up to four campuses but only for U.S. citizens, permanent residents and AB540-eligible applicants. UCI does not accept or consider letters of recommendation.",
+  "src": "uc_fee"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "UC application filing period closes",
+   "due": "2026-11-30",
+   "note": "Admission decisions released March 1-31, 2027 (some campuses earlier)",
+   "notes": "No early plans. Application opens August 1, 2026 for fall 2027.",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Statement of Intent to Register (SIR)",
+   "due": "2027-05-01",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if you completed all or some secondary school where English was not the primary language of instruction and had less than 3 years of instruction in English. The need for an exam depends on language of instruction, not citizenship. Take it no later than December; UCI uses the scores you self-report and requires official scores if admitted.",
+  "src": "uci_first"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Tests taken before January 2026.",
+   "src": "uci_first"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Tests taken January 2026 or later (1-6 scale).",
+   "src": "uci_first"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS One Skill Retake not accepted.",
+   "src": "uci_first"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "uci_first"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "UCI's international FAQ says it does not offer financial assistance for international students and points to external scholarships.",
+  "src": "uci_intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4859",
+   "note": "UCI is test-blind; SAT/ACT are not used in selection. Code applies to scores sent after admission.",
+   "src": "uci_faq"
+  },
+  "act": {
+   "code": "0446",
+   "note": "UCI is test-blind; code applies to scores sent after admission.",
+   "src": "uci_faq"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No undergraduate TOEFL code is published on the admissions pages (4859 appears only on UCI graduate pages). Self-report scores in the UC application; official scores are required if admitted.",
+   "src": "uci_intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "C",
+  "biology_life_sci": "B",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "B",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "business": "Merage School offers a B.A. in Business Administration.",
+  "nursing": "Sue & Bill Gross School of Nursing BS."
+ }
+}

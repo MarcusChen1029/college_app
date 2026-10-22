@@ -1,0 +1,201 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "WashU Admissions - Application Dates & Deadlines (Fall 2027 first-year)",
+   "url": "https://admissions.washu.edu/how-to-apply/application-dates-deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "WashU Admissions - First-Year International Applicants",
+   "url": "https://admissions.washu.edu/how-to-apply/first-year-international-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "WashU Admissions - English Testing Requirements",
+   "url": "https://admissions.washu.edu/how-to-apply/english-testing-requirements/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Standardized testing is optional and requirements are described as flexible: SAT, ACT, national exam results, IB, A-Levels or AP/IB exams may be submitted.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "supplemental_essays": "250-word response on what you want to study and why; Signature Scholar Programs need a 250-word short answer per program; optional 90-second video. Portfolio required for the College of Art and strongly encouraged for Architecture.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "interview": "not_offered",
+  "notes": "One teacher evaluation and one counselor recommendation. WashU does not conduct evaluative interviews; third-party interview supplements such as InitialView are encouraged but optional and not submitting one is not a disadvantage. CSS Profile is part of the financial aid application (required for aid applicants). QuestBridge is listed as an application route but its dates are on QuestBridge's site. Early Action is a newly added round.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-02",
+   "notify": "2026-12-23",
+   "notes": "Newly added nonbinding Early Action round; decisions released by Dec 23; reply due May 1. Page labels these dates 'Fall 2027 first-year applicants' without writing the calendar year.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-02",
+   "notify": "2026-12-11",
+   "notes": "Early Decision I; reply due Jan 4.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "notify": "2027-02-12",
+   "notes": "Early Decision II; reply due Mar 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "notify": "2027-04-01",
+   "notes": "Decisions released by Apr 1; reply due May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2026-11-17",
+   "label": "Financial aid application (EA and ED I)",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-11",
+   "label": "Financial aid application (ED II)",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Financial aid application (RD)",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-16",
+   "label": "Signature Scholar Programs priority submission",
+   "notes": "Stated as December 16, 2026 on the international page; the dates page lists Dec 16 scholarship priority for all rounds.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "due": "2027-01-04",
+   "label": "ED I reply",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED2",
+   "due": "2027-03-01",
+   "label": "ED II reply",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "EA/RD reply",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International students whose second language is English must submit TOEFL, IELTS or Duolingo. Students with 3+ years in an English-medium program may be exempted if academically strong (mostly-online schools typically do not qualify); other cases reviewed individually (admissions@wustl.edu). From fall 2027, SAT/ACT scores no longer substitute. Last tests accepted: December 2026 (October for EA/ED I). Undocumented/DACA students are not required to submit.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Exams before 2026-01-21; recommended minimum, not a cutoff.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "notes": "Exams on or after 2026-01-21; recommended minimum, not a cutoff.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "IELTS Academic; recommended minimum, not a cutoff.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Recommended minimum, not a cutoff.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Page states WashU meets 100 percent of demonstrated need for all admitted undergraduates; international applicants are eligible for aid only if they apply for it during the admission process. The page does not say whether admission is need-blind or need-aware for international applicants. School Scholarships (up to full tuition, four-year) need no separate application; Signature Scholar Programs need a December 16, 2026 submission for priority.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "6929",
+   "src": "intl"
+  },
+  "act": {
+   "code": "2386",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "6929",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "A",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "business": "Olin Business School is a top-15 undergraduate business program.",
+  "biology_life_sci": "Top-10 life sciences with WashU School of Medicine.",
+  "pre_med": "Strong pre-med outcomes and research access through WashU Medicine.",
+  "nursing": "No nursing program."
+ }
+}

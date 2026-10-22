@@ -1,0 +1,147 @@
+{
+ "sources": {
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "Texas A&M Admissions - Freshman",
+   "url": "https://admissions.tamu.edu/apply/freshman/index.html",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Texas A&M Admissions - International Freshman",
+   "url": "https://admissions.tamu.edu/apply/international/international-freshman.html",
+   "accessed": "2026-10-21"
+  },
+  "codes": {
+   "kind": "admissions_site",
+   "title": "Texas A&M Undergraduate Document Submission",
+   "url": "https://admissions.tamu.edu/resources/undergraduate-document-submission.html",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Texas A&M Aggie One Stop - International Student Financial Aid",
+   "url": "https://aggie.tamu.edu/paying-for-college/apply-for-financial-aid/international-student-financial-aid.html",
+   "accessed": "2026-10-21"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Texas A&M Aggie One Stop - International Student Scholarships",
+   "url": "https://aggie.tamu.edu/financial-aid/types-of-aid/scholarships/international-student-scholarships",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional for Spring/Fall 2027 applicants; scores encouraged but not required. Texas A&M intends to reinstate an SAT/ACT requirement for Spring/Fall 2028 applicants (not yet final; needs Board of Regents approval).",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "Required essay (750 words max) plus required short-answer questions inside the application (Common App or ApplyTexas).",
+  "notes": "Apply with Common App or ApplyTexas (own = ApplyTexas); the choice does not affect the decision. $75 fee ($90 for international applicants, no fee waivers for international). Required 750-word essay plus short-answer questions. Letters of recommendation optional; the first two received are considered. STARS self-reported transcript must be linked by Dec 15.",
+  "src": "fresh"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Application deadline (College Station), fall 2027",
+   "notes": "Same timeline for domestic and international freshmen. No early action/decision for fall; decisions are released on a rolling basis (Top 10% Texas applicants from September, holistic review from October) with final decisions in March. Additional required/optional documents (STARS record) due Dec 15.",
+   "src": "fresh"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2026-12-15",
+   "label": "Deadline for additional required and optional documents",
+   "src": "fresh"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deadline to accept and confirm admission offer (College Station)",
+   "src": "fresh"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: citizens of listed English-speaking countries (e.g., Australia, Canada except Quebec, Ireland, New Zealand, Nigeria, Ghana, UK) and applicants who completed all four years of high school in the U.S. Also satisfied by SAT EBRW 560+ or ACT English 21+. Scores must be from within two years; MyBest TOEFL not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale, tests taken before 2026-01-21 (in person or Home Edition), within two years.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "New scale, tests taken on or after 2026-01-21. TOEFL Essentials 8.5 also accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic overall band, within two years; IELTS General not accepted. Scores must be sent electronically by the test center.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "notes": "F-1 students are not eligible for need-based state aid (ITPEG, up to $4,000) in their first academic year; they may apply in later years through the TASFA. International students enrolled at College Station may be considered for university scholarships via the University Scholarship Application. No aid for entering international first-years was found.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "6003",
+   "src": "codes"
+  },
+  "act": {
+   "code": "4198",
+   "src": "codes"
+  },
+  "toefl": {
+   "code": "6003",
+   "src": "codes"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code; the IELTS test center must send scores electronically to Texas A&M University (College Station and Galveston).",
+   "src": "codes"
+  }
+ },
+ "majors": [],
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "A",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "engineering": "Top-15 engineering college, one of the largest in the US."
+ }
+}

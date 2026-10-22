@@ -1,0 +1,92 @@
+{
+  "slug": "asu",
+  "name": "Arizona State University (Tempe)",
+  "short_name": "ASU",
+  "state_region": "AZ",
+  "city": "Tempe",
+  "latitude": 33.4242,
+  "longitude": -111.9281,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.asu.edu",
+  "admissions_url": "https://admission.asu.edu",
+  "ipeds_unit_id": 104151,
+  "undergrad_enrollment": 64662,
+  "intl_undergrads": 5300,
+  "student_faculty_ratio": 17.7,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Arizona State University Campus Immersion Common Data Set 2025-2026 (PDF)",
+      "url": "https://uoia.asu.edu/sites/g/files/litvpz1436/files/2026-06/CDS%202025-26%20-%20ASU%20Campus%20Immersion.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 69617,
+    "admits": 61533,
+    "enrolled": 13665,
+    "in_state_applicants": 20323,
+    "in_state_admits": 18291,
+    "out_state_applicants": 40388,
+    "out_state_admits": 35233,
+    "intl_applicants": 8906,
+    "intl_admits": 8009,
+    "gpa_avg": 3.52,
+    "pct_reporting_gpa": 97.8,
+    "gpa_distribution": {
+      "4.0": 9.0,
+      "3.75-3.99": 27.5,
+      "3.50-3.74": 22.3,
+      "3.25-3.49": 17.6,
+      "3.00-3.24": 13.4,
+      "2.50-2.99": 9.1,
+      "2.0-2.49": 1.0,
+      "1.0-1.99": 0.1
+    },
+    "notes": "CDS covers the whole ASU Campus Immersion (Tempe, Downtown Phoenix, Polytechnic, West Valley); Tempe-only figures are not published separately. Undergrad enrollment and intl count are the B1/B2 'Total Undergraduates' columns (64,662; nonresident 5,300). No early decision or early action; no waitlist policy. ASU did not report SAT/ACT percentiles or percent submitting scores in C9."
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 12527,
+    "tuition_out_of_state_usd": 36065,
+    "tuition_intl_usd": 39412,
+    "required_fees_usd": 1007,
+    "room_board_usd": 18819,
+    "books_usd": 1320,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 3344,
+    "intl_avg_award_usd": 12660,
+    "notes": "CDS G1 (first-year, 2026-27). H6: only institutional NON-need-based aid is available to nonresidents; 3,344 nonresidents received it (avg $12,660). Tuition varies by program (G4)."
+  }
+}

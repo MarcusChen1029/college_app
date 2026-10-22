@@ -1,0 +1,172 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Drexel - First-Year Application Deadlines",
+   "url": "https://drexel.edu/admissions/apply/undergrad-instructions/first-year-instructions/application-deadlines",
+   "accessed": "2026-10-22"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Drexel - First-Year Instructions",
+   "url": "https://drexel.edu/admissions/apply/undergrad-instructions/first-year-instructions",
+   "accessed": "2026-10-22"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Drexel - Standardized Testing Policies",
+   "url": "https://drexel.edu/admissions/apply/undergrad-instructions/first-year-instructions/standardized-tests",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Drexel - International Students",
+   "url": "https://drexel.edu/admissions/undergrad/international",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "No Harm Test-Optional for fall entry: applicants choose whether to supply scores; scores are used only if they strengthen the application. Required for the BA/BS+MD and BS+OD Early Assurance programs. Choosing test-optional does not affect aid or merit scholarships.",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 65,
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "One counselor recommendation required (BA/BS+MD: counselor plus a science teacher). Essay of 250-650 words via Common App or Coalition. Portfolio required for some Westphal programs. CSS Profile required for institutional need-based aid (international applicants too); FAFSA also for US citizens and permanent residents. Dates below are applied to the fall 2027 cycle; the deadline page gives month/day and notes a 2026-2027 CSS Profile only for winter entry.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision",
+   "notes": "Binding. Decisions released in mid-December (no exact date). Tuition and housing deposit due Jan 15. CSS Profile due Nov 25.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action",
+   "notes": "Non-binding. Decisions mid-December. Deposit May 1. CSS Profile due Nov 25.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Decisions released by April 1. CSS Profile and FAFSA priority due Feb 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-25",
+   "label": "CSS Profile (ED and EA)",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "CSS Profile (RD)",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "due": "2027-01-15",
+   "label": "ED tuition and housing deposit",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "EA and RD deposit",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if English is your first language, you have 3 full years of high school instruction in English, SAT EBRW 600+ or ACT English 27+. Highest section scores across dates are used. Drexel's International Gateway program offers conditional admission with English preparation.",
+  "src": "tests"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "accepted",
+   "notes": "No numeric minimum published on the testing policy page (TOEFL Essentials also accepted).",
+   "src": "tests"
+  },
+  {
+   "test": "IELTS",
+   "status": "accepted",
+   "notes": "No numeric minimum published.",
+   "src": "tests"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "notes": "No numeric minimum published.",
+   "src": "tests"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "notes": "No numeric minimum published.",
+   "src": "tests"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "C1 Advanced or C2 Proficiency. No numeric minimum published.",
+   "src": "tests"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "notes": "Drexel offers need-based aid to qualifying international students (CSS Profile required by the deadline). Merit scholarship details for international students were not confirmed on the pages opened.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2194",
+   "src": "tests"
+  },
+  "act": {
+   "code": "3556",
+   "src": "tests"
+  },
+  "toefl": {
+   "code": "2194",
+   "src": "tests"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "B",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "arts_design": "Westphal College of Media Arts & Design (film, design, games) is nationally known."
+ }
+}

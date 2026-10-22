@@ -1,0 +1,151 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Rochester - Dates & Deadlines",
+   "url": "https://admissions.rochester.edu/applying/dates-and-deadlines/",
+   "accessed": "2026-10-22"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "University of Rochester - First-Year Students (application requirements)",
+   "url": "https://admissions.rochester.edu/applying/first-year-students/",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Rochester - International Students (requirements, English exams, financial aid)",
+   "url": "https://admissions.rochester.edu/applying/international-students/",
+   "accessed": "2026-10-22"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "University of Rochester - Testing Policies",
+   "url": "https://admissions.rochester.edu/applying/testing-policies/",
+   "accessed": "2026-10-22"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "University of Rochester - Interviewing",
+   "url": "https://admissions.rochester.edu/applying/interviewing/",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional for all applicants through all phases of review, with no disadvantage or scholarship penalty; applicants indicate on the application whether they apply test-optional or test-flexible. English-language testing is still required for some non-native speakers.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "midyear_report": true,
+  "notes": "Common App or Coalition (Scoir). International applicants: secondary transcript, one teacher recommendation (up to three accepted), school report/counselor recommendation, mid-year report, English exam or waiver, and either the International Financial Support Form (no need-based aid requested) or the CSS Profile (school code 2928; Profile opens Oct 1). Interview is optional but strongly recommended and counts equally in review; InitialView interviews are offered mainly for applicants outside the US. Other application materials are due Dec 1 (ED I), Feb 1 (ED II) and Feb 15 (RD). Eastman School of Music bachelor of music applicants apply through the separate Eastman application. Spring regular decision is Oct 15 (not available for combined degree programs). The page does not state a year, so dates are taken as the current cycle.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Notification mid-December (no exact date published); reply within 3 weeks of notification; other materials due Dec 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Priority scholarship deadline (non-binding)",
+   "notes": "Send all application materials by Dec 1 for highest scholarship consideration; notification late February; reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II (binding)",
+   "notes": "Notification early February (no exact date published); reply within 3 weeks of notification; other materials due Feb 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Reply by May 1; other materials due Feb 15.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international students must submit proof of English proficiency (exam or waiver request). A waiver can be requested if you are a native English speaker or completed at least three years of high school with English as the primary language of instruction. TOEFL My Best scores are not accepted and sub-scores are not combined across sittings. Applicants below the recommended range may be admitted through the English for Academic Purposes Program (EAPP).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Recommended score on the former 0-120 scoring; not a hard minimum. No My Best scores.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5,
+   "notes": "Recommended score on the new 1-6 scoring (live Jan 21, 2026); not a hard minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "The university states it is committed to meeting the full demonstrated need of all admitted students regardless of citizenship, but financial need is a contributing factor for international applicants, admission is highly selective for students with need, and only a small number of international applicants will qualify for need-based aid. Applicants who cannot secure funding for the cost of attendance cannot be admitted. All applicants are considered for merit scholarships with no extra paperwork. Limited CSS Profile fee waivers are available (request by Jan 15).",
+  "src": "intl"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "2928",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "arts_design": "Eastman School of Music is one of the top US music conservatories.",
+  "nursing": "No first-year BSN (nursing is accelerated / RN-to-BS only)."
+ }
+}

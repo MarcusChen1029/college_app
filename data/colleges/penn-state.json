@@ -1,0 +1,135 @@
+{
+  "slug": "penn-state",
+  "name": "Pennsylvania State University-Main Campus",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "University Park",
+  "latitude": 40.7965,
+  "longitude": -77.862848,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.psu.edu/",
+  "admissions_url": "https://admissions.psu.edu/",
+  "ipeds_unit_id": 214777,
+  "undergrad_enrollment": 42284,
+  "intl_undergrads": 3945,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214777",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?214777",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Penn State University Park Common Data Set 2025-2026 (pdf)",
+      "url": "https://opair.psu.edu/files/2026/09/CDS_2025_2026_UniversityPark_v3.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 106547,
+    "admits": 58952,
+    "enrolled": 9148,
+    "in_state_applicants": 21321,
+    "in_state_admits": 12096,
+    "out_state_applicants": 72861,
+    "out_state_admits": 38846,
+    "intl_applicants": 12365,
+    "intl_admits": 8010,
+    "waitlist_offered": 2109,
+    "waitlist_accepted": 1153,
+    "waitlist_admitted": 46,
+    "pct_submit_sat": 28.6,
+    "pct_submit_act": 4.98,
+    "gpa_avg": 3.67,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 8,
+      "3.75-3.99": 38,
+      "3.50-3.74": 29,
+      "3.25-3.49": 16,
+      "3.00-3.24": 6,
+      "2.50-2.99": 2,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1/C2/C9/C11/C12, University Park, fall 2025 entering class. No early decision; early action closes 11/1. SAT/ACT optional (considered if submitted). Admission is to a specific college/major; competitive majors have separate criteria."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1280,
+      1340,
+      1410
+    ],
+    "SAT_ERW": [
+      630,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      630,
+      670,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 21098,
+    "books_usd": 1200,
+    "room_board_usd": 15346,
+    "other_usd": 5324,
+    "total_coa_usd": 41003,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 43490
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  }
+}

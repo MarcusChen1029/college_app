@@ -1,0 +1,171 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "MSU - International dates and deadlines",
+   "url": "https://admissions.msu.edu/apply/international/dates-and-deadlines",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "MSU - English language proficiency (international applicants)",
+   "url": "https://admissions.msu.edu/apply/international/language-requirements",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "MSU - Apply now (international applicants)",
+   "url": "https://admissions.msu.edu/apply/international/apply-now",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "MSU - International student scholarships",
+   "url": "https://admissions.msu.edu/cost-aid/scholarships/international",
+   "accessed": "2026-10-21"
+  },
+  "fin": {
+   "kind": "financial_aid_site",
+   "title": "MSU - Financial aid",
+   "url": "https://admissions.msu.edu/cost-aid/financial-aid",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "MSU is test-optional: first-year applicants may apply without SAT or ACT scores, for admission and scholarships. SAT/ACT can still be used to show English proficiency.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Apply through the MSU application, Common App or Coalition with Scoir (no preference; submit only one). Early action must be selected on the application to get the Jan 15 decision.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-15",
+   "label": "Early action (non-binding)",
+   "notes": "Decision guaranteed by Jan 15 and automatic maximum scholarship consideration.",
+   "src": "dates"
+  },
+  {
+   "kind": "priority",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "notify": "2027-03-31",
+   "label": "Regular decision priority date",
+   "notes": "Complete applications by Feb 1 are guaranteed an initial decision by March 31.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-01",
+   "label": "Regular decision final deadline",
+   "notes": "Applications between Feb 1 and Apr 1 are reviewed on a rolling basis while space remains.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Acceptance fee deadline",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required if you are a US citizen/permanent resident or English is your first language. Also met by SAT (EBRW 510+ with total 1110+), ACT (English 18+ with composite 23+), AP English Language 4+, IB English A 5+, IGCSE/GCSE/A-level English results, 3 years of US high school with GPA 3.0+, or a year at a US university. A provisional-admission band exists below the regular minimums.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "each_section": 17
+   },
+   "notes": "Exams taken before 2026-01-21. Provisional admission at 60-78. MyBest superscores not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "each_section": 4
+   },
+   "notes": "Exams taken on or after 2026-01-21; speaking may be 3.5. Provisional admission at 3.5.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Provisional admission at 6.0. IELTS Indicator also accepted at 6.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Provisional admission at 95-105.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "subs": {
+    "each_subscore": 48
+   },
+   "notes": "Provisional admission at an overall 46 or higher.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for aid through FAFSA. All admitted international students are automatically considered for the MSU Non-resident Scholarship ($3,000 to $18,000 a year, award levels by academic performance; decisions by mid-February); applying by Nov 1 gives maximum consideration.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1465",
+   "src": "eng"
+  },
+  "act": {
+   "code": "2032",
+   "src": "dates"
+  },
+  "toefl": {
+   "code": "1465",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "business": "Supply chain management is ranked #1; Broad College overall is top-30."
+ }
+}

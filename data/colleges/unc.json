@@ -1,0 +1,135 @@
+{
+  "slug": "unc",
+  "name": "University of North Carolina at Chapel Hill",
+  "short_name": null,
+  "state_region": "NC",
+  "city": "Chapel Hill",
+  "latitude": 35.911769,
+  "longitude": -79.050969,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unc.edu/",
+  "admissions_url": "https://www.admissions.unc.edu/",
+  "ipeds_unit_id": 199120,
+  "undergrad_enrollment": 20752,
+  "intl_undergrads": 1164,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199120",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?199120",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UNC Chapel Hill Common Data Set 2025-26 (pdf)",
+      "url": "https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 76247,
+    "admits": 12751,
+    "enrolled": 5091,
+    "in_state_applicants": 17846,
+    "in_state_admits": 6605,
+    "out_state_applicants": 48645,
+    "out_state_admits": 4685,
+    "intl_applicants": 9756,
+    "intl_admits": 1461,
+    "waitlist_offered": 7355,
+    "waitlist_accepted": 5258,
+    "waitlist_admitted": 2099,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 41,
+    "gpa_avg": 4.47,
+    "pct_reporting_gpa": 89.9,
+    "gpa_distribution": {
+      "4.0": 94.6,
+      "3.75-3.99": 2.8,
+      "3.50-3.74": 1.2,
+      "3.25-3.49": 0.8,
+      "3.00-3.24": 0.5,
+      "2.50-2.99": 0.1,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "Average GPA 4.47 is a weighted GPA. Enrolled by residency: 4,063 in-state, 728 out-of-state, 300 international. The CDS residency table is headed 'Fall 2024' but its totals equal the Fall 2025 C1 totals. Early action closes Oct 15; no early decision."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1400,
+      1470,
+      1530
+    ],
+    "SAT_ERW": [
+      690,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      700,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      27,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 9095,
+    "books_usd": 622,
+    "room_board_usd": 15038,
+    "other_usd": 3010,
+    "total_coa_usd": 26949,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 45228
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "VI",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "NC"
+  }
+}

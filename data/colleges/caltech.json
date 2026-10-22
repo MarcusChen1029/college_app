@@ -1,0 +1,86 @@
+{
+  "slug": "caltech",
+  "name": "California Institute of Technology",
+  "short_name": "Caltech",
+  "state_region": "CA",
+  "city": "Pasadena",
+  "latitude": 34.137349,
+  "longitude": -118.125878,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.caltech.edu",
+  "admissions_url": "https://www.admissions.caltech.edu",
+  "ipeds_unit_id": 110404,
+  "undergrad_enrollment": 971,
+  "intl_undergrads": 154,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "quarter",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Caltech Common Data Set 2025-2026",
+      "url": "https://finance.caltech.edu/documents/35127/cds_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "other",
+      "title": "College Scorecard API record (IPEDS unit id 110404, locale 12 city)",
+      "url": "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=110404",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11285,
+    "admits": 428,
+    "enrolled": 248,
+    "waitlist_offered": 263,
+    "waitlist_accepted": 211,
+    "waitlist_admitted": 1,
+    "pct_submit_sat": 78,
+    "pct_submit_act": 22,
+    "notes": "Restrictive early action (no ED): CDS C22 lists EA closing 11/1, notification 12/15; no ED plan (C21 = No). Applicants = 7,772 men + 3,513 women; admits = 224 + 204. C1 residency table and C11/C12 (GPA) are blank in the CDS; C10: 97.3% of the 14.9% who reported rank were in the top tenth. I2 student-to-faculty ratio is 7 to 1 overall (3 to 1 for undergraduates). 37 of the 248 enrolled first-years are nonresidents (B2)."
+  },
+  "scores": {
+    "SAT_ERW": [760, 760, 780],
+    "SAT_MATH": [790, 790, 800],
+    "ACT_COMPOSITE": [35, 35, 36],
+    "ACT_MATH": [35, 36, 36],
+    "ACT_ENGLISH": [35, 35, 36]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 68574,
+    "required_fees_usd": 3255,
+    "room_board_usd": 21996,
+    "books_usd": 1428,
+    "other_usd": 3969,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 59,
+    "intl_avg_award_usd": 85696,
+    "notes": "CDS G1 (first-year, 2026-2027): tuition $68,574, required fees $3,255, food and housing $21,996; G5 residents: books $1,428, other expenses $3,969. H6: need-based institutional aid for nonresidents, 59 awarded, average $85,696, total $5,056,044. SAT composite percentiles are blank in CDS C9 (only section scores reported)."
+  }
+}

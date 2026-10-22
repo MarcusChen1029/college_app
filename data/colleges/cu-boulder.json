@@ -1,0 +1,82 @@
+{
+  "slug": "cu-boulder",
+  "name": "University of Colorado Boulder",
+  "short_name": null,
+  "state_region": "CO",
+  "city": "Boulder",
+  "latitude": 40.008781,
+  "longitude": -105.270823,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.colorado.edu/",
+  "admissions_url": "https://www.colorado.edu/admissions",
+  "ipeds_unit_id": 126614,
+  "undergrad_enrollment": 31939,
+  "intl_undergrads": 818,
+  "student_faculty_ratio": 19,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=126614",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?126614",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 56069,
+    "admits": 46692,
+    "enrolled": 7546,
+    "pct_submit_sat": 20,
+    "pct_submit_act": 8,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not added yet."
+  },
+  "scores": {
+    "SAT_ERW": [
+      620,
+      670,
+      700
+    ],
+    "SAT_MATH": [
+      610,
+      660,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      27,
+      30,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 17513,
+    "books_usd": 1200,
+    "room_board_usd": 19838,
+    "other_usd": 3042,
+    "total_coa_usd": 37189,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 47142
+  }
+}

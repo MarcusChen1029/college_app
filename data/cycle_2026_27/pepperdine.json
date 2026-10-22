@@ -1,0 +1,218 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Pepperdine Undergraduate Admission - Application Deadlines",
+   "url": "https://admission.pepperdine.edu/apply/deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Pepperdine Undergraduate Admission - First-Year Applicants",
+   "url": "https://admission.pepperdine.edu/apply/undergraduate/first-year-applicants.htm",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Pepperdine Undergraduate Admission - Application Requirements (test policy, score codes, English proficiency)",
+   "url": "https://admission.pepperdine.edu/apply/undergraduate/requirements/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Pepperdine Office of International Student Services - Applying as an International First-Year Student",
+   "url": "https://www.pepperdine.edu/international-students/future-students/undergraduate/firstyear.htm",
+   "accessed": "2026-10-21"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Pepperdine Undergraduate Admission - FAQ (test optional, merit aid, interviews)",
+   "url": "https://admission.pepperdine.edu/apply/undergraduate/faq/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Pepperdine Undergraduate Admission - Scholarships",
+   "url": "https://admission.pepperdine.edu/affordability/financial-aid/scholarships/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT/CLT are optional for all applicants, including international. Scores are required to be considered for the Regents Scholars Program merit scholarships. SAT or ACT is required for home-schooled applicants.",
+  "src": "faq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "supplemental_essays": "Common App personal essay plus one Pepperdine essay (300-500 words) on why you are interested in a Christian university and how you would contribute to conversations of faith on campus.",
+  "teacher_recs": 1,
+  "interview": "optional_evaluative",
+  "app_fee_usd": 70,
+  "fee_waiver": true,
+  "notes": "One academic letter of recommendation from a core-subject teacher or counselor (the page says teacher or counselor). Sixth-semester (through grade 11) transcript required at application. Fee waiver for financial need per CDS C13. Nursing applicants must apply Regular Decision (deadlines page).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "label": "Early Decision I",
+   "due": "2026-11-01",
+   "notify": "2026-12-21",
+   "notes": "Page lists month/day only (no year); year inferred from the current 2026 page that references Fall 2027 applicants. Admitted ED students are stated to receive at least $25,000 in merit aid. The international applicant page lists only EA and RD, not ED.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "label": "Early Decision II",
+   "due": "2027-01-15",
+   "notify": "2027-02-01",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-21",
+   "notes": "The international applicant page (older text) says EA decisions are sent January 10.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-19",
+   "notes": "The international applicant page says RD decisions are sent April 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "label": "FAFSA deadline - Early Action / Early Decision I",
+   "due": "2026-11-01",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "label": "FAFSA deadline - Early Decision II",
+   "due": "2027-01-15",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "label": "FAFSA deadline - Regular Decision",
+   "due": "2027-02-15",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Enrollment deadline - Early Decision I",
+   "due": "2027-02-01",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Enrollment deadline - Early Decision II",
+   "due": "2027-03-01",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Enrollment deadline - Early Action and Regular Decision",
+   "due": "2027-05-01",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International first-years must show English proficiency by one of: SAT EBRW 600+, ACT Reading 24+, TOEFL iBT 85+, Cambridge C1/C2 186+, Duolingo 120+, LanguageCert Academic 70+, IELTS 6.5+, a B or better in a US college English Composition course, C or better in A-Level/AS English, IB English 5+, or 4 years at a high school taught in English (verified by a counselor). Scores must be within 2 years of application. TOEFL MyBest scores not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 85,
+   "notes": "iBT or Home Edition; MyBest scores not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall score; IELTS Indicator also accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 186,
+   "notes": "C1 Advanced or C2 Proficiency.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "CDS H6 (2025-26): only institutional non-need-based aid is available to nonresidents (145 recipients, average $36,013). All applicants are automatically considered for the George Pepperdine Achievement Award; no separate application. Regents Scholars Program needs SAT/ACT/CLT scores.",
+  "src": "cds"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4630",
+   "note": "Seaver College code.",
+   "src": "req"
+  },
+  "act": {
+   "code": "0373",
+   "note": "Keep the leading zero.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "4630",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code; the page says to send IELTS to 'Pepperdine Seaver College'.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code or recipient name published on the admissions pages checked.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed among Pepperdine's accepted English proficiency options.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school.",
+  "nursing": "BSN started in fall 2025 (California BRN approval May 2025); national accreditation still pending."
+ }
+}

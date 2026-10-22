@@ -1,0 +1,135 @@
+{
+  "slug": "florida-state",
+  "name": "Florida State University",
+  "short_name": null,
+  "state_region": "FL",
+  "city": "Tallahassee",
+  "latitude": 30.443147,
+  "longitude": -84.295064,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.fsu.edu/",
+  "admissions_url": "https://admissions.fsu.edu/",
+  "ipeds_unit_id": 134097,
+  "undergrad_enrollment": 32212,
+  "intl_undergrads": 622,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=134097",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?134097",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Florida State University Common Data Set 2025-26 (FSU Institutional Research)",
+      "url": "https://ir.fsu.edu/commondataset.aspx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 85469,
+    "admits": 20364,
+    "enrolled": 6559,
+    "in_state_applicants": 44631,
+    "in_state_admits": 15196,
+    "out_state_applicants": 34530,
+    "out_state_admits": 4671,
+    "intl_applicants": 6308,
+    "intl_admits": 497,
+    "waitlist_offered": 3750,
+    "waitlist_accepted": 2358,
+    "waitlist_admitted": 5,
+    "pct_submit_sat": 63.7,
+    "pct_submit_act": 36.3,
+    "gpa_avg": 3.72,
+    "pct_reporting_gpa": 99.4,
+    "gpa_distribution": {
+      "4.0": 11.7,
+      "3.75-3.99": 42.0,
+      "3.50-3.74": 30.1,
+      "3.25-3.49": 12.6,
+      "3.00-3.24": 2.5,
+      "2.50-2.99": 0.9,
+      "2.0-2.49": 0.2,
+      "1.0-1.99": 0.0
+    },
+    "notes": "Unweighted GPA distribution and average (CDS also reports a weighted average of 4.29). Only 497 international students were admitted. Fall 2025 entering class."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1300,
+      1360,
+      1410
+    ],
+    "SAT_ERW": [
+      650,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      630,
+      670,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      28,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 5656,
+    "books_usd": 1600,
+    "room_board_usd": 14020,
+    "other_usd": 5292,
+    "total_coa_usd": 25144,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 20116
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "NC"
+  }
+}

@@ -1,0 +1,212 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "ASU - First-year admission dates and deadlines",
+   "url": "https://admission.asu.edu/apply/first-year/admission",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "ASU - First-year student application",
+   "url": "https://admission.asu.edu/apply/first-year",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "ASU - English proficiency (international undergraduate)",
+   "url": "https://admission.asu.edu/apply/international/undergrad/english-proficiency",
+   "accessed": "2026-10-21"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "ASU Admission - FAQs",
+   "url": "https://admission.asu.edu/contact/faqs",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "ASU - Cost and aid for international students",
+   "url": "https://admission.asu.edu/cost-aid/international",
+   "accessed": "2026-10-21"
+  },
+  "fulton": {
+   "kind": "other",
+   "title": "ASU Fulton Schools of Engineering - Undergraduate admission requirements",
+   "url": "https://engineering.asu.edu/admission-requirements/",
+   "accessed": "2026-10-21"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "ASU Edson College - Traditional prelicensure BSN",
+   "url": "https://nursingandhealth.asu.edu/programs/bsn/traditional",
+   "accessed": "2026-10-21"
+  },
+  "admitted": {
+   "kind": "admissions_site",
+   "title": "ASU - Admitted first-year students",
+   "url": "https://admission.asu.edu/apply/first-year/admitted",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT are not required for admission; they may be submitted for placement or as supplemental information. Admission criteria can be met by any one of: top 25% of class, 3.00 unweighted competency GPA, ACT 22 (24 nonresident) or SAT 1120 (1180 nonresident), plus course competencies. Some programs have higher thresholds.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 90,
+  "notes": "Application fee is $55 Arizona residents, $85 domestic nonresidents, $90 international nonresidents. Applicants can use the ASU application or the Common App. CDS C7 lists essay and recommendations as not considered; teacher/counselor rec counts and interview policy are not stated on the admissions pages.",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-01",
+   "label": "Priority admission date (fall 2027 entry)",
+   "notes": "ASU admits on a rolling basis; Nov. 1 is the published priority date. Nursing (BSN) direct admission also uses a Nov. 1 priority date.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-01-15",
+   "label": "Regular admission date (fall 2027 entry)",
+   "notes": "The /apply/first-year/admission page says Jan. 15; the /apply/first-year page says Feb. 1. Notification dates are not published (rolling).",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2027-01-15",
+   "label": "FAFSA priority filing date",
+   "notes": "Applies to U.S. citizens/eligible noncitizens; international students are not eligible for federal aid.",
+   "src": "admitted"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Automatic exemption for U.S. citizens/permanent residents and citizens of listed English-speaking countries. Form-based exemptions: 48 transferable U.S. college credits (GPA 2.50+, incl. 6 credits first-year English); 2 years US high school (juniors+seniors) with ACT English 23+ or SAT EBRW 580+; 4 years US high school; or secondary diploma from an institution where English was the sole medium of instruction. Scores must be no more than 2 years old at start date.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "General programs, exams taken before 2026-01-21. Higher for specific programs: Nursing BSN 76, Fulton Engineering 79, Cronkite Journalism 100. Paper edition not accepted; Home Edition accepted for exams on/after 2026-01-21.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "subs": {
+    "each_section": 3.5
+   },
+   "notes": "Exams on/after 2026-01-21, general programs. Nursing BSN 4, Fulton Engineering 4, Cronkite 5. The page lists these values without naming the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic, Online, UKVI, Indicator accepted; General Training not accepted. Nursing BSN 6.5, Fulton Engineering 6.5, Cronkite 7.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Nursing BSN 100, Fulton Engineering 105, Cronkite 120.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Fulton Engineering 58, Cronkite 73; not accepted for Nursing BSN; PTE Academic Online not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 170,
+   "notes": "B2 First, C1 Advanced, C2 Proficiency. Nursing BSN 176, Fulton Engineering 176, Cronkite 185.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students do not qualify for federal/state aid. Merit-based New American University Scholarship (NAMU) is awarded to a limited number of qualified international undergraduates; colleges/departments also award scholarships. CDS H6: 3,344 nonresidents received institutional non-need-based aid, avg $12,660.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Engineering and Computer Science BS (Fulton Schools)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Most Fulton majors (e.g. Aerospace, Mechanical, Electrical, Computer Science BS) need more than the university minimum: SAT 1210 or ACT 24, or 3.00 GPA, or top 25% of class, plus all high school math and science competencies. Engineering (BSE), Computer Science (BA) and some others need only general university requirements."
+  },
+  {
+   "program": "Nursing, BSN (Edson College)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Direct admission: top 10% of class, or 3.80 competency GPA, or 3.50 GPA with ACT 25/SAT 1230. Priority date Nov. 1; spaces limited; others placed in BS Community Health. Offered at Downtown Phoenix, Polytechnic and West Valley, not Tempe."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "ASU admissions pages say to have the College Board send scores to ASU but do not print a numeric SAT code; look it up in the College Board code search.",
+   "src": "faq"
+  },
+  "act": {
+   "code": null,
+   "note": "ASU admissions pages say to have ACT send scores to ASU but do not print a numeric ACT code; look it up at act.org.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": "4007",
+   "note": "ASU institutional code; only electronic score reports accepted.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is needed or listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {}
+}

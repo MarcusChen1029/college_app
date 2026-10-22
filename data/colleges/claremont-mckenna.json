@@ -1,0 +1,123 @@
+{
+  "slug": "claremont-mckenna",
+  "name": "Claremont McKenna College",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Claremont",
+  "latitude": 34.102154,
+  "longitude": -117.711188,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.cmc.edu/",
+  "admissions_url": "https://www.cmc.edu/admission",
+  "ipeds_unit_id": 112260,
+  "undergrad_enrollment": 1388,
+  "intl_undergrads": 206,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=112260",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?112260",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Claremont McKenna College Common Data Set 2025-2026 (annotated, updated 2026-06-05)",
+      "url": "https://www.cmc.edu/sites/default/files/CDS_2025-26_Annotated(Updated20260605).pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6939,
+    "admits": 655,
+    "enrolled": 335,
+    "intl_applicants": 2344,
+    "intl_admits": 115,
+    "in_state_applicants": 2599,
+    "in_state_admits": 267,
+    "out_state_applicants": 1996,
+    "out_state_admits": 273,
+    "waitlist_offered": 711,
+    "waitlist_accepted": 469,
+    "waitlist_admitted": 61,
+    "ed_applicants": 978,
+    "ed_admits": 216,
+    "pct_submit_sat": 34,
+    "pct_submit_act": 14,
+    "notes": "CDS C1 totals are for the fall 2025 entering class (in-state = California; international enrollees 57). C21: ED I closes 11/1 (notified 12/15), ED II closes 1/10 (notified 2/15 per CDS dates as printed); no early action. High school GPA is not reported (C11/C12 blank), so no GPA figures. Test-optional: SAT/ACT 'not required but considered if submitted' (C8A)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1480,
+      1510,
+      1540
+    ],
+    "SAT_ERW": [
+      730,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      740,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      31,
+      33,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 72120,
+    "books_usd": 1200,
+    "room_board_usd": 22190,
+    "other_usd": 1500,
+    "total_coa_usd": 91510,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

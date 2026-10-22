@@ -1,0 +1,200 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UMD - Application Deadlines",
+   "url": "https://admissions.umd.edu/apply/application-deadlines",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "UMD - Freshman Applicants",
+   "url": "https://admissions.umd.edu/apply/freshman-applicants",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UMD - English Language Proficiency",
+   "url": "https://admissions.umd.edu/apply/english-language-proficiency",
+   "accessed": "2026-10-21"
+  },
+  "docs": {
+   "kind": "admissions_site",
+   "title": "UMD - Submitting Documents (score codes)",
+   "url": "https://admissions.umd.edu/apply/submitting-documents",
+   "accessed": "2026-10-21"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "UMD - Freshman Merit Scholarships",
+   "url": "https://admissions.umd.edu/tuition/freshman-merit-scholarships",
+   "accessed": "2026-10-21"
+  },
+  "lep": {
+   "kind": "admissions_site",
+   "title": "UMD - Limited Enrollment Programs",
+   "url": "https://admissions.umd.edu/academics/limited-enrollment-programs",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "UMD is test-optional through the Spring and Fall 2027 application cycles; applicants indicate their test-optional status in the application.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "supplemental_essays": "One essay (650 words max) from UMD's list of prompts or a topic of your choice; plus activities list or resume.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "app_fee_usd": 80,
+  "fee_waiver": true,
+  "notes": "Apply via Common App or UMD's own ApplyWeb (same review). Two recommendations required: one school counselor and one teacher. Mid-year reports/first-quarter grades are not required unless requested at decision notification.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-02-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Priority for merit scholarships and special programs. Notification 'by Feb. 1'. The deadlines page marks Nov. 1 as the prior calendar year's date for the following fall, so for fall 2027 entry it is Nov 1, 2026.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-20",
+   "notify": "2027-04-01",
+   "notes": "Decision released 'by April 1'. Applications after Jan 20 are considered on a rolling, space-available basis.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Enrollment confirmation deadline",
+   "due": "2027-05-01",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not your native language, regardless of citizenship (or if you took ESL courses in high school). Waivers considered, e.g. 4 years at a US high school without ESL coursework, a US degree, or citizenship/schooling in listed English-speaking countries. Scores must be under 2 years old; TOEFL MyBest superscores not accepted.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 95,
+   "notes": "0-120 scale; includes TOEFL iBT Home Edition.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "1-6 scale; UMD passing score 5.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "notes": "Official IELTS and IELTS Indicator accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "not_accepted",
+   "notes": "PTE is not listed among accepted tests.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "Institutional merit scholarships are open to US citizens and eligible non-citizens only; CDS H6 says no institutional scholarship or grant aid is available for nonresident undergraduates.",
+  "src": "merit"
+ },
+ "majors": [
+  {
+   "program": "Computer Science",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Limited Enrollment Program: applicants who select it are reviewed by the program; those not admitted to it are placed in Letters & Sciences and can apply later after gateway requirements."
+  },
+  {
+   "program": "Engineering (A. James Clark School)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Limited Enrollment Program with gateway requirements; non-admitted applicants go to Letters & Sciences."
+  },
+  {
+   "program": "Business (Smith School)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Limited Enrollment Program with gateway requirements; non-admitted applicants go to Letters & Sciences."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5814",
+   "note": "Send to 'University of Maryland, College Park'.",
+   "src": "docs"
+  },
+  "act": {
+   "code": "1746",
+   "src": "docs"
+  },
+  "toefl": {
+   "code": "5814",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code; have the official report sent to the UMD Office of Undergraduate Admissions.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code; send official results to UMD from your Duolingo account (page gives reporting code 5814 for test agencies in general).",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not an accepted test at UMD.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "A",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "A",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Top-15 CS program.",
+  "math_physics": "Physics and mathematics are top-15 departments.",
+  "nursing": "No nursing at College Park (University of Maryland nursing is in Baltimore)."
+ }
+}

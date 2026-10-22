@@ -1,0 +1,130 @@
+{
+  "slug": "uchicago",
+  "name": "University of Chicago",
+  "short_name": null,
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.787994,
+  "longitude": -87.599539,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.uchicago.edu/",
+  "admissions_url": "https://collegeadmissions.uchicago.edu/",
+  "ipeds_unit_id": 144050,
+  "undergrad_enrollment": 7569,
+  "intl_undergrads": 1335,
+  "student_faculty_ratio": 5,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=144050",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?144050",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Chicago Common Data Set 2025-2026 (pdf)",
+      "url": "https://data.uchicago.edu/files/2026/08/CDS_2025-2026_to_publish-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 45533,
+    "admits": 2039,
+    "enrolled": 1786,
+    "pct_submit_sat": 57,
+    "pct_submit_act": 25,
+    "gpa_avg": null,
+    "pct_reporting_gpa": 62.15,
+    "gpa_distribution": {
+      "4.0": 56.76,
+      "3.75-3.99": 26.85,
+      "3.50-3.74": 9.91,
+      "3.25-3.49": 2.79,
+      "3.00-3.24": 2.88,
+      "2.50-2.99": 0.72,
+      "2.0-2.49": 0.09,
+      "1.0-1.99": 0.0
+    },
+    "notes": "Fall 2025 entering class. The PDF cover says 2025-2026 but interior page headers read 2024-2025; C1 counts are labelled Fall 2025. C12 average GPA is printed as 4.54 (not on a 4.0 scale), so it is left null. Residency split, waitlist counts and ED/EA counts are blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1500,
+      1540,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      760,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      31,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 73962,
+    "books_usd": 1800,
+    "room_board_usd": 20835,
+    "other_usd": 2400,
+    "total_coa_usd": 94971,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "C",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted."
+  }
+}

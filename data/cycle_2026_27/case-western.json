@@ -1,0 +1,154 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Case Western Reserve University - Deadlines and Requirements (first-year)",
+   "url": "https://case.edu/admission/apply/deadlines-and-requirements",
+   "accessed": "2026-10-22"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "Case Western Reserve University - First-Year Applicants",
+   "url": "https://case.edu/admission/apply/first-year-applicants",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Case Western Reserve University - International Applicants",
+   "url": "https://case.edu/admission/apply/international-applicants",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Case Western Reserve is test optional; SAT or ACT scores may be submitted if the applicant chooses.",
+  "src": "first"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "notes": "Common App or Coalition with Scoir. Required: official high school transcript, School Report, counselor recommendation, two teacher recommendations, an essay (all first-year students) and the $75 fee (waivers available). Music and music-education applicants need an Arts Supplement. Pre-Professional Scholars applicants write two additional essays plus an interview in late March if selected as a finalist. Applicants seeking need-based aid must indicate it on the application and submit financial aid documents for the application to be complete: non-U.S. residents submit the CSS Profile only (CSS code 1105); U.S. citizens and permanent residents submit FAFSA plus CSS Profile. The page does not state a year, so dates are taken as the current cycle.",
+  "src": "first"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-05",
+   "label": "Early Decision I (binding)",
+   "notes": "Anticipated notification Dec 5; deposit due Dec 12; financial aid documents due Nov 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-19",
+   "label": "Early Action (non-binding)",
+   "notes": "Anticipated notification Dec 19; reply by May 1; financial aid documents due Nov 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-06",
+   "label": "Early Decision II (binding)",
+   "notes": "Anticipated notification Feb 6; deposit due 1 week after admission; financial aid documents due Jan 22.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-20",
+   "label": "Regular Decision",
+   "notes": "Anticipated notification Mar 20; reply by May 1; financial aid documents due Feb 1. The separate Pre-Professional Scholars Program (conditional medical/dental admission) closes Dec 1 with notification Jan 30.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Automatically waived if you attended a school with English as the language of instruction for two years by graduation, score 630+ on the SAT Evidence-Based Reading and Writing section, or score 26+ on the ACT English section.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "For exams taken on or before January 20, 2026 (577 on the paper-based test).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "For exams taken on or after January 21, 2026; includes Home Edition and Paper Edition.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 61,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "merit_scholarships": true,
+  "notes": "The international page states financial aid is available to international students, all undergraduates are automatically evaluated for several scholarships (including full-tuition awards via scholarship competitions that need an essay), and CWRU awarded $213 million in institutional aid last year. Whether need is met in full for international students, and whether admission is need-blind, is not stated on the pages read, so intl_aid_policy is left unset.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1105",
+   "src": "first"
+  },
+  "act": {
+   "code": "3244",
+   "src": "first"
+  },
+  "toefl": {
+   "code": null,
+   "note": "TOEFL code not found on the admissions pages read.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "nursing": "Frances Payne Bolton School of Nursing is a top-15 nursing program."
+ }
+}

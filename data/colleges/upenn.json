@@ -1,0 +1,130 @@
+{
+  "slug": "upenn",
+  "name": "University of Pennsylvania",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Philadelphia",
+  "latitude": 39.950929,
+  "longitude": -75.19391,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.upenn.edu/",
+  "admissions_url": "https://www.upenn.edu/admissions/",
+  "ipeds_unit_id": 215062,
+  "undergrad_enrollment": 10650,
+  "intl_undergrads": 1341,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=215062",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?215062",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Pennsylvania Common Data Set 2025-26 (PDF)",
+      "url": "https://upenn.box.com/s/woo7d85yxpol6j9e2o121aucjc6dc1k5",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 72544,
+    "admits": 3570,
+    "enrolled": 2420,
+    "in_state_applicants": 5411,
+    "in_state_admits": 451,
+    "out_state_applicants": 49251,
+    "out_state_admits": 2678,
+    "intl_applicants": 17882,
+    "intl_admits": 441,
+    "waitlist_offered": 3252,
+    "waitlist_accepted": 2566,
+    "waitlist_admitted": 60,
+    "ed_applicants": 9503,
+    "ed_admits": 1266,
+    "pct_submit_sat": 52,
+    "pct_submit_act": 18,
+    "gpa_avg": 3.9,
+    "pct_reporting_gpa": 98,
+    "gpa_distribution": {
+      "4.0": 59,
+      "3.75-3.99": 32,
+      "3.50-3.74": 5,
+      "3.25-3.49": 4,
+      "3.00-3.24": 0,
+      "2.50-2.99": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS Fall 2025 entering class (23 June 2026 edition). Binding ED plus RD; no early action. The CDS gives no SAT composite percentiles, so SAT_TOTAL is omitted."
+  },
+  "scores": {
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      770,
+      790,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      34,
+      35
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 71236,
+    "books_usd": 1412,
+    "room_board_usd": 19876,
+    "other_usd": 3088,
+    "total_coa_usd": 92288,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

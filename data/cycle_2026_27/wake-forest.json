@@ -1,0 +1,144 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Wake Forest Undergraduate Admissions — How to Apply (requirements and deadlines, Class of 2031)",
+   "url": "https://admissions.wfu.edu/apply/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Wake Forest Undergraduate Admissions — International Students",
+   "url": "https://admissions.wfu.edu/become-a-deacon/international/",
+   "accessed": "2026-10-21"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Wake Forest Undergraduate Admissions — Test Optional",
+   "url": "https://admissions.wfu.edu/apply/test-optional/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT scores are optional and \"only required if you indicate in your application that you want them considered\"; self-reported scores accepted, multiple sittings are superscored. Students who wanted scores considered must send official scores in the summer before arrival.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 85,
+  "supplemental_essays": 0,
+  "interview": "optional_informational",
+  "notes": "Required: $85 fee, application, official high school transcript, Secondary School Report, and one letter of recommendation from either a counselor/advisor or a teacher; Early Decision Agreement for ED I/II; TOEFL, IELTS or Duolingo for international applicants. Optional: counselor recommendation, supplemental questions, video or virtual interview, SAT/ACT, mid-year report. Fee waivers are available on request. Coalition application is listed for domestic first-year students only (international first-years use the Common App or the Wake Forest print application).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Early Decision I",
+   "notes": "Binding; decisions on a rolling basis (no fixed date published).",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "notify": "2027-01-15",
+   "label": "Early Action (first-generation college students only)",
+   "notes": "Non-binding; admitted students have until May 1 to decide. Open to first-generation applicants only (parents have not graduated from a four-year college).",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Binding.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "notes": "Non-binding; the page says applicants hear back \"around April 1\" (no fixed date).",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for international applicants whose first language is not English and/or who attend a school where English is not the medium of instruction; waived for schools where English is the main language of instruction (3 years minimum). Self-reported scores accepted; no superscoring. TOEFL iBT scores from before the January 1, 2026 format change are still accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "accepted",
+   "notes": "Accepted; no minimum score is published on the page.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "accepted",
+   "notes": "Accepted; no minimum score is published on the page.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "notes": "Accepted; no minimum score is published on the page.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "\"Wake Forest University does not offer any need-based financial aid to foreign national students.\" International students are eligible for most merit scholarships, including full-cost awards (Carswell, Gordon, Reynolds, Stamps); the regular application doubles as the scholarship application. Applicants not given a merit award must show sufficient support on the Confidential Financial Information for International Applicants form before admission is considered. (WFU says it meets 100% of demonstrated need for domestic students.)",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5885",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3168",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5885",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code published on the international page; it lists only ielts.org.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "Engineering department is new (opened 2017) and small.",
+  "nursing": "No nursing program."
+ }
+}

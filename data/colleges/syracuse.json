@@ -1,0 +1,135 @@
+{
+  "slug": "syracuse",
+  "name": "Syracuse University",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Syracuse",
+  "latitude": 43.036644,
+  "longitude": -76.133989,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.syracuse.edu/",
+  "admissions_url": "https://www.syracuse.edu/admissions/",
+  "ipeds_unit_id": 196413,
+  "undergrad_enrollment": 15477,
+  "intl_undergrads": 1415,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196413",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?196413",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Syracuse University Common Data Set 2025-2026 (PDF, Institutional Effectiveness)",
+      "url": "https://effectiveness.syr.edu/wp-content/uploads/2026/09/CDS_2025-26_Complete.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 46645,
+    "admits": 22756,
+    "enrolled": 3969,
+    "in_state_applicants": 13154,
+    "in_state_admits": 6028,
+    "out_state_applicants": 29307,
+    "out_state_admits": 15356,
+    "intl_applicants": 4184,
+    "intl_admits": 1372,
+    "waitlist_offered": 14242,
+    "waitlist_accepted": 6530,
+    "waitlist_admitted": 2039,
+    "ed_applicants": 2654,
+    "ed_admits": 1478,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.71,
+    "notes": "Fall 2025 entering class. In-state / out-of-state split is as reported in C1 (New York vs. other states). ED figure (C21) covers Early Decision. SAT 23% (929) / ACT 8% (327) of enrolled submitted scores. GPA distribution is for all enrolled students who reported GPA (C11).",
+    "gpa_distribution": {
+      "4.0": 29.46,
+      "3.75-3.99": 20.43,
+      "3.50-3.74": 21.85,
+      "3.25-3.49": 15.02,
+      "3.00-3.24": 10.42,
+      "2.50-2.99": 2.43,
+      "2.0-2.49": 0.4,
+      "1.0-1.99": 0
+    }
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1300,
+      1350,
+      1410
+    ],
+    "SAT_ERW": [
+      650,
+      690,
+      720
+    ],
+    "SAT_MATH": [
+      640,
+      670,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      29,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 68429,
+    "books_usd": 1799,
+    "room_board_usd": 19756,
+    "other_usd": 2077,
+    "total_coa_usd": 87852,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "I"
+  }
+}

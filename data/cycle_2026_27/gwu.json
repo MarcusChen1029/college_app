@@ -1,0 +1,139 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "GW Undergraduate Admissions — Apply (key dates)",
+   "url": "https://undergraduate.admissions.gwu.edu/apply",
+   "accessed": "2026-10-22"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "GW Undergraduate Admissions — First Year Applicants",
+   "url": "https://undergraduate.admissions.gwu.edu/apply/first-year-applicants",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "GW Undergraduate Admissions — International Applicants",
+   "url": "https://undergraduate.admissions.gwu.edu/apply/international-applicants",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for most applicants (since 2015). SAT/ACT still required for B.A./B.S.-M.D. applicants, homeschooled applicants, and applicants from schools that give only narrative evaluations. Superscores SAT and ACT. Choose test-optional before submitting; changes allowed only within 2 weeks of submission.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 80,
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "notes": "One letter of recommendation required, from a counselor or an academic teacher. Optional writing supplement. Evaluative interviews are not required or offered; an optional InitialView video interview does not replace the English requirement. BFA applicants (except Interior Architecture) need a portfolio.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Notification late December. The page lists month and day only (Nov. 1); year inferred for the fall 2027 cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II (binding)",
+   "notes": "Notification late February. The page lists month and day only (Jan. 5); year inferred for the fall 2027 cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "label": "Regular Decision",
+   "notes": "Notification late March. The page lists month and day only (Jan. 5); year inferred for the fall 2027 cycle.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived if the SAT EBRW is 650+ or ACT English is 29+, or if the applicant will have completed the most recent 4 years of secondary education at a school where English is the primary language of instruction. Requests are due by the application deadline. EAP in the first year may be required based on results; EAP waived with TOEFL 100 (old) / 5 (new), IELTS 7.5 or Duolingo 130.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Taken before January 26, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Taken after January 26, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 61,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for need-based financial assistance but are eligible for merit scholarships with no additional application; any merit award is noted in the admission letter.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5246",
+   "src": "fy"
+  },
+  "act": {
+   "code": "0664",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "5246",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {}
+}

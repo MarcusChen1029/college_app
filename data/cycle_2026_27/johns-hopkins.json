@@ -1,0 +1,181 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Johns Hopkins Admissions - Application Deadlines & Requirements",
+   "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Johns Hopkins Admissions - Standardized Testing (score codes, English proficiency)",
+   "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/standardized-testing/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Johns Hopkins Admissions - International Applicants",
+   "url": "https://apply.jhu.edu/international-applicants/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "First-year applicants must submit SAT or ACT scores (self-report allowed; official scores required on enrollment). The CDS shows Peabody Conservatory considers but does not require scores.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 70,
+  "fee_waiver": true,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "Two teacher evaluations from different academic subjects plus the secondary school report. 350-word Hopkins supplemental essay. CSS Profile is required for all international students applying for financial aid.",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-11",
+   "label": "Early Decision I",
+   "notes": "Binding. Reply by 2027-01-15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-02",
+   "notify": "2027-02-12",
+   "label": "Early Decision II",
+   "notes": "Binding. Reply by 2027-02-26.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-02",
+   "notify": "2027-03-24",
+   "label": "Regular Decision",
+   "notes": "Reply by 2027-05-01.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid deadline (ED I)",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "Financial aid deadline (ED II)",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Financial aid deadline (RD)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "TOEFL, IELTS, Duolingo or Cambridge English are recommended but not required if your primary language is not English or you have not attended an English-language school for the last three years. JHU suggests submitting scores if SAT ERW is below 690 or ACT Reading and English are both below 30.",
+  "src": "test"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 5,
+   "subs": {
+    "reading": 5.5,
+    "listening": 5.5,
+    "writing": 5,
+    "speaking": 5
+   },
+   "notes": "To be competitive: total of 5 with preferred subscores (1-6 scale).",
+   "src": "test"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 7.0,
+   "subs": {
+    "each_band": 7.0
+   },
+   "notes": "To be competitive: 7.0 or higher on each band.",
+   "src": "test"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "rec": 120,
+   "subs": {
+    "literacy": 125,
+    "conversation": 120,
+    "comprehension": 135,
+    "production": 105
+   },
+   "notes": "To be competitive: composite 120 or higher with preferred subscores.",
+   "src": "test"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "recommended_option",
+   "notes": "Accepted; no score published.",
+   "src": "test"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "merit_scholarships": true,
+  "notes": "Need-based and merit scholarships are available to international applicants, but both are limited. You must apply for aid as a first-year applicant (no aid later); no aid for international transfer students. The page does not state whether admission is need-aware or whether full need is met for international students.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5332",
+   "src": "test"
+  },
+  "act": {
+   "code": "1704",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "5332",
+   "src": "test"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "B",
+  "engineering": "A",
+  "biology_life_sci": "S",
+  "pre_med": "S",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "A",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "business": "No undergraduate business major (business minor only).",
+  "nursing": "No first-year BSN; Hopkins nursing entry is at the master's level.",
+  "engineering": "Whiting School is a top-15 engineering school (biomedical engineering is #1).",
+  "biology_life_sci": "Biomedical sciences are top-5 nationally; largest NIH-funded research enterprise.",
+  "pre_med": "Johns Hopkins medicine gives top-5 research access and pre-med reputation.",
+  "humanities": "Top-15 humanities (Writing Seminars, history).",
+  "arts_design": "Peabody Institute is a leading music conservatory."
+ }
+}

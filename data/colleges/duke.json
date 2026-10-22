@@ -1,0 +1,118 @@
+{
+  "slug": "duke",
+  "name": "Duke University",
+  "short_name": null,
+  "state_region": "NC",
+  "city": "Durham",
+  "latitude": 36.001135,
+  "longitude": -78.937624,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.duke.edu/",
+  "admissions_url": "https://www.admissions.duke.edu/",
+  "ipeds_unit_id": 198419,
+  "undergrad_enrollment": 6442,
+  "intl_undergrads": 679,
+  "student_faculty_ratio": 5,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=198419",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?198419",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Duke University Common Data Set 2025-2026 (pdf)",
+      "url": "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 55541,
+    "admits": 2910,
+    "enrolled": 1749,
+    "pct_submit_sat": 48,
+    "pct_submit_act": 27,
+    "notes": "Fall 2025 entering class. Residency split, waitlist counts, ED counts and GPA (C11/C12) are blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1510,
+      1550,
+      1570
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      780
+    ],
+    "SAT_MATH": [
+      770,
+      790,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      36,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      35,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 72795,
+    "books_usd": 536,
+    "room_board_usd": 19247,
+    "other_usd": 3274,
+    "total_coa_usd": 90696,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted."
+  }
+}

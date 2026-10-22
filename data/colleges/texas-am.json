@@ -1,0 +1,117 @@
+{
+  "slug": "texas-am",
+  "name": "Texas A&M University-College Station",
+  "short_name": null,
+  "state_region": "TX",
+  "city": "College Station",
+  "latitude": 30.618726,
+  "longitude": -96.336475,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.tamu.edu/",
+  "admissions_url": "https://admissions.tamu.edu/",
+  "ipeds_unit_id": 228723,
+  "undergrad_enrollment": 59615,
+  "intl_undergrads": 644,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228723",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?228723",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Texas A&M University Common Data Set 2025-2026 (pdf)",
+      "url": "https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 62967,
+    "admits": 32531,
+    "enrolled": 12484,
+    "in_state_applicants": 49156,
+    "in_state_admits": 26620,
+    "out_state_applicants": 10882,
+    "out_state_admits": 4489,
+    "intl_applicants": 2929,
+    "intl_admits": 1422,
+    "pct_submit_sat": 76.7,
+    "pct_submit_act": 18.7,
+    "notes": "CDS C1/C9. GPA (C11/C12) is not reported in the CDS and there is no waitlist data. No early decision; nonbinding early action (CDS closing date 10/15). Top-10% Texas class rank is a major pathway for in-state students (CDS C10: 71.6% of reporting enrollees in top tenth)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1280,
+      1390
+    ],
+    "SAT_ERW": [
+      580,
+      640,
+      690
+    ],
+    "SAT_MATH": [
+      570,
+      640,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      28,
+      32
+    ],
+    "ACT_ENGLISH": [
+      23,
+      27,
+      33
+    ],
+    "ACT_MATH": [
+      23,
+      27,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 13154,
+    "books_usd": 946,
+    "room_board_usd": 12522,
+    "other_usd": 5864,
+    "total_coa_usd": 32796,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 39974
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "C",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC"
+  }
+}

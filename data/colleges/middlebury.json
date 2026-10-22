@@ -1,0 +1,108 @@
+{
+  "slug": "middlebury",
+  "name": "Middlebury College",
+  "short_name": null,
+  "state_region": "VT",
+  "city": "Middlebury",
+  "latitude": 44.009117,
+  "longitude": -73.176068,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.middlebury.edu/college/",
+  "admissions_url": "https://www.middlebury.edu/college/admissions",
+  "ipeds_unit_id": 230959,
+  "undergrad_enrollment": 2738,
+  "intl_undergrads": 337,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=230959",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?230959",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Middlebury College Common Data Set Fall 2025 (preliminary) (PDF)",
+      "url": "https://www.middlebury.edu/sites/default/files/2026-02/Fall%202025%20CDS%20Preliminary.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11831,
+    "admits": 1511,
+    "enrolled": 634,
+    "waitlist_offered": 1996,
+    "waitlist_accepted": 1878,
+    "waitlist_admitted": 109,
+    "ed_applicants": 1179,
+    "ed_admits": 460,
+    "pct_submit_sat": 33,
+    "pct_submit_act": 16,
+    "notes": "From Middlebury's PRELIMINARY Fall 2025 CDS (file footers still carry the 2024-2025 template label; data are labelled Fall 2025). Admits are September admits only (excludes February admits). No residency split, GPA or class-rank figures reported. ED1 and ED2; no early action."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1500,
+      1530
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      720,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70640,
+    "books_usd": 1000,
+    "room_board_usd": 20116,
+    "other_usd": 1000,
+    "total_coa_usd": 88850,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

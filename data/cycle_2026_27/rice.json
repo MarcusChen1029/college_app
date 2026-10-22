@@ -1,0 +1,145 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Rice Admission - First-Year Applicants",
+   "url": "https://admission.rice.edu/apply/first-year-applicants",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Rice Admission - International Applicants",
+   "url": "https://admission.rice.edu/apply/international-applicants",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for the 2026-27 cycle; Rice 'recommends' submitting SAT/ACT if available but applicants without scores get full consideration. Scores are superscored; self-reported scores allowed, official scores required only if you enroll. SAT/ACT essay not considered.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "Rice writing supplement: two 150-word prompts and one 500-word prompt (choice of two). Architecture adds two 250-word prompts and a creative portfolio.",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "notes": "Two core-academic teacher letters (ideally one in the intended area of study) and one school counselor letter. Interviews are optional, virtual, and not guaranteed; the page does not say whether they are evaluative. Optional 60-90 second Glimpse video. QuestBridge applicants get automatic fee waivers. CSS Profile: the international aid page says Rice uses the CSS Profile for international students; the first-year page does not name an aid form for domestic applicants.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notes": "Early Decision I. Decision released 'by mid-December' (no exact date published); enrollment deposit due by January 4.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "notes": "Early Decision II. Decision 'by late January' (no exact date published); deposit due by mid-February.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "notify": "2027-04-01",
+   "notes": "Decision released by April 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "due": "2027-01-04",
+   "label": "ED I enrollment deposit",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "RD enrollment deposit",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose first language is not English must either complete at least two years of full-time study in an English-language curriculum before applying or submit an official score meeting the minimums. TOEFL iBT Home Edition accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Exams taken before 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "notes": "Exams on or after 2026-01-21, overall score on the updated 1-6 scale; during the transition Rice also considers the comparable 0-120 score reported by ETS.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 185,
+   "notes": "C1 Advanced or C2 Proficiency.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "Rice considers international applicants on a need-aware basis and offers need-based aid to a limited number of international first-years; request aid on the International Student Financial Statement at application (aid cannot be requested later). Uses the CSS Profile for international aid applicants. Merit scholarships are separate, based only on merit, about 20% of admitted students receive them, no separate application. The page does not say whether full need is met for international students (the first-year page says domestic applicants are need-blind with 100% of need met without loans).",
+  "src": "intl"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "6609",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4152",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "business": "Undergraduate business major only since 2021 (taught by Jones Graduate School faculty).",
+  "arts_design": "Rice Architecture and the Shepherd School of Music are both among the best in the US.",
+  "nursing": "No nursing program."
+ }
+}

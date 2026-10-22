@@ -1,0 +1,160 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "CMC - Application Instructions for First-Year Applicants",
+   "url": "https://www.cmc.edu/admission/first-year-application-instructions",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "CMC - Application Instructions for First-Year International Applicants",
+   "url": "https://www.cmc.edu/admission/international",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional extended through the fall 2027 entry term; CMC will return to test-required for fall 2028. Superscoring across sections within one test type. Enrolling students who submitted scores must send official scores before fall classes begin.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "css_profile_required": true,
+  "notes": "Two required supplemental essays (Common and Coalition) plus an optional 2-minute video response. One teacher recommendation from a core academic subject. Interview is not required but highly recommended and is part of the evaluation; ED I applicants should interview by mid-November. CSS Profile + FAFSA are required only when applying for aid, and CMC does not accept the CSS Profile or IFSAA from international applicants (it uses its own international aid form).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-15",
+   "label": "Early Decision I",
+   "notes": "Reply due in early January.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-10",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Reply due in late February.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Reply due May 1.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Merit scholarship priority",
+   "notes": "Application submitted by Dec 1 with all credentials by Jan 10; no separate scholarship application.",
+   "src": "fy"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-08",
+   "notify": "2026-12-15",
+   "label": "CSS Profile + FAFSA (ED I)",
+   "src": "fy"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-17",
+   "notify": "2027-02-15",
+   "label": "CSS Profile + FAFSA (ED II)",
+   "src": "fy"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-17",
+   "notify": "2027-04-01",
+   "label": "CSS Profile + FAFSA (RD)",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if first language is not English or the applicant has not attended a school with English as the primary language of instruction for at least three years. A waiver request form is available in the applicant portal. TOEFL Essentials is not accepted. Duolingo scores must be official; TOEFL iBT, IELTS and Cambridge may be self-reported if official reports are a financial burden.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Recommended minimum for exams taken before 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "notes": "Recommended minimum for exams taken after 2026-01-21 (new 1-6 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 190,
+   "notes": "C1 Advanced or C2 Proficiency.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "notes": "Need-aware for all international applicants; if admitted, CMC commits to meeting demonstrated need as determined at admission. Applicants must request aid on the application and submit the CMC Financial Aid Application for International Students (IFSAA and CSS Profile not accepted). Students not receiving aid at admission are not eligible later. Merit scholarships are available to first-year applicants (priority: application by Dec 1), no separate application.",
+  "src": "intl"
+ },
+ "tiers": {
+  "general": "A",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "C"
+ },
+ "tier_notes": {
+  "computer_science": "No CS major of its own; CMC students can apply to Harvey Mudd's CS major. CMC offers Data Science.",
+  "engineering": "No engineering.",
+  "business": "No business major (Economics and the Robert Day finance/accounting sequence are the route).",
+  "economics": "Economics is CMC's signature major; strong undergraduate teaching rather than a research department.",
+  "arts_design": "No arts major at CMC itself (arts are taken at the other Claremont Colleges).",
+  "nursing": "No nursing program."
+ }
+}

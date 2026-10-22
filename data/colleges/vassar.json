@@ -1,0 +1,114 @@
+{
+  "slug": "vassar",
+  "name": "Vassar College",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Poughkeepsie",
+  "latitude": 41.686895,
+  "longitude": -73.895088,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.vassar.edu/",
+  "admissions_url": "https://www.vassar.edu/admissions/",
+  "ipeds_unit_id": 197133,
+  "undergrad_enrollment": 2444,
+  "intl_undergrads": 148,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=197133",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?197133",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Vassar College Common Data Set 2025-2026",
+      "url": "https://offices.vassar.edu/institutional-research/wp-content/uploads/sites/23/2026/03/Vassar_College_CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11118,
+    "admits": 2327,
+    "enrolled": 697,
+    "intl_applicants": 3705,
+    "intl_admits": 185,
+    "in_state_applicants": 2194,
+    "in_state_admits": 616,
+    "out_state_applicants": 5219,
+    "out_state_admits": 1526,
+    "waitlist_offered": 918,
+    "waitlist_accepted": 510,
+    "waitlist_admitted": 30,
+    "ed_applicants": 1046,
+    "ed_admits": 402,
+    "pct_submit_sat": 32,
+    "pct_submit_act": 14,
+    "notes": "CDS C1 totals for the fall 2025 entering class (in-state = New York; international enrollees 63). C21: ED I closes 11/15 (notified 12/15), ED II closes 1/1 (notified 2/1); no early action. High school GPA is not reported (C11/C12 zero). Application is test-optional (C8A: considered if submitted)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1490,
+      1520
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      710,
+      740,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 74265,
+    "books_usd": 900,
+    "room_board_usd": 19055,
+    "other_usd": 1350,
+    "total_coa_usd": 91520,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "C",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "NC"
+  }
+}

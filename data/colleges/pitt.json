@@ -1,0 +1,90 @@
+{
+  "slug": "pitt",
+  "name": "University of Pittsburgh-Pittsburgh Campus",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Pittsburgh",
+  "latitude": 40.444388,
+  "longitude": -79.953254,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.pitt.edu/",
+  "admissions_url": "https://admissions.pitt.edu/",
+  "ipeds_unit_id": 215293,
+  "undergrad_enrollment": 20370,
+  "intl_undergrads": 915,
+  "student_faculty_ratio": 13,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=215293",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?215293",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Pittsburgh (Pittsburgh campus) Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.ir.pitt.edu/sites/default/files/2026-02/CDS_2025-2026_PGH-UA_0.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 64724,
+    "admits": 38477,
+    "enrolled": 5876,
+    "waitlist_offered": 6245,
+    "waitlist_accepted": 3198,
+    "waitlist_admitted": 84,
+    "notes": "CDS C1 totals are male + female counts (unknown-sex counts are suppressed in the CDS, so totals may be a few students low). CDS C21/C22 report no early decision and no early action plan. The 2025-26 CDS marks C9-C12 (test scores, GPA) as 'coming soon', so SAT/ACT ranges below remain the IPEDS baseline (fall 2023 entering class); C7 factors and the academic calendar are check-box fields not readable from the PDF text and are left blank."
+  },
+  "scores": {
+    "SAT_ERW": [
+      640,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      630,
+      680,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 22736,
+    "books_usd": 576,
+    "room_board_usd": 15728,
+    "other_usd": 2872,
+    "total_coa_usd": 38719,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 43432
+  }
+}

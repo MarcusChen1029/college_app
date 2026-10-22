@@ -1,0 +1,120 @@
+{
+  "slug": "umn",
+  "name": "University of Minnesota-Twin Cities",
+  "short_name": null,
+  "state_region": "MN",
+  "city": "Minneapolis",
+  "latitude": 44.972851,
+  "longitude": -93.235464,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://twin-cities.umn.edu/",
+  "admissions_url": "https://admissions.tc.umn.edu/",
+  "ipeds_unit_id": 174066,
+  "undergrad_enrollment": 31855,
+  "intl_undergrads": 1975,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=174066",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?174066",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Minnesota Twin Cities Common Data Set 2025-2026 (pdf)",
+      "url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2025_2026_tc_0.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 43929,
+    "admits": 34648,
+    "enrolled": 7180,
+    "in_state_applicants": 9780,
+    "in_state_admits": 6222,
+    "out_state_applicants": 26246,
+    "out_state_admits": 22386,
+    "intl_applicants": 7903,
+    "intl_admits": 6040,
+    "pct_submit_sat": 7.3,
+    "pct_submit_act": 33.6,
+    "notes": "CDS C1/C9. GPA (C11/C12) is not reported; waitlist numbers blank. No early decision; nonbinding early action. Only about 41% of enrollees submitted SAT/ACT, so score ranges describe test submitters only."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1310,
+      1390,
+      1460
+    ],
+    "SAT_ERW": [
+      640,
+      690,
+      740
+    ],
+    "SAT_MATH": [
+      650,
+      700,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      33
+    ],
+    "ACT_MATH": [
+      25,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 18482,
+    "books_usd": 1000,
+    "room_board_usd": 14672,
+    "other_usd": 2358,
+    "total_coa_usd": 32137,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 41368
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

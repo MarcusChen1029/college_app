@@ -1,0 +1,139 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - First-year Dates & Deadlines (2026-27)",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (fees)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-10-21"
+  },
+  "ucr_intl": {
+   "kind": "admissions_site",
+   "title": "UCR Admissions - International",
+   "url": "https://admissions.ucr.edu/international",
+   "accessed": "2026-10-21"
+  },
+  "ucr_afford": {
+   "kind": "admissions_site",
+   "title": "UCR Admissions - How to make UCR affordable (international)",
+   "url": "https://admissions.ucr.edu/affordable-international",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC campuses will not consider SAT/ACT in admissions or scholarships.",
+  "src": "ucr_intl"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 80,
+  "fee_waiver": true,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8)",
+  "notes": "Fee is $95 for international applicants (UC page); fee waivers limited to US citizens, permanent residents and AB540-eligible applicants. Minimum nonresident high-school GPA is 3.4 per UCR.",
+  "src": "ucr_intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "UC filing period closes",
+   "due": "2026-11-30",
+   "notes": "Filing period Oct 1 - Nov 30, 2026. No early plans. Decisions are released across March 1-31, 2027 (no campus-specific date published).",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Statement of Intent to Register (SIR)",
+   "due": "2027-05-01",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if all secondary school was in a country where English is not the language of instruction. Alternatives accepted by UC: AP English Language or Literature 3-5, IB English A SL 6-7 / HL 5-7, ACT English Language Arts 24+, SAT Writing and Language 31+, or a C or better in a UC-transferable college English composition course. Exam must be taken by December of the final year. Individual campuses may set higher minimums.",
+  "src": "uc_eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Tests taken before January 2026",
+   "src": "uc_eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, effective January 2026",
+   "src": "uc_eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS One Skill Retake not accepted",
+   "src": "uc_eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "uc_eng"
+  }
+ ],
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "International first-years are automatically considered for the Achievement Scholarship for Nonresident Students: up to $89,100 over four years, renewable with a 3.0 GPA each quarter. UCR's international pages do not describe need-based aid for international students, so no aid policy is recorded.",
+  "src": "ucr_intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4839",
+   "note": "UCR lists 'TOEFL / AP / SAT: 004839' (entered as 4839 here). UC does not consider SAT/ACT in admissions.",
+   "src": "ucr_intl"
+  },
+  "act": {
+   "code": "0456",
+   "note": "UC does not consider SAT/ACT in admissions.",
+   "src": "ucr_intl"
+  },
+  "toefl": {
+   "code": "4839",
+   "note": "UC says to self-report scores in the application and send official scores only to the campus where you enroll.",
+   "src": "ucr_intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "nursing": "No nursing program."
+ }
+}

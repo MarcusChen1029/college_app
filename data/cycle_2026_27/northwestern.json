@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Northwestern Admissions - Application Dates and Deadlines",
+   "url": "https://admissions.northwestern.edu/apply/application-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Northwestern Admissions - Application Materials",
+   "url": "https://admissions.northwestern.edu/apply/requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Northwestern Admissions - Standardized Testing Policy",
+   "url": "https://admissions.northwestern.edu/faqs/standardized-testing-policy/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Northwestern Admissions - International Applicants FAQ",
+   "url": "https://admissions.northwestern.edu/faqs/international-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Northwestern Undergraduate Financial Aid - Prospective International Students",
+   "url": "https://undergradaid.northwestern.edu/apply-for-aid/prospective-international-undocumented-students/",
+   "accessed": "2026-10-21"
+  },
+  "aid2": {
+   "kind": "financial_aid_site",
+   "title": "Northwestern Undergraduate Financial Aid - Resources for International Students",
+   "url": "https://undergradaid.northwestern.edu/help-support/international-students/",
+   "accessed": "2026-10-21"
+  },
+  "cdsfee": {
+   "kind": "other",
+   "title": "Northwestern Common Data Set 2025-2026 (C13 application fee)",
+   "url": "https://www.enrollment.northwestern.edu/data/2025-2026.pdf",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for first-year applicants; SAT/ACT not required. Admitted students who submitted scores must send official scores before matriculation.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "notes": "App fee $75 is from the CDS (C13). One counselor and one teacher recommendation. No alumni interviews; applicants from international high schools may submit an optional InitialView interview. Applicants needing aid file the CSS Profile or ISAFA (international).",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding)",
+   "notes": "Decision in December 2026 (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "label": "Regular Decision",
+   "notes": "Decision in March 2027 (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-12-01",
+   "label": "CSS Profile or ISAFA (ED, international)",
+   "notes": "Request aid consideration by Nov 1; tax forms due Dec 5.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-02",
+   "label": "CSS Profile or ISAFA (RD, international)",
+   "notes": "Request aid consideration by Jan 2; tax forms due Feb 5. The general admissions page lists Feb 1 for RD aid.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if your first/primary language is not English or your secondary schooling was not in English. Scores cannot be self-reported (must be sent officially). No minimum score is published; competitive applicants score in the high range on all sections.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "No minimum published. TOEFL ITP Plus for China and MyBest scores are not accepted; no superscoring.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "No minimum published. IELTS Indicator accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "No minimum published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "International admission review is need-aware (a request for aid and the amount needed may factor into the decision). Northwestern meets 100% of demonstrated need.",
+  "src": "aid2"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1565",
+   "src": "test"
+  },
+  "act": {
+   "code": "1106",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "1565",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "B",
+  "engineering": "A",
+  "biology_life_sci": "B",
+  "pre_med": "A",
+  "economics": "A",
+  "math_physics": "B",
+  "humanities": "A",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "business": "No undergraduate business major (Kellogg certificate only).",
+  "nursing": "No nursing program.",
+  "engineering": "McCormick is a top-15 engineering school.",
+  "pre_med": "Strong pre-med outcomes; Feinberg School of Medicine and the HPME program.",
+  "economics": "Top-10 economics department.",
+  "humanities": "Top-15 humanities departments.",
+  "arts_design": "School of Communication (theatre, radio/TV/film) and Bienen School of Music are among the best in the US."
+ }
+}

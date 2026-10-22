@@ -1,0 +1,128 @@
+{
+  "slug": "william-mary",
+  "name": "William & Mary",
+  "short_name": null,
+  "state_region": "VA",
+  "city": "Williamsburg",
+  "latitude": 37.269489,
+  "longitude": -76.708214,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.wm.edu/",
+  "admissions_url": "https://www.wm.edu/admission/",
+  "ipeds_unit_id": 231624,
+  "undergrad_enrollment": 7055,
+  "intl_undergrads": 237,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=231624",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?231624",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "title": "William & Mary Common Data Set 2025-2026 (Sections C1-C12, PDF)",
+      "url": "https://www.wm.edu/offices/ir/university_data/cds/cds_2025-26_c1.pdf",
+      "kind": "cds",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 16895,
+    "admits": 6245,
+    "enrolled": 1639,
+    "waitlist_offered": 4085,
+    "waitlist_accepted": 1901,
+    "waitlist_admitted": 103,
+    "ed_applicants": 1477,
+    "ed_admits": 735,
+    "pct_submit_sat": 48,
+    "pct_submit_act": 14,
+    "gpa_avg": 4.34,
+    "pct_reporting_gpa": 88.0,
+    "gpa_distribution": {
+      "4.0": 88.9,
+      "3.75-3.99": 7.2,
+      "3.50-3.74": 3.0,
+      "3.25-3.49": 0.8,
+      "3.00-3.24": 0.1
+    },
+    "notes": "Applicants/admits/enrolled are sums of the men, women and unknown-sex rows in C1. The in-state/out-of-state/international residency table was left blank in the CDS. ED counts (C21) are labelled 'Fall 2024 entering class' in the file. GPA is W&M's recalculated weighted GPA (average 4.34, above 4.0). Standardized tests are optional (C8F)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1390,
+      1450,
+      1520
+    ],
+    "SAT_ERW": [
+      710,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      680,
+      710,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      29,
+      31,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 26456,
+    "books_usd": 1080,
+    "room_board_usd": 16601,
+    "other_usd": 2660,
+    "total_coa_usd": 45606,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 52725
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "VI",
+    "religious_affiliation": "NC",
+    "volunteer_work": "VI",
+    "work_experience": "VI",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "slug": "vanderbilt",
+  "name": "Vanderbilt University",
+  "short_name": null,
+  "state_region": "TN",
+  "city": "Nashville",
+  "latitude": 36.14659,
+  "longitude": -86.803369,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.vanderbilt.edu/",
+  "admissions_url": "https://www.vanderbilt.edu/Admissions/",
+  "ipeds_unit_id": 221999,
+  "undergrad_enrollment": 7208,
+  "intl_undergrads": 806,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=221999",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?221999",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Vanderbilt University Common Data Set 2025-2026 (xlsx)",
+      "url": "https://cdn.vanderbilt.edu/vu-wpfsx/wp-content/uploads/sites/70/2026/07/CDS_2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 48196,
+    "admits": 2593,
+    "enrolled": 1635,
+    "in_state_applicants": 2885,
+    "in_state_admits": 301,
+    "out_state_applicants": 36130,
+    "out_state_admits": 1926,
+    "intl_applicants": 9181,
+    "intl_admits": 366,
+    "waitlist_admitted": 207,
+    "ed_applicants": 6202,
+    "ed_admits": 874,
+    "pct_submit_sat": 24,
+    "pct_submit_act": 28,
+    "gpa_avg": 3.895,
+    "pct_reporting_gpa": 99.8,
+    "gpa_distribution": {
+      "4.0": 31.6,
+      "3.75-3.99": 56.6,
+      "3.50-3.74": 9.1,
+      "3.25-3.49": 1.4,
+      "3.00-3.24": 0.6,
+      "2.50-2.99": 0.6,
+      "2.0-2.49": 0.1,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS 2025-26 (fall 2025 entering class). Waitlist offered/accepted were left blank in the CDS; only 207 admitted from the waitlist is reported. 'intl' = nonresident aliens (C1 residency table). GPA distribution is the all-enrolled column."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1510,
+      1530,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      770,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 71226,
+    "books_usd": 1100,
+    "room_board_usd": 23048,
+    "other_usd": 2000,
+    "total_coa_usd": 94142,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

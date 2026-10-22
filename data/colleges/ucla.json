@@ -1,0 +1,96 @@
+{
+  "slug": "ucla",
+  "name": "University of California-Los Angeles",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Los Angeles",
+  "latitude": 34.07178,
+  "longitude": -118.442179,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ucla.edu/",
+  "admissions_url": "https://www.admissions.ucla.edu/",
+  "ipeds_unit_id": 110662,
+  "undergrad_enrollment": 33475,
+  "intl_undergrads": 2574,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110662",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110662",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UCLA Common Data Set 2025-2026",
+      "url": "https://apb.ucla.edu/file/d1ab04b3-ee89-4cf2-9124-8dc0471b5e5a",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 145086,
+    "admits": 13659,
+    "enrolled": 6553,
+    "waitlist_offered": 20563,
+    "waitlist_accepted": 13612,
+    "waitlist_admitted": 1514,
+    "gpa_avg": 3.94,
+    "pct_reporting_gpa": 99.8,
+    "gpa_distribution": {
+      "4.0": 58.8,
+      "3.75-3.99": 34.6,
+      "3.50-3.74": 4.9,
+      "3.25-3.49": 1.0,
+      "3.00-3.24": 0.4,
+      "2.50-2.99": 0.2,
+      "2.0-2.49": 0.1,
+      "1.0-1.99": 0
+    },
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. Residency split and C9 test-score percentiles are blank in the UCLA CDS (test-blind). GPA distribution: the 4.0 row appears to include weighted GPAs at/above 4.0 (UC-calculated); treat as UC-weighted GPA."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 15729,
+    "books_usd": 1680,
+    "room_board_usd": 18960,
+    "other_usd": 6798,
+    "total_coa_usd": 41373,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 53331
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "NC"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "slug": "uc-san-diego",
+  "name": "University of California-San Diego",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "La Jolla",
+  "latitude": 32.877749,
+  "longitude": -117.235866,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ucsd.edu/",
+  "admissions_url": "https://admissions.ucsd.edu/index.html",
+  "ipeds_unit_id": 110680,
+  "undergrad_enrollment": 34948,
+  "intl_undergrads": 3890,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110680",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110680",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UC San Diego Common Data Set 2025-2026",
+      "url": "https://ir.ucsd.edu/stats/undergrad/CDS-2025-2026-Final2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 136750,
+    "admits": 39054,
+    "enrolled": 7801,
+    "in_state_applicants": 87584,
+    "in_state_admits": 21677,
+    "out_state_applicants": 24912,
+    "out_state_admits": 9881,
+    "intl_applicants": 24254,
+    "intl_admits": 7496,
+    "waitlist_offered": 36709,
+    "waitlist_accepted": 25411,
+    "waitlist_admitted": 5284,
+    "gpa_avg": 3.88,
+    "pct_reporting_gpa": 94,
+    "gpa_distribution": {
+      "4.0": 31,
+      "3.75-3.99": 54,
+      "3.50-3.74": 13,
+      "3.25-3.49": 2,
+      "3.00-3.24": 0,
+      "2.50-2.99": 0,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. C9 test-score percentiles are blank (UC test-blind). Enrolled split: 5,431 in-state / 961 out-of-state / 1,409 international."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 17337,
+    "books_usd": 1363,
+    "room_board_usd": 19632,
+    "other_usd": 6371,
+    "total_coa_usd": 41664,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 54939
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

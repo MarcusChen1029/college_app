@@ -1,0 +1,91 @@
+{
+  "slug": "babson",
+  "name": "Babson College",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Wellesley",
+  "latitude": 42.297017,
+  "longitude": -71.264057,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.babson.edu/",
+  "admissions_url": "https://www.babson.edu/undergraduate/admission/",
+  "ipeds_unit_id": 164580,
+  "undergrad_enrollment": 2728,
+  "intl_undergrads": 772,
+  "student_faculty_ratio": 15,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=164580",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?164580",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Babson College Common Data Set 2025-2026",
+      "url": "https://www.babson.edu/media/babson/assets/rankings/CDS-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10552,
+    "admits": 1705,
+    "enrolled": 692,
+    "notes": "CDS C1 totals (men + women + unknown sex) and C9 percentiles only. The published form leaves the C1 residency table, waitlist, C7, C11/C12 and C21 blank or unreadable, so those are not included. Test-optional (SAT/ACT considered if submitted)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1410,
+      1470,
+      1510
+    ],
+    "SAT_ERW": [
+      680,
+      710,
+      740
+    ],
+    "SAT_MATH": [
+      720,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      29,
+      32,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 58560,
+    "books_usd": 1300,
+    "room_board_usd": 22346,
+    "other_usd": 2100,
+    "total_coa_usd": 82076,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

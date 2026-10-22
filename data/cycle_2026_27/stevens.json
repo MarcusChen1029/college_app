@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Stevens - Undergraduate Admissions Timeline & Deadlines",
+   "url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/admissions-timeline",
+   "accessed": "2026-10-22"
+  },
+  "plans": {
+   "kind": "admissions_site",
+   "title": "Stevens - First-Year Application Plans & Deadlines",
+   "url": "https://www.stevens.edu/page-basic/first-year-application-plans",
+   "accessed": "2026-10-22"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Stevens - First-Year Applicants (requirements, test policy, English)",
+   "url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/first-year-students",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Stevens - International Students",
+   "url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/international-students",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for first-year applicants through the fall 2029 entry term, with exceptions: the Accelerated Pre-Medicine and Pre-Law programs still require scores (Pre-Med: SAT 1400 or ACT 32 in one sitting, taken before the Nov 1 deadline). Scores may be self-reported in the applicant portal. Stevens has no minimum GPA or test score.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 75,
+  "css_profile_required": true,
+  "notes": "Two letters of recommendation (teacher or school counselor preferred), official transcript and essay. Interview optional for most applicants (international applicants are strongly recommended to interview; InitialView accepted). Music and Visual Arts & Technology applicants are strongly encouraged to submit a portfolio. CSS Profile (code 2819) is required to be considered for Stevens need-based aid; FAFSA for federal/state aid. The timeline page gives month/day only (no year); dates below are applied to the fall 2027 cycle.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "notify": "2026-12-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Notified by Dec 15. Deposit due Jan 10. CSS Profile and FAFSA due Nov 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "notify": "2027-02-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Notified by Feb 1; deposit May 1 (Mar 5 for priority housing/registration). CSS Profile and FAFSA due Dec 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Notified by Feb 15. Deposit due Mar 1. CSS Profile and FAFSA due Jan 5.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Non-binding. Notified by Apr 1; deposit May 1. CSS Profile and FAFSA due Jan 5.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "due": "2027-01-10",
+   "label": "ED I deposit",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED2",
+   "due": "2027-03-01",
+   "label": "ED II deposit",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "EA and RD deposit",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waivers considered case by case for international students who have studied in the US for at least 3 years. Alternative: SAT Evidence-Based Reading & Writing 550+. Native English speakers exempt.",
+  "src": "apply"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Old 0-120 scale.",
+   "src": "apply"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "New 1-6 scale; minimum 4.",
+   "src": "apply"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall.",
+   "src": "apply"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "apply"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Listed on the first-year page; not listed on the international students page.",
+   "src": "apply"
+  }
+ ],
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for federal aid; Stevens awards a limited number of merit scholarships to international students. The CSS Profile (code 2819) is required to be considered for institutional scholarships. Whether international applicants receive need-based grants is not stated on the page.",
+  "src": "intl"
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "nursing": "No nursing program."
+ }
+}

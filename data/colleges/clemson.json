@@ -1,0 +1,119 @@
+{
+  "slug": "clemson",
+  "name": "Clemson University",
+  "short_name": null,
+  "state_region": "SC",
+  "city": "Clemson",
+  "latitude": 34.679381,
+  "longitude": -82.835114,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.clemson.edu/",
+  "admissions_url": "https://www.clemson.edu/admissions/index.html",
+  "ipeds_unit_id": 217882,
+  "undergrad_enrollment": 23300,
+  "intl_undergrads": 189,
+  "student_faculty_ratio": 16,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217882",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?217882",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "title": "Clemson University Common Data Set 2025-2026",
+      "url": "https://open.clemson.edu/cgi/viewcontent.cgi?article=1017&context=cds",
+      "kind": "cds",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 64805,
+    "admits": 27498,
+    "enrolled": 5084,
+    "in_state_applicants": 10697,
+    "in_state_admits": 5661,
+    "out_state_applicants": 52651,
+    "out_state_admits": 21277,
+    "intl_applicants": 1457,
+    "intl_admits": 560,
+    "waitlist_offered": 13297,
+    "waitlist_accepted": 4506,
+    "waitlist_admitted": 1801,
+    "pct_submit_sat": 38,
+    "pct_submit_act": 19,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 85.95,
+      "3.75-3.99": 9.46,
+      "3.50-3.74": 2.69,
+      "3.25-3.49": 0.98,
+      "3.00-3.24": 0.55,
+      "2.50-2.99": 0.31,
+      "2.0-2.49": 0.06
+    },
+    "notes": "CDS C1 enrollees 5,084 include 2,669 in-state, 2,357 out-of-state, 58 international. Clemson reports no early decision; early action closes Oct 15 with notification by Dec 15 (C22). The C12 average GPA value was blank in the published file, so gpa_avg is omitted; the C11 GPA bands are very top-heavy (86% at 4.0), which suggests a weighted GPA. Standardized tests are not required but considered if submitted (C8A)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1250,
+      1330,
+      1400
+    ],
+    "SAT_ERW": [
+      630,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      620,
+      660,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      32
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 15854,
+    "books_usd": 1496,
+    "room_board_usd": 14224,
+    "other_usd": 5556,
+    "total_coa_usd": 35250,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 42378
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "state_residency": "VI"
+  }
+}

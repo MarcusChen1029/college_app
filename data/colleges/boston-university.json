@@ -1,0 +1,134 @@
+{
+  "slug": "boston-university",
+  "name": "Boston University",
+  "short_name": "BU",
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.34889,
+  "longitude": -71.10028,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.bu.edu",
+  "admissions_url": "https://www.bu.edu/admissions",
+  "ipeds_unit_id": 164988,
+  "undergrad_enrollment": 18289,
+  "intl_undergrads": 3676,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Boston University Common Data Set 2025-2026, Section C (first-year admission)",
+      "url": "https://www.bu.edu/asir/files/2026/07/CDS-2025-2026-C-updated.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    },
+    "cds_b": {
+      "kind": "cds",
+      "title": "Boston University Common Data Set 2025-2026, Section B (enrollment)",
+      "url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-B.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    },
+    "cds_g": {
+      "kind": "cds",
+      "title": "Boston University Common Data Set 2025-2026, Section G (annual expenses)",
+      "url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-G.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    },
+    "cds_h": {
+      "kind": "cds",
+      "title": "Boston University Common Data Set 2025-2026, Section H (financial aid)",
+      "url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-H.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    },
+    "cds_i": {
+      "kind": "cds",
+      "title": "Boston University Common Data Set 2025-2026, Section I (faculty and class size)",
+      "url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-I.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 76776,
+    "admits": 9853,
+    "enrolled": 3449,
+    "ed_applicants": 6907,
+    "ed_admits": 2165,
+    "intl_applicants": 15794,
+    "intl_admits": 2521,
+    "in_state_applicants": 8059,
+    "in_state_admits": 1075,
+    "out_state_applicants": 50764,
+    "out_state_admits": 5908,
+    "waitlist_offered": 16135,
+    "waitlist_accepted": 10393,
+    "waitlist_admitted": 479,
+    "pct_submit_sat": 36,
+    "pct_submit_act": 10,
+    "gpa_avg": 3.86,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 36,
+      "3.75-3.99": 36,
+      "3.50-3.74": 27,
+      "3.25-3.49": 1,
+      "3.00-3.24": 0,
+      "2.50-2.99": 0,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "C21 early decision counts are for the Fall 2025 class (ED I and ED II combined as reported). In-state = Massachusetts. 2,159 applicants / 349 admits / 97 enrollees have unknown residency (not included in in-state/out-of-state/international). Test-optional; only 36% of enrollees submitted SAT and 10% ACT."
+  },
+  "scores": {
+    "SAT_TOTAL": [1420, 1470, 1510],
+    "SAT_ERW": [700, 730, 750],
+    "SAT_MATH": [720, 750, 780],
+    "ACT_COMPOSITE": [33, 34, 34],
+    "ACT_MATH": [30, 33, 34],
+    "ACT_ENGLISH": [34, 35, 35]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "NC",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT not required for admission but considered if submitted. C8F: test optional through fall 2028 and spring 2029 for all undergraduate schools and scholarship programs."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 69870,
+    "required_fees_usd": 1502,
+    "room_board_usd": 19970,
+    "books_usd": 1000,
+    "other_usd": 1455,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 231,
+    "intl_avg_award_usd": 56639,
+    "notes": "CDS G1/G5 (2025-2026). other_usd = G5 other expenses ($1,455); transportation ($630 for residents) is separate and not included. H6: BU offers nonresident undergraduates institutional non-need-based aid only (need-based not available); the 231 recipients / $56,639 average are all nonresident degree-seeking undergraduates awarded need-based or non-need-based aid."
+  }
+}

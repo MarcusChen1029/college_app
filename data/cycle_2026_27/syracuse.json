@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Syracuse University — Dates and Deadlines",
+   "url": "https://www.syracuse.edu/admissions-aid/application-process/apply/dates-deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Syracuse University — First-Year Admission Requirements",
+   "url": "https://www.syracuse.edu/admissions-aid/application-process/undergraduate/first-year/requirements/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Syracuse University — International Undergraduate Requirements",
+   "url": "https://www.syracuse.edu/admissions-aid/application-process/international/undergraduate/requirements/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Syracuse University Financial Aid — International Students",
+   "url": "https://financialaid.syr.edu/international-students/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"SAT/ACT scores will not be required for students applying for Fall 2026, Spring 2027, Fall 2027 or Spring 2028 admission.\" Students who do not submit scores are not disadvantaged and remain eligible for merit scholarships.",
+  "src": "reqs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "notes": "Official high school transcript, senior-year grade report, high school counselor evaluation, and one academic recommendation; ED agreement if applying ED. Some programs add portfolio, audition or other requirements (e.g. School of Architecture and the College of Visual and Performing Arts require a portfolio or audition). Interviews are optional for international applicants (virtual interview or Vericant) and not required for admission. Application fee is not stated on the pages reviewed, so it is left blank. Fee waivers are available (SAT/ACT or NACAC waiver, or counselor request).",
+  "src": "reqs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "First-year only. Notification \"Early February\" (no fixed date published); reply date May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision",
+   "notes": "First-year only, binding. Notification \"Late December\" (no fixed date published); reply by February 15 if admitted to first choice.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II",
+   "notes": "First-year only, binding. Notification \"Mid-January\" (no fixed date published); reply by March 1 if admitted to first choice.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "label": "Regular Decision",
+   "notes": "Notification begins mid-March and continues weekly through spring; reply date May 1. Some programs (e.g. Drama acting/musical theater prescreen Dec 1; portfolio programs) have earlier or separate dates. The page states no entry year; treated as the 2026-27 cycle (Fall 2027 entry).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International students studying in the U.S. and non-native speakers must submit an English proficiency exam; waivers are at the Admissions Committee's discretion and are not guaranteed (e.g. first-year students who attended and graduated from in-person U.S.-based secondary schools for a set period with a qualifying GPA; students in a bilingual or non-English curriculum must still submit proof). The score table also lists SAT-EBRW 600 and ACT-English 27 per college. Not accepted: TOEFL Essentials, ITP, TOEFL MyBest Score, IELTS Indicator. Scores must be sent directly by the testing service.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 85,
+   "notes": "\"Preferred\" score, not a stated hard minimum. 85+ for Arts and Sciences, Maxwell, VPA, Education, Engineering and Computer Science, Falk, iSchool; 90+ for Whitman and Architecture; 102+ for Newhouse. TOEFL At Home accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.5,
+   "notes": "Preferred score for tests from 1/21/26: 4.5 (most colleges), 5 for Whitman, Architecture and Newhouse.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 6.5,
+   "notes": "Preferred 6.5+ (most colleges); 7.0+ for Whitman, Architecture and Newhouse.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 125,
+   "notes": "Preferred 125+ (most colleges, Whitman, Architecture); 130+ for Newhouse.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "notes": "PTE Academic is accepted; the page lists no PTE score in the preferred-score table.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "rec": 176,
+   "notes": "Preferred 176+ (most colleges); 185+ for Whitman, Architecture and Newhouse.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "\"International undergraduate students are considered for merit-based scholarships based on their application for admission,\" awarded by the Office of Admissions at the time of admission. The financial aid page describes no need-based aid for international students; FAFSA and CSS Profile are only for U.S. citizens and eligible noncitizens. F-1 applicants must show proof of liquid funds for one full academic year.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "2823",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "arts_design": "College of Visual & Performing Arts and School of Architecture are nationally known.",
+  "nursing": "No nursing program."
+ }
+}

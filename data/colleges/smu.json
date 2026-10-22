@@ -1,0 +1,114 @@
+{
+  "slug": "smu",
+  "name": "Southern Methodist University",
+  "short_name": null,
+  "state_region": "TX",
+  "city": "Dallas",
+  "latitude": 32.843612,
+  "longitude": -96.783365,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.smu.edu/",
+  "admissions_url": "https://www.smu.edu/admission",
+  "ipeds_unit_id": 228246,
+  "undergrad_enrollment": 7277,
+  "intl_undergrads": 279,
+  "student_faculty_ratio": 11,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228246",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?228246",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Southern Methodist University Common Data Set 2025-26, Part C: First-time First-year Admission (PDF)",
+      "url": "https://www.smu.edu/-/media/site/ir/commondatasets/2025/cds-2025-26-part-c-first-time-freshman-final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 24053,
+    "admits": 11459,
+    "enrolled": 1715,
+    "in_state_applicants": 12254,
+    "in_state_admits": 5071,
+    "out_state_applicants": 9805,
+    "out_state_admits": 5859,
+    "intl_applicants": 1767,
+    "intl_admits": 437,
+    "waitlist_offered": 4249,
+    "waitlist_accepted": 1074,
+    "waitlist_admitted": 243,
+    "pct_submit_sat": 9.4,
+    "pct_submit_act": 8.6,
+    "gpa_avg": 3.69,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 24.3,
+      "3.75-3.99": 30.2,
+      "3.50-3.74": 22.2,
+      "3.25-3.49": 12,
+      "3.00-3.24": 7.1,
+      "2.50-2.99": 4,
+      "2.0-2.49": 0.2,
+      "1.0-1.99": 0
+    },
+    "notes": "From the 2025-26 CDS Part C PDF (text layer partly garbled; figures cross-checked: totals and the GPA average reconcile). Fully test-optional. SAT/ACT submit percentages come from a garbled table (161 and 148 students out of 1,715). ED applicant counts in the CDS are labeled 'Fall 2024' and are not used. C7 factor importance and academic calendar could not be read from the PDF. Residency counts are for fall 2025."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1360,
+      1410,
+      1470
+    ],
+    "SAT_ERW": [
+      670,
+      710,
+      730
+    ],
+    "SAT_MATH": [
+      670,
+      710,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      28,
+      31,
+      34
+    ],
+    "ACT_ENGLISH": [
+      31,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 69722,
+    "books_usd": 800,
+    "room_board_usd": 19794,
+    "other_usd": 2698,
+    "total_coa_usd": 88892,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

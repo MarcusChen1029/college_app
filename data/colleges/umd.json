@@ -1,0 +1,125 @@
+{
+  "slug": "umd",
+  "name": "University of Maryland, College Park",
+  "short_name": "Maryland",
+  "state_region": "MD",
+  "city": "College Park",
+  "latitude": 38.9881,
+  "longitude": -76.9425,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.umd.edu",
+  "admissions_url": "https://admissions.umd.edu",
+  "ipeds_unit_id": 163286,
+  "undergrad_enrollment": 31875,
+  "intl_undergrads": 1174,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Maryland, College Park Common Data Set 2025-2026 (xlsx)",
+      "url": "https://irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 67101,
+    "admits": 30218,
+    "enrolled": 6559,
+    "in_state_applicants": 18487,
+    "in_state_admits": 8075,
+    "out_state_applicants": 48614,
+    "out_state_admits": 22143,
+    "waitlist_offered": 247,
+    "waitlist_accepted": 0,
+    "waitlist_admitted": 0,
+    "pct_submit_sat": 37,
+    "pct_submit_act": 7,
+    "gpa_avg": 4.41,
+    "pct_reporting_gpa": 95,
+    "gpa_distribution": {
+      "4.0": 89.23,
+      "3.75-3.99": 6.1,
+      "3.50-3.74": 2.53,
+      "3.25-3.49": 1.06,
+      "3.00-3.24": 0.66,
+      "2.50-2.99": 0.27,
+      "2.0-2.49": 0.15
+    },
+    "notes": "CDS C1 residency split reports only in-state and out-of-state; international applicants are included in the out-of-state figures (not broken out). No early decision; non-binding early action (Nov 1). C11/C12 GPA is on a weighted scale (average 4.41, 89% shown as 4.0), so it is not comparable to unweighted GPAs. Competitive admission to Limited Enrollment Programs (e.g. Computer Science, Engineering, Business) is reviewed separately."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1410,
+      1470,
+      1520
+    ],
+    "SAT_ERW": [
+      690,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      700,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      35
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT/ACT 'not required for admission, but considered if submitted'; C8F says UMD is true test-optional."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 10490,
+    "tuition_out_of_state_usd": 40253,
+    "tuition_intl_usd": 40253,
+    "required_fees_usd": 1800,
+    "room_board_usd": 16747,
+    "books_usd": 1250,
+    "other_usd": 1200,
+    "intl_need_aid": false,
+    "notes": "CDS G1/G5 (first-year, flat undergraduate rate; 23.8% of undergraduates pay more because business/engineering/CS charge differential tuition). The CDS also ticks 'final 2026-2027 costs not yet available', so treat these as estimates. other_usd is miscellaneous personal expenses; transportation estimate ($1,514) not included. UMD charges $125 per semester to students needing an I-20/DS-2019. CDS H6: no institutional scholarship or grant aid for nonresident undergraduates."
+  }
+}

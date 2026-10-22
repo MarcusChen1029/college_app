@@ -1,0 +1,130 @@
+{
+  "slug": "northeastern",
+  "name": "Northeastern University",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.339992,
+  "longitude": -71.088782,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.northeastern.edu/",
+  "admissions_url": "https://www.northeastern.edu/admissions/",
+  "ipeds_unit_id": 167358,
+  "undergrad_enrollment": 17326,
+  "intl_undergrads": 2348,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=167358",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?167358",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Northeastern University Common Data Set 2025-2026 (HTML tables)",
+      "url": "https://uds.northeastern.edu/university-facts/common-data-set/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 105256,
+    "admits": 5920,
+    "enrolled": 2736,
+    "in_state_applicants": 13365,
+    "in_state_admits": 1384,
+    "out_state_applicants": 72870,
+    "out_state_admits": 3801,
+    "intl_applicants": 18754,
+    "intl_admits": 735,
+    "ed_applicants": 5404,
+    "ed_admits": 1910,
+    "pct_submit_sat": 22,
+    "pct_submit_act": 6,
+    "gpa_avg": 4.22,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 82,
+      "3.75-3.99": 10,
+      "3.50-3.74": 6,
+      "3.25-3.49": 1,
+      "3.00-3.24": 1
+    },
+    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C9, C11, C12, C21). Average GPA above 4.0 and 82% in the 4.0 band indicate weighted GPAs. Wait-list counts are blank in the CDS. Test-optional: SAT/ACT percentiles describe the 22% (SAT) and 6% (ACT) who submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1440,
+      1480,
+      1510
+    ],
+    "SAT_ERW": [
+      710,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      720,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      33,
+      34
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 69289,
+    "books_usd": 1000,
+    "room_board_usd": 22048,
+    "other_usd": 1800,
+    "total_coa_usd": 88412,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

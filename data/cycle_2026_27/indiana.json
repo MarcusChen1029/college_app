@@ -1,0 +1,164 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "IU Bloomington - Freshman application deadlines",
+   "url": "https://bloomington.iu.edu/admissions/apply/freshman/deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "idates": {
+   "kind": "admissions_site",
+   "title": "IU Bloomington - International student application deadlines",
+   "url": "https://bloomington.iu.edu/admissions/apply/international/deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "IU Bloomington - Freshman applicants (how to apply)",
+   "url": "https://bloomington.iu.edu/admissions/apply/freshman/",
+   "accessed": "2026-10-21"
+  },
+  "tops": {
+   "kind": "admissions_site",
+   "title": "IU Bloomington - About the use of test scores in admissions",
+   "url": "https://bloomington.iu.edu/admissions/apply/freshman/test-optional.html",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "IU Bloomington - Establishing English proficiency",
+   "url": "https://bloomington.iu.edu/admissions/apply/international/english-proficiency.html",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "IU Bloomington - Scholarships for international students",
+   "url": "https://bloomington.iu.edu/cost-aid/scholarships/international/",
+   "accessed": "2026-10-21"
+  },
+  "aid2": {
+   "kind": "financial_aid_site",
+   "title": "IU Bloomington - Aid for international students",
+   "url": "https://bloomington.iu.edu/cost-aid/financial-aid/international.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "IU Bloomington is test-optional: applicants choose whether SAT, ACT or CLT scores are considered, though the university encourages sharing them. Scores received by Jan 15 can still count for scholarship consideration.",
+  "src": "tops"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "notes": "Apply IU application or Common App (no preference). An essay is required on either platform (Apply IU: IU-specific essay of 200-400 words). Fee shown on the freshman application page; the international page lists no separate fee.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-15",
+   "label": "Early action (non-binding)",
+   "notes": "Highest admission and scholarship consideration; response by Jan 15 for complete applications.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "notify": "2027-03-15",
+   "label": "Regular decision",
+   "notes": "Also the deadline for international-student merit scholarships (Global Engagement). After Feb 1 applications are considered only if space is available.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit ($100, nonrefundable)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Scores must be from within the last two years. Also accepted: SAT EBRW 560, ACT English 21; AP/IB/A-Level English results; citizenship of or 3 years of secondary school in a listed English-speaking country; IU Intensive English Program level 7. After admission, a second (higher) level is needed to skip English support courses (e.g. TOEFL 100, IELTS 7.5, Duolingo 130, PTE 68, SAT EBRW 710, ACT English 32), otherwise sub-scores decide placement.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Admission minimum (old 0-120 scale). The page gives no new 1-6 scale minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "International students are eligible for IU merit scholarships (judged from the admission application, deadline Nov 1 for IU scholarships, Feb 1 for international-student merit awards) and some country-specific awards. They cannot use US federal loans. The pages do not describe need-based institutional aid for international freshmen.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1324",
+   "src": "tops"
+  },
+  "act": {
+   "code": "1210",
+   "src": "tops"
+  },
+  "toefl": {
+   "code": "1324",
+   "note": "Code stated on the English-proficiency page (in its graduate-student paragraph) as IU Bloomington's TOEFL code.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "A",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "A",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "business": "Kelley School of Business is a top-15 undergraduate business program.",
+  "arts_design": "Jacobs School of Music is one of the top US music schools.",
+  "engineering": "Only Intelligent Systems Engineering (in the Luddy School); no traditional engineering college."
+ }
+}

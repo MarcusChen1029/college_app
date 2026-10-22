@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Dates & deadlines 2026-27",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (application fees & waivers)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_test": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - First-year requirements (standardized tests)",
+   "url": "https://admission.universityofcalifornia.edu/counselors/preparing-freshman-students/freshman-requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fill": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Filling out the application",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/filling-out-the-application.html",
+   "accessed": "2026-10-21"
+  },
+  "ucsd_req": {
+   "kind": "admissions_site",
+   "title": "UCSD Admissions - First-Year Application Requirements",
+   "url": "https://admissions.ucsd.edu/first-year/application-requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "ucsd_intl": {
+   "kind": "admissions_site",
+   "title": "UCSD Admissions - International Students",
+   "url": "https://admissions.ucsd.edu/international/index.html",
+   "accessed": "2026-10-21"
+  },
+  "ucsd_aid": {
+   "kind": "financial_aid_site",
+   "title": "UCSD Admissions - Costs & Financial Aid",
+   "url": "https://admissions.ucsd.edu/why/cost-aid/index.html",
+   "accessed": "2026-10-21"
+  },
+  "ucsd_faq": {
+   "kind": "admissions_site",
+   "title": "UCSD Admissions - Frequently Asked Questions",
+   "url": "https://admissions.ucsd.edu/faq/index.html",
+   "accessed": "2026-10-21"
+  },
+  "ucsd_awp": {
+   "kind": "other",
+   "title": "UCSD Analytical Writing Program - ELWR-fulfilling test scores",
+   "url": "https://awp.ucsd.edu/elwr/qualifyingscores-drawer.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC does not consider SAT or ACT scores in admission decisions or scholarships. Scores may be self-reported only after submitting the application, and are used for eligibility alternatives or placement after enrollment.",
+  "src": "uc_test"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 80,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8)",
+  "notes": "Fee is $80 per campus, $95 for international applicants; fee waivers cover up to four campuses but only for U.S. citizens, permanent residents and AB540-eligible applicants. UC does not require or read letters of recommendation at application. The 4 Personal Insight Questions are the only essays (no campus supplement).",
+  "src": "uc_fee"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "UC application filing period closes",
+   "due": "2026-11-30",
+   "note": "Admission decisions released March 1-31, 2027 (some campuses earlier)",
+   "notes": "No early plans. Application opens August 1, 2026 for fall 2027.",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Statement of Intent to Register (SIR)",
+   "due": "2027-05-01",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if your native language is not English and your secondary school education was in a country where English is not the language of instruction. Exams must be completed by December; self-report scores in the UC application.",
+  "src": "ucsd_req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 83,
+   "notes": "Internet-based tests completed before January 2026.",
+   "src": "ucsd_req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Tests completed January 2026 or later (1-6 scale).",
+   "src": "ucsd_req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "notes": "Academic module.",
+   "src": "ucsd_req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "ucsd_req"
+  }
+ ],
+ "aid": {
+  "notes": "UCSD says international students are not eligible for federal or state financial aid and must prove sufficient funds for a visa. No institutional scholarship program for first-year internationals was found on the pages checked.",
+  "src": "ucsd_aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4836",
+   "note": "UCSD is test-blind: SAT/ACT are not considered for admission; the code applies to scores sent after admission (placement, ELWR).",
+   "src": "ucsd_faq"
+  },
+  "act": {
+   "code": "0459",
+   "note": "UCSD is test-blind; code applies to scores sent after admission.",
+   "src": "ucsd_awp"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No undergraduate TOEFL code is published on the admissions pages. Self-report scores in the UC application; send official scores only after admission, to the campus you enroll at.",
+   "src": "uc_eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code. Self-report in the UC application; send official scores after admission only to the enrolling campus.",
+   "src": "uc_eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code. Self-report in the UC application; send official scores after admission only to the enrolling campus.",
+   "src": "uc_eng"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "A",
+  "engineering": "A",
+  "business": "C",
+  "biology_life_sci": "A",
+  "pre_med": "B",
+  "economics": "A",
+  "math_physics": "A",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Top-15 CS program.",
+  "engineering": "Jacobs School is a top-15 engineering school.",
+  "business": "No business administration degree; Rady School co-runs a B.S. in Business Economics.",
+  "biology_life_sci": "Top-15 life sciences (biological sciences, neuroscience, oceanography at Scripps).",
+  "economics": "Top-15 economics department.",
+  "math_physics": "Top-15 mathematics and physics.",
+  "nursing": "No nursing program."
+ }
+}

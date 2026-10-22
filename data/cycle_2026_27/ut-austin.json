@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "ut_fy": {
+   "kind": "admissions_site",
+   "title": "UT Austin Admissions - Freshman (summer/fall 2027)",
+   "url": "https://admissions.utexas.edu/apply/freshman/",
+   "accessed": "2026-10-21"
+  },
+  "ut_intl": {
+   "kind": "admissions_site",
+   "title": "UT Austin Admissions - International students",
+   "url": "https://admissions.utexas.edu/info-for/international-students/",
+   "accessed": "2026-10-21"
+  },
+  "ut_intl_app": {
+   "kind": "admissions_site",
+   "title": "UT Austin Admissions - International application",
+   "url": "https://admissions.utexas.edu/apply/international/",
+   "accessed": "2026-10-21"
+  },
+  "ut_isss": {
+   "kind": "other",
+   "title": "UT Texas Global ISSS - Scholarships and financial services",
+   "url": "https://global.utexas.edu/isss/advising-services/scholarships",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "At least one official SAT or ACT score must be sent by the testing agency (self-report in MyStatus allowed, official must arrive by the deadline). Classic Learning Test (CLT) also satisfies the requirement. SAT Essay/ACT Writing not required. Matches CDS C8A (required to be considered).",
+  "src": "ut_fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": "At least one essay plus required short-answer prompts",
+  "notes": "Platforms: Common App or ApplyTexas. Fee is $75 domestic; international applicants pay $90 and fee waivers are not available to international students. Up to two recommendation letters may be submitted (not mandatory per the page).",
+  "src": "ut_intl_app"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "label": "Early Action",
+   "due": "2026-10-15",
+   "notify": "2027-01-15",
+   "notes": "Supplemental materials due Oct 22. Decision or deferral by Jan 15, 2027.",
+   "src": "ut_fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "Regular Decision",
+   "due": "2026-12-01",
+   "notify": "2027-02-15",
+   "notes": "Supplemental materials due Dec 10. Honors decisions March 1.",
+   "src": "ut_fy"
+  },
+  {
+   "kind": "deposit",
+   "label": "Accept admission and enrollment deposit",
+   "due": "2027-05-01",
+   "src": "ut_intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International applicants must submit TOEFL, IELTS or Duolingo unless they graduate from a high school in the US or a listed qualifying country after at least three years of study there. Not accepted: institutional TOEFL (ITP), TOEFL Essentials, IELTS General Training.",
+  "src": "ut_intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "79 on the 120 scale",
+   "src": "ut_intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "UT lists '4 (6-point scale)'",
+   "src": "ut_intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band on the Academic exam",
+   "src": "ut_intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "ut_intl"
+  }
+ ],
+ "aid": {
+  "notes": "UT's ISSS lists certain scholarships open to international students, but awards are one-time and several (e.g. General ISSS Financial Aid) require at least two semesters at UT first. UT's pages opened did not state whether incoming international first-years can receive need-based aid, so no aid policy is recorded.",
+  "src": "ut_isss"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6882",
+   "note": "Official scores must be sent by the testing agency.",
+   "src": "ut_fy"
+  },
+  "act": {
+   "code": "4240",
+   "note": "Official scores must be sent by the testing agency.",
+   "src": "ut_fy"
+  },
+  "toefl": {
+   "code": "6882",
+   "src": "ut_intl",
+   "note": "UT: 'The University's TOEFL code is 6882.'"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institutional code. Send via IELTS electronic score delivery to the 'University of Texas at Austin' account.",
+   "src": "ut_intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institutional code. Select 'University of Texas at Austin - Undergraduate Admissions' when sending.",
+   "src": "ut_intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "A",
+  "engineering": "A",
+  "business": "A",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "A",
+  "humanities": "B",
+  "arts_design": "B",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "computer_science": "Top-10 CS program.",
+  "engineering": "Cockrell is a top-10 engineering school.",
+  "business": "McCombs is a top-10 undergraduate business program (accounting is top-ranked).",
+  "math_physics": "Top-15 mathematics and physics.",
+  "nursing": "School of Nursing is a top-15 undergraduate nursing program."
+ }
+}

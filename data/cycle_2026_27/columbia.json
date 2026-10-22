@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Columbia Undergraduate Admissions - First-Year Applicants",
+   "url": "https://undergrad.admissions.columbia.edu/apply/first-year",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Columbia Undergraduate Admissions - Testing Policy",
+   "url": "https://undergrad.admissions.columbia.edu/apply/first-year/testing",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Columbia Undergraduate Admissions - English Proficiency Requirements",
+   "url": "https://undergrad.admissions.columbia.edu/apply/international/english-proficiency",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Columbia Undergraduate Admissions - International Applicants",
+   "url": "https://undergrad.admissions.columbia.edu/apply/international",
+   "accessed": "2026-10-21"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Columbia Undergraduate Admissions - FAQs",
+   "url": "https://undergrad.admissions.columbia.edu/faq",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for the 2026-27 cycle (fall 2027 entry). Columbia will require SAT or ACT from the 2027-28 cycle (August 2027 onward), with hardship waivers available.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 85,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "notes": "Columbia-specific application questions are required. Engineering applicants need one math or science teacher recommendation. Interviews are not part of the admissions process (FAQ).",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding)",
+   "notes": "Decisions mid-December (no exact date published); admitted students respond by mid-January.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "notes": "Decisions late March (no exact date published); reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "Financial aid, Early Decision",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "Financial aid, Regular Decision",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not needed if your home language is English, your primary language of instruction was English for all of secondary school, or you scored 700+ on SAT Reading and Writing or 29+ on ACT English or Reading.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Exams taken on or before 2026-01-20. MyBest scores not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Exams taken on or after 2026-01-21.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.5,
+   "notes": "IELTS Academic or Academic for UKVI.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 135,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 191,
+   "notes": "C1 Advanced or C2 Proficiency.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Columbia meets the full demonstrated need of admitted first-years and has no merit scholarships. US citizens are need-blind; the international page notes that aid-seeking international candidates can fall outside the need-blind category, i.e. need-aware.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Columbia Engineering",
+   "category": "engineering",
+   "admit_model": "school_college",
+   "notes": "Applicants choose either Columbia College or Columbia Engineering (cannot apply to both)."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2116",
+   "src": "test"
+  },
+  "act": {
+   "code": "2717",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "2116",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed among Columbia's accepted English proficiency exams.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "A",
+  "engineering": "B",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "A",
+  "math_physics": "A",
+  "humanities": "A",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "business": "No undergraduate business major (Columbia Business School is graduate-only).",
+  "nursing": "No first-year nursing entry (Columbia nursing is for graduate / second-degree students).",
+  "computer_science": "Top-15 CS department in Columbia Engineering.",
+  "biology_life_sci": "Top-10 life sciences linked to a major medical center.",
+  "pre_med": "Strong pre-med outcomes and research access through Columbia's medical center.",
+  "economics": "Top-10 economics department.",
+  "math_physics": "Top-10 mathematics and physics departments.",
+  "humanities": "Core Curriculum and top-10 humanities departments.",
+  "engineering": "Solid engineering school, below the top-15 group."
+ }
+}

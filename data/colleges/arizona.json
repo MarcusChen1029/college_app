@@ -1,0 +1,82 @@
+{
+  "slug": "arizona",
+  "name": "University of Arizona",
+  "short_name": null,
+  "state_region": "AZ",
+  "city": "Tucson",
+  "latitude": 32.232672,
+  "longitude": -110.950815,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.arizona.edu/",
+  "admissions_url": "https://www.arizona.edu/admissions",
+  "ipeds_unit_id": 104179,
+  "undergrad_enrollment": 42537,
+  "intl_undergrads": 1659,
+  "student_faculty_ratio": 20,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=104179",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?104179",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 56466,
+    "admits": 48369,
+    "enrolled": 9158,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 22,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not added yet."
+  },
+  "scores": {
+    "SAT_ERW": [
+      580,
+      640,
+      700
+    ],
+    "SAT_MATH": [
+      580,
+      640,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      26,
+      30
+    ],
+    "ACT_ENGLISH": [
+      21,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      21,
+      25,
+      28
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 13906,
+    "books_usd": 600,
+    "room_board_usd": 17300,
+    "other_usd": 4900,
+    "total_coa_usd": 31018,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 43068
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "slug": "wake-forest",
+  "name": "Wake Forest University",
+  "short_name": null,
+  "state_region": "NC",
+  "city": "Winston-Salem",
+  "latitude": 36.133609,
+  "longitude": -80.277446,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.wfu.edu/",
+  "admissions_url": "https://admissions.wfu.edu/",
+  "ipeds_unit_id": 199847,
+  "undergrad_enrollment": 5485,
+  "intl_undergrads": 317,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199847",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?199847",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Wake Forest University Common Data Set 2025-2026 (PDF, Institutional Research)",
+      "url": "https://prod.wp.cdn.aws.wfu.edu/sites/202/2026/06/CDS_2025-2026-PDF_Template_WFU.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 19600,
+    "admits": 4068,
+    "enrolled": 1544,
+    "pct_submit_sat": 24,
+    "pct_submit_act": 22,
+    "notes": "Fall 2025 entering class (totals from the male/female/unknown counts in C1). WFU left blank the residency split, waitlist, GPA distribution/average and ED counts, so those are not included. SAT 24% (365) / ACT 22% (338) of enrolled submitted scores. SAT/ACT are not required but considered if submitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1420,
+      1450,
+      1490
+    ],
+    "SAT_ERW": [
+      700,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      700,
+      730,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      29,
+      31,
+      33
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70332,
+    "books_usd": 1718,
+    "room_board_usd": 19054,
+    "other_usd": 3430,
+    "total_coa_usd": 91202,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

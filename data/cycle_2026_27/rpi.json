@@ -1,0 +1,149 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "RPI Undergraduate Admissions — Apply (Application Options, Fall 2027)",
+   "url": "https://undergrad.admissions.rpi.edu/apply",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "RPI Undergraduate Admissions — International Applicants",
+   "url": "https://undergrad.admissions.rpi.edu/apply/international-applicants",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "\"Test Optional for Fall 2027 Applicants\": students may choose whether to submit SAT or ACT scores. Applicants to the Physician-Scientist (B.S./M.D.) Program must submit official scores.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": 0,
+  "interview": "not_offered",
+  "notes": "Fee is $70, with no fee for applications submitted by December 1 (and for Rensselaer Medalists). The general essay / personal statement satisfies RPI's essay requirement, except B.S./M.D. (reasons for a medical career) and Architecture (reasons for choosing architecture; B.Arch also needs a creative portfolio). One letter of recommendation from a counselor or teacher, preferably math or science. RPI does not conduct admissions interviews; international applicants may optionally submit an InitialView, Duolingo or Vericant interview and U.S. students an optional GLIMPSE video. FAFSA and CSS Profile are required only if seeking need-based aid (not available to most international students).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-12",
+   "label": "Early Decision I",
+   "notes": "Binding. FAFSA/CSS Profile priority date Nov 15.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "notify": "2027-01-30",
+   "label": "Early Action",
+   "notes": "Non-binding. No application fee if submitted by Dec 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-06",
+   "notify": "2027-01-16",
+   "label": "Early Decision II",
+   "notes": "Binding.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-06",
+   "label": "Regular Decision",
+   "notes": "Non-binding.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native English speakers (or international students in U.S. colleges for under two years) must submit a test. Exemptions include SAT EBRW 640+, ACT English 22+, IB English A HL 6+, IGCSE / A-AS Level English grade B+, Cambridge B2 First or C1 Advanced score 185+, 3+ years of U.S. secondary education (request via the form on the application status page), or a diploma from a listed English-medium country. Official scores must come directly from the testing agency; self-reported scores are not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 88,
+   "notes": "RPI \"expects a minimum\" of 88 iBT; Home Edition accepted. The page gives no section minimums.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Page states 4.5 on the new 6.0 scale as the equivalent.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band 6.5 in the first-year section of the page (the international-transfer section of the same page says 7.0).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "\"Limited merit scholarship opportunities\" for undergraduate international students, up to $20,000 per year; all non-U.S. citizens/permanent residents must be prepared to pay the full cost of attendance. After enrolling, F-1/J-1 students must submit the International Student Financial Statement showing about one year of liquid funds (approx. $80,000 USD).",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2757",
+   "src": "apply"
+  },
+  "act": {
+   "code": "2866",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "2757",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "B",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "Strong engineering school (~top 40).",
+  "nursing": "No nursing program."
+ }
+}

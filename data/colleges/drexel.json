@@ -1,0 +1,133 @@
+{
+  "slug": "drexel",
+  "name": "Drexel University",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Philadelphia",
+  "latitude": 39.955217,
+  "longitude": -75.190051,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://drexel.edu/",
+  "admissions_url": "https://drexel.edu/admissions/overview/",
+  "ipeds_unit_id": 212054,
+  "undergrad_enrollment": 13233,
+  "intl_undergrads": 1198,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=212054",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?212054",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Drexel University Common Data Set 2025-2026 (PDF)",
+      "url": "https://drexel.edu/institutionalresearch/~/media/Drexel/Provost-Group/InstitutionalResearch/Documents/Factbook/CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 38030,
+    "admits": 26583,
+    "enrolled": 1948,
+    "in_state_applicants": 10005,
+    "in_state_admits": 6899,
+    "out_state_applicants": 19173,
+    "out_state_admits": 14600,
+    "intl_applicants": 8852,
+    "intl_admits": 5084,
+    "ed_applicants": 299,
+    "ed_admits": 234,
+    "pct_submit_sat": 35,
+    "pct_submit_act": 4,
+    "gpa_avg": 3.79,
+    "pct_reporting_gpa": 94.4,
+    "gpa_distribution": {
+      "4.0": 34,
+      "3.75-3.99": 21,
+      "3.50-3.74": 20,
+      "3.25-3.49": 13,
+      "3.00-3.24": 8,
+      "2.50-2.99": 4,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "Drexel has a high overall admit rate (about 70%); the waitlist counts are blank in the CDS. Residency enrolled counts are 958 in-state, 775 out-of-state and 214 international (fall 2025). Early action also exists (same 11/15 deadline as ED)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1260,
+      1350,
+      1430
+    ],
+    "SAT_ERW": [
+      630,
+      670,
+      710
+    ],
+    "SAT_MATH": [
+      630,
+      680,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      33
+    ],
+    "ACT_ENGLISH": [
+      26,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 64212,
+    "books_usd": 1700,
+    "room_board_usd": 18831,
+    "other_usd": 1500,
+    "total_coa_usd": 78335,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "slug": "bowdoin",
+  "name": "Bowdoin College",
+  "short_name": null,
+  "state_region": "ME",
+  "city": "Brunswick",
+  "latitude": 43.907134,
+  "longitude": -69.963942,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.bowdoin.edu/",
+  "admissions_url": "https://www.bowdoin.edu/admissions/",
+  "ipeds_unit_id": 161004,
+  "undergrad_enrollment": 1873,
+  "intl_undergrads": 128,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161004",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?161004",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Bowdoin College Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.bowdoin.edu/ir/pdf/bowdoin-cds_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 14045,
+    "admits": 957,
+    "enrolled": 515,
+    "in_state_applicants": 540,
+    "in_state_admits": 74,
+    "out_state_applicants": 7464,
+    "out_state_admits": 807,
+    "intl_applicants": 6041,
+    "intl_admits": 76,
+    "waitlist_admitted": 5,
+    "ed_applicants": 1985,
+    "ed_admits": 296,
+    "pct_submit_sat": 34.76,
+    "pct_submit_act": 17.28,
+    "notes": "CDS C1. Test-optional. Bowdoin did not report GPA (C11/C12) or waitlist offered/accepted counts. Early decision (ED1/ED2) only; no early action."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1470,
+      1510,
+      1540
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      730,
+      760,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      31,
+      32,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 71740,
+    "books_usd": 840,
+    "room_board_usd": 19560,
+    "other_usd": 1660,
+    "total_coa_usd": 88820,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

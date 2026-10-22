@@ -1,0 +1,139 @@
+{
+ "sources": {
+  "overview": {
+   "kind": "admissions_site",
+   "title": "Pomona — Paths to Apply (application overview)",
+   "url": "https://www.pomona.edu/admissions/apply/application-overview",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Pomona — International Applicants",
+   "url": "https://www.pomona.edu/admissions/apply/international-applicants",
+   "accessed": "2026-10-21"
+  },
+  "intl_faq": {
+   "kind": "admissions_site",
+   "title": "Pomona — International Applicant FAQs",
+   "url": "https://www.pomona.edu/admissions/apply/international-applicants/international-applicant-faqs",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Pomona — International Student Aid",
+   "url": "https://www.pomona.edu/financial-aid/applying-for-aid/international-aid",
+   "accessed": "2026-10-21"
+  },
+  "aid_dates": {
+   "kind": "financial_aid_site",
+   "title": "Pomona — Financial Aid Application Materials and Deadlines",
+   "url": "https://www.pomona.edu/financial-aid/applying-aid/application-materials-and-deadlines",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional: students choose whether to self-report SAT or ACT scores; unreported scores are not considered even if sent. If ACT is submitted, the Core ACT plus Science is required (sections are superscored). Official scores are needed only from enrolling students.",
+  "src": "overview"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 80,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "$80 fee, waived through the Pomona Access Pass form. Pomona-specific essays: 150-word academic interest statement plus a 250-word short response. Two core-subject teacher letters; school report and counselor recommendation; mid-year report by Feb 15. Applicants from non-English-medium schools must submit TOEFL, IELTS or Duolingo. Interview policy not confirmed; third-party InitialView/Vericant/Duolingo interviews are optional supplements. International aid applicants file the CSS Profile (code 4607) or, if the fee is a burden, Pomona's International Financial Aid Application.",
+  "src": "overview"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-08",
+   "notify": "2026-12-15",
+   "label": "Early Decision I",
+   "notes": "Notification 'by' Dec 15; reply Jan 1. CAUTION: the overview table does not print a year and some Pomona admissions pages still say 'Fall 2026 admission'; Pomona's Nov 8 / Jan 8 dates are fixed each year, but verify. Financial aid forms due Nov 15.",
+   "src": "overview"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-08",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Notification 'by' Feb 15; reply March 1. Year not printed on page; verify. Financial aid forms due Jan 15.",
+   "src": "overview"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-08",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Notification 'by' April 1; reply May 1. Year not printed on page; verify. Financial aid forms due Jan 15.",
+   "src": "overview"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not the primary language of instruction at your secondary school. Accepts TOEFL iBT (incl. Special Home Edition), TOEFL ITP Plus for China, IELTS or Duolingo; self-reported scores allowed, official report required on enrolling. Sub-scores have no minimum. The listed values are described as minimum scores for admission.",
+  "src": "intl_faq"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Minimum for iBT and iBT Special Home Edition (old 0-120 scale). TOEFL ITP Plus for China Solution: 627.",
+   "src": "intl_faq"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "notes": "Taken from a '5 - Minimum TOEFL' statistic on the international page; the scale is not stated there, interpreted as the new 1-6 scale. Verify.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "src": "intl_faq"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "src": "intl_faq"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Admission is need-aware for international applicants, but Pomona meets 100% of demonstrated need of every admitted international student, without loans in the package. No merit or athletic scholarships. Aid must be requested when applying; it cannot be added after the admission application is submitted. About 41% of international students receive aid (average nearly $74,000/yr).",
+  "src": "aid"
+ },
+ "score_codes": {},
+ "tiers": {
+  "general": "S",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,94 @@
+{
+  "slug": "dartmouth",
+  "name": "Dartmouth College",
+  "short_name": "Dartmouth",
+  "state_region": "NH",
+  "city": "Hanover",
+  "latitude": 43.704115,
+  "longitude": -72.289949,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://home.dartmouth.edu",
+  "admissions_url": "https://admissions.dartmouth.edu",
+  "ipeds_unit_id": 182670,
+  "undergrad_enrollment": 4464,
+  "intl_undergrads": 648,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "quarter",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Dartmouth Common Data Set 2025-2026",
+      "url": "https://dartmouth.edu/oir/pdfs/cds_2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "other",
+      "title": "College Scorecard API record (IPEDS unit id 182670, locale 33 town)",
+      "url": "https://api.data.gov/ed/collegescorecard/v1/schools.json?id=182670",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 28230,
+    "admits": 1699,
+    "enrolled": 1205,
+    "ed_applicants": 3552,
+    "ed_admits": 768,
+    "in_state_applicants": 516,
+    "out_state_applicants": 19551,
+    "intl_applicants": 8163,
+    "waitlist_offered": 2497,
+    "pct_submit_sat": 69,
+    "pct_submit_act": 33,
+    "notes": "CDS C1 residency table gives applicants by in-state/out-of-state/international only (no admits by residency); 154 international students enrolled. CDS C2: 2,497 offered a waitlist place; accepted/admitted counts left blank. C11/C12 (GPA) blank in the CDS; C10 class rank: 96% top tenth. Student-to-faculty ratio 7.9 to 1 (I2), rounded to 8."
+  },
+  "scores": {
+    "SAT_TOTAL": [1440, 1520, 1550],
+    "SAT_ERW": [720, 750, 770],
+    "SAT_MATH": [720, 770, 790],
+    "ACT_COMPOSITE": [32, 34, 35],
+    "ACT_MATH": [31, 33, 35],
+    "ACT_ENGLISH": [34, 35, 36]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "policy": "required",
+    "notes": "CDS C8A (applying for Fall 2027): SAT or ACT required to be considered for admission."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 69207,
+    "required_fees_usd": 2318,
+    "room_board_usd": 20920,
+    "books_usd": 1005,
+    "other_usd": 2648,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 483,
+    "intl_avg_award_usd": 87562,
+    "notes": "CDS G1 (first-year): tuition $69,207, required fees $2,318, food and housing $20,920; G5 books $1,005, transportation $608 + other $2,040 (other_usd = 608 + 2,040). The CDS G1 checkbox says 2026-27 costs are 'not available' yet values are filled in, so the year label follows the CDS prompt. H6: need-based institutional aid available to nonresidents; 483 awarded, average $87,562, total $42,292,307."
+  }
+}

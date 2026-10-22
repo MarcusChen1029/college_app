@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - First-year Dates & Deadlines (2026-27)",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (fees)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-10-21"
+  },
+  "ucsc_intl": {
+   "kind": "admissions_site",
+   "title": "UCSC Admissions - International first-year admissions requirements",
+   "url": "https://admissions.ucsc.edu/international-first-year-students-admissions-requirements",
+   "accessed": "2026-10-21"
+  },
+  "ucsc_eng": {
+   "kind": "admissions_site",
+   "title": "UCSC Admissions - English proficiency requirement",
+   "url": "https://admissions.ucsc.edu/posts/english-proficiency-requirement",
+   "accessed": "2026-10-21"
+  },
+  "ucsc_scholarships": {
+   "kind": "financial_aid_site",
+   "title": "UCSC Financial Aid - Scholarships",
+   "url": "https://financialaid.ucsc.edu/types-of-aid/scholarships/",
+   "accessed": "2026-10-21"
+  },
+  "ucsc_intl_aid": {
+   "kind": "financial_aid_site",
+   "title": "UCSC Financial Aid - International students",
+   "url": "https://financialaid.ucsc.edu/apply-for-aid/international/",
+   "accessed": "2026-10-21"
+  },
+  "ucsc_cs": {
+   "kind": "other",
+   "title": "Baskin Engineering - Admission recommendations (Computer Science impacted)",
+   "url": "https://undergrad.engineering.ucsc.edu/advising/admissions-recommendations/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC campuses will not consider SAT/ACT in admissions or scholarships; scores can still be used for minimum eligibility, course placement and the Entry Level Writing requirement.",
+  "src": "ucsc_intl"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 80,
+  "fee_waiver": true,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "Personal Insight Questions (UC application)",
+  "notes": "Fee is $95 for international applicants; fee waivers are limited to US citizens, permanent residents and AB540-eligible applicants. Fall entry only for first-years.",
+  "src": "uc_fee"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "UC filing period closes",
+   "due": "2026-11-30",
+   "notes": "Filing period Oct 1 - Nov 30, 2026. No early plans. Decisions are released across March 1-31, 2027 (no campus-specific date published).",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Statement of Intent to Register (SIR)",
+   "due": "2027-05-01",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "UCSC applies it when less than three years of secondary schooling was in English. Required if all secondary school was in a country where English is not the language of instruction. Alternatives accepted by UC: AP English Language or Literature 3-5, IB English A SL 6-7 / HL 5-7, ACT English Language Arts 24+, SAT Writing and Language 31+, or a C or better in a UC-transferable college English composition course. Exam must be taken by December of the final year. Individual campuses may set higher minimums.",
+  "src": "ucsc_eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Tests taken before January 2026",
+   "src": "ucsc_eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale, effective January 2026",
+   "src": "ucsc_eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS One Skill Retake not accepted",
+   "src": "ucsc_eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "ucsc_eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "International students typically are not eligible for federal, state or university need-based aid. Considered automatically for the Undergraduate Deans' Award ($3,000-$25,000 per year for nonresident/international first-years) and the Regents Scholarship ($5,000 per year for up to four years); no separate application.",
+  "src": "ucsc_scholarships"
+ },
+ "majors": [
+  {
+   "program": "Computer Science (B.A./B.S.)",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "not_possible",
+   "notes": "Page: CS is an impacted major; applicants must indicate CS on the application and be admitted as such; students admitted to another engineering major cannot transfer into CS after enrolling."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4860",
+   "note": "UCSC publishes 'school code 004860' (College Board, used for AP/SAT reporting; shown as 4860 without leading zeros). UC does not consider SAT/ACT in admissions.",
+   "src": "ucsc_eng"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No undergraduate TOEFL code found on admissions pages. UC: self-report scores in the application; send official scores only to the campus where you enroll.",
+   "src": "ucsc_eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "UCSC page: 'An institutional code is NOT required.' Have the test center send scores electronically to UC Santa Cruz, Office of Admissions.",
+   "src": "ucsc_eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "business": "No business major (Business Management Economics is an economics major).",
+  "nursing": "No nursing program."
+ }
+}

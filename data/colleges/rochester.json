@@ -1,0 +1,134 @@
+{
+  "slug": "rochester",
+  "name": "University of Rochester",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Rochester",
+  "latitude": 43.126397,
+  "longitude": -77.631202,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.rochester.edu/",
+  "admissions_url": "https://enrollment.rochester.edu/",
+  "ipeds_unit_id": 195030,
+  "undergrad_enrollment": 6331,
+  "intl_undergrads": 1426,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=195030",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?195030",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "title": "University of Rochester Common Data Set 2025-2026",
+      "url": "https://www.rochester.edu/provost/wp-content/uploads/2026/06/CDS-2025-26-completed-for-web.pdf",
+      "kind": "cds",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 21609,
+    "admits": 9056,
+    "enrolled": 1231,
+    "in_state_applicants": 4551,
+    "in_state_admits": 2292,
+    "out_state_applicants": 9060,
+    "out_state_admits": 5311,
+    "intl_applicants": 7998,
+    "intl_admits": 1453,
+    "waitlist_offered": 1197,
+    "waitlist_accepted": 741,
+    "waitlist_admitted": 262,
+    "ed_applicants": 1129,
+    "ed_admits": 472,
+    "pct_submit_sat": 15.7,
+    "pct_submit_act": 6.4,
+    "gpa_avg": 3.73,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 24.33,
+      "3.75-3.99": 31.57,
+      "3.50-3.74": 25.22,
+      "3.25-3.49": 11.72,
+      "3.00-3.24": 5.55,
+      "2.50-2.99": 1.61
+    },
+    "notes": "Enrolled by residency: 432 in-state, 546 out-of-state, 253 international. Two ED rounds (11/1 closing with mid-December notification; 1/5 closing with early-February notification); ED counts are for the Fall 2025 entering class and almost one-third of the class applied ED. No early action. Test-optional for all applicants (C8F); only a small share of enrollees submitted scores, so SAT/ACT percentiles describe submitters."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1400,
+      1450,
+      1510
+    ],
+    "SAT_ERW": [
+      680,
+      720,
+      750
+    ],
+    "SAT_MATH": [
+      700,
+      740,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      30,
+      33,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70306,
+    "books_usd": 1310,
+    "room_board_usd": 20698,
+    "other_usd": 1380,
+    "total_coa_usd": 89562,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "intl_fy": {
+   "kind": "admissions_site",
+   "title": "Binghamton — International First-year Students: Apply (deadlines, fee, English, codes)",
+   "url": "https://www.binghamton.edu/admissions/undergraduate/apply/international/first-year.html",
+   "accessed": "2026-10-22"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Binghamton — First-year Applicants (EA/RD table, platforms, recommendation)",
+   "url": "https://www.binghamton.edu/admissions/undergraduate/apply/freshman/",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Binghamton — International Students (free application weeks, codes)",
+   "url": "https://www.binghamton.edu/admissions/undergraduate/apply/international/",
+   "accessed": "2026-10-22"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Binghamton — Scholarships",
+   "url": "https://www.binghamton.edu/admissions/undergraduate/cost/scholarships.html",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional. Applicants must indicate on their application whether SAT/ACT scores should be included in the review. For international students, SAT/ACT can also serve as proof of English proficiency.",
+  "src": "intl_fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "teacher_recs": 1,
+  "counselor_rec": null,
+  "notes": "Common App, Coalition App or SUNY App. $50 fee; international students are not eligible for fee waivers, but the fee is free during 'Binghamton Free Application Weeks' (Oct 19 to Nov 2, no code needed). One teacher OR counselor recommendation. Official transcripts for the most recent three years. Some programs (BFA, music, etc.) have their own deadlines and portfolio/audition requirements.",
+  "src": "intl_fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-15",
+   "label": "International first-year early action",
+   "notes": "From the international priority-deadline table (late applications are reviewed on a space-available basis). The first-year page lists a materials deadline of Dec 1 for early action. The page is dated 7/6/26 and gives no year next to the date.",
+   "src": "intl_fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-03-15",
+   "notify": "2027-04-01",
+   "label": "International first-year regular admission (priority)",
+   "notes": "International page gives March 15 with decisions 'by April 1'; the domestic first-year page lists regular admission on Jan 15. Late applications are reviewed on a space-available basis.",
+   "src": "intl_fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All non-native-English-speaking international students must submit at least one English proficiency score, even if their school teaches in English or they are SAT/ACT test-optional. Students who attended four years of English-medium schooling may request a waiver at international@binghamton.edu. Scores must be under two years old and sent officially. Accepted: TOEFL iBT (incl. Home Edition), IELTS, Duolingo, PTE, Cambridge B2/C1/C2, SAT, ACT, IB HL, O-level English.",
+  "src": "intl_fy"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 80,
+   "notes": "Page publishes the middle-50% range of admitted students (80-95, exams before Jan 21, 2026), not a hard minimum.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.0,
+   "notes": "Middle-50% range 4.0-5.0 (exams on or after Jan 21, 2026); not a hard minimum.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 6.5,
+   "notes": "Middle-50% range 6.5-7.0; not a hard minimum.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 110,
+   "notes": "Middle-50% range 110-120; not a hard minimum.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 53,
+   "notes": "Middle-50% range 53-65; not a hard minimum.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 176,
+   "notes": "B2, C1 or C2; middle-50% range 176-185; not a hard minimum.",
+   "src": "intl_fy"
+  }
+ ],
+ "aid": {
+  "notes": "The scholarships page says all applicants are considered automatically (President's, Provost's, Dean's, Achievement scholarships; no separate application) but does not say whether international students are eligible, so no international aid policy is recorded. International admits must document funds for the first year before an I-20 is issued.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2535",
+   "src": "intl_fy"
+  },
+  "act": {
+   "code": "2956",
+   "src": "intl_fy"
+  },
+  "toefl": {
+   "code": "2535",
+   "src": "intl_fy"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code; select 'Binghamton University-Undergraduate Admissions' from the IELTS drop-down.",
+   "src": "intl_fy"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code; select 'Binghamton University' from the Duolingo drop-down.",
+   "src": "intl_fy"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {}
+}

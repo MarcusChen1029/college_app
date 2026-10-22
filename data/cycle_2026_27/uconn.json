@@ -1,0 +1,29 @@
+{
+ "sources": {
+  "cds": {
+   "kind": "other",
+   "title": "UConn Common Data Set 2025-2026 (C8A: policy for students applying for Fall 2027; C8F)",
+   "url": "https://bpir.media.uconn.edu/wp-content/uploads/sites/3452/2026/08/UConn_CDS_2025_2026_WEB.pdf",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "CDS C8A (applicants for Fall 2027) marks SAT/ACT as not required but considered if submitted; C8F: 'We are test optional; only considered for students who submit and request their submission be considered'. The admissions site (admissions.uconn.edu) showed only a university emergency page on 2026-10-22, so this was not cross-checked there. No deadlines, requirements, English minimums, aid or score codes were recorded for UConn because they could not be confirmed from a page opened this session.",
+  "src": "cds"
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {}
+}

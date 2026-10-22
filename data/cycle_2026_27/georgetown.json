@@ -1,0 +1,142 @@
+{
+ "sources": {
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Georgetown Undergraduate Admissions - Application Requirements and Forms",
+   "url": "https://uadmissions.georgetown.edu/apply/first-year-applicants/application-requirements-and-forms/",
+   "accessed": "2026-10-21"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Georgetown Undergraduate Admissions - First Year Applicants",
+   "url": "https://uadmissions.georgetown.edu/apply/first-year-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Georgetown Undergraduate Admissions - International Applicants",
+   "url": "https://uadmissions.georgetown.edu/apply/international-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "fin": {
+   "kind": "financial_aid_site",
+   "title": "Georgetown Undergraduate Admissions - Financial Aid",
+   "url": "https://uadmissions.georgetown.edu/financial-aid/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "Georgetown requires either SAT or ACT. Exception only in exceptional cases where a student is physically unable to access a test center (must explain). AP scores highly recommended.",
+  "src": "reqs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "supplemental_essays": "Georgetown Writing Supplement: two 250-word short essays, a 650-word personal/creative essay, and a 500-word school-specific essay.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "required",
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Apply with the Georgetown Application or the Common Application. One counselor and one teacher recommendation (an optional second teacher). Alumni interview is required when assigned; some internationally based students may not be assigned one with no negative effect. Midyear School Report due Feb 10. CSS Profile is required for aid applicants. Application fee not stated on the pages read.",
+  "src": "reqs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-15",
+   "notes": "Listed as 'Early Action'; decision 'by December 15'. The page does not state the calendar year; CDS 2025-26 listed a Jan 10 closing date for the previous cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "notify": "2027-04-01",
+   "notes": "Decision 'by April 1'. The page does not state the calendar year.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2027-02-01",
+   "label": "Financial aid application (EA and RD)",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Reply date for admitted students (both plans)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "Georgetown recommends, but does not require, an English proficiency test for applicants whose school does not teach in English. Accepts Duolingo (DET), IELTS or TOEFL (PBT, iBT, iBT IPT Plus). No minimum scores are published.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "notes": "No minimum published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "notes": "No minimum published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "notes": "No minimum published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "merit_scholarships": false,
+  "notes": "Admitted international applicants who request aid are considered for a very limited number of need-based scholarships; Georgetown's 100%-of-need commitment covers US citizens and permanent residents. No academic or merit scholarships. CSS Profile required; aid notifications go out by the first week of April. The pages read do not say whether admission is need-blind or need-aware for international applicants.",
+  "src": "fin"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5244",
+   "src": "reqs"
+  },
+  "act": {
+   "code": "0668",
+   "src": "reqs"
+  },
+  "toefl": {
+   "code": null,
+   "note": "TOEFL code not listed on the pages read.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "business": "A",
+  "biology_life_sci": "C",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "business": "McDonough School of Business is a top-15 undergraduate business program.",
+  "nursing": "School of Nursing is a top-15 undergraduate nursing program.",
+  "engineering": "No engineering school."
+ }
+}

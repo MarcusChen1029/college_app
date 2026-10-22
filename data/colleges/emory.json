@@ -1,0 +1,122 @@
+{
+  "slug": "emory",
+  "name": "Emory University",
+  "short_name": null,
+  "state_region": "GA",
+  "city": "Atlanta",
+  "latitude": 33.790183,
+  "longitude": -84.325512,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.emory.edu/",
+  "admissions_url": "https://apply.emory.edu/",
+  "ipeds_unit_id": 139658,
+  "undergrad_enrollment": 7298,
+  "intl_undergrads": 1154,
+  "student_faculty_ratio": 10,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=139658",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?139658",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Emory University Common Data Set 2025-2026 (pdf)",
+      "url": "https://provost.emory.edu/planning-administration/_includes/documents/sections/institutional-data/emory-common-date-set-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 37561,
+    "admits": 3869,
+    "enrolled": 1443,
+    "in_state_applicants": 4380,
+    "in_state_admits": 447,
+    "out_state_applicants": 23974,
+    "out_state_admits": 2846,
+    "intl_applicants": 9207,
+    "intl_admits": 576,
+    "waitlist_offered": 7608,
+    "waitlist_accepted": 6422,
+    "waitlist_admitted": 274,
+    "ed_applicants": 4728,
+    "ed_admits": 1049,
+    "pct_submit_sat": 47,
+    "pct_submit_act": 21,
+    "gpa_avg": 3.8,
+    "pct_reporting_gpa": 95,
+    "gpa_distribution": {
+      "4.0": 14,
+      "3.75-3.99": 63,
+      "3.50-3.74": 21,
+      "3.25-3.49": 2
+    },
+    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C2, C9, C11, C12, C21). Early decision counts cover both ED plans (ED I and ED II). Emory is test-optional, so SAT/ACT percentiles describe only the 47% (SAT) and 21% (ACT) of enrollees who submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1480,
+      1510,
+      1540
+    ],
+    "SAT_ERW": [
+      720,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      740,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 68056,
+    "books_usd": 1274,
+    "room_board_usd": 21244,
+    "other_usd": 2690,
+    "total_coa_usd": 88414,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

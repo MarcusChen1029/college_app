@@ -1,0 +1,97 @@
+{
+  "slug": "pepperdine",
+  "name": "Pepperdine University",
+  "short_name": "Pepperdine",
+  "state_region": "CA",
+  "city": "Malibu",
+  "latitude": 34.03868333,
+  "longitude": -118.70758056,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.pepperdine.edu",
+  "admissions_url": "https://admission.pepperdine.edu",
+  "ipeds_unit_id": 121150,
+  "undergrad_enrollment": 3459,
+  "intl_undergrads": 275,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Pepperdine University Common Data Set 2025-2026 (PDF linked from the Office of Institutional Effectiveness CDS page)",
+      "url": "https://drive.google.com/file/d/1I8RahoDnYryjUHb0vGnjSUqx9dG5hM_W/view?usp=sharing",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 13445,
+    "admits": 9331,
+    "enrolled": 999,
+    "waitlist_offered": 1303,
+    "waitlist_accepted": 812,
+    "waitlist_admitted": 670,
+    "pct_submit_sat": 17,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.57,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 8,
+      "3.75-3.99": 26,
+      "3.50-3.74": 28,
+      "3.25-3.49": 22,
+      "3.00-3.24": 13,
+      "2.50-2.99": 2,
+      "2.0-2.49": 1,
+      "1.0-1.99": 0
+    },
+    "notes": "Test-optional: only 17% of enrolled first-years submitted SAT and 8% ACT, so the score ranges describe a self-selected group. CDS C21 (Fall 2025 class) reports ED applicant/admit counts as 'na' because ED starts with the fall 2026 applicant pool. Residency (in-state/international) applicant counts and class rank (C10) were not reported. Fall 2025 applicant counts cover Seaver College first-years only."
+  },
+  "scores": {
+    "SAT_TOTAL": [1240, 1340, 1410],
+    "SAT_ERW": [640, 680, 720],
+    "SAT_MATH": [600, 660, 710],
+    "ACT_COMPOSITE": [28, 30, 32],
+    "ACT_MATH": [26, 28, 31],
+    "ACT_ENGLISH": [29, 32, 34]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "VI",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "policy": "optional",
+    "notes": "CDS C8A/C8F (Fall 2025): SAT/ACT not required for admission but considered if submitted; same consideration with or without scores. Scores are required to be considered for the Regents Scholars Program scholarships."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 74370,
+    "required_fees_usd": 832,
+    "room_board_usd": 20490,
+    "books_usd": 1000,
+    "other_usd": 1500,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 145,
+    "intl_avg_award_usd": 36013,
+    "notes": "CDS G1/G5/H6 (2026-2027 costs). Food and housing figure is the first-year on-campus amount (undergraduates overall: $23,260). G5 also lists $1,000 transportation. H6: only institutional non-need-based aid is available to nonresidents; the 145 recipients averaged $36,013 (non-need-based awards)."
+  }
+}

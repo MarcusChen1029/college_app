@@ -1,0 +1,150 @@
+{
+ "sources": {
+  "unc_fy": {
+   "kind": "admissions_site",
+   "title": "UNC Admissions - First-Year Application",
+   "url": "https://admissions.unc.edu/apply/types-of-applications/first-year/",
+   "accessed": "2026-10-21"
+  },
+  "unc_intl": {
+   "kind": "admissions_site",
+   "title": "UNC Admissions - Applying as an International First-Year Student",
+   "url": "https://admissions.unc.edu/apply/types-of-applications/international-first-year-students/",
+   "accessed": "2026-10-21"
+  },
+  "unc_eng": {
+   "kind": "admissions_site",
+   "title": "UNC Admissions - How does UNC look at English proficiency exams",
+   "url": "https://admissions.unc.edu/faqs/how-does-unc-look-at-english-proficiency-exams-toefl-ielts-person/",
+   "accessed": "2026-10-21"
+  },
+  "unc_waive": {
+   "kind": "admissions_site",
+   "title": "UNC Admissions - English proficiency exam waiver",
+   "url": "https://admissions.unc.edu/faqs/can-i-have-the-english-proficiency-exam-requirement-waived-for-my-application/",
+   "accessed": "2026-10-21"
+  },
+  "unc_aid": {
+   "kind": "financial_aid_site",
+   "title": "UNC Scholarships & Student Aid - International students",
+   "url": "https://studentaid.unc.edu/special-circumstances/international-students/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT optional with a weighted GPA of 2.8 or above (4.0 scale). Students below 2.8 must submit ACT 17+ or SAT 930+. Stated for 2026-27 and beyond. Scores are one factor among many.",
+  "src": "unc_fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 85,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "notes": "Fee waiver via school counselor. One recommendation from a core-academic teacher; international page also requires a secondary school official report (not from a private counseling company/agent) and official transcript with English translation. A personal essay is required. Fee, teacher letter and counselor report as listed on the international first-year page.",
+  "src": "unc_intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "label": "Early Action (non-binding)",
+   "due": "2026-10-15",
+   "notify": "2027-02-15",
+   "notes": "Decisions by Dec 20 for North Carolina residents, by Feb 15 for all others. Supporting materials and test scores due Nov 7.",
+   "src": "unc_intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "Regular Decision",
+   "due": "2027-01-15",
+   "notify": "2027-03-31",
+   "notes": "Supporting materials due Feb 15 per the international page (the domestic first-year page says Feb 21).",
+   "src": "unc_intl"
+  },
+  {
+   "kind": "deposit",
+   "label": "Enrollment confirmation (EA and RD)",
+   "due": "2027-05-01",
+   "src": "unc_intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for non-US citizens/non-permanent residents. Waived if you will have lived in a country where English is the primary language, or attended a school with English as the primary language of instruction, for at least the last four years (including the current year) before enrolling. English-course grades and SAT/ACT do not qualify.",
+  "src": "unc_waive"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Typical strong score for exams before Jan 21, 2026 (benchmark, not a minimum). Home Edition accepted.",
+   "src": "unc_eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5,
+   "notes": "Benchmark (not a minimum) for exams on or after Jan 21, 2026 (new scale).",
+   "src": "unc_eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "Academic; benchmark, not a minimum",
+   "src": "unc_eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Benchmark, not a minimum",
+   "src": "unc_eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 185,
+   "notes": "C1 Advanced benchmark; C2 Proficiency accepted with no listed score",
+   "src": "unc_eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "UNC states international students are not eligible for need-based aid and are not considered for academic scholarships; they must be self-funded for their entire studies.",
+  "src": "unc_aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "C182",
+   "note": "UNC's English-proficiency page lists 'TOEFL (code C182)'. Verify in your ETS account before sending. SAT/ACT codes not found.",
+   "src": "unc_eng"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "B",
+  "engineering": "D",
+  "business": "A",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "S"
+ },
+ "tier_notes": {
+  "business": "Kenan-Flagler is a top-10 undergraduate business program.",
+  "nursing": "School of Nursing is a top-5 undergraduate nursing program.",
+  "engineering": "No engineering college; only biomedical engineering, run jointly with NC State."
+ }
+}

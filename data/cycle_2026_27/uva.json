@@ -1,0 +1,154 @@
+{
+ "sources": {
+  "uva_dl": {
+   "kind": "admissions_site",
+   "title": "UVA Admission - Deadlines & Instructions (fall 2027)",
+   "url": "https://admission.virginia.edu/admission/deadlines-instructions",
+   "accessed": "2026-10-21"
+  },
+  "uva_intl": {
+   "kind": "admissions_site",
+   "title": "UVA Admission - International",
+   "url": "https://admission.virginia.edu/i-am/international",
+   "accessed": "2026-10-21"
+  },
+  "uva_cds": {
+   "kind": "other",
+   "title": "UVA Common Data Set 2025-2026 (C13 application fee)",
+   "url": "https://ira.virginia.edu/common-data-set/common-data-set-2025-2026",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Fall 2027 first-years choose whether to share SAT/ACT scores; no disadvantage either way. UVA superscores. Scores are self-reported, official reports required only on enrollment.",
+  "src": "uva_dl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Fee from CDS 2025-26 C13 ($75, waivable for need). Requires the secondary school report plus one academic teacher evaluation; counselor letter itself can be replaced by another administrator or teacher letter. Only interview offered: optional InitialView or Vericant evaluation (same deadlines as the application). Demonstrated interest not tracked. Applicants apply to one of: College of Arts & Sciences, Architecture, Engineering, Nursing, Kinesiology; McIntire, Batten and Data Science applicants apply to the College.",
+  "src": "uva_dl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "label": "Early Decision (binding)",
+   "due": "2026-11-01",
+   "notify": "2026-12-15",
+   "notes": "Notification 'by' this date. Teacher/counselor documents due Nov 8. Deposit expected by Jan 15, 2027.",
+   "src": "uva_dl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "label": "Early Action (non-binding)",
+   "due": "2026-11-01",
+   "notify": "2027-02-15",
+   "notes": "Notification 'by' this date. Teacher/counselor documents due Nov 8.",
+   "src": "uva_dl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "Regular Decision",
+   "due": "2027-01-05",
+   "notify": "2027-04-01",
+   "notes": "Notification 'by' this date. Teacher/counselor documents due Jan 10.",
+   "src": "uva_dl"
+  },
+  {
+   "kind": "deposit",
+   "plan": "ED",
+   "label": "ED deposit",
+   "due": "2027-01-15",
+   "src": "uva_dl"
+  },
+  {
+   "kind": "deposit",
+   "label": "EA / RD reply deadline",
+   "due": "2027-05-01",
+   "src": "uva_dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "UVA strongly encourages all applicants whose first language is not English to take an English assessment regardless of schooling; no minimum scores are published. Accepted: TOEFL, IELTS, Cambridge C1 Advanced / C2 Proficiency, Duolingo English Test.",
+  "src": "uva_intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "notes": "No minimum published",
+   "src": "uva_intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "notes": "No minimum published",
+   "src": "uva_intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "notes": "No minimum published",
+   "src": "uva_intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "recommended_option",
+   "notes": "C1 Advanced or C2 Proficiency; no minimum published",
+   "src": "uva_intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "UVA states it has no funds for scholarships or loans for international students who are foreign nationals, and does not recommend applying without means to pay; admitted students must submit a Financial Guarantee. Exception: graduates of United World College schools qualify for need-based scholarship support (Davis Foundation Scholarship).",
+  "src": "uva_intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5820",
+   "note": "UVA's page gives only 'Our ETS code is 5820' under score reporting (SAT/ACT/AP/IB are self-reported at application; official scores needed only on enrollment).",
+   "src": "uva_dl"
+  },
+  "act": {
+   "code": "4412",
+   "note": "Scores are self-reported at application.",
+   "src": "uva_dl"
+  },
+  "toefl": {
+   "code": "5820",
+   "note": "Page labels 5820 as UVA's ETS code (TOEFL is an ETS test). English tests are encouraged, not required.",
+   "src": "uva_dl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "B",
+  "engineering": "C",
+  "business": "A",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "business": "McIntire School of Commerce is a top-10 undergraduate business program.",
+  "nursing": "School of Nursing is a top-15 undergraduate nursing program.",
+  "engineering": "Engineering is solid but ranked outside the top 40."
+ }
+}

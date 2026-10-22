@@ -1,0 +1,110 @@
+{
+  "slug": "notre-dame",
+  "name": "University of Notre Dame",
+  "short_name": null,
+  "state_region": "IN",
+  "city": "Notre Dame",
+  "latitude": 41.703058,
+  "longitude": -86.238959,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.nd.edu/",
+  "admissions_url": "https://admissions.nd.edu/",
+  "ipeds_unit_id": 152080,
+  "undergrad_enrollment": 8818,
+  "intl_undergrads": 605,
+  "student_faculty_ratio": 8,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=152080",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?152080",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Notre Dame Common Data Set 2025-2026 (PDF, Institutional Research CDS folder)",
+      "url": "https://drive.google.com/file/d/1jFtuEmv7OPCTq9e8kD90I7CByERcMBty/view",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 35401,
+    "admits": 3320,
+    "enrolled": 2118,
+    "in_state_applicants": 2069,
+    "in_state_admits": 219,
+    "out_state_applicants": 26548,
+    "out_state_admits": 2813,
+    "intl_applicants": 6784,
+    "intl_admits": 288,
+    "waitlist_offered": 2186,
+    "waitlist_accepted": 1475,
+    "waitlist_admitted": 54,
+    "pct_submit_sat": 34,
+    "pct_submit_act": 33,
+    "notes": "CDS 2025-26 (fall 2025 entering class). No Early Decision plan (restrictive early action only). The CDS gives only the number submitting SAT (726) and ACT (693) out of 2,118 enrolled; the percentages are computed from those counts. High school GPA (C11/C12) was not reported."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1500,
+      1540
+    ],
+    "SAT_ERW": [
+      720,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      730,
+      760,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 67607,
+    "books_usd": 1250,
+    "room_board_usd": 18438,
+    "other_usd": 1950,
+    "total_coa_usd": 86125,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "VI",
+    "recommendations": "VI",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "I",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "I",
+    "volunteer_work": "VI",
+    "work_experience": "C"
+  }
+}

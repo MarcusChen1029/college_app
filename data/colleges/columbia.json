@@ -1,0 +1,129 @@
+{
+  "slug": "columbia",
+  "name": "Columbia University in the City of New York",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.808286,
+  "longitude": -73.961885,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.columbia.edu/",
+  "admissions_url": "https://www.columbia.edu/content/admissions",
+  "ipeds_unit_id": 190150,
+  "undergrad_enrollment": 8973,
+  "intl_undergrads": 1770,
+  "student_faculty_ratio": 6,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190150",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?190150",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Columbia College and Columbia Engineering Common Data Set 2025-26 (PDF)",
+      "url": "https://opir.columbia.edu/sites/opir.columbia.edu/files/content/Common%20Data%20Set/2025-26_Columbia_College_and_Columbia_Enginnering_CDS.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 59611,
+    "admits": 2946,
+    "enrolled": 1797,
+    "in_state_applicants": 8882,
+    "in_state_admits": 447,
+    "out_state_applicants": 35349,
+    "out_state_admits": 2092,
+    "intl_applicants": 15380,
+    "intl_admits": 407,
+    "ed_applicants": 5868,
+    "ed_admits": 819,
+    "pct_submit_sat": 50,
+    "pct_submit_act": 17,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 74.9,
+      "3.75-3.99": 20.8,
+      "3.50-3.74": 3.3,
+      "3.25-3.49": 0.9,
+      "3.00-3.24": 0.1
+    },
+    "notes": "CDS Fall 2025 entering class, Columbia College + Columbia Engineering (General Studies publishes a separate CDS). GPA distribution covers the 72.2% of students whose GPA was recorded on a 4.0 scale; the CDS also reports a 4.25 average (mixed scales), so gpa_avg is left out. Test-optional for 2026-27; required from 2027-28."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1510,
+      1540,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      777
+    ],
+    "SAT_MATH": [
+      760,
+      780,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      32,
+      34,
+      35
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 74180,
+    "books_usd": 1282,
+    "room_board_usd": 18680,
+    "other_usd": 1804,
+    "total_coa_usd": 92198,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

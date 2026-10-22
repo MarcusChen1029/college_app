@@ -1,0 +1,204 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Dates & deadlines 2026-27",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (application fees & waivers)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_test": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - First-year requirements (standardized tests)",
+   "url": "https://admission.universityofcalifornia.edu/counselors/preparing-freshman-students/freshman-requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fill": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Filling out the application",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/filling-out-the-application.html",
+   "accessed": "2026-10-21"
+  },
+  "ucla_intl": {
+   "kind": "admissions_site",
+   "title": "UCLA Admission - International Applicants",
+   "url": "https://admission.ucla.edu/apply/international-applicants",
+   "accessed": "2026-10-21"
+  },
+  "ucla_reqs": {
+   "kind": "admissions_site",
+   "title": "UCLA Admission - First-Year Requirements",
+   "url": "https://admission.ucla.edu/apply/first-year/first-year-requirements",
+   "accessed": "2026-10-21"
+  },
+  "ucla_codes": {
+   "kind": "admissions_site",
+   "title": "UCLA Admission - Sending Official Records (First-Years)",
+   "url": "https://admission.ucla.edu/admitted-students/first-year-submit-transcripts",
+   "accessed": "2026-10-21"
+  },
+  "ucla_major": {
+   "kind": "admissions_site",
+   "title": "UCLA Admission - Choosing a Major as a First-Year",
+   "url": "https://admission.ucla.edu/apply/first-year/choosing-major",
+   "accessed": "2026-10-21"
+  },
+  "ucla_fa": {
+   "kind": "financial_aid_site",
+   "title": "UCLA Financial Aid - Apply for Aid (international students)",
+   "url": "https://financialaid.ucla.edu/how-aid-works/apply-for-aid",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC does not consider SAT or ACT scores in admission decisions or scholarships; UCLA does not ask for them in the application.",
+  "src": "uc_test"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 80,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8)",
+  "notes": "Fee is $80 per campus, $95 for international applicants; fee waivers cover up to four campuses but only for U.S. citizens, permanent residents and AB540-eligible applicants. UCLA does not require or accept letters of recommendation and does not offer admission interviews. Some arts, music, nursing and theater/film majors require a supplemental application.",
+  "src": "ucla_reqs",
+  "interview": "not_offered"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "UC application filing period closes",
+   "due": "2026-11-30",
+   "note": "Admission decisions released March 1-31, 2027 (some campuses earlier)",
+   "notes": "No early plans. Application opens August 1, 2026 for fall 2027. Self-report English test scores in the application; UCLA asks that they be reported by January.",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Statement of Intent to Register (SIR)",
+   "due": "2027-05-01",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if all or some secondary school was in a country where English was not the language of instruction and you have had less than 3 years of instruction in English. UCLA may also require its English-as-a-Second-Language Placement Exam after admission.",
+  "src": "ucla_intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "rec": 100,
+   "notes": "UC minimum 80 (tests before Jan 2026). UCLA looks for competitive scores: above 100 with every section above 24.",
+   "src": "uc_eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "rec": 5.0,
+   "notes": "UC minimum 4.5 (Jan 2026 or later). UCLA looks for 5 or higher with every section 5 or higher.",
+   "src": "uc_eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "rec": 7.5,
+   "notes": "UCLA looks for 7.5 or above.",
+   "src": "uc_eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "rec": 135,
+   "notes": "UCLA looks for 135 or higher.",
+   "src": "uc_eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "UCLA's admissions site says it does not award scholarships or financial aid to undergraduates who are not U.S. citizens or permanent residents; admitted internationals must show funds (about $80,739 minimum for fall 2026 entrants). UCLA's financial aid site says internationals may be eligible only for outside scholarships, private loans and short-term loans.",
+  "src": "ucla_intl"
+ },
+ "majors": [
+  {
+   "program": "College of Letters and Science (first-year, incl. undeclared)",
+   "category": "humanities",
+   "admit_model": "school_college",
+   "capped": false,
+   "notes": "UCLA says that for College applicants the chosen major is not considered in admission review; changing majors within the College is not allowed during the application process, and about 1,500 students are undeclared at any time."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4837",
+   "note": "UCLA is test-blind: SAT/ACT are not considered for admission or scholarships; codes apply only to scores sent after admission.",
+   "src": "ucla_codes"
+  },
+  "act": {
+   "code": "0448",
+   "note": "UCLA is test-blind; code applies only to scores sent after admission.",
+   "src": "ucla_codes"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No undergraduate TOEFL code is published. Self-report scores in the UC application; UCLA says a TOEFL report sent to one UC campus reaches all campuses you apply to.",
+   "src": "ucla_intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code. UCLA says IELTS results must be sent to each campus you apply to; self-report in the application.",
+   "src": "ucla_intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code. DET scores are sent through the DET portal with your UC Application ID, once per campus.",
+   "src": "ucla_intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "A",
+  "engineering": "A",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "A",
+  "math_physics": "A",
+  "humanities": "A",
+  "arts_design": "S",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "computer_science": "Top-15 CS program in Samueli School of Engineering.",
+  "engineering": "Samueli is a top-15 engineering school.",
+  "business": "No undergraduate business major (Business Economics is an economics major; Anderson is graduate-only).",
+  "biology_life_sci": "Top-15 life sciences with a major medical center.",
+  "pre_med": "Strong pre-med research access through UCLA Health and the Geffen School of Medicine.",
+  "economics": "Top-15 economics department.",
+  "math_physics": "Top-15 mathematics and physics.",
+  "humanities": "Top-15 humanities departments.",
+  "arts_design": "School of Theater, Film & Television and School of the Arts & Architecture are among the leading US arts schools.",
+  "nursing": "School of Nursing BS is a top-15 undergraduate nursing program."
+ }
+}

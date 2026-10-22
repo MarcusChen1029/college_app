@@ -1,0 +1,124 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UChicago College Admissions - Application plans and deadlines",
+   "url": "https://collegeadmissions.uchicago.edu/apply/",
+   "accessed": "2026-10-21"
+  },
+  "mat": {
+   "kind": "admissions_site",
+   "title": "UChicago College Admissions - Required Materials",
+   "url": "https://collegeadmissions.uchicago.edu/apply/application/required-materials/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UChicago College Admissions - International Applicants",
+   "url": "https://collegeadmissions.uchicago.edu/apply/international-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UChicago College Admissions - International Financial Aid",
+   "url": "https://collegeadmissions.uchicago.edu/financial-support/international-financial-aid/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT optional with a 'No Harm' policy: a submitted score is used only if it helps. Applies to domestic and international applicants.",
+  "src": "mat"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 90,
+  "fee_waiver": true,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "notes": "No application fee for students applying for need-based aid; otherwise $90. Supplement = one extended essay plus one short 'why UChicago' essay. Two recommendations from academic-subject teachers plus the Secondary School Report. International aid applicants should not submit the CSS Profile or FAFSA (UChicago has its own aid process via the UChicago Account).",
+  "src": "mat"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-02",
+   "label": "Early Action",
+   "notes": "Decision mid-December (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-02",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision mid-December (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision mid-February (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "label": "Regular Decision",
+   "notes": "Decision late March (no exact date published).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "Applicants may submit scores from any English proficiency exam they believe represents their ability. Not required if mastery of English is already shown throughout the application. No minimum scores are published.",
+  "src": "intl"
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "meets_full_need": true,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Committed to meeting 100% of demonstrated need with a loan-free package for admitted applicants who applied for aid. International students are eligible for merit scholarships (partial-tuition) and are considered automatically; no separate application. The page does not state whether international admission is need-blind or need-aware.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1832",
+   "src": "mat"
+  },
+  "act": {
+   "code": "1152",
+   "src": "mat"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "B",
+  "engineering": "C",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "S",
+  "math_physics": "A",
+  "humanities": "S",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "business": "No undergraduate business major (Business Economics is a specialization within Economics).",
+  "nursing": "No nursing program.",
+  "engineering": "Only Molecular Engineering (Pritzker School); no broad engineering college.",
+  "biology_life_sci": "Top-10 life sciences with UChicago Medicine on campus.",
+  "pre_med": "Strong pre-med outcomes and research access through UChicago Medicine.",
+  "economics": "Economics department is consistently top-5 nationally.",
+  "math_physics": "Top-10 mathematics and physics.",
+  "humanities": "Core curriculum and humanities departments among the best in the US."
+ }
+}

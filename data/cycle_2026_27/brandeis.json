@@ -1,0 +1,184 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Brandeis Admissions - Application Process and Deadlines",
+   "url": "https://www.brandeis.edu/admissions/apply/application-process/index.html",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Brandeis Admissions - First-Year Applicants (materials, international requirements)",
+   "url": "https://www.brandeis.edu/admissions/apply/application-process/first-year.html",
+   "accessed": "2026-10-21"
+  },
+  "testopt": {
+   "kind": "admissions_site",
+   "title": "Brandeis Admissions - Test-Optional Policy",
+   "url": "https://www.brandeis.edu/admissions/apply/test-optional-policy.html",
+   "accessed": "2026-10-21"
+  },
+  "aidintl": {
+   "kind": "financial_aid_site",
+   "title": "Brandeis Student Financial Services - International Students: How to Apply for Aid",
+   "url": "https://www.brandeis.edu/student-financial-services/financial-aid/apply/international-students.html",
+   "accessed": "2026-10-21"
+  },
+  "wien": {
+   "kind": "financial_aid_site",
+   "title": "Brandeis Student Financial Services - International Student Scholarships",
+   "url": "https://www.brandeis.edu/student-financial-services/financial-aid/scholarships/international.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Brandeis has been test-optional since 2013. Applicants indicate on the Common App whether they want SAT/ACT scores considered; all applicants are considered for merit scholarships regardless. Self-reported scores are accepted (official scores required before matriculation). The ACT science section is not required.",
+  "src": "testopt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 80,
+  "fee_waiver": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "midyear_report": true,
+  "interview": "by_invitation",
+  "css_profile_required": true,
+  "notes": "School report plus a letter of recommendation from a secondary school official, and one letter from a teacher of a core academic course. Senior mid-year grades are required for Regular Decision. ED applicants also submit an Early Decision Agreement Form. Interviews with Brandeis admissions are by invitation only; international applicants are strongly encouraged to use InitialView or Vericant (record and submit by Nov 15 for ED I, Jan 15 for ED II/RD). CSS Profile is required of international students seeking aid (and CSS Profile plus FAFSA for domestic aid applicants).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-02",
+   "notify": "2026-12-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Page lists month and day only; the same table gives spring admission for the January 2027 semester, so it is the 2026-27 cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-02",
+   "notify": "2027-02-01",
+   "label": "Early Action",
+   "notes": "Non-binding.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Binding.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-02",
+   "label": "CSS Profile and FAFSA - Early Decision I and Early Action",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "CSS Profile and FAFSA - Early Decision II and Regular Decision",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if you have spent four or more years in a high school whose full academic curriculum is in English (request a waiver in the DEISconnect portal after applying), or if you apply directly from a United World College campus. Scores accepted from TOEFL iBT, IELTS, Duolingo (must come directly from the testing agency) or Cambridge C1 Advanced / C2 Proficiency; scanned copies of TOEFL, IELTS and Cambridge are accepted.",
+  "src": "fy"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "Accepted; no minimum score published on the pages opened.",
+   "src": "fy"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "Accepted; no minimum score published on the pages opened.",
+   "src": "fy"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "Accepted; scores must be sent directly from Duolingo. No minimum published on the pages opened.",
+   "src": "fy"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "notes": "C1 Advanced or C2 Proficiency. No minimum published on the pages opened.",
+   "src": "fy"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "Brandeis scholarships for international students are based on academic and personal records and are need-sensitive; competition is strong. Scholarship funds are generally awarded only at admission, and international students must reapply for aid each year with the CSS Profile (school code 3092). The Wien International Scholarship meets the full demonstrated need of each recipient; there is no separate application. Whether Brandeis meets full need for all international admits is not stated.",
+  "src": "aidintl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3092",
+   "src": "testopt"
+  },
+  "act": {
+   "code": "1802",
+   "src": "testopt"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code published on the pages opened (3092 is the SAT and CSS Profile code); select Brandeis by name.",
+   "src": "fy"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code published on Brandeis's pages.",
+   "src": "fy"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Scores must be sent to Brandeis directly from Duolingo; no code published.",
+   "src": "fy"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school.",
+  "nursing": "No nursing program.",
+  "biology_life_sci": "Small but research-strong biology and neuroscience."
+ }
+}

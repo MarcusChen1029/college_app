@@ -1,0 +1,131 @@
+{
+  "slug": "binghamton",
+  "name": "Binghamton University",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Vestal",
+  "latitude": 42.087868,
+  "longitude": -75.966889,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.binghamton.edu/",
+  "admissions_url": "https://www.binghamton.edu/admissions",
+  "ipeds_unit_id": 196079,
+  "undergrad_enrollment": 14655,
+  "intl_undergrads": 591,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196079",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?196079",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Binghamton University Common Data Set 2025-2026 (PDF; page headers still print '2024-2025' but all C-section data are for the Fall 2025 entering class)",
+      "url": "https://www.binghamton.edu/offices/oir/institutional-data/cds2025.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 61188,
+    "admits": 22832,
+    "enrolled": 3201,
+    "in_state_applicants": 49217,
+    "in_state_admits": 14324,
+    "out_state_applicants": 8932,
+    "out_state_admits": 6586,
+    "intl_applicants": 2810,
+    "intl_admits": 1744,
+    "waitlist_offered": 19524,
+    "waitlist_admitted": 753,
+    "pct_submit_sat": 43,
+    "pct_submit_act": 9,
+    "gpa_avg": 3.88,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 63.92,
+      "3.75-3.99": 17.61,
+      "3.50-3.74": 11.56,
+      "3.25-3.49": 4.25,
+      "3.00-3.24": 2.16,
+      "2.50-2.99": 0.5
+    },
+    "notes": "C1 totals are the residency-table totals (male+female+unknown sum is 61,197 / 22,835 admits). Out-of-state figures exclude international. Early action only (no ED): 34,283 EA applications, 14,315 admitted (CDS C22). GPA bands are the six filled rows of C11 'all enrolled students' read in order from 4.0 downward; they sum to 100 and reproduce the reported 3.88 average. Waitlist accepted count is blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1320,
+      1410,
+      1480
+    ],
+    "SAT_ERW": [
+      650,
+      700,
+      740
+    ],
+    "SAT_MATH": [
+      660,
+      710,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      29,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      30,
+      33
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 10567,
+    "books_usd": 1000,
+    "room_board_usd": 19477,
+    "other_usd": 1000,
+    "total_coa_usd": 30939,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 32467
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

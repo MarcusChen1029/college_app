@@ -1,0 +1,127 @@
+{
+  "slug": "virginia-tech",
+  "name": "Virginia Polytechnic Institute and State University",
+  "short_name": null,
+  "state_region": "VA",
+  "city": "Blacksburg",
+  "latitude": 37.229012,
+  "longitude": -80.423675,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.vt.edu/",
+  "admissions_url": "https://vt.edu/admissions/undergraduate.html",
+  "ipeds_unit_id": 233921,
+  "undergrad_enrollment": 30923,
+  "intl_undergrads": 1426,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=233921",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?233921",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Virginia Tech Common Data Set 2025-2026 (xlsx)",
+      "url": "https://aie.vt.edu/content/dam/aie_vt_edu/common-data-set/25-26/2025-2026-CDS.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 57755,
+    "admits": 31515,
+    "enrolled": 7133,
+    "in_state_applicants": 20900,
+    "in_state_admits": 9893,
+    "out_state_applicants": 31104,
+    "out_state_admits": 18311,
+    "intl_applicants": 5751,
+    "intl_admits": 3311,
+    "waitlist_offered": 22526,
+    "waitlist_accepted": 13380,
+    "waitlist_admitted": 4295,
+    "pct_submit_sat": 42,
+    "pct_submit_act": 8,
+    "gpa_avg": 4.06,
+    "pct_reporting_gpa": 97,
+    "gpa_distribution": {
+      "4.0": 67,
+      "3.75-3.99": 18,
+      "3.50-3.74": 10,
+      "3.25-3.49": 4,
+      "3.00-3.24": 1
+    },
+    "notes": "CDS C1/C2/C9/C11/C12. Average GPA above 4.0 means Virginia Tech reports a weighted/recalculated GPA. No early decision; nonbinding early action. SAT composite percentiles are blank in the CDS (only section scores reported)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      640,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      640,
+      690,
+      730
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      26,
+      30,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 16450,
+    "books_usd": 3270,
+    "room_board_usd": 16046,
+    "other_usd": 5612,
+    "total_coa_usd": 39324,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 38914
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "VI",
+    "alumni_relation": "NC",
+    "geographic_residence": "VI",
+    "state_residency": "VI",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

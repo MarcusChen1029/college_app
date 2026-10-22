@@ -1,0 +1,182 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UW Seattle — Dates and deadlines",
+   "url": "https://admit.washington.edu/apply/dates-deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "UW Seattle — First-year: How to apply",
+   "url": "https://admit.washington.edu/apply/first-year/how-to-apply/",
+   "accessed": "2026-10-21"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "UW Seattle — SAT/ACT scores",
+   "url": "https://admit.washington.edu/apply/freshman/how-to-apply/test-scores/",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UW Seattle — English proficiency for international first-year applicants",
+   "url": "https://admit.washington.edu/apply/first-year/how-to-apply/english-proficiency/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UW Seattle — Scholarships",
+   "url": "https://admit.washington.edu/costs/scholarships/",
+   "accessed": "2026-10-21"
+  },
+  "aid2": {
+   "kind": "financial_aid_site",
+   "title": "UW Seattle — Applying for aid",
+   "url": "https://admit.washington.edu/costs/aid/",
+   "accessed": "2026-10-21"
+  },
+  "majors": {
+   "kind": "admissions_site",
+   "title": "UW Seattle — Admission to majors",
+   "url": "https://admit.washington.edu/apply/admission-to-majors/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT permanently not required. Reviewers do not see scores if sent; scores above the middle 50% (about 1400 SAT / 31 ACT) may help a handful of applicants. Homeschooled applicants and applicants from schools without letter or numeric grades must still submit SAT or ACT.",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 95,
+  "supplemental_essays": "Common App personal essay (650 words max); the page lists no separate supplement.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "interview": "not_offered",
+  "notes": "Application fee is $95 for international first-year applicants (no fee waivers) and $85 for US applicants (waivers available). Courses and grades are self-reported through STARS; transcripts are uploaded unofficially only if the school follows a national curriculum outside the U.S. The UW asks applicants not to send letters of recommendation, does not conduct interviews and does not consider demonstrated interest. First choice major matters for Direct-to-Major/College programs.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-11-15",
+   "label": "Application deadline (summer and autumn quarter)",
+   "notes": "Common App only; no early plans. Decisions released March 1-15, 2027 (no single date published). Test-score (English proficiency) deadline is December 31; the UW has no early action or early decision.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "FAFSA/WASFA priority date",
+   "notes": "Applies to US citizens, permanent residents and eligible students only; the UW does not provide aid to undergraduate international students.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if primary and secondary education took place in Australia, Canada (English-speaking provinces), the UK, Ireland, New Zealand or the U.S. (birth in those countries alone does not exempt). Alternative: SAT EBRW 580+ or ACT English 22+ with an average grade of B in English writing/literature courses taught in English in grades 10-12. Exams must be taken by Dec 31; no conditional admission, no MyBest, no superscoring.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 76,
+   "notes": "Tests taken before Jan 21, 2026. Subscores should be sent.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Effective Jan 21, 2026 (1-6 scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Indicator (at home) accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "\"The UW does not provide financial aid or scholarships to undergraduate international students.\"",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Computer Science / Computer Engineering (Allen School)",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": true,
+   "internal_transfer": "very_hard",
+   "notes": "Must list CS or CompE as first choice to be considered; if not admitted directly, later admission is unlikely."
+  },
+  {
+   "program": "Engineering (College of Engineering)",
+   "category": "engineering",
+   "admit_model": "school_college",
+   "capped": true,
+   "internal_transfer": "hard",
+   "notes": "Direct-to-College as 'engineering undeclared'; later admission is competitive and space may be limited."
+  },
+  {
+   "program": "Business Administration (Foster School)",
+   "category": "business",
+   "admit_model": "school_college",
+   "capped": true,
+   "internal_transfer": "hard",
+   "notes": "Direct-to-College for first-years; later admission is capacity constrained and not guaranteed."
+  }
+ ],
+ "score_codes": {
+  "toefl": {
+   "code": "4854",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code. Electronic submission to 'University of Washington, All Campuses Undergraduate & Graduate Admission, Box 355850, Seattle, WA 98195'.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "The page gives no numeric code; scores must be sent directly from the testing agency to the UW.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "A",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "A",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "B",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "computer_science": "Allen School is a top-10 CS program (capped, competitive direct admission).",
+  "biology_life_sci": "Top-15 life sciences with UW Medicine.",
+  "nursing": "School of Nursing is a top-10 nursing program."
+ }
+}

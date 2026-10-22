@@ -1,0 +1,102 @@
+{
+  "slug": "uc-riverside",
+  "name": "University of California-Riverside",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Riverside",
+  "latitude": 33.97246,
+  "longitude": -117.32741,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ucr.edu/",
+  "admissions_url": "https://admissions.ucr.edu/",
+  "ipeds_unit_id": 110671,
+  "undergrad_enrollment": 22593,
+  "intl_undergrads": 836,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110671",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110671",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UC Riverside Common Data Set 2025-2026 (pdf)",
+      "url": "https://ir.ucr.edu/media/558/download",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 61184,
+    "admits": 52676,
+    "enrolled": 6686,
+    "in_state_applicants": 51828,
+    "in_state_admits": 44686,
+    "out_state_applicants": 3137,
+    "out_state_admits": 2810,
+    "intl_applicants": 6219,
+    "intl_admits": 5180,
+    "waitlist_offered": 3783,
+    "waitlist_accepted": 2019,
+    "waitlist_admitted": 0,
+    "gpa_avg": 3.75,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 29.0,
+      "3.75-3.99": 22.2,
+      "3.50-3.74": 23.0,
+      "3.25-3.49": 16.2,
+      "3.00-3.24": 9.2,
+      "2.50-2.99": 0.4,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "UC campuses are test-blind and have no early plans, so C9 test-score percentiles and C21 are blank. Enrolled by residency: 6,431 in-state, 111 out-of-state, 144 international."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 16103,
+    "books_usd": 1750,
+    "room_board_usd": 20416,
+    "other_usd": 6242,
+    "total_coa_usd": 38424,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 53705
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  }
+}

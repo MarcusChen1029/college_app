@@ -1,0 +1,135 @@
+{
+  "slug": "indiana",
+  "name": "Indiana University-Bloomington",
+  "short_name": null,
+  "state_region": "IN",
+  "city": "Bloomington",
+  "latitude": 39.16609,
+  "longitude": -86.526559,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://bloomington.iu.edu/",
+  "admissions_url": "https://bloomington.iu.edu/admissions/",
+  "ipeds_unit_id": 151351,
+  "undergrad_enrollment": 37806,
+  "intl_undergrads": 1716,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=151351",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?151351",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Indiana University Bloomington Common Data Set 2025-2026 (IU CDS site, year 2025)",
+      "url": "https://iuapps.iu.edu/cds/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 74077,
+    "admits": 56218,
+    "enrolled": 10127,
+    "in_state_applicants": 17458,
+    "in_state_admits": 12612,
+    "out_state_applicants": 50700,
+    "out_state_admits": 39841,
+    "intl_applicants": 5919,
+    "intl_admits": 3765,
+    "waitlist_offered": 6271,
+    "waitlist_accepted": 2434,
+    "waitlist_admitted": 97,
+    "pct_submit_sat": 43.2,
+    "pct_submit_act": 14.8,
+    "gpa_avg": 3.8,
+    "pct_reporting_gpa": 94.94,
+    "gpa_distribution": {
+      "4.0": 43.78,
+      "3.75-3.99": 25.04,
+      "3.50-3.74": 16.39,
+      "3.25-3.49": 9.35,
+      "3.00-3.24": 4.69,
+      "2.50-2.99": 0.74,
+      "2.0-2.49": 0.01,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C11 all-enrolled column; GPA average is reported as 3.8. Early action closes 11/1 (decision by 1/15); no early decision. Fall 2025 entering class."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1200,
+      1310,
+      1410
+    ],
+    "SAT_ERW": [
+      610,
+      660,
+      700
+    ],
+    "SAT_MATH": [
+      590,
+      650,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 12144,
+    "books_usd": 1290,
+    "room_board_usd": 14160,
+    "other_usd": 3328,
+    "total_coa_usd": 30517,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 42295
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

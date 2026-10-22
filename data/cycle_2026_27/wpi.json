@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "opts": {
+   "kind": "admissions_site",
+   "title": "WPI - Application Options (deadlines)",
+   "url": "https://www.wpi.edu/admissions/undergraduate/apply/application-options",
+   "accessed": "2026-10-22"
+  },
+  "how": {
+   "kind": "admissions_site",
+   "title": "WPI - How to Apply: Requirements & Steps",
+   "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to",
+   "accessed": "2026-10-22"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "WPI - Test-Optional Admissions",
+   "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to/test-optional-admissions",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "WPI - International Students",
+   "url": "https://www.wpi.edu/admissions/undergraduate/apply/international-students",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional (applicants choose whether scores are considered; no-harm practice). SAT is superscored; ACT best composite is used; science section not required. Self-reporting allowed; official scores only if you enroll. Scores are not used for merit scholarships. Last published middle 50% (fall 2021 entrants who submitted): SAT 1340-1480, ACT 30-34.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 70,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "One teacher and one counselor recommendation, official transcripts (first marking period grades or mid-year report highly recommended). Early Decision applicants submit the ED Agreement form. Page says all first-year candidates use the Common Application. International students applying for need-based aid submit only the CSS Profile (no FAFSA); domestic need-based applicants need both.",
+  "src": "how"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Notification by mid December (no exact date). Admitted ED students get a minimum merit scholarship of $25,000 per year. Need-based aid documents also due Nov 1.",
+   "src": "opts"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification by mid February (no exact date).",
+   "src": "opts"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action I",
+   "notes": "Non-binding. Decision by mid December; reply by May 1.",
+   "src": "opts"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2027-01-05",
+   "label": "Early Action II",
+   "notes": "Non-binding. Decision by mid February.",
+   "src": "opts"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "Decision by mid March (ED I deferrals are notified before March 15).",
+   "src": "opts"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of an English-speaking country who attended an English-speaking high school for four years may be exempt; contact admissions. Initialview or Vericant interviews are only a supplement.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "Recommended score; tests taken before 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.5,
+   "notes": "Recommended score for tests taken after 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "subs": {
+    "each_band": 6.5
+   },
+   "notes": "Recommended score.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 125,
+   "notes": "Recommended score.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 61,
+   "notes": "Recommended score.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "Need-aware at the application stage; limited need-based assistance for international first-year and transfer students (CSS Profile due by the admissions deadline). WPI says competitive international applicants typically contribute at least $25,000 per year. Up to two WPI International Leadership Awards per year (up to full tuition and fees, possible $12,000 housing allowance); all admitted fall-entry international students are considered automatically.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3969",
+   "src": "test"
+  },
+  "act": {
+   "code": "1942",
+   "src": "test"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "nursing": "No nursing program."
+ }
+}

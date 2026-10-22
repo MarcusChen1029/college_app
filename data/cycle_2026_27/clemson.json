@@ -1,0 +1,125 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Clemson Undergraduate Admissions - First-Year Application Guide",
+   "url": "https://www.clemson.edu/admissions/undergraduate-admissions/apply/first-year.html",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Clemson Undergraduate Admissions - International Student Application Process",
+   "url": "https://www.clemson.edu/admissions/undergraduate-admissions/apply/international.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Clemson has adopted a test-optional policy; applicants are not required to submit SAT or ACT scores. Clemson superscores both tests and does not require the SAT/ACT essay. Students may switch their score-use preference up to Nov 1 (Early Action) or Jan 10 (Regular Decision).",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": 0,
+  "counselor_rec": false,
+  "notes": "Clemson Application, Coalition (Scoir) and Common App are all accepted with no preference. Personal statements, letters of recommendation and resumes can be uploaded in the portal but are not required. First-year applicants self-report their transcript through STARS; official transcripts are required only after admission. International applicants pick two intended majors, and South Carolina residents get priority as a public university. The international page lists May 1 as the last day to apply for fall entry (apply much earlier for scholarship and capacity reasons); the page does not state a year, so dates are taken as the current cycle (application opens Aug 1).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-10-15",
+   "label": "Early Action (non-binding)",
+   "notes": "Required materials due Nov 1; decisions released mid-December (no exact date published).",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "notes": "Also the deadline for scholarship consideration. Required materials due Jan 10; decisions released mid-February (no exact date published).",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The English test can be waived for students for whom English is the primary language or one of the official languages. Transfer applicants who passed English Composition I and II with a B or better at a US institution are also exempt.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Undergraduate page lists 80 or higher on the 0-120 scale and gives no 1-6 scale equivalent for first-year applicants.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_band": 6.0
+   },
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "The international page states there are no scholarships for international undergraduates at Clemson and that deferred payment is not available. Sister-State agreements give in-state tuition to citizens of some German states, Queensland (Australia) and the Province of Taiwan.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5111",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3842",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5111",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": "5111",
+   "note": "Page lists 'code: 5111' next to IELTS (spelled IELFTS on the page).",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code; select 'Clemson University' and 'Undergraduate Admissions' when sending scores.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {}
+}

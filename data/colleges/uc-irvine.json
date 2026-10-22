@@ -1,0 +1,90 @@
+{
+  "slug": "uc-irvine",
+  "name": "University of California-Irvine",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Irvine",
+  "latitude": 33.648434,
+  "longitude": -117.841248,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uci.edu/",
+  "admissions_url": "https://admissions.uci.edu/",
+  "ipeds_unit_id": 110653,
+  "undergrad_enrollment": 30197,
+  "intl_undergrads": 3714,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110653",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110653",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UC Irvine Common Data Set 2025-2026",
+      "url": "https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/2/5478/files/2026/05/2025-26-CDS-PDF-Upload.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 124231,
+    "admits": 35964,
+    "enrolled": 6421,
+    "in_state_applicants": 86230,
+    "in_state_admits": 18922,
+    "out_state_applicants": 16381,
+    "out_state_admits": 7784,
+    "intl_applicants": 21620,
+    "intl_admits": 9258,
+    "waitlist_offered": 12967,
+    "waitlist_accepted": 5738,
+    "waitlist_admitted": 5737,
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. GPA average/distribution (C11-C12) and C9 test-score percentiles are not reported in the UCI CDS (test-blind). Enrolled split: 4,870 in-state / 472 out-of-state / 1,079 international."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 16235,
+    "books_usd": 1543,
+    "room_board_usd": 19653,
+    "other_usd": 6072,
+    "total_coa_usd": 39170,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 53837
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "VI",
+    "work_experience": "VI",
+    "demonstrated_interest": "NC"
+  }
+}

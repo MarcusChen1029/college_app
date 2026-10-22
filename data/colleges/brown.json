@@ -1,0 +1,81 @@
+{
+  "slug": "brown",
+  "name": "Brown University",
+  "short_name": null,
+  "state_region": "RI",
+  "city": "Providence",
+  "latitude": 41.82617,
+  "longitude": -71.40385,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.brown.edu/",
+  "admissions_url": "https://www.brown.edu/admission",
+  "ipeds_unit_id": 217156,
+  "undergrad_enrollment": 7226,
+  "intl_undergrads": 917,
+  "student_faculty_ratio": 6,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217156",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?217156",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 51316,
+    "admits": 2686,
+    "enrolled": 1695,
+    "pct_submit_sat": 54,
+    "pct_submit_act": 22,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not added yet."
+  },
+  "scores": {
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      760,
+      780,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      32,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 74650,
+    "books_usd": 0,
+    "room_board_usd": 18514,
+    "other_usd": 2820,
+    "total_coa_usd": 91676,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

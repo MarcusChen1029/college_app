@@ -1,0 +1,98 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UF — Freshman Dates & Deadlines (2026-27)",
+   "url": "https://admissions.ufl.edu/apply/freshman/deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "UF — Freshman How to Apply",
+   "url": "https://admissions.ufl.edu/apply/freshman/",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "UF — Freshman Requirements",
+   "url": "https://admissions.ufl.edu/apply/freshman/requirements",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UF — Freshman International Applicants",
+   "url": "https://admissions.ufl.edu/apply/freshman/international",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UF — Information for International Students (Student Financial Aid and Scholarships)",
+   "url": "https://admissions.ufl.edu/afford/international/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "All first-year students must submit an SAT, ACT or CLT score (Florida Board of Governors regulation 6.002). UF has no test preference; scores may be self-reported at application, official scores due May 1. UF superscores SAT/ACT (ACT Science excluded).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 30,
+  "fee_waiver": true,
+  "supplemental_essays": "Common App personal essay plus the UF Supplement (a few short-answer questions); Honors Program and Innovation Academy applicants write an additional essay.",
+  "notes": "Common App is the only way to apply. International-school applicants submit transcripts (at least three years) and a course-by-course credential evaluation instead of the STARS self-report. The admissions pages do not mention recommendation letters or an interview.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-10-15",
+   "notify": "2026-12-11",
+   "label": "Early Decision (binding)",
+   "notes": "Materials deadline Oct 22. Confirm enrollment by Jan 8 or the decision is cancelled. Outcomes: admit, deny or defer.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-22",
+   "label": "Early Action (non-binding)",
+   "notes": "Materials deadline Nov 8. Confirmation deadline May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-19",
+   "label": "Regular Decision (non-binding)",
+   "notes": "Materials deadline Jan 22. Confirmation deadline May 1 with a $200 non-refundable tuition deposit. Outcomes include waitlist or Pathways (PaCE).",
+   "src": "dates"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "notes": "Students on F-1/F-2/J-1/J-2 or G-series visas are not eligible for federal aid administered by UF; the page says they may be eligible for private or college-awarded scholarships. No international need-aid program is described.",
+  "src": "aid"
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {}
+}

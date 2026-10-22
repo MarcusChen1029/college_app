@@ -1,0 +1,144 @@
+{
+ "sources": {
+  "uc_dates": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Dates & deadlines 2026-27",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fee": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Apply now (application fees & waivers)",
+   "url": "https://admission.universityofcalifornia.edu/apply-now.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_eng": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - English language proficiency",
+   "url": "https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/english-language-proficiency-toefl-ielts.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_test": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - First-year requirements (standardized tests)",
+   "url": "https://admission.universityofcalifornia.edu/counselors/preparing-freshman-students/freshman-requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "uc_fill": {
+   "kind": "admissions_site",
+   "title": "UC Admissions - Filling out the application",
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/filling-out-the-application.html",
+   "accessed": "2026-10-21"
+  },
+  "ucd_exam": {
+   "kind": "admissions_site",
+   "title": "UC Davis - Exam and visa requirements for international applicants",
+   "url": "https://www.ucdavis.edu/admissions/undergraduate/international/exams-visas",
+   "accessed": "2026-10-21"
+  },
+  "ucd_intl": {
+   "kind": "admissions_site",
+   "title": "UC Davis - International student admission",
+   "url": "https://www.ucdavis.edu/admissions/undergraduate/international",
+   "accessed": "2026-10-21"
+  },
+  "ucd_req": {
+   "kind": "admissions_site",
+   "title": "UC Davis - First-year admission requirements",
+   "url": "https://www.ucdavis.edu/admissions/undergraduate/first-year/requirements",
+   "accessed": "2026-10-21"
+  },
+  "ucd_fa": {
+   "kind": "financial_aid_site",
+   "title": "UC Davis Financial Aid - International students",
+   "url": "https://financialaid.ucdavis.edu/undergraduate/apply/international",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "UC Davis no longer considers SAT or ACT scores for admission decisions or scholarship awards.",
+  "src": "uc_test"
+ },
+ "requirements": {
+  "platforms": [
+   "uc_app"
+  ],
+  "app_fee_usd": 80,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "4 Personal Insight Questions (choose 4 of 8)",
+  "notes": "Fee is $80 per campus, $95 for international applicants; fee waivers cover up to four campuses but only for U.S. citizens, permanent residents and AB540-eligible applicants. UC does not require or read letters of recommendation at application. The 4 Personal Insight Questions are the only essays (no campus supplement).",
+  "src": "uc_fee"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "label": "UC application filing period closes",
+   "due": "2026-11-30",
+   "note": "Admission decisions released March 1-31, 2027 (some campuses earlier)",
+   "notes": "No early plans. Application opens August 1, 2026 for fall 2027.",
+   "src": "uc_dates"
+  },
+  {
+   "kind": "deposit",
+   "label": "Statement of Intent to Register (SIR)",
+   "due": "2027-05-01",
+   "src": "uc_dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if you studied in the U.S. fewer than three years and received instruction in a language other than English before that. UC Davis lists TOEFL, IELTS, Duolingo, certain AP/IB exams or transferable college English coursework; minimums are the UC-wide ones. UC notes Davis, UCLA and Santa Barbara may require additional English testing after admission.",
+  "src": "ucd_exam"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Tests taken before January 2026.",
+   "src": "uc_eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Tests taken January 2026 or later (1-6 scale).",
+   "src": "uc_eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS One Skill Retake not accepted.",
+   "src": "uc_eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "uc_eng"
+  }
+ ],
+ "aid": {
+  "notes": "UC Davis financial aid says international students may be eligible for scholarships, private loans and short-term loans, and links to institutional/prestigious scholarships and outside scholarships; it does not describe a need-based program for internationals.",
+  "src": "ucd_fa"
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "B",
+  "engineering": "B",
+  "biology_life_sci": "B",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "business": "No business administration major (Managerial Economics is the closest option).",
+  "nursing": "No undergraduate nursing (Betty Irene Moore School of Nursing is graduate-only)."
+ }
+}

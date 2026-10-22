@@ -1,0 +1,102 @@
+{
+  "slug": "amherst",
+  "name": "Amherst College",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Amherst",
+  "latitude": 42.372459,
+  "longitude": -72.518493,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.amherst.edu/",
+  "admissions_url": "https://www.amherst.edu/admission/",
+  "ipeds_unit_id": 164465,
+  "undergrad_enrollment": 1911,
+  "intl_undergrads": 251,
+  "student_faculty_ratio": 6,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=164465",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?164465",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Amherst College Common Data Set 2025-2026 (Section C)",
+      "url": "https://www.amherst.edu/system/files/C.%20First-Time%20First-Year%20Admission%202025-26_0.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 15819,
+    "admits": 1222,
+    "enrolled": 485,
+    "in_state_applicants": 1061,
+    "in_state_admits": 123,
+    "out_state_applicants": 8412,
+    "out_state_admits": 1007,
+    "intl_applicants": 6346,
+    "intl_admits": 92,
+    "waitlist_offered": 1294,
+    "waitlist_accepted": 740,
+    "waitlist_admitted": 44,
+    "pct_submit_sat": 40,
+    "pct_submit_act": 16,
+    "notes": "CDS C1/C2/C9 (Fall 2025 entering class). The CDS C11/C12 GPA items are blank (school does not track GPA); the C21 early-decision counts are labelled 'Fall 2024' in the form, and C7 marks could not be read reliably, so neither is included. Test-optional, so percentiles describe the 40% (SAT) / 16% (ACT) who submitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1470,
+      1510,
+      1540
+    ],
+    "SAT_ERW": [
+      730,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      730,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      31,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 73830,
+    "books_usd": 0,
+    "room_board_usd": 19260,
+    "other_usd": 1800,
+    "total_coa_usd": 90670,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

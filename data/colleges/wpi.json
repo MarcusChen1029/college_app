@@ -1,0 +1,103 @@
+{
+  "slug": "wpi",
+  "name": "Worcester Polytechnic Institute",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Worcester",
+  "latitude": 42.274853,
+  "longitude": -71.808339,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.wpi.edu/",
+  "admissions_url": "https://www.wpi.edu/admissions/undergraduate",
+  "ipeds_unit_id": 168421,
+  "undergrad_enrollment": 5447,
+  "intl_undergrads": 349,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "other",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=168421",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?168421",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Worcester Polytechnic Institute Common Data Set 2025-26 (PDF)",
+      "url": "https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 12355,
+    "admits": 7647,
+    "enrolled": 1300,
+    "in_state_applicants": 3920,
+    "in_state_admits": 2571,
+    "out_state_applicants": 6735,
+    "out_state_admits": 4414,
+    "intl_applicants": 1700,
+    "intl_admits": 662,
+    "waitlist_offered": 2293,
+    "waitlist_accepted": 980,
+    "waitlist_admitted": 460,
+    "ed_applicants": 397,
+    "ed_admits": 310,
+    "gpa_avg": 3.9,
+    "pct_reporting_gpa": 88,
+    "gpa_distribution": {
+      "4.0": 60,
+      "3.75-3.99": 19,
+      "3.50-3.74": 15,
+      "3.25-3.49": 4,
+      "3.00-3.24": 2,
+      "2.50-2.99": 0,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "Test-optional: the CDS C9 SAT/ACT table (percent submitting and score percentiles) is blank in the PDF, so the SAT/ACT scores stay at the IPEDS baseline. Early action is the main plan (8,882 EA applicants, 6,151 admitted, 858 enrolled in fall 2025). Residency counts are for fall 2025."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 63246,
+    "books_usd": 1200,
+    "room_board_usd": 18900,
+    "other_usd": 1200,
+    "total_coa_usd": 80569,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

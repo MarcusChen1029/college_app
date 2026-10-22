@@ -1,0 +1,103 @@
+{
+  "slug": "uconn",
+  "name": "University of Connecticut",
+  "short_name": null,
+  "state_region": "CT",
+  "city": "Storrs",
+  "latitude": 41.809098,
+  "longitude": -72.249948,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://uconn.edu/",
+  "admissions_url": "https://admissions.uconn.edu/",
+  "ipeds_unit_id": 129020,
+  "undergrad_enrollment": 19835,
+  "intl_undergrads": 1381,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=129020",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?129020",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Connecticut Common Data Set 2025-2026 (PDF)",
+      "url": "https://bpir.media.uconn.edu/wp-content/uploads/sites/3452/2026/08/UConn_CDS_2025_2026_WEB.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 59553,
+    "admits": 32369,
+    "enrolled": 4663,
+    "in_state_applicants": 15633,
+    "in_state_admits": 6337,
+    "out_state_applicants": 38178,
+    "out_state_admits": 22349,
+    "intl_applicants": 5742,
+    "intl_admits": 3683,
+    "waitlist_offered": 4365,
+    "waitlist_accepted": 1158,
+    "waitlist_admitted": 85,
+    "pct_submit_sat": 35,
+    "pct_submit_act": 4,
+    "notes": "Out-of-state figures exclude international. The 2025-26 CDS has no C11/C12 GPA data. C7 factor check boxes could not be read reliably from the PDF text (every row lands in one column), so factors are left blank. CDS C8F: 'test optional; only considered for students who submit and request their submission be considered'."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1260,
+      1350,
+      1420
+    ],
+    "SAT_ERW": [
+      630,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      620,
+      670,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      32
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      27,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 21334,
+    "books_usd": 990,
+    "room_board_usd": 14776,
+    "other_usd": 4330,
+    "total_coa_usd": 40744,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 44002
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "barnard",
+  "name": "Barnard College",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "New York",
+  "latitude": 40.810098,
+  "longitude": -73.963346,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.barnard.edu/",
+  "admissions_url": "https://admissions.barnard.edu/",
+  "ipeds_unit_id": 189097,
+  "undergrad_enrollment": 3264,
+  "intl_undergrads": 508,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=189097",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?189097",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Barnard College Common Data Set 2025-2026",
+      "url": "https://barnard.edu/sites/default/files/2026-09/Barnard_CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10426,
+    "admits": 1048,
+    "enrolled": 702,
+    "waitlist_offered": 2173,
+    "waitlist_accepted": 1644,
+    "waitlist_admitted": 150,
+    "ed_applicants": 1437,
+    "ed_admits": 476,
+    "pct_submit_sat": 38,
+    "pct_submit_act": 16,
+    "notes": "CDS C1/C2/C9/C21 (Fall 2025 entering class); the CDS leaves the residency table, C11 GPA distribution and C12 average GPA blank. Test-optional through the 2027 cycle, so percentiles describe the 38% (SAT) / 16% (ACT) who submitted. ED closes Nov 1."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1480,
+      1510,
+      1540
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      760
+    ],
+    "SAT_MATH": [
+      730,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 73033,
+    "books_usd": 1200,
+    "room_board_usd": 22691,
+    "other_usd": 1830,
+    "total_coa_usd": 93398,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  }
+}

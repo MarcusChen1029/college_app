@@ -1,0 +1,200 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Dartmouth - Apply to Dartmouth (deadlines, required materials)",
+   "url": "https://admissions.dartmouth.edu/apply-dartmouth",
+   "accessed": "2026-10-21"
+  },
+  "testing": {
+   "kind": "admissions_site",
+   "title": "Dartmouth's Testing Guidelines",
+   "url": "https://admissions.dartmouth.edu/apply/testing-policy",
+   "accessed": "2026-10-21"
+  },
+  "english": {
+   "kind": "admissions_site",
+   "title": "Dartmouth - English proficiency FAQ",
+   "url": "https://admissions.dartmouth.edu/glossary-question/if-english-not-my-first-language-am-i-required-submit-language-proficiency-test",
+   "accessed": "2026-10-21"
+  },
+  "fee": {
+   "kind": "admissions_site",
+   "title": "Dartmouth - Application Fee",
+   "url": "https://admissions.dartmouth.edu/glossary-term/application-fee",
+   "accessed": "2026-10-21"
+  },
+  "finaid": {
+   "kind": "financial_aid_site",
+   "title": "Dartmouth - Apply for Financial Aid (deadlines, CSS Profile, FAFSA)",
+   "url": "https://admissions.dartmouth.edu/estimate-your-cost/apply-financial-aid",
+   "accessed": "2026-10-21"
+  },
+  "needblind": {
+   "kind": "admissions_site",
+   "title": "Dartmouth Adopts Need-Blind International Admissions",
+   "url": "https://admissions.dartmouth.edu/news/2022/01/dartmouth-adopts-need-blind-international-admissions",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "SAT or ACT required (reinstated from the Class of 2029). Students attending high school outside the U.S. may instead use 3 AP exams, IB Diploma results, A-Levels, or a standardized national exam. Multiple sittings are superscored; self-reporting allowed, official scores needed before enrolling.",
+  "src": "testing"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "supplemental_essays": "Dartmouth Writing Supplement",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "portfolio": "Optional art portfolio",
+  "app_fee_usd": 85,
+  "fee_waiver": true,
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Also a recommended Peer Recommendation. Alumni interview is optional and not required for first-year applicants (CDS C7 lists the interview as 'considered'). The Apply page lists RD as Jan 1 in the timeline but 'January 2' in one paragraph - confirm. Fee amount from the glossary page, which carries no date. QuestBridge Finalists have fees waived.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "note": "mid-December",
+   "label": "Early Decision",
+   "notes": "Intent to enroll due late December. Page does not name the entering year; dates shown are the current-cycle listing.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "note": "late March or early April",
+   "label": "Regular Decision",
+   "notes": "Timeline says January 1; 'About the Process' text says January 2.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2026-11-01",
+   "label": "Financial aid materials - Early Decision",
+   "src": "finaid"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2027-02-01",
+   "label": "Financial aid materials - Regular Decision",
+   "src": "finaid"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Intent to enroll (RD)",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if your first language is not English and your curriculum has not been delivered in English for at least two years. No minimum scores. TOEFL Essentials and TOEFL MyBest are not accepted; TOEFL iBT Home Edition and IELTS Indicator are accepted.",
+  "src": "english"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "No minimum. 'Most successful applicants' score above 100 for tests taken before 2026-01-21.",
+   "src": "english"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5,
+   "notes": "No minimum. Most successful applicants score 5 or above for tests taken on/after 2026-01-21.",
+   "src": "english"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7,
+   "notes": "No minimum. Most successful applicants score above 7.",
+   "src": "english"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 135,
+   "notes": "No minimum. Most successful applicants score above 135.",
+   "src": "english"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 185,
+   "notes": "No minimum. Most successful applicants score above 185.",
+   "src": "english"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_blind_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Need-blind for international applicants since the Class of 2026; meets 100% of demonstrated need regardless of citizenship. CSS Profile (school code 3351) required for international applicants; the ISFAA is accepted if the Profile fee is a hardship. No merit scholarships are mentioned on the pages read.",
+  "src": "needblind"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code on any official Dartmouth admissions page opened. The page shows 3351 only as the CSS Profile school code; select Dartmouth by name when sending scores.",
+   "src": "finaid"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code found on an official Dartmouth page; select Dartmouth by name.",
+   "src": "testing"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code found on an official Dartmouth undergraduate page.",
+   "src": "english"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code published; send results to Dartmouth by name via IELTS.",
+   "src": "english"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code; share results with Dartmouth from your Duolingo account.",
+   "src": "english"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed among Dartmouth's accepted English tests (TOEFL, IELTS, Duolingo, Cambridge).",
+   "src": "english"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "C",
+  "engineering": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "business": "No undergraduate business major (Tuck is MBA-only).",
+  "nursing": "No nursing program.",
+  "computer_science": "Good undergraduate CS but a smaller research department than peer Ivies.",
+  "engineering": "Thayer School is small; ranked outside the top 40."
+ }
+}

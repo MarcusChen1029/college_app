@@ -1,0 +1,149 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Fordham — How to Apply (first-year deadlines)",
+   "url": "https://www.fordham.edu/undergraduate-admission/apply/",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Fordham — International Students (English proficiency, aid)",
+   "url": "https://www.fordham.edu/undergraduate-admission/international-students/",
+   "accessed": "2026-10-22"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Fordham — Testing Policy",
+   "url": "https://www.fordham.edu/undergraduate-admission/apply/what-were-looking-for/testing-policy/",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT not required; no penalty for not submitting. Optional sections (SAT Writing, ACT Science/Writing) are up to the student. Superscored. To change testing status, do so in the applicant portal by Nov 20 (EA/ED I) or Jan 20 (RD/ED II).",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 80,
+  "interview": "optional_informational",
+  "notes": "Application = Common App, essay, high school transcript, letter of recommendation, $80 fee. Interviews are not required; Fordham accepts partner interviews (Duolingo, InitialView, Vericant) from international applicants, with interview deadlines Nov 15 (EA/ED I) and Feb 15 (RD/ED II). International CSS Profile due Nov 1 (EA/ED I) or Jan 3 (RD/ED II).",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-20",
+   "label": "Early Action (non-binding)",
+   "notes": "Deposit due May 1, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-20",
+   "label": "Early Decision I (binding)",
+   "notes": "Deposit due Jan 15, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-03",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Deposit due May 1, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-03",
+   "notify": "2027-02-15",
+   "label": "Early Decision II (binding)",
+   "notes": "Deposit due Mar 15, 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Students whose first language is not English must submit a test or complete the English Language Proficiency Test Waiver Request Form in the applicant portal after submitting. Official scores must be under 2 years old. Applicants in the NYC area may alternatively take Fordham's ESL placement evaluation (FELT).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Scores prior to January 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Starting January 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 125,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 65,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "Review of non-immigrant international applicants is need aware. Partial merit scholarships up to $25,000 (no extra application, for those not applying for need-based aid). Need-based aid goes to a limited number of first-year fall international students who indicate need on the Common App, can demonstrate a family contribution of at least $50,000/yr, and submit the CSS Profile by the application deadline. Awards stay the same for four years.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2259",
+   "src": "dates"
+  },
+  "act": {
+   "code": "2748",
+   "src": "dates"
+  },
+  "toefl": {
+   "code": "2259",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "D",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school.",
+  "nursing": "No nursing program."
+ }
+}

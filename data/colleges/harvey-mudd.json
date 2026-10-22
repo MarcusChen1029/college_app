@@ -1,0 +1,124 @@
+{
+  "slug": "harvey-mudd",
+  "name": "Harvey Mudd College",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Claremont",
+  "latitude": 34.106515,
+  "longitude": -117.709837,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.hmc.edu/",
+  "admissions_url": "https://www.hmc.edu/admission.html",
+  "ipeds_unit_id": 115409,
+  "undergrad_enrollment": 921,
+  "intl_undergrads": 101,
+  "student_faculty_ratio": 8,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=115409",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?115409",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Harvey Mudd College Common Data Set 2025-2026",
+      "url": "https://www.hmc.edu/institutional-research/wp-content/uploads/sites/42/2026/03/CDS-HMC-2025.2026_shared.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 5217,
+    "admits": 643,
+    "enrolled": 236,
+    "intl_applicants": 1295,
+    "intl_admits": 69,
+    "in_state_applicants": 2291,
+    "in_state_admits": 283,
+    "out_state_applicants": 1631,
+    "out_state_admits": 291,
+    "waitlist_offered": 685,
+    "waitlist_accepted": 439,
+    "waitlist_admitted": 0,
+    "ed_applicants": 594,
+    "ed_admits": 109,
+    "pct_submit_sat": 55,
+    "pct_submit_act": 21,
+    "notes": "CDS C1 totals for the fall 2025 entering class (in-state = California; international enrollees 32). C21: ED I closes 11/15 (notified 12/15), ED II closes 1/5 (notified 2/15). High school GPA is not reported (C11/C12 zero). The CDS lists SAT composite 25th/50th/75th as 1500/1510/1560 as printed (the median is lower than ERW+Math medians would suggest)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1500,
+      1510,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      760,
+      790,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      35,
+      35,
+      36
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      34,
+      35,
+      36
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 73100,
+    "books_usd": 800,
+    "room_board_usd": 23434,
+    "other_usd": 1400,
+    "total_coa_usd": 93131,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

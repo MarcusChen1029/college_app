@@ -1,0 +1,119 @@
+{
+  "slug": "buffalo",
+  "name": "University at Buffalo",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Buffalo",
+  "latitude": 43.000942,
+  "longitude": -78.789458,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.buffalo.edu/",
+  "admissions_url": "https://admissions.buffalo.edu/",
+  "ipeds_unit_id": 196088,
+  "undergrad_enrollment": 20112,
+  "intl_undergrads": 2307,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196088",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?196088",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "title": "University at Buffalo Common Data Set 2025-2026",
+      "url": "https://www.buffalo.edu/content/dam/www/oia/Common-Data-Sets/CDS_2025-2026.pdf",
+      "kind": "cds",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 45637,
+    "admits": 36780,
+    "enrolled": 5155,
+    "in_state_applicants": 36127,
+    "in_state_admits": 28935,
+    "out_state_applicants": 4739,
+    "out_state_admits": 3340,
+    "intl_applicants": 4771,
+    "intl_admits": 4505,
+    "waitlist_offered": 2355,
+    "waitlist_accepted": 857,
+    "waitlist_admitted": 106,
+    "pct_submit_sat": 26.7,
+    "pct_submit_act": 1.9,
+    "pct_reporting_gpa": 92.7,
+    "gpa_distribution": {
+      "4.0": 32,
+      "3.75-3.99": 14,
+      "3.50-3.74": 20,
+      "3.25-3.49": 11,
+      "3.00-3.24": 13,
+      "2.50-2.99": 9,
+      "2.0-2.49": 1
+    },
+    "notes": "Residency split as printed in CDS C1 (in-state 36,127 / out-of-state 4,739 / international 4,771 applicants). No early decision; early action closes Nov 1 with rolling notification (C21/C22). The CDS reports average GPA on a 100-point scale (91.6), not 4.0, so gpa_avg is omitted. SAT composite percentiles were not published (only ERW and Math); mean SAT 649 ERW / 654 Math, mean ACT 29. All applicants may choose to be considered test-optional (C8)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      610,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      610,
+      650,
+      700
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      29,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 11036,
+    "books_usd": 1500,
+    "room_board_usd": 18064,
+    "other_usd": 5322,
+    "total_coa_usd": 31688,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 32466
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "racial_ethnic_status": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

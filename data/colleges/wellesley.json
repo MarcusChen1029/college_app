@@ -1,0 +1,124 @@
+{
+  "slug": "wellesley",
+  "name": "Wellesley College",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Wellesley",
+  "latitude": 42.291554,
+  "longitude": -71.306605,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.wellesley.edu/",
+  "admissions_url": "https://www.wellesley.edu/admission-aid",
+  "ipeds_unit_id": 168218,
+  "undergrad_enrollment": 2300,
+  "intl_undergrads": 307,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=168218",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?168218",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Wellesley College Common Data Set 2025-2026 (PDF)",
+      "url": "https://wellesley-college.files.svdcdn.com/production/administrative-departments/OIR/CDS_2025-2026-FINAL.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8506,
+    "admits": 1258,
+    "enrolled": 576,
+    "in_state_applicants": 698,
+    "in_state_admits": 151,
+    "out_state_applicants": 4676,
+    "out_state_admits": 1000,
+    "intl_applicants": 3132,
+    "intl_admits": 107,
+    "waitlist_offered": 2214,
+    "waitlist_accepted": 1121,
+    "waitlist_admitted": 59,
+    "ed_applicants": 1023,
+    "ed_admits": 301,
+    "pct_submit_sat": 44,
+    "pct_submit_act": 18,
+    "notes": "CDS C1 (women's college). Test-optional. Wellesley did not report GPA (C11/C12). No early action; ED1 and ED2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1500,
+      1540
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      760
+    ],
+    "SAT_MATH": [
+      720,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70144,
+    "books_usd": 800,
+    "room_board_usd": 22296,
+    "other_usd": 1250,
+    "total_coa_usd": 90250,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

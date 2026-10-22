@@ -1,0 +1,126 @@
+{
+  "slug": "rpi",
+  "name": "Rensselaer Polytechnic Institute",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Troy",
+  "latitude": 42.729978,
+  "longitude": -73.676646,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.rpi.edu/",
+  "admissions_url": "https://admissions.rpi.edu/",
+  "ipeds_unit_id": 194824,
+  "undergrad_enrollment": 5714,
+  "intl_undergrads": 409,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=194824",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?194824",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Rensselaer Polytechnic Institute Common Data Set 2025-2026 (PDF on Provost IR page)",
+      "url": "https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 14356,
+    "admits": 9655,
+    "enrolled": 1394,
+    "in_state_applicants": 4319,
+    "in_state_admits": 2917,
+    "out_state_applicants": 8947,
+    "out_state_admits": 6125,
+    "intl_applicants": 1090,
+    "intl_admits": 613,
+    "waitlist_offered": 1008,
+    "waitlist_accepted": 599,
+    "waitlist_admitted": 6,
+    "ed_applicants": 317,
+    "ed_admits": 219,
+    "pct_submit_sat": 53,
+    "pct_submit_act": 13,
+    "gpa_avg": 3.93,
+    "pct_reporting_gpa": 96,
+    "notes": "Fall 2025 entering class. In the CDS the enrolled split by sex/status is mis-entered (977 and 417), so only the total enrolled (1,394) and the residency enrolled counts (530 in-state, 833 out-of-state, 31 international) are used. ED figure (C21) combines the ED plans. SAT 53% / ACT 13% of enrolled submitted scores.",
+    "gpa_distribution": {
+      "4.0": 40,
+      "3.75-3.99": 40,
+      "3.50-3.74": 16,
+      "3.25-3.49": 3,
+      "3.00-3.24": 1,
+      "2.50-2.99": 0,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    }
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1380,
+      1450,
+      1500
+    ],
+    "SAT_ERW": [
+      680,
+      720,
+      750
+    ],
+    "SAT_MATH": [
+      690,
+      730,
+      770
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      33,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 66032,
+    "books_usd": 1380,
+    "room_board_usd": 18560,
+    "other_usd": 1780,
+    "total_coa_usd": 85291,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

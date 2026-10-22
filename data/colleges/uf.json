@@ -1,0 +1,130 @@
+{
+  "slug": "uf",
+  "name": "University of Florida",
+  "short_name": null,
+  "state_region": "FL",
+  "city": "Gainesville",
+  "latitude": 29.64629,
+  "longitude": -82.347911,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ufl.edu/",
+  "admissions_url": "https://www.admissions.ufl.edu/",
+  "ipeds_unit_id": 134130,
+  "undergrad_enrollment": 35629,
+  "intl_undergrads": 919,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=134130",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?134130",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Florida Common Data Set 2025-2026 (v8, Aug 2026)",
+      "url": "https://data-apps.ir.aa.ufl.edu/public/cds/CDS%202025-26_v8_08.14.2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 90523,
+    "admits": 18403,
+    "enrolled": 7619,
+    "in_state_applicants": 42172,
+    "in_state_admits": 9387,
+    "out_state_applicants": 39420,
+    "out_state_admits": 8086,
+    "intl_applicants": 8931,
+    "intl_admits": 930,
+    "waitlist_offered": 3196,
+    "waitlist_accepted": 2737,
+    "waitlist_admitted": 1,
+    "pct_submit_sat": 78,
+    "pct_submit_act": 39,
+    "gpa_avg": 3.9,
+    "pct_reporting_gpa": 95,
+    "gpa_distribution": {
+      "4.0": 58,
+      "3.75-3.99": 38,
+      "3.50-3.74": 4
+    },
+    "notes": "CDS C1/C2/C9/C11/C12, fall 2025 entering class. GPA bands below 3.50 are each reported as under 1% and omitted here. CDS C21/C22 list an early decision plan (10/15/2026, notified 12/11/2026) and early action (11/1, notified 1/23); ED counts for the fall 2025 class were left blank. SAT or ACT required (CLT also accepted)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1330,
+      1410,
+      1490
+    ],
+    "SAT_ERW": [
+      670,
+      700,
+      740
+    ],
+    "SAT_MATH": [
+      660,
+      710,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      32,
+      33
+    ],
+    "ACT_ENGLISH": [
+      28,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      29,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 6381,
+    "books_usd": 825,
+    "room_board_usd": 12615,
+    "other_usd": 4360,
+    "total_coa_usd": 23197,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 30886
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "NC"
+  }
+}

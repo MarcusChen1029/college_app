@@ -1,0 +1,122 @@
+{
+  "slug": "gwu",
+  "name": "George Washington University",
+  "short_name": null,
+  "state_region": "DC",
+  "city": "Washington",
+  "latitude": 38.89923,
+  "longitude": -77.048363,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.gwu.edu/",
+  "admissions_url": "https://www.gwu.edu/admissions-aid",
+  "ipeds_unit_id": 131469,
+  "undergrad_enrollment": 11182,
+  "intl_undergrads": 804,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "George Washington University Common Data Set 2025-2026 (PDF)",
+      "url": "https://irp.gwu.edu/sites/g/files/zaxdzs6056/files/2026-08/CDS-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=131469",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?131469",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 27034,
+    "admits": 12741,
+    "enrolled": 2405,
+    "in_state_applicants": 482,
+    "in_state_admits": 154,
+    "out_state_applicants": 21934,
+    "out_state_admits": 10785,
+    "intl_applicants": 3804,
+    "intl_admits": 1380,
+    "waitlist_offered": 6084,
+    "waitlist_accepted": 2858,
+    "waitlist_admitted": 616,
+    "pct_submit_sat": 36.51,
+    "pct_submit_act": 13.89,
+    "notes": "CDS C9 percentages are of enrolled first-years. GPA (C11/C12) and early-decision counts (C21) were left blank in the CDS. ED I closes 11/1 (decision 12/15); ED II closes 1/5 (decision 2/1). CDS C8A (Fall 2027) marks SAT/ACT as 'required for some' applicants."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1310,
+      1390,
+      1450
+    ],
+    "SAT_ERW": [
+      690,
+      720,
+      750
+    ],
+    "SAT_MATH": [
+      670,
+      700,
+      740
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      32,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      27,
+      30,
+      32
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70170,
+    "books_usd": 1450,
+    "room_board_usd": 17600,
+    "other_usd": 1700,
+    "total_coa_usd": 87253,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

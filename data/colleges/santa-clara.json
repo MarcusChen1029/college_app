@@ -1,0 +1,116 @@
+{
+  "slug": "santa-clara",
+  "name": "Santa Clara University",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Santa Clara",
+  "latitude": 37.348362,
+  "longitude": -121.93784,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.scu.edu/",
+  "admissions_url": "https://www.scu.edu/admission",
+  "ipeds_unit_id": 122931,
+  "undergrad_enrollment": 6552,
+  "intl_undergrads": 487,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "quarter",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Santa Clara University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.scu.edu/media/offices/institutional-research/ff/common-data-set/rba13-Common_Data_Set_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=122931",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?122931",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 20032,
+    "admits": 9592,
+    "enrolled": 1641,
+    "in_state_applicants": 10205,
+    "in_state_admits": 4923,
+    "out_state_applicants": 7213,
+    "out_state_admits": 3921,
+    "intl_applicants": 2604,
+    "intl_admits": 745,
+    "waitlist_offered": 405,
+    "waitlist_accepted": 268,
+    "waitlist_admitted": 263,
+    "ed_applicants": 611,
+    "ed_admits": 467,
+    "pct_submit_sat": 29.0,
+    "pct_submit_act": 9.0,
+    "gpa_avg": 3.72,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 10.43,
+      "3.75-3.99": 43.42,
+      "3.50-3.74": 28.6,
+      "3.25-3.49": 13.41,
+      "3.00-3.24": 3.41,
+      "2.50-2.99": 0.73,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C9 percentages are of enrolled first-years. ED counts are as printed in C21, which the CDS template labels 'Fall 2024 entering class'. ED I closes 11/1 (decision 12/31); ED II 1/7 (2/15). The C7 importance checkboxes and the ACT English range did not survive in the published PDF, so they are omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1330,
+      1410,
+      1470
+    ],
+    "SAT_ERW": [
+      660,
+      700,
+      730
+    ],
+    "SAT_MATH": [
+      660,
+      710,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      29,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      null,
+      null,
+      null
+    ],
+    "ACT_MATH": [
+      27,
+      31,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 63513,
+    "books_usd": 1089,
+    "room_board_usd": 19446,
+    "other_usd": 4602,
+    "total_coa_usd": 84261,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "slug": "tufts",
+  "name": "Tufts University",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Medford",
+  "latitude": 42.40855,
+  "longitude": -71.118293,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.tufts.edu/",
+  "admissions_url": "https://admissions.tufts.edu/",
+  "ipeds_unit_id": 168148,
+  "undergrad_enrollment": 7061,
+  "intl_undergrads": 887,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=168148",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?168148",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Tufts University Common Data Set 2025-2026 (pdf)",
+      "url": "https://provost.tufts.edu/institutionalresearch/wp-content/uploads/sites/5/CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 33415,
+    "admits": 3613,
+    "enrolled": 1765,
+    "in_state_applicants": 4733,
+    "in_state_admits": 659,
+    "out_state_applicants": 19414,
+    "out_state_admits": 2422,
+    "intl_applicants": 9260,
+    "intl_admits": 531,
+    "waitlist_offered": 3061,
+    "waitlist_accepted": 1193,
+    "waitlist_admitted": 71,
+    "ed_applicants": 3344,
+    "ed_admits": 1071,
+    "pct_submit_sat": 42,
+    "pct_submit_act": 16,
+    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C2, C9, C21). Totals are from the residency table; the gender table in the same CDS gives 33,395 applicants, 3,612 admits and 1,764 enrolled. Tufts left the GPA items (C11, C12) blank. Test-optional: SAT/ACT percentiles describe the 42% (SAT) and 16% (ACT) who submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1460,
+      1500,
+      1520
+    ],
+    "SAT_ERW": [
+      720,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      730,
+      760,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      31,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 73616,
+    "books_usd": 1000,
+    "room_board_usd": 19566,
+    "other_usd": 1846,
+    "total_coa_usd": 92054,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

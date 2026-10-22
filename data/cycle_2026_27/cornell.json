@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Cornell Admissions - First-Year Applicants (deadlines, requirements)",
+   "url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Cornell Admissions - Standardized Testing Policy and English Language Proficiency",
+   "url": "https://admissions.cornell.edu/policies/standardized-testing-policy",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Cornell Financial Aid - First-Year and Transfer Students, International",
+   "url": "https://finaid.cornell.edu/apply-aid/prospective-international-applicants",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "First-year applicants must submit SAT or ACT scores (science section of ACT not required). Self-reporting allowed; official scores required on enrollment.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "app_fee_usd": 85,
+  "fee_waiver": true,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "notes": "Cornell supplement includes essays specific to the college/school applied to. International applicants seeking Cornell grant aid must file the CSS Profile when they apply. The deadlines page shows month/day only (no year).",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (binding)",
+   "notes": "Application, fee/waiver and any portfolio or design supplement due Nov 1; all other required materials due Nov 13. Decisions mid-December (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-02",
+   "label": "Regular Decision",
+   "notes": "Application, fee/waiver and any portfolio or design supplement due Jan 2; all other required materials due Jan 19. Decisions late March (no exact date published).",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "International aid application (ED)",
+   "notes": "Deadline for international students; missing it forfeits aid eligibility for the whole undergraduate career.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-02",
+   "label": "International aid application (RD)",
+   "notes": "Deadline for international students; missing it forfeits aid eligibility for the whole undergraduate career.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No exam needed if English is your native language or English has been the primary language of instruction for the past four years. Scores can be self-reported on the Common App; official scores required on enrollment.",
+  "src": "test"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Exams taken before January 2026. Cornell lists these as the scores to be most competitive.",
+   "src": "test"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5.0,
+   "rec": 5.5,
+   "notes": "Exams taken January 2026 or later (1-6 scale): minimum 5.0, recommended 5.5.",
+   "src": "test"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.5,
+   "src": "test"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "src": "test"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 191,
+   "notes": "C1 Advanced or C2 Proficiency.",
+   "src": "test"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "International admission is need-aware. Cornell meets 100% of admitted international undergraduates' demonstrated need (grants, work-study and student loans). Apply for aid at the time of admission application with the CSS Profile (code 2098).",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2098",
+   "src": "test"
+  },
+  "act": {
+   "code": "2726",
+   "src": "test"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "A",
+  "engineering": "A",
+  "business": "A",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "A",
+  "math_physics": "A",
+  "humanities": "A",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "computer_science": "Top-10 CS program; just outside the top-5 group.",
+  "engineering": "Top-10 engineering college.",
+  "business": "Dyson (applied economics & management) and Nolan (hotel administration) are top-15 undergraduate business programs.",
+  "biology_life_sci": "Top-10 life sciences (very strong in agriculture and ecology).",
+  "pre_med": "Strong pre-med outcomes and research access; Weill Cornell Medicine affiliation.",
+  "economics": "Top-15 economics department.",
+  "math_physics": "Top-15 mathematics and physics.",
+  "humanities": "Top-15 humanities departments.",
+  "arts_design": "College of Architecture, Art and Planning has a top-ranked undergraduate architecture program.",
+  "nursing": "No nursing program."
+ }
+}

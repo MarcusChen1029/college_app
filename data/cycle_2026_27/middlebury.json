@@ -1,0 +1,150 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Middlebury — Application Instructions and Deadlines",
+   "url": "https://www.middlebury.edu/college/admissions/application-instructions-and-deadlines",
+   "accessed": "2026-10-21"
+  },
+  "counselor": {
+   "kind": "admissions_site",
+   "title": "Middlebury — Counselor Information (application fee)",
+   "url": "https://www.middlebury.edu/college/admissions/counselor-information",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Middlebury — Apply for Aid: First-Year and Transfer Students",
+   "url": "https://www.middlebury.edu/student-financial-services/apply-aid/first-year-and-transfer-students",
+   "accessed": "2026-10-21"
+  },
+  "aid_home": {
+   "kind": "financial_aid_site",
+   "title": "Middlebury — Admissions: Financial Aid",
+   "url": "https://www.middlebury.edu/college/admissions/financial-aid",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional. Scores may be self-reported at application; ACT science section not required.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": false,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "css_profile_required": true,
+  "notes": "Application is free beginning with the 2026-27 cycle. Use the essay prompts on the Common App/Coalition application; no supplemental essay. Request at least two teacher recommendations. Alumni interview is optional and may be requested after applying (not guaranteed); Glimpse video is the alternative; InitialView/Vericant interviews (paid) also accepted. Applicants may state a preference for September entry, February entry (a 'Feb') or either. CSS Profile (code 3526) required of aid applicants; international applicants must file it online and apply for aid at the time of admission application.",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-02",
+   "label": "Early Decision I",
+   "notes": "Decision mid-December (no exact date published). Aid forms due Nov 15 (CSS Profile).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "label": "Early Decision II",
+   "notes": "Decision mid-February (no exact date published). Admissions page lists Jan 4; the financial aid page lists Jan 3, 2027 for the aid forms.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "label": "Regular Decision",
+   "notes": "Decision late March (no exact date published). Aid forms due Feb 1, 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No English proficiency score is needed if your native language is English or your high-school classes were taught entirely in English for the last 3-4 years. All other applicants need verifiable TOEFL iBT, Duolingo English Test, IELTS or Cambridge English results. The page calls the scores below 'recommended' minimums.",
+  "src": "dates"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 105,
+   "notes": "105 on the old 0-120 scale (tests taken before 2026-01-21). Recommended minimum, not a hard cut-off.",
+   "src": "dates"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "notes": "5.5 on the new 1-6 scale. Recommended minimum, not a hard cut-off.",
+   "src": "dates"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "Recommended minimum, not a hard cut-off.",
+   "src": "dates"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Recommended minimum, not a hard cut-off.",
+   "src": "dates"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "notes": "Cambridge English C1 Advanced is the recommended minimum level.",
+   "src": "dates"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "Need-aware in admission of international students; international students seeking aid must apply for it when they apply for admission. Middlebury meets 100% of demonstrated need for admitted students. CSS Profile (code 3526) required; the ISFAA and paper CSS Profile are not accepted. The pages checked describe need-based aid only; merit awards not confirmed.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code found on the pages checked. The aid page lists CSS Profile code 3526 and FAFSA code 003691.",
+   "src": "aid"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code found on the pages checked.",
+   "src": "dates"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "humanities": "Languages and literature are especially strong.",
+  "engineering": "No engineering (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

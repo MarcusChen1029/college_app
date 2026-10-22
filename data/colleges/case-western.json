@@ -1,0 +1,133 @@
+{
+  "slug": "case-western",
+  "name": "Case Western Reserve University",
+  "short_name": null,
+  "state_region": "OH",
+  "city": "Cleveland",
+  "latitude": 41.507419,
+  "longitude": -81.609596,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.case.edu/",
+  "admissions_url": "https://admission.case.edu/",
+  "ipeds_unit_id": 201645,
+  "undergrad_enrollment": 6437,
+  "intl_undergrads": 719,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=201645",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?201645",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "title": "Case Western Reserve University Common Data Set 2025-26",
+      "url": "https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf",
+      "kind": "cds",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 39332,
+    "admits": 13890,
+    "enrolled": 1663,
+    "in_state_applicants": 3596,
+    "in_state_admits": 972,
+    "out_state_applicants": 24624,
+    "out_state_admits": 10558,
+    "intl_applicants": 11112,
+    "intl_admits": 2360,
+    "waitlist_offered": 9168,
+    "waitlist_admitted": 688,
+    "ed_applicants": 1053,
+    "ed_admits": 263,
+    "pct_submit_sat": 52,
+    "pct_submit_act": 15,
+    "gpa_avg": 3.78,
+    "pct_reporting_gpa": 92.0,
+    "gpa_distribution": {
+      "4.0": 16.4,
+      "3.75-3.99": 48.2,
+      "3.50-3.74": 25.7,
+      "3.25-3.49": 7.7,
+      "3.00-3.24": 1.7,
+      "2.50-2.99": 0.3
+    },
+    "notes": "Enrolled count by residency: 210 in-state, 1,333 out-of-state, 120 international. ED (11/1 closing, 12/5 notification per CDS) and EA (11/1, 12/21) both offered; ED counts are for the Fall 2025 entering class. Waitlist: number accepting a place was left blank in the CDS. GPA distribution is the 'all enrolled students' column. Tests are considered if submitted, not required (C8A)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1440,
+      1490,
+      1530
+    ],
+    "SAT_ERW": [
+      710,
+      730,
+      760
+    ],
+    "SAT_MATH": [
+      730,
+      760,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      31,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 69270,
+    "books_usd": 1200,
+    "room_board_usd": 19514,
+    "other_usd": 2200,
+    "total_coa_usd": 88326,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "VI",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

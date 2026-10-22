@@ -1,0 +1,122 @@
+{
+  "slug": "washu",
+  "name": "Washington University in St Louis",
+  "short_name": null,
+  "state_region": "MO",
+  "city": "St. Louis",
+  "latitude": 38.647929,
+  "longitude": -90.310604,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://washu.edu/",
+  "admissions_url": "https://admissions.washu.edu/",
+  "ipeds_unit_id": 179867,
+  "undergrad_enrollment": 7857,
+  "intl_undergrads": 711,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=179867",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?179867",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Washington University in St. Louis Common Data Set 2025-2026 (PDF)",
+      "url": "https://washu.edu/app/uploads/2026/06/2025-2026-WashU-CDS.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 33283,
+    "admits": 3968,
+    "enrolled": 1961,
+    "in_state_applicants": 2017,
+    "in_state_admits": 390,
+    "out_state_applicants": 23436,
+    "out_state_admits": 3003,
+    "intl_applicants": 7830,
+    "intl_admits": 575,
+    "waitlist_accepted": 3865,
+    "waitlist_admitted": 327,
+    "ed_applicants": 4934,
+    "ed_admits": 1333,
+    "pct_submit_sat": 32,
+    "pct_submit_act": 29,
+    "notes": "CDS 2025-26 (fall 2025 entering class). WashU left high school GPA (C11/C12) blank and the waitlist 'offered' count blank; 3,865 is the number accepting a waitlist place."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1500,
+      1530,
+      1550
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      760
+    ],
+    "SAT_MATH": [
+      760,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      31,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 69594,
+    "books_usd": 1357,
+    "room_board_usd": 23338,
+    "other_usd": 3706,
+    "total_coa_usd": 92523,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "extracurriculars": "I",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "I",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

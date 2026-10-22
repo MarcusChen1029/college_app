@@ -1,0 +1,124 @@
+{
+  "slug": "usc",
+  "name": "University of Southern California",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Los Angeles",
+  "latitude": 34.021281,
+  "longitude": -118.284169,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.usc.edu/",
+  "admissions_url": "https://admission.usc.edu/",
+  "ipeds_unit_id": 123961,
+  "undergrad_enrollment": 20443,
+  "intl_undergrads": 2715,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=123961",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?123961",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Southern California Common Data Set 2025-2026 (pdf)",
+      "url": "https://oir.usc.edu/wp-content/uploads/sites/3/2026/10/CDS_2025-26_FINAL.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 83488,
+    "admits": 9345,
+    "enrolled": 3759,
+    "in_state_applicants": 32499,
+    "in_state_admits": 3692,
+    "out_state_applicants": 34374,
+    "out_state_admits": 3378,
+    "intl_applicants": 16615,
+    "intl_admits": 2275,
+    "pct_submit_sat": 33,
+    "pct_submit_act": 12,
+    "gpa_avg": 3.85,
+    "gpa_distribution": {
+      "4.0": 28.2,
+      "3.75-3.99": 52.0,
+      "3.50-3.74": 14.3,
+      "3.25-3.49": 3.5,
+      "3.00-3.24": 1.1,
+      "2.50-2.99": 0.7,
+      "2.0-2.49": 0.2
+    },
+    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C9, C11, C12). The CDS reports no early decision plan and no wait-list policy for 2025; USC's admissions site now lists ED and EA for the 2026-27 cycle. GPA distribution is the all-enrolled-students column. Test-optional: SAT/ACT percentiles describe the 33% (SAT) and 12% (ACT) who submitted scores. ACT English percentiles are blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1470,
+      1510,
+      1540
+    ],
+    "SAT_ERW": [
+      720,
+      740,
+      760
+    ],
+    "SAT_MATH": [
+      740,
+      780,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      30,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 75162,
+    "books_usd": 650,
+    "room_board_usd": 20817,
+    "other_usd": 2006,
+    "total_coa_usd": 95048,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

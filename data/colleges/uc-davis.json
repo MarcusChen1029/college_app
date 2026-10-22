@@ -1,0 +1,102 @@
+{
+  "slug": "uc-davis",
+  "name": "University of California-Davis",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Davis",
+  "latitude": 38.539667,
+  "longitude": -121.749567,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://ucdavis.edu/",
+  "admissions_url": "https://ucdavis.edu/admissions/",
+  "ipeds_unit_id": 110644,
+  "undergrad_enrollment": 32253,
+  "intl_undergrads": 4145,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110644",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110644",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UC Davis Common Data Set 2025-2026",
+      "url": "https://aggiedata.ucdavis.edu/sites/g/files/dgvnsk1841/files/media/documents/CDS_UCD_0.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 102988,
+    "admits": 45674,
+    "enrolled": 6810,
+    "in_state_applicants": 68593,
+    "in_state_admits": 25473,
+    "out_state_applicants": 13149,
+    "out_state_admits": 8315,
+    "intl_applicants": 21246,
+    "intl_admits": 11886,
+    "waitlist_offered": 17582,
+    "waitlist_accepted": 9747,
+    "waitlist_admitted": 3758,
+    "gpa_avg": 4.03,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 66.14,
+      "3.75-3.99": 23.08,
+      "3.50-3.74": 8.4,
+      "3.25-3.49": 1.91,
+      "3.00-3.24": 0.43,
+      "2.50-2.99": 0.04,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. C1 by-sex enrolled total is 6,810; the residency table totals 6,824 (inconsistent in the source). C9 test-score percentiles are blank (UC test-blind). Reported GPA average of 4.03 is a UC-weighted GPA (above a 4.0 scale)."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 17346,
+    "books_usd": 1463,
+    "room_board_usd": 20437,
+    "other_usd": 6962,
+    "total_coa_usd": 43191,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 54948
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "I",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

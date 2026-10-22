@@ -8,8 +8,9 @@ general and subject **tiers (S/A/B/C/D)**, official **Common Data Set (CDS)** st
 GPA average + band distribution, admit rates incl. ED/international), **ED/EA/REA/RD deadlines**,
 **English test requirements** (TOEFL old 0–120 and new 1–6 scale, IELTS, Duolingo, PTE, Cambridge),
 test policy, application requirements, cost & international aid, how majors are admitted, and a
-**source URL for every fact**. Demo = 10 colleges: MIT, Stanford, Harvard, CMU, UC Berkeley, Michigan,
-Georgia Tech, UIUC, NYU, Purdue. Plan: all US colleges next, then UK/CA/AU.
+**source URL for every fact**. 100 popular US colleges are loaded (the original 10 demo colleges plus 90 added
+2026-10-22: Ivies and other top privates, UCs and major flagships, popular privates, top liberal-arts colleges).
+Plan: all US colleges next, then UK/CA/AU.
 
 ## Stack & services
 - **Supabase** project `college-tracker`, ref `eyvmtaggayqizllaseiu` (ap-northeast-1). Org is on the free plan.
@@ -26,8 +27,13 @@ Georgia Tech, UIUC, NYU, Purdue. Plan: all US colleges next, then UK/CA/AU.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
     signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
   - Fit labels: `web/lib/fit.ts` (uses the international admit rate when the student is international). GPA percentile estimate: `web/lib/gpa.ts`.
-- **Data pipeline:** `data/colleges/<slug>.json` (CDS) + `data/cycle_2026_27.json` (current cycle, tiers, tier_notes,
-  `_tier_rules`) → `python3 scripts/build_seed.py` (validates) → `supabase/seed/10_colleges.sql` (idempotent: deletes + reinserts those colleges).
+- **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
+  + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
+  or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every
+  DB enum) → `supabase/seed/10_colleges.sql` (idempotent: deletes + reinserts those colleges).
+  - The full seed's leading DELETE cascades to students' `student_colleges` rows. To add NEW colleges, build insert-only:
+    `build_seed.py --insert-only --only slug1,slug2 --out file.sql`. To change an existing college, prefer a targeted
+    UPDATE patch in `supabase/patches/` over re-seeding it.
 
 ## Commands
 ```bash
@@ -48,7 +54,14 @@ python3 scripts/build_seed.py               # after editing data/*.json
   program in that field. Always write a reason in `tier_notes`.
 - Commit messages: conventional style (`feat:`, `fix:`, `data:`, `docs:`).
 
-## Current status (2026-10-20)
+## Current status (2026-10-22)
+100 colleges live in Supabase (row counts verified against the local data). Baseline-only colleges (IPEDS fall 2023,
+no CDS SAT total/GPA/ED yet): arizona, brown, cu-boulder, fordham, johns-hopkins, miami, ohio-state, pomona.
+UConn has no 2026-27 deadlines (its admissions site was down). New colleges without a short_name show IPEDS names
+(e.g. "University of California-Riverside"). Temporary table `public._seed_chunks` (used to load the seed; locked,
+no access for anon/authenticated) can be dropped.
+
+### Earlier status (2026-10-20)
 Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my-list/account),
 sign-in + synced list + checklist, reminder function + cron. All SQL patches have been run on the live DB.
 
@@ -63,6 +76,6 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 1. Help the owner verify the Vercel fix and Google sign-in end to end (Google provider must be enabled in Supabase first; see `DEPLOY.md` §3).
 2. Add a friendly error/config page: when env vars are missing, show a clear message instead of the generic error
    (e.g. check in `app/layout.tsx` and add `app/error.tsx`).
-3. Fill data gaps: Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
+3. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
 4. Phase 3: bulk-import base rows for all US colleges from College Scorecard / IPEDS (name, location, size, admit rate,
    SAT ranges, cost), marked as such. CDS details can then be added school by school.

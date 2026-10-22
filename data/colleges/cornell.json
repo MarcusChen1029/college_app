@@ -1,0 +1,129 @@
+{
+  "slug": "cornell",
+  "name": "Cornell University",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Ithaca",
+  "latitude": 42.4472,
+  "longitude": -76.483084,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.cornell.edu/",
+  "admissions_url": "https://admissions.cornell.edu/",
+  "ipeds_unit_id": 190415,
+  "undergrad_enrollment": 15995,
+  "intl_undergrads": 1528,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190415",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?190415",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Cornell University Common Data Set 2025-2026 (xlsx)",
+      "url": "https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 72523,
+    "admits": 6077,
+    "enrolled": 3827,
+    "in_state_applicants": 12978,
+    "in_state_admits": 1720,
+    "out_state_applicants": 40979,
+    "out_state_admits": 3693,
+    "intl_applicants": 18566,
+    "intl_admits": 664,
+    "waitlist_offered": 9720,
+    "waitlist_accepted": 6598,
+    "waitlist_admitted": 254,
+    "ed_applicants": 10057,
+    "ed_admits": 1889,
+    "pct_submit_sat": 43,
+    "pct_submit_act": 13,
+    "notes": "Fall 2025 entering class. intl = CDS 'nonresidents'. Cornell does not report GPA (C11/C12 blank). C21 ED counts read from the CDS-C sheet (the xlsx Answer Sheet tab misaligns them)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1490,
+      1530,
+      1550
+    ],
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      770,
+      790,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      32,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 72270,
+    "books_usd": 1216,
+    "room_board_usd": 20574,
+    "other_usd": 2208,
+    "total_coa_usd": 92093,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "required",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT required to be considered."
+  }
+}

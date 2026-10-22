@@ -1,0 +1,81 @@
+{
+  "slug": "fordham",
+  "name": "Fordham University",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Bronx",
+  "latitude": 40.859354,
+  "longitude": -73.882705,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.fordham.edu/",
+  "admissions_url": "https://www.fordham.edu/admissions/",
+  "ipeds_unit_id": 191241,
+  "undergrad_enrollment": 10512,
+  "intl_undergrads": 799,
+  "student_faculty_ratio": 14,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=191241",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?191241",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 43663,
+    "admits": 24573,
+    "enrolled": 2426,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 9,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not added yet."
+  },
+  "scores": {
+    "SAT_ERW": [
+      670,
+      700,
+      730
+    ],
+    "SAT_MATH": [
+      660,
+      700,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      32,
+      33
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 67897,
+    "books_usd": 1590,
+    "room_board_usd": 25200,
+    "other_usd": 3644,
+    "total_coa_usd": 85904,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

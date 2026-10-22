@@ -1,0 +1,122 @@
+{
+  "slug": "georgetown",
+  "name": "Georgetown University",
+  "short_name": null,
+  "state_region": "DC",
+  "city": "Washington",
+  "latitude": 38.908809,
+  "longitude": -77.073463,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.georgetown.edu/",
+  "admissions_url": "https://uadmissions.georgetown.edu/",
+  "ipeds_unit_id": 131496,
+  "undergrad_enrollment": 7569,
+  "intl_undergrads": 1010,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=131496",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?131496",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Georgetown University Common Data Set 2025-2026 (PDF)",
+      "url": "https://georgetown.box.com/s/0r8akn4cbm52zjkll6i7uttlb9k36px2",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 26822,
+    "admits": 3618,
+    "enrolled": 1589,
+    "in_state_applicants": 243,
+    "in_state_admits": 48,
+    "out_state_applicants": 22653,
+    "out_state_admits": 3244,
+    "intl_applicants": 3926,
+    "intl_admits": 326,
+    "waitlist_offered": 2672,
+    "waitlist_accepted": 2043,
+    "waitlist_admitted": 356,
+    "pct_submit_sat": 78,
+    "pct_submit_act": 32,
+    "notes": "CDS 2025-26 (fall 2025 entering class). No Early Decision plan (restrictive early action only). 'In-state' is the CDS in-state column (District of Columbia). High school GPA (C11/C12) was not reported. Source file listed on Georgetown's Office of Assessment and Decision Support CDS page."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1405,
+      1480,
+      1530
+    ],
+    "SAT_ERW": [
+      710,
+      750,
+      760
+    ],
+    "SAT_MATH": [
+      700,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 71338,
+    "books_usd": 1200,
+    "room_board_usd": 21202,
+    "other_usd": 2752,
+    "total_coa_usd": 92563,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

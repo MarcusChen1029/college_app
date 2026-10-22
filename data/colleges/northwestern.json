@@ -1,0 +1,121 @@
+{
+  "slug": "northwestern",
+  "name": "Northwestern University",
+  "short_name": null,
+  "state_region": "IL",
+  "city": "Evanston",
+  "latitude": 42.050356,
+  "longitude": -87.679858,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.northwestern.edu/",
+  "admissions_url": "https://www.northwestern.edu/admissions/",
+  "ipeds_unit_id": 147767,
+  "undergrad_enrollment": 9201,
+  "intl_undergrads": 1065,
+  "student_faculty_ratio": 6,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=147767",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?147767",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Northwestern University Common Data Set 2025-2026 (pdf)",
+      "url": "https://www.enrollment.northwestern.edu/data/2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 52676,
+    "admits": 3933,
+    "enrolled": 2139,
+    "waitlist_admitted": 167,
+    "ed_applicants": 5939,
+    "ed_admits": 1212,
+    "pct_submit_sat": 48,
+    "pct_submit_act": 25,
+    "notes": "Fall 2025 entering class. Admits include wait-listed students later admitted. Residency split, waitlist offered/accepted and GPA (C11/C12) are blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1520,
+      1540,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      770,
+      790,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      35,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70589,
+    "books_usd": 1539,
+    "room_board_usd": 21975,
+    "other_usd": 3840,
+    "total_coa_usd": 94854,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted."
+  }
+}

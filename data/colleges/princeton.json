@@ -1,0 +1,130 @@
+{
+  "slug": "princeton",
+  "name": "Princeton University",
+  "short_name": null,
+  "state_region": "NJ",
+  "city": "Princeton",
+  "latitude": 40.348732,
+  "longitude": -74.659365,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.princeton.edu/",
+  "admissions_url": null,
+  "ipeds_unit_id": 186131,
+  "undergrad_enrollment": 5709,
+  "intl_undergrads": 721,
+  "student_faculty_ratio": 5,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186131",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?186131",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Princeton University Common Data Set 2025-2026 (PDF)",
+      "url": "https://ir.princeton.edu/document/606",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 42303,
+    "admits": 1868,
+    "enrolled": 1408,
+    "in_state_applicants": 4602,
+    "in_state_admits": 229,
+    "out_state_applicants": 27134,
+    "out_state_admits": 1398,
+    "intl_applicants": 10567,
+    "intl_admits": 241,
+    "waitlist_offered": 1370,
+    "waitlist_accepted": 1086,
+    "waitlist_admitted": 36,
+    "pct_submit_sat": 60,
+    "pct_submit_act": 20,
+    "gpa_avg": 3.96,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 72,
+      "3.75-3.99": 24,
+      "3.50-3.74": 3,
+      "3.25-3.49": 1
+    },
+    "notes": "CDS Fall 2025 entering class. Single-choice early action only (no binding ED). GPA distribution is for all enrolled students (C11). Applicants include 18 of unknown sex. Test-optional for the 2026-27 cycle; testing required again from 2027-28."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1490,
+      1530,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      780
+    ],
+    "SAT_MATH": [
+      760,
+      790,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      35,
+      36
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 65510,
+    "books_usd": 1050,
+    "room_board_usd": 21170,
+    "other_usd": 3950,
+    "total_coa_usd": 87888,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

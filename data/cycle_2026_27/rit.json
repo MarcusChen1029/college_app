@@ -1,0 +1,160 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "RIT Admissions - First-Year Undergraduate Application (deadlines, checklist, test-optional)",
+   "url": "https://www.rit.edu/admissions/first-year-application",
+   "accessed": "2026-10-21"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "RIT Admissions - Undergraduate Admissions FAQs",
+   "url": "https://www.rit.edu/admissions/undergraduate-faqs",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "RIT Admissions - Undergraduate International Student FAQs (English requirements, scholarships)",
+   "url": "https://www.rit.edu/admissions/international/undergraduate-faqs",
+   "accessed": "2026-10-21"
+  },
+  "grants": {
+   "kind": "financial_aid_site",
+   "title": "RIT/NTID Need-Based Grants",
+   "url": "https://www.rit.edu/admissions/aid/need-based",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "RIT is test-optional for all undergraduate programs; SAT/ACT is superscored if submitted. STEM applicants submitting ACT are advised to include the optional ACT Science section. International applicants are encouraged to submit SAT/ACT for scholarship review.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": false,
+  "css_profile_required": false,
+  "notes": "Apply via the Common App or the free-standing RIT Application. A single essay is required; no supplemental essays unless applying to the Honors Program or Individualized Study BS. Minimum 1 recommendation letter (school counselor preferred, teacher letters welcome; up to 3-5 considered). Art/design/film programs require a portfolio. Fee waivers for hardship and military. Interview requirement not found on pages checked. The site does not state the year for each deadline column; the page also advertises Fall 2027 for Early Decision 1 / Early Action, so the dates are treated as the fall 2027 entry cycle.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Decision mid-December (no exact date); $500 deposit due Jan 15.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Decision late January (no exact date); reply by May 1.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Early Decision II (binding)",
+   "notes": "Decision mid-January (no exact date); $500 deposit due Feb 15.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Decision mid-March (no exact date); reply by May 1. Later applications are reviewed on a space-available basis.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for applicants from a listed set of English-speaking countries (e.g. USA, UK, Canada except Quebec, Australia, New Zealand, Ireland, Singapore, Nigeria, Kenya), based on citizenship and/or 2+ years of study there. Scores can be self-reported at application; official scores required on enrollment. Scores below the direct-admission minimum lead to conditional admission with required English-language instruction.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Minimum for direct admission consideration (old 0-120 scale, taken before 2026-01-21); 78 or lower = conditional admission.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Minimum for direct admission consideration (new 1-6 scale); 4 or lower = conditional admission.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Minimum for direct admission consideration; 6.0 or lower = conditional admission.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Minimum for direct admission consideration; 119 or lower = conditional admission.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Minimum for direct admission consideration; 57 or lower = conditional admission. LanguageCert Academic (70) is also accepted.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International first-year applicants are considered for merit scholarships at admission (SAT/ACT encouraged); full-tuition scholarships are not available. RIT need-based grants are awarded from FAFSA results (CSS Profile not used), and the need-based page describes extra need-based aid only for Canadian students. I-20 requires documented support of at least $78,000 USD.",
+  "src": "eng"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2760",
+   "src": "faq"
+  },
+  "act": {
+   "code": null,
+   "note": "ACT code not published on the pages checked.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": "2760",
+   "note": "RIT's institutional code of 2760 is given for sending English test score reports.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "arts_design": "College of Art and Design (industrial design, photography, game design) is nationally known.",
+  "nursing": "No nursing program."
+ }
+}

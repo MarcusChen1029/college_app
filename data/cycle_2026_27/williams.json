@@ -1,0 +1,131 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Williams - First-Year Admission (deadlines, checklist, test-optional policy, codes)",
+   "url": "https://www.williams.edu/admission-aid/how-to-apply/first-year/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Williams - International Applicants",
+   "url": "https://www.williams.edu/admission-aid/how-to-apply/additional-applicant-information/international/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Williams - Tuition & Aid: Requirements and Deadlines",
+   "url": "https://www.williams.edu/admission-aid/tuition-aid/requirements-and-deadlines/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Williams describes itself as truly test optional; SAT/ACT is superscored if submitted (including across legacy and enhanced ACT); ACT Science is optional. Applicants may change their mind about submitting before the deadline.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 65,
+  "supplemental_essays": false,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "not_offered",
+  "notes": "Common App, Apply Coalition with Scoir, or QuestBridge. No required writing supplement (an academic writing sample is optional). Counselor letter plus two teacher letters; mid-year report due Feb 6. Williams does not conduct interviews (InitialView interviews may be shared). The pages do not print the entry year; dates are treated as the fall 2027 cycle (the aid page references 2027-2028).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "notify": "2026-12-14",
+   "label": "Early Decision (binding)",
+   "notes": "Admission and financial aid applications are due at the same time. Page says decision 'by December 14'.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Answer April 1; reply by May 1.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "If English is not your first language or the language of academic instruction at your school, Williams encourages you to submit TOEFL, IELTS or Duolingo scores (self-report, email a screenshot, or send from the testing agency). Scores of enrolling students are verified. No minimums are published; the figures below are the typical range of competitive applicants.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "rec": 100,
+   "notes": "Competitive applicants typically score 100-120 (taken before January 2026). Typical range, not a minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 5,
+   "notes": "Competitive applicants typically score 5-6 on the new scale. Typical range, not a minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 7.5,
+   "notes": "Competitive applicants typically score 7.5-9. Typical range, not a minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "rec": 135,
+   "notes": "Competitive applicants typically score 135-160. Typical range, not a minimum.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Not need-blind for international applicants, but aid meets 100% of demonstrated need, is guaranteed for all four years, and about 70% of international students receive aid (average award over $90,000). Applicants who may seek aid at any point must answer Yes to the aid question on the application; aid materials are requested only after admission. No merit scholarships are described.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3965",
+   "src": "fy"
+  },
+  "act": {
+   "code": "1936",
+   "src": "fy"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "A",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "humanities": "Top liberal-arts humanities; small classes and tutorials.",
+  "arts_design": "Art history program is a well-known pipeline to museums and graduate study.",
+  "engineering": "No engineering (liberal-arts college).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

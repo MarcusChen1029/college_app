@@ -1,0 +1,93 @@
+{
+  "slug": "boston-college",
+  "name": "Boston College",
+  "short_name": "BC",
+  "state_region": "MA",
+  "city": "Chestnut Hill",
+  "latitude": 42.335,
+  "longitude": -71.17028,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.bc.edu",
+  "admissions_url": "https://www.bc.edu/bc-web/admission.html",
+  "ipeds_unit_id": 164924,
+  "undergrad_enrollment": 9654,
+  "intl_undergrads": 639,
+  "student_faculty_ratio": 10,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Boston College Common Data Set 2024-2025",
+      "url": "https://www.bc.edu/content/dam/bc1/offices/irp/ir/cds/Boston_College_CDS_2024-2025_Final.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-21"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 34779,
+    "admits": 5632,
+    "enrolled": 2394,
+    "ed_applicants": 4288,
+    "ed_admits": 1434,
+    "intl_applicants": 3696,
+    "intl_admits": 618,
+    "in_state_applicants": 5401,
+    "in_state_admits": 896,
+    "out_state_applicants": 25661,
+    "out_state_admits": 4116,
+    "waitlist_offered": 7444,
+    "waitlist_accepted": 4139,
+    "waitlist_admitted": 352,
+    "pct_submit_sat": 30,
+    "pct_submit_act": 15,
+    "notes": "Newest CDS published on bc.edu is 2024-2025 (Fall 2024 entering class); a 2025-2026 CDS was not found on the site as of 2026-10-21. In-state = Massachusetts. 21 applicants / 2 admits / 1 enrollee have unknown residency. GPA (C11/C12) is not reported in this CDS. Test-optional: 30% of enrollees submitted SAT, 15% ACT."
+  },
+  "scores": {
+    "SAT_TOTAL": [1460, 1500, 1520],
+    "SAT_ERW": [710, 740, 760],
+    "SAT_MATH": [730, 760, 780],
+    "ACT_COMPOSITE": [33, 34, 35],
+    "ACT_MATH": [30, 32, 34],
+    "ACT_ENGLISH": [34, 35, 35]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "C",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (2024-2025 edition, applicants for Fall 2026): SAT/ACT not required, but considered if submitted."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 72180,
+    "required_fees_usd": 1328,
+    "room_board_usd": 19290,
+    "books_usd": 1250,
+    "other_usd": 2000,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 20,
+    "intl_avg_award_usd": 39634,
+    "notes": "CDS G1/G5 (2024-2025 edition, which lists 2025-2026 costs). Transportation varies and is not included in other_usd. H6 reports 2024-2025 aid to nonresidents: institutional non-need-based aid only; 20 awarded (need- or non-need-based), average $39,634. The interview row of C7 was left blank in the CDS and is omitted from factors."
+  }
+}

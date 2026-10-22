@@ -1,0 +1,135 @@
+{
+  "slug": "uva",
+  "name": "University of Virginia-Main Campus",
+  "short_name": null,
+  "state_region": "VA",
+  "city": "Charlottesville",
+  "latitude": 38.035665,
+  "longitude": -78.503428,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.virginia.edu/",
+  "admissions_url": "https://admission.virginia.edu/",
+  "ipeds_unit_id": 234076,
+  "undergrad_enrollment": 17597,
+  "intl_undergrads": 838,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=234076",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?234076",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Virginia Common Data Set 2024-2025 (pdf)",
+      "url": "https://ira.virginia.edu/sites/ira/files/2025-03/CDS_2024-2025_508.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 58951,
+    "admits": 9909,
+    "enrolled": 3961,
+    "in_state_applicants": 16464,
+    "in_state_admits": 4269,
+    "out_state_applicants": 35526,
+    "out_state_admits": 4912,
+    "intl_applicants": 6961,
+    "intl_admits": 728,
+    "waitlist_offered": 10470,
+    "waitlist_accepted": 6759,
+    "waitlist_admitted": 242,
+    "pct_submit_sat": 45.6,
+    "pct_submit_act": 13.8,
+    "gpa_avg": null,
+    "pct_reporting_gpa": 81.47,
+    "gpa_distribution": {
+      "4.0": 90.5,
+      "3.75-3.99": 6.8,
+      "3.50-3.74": 2.1,
+      "3.25-3.49": 0.3,
+      "3.00-3.24": 0.1,
+      "2.50-2.99": 0.2,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "Fall 2024 entering class. UVA's 2025-2026 CDS page exists online but its numeric tables are dynamic and unreadable, so 2024-2025 is used. Average HS GPA, ED applicants/admits and the by-residency enrolled split (printed as 206 in-state, inconsistent with the total) are blank or unreliable and omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1410,
+      1470,
+      1520
+    ],
+    "SAT_ERW": [
+      700,
+      730,
+      760
+    ],
+    "SAT_MATH": [
+      710,
+      750,
+      780
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      35
+    ],
+    "ACT_MATH": [
+      30,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 22431,
+    "books_usd": 1520,
+    "room_board_usd": 15300,
+    "other_usd": 3530,
+    "total_coa_usd": 41803,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 61457
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "VI",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

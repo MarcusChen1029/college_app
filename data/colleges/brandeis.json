@@ -1,0 +1,132 @@
+{
+  "slug": "brandeis",
+  "name": "Brandeis University",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Waltham",
+  "latitude": 42.365727,
+  "longitude": -71.260155,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.brandeis.edu/",
+  "admissions_url": "https://www.brandeis.edu/admissions/",
+  "ipeds_unit_id": 165015,
+  "undergrad_enrollment": 3618,
+  "intl_undergrads": 697,
+  "student_faculty_ratio": 10,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=165015",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?165015",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Brandeis University Common Data Set 2025-2026 (pdf)",
+      "url": "https://www.brandeis.edu/institutional-research/docs/cds-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9756,
+    "admits": 4430,
+    "enrolled": 744,
+    "in_state_applicants": 1858,
+    "in_state_admits": 1036,
+    "out_state_applicants": 4322,
+    "out_state_admits": 2752,
+    "intl_applicants": 3576,
+    "intl_admits": 642,
+    "waitlist_offered": 1717,
+    "waitlist_accepted": 771,
+    "waitlist_admitted": 206,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.84,
+    "pct_reporting_gpa": 87,
+    "gpa_distribution": {
+      "4.0": 30.3,
+      "3.75-3.99": 29.5,
+      "3.50-3.74": 19.1,
+      "3.25-3.49": 10.6,
+      "3.00-3.24": 5.6,
+      "2.50-2.99": 3.3,
+      "2.0-2.49": 1.7
+    },
+    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C2, C9, C11, C12). GPA distribution is the all-enrolled-students column (sums to 100.1 in the CDS). Early decision counts are not included because the CDS labels them 'Fall 2024 entering class'. Test-optional: SAT/ACT percentiles describe the 28% (SAT) and 8% (ACT) who submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1370,
+      1430,
+      1470
+    ],
+    "SAT_ERW": [
+      670,
+      710,
+      740
+    ],
+    "SAT_MATH": [
+      660,
+      710,
+      750
+    ],
+    "ACT_COMPOSITE": [
+      31,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      27,
+      30,
+      32
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 70957,
+    "books_usd": 1000,
+    "room_board_usd": 20954,
+    "other_usd": 1200,
+    "total_coa_usd": 90169,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

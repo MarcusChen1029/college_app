@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "process": {
+   "kind": "admissions_site",
+   "title": "SMU - First-Year Application Process (deadlines, checklist)",
+   "url": "https://www.smu.edu/admission/apply/undergraduate-admission/process",
+   "accessed": "2026-10-22"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "SMU - Admission Requirements (FAQ)",
+   "url": "https://www.smu.edu/admission/apply/undergraduate-admission/requirements-guidelines",
+   "accessed": "2026-10-22"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "SMU - Early Decision",
+   "url": "https://www.smu.edu/admission/apply/undergraduate-admission/early-decision",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "SMU - International Admission",
+   "url": "https://www.smu.edu/admission/apply/international",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Fully test-optional; no preference given either way. SAT and ACT are superscored; self-reported scores accepted. Not required for non-US applicants attending high school outside the US. On the arts-school FAQ SMU says academic merit scholarship consideration for arts applicants requires submitting scores (recommended 1380 SAT or 29 ACT).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "teacher_recs": 0,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "Counselor recommendation required; teacher recommendation optional; extracurricular resume requested; essay generally 250-650 words. Also accepts ApplyTexas and the SMU online application. Art, film (BFA), dance, music and theatre applicants need an audition or portfolio (dual admission with Meadows). Need-based aid (US citizens/permanent residents only) uses the CSS Profile (code 6660) plus FAFSA.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action",
+   "notes": "Non-binding. Also the scholarship consideration deadline.",
+   "src": "process"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Notified by mail in mid-December (no exact date); deposit within two weeks of admission.",
+   "src": "process"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-03-01",
+   "label": "Early Decision II",
+   "notes": "Binding. Notified by mail by March 1.",
+   "src": "process"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision",
+   "notes": "Non-binding. Also the scholarship consideration deadline.",
+   "src": "process"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "FAFSA priority deadline",
+   "notes": "Priority deadline for all applicants (US citizens and permanent residents).",
+   "src": "ed"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for students who attended a high school with an English-based curriculum, or who have SAT critical reading and writing 580+ or ACT writing 25+. Applicants below the recommended minimums may get conditional offers (retake or Intensive English Program).",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "subs": {
+    "reading_listening": 20,
+    "writing_speaking": 24
+   },
+   "notes": "Recommended minimum score and subscores.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 6.5,
+   "subs": {
+    "each_band": 6.5
+   },
+   "notes": "The FAQ labels this line 'ACT' but gives bands (reading/listening/writing/speaking 6.5), which is the IELTS scale.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 115,
+   "notes": "Recommended minimum score.",
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 60,
+   "notes": "Recommended minimum score.",
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "All applicants regardless of citizenship are automatically considered for academic merit scholarships (no separate application). Need-based financial aid is available only for US citizens and permanent residents.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "6660",
+   "src": "req"
+  },
+  "act": {
+   "code": "4174",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "nursing": "No nursing program."
+ }
+}

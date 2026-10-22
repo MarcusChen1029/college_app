@@ -1,0 +1,133 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "CU Boulder — First-Year Apply (deadlines, checklist, fee)",
+   "url": "https://www.colorado.edu/admissions/process/first-year/apply",
+   "accessed": "2026-10-22"
+  },
+  "intl_apply": {
+   "kind": "admissions_site",
+   "title": "CU Boulder — International Apply (deadlines)",
+   "url": "https://www.colorado.edu/admissions/process/international/apply",
+   "accessed": "2026-10-22"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CU Boulder — English Proficiency Requirements (undergraduate)",
+   "url": "https://www.colorado.edu/admissions/process/international/plan/english-proficiency",
+   "accessed": "2026-10-22"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "CU Boulder — International Applicant FAQs (scholarships, financial aid)",
+   "url": "https://www.colorado.edu/admissions/process/international/faqs",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT and SAT scores are not required for first-year students; self-reported scores may be provided and are considered if submitted.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": 1,
+  "teacher_recs": null,
+  "counselor_rec": null,
+  "notes": "Fee is $70 for international applicants ($65 domestic); fee waiver can be requested on the Common App. Needs the Common App personal essay plus one required 250-word short answer ('What do you hope to study, and why, at CU Boulder?') and ONE letter of recommendation (from a recommender of the student's choice; page does not say teacher vs counselor). Transcripts required.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Fall early action",
+   "notes": "Fall and summer early action deadline (Nov. 15). Page states the 2027 application is open; the year is implied, not printed next to the date.",
+   "src": "intl_apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Fall regular decision",
+   "notes": "Jan. 15. International applicants must have all required documents and English proficiency on file by Jan. 15 to be reviewed for automatic-consideration scholarships; scholarship awards are sent with the admission decision.",
+   "src": "intl_apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_all_international",
+  "waiver_notes": "Proof can be submitted before or after admission review, but must be on file for scholarship consideration (by the RD deadline) and before confirming enrollment. Alternatives to a test: 2 years of full-time secondary study in a qualifying English-speaking country; 24 transferable credits at a university in a qualifying country; IB SL English A 6 / HL 5, AP English 4, SAT EBRW 580, ACT English 23, GCSE/GCE English B, WASSCE/WAEC B3. Results must be within two calendar years of the CU Boulder start date.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Listed as 'TOEFL iBT (pre January 2026)'.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Listed as 'TOEFL iBT26 (post January 2026)', minimum total 4.0.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "C1 Advanced or C2 Proficiency.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Non-US citizens are not eligible for federal aid and CU Boulder offers no direct loans. All international first-year applications with complete documents by Jan. 15 (and English proficiency on file) are automatically reviewed for the Chancellor's Achievement Scholarship and the Presidential Scholarship; no SAT/ACT needed. Full scholarships are rare (athletics; College of Music offers tuition awards).",
+  "src": "faq"
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "B",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "math_physics": "Physics (JILA) is among the top US departments.",
+  "nursing": "No nursing at Boulder (CU nursing is at Anschutz)."
+ }
+}

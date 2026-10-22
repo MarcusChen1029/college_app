@@ -1,0 +1,179 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Yale Admissions - Timelines",
+   "url": "https://admissions.yale.edu/timelines",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Yale Admissions - Requirements",
+   "url": "https://admissions.yale.edu/requirements",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Yale Admissions - Standardized Testing",
+   "url": "https://admissions.yale.edu/standardized-testing",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Yale Admissions - International Students",
+   "url": "https://admissions.yale.edu/international",
+   "accessed": "2026-10-21"
+  },
+  "interview": {
+   "kind": "admissions_site",
+   "title": "Yale Admissions - Interviews",
+   "url": "https://admissions.yale.edu/interviews",
+   "accessed": "2026-10-21"
+  },
+  "essays": {
+   "kind": "admissions_site",
+   "title": "Yale Admissions - Essay Topics (2026-2027)",
+   "url": "https://admissions.yale.edu/essay-topics",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Yale Undergraduate Financial Aid - Prospective Students",
+   "url": "https://finaid.yale.edu/apply/prospective",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "First-year and transfer applicants must include SAT or ACT scores (self-reporting allowed; official scores required on enrollment). ACT Science and Writing optional. Superscoring allowed.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "by_invitation",
+  "notes": "Yale-specific short answers for 2026-27 (two on academic interests plus three 200-character questions on Common/Coalition). School report with transcript required. Interviews are evaluative, by invitation only, and not required. Application fee amount not stated on the pages checked; fee waivers via Common App/Coalition.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "REA",
+   "due": "2026-11-01",
+   "label": "Single-Choice Early Action",
+   "notes": "Non-binding but restrictive. Decisions mid-December (no exact date published); reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-02",
+   "label": "Regular Decision",
+   "notes": "Decisions late March (no exact date published); reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "REA",
+   "due": "2026-12-01",
+   "label": "Financial aid, Early Action (international citizens)",
+   "notes": "US citizens/permanent residents: November 1, 2026.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "Financial aid, Regular Decision",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of non-native speakers who have not completed at least two years of secondary education in an English-medium school.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Most competitive applicants typically score at least 100 (tests taken before 2026-01-21). Not a hard minimum.",
+   "src": "test"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5,
+   "notes": "Most competitive applicants typically score 5 or higher (tests taken after 2026-01-21). Not a hard minimum.",
+   "src": "test"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7,
+   "notes": "Most competitive applicants typically have 7 or higher.",
+   "src": "test"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 120,
+   "notes": "Most competitive applicants typically have at least 120.",
+   "src": "test"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 185,
+   "notes": "C1 Advanced, C2 Proficiency or B2 First; most competitive applicants typically have 185 or higher.",
+   "src": "test"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_blind_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "All applicants are evaluated without regard to ability to pay and Yale meets 100% of demonstrated need for all admitted students, including international. Indicate interest in aid on the application; the ISFAA is not accepted in place of Yale's own aid forms. No merit awards (need-based Yale Scholarship only).",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3987",
+   "src": "test"
+  },
+  "act": {
+   "code": "0618",
+   "src": "test"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "B",
+  "engineering": "B",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "A",
+  "math_physics": "A",
+  "humanities": "S",
+  "arts_design": "A"
+ },
+ "tier_notes": {
+  "business": "No undergraduate business major (Economics is the usual route).",
+  "nursing": "No undergraduate nursing (Yale nursing is graduate-only).",
+  "engineering": "Engineering & Applied Science is small relative to Yale's arts and sciences.",
+  "biology_life_sci": "Top-10 life sciences with a major medical school on campus.",
+  "pre_med": "Strong pre-med outcomes and research access through Yale School of Medicine.",
+  "economics": "Top-10 economics department; just outside the top-5 group.",
+  "math_physics": "Top-10 mathematics and physics departments.",
+  "humanities": "Humanities (history, English, philosophy, classics) are among the very best in the US.",
+  "arts_design": "Schools of Art, Music and Drama are among the best in the US; undergraduates can major in art, music and theater."
+ }
+}

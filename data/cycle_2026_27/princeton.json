@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Princeton Admission - Application Dates & Deadlines",
+   "url": "https://admission.princeton.edu/apply/first-year-application-dates-deadlines",
+   "accessed": "2026-10-21"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "Princeton Admission - Application Checklist",
+   "url": "https://admission.princeton.edu/apply/application-checklist",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Princeton Admission - Standardized Testing",
+   "url": "https://admission.princeton.edu/apply/standardized-testing",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Princeton Admission - International Students",
+   "url": "https://admission.princeton.edu/apply/international-students",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Princeton Admission - Cost & Aid",
+   "url": "https://admission.princeton.edu/cost-aid",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for applicants seeking to enroll in fall 2027 (2026-27 cycle). Princeton returns to requiring SAT or ACT from the 2027-28 cycle (fall 2028 entry). Score choice allowed within one format; no superscoring across paper and digital.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "interview": "optional_informational",
+  "notes": "Princeton-specific Questions plus a graded written paper (preferably English or history) are required. Alumni interviews are optional and can be opted out of in the Princeton-specific Questions. Financial aid uses the free Princeton Financial Aid Application (PFAA). Application fee amount not stated on the pages checked.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "REA",
+   "due": "2026-11-01",
+   "label": "Single-Choice Early Action",
+   "notes": "Non-binding; may not apply to other private early programs in the US. Decision mid-December (no exact date published). Reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "notes": "Decision late March (no exact date published). Reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "REA",
+   "due": "2026-11-09",
+   "label": "Princeton Financial Aid Application (SCEA)",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Princeton Financial Aid Application (RD)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required if English is your native language or you have spent at least three years at a secondary school where English is the primary language of instruction.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "notes": "Any one of TOEFL, IELTS Academic, Duolingo or PTE Academic is required. No minimum score published on the pages checked.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "IELTS Academic. No minimum score published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "No minimum score published.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "notes": "PTE Academic. No minimum score published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_blind_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Need-blind for all applicants including international; full demonstrated need met with grants (no loans). No merit scholarships. Same aid policy regardless of citizenship.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2672",
+   "src": "chk"
+  },
+  "act": {
+   "code": "2588",
+   "src": "chk"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "A",
+  "engineering": "A",
+  "biology_life_sci": "A",
+  "pre_med": "A",
+  "economics": "S",
+  "math_physics": "S",
+  "humanities": "S",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Top-10 CS department; just outside the top-5 group.",
+  "engineering": "Top-15 engineering school, small but research-intensive.",
+  "business": "No undergraduate business major (Economics is the usual route).",
+  "nursing": "No nursing program.",
+  "biology_life_sci": "Molecular Biology and EEB are top-10 life-science departments.",
+  "pre_med": "No medical school, but strong research access and medical-school outcomes (same basis as MIT).",
+  "economics": "Economics department is consistently top-5 nationally.",
+  "math_physics": "Mathematics is ranked #1 nationally and physics is top-5.",
+  "humanities": "Humanities departments (history, philosophy, English, classics) are among the very best in the US.",
+  "arts_design": "Lewis Center for the Arts and an undergraduate architecture major; no conservatory-style arts school."
+ }
+}

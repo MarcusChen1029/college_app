@@ -1,0 +1,126 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Wellesley — First-Year Applicants",
+   "url": "https://www.wellesley.edu/admission-aid/apply/first-year-applicants",
+   "accessed": "2026-10-21"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Wellesley — Admission FAQs",
+   "url": "https://www.wellesley.edu/admission-aid/faqs",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Wellesley — Apply for Aid",
+   "url": "https://www.wellesley.edu/admission-aid/student-financial-services/understanding-financial-aid/apply-for-aid",
+   "accessed": "2026-10-21"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "Wellesley Common Data Set 2025-2026 (C8A test policy, C13 application fee)",
+   "url": "https://wellesley-college.files.svdcdn.com/production/administrative-departments/OIR/CDS_2025-2026-FINAL.pdf",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Wellesley states it will continue to be test optional for applicants entering in fall 2027. The 2025-26 CDS (C8A) also lists SAT/ACT as not required but considered if submitted. NOTE: wellesley.edu returns HTTP 403 to automated fetches, so the live pages were read only through search-extracted text; recheck the page before relying on exact wording.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "notes": "Personal essay (250-650 words) plus a shorter Wellesley-specific writing supplement. Two teacher recommendations and the counselor School Report. Application fee: the 2025-26 CDS (C13) answers 'No' to having an application fee. Interview policy and CSS Profile requirement not confirmed. Wellesley is a women's college.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Decision mid-December (no exact date published); enrollment deposit due early January. Dates read via search-extracted page text (site blocks automated fetch); verify.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision mid-February; deposit due by late February. Date read via search-extracted page text; verify.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-08",
+   "label": "Regular Decision",
+   "notes": "Decision late March (no exact date published); reply by May 1. Date read via search-extracted page text; verify.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "No English proficiency exam is required. Strongly recommended if English is not your native language and you have studied in an English-medium curriculum for fewer than four years. No minimum scores were published on the pages found.",
+  "src": "faq"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "notes": "TOEFL iBT or TOEFL Essentials accepted; no minimum score found.",
+   "src": "faq"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "notes": "Accepted; no minimum score found.",
+   "src": "faq"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "notes": "Accepted; no minimum score found.",
+   "src": "faq"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "recommended_option",
+   "notes": "C1 Advanced, C2 Proficiency or C1 Business Higher accepted; no minimum found.",
+   "src": "faq"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "notes": "Wellesley is need-blind only for U.S. citizens and permanent residents. For international citizens admission is need-aware and the College can fund only a limited number of awards, but admitted students receive their full calculated need. International applicants must request aid when applying (not accepted after the admission decision). Read via search-extracted page text (site blocks automated fetch); verify.",
+  "src": "aid"
+ },
+ "score_codes": {},
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering major (MIT cross-registration available).",
+  "business": "No business major (liberal-arts college).",
+  "nursing": "No nursing program."
+ }
+}

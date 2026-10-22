@@ -1,0 +1,205 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Northeastern Admissions - Deadlines & Decisions",
+   "url": "https://admissions.northeastern.edu/academics/specialized-entry-programs/admissions-deadlines-decisions/",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Northeastern Admissions - Required Materials",
+   "url": "https://admissions.northeastern.edu/application-information/required-materials/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Northeastern Admissions - International Applicants",
+   "url": "https://admissions.northeastern.edu/application-information/international-applicants/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Northeastern is test-optional 'for the foreseeable future'; applicants who apply without scores are not penalized. If submitted, Northeastern super-scores and considers the better of SAT or ACT. All enrolling students must send final exam results (e.g. AP/IB/national exams).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "midyear_report": true,
+  "interview": "optional_informational",
+  "css_profile_required": true,
+  "notes": "One teacher and one school counselor recommendation (1-2 extra optional). Mid-year report for Regular Decision and deferred applicants. Northeastern offers no alumni or on-campus interviews but evaluates optional third-party InitialView or Vericant video interviews (due Nov 15 for ED I, Dec 1 for EA, Jan 15 for ED II, Feb 1 for RD). International applicants must submit the Declaration and Certification of Finances. CSS Profile and FAFSA apply only to US citizens, permanent residents and eligible non-citizens seeking need-based aid. Creative portfolio encouraged for CAMD; NYC performing arts require audition.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2027-01-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Page lists month and day only (notification 'by January 1'); interpreted as the fall 2027 entry cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-02-15",
+   "label": "Early Action",
+   "notes": "Non-binding. Notification 'by February 15'.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "notify": "2027-03-01",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification 'by March 1'.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Notification 'by April 1'.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "FAFSA/CSS Profile - Early Decision I",
+   "notes": "US citizens, permanent residents and eligible non-citizens only.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "label": "FAFSA/CSS Profile - Early Decision II",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-15",
+   "label": "FAFSA/CSS Profile - Regular Decision",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waiver if you will have completed 4 consecutive full-time academic years in high schools and universities where English is the primary language of instruction for all courses except foreign language courses; request through the Application Status Check. Northeastern may request proof of English proficiency from any applicant. Not accepted: IELTS Indicator, PTE Academic Online, TOEFL Essentials, TOEFL iBT Paper Test, TOEFL ITP.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 102,
+   "notes": "No minimum. Middle 50% of admitted students: 102 to 110 (exams on or before 2026-01-20); 'rec' is the lower end of that range.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "notes": "No minimum. Middle 50%: 5.0 to 5.5 overall and subscores (exams on or after 2026-01-21); 'rec' is the lower end.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "IELTS Academic. No minimum. Middle 50%: 7.5 to 8.0; 'rec' is the lower end.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 79,
+   "notes": "PTE Academic. No minimum. Middle 50%: 79 to 86; 'rec' is the lower end.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "No minimum. Middle 50%: 130 to 140; 'rec' is the lower end.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 195,
+   "notes": "C1 Advanced or C2 Proficiency. No minimum. Middle 50%: 195 to 202; 'rec' is the lower end.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for need-based aid (institutional grants or federal aid). They are eligible for merit scholarships, which are extremely competitive and do not cover the full cost of attendance; the admission application serves as the scholarship application.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3667",
+   "src": "req"
+  },
+  "act": {
+   "code": "1880",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "3667",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code published on Northeastern's pages.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code published on Northeastern's pages.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No numeric code published on Northeastern's pages.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "general": "Admit rate is under 8% but the SAT median (1480) is below the ~1500+ of S-tier peers; high application volume. Rated A.",
+  "nursing": "Nursing BSN with co-op."
+ }
+}

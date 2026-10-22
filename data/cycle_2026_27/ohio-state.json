@@ -1,0 +1,150 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Ohio State — International first-year applicants: Apply step-by-step",
+   "url": "https://undergrad.osu.edu/apply/international-freshmen/apply-step-by-step",
+   "accessed": "2026-10-21"
+  },
+  "dates_col": {
+   "kind": "admissions_site",
+   "title": "Ohio State — First-years (Columbus campus): Step-by-step",
+   "url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+   "accessed": "2026-10-21"
+  },
+  "capp": {
+   "kind": "admissions_site",
+   "title": "Ohio State — The Common Application (Columbus first-years)",
+   "url": "https://undergrad.osu.edu/apply/freshmen-columbus/common-app",
+   "accessed": "2026-10-21"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Ohio State — Merit scholarships",
+   "url": "https://undergrad.osu.edu/cost-and-aid/merit-based-scholarships",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Ohio State — About Aid for International Students",
+   "url": "https://sfa.osu.edu/international-student/about-aid",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "ACT or SAT scores are required for Columbus-campus first-year applicants (including international). Superscoring of section scores; ACT Science not required; essay not required. Scores must come directly from the testing agency.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": true,
+  "supplemental_essays": "Common App personal essay plus Ohio State-specific questions on the Common App (preferred admission plan, etc.).",
+  "notes": "The Columbus first-year page states a $60 nonrefundable fee; other Ohio State pages cite $70 for international applicants, which was not confirmed on a first-year page. Recommendation letters are optional (up to two, sent by the counselor); no interview is mentioned.",
+  "src": "capp"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-22",
+   "label": "Early Action (non-binding, autumn only)",
+   "notes": "International and non-Ohio-resident applicants are notified Jan 22 (Ohio residents Dec 11). Early action is recommended for College of Engineering majors, College of Nursing Direct Admission, Honors and Scholars programs.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-05",
+   "label": "Regular Decision",
+   "notes": "Final deadline for a complete application. Acceptance fee deadline May 1, 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt after three full years at a U.S. regionally accredited high school, or if a citizen of or degree holder from Australia, Belize, British Caribbean, British West Indies, Canada (except Quebec), England, Ghana, Guyana, Ireland, Kenya, Liberia, New Zealand, Nigeria, Scotland, Singapore, South Africa, the United States or Wales. ACT English 21+ or SAT EBRW 550+ also accepted. No conditional admission via the American Language Program.",
+  "src": "dates"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Exams taken before Jan 21, 2026 (iBT or Home Edition).",
+   "src": "dates"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Exams taken on or after Jan 21, 2026.",
+   "src": "dates"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Indicator also accepted.",
+   "src": "dates"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "dates"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "Columbus university-funded first-year merit scholarships: \"International students are not eligible.\" International students are generally not eligible for federal, state or most institutional funding.",
+  "src": "merit"
+ },
+ "majors": [
+  {
+   "program": "Engineering (College of Engineering)",
+   "category": "engineering",
+   "admit_model": "school_college",
+   "notes": "Admissions recommends applying by the Nov 1 early action deadline for College of Engineering majors."
+  },
+  {
+   "program": "Nursing (Direct Admission Program)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Early action (Nov 1) strongly recommended for the College of Nursing Direct Admission Program."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1592",
+   "src": "dates"
+  },
+  "act": {
+   "code": "3312",
+   "src": "dates"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "nursing": "College of Nursing is a top-15 undergraduate nursing program."
+ }
+}

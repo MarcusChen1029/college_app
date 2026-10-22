@@ -1,0 +1,176 @@
+{
+ "sources": {
+  "overview": {
+   "kind": "admissions_site",
+   "title": "Notre Dame Admissions - Application Overview",
+   "url": "https://admissions.nd.edu/apply/application-overview/",
+   "accessed": "2026-10-21"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Notre Dame Admissions - Restrictive Early Action & Regular Decision",
+   "url": "https://admissions.nd.edu/apply/early-action-regular-decision/",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Notre Dame Admissions - Apply",
+   "url": "https://admissions.nd.edu/apply/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Notre Dame Admissions - International Applicants: Application Information",
+   "url": "https://admissions.nd.edu/apply/resources-for/international-applicants/application-information/",
+   "accessed": "2026-10-21"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "Notre Dame Admissions - International Applicants",
+   "url": "https://admissions.nd.edu/apply/resources-for/international-applicants/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional through the 2026-27 cycle (fall 2027 entry). SAT/ACT required again starting with the 2027-28 cycle (fall 2028 entry).",
+  "src": "overview"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "questbridge"
+  ],
+  "app_fee_usd": 85,
+  "fee_waiver": true,
+  "supplemental_essays": "Notre Dame Writing Supplement: one required essay (max 150 words) on non-negotiable factors when choosing a college, plus two short-answer questions of 50-100 words each.",
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "notes": "One core-academic teacher letter; a second letter is required and Notre Dame highly recommends the school counselor write it (another community member may if none is available). Interview policy not stated on the pages read. Aid forms: international students seeking need-based aid must complete the CSS Profile; the first-year pages list FAFSA/CSS Profile/IDOC priority dates.",
+  "src": "overview"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "REA",
+   "due": "2026-11-01",
+   "notes": "Restrictive Early Action (nonbinding). Decision mid-December (no exact date published). Supporting documents and SlideRoom Nov 15. Page does not state the calendar year; it is the current cycle page (also notes test-optional through 2026-27).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "notes": "Decision mid- to late March (no exact date published). Supporting documents and SlideRoom Jan 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "REA",
+   "due": "2026-11-15",
+   "label": "Financial aid priority (REA): FAFSA, CSS Profile, IDOC",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Financial aid priority (RD): FAFSA, CSS Profile, IDOC",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Confirmation deadline ($500 enrollment deposit)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if the applicant's primary first language is not English or secondary education was not primarily in English. Waived with SAT Evidence-Based Reading & Writing 650+ or ACT English or Reading 26+. TOEFL iBT Special Home Edition not accepted; if no TOEFL/IELTS site is available submit Duolingo.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "subs": {
+    "speaking": 25
+   },
+   "notes": "'Strongly recommend' 100 overall with at least 25 on Speaking (pre-February 2026 scoring).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "'Strongly recommend' 5.5 average, no section below 5.0 (updated scoring).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "'Strongly recommend' 7.5 minimum composite.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 125,
+   "notes": "'Strongly recommend' 125 minimum overall.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "notes": "PTE Academic is accepted; no score is listed.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "notes": "Notre Dame states its undergraduate admission evaluation is need-blind for international applicants. International first-years seeking need-based aid must complete the CSS Profile. The pages read do not say whether full demonstrated need is met for international students or describe merit scholarships.",
+  "src": "intlaid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1841",
+   "note": "Page gives 1841 as the TOEFL and College Board code.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "1841",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "ACT code not listed on the pages read.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "A",
+  "biology_life_sci": "C",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "business": "Mendoza College of Business is a top-15 undergraduate business program.",
+  "humanities": "Philosophy and theology are nationally strong; other humanities solid.",
+  "arts_design": "School of Architecture (classical architecture) is distinctive; other arts modest.",
+  "nursing": "No nursing program."
+ }
+}

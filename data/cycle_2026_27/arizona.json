@@ -1,0 +1,141 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Arizona - First Year Application Deadlines",
+   "url": "https://www.arizona.edu/admissions/first-year/deadlines",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Arizona - First-Year Applying & Requirements",
+   "url": "https://www.arizona.edu/admissions/undergraduate/first-year",
+   "accessed": "2026-10-21"
+  },
+  "rev": {
+   "kind": "admissions_site",
+   "title": "University of Arizona - Application Review Process & FAQs",
+   "url": "https://www.arizona.edu/admissions/apply/application-review",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Arizona - International Student Admissions (English requirements)",
+   "url": "https://www.arizona.edu/admissions/undergraduate/international",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Arizona OSFA - Apply for Aid: International",
+   "url": "https://financialaid.arizona.edu/apply-for-aid/international",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT and ACT scores are not required for general admission; submitted official scores may be used for orientation placement or to fulfil Core Competency Requirements.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 80,
+  "supplemental_essays": "500-word application essay strongly encouraged (optional); Honors College applicants add supplemental materials.",
+  "notes": "Fee is $50 for Arizona residents and $80 for non-Arizona residents or residents of other U.S. states (the page does not name an international rate). Recommendations are not listed among review materials; optional materials are SAT/ACT, resume and personal statement. Some students are admitted to The A Center (undeclared support program).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-15",
+   "label": "Early Action (priority for admission, merit aid and Honors College), fall 2027",
+   "notes": "Decision release begins January 15, 2027. Applications after Nov 1 move to Regular Decision, reviewed on a space-available basis with decisions released in batches in the spring; no fixed Regular Decision deadline is published for first-year main campus.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "National College Decision Day (enrollment fee)",
+   "notes": "Page 'highly encourages' claiming a spot by May 1; not stated as a hard deadline.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for applicants whose primary language is not English or who attended school in a non-English-speaking country, regardless of citizenship. Waived with 3 years of regular English classes at a C or better at an accredited American high school (domestic or abroad), 3 years at an English-medium high school with C, IB English A HL 5, IGCSE/O-Level English C, or a US college composition course with C. Scores must be dated within 2 years.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "iBT/Home Edition/MyBest, tests before January 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Listed as '4' for tests after January 2026. TOEFL Essentials 8.5 also accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Academic/Online/Indicator/One Skill Retake.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 60,
+   "notes": "PTE Academic or PEXT Express.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "Cambridge English Qualification / CEFR 180 or C1.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students do not qualify for federal Title IV aid. Everyone is considered for merit tuition scholarships when they apply; apply by the Nov 1 Early Action deadline for priority.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "math_physics": "Astronomy and optical sciences are among the best in the US."
+ }
+}

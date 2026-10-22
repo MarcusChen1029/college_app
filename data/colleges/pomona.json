@@ -1,0 +1,81 @@
+{
+  "slug": "pomona",
+  "name": "Pomona College",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Claremont",
+  "latitude": 34.099027,
+  "longitude": -117.714556,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.pomona.edu/",
+  "admissions_url": "https://www.pomona.edu/admissions",
+  "ipeds_unit_id": 121345,
+  "undergrad_enrollment": 1666,
+  "intl_undergrads": 228,
+  "student_faculty_ratio": 7,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=121345",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?121345",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 12121,
+    "admits": 819,
+    "enrolled": 408,
+    "pct_submit_sat": 29,
+    "pct_submit_act": 15,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). SAT total, GPA, ED and residency splits come from the Common Data Set and are not added yet."
+  },
+  "scores": {
+    "SAT_ERW": [
+      730,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      750,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 68670,
+    "books_usd": 1100,
+    "room_board_usd": 22464,
+    "other_usd": 1500,
+    "total_coa_usd": 89414,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

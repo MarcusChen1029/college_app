@@ -1,0 +1,116 @@
+{
+  "slug": "swarthmore",
+  "name": "Swarthmore College",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Swarthmore",
+  "latitude": 39.905159,
+  "longitude": -75.354278,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.swarthmore.edu/",
+  "admissions_url": "https://www.swarthmore.edu/admissions-aid",
+  "ipeds_unit_id": 216287,
+  "undergrad_enrollment": 1613,
+  "intl_undergrads": 216,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=216287",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?216287",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Swarthmore College Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 12995,
+    "admits": 977,
+    "enrolled": 426,
+    "waitlist_admitted": 14,
+    "ed_applicants": 1281,
+    "ed_admits": 228,
+    "pct_submit_sat": 40.14,
+    "pct_submit_act": 14.79,
+    "notes": "CDS C1 (men + women totals). Enrolled counts include deferrals. Swarthmore did not report GPA (C11/C12), residency splits or waitlist offered/accepted counts. Test-optional for the 2026-27 cycle; SAT/ACT figures cover only the enrolled students who submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1480,
+      1520,
+      1550
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      740,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 69226,
+    "books_usd": 785,
+    "room_board_usd": 21466,
+    "other_usd": 2221,
+    "total_coa_usd": 88696,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "C",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

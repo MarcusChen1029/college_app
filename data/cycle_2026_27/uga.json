@@ -1,0 +1,147 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UGA Admissions - Deadlines",
+   "url": "https://admissions.uga.edu/apply/deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UGA Admissions - First-year applicants",
+   "url": "https://admissions.uga.edu/apply/first-year-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "crit": {
+   "kind": "admissions_site",
+   "title": "UGA Admissions - First-year criteria",
+   "url": "https://admissions.uga.edu/apply/first-year-applicants/first-year-criteria/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UGA Admissions - International students",
+   "url": "https://admissions.uga.edu/apply/other-applicants/international-students/",
+   "accessed": "2026-10-21"
+  },
+  "fee": {
+   "kind": "admissions_site",
+   "title": "UGA Admissions - Application fee and fee waivers",
+   "url": "https://admissions.uga.edu/apply/start-application/application-fee-fee-waivers/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UGA Student Financial Aid - Academic scholarships",
+   "url": "https://osfa.uga.edu/types-of-aid/undergraduate/scholarships/academic-scholarships/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "Official SAT or ACT scores are required of all first-year applicants; there is no test-optional pathway. UGA superscores both tests. Minimums set by the Board of Regents: SAT EBRW 480 and Math 440, or ACT English or Reading 17 and Math 17.",
+  "src": "crit"
+ },
+ "requirements": {
+  "app_fee_usd": 85,
+  "notes": "First-year application fee is $70 for US citizens and $85 for international students. Letters of recommendation are optional (one is highly recommended). International students should choose 'Do not self-report grades' and send final English-translated transcripts; UGA recalculates the GPA.",
+  "src": "fee"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-10-15",
+   "label": "Early action (non-binding)",
+   "notes": "Materials deadline Oct 29. Decisions for non-Georgia residents in mid-December; most EA applicants are deferred to the regular timeline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular decision",
+   "notes": "Materials deadline Jan 15; final decisions in mid-March.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Foundation Fellowship application",
+   "notes": "Separate application; open to international first-years.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Commitment deposit",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "not_required",
+  "waiver_notes": "No separate English test is required of first-year applicants: SAT or ACT scores, which every applicant must submit, are used as proof of English proficiency. TOEFL or IELTS may also be submitted. Average scores of admitted international students (2019-2023) were SAT EBRW 650, ACT English 30, IELTS 7.5, TOEFL 102 (5.0 on the new scale); these are averages, not minimums.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "accepted",
+   "rec": 102,
+   "notes": "Average of admitted international students 2019-2023, not a minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "accepted",
+   "rec": 5.0,
+   "notes": "UGA's stated equivalent of 102 on the new scale; average of admitted students, not a minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "accepted",
+   "rec": 7.5,
+   "notes": "Average of admitted international students 2019-2023, not a minimum.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "The Foundation Fellowship (application due Nov 1) is open to international first-years: $30,000 stipend plus a waiver of the difference between in-state and international tuition. The need-and-merit scholarships listed require Georgia residency and a FAFSA.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5813",
+   "src": "crit"
+  },
+  "act": {
+   "code": "0872",
+   "src": "crit"
+  },
+  "toefl": {
+   "code": "5813",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "College of Engineering is young (2012) and not yet highly ranked.",
+  "nursing": "No nursing program."
+ }
+}

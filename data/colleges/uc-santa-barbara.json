@@ -1,0 +1,102 @@
+{
+  "slug": "uc-santa-barbara",
+  "name": "University of California-Santa Barbara",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Santa Barbara",
+  "latitude": 34.416297,
+  "longitude": -119.846426,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.ucsb.edu/",
+  "admissions_url": "https://www.admissions.ucsb.edu/",
+  "ipeds_unit_id": 110705,
+  "undergrad_enrollment": 23113,
+  "intl_undergrads": 2025,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110705",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110705",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UC Santa Barbara Common Data Set 2025-2026",
+      "url": "https://drive.google.com/file/d/1FIkvY5dANho45ioG7-JHgO3IPH6-ui1W/view?usp=sharing",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 110187,
+    "admits": 42093,
+    "enrolled": 5081,
+    "in_state_applicants": 74486,
+    "in_state_admits": 23923,
+    "out_state_applicants": 17067,
+    "out_state_admits": 9302,
+    "intl_applicants": 18634,
+    "intl_admits": 8868,
+    "waitlist_offered": 25713,
+    "waitlist_accepted": 18022,
+    "waitlist_admitted": 9603,
+    "gpa_avg": 4.29,
+    "pct_reporting_gpa": 97.07,
+    "gpa_distribution": {
+      "4.0": 87.81,
+      "3.75-3.99": 9.02,
+      "3.50-3.74": 2.58,
+      "3.25-3.49": 0.3,
+      "3.00-3.24": 0.22,
+      "2.50-2.99": 0.06,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. Reported GPA average of 4.29 is a UC-weighted, uncapped GPA (above a 4.0 scale); the 4.0 row therefore holds all students at or above 4.0. C9 test-score percentiles are blank (UC test-blind). Enrolled split: 3,770 in-state / 701 out-of-state / 610 international."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 16989,
+    "books_usd": 1484,
+    "room_board_usd": 21975,
+    "other_usd": 7063,
+    "total_coa_usd": 44833,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 54591
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "VI",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

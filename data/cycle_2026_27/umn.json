@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UMN Twin Cities Admissions - Freshman Application Deadlines",
+   "url": "https://admissions.tc.umn.edu/apply/freshman-application-deadlines",
+   "accessed": "2026-10-21"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "UMN Twin Cities Admissions - Application Checklist for Freshman (fall 2027)",
+   "url": "https://admissions.tc.umn.edu/apply/application-checklist/application-checklist-freshman",
+   "accessed": "2026-10-21"
+  },
+  "ichk": {
+   "kind": "admissions_site",
+   "title": "UMN Twin Cities Admissions - International Freshman Application Checklist",
+   "url": "https://admissions.tc.umn.edu/apply/application-checklist/application-checklist-international-freshman",
+   "accessed": "2026-10-21"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UMN Twin Cities Admissions - English Proficiency Information",
+   "url": "https://admissions.tc.umn.edu/admissions/international-admission/english-proficiency-information",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UMN Twin Cities Admissions - Costs, Scholarships, and Visas for International Students",
+   "url": "https://admissions.tc.umn.edu/cost-aid/cost-aid-scholarships/costs-scholarships-and-visas-international-students",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT not required for admission through the fall 2027 term; official scores sent by the testing agency are used if received. International applicants may self-report scores but need not.",
+  "src": "chk"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 55,
+  "supplemental_essays": "None; essay not required for admission.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "A complete application is the application form, the $55 fee (automatic fee waiver based on application answers) and a self-reported academic record (Courses and Grades in Common App, or STARS). Essay, letters of recommendation and transcript not required. Freshman School of Nursing applicants must apply by Nov 1 (decisions by Dec 15).",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-31",
+   "label": "Early Action I, fall 2027",
+   "notes": "Decision (admit, defer or deny) by Jan 31. Also the Nursing deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "notify": "2027-02-28",
+   "label": "Early Action II, fall 2027",
+   "notes": "Decision (admit, defer or deny) by Feb 28.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "notify": "2027-03-31",
+   "label": "Regular deadline, fall 2027",
+   "notes": "Decision (admit, waitlist or deny) by March 31; scholarship and Honors Program recipients notified by March 31. Waitlisted applicants updated by mid-June.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for international (temporary visa) students except those from listed exempt countries, and for non-international students whose first language is not English or who studied in U.S. schools fewer than four years. May be waived via ACT (English and Reading 21, Writing 8) or SAT (EBRW 540; digital SAT Reading & Writing 550), AP/A-level/IB English coursework, or an exemption request. The minimum must be met on a single test date (no MyBest).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "subs": {
+    "writing": 4.5
+   },
+   "notes": "New scale; scores effective starting the Spring 2027 application period. Overall 4.0 falls in the 'AZ hold' band (admitted but extra English course may be required). Carlson requires both overall and writing minimums.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "writing": 6.5
+   },
+   "notes": "AZ-hold band starts at 6.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "subs": {
+    "writing": 120
+   },
+   "notes": "AZ-hold band 105-115.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "subs": {
+    "writing": 59
+   },
+   "notes": "AZ-hold band 50-58.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "subs": {
+    "writing": 180
+   },
+   "notes": "CAE C1 Advanced; AZ-hold band 170-179.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "Global Excellence Scholarships are competitive merit scholarships for international freshmen and transfers; all international students who apply by the deadline are automatically considered. Need-based aid for international students is not mentioned on the pages opened. 2026-27 international cost of attendance shown on the page: $67,085 (9 months).",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "6874",
+   "note": "U of M TOEFL iBT test code.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {}
+}

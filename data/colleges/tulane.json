@@ -1,0 +1,136 @@
+{
+  "slug": "tulane",
+  "name": "Tulane University of Louisiana",
+  "short_name": null,
+  "state_region": "LA",
+  "city": "New Orleans",
+  "latitude": 29.940069,
+  "longitude": -90.122144,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://tulane.edu/",
+  "admissions_url": "https://admission.tulane.edu/",
+  "ipeds_unit_id": 160755,
+  "undergrad_enrollment": 7767,
+  "intl_undergrads": 377,
+  "student_faculty_ratio": 7,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=160755",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?160755",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Tulane University Common Data Set 2025-2026 (PDF, Office of Assessment and Institutional Research)",
+      "url": "https://oair.tulane.edu/common-data-set",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 32942,
+    "admits": 4763,
+    "enrolled": 1858,
+    "in_state_applicants": 2676,
+    "in_state_admits": 595,
+    "out_state_applicants": 25512,
+    "out_state_admits": 3593,
+    "intl_applicants": 4754,
+    "intl_admits": 575,
+    "waitlist_offered": 5842,
+    "waitlist_accepted": 3158,
+    "waitlist_admitted": 64,
+    "ed_applicants": 2077,
+    "ed_admits": 1209,
+    "pct_submit_sat": 11,
+    "pct_submit_act": 27,
+    "gpa_avg": 3.67,
+    "pct_reporting_gpa": 99.73,
+    "notes": "Fall 2025 entering class. ED figure (C21) is for Early Decision. SAT 11% (203 students) / ACT 27% (496) of enrolled submitted scores. GPA distribution is for all enrolled students (C11).",
+    "gpa_distribution": {
+      "4.0": 11.49,
+      "3.75-3.99": 34.11,
+      "3.50-3.74": 31.08,
+      "3.25-3.49": 15.65,
+      "3.00-3.24": 6.15,
+      "2.50-2.99": 1.19,
+      "2.0-2.49": 0.27,
+      "1.0-1.99": 0.05
+    }
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1430,
+      1460,
+      1500
+    ],
+    "SAT_ERW": [
+      710,
+      730,
+      750
+    ],
+    "SAT_MATH": [
+      710,
+      730,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_ENGLISH": [
+      33,
+      34,
+      35
+    ],
+    "ACT_MATH": [
+      29,
+      31,
+      33
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 71998,
+    "books_usd": 1400,
+    "room_board_usd": 19726,
+    "other_usd": 2784,
+    "total_coa_usd": 91156,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "VI",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "I",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "VI",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "slug": "stony-brook",
+  "name": "Stony Brook University",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Stony Brook",
+  "latitude": 40.91476,
+  "longitude": -73.12046,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.stonybrook.edu/",
+  "admissions_url": "https://www.stonybrook.edu/sb/admissions.shtml",
+  "ipeds_unit_id": 196097,
+  "undergrad_enrollment": 18101,
+  "intl_undergrads": 1712,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196097",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?196097",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Stony Brook University Common Data Set 2025-2026 (xlsx)",
+      "url": "https://www.stonybrook.edu/irpe/_media/Common_data_sets/CDS_2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 64197,
+    "admits": 30930,
+    "enrolled": 3964,
+    "in_state_applicants": 42719,
+    "in_state_admits": 17065,
+    "out_state_applicants": 13031,
+    "out_state_admits": 8198,
+    "intl_applicants": 8447,
+    "intl_admits": 5667,
+    "waitlist_offered": 10563,
+    "waitlist_accepted": 5191,
+    "waitlist_admitted": 3462,
+    "pct_submit_sat": 38,
+    "pct_submit_act": 4,
+    "pct_reporting_gpa": 99.95,
+    "gpa_distribution": {
+      "4.0": 45.43,
+      "3.75-3.99": 24.76,
+      "3.50-3.74": 17.59,
+      "3.25-3.49": 7.75,
+      "3.00-3.24": 4.32,
+      "2.50-2.99": 0.13,
+      "2.0-2.49": 0.03,
+      "1.0-1.99": 0
+    },
+    "notes": "No early decision (CDS C21). Early action offered (C22). CDS C12 reports the average high school GPA as 94.48 on a 100-point scale, so gpa_avg is left blank (not a 4.0-scale value). Out-of-state figures exclude international. SAT/ACT is not required (considered if submitted) except for the Scholars for Medicine / Dental Medicine honors programs."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1350,
+      1410,
+      1470
+    ],
+    "SAT_ERW": [
+      650,
+      690,
+      730
+    ],
+    "SAT_MATH": [
+      680,
+      720,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      30,
+      32,
+      34
+    ],
+    "ACT_ENGLISH": [
+      28,
+      33,
+      35
+    ],
+    "ACT_MATH": [
+      28,
+      32,
+      34
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 10931,
+    "books_usd": 900,
+    "room_board_usd": 18874,
+    "other_usd": 3248,
+    "total_coa_usd": 31654,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 34911
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "I",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

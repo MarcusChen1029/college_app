@@ -1,0 +1,134 @@
+{
+  "slug": "uga",
+  "name": "University of Georgia",
+  "short_name": null,
+  "state_region": "GA",
+  "city": "Athens",
+  "latitude": 33.956262,
+  "longitude": -83.374039,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uga.edu/",
+  "admissions_url": "https://www.admissions.uga.edu/",
+  "ipeds_unit_id": 139959,
+  "undergrad_enrollment": 32137,
+  "intl_undergrads": 354,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=139959",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?139959",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Georgia Common Data Set 2025-2026 (PDF)",
+      "url": "http://oir.uga.edu/wp-content/uploads/UGA_CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 47464,
+    "admits": 16257,
+    "enrolled": 6195,
+    "in_state_applicants": 21110,
+    "in_state_admits": 8893,
+    "out_state_applicants": 25261,
+    "out_state_admits": 7044,
+    "intl_applicants": 1092,
+    "intl_admits": 319,
+    "waitlist_offered": 4442,
+    "waitlist_accepted": 437,
+    "pct_submit_sat": 70.31,
+    "pct_submit_act": 43.91,
+    "gpa_avg": 4.17,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 87.06,
+      "3.75-3.99": 11.32,
+      "3.50-3.74": 0.82,
+      "3.25-3.49": 0.29,
+      "3.00-3.24": 0.16,
+      "2.50-2.99": 0.23,
+      "2.0-2.49": 0.1,
+      "1.0-1.99": 0.02
+    },
+    "notes": "UGA reports a weighted GPA (average above 4.0), so the 4.0 bucket means 4.0 and above and is not comparable with unweighted schools. Waitlist admitted count not given. Fall 2025 entering class."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1250,
+      1330,
+      1420
+    ],
+    "SAT_ERW": [
+      610,
+      660,
+      710
+    ],
+    "SAT_MATH": [
+      630,
+      670,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      27,
+      32,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      28,
+      31
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 11492,
+    "books_usd": 998,
+    "room_board_usd": 12084,
+    "other_usd": 4992,
+    "total_coa_usd": 28728,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 32336
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

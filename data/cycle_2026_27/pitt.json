@@ -1,0 +1,149 @@
+{
+ "sources": {
+  "intl_fy": {
+   "kind": "admissions_site",
+   "title": "Pitt — International First-Year Students (deadlines, essay, test and code info)",
+   "url": "https://admissions.pitt.edu/international/international-first-year-students/",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Pitt — International Students (scholarships, financial aid, interviews)",
+   "url": "https://admissions.pitt.edu/international/",
+   "accessed": "2026-10-22"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Pitt — First-Year Student (rolling admission, fee, scholarship date)",
+   "url": "https://admissions.pitt.edu/first-year-student/",
+   "accessed": "2026-10-22"
+  },
+  "elp": {
+   "kind": "admissions_site",
+   "title": "Pitt — TOEFL, IELTS, & Duolingo",
+   "url": "https://admissions.pitt.edu/international/toefl-ielts-duolingo/",
+   "accessed": "2026-10-22"
+  },
+  "topt": {
+   "kind": "admissions_site",
+   "title": "Pitt — Test-Optional",
+   "url": "https://admissions.pitt.edu/test-optional/",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional extended through fall 2028 entry (covers fall 2027), including international applicants. Pitt takes the highest ACT composite and highest SAT superscore; SAT Essay / ACT Writing not required.",
+  "src": "topt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 55,
+  "interview": "not_offered",
+  "notes": "Common App or the Pitt Application are equally acceptable. International applicants must submit a personal statement or the Common App essay. No admissions interviews, but international applicants may submit an InitialView interview. Fee of $55 is from the first-year page; the international page does not state a separate amount. Rolling admission; Frederick Honors College and Guaranteed Admission Programs have their own earlier dates.",
+  "src": "intl_fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Fall term, international first-year (complete application)",
+   "notes": "Rolling admission; apply early (application opens Aug 1; decisions about 6-8 weeks after the checklist is complete). The page says the Fall 2027 application is open; the year is implied, not printed next to the date.",
+   "src": "intl_fy"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "ROLLING",
+   "due": "2027-02-01",
+   "label": "International first-year merit scholarship review",
+   "notes": "Completed application by Feb 1 is automatically reviewed for international merit scholarships. The general first-year page cites Dec 1 for automatic academic scholarship consideration.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International students are typically required to submit TOEFL, IELTS or Duolingo; waivers are case by case and not automatic (requires contacting Pitt). Waiver profile listed: TOEFL 100+ (subscores 20+; new scale 5.0+ with subscores 4.0+), IELTS 7.0+ (subscores 6.0+), Duolingo 125+, or attended a US high school four years / exempt-country schooling. Only a single-sitting TOEFL iBT is accepted (no MyBest, no Essentials).",
+  "src": "elp"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "notes": "No hard minimum published. 90-99 with a solid record gets strong consideration for the Pittsburgh campus; 80-89 most often considered for a regional campus (Bradford, Greensburg, Johnstown).",
+   "src": "elp"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 4.5,
+   "notes": "Page equates 90-99 with 4.5 on the new scale; no hard minimum published.",
+   "src": "elp"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "notes": "No Pittsburgh-campus minimum published. IELTS 6.5 is listed alongside TOEFL 80-89 (regional-campus range). IELTS Indicator accepted.",
+   "src": "elp"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "notes": "No Pittsburgh-campus minimum published. 115-120 is listed alongside TOEFL 80-89 (regional-campus range).",
+   "src": "elp"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Financial aid is not available to international students. International first-year fall applicants with a complete application by Feb 1 are automatically reviewed for scholarships of up to $10,000 per year (generally eight full-time terms). Proof of financial support required upon admission.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2927",
+   "src": "intl_fy"
+  },
+  "act": {
+   "code": "3734",
+   "src": "intl_fy"
+  },
+  "toefl": {
+   "code": "2927",
+   "src": "elp"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code; send results from the IELTS portal by searching 'University of Pittsburgh'.",
+   "src": "intl_fy"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code; send results from the Duolingo portal by searching 'University of Pittsburgh'.",
+   "src": "elp"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "nursing": "School of Nursing is a top-15 nursing program.",
+  "humanities": "Philosophy and history & philosophy of science are among the best in the US."
+ }
+}

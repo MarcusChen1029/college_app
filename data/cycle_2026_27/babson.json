@@ -1,0 +1,150 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Babson - How to Apply (deadlines, materials, test-optional policy)",
+   "url": "https://www.babson.edu/undergraduate/how-to-apply/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Babson - International Applicants",
+   "url": "https://www.babson.edu/undergraduate/how-to-apply/international-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Babson - Financial Aid for International Students",
+   "url": "https://www.babson.edu/undergraduate/tuition-and-financial-aid/international-students/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for first-year and transfer applicants; self-reported SAT/ACT scores accepted, official scores required only if admitted and enrolling.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "Common App personal statement plus two Babson supplemental essays; one counselor and one teacher recommendation. The deadlines page lists CSS Profile aid deadlines (Nov 15 for ED I/EA, Feb 1 for ED II/RD); international applicants seeking need-based aid (Global Scholars) must submit the CSS Profile. Deadline pages do not print the entry year; dates are treated as the fall 2027 cycle. Interview policy not confirmed on pages checked.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Notification by mid-December (no exact date); deposit due Jan 15.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Notification by mid-January (no exact date); reply by May 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "label": "Early Decision II (binding)",
+   "notes": "Notification by mid-February (no exact date); deposit due March 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "label": "Regular Decision",
+   "notes": "Notification by mid-March (no exact date); reply by May 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "CSS Profile (ED I / EA applicants)",
+   "notes": "Also the CSS Profile deadline for international Global Scholars consideration.",
+   "src": "aid"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "CSS Profile (ED II / RD applicants)",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "A TOEFL, Duolingo or IELTS score is required only for international students whose native language is not English; scores must be official at the time of application. Babson does not publish minimum scores on the pages checked. Cambridge exams are also accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "accepted",
+   "notes": "No minimum published on the pages checked.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "accepted",
+   "notes": "No minimum published on the pages checked.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "notes": "No minimum published on the pages checked.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Cambridge Assessment English qualifications are listed as accepted; no minimum published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Admission is need-aware for international financial aid applicants. Need-based aid is limited to the Global Scholars program (four-year full-tuition scholarships plus extra grants based on need, for ED or RD applicants who file the CSS Profile) and the Canadian Scholarship. All international applicants are also considered for merit awards (Women's Leadership quarter-tuition, Presidential half-tuition, Weissman full-tuition via separate application).",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3075",
+   "src": "apply"
+  },
+  "act": {
+   "code": "3075",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "3075",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "business": "A"
+ },
+ "tier_notes": {
+  "business": "Babson is a business-only college; #1-ranked for entrepreneurship and top-15 overall.",
+  "computer_science": "Business-only college: no CS, engineering, sciences, humanities or arts majors.",
+  "economics": "No separate economics major (economics is a concentration within the business degree)."
+ }
+}

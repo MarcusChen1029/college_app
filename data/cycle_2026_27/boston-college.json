@@ -1,0 +1,171 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Boston College Admission - Apply (deadlines and requirements)",
+   "url": "https://www.bc.edu/bc-web/admission/apply.html",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Boston College Admission - International Applicants",
+   "url": "https://www.bc.edu/bc-web/admission/apply/international.html",
+   "accessed": "2026-10-21"
+  },
+  "testopt": {
+   "kind": "admissions_site",
+   "title": "Boston College Admission - Test-Optional Policy",
+   "url": "https://www.bc.edu/bc-web/admission/apply/test-optional.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Boston College offers a test-optional admission policy; applicants who do not submit scores receive full consideration. Non-submitters remain eligible for the Gabelli Presidential Scholars Program if they apply by November 1. English proficiency exams are still required for non-US citizens (the test-optional policy does not cover them).",
+  "src": "testopt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "supplemental_essays": "BC Writing Supplement via Common App: answer one of the first four 2026-27 prompts (400-word limit); Human-Centered Engineering applicants answer Prompt 5 instead.",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "app_fee_usd": 85,
+  "fee_waiver": true,
+  "midyear_report": true,
+  "portfolio": "Arts portfolios submitted through SlideRoom.",
+  "notes": "Fee waivers are for US citizens or permanent residents with financial hardship, requested through the Common App. Mid-year report required for Regular Decision and deferred Early Decision applicants. No general admission interview is described; optional InitialView video interview for students at national schools in China. Spring first-year admission available (not for Human-Centered Engineering or Nursing).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-15",
+   "label": "Early Decision I (binding)",
+   "notes": "Notified by December 15 (page says 'by').",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-04",
+   "notify": "2027-02-15",
+   "label": "Early Decision II (binding)",
+   "notes": "Notified by February 15 (page says 'by').",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Notified by April 1 (page says 'by').",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-01",
+   "label": "Gabelli Presidential Scholars Program",
+   "notes": "Per the test-optional page, non-submitters remain eligible if they apply by November 1.",
+   "src": "testopt"
+  },
+  {
+   "kind": "other",
+   "due": "2026-11-15",
+   "label": "InitialView results (ED I)",
+   "notes": "Optional interview; due January 15, 2027 for ED II and Regular Decision. Does not replace the English proficiency requirement.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-US citizens must submit TOEFL iBT, IELTS or Duolingo; not covered by test-optional. Waived for native English speakers, applicants with 3+ years at a US or other majority-English-country school in a non-ESOL curriculum, or SAT EBRW 650+ / ACT English 29+. No superscoring; TOEFL MyBest scores not considered; at-home IELTS/TOEFL not accepted per search summary of the page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Recommended minimum; TOEFL reports both 120-point and 6-point scales until January 2028.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "notes": "Recommended minimum on the new scale; admitted students typically average 5.5.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "Recommended minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Recommended minimum.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "BC is unable to provide need-based financial aid to students who are not US citizens or permanent residents; international students should expect to pay full cost. Merit aid for international students is not described on the international page; the 2024-2025 CDS (H6) reports non-need-based institutional aid to 20 nonresident undergraduates. Gabelli Presidential Scholars merit program exists (eligibility for international applicants not confirmed).",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "3083",
+   "src": "apply"
+  },
+  "act": {
+   "code": "1788",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code published on BC's international page; select Boston College by name in the ETS institution search.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code published on BC's international page.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code published on BC's international page.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "nursing": "Connell School of Nursing is a top-15 undergraduate nursing program.",
+  "engineering": "Human-Centered Engineering program is new (first class 2021) and small."
+ }
+}

@@ -1,0 +1,99 @@
+{
+  "slug": "williams",
+  "name": "Williams College",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Williamstown",
+  "latitude": 42.712725,
+  "longitude": -73.203132,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.williams.edu/",
+  "admissions_url": "https://www.williams.edu/admission-aid/",
+  "ipeds_unit_id": 168342,
+  "undergrad_enrollment": 2076,
+  "intl_undergrads": 183,
+  "student_faculty_ratio": 6,
+  "academic_calendar": "4-1-4",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=168342",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?168342",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Williams College Common Data Set 2025-2026",
+      "url": "https://hub.williams.edu/institutional-research/files/2026/04/Williams-CDS-2025-2026-V2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 15520,
+    "admits": 1336,
+    "enrolled": 567,
+    "waitlist_offered": 2193,
+    "waitlist_accepted": 850,
+    "waitlist_admitted": 25,
+    "ed_applicants": 964,
+    "ed_admits": 256,
+    "pct_submit_sat": 43,
+    "pct_submit_act": 18,
+    "pct_reporting_gpa": 74.25,
+    "notes": "CDS C1/C2/C9/C12/C21 (Fall 2025 entering class). Residency split, GPA average and GPA distribution are blank in the CDS; C7 factor marks could not be read reliably from the text. Truly test-optional, so percentiles describe the 43% (SAT) / 18% (ACT) who submitted. ED closes Nov 15."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1490,
+      1520,
+      1550
+    ],
+    "SAT_ERW": [
+      740,
+      750,
+      770
+    ],
+    "SAT_MATH": [
+      740,
+      770,
+      790
+    ],
+    "ACT_COMPOSITE": [
+      33,
+      34,
+      35
+    ],
+    "ACT_ENGLISH": [
+      34,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      30,
+      33,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 72510,
+    "books_usd": 1000,
+    "room_board_usd": 18240,
+    "other_usd": 2700,
+    "total_coa_usd": 89520,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

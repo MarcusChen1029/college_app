@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UW-Madison — Deadlines and Decisions",
+   "url": "https://admissions.wisc.edu/deadlines/",
+   "accessed": "2026-10-21"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "UW-Madison — Apply as a First-Year Student",
+   "url": "https://admissions.wisc.edu/apply-as-a-freshman/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UW-Madison — International Students Applying to UW-Madison",
+   "url": "https://admissions.wisc.edu/international/",
+   "accessed": "2026-10-21"
+  },
+  "direct": {
+   "kind": "admissions_site",
+   "title": "UW-Madison — Direct Entry Programs",
+   "url": "https://admissions.wisc.edu/direct-entry/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT are optional for applicants through the spring 2028 term (application deadline Oct 1, 2027); the choice made on the application is final and no disadvantage for omitting scores.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 80,
+  "fee_waiver": true,
+  "supplemental_essays": "Two essays: a personal essay (Common App prompt, or the Universities of Wisconsin Application prompt) plus a 'Why UW-Madison and your chosen major(s)' essay.",
+  "notes": "Common Application or the Universities of Wisconsin Application (no preference between them). One letter of recommendation is required from someone who can attest to academic ability (teacher, school counselor or faculty member); a second is optional. First and second choice major requested.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-31",
+   "label": "Early Action (non-binding)",
+   "notes": "Materials deadline Nov 9. Decision released on or before Jan 31. Non-binding; reply by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-03-31",
+   "label": "Regular Decision",
+   "notes": "Materials deadline Jan 22. Decision released on or before Mar 31.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of first-year applicants educated in non-English-speaking countries unless English was the primary language of instruction in all four years of secondary school. Waiver requests go through the ELP Waiver Request eForm in the Student Center. No superscoring; scores no older than two years; MyBest not accepted.",
+  "src": "apply"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Test dates on or before 1/20/2026. Full score report required.",
+   "src": "apply"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Test dates on or after 1/21/2026.",
+   "src": "apply"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Academic IELTS, in-person or online; electronic ETRF delivery.",
+   "src": "apply"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Send with sub-scores.",
+   "src": "apply"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "notes": "CDS H6 (2025-2026): institutional scholarship or grant aid is not available to nonresident undergraduates. The admissions site mentions limited scholarship opportunities for students from particular countries (for example King-Morgridge) and a Wisconsin Scholarship Hub; check eligibility individually.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Engineering (College of Engineering)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Apply with an engineering major as first choice and a non-engineering major as second choice; direct entry is competitive."
+  },
+  {
+   "program": "Business (Wisconsin School of Business, BBA)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "List a business major first to be considered for direct admission; others enter as pre-business in Letters & Science and apply to the BBA later."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1846",
+   "src": "apply"
+  },
+  "act": {
+   "code": "4656",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "1846",
+   "src": "apply"
+  },
+  "ielts": {
+   "code": null,
+   "note": "IELTS does not require a code. Select the account name 'University of Wisconsin, Madison Undergraduate' when requesting the electronic report.",
+   "src": "apply"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code. In your Duolingo account search category 'Undergraduate' and select 'University of Wisconsin-Madison' (not 'Other').",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "A",
+  "engineering": "A",
+  "business": "B",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "A",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "computer_science": "Top-20 CS program.",
+  "engineering": "Top-15 engineering college.",
+  "math_physics": "Top-15 mathematics and physics."
+ }
+}

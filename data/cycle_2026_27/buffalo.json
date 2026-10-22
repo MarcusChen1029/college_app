@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University at Buffalo - International First-Year Admissions (deadlines, requirements)",
+   "url": "https://www.buffalo.edu/admissions/apply/international/first-year.html",
+   "accessed": "2026-10-21"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University at Buffalo - Important Dates and Deadlines",
+   "url": "https://www.buffalo.edu/admissions/apply/deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "University at Buffalo - Apply as a First-Year Student (English proficiency, test-optional FAQ, codes)",
+   "url": "https://www.buffalo.edu/admissions/apply/first-year.html",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University at Buffalo - Scholarships and Funding Opportunities",
+   "url": "https://www.buffalo.edu/admissions/costs/scholarships.html",
+   "accessed": "2026-10-22"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University at Buffalo - International First-Year English Proficiency",
+   "url": "https://www.buffalo.edu/admissions/apply/international/first-year.english-proficiency.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Applicants choose on the application whether UB considers their SAT/ACT scores; test scores are not required for an admission decision and applicants who opt out are still reviewed for merit scholarships.",
+  "src": "first"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Complete only one of ApplySUNY (select 'Buffalo, University at'), the Common App or the Coalition application; $50 non-refundable fee. Holistic review considers academic marks, test scores, essay and recommendations; UB strongly recommends at least one letter of recommendation (up to three accepted). Transcripts are self-reported. Intended major selection matters: direct admission to accounting and business management is limited enrollment, engineering applications get an additional review, and acting, dance, music theatre, music and BFA design/technology require an audition or portfolio/interview.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding)",
+   "notes": "Early Action applicants get a priority response and priority consideration for merit scholarships; decisions come on a rolling basis (CDS). Enrollment deposit due May 1 or 10 days after acceptance, whichever is later. Honors College priority consideration Dec 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision application completion deadline",
+   "notes": "Applications can continue to be submitted after this date until capacity is reached. Page states these dates for the international first-year tab; no year is printed, so they are taken as the current cycle (application opens Aug 1).",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2026-12-15",
+   "label": "Honors College priority consideration",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "In general required for applicants whose native language is not English and who completed any part of high school in a non-English-speaking country. Alternatives accepted instead of a test: ACT English and reading each 18+, SAT ERWS 500+, AP English Language 4+ or a B in the class, British IGCSE/GCE English result of C. Scores must be under two years old.",
+  "src": "first"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "Minimum to be eligible for consideration; MyBest scores allowed. Page lists '70 or 4' (old 0-120 scale or new 1-6 scale).",
+   "src": "first"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "src": "first"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic.",
+   "src": "first"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "first"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic or PTE Academic Online.",
+   "src": "first"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "UB offers scholarships in varying amounts to incoming first-year international students with no prior college credit (fall or spring entry), renewable up to four years; all admitted international students are automatically considered. The scholarships page does not mention need-based aid for international students, so that is left unconfirmed.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Accounting and Business Management",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Page says direct admission to accounting and business management is subject to limited enrollment."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2925",
+   "src": "first"
+  },
+  "act": {
+   "code": "2978",
+   "src": "first"
+  },
+  "toefl": {
+   "code": "2925",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code; send the report to 'University at Buffalo - SUNY'.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code; send to 'University at Buffalo, The State University of New York, Undergraduate, New York, USA'.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {}
+}

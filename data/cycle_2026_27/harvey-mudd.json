@@ -1,0 +1,179 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Harvey Mudd - Apply (deadlines)",
+   "url": "https://www.hmc.edu/admission/apply/",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Harvey Mudd - First-Year Students",
+   "url": "https://www.hmc.edu/admission/apply/first-year-students/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Harvey Mudd - International Applicants",
+   "url": "https://www.hmc.edu/admission/apply/international-applicants/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Harvey Mudd - Applying for Financial Aid",
+   "url": "https://www.hmc.edu/admission/afford/applying-for-financial-aid/",
+   "accessed": "2026-10-21"
+  },
+  "iaid": {
+   "kind": "financial_aid_site",
+   "title": "Harvey Mudd - International Student Financial Aid",
+   "url": "https://www.hmc.edu/admission/afford/international-student-financial-aid/",
+   "accessed": "2026-10-21"
+  },
+  "so": {
+   "kind": "financial_aid_site",
+   "title": "Harvey Mudd - So International Scholarship",
+   "url": "https://www.hmc.edu/admission/afford/international-student-financial-aid/so-scholarship/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for fall 2027 applicants; HMC will return to requiring standardized testing for the fall 2028 cycle. Merit scholarships do not use test scores.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 70,
+  "supplemental_essays": true,
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "css_profile_required": true,
+  "notes": "Two supplemental essays (500 and 250 words) plus the personal essay. School Report from the counselor is required (the separate counselor recommendation is optional when available). Two teacher recommendations: one STEM teacher and one humanities/social science/arts teacher. Interview is optional. CSS Profile is required for need-based institutional aid. Common App document cutoffs: Jan 21 (ED II) and Feb 6 (RD).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "notify": "2026-12-15",
+   "label": "Early Decision I",
+   "notes": "Reply due Jan 8; optional interview by Nov 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Reply due Feb 26; optional interview by Dec 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Reply due May 1; optional interview by Dec 15.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Merit scholarship deadline",
+   "notes": "Feb 1 for ED I, ED II and RD.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-15",
+   "label": "CSS Profile + FAFSA (ED I)",
+   "notes": "IDOC documents due Dec 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "CSS Profile + FAFSA (ED II)",
+   "notes": "IDOC documents due Jan 20.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "CSS Profile + FAFSA (RD)",
+   "notes": "IDOC documents due Feb 15.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived if the school's primary language of instruction is English; the waiver is granted only after the application is submitted. Scores can be self-reported; only enrolling students must submit official reports.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "notes": "iBT Home Edition or iBT Paper Edition; the page does not mention the new 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7.5,
+   "notes": "IELTS Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "notes": "Only the 160-point version.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 190,
+   "notes": "C1 Advanced min 190; C2 Proficiency min 200.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Aid goes to a small number of admitted international applicants; financial need may affect admission chances. HMC states it can meet 100% of demonstrated need for only a handful of international students. Students who enter without aid are not considered for aid later. Merit: the So International Scholarship (one recipient per entering class, offered regardless of need, no separate application); international students may also apply for some merit awards.",
+  "src": "intl"
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "B",
+  "engineering": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "math_physics": "B"
+ },
+ "tier_notes": {
+  "computer_science": "One of the strongest undergraduate-only CS programs; not research-ranked.",
+  "engineering": "Top undergraduate-only engineering program (general engineering B.S.).",
+  "math_physics": "Mathematics and physics are exceptionally strong for an undergraduate-only college.",
+  "economics": "No economics major (taken at other Claremont Colleges).",
+  "humanities": "No humanities major, although one third of coursework is in humanities, social sciences and arts.",
+  "arts_design": "No arts major.",
+  "business": "No business major.",
+  "nursing": "No nursing program."
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Lehigh Admissions — Applying to Lehigh (application deadlines)",
+   "url": "https://www.lehigh.edu/admissions/apply",
+   "accessed": "2026-10-21"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Lehigh Admissions — Admissions Requirements",
+   "url": "https://www.lehigh.edu/admissions/admissions-requirements",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Lehigh Admissions — International Students",
+   "url": "https://www.lehigh.edu/admissions/international-students",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Lehigh \"has adopted a test-optional policy regarding submission of SAT or ACT scores indefinitely.\" Scores are considered only if the applicant chooses to report them; official scores must reach Lehigh before the first day of classes. SAT/ACT are superscored.",
+  "src": "reqs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 75,
+  "supplemental_essays": true,
+  "teacher_recs": 1,
+  "counselor_rec": true,
+  "interview": "optional_evaluative",
+  "notes": "Common App or Coalition (Scoir) application with the Lehigh Questions and Writing Supplement; School Report with counselor recommendation and official transcript; one teacher recommendation; mid-year school report. Interviews are not required, but \"all interviews are evaluative and become part of your application.\" Non-U.S. citizens who will need aid must submit the CSS Profile (or ISAFA if the $25 fee is a hardship) by the application deadline; other non-citizens need no Certificate of Finances at application. Fee waiver for hardship available to non-citizens by request.",
+  "src": "reqs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I",
+   "notes": "Binding. Decision date \"Mid December\" (no fixed date published). Aid applicants send CSS Profile and tax forms by Nov 1.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "label": "Early Decision II",
+   "notes": "Binding. Decision date \"Mid February\" (no fixed date published). Aid applicants send CSS Profile and tax forms by Jan 15.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "label": "Regular Decision",
+   "notes": "Decision date \"Late March\" (no fixed date published). The page states no entry year; treated as the 2026-27 cycle (Fall 2027 entry). Lehigh has no Early Action.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required unless the applicant's first language is English or the last two full years of formal instruction (not counting the current year) were in English. TOEFL and IELTS are preferred; TOEFL iBT Home Edition and Duolingo are considered if those exams are unavailable. SAT/ACT cannot be used to meet the requirement. Scores must come directly from the testing agency.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 90,
+   "notes": "No hard minimum: \"the most competitive candidates score above a 90\". Page's readiness bands: 95+ strong, 86-94 may need extra language support, 85 or below raises concern (tests before Jan 21, 2026).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "notes": "Page's band for tests from Jan 21, 2026: 5.5+ strong readiness, 4.0-5.0 may need extra language support, 4.0 or below raises concern.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "No hard minimum: \"the most competitive candidates score above\" 7.0. Readiness bands: 7.5+ strong, 6.5-7.0 may need extra support, 6.0 or below raises concern.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "rec": 120,
+   "notes": "Considered if TOEFL/IELTS are not available to the student. \"Most competitive\" at 120; readiness bands: 120+ strong, 110-119 may need extra support, 109 or below raises concern.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Lehigh has limited international financial aid and \"is need-aware in the admissions process\" for non-U.S. citizens; some applicants who apply for aid but show no need may be admitted without an aid offer. Aid packages range from a few thousand dollars to full tuition, room and board, with no additional aid after the initial offer. Merit scholarships range from $5,000 to full tuition with no separate application. CSS Profile required by the application deadline for any applicant who will need aid in any year.",
+  "src": "intl"
+ },
+ "majors": [],
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "nursing": "No nursing program."
+ }
+}

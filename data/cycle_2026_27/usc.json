@@ -1,0 +1,215 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "USC Admission - First-Year Students (dates, deadlines, checklist)",
+   "url": "https://admission.usc.edu/prospective-students/how-to-apply/first-year-students/",
+   "accessed": "2026-10-21"
+  },
+  "dfaq": {
+   "kind": "admissions_site",
+   "title": "USC Admission - Deadline FAQs",
+   "url": "https://admission.usc.edu/prospective-students/how-to-apply/deadline-faqs/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "USC Admission - International Students",
+   "url": "https://admission.usc.edu/prospective-students/how-to-apply/international-students/",
+   "accessed": "2026-10-21"
+  },
+  "testopt": {
+   "kind": "admissions_site",
+   "title": "USC Admission - Test Optional FAQ",
+   "url": "https://admission.usc.edu/test-optional-faq/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "USC continues its test-optional policy for first-year applicants to the 2027-28 academic year. Scores, if sent, must be official (self-reported scores are not accepted). International applicants who use the SAT or ACT to show English proficiency have those scores assessed for both proficiency and admission.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "fee_waiver": true,
+  "teacher_recs": 1,
+  "midyear_report": true,
+  "interview": "optional_informational",
+  "css_profile_required": true,
+  "notes": "One letter of recommendation is required, from either a school counselor or a teacher; some majors require more. Some majors need a portfolio, resume, writing sample or audition. USC does not conduct admission interviews or track demonstrated interest; Duolingo, InitialView and Vericant video interviews are optional English-proficiency supplements only. International applicants must submit the Financial Statement of Personal or Family Support. CSS Profile and FAFSA are for need-based aid applicants (US citizens and eligible non-citizens). Application fee amount not found on the pages opened.",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision (most majors)",
+   "notes": "Binding. Decision by mid-December (applicants may instead be offered deferral to Regular Decision). Not offered for Kaufman School of Dance, School of Dramatic Arts or Thornton School of Music. Page lists month and day only; aid deadline on the same page is dated 2026.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (most majors)",
+   "notes": "Non-binding, non-restrictive. The first-year page says decisions come in late January; the Deadline FAQs say mid-January. Not offered for the performing arts schools above.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "notify": "2027-04-01",
+   "label": "Regular Decision (performing arts majors)",
+   "notes": "Only deadline for Kaufman School of Dance, School of Dramatic Arts and Thornton School of Music.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-10",
+   "notify": "2027-04-01",
+   "label": "Regular Decision (most majors)",
+   "notes": "Notification by April 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Financial aid deadline - Early Decision",
+   "notes": "FAFSA and CSS Profile (US citizens/eligible non-citizens).",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Financial aid deadline - Early Action",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-03",
+   "label": "Financial aid deadline - Regular Decision",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "USC says it does not grant waivers or exceptions, including for applicants already living in the US. An SAT Evidence-Based Reading and Writing score of 650+ or ACT English 27+ also satisfies the requirement. Duolingo is for applicants who cannot sit for another approved exam; Duolingo-only admits must take USC's International Student Exam on arrival. Scores are due within two weeks of the application deadline. TOEFL ITP Plus (China) is not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "Recommended minimum for exams before 2026-01-21; admitted students average above 111 with 25+ per section. Admissible below the recommended minimum at reduced rates.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.0,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Recommended minimum for exams on or after 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.0,
+   "notes": "IELTS Indicator also accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "rec": 68,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "rec": 185,
+   "subs": {
+    "each_skill": 169
+   },
+   "notes": "C1 Advanced overall 185+, 169+ on each skill.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "min": 130,
+   "notes": "Only for applicants unable to sit for another approved exam; minimum 130.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "USC does not offer need-based financial aid to international applicants, who must document funds for at least the first year. All international applicants who apply by the appropriate deadline are eligible for USC Merit Scholarships (no separate application, no minimum eligibility requirements; highly competitive).",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4852",
+   "src": "dates"
+  },
+  "act": {
+   "code": "0470",
+   "src": "dates"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code published on the USC pages opened; select USC by name in the ETS search.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code published on the USC international page.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code published on the USC international page.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No numeric code published on the USC international page.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "A",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "S"
+ },
+ "tier_notes": {
+  "business": "Marshall School of Business is a top-15 undergraduate business program.",
+  "arts_design": "School of Cinematic Arts is the leading US film school; strong music, theatre and design.",
+  "nursing": "No first-year BSN program."
+ }
+}

@@ -1,0 +1,95 @@
+{
+  "slug": "rutgers",
+  "name": "Rutgers University-New Brunswick",
+  "short_name": null,
+  "state_region": "NJ",
+  "city": "New Brunswick",
+  "latitude": 40.498769,
+  "longitude": -74.446251,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://newbrunswick.rutgers.edu/",
+  "admissions_url": "https://admissions.rutgers.edu/",
+  "ipeds_unit_id": 186380,
+  "undergrad_enrollment": 37751,
+  "intl_undergrads": 2748,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186380",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?186380",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Rutgers University-New Brunswick Common Data Set 2023-2024 (pdf; newest posted)",
+      "url": "https://oirap.rutgers.edu/CDS/2023/New%20Brunswick%20CDS_2023-2024_final_V1.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 43347,
+    "admits": 28326,
+    "enrolled": 7681,
+    "in_state_applicants": 28992,
+    "in_state_admits": 18053,
+    "out_state_applicants": 9625,
+    "out_state_admits": 6928,
+    "intl_applicants": 4730,
+    "intl_admits": 3345,
+    "pct_submit_sat": 50.9,
+    "pct_submit_act": 5.4,
+    "notes": "CDS C1/C9, fall 2023 entering class (newest CDS Rutgers has posted; no 2024-25 or 2025-26 edition found). GPA (C11/C12) left blank in the CDS; no waitlist data; no early decision; nonbinding early action."
+  },
+  "scores": {
+    "SAT_ERW": [
+      630,
+      680,
+      720
+    ],
+    "SAT_MATH": [
+      640,
+      700,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      28,
+      31,
+      33
+    ],
+    "ACT_ENGLISH": [
+      27,
+      31,
+      34
+    ],
+    "ACT_MATH": [
+      26,
+      29,
+      33
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 18824,
+    "books_usd": 1446,
+    "room_board_usd": 16720,
+    "other_usd": 4548,
+    "total_coa_usd": 36096,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 39649
+  }
+}

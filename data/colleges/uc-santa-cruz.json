@@ -1,0 +1,82 @@
+{
+  "slug": "uc-santa-cruz",
+  "name": "University of California-Santa Cruz",
+  "short_name": null,
+  "state_region": "CA",
+  "city": "Santa Cruz",
+  "latitude": 36.995584,
+  "longitude": -122.058801,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ucsc.edu/",
+  "admissions_url": "https://admissions.ucsc.edu/",
+  "ipeds_unit_id": 110714,
+  "undergrad_enrollment": 17940,
+  "intl_undergrads": 544,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=110714",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?110714",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UC Santa Cruz Common Data Set 2025-2026 (pdf)",
+      "url": "https://mediafiles.ucsc.edu/iraps/common-data-set/common-data-set-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 66374,
+    "admits": 48274,
+    "enrolled": 4596,
+    "in_state_applicants": 52573,
+    "in_state_admits": 37433,
+    "out_state_applicants": 7248,
+    "out_state_admits": 6097,
+    "intl_applicants": 6554,
+    "intl_admits": 4745,
+    "waitlist_offered": 9881,
+    "waitlist_accepted": 6444,
+    "waitlist_admitted": 2648,
+    "gpa_avg": 3.87,
+    "pct_reporting_gpa": 99.26,
+    "gpa_distribution": {
+      "4.0": 35.86,
+      "3.75-3.99": 36.43,
+      "3.50-3.74": 22.16,
+      "3.25-3.49": 4.71,
+      "3.00-3.24": 0.75,
+      "2.50-2.99": 0.07,
+      "2.0-2.49": 0.02,
+      "1.0-1.99": 0
+    },
+    "notes": "UC campuses are test-blind and have no early plans, so C9 test-score percentiles and C21 are blank. Enrolled by residency: 4,183 in-state, 252 out-of-state, 161 international. Residency applicant/admit splits sum to 1 more than the C1 totals (as printed in the CDS). C7 admission-factor checkboxes are not machine-readable in this PDF, so no factors are recorded."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 16585,
+    "books_usd": 1256,
+    "room_board_usd": 20929,
+    "other_usd": 7227,
+    "total_coa_usd": 43867,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "tuition_out_of_state_usd": 54187
+  }
+}

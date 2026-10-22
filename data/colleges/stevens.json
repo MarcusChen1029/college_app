@@ -1,0 +1,116 @@
+{
+  "slug": "stevens",
+  "name": "Stevens Institute of Technology",
+  "short_name": null,
+  "state_region": "NJ",
+  "city": "Hoboken",
+  "latitude": 40.744776,
+  "longitude": -74.025334,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.stevens.edu/",
+  "admissions_url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/how-to-apply",
+  "ipeds_unit_id": 186867,
+  "undergrad_enrollment": 4222,
+  "intl_undergrads": 146,
+  "student_faculty_ratio": 11,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186867",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?186867",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Stevens Institute of Technology Common Data Set 2025-2026 (PDF)",
+      "url": "https://assets.stevens.edu/mviowpldu823/3JLtvZX6pLFpRC0HPNpdiW/fa3d7b4c149e41797b0734a1a23e904b/CDS-2025-2026-PDF_Final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-22"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10499,
+    "admits": 5321,
+    "enrolled": 1104,
+    "in_state_applicants": 5234,
+    "in_state_admits": 2775,
+    "out_state_applicants": 3881,
+    "out_state_admits": 2031,
+    "intl_applicants": 1371,
+    "intl_admits": 515,
+    "waitlist_offered": 2565,
+    "waitlist_accepted": 940,
+    "waitlist_admitted": 517,
+    "ed_applicants": 407,
+    "ed_admits": 284,
+    "pct_submit_sat": 36.14,
+    "pct_submit_act": 4.08,
+    "gpa_avg": 3.83,
+    "pct_reporting_gpa": 98.46,
+    "gpa_distribution": {
+      "4.0": 53.17,
+      "3.75-3.99": 19.5,
+      "3.50-3.74": 15.73,
+      "3.25-3.49": 8.19,
+      "3.00-3.24": 2.21,
+      "2.50-2.99": 1.2,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "From the 2025-26 CDS PDF, whose text layer is partly garbled; figures were cross-checked (C1 totals add up, the GPA distribution reproduces the 3.83 average). Factor importance (C7) and academic calendar could not be read from the PDF and are not filled. Residency counts are for fall 2025."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1370,
+      1420,
+      1470
+    ],
+    "SAT_ERW": [
+      670,
+      700,
+      730
+    ],
+    "SAT_MATH": [
+      690,
+      720,
+      760
+    ],
+    "ACT_COMPOSITE": [
+      32,
+      33,
+      34
+    ],
+    "ACT_MATH": [
+      30,
+      32,
+      35
+    ],
+    "ACT_ENGLISH": [
+      31,
+      34,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 65606,
+    "books_usd": 1200,
+    "room_board_usd": 20000,
+    "other_usd": 1050,
+    "total_coa_usd": 80947,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  }
+}

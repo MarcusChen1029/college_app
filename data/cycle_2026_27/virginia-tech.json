@@ -1,0 +1,188 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Virginia Tech - Dates & Deadlines for 2026-2027",
+   "url": "https://www.vt.edu/admissions/undergraduate/apply/dates-and-deadlines.html",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Virginia Tech - First-year Admissions Requirements",
+   "url": "https://www.vt.edu/admissions/undergraduate/apply/freshman-requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Virginia Tech - International Admissions Requirements",
+   "url": "https://www.vt.edu/admissions/international/requirements.html",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Virginia Tech - International Students (University Scholarships and Financial Aid)",
+   "url": "https://finaid.vt.edu/undergraduate/international-students.html",
+   "accessed": "2026-10-21"
+  },
+  "cds": {
+   "kind": "other",
+   "title": "Virginia Tech Common Data Set 2025-2026 (C13 application fee)",
+   "url": "https://aie.vt.edu/content/dam/aie_vt_edu/common-data-set/25-26/2025-2026-CDS.xlsx",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for students entering through Fall 2028; applicants choose whether scores are reviewed and not submitting does not affect the decision. SAT/ACT writing sections are not reviewed. Also optional for international applicants.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 60,
+  "supplemental_essays": "None required; optional Additional Information prompt on Common App.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Letters of recommendation are not required or requested and are not considered. Self-reported STARS record (or transcripts for students who studied outside the U.S.) due Dec 1 (EA) / Jan 24 (RD). Fee of $60 comes from CDS 2025-26 C13 (last cycle); the 2026-27 fee was not stated on the pages opened. Admission is reviewed by requested major.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Notified late February. STARS/transcripts and English test results due Dec 1. Reply due May 1. Virginia Tech has no early decision.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision (space available), fall 2027",
+   "notes": "Notified mid-March. STARS/transcripts and English test results due Jan 24.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "plan": "RD",
+   "due": "2027-01-22",
+   "label": "General Scholarship application and FAFSA deadline",
+   "notes": "For maximum scholarship and aid consideration; FAFSA priority date March 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Deadline to accept an offer of admission (EA and RD)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived if the applicant completed four years of study (grades 9-12) in a native English-speaking country (US, UK, Ireland, Australia, NZ, Canada except Quebec, Singapore, Ghana, Kenya, Nigeria, South Africa and others listed), English-only instruction, no ESL. Also met by SAT EBRW 550, ACT English 24, IGCSE/GCSE/GCE English A-C (6-9), or IB English A 5+. Tests must be within two years; MyBest, TOEFL Essentials and ITP not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_section": 16
+   },
+   "notes": "Old 0-120 scale. The page prints the date qualifier ambiguously (both TOEFL lines read 'on or after January 21, 2026'); this is the 0-120 line.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "New scale, exams on or after 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_band": 6.5
+   },
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "Cambridge English score of 176 or higher.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Need-based aid requires a valid FAFSA (US citizen/eligible noncitizen) or Virginia VASA. International students who cannot file either may still apply for college and departmental scholarships via Scholarship Central after applying.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5859",
+   "note": "CEEB code 5859 (Office of Undergraduate Admissions).",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4420",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5859",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": "5859",
+   "note": "Page says to specify CEEB code 5859 on the IELTS/TOEFL/PTE test form.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": "5859",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "A",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "engineering": "Top-15 engineering college.",
+  "arts_design": "School of Architecture + Design is nationally ranked.",
+  "nursing": "No nursing program."
+ }
+}

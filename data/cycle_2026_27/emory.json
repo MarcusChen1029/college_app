@@ -1,0 +1,209 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Emory Admissions - Plans and Deadlines",
+   "url": "https://apply.emory.edu/apply/plans-deadlines",
+   "accessed": "2026-10-21"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Emory Admissions - Requirements",
+   "url": "https://apply.emory.edu/apply/requirements",
+   "accessed": "2026-10-21"
+  },
+  "howto": {
+   "kind": "admissions_site",
+   "title": "Emory Admissions - How to Apply",
+   "url": "https://apply.emory.edu/apply/how-to-apply",
+   "accessed": "2026-10-21"
+  },
+  "faqs": {
+   "kind": "admissions_site",
+   "title": "Emory Admissions - FAQs",
+   "url": "https://apply.emory.edu/apply/faqs",
+   "accessed": "2026-10-21"
+  },
+  "exams": {
+   "kind": "admissions_site",
+   "title": "Emory Admissions - Standardized Exam Policies (incl. English proficiency, testing codes)",
+   "url": "https://apply.emory.edu/apply/requirements/exams",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Emory Admissions - International Applicants",
+   "url": "https://apply.emory.edu/apply/international",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Emory Student Financial Services - Undergraduate Aid for International Students",
+   "url": "https://studentaid.emory.edu/undergraduate/apply/new-students/international.html",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Emory is test optional for first-year students starting in fall 2027; SAT/ACT scores are not required and are reviewed as a demonstration of academic preparation if submitted. Self-reported scores are accepted; enrolling students must send official scores for verification. Emory superscores the SAT and ACT.",
+  "src": "exams"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "supplemental_essays": "Common App personal essay plus Emory short-answer college questions (submitted through the Common App).",
+  "teacher_recs": 2,
+  "counselor_rec": true,
+  "midyear_report": true,
+  "interview": "optional_informational",
+  "css_profile_required": true,
+  "notes": "Two recommendations from core academic teachers. Counselor submits the school report and transcript; ED II and RD applicants need a counselor mid-year report. Emory does not offer evaluative interviews with staff or alumni; international applicants may submit an optional InitialView video interview (strongly recommended for applicants from Mainland China). CSS Profile is for need-based aid applicants only (deadlines vary by plan). The $75 fee is waived for QuestBridge applicants. (Mid-year report requirement is from the FAQs page.)",
+  "src": "howto"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-15",
+   "label": "Early Decision I",
+   "notes": "Binding. Page lists month and day only; interpreted as the fall 2027 entry cycle. Notification is 'by December 15'. International students who need aid should apply Regular Decision (see aid page).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-01",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Binding. Notification 'by February 15'.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-01",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Notification 'by April 1'.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-15",
+   "notify": "2027-03-01",
+   "label": "Emory University Scholar Programs",
+   "notes": "Merit scholarship programs; the international aid page tells international applicants to apply to the Scholar programs before December.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED",
+   "due": "2026-12-02",
+   "label": "Financial aid deadline - Early Decision I",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "ED2",
+   "due": "2027-01-06",
+   "label": "Financial aid deadline - Early Decision II",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "plan": "RD",
+   "due": "2027-02-10",
+   "label": "Financial aid deadline - Regular Decision",
+   "notes": "The international aid page separately says to complete the CSS Profile before February 5.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if you have an SAT Evidence-Based Reading and Writing score of 700+, an ACT English subscore of 30+, or spent the most recent four years in a school where English is the language of instruction for all academic subjects (excluding world languages). Otherwise one of TOEFL, IELTS or Duolingo is required. Emory states it does not use strict cutoffs.",
+  "src": "exams"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 100,
+   "notes": "Expected score on the old 0-120 scale, 'not a strict cutoff'. TOEFL ITP: CEFR C1.",
+   "src": "exams"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "rec": 5.5,
+   "notes": "Recommended on the new 1-6 scale (from 2026-01-21).",
+   "src": "exams"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "rec": 7.5,
+   "notes": "Expected overall band, 'not a strict cutoff'.",
+   "src": "exams"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "rec": 130,
+   "notes": "Most competitive applicants typically score above 130 out of 160.",
+   "src": "exams"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "Emory offers need-based aid to 'a select group' of international students each year. International students must apply for aid during the admission process and apply Regular Decision to be considered for need-based aid; CSS Profile required. Limited merit scholarships are available to international students through the Emory University Scholar programs (apply before December). Whether Emory meets full need for international students is not stated on this page.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5187",
+   "src": "exams"
+  },
+  "act": {
+   "code": "0810",
+   "src": "exams"
+  },
+  "toefl": {
+   "code": "5187",
+   "src": "exams"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code published on Emory's exam policy page; have the test center send official scores to Emory University.",
+   "src": "exams"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No numeric code published on Emory's exam policy page.",
+   "src": "exams"
+  }
+ },
+ "tiers": {
+  "general": "A",
+  "computer_science": "C",
+  "business": "A",
+  "biology_life_sci": "B",
+  "pre_med": "B",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "S"
+ },
+ "tier_notes": {
+  "business": "Goizueta BBA is a top-15 undergraduate business program.",
+  "nursing": "Nell Hodgson Woodruff School of Nursing is a top-5 undergraduate nursing program.",
+  "engineering": "No engineering school (biomedical engineering is offered jointly with Georgia Tech, degree from GT)."
+ }
+}

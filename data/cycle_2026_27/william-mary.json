@@ -1,0 +1,136 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "William & Mary - Dates & Deadlines (First-Year)",
+   "url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/datesdeadlines/",
+   "accessed": "2026-10-21"
+  },
+  "checklist": {
+   "kind": "admissions_site",
+   "title": "William & Mary - First-Year Application Checklist",
+   "url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/first-year-applicants/application-checklist/",
+   "accessed": "2026-10-21"
+  },
+  "ed": {
+   "kind": "admissions_site",
+   "title": "William & Mary - Early Decision",
+   "url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/first-year-applicants/earlydecision/",
+   "accessed": "2026-10-21"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "William & Mary - Standardized Testing (international applicants)",
+   "url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/international-applicants/standardized-testing/",
+   "accessed": "2026-10-21"
+  },
+  "intlaid": {
+   "kind": "admissions_site",
+   "title": "William & Mary - Financial Aid for International Applicants",
+   "url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/international-applicants/expensesaid/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT scores are completely optional; W&M does not require them. Forty percent of the Class of 2029 applied test-optional.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Checklist lists the Common App, high school transcript, essay and recommendation letters; the exact number of teacher recommendations and supplemental essays was not stated on the pages read. $75 non-refundable fee with a fee-waiver request option. Supplemental materials (transcripts, scores, recommendations) may arrive after the deadline.",
+  "src": "checklist"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision I (binding)",
+   "notes": "Decision early December (no exact date published); enrollment deposit due Jan 5; FAFSA and CSS Profile priority Nov 15, final Dec 12.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-05",
+   "label": "Early Decision II (binding)",
+   "notes": "Decision early February (no exact date published); enrollment deposit due Feb 15; FAFSA and CSS Profile priority Jan 15, final Mar 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-05",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Notification 'by Apr. 1'; enrollment deposit due May 1; FAFSA and CSS Profile priority Feb 1, final Mar 1.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "Strongly recommended if English is not your native language and your schooling in the past four years or more was in another language; applicants who spoke another language at home should also strongly consider it. Duolingo is accepted when TOEFL/IELTS are not accessible.",
+  "src": "test"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "rec": 100,
+   "notes": "'Generally' looking for 100 on tests taken on or before January 20, 2026; not a hard minimum. Single sitting or MyBest.",
+   "src": "test"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 5,
+   "notes": "'Generally' 5 on the 1-6 scale for tests taken on or after January 21, 2026; not a hard minimum.",
+   "src": "test"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 7,
+   "notes": "Overall band 7 or above on the Academic test; not a hard minimum.",
+   "src": "test"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "notes": "Accepted for applicants without access to TOEFL iBT or IELTS; no score is published.",
+   "src": "test"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "The international page states that W&M generally does not have scholarships or loan funds for undergraduate international students who are citizens of other countries.",
+  "src": "intlaid"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "5115",
+   "src": "test"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "C",
+  "humanities": "B",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "engineering": "No engineering school.",
+  "nursing": "No nursing program."
+ }
+}

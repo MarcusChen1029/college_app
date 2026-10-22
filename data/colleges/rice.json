@@ -1,0 +1,124 @@
+{
+  "slug": "rice",
+  "name": "Rice University",
+  "short_name": null,
+  "state_region": "TX",
+  "city": "Houston",
+  "latitude": 29.717897,
+  "longitude": -95.402035,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.rice.edu/",
+  "admissions_url": "https://futureowls.rice.edu/home.aspx",
+  "ipeds_unit_id": 227757,
+  "undergrad_enrollment": 4776,
+  "intl_undergrads": 611,
+  "student_faculty_ratio": 6,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227757",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-21"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (enrollment, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?227757",
+      "accessed": "2026-10-21"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Rice University Common Data Set 2025-2026 (PDF)",
+      "url": "https://ideas.rice.edu/wp-content/uploads/2026/08/CDS_2025-26_WEBSITE_Updated_8-3-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-21"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 36791,
+    "admits": 2948,
+    "enrolled": 1263,
+    "in_state_applicants": 10610,
+    "in_state_admits": 847,
+    "out_state_applicants": 17390,
+    "out_state_admits": 1769,
+    "intl_applicants": 8791,
+    "intl_admits": 332,
+    "waitlist_offered": 3196,
+    "waitlist_accepted": 2204,
+    "waitlist_admitted": 66,
+    "ed_applicants": 5748,
+    "ed_admits": 647,
+    "pct_submit_sat": 59,
+    "pct_submit_act": 24,
+    "notes": "CDS 2025-26 (fall 2025 entering class). Rice did not report high school GPA (C11/C12 N/A). ED = Early Decision (C21)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1510,
+      1540,
+      1560
+    ],
+    "SAT_ERW": [
+      740,
+      760,
+      770
+    ],
+    "SAT_MATH": [
+      760,
+      790,
+      800
+    ],
+    "ACT_COMPOSITE": [
+      34,
+      35,
+      36
+    ],
+    "ACT_ENGLISH": [
+      35,
+      35,
+      36
+    ],
+    "ACT_MATH": [
+      33,
+      35,
+      35
+    ]
+  },
+  "cost": {
+    "year": "2023-2024",
+    "source": "scorecard",
+    "tuition_usd": 67857,
+    "books_usd": 1490,
+    "room_board_usd": 19550,
+    "other_usd": 4265,
+    "total_coa_usd": 87824,
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "VI",
+    "character": "VI",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  }
+}

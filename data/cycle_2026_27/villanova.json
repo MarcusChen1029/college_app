@@ -1,0 +1,162 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Villanova - Application Dates and Deadlines",
+   "url": "https://www1.villanova.edu/university/undergraduate-admission/applying-to-villanova/dates-and-deadlines.html",
+   "accessed": "2026-10-22"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Villanova - First-Year Applicants (checklist, test policy, international)",
+   "url": "https://www1.villanova.edu/university/undergraduate-admission/applying-to-villanova/first-year-applicants.html",
+   "accessed": "2026-10-22"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Villanova - International Student Financial Aid Process",
+   "url": "https://www1.villanova.edu/university/office-of-financial-assistance/financial-aid-process/international-students.html",
+   "accessed": "2026-10-22"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Villanova - International Prospective Students",
+   "url": "https://www1.villanova.edu/university/undergraduate-admission/international-prospective-students.html",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional through the 2026-27 admission campaign (class of 2031). Official or self-reported scores accepted; SAT/ACT superscored across dates. Scores reported by Nov 10 (ED I/EA) or Jan 31 (ED II/RD) are considered. Homeschooled applicants (more than one full year) must submit scores.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "coalition"
+  ],
+  "app_fee_usd": 80,
+  "supplemental_essays": "Villanova writing supplements (Common App Member School section or Coalition Part II).",
+  "teacher_recs": 1,
+  "counselor_rec": false,
+  "interview": "not_offered",
+  "css_profile_required": true,
+  "notes": "One teacher recommendation required; a counselor letter is optional but the counselor Secondary School Report and official transcript are required. Senior-year grades required for ED II, RD and deferred applicants. Villanova does not conduct interviews or consider demonstrated interest. Need-based aid needs both FAFSA and CSS Profile (code 2959). International applicants submit a Certification of Finances and bank statement.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-20",
+   "label": "Early Action",
+   "notes": "Non-binding; decision by Jan 20; deposit by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-01",
+   "label": "Early Decision I",
+   "notes": "Binding; decision by Dec 1; deposit within two weeks of admission.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ED2",
+   "due": "2027-01-15",
+   "notify": "2027-02-15",
+   "label": "Early Decision II",
+   "notes": "Binding; decision by Feb 15; deposit within two weeks of admission.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "notify": "2027-04-01",
+   "label": "Regular Decision",
+   "notes": "Non-binding; decision by Apr 1; deposit by May 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "EA and RD enrollment deposit",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived if English is a native language spoken at home, or more than three consecutive years of English-medium secondary school at the time of application.",
+  "src": "apply"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "accepted",
+   "notes": "No numeric minimum published on the pages opened.",
+   "src": "apply"
+  },
+  {
+   "test": "IELTS",
+   "status": "accepted",
+   "notes": "No numeric minimum published on the pages opened.",
+   "src": "apply"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "notes": "No numeric minimum published on the pages opened.",
+   "src": "apply"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "notes": "No numeric minimum published on the pages opened.",
+   "src": "apply"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "No numeric minimum published on the pages opened.",
+   "src": "apply"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "merit_scholarships": true,
+  "notes": "Admission for international first-year students is need-aware. Merit scholarships (awarded by Admission, incl. nomination for the Presidential Scholarship) and limited need-based grants are available; no merit or need-based aid for international transfer students.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2959",
+   "src": "apply"
+  },
+  "act": {
+   "code": "3744",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "A"
+ },
+ "tier_notes": {
+  "nursing": "Fitzpatrick College of Nursing is a top-15 undergraduate nursing program."
+ }
+}

@@ -1,0 +1,208 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Caltech - First-Year Application Deadlines",
+   "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/deadlines",
+   "accessed": "2026-10-21"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "Caltech - Standardized Tests",
+   "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/standardized-tests",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Caltech - International Applicants",
+   "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/international-applicants",
+   "accessed": "2026-10-21"
+  },
+  "fee": {
+   "kind": "admissions_site",
+   "title": "Caltech - First-Year Application Fee and Waiver",
+   "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/first-year-application-fee-and-waiver",
+   "accessed": "2026-10-21"
+  },
+  "reqs": {
+   "kind": "admissions_site",
+   "title": "Caltech - First-Year Application Requirements",
+   "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/application-requirements",
+   "accessed": "2026-10-21"
+  },
+  "essays": {
+   "kind": "admissions_site",
+   "title": "Caltech - Supplemental Application Essays",
+   "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays",
+   "accessed": "2026-10-21"
+  },
+  "afford": {
+   "kind": "admissions_site",
+   "title": "Caltech - Afford (financial aid overview)",
+   "url": "https://www.admissions.caltech.edu/afford",
+   "accessed": "2026-10-21"
+  },
+  "finaid": {
+   "kind": "financial_aid_site",
+   "title": "Caltech Financial Aid - New International Applicants: Restrictive Early Action",
+   "url": "https://www.finaid.caltech.edu/applying/how/newinternationalrea",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "SAT or ACT required for fall 2027 entry; ACT writing/science not required. Tests are superscored. Only enrolling students must send official scores. All AP and IB exams taken must be reported.",
+  "src": "tests"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "questbridge"
+  ],
+  "supplemental_essays": "5 required responses (STEM academic interest, scholarly character, two scientific-drive prompts, fun question) plus 1 optional short answer",
+  "teacher_recs": 2,
+  "portfolio": "Optional portfolio (STEM and/or non-STEM)",
+  "app_fee_usd": 85,
+  "fee_waiver": true,
+  "css_profile_required": true,
+  "midyear_report": true,
+  "notes": "Two teacher recommendations: one STEM (calculus or beyond, chemistry, physics or biology), one humanities/social science. A counselor letter is submitted as part of the School Report (not listed as a separate requirement). Interview policy not stated on the pages read. QuestBridge applicants pay no fee. CSS Profile requirement is from the financial aid page for international applicants (page text is for fall 2026 entry).",
+  "src": "reqs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "REA",
+   "due": "2026-11-01",
+   "note": "mid-December",
+   "label": "Restrictive Early Action",
+   "notes": "Remaining materials due Nov 6; standardized testing must be completed before Nov 30. Binding-free but restrictive.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-04",
+   "note": "mid-March",
+   "label": "Regular Decision",
+   "notes": "Remaining materials due Jan 10; standardized testing must be completed before Dec 31, 2026.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Reply date",
+   "notes": "The REA section states May 1, 2027; the RD paragraph says May 1, 2026, which looks like a typo on the page.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all international applicants unless English is your native language or the primary language of instruction at your secondary school; non-native speakers from English-medium schools are 'strongly recommended' to submit a score. Must be taken before the application deadline.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 100,
+   "subs": {
+    "each_section": 25
+   },
+   "notes": "Tests taken before 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 5,
+   "subs": {
+    "each_section": 5
+   },
+   "notes": "Tests taken on or after 2026-01-21 (1-6 scale), as printed on the page.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 7,
+   "subs": {
+    "each_band": 7
+   },
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 130,
+   "subs": {
+    "each_subscore": 130
+   },
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_full_need",
+  "meets_full_need": true,
+  "merit_scholarships": false,
+  "notes": "Need-blind for U.S. citizens and permanent residents, need-aware for international applicants; meets 100% of demonstrated need for admitted students. International students must apply for aid at application time to be eligible later. Caltech does not award merit scholarships. Financial aid deadlines for the 2026-27 cycle were not yet posted (the aid pages still show fall 2026 entry).",
+  "src": "afford"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The Standardized Tests page publishes no score-reporting codes; select Caltech by name when sending scores (only enrolling students need to send official scores).",
+   "src": "tests"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code published on the Standardized Tests page; only enrolling students need to send official scores.",
+   "src": "tests"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code published on the International Applicants page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code published on the International Applicants page.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code published on the International Applicants page.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not among the English tests listed (TOEFL, IELTS, Duolingo).",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "S",
+  "computer_science": "A",
+  "engineering": "A",
+  "business": "C",
+  "biology_life_sci": "S",
+  "pre_med": "B",
+  "economics": "B",
+  "math_physics": "S",
+  "humanities": "C"
+ },
+ "tier_notes": {
+  "computer_science": "Top-15 CS (CMS department), small and theory-heavy.",
+  "engineering": "Top-10 engineering; small, so fewer specializations than large engineering schools.",
+  "business": "No business school; the Business, Economics & Management (BEM) major is the closest option.",
+  "biology_life_sci": "Biology is a top-5 US department.",
+  "pre_med": "No medical school and a small pre-med population.",
+  "economics": "Small but research-strong economics (experimental and social sciences).",
+  "math_physics": "Physics and mathematics are among the very best in the US.",
+  "humanities": "History, English and philosophy majors exist but are not the focus.",
+  "arts_design": "No arts major.",
+  "nursing": "No nursing program."
+ }
+}

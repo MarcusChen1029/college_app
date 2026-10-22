@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Penn State — How to Apply (dates, fee, test-optional FAQ)",
+   "url": "https://admissions.psu.edu/apply/",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Penn State — Requirements for International Students",
+   "url": "https://admissions.psu.edu/info/future/international/requirements/",
+   "accessed": "2026-10-21"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Penn State — International Students FAQs",
+   "url": "https://www.psu.edu/resources/faq/international-students",
+   "accessed": "2026-10-21"
+  },
+  "grants": {
+   "kind": "financial_aid_site",
+   "title": "Penn State Global — Tuition Grant Information",
+   "url": "https://global.psu.edu/page/tuition-grant-information",
+   "accessed": "2026-10-21"
+  },
+  "etm": {
+   "kind": "other",
+   "title": "Penn State Bulletin — Computer Science, B.S. (Engineering)",
+   "url": "https://bulletins.psu.edu/undergraduate/colleges/engineering/computer-science-bs/",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-year applicants choose whether to have SAT/ACT scores considered; scores are self-reported in MyPennState. No superscore (highest combined score from a single test date); ACT Science not accepted. Required for the Accelerated Premedical-Medical Program.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "notes": "Apply through MyPennState or the Common App (no preference). Application fee is $75 for international applicants ($65 domestic). International first-years self-report courses via the STARS record (South Korean system: official records at application). SAT/ACT only if you wish them considered or use them as English proof. The pages reviewed do not mention essays, recommendations or an interview.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-24",
+   "label": "Early Action",
+   "notes": "Apply by Nov 1 to receive a decision by Dec 24.",
+   "src": "apply"
+  },
+  {
+   "kind": "priority",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Recommended submission deadline for all applications",
+   "notes": "Penn State describes Dec 1 as the recommended submission date; its CDS reports no fixed application closing date. No regular-decision notification date is published on the page.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of international students whose native language is not English (not required of US citizens/permanent residents). Alternatives: SAT EBRW 570+ (code 2660) or ACT English 24+ (code 3656), GCSE/GCE English language A-C, IB English A 5+, four years at a U.S. high school, or Penn State IECP certification. Scores must be under two years old; TOEFL MyBest not accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Exams taken before Jan 21, 2026; iBT Home Edition accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Exams taken after Jan 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Academic test.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "merit_scholarships": false,
+  "notes": "\"There is, at this time, essentially no financial aid available for international undergraduate students.\" Penn State Global lists two small tuition grants (SIGIA, PSTAG) for current students, typically $100 to $2,000.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Computer Science (University Park, College of Engineering)",
+   "category": "computer_science",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Students enter the College of Engineering or Undergraduate Studies, then apply for Entrance to Major after about 29 graded credits with required course grades; the bulletin notes administrative enrollment controls when space is limited (Penn State Bulletin, source etm)."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2660",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3656",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "2660",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "The page gives no IELTS code; official reports must come directly from the testing service to Undergraduate Admissions.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "The page gives no Duolingo code; official reports must come directly from the testing service to Undergraduate Admissions.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "B",
+  "business": "B",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "B",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {}
+}

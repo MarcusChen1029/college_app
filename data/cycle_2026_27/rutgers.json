@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Rutgers Admissions - New Brunswick Application Dates & Deadlines",
+   "url": "https://admissions.rutgers.edu/apply/dates-deadlines/new-brunswick",
+   "accessed": "2026-10-21"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Rutgers Admissions - Required Credentials for First-Year Applicants",
+   "url": "https://admissions.rutgers.edu/apply/first-year-applicants",
+   "accessed": "2026-10-21"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Rutgers Admissions - Required Credentials for International Applicants",
+   "url": "https://admissions.rutgers.edu/apply/international-applicants",
+   "accessed": "2026-10-21"
+  },
+  "schol": {
+   "kind": "admissions_site",
+   "title": "Rutgers-New Brunswick Scholarships (international student scholarships)",
+   "url": "https://admissions.rutgers.edu/new-brunswick-scholarships",
+   "accessed": "2026-10-21"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Rutgers-New Brunswick is test optional (SAT/ACT optional; no disadvantage if not submitted); policy stated through 2027. SAT EBRW 650+ or ACT reading 28+ (if sent to Rutgers) exempts students from the English placement exam.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "supplemental_essays": "None. One short original essay inside the application (Common App 250-650 words, or 3,800 characters on the Rutgers Application); a short extra statement only if applying to Honors.",
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "notes": "Platforms: Common App or the Rutgers Application (own); submit only one. Letters of recommendation are not used. STARS self-reported transcript required for current seniors. Mason Gross School of the Arts requires a portfolio/audition/interview. Application fee amount not stated on the pages opened this session (left blank).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-31",
+   "label": "Early Action (non-binding), fall 2027",
+   "notes": "Decision by Jan 31: admitted, not admitted, wait list, or deferred to RD.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "notify": "2027-02-28",
+   "label": "Regular Decision, fall 2027",
+   "notes": "Must apply by Dec 1 to be considered for honors and merit scholarships. Later applications are reviewed on a space-available rolling basis. Mason Gross applicants hear by April 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Candidate reply date",
+   "notes": "Applies to both EA and RD admits.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for applicants whose secondary schooling was outside the U.S. in a country where English is not the principal language. Case-by-case waivers for English-medium schooling (RUinternational@admissions.rutgers.edu); B or better in a U.S. college English Composition course also exempts. Alternative qualifying scores: SAT EBRW 550, ACT English 21, MET 56. Scores must be under two years old and sent directly by the testing agency.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Old 0-120 scale, tests through 2026-01-21. Pharmacy and Nursing require 100.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New scale, tests from 2026-01-22. Pharmacy and Nursing require 5.5. No section minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Pharmacy and Nursing require 130.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": null,
+   "notes": "Cambridge Assessment level B2 accepted.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "All admitted first-year international students on non-immigrant visas are automatically considered for Rutgers international merit scholarships ($5,000-$16,000 per year, four years, 3.25 GPA to renew); no separate application. Apply by the EA or RD date to be considered.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2765",
+   "src": "fy"
+  },
+  "act": {
+   "code": "2592",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "2765",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS code published; scores must be sent directly from the testing service to Rutgers.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No Duolingo code published on the page opened.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "B",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "B",
+  "humanities": "B",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "humanities": "Philosophy is one of the top US departments."
+ }
+}

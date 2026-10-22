@@ -1,0 +1,137 @@
+{
+ "sources": {
+  "intl_fy": {
+   "kind": "admissions_site",
+   "title": "Stony Brook — International First-Year Students (deadlines, fee, English proficiency, codes)",
+   "url": "https://www.stonybrook.edu/undergraduate-admissions/first-year/international.html",
+   "accessed": "2026-10-22"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Stony Brook — First-Year Applicants (deadlines, essay, recommendation, test-optional)",
+   "url": "https://www.stonybrook.edu/undergraduate-admissions/apply/first-year.php",
+   "accessed": "2026-10-22"
+  },
+  "adm": {
+   "kind": "admissions_site",
+   "title": "Stony Brook — Admitted International Students (I-20, proof of financial support)",
+   "url": "https://www.stonybrook.edu/undergraduate-admissions/international/admitted.html",
+   "accessed": "2026-10-22"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Stony Brook — Scholarships",
+   "url": "https://www.stonybrook.edu/undergraduate-admissions/cost-and-aid/scholarships.html",
+   "accessed": "2026-10-22"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional for applicants (scores sent by the testing agency are considered if submitted). CDS C8F: SAT or ACT is required for the Scholars for Medicine and Scholars for Dental Medicine honors programs.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "teacher_recs": 1,
+  "counselor_rec": null,
+  "interview": null,
+  "notes": "International applicants use the Common App or the SUNY App (no separate international application); the domestic first-year page also lists the Coalition App. $50 fee. One essay on a topic of choice. ONE letter of recommendation from a teacher or counselor (two teacher letters for honors programs; one from a science/math teacher for WISE). Three most recent years of secondary grades in English. Honors College / WISE / University Scholars need a ~250-word honors statement via the StartSBU portal.",
+  "src": "intl_fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Fall 2027 Early Action",
+   "notes": "Completion deadline: all required materials (application, recommendation, transcripts) must be received. Also the priority deadline for the Honors College, WISE and University Scholars; Simons STEM Scholars is due Nov 1.",
+   "src": "intl_fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Fall 2027 Regular Decision",
+   "notes": "Completion deadline. Honors programs (excluding Simons STEM) final deadline is Jan 15; later applications are considered on a space-available basis.",
+   "src": "intl_fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants from native English-speaking countries, and international applicants who attend an English-medium school, are exempt from submitting English proficiency scores. Other accepted evidence: SAT EBRW 480, ACT English 19, IB HL English 5, AP English Language or Literature 3, A-level English C, GaoKao English 125/150, CSAT rank 1. Applicants not meeting the criteria may be considered for conditional admission.",
+  "src": "intl_fy"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Exams taken prior to 1/21/2026.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Exams taken after 1/21/2026.",
+   "src": "intl_fy"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl_fy"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl_fy"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "intl_fy"
+  }
+ ],
+ "aid": {
+  "notes": "Not confirmed for international students: the scholarships page says all incoming first-year applicants are considered for merit scholarships (most need no separate application) and mentions the FAFSA for need-based awards, but it does not say whether international students are eligible. Admitted international students must document proof of financial support for one year to receive an I-20.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2548",
+   "src": "intl_fy"
+  },
+  "act": {
+   "code": "2952",
+   "src": "intl_fy"
+  },
+  "toefl": {
+   "code": "2548",
+   "src": "intl_fy"
+  }
+ },
+ "tiers": {
+  "general": "B",
+  "computer_science": "B",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "B",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "B"
+ },
+ "tier_notes": {
+  "business": "Business Management B.S. is small and not highly ranked."
+ }
+}
