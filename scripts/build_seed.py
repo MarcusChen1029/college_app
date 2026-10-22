@@ -73,7 +73,7 @@ class RawSQL(str):
 
 # Allowed values, mirroring the check constraints / lookup tables in supabase/migrations + seed/00_lookups.sql
 ENUMS = {
-    "country": {"US", "GB"},  # rows in public.countries the app has a region for (web/lib/regions.ts)
+    "country": {"US", "GB", "CA", "AU"},  # rows in public.countries the app has a region for (web/lib/regions.ts)
     "setting": {"urban", "suburban", "rural"},
     "control": {"public", "private_nonprofit", "private_forprofit"},
     "academic_calendar": {"semester", "quarter", "trimester", "4-1-4", "other"},

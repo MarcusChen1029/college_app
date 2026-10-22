@@ -55,7 +55,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 - Commit messages: conventional style (`feat:`, `fix:`, `data:`, `docs:`).
 
 ## Multi-country (started 2026-10-22)
-Colleges have `country_code` (US, GB; the UK is "GB"). Students pick **target regions** in the profile (`student_profiles.target_regions`,
+Colleges have `country_code` (US, GB, CA, AU; the UK is "GB"; CA and AU are regions with a map and no colleges yet). Students pick **target regions** in the profile (`student_profiles.target_regions`,
 first = default region on `/colleges`); the Map/Table page has a US/UK switch (`web/lib/regions.ts`, `web/lib/region-geo.ts`).
 UK colleges apply **by course through UCAS** and are grade-based: set `"country_code": "GB"` in `data/colleges/<slug>.json`, omit SAT/ACT/CDS
 fields, and put courses in a `"programs"` array (table `programs`, migration 0015). Fit labels only exist for US colleges.

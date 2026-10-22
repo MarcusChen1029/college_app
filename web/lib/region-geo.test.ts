@@ -14,6 +14,18 @@ const samples: Record<RegionCode, { name: string; lat: number; lng: number }[]> 
     { name: "Edinburgh", lat: 55.95, lng: -3.19 },
     { name: "Oxford", lat: 51.75, lng: -1.26 },
   ],
+  CA: [
+    { name: "Toronto", lat: 43.65, lng: -79.38 },
+    { name: "Vancouver", lat: 49.28, lng: -123.12 },
+    { name: "Halifax", lat: 44.65, lng: -63.57 },
+    { name: "Edmonton", lat: 53.55, lng: -113.49 },
+  ],
+  AU: [
+    { name: "Sydney", lat: -33.87, lng: 151.21 },
+    { name: "Perth", lat: -31.95, lng: 115.86 },
+    { name: "Brisbane", lat: -27.47, lng: 153.03 },
+    { name: "Hobart", lat: -42.88, lng: 147.33 },
+  ],
 };
 
 for (const region of Object.keys(samples) as RegionCode[]) {
@@ -40,6 +52,18 @@ test("cardSideFor keeps the US rule and puts the card away from the pin", () => 
   assert.equal(cardSideFor("US", -118.24), "right");
   assert.equal(cardSideFor("GB", -0.13), "left");
   assert.equal(cardSideFor("GB", -3.19), "right");
+  assert.equal(cardSideFor("CA", -79.38), "left");
+  assert.equal(cardSideFor("CA", -123.12), "right");
+  assert.equal(cardSideFor("AU", 151.21), "left");
+  assert.equal(cardSideFor("AU", 115.86), "right");
+});
+
+test("Canada and Australia are cut into a few pieces, not hundreds of islands", () => {
+  for (const code of ["CA", "AU"] as const) {
+    const g = regionGeo(code);
+    assert.ok(g.land.features.length >= 2 && g.land.features.length <= 14, `${code} has ${g.land.features.length} pieces`);
+  }
+  assert.ok(regionGeo("CA").context.features.length > 0, "the US is drawn next to Canada for context");
 });
 
 test("the US config is the original Albers USA box", () => {

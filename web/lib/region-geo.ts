@@ -1,6 +1,6 @@
 // Per-region geography for the college maps (3D and SVG): which land to draw, how to project it, and the
 // world-space extent the camera, clouds and colours are sized from. Free of three.js so it can be unit tested.
-import { geoAlbersUsa, geoConicConformal, type GeoProjection } from "d3-geo";
+import { geoAlbersUsa, geoArea, geoCentroid, geoConicConformal, type GeoProjection } from "d3-geo";
 import type { Feature, FeatureCollection, MultiPolygon } from "geojson";
 import { feature } from "topojson-client";
 import type { GeometryCollection, Topology } from "topojson-specification";
@@ -75,12 +75,82 @@ function gbGeo(): RegionGeo {
   };
 }
 
+// world-atlas has countries but no provinces or states, so a country made of many islands is cut into its
+// `biggest` largest polygons (each its own piece, so the one holding a college can lift) plus one piece
+// holding every smaller island. Keeps the puzzle-piece look without hundreds of Arctic specks.
+function pieces(country: Feature | undefined, id: string, biggest: number): Feature[] {
+  if (!country) return [];
+  if (country.geometry.type !== "MultiPolygon") return [{ ...country, id }];
+  const polys = (country.geometry as MultiPolygon).coordinates
+    .map((coordinates) => ({ coordinates, area: geoArea({ type: "Polygon", coordinates }) }))
+    .sort((a, b) => b.area - a.area);
+  const out: Feature[] = polys.slice(0, biggest).map((p, i) => ({
+    type: "Feature",
+    id: `${id}-${i}`,
+    properties: {},
+    geometry: { type: "Polygon", coordinates: p.coordinates },
+  }));
+  const rest = polys.slice(biggest);
+  if (rest.length) out.push({ type: "Feature", id: `${id}-rest`, properties: {}, geometry: { type: "MultiPolygon", coordinates: rest.map((p) => p.coordinates) } });
+  return out;
+}
+
+const countryFeatures = () => {
+  const topology = countriesTopology as unknown as Topology;
+  return (feature(topology, topology.objects.countries as GeometryCollection) as FeatureCollection).features;
+};
+
+function caGeo(): RegionGeo {
+  const countries = countryFeatures();
+  const named = (name: string) => countries.find((f) => f.properties?.name === name);
+  // The US next to Canada for context: the lower 48 and Alaska, without Hawaii and the Pacific/Caribbean territories.
+  const us = named("United States of America");
+  const usNeighbours: Feature[] =
+    us?.geometry.type === "MultiPolygon"
+      ? (us.geometry as MultiPolygon).coordinates
+          .filter((c) => {
+            const [lng, lat] = geoCentroid({ type: "Polygon", coordinates: c });
+            return lat > 24 && lat < 72 && lng > -170 && lng < -60;
+          })
+          .map((coordinates, i) => ({ type: "Feature", id: `US-${i}`, properties: {}, geometry: { type: "Polygon", coordinates } }))
+      : [];
+  return {
+    region: "CA",
+    // Wider than tall once the Arctic islands are included.
+    halfW: 480,
+    halfD: 380,
+    // Lambert conformal conic on 96°W with Statistics Canada's standard parallels (49°N, 77°N).
+    projection: () => geoConicConformal().parallels([49, 77]).rotate([96, 0]),
+    land: collection(pieces(named("Canada"), "CA", 12)),
+    context: collection(usNeighbours),
+    bands: ["#c9f2df", "#d3ecfd", "#e2d9ff"],
+    ariaLabel: "Map of Canada with college locations",
+  };
+}
+
+function auGeo(): RegionGeo {
+  const au = countryFeatures().find((f) => f.properties?.name === "Australia");
+  return {
+    region: "AU",
+    halfW: 480,
+    halfD: 380,
+    // Lambert conformal conic on 134°E with Geoscience Australia's standard parallels (18°S, 36°S).
+    projection: () => geoConicConformal().parallels([-36, -18]).rotate([-134, 0]),
+    // The mainland and Tasmania are pieces; every smaller island shares one.
+    land: collection(pieces(au, "AU", 2)),
+    context: collection([]),
+    bands: ["#c9f2df", "#d3ecfd", "#e2d9ff"],
+    ariaLabel: "Map of Australia with college locations",
+  };
+}
+
 // Topology decoding is not free, so each region is built on first use only.
+const builders: Record<RegionCode, () => RegionGeo> = { US: usGeo, GB: gbGeo, CA: caGeo, AU: auGeo };
 const cache = new Map<RegionCode, RegionGeo>();
 export function regionGeo(region: RegionCode = "US"): RegionGeo {
   let g = cache.get(region);
   if (!g) {
-    g = region === "GB" ? gbGeo() : usGeo();
+    g = builders[region]();
     cache.set(region, g);
   }
   return g;
@@ -99,6 +169,7 @@ export function fitWorld(g: RegionGeo) {
 
 /** Which side the detail card goes on so it doesn't cover the selected college's pin. */
 export function cardSideFor(region: RegionCode, lng: number): "left" | "right" {
-  if (region === "GB") return lng > -2 ? "left" : "right";
-  return lng > -97 ? "left" : "right";
+  // Left when the pin is east of the map's centre line, so the card sits on the empty side.
+  const centre = { US: -97, GB: -2, CA: -96, AU: 134 }[region];
+  return lng > centre ? "left" : "right";
 }

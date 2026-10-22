@@ -1,10 +1,12 @@
 // Countries the app can show colleges for. Codes match public.countries.code / institutions.country_code
 // (the United Kingdom is "GB"). Add a region here and give it a map in components/RegionMap.
-export type RegionCode = "US" | "GB";
+export type RegionCode = "US" | "GB" | "CA" | "AU";
 
 export const REGIONS: { code: RegionCode; label: string; short: string }[] = [
   { code: "US", label: "United States", short: "US" },
   { code: "GB", label: "United Kingdom", short: "UK" },
+  { code: "CA", label: "Canada", short: "CA" },
+  { code: "AU", label: "Australia", short: "AU" },
 ];
 
 export const DEFAULT_REGION: RegionCode = "US";
