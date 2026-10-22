@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
-import { defaultRegion, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
+import { activeRegions, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate, TierCode } from "@/lib/types";
@@ -270,9 +270,13 @@ export function CollegeExplorer({
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<Sort>("tier");
   const [selected, setSelected] = useState<string | null>(null);
-  // Until the reader picks one, follow their first target region (it can arrive after sign-in loads).
+  // Only the regions the student is applying to are offered (all of them while none is chosen). Until the reader
+  // picks one, follow their first target region (it can arrive after sign-in loads).
   const [picked, setPicked] = useState<RegionCode | null>(null);
-  const region = picked ?? defaultRegion(student.profile.targetRegions);  const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
+  const targets = student.profile.targetRegions;
+  const offered = useMemo(() => activeRegions(targets), [targets]);
+  const region = picked && offered.includes(picked) ? picked : offered[0];
+  const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
   const regionCounts = useMemo(() => {
     const n: Record<string, number> = {};
     for (const c of colleges) n[c.country_code ?? "US"] = (n[c.country_code ?? "US"] ?? 0) + 1;
@@ -307,7 +311,7 @@ export function CollegeExplorer({
 
   const regionSwitch = (
     <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label="Country">
-      {REGIONS.map((r) => (
+      {REGIONS.filter((r) => offered.includes(r.code)).map((r) => (
         <button
           key={r.code}
           type="button"

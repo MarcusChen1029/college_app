@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
-import { daysUntil, fmtDate } from "@/lib/format";
+import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
-import { AccountPanel } from "./AccountPanel";
+import { AccountPanel, ReminderToggle } from "./AccountPanel";
+import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
 import { ProfileCards } from "./ProfileCards";
 
 const noop = () => () => {};
@@ -34,15 +35,15 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   const checklistDone = entries.reduce((n, { entry }) => n + progress(entry.checklist).done, 0);
   const submitted = entries.filter(({ entry }) => ["submitted", "interview", "admitted", "deferred", "waitlisted", "rejected", "enrolled"].includes(entry.status)).length;
 
-  const upcoming = entries
-    .flatMap(({ entry, college }) =>
-      deadlines
-        .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0)
-        .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
-        .map((d) => ({ d, college })),
-    )
-    .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!))
-    .slice(0, 5);
+  // Every dated deadline for the colleges on the list (only the plan picked for applications), past ones included.
+  const events: CalendarEvent[] = entries.flatMap(({ entry, college }) =>
+    deadlines
+      .filter((d) => d.institution_id === college.id && d.due_date)
+      .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
+      .map((d) => ({ id: d.id, date: d.due_date!, label: d.label ?? d.kind, college: college.short_name ?? college.name, slug: college.slug })),
+  );
+  const now = new Date();
+  const today = isoOf(now.getFullYear(), now.getMonth(), now.getDate());
 
   const name = student.auth?.email?.split("@")[0] ?? "Guest";
 
@@ -124,39 +125,20 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             )}
           </section>
 
-          <section className="rounded-3xl border-2 border-zinc-200 p-6">
-            <h2 className="text-xl font-bold">Next deadlines</h2>
-            {upcoming.length === 0 ? (
-              <p className="mt-2 text-sm text-zinc-600">No upcoming dates. Add colleges to your list and they&apos;ll show up here.</p>
-            ) : (
-              <ul className="mt-3 divide-y divide-zinc-100">
-                {upcoming.map(({ d, college }) => {
-                  const days = daysUntil(d.due_date!);
-                  return (
-                    <li key={d.id} className="flex items-center justify-between gap-3 py-2.5 text-sm">
-                      <span>
-                        <Link href={`/colleges/${college.slug}`} className="font-semibold hover:text-blue-700">
-                          {college.short_name ?? college.name}
-                        </Link>
-                        <span className="text-zinc-500"> · {d.label ?? d.kind}</span>
-                      </span>
-                      <span className="shrink-0 text-right">
-                        {fmtDate(d.due_date)}
-                        <span className={`ml-2 rounded-full px-2 py-0.5 text-xs font-semibold ${days <= 14 ? "bg-coral/40" : "bg-blue-100"}`}>
-                          {days === 0 ? "today" : `${days}d`}
-                        </span>
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+          <section id="account" className="space-y-3">
+            <h2 className="text-xl font-bold">Account</h2>
+            <AccountPanel />
           </section>
         </div>
 
-        <aside id="account" className="space-y-3">
-          <h2 className="text-xl font-bold">Account</h2>
-          <AccountPanel />
+        <aside aria-labelledby="deadlines-heading" className="h-fit space-y-4 rounded-3xl border-2 border-zinc-200 p-6">
+          <h2 id="deadlines-heading" className="text-xl font-bold">
+            Deadlines
+          </h2>
+          <DeadlineCalendar events={events} today={today} />
+          <div className="border-t border-zinc-100 pt-4">
+            <ReminderToggle />
+          </div>
         </aside>
       </div>
     </div>

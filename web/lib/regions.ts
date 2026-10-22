@@ -18,5 +18,11 @@ export const regionLabel = (code: string) => REGIONS.find((r) => r.code === code
 // Keeps only known codes, without repeats, in the order given.
 export const cleanRegions = (v: unknown): RegionCode[] => (Array.isArray(v) ? [...new Set(v.filter(isRegion))] : []);
 
+// The regions the Colleges and Portals pages show: the ones the student is applying to, or all of them while none is chosen.
+export const activeRegions = (targets?: string[]): RegionCode[] => {
+  const chosen = cleanRegions(targets);
+  return chosen.length ? chosen : REGIONS.map((r) => r.code);
+};
+
 // The region the colleges page opens on: the student's first target region, else the US.
 export const defaultRegion = (targets?: string[]): RegionCode => cleanRegions(targets)[0] ?? DEFAULT_REGION;
