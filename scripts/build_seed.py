@@ -13,7 +13,7 @@ Usage: python3 scripts/build_seed.py [--check] [--only slug,slug] [--insert-only
   --insert-only  omit the leading delete (for colleges not yet in the database)
   --out          write here instead of supabase/seed/10_colleges.sql
 """
-import json, sys, uuid, glob, os, datetime
+import json, sys, uuid, glob, os, datetime, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NS = uuid.UUID("6f1c0e5e-3b7a-4d7e-9a51-0c0e11e9e000")
@@ -56,7 +56,7 @@ def render(stmts):
         lit = lambda r, k: str(r[k]) if isinstance(r.get(k), RawSQL) else q(r.get(k))
         # Hoist columns that are identical in every row out of the VALUES list to keep the payload small.
         const = [k for k in cols if len(rows) > 1 and len({lit(r, k) for r in rows}) == 1]
-        if const and not any(k.endswith("_date") or k == "accessed_on" for k in cols):
+        if const and not any(k.endswith("_date") or k in ("accessed_on", "retrieved_on", "application_deadline") for k in cols):
             var = [k for k in cols if k not in const]
             head = ", ".join(lit(rows[0], k) + ("::uuid" if k.endswith("_id") or k == "id" else "") for k in const)
             uuidish = lambda k: k.endswith("_id") or k == "id"
@@ -73,6 +73,7 @@ class RawSQL(str):
 
 # Allowed values, mirroring the check constraints / lookup tables in supabase/migrations + seed/00_lookups.sql
 ENUMS = {
+    "country": {"US", "GB"},  # rows in public.countries the app has a region for (web/lib/regions.ts)
     "setting": {"urban", "suburban", "rural"},
     "control": {"public", "private_nonprofit", "private_forprofit"},
     "academic_calendar": {"semester", "quarter", "trimester", "4-1-4", "other"},
@@ -109,6 +110,43 @@ def check(cond, msg):
 def arg(name):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else None
 
+PROGRAM_COLS = ["name", "award", "ucas_code", "duration_years", "a_level_offer", "ib_offer", "ib_points",
+                "required_subjects", "admissions_test", "interviewed_pct", "success_pct", "intake", "intl_fee_gbp",
+                "application_deadline", "ielts_overall", "ielts_component", "toefl_note", "english_note", "notes",
+                "source_url", "retrieved_on"]
+# (min, max) sanity bounds for numeric program fields; mirrors the check constraints in 0015_programs.sql
+PROGRAM_RANGES = {"duration_years": (1, 8), "ib_points": (0, 45), "interviewed_pct": (0, 100), "success_pct": (0, 100),
+                  "intake": (1, 100000), "intl_fee_gbp": (1000, 200000), "ielts_overall": (0, 9), "ielts_component": (0, 9)}
+
+def iso_date(v):
+    try:
+        return datetime.date.fromisoformat(v) and len(v) == 10
+    except (TypeError, ValueError):
+        return False
+
+def program_row(slug, iid, p):
+    ps = p.get("slug")
+    where = f"{slug}/{ps}"
+    for k in ("slug", "name", "source_url", "retrieved_on"):
+        check(bool(p.get(k)), f"{where}: program missing {k}")
+    check(isinstance(ps, str) and re.fullmatch(r"[a-z0-9-]+", ps) is not None, f"{where}: program slug must match [a-z0-9-]+")
+    unknown = set(p) - set(PROGRAM_COLS) - {"slug"}
+    check(not unknown, f"{where}: unknown program keys {sorted(unknown)}")
+    check(str(p.get("source_url", "")).startswith("http"), f"{where}: source_url must be an http(s) URL")
+    for k in ("retrieved_on", "application_deadline"):
+        if p.get(k) is not None:
+            check(iso_date(p[k]), f"{where}: {k} {p[k]!r} is not an ISO date (YYYY-MM-DD)")
+    for k, (lo, hi) in PROGRAM_RANGES.items():
+        v = p.get(k)
+        if v is not None:
+            check(isinstance(v, (int, float)) and not isinstance(v, bool) and lo <= v <= hi, f"{where}: {k} {v!r} outside {lo}..{hi}")
+    for k in ("duration_years", "ib_points", "intake", "intl_fee_gbp"):
+        check(p.get(k) is None or isinstance(p[k], int), f"{where}: {k} must be an integer")
+    if p.get("ielts_overall") is not None and p.get("ielts_component") is not None:
+        check(p["ielts_component"] <= p["ielts_overall"], f"{where}: ielts_component above ielts_overall")
+    check(p.get("ucas_code") is None or re.fullmatch(r"[A-Z0-9]{4}", p["ucas_code"]) is not None, f"{where}: ucas_code {p.get('ucas_code')!r} is not 4 characters")
+    return {"id": uid("prog", slug, str(ps)), "institution_id": iid, "slug": ps, **{k: p.get(k) for k in PROGRAM_COLS}}
+
 def build(only=None, insert_only=False):
     colleges = [json.load(open(p, encoding="utf-8")) for p in sorted(glob.glob(os.path.join(ROOT, "data/colleges/*.json")))]
     cycle = json.load(open(os.path.join(ROOT, "data/cycle_2026_27.json"), encoding="utf-8"))
@@ -130,10 +168,11 @@ def build(only=None, insert_only=False):
         iid = uid("inst", slug)
         for k in ("setting", "control", "academic_calendar"):
             enum(slug, k, c.get(k))
+        check(c.get("country_code", "US") in ENUMS["country"], f"{slug}: country_code {c.get('country_code')!r} not allowed")
         ug, intl = c.get("undergrad_enrollment"), c.get("intl_undergrads")
         out.append(f"\n-- ── {c['name']} ──")
         out.append(insert("institutions", {
-            "id": iid, "slug": slug, "name": c["name"], "short_name": c.get("short_name"), "country_code": "US",
+            "id": iid, "slug": slug, "name": c["name"], "short_name": c.get("short_name"), "country_code": c.get("country_code", "US"),
             "state_region": c.get("state_region"), "city": c.get("city"),
             "latitude": c.get("latitude"), "longitude": c.get("longitude"),
             "setting": c.get("setting"), "control": c.get("control"),
@@ -203,7 +242,8 @@ def build(only=None, insert_only=False):
 
         # test policy: admissions site wins over CDS C8
         tp = cy.get("test_policy") or c.get("cds_test_policy")
-        check(tp is not None, f"{slug}: no test policy")
+        # SAT/ACT policy only exists for US colleges; UK courses carry their admissions test on the program row
+        check(tp is not None or c.get("country_code", "US") != "US", f"{slug}: no test policy")
         if tp:
             enum(slug, "test_policy", tp.get("policy"), nullable=False)
             out.append(insert("test_policies", {"institution_id": iid, "cycle": CYCLE, "policy": tp["policy"],
@@ -308,6 +348,12 @@ def build(only=None, insert_only=False):
                 "id": uid("major", slug, m["program"]), "institution_id": iid, "program": m["program"],
                 "category_key": m.get("category"), "admit_model": m["admit_model"], "capped": m.get("capped", False),
                 "internal_transfer": m.get("internal_transfer"), "notes": m.get("notes")}))
+
+        # course-level data (UK/UCAS style); optional "programs" array in data/colleges/<slug>.json
+        pslugs = [p.get("slug") for p in c.get("programs", [])]
+        check(len(pslugs) == len(set(pslugs)), f"{slug}: duplicate program slugs")
+        for p in c.get("programs", []):
+            out.append(insert("programs", program_row(slug, iid, p)))
 
     out.append("commit;")
     return "\n".join(render(out)) + "\n"

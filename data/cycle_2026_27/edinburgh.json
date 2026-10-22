@@ -1,0 +1,46 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - 2027 entry deadlines (Oxford, Cambridge and most Medicine: 15 Oct 2026; all other courses: 13 Jan 2027, 18:00 UK time)",
+      "url": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+      "accessed": "2026-10-22"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-22"
+    },
+    "programmes": {
+      "kind": "admissions_site",
+      "title": "Edinburgh - Undergraduate degree finder (entry requirements per programme)",
+      "url": "https://study.ed.ac.uk/programmes/undergraduate",
+      "accessed": "2026-10-22"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (non-Medicine courses)",
+      "notes": "18:00 UK time. UCAS main round.",
+      "src": "ucas"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-10-15",
+      "label": "UCAS deadline (Medicine MBChB)",
+      "notes": "18:00 UK time. Early UCAS deadline for Medicine.",
+      "src": "ucas"
+    }
+  ],
+  "tiers": {
+    "general": "B"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 19th of 130 UK universities (B = ranks 16-40 on the national scale)."
+  }
+}

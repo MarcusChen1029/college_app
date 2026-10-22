@@ -1,0 +1,38 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - 2027 entry deadlines (Oxford, Cambridge and most Medicine: 15 Oct 2026; all other courses: 13 Jan 2027, 18:00 UK time)",
+      "url": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+      "accessed": "2026-10-22"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-22"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "UCL - English language requirements (undergraduate)",
+      "url": "https://www.ucl.ac.uk/study/prospective-students/undergraduate/how-apply/english-language-requirements",
+      "accessed": "2026-10-22"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (UCL courses other than Medicine)",
+      "notes": "18:00 UK time. UCAS main round, equal-consideration deadline.",
+      "src": "ucas"
+    }
+  ],
+  "tiers": {
+    "general": "A"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: joint 13th of 130 UK universities (tied with Sheffield; A = ranks 6-15 on the national scale)."
+  }
+}

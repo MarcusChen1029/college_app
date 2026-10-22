@@ -1,0 +1,75 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - 2027 entry deadlines (Oxford, Cambridge and most Medicine: 15 Oct 2026; all other courses: 13 Jan 2027, 18:00 UK time)",
+      "url": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+      "accessed": "2026-10-22"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-22"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "Oxford - English language requirements and visas (undergraduate, international)",
+      "url": "https://www.ox.ac.uk/admissions/undergraduate/applying/for-international-students/english-language-requirements-visas",
+      "accessed": "2026-10-22"
+    },
+    "stats": {
+      "kind": "admissions_site",
+      "title": "Oxford - Undergraduate admissions statistics",
+      "url": "https://www.ox.ac.uk/about/the-university/facts-and-figures/admissions-statistics/undergraduate",
+      "accessed": "2026-10-22"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-10-15",
+      "label": "UCAS deadline (all Oxford courses)",
+      "notes": "18:00 UK time. UCAS main round; this is the early UCAS deadline that applies to every Oxford course, Medicine and Dentistry/Veterinary. Admissions tests are sat in October (TMUA 12-16 Oct 2026 for Computer Science).",
+      "src": "ucas"
+    }
+  ],
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 7.5,
+      "subs": {
+        "each_component": 7.0
+      },
+      "notes": "IELTS Academic, 7.5 overall and 7.0 in each component, for all courses. Proof due by 31 July after an offer.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 110,
+      "subs": {
+        "listening": 22,
+        "reading": 24,
+        "speaking": 25,
+        "writing": 24
+      },
+      "notes": "Only for tests taken up to 20 Jan 2026.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "not_accepted",
+      "notes": "TOEFL tests taken from 21 Jan 2026 are not accepted; Oxford's policy is under review.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 2nd of 130 UK universities (top ~5 = S on the national scale)."
+  }
+}
