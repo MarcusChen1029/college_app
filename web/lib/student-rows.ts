@@ -1,0 +1,138 @@
+// Row mapping between the student_profiles / student_colleges tables and the app's types.
+// Shared by the browser store (student-store.ts) and the server-side Connect AI tools, so both
+// read and write the same shapes. No React and no Supabase client in here.
+
+import type { ActivityData } from "./activities.ts";
+import type { Checklist } from "./checklist.ts";
+import type { StudentProfile } from "./fit.ts";
+import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
+import type { PortalData } from "./portals.ts";
+import type { ResumeSettings } from "./resume.ts";
+import type { TestDetails } from "./scores.ts";
+
+export const STATUSES = [
+  "researching",
+  "planning",
+  "in_progress",
+  "submitted",
+  "interview",
+  "admitted",
+  "deferred",
+  "waitlisted",
+  "rejected",
+  "withdrawn",
+  "enrolled",
+] as const;
+export type Status = (typeof STATUSES)[number];
+
+export type Portal = { url: string; username: string; password: string };
+
+export type ListEntry = {
+  slug: string;
+  institutionId: string;
+  plan: string | null;
+  status: Status;
+  notes: string;
+  checklist: Checklist;
+  portal: Portal;
+  addedAt: string;
+};
+
+export type ProfileRow = {
+  sat_total: number | null;
+  act_composite: number | null;
+  gpa_unweighted: number | null;
+  is_international: boolean;
+  target_regions: string[] | null;
+  reminder_emails: boolean;
+  plan: PlanKey;
+  test_details: TestDetails | null;
+  interested: string[] | null;
+  activities: Partial<ActivityData> | null;
+  resume: ResumeSettings | null;
+  /** Absent when the row was read with PROFILE_COLUMNS_NO_LOGINS. */
+  portals?: PortalData | null;
+};
+export type CollegeRow = {
+  institution_id: string;
+  plan_key: string | null;
+  status: Status;
+  notes: string | null;
+  checklist: Checklist | null;
+  /** The three portal_* fields are absent when the row was read with COLLEGE_COLUMNS_NO_LOGINS. */
+  portal_url?: string | null;
+  portal_username?: string | null;
+  portal_password?: string | null;
+  created_at: string;
+  institutions: { slug: string } | null;
+};
+
+const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume";
+const COLLEGE_BASE = "institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
+
+/** What the website reads (includes the saved logins). */
+export const PROFILE_COLUMNS = `${PROFILE_BASE}, portals`;
+export const COLLEGE_COLUMNS = "institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)";
+
+/** What server-side code acting for an AI must read: explicit columns that leave the saved logins out. */
+export const PROFILE_COLUMNS_NO_LOGINS = PROFILE_BASE;
+export const COLLEGE_COLUMNS_NO_LOGINS = COLLEGE_BASE;
+
+/** A tab left open can hold old data (an AI may have changed it). Reload when the tab is used again, at most every 30 s, never mid-save. */
+export const REFRESH_MIN_MS = 30_000;
+export const shouldRefresh = (x: { signedIn: boolean; now: number; lastLoad: number; savesInFlight: number; loading: boolean }) =>
+  x.signedIn && x.savesInFlight === 0 && !x.loading && x.now - x.lastLoad >= REFRESH_MIN_MS;
+
+export const toProfile = (r: ProfileRow): StudentProfile => ({
+  sat: r.sat_total,
+  act: r.act_composite,
+  gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
+  international: r.is_international,
+  targetRegions: r.target_regions ?? [],
+  reminderEmails: r.reminder_emails,
+  plan: r.plan,
+  tests: r.test_details ?? {},
+  interested: r.interested ?? [],
+  activities: r.activities ?? {},
+  resume: r.resume ?? {},
+  portals: r.portals ?? {},
+});
+export const fromProfile = (userId: string, p: StudentProfile) => ({
+  user_id: userId,
+  sat_total: p.sat ?? null,
+  act_composite: p.act ?? null,
+  gpa_unweighted: p.gpa ?? null,
+  is_international: !!p.international,
+  target_regions: p.targetRegions ?? [],
+  reminder_emails: p.reminderEmails ?? true,
+  plan: p.plan ?? DEFAULT_PLAN,
+  test_details: p.tests ?? {},
+  interested: p.interested ?? [],
+  activities: p.activities ?? {},
+  resume: p.resume ?? {},
+  portals: p.portals ?? {},
+});
+export const toEntry = (r: CollegeRow): ListEntry => ({
+  slug: r.institutions?.slug ?? "",
+  institutionId: r.institution_id,
+  plan: r.plan_key,
+  status: r.status,
+  notes: r.notes ?? "",
+  checklist: r.checklist ?? {},
+  portal: { url: r.portal_url ?? "", username: r.portal_username ?? "", password: r.portal_password ?? "" },
+  addedAt: r.created_at,
+});
+export const portalColumns = (p: Portal) => ({
+  portal_url: p.url || null,
+  portal_username: p.username || null,
+  portal_password: p.password || null,
+});
+export const fromEntry = (userId: string, e: ListEntry) => ({
+  user_id: userId,
+  institution_id: e.institutionId,
+  plan_key: e.plan,
+  status: e.status,
+  notes: e.notes || null,
+  checklist: e.checklist,
+  ...portalColumns(e.portal),
+});

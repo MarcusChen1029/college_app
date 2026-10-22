@@ -13,17 +13,26 @@ import type { TierCode } from "@/lib/types";
 import { TIER_FILL, USMap, type MapPin } from "./USMap";
 
 // World units: the region's land is fitted into ±halfW × ±halfD (US: 960 × 600), centred on the origin, y up.
-// Camera framing, pan limits, clouds and sparkles all scale from that box; see lib/region-geo.ts.
+// Camera framing, pan limits and sparkles all scale from that box; see lib/region-geo.ts.
 const SLAB = 9; // state thickness
 const GAP = 0.985; // states shrink a touch about their centroid, so the map reads as puzzle pieces
 const FOV = 32;
+// The camera keeps one fixed tilt and heading (no rotating); people can only zoom and pan.
 const OVERVIEW_POLAR = 0.74;
-const FOCUS_POLAR = 1.02;
+// With nothing left to animate, ambient motion (sparkles, pin bob, ripples) keeps going this long after the last interaction, then the map stops redrawing.
+const IDLE_MS = 3000;
+// Fill cost grows with the pixels drawn (about 60 ms a frame at a 1200x860 canvas on 1.5x density, 35 ms at 1x), so
+// while anything moves the map is drawn at no more than this many pixels, then sharpened to full density once it has
+// been still for SHARPEN_MS.
+const MOTION_PIXELS = 1_000_000;
+const SHARPEN_MS = 600;
 
 // State tops shade west to east through the region's bands (US: mint, sky blue, lilac).
 const WHITE = new THREE.Color("#ffffff");
 // Neighbouring land shown only for context (Ireland next to the UK) is a quiet grey-blue.
 const MUTED_TOP = new THREE.Color("#eef3f7");
+const EDGE = new THREE.Color("#8ccdf0");
+const EDGE_SEL = new THREE.Color("#12304a");
 const CONFETTI = ["#ffd84d", "#ff7a66", "#6fd9b3", "#b9a8ff", "#4dbcef"];
 
 type Ring = [number, number][];
@@ -39,6 +48,7 @@ type StateMesh = {
   cz: number;
   delay: number;
   lift: number;
+  shade: number; // the tint last written to `top` and `edge`, so colours are only touched when it changes
 };
 type Pin3D = {
   slug: string;
@@ -170,6 +180,7 @@ function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureColle
       // The map rises in a wave from west to east.
       delay: 120 + ((cx + g.halfW) / (2 * g.halfW)) * 900 + Math.abs(cz) * 0.4,
       lift: 0,
+      shade: -1,
     } satisfies StateMesh;
   });
   // Pieces that project to nothing (e.g. territories outside Albers USA, specks of island) carry no mesh worth keeping.
@@ -223,12 +234,18 @@ export function USMap3D(props: {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let w = Math.max(1, el.clientWidth);
     let h = Math.max(1, el.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const restRatio = Math.min(window.devicePixelRatio, 2);
+    // The pixel density used while the map moves: the screen's, capped to 1 and to the pixel budget above.
+    const motionRatio = () => Math.min(restRatio, 1, Math.sqrt(MOTION_PIXELS / (w * h)));
+    renderer.setPixelRatio(motionRatio());
     renderer.setSize(w, h);
     renderer.toneMapping = THREE.NeutralToneMapping;
     renderer.toneMappingExposure = 1;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
+    // The shadow map is redrawn only when something that casts a shadow moves (see shadowDirty in the frame loop).
+    renderer.shadowMap.autoUpdate = false;
+    renderer.shadowMap.needsUpdate = true;
     const canvas = renderer.domElement;
     canvas.className = "absolute inset-0 block h-full w-full";
     canvas.setAttribute("aria-hidden", "true");
@@ -247,9 +264,13 @@ export function USMap3D(props: {
     controls.dampingFactor = 0.08;
     controls.minDistance = 140;
     controls.maxDistance = 2400;
-    controls.maxPolarAngle = 1.32;
+    controls.minPolarAngle = controls.maxPolarAngle = OVERVIEW_POLAR;
+    controls.minAzimuthAngle = controls.maxAzimuthAngle = 0;
+    controls.enableRotate = false;
     controls.screenSpacePanning = false;
-    controls.rotateSpeed = 0.6;
+    // No rotating, so a plain drag pans the map.
+    controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
+    controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN };
 
     // Light: a warm sun from the north-west, sky-blue bounce from below.
     scene.add(new THREE.HemisphereLight("#ffffff", "#9fd3f2", 1.25));
@@ -264,7 +285,7 @@ export function USMap3D(props: {
     Object.assign(sun.shadow.camera, { left: -(halfW + 200), right: halfW + 200, top: halfD + 160, bottom: -(halfD + 160), near: 100, far: 1800 });
     scene.add(sun, sun.target);
 
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(4000, 4000), new THREE.ShadowMaterial({ opacity: 0.16 }));
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(2 * halfW + 240, 2 * halfD + 240), new THREE.ShadowMaterial({ opacity: 0.16 }));
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);
@@ -277,31 +298,8 @@ export function USMap3D(props: {
       if (!reduced) s.mesh.scale.y = 0.001;
       scene.add(s.mesh);
     }
-
-    // Clouds: puffs of spheres drifting east, casting soft shadows across the states.
-    // Positions are laid out on the US box and stretched to the region's.
-    const cloudMat = new THREE.MeshStandardMaterial({ color: "#ffffff", emissive: "#eaf6ff", emissiveIntensity: 0.55, roughness: 1, transparent: true, opacity: 0.94 });
-    const puff = new THREE.SphereGeometry(1, 20, 14);
-    const cloudWrap = halfW + 200;
-    const clouds = [
-      { x: -420, y: 150, z: -150, s: 1.1, v: 7 },
-      { x: 60, y: 175, z: 120, s: 1.4, v: 5 },
-      { x: 420, y: 140, z: -40, s: 0.9, v: 8 },
-      { x: -120, y: 190, z: 260, s: 1, v: 6 },
-    ].map((c, ci) => {
-      const g = new THREE.Group();
-      for (let k = 0; k < 6; k++) {
-        const m = new THREE.Mesh(puff, cloudMat);
-        const r = (13 + ((k * 37 + ci * 11) % 9)) * c.s;
-        m.scale.set(r, r * 0.8, r);
-        m.position.set((k - 2.5) * 13 * c.s, ((k * 5) % 3) * 4 * c.s, ((k * 13) % 7) * 3 * c.s);
-        g.add(m);
-      }
-      g.position.set(c.x * (halfW / 480), c.y, c.z * (halfD / 300));
-      scene.add(g);
-      return { g, v: c.v };
-    });
-    let cloudAlpha = reduced ? 0.94 : 0;
+    // The rise-in animation moves the states (and so their shadows) until the last one has landed.
+    const riseMs = Math.max(0, ...states.map((s) => s.delay), ...context.map((s) => s.delay)) + 1000;
 
     // Sparkles drifting up off the map.
     const SPARKS = 160;
@@ -417,6 +415,9 @@ export function USMap3D(props: {
     );
     confetti.frustumCulled = false;
     confetti.visible = false;
+    // The colour buffer is created now, not at the first burst: having one changes the shader, which would then
+    // compile in the middle of the first selection.
+    for (let i = 0; i < BITS; i++) confetti.setColorAt(i, WHITE);
     scene.add(confetti);
     const bits = Array.from({ length: BITS }, () => ({
       p: new THREE.Vector3(),
@@ -532,6 +533,7 @@ export function USMap3D(props: {
       for (const p of pinMap.values()) if (!keep.has(p.slug) && p.leaving == null) p.leaving = now;
       // The focused college was filtered out: head back to the whole map.
       if (selSlug && !keep.has(selSlug)) flyTo(targetRig());
+      wake();
     };
 
     // Camera rig.
@@ -563,8 +565,8 @@ export function USMap3D(props: {
         ty: SLAB + 10,
         tz: p.z,
         dist,
-        polar: FOCUS_POLAR,
-        az: Math.max(-0.45, Math.min(0.45, (-p.x / halfW) * 0.4)),
+        polar: OVERVIEW_POLAR,
+        az: 0,
         ax: sheet ? 0.5 : selSide === "right" ? 0.31 : 0.69,
         ay: sheet ? 0.32 : 0.56,
       };
@@ -584,10 +586,10 @@ export function USMap3D(props: {
       return fly.dur;
     };
 
-    // Intro: start high above, swoop down to the tilted overview while the states rise.
+    // Intro: start further out and glide in to the overview while the states rise.
     if (reduced) applyRig(rig);
     else {
-      applyRig({ ...rig, dist: rig.dist * 1.9, polar: 0.12, az: -0.6 });
+      applyRig({ ...rig, dist: rig.dist * 1.9 });
       flyTo(overview(), 2600);
     }
 
@@ -599,6 +601,7 @@ export function USMap3D(props: {
       selSide = side;
       const next = slug ? pinMap.get(slug) : undefined;
       const dur = flyTo(targetRig());
+      wake();
       if (!changed || !next) return;
       beamMat.uniforms.uColor.value = srgb(fillOf(next.tier));
       for (const r of ripples) (r.material as THREE.MeshBasicMaterial).color.set(fillOf(next.tier));
@@ -615,6 +618,7 @@ export function USMap3D(props: {
     const ndc = new THREE.Vector2();
     const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -SLAB);
     const hitPoint = new THREE.Vector3();
+    const hitList: THREE.Object3D[] = [];
     let pointerIn = false;
     let pointerDirty = false;
     let hoverPin: Pin3D | null = null;
@@ -625,23 +629,25 @@ export function USMap3D(props: {
       ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       pointerIn = true;
       pointerDirty = true;
+      wake();
     };
     const onLeave = () => {
       pointerIn = false;
       pointerDirty = true;
+      wake();
     };
     const pick = () => {
       ray.setFromCamera(ndc, camera);
-      const hits = ray.intersectObjects(
-        [...pinMap.values()].filter((p) => p.leaving == null && p.root.visible).map((p) => p.hit),
-        false,
-      );
+      hitList.length = 0;
+      for (const p of pinMap.values()) if (p.leaving == null && p.root.visible) hitList.push(p.hit);
+      const hits = ray.intersectObjects(hitList, false);
       const pin = hits.length ? pinMap.get(hits[0].object.userData.slug as string) ?? null : null;
       const st = ray.ray.intersectPlane(plane, hitPoint) ? stateAt(states, hitPoint.x, hitPoint.z) : null;
       return { pin, st };
     };
     const onDown = (e: PointerEvent) => {
       down = { x: e.clientX, y: e.clientY };
+      wake();
       if (fly) {
         // Let the person grab the camera mid-flight.
         fly = null;
@@ -673,21 +679,33 @@ export function USMap3D(props: {
       controls.enabled = true;
       rig = targetRig();
       applyRig(rig);
+      wake();
     };
     const ro = new ResizeObserver(([entry]) => resizeTo(Math.round(entry.contentRect.width), Math.round(entry.contentRect.height)));
     ro.observe(el);
 
-    // Frame loop.
+    // Frame loop. It runs only while something moves (camera, hover, intro, pins, effects) or for IDLE_MS after the
+    // last interaction, and never while the map is off-screen; otherwise the last frame stays up and the GPU rests.
     const start = performance.now();
     let last = start;
     const v = new THREE.Vector3();
     const toCam = new THREE.Vector3();
-    renderer.setAnimationLoop(() => {
+    let frame = 0;
+    let pinsWereShown = false;
+    // Ambient motion runs on its own clock, which stops while the loop sleeps so nothing jumps on wake.
+    let time = 0;
+    let running = false;
+    let onScreen = true;
+    let lastActive = performance.now();
+    const tick = () => {
       const now = performance.now();
+      let shadowDirty = !reduced && now - start < riseMs;
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      const time = (now - start) / 1000;
+      time += dt;
       const k = 1 - Math.exp(-dt * 10);
+      // Anything still settling keeps the loop awake.
+      let busy = !!fly || pointerDirty || now - start < riseMs + 1200 || !!arc || burstAt != null;
 
       if (fly) {
         const t = (now - fly.t0) / fly.dur;
@@ -699,7 +717,7 @@ export function USMap3D(props: {
           controls.update();
         }
       } else {
-        controls.update();
+        if (controls.update()) busy = true;
         // Keep panning on the map.
         controls.target.x = Math.max(-halfW - 80, Math.min(halfW + 80, controls.target.x));
         controls.target.z = Math.max(-halfD - 80, Math.min(halfD + 80, controls.target.z));
@@ -728,24 +746,40 @@ export function USMap3D(props: {
           s.mesh.scale.y = Math.max(0.001, easeOutBack(t));
         }
         const goal = s === selState ? 7 : s === hoverState ? 2.5 : 0;
+        const before = s.lift;
         s.lift += (goal - s.lift) * k;
-        s.mesh.position.y = s.lift;
+        if (Math.abs(goal - s.lift) < 0.01) s.lift = goal;
+        if (s.lift !== before) {
+          s.mesh.position.y = s.lift;
+          shadowDirty = true;
+          busy = true;
+        }
         const tint = s === selState ? 0.75 : s === hoverState ? 0.4 : 0;
-        s.top.color.lerpColors(s.baseTop, WHITE, tint);
-        s.edge.color.set(s === selState ? "#12304a" : "#8ccdf0");
+        if (tint !== s.shade) {
+          s.shade = tint;
+          s.top.color.lerpColors(s.baseTop, WHITE, tint);
+          s.edge.color.copy(s === selState ? EDGE_SEL : EDGE);
+        }
       }
 
       // Pins.
       const pinScale = Math.min(2.1, Math.max(0.7, 1.65 * Math.sqrt(camDist / 950)));
-      for (const p of [...pinMap.values()]) {
+      let pinsShown = false;
+      for (const p of pinMap.values()) {
         const base = pinBase(p);
         p.root.position.y = base;
         const isSel = p === selPin;
-        p.hover += ((p === hoverPin ? 1 : 0) - p.hover) * k;
-        p.sel += ((isSel ? 1 : 0) - p.sel) * k;
+        const hoverGoal = p === hoverPin ? 1 : 0;
+        const selGoal = isSel ? 1 : 0;
+        p.hover += (hoverGoal - p.hover) * k;
+        p.sel += (selGoal - p.sel) * k;
+        if (Math.abs(hoverGoal - p.hover) < 0.002) p.hover = hoverGoal;
+        if (Math.abs(selGoal - p.sel) < 0.002) p.sel = selGoal;
+        if (p.hover !== hoverGoal || p.sel !== selGoal || now < p.born + 900 || p.leaving != null || p.pop != null) busy = true;
         // Unselected pins stay hidden; a deselected one shrinks away.
         const show = isSel ? 1 : reduced ? 0 : p.sel;
         p.root.visible = show > 0.02;
+        if (p.root.visible) pinsShown = true;
         let s = pinScale * (1 + 0.25 * p.hover + 0.25 * p.sel) * show;
         let drop = 0;
         if (!reduced) {
@@ -792,10 +826,17 @@ export function USMap3D(props: {
         }
       }
 
+      // A visible pin bobs and bounces, so its shadow is refreshed every other frame; one more pass clears it once the pin is gone.
+      if ((pinsShown && (frame & 1) === 0) || (pinsWereShown && !pinsShown)) shadowDirty = true;
+      pinsWereShown = pinsShown;
+      frame++;
+
       // Selection effects follow the selected pin.
       if (selPin && selPin.leaving == null && !fly) {
         const base = pinBase(selPin);
         beamMat.uniforms.uOpacity.value += (1 - beamMat.uniforms.uOpacity.value) * k * 0.6;
+        if (beamMat.uniforms.uOpacity.value > 0.995) beamMat.uniforms.uOpacity.value = 1;
+        else busy = true;
         beam.visible = true;
         beam.position.set(selPin.x, base, selPin.z);
         beam.scale.set(pinScale, 1, pinScale);
@@ -809,6 +850,7 @@ export function USMap3D(props: {
       } else {
         beamMat.uniforms.uOpacity.value = Math.max(0, beamMat.uniforms.uOpacity.value - dt * 4);
         if (beamMat.uniforms.uOpacity.value <= 0) beam.visible = false;
+        else busy = true;
         for (const r of ripples) r.visible = false;
       }
       beamMat.uniforms.uTime.value = time;
@@ -842,30 +884,78 @@ export function USMap3D(props: {
         }
       }
 
-      // Clouds drift; they clear out of the way while a college is in focus.
-      const cloudGoal = selPin ? 0 : 0.94;
-      cloudAlpha += (cloudGoal - cloudAlpha) * k * (now - start > 900 ? 0.5 : 0);
-      cloudMat.opacity = cloudAlpha;
-      for (const c of clouds) {
-        if (!reduced) c.g.position.x += c.v * dt;
-        if (c.g.position.x > cloudWrap) c.g.position.x = -cloudWrap;
-        c.g.visible = cloudAlpha > 0.02;
-      }
-
       sparkMat.uniforms.uTime.value = reduced ? 0 : time;
       sparkMat.uniforms.uAlpha.value = Math.min(1, Math.max(0, (now - start - 1200) / 1200));
 
+      if (shadowDirty) renderer.shadowMap.needsUpdate = true;
+      const ratio = now - lastActive > SHARPEN_MS ? restRatio : motionRatio();
+      if (renderer.getPixelRatio() !== ratio) {
+        renderer.setPixelRatio(ratio);
+        sparkMat.uniforms.uPx.value = ratio;
+      }
       renderer.render(scene, camera);
+
+      if (busy) lastActive = now;
+      else if (now - lastActive > IDLE_MS) sleep();
+    };
+    const sleep = () => {
+      if (!running) return;
+      running = false;
+      renderer.setAnimationLoop(null);
+    };
+    // Called on any interaction or change; restarts the loop if it was asleep.
+    function wake() {
+      lastActive = performance.now();
+      if (running || !onScreen) return;
+      running = true;
+      last = performance.now();
+      renderer.setAnimationLoop(tick);
+    }
+    controls.addEventListener("change", wake);
+    // Off-screen (scrolled away): stop drawing entirely; resume when it comes back.
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen) wake();
+      else sleep();
     });
+    io.observe(el);
+    wake();
 
     api.current = { setPins, select, resizeTo };
     setPins(latest.current.pins);
     if (latest.current.selected) select(latest.current.selected, latest.current.cardSide);
 
+    // Pins and the selection effects stay hidden until a college is picked, and the first selection used to freeze for
+    // a few hundred milliseconds: shaders were built on first use, and the first draw of each object costs the graphics
+    // driver more again. Show them just long enough to compile in parallel with the intro, then draw them once.
+    let disposed = false;
+    const unseen = [beam, confetti, arcHead, ...ripples];
+    const wasShown = unseen.map((o) => o.visible);
+    unseen.forEach((o) => (o.visible = true));
+    const compiled = renderer.compileAsync(scene, camera);
+    unseen.forEach((o, i) => (o.visible = wasShown[i]));
+    compiled
+      .then(() => {
+        if (disposed) return;
+        const hidden: THREE.Object3D[] = [];
+        scene.traverse((o) => {
+          if (!o.visible) hidden.push(o);
+        });
+        hidden.forEach((o) => (o.visible = true));
+        renderer.render(scene, camera);
+        hidden.forEach((o) => (o.visible = false));
+        // The canvas keeps whatever was drawn last while the loop sleeps, so put the real frame back.
+        renderer.render(scene, camera);
+      })
+      .catch(() => undefined);
+
     return () => {
+      disposed = true;
       api.current = null;
       renderer.setAnimationLoop(null);
       ro.disconnect();
+      io.disconnect();
+      controls.removeEventListener("change", wake);
       canvas.removeEventListener("pointermove", onMove);
       canvas.removeEventListener("pointerleave", onLeave);
       canvas.removeEventListener("pointerdown", onDown);

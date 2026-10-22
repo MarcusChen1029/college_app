@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
-import { defaultRegion, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
+import { activeRegions, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate, TierCode } from "@/lib/types";
@@ -170,7 +170,7 @@ function DetailCard({
 
   return (
     <article
-      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-3xl border-2 border-ink bg-white/95 p-5 shadow-[6px_6px_0_0_#cdeafc] backdrop-blur max-lg:rounded-b-none"
+      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-3xl border-2 border-ink bg-white p-5 shadow-[6px_6px_0_0_#cdeafc] max-lg:rounded-b-none"
       style={{ "--from": side === "right" ? "28px" : "-28px" } as React.CSSProperties}
     >
       <header className="flex items-start gap-3">
@@ -270,9 +270,13 @@ export function CollegeExplorer({
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<Sort>("tier");
   const [selected, setSelected] = useState<string | null>(null);
-  // Until the reader picks one, follow their first target region (it can arrive after sign-in loads).
+  // Only the regions the student is applying to are offered (all of them while none is chosen). Until the reader
+  // picks one, follow their first target region (it can arrive after sign-in loads).
   const [picked, setPicked] = useState<RegionCode | null>(null);
-  const region = picked ?? defaultRegion(student.profile.targetRegions);  const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
+  const targets = student.profile.targetRegions;
+  const offered = useMemo(() => activeRegions(targets), [targets]);
+  const region = picked && offered.includes(picked) ? picked : offered[0];
+  const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
   const regionCounts = useMemo(() => {
     const n: Record<string, number> = {};
     for (const c of colleges) n[c.country_code ?? "US"] = (n[c.country_code ?? "US"] ?? 0) + 1;
@@ -307,7 +311,7 @@ export function CollegeExplorer({
 
   const regionSwitch = (
     <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label="Country">
-      {REGIONS.map((r) => (
+      {REGIONS.filter((r) => offered.includes(r.code)).map((r) => (
         <button
           key={r.code}
           type="button"
@@ -435,7 +439,7 @@ export function CollegeExplorer({
       <div className="h-[58dvh] lg:h-full">
         <USMap3D key={region} region={region} pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
           <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
-            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold shadow-sm backdrop-blur" aria-label="Tier colours">
+            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold shadow-sm" aria-label="Tier colours">
               {TIER_ORDER.map((t) => (
                 <li key={t} className="flex items-center gap-1">
                   <span className="h-2.5 w-2.5 rounded-full" style={{ background: TIER_FILL[t] }} />
@@ -447,7 +451,7 @@ export function CollegeExplorer({
               <button
                 type="button"
                 onClick={() => setSelected(null)}
-                className="pointer-events-auto rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold shadow-sm backdrop-blur hover:bg-blue-50"
+                className="pointer-events-auto rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold shadow-sm hover:bg-blue-50"
               >
                 Whole map
               </button>

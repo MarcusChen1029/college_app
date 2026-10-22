@@ -5,7 +5,22 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { newId } from "@/lib/activities";
 import { isSubmitted } from "@/lib/application";
 import { safeLink } from "@/lib/checklist";
-import { campusesOf, campusKey, EMPTY_LOGIN, openUrl, savedCount, SYSTEMS, type CustomPortal, type Login, type PortalData, type PortalSystem } from "@/lib/portals";
+import {
+  campusesOf,
+  campusKey,
+  EMPTY_LOGIN,
+  hiddenLoginCount,
+  openUrl,
+  regionOfCollege,
+  savedCount,
+  systemsForRegion,
+  type CustomPortal,
+  type Login,
+  type PortalData,
+  type PortalRegion,
+  type PortalSystem,
+} from "@/lib/portals";
+import { activeRegions, regionLabel, type RegionCode } from "@/lib/regions";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 
@@ -171,7 +186,18 @@ function Section({ title, aside, children }: { title: string; aside?: React.Reac
   );
 }
 
-const OPTIONAL = SYSTEMS.filter((s) => s.group === "optional");
+/** A labelled block inside a country's section. */
+function Group({ title, aside, children }: { title: string; aside?: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <div className="space-y-2">
+      <div className="flex flex-wrap items-center gap-3">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">{title}</h3>
+        <span className="ml-auto">{aside}</span>
+      </div>
+      {children}
+    </div>
+  );
+}
 
 export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const student = useStudent();
@@ -196,11 +222,18 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const custom = data.custom ?? [];
   const setCustom = (next: CustomPortal[]) => save({ custom: next });
 
+  // The countries the student is applying to (all of them while none is chosen), in profile order.
+  const regions = activeRegions(student.profile.targetRegions);
+  const visible: readonly string[] = regions;
+
   // A college's portal joins this page once its application is submitted.
   const submitted = student.list.flatMap((e) => {
     const college = colleges.find((c) => c.slug === e.slug);
     return college && isSubmitted(e.status) ? [{ entry: e, college }] : [];
   });
+
+  const hiddenCount =
+    hiddenLoginCount(data, regions) + submitted.filter(({ entry, college }) => entry.portal.username.trim() && !visible.includes(regionOfCollege(college))).length;
 
   const systemRows = (s: PortalSystem) => {
     const added = campusesOf(data, s);
@@ -235,8 +268,115 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     ];
   };
 
-  const optionalAdded = OPTIONAL.filter((s) => data.systems?.[s.key]);
-  const optionalLeft = OPTIONAL.filter((s) => !data.systems?.[s.key]);
+  // The optional systems (testing, aid, visas) and custom portals of one country, or of "ANY".
+  const optionalBlock = (region: PortalRegion) => {
+    const optional = systemsForRegion(region).filter((s) => s.group === "optional");
+    const added = optional.filter((s) => data.systems?.[s.key]);
+    const left = optional.filter((s) => !data.systems?.[s.key]);
+    const mine = custom.filter((p) => (p.region ?? "ANY") === region);
+    const menu = (
+      <select
+        className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+        value=""
+        aria-label={`Add a portal${region === "ANY" ? "" : ` for ${regionLabel(region)}`}`}
+        onChange={(e) => {
+          const v = e.target.value;
+          if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "", ...(region === "ANY" ? {} : { region }) }]);
+          else if (v) setSystem(v, EMPTY_LOGIN);
+        }}
+      >
+        <option value="">+ Add portal</option>
+        {left.map((s) => (
+          <option key={s.key} value={s.key}>
+            {s.name}
+          </option>
+        ))}
+        <option value="custom">Something else…</option>
+      </select>
+    );
+    const body =
+      added.length === 0 && mine.length === 0 ? (
+        <p className="text-sm text-zinc-500">
+          {region === "ANY"
+            ? "English tests (TOEFL, IELTS, Duolingo, PTE…) and anything else that isn't tied to one country — add only the ones you use."
+            : "Testing, aid and visa sites, scholarships, housing — add only the ones you use."}
+        </p>
+      ) : (
+        <ul className="space-y-2">
+          {added.map((s) => (
+            <LoginRow
+              key={s.key}
+              name={s.name}
+              hint={s.hint}
+              official={s.url}
+              login={data.systems![s.key]}
+              onSave={(l) => setSystem(s.key, l)}
+              onRemove={() => window.confirm(`Remove ${s.name}?`) && setSystem(s.key, null)}
+            />
+          ))}
+          {mine.map((p) => (
+            <LoginRow
+              key={p.id}
+              name={p.name}
+              login={p}
+              onRename={(name) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, name } : x)))}
+              onSave={(l) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, ...l } : x)))}
+              onRemove={() => window.confirm(`Remove "${p.name || "this portal"}"?`) && setCustom(custom.filter((x) => x.id !== p.id))}
+            />
+          ))}
+        </ul>
+      );
+    return { menu, body };
+  };
+
+  const countrySection = (region: RegionCode) => {
+    const inCountry = submitted.filter(({ college }) => regionOfCollege(college) === region);
+    const applications = systemsForRegion(region).filter((s) => s.group === "application");
+    const { menu, body } = optionalBlock(region);
+    return (
+      <Section key={region} title={regionLabel(region)}>
+        <div className="space-y-5">
+          <Group title="Submitted colleges">
+            {inCountry.length === 0 ? (
+              <p className="text-sm text-zinc-500">
+                A college&apos;s applicant portal shows up here once you mark it Submitted on{" "}
+                <Link href="/application/list" className="text-blue-600 underline">
+                  My list
+                </Link>
+                . Its login usually arrives by email after you apply.
+              </p>
+            ) : (
+              <ul className="space-y-2">
+                {inCountry.map(({ entry, college }) => (
+                  <LoginRow
+                    key={college.slug}
+                    name={college.short_name ?? college.name}
+                    hint="Applicant status portal; the login usually arrives by email after you apply."
+                    login={entry.portal}
+                    onSave={(portal) => student.update(college.slug, { portal })}
+                  />
+                ))}
+              </ul>
+            )}
+          </Group>
+
+          <Group title="Application systems">
+            {applications.length === 0 ? (
+              <p className="text-sm text-zinc-500">No application systems are listed for {regionLabel(region)} yet. Add your own below.</p>
+            ) : (
+              <ul className="space-y-2">{applications.flatMap(systemRows)}</ul>
+            )}
+          </Group>
+
+          <Group title="Other" aside={menu}>
+            {body}
+          </Group>
+        </div>
+      </Section>
+    );
+  };
+
+  const any = optionalBlock("ANY");
 
   return (
     <div className="space-y-6">
@@ -249,84 +389,20 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         })()}
       </p>
 
-      <Section title="Submitted colleges">
-        {submitted.length === 0 ? (
-          <p className="text-sm text-zinc-500">
-            A college&apos;s applicant portal shows up here once you mark it Submitted on{" "}
-            <Link href="/application/list" className="text-blue-600 underline">
-              My list
-            </Link>
-            . Its login usually arrives by email after you apply.
-          </p>
-        ) : (
-          <ul className="space-y-2">
-            {submitted.map(({ entry, college }) => (
-              <LoginRow
-                key={college.slug}
-                name={college.short_name ?? college.name}
-                hint="Applicant status portal; the login usually arrives by email after you apply."
-                login={entry.portal}
-                onSave={(portal) => student.update(college.slug, { portal })}
-              />
-            ))}
-          </ul>
-        )}
-      </Section>
+      {hiddenCount > 0 && (
+        <p className="rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
+          {hiddenCount} saved {hiddenCount === 1 ? "login for a country" : "logins for countries"} you&apos;re not applying to {hiddenCount === 1 ? "is" : "are"} hidden. Change regions on{" "}
+          <Link href="/profile" className="text-blue-600 underline">
+            your profile
+          </Link>
+          .
+        </p>
+      )}
 
-      <Section title="Application systems">
-        <ul className="space-y-2">{SYSTEMS.filter((s) => s.group === "application").flatMap(systemRows)}</ul>
-      </Section>
+      {regions.map(countrySection)}
 
-      <Section
-        title="Other"
-        aside={
-          <select
-            className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
-            value=""
-            aria-label="Add a portal"
-            onChange={(e) => {
-              const v = e.target.value;
-              if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "" }]);
-              else if (v) setSystem(v, EMPTY_LOGIN);
-            }}
-          >
-            <option value="">+ Add portal</option>
-            {optionalLeft.map((s) => (
-              <option key={s.key} value={s.key}>
-                {s.name}
-              </option>
-            ))}
-            <option value="custom">Something else…</option>
-          </select>
-        }
-      >
-        {optionalAdded.length === 0 && custom.length === 0 ? (
-          <p className="text-sm text-zinc-500">Testing and aid sites (College Board, ACT, TOEFL, CSS Profile…), scholarships, housing — add only the ones you use.</p>
-        ) : (
-          <ul className="space-y-2">
-            {optionalAdded.map((s) => (
-              <LoginRow
-                key={s.key}
-                name={s.name}
-                hint={s.hint}
-                official={s.url}
-                login={data.systems![s.key]}
-                onSave={(l) => setSystem(s.key, l)}
-                onRemove={() => window.confirm(`Remove ${s.name}?`) && setSystem(s.key, null)}
-              />
-            ))}
-            {custom.map((p) => (
-              <LoginRow
-                key={p.id}
-                name={p.name}
-                login={p}
-                onRename={(name) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, name } : x)))}
-                onSave={(l) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, ...l } : x)))}
-                onRemove={() => window.confirm(`Remove "${p.name || "this portal"}"?`) && setCustom(custom.filter((x) => x.id !== p.id))}
-              />
-            ))}
-          </ul>
-        )}
+      <Section title="Any country" aside={any.menu}>
+        {any.body}
       </Section>
     </div>
   );

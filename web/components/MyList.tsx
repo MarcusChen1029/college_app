@@ -8,6 +8,7 @@ import { progress, type Checklist } from "@/lib/checklist";
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
+import { AiContextButton } from "./AiContextButton";
 import { FitBadge, Pill, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT } from "./ChecklistPanel";
 import { Modal } from "./Modal";
@@ -59,11 +60,13 @@ export function MyList({
   colleges,
   deadlines,
   plans,
+  englishTests,
   codes,
 }: {
   colleges: CollegeSummary[];
   deadlines: Deadline[];
   plans: Lookups["plans"];
+  englishTests: Lookups["englishTests"];
   codes: ScoreCode[];
 }) {
   const student = useStudent();
@@ -101,6 +104,18 @@ export function MyList({
           </Link>
         </span>
         {listed.length > 0 && <SchoolCodes colleges={listed} codes={codes} />}
+        {listed.length > 0 && (
+          <AiContextButton
+            colleges={student.list.flatMap((e) => {
+              const college = colleges.find((c) => c.slug === e.slug);
+              return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
+            })}
+            profile={student.profile}
+            plan={student.plan}
+            deadlines={deadlines}
+            lookups={{ plans, englishTests }}
+          />
+        )}
       </span>
       {student.plan.limit != null && student.list.length > student.plan.limit && (
         <span className="w-full rounded bg-amber-50 px-2 py-1 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">

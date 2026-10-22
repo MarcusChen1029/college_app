@@ -29,6 +29,7 @@ const NAV = [
   ["/activities", "Activities"],
   ["/resume", "Resume"],
   ["/profile", "Profile"],
+  ["/connect-ai", "Connect AI"],
   ["/pricing", "Pricing"],
 ] as const;
 
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-ink">
-        <header className="sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white/90 backdrop-blur">
+        <header className="sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white/95">
           <nav className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm font-medium">
             <Link href="/" className="font-display text-lg font-bold tracking-tight">
               <span aria-hidden className="mr-1.5 inline-block rounded-md bg-blue-500 px-1.5 text-white">

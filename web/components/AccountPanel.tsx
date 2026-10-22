@@ -9,8 +9,6 @@ const noop = () => () => {};
 export function AccountPanel() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
 
   if (!mounted || !student.ready) return <div className="h-40 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />;
 
@@ -24,20 +22,6 @@ export function AccountPanel() {
           Your scores and college list are saved to your account{student.syncing ? " (syncing…)" : ""}. Anything you had saved in this
           browser before signing in was added to it.
         </p>
-        <label className="flex items-start gap-2 text-sm">
-          <input
-            type="checkbox"
-            className="mt-1"
-            checked={student.profile.reminderEmails ?? true}
-            onChange={(e) => student.setProfile({ ...student.profile, reminderEmails: e.target.checked })}
-          />
-          <span>
-            Email me deadline reminders
-            <span className="block text-xs text-zinc-500">
-              14, 3 and 1 days before each deadline for colleges on my list (only the plan I picked; skipped once I&apos;ve applied).
-            </span>
-          </span>
-        </label>
         {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
         <div className="flex gap-3">
           <Link href="/application/list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
@@ -53,6 +37,19 @@ export function AccountPanel() {
 
   return (
     <div className="space-y-3 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
+      <GoogleSignIn />
+      <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
+    </div>
+  );
+}
+
+/** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). */
+export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
+  const student = useStudent();
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  return (
+    <>
       <button
         type="button"
         disabled={busy}
@@ -60,7 +57,7 @@ export function AccountPanel() {
           setBusy(true);
           setError(null);
           // On success the browser leaves for Google, so only a failure comes back here.
-          const err = await student.signInWithGoogle();
+          const err = await student.signInWithGoogle(returnTo);
           if (err) {
             setError(err);
             setBusy(false);
@@ -72,8 +69,38 @@ export function AccountPanel() {
         {busy ? "Opening Google…" : "Continue with Google"}
       </button>
       {error && <p className="text-sm text-rose-600">{error}</p>}
-      <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
-    </div>
+    </>
+  );
+}
+
+/** The reminder-emails switch. It lives under the deadline calendar; reminders are only sent to signed-in accounts. */
+export function ReminderToggle() {
+  const student = useStudent();
+  if (!student.auth) {
+    return (
+      <p className="text-sm text-zinc-600">
+        <a href="#account" className="font-semibold text-blue-700 underline underline-offset-4">
+          Sign in
+        </a>{" "}
+        to get deadline reminders by email.
+      </p>
+    );
+  }
+  return (
+    <label className="flex items-start gap-2 text-sm">
+      <input
+        type="checkbox"
+        className="mt-1"
+        checked={student.profile.reminderEmails ?? true}
+        onChange={(e) => student.setProfile({ ...student.profile, reminderEmails: e.target.checked })}
+      />
+      <span>
+        Email me deadline reminders
+        <span className="block text-xs text-zinc-500">
+          14, 3 and 1 days before each deadline for colleges on my list (only the plan I picked; skipped once I&apos;ve applied).
+        </span>
+      </span>
+    </label>
   );
 }
 

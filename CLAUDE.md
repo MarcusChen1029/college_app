@@ -26,6 +26,10 @@ Plan: all US colleges next, then UK/CA/AU.
     Builds never touch Supabase; pages wrap data in `<Suspense>`.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
     signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
+  - Google Docs (Essays page, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
+    Needs server env vars `GOOGLE_DOCS_CLIENT_ID`, `GOOGLE_DOCS_CLIENT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`,
+    `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64, 32 bytes) and migration 0016 (`google_tokens`, **written, not yet applied**).
+    Without them the page keeps the docs.new + paste-link flow.
   - Fit labels: `web/lib/fit.ts` (uses the international admit rate when the student is international). GPA percentile estimate: `web/lib/gpa.ts`.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
@@ -46,7 +50,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0016**) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0017**) **and** apply it to the project.
 - **Supabase MCP quirk:** INSERT/SELECT/DDL via `execute_sql`/`apply_migration` work. UPDATE/DELETE/DROP wait for the
   owner's approval and time out after 60 s if nobody approves. Approve the prompt when it appears, or put the SQL in
   `supabase/patches/` and have the owner run it in the dashboard SQL Editor.

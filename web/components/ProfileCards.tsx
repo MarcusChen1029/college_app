@@ -91,7 +91,7 @@ function Value({ value, sub }: { value: string | number | null | undefined; sub?
   );
 }
 
-function RegionsEditor() {
+export function RegionsEditor() {
   const { profile, updateProfile } = useStudent();
   const selected = cleanRegions(profile.targetRegions);
   const save = (next: RegionCode[]) => updateProfile({ targetRegions: cleanRegions(next) });
@@ -131,7 +131,11 @@ function RegionsEditor() {
           ))}
         </ol>
       )}
-      <p className="text-xs text-zinc-500">Your first region opens by default on Colleges.</p>
+      <p className="text-xs text-zinc-500">
+        {selected.length === 0
+          ? "None chosen, so Colleges and Portals show every region."
+          : "Colleges and Portals only show these regions. Your first one opens by default on Colleges."}
+      </p>
     </div>
   );
 }
@@ -180,7 +184,7 @@ export function ProfileCards() {
       </Card>
       <Card
         {...props("regions")}
-        label="Where I'm applying"
+        label="Regions applying to"
         tint="bg-coral/40"
         className={open === "regions" ? "" : "col-span-2 md:col-span-1"}
         summary={
