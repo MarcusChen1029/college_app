@@ -107,13 +107,15 @@ export function refreshAccess(cfg: GoogleConfig, refreshToken: string) {
   return tokenRequest({ grant_type: "refresh_token", refresh_token: refreshToken, client_id: cfg.clientId, client_secret: cfg.clientSecret });
 }
 
-export async function createGoogleDoc(accessToken: string, name: string): Promise<{ id?: string; webViewLink?: string } | null> {
+/** The created file, or Google's error reason (e.g. "accessNotConfigured": Drive API not enabled). */
+export async function createGoogleDoc(accessToken: string, name: string): Promise<{ id?: string; webViewLink?: string; reason?: string }> {
   const res = await fetch("https://www.googleapis.com/drive/v3/files?fields=id,webViewLink", {
     method: "POST",
     headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
     body: JSON.stringify({ name, mimeType: "application/vnd.google-apps.document" }),
     cache: "no-store",
   });
-  if (!res.ok) return null;
-  return (await res.json()) as { id?: string; webViewLink?: string };
+  const body = (await res.json().catch(() => ({}))) as { id?: string; webViewLink?: string; error?: { status?: string; errors?: { reason?: string }[] } };
+  if (!res.ok) return { reason: body.error?.errors?.[0]?.reason ?? body.error?.status ?? `http_${res.status}` };
+  return body;
 }
