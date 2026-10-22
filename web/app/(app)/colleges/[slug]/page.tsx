@@ -48,6 +48,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const cost = [...c.cost_aid].sort((a, b) => b.year.localeCompare(a.year))[0];
   const deadlines = [...c.deadlines].sort((a, b) => (a.due_date ?? "9999").localeCompare(b.due_date ?? "9999"));
   const gpaEst = estimateGpaPercentiles(stats?.gpa_distribution);
+  const isUS = (c.country_code ?? "US") === "US";
   const general = c.institution_tiers.find((t) => t.category_key === "general")?.tier_code;
   const catLabel = (k: string | null) => lookups.categories.find((x) => x.key === k)?.label ?? k ?? "";
   const planLabel = (k: string | null) => lookups.plans.find((p) => p.key === k)?.label ?? k ?? "";
@@ -61,7 +62,9 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <div>
             <h1 className="text-2xl font-semibold">{c.name}</h1>
             <p className="text-sm text-zinc-500">
-              {c.city}, {c.state_region} · {c.control === "public" ? "Public" : "Private"} · {c.setting} · {c.academic_calendar} calendar
+              {c.city}, {c.state_region} · {c.control === "public" ? "Public" : "Private"}
+              {c.setting && ` · ${c.setting}`}
+              {c.academic_calendar && ` · ${c.academic_calendar} calendar`}
             </p>
             <div className="mt-2 flex flex-wrap gap-3 text-sm">
               {c.website && (
@@ -77,9 +80,11 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             </div>
           </div>
         </div>
-        <CollegeActions slug={c.slug} id={c.id} fitInput={fitInputFrom(c, stats?.cds_year, policy?.policy ?? null)} />
+        <CollegeActions slug={c.slug} id={c.id} fitInput={isUS ? fitInputFrom(c, stats?.cds_year, policy?.policy ?? null) : undefined} />
       </header>
 
+      {isUS && (
+        <>
       {/* Key numbers */}
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         <Stat label="Admit rate" value={fmtPct(stats?.admit_rate)} sub={stats ? `${fmtInt(stats.admits)} of ${fmtInt(stats.applicants)}` : undefined} />
@@ -199,6 +204,53 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           )}
         </Section>
       </div>
+        </>
+      )}
+
+      {c.programs.length > 0 && (
+        <Section title="Courses (apply to a course through UCAS)">
+          <ul className="space-y-3">
+            {[...c.programs]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((p) => (
+                <li key={p.id} className="rounded-lg border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="text-base font-semibold">{p.name}</h3>
+                    {p.ucas_code && <Pill>{p.ucas_code}</Pill>}
+                    {p.award && <span className="text-xs text-zinc-500">{p.award}</span>}
+                    {p.duration_years != null && <span className="text-xs text-zinc-500">{p.duration_years} years</span>}
+                    {p.application_deadline && <Pill tone="red">Apply by {fmtDate(p.application_deadline)}</Pill>}
+                  </div>
+                  <dl className="mt-2 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
+                    <Row k="A-levels" v={p.a_level_offer ?? "—"} />
+                    <Row k="IB" v={p.ib_offer ?? (p.ib_points != null ? `${p.ib_points} points` : "—")} />
+                    <Row k="Subjects" v={p.required_subjects ?? "—"} />
+                    <Row k="Admissions test" v={p.admissions_test ?? "None listed"} />
+                    <Row k="IELTS" v={p.ielts_overall != null ? `${p.ielts_overall} overall${p.ielts_component != null ? `, ${p.ielts_component} in each part` : ""}` : "—"} />
+                    {p.toefl_note && <Row k="TOEFL" v={p.toefl_note} />}
+                    <Row k="International fee" v={p.intl_fee_gbp != null ? `£${p.intl_fee_gbp.toLocaleString("en-GB")} per year` : "Not found"} />
+                    {p.success_pct != null && (
+                      <Row
+                        k="Applicants"
+                        v={`${p.interviewed_pct != null ? `${p.interviewed_pct}% interviewed, ` : ""}${p.success_pct}% successful${p.intake != null ? `, about ${p.intake} places` : ""}`}
+                      />
+                    )}
+                  </dl>
+                  {(p.english_note || p.notes) && <p className="mt-2 text-xs text-zinc-500">{[p.english_note, p.notes].filter(Boolean).join(" ")}</p>}
+                  <p className="mt-1 text-xs text-zinc-500">
+                    <a className="text-blue-600 hover:underline dark:text-blue-400" href={p.source_url} target="_blank" rel="noreferrer">
+                      Course page ↗
+                    </a>{" "}
+                    · checked {fmtDate(p.retrieved_on)}
+                  </p>
+                </li>
+              ))}
+          </ul>
+          <p className="mt-2 text-xs text-zinc-500">
+            UK offers are grade-based and set per course; fit labels are not available yet. Always confirm on the course page before applying.
+          </p>
+        </Section>
+      )}
 
       {/* Deadlines */}
       <Section title={`Deadlines (${deadlines[0]?.cycle ?? "current"} cycle)`}>
@@ -228,7 +280,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
 
       <div className="grid gap-8 lg:grid-cols-2">
         {/* English */}
-        <Section title="English proficiency (international applicants)">
+        {(isUS || c.english_requirements.length > 0) && <Section title="English proficiency (international applicants)">
           {c.english_policies ? (
             <>
               <p className="mb-2 text-sm">
@@ -277,10 +329,10 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             </table>
           )}
           <p className="mt-2 text-xs text-zinc-500">TOEFL iBT moved to a 1–6 scale on Jan 21, 2026; schools list both scales.</p>
-        </Section>
+        </Section>}
 
         {/* Requirements */}
-        <Section title="Application requirements">
+        {isUS && <Section title="Application requirements">
           {req ? (
             <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm">
               <Row k="Platform" v={req.platforms.map((p) => PLATFORM[p] ?? p).join(", ") || "—"} />
@@ -304,9 +356,10 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               <Ref n={ref(req.source_id)} />
             </p>
           )}
-        </Section>
+        </Section>}
       </div>
 
+      {isUS && (
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Cost & aid */}
         <Section title={`Cost & aid${cost ? ` (${cost.year})` : ""}`}>
@@ -374,6 +427,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <p className="mt-2 text-xs text-zinc-500">Tiers and major-admission summaries are an editorial v0 — review before relying on them.</p>
         </Section>
       </div>
+      )}
 
       {/* Factors */}
       {c.admission_factors.length > 0 && (

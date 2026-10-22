@@ -5,11 +5,11 @@ import { computeFit, type FitInput } from "@/lib/fit";
 import { useStudent } from "@/lib/student-store";
 import { FitBadge } from "./badges";
 
-export function CollegeActions({ slug, id, fitInput }: { slug: string; id: string; fitInput: FitInput }) {
+export function CollegeActions({ slug, id, fitInput }: { slug: string; id: string; fitInput?: FitInput }) {
   const student = useStudent();
   const inList = student.has(slug);
   const hasScores = student.profile.sat != null || student.profile.act != null;
-  const fit = hasScores ? computeFit(student.profile, fitInput) : null;
+  const fit = hasScores && fitInput ? computeFit(student.profile, fitInput) : null; // no fit for grade-based (non-US) colleges
   return (
     <div className="flex flex-col items-end gap-2">
       {!inList && !student.canAdd ? (
@@ -37,9 +37,9 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
         <div className="max-w-xs text-right text-xs text-zinc-500">
           <FitBadge fit={fit.fit} /> <span className="ml-1">{fit.reason}</span>
         </div>
-      ) : (
+      ) : fitInput ? (
         <div className="text-xs text-zinc-400">Add your scores on the Colleges page to see your fit.</div>
-      )}
+      ) : null}
     </div>
   );
 }

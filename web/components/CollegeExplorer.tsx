@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
+import { defaultRegion, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
+import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate, TierCode } from "@/lib/types";
 import { CollegeBrowser } from "./CollegeBrowser";
@@ -153,8 +155,10 @@ function DetailCard({
   const student = useStudent();
   const inList = student.has(college.slug);
   const hasScores = student.profile.sat != null || student.profile.act != null;
-  const fit = hasScores ? computeFit(student.profile, college) : null;
-  const intl = !!student.profile.international && college.intl_admit_rate != null;
+  const isUS = (college.country_code ?? "US") === "US";
+  // Fit labels are built on SAT/ACT and US admit rates, so they only apply to US colleges for now.
+  const fit = hasScores && isUS ? computeFit(student.profile, college) : null;
+  const intl =!!student.profile.international && college.intl_admit_rate != null;
   const eng = englishText(english);
 
   const satRange =
@@ -184,18 +188,26 @@ function DetailCard({
       </header>
 
       <div className="mt-4 space-y-4">
-        <AdmitRing rate={intl ? college.intl_admit_rate : college.admit_rate} label={intl ? "International admit rate" : "Admit rate"} />
-        {satRange ? <SatBar {...satRange} you={student.profile.sat ?? null} /> : <p className="text-sm text-zinc-500">No SAT scores reported.</p>}
+        {(isUS || college.admit_rate != null) && (
+          <AdmitRing rate={intl ? college.intl_admit_rate : college.admit_rate} label={intl ? "International admit rate" : "Admit rate"} />
+        )}
+        {!isUS ? (
+          <p className="text-sm text-zinc-500">Admission is by course and predicted grades (A-levels / IB). See the courses on the full details page.</p>
+        ) : satRange ? (
+          <SatBar {...satRange} you={student.profile.sat ?? null} />
+        ) : (
+          <p className="text-sm text-zinc-500">No SAT scores reported.</p>
+        )}
       </div>
 
       <div className="mt-3">
-        <Row label="Testing">{college.test_policy ? TEST_POLICY[college.test_policy] ?? college.test_policy : "—"}</Row>
+        {isUS && <Row label="Testing">{college.test_policy ? TEST_POLICY[college.test_policy] ?? college.test_policy : "—"}</Row>}
         <Row label="English test">
           {eng.mins}
           {eng.note && <span className="block text-xs font-normal text-zinc-500">{eng.note}</span>}
         </Row>
         <Row label="Next deadline">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</Row>
-        <Row label="Your fit">
+        {isUS && <Row label="Your fit">
           {fit ? (
             <>
               <FitBadge fit={fit.fit} />
@@ -206,7 +218,7 @@ function DetailCard({
               Add your scores
             </Link>
           )}
-        </Row>
+        </Row>}
       </div>
 
       <div className="mt-4 flex gap-2">
@@ -258,12 +270,20 @@ export function CollegeExplorer({
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<Sort>("tier");
   const [selected, setSelected] = useState<string | null>(null);
+  // Until the reader picks one, follow their first target region (it can arrive after sign-in loads).
+  const [picked, setPicked] = useState<RegionCode | null>(null);
+  const region = picked ?? defaultRegion(student.profile.targetRegions);  const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
+  const regionCounts = useMemo(() => {
+    const n: Record<string, number> = {};
+    for (const c of colleges) n[c.country_code ?? "US"] = (n[c.country_code ?? "US"] ?? 0) + 1;
+    return n;
+  }, [colleges]);
 
   const hasScores = student.profile.sat != null || student.profile.act != null;
 
   const rows = useMemo(() => {
     const term = q.trim().toLowerCase();
-    return colleges
+    return inRegion
       .filter((c) => !term || `${c.name} ${c.short_name ?? ""} ${c.city ?? ""} ${c.state_region ?? ""}`.toLowerCase().includes(term))
       .sort((a, b) => {
         if (sort === "name") return a.name.localeCompare(b.name);
@@ -272,7 +292,7 @@ export function CollegeExplorer({
         const tb = b.general_tier ? TIER_ORDER.indexOf(b.general_tier) : 99;
         return ta - tb || (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
       });
-  }, [colleges, q, sort]);
+  }, [inRegion, q, sort]);
 
   const shown = useVisibleCount(`${q}|${sort}`, rows.length);
 
@@ -280,10 +300,30 @@ export function CollegeExplorer({
     () => rows.map((c) => ({ slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier: c.general_tier })),
     [rows],
   );
-  const current = colleges.find((c) => c.slug === selected) ?? null;
+  const current = inRegion.find((c) => c.slug === selected) ?? null;
   // Put the card on the side away from the pin so it never covers the college it describes.
-  const side: "left" | "right" = current?.longitude != null && current.longitude > -97 ? "left" : "right";
+  const side: "left" | "right" = current?.longitude != null ? cardSideFor(region, current.longitude) : "right";
   const other = side === "right" ? "left" : "right";
+
+  const regionSwitch = (
+    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label="Country">
+      {REGIONS.map((r) => (
+        <button
+          key={r.code}
+          type="button"
+          aria-pressed={region === r.code}
+          onClick={() => {
+            setPicked(r.code);
+            setSelected(null);
+          }}
+          className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${region === r.code ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
+        >
+          {r.short}
+          <span className="ml-1 text-xs font-normal opacity-70">{regionCounts[r.code] ?? 0}</span>
+        </button>
+      ))}
+    </div>
+  );
 
   const tab = (v: "map" | "table", label: string) => (
     <button
@@ -306,8 +346,11 @@ export function CollegeExplorer({
   if (view === "table") {
     return (
       <div className="space-y-4">
-        <div className="max-w-xs">{toggle}</div>
-        <CollegeBrowser colleges={colleges} lookups={lookups} />
+        <div className="flex flex-wrap gap-2">
+          <div className="w-full max-w-xs">{toggle}</div>
+          <div className="w-full max-w-xs">{regionSwitch}</div>
+        </div>
+        <CollegeBrowser key={region} colleges={inRegion} lookups={lookups} />
       </div>
     );
   }
@@ -323,6 +366,7 @@ export function CollegeExplorer({
     <div className="grid gap-4 lg:h-[calc(100dvh-5.25rem)] lg:grid-cols-[330px_1fr]">
       <aside className="order-last flex min-h-0 flex-col gap-3 lg:order-first">
         {toggle}
+        {regionSwitch}
         <Link href={stats.length ? "/profile" : "/start"} className="rounded-2xl bg-blue-50 px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-blue-100">
           {stats.length ? (
             <>
@@ -354,9 +398,10 @@ export function CollegeExplorer({
           ))}
         </div>
         <ul className="min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
-          {rows.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">No college matches &ldquo;{q}&rdquo;.</li>}
+          {inRegion.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">No {regionLabel(region)} colleges added yet.</li>}
+          {inRegion.length > 0 && rows.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">No college matches &ldquo;{q}&rdquo;.</li>}
           {rows.slice(0, shown.count).map((c) => {
-            const fit = hasScores ? computeFit(student.profile, c) : null;
+            const fit = hasScores && region === "US" ? computeFit(student.profile, c) : null;
             const on = c.slug === selected;
             return (
               <li key={c.slug}>
@@ -370,7 +415,8 @@ export function CollegeExplorer({
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold">{c.short_name ?? c.name}</span>
                     <span className="block truncate text-xs text-zinc-500">
-                      {[c.city, c.state_region].filter(Boolean).join(", ")} · {fmtPct(c.admit_rate, 0)} admit
+                      {[c.city, c.state_region].filter(Boolean).join(", ")}
+                      {c.admit_rate != null && ` · ${fmtPct(c.admit_rate, 0)} admit`}
                     </span>
                   </span>
                   {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) ? <Pill tone="blue">On list</Pill> : null}
@@ -387,7 +433,7 @@ export function CollegeExplorer({
       </aside>
 
       <div className="h-[58dvh] lg:h-full">
-        <USMap3D pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
+        <USMap3D key={region} region={region} pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
           <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
             <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold shadow-sm backdrop-blur" aria-label="Tier colours">
               {TIER_ORDER.map((t) => (

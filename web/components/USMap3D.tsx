@@ -1,32 +1,29 @@
 "use client";
 
-import { geoAlbersUsa, geoPath, type GeoContext } from "d3-geo";
+import { geoPath, type GeoContext, type GeoProjection } from "d3-geo";
 import type { Feature, FeatureCollection } from "geojson";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
-import { feature } from "topojson-client";
-import type { GeometryCollection, Topology } from "topojson-specification";
-import statesTopology from "us-atlas/states-10m.json";
 import { flight, overviewDistance, rigPosition, type Rig } from "@/lib/map-camera";
+import { fitWorld, regionGeo, type RegionGeo } from "@/lib/region-geo";
+import type { RegionCode } from "@/lib/regions";
 import type { TierCode } from "@/lib/types";
 import { TIER_FILL, USMap, type MapPin } from "./USMap";
 
-// World units: the lower 48 (plus the Alaska/Hawaii insets) span about 960 × 600, centred on the origin, y up.
-const HALF_W = 480;
-const HALF_D = 300;
+// World units: the region's land is fitted into ±halfW × ±halfD (US: 960 × 600), centred on the origin, y up.
+// Camera framing, pan limits, clouds and sparkles all scale from that box; see lib/region-geo.ts.
 const SLAB = 9; // state thickness
 const GAP = 0.985; // states shrink a touch about their centroid, so the map reads as puzzle pieces
 const FOV = 32;
 const OVERVIEW_POLAR = 0.74;
 const FOCUS_POLAR = 1.02;
 
-// State tops shade from mint in the west through sky blue to lilac in the east.
-const WEST = new THREE.Color("#c9f2df");
-const MID = new THREE.Color("#d3ecfd");
-const EAST = new THREE.Color("#e2d9ff");
+// State tops shade west to east through the region's bands (US: mint, sky blue, lilac).
 const WHITE = new THREE.Color("#ffffff");
+// Neighbouring land shown only for context (Ireland next to the UK) is a quiet grey-blue.
+const MUTED_TOP = new THREE.Color("#eef3f7");
 const CONFETTI = ["#ffd84d", "#ff7a66", "#6fd9b3", "#b9a8ff", "#4dbcef"];
 
 type Ring = [number, number][];
@@ -61,9 +58,6 @@ type Pin3D = {
   pop: number | null;
   confetti: boolean;
 };
-
-const topology = statesTopology as unknown as Topology;
-const statesGeo = feature(topology, topology.objects.states as GeometryCollection) as FeatureCollection;
 
 // Shader colours are written straight to the canvas, so they stay in sRGB.
 const srgb = (hex: string) => new THREE.Vector3(...[1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255));
@@ -117,9 +111,11 @@ function blobTexture() {
   return new THREE.CanvasTexture(c);
 }
 
-function buildStates(projection: ReturnType<typeof geoAlbersUsa>) {
+/** Extrudes each feature into a slab. `muted` pieces (context land) are greyed and never selectable. */
+function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureCollection, muted = false) {
   const centroidOf = geoPath(projection);
-  return statesGeo.features.map((f: Feature, i) => {
+  const [west, mid, east] = g.bands.map((c) => new THREE.Color(c));
+  const pieces = land.features.map((f: Feature, i) => {
     const raw: Ring[] = [];
     let cur: Ring | null = null;
     const ctx: GeoContext = {
@@ -137,11 +133,11 @@ function buildStates(projection: ReturnType<typeof geoAlbersUsa>) {
     const geom = new THREE.ExtrudeGeometry(shapes, { depth: SLAB, bevelEnabled: false, curveSegments: 1 });
     geom.rotateX(-Math.PI / 2);
 
-    const u = Math.min(1, Math.max(0, (cx + HALF_W) / (2 * HALF_W)));
-    const baseTop = u < 0.5 ? WEST.clone().lerp(MID, u * 2) : MID.clone().lerp(EAST, u * 2 - 1);
+    const u = Math.min(1, Math.max(0, (cx + g.halfW) / (2 * g.halfW)));
+    const baseTop = muted ? MUTED_TOP.clone() : u < 0.5 ? west.clone().lerp(mid, u * 2) : mid.clone().lerp(east, u * 2 - 1);
     baseTop.lerp(WHITE, ((i * 37) % 10) / 22); // a little light/dark variation so neighbours read as separate pieces
     const top = new THREE.MeshStandardMaterial({ color: baseTop.clone(), roughness: 0.62 });
-    const side = new THREE.MeshStandardMaterial({ color: "#6cc0ec", roughness: 0.45 });
+    const side = new THREE.MeshStandardMaterial({ color: muted ? "#c4dcea" : "#6cc0ec", roughness: 0.45 });
     const mesh = new THREE.Mesh(geom, [top, side]);
     mesh.position.set(cx, 0, cz);
     mesh.scale.set(GAP, 1, GAP);
@@ -155,7 +151,7 @@ function buildStates(projection: ReturnType<typeof geoAlbersUsa>) {
         pts.push(ax - cx, SLAB + 0.06, ay - cz, bx - cx, SLAB + 0.06, by - cz);
       }
     const edgeGeom = new THREE.BufferGeometry().setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
-    const edge = new THREE.LineBasicMaterial({ color: "#8ccdf0", transparent: true, opacity: 0.9 });
+    const edge = new THREE.LineBasicMaterial({ color: muted ? "#d5e6f0" : "#8ccdf0", transparent: true, opacity: 0.9 });
     mesh.add(new THREE.LineSegments(edgeGeom, edge));
 
     const world = rings.map((r) => r.map(([x, y]) => [cx + (x - cx) * GAP, cz + (y - cz) * GAP] as [number, number]));
@@ -172,9 +168,18 @@ function buildStates(projection: ReturnType<typeof geoAlbersUsa>) {
       cx,
       cz,
       // The map rises in a wave from west to east.
-      delay: 120 + ((cx + HALF_W) / (2 * HALF_W)) * 900 + Math.abs(cz) * 0.4,
+      delay: 120 + ((cx + g.halfW) / (2 * g.halfW)) * 900 + Math.abs(cz) * 0.4,
       lift: 0,
     } satisfies StateMesh;
+  });
+  // Pieces that project to nothing (e.g. territories outside Albers USA, specks of island) carry no mesh worth keeping.
+  return pieces.filter((s) => {
+    if (s.rings.length) return true;
+    s.mesh.traverse((o) => (o as THREE.Mesh).geometry?.dispose());
+    s.top.dispose();
+    s.edge.dispose();
+    (s.mesh.material as THREE.Material[])[1].dispose();
+    return false;
   });
 }
 
@@ -185,14 +190,17 @@ export function USMap3D(props: {
   selected: string | null;
   onSelect: (slug: string | null) => void;
   cardSide: "left" | "right";
+  /** Which country to draw. Fixed for the component's life: give it key={region} so a switch remounts the scene. */
+  region?: RegionCode;
   children?: React.ReactNode;
 }) {
-  const { pins, selected, onSelect, cardSide, children } = props;
+  const { pins, selected, onSelect, cardSide, region = "US", children } = props;
   const box = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
   const labels = useRef(new Map<string, HTMLButtonElement>());
   const onSelectRef = useRef(onSelect);
   const latest = useRef({ pins, selected, cardSide });
+  const regionRef = useRef(region);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -203,6 +211,8 @@ export function USMap3D(props: {
   useEffect(() => {
     const el = box.current;
     if (!el) return;
+    const g = regionGeo(regionRef.current);
+    const { halfW, halfD } = g;
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -251,7 +261,7 @@ export function USMap3D(props: {
     sun.shadow.intensity = 0.5;
     sun.shadow.bias = -0.0004;
     sun.shadow.normalBias = 0.4;
-    Object.assign(sun.shadow.camera, { left: -680, right: 680, top: 460, bottom: -460, near: 100, far: 1800 });
+    Object.assign(sun.shadow.camera, { left: -(halfW + 200), right: halfW + 200, top: halfD + 160, bottom: -(halfD + 160), near: 100, far: 1800 });
     scene.add(sun, sun.target);
 
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(4000, 4000), new THREE.ShadowMaterial({ opacity: 0.16 }));
@@ -259,22 +269,20 @@ export function USMap3D(props: {
     ground.receiveShadow = true;
     scene.add(ground);
 
-    const projection = geoAlbersUsa().fitExtent(
-      [
-        [-HALF_W, -HALF_D],
-        [HALF_W, HALF_D],
-      ],
-      statesGeo,
-    );
-    const states = buildStates(projection);
-    for (const s of states) {
+    const projection = fitWorld(g);
+    const states = buildStates(g, projection, g.land);
+    // Context land (Ireland beside the UK) rises with the map but is never hovered, lifted or tinted.
+    const context = buildStates(g, projection, g.context, true);
+    for (const s of [...states, ...context]) {
       if (!reduced) s.mesh.scale.y = 0.001;
       scene.add(s.mesh);
     }
 
     // Clouds: puffs of spheres drifting east, casting soft shadows across the states.
+    // Positions are laid out on the US box and stretched to the region's.
     const cloudMat = new THREE.MeshStandardMaterial({ color: "#ffffff", emissive: "#eaf6ff", emissiveIntensity: 0.55, roughness: 1, transparent: true, opacity: 0.94 });
     const puff = new THREE.SphereGeometry(1, 20, 14);
+    const cloudWrap = halfW + 200;
     const clouds = [
       { x: -420, y: 150, z: -150, s: 1.1, v: 7 },
       { x: 60, y: 175, z: 120, s: 1.4, v: 5 },
@@ -289,7 +297,7 @@ export function USMap3D(props: {
         m.position.set((k - 2.5) * 13 * c.s, ((k * 5) % 3) * 4 * c.s, ((k * 13) % 7) * 3 * c.s);
         g.add(m);
       }
-      g.position.set(c.x, c.y, c.z);
+      g.position.set(c.x * (halfW / 480), c.y, c.z * (halfD / 300));
       scene.add(g);
       return { g, v: c.v };
     });
@@ -303,7 +311,7 @@ export function USMap3D(props: {
     const sparkColor = new Float32Array(SPARKS * 3);
     const sparkPalette = ["#ffd84d", "#1fa4e4", "#ff7a66", "#9b87ff"].map(srgb);
     for (let i = 0; i < SPARKS; i++) {
-      sparkPos.set([(Math.random() * 2 - 1) * 520, 10 + Math.random() * 40, (Math.random() * 2 - 1) * 330], i * 3);
+      sparkPos.set([(Math.random() * 2 - 1) * (halfW + 40), 10 + Math.random() * 40, (Math.random() * 2 - 1) * (halfD + 30)], i * 3);
       sparkPhase[i] = Math.random();
       sparkSize[i] = 7 + Math.random() * 8;
       sparkColor.set(sparkPalette[i % sparkPalette.length].toArray(), i * 3);
@@ -528,7 +536,7 @@ export function USMap3D(props: {
 
     // Camera rig.
     const aspect = () => w / h;
-    const overview = (): Rig => ({ tx: 0, ty: 0, tz: 18, dist: overviewDistance(aspect(), FOV, OVERVIEW_POLAR, HALF_W + 20, HALF_D + 20), polar: OVERVIEW_POLAR, az: 0, ax: 0.5, ay: 0.5 });
+    const overview = (): Rig => ({ tx: 0, ty: 0, tz: 18, dist: overviewDistance(aspect(), FOV, OVERVIEW_POLAR, halfW + 20, halfD + 20), polar: OVERVIEW_POLAR, az: 0, ax: 0.5, ay: 0.5 });
     let rig: Rig = overview();
     let fly: { at: (t: number) => Rig; t0: number; dur: number } | null = null;
     const applyRig = (r: Rig) => {
@@ -556,7 +564,7 @@ export function USMap3D(props: {
         tz: p.z,
         dist,
         polar: FOCUS_POLAR,
-        az: Math.max(-0.45, Math.min(0.45, (-p.x / HALF_W) * 0.4)),
+        az: Math.max(-0.45, Math.min(0.45, (-p.x / halfW) * 0.4)),
         ax: sheet ? 0.5 : selSide === "right" ? 0.31 : 0.69,
         ay: sheet ? 0.32 : 0.56,
       };
@@ -693,8 +701,8 @@ export function USMap3D(props: {
       } else {
         controls.update();
         // Keep panning on the map.
-        controls.target.x = Math.max(-HALF_W - 80, Math.min(HALF_W + 80, controls.target.x));
-        controls.target.z = Math.max(-HALF_D - 80, Math.min(HALF_D + 80, controls.target.z));
+        controls.target.x = Math.max(-halfW - 80, Math.min(halfW + 80, controls.target.x));
+        controls.target.z = Math.max(-halfD - 80, Math.min(halfD + 80, controls.target.z));
       }
       const camDist = camera.position.distanceTo(controls.target);
       const fog = scene.fog as THREE.Fog;
@@ -713,6 +721,7 @@ export function USMap3D(props: {
       const selState = selPin?.state ?? null;
 
       // States: rise in, lift on hover, lift higher and tint when they hold the selected college.
+      if (!reduced) for (const s of context) s.mesh.scale.y = Math.max(0.001, easeOutBack(clamp01((now - start - s.delay) / 950)));
       for (const s of states) {
         if (!reduced) {
           const t = clamp01((now - start - s.delay) / 950);
@@ -839,7 +848,7 @@ export function USMap3D(props: {
       cloudMat.opacity = cloudAlpha;
       for (const c of clouds) {
         if (!reduced) c.g.position.x += c.v * dt;
-        if (c.g.position.x > 680) c.g.position.x = -680;
+        if (c.g.position.x > cloudWrap) c.g.position.x = -cloudWrap;
         c.g.visible = cloudAlpha > 0.02;
       }
 
@@ -872,10 +881,19 @@ export function USMap3D(props: {
           mat.dispose();
         }
       });
-      for (const m of letterMats.values()) m.map?.dispose();
+      // Shared pin parts may be out of the scene (every pin filtered away), so free them explicitly.
+      for (const geom of [coneGeom, headGeom, hitGeom, blobGeom]) geom.dispose();
+      for (const m of [hitMat, blobMat, ...pinMats.values(), ...letterMats.values()]) {
+        (m as THREE.MeshBasicMaterial).map?.dispose();
+        m.dispose();
+      }
+      confetti.dispose();
+      sun.shadow.dispose();
       envTex.dispose();
       pmrem.dispose();
       renderer.dispose();
+      // A region switch remounts the map; hand the GL context back now instead of waiting for GC.
+      renderer.forceContextLoss();
       canvas.remove();
     };
   }, []);

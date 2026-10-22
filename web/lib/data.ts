@@ -35,11 +35,11 @@ async function cachedCollege(slug: string): Promise<CollegeDetail | null> {
   const res = await supabase()
     .from("institutions")
     .select(
-      `id, slug, name, short_name, state_region, city, setting, control, website, admissions_url,
+      `id, slug, name, short_name, country_code, state_region, city, setting, control, website, admissions_url,
        undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar,
        sources(*), admission_stats(*), test_score_percentiles(*), admission_factors(*),
        test_policies(*), application_requirements(*), deadlines(*), english_policies(*),
-       english_requirements(*), cost_aid(*), institution_tiers(*), major_admissions(*)`,
+       english_requirements(*), cost_aid(*), institution_tiers(*), major_admissions(*), programs(*)`,
     )
     .eq("slug", slug)
     .maybeSingle();

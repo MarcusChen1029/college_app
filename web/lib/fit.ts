@@ -16,6 +16,7 @@ export type StudentProfile = {
   act?: number | null;
   gpa?: number | null; // unweighted, 4.0 scale
   international?: boolean;
+  targetRegions?: string[]; // countries applying to (US, GB); first = default on the colleges page
   reminderEmails?: boolean; // account setting; defaults to on
   plan?: PlanKey; // defaults to free
   tests?: TestDetails; // section scores + English tests

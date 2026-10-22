@@ -101,6 +101,7 @@ type ProfileRow = {
   act_composite: number | null;
   gpa_unweighted: number | null;
   is_international: boolean;
+  target_regions: string[] | null;
   reminder_emails: boolean;
   plan: PlanKey;
   test_details: TestDetails | null;
@@ -127,6 +128,7 @@ const toProfile = (r: ProfileRow): StudentProfile => ({
   act: r.act_composite,
   gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
   international: r.is_international,
+  targetRegions: r.target_regions ?? [],
   reminderEmails: r.reminder_emails,
   plan: r.plan,
   tests: r.test_details ?? {},
@@ -141,6 +143,7 @@ const fromProfile = (userId: string, p: StudentProfile) => ({
   act_composite: p.act ?? null,
   gpa_unweighted: p.gpa ?? null,
   is_international: !!p.international,
+  target_regions: p.targetRegions ?? [],
   reminder_emails: p.reminderEmails ?? true,
   plan: p.plan ?? DEFAULT_PLAN,
   test_details: p.tests ?? {},
@@ -180,7 +183,7 @@ async function loadRemote(userId: string, email: string | null) {
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, reminder_emails, plan, test_details, interested, activities, resume, portals").eq("user_id", userId).maybeSingle(),
+      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume, portals").eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
     ]);
     if (p.error) throw p.error;
@@ -188,7 +191,7 @@ async function loadRemote(userId: string, email: string | null) {
 
     // First sign-in on this browser: move local data into the account.
     let profile = p.data ? toProfile(p.data as ProfileRow) : null;
-    if (!profile && Object.values(local.profile).some((v) => v != null && v !== false)) {
+    if (!profile && Object.values(local.profile).some((v) => v != null && v !== false && !(Array.isArray(v) && v.length === 0))) {
       const up = await db.from("student_profiles").upsert(fromProfile(userId, local.profile));
       if (up.error) throw up.error;
       profile = local.profile;

@@ -148,7 +148,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
           </thead>
           <tbody>
             {rows.slice(0, shown.count).map((c) => {
-              const fit = hasScores ? computeFit(student.profile, c) : null;
+              const fit = hasScores && (c.country_code ?? "US") === "US" ? computeFit(student.profile, c) : null;
               const inList = student.has(c.slug);
               return (
                 <tr key={c.slug} className="border-t border-zinc-100 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900/60">

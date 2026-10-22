@@ -1,12 +1,10 @@
 "use client";
 
-import { geoAlbersUsa, geoContains, geoPath } from "d3-geo";
+import { geoContains, geoPath } from "d3-geo";
 import { interpolateZoom } from "d3-interpolate";
-import type { FeatureCollection } from "geojson";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { feature } from "topojson-client";
-import type { GeometryCollection, Topology } from "topojson-specification";
-import statesTopology from "us-atlas/states-10m.json";
+import { regionGeo } from "@/lib/region-geo";
+import type { RegionCode } from "@/lib/regions";
 import type { TierCode } from "@/lib/types";
 
 const ZOOM = 3.2;
@@ -21,9 +19,6 @@ export const TIER_FILL: Record<TierCode, string> = {
 };
 
 export type MapPin = { slug: string; name: string; lat: number | null; lng: number | null; tier: TierCode | null };
-
-const topology = statesTopology as unknown as Topology;
-const states = feature(topology, topology.objects.states as GeometryCollection) as FeatureCollection;
 
 type Cam = { cx: number; cy: number; w: number; ax: number; ay: number };
 
@@ -43,6 +38,7 @@ export function USMap({
   selected,
   onSelect,
   cardSide,
+  region = "US",
   children,
 }: {
   pins: MapPin[];
@@ -50,8 +46,11 @@ export function USMap({
   onSelect: (slug: string | null) => void;
   /** Which side of the map the detail card sits on; the camera keeps the pin clear of it. */
   cardSide: "left" | "right";
+  /** Which country to draw (default the US). */
+  region?: RegionCode;
   children?: React.ReactNode;
 }) {
+  const g = regionGeo(region);
   const box = useRef<HTMLDivElement>(null);
   const group = useRef<SVGGElement>(null);
   const cam = useRef<Cam | null>(null);
@@ -72,16 +71,21 @@ export function USMap({
 
   const { w, h } = size;
   const geo = useMemo(() => {
-    const projection = geoAlbersUsa().fitExtent(
+    const projection = g.projection().fitExtent(
       [
         [PAD, PAD],
         [w - PAD, h - PAD],
       ],
-      states,
+      g.land,
     );
     const path = geoPath(projection);
-    return { projection, paths: states.features.map((f) => ({ id: String(f.id), d: path(f) ?? "" })) };
-  }, [w, h]);
+    return {
+      projection,
+      paths: g.land.features.map((f) => ({ id: String(f.id), d: path(f) ?? "" })),
+      // Neighbouring land (Ireland beside the UK) is drawn faintly for context only.
+      context: g.context.features.map((f) => ({ id: String(f.id), d: path(f) ?? "" })),
+    };
+  }, [g, w, h]);
 
   const placed = useMemo(
     () =>
@@ -97,8 +101,8 @@ export function USMap({
   const focusState = useMemo(() => {
     if (!focus || focus.lng == null || focus.lat == null) return null;
     const pt: [number, number] = [focus.lng, focus.lat];
-    return states.features.find((f) => geoContains(f, pt))?.id?.toString() ?? null;
-  }, [focus]);
+    return g.land.features.find((f) => geoContains(f, pt))?.id?.toString() ?? null;
+  }, [g, focus]);
 
   // Camera: fly between views on the van Wijk smooth-zoom path (zoom out, glide, zoom in).
   useEffect(() => {
@@ -158,9 +162,21 @@ export function USMap({
         />
       ))}
 
-      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="group" aria-label="Map of the United States with college locations" className="absolute inset-0 block h-full w-full">
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="group" aria-label={g.ariaLabel} className="absolute inset-0 block h-full w-full">
         <rect width={w} height={h} fill="transparent" onClick={() => onSelect(null)} />
         <g ref={group} style={{ transformOrigin: "0 0" }}>
+          {geo.context.map((s) => (
+            <path
+              key={s.id}
+              d={s.d}
+              fill="#f1f6fa"
+              stroke="#d5e6f0"
+              strokeWidth={1}
+              vectorEffect="non-scaling-stroke"
+              strokeLinejoin="round"
+              onClick={() => onSelect(null)}
+            />
+          ))}
           {geo.paths.map((s) => (
             <path
               key={s.id}
