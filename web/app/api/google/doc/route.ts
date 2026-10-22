@@ -22,12 +22,12 @@ export async function POST(req: Request) {
         await deleteToken(cfg, userId);
         return fail("reconnect", 409);
       }
-      return fail("google_error", 502);
+      return Response.json({ error: "google_error", reason: `token_${minted.body.error ?? "failed"}` }, { status: 502 });
     }
 
     const file = await createGoogleDoc(minted.body.access_token, cleanDocName(body.title));
-    const url = file && docUrl(file);
-    return url ? Response.json({ url }) : fail("google_error", 502);
+    const url = docUrl(file);
+    return url ? Response.json({ url }) : Response.json({ error: "google_error", reason: file.reason ?? "no_link" }, { status: 502 });
   } catch {
     return fail("server_error", 500);
   }
