@@ -98,8 +98,8 @@ test("granted scope check", () => {
 });
 
 test("doc titles and links", () => {
-  assert.equal(docTitle({ name: "Brown University", short_name: "Brown" }, "  Why  Brown? ", 0), "Brown – Why Brown?");
-  assert.equal(docTitle({ name: "Rice University", short_name: null }, "", 2), "Rice University – Essay 3");
+  assert.equal(docTitle({ name: "Brown University", short_name: "Brown" }, "  Why  Brown? ", 0), "Brown_1");
+  assert.equal(docTitle({ name: "Rice University", short_name: null }, "", 2), "Rice University_3");
   assert.equal(cleanDocName("  a\nb  "), "a b");
   assert.equal(cleanDocName(42), "Essay");
   assert.equal(cleanDocName("x".repeat(300)).length, 200);
