@@ -7,6 +7,7 @@ import { fmtDate, fmtPct, INTL_AID, TEST_POLICY } from "@/lib/format";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Lookups, TierCode } from "@/lib/types";
 import { FitBadge, Pill, TierBadge } from "./badges";
+import { LoadMore, useVisibleCount } from "./LoadMore";
 
 const TIER_ORDER: TierCode[] = ["S", "A", "B", "C", "D"];
 
@@ -52,6 +53,8 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colleges, q, category, minTier, state, testPolicy, plan, intlAidOnly, sort]);
+
+  const shown = useVisibleCount(`${q}|${category}|${minTier}|${state}|${testPolicy}|${plan}|${intlAidOnly}|${sort}`, rows.length);
 
   const hasScores = student.profile.sat != null || student.profile.act != null;
   const toggle = (slug: string) =>
@@ -144,7 +147,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
             </tr>
           </thead>
           <tbody>
-            {rows.map((c) => {
+            {rows.slice(0, shown.count).map((c) => {
               const fit = hasScores ? computeFit(student.profile, c) : null;
               const inList = student.has(c.slug);
               return (
@@ -194,6 +197,13 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                 </tr>
               );
             })}
+            {shown.hasMore && (
+              <tr>
+                <td colSpan={11}>
+                  <LoadMore key={shown.count} count={shown.count} onVisible={shown.more} />
+                </td>
+              </tr>
+            )}
             {rows.length === 0 && (
               <tr>
                 <td colSpan={11} className="p-6 text-center text-zinc-500">

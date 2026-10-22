@@ -8,6 +8,7 @@ import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate, TierCode } from "@/lib/types";
 import { CollegeBrowser } from "./CollegeBrowser";
 import { FitBadge, Pill, TierBadge } from "./badges";
+import { LoadMore, useVisibleCount } from "./LoadMore";
 import { TIER_FILL } from "./USMap";
 import { USMap3D } from "./USMap3D";
 
@@ -273,6 +274,8 @@ export function CollegeExplorer({
       });
   }, [colleges, q, sort]);
 
+  const shown = useVisibleCount(`${q}|${sort}`, rows.length);
+
   const pins = useMemo(
     () => rows.map((c) => ({ slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier: c.general_tier })),
     [rows],
@@ -352,7 +355,7 @@ export function CollegeExplorer({
         </div>
         <ul className="min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
           {rows.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">No college matches &ldquo;{q}&rdquo;.</li>}
-          {rows.map((c) => {
+          {rows.slice(0, shown.count).map((c) => {
             const fit = hasScores ? computeFit(student.profile, c) : null;
             const on = c.slug === selected;
             return (
@@ -375,6 +378,11 @@ export function CollegeExplorer({
               </li>
             );
           })}
+          {shown.hasMore && (
+            <li>
+              <LoadMore key={shown.count} count={shown.count} onVisible={shown.more} />
+            </li>
+          )}
         </ul>
       </aside>
 
