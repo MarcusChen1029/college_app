@@ -21,6 +21,11 @@ const FOV = 32;
 const OVERVIEW_POLAR = 0.74;
 // With nothing left to animate, ambient motion (sparkles, pin bob, ripples) keeps going this long after the last interaction, then the map stops redrawing.
 const IDLE_MS = 3000;
+// Fill cost grows with the pixels drawn (about 60 ms a frame at a 1200x860 canvas on 1.5x density, 35 ms at 1x), so
+// while anything moves the map is drawn at no more than this many pixels, then sharpened to full density once it has
+// been still for SHARPEN_MS.
+const MOTION_PIXELS = 1_000_000;
+const SHARPEN_MS = 600;
 
 // State tops shade west to east through the region's bands (US: mint, sky blue, lilac).
 const WHITE = new THREE.Color("#ffffff");
@@ -229,7 +234,10 @@ export function USMap3D(props: {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let w = Math.max(1, el.clientWidth);
     let h = Math.max(1, el.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    const restRatio = Math.min(window.devicePixelRatio, 2);
+    // The pixel density used while the map moves: the screen's, capped to 1 and to the pixel budget above.
+    const motionRatio = () => Math.min(restRatio, 1, Math.sqrt(MOTION_PIXELS / (w * h)));
+    renderer.setPixelRatio(motionRatio());
     renderer.setSize(w, h);
     renderer.toneMapping = THREE.NeutralToneMapping;
     renderer.toneMappingExposure = 1;
@@ -277,7 +285,7 @@ export function USMap3D(props: {
     Object.assign(sun.shadow.camera, { left: -(halfW + 200), right: halfW + 200, top: halfD + 160, bottom: -(halfD + 160), near: 100, far: 1800 });
     scene.add(sun, sun.target);
 
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(4000, 4000), new THREE.ShadowMaterial({ opacity: 0.16 }));
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(2 * halfW + 240, 2 * halfD + 240), new THREE.ShadowMaterial({ opacity: 0.16 }));
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);
@@ -880,6 +888,11 @@ export function USMap3D(props: {
       sparkMat.uniforms.uAlpha.value = Math.min(1, Math.max(0, (now - start - 1200) / 1200));
 
       if (shadowDirty) renderer.shadowMap.needsUpdate = true;
+      const ratio = now - lastActive > SHARPEN_MS ? restRatio : motionRatio();
+      if (renderer.getPixelRatio() !== ratio) {
+        renderer.setPixelRatio(ratio);
+        sparkMat.uniforms.uPx.value = ratio;
+      }
       renderer.render(scene, camera);
 
       if (busy) lastActive = now;
