@@ -10,9 +10,11 @@
     "test": "node --test lib/*.test.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/server": "^2.3.1",
     "@supabase/supabase-js": "^2.118.0",
     "d3-geo": "^3.1.1",
     "d3-interpolate": "^3.0.1",
+    "mcp-handler": "^2.3.0",
     "next": "16.4.2",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -20,7 +22,8 @@
     "three": "^0.186.1",
     "topojson-client": "^3.1.0",
     "us-atlas": "^3.0.1",
-    "world-atlas": "^2.0.2"
+    "world-atlas": "^2.0.2",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

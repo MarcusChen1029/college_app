@@ -5,29 +5,26 @@
 // student_colleges, per-user RLS); anything saved locally is merged in on first sign-in.
 
 import { useSyncExternalStore } from "react";
-import type { Checklist } from "./checklist";
 import type { StudentProfile } from "./fit";
-import { canAddMore, DEFAULT_PLAN, getPlan, type PlanKey } from "./plans";
-import type { TestDetails } from "./scores";
-import type { ActivityData } from "./activities";
-import type { PortalData } from "./portals";
-import type { ResumeSettings } from "./resume";
+import { canAddMore, getPlan, type PlanKey } from "./plans";
+import {
+  COLLEGE_COLUMNS,
+  fromEntry,
+  fromProfile,
+  portalColumns,
+  PROFILE_COLUMNS,
+  shouldRefresh,
+  toEntry,
+  toProfile,
+  type CollegeRow,
+  type ListEntry,
+  type Portal,
+  type ProfileRow,
+  type Status,
+} from "./student-rows";
 import { browserSupabase } from "./supabase-browser";
 
-export const STATUSES = [
-  "researching",
-  "planning",
-  "in_progress",
-  "submitted",
-  "interview",
-  "admitted",
-  "deferred",
-  "waitlisted",
-  "rejected",
-  "withdrawn",
-  "enrolled",
-] as const;
-export type Status = (typeof STATUSES)[number];
+export { STATUSES, type ListEntry, type Portal, type Status } from "./student-rows";
 
 /** The statuses students pick from. Older entries may hold others; shownStatus maps them where there is an equivalent. */
 export const STATUS_OPTIONS = ["in_progress", "submitted", "admitted", "deferred", "waitlisted"] as const satisfies readonly Status[];
@@ -35,19 +32,6 @@ const STATUS_ALIAS: Partial<Record<Status, Status>> = { researching: "in_progres
 export const shownStatus = (s: Status): Status => STATUS_ALIAS[s] ?? s;
 
 export { CHECKLIST, type Checklist, type ChecklistKey } from "./checklist";
-
-export type Portal = { url: string; username: string; password: string };
-
-export type ListEntry = {
-  slug: string;
-  institutionId: string;
-  plan: string | null;
-  status: Status;
-  notes: string;
-  checklist: Checklist;
-  portal: Portal;
-  addedAt: string;
-};
 
 export type CollegeRef = { slug: string; id: string };
 
@@ -60,6 +44,8 @@ const EMPTY: State = { profile: {}, list: [], auth: null, ready: false, syncing:
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
 let started = false;
+let lastLoad = 0; // when the account copy was last read
+let savesInFlight = 0;
 
 function emit(patch: Partial<State>) {
   state = { ...state, ...patch };
@@ -94,97 +80,14 @@ function clearLocal() {
   } catch {}
 }
 
-// ── Supabase mapping ──
-
-type ProfileRow = {
-  sat_total: number | null;
-  act_composite: number | null;
-  gpa_unweighted: number | null;
-  is_international: boolean;
-  target_regions: string[] | null;
-  reminder_emails: boolean;
-  plan: PlanKey;
-  test_details: TestDetails | null;
-  interested: string[] | null;
-  activities: Partial<ActivityData> | null;
-  resume: ResumeSettings | null;
-  portals: PortalData | null;
-};
-type CollegeRow = {
-  institution_id: string;
-  plan_key: string | null;
-  status: Status;
-  notes: string | null;
-  checklist: Checklist | null;
-  portal_url: string | null;
-  portal_username: string | null;
-  portal_password: string | null;
-  created_at: string;
-  institutions: { slug: string } | null;
-};
-
-const toProfile = (r: ProfileRow): StudentProfile => ({
-  sat: r.sat_total,
-  act: r.act_composite,
-  gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
-  international: r.is_international,
-  targetRegions: r.target_regions ?? [],
-  reminderEmails: r.reminder_emails,
-  plan: r.plan,
-  tests: r.test_details ?? {},
-  interested: r.interested ?? [],
-  activities: r.activities ?? {},
-  resume: r.resume ?? {},
-  portals: r.portals ?? {},
-});
-const fromProfile = (userId: string, p: StudentProfile) => ({
-  user_id: userId,
-  sat_total: p.sat ?? null,
-  act_composite: p.act ?? null,
-  gpa_unweighted: p.gpa ?? null,
-  is_international: !!p.international,
-  target_regions: p.targetRegions ?? [],
-  reminder_emails: p.reminderEmails ?? true,
-  plan: p.plan ?? DEFAULT_PLAN,
-  test_details: p.tests ?? {},
-  interested: p.interested ?? [],
-  activities: p.activities ?? {},
-  resume: p.resume ?? {},
-  portals: p.portals ?? {},
-});
-const toEntry = (r: CollegeRow): ListEntry => ({
-  slug: r.institutions?.slug ?? "",
-  institutionId: r.institution_id,
-  plan: r.plan_key,
-  status: r.status,
-  notes: r.notes ?? "",
-  checklist: r.checklist ?? {},
-  portal: { url: r.portal_url ?? "", username: r.portal_username ?? "", password: r.portal_password ?? "" },
-  addedAt: r.created_at,
-});
-const fromEntry = (userId: string, e: ListEntry) => ({
-  user_id: userId,
-  institution_id: e.institutionId,
-  plan_key: e.plan,
-  status: e.status,
-  notes: e.notes || null,
-  checklist: e.checklist,
-  ...portalColumns(e.portal),
-});
-const portalColumns = (p: Portal) => ({
-  portal_url: p.url || null,
-  portal_username: p.username || null,
-  portal_password: p.password || null,
-});
-
 async function loadRemote(userId: string, email: string | null) {
   const db = browserSupabase();
   emit({ syncing: true, error: null });
   try {
     const local = loadLocal();
     const [p, l] = await Promise.all([
-      db.from("student_profiles").select("sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume, portals").eq("user_id", userId).maybeSingle(),
-      db.from("student_colleges").select("institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)").order("created_at"),
+      db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
+      db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at"),
     ]);
     if (p.error) throw p.error;
     if (l.error) throw l.error;
@@ -206,10 +109,18 @@ async function loadRemote(userId: string, email: string | null) {
       list = [...list, ...missing];
     }
     clearLocal();
+    lastLoad = Date.now();
     emit({ auth: { userId, email }, profile: profile ?? {}, list, ready: true, syncing: false });
   } catch (e) {
+    lastLoad = Date.now();
     emit({ auth: { userId, email }, ready: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
   }
+}
+
+// Back on a tab left open: pick up changes made elsewhere (another device, or an AI through Connect AI).
+function refreshIfStale() {
+  const a = state.auth;
+  if (a && shouldRefresh({ signedIn: true, now: Date.now(), lastLoad, savesInFlight, loading: state.syncing })) void loadRemote(a.userId, a.email);
 }
 
 function start() {
@@ -230,12 +141,22 @@ function start() {
       emit({ auth: null, profile: {}, list: [], error: null });
     }
   });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") refreshIfStale();
+  });
+  window.addEventListener("focus", refreshIfStale);
 }
 
 // Remote writes are optimistic; on failure we reload the server copy and surface the error.
 async function remote(op: () => PromiseLike<{ error: { message: string } | null }>) {
   if (!state.auth) return;
-  const { error } = await op();
+  savesInFlight++;
+  let error: { message: string } | null;
+  try {
+    ({ error } = await op());
+  } finally {
+    savesInFlight--;
+  }
   if (error) {
     const { userId, email } = state.auth;
     await loadRemote(userId, email);
@@ -337,9 +258,9 @@ export function useStudent() {
             .eq("institution_id", entry.institutionId),
         );
     },
-    /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). */
-    async signInWithGoogle() {
-      const { error } = await db().auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${window.location.origin}/profile` } });
+    /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). `returnTo` is a path on this site. */
+    async signInWithGoogle(returnTo = "/profile") {
+      const { error } = await db().auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${window.location.origin}${returnTo}` } });
       return error?.message ?? null;
     },
     async signOut() {

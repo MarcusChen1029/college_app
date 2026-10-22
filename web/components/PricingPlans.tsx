@@ -67,6 +67,14 @@ export function PricingPlans() {
                     <span>Copy for AI: your profile and list summary, ready to paste into ChatGPT, Claude or Gemini</span>
                   )}
                 </li>
+                {p.connectAi && (
+                  <li className="flex gap-2">
+                    <span className="text-emerald-600">✓</span>
+                    <span>
+                      <strong>Connect AI:</strong> link your own ChatGPT or Claude and update your applications by chat
+                    </span>
+                  </li>
+                )}
               </ul>
               {over && !isCurrent && (
                 <p className="mt-4 rounded-md bg-amber-50 p-2 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">

@@ -9,8 +9,6 @@ const noop = () => () => {};
 export function AccountPanel() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
 
   if (!mounted || !student.ready) return <div className="h-40 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />;
 
@@ -39,6 +37,19 @@ export function AccountPanel() {
 
   return (
     <div className="space-y-3 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
+      <GoogleSignIn />
+      <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
+    </div>
+  );
+}
+
+/** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). */
+export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
+  const student = useStudent();
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  return (
+    <>
       <button
         type="button"
         disabled={busy}
@@ -46,7 +57,7 @@ export function AccountPanel() {
           setBusy(true);
           setError(null);
           // On success the browser leaves for Google, so only a failure comes back here.
-          const err = await student.signInWithGoogle();
+          const err = await student.signInWithGoogle(returnTo);
           if (err) {
             setError(err);
             setBusy(false);
@@ -58,8 +69,7 @@ export function AccountPanel() {
         {busy ? "Opening Google…" : "Continue with Google"}
       </button>
       {error && <p className="text-sm text-rose-600">{error}</p>}
-      <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
-    </div>
+    </>
   );
 }
 

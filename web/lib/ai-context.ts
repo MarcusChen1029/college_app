@@ -135,7 +135,8 @@ function checklistLines(c: Checklist): string[] {
   ];
 }
 
-function detailSection(p: PackCollege, input: PackInput): string[] {
+/** One college's sourced facts as Markdown lines (the "College details" part of the pack). */
+export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels" | "englishTestNames">): string[] {
   const c = p.college;
   const head = `### ${c.name}${place(c) ? ` (${place(c)})` : ""}`;
   const d = p.detail;

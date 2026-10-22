@@ -29,6 +29,7 @@ const NAV = [
   ["/activities", "Activities"],
   ["/resume", "Resume"],
   ["/profile", "Profile"],
+  ["/connect-ai", "Connect AI"],
   ["/pricing", "Pricing"],
 ] as const;
 

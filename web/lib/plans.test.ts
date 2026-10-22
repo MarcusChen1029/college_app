@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { canAddMore, getPlan, listLimit } from "./plans.ts";
+import { canAddMore, getPlan, listLimit, PLANS } from "./plans.ts";
 
 test("plan limits: free 3, junior 10, senior unlimited", () => {
   assert.equal(listLimit("free"), 3);
@@ -17,6 +17,10 @@ test("only paid plans get the full AI context pack", () => {
   assert.equal(getPlan("free").fullAiContext, false);
   assert.equal(getPlan("junior").fullAiContext, true);
   assert.equal(getPlan("senior").fullAiContext, true);
+});
+
+test("only the senior plan gets Connect AI", () => {
+  assert.deepEqual(PLANS.filter((p) => p.connectAi).map((p) => p.key), ["senior"]);
 });
 
 test("canAddMore stops at the limit", () => {
