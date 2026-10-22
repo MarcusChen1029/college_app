@@ -1,5 +1,5 @@
 // Per-region geography for the college maps (3D and SVG): which land to draw, how to project it, and the
-// world-space extent the camera, clouds and colours are sized from. Free of three.js so it can be unit tested.
+// world-space extent the camera and colours are sized from. Free of three.js so it can be unit tested.
 import { geoAlbersUsa, geoArea, geoCentroid, geoConicConformal, type GeoProjection } from "d3-geo";
 import type { Feature, FeatureCollection, MultiPolygon } from "geojson";
 import { feature } from "topojson-client";

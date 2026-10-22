@@ -27,12 +27,6 @@ const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t 
 // A teardrop whose tip sits at (0,0), so the pin "stands" on the college's location.
 const PIN = "M0 0C-3-9-11-13-11-22a11 11 0 1 1 22 0C11-13 3-9 0 0Z";
 
-const CLOUDS = [
-  { top: "12%", w: 220, dur: 90, delay: -20 },
-  { top: "58%", w: 300, dur: 120, delay: -70 },
-  { top: "80%", w: 180, dur: 100, delay: -40 },
-];
-
 export function USMap({
   pins,
   selected,
@@ -153,15 +147,6 @@ export function USMap({
       className="relative h-full min-h-[420px] w-full overflow-hidden rounded-3xl border-2 border-blue-100 bg-gradient-to-br from-blue-100 via-blue-50 to-white"
       style={{ backgroundImage: "radial-gradient(#b7e3fb 1.2px, transparent 1.2px)", backgroundSize: "24px 24px" }}
     >
-      {CLOUDS.map((c, i) => (
-        <span
-          key={i}
-          aria-hidden
-          className="cloud pointer-events-none absolute left-0 rounded-full bg-white/70 blur-xl"
-          style={{ top: c.top, width: c.w, height: c.w / 3, animationDuration: `${c.dur}s`, animationDelay: `${c.delay}s` }}
-        />
-      ))}
-
       <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="group" aria-label={g.ariaLabel} className="absolute inset-0 block h-full w-full">
         <rect width={w} height={h} fill="transparent" onClick={() => onSelect(null)} />
         <g ref={group} style={{ transformOrigin: "0 0" }}>

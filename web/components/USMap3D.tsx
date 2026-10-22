@@ -13,7 +13,7 @@ import type { TierCode } from "@/lib/types";
 import { TIER_FILL, USMap, type MapPin } from "./USMap";
 
 // World units: the region's land is fitted into ±halfW × ±halfD (US: 960 × 600), centred on the origin, y up.
-// Camera framing, pan limits, clouds and sparkles all scale from that box; see lib/region-geo.ts.
+// Camera framing, pan limits and sparkles all scale from that box; see lib/region-geo.ts.
 const SLAB = 9; // state thickness
 const GAP = 0.985; // states shrink a touch about their centroid, so the map reads as puzzle pieces
 const FOV = 32;
@@ -24,6 +24,8 @@ const FOCUS_POLAR = 1.02;
 const WHITE = new THREE.Color("#ffffff");
 // Neighbouring land shown only for context (Ireland next to the UK) is a quiet grey-blue.
 const MUTED_TOP = new THREE.Color("#eef3f7");
+const EDGE = new THREE.Color("#8ccdf0");
+const EDGE_SEL = new THREE.Color("#12304a");
 const CONFETTI = ["#ffd84d", "#ff7a66", "#6fd9b3", "#b9a8ff", "#4dbcef"];
 
 type Ring = [number, number][];
@@ -39,6 +41,7 @@ type StateMesh = {
   cz: number;
   delay: number;
   lift: number;
+  shade: number; // the tint last written to `top` and `edge`, so colours are only touched when it changes
 };
 type Pin3D = {
   slug: string;
@@ -170,6 +173,7 @@ function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureColle
       // The map rises in a wave from west to east.
       delay: 120 + ((cx + g.halfW) / (2 * g.halfW)) * 900 + Math.abs(cz) * 0.4,
       lift: 0,
+      shade: -1,
     } satisfies StateMesh;
   });
   // Pieces that project to nothing (e.g. territories outside Albers USA, specks of island) carry no mesh worth keeping.
@@ -223,12 +227,15 @@ export function USMap3D(props: {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let w = Math.max(1, el.clientWidth);
     let h = Math.max(1, el.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(w, h);
     renderer.toneMapping = THREE.NeutralToneMapping;
     renderer.toneMappingExposure = 1;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
+    // The shadow map is redrawn only when something that casts a shadow moves (see shadowDirty in the frame loop).
+    renderer.shadowMap.autoUpdate = false;
+    renderer.shadowMap.needsUpdate = true;
     const canvas = renderer.domElement;
     canvas.className = "absolute inset-0 block h-full w-full";
     canvas.setAttribute("aria-hidden", "true");
@@ -277,31 +284,8 @@ export function USMap3D(props: {
       if (!reduced) s.mesh.scale.y = 0.001;
       scene.add(s.mesh);
     }
-
-    // Clouds: puffs of spheres drifting east, casting soft shadows across the states.
-    // Positions are laid out on the US box and stretched to the region's.
-    const cloudMat = new THREE.MeshStandardMaterial({ color: "#ffffff", emissive: "#eaf6ff", emissiveIntensity: 0.55, roughness: 1, transparent: true, opacity: 0.94 });
-    const puff = new THREE.SphereGeometry(1, 20, 14);
-    const cloudWrap = halfW + 200;
-    const clouds = [
-      { x: -420, y: 150, z: -150, s: 1.1, v: 7 },
-      { x: 60, y: 175, z: 120, s: 1.4, v: 5 },
-      { x: 420, y: 140, z: -40, s: 0.9, v: 8 },
-      { x: -120, y: 190, z: 260, s: 1, v: 6 },
-    ].map((c, ci) => {
-      const g = new THREE.Group();
-      for (let k = 0; k < 6; k++) {
-        const m = new THREE.Mesh(puff, cloudMat);
-        const r = (13 + ((k * 37 + ci * 11) % 9)) * c.s;
-        m.scale.set(r, r * 0.8, r);
-        m.position.set((k - 2.5) * 13 * c.s, ((k * 5) % 3) * 4 * c.s, ((k * 13) % 7) * 3 * c.s);
-        g.add(m);
-      }
-      g.position.set(c.x * (halfW / 480), c.y, c.z * (halfD / 300));
-      scene.add(g);
-      return { g, v: c.v };
-    });
-    let cloudAlpha = reduced ? 0.94 : 0;
+    // The rise-in animation moves the states (and so their shadows) until the last one has landed.
+    const riseMs = Math.max(0, ...states.map((s) => s.delay), ...context.map((s) => s.delay)) + 1000;
 
     // Sparkles drifting up off the map.
     const SPARKS = 160;
@@ -615,6 +599,7 @@ export function USMap3D(props: {
     const ndc = new THREE.Vector2();
     const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -SLAB);
     const hitPoint = new THREE.Vector3();
+    const hitList: THREE.Object3D[] = [];
     let pointerIn = false;
     let pointerDirty = false;
     let hoverPin: Pin3D | null = null;
@@ -632,10 +617,9 @@ export function USMap3D(props: {
     };
     const pick = () => {
       ray.setFromCamera(ndc, camera);
-      const hits = ray.intersectObjects(
-        [...pinMap.values()].filter((p) => p.leaving == null && p.root.visible).map((p) => p.hit),
-        false,
-      );
+      hitList.length = 0;
+      for (const p of pinMap.values()) if (p.leaving == null && p.root.visible) hitList.push(p.hit);
+      const hits = ray.intersectObjects(hitList, false);
       const pin = hits.length ? pinMap.get(hits[0].object.userData.slug as string) ?? null : null;
       const st = ray.ray.intersectPlane(plane, hitPoint) ? stateAt(states, hitPoint.x, hitPoint.z) : null;
       return { pin, st };
@@ -682,8 +666,11 @@ export function USMap3D(props: {
     let last = start;
     const v = new THREE.Vector3();
     const toCam = new THREE.Vector3();
+    let frame = 0;
+    let pinsWereShown = false;
     renderer.setAnimationLoop(() => {
       const now = performance.now();
+      let shadowDirty = !reduced && now - start < riseMs;
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       const time = (now - start) / 1000;
@@ -728,16 +715,25 @@ export function USMap3D(props: {
           s.mesh.scale.y = Math.max(0.001, easeOutBack(t));
         }
         const goal = s === selState ? 7 : s === hoverState ? 2.5 : 0;
+        const before = s.lift;
         s.lift += (goal - s.lift) * k;
-        s.mesh.position.y = s.lift;
+        if (Math.abs(goal - s.lift) < 0.01) s.lift = goal;
+        if (s.lift !== before) {
+          s.mesh.position.y = s.lift;
+          shadowDirty = true;
+        }
         const tint = s === selState ? 0.75 : s === hoverState ? 0.4 : 0;
-        s.top.color.lerpColors(s.baseTop, WHITE, tint);
-        s.edge.color.set(s === selState ? "#12304a" : "#8ccdf0");
+        if (tint !== s.shade) {
+          s.shade = tint;
+          s.top.color.lerpColors(s.baseTop, WHITE, tint);
+          s.edge.color.copy(s === selState ? EDGE_SEL : EDGE);
+        }
       }
 
       // Pins.
       const pinScale = Math.min(2.1, Math.max(0.7, 1.65 * Math.sqrt(camDist / 950)));
-      for (const p of [...pinMap.values()]) {
+      let pinsShown = false;
+      for (const p of pinMap.values()) {
         const base = pinBase(p);
         p.root.position.y = base;
         const isSel = p === selPin;
@@ -746,6 +742,7 @@ export function USMap3D(props: {
         // Unselected pins stay hidden; a deselected one shrinks away.
         const show = isSel ? 1 : reduced ? 0 : p.sel;
         p.root.visible = show > 0.02;
+        if (p.root.visible) pinsShown = true;
         let s = pinScale * (1 + 0.25 * p.hover + 0.25 * p.sel) * show;
         let drop = 0;
         if (!reduced) {
@@ -791,6 +788,11 @@ export function USMap3D(props: {
           label.dataset.hover = String(on && (p === hoverPin || isSel));
         }
       }
+
+      // A visible pin bobs and bounces, so its shadow is refreshed every other frame; one more pass clears it once the pin is gone.
+      if ((pinsShown && (frame & 1) === 0) || (pinsWereShown && !pinsShown)) shadowDirty = true;
+      pinsWereShown = pinsShown;
+      frame++;
 
       // Selection effects follow the selected pin.
       if (selPin && selPin.leaving == null && !fly) {
@@ -842,19 +844,10 @@ export function USMap3D(props: {
         }
       }
 
-      // Clouds drift; they clear out of the way while a college is in focus.
-      const cloudGoal = selPin ? 0 : 0.94;
-      cloudAlpha += (cloudGoal - cloudAlpha) * k * (now - start > 900 ? 0.5 : 0);
-      cloudMat.opacity = cloudAlpha;
-      for (const c of clouds) {
-        if (!reduced) c.g.position.x += c.v * dt;
-        if (c.g.position.x > cloudWrap) c.g.position.x = -cloudWrap;
-        c.g.visible = cloudAlpha > 0.02;
-      }
-
       sparkMat.uniforms.uTime.value = reduced ? 0 : time;
       sparkMat.uniforms.uAlpha.value = Math.min(1, Math.max(0, (now - start - 1200) / 1200));
 
+      if (shadowDirty) renderer.shadowMap.needsUpdate = true;
       renderer.render(scene, camera);
     });
 
