@@ -13,6 +13,12 @@ test("unknown or missing plan falls back to free", () => {
   assert.equal(getPlan("platinum").key, "free");
 });
 
+test("only paid plans get the full AI context pack", () => {
+  assert.equal(getPlan("free").fullAiContext, false);
+  assert.equal(getPlan("junior").fullAiContext, true);
+  assert.equal(getPlan("senior").fullAiContext, true);
+});
+
 test("canAddMore stops at the limit", () => {
   assert.equal(canAddMore("free", 2), true);
   assert.equal(canAddMore("free", 3), false);

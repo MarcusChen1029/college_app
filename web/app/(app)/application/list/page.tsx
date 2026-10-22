@@ -6,7 +6,7 @@ export const metadata = { title: "My list" };
 
 async function Data() {
   const [colleges, deadlines, lookups, codes] = await Promise.all([getSummaries(), getDeadlines(), getLookups(), getScoreCodes()]);
-  return <MyList colleges={colleges} deadlines={deadlines} plans={lookups.plans} codes={codes} />;
+  return <MyList colleges={colleges} deadlines={deadlines} plans={lookups.plans} englishTests={lookups.englishTests} codes={codes} />;
 }
 
 export default function MyListPage() {

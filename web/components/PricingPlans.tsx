@@ -56,6 +56,17 @@ export function PricingPlans() {
                 <li className="flex gap-2">
                   <span className="text-emerald-600">✓</span>Deadline reminders by email
                 </li>
+                <li className="flex gap-2">
+                  <span className="text-emerald-600">✓</span>
+                  {p.fullAiContext ? (
+                    <span>
+                      <strong>Copy for AI, full:</strong> every college&apos;s deadlines, English minimums, essays, cost and aid, with a source link
+                      for each number
+                    </span>
+                  ) : (
+                    <span>Copy for AI: your profile and list summary, ready to paste into ChatGPT, Claude or Gemini</span>
+                  )}
+                </li>
               </ul>
               {over && !isCurrent && (
                 <p className="mt-4 rounded-md bg-amber-50 p-2 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">
