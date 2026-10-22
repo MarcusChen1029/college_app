@@ -23,6 +23,21 @@ export function googleConfig(): GoogleConfig | null {
   return { clientId, clientSecret, key, supabaseUrl, publishableKey, serviceKey };
 }
 
+/** Names (never values) of the settings that keep Google Docs off, so a bad deployment can be diagnosed. */
+export function missingGoogleSettings(): string[] {
+  const names = [
+    "GOOGLE_DOCS_CLIENT_ID",
+    "GOOGLE_DOCS_CLIENT_SECRET",
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+  ].filter((n) => !process.env[n]);
+  const key = process.env.GOOGLE_TOKEN_ENCRYPTION_KEY;
+  if (!key) names.push("GOOGLE_TOKEN_ENCRYPTION_KEY");
+  else if (!parseKey(key)) names.push("GOOGLE_TOKEN_ENCRYPTION_KEY (set, but not base64 of exactly 32 bytes)");
+  return names;
+}
+
 export function redirectUri(requestUrl: string) {
   return `${oauthOrigin(requestUrl)}${CALLBACK_PATH}`;
 }
