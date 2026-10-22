@@ -141,10 +141,11 @@ export const ESSAY_TITLE_MAX = 200;
 
 type EssayFields = { title?: unknown; url?: unknown; status?: unknown };
 
-function essayFields(f: EssayFields): Check<Partial<Omit<Essay, "id">>> {
+// A new essay needs a title; an existing one may be cleared back to untitled, as the website allows.
+function essayFields(f: EssayFields, allowBlankTitle: boolean): Check<Partial<Omit<Essay, "id">>> {
   const out: Partial<Omit<Essay, "id">> = {};
   if (f.title !== undefined) {
-    if (typeof f.title !== "string" || !f.title.trim()) return fail("Essay title can't be empty.");
+    if (typeof f.title !== "string" || (!allowBlankTitle && !f.title.trim())) return fail("Essay title can't be empty.");
     if (f.title.trim().length > ESSAY_TITLE_MAX) return fail(`Essay title is limited to ${ESSAY_TITLE_MAX} characters.`);
     out.title = f.title.trim();
   }
@@ -164,7 +165,7 @@ function essayFields(f: EssayFields): Check<Partial<Omit<Essay, "id">>> {
 /** Adding an essay also clears "no essays", since the student evidently has one. */
 export function addEssay(current: Checklist, fields: EssayFields): Check<{ checklist: Checklist; essay: Essay }> {
   if (typeof fields.title !== "string") return fail("Essay title is required.");
-  const f = essayFields(fields);
+  const f = essayFields(fields, false);
   if (!f.ok) return f;
   const essay: Essay = { ...newEssay(), ...f.value };
   return ok({ checklist: { ...current, no_essays: false, essay_list: [...(current.essay_list ?? []), essay] }, essay });
@@ -175,7 +176,7 @@ export function updateEssay(current: Checklist, id: string, fields: EssayFields)
   const list = current.essay_list ?? [];
   const existing = list.find((e) => e.id === id);
   if (!existing) return fail(`No essay with id "${id}". Use get_applications to see the essay ids.`);
-  const f = essayFields(fields);
+  const f = essayFields(fields, true);
   if (!f.ok) return f;
   const essay = { ...existing, ...f.value };
   return ok({ checklist: { ...current, essay_list: list.map((e) => (e.id === id ? essay : e)) }, essay });

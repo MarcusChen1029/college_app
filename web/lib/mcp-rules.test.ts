@@ -123,6 +123,10 @@ test("essays: add and update, urls must be http(s), status must be known", () =>
   assert.equal(upd.value.checklist.essay_list?.[0].title, "Why Rice");
   assert.equal(updateEssay(added.value.checklist, id, { url: "ftp://x" }).ok, false);
   assert.equal(updateEssay(added.value.checklist, "nope", { status: "final" }).ok, false);
+  // Like the website, an existing essay can go back to untitled (adding one still needs a title).
+  const cleared = updateEssay(added.value.checklist, id, { title: "  " });
+  assert.ok(cleared.ok);
+  assert.equal(cleared.value.essay.title, "");
 });
 
 test("essays cannot be removed: updating never shrinks the list and the module has no delete", async () => {
