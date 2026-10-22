@@ -17,8 +17,10 @@ import { TIER_FILL, USMap, type MapPin } from "./USMap";
 const SLAB = 9; // state thickness
 const GAP = 0.985; // states shrink a touch about their centroid, so the map reads as puzzle pieces
 const FOV = 32;
+// The camera keeps one fixed tilt and heading (no rotating); people can only zoom and pan.
 const OVERVIEW_POLAR = 0.74;
-const FOCUS_POLAR = 1.02;
+// With nothing left to animate, ambient motion (sparkles, pin bob, ripples) keeps going this long after the last interaction, then the map stops redrawing.
+const IDLE_MS = 3000;
 
 // State tops shade west to east through the region's bands (US: mint, sky blue, lilac).
 const WHITE = new THREE.Color("#ffffff");
@@ -254,9 +256,13 @@ export function USMap3D(props: {
     controls.dampingFactor = 0.08;
     controls.minDistance = 140;
     controls.maxDistance = 2400;
-    controls.maxPolarAngle = 1.32;
+    controls.minPolarAngle = controls.maxPolarAngle = OVERVIEW_POLAR;
+    controls.minAzimuthAngle = controls.maxAzimuthAngle = 0;
+    controls.enableRotate = false;
     controls.screenSpacePanning = false;
-    controls.rotateSpeed = 0.6;
+    // No rotating, so a plain drag pans the map.
+    controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
+    controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN };
 
     // Light: a warm sun from the north-west, sky-blue bounce from below.
     scene.add(new THREE.HemisphereLight("#ffffff", "#9fd3f2", 1.25));
@@ -516,6 +522,7 @@ export function USMap3D(props: {
       for (const p of pinMap.values()) if (!keep.has(p.slug) && p.leaving == null) p.leaving = now;
       // The focused college was filtered out: head back to the whole map.
       if (selSlug && !keep.has(selSlug)) flyTo(targetRig());
+      wake();
     };
 
     // Camera rig.
@@ -547,8 +554,8 @@ export function USMap3D(props: {
         ty: SLAB + 10,
         tz: p.z,
         dist,
-        polar: FOCUS_POLAR,
-        az: Math.max(-0.45, Math.min(0.45, (-p.x / halfW) * 0.4)),
+        polar: OVERVIEW_POLAR,
+        az: 0,
         ax: sheet ? 0.5 : selSide === "right" ? 0.31 : 0.69,
         ay: sheet ? 0.32 : 0.56,
       };
@@ -568,10 +575,10 @@ export function USMap3D(props: {
       return fly.dur;
     };
 
-    // Intro: start high above, swoop down to the tilted overview while the states rise.
+    // Intro: start further out and glide in to the overview while the states rise.
     if (reduced) applyRig(rig);
     else {
-      applyRig({ ...rig, dist: rig.dist * 1.9, polar: 0.12, az: -0.6 });
+      applyRig({ ...rig, dist: rig.dist * 1.9 });
       flyTo(overview(), 2600);
     }
 
@@ -583,6 +590,7 @@ export function USMap3D(props: {
       selSide = side;
       const next = slug ? pinMap.get(slug) : undefined;
       const dur = flyTo(targetRig());
+      wake();
       if (!changed || !next) return;
       beamMat.uniforms.uColor.value = srgb(fillOf(next.tier));
       for (const r of ripples) (r.material as THREE.MeshBasicMaterial).color.set(fillOf(next.tier));
@@ -610,10 +618,12 @@ export function USMap3D(props: {
       ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       pointerIn = true;
       pointerDirty = true;
+      wake();
     };
     const onLeave = () => {
       pointerIn = false;
       pointerDirty = true;
+      wake();
     };
     const pick = () => {
       ray.setFromCamera(ndc, camera);
@@ -626,6 +636,7 @@ export function USMap3D(props: {
     };
     const onDown = (e: PointerEvent) => {
       down = { x: e.clientX, y: e.clientY };
+      wake();
       if (fly) {
         // Let the person grab the camera mid-flight.
         fly = null;
@@ -657,24 +668,33 @@ export function USMap3D(props: {
       controls.enabled = true;
       rig = targetRig();
       applyRig(rig);
+      wake();
     };
     const ro = new ResizeObserver(([entry]) => resizeTo(Math.round(entry.contentRect.width), Math.round(entry.contentRect.height)));
     ro.observe(el);
 
-    // Frame loop.
+    // Frame loop. It runs only while something moves (camera, hover, intro, pins, effects) or for IDLE_MS after the
+    // last interaction, and never while the map is off-screen; otherwise the last frame stays up and the GPU rests.
     const start = performance.now();
     let last = start;
     const v = new THREE.Vector3();
     const toCam = new THREE.Vector3();
     let frame = 0;
     let pinsWereShown = false;
-    renderer.setAnimationLoop(() => {
+    // Ambient motion runs on its own clock, which stops while the loop sleeps so nothing jumps on wake.
+    let time = 0;
+    let running = false;
+    let onScreen = true;
+    let lastActive = performance.now();
+    const tick = () => {
       const now = performance.now();
       let shadowDirty = !reduced && now - start < riseMs;
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      const time = (now - start) / 1000;
+      time += dt;
       const k = 1 - Math.exp(-dt * 10);
+      // Anything still settling keeps the loop awake.
+      let busy = !!fly || pointerDirty || now - start < riseMs + 1200 || !!arc || burstAt != null;
 
       if (fly) {
         const t = (now - fly.t0) / fly.dur;
@@ -686,7 +706,7 @@ export function USMap3D(props: {
           controls.update();
         }
       } else {
-        controls.update();
+        if (controls.update()) busy = true;
         // Keep panning on the map.
         controls.target.x = Math.max(-halfW - 80, Math.min(halfW + 80, controls.target.x));
         controls.target.z = Math.max(-halfD - 80, Math.min(halfD + 80, controls.target.z));
@@ -721,6 +741,7 @@ export function USMap3D(props: {
         if (s.lift !== before) {
           s.mesh.position.y = s.lift;
           shadowDirty = true;
+          busy = true;
         }
         const tint = s === selState ? 0.75 : s === hoverState ? 0.4 : 0;
         if (tint !== s.shade) {
@@ -737,8 +758,13 @@ export function USMap3D(props: {
         const base = pinBase(p);
         p.root.position.y = base;
         const isSel = p === selPin;
-        p.hover += ((p === hoverPin ? 1 : 0) - p.hover) * k;
-        p.sel += ((isSel ? 1 : 0) - p.sel) * k;
+        const hoverGoal = p === hoverPin ? 1 : 0;
+        const selGoal = isSel ? 1 : 0;
+        p.hover += (hoverGoal - p.hover) * k;
+        p.sel += (selGoal - p.sel) * k;
+        if (Math.abs(hoverGoal - p.hover) < 0.002) p.hover = hoverGoal;
+        if (Math.abs(selGoal - p.sel) < 0.002) p.sel = selGoal;
+        if (p.hover !== hoverGoal || p.sel !== selGoal || now < p.born + 900 || p.leaving != null || p.pop != null) busy = true;
         // Unselected pins stay hidden; a deselected one shrinks away.
         const show = isSel ? 1 : reduced ? 0 : p.sel;
         p.root.visible = show > 0.02;
@@ -798,6 +824,8 @@ export function USMap3D(props: {
       if (selPin && selPin.leaving == null && !fly) {
         const base = pinBase(selPin);
         beamMat.uniforms.uOpacity.value += (1 - beamMat.uniforms.uOpacity.value) * k * 0.6;
+        if (beamMat.uniforms.uOpacity.value > 0.995) beamMat.uniforms.uOpacity.value = 1;
+        else busy = true;
         beam.visible = true;
         beam.position.set(selPin.x, base, selPin.z);
         beam.scale.set(pinScale, 1, pinScale);
@@ -811,6 +839,7 @@ export function USMap3D(props: {
       } else {
         beamMat.uniforms.uOpacity.value = Math.max(0, beamMat.uniforms.uOpacity.value - dt * 4);
         if (beamMat.uniforms.uOpacity.value <= 0) beam.visible = false;
+        else busy = true;
         for (const r of ripples) r.visible = false;
       }
       beamMat.uniforms.uTime.value = time;
@@ -849,7 +878,32 @@ export function USMap3D(props: {
 
       if (shadowDirty) renderer.shadowMap.needsUpdate = true;
       renderer.render(scene, camera);
+
+      if (busy) lastActive = now;
+      else if (now - lastActive > IDLE_MS) sleep();
+    };
+    const sleep = () => {
+      if (!running) return;
+      running = false;
+      renderer.setAnimationLoop(null);
+    };
+    // Called on any interaction or change; restarts the loop if it was asleep.
+    function wake() {
+      lastActive = performance.now();
+      if (running || !onScreen) return;
+      running = true;
+      last = performance.now();
+      renderer.setAnimationLoop(tick);
+    }
+    controls.addEventListener("change", wake);
+    // Off-screen (scrolled away): stop drawing entirely; resume when it comes back.
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen) wake();
+      else sleep();
     });
+    io.observe(el);
+    wake();
 
     api.current = { setPins, select, resizeTo };
     setPins(latest.current.pins);
@@ -859,6 +913,8 @@ export function USMap3D(props: {
       api.current = null;
       renderer.setAnimationLoop(null);
       ro.disconnect();
+      io.disconnect();
+      controls.removeEventListener("change", wake);
       canvas.removeEventListener("pointermove", onMove);
       canvas.removeEventListener("pointerleave", onLeave);
       canvas.removeEventListener("pointerdown", onDown);
