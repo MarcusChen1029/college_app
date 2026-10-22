@@ -91,7 +91,7 @@ function Value({ value, sub }: { value: string | number | null | undefined; sub?
   );
 }
 
-function RegionsEditor() {
+export function RegionsEditor() {
   const { profile, updateProfile } = useStudent();
   const selected = cleanRegions(profile.targetRegions);
   const save = (next: RegionCode[]) => updateProfile({ targetRegions: cleanRegions(next) });
