@@ -1,14 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import {
   ENGLISH_PLANS,
-  ESSAY_STATUSES,
   isDone,
-  newEssay,
-  safeLink,
   TEST_PLANS,
   type Checklist,
-  type Essay,
   type EnglishPlan,
   type TestPlan,
 } from "@/lib/checklist";
@@ -18,14 +15,6 @@ import type { CollegeSummary } from "@/lib/types";
 
 export const SELECT = "rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
 const INPUT = "rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
-
-const ESSAY_TONE: Record<Essay["status"], string> = {
-  not_started: "text-zinc-500",
-  brainstorming: "text-blue-700 dark:text-blue-300",
-  drafting: "text-amber-700 dark:text-amber-300",
-  revising: "text-violet-700 dark:text-violet-300",
-  final: "text-emerald-700 dark:text-emerald-300",
-};
 
 type Props = {
   entry: ListEntry;
@@ -39,91 +28,21 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
   const essays = c.essay_list ?? [];
-  const setEssay = (id: string, patch: Partial<Essay>) => set({ essay_list: essays.map((e) => (e.id === id ? { ...e, ...patch } : e)) });
   const finals = essays.filter((e) => e.status === "final").length;
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
       <Section title="Essays" done={isDone("essays", c)} className="md:col-span-2">
-        {!c.no_essays && (
-          <>
-            {essays.length > 0 ? (
-              <ul className="space-y-2">
-                {essays.map((e, i) => {
-                  const link = safeLink(e.url);
-                  return (
-                    <li key={e.id} className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <div className="flex min-w-60 flex-1 items-center gap-2">
-                        <span className="w-5 text-right text-xs tabular-nums text-zinc-400">{i + 1}.</span>
-                        <input
-                          className={`${INPUT} min-w-0 flex-1`}
-                          defaultValue={e.title}
-                          placeholder="Prompt or name, e.g. Why us?"
-                          aria-label={`Essay ${i + 1} name`}
-                          onBlur={(ev) => ev.target.value !== e.title && setEssay(e.id, { title: ev.target.value })}
-                        />
-                        <select
-                          className={`${SELECT} ${ESSAY_TONE[e.status]}`}
-                          value={e.status}
-                          aria-label={`Essay ${i + 1} status`}
-                          onChange={(ev) => setEssay(e.id, { status: ev.target.value as Essay["status"] })}
-                        >
-                          {ESSAY_STATUSES.map(([k, label]) => (
-                            <option key={k} value={k}>
-                              {label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div className="flex min-w-60 flex-1 items-center gap-2 pl-7 sm:pl-0">
-                        <input
-                          type="url"
-                          className={`${INPUT} min-w-0 flex-1`}
-                          defaultValue={e.url}
-                          placeholder="Paste Google Doc link"
-                          aria-label={`Essay ${i + 1} Google Doc link`}
-                          onBlur={(ev) => ev.target.value !== e.url && setEssay(e.id, { url: ev.target.value.trim() })}
-                        />
-                        {link ? (
-                          <a href={link} target="_blank" rel="noopener noreferrer" className="shrink-0 text-xs text-blue-600 underline dark:text-blue-400">
-                            Open ↗
-                          </a>
-                        ) : (
-                          <span className="w-11 shrink-0" />
-                        )}
-                        <button
-                          className="shrink-0 rounded px-1 text-zinc-400 hover:text-rose-600"
-                          aria-label={`Remove essay ${i + 1}`}
-                          onClick={() => set({ essay_list: essays.filter((x) => x.id !== e.id) })}
-                        >
-                          ✕
-                        </button>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <p className="text-xs text-zinc-500">No essays added yet.</p>
-            )}
-            <div className="mt-2 flex items-center gap-3">
-              <button
-                className="rounded border border-dashed border-zinc-300 px-2 py-0.5 text-xs text-zinc-600 hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-white"
-                onClick={() => set({ essay_list: [...essays, newEssay()] })}
-              >
-                + Add essay
-              </button>
-              {essays.length > 0 && (
-                <span className="text-xs tabular-nums text-zinc-500">
-                  {finals}/{essays.length} final
-                </span>
-              )}
-            </div>
-          </>
-        )}
-        <Check className="mt-2" checked={!!c.no_essays} onChange={(v) => set({ no_essays: v })}>
-          This college requires no essays
-        </Check>
+        <p className="text-xs text-zinc-600 dark:text-zinc-300">
+          {c.no_essays
+            ? "No essays required."
+            : essays.length > 0
+              ? `${finals}/${essays.length} essays final.`
+              : "No essays added yet."}{" "}
+          <Link href="/application/essays" className="text-blue-600 underline dark:text-blue-400">
+            Manage on the Essays page
+          </Link>
+        </p>
       </Section>
 
       <Section title="Recommendations" done={isDone("recommendations", c)}>
