@@ -549,11 +549,11 @@ export function registerTools(server: McpServer) {
     "update_essay",
     {
       title: "Update an essay",
-      description: "Change an essay's title, link or status. essay_id comes from get_applications. Essays can't be deleted by AI.",
+      description: "Change an essay's title, link or status. An empty title makes the essay untitled. essay_id comes from get_applications. Essays can't be deleted by AI.",
       inputSchema: z.object({
         slug: z.string().min(1).max(100),
         essay_id: z.string().min(1).max(100),
-        patch: z.object({ title: z.string().min(1).max(200).optional(), url: z.string().max(2000).optional(), status: z.enum(["not_started", "brainstorming", "drafting", "revising", "final"]).optional() }),
+        patch: z.object({ title: z.string().max(200).optional(), url: z.string().max(2000).optional(), status: z.enum(["not_started", "brainstorming", "drafting", "revising", "final"]).optional() }),
       }),
       annotations: WRITE,
     },
