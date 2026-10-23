@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { SCHOOL_DOMAINS } from "@/lib/school-domains";
 import { FIT_LABEL, type Fit } from "@/lib/fit";
 import { tierLetter, type TierLetter } from "@/lib/tiers";
 import type { TierCode } from "@/lib/types";
@@ -44,4 +48,22 @@ export function Pill({ children, tone = "zinc" }: { children: React.ReactNode; t
     red: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-200",
   };
   return <span className={`inline-block rounded px-1.5 py-0.5 text-xs font-medium ${tones[tone]}`}>{children}</span>;
+}
+
+/** The school's logo (its site icon), shown left of the tier. Hides itself when there is none. */
+export function SchoolLogo({ slug, size = "md" }: { slug: string; size?: "sm" | "md" }) {
+  const [failed, setFailed] = useState(false);
+  const domain = SCHOOL_DOMAINS[slug];
+  const dim = size === "sm" ? "h-5 w-5" : "h-7 w-7";
+  if (!domain || failed) return null;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+      alt=""
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className={`${dim} shrink-0 rounded object-contain`}
+    />
+  );
 }

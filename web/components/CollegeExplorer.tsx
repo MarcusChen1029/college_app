@@ -10,7 +10,7 @@ import { useStudent } from "@/lib/student-store";
 import { BASE_TIERS, tierRank } from "@/lib/tiers";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { CollegeBrowser } from "./CollegeBrowser";
-import { FitBadge, Pill, TierBadge } from "./badges";
+import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 import { TIER_FILL } from "./USMap";
 import { USMap3D } from "./USMap3D";
@@ -174,6 +174,7 @@ function DetailCard({
       style={{ "--from": side === "right" ? "28px" : "-28px" } as React.CSSProperties}
     >
       <header className="flex items-start gap-3">
+        <SchoolLogo slug={college.slug} />
         <TierBadge tier={college.general_tier} />
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-bold leading-tight">{college.name}</h2>
@@ -413,6 +414,7 @@ export function CollegeExplorer({
                   onClick={() => setSelected(c.slug)}
                   className={`flex w-full items-center gap-3 rounded-2xl border-2 px-3 py-2.5 text-left transition ${on ? "border-ink bg-blue-50" : "border-transparent hover:bg-blue-50"}`}
                 >
+                  <SchoolLogo slug={c.slug} />
                   <TierBadge tier={c.general_tier} />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold">{c.short_name ?? c.name}</span>

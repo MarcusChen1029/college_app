@@ -7,7 +7,7 @@ import { fmtDate, fmtPct, INTL_AID, TEST_POLICY } from "@/lib/format";
 import { useStudent } from "@/lib/student-store";
 import { BASE_TIERS, TIER_ORDER, tierRank } from "@/lib/tiers";
 import type { CollegeSummary, Lookups, TierCode } from "@/lib/types";
-import { FitBadge, Pill, TierBadge } from "./badges";
+import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 
 
@@ -155,7 +155,10 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                     <input type="checkbox" aria-label={`Select ${c.name} to compare`} checked={selected.includes(c.slug)} onChange={() => toggle(c.slug)} />
                   </td>
                   <td className="p-2">
-                    <TierBadge tier={tierFor(c)} />
+                    <span className="flex items-center gap-2">
+                      <SchoolLogo slug={c.slug} />
+                      <TierBadge tier={tierFor(c)} />
+                    </span>
                   </td>
                   <td className="p-2">
                     <Link href={`/colleges/${c.slug}`} className="font-medium hover:underline">
