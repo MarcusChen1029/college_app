@@ -144,7 +144,7 @@
   }
  },
  "tiers": {
-  "general": "C",
+  "general": "C+",
   "computer_science": "C",
   "engineering": "D",
   "business": "A",

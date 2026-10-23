@@ -151,7 +151,7 @@
   }
  },
  "tiers": {
-  "general": "C",
+  "general": "C++",
   "computer_science": "C",
   "engineering": "C",
   "biology_life_sci": "C",

@@ -1,4 +1,5 @@
-export type TierCode = "S" | "A" | "B" | "C" | "D";
+// Subject tiers are plain S–D; the general tier may also be S++, S+, A++, … D+.
+export type TierCode = "S++" | "S+" | "S" | "A++" | "A+" | "A" | "B++" | "B+" | "B" | "C++" | "C+" | "C" | "D++" | "D+" | "D";
 
 export type CollegeSummary = {
   id: string;

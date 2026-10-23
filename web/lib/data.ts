@@ -103,6 +103,17 @@ async function cachedScoreCodes(): Promise<ScoreCode[]> {
   return (unwrap(res, "score codes") as unknown as Row[]).map(({ sources, ...r }) => ({ ...r, source_url: sources?.url ?? null }));
 }
 
+/** institution_id → application platforms (common_app, uc_app, …), merged over every cycle on file. */
+async function cachedPlatforms(): Promise<Record<string, string[]>> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges");
+  const res = await supabase().from("application_requirements").select("institution_id, platforms");
+  const out: Record<string, string[]> = {};
+  for (const r of unwrap(res, "application platforms")) out[r.institution_id] = [...new Set([...(out[r.institution_id] ?? []), ...(r.platforms ?? [])])];
+  return out;
+}
+
 async function cachedLookups(): Promise<Lookups> {
   "use cache";
   cacheLife("days");
@@ -149,6 +160,11 @@ export async function getEnglishSummaries() {
 export async function getSatEstimates() {
   await connection();
   return cachedSatEstimates();
+}
+
+export async function getPlatforms() {
+  await connection();
+  return cachedPlatforms();
 }
 
 export async function getScoreCodes() {

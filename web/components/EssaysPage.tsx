@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ESSAY_STATUSES, isDone, newEssay, safeLink, type Checklist, type Essay } from "@/lib/checklist";
 import { docTitle } from "@/lib/google-doc-title";
+import { PS_PROMPTS, PS_WORDS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, UC_WORDS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
 import type { CollegeSummary } from "@/lib/types";
@@ -59,12 +60,16 @@ function EssayRow({
   onChange,
   onRemove,
   docs,
+  label,
 }: {
   essay: Essay;
   index: number;
   onChange: (patch: Partial<Essay>) => void;
-  onRemove: () => void;
+  /** Omit for an essay that can't be removed. */
+  onRemove?: () => void;
   docs?: GoogleDocs;
+  /** A fixed name instead of an editable one (personal statement, UC questions). */
+  label?: string;
 }) {
   const [pasteFailed, setPasteFailed] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -103,19 +108,25 @@ function EssayRow({
   return (
     <li className="space-y-1.5 rounded-xl border border-zinc-200 p-3">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="w-5 text-right text-xs tabular-nums text-zinc-400">{index + 1}.</span>
-        <input
-          ref={titleRef}
-          className={`${input} min-w-48 flex-1`}
-          defaultValue={essay.title}
-          placeholder="Prompt or name, e.g. Why us?"
-          aria-label={`Essay ${index + 1} name`}
-          onBlur={(e) => e.target.value !== essay.title && onChange({ title: e.target.value })}
-        />
+        {label ? (
+          <span className="min-w-48 flex-1 text-sm font-medium">{label}</span>
+        ) : (
+          <>
+            <span className="w-5 text-right text-xs tabular-nums text-zinc-400">{index + 1}.</span>
+            <input
+              ref={titleRef}
+              className={`${input} min-w-48 flex-1`}
+              defaultValue={essay.title}
+              placeholder="Prompt or name, e.g. Why us?"
+              aria-label={`Essay ${index + 1} name`}
+              onBlur={(e) => e.target.value !== essay.title && onChange({ title: e.target.value })}
+            />
+          </>
+        )}
         <select
           className={`${input} ${TONE[essay.status]}`}
           value={essay.status}
-          aria-label={`Essay ${index + 1} status`}
+          aria-label={`${label ?? `Essay ${index + 1}`} status`}
           onChange={(e) => onChange({ status: e.target.value as Essay["status"] })}
         >
           {ESSAY_STATUSES.map(([k, label]) => (
@@ -124,11 +135,13 @@ function EssayRow({
             </option>
           ))}
         </select>
-        <button type="button" className="rounded px-1 text-zinc-400 hover:text-rose-600" aria-label={`Remove essay ${index + 1}`} onClick={onRemove}>
-          ✕
-        </button>
+        {onRemove && (
+          <button type="button" className="rounded px-1 text-zinc-400 hover:text-rose-600" aria-label={`Remove essay ${index + 1}`} onClick={onRemove}>
+            ✕
+          </button>
+        )}
       </div>
-      <div className="flex flex-wrap items-center gap-2 pl-7">
+      <div className={`flex flex-wrap items-center gap-2 ${label ? "" : "pl-7"}`}>
         {link ? (
           <>
             <a
@@ -201,6 +214,114 @@ function EssayRow({
         )}
       </div>
     </li>
+  );
+}
+
+/** One essay with a fixed name (status + Google Doc), stored on the profile rather than on a college. */
+function SharedDoc({ name, doc, onChange, google }: { name: string; doc: Partial<EssayDoc>; onChange: (patch: Partial<EssayDoc>) => void; google?: GoogleAccess }) {
+  const docs: GoogleDocs | undefined = google && { connected: google.connected, connect: google.connect, create: () => google.createNamed(name) };
+  return (
+    <ul>
+      <EssayRow
+        essay={{ id: name, title: name, url: doc.url ?? "", status: doc.status ?? "not_started" }}
+        index={0}
+        label={name}
+        docs={docs}
+        onChange={(p) => onChange({ ...(p.status ? { status: p.status } : {}), ...(p.url !== undefined ? { url: p.url } : {}) })}
+      />
+    </ul>
+  );
+}
+
+const SHARED_CARD = "space-y-3 rounded-3xl border-2 border-zinc-200 p-5";
+const PROMPT_BOX = "rounded-xl border border-zinc-200 p-3";
+
+function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess }) {
+  const ps = essays.ps ?? {};
+  const set = (patch: NonNullable<PersonalEssays["ps"]>) => onChange({ ...essays, ps: { ...ps, ...patch } });
+  return (
+    <section className={SHARED_CARD}>
+      <div className="flex flex-wrap items-baseline gap-x-3">
+        <h2 className="text-xl font-bold">Common App personal statement</h2>
+        <span className="text-xs text-zinc-500">{PS_WORDS} · one essay sent to every Common App college</span>
+      </div>
+      <SharedDoc name="Common App Personal Statement" doc={ps} onChange={set} google={google} />
+      <details className={PROMPT_BOX}>
+        <summary className="cursor-pointer text-sm font-medium">
+          Prompts: choose one{ps.prompt ? ` (you chose #${ps.prompt})` : ""}
+        </summary>
+        <ul className="mt-2 space-y-2">
+          {PS_PROMPTS.map((p) => (
+            <li key={p.id}>
+              <label className="flex items-start gap-2 text-sm">
+                <input type="radio" name="ps-prompt" className="mt-1" checked={ps.prompt === p.id} onChange={() => set({ prompt: p.id })} />
+                <span>
+                  <strong>{p.id}.</strong> {p.text}
+                </span>
+              </label>
+            </li>
+          ))}
+        </ul>
+        {ps.prompt && (
+          <button type="button" className="mt-2 text-xs text-zinc-500 hover:text-rose-600" onClick={() => set({ prompt: null })}>
+            Clear choice
+          </button>
+        )}
+      </details>
+    </section>
+  );
+}
+
+function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess }) {
+  const uc = essays.uc ?? {};
+  const picks = uc.picks ?? [];
+  const setUc = (patch: NonNullable<PersonalEssays["uc"]>) => onChange({ ...essays, uc: { ...uc, ...patch } });
+  return (
+    <section className={SHARED_CARD}>
+      <div className="flex flex-wrap items-baseline gap-x-3">
+        <h2 className="text-xl font-bold">UC personal insight questions</h2>
+        <span className="text-xs text-zinc-500">
+          Choose {UC_PICKS} of {UC_PIQS.length} · {UC_WORDS} ·{" "}
+          <span className={`tabular-nums ${picks.length === UC_PICKS ? "font-medium text-emerald-700" : ""}`}>
+            {picks.length}/{UC_PICKS} chosen
+          </span>
+        </span>
+      </div>
+      <ul className="space-y-2">
+        {UC_PIQS.map((q) => {
+          const picked = picks.includes(q.id);
+          const name = `UC PIQ ${q.id}`;
+          return (
+            <li key={q.id} className={`${PROMPT_BOX} space-y-2`}>
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  className="mt-1"
+                  aria-label={`Answer question ${q.id}`}
+                  checked={picked}
+                  disabled={!picked && picks.length >= UC_PICKS}
+                  onChange={() => {
+                    const next = togglePick(picks, q.id);
+                    if (next) setUc({ picks: next });
+                  }}
+                />
+                <details className="min-w-0 flex-1">
+                  <summary className="cursor-pointer text-sm font-medium">
+                    {q.id}. {q.title}
+                  </summary>
+                  <p className="mt-1 text-sm text-zinc-600">{q.text}</p>
+                </details>
+              </div>
+              {picked && (
+                <div className="pl-6">
+                  <SharedDoc name={name} doc={uc.docs?.[q.id] ?? {}} onChange={(p) => setUc({ docs: { ...uc.docs, [q.id]: { ...uc.docs?.[q.id], ...p } } })} google={google} />
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
@@ -277,7 +398,7 @@ function CollegeEssays({
   );
 }
 
-export function EssaysPage({ colleges }: { colleges: CollegeSummary[] }) {
+export function EssaysPage({ colleges, platforms }: { colleges: CollegeSummary[]; platforms: Record<string, string[]> }) {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
@@ -337,6 +458,10 @@ export function EssaysPage({ colleges }: { colleges: CollegeSummary[] }) {
     return college ? [{ entry, college }] : [];
   });
 
+  const shared = sharedEssaysFor(entries.map(({ college }) => platforms[college.id]));
+  const essays = student.profile.essays ?? {};
+  const saveEssays = (next: PersonalEssays) => student.updateProfile({ essays: next });
+
   if (entries.length === 0) {
     return (
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
@@ -362,6 +487,8 @@ export function EssaysPage({ colleges }: { colleges: CollegeSummary[] }) {
           </button>
         </p>
       )}
+      {shared.commonApp && <PersonalStatement essays={essays} onChange={saveEssays} google={google} />}
+      {shared.uc && <UcEssays essays={essays} onChange={saveEssays} google={google} />}
       {entries.map(({ entry, college }) => (
         <CollegeEssays
           key={`${student.auth?.userId ?? "local"}-${entry.slug}`}

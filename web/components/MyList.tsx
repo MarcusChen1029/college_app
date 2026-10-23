@@ -6,8 +6,10 @@ import { computeFit } from "@/lib/fit";
 import { daysUntil, fmtDate } from "@/lib/format";
 import { progress, type Checklist } from "@/lib/checklist";
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
+import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
+import { AddCustomCollege } from "./AddCustomCollege";
 import { AiContextButton } from "./AiContextButton";
 import { FitBadge, Pill, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT } from "./ChecklistPanel";
@@ -72,10 +74,19 @@ export function MyList({
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   if (!mounted || !student.ready) return null;
 
+  // Custom colleges have no row in our data; build the same shape from what the student typed.
+  const resolve = (e: ListEntry) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
+  const allDeadlines = [...deadlines, ...student.list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d)];
   const listed = student.list.flatMap((e) => colleges.filter((c) => c.slug === e.slug));
+  const addCustomButton = (
+    <button className="rounded border border-zinc-300 px-2 py-0.5 text-xs font-medium hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800" onClick={() => setAdding(true)}>
+      + Custom college
+    </button>
+  );
   const banner = (
     <div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
       {student.auth ? (
@@ -103,16 +114,17 @@ export function MyList({
             {student.plan.key === "senior" ? "Plans" : "Upgrade"}
           </Link>
         </span>
+        {addCustomButton}
         {listed.length > 0 && <SchoolCodes colleges={listed} codes={codes} />}
-        {listed.length > 0 && (
+        {student.list.length > 0 && (
           <AiContextButton
             colleges={student.list.flatMap((e) => {
-              const college = colleges.find((c) => c.slug === e.slug);
+              const college = resolve(e);
               return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
             })}
             profile={student.profile}
             plan={student.plan}
-            deadlines={deadlines}
+            deadlines={allDeadlines}
             lookups={{ plans, englishTests }}
           />
         )}
@@ -135,13 +147,15 @@ export function MyList({
   );
 
   const entries = student.list
-    .map((e) => ({ entry: e, college: colleges.find((c) => c.slug === e.slug) }))
+    .map((e) => ({ entry: e, college: resolve(e) }))
     .filter((x): x is { entry: typeof x.entry; college: CollegeSummary } => !!x.college);
+  const addDialog = adding && <AddCustomCollege onAdd={student.addCustom} onClose={() => setAdding(false)} />;
 
   if (entries.length === 0) {
     return (
       <>
       {banner}
+      {addDialog}
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500 dark:border-zinc-700">
         Your list is empty. Add colleges from the{" "}
         <Link href="/colleges" className="text-blue-600 underline dark:text-blue-400">
@@ -161,7 +175,7 @@ export function MyList({
   // Upcoming dates for listed colleges. If a plan is chosen, show only that plan's application deadline.
   const upcoming = entries
     .flatMap(({ entry, college }) =>
-      deadlines
+      allDeadlines
         .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0)
         .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
         .map((d) => ({ d, college })),
@@ -169,11 +183,24 @@ export function MyList({
     .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!));
 
   const opened = entries.find(({ entry }) => entry.slug === openSlug);
-  const planOptions = (c: CollegeSummary) => plans.filter((p) => (c.plans ?? []).includes(p.key));
+  // A custom college doesn't say which plans it offers, so let the student pick any.
+  const planOptions = (c: CollegeSummary) => (isCustomSlug(c.slug) ? plans : plans.filter((p) => (c.plans ?? []).includes(p.key)));
+  const collegeLink = (c: CollegeSummary, text: string, className: string) =>
+    isCustomSlug(c.slug) ? (
+      <button className={`${className} text-left`} onClick={() => setOpenSlug(c.slug)}>
+        {text}
+      </button>
+    ) : (
+      <Link href={`/colleges/${c.slug}`} className={className}>
+        {text}
+      </Link>
+    );
+  const place = (c: CollegeSummary, e: ListEntry) => [c.city, c.state_region, e.custom?.country].filter(Boolean).join(", ");
 
   return (
     <>
     {banner}
+    {addDialog}
     {opened && (
       <Modal
         key={opened.entry.slug}
@@ -181,9 +208,18 @@ export function MyList({
         title={
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <TierBadge tier={opened.college.general_tier} size="sm" />
-            <Link href={`/colleges/${opened.college.slug}`} className="text-lg font-semibold hover:underline">
-              {opened.college.name}
-            </Link>
+            {isCustomSlug(opened.college.slug) ? (
+              <span className="text-lg font-semibold">{opened.college.name}</span>
+            ) : (
+              <Link href={`/colleges/${opened.college.slug}`} className="text-lg font-semibold hover:underline">
+                {opened.college.name}
+              </Link>
+            )}
+            {opened.entry.custom?.website && (
+              <a href={opened.entry.custom.website} target="_blank" rel="noreferrer" className="text-xs text-blue-600 underline dark:text-blue-400">
+                Website ↗
+              </a>
+            )}
             {fits.get(opened.college.slug) && <FitBadge fit={fits.get(opened.college.slug)!.fit} reason={fits.get(opened.college.slug)!.reason} />}
             <ProgressBadge checklist={opened.entry.checklist} />
           </div>
@@ -229,9 +265,12 @@ export function MyList({
                   <td className="p-2">
                     <div className="flex items-center gap-2">
                       <TierBadge tier={college.general_tier} size="sm" />
-                      <Link href={`/colleges/${college.slug}`} className="font-medium hover:underline">
-                        {college.short_name ?? college.name}
-                      </Link>
+                      <div>
+                        {collegeLink(college, college.short_name ?? college.name, "font-medium hover:underline")}
+                        {entry.custom && (
+                          <div className="text-[11px] text-zinc-500">Custom{place(college, entry) && ` · ${place(college, entry)}`}</div>
+                        )}
+                      </div>
                     </div>
                   </td>
                   <td className="p-2">{fit ? <FitBadge fit={fit.fit} reason={fit.reason} /> : <span className="text-xs text-zinc-400">—</span>}</td>

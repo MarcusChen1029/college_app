@@ -76,7 +76,7 @@ function guarded<A>(handler: Handler<A>) {
 }
 
 async function readList(s: Student): Promise<ListEntry[]> {
-  const { data, error } = await s.db.from("student_colleges").select(COLLEGE_COLUMNS_NO_LOGINS).eq("user_id", s.userId).order("created_at");
+  const { data, error } = await s.db.from("student_colleges").select(COLLEGE_COLUMNS_NO_LOGINS).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
   if (error) throw new Error(error.message);
   return ((data ?? []) as unknown as CollegeRow[]).map(toEntry);
 }
@@ -114,10 +114,10 @@ function changeProfile<T>(s: Student, plan: (profile: StudentProfile) => Planned
 function changeEntry<T>(s: Student, slug: string, plan: (entry: ListEntry, list: ListEntry[]) => Planned<T>): Promise<Outcome<T>> {
   return modifyWithRetry(
     async () => {
-      const { data, error } = await s.db.from("student_colleges").select(`${COLLEGE_COLUMNS_NO_LOGINS}, updated_at`).eq("user_id", s.userId).order("created_at");
+      const { data, error } = await s.db.from("student_colleges").select(`${COLLEGE_COLUMNS_NO_LOGINS}, updated_at`).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
       if (error) throw new Error(error.message);
       const rows = (data ?? []) as unknown as (CollegeRow & { updated_at: string })[];
-      return { list: rows.map(toEntry), versions: new Map(rows.map((r) => [r.institution_id, r.updated_at])) };
+      return { list: rows.map(toEntry), versions: new Map(rows.map((r) => [r.institution_id ?? "", r.updated_at])) };
     },
     ({ list }) => {
       const entry = list.find((e) => e.slug === slug);

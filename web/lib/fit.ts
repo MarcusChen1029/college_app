@@ -6,6 +6,7 @@ export type Fit = "super_reach" | "reach" | "target" | "safety";
 export const FIT_LABEL: Record<Fit, string> = { super_reach: "Super reach", reach: "Reach", target: "Target", safety: "Safety" };
 
 import type { ActivityData } from "./activities";
+import type { PersonalEssays } from "./personal-essays";
 import type { PlanKey } from "./plans";
 import type { PortalData } from "./portals";
 import type { ResumeSettings } from "./resume";
@@ -24,6 +25,7 @@ export type StudentProfile = {
   activities?: Partial<ActivityData>; // Common App + UC activity lists
   resume?: ResumeSettings; // resume generator header + options
   portals?: PortalData; // shared system, campus and custom portal logins
+  essays?: PersonalEssays; // Common App personal statement + UC personal insight questions
 };
 
 export type FitInput = {

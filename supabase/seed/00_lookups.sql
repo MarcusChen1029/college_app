@@ -3,11 +3,21 @@ insert into public.countries (code, name) values
 on conflict (code) do update set name = excluded.name;
 
 insert into public.tiers (code, sort_order, description) values
-  ('S', 1, 'Elite: admit rate around 8% or lower, top global name'),
-  ('A', 2, 'Highly selective: roughly top 25 nationally / top liberal arts colleges'),
-  ('B', 3, 'Very selective: roughly top 26–60, strong flagships'),
-  ('C', 4, 'Selective: roughly top 61–120'),
-  ('D', 5, 'Accessible: broad admissions')
+  ('S++', 1,  'Elite, top of S'),
+  ('S+',  2,  'Elite, upper S'),
+  ('S',   3,  'Elite: admit rate around 8% or lower, top global name'),
+  ('A++', 4,  'Highly selective, top of A'),
+  ('A+',  5,  'Highly selective, upper A'),
+  ('A',   6,  'Highly selective: roughly top 25 nationally / top liberal arts colleges'),
+  ('B++', 7,  'Very selective, top of B'),
+  ('B+',  8,  'Very selective, upper B'),
+  ('B',   9,  'Very selective: roughly top 26–60, strong flagships'),
+  ('C++', 10, 'Selective, top of C'),
+  ('C+',  11, 'Selective, upper C'),
+  ('C',   12, 'Selective: roughly top 61–120'),
+  ('D++', 13, 'Accessible, top of D'),
+  ('D+',  14, 'Accessible, upper D'),
+  ('D',   15, 'Accessible: broad admissions')
 on conflict (code) do update set sort_order = excluded.sort_order, description = excluded.description;
 
 insert into public.tier_categories (key, label, sort_order) values

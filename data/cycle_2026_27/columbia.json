@@ -159,7 +159,7 @@
   }
  },
  "tiers": {
-  "general": "S",
+  "general": "S+",
   "computer_science": "A",
   "engineering": "B",
   "biology_life_sci": "A",

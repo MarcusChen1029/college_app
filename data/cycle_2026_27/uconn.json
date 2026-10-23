@@ -13,7 +13,7 @@
   "src": "cds"
  },
  "tiers": {
-  "general": "C",
+  "general": "C+",
   "computer_science": "C",
   "engineering": "C",
   "business": "C",

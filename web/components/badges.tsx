@@ -1,7 +1,12 @@
+"use client";
+
+import { useState } from "react";
+import { SCHOOL_DOMAINS } from "@/lib/school-domains";
 import { FIT_LABEL, type Fit } from "@/lib/fit";
+import { tierLetter, type TierLetter } from "@/lib/tiers";
 import type { TierCode } from "@/lib/types";
 
-const TIER_STYLE: Record<TierCode, string> = {
+const TIER_STYLE: Record<TierLetter, string> = {
   S: "bg-violet-600 text-white",
   A: "bg-blue-600 text-white",
   B: "bg-teal-600 text-white",
@@ -11,9 +16,10 @@ const TIER_STYLE: Record<TierCode, string> = {
 
 export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undefined; size?: "sm" | "md" }) {
   if (!tier) return <span className="text-zinc-400">—</span>;
-  const dims = size === "sm" ? "h-5 w-5 text-[11px]" : "h-7 w-7 text-sm";
+  const plus = tier.length > 1;
+  const dims = size === "sm" ? `h-5 text-[11px] ${plus ? "min-w-5 px-1" : "w-5"}` : `h-7 text-sm ${plus ? "min-w-7 px-1.5" : "w-7"}`;
   return (
-    <span className={`inline-flex items-center justify-center rounded-md font-bold ${dims} ${TIER_STYLE[tier]}`} title={`Tier ${tier}`}>
+    <span className={`inline-flex items-center justify-center rounded-md font-bold ${dims} ${TIER_STYLE[tierLetter(tier)]}`} title={`Tier ${tier}`}>
       {tier}
     </span>
   );
@@ -42,4 +48,22 @@ export function Pill({ children, tone = "zinc" }: { children: React.ReactNode; t
     red: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-200",
   };
   return <span className={`inline-block rounded px-1.5 py-0.5 text-xs font-medium ${tones[tone]}`}>{children}</span>;
+}
+
+/** The school's logo (its site icon), shown left of the tier. Hides itself when there is none. */
+export function SchoolLogo({ slug, size = "md" }: { slug: string; size?: "sm" | "md" }) {
+  const [failed, setFailed] = useState(false);
+  const domain = SCHOOL_DOMAINS[slug];
+  const dim = size === "sm" ? "h-5 w-5" : "h-7 w-7";
+  if (!domain || failed) return null;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+      alt=""
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className={`${dim} shrink-0 rounded object-contain`}
+    />
+  );
 }

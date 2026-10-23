@@ -132,7 +132,7 @@
   }
  },
  "tiers": {
-  "general": "C",
+  "general": "C++",
   "computer_science": "B",
   "engineering": "B",
   "business": "B",

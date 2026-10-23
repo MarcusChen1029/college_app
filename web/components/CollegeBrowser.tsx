@@ -5,11 +5,11 @@ import { useMemo, useState } from "react";
 import { computeFit } from "@/lib/fit";
 import { fmtDate, fmtPct, INTL_AID, TEST_POLICY } from "@/lib/format";
 import { useStudent } from "@/lib/student-store";
+import { BASE_TIERS, TIER_ORDER, tierRank } from "@/lib/tiers";
 import type { CollegeSummary, Lookups, TierCode } from "@/lib/types";
-import { FitBadge, Pill, TierBadge } from "./badges";
+import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 
-const TIER_ORDER: TierCode[] = ["S", "A", "B", "C", "D"];
 
 export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary[]; lookups: Lookups }) {
   const student = useStudent();
@@ -33,7 +33,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
     const filtered = colleges.filter((c) => {
       if (term && !`${c.name} ${c.short_name ?? ""} ${c.city ?? ""}`.toLowerCase().includes(term)) return false;
       const t = tierFor(c);
-      if (minTier && (!t || TIER_ORDER.indexOf(t) > TIER_ORDER.indexOf(minTier))) return false;
+      if (minTier && (!t || tierRank(t) > tierRank(minTier))) return false;
       if (category !== "general" && !t) return false;
       if (state && c.state_region !== state) return false;
       if (testPolicy && c.test_policy !== testPolicy) return false;
@@ -41,15 +41,11 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
       if (intlAidOnly && !["need_blind_full_need", "need_aware_full_need", "need_aware_limited", "merit_only"].includes(c.intl_aid_policy ?? "")) return false;
       return true;
     });
-    const tierRank = (c: CollegeSummary) => {
-      const t = tierFor(c);
-      return t ? TIER_ORDER.indexOf(t) : 99;
-    };
     return filtered.sort((a, b) => {
       if (sort === "name") return a.name.localeCompare(b.name);
       if (sort === "admit") return (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
       if (sort === "deadline") return (a.next_deadline ?? "9999").localeCompare(b.next_deadline ?? "9999");
-      return tierRank(a) - tierRank(b) || (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
+      return tierRank(tierFor(a)) - tierRank(tierFor(b)) || (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colleges, q, category, minTier, state, testPolicy, plan, intlAidOnly, sort]);
@@ -66,7 +62,10 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         <input className={`${select} w-56`} placeholder="Search name or city…" value={q} onChange={(e) => setQ(e.target.value)} />
-        <select className={select} value={category} onChange={(e) => setCategory(e.target.value)} aria-label="Tier category">
+        <select className={select} value={category} onChange={(e) => {
+          setCategory(e.target.value);
+          setMinTier("");
+        }} aria-label="Tier category">
           {lookups.categories.map((c) => (
             <option key={c.key} value={c.key}>
               {c.key === "general" ? "Tier: general" : `Tier: ${c.label}`}
@@ -75,9 +74,9 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
         </select>
         <select className={select} value={minTier} onChange={(e) => setMinTier(e.target.value as TierCode | "")} aria-label="Minimum tier">
           <option value="">Any tier</option>
-          {TIER_ORDER.map((t) => (
+          {(category === "general" ? TIER_ORDER : BASE_TIERS).map((t) => (
             <option key={t} value={t}>
-              {t === "S" ? "S only" : `${t} or better`}
+              {t === TIER_ORDER[0] ? `${t} only` : `${t} or better`}
             </option>
           ))}
         </select>
@@ -156,7 +155,10 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                     <input type="checkbox" aria-label={`Select ${c.name} to compare`} checked={selected.includes(c.slug)} onChange={() => toggle(c.slug)} />
                   </td>
                   <td className="p-2">
-                    <TierBadge tier={tierFor(c)} />
+                    <span className="flex items-center gap-2">
+                      <SchoolLogo slug={c.slug} />
+                      <TierBadge tier={tierFor(c)} />
+                    </span>
                   </td>
                   <td className="p-2">
                     <Link href={`/colleges/${c.slug}`} className="font-medium hover:underline">
