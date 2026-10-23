@@ -9,7 +9,7 @@ import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment
 import { flight, overviewDistance, rigPosition, type Rig } from "@/lib/map-camera";
 import { fitWorld, regionGeo, type RegionGeo } from "@/lib/region-geo";
 import type { RegionCode } from "@/lib/regions";
-import type { TierCode } from "@/lib/types";
+import type { TierLetter } from "@/lib/tiers";
 import { TIER_FILL, USMap, type MapPin } from "./USMap";
 
 // World units: the region's land is fitted into ±halfW × ±halfD (US: 960 × 600), centred on the origin, y up.
@@ -71,7 +71,7 @@ type Pin3D = {
 
 // Shader colours are written straight to the canvas, so they stay in sRGB.
 const srgb = (hex: string) => new THREE.Vector3(...[1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255));
-const fillOf = (tier: string) => TIER_FILL[tier as TierCode] ?? TIER_FILL.D;
+const fillOf = (tier: string) => TIER_FILL[tier[0] as TierLetter] ?? TIER_FILL.D;
 const easeOutBack = (t: number) => 1 + 2.4 * Math.pow(t - 1, 3) + 1.4 * Math.pow(t - 1, 2);
 const easeOutBounce = (t: number) => {
   const n = 7.5625;

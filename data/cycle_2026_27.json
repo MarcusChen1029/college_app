@@ -117,7 +117,7 @@
       "merit_scholarships": false
     },
     "tiers": {
-      "general": "S",
+      "general": "S++",
       "computer_science": "S",
       "engineering": "S",
       "business": "S",
@@ -258,7 +258,7 @@
       "merit_scholarships": false
     },
     "tiers": {
-      "general": "S",
+      "general": "S++",
       "computer_science": "S",
       "engineering": "S",
       "biology_life_sci": "S",
@@ -396,7 +396,7 @@
       "merit_scholarships": false
     },
     "tiers": {
-      "general": "S",
+      "general": "S++",
       "computer_science": "A",
       "engineering": "B",
       "biology_life_sci": "S",
@@ -577,7 +577,7 @@
       "src": "aid"
     },
     "tiers": {
-      "general": "A",
+      "general": "A++",
       "computer_science": "S",
       "engineering": "S",
       "business": "A",
@@ -797,7 +797,7 @@
       "merit_scholarships": false
     },
     "tiers": {
-      "general": "A",
+      "general": "A+",
       "computer_science": "A",
       "engineering": "A",
       "business": "S",
@@ -1009,7 +1009,7 @@
       "merit_separate_app": false
     },
     "tiers": {
-      "general": "A",
+      "general": "A+",
       "computer_science": "A",
       "engineering": "S",
       "business": "B",
@@ -1158,7 +1158,7 @@
       "merit_scholarships": true
     },
     "tiers": {
-      "general": "B",
+      "general": "B++",
       "computer_science": "S",
       "engineering": "S",
       "business": "A",
@@ -1337,7 +1337,7 @@
       "notes": "NYU Promise: 100% of demonstrated need met for first-year students admitted to the New York campus."
     },
     "tiers": {
-      "general": "A",
+      "general": "A+",
       "computer_science": "B",
       "engineering": "C",
       "business": "S",
@@ -1518,7 +1518,7 @@
       "src": "aid"
     },
     "tiers": {
-      "general": "B",
+      "general": "B+",
       "computer_science": "A",
       "engineering": "A",
       "business": "B",
@@ -1709,7 +1709,7 @@
       "src": "intl_aid"
     },
     "tiers": {
-      "general": "A",
+      "general": "A++",
       "computer_science": "S",
       "engineering": "S",
       "business": "S",

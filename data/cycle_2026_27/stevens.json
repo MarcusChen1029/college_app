@@ -146,7 +146,7 @@
   "src": "intl"
  },
  "tiers": {
-  "general": "C",
+  "general": "C+",
   "computer_science": "C",
   "engineering": "C",
   "business": "C",

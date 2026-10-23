@@ -7,7 +7,8 @@ import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import { activeRegions, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
-import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate, TierCode } from "@/lib/types";
+import { BASE_TIERS, tierRank } from "@/lib/tiers";
+import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { CollegeBrowser } from "./CollegeBrowser";
 import { FitBadge, Pill, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
@@ -15,7 +16,6 @@ import { TIER_FILL } from "./USMap";
 import { USMap3D } from "./USMap3D";
 
 type Sort = "tier" | "admit" | "name";
-const TIER_ORDER: TierCode[] = ["S", "A", "B", "C", "D"];
 
 // Eases a number from 0 up to `value` so stats feel like they land rather than appear.
 function useCountUp(value: number | null, ms = 800) {
@@ -292,9 +292,7 @@ export function CollegeExplorer({
       .sort((a, b) => {
         if (sort === "name") return a.name.localeCompare(b.name);
         if (sort === "admit") return (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
-        const ta = a.general_tier ? TIER_ORDER.indexOf(a.general_tier) : 99;
-        const tb = b.general_tier ? TIER_ORDER.indexOf(b.general_tier) : 99;
-        return ta - tb || (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
+        return tierRank(a.general_tier) - tierRank(b.general_tier) || (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
       });
   }, [inRegion, q, sort]);
 
@@ -440,7 +438,7 @@ export function CollegeExplorer({
         <USMap3D key={region} region={region} pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
           <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
             <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold shadow-sm" aria-label="Tier colours">
-              {TIER_ORDER.map((t) => (
+              {BASE_TIERS.map((t) => (
                 <li key={t} className="flex items-center gap-1">
                   <span className="h-2.5 w-2.5 rounded-full" style={{ background: TIER_FILL[t] }} />
                   {t}

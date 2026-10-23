@@ -330,7 +330,8 @@ def build(only=None, insert_only=False):
         notes = cy.get("tier_notes", {})
         for cat, tier in cy.get("tiers", {}).items():
             enum(slug, "category", cat, nullable=False)
-            check(tier in "SABCD", f"{slug}: bad tier {tier}")
+            ok = tier in ("S", "A", "B", "C", "D") or (cat == "general" and tier[:1] in "SABCD" and tier[1:] in ("+", "++"))
+            check(ok, f"{slug}: bad tier {tier} for {cat} (only general may use +/++)")
             why = notes.get(cat)
             if cat == "general" and st:
                 sat = c.get("scores", {}).get("SAT_TOTAL") or [None] * 3

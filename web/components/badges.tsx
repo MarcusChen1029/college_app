@@ -1,7 +1,8 @@
 import { FIT_LABEL, type Fit } from "@/lib/fit";
+import { tierLetter, type TierLetter } from "@/lib/tiers";
 import type { TierCode } from "@/lib/types";
 
-const TIER_STYLE: Record<TierCode, string> = {
+const TIER_STYLE: Record<TierLetter, string> = {
   S: "bg-violet-600 text-white",
   A: "bg-blue-600 text-white",
   B: "bg-teal-600 text-white",
@@ -11,9 +12,10 @@ const TIER_STYLE: Record<TierCode, string> = {
 
 export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undefined; size?: "sm" | "md" }) {
   if (!tier) return <span className="text-zinc-400">—</span>;
-  const dims = size === "sm" ? "h-5 w-5 text-[11px]" : "h-7 w-7 text-sm";
+  const plus = tier.length > 1;
+  const dims = size === "sm" ? `h-5 text-[11px] ${plus ? "min-w-5 px-1" : "w-5"}` : `h-7 text-sm ${plus ? "min-w-7 px-1.5" : "w-7"}`;
   return (
-    <span className={`inline-flex items-center justify-center rounded-md font-bold ${dims} ${TIER_STYLE[tier]}`} title={`Tier ${tier}`}>
+    <span className={`inline-flex items-center justify-center rounded-md font-bold ${dims} ${TIER_STYLE[tierLetter(tier)]}`} title={`Tier ${tier}`}>
       {tier}
     </span>
   );

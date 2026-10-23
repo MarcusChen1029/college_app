@@ -5,12 +5,13 @@ import { interpolateZoom } from "d3-interpolate";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { regionGeo } from "@/lib/region-geo";
 import type { RegionCode } from "@/lib/regions";
+import { tierLetter, type TierLetter } from "@/lib/tiers";
 import type { TierCode } from "@/lib/types";
 
 const ZOOM = 3.2;
 const PAD = 18;
 
-export const TIER_FILL: Record<TierCode, string> = {
+export const TIER_FILL: Record<TierLetter, string> = {
   S: "#7c3aed",
   A: "#0b86c6",
   B: "#0d9488",
@@ -177,7 +178,7 @@ export function USMap({
           ))}
           {ordered.map((p) => {
             const isSel = p.slug === selected;
-            const fill = TIER_FILL[p.tier ?? "D"];
+            const fill = TIER_FILL[tierLetter(p.tier ?? "D")];
             const labelW = p.name.length * 7.4 + 18;
             return (
               <g

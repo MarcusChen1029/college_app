@@ -183,7 +183,7 @@
   }
  },
  "tiers": {
-  "general": "S",
+  "general": "S+",
   "computer_science": "A",
   "engineering": "A",
   "business": "C",

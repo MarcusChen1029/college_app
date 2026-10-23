@@ -50,12 +50,13 @@ python3 scripts/build_seed.py               # after editing data/*.json
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0017**) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0020**) **and** apply it to the project.
 - **Supabase MCP quirk:** INSERT/SELECT/DDL via `execute_sql`/`apply_migration` work. UPDATE/DELETE/DROP wait for the
   owner's approval and time out after 60 s if nobody approves. Approve the prompt when it appears, or put the SQL in
   `supabase/patches/` and have the owner run it in the dashboard SQL Editor.
 - Tiers: S = top ~5 nationally in the field, A ≈ 6–15, B ≈ 16–40, C ≈ 41–100, D beyond. No tier if there's no undergrad
-  program in that field. Always write a reason in `tier_notes`.
+  program in that field. Always write a reason in `tier_notes`. The **general** tier alone may also use `++`/`+`
+  (S++, S+, S, A++, … D+, D; migration 0019, `web/lib/tiers.ts`); subject tiers stay plain S–D.
 - Commit messages: conventional style (`feat:`, `fix:`, `data:`, `docs:`).
 
 ## Multi-country (started 2026-10-22)
