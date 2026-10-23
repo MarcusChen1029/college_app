@@ -4,6 +4,7 @@
 
 import type { ActivityData } from "./activities.ts";
 import type { Checklist } from "./checklist.ts";
+import { customSlug, type CustomCollege } from "./custom-college.ts";
 import type { StudentProfile } from "./fit.ts";
 import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
 import type { PortalData } from "./portals.ts";
@@ -36,6 +37,9 @@ export type ListEntry = {
   checklist: Checklist;
   portal: Portal;
   addedAt: string;
+  /** Set for a college the student added themselves (no institution); rowId is its student_colleges.id. */
+  custom?: CustomCollege | null;
+  rowId?: string;
 };
 
 export type ProfileRow = {
@@ -54,7 +58,9 @@ export type ProfileRow = {
   portals?: PortalData | null;
 };
 export type CollegeRow = {
-  institution_id: string;
+  id: string;
+  institution_id: string | null;
+  custom: CustomCollege | null;
   plan_key: string | null;
   status: Status;
   notes: string | null;
@@ -68,11 +74,11 @@ export type CollegeRow = {
 };
 
 const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume";
-const COLLEGE_BASE = "institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
+const COLLEGE_BASE = "id, custom, institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
 
 /** What the website reads (includes the saved logins). */
 export const PROFILE_COLUMNS = `${PROFILE_BASE}, portals`;
-export const COLLEGE_COLUMNS = "institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)";
+export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)";
 
 /** What server-side code acting for an AI must read: explicit columns that leave the saved logins out. */
 export const PROFILE_COLUMNS_NO_LOGINS = PROFILE_BASE;
@@ -113,8 +119,10 @@ export const fromProfile = (userId: string, p: StudentProfile) => ({
   portals: p.portals ?? {},
 });
 export const toEntry = (r: CollegeRow): ListEntry => ({
-  slug: r.institutions?.slug ?? "",
-  institutionId: r.institution_id,
+  slug: r.custom ? customSlug(r.id) : (r.institutions?.slug ?? ""),
+  institutionId: r.institution_id ?? "",
+  custom: r.custom,
+  rowId: r.id,
   plan: r.plan_key,
   status: r.status,
   notes: r.notes ?? "",
@@ -122,6 +130,8 @@ export const toEntry = (r: CollegeRow): ListEntry => ({
   portal: { url: r.portal_url ?? "", username: r.portal_username ?? "", password: r.portal_password ?? "" },
   addedAt: r.created_at,
 });
+/** Which student_colleges row an entry is: by id for a custom college, by institution otherwise. */
+export const rowKey = (e: ListEntry) => (e.custom ? { column: "id", value: e.rowId ?? "" } : { column: "institution_id", value: e.institutionId });
 export const portalColumns = (p: Portal) => ({
   portal_url: p.url || null,
   portal_username: p.username || null,
@@ -129,7 +139,8 @@ export const portalColumns = (p: Portal) => ({
 });
 export const fromEntry = (userId: string, e: ListEntry) => ({
   user_id: userId,
-  institution_id: e.institutionId,
+  ...(e.custom ? { id: e.rowId, custom: e.custom } : {}),
+  institution_id: e.institutionId || null,
   plan_key: e.plan,
   status: e.status,
   notes: e.notes || null,

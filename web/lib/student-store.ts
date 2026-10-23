@@ -6,6 +6,7 @@
 
 import { useSyncExternalStore } from "react";
 import type { StudentProfile } from "./fit";
+import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
 import {
   COLLEGE_COLUMNS,
@@ -13,6 +14,7 @@ import {
   fromProfile,
   portalColumns,
   PROFILE_COLUMNS,
+  rowKey,
   shouldRefresh,
   toEntry,
   toProfile,
@@ -100,7 +102,9 @@ async function loadRemote(userId: string, email: string | null) {
       profile = local.profile;
     }
     let list = ((l.data ?? []) as unknown as CollegeRow[]).map(toEntry);
-    const missing = local.list.filter((e) => e.institutionId && !list.some((x) => x.institutionId === e.institutionId));
+    const missing = local.list.filter((e) =>
+      e.custom ? !!e.rowId && !list.some((x) => x.rowId === e.rowId) : e.institutionId && !list.some((x) => x.institutionId === e.institutionId),
+    );
     if (missing.length) {
       const ins = await db
         .from("student_colleges")
@@ -182,9 +186,9 @@ function subscribe(l: () => void) {
 
 // Entries saved by older builds lack institutionId; fill it in once we know the colleges.
 export function registerColleges(colleges: CollegeRef[]) {
-  if (!state.list.some((e) => !e.institutionId)) return;
+  if (!state.list.some((e) => !e.institutionId && !e.custom)) return;
   const ids = new Map(colleges.map((c) => [c.slug, c.id]));
-  emit({ list: state.list.map((e) => (e.institutionId ? e : { ...e, institutionId: ids.get(e.slug) ?? "" })) });
+  emit({ list: state.list.map((e) => (e.institutionId || e.custom ? e : { ...e, institutionId: ids.get(e.slug) ?? "" })) });
 }
 
 export function useStudent() {
@@ -195,6 +199,16 @@ export function useStudent() {
     if (state.list.some((e) => e.slug === college.slug)) return true;
     if (!canAddMore(state.profile.plan, state.list.length)) return false;
     const entry: ListEntry = { slug: college.slug, institutionId: college.id, plan: null, status: "in_progress", notes: "", checklist: {}, portal: EMPTY_PORTAL, addedAt: new Date().toISOString() };
+    emit({ list: [...state.list, entry] });
+    const a = state.auth;
+    if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
+    return true;
+  };
+  /** Adds a college the student typed in. Returns false when the plan's college limit is reached. */
+  const addCustom = (custom: CustomCollege) => {
+    if (!canAddMore(state.profile.plan, state.list.length)) return false;
+    const rowId = crypto.randomUUID();
+    const entry: ListEntry = { slug: customSlug(rowId), institutionId: "", rowId, custom, plan: null, status: "in_progress", notes: "", checklist: {}, portal: EMPTY_PORTAL, addedAt: new Date().toISOString() };
     emit({ list: [...state.list, entry] });
     const a = state.auth;
     if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
@@ -238,11 +252,15 @@ export function useStudent() {
       return true;
     },
     add,
+    addCustom,
     remove(slug: string) {
       const entry = state.list.find((e) => e.slug === slug);
       emit({ list: state.list.filter((e) => e.slug !== slug) });
       const a = state.auth;
-      if (a && entry) void remote(() => db().from("student_colleges").delete().eq("institution_id", entry.institutionId));
+      if (a && entry) {
+        const key = rowKey(entry);
+        void remote(() => db().from("student_colleges").delete().eq(key.column, key.value));
+      }
     },
     update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist" | "portal">>) {
       const entry = state.list.find((e) => e.slug === slug);
@@ -250,13 +268,15 @@ export function useStudent() {
       const next = { ...entry, ...patch };
       emit({ list: state.list.map((e) => (e.slug === slug ? next : e)) });
       const a = state.auth;
-      if (a)
+      if (a) {
+        const key = rowKey(entry);
         void remote(() =>
           db()
             .from("student_colleges")
             .update({ plan_key: next.plan, status: next.status, notes: next.notes || null, checklist: next.checklist, ...portalColumns(next.portal) })
-            .eq("institution_id", entry.institutionId),
+            .eq(key.column, key.value),
         );
+      }
     },
     /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). `returnTo` is a path on this site. */
     async signInWithGoogle(returnTo = "/profile") {
