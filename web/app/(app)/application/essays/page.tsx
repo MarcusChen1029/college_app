@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import { EssaysPage } from "@/components/EssaysPage";
-import { getSummaries } from "@/lib/data";
+import { getPlatforms, getSummaries } from "@/lib/data";
 
 export const metadata = { title: "Essays" };
 
 async function Data() {
-  const colleges = await getSummaries();
-  return <EssaysPage colleges={colleges} />;
+  const [colleges, platforms] = await Promise.all([getSummaries(), getPlatforms()]);
+  return <EssaysPage colleges={colleges} platforms={platforms} />;
 }
 
 export default function EssaysRoute() {

@@ -7,6 +7,7 @@ import type { Checklist } from "./checklist.ts";
 import { customSlug, type CustomCollege } from "./custom-college.ts";
 import type { StudentProfile } from "./fit.ts";
 import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
+import type { PersonalEssays } from "./personal-essays.ts";
 import type { PortalData } from "./portals.ts";
 import type { ResumeSettings } from "./resume.ts";
 import type { TestDetails } from "./scores.ts";
@@ -54,6 +55,7 @@ export type ProfileRow = {
   interested: string[] | null;
   activities: Partial<ActivityData> | null;
   resume: ResumeSettings | null;
+  essays: PersonalEssays | null;
   /** Absent when the row was read with PROFILE_COLUMNS_NO_LOGINS. */
   portals?: PortalData | null;
 };
@@ -73,7 +75,7 @@ export type CollegeRow = {
   institutions: { slug: string } | null;
 };
 
-const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume";
+const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume, essays";
 const COLLEGE_BASE = "id, custom, institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
 
 /** What the website reads (includes the saved logins). */
@@ -101,6 +103,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   interested: r.interested ?? [],
   activities: r.activities ?? {},
   resume: r.resume ?? {},
+  essays: r.essays ?? {},
   portals: r.portals ?? {},
 });
 export const fromProfile = (userId: string, p: StudentProfile) => ({
@@ -116,6 +119,7 @@ export const fromProfile = (userId: string, p: StudentProfile) => ({
   interested: p.interested ?? [],
   activities: p.activities ?? {},
   resume: p.resume ?? {},
+  essays: p.essays ?? {},
   portals: p.portals ?? {},
 });
 export const toEntry = (r: CollegeRow): ListEntry => ({
