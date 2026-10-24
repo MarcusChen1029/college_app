@@ -14,7 +14,7 @@ function num(v: string, min: number, max: number) {
 /** GPA box. Uncontrolled and saves on blur. */
 export function GpaEditor() {
   const { profile, setProfile } = useStudent();
-  const field = "w-20 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+  const field = "w-20 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
   return (
     <label className="flex flex-col gap-1 text-sm">
       <span className="text-xs text-zinc-500">GPA (unweighted)</span>

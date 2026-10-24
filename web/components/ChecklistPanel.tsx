@@ -15,8 +15,8 @@ import type { CollegeSummary } from "@/lib/types";
 
 // No bg/border colour here: a tone class is added instead (Tailwind orders by stylesheet, so competing utilities would win).
 export const SELECT_BASE = "rounded border px-1 py-0.5 text-xs";
-export const SELECT = `${SELECT_BASE} border-zinc-300 bg-white dark:border-zinc-700 dark:bg-zinc-900`;
-const INPUT = "rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
+export const SELECT = `${SELECT_BASE} border-zinc-300 bg-white`;
+const INPUT = "rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-xs";
 
 type Props = {
   entry: ListEntry;
@@ -35,13 +35,13 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
   return (
     <div className="grid gap-3 md:grid-cols-2">
       <Section title="Essays" done={isDone("essays", c)} className="md:col-span-2">
-        <p className="text-xs text-zinc-600 dark:text-zinc-300">
+        <p className="text-xs text-zinc-600">
           {c.no_essays
             ? "No essays required."
             : essays.length > 0
               ? `${finals}/${essays.length} essays final.`
               : "No essays added yet."}{" "}
-          <Link href="/application/essays" className="text-blue-600 underline dark:text-blue-400">
+          <Link href="/application/essays" className="text-blue-600 underline">
             Manage on the Essays page
           </Link>
         </p>
@@ -135,17 +135,17 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`rounded-md border border-zinc-200 bg-white p-2.5 dark:border-zinc-800 dark:bg-zinc-950 ${className}`}>
+    <section className={`rounded-md border border-zinc-200 bg-white p-2.5 ${className}`}>
       <div className="mb-1.5 flex items-center gap-2">
         <span
           className={`inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
-            done ? "bg-done text-white" : "border border-zinc-300 dark:border-zinc-600"
+            done ? "bg-done text-white" : "border border-zinc-300"
           }`}
           aria-label={done ? "done" : "not done"}
         >
           {done ? "✓" : ""}
         </span>
-        <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-300">{title}</h3>
+        <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-600">{title}</h3>
         {hint && <span className="ml-auto text-[11px] text-zinc-400">{hint}</span>}
       </div>
       <div className="space-y-1.5">{children}</div>
@@ -169,7 +169,7 @@ function Check({
   children: React.ReactNode;
 }) {
   return (
-    <label className={`flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-300 ${className}`}>
+    <label className={`flex items-center gap-1.5 text-xs text-zinc-600 ${className}`}>
       <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       {children}
     </label>

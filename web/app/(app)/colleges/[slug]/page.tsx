@@ -30,7 +30,7 @@ import { toneClass } from "@/lib/ui";
 
 export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
   return (
-    <Suspense fallback={<div className="h-[70vh] animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />}>
+    <Suspense fallback={<div className="h-[70vh] animate-pulse rounded-lg bg-zinc-100" />}>
       <College params={params} />
     </Suspense>
   );
@@ -72,12 +72,12 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             </p>
             <div className="mt-2 flex flex-wrap gap-3 text-sm">
               {c.website && (
-                <a className="text-blue-600 hover:underline dark:text-blue-400" href={c.website} target="_blank" rel="noreferrer">
+                <a className="text-blue-600 hover:underline" href={c.website} target="_blank" rel="noreferrer">
                   Website ↗
                 </a>
               )}
               {c.admissions_url && (
-                <a className="text-blue-600 hover:underline dark:text-blue-400" href={c.admissions_url} target="_blank" rel="noreferrer">
+                <a className="text-blue-600 hover:underline" href={c.admissions_url} target="_blank" rel="noreferrer">
                   Admissions ↗
                 </a>
               )}
@@ -151,7 +151,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   const s = score(k);
                   if (!s) return null;
                   return (
-                    <tr key={k} className="border-t border-zinc-100 dark:border-zinc-800">
+                    <tr key={k} className="border-t border-zinc-100">
                       <td className="py-1.5">{label}</td>
                       <td className="py-1.5 text-right">{fmtScore(s.p25)}</td>
                       <td className="py-1.5 text-right">{fmtScore(s.p50)}</td>
@@ -194,7 +194,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   {GPA_BAND_ORDER.filter((k) => stats.gpa_distribution?.[k]).map((k) => (
                     <div key={k} className="flex items-center gap-2 text-xs">
                       <span className="w-20 tabular-nums text-zinc-500">{k}</span>
-                      <div className="h-3 flex-1 rounded bg-zinc-100 dark:bg-zinc-800">
+                      <div className="h-3 flex-1 rounded bg-zinc-100">
                         <div className="h-3 rounded bg-blue-500" style={{ width: `${Math.min(100, stats.gpa_distribution![k])}%` }} />
                       </div>
                       <span className="w-12 text-right tabular-nums">{fmtPct(stats.gpa_distribution![k])}</span>
@@ -221,7 +221,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             {[...c.programs]
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((p) => (
-                <li key={p.id} className="rounded-lg border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+                <li key={p.id} className="rounded-lg border border-zinc-200 p-4 text-sm">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <h3 className="text-base font-semibold">{p.name}</h3>
                     {p.ucas_code && <Pill>{p.ucas_code}</Pill>}
@@ -246,7 +246,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   </dl>
                   {(p.english_note || p.notes) && <p className="mt-2 text-xs text-zinc-500">{[p.english_note, p.notes].filter(Boolean).join(" ")}</p>}
                   <p className="mt-1 text-xs text-zinc-500">
-                    <a className="text-blue-600 hover:underline dark:text-blue-400" href={p.source_url} target="_blank" rel="noreferrer">
+                    <a className="text-blue-600 hover:underline" href={p.source_url} target="_blank" rel="noreferrer">
                       Course page ↗
                     </a>{" "}
                     · checked {fmtDate(p.retrieved_on)}
@@ -263,7 +263,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       {/* Deadlines */}
       <Section title={`Deadlines (${deadlines[0]?.cycle ?? "current"} cycle)`}>
         {deadlines.length ? (
-          <ol className="relative space-y-3 border-l border-zinc-200 pl-5 dark:border-zinc-800">
+          <ol className="relative space-y-3 border-l border-zinc-200 pl-5">
             {deadlines.map((d) => (
               <li key={d.id} className="text-sm">
                 <span className={`absolute -left-[9px] mt-0.5 rounded-full p-0.5 ${toneClass(d.due_date ? deadlineTone(daysUntil(d.due_date), false) : "neutral")}`}>
@@ -314,7 +314,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               </thead>
               <tbody>
                 {c.english_requirements.map((e) => (
-                  <tr key={e.test_key} className="border-t border-zinc-100 align-top dark:border-zinc-800">
+                  <tr key={e.test_key} className="border-t border-zinc-100 align-top">
                     <td className="py-1.5">
                       {testName(e.test_key)}
                       <Ref n={ref(e.source_id)} />
@@ -384,7 +384,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                 <Row k="Housing & food" v={fmtUsd(cost.room_board_usd)} />
                 {cost.total_coa_usd != null && <Row k="Total cost of attendance" v={fmtUsd(cost.total_coa_usd)} />}
               </dl>
-              <div className="mt-4 rounded-lg bg-zinc-50 p-3 text-sm dark:bg-zinc-900">
+              <div className="mt-4 rounded-lg bg-zinc-50 p-3 text-sm">
                 <div className="font-medium">For international students</div>
                 <div>{cost.intl_aid_policy ? INTL_AID[cost.intl_aid_policy] : "Aid policy not verified yet"}</div>
                 {cost.intl_need_aid_awarded != null && (
@@ -421,7 +421,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           </div>
           <ul className="space-y-2 text-sm">
             {c.major_admissions.map((m) => (
-              <li key={m.id} className="rounded-md border border-zinc-200 p-2 dark:border-zinc-800">
+              <li key={m.id} className="rounded-md border border-zinc-200 p-2">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-medium">{m.program}</span>
                   {m.category_key && <Pill>{catLabel(m.category_key)}</Pill>}
@@ -470,7 +470,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           {c.sources.map((s, i) => (
             <li key={s.id} id={`src-${i + 1}`} className="flex gap-2">
               <span className="w-6 text-zinc-400">[{i + 1}]</span>
-              <a className="text-blue-600 hover:underline dark:text-blue-400" href={s.url} target="_blank" rel="noreferrer">
+              <a className="text-blue-600 hover:underline" href={s.url} target="_blank" rel="noreferrer">
                 {s.title ?? s.url}
               </a>
               <span className="text-xs text-zinc-500">accessed {fmtDate(s.accessed_on)}</span>
@@ -479,7 +479,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         </ol>
       </Section>
 
-      <Link href="/colleges" className="inline-block text-sm text-blue-600 hover:underline dark:text-blue-400">
+      <Link href="/colleges" className="inline-block text-sm text-blue-600 hover:underline">
         ← All colleges
       </Link>
     </article>
@@ -503,7 +503,7 @@ function fitInputFrom(c: CollegeDetail, cdsYear: string | undefined, testPolicy:
 function Ref({ n }: { n: number | undefined }) {
   if (!n) return null;
   return (
-    <a href={`#src-${n}`} className="ml-0.5 align-super text-[10px] text-blue-600 hover:underline dark:text-blue-400">
+    <a href={`#src-${n}`} className="ml-0.5 align-super text-[10px] text-blue-600 hover:underline">
       [{n}]
     </a>
   );
@@ -520,7 +520,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
-    <div className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
+    <div className="rounded-lg border border-zinc-200 p-3">
       <div className="text-xs text-zinc-500">{label}</div>
       <div className="text-xl font-semibold tabular-nums">{value}</div>
       {sub && <div className="text-xs text-zinc-500">{sub}</div>}

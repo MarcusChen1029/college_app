@@ -10,7 +10,7 @@ import { buttonClass } from "@/lib/ui";
 import { GoogleSignIn } from "./AccountPanel";
 
 const noop = () => () => {};
-const card = "rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800";
+const card = "rounded-2xl border border-zinc-200 p-5";
 const button = buttonClass("primary", "sm");
 
 export function ConnectAi() {

@@ -87,7 +87,7 @@ function Dialog({
   return (
     <Modal title={<h2 className="text-lg font-semibold">Copy for AI</h2>} onClose={onClose}>
       <div className="space-y-3 text-sm">
-        <p className="text-zinc-600 dark:text-zinc-300">
+        <p className="text-zinc-600">
           Paste this into ChatGPT, Claude or Gemini so it starts from your real scores, list and deadlines instead of guessing. Portal logins and
           notes are never included.
         </p>
@@ -97,7 +97,7 @@ function Dialog({
             activities and a numbered source link for every number.
           </p>
         ) : (
-          <p className="rounded-md bg-blue-50 p-2 text-xs text-blue-900 dark:bg-blue-950 dark:text-blue-100">
+          <p className="rounded-md bg-blue-50 p-2 text-xs text-blue-900">
             Free version: your profile and a one-line summary per college.{" "}
             <Link href="/pricing" className="font-semibold underline">
               Upgrade
@@ -112,12 +112,12 @@ function Dialog({
           </p>
         )}
         {text == null ? (
-          <div className="h-80 animate-pulse rounded-md bg-zinc-100 dark:bg-zinc-900" aria-label="Loading college details" />
+          <div className="h-80 animate-pulse rounded-md bg-zinc-100" aria-label="Loading college details" />
         ) : (
           <textarea
             readOnly
             value={text}
-            className="h-80 w-full resize-y rounded-md border border-zinc-300 bg-zinc-50 p-2 font-mono text-xs dark:border-zinc-700 dark:bg-zinc-900"
+            className="h-80 w-full resize-y rounded-md border border-zinc-300 bg-zinc-50 p-2 font-mono text-xs"
             aria-label="Context to paste into your AI"
             onFocus={(e) => e.currentTarget.select()}
           />

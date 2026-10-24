@@ -56,7 +56,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
   const toggle = (slug: string) =>
     setSelected((s) => (s.includes(slug) ? s.filter((x) => x !== slug) : s.length >= 4 ? s : [...s, slug]));
 
-  const select = "rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+  const select = "rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm";
 
   return (
     <div className="space-y-4">
@@ -115,11 +115,11 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
       </div>
 
       {selected.length > 0 && (
-        <div className="flex items-center gap-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm dark:border-blue-900 dark:bg-blue-950">
+        <div className="flex items-center gap-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm">
           <span>
             {selected.length} selected{selected.length >= 4 ? " (max 4)" : ""}
           </span>
-          <Link className="font-medium text-blue-700 underline dark:text-blue-300" href={`/compare?c=${selected.join(",")}`}>
+          <Link className="font-medium text-blue-700 underline" href={`/compare?c=${selected.join(",")}`}>
             Compare side by side →
           </Link>
           <button className="ml-auto text-zinc-500 hover:underline" onClick={() => setSelected([])}>
@@ -128,9 +128,9 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+      <div className="overflow-x-auto rounded-lg border border-zinc-200">
         <table className="w-full min-w-[900px] text-sm">
-          <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500 dark:bg-zinc-900">
+          <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
             <tr>
               <th className="w-8 p-2" />
               <th className="p-2">Tier</th>
@@ -150,7 +150,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
               const fit = hasScores && (c.country_code ?? "US") === "US" ? computeFit(student.profile, c) : null;
               const inList = student.has(c.slug);
               return (
-                <tr key={c.slug} className="border-t border-zinc-100 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900/60">
+                <tr key={c.slug} className="border-t border-zinc-100 hover:bg-zinc-50">
                   <td className="p-2">
                     <input type="checkbox" aria-label={`Select ${c.name} to compare`} checked={selected.includes(c.slug)} onChange={() => toggle(c.slug)} />
                   </td>
@@ -189,7 +189,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                       </Link>
                     ) : (
                     <button
-                      className={`rounded-md px-2 py-1 text-xs font-medium ${inList ? "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300" : "bg-blue-600 text-white hover:bg-blue-700"}`}
+                      className={`rounded-md px-2 py-1 text-xs font-medium ${inList ? "bg-zinc-100 text-zinc-600" : "bg-blue-600 text-white hover:bg-blue-700"}`}
                       onClick={() => (inList ? student.remove(c.slug) : student.add(c))}
                     >
                       {inList ? "✓ In list" : "+ My list"}

@@ -12,7 +12,7 @@ export default function ComparePage({ searchParams }: PageProps<"/compare">) {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">Compare colleges</h1>
-      <Suspense fallback={<div className="h-96 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />}>
+      <Suspense fallback={<div className="h-96 animate-pulse rounded-lg bg-zinc-100" />}>
         <Compare searchParams={searchParams} />
       </Suspense>
     </div>
@@ -35,13 +35,13 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
         <p className="text-zinc-500">Pick up to four colleges:</p>
         <div className="flex flex-wrap gap-2">
           {all.map((c) => (
-            <Link key={c.slug} href={`/compare?c=${c.slug}`} className="rounded-md border border-zinc-200 px-2 py-1 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
+            <Link key={c.slug} href={`/compare?c=${c.slug}`} className="rounded-md border border-zinc-200 px-2 py-1 hover:bg-zinc-50">
               {c.short_name ?? c.name}
             </Link>
           ))}
         </div>
         <p className="text-zinc-500">
-          Or tick colleges on the <Link className="text-blue-600 underline dark:text-blue-400" href="/colleges">Colleges</Link> page and press Compare.
+          Or tick colleges on the <Link className="text-blue-600 underline" href="/colleges">Colleges</Link> page and press Compare.
         </p>
       </div>
     );
@@ -89,9 +89,9 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
   ];
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+    <div className="overflow-x-auto rounded-lg border border-zinc-200">
       <table className="w-full text-sm">
-        <thead className="bg-zinc-50 dark:bg-zinc-900">
+        <thead className="bg-zinc-50">
           <tr>
             <th className="w-48 p-2" />
             {picked.map((c) => (
@@ -105,7 +105,7 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
         </thead>
         <tbody>
           {rows.map(([label, render]) => (
-            <tr key={label} className="border-t border-zinc-100 align-top dark:border-zinc-800">
+            <tr key={label} className="border-t border-zinc-100 align-top">
               <th className="p-2 text-left text-xs font-medium text-zinc-500">{label}</th>
               {picked.map((c) => (
                 <td key={c.slug} className="p-2 tabular-nums">

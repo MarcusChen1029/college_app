@@ -5,7 +5,7 @@ import { cleanCustom, type CustomCollege } from "@/lib/custom-college";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { Modal } from "./Modal";
 
-const INPUT = "w-full rounded border border-zinc-300 bg-white px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+const INPUT = "w-full rounded border border-zinc-300 bg-white px-2 py-1 text-sm";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

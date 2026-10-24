@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
-/* The site is light-only: white + sky blue, navy ink, a few bright accents.
-   `dark:` utilities only apply under a `.dark` ancestor, which nothing sets. */
-@custom-variant dark (&:where(.dark, .dark *));
+/* White + sky blue, navy ink, a few bright accents.
+   The site is light-only (no dark mode yet; see the redesign spec §4). */
 
 :root {
   color-scheme: light;

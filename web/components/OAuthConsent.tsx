@@ -11,7 +11,7 @@ import { buttonClass, toneClass } from "@/lib/ui";
 import { GoogleSignIn } from "./AccountPanel";
 
 const noop = () => () => {};
-const card = "mx-auto max-w-xl space-y-4 rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800";
+const card = "mx-auto max-w-xl space-y-4 rounded-2xl border border-zinc-200 p-6";
 
 type Load = { state: "loading" } | { state: "redirecting" } | { state: "error"; message: string } | { state: "ready"; details: OAuthAuthorizationDetails };
 

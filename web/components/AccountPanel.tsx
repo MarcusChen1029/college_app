@@ -97,7 +97,7 @@ export function SettingsLink({ children, className }: { children: React.ReactNod
 export function AccountLink() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const cls = "max-w-40 truncate font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
+  const cls = "max-w-40 truncate font-semibold text-zinc-600 hover:text-zinc-900";
   if (!mounted || !student.ready) return <span className="w-14" />;
   if (!student.auth) {
     return (
@@ -141,7 +141,7 @@ function AccountMenu() {
         aria-expanded={open}
         title={student.auth?.email ?? undefined}
         onClick={() => setOpen((o) => !o)}
-        className="flex max-w-40 items-center gap-1 font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+        className="flex max-w-40 items-center gap-1 font-semibold text-zinc-600 hover:text-zinc-900"
       >
         <span className="truncate">{name}</span>
         <span aria-hidden className="text-xs">

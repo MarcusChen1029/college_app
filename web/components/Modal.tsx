@@ -23,15 +23,15 @@ export function Modal({
   return (
     <dialog
       ref={ref}
-      className={`m-auto max-h-[90vh] overflow-hidden rounded-xl border border-zinc-200 bg-white p-0 text-zinc-900 shadow-2xl backdrop:bg-black/30 backdrop:backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 ${className}`}
+      className={`m-auto max-h-[90vh] overflow-hidden rounded-xl border border-zinc-200 bg-white p-0 text-zinc-900 shadow-2xl backdrop:bg-black/30 backdrop:backdrop-blur-sm ${className}`}
       onClose={onClose}
       onClick={(e) => e.target === ref.current && ref.current.close()}
     >
       {/* Focus the panel itself on open, so the first link/input doesn't show a focus ring. */}
       <div className="flex max-h-[90vh] flex-col outline-none" tabIndex={-1} autoFocus>
-        <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4 dark:border-zinc-800">
+        <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4">
           <div className="min-w-0 flex-1">{title}</div>
-          <button className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200" onClick={() => ref.current?.close()} aria-label="Close">
+          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => ref.current?.close()} aria-label="Close">
             ✕
           </button>
         </div>

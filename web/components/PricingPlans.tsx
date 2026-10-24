@@ -25,8 +25,8 @@ export function PricingPlans() {
           return (
             <section
               key={p.key}
-              className={`relative flex flex-col rounded-2xl border bg-white p-6 dark:bg-zinc-950 ${
-                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : featured ? "border-blue-200 dark:border-blue-900" : "border-zinc-200 dark:border-zinc-800"
+              className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
+                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : featured ? "border-blue-200" : "border-zinc-200"
               }`}
             >
               {featured && (
