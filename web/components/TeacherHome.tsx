@@ -38,7 +38,11 @@ export function TeacherHome() {
         <p>
           Signed in as <span className="font-medium">{student.auth.email}</span>.
         </p>
-        {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
+        {student.error && (
+          <p role="alert" className="text-sm text-rose-600">
+            {student.error}
+          </p>
+        )}
         <button className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm" onClick={() => student.signOut()}>
           Sign out
         </button>

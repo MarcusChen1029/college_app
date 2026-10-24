@@ -18,7 +18,9 @@ function DeadlineList({ days }: { days: number }) {
   if (!data) {
     return error ? (
       <div className="space-y-3">
-        <p className="text-sm text-rose-600">{error}</p>
+        <p role="alert" className="text-sm text-rose-600">
+          {error}
+        </p>
         <button type="button" className={btn} onClick={retry}>
           Try again
         </button>

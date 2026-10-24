@@ -33,7 +33,7 @@ export function TeacherAttention() {
       </div>
       {!data ? (
         error ? (
-          <p className="text-sm text-zinc-500">
+          <p role="alert" className="text-sm text-zinc-500">
             Couldn&apos;t load your students just now.{" "}
             <button type="button" className="font-semibold text-blue-700 underline underline-offset-4" onClick={retry}>
               Try again

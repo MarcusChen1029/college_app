@@ -97,7 +97,11 @@ export function MyCounselors() {
   return (
     <div className="space-y-5 rounded-lg border border-zinc-200 p-5">
       <h3 className="font-display text-lg font-bold">My counselors and teachers</h3>
-      {listError && <p className="text-sm text-rose-600">{listError}</p>}
+      {listError && (
+        <p role="alert" className="text-sm text-rose-600">
+          {listError}
+        </p>
+      )}
       {teachers === null ? (
         listError ? (
           <button type="button" className={btn} onClick={() => void load()}>
@@ -121,12 +125,12 @@ export function MyCounselors() {
                       .join(" · ")}
                   </p>
                 </div>
-                <button type="button" disabled={busy} className={btn} onClick={() => void leave(t)}>
+                <button type="button" disabled={busy} className={btn} aria-label={`Leave ${t.displayName}`} onClick={() => void leave(t)}>
                   Leave
                 </button>
               </div>
               <label className="flex items-center gap-2 text-sm">
-                <input type="checkbox" checked={t.shareEssays} disabled={busy} onChange={(e) => void toggleEssays(t, e.target.checked)} />
+                <input type="checkbox" aria-label={`Let them see my essays (${t.displayName})`} checked={t.shareEssays} disabled={busy} onChange={(e) => void toggleEssays(t, e.target.checked)} />
                 Let them see my essays
               </label>
             </li>
@@ -150,7 +154,11 @@ export function MyCounselors() {
           Check code
         </button>
       </form>
-      {joinError && <p className="text-sm text-rose-600">{joinError}</p>}
+      {joinError && (
+        <p role="alert" className="text-sm text-rose-600">
+          {joinError}
+        </p>
+      )}
 
       {preview && (
         <div className="space-y-3 rounded-2xl border border-blue-200 bg-blue-50 p-5">

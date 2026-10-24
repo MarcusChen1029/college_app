@@ -89,7 +89,9 @@ export function TeacherClasses() {
   if (!overview) {
     return error ? (
       <div className="space-y-3">
-        <p className="text-sm text-rose-600">{error}</p>
+        <p role="alert" className="text-sm text-rose-600">
+          {error}
+        </p>
         <button type="button" className={btn} onClick={() => void load()}>
           Try again
         </button>
@@ -106,7 +108,11 @@ export function TeacherClasses() {
 
   return (
     <div className="space-y-8">
-      {error && <p className="text-sm text-rose-600">{error}</p>}
+      {error && (
+        <p role="alert" className="text-sm text-rose-600">
+          {error}
+        </p>
+      )}
 
       <section className="space-y-4" aria-labelledby="classes-heading">
         <h2 id="classes-heading" className="font-display text-xl font-bold">
@@ -186,6 +192,7 @@ export function TeacherClasses() {
                   type="button"
                   disabled={busy}
                   className={btn}
+                  aria-label={`Remove student ${s.displayName}`}
                   onClick={() => confirm(`Remove ${s.displayName}? They will lose this link; you can't see their data any more.`) && run(() => removeStudent(s.studentId))}
                 >
                   Remove student

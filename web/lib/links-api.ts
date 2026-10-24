@@ -173,3 +173,48 @@ export async function teacherDeadlines(days = 60): Promise<UpcomingDeadline[]> {
   const rows = check(await db().rpc("teacher_deadlines", { p_days: days, p_today: localDate(new Date()) })) as Record<string, unknown>[];
   return rows.map(parseUpcomingDeadline);
 }
+
+// ───────── private teacher notes (migration 0024) ─────────
+
+export type TeacherNote = { id: string; body: string; createdAt: string; updatedAt: string };
+export const NOTE_MAX = 4000;
+
+const toNote = (r: { id: string; body: string; created_at: string; updated_at: string }): TeacherNote => ({
+  id: r.id,
+  body: r.body,
+  createdAt: r.created_at,
+  updatedAt: r.updated_at,
+});
+
+/** The caller's own notes about one linked student, newest first. Only the teacher who wrote them can read them. */
+export async function listNotes(studentId: string): Promise<TeacherNote[]> {
+  const rows = check(
+    await db().from("teacher_notes").select("id, body, created_at, updated_at").eq("student_id", studentId).order("created_at", { ascending: false }),
+  ) as { id: string; body: string; created_at: string; updated_at: string }[];
+  return rows.map(toNote);
+}
+
+export async function addNote(studentId: string, body: string): Promise<TeacherNote> {
+  const row = check(await db().from("teacher_notes").insert({ student_id: studentId, body: body.trim() }).select("id, body, created_at, updated_at").single());
+  return toNote(row as { id: string; body: string; created_at: string; updated_at: string });
+}
+
+// Row security hides notes that are gone (e.g. the student left), so a change that touched no row is an error.
+export async function updateNote(id: string, body: string): Promise<void> {
+  const rows = check(await db().from("teacher_notes").update({ body: body.trim() }).eq("id", id).select("id")) as unknown[];
+  if (rows.length === 0) throw new Error("note not found");
+}
+
+export async function deleteNote(id: string): Promise<void> {
+  const rows = check(await db().from("teacher_notes").delete().eq("id", id).select("id")) as unknown[];
+  if (rows.length === 0) throw new Error("note not found");
+}
+
+// ───────── college names for slugs (public read) ─────────
+
+/** slug -> display name for the given college slugs; slugs we don't know are simply missing from the map. */
+export async function collegeNames(slugs: string[]): Promise<Map<string, string>> {
+  if (slugs.length === 0) return new Map();
+  const rows = check(await db().from("institutions").select("slug, name, short_name").in("slug", slugs)) as { slug: string; name: string; short_name: string | null }[];
+  return new Map(rows.map((r) => [r.slug, r.short_name || r.name]));
+}

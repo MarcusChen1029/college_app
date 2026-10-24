@@ -7,6 +7,7 @@ import { CollegesPanel } from "@/components/TeacherDetailColleges";
 import { EssaysPanel } from "@/components/TeacherDetailEssays";
 import { InterestedPanel, OverviewPanel } from "@/components/TeacherDetailOverview";
 import { btn } from "@/components/TeacherClassCard";
+import { TeacherNotes } from "@/components/TeacherNotes";
 import { TeacherTabs } from "@/components/TeacherTabs";
 import { teacherStudent } from "@/lib/links-api";
 import { computeFlags } from "@/lib/roster";
@@ -36,7 +37,9 @@ export function TeacherStudentDetail({ id }: { id: string }) {
     return (
       <div className="space-y-3">
         {back}
-        <p className="text-sm text-rose-600">{notFound ? "This student isn't linked to you, or they have left. Go back to your student list to pick someone else." : error}</p>
+        <p role="alert" className="text-sm text-rose-600">
+          {notFound ? "This student isn't linked to you, or they have left. Go back to your student list to pick someone else." : error}
+        </p>
         {!notFound && (
           <button type="button" className={btn} onClick={retry}>
             Try again
@@ -91,6 +94,7 @@ export function TeacherStudentDetail({ id }: { id: string }) {
           { id: "activities", label: "Activities", panel: <ActivitiesPanel detail={detail} /> },
           { id: "essays", label: "Essays", panel: <EssaysPanel detail={detail} /> },
           { id: "interested", label: `Interested (${detail.profile.interested.length})`, panel: <InterestedPanel detail={detail} /> },
+          { id: "notes", label: "Notes", keepMounted: true, panel: <TeacherNotes studentId={detail.studentId} studentName={detail.displayName} /> },
         ]}
       />
     </div>

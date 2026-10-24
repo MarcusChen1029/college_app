@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { TeacherRosterTable } from "@/components/TeacherRosterTable";
 import { btn } from "@/components/TeacherClassCard";
+import { CSV_BOM } from "@/lib/csv";
+import { downloadText } from "@/lib/download";
 import { loadTeacherOverview, teacherRoster } from "@/lib/links-api";
+import { rosterCsv, rosterCsvFilename } from "@/lib/roster-export";
 import { ALL_CLASSES, buildRows, NO_CLASS, ROSTER_SORTS, viewRows, type RosterRow, type RosterSort } from "@/lib/roster-view";
 import { useLoad } from "@/lib/use-load";
 
@@ -34,10 +37,17 @@ export function TeacherRoster() {
     return viewRows(data.rows, { query, classId, attentionOnly, activeClassIds }, sort);
   }, [data, query, classId, attentionOnly, sort]);
 
+  // The BOM makes Excel read the file as UTF-8, so accented names survive.
+  function downloadCsv() {
+    downloadText(rosterCsvFilename(new Date()), CSV_BOM + rosterCsv(shown, classNames), "text/csv;charset=utf-8");
+  }
+
   if (!data) {
     return error ? (
       <div className="space-y-3">
-        <p className="text-sm text-rose-600">{error}</p>
+        <p role="alert" className="text-sm text-rose-600">
+          {error}
+        </p>
         <button type="button" className={btn} onClick={retry}>
           Try again
         </button>
@@ -94,7 +104,11 @@ export function TeacherRoster() {
               <input type="checkbox" checked={attentionOnly} onChange={(e) => setAttentionOnly(e.target.checked)} />
               Needs attention only
             </label>
+            <button type="button" className={btn} disabled={shown.length === 0} onClick={downloadCsv}>
+              Download CSV ({shown.length})
+            </button>
           </div>
+          <p className="text-xs text-zinc-500">CSV export contains what you see here: names, emails, scores, deadlines and flags.</p>
 
           <p className="text-sm text-zinc-500" aria-live="polite">
             Showing {shown.length} of {data.rows.length} students

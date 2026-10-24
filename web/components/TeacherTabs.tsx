@@ -2,7 +2,8 @@
 
 import { useId, useRef, useState } from "react";
 
-export type TabDef = { id: string; label: string; panel: React.ReactNode };
+/** keepMounted: the panel stays in the page (hidden) when another tab is selected, so unsaved typing survives. */
+export type TabDef = { id: string; label: string; panel: React.ReactNode; keepMounted?: boolean };
 
 /** Accessible tabs: arrow keys, Home and End move between tabs; only the selected panel is rendered. */
 export function TeacherTabs({ tabs, label }: { tabs: TabDef[]; label: string }) {
@@ -46,9 +47,15 @@ export function TeacherTabs({ tabs, label }: { tabs: TabDef[]; label: string }) 
           );
         })}
       </div>
-      <div role="tabpanel" id={`${base}-panel`} aria-labelledby={`${base}-tab-${current.id}`} tabIndex={0}>
-        {current.panel}
-      </div>
+      {tabs.map((t) => {
+        const on = t.id === current.id;
+        if (!on && !t.keepMounted) return null;
+        return (
+          <div key={t.id} role="tabpanel" id={on ? `${base}-panel` : undefined} aria-labelledby={`${base}-tab-${t.id}`} tabIndex={0} hidden={!on}>
+            {t.panel}
+          </div>
+        );
+      })}
     </div>
   );
 }

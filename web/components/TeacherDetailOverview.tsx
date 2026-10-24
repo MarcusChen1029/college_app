@@ -1,4 +1,9 @@
+"use client";
+
+import { useCallback } from "react";
+import { collegeNames } from "@/lib/links-api";
 import { humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { useLoad } from "@/lib/use-load";
 import type { StudentDetail } from "@/lib/roster";
 import { regionLabel } from "@/lib/regions";
 import { ACT_SCALE, ENGLISH_TESTS, SAT_SCALE, type EnglishTestKey, type ScoreScale, type SectionScores } from "@/lib/scores";
@@ -62,18 +67,26 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
   );
 }
 
+/** The student's interested colleges in their own order, with names from the database (a title made from the slug if unknown). */
 export function InterestedPanel({ detail }: { detail: StudentDetail }) {
   const names = interestedNames(detail);
+  const slugs = detail.profile.interested;
+  const load = useCallback(() => collegeNames(slugs), [slugs]);
+  const { data: real, loading } = useLoad(load); // if the lookup fails `real` stays null and the fallback names show
   if (names.length === 0) return <p className="text-sm text-zinc-500">{detail.displayName} hasn&apos;t marked any colleges as interested.</p>;
   return (
     <div className="space-y-3">
       <p className="text-sm text-zinc-500">Colleges {detail.displayName} is considering but hasn&apos;t put on their list.</p>
-      <ul className="flex flex-wrap gap-2">
-        {names.map((n) => (
-          <li key={n.slug} className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-800">
-            {n.name}
-          </li>
-        ))}
+      <ul className="flex flex-wrap gap-2" aria-busy={loading}>
+        {names.map((n) =>
+          loading ? (
+            <li key={n.slug} aria-hidden="true" className="h-7 w-28 animate-pulse rounded-full bg-zinc-100" />
+          ) : (
+            <li key={n.slug} className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-800">
+              {real?.get(n.slug) ?? n.name}
+            </li>
+          ),
+        )}
       </ul>
     </div>
   );
