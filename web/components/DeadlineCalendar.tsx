@@ -3,12 +3,24 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { groupByDate, monthGrid, monthOf, monthTitle, shiftMonth } from "@/lib/calendar";
-import { fmtDate } from "@/lib/format";
+import { daysUntil, fmtDate } from "@/lib/format";
+import { deadlineTone, type Tone } from "@/lib/status";
+import { toneClass } from "@/lib/ui";
 
-export type CalendarEvent = { id: string; date: string; label: string; college: string; slug: string };
+export type CalendarEvent = { id: string; date: string; label: string; college: string; slug: string; done: boolean };
+
+const URGENCY: Tone[] = ["urgent", "soon", "neutral", "progress", "done"];
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const navButton = "grid h-8 w-8 place-items-center rounded-full border-2 border-zinc-200 text-sm font-semibold hover:bg-zinc-50 focus-visible:outline-3 focus-visible:outline-blue-400";
+
+/** The most urgent tone among a day's deadlines. */
+function dayTone(events: CalendarEvent[], today: string): Tone {
+  const [y, m, d] = today.split("-").map(Number);
+  const now = new Date(y, m - 1, d);
+  const tones = events.map((e) => deadlineTone(daysUntil(e.date, now), e.done));
+  return URGENCY.find((t) => tones.includes(t)) ?? "neutral";
+}
 
 /**
  * A month calendar with a dot on every day that has a deadline. It opens on the month of the next upcoming
@@ -62,7 +74,7 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
             ? "bg-ink text-white"
             : here.length
               ? upcoming
-                ? "bg-blue-100 font-semibold hover:bg-blue-200"
+                ? "bg-blue-50 font-semibold hover:bg-blue-100"
                 : "bg-zinc-100 font-semibold text-zinc-500 hover:bg-zinc-200"
               : "hover:bg-zinc-50";
           return (
@@ -73,11 +85,11 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
               aria-pressed={here.length ? isPicked : undefined}
               aria-label={`${fmtDate(c.iso)}${isToday ? " (today)" : ""}${here.length ? `: ${here.length} ${here.length === 1 ? "deadline" : "deadlines"}` : ""}`}
               onClick={() => setPicked(isPicked ? null : c.iso)}
-              className={`relative mx-auto grid h-9 w-9 place-items-center rounded-full text-sm focus-visible:outline-3 focus-visible:outline-blue-400 disabled:cursor-default ${tone} ${c.inMonth ? "" : "opacity-35"} ${isToday ? "ring-2 ring-coral" : ""}`}
+              className={`relative mx-auto grid h-9 w-9 place-items-center rounded-full text-sm focus-visible:outline-3 focus-visible:outline-blue-400 disabled:cursor-default ${tone} ${c.inMonth ? "" : "opacity-35"} ${isToday ? "ring-2 ring-ink" : ""}`}
             >
               {c.day}
               {here.length > 1 && (
-                <span aria-hidden className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-coral px-1 text-[10px] font-bold leading-none text-ink">
+                <span aria-hidden className={`absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full border px-1 text-[10px] font-bold leading-none ${toneClass(dayTone(here, today))}`}>
                   {here.length}
                 </span>
               )}

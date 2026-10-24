@@ -6,6 +6,8 @@ import { ESSAY_STATUSES, isDone, newEssay, safeLink, type Checklist, type Essay 
 import { docTitle } from "@/lib/google-doc-title";
 import { PS_PROMPTS, PS_WORDS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, UC_WORDS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
+import { essayTone } from "@/lib/status";
+import { toneClass } from "@/lib/ui";
 import { browserSupabase } from "@/lib/supabase-browser";
 import type { CollegeSummary } from "@/lib/types";
 
@@ -45,14 +47,6 @@ function initialNotice(): string | null {
   const g = new URLSearchParams(window.location.search).get("google");
   return g === "connected" || g === "error" ? g : null;
 }
-
-const TONE: Record<Essay["status"], string> = {
-  not_started: "text-zinc-500",
-  brainstorming: "text-blue-700",
-  drafting: "text-amber-700",
-  revising: "text-violet-700",
-  final: "text-emerald-700",
-};
 
 function EssayRow({
   essay,
@@ -124,7 +118,7 @@ function EssayRow({
           </>
         )}
         <select
-          className={`${input} ${TONE[essay.status]}`}
+          className={`${input} ${toneClass(essayTone(essay.status))}`}
           value={essay.status}
           aria-label={`${label ?? `Essay ${index + 1}`} status`}
           onChange={(e) => onChange({ status: e.target.value as Essay["status"] })}
@@ -136,7 +130,7 @@ function EssayRow({
           ))}
         </select>
         {onRemove && (
-          <button type="button" className="rounded px-1 text-zinc-400 hover:text-rose-600" aria-label={`Remove essay ${index + 1}`} onClick={onRemove}>
+          <button type="button" className="rounded px-1 text-zinc-400 hover:text-urgent" aria-label={`Remove essay ${index + 1}`} onClick={onRemove}>
             ✕
           </button>
         )}
@@ -160,7 +154,7 @@ function EssayRow({
               aria-label={`Essay ${index + 1} Google Doc link`}
               onBlur={(e) => e.target.value.trim() !== essay.url && onChange({ url: e.target.value.trim() })}
             />
-            <button type="button" className="text-xs text-zinc-500 hover:text-rose-600" onClick={() => onChange({ url: "" })}>
+            <button type="button" className="text-xs text-zinc-500 hover:text-urgent" onClick={() => onChange({ url: "" })}>
               Unlink
             </button>
           </>
@@ -208,8 +202,8 @@ function EssayRow({
               aria-label={`Essay ${index + 1} Google Doc link`}
               onBlur={(e) => e.target.value.trim() && onChange({ url: e.target.value.trim() })}
             />
-            {pasteFailed && <span className="w-full text-xs text-rose-600">No link found on your clipboard. Copy the doc&apos;s address first, or paste it into the box.</span>}
-            {createFailed && <span className="w-full text-xs text-rose-600">{GOOGLE_NOTICE.failed}</span>}
+            {pasteFailed && <span className="w-full text-xs text-urgent">No link found on your clipboard. Copy the doc&apos;s address first, or paste it into the box.</span>}
+            {createFailed && <span className="w-full text-xs text-urgent">{GOOGLE_NOTICE.failed}</span>}
           </>
         )}
       </div>
@@ -263,7 +257,7 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
           ))}
         </ul>
         {ps.prompt && (
-          <button type="button" className="mt-2 text-xs text-zinc-500 hover:text-rose-600" onClick={() => set({ prompt: null })}>
+          <button type="button" className="mt-2 text-xs text-zinc-500 hover:text-urgent" onClick={() => set({ prompt: null })}>
             Clear choice
           </button>
         )}
@@ -282,7 +276,7 @@ function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChan
         <h2 className="text-xl font-bold">UC personal insight questions</h2>
         <span className="text-xs text-zinc-500">
           Choose {UC_PICKS} of {UC_PIQS.length} · {UC_WORDS} ·{" "}
-          <span className={`tabular-nums ${picks.length === UC_PICKS ? "font-medium text-emerald-700" : ""}`}>
+          <span className={`tabular-nums ${picks.length === UC_PICKS ? "font-medium text-done" : ""}`}>
             {picks.length}/{UC_PICKS} chosen
           </span>
         </span>
@@ -351,7 +345,7 @@ function CollegeEssays({
     <section className="rounded-3xl border-2 border-zinc-200 p-5">
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <span
-          className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${done ? "bg-emerald-600 text-white" : "border border-zinc-300"}`}
+          className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${done ? "bg-done text-white" : "border border-zinc-300"}`}
           aria-label={done ? "essays done" : "essays not done"}
         >
           {done ? "✓" : ""}
@@ -479,7 +473,7 @@ export function EssaysPage({ colleges, platforms }: { colleges: CollegeSummary[]
       {notice && GOOGLE_NOTICE[notice] && (
         <p
           role="status"
-          className={`flex items-start gap-3 rounded-lg border px-3 py-2 text-sm ${notice === "connected" ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-amber-200 bg-amber-50 text-amber-800"}`}
+          className={`flex items-start gap-3 rounded-lg border px-3 py-2 text-sm ${toneClass(notice === "connected" ? "done" : "soon")}`}
         >
           <span className="flex-1">{GOOGLE_NOTICE[notice]}</span>
           <button type="button" className="text-xs opacity-70 hover:opacity-100" aria-label="Dismiss" onClick={() => setNotice(null)}>

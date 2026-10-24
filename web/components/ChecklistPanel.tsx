@@ -110,7 +110,7 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
           onBlur={(e) => e.target.value !== entry.notes && onChange({ notes: e.target.value })}
         />
         <div className="mt-1 text-right">
-          <button className="text-xs text-zinc-500 hover:text-rose-600" onClick={onRemove}>
+          <button className="text-xs text-zinc-500 hover:text-urgent" onClick={onRemove}>
             Remove from list
           </button>
         </div>
@@ -137,7 +137,7 @@ function Section({
       <div className="mb-1.5 flex items-center gap-2">
         <span
           className={`inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
-            done ? "bg-emerald-600 text-white" : "border border-zinc-300 dark:border-zinc-600"
+            done ? "bg-done text-white" : "border border-zinc-300 dark:border-zinc-600"
           }`}
           aria-label={done ? "done" : "not done"}
         >
@@ -152,7 +152,7 @@ function Section({
 }
 
 function Warn({ children }: { children: React.ReactNode }) {
-  return <p className="text-[11px] text-rose-600 dark:text-rose-400">{children}</p>;
+  return <p className="text-[11px] text-urgent">{children}</p>;
 }
 
 function Check({

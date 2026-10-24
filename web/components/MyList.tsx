@@ -3,18 +3,21 @@
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
-import { daysUntil, fmtDate } from "@/lib/format";
+import { daysUntil } from "@/lib/format";
 import { progress, type Checklist } from "@/lib/checklist";
-import { hasDecision, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
+import { hasDecision, isSubmitted, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
+import { resultTone, stageTone } from "@/lib/status";
+import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { AddCustomCollege } from "./AddCustomCollege";
 import { AiContextButton } from "./AiContextButton";
-import { FitBadge, Pill, TierBadge } from "./badges";
+import { FitBadge, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT } from "./ChecklistPanel";
 import { Modal } from "./Modal";
 import { SchoolCodes } from "./SchoolCodes";
+import { DeadlineChip, StatusPill } from "./StatusPill";
 
 const noop = () => () => {};
 
@@ -23,16 +26,14 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
   if (hasDecision(entry.status)) {
     return (
       <Link href="/application/results" className="hover:underline">
-        <Pill tone={entry.status === "admitted" || entry.status === "enrolled" ? "green" : entry.status === "rejected" ? "red" : "blue"}>
-          {RESULT_LABEL[resultStatus(entry.status)]}
-        </Pill>
+        <StatusPill tone={resultTone(resultStatus(entry.status))}>{RESULT_LABEL[resultStatus(entry.status)]}</StatusPill>
       </Link>
     );
   }
   const st = stage(entry.status, entry.checklist);
   return (
     <select
-      className={`${SELECT} ${st === "ready" ? "border-emerald-400 bg-emerald-50 font-semibold text-emerald-800" : st === "submitted" ? "border-blue-300 bg-blue-50 text-blue-800" : ""}`}
+      className={`${SELECT} ${toneClass(stageTone(st))}`}
       value={st === "submitted" ? "submitted" : "working"}
       onChange={(e) => onSubmit(e.target.value === "submitted")}
       aria-label={`Status for ${name}`}
@@ -53,7 +54,7 @@ function ProgressBadge({ checklist }: { checklist: Checklist }) {
       <span className="tabular-nums text-zinc-600 dark:text-zinc-300">
         {done}/{total}
       </span>
-      {missing === 0 ? <Pill tone="green">all done</Pill> : <Pill>{missing} missing</Pill>}
+      <StatusPill tone={missing === 0 ? "done" : "neutral"}>{missing === 0 ? "all done" : `${missing} missing`}</StatusPill>
     </div>
   );
 }
@@ -105,7 +106,7 @@ export function MyList({
       )}
       <span className="ml-auto flex items-center gap-3">
         <span className="text-xs text-zinc-500">
-          <span className={`tabular-nums ${student.canAdd ? "" : "font-medium text-amber-700 dark:text-amber-300"}`}>
+          <span className={`tabular-nums ${student.canAdd ? "" : "font-medium text-soon"}`}>
             {student.list.length}
             {student.plan.limit != null && ` / ${student.plan.limit}`} colleges
           </span>{" "}
@@ -130,13 +131,13 @@ export function MyList({
         )}
       </span>
       {student.plan.limit != null && student.list.length > student.plan.limit && (
-        <span className="w-full rounded bg-amber-50 px-2 py-1 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">
+        <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>
           Your list has more colleges than the {student.plan.name} plan allows ({student.plan.limit}). You keep them all, but can&apos;t add more
           until you remove some or upgrade.
         </span>
       )}
       {student.error && (
-        <span className="rounded bg-rose-50 px-2 py-0.5 text-rose-700 dark:bg-rose-950 dark:text-rose-200">
+        <span className={`rounded border px-2 py-0.5 ${toneClass("urgent")}`}>
           {student.error}{" "}
           <button className="underline" onClick={student.clearError}>
             dismiss
@@ -178,7 +179,7 @@ export function MyList({
       allDeadlines
         .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0)
         .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
-        .map((d) => ({ d, college })),
+        .map((d) => ({ d, college, entry })),
     )
     .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!));
 
@@ -322,7 +323,7 @@ export function MyList({
           </p>
         )}
         {entries.filter(({ entry }) => entry.plan === "ED" || entry.plan === "ED2").length > 1 && (
-          <p className="border-t border-zinc-100 p-2 text-xs text-rose-600 dark:border-zinc-800">
+          <p className="border-t border-zinc-100 p-2 text-xs text-urgent dark:border-zinc-800">
             You picked Early Decision at more than one college. ED is binding — you can only apply ED to one school per round.
           </p>
         )}
@@ -332,13 +333,12 @@ export function MyList({
         <h2 className="mb-2 font-semibold">Upcoming dates</h2>
         {upcoming.length ? (
           <ol className="space-y-2 text-sm">
-            {upcoming.map(({ d, college }) => {
+            {upcoming.map(({ d, college, entry }) => {
               const days = daysUntil(d.due_date!);
               return (
                 <li key={d.id} className="rounded-md border border-zinc-200 p-2 dark:border-zinc-800">
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium tabular-nums">{fmtDate(d.due_date)}</span>
-                    <Pill tone={days <= 14 ? "red" : "zinc"}>{days === 0 ? "today" : `${days} days`}</Pill>
+                  <div>
+                    <DeadlineChip date={d.due_date!} days={days} done={isSubmitted(entry.status) || progress(entry.checklist).missing === 0} />
                   </div>
                   <div>
                     {college.short_name ?? college.name} — {d.label ?? plans.find((p) => p.key === d.plan_key)?.label ?? d.kind}
