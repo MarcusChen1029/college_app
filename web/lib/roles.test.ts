@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, validateTeacher } from "./roles.ts";
+import { activeNavHref, homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, validateTeacher } from "./roles.ts";
 
 test("parseRole accepts only the two roles", () => {
   assert.equal(parseRole("student"), "student");
@@ -75,4 +75,17 @@ test("roleChangeMessage explains what to do first", () => {
 test("/account is student-only", () => {
   assert.equal(isStudentOnlyPath("/account"), true);
   assert.equal(redirectFor("teacher", "/account", true), "/teacher");
+});
+
+test("activeNavHref picks the longest matching nav item", () => {
+  const t = navFor("teacher").map(([h]) => h);
+  const s = navFor("student").map(([h]) => h);
+  assert.equal(activeNavHref("/teacher/classes", t), "/teacher/classes");
+  assert.equal(activeNavHref("/teacher", t), "/teacher");
+  assert.equal(activeNavHref("/teacher/students", t), "/teacher/students");
+  assert.equal(activeNavHref("/application/essays", s), "/application");
+  assert.equal(activeNavHref("/colleges/harvard", s), "/colleges");
+  assert.equal(activeNavHref("/compare", s), "/compare");
+  assert.equal(activeNavHref("/", s), null);
+  assert.equal(activeNavHref("/colleges-old", s), null);
 });

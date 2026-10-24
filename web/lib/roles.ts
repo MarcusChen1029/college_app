@@ -64,6 +64,15 @@ export function navFor(role: Role | null | undefined): readonly (readonly [href:
   return role === "teacher" ? TEACHER_NAV : STUDENT_NAV;
 }
 
+/** The nav href that matches the current page: the longest whole-segment prefix of `pathname`, or null. */
+export function activeNavHref(pathname: string, hrefs: readonly string[]): string | null {
+  let best: string | null = null;
+  for (const h of hrefs) {
+    if ((pathname === h || pathname.startsWith(`${h}/`)) && (best === null || h.length > best.length)) best = h;
+  }
+  return best;
+}
+
 /** Plain wording for the errors change_my_role can return. */
 export function roleChangeMessage(message: string): string {
   const m = message.toLowerCase();
