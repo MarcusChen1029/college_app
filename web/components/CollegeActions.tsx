@@ -10,6 +10,7 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
   const inList = student.has(slug);
   const hasScores = student.profile.sat != null || student.profile.act != null;
   const fit = hasScores && fitInput ? computeFit(student.profile, fitInput) : null; // no fit for grade-based (non-US) colleges
+  if (student.role === "teacher") return null; // teachers have no personal college list
   return (
     <div className="flex flex-col items-end gap-2">
       {!inList && !student.canAdd ? (

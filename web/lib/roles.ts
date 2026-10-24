@@ -16,7 +16,7 @@ export function validateTeacher(i: { displayName: string; school: string }):
 }
 
 /** Pages that only make sense for a student (their own list, profile, résumé…). */
-export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/start", "/pricing"] as const;
+export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing"] as const;
 
 export function isStudentOnlyPath(pathname: string): boolean {
   return STUDENT_ONLY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -34,7 +34,8 @@ export function homePathFor(role: Role | null): string {
  */
 export function redirectFor(role: Role | null | undefined, pathname: string, signedIn: boolean): string | null {
   if (!signedIn || role === undefined) return null;
-  if (role === null) return pathname === "/welcome" ? null : "/welcome";
+  // The AI-connection consent screen is mid-flow elsewhere; don't lose it by detouring through /welcome.
+  if (role === null) return pathname === "/welcome" || pathname.startsWith("/oauth/") ? null : "/welcome";
   if (pathname === "/welcome") return homePathFor(role);
   if (role === "teacher" && isStudentOnlyPath(pathname)) return "/teacher";
   return null;

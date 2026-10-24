@@ -169,7 +169,9 @@ function start() {
     if (user && (event === "INITIAL_SESSION" || event === "SIGNED_IN") && state.auth?.userId !== user.id) {
       void loadRemote(user.id, user.email ?? null);
     } else if (!user && state.auth) {
-      emit({ auth: null, role: undefined, teacherProfile: null, profile: {}, list: [], error: null });
+      // Back to the browser's own copy (empty for former students, whose local data moved into the account),
+      // so a teacher who signs out doesn't overwrite local data they never merged.
+      emit({ auth: null, role: undefined, teacherProfile: null, ...loadLocal(), error: null });
     }
   });
   document.addEventListener("visibilitychange", () => {
@@ -320,6 +322,8 @@ export function useStudent() {
       const { error } = await db().rpc("set_my_role", { p_role: role, p_display_name: teacher?.displayName ?? null, p_school: teacher?.school ?? null });
       if (error) return error.message;
       await loadRemote(a.userId, a.email);
+      // loadRemote reports its own failures; the role is saved either way, so don't send them back to the chooser.
+      if (state.role !== role) emit({ role });
       return null;
     },
     clearError() {

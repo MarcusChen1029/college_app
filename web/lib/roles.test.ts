@@ -40,6 +40,12 @@ test("redirectFor: signed in without a role goes to /welcome", () => {
   assert.equal(redirectFor(null, "/welcome", true), null);
 });
 
+test("redirectFor: the OAuth consent screen is not interrupted for a no-role user, but is student-only", () => {
+  assert.equal(redirectFor(null, "/oauth/consent", true), null);
+  assert.equal(redirectFor("teacher", "/oauth/consent", true), "/teacher");
+  assert.equal(redirectFor("student", "/oauth/consent", true), null);
+});
+
 test("redirectFor: a chosen role leaves /welcome", () => {
   assert.equal(redirectFor("student", "/welcome", true), "/application/list");
   assert.equal(redirectFor("teacher", "/welcome", true), "/teacher");
