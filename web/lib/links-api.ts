@@ -5,6 +5,7 @@
 // which return a CodeResult so the UI can show a student-friendly message.
 
 import { parseCodeResult, type CodeResult } from "./join-codes";
+import { localDate, parseRosterRow, parseStudentDetail, parseUpcomingDeadline, type RosterStudent, type StudentDetail, type UpcomingDeadline } from "./roster";
 import { browserSupabase } from "./supabase-browser";
 
 const db = () => browserSupabase();
@@ -152,4 +153,23 @@ export async function removeStudent(studentId: string): Promise<void> {
 
 export async function removeFromClass(classId: string, studentId: string): Promise<void> {
   check(await db().rpc("teacher_remove_from_class", { p_class: classId, p_student: studentId }));
+}
+
+// ───────── teacher read access (migration 0022) ─────────
+
+/** Every linked student with headline numbers and a minimal college list. Throws if the call fails. */
+export async function teacherRoster(): Promise<RosterStudent[]> {
+  const rows = check(await db().rpc("teacher_roster", { p_today: localDate(new Date()) })) as Record<string, unknown>[];
+  return rows.map(parseRosterRow);
+}
+
+/** Full read-only detail for one linked student; throws "student not found" for anyone not linked. */
+export async function teacherStudent(studentId: string): Promise<StudentDetail> {
+  return parseStudentDetail(check(await db().rpc("teacher_student", { p_student: studentId, p_today: localDate(new Date()) })));
+}
+
+/** Deadlines coming up in the next `days` days (1-365) across all linked students, soonest first. */
+export async function teacherDeadlines(days = 60): Promise<UpcomingDeadline[]> {
+  const rows = check(await db().rpc("teacher_deadlines", { p_days: days, p_today: localDate(new Date()) })) as Record<string, unknown>[];
+  return rows.map(parseUpcomingDeadline);
 }

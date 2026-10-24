@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { GoogleSignIn } from "@/components/AccountPanel";
+import { TeacherAttention } from "@/components/TeacherAttention";
 import { TeacherClasses } from "@/components/TeacherClasses";
 import { useStudent } from "@/lib/student-store";
 
@@ -31,6 +32,7 @@ export function TeacherHome() {
         <h1 className="font-display text-3xl font-bold">Hello{tp ? `, ${tp.displayName}` : ""}</h1>
         {tp?.school && <p className="mt-1 text-zinc-500">{tp.school}</p>}
       </div>
+      <TeacherAttention />
       <TeacherClasses />
       <section id="account" className="space-y-3 rounded-lg border border-zinc-200 p-5">
         <p>

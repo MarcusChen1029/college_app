@@ -60,7 +60,7 @@ test("redirectFor: teachers are kept out of student-only pages, students are not
 
 test("navFor: teachers get no student pages; everyone else gets the student nav", () => {
   assert.equal(navFor("teacher").some(([href]) => href === "/profile"), false);
-  assert.equal(navFor("teacher").some(([href]) => href === "/teacher"), true);
+  assert.deepEqual(navFor("teacher").map(([href]) => href).filter((h) => h.startsWith("/teacher")), ["/teacher", "/teacher/students", "/teacher/deadlines"]);
   assert.deepEqual(navFor(null), navFor("student"));
   assert.deepEqual(navFor(undefined), navFor("student"));
 });

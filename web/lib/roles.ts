@@ -56,6 +56,8 @@ const TEACHER_NAV = [
   ["/colleges", "Colleges"],
   ["/compare", "Compare"],
   ["/teacher", "Dashboard"],
+  ["/teacher/students", "Students"],
+  ["/teacher/deadlines", "Deadlines"],
 ] as const;
 
 export function navFor(role: Role | null | undefined): readonly (readonly [href: string, label: string])[] {
