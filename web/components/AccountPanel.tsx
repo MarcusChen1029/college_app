@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 
@@ -29,12 +30,12 @@ export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
             setBusy(false);
           }
         }}
-        className="flex w-full items-center justify-center gap-3 rounded-full border-2 border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-800 hover:bg-zinc-50 disabled:opacity-60 sm:w-auto"
+        className={`${buttonClass("secondary")} w-full sm:w-auto`}
       >
         <GoogleMark />
         {busy ? "Opening Google…" : "Continue with Google"}
       </button>
-      {error && <p className="text-sm text-rose-600">{error}</p>}
+      {error && <p className="text-sm text-urgent">{error}</p>}
     </>
   );
 }

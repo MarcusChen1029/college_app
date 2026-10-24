@@ -5,6 +5,7 @@ import { GoogleSignIn, OPEN_SETTINGS_EVENT } from "@/components/AccountPanel";
 import { MyCounselors } from "@/components/MyCounselors";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 /** Open/closed state of the settings panel. Opens when the URL hash is #account, or when the nav's Account link asks for it. */
 export function useSettingsOpen() {
@@ -34,7 +35,7 @@ export function SettingsButton({ open, onToggle }: { open: boolean; onToggle: ()
       aria-expanded={open}
       aria-controls={SETTINGS_PANEL_ID}
       onClick={onToggle}
-      className={`flex items-center gap-2 rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-white ${open ? "bg-white" : ""}`}
+      className={buttonClass("secondary", "sm")}
     >
       <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />
@@ -109,11 +110,11 @@ function SignedIn() {
           </p>
         )}
         {student.error && (
-          <p role="alert" className="mt-3 text-sm text-rose-600">
+          <p role="alert" className="mt-3 text-sm text-urgent">
             {student.error}
           </p>
         )}
-        <button className="mt-4 rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-zinc-50" onClick={() => student.signOut()}>
+        <button className={`mt-4 ${buttonClass("secondary", "sm")}`} onClick={() => student.signOut()}>
           Sign out
         </button>
       </div>

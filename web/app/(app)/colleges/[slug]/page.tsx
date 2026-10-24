@@ -3,12 +3,14 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Pill, TierBadge } from "@/components/badges";
 import { CollegeActions } from "@/components/CollegeActions";
+import { DeadlineChip, StatusIcon, StatusPill } from "@/components/StatusPill";
 import { getCollege, getLookups } from "@/lib/data";
 import {
   ADMIT_MODEL,
   ENGLISH_POLICY,
   ENGLISH_STATUS,
   FACTOR,
+  daysUntil,
   fmtDate,
   fmtInt,
   fmtPct,
@@ -22,7 +24,9 @@ import {
   TRANSFER,
 } from "@/lib/format";
 import { estimateGpaPercentiles, GPA_BAND_ORDER } from "@/lib/gpa";
+import { deadlineTone } from "@/lib/status";
 import type { CollegeDetail } from "@/lib/types";
+import { toneClass } from "@/lib/ui";
 
 export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
   return (
@@ -112,7 +116,11 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <div className="mb-3 flex flex-wrap items-center gap-2 text-sm">
             {policy && (
               <>
-                <Pill tone={policy.policy === "required" ? "red" : "blue"}>{TEST_POLICY[policy.policy] ?? policy.policy}</Pill>
+                {policy.policy === "required" ? (
+                  <StatusPill tone="soon">{TEST_POLICY[policy.policy] ?? policy.policy}</StatusPill>
+                ) : (
+                  <Pill tone="blue">{TEST_POLICY[policy.policy] ?? policy.policy}</Pill>
+                )}
                 <span className="text-zinc-500">
                   for {policy.cycle} applicants
                   <Ref n={ref(policy.source_id)} />
@@ -219,7 +227,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                     {p.ucas_code && <Pill>{p.ucas_code}</Pill>}
                     {p.award && <span className="text-xs text-zinc-500">{p.award}</span>}
                     {p.duration_years != null && <span className="text-xs text-zinc-500">{p.duration_years} years</span>}
-                    {p.application_deadline && <Pill tone="red">Apply by {fmtDate(p.application_deadline)}</Pill>}
+                    {p.application_deadline && <DeadlineChip date={p.application_deadline} days={daysUntil(p.application_deadline)} done={false} />}
                   </div>
                   <dl className="mt-2 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
                     <Row k="A-levels" v={p.a_level_offer ?? "—"} />
@@ -258,12 +266,14 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <ol className="relative space-y-3 border-l border-zinc-200 pl-5 dark:border-zinc-800">
             {deadlines.map((d) => (
               <li key={d.id} className="text-sm">
-                <span className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border-2 border-white bg-blue-600 dark:border-zinc-950" />
+                <span className={`absolute -left-[9px] mt-1 rounded-full p-0.5 ${toneClass(d.due_date ? deadlineTone(daysUntil(d.due_date), false) : "neutral")}`}>
+                  <StatusIcon tone={d.due_date ? deadlineTone(daysUntil(d.due_date), false) : "neutral"} />
+                </span>
                 <div className="flex flex-wrap items-baseline gap-x-3">
                   <span className="w-28 font-medium tabular-nums">{fmtDate(d.due_date)}</span>
                   <span className="font-medium">{d.label ?? planLabel(d.plan_key)}</span>
                   {d.plan_key && d.label && <Pill>{d.plan_key}</Pill>}
-                  {d.kind !== "application" && <Pill tone="green">{d.kind.replace("_", " ")}</Pill>}
+                  {d.kind !== "application" && <StatusPill tone="neutral">{d.kind.replace("_", " ")}</StatusPill>}
                   <Ref n={ref(d.source_id)} />
                 </div>
                 {(d.notification_date || d.notification_note) && (

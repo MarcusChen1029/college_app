@@ -5,6 +5,7 @@ import { useState, useSyncExternalStore } from "react";
 import { GoogleSignIn } from "@/components/AccountPanel";
 import { homePathFor, validateTeacher } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const choice = "rounded-2xl border-2 border-zinc-200 p-5 text-left hover:border-blue-500 hover:bg-blue-50 disabled:opacity-60";
@@ -76,12 +77,12 @@ export function WelcomeForm() {
             School <span className="font-normal text-zinc-500">(optional)</span>
             <input value={school} onChange={(e) => setSchool(e.target.value)} className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2" placeholder="Lincoln High School" />
           </label>
-          <button type="submit" disabled={busy} className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60">
+          <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
             {busy ? "Saving…" : "Continue as teacher"}
           </button>
         </form>
       )}
-      {error && <p className="text-sm text-rose-600">{error}</p>}
+      {error && <p className="text-sm text-urgent">{error}</p>}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { buildContextPack, type PackCollege } from "@/lib/ai-context";
 import type { StudentProfile } from "@/lib/fit";
 import type { Plan } from "@/lib/plans";
 import type { CollegeDetail, Deadline, Lookups } from "@/lib/types";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { Modal } from "./Modal";
 
 type Details = Record<string, CollegeDetail | null>;
@@ -91,7 +92,7 @@ function Dialog({
           notes are never included.
         </p>
         {full ? (
-          <p className="rounded-md bg-emerald-50 p-2 text-xs text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
+          <p className={`rounded-md border p-2 text-xs ${toneClass("done")}`}>
             Full version ({plan.name} plan): each college&apos;s deadlines, English minimums, essays, cost and aid, how majors are admitted, your
             activities and a numbered source link for every number.
           </p>
@@ -106,7 +107,7 @@ function Dialog({
           </p>
         )}
         {load?.state === "error" && (
-          <p className="rounded-md bg-amber-50 p-2 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">
+          <p className={`rounded-md border p-2 text-xs ${toneClass("soon")}`}>
             Couldn&apos;t load college details ({load.message}). The text below has the summary only for now.
           </p>
         )}
@@ -122,11 +123,11 @@ function Dialog({
           />
         )}
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50" disabled={!text} onClick={copy}>
+          <button className={buttonClass("primary", "sm")} disabled={!text} onClick={copy}>
             Copy to clipboard
           </button>
           <button
-            className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:hover:bg-zinc-900"
+            className={buttonClass("secondary", "sm")}
             disabled={!text}
             onClick={download}
           >
@@ -148,7 +149,7 @@ export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClo
   return (
     <>
       <button
-        className="rounded-md border border-zinc-300 bg-white px-2.5 py-1 text-xs font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+        className={buttonClass("secondary", "sm")}
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
       >

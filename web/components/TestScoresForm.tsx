@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishTestKey, type ScoreScale, type SectionScores } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const field = "w-24 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
@@ -100,7 +101,7 @@ export function EnglishEditor() {
           <div key={key} className="rounded-2xl border border-zinc-200 p-3">
             <div className="mb-2 flex items-center justify-between gap-2">
               <span className="font-medium">{scale.label}</span>
-              <button type="button" className="text-xs text-rose-600 hover:underline" onClick={() => setEnglish(key, null)}>
+              <button type="button" className={buttonClass("danger", "sm")} onClick={() => setEnglish(key, null)}>
                 Remove
               </button>
             </div>
@@ -133,7 +134,7 @@ export function EnglishEditor() {
           <button
             type="button"
             disabled={!pick}
-            className="rounded-md bg-blue-600 px-3 py-1 font-medium text-white hover:bg-blue-700 disabled:opacity-40"
+            className={buttonClass("primary", "sm")}
             onClick={() => {
               if (pick) setEnglish(pick, {});
               setPick("");

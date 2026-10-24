@@ -7,6 +7,7 @@ import type { OAuthAuthorizationDetails } from "@supabase/supabase-js";
 import { AI_CAN, AI_CANNOT, isAuthorizationId, redirectHost } from "@/lib/connect-ai";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { GoogleSignIn } from "./AccountPanel";
 
 const noop = () => () => {};
@@ -84,7 +85,7 @@ export function OAuthConsent() {
     return (
       <div className={card}>
         <h1 className="font-display text-2xl font-bold">Couldn&apos;t load this request</h1>
-        <p className="text-sm text-rose-600">{load.message}</p>
+        <p className="text-sm text-urgent">{load.message}</p>
         <p className="text-sm text-zinc-600">The request may have expired. Go back to your AI and start the connection again.</p>
       </div>
     );
@@ -100,7 +101,7 @@ export function OAuthConsent() {
       <p className="text-sm text-zinc-600">
         Signed in as <span className="font-medium">{student.auth.email}</span>. If you approve, {client.name} can use your tracker data until you disconnect it on the Connect AI page.
       </p>
-      <div className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+      <div className={`rounded-lg border p-3 text-sm ${toneClass("soon")}`}>
         <p>
           After you allow, you&apos;ll be sent back to: <strong className="break-all text-base">{host ?? redirect_uri}</strong>
         </p>
@@ -113,7 +114,7 @@ export function OAuthConsent() {
           <ul className="mt-1 space-y-1.5">
             {AI_CAN.map((t) => (
               <li key={t} className="flex gap-2">
-                <span className="text-emerald-600">✓</span>
+                <span className="text-done">✓</span>
                 {t}
               </li>
             ))}
@@ -124,7 +125,7 @@ export function OAuthConsent() {
           <ul className="mt-1 space-y-1.5">
             {AI_CANNOT.map((t) => (
               <li key={t} className="flex gap-2">
-                <span className="text-rose-600">✕</span>
+                <span className="text-urgent">✕</span>
                 {t}
               </li>
             ))}
@@ -132,7 +133,7 @@ export function OAuthConsent() {
         </div>
       </div>
       {!senior && (
-        <p className="rounded-md bg-amber-50 p-3 text-sm text-amber-800">
+        <p className={`rounded-md border p-3 text-sm ${toneClass("soon")}`}>
           Connect AI is a Senior plan feature and you&apos;re on the {student.plan.name} plan.{" "}
           <Link href="/pricing" className="font-semibold underline">
             Upgrade
@@ -142,14 +143,14 @@ export function OAuthConsent() {
       )}
       <div className="flex flex-wrap gap-3">
         <button
-          className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+          className={buttonClass("primary")}
           disabled={!senior || busy != null}
           onClick={() => decide(true)}
         >
           {busy === "approve" ? "Approving…" : "Approve"}
         </button>
         <button
-          className="rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-semibold hover:bg-zinc-50 disabled:opacity-50"
+          className={buttonClass("secondary")}
           disabled={busy != null}
           onClick={() => decide(false)}
         >

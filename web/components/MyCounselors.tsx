@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { codeErrorMessage, isPlausibleCode, normalizeCode, type CodePreview } from "@/lib/join-codes";
 import { leaveTeacher, myTeachers, previewCode, redeemCode, setShareEssays, type MyTeacher } from "@/lib/links-api";
+import { buttonClass } from "@/lib/ui";
 
-const btn = "rounded-md border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-50 disabled:opacity-60";
+const btn = buttonClass("secondary", "sm");
 const errMsg = (e: unknown) => (e instanceof Error ? e.message : "Something went wrong. Please try again.");
 
 /** Student view: linked teachers (essay sharing, leave) and a "join with a code" flow with a confirm step. */
@@ -98,7 +99,7 @@ export function MyCounselors() {
     <div className="space-y-5 rounded-lg border border-zinc-200 p-5">
       <h3 className="font-display text-lg font-bold">My counselors and teachers</h3>
       {listError && (
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {listError}
         </p>
       )}
@@ -125,7 +126,7 @@ export function MyCounselors() {
                       .join(" · ")}
                   </p>
                 </div>
-                <button type="button" disabled={busy} className={btn} aria-label={`Leave ${t.displayName}`} onClick={() => void leave(t)}>
+                <button type="button" disabled={busy} className={buttonClass("danger", "sm")} aria-label={`Leave ${t.displayName}`} onClick={() => void leave(t)}>
                   Leave
                 </button>
               </div>
@@ -150,12 +151,12 @@ export function MyCounselors() {
             placeholder="XXXX-XXXX"
           />
         </label>
-        <button type="submit" disabled={busy || code.trim() === ""} className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60">
+        <button type="submit" disabled={busy || code.trim() === ""} className={buttonClass("primary", "sm")}>
           Check code
         </button>
       </form>
       {joinError && (
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {joinError}
         </p>
       )}
@@ -178,7 +179,7 @@ export function MyCounselors() {
             never see your portal logins or private notes.
           </p>
           <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={busy} className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60" onClick={() => void join()}>
+            <button type="button" disabled={busy} className={buttonClass("primary", "sm")} onClick={() => void join()}>
               Confirm and join
             </button>
             <button type="button" disabled={busy} className={btn} onClick={() => setPreview(null)}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { buttonClass } from "@/lib/ui";
 
 export default function Error({ error, retry }: { error: unknown; retry: () => void }) {
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function Error({ error, retry }: { error: unknown; retry: () => v
       <button
         type="button"
         onClick={() => retry()}
-        className="mt-4 rounded border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+        className={`mt-4 ${buttonClass("secondary", "sm")}`}
       >
         Try again
       </button>

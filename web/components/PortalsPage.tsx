@@ -23,6 +23,7 @@ import {
 import { activeRegions, regionLabel, type RegionCode } from "@/lib/regions";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { buttonClass, toneClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const input = "min-w-0 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
@@ -163,7 +164,7 @@ function LoginRow({
               </div>
             </div>
             {onRemove && (
-              <button type="button" className="text-xs text-zinc-500 hover:text-rose-600" onClick={onRemove}>
+              <button type="button" className={buttonClass("danger", "sm")} onClick={onRemove}>
                 Remove
               </button>
             )}
@@ -380,7 +381,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
 
   return (
     <div className="space-y-6">
-      <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900">
+      <p className={`rounded-lg border px-3 py-2 text-xs ${toneClass("soon")}`}>
         {student.auth ? "Saved to your account" : "Saved in this browser only"} without extra encryption. Use passwords you don&apos;t use anywhere else.
         {" · "}
         {(() => {

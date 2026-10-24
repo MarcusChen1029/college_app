@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { homePathFor, roleChangeMessage, validateTeacher } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
-const btn = "rounded-md border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-50 disabled:opacity-60";
+const btn = buttonClass("secondary", "sm");
 const field = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2";
 
 /** Account page control to switch between a student and a teacher/counselor account. Shown only to signed-in users with a role. */
@@ -62,7 +63,7 @@ export function RoleSwitcher() {
                 <input value={school} onChange={(e) => setSchool(e.target.value)} className={field} placeholder="Lincoln High School" />
               </label>
               <div className="flex flex-wrap gap-2">
-                <button type="submit" disabled={busy} className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60">
+                <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
                   {busy ? "Switching…" : "Switch to teacher"}
                 </button>
                 <button type="button" disabled={busy} className={btn} onClick={() => setOpen(false)}>
@@ -88,7 +89,7 @@ export function RoleSwitcher() {
         </>
       )}
       {error && (
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {error}
         </p>
       )}

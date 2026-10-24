@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { AccountLink } from "@/components/AccountPanel";
 import { activeNavHref, navFor, type Role } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 function NavLinks({ role, pathname }: { role: Role | null | undefined; pathname: string | null }) {
   const items = navFor(role);
@@ -46,7 +47,7 @@ export function SiteNav() {
       <span className="ml-auto flex items-center gap-4">
         <AccountLink />
         {role !== "teacher" && (
-          <Link href="/start" className="rounded-full bg-ink px-4 py-1.5 text-white hover:bg-blue-700">
+          <Link href="/start" className={buttonClass("primary", "sm")}>
             Get started
           </Link>
         )}

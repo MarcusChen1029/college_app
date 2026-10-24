@@ -6,11 +6,12 @@ import type { OAuthGrant } from "@supabase/supabase-js";
 import { AI_CAN, AI_CANNOT, AI_EXAMPLES, MCP_PATH } from "@/lib/connect-ai";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
+import { buttonClass } from "@/lib/ui";
 import { GoogleSignIn } from "./AccountPanel";
 
 const noop = () => () => {};
 const card = "rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800";
-const button = "rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50";
+const button = buttonClass("primary", "sm");
 
 export function ConnectAi() {
   const student = useStudent();
@@ -43,7 +44,7 @@ export function ConnectAi() {
           <ul className="mt-2 space-y-2 text-sm">
             {AI_CAN.map((t) => (
               <li key={t} className="flex gap-2">
-                <span className="text-emerald-600">✓</span>
+                <span className="text-done">✓</span>
                 {t}
               </li>
             ))}
@@ -54,7 +55,7 @@ export function ConnectAi() {
           <ul className="mt-2 space-y-2 text-sm">
             {AI_CANNOT.map((t) => (
               <li key={t} className="flex gap-2">
-                <span className="text-rose-600">✕</span>
+                <span className="text-urgent">✕</span>
                 {t}
               </li>
             ))}
@@ -74,7 +75,7 @@ export function ConnectAi() {
         <section className={`${card} space-y-3 border-blue-200 bg-blue-50/50`}>
           <h2 className="font-semibold">Connect AI is a Senior plan feature</h2>
           <p className="text-sm text-zinc-600">You&apos;re on the {student.plan.name} plan. Switch to Senior to connect ChatGPT or Claude.</p>
-          <Link href="/pricing" className={`${button} inline-block`}>
+          <Link href="/pricing" className={button}>
             See plans
           </Link>
         </section>
@@ -189,7 +190,7 @@ function Connected() {
               <span className="font-medium">{g.client.name}</span>
               <span className="text-xs text-zinc-500">connected {new Date(g.granted_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
               <button
-                className="ml-auto rounded-md border border-zinc-300 px-3 py-1 text-xs font-medium hover:bg-zinc-50 disabled:opacity-50"
+                className={`ml-auto ${buttonClass("danger", "sm")}`}
                 disabled={busy === g.client.id}
                 onClick={() => disconnect(g)}
               >
@@ -199,7 +200,7 @@ function Connected() {
           ))}
         </ul>
       )}
-      {error && <p className="text-sm text-rose-600">{error}</p>}
+      {error && <p className="text-sm text-urgent">{error}</p>}
     </section>
   );
 }
