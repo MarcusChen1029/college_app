@@ -2,52 +2,12 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
-import { MyCounselors } from "@/components/MyCounselors";
-import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
 
-export function AccountPanel() {
-  const student = useStudent();
-  const mounted = useSyncExternalStore(noop, () => true, () => false);
-
-  if (!mounted || !student.ready) return <div className="h-40 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />;
-
-  if (student.auth) {
-    return (
-      <>
-        <div className="space-y-4 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
-          <p>
-            Signed in as <span className="font-medium">{student.auth.email}</span>.
-          </p>
-          <p className="text-sm text-zinc-500">
-            Your scores and college list are saved to your account{student.syncing ? " (syncing…)" : ""}. Anything you had saved in this
-            browser before signing in was added to it.
-          </p>
-          {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
-          <div className="flex gap-3">
-            <Link href="/application/list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
-              Go to my list
-            </Link>
-            <button className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm dark:border-zinc-700" onClick={() => student.signOut()}>
-              Sign out
-            </button>
-          </div>
-        </div>
-        {student.role === "student" && <MyCounselors />}
-        <RoleSwitcher />
-      </>
-    );
-  }
-
-  return (
-    <div className="space-y-3 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
-      <GoogleSignIn />
-      <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
-    </div>
-  );
-}
+/** Fired by the nav's Account link so the settings panel opens when you are already on the page (a same-page link emits no hashchange). */
+export const OPEN_SETTINGS_EVENT = "open-settings";
 
 /** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). */
 export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
@@ -127,7 +87,11 @@ export function AccountLink() {
   const cls = "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
   if (!mounted || !student.ready) return <span className="w-14" />;
   return (
-    <Link href={student.role === "teacher" ? "/teacher#account" : "/profile#account"} className={cls}>
+    <Link
+      href={student.role === "teacher" ? "/teacher#account" : "/profile#account"}
+      className={cls}
+      onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
+    >
       {student.auth ? "Account" : "Sign in"}
     </Link>
   );
