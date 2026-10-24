@@ -6,6 +6,7 @@ import { computeFit } from "@/lib/fit";
 import { fmtDate, fmtPct, INTL_AID, TEST_POLICY } from "@/lib/format";
 import { useStudent } from "@/lib/student-store";
 import { BASE_TIERS, TIER_ORDER, tierRank } from "@/lib/tiers";
+import { buttonClass } from "@/lib/ui";
 import type { CollegeSummary, Lookups, TierCode } from "@/lib/types";
 import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
@@ -189,7 +190,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                       </Link>
                     ) : (
                     <button
-                      className={`rounded-md px-2 py-1 text-xs font-medium ${inList ? "bg-zinc-100 text-zinc-600" : "bg-blue-600 text-white hover:bg-blue-700"}`}
+                      className={buttonClass(inList ? "secondary" : "primary", "sm")}
                       onClick={() => (inList ? student.remove(c.slug) : student.add(c))}
                     >
                       {inList ? "✓ In list" : "+ My list"}

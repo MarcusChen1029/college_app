@@ -4,6 +4,7 @@ import { TierBadge } from "@/components/badges";
 import { Calendar, GradCap, PaperPlane, Pencil, Scribble, Squiggle, Star, Wave } from "@/components/Doodles";
 import { getSummaries } from "@/lib/data";
 import { fmtPct } from "@/lib/format";
+import { buttonClass } from "@/lib/ui";
 
 const STEPS = [
   {
@@ -78,7 +79,7 @@ export default function Home() {
             <Link href="/colleges" className="rounded-full border-2 border-blue-200 px-5 py-2.5 text-sm font-semibold hover:bg-blue-50">
               Browse colleges
             </Link>
-            <Link href="/start" className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700">
+            <Link href="/start" className={buttonClass("primary")}>
               Get started now
             </Link>
           </div>

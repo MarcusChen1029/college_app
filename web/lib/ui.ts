@@ -49,5 +49,6 @@ const BUTTON_VARIANT = {
   quiet: "text-blue-700 hover:underline underline-offset-4",
   danger: "border-2 border-urgent bg-white text-urgent hover:bg-urgent-bg",
 } as const;
-export const buttonClass = (variant: keyof typeof BUTTON_VARIANT, size: keyof typeof BUTTON_SIZE = "md"): string =>
-  `${BUTTON_BASE} ${BUTTON_SIZE[size]} ${BUTTON_VARIANT[variant]}`;
+const SECONDARY_ACTIVE = "border-2 border-ink bg-zinc-100 text-ink hover:bg-zinc-50";
+export const buttonClass = (variant: keyof typeof BUTTON_VARIANT, size: keyof typeof BUTTON_SIZE = "md", active = false): string =>
+  `${BUTTON_BASE} ${BUTTON_SIZE[size]} ${active && variant === "secondary" ? SECONDARY_ACTIVE : BUTTON_VARIANT[variant]}`;

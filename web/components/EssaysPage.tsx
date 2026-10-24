@@ -7,7 +7,7 @@ import { docTitle } from "@/lib/google-doc-title";
 import { PS_PROMPTS, PS_WORDS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, UC_WORDS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { essayTone } from "@/lib/status";
-import { toneClass } from "@/lib/ui";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { browserSupabase } from "@/lib/supabase-browser";
 import type { CollegeSummary } from "@/lib/types";
 
@@ -143,7 +143,7 @@ function EssayRow({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white hover:bg-blue-700"
+              className={buttonClass("primary", "sm")}
             >
               Open Google Doc ↗
             </a>
@@ -165,7 +165,7 @@ function EssayRow({
               <button
                 type="button"
                 disabled={creating}
-                className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-60"
+                className={buttonClass("primary", "sm")}
                 title="Creates a Google Doc in your Drive, links it to this essay and opens it."
                 onClick={createDoc}
               >
@@ -176,7 +176,7 @@ function EssayRow({
                 href={NEW_DOC_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white hover:bg-blue-700"
+                className={buttonClass("primary", "sm")}
                 title="Opens a blank Google Doc in a new tab. Copy its link and press Paste link."
               >
                 + New Google Doc ↗

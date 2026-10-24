@@ -277,7 +277,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     const mine = custom.filter((p) => (p.region ?? "ANY") === region);
     const menu = (
       <select
-        className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+        className={buttonClass("primary", "sm")}
         value=""
         aria-label={`Add a portal${region === "ANY" ? "" : ` for ${regionLabel(region)}`}`}
         onChange={(e) => {

@@ -5,6 +5,7 @@ import { useState, useSyncExternalStore, type ReactNode } from "react";
 import { cleanRegions, regionLabel } from "@/lib/regions";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 import { GpaEditor } from "./ProfileForm";
 import { RegionsEditor } from "./ProfileCards";
 import { ActEditor, EnglishEditor, SatEditor } from "./TestScoresForm";
@@ -96,7 +97,7 @@ export function StartWizard() {
                 student.updateProfile({ international: from ?? false });
                 go(1);
               }}
-              className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-40"
+              className={buttonClass("primary")}
             >
               Next
             </button>
@@ -115,7 +116,7 @@ export function StartWizard() {
             <button type="button" onClick={() => go(0)} className="text-sm font-semibold text-zinc-600 hover:text-blue-600">
               Back
             </button>
-            <button type="button" onClick={() => go(2)} className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+            <button type="button" onClick={() => go(2)} className={buttonClass("primary")}>
               Next
             </button>
           </div>
@@ -144,7 +145,7 @@ export function StartWizard() {
             <button type="button" onClick={() => go(1)} className="text-sm font-semibold text-zinc-600 hover:text-blue-600">
               Back
             </button>
-            <button type="button" onClick={() => go(3)} className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+            <button type="button" onClick={() => go(3)} className={buttonClass("primary")}>
               Next
             </button>
           </div>
@@ -185,7 +186,7 @@ export function StartWizard() {
                   Save, then sign in
                 </button>
               )}
-              <button type="button" onClick={() => finish()} className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+              <button type="button" onClick={() => finish()} className={buttonClass("primary")}>
                 See my colleges
               </button>
             </div>

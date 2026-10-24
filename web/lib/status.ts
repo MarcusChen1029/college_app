@@ -15,6 +15,9 @@ export function deadlineTone(days: number, done: boolean): Tone {
   return "neutral";
 }
 
+/** College reference pages are not the viewer's own application: a past date is just "passed". */
+export const referenceTone = (days: number): Tone => (days < 0 ? "neutral" : deadlineTone(days, false));
+
 /** Callers label the done case themselves. */
 export function deadlineText(days: number): string {
   if (days < 0) return "overdue";
@@ -47,7 +50,7 @@ const ESSAY: Record<Essay["status"], Tone> = {
 export const essayTone = (s: Essay["status"]): Tone => ESSAY[s];
 
 const FLAG: Record<FlagKey, Tone> = {
-  deadline_soon: "urgent",
+  deadline_soon: "soon",
   essay_not_started: "soon",
   no_scores: "soon",
   no_colleges: "soon",

@@ -1,5 +1,5 @@
 import { fmtDate } from "@/lib/format";
-import { deadlineText, deadlineTone, type Tone } from "@/lib/status";
+import { deadlineText, deadlineTone, referenceTone, type Tone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 
 export function StatusIcon({ tone }: { tone: Tone }) {
@@ -58,15 +58,23 @@ export function DeadlineChip({
   days,
   done,
   doneLabel = "Done",
+  reference = false,
+  label,
 }: {
   date: string;
   days: number;
   done: boolean;
   doneLabel?: string;
+  /** Reference pages: a past date reads "passed" in neutral, not overdue. */
+  reference?: boolean;
+  label?: string;
 }) {
+  const tone = reference ? referenceTone(days) : deadlineTone(days, done);
+  const text = done ? doneLabel : reference && days < 0 ? "passed" : deadlineText(days);
   return (
-    <StatusPill tone={deadlineTone(days, done)}>
-      {fmtDate(date)} · {done ? doneLabel : deadlineText(days)}
+    <StatusPill tone={tone}>
+      {label ? `${label} ` : ""}
+      {fmtDate(date)} · {text}
     </StatusPill>
   );
 }

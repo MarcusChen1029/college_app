@@ -244,7 +244,7 @@ function DetailCard({
             aria-label={student.isInterested(college.slug) ? "Remove from Interested" : "Add to Interested"}
             aria-pressed={student.isInterested(college.slug)}
             title={student.isInterested(college.slug) ? "On your Interested page. Click to remove." : "Keep it on your Interested page while you decide"}
-            className={`px-3 ${buttonClass("secondary").replace("bg-white", student.isInterested(college.slug) ? "bg-zinc-100" : "bg-white")}`}
+            className={buttonClass("secondary", "md", student.isInterested(college.slug))}
           >
             {student.isInterested(college.slug) ? "★" : "☆"}
           </button>

@@ -338,7 +338,7 @@ export function MyList({
               return (
                 <li key={d.id} className="rounded-md border border-zinc-200 p-2">
                   <div>
-                    <DeadlineChip date={d.due_date!} days={days} done={isDeadlineDone(d.kind, entry.status, entry.checklist)} />
+                    <DeadlineChip date={d.due_date!} days={days} done={isDeadlineDone(d.kind, entry.status)} />
                   </div>
                   <div>
                     {college.short_name ?? college.name} — {d.label ?? plans.find((p) => p.key === d.plan_key)?.label ?? d.kind}

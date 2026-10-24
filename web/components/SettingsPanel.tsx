@@ -35,7 +35,7 @@ export function SettingsButton({ open, onToggle }: { open: boolean; onToggle: ()
       aria-expanded={open}
       aria-controls={SETTINGS_PANEL_ID}
       onClick={onToggle}
-      className={buttonClass("secondary").replace("bg-white", open ? "bg-zinc-100" : "bg-white")}
+      className={buttonClass("secondary", "md", open)}
     >
       <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />

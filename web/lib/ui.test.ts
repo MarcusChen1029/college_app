@@ -27,4 +27,8 @@ test("buttonClass", () => {
   const d = buttonClass("danger", "sm");
   assert.match(d, /h-9/);
   assert.match(d, /text-urgent/);
+  assert.match(buttonClass("secondary"), /bg-white/);
+  const a = buttonClass("secondary", "md", true);
+  assert.match(a, /bg-zinc-100/);
+  assert.doesNotMatch(a, /bg-white/);
 });

@@ -4,9 +4,10 @@ import { useCallback, useEffect, useId, useState } from "react";
 import { btn } from "@/components/TeacherClassCard";
 import { addNote, deleteNote, listNotes, NOTE_MAX, updateNote, type TeacherNote } from "@/lib/links-api";
 import { noteDate, noteEdited, noteErrorMessage, noteSaveable } from "@/lib/notes-view";
+import { buttonClass } from "@/lib/ui";
 
 const area = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm";
-const primary = "rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60";
+const primary = buttonClass("primary", "sm");
 
 type Run = (fn: () => Promise<unknown>) => Promise<boolean>;
 

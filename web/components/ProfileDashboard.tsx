@@ -50,7 +50,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
         label: d.label ?? d.kind,
         college: college.short_name ?? college.name,
         slug: college.slug,
-        done: isDeadlineDone(d.kind, entry.status, entry.checklist),
+        done: isDeadlineDone(d.kind, entry.status),
       })),
   );
   const now = new Date();

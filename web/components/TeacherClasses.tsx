@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { btn, ClassCard, CodeBox } from "@/components/TeacherClassCard";
+import { buttonClass } from "@/lib/ui";
 import {
   createClass,
   listStudents,
@@ -127,7 +128,7 @@ export function TeacherClasses() {
             School year <span className="font-normal text-zinc-500">(optional)</span>
             <input value={year} onChange={(e) => setYear(e.target.value)} className={input} placeholder="2026-27" />
           </label>
-          <button type="submit" disabled={busy} className="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60">
+          <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
             Create class
           </button>
         </form>

@@ -27,9 +27,7 @@ test("decisions vs waiting", () => {
 });
 
 test("only application deadlines can be done", () => {
-  assert.equal(isDeadlineDone("application", "submitted", {}), true);
-  assert.equal(isDeadlineDone("application", "in_progress", complete), true);
-  assert.equal(isDeadlineDone("application", "in_progress", {}), false);
-  assert.equal(isDeadlineDone("financial_aid", "submitted", {}), false);
-  assert.equal(isDeadlineDone("financial_aid", "in_progress", complete), false);
+  assert.equal(isDeadlineDone("application", "submitted"), true);
+  assert.equal(isDeadlineDone("application", "in_progress"), false);
+  assert.equal(isDeadlineDone("financial_aid", "submitted"), false);
 });

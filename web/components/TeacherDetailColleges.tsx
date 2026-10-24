@@ -59,7 +59,7 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
               const days = daysUntil(d.dueDate, now);
               return (
                 <li key={`${d.kind}-${d.dueDate}-${d.label}`} className="flex flex-wrap items-center gap-2">
-                  <DeadlineChip date={d.dueDate} days={days} done={isDeadlineDone(d.kind, c.status as Status, c.checklist)} />
+                  <DeadlineChip date={d.dueDate} days={days} done={isDeadlineDone(d.kind, c.status as Status)} />
                   <span>
                     {d.label}
                     {d.plan ? ` (${d.plan})` : ""}
