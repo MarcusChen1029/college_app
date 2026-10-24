@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
@@ -81,7 +81,7 @@ function GoogleMark() {
   );
 }
 
-/** Top-right nav entry: the username (opens the profile page) when signed in, "Sign in" otherwise. */
+/** Top-right nav entry: "Sign in" when signed out, otherwise the username menu. */
 export function AccountLink() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -94,10 +94,80 @@ export function AccountLink() {
       </Link>
     );
   }
-  const name = student.teacherProfile?.displayName ?? student.auth.email?.split("@")[0] ?? "Account";
+  return <AccountMenu />;
+}
+
+/** The signed-in username with a drop-down: Profile (Dashboard for teachers), Settings, Help, Sign out. */
+function AccountMenu() {
+  const student = useStudent();
+  const [open, setOpen] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+  const teacher = student.role === "teacher";
+  const home = teacher ? "/teacher" : "/profile";
+  const name = student.teacherProfile?.displayName ?? student.auth?.email?.split("@")[0] ?? "Account";
+
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: MouseEvent) => {
+      if (!box.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", away);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", away);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [open]);
+
+  const item = "block w-full rounded-lg px-3 py-2 text-left text-sm text-zinc-700 hover:bg-zinc-100";
   return (
-    <Link href={student.role === "teacher" ? "/teacher" : "/profile"} className={cls} title={student.auth.email ?? undefined}>
-      {name}
-    </Link>
+    <div ref={box} className="relative">
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        title={student.auth?.email ?? undefined}
+        onClick={() => setOpen((o) => !o)}
+        className="flex max-w-40 items-center gap-1 font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+      >
+        <span className="truncate">{name}</span>
+        <span aria-hidden className="text-xs">
+          ▾
+        </span>
+      </button>
+      {open && (
+        <div role="menu" className="absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
+          <Link role="menuitem" href={home} className={item} onClick={() => setOpen(false)}>
+            {teacher ? "Dashboard" : "Profile"}
+          </Link>
+          <Link
+            role="menuitem"
+            href={`${home}#account`}
+            className={item}
+            onClick={() => {
+              setOpen(false);
+              window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT));
+            }}
+          >
+            Settings
+          </Link>
+          <Link role="menuitem" href="/help" className={item} onClick={() => setOpen(false)}>
+            Help
+          </Link>
+          <button
+            type="button"
+            role="menuitem"
+            className={`${item} border-t border-zinc-100`}
+            onClick={() => {
+              setOpen(false);
+              void student.signOut();
+            }}
+          >
+            Sign out
+          </button>
+        </div>
+      )}
+    </div>
   );
 }

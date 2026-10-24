@@ -1,10 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { GoogleSignIn } from "@/components/AccountPanel";
 import { TeacherAttention } from "@/components/TeacherAttention";
 import { SettingsButton, SettingsPanel, useSettingsOpen } from "@/components/SettingsPanel";
-import { TeacherClasses } from "@/components/TeacherClasses";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
@@ -39,7 +39,13 @@ export function TeacherHome() {
       </div>
       <SettingsPanel open={settingsOpen} />
       <TeacherAttention />
-      <TeacherClasses />
+      <p className="text-sm text-zinc-600">
+        Manage your classes, join codes and one-on-one students on the{" "}
+        <Link href="/teacher/classes" className="font-semibold text-blue-700 underline underline-offset-4">
+          Classes
+        </Link>{" "}
+        page.
+      </p>
     </div>
   );
 }

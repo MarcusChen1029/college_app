@@ -55,6 +55,7 @@ const TEACHER_NAV = [
   ["/colleges", "Colleges"],
   ["/compare", "Compare"],
   ["/teacher", "Dashboard"],
+  ["/teacher/classes", "Classes"],
   ["/teacher/students", "Students"],
   ["/teacher/deadlines", "Deadlines"],
 ] as const;
