@@ -8,6 +8,7 @@ import { useSyncExternalStore } from "react";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
+import { parseRole, type Role } from "./roles";
 import {
   COLLEGE_COLUMNS,
   fromEntry,
@@ -38,11 +39,22 @@ export { CHECKLIST, type Checklist, type ChecklistKey } from "./checklist";
 export type CollegeRef = { slug: string; id: string };
 
 type Auth = { userId: string; email: string | null } | null;
-type State = { profile: StudentProfile; list: ListEntry[]; auth: Auth; ready: boolean; syncing: boolean; error: string | null };
+export type TeacherProfile = { displayName: string; school: string | null };
+// role: undefined while loading or signed out; null when signed in but no role chosen yet (/welcome).
+type State = {
+  profile: StudentProfile;
+  list: ListEntry[];
+  auth: Auth;
+  role: Role | null | undefined;
+  teacherProfile: TeacherProfile | null;
+  ready: boolean;
+  syncing: boolean;
+  error: string | null;
+};
 
 const KEY = "college-tracker:v1";
 const EMPTY_PORTAL: Portal = { url: "", username: "", password: "" };
-const EMPTY: State = { profile: {}, list: [], auth: null, ready: false, syncing: false, error: null };
+const EMPTY: State = { profile: {}, list: [], auth: null, role: undefined, teacherProfile: null, ready: false, syncing: false, error: null };
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
 let started = false;
@@ -86,6 +98,21 @@ async function loadRemote(userId: string, email: string | null) {
   const db = browserSupabase();
   emit({ syncing: true, error: null });
   try {
+    // Role first: only students have a profile and list, and only a student sign-in may absorb the local copy.
+    const r = await db.from("user_roles").select("role").eq("user_id", userId).maybeSingle();
+    if (r.error) throw r.error;
+    const role = parseRole(r.data?.role);
+    if (role !== "student") {
+      let teacherProfile: TeacherProfile | null = null;
+      if (role === "teacher") {
+        const t = await db.from("teacher_profiles").select("display_name, school").eq("user_id", userId).maybeSingle();
+        if (t.error) throw t.error;
+        if (t.data) teacherProfile = { displayName: t.data.display_name, school: t.data.school };
+      }
+      lastLoad = Date.now();
+      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], ready: true, syncing: false });
+      return;
+    }
     const local = loadLocal();
     const [p, l] = await Promise.all([
       db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
@@ -114,7 +141,7 @@ async function loadRemote(userId: string, email: string | null) {
     }
     clearLocal();
     lastLoad = Date.now();
-    emit({ auth: { userId, email }, profile: profile ?? {}, list, ready: true, syncing: false });
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, ready: true, syncing: false });
   } catch (e) {
     lastLoad = Date.now();
     emit({ auth: { userId, email }, ready: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
@@ -142,7 +169,7 @@ function start() {
     if (user && (event === "INITIAL_SESSION" || event === "SIGNED_IN") && state.auth?.userId !== user.id) {
       void loadRemote(user.id, user.email ?? null);
     } else if (!user && state.auth) {
-      emit({ auth: null, profile: {}, list: [], error: null });
+      emit({ auth: null, role: undefined, teacherProfile: null, profile: {}, list: [], error: null });
     }
   });
   document.addEventListener("visibilitychange", () => {
@@ -285,6 +312,15 @@ export function useStudent() {
     },
     async signOut() {
       await db().auth.signOut();
+    },
+    /** One-time choice made at /welcome. Returns an error message, or null on success. */
+    async setRole(role: Role, teacher?: TeacherProfile) {
+      const a = state.auth;
+      if (!a) return "Sign in first.";
+      const { error } = await db().rpc("set_my_role", { p_role: role, p_display_name: teacher?.displayName ?? null, p_school: teacher?.school ?? null });
+      if (error) return error.message;
+      await loadRemote(a.userId, a.email);
+      return null;
     },
     clearError() {
       emit({ error: null });

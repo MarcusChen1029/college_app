@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AccountLink } from "@/components/AccountPanel";
+import { Suspense } from "react";
 import { Wave } from "@/components/Doodles";
+import { RoleGate } from "@/components/RoleGate";
+import { SiteNav } from "@/components/SiteNav";
 import { missingSupabaseEnv } from "@/lib/config";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
@@ -22,17 +24,6 @@ export const metadata: Metadata = {
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
 
-const NAV = [
-  ["/colleges", "Colleges"],
-  ["/compare", "Compare"],
-  ["/application", "My application"],
-  ["/activities", "Activities"],
-  ["/resume", "Resume"],
-  ["/profile", "Profile"],
-  ["/connect-ai", "Connect AI"],
-  ["/pricing", "Pricing"],
-] as const;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const missingEnv = missingSupabaseEnv();
   return (
@@ -46,21 +37,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </span>
               College Tracker
             </Link>
-            <div className="flex items-center gap-5">
-              {NAV.map(([href, label]) => (
-                <Link key={href} href={href} className="text-zinc-600 hover:text-blue-600">
-                  {label}
-                </Link>
-              ))}
-            </div>
-            <span className="ml-auto flex items-center gap-4">
-              <AccountLink />
-              <Link href="/start" className="rounded-full bg-ink px-4 py-1.5 text-white hover:bg-blue-700">
-                Get started
-              </Link>
-            </span>
+            <SiteNav />
           </nav>
         </header>
+        <Suspense>
+          <RoleGate />
+        </Suspense>
         <main className="flex-1">
           {missingEnv.length > 0 ? (
             <div className="mx-auto max-w-xl px-4 py-24 text-center">
