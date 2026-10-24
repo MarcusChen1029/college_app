@@ -5,7 +5,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { progress, type Checklist } from "@/lib/checklist";
-import { hasDecision, isSubmitted, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
+import { hasDecision, isDeadlineDone, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { resultTone, stageTone } from "@/lib/status";
@@ -14,7 +14,7 @@ import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { AddCustomCollege } from "./AddCustomCollege";
 import { AiContextButton } from "./AiContextButton";
 import { FitBadge, TierBadge } from "./badges";
-import { ChecklistPanel, SELECT } from "./ChecklistPanel";
+import { ChecklistPanel, SELECT, SELECT_BASE } from "./ChecklistPanel";
 import { Modal } from "./Modal";
 import { SchoolCodes } from "./SchoolCodes";
 import { DeadlineChip, StatusPill } from "./StatusPill";
@@ -33,7 +33,7 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
   const st = stage(entry.status, entry.checklist);
   return (
     <select
-      className={`${SELECT} ${toneClass(stageTone(st))}`}
+      className={`${SELECT_BASE} ${toneClass(stageTone(st))}`}
       value={st === "submitted" ? "submitted" : "working"}
       onChange={(e) => onSubmit(e.target.value === "submitted")}
       aria-label={`Status for ${name}`}
@@ -338,7 +338,7 @@ export function MyList({
               return (
                 <li key={d.id} className="rounded-md border border-zinc-200 p-2 dark:border-zinc-800">
                   <div>
-                    <DeadlineChip date={d.due_date!} days={days} done={isSubmitted(entry.status) || progress(entry.checklist).missing === 0} />
+                    <DeadlineChip date={d.due_date!} days={days} done={isDeadlineDone(d.kind, entry.status, entry.checklist)} />
                   </div>
                   <div>
                     {college.short_name ?? college.name} — {d.label ?? plans.find((p) => p.key === d.plan_key)?.label ?? d.kind}

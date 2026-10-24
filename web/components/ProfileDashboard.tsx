@@ -5,7 +5,7 @@ import { useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
-import { isSubmitted } from "@/lib/application";
+import { isDeadlineDone } from "@/lib/application";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { ReminderToggle } from "./AccountPanel";
@@ -50,7 +50,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
         label: d.label ?? d.kind,
         college: college.short_name ?? college.name,
         slug: college.slug,
-        done: isSubmitted(entry.status) || progress(entry.checklist).missing === 0,
+        done: isDeadlineDone(d.kind, entry.status, entry.checklist),
       })),
   );
   const now = new Date();

@@ -12,7 +12,8 @@ import { browserSupabase } from "@/lib/supabase-browser";
 import type { CollegeSummary } from "@/lib/types";
 
 const noop = () => () => {};
-const input = "min-w-0 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
+const inputBase = "min-w-0 rounded-md border px-2 py-1 text-sm";
+const input = `${inputBase} border-zinc-300 bg-white`;
 const NEW_DOC_URL = "https://docs.new";
 
 // One-click Google Docs (POST /api/google/*). Only offered when the server is configured and the student is
@@ -118,7 +119,7 @@ function EssayRow({
           </>
         )}
         <select
-          className={`${input} ${toneClass(essayTone(essay.status))}`}
+          className={`${inputBase} ${toneClass(essayTone(essay.status))}`}
           value={essay.status}
           aria-label={`${label ?? `Essay ${index + 1}`} status`}
           onChange={(e) => onChange({ status: e.target.value as Essay["status"] })}

@@ -8,7 +8,7 @@ import { resultTone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Lookups } from "@/lib/types";
 import { TierBadge } from "./badges";
-import { SELECT } from "./ChecklistPanel";
+import { SELECT_BASE } from "./ChecklistPanel";
 
 const noop = () => () => {};
 
@@ -67,7 +67,7 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
                   <td className="p-2 text-zinc-600">{plans.find((p) => p.key === entry.plan)?.label ?? "—"}</td>
                   <td className="p-2">
                     <select
-                      className={`${SELECT} ${toneClass(resultTone(result))}`}
+                      className={`${SELECT_BASE} ${toneClass(resultTone(result))}`}
                       value={result}
                       onChange={(e) => student.update(entry.slug, { status: e.target.value as typeof result })}
                       aria-label={`Decision for ${college.name}`}

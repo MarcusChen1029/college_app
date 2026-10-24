@@ -13,7 +13,9 @@ import { ENGLISH_POLICY, TEST_POLICY } from "@/lib/format";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 
-export const SELECT = "rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
+// No bg/border colour here: a tone class is added instead (Tailwind orders by stylesheet, so competing utilities would win).
+export const SELECT_BASE = "rounded border px-1 py-0.5 text-xs";
+export const SELECT = `${SELECT_BASE} border-zinc-300 bg-white dark:border-zinc-700 dark:bg-zinc-900`;
 const INPUT = "rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
 
 type Props = {
