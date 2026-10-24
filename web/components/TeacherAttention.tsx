@@ -43,7 +43,13 @@ export function TeacherAttention() {
           <div className="h-16 animate-pulse rounded-lg bg-zinc-100" />
         )
       ) : data.total === 0 ? (
-        <p className="text-sm text-zinc-500">No students are linked yet. Share a class code or your one-on-one code below.</p>
+        <p className="text-sm text-zinc-500">
+          No students are linked yet. Share a class code or your one-on-one code from{" "}
+          <Link href="/teacher/classes" className="font-semibold text-blue-700 underline underline-offset-4">
+            Classes
+          </Link>
+          .
+        </p>
       ) : data.top.length === 0 ? (
         <p className="text-sm text-zinc-500">Nobody needs attention right now.</p>
       ) : (

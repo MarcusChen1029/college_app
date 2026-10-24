@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SettingsLink } from "@/components/AccountPanel";
 
 export const metadata: Metadata = { title: "Help" };
 
@@ -30,9 +31,7 @@ export default function HelpPage() {
         <h2 className="text-xl font-bold">Sharing my list with a teacher or counselor</h2>
         <p className="text-zinc-600">
           Your teacher gives you a class code or a personal code. Enter it under <strong>My counselors and teachers</strong> in{" "}
-          <Link href="/profile#account" className={link}>
-            Settings
-          </Link>
+          <SettingsLink className={link}>Settings</SettingsLink>
           . You can leave at any time.
         </p>
       </section>

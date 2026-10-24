@@ -71,3 +71,8 @@ test("roleChangeMessage explains what to do first", () => {
   assert.equal(roleChangeMessage("teacher name required"), "Enter your name.");
   assert.equal(roleChangeMessage("network down"), "network down");
 });
+
+test("/account is student-only", () => {
+  assert.equal(isStudentOnlyPath("/account"), true);
+  assert.equal(redirectFor("teacher", "/account", true), "/teacher");
+});

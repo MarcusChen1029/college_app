@@ -16,7 +16,7 @@ export function validateTeacher(i: { displayName: string; school: string }):
 }
 
 /** Pages that only make sense for a student (their own list, profile, résumé…). */
-export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing"] as const;
+export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/account"] as const;
 
 export function isStudentOnlyPath(pathname: string): boolean {
   return STUDENT_ONLY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));

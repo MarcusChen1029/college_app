@@ -81,6 +81,17 @@ function GoogleMark() {
   );
 }
 
+/** A link to the Settings panel: the teacher dashboard's for teachers, the profile's otherwise. Opens the panel if already on that page. */
+export function SettingsLink({ children, className }: { children: React.ReactNode; className?: string }) {
+  const student = useStudent();
+  const home = student.role === "teacher" ? "/teacher" : "/profile";
+  return (
+    <Link href={`${home}#account`} className={className} onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}>
+      {children}
+    </Link>
+  );
+}
+
 /** Top-right nav entry: "Sign in" when signed out, otherwise the username menu. */
 export function AccountLink() {
   const student = useStudent();

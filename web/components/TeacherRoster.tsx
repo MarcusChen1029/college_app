@@ -66,8 +66,8 @@ export function TeacherRoster() {
       {data.rows.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
           No students are linked to you yet. Create a class or turn on your one-on-one code on the{" "}
-          <Link href="/teacher" className="font-semibold text-blue-700 underline underline-offset-4">
-            dashboard
+          <Link href="/teacher/classes" className="font-semibold text-blue-700 underline underline-offset-4">
+            Classes page
           </Link>{" "}
           and share the code with your students.
         </p>

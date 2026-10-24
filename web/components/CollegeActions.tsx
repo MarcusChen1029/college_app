@@ -39,7 +39,13 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
           <FitBadge fit={fit.fit} /> <span className="ml-1">{fit.reason}</span>
         </div>
       ) : fitInput ? (
-        <div className="text-xs text-zinc-400">Add your scores on the Colleges page to see your fit.</div>
+        <div className="text-xs text-zinc-400">
+          Add your scores on your{" "}
+          <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
+            Profile
+          </Link>{" "}
+          to see your fit.
+        </div>
       ) : null}
     </div>
   );
