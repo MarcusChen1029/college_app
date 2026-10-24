@@ -7,14 +7,16 @@ import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
-import { AccountPanel, ReminderToggle } from "./AccountPanel";
+import { ReminderToggle } from "./AccountPanel";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
 import { ProfileCards } from "./ProfileCards";
+import { SettingsButton, SettingsPanel, useSettingsOpen } from "./SettingsPanel";
 
 const noop = () => () => {};
 
 export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSummary[]; deadlines: Deadline[] }) {
   const student = useStudent();
+  const [settingsOpen, setSettingsOpen] = useSettingsOpen();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
@@ -61,10 +63,13 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             {profile.international ? "Applying from abroad" : "Applying from the US"}
           </p>
         </div>
+        <SettingsButton open={settingsOpen} onToggle={() => setSettingsOpen((o) => !o)} />
         <Link href="/start" className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-white">
           Redo setup
         </Link>
       </section>
+
+      <SettingsPanel open={settingsOpen} />
 
       <ProfileCards />
 
@@ -123,11 +128,6 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
                 </div>
               </>
             )}
-          </section>
-
-          <section id="account" className="space-y-3">
-            <h2 className="text-xl font-bold">Account</h2>
-            <AccountPanel />
           </section>
         </div>
 

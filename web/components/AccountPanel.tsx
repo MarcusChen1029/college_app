@@ -1,47 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
 
-export function AccountPanel() {
-  const student = useStudent();
-  const mounted = useSyncExternalStore(noop, () => true, () => false);
-
-  if (!mounted || !student.ready) return <div className="h-40 animate-pulse rounded-lg bg-zinc-100 dark:bg-zinc-900" />;
-
-  if (student.auth) {
-    return (
-      <div className="space-y-4 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
-        <p>
-          Signed in as <span className="font-medium">{student.auth.email}</span>.
-        </p>
-        <p className="text-sm text-zinc-500">
-          Your scores and college list are saved to your account{student.syncing ? " (syncing…)" : ""}. Anything you had saved in this
-          browser before signing in was added to it.
-        </p>
-        {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
-        <div className="flex gap-3">
-          <Link href="/application/list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
-            Go to my list
-          </Link>
-          <button className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm dark:border-zinc-700" onClick={() => student.signOut()}>
-            Sign out
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-3 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
-      <GoogleSignIn />
-      <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
-    </div>
-  );
-}
+/** Fired by the nav's Account link so the settings panel opens when you are already on the page (a same-page link emits no hashchange). */
+export const OPEN_SETTINGS_EVENT = "open-settings";
 
 /** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). */
 export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
@@ -115,14 +81,93 @@ function GoogleMark() {
   );
 }
 
+/** Top-right nav entry: "Sign in" when signed out, otherwise the username menu. */
 export function AccountLink() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const cls = "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
+  const cls = "max-w-40 truncate font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
   if (!mounted || !student.ready) return <span className="w-14" />;
+  if (!student.auth) {
+    return (
+      <Link href="/profile#account" className={cls} onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}>
+        Sign in
+      </Link>
+    );
+  }
+  return <AccountMenu />;
+}
+
+/** The signed-in username with a drop-down: Profile (Dashboard for teachers), Settings, Help, Sign out. */
+function AccountMenu() {
+  const student = useStudent();
+  const [open, setOpen] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+  const teacher = student.role === "teacher";
+  const home = teacher ? "/teacher" : "/profile";
+  const name = student.teacherProfile?.displayName ?? student.auth?.email?.split("@")[0] ?? "Account";
+
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: MouseEvent) => {
+      if (!box.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", away);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", away);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [open]);
+
+  const item = "block w-full rounded-lg px-3 py-2 text-left text-sm text-zinc-700 hover:bg-zinc-100";
   return (
-    <Link href="/profile#account" className={cls}>
-      {student.auth ? "Account" : "Sign in"}
-    </Link>
+    <div ref={box} className="relative">
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        title={student.auth?.email ?? undefined}
+        onClick={() => setOpen((o) => !o)}
+        className="flex max-w-40 items-center gap-1 font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+      >
+        <span className="truncate">{name}</span>
+        <span aria-hidden className="text-xs">
+          ▾
+        </span>
+      </button>
+      {open && (
+        <div role="menu" className="absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
+          <Link role="menuitem" href={home} className={item} onClick={() => setOpen(false)}>
+            {teacher ? "Dashboard" : "Profile"}
+          </Link>
+          <Link
+            role="menuitem"
+            href={`${home}#account`}
+            className={item}
+            onClick={() => {
+              setOpen(false);
+              window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT));
+            }}
+          >
+            Settings
+          </Link>
+          <Link role="menuitem" href="/help" className={item} onClick={() => setOpen(false)}>
+            Help
+          </Link>
+          <button
+            type="button"
+            role="menuitem"
+            className={`${item} border-t border-zinc-100`}
+            onClick={() => {
+              setOpen(false);
+              void student.signOut();
+            }}
+          >
+            Sign out
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
