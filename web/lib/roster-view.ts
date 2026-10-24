@@ -1,10 +1,11 @@
 // Teacher roster view logic: relative-time wording, per-student rows, filtering and sorting, deadline
 // grouping and status wording. Pure functions so the components stay thin (and testable).
 
-import { RESULT_LABEL, resultStatus, stage } from "./application.ts";
+import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
 import type { Checklist } from "./checklist.ts";
 import { checklistSummary, computeFlags, daysUntil, isActiveCollege, nextDeadline, worstSeverity, type Flag, type RosterStudent, type UpcomingDeadline } from "./roster.ts";
 import type { Status } from "./student-rows.ts";
+import { resultTone, stageTone, type Tone } from "./status.ts";
 
 const DAY = 86_400_000;
 
@@ -107,6 +108,12 @@ export function statusLabel(status: string, checklist: Checklist = {}): string {
   const st = stage(s, checklist);
   if (st === "submitted") return s === "submitted" || s === "interview" ? "Submitted" : RESULT_LABEL[resultStatus(s)];
   return st === "ready" ? "Ready" : "In progress";
+}
+
+/** Same colors the student sees: the decision's tone once there is one, otherwise the stage's. */
+export function statusTone(status: string, checklist: Checklist = {}): Tone {
+  const s = status as Status;
+  return hasDecision(s) ? resultTone(resultStatus(s)) : stageTone(stage(s, checklist));
 }
 
 // ───────── upcoming deadlines ─────────

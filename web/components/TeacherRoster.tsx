@@ -45,7 +45,7 @@ export function TeacherRoster() {
   if (!data) {
     return error ? (
       <div className="space-y-3">
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {error}
         </p>
         <button type="button" className={btn} onClick={retry}>

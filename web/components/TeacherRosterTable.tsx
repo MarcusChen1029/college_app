@@ -1,8 +1,7 @@
 import Link from "next/link";
+import { DeadlineChip } from "@/components/StatusPill";
 import { FlagPills } from "@/components/TeacherFlags";
-import { fmtDate } from "@/lib/format";
-import { SOON_DAYS } from "@/lib/roster";
-import { daysLabel, relativeTime, type RosterRow } from "@/lib/roster-view";
+import { relativeTime, type RosterRow } from "@/lib/roster-view";
 
 const th = "px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-zinc-500";
 const td = "px-3 py-3 align-top";
@@ -32,7 +31,7 @@ function ChecklistBar({ done, total }: { done: number; total: number }) {
         aria-valuenow={done}
         className="h-1.5 w-20 overflow-hidden rounded-full bg-zinc-200"
       >
-        <div className="h-full rounded-full bg-blue-600" style={{ width: `${Math.round((done / total) * 100)}%` }} />
+        <div className={`h-full rounded-full ${done === total ? "bg-done" : "bg-zinc-500"}`} style={{ width: `${Math.round((done / total) * 100)}%` }} />
       </div>
       <span className="text-xs tabular-nums text-zinc-600">
         {done}/{total}
@@ -90,10 +89,9 @@ export function TeacherRosterTable({ rows, classNames, now }: Props) {
                 </td>
                 <td className={td}>
                   {row.next ? (
-                    <div className={row.next.days <= SOON_DAYS ? "font-medium text-rose-700" : ""}>
-                      <p>
-                        {fmtDate(row.next.date)} <span className="text-xs">({daysLabel(row.next.days)})</span>
-                      </p>
+                    <div className="space-y-1">
+                      {/* Only active (not yet submitted) colleges get a next deadline, so it is never done. */}
+                      <DeadlineChip date={row.next.date} days={row.next.days} done={false} />
                       <p className="text-xs">{row.next.collegeName}</p>
                     </div>
                   ) : (

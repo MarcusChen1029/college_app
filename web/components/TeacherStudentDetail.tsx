@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback } from "react";
+import { StatusPill } from "@/components/StatusPill";
 import { ActivitiesPanel } from "@/components/TeacherDetailActivities";
 import { CollegesPanel } from "@/components/TeacherDetailColleges";
 import { EssaysPanel } from "@/components/TeacherDetailEssays";
@@ -11,6 +12,7 @@ import { TeacherNotes } from "@/components/TeacherNotes";
 import { TeacherTabs } from "@/components/TeacherTabs";
 import { teacherStudent } from "@/lib/links-api";
 import { computeFlags } from "@/lib/roster";
+import { flagTone } from "@/lib/status";
 import { detailToRoster } from "@/lib/roster-detail";
 import { useLoad } from "@/lib/use-load";
 
@@ -37,7 +39,7 @@ export function TeacherStudentDetail({ id }: { id: string }) {
     return (
       <div className="space-y-3">
         {back}
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {notFound ? "This student isn't linked to you, or they have left. Go back to your student list to pick someone else." : error}
         </p>
         {!notFound && (
@@ -59,7 +61,7 @@ export function TeacherStudentDetail({ id }: { id: string }) {
         <div className="flex flex-wrap items-center gap-3">
           <h1 className="font-display text-3xl font-bold [overflow-wrap:anywhere]">{detail.displayName}</h1>
           {detail.profile.isInternational && <span className={`${badge} bg-blue-50 text-blue-700`}>International</span>}
-          {detail.profile.needsAid && <span className={`${badge} bg-amber-100 text-amber-800`}>Needs aid</span>}
+          {detail.profile.needsAid && <span className={`${badge} bg-zinc-100 text-zinc-700`}>Needs aid</span>}
         </div>
         <p className="flex flex-wrap items-center gap-1.5 text-sm text-zinc-500">
           <span className="[overflow-wrap:anywhere]">{detail.email}</span>
@@ -76,10 +78,10 @@ export function TeacherStudentDetail({ id }: { id: string }) {
           {!detail.shareEssays && <span className="text-zinc-500"> ({detail.displayName} has chosen not to share essays with you.)</span>}
         </p>
         {flags.length > 0 && (
-          <ul className="space-y-1 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm">
+          <ul className="space-y-2 rounded-2xl border border-zinc-200 p-4 text-sm">
             {flags.map((f) => (
-              <li key={f.key}>
-                <span className="font-semibold">{f.label}.</span> {f.detail}
+              <li key={f.key} className="flex flex-wrap items-center gap-2">
+                <StatusPill tone={flagTone(f.key)}>{f.label}</StatusPill> {f.detail}
               </li>
             ))}
           </ul>

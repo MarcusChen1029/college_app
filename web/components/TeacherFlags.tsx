@@ -1,12 +1,6 @@
-import type { Flag, FlagKey } from "@/lib/roster";
-
-const FLAG_STYLE: Record<FlagKey, string> = {
-  deadline_soon: "bg-rose-100 text-rose-800",
-  essay_not_started: "bg-amber-100 text-amber-800",
-  no_scores: "bg-amber-100 text-amber-800",
-  no_colleges: "bg-blue-100 text-blue-800",
-  inactive: "bg-zinc-200 text-zinc-700",
-};
+import { StatusPill } from "@/components/StatusPill";
+import type { Flag } from "@/lib/roster";
+import { flagTone } from "@/lib/status";
 
 /** Colored pills for a student's attention flags; the hover text carries the detail. */
 export function FlagPills({ flags, emptyLabel }: { flags: Flag[]; emptyLabel?: string }) {
@@ -14,10 +8,10 @@ export function FlagPills({ flags, emptyLabel }: { flags: Flag[]; emptyLabel?: s
   return (
     <span className="flex flex-wrap gap-1">
       {flags.map((f) => (
-        <span key={f.key} title={f.detail} className={`rounded-full px-2 py-0.5 text-xs font-semibold ${FLAG_STYLE[f.key]}`}>
+        <StatusPill key={f.key} tone={flagTone(f.key)} title={f.detail}>
           {f.label}
           <span className="sr-only">: {f.detail}</span>
-        </span>
+        </StatusPill>
       ))}
     </span>
   );

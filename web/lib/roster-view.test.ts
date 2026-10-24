@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { ALL_CLASSES, buildRows, daysLabel, groupDeadlines, NO_CLASS, relativeTime, statusLabel, viewRows, weekdayDate, type RosterFilter, type RosterSort } from "./roster-view.ts";
+import { ALL_CLASSES, buildRows, daysLabel, groupDeadlines, NO_CLASS, relativeTime, statusLabel, statusTone, viewRows, weekdayDate, type RosterFilter, type RosterSort } from "./roster-view.ts";
 import type { RosterCollege, RosterStudent, UpcomingDeadline } from "./roster.ts";
 
 const NOW = new Date(2026, 9, 24, 15, 0); // 24 Oct 2026, local
@@ -110,6 +110,15 @@ test("statusLabel", () => {
   assert.equal(statusLabel("interview"), "Submitted");
   assert.equal(statusLabel("admitted"), "Admitted");
   assert.equal(statusLabel("enrolled"), "Committed");
+});
+
+test("statusTone matches what the student sees", () => {
+  assert.equal(statusTone("researching"), "progress");
+  assert.equal(statusTone("in_progress", { no_essays: true, recommendations: true, transcript: true, test_plan: "optional", english_plan: "not_required" }), "done");
+  assert.equal(statusTone("submitted"), "done");
+  assert.equal(statusTone("admitted"), "done");
+  assert.equal(statusTone("waitlisted"), "soon");
+  assert.equal(statusTone("rejected"), "neutral");
 });
 
 test("groupDeadlines groups by date with a heading", () => {

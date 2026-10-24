@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { StatusPill } from "@/components/StatusPill";
 import { formatCode } from "@/lib/join-codes";
 import { archiveClass, newCode, removeFromClass, revokeCode, type LinkedStudent, type TeacherClass } from "@/lib/links-api";
 
@@ -57,7 +58,7 @@ export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNe
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-3">
         <span className={`font-mono text-2xl font-bold tracking-widest ${expired ? "text-zinc-400 line-through" : ""}`}>{formatCode(code)}</span>
-        {expired && <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">Expired</span>}
+        {expired && <StatusPill tone="soon">Expired</StatusPill>}
         <button type="button" className={btn} aria-label={subject ? `Copy code for ${subject}` : "Copy your one-on-one code"} onClick={copy}>
           Copy
         </button>

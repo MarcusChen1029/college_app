@@ -89,7 +89,7 @@ export function TeacherClasses() {
   if (!overview) {
     return error ? (
       <div className="space-y-3">
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {error}
         </p>
         <button type="button" className={btn} onClick={() => void load()}>
@@ -109,7 +109,7 @@ export function TeacherClasses() {
   return (
     <div className="space-y-8">
       {error && (
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {error}
         </p>
       )}

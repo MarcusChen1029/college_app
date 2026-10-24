@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
+import { DeadlineChip, StatusPill } from "@/components/StatusPill";
 import { btn } from "@/components/TeacherClassCard";
 import { studentHref } from "@/components/TeacherRosterTable";
 import { TeacherGate } from "@/components/TeacherGate";
+import { isSubmitted } from "@/lib/application";
 import { teacherDeadlines } from "@/lib/links-api";
-import { groupDeadlines, statusLabel } from "@/lib/roster-view";
+import { daysUntil } from "@/lib/roster";
+import { groupDeadlines, statusLabel, statusTone } from "@/lib/roster-view";
+import type { Status } from "@/lib/student-store";
 import { useLoad } from "@/lib/use-load";
 
 const RANGES = [30, 60, 90, 180] as const;
@@ -18,7 +22,7 @@ function DeadlineList({ days }: { days: number }) {
   if (!data) {
     return error ? (
       <div className="space-y-3">
-        <p role="alert" className="text-sm text-rose-600">
+        <p role="alert" className="text-sm text-urgent">
           {error}
         </p>
         <button type="button" className={btn} onClick={retry}>
@@ -59,7 +63,9 @@ function DeadlineList({ days }: { days: number }) {
                 </span>
                 <span className="flex items-center gap-2">
                   <span>{d.label}</span>
-                  <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700">{statusLabel(d.status)}</span>
+                  {/* The teacher feed carries no checklist, so "done" means an application deadline that is already submitted. */}
+                  <DeadlineChip date={d.dueDate} days={daysUntil(d.dueDate, data.now)} done={d.kind === "application" && isSubmitted(d.status as Status)} />
+                  <StatusPill tone={statusTone(d.status)}>{statusLabel(d.status)}</StatusPill>
                 </span>
               </li>
             ))}

@@ -146,7 +146,7 @@ export function TeacherNotes({ studentId, studentName }: { studentId: string; st
       {!data ? (
         error ? (
           <div className="space-y-3">
-            <p role="alert" className="text-sm text-rose-600">
+            <p role="alert" className="text-sm text-urgent">
               {error}
             </p>
             <button type="button" className={btn} onClick={() => void refresh()}>
@@ -173,12 +173,12 @@ export function TeacherNotes({ studentId, studentName }: { studentId: string; st
             </div>
           </form>
           {actionError && (
-            <p role="alert" className="text-sm text-rose-600">
+            <p role="alert" className="text-sm text-urgent">
               {actionError}
             </p>
           )}
           {error && (
-            <p role="alert" className="text-sm text-rose-600">
+            <p role="alert" className="text-sm text-urgent">
               {error}{" "}
               <button type="button" className="font-semibold underline underline-offset-4" onClick={() => void refresh()}>
                 Try again

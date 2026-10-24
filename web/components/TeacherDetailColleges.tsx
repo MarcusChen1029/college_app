@@ -1,7 +1,9 @@
+import { DeadlineChip, StatusPill } from "@/components/StatusPill";
+import { isDeadlineDone } from "@/lib/application";
 import { CHECKLIST, ESSAY_STATUSES, isDone, progress } from "@/lib/checklist";
-import { fmtDate } from "@/lib/format";
-import { daysUntil, SOON_DAYS, type DetailCollege, type StudentDetail } from "@/lib/roster";
-import { daysLabel, statusLabel } from "@/lib/roster-view";
+import { daysUntil, type DetailCollege, type StudentDetail } from "@/lib/roster";
+import { statusLabel, statusTone } from "@/lib/roster-view";
+import type { Status } from "@/lib/student-store";
 
 const essayStatus = Object.fromEntries(ESSAY_STATUSES) as Record<string, string>;
 
@@ -17,7 +19,7 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           </h3>
           <p className="text-sm text-zinc-500">{c.plan ? `Plan: ${c.plan}` : "No plan chosen"}</p>
         </div>
-        <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{statusLabel(c.status, c.checklist)}</span>
+        <StatusPill tone={statusTone(c.status, c.checklist)}>{statusLabel(c.status, c.checklist)}</StatusPill>
       </div>
 
       <div>
@@ -28,7 +30,7 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
           {CHECKLIST.map(([key, label]) => (
             <li key={key} className="flex justify-between gap-3">
               <span>{label}</span>
-              <span className={isDone(key, c.checklist) ? "font-semibold text-emerald-700" : "text-zinc-500"}>{isDone(key, c.checklist) ? "Done" : "Not done"}</span>
+              <span className={isDone(key, c.checklist) ? "font-semibold text-done" : "text-zinc-500"}>{isDone(key, c.checklist) ? "Done" : "Not done"}</span>
             </li>
           ))}
         </ul>
@@ -56,9 +58,12 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
             {c.deadlines.map((d) => {
               const days = daysUntil(d.dueDate, now);
               return (
-                <li key={`${d.kind}-${d.dueDate}-${d.label}`} className={days <= SOON_DAYS ? "font-medium text-rose-700" : ""}>
-                  {fmtDate(d.dueDate)} <span className="text-xs">({daysLabel(days)})</span> - {d.label}
-                  {d.plan ? ` (${d.plan})` : ""}
+                <li key={`${d.kind}-${d.dueDate}-${d.label}`} className="flex flex-wrap items-center gap-2">
+                  <DeadlineChip date={d.dueDate} days={days} done={isDeadlineDone(d.kind, c.status as Status, c.checklist)} />
+                  <span>
+                    {d.label}
+                    {d.plan ? ` (${d.plan})` : ""}
+                  </span>
                 </li>
               );
             })}
