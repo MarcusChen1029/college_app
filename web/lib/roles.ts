@@ -47,7 +47,6 @@ const STUDENT_NAV = [
   ["/application", "My application"],
   ["/activities", "Activities"],
   ["/resume", "Resume"],
-  ["/profile", "Profile"],
   ["/connect-ai", "Connect AI"],
   ["/pricing", "Pricing"],
 ] as const;

@@ -81,18 +81,23 @@ function GoogleMark() {
   );
 }
 
+/** Top-right nav entry: the username (opens the profile page) when signed in, "Sign in" otherwise. */
 export function AccountLink() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const cls = "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
+  const cls = "max-w-40 truncate font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white";
   if (!mounted || !student.ready) return <span className="w-14" />;
+  if (!student.auth) {
+    return (
+      <Link href="/profile#account" className={cls} onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}>
+        Sign in
+      </Link>
+    );
+  }
+  const name = student.teacherProfile?.displayName ?? student.auth.email?.split("@")[0] ?? "Account";
   return (
-    <Link
-      href={student.role === "teacher" ? "/teacher#account" : "/profile#account"}
-      className={cls}
-      onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
-    >
-      {student.auth ? "Account" : "Sign in"}
+    <Link href={student.role === "teacher" ? "/teacher" : "/profile"} className={cls} title={student.auth.email ?? undefined}>
+      {name}
     </Link>
   );
 }
