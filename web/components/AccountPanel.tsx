@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
+import { MyCounselors } from "@/components/MyCounselors";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
@@ -14,24 +15,27 @@ export function AccountPanel() {
 
   if (student.auth) {
     return (
-      <div className="space-y-4 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
-        <p>
-          Signed in as <span className="font-medium">{student.auth.email}</span>.
-        </p>
-        <p className="text-sm text-zinc-500">
-          Your scores and college list are saved to your account{student.syncing ? " (syncing…)" : ""}. Anything you had saved in this
-          browser before signing in was added to it.
-        </p>
-        {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
-        <div className="flex gap-3">
-          <Link href="/application/list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
-            Go to my list
-          </Link>
-          <button className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm dark:border-zinc-700" onClick={() => student.signOut()}>
-            Sign out
-          </button>
+      <>
+        <div className="space-y-4 rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
+          <p>
+            Signed in as <span className="font-medium">{student.auth.email}</span>.
+          </p>
+          <p className="text-sm text-zinc-500">
+            Your scores and college list are saved to your account{student.syncing ? " (syncing…)" : ""}. Anything you had saved in this
+            browser before signing in was added to it.
+          </p>
+          {student.error && <p className="text-sm text-rose-600">{student.error}</p>}
+          <div className="flex gap-3">
+            <Link href="/application/list" className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
+              Go to my list
+            </Link>
+            <button className="rounded-md border border-zinc-300 px-3 py-1.5 text-sm dark:border-zinc-700" onClick={() => student.signOut()}>
+              Sign out
+            </button>
+          </div>
         </div>
-      </div>
+        {student.role === "student" && <MyCounselors />}
+      </>
     );
   }
 

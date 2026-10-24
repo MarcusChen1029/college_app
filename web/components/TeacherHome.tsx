@@ -2,11 +2,12 @@
 
 import { useSyncExternalStore } from "react";
 import { GoogleSignIn } from "@/components/AccountPanel";
+import { TeacherClasses } from "@/components/TeacherClasses";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
 
-/** Teacher dashboard (phase 1 placeholder: classes, codes and rosters come in the next phases). */
+/** Teacher dashboard: greeting, classes and join codes, one-on-one students, and the account section. */
 export function TeacherHome() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -30,12 +31,7 @@ export function TeacherHome() {
         <h1 className="font-display text-3xl font-bold">Hello{tp ? `, ${tp.displayName}` : ""}</h1>
         {tp?.school && <p className="mt-1 text-zinc-500">{tp.school}</p>}
       </div>
-      <div className="rounded-2xl border border-dashed border-zinc-300 p-6">
-        <h2 className="font-display text-lg font-bold">Classes and students are coming next</h2>
-        <p className="mt-1 text-sm text-zinc-500">
-          Soon you&apos;ll create classes, share join codes, and see where each student stands. For now you can browse and compare colleges.
-        </p>
-      </div>
+      <TeacherClasses />
       <section id="account" className="space-y-3 rounded-lg border border-zinc-200 p-5">
         <p>
           Signed in as <span className="font-medium">{student.auth.email}</span>.
