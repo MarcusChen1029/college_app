@@ -315,6 +315,16 @@ export function useStudent() {
     async signOut() {
       await db().auth.signOut();
     },
+    /** Switches an existing account between student and teacher (refused while it still has teacher/student links). Returns an error message, or null. */
+    async changeRole(role: Role, teacher?: TeacherProfile) {
+      const a = state.auth;
+      if (!a) return "Sign in first.";
+      const { error } = await db().rpc("change_my_role", { p_role: role, p_display_name: teacher?.displayName ?? null, p_school: teacher?.school ?? null });
+      if (error) return error.message;
+      await loadRemote(a.userId, a.email);
+      if (state.role !== role) emit({ role });
+      return null;
+    },
     /** One-time choice made at /welcome. Returns an error message, or null on success. */
     async setRole(role: Role, teacher?: TeacherProfile) {
       const a = state.auth;

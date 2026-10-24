@@ -37,6 +37,9 @@ Plan: all US colleges next, then UK/CA/AU.
   - Linking (migration 0021): teachers make `classes` and `join_codes` (class code, or one personal "individual" code); a student redeems a code via
     `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
     row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
+  - Switching role (migration 0025): `RoleSwitcher` (Account page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
+    account has links (a student must leave their teachers, a teacher must remove their students); leaving teacher mode revokes all join codes and archives
+    classes. The other side's data is kept so switching back restores it.
   - Teacher read access (migrations 0022/0023): teachers read students only through `teacher_roster(p_today)`, `teacher_student(id, p_today)`,
     `teacher_deadlines(days, p_today)`; they return an explicit column list (never `portals`, `portal_*`, `notes`, `resume`, aid offers; essay titles/links
     are stripped when the student's `share_essays` is off). The client sends its local date as `p_today`. Flags/progress are computed in `web/lib/roster.ts`;
@@ -65,7 +68,7 @@ python3 scripts/build_seed.py               # after editing data/*.json
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0025**) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0026**) **and** apply it to the project.
 - **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
   through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
   differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a

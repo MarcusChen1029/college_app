@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { MyCounselors } from "@/components/MyCounselors";
+import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
@@ -35,6 +36,7 @@ export function AccountPanel() {
           </div>
         </div>
         {student.role === "student" && <MyCounselors />}
+        <RoleSwitcher />
       </>
     );
   }

@@ -63,3 +63,12 @@ const TEACHER_NAV = [
 export function navFor(role: Role | null | undefined): readonly (readonly [href: string, label: string])[] {
   return role === "teacher" ? TEACHER_NAV : STUDENT_NAV;
 }
+
+/** Plain wording for the errors change_my_role can return. */
+export function roleChangeMessage(message: string): string {
+  const m = message.toLowerCase();
+  if (m.includes("leave your teachers first")) return "Leave your teachers and counselors first (see My counselors and teachers above), then switch.";
+  if (m.includes("remove your students first")) return "Remove all your linked students first (see Classes and One-on-one students), then switch.";
+  if (m.includes("teacher name required")) return "Enter your name.";
+  return message || "Something went wrong. Please try again.";
+}

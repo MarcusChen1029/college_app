@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import { GoogleSignIn } from "@/components/AccountPanel";
 import { TeacherAttention } from "@/components/TeacherAttention";
+import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { TeacherClasses } from "@/components/TeacherClasses";
 import { useStudent } from "@/lib/student-store";
 
@@ -47,6 +48,7 @@ export function TeacherHome() {
           Sign out
         </button>
       </section>
+      <RoleSwitcher />
     </div>
   );
 }

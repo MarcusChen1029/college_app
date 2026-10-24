@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, validateTeacher } from "./roles.ts";
+import { homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, validateTeacher } from "./roles.ts";
 
 test("parseRole accepts only the two roles", () => {
   assert.equal(parseRole("student"), "student");
@@ -63,4 +63,11 @@ test("navFor: teachers get no student pages; everyone else gets the student nav"
   assert.deepEqual(navFor("teacher").map(([href]) => href).filter((h) => h.startsWith("/teacher")), ["/teacher", "/teacher/students", "/teacher/deadlines"]);
   assert.deepEqual(navFor(null), navFor("student"));
   assert.deepEqual(navFor(undefined), navFor("student"));
+});
+
+test("roleChangeMessage explains what to do first", () => {
+  assert.match(roleChangeMessage("leave your teachers first"), /Leave your teachers/);
+  assert.match(roleChangeMessage("remove your students first"), /Remove all your linked students/);
+  assert.equal(roleChangeMessage("teacher name required"), "Enter your name.");
+  assert.equal(roleChangeMessage("network down"), "network down");
 });
