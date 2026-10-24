@@ -266,7 +266,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <ol className="relative space-y-3 border-l border-zinc-200 pl-5 dark:border-zinc-800">
             {deadlines.map((d) => (
               <li key={d.id} className="text-sm">
-                <span className={`absolute -left-[9px] mt-1 rounded-full p-0.5 ${toneClass(d.due_date ? deadlineTone(daysUntil(d.due_date), false) : "neutral")}`}>
+                <span className={`absolute -left-[9px] mt-0.5 rounded-full p-0.5 ${toneClass(d.due_date ? deadlineTone(daysUntil(d.due_date), false) : "neutral")}`}>
                   <StatusIcon tone={d.due_date ? deadlineTone(daysUntil(d.due_date), false) : "neutral"} />
                 </span>
                 <div className="flex flex-wrap items-baseline gap-x-3">
