@@ -95,3 +95,21 @@ test("mergeTranscripts dedupes by key and remaps school ids", () => {
 test("arts sub-subjects keep performing arts distinguishable", () => {
   assert.deepEqual(SUB_SUBJECTS.arts, ["visual", "music", "theater", "dance", "interdisciplinary"]);
 });
+
+test("numeric grades are kept as text instead of being dropped", () => {
+  const r = validateCourse({ ...base(), finalGrade: 95, terms: [{ term: "S1", grade: 92, gradeWeighted: 4.7, status: "graded" }] });
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    assert.equal(r.value.finalGrade, "95");
+    assert.equal(r.value.terms[0].grade, "92");
+    assert.equal(r.value.terms[0].gradeWeighted, "4.7");
+  }
+  assert.equal(validateCourse({ ...base(), finalGrade: true }).ok, false);
+});
+
+test("courseKey tells a repeat or summer course from the original", () => {
+  const a = { academicYear: 2025, name: "Algebra", period: "semester" as const };
+  assert.notEqual(courseKey("S", a), courseKey("S", { ...a, isRepeat: true }));
+  assert.notEqual(courseKey("S", a), courseKey("S", { ...a, isSummer: true }));
+  assert.equal(courseKey("S", a), courseKey("S", { ...a, isRepeat: false, isSummer: false }));
+});

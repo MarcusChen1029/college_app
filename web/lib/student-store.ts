@@ -47,6 +47,7 @@ import {
 } from "./student-rows";
 import { newRecommenderId, type Recommender, type RecommenderInput } from "./recommenders";
 import { newScholarshipId, type Scholarship, type ScholarshipInput } from "./scholarships";
+import { runUntilFailure } from "./sequence";
 import { browserSupabase } from "./supabase-browser";
 import {
   mergeTranscripts,
@@ -308,9 +309,9 @@ function start() {
   window.addEventListener("focus", refreshIfStale);
 }
 
-// Remote writes are optimistic; on failure we reload the server copy and surface the error.
-async function remote(op: () => PromiseLike<{ error: { message: string } | null }>) {
-  if (!state.auth) return;
+// Remote writes are optimistic; on failure we reload the server copy and surface the error. Resolves true when the write worked.
+async function remote(op: () => PromiseLike<{ error: { message: string } | null }>): Promise<boolean> {
+  if (!state.auth) return false;
   savesInFlight++;
   let error: { message: string } | null;
   try {
@@ -322,13 +323,16 @@ async function remote(op: () => PromiseLike<{ error: { message: string } | null 
     const { userId, email } = state.auth;
     await loadRemote(userId, email);
     emit({ error: `Couldn't save: ${error.message}` });
+    return false;
   }
+  return true;
 }
 
 // The transcript's writes depend on each other (a school must exist before its courses), so they run one after another.
 let writeChain: Promise<unknown> = Promise.resolve();
-function remoteInOrder(op: () => PromiseLike<{ error: { message: string } | null }>) {
-  writeChain = writeChain.then(() => remote(op)).catch(() => {});
+// A group of writes that depend on each other stops at the first failure, so a later step never runs on top of a failed earlier one.
+function remoteInOrder(...ops: Array<() => PromiseLike<{ error: { message: string } | null }>>) {
+  writeChain = writeChain.then(() => runUntilFailure(ops.map((op) => () => remote(op)))).catch(() => {});
 }
 
 function subscribe(l: () => void) {
@@ -521,11 +525,16 @@ export function useStudent() {
     replaceSchoolCourses(schoolId: string, inputs: CourseInput[], source: Source) {
       const now = new Date().toISOString();
       const courses: TranscriptCourse[] = inputs.map((i) => ({ ...i, schoolId, source, id: newTranscriptId(), createdAt: now }));
+      const old = state.transcriptCourses.filter((c) => c.schoolId === schoolId);
       emit({ transcriptCourses: [...state.transcriptCourses.filter((c) => c.schoolId !== schoolId), ...courses] });
       const a = state.auth;
       if (!a) return;
-      remoteInOrder(() => db().from("transcript_courses").delete().eq("school_id", schoolId));
-      if (courses.length) remoteInOrder(() => db().from("transcript_courses").insert(courses.map((c) => fromTranscriptCourse(a.userId, c))));
+      // Insert the new courses first and delete the old ones (by id) only if that worked: a failure can leave duplicates, never an empty school.
+      const oldIds = old.map((c) => c.id);
+      const ops: Array<() => PromiseLike<{ error: { message: string } | null }>> = [];
+      if (courses.length) ops.push(() => db().from("transcript_courses").insert(courses.map((c) => fromTranscriptCourse(a.userId, c))));
+      if (oldIds.length) ops.push(() => db().from("transcript_courses").delete().in("id", oldIds));
+      if (ops.length) remoteInOrder(...ops);
     },
     /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). `returnTo` is a path on this site. */
     async signInWithGoogle(returnTo = "/profile") {

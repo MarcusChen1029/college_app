@@ -17,11 +17,17 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
   const [parseError, setParseError] = useState<string | null>(null);
   const [data, setData] = useState<unknown>(undefined);
   const [skipped, setSkipped] = useState<Set<number>>(new Set());
+  const [forced, setForced] = useState<Set<number>>(new Set()); // duplicate rows the student chose to save anyway
   const [modes, setModes] = useState<Record<number, Mode>>({});
   const [copied, setCopied] = useState(false);
 
   // The plan is recomputed from what the student has now, so a duplicate stays a duplicate while they work.
-  const plan: ImportPlan | null = useMemo(() => (data === undefined ? null : buildImportPlan(data, { schools: transcriptSchools, courses: transcriptCourses }, "ai_import")), [data, transcriptSchools, transcriptCourses]);
+  // A school set to "Replace" does not count its own current courses as duplicates: they are about to be swapped for the pasted ones.
+  const plan: ImportPlan | null = useMemo(() => {
+    if (data === undefined) return null;
+    const replacing = new Set(Object.entries(modes).filter(([, m]) => m === "replace").map(([i]) => Number(i)));
+    return buildImportPlan(data, { schools: transcriptSchools, courses: transcriptCourses }, "ai_import", replacing);
+  }, [data, modes, transcriptSchools, transcriptCourses]);
 
   async function copyPrompt() {
     try {
@@ -42,6 +48,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
     }
     setParseError(null);
     setSkipped(new Set());
+    setForced(new Set());
     setModes({});
     setData(r.data);
   }
@@ -54,10 +61,12 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
     const s = schoolOf(r.schoolIndex);
     return !!r.input && !!s && (s.existingId !== null || s.input !== null);
   };
-  const included = (i: number) => savable(i) && !skipped.has(i) && rows[i].duplicateOf === null;
+  const included = (i: number) => savable(i) && (rows[i].duplicateOf === null ? !skipped.has(i) : forced.has(i));
   const includedCount = rows.filter((_, i) => included(i)).length;
   const modeOf = (schoolIndex: number): Mode => modes[schoolIndex] ?? "add";
   const replaceCount = (existingId: string | null) => transcriptCourses.filter((c) => c.schoolId === existingId).length;
+  /** Replacing a school with nothing would just delete it, so each replaced school needs at least one row to save. */
+  const replaceEmpty = !!plan?.schools.some((s, i) => s.existingId && modeOf(i) === "replace" && !rows.some((r, ri) => r.schoolIndex === i && included(ri)));
 
   function save() {
     if (!plan) return;
@@ -182,12 +191,13 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                         <input
                           type="checkbox"
                           aria-label={`Save row ${i + 1}`}
-                          disabled={!savable(i) || r.duplicateOf !== null}
+                          disabled={!savable(i)}
                           checked={included(i)}
                           onChange={(e) =>
-                            setSkipped((cur) => {
+                            (r.duplicateOf === null ? setSkipped : setForced)((cur) => {
                               const next = new Set(cur);
-                              if (e.target.checked) next.delete(i);
+                              // a normal row is ticked until skipped; a duplicate is unticked until forced
+                              if (e.target.checked === (r.duplicateOf === null)) next.delete(i);
                               else next.add(i);
                               return next;
                             })
@@ -207,7 +217,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                             ))}
                           </ul>
                         ) : r.duplicateOf !== null ? (
-                          <StatusPill tone="neutral">Already in your transcript</StatusPill>
+                          <StatusPill tone="neutral">Already in your transcript (tick to save anyway)</StatusPill>
                         ) : (
                           <StatusPill tone="done">Ready</StatusPill>
                         )}
@@ -220,12 +230,13 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
           )}
 
           <div className="flex flex-wrap items-center gap-3">
-            <button type="button" className={buttonClass("primary", "sm")} onClick={save} disabled={includedCount === 0 && !plan.schools.some((s, i) => s.existingId && modeOf(i) === "replace")}>
+            <button type="button" className={buttonClass("primary", "sm")} onClick={save} disabled={includedCount === 0 || replaceEmpty}>
               Save {includedCount} course{includedCount === 1 ? "" : "s"}
             </button>
             <button type="button" className={buttonClass("secondary", "sm")} onClick={() => setData(undefined)}>
               Cancel
             </button>
+            {replaceEmpty && <span className="text-sm text-urgent">A school set to Replace needs at least one course to save; otherwise switch it to Add.</span>}
           </div>
         </section>
       )}

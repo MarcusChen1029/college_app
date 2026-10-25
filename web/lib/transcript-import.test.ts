@@ -184,3 +184,30 @@ test("planCourseUpdate reports every problem with the patch", () => {
   assert.equal(r.ok, false);
   if (!r.ok) assert.equal(r.errors.length, 2);
 });
+
+test("replacing a school does not treat its own current courses as duplicates", () => {
+  const first = buildImportPlan(fixture(), none, "ai_import");
+  const existing = saved(first);
+  const add = buildImportPlan(fixture(), existing, "ai_import");
+  assert.ok(add.rows.every((r) => r.duplicateOf !== null));
+  const replace = buildImportPlan(fixture(), existing, "ai_import", new Set([0]));
+  const school0 = replace.rows.filter((r) => r.schoolIndex === 0);
+  assert.ok(school0.length > 0 && school0.every((r) => r.duplicateOf === null && r.input));
+  assert.ok(replace.rows.filter((r) => r.schoolIndex !== 0).every((r) => r.duplicateOf !== null));
+});
+
+test("replace mode still flags a course repeated inside the same paste", () => {
+  const first = buildImportPlan(fixture(), none, "ai_import");
+  const data = fixture();
+  data.schools[0].courses.push({ ...data.schools[0].courses[0] });
+  const replace = buildImportPlan(data, saved(first), "ai_import", new Set([0]));
+  assert.equal(replace.rows[0].duplicateOf, null);
+  assert.notEqual(replace.rows[1].duplicateOf, null);
+});
+
+test("an AI patch with a numeric final grade keeps it as text", () => {
+  const added = planMcpAdd({ school: { name: "Lincoln High" }, courses: [{ academicYear: 2025, name: "Biology", finalGrade: "90" }] }, none);
+  const current = { id: "c1", createdAt: "x", ...added.accepted[0], schoolId: "s1" } as TranscriptCourse;
+  const r = planCourseUpdate(current, { finalGrade: 92 });
+  assert.equal(r.ok && r.value.finalGrade, "92");
+});

@@ -133,17 +133,22 @@ const withDefaults = (raw: Record<string, unknown>, schoolId: string, school: Pi
   overrides: undefined,
 });
 
-function existingKeys(existing: Existing): Map<string, string> {
-  const keys = new Map<string, string>();
+/** Every course the student already has, by key, remembering its school so a replace can leave that school's own courses out. */
+function existingKeys(existing: Existing): Map<string, { id: string; schoolId: string | null }> {
+  const keys = new Map<string, { id: string; schoolId: string | null }>();
   for (const c of existing.courses) {
     const school = existing.schools.find((s) => s.id === c.schoolId);
-    keys.set(courseKey(school?.name ?? "", c), c.id);
+    keys.set(courseKey(school?.name ?? "", c), { id: c.id, schoolId: school?.id ?? null });
   }
   return keys;
 }
 
-/** Validates a pasted transcript against what the student already has. Nothing is saved here. */
-export function buildImportPlan(data: unknown, existing: Existing, source: Source): ImportPlan {
+/**
+ * Validates a pasted transcript against what the student already has. Nothing is saved here.
+ * `replaceSchools` holds the indexes of pasted schools the student is replacing: their current courses are about to go,
+ * so they are not counted as duplicates of the pasted ones (a course repeated inside the paste still is).
+ */
+export function buildImportPlan(data: unknown, existing: Existing, source: Source, replaceSchools: ReadonlySet<number> = new Set()): ImportPlan {
   if (!isObject(data) || !Array.isArray(data.schools)) return { error: `That doesn't look like a "${TRANSCRIPT_FORMAT_VERSION}" transcript (no "schools" list).`, schools: [], rows: [] };
   const keys = existingKeys(existing);
   const schools: ImportSchool[] = [];
@@ -171,8 +176,10 @@ export function buildImportPlan(data: unknown, existing: Existing, source: Sourc
         return;
       }
       const key = courseKey(name, cv.value);
-      const duplicateOf = keys.get(key) ?? null;
-      if (!duplicateOf) keys.set(key, "(an earlier row in this paste)");
+      const hit = keys.get(key);
+      const replaced = hit !== undefined && replaceSchools.has(idx) && hit.schoolId !== null && hit.schoolId === found?.id;
+      const duplicateOf = hit && !replaced ? hit.id : null;
+      if (!hit || replaced) keys.set(key, { id: "(an earlier row in this paste)", schoolId: null });
       rows.push({ schoolIndex: idx, schoolName: name, input: cv.value, raw: rawCourse, errors: [], duplicateOf });
     });
   });
@@ -220,7 +227,7 @@ export function planMcpAdd(args: { school: Partial<SchoolInput> & { name: string
       duplicates++;
       return;
     }
-    keys.set(key, "(an earlier row)");
+    keys.set(key, { id: "(an earlier row)", schoolId: null });
     accepted.push(cv.value);
   });
   return { schoolId: found?.id ?? null, newSchool, schoolErrors: [], accepted, rejected, duplicates };

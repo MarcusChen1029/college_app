@@ -171,6 +171,8 @@ const oneOf = <T extends string>(list: readonly T[], v: unknown): v is T => type
 /** Reads an optional text field: trimmed, "" when missing, an error when it is not text or is too long. */
 function text(v: unknown, max: number, label: string, errors: string[]): string {
   if (v == null) return "";
+  // AIs often write grades as bare numbers (95, 4.7); keep them as the text they stand for rather than dropping them.
+  if (typeof v === "number" && Number.isFinite(v)) v = String(v);
   if (typeof v !== "string") {
     errors.push(`${label} must be text.`);
     return "";
@@ -285,7 +287,7 @@ export function validateCourse(i: Partial<Record<keyof CourseInput, unknown>>): 
     if (typeof n !== "number" || !Number.isFinite(n) || n <= 0) errors.push("The scale maximum must be a positive number.");
     else scaleMax = n;
   }
-  const finalGrade = typeof i.finalGrade === "string" && i.finalGrade.trim() ? text(i.finalGrade, LIMITS.grade, "Final grade", errors) : null;
+  const finalGrade = text(i.finalGrade, LIMITS.grade, "Final grade", errors) || null;
   const value: CourseInput = {
     schoolId,
     academicYear: academicYear ?? 0,
@@ -325,8 +327,8 @@ export function courseStatus(c: Pick<CourseInput, "terms" | "finalGrade">): "gra
 export const normalizeName = (s: string): string => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
 /** Identity of a course for de-duplication: the same school, year, name and period are the same course. */
-export const courseKey = (schoolName: string, c: Pick<CourseInput, "academicYear" | "name" | "period">): string =>
-  [normalizeName(schoolName), c.academicYear, normalizeName(c.name), c.period].join("|");
+export const courseKey = (schoolName: string, c: Pick<CourseInput, "academicYear" | "name" | "period"> & Partial<Pick<CourseInput, "isSummer" | "isRepeat">>): string =>
+  [normalizeName(schoolName), c.academicYear, normalizeName(c.name), c.period, c.isSummer ? "summer" : "", c.isRepeat ? "repeat" : ""].join("|");
 
 type Data = { schools: TranscriptSchool[]; courses: TranscriptCourse[] };
 
