@@ -13,8 +13,9 @@ export default function HelpPage() {
       <section className="space-y-2">
         <h2 className="text-xl font-bold">Where do my account details live?</h2>
         <p className="text-zinc-600">
-          Click your username at the top right. <strong>Settings</strong> holds your email, account type, reminders and the student/teacher
-          switch, and <strong>Sign out</strong> ends your session. Your scores and list summary are under <strong>Profile</strong> in the main menu.
+          <strong>Settings</strong> (in the menu under your name once you&apos;re signed in) holds your email and account type, and{}
+          <strong>Sign out</strong> ends your session. Students also find deadline reminders and their counselors in Settings, and their scores
+          under <strong>Profile</strong> in the main menu.
         </p>
       </section>
 

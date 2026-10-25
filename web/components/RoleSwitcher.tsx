@@ -9,7 +9,7 @@ import { buttonClass } from "@/lib/ui";
 const btn = buttonClass("secondary", "sm");
 const field = "mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2";
 
-/** Account page control to switch between a student and a teacher/counselor account. Shown only to signed-in users with a role. */
+/** Settings page control to switch between a student and a teacher/counselor account. Shown only to signed-in users with a role. */
 export function RoleSwitcher() {
   const student = useStudent();
   const router = useRouter();
