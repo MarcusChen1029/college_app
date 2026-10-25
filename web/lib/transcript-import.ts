@@ -22,6 +22,7 @@ import {
   type Source,
   type TranscriptCourse,
   type TranscriptSchool,
+  type Validated,
 } from "./transcript.ts";
 
 export const TRANSCRIPT_FORMAT_VERSION = "transcript.v1";
@@ -223,4 +224,16 @@ export function planMcpAdd(args: { school: Partial<SchoolInput> & { name: string
     accepted.push(cv.value);
   });
   return { schoolId: found?.id ?? null, newSchool, schoolErrors: [], accepted, rejected, duplicates };
+}
+
+/** What an AI may not change on an existing course: where it lives, who made it, the student's own per-system choices. */
+const PROTECTED = ["id", "createdAt", "schoolId", "source", "overrides"] as const;
+
+/** Applies a partial change (from an AI) to a course and checks the whole result with the same validator as everywhere else. */
+export function planCourseUpdate(current: TranscriptCourse, patch: Record<string, unknown>): Validated<CourseInput> {
+  const { id: _id, createdAt: _created, ...base } = current;
+  void _id;
+  void _created;
+  const safe = Object.fromEntries(Object.entries(patch).filter(([k]) => !(PROTECTED as readonly string[]).includes(k)));
+  return validateCourse({ ...base, ...safe });
 }

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { buildImportPlan, buildPrompt, parseImportText, planMcpAdd, transcriptFormatText, TRANSCRIPT_FORMAT_VERSION, type ImportPlan } from "./transcript-import.ts";
+import { buildImportPlan, buildPrompt, parseImportText, planCourseUpdate, planMcpAdd, transcriptFormatText, TRANSCRIPT_FORMAT_VERSION, type ImportPlan } from "./transcript-import.ts";
 import { emptySchool, GRADE_SCALES, LEVELS, LIMITS, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 const none = { schools: [] as TranscriptSchool[], courses: [] as TranscriptCourse[] };
@@ -159,4 +159,28 @@ test("planMcpAdd rejects every course when the school itself is invalid", () => 
 test("each planned row remembers which school of the paste it came from", () => {
   const plan = buildImportPlan(fixture(), none, "ai_import");
   assert.deepEqual(plan.rows.map((r) => r.schoolIndex), [0, 1, 2]);
+});
+
+test("planCourseUpdate changes only the patched fields and keeps school, source and overrides", () => {
+  const added = planMcpAdd({ school: { name: "Lincoln High" }, courses: [{ academicYear: 2025, name: "Biology", credit: 1, level: "honors" }] }, none);
+  const current = { id: "c1", createdAt: "x", ...added.accepted[0], schoolId: "s1", source: "manual", overrides: { uc: { level: "HL" } } } as TranscriptCourse;
+  const r = planCourseUpdate(current, { name: "AP Biology", level: "ap", credit: "1.5", schoolId: "other", source: "mcp", overrides: {}, id: "zzz" });
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    assert.equal(r.value.name, "AP Biology");
+    assert.equal(r.value.level, "ap");
+    assert.equal(r.value.credit, 1.5);
+    assert.equal(r.value.schoolId, "s1");
+    assert.equal(r.value.source, "manual");
+    assert.deepEqual(r.value.overrides, { uc: { level: "HL" } });
+    assert.equal(r.value.academicYear, 2025);
+  }
+});
+
+test("planCourseUpdate reports every problem with the patch", () => {
+  const added = planMcpAdd({ school: { name: "Lincoln High" }, courses: [{ academicYear: 2025, name: "Biology" }] }, none);
+  const current = { id: "c1", createdAt: "x", ...added.accepted[0], schoolId: "s1" } as TranscriptCourse;
+  const r = planCourseUpdate(current, { level: "nope", credit: 500 });
+  assert.equal(r.ok, false);
+  if (!r.ok) assert.equal(r.errors.length, 2);
 });
