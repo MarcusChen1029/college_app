@@ -16,6 +16,7 @@ import { AiContextButton } from "./AiContextButton";
 import { FitBadge, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT, SELECT_BASE } from "./ChecklistPanel";
 import { Modal } from "./Modal";
+import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
 import { DeadlineChip, StatusPill } from "./StatusPill";
 
@@ -98,9 +99,7 @@ export function MyList({
       ) : (
         <span className="text-zinc-500">
           Saved in this browser only.{" "}
-          <Link href="/profile#account" className="text-blue-600 underline">
-            Sign in
-          </Link>{" "}
+          <SignInButton className="text-blue-600 underline">Sign in</SignInButton>{" "}
           to keep your list on every device.
         </span>
       )}

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import {
   CA_ACTIVITY_TYPES,
@@ -27,6 +26,7 @@ import {
   type UcCategory,
   type UcEntry,
 } from "@/lib/activities";
+import { SignInButton } from "@/components/SignInDialog";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
@@ -380,11 +380,7 @@ export function ActivitiesEditor() {
         {tabBtn("uc", "UC application")}
         <span className="ml-auto text-xs text-zinc-500">
           {student.auth ? "Synced to your account." : "Saved in this browser only. "}
-          {!student.auth && (
-            <Link href="/profile#account" className="text-blue-600 underline">
-              Sign in
-            </Link>
-          )}
+          {!student.auth && <SignInButton className="text-blue-600 underline">Sign in</SignInButton>}
         </span>
       </div>
 

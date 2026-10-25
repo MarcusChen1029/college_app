@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Wave } from "@/components/Doodles";
 import { RoleGate } from "@/components/RoleGate";
+import { SignInDialogHost } from "@/components/SignInDialog";
 import { SiteNav } from "@/components/SiteNav";
 import { missingSupabaseEnv } from "@/lib/config";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
@@ -42,6 +43,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
         <Suspense>
           <RoleGate />
+        </Suspense>
+        <Suspense>
+          <SignInDialogHost />
         </Suspense>
         <main className="flex-1">
           {missingEnv.length > 0 ? (

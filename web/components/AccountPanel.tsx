@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { SignInButton } from "@/components/SignInDialog";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
@@ -46,9 +47,7 @@ export function ReminderToggle() {
   if (!student.auth) {
     return (
       <p className="text-sm text-zinc-600">
-        <a href="#account" className="font-semibold text-blue-700 underline underline-offset-4">
-          Sign in
-        </a>{" "}
+        <SignInButton className="font-semibold text-blue-700 underline underline-offset-4">Sign in</SignInButton>{" "}
         to get deadline reminders by email.
       </p>
     );
@@ -101,9 +100,7 @@ export function AccountLink() {
   if (!mounted || !student.ready) return <span className="w-14" />;
   if (!student.auth) {
     return (
-      <Link href="/profile#account" className={cls} onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}>
-        Sign in
-      </Link>
+      <SignInButton className={cls}>Sign in</SignInButton>
     );
   }
   return <AccountMenu />;
