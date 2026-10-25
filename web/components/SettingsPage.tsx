@@ -6,6 +6,7 @@ import { ReminderToggle } from "@/components/AccountPanel";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { MyCounselors } from "@/components/MyCounselors";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
+import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
@@ -104,6 +105,12 @@ function SignedIn() {
         <section id="reminders" aria-labelledby="reminders-heading" className={`${card} scroll-mt-4`}>
           <h2 id="reminders-heading" className="mb-3 text-xl font-bold">Reminders</h2>
           <ReminderToggle />
+        </section>
+      )}
+      {teacher && (
+        <section id="digest" aria-labelledby="digest-heading" className={`${card} scroll-mt-4`}>
+          <h2 id="digest-heading" className="mb-3 text-xl font-bold">Weekly summary email</h2>
+          <TeacherDigestToggle />
         </section>
       )}
       {student.role === "student" && <MyCounselors />}

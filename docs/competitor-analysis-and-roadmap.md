@@ -91,8 +91,8 @@ Facts found while sizing (2026-10-25):
 | 3 | Scholarship tracker: name, amount, deadline, link, status; deadlines feed reminder emails | M | FolderWave, Xello, SchooLinks | Migration 0027. Reuses `deadline-reminders`. | built 2026-10-25; migration 0027 NOT yet applied, edge function not deployed or run |
 | 4 | "Copy my context for AI" button | S | In-app AI assistants | Reuses `web/lib/ai-context.ts` and Connect AI. | built 2026-10-25 (copy card on /connect-ai) |
 | **Phase 2: teacher and parent depth** | | | | | |
-| 5 | Teacher assigns tasks to a class or student, with due dates and completion | M-L | OverGrad, Cialfo, SchooLinks | New tables + SECURITY DEFINER RPCs on `teacher_links` / `class_members`. Needs a privacy review like teacher notes. | todo |
-| 6 | Teacher email digest | M | OverGrad, Cialfo | Builds on #5. Real sends blocked until Resend secrets are set (dry-run until then). | todo |
+| 5 | Teacher assigns tasks to a class or student, with due dates and completion | M-L | OverGrad, Cialfo, SchooLinks | New tables + SECURITY DEFINER RPCs on `teacher_links` / `class_members`. Needs a privacy review like teacher notes. | built 2026-10-25; migration 0028 NOT yet applied, smoke test in supabase/patches/ not run |
+| 6 | Teacher email digest | M | OverGrad, Cialfo | Builds on #5. Real sends blocked until Resend secrets are set (dry-run until then). | built 2026-10-25 (opt-in weekly, off by default); migration 0029 NOT yet applied, function not deployed or run under Deno |
 | 7 | Parent read-only view | L | 7 of 10 competitors | Tokenized link is simpler than a third role; migration 0025's role switch assumes student/teacher. Explicit column list; no portals, notes or aid. | todo |
 | **Parallel track** | | | | | |
 | 8 | Bulk US colleges from IPEDS / Scorecard (existing Phase 3 plan) | L for pipeline, then ongoing | Cialfo, BridgeU, Maia, Unifrog | Biggest visible gap (100 vs 15,000+). Mark baseline rows as baseline; use insert-only seeds so students' lists are not wiped. | todo |

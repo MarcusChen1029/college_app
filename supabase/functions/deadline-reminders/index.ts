@@ -1,7 +1,10 @@
 // Daily deadline reminder digest. Called by pg_cron (see migration 0005) with x-cron-secret.
 // Env (Supabase function secrets): RESEND_API_KEY, REMINDER_FROM ("College Tracker <reminders@yourdomain>"),
 // APP_URL (e.g. https://college-tracker.vercel.app). Without RESEND_API_KEY it does a dry run.
-import { createClient } from "npm:@supabase/supabase-js@2.118.0";
+// Then it sends the opt-in weekly teacher digest (migration 0029, ../_shared/teacher-digest.ts); that part also stays a
+// dry run without APP_URL, and a failure there is reported in the response without touching the student reminders.
+import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2.118.0";
+import { renderTeacherDigest, selectDigest, type DigestRow } from "../_shared/teacher-digest.ts";
 
 type Due = {
   user_id: string;
@@ -87,6 +90,46 @@ ${parts.join("\n")}
   };
 }
 
+type DigestResult = { teacher: string; count: number; status: string };
+
+// Opt-in weekly teacher digest (migration 0029). Runs after the student reminders; the caller catches any throw so a
+// digest problem never affects student emails. The data comes only from service_role SQL functions, never student tables.
+async function sendTeacherDigests(
+  db: SupabaseClient,
+  opts: { today: string; dryRun: boolean; apiKey: string | undefined; from: string; appUrl: string },
+): Promise<DigestResult[]> {
+  const { data: teachers, error } = await db.rpc("due_teacher_digests", { p_today: opts.today });
+  if (error) throw new Error(`due_teacher_digests: ${error.message}`);
+  const results: DigestResult[] = [];
+  for (const t of (teachers ?? []) as { teacher_id: string; email: string; teacher_name: string | null }[]) {
+    const { data: rows, error: rowsErr } = await db.rpc("teacher_digest_data", { p_teacher: t.teacher_id, p_today: opts.today });
+    if (rowsErr) {
+      results.push({ teacher: t.teacher_id, count: 0, status: `data failed: ${rowsErr.message}` });
+      continue;
+    }
+    const students = selectDigest((rows ?? []) as DigestRow[], opts.today);
+    const email = renderTeacherDigest({ teacherName: t.teacher_name, students, appUrl: opts.appUrl });
+    // Nothing to report: send nothing and log nothing, so the teacher is checked again tomorrow.
+    if (!email) continue;
+    if (opts.dryRun) {
+      results.push({ teacher: t.teacher_id, count: students.length, status: `dry-run: ${email.subject}` });
+      continue;
+    }
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${opts.apiKey}`, "Content-Type": "application/json", "Idempotency-Key": `teacher-digest-${t.teacher_id}-${opts.today}` },
+      body: JSON.stringify({ from: opts.from, to: [t.email], subject: email.subject, html: email.html, text: email.text }),
+    });
+    if (!res.ok) {
+      results.push({ teacher: t.teacher_id, count: students.length, status: `send failed ${res.status}: ${(await res.text()).slice(0, 200)}` });
+      continue;
+    }
+    const { error: logErr } = await db.from("teacher_digest_log").upsert({ teacher_id: t.teacher_id, sent_on: opts.today }, { ignoreDuplicates: true });
+    results.push({ teacher: t.teacher_id, count: students.length, status: logErr ? `sent, log failed: ${logErr.message}` : "sent" });
+  }
+  return results;
+}
+
 Deno.serve(async (req) => {
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
     auth: { persistSession: false },
@@ -153,5 +196,15 @@ Deno.serve(async (req) => {
     results.push({ user: userId, count, status: logErrors.length ? `sent, log failed: ${logErrors.join("; ")}` : "sent" });
   }
 
-  return Response.json({ today, dryRun, users: byUser.size, scholarshipError, results });
+  // Teacher digests are optional: if migration 0029 isn't applied (or anything else fails) student reminders above are unaffected.
+  let teacherDigests: DigestResult[] = [];
+  let teacherDigestError: string | null = null;
+  try {
+    // Also dry-run without APP_URL: the email's "turn it off" link must point at the real site.
+    teacherDigests = await sendTeacherDigests(db, { today, dryRun: dryRun || !Deno.env.get("APP_URL"), apiKey, from, appUrl });
+  } catch (e) {
+    teacherDigestError = e instanceof Error ? e.message : String(e);
+  }
+
+  return Response.json({ today, dryRun, users: byUser.size, scholarshipError, results, teacherDigests, teacherDigestError });
 });
