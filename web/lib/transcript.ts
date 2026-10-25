@@ -322,11 +322,11 @@ export function courseStatus(c: Pick<CourseInput, "terms" | "finalGrade">): "gra
   return "graded";
 }
 
-const norm = (s: string): string => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+export const normalizeName = (s: string): string => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
 /** Identity of a course for de-duplication: the same school, year, name and period are the same course. */
 export const courseKey = (schoolName: string, c: Pick<CourseInput, "academicYear" | "name" | "period">): string =>
-  [norm(schoolName), c.academicYear, norm(c.name), c.period].join("|");
+  [normalizeName(schoolName), c.academicYear, normalizeName(c.name), c.period].join("|");
 
 type Data = { schools: TranscriptSchool[]; courses: TranscriptCourse[] };
 
@@ -342,7 +342,7 @@ export function mergeTranscripts(local: Data, remote: Data): Data & { toInsertSc
   const remap = new Map<string, string>();
   for (const s of local.schools) {
     if (schools.some((r) => r.id === s.id)) continue;
-    const same = schools.find((r) => norm(r.name) === norm(s.name));
+    const same = schools.find((r) => normalizeName(r.name) === normalizeName(s.name));
     if (same) {
       remap.set(s.id, same.id);
       continue;
