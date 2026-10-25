@@ -15,6 +15,8 @@ import {
   fromProfile,
   fromRecommender,
   fromScholarship,
+  fromTranscriptCourse,
+  fromTranscriptSchool,
   portalColumns,
   PROFILE_COLUMNS,
   RECOMMENDER_COLUMNS,
@@ -27,6 +29,12 @@ import {
   toProfile,
   toRecommender,
   toScholarship,
+  toTranscriptCourse,
+  toTranscriptSchool,
+  TRANSCRIPT_COURSE_COLUMNS,
+  TRANSCRIPT_SCHOOL_COLUMNS,
+  transcriptCourseColumns,
+  transcriptSchoolColumns,
   type CollegeRow,
   type ListEntry,
   type Portal,
@@ -34,10 +42,21 @@ import {
   type RecommenderRow,
   type ScholarshipRow,
   type Status,
+  type TranscriptCourseRow,
+  type TranscriptSchoolRow,
 } from "./student-rows";
 import { newRecommenderId, type Recommender, type RecommenderInput } from "./recommenders";
 import { newScholarshipId, type Scholarship, type ScholarshipInput } from "./scholarships";
 import { browserSupabase } from "./supabase-browser";
+import {
+  mergeTranscripts,
+  newTranscriptId,
+  type CourseInput,
+  type SchoolInput,
+  type Source,
+  type TranscriptCourse,
+  type TranscriptSchool,
+} from "./transcript";
 
 export { STATUSES, type ListEntry, type Portal, type Status } from "./student-rows";
 
@@ -60,6 +79,9 @@ type State = {
   recommenders: Recommender[];
   /** The student's scholarship tracker (private; table scholarships, migration 0027). */
   scholarships: Scholarship[];
+  /** The student's transcript (private; tables transcript_schools and transcript_courses, migration 0030). */
+  transcriptSchools: TranscriptSchool[];
+  transcriptCourses: TranscriptCourse[];
   auth: Auth;
   role: Role | null | undefined;
   teacherProfile: TeacherProfile | null;
@@ -71,7 +93,7 @@ type State = {
 
 const KEY = "college-tracker:v1";
 const EMPTY_PORTAL: Portal = { url: "", username: "", password: "" };
-const EMPTY: State = { profile: {}, list: [], recommenders: [], scholarships: [], auth: null, role: undefined, teacherProfile: null, ready: false, sessionChecked: false, syncing: false, error: null };
+const EMPTY: State = { profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], auth: null, role: undefined, teacherProfile: null, ready: false, sessionChecked: false, syncing: false, error: null };
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
 let started = false;
@@ -84,10 +106,13 @@ function emit(patch: Partial<State>) {
   listeners.forEach((l) => l());
 }
 
-function loadLocal(): Pick<State, "profile" | "list" | "recommenders" | "scholarships"> {
+type Local = Pick<State, "profile" | "list" | "recommenders" | "scholarships" | "transcriptSchools" | "transcriptCourses">;
+const EMPTY_LOCAL: Local = { profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [] };
+
+function loadLocal(): Local {
   try {
     const raw = window.localStorage.getItem(KEY);
-    if (!raw) return { profile: {}, list: [], recommenders: [], scholarships: [] };
+    if (!raw) return EMPTY_LOCAL;
     const parsed = JSON.parse(raw);
     // v1 entries predate institutionId/checklist; keep what we can.
     const list = (parsed.list ?? []).map((e: Partial<ListEntry>) => ({ checklist: {}, institutionId: "", portal: EMPTY_PORTAL, ...e }));
@@ -96,15 +121,27 @@ function loadLocal(): Pick<State, "profile" | "list" | "recommenders" | "scholar
       list,
       recommenders: Array.isArray(parsed.recommenders) ? parsed.recommenders : [],
       scholarships: Array.isArray(parsed.scholarships) ? parsed.scholarships : [],
+      transcriptSchools: Array.isArray(parsed.transcriptSchools) ? parsed.transcriptSchools : [],
+      transcriptCourses: Array.isArray(parsed.transcriptCourses) ? parsed.transcriptCourses : [],
     };
   } catch {
-    return { profile: {}, list: [], recommenders: [], scholarships: [] };
+    return EMPTY_LOCAL;
   }
 }
 
 function saveLocal() {
   try {
-    window.localStorage.setItem(KEY, JSON.stringify({ profile: state.profile, list: state.list, recommenders: state.recommenders, scholarships: state.scholarships }));
+    window.localStorage.setItem(
+      KEY,
+      JSON.stringify({
+        profile: state.profile,
+        list: state.list,
+        recommenders: state.recommenders,
+        scholarships: state.scholarships,
+        transcriptSchools: state.transcriptSchools,
+        transcriptCourses: state.transcriptCourses,
+      }),
+    );
   } catch {
     // storage unavailable (private mode) — keep in memory only
   }
@@ -132,7 +169,7 @@ async function loadRemote(userId: string, email: string | null) {
         if (t.data) teacherProfile = { displayName: t.data.display_name, school: t.data.school };
       }
       lastLoad = Date.now();
-      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], ready: true, sessionChecked: true, syncing: false });
+      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false });
       return;
     }
     const local = loadLocal();
@@ -192,10 +229,45 @@ async function loadRemote(userId: string, email: string | null) {
         else scholarships = [...scholarships, ...missingSch];
       }
     }
-    if (!recError && !schError) clearLocal();
+    // The transcript is read in its own try-block too (migration 0030 may not be applied yet); on any failure the local copy is kept.
+    let transcriptSchools: TranscriptSchool[] = [];
+    let transcriptCourses: TranscriptCourse[] = [];
+    let txError: string | null = null;
+    try {
+      const [ts, tc] = await Promise.all([
+        db.from("transcript_schools").select(TRANSCRIPT_SCHOOL_COLUMNS).order("created_at"),
+        db.from("transcript_courses").select(TRANSCRIPT_COURSE_COLUMNS).order("created_at"),
+      ]);
+      const readError = ts.error ?? tc.error;
+      if (readError) {
+        txError = `Couldn't load your transcript: ${readError.message}`;
+      } else {
+        transcriptSchools = ((ts.data ?? []) as unknown as TranscriptSchoolRow[]).map(toTranscriptSchool);
+        transcriptCourses = ((tc.data ?? []) as unknown as TranscriptCourseRow[]).map(toTranscriptCourse);
+        const merged = mergeTranscripts(
+          { schools: local.transcriptSchools.filter((x) => x?.id), courses: local.transcriptCourses.filter((x) => x?.id && x.schoolId) },
+          { schools: transcriptSchools, courses: transcriptCourses },
+        );
+        if (merged.toInsertSchools.length) {
+          const ins = await db.from("transcript_schools").upsert(merged.toInsertSchools.map((x) => fromTranscriptSchool(userId, x)), { onConflict: "id", ignoreDuplicates: true });
+          if (ins.error) txError = `Couldn't move your transcript into your account: ${ins.error.message}`;
+        }
+        if (!txError && merged.toInsertCourses.length) {
+          const ins = await db.from("transcript_courses").upsert(merged.toInsertCourses.map((x) => fromTranscriptCourse(userId, x)), { onConflict: "id", ignoreDuplicates: true });
+          if (ins.error) txError = `Couldn't move your transcript into your account: ${ins.error.message}`;
+        }
+        if (!txError) {
+          transcriptSchools = merged.schools;
+          transcriptCourses = merged.courses;
+        }
+      }
+    } catch (e) {
+      txError = `Couldn't load your transcript: ${(e as Error).message}`;
+    }
+    if (!recError && !schError && !txError) clearLocal();
     lastLoad = Date.now();
-    const error = [recError, schError].filter(Boolean).join(" ") || null;
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, ready: true, sessionChecked: true, syncing: false, error });
+    const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error });
   } catch (e) {
     lastLoad = Date.now();
     emit({ auth: { userId, email }, ready: true, sessionChecked: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
@@ -251,6 +323,12 @@ async function remote(op: () => PromiseLike<{ error: { message: string } | null 
     await loadRemote(userId, email);
     emit({ error: `Couldn't save: ${error.message}` });
   }
+}
+
+// The transcript's writes depend on each other (a school must exist before its courses), so they run one after another.
+let writeChain: Promise<unknown> = Promise.resolve();
+function remoteInOrder(op: () => PromiseLike<{ error: { message: string } | null }>) {
+  writeChain = writeChain.then(() => remote(op)).catch(() => {});
 }
 
 function subscribe(l: () => void) {
@@ -398,6 +476,56 @@ export function useStudent() {
     removeScholarship(id: string) {
       emit({ scholarships: state.scholarships.filter((s) => s.id !== id) });
       if (state.auth) void remote(() => db().from("scholarships").delete().eq("id", id));
+    },
+    /** Adds a school to the transcript (already checked with validateSchool). Returns the new id. */
+    addTranscriptSchool(input: SchoolInput): string {
+      const school: TranscriptSchool = { ...input, id: newTranscriptId(), createdAt: new Date().toISOString() };
+      emit({ transcriptSchools: [...state.transcriptSchools, school] });
+      const a = state.auth;
+      if (a) remoteInOrder(() => db().from("transcript_schools").insert(fromTranscriptSchool(a.userId, school)));
+      return school.id;
+    },
+    updateTranscriptSchool(id: string, patch: Partial<SchoolInput>) {
+      const cur = state.transcriptSchools.find((s) => s.id === id);
+      if (!cur) return;
+      const next = { ...cur, ...patch };
+      emit({ transcriptSchools: state.transcriptSchools.map((s) => (s.id === id ? next : s)) });
+      if (state.auth) remoteInOrder(() => db().from("transcript_schools").update(transcriptSchoolColumns(next)).eq("id", id));
+    },
+    /** Removes a school and, with it, all of its courses. */
+    removeTranscriptSchool(id: string) {
+      emit({ transcriptSchools: state.transcriptSchools.filter((s) => s.id !== id), transcriptCourses: state.transcriptCourses.filter((c) => c.schoolId !== id) });
+      if (state.auth) remoteInOrder(() => db().from("transcript_schools").delete().eq("id", id));
+    },
+    /** Adds courses to a school (each already checked with validateCourse). */
+    addTranscriptCourses(schoolId: string, inputs: CourseInput[], source: Source) {
+      if (!inputs.length) return;
+      const now = new Date().toISOString();
+      const courses: TranscriptCourse[] = inputs.map((i) => ({ ...i, schoolId, source, id: newTranscriptId(), createdAt: now }));
+      emit({ transcriptCourses: [...state.transcriptCourses, ...courses] });
+      const a = state.auth;
+      if (a) remoteInOrder(() => db().from("transcript_courses").insert(courses.map((c) => fromTranscriptCourse(a.userId, c))));
+    },
+    updateTranscriptCourse(id: string, patch: Partial<CourseInput>) {
+      const cur = state.transcriptCourses.find((c) => c.id === id);
+      if (!cur) return;
+      const next = { ...cur, ...patch };
+      emit({ transcriptCourses: state.transcriptCourses.map((c) => (c.id === id ? next : c)) });
+      if (state.auth) remoteInOrder(() => db().from("transcript_courses").update(transcriptCourseColumns(next)).eq("id", id));
+    },
+    removeTranscriptCourse(id: string) {
+      emit({ transcriptCourses: state.transcriptCourses.filter((c) => c.id !== id) });
+      if (state.auth) remoteInOrder(() => db().from("transcript_courses").delete().eq("id", id));
+    },
+    /** Replaces every course of one school (the import's "Replace" choice). Per-system overrides of the old courses go with them. */
+    replaceSchoolCourses(schoolId: string, inputs: CourseInput[], source: Source) {
+      const now = new Date().toISOString();
+      const courses: TranscriptCourse[] = inputs.map((i) => ({ ...i, schoolId, source, id: newTranscriptId(), createdAt: now }));
+      emit({ transcriptCourses: [...state.transcriptCourses.filter((c) => c.schoolId !== schoolId), ...courses] });
+      const a = state.auth;
+      if (!a) return;
+      remoteInOrder(() => db().from("transcript_courses").delete().eq("school_id", schoolId));
+      if (courses.length) remoteInOrder(() => db().from("transcript_courses").insert(courses.map((c) => fromTranscriptCourse(a.userId, c))));
     },
     /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). `returnTo` is a path on this site. */
     async signInWithGoogle(returnTo = "/profile") {
