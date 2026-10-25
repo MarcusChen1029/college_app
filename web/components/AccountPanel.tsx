@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { SignInButton } from "@/components/SignInDialog";
 import type { NavItem } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
@@ -48,13 +48,19 @@ export function SettingsLink({ children, className }: { children: React.ReactNod
 export function AccountMenu({ label, title, items, onSignOut }: { label: string; title?: string; items: readonly NavItem[]; onSignOut?: () => void }) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const menuId = useId();
 
   useEffect(() => {
     if (!open) return;
     const away = (e: MouseEvent) => {
       if (!box.current?.contains(e.target as Node)) setOpen(false);
     };
-    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const esc = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      trigger.current?.focus();
+    };
     document.addEventListener("mousedown", away);
     document.addEventListener("keydown", esc);
     return () => {
@@ -67,9 +73,11 @@ export function AccountMenu({ label, title, items, onSignOut }: { label: string;
   return (
     <div ref={box} className="relative">
       <button
+        ref={trigger}
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-controls={open ? menuId : undefined}
         title={title}
         onClick={() => setOpen((o) => !o)}
         className="flex h-9 max-w-32 items-center gap-1 lg:max-w-40 font-semibold text-zinc-600 hover:text-zinc-900"
@@ -80,7 +88,7 @@ export function AccountMenu({ label, title, items, onSignOut }: { label: string;
         </span>
       </button>
       {open && (
-        <div role="menu" className="absolute right-0 top-full z-50 mt-2 w-48 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
+        <div id={menuId} role="menu" className="absolute right-0 top-full z-50 mt-2 w-48 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
           {items.map(([href, text]) => (
             <Link key={href} role="menuitem" href={href} className={item} onClick={() => setOpen(false)}>
               {text}

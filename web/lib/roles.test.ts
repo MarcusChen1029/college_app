@@ -89,6 +89,10 @@ test("startedFrom: list, starred colleges, scores and English tests all count", 
   assert.equal(startedFrom({ list: [], profile: { tests: { english: { toefl: { total: null } } } } }), false);
 });
 
+test("startedFrom: empty real-shape profile is not started", () => {
+  assert.equal(startedFrom({ list: [], profile: { sat: null, act: null, interested: [], tests: { english: {} } } }), false);
+});
+
 test("/writing is student-only", () => {
   assert.equal(isStudentOnlyPath("/writing/essays"), true);
   assert.equal(isStudentOnlyPath("/settings"), false);

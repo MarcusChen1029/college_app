@@ -75,10 +75,10 @@ function PhoneMenu({ items, account }: { items: readonly NavItem[]; account: She
 /** The header links and account area (desktop bar) plus the phone menu button. Teachers get their own links and never "Get started". */
 export function SiteNav() {
   const student = useStudent();
-  const { role, auth, ready } = student;
+  const { role, auth, ready, sessionChecked } = student;
 
   // Until the stored state is known, same-height placeholders: no links to flash and swap.
-  if (!ready) {
+  if (!ready || !sessionChecked) {
     return (
       <>
         <div className="hidden h-9 md:block" />
@@ -94,7 +94,7 @@ export function SiteNav() {
   const name = student.teacherProfile?.displayName ?? auth?.email?.split("@")[0] ?? "Account";
   const signOut = () => void student.signOut();
   const account: SheetAccount = auth
-    ? { kind: "signedIn", name, items: menu, onSignOut: signOut }
+    ? { kind: "signedIn", name, title: auth.email ? `${name} (${auth.email})` : name, items: menu, onSignOut: signOut }
     : { kind: "signedOut", items: started ? menu : [], getStarted: !started };
 
   return (
@@ -106,7 +106,7 @@ export function SiteNav() {
       </div>
       <div className="ml-auto hidden items-center gap-4 md:flex">
         {auth ? (
-          <AccountMenu label={name} title={auth.email ?? undefined} items={menu} onSignOut={signOut} />
+          <AccountMenu label={name} title={auth.email ? `${name} (${auth.email})` : name} items={menu} onSignOut={signOut} />
         ) : (
           <>
             <SignInButton className={buttonClass("quiet", "sm")}>Sign in</SignInButton>

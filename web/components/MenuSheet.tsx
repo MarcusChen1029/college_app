@@ -8,7 +8,7 @@ import type { NavItem } from "@/lib/roles";
 import { buttonClass } from "@/lib/ui";
 
 export type SheetAccount =
-  | { kind: "signedIn"; name: string; items: readonly NavItem[]; onSignOut: () => void }
+  | { kind: "signedIn"; name: string; title: string; items: readonly NavItem[]; onSignOut: () => void }
   | { kind: "signedOut"; items: readonly NavItem[]; getStarted: boolean };
 
 const ROW = "flex min-h-12 items-center rounded-lg px-3 text-base text-zinc-700 hover:bg-zinc-100";
@@ -44,6 +44,19 @@ export function MenuSheet({
     lastPath.current = pathname;
     if (open) onClose();
   }, [pathname, open, onClose]);
+
+  // Past the md breakpoint the phone menu is hidden; a modal left open would make the page inert.
+  useEffect(() => {
+    if (!open) return;
+    const mq = window.matchMedia("(min-width: 48rem)");
+    if (mq.matches) {
+      onClose();
+      return;
+    }
+    const wide = (e: MediaQueryListEvent) => e.matches && onClose();
+    mq.addEventListener("change", wide);
+    return () => mq.removeEventListener("change", wide);
+  }, [open, onClose]);
 
   const signIn = () => {
     ref.current?.close(); // close first so two modals never stack
@@ -83,7 +96,7 @@ export function MenuSheet({
         </nav>
         <div className="my-2 border-t border-zinc-200" />
         <div className="space-y-0.5">
-          {account.kind === "signedIn" && <p className="truncate px-3 py-1 text-sm font-semibold text-zinc-500">{account.name}</p>}
+          {account.kind === "signedIn" && <p title={account.title} className="truncate px-3 py-1 text-sm font-semibold text-zinc-500">{account.name}</p>}
           {account.items.map(([href, label]) => (
             <Link key={href} href={href} onClick={() => ref.current?.close()} className={ROW}>
               {label}

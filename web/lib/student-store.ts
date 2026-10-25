@@ -48,13 +48,14 @@ type State = {
   role: Role | null | undefined;
   teacherProfile: TeacherProfile | null;
   ready: boolean;
+  sessionChecked: boolean; // the initial session lookup has resolved (with or without a user)
   syncing: boolean;
   error: string | null;
 };
 
 const KEY = "college-tracker:v1";
 const EMPTY_PORTAL: Portal = { url: "", username: "", password: "" };
-const EMPTY: State = { profile: {}, list: [], auth: null, role: undefined, teacherProfile: null, ready: false, syncing: false, error: null };
+const EMPTY: State = { profile: {}, list: [], auth: null, role: undefined, teacherProfile: null, ready: false, sessionChecked: false, syncing: false, error: null };
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
 let started = false;
@@ -110,7 +111,7 @@ async function loadRemote(userId: string, email: string | null) {
         if (t.data) teacherProfile = { displayName: t.data.display_name, school: t.data.school };
       }
       lastLoad = Date.now();
-      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], ready: true, syncing: false });
+      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], ready: true, sessionChecked: true, syncing: false });
       return;
     }
     const local = loadLocal();
@@ -141,10 +142,10 @@ async function loadRemote(userId: string, email: string | null) {
     }
     clearLocal();
     lastLoad = Date.now();
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, ready: true, syncing: false });
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, ready: true, sessionChecked: true, syncing: false });
   } catch (e) {
     lastLoad = Date.now();
-    emit({ auth: { userId, email }, ready: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
+    emit({ auth: { userId, email }, ready: true, sessionChecked: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
   }
 }
 
@@ -162,10 +163,12 @@ function start() {
   try {
     supabase = browserSupabase();
   } catch {
+    state = { ...state, sessionChecked: true };
     return; // no env configured — local-only mode
   }
   supabase.auth.onAuthStateChange((event, session) => {
     const user = session?.user;
+    if (!user && !state.sessionChecked) emit({ sessionChecked: true });
     if (user && (event === "INITIAL_SESSION" || event === "SIGNED_IN") && state.auth?.userId !== user.id) {
       void loadRemote(user.id, user.email ?? null);
     } else if (!user && state.auth) {
