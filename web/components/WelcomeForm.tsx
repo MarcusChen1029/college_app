@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
-import { GoogleSignIn } from "@/components/AccountPanel";
+import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { homePathFor, validateTeacher } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";

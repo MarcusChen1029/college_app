@@ -256,3 +256,8 @@ h3,
 @page {
   margin: 0.6in;
 }
+
+/* Link-like buttons lost the pointer cursor. */
+button:not(:disabled) {
+  cursor: pointer;
+}

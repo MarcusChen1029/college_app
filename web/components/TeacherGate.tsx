@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { GoogleSignIn } from "@/components/AccountPanel";
+import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};

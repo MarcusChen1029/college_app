@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SettingsLink } from "@/components/AccountPanel";
 
 export const metadata: Metadata = { title: "Help" };
@@ -47,11 +46,8 @@ export default function HelpPage() {
       <section className="space-y-2">
         <h2 className="text-xl font-bold">Deadline reminders</h2>
         <p className="text-zinc-600">
-          Signed-in students can get email reminders 14, 3 and 1 days before each deadline on their list. Turn them on or off under the
-          calendar on your{" "}
-          <Link href="/profile" className={link}>
-            Profile
-          </Link>
+          Signed-in students can get email reminders 14, 3 and 1 days before each deadline on their list. Turn them on or off in{" "}
+          <SettingsLink className={link}>Settings</SettingsLink>
           .
         </p>
       </section>

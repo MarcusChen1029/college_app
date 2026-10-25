@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GoogleSignIn } from "@/components/AccountPanel";
+import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { Modal } from "@/components/Modal";
 import { useStudent } from "@/lib/student-store";
 

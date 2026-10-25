@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       { source: "/my-list", destination: "/application/list", permanent: true },
       { source: "/interested", destination: "/application/interested", permanent: true },
       { source: "/portals", destination: "/application/portals", permanent: true },
+      { source: "/account", destination: "/settings", permanent: false },
     ];
   },
   turbopack: {

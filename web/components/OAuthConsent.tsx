@@ -8,7 +8,7 @@ import { AI_CAN, AI_CANNOT, isAuthorizationId, redirectHost } from "@/lib/connec
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass, toneClass } from "@/lib/ui";
-import { GoogleSignIn } from "./AccountPanel";
+import { GoogleSignIn } from "./GoogleSignIn";
 
 const noop = () => () => {};
 const card = "mx-auto max-w-xl space-y-4 rounded-2xl border border-zinc-200 p-6";

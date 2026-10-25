@@ -7,7 +7,7 @@ import { AI_CAN, AI_CANNOT, AI_EXAMPLES, MCP_PATH } from "@/lib/connect-ai";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass } from "@/lib/ui";
-import { GoogleSignIn } from "./AccountPanel";
+import { GoogleSignIn } from "./GoogleSignIn";
 
 const noop = () => () => {};
 const card = "rounded-2xl border border-zinc-200 p-5";

@@ -8,17 +8,15 @@ import { CHECKLIST, progress } from "@/lib/checklist";
 import { isDeadlineDone } from "@/lib/application";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
-import { ReminderToggle } from "./AccountPanel";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
+import { LegacyAccountHash } from "./LegacyAccountHash";
 import { ProfileCards } from "./ProfileCards";
-import { SettingsButton, SettingsPanel, useSettingsOpen } from "./SettingsPanel";
 
 const noop = () => () => {};
 
 export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSummary[]; deadlines: Deadline[] }) {
   const student = useStudent();
-  const [settingsOpen, setSettingsOpen] = useSettingsOpen();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
@@ -60,6 +58,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
   return (
     <div className="space-y-8">
+      <LegacyAccountHash />
       <section className="flex flex-wrap items-center gap-4 rounded-3xl bg-blue-50 p-6">
         <span aria-hidden className="grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-sun font-display text-2xl font-bold">
           {name.charAt(0).toUpperCase()}
@@ -72,13 +71,10 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             {profile.international ? "Applying from abroad" : "Applying from the US"}
           </p>
         </div>
-        <SettingsButton open={settingsOpen} onToggle={() => setSettingsOpen((o) => !o)} />
         <Link href="/start" className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-white">
           Redo setup
         </Link>
       </section>
-
-      <SettingsPanel open={settingsOpen} />
 
       <ProfileCards />
 
@@ -135,9 +131,12 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             Deadlines
           </h2>
           <DeadlineCalendar events={events} today={today} />
-          <div className="border-t border-zinc-100 pt-4">
-            <ReminderToggle />
-          </div>
+          <p className="border-t border-zinc-100 pt-4 text-sm text-zinc-600">
+            Reminder emails:{" "}
+            <Link href="/settings#reminders" className="font-semibold text-blue-700 underline underline-offset-4">
+              Settings
+            </Link>
+          </p>
         </aside>
       </div>
     </div>
