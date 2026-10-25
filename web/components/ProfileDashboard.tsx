@@ -10,7 +10,6 @@ import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
-import { LegacyAccountHash } from "./LegacyAccountHash";
 import { ProfileCards } from "./ProfileCards";
 
 const noop = () => () => {};
@@ -58,7 +57,6 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
   return (
     <div className="space-y-8">
-      <LegacyAccountHash />
       <section className="flex flex-wrap items-center gap-4 rounded-3xl bg-blue-50 p-6">
         <span aria-hidden className="grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-sun font-display text-2xl font-bold">
           {name.charAt(0).toUpperCase()}

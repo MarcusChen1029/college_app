@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { ReminderToggle } from "@/components/AccountPanel";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { MyCounselors } from "@/components/MyCounselors";
@@ -26,13 +26,18 @@ export function SettingsPage() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const ready = mounted && student.ready;
+  const signedIn = !!student.auth;
+  const scrolled = useRef(false);
 
-  // The cards render after load, so the browser's own anchor jump (e.g. #reminders) misses them.
+  // The cards render after load, so the browser's own anchor jump (e.g. #reminders) misses them. Scroll once only.
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || scrolled.current) return;
     const id = decodeURIComponent(window.location.hash.slice(1));
-    if (id) document.getElementById(id)?.scrollIntoView();
-  }, [ready, student.auth, student.role]);
+    const el = id ? document.getElementById(id) : null;
+    if (!el) return;
+    scrolled.current = true;
+    el.scrollIntoView();
+  }, [ready, signedIn, student.role]);
 
   return (
     <div className="space-y-6">
@@ -44,11 +49,11 @@ export function SettingsPage() {
 
 function SignedOut() {
   return (
-    <div className={`${card} space-y-3`}>
-      <h2 className="text-xl font-bold">Sign in to save your list and get reminders</h2>
+    <section aria-labelledby="signin-heading" className={`${card} space-y-3`}>
+      <h2 id="signin-heading" className="text-xl font-bold">Sign in to save your list and get reminders</h2>
       <GoogleSignIn returnTo="/settings" />
       <p className="text-xs text-zinc-500">Your current list and scores will be saved to your account.</p>
-    </div>
+    </section>
   );
 }
 
@@ -61,8 +66,8 @@ function SignedIn() {
 
   return (
     <>
-      <section className={card}>
-        <h2 className="text-xl font-bold">Account</h2>
+      <section aria-labelledby="account-heading" className={card}>
+        <h2 id="account-heading" className="text-xl font-bold">Account</h2>
         <dl className="mt-2 divide-y divide-zinc-100">
           <Row label="Username">{username}</Row>
           <Row label="Email">{auth.email}</Row>
@@ -95,8 +100,8 @@ function SignedIn() {
         </button>
       </section>
       {student.role === "student" && (
-        <section id="reminders" className={`${card} scroll-mt-4`}>
-          <h2 className="mb-3 text-xl font-bold">Reminders</h2>
+        <section id="reminders" aria-labelledby="reminders-heading" className={`${card} scroll-mt-4`}>
+          <h2 id="reminders-heading" className="mb-3 text-xl font-bold">Reminders</h2>
           <ReminderToggle />
         </section>
       )}
