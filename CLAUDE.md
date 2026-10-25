@@ -119,3 +119,8 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 3. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
 4. Phase 3: bulk-import base rows for all US colleges from College Scorecard / IPEDS (name, location, size, admit rate,
    SAT ranges, cost), marked as such. CDS details can then be added school by school.
+
+## Competitor research & feature roadmap
+`docs/competitor-analysis-and-roadmap.md` (2026-10-25) compares us with Xello, SchooLinks, OverGrad, Unifrog, BridgeU, Cialfo, FolderWave,
+MaiaLearning, Naviance and Parchment, and holds a prioritized feature roadmap with effort estimates and a status column. Read it before
+planning new features, and update the status column when an item lands.
