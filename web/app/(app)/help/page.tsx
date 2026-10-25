@@ -13,8 +13,8 @@ export default function HelpPage() {
       <section className="space-y-2">
         <h2 className="text-xl font-bold">Where do my account details live?</h2>
         <p className="text-zinc-600">
-          Click your username at the top right. <strong>Profile</strong> is your scores and list summary, <strong>Settings</strong> holds your
-          email, account type and the student/teacher switch, and <strong>Sign out</strong> ends your session.
+          Click your username at the top right. <strong>Settings</strong> holds your email, account type, reminders and the student/teacher
+          switch, and <strong>Sign out</strong> ends your session. Your scores and list summary are under <strong>Profile</strong> in the main menu.
         </p>
       </section>
 

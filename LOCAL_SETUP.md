@@ -52,7 +52,7 @@ Other commands (run inside `web/`):
 | `npx tsc --noEmit` | type check |
 | `npm run build && npm start` | production build + server (same as Vercel) |
 
-Pages: `/` colleges list · `/colleges/mit` detail · `/compare?c=mit,purdue` · `/my-list` · `/account` (sign in).
+Pages: `/` colleges list · `/colleges/mit` detail · `/compare?c=mit,purdue` · `/application/list` (My colleges) · `/settings` (sign in, reminders).
 
 **Signing in locally:** "Continue with Google" returns to `http://localhost:3000/profile`, which only works
 once the Google provider is set up and that URL is allowed in Supabase (see §4).

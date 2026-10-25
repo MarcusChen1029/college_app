@@ -37,10 +37,10 @@ function render(items: Due[], appUrl: string) {
     html: `<div style="font-family:system-ui,sans-serif;font-size:14px;color:#18181b">
 <p>Upcoming deadlines for colleges on your list:</p>
 <table>${rows}</table>
-<p><a href="${appUrl}/my-list">Open my list</a> · Always confirm dates on the college's own website.</p>
-<p style="color:#71717a;font-size:12px">You get these because reminders are on in your College Tracker account. <a href="${appUrl}/account">Turn them off</a>.</p>
+<p><a href="${appUrl}/application/list">Open my list</a> · Always confirm dates on the college's own website.</p>
+<p style="color:#71717a;font-size:12px">You get these because reminders are on in your College Tracker account. <a href="${appUrl}/settings#reminders">Turn them off</a>.</p>
 </div>`,
-    text: `Upcoming deadlines for colleges on your list:\n\n${text}\n\nOpen my list: ${appUrl}/my-list\nTurn reminders off: ${appUrl}/account`,
+    text: `Upcoming deadlines for colleges on your list:\n\n${text}\n\nOpen my list: ${appUrl}/application/list\nTurn reminders off: ${appUrl}/settings#reminders`,
   };
 }
 

@@ -12,7 +12,7 @@ Australia, etc. without a rewrite.
 | Phase | Scope | Outcome |
 |---|---|---|
 | **1. Demo ✅ built** | 10 US colleges in Supabase; browse / detail / compare / my-list UI; reach-target-safety labels | Proves the data model and data-collection workflow |
-| **2. Student accounts ✅ built** | Email-link sign-in (Supabase Auth); profile + list + application checklist stored in `student_profiles` / `student_colleges` with per-user RLS; local data merged on first sign-in; daily deadline reminder emails (Edge Function + pg_cron, opt-out on /account) | Sync across devices |
+| **2. Student accounts ✅ built** | Email-link sign-in (Supabase Auth); profile + list + application checklist stored in `student_profiles` / `student_colleges` with per-user RLS; local data merged on first sign-in; daily deadline reminder emails (Edge Function + pg_cron, opt-out in Settings (/settings)) | Sync across devices |
 | **2b. 100 popular colleges ✅ built (2026-10-22)** | 90 more colleges: CDS 2025-26 where readable, else IPEDS/Scorecard baseline; 2026-27 deadlines, English, aid, score codes, tiers | Covers the schools most students ask about |
 | 3. All US colleges | Bulk import base data (name, location, size) from IPEDS / College Scorecard; CDS stats added school by school | Coverage |
 | 4. International | UK (UCAS), Canada, Australia: new deadline types, grade systems (A-levels, IB, ATAR), English-test rules | Multi-country |

@@ -1,6 +1,6 @@
 import { ResumeBuilder } from "@/components/ResumeBuilder";
 
-export const metadata = { title: "Resume" };
+export const metadata = { title: "Résumé" };
 
 export default function ResumePage() {
   return (

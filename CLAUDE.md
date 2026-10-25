@@ -26,7 +26,7 @@ Plan: all US colleges next, then UK/CA/AU.
     Builds never touch Supabase; pages wrap data in `<Suspense>`.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
     signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
-  - Google Docs (Essays page, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
+  - Google Docs (Writing > Essays page, `/writing/essays`, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
     Needs server env vars `GOOGLE_DOCS_CLIENT_ID`, `GOOGLE_DOCS_CLIENT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`,
     `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64, 32 bytes) and migration 0016 (`google_tokens`, **written, not yet applied**).
     Without them the page keeps the docs.new + paste-link flow.
@@ -37,7 +37,9 @@ Plan: all US colleges next, then UK/CA/AU.
   - Linking (migration 0021): teachers make `classes` and `join_codes` (class code, or one personal "individual" code); a student redeems a code via
     `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
     row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
-  - Switching role (migration 0025): `RoleSwitcher` (Account page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
+  - Navigation (UX redesign phase 2): nav model in `web/lib/roles.ts` (`navFor`/`accountMenuFor`/`startedFrom`); sign-in is a dialog opened with `openSignIn()`;
+    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays/Activities/Resume are under `/writing/*`.
+  - Switching role (migration 0025): `RoleSwitcher` (Settings page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
     account has links (a student must leave their teachers, a teacher must remove their students); leaving teacher mode revokes all join codes and archives
     classes. The other side's data is kept so switching back restores it.
   - Teacher read access (migrations 0022/0023): teachers read students only through `teacher_roster(p_today)`, `teacher_student(id, p_today)`,
@@ -100,7 +102,7 @@ UConn has no 2026-27 deadlines (its admissions site was down). New colleges with
 (e.g. "University of California-Riverside").
 
 ### Earlier status (2026-10-20)
-Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my-list/account),
+Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my colleges/settings),
 sign-in + synced list + checklist, reminder function + cron. All SQL patches have been run on the live DB.
 
 **Open issue (Vercel):** the deployed site shows "A server error occurred". Cause confirmed: env vars are missing in Vercel.
