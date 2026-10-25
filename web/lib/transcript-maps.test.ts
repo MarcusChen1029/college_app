@@ -85,3 +85,67 @@ test("STARS asks for the unweighted grade and IP for in-progress terms", () => {
   assert.ok(m.warnings.some((w) => /unweighted/i.test(w)));
   assert.ok(m.warnings.some((w) => /IP/.test(w)));
 });
+
+test("all four systems are registered", () => {
+  assert.deepEqual([...SYSTEM_IDS].sort(), ["common_app", "csu", "stars", "uc"]);
+});
+
+test("CSU maps course types exactly", () => {
+  assert.equal(field(mapCourse("csu", school(), course({ level: "ap" })), "level").value, "Advanced Placement");
+  assert.equal(field(mapCourse("csu", school(), course({ level: "regular" })), "level").value, "None");
+  assert.equal(field(mapCourse("csu", school(), course({ level: "ib_hl" })), "level").value, "International Baccalaureate");
+  assert.equal(field(mapCourse("csu", school(), course({ level: "honors" })), "level").value, "Honors");
+});
+
+test("CSU maps subjects to A-G areas and splits science", () => {
+  assert.match(field(mapCourse("csu", school(), course({ subject: "mathematics" })), "subject").value ?? "", /^C /);
+  const bio = field(mapCourse("csu", school(), course({ subject: "science", subSubject: "biology" })), "subSubject");
+  assert.match(bio.value ?? "", /^D1/);
+  const phys = field(mapCourse("csu", school(), course({ subject: "science", subSubject: "physics" })), "subSubject");
+  assert.match(phys.value ?? "", /^D2/);
+  assert.equal(field(mapCourse("csu", school(), course({ subject: "history_social" })), "subject").status, "unverified");
+});
+
+test("CSU warns for non-US and college schools", () => {
+  assert.ok(mapCourse("csu", school({ country: "Taiwan" }), course()).warnings.some((w) => /foreign/i.test(w)));
+  assert.ok(mapCourse("csu", school({ kind: "college" }), course()).warnings.some((w) => /college/i.test(w)));
+  assert.ok(!mapCourse("csu", school(), course()).warnings.some((w) => /foreign/i.test(w)));
+});
+
+test("UC maps honors codes", () => {
+  const honors = field(mapCourse("uc", school(), course({ level: "honors" })), "level");
+  assert.equal(honors.value, "HL");
+  assert.equal(honors.status, "unverified");
+  assert.equal(field(mapCourse("uc", school(), course({ level: "dual_enrollment" })), "level").value, "CL");
+  assert.equal(field(mapCourse("uc", school(), course({ level: "regular" })), "level").value, "NH");
+  assert.equal(field(mapCourse("uc", school(), course({ level: "ap" })), "level").value, "AP");
+  assert.equal(field(mapCourse("uc", school(), course({ level: "ib_sl" })), "level").value, "IB");
+});
+
+test("UC ignores plus and minus and flags it", () => {
+  const m = mapCourse("uc", school(), course({ terms: [{ term: "S1", grade: "B+", status: "graded" }, { term: "S2", grade: "A-", status: "graded" }] }));
+  assert.equal(field(m, "grades").value, "S1: B, S2: A");
+  assert.ok(m.warnings.some((w) => /\+|-/.test(w) && /ignore/i.test(w)));
+});
+
+test("UC rejects Pass/Fail, and uses IP, PL and NO codes", () => {
+  const pf = mapCourse("uc", school(), course({ scale: "pass_fail", terms: [{ term: "S1", grade: "P", status: "graded" }] }));
+  assert.ok(pf.warnings.some((w) => /pass/i.test(w)));
+  const codes = mapCourse("uc", school(), course({ terms: [{ term: "S1", grade: "", status: "in_progress" }, { term: "S2", grade: "", status: "planned" }, { term: "FY", grade: "", status: "none" }] }));
+  assert.equal(field(codes, "grades").value, "S1: IP, S2: PL, FY: NO");
+});
+
+test("UC has no credit field, and maps arts to its five disciplines", () => {
+  const m = mapCourse("uc", school(), course({ subject: "arts", subSubject: "dance" }));
+  assert.equal(field(m, "credit").status, "none");
+  assert.equal(field(m, "subject").value, "F – Visual and performing arts");
+  assert.equal(field(m, "subSubject").value, "Dance");
+  assert.equal(field(mapCourse("uc", school(), course({ subject: "arts", subSubject: "interdisciplinary" })), "subSubject").value, "Interdisciplinary Arts");
+});
+
+test("UC flags college, summer and non-A-G courses", () => {
+  const w = mapCourse("uc", school(), course({ isCollege: true, isSummer: true, subject: "pe_health" })).warnings.join(" | ");
+  assert.match(w, /Colleges attended/);
+  assert.match(w, /summer/i);
+  assert.match(w, /A-G/);
+});
