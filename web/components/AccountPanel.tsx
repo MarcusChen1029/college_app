@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SignInButton } from "@/components/SignInDialog";
+import type { NavItem } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
-
-const noop = () => () => {};
 
 /** The reminder-emails switch. It lives under the deadline calendar; reminders are only sent to signed-in accounts. */
 export function ReminderToggle() {
@@ -45,28 +44,10 @@ export function SettingsLink({ children, className }: { children: React.ReactNod
   );
 }
 
-/** Top-right nav entry: "Sign in" when signed out, otherwise the username menu. */
-export function AccountLink() {
-  const student = useStudent();
-  const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const cls = "max-w-40 truncate font-semibold text-zinc-600 hover:text-zinc-900";
-  if (!mounted || !student.ready) return <span className="w-14" />;
-  if (!student.auth) {
-    return (
-      <SignInButton className={cls}>Sign in</SignInButton>
-    );
-  }
-  return <AccountMenu />;
-}
-
-/** The signed-in username with a drop-down: Profile (Dashboard for teachers), Settings, Help, Sign out. */
-function AccountMenu() {
-  const student = useStudent();
+/** A header drop-down: the username (with Sign out) or "More" (without). Items are real links; Esc and an outside click close it. */
+export function AccountMenu({ label, title, items, onSignOut }: { label: string; title?: string; items: readonly NavItem[]; onSignOut?: () => void }) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
-  const teacher = student.role === "teacher";
-  const home = teacher ? "/teacher" : "/profile";
-  const name = student.teacherProfile?.displayName ?? student.auth?.email?.split("@")[0] ?? "Account";
 
   useEffect(() => {
     if (!open) return;
@@ -82,44 +63,42 @@ function AccountMenu() {
     };
   }, [open]);
 
-  const item = "block w-full rounded-lg px-3 py-2 text-left text-sm text-zinc-700 hover:bg-zinc-100";
+  const item = "block w-full rounded-lg px-3 py-2.5 text-left text-sm text-zinc-700 hover:bg-zinc-100";
   return (
     <div ref={box} className="relative">
       <button
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        title={student.auth?.email ?? undefined}
+        title={title}
         onClick={() => setOpen((o) => !o)}
-        className="flex max-w-40 items-center gap-1 font-semibold text-zinc-600 hover:text-zinc-900"
+        className="flex h-9 max-w-32 items-center gap-1 lg:max-w-40 font-semibold text-zinc-600 hover:text-zinc-900"
       >
-        <span className="truncate">{name}</span>
+        <span className="truncate">{label}</span>
         <span aria-hidden className="text-xs">
           ▾
         </span>
       </button>
       {open && (
-        <div role="menu" className="absolute right-0 top-full z-50 mt-2 w-44 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
-          <Link role="menuitem" href={home} className={item} onClick={() => setOpen(false)}>
-            {teacher ? "Dashboard" : "Profile"}
-          </Link>
-          <Link role="menuitem" href="/settings" className={item} onClick={() => setOpen(false)}>
-            Settings
-          </Link>
-          <Link role="menuitem" href="/help" className={item} onClick={() => setOpen(false)}>
-            Help
-          </Link>
-          <button
-            type="button"
-            role="menuitem"
-            className={`${item} border-t border-zinc-100`}
-            onClick={() => {
-              setOpen(false);
-              void student.signOut();
-            }}
-          >
-            Sign out
-          </button>
+        <div role="menu" className="absolute right-0 top-full z-50 mt-2 w-48 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
+          {items.map(([href, text]) => (
+            <Link key={href} role="menuitem" href={href} className={item} onClick={() => setOpen(false)}>
+              {text}
+            </Link>
+          ))}
+          {onSignOut && (
+            <button
+              type="button"
+              role="menuitem"
+              className={`${item} border-t border-zinc-100`}
+              onClick={() => {
+                setOpen(false);
+                onSignOut();
+              }}
+            >
+              Sign out
+            </button>
+          )}
         </div>
       )}
     </div>

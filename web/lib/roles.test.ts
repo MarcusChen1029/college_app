@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { accountMenuFor, activeNavHref, hasStarted, homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, validateTeacher } from "./roles.ts";
+import { accountMenuFor, activeNavHref, hasStarted, homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, startedFrom, validateTeacher } from "./roles.ts";
 
 test("parseRole accepts only the two roles", () => {
   assert.equal(parseRole("student"), "student");
@@ -77,6 +77,16 @@ test("hasStarted: a saved college or any score counts", () => {
   assert.equal(hasStarted({ collegeCount: 0, hasScore: false }), false);
   assert.equal(hasStarted({ collegeCount: 1, hasScore: false }), true);
   assert.equal(hasStarted({ collegeCount: 0, hasScore: true }), true);
+});
+
+test("startedFrom: list, starred colleges, scores and English tests all count", () => {
+  assert.equal(startedFrom({ list: [], profile: {} }), false);
+  assert.equal(startedFrom({ list: [{}], profile: {} }), true);
+  assert.equal(startedFrom({ list: [], profile: { interested: ["mit"] } }), true);
+  assert.equal(startedFrom({ list: [], profile: { sat: 1400 } }), true);
+  assert.equal(startedFrom({ list: [], profile: { act: 30 } }), true);
+  assert.equal(startedFrom({ list: [], profile: { tests: { english: { toefl: { total: null }, ielts: { total: 7 } } } } }), true);
+  assert.equal(startedFrom({ list: [], profile: { tests: { english: { toefl: { total: null } } } } }), false);
 });
 
 test("/writing is student-only", () => {

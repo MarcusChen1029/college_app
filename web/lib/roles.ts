@@ -94,6 +94,16 @@ export function hasStarted(s: { collegeCount: number; hasScore: boolean }): bool
   return s.collegeCount > 0 || s.hasScore;
 }
 
+/** `hasStarted` for a student state: a saved or starred college, a test score, or any English test score. */
+export function startedFrom(s: {
+  list: readonly unknown[];
+  profile: { sat?: number | null; act?: number | null; interested?: readonly unknown[]; tests?: { english?: Record<string, { total?: number | null } | undefined> } };
+}): boolean {
+  const english = Object.values(s.profile.tests?.english ?? {});
+  const hasScore = s.profile.sat != null || s.profile.act != null || english.some((e) => e?.total != null);
+  return hasStarted({ collegeCount: s.list.length + (s.profile.interested?.length ?? 0), hasScore });
+}
+
 /** The nav href that matches the current page: the longest whole-segment prefix of `pathname`, or null. */
 export function activeNavHref(pathname: string, hrefs: readonly string[]): string | null {
   let best: string | null = null;
