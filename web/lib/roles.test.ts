@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { activeNavHref, homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, validateTeacher } from "./roles.ts";
+import { accountMenuFor, activeNavHref, hasStarted, homePathFor, isStudentOnlyPath, navFor, parseRole, redirectFor, roleChangeMessage, validateTeacher } from "./roles.ts";
 
 test("parseRole accepts only the two roles", () => {
   assert.equal(parseRole("student"), "student");
@@ -58,11 +58,30 @@ test("redirectFor: teachers are kept out of student-only pages, students are not
   assert.equal(redirectFor("student", "/profile", true), null);
 });
 
-test("navFor: teachers get no student pages; everyone else gets the student nav", () => {
-  assert.equal(navFor("teacher").some(([href]) => href === "/profile"), false);
-  assert.deepEqual(navFor("teacher").map(([href]) => href).filter((h) => h.startsWith("/teacher")), ["/teacher", "/teacher/classes", "/teacher/students", "/teacher/deadlines"]);
-  assert.deepEqual(navFor(null), navFor("student"));
-  assert.deepEqual(navFor(undefined), navFor("student"));
+const hrefsOf = (items: readonly (readonly [string, string])[]) => items.map(([h]) => h);
+
+test("navFor: teacher, student, and public navs", () => {
+  assert.deepEqual(hrefsOf(navFor("teacher", { signedIn: true, started: false })), ["/teacher", "/teacher/students", "/teacher/classes", "/teacher/deadlines", "/colleges", "/compare"]);
+  assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: false })), ["/colleges", "/pricing", "/help"]);
+  assert.deepEqual(navFor(undefined, { signedIn: false, started: true }), navFor("student", { signedIn: true, started: false }));
+  assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: true })), ["/colleges", "/compare", "/application", "/writing", "/profile"]);
+});
+
+test("accountMenuFor: teachers get settings and help, everyone else the student menu", () => {
+  assert.deepEqual(hrefsOf(accountMenuFor("teacher")), ["/settings", "/help"]);
+  assert.deepEqual(hrefsOf(accountMenuFor("student")), ["/settings", "/connect-ai", "/pricing", "/help"]);
+  assert.deepEqual(accountMenuFor(null), accountMenuFor("student"));
+});
+
+test("hasStarted: a saved college or any score counts", () => {
+  assert.equal(hasStarted({ collegeCount: 0, hasScore: false }), false);
+  assert.equal(hasStarted({ collegeCount: 1, hasScore: false }), true);
+  assert.equal(hasStarted({ collegeCount: 0, hasScore: true }), true);
+});
+
+test("/writing is student-only", () => {
+  assert.equal(isStudentOnlyPath("/writing/essays"), true);
+  assert.equal(isStudentOnlyPath("/settings"), false);
 });
 
 test("roleChangeMessage explains what to do first", () => {
@@ -78,12 +97,12 @@ test("/account is student-only", () => {
 });
 
 test("activeNavHref picks the longest matching nav item", () => {
-  const t = navFor("teacher").map(([h]) => h);
-  const s = navFor("student").map(([h]) => h);
+  const t = navFor("teacher", { signedIn: true, started: false }).map(([h]) => h);
+  const s = navFor("student", { signedIn: true, started: false }).map(([h]) => h);
   assert.equal(activeNavHref("/teacher/classes", t), "/teacher/classes");
   assert.equal(activeNavHref("/teacher", t), "/teacher");
   assert.equal(activeNavHref("/teacher/students", t), "/teacher/students");
-  assert.equal(activeNavHref("/application/essays", s), "/application");
+  assert.equal(activeNavHref("/writing/essays", s), "/writing");
   assert.equal(activeNavHref("/colleges/harvard", s), "/colleges");
   assert.equal(activeNavHref("/compare", s), "/compare");
   assert.equal(activeNavHref("/", s), null);

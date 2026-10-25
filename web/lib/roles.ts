@@ -16,7 +16,7 @@ export function validateTeacher(i: { displayName: string; school: string }):
 }
 
 /** Pages that only make sense for a student (their own list, profile, résumé…). */
-export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/account"] as const;
+export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/account", "/writing"] as const;
 
 export function isStudentOnlyPath(pathname: string): boolean {
   return STUDENT_ONLY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -41,27 +41,57 @@ export function redirectFor(role: Role | null | undefined, pathname: string, sig
   return null;
 }
 
-const STUDENT_NAV = [
-  ["/colleges", "Colleges"],
-  ["/compare", "Compare"],
-  ["/application", "My application"],
-  ["/activities", "Activities"],
-  ["/resume", "Resume"],
-  ["/connect-ai", "Connect AI"],
-  ["/pricing", "Pricing"],
-] as const;
+export type NavItem = readonly [href: string, label: string];
 
-const TEACHER_NAV = [
-  ["/colleges", "Colleges"],
+const STUDENT_NAV: readonly NavItem[] = [
+  ["/colleges", "Explore"],
   ["/compare", "Compare"],
-  ["/teacher", "Dashboard"],
-  ["/teacher/classes", "Classes"],
+  ["/application", "My colleges"],
+  ["/writing", "Writing"],
+  ["/profile", "Profile"],
+];
+
+const TEACHER_NAV: readonly NavItem[] = [
+  ["/teacher", "Home"],
   ["/teacher/students", "Students"],
+  ["/teacher/classes", "Classes"],
   ["/teacher/deadlines", "Deadlines"],
-] as const;
+  ["/colleges", "Explore"],
+  ["/compare", "Compare"],
+];
 
-export function navFor(role: Role | null | undefined): readonly (readonly [href: string, label: string])[] {
-  return role === "teacher" ? TEACHER_NAV : STUDENT_NAV;
+const PUBLIC_NAV: readonly NavItem[] = [
+  ["/colleges", "Explore"],
+  ["/pricing", "Pricing"],
+  ["/help", "Help"],
+];
+
+const STUDENT_MENU: readonly NavItem[] = [
+  ["/settings", "Settings"],
+  ["/connect-ai", "Connect AI"],
+  ["/pricing", "Plan & billing"],
+  ["/help", "Help"],
+];
+
+const TEACHER_MENU: readonly NavItem[] = [
+  ["/settings", "Settings"],
+  ["/help", "Help"],
+];
+
+/** Header links: teachers get theirs; signed-in or started students the student nav; other visitors the public nav. */
+export function navFor(role: Role | null | undefined, opts: { signedIn: boolean; started: boolean }): readonly NavItem[] {
+  if (role === "teacher") return TEACHER_NAV;
+  return opts.signedIn || opts.started ? STUDENT_NAV : PUBLIC_NAV;
+}
+
+/** Items under the username (before the divider and Sign out); anything but a teacher gets the student menu. */
+export function accountMenuFor(role: Role | null | undefined): readonly NavItem[] {
+  return role === "teacher" ? TEACHER_MENU : STUDENT_MENU;
+}
+
+/** A signed-out visitor has "started" once they saved a college or entered a score. */
+export function hasStarted(s: { collegeCount: number; hasScore: boolean }): boolean {
+  return s.collegeCount > 0 || s.hasScore;
 }
 
 /** The nav href that matches the current page: the longest whole-segment prefix of `pathname`, or null. */
