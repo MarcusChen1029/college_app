@@ -12,7 +12,7 @@ import { resultTone, stageTone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { AddCustomCollege } from "./AddCustomCollege";
-import { AiContextButton } from "./AiContextButton";
+import { StudentAiContextButton } from "./AiContextButton";
 import { FitBadge, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT, SELECT_BASE } from "./ChecklistPanel";
 import { Modal } from "./Modal";
@@ -116,18 +116,7 @@ export function MyList({
         </span>
         {addCustomButton}
         {listed.length > 0 && <SchoolCodes colleges={listed} codes={codes} />}
-        {student.list.length > 0 && (
-          <AiContextButton
-            colleges={student.list.flatMap((e) => {
-              const college = resolve(e);
-              return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
-            })}
-            profile={student.profile}
-            plan={student.plan}
-            deadlines={allDeadlines}
-            lookups={{ plans, englishTests }}
-          />
-        )}
+        <StudentAiContextButton colleges={colleges} deadlines={deadlines} plans={plans} englishTests={englishTests} />
       </span>
       {student.plan.limit != null && student.list.length > student.plan.limit && (
         <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>

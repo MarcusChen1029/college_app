@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { AidCompare } from "@/components/AidCompare";
 import { ResultsList } from "@/components/ResultsList";
 import { getLookups, getSummaries } from "@/lib/data";
 
@@ -6,7 +7,12 @@ export const metadata = { title: "Results" };
 
 async function Data() {
   const [colleges, lookups] = await Promise.all([getSummaries(), getLookups()]);
-  return <ResultsList colleges={colleges} plans={lookups.plans} />;
+  return (
+    <div className="space-y-8">
+      <ResultsList colleges={colleges} plans={lookups.plans} />
+      <AidCompare colleges={colleges} />
+    </div>
+  );
 }
 
 export default function ResultsPage() {

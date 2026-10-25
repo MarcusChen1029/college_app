@@ -9,7 +9,9 @@ import type { StudentProfile } from "./fit.ts";
 import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
 import type { PersonalEssays } from "./personal-essays.ts";
 import type { PortalData } from "./portals.ts";
+import type { Recommender, RecommenderRole, RecommenderStatus } from "./recommenders.ts";
 import type { ResumeSettings } from "./resume.ts";
+import type { Scholarship, ScholarshipStatus } from "./scholarships.ts";
 import type { TestDetails } from "./scores.ts";
 
 export const STATUSES = [
@@ -37,6 +39,8 @@ export type ListEntry = {
   notes: string;
   checklist: Checklist;
   portal: Portal;
+  /** Yearly financial aid offer in USD, entered by the student. Private to the student: never in a teacher RPC or the AI tools. */
+  aidOfferUsd?: number | null;
   addedAt: string;
   /** Set for a college the student added themselves (no institution); rowId is its student_colleges.id. */
   custom?: CustomCollege | null;
@@ -71,6 +75,8 @@ export type CollegeRow = {
   portal_url?: string | null;
   portal_username?: string | null;
   portal_password?: string | null;
+  /** Absent when the row was read with COLLEGE_COLUMNS_NO_LOGINS. */
+  aid_offer_usd?: number | null;
   created_at: string;
   institutions: { slug: string } | null;
 };
@@ -80,7 +86,7 @@ const COLLEGE_BASE = "id, custom, institution_id, plan_key, status, notes, check
 
 /** What the website reads (includes the saved logins). */
 export const PROFILE_COLUMNS = `${PROFILE_BASE}, portals`;
-export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, created_at, institutions(slug)";
+export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, portal_password, aid_offer_usd, created_at, institutions(slug)";
 
 /** What server-side code acting for an AI must read: explicit columns that leave the saved logins out. */
 export const PROFILE_COLUMNS_NO_LOGINS = PROFILE_BASE;
@@ -132,8 +138,78 @@ export const toEntry = (r: CollegeRow): ListEntry => ({
   notes: r.notes ?? "",
   checklist: r.checklist ?? {},
   portal: { url: r.portal_url ?? "", username: r.portal_username ?? "", password: r.portal_password ?? "" },
+  aidOfferUsd: r.aid_offer_usd ?? null,
   addedAt: r.created_at,
 });
+/** A row of the recommenders table (migration 0026). Private to the student: read only by the browser store, never by teacher or AI code. */
+export type RecommenderRow = {
+  id: string;
+  name: string;
+  role: RecommenderRole;
+  subject_or_note: string | null;
+  requested_on: string | null;
+  due_on: string | null;
+  status: RecommenderStatus;
+  created_at: string;
+};
+export const RECOMMENDER_COLUMNS = "id, name, role, subject_or_note, requested_on, due_on, status, created_at";
+export const toRecommender = (r: RecommenderRow): Recommender => ({
+  id: r.id,
+  name: r.name,
+  role: r.role,
+  note: r.subject_or_note ?? "",
+  requestedOn: r.requested_on,
+  dueOn: r.due_on,
+  status: r.status,
+  createdAt: r.created_at,
+});
+/** The writable columns (no created_at / updated_at: the database keeps those). */
+export const recommenderColumns = (r: Recommender) => ({
+  name: r.name,
+  role: r.role,
+  subject_or_note: r.note || null,
+  requested_on: r.requestedOn,
+  due_on: r.dueOn,
+  status: r.status,
+});
+export const fromRecommender = (userId: string, r: Recommender) => ({ id: r.id, user_id: userId, ...recommenderColumns(r) });
+
+/** A row of the scholarships table (migration 0027). Private to the student: read only by the browser store, never by teacher or AI code. */
+export type ScholarshipRow = {
+  id: string;
+  name: string;
+  provider: string | null;
+  amount_usd: number | null;
+  deadline: string | null;
+  url: string | null;
+  status: ScholarshipStatus;
+  notes: string | null;
+  created_at: string;
+};
+export const SCHOLARSHIP_COLUMNS = "id, name, provider, amount_usd, deadline, url, status, notes, created_at";
+export const toScholarship = (r: ScholarshipRow): Scholarship => ({
+  id: r.id,
+  name: r.name,
+  provider: r.provider ?? "",
+  amountUsd: r.amount_usd,
+  deadline: r.deadline,
+  url: r.url ?? "",
+  status: r.status,
+  notes: r.notes ?? "",
+  createdAt: r.created_at,
+});
+/** The writable columns (no created_at / updated_at: the database keeps those). */
+export const scholarshipColumns = (s: Scholarship) => ({
+  name: s.name,
+  provider: s.provider || null,
+  amount_usd: s.amountUsd,
+  deadline: s.deadline,
+  url: s.url || null,
+  status: s.status,
+  notes: s.notes || null,
+});
+export const fromScholarship = (userId: string, s: Scholarship) => ({ id: s.id, user_id: userId, ...scholarshipColumns(s) });
+
 /** Which student_colleges row an entry is: by id for a custom college, by institution otherwise. */
 export const rowKey = (e: ListEntry) => (e.custom ? { column: "id", value: e.rowId ?? "" } : { column: "institution_id", value: e.institutionId });
 export const portalColumns = (p: Portal) => ({
@@ -150,4 +226,5 @@ export const fromEntry = (userId: string, e: ListEntry) => ({
   notes: e.notes || null,
   checklist: e.checklist,
   ...portalColumns(e.portal),
+  aid_offer_usd: e.aidOfferUsd ?? null,
 });

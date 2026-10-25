@@ -9,7 +9,8 @@ import {
   type EnglishPlan,
   type TestPlan,
 } from "@/lib/checklist";
-import { ENGLISH_POLICY, TEST_POLICY } from "@/lib/format";
+import { parseOffer } from "@/lib/aid";
+import { ENGLISH_POLICY, fmtUsd, TEST_POLICY } from "@/lib/format";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 
@@ -22,7 +23,7 @@ type Props = {
   entry: ListEntry;
   college: CollegeSummary;
   international: boolean;
-  onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes">>) => void;
+  onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
@@ -97,6 +98,37 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
         {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
           <Warn>Required for all international applicants — check the waiver rules.</Warn>
         )}
+      </Section>
+
+      <Section
+        title="Financial aid offer"
+        done={entry.aidOfferUsd != null}
+        hint={college.total_coa_usd != null ? `Published cost ${fmtUsd(college.total_coa_usd)}/yr` : "No published cost on file"}
+        className="md:col-span-2"
+      >
+        <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-600">
+          <label htmlFor={`aid-${entry.slug}`}>Yearly aid in your award letter (USD)</label>
+          <input
+            id={`aid-${entry.slug}`}
+            inputMode="numeric"
+            className={`${INPUT} w-28`}
+            // Keyed on the saved value so a change from elsewhere (or a clear) shows up.
+            key={entry.aidOfferUsd ?? "none"}
+            defaultValue={entry.aidOfferUsd ?? ""}
+            placeholder="e.g. 45000"
+            onBlur={(e) => {
+              const next = parseOffer(e.target.value);
+              if (next !== (entry.aidOfferUsd ?? null)) onChange({ aidOfferUsd: next });
+              else e.target.value = entry.aidOfferUsd != null ? String(entry.aidOfferUsd) : "";
+            }}
+          />
+          <span className="text-zinc-500">
+            Only you see this.{" "}
+            <Link href="/application/results" className="text-blue-600 underline">
+              Compare offers
+            </Link>
+          </span>
+        </div>
       </Section>
 
       <div className="md:col-span-2">

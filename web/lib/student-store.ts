@@ -13,18 +13,30 @@ import {
   COLLEGE_COLUMNS,
   fromEntry,
   fromProfile,
+  fromRecommender,
+  fromScholarship,
   portalColumns,
   PROFILE_COLUMNS,
+  RECOMMENDER_COLUMNS,
+  recommenderColumns,
   rowKey,
+  SCHOLARSHIP_COLUMNS,
+  scholarshipColumns,
   shouldRefresh,
   toEntry,
   toProfile,
+  toRecommender,
+  toScholarship,
   type CollegeRow,
   type ListEntry,
   type Portal,
   type ProfileRow,
+  type RecommenderRow,
+  type ScholarshipRow,
   type Status,
 } from "./student-rows";
+import { newRecommenderId, type Recommender, type RecommenderInput } from "./recommenders";
+import { newScholarshipId, type Scholarship, type ScholarshipInput } from "./scholarships";
 import { browserSupabase } from "./supabase-browser";
 
 export { STATUSES, type ListEntry, type Portal, type Status } from "./student-rows";
@@ -44,6 +56,10 @@ export type TeacherProfile = { displayName: string; school: string | null };
 type State = {
   profile: StudentProfile;
   list: ListEntry[];
+  /** The student's recommender tracker (private; table recommenders, migration 0026). */
+  recommenders: Recommender[];
+  /** The student's scholarship tracker (private; table scholarships, migration 0027). */
+  scholarships: Scholarship[];
   auth: Auth;
   role: Role | null | undefined;
   teacherProfile: TeacherProfile | null;
@@ -55,7 +71,7 @@ type State = {
 
 const KEY = "college-tracker:v1";
 const EMPTY_PORTAL: Portal = { url: "", username: "", password: "" };
-const EMPTY: State = { profile: {}, list: [], auth: null, role: undefined, teacherProfile: null, ready: false, sessionChecked: false, syncing: false, error: null };
+const EMPTY: State = { profile: {}, list: [], recommenders: [], scholarships: [], auth: null, role: undefined, teacherProfile: null, ready: false, sessionChecked: false, syncing: false, error: null };
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
 let started = false;
@@ -68,22 +84,27 @@ function emit(patch: Partial<State>) {
   listeners.forEach((l) => l());
 }
 
-function loadLocal(): Pick<State, "profile" | "list"> {
+function loadLocal(): Pick<State, "profile" | "list" | "recommenders" | "scholarships"> {
   try {
     const raw = window.localStorage.getItem(KEY);
-    if (!raw) return { profile: {}, list: [] };
+    if (!raw) return { profile: {}, list: [], recommenders: [], scholarships: [] };
     const parsed = JSON.parse(raw);
     // v1 entries predate institutionId/checklist; keep what we can.
     const list = (parsed.list ?? []).map((e: Partial<ListEntry>) => ({ checklist: {}, institutionId: "", portal: EMPTY_PORTAL, ...e }));
-    return { profile: parsed.profile ?? {}, list };
+    return {
+      profile: parsed.profile ?? {},
+      list,
+      recommenders: Array.isArray(parsed.recommenders) ? parsed.recommenders : [],
+      scholarships: Array.isArray(parsed.scholarships) ? parsed.scholarships : [],
+    };
   } catch {
-    return { profile: {}, list: [] };
+    return { profile: {}, list: [], recommenders: [], scholarships: [] };
   }
 }
 
 function saveLocal() {
   try {
-    window.localStorage.setItem(KEY, JSON.stringify({ profile: state.profile, list: state.list }));
+    window.localStorage.setItem(KEY, JSON.stringify({ profile: state.profile, list: state.list, recommenders: state.recommenders, scholarships: state.scholarships }));
   } catch {
     // storage unavailable (private mode) — keep in memory only
   }
@@ -111,7 +132,7 @@ async function loadRemote(userId: string, email: string | null) {
         if (t.data) teacherProfile = { displayName: t.data.display_name, school: t.data.school };
       }
       lastLoad = Date.now();
-      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], ready: true, sessionChecked: true, syncing: false });
+      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], ready: true, sessionChecked: true, syncing: false });
       return;
     }
     const local = loadLocal();
@@ -140,9 +161,41 @@ async function loadRemote(userId: string, email: string | null) {
       if (ins.error) throw ins.error;
       list = [...list, ...missing];
     }
-    clearLocal();
+    // Recommenders are separate from the list so a missing table (migration 0026 not applied yet) can't take the whole list down;
+    // when they can't be read, the local copy is kept (not cleared) and nothing is merged.
+    let recommenders: Recommender[] = [];
+    let recError: string | null = null;
+    const rr = await db.from("recommenders").select(RECOMMENDER_COLUMNS).order("created_at");
+    if (rr.error) {
+      recError = `Couldn't load your recommenders: ${rr.error.message}`;
+    } else {
+      recommenders = ((rr.data ?? []) as unknown as RecommenderRow[]).map(toRecommender);
+      const missingRecs = local.recommenders.filter((x) => x?.id && !recommenders.some((y) => y.id === x.id));
+      if (missingRecs.length) {
+        const ins = await db.from("recommenders").upsert(missingRecs.map((x) => fromRecommender(userId, x)), { onConflict: "id", ignoreDuplicates: true });
+        if (ins.error) recError = `Couldn't move your recommenders into your account: ${ins.error.message}`;
+        else recommenders = [...recommenders, ...missingRecs];
+      }
+    }
+    // Scholarships work the same way (migration 0027 may not be applied yet).
+    let scholarships: Scholarship[] = [];
+    let schError: string | null = null;
+    const sr = await db.from("scholarships").select(SCHOLARSHIP_COLUMNS).order("created_at");
+    if (sr.error) {
+      schError = `Couldn't load your scholarships: ${sr.error.message}`;
+    } else {
+      scholarships = ((sr.data ?? []) as unknown as ScholarshipRow[]).map(toScholarship);
+      const missingSch = local.scholarships.filter((x) => x?.id && !scholarships.some((y) => y.id === x.id));
+      if (missingSch.length) {
+        const ins = await db.from("scholarships").upsert(missingSch.map((x) => fromScholarship(userId, x)), { onConflict: "id", ignoreDuplicates: true });
+        if (ins.error) schError = `Couldn't move your scholarships into your account: ${ins.error.message}`;
+        else scholarships = [...scholarships, ...missingSch];
+      }
+    }
+    if (!recError && !schError) clearLocal();
     lastLoad = Date.now();
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, ready: true, sessionChecked: true, syncing: false });
+    const error = [recError, schError].filter(Boolean).join(" ") || null;
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, ready: true, sessionChecked: true, syncing: false, error });
   } catch (e) {
     lastLoad = Date.now();
     emit({ auth: { userId, email }, ready: true, sessionChecked: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
@@ -294,7 +347,7 @@ export function useStudent() {
         void remote(() => db().from("student_colleges").delete().eq(key.column, key.value));
       }
     },
-    update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist" | "portal">>) {
+    update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist" | "portal" | "aidOfferUsd">>) {
       const entry = state.list.find((e) => e.slug === slug);
       if (!entry) return;
       const next = { ...entry, ...patch };
@@ -305,10 +358,46 @@ export function useStudent() {
         void remote(() =>
           db()
             .from("student_colleges")
-            .update({ plan_key: next.plan, status: next.status, notes: next.notes || null, checklist: next.checklist, ...portalColumns(next.portal) })
+            .update({ plan_key: next.plan, status: next.status, notes: next.notes || null, checklist: next.checklist, ...portalColumns(next.portal), aid_offer_usd: next.aidOfferUsd ?? null })
             .eq(key.column, key.value),
         );
       }
+    },
+    /** Adds a recommender (already checked with validateRecommender). */
+    addRecommender(input: RecommenderInput) {
+      const rec: Recommender = { ...input, id: newRecommenderId(), createdAt: new Date().toISOString() };
+      emit({ recommenders: [...state.recommenders, rec] });
+      const a = state.auth;
+      if (a) void remote(() => db().from("recommenders").insert(fromRecommender(a.userId, rec)));
+    },
+    updateRecommender(id: string, patch: Partial<RecommenderInput>) {
+      const cur = state.recommenders.find((r) => r.id === id);
+      if (!cur) return;
+      const next = { ...cur, ...patch };
+      emit({ recommenders: state.recommenders.map((r) => (r.id === id ? next : r)) });
+      if (state.auth) void remote(() => db().from("recommenders").update(recommenderColumns(next)).eq("id", id));
+    },
+    removeRecommender(id: string) {
+      emit({ recommenders: state.recommenders.filter((r) => r.id !== id) });
+      if (state.auth) void remote(() => db().from("recommenders").delete().eq("id", id));
+    },
+    /** Adds a scholarship (already checked with validateScholarship). */
+    addScholarship(input: ScholarshipInput) {
+      const sch: Scholarship = { ...input, id: newScholarshipId(), createdAt: new Date().toISOString() };
+      emit({ scholarships: [...state.scholarships, sch] });
+      const a = state.auth;
+      if (a) void remote(() => db().from("scholarships").insert(fromScholarship(a.userId, sch)));
+    },
+    updateScholarship(id: string, patch: Partial<ScholarshipInput>) {
+      const cur = state.scholarships.find((s) => s.id === id);
+      if (!cur) return;
+      const next = { ...cur, ...patch };
+      emit({ scholarships: state.scholarships.map((s) => (s.id === id ? next : s)) });
+      if (state.auth) void remote(() => db().from("scholarships").update(scholarshipColumns(next)).eq("id", id));
+    },
+    removeScholarship(id: string) {
+      emit({ scholarships: state.scholarships.filter((s) => s.id !== id) });
+      if (state.auth) void remote(() => db().from("scholarships").delete().eq("id", id));
     },
     /** Leaves the page for Google; the PKCE code it returns with is exchanged on load (detectSessionInUrl). `returnTo` is a path on this site. */
     async signInWithGoogle(returnTo = "/profile") {

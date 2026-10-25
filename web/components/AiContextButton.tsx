@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { buildContextPack, type PackCollege } from "@/lib/ai-context";
+import { customDeadline, customSummary } from "@/lib/custom-college";
 import type { StudentProfile } from "@/lib/fit";
 import type { Plan } from "@/lib/plans";
-import type { CollegeDetail, Deadline, Lookups } from "@/lib/types";
+import { useStudent } from "@/lib/student-store";
+import type { CollegeDetail, CollegeSummary, Deadline, Lookups } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { Modal } from "./Modal";
 
@@ -157,5 +159,38 @@ export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClo
       </button>
       {open && <Dialog {...props} onClose={() => setOpen(false)} />}
     </>
+  );
+}
+
+/**
+ * The button wired to the signed-in or local student's own list. Renders nothing while loading or when the list is empty.
+ * Custom colleges have no row in our data, so they are built from what the student typed.
+ */
+export function StudentAiContextButton({
+  colleges,
+  deadlines,
+  plans,
+  englishTests,
+}: {
+  colleges: CollegeSummary[];
+  deadlines: Deadline[];
+  plans: Lookups["plans"];
+  englishTests: Lookups["englishTests"];
+}) {
+  const student = useStudent();
+  if (!student.ready || student.list.length === 0) return null;
+  const resolve = (e: (typeof student.list)[number]) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
+  const allDeadlines = [...deadlines, ...student.list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d)];
+  return (
+    <AiContextButton
+      colleges={student.list.flatMap((e) => {
+        const college = resolve(e);
+        return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
+      })}
+      profile={student.profile}
+      plan={student.plan}
+      deadlines={allDeadlines}
+      lookups={{ plans, englishTests }}
+    />
   );
 }

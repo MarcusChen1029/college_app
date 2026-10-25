@@ -86,10 +86,10 @@ Facts found while sizing (2026-10-25):
 | # | Item | Effort | Closes gap with | Notes | Status |
 |---|---|---|---|---|---|
 | **Phase 1: quick wins** | | | | | |
-| 1 | Aid-offer comparison: input per college, shown beside published cost | S-M | OverGrad, SchooLinks, FolderWave | Column exists, likely no migration. Keep teacher exclusion from migration 0022. | todo |
-| 2 | Recommender tracker: name, role, requested date, status per recommender | M | Naviance, SchooLinks, Xello (without the Common App sync) | New table + RLS, migration 0026. Student-only at first. | todo |
-| 3 | Scholarship tracker: name, amount, deadline, link, status; deadlines feed reminder emails | M | FolderWave, Xello, SchooLinks | Migration 0027. Reuses `deadline-reminders`. | todo |
-| 4 | "Copy my context for AI" button | S | In-app AI assistants | Reuses `web/lib/ai-context.ts` and Connect AI. | todo |
+| 1 | Aid-offer comparison: input per college, shown beside published cost | S-M | OverGrad, SchooLinks, FolderWave | Column exists, likely no migration. Keep teacher exclusion from migration 0022. | built 2026-10-25 (entry in checklist dialog, "Compare aid offers" on Results) |
+| 2 | Recommender tracker: name, role, requested date, status per recommender | M | Naviance, SchooLinks, Xello (without the Common App sync) | New table + RLS, migration 0026. Student-only at first. | built 2026-10-25; migration 0026 NOT yet applied |
+| 3 | Scholarship tracker: name, amount, deadline, link, status; deadlines feed reminder emails | M | FolderWave, Xello, SchooLinks | Migration 0027. Reuses `deadline-reminders`. | built 2026-10-25; migration 0027 NOT yet applied, edge function not deployed or run |
+| 4 | "Copy my context for AI" button | S | In-app AI assistants | Reuses `web/lib/ai-context.ts` and Connect AI. | built 2026-10-25 (copy card on /connect-ai) |
 | **Phase 2: teacher and parent depth** | | | | | |
 | 5 | Teacher assigns tasks to a class or student, with due dates and completion | M-L | OverGrad, Cialfo, SchooLinks | New tables + SECURITY DEFINER RPCs on `teacher_links` / `class_members`. Needs a privacy review like teacher notes. | todo |
 | 6 | Teacher email digest | M | OverGrad, Cialfo | Builds on #5. Real sends blocked until Resend secrets are set (dry-run until then). | todo |
