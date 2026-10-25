@@ -155,3 +155,8 @@ test("planMcpAdd rejects every course when the school itself is invalid", () => 
   assert.ok(r.schoolErrors.length > 0);
   assert.equal(r.accepted.length, 0);
 });
+
+test("each planned row remembers which school of the paste it came from", () => {
+  const plan = buildImportPlan(fixture(), none, "ai_import");
+  assert.deepEqual(plan.rows.map((r) => r.schoolIndex), [0, 1, 2]);
+});

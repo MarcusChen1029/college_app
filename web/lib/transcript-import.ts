@@ -116,7 +116,7 @@ export function parseImportText(text: string): { ok: true; data: unknown } | { o
   }
 }
 
-export type ImportRow = { schoolName: string; input: CourseInput | null; raw: unknown; errors: string[]; duplicateOf: string | null };
+export type ImportRow = { schoolIndex: number; schoolName: string; input: CourseInput | null; raw: unknown; errors: string[]; duplicateOf: string | null };
 export type ImportSchool = { name: string; existingId: string | null; input: SchoolInput | null; errors: string[] };
 export type ImportPlan = { error: string | null; schools: ImportSchool[]; rows: ImportRow[] };
 
@@ -161,18 +161,18 @@ export function buildImportPlan(data: unknown, existing: Existing, source: Sourc
     const schoolId = found?.id ?? `${NEW_SCHOOL_ID}:${idx}`;
     (Array.isArray(courses) ? courses : []).forEach((rawCourse: unknown) => {
       if (!isObject(rawCourse)) {
-        rows.push({ schoolName: name, input: null, raw: rawCourse, errors: ["This course isn't an object."], duplicateOf: null });
+        rows.push({ schoolIndex: idx, schoolName: name, input: null, raw: rawCourse, errors: ["This course isn't an object."], duplicateOf: null });
         return;
       }
       const cv = validateCourse(withDefaults(rawCourse, schoolId, defaults, source));
       if (!cv.ok) {
-        rows.push({ schoolName: name, input: null, raw: rawCourse, errors: cv.errors, duplicateOf: null });
+        rows.push({ schoolIndex: idx, schoolName: name, input: null, raw: rawCourse, errors: cv.errors, duplicateOf: null });
         return;
       }
       const key = courseKey(name, cv.value);
       const duplicateOf = keys.get(key) ?? null;
       if (!duplicateOf) keys.set(key, "(an earlier row in this paste)");
-      rows.push({ schoolName: name, input: cv.value, raw: rawCourse, errors: [], duplicateOf });
+      rows.push({ schoolIndex: idx, schoolName: name, input: cv.value, raw: rawCourse, errors: [], duplicateOf });
     });
   });
   return { error: null, schools, rows };

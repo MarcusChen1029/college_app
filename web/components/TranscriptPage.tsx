@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { StatusPill } from "@/components/StatusPill";
 import { TranscriptCourseForm } from "@/components/TranscriptCourseForm";
+import { TranscriptImport } from "@/components/TranscriptImport";
 import { TranscriptSchoolForm } from "@/components/TranscriptSchoolForm";
 import { useStudent } from "@/lib/student-store";
 import {
@@ -252,7 +253,7 @@ export function TranscriptPage() {
         ))}
       </div>
       {tab === "edit" && <EditTab />}
-      {tab === "import" && <p className="text-sm text-zinc-500">Import is coming in the next step.</p>}
+      {tab === "import" && <TranscriptImport onDone={() => setTab("edit")} />}
       {tab === "view" && <p className="text-sm text-zinc-500">Mapped views are coming in a later step.</p>}
     </div>
   );
