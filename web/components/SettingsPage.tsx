@@ -25,7 +25,8 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 export function SettingsPage() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const ready = mounted && student.ready;
+  // Wait for the session check too, so a signed-in load never flashes the signed-out card.
+  const ready = mounted && student.ready && student.sessionChecked;
   const signedIn = !!student.auth;
   const scrolled = useRef(false);
 

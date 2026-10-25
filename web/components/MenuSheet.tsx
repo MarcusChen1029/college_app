@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { openSignIn } from "@/components/SignInDialog";
 import type { NavItem } from "@/lib/roles";
 import { buttonClass } from "@/lib/ui";
@@ -11,6 +12,7 @@ export type SheetAccount =
   | { kind: "signedIn"; name: string; title: string; items: readonly NavItem[]; onSignOut: () => void }
   | { kind: "signedOut"; items: readonly NavItem[]; getStarted: boolean };
 
+const noop = () => () => {};
 const ROW = "flex min-h-12 items-center rounded-lg px-3 text-base text-zinc-700 hover:bg-zinc-100";
 
 /** The phone menu: a modal sheet anchored to the top. Esc, a backdrop click, a link tap and any page change close it. */
@@ -28,6 +30,7 @@ export function MenuSheet({
   account: SheetAccount;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const mounted = useSyncExternalStore(noop, () => true, () => false);
   const pathname = usePathname();
   const lastPath = useRef(pathname);
 
@@ -63,11 +66,13 @@ export function MenuSheet({
     openSignIn();
   };
 
-  return (
+  // Portalled to <body> so the sheet's links are not a nav landmark nested inside the header's Primary nav.
+  if (!mounted) return null;
+  return createPortal(
     <dialog
       ref={ref}
       id="site-menu"
-      aria-label="Menu"
+      aria-label="Site menu"
       onClose={onClose}
       onClick={(e) => e.target === ref.current && ref.current.close()}
       className="m-0 max-h-dvh w-full max-w-none overflow-y-auto border-b border-zinc-200 bg-white p-0 text-zinc-900 shadow-lg backdrop:bg-black/30"
@@ -81,7 +86,7 @@ export function MenuSheet({
             </svg>
           </button>
         </div>
-        <nav aria-label="Main">
+        <nav aria-label="Menu">
           {items.map(([href, label]) => (
             <Link
               key={href}
@@ -127,6 +132,7 @@ export function MenuSheet({
           )}
         </div>
       </div>
-    </dialog>
+    </dialog>,
+    document.body,
   );
 }

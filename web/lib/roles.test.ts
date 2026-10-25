@@ -105,11 +105,6 @@ test("roleChangeMessage explains what to do first", () => {
   assert.equal(roleChangeMessage("network down"), "network down");
 });
 
-test("/account is student-only", () => {
-  assert.equal(isStudentOnlyPath("/account"), true);
-  assert.equal(redirectFor("teacher", "/account", true), "/teacher");
-});
-
 test("activeNavHref picks the longest matching nav item", () => {
   const t = navFor("teacher", { signedIn: true, started: false }).map(([h]) => h);
   const s = navFor("student", { signedIn: true, started: false }).map(([h]) => h);

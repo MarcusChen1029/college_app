@@ -54,7 +54,7 @@ Other commands (run inside `web/`):
 
 Pages: `/` colleges list · `/colleges/mit` detail · `/compare?c=mit,purdue` · `/application/list` (My colleges) · `/settings` (sign in, reminders).
 
-**Signing in locally:** "Continue with Google" returns to `http://localhost:3000/profile`, which only works
+**Signing in locally:** "Continue with Google" returns to the page you were on (for example `http://localhost:3000/settings`), which only works
 once the Google provider is set up and that URL is allowed in Supabase (see §4).
 
 ---

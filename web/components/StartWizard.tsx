@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore, type ReactNode } from "react";
+import { openSignIn } from "@/components/SignInDialog";
 import { cleanRegions, regionLabel } from "@/lib/regions";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
@@ -51,6 +52,18 @@ export function StartWizard() {
   const finish = (to = "/colleges") => {
     commitFocus();
     router.push(to);
+  };
+  // The dialog host lives in the root layout, so it survives the navigation; open it once /profile is showing.
+  const saveThenSignIn = () => {
+    finish("/profile");
+    // returnTo is read when the dialog opens, so wait until the URL really is /profile (give up after ~10s).
+    let tries = 0;
+    const timer = setInterval(() => {
+      if (window.location.pathname === "/profile") {
+        clearInterval(timer);
+        openSignIn();
+      } else if (++tries > 100) clearInterval(timer);
+    }, 100);
   };
 
   return (
@@ -182,7 +195,7 @@ export function StartWizard() {
             </button>
             <div className="flex items-center gap-4">
               {!student.auth && (
-                <button type="button" onClick={() => finish("/profile")} className="text-sm font-semibold text-blue-700 underline underline-offset-4">
+                <button type="button" onClick={saveThenSignIn} className="text-sm font-semibold text-blue-700 underline underline-offset-4">
                   Save, then sign in
                 </button>
               )}
