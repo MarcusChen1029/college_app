@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { detailToRoster, humanize, interestedNames, sectionScores, slugToTitle } from "./roster-detail.ts";
+import { detailToRoster, englishTests, humanize, interestedNames, sectionScores, slugToTitle } from "./roster-detail.ts";
 import { parseStudentDetail } from "./roster.ts";
 import { SAT_SCALE } from "./scores.ts";
 
@@ -73,4 +73,35 @@ test("sectionScores lists filled sections in scale order", () => {
 test("humanize turns keys into sentences", () => {
   assert.equal(humanize("computer_science"), "Computer science");
   assert.equal(humanize(""), "");
+});
+
+test("englishTests lists every English test the student entered, from test_details", () => {
+  const tests = englishTests(
+    {
+      english: {
+        ielts: { total: 7.5, sections: { reading: 8, listening: 7.5, speaking: null, writing: 7 } },
+        toefl: { total: 105, sections: {} },
+        duolingo: { total: null, sections: {} },
+      },
+    },
+    { key: null, score: null },
+  );
+  assert.deepEqual(
+    tests.map((t) => [t.key, t.total]),
+    [
+      ["toefl", 105],
+      ["ielts", 7.5],
+    ],
+  );
+  assert.deepEqual(tests[1].parts, [
+    { label: "Reading", value: 8 },
+    { label: "Listening", value: 7.5 },
+    { label: "Writing", value: 7 },
+  ]);
+  assert.equal(tests[0].label, "TOEFL iBT (0–120)");
+});
+
+test("englishTests falls back to the old single-test columns when test_details has none", () => {
+  assert.deepEqual(englishTests({}, { key: "ielts", score: 6.5 }), [{ key: "ielts", label: "IELTS Academic", total: 6.5, parts: [] }]);
+  assert.deepEqual(englishTests({}, { key: null, score: null }), []);
 });

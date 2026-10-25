@@ -2,11 +2,11 @@
 
 import { useCallback } from "react";
 import { collegeNames } from "@/lib/links-api";
-import { humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
 import { useLoad } from "@/lib/use-load";
 import type { StudentDetail } from "@/lib/roster";
 import { regionLabel } from "@/lib/regions";
-import { ACT_SCALE, ENGLISH_TESTS, SAT_SCALE, type EnglishTestKey, type ScoreScale, type SectionScores } from "@/lib/scores";
+import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib/scores";
 
 function Item({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -33,9 +33,7 @@ function Score({ value, scale, sections }: { value: number | null; scale: ScoreS
 
 export function OverviewPanel({ detail }: { detail: StudentDetail }) {
   const p = detail.profile;
-  const english = p.englishTestKey && p.englishTestKey in ENGLISH_TESTS ? (p.englishTestKey as EnglishTestKey) : null;
-  const englishLabel = english ? ENGLISH_TESTS[english].label : p.englishTestKey;
-  const englishParts = english ? sectionScores(ENGLISH_TESTS[english], p.testDetails.english?.[english]?.sections) : [];
+  const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
   return (
     <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       <Item label="SAT">
@@ -45,15 +43,19 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
         <Score value={p.actComposite} scale={ACT_SCALE} sections={p.testDetails.act} />
       </Item>
       <Item label="GPA (unweighted)">{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
-      <Item label="English test">
-        {englishLabel || p.englishScore != null ? (
-          <>
-            <p>
-              {englishLabel ?? "Test not chosen"}
-              {p.englishScore != null && <span className="font-display text-xl font-bold"> {p.englishScore}</span>}
-            </p>
-            {englishParts.length > 0 && <p className="text-zinc-600">{englishParts.map((s) => `${s.label} ${s.value}`).join(" · ")}</p>}
-          </>
+      <Item label={english.length > 1 ? "English tests" : "English test"}>
+        {english.length > 0 ? (
+          <ul className="space-y-2">
+            {english.map((t) => (
+              <li key={t.key}>
+                <p>
+                  {t.label}
+                  {t.total != null && <span className="font-display text-xl font-bold"> {t.total}</span>}
+                </p>
+                {t.parts.length > 0 && <p className="text-zinc-600">{t.parts.map((s) => `${s.label} ${s.value}`).join(" · ")}</p>}
+              </li>
+            ))}
+          </ul>
         ) : (
           <Missing />
         )}

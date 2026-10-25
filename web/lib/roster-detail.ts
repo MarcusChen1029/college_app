@@ -2,7 +2,7 @@
 // same attention flags apply), and small display helpers for scores and names.
 
 import type { DetailCollege, RosterStudent, StudentDetail } from "./roster.ts";
-import type { ScoreScale, SectionScores } from "./scores.ts";
+import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, type EnglishTestKey, type ScoreScale, type SectionScores, type TestDetails } from "./scores.ts";
 
 const APPLICATION_KINDS = new Set(["application", "priority"]);
 
@@ -64,6 +64,24 @@ export function sectionScores(scale: ScoreScale, sections: SectionScores | undef
     const value = sections?.[s.key];
     return value == null ? [] : [{ label: s.label, value }];
   });
+}
+
+export type EnglishTestView = { key: string; label: string; total: number | null; parts: { label: string; value: number }[] };
+
+/**
+ * Every English test the student entered, in the profile's test order. Scores live in test_details.english;
+ * the old single-test columns (english_test_key / english_score) are only a fallback for rows saved before that.
+ */
+export function englishTests(details: TestDetails, legacy: { key: string | null; score: number | null }): EnglishTestView[] {
+  const entered = ENGLISH_TEST_KEYS.flatMap((key) => {
+    const s = details.english?.[key];
+    const parts = sectionScores(ENGLISH_TESTS[key], s?.sections);
+    const total = s?.total ?? null;
+    return total == null && parts.length === 0 ? [] : [{ key, label: ENGLISH_TESTS[key].label, total, parts }];
+  });
+  if (entered.length > 0 || (legacy.key == null && legacy.score == null)) return entered;
+  const label = legacy.key && legacy.key in ENGLISH_TESTS ? ENGLISH_TESTS[legacy.key as EnglishTestKey].label : (legacy.key ?? "Test not chosen");
+  return [{ key: legacy.key ?? "unknown", label, total: legacy.score, parts: [] }];
 }
 
 /** "computer_science" -> "Computer science". */
