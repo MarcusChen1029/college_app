@@ -4,12 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  // Interested, My list and Portals moved under My application.
+  // Old URLs for routes that moved (My colleges tabs, Writing section, Settings).
   async redirects() {
     return [
       { source: "/my-list", destination: "/application/list", permanent: true },
       { source: "/interested", destination: "/application/interested", permanent: true },
       { source: "/portals", destination: "/application/portals", permanent: true },
+      { source: "/application/essays", destination: "/writing/essays", permanent: false },
+      { source: "/activities", destination: "/writing/activities", permanent: false },
+      { source: "/resume", destination: "/writing/resume", permanent: false },
       { source: "/account", destination: "/settings", permanent: false },
     ];
   },

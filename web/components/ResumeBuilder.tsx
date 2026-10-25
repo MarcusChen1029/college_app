@@ -80,7 +80,7 @@ export function ResumeBuilder() {
               Profile
             </Link>
             ; entries from{" "}
-            <Link href="/activities" className="text-blue-600 underline">
+            <Link href="/writing/activities" className="text-blue-600 underline">
               Activities
             </Link>
             .
@@ -146,7 +146,7 @@ export function ResumeBuilder() {
         {empty && (
           <p className="mt-8 text-center font-sans text-sm text-zinc-500 print:hidden">
             No activities yet. Add them on the{" "}
-            <Link href="/activities" className="text-blue-600 underline">
+            <Link href="/writing/activities" className="text-blue-600 underline">
               Activities
             </Link>{" "}
             page and they&apos;ll appear here.

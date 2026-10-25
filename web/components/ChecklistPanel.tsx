@@ -41,7 +41,7 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
             : essays.length > 0
               ? `${finals}/${essays.length} essays final.`
               : "No essays added yet."}{" "}
-          <Link href="/application/essays" className="text-blue-600 underline">
+          <Link href="/writing/essays" className="text-blue-600 underline">
             Manage on the Essays page
           </Link>
         </p>

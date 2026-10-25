@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     new Response(null, {
       status: 303,
       headers: {
-        Location: `${oauthOrigin(req.url)}/application/essays?google=${result}`,
+        Location: `${oauthOrigin(req.url)}/writing/essays?google=${result}`,
         "Set-Cookie": `${NONCE_COOKIE}=; Path=/api/google; Max-Age=0; HttpOnly; SameSite=Lax`,
         "Cache-Control": "no-store",
       },
