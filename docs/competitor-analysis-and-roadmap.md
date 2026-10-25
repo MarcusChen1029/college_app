@@ -76,7 +76,7 @@ Takeaway: we cannot win on integrations, licensed data or scale. We lead on sour
 
 ## Roadmap
 
-Effort scale: S under 1 day, M 1-3 days, L about a week, XL several weeks. These are estimates based on the repo's usual shape (migration + RPC + page + tests), not measurements. Next migration number: 0026.
+Effort scale: S under 1 day, M 1-3 days, L about a week, XL several weeks. These are estimates based on the repo's usual shape (migration + RPC + page + tests), not measurements. Next migration number: 0031.
 
 Facts found while sizing (2026-10-25):
 - `student_colleges.aid_offer_usd` already exists ([0001_init.sql:271](../supabase/migrations/0001_init.sql)) and no file in `web/` uses it yet.
@@ -102,6 +102,7 @@ Facts found while sizing (2026-10-25):
 | 11 | Class-level scattergrams (anonymous aggregates) | L | Naviance, Xello, SchooLinks, Unifrog | Needs enough students; minimum group size to avoid identifying individuals. | todo |
 | 12 | Translated UI (for example zh-TW) | L | Xello | Retrofits every page; only if students need it. | todo |
 | 13 | Interest quiz based on O*NET | L | Xello, Naviance, SchooLinks, Maia | Check O*NET licensing first. Low value for a tracker. | todo |
+| 14 | Standardized transcript: one coursework record, AI-assisted import (copy prompt or MCP), views mapped to Common App, STARS, Cal State Apply and UC | L | Xello, Naviance, Parchment (record side only) | Migration 0030. Teachers excluded. Feeds a later auto-fill browser extension. See `docs/superpowers/specs/2026-10-26-transcript-design.md`. | built 2026-10-26; migration 0030 applied; several system dropdowns unverified |
 | - | Four-year course planner | XL | Xello, Naviance | Skipped: school-specific, does not fit a student-owned tool. | skipped |
 
 Suggested order: week 1 do #1-#4; weeks 2-3 do #5, #6, then #7; start #8 early in the background; treat #9-#13 as backlog until real usage shows what matters.
