@@ -1,0 +1,138 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UCCS - International admission details (first-year applicants)",
+   "url": "https://go.uccs.edu/admissions-aid/details/international",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UCCS - English language proficiency (undergraduate)",
+   "url": "https://www.uccs.edu/admissionsenrollment/english-language-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UCCS - Application details for first-year students",
+   "url": "https://www.uccs.edu/admissions-aid/application-details/first-year",
+   "accessed": "2026-10-26"
+  },
+  "acc": {
+   "kind": "admissions_site",
+   "title": "UCCS - Accepted international students (I-20, scholarships)",
+   "url": "https://www.uccs.edu/admissions-aid/accepted-international-students",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "UCCS is test-optional with no minimum GPA or ACT/SAT. Coursework strength and weighted GPA carry the most weight; the page says 75% of admitted students have a 3.0+ weighted GPA and an ACT 20+ or SAT 1070+. Applicants who miss nursing, business or engineering criteria are considered for the College of Letters, Arts, and Sciences until they qualify. Essay and two recommendation letters are reviewed for applicants below those figures.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "$50 application fee for out-of-state applicants (waived for in-state; the international page does not give a separate fee). International applicants need official secondary transcripts and exam results with certified English translations, plus English proficiency (a passing score or an exception). Course-by-course evaluation by a NACES/AICE member is required only for college-level coursework taken outside the U.S.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "Most UCCS scholarships (admitted students; fall 2027 entry)",
+   "notes": "The scholarship application sits in the MyUCCS portal and most scholarships close March 1 (year not printed; fall 2027 assumed). The international and first-year pages list no application deadline for fall entry, so none is recorded.",
+   "src": "acc"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exceptions: completion of a UCCS-approved English language program with the approved scores (e.g. CU Boulder International English Center, HOFT or ELS Language Center); one year at a U.S. college including English Composition I with C or higher; citizens of listed English-speaking countries who finished all schooling in English (school letter); AP English Language or Literature 4; IB HL English A 4; A/AS-level English C; WAEC/WASSCE B3; Cambridge CPE C or CAE B. SAT ERWS 400 or ACT English 14 also satisfy the requirement. Official scores must be sent to UCCS on admission.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "The page lists 'TOEFL (IBT) 4'; a 4 can only be the 1-6 scale, and no old 0-120 minimum is printed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "No international-specific scholarship or amount is published on the pages read. Accepted international students are told to check scholarship eligibility in the MyUCCS portal (most scholarships close March 1); the financial aid office says admitted students can apply Dec. 1 to May 1. Aid policy for nonresident internationals is left unset.",
+  "src": "acc"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4874",
+   "note": "UCCS SAT code per the first-year admissions page.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "0535",
+   "note": "UCCS ACT code per the first-year admissions page.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "4874",
+   "note": "UCCS code listed next to TOEFL (iBT) on the English proficiency page.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

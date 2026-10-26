@@ -1,0 +1,132 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UAFS - International application process",
+      "url": "https://uafs.edu/admissions/international/application-process.php",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "UAFS - First-time freshmen admission",
+      "url": "https://uafs.edu/admissions/freshmen/index.php",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "UAFS - Apply",
+      "url": "https://uafs.edu/admissions/apply/index.php",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "UAFS - Undergraduate tuition and fees 2026-2027",
+      "url": "https://uafs.edu/tuition-and-aid/tuition-and-fees/undergraduate-tuition-fees.php",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UAFS - Freshman student scholarships",
+      "url": "https://uafs.edu/tuition-and-aid/financial-aid/types-of-aid/scholarships/freshman.php",
+      "accessed": "2026-10-26"
+    },
+    "nurs": {
+      "kind": "other",
+      "title": "UAFS - ADN & BSN admission requirements",
+      "url": "https://uafs.edu/academics/colleges-and-schools/chehs/health-sciences/departments/nursing/requirements.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "No minimum SAT/ACT is required. Full admission is available with a 3.00 high school GPA (no test minimum), or top 50% of class, or ACT 19 (13 Math, 15 Reading, 15 English) / SAT 1010 (440 EBRW, 330 Math), or an Accuplacer math cutoff. Official placement scores (ACT, SAT, CLT or Accuplacer) are still required for course registration and scholarships; international students without ACT/SAT take the ACCUPLACER Next-Generation test.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Apply page says 'Applying is easy and FREE!'; the international page does not list a fee. International applicants need a bank statement showing $27,546 (another UAFS page shows $26,108, so confirm), a NACES course-by-course evaluation of non-U.S. post-secondary transcripts, and a passport copy. Applications use UAFS's own online portal (not the Common App).",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Page: 'Students outside the U.S.: June 1, 2027' for fall 2027 (applications open Aug. 1, 2026). The domestic fall 2027 deadline is not yet posted.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-11-15",
+      "label": "Prestigious scholarships priority deadline (fall 2027 entry)",
+      "notes": "Final deadline Jan. 15, 2027.",
+      "src": "schol"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "Freshman merit scholarships deadline (fall 2027 cycle)",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The page lists ways to show English proficiency (any one): TOEFL iBT, IELTS, PTE Academic, Cambridge CPE/CAE/FCE, MET B2+, ACT English and Reading 19+, SAT Writing and Critical Reading 470+, or completion of EF Level C1-3 or ELS Level 112. Transfers from a U.S. institution: English I and II with C or better. No list of exempt countries was found. Duolingo is not mentioned. No conditional-admission or ESL pathway program is described on the page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Page says 'TOEFL iBT: 4 or above' without naming the scale; a 4 only makes sense on the new 1-6 scale. The old 0-120 minimum is not published.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "6 or above.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 45,
+      "notes": "PTE Academic 45 or above.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": null,
+      "notes": "CPE, CAE or FCE accepted; no minimum score listed.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "2026-27 per-credit-hour rates: out-of-state and international $400 tuition + $106.50 mandatory fees = $506.50 (in-state $334.50), plus $73 per semester (registration and health) and an international Student Services Fee of $350 per semester. Freshman merit scholarships (ACT or GPA based, up to $1,000-$6,000 plus up to a $1,500 housing stipend) and prestigious scholarships (Myles Friedman Honors up to $34,000 over four years, ACT 27 or 3.5 GPA) exist. The international page says international students may apply for Myles Friedman and freshman merit scholarships but not those requiring Pell eligibility. No need-based aid for international students is described.",
+    "src": "tuition"
+  },
+  "majors": [
+    {
+      "program": "Nursing, BSN (pre-licensure)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": true,
+      "notes": "Apply to the program after university admission and about four semesters of prerequisites; minimum 2.50 cumulative college GPA; selection is described as highly competitive. Deadlines on UAFS pages differ (one says March 1 for fall, Oct. 1 for spring)."
+    }
+  ],
+  "tiers": {
+    "general": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

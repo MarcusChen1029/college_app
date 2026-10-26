@@ -1,0 +1,90 @@
+{
+  "slug": "missouri-state",
+  "name": "Missouri State University (Springfield)",
+  "short_name": "Missouri State",
+  "state_region": "MO",
+  "city": "Springfield",
+  "latitude": 37.199258,
+  "longitude": -93.281281,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.missouristate.edu",
+  "admissions_url": "https://www.missouristate.edu/admissions/",
+  "ipeds_unit_id": 179566,
+  "undergrad_enrollment": 20584,
+  "intl_undergrads": 451,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=179566",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=179566",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 11901,
+    "admits": 10836,
+    "enrolled": 2841,
+    "pct_submit_sat": 6,
+    "pct_submit_act": 77,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 11,901 applicants, 10,836 admitted, 2,841 enrolled. College Navigator fall 2024: 11,584 applicants, 91% admitted. IPEDS reports no nonresident-alien applicant counts for Missouri State, so international admit figures are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 20,584 (fall 2024) includes many dual-credit high school students; student-faculty ratio 21:1. No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 9502,
+    "tuition_out_of_state_usd": 18770,
+    "books_usd": 1200,
+    "room_board_usd": 11006,
+    "other_usd": 3924,
+    "total_coa_usd": 34900,
+    "notes": "College Navigator 2024-25: tuition and fees in-state $9,502, out-of-state $18,770; on-campus food and housing $11,006, other $3,924; total_coa_usd is the out-of-state on-campus total."
+  }
+}

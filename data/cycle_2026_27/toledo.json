@@ -1,0 +1,176 @@
+{
+ "sources": {
+  "how": {
+   "kind": "admissions_site",
+   "title": "University of Toledo - Undergraduate international admission: how to apply and deadlines",
+   "url": "https://www.utoledo.edu/admission/international/how-to-apply.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Toledo - Undergraduate international English language requirements",
+   "url": "https://www.utoledo.edu/admission/international/englishlanguageproficiency/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "admissions_site",
+   "title": "University of Toledo - Undergraduate international tuition, scholarships and aid (2026-2027)",
+   "url": "https://www.utoledo.edu/admission/international/tuition/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "University of Toledo - International student scholarships",
+   "url": "https://www.utoledo.edu/financialaid/scholarships/international/",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Toledo - Apply (application fees waived for freshmen)",
+   "url": "https://www.utoledo.edu/admission/apply/",
+   "accessed": "2026-10-26"
+  },
+  "ca": {
+   "kind": "other",
+   "title": "Common App - University of Toledo (first-year test policy)",
+   "url": "https://www.commonapp.org/school/university-toledo",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Common App lists first-year applicants as 'Test Optional/Flexible' and says scores are not required for test-optional applicants. The College of Engineering requires proof of math knowledge (SAT Math, ACT, or the ALEKS placement test).",
+  "src": "ca"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Freshman applicants using the UToledo application or the Common App pay no application fee (CDS C13 lists $40). International freshmen still completing their last year of secondary school may use the Common App; the UToledo application (International Application option) is for gap-year and transfer applicants. Transcripts and English proficiency are required; Engineering (including Computer Science and Cyber Security) freshmen must show math knowledge: Engineering Science 22 ACT / 540 SAT Math or ALEKS 76, Engineering Technology 20 ACT / 520 SAT Math or ALEKS 61.",
+  "src": "how"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International freshman application deadline (fall 2027 entry)",
+   "notes": "Suggested date based on visa wait times; later applications may still be reviewed or moved to the next term. CDS C14 says there is no closing date and C16 says decisions are rolling from Oct 1. Transfer students already in the US: Aug 1, 2027. Classes begin Aug 23, 2027.",
+   "src": "how"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of listed English-speaking countries are exempt. Waiver on an individual basis for a high school diploma from a US school or an international school where the only language of instruction is English, earned less than two years ago. Other routes: SAT EBRW 510 or ACT English 21, completing the High Advanced level at UToledo's American Language Institute, 3 Advanced Level or 3 IB Higher Level subjects, ELS level 112, or (transfers) English Composition I. Scores cannot be more than two years old. Applicants admissible except for English are admitted to the American Language Institute.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Exams taken before January 21, 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Exams taken after January 21, 2026. The page lists this value without naming the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall band.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "PTE Academic. Also accepted: MET 52 (4-skill) and iTEP Academic 3.7.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 170,
+   "notes": "B2 First on the CEFR with an overall score of 170.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International Rocket Award: $8,000 per academic year for a 3.0+ GPA, awarded automatically on admission, applied to the out-of-state surcharge only (not in-state tuition, fees, housing or insurance). Students from Toledo's Sister Cities pay Ohio-resident tuition instead and do not get the award. UToledo says more than 85% of its international undergraduates receive scholarships or special tuition rates; international students cannot get awards that require a FAFSA.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "College of Engineering (incl. Computer Science and Cyber Security)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Freshmen must show math knowledge: Engineering Science 22 ACT / 540 SAT Math or ALEKS 76; Engineering Technology 20 ACT / 520 SAT Math or ALEKS 61 (ALEKS costs $20)."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1845",
+   "note": "SAT institutional code for UToledo.",
+   "src": "eng"
+  },
+  "act": {
+   "code": "3344",
+   "note": "ACT institutional code for UToledo.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "1845",
+   "note": "ETS institutional code. If scores were not sent by the testing service, email a PDF to international@utoledo.edu.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code listed: send through the testing service or email a PDF of the report to international@utoledo.edu.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code listed: send through the testing service or email a PDF to international@utoledo.edu.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code listed: send through the testing service or email a PDF to international@utoledo.edu.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

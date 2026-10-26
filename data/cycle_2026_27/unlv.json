@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "ug": {
+   "kind": "admissions_site",
+   "title": "UNLV International Undergraduate Admissions (requirements, deadlines, fee, codes)",
+   "url": "https://www.unlv.edu/admissions/international/undergraduate",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UNLV International Admissions - English proficiency (undergraduate)",
+   "url": "https://www.unlv.edu/admissions/international/undergraduate/english-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "UNLV - Tuition and college costs (2026-2027)",
+   "url": "https://www.unlv.edu/admissions/paying-for-college/costs",
+   "accessed": "2026-10-26"
+  },
+  "hb": {
+   "kind": "financial_aid_site",
+   "title": "UNLV International Student Handbook 2025-26 (merit scholarships)",
+   "url": "https://www.unlv.edu/sites/default/files/media/document/2025-08/International_Student_Handbook_2025_26.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT scores are not required for international students; first-year applicants who have taken either test are recommended to submit official scores. SAT 1120 or ACT 22 can substitute for the 3.0 GPA requirement.",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 95,
+  "notes": "International first-year admission requires a 3.0 cumulative GPA OR SAT 1120 (EBRW + Math) OR ACT 22. Apply with the UNLV application or the Common App (no preference); $95 nonrefundable international fee. Send the high school transcript (certified translation if not in English; PDF with grading key) and proof of English proficiency; after admission upload the Confidential Financial Certification form and a bank letter for the I-20.",
+  "src": "ug"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-15",
+   "label": "Fall first-year priority deadline",
+   "notes": "To get priority for institutional grants and scholarships an applicant must be admitted and complete the Institutional Aid Application / Alternative Need Form by this date; applications open Oct. 1. The page prints no year; taken as the current cycle.",
+   "src": "ug"
+  },
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "Fall first-year application deadline",
+   "notes": "Spring deadline is Dec. 1. I-20 processing starts 6 weeks before the semester for initial F-1 applicants. UNLV's College of Engineering IEP page lists earlier dates (May 1 for fall), which were not confirmed on the admissions page.",
+   "src": "ug"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Other accepted proof: SAT EBRW 480+, ACT English 18+, ELS Level 109, MET 53, CEFR B2, or ENG 113/ENG 101 with a C or better. Exempt: a degree from a U.S. institution; being from or earning a degree in a listed English-speaking nation (e.g. Canada excluding Quebec, Ireland, Nigeria, the Philippines, Singapore, South Africa, the United Kingdom); or a degree earned outside the U.S. where English was the primary language of instruction. Scores must be under two years old. English Language Center Fast Track: applicants who meet everything but English (TOEFL iBT 59-71 or new 3.0-3.5, IELTS 5.0-5.5, Duolingo 85-90, PTE 43-58) enroll full-time in the non-credit Intensive English Program; finishing Level 4 with a C or better satisfies the requirement without a new test.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 72,
+   "subs": {
+    "each_section": 17
+   },
+   "notes": "Legacy 0-120 scale; no band below 17.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "each_section": 3.5
+   },
+   "notes": "New 1-6 scale, tests from January 2026; no band below 3.5.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "IELTS Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "subs": {
+    "each_section": 95
+   },
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "subs": {
+    "each_section": 50
+   },
+   "notes": "PTE Academic.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 11231,
+  "tuition_out_of_state_usd": 31420,
+  "tuition_intl_usd": 31710,
+  "room_board_usd": 13448,
+  "books_usd": 1290,
+  "other_usd": 4664,
+  "notes": "UNLV cost page (2026-27, 15 credits, two semesters): the tuition figures already include required fees and a one-time $200 new-student fee; international (F-1) $31,710 includes a $145-per-semester international fee; mandatory health insurance for international students is estimated separately. room_board = on-campus housing $7,424 + food $6,024; other_usd = transportation $1,360 + miscellaneous $3,304. Estimated nonresident total cost living on campus $50,284.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "Admitted international undergraduates may be considered for merit-based scholarships of $5,000-$7,000 per year (once a year, fall entry only; must be admitted before the priority deadline and complete UNLV's Alternative Need Form). No need-based aid for international students is described, so that is left unconfirmed.",
+  "src": "hb"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4861",
+   "src": "ug"
+  },
+  "act": {
+   "code": "2496",
+   "src": "ug"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The UNLV international pages do not print a TOEFL institution code; select University of Nevada, Las Vegas when ordering.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "business": "Editorial judgment: the Harrah College of Hospitality is a nationally recognized strength; placed in the 41-100 band, not a published ranking."
+ }
+}

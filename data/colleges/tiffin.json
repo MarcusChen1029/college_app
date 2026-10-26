@@ -1,0 +1,91 @@
+{
+  "slug": "tiffin",
+  "name": "Tiffin University",
+  "short_name": "Tiffin",
+  "state_region": "OH",
+  "city": "Tiffin",
+  "latitude": 41.118316,
+  "longitude": -83.184197,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.tiffin.edu/",
+  "admissions_url": "https://www.tiffin.edu/admissions",
+  "ipeds_unit_id": 206048,
+  "undergrad_enrollment": 2666,
+  "intl_undergrads": 115,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Tiffin University Common Data Set 2023-2024 (PDF; newest year published on its Institutional Research page)",
+      "url": "https://www.tiffin.edu/wp-content/uploads/2024/02/CDS-Final-PDF-2023-24.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator (NCES/IPEDS) institution profile",
+      "url": "https://nces.ed.gov/collegenavigator/?id=206048",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 4785,
+    "admits": 3817,
+    "enrolled": 504,
+    "intl_applicants": 570,
+    "intl_admits": 206,
+    "pct_submit_sat": 21.0,
+    "pct_submit_act": 52.0,
+    "gpa_avg": 3.2,
+    "pct_reporting_gpa": 97.0,
+    "gpa_distribution": {
+      "4.0": 10.2,
+      "3.75-3.99": 16.19,
+      "3.50-3.74": 17.29,
+      "3.25-3.49": 13.53,
+      "3.00-3.24": 14.63,
+      "2.50-2.99": 18.0,
+      "2.0-2.49": 7.54,
+      "1.0-1.99": 1.11
+    },
+    "notes": "CDS C1 (fall 2023): applicants, admits and enrollees are the sums of the men/women/another-gender rows (4,785 / 3,817 / 504). The residency table shows 4,724 / 3,783 / 504 in total, with International 570 applied, 206 admitted, 17 enrolled (about 36% of international applicants admitted versus about 80% overall), In-state 2,197 / 1,911 / 322 and Out-of-state 1,957 / 1,666 / 165; the residency totals are slightly below the C1 totals, so in-state and out-of-state counts are left null. SAT submitted by 21% (108) and ACT by 52% (262) of enrolled first-years (C9). C11 All-enrolled GPA ranges; 1.5% of students were below 1.0. College Navigator for fall 2024 shows 5,949 applicants and about 80% admitted. Undergraduate enrollment 2,666 and nonresident count 115 are the B1 Total Undergraduates column (fall 2023); the C7 factor checkboxes could not be read from the PDF, so factors are omitted."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      900,
+      1010,
+      1110
+    ],
+    "SAT_ERW": [
+      440,
+      510,
+      560
+    ],
+    "SAT_MATH": [
+      420,
+      500,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      18,
+      22
+    ],
+    "ACT_ENGLISH": [
+      14,
+      17,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      17,
+      22
+    ]
+  }
+}

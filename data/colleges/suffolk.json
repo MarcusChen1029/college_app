@@ -1,0 +1,62 @@
+{
+  "slug": "suffolk",
+  "name": "Suffolk University",
+  "short_name": "Suffolk",
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.357945,
+  "longitude": -71.060917,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.suffolk.edu/",
+  "admissions_url": "https://www.suffolk.edu/undergraduate-admission",
+  "ipeds_unit_id": 168005,
+  "undergrad_enrollment": 4326,
+  "intl_undergrads": 518,
+  "student_faculty_ratio": 15,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024) via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=168005",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_portal": {
+      "kind": "ipeds",
+      "title": "IPEDS admissions counts and fall 2024 enrollment (nonresident undergraduates) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=168005",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 10308,
+    "admits": 8487,
+    "enrolled": 923,
+    "pct_submit_sat": 12,
+    "pct_submit_act": 2,
+    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; test submission rates and percentiles from College Navigator. Suffolk does not publish a Common Data Set (its Institutional Research page lists a Factbook on the staff intranet only), so GPA, residency splits and international applicant counts are not available. SAT/ACT percentiles cover the 12% (115) / 2% (19) of enrollees who submitted scores. Undergraduate enrollment and the nonresident count (518, about 12%) are IPEDS fall 2024 undergraduate headcounts."
+  },
+  "scores": {
+    "SAT_ERW": [
+      550,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      540,
+      590,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      26,
+      28
+    ]
+  }
+}

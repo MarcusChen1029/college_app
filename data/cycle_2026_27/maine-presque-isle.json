@@ -1,0 +1,167 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UMPI - On Campus: International (application steps, English proficiency, I-20 deadlines)",
+      "url": "https://www.umpi.edu/admissions/on-campus-international/",
+      "accessed": "2026-10-26"
+    },
+    "intlfaq": {
+      "kind": "admissions_site",
+      "title": "UMPI - FAQs for International Students",
+      "url": "https://www.umpi.edu/admissions/faqs-for-international-students/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UMPI - First-Year Students (documents, test-optional)",
+      "url": "https://www.umpi.edu/admissions/first-year-students/",
+      "accessed": "2026-10-26"
+    },
+    "howto": {
+      "kind": "admissions_site",
+      "title": "UMPI - How to Apply (ApplyMaine / Common App)",
+      "url": "https://www.umpi.edu/admissions/how-to-apply/",
+      "accessed": "2026-10-26"
+    },
+    "fin": {
+      "kind": "financial_aid_site",
+      "title": "UMPI - Financial Matters (Merit Awards, out-of-state and international tuition)",
+      "url": "https://www.umpi.edu/admissions/financial-matters/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "UMPI Student Financial Services - Tuition and Fees, estimated cost of attendance 2026-2027",
+      "url": "https://www.umpi.edu/student-financial-services/student-accounts/tuition-a-fees/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT scores are optional for first-year applicants; the First-Year page says they can be used to determine eligibility for the Merit Award (SAT 1100 or ACT 25 with a 3.3 GPA, or a 3.7 GPA). IPEDS (fall 2024) lists admission test scores as not considered.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply with ApplyMaine or the Common App. The application fee is not stated on the pages read. First-year documents: official high school transcript (sent by a school representative); essay, recommendation letters and test scores are optional. International applicants must send a credential evaluation (NACES or AICE member, must include a GPA; WES or Incred recommended) unless exempt (high school transcripts from China and English-speaking provinces of Canada). UMPI also has a separate fully online, competency-based YourPace program for international students; this file describes the on-campus path.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Non-Canadian international freshman: application and I-20 document deadline (fall entry)",
+      "notes": "The page lists July 15 for fall 2026 (semester begins Sept. 3, 2026) and Nov. 15 for spring 2026 entry; no fall 2027 table is published yet, so no 2027 date is recorded. Expect a mid-July date and confirm with umpi-admissions@maine.edu; allow time for the I-20 and visa.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proficiency is shown by: (1) being from a listed English-speaking country (e.g. Australia, Canada, Ghana, Ireland, Jamaica, Kenya, New Zealand, Nigeria, South Africa, United Kingdom; passport copy required); (2) a test score; or (3) instruction in English: a high school transcript stating English was the language of instruction for all subjects, or 2+ years of in-person, non-ESL study at an accredited college in the U.S., Canada or England. Scores must be from the last 2 years and sent by the testing agency.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Minimum before Jan. 21, 2026; paper-based TOEFL 550. TOEFL Essentials needs 8.5.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Page: minimum of 4 for TOEFL iBT as of Jan. 21, 2026. It does not name the 1-6 scale, but 4 is the post-January 2026 score (79 applied before).",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Cambridge C1 Advanced is accepted; no numeric minimum is printed.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Merit Awards apply to international students, renew each year and need no extra application: $5,000 for first-year (fall) applicants straight from high school with SAT 1100 or ACT composite 25 plus a 3.3 high school GPA, or an overall 3.7 GPA; international applicants must provide official transcripts for all 4 years of high school. FAQ: scholarships do not apply to the online YourPace program for international students. International need-based aid is not described.",
+    "src": "fin"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 8370,
+    "tuition_out_of_state_usd": 14220,
+    "tuition_intl_usd": 14220,
+    "required_fees_usd": 1500,
+    "room_board_usd": 11400,
+    "books_usd": 1000,
+    "other_usd": 2450,
+    "total_coa_usd": 30570,
+    "notes": "UMPI 2026-27 estimated cost of attendance: Maine/Canadian tuition $8,370; out-of-state/international $14,220 (30 credits); mandatory fees $1,500; housing and food $11,400; books $1,000; miscellaneous $1,100 plus travel $1,350. Total is the sum of those listed items at the out-of-state/international rate (the page prints $27,120 direct costs). The Financial Matters page still quotes $15,378 tuition and fees (the 2025-26 figure).",
+    "src": "cost"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "3008",
+      "note": "Page prints 'UMPI Institution Code: 3008' for scores sent from the College Board or the TOEFL/IELTS site.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed; pick the school by name at act.org."
+    },
+    "toefl": {
+      "code": "3008",
+      "note": "Same institution code (3008) printed in the English proficiency section.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS code is listed; scores can be sent to umpi-admissions@maine.edu."
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed."
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed."
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

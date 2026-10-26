@@ -1,0 +1,99 @@
+{
+  "slug": "farmingdale-state",
+  "name": "Farmingdale State College",
+  "short_name": "Farmingdale State",
+  "state_region": "NY",
+  "city": "Farmingdale",
+  "latitude": 40.754224,
+  "longitude": -73.42832,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.farmingdale.edu/",
+  "admissions_url": "https://www.farmingdale.edu/admissions/",
+  "ipeds_unit_id": 196042,
+  "undergrad_enrollment": 10007,
+  "intl_undergrads": 206,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Farmingdale State College Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.farmingdale.edu/institutional-research/pdf/cds_2024-2025_fsc.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (fall 2024: enrollment, ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196042",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196042",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 10748,
+    "admits": 6802,
+    "enrolled": 1822,
+    "in_state_applicants": 10497,
+    "in_state_admits": 6639,
+    "out_state_applicants": 234,
+    "out_state_admits": 150,
+    "intl_applicants": 17,
+    "intl_admits": 13,
+    "gpa_avg": 3.27,
+    "pct_reporting_gpa": 99,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 2,
+    "gpa_distribution": {
+      "4.0": 13,
+      "3.75-3.99": 9,
+      "3.50-3.74": 17,
+      "3.25-3.49": 12,
+      "3.00-3.24": 20,
+      "2.50-2.99": 25,
+      "2.0-2.49": 4,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1 (fall 2024 first-year class; residency by known physical address): only 17 international applicants (13 admitted, 1 enrolled) and 234 other out-of-state applicants, so Farmingdale is overwhelmingly a Long Island/New York commuter college and the international admit rate rests on a tiny sample. 19% (340 students) submitted SAT and 2% (35) ACT. The GPA bands were read from the PDF text in high-to-low order and agree with the 3.27 average. No early decision/early action. Undergrad enrollment (10,007) is from College Navigator, fall 2024 (3% nonresident, no headcount)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      520,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      520,
+      570,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      25,
+      28
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 7070,
+    "tuition_out_of_state_usd": 17560,
+    "tuition_intl_usd": 17560,
+    "required_fees_usd": 1556,
+    "room_board_usd": 16182,
+    "books_usd": 1300,
+    "intl_need_aid": false,
+    "notes": "CDS G1 (first-year, 2024-25): nonresident tuition $17,560, required fees $1,556, food and housing on campus $16,182. These are 2024-25 figures; 2026-27 rates were not confirmed."
+  }
+}

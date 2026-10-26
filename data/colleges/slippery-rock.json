@@ -1,0 +1,124 @@
+{
+  "slug": "slippery-rock",
+  "name": "Slippery Rock University of Pennsylvania",
+  "short_name": "SRU",
+  "state_region": "PA",
+  "city": "Slippery Rock",
+  "latitude": 41.062719,
+  "longitude": -80.045965,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.sru.edu",
+  "admissions_url": "https://www.sru.edu/admissions",
+  "ipeds_unit_id": 216038,
+  "undergrad_enrollment": 7088,
+  "intl_undergrads": 248,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Slippery Rock University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.sru.edu/documents/offices/analytics-decision-support/CDS_2025-2026_SRU.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Slippery Rock University of Pennsylvania",
+      "url": "https://nces.ed.gov/collegenavigator/?id=216038",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6320,
+    "admits": 4707,
+    "enrolled": 1550,
+    "in_state_applicants": 5162,
+    "in_state_admits": 3930,
+    "out_state_applicants": 930,
+    "out_state_admits": 696,
+    "intl_applicants": 228,
+    "intl_admits": 81,
+    "pct_submit_sat": 12,
+    "gpa_avg": 3.58,
+    "pct_reporting_gpa": 96.38,
+    "gpa_distribution": {
+      "4.0": 21,
+      "3.75-3.99": 22,
+      "3.50-3.74": 20,
+      "3.25-3.49": 16,
+      "3.00-3.24": 12,
+      "2.50-2.99": 9
+    },
+    "notes": "CDS C1: international first-year applicants 228, admitted 81 (36%), enrolled 6, far below the 74% overall admit rate, so SRU is not an automatic admit for international applicants; the CDS does not say why (for example incomplete applications). C2 says no waitlist policy, while SRU's admissions page describes a waitlist for applicants below the guidelines. 12% (178 students) of enrolled first-years submitted SAT; the CDS prints ACT as 0% with 30 students, so pct_submit_act is left null. SAT/ACT percentiles are for those submitters only (ACT: 30 students). C7 marks test scores 'important' although applications are test-optional. GPA distribution is the all-enrolled column of C11 (3.58 average). Undergraduate enrollment 7,088 and 248 nonresident undergraduates are CDS B1/B2 (fall 2025)."
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1000,
+      1095,
+      1190
+    ],
+    "SAT_ERW": [
+      510,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      487.5,
+      540,
+      572.5
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25.25
+    ],
+    "ACT_ENGLISH": [
+      16,
+      21,
+      24.25
+    ],
+    "ACT_MATH": [
+      17.75,
+      21.5,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid_awarded": 62,
+    "intl_avg_award_usd": 1775,
+    "notes": "CDS H6: 62 undergraduate degree-seeking nonresidents received institutional aid, average $1,775 (total $110,038); the CDS text does not show whether it was need- or non-need-based. CDS G1 for 2026-27 lists tuition $7,994 in-state and $11,992 out-of-state/nonresident, required fees $3,470, food and housing $11,098; the international cost matrix is used for the cost figures."
+  }
+}

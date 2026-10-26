@@ -1,0 +1,120 @@
+{
+  "slug": "texas-state",
+  "name": "Texas State University",
+  "short_name": "Texas State",
+  "state_region": "TX",
+  "city": "San Marcos",
+  "latitude": 29.888885,
+  "longitude": -97.943029,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.txst.edu",
+  "admissions_url": "https://www.admissions.txst.edu",
+  "ipeds_unit_id": 228459,
+  "undergrad_enrollment": 39353,
+  "intl_undergrads": 1205,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Texas State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://docs.gato.txst.edu/806740/Common%20Data%20Set-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - Texas State University",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228459",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 44436,
+    "admits": 40515,
+    "enrolled": 9369,
+    "in_state_applicants": 36941,
+    "in_state_admits": 34047,
+    "out_state_applicants": 5351,
+    "out_state_admits": 4404,
+    "intl_applicants": 2117,
+    "intl_admits": 2037,
+    "pct_submit_sat": 40.0,
+    "pct_submit_act": 6.0,
+    "notes": "CDS C1 (fall 2025 first-years). Residency split from the C1 table (in-state 36,941 / out-of-state 5,351 / international 2,117 / unknown 27 applicants); international admit rate is 96.2% (2,037 of 2,117), 442 enrolled. The CDS does not report high school GPA (C11/C12 blank), so GPA fields are omitted; 12% of enrollees were in the top tenth and 42% in the top quarter of their class (C10). Undergraduate enrollment 39,353 is CDS B1 total undergraduates; international 1,205 is degree-seeking nonresidents (B2). Student-faculty ratio 21:1 is from IPEDS College Navigator. Waitlist: none."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      960,
+      1070,
+      1180
+    ],
+    "SAT_ERW": [
+      490,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      460,
+      520,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "VI",
+    "gpa": "NC",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'required for some' and ACT-only / SAT-only 'recommended'. The CDS note says scores are not required for students in the top 75% of their class and are required in the bottom 25%."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9221,
+    "tuition_out_of_state_usd": 21371,
+    "tuition_intl_usd": 21371,
+    "required_fees_usd": 3038,
+    "room_board_usd": 12900,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 1131,
+    "intl_avg_award_usd": 22760,
+    "notes": "CDS G1 first-year full-year amounts; room and board is on-campus housing $8,076 plus meal plan $4,824. The CDS G1 text refers to both 2025-26 and 2026-27, so the year is most likely 2025-26 (IPEDS 2024-25 was $11,450 in-state / $22,930 out-of-state tuition and fees). CDS H6: 1,131 degree-seeking nonresident undergraduates received institutional need-based or non-need-based aid (avg $22,760, total $25,741,960); nonresident first-years file the International Student's Financial Aid Application."
+  }
+}

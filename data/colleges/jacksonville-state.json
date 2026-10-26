@@ -1,0 +1,74 @@
+{
+  "slug": "jacksonville-state",
+  "name": "Jacksonville State University",
+  "short_name": "JSU",
+  "state_region": "AL",
+  "city": "Jacksonville",
+  "latitude": 33.822938,
+  "longitude": -85.765321,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.jsu.edu",
+  "admissions_url": "https://www.jsu.edu/admissions/",
+  "ipeds_unit_id": 101480,
+  "undergrad_enrollment": 9028,
+  "intl_undergrads": 231,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Jacksonville State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.jsu.edu/ire/common-data-set/2025_2026-cds-jacksonville-state-university.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Jacksonville State University (campus setting: Suburb: Small)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=101480",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11273,
+    "admits": 8256,
+    "enrolled": 1641,
+    "pct_submit_sat": 4.6,
+    "pct_submit_act": 42.6,
+    "gpa_avg": 3.45,
+    "pct_reporting_gpa": 85.25,
+    "gpa_distribution": {
+      "4.0": 30.2,
+      "3.75-3.99": 7.2,
+      "3.50-3.74": 17.7,
+      "3.25-3.49": 12.3,
+      "3.00-3.24": 13.1,
+      "2.50-2.99": 11.7,
+      "2.0-2.49": 7.7,
+      "1.0-1.99": 0.1
+    },
+    "notes": "CDS C1 (fall 2025): 3,951 men + 7,322 women applied, 2,858 + 5,398 were admitted, 1,641 enrolled (full- and part-time). The CDS leaves the in-state / out-of-state / international split of applicants and admits blank, so international applicant and admit counts are not available. No early decision or early action. Only 76 enrolled students submitted SAT scores (4.6%), so the SAT percentiles rest on a small group. Undergrad enrollment is the B1 total (9,028); intl_undergrads is the B2 nonresident total (231; IPEDS fall 2024 reports 373). The GPA distribution is as printed in C11 (30.2% at 4.0). Test-optional; the C7 importance checkboxes are not readable in the PDF, so no factors are recorded."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1070,
+      1210
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      24
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: test optional for admission; SAT/ACT can improve an admission decision. Students under a 3.0 cumulative GPA are admitted conditionally unless they have an 18+ ACT or equivalent SAT."
+  }
+}

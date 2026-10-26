@@ -1,0 +1,87 @@
+{
+  "slug": "tarleton-state",
+  "name": "Tarleton State University",
+  "short_name": "Tarleton",
+  "state_region": "TX",
+  "city": "Stephenville",
+  "latitude": 32.217805,
+  "longitude": -98.219039,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.tarleton.edu/",
+  "admissions_url": "https://www.tarleton.edu/admissions/",
+  "ipeds_unit_id": 228529,
+  "undergrad_enrollment": 15130,
+  "intl_undergrads": 79,
+  "student_faculty_ratio": 24,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Tarleton State University Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.tarleton.edu/institutional-data-analytics/wp-content/uploads/sites/397/2025/05/CDS-2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 18799,
+    "admits": 9880,
+    "enrolled": 3018,
+    "in_state_applicants": 18316,
+    "in_state_admits": 9469,
+    "out_state_applicants": 450,
+    "out_state_admits": 381,
+    "intl_applicants": 33,
+    "intl_admits": 30,
+    "pct_submit_sat": 47,
+    "pct_submit_act": 14,
+    "notes": "CDS C1 (Fall 2024; the 2025-2026 CDS was not posted on Tarleton's Common Data Set page). International: 33 applied, 30 admitted, 12 enrolled (C1 residency table). Undergraduate enrollment and the 79 nonresident undergraduates are the B1/B2 totals (15,130 incl. non-degree). SAT composite 970/1060/1150 is also published (not a stored test type). The C11 GPA table and C12 average GPA were left blank in the CDS, and the C7 checkboxes are all marked so no factors are recorded. The C1 enrolled figure (3,018) is higher than the B1 degree-seeking first-time count (2,581); the C1 figure is stored as printed."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      540,
+      590
+    ],
+    "SAT_MATH": [
+      480,
+      530,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      23
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "Tarleton's first-time-in-college page says SAT/ACT/CLT scores are not required for an admission decision; they are encouraged for scholarships and the TSI requirement."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 5997,
+    "tuition_out_of_state_usd": 18297,
+    "tuition_intl_usd": 18297,
+    "required_fees_usd": 4183,
+    "room_board_usd": 11676,
+    "books_usd": 1560,
+    "notes": "CDS G1 (first-year, 2025-26; no 2026-27 figures are posted): in-state tuition $5,997, out-of-state/nonresident $18,297, required fees $4,183, food and housing $11,676. CDS H6 lists 479 nonresident undergraduates with institutional aid (average $5,926), but the checked H6 box is unreadable and that page is headed 2023-2024, so the aid fields are left null."
+  }
+}

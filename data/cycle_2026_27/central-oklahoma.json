@@ -1,0 +1,161 @@
+{
+ "sources": {
+  "ug": {
+   "kind": "admissions_site",
+   "title": "UCO Office of Global Affairs - International undergraduate admissions",
+   "url": "https://www.uco.edu/students/oga/future-students/undergraduate-admissions.PHP",
+   "accessed": "2026-10-26"
+  },
+  "docs": {
+   "kind": "admissions_site",
+   "title": "UCO Office of Global Affairs - International admission documents (English proficiency, bank statement)",
+   "url": "https://www.uco.edu/students/oga/future-students/admission-documents.PHP",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "UCO Office of Global Affairs - Conditional admission",
+   "url": "https://www.uco.edu/students/oga/future-students/conditional-admission.PHP",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UCO Office of Global Affairs - Scholarships for international students",
+   "url": "https://www.uco.edu/students/oga/future-students/scholarships.PHP",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "UCO Office of Global Affairs - International tuition and fees",
+   "url": "https://www.uco.edu/students/oga/future-students/tuition-and-fees.PHP",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International first-year applicants qualify with a high school GPA of 2.70 or equivalent (SAT/ACT not required), or with SAT 1030+ (reading + math) or ACT 20+. Students admitted on grades without scores take UCO's Computerized Placement Test before enrolling.",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Online application on UCO's own portal; $40 non-refundable fee. Documents: transcripts (equivalent of 12 years of schooling, with certified English translation if needed), English proficiency, passport, and for F-1 a bank statement (minimum $29,950 for a degree-seeking undergraduate) plus a Statement of Financial Sponsorship. UCO School of Music applicants also submit an audition form.",
+  "src": "docs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Application (fall 2027): no published deadline",
+   "notes": "UCO states there are no specific application deadlines for undergraduate international applicants and recommends applying as early as possible for processing, visa and travel.",
+   "src": "ug"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-31",
+   "label": "Priority deadline for automatic international admission scholarships (fall 2027)",
+   "notes": "The scholarships page lists 'May 31 (Fall)' with no year, treated as fall 2027. No separate scholarship application is needed.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants from UCO's approved native English-speaking countries are exempt. Alternative: 12 weeks of intensive English at an approved U.S. ESL program after reaching a minimum TOEFL 48 iBT (460 PBT), IELTS 5.0, PTE 36 or iTEP 3.0. Students below the test minimums can apply for conditional admission and attend an approved 12-week Oklahoma ESL program, such as The Language Company on UCO's campus, before enrolling.",
+  "src": "docs"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "500 on the paper-based test is also accepted. The page does not give a new 1-6 scale minimum.",
+   "src": "docs"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Overall band.",
+   "src": "docs"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "PTE Academic. iTEP Academic 3.5 is also accepted.",
+   "src": "docs"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Applying for admission also applies for automatic freshman scholarships: Distinguished Global Scholar up to $16,000 over four years ($4,000/yr) for GPA 3.50 or SAT 1300 or ACT 28; Merit Global Scholar up to $12,000 ($3,000/yr) for GPA 3.25 or SAT 1250 or ACT 26; Honor Global Scholar up to $8,000 ($2,000/yr) for GPA 3.00 or SAT 1200 or ACT 24. Renewable with a 3.00-3.25 GPA. Extra funding (up to $4,500/yr total) for residents of Nigeria, Ghana, Malaysia, Vietnam, Thailand or Ivory Coast. UCO says it awards about $700,000 a year to international students.",
+  "src": "schol"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "tuition",
+  "tuition_usd": null,
+  "tuition_out_of_state_usd": null,
+  "tuition_intl_usd": 19900,
+  "required_fees_usd": null,
+  "room_board_usd": 10300,
+  "books_usd": null,
+  "other_usd": 2260,
+  "total_coa_usd": 32460,
+  "notes": "International tuition page (undated, accessed 2026-10-26; labeled 2026-2027 as the current page): undergraduate tuition and fees $19,900 per year at 12 credit hours per semester, housing and dining $10,300 (nine months), books, insurance and miscellaneous $2,260 (in other_usd), total $32,460."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "UCO's international pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "ug"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read; look it up at act.org.",
+   "src": "ug"
+  },
+  "toefl": {
+   "code": "6091",
+   "note": "UCO ETS institutional code for TOEFL.",
+   "src": "docs"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "docs"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Duolingo is not listed among UCO's accepted undergraduate English tests.",
+   "src": "docs"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "docs"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

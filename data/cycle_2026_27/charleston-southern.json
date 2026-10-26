@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Charleston Southern University - International Admissions (undergraduate requirements, English proficiency, deadline, scholarships)",
+   "url": "https://www.charlestonsouthern.edu/admissions/international/",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Charleston Southern University - Apply (first-year procedure and test-flexible policy)",
+   "url": "https://www.charlestonsouthern.edu/admissions/apply/",
+   "accessed": "2026-10-26"
+  },
+  "iep": {
+   "kind": "admissions_site",
+   "title": "Charleston Southern University - Intensive English Program (admission minimums, conditional acceptance)",
+   "url": "https://www.charlestonsouthern.edu/academics/international-programs/iep/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Charleston Southern University - Student Financial Services (2026-2027 scholarships and cost of attendance)",
+   "url": "https://www.charlestonsouthern.edu/admissions/financial-aid/",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Charleston Southern University - Tuition and Costs (fees, deposits)",
+   "url": "https://www.charlestonsouthern.edu/admissions/financial-aid/tuition-and-costs/",
+   "accessed": "2026-10-26"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "Charleston Southern University - Undergraduate programs",
+   "url": "https://www.charlestonsouthern.edu/program_level/undergraduate/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test Flexible policy: SAT/ACT/CLT scores are not required for admission but are encouraged; a student who opts out needs a school counselor or teacher academic reference form, and a 3.9 unweighted GPA or higher never needs scores. If submitted, regular admission uses 530 EBRW / 490 Math (SAT), 19 E / 19 M (ACT) or 64 (CLT); Bridge admission uses 450/440, 17/17 or 57. For international applicants SAT/ACT is optional with a GPA above 2.5, and scores may also be used to meet the English requirement.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Charleston Southern's own online application. The fee schedule lists an undergraduate online application fee of $25 'including military, international, and high school non degree exempt', which reads as waived for international applicants; the admissions pages state no fee. International freshmen send secondary transcripts (original language plus official English translation); no credential evaluation is required for incoming freshmen (transfers need a NACES course-by-course evaluation), a passport copy, and a bank statement (no older than 180 days) with an International Sponsor Statement if someone else pays. Recommended high school units: 4 English, 3 math, 3 science (2 lab), 3 social science/history, each with C or better. Christian university.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "International admission deadline (fall 2027 entry)",
+   "notes": "Printed rule: 'The deadline for admission for international students is 60 days prior to the first day of classes of the academic term of entry'. No calendar date is printed, so none is given. No first-year deadline is published for domestic applicants either.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Global Ambassador Scholarship priority date",
+   "notes": "One full-tuition award a year for an international student whose parents serve in Christian ministry outside the U.S. Priority goes to completed applications by December 1st (no year printed; taken as the cycle for fall 2027). Other international scholarships are automatic at admission with no separate application.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Confirmed English proficiency is required for non-native English speakers. Besides the tests below, it can be met with an SAT EBRW of 530 or two years at a U.S. college/university or high school with a C or better in core subjects. Conditional acceptance: applicants who meet every degree requirement except English may be conditionally accepted pending completion of CSU's Intensive English Program (IEP entry minimums: TOEFL iBT 45, IELTS 4.0, Duolingo 60; SEVP-certified, evening classes, available for undergraduate and graduate conditional acceptance).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "iBT; CSU code 5079. The page does not mention the 2026 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 51,
+   "notes": "Pearson Test of English Academic. The page also accepts iTEP 3.7.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "All international undergraduates are eligible for an automatic award at admission with no extra application: an International Student Scholarship of $10,000-$12,000 per year for students who attended schools outside the U.S., or an academic merit scholarship of $5,000-$19,000 per year (by GPA) for students from U.S. schools or international schools with a U.S. curriculum. The Global Ambassador full-tuition award is separate. The pages do not say whether need-based aid is open to international students; FAFSA-based aid is not.",
+  "src": "intl"
+ },
+ "majors": [],
+ "cost": {
+  "year": "2026-2027",
+  "src": "aid",
+  "tuition_usd": 34270,
+  "tuition_out_of_state_usd": 34270,
+  "tuition_intl_usd": 34270,
+  "required_fees_usd": 800,
+  "room_board_usd": 13974,
+  "total_coa_usd": 52254,
+  "notes": "Estimated 2026-27 cost of attendance for a freshman living on campus: tuition $34,270 (flat $17,135 per term for 12-18 hours), fees $800, housing $10,426 and food $3,548 (room_board is their sum), transportation $1,190, personal $2,020; total $52,254. Books are not itemized. No separate international tuition rate is published. Enrollment deposit for international students is $100 (non-refundable)."
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5079",
+   "note": "SAT code printed on the international admissions page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3833",
+   "note": "ACT code printed on the international admissions page.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5079",
+   "note": "TOEFL code printed on the international admissions page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,83 @@
+{
+  "slug": "fayetteville-state",
+  "name": "Fayetteville State University",
+  "short_name": "Fayetteville State",
+  "state_region": "NC",
+  "city": "Fayetteville",
+  "latitude": 35.073641,
+  "longitude": -78.891696,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uncfsu.edu/",
+  "admissions_url": "https://www.uncfsu.edu/admission-and-aid",
+  "ipeds_unit_id": 198543,
+  "undergrad_enrollment": 6074,
+  "intl_undergrads": 90,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Fayetteville State University (fall 2024 admissions, test scores, enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=198543",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions and fall enrollment counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=198543",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 6515,
+    "admits": 5352,
+    "enrolled": 794,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 8,
+    "notes": "Baseline from IPEDS fall 2024 (exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal; nonresident-alien undergraduates from NCES IPEDS fall 2024 enrollment by race (same portal)). No Common Data Set could be found on the university's institutional effectiveness pages, so international applicants/admits, GPA and admission factors are not included. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 2%, ACT 8%). Undergraduate enrollment 6,074 and 90 nonresident-alien undergraduates are IPEDS fall 2024; College Navigator prints the student-to-faculty ratio as 20 to 1."
+  },
+  "scores": {
+    "SAT_ERW": [
+      460,
+      490,
+      550
+    ],
+    "SAT_MATH": [
+      430,
+      500,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      17,
+      19
+    ],
+    "ACT_ENGLISH": [
+      13,
+      15,
+      18
+    ],
+    "ACT_MATH": [
+      14,
+      16,
+      18
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 4353,
+    "tuition_out_of_state_usd": 8353,
+    "books_usd": 372,
+    "room_board_usd": 11449,
+    "other_usd": 2784,
+    "total_coa_usd": 18958,
+    "notes": "College Navigator 2024-25: tuition includes required fees; total is the on-campus cost of attendance for North Carolina residents ($22,958 at the out-of-state rate). See the cycle file for the NC Promise rates starting fall 2027."
+  }
+}

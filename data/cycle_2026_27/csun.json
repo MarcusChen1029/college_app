@@ -1,0 +1,174 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "CSUN - Dates & Deadlines (fall 2027)",
+   "url": "https://www.csun.edu/admissions-financial-aid/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "CSUN - International first-time freshmen",
+   "url": "https://www.csun.edu/admissions-financial-aid/how-to-apply/international-students/international-first-time-freshmen",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "CSUN Catalog - International (Foreign) Student Admission Requirements",
+   "url": "http://catalog.csun.edu/policies/international-foreign-student-admission-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "CSUN Student Finance - Tuition & Other Fees (Fall 2026 and Spring 2027)",
+   "url": "https://www.csun.edu/stufin/tuition/tuition-other-fees",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - CSUN admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110608",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "The CSU system no longer uses SAT/ACT in admission decisions; College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)'. CSUN's own CDS C8A check box could not be read reliably. Eligibility for international freshmen is based on a converted GPA of 3.0 or higher.",
+  "src": "nav"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App); the $70 fee is payable only by credit or debit card. Needs a converted GPA of 3.0+ (4.0 scale). Documents: official transcripts and diplomas with certified English translations, Affidavit of Financial Support plus bank statement, passport photo page, English test results. College Navigator shows essays and recommendations are not considered. Impacted majors (Music, Cinema and Television Arts production options) have earlier closing dates.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-15",
+   "label": "International first-year application deadline, Cal State Apply (fall 2027)",
+   "notes": "Fall 2027 filing period is Aug 1, 2026 to May 15, 2027 (the page does not repeat the year; treated as 2027). Impacted majors close earlier: Music Jan 15, 2027; Cinema and Television Arts Film Production and Television Production Jan 31, 2027. CSUN notes international applicants may have different deadlines from domestic ones.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-15",
+   "label": "International document deadline (fall applicants)",
+   "notes": "Page gives 'June 15' for fall international document deadlines without a year; treated as 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Intent to Enroll deadline (fall applicants)",
+   "notes": "If admitted after May 1, submit intent within two weeks of the admission date.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required with 3+ years at a U.S. high school or 3+ years at a high school where English was the principal language of instruction (listed countries: Australia, Belize, Canada, England, Ireland, New Zealand, Northern Ireland, Scotland, Wales, Antigua and Barbuda, Bahamas, Cayman Islands, Trinidad and Tobago). TOEFL ITP is not accepted. Also accepted: iTEP Academic 3.8, GTEC CBT 1125, EIKEN CSE 2304 (Pre-1).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Exams on the old 0-120 scale. Paper-based minimum 500. Send scores to CSUN school code 4707.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "New iBT (1-6 scale). The page lists 'New iBT: 3.5' and does not define the scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic; have IELTS send the Test Report Form to CSUN.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Send through your Duolingo account.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic; send online through your PTE account.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 172,
+   "notes": "C1 Advanced (CAE); email the 'Confirmation of Entry' page to intladm@csun.edu.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "The CSUN international first-year pages checked list no scholarships or financial aid for international applicants. No conditional-admission or ESL pathway is described on the pages checked (CSUN's Tseng College runs an Intensive English Program; its page could not be loaded). Confirm with intladm@csun.edu.",
+  "src": "intl"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 1490,
+  "notes": "Computed from published rates: basic tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees = campus fees $745 per semester (Associated Students 135, Student Union 368, IRA 25, Health Facilities 3, Health Services 82, Campus Quality 132) twice. Housing, food, books and insurance not added because no international budget was found.",
+  "src": "fees"
+ },
+ "majors": [
+  {
+   "program": "Music (all options)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Impacted major; applications close Jan 15, 2027 for fall 2027, earlier than the May 15 general deadline."
+  },
+  {
+   "program": "Cinema and Television Arts: Film Production and Television Production options",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Impacted options; applications close Jan 31, 2027 for fall 2027."
+  }
+ ],
+ "score_codes": {
+  "toefl": {
+   "code": "4707",
+   "note": "CSUN school code for TOEFL results.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "general": "Large Los Angeles public (about 32,500 undergraduates) that admits roughly 93% of applicants and has no test requirement; D+ is an editorial judgment, not a ranking."
+ }
+}

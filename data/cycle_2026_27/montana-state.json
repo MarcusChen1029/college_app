@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "app": {
+   "kind": "admissions_site",
+   "title": "Montana State University - International undergraduate application instructions (deadlines, fee, codes)",
+   "url": "https://www.montana.edu/international/admissions/appinstructions.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Montana State University - English proficiency for undergraduate applicants",
+   "url": "https://www.montana.edu/international/admissions/englishproficiency.html",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Montana State University - Admission requirements for freshman students",
+   "url": "https://www.montana.edu/admissions/apply/freshman.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Montana State University - International undergraduate scholarships",
+   "url": "https://www.montana.edu/international/admissions/INTL_UG_Scholarships.html",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Montana State University - International costs (AY 2025-26)",
+   "url": "https://www.montana.edu/international/admissions/cost.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT are not required for admission or scholarship consideration. Admission needs a 2.5 cumulative high school GPA, or ACT 22, or SAT 1120, or upper-half class rank, plus the college-prep curriculum. Scores can replace MSU's math placement assessment. International applicants who attended a US or Canadian high school are asked for official SAT/ACT scores.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 38,
+  "notes": "International online application (msuadmissions.com/international) with a $38 non-refundable fee ($30 on the paper form; never waived or deferred). Also needed: proof of English proficiency and the high school transcript (unofficial copies reviewed for admission, official required before registration). Financial certificate and bank statement are required for the I-20, not for the admission decision.",
+  "src": "app"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International application deadline, fall 2027",
+   "notes": "July 1 for fall (spring Nov. 15, summer March 15); later applications may be considered case by case, and MSU encourages applying six months earlier. The page prints no year; treated as fall 2027. The CDS (C14) lists a 9/15 first priority date with rolling action afterwards.",
+   "src": "app"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: IB diploma; IGCSE O-level English C or above (or GCSE English 4+); 2 semesters or 24+ credits at a US regionally accredited college including two college English courses with C or better; the last 2 years at a US high school with B or better in English; a bachelor's, master's or doctorate from a US institution or a listed English-speaking country; or secondary school completed in a listed country with English-medium instruction. Also accepted: SAT EBRW 440 (Writing/Language 25+), ACT English 20+, APIEL 3, EIKEN Pre-1, or completing an intensive English program at a listed center (e.g. ELS level 112, EF C-1). Sub-scores are also considered.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Page lists 'Internet-based TOEFL test (iBT): 4', which is the 1-6 scale; no 0-120 minimum is printed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic test only.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 51,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International merit scholarship is automatic for fully admitted freshmen with a 2.5+ GPA: $5,000-$12,000 per year (tuition only), renewable with a 3.0 GPA and full-time status as a nonresident; transfers with 2.5+ get $7,000 per year. Not for conditional admits. The page says awards are based on GPA 'as of April 2, 2021', so amounts may have changed; confirm with the Office of International Programs. The MSU Presidential Scholarship (full admission required) has an application deadline in early December. English pathway: MSU's page lists completing an intensive English program at partner centers as an alternative to a test; no on-campus conditional admission is described.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4488",
+   "note": "MSU SAT code.",
+   "src": "app"
+  },
+  "act": {
+   "code": "2420",
+   "note": "MSU ACT code.",
+   "src": "app"
+  },
+  "toefl": {
+   "code": "4488",
+   "note": "MSU TOEFL code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores go to the Office of International Programs.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; choose Montana State University when sending results.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed; select Montana State University in the PTE portal.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "engineering": "College of Engineering at a university MSU describes as among the top 3% for research spending; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "biology_life_sci": "Research-active university (top 3% for research expenditures per MSU); placed C as a solid regional program. Editorial judgment, not a ranking."
+ }
+}

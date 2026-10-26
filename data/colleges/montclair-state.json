@@ -1,0 +1,102 @@
+{
+  "slug": "montclair-state",
+  "name": "Montclair State University",
+  "short_name": "Montclair State",
+  "state_region": "NJ",
+  "city": "Montclair",
+  "latitude": 40.860414,
+  "longitude": -74.198141,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.montclair.edu/",
+  "admissions_url": "https://www.montclair.edu/admissions-aid/undergraduate-admissions",
+  "ipeds_unit_id": 185590,
+  "undergrad_enrollment": 19048,
+  "intl_undergrads": 332,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Montclair State University Common Data Set 2025-2026 (PDF)",
+      "url": "http://irdata.montclair.edu/institutionalresearch/CDS/CDS%202025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 26224,
+    "admits": 23443,
+    "enrolled": 3816,
+    "in_state_applicants": 21206,
+    "in_state_admits": 19137,
+    "out_state_applicants": 3559,
+    "out_state_admits": 3086,
+    "intl_applicants": 1459,
+    "intl_admits": 1220,
+    "pct_submit_sat": 10,
+    "gpa_avg": 3.35,
+    "pct_reporting_gpa": 94.08,
+    "gpa_distribution": {
+      "4.0": 11.62,
+      "3.75-3.99": 12.15,
+      "3.50-3.74": 17.58,
+      "3.25-3.49": 16.52,
+      "3.00-3.24": 17.55,
+      "2.50-2.99": 23.09,
+      "2.0-2.49": 1.45,
+      "1.0-1.99": 0.06
+    },
+    "notes": "CDS C1 (fall 2025 entering class). Residency split is by known physical address at application: in-state 21,206 / out-of-state 3,559 / international 1,459 applicants; 19,137 / 3,086 / 1,220 admitted; 3,590 / 175 / 51 enrolled. Undergrad enrollment is B1 'Total Undergraduate Students' (8,091 men + 10,957 women = 19,048); the nonresident count (332) is the B2 'Total Undergraduates' column. SAT percentiles cover only the 10% (364) of enrollees who submitted SAT scores; no ACT scores were reported. The SAT Math 25th percentile is printed as 418 in the CDS. CDS C14 (domestic): closing date 3/1, priority 12/1; early action closes 12/1."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      850,
+      1000,
+      1160
+    ],
+    "SAT_ERW": [
+      430,
+      520,
+      600
+    ],
+    "SAT_MATH": [
+      418,
+      480,
+      560
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "I",
+    "recommendations": "I",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F (2025-26): 'totally test optional'; the admissions site confirms SAT/ACT scores are optional."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid_awarded": 168,
+    "intl_avg_award_usd": 5077,
+    "notes": "CDS H6 (2025-26): 168 undergraduate degree-seeking nonresidents received institutional aid, average $5,077 (total $852,895). The CDS box checked is 'need-based', but the international admissions page says Montclair cannot offer need-based aid to international students (merit and talent awards only)."
+  }
+}

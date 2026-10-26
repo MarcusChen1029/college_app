@@ -1,0 +1,72 @@
+{
+  "slug": "uafs",
+  "name": "University of Arkansas-Fort Smith",
+  "short_name": "UAFS",
+  "state_region": "AR",
+  "city": "Fort Smith",
+  "latitude": 35.384184,
+  "longitude": -94.373729,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://uafs.edu",
+  "admissions_url": "https://uafs.edu/admissions/",
+  "ipeds_unit_id": 108092,
+  "undergrad_enrollment": 5459,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=108092",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=108092",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 2677,
+    "admits": 2181,
+    "enrolled": 886,
+    "pct_submit_sat": 0,
+    "pct_submit_act": 81,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, exact counts). No Common Data Set was found (UAFS lists none on its institutional research pages), so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 2,769 applicants, 80% admitted, 40% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 5,459 and student-faculty ratio 18:1 are fall 2024 / 2024 figures. No SAT scores were reported to IPEDS for fall 2023 (0 SAT submitters)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      18,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 7334,
+    "tuition_out_of_state_usd": 12182,
+    "books_usd": 1416,
+    "room_board_usd": 10082,
+    "other_usd": 5476,
+    "notes": "College Navigator 2024-25: tuition and fees $7,334 in-state / $12,182 out-of-state; on-campus food and housing $10,082. Published total cost on campus is $29,156 out-of-state ($24,308 in-state); total left blank because the two differ. International students pay the out-of-state rate (2026-27 per-credit rates are in the aid notes)."
+  }
+}

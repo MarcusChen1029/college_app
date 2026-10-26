@@ -1,0 +1,164 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "SF State - Dates and Deadlines (fall 2027)",
+   "url": "https://future.sfsu.edu/admissions/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "SF State - International Freshmen",
+   "url": "https://future.sfsu.edu/admissions/intl-freshmen",
+   "accessed": "2026-10-26"
+  },
+  "bursar": {
+   "kind": "other",
+   "title": "SF State Bursar - Academic Year 2026-2027 tuition and fees",
+   "url": "https://bursar.sfsu.edu/students/upcoming-academic-year",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "SF State Financial Aid - Cost of Attendance 2026-2027",
+   "url": "https://financialaid.sfsu.edu/cost-of-attendance",
+   "accessed": "2026-10-26"
+  },
+  "oip": {
+   "kind": "other",
+   "title": "SF State Office of International Programs - Financial Resources",
+   "url": "https://oip.sfsu.edu/f1/current/financialassistance",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - SF State admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=122597",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "SF State's admissions page says the CSU no longer uses ACT/SAT in determining admission eligibility; College Navigator lists SAT/ACT as 'Not considered (Test Blind)'. SAT ERW 550 or ACT English 22 can only be used to show English proficiency.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App); $70 fee by credit card or PayPal. For a high school outside the U.S.: 12 years of schooling, eligible for university entry at home, and a 2.5 GPA (B- average) in academic courses after 9th grade; A-G coursework applies to U.S. high school graduates (non-California residents need a 3.0 GPA). Impacted majors are evaluated on supplemental factors. I-20 documents: Financial Affidavit, proof of finances, passport copy. Credential evaluations from third-party companies are not accepted. College Navigator shows essays and recommendations are not considered.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-01",
+   "label": "International application deadline (fall 2027)",
+   "notes": "Cal State Apply opened Aug 1, 2026; submissions begin Oct 1, 2026. International applicants have until May 1, 2027, but majors may fill: the Nov 30, 2026 priority date applies to impacted majors.",
+   "src": "dates"
+  },
+  {
+   "kind": "priority",
+   "due": "2026-11-30",
+   "label": "Application priority deadline for impacted majors",
+   "notes": "Listed on the same table; the international deadline is the later May 1, 2027 date.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Accept admission offer and pay enrollment confirmation deposit",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-15",
+   "label": "Final official transcripts due",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all undergraduate applicants unless they attended a U.S. high school 3+ years or show 3 years of full-time study in a listed English-instruction country (e.g. Australia, Canada, England, Ireland, New Zealand, Scotland, Wales, South Africa, Jamaica, Kenya, Ghana). Alternatives: SAT ERW 550, ACT English 22, IB English A HL 4, AP English Language or Literature 3. TOEFL Home Edition and IELTS Indicator are accepted.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Institutional code 4684. The page does not give a separate score for the new 1-6 TOEFL scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic overall; IELTS Indicator overall 6.0 also accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 45,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "SF State's Office of International Programs says there is no U.S. financial aid or international student scholarships to cover international students' studies at SF State. Applicants below the TOEFL/IELTS minimum may enroll in SF State's American Language Institute (intensive English; ali.sfsu.edu), which issues visa documents; the page does not call it conditional admission.",
+  "src": "oip"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 1986,
+  "room_board_usd": 23890,
+  "books_usd": 1100,
+  "other_usd": 4362,
+  "total_coa_usd": 52306,
+  "notes": "Computed from SF State's 2026-27 budget (on campus): tuition $6,838, mandatory fees $1,986, housing $18,270 plus food $5,620, books $1,100, transportation $1,566 plus personal $2,796 (loan fee $62 left out), plus the nonresident/international charge of $471 per unit for an assumed 30 units ($14,130). SF State's own on-campus total is $38,238 before that charge. International students must also buy health insurance (cost not found).",
+  "src": "coa"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "3594",
+   "note": "SF State SAT code (SAT is not used in admission; only to show English proficiency).",
+   "src": "intl"
+  },
+  "act": {
+   "code": "0404",
+   "note": "SF State ACT code (ACT is not used in admission; only to show English proficiency).",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "4684",
+   "note": "SF State TOEFL institutional code.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ }
+}

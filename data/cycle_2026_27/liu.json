@@ -1,0 +1,174 @@
+{
+  "sources": {
+    "cat": {
+      "kind": "other",
+      "title": "LIU Post 2026-2027 Undergraduate & Graduate Catalog - Admission (freshman and international admission, English minimums, deadlines)",
+      "url": "https://liu.edu/~/media/1A2BACAC63D4417D9EED5FFDE46F2C1B.ashx",
+      "accessed": "2026-10-26"
+    },
+    "glob": {
+      "kind": "admissions_site",
+      "title": "LIU - International Students (language proficiency minimums)",
+      "url": "https://www.liu.edu/global/admissions/international",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "LIU - Frequently Asked Questions (international students)",
+      "url": "https://liu.edu/admissions/~/link.aspx?_id=68F273A992E44FE8BF86F80EC6365B38&_z=z",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "LIU - Tuition & Fees 2026-2027",
+      "url": "https://www.liu.edu/enrollment-services/tuition-fees",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT may be submitted but are optional for most LIU programs; for international applicants, SAT/ACT scores may be submitted in lieu of language-test scores (SAT Reading 460 or ACT English 18). SAT code 2369, ACT code 2792.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply at liu.edu/apply or with the Common App; $50 non-refundable fee (catalog). Required: official secondary records with certified English translation and English proof unless exempt. The catalog lists one teacher/counselor recommendation, personal statement and resume as optional for international applicants, while the LIU FAQ says undergraduates submit two recommendation letters and an essay or writing sample; confirm with admissions. Some programs require a portfolio or audition. International students must pay the tuition deposit to receive the I-20; the I-20 application needs bank statements or sponsor proof plus a passport copy.",
+    "src": "cat"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "notify": "2026-12-01",
+      "label": "Early Action (fall 2027 entry)",
+      "notes": "Catalog freshman section; notification 'begins' Dec. 1. Printed without a year, taken as the 2026-27 cycle (fall 2027 entry). Not stated whether international applicants use it.",
+      "src": "cat"
+    },
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-12-15",
+      "notify": "2027-01-02",
+      "label": "Early Decision (fall 2027 entry)",
+      "notes": "Binding plan listed in the catalog freshman section; notification 'begins' Jan. 2. Printed without a year, taken as fall 2027 entry.",
+      "src": "cat"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Merit scholarship and housing consideration date, fall 2027",
+      "notes": "Catalog: submit by Dec. 1 for fall (Oct. 1 for spring) to be considered for all departmental and merit scholarships and on-campus housing. Printed without a year, taken as fall 2027.",
+      "src": "cat"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Catalog: international applications by May 1 for fall or Nov. 1 for spring; LIU reviews on a rolling basis. Printed without a year, taken as fall 2027. The old Brooklyn page recommends applying 5-12 months before the start date.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proof of English proficiency is required unless waived; English as the primary language of high school instruction satisfies it (Global/Brooklyn page). The catalog also accepts SAT Critical Reading 460 or ACT English 18, or completion of LIU English Language Institute Level 8; SAT/ACT may be submitted instead of language scores. Some academic programs require higher scores or prior U.S. university coursework. LIU runs an English Language Institute on the Brooklyn campus; no conditional-admission terms are published on the pages read.",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 75,
+      "notes": "Undergraduate minimum; some programs may require more. The pages do not give a new 1-6 scale minimum.",
+      "src": "glob"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Undergraduate minimum.",
+      "src": "glob"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Undergraduate minimum (graduate 105).",
+      "src": "glob"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "Undergraduate minimum per the 2026-27 catalog (graduate 58); not listed on the Global/Brooklyn page.",
+      "src": "cat"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 41874,
+    "tuition_intl_usd": 41874,
+    "required_fees_usd": 2116,
+    "room_board_usd": 18938,
+    "src": "tuit",
+    "notes": "Annual undergraduate tuition (24-36 credits) $41,874; full-time university fee $2,116; standard double room $12,384 plus Residential Meal Plan One $6,554 (room_board is their sum); student health insurance charge $2,158 and $150 dining dollars are listed separately. Same rates apply to international students. College Navigator lists books at $2,000 (2024-25)."
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "LIU FAQ: international students are eligible for merit-based scholarships and are automatically reviewed by the admissions committee at admission. No award amounts are published for international freshmen; scholarships apply to tuition only and are renewable subject to a GPA minimum. Federal and state aid are not available to international students; whether any institutional need-based aid exists for them is not stated.",
+    "src": "faq"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "2369",
+      "src": "cat"
+    },
+    "act": {
+      "code": "2792",
+      "src": "cat"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code was found on the LIU pages read.",
+      "src": "glob"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS code is listed.",
+      "src": "glob"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Scores are shared through Duolingo; no code is listed.",
+      "src": "glob"
+    },
+    "pte": {
+      "code": null,
+      "note": "Scores are shared through Pearson; no code is listed.",
+      "src": "cat"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: an 86% admit rate (fall 2024) with SAT section medians of 620 EBRW / 600 Math among the 24% who submit, and a New York campus, place it just above the open-access D tier."
+  }
+}

@@ -1,0 +1,37 @@
+{
+ "slug": "fresno-state",
+ "name": "California State University, Fresno",
+ "short_name": "Fresno State",
+ "state_region": "CA",
+ "city": "Fresno",
+ "latitude": 36.811154,
+ "longitude": -119.744569,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.fresnostate.edu",
+ "admissions_url": "https://studentaffairs.fresnostate.edu/are/index.html",
+ "ipeds_unit_id": 110556,
+ "undergrad_enrollment": 21430,
+ "intl_undergrads": 520,
+ "student_faculty_ratio": 22,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: Admissions fall 2023 (ADM2023), fall 2023 enrollment (EF2023A), student-to-faculty ratio and calendar (IC2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110556",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 20201,
+  "admits": 19469,
+  "enrolled": 3661,
+  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 21,521 applicants, 95% admitted, 18% of admitted students enrolled (percentages are rounded). Fresno State's Common Data Sets are available only by emailing oie@mail.fresnostate.edu (academics.fresnostate.edu/oie/data/common.html), so none was read. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are left null. The CSU is test-blind, so no SAT/ACT percentiles are reported."
+ },
+ "scores": {}
+}

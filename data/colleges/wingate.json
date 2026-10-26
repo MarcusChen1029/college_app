@@ -1,0 +1,79 @@
+{
+  "slug": "wingate",
+  "name": "Wingate University",
+  "short_name": "Wingate",
+  "state_region": "NC",
+  "city": "Wingate",
+  "latitude": 34.986064,
+  "longitude": -80.44305,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.wingate.edu",
+  "admissions_url": "https://www.wingate.edu/admissions",
+  "ipeds_unit_id": 199962,
+  "undergrad_enrollment": 2673,
+  "intl_undergrads": 238,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "nav": {
+      "kind": "ipeds",
+      "title": "College Navigator - Wingate University (enrollment fall 2024, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199962",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199962",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 21210,
+    "admits": 18027,
+    "enrolled": 708,
+    "pct_submit_sat": 24,
+    "pct_submit_act": 12,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); no Wingate Common Data Set could be found online. College Navigator now shows fall 2024: 30,339 applicants, 91% admitted, 3% of admits enrolled (counts for admits not shown there). No international split, GPA or residency data. Undergraduate enrollment 2,673 is fall 2024 (College Navigator)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      530,
+      640
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      19,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      20,
+      25
+    ]
+  }
+}

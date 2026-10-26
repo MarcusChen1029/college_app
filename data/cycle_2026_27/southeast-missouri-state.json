@@ -1,0 +1,163 @@
+{
+  "sources": {
+    "policies": {
+      "kind": "admissions_site",
+      "title": "SEMO - International undergraduate admission policies and guidelines (deadlines, English minimums, score codes)",
+      "url": "https://semo.edu/international/admissions/policies",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "SEMO - First-year international admission steps",
+      "url": "https://semo.edu/international/admissions/freshman",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "SEMO - International scholarships 2026-27",
+      "url": "https://semo.edu/student-support/financial-services/financial-aid/international-scholarships",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "SEMO - Cost and affordability 2026-27",
+      "url": "https://semo.edu/student-support/financial-services/cost/index",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test scores are optional for admission on the first-year international page; they may qualify for merit scholarships and are used for math/English placement. SAT EBRW 450+ or ACT English and Reading 21+ can also serve as English proof. CDS C8F says 'Test optional'.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 60,
+    "notes": "Own online application; $60 non-refundable international fee, no waivers. No minimum high school GPA is stated for first-year international applicants (the acceptance letter lists conditions). Unofficial transcripts and English scores are enough at application; official ones are needed after admission. NACES/AICE credential evaluations are accepted for first-time freshmen. After admission: Affidavit of Financial Support and bank statement covering estimated annual cost minus scholarship; no tuition deposit. Nursing and some programs have higher English standards. CDS C7: GPA and rigor very important, test scores and class rank considered, essay and recommendations not considered.",
+    "src": "policies"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-12-01",
+      "label": "Priority date (fall 2027 entry)",
+      "notes": "CDS C14 lists a priority date of Dec 1 and an application closing date of July 1; no year is printed, taken as the fall 2027 cycle. What the priority date affects is not explained.",
+      "src": "policies"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International fall 2027 application deadline (regular)",
+      "notes": "Fall (August) deadline is July 1; students applying web-only or already holding a valid US visa have July 15. No year is printed, taken as fall 2027.",
+      "src": "policies"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2026-11-01",
+      "label": "International spring 2027 (January) application deadline (regular)",
+      "notes": "Spring deadline is November 1 (November 15 for web-only or valid-US-visa applicants); no year printed, taken as spring 2027 entry.",
+      "src": "policies"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proof can be a test score, a US high school diploma, O/A-level, WAEC, IB (English-medium), a US-accredited international school diploma, a secondary diploma from a listed English-official country, SAT EBRW 450 / ACT English and Reading 21, or Level 5 of SEMO's Intensive English Program. Scores must be official and sent by the test provider. Conditionally admitted students may submit official scores by the last office day before classes start.",
+    "src": "policies"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "For tests taken before Jan 21, 2026. English Program Pathway applicants (conditional/IEP route): 52-60.",
+      "src": "policies"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "Tests on or after Jan 21, 2026; the page prints 3.5 (pathway 3.0) without naming the scale, presumably the new 1-6 scale; confirm with admissions.",
+      "src": "policies"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Academic. Pathway applicants: 5.0.",
+      "src": "policies"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Pathway applicants: 80-90.",
+      "src": "policies"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 45,
+      "notes": "Academic or Express. Pathway applicants: 40-43. Also accepted: Michigan English Test 48 (pathway 45), iTEP 3.7, Oxford ELLT 6 (pathway 5).",
+      "src": "policies"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "Automatic merit awards at admission, no separate application: International Academic Award $8,850 per year for freshmen with a 3.25 high school GPA (it covers the nonresident-minus-domestic tuition gap, estimated at 15 hours per semester; renewable up to 4 years with 2.75 GPA and 24 credit hours per year; also for the IEP pathway), or International Student Scholarship $2,000 per year for a 2.5 GPA. No international need-based aid was found on the scholarships page. CDS H6: 467 nonresidents received institutional aid, average $8,011.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6655",
+      "note": "Official score code on the international policies page.",
+      "src": "policies"
+    },
+    "act": {
+      "code": "2366",
+      "note": "Official score code on the international policies page.",
+      "src": "policies"
+    },
+    "toefl": {
+      "code": "6655",
+      "note": "Official score code on the international policies page; scores must be sent electronically by the test provider.",
+      "src": "policies"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No numeric IELTS code is listed; official scores must be sent by the test provider.",
+      "src": "policies"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "policies"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "policies"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

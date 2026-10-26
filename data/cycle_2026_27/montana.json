@@ -1,0 +1,186 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Montana - International undergraduate application process (deadlines, FAQ)",
+   "url": "https://www.umt.edu/admissions/admission-requirements/international/apply-international.php",
+   "accessed": "2026-10-26"
+  },
+  "ep": {
+   "kind": "admissions_site",
+   "title": "University of Montana - English proficiency for international students",
+   "url": "https://www.umt.edu/admissions/admission-requirements/international/english-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Montana - Freshman admission requirements",
+   "url": "https://www.umt.edu/admissions/admission-requirements/freshman-requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "rec": {
+   "kind": "admissions_site",
+   "title": "University of Montana - International academic records and eligibility",
+   "url": "https://www.umt.edu/admissions/admission-requirements/international/academic-records.php",
+   "accessed": "2026-10-26"
+  },
+  "path": {
+   "kind": "admissions_site",
+   "title": "University of Montana - International pathway admission",
+   "url": "https://www.umt.edu/admissions/admission-requirements/international/pathway_admission.php",
+   "accessed": "2026-10-26"
+  },
+  "exp": {
+   "kind": "financial_aid_site",
+   "title": "University of Montana - International estimated expenses and scholarships",
+   "url": "https://www.umt.edu/admissions/admission-requirements/international/expenses_scholarships.php",
+   "accessed": "2026-10-26"
+  },
+  "umaas": {
+   "kind": "financial_aid_site",
+   "title": "University of Montana - UMAAS merit scholarship",
+   "url": "https://www.umt.edu/student-financial-services/scholarships/scholarships-new-students/umaas.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Admission to four-year programs requires any one of: ACT 22, SAT 1120, a 2.50 cumulative GPA, or upper-half class rank, plus the college-prep courses; test scores are therefore not required. International first-year applicants are reviewed on the equivalent of a 2.5 U.S. GPA from a credential evaluation (ICER). The CDS C8 policy boxes could not be read.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 30,
+  "notes": "Full admission needs the Common App application with the $30 fee, an official English proficiency score report or exemption documents, and an official International Credential Evaluation Report (ICER) of the secondary school record; passport copy and financial documents are needed for the I-20. UM gives no fee, test or ICER waivers.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "International application deadline, fall 2027",
+   "notes": "Completed application and all supporting documents due June 15 for fall 2027 (spring: Nov. 15). Applicants needing an F-1 visa are advised to apply at least 90 days before the deadline; allow up to 30 business days for I-20 processing.",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "UMAAS merit scholarship consideration date",
+   "notes": "UMAAS page: apply by March 1 to be automatically considered. The page prints no year; treated as March 1, 2027 for fall 2027 entry. Awards need a transcript and an ICER-based GPA.",
+   "src": "umaas"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Davidson Honors College Presidential Leadership Scholarship application",
+   "notes": "Freshmen apply with the Davidson Honors College application by December 1 (no year printed; treated as Dec. 1, 2026 for fall 2027 entry).",
+   "src": "exp"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of Australia, Canada (not Quebec), Ireland, New Zealand, the United Kingdom, the Commonwealth Caribbean and South Africa need not submit proof unless English is not their native language. Other exemptions (with a credential evaluation): native English; 2+ years at a university taught in English; a US college English composition course with C- or better; 3+ years of English-medium secondary school with C or higher in IGCSE/A-level English; IB HL English 4+; AP English Language 3+; B3 WASSCE or B on national GCE for listed West and East African countries. SAT Writing and Language 25, ACT Writing 7 or ACT ELA 18, EIKEN Pre-1 and some intensive English program completions also count.",
+  "src": "ep"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "Full admission; includes at-home edition and MyBest scores. Pathway admission needs 52-69. The page gives no 1-6 scale score.",
+   "src": "ep"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic. Pathway admission 5.0-5.5.",
+   "src": "ep"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Pathway admission 85-104.",
+   "src": "ep"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "PTE Academic. Pathway admission 41.",
+   "src": "ep"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 180,
+   "notes": "Pathway admission 165.",
+   "src": "ep"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Fully admitted international first-year students (Mountain Campus, first bachelor's degree) are automatically considered for the UMAAS merit scholarship, based on the GPA in their ICER; no separate application. UMAAS is tuition-only, renewable for 4 years with a 2.5 GPA and 15 credits per semester; not available to conditional or pathway admits, Missoula College or online-only students. The current UMAAS pages do not print the award amounts by GPA, so none are given here. Davidson Honors College Presidential Leadership Scholarship is a separate application (Dec. 1). Minimum funds for I-20 (2026-27): $55,988 for four-year programs. English pathway: Pathway Admission (TOEFL 52-69, IELTS 5.0-5.5, Duolingo 85-104) and Conditional Admission (below that or no score) both use the English Language Institute, but UM says the ELI will not admit in-person Intensive English students during 2026-27; an online IEP interest form is offered. CDS 2024-25 H6 reports 2,005 'nonresident' aid recipients (avg $21,077), a figure that covers all out-of-state students, not only international.",
+  "src": "umaas"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "total_coa_usd": 55988,
+  "src": "apply",
+  "notes": "total_coa_usd is UM's published minimum funding requirement for I-20 issuance for 2026-27 (four-year Mountain Campus programs), not an itemized cost of attendance. The undated expenses page gives $34,769 tuition and fees plus $21,074 living (total $55,843) and conflicts slightly, so only the dated figure is used."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "UM's admissions pages do not print a SAT code; look it up in the College Board code search.",
+   "src": "ep"
+  },
+  "act": {
+   "code": null,
+   "note": "UM's admissions pages do not print an ACT code; look it up at act.org.",
+   "src": "ep"
+  },
+  "toefl": {
+   "code": "4489",
+   "note": "University of Montana TOEFL code.",
+   "src": "ep"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; send results to UM Undergraduate Admissions.",
+   "src": "ep"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "ep"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "ep"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "biology_life_sci": "Placed C as a solid regional program for a research-active state flagship. Editorial judgment, not a ranking."
+ }
+}

@@ -1,0 +1,133 @@
+{
+  "slug": "tamu-corpus-christi",
+  "name": "Texas A&M University-Corpus Christi",
+  "short_name": "TAMU-CC",
+  "state_region": "TX",
+  "city": "Corpus Christi",
+  "latitude": 27.713723,
+  "longitude": -97.32395,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.tamucc.edu",
+  "admissions_url": "https://www.tamucc.edu/admissions/",
+  "ipeds_unit_id": 224147,
+  "undergrad_enrollment": 8673,
+  "intl_undergrads": 149,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Texas A&M University-Corpus Christi Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.tamucc.edu/president/pir/cds_2025-2026-word_web.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - Texas A&M University-Corpus Christi (expenses, 2024-25)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=224147",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11449,
+    "admits": 10483,
+    "enrolled": 2374,
+    "in_state_applicants": 10699,
+    "in_state_admits": 9751,
+    "out_state_applicants": 375,
+    "out_state_admits": 362,
+    "intl_applicants": 375,
+    "intl_admits": 370,
+    "pct_submit_sat": 49,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.42,
+    "pct_reporting_gpa": 35,
+    "gpa_distribution": {
+      "4.0": 3,
+      "3.75-3.99": 25,
+      "3.50-3.74": 23,
+      "3.25-3.49": 19,
+      "3.00-3.24": 14,
+      "2.50-2.99": 13,
+      "2.0-2.49": 3,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS 2025-2026 (fall 2025 first-years). C1: 11,449 applied, 10,483 admitted (91.6%), 2,374 enrolled. International (by residency breakdown): 375 applied, 370 admitted (98.7%), 15 enrolled. Only 35% of enrollees reported a high school GPA (C12), so GPA figures cover a minority; the GPA distribution is the C11 'all enrolled' column. No early decision or early action; no waitlist reported. C7 marks standardized test scores 'very important' even though C8F and the admissions site say test scores are optional. Undergraduate enrollment 8,673 is CDS B1 full-time (6,943) plus part-time (1,730) undergraduates, including non-degree-seeking; 149 is the B2 nonresident count. Student-faculty ratio 18:1 is CDS I-2 (fall 2025)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      980,
+      1090,
+      1190
+    ],
+    "SAT_ERW": [
+      500,
+      560,
+      610
+    ],
+    "SAT_MATH": [
+      480,
+      540,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "recommended",
+    "notes": "CDS 2025-26 C8 (Fall 2027) ticks 'Recommended' for SAT or ACT, but C8F says scores are optional; the admissions site also says optional."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 9748,
+    "tuition_out_of_state_usd": 20794,
+    "room_board_usd": 12748,
+    "books_usd": 1296,
+    "other_usd": 3514,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 91,
+    "intl_avg_award_usd": 13584,
+    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; the out-of-state rate is the one that applies to international students (the university lists no separate international rate). The CDS left section G (2026-27 costs) blank. CDS H6: institutional aid for nonresidents is non-need-based only; 91 nonresident undergraduates received it (avg $13,584, total $1,236,168)."
+  }
+}

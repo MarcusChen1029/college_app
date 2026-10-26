@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "JWU Catalog 2026-27 - Applying for Admission (deadlines, test policy, fee)",
+   "url": "https://catalog.jwu.edu/admissions/applying/",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "JWU Catalog 2026-27 - International Admissions Requirements",
+   "url": "https://catalog.jwu.edu/admissions/applying/international/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "JWU Catalog 2026-27 - English Proficiency Requirements",
+   "url": "https://catalog.jwu.edu/admissions/applying/international/englishproficiencyrequirements/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "JWU Catalog 2026-27 (Providence) - Tuition and Fees",
+   "url": "https://catalog.jwu.edu/financingyourdegree/tuitionfees/providence/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "JWU Catalog 2026-27 - Institutional Aid (International Presidential Scholarship)",
+   "url": "https://catalog.jwu.edu/financingyourdegree/financialaid/institutionalaid/",
+   "accessed": "2026-10-26"
+  },
+  "esl": {
+   "kind": "financial_aid_site",
+   "title": "JWU Catalog 2026-27 - Tuition and Fees: ESL Students",
+   "url": "https://catalog.jwu.edu/financingyourdegree/tuitionfees/eslstudents/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "JWU is test optional. Submitting SAT/ACT (or SAT Essay/ACT Writing) is at the student's discretion and students who do not submit scores are not disadvantaged in the review.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": ["common_app", "own"],
+  "app_fee_usd": 0,
+  "notes": "Common Application or the JWU application; no application fee for either. Official secondary school transcript (with certified word-for-word English translation if needed); international applicants upload documents to the applicant portal and provide English proficiency proof. For the I-20, after admission: reservation deposit, passport page, certified bank statement or sponsorship letter covering one academic year (not older than three months), and a signed financial declaration. The pages read do not mention essays, recommendations or interviews for undergraduates.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-16",
+   "label": "Early Action I (non-binding), fall 2027 entry",
+   "notes": "Application and transcripts must be received by the deadline. The 2026-27 catalog prints no year; taken as the fall 2027 cycle. The pages do not give a separate international date.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2027-01-04",
+   "label": "Early Action II (non-binding)",
+   "notes": "Fall applications received after Jan. 4 are reviewed on a rolling basis.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-15",
+   "label": "Regular admission (rolling) closing date, fall 2027 entry",
+   "notes": "Catalog: 'Regular admission applications are accepted through July 15'; admissions may extend deadlines. Spring-semester applications are due Dec. 1. International applicants need time for the I-20 and visa, so applying much earlier is advisable; no international-specific deadline is published in the catalog.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose native language is not English must show proof via academic transcripts or testing; scores must be no more than two years old. Alternatives accepted: SAT EBRW 500, ACT English 19 (or section scores of 19), GCSE/IGCSE English grade 4 or C, IB English grade 4+, CSEC grades I-III, WAEC grade 6+, completion of listed ESL programs (Kaplan, EF University Preparation, ELS level 112), or a transcript from a listed majority-English-speaking country. Total ESL exemption may require meeting both overall and subscore levels; JWU can still require ESL classes in a weak area. An on-campus ESL program is offered at the Providence campus only.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 75,
+   "notes": "Undergraduate minimum 75; recommended section scores 15 or higher. Designated Institution code 3465.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "For exams taken on or after Jan. 21, 2026: undergraduate minimum 4 (graduate 4.5). The page does not name the scale; 4 is on the new 1-6 scale. TOEFL Essentials minimum 8 is also accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "Undergraduate overall 6.0; recommended section scores 5.5 or higher. One-skill retake reports accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Undergraduate recommended subscores 90 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic online or at-home option; recommended subscores 43 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 180,
+   "notes": "Cambridge C1 Advanced, 180 or higher.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "src": "cost",
+  "year": "2026-2027",
+  "tuition_usd": 45408,
+  "tuition_out_of_state_usd": 45408,
+  "tuition_intl_usd": 45408,
+  "required_fees_usd": 250,
+  "intl_extra_fees_usd": 1386,
+  "notes": "Providence catalog 2026-27 (estimated, subject to change): annual tuition $45,408; student activity fee $250; New International Student Services Fee $1,386 per year (the $476 new student fee does not apply to international students). Room only ranges $7,000-$16,000 depending on residence hall and occupancy; the Gold meal plan ($7,360) is required for new residential students (other plans $600-$6,212). Student health insurance $2,670. Room and board total, books and other costs are not given as a single figure, so they are left blank. ESL program students pay $5,250 tuition per semester and are not eligible for JWU scholarships or grants."
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The International Presidential Scholarship is awarded to incoming international students who show academic excellence; amounts vary (no figures published), renewable up to four years of full-time day study, and eligibility is decided during the admission review. Need-based JWU grants noted in the catalog exclude international students; whether any need-based aid exists for international students is not stated. Students in the ESL program are not eligible for JWU scholarships or grants. Visit scholarships (up to $5,000 for fall 2026 if visiting by Dec. 31) are open to domestic and international first-years.",
+  "src": "aid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The catalog pages read do not print a SAT code; look it up in the College Board code search.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "The catalog pages read do not print an ACT code; look it up at act.org.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "3465",
+   "note": "JWU Designated Institution (DI) code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "saint-leo",
+  "name": "Saint Leo University",
+  "short_name": "Saint Leo",
+  "state_region": "FL",
+  "city": "Saint Leo",
+  "latitude": 28.336776,
+  "longitude": -82.257801,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.saintleo.edu",
+  "admissions_url": "https://www.saintleo.edu/admissions",
+  "ipeds_unit_id": 137032,
+  "undergrad_enrollment": 7516,
+  "intl_undergrads": 340,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=137032",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Saint Leo University - 2026-2027 University Campus Undergraduate Tuition & Fees (PDF)",
+      "url": "https://www.saintleo.edu/sites/default/files/2026-07/2026-2027-Tuition-and-Fees-Campus-Undergraduate-2026-06-30.pdf",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=137032",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 7788,
+    "admits": 5615,
+    "enrolled": 632,
+    "notes": "Baseline from IPEDS (fall 2023 first-time degree-seeking entering class); no readable Common Data Set was found on saintleo.edu, so SAT/ACT, GPA, residency and international splits are not available (intl_applicants/intl_admits left null). IPEDS does not separate University Campus (residential) first-years from online students; only 632 enrolled, so the cohort is mostly residential. College Navigator's fall 2024 figures: 6,684 applicants, 78% admitted, 13% of admitted enrolled (admit counts not printed). Saint Leo is test-optional and reported no SAT/ACT submitters in IPEDS 2023. Undergraduate enrollment 7,516 (fall 2024) and the 25:1 student-faculty ratio are university-wide and include the large online/WorldWide population; Saint Leo says international students are over 22% of its University Campus undergraduates (about 600 students on campus), which is not in IPEDS."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "tuition",
+    "tuition_usd": 35000,
+    "required_fees_usd": 1880,
+    "room_board_usd": 16826,
+    "books_usd": 1110,
+    "other_usd": 5760,
+    "total_coa_usd": 60668,
+    "intl_need_aid": false,
+    "notes": "University Campus undergraduate, full-time, living on campus, per year (Saint Leo's own cost sheet): tuition $35,000; average housing $9,306 + 19-meal plan $7,520; fees $1,880 (student services $1,100 + activity $280 + one-time orientation $500); books $1,110; miscellaneous $2,772 + transportation $2,988 = $5,760 (federal loan fees of $92 not counted). Total cost of attendance $60,668 as printed. Health insurance ($1,937) is extra unless waived. Figures are for the residential University Campus program (not online/WorldWide), taken from Saint Leo's cost sheet because no CDS was found."
+  }
+}

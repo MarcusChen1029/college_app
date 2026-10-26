@@ -1,0 +1,151 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Texas A&M-Kingsville - International undergraduate (first-year) admission",
+      "url": "https://www.tamuk.edu/enrollment-management/admission/future-students/international/index.html",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Texas A&M-Kingsville Undergraduate Catalog - International Admission Procedures",
+      "url": "https://catalog.tamuk.edu/undergraduate/admission/international-admission-procedures/",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Texas A&M-Kingsville - Cost of Attendance 2026-2027",
+      "url": "https://www.tamuk.edu/enrollment-management/finaid/students/cost-of-attendance.html",
+      "accessed": "2026-10-26"
+    },
+    "merit": {
+      "kind": "financial_aid_site",
+      "title": "Texas A&M-Kingsville - Merit scholarships for first-time students",
+      "url": "https://www.tamuk.edu/enrollment-management/scholarships/ftic/ftic-merit.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for admission; they may be used for placement (catalog) and CDS C8F says an ACT composite of 19 or SAT 1000 meets the admission requirement. Test scores are required for all Engineering majors. Scores can also serve as English proficiency (SAT 27 Reading or ACT English 21).",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "Apply through the Texas A&M-Kingsville application (admissions.tamuk.edu) or ApplyTexas; international application fee $75, non-refundable (CDS C13: $25 domestic, $75 international). Needed: official secondary school transcript, a university-approved foreign credential evaluation sent by the agency, a letter of sponsorship (dated within 6 months of first enrollment), a bank statement in U.S. dollars (within 12 months; amounts on the OISSS I-20 requirements page), and English proficiency. The I-20 follows admission; decisions take about two months if all documents arrive together. TSI testing is required before registration but is not an admission requirement.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International application and all documents, fall 2027",
+      "notes": "Printed as Fall (August) June 1, Spring (January) Oct. 1, Summer (June) May 1, with no year; treated as fall 2027. The catalog lists the same dates. Documents must be in the office before these dates; allow time for TOEFL/IELTS (tests at least 8 weeks before the deadline).",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-15",
+      "label": "Merit scholarship priority date (first-time students)",
+      "notes": "Complete application including fee, transcripts and test scores by Feb. 15 (no year printed; treated as 2027). The page does not say whether international students are eligible; confirm with scholarships@tamuk.edu.",
+      "src": "merit"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if the applicant completed all formal education in listed countries (including Canada except Quebec, the UK, Australia, Ghana, Nigeria, Jamaica; Puerto Rico applicants must still submit a TOEFL or equivalent), or earned 12+ transferable credits with a C or better including English composition I and II at a U.S. or listed-country institution. Other alternatives: TAMUK ELTC Intensive English program with 'Advanced Plus' or the advanced level of the Texas Intensive English Program (TIEP); for the lower (61) tier also SAT 27 Reading, ACT English 21, or TSI 351 reading / 340 writing / 4 essay. Scores come directly from the testing body and must be no more than 2 years old. No separate conditional-admission program is described. The university-wide minimum (TOEFL 61) applies to most programs; the College of Arts and Sciences and the Dotterweich College of Engineering require the higher tier (TOEFL 79).",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "61 iBT for most undergraduate programs; 79 iBT for the College of Arts and Sciences and the Dotterweich College of Engineering. Institution code 6822. The undergraduate pages do not give the new 1-6 scale (the graduate section says '79 or a 4').",
+      "src": "cat"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "6.0 overall for the 61 tier; 6.5 overall for the 79 tier (Arts and Sciences, Engineering). Electronic score reports only.",
+      "src": "cat"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "The catalog lists 100 as the equivalent of the 79 tier and prints no lower Duolingo equivalent for the 61 tier; the admissions page sets no minimum and says the most competitive applicants have 100 or higher.",
+      "src": "cat"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "The admissions page states a minimum of 53; the catalog lists 44 for the 61 tier and 53 for the 79 tier.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "meets_full_need": false,
+    "notes": "No international-specific scholarship is listed. Merit scholarships are automatic for at least 50% of admitted first-time students (Presidential $5,000-$12,000 per year, typical profile SAT 1300 / ACT 27 and top 10% rank; Academic Excellence $1,000-$4,000, SAT 1170 / ACT 24, top 20%), but the page does not say international students are eligible. Out-of-state recipients of the competitive merit scholarship pay in-state tuition in the semesters it is disbursed (not summer). CDS H6: 17 nonresident undergraduates received institutional aid, average $1,522. Cost of attendance page for out-of-state/international students (dorm): tuition and fees $21,994, food and housing $11,946, books $1,391, transportation $1,390, miscellaneous $2,246 = $38,967 (the table sits under the 2026-27 heading but its header reads 'Academic Year 25-26').",
+    "src": "merit"
+  },
+  "majors": [
+    {
+      "program": "Engineering (Frank H. Dotterweich College of Engineering)",
+      "category": "engineering",
+      "admit_model": "pre_major_competitive",
+      "capped": false,
+      "notes": "Full admission needs ACT composite 21 with math 22, or SAT 1050 with math 560. Pre-Engineering (PPEN) takes ACT 18+ with math 19+, or SAT 890+ with math 530+; applicants below that go to Alternate Pre-Engineering (APEN). Test scores are required for all engineering majors."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6822",
+      "note": "Texas A&M-Kingsville SAT code (same as TOEFL).",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4214",
+      "note": "Texas A&M-Kingsville ACT code.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6822",
+      "note": "TOEFL code; scores must come directly from ETS.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

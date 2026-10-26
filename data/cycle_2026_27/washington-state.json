@@ -1,0 +1,199 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "WSU Admissions - Admissions Dates & Deadlines 2026-2027",
+   "url": "https://admission.wsu.edu/apply/admissions-dates-deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "ipdates": {
+   "kind": "admissions_site",
+   "title": "WSU International Programs - Undergraduate deadlines and dates",
+   "url": "https://ip.wsu.edu/future-students/deadlines-dates/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "WSU International Programs - Requirements for undergraduate admission (incl. English proficiency)",
+   "url": "https://ip.wsu.edu/future-students/requirements/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "WSU Admissions - First-year students",
+   "url": "https://admission.wsu.edu/apply/first-year-students/",
+   "accessed": "2026-10-26"
+  },
+  "uf": {
+   "kind": "admissions_site",
+   "title": "WSU International Programs - Undergraduate Foundation program",
+   "url": "https://ip.wsu.edu/future-students/about-wsu-programs/foundation/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "WSU International Programs - Scholarships and funding (International Academic Award)",
+   "url": "https://ip.wsu.edu/future-students/tuition-fees/scholarships-funding/",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "other",
+   "title": "WSU International Programs - International student tuition and fees",
+   "url": "https://ip.wsu.edu/future-students/tuition-fees/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "WSU does not require SAT/ACT and says it will not use them in admission decisions. International applicants may still submit SAT/ACT (or other tests) only to show English proficiency or for the Undergraduate Foundation placement.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply with the WSU application, the Common App (first-year), or Cialfo if your school is a member. International first-year applicants need a minimum 2.70 GPA on a U.S. 4.0 scale as converted by WSU (12 years of schooling with humanities, math, basic sciences and social sciences). Admission is decided from unofficial transcripts; official ones are required before arrival. A passport copy is required. CDS C7: essay is 'considered'; recommendations and tests are not considered.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "International fall 2027 application deadline",
+   "notes": "International applications are reviewed on a rolling basis; June 15 is the final submission date for fall, with all required documents due July 1, 2027. After the deadline applicants are asked to email international@wsu.edu.",
+   "src": "ipdates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-01",
+   "label": "International deadline for all required documents and response (fall 2027)",
+   "notes": "Response = pay the $500 Enrollment and Orientation Fee or request a change of campus; due July 1 or 2 weeks after receiving the offer, whichever is later.",
+   "src": "ipdates"
+  },
+  {
+   "kind": "priority",
+   "due": "2027-03-31",
+   "label": "First-year priority admission date (automatic university awards)",
+   "notes": "Applying by Mar 31 is needed for automatic university waivers (e.g. UAA); applications after that are accepted on a space-available basis. International applicants are separately guaranteed the International Academic Award on admission.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-01-31",
+   "label": "WSU General Scholarship application priority date",
+   "notes": "Also the Top Scholar consideration deadline for first-year students (main admission page). The international page says to submit the general scholarship form by the application deadlines.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Admission acceptance priority date ($500 Enrollment and Orientation Fee)",
+   "notes": "You may still pay after May 1 but housing choices and space may be limited.",
+   "src": "ipdates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived with 3+ years at a U.S. regionally accredited high school (or one accredited abroad), U.S. college English 101/102 plus 27 credits, 53 college credits, a U.S. associate degree, citizenship of a listed English-speaking country (UK, Ireland, Canada, Australia, New Zealand, Singapore, South Africa, Nigeria, Kenya, Ghana and others on the list), or schooling in English with an official school letter. Scores must be under 2 years old. Applicants below the traditional-admission scores can enter the Undergraduate Foundation program.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Traditional admission = 4 (the page lists TOEFL iBT scores on the new 1-6 scale; the old 0-120 equivalent is not published there). Undergraduate Foundation: 3.5 for 1 term, 3 for 2 semesters. TOEFL Essentials 8 also accepted. ETS code 4705.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Traditional admission 6.5. Undergraduate Foundation: 6 for 1 term, 5.5 for 2 semesters/1 year.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Traditional admission 105. Undergraduate Foundation: 95 for 1 term, 85 for 2 semesters/1 year.",
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Pearson PTE Academic: traditional admission 58. Undergraduate Foundation: 47 for 1 term, 44 for 2 semesters/1 year.",
+   "src": "req"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "notes": "Traditional admission = C1 Advanced. Undergraduate Foundation: B2 First (1 term or 2 semesters). The page names grades rather than numeric scores.",
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are automatically considered for scholarships on admission. The International Academic Award is guaranteed to high-achieving first-year admits: $4,000 per year tuition waiver for GPA 3.60+ or $2,000 per year for GPA 3.0-3.59, renewable 3 more years (3.0 GPA, 12 credits a term). Students who finish the Undergraduate Foundation program with a 3.5 GPA get a $4,000 per year Year One Progression Award instead. A $2,000-per-semester International Merit Award is available after enrolling. CDS H6: only non-need-based institutional aid for nonresidents.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "WSU does not use SAT/ACT in admission; SAT EBRW 500 / ACT English 17 and Reading 19 can serve as English proficiency evidence only. No SAT code is published on the international pages.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is published on the international pages.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "4705",
+   "note": "School code for TOEFL score reports.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code; ask your test center to send results to International Undergraduate Admissions (international@wsu.edu), or send electronically.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Select Washington State University and level Undergraduate when sending results from your Duolingo account.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "CS offered within a research-active engineering college; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "engineering": "Voiland College of Engineering and Architecture is a research-active engineering college; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "business": "Carson College of Business; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "biology_life_sci": "WSU's data page reports $403M total R&D expenditures in FY24 (ranked 86th), with large life-science and agricultural research; placed C. Editorial judgment, not a ranking."
+ }
+}

@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Vermont State University - International Students (checklist, English proficiency, pathway program)",
+      "url": "https://vermontstate.edu/admission/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Vermont State University - Undergraduate Admissions (deadlines, test policy, requirements)",
+      "url": "https://vermontstate.edu/admission/how-to-apply/undergraduate-application-information/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Vermont State University - Tuition and Fees 2026-27",
+      "url": "https://vermontstate.edu/admission/tuition-and-fees/",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Vermont State University - Financial Aid and Scholarships",
+      "url": "https://vermontstate.edu/admission/financial-aid/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Vermont State University - International Student Scholarship",
+      "url": "https://vermontstate.edu/scholarship-finder/international-student-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: Vermont State University (application fee 2024-25, admissions considerations)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=231165",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Admissions page: scores are optional for most applicants and are considered in review if submitted; Accuplacer is required for specific programs (e.g. Dental Hygiene, Nursing A.S., Respiratory Therapy). IPEDS (fall 2024) lists admission test scores as not considered.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 45,
+    "notes": "Fee amount is from IPEDS (2024-25: $45); the admissions page gives no dollar amount and says the fee can be paid or waived in the application. Apply on connect.vermontstate.edu/apply or the Common App. International checklist: application and fee (or waiver), personal statement/essay, a current letter of recommendation, passport ID page (needed for the I-20), official transcripts sent directly by each institution with certified English translation; post-secondary transcripts from outside the U.S. need a NACES evaluation. Some programs (e.g. nursing, dental hygiene) add letters or tests.",
+    "src": "ipeds"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission (2027 start terms)",
+      "notes": "Vermont State has rolling admission for most programs and is accepting applications for all 2027 start terms; no international or fall 2027 deadline is printed. Priority deadline Dec. 1 for Dental Hygiene and some nursing, pilot, radiologic science and veterinary programs (year not printed). Allow time for the I-20 and visa.",
+      "src": "apply"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The international page lists no waiver categories; it accepts TOEFL iBT, IELTS, PTE, Duolingo, and SAT or ACT scores as evidence, and says other assessments may be substituted with permission from Admissions. Scores must be from the previous two years. An interview may be requested to further assess English proficiency. Nursing and Allied Health programs have separate English requirements.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Regular admission minimum. Conditional admission with an English pathway: 55.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Regular admission minimum. Conditional admission with an English pathway: 5.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Regular admission minimum. Conditional admission with an English pathway: 90.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "accepted",
+      "notes": "Pearson PTE is accepted; no minimum score is printed for regular or conditional admission.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International Student Scholarship: competitive, up to $3,500 per year, for non-citizens and non-residents enrolling full-time in a first bachelor's degree; renewable up to four years of continuous full-time enrollment with satisfactory progress; the committee weighs academic and extracurricular credentials; no deadline is printed. The financial aid page says institutional merit scholarships for international and out-of-state students are awarded from the admissions application. International need-based aid is not described. Conditional admission: students below regular English minimums (TOEFL 55 / IELTS 5 / Duolingo 90) start in the in-person Castleton Campus Pathway Program for English Language Learners.",
+    "src": "sch"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 11088,
+    "tuition_out_of_state_usd": 22152,
+    "tuition_intl_usd": 22152,
+    "required_fees_usd": 1704,
+    "intl_extra_fees_usd": 310,
+    "room_board_usd": 14464,
+    "other_usd": 6510,
+    "notes": "Vermont State 2026-27 full-time annual, standard programs: Vermont resident tuition $11,088; out-of-state and international $22,152 (engineering/technology $27,840, nursing $28,584, dental/radiologic science $31,224); in-person institution fee $1,704; international student fee $310; standard on-campus housing $8,682 plus food plan $5,782; personal $3,600 plus transportation $2,910. Books are listed as $1,000-$1,680 so left blank; health insurance $2,174 is waivable. A total cost of attendance is not published.",
+    "src": "cost"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "3941",
+      "note": "The international page prints 3941 as the CEEB code for Vermont State University.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed; pick the school by name at act.org."
+    },
+    "toefl": {
+      "code": null,
+      "note": "No separate TOEFL code is printed; the page lists only the CEEB code (3941)."
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed."
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed."
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed."
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

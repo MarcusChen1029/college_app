@@ -1,0 +1,79 @@
+{
+ "slug": "iu-east",
+ "name": "Indiana University East",
+ "short_name": "IU East",
+ "state_region": "IN",
+ "city": "Richmond",
+ "latitude": 39.868707,
+ "longitude": -84.881923,
+ "setting": "rural",
+ "control": "public",
+ "website": "https://east.iu.edu/",
+ "admissions_url": "https://east.iu.edu/admissions/",
+ "ipeds_unit_id": 151388,
+ "undergrad_enrollment": 2951,
+ "intl_undergrads": 52,
+ "student_faculty_ratio": 15,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=151388",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "navigator": {
+   "kind": "ipeds",
+   "title": "College Navigator - Indiana University-East (fall 2024 admissions and enrollment)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=151388",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=151388",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 1749,
+  "admits": 1246,
+  "enrolled": 336,
+  "pct_submit_sat": 23,
+  "pct_submit_act": 8,
+  "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). IU's Common Data Set viewer (crimsoncatalog.iu.edu/cds) requires an IU login, so no CDS was read; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 2,035 applicants and 67% admitted (exact count not published there); undergraduate enrollment and the 15:1 student-faculty ratio are fall 2024. IU East reports no campus housing to IPEDS."
+ },
+ "scores": {
+  "SAT_ERW": [
+   500,
+   570,
+   610
+  ],
+  "SAT_MATH": [
+   510,
+   560,
+   610
+  ],
+  "ACT_COMPOSITE": [
+   20,
+   23,
+   25
+  ],
+  "ACT_ENGLISH": [
+   19,
+   23,
+   24
+  ],
+  "ACT_MATH": [
+   17,
+   21,
+   25
+  ]
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "PennWest - International undergraduate admissions (how to apply, deadlines, English scores)",
+   "url": "https://www.pennwest.edu/admissions/international/undergraduate.php",
+   "accessed": "2026-10-26"
+  },
+  "se004": {
+   "kind": "admissions_site",
+   "title": "PennWest Procedure SE004 - Undergraduate Admissions (last updated 2026-04-02)",
+   "url": "https://www.pennwest.edu/_resources/docs/about/policies/se004-ug-admissions.pdf",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "financial_aid_site",
+   "title": "PennWest - International admissions FAQs (financial aid for international students)",
+   "url": "https://www.pennwest.edu/admissions/international/faqs.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT scores are optional: first-year applicants need a 2.50 cumulative GPA (weighted or unweighted) and may submit scores; admissions also reviews course trends, rigor, leadership and activities. Applicants with a 2.0-2.49 GPA may be admitted through the Compass Program, which is open to international first-year applicants. International applicants need a 2.50 GPA as determined by AACRAO Edge or a NACES credential evaluation.",
+  "src": "se004"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "notes": "Apply with the PennWest online application, the Common App or a paper application; the policy says all applicants pay the $35 fee, waivable by staff. International first-year applicants submit an official high school transcript showing at least a 2.50 GPA (credential evaluated), proof of English proficiency and passport information. Financial and immigration documents (financial guarantee statement, affidavit of support, passport copy) are collected after admission for the I-20. International applicants are not eligible for provisional admission. Essay, recommendations and activities are optional per the international page.",
+  "src": "se004"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "International application deadline, fall 2027 entry",
+   "notes": "The page says June 1 for a fall semester start (November 1 for spring); no year is printed, so June 1 is taken as 2027 for fall 2027. Applications are decided once all documents are received; the page does not say whether admission is rolling.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for applicants whose primary language of instruction is not English. Besides the tests below, accepted evidence includes ITEP Academic 3.5, ISTEP 60, SAT EBRW 500, ACT English 21, A-Level/IGCSE/GCSE/O-Level English C, IB English 5, completion of ELS Level 112 or a campus-based ESL program at an accredited U.S. college. Exempt: a degree from a U.S. or English-medium institution, 24 credits at a U.S./English-medium college, 2+ years at a U.S. high school, an IB diploma, or citizens of listed English-speaking countries (e.g. UK, Ireland, Australia, Canada except Quebec, Nigeria, Singapore, South Africa). The international page lists TOEFL, IELTS, Duolingo, Pearson, GTEC CBT and STEP-EIKEN.",
+  "src": "se004"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "src": "se004"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "IELTS Academic with no sub-score below 5.5 (SE004). Edinboro's own pages have listed IELTS 6.0, so confirm with the campus.",
+   "src": "se004"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "se004"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 46,
+   "notes": "Pearson PTE Academic, per SE004 (not shown on the international page's minimums).",
+   "src": "se004"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international pages say students may be eligible for financial aid, scholarships, grants and student employment, and that first-year international students are eligible for housing and need-based scholarships (no amounts). The FAQ describes an undergraduate academic scholarship (minimum 2.5 GPA, kept while a 2.5 GPA is maintained) that reduces tuition to the rate non-resident Pennsylvanians pay; its dollar value is not given and the 2026-27 tuition page lists one combined out-of-state/international rate.",
+  "src": "faq"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN (traditional)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Minimum 3.0 high school GPA and grades of B or higher in algebra I/II or calculus, biology and chemistry. A separate Associate of Science in Nursing needs a 2.75 GPA and a proficient ATI TEAS score (SE004)."
+  }
+ ],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "computer_science": "D",
+  "biology_life_sci": "D",
+  "engineering": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

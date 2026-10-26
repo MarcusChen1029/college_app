@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "APSU International Student Services - Undergraduate admissions (F-1)",
+   "url": "https://www.apsu.edu/international/admissions/undergraduate.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "APSU International Student Services - English language proficiency",
+   "url": "https://www.apsu.edu/international/admissions/english-language-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "fin": {
+   "kind": "admissions_site",
+   "title": "APSU International Student Services - Financial support (affidavit of support)",
+   "url": "https://www.apsu.edu/international/admissions/financial-support.php",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "APSU - Freshman admission requirements",
+   "url": "https://www.apsu.edu/admissions/admission-requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "oos": {
+   "kind": "financial_aid_site",
+   "title": "APSU - Out-of-state admissions scholarship opportunities",
+   "url": "https://www.apsu.edu/scholarships/scholarship-opportunities/out-of-state-scholarship-opportunities.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "flexible",
+  "notes": "F-1 applicants must submit ACT/SAT scores or placement (Accuplacer) scores; the Accuplacer may be taken online. Regular admission for freshmen needs the college-prep courses plus one of: high school GPA 2.85+, ACT 20+, or SAT 1020+ (EBRW + Math); an SAT of about 1100 clears the SAT threshold. Opportunity admission: GPA 2.75-2.84, ACT 19 or SAT 980. The international page states no minimum GPA or test score. CDS C8A box markings are not legible in the PDF text.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 25,
+  "notes": "Nonrefundable $25 application fee for F-1, J-1 and other non-U.S. citizen applicants. Required: passport biographical page, proof of financial support (affidavit of support and bank documents dated within one year of the intake term; the I-20 is not issued until it is on file), official high school completion record (original or certified/attested copies sent from the school), ACT/SAT or placement scores sent directly to APSU, and English proficiency evidence if needed. Immunization records are required before registering.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-07-01",
+   "label": "Recommended application deadline, F-1 first-time students (fall 2027 entry)",
+   "notes": "The international page lists F-1 first-time deadlines as Fall July 1, Spring November 1, Summer April 1 (titled 'recommended'). Printed without a year, treated as fall 2027. CDS C14 separately lists an overall fall application closing date of August 5. Conditional admission is only available to students enrolled in the APSU English Language Institute who have submitted all other documents.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not needed if the applicant completed an entire U.S.-equivalent high school degree of at least four years in English; completed one full semester of non-remedial English composition at an accredited U.S. college with a C or better; or has ACT, SAT or Accuplacer scores meeting the minimum in all placement areas (Admissions director approval). Scores are valid for two years and must be sent from the testing agency. Applicants below the minimums can be admitted to the APSU English Language Institute's Intensive English Program (online or in person); completing ELI university-transfer Level 5 can earn a score waiver.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Minimum for tests taken before January 2026. TOEFL Essentials minimum 6.5; TOEFL ITP not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Page lists 'TOEFL iBT Minimum - 3.5' for tests from January 2026 without naming the scale; read as the new 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Overall score of 5.5 or better.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "notes": "85 or better.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 52,
+   "notes": "PTE Academic, 52 or better; the online version is also accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 167,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency, score 167 or better. Other accepted tests include GTEC 1051 (Unified GTEC 1067), TOEIC 580, Manchester Exam 301 and Clarity English 61.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "notes": "CDS H6 marks institutional scholarship and grant aid as not available to degree-seeking nonresidents. APSU's Governor's Out-of-State Scholarship ($5,760 per year, first-time freshmen with a 3.5 high school GPA, awarded from the admission application, not combinable with other out-of-state tuition waivers) is listed for out-of-state applicants, but the page does not say whether international students qualify; confirm with the Office of Financial Aid (sfao@apsu.edu). International students are not eligible for federal aid.",
+  "src": "oos"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1028",
+   "note": "SAT code printed on the international admissions page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "The international admissions page prints the ACT code as 03944 (five digits); enter it exactly as APSU lists it when ordering ACT scores.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "1028",
+   "note": "School code listed on APSU's English language proficiency page. Scores must be sent directly by the testing agency.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores must be sent from the testing agency.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

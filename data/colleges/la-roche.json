@@ -1,0 +1,96 @@
+{
+  "slug": "la-roche",
+  "name": "La Roche University",
+  "short_name": "La Roche",
+  "state_region": "PA",
+  "city": "Pittsburgh",
+  "latitude": 40.568615,
+  "longitude": -80.014851,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.laroche.edu/",
+  "admissions_url": "https://www.laroche.edu/Admissions/",
+  "ipeds_unit_id": 213358,
+  "undergrad_enrollment": 1828,
+  "intl_undergrads": 134,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: La Roche University profile (fall 2024 enrollment, fall 2024 admissions and test scores, student-faculty ratio, setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=213358",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024): exact counts via the Urban Institute Education Data Portal API",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=213358",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "La Roche University - International undergraduate cost and fees",
+      "url": "https://laroche.edu/Admissions/International/Cost_and_Fees/",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=213358",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 1976,
+    "admits": 1497,
+    "enrolled": 146,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 4,
+    "notes": "Baseline from IPEDS (fall 2024 entering class, ADM2024); applicants, admits and enrollees are the exact IPEDS totals (enrolled = full-time 143 + part-time 3). College Navigator shows the same 1,976 applicants, 76% admitted and 10% of admits enrolled. No Common Data Set could be found on La Roche's site or by search, so GPA, international applicant counts and in-state/out-of-state splits are not available. SAT/ACT percentiles are for enrolled first-time students and are test-optional self-selected: SAT 21 students, ACT only 5 students."
+  },
+  "scores": {
+    "SAT_ERW": [
+      480,
+      560,
+      600
+    ],
+    "SAT_MATH": [
+      460,
+      530,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      16,
+      22
+    ],
+    "ACT_ENGLISH": [
+      13,
+      17,
+      21
+    ],
+    "ACT_MATH": [
+      14,
+      15,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cost",
+    "tuition_usd": 35018,
+    "tuition_intl_usd": 35018,
+    "required_fees_usd": 1520,
+    "room_board_usd": 14942,
+    "books_usd": 1000,
+    "intl_merit_aid": true,
+    "notes": "Figures are the 'Undergraduate (International)' academic-year costs on La Roche's international cost page (tuition $17,509 + fees $760 per semester; resident room $9,294 + meal plan $5,630 per year; books estimated $1,000; off-campus commuter living estimated $11,000). The page does not name an academic year (it says the figures are the average costs for a nine-month term as shown on the Form I-20), so 2026-2027 is assumed because the page is current in fall 2026; verify with the university. A nonrefundable $5,000 payment toward first-semester tuition is required to be registered ($2,000 for ESL-only). College Navigator's 2024-25 tuition and fees were $34,052."
+  }
+}

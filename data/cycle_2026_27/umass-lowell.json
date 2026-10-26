@@ -1,0 +1,201 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UMass Lowell - International undergraduate application and deadlines (English proficiency, requirements)",
+      "url": "https://www.uml.edu/international-applicants/application-requirements/international-undergrad-admissions.aspx",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UMass Lowell - Deadlines and Fees",
+      "url": "https://www.uml.edu/admissions/apply/fees-deadlines.aspx",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UMass Lowell - Scholarships for First-Year Students",
+      "url": "https://www.uml.edu/thesolutioncenter/financial-aid/scholarships/freshmen.aspx",
+      "accessed": "2026-10-26"
+    },
+    "isso_aid": {
+      "kind": "financial_aid_site",
+      "title": "UMass Lowell ISSO - International Student Scholarship Opportunities",
+      "url": "https://www.uml.edu/isso/new-international-students/scholarship-opportunities.aspx",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "UMass Lowell - Undergraduate Cost of Attendance 2026-2027",
+      "url": "https://www.uml.edu/thesolutioncenter/financial-aid/apply/undergrad-coa-odd-year.aspx",
+      "accessed": "2026-10-26"
+    },
+    "isso_cost": {
+      "kind": "other",
+      "title": "UMass Lowell ISSO - Estimate of Expenses For One Academic Year (health insurance)",
+      "url": "https://www.uml.edu/isso/new-international-students/expenses-estimate-1-academic-year.aspx",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "International first-year applicants may submit SAT or ACT scores (CEEB code 3911) or select the 'No Test' option.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 70,
+    "notes": "Apply with the UMass Lowell Application or the Common App; $70 fee (waivers available). Required: official secondary records sent directly from the school or Ministry of Education (professionally translated and notarized if not in English), SAT/ACT scores or the No Test option, an essay, a letter of recommendation, and English proficiency scores unless waived. All nursing applicants must apply Early Action I or II.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-05",
+      "label": "Early Action I (fall 2027 entry)",
+      "notes": "Listed under first-year deadlines on the Deadlines and Fees page; the page prints no year, taken as fall 2027 entry. Nursing applicants must use EA I or II. The international section of the same page lists only July 25 for fall.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2027-01-15",
+      "label": "Early Action II (fall 2027 entry)",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-15",
+      "label": "Regular Decision (fall 2027 entry)",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-25",
+      "label": "International final application deadline (fall 2027 entry)",
+      "notes": "The page prints no year, taken as fall 2027 entry; international applicants are advised to start at least 12 months before enrollment. Visa (I-20) deadline for admitted applicants outside the U.S.: Aug. 2.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required for all international applicants except citizens of Australia, Canada (except Quebec), United Kingdom, Ireland, New Zealand, Guyana and English-speaking countries of Africa and the West Indies. First-year applicants may also waive the test with written verification that English was the language of instruction, an IB curriculum, an American school, or a Cambridge IGCSE/O-Level/A-Level curriculum. Also accepted: ASC English (minimum 6, High Advanced) and LanguageCert Academic (70-74). Applicants who meet every other criterion but not the English minimum can be referred to ASC English (partner program preparing them for UMass Lowell degree programs). The International Bridge Program (12+ transferable credits at Middlesex Community College first) is another route.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "'All applicants: 79.' The page does not name the scale or give a minimum for the 2026 TOEFL. School code 3911.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 61,
+      "notes": "First-year minimum; transfer minimum is 56.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 17402,
+    "tuition_out_of_state_usd": 36610,
+    "tuition_intl_usd": 36610,
+    "required_fees_usd": 850,
+    "room_board_usd": 17482,
+    "books_usd": 1200,
+    "other_usd": 1468,
+    "intl_extra_fees_usd": 3617,
+    "total_coa_usd": 57610,
+    "src": "coa",
+    "notes": "Out-of-state (international) on-campus estimate for 2026-27 (12 credits): tuition $36,610, fees $850, housing $11,402 (weighted average) and food $6,080, books $1,200, loan fees $68, transportation $500, miscellaneous $900 (total $57,610). Required student health insurance for international students is $3,617 (ISSO expense page) and is not in the total. New England regional students pay a reduced rate."
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Out-of-state, national and international first-year applicants of exceptional merit are considered for scholarships of $8,000 to $20,000 per year (type and amount depend on the applicant pool; renewable for up to eight semesters with a 3.0 GPA). No separate application: eligibility is decided at admission and notified with the acceptance letter. The Immersive Scholars Program adds $4,000 for research, community work or study abroad. International students are expected to show sufficient funds.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "Nursing (BS)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": null,
+      "notes": "All nursing applicants must apply in Early Action I or II."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "3911",
+      "note": "CEEB code.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "ACT code not printed on the international admissions page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "3911",
+      "note": "Free score report with institution code 3911.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No code listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No code listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "C",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: an 83% admit rate (fall 2024) but a 1200-1360 SAT middle range among the 27% who submit and a 3.72 average GPA put it above the open-access publics in this tracker.",
+    "computer_science": "Editorial judgment (not source-verified): large computing program at a research university, mid-field nationally.",
+    "engineering": "Editorial judgment (not source-verified): engineering at a research university, mid-field nationally."
+  }
+}

@@ -1,0 +1,219 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "William Paterson - International Admissions: Freshman/First-Time Applicants",
+   "url": "https://www.wpunj.edu/admissions/international/freshman/",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "William Paterson - International Admissions: Deadlines (freshman)",
+   "url": "https://www.wpunj.edu/admissions/international/freshman/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "William Paterson - Undergraduate Requirements and Deadlines",
+   "url": "https://www.wpunj.edu/admissions/undergraduate/how-to-apply/requirements-and-deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "admissions_site",
+   "title": "William Paterson - How to Apply for the BS in Nursing (BSN)",
+   "url": "https://www.wpunj.edu/admissions/undergraduate/how-to-apply/requirements-and-deadlines/application-procedures-for-nursing-majors",
+   "accessed": "2026-10-26"
+  },
+  "art": {
+   "kind": "admissions_site",
+   "title": "William Paterson - Application Procedures for Art Majors",
+   "url": "https://www.wpunj.edu/admissions/undergraduate/how-to-apply/requirements-and-deadlines/application-procedures-for-art-majors",
+   "accessed": "2026-10-26"
+  },
+  "music": {
+   "kind": "admissions_site",
+   "title": "William Paterson - Application Procedures for Music Majors",
+   "url": "https://www.wpunj.edu/admissions/undergraduate/how-to-apply/requirements-and-deadlines/application-procedures-for-music-majors",
+   "accessed": "2026-10-26"
+  },
+  "pioneer": {
+   "kind": "financial_aid_site",
+   "title": "William Paterson - Pioneer Award (international tuition differential waiver)",
+   "url": "https://www.wpunj.edu/admissions/international/pioneer-award/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "William Paterson - Undergraduate Scholarships",
+   "url": "https://www.wpunj.edu/admissions/undergraduate/funding-your-education/scholarships/index.html",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "William Paterson - Undergraduate Tuition and Fees 2026-2027 (Student Accounts)",
+   "url": "https://www.wpunj.edu/studentaccounts/tuition-and-fees/undergraduate.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Official SAT/ACT scores are optional for international freshmen. Scores can help for BSN Nursing (a 3.0 GPA with SAT 1130 and EBRW 550, versus a 3.5 GPA test-optional), merit scholarships and University Honors College admission.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "portfolio": "Fine/studio art majors submit a digital portfolio after applying; music majors must audition (online upload for most programs, in person for classical performance).",
+  "notes": "Application fee $50 is the IPEDS 2024-25 figure (not restated on the pages reviewed). International applicants email secondary transcripts and diplomas (with notarized English translations) to international@wpunj.edu; the office converts foreign grades. Personal statement, resume and recommendation letters are optional unless the major requires them. Required high school units: English 4, math 3, lab science 2, social science 2, plus 5 additional. All new students take placement tests in reading, writing and math. The Common App was not confirmed on the pages reviewed.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-12-01",
+   "label": "Priority deadline for Nursing (BSN), fall 2027 entry",
+   "notes": "Nursing applications completed after Dec. 1 are considered on a rolling basis until capacity. Pages print no year; taken as fall 2027 entry.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-01-01",
+   "label": "Merit scholarship consideration (fall 2027 entry)",
+   "notes": "The international freshman page says Jan. 1; the international Deadlines page says 'February 1 - Merit Scholarship package deadline'. The earlier date is used here to be safe. No year is printed; taken as 2027.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-03-01",
+   "label": "University Honors College consideration (fall 2027 entry)",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "Regular deadline for fall 2027 admission",
+   "notes": "Freshman decisions are rolling; applications after June 1 are still handled on a rolling basis. Pages print no year; taken as fall 2027. Spring regular deadline is Dec. 1.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for U.S. citizens and permanent residents, citizens of the listed English-proficiency waiver countries, graduates (or students) of high schools in the U.S. or those countries, and students of international schools following those systems. An English-medium-of-instruction letter on school letterhead with signature and seal is accepted for up to five years. All new students take placement tests, and non-credit remedial English may be assigned. The page describes no separate ESL or conditional-admission pathway.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "src": "intl",
+   "notes": "The page does not list the new 1-6 TOEFL scale."
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic, overall band 6.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "src": "tuition",
+  "tuition_usd": 16758,
+  "tuition_out_of_state_usd": 27384,
+  "tuition_intl_usd": 27384,
+  "required_fees_usd": 566,
+  "notes": "Student Accounts 2026-27 full-time (12-19 credits) per semester: tuition $8,379 in-state and $13,692 out-of-state, plus $178 technology and $105 student government fees; annual figures are two semesters. International students pay the out-of-state rate before the Pioneer Award (about $8,500 off for undergraduates in 2026-27). Housing and board for 2026-27 were not found; IPEDS 2024-25 lists on-campus food and housing $16,240 and books $1,600."
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The Pioneer Award gives new main-campus international students an 80% discount on the difference between in-state and out-of-state tuition (about $8,500 for 2026-27, estimated; automatic, no application; renewable with full-time enrollment and a 2.0 GPA; needs a valid F-1/J-1 visa). The university also awards close to 2,000 merit scholarships a year to freshmen and transfers, and all admitted students are generally considered automatically, but no international-specific merit amounts are published. FAFSA applies to U.S. aid-eligible students only.",
+  "src": "pioneer"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Fall start only; international students are admitted. Priority date Dec. 1; first consideration needs a 3.5 high school GPA test-optional (3.0 GPA with SAT 1130 and EBRW 550) and B or better in lab biology and chemistry."
+  },
+  {
+   "program": "Art (fine/studio art)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Portfolio review is part of admission."
+  },
+  {
+   "program": "Music",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Audition is required; the audition is the most important factor for admission to the department."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2518",
+   "note": "William Paterson SAT code (test-optional).",
+   "src": "intl"
+  },
+  "act": {
+   "code": "2584",
+   "note": "William Paterson ACT code (test-optional).",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed on the international pages reviewed.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

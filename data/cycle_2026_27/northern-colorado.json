@@ -1,0 +1,174 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UNC - International admissions (undergraduate)",
+      "url": "https://www.unco.edu/admissions-aid/international/",
+      "accessed": "2026-10-26"
+    },
+    "intldl": {
+      "kind": "admissions_site",
+      "title": "UNC - International admissions home (deadlines)",
+      "url": "https://www.unco.edu/international-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UNC undergraduate catalog - Demonstration of English proficiency",
+      "url": "https://unco.smartcatalogiq.com/en/current/undergraduate-catalog/undergraduate-information-and-policies/admission/international-admission/demonstration-of-english-proficiency",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UNC undergraduate catalog - First-year student admission",
+      "url": "https://unco.smartcatalogiq.com/en/current/undergraduate-catalog/undergraduate-information-and-policies/admission/first-year-student-admission",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UNC - Scholarships (automatic first-year awards)",
+      "url": "https://www.unco.edu/admissions-aid/financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "financial_aid_site",
+      "title": "UNC - Tuition and fees 2026-27",
+      "url": "https://www.unco.edu/admissions-aid/tuition-fees/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CDS C8 (latest readable, 2023-24) lists SAT/ACT as not required but considered if submitted. The catalog first-year page lists ACT/SAT scores among application items, says they are not required for applicants 23 or older (or out of high school five years), and says scores are required for scholarship and placement purposes; the wording is unclear for traditional applicants, so confirm with the admissions office.",
+    "src": "cds"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "International file: online undergraduate international application and a non-refundable fee (the international page gives no amount; the catalog first-year page and CDS list $50 for first-year applicants), official high school transcripts in a sealed envelope, certified English translations, English proficiency evidence. No minimum GPA is published; applicants under 3.0 are encouraged to add a personal statement, academic explanation or recommendations. Catalog: GPA is emphasized, with priority for GPA above 3.0 and the HEAR units (4 math, 4 English, 3 natural science, 3 social science, 1 world language, 2 electives). Extra admission requirements apply to Music, Nursing BSN, Dietetics, ASL-English Interpretation, and Theatre Arts and Dance programs. Application platform is the UNC application; whether the Common App is accepted was not confirmed on UNC pages.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-02-01",
+      "label": "Priority date, domestic first-year (fall 2027 entry)",
+      "notes": "Catalog: rolling admission; fall priority Feb. 1 and final Aug. 1 (the catalog table is internally inconsistent about the fall opening date, and the 2023-24 CDS printed March 1 as the priority date). Printed without a year; treated as fall 2027.",
+      "src": "fy"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-15",
+      "label": "International application deadline (fall 2027 entry)",
+      "notes": "The UNC international page lists fall June 15 (spring Nov. 30, summer March 29), printed without a year and treated as fall 2027. The undergraduate international admissions page separately says applications are due 90 calendar days before the semester starts and supporting documents 60 days before, which would be earlier than June 15 for a late-August start; apply well ahead.",
+      "src": "intldl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Test scores must be from within 2 years. Alternatives to tests (US or qualifying English-speaking countries only): 3+ years of English-medium secondary study with a 2.5 GPA within 3 years; an associate degree or higher with 2.5 GPA within 5 years; or 45 semester hours with a 2.75 GPA within 5 years. Other accepted: English3 60 (15 per section), Michigan 55, Gateway 425, SAT EBRW and Writing 520 each, ACT English and Reading 20 each, AP English Language or Literature 4+, IB English A 5+ (English B HL 5+), WASSCE B3. Duolingo and PTE are not listed on the catalog page. No intensive English program or conditional admission is mentioned on the pages read.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 72,
+      "subs": {
+        "listening": 16,
+        "reading": 16,
+        "speaking": 18,
+        "writing": 18
+      },
+      "notes": "Exams taken before 2026-01-20.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "subs": {
+        "listening": 3.5,
+        "reading": 3.5,
+        "speaking": 3.5,
+        "writing": 4
+      },
+      "notes": "Exams taken on or after 2026-01-20; the page lists these values without naming the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.5
+      },
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 169,
+      "subs": {
+        "use_of_english": 160,
+        "reading": 162,
+        "writing": 162,
+        "listening": 162,
+        "speaking": 162
+      },
+      "notes": "B2 First.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "intl_need_aid": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Automatic first-year scholarships listed for non-resident and international students for fall 2026/spring 2027 entry, by weighted GPA: Trustee $7,500 per year (4.00), Presidential $6,500 (3.80-3.99), Provost $5,000 (3.40-3.79), Bear $4,000 (3.00-3.39). Fall 2027 amounts were not yet published. 49 nonresidents received institutional aid in 2023-24 (CDS H6, average $6,037); the page names no international-only or need-based award.",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is published on the pages read; look it up in the College Board code search.",
+      "src": null
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT institution code is published on the admissions pages read; look it up at act.org.",
+      "src": null
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is published on the pages read; look it up in the ETS search.",
+      "src": null
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "nursing": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

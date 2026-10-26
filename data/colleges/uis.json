@@ -1,0 +1,116 @@
+{
+ "slug": "uis",
+ "name": "University of Illinois Springfield",
+ "short_name": "UIS",
+ "state_region": "IL",
+ "city": "Springfield",
+ "latitude": 39.729524,
+ "longitude": -89.616796,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.uis.edu",
+ "admissions_url": "https://www.uis.edu/admission-aid",
+ "ipeds_unit_id": 148654,
+ "undergrad_enrollment": 2337,
+ "intl_undergrads": 77,
+ "student_faculty_ratio": 13,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "University of Illinois Springfield Common Data Set 2025-2026 (Excel workbook, Office of Institutional Research data book)",
+   "url": "https://uofi.box.com/s/juonuu87gethilt20zykjkpaqxggpi7k",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via College Navigator - University of Illinois Springfield (student-faculty ratio)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=148654",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "cds",
+  "applicants": 2768,
+  "admits": 2302,
+  "enrolled": 312,
+  "in_state_applicants": 2496,
+  "in_state_admits": 2061,
+  "out_state_applicants": 203,
+  "out_state_admits": 176,
+  "intl_applicants": 69,
+  "intl_admits": 65,
+  "pct_submit_sat": 29.5,
+  "pct_submit_act": 4.2,
+  "gpa_avg": 3.4,
+  "pct_reporting_gpa": 99.0,
+  "gpa_distribution": {
+   "4.0": 3.2,
+   "3.75-3.99": 26.2,
+   "3.50-3.74": 21.4,
+   "3.25-3.49": 15.9,
+   "3.00-3.24": 12.0,
+   "2.50-2.99": 19.4,
+   "2.0-2.49": 1.9,
+   "1.0-1.99": 0.0
+  },
+  "notes": "CDS C1 (fall 2025 entering class): 69 international first-year applicants, 65 admitted, 12 enrolled. The CDS reports no waitlist; early action closing date is Dec. 1 with rolling notification. Percentiles are as printed in C9 for the 92 SAT and 13 ACT submitters; the workbook's ACT sub-score rows look mis-aligned, so only the ACT composite is kept. Undergraduate enrollment 2,337 and nonresident undergraduates 77 are from CDS section B (fall 2025)."
+ },
+ "scores": {
+  "SAT_TOTAL": [
+   940,
+   1055,
+   1195
+  ],
+  "SAT_ERW": [
+   502.5,
+   550,
+   607.5
+  ],
+  "SAT_MATH": [
+   440,
+   500,
+   590
+  ],
+  "ACT_COMPOSITE": [
+   19,
+   22,
+   27
+  ]
+ },
+ "factors": {
+  "rigor": "VI",
+  "class_rank": "C",
+  "gpa": "VI",
+  "test_scores": "C",
+  "essay": "I",
+  "recommendations": "C",
+  "extracurriculars": "C",
+  "first_generation": "C",
+  "volunteer_work": "C",
+  "work_experience": "C"
+ },
+ "cds_test_policy": {
+  "cycle": "2026-27",
+  "policy": "optional",
+  "notes": "CDS C8A: SAT or ACT 'not required for admission, but considered if submitted'; C8F says test optional, scores may be used for course placement."
+ },
+ "cost": {
+  "year": "2026-2027",
+  "source": "cds",
+  "tuition_usd": 10035,
+  "tuition_out_of_state_usd": 20400,
+  "tuition_intl_usd": 20400,
+  "required_fees_usd": 2993,
+  "room_board_usd": 13140,
+  "books_usd": 1200,
+  "other_usd": 2151,
+  "intl_need_aid": false,
+  "intl_need_aid_awarded": 52,
+  "intl_avg_award_usd": 13083,
+  "notes": "CDS G1/G5 (first-year, 2026-27): nonresident tuition 20,400; fees exclude student health insurance. UIS's cost page (updated 2026-08-31) estimates $9,957 tuition plus $10,038 for nonresidents and a total of about $40,435 on campus for nonresidents. CDS H6: institutional non-need-based aid is available to nonresidents; 52 received it (average $13,083); the awarded field holds the recipient count."
+ }
+}

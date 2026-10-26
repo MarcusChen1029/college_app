@@ -1,0 +1,144 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "St. Thomas University - International undergraduate admissions",
+   "url": "https://www.stu.edu/students/student-affairs/international-student-services/international-admissions/",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "St. Thomas University Undergraduate Catalog 2025-2026 (admissions, tuition, housing)",
+   "url": "https://www.stu.edu/wp-content/uploads/2025/08/Final-UG-Catalog-2025-2026-08-27-25.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional; applicants may send SAT/ACT scores for course placement. Freshman minimum is a weighted 2.50 GPA (lower GPAs reviewed case by case) and 18 high school units.",
+  "src": "cat"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Free application at apply.stu.edu or the Common App. High school transcript (unofficial accepted for review) plus an official NACES or AICE credentials evaluation for non-U.S. schools. The I-20 is issued only after the enrollment deposit ($200 per the international page) with a Statement of Financial Sponsorship, passport page and bank affidavit covering at least one year's cost of attendance.",
+  "src": "cat"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "Priority deadline, fall 2027 entry (rolling)",
+   "notes": "Catalog: applications are reviewed on a rolling basis; the application opens July 1; the fall priority deadline is May 1 and the spring one is December 1. Late applications face limits on scholarships, courses, orientation and housing. Dates print without a year (treated as fall 2027); no separate international deadline is published.",
+   "src": "cat"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of applicants from countries where English is not the primary language who have not attended a U.S., UK or Canadian school; the international page lists 44 exempt countries and territories. Any one of the listed tests satisfies it. No conditional admission or ESL pathway is described on the pages read.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 60,
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3,
+   "notes": "The international page prints 'TOEFL iBT 60 (0-120 scale) or 3 (1-6 scale)'.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 162,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency. TOEFL Essentials 6.0 and other tests (SAT, ACT 18 Reading, AP/IB English, GRE) are also accepted; the admissions page lists SAT 470 EBRW while the 2025-26 catalog lists SAT 960, so confirm the SAT figure.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2025-2026",
+  "tuition_usd": 34554,
+  "notes": "2025-26 catalog: full-time undergraduate flat tuition $17,277 per semester (12-18 credits), so $34,554 per year; the same rate is shown for 2026 programs. Fees, room and board vary by hall and meal plan (for example a double room $4,030-$4,150 per semester and a 14-meal plan $2,825 per semester), so a single room-and-board figure is left null. College Navigator 2024-25 lists food and housing of $13,210.",
+  "src": "cat"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "New international undergraduates get automatic GPA-based scholarships: up to $13,000 (GPA above 3.6), up to $11,000 (3.0-3.59), up to $9,000 (below 3.0). No separate application; STU says it does not offer 100% scholarships. Whether amounts are per year is not stated.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BS (Nursing Pathway / Pre-Nursing)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "New students enter the Nursing Pathway, then need an STU GPA of 3.0+ after the BSN prerequisites and a passing TEAS score to enter the BSN. Direct entry to the BSN is for transfer students only."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The pages read do not print a numeric SAT code; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "The pages read do not print a numeric ACT code; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; results must be sent directly by the testing service.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,148 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Ball State - Steps to Admission (International Admissions and Services: first-time undergraduate dates, criteria, English)",
+   "url": "https://www.bsu.edu/admissions/international/steps-to-admission",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Ball State - English Proficiency Requirements & Conditional Admission Information",
+   "url": "https://www.bsu.edu/admissions/international/undergraduate/conditional-admission",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Ball State - Scholarships (International Student scholarships)",
+   "url": "https://www.bsu.edu/admissions/financial-aid-and-scholarships/types/scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International first-time undergraduate page: SAT/ACT are not required for admission, but scores may be used to meet the English proficiency requirement (SAT EBRW 500 or ACT English 21).",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "fee_waiver": false,
+  "notes": "International applicants apply through the Ball State international admissions portal and pay $60; no individual fee waivers. Needs secondary school transcripts and English proficiency proof; some majors require a design portfolio, audition or essay. The page says no GPA guarantees admission, but the CDS shows 95% of international first-year applicants admitted in Fall 2025.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Priority date (fall 2027 entry)",
+   "notes": "CDS C14 lists March 1 as the priority date without a year; treated as 2027. Ball State admits on a rolling basis.",
+   "src": "cds"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "International application materials due (fall 2027 entry)",
+   "notes": "Page says 'Fall Term - application materials due by June 15th' without a year; treated as 2027. Spring term: November 15.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-31",
+   "label": "#YouAreWelcomeHere Scholarship application (essay or video)",
+   "notes": "Two annual $14,000 awards for incoming first-year international students; the page gives March 31 without a year (treated as 2027). The Global scholarships need no separate application per the page.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for all applicants with an education history outside the U.S. unless waived. Waived with a U.S. high school diploma, U.S. college degree or 24 credit hours at an accredited U.S. university, or the same from a listed English-speaking country (e.g. UK, Ireland, Canada excluding Quebec, Australia, New Zealand, Singapore, Nigeria, Ghana, Philippines), or at the discretion of International Admissions for English-medium study. Scores valid 24 months. SAT EBRW 500 or ACT English 21 also satisfies the requirement.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "MyBest scores accepted. Academic Bridge Program (part-time Intensive English Institute plus degree classes) at 75-78. Conditional admission to the Intensive English Institute from 42; the degree requirement must then be met before starting degree classes. The page does not give the new 1-6 TOEFL scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Academic. Bridge Program at 6.0; Intensive English Institute conditional admission from 4.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Bridge Program at 100-105; Intensive English Institute conditional admission from 65.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Bridge Program at 51-52; Intensive English Institute conditional admission from 40.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Admission-based international scholarships pay part of nonresident tuition, per year for up to 8 semesters, for full-time on-campus degree students (not usable for Intensive English Institute study): Global Achievement $12,000, Global Distinction $14,000, Global Presidential $16,000 (awarded from Spring 2025 onward; the page does not publish the criteria for each level). Recipients must meet the English requirement first.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "1051",
+   "note": "Ball State school code 1051 as printed on the English proficiency page; scores must be sent electronically.",
+   "src": "eng"
+  },
+  "sat": {
+   "code": "1051",
+   "note": "The same page prints school code 1051 for test reports; confirm in the College Board code search if the portal does not accept it.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the Ball State pages read; look it up at act.org."
+  },
+  "ielts": {
+   "code": null,
+   "note": "Send electronically to Ball State University Admissions (admissions@bsu.edu); no numeric code listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

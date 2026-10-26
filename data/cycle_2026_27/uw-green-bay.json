@@ -1,0 +1,134 @@
+{
+  "sources": {
+    "ap": {
+      "kind": "admissions_site",
+      "title": "UW-Green Bay - International student admission (apply, English proficiency, deadlines)",
+      "url": "https://www.uwgb.edu/apply/international/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UW-Green Bay - First-year student applicant",
+      "url": "https://www.uwgb.edu/apply/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "UW-Green Bay - Cost (2026-27 tuition, housing, meal plan)",
+      "url": "https://www.uwgb.edu/admissions/cost/",
+      "accessed": "2026-10-26"
+    },
+    "psa": {
+      "kind": "financial_aid_site",
+      "title": "UW-Green Bay - Phoenix Scholar Award",
+      "url": "https://www.uwgb.edu/admissions/cost/phoenix-scholar-award/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "'ACT and SAT test scores aren't required and won't impact your admission decision'; they can help with scholarships and course placement. Codes: ACT 4688, SAT 1859.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply with the Universities of Wisconsin application. International applicants need the official secondary transcript, diploma or exam results (certified English translation if needed), an English proficiency score, a bank statement or letter and a signed financial support statement, and a passport copy. The $50 application fee comes from the CDS (C13); the international page does not mention it and instead lists a $50 International Student Processing Fee payable after acceptance, before the I-20 is issued.",
+    "src": "ap"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-07-01",
+      "label": "Last day to apply for fall 2027 (international students)",
+      "notes": "The page says international deadlines stay the same each year and prints no year; treated as fall 2027. Documents to complete the application are due the next day (July 2). Spring: Dec. 1 (documents Dec. 2). The domestic first-year fall deadline is Aug. 23, 2027.",
+      "src": "ap"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Scores must be no more than 2 years old. Other accepted proofs: ACT English+Reading combined 34 (neither below 17), SAT reading/writing 480+, Michigan English Test 53+, IGCSE (five C or higher), and Wisconsin ESL Institute (WESLI) level 600. Four years at a U.S. high school do not exempt a student. Waived for a U.S. post-secondary degree (or one from a listed English-speaking country), 15 transferable U.S. credits with a 2.5 GPA (transfer), or citizenship of a listed English-speaking country (e.g. Canada excluding Quebec, UK, Ireland, Australia, New Zealand, Singapore, Nigeria, Ghana, Kenya, South Africa).",
+    "src": "ap"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "For exams taken before Jan. 21, 2026. Institution code 1859.",
+      "src": "ap"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "For exams taken on or after Jan. 21, 2026.",
+      "src": "ap"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "IELTS must be shared with UW-Green Bay for online verification.",
+      "src": "ap"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Share the score with UW-Green Bay through Duolingo.",
+      "src": "ap"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 9133,
+    "tuition_out_of_state_usd": 17721,
+    "tuition_intl_usd": 17721,
+    "intl_extra_fees_usd": 50,
+    "room_board_usd": 8244,
+    "books_usd": 800,
+    "notes": "Cost page for 2026-27: tuition and fees $9,133 for Wisconsin residents and $17,721 for out-of-state/non-resident students (fees included; international students pay the non-resident rate). Housing $4,854 plus meal plan $3,390 = $8,244 (as listed; the page does not say which room or plan). Books about $800; new student fee $217; optional parking $210. Extra fees $50 = one-time International Student Processing Fee after acceptance.",
+    "src": "cost"
+  },
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "Phoenix Scholar Award is an automatic tuition remission (not a scholarship or financial aid) for new first-year or transfer out-of-state and international students in in-person classes: Gold (100% of the non-resident portion of tuition) with SAT 1230+, ACT 26+ or GPA 3.51+; Green (75%) with SAT 1130-1220, ACT 23-25 or GPA 3.25-3.50. Dollar amounts for international students are not published; the page says to call or email. The CDS H6 marks both institutional need-based and non-need-based aid as available to nonresidents, but no international need-based program is described, so the aid policy is left blank.",
+    "src": "psa"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "1859",
+      "note": "UW-Green Bay SAT code.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "4688",
+      "note": "UW-Green Bay ACT code.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": "1859",
+      "note": "TOEFL institution code.",
+      "src": "ap"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

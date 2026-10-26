@@ -1,0 +1,79 @@
+{
+  "slug": "charleston-southern",
+  "name": "Charleston Southern University",
+  "short_name": "Charleston Southern",
+  "state_region": "SC",
+  "city": "Charleston",
+  "latitude": 32.983047,
+  "longitude": -80.072587,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.charlestonsouthern.edu",
+  "admissions_url": "https://www.charlestonsouthern.edu/admissions/international/",
+  "ipeds_unit_id": 217688,
+  "undergrad_enrollment": 3126,
+  "intl_undergrads": 67,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Charleston Southern University (IPEDS fall 2024 enrollment, setting, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217688",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=217688&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217688",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 4660,
+    "admits": 4495,
+    "enrolled": 795,
+    "pct_submit_sat": 49,
+    "pct_submit_act": 31,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Charleston Southern's website or by web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 4,660 applicants, 4,495 admitted, 795 enrolled (788 full-time + 7 part-time). The same source shows 6,072 applicants / 4,620 admitted for fall 2023. Test scores are for enrolled first-time students who submitted them (387 SAT, 246 ACT). International applicant counts and GPA data are not published. College Navigator shows 2% of undergraduates as U.S. nonresidents."
+  },
+  "scores": {
+    "SAT_ERW": [
+      480,
+      530,
+      600
+    ],
+    "SAT_MATH": [
+      450,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      24
+    ]
+  }
+}

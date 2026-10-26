@@ -1,0 +1,102 @@
+{
+  "slug": "arkansas-state",
+  "name": "Arkansas State University (Jonesboro)",
+  "short_name": "A-State",
+  "state_region": "AR",
+  "city": "Jonesboro",
+  "latitude": 35.842388,
+  "longitude": -90.679988,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.astate.edu",
+  "admissions_url": "https://www.astate.edu/admissions-and-aid/undergraduate-admissions/",
+  "ipeds_unit_id": 106458,
+  "undergrad_enrollment": 11189,
+  "intl_undergrads": 858,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Arkansas State University Common Data Set 2025-2026 (PDF, A-State Knowledge Base 'Latest CDS')",
+      "url": "https://kb.astate.edu/attachments/2113",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10233,
+    "admits": 8000,
+    "enrolled": 2242,
+    "in_state_applicants": 5470,
+    "in_state_admits": 4977,
+    "out_state_applicants": 1725,
+    "out_state_admits": 990,
+    "intl_applicants": 3026,
+    "intl_admits": 2033,
+    "pct_submit_sat": 2.7,
+    "pct_submit_act": 86.6,
+    "gpa_avg": 3.54,
+    "pct_reporting_gpa": 98.39,
+    "gpa_distribution": {
+      "4.0": 18.54,
+      "3.75-3.99": 21.94,
+      "3.50-3.74": 19.36,
+      "3.25-3.49": 14.82,
+      "3.00-3.24": 10.34,
+      "2.50-2.99": 12.06,
+      "2.0-2.49": 2.44,
+      "1.0-1.99": 0.5
+    },
+    "notes": "CDS C1 (Fall 2025): men 4,270 + women 5,950 + 13 unknown applied; residency rows (in-state / out-of-state / international / unknown) sum to the totals. International applicants: 3,026 applied, 2,033 admitted (67%), 152 enrolled. CDS C6 checks open admission for all students; no early decision or early action; no waitlist. The PDF stores its numbers in an unreadable font encoding, so digits were decoded and every total was cross-checked against its parts. C7 factor and C8 policy checkboxes could not be read, so 'factors' is omitted. Undergraduate enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (11,189; 858 nonresident) and include non-degree/dual-credit students."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1080,
+      1190
+    ],
+    "SAT_ERW": [
+      490,
+      540,
+      580
+    ],
+    "SAT_MATH": [
+      480,
+      540,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9690,
+    "tuition_out_of_state_usd": 18000,
+    "tuition_intl_usd": 18780,
+    "required_fees_usd": 740,
+    "room_board_usd": 11950,
+    "books_usd": 1250,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 693,
+    "intl_avg_award_usd": 6435,
+    "notes": "CDS G1 (30 credit hours): in-state $323/credit, nonresident $600/credit. tuition_intl_usd = 30 x the $626 international per-credit rate on the A-State international tuition page (which adds a $350 per-term international fee, a $50 application fee, a $280 health-screening fee and $570-650/semester required health insurance; its own 2026-27 undergraduate estimate is $29,646 for a 12-credit year including dorm room and board). H6: only institutional non-need-based aid for nonresidents; 693 nonresidents received it (average $6,435)."
+  }
+}

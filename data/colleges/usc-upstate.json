@@ -1,0 +1,73 @@
+{
+  "slug": "usc-upstate",
+  "name": "University of South Carolina Upstate",
+  "short_name": "USC Upstate",
+  "state_region": "SC",
+  "city": "Spartanburg",
+  "latitude": 34.996403,
+  "longitude": -81.970583,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.uscupstate.edu/",
+  "admissions_url": "https://uscupstate.edu/admissions/",
+  "ipeds_unit_id": 218742,
+  "undergrad_enrollment": 4487,
+  "intl_undergrads": 62,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - University of South Carolina-Upstate (fall 2024 admissions, test scores, enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=218742",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions and fall enrollment counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=218742",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 4682,
+    "admits": 3149,
+    "enrolled": 757,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 3,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No USC Upstate Common Data Set was found, so international applicants/admits, GPA, SAT total and admission factors are not included. College Navigator prints 67% admitted. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 7%, ACT 3%), so they rest on few students; no 50th percentiles are printed. Undergraduate enrollment 4,487 and nonresident-alien undergraduates 62 are IPEDS fall 2024 enrollment."
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      null,
+      605
+    ],
+    "SAT_MATH": [
+      495,
+      null,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      null,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 11588,
+    "books_usd": 1600,
+    "room_board_usd": 10533,
+    "other_usd": 3600,
+    "total_coa_usd": 27321,
+    "tuition_out_of_state_usd": 23090,
+    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus cost of attendance for South Carolina residents ($38,823 total at the out-of-state tuition rate)."
+  }
+}

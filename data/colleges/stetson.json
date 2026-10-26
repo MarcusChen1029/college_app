@@ -1,0 +1,136 @@
+{
+ "slug": "stetson",
+ "name": "Stetson University",
+ "short_name": "Stetson",
+ "state_region": "FL",
+ "city": "DeLand",
+ "latitude": 29.035475,
+ "longitude": -81.300746,
+ "setting": "urban",
+ "control": "private_nonprofit",
+ "website": "https://www.stetson.edu",
+ "admissions_url": "https://www.stetson.edu/administration/admissions/",
+ "ipeds_unit_id": 137546,
+ "undergrad_enrollment": 2349,
+ "intl_undergrads": 211,
+ "student_faculty_ratio": 10,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "Stetson University Common Data Set 2024-2025 (PDF; a 2025-26 edition was not found)",
+   "url": "https://www.stetson.edu/administration/institutional-research/media/cds_ay2025.pdf",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - Stetson University (student-to-faculty ratio)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=137546",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "cds",
+  "applicants": 11674,
+  "admits": 8359,
+  "enrolled": 686,
+  "ed_applicants": 134,
+  "ed_admits": 119,
+  "in_state_applicants": 6646,
+  "in_state_admits": 5516,
+  "out_state_applicants": 2452,
+  "out_state_admits": 1869,
+  "intl_applicants": 2576,
+  "intl_admits": 974,
+  "waitlist_offered": 58,
+  "waitlist_accepted": 57,
+  "waitlist_admitted": 29,
+  "pct_submit_sat": 38,
+  "pct_submit_act": 18,
+  "gpa_avg": 3.66,
+  "pct_reporting_gpa": 99,
+  "gpa_distribution": {
+   "4.0": 26,
+   "3.75-3.99": 18,
+   "3.50-3.74": 18,
+   "3.25-3.49": 14,
+   "3.00-3.24": 12,
+   "2.50-2.99": 10,
+   "2.0-2.49": 2,
+   "1.0-1.99": 0
+  },
+  "notes": "Fall 2024 first-year class (CDS C1). International applicants 2,576 and admits 974 (38% vs 72% overall; 83% in-state, 76% out-of-state), so international admission is much more selective than the overall rate suggests. Undergrad enrollment and intl count are B1/B2 totals (2,349; nonresident 211). Test scores are optional: only 38% of enrolled students submitted SAT and 18% ACT, so the percentiles describe a self-selected group. C11 distribution is for all enrolled students."
+ },
+ "scores": {
+  "SAT_TOTAL": [
+   988,
+   1090,
+   1213
+  ],
+  "SAT_ERW": [
+   510,
+   575,
+   630
+  ],
+  "SAT_MATH": [
+   460,
+   530,
+   580
+  ],
+  "ACT_COMPOSITE": [
+   19,
+   22,
+   27
+  ],
+  "ACT_ENGLISH": [
+   18,
+   21,
+   26
+  ],
+  "ACT_MATH": [
+   17,
+   19,
+   25
+  ]
+ },
+ "factors": {
+  "rigor": "VI",
+  "class_rank": "I",
+  "gpa": "VI",
+  "test_scores": "C",
+  "essay": "I",
+  "recommendations": "I",
+  "interview": "I",
+  "extracurriculars": "I",
+  "talent_ability": "I",
+  "character": "I",
+  "first_generation": "C",
+  "alumni_relation": "C",
+  "geographic_residence": "C",
+  "state_residency": "C",
+  "religious_affiliation": "NC",
+  "volunteer_work": "I",
+  "work_experience": "I",
+  "demonstrated_interest": "C"
+ },
+ "cds_test_policy": {
+  "cycle": "2026-27",
+  "policy": "optional",
+  "notes": "CDS C8A (Fall 2026): SAT/ACT 'not required for admission, but considered if submitted'."
+ },
+ "cost": {
+  "year": "2025-2026",
+  "source": "cds",
+  "tuition_usd": 59290,
+  "tuition_intl_usd": 59290,
+  "required_fees_usd": 400,
+  "room_board_usd": 18342,
+  "books_usd": 850,
+  "intl_need_aid": false,
+  "intl_need_aid_awarded": 197,
+  "notes": "CDS G1/G5 (2025-26, first-year): tuition $59,290, required fees $400, on-campus housing $9,741 plus food $8,601; books $850, other $1,099. Stetson says an F-1 applicant must show funds for one year of tuition and fees plus about $4,200 for books and other expenses. H6: non-need-based institutional aid is available to nonresidents and 197 received it; the CDS-reported average of $61,173 exceeds tuition, so it is not recorded here."
+ }
+}

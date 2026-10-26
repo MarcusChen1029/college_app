@@ -1,0 +1,80 @@
+{
+ "slug": "lewis",
+ "name": "Lewis University",
+ "short_name": "Lewis",
+ "state_region": "IL",
+ "city": "Romeoville",
+ "latitude": 41.605432,
+ "longitude": -88.079032,
+ "setting": "suburban",
+ "control": "private_nonprofit",
+ "website": "https://www.lewisu.edu",
+ "admissions_url": "https://www.lewisu.edu/admissions/",
+ "ipeds_unit_id": 146612,
+ "undergrad_enrollment": 4326,
+ "intl_undergrads": 109,
+ "student_faculty_ratio": 13,
+ "academic_calendar": "semester",
+ "sources": {
+  "facts": {
+   "kind": "admissions_site",
+   "title": "Lewis University - Quick Facts (fall 2024 first-year class)",
+   "url": "https://www.lewisu.edu/admissions/quickfacts.htm",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via College Navigator - Lewis University (fall 2024 test-score percentiles, enrollment)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=146612",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=146612",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "facts",
+  "applicants": 6302,
+  "admits": 4493,
+  "enrolled": 686,
+  "gpa_avg": 3.57,
+  "pct_submit_sat": 24,
+  "pct_submit_act": 4,
+  "notes": "No Common Data Set was found on lewisu.edu, so this is a baseline: first-year applicants/accepts/enrolled and average GPA (3.57) are from Lewis Quick Facts (fall 2024); test percentiles and submission rates (SAT 24%, ACT 4% of enrolled) are IPEDS fall 2024 via College Navigator. Quick Facts also gives averages (ACT 23.7, SAT 1084) and says 3.6% of the first-year class is international; international applicant/admit counts are not published. Undergraduate enrollment 4,326 is fall 2024."
+ },
+ "scores": {
+  "SAT_ERW": [
+   490,
+   540,
+   600
+  ],
+  "SAT_MATH": [
+   470,
+   540,
+   610
+  ],
+  "ACT_COMPOSITE": [
+   20,
+   24,
+   27
+  ]
+ },
+ "cost": {
+  "year": "2026-2027",
+  "source": "tuit",
+  "tuition_usd": 41900,
+  "required_fees_usd": 500,
+  "room_board_usd": 13154,
+  "books_usd": 1500,
+  "intl_need_aid": false,
+  "notes": "Tuition $20,950 per semester (12-18 credits, traditional undergraduate, fall 2026/spring 2027); student fee $250 per semester; room is a first-year double ($3,742 per semester) plus default Meal Plan II ($2,835 per semester). Books are the College Navigator 2024-25 estimate. A total cost of attendance is not published on the pages reviewed, so none is given."
+ }
+}

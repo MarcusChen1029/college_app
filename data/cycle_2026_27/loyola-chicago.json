@@ -1,0 +1,155 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Loyola Chicago - International students (undergraduate admission)",
+      "url": "https://www.luc.edu/undergrad/admissions/internationalstudents/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Loyola Chicago - Undergraduate scholarships (Financial Aid Office)",
+      "url": "https://www.luc.edu/finaid/scholarships/undergraduate/",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Loyola Chicago - Scholarships and financial aid (undergraduate admission)",
+      "url": "https://www.luc.edu/undergrad/tuitionscholarshipsandaid/scholarshipsandfinancialaid/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Loyola is test-optional; applicants decide whether to include ACT/SAT scores. Loyola superscores. If admitted, official scores must reach Loyola by May 1. International applicants may also submit the SAT or ACT as proof of English proficiency.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "No application fee. Common App or Loyola's own application. Send official transcripts from every secondary school attended (translated into English if needed). A letter of recommendation from a teacher or counselor is listed as a step but is not stated to be mandatory; resume and essay/personal statement are optional. I-20 documents (passport copy, proof of funds, affidavit of support) are requested only after admission.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-12-01",
+      "label": "Priority application deadline, fall 2027 entry",
+      "notes": "Loyola keeps admitting after Dec. 1 as long as space is available; the page prints no year, taken as fall 2027. No early decision or early action. For merit scholarship consideration the Financial Aid Office asks for a completed application by Dec. 1 so the student can be admitted by Feb. 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "priority",
+      "due": "2026-11-01",
+      "label": "Priority application deadline, spring 2027 entry",
+      "notes": "Spring start; enrollment deposit due Jan. 1. The page prints no year, taken as spring 2027.",
+      "src": "intl"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Enrollment deposit deadline (fall 2027)",
+      "notes": "Deposits continue to be accepted after May 1 if space is available.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_all_international",
+    "waiver_notes": "Loyola does not waive English proficiency based on country of origin or medium of instruction. Students taking AP or IB classes can have their transcripts reviewed for a waiver, and the SAT or ACT may be submitted instead as proof of English proficiency (scores sent directly by the testing agency). The page says the application 'may require' official TOEFL, IELTS, PTE or Duolingo scores. No conditional admission or ESL pathway program was found on the page (a Rome Start option lets international students begin at Loyola's Rome campus).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Tests taken before Jan. 1, 2026.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Tests taken after Jan. 1, 2026 (1-6 scale).",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "International applicants are automatically considered for merit scholarships when they apply; the award is in the acceptance letter. The Financial Aid Office lists academic scholarships of $14,000 to $34,000 per year for students entering fall 2026, while the admissions page says $20,000 to $34,000; the range for fall 2027 entrants is not published. Special scholarships needing separate applications (portal, early January) run from $2,500 to full tuition. International students cannot get federal aid. CDS H6: institutional need-based and non-need-based aid are available to nonresidents; 229 received it, average $26,906.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "1412",
+      "note": "Printed on the international admission page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1064",
+      "note": "Printed on the international admission page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the international admission page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "D+: 75% overall admit rate and about 47% for international applicants, but a mid-size Jesuit research university whose test-submitting enrollees have SAT 1220-1390; editorial judgment, not a published ranking.",
+    "engineering": "No stand-alone undergraduate engineering school confirmed, so no tier."
+  }
+}

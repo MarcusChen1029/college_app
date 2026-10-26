@@ -1,0 +1,107 @@
+{
+  "slug": "arkansas",
+  "name": "University of Arkansas",
+  "short_name": null,
+  "state_region": "AR",
+  "city": "Fayetteville",
+  "latitude": 36.070009,
+  "longitude": -94.176981,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uark.edu/",
+  "admissions_url": "https://admissions.uark.edu/",
+  "ipeds_unit_id": 106397,
+  "undergrad_enrollment": 29252,
+  "intl_undergrads": 362,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Arkansas Common Data Set 2025-2026 (PDF)",
+      "url": "https://osai.uark.edu/datasets/cds/cds25-26v2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - University of Arkansas (student-to-faculty ratio, calendar system, locale)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=106397",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 32928,
+    "admits": 24326,
+    "enrolled": 6956,
+    "in_state_applicants": 8988,
+    "in_state_admits": 7116,
+    "out_state_applicants": 22358,
+    "out_state_admits": 17028,
+    "intl_applicants": 1578,
+    "intl_admits": 182,
+    "pct_submit_sat": 31.2,
+    "pct_submit_act": 72.2,
+    "gpa_avg": 3.83,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 35.0,
+      "3.75-3.99": 27.0,
+      "3.50-3.74": 21.0,
+      "3.25-3.49": 12.7,
+      "3.00-3.24": 2.9,
+      "2.50-2.99": 1.3,
+      "2.0-2.49": 0.0,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1-C2 (fall 2025 entering class): in-state 8,988 / out-of-state 22,358 / international 1,578 applicants. International admit rate is far lower than the overall rate (182 of 1,578 admitted); the CDS does not explain why. The GPA distribution is the only column UA filled in (students who submitted test scores) and the CDS does not say whether GPAs are weighted. Undergrad enrollment and nonresident count are the B1 'Total Undergraduates' column (29,252; nonresident 362). Student-to-faculty ratio 20:1 is from College Navigator. Waitlist and early-plan data not read."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1020,
+      1110,
+      1210
+    ],
+    "SAT_ERW": [
+      520,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      560,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 8336,
+    "tuition_out_of_state_usd": 30604,
+    "tuition_intl_usd": 30604,
+    "required_fees_usd": 2580,
+    "room_board_usd": 15694,
+    "books_usd": 1270,
+    "other_usd": 3452,
+    "notes": "CDS G1/G5 (first-year, 2026-27): in-state tuition $8,336; out-of-state/non-resident tuition $30,604 (international students pay the non-resident rate); required fees $2,580; housing $10,144 + food $5,550; other expenses $3,452 and transportation $2,656 (not included in other_usd)."
+  }
+}

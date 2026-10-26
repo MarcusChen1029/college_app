@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Wyoming - First-year international admissions (requirements, deadlines, fee)",
+   "url": "https://www.uwyo.edu/admissions/international/requirements-first-year.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Wyoming - English proficiency for international students",
+   "url": "https://www.uwyo.edu/admissions/international/english-alternatives.html",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "University of Wyoming - First-year undergraduate admission (GPA, test scores, school codes)",
+   "url": "https://www.uwyo.edu/admissions/freshman/index.html",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Wyoming - International Brown and Gold Commitment (fall 2027/spring 2028)",
+   "url": "https://www.uwyo.edu/sfa/scholarships/international/brown-and-gold-commitment.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test scores are not required for admission but can help secure higher financial awards. Assured admission needs a cumulative high school GPA of 3.00-4.00; applicants with 2.50-2.99 are admitted with support. The page gives no separate GPA rule for international applicants.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Non-refundable $40 fee. International applicants submit official transcripts (native language plus official English translation, or via a NACES-approved agency), proof of English proficiency, an official bank statement as proof of financial support, and a passport copy. The Common App is also accepted for first-year students.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International recommended application date, fall 2027 entry",
+   "notes": "UW admits on a rolling basis and keeps accepting applications after this date, but a later application may not leave time to finish immigration steps. Same page: spring Nov. 1, summer April 1. The page prints no year; treated as fall 2027. CDS C14 also lists June 1 and August 10 as fall closing dates (the extracted text does not label which is international).",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-08-01",
+   "label": "Brown and Gold Commitment: confirm enrollment (fall 2027)",
+   "notes": "International students selected for the commitment must confirm enrollment by August 1, 11:59 pm MDT. They must also submit the UW Confidential Financial Statement. Date printed without a year on a page for the fall 2027/spring 2028 year.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose native language is English and who are citizens of, or hold a university-level degree from, a listed country may be exempt: Antigua and Barbuda, Australia, Bahamas, Belize, Bermuda, Canada (not Quebec), Ghana, Grenada, Guyana, Ireland, Jamaica, New Zealand, Nigeria, Singapore, St. Kitts and Nevis, St. Lucia, Dominica, St. Vincent and the Grenadines, Trinidad and Tobago, United Kingdom, United States. Other accepted proof: SAT EBRW 460, ACT English 20, IB English HL 4+, AP English Language or Literature 4+, IGCSE/GCE C or above in English, GTEC 1,140, TOEIC 675, EIKEN Pre-1, Gaokao 120 (94 in Jiangsu and Shanghai), HKDSE 4. Page notes some programs have specific requirements.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Page lists 'iBT/TOEFL, MyBest scores, TOEFL Home Edition: 4', which is the 1-6 scale. No 0-120 minimum is printed. Some programs may require more.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Indicator also accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "B2 First (no numeric score printed).",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Brown and Gold Commitment (first-time, non-transfer, degree-seeking at Laramie or Casper; not UW Online): $8,000 per year with a 3.4-4.0 GPA, $5,000 per year with 3.0-3.39, renewable up to 4 years. It normally cannot be combined with other institutional scholarships; requires the application, transcripts, TOEFL/IELTS/Duolingo scores and the UW Confidential Financial Statement. UW's international aid page lists no need-based aid. English pathway: the UW English Language Center runs a 15-week Intensive English Program that needs a separate non-degree application; the first-year page does not describe conditional admission to a degree program.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4855",
+   "note": "UW SAT code.",
+   "src": "fresh"
+  },
+  "act": {
+   "code": "5006",
+   "note": "UW ACT code.",
+   "src": "fresh"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed on UW's international admissions pages.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "engineering": "Engineering college at Wyoming's only four-year university, which UW says holds Carnegie R1 status; placed C as a solid regional program. Editorial judgment, not a ranking."
+ }
+}

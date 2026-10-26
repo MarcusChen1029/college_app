@@ -1,0 +1,110 @@
+{
+  "slug": "worcester-state",
+  "name": "Worcester State University",
+  "short_name": "Worcester State",
+  "state_region": "MA",
+  "city": "Worcester",
+  "latitude": 42.267526,
+  "longitude": -71.844018,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.worcester.edu/",
+  "admissions_url": "https://www.worcester.edu/admissions-aid/",
+  "ipeds_unit_id": 168430,
+  "undergrad_enrollment": 4485,
+  "intl_undergrads": 75,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Worcester State University Common Data Set 2025-2026 (Excel workbook, posted on worcester.edu University Data page)",
+      "url": "https://webcdn.worcester.edu/wp-content/uploads/2026/03/WSU-Common-Data-Set-2025-2026_No_G.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Worcester State University (estimated student expenses, 2024-25)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=168430",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 5156,
+    "admits": 4537,
+    "enrolled": 756,
+    "in_state_applicants": 4526,
+    "in_state_admits": 3990,
+    "out_state_applicants": 517,
+    "out_state_admits": 449,
+    "intl_applicants": 113,
+    "intl_admits": 98,
+    "pct_submit_sat": 17.87,
+    "pct_submit_act": 0.38,
+    "gpa_avg": 3.41,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 20.5,
+      "3.75-3.99": 12.5,
+      "3.50-3.74": 15.0,
+      "3.25-3.49": 11.8,
+      "3.00-3.24": 13.3,
+      "2.50-2.99": 18.1,
+      "2.0-2.49": 8.5,
+      "1.0-1.99": 0.3
+    },
+    "notes": "CDS section C of the posted 2025-26 workbook (C1 residency split: in-state 4,526 / out-of-state 517 / international 113 applicants; 98 international admits). Its counts match the fall 2024 entering class (College Navigator also shows 5,156 applicants), so they are not fall 2025 counts. 141 students (17.87%) submitted SAT and only 3 submitted ACT, so ACT percentiles are not recorded. Test-optional; SAT/ACT not required (C8)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      970,
+      1110,
+      1200
+    ],
+    "SAT_ERW": [
+      507,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      460,
+      530,
+      590
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 11786,
+    "books_usd": 1368,
+    "room_board_usd": 14307,
+    "other_usd": 1892,
+    "total_coa_usd": 29353,
+    "tuition_out_of_state_usd": 17866,
+    "notes": "College Navigator 2024-25 estimated expenses for full-time beginning undergraduates: tuition and required fees $11,786 in-state, $17,866 out-of-state (international students pay out-of-state); on-campus total $29,353 in-state, $35,433 out-of-state. Newer-year figures were not found; the CDS 2025-26 workbook leaves section G blank."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "I",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  }
+}

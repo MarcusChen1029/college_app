@@ -1,0 +1,103 @@
+{
+  "slug": "troy",
+  "name": "Troy University",
+  "short_name": "Troy",
+  "state_region": "AL",
+  "city": "Troy",
+  "latitude": 31.799583,
+  "longitude": -85.95802,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.troy.edu",
+  "admissions_url": "https://www.troy.edu/applications-admissions/",
+  "ipeds_unit_id": 102368,
+  "undergrad_enrollment": 10130,
+  "intl_undergrads": 435,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Troy University Common Data Set 2025-2026 (PDF; file page headers still read 2024-2025 but the data are Fall 2025)",
+      "url": "https://www.troy.edu/_assets/irpe/_documents/cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9763,
+    "admits": 9309,
+    "enrolled": 1822,
+    "in_state_applicants": 7087,
+    "in_state_admits": 6736,
+    "out_state_applicants": 1716,
+    "out_state_admits": 1624,
+    "intl_applicants": 960,
+    "intl_admits": 949,
+    "pct_submit_sat": 5,
+    "pct_submit_act": 50,
+    "gpa_avg": 3.41,
+    "pct_reporting_gpa": 92,
+    "gpa_distribution": {
+      "4.0": 36.3,
+      "3.75-3.99": 17.7,
+      "3.50-3.74": 13.4,
+      "3.25-3.49": 11.1,
+      "3.00-3.24": 8.6,
+      "2.50-2.99": 10.6,
+      "2.0-2.49": 2.1,
+      "1.0-1.99": 0.2
+    },
+    "notes": "CDS C1 (Fall 2025). International applicants: 960 applied, 949 admitted (98.9%), 56 enrolled. The file is posted as cds-2025-2026.pdf but its page headers still read 2024-2025; its B1, C1 and D2 data are for Fall 2025 (the 2024-2025 file has Fall 2024 data). Enrollment figures cover Troy University as a whole (Troy, Dothan, Montgomery, Phenix City campuses and online): total undergraduates 10,130 and nonresidents 435 (B1/B2). SAT 5% (89 students), ACT 50% (906). Test-optional for students starting in 2027. No early decision/action; no waitlist; rolling decisions. C7 factor checkboxes could not be read, so 'factors' is omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      945,
+      1030,
+      1155
+    ],
+    "SAT_ERW": [
+      490,
+      540,
+      610
+    ],
+    "SAT_MATH": [
+      440,
+      480,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11460,
+    "tuition_out_of_state_usd": 22920,
+    "tuition_intl_usd": 19864,
+    "required_fees_usd": 1500,
+    "room_board_usd": 9440,
+    "books_usd": 1000,
+    "total_coa_usd": 37254,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 351,
+    "intl_avg_award_usd": 15702,
+    "notes": "CDS G1 gives tuition/fees/room-and-board; tuition_intl_usd and total_coa_usd come from Troy's international tuition page (2026-27 estimate for the Troy campus at 13 credit hours a semester at $746 per credit hour: tuition $19,864, fee $3,250, insurance $1,860, book bag $624, room $7,000, board $4,456, supplies $200 = $37,254; $27,322 after the $9,932 International Trojan Opportunity scholarship). H6: 351 nonresidents received institutional non-need-based aid (average $15,702, total $5,512,833)."
+  }
+}

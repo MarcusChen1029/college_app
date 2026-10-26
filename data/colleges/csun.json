@@ -1,0 +1,55 @@
+{
+ "slug": "csun",
+ "name": "California State University, Northridge",
+ "short_name": "CSUN",
+ "state_region": "CA",
+ "city": "Northridge",
+ "latitude": 34.240126,
+ "longitude": -118.529319,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.csun.edu",
+ "admissions_url": "https://www.csun.edu/admissions-financial-aid",
+ "ipeds_unit_id": 110608,
+ "undergrad_enrollment": 32499,
+ "intl_undergrads": 950,
+ "student_faculty_ratio": 25,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "CSUN Common Data Set (PDF listed as 'CDS 2025-2026'; its template and data are labelled 2024-2025, fall 2024 first-year class)",
+   "url": "https://live-csu-northridge.pantheonsite.io/sites/default/files/2026-04/CDS%202025%20v2.pdf",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: student-to-faculty ratio and calendar (IC2024), fall 2024 admissions summary",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110608",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "cds",
+  "applicants": 33350,
+  "admits": 30842,
+  "enrolled": 5543,
+  "gpa_avg": 3.33,
+  "pct_reporting_gpa": 100.0,
+  "gpa_distribution": {
+   "4.0": 11.64,
+   "3.75-3.99": 11.85,
+   "3.50-3.74": 15.64,
+   "3.25-3.49": 16.38,
+   "3.00-3.24": 17.72,
+   "2.50-2.99": 22.5,
+   "2.0-2.49": 3.82,
+   "1.0-1.99": 0.45
+  },
+  "notes": "CDS C1 fall 2024 first-year class: applicants = 15,130 men + 18,122 women + 98 another gender; admits = 13,821 + 16,929 + 92. Enrolled 5,543 is the full-time plus part-time total in C1 and B1 (2,578+34 men, 2,875+37 women, 19 another gender); C1's separate enrolled-by-gender lines add to a lower 4,655, an inconsistency in the CSUN file. CSUN left the C1 residency breakdown (in-state, out-of-state, international) blank, so international applicants and admits are null; 125 first-time first-year students and 950 degree-seeking undergraduates were nonresidents (B2). SAT/ACT score ranges (C9) are blank and the C7 factor check boxes could not be read reliably, so scores and factors are omitted. CSU campuses are test-blind. College Navigator (IPEDS) shows 33,005 applicants and 93% admitted for fall 2024."
+ },
+ "scores": {}
+}

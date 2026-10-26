@@ -1,0 +1,82 @@
+{
+  "slug": "mcneese",
+  "name": "McNeese State University",
+  "short_name": "McNeese",
+  "state_region": "LA",
+  "city": "Lake Charles",
+  "latitude": 30.178187,
+  "longitude": -93.217222,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.mcneese.edu",
+  "admissions_url": "https://www.mcneese.edu/admissions/",
+  "ipeds_unit_id": 159717,
+  "undergrad_enrollment": 6055,
+  "intl_undergrads": 399,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "factbook": {
+      "kind": "other",
+      "title": "McNeese IRE 2025-2026 Factbook - Fall 2025 First-Time Freshmen (admissions, residency)",
+      "url": "https://www.mcneese.edu/about-us/leadership-team/academic-affairs/division-of-academic-affairs/ire/fall-2025-first-time-freshmen/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cowboy": {
+      "kind": "other",
+      "title": "McNeese IRE Fall 2025 Cowboy Facts (enrollment, non-resident alien students)",
+      "url": "https://www.mcneese.edu/ire/fall-2025-cowboy-facts/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: admissions considerations, test scores (fall 2024 entering class), application fee",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159717",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "factbook",
+    "applicants": 4017,
+    "admits": 3140,
+    "enrolled": 1321,
+    "notes": "No Common Data Set is published; admission counts are from the McNeese IRE factbook (fall 2025 first-time freshmen: 4,017 applied, 3,140 accepted = 78%, 1,321 enrolled, 1,308 full-time + 13 part-time). Applicants and admits are not split by residency, so the international admit rate is unknown. Enrolled first-time freshmen by residency: 1,191 Louisiana, 87 out of state, 43 foreign (the country table shows 59 foreign from 23 countries, mostly Nepal 20, Canada 6, Mexico 5; the two tables disagree). GPA, class rank and test-submission rates are not published. College Navigator (fall 2024) shows 3,902 applicants, 78% admitted, and ACT submitted by 86% and SAT by 7% of enrolled students. Undergraduate enrollment 6,055 and non-resident alien undergraduates 399 are fall 2025 Cowboy Facts figures."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      530,
+      610
+    ],
+    "SAT_MATH": [
+      450,
+      520,
+      588
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      23
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      23
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "IPEDS (College Navigator, fall 2024): SAT/ACT are 'not required, but considered (test optional)'."
+  }
+}

@@ -1,0 +1,110 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "USC Upstate - International Students (deadlines, English tests, fee, documents)",
+   "url": "https://uscupstate.edu/admissions/international-students/",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "USC Upstate Academic Catalog 2026-2027 - Admissions (test-optional, fee, international requirements and deadlines)",
+   "url": "https://academic-catalog.uscupstate.edu/admissions/",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "USC Upstate - Apply (Common App option, key dates)",
+   "url": "https://uscupstate.edu/admissions/apply/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "USC Upstate - First-Year Students (scholarships)",
+   "url": "https://uscupstate.edu/admissions/first-year-students",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Academic catalog 2026-2027: 'Test Scores - optional'; applicants 21 or younger may submit SAT/ACT. For international applicants the same catalog lists 'a minimum SAT score of 850' with the note that test scores may be waived in exceptional circumstances, and the international page's checklist says 'Take SAT/ACT if under the age of 22', so confirm with admissions whether scores are needed.",
+  "src": "cat"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 100,
+  "notes": "The $100 non-refundable fee is the international fee on the international page and in the catalog (the catalog lists $45 for other applicants). Apply through USC Upstate's online application or the Common App. International applicants send translated transcripts or certificates, a NACES course-by-course evaluation for any foreign university work, proof of funds for one year with the Financial Certification Form, and later health insurance and immunization records. Decisions are made on a rolling basis.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "International application deadline for fall entry (date not confirmed)",
+   "notes": "The international page prints 'Fall 2026 Deadline - July 1' (and 'Spring 2027 Deadline - November 1') and advises applying at least six months before the semester; the 2026-2027 catalog says international applications must be received 'by December 1 for spring admission and July 15 for fall admission'. The two sources disagree and neither prints a fall 2027 date, so no date is entered.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "TOEFL is not required of students whose native language is English. The page does not mention Duolingo, PTE or other tests, and no ESL or conditional-admission pathway is described.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Page and catalog list minimums of 61 internet-based, 173 computer-based or 500 paper-based. No 1-6 band value is given.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "merit_scholarships": null,
+  "notes": "The first-year page lists Chancellor, Valedictorian, Provost, Dean, Promise and Meeting Street Scholars scholarships and a USC System Scholarship but prints no amounts and does not say whether international students are eligible; the international page does not mention scholarships. Left unconfirmed.",
+  "src": "fy"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,73 @@
+{
+  "slug": "rutgers-camden",
+  "name": "Rutgers University-Camden",
+  "short_name": "Rutgers-Camden",
+  "state_region": "NJ",
+  "city": "Camden",
+  "latitude": 39.948064,
+  "longitude": -75.12224,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://camden.rutgers.edu/",
+  "admissions_url": "https://admissions.rutgers.edu/discover-camden",
+  "ipeds_unit_id": 186371,
+  "undergrad_enrollment": 3857,
+  "intl_undergrads": 88,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Rutgers University-Camden (fall 2024 admissions, test scores, enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186371",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions and fall enrollment counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=186371",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 32840,
+    "admits": 21768,
+    "enrolled": 531,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 3,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Rutgers-Camden Common Data Set was found on the Rutgers or Camden sites, so international applicants/admits, GPA, SAT total and admission factors are not included. College Navigator prints 66% admitted and a 2% yield for these counts. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 23%, ACT 3%). Undergraduate enrollment 3,857 and nonresident-alien undergraduates 88 are IPEDS fall 2024 enrollment."
+  },
+  "scores": {
+    "SAT_ERW": [
+      540,
+      600,
+      640
+    ],
+    "SAT_MATH": [
+      510,
+      585,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 17764,
+    "books_usd": 1418,
+    "room_board_usd": 14376,
+    "other_usd": 4458,
+    "total_coa_usd": 38016,
+    "tuition_out_of_state_usd": 37276,
+    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus cost of attendance for New Jersey residents ($57,528 total at the out-of-state tuition rate)."
+  }
+}

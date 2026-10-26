@@ -1,0 +1,161 @@
+{
+  "sources": {
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Maryville University Catalog (2025-2026 archived) - Undergraduate Admission Requirements, incl. international applicants",
+      "url": "https://catalog.maryville.edu/content.php?catoid=25&navoid=2229",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Maryville University - International Admissions FAQs",
+      "url": "https://www.maryville.edu/admissions/international/frequently-asked-questions/",
+      "accessed": "2026-10-26"
+    },
+    "chk": {
+      "kind": "admissions_site",
+      "title": "Maryville University - International Admission Checklist",
+      "url": "https://www.maryville.edu/admissions/international/admission-checklist/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Maryville University - Freshman scholarships",
+      "url": "https://www.maryville.edu/admissions/financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "onl": {
+      "kind": "admissions_site",
+      "title": "Maryville University Online - International Admission (TOEFL institution code)",
+      "url": "https://online.maryville.edu/admissions/international-admission/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Maryville is test-optional for freshman and transfer admission: SAT/ACT scores may be sent for admission, scholarship or placement consideration but are not required. The international checklist also says official SAT or ACT scores are optional. (CDS C8A answers No to using SAT/ACT in admission decisions, which is stricter than the catalog wording; the catalog is followed here.) Automatic scholarships can be earned by GPA or by ACT/SAT. Test-optional does not apply to applicants from schools that give only narrative evaluations.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Freshman requirements: high school diploma with 22 units (4 English, 3 math, 3 science, 3 social science, 3 other) and at least a 2.5 GPA; below that, case-by-case with a possible personal statement. International applicants submit the application, passport, secondary transcripts (a third-party evaluation is no longer required but may be requested) and proof of English proficiency. CDS C13 reports no application fee. Some programs (nursing, design and visual art, direct-entry therapy programs and others) require a program-specific minimum GPA.",
+    "src": "cat"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2026-12-01",
+      "label": "Priority date and scholarship deadline (fall 2027 entry)",
+      "notes": "Maryville admits on a rolling basis (decisions from Sep. 1). CDS C14 gives a Dec. 1 priority date and the freshman scholarships page gives Dec. 1 for the automatic and competitive scholarships. The pages print no year, taken as the 2026-27 cycle (fall 2027 entry).",
+      "src": "schol"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "Recommended international application date (fall 2027 entry)",
+      "notes": "The International FAQ says there is no application deadline, but overseas applicants should apply by June 1 for fall (Nov. 1 for spring) to allow time for the I-20 and the U.S. embassy interview. No year is printed, taken as fall 2027. A $250 advance tuition payment and certified proof of finances (dated within 3 months) are needed for the I-20.",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required for applicants whose first language is not English. Other accepted proofs (non-health majors): ACT English/Writing 21+, SAT Writing 480+ (as printed in the catalog), ELS Level 112 completed with 2.5+, US college English Composition equivalent with C or better, A-levels (1 A in English or 3 Bs outside math), or medium-of-instruction proof from a country AACRAO lists as English-medium. Proof is not required where English is the primary and official language of all study (e.g. Canada except Quebec). Tests must be dated within 2 years of applying (Duolingo and health majors: 1 year). Maryville states it does not offer conditional admission.",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "subs": {
+        "each_section": 15
+      },
+      "notes": "Undergraduate non-health majors. Health-profession majors (e.g. nursing, therapy): 92 overall, no section below 23. The catalog lists only the 0-120 scale.",
+      "src": "cat"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5
+      },
+      "notes": "Non-health majors. Health-profession majors: 6.5 overall, no section below 6.",
+      "src": "cat"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Non-health majors; health-profession majors need 115. Must be taken within 1 year of applying. An older 2018 Maryville PDF listed 40; the current catalog says 95.",
+      "src": "cat"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 47,
+      "notes": "PTE Academic; health-profession majors need 62.",
+      "src": "cat"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "International undergraduates are eligible for scholarships: automatic academic awards are based on GPA and/or test score; competitive awards have a Dec. 1 deadline (fall entry only). The freshman scholarships page lists Saints $14,000/yr (GPA 3.5 or ACT 27/SAT 1290), Big Red $11,000/yr (GPA 3.0 or ACT 24/SAT 1180), Maryville Opportunity Award $9,000/yr (GPA 2.5 or ACT 22/SAT 1110), and Presidential (full tuition plus room and board) and Trustee (full tuition) at GPA 3.75 or ACT 27/SAT 1290. That page does not say these amounts apply to international students, so confirm with admissions. CDS H6: 145 nonresident undergraduates received institutional aid (average $22,996).",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code was found on the admissions pages read; look up Maryville University in the College Board code search.",
+      "src": "chk"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code was found on the admissions pages read; look it up at act.org.",
+      "src": "chk"
+    },
+    "toefl": {
+      "code": "6399",
+      "note": "Maryville's TOEFL institutional code per the online-programs international admission page.",
+      "src": "onl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "cat"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "cat"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "cat"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

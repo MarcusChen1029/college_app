@@ -1,0 +1,127 @@
+{
+  "slug": "cincinnati",
+  "name": "University of Cincinnati (Main Campus)",
+  "short_name": "UC",
+  "state_region": "OH",
+  "city": "Cincinnati",
+  "latitude": 39.131159,
+  "longitude": -84.51428,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uc.edu",
+  "admissions_url": "https://admissions.uc.edu",
+  "ipeds_unit_id": 201885,
+  "undergrad_enrollment": 34447,
+  "intl_undergrads": 1625,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Cincinnati Main Campus Common Data Set 2025-2026 (PDF, updated July 2026)",
+      "url": "https://uc.edu/content/dam/refresh/provost-62/offices/ir/2026-2027-ay/CDS%202025%202026%20Main%20Campus%20updated%20faculty%20info%20and%20tuition%20and%20fees%2007062026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 33750,
+    "admits": 29715,
+    "enrolled": 6497,
+    "in_state_applicants": 19700,
+    "in_state_admits": 17820,
+    "out_state_applicants": 11319,
+    "out_state_admits": 9621,
+    "intl_applicants": 2731,
+    "intl_admits": 2274,
+    "pct_submit_sat": 8.97,
+    "pct_submit_act": 24.53,
+    "gpa_avg": 3.67,
+    "pct_reporting_gpa": 99.72,
+    "gpa_distribution": {
+      "4.0": 24.8,
+      "3.75-3.99": 20.83,
+      "3.50-3.74": 18.45,
+      "3.25-3.49": 14.86,
+      "3.00-3.24": 11.4,
+      "2.50-2.99": 9.12,
+      "2.0-2.49": 0.44,
+      "1.0-1.99": 0.11
+    },
+    "notes": "CDS is for the UC Main Campus. Counts are CDS C1 (fall 2025 first-time, first-year); GPA distribution is the 'all enrolled students' column of C11. No waiting list. Only 583 enrollees submitted SAT and 1,594 submitted ACT, so the percentiles describe small groups. CDS C7 marks talent/ability 'very important' (probably for CCM/DAAP programs). Undergrad and international counts are B1 'Total Undergraduates' (nonresident 1,625)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1250,
+      1340
+    ],
+    "SAT_ERW": [
+      580,
+      630,
+      680
+    ],
+    "SAT_MATH": [
+      580,
+      630,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      30
+    ],
+    "ACT_ENGLISH": [
+      22,
+      26,
+      30
+    ],
+    "ACT_MATH": [
+      24,
+      26,
+      29
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "VI",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT/ACT optional; students choose whether to have test scores considered."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 13146,
+    "tuition_out_of_state_usd": 28480,
+    "tuition_intl_usd": 28480,
+    "required_fees_usd": 1678,
+    "room_board_usd": 14546,
+    "books_usd": 1300,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 958,
+    "intl_avg_award_usd": 14548,
+    "notes": "CDS G1 first-year 2026-27 (in-state figure is the instructional fee). The CDS lists one nonresident rate, used here as the international rate; UC's international web page only shows outdated 2022-23 costs. CDS H6: 958 nonresidents received non-need-based institutional aid, average $14,548."
+  }
+}

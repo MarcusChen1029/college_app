@@ -1,0 +1,164 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Suffolk University - Undergraduate International Students (deadlines, requirements, aid)",
+      "url": "https://www.suffolk.edu/undergraduate-admission/information-for/international-students",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "admissions_site",
+      "title": "Suffolk University - Test-Flexible Policy for International Applicants",
+      "url": "https://www.suffolk.edu/undergraduate-admission/information-for/international-students/test-flexible-policy-for-international-applicants",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "Suffolk University - Freshmen admission (test-optional policy, test codes)",
+      "url": "https://www.suffolk.edu/undergraduate-admission/information-for/freshman",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Suffolk University - Cost of Attendance 2026-27",
+      "url": "https://www.suffolk.edu/student-financial-services/applying-for-aid/cost-of-attendance",
+      "accessed": "2026-10-26"
+    },
+    "into": {
+      "kind": "admissions_site",
+      "title": "INTO Suffolk - English and pathway programs",
+      "url": "https://www.suffolk.edu/global/international-students/into-suffolk",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Freshman applicants may apply test-optional (some applicants are required to submit scores). International applicants follow the test-flexible policy: only proof of English proficiency is needed, and SAT/ACT scores are not mandatory (they may be submitted, and an SAT EBRW of 520+ or ACT composite of 19+ also proves English proficiency).",
+    "src": "tf"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply with the Common App or the Suffolk application. International first-year applicants submit an essay/personal statement, an official secondary transcript in English (Suffolk may require a NACES credential evaluation at the applicant's cost), one letter of recommendation, and one official English proficiency score report. The $50 fee is the IPEDS 2024-25 figure (the admissions pages do not print the amount) and is waived when the applicant visits in person or virtually.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Early Action, fall admission (fall 2027 entry)",
+      "notes": "Dates are printed without a year; taken as the fall 2027 cycle.",
+      "src": "intl"
+    },
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-02-15",
+      "label": "Fall priority application date (fall 2027 entry)",
+      "notes": "Fall admission is rolling after the priority date ('Rolling: Ongoing'). Spring admission has a Nov. 15 priority date.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if from a country where English is the first and official language; also accepted: IB HL English predicted score, IGCSE/GCSE first-language English or AS/A-level results, a B average in AP English Language and Composition or Literature and Composition, or a Gaokao interview. TOEFL, IELTS, Duolingo, MET and PTE scores must be sent by the testing agency. Students who do not yet meet direct-entry requirements can enter through INTO Suffolk programs (Academic English, International Direct, International Year One), which give a degree-seeking I-20 and full admission on completion.",
+    "src": "tf"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Home Edition and TOEFL iTP China accepted; TOEFL Essentials minimum 8.5 also accepted. School code 3771. No 1-6 scale minimum is published.",
+      "src": "tf"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "IELTS One Skill Retake is also considered.",
+      "src": "tf"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "tf"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 54,
+      "notes": "PTE Academic. Michigan English Test (MET) minimum 58 is also accepted.",
+      "src": "tf"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 51340,
+    "tuition_intl_usd": 51340,
+    "required_fees_usd": 656,
+    "room_board_usd": 25862,
+    "books_usd": 1200,
+    "other_usd": 3402,
+    "total_coa_usd": 82460,
+    "src": "coa",
+    "notes": "Undergraduate resident (on-campus) estimate for 2026-27: tuition $51,340, fees $656, housing $19,962, food $5,900, books $1,200, loan fees $74, transportation $1,334, miscellaneous $1,994 (total $82,460). One tuition rate for all students."
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "All applicants are automatically considered for merit aid; Suffolk's merit scholarships for international students cover up to 50 percent of tuition (no dollar range or GPA grid is published). Need-based financial aid is available to U.S. citizens and permanent residents only.",
+    "src": "intl"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "3771",
+      "src": "fresh"
+    },
+    "act": {
+      "code": "1920",
+      "src": "fresh"
+    },
+    "toefl": {
+      "code": "3771",
+      "src": "tf"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code listed; scores are sent by the testing agency.",
+      "src": "tf"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No code listed; scores are sent through Duolingo.",
+      "src": "tf"
+    },
+    "pte": {
+      "code": null,
+      "note": "No code listed; scores are sent by Pearson.",
+      "src": "tf"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: an 82% admit rate (fall 2024) with SAT section medians of 620 EBRW / 590 Math among the 12% who submit, and a Boston campus, place it just above the open-access D tier."
+  }
+}

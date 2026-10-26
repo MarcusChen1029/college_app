@@ -1,0 +1,181 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UNCG Admissions - First-year deadlines",
+      "url": "https://admissions.uncg.edu/admissions/first-year-admissions/deadlines-for-first-years/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UNCG Admissions - Requirements for first-years",
+      "url": "https://admissions.uncg.edu/admissions/first-year-admissions/requirements-for-first-years/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UNCG Admissions - International requirements (undergraduate English proficiency, test codes)",
+      "url": "https://admissions.uncg.edu/admissions/international-admissions/international-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "UNCG Catalog - Undergraduate Admissions (English language proficiency requirement)",
+      "url": "https://catalog.uncg.edu/admissions/undergraduate-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Spartan Central - UNCG Scholarships (international student scholarships)",
+      "url": "https://spartancentral.uncg.edu/financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "Spartan Central - Tuition & Fees (undergraduate annual cost)",
+      "url": "https://spartancentral.uncg.edu/tuition-billing-payments/tuition-fees/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are optional for applicants with a weighted high school GPA of 2.80 or higher. Weighted GPA 2.50-2.79 must submit SAT 930+ or ACT 17+ (same rule on the international page). The minimum weighted GPA is 2.5 (US high school only); for non-US schools the page asks for an equivalent GPA.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Apply via the UNCG application or the Common App. International applicants also send a copy of the passport photo page, official transcripts in English and a course-by-course credential evaluation (SpanTran preferred, or any NACES/AICE member; not needed with IB Diploma, India Standard XII, GCSE/IGCSE or WASSCE results), and proof of funds for the I-20. The essay is optional but recommended; recommendations are not mentioned. Some majors have extra admission criteria and deadlines.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (fall 2027 entry)",
+      "notes": "Materials due Dec 15, 2026; decision from Jan 1, 2027. Submit all materials by Dec 15 for merit scholarship consideration. The page labels these 'Fall 2026' but the dates match fall 2027 entry. No separate international column; international applicants are urged to apply well ahead for visa processing.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-03-01",
+      "label": "Regular Decision (fall 2027 entry)",
+      "notes": "Materials due Mar 15, 2027; decision Apr 1, 2027; enroll by May 1. Applications after Mar 1 are reviewed on a space-available, rolling basis. Spring-term first-year applications: Dec 1, 2026.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "International student scholarship priority date (fall 2027 entry)",
+      "notes": "Feb 1 priority and Apr 1 regular dates for fall are listed on the scholarship page for new international students; no separate scholarship application is needed. Page prints no year, assumed fall 2027.",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The English score is waived for graduates of a US high school, of an international school/IB school taught entirely in English, with an English Composition grade of C or better at a US college, with the highest level of an approved English academic program, or from Australia, Canada (English curriculum), Bahamas, Cayman Islands, Ireland, New Zealand, South Africa or the United Kingdom. UNCG offers conditional admission to otherwise qualified applicants below the minimums through the on-campus INTERLINK intensive English program (INTERLINK Level 6 meets the requirement).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Old 0-120 scale, from the UNCG Catalog. The Home Edition score is also accepted.",
+      "src": "cat"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "The International Requirements page says 'IBT TOEFL 4' where the catalog says 79, so the 4 is read as the new 1-6 scale; the page does not name the scale. Confirm with admissions.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "IELTS Indicator also accepted at the same band score.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Accepted: Cambridge C1 Advanced; no minimum score is listed. Other accepted tests include ELS 112, iTEP 3.8, GTEC 1204 and Kaplan Higher Intermediate.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 7864,
+    "tuition_out_of_state_usd": 25347,
+    "tuition_intl_usd": 25347,
+    "room_board_usd": 11642,
+    "notes": "Spartan Central undergraduate annual cost table: tuition and fees $7,864 in-state / $25,347 out-of-state (international students pay the out-of-state rate); standard double room $6,433 + unlimited meal plan $5,209 = $11,642. The table does not print its year; it sits next to the 2026-27 fee schedule links. tuition_usd is the in-state figure.",
+    "src": "tuit"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Limited merit-based International Student Scholarships of $3,000-$6,000 per year for new degree-seeking international students with a minimum 3.5 GPA, renewable for one more year at a 3.5 GPA; no separate application. Notified in March and June (fall). Additional financial aid is not available to non-US citizens.",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5913",
+      "note": "UNCG test code for SAT (listed with TOEFL).",
+      "src": "intl"
+    },
+    "act": {
+      "code": "3166",
+      "note": "UNCG ACT code.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "5913",
+      "note": "Page lists 'TOEFL, SAT: 5913'.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code; select the account name 'UNC Greensboro Undergraduate Admissions' when sending IELTS.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

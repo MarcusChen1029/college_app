@@ -1,0 +1,69 @@
+{
+  "slug": "upper-iowa",
+  "name": "Upper Iowa University",
+  "short_name": "Upper Iowa",
+  "state_region": "IA",
+  "city": "Fayette",
+  "latitude": 42.838283,
+  "longitude": -91.799543,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.uiu.edu",
+  "admissions_url": "https://uiu.edu/admissions/international-admissions/",
+  "ipeds_unit_id": 154493,
+  "undergrad_enrollment": 3054,
+  "intl_undergrads": 88,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Upper Iowa University (IPEDS fall 2024 enrollment, locale, student-faculty ratio, test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=154493",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=154493&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=154493",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 452,
+    "admits": 436,
+    "enrolled": 148,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 13,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Upper Iowa's website or in web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 452 applicants, 436 admitted, 148 enrolled (all full-time). College Navigator shows 2% of enrollees submitting SAT (3 students, no SAT percentiles reported) and 13% submitting ACT (19 students); ACT percentiles rest on that small group. International applicant counts, GPA and class rank are not published. Undergraduate enrollment (3,054, fall 2024) includes online and regional-center students, not only the Fayette campus."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      17,
+      21,
+      23
+    ],
+    "ACT_ENGLISH": [
+      16,
+      18,
+      21
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      24
+    ]
+  }
+}

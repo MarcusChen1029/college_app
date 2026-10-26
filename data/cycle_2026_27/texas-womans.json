@@ -1,0 +1,159 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "TWU - International admissions (deadlines, fee, documents)",
+      "url": "https://twu.edu/admissions/international-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "TWU - English language proficiency requirement",
+      "url": "https://twu.edu/admissions/international-admissions/english-proficiency-requirement/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "TWU Undergraduate Catalog 2026-2027 - International Student Admission",
+      "url": "https://catalog.twu.edu/undergraduate/admission-information/international-student/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "TWU - First-year admission requirements",
+      "url": "https://twu.edu/admissions/first-year-admissions/first-year-admission-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "fin": {
+      "kind": "financial_aid_site",
+      "title": "TWU Undergraduate Catalog 2026-2027 - Financial Information (tuition waivers for nonresidents)",
+      "url": "https://catalog.twu.edu/undergraduate/financial-information/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are optional for admission and may be used for honors and scholarships (and to claim a TSI exemption). Regular admission for first-year applicants: 2.0 GPA, top 50% of class and curriculum requirements; individual review for those who do not meet them. For international first-year applicants the catalog asks for a 2.0 cumulative GPA on the U.S. scale after conversion, a course-by-course credential evaluation and English proficiency; no SAT/ACT minimum is stated.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "First-year applicants apply through ApplyTexas (listed as 'own'); the $75 fee is non-refundable and paid online by credit card. Required: course-by-course evaluation of secondary/higher-secondary studies from a NACES or AICE member service sent directly to TWU Student Records (non-U.S. transcripts no longer need to be sent to TWU since July 1, 2023), plus English proficiency scores or an exemption form. Applicants from the General Secondary Education Certificate, West African School Certificate, Kenya Certificate of Education or similar need at least five passes at grade C or higher including English, Math and Science. An I-20 is issued after admission; F-1 admission is contingent on meeting immigration deadlines. The pages read do not state a financial-documentation amount or whether essays/recommendations are needed.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-04-01",
+      "label": "International preferred deadline (fall 2027 entry)",
+      "notes": "The page prints 'Fall - Preferred deadline: April 1' without a year; fall 2027 is assumed. The CDS gives a separate domestic priority date of March 1 and rolling decisions from March 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International final application deadline (fall 2027 entry)",
+      "notes": "Page prints 'Fall - Final deadline: June 1' without a year; fall 2027 assumed. Spring: preferred Aug 1, final Nov 1; summer: preferred Mar 1, final Apr 1. F-1 admission is contingent on meeting immigration deadlines.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International and permanent-resident applicants must submit one accepted test score or an exemption form (Undergraduate English Proficiency Test Exemption Form); the pages read do not list the exemption criteria. Original score reports are required for tests older than two years (emailed reports are not valid). The pages mention no conditional admission and no ESL pathway program.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "For exams taken before 2026-01-21. Scores sent electronically by ETS (TWU code 6826).",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "For exams taken on or after 2026-01-21 ('4 or above'). The page does not name the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "IELTS Academic; send the Test Report Form number to srp@twu.edu for online verification.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Overall score of 100 or higher, sent electronically by Duolingo.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "PTE Academic; send the Score Report Code to srp@twu.edu for online verification.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "CDS H6: institutional need-based and non-need-based aid are both available to degree-seeking nonresident undergraduates (55 recipients, average $6,683). TWU catalog: nonresident or international students holding a competitive scholarship of $1,000 or more awarded by TWU may pay the in-state tuition rate. The international admissions pages list no international-specific scholarship amounts.",
+    "src": "fin"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the pages read; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages read; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6826",
+      "note": "TWU institution code; scores must be sent electronically by ETS.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; the IELTS report form number is sent to srp@twu.edu.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed; Duolingo sends scores electronically.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed; the PTE score report code is sent to srp@twu.edu.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

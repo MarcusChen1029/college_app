@@ -1,0 +1,182 @@
+{
+ "sources": {
+  "dl": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - Application deadlines",
+   "url": "https://www.memphis.edu/admissions/basics/deadlines.php",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - Admissions requirements (freshmen)",
+   "url": "https://www.memphis.edu/admissions/basics/requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "ireq": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - International undergraduate admissions requirements",
+   "url": "https://www.memphis.edu/admissions/basics/int-requirements_xxx.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - English proficiency requirements (international)",
+   "url": "https://www.memphis.edu/admissions/basics/int-english.php",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - Apply (Common App accepted for freshmen)",
+   "url": "https://www.memphis.edu/admissions/apply/index.php",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "University of Memphis - Undergraduate international student scholarships",
+   "url": "https://www.memphis.edu/scholarships/international_students/index.php",
+   "accessed": "2026-10-26"
+  },
+  "f1": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - F-1 undergraduate international estimated cost of attendance",
+   "url": "https://www.memphis.edu/admissions/basics/f1costofattendance.php",
+   "accessed": "2026-10-26"
+  },
+  "int": {
+   "kind": "admissions_site",
+   "title": "University of Memphis - International students",
+   "url": "https://www.memphis.edu/admissions/basics/international.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "First-time freshmen must provide an ACT or SAT result (valid within 5 years); the page states no score alone guarantees admission and scores are used with other factors. The CDS adds that scores are required unless waived by a particularly strong high school GPA. The international requirements page lists high school GPA and English proficiency as the primary factors and does not mention SAT/ACT, so confirm with admissions@memphis.edu whether an international applicant can be reviewed without scores.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International undergraduate application fee $50 ($25 for domestic freshmen). The UofM now accepts the Common App from first-time freshmen. International applicants upload their transcript or marks sheet to the portal (official copy needed before enrollment); decisions typically come within 5-7 business days. Self-reported GPA and test scores are accepted at application. Minimum high school units: English 4, math 3, science 2, social studies 2 (incl. U.S. History), foreign language 2, visual/performing arts 1. Nursing (BSN) has its own application deadlines.",
+  "src": "ireq"
+ },
+ "deadlines": [
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Scholarship consideration priority deadline (admitted students)",
+   "notes": "The page strongly encourages applying before Nov. 1 for scholarship eligibility; international scholarships also use the Dec. 1 priority date (freshmen). Updated GPA and test scores can be submitted through March.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International applicants outside the U.S. (first-time F-1): fall 2027 application deadline",
+   "notes": "File completion deadline July 15. Spring: Nov. 1 (file complete Dec. 1). Admission is rolling and space-available. Printed without a year, treated as fall 2027.",
+   "src": "dl"
+  },
+  {
+   "kind": "application",
+   "due": "2027-08-01",
+   "label": "International applicants already in the U.S.: fall 2027 application and file completion deadline",
+   "notes": "Spring: Dec. 1 (file complete Jan. 1).",
+   "src": "dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of all international students unless they are citizens of an English-speaking country whose native language is English or were taught in English in high school or college. Alternatives to a test: SAT EBRW 540+, ACT English 21+, IB Higher Level English A1 grade 5, GED 450 / HiSET 45, Cambridge GCE/GCSE/IGCSE English B or higher, one semester of U.S. English Composition with C or better, high school graduation in the U.S. or an approved English-speaking country with 2+ years of enrollment, a medium-of-instruction letter (committee discretion), or the Prep Academy. Tests must be within two years. Students below the minimum can join the Intensive English for Internationals (IEI) program (iei@memphis.edu) to gain certification and full admission.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Tests taken before 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Tests taken after 2025 (1-6 scale). The page lists '61 Prior to 2026 / 4 after 2025'.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "iTEP 3.7 is also accepted.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Competitive merit scholarships go to newly admitted degree-seeking F-1/J-1 international students (dual citizens and permanent residents are not eligible). Two paths: GPA plus ACT/SAT, or GPA only for certain awards. Renewable for up to three more years with 12+ credit hours, good standing and service hours. Freshmen should apply by Dec. 1 for priority. Award amounts are not given in the page text. CDS H6: 165 nonresident undergraduates received institutional aid, average $18,732 (the CDS does not say whether it was need- or non-need-based).",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The reviewed Memphis pages do not print a numeric SAT code; look it up in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "The reviewed Memphis pages do not print a numeric ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; official scores must be sent directly to the University of Memphis.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

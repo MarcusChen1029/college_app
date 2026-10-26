@@ -1,0 +1,74 @@
+{
+  "slug": "ashland",
+  "name": "Ashland University",
+  "short_name": "Ashland",
+  "state_region": "OH",
+  "city": "Ashland",
+  "latitude": 40.861755,
+  "longitude": -82.321061,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.ashland.edu",
+  "admissions_url": "https://www.ashland.edu/international-admissions",
+  "ipeds_unit_id": 201104,
+  "undergrad_enrollment": 2977,
+  "intl_undergrads": 58,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Ashland University (fall 2024 enrollment, 2024-25 student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=201104",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=201104",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 3633,
+    "admits": 2927,
+    "enrolled": 519,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 54,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023); the newest Common Data Set Ashland posts that was found is 2022-2023 (ashland.edu/sites/default/files/2024-08/CDS_2022-2023.pdf), which is older than the IPEDS baseline and was not used. College Navigator also shows fall 2024: 3,814 applicants, 76% admitted (exact admit count not given), SAT EBRW 505/560/610 and Math 530/560/598 for 32 submitters (7%), ACT composite 20/22/25 for 225 submitters (48%). SAT percentiles are not listed because only 9 enrolled students (2%) submitted SAT in fall 2023; ACT percentiles rest on 278 students (54%). International applicant and admit counts, GPA distribution and SAT total are not available from IPEDS; Ashland reported 230 international students from over 35 countries in spring 2025 (all levels)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      20,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      19,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      19,
+      22,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "Ashland's undergraduate admissions page: sending ACT, CLT or SAT scores is optional for all majors except Nursing."
+  }
+}

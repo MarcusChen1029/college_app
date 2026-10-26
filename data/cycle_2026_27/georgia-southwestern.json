@@ -1,0 +1,127 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "GSW - International undergraduate admissions",
+   "url": "https://gsw.edu/admissions/undergraduate/international",
+   "accessed": "2026-10-26"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "GSW - Admissions deadlines",
+   "url": "https://www.gsw.edu/admissions/deadlines",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "GSW - Freshman admission requirements",
+   "url": "https://www.gsw.edu/admissions/undergraduate/freshman",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "GSW - Non-resident tuition and fees",
+   "url": "https://www.gsw.edu/student-account/tuition-fees/non-resident",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The freshman page labels SAT/ACT optional ('please send official copies'); preferred minimums are SAT EBRW 480 and Math 440, or ACT English or Reading 17 and Math 17. Regular admission uses a Freshman Index of at least 1940 combining high school GPA and test scores; applicants below it can enter through University College (2.0 GPA). The international page lets test scores double as English proof.",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Freshmen apply through the GAfutures portal (the Common App is not mentioned). International applicants also need a NACES or AICE document-by-document evaluation of the high school transcript, the Declaration and Certification of Finances with a bank letter, and a passport copy; allow at least four weeks for processing. The deadline and freshman pages print no application fee (College Navigator lists $25 for 2024-25).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-07-01",
+   "label": "International student application deadline (fall 2027)",
+   "notes": "Deadlines page: fall July 1, spring November 14, summer April 15 for international students (general undergraduate fall deadline July 21). Dates print without a year; treated as fall 2027. Allow time for the I-20 and visa.",
+   "src": "dl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "Freshman scholarship deadline (fall)",
+   "notes": "Also the priority date for the Promise Scholarship and the President Carter Leadership Program. Printed without a year; treated as 2027.",
+   "src": "dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants from or graduating from a school in a non-native English-speaking country may submit TOEFL, IELTS, SAT, ACT, an English Language Institute (ELI) Advanced Completion Certificate, or qualifying Accuplacer scores (Next Gen Reading 237, WritePlacer 4+). Applicants with more than two years of U.S. high school or from a native English-speaking country submit SAT or ACT instead. Duolingo, PTE and Cambridge are not mentioned; the ELI route is a campus English program.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "Page lists 69 iBT (523 paper, 193 computer). No 1-6 scale value is given. SAT EBRW 480+/Math 440+ or ACT 17/17 also satisfies it.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 21464,
+  "room_board_usd": 9676,
+  "notes": "Non-resident table, 2026-27 header: matriculation $10,200 plus fees = $10,732 per semester (15 credits), so $21,464 per year. Housing and meals use the Oaks double room ($2,608) plus the Unlimited meal plan ($2,230) per semester, doubled; other halls cost more. Health insurance and personal expenses are not included. International students can seek a limited out-of-state tuition waiver worth about $13,000 (see aid).",
+  "src": "tuition"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "GSW says it has no scholarships specifically for international students. A limited number of out-of-state tuition waivers (about $13,000 savings) are offered, with priority to students completing the ELI with the Advanced Completion Certificate; the Outstanding Out-of-State Student waiver and Beginning Freshmen Scholarships (Feb. 1) are open to international applicants who send SAT or ACT scores.",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5250",
+   "note": "SAT reporting code.",
+   "src": "fr"
+  },
+  "act": {
+   "code": "0824",
+   "note": "ACT reporting code.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

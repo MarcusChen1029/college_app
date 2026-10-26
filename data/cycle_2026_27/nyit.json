@@ -1,0 +1,185 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "New York Tech - International Students (English proficiency, I-20, aid)",
+      "url": "https://www.nyit.edu/admissions/international/",
+      "accessed": "2026-10-26"
+    },
+    "to": {
+      "kind": "admissions_site",
+      "title": "New York Tech - Test-Optional Policy",
+      "url": "https://www.nyit.edu/admissions/first-year/test-optional-policy/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "New York Tech - First-Year Admissions",
+      "url": "https://www.nyit.edu/admissions/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "New York Tech Catalog - Admissions: Undergraduate Students (international deadlines, fee, test codes)",
+      "url": "https://catalog.nyit.edu/general_information/admissions_undergraduate",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "New York Tech - Scholarships (first-year, international students 2026-27)",
+      "url": "https://www.nyit.edu/admissions/costs-and-aid/financial-aid/scholarships-and-grants/new-york-tech/",
+      "accessed": "2026-10-26"
+    },
+    "isa": {
+      "kind": "financial_aid_site",
+      "title": "New York Tech - International Student Financial Aid",
+      "url": "https://www.nyit.edu/admissions/international_student_aid",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "New York Tech - Estimated Costs 2026-2027",
+      "url": "https://www.nyit.edu/admissions/estimated_costs",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are optional for most programs, including for international applicants, who may submit them as evidence of English proficiency only. International applicants must submit test scores for Nursing (BS). The Life Sciences BS combined programs with OT, PT or PA require SAT/ACT; Nursing and the BS/DO program are test-optional for domestic applicants. Test-optional applicants remain eligible for scholarships. SAT code 2561, ACT code 2832.",
+    "src": "to"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply with the Common App (preferred) or the New York Tech online application; $50 fee (waivable). Required: official transcripts with certified English translation for non-English records, two letters of recommendation, and a 300-350 word essay (career goals in the chosen major, or a Common App prompt); international applicants without a graded essay in English may get an extra prompt. English proficiency scores are required unless exempt. Admission is rolling.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Catalog: international applications must be received by July 1 for the fall semester (Dec. 1 for spring); later applicants may be asked to defer. The deadlines may be waived for applicants living in the U.S. or in countries with short F-1 visa waits. The catalog prints no year, taken as fall 2027. Some programs (e.g. nursing, architecture) have program-specific requirements and deadlines.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for students who live or were educated in a listed English-speaking country (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Nigeria, Singapore, South Africa, United Kingdom), or who completed two or more years of high school in the U.S. or a listed native English-speaking country. Also accepted per the catalog: SAT EBRW 550 and IB English A HL (4). Scores are valid for two years. No ESL or conditional-admission pathway is described on the international pages.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "'79 (old)'. TOEFL code 2561.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "'4.0 (new)'; the page does not name the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "IELTS code 141059.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Pearson PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 48300,
+    "tuition_intl_usd": 48300,
+    "required_fees_usd": 2600,
+    "room_board_usd": 31024,
+    "books_usd": 1620,
+    "other_usd": 5974,
+    "total_coa_usd": 89518,
+    "src": "coa",
+    "notes": "Long Island campus, living in a dorm, 2026-27: tuition $48,300 (B.S./D.O. and B.Arch. $52,300), college fees $2,600, housing $24,000, food $7,024, books $1,620, miscellaneous $2,640, transportation $3,262, loan fees $72 (total $89,518; New York City campus dorm total $83,564). International undergraduates must document $77,650 ($81,650 for architecture majors) for the first year to receive an I-20."
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "International students are not eligible for federal or state aid. First-year international students are automatically reviewed for tuition-only academic scholarships at admission (no separate application, no test scores needed), renewable for up to eight semesters with a minimum GPA. 2026-27 international first-year awards by GPA / high school average: $32,000 (4.0+ / 100+), $31,000 (3.75-3.99 / 95-99.99), $29,000 (3.5-3.74 / 90-94.99), $27,500 (3.20-3.49 / 84-89.99), $23,500 (3.0-3.19 / 80-83.99). The page does not say whether any institutional need-based aid exists for international students.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "Nursing (BS)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": null,
+      "notes": "International applicants must submit SAT/ACT scores for Nursing; direct-admission offers are not valid for nursing."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "2561",
+      "src": "cat"
+    },
+    "act": {
+      "code": "2832",
+      "src": "cat"
+    },
+    "toefl": {
+      "code": "2561",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "IELTS recipient code 141059 is not a 4-character code; enter it as printed on the NYIT international page.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Scores are submitted online through Duolingo.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "Scores are submitted online through Pearson.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: an 81% admit rate (fall 2024) with SAT section medians of 640 EBRW / 670 Math among the 22% who submit place it just above the open-access D tier."
+  }
+}

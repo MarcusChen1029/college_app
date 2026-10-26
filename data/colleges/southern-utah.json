@@ -1,0 +1,72 @@
+{
+  "slug": "southern-utah",
+  "name": "Southern Utah University",
+  "short_name": "SUU",
+  "state_region": "UT",
+  "city": "Cedar City",
+  "latitude": 37.674617,
+  "longitude": -113.070146,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.suu.edu",
+  "admissions_url": "https://www.suu.edu/admissions/",
+  "ipeds_unit_id": 230603,
+  "undergrad_enrollment": 13176,
+  "intl_undergrads": 749,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Southern Utah University Common Data Set 2025-2026 (PDF)",
+      "url": "https://drive.google.com/file/d/1E5MHkccO8fNCM2z_GCuuxBe_Gxs06Lkx/view?usp=drive_link",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Southern Utah University (fall 2024 admissions summary)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=230603",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 16235,
+    "admits": 16231,
+    "enrolled": 2150,
+    "gpa_avg": 3.48,
+    "pct_reporting_gpa": 99.44,
+    "gpa_distribution": {
+      "4.0": 7.4,
+      "3.75-3.99": 35.8,
+      "3.50-3.74": 16.6,
+      "3.25-3.49": 13.0,
+      "3.00-3.24": 10.2,
+      "2.50-2.99": 11.0,
+      "2.0-2.49": 4.4,
+      "1.0-1.99": 1.5
+    },
+    "notes": "CDS C1 fall 2025 first-year class; C6 states an open admission policy for all students (virtually every applicant who completes the application is admitted). The CDS gives no residency or international split for applicants/admits. College Navigator (IPEDS fall 2024) counts differently: 19,080 applicants, 82% admitted, 14% of admits enrolled. No early decision; early action is rolling with no closing date. No waitlist. SUU does not use SAT/ACT in admission decisions (C8A = No) and reported no score percentiles. CDS B1/B2 total undergraduates 13,176 including part-time and non-degree students; 749 nonresident (international) undergraduates (621 degree-seeking). The fall 2025 first-year class has 127 nonresident students (B2)."
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8A: SUU does not use SAT or ACT scores in admission decisions; scores are used for advising and placement (C8D, C8G)."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6622,
+    "tuition_out_of_state_usd": 21550,
+    "tuition_intl_usd": 22630,
+    "required_fees_usd": 645,
+    "room_board_usd": 9718,
+    "books_usd": 800,
+    "intl_need_aid_awarded": 608,
+    "intl_avg_award_usd": 10264,
+    "notes": "CDS G1/G5 first-year 2026-27 (tuition: in-state $6,622, out-of-state $21,550, nonresident $22,630). CDS H6: 608 degree-seeking nonresidents received institutional aid (need-based and/or non-need-based), average $10,264, total $6,240,271. SUU's international costs page estimates $32,915 per year for a single international undergraduate (tuition $22,630, fees $645, program/course fees $250, books $1,000, personal $2,000, shared room and block-100 meal plan $6,390)."
+  }
+}

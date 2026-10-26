@@ -1,0 +1,192 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Catholic University - Undergraduate International Admission (checklist, deadlines, scholarships)",
+      "url": "https://www.catholic.edu/admission-aid/international-admission/undergraduate-international-admission",
+      "accessed": "2026-10-26"
+    },
+    "app": {
+      "kind": "admissions_site",
+      "title": "Catholic University - First-Year Application Process (review, deadlines)",
+      "url": "https://www.catholic.edu/admission-aid/undergraduate-admission/first-year-students/application-process",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Catholic University - English Proficiency (accepted tests and waivers)",
+      "url": "https://www.catholic.edu/admission-aid/international-admission/english-proficiency",
+      "accessed": "2026-10-26"
+    },
+    "pol": {
+      "kind": "admissions_site",
+      "title": "Catholic University Policies - Admission to Undergraduate Study (last reviewed Jan. 2021)",
+      "url": "https://policies.catholic.edu/students/enrollment/admissionfull.html",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Catholic University - First-Year and Transfer Scholarships",
+      "url": "https://www.catholic.edu/admission-aid/undergraduate-admission/first-year-students/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Catholic University - Tuition & Fees (2026-2027 undergraduate estimated cost of attendance)",
+      "url": "https://www.catholic.edu/admission-aid/tuition-fees",
+      "accessed": "2026-10-26"
+    },
+    "funds": {
+      "kind": "admissions_site",
+      "title": "Catholic University - Confirmation of Financial Support (international)",
+      "url": "https://www.catholic.edu/admission-aid/international-admission/confirmation-financial-support",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "The application page says the university makes admission decisions without requiring SAT or ACT scores. The admissions policy (reviewed 2021) says the Committee on Admission does not consider standardized tests for admission, the Honors Program or merit scholarships, including for international candidates; the scholarship page calls CUA 'test-optional' but says scores will not be reviewed for admission or scholarships. Graduates of U.S. high schools who use a diploma to waive the English test must still submit SAT/ACT scores.",
+    "src": "app"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "supplemental_essays": "Common App essay required; the policy page also lists the activities profile, recommendation letters and essay as part of the review. No separate supplement is described.",
+    "teacher_recs": 1,
+    "counselor_rec": true,
+    "app_fee_usd": 0,
+    "notes": "No application fee ('apply for free' with the Common App). International checklist: proof of English proficiency, confirmation of financial support, a secondary school report with translated transcripts, and the admission packet with visa information; the policy page (2021) adds one teacher recommendation and a counselor report, and says transcripts from outside the U.S. must be certified by an evaluator such as WES or AACRAO. Interview policy is not stated. Evaluation takes about 2-4 weeks after the file is complete.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (non-binding), fall 2027 entry",
+      "notes": "Decision and merit scholarship notice before Jan. 1; reply by the May 1 candidate reply date. Same date applies to Early Decision I (binding).",
+      "src": "app"
+    },
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-01",
+      "label": "Early Decision I (binding), fall 2027 entry",
+      "notes": "Decision by Jan. 1; enrollment deposit due Jan. 15.",
+      "src": "app"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular Decision and Early Decision II, fall 2027 entry",
+      "notes": "The international page's deadline table and the first-year page say Feb. 1; the same international page's checklist says 'Apply online by Jan. 15' (older policy page also says Jan. 15), so apply by Jan. 15 to be safe. ED II deposit due Mar. 16; Regular Decision notification around Mar. 20.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "All applicants whose native language is not English must submit a TOEFL, IELTS, Duolingo or PTE result before final admission (the page's narrative names TOEFL or IELTS; its score table also lists Duolingo and PTE). The requirement can be waived case by case for: a college-level English Composition course equivalent to ENG 101 with a grade of B or above; or a degree from an accredited U.S. institution, or a U.S. high school diploma (U.S. high school graduates must then submit SAT/ACT). No conditional-admission or ESL bridge for first-year applicants is described on the pages reviewed.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Exams taken before Jan. 21, 2026. The page lists no section minimums (an older policy page asked for 20 in each section).",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Exams taken after Jan. 21, 2026. The page prints '4.5' without naming the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Older policy page: individual module scores are also reviewed.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "notes": "A third-party listing and an older graduate PDF show 105; the university's current page says 120.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "notes": "PTE Academic.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The international admission page says international students are eligible for Catholic University merit scholarships of up to $33,000 per year; awards are decided during the admission review (no separate application) from the high school record, not test scores, and 95% of first-years got CUA aid over the last 3 years (tuition page). The first-year scholarship page lists a Catholic University Scholarship of $17,000-$32,000 over four years (page undated), Archdiocesan and service scholarships, and departmental awards. Whether international students can receive need-based aid is not stated: the aid pages describe FAFSA-based need aid.",
+    "src": "intl"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 60500,
+    "required_fees_usd": 1774,
+    "room_board_usd": 20940,
+    "books_usd": 1286,
+    "other_usd": 4986,
+    "total_coa_usd": 89486,
+    "notes": "CUA 2026-27 undergraduate estimated cost of attendance before aid: tuition $60,500 ($61,240 for Architecture and Engineering), fee allowance $1,774, housing $12,160 + food $8,780, books $1,286, and other $4,986 (transportation $1,068 + personal $2,634 + estimated loan fees $1,284), total $89,486. International applicants must document funds for the first year plus health insurance (the university enrolls students in its plan unless comparable coverage is shown).",
+    "src": "cost"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "CUA does not consider SAT scores for admission; no SAT institution code is printed on the pages reviewed.",
+      "src": "app"
+    },
+    "act": {
+      "code": null,
+      "note": "CUA does not consider ACT scores for admission; no ACT institution code is printed on the pages reviewed.",
+      "src": "app"
+    },
+    "toefl": {
+      "code": "5104",
+      "note": "TOEFL code number listed on the English proficiency page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Have results sent directly to the university; no IELTS code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

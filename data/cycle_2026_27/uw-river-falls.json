@@ -1,0 +1,148 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UW-River Falls - International admissions (F-1 degree-seeking steps)",
+   "url": "https://www.uwrf.edu/admissions/international",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UW-River Falls - English Proficiency Requirements (undergraduate and graduate, PDF)",
+   "url": "https://www.uwrf.edu/sites/default/files/files/2027%20English%20Language%20Proficiency_%20International%20Admissions%20UWRF.pdf",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UW-River Falls - Incoming first-year admission (paths, test-optional, no essay)",
+   "url": "https://www.uwrf.edu/admissions/incoming-first-year",
+   "accessed": "2026-10-26"
+  },
+  "cff": {
+   "kind": "financial_aid_site",
+   "title": "UW-River Falls - 2026-2027 Undergraduate Certification of Finances Form (international)",
+   "url": "https://www.uwrf.edu/sites/default/files/files/2026-2027%20Undergraduate%20CFF%20%28Actual_Accessible%29.pdf",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "UW-River Falls - Tuition and fees 2026-2027",
+   "url": "https://www.uwrf.edu/paying-for-college/tuition-and-fees",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "UW-River Falls - Financial aid and scholarships (guaranteed Soar Achievement awards)",
+   "url": "https://www.uwrf.edu/paying-for-college/financial-aid-and-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "programs": {
+   "kind": "other",
+   "title": "UW-River Falls - Undergraduate programs",
+   "url": "https://www.uwrf.edu/academics/undergraduate-programs",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-year applicants may include ACT/SAT or apply test-optional; scores are not penalized when omitted and are not required for merit scholarships. Scores are used for the Honors Program (ACT 27+) as one of three alternative criteria.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "First-year applicants (Common App or the Universities of Wisconsin application) pay no fee and write no essay. International F-1 applicants use the Universities of Wisconsin application and pay a $50 non-refundable international processing fee. They also submit a passport copy, English proficiency evidence, official final secondary records (certified English translation if needed), a Certification of Finances Form and proof of funds. Letters of recommendation (max two) are only encouraged. Fall 2027 minimum units: 4 English, 3 math, 3 science, 3 social studies, 4 electives.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Application (fall 2027 entry), rolling",
+   "notes": "No application deadline is printed on the current first-year or international admissions pages. First-year decisions take about two weeks after review.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exemptions: native English speaker from an approved English-speaking country (Australia, Canada excl. Quebec, Ireland, New Zealand, South Africa, UK and listed Anglophone Caribbean countries), ENG 100-equivalent transfer credit, or a U.S. high school graduate meeting year/GPA criteria. Other accepted evidence in the undergraduate table: TOEFL Essentials 8, CEFR B2, TOEIC 750, EIKEN Pre-1, IB English A/B HL 4, IGCSE/GCSE/GCE English B, WAEC/KCSE English B, ACT English 18, and SAT EBRW printed as '950' (a section score cannot exceed 800, so this entry is unclear). No separate ESL or conditional admission pathway was found on the pages reviewed.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 78,
+   "notes": "Exams taken before 2026-01-20 (undergraduate; MyBest accepted per the options sheet).",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Exams after 2026-01-20 (new 1-6 scale), undergraduate minimum 4.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Undergraduate minimum overall 6.0 (graduate 6.5).",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Undergraduate minimum 105.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 54,
+   "notes": "Undergraduate minimum 54 (graduate 62).",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Cambridge English exams listed at the B2 level (B2 First / FCE) for undergraduate admission; no numeric score is printed.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "The 2026-27 international Certification of Finances Form lists a 'Renewable Tuition Remission' of $5,120 off the first-year estimate (stay full-time with a 2.5 cumulative GPA). Domestic first-year Soar Achievement guaranteed awards are $1,000 (3.3 GPA), $1,500 (3.75) and $2,000 (4.0); the pages do not say whether international students receive them. International students are not eligible for U.S. federal or state aid.",
+  "src": "cff"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 9440,
+  "tuition_out_of_state_usd": 18330,
+  "tuition_intl_usd": 19748,
+  "room_board_usd": 8759,
+  "intl_extra_fees_usd": 2234,
+  "notes": "International Certification of Finances Form 2026-27: tuition and fees $19,748, housing and meals (double room, 21 meals a week) $8,759, required UW international student health insurance $2,234, less $5,120 renewable tuition remission = $25,621 total estimated amount. Tuition rows 9,440 (Wisconsin resident) and 18,330 (other non-resident) are from the tuition page for tuition only (room/meals/total there use a different meal plan).",
+  "src": "cff"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

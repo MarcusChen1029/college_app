@@ -1,0 +1,128 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SDSU - International Undergraduate Admissions",
+      "url": "https://www.sdstate.edu/international-affairs/international-undergraduate-admissions",
+      "accessed": "2026-10-26"
+    },
+    "prof": {
+      "kind": "admissions_site",
+      "title": "SDSU - International Proficiency Tests and Waiver Countries for Undergraduate",
+      "url": "https://www.sdstate.edu/international-student-scholar-engagement/international-proficiency-tests-waiver-countries",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "SDSU - First-Time Students (admission criteria)",
+      "url": "https://www.sdstate.edu/admissions/first-time-students",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international admissions page lists 'Official SAT or ACT score (optional, but highly encouraged)'. Domestic criteria are any one of: ACT 18 (or SAT 970), Smarter Balanced Level 3+, 2.6 HS GPA, or top 60% of class.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 25,
+    "notes": "Apply through the South Dakota Board of Regents application (apply.sdbor.edu); $25 fee. The international page states no minimum GPA and says applicants are evaluated on academic preparation, prior performance and English proficiency. International students are not eligible for conditional admission. Essay and recommendation requirements are not stated.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-03-01",
+      "label": "International application deadline, fall 2027",
+      "notes": "Page prints 'Fall semester: March 1' (spring: Oct. 1) without a year; treated as fall 2027. Domestic admission is rolling.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived with a college-level English composition course (C or higher) at an accredited U.S. institution, graduation from a U.S. regionally accredited high school, or citizenship of listed countries (e.g., Ireland, Jamaica, New Zealand, Singapore, South Africa, UK; Nigeria and Liberia need WAEC English B3+). Also accepted: SAT Reading/Writing 490, ACT composite 18, IGCSE O-level English B, IB English A HL 5. Scores must be from the last 2 years. International students are not eligible for conditional admission.",
+    "src": "prof"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Paper-delivered 48, paper-based 500; MyBest accepted.",
+      "src": "prof"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "The international admissions page lists TOEFL 3.5 without naming the scale; read here as the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic, overall band.",
+      "src": "prof"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 90,
+      "src": "prof"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "src": "prof"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Pass on Certificate in Advanced English (CAE) or Certificate of Proficiency in English (CPE); no numeric minimum. Cambridge IGCSE/O-Levels and AS/A Levels need a C.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "meets_full_need": false,
+    "notes": "No international-specific scholarship or waiver is described on the international admissions or estimated-cost pages (they only link to 'Academic Scholarships'); first-time student scholarships are applied for through the MyState portal. Left unset rather than guessed; check with SDSU Admissions.",
+    "src": "intl"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6653",
+      "note": "SDSU school code for SAT.",
+      "src": "prof"
+    },
+    "act": {
+      "code": "3924",
+      "note": "SDSU school code for ACT.",
+      "src": "prof"
+    },
+    "toefl": {
+      "code": "6653",
+      "note": "SDSU school code for TOEFL.",
+      "src": "prof"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,239 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Salem State - Undergraduate admissions deadlines (first-year, international)",
+      "url": "https://www.salemstate.edu/admissions-and-aid/undergraduate-admissions/applicants/undergraduate-admissions-deadlines",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Salem State - First-year applicants (how to apply, test-optional, school code)",
+      "url": "https://www.salemstate.edu/admissions-and-aid/undergraduate-admissions/first-year-applicants",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Salem State - First-year admission requirements (course units, GPA/SAT scale)",
+      "url": "https://www.salemstate.edu/admissions-and-aid/undergraduate-admissions/first-year-applicants/first-year-admission-requirements",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Salem State - First-year international applicants (English proficiency)",
+      "url": "https://www.salemstate.edu/admissions-and-aid/undergraduate-admissions/international-applicants/first-year-international-applicants",
+      "accessed": "2026-10-26"
+    },
+    "ipro": {
+      "kind": "other",
+      "title": "Salem State Center for International Education - Prospective international and language students",
+      "url": "https://www.salemstate.edu/academics/centers/center-international-education/international-students/prospective-international-and-language-students",
+      "accessed": "2026-10-26"
+    },
+    "alci": {
+      "kind": "other",
+      "title": "Salem State - American Language and Culture Institute (ESL pathway)",
+      "url": "https://www.salemstate.edu/academics/centers/center-international-education/american-language-and-culture-institute",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "financial_aid_site",
+      "title": "Salem State - Tuition and fees 2026-2027",
+      "url": "https://www.salemstate.edu/admissions-and-aid/tuition-and-fees",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Salem State - Financial aid",
+      "url": "https://www.salemstate.edu/finaid",
+      "accessed": "2026-10-26"
+    },
+    "maj": {
+      "kind": "other",
+      "title": "Salem State - Majors and programs",
+      "url": "https://www.salemstate.edu/academics/majors-and-programs",
+      "accessed": "2026-10-26"
+    },
+    "capp": {
+      "kind": "other",
+      "title": "Common App - 2026-27 first-year deadlines, fees and requirements (updated 2026-09-25)",
+      "url": "https://content.commonapp.org/Files/ReqGrid.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test-optional: admission focuses on coursework and GPA. The international students page says 'Undergraduate SAT test optional (language proficiency test required)'. Applicants with a GPA below 3.0 must meet a sliding scale of minimum SAT/ACT scores (e.g. GPA 2.51-2.99 needs SAT 990 / ACT 19; GPA 2.00-2.10 needs SAT 1180 / ACT 24); these are minimums and do not guarantee admission.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply through the Common App; $50 fee (CDS C13 and the Common App grid list the same fee for international applicants). Official transcript required (send through the first marking period of senior year and again after graduation). Required 17 college-prep units: 4 English, 4 math (incl. senior-year math), 3 lab science, 2 foreign language in one language (exemption possible for English language learners), 2 social science (incl. 1 US history), 2 electives. Applicants with a GPA of 2.5 or lower are advised to add test scores, a recommendation letter and an essay. Some majors (e.g. nursing) are more competitive and need early application.",
+    "src": "req"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "First-year Early Action (fall 2027 entry)",
+      "notes": "Listed under 'suggested deadlines'; the school follows rolling admission for most programs. The Common App grid also lists EA 11/15/2026.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "First-year Nursing deadline (fall 2027 entry)",
+      "notes": "Separate earlier deadline for first-year nursing applicants. The page prints no year; taken as fall 2027 entry.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "International first-year fall deadline (applicants residing abroad)",
+      "notes": "Applicants abroad should submit the application and all materials by this date so the Center for International Education can process documents; earlier program-specific deadlines (e.g. nursing) apply if earlier. The page prints no year; taken as fall 2027. The Common App grid lists 06/01/2027 as the final rolling date for first-years, so aim for June 1 to be safe. The spring-semester international deadline is Nov. 15.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proof of English proficiency is waived for: SAT Evidence-based Reading/Writing 470 or higher; a B or better in a first-year English composition course equivalent to ENL 110 at an accredited U.S. college; IB diploma graduates; or attendance at a school in a country where English is the primary language (country list on the graduate admissions site). Admissions may request more proof even if minimums are met, and section sub-scores are also considered.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Other accepted: revised TOEFL paper-delivered 54, TOEFL ITP 530, Eiken Pre-1. The page gives no new 1-6 TOEFL score.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 49,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "No international merit scholarship or international aid page was found on Salem State's official sites. The financial aid page describes only Massachusetts programs (MASSGrant Plus, 'Remarkable Salem State Difference' for in-state students) that do not apply to nonresident international students. Treat aid for international freshmen as unconfirmed. ESL pathway: complete core level 5+ of Salem State's American Language and Culture Institute (Pearson Progress Test 49+ and a letter from the IELP director) as an alternative to a test score; the ALCI page says no TOEFL or IELTS is needed for students who pass its core level curriculum.",
+    "src": "aid"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "tf",
+    "tuition_usd": 13090,
+    "tuition_out_of_state_usd": 20719,
+    "room_board_usd": 16183,
+    "notes": "2026-27 undergraduate tuition and fees combined: $13,089.60 in-state, $20,719.20 out-of-state, $15,034.20 NEBHE tuition break; room and board $16,183 (double room in Peabody or Bowditch Hall plus 7-day Silver dining plan). No separate international rate is published; international students are not residents, so the out-of-state rate is likely, but the page does not say so (tuition_intl_usd left empty). Books and supplies were $1,200 in 2024-25 (College Navigator)."
+  },
+  "majors": [
+    {
+      "program": "Nursing, BSN",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Separate first-year Nursing application deadline of Jan. 15; the admission requirements page warns some majors are highly competitive and need higher standards and early application. Capacity limits are not published on the pages read."
+    },
+    {
+      "program": "Business Administration (Bertolon School of Business)",
+      "category": "business",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Listed on the majors page; no separate program admission process was found."
+    },
+    {
+      "program": "Computer Science",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Listed on the majors page; no separate program admission process was found."
+    },
+    {
+      "program": "Biology",
+      "category": "biology_life_sci",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Listed on the majors page; no separate program admission process was found."
+    },
+    {
+      "program": "Chemistry and Mathematics",
+      "category": "math_physics",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Both are listed on the majors page (Chemistry and Physics department; Mathematics)."
+    },
+    {
+      "program": "Economics",
+      "category": "economics",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Listed on the majors page."
+    },
+    {
+      "program": "English",
+      "category": "humanities",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Listed on the majors page."
+    },
+    {
+      "program": "Art + Design",
+      "category": "arts_design",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Listed on the majors page; whether a portfolio is required was not checked."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "3522",
+      "note": "Salem State's school code as printed in the SAT/ACT paragraph of the first-year page.",
+      "src": "fy"
+    },
+    "act": {
+      "code": null,
+      "note": "The first-year page gives one school code (3522) and does not print a separate ACT code; look it up at act.org.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages checked; select Salem State University in the ETS score-sending tool.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,153 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "SUNY Canton - Apply (priority deadlines, accepted applications)",
+   "url": "https://www.canton.edu/apply/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "SUNY Canton - International admissions requirements",
+   "url": "https://www.canton.edu/admissions/international/requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "SUNY Canton - English proficiency requirements (international)",
+   "url": "https://www.canton.edu/admissions/international/english/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "SUNY Canton - International cost of attendance and I-20 financial documentation",
+   "url": "https://www.canton.edu/admissions/international/cost.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "SUNY Canton - Scholarship information",
+   "url": "https://www.canton.edu/admissions/scholarships.html",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "SUNY Canton - Bachelor's degrees",
+   "url": "https://www.canton.edu/academics/bachelors.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "CDS C8 (applying for fall 2026): SAT/ACT is 'not required for admission, but considered if submitted'; scores must arrive by 8/15 if sent. The international requirements page lists no test requirement beyond a 2.0 GPA and English proficiency.",
+  "src": "cds"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "SUNY Canton accepts ApplySUNY or the Common App; the $50 fee is from CDS C13. International applicants need a cumulative GPA of 2.0 or higher (US scale) plus English proficiency, transcripts translated into English (SpanTran evaluation strongly encouraged), the International Student Financial form with supporting documents, and a color copy of the passport bio page. Nursing, Practical Nursing, Physical Therapist Assistant and the veterinary programs are selective with a separate Feb. 1 preferred deadline.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Fall priority deadline (fall 2027 entry)",
+   "notes": "Rolling admission; April 1 is the priority date and students are encouraged to apply by December 15. The page prints no year, so this is treated as fall 2027. No separate international application deadline is printed.",
+   "src": "apply"
+  },
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-02-01",
+   "label": "Preferred fall deadline for selective programs",
+   "notes": "Nursing, Nursing Dual Degree, Practical Nursing, Physical Therapist Assistant, Veterinary Science Technology and Veterinary Technology; no year printed, treated as fall 2027.",
+   "src": "apply"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-01",
+   "label": "International financial documentation due for I-20 (fall)",
+   "notes": "SUNY Canton considers I-20 status only for students who submit completed financial statements and documents by July 1 for fall (December 1 for spring); no year printed, treated as fall 2027.",
+   "src": "cost"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Proof of English proficiency is required when English is not the first language. A college-level English course with a final grade of C or higher also satisfies it. Students who meet the GPA requirement but not the English requirement can accept Conditional Admission and complete an ESL program at partner Fulton-Montgomery Community College (one to two semesters), after which admission is guaranteed.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Paper-based 500, computer-based 173. No 1-6 band value is given. Also accepted: iTEP 3.5 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.5
+   },
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "PTE Academic. The Duolingo English Test is not listed on the page.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "meets_full_need": false,
+  "notes": "Accepted students (including international) can complete the general scholarship application, which opens October 1 and matches them to scholarships; amounts are not published. Need-based aid for international students is not mentioned, so it is left unconfirmed.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 17500,
+  "required_fees_usd": 2000,
+  "room_board_usd": 18000,
+  "other_usd": 3500,
+  "total_coa_usd": 41000,
+  "notes": "International bachelor's-degree table (per year): tuition $17,500, comprehensive fees $2,000, books/health insurance/travel/misc. $3,500, room and board $18,000, estimated cost $41,000 (the I-20 financial-support amount). The page prints no academic year, so it is treated as current.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "2523",
+   "note": "TOEFL school code printed on the English proficiency page.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

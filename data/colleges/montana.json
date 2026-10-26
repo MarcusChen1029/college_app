@@ -1,0 +1,89 @@
+{
+  "slug": "montana",
+  "name": "University of Montana (Missoula)",
+  "short_name": "UM",
+  "state_region": "MT",
+  "city": "Missoula",
+  "latitude": 46.859312,
+  "longitude": -113.982912,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.umt.edu",
+  "admissions_url": "https://www.umt.edu/admissions/",
+  "ipeds_unit_id": 180489,
+  "undergrad_enrollment": 7874,
+  "intl_undergrads": 64,
+  "student_faculty_ratio": 17.9,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Montana Common Data Set 2024-2025 (PDF, with data)",
+      "url": "https://www.umt.edu/institutional-research/data_reports/common_data_set_files/cds_2024-25-with-data.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "cds2526": {
+      "kind": "cds",
+      "title": "University of Montana Common Data Set 2025-2026 (PDF; the posted file contains only sections A and B)",
+      "url": "https://www.umt.edu/institutional-research/data_reports/cds-202526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 9464,
+    "admits": 9048,
+    "enrolled": 1652,
+    "pct_submit_sat": 10,
+    "pct_submit_act": 45,
+    "gpa_avg": 3.41,
+    "pct_reporting_gpa": 95,
+    "gpa_distribution": {
+      "4.0": 13,
+      "3.75-3.99": 22,
+      "3.50-3.74": 19,
+      "3.25-3.49": 13,
+      "3.00-3.24": 12,
+      "2.50-2.99": 13,
+      "2.0-2.49": 7,
+      "1.0-1.99": 1
+    },
+    "notes": "Admissions figures are the 2024-25 CDS (fall 2024 entering class): C1 applied 9,464, admitted 9,048, enrolled 1,652. UM's posted 2025-26 CDS contains only sections A and B (no admissions data), so fall 2025 admission counts are not available. The 2024-25 CDS residency table (in-state/out-of-state/international) is blank, so intl_applicants and intl_admits are null. Undergraduate enrollment (7,874) and nonresident-alien undergraduates (64, total undergraduates, B2) are from the 2025-26 CDS (fall 2025); student-faculty ratio is fall 2024 (17.9 to 1). SAT/ACT submitted percentages are for enrolled first-year students. No early decision or early action."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1110,
+      1190,
+      1280
+    ],
+    "SAT_ERW": [
+      550,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      530,
+      580,
+      628
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "scores_source": "cds"
+}

@@ -1,0 +1,50 @@
+{
+ "slug": "cal-state-monterey-bay",
+ "name": "California State University, Monterey Bay",
+ "short_name": "CSUMB",
+ "state_region": "CA",
+ "city": "Seaside",
+ "latitude": 36.652397,
+ "longitude": -121.796178,
+ "setting": "suburban",
+ "control": "public",
+ "website": "https://csumb.edu",
+ "admissions_url": "https://csumb.edu/admissions-aid/",
+ "ipeds_unit_id": 409698,
+ "undergrad_enrollment": 6907,
+ "intl_undergrads": 134,
+ "student_faculty_ratio": 24,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 admissions summary (ADM2024), enrollment, test-blind consideration, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=409698",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_counts": {
+   "kind": "ipeds",
+   "title": "IPEDS ADM2024 first-time applicants, admits and enrollees (Urban Institute Education Data Portal)",
+   "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=409698&sex=99",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=409698",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "ipeds",
+  "applicants": 14933,
+  "admits": 14545,
+  "enrolled": 1419,
+  "notes": "Baseline from IPEDS fall 2024 (ADM2024): 14,933 applicants, 14,545 admitted (97%), 1,419 enrolled (1,397 full-time plus 22 part-time). CSUMB's Common Data Set is only available through a data request form on its site, so GPA, residency and international splits are not added. College Navigator lists SAT/ACT as 'Not considered (Test Blind)', so there are no score ranges. undergrad_enrollment is the College Navigator fall 2024 undergraduate count."
+ },
+ "scores": {}
+}

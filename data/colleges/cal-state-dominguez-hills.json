@@ -1,0 +1,50 @@
+{
+ "slug": "cal-state-dominguez-hills",
+ "name": "California State University, Dominguez Hills",
+ "short_name": "CSUDH",
+ "state_region": "CA",
+ "city": "Carson",
+ "latitude": 33.864766,
+ "longitude": -118.255917,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.csudh.edu",
+ "admissions_url": "https://www.csudh.edu/future-students/",
+ "ipeds_unit_id": 110547,
+ "undergrad_enrollment": 12632,
+ "intl_undergrads": 114,
+ "student_faculty_ratio": 21,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 admissions summary (ADM2024), enrollment, test-blind consideration, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110547",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_counts": {
+   "kind": "ipeds",
+   "title": "IPEDS ADM2024 first-time applicants, admits and enrollees (Urban Institute Education Data Portal)",
+   "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=110547&sex=99",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110547",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "ipeds",
+  "applicants": 19921,
+  "admits": 18586,
+  "enrolled": 1732,
+  "notes": "Baseline from IPEDS fall 2024 (ADM2024): 19,921 applicants, 18,586 admitted (93%), 1,732 enrolled (1,627 full-time plus 105 part-time). CSUDH's newest Common Data Set on its site is 2022-2023, too old to use, so GPA, residency and international splits are not added. CSU campuses are test-blind (College Navigator lists SAT/ACT as 'Not considered (Test Blind)'), so there are no score ranges. undergrad_enrollment is the College Navigator fall 2024 undergraduate count."
+ },
+ "scores": {}
+}

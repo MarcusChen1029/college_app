@@ -1,0 +1,104 @@
+{
+  "slug": "southern-indiana",
+  "name": "University of Southern Indiana",
+  "short_name": "USI",
+  "state_region": "IN",
+  "city": "Evansville",
+  "latitude": 37.962374,
+  "longitude": -87.677214,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.usi.edu",
+  "admissions_url": "https://www.usi.edu/admissions",
+  "ipeds_unit_id": 151306,
+  "undergrad_enrollment": 5372,
+  "intl_undergrads": 78,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Southern Indiana Common Data Set 2025-2026 (PDF; fall 2025 data, the file's pages are headed 2024-2025)",
+      "url": "https://www.usi.edu/media/qagpobie/cds-25-26-all-combined_klc_20260818.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4843,
+    "admits": 4679,
+    "enrolled": 1367,
+    "in_state_applicants": 4039,
+    "in_state_admits": 3892,
+    "out_state_applicants": 734,
+    "out_state_admits": 722,
+    "intl_applicants": 68,
+    "intl_admits": 63,
+    "pct_submit_sat": 41,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.42,
+    "pct_reporting_gpa": 99.34,
+    "gpa_distribution": {
+      "4.0": 6.53,
+      "3.75-3.99": 22.69,
+      "3.50-3.74": 22.45,
+      "3.25-3.49": 16.0,
+      "3.00-3.24": 12.66,
+      "2.50-2.99": 16.4,
+      "2.0-2.49": 3.27
+    },
+    "notes": "CDS C1 residency breakdown (fall 2025): international 68 applied / 63 admitted / 2 enrolled; 2 more with unknown residency. Only 2 international first-time students enrolled, so USI's first-year international cohort is tiny. The CDS file's pages are headed 'Common Data Set 2024-2025' but report fall 2025 data. GPA distribution is the 'all enrolled' column of C11; the average GPA of 3.42 uses unweighted GPAs only. No early decision or early action; no waitlist; rolling notification."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1030,
+      1110,
+      1210
+    ],
+    "SAT_ERW": [
+      520,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      20,
+      24,
+      27
+    ],
+    "ACT_MATH": [
+      19,
+      23,
+      26
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A/C8F: SAT or ACT 'not required for admission, but considered if submitted'; students choose whether to submit, and USI superscores."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9036,
+    "required_fees_usd": 1755,
+    "room_board_usd": 11644,
+    "books_usd": 1200,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 81,
+    "intl_avg_award_usd": 5225,
+    "notes": "CDS G1 (first-year): in-state tuition $9,035.70, fees $1,755, food and housing $11,644 (a second column prints fees of $1,240). H6: only institutional NON-need-based aid is available to nonresidents; 81 nonresident undergraduates received it (avg $5,225)."
+  }
+}

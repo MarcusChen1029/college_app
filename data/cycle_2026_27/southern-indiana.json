@@ -1,0 +1,181 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "USI International Admissions - How to apply (undergraduate requirements)",
+      "url": "https://www.usi.edu/international/admissions/how-to-apply",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "USI International Admissions - Freshman application steps",
+      "url": "https://www.usi.edu/international/admissions/how-to-apply/freshman",
+      "accessed": "2026-10-26"
+    },
+    "cond": {
+      "kind": "admissions_site",
+      "title": "USI Intensive English Program - Conditional admission to USI academic programs",
+      "url": "https://www.usi.edu/international/intensive-english/conditional-admission-to-usi-academic-programs",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "USI International Admissions - Tuition and fees (2026-2027)",
+      "url": "https://www.usi.edu/international/admissions/tuition-and-fees",
+      "accessed": "2026-10-26"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "University of Southern Indiana Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.usi.edu/media/qagpobie/cds-25-26-all-combined_klc_20260818.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "acad": {
+      "kind": "admissions_site",
+      "title": "USI - Academic programs",
+      "url": "https://www.usi.edu/academics",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "USI lets students decide whether to submit SAT/ACT scores; if submitted USI superscores (best score per section). International freshmen should send official English proficiency results; Duolingo and SAT/ACT are considered case by case for that purpose.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "app_fee_usd": 40,
+    "notes": "$40 non-refundable application fee; international applicants cannot use the Common App fee waiver. Freshmen must submit an official document-by-document transcript evaluation from a NACES member (ECE preferred) before arriving; Chinese applicants need a CDGDC/CSSD verification report mailed directly. USI prefers a cumulative GPA of 2.5 (4-point scale). Whether USI also has its own application form was not confirmed on the pages read.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-08-15",
+      "label": "Priority date (fall 2027 entry)",
+      "notes": "CDS C14 lists 'Priority Date 8/15' (no year; treated as fall 2027). USI's international page says admission is rolling with no application deadline and encourages applying as early as possible to leave time for embassy processing of immigration documents.",
+      "src": "cds"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Results must be sent to USI directly from the testing agency. Other accepted proof: ELS Level 112, O Level English grade B or higher, and 24+ transferable credits with a C or higher in ENG 101 and ENG 102 (transfer students). Duolingo, EIKEN and SAT/ACT are considered case by case. Conditional admission: applicants whose English needs improvement can be admitted conditionally without TOEFL/IELTS by completing USI's Intensive English Program (IEP), and must graduate from the IEP before enrolling in a major.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "71 for tests taken on or before Jan. 20, 2026; paper-based 527 (conditional-admission page) or high-intermediate in each section.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Page lists 4 for tests taken on or after Jan. 21, 2026 without naming the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "min": null,
+      "notes": "Considered case by case; no minimum is published.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 169,
+      "notes": "Cambridge English Advanced.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "CDS H6: only institutional non-need-based aid is available to nonresidents; 81 nonresident undergraduates received it (avg $5,225). USI's international tuition page lists no international scholarships and the nonresident application asks for an award application, 2 recommendation letters and 2 essays (CDS H7). The David L. Rice merit scholarship targets Indiana and nearby Kentucky/Illinois residents.",
+    "src": "cost"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 21820,
+    "tuition_out_of_state_usd": 21820,
+    "required_fees_usd": 1830,
+    "intl_extra_fees_usd": 475,
+    "room_board_usd": 11650,
+    "books_usd": 810,
+    "other_usd": 3655,
+    "total_coa_usd": 40240,
+    "notes": "USI international page, 2026-2027: tuition $21,820 (30 credits), university fees $1,830 plus a $475 first-semester-only fee, on-campus housing $5,778 and meal plan $5,872, textbooks $810, mandatory health insurance $1,655 and personal $2,000 (other = 3,655). Excludes travel, the $40 application fee, $50 housing application and $300 housing prepayment. Proof of funds: signed Statement of Finances and a bank statement of 3 months' transactions, +$3,000 per dependent; no total amount is published.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Nursing, Bachelor of Science in Nursing (BSN)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": null,
+      "notes": "USI offers a BSN with direct-admission and standard (first-year GPA based) routes; thresholds were not retrieved from the BSN requirements page, so confirm with the nursing department."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "1335",
+      "note": "USI SAT school code per the international admissions page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1207",
+      "note": "USI ACT school code per the international admissions page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "1335",
+      "note": "USI TOEFL code per the international admissions page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; scores must come directly from the testing agency.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

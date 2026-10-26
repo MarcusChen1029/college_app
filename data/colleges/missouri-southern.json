@@ -1,0 +1,125 @@
+{
+  "slug": "missouri-southern",
+  "name": "Missouri Southern State University",
+  "short_name": "MSSU",
+  "state_region": "MO",
+  "city": "Joplin",
+  "latitude": 37.095155,
+  "longitude": -94.461689,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.mssu.edu",
+  "admissions_url": "https://www.mssu.edu/admissions/international-incoming-students.php",
+  "ipeds_unit_id": 178341,
+  "undergrad_enrollment": 3917,
+  "intl_undergrads": 141,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Missouri Southern State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.mssu.edu/academics/institutional-effectiveness/files/CDS-2025-2026-Missouri-Southern-State-University-Final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 2613,
+    "admits": 2523,
+    "enrolled": 586,
+    "in_state_applicants": 1186,
+    "in_state_admits": 1146,
+    "out_state_applicants": 696,
+    "out_state_admits": 683,
+    "intl_applicants": 731,
+    "intl_admits": 694,
+    "pct_submit_sat": 5,
+    "pct_submit_act": 70,
+    "gpa_avg": 3.49,
+    "pct_reporting_gpa": 95.39,
+    "gpa_distribution": {
+      "4.0": 18.26,
+      "3.75-3.99": 22.36,
+      "3.50-3.74": 14.31,
+      "3.25-3.49": 13.77,
+      "3.00-3.24": 11.09,
+      "2.50-2.99": 14.13,
+      "2.0-2.49": 5.72,
+      "1.0-1.99": 0.36
+    },
+    "notes": "CDS C1 (fall 2025 first-time first-year): 2,613 applicants, 2,523 admitted (97%), 586 enrolled. International: 731 applied, 694 admitted (about 95%), 29 enrolled. GPA distribution is the 'all enrolled students' column of C11. Percentiles: only 27 SAT submitters (5%) vs 412 ACT (70%); ACT Reading 18/22/28 and Science 18/22/24 are not stored. Undergraduate enrollment 3,917 and 141 nonresident undergraduates are the B1/B2 'Total Undergraduates' figures. Open admission policy box is N/A; no early decision/action."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1120,
+      1300,
+      1400
+    ],
+    "SAT_ERW": [
+      600,
+      650,
+      690
+    ],
+    "SAT_MATH": [
+      540,
+      630,
+      710
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'ACT is not required, we have been test optional since August 2020.' C8A marks SAT/ACT as considered if submitted."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9405,
+    "tuition_out_of_state_usd": 18810,
+    "tuition_intl_usd": 18810,
+    "required_fees_usd": 900,
+    "room_board_usd": 9032,
+    "intl_extra_fees_usd": 100,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 7899,
+    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $9,405, out-of-state and international $18,810, required fees $900, room and board $9,032.40. H6: 99 nonresident undergraduates received non-need-based institutional aid, average $7,899. MSSU's 2026-27 international guide adds a $100 international student fee, $250 one-time orientation fee and $2,526.36 health insurance and book rental, for a year total of $31,618.76 (30 credits, double room, 19 meals). The intl_extra_fees_usd value is that $100 fee."
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "slug": "ohio-university",
+  "name": "Ohio University (Athens)",
+  "short_name": "Ohio University",
+  "state_region": "OH",
+  "city": "Athens",
+  "latitude": 39.326798,
+  "longitude": -82.100985,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.ohio.edu",
+  "admissions_url": "https://www.ohio.edu/admissions",
+  "ipeds_unit_id": 204857,
+  "undergrad_enrollment": 20444,
+  "intl_undergrads": 210,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Ohio University-Main Campus (IPEDS fall 2024 admissions, enrollment, expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=204857",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicants, admits and enrollees (Urban Institute Education Data Portal mirror)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=204857",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_sc": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023): SAT/ACT percentiles",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=204857",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_sc",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 27486,
+    "admits": 23360,
+    "enrolled": 4489,
+    "notes": "Baseline from IPEDS (fall 2024 entering class; 85% admitted). Ohio University's 2025 Common Data Set exists only as a view-only SharePoint spreadsheet (download disabled) and its historical CDS files are marked under review for a Section H1 calculation error, so no CDS was used. International applicants/admits, GPA and residency splits are therefore not available (IPEDS does not publish them). SAT/ACT percentiles are IPEDS fall 2023 (ADM2023): 12% of enrolled first-years submitted SAT and 36% submitted ACT; ACT English 21/24/28 and ACT Math 20/24/26 (25th/50th/75th). Undergrad enrollment is fall 2024 (20,444); intl_undergrads left null."
+  },
+  "scores": {
+    "SAT_ERW": [
+      560,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      540,
+      590,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 14158,
+    "tuition_out_of_state_usd": 24838,
+    "books_usd": 868,
+    "room_board_usd": 14162,
+    "other_usd": 3016,
+    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25 (tuition and required fees; on-campus food and housing). The international 2026-27 estimate is on the admissions cost page."
+  }
+}

@@ -1,0 +1,187 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "FAU - Freshman application deadlines",
+   "url": "https://www.fau.edu/admissions/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "FAU - Freshman admissions requirements",
+   "url": "https://www.fau.edu/admissions/freshman/how-to-apply/admissions-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "FAU - International students: how to apply",
+   "url": "https://www.fau.edu/admissions/international/how-to-apply/",
+   "accessed": "2026-10-26"
+  },
+  "idl": {
+   "kind": "admissions_site",
+   "title": "FAU - International deadlines",
+   "url": "https://www.fau.edu/admissions/international/how-to-apply/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "FAU - English proficiency tests (international)",
+   "url": "https://www.fau.edu/admissions/international/how-to-apply/english-proficiency-tests/",
+   "accessed": "2026-10-26"
+  },
+  "cred": {
+   "kind": "admissions_site",
+   "title": "FAU - Academic credentials (international)",
+   "url": "https://www.fau.edu/admissions/international/how-to-apply/academic-credentials/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "admissions_site",
+   "title": "FAU - International scholarships",
+   "url": "https://www.fau.edu/admissions/international/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "iei": {
+   "kind": "other",
+   "title": "FAU Intensive English Institute - Academic Track / Global Academic Track",
+   "url": "https://www.fau.edu/intensive-english/academic-track/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "Required by Florida Board of Governors rule for all Florida public universities: first-year applicants must submit an SAT, ACT or CLT score (ACT Science no longer needed from the 2025-26 cycle). Middle 50% of admitted first-years: SAT 1090-1270, ACT 22-28, GPA 3.66-4.29 (recalculated on academic core courses). Students admitted without scores are not eligible for merit scholarships.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 30,
+  "notes": "International applicants apply through the Common App with a $30 non-refundable fee. High school records from non-U.S. curricula must be evaluated by a NACES agency (course-by-course list, overall U.S. GPA and a separate math GPA). 18 high school units (4 English, 4 math, 3 science, 3 social science, 2 foreign language, 2 electives). Essays and recommendations are not mentioned on these pages.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-10-15",
+   "notify": "2026-12-04",
+   "label": "Early Action application deadline (summer/fall 2027 entry)",
+   "notes": "Dates print without a year; treated as fall 2027 entry. Materials due Oct 22, last scores considered Nov 20; outcomes are admit, defer or deny. Nursing BSN direct admit and Pre-Architecture also use Oct 15 (complete by Jan 15).",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-03-12",
+   "label": "Rolling Decision application and materials deadline (summer/fall 2027 entry)",
+   "notes": "Decisions are issued about four weeks after the file is complete (International deadlines page). Outcomes: admit, defer, deny or waitlist. FAU may offer a different entry term than requested.",
+   "src": "idl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-01-15",
+   "label": "Freshman merit scholarship automatic consideration; President's International Scholarship priority",
+   "notes": "International President's Scholarship ($6,000) priority deadline Jan 15, regular Mar 15 for fall.",
+   "src": "sch"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Freshman admissions deposit (fall)",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if SAT EBRW is at least 490 or ACT Reading 19 and English 17 (Florida BOG college-readiness minimums), or with 3 years of secondary education in English-medium instruction (U.S. or abroad, or in a majority-English country), 30 post-secondary credits including ENC 1101/1102 with C or better, or 60+ post-secondary credits. Also accepted: HKDSE 5, IGCSE English C/4, IB English HL 6, ELS 112, OHLA Elite, Study Group 65%, FAU Intensive English Institute Level VI. Below the minimum: the Conditional Admissions Track (CAT) lets students complete the FAU Intensive English Institute's Global Academic Track (Level 6) instead of submitting TOEFL or IELTS.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "The page prints 'iBT (4.5)/PBT (550)'; 4.5 is read as the new 1-6 scale. No separate 0-120 iBT minimum is published.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 55,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "President's International Scholarship: $6,000 per year, renewable up to four years, for F-1/J-1 freshmen with 3.5+ GPA (4.0 scale), SAT/ACT/CLT scores and proof of English proficiency; automatic consideration on admission, limited number. Florida Linkage Institute tuition waivers exist for specific countries. International students are not eligible for federal aid.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5229",
+   "note": "FAU SAT school code.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "0729",
+   "note": "FAU ACT school code.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "FAU pages do not print a TOEFL institution code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

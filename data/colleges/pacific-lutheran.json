@@ -1,0 +1,92 @@
+{
+  "slug": "pacific-lutheran",
+  "name": "Pacific Lutheran University",
+  "short_name": "PLU",
+  "state_region": "WA",
+  "city": "Tacoma",
+  "latitude": 47.14516,
+  "longitude": -122.440421,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.plu.edu/",
+  "admissions_url": "https://www.plu.edu/admission/",
+  "ipeds_unit_id": 236230,
+  "undergrad_enrollment": 2446,
+  "intl_undergrads": 87,
+  "student_faculty_ratio": 12,
+  "academic_calendar": null,
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Pacific Lutheran University Common Data Set 2025-26 (PDF)",
+      "url": "https://www.plu.edu/institutional-research/wp-content/uploads/sites/170/2026/04/cds-2025-26-_-pacific-lutheran-university-fixed.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=236230",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=236230",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 5306,
+    "admits": 4595,
+    "in_state_applicants": 3392,
+    "in_state_admits": 2894,
+    "out_state_applicants": 1425,
+    "out_state_admits": 1293,
+    "intl_applicants": 489,
+    "intl_admits": 408,
+    "notes": "CDS 2025-26 (fall 2025 entering class), C1. The PDF text layer holds only the typed values, not the printed labels, so each number was identified by its position in the standard CDS C1 layout; applicants and admits by gender (5,306 and 4,595) equal the sums of the residency columns, which checks the totals and splits. Enrolled count left null: the value at the enrolled position is ambiguous. For comparison IPEDS fall 2024 shows 4,992 applicants and 78% admitted. Factors, GPA and class-rank tables are not extracted (labels missing). SAT/ACT percentiles are from IPEDS fall 2024 (81 SAT and 12 ACT submitters among enrolled first-years). Undergraduate enrollment (2,446) and student-faculty ratio (12 to 1) are College Navigator figures."
+  },
+  "scores": {
+    "SAT_ERW": [
+      540,
+      610,
+      660
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      26
+    ],
+    "ACT_MATH": [
+      19,
+      26,
+      29
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 52254,
+    "books_usd": 785,
+    "room_board_usd": 13008,
+    "other_usd": 2745,
+    "total_coa_usd": 68792,
+    "notes": "College Navigator estimated expenses 2024-2025 for beginning undergraduates (tuition and fees; on-campus food and housing). Superseded for international students by the cycle-file cost."
+  }
+}

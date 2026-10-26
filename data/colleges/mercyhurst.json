@@ -1,0 +1,51 @@
+{
+  "slug": "mercyhurst",
+  "name": "Mercyhurst University",
+  "short_name": "Mercyhurst",
+  "state_region": "PA",
+  "city": "Erie",
+  "latitude": 42.10578,
+  "longitude": -80.053412,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.mercyhurst.edu",
+  "admissions_url": "https://www.mercyhurst.edu/admissions/international",
+  "ipeds_unit_id": 213987,
+  "undergrad_enrollment": 2274,
+  "intl_undergrads": 119,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Mercyhurst University (enrollment, student-faculty ratio, admissions considerations)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=213987",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via the Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=213987",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=213987",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 3567,
+    "admits": 2890,
+    "enrolled": 588,
+    "notes": "Baseline: no Common Data Set found on mercyhurst.edu (2 searches, no CDS page). Exact counts are IPEDS ADM2024 (fall 2024 first-time degree-seeking: 3,567 applied, 2,890 admitted = 81%, 588 enrolled), matching College Navigator's 3,567 applicants and 81% admitted. IPEDS does not split international applicants, so intl_applicants/intl_admits are not available. SAT/ACT scores are not reported to IPEDS (test-optional), so no percentiles."
+  },
+  "scores_source": "ipeds",
+  "scores": {}
+}

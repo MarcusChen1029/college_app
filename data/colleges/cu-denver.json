@@ -1,0 +1,117 @@
+{
+  "slug": "cu-denver",
+  "name": "University of Colorado Denver",
+  "short_name": "CU Denver",
+  "state_region": "CO",
+  "city": "Denver",
+  "latitude": 39.7464,
+  "longitude": -105.001,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ucdenver.edu/",
+  "admissions_url": "https://www.ucdenver.edu/undergraduate-admissions",
+  "ipeds_unit_id": 126562,
+  "undergrad_enrollment": 13921,
+  "intl_undergrads": 1123,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Colorado Denver | Anschutz Medical Campus Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.ucdenver.edu/docs/librariesprovider192/default-document-library/cds-24-25.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 14931,
+    "admits": 11151,
+    "enrolled": 1440,
+    "in_state_applicants": 7891,
+    "in_state_admits": 6314,
+    "out_state_applicants": 5169,
+    "out_state_admits": 4201,
+    "intl_applicants": 1854,
+    "intl_admits": 631,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 2,
+    "gpa_avg": 3.52,
+    "pct_reporting_gpa": 82,
+    "gpa_distribution": {
+      "4.0": 25,
+      "3.75-3.99": 15,
+      "3.50-3.74": 16,
+      "3.25-3.49": 15,
+      "3.00-3.24": 16,
+      "2.50-2.99": 13
+    },
+    "notes": "CDS C1/C9/C11/C12 (fall 2024). Scorecard/IPEDS id 126562 covers CU Denver | Anschutz Medical Campus together; the undergraduate program and these figures are for the Denver (Auraria) campus, and the map point is the Denver campus, approximate, not the IPEDS location. Only 341 (23%) enrolled students submitted SAT and 31 (2%) ACT, so percentiles describe a small group. International applicants were admitted at about 34% (631 of 1,854); the CDS shows no international first-years in the enrolled residency table although B2 lists 68 nonresident first-time students. A 2025-26 CDS was not found on the OIRE site. No waitlist; no early decision plan. Student-faculty ratio is I-2 (fall 2024, 17 to 1)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      980,
+      1101,
+      1220
+    ],
+    "SAT_ERW": [
+      490,
+      559,
+      620
+    ],
+    "SAT_MATH": [
+      490,
+      542,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      27,
+      32
+    ],
+    "ACT_ENGLISH": [
+      22,
+      28,
+      34
+    ],
+    "ACT_MATH": [
+      21,
+      25,
+      29
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_out_of_state_usd": 36270,
+    "tuition_intl_usd": 39870,
+    "required_fees_usd": 1163,
+    "room_board_usd": 16598,
+    "books_usd": 1460,
+    "intl_need_aid_awarded": 129,
+    "intl_avg_award_usd": 8675,
+    "notes": "CDS G1 (2025-26): out-of-state $36,270, nonresident $39,870, fees $1,163, food and housing $16,598 (the in-state tuition line is blank in the CDS). H6: need-based and non-need-based institutional aid are both available to nonresidents; 129 degree-seeking nonresident undergraduates received aid (avg $8,675)."
+  }
+}

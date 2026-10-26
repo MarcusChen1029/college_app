@@ -1,0 +1,191 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Longwood University - International Students (freshman requirements, English proficiency, cost, scholarships)",
+   "url": "https://www.longwood.edu/admissions/international-students/",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Longwood University - Application Procedures & Deadlines (high school students)",
+   "url": "https://www.longwood.edu/admissions/high-school-students/application-procedures--deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Longwood University - Admission Requirements (high school students)",
+   "url": "https://www.longwood.edu/admissions/high-school-students/admission-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "ebp": {
+   "kind": "admissions_site",
+   "title": "Longwood University - English Language Bridge Program (EBP)",
+   "url": "https://www.longwood.edu/admissions/international-students/english-language-bridge-program-ebp/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Longwood University - Scholarships (fall 2027 freshman merit scholarships)",
+   "url": "https://www.longwood.edu/financialaid/types-of-aid/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "fin": {
+   "kind": "financial_aid_site",
+   "title": "Longwood University - International Undergraduate Financial Certification Form 2026-2027 (PDF)",
+   "url": "https://www.longwood.edu/media/international-affairs/public-site/Financial-Certification-Form-2026-2027.pdf",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "other",
+   "title": "Longwood University - Tuition & Fees",
+   "url": "https://www.longwood.edu/about/cost/",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "Longwood University - Undergraduate Programs",
+   "url": "https://www.longwood.edu/academics/undergraduate-programs/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not required for fall 2027 admission to majors other than nursing, and not submitting is not penalized; scores can be sent after applying and official scores are required before enrolling. Nursing applicants must submit SAT, ACT or TEAS. The international page says SAT scores are reviewed if submitted and may qualify an applicant for larger scholarship awards.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International first-year file: Common App international application with $50 fee, certified official transcripts and leaving-certificate scores with certified English translations, English proficiency proof, Undergraduate Financial Certification Form with bank statements, passport information page. Applications are complete when the fee, official transcripts and required test scores arrive. The domestic page says a personal statement and recommendations are strongly encouraged (not required). The international page lists no separate international deadline; see the high-school deadlines.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision, nursing applicants only (fall 2027 entry)",
+   "notes": "Binding. Candidates are notified by mid-December. Nursing applicants not admitted can be considered in Early Action. Published on the high school students page; the international page lists no separate date.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action (fall 2027 entry); also the final deadline for nursing and the Honors portfolio",
+   "notes": "Non-binding; most decisions by mid-December (nursing and transfer decisions differ). Early Action applicants get the highest merit-scholarship consideration (guaranteed award by GPA for those applying by Dec 1, 2026). Published on the high school students page; the international page lists no separate date.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Admission (fall 2027 entry)",
+   "notes": "Applications after Feb 1 are reviewed on a rolling basis. Nursing applicants cannot apply under Regular Admission. Applications without transcripts close May 1. Published on the high school students page; the international page lists no separate date.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of non-native English speakers through TOEFL, IELTS, Duolingo or Cambridge. Waived for applicants with an International Baccalaureate Diploma. Native English speakers are contacted by International Admissions about other test scores. Non-native transfer students with 2+ years at a U.S. university need no English scores. Applicants below the minimums can enter through the English Language Bridge Program (EBP), a first-semester academic-transition program whose credits count toward the degree.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Page prints 'minimum score of 79/80'. English Language Bridge Program: TOEFL 60-79. The 1-6 scale minimum is not published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "English Language Bridge Program: IELTS 5.0-6.5.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "English Language Bridge Program: Duolingo 95-114.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": null,
+   "notes": "Page says 'Cambridge English score of C1' with no numeric score. English Language Bridge Program: Cambridge B1 or B2.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The international page lists merit scholarships for freshman applicants with a 3.0+ GPA (priority for applying by Dec 1), renewable for four years with a 3.0 GPA and 30 credits a year, plus Cormier Honors College scholarships (two full rides) and NCAA Division I athletic scholarships. Fall 2027 amounts on the financial aid page, Early Action (by Dec 1, 2026) / later: Presidential (4.0+) up to $7,000 / $6,000; Provost (3.75-3.99) up to $6,000 / $5,000; Dean's (3.50-3.74) up to $5,000 / $4,000; Rotunda (3.25-3.49) up to $3,000 / $2,000; Lancer Distinction (3.0-3.24) up to $2,000 / $1,000 per year. That page does not name international students, but the international page links to the same awards. Need-based aid for international students is not described.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 29180,
+  "room_board_usd": 14570,
+  "notes": "International page and the 2026-2027 Financial Certification Form: tuition and fees combined $29,180, room $9,300 plus meal plan $5,270 = $14,570, subtotal $43,750 (the minimum annual support to show; excludes books, transportation, health insurance). Longwood's cost page estimates $22,140 per semester for out-of-state students including room and the default meal plan (banded 12-18 credits).",
+  "src": "fin"
+ },
+ "majors": [
+  {
+   "program": "Nursing",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Applicants apply to nursing as first-year students through Early Decision (Nov 1, binding) or Early Action (Dec 1, final deadline); not available under Regular Admission. SAT, ACT or TEAS scores are required. Seat counts are not published on the pages read."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "Longwood's admissions pages print no SAT code; look it up in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "Longwood's admissions pages print no ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international page prints no TOEFL code; select Longwood University in the ETS list.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

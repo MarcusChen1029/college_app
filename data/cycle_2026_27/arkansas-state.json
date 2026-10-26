@@ -1,0 +1,142 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "A-State - International undergraduate admissions requirements (English proficiency, deadlines)",
+      "url": "https://www.astate.edu/admissions-and-aid/international-student-admission/undergraduate-students.html",
+      "accessed": "2026-10-26"
+    },
+    "intl_home": {
+      "kind": "admissions_site",
+      "title": "A-State - International student admissions (English proficiency table and notes)",
+      "url": "https://www.astate.edu/admissions-and-aid/international-student-admission/",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "A-State - Undergraduate admissions requirements (freshman)",
+      "url": "https://www.astate.edu/admissions-and-aid/undergraduate-admissions/undergraduate-admissions-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "other",
+      "title": "A-State - Tuition and fees for international students (2026-2027)",
+      "url": "https://www.astate.edu/admissions-and-aid/tuition-and-fees/international-students.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "A-State - Financial aid for international students",
+      "url": "https://www.astate.edu/admissions-and-aid/financial-aid-and-scholarships/scholarships/international-students.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international undergraduate page lists only a 2.3 GPA (4.0 scale) and English proficiency for freshmen; no SAT/ACT is listed for international applicants (SAT EBRW 550 or ACT English+Reading 21 can substitute for an English test). The domestic freshman checklist does require official ACT/SAT scores (automatic admission: 3.00 GPA, or ACT superscore 19 / SAT superscore 990). Confirm in the International Admissions Tool whether your country needs scores.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "International application fee is $50 ($30 for domestic freshmen). Apply in the A-State portal as 'International Undergraduate'; submit documents through myDen. Freshmen need a 2.3 GPA on a 4.0 scale; transcripts must be translated into English. Official documents are only required after admission, on arrival. A decision is promised within 24-48 business hours of a complete file. Some programs (nursing, engineering, business) add a college support fee.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-04",
+      "label": "International application deadline (fall 2027 entry)",
+      "notes": "Application, fee and all documents are due by this date; orientation Aug 9, 2027, classes start Aug 18, 2027. Spring 2028 deadline is Nov 1, 2027. Domestic freshman admission has no closing date (CDS C14).",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No test needed for citizens of Anguilla, Antigua & Barbuda, Australia, Bahamas, Barbados, Belize, Bermuda, British Virgin Islands, Canada (except Quebec), Cayman Islands, Dominica, Falkland Islands, Ghana, Gibraltar, Grenada, Guyana, Ireland, Jamaica, Liberia, Montserrat, New Zealand, Nigeria, Saint Helena, South Africa, St. Kitts & Nevis, St. Lucia, Trinidad & Tobago, Turks & Caicos, United Kingdom, Zambia, Zimbabwe. Other accepted proof: SAT EBRW 550, ACT English and Reading 21, IB English A or B HL 5-7, iTEP Academic Plus 3.5, EIKEN Grade Pre-1, completion of A-State's ESL program (80%) or a CEA/HOFT program, English marks of 60% (India, Nepal, Pakistan) or 75% (Kenya), or two years at a US/UK/Canada/Australia/NZ high school. Scores must be less than 2 years old; A-State's ESL program is available on campus for students who need it.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "The at-home TOEFL iBT is accepted. The page does not give a 1-6 band minimum, so TOEFL_IBT_2026 is not listed. ETS code 6011.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 43,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "A-State's international freshman scholarship is $3,000 per year (also $3,000 for transfers with 24+ hours); it requires full admission, a 3.25 GPA and English proficiency, and cannot be combined with other scholarships. International students are not eligible for federal aid; CDS H6 reports only non-need-based institutional aid for nonresidents (693 recipients, average $6,435).",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "A-State's international pages give no SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "A-State's international pages give no ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6011",
+      "note": "A-State institutional code for electronic score reports.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "nursing": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

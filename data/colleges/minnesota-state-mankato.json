@@ -1,0 +1,77 @@
+{
+  "slug": "minnesota-state-mankato",
+  "name": "Minnesota State University, Mankato",
+  "short_name": "Minnesota State Mankato",
+  "state_region": "MN",
+  "city": "Mankato",
+  "latitude": 44.146712,
+  "longitude": -93.99945,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://mankato.mnsu.edu/",
+  "admissions_url": "https://www.mnsu.edu/become-a-student/",
+  "ipeds_unit_id": 173920,
+  "undergrad_enrollment": 12897,
+  "intl_undergrads": 1064,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023) and Fall 2023 enrollment (EF2023A); College Navigator profile",
+      "url": "https://nces.ed.gov/collegenavigator/?id=173920",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "cds22": {
+      "kind": "cds",
+      "title": "Minnesota State University, Mankato Common Data Set 2022-2023 (PDF; newest published)",
+      "url": "https://www.mnsu.edu/globalassets/student-success-analytics-and-integrated-planning/cds/cds2022.pdf",
+      "cds_year": "2022-2023",
+      "accessed": "2026-10-26"
+    },
+    "intlcost": {
+      "kind": "admissions_site",
+      "title": "Minnesota State Mankato - International Bachelor Student Cost of Attendance",
+      "url": "https://www.mnsu.edu/paying-for-college/cost-of-attendance/international-bachelor-student-cost-of-attendance/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 8974,
+    "admits": 8196,
+    "enrolled": 2407,
+    "pct_submit_act": 5,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). Only 125 enrolled students (5%) reported ACT scores and none reported SAT, so the ACT range is thin. College Navigator's fall 2024 figures: 9,098 applicants, 88% admitted, 29% of admitted enrolled, ACT composite 21/23/25 (138 students). The newest published CDS is 2022-23 (11,152 applicants, 7,882 admits, average HS GPA 3.29, ACT 18/21/23 for 54% submitting); it has no international applicant split, so no international admit rate is available. Undergrad 12,897 and 1,064 nonresident-alien undergrads are IPEDS fall 2023 (EF2023A)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      22,
+      24,
+      25
+    ],
+    "ACT_ENGLISH": [
+      20,
+      22,
+      24
+    ],
+    "ACT_MATH": [
+      20,
+      22,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "intlcost",
+    "tuition_intl_usd": 21013,
+    "room_board_usd": 13658,
+    "books_usd": 1500,
+    "other_usd": 6000,
+    "total_coa_usd": 42171,
+    "notes": "International bachelor cost page (9-month year; the page does not name the year, final figures are posted each July): tuition and fees $21,013 without the International Maverick Scholarship ($13,137 with it); housing and food $13,658; other $7,500 = $200 orientation fee + $1,500 books + $3,300 health insurance + $2,500 personal. Total $42,171 without / $34,295 with the scholarship. The page advises budgeting for at least an 8% increase."
+  }
+}

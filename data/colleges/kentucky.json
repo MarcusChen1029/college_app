@@ -1,0 +1,107 @@
+{
+  "slug": "kentucky",
+  "name": "University of Kentucky",
+  "short_name": "UK",
+  "state_region": "KY",
+  "city": "Lexington",
+  "latitude": 38.038911,
+  "longitude": -84.504747,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uky.edu/",
+  "admissions_url": "https://www.uky.edu/admission/",
+  "ipeds_unit_id": 157085,
+  "undergrad_enrollment": 27386,
+  "intl_undergrads": 372,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Kentucky Common Data Set 2025-2026 (PDF)",
+      "url": "https://irads.uky.edu/sites/default/files/2026-07/university-of-kentucky-cds-2025-2026-flat.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - University of Kentucky (student-to-faculty ratio, calendar system, locale)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=157085",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 33387,
+    "admits": 31222,
+    "enrolled": 6960,
+    "in_state_applicants": 9087,
+    "in_state_admits": 8658,
+    "out_state_applicants": 23214,
+    "out_state_admits": 21588,
+    "intl_applicants": 1086,
+    "intl_admits": 976,
+    "pct_submit_sat": 9,
+    "pct_submit_act": 48,
+    "gpa_avg": 3.58,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 14.1,
+      "3.75-3.99": 30.6,
+      "3.50-3.74": 21.1,
+      "3.25-3.49": 14.1,
+      "3.00-3.24": 10.6,
+      "2.50-2.99": 8.4,
+      "2.0-2.49": 1.1,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 (fall 2025 entering class). International: 1,086 applied, 976 admitted. SAT scores were submitted by 9% (600) and ACT by 48% (3,357) of enrollees. Undergrad enrollment and nonresident count are the B1 'Total Undergraduates' column (27,386; nonresident 372). Student-to-faculty ratio 18:1 is from College Navigator. Waitlist and early-plan data not read."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1058,
+      1165,
+      1270
+    ],
+    "SAT_ERW": [
+      540,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      510,
+      580,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      29
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      27
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 12714,
+    "tuition_out_of_state_usd": 34383,
+    "tuition_intl_usd": 34383,
+    "required_fees_usd": 1463,
+    "room_board_usd": 17048,
+    "books_usd": 1200,
+    "other_usd": 3240,
+    "notes": "CDS G1/G5 (first-year, 2026-27): in-state tuition $12,714; out-of-state/non-resident tuition $34,383 (international students pay the non-resident rate); required fees $1,463; housing $11,700 + food $5,348; books $1,200; other expenses $3,240 and transportation $2,592-$2,756 (not included in other_usd)."
+  }
+}

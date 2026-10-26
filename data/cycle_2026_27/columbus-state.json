@@ -1,0 +1,134 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Columbus State University - International Freshmen (deadlines, English proficiency, conditional admission)",
+      "url": "https://www.columbusstate.edu/admissions/international/freshmen.php",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Columbus State University - International Admissions FAQ",
+      "url": "https://www.columbusstate.edu/admissions/international/faq.php",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Columbus State University - Scholarships (Scholarship Universe)",
+      "url": "https://www.columbusstate.edu/cost-and-aid/financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "catalog": {
+      "kind": "other",
+      "title": "Columbus State University Academic Catalog - Baccalaureate Degrees",
+      "url": "https://catalog.columbusstate.edu/academic-degrees-programs/degrees-baccalaureate/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international freshman page asks for SAT/ACT only from applicants whose native language is English (480 EBRW + 440 Math, or ACT 17 English or 17 Reading and 17 Math, only for those within 5 years of high school with under 30 college credits); applicants whose native language is not English prove English proficiency instead. The page says the test requirement is waived with a 3.0 in the required high school curriculum 'through Summer 2024', so it may be out of date. CDS C8A (2024-2025) lists SAT/ACT as 'required for some'.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "notes": "Undergraduate application with a $40 non-refundable fee. Non-US high school transcripts need a professional evaluation (NACES/AICE, WES, IEE or TEC) with a document-by-document review and GPA calculation. I-20 only after full admission plus a financial guarantee form, bank statement and passport copy. The CDS shows 99% of applicants admitted (3,617 of 3,651). Platform is Columbus State's own application; Common App was not checked.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International freshman application deadline - fall 2027 entry",
+      "notes": "Page prints 'June 1' with no year; taken as fall 2027. Spring term deadline Nov 1; summer term deadline is March 1 on the freshmen page but May 1 on the FAQ page.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants whose native language is English need not submit proof of English proficiency but must meet the SAT/ACT requirement. Alternatives accepted instead of TOEFL/IELTS: SAT EBRW 480, ACT English or Reading 17, MET 59, EIKEN Pre-1, Cambridge IGCSE/O-Level English D or better, UK GCSE or GCE A-Level English C or better, Edexcel English D or better. TOEFL Essentials not accepted. Duolingo is no longer accepted.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "notes": "Includes Home Edition and MyBest; paper edition also listed. TOEFL Essentials not accepted. The page does not give a 1-6 band score for the new TOEFL.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Overall band score; IELTS Indicator scores were accepted through December 2023.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "Page says the university no longer accepts Duolingo scores.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "notes": "PTE Academic, conventional and online.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 177,
+      "notes": "Cambridge FCE, CAE or CPE.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "merit_scholarships": null,
+    "notes": "The FAQ says F-1 students can apply for 'a limited number of service scholarships' through the Center for Global Engagement; no amounts are published. The scholarships page does not say whether international students qualify for institutional awards, and CDS H6 (nonresident aid policy) was unreadable. Conditional admission is available: students with insufficient English enroll in the English Language Institute until they meet the TOEFL minimum (up to three semesters). Health insurance is required and billed with tuition and fees.",
+    "src": "faq"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Code not printed on the admissions pages checked; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "Code not printed on the admissions pages checked; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "5123",
+      "note": "TOEFL institution code printed on the international freshmen page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

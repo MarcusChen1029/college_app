@@ -1,0 +1,188 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "La Salle University - International Student Admissions (first-year checklist, deadlines, merit scholarships)",
+      "url": "https://www.lasalle.edu/admissions-and-aid/international/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "La Salle University - English Language Proficiency (undergraduate minimums, exemptions)",
+      "url": "https://www.lasalle.edu/admissions-and-aid/international/english-language-proficiency/",
+      "accessed": "2026-10-26"
+    },
+    "when": {
+      "kind": "admissions_site",
+      "title": "La Salle University - When to Apply (Early Action and rolling admission)",
+      "url": "https://www.lasalle.edu/admissions-and-aid/undergraduate/when-to-apply/",
+      "accessed": "2026-10-26"
+    },
+    "el": {
+      "kind": "admissions_site",
+      "title": "La Salle University - Elements of a Successful Application (test-free policy)",
+      "url": "https://www.lasalle.edu/admissions-and-aid/undergraduate/elements-of-a-successful-application/",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "La Salle University - International student FAQs (free application, on-campus housing, merit scholarships)",
+      "url": "https://www.lasalle.edu/admissions-and-aid/international/faqs/",
+      "accessed": "2026-10-26"
+    },
+    "fs": {
+      "kind": "financial_aid_site",
+      "title": "La Salle University - Founder's Scholarship",
+      "url": "https://www.lasalle.edu/financial-aid/financial-aid-for-undergraduates/scholarships/la-salle-scholarships/founders-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "cb": {
+      "kind": "financial_aid_site",
+      "title": "La Salle University - Christian Brothers Scholarship",
+      "url": "https://www.lasalle.edu/financial-aid/financial-aid-for-undergraduates/scholarships/la-salle-scholarships/christian-brothers-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "financial_aid_site",
+      "title": "La Salle University - International students: costs, payments and financial support",
+      "url": "https://www.lasalle.edu/admissions-and-aid/international/costs-and-payments/",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "financial_aid_site",
+      "title": "La Salle University - Tuition & Fees 2026-27",
+      "url": "https://www.lasalle.edu/admissions-and-aid/tuition-fees/",
+      "accessed": "2026-10-26"
+    },
+    "progs": {
+      "kind": "other",
+      "title": "La Salle University - Program finder (undergraduate majors)",
+      "url": "https://www.lasalle.edu/academics/program-finder/?_program_undergraduate=major%2Cminor",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "The Elements of a Successful Application page says La Salle 'no longer considers standardized tests for admission or merit scholarships' (test-free). Two other places are not updated: the Founder's Scholarship page still lists standardized test scores among its factors, and College Navigator shows SAT/ACT as 'not required, but considered'. The Elements page is the most explicit statement, so it is used.",
+    "src": "el"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "counselor_rec": true,
+    "notes": "The international FAQ says the application is free; apply with the Common App or the La Salle application. International first-year checklist: official transcripts and school reports from all high schools (official English translations), final transcript and leaving-exam scores if applicable, copies of qualifying secondary exams (e.g. IGCSE, India Class 10), the Common App School Counselor Recommendation and School Report Form, one additional academic letter from a teacher, counselor or administrator, a personal essay, and proof of English proficiency unless exempt. Documents must come from a school official. Living on campus is required for first-year international students.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (fall 2027 entry)",
+      "notes": "The When to Apply page prints 'November 1' with no year; taken as fall 2027 entry. EA applicants get the admission decision, merit scholarship eligibility and need-based aid information in early December (no exact date). The page covers traditional undergraduates; the international page itself says there is no set deadline.",
+      "src": "when"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission (fall 2027 entry): no international deadline",
+      "notes": "International applications are reviewed on a rolling basis with no set deadline; decisions come within 1-2 weeks after all documents arrive.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "Christian Brothers Scholarship application deadline",
+      "notes": "Application opens in December for admitted students; needs an essay of 500-1,000 words and a recommendation letter. The page prints 'Feb. 1' with no year; taken as 2027. The award amount is not stated on the page.",
+      "src": "cb"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No proof of English proficiency is needed if English is your native language, you have studied three or more years in an English-based curriculum, or you are from a territorial entity where English is an official language. The international checklist words this as three or more years in a U.S. high school and/or an English-language curriculum. No conditional admission or ESL pathway is described on these pages.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Undergraduate (freshman and transfer) minimum. The page does not give a value for the new 1-6 TOEFL scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Undergraduate minimum.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Undergraduate minimum.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "'La Salle University does not offer need-based financial assistance to international students.' First-year applicants are automatically considered for the Founder's Scholarship (no separate application) and may apply for the Christian Brothers Scholarship. The international page and FAQ give the Founder's range as $10,000-$20,000 per year; the Founder's Scholarship page itself says $18,000-$26,000, so the amount is unconfirmed. International students may also get a housing grant up to $5,000. International students are not eligible for federal or state aid; alternative loans need a U.S. co-signer.",
+    "src": "intl"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "tf",
+    "tuition_usd": 40500,
+    "required_fees_usd": 1800,
+    "room_board_usd": 18220,
+    "notes": "From the 2026-27 Tuition & Fees page. Tuition $40,500 (full-time, all programs). Required fees are per semester x2: university fee $550, student activity fee $200, student wellness fee $150 = $1,800; a one-time $350 orientation fee is charged to fall freshmen. Room and board is a double room ($5,090 per semester) plus the Explorer 15 meal plan ($4,020 per semester) x2 = $18,220; other rooms and meal plans differ (Explorer's All Access is $4,845 per semester)."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

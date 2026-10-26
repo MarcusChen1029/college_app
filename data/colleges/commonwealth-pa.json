@@ -1,0 +1,126 @@
+{
+  "slug": "commonwealth-pa",
+  "name": "Commonwealth University of Pennsylvania",
+  "short_name": "Commonwealth U",
+  "state_region": "PA",
+  "city": "Bloomsburg",
+  "latitude": 41.00782,
+  "longitude": -76.447844,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.commonwealthu.edu",
+  "admissions_url": "https://www.commonwealthu.edu/admissions",
+  "ipeds_unit_id": 498562,
+  "undergrad_enrollment": 9488,
+  "intl_undergrads": 58,
+  "student_faculty_ratio": 19.7,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Commonwealth University of Pennsylvania Common Data Set 2025-2026 (web page)",
+      "url": "https://www.commonwealthu.edu/offices-directory/institutional-effectiveness/institutional-research/common-data-set-2025-2026",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8055,
+    "admits": 7346,
+    "enrolled": 2084,
+    "in_state_applicants": 7031,
+    "in_state_admits": 6390,
+    "out_state_applicants": 1011,
+    "out_state_admits": 943,
+    "intl_applicants": 13,
+    "intl_admits": 13,
+    "pct_submit_sat": 24.14,
+    "pct_submit_act": 0.67,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 99.95,
+    "gpa_distribution": {
+      "4.0": 12.0,
+      "3.75-3.99": 21.2,
+      "3.50-3.74": 24.0,
+      "3.25-3.49": 11.4,
+      "3.00-3.24": 11.9,
+      "2.50-2.99": 13.8,
+      "2.0-2.49": 5.3,
+      "1.0-1.99": 0.3
+    },
+    "notes": "CDS covers all campuses of the merged university (Bloomsburg, Lock Haven, Mansfield); figures are not split by campus. Fall 2025 first-year class. The C1 residency split reports 13 international applicants, all 13 admitted and all 13 enrolled. Undergrad enrollment is the B1 'Total Undergraduates' column (9,488, incl. non-degree-seeking; nonresident 58). C6 says it is not an open-admission school; no early decision or early action. Only about a quarter of enrolled students submitted SAT scores, so the score percentiles describe that subgroup."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      980,
+      1090,
+      1190
+    ],
+    "SAT_ERW": [
+      500,
+      560,
+      610
+    ],
+    "SAT_MATH": [
+      470,
+      530,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      20,
+      22,
+      27
+    ],
+    "ACT_MATH": [
+      23,
+      23,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "I",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "I"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 8338,
+    "tuition_out_of_state_usd": 20846,
+    "tuition_intl_usd": 20846,
+    "required_fees_usd": 4227,
+    "room_board_usd": 12538,
+    "books_usd": 1200,
+    "intl_need_aid_awarded": 31,
+    "intl_avg_award_usd": 10413,
+    "notes": "CDS G1 (first-year, 2026-27; the CDS says final 2026-27 costs were due about Aug 1, 2026). Out-of-state and international tuition are the same ($20,846). CDS H6: institutional need-based aid is available to nonresidents (31 received it, avg $10,413) and non-need-based aid is marked 'No', but the university's scholarship page lists GPA-based merit scholarships for international students (see cycle file)."
+  }
+}

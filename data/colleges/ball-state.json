@@ -1,0 +1,105 @@
+{
+  "slug": "ball-state",
+  "name": "Ball State University",
+  "short_name": "Ball State",
+  "state_region": "IN",
+  "city": "Muncie",
+  "latitude": 40.203431,
+  "longitude": -85.409043,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.bsu.edu",
+  "admissions_url": "https://www.bsu.edu/admissions",
+  "ipeds_unit_id": 150136,
+  "undergrad_enrollment": 15950,
+  "intl_undergrads": 71,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Ball State University Common Data Set 2025-2026 (PDF; file cds-2025-26.pdf, page headers still read 2024-2025 but the data are the Fall 2025 entering class and 2026-27 costs)",
+      "url": "https://www.bsu.edu/-/media/www/departmentalcontent/oirds/files/common-data-set/cds-2025-26.pdf?sc_lang=en&hash=9DCA782429782081B49D5360E562EB6D265DC2BE",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=150136",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 22193,
+    "admits": 19141,
+    "enrolled": 3720,
+    "in_state_applicants": 13125,
+    "in_state_admits": 13125,
+    "out_state_applicants": 7548,
+    "out_state_admits": 4573,
+    "intl_applicants": 1520,
+    "intl_admits": 1443,
+    "pct_submit_sat": 31,
+    "pct_submit_act": 1,
+    "gpa_avg": 3.58,
+    "pct_reporting_gpa": 99.57,
+    "gpa_distribution": {
+      "4.0": 24.3,
+      "3.75-3.99": 15.77,
+      "3.50-3.74": 15.06,
+      "3.25-3.49": 15.63,
+      "3.00-3.24": 14.93,
+      "2.50-2.99": 14.2,
+      "2.0-2.49": 0.08,
+      "1.0-1.99": 0.03
+    },
+    "notes": "CDS C1 (Fall 2025 first-time first-year): 22,193 applied, 19,141 admitted (86%); international 1,520 applied and 1,443 admitted (95%), 42 enrolled. C9 SAT/ACT figures describe enrolled students: 31% submitted SAT (1,156) but only 1% ACT (21), so the ACT percentiles rest on very few students. No early decision or early action; no waitlist. C7 factor checkboxes were not readable from the PDF text and are omitted. Undergraduate enrollment is B1 total undergraduates (15,950); the nonresident count in B2 was not readable, so intl_undergrads is left null."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1090,
+      1170,
+      1240
+    ],
+    "SAT_ERW": [
+      560,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      530,
+      570,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      26,
+      27
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A/C8F (Fall 2027): SAT or ACT not required for admission, but considered if submitted; Ball State is test-optional and the student may elect to submit scores."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 8948,
+    "tuition_out_of_state_usd": 27496,
+    "tuition_intl_usd": 27496,
+    "required_fees_usd": 2134,
+    "room_board_usd": 12832,
+    "books_usd": 782,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 189,
+    "intl_avg_award_usd": 19716,
+    "notes": "CDS G1 first-year 2026-27: in-state tuition $8,948, nonresident tuition $27,496 (international students pay the nonresident rate), required fees $2,134, on-campus food and housing $12,832; G5 books $782. Tuition varies by program (G4). H6: only institutional NON-need-based aid is available to nonresidents; 189 nonresidents received institutional aid, average $19,716."
+  }
+}

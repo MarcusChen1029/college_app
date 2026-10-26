@@ -1,0 +1,146 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UTRGV - Undergraduate International Admissions (apply, English proficiency, deadlines)",
+   "url": "https://www.utrgv.edu/admissions/international/undergraduate-international-admissions/index.htm",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "UTRGV Catalog 2024-2025 - International Undergraduate Student Admission",
+   "url": "https://utrgv.smartcatalogiq.com/en/2024-2025/student-policies/admission-policies-and-procedures/undergraduate-admissions/international-undergraduate-student-admission",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UTRGV International Student Services - Scholarships",
+   "url": "https://www.utrgv.edu/iss/funding-resources/scholarships/index.htm",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "UTRGV International Student Services - Estimated cost of attendance (F-1)",
+   "url": "https://www.utrgv.edu/iss/funding-resources/cost-of-attendance/index.htm",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The 2024-25 catalog says UTRGV is test optional for the current catalog cycle; freshman applicants may submit SAT or ACT. International first-year applicants are admitted on academic records (foreign credential evaluation required) plus English proficiency.",
+  "src": "cat"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply through ApplyTexas ('own'); $50 non-refundable international fee paid through the UTRGV Marketplace. Applicants with foreign schooling need a credential evaluation (WES, FCSA, The Evaluation Company or IEE) sent directly to UTRGV. After admission: Certificate of Financial Responsibility, bank statement and passport for the I-20. TSI testing and meningitis vaccination are required for enrollment, not admission.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "Fall priority deadline (international undergraduate, fall 2027 entry)",
+   "notes": "The page lists priority deadlines of April 1 (summer), May 1 (fall) and Nov. 1 (spring) with no year; treated as fall 2027. Applications completed after the priority date are still considered but processing may take longer.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No test needed for citizens of listed English-speaking countries (e.g. UK, Ireland, Canada except Quebec, Australia, New Zealand, Nigeria, Ghana, Jamaica and others on the UTRGV list). Exemptions after official transcripts: 30+ credit hours from an accredited U.S. university, two semesters of U.S. freshman English composition with a C or better, a U.S. bachelor's degree, three years of U.S. high school, or completing the Advanced level of UTRGV's English Language Programs intensive program.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "iBT, iBT Home and MyBest scores accepted; TOEFL ITP (institutional) not accepted. TOEFL Essentials minimum 6.5 is also accepted but has no separate field here.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "The page lists 4 for tests taken on or after Jan. 21, 2026 without naming the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 45,
+   "notes": "Pearson PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "No automatic international merit scholarship amounts were found. International Student Services lists a $1,000 summer need-based grant for continuing students, the state-run Good Neighbor Scholarship (tuition exemption for students from Western Hemisphere countries other than Cuba and the U.S., selected by the Texas Higher Education Coordinating Board), and 'I am a Buddy' awards of $500-$700 per semester for enrolled students. UTRGV's I-20 estimate for a full-time overseas undergraduate paying non-resident tuition is $41,668 living independently (2026-27 table).",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "UTRGV's international admissions pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "7585",
+   "note": "UTRGV school code for TOEFL; scores must come directly from ETS.",
+   "src": "cat"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

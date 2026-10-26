@@ -1,0 +1,99 @@
+{
+  "slug": "uw-oshkosh",
+  "name": "University of Wisconsin Oshkosh",
+  "short_name": "UW Oshkosh",
+  "state_region": "WI",
+  "city": "Oshkosh",
+  "latitude": 44.026206,
+  "longitude": -88.549369,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uwosh.edu/",
+  "admissions_url": "https://www.uwosh.edu/admissions/",
+  "ipeds_unit_id": 240365,
+  "undergrad_enrollment": 11994,
+  "intl_undergrads": 195,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, student-faculty ratio, setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=240365",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "UW Oshkosh Common Data Set 2023-2024, section C: First-Time, First-Year Admission (PDF)",
+      "url": "https://www.uwosh.edu/oir/wp-content/uploads/sites/109/2024/11/CDS-C.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "cdsg": {
+      "kind": "cds",
+      "title": "UW Oshkosh Common Data Set 2023-2024, section G: Annual Expenses (PDF)",
+      "url": "https://www.uwosh.edu/oir/wp-content/uploads/sites/109/2024/11/CDS-G.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=240365",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 9082,
+    "admits": 7872,
+    "enrolled": 1751,
+    "pct_submit_act": 34,
+    "gpa_avg": 3.2,
+    "pct_reporting_gpa": 94.1,
+    "gpa_distribution": {
+      "4.0": 1.7,
+      "3.75-3.99": 15.6,
+      "3.50-3.74": 18.0,
+      "3.25-3.49": 18.2,
+      "3.00-3.24": 15.4,
+      "2.50-2.99": 19.7,
+      "2.0-2.49": 10.2,
+      "1.0-1.99": 1.1
+    },
+    "notes": "Applicants, admits, enrolled and ACT figures are IPEDS (fall 2023 entering class, ADM2023). GPA average, percent reporting GPA and the GPA distribution (all enrolled first-year students) are from the UW Oshkosh CDS 2023-24 (C11/C12); the last band merges 1.0-1.99 (1.0%) and below 1.0 (0.1%). The CDS C1 counts differ from IPEDS (10,595 applied, 8,875 admitted, 1,462 enrolled), so IPEDS is used for consistency. College Navigator for fall 2024 shows 7,660 applicants, 87% admitted, 21% of admits enrolled. IPEDS reports ACT only (no SAT). The CDS leaves the international applicant/admit row (C1) blank, so international counts are not available. No early decision or early action; no application closing date for first-year students (CDS C14)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cdsg",
+    "tuition_usd": 8531,
+    "tuition_out_of_state_usd": 16213,
+    "tuition_intl_usd": 16213,
+    "room_board_usd": 8548,
+    "books_usd": 1200,
+    "other_usd": 2000,
+    "intl_merit_aid": true,
+    "notes": "CDS 2023-24 section G1/G5 (2024-25 costs, firm and final): in-state tuition and fees $8,531, out-of-state and international $16,213 per year; on-campus food and housing $8,548; books $1,200; other expenses $2,000 plus $1,500 transportation. College Navigator lists out-of-state tuition and fees of $16,446 for 2024-25. No 2026-27 international cost page could be read, so these are older figures. Titan Global Scholars can cut the nonresident tuition by 50-100 percent."
+  }
+}

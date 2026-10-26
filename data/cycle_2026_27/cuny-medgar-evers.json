@@ -1,0 +1,162 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "CUNY - The CUNY Application (deadlines for freshman and international applicants, fee, English test scores)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/",
+      "accessed": "2026-10-26"
+    },
+    "tests": {
+      "kind": "admissions_site",
+      "title": "CUNY - Standardized Testing Policy (test optional)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/covid-19-standardized-tests/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "CUNY - TOEFL / IELTS / PTE / Duolingo Scores Comparison (minimums by college)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/toefl/",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "CUNY - Undergraduate tuition and college costs (F-1/J-1 pay the NYS non-resident rate)",
+      "url": "https://www.cuny.edu/financial-aid/tuition-and-college-costs/tuition-fees/",
+      "accessed": "2026-10-26"
+    },
+    "mecintl": {
+      "kind": "admissions_site",
+      "title": "Medgar Evers College - International Applicant (deadlines, F-1 services)",
+      "url": "https://www.mec.cuny.edu/admissions/international-applicant/",
+      "accessed": "2026-10-26"
+    },
+    "mecfresh": {
+      "kind": "admissions_site",
+      "title": "Medgar Evers College - Freshman Applicants (requirements, dates)",
+      "url": "https://www.mec.cuny.edu/admissions/freshman-applicants/",
+      "accessed": "2026-10-26"
+    },
+    "mecprog": {
+      "kind": "admissions_site",
+      "title": "Medgar Evers College - Academic Programs",
+      "url": "https://www.mec.cuny.edu/academic-affairs/academic-programs/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CUNY-wide: test optional for undergraduate admission; first-year applicants may choose whether to submit SAT or ACT scores. College Navigator quotes the policy as in force through the spring 2027 semester; the CUNY page gives no end date, so fall 2027 entry is not separately confirmed. Medgar Evers applies this policy (College Navigator note).",
+    "src": "tests"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Apply with the CUNY Application (one application, up to 6 CUNY colleges); freshman fee $65, non-refundable (CUNY-wide). Medgar Evers freshman requirements: official high school transcript (or GED/TASC) sent to CUNY, and a high school GPA of 65 or better (GED 2250 or TASC 2500). College Navigator lists GPA and school record as required, essay and recommendations as not considered. Medgar Evers is a mixed associate/bachelor's college with 20+ majors.",
+    "src": "mecfresh"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2026-12-01",
+      "label": "International applicant deadline - application (fall 2027 entry)",
+      "notes": "Medgar Evers and CUNY both list the international freshman/transfer application deadline as December 1 and supporting documents by December 15, with rolling decisions January to July. The pages print no year, so treated as fall 2027. U.S.-educated freshmen use a February 1 priority date instead.",
+      "src": "mecintl"
+    },
+    {
+      "kind": "other",
+      "plan": "ROLLING",
+      "due": "2026-12-15",
+      "label": "International applicant deadline - supporting documents (fall 2027 entry)",
+      "notes": "Supporting-document date for international applicants (Medgar Evers international page, same as CUNY-wide).",
+      "src": "mecintl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "CUNY-wide: applicants on a temporary (F-1) visa who were educated in a non-English-speaking environment must submit official TOEFL, IELTS (Academic), PTE (Academic) or Duolingo scores; minimums are set by each college (CUNY comparison chart). Scores must be sent by the testing agency (CUNY code 2950); copies uploaded to the application are unofficial. No waiver rules are published and no conditional-admission or ESL pathway is described on the pages checked.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 52,
+      "notes": "CUNY comparison chart (internet-based TOEFL), Medgar Evers row. No score on the new 1-6 scale is given.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic overall band.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 80,
+      "notes": "CUNY comparison chart.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 41,
+      "notes": "PTE Academic (CUNY comparison chart).",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "International (F-1/J-1) students pay the NYS non-resident rate ($620 per credit in 2026-27, CUNY-wide). No merit scholarship for international first-year students was found on the pages checked, so the policy is left null.",
+    "src": "tuit"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the CUNY or college pages checked; pick the college by name in the College Board search.",
+      "src": "tests"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the CUNY or college pages checked; look it up at act.org.",
+      "src": "tests"
+    },
+    "toefl": {
+      "code": "2950",
+      "note": "CUNY-wide university code 2950 (CUNY application page: list this code when registering for exams). Medgar Evers does not publish a separate code.",
+      "src": "dates"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS institution code is listed; send results to CUNY through the IELTS system.",
+      "src": "dates"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No Duolingo institution code is listed.",
+      "src": "dates"
+    },
+    "pte": {
+      "code": null,
+      "note": "No PTE institution code is listed.",
+      "src": "dates"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: Brooklyn senior college in the CUNY system (mixed associate/bachelor's) with 20+ majors in business, health, education and social services; no nationally ranked programs found, so general and subject tiers are D."
+  }
+}

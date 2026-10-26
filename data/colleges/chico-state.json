@@ -1,0 +1,80 @@
+{
+  "slug": "chico-state",
+  "name": "California State University, Chico",
+  "short_name": "Chico State",
+  "state_region": "CA",
+  "city": "Chico",
+  "latitude": 39.729712,
+  "longitude": -121.844859,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.csuchico.edu",
+  "admissions_url": "https://www.csuchico.edu/admissions/index.shtml",
+  "ipeds_unit_id": 110538,
+  "undergrad_enrollment": 13599,
+  "intl_undergrads": 145,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "California State University, Chico Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.csuchico.edu/ir/_assets/documents/cds-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 22542,
+    "admits": 20528,
+    "enrolled": 2041,
+    "in_state_applicants": 21846,
+    "in_state_admits": 20047,
+    "out_state_applicants": 450,
+    "out_state_admits": 330,
+    "intl_applicants": 239,
+    "intl_admits": 150,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 0.5,
+    "gpa_avg": 3.4,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 11.0,
+      "3.75-3.99": 15.1,
+      "3.50-3.74": 17.0,
+      "3.25-3.49": 17.7,
+      "3.00-3.24": 17.8,
+      "2.50-2.99": 20.2,
+      "2.0-2.49": 1.2,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 fall 2025 first-year class (residency table: 22,542 applicants, 20,528 admits, 2,041 enrolled; 7 applicants and 1 admit had unknown residency). International applicants 239 and admits 150 (63%) is far lower than the overall admit rate of about 91%. Chico State has no waitlist and no early decision or early action. Undergraduate enrollment 13,599 and 145 nonresident undergraduates are the B1/B2 'Total Undergraduates' figures. The CSU is test-blind: only 3% (69) of enrolled first-years submitted SAT and 0.5% (8) ACT, so score ranges are omitted. C7 factor 'standardized test scores' is marked very important in the CDS, which contradicts C8 (SAT/ACT not used), so that single factor is left out."
+  },
+  "scores": {},
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8A: SAT/ACT not used in admission decisions ('Not considered for admission, even if submitted'); scores are used only for math and English placement."
+  }
+}

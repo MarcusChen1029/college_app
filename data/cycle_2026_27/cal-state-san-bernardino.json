@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "CSUSB International Admissions - Application & Document Deadlines (Fall 2027)",
+   "url": "https://www.csusb.edu/international-education/international-admissions/application-document-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "CSUSB International Admissions - First-Year Students",
+   "url": "https://www.csusb.edu/international-education/international-admissions/first-year-students",
+   "accessed": "2026-10-26"
+  },
+  "steps": {
+   "kind": "admissions_site",
+   "title": "CSUSB International Admissions - Steps to Apply (application fee, English proficiency table, affidavit of support)",
+   "url": "https://www.csusb.edu/international-education/international-admissions/steps-apply",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "CSUSB International Admissions - Tuition and Fees (2026-27 suggested budget for F-1 and J-1 applicants)",
+   "url": "https://www.csusb.edu/international-education/international-admissions/tuition-and-fees",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "CSUSB International Admissions - Conditional Admissions",
+   "url": "https://www.csusb.edu/international-education/international-admissions/conditional-admissions",
+   "accessed": "2026-10-26"
+  },
+  "elp": {
+   "kind": "admissions_site",
+   "title": "CSUSB International Education - English Language Program",
+   "url": "https://www.csusb.edu/international-education/programs/english-language-program",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "CSUSB University Catalog - Admission (international student scholarships and insurance)",
+   "url": "https://catalog.csusb.edu/admission-university/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "CSUSB International Admissions - Admission FAQs (no application fee waiver for international students)",
+   "url": "https://www.csusb.edu/international-education/international-admissions/admission-faqs",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)', as for the rest of the CSU. CSUSB's own CDS C7/C8 form fields conflict with that (see the stats notes), so the CSU-wide policy is used. A first-year international applicant may use an SAT English score of 550+ or an ACT English score of 22+ as proof of English only. Eligibility for foreign high school graduates is a 2.5 overall GPA.",
+  "src": "ipeds"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through CSUApply / Cal State Apply (not the Common App); the $70 fee is non-refundable and international students are not eligible for a fee waiver (Admission FAQs). Needs a 2.5 overall GPA. Foreign high school applicants send official transcripts and diploma sealed in an envelope by the school, with certified English translations; also a passport copy and a statement of financial responsibility (bank statement / affidavit of support) plus proof of medical insurance. CDS C7: essays, recommendations and interviews are not considered.",
+  "src": "steps"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "International undergraduate application deadline, Cal State Apply (fall 2027)",
+   "notes": "Application opens Aug 1, 2026 for fall 2027. CSUSB's CDS also lists a Nov 30 priority date for first-year applicants, which is the domestic date; the international page gives June 1, 2027. Some programs may have different deadlines.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-30",
+   "label": "International document deadline (fall 2027)",
+   "notes": "Undergraduate and graduate document deadline for fall 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if a first-time freshman attended a high school in the U.S. for 3+ years or a high school where English is the principal language of instruction for 3+ years (listed countries include Antigua and Barbuda, Australia, Bahamas, Canada except Quebec/northern New Brunswick/Nunavut, Ireland, Jamaica, Kenya, Nigeria, New Zealand, South Africa, the United Kingdom and the United States). Scores must be valid within two years; TOEFL ITP is not accepted. Other accepted proofs for freshmen: iTEP 3.7, EIKEN Pre-1 (CSE 2304-3000), SAT English 550+, ACT English 22+, or completing Level 3 of CSUSB's English Language Program. Conditional admission lets academically qualified applicants below the English minimum enter the English Language Program first.",
+  "src": "steps"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Exams taken before Jan 21, 2026 (0-120 scale); Home Edition accepted. Graduate minimum 79.",
+   "src": "steps"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Exams taken on or after Jan 21, 2026; the page lists 3.5 for undergraduates, 4 for graduates and 5 for post-graduate programs without naming the scale (assumed to be the new 1-6 band scale).",
+   "src": "steps"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "IELTS Academic overall; submit through the Cal State Apply e-delivery account. Graduate minimum 6.0.",
+   "src": "steps"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Send online through your Duolingo account. Graduate minimum 105.",
+   "src": "steps"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "notes": "PTE Academic; send online through your PTE account. Graduate minimum 53.",
+   "src": "steps"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 168,
+   "notes": "Cambridge B2 First score of 168 for undergraduates (C1 Advanced 180 for graduates).",
+   "src": "steps"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "The CSUSB catalog says scholarship aid for entering students is limited and none are specifically reserved for students from another country; no international merit scholarship or tuition waiver was found for undergraduates. The CDS (H6) reports no institutional aid recipients among degree-seeking nonresident undergraduates. Conditional admission is offered: students who are academically qualified but below the English minimum attend the CSUSB English Language Program (Level 3 for undergraduates, with an accelerated one-semester Level 3 option) before starting their degree; this needs two applications (one to the International Extension Program and one through Cal State Apply).",
+  "src": "cat"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 20359,
+  "room_board_usd": 19786,
+  "books_usd": 880,
+  "other_usd": 9276,
+  "total_coa_usd": 50301,
+  "notes": "From CSUSB's 2026-27 suggested international budget (undergraduate, 24 units): tuition and fees $20,359 combined, including the $471 per unit non-resident charge (stored as tuition_intl_usd; the page does not split fees out); living expenses $19,786 (stored in room_board_usd), books and supplies $880, and other = transportation $2,906 plus health insurance $1,956 plus personal $4,414. Total $50,301. Dependents need $6,000 each per academic year.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4099",
+   "note": "CSUSB school code for TOEFL results.",
+   "src": "steps"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ }
+}

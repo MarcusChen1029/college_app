@@ -1,0 +1,93 @@
+{
+  "slug": "austin-peay",
+  "name": "Austin Peay State University",
+  "short_name": "APSU",
+  "state_region": "TN",
+  "city": "Clarksville",
+  "latitude": 36.533319,
+  "longitude": -87.354081,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.apsu.edu",
+  "admissions_url": "https://www.apsu.edu/admissions/",
+  "ipeds_unit_id": 219602,
+  "undergrad_enrollment": 9593,
+  "intl_undergrads": 210,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Austin Peay State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.apsu.edu/institutional-research/files/common-data-set-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9093,
+    "admits": 8812,
+    "enrolled": 1847,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 53,
+    "gpa_avg": 3.35,
+    "pct_reporting_gpa": 98,
+    "gpa_distribution": {
+      "4.0": 5.63,
+      "3.75-3.99": 21.49,
+      "3.50-3.74": 18.52,
+      "3.25-3.49": 14.29,
+      "3.00-3.24": 15.0,
+      "2.50-2.99": 16.51,
+      "2.0-2.49": 5.04,
+      "1.0-1.99": 1.08
+    },
+    "notes": "Fall 2025 first-year class (CDS C1: 9,093 applied, 8,812 admitted, 1,847 enrolled). The CDS residency breakdown (in-state, out-of-state, international) is left at zero, so international applicant and admit counts are not published; B2 shows 21 nonresident first-time first-year students and 210 nonresident undergraduates. Undergrad enrollment 9,593 is the B1/B2 total undergraduate figure. C11 also reports 2.44% of students with a GPA below 1.0, which is not in the distribution above. SAT figures rest on only 21 students (1%); ACT was submitted by 975 (53%)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      870,
+      970,
+      1080
+    ],
+    "SAT_ERW": [
+      450,
+      500,
+      560
+    ],
+    "SAT_MATH": [
+      420,
+      510,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 8028,
+    "tuition_out_of_state_usd": 13788,
+    "tuition_intl_usd": 13788,
+    "required_fees_usd": 1824,
+    "room_board_usd": 12420,
+    "books_usd": 1316,
+    "notes": "CDS G1 and G5 (first-year, 2026-27): the CDS lists one non-resident tuition figure ($13,788) equal to out-of-state tuition, used here as the rate for international students. CDS H6 marks institutional scholarship and grant aid as not available to degree-seeking nonresidents; the nonresident award count and average are blank."
+  }
+}

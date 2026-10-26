@@ -1,0 +1,165 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "UofL - Undergraduate International Application Requirements (fee, English tests, codes)",
+   "url": "https://louisville.edu/admissions/apply/undergraduate-international-application-requirements",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "admissions_site",
+   "title": "UofL - Program-Specific Admissions Criteria",
+   "url": "https://louisville.edu/admissions/apply/program-specific-admissions-criteria",
+   "accessed": "2026-10-26"
+  },
+  "ft": {
+   "kind": "admissions_site",
+   "title": "UofL - First-Time Freshman Applicants (2027 priority deadline, test-optional)",
+   "url": "https://louisville.edu/admissions/apply/first-time-freshman-applicants",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "UofL - International Scholarships & Aid (Global Cardinal Scholarship)",
+   "url": "https://louisville.edu/cost-aid/undergraduate-scholarships-aid/international-scholarships-aid",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT scores are optional for admission and many automatic scholarships. Some programs set score-based criteria (for example Engineering: GPA 3.0 with SAT 1200 or ACT 25, plus a math sub-score) and applicants to Engineering, Nursing or Business who meet the GPA but have no qualifying score can show readiness through the Accuplacer.",
+  "src": "ft"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "UofL's Take Flight application or the Common App; $30 non-refundable fee; international applicants must specify an intended major. No essays or recommendation letters. Non-U.S. transcripts need a notarized, ATA-certified translation; send to adetran@louisville.edu.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-02-15",
+   "label": "Priority application deadline, fall 2027",
+   "notes": "Applications after the priority date are reviewed as space allows. The international requirements page gives no separate international deadline.",
+   "src": "ft"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Alternatives to a test: two consecutive years of full-time high school in the U.S. or where English is the primary language of instruction with a C or better in English; or the same at university level (C or better in English 101/102). SAT EBRW 490+, ACT English 18+, AP English Language 4+ or IB English Language and Literature 5+ also count. No intensive-English conditional-admission pathway was found on UofL's pages.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Tests before Jan. 2026. TOEFL Essentials 8.5 also accepted.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Tests after Jan. 2026 (1.0-6.0 scale): 4.0 overall with 4.0 minimum sub-scores.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Academic module.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 55,
+   "subs": {
+    "each_section": 53
+   },
+   "notes": "No sub-score lower than 53.",
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Global Cardinal Scholarship for first-time international freshmen (F-1), applied automatically on admission, per year: $5,000 (3.25-3.49 GPA), $6,500 (3.5-3.74), $8,000 (3.75+); GPA is converted to a 4-point scale. UofL's out-of-state admissions scholarships are not available to F-1 students. Need-based aid for internationals is not mentioned.",
+  "src": "sch"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Two-step admission: students enter the Lower Division, then apply internally to the Upper Division after 3-4 semesters (or fewer). Source: program-specific admissions criteria page."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1838",
+   "src": "req"
+  },
+  "act": {
+   "code": "1556",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "1838",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores must come directly from the testing service.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; scores must come directly from the testing service.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed; scores must come directly from the testing service.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Speed School is the engineering college.",
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Home of a medical school.",
+  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure)."
+ }
+}

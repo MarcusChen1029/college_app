@@ -1,0 +1,196 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UConn Undergraduate Admissions - International First-Year Applicants (requirements, English proficiency, fee)",
+      "url": "https://admissions.uconn.edu/apply/international/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UConn Undergraduate Admissions - First-Year Dates & Deadlines (fall 2027)",
+      "url": "https://admissions.uconn.edu/apply/first-year/deadlines/",
+      "accessed": "2026-10-26"
+    },
+    "reg": {
+      "kind": "admissions_site",
+      "title": "UConn Undergraduate Admissions - Regional Campus Applicants",
+      "url": "https://admissions.uconn.edu/apply/regional-campus/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UConn Undergraduate Admissions - First-Year Applicants (test ranges, institutional codes)",
+      "url": "https://admissions.uconn.edu/apply/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "ed": {
+      "kind": "admissions_site",
+      "title": "UConn Undergraduate Admissions - Early Decision",
+      "url": "https://admissions.uconn.edu/apply/early-decision/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "admissions_site",
+      "title": "UConn Undergraduate Admissions - Merit Scholarships",
+      "url": "https://admissions.uconn.edu/cost-aid/scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "fa": {
+      "kind": "financial_aid_site",
+      "title": "UConn Undergraduate Admissions - Financial Aid (only U.S. citizens and permanent residents)",
+      "url": "https://admissions.uconn.edu/cost-aid/financial-aid/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "UConn Student Financial Aid Services - 2026-2027 Direct Costs and Cost of Attendance (regional campus, Stamford)",
+      "url": "https://financialaid.uconn.edu/cost/",
+      "accessed": "2026-10-26"
+    },
+    "prog": {
+      "kind": "other",
+      "title": "UConn Stamford - Undergraduate Programs (four-year majors at Stamford)",
+      "url": "https://stamford.uconn.edu/academics/undergraduate/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UConn-wide: test-optional for the foreseeable future; official SAT/ACT may be sent and are superscored if the applicant wants them considered. Scores are not needed for merit scholarships or Honors. Middle 50% of fall 2026 admitted students who submitted scores at regional campuses: SAT 970-1250, ACT 19-28 (Storrs: SAT 1320-1460). IPEDS (fall 2024) shows the Stamford form as 'required to be considered', which conflicts with the current admissions pages.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "coalition"
+    ],
+    "app_fee_usd": 80,
+    "supplemental_essays": "Personal essay of 250-650 words is required (inside the Common App or Coalition App); no separate supplement.",
+    "notes": "UConn-wide rules. $80 non-refundable fee (check or money order also accepted). Two letters of recommendation are optional but preferred. International applicants send secondary school transcripts (with senior classes, rank if any, latest grades) directly from the school with certified English translations; US-educated applicants may complete a STARS record. Four years of secondary school in the U.S. means the domestic requirements apply (4 English, 3 math, 2 social science, 2 foreign language, 2 lab science, 3 electives). Applicants choose a campus; regional-campus students may start at Stamford and move to Storrs after about 54 credits, or finish selected four-year majors at Stamford.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-01",
+      "label": "Early Decision (fall 2027), binding",
+      "notes": "UConn-wide. Notifications begin mid-December (no exact day printed); a binding offer at the first-choice campus and major needs the enrollment fee by Jan. 15. Early Decision applicants can also be deferred to the March regular release.",
+      "src": "ed"
+    },
+    {
+      "kind": "scholarship",
+      "plan": "RD",
+      "due": "2026-12-01",
+      "label": "Priority deadline for merit and Honors consideration (fall 2027)",
+      "notes": "UConn-wide. Global Excellence, Global Distinction and Global Leader Awards are for international applicants, all campuses; also Academic Excellence, Husky Achievement and Leadership awards.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "Regional campus (incl. Stamford) first-year application deadline (fall 2027)",
+      "notes": "Regional campuses decide on a rolling basis starting early March (the international page says notifications begin March 1). Storrs applicants have Jan. 15 instead. Late applications are reviewed on a space-available basis; enrollment fee by May 1 or two weeks after a later decision.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "UConn-wide. Required for applicants whose primary language is not English, regardless of visa status. Waived for: English as primary language; 2+ years and graduation at a U.S. secondary school (non-ESL); SAT EBRW 510+; ACT 24+ on English, Reading and Composite; IB Higher Level English 5+; one year or more of full-time U.S. college work with GPA 3.0+; a degree from an English-medium institution abroad. Scores must be sent by the test provider; meeting the minimum does not guarantee admission.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "The page prints the TOEFL minimum as '4.5 (79 out of 120)', i.e. 4.5 on the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "notes": "PTE Academic. LanguageCert Academic (minimum 70) is also accepted but is not a selectable test here.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Financial aid is only for U.S. citizens and permanent residents. All applicants are automatically considered for merit scholarships; international-only awards (Global Excellence, Global Distinction, Global Leader) are renewable for 4 years at a fixed amount set each year (the amount is not published); priority date Dec. 1. The Regional Student Success Award is for Connecticut residents only. A student below the English minimum who is otherwise admissible can be offered conditional admission with UConn's American English Language Institute (UCAELI).",
+    "src": "sch"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 17010,
+    "tuition_out_of_state_usd": 39678,
+    "required_fees_usd": 1450,
+    "room_board_usd": 21474,
+    "books_usd": 1020,
+    "other_usd": 4764,
+    "total_coa_usd": 68386,
+    "notes": "UConn 2026-27 estimate for a Stamford campus student living on campus, out-of-state rate (international students are not separately priced on the page): tuition $39,678 (Connecticut resident $17,010); Stamford fees $1,450; Stamford housing estimate $14,578 plus food $6,896; books $1,020; transportation $2,704, personal $1,968 and loan fees $92. Total $68,386 is the page's out-of-state figure. Health insurance (waivable) is extra.",
+    "src": "cost"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "3915",
+      "note": "UConn-wide institutional code (applies to all campuses).",
+      "src": "intl"
+    },
+    "act": {
+      "code": "0604",
+      "note": "UConn-wide institutional code (applies to all campuses).",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL code is printed on the admissions pages read; search for the University of Connecticut at ets.org."
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed."
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed."
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed."
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "economics": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {
+    "general": "A regional campus of the University of Connecticut (a public research university; Storrs is rated C+ here). It offers UConn degrees, about 2,500 undergraduates, a city location and selected four-year majors, with many students moving to Storrs after about 54 credits; placed one step above the open-access D tier."
+  }
+}

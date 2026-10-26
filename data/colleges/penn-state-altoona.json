@@ -1,0 +1,135 @@
+{
+  "slug": "penn-state-altoona",
+  "name": "Penn State Altoona",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Altoona",
+  "latitude": 40.541759,
+  "longitude": -78.409601,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://altoona.psu.edu/",
+  "admissions_url": "https://altoona.psu.edu/admissions",
+  "ipeds_unit_id": 214689,
+  "undergrad_enrollment": 2280,
+  "intl_undergrads": 91,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Penn State Altoona Common Data Set 2025-2026 (PDF)",
+      "url": "https://opair.psu.edu/files/2026/09/CDS_2025_2026_Altoona_v3.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Penn State Altoona (fall 2024 admissions summary)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214689",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10081,
+    "admits": 9753,
+    "enrolled": 849,
+    "in_state_applicants": 2205,
+    "in_state_admits": 2123,
+    "out_state_applicants": 7359,
+    "out_state_admits": 7144,
+    "intl_applicants": 517,
+    "intl_admits": 486,
+    "pct_submit_sat": 21.44,
+    "pct_submit_act": 2.12,
+    "gpa_avg": 3.24,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 4,
+      "3.75-3.99": 17,
+      "3.50-3.74": 15,
+      "3.25-3.49": 16,
+      "3.00-3.24": 17,
+      "2.50-2.99": 22,
+      "2.0-2.49": 9,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1/C9/C11/C12, Penn State Altoona campus only, fall 2025 entering class (residency split as printed in C1). No early decision; early action closes 11/01 with notification 12/24; no application closing date. SAT/ACT optional (considered if submitted); score percentiles are for the 182 enrolled students who submitted SAT (18 submitted ACT). GPA distribution is the 'all enrolled students' column of C11."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1120,
+      1210,
+      1290
+    ],
+    "SAT_ERW": [
+      560,
+      620,
+      660
+    ],
+    "SAT_MATH": [
+      550,
+      590,
+      653
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      27,
+      30
+    ],
+    "ACT_ENGLISH": [
+      21,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      24,
+      25,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 15388,
+    "tuition_out_of_state_usd": 26904,
+    "tuition_intl_usd": 26904,
+    "required_fees_usd": 630,
+    "room_board_usd": 15092,
+    "books_usd": 1290,
+    "other_usd": 5356,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 0,
+    "intl_avg_award_usd": 0,
+    "notes": "CDS G1/G5 first-year 2026-27, Altoona campus: tuition in-state $15,388, out-of-state/nonresident $26,904 (international students pay the nonresident rate); required fees $630; on-campus food and housing $15,092 (G1; G5 residents' estimate is $18,276); books $1,290; other_usd = transportation $2,244 + other expenses $3,112. Tuition varies by year of study and program (G3/G4). CDS H6: institutional scholarship and grant aid is not available to nonresident undergraduates."
+  }
+}

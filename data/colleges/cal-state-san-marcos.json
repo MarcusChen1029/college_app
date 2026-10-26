@@ -1,0 +1,83 @@
+{
+ "slug": "cal-state-san-marcos",
+ "name": "California State University San Marcos",
+ "short_name": "CSUSM",
+ "state_region": "CA",
+ "city": "San Marcos",
+ "latitude": 33.130569,
+ "longitude": -117.159013,
+ "setting": "suburban",
+ "control": "public",
+ "website": "https://www.csusm.edu",
+ "admissions_url": "https://www.csusm.edu/admissions/",
+ "ipeds_unit_id": 366711,
+ "undergrad_enrollment": 15770,
+ "intl_undergrads": 148,
+ "student_faculty_ratio": 24,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "CSUSM Common Data Set 2025-2026 (Excel workbook, Institutional Planning and Analysis)",
+   "url": "https://www.csusm.edu/ipa/cds-files/cds-doc/cds_2025-2026.xlsx",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: student-to-faculty ratio, fall 2024 admissions summary",
+   "url": "https://nces.ed.gov/collegenavigator/?id=366711",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "cds",
+  "applicants": 20881,
+  "admits": 19864,
+  "enrolled": 2705,
+  "in_state_applicants": 19682,
+  "in_state_admits": 18757,
+  "out_state_applicants": 986,
+  "out_state_admits": 924,
+  "intl_applicants": 173,
+  "intl_admits": 162,
+  "pct_submit_sat": 2.3,
+  "pct_submit_act": 0.4,
+  "gpa_avg": 3.316,
+  "pct_reporting_gpa": 99.67,
+  "gpa_distribution": {
+   "4.0": 6.63,
+   "3.75-3.99": 13.53,
+   "3.50-3.74": 16.64,
+   "3.25-3.49": 19.64,
+   "3.00-3.24": 17.94,
+   "2.50-2.99": 21.98,
+   "2.0-2.49": 3.96,
+   "1.0-1.99": 0.0
+  },
+  "notes": "CDS C1 fall 2025 first-year class: 20,881 applied, 19,864 admitted (95%), 2,705 enrolled (full-time plus part-time). Residency split as printed: international 173 applicants and 162 admitted (about 94%); 40 applicants (21 admitted) have unknown residency. The C11 GPA column for all enrolled students sums to 100.32% as printed. CSU campuses are test-blind; only 2.3% (SAT, 64 students) and 0.4% (ACT, 13 students) of enrollees had scores, so the SAT/ACT percentiles in C9 are omitted. intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (148); undergrad_enrollment is the CDS B total of all undergraduates (15,770). College Navigator (fall 2024) shows 19,721 applicants and 95% admitted."
+ },
+ "scores": {},
+ "factors": {
+  "rigor": "NC",
+  "class_rank": "NC",
+  "gpa": "VI",
+  "test_scores": "NC",
+  "essay": "NC",
+  "recommendations": "NC",
+  "interview": "NC",
+  "extracurriculars": "NC",
+  "talent_ability": "NC",
+  "character": "NC",
+  "first_generation": "C",
+  "alumni_relation": "NC",
+  "geographic_residence": "C",
+  "state_residency": "C",
+  "religious_affiliation": "NC",
+  "volunteer_work": "NC",
+  "work_experience": "NC",
+  "demonstrated_interest": "NC"
+ }
+}

@@ -1,0 +1,181 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "CU Denver International Admissions - Undergraduate first-year admission (deadlines, fee, codes)",
+   "url": "https://www.ucdenver.edu/international-admissions/apply-for-admission/undergraduate/first-year",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CU Denver Academic Catalog 2026-27 - Proof of English language proficiency",
+   "url": "https://catalog.ucdenver.edu/cu-denver/undergraduate/admissions/international-admissions/proof-english-language-proficiency/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "CU Denver International Admissions - Undergraduate costs and financial aid (2026-27)",
+   "url": "https://www.ucdenver.edu/international-admissions/costs-financial-aid/undergraduate",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT or ACT scores are not required; submitting them can improve chances of admission and they will not be used to deny an application. CDS C8 also lists scores as not required but considered if submitted.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "International first-year applicants apply online and pay a non-refundable $75 fee (the CDS lists $50 generally; fee waiver requests are possible). Admission is rolling with decisions about 10 business days after a complete application. Engineering/Design/Computing and Architecture & Planning have extra major requirements after admission.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "Priority scholarship consideration, fall 2027",
+   "notes": "Spring priority is Oct. 1. The page prints no year; taken as the current cycle.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-15",
+   "label": "Fall 2027 application deadline (applicants outside the U.S.)",
+   "notes": "Spring is Dec. 1, summer May 1.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-08",
+   "label": "Fall 2027 application deadline (applicants already inside the U.S.)",
+   "notes": "Spring is Jan. 4, summer May 23.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No test needed for citizens of Antigua & Barbuda, Australia, Bahamas, Barbados, Belize, Canada, Dominica, Grenada, Guyana, Ireland, Jamaica, Malta, New Zealand, St Kitts & Nevis, St Vincent & the Grenadines, Trinidad & Tobago or the UK, or with a U.S. high school diploma (1+ year in the U.S. with college-prep English) or a qualifying English-medium credential, or by finishing Level 5 at the CU Denver ESL Academy. Additional accepted scores: ACT English 18, SAT EBRW 480, AP English Literature 3, IB English A 4, GCE A-Level English E. Conditional admission: undergraduates (except Nursing) below the minimum can enter the LynxDirect Pathway in the ESL Academy with TOEFL iBT 70 (new scale 3.5), IELTS 6.0, Duolingo 95, or completed ESL Level 4. Letters of instruction are not accepted. MyBest TOEFL and superscored IELTS accepted.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "reading": 8,
+    "listening": 7,
+    "speaking": 18,
+    "writing": 16
+   },
+   "notes": "University minimum for all undergraduate programs except Nursing.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "notes": "The pages do not print a full-admission minimum on the new 1-6 scale (tests from Jan. 21, 2026); only the LynxDirect pathway value of 3.5 is listed, so no minimum is recorded.",
+   "src": "fy"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "IELTS Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "subs": {
+    "each_section": 85
+   },
+   "notes": "Minimum 85 on each of Literacy, Conversation, Comprehension and Production; official score through the Duolingo website.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "subs": {
+    "each_section": 42
+   },
+   "notes": "PTE Academic.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Undergraduates receive an automatic merit scholarship of $5,000-$10,000 per year (GPA-based; headline on the first-year page). International Admissions also lists additional merit awards by application (up to $8,000/yr), donor awards and need-based grants; that table is labelled aid year 2022-23, so award names and status may be out of date. Estimated international cost of attendance for 2026-27 is about $60,852-$63,062 per year depending on school/college (tuition and fees $33,439-$35,649; 9 months, 12 credits).",
+  "src": "cost"
+ },
+ "majors": [
+  {
+   "program": "College of Engineering, Design and Computing",
+   "category": "engineering",
+   "admit_model": "pre_major_competitive",
+   "notes": "Two-step admission: after admission to CU Denver, additional requirements for the major must be completed."
+  },
+  {
+   "program": "College of Architecture and Planning",
+   "category": "arts_design",
+   "admit_model": "pre_major_competitive",
+   "notes": "Two-step admission: after admission to CU Denver, additional requirements for the major must be completed."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4875",
+   "src": "fy"
+  },
+  "act": {
+   "code": "0533",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "4875",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code; search for or choose 'University of Colorado Denver'.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code; choose 'University of Colorado Denver' and send officially through Duolingo.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code; search for or choose 'University of Colorado Denver'.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

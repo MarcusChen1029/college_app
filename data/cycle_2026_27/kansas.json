@@ -1,0 +1,172 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "KU International Admissions - Apply (deadlines, fee, requirements)",
+      "url": "https://world.ku.edu/apply",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "KU International Admissions - English Proficiency",
+      "url": "https://world.ku.edu/english-proficiency",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "KU International Admissions - Scholarships",
+      "url": "https://world.ku.edu/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "admissions_site",
+      "title": "KU International Admissions - Yearly cost estimates",
+      "url": "https://world.ku.edu/costs",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "KU Admissions - Plan for KU Admission (test codes)",
+      "url": "https://admissions.ku.edu/freshman-requirements-deadlines/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for admission; they are considered if submitted and used for placement. The international application says to check the requirements of your school, since some programs may ask for a score.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 90,
+    "notes": "International admission standard: minimum 2.5 GPA on a 4.0 scale for all previous coursework, plus proof of high school graduation for your country. $90 fee payable by credit card; it cannot be waived and the Common App fee waiver is not accepted. English scores must be submitted with the application, but no minimum English score is required for admission; applicants who do not meet full English proficiency can be admitted and take Applied English Center (AEC) courses. Academic records can be unofficial at application; official copies are needed before enrolling. Applicants with a gap of more than three months after high school need a short gap statement.",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "Fall application deadline for students outside the U.S.",
+      "notes": "The page prints no year; taken as fall 2027. Spring deadline is Nov. 15. Students inside the U.S. have a July 25 fall deadline.",
+      "src": "apply"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "Fall scholarship application deadline (complete application by this date)",
+      "notes": "The KU CDS (C14) separately lists Dec. 1 as the priority date for institutional scholarships.",
+      "src": "aid"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "A score or other proof must be submitted with the application, but a minimum is not required for admission. Applicants below the minimums take the online AEC Proficiency Test; those who pass can enroll full time in their degree, others enroll in the Applied English Center (concurrently or beforehand). Exempt: native English speakers; four years of college-prep English and a 2.5+ GPA from a qualifying English-speaking region or U.S.-accredited school; B or better in College English Composition 1 and 2 with 24+ credit hours; full IB diploma with English HL 5+; U.S. associate degree with a 2.5+ GPA. Also accepted: SAT EBRW 590, ACT English+Reading 48, AP English 4, A-level English grade B on both exams, TOEFL paper 60. Scores must be under two years old.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "subs": {
+        "each_section": 18
+      },
+      "notes": "Minimum for full-time degree coursework (not an admission minimum); iBT or Special Home Edition, scale before 2026-01-21.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_section": 4
+      },
+      "notes": "Tests from 2026-01-21 on the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_section": 6.0
+      },
+      "notes": "IELTS Academic; minimum for full-time degree coursework.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "subs": {
+        "each_section": 48
+      },
+      "notes": "PTE Academic.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "notes": "For students with limited access to testing: scores can be shared through Duolingo for the application, but these students must still take the AEC test. No minimum is printed.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Renewable freshman scholarships based on high school GPA alone, available to international students (up to $64,000 over a KU career): KU Excellence 3.95-4.00 GPA $16,000/yr; Distinction 3.85-3.94 $14,000/yr; Achievement 3.70-3.84 $12,000/yr; Performance 3.50-3.69 $10,000/yr; Access 3.25-3.49 $8,000/yr. Renewal needs a 3.0 KU GPA and full-time enrollment; first bachelor's degree or eight semesters. Apply for admission by May 1 to be considered.",
+    "src": "aid"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6871",
+      "note": "KU SAT code.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "1470",
+      "note": "KU ACT code.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "The undergraduate international pages say scores must be sent to KU by the testing agency but do not print a TOEFL code.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Share scores with KU through the Duolingo system; no code.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

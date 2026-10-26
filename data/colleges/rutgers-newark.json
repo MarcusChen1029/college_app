@@ -1,0 +1,74 @@
+{
+  "slug": "rutgers-newark",
+  "name": "Rutgers University-Newark",
+  "short_name": "Rutgers-Newark",
+  "state_region": "NJ",
+  "city": "Newark",
+  "latitude": 40.739122,
+  "longitude": -74.175809,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.newark.rutgers.edu/",
+  "admissions_url": "https://admissions.rutgers.edu/",
+  "ipeds_unit_id": 186399,
+  "undergrad_enrollment": 7989,
+  "intl_undergrads": 148,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Rutgers University-Newark Common Data Set 2023-2024 (pdf; newest posted)",
+      "url": "https://oirap.rutgers.edu/CDS/2023/Newark%20CDS_2023-2024_final_V1.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 enrollment, student-faculty ratio, admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186399",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186399",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 17779,
+    "admits": 13997,
+    "enrolled": 1408,
+    "in_state_applicants": 11913,
+    "in_state_admits": 9612,
+    "out_state_applicants": 3655,
+    "out_state_admits": 2835,
+    "intl_applicants": 2211,
+    "intl_admits": 1550,
+    "notes": "CDS 2023-24 C1 (fall 2023 entering class; newest CDS Rutgers has posted for Newark, no 2024-25 or 2025-26 edition found). International: 2,211 applied, 1,550 admitted (70%), 29 enrolled. SAT/ACT percentiles and GPA (C9, C11, C12) are blank in the CDS; no waitlist policy; no early decision. College Navigator (IPEDS fall 2024) shows 36,793 applicants and 71% admitted, a much larger applicant count than the CDS, so the CDS figures are used here. Enrollment (7,989 undergraduates) and student-faculty ratio (14:1) are College Navigator fall 2024; the CDS has 7,417 and 13:1 for fall 2023."
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8A: SAT/ACT not used in admission decisions; C8F: reviews of applicants for regular admission are test blind."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 14222,
+    "tuition_out_of_state_usd": 33734,
+    "required_fees_usd": 3028,
+    "books_usd": 1418,
+    "room_board_usd": 18722,
+    "total_coa_usd": 58712,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 31,
+    "intl_avg_award_usd": 7467,
+    "notes": "CDS G1 (AY 2024-25): in-state tuition $14,222, out-of-state $33,734, required fees $3,028 (College Navigator shows the same, $36,762 out-of-state with fees). Room and board, books and total are College Navigator 2024-25 on-campus figures (total is the out-of-state on-campus cost; in-state $39,200); the CDS food-and-housing line reads $16,074. CDS H6: only institutional non-need-based aid is available to nonresidents; 31 nonresidents received it (average $7,467)."
+  }
+}

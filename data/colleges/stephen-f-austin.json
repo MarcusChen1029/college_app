@@ -1,0 +1,106 @@
+{
+  "slug": "stephen-f-austin",
+  "name": "Stephen F. Austin State University",
+  "short_name": "SFA",
+  "state_region": "TX",
+  "city": "Nacogdoches",
+  "latitude": 31.621056,
+  "longitude": -94.64908,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.sfasu.edu",
+  "admissions_url": "https://www.sfasu.edu/apply/first-year",
+  "ipeds_unit_id": 228431,
+  "undergrad_enrollment": 9905,
+  "intl_undergrads": 65,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Stephen F. Austin State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.sfasu.edu/docs/institutional-research/common-data-set-complete-25-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Stephen F. Austin State University (fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228431",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228431",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 21123,
+    "admits": 17614,
+    "enrolled": 2372,
+    "in_state_applicants": 16847,
+    "in_state_admits": 16820,
+    "out_state_applicants": 705,
+    "out_state_admits": 705,
+    "intl_applicants": 182,
+    "intl_admits": 83,
+    "pct_submit_sat": 48,
+    "pct_submit_act": 11,
+    "notes": "CDS C1 (fall 2025). Residency split as printed: in-state 16,847 / out-of-state 705 / international 182 / unknown 3,389 applicants (unknown: 6 admitted, 1 enrolled), so the four groups sum to the 21,123 total. International admit count 83 of 182 is as printed. CDS C11 (GPA) and C10 (class rank) were left blank, so no GPA is given. Undergraduate enrollment is the B1 total of all undergraduates (9,905); student-to-faculty ratio 18:1 from CDS I-2. SAT/ACT percentiles are for enrolled first-time students who submitted scores (SAT 48%, ACT 11%)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1040,
+      1130
+    ],
+    "SAT_ERW": [
+      490,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      450,
+      500,
+      558
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 check marks sit in the 'not required for admission, but considered if submitted' column for SAT or ACT. Interview and level of applicant interest were left blank in C7."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 7761,
+    "tuition_out_of_state_usd": 19911,
+    "required_fees_usd": 3467,
+    "room_board_usd": 13940,
+    "books_usd": 1206,
+    "other_usd": 1850,
+    "notes": "CDS G1 (first-year, 2025-2026): in-state tuition $7,761, out-of-state $19,911, required fees $3,467, food and housing $13,940; G5 books $1,206 and other expenses $1,850. No separate international tuition figure is printed in the CDS (the nonresident row is blank)."
+  }
+}

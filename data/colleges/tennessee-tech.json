@@ -1,0 +1,101 @@
+{
+  "slug": "tennessee-tech",
+  "name": "Tennessee Technological University",
+  "short_name": "Tennessee Tech",
+  "state_region": "TN",
+  "city": "Cookeville",
+  "latitude": 36.174754,
+  "longitude": -85.504039,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.tntech.edu",
+  "admissions_url": "https://www.tntech.edu/admissions/",
+  "ipeds_unit_id": 221847,
+  "undergrad_enrollment": 9306,
+  "intl_undergrads": 146,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Tennessee Technological University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.tntech.edu/iare/pdf/institutional_research/CDS-PDF-2025-2026_ADA.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10892,
+    "admits": 8568,
+    "enrolled": 2028,
+    "in_state_applicants": 9254,
+    "in_state_admits": 7735,
+    "out_state_applicants": 835,
+    "out_state_admits": 537,
+    "intl_applicants": 782,
+    "intl_admits": 291,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 94,
+    "gpa_avg": 3.72,
+    "pct_reporting_gpa": 99.6,
+    "gpa_distribution": {
+      "4.0": 36.82,
+      "3.75-3.99": 25.97,
+      "3.50-3.74": 14.91,
+      "3.25-3.49": 8.92,
+      "3.00-3.24": 6.59,
+      "2.50-2.99": 5.8,
+      "2.0-2.49": 0.99
+    },
+    "notes": "Fall 2025 first-year class (CDS C1). International applicants were admitted at 37.2% (291 of 782) versus 78.7% overall, so admission is much tighter for internationals than the headline rate; the CDS reports 0 international enrollees in its residency table although B2 shows 14 nonresident first-time first-year students. 9,306 is the B1 total undergraduate count and 146 the B2 nonresident total. Rolling admission, no waitlist, no deferred admission. Percentiles are for enrolled students; 3% submitted SAT (69 students), 94% ACT (1,909)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1040,
+      1160,
+      1270
+    ],
+    "SAT_ERW": [
+      540,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      520,
+      570,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      20,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 10470,
+    "tuition_out_of_state_usd": 14670,
+    "tuition_intl_usd": 27126,
+    "required_fees_usd": 1456,
+    "room_board_usd": 13326,
+    "books_usd": 1280,
+    "other_usd": 5300,
+    "intl_need_aid_awarded": 91,
+    "intl_avg_award_usd": 16003,
+    "notes": "CDS G1/G5 (first-year, 2026-27). The CDS 'Nonresident' tuition row ($27,126) is used as the international rate; it lists a separate lower 'Out-of-state' rate ($14,670) for U.S. out-of-state students. 'Other' = transportation $2,800 + other expenses $2,500. The CDS box says final 2026-27 costs were not yet available when it was filed. CDS H6: 91 nonresident undergraduates received institutional aid (total $1,456,356, average $16,003)."
+  }
+}

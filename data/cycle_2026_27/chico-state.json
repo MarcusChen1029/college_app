@@ -1,0 +1,161 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Chico State - International admissions overview (deadlines, tuition comparison)",
+   "url": "https://www.csuchico.edu/admissions/international/index.shtml",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Chico State - International admission requirements (freshman)",
+   "url": "https://www.csuchico.edu/admissions/international/requirements.shtml",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Chico State - How to apply: international freshman",
+   "url": "https://www.csuchico.edu/admissions/international/how-to-apply-freshman.shtml",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Chico State - English Language Proficiency Requirement",
+   "url": "https://www.csuchico.edu/admissions/english-proficiency.shtml",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "admissions_site",
+   "title": "Chico State - International estimated cost of attendance 2026-27",
+   "url": "https://www.csuchico.edu/admissions/international/cost-of-attendance.shtml",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "other",
+   "title": "Chico State ISSS - Scholarships, waivers and financial resources for international students",
+   "url": "https://www.csuchico.edu/isss/documents-procedures/scholarships-grants.shtml",
+   "accessed": "2026-10-26"
+  },
+  "bsn": {
+   "kind": "other",
+   "title": "Chico State - Bachelor's Degree in Nursing (BSN)",
+   "url": "https://www.csuchico.edu/academics/college/natural-sciences/departments/school-nursing/bsn.shtml",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - Chico State",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110538",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "The international freshman requirements page says no SAT or ACT scores are required, and CDS C8A says scores are not considered for admission even if submitted (they can place students into higher math or English courses). The CSU system as a whole is test-blind. Eligibility for international freshmen is a 3.0 GPA on the U.S. 4.0 scale.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "fee_waiver": false,
+  "notes": "Apply through Cal State Apply (not the Common App); $70 fee, and international applicants are not eligible for fee waivers. Requirements: 3.0 GPA on the U.S. 4-point scale, a college-preparatory high school program, and beginning algebra, geometry and intermediate algebra each with a C or better. Documents: transcripts with certified English translation, English exam scores if applicable, passport bio page. Financial documents are not required with the application; they are requested after admission so Chico State can issue the I-20. Reviewed on a rolling basis, as soon as two weeks after all materials arrive. Essays and recommendations are not considered (CDS C7).",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International first-year application window closes (fall 2027)",
+   "notes": "The international pages print 'Fall (August start): August 1-May 1' with no year; treated as fall 2027 (opens Aug 1, 2026). Applications are reviewed on a rolling basis; late applications may be accepted case by case. The page lists the same window for undergraduate freshmen and transfers and gives no separate impacted-major dates, so confirm with apply@csuchico.edu.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-04-01",
+   "label": "International Student Excellence Scholarship (new undergraduates)",
+   "notes": "The ISSS page gives an April 1 deadline but also mentions an application for students starting in fall 2025, so it may be outdated; confirm with ISSS. Requires F-1 status, GPA 3.3+, demonstrated financial need and full-time enrollment.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for applicants with at least three years of full-time secondary school or above where English was the principal language of instruction, or from listed English-speaking countries (Australia, Canada except Quebec, Ireland, New Zealand, the United Kingdom, the United States, English-medium schools in South Africa, certain Caribbean nations). Also accepted in place of a test: SAT Evidence-Based Reading and Writing 550, ACT English 22, WAEC SSCE English B3, GCSE/GCE O-level/IGCSE English First Language B, IB English A HL 5, or CSU GE areas A1 and A2 with C or better. Conditional admission through a partner language school is available (see notes on each test).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "TOEFL iBT, Home Edition and Paper Edition accepted at 61. TOEFL Essentials 7.0 is also accepted but is not a selectable test here. The page gives no minimum for the new 1-6 TOEFL scale. Conditional admission: applicants below the minimum can be admitted conditionally by completing a partner language program (ELS level 112, New England School of English level 10, Kaplan high-intermediate, UC Riverside Extension IEP level 600, UC San Diego English Language Institute level 6, USC Intensive Language Program level 5) instead of a TOEFL or IELTS score.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic, Indicator Home and Online accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 47,
+   "notes": "Pearson PTE Academic and Academic Online.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "International Student Excellence Scholarship (new first-year or transfer undergraduates on F-1): nonresident tuition fee waivers of $2,000 to $11,000, one year and not renewable; needs GPA 3.3+ and demonstrated financial need; number of awards not guaranteed; the page may be outdated. Wildcat Scholarships (over 700 awards, open to all students) are open January to mid-February. International students are not eligible for University Basic Needs grants.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 20592,
+  "room_board_usd": 12412,
+  "books_usd": 1122,
+  "other_usd": 3300,
+  "total_coa_usd": 37426,
+  "notes": "Chico State's estimated 2026-27 budget for an international undergraduate (9-month year): tuition and fees $9,288 plus nonresident tuition $11,304 (12 units x $471 x 2) = $20,592 (tuition_intl_usd is tuition and required fees combined); housing $6,750 and meals $5,662 (room_board_usd $12,412); books $1,122; personal $1,800 and health insurance $1,500 (other_usd $3,300); total $37,426. The page calls these estimates. CDS G1 for 2025-26 listed tuition $6,450, nonresident tuition $19,552, required fees $2,446 and food and housing $16,668.",
+  "src": "coa"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Apply to Cal State Apply as Pre-Nursing (the page says pre-nursing typically closes before other majors), then submit a separate NursingCAS application (Jan 1 to Mar 1 for fall). The BSN page states applicants must be legal residents of California, so international students appear not to be eligible."
+  }
+ ],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,175 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "MGA - International students (prospective students: deadlines, documents, scholarship)",
+   "url": "https://www.mga.edu/international/prospective-students.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "MGA - English proficiency (international students)",
+   "url": "https://www.mga.edu/admissions/international-students/english-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "MGA - Traditional freshmen admission requirements",
+   "url": "https://www.mga.edu/admissions/new-students/first-time-students.php",
+   "accessed": "2026-10-26"
+  },
+  "testfaq": {
+   "kind": "admissions_site",
+   "title": "MGA - Test scores, requirements and testing services FAQs",
+   "url": "https://www.mga.edu/ask/admissions-faqs/test-scores-requirements-faqs.php",
+   "accessed": "2026-10-26"
+  },
+  "steps": {
+   "kind": "admissions_site",
+   "title": "MGA - Apply in 4 steps",
+   "url": "https://www.mga.edu/admissions/apply-in-4-steps.php",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "MGA - Admissions FAQs",
+   "url": "https://www.mga.edu/ask/admissions-faqs/index.php",
+   "accessed": "2026-10-26"
+  },
+  "waiver": {
+   "kind": "admissions_site",
+   "title": "MGA - Out-of-state tuition waivers",
+   "url": "https://www.mga.edu/admissions/tuition/out-of-state-waiver.php",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "MGA - Undergraduate tuition and fees (Fall 2026, Spring 2027, Summer 2027)",
+   "url": "https://www.mga.edu/student-account-services/tuition-fees/index.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "MGA's test FAQ states 'MGA does not require SAT or ACT Tests'. Regular admission needs a 2.0 high school GPA, the 17-unit required curriculum, and at least one Reading/Writing criterion (GPA 2.7+, or SAT EBRW 480+, or ACT English/Reading 17+, among others) and one Math criterion (GPA 3.1+, or SAT Math 440+, or ACT Math 17+, among others). Applicants not meeting those can be considered for Access admission with a 2.0 GPA and may be placed in Learning Support. The international pages do not mention ACT/SAT.",
+  "src": "testfaq"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "Apply through MGA's online application ($30, non-refundable, per the 4-steps page); the Common App is not mentioned. International applicants need a course-by-course credential evaluation (including GPA) sent directly to Admissions, proof of English if applicable, immunization form, affidavit of financial support, and bank proof of at least $30,014 (undergraduate; statement or signed bank letter in English, dated within six months).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "International application deadline (fall 2027)",
+   "notes": "International page: fall application June 1 and documents July 1; spring November 1 / December 1; summer April 1 / May 1. Printed without a year; treated as fall 2027. The admissions FAQ says the posted date is a priority deadline and applications are accepted after it.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-01",
+   "label": "International documents deadline (fall 2027)",
+   "notes": "Fall document deadline from the same table; treated as 2027.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-01",
+   "label": "International student scholarship deadline (fall)",
+   "notes": "Needs a completed admission application, 3.0 high school GPA, one-page statement of purpose and the Presidential Waiver Application. The page text refers to fall 2025; the date is printed without a year and treated as 2027. The out-of-state waiver page also gives May 1 for fall.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required when the primary language is not English and the applicant has not attended a U.S. institution of higher education. Besides tests, SAT EBRW 480+ or ACT English 17+ is accepted as proof, as are UK GCSE/A-Level English 'C' or better and Cambridge IGCSE/O Level 'D' or better. Duolingo, conditional admission and an ESL pathway are not mentioned on the page.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "Includes Home Edition and Paper Edition. No 1-6 band value given.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Indicator accepted only through December 2023.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Academic, conventional and online.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 169,
+   "notes": "Cambridge English Scale score (B2 First, C1 Advanced or C2 Proficiency). Michigan English Test 55 and EIKEN Pre-1 are also accepted.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 5280,
+  "tuition_out_of_state_usd": 20400,
+  "tuition_intl_usd": 20970,
+  "required_fees_usd": 862,
+  "notes": "From the Fall 2026/Spring 2027 table at 15 credit hours, doubled: in-state tuition $2,640 per semester; out-of-state total $10,631 and out-of-country total $10,916 per semester, each including $431 of mandatory fees (so tuition $10,200 and $10,485). Fees can be lower at Dublin, Eastman or Warner Robins (recreation fee $90). Housing and meal costs were not read, so they are null.",
+  "src": "tuition"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international scholarship (new fall international students, 3.0 high school GPA, statement of purpose, deadline May 1) can waive up to half of the out-of-state tuition differential and is renewable for up to 4 years with a 2.5 cumulative GPA. Awards are competitive; the out-of-state waiver page says waivers are limited and first come, first served, with no dollar amounts printed.",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5411",
+   "note": "SAT reporting code.",
+   "src": "steps"
+  },
+  "act": {
+   "code": "0837",
+   "note": "ACT reporting code.",
+   "src": "steps"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

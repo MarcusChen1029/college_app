@@ -1,0 +1,109 @@
+{
+  "slug": "louisiana-tech",
+  "name": "Louisiana Tech University",
+  "short_name": "Louisiana Tech",
+  "state_region": "LA",
+  "city": "Ruston",
+  "latitude": 32.528297,
+  "longitude": -92.649963,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.latech.edu",
+  "admissions_url": "https://www.latech.edu/admissions/",
+  "ipeds_unit_id": 159647,
+  "undergrad_enrollment": 10968,
+  "intl_undergrads": 296,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "quarter",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Louisiana Tech University Common Data Set 2025-2026 (xlsx; values read from an archived copy of the file posted on the Louisiana Tech CDS page)",
+      "url": "https://oierp.latech.edu/common-data-set/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11805,
+    "admits": 8477,
+    "enrolled": 2410,
+    "intl_applicants": 2343,
+    "intl_admits": 1292,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 30,
+    "gpa_avg": 3.66,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 34.84,
+      "3.75-3.99": 14.29,
+      "3.50-3.74": 14.62,
+      "3.25-3.49": 12.82,
+      "3.00-3.24": 10.9,
+      "2.50-2.99": 10.94,
+      "2.0-2.49": 1.59
+    },
+    "notes": "CDS C1 (Fall 2025): 5,722 men + 6,083 women applied. The admitted total (8,477) equals the sum of the international (1,292) and 'unknown residency' (7,185) rows; the by-sex admit rows (4,083 + 4,394 + 51) sum to 8,528, so the total is used. International = 'Nonresidents' (2,343 applied, 1,292 admitted = 55%, 84 enrolled); domestic residency was reported as 'unknown', so no in-state/out-of-state split. Only 32% of enrolled first-years submitted scores (ACT 30%, 734 students; SAT 2%, 56), so the score ranges describe self-selected submitters. No early decision/action, no waitlist, no application closing date (priority date Jan 1 per C14). Undergraduate enrollment and nonresident count are B1/B2 totals (10,968; 296)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      568,
+      620,
+      673
+    ],
+    "SAT_MATH": [
+      620,
+      640,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      27,
+      28,
+      31
+    ],
+    "ACT_ENGLISH": [
+      27,
+      30,
+      33
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "I"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7010,
+    "tuition_out_of_state_usd": 13751,
+    "required_fees_usd": 3724,
+    "room_board_usd": 11487,
+    "books_usd": 1641,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "CDS G1 first-year figures. The international admissions page gives its own nine-month budget: tuition and fees $23,418 ($12,369 with the Bulldog Out-of-State Scholarship), living expenses $5,370, books and insurance $1,900, total $30,688 ($19,639 with the scholarship); no year is printed on that page. CDS H6 says non-need-based institutional aid is available to nonresidents but gives no counts or amounts."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "um-flint",
+  "name": "University of Michigan-Flint",
+  "short_name": "UM-Flint",
+  "state_region": "MI",
+  "city": "Flint",
+  "latitude": 43.01875,
+  "longitude": -83.690276,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.umflint.edu",
+  "admissions_url": "https://www.umflint.edu/admissions/international-students/first-year-international-students/",
+  "ipeds_unit_id": 171146,
+  "undergrad_enrollment": 5011,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Michigan-Flint Common Data Set 2024-2025 (PDF, linked from the Institutional Analysis Common Data Set page)",
+      "url": "https://drive.google.com/file/d/15mJs4jKML-Z_FF649KWTzgbnLlQpaHR2/view?usp=sharing",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 11872,
+    "admits": 8366,
+    "enrolled": 555,
+    "pct_submit_sat": 64,
+    "pct_submit_act": 3,
+    "gpa_avg": 3.5,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 15,
+      "3.75-3.99": 25,
+      "3.50-3.74": 16,
+      "3.25-3.49": 13,
+      "3.00-3.24": 11,
+      "2.50-2.99": 15,
+      "2.0-2.49": 4
+    },
+    "notes": "CDS C1 (fall 2024); totals are men + women + unknown and match the C1 residency total row. The CDS residency breakdown (in-state / out-of-state / international) is internally inconsistent as printed (e.g. enrolled in-state 1,054 against 555 total enrolled), so international applicants and admits are left null. 2025-2026 CDS not found: the Institutional Analysis site blocks automated access and the newest CDS on its page (Internet Archive copy, Aug 2025) is 2024-2025. Undergraduate enrollment is the B1 total (5,011, includes part-time and non-degree students); intl_undergrads is the B2 nonresident total (59). Student-to-faculty ratio 14:1 (CDS I-2). The 'Percent in top tenth/quarter' class-rank entries in C10 look unreliable (based on 1 reporting student) and are not used. SAT/ACT percentiles are for enrolled first-time students who submitted scores (SAT 64%, ACT 3%)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      970,
+      1110,
+      1220
+    ],
+    "SAT_ERW": [
+      500,
+      560,
+      630
+    ],
+    "SAT_MATH": [
+      462,
+      540,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      23,
+      24
+    ],
+    "ACT_ENGLISH": [
+      15,
+      22,
+      24
+    ],
+    "ACT_MATH": [
+      19,
+      20,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 14208,
+    "tuition_out_of_state_usd": 27744,
+    "tuition_intl_usd": 27744,
+    "required_fees_usd": 682,
+    "room_board_usd": 12854,
+    "books_usd": 700,
+    "other_usd": 1310,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 30,
+    "intl_avg_award_usd": 5815,
+    "notes": "CDS G1 (first-year, 2024-2025): in-state tuition $14,208, out-of-state and non-resident $27,744, required fees $682, food and housing $12,854; G5 books $700, other $1,310. CDS H6: only institutional non-need-based aid for nonresidents; 30 nonresidents awarded, average $5,815. The current International Tuition & Fees page (year not printed; captured Aug 2026) lists undergraduate lower-division tuition of $29,002 for 12 credits per semester, with estimated total international expenses of $45,215 (living $11,943, health insurance $2,470, books $800, miscellaneous $1,000); mandatory fees are not included."
+  }
+}

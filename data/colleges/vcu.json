@@ -1,0 +1,119 @@
+{
+  "slug": "vcu",
+  "name": "Virginia Commonwealth University",
+  "short_name": "VCU",
+  "state_region": "VA",
+  "city": "Richmond",
+  "latitude": 37.54962,
+  "longitude": -77.452697,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.vcu.edu/",
+  "admissions_url": "https://admissions.vcu.edu/",
+  "ipeds_unit_id": 234030,
+  "undergrad_enrollment": 21210,
+  "intl_undergrads": 468,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Virginia Commonwealth University Common Data Set 2024-2025 (PDF)",
+      "url": "https://irds.vcu.edu/media/decision-support/pdf/commondatasets/CommonDataSet2024-25.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_loc": {
+      "kind": "ipeds",
+      "title": "IPEDS institutional directory (location, locale) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/directory/2023/?unitid=234030",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 24804,
+    "admits": 20769,
+    "enrolled": 4449,
+    "in_state_applicants": 17109,
+    "in_state_admits": 15171,
+    "out_state_applicants": 5836,
+    "out_state_admits": 4401,
+    "intl_applicants": 797,
+    "intl_admits": 596,
+    "pct_submit_sat": 33.7,
+    "pct_submit_act": 3,
+    "gpa_avg": 3.63,
+    "pct_reporting_gpa": 97.89,
+    "gpa_distribution": {
+      "4.0": 26.29,
+      "3.75-3.99": 16.66,
+      "3.50-3.74": 16.93,
+      "3.25-3.49": 15.27,
+      "3.00-3.24": 13.16,
+      "2.50-2.99": 11.4,
+      "2.0-2.49": 0.26,
+      "1.0-1.99": 0.03
+    },
+    "notes": "CDS C1 (fall 2024 entering class). VCU's 2025-2026 CDS was not posted on the IRDS Common Data Set page when checked, so this is the latest available. Residency split from the C1 residency table: in-state 17,109 / out-of-state 5,836 / international 797 / unknown 1,062 applicants; 15,171 / 4,401 / 596 / 601 admitted; 3,806 / 469 / 84 / 90 enrolled. The by-gender lines in C1 do not sum to these totals (CDS note: gender detail need not sum). Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (21,210; 468 nonresidents). SAT/ACT percentiles cover only the 33.7% (1,442) / 3% (127) of enrollees who submitted scores. No early decision (C21); the admissions deadlines page lists only a Nov. 1 scholarship date and a Jan. 15 regular decision date."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1010,
+      1140,
+      1260
+    ],
+    "SAT_ERW": [
+      520,
+      580,
+      650
+    ],
+    "SAT_MATH": [
+      490,
+      550,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      30
+    ],
+    "ACT_ENGLISH": [
+      21,
+      25,
+      31
+    ],
+    "ACT_MATH": [
+      18,
+      25,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F (2024-25): test scores not required of freshman applicants over 22; test optional for some freshmen meeting criteria. The current admissions pages say all first-year applicants may apply test optional."
+  }
+}

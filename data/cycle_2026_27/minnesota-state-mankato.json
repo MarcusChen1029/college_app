@@ -1,0 +1,114 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Minnesota State Mankato - International first-year students",
+      "url": "https://www.mnsu.edu/become-a-student/international-students/requirements/international-first-year-students/",
+      "accessed": "2026-10-26"
+    },
+    "paper": {
+      "kind": "admissions_site",
+      "title": "Minnesota State Mankato - Submit your international student paperwork",
+      "url": "https://www.mnsu.edu/become-a-student/international-students/requirements/international-undergraduate-application-process-calendar/submit-your-international-student-paperwork/",
+      "accessed": "2026-10-26"
+    },
+    "cal": {
+      "kind": "admissions_site",
+      "title": "Minnesota State Mankato - International undergraduate application process and calendar",
+      "url": "https://www.mnsu.edu/become-a-student/international-students/requirements/international-undergraduate-application-process-calendar/",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Minnesota State Mankato - Undergraduate admission requirements",
+      "url": "https://www.mnsu.edu/become-a-student/undergraduate-students/requirements/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "'Minnesota State Mankato is test-optional for admissions.' International applicants: SAT/ACT optional, and the international page states no ACT/SAT minimum. Domestic automatic admission: HS GPA 3.0+, top 50% of class, or ACT 21+ with 2.7 GPA.",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 20,
+    "notes": "Apply through Minnesota State Mankato's eServices (create a StarID); $20 non-refundable fee, payable after submitting. International first-year applicants need cumulative secondary results equivalent to a U.S. 3.0 GPA or better. F-1/J-1 applicants are not eligible for the comprehensive-review route. Applicants from Bangladesh, Kyrgyzstan, Malawi, Pakistan and Uganda must also complete an admission interview.",
+    "src": "paper"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International application deadline, fall 2027 (students needing an F-1 visa)",
+      "notes": "Applicants who already hold an active F-1 visa: Aug. 10. Page prints no year; treated as fall 2027. No priority dates are published.",
+      "src": "cal"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Alternatives to a test: Intensive English Program (IEP) at Minnesota State Mankato with a B+ average and at least a B in each Advanced course; ELS level 112; SAT Reading 400+; ACT English 15+; or one semester of freshman English composition with C or better at a U.S. college. Aviation-Professional Flight and Nursing require higher scores (numbers not given on the page).",
+    "src": "fy"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Tests before 2026-01-21. Higher for Nursing and Aviation-Professional Flight.",
+      "src": "fy"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "Tests after 2026-01-21 (page does not name the 1-6 scale).",
+      "src": "fy"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic.",
+      "src": "fy"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "fy"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 47,
+      "src": "fy"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "All degree-seeking international bachelor's students automatically receive the International Maverick Scholarship unless they opt out; it cuts estimated tuition and fees from $21,013 to $13,137 (a $7,876 difference). The cost page does not list the renewal requirements.",
+    "src": "intlcost"
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

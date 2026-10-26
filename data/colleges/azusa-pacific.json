@@ -1,0 +1,79 @@
+{
+  "slug": "azusa-pacific",
+  "name": "Azusa Pacific University",
+  "short_name": "APU",
+  "state_region": "CA",
+  "city": "Azusa",
+  "latitude": 34.130047,
+  "longitude": -117.888375,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.apu.edu/",
+  "admissions_url": "https://www.apu.edu/undergraduate-admissions/",
+  "ipeds_unit_id": 109785,
+  "undergrad_enrollment": 2759,
+  "intl_undergrads": 124,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=109785",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Azusa Pacific University (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=109785",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=109785",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 3850,
+    "admits": 3060,
+    "enrolled": 420,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 4,
+    "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). APU's own Common Data Set page lists files only through 2020-21, so no recent CDS was used; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 3,404 applicants, 88% admitted, 14% of admits enrolled, but only 12 SAT (3%) and 7 ACT (2%) score submitters (SAT EBRW 515/615, Math 468/623, ACT 25/30 as 25th/75th), so the fall 2023 scores are kept. Undergraduate enrollment 2,759 and student-faculty ratio 9:1 are from College Navigator (fall 2024)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      512,
+      590,
+      657
+    ],
+    "SAT_MATH": [
+      482,
+      555,
+      657
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      24,
+      26
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      16,
+      23,
+      25
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "fa": {
+   "kind": "admissions_site",
+   "title": "Radford University - Freshman Application Guidelines",
+   "url": "https://www.radford.edu/admissions/freshmen/application-guidelines.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Radford University - International Student Application Requirements",
+   "url": "https://www.radford.edu/admissions/international/application-requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "tui": {
+   "kind": "financial_aid_site",
+   "title": "Radford University - International Student Tuition, Fees and Financial Aid",
+   "url": "https://www.radford.edu/admissions/international/tuition.html",
+   "accessed": "2026-10-26"
+  },
+  "fin": {
+   "kind": "admissions_site",
+   "title": "Radford University - Financial Requirements for international students (McGlothlin Center)",
+   "url": "https://www.radford.edu/global-education/new-students/financial.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Radford is test-optional: SAT, ACT and CLT scores are not required and submitting them will not hurt a decision. Direct admission asks for a 3.0 cumulative GPA and three college-preparatory math courses; successful applicants typically have at least a 2.6 GPA. The CDS (C8) separately ticks SAT/ACT as 'not considered'.",
+  "src": "fa"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Optional essay about yourself.",
+  "notes": "No application fee for freshmen. Apply with Radford's own application or the Common App. High school transcript required (unofficial copy accepted for review, official before enrollment); letters of recommendation are not mentioned. International applicants also submit proof of English proficiency, official transcripts in English, a passport copy, a financial statement and an Affidavit of Support if others are supporting them, and applicants from Ghana, Nigeria, Sierra Leone, The Gambia and Liberia need an official WAEC scratch card. An $800 non-refundable enrollment deposit is due after admission. Music and dance majors must audition.",
+  "src": "fa"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (fall 2027 entry)",
+   "notes": "The page prints Nov. 1 without a year; taken as fall 2027 entry. Fall decisions begin Nov. 15 and then roll out, typically 2-3 weeks after an application is complete.",
+   "src": "fa"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular deadline (fall 2027 entry)",
+   "notes": "The page prints Feb. 1 without a year; taken as fall 2027 entry. Rolling review continues through July 31 'as space is available'.",
+   "src": "fa"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International undergraduate fall deadline",
+   "notes": "The international requirements page lists Fall: July 1 and Spring: December 1 for undergraduates (no year printed; taken as fall 2027). The domestic freshman page gives a Feb. 1 regular date, so apply well before July 1 to leave time for the I-20 and visa.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: transfer from a U.S. institution, or prior attendance at an institution in a listed waiver country (including Canada, Australia, the United Kingdom, Ireland, New Zealand, Jamaica and Kenya; full list on the page). Alternatives to the tests listed: SAT with a minimum 480 in Reading/Writing, TIE B2, HKDSE 4, IGCSE/GCSE/GCE grade C in English, Oxford Online Placement Test 60, NCUK EAP grade C, TOEIC 620, EIKEN Pre-1. Scores must be within the last two calendar years. No conditional admission or ESL pathway is mentioned on the page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 68,
+   "notes": "Undergraduate minimum. A 1-6 band-scale minimum is not published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "reading": 5.5
+   },
+   "notes": "Minimum 6.0 overall with at least 5.5 in Reading.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 160,
+   "notes": "Listed as B2/160.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International freshmen and transfers are automatically considered for a merit scholarship of $6,000 to $10,000 based on the academic record in the application; no separate aid application. Radford University Foundation scholarships have applications open Nov. 1 to Feb. 5. International students are not eligible for federal aid. The international pages describe only merit awards, while the CDS (H6) ticks both need-based and non-need-based institutional aid as available to nonresidents (55 recipients, average $11,556). Proof of funds for one full year is required; the Minimum Funding table shows tuition and fees $27,682, housing $7,332, meals $5,866 and miscellaneous $7,000, with a printed total of $45,858 that does not match the line items.",
+  "src": "tui"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The freshman application page prints no SAT code; look up Radford University in the College Board code search.",
+   "src": "fa"
+  },
+  "act": {
+   "code": null,
+   "note": "The freshman application page prints no ACT code; look it up at act.org.",
+   "src": "fa"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages reviewed; confirm with admissions before sending.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D"
+ },
+ "tier_notes": {}
+}

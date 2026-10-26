@@ -1,0 +1,133 @@
+{
+ "slug": "fgcu",
+ "name": "Florida Gulf Coast University",
+ "short_name": "FGCU",
+ "state_region": "FL",
+ "city": "Fort Myers",
+ "latitude": 26.463638,
+ "longitude": -81.7726,
+ "setting": "suburban",
+ "control": "public",
+ "website": "https://www.fgcu.edu",
+ "admissions_url": "https://www.fgcu.edu/admissionsandaid/undergraduateadmissions/",
+ "ipeds_unit_id": 433660,
+ "undergrad_enrollment": 14434,
+ "intl_undergrads": 347,
+ "student_faculty_ratio": 20,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "Florida Gulf Coast University Common Data Set 2024-2025 (PDF; the 2025-26 edition is not posted)",
+   "url": "https://www.fgcu.edu/planning/institutionalresearch/files/cds-2024-2025-ada.pdf",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - Florida Gulf Coast University (student-to-faculty ratio)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=433660",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "cds",
+  "applicants": 20422,
+  "admits": 12956,
+  "enrolled": 2706,
+  "in_state_applicants": 6229,
+  "in_state_admits": 5489,
+  "out_state_applicants": 13712,
+  "out_state_admits": 7301,
+  "intl_applicants": 473,
+  "intl_admits": 166,
+  "pct_submit_sat": 79,
+  "pct_submit_act": 45,
+  "gpa_avg": 4.12,
+  "pct_reporting_gpa": 100,
+  "gpa_distribution": {
+   "4.0": 56,
+   "3.75-3.99": 15,
+   "3.50-3.74": 14,
+   "3.25-3.49": 9,
+   "3.00-3.24": 4,
+   "2.50-2.99": 2,
+   "2.0-2.49": 0,
+   "1.0-1.99": 0
+  },
+  "notes": "Fall 2024 first-year class (CDS C1). International applicants 473 and admits 166 (35% vs 63% overall; 88% in-state, 53% out-of-state), so an international applicant is far from guaranteed. Undergrad enrollment and intl count are B1/B2 totals (14,434; nonresident 347). GPA 4.12 is the average weighted high school GPA (C12). C11 distribution is for all enrolled students. FGCU has no waitlist (C2)."
+ },
+ "scores": {
+  "SAT_TOTAL": [
+   1050,
+   1110,
+   1200
+  ],
+  "SAT_ERW": [
+   530,
+   570,
+   610
+  ],
+  "SAT_MATH": [
+   510,
+   540,
+   590
+  ],
+  "ACT_COMPOSITE": [
+   20,
+   22,
+   25
+  ],
+  "ACT_ENGLISH": [
+   19,
+   22,
+   24
+  ],
+  "ACT_MATH": [
+   17,
+   20,
+   24
+  ]
+ },
+ "factors": {
+  "rigor": "C",
+  "class_rank": "I",
+  "gpa": "VI",
+  "test_scores": "VI",
+  "essay": "C",
+  "recommendations": "NC",
+  "interview": "NC",
+  "extracurriculars": "NC",
+  "talent_ability": "C",
+  "character": "NC",
+  "first_generation": "C",
+  "alumni_relation": "NC",
+  "geographic_residence": "NC",
+  "state_residency": "NC",
+  "religious_affiliation": "NC",
+  "volunteer_work": "C",
+  "work_experience": "C",
+  "demonstrated_interest": "NC"
+ },
+ "cds_test_policy": {
+  "cycle": "2026-27",
+  "policy": "required",
+  "notes": "CDS C8A (Fall 2026): SAT or ACT 'required to be considered for admission'; C8F says scores are not required for first-time applicants earning an AA."
+ },
+ "cost": {
+  "year": "2025-2026",
+  "source": "cds",
+  "tuition_usd": 4191,
+  "tuition_out_of_state_usd": 22328,
+  "tuition_intl_usd": 22328,
+  "required_fees_usd": 1927,
+  "room_board_usd": 10102,
+  "books_usd": 1200,
+  "intl_need_aid": false,
+  "intl_need_aid_awarded": 179,
+  "intl_avg_award_usd": 10330,
+  "notes": "CDS G1 (2025-26, first-year): in-state tuition $4,191, non-resident tuition $22,328, required fees $1,927, on-campus food and housing $10,102; G5 books $1,200, transportation $2,750, other $2,750. College Navigator lists out-of-state tuition and fees of $25,162 (about $900 more than the CDS sum). H6: only non-need-based institutional aid is available to nonresidents; 179 received it (avg $10,330)."
+ }
+}

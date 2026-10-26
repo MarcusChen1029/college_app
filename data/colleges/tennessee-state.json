@@ -1,0 +1,146 @@
+{
+  "slug": "tennessee-state",
+  "name": "Tennessee State University",
+  "short_name": "TSU",
+  "state_region": "TN",
+  "city": "Nashville",
+  "latitude": 36.166321,
+  "longitude": -86.828275,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.tnstate.edu",
+  "admissions_url": "https://www.tnstate.edu/admissions/",
+  "ipeds_unit_id": 221838,
+  "undergrad_enrollment": 4221,
+  "intl_undergrads": 74,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "TSU Common Data Set 2025-2026, section C First-Time, First-Year Admission (PDF; file header says 2024-2025 but the data are fall 2025)",
+      "url": "https://wst-media.sfo2.digitaloceanspaces.com/TSU/wp-content/uploads/2026/10/19212944/First-Time-First-Year-Admission-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cdsenr": {
+      "kind": "cds",
+      "title": "TSU Common Data Set 2025-2026, section B Enrollment and Persistence (PDF)",
+      "url": "https://wst-media.sfo2.digitaloceanspaces.com/TSU/wp-content/uploads/2026/10/19212910/Enrollment-And-Persistence-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cdsaid": {
+      "kind": "cds",
+      "title": "TSU Common Data Set 2025-2026, section H Financial Aid (PDF)",
+      "url": "https://wst-media.sfo2.digitaloceanspaces.com/TSU/wp-content/uploads/2026/10/20144125/Financial-Aid-1.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (2024-25 tuition and expense estimates)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=221838",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8804,
+    "admits": 7451,
+    "enrolled": 457,
+    "in_state_applicants": 1800,
+    "in_state_admits": 1465,
+    "out_state_applicants": 6920,
+    "out_state_admits": 5905,
+    "intl_applicants": 84,
+    "intl_admits": 81,
+    "pct_submit_sat": 30,
+    "pct_submit_act": 67,
+    "gpa_avg": 3.35,
+    "pct_reporting_gpa": 97.2,
+    "gpa_distribution": {
+      "4.0": 12.6,
+      "3.75-3.99": 11.5,
+      "3.50-3.74": 15.3,
+      "3.25-3.49": 17.3,
+      "3.00-3.24": 18.5,
+      "2.50-2.99": 21.2,
+      "2.0-2.49": 2.9,
+      "1.0-1.99": 0.7
+    },
+    "notes": "CDS C1 for fall 2025 (the TSU 2025-26 CDS files are headed 'Common Data Set 2024-2025' but ask for Fall 2025 data): 8,804 applied, 7,451 admitted (85%), 457 enrolled. International: 84 applied, 81 admitted (96%), 4 enrolled. GPA distribution is the 'all enrolled students' column of C11. pct_submit_sat/act are the C9 percentages (138 SAT, 307 ACT of the 457 enrolled). C7 factors: academic GPA and test scores very important, rigor and class rank considered, everything else not considered (the x marks were readable). Undergraduate enrollment 4,221 and 74 nonresident undergraduates are from B1/B2 (fall 2025); student-to-faculty ratio 11 to 1 is CDS I-2 (College Navigator shows 13 to 1)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      900,
+      970,
+      1120
+    ],
+    "SAT_ERW": [
+      457,
+      520,
+      582
+    ],
+    "SAT_MATH": [
+      430,
+      470,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      21
+    ],
+    "ACT_ENGLISH": [
+      15,
+      18,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      16,
+      19
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "required",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'required to be considered for admission'."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 8616,
+    "tuition_out_of_state_usd": 22416,
+    "books_usd": 1600,
+    "room_board_usd": 11150,
+    "other_usd": 5811,
+    "intl_need_aid": true,
+    "intl_avg_award_usd": 19162,
+    "notes": "College Navigator estimates for full-time beginning undergraduates, 2024-25 (the latest published there): tuition AND fees in-state $8,616, out-of-state $22,416; on-campus food and housing $11,150; books $1,600; other expenses $5,811. The TSU 2025-26 CDS left section G blank (final costs due 7/1/2026) and its 2026-27 tuition schedule is a scanned image, so newer figures could not be read; TSU says to expect 2-5% increases. No separate international tuition rate is stated on the pages reviewed, so out-of-state is the likely rate. CDS H6 (nonresident undergraduates): institutional need-based aid is available; 84 received it, average $19,162, total $1,609,573."
+  }
+}

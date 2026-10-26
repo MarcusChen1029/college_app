@@ -1,0 +1,130 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UTEP Admissions - International students (apply, test scores, codes)",
+      "url": "https://www.utep.edu/admissions/international-student/index.html",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "UTEP Admissions - Freshman (how to apply, pathways to admission)",
+      "url": "https://www.utep.edu/admissions/first-time-in-college/index.html",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "UTEP Undergraduate Catalog - International Student Admission",
+      "url": "https://catalog.utep.edu/admissions/undergraduate/international/",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UTEP Undergraduate Catalog (archived page) - Admission dates and fees",
+      "url": "https://www.utep.edu/catalogs/temp/undergrad/ug_intro_3_admissions.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "flexible",
+    "notes": "International applicants must submit an entrance exam; SAT 1070 (with 480 reading) or ACT 23 (with 19 English), TOEFL iBT 61 or PTE 44 each satisfy it (IELTS not accepted). Domestic assured admission by class rank and SAT/ACT: top 25% no minimum; 2nd 25% SAT 920/ACT 19; 3rd 25% 970/20; 4th 25% 1010/21 (other pathways exist).",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Apply through ApplyTexas ('own'). The $65 fee is for international applicants (no application fee for domestic applicants, no essay requirement). International first-year applicants need a cumulative average equivalent to 3.0 on a 4.0 scale plus the test scores above, official transcripts sent directly by the school (certified English translation if needed) and a Certification of Financial Resources form before an I-20 is issued. Admission to UTEP does not assure admission into the professional colleges or programs with secondary admission requirements.",
+    "src": "cat"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "Fall priority date / international document due date (fall 2027 entry)",
+      "notes": "CDS C14 lists a fall priority date of 5/1 and an archived UTEP catalog page lists May 1 as the fall international document due date; current admissions pages print no international deadline, so confirm with UTEP. Applications are accepted year-round and decisions are rolling (CDS C16). Files completed after the due date roll to the next semester.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for students from countries where English is the native or official language of instruction, with SAT reading 480 or ACT English 19, or with a C or better in a freshman-level reading/writing-intensive course at another U.S. institution. Completing UTEP's English Language Institute also meets the requirement. Admitted students who took the TOEFL below 600 or PTE below 68 must take the ACCUPLACER ESL test and may be placed in ESOL courses.",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Or 500 on UTEP's institutional paper-based TOEFL; the current page does not mention the new 1-6 scale, so no TOEFL_IBT_2026 minimum is listed.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "not_accepted",
+      "notes": "UTEP does not accept IELTS scores for admission.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "UTEP's catalog calls financial assistance for international students limited. Citizens of Mexico who meet the PASE requirements might qualify to pay Texas resident tuition. CDS H6 reports institutional need-based and non-need-based aid for nonresidents (373 recipients, avg $10,216). No international merit scholarship amounts were found on UTEP's admissions pages.",
+    "src": "cat"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6829",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4223",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6829",
+      "note": "Same code as SAT.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "IELTS is not accepted for undergraduate admission.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Duolingo is not listed as an accepted undergraduate test and no code is given.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "Send official PTE scores directly to UTEP; no institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

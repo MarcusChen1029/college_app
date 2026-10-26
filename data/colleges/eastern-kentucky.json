@@ -1,0 +1,77 @@
+{
+  "slug": "eastern-kentucky",
+  "name": "Eastern Kentucky University",
+  "short_name": "EKU",
+  "state_region": "KY",
+  "city": "Richmond",
+  "latitude": 37.740845,
+  "longitude": -84.300796,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.eku.edu",
+  "admissions_url": "https://www.eku.edu/admissions/",
+  "ipeds_unit_id": 156620,
+  "undergrad_enrollment": 13448,
+  "intl_undergrads": 90,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=156620",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=156620&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=156620",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 17024,
+    "admits": 13212,
+    "enrolled": 2635,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 97,
+    "notes": "Baseline from IPEDS fall 2024 (admit rate 77.6%). No Common Data Set could be read: EKU's Institutional Research data page is a login/JavaScript app and no CDS PDF was found in two attempts, so no international split, GPA or residency data. Test scores from College Navigator cover enrolled first-time students (2,561 ACT, 97%; only 9 SAT, 1%, so SAT percentiles are omitted). International applicant counts are not published."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      19,
+      23,
+      25
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      26
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 10320,
+    "tuition_out_of_state_usd": 21230,
+    "room_board_usd": 12268,
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $10,320, out-of-state $21,230; on-campus food and housing $12,268; other expenses $3,650."
+  }
+}

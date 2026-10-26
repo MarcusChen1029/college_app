@@ -1,0 +1,80 @@
+{
+  "slug": "new-orleans",
+  "name": "LSU New Orleans (formerly University of New Orleans)",
+  "short_name": "UNO",
+  "state_region": "LA",
+  "city": "New Orleans",
+  "latitude": 30.027704,
+  "longitude": -90.067142,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.lsuneworleans.edu",
+  "admissions_url": "https://www.lsuneworleans.edu/admissions",
+  "ipeds_unit_id": 159939,
+  "undergrad_enrollment": 5419,
+  "intl_undergrads": 90,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - University of New Orleans / LSU New Orleans (IPEDS, fall 2024 admissions, test scores, costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159939",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions and Enrollment, fall 2024 (ADM2024) via the Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=159939",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2024 (EF2024): undergraduate total and nonresident alien headcount via the Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=159939",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 7401,
+    "admits": 5500,
+    "enrolled": 993,
+    "pct_submit_sat": 6,
+    "pct_submit_act": 82,
+    "notes": "Baseline from IPEDS (fall 2024 first-time degree-seeking entering class): 7,401 applicants, 5,500 admitted (74.3%), 993 enrolled (973 full-time). No readable Common Data Set was found (uno.edu lists only 2016-2019 sets and no newer one was found), so GPA, residency and international admission splits are not available (intl_applicants/intl_admits left null). SAT/ACT percentile ranges and the percent submitting scores come from College Navigator (fall 2024). Undergraduate enrollment 5,419 and nonresident alien 90 are IPEDS fall 2024 headcounts (College Navigator rounds nonresidents to 2%). Student-faculty ratio 19:1 from College Navigator. The university was renamed from University of New Orleans to LSU New Orleans on July 1, 2026 when it moved back into the LSU System; IPEDS/College Navigator figures above were published under the old name."
+  },
+  "scores": {
+    "SAT_ERW": [
+      480,
+      null,
+      616
+    ],
+    "SAT_MATH": [
+      455,
+      null,
+      625
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      null,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 9172,
+    "tuition_out_of_state_usd": 14008,
+    "room_board_usd": 11292,
+    "books_usd": 1300,
+    "total_coa_usd": 31040,
+    "intl_need_aid": false,
+    "notes": "College Navigator 2024-25: published tuition and fees $9,172 in-state / $14,008 out-of-state (fees included); on-campus room and board $11,292; books and supplies $1,300; total on-campus cost of attendance $26,204 in-state / $31,040 out-of-state (the out-of-state figure is stored as total_coa_usd). The bursar page also lists a $150 'International Fee' and a non-resident fee for students who are not Louisiana residents; the university's I-20 estimate is about $35,000 per academic year plus $5,000 per dependent (see cycle notes)."
+  }
+}

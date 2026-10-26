@@ -1,0 +1,79 @@
+{
+ "slug": "northwest-missouri-state",
+ "name": "Northwest Missouri State University",
+ "short_name": "Northwest",
+ "state_region": "MO",
+ "city": "Maryville",
+ "latitude": 40.351692,
+ "longitude": -94.883339,
+ "setting": "rural",
+ "control": "public",
+ "website": "https://www.nwmissouri.edu",
+ "admissions_url": "https://www.nwmissouri.edu/admissions/international/",
+ "ipeds_unit_id": 178624,
+ "undergrad_enrollment": 5241,
+ "intl_undergrads": 121,
+ "student_faculty_ratio": 16,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+   "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "navigator": {
+   "kind": "ipeds",
+   "title": "College Navigator - Northwest Missouri State University (fall 2024 admissions, enrollment, student-to-faculty ratio, tuition)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=178624",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=178624",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 6834,
+  "admits": 5871,
+  "enrolled": 1035,
+  "pct_submit_sat": 2,
+  "pct_submit_act": 76,
+  "notes": "No current Common Data Set found on nwmissouri.edu (searched 2026-10-26), so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 5,185 applicants, 86% admitted, 22% of admitted enrolled (no admit count printed, so none is computed). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. Undergraduate enrollment 5,241 and student-to-faculty ratio 16:1 are College Navigator fall 2024. Only 19 SAT submitters in 2023 (2%), so SAT percentiles rest on a very small group."
+ },
+ "scores": {
+  "SAT_ERW": [
+   480,
+   560,
+   600
+  ],
+  "SAT_MATH": [
+   490,
+   550,
+   600
+  ],
+  "ACT_COMPOSITE": [
+   18,
+   21,
+   23
+  ],
+  "ACT_ENGLISH": [
+   16,
+   20,
+   23
+  ],
+  "ACT_MATH": [
+   16,
+   19,
+   23
+  ]
+ }
+}

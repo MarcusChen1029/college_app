@@ -1,0 +1,50 @@
+{
+  "slug": "catholic-university",
+  "name": "The Catholic University of America",
+  "short_name": "CUA",
+  "state_region": "DC",
+  "city": "Washington",
+  "latitude": 38.933651,
+  "longitude": -76.997909,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.catholic.edu/",
+  "admissions_url": "https://www.catholic.edu/admission-aid/undergraduate-admission",
+  "ipeds_unit_id": 131283,
+  "undergrad_enrollment": 3177,
+  "intl_undergrads": 111,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=131283",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - The Catholic University of America (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=131283",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=131283",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 5874,
+    "admits": 4925,
+    "enrolled": 861,
+    "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). No Common Data Set could be reached (the Institutional Research site returned 403 and its data library needs a university login), so GPA, international and residency splits are not added; the international admit rate is unknown. CUA does not consider SAT/ACT scores and IPEDS reports no score percentiles or submission rates. College Navigator for fall 2024 shows 6,714 applicants, 83% admitted and 13% of admits enrolled (admit count not given as an exact number). Undergraduate enrollment 3,177 and student-faculty ratio 11:1 are from College Navigator (fall 2024)."
+  }
+}

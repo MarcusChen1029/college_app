@@ -1,0 +1,179 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UMass Dartmouth - Undergraduate Dates & Deadlines",
+      "url": "https://www.umassd.edu/undergraduate/dates-deadlines/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UMass Dartmouth - International Undergraduate Application",
+      "url": "https://www.umassd.edu/undergraduate/international/apply/",
+      "accessed": "2026-10-26"
+    },
+    "gateway": {
+      "kind": "admissions_site",
+      "title": "UMass Dartmouth - International Gateway Program",
+      "url": "https://www.umassd.edu/undergraduate/international/apply/gateway/",
+      "accessed": "2026-10-26"
+    },
+    "fin": {
+      "kind": "financial_aid_site",
+      "title": "UMass Dartmouth - Financial Information for International Undergraduate Students",
+      "url": "https://www.umassd.edu/undergraduate/international/financial/",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "UMass Dartmouth - Admissions Requirements",
+      "url": "https://www.umassd.edu/undergraduate/requirements/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UMass Dartmouth is 100% test optional for SAT/ACT. A score of 1080+ SAT or 22+ ACT (1200 SAT and 25 ACT for nursing) is encouraged because many programs are competitive.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 60,
+    "notes": "Apply with the Common App or the UMass Dartmouth application; $60 fee. International transcripts must be sealed official copies translated into English, with a minimum GPA of 2.5; 17 college-prep courses are required (4 English, 4 math, 2 foreign language, 3 lab science, 2 social science, 2 electives). Essay (up to 650 words) and a teacher/counselor letter are optional but recommended for competitive programs such as nursing, biology, engineering and psychology. Visual and Performing Arts programs require a portfolio or audition. Proof of funds of at least $54,000 (less any scholarship) is needed for the I-20.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Early Action application deadline (fall 2027 entry)",
+      "notes": "The Dates & Deadlines page prints these dates under the heading 'Fall 2026' with no year on the day itself; taken as the same month and day for fall 2027 entry.",
+      "src": "dates"
+    },
+    {
+      "kind": "priority",
+      "due": "2027-03-01",
+      "label": "Priority date for admission applications (nursing priority is also Mar 1)",
+      "notes": "Rolling admissions continue through the summer; early applicants get priority for programs, housing and aid. Nursing applications close May 1.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "Last day to apply - first-year international students (fall)",
+      "notes": "International row of the table. The university advises applying about a month earlier because international files take longer. Spring entry: Dec 1.",
+      "src": "dates"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-07-31",
+      "label": "Last day to deposit - first-year international students (fall)",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not required for citizens of Australia, Canada (except Quebec), the UK, Ireland, New Zealand, Guyana and English-speaking countries of Africa and the West Indies. May be waived with written verification that secondary instruction was in English, an IB curriculum, an American school, or IGCSE/O-level/GCE A-level study. Applicants below the minimums who meet all academic requirements are considered for the Gateway Program (conditional pathway).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Old 0-120 scale. TOEFL Essential 9.0+ and an ELS level 112 certificate are also accepted.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Page prints 'TOEFL (79+ or 4+ scale score)'; read as 4.0 on the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Overall; no sub-score minimum is published.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "notes": "B2 First, C1 Advanced or C2 Proficiency.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Need-based aid and loans are not available to international students. All admitted international freshmen are automatically considered for a merit scholarship of $10,000-$15,500 per year with a high school GPA of 2.75+, renewable for four years while the student stays full-time with a 3.0+ cumulative GPA. The Gateway Program (English pathway, 1-2 semesters) is open to applicants with IELTS 5.0-5.5 or equivalent who meet the academic requirements.",
+    "src": "fin"
+  },
+  "majors": [
+    {
+      "program": "Nursing BS",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Described by the university as highly competitive; priority date Mar 1, applications close May 1; SAT 1200 / ACT 25 encouraged. No seat cap is published on the pages read."
+    },
+    {
+      "program": "Engineering (e.g. electrical, civil, mechanical, bioengineering)",
+      "category": "engineering",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Students are admitted to a specific major; engineering is named among the highly competitive programs."
+    },
+    {
+      "program": "Computer Science BS",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Students are admitted to a specific major."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "3786",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "ACT code is 001906 (six digits as printed by UMass Dartmouth).",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

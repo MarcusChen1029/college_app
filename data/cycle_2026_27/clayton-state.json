@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "Clayton State - Freshman admission",
+      "url": "https://www.clayton.edu/admissions/undergrad/freshman.php",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Clayton State - International undergraduate admission",
+      "url": "https://www.clayton.edu/admissions/undergrad/international.php",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Clayton State - Undergraduate admissions deadlines",
+      "url": "https://www.clayton.edu/admissions/undergrad/deadlines.php",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Clayton State catalog - International students (undergraduate admissions)",
+      "url": "https://catalog.clayton.edu/admissions-information/undergraduate-admissions/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Clayton State - Financial aid cost of attendance 2026-2027",
+      "url": "https://www.clayton.edu/financial-aid/resources/estimated-cost.php",
+      "accessed": "2026-10-26"
+    },
+    "iss": {
+      "kind": "admissions_site",
+      "title": "Clayton State - International Student Services tuition",
+      "url": "https://www.clayton.edu/international-student-services/tuition.php",
+      "accessed": "2026-10-26"
+    },
+    "nurs": {
+      "kind": "other",
+      "title": "Clayton State catalog - Nursing, BSN",
+      "url": "https://catalog.clayton.edu/academic-catalog/health/nursing/nursing-bsn/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "Test-optional (no SAT/ACT needed with a 3.0+ core GPA) only through Summer 2027. The freshman and international pages state 'Test score requirements will resume Fall 2027', so fall 2027 applicants must submit SAT or ACT. Minimums when required: SAT 480 EBRW and 440 Math, or ACT 17 English (or Reading), 17 Math (the international page also lists 17 composite). Core GPA minimum 2.0 with a passing test score.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "fee_waiver": true,
+    "notes": "Apply with the Clayton State application or the Common App; $40 nonrefundable fee (fee waivers accepted). Required units: English 4, Math 4, Science 4, Social Science 3, Foreign Language 2. International transcripts need a document-by-document evaluation with GPA (WES, Josef Silny or a NACES member). F-1 applicants submit a Financial Verification Form with sponsor's affidavit and bank letter; the dollar amount is on the form, not the web page. GED scores are not accepted for new freshmen. Letters of recommendation and essays are not mentioned.",
+    "src": "fresh"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-07-15",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Deadline page prints 'Fall: July 15' for international applicants without a year (treated as fall 2027); late or incomplete applications are deferred to the following year. Spring deadline Nov. 15; international F-1 students cannot apply for summer terms. For comparison, domestic full-term fall dates are priority July 15 and regular Aug. 1.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required if English is not the applicant's primary language. Other accepted routes: MET 59, EIKEN Pre-1, Cambridge IGCSE/O Level or Edexcel IGCSE/A-Level English grade D or better, UK GCSE or GCE A-Level English grade C or better, completion of an approved USG intensive ESL program, a U.S. college English composition course with C or better, or two years of U.S. high school English (not ESL) with C or better. Paper TOEFL 540+ is accepted where the iBT is unavailable. Duolingo and the new TOEFL 1-6 scale are not listed. The catalog page shows higher minimums (TOEFL iBT 75, IELTS 6.5, Cambridge C1 180); this record follows the current admissions page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "rec": 79,
+      "notes": "Minimum total 69, recommended 79 (admissions page). Catalog page says 75.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "6.0 total (admissions page). Catalog page says 6.5.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "notes": "Pearson PTE Academic 58.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 169,
+      "notes": "Page lists Cambridge C1 Advanced, B2 or C2 with a minimum score of '169 to 177' depending on exam; catalog says C1 Advanced 180. Confirm with admissions.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 5280,
+    "tuition_out_of_state_usd": 20400,
+    "tuition_intl_usd": 20400,
+    "required_fees_usd": 1116,
+    "room_board_usd": 12226,
+    "books_usd": 1250,
+    "notes": "Clayton State financial aid 2026-27 cost of attendance, on campus: Georgia resident tuition $5,280, non-resident $20,400, fees $1,116, housing + food $12,226, books $1,250, transportation $1,385, personal $4,405; page totals $25,742 in-state and $40,862 out-of-state (incl. an $80 loan fee). International F-1/J-1 students are classed as non-residents for tuition (International Student Services page), so the international figure uses the non-resident tuition.",
+    "src": "coa"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": null,
+    "notes": "No international-specific scholarships are listed on the admissions, financial aid or International Student Services pages read; the admissions page says freshmen are automatically considered for university-administered scholarships.",
+    "src": "iss"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5145",
+      "note": "College Board code.",
+      "src": "fresh"
+    },
+    "act": {
+      "code": "0803",
+      "note": "ACT code.",
+      "src": "fresh"
+    },
+    "toefl": {
+      "code": "5145",
+      "note": "TOEFL institution code; scores must come directly from the testing source.",
+      "src": "intl"
+    }
+  },
+  "majors": [
+    {
+      "program": "Nursing, BSN (basic licensure track)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": true,
+      "notes": "Competitive admission after university admission and about 45 semester hours of core curriculum; minimum 2.80 overall and math/science GPA; Kaplan Nursing Admission Test. Clayton State pages give conflicting application deadlines, so confirm with the School of Nursing."
+    }
+  ],
+  "tiers": {
+    "general": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

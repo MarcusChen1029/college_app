@@ -1,0 +1,162 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "Cleveland State - Undergraduate admission requirements (international)",
+   "url": "https://www.csuohio.edu/international-admissions/undergraduate-admission-requirements",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Cleveland State - International undergraduate how to apply and deadlines",
+   "url": "https://www.csuohio.edu/international-admissions/und-how-apply",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Cleveland State - International tuition and scholarships",
+   "url": "https://www.csuohio.edu/international-admissions/tuition-and-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "frosh": {
+   "kind": "financial_aid_site",
+   "title": "Cleveland State - Freshmen scholarships (fall 2027)",
+   "url": "https://www.csuohio.edu/financial-aid/freshmen-scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The international requirements page asks for no SAT/ACT (they appear only as English-proficiency alternatives: ACT English 20, SAT Reading and Writing 530 from March 2016). IPEDS fall 2024 lists SAT/ACT as 'not considered' for admission, while a search-result excerpt of CSU's catalog describes the university as test-optional through fall 2026 with scores used for scholarships and placement; the catalog page itself could not be loaded, so verify with CSU.",
+  "src": "ipeds"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Apply through CSU's own application portal. Minimum 2.3 cumulative high school GPA. Required: transcripts, passport copy and English proof; official transcripts must be evaluated by TEC, ECE or WES. Proof of funds for one year is needed for the I-20. First-year students must meet a math placement score. The international application fee is not stated on the pages read, so it is left null.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-07-01",
+   "label": "International fall application deadline (fall 2027, assumed)",
+   "notes": "Published dates are for fall 2026 (July 1, 2026) and summer 2026 (April 13, 2026); the fall 2027 date is not yet posted, so July 1, 2027 is assumed from the pattern. The I-20 transfer deadline matched the application deadline.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants from countries on CSU's English proficiency exemption list may be exempt. Alternatives to test scores: ACT English 20, SAT Reading and Writing 530 (tests from March 2016), iTEP 3.8, or ELS Level 112. If a student misses the GPA or English requirement, CSU's ESL Program offers pathway courses and the Intensive English Language Program (IELP, 20 hours per week) is available; the pages do not publish conditional-admission scores.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 78,
+   "subs": {
+    "each_section": 17
+   },
+   "notes": "Tests taken before Jan 21, 2026; no section below 17.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "reading": 3.5,
+    "listening": 3.5,
+    "speaking": 3.5,
+    "writing": 4
+   },
+   "notes": "Tests taken on or after Jan 21, 2026: overall 4.0, at least 3.5 in Reading, Listening and Speaking and 4.0 in Writing.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "No individual band below 5.0.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "req"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 22457,
+  "required_fees_usd": null,
+  "room_board_usd": 16800,
+  "books_usd": 800,
+  "other_usd": 7093,
+  "total_coa_usd": 47150,
+  "notes": "CSU's international planning estimate for a bachelor's student (page does not state the year; assumed 2026-27): tuition and fees $22,457, room and meals $16,800, books $800, health insurance $3,523, local transportation $1,770 and personal expenses $1,800 (other = $7,093); total $47,150. Extra fees: $100 one-time international matriculation fee and $30 per semester international services fee. The CSU Guarantee locks tuition for four years.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "No international-specific scholarship is published. CSU's automatic freshman merit scholarships ($2,000-$7,000 per year) and the CLE Gateway Grant are restricted to U.S. citizens and permanent residents, and the international scholarship page only links to outside resources. Treat aid for international freshmen as unconfirmed.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "CSU's international pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "CSU's international pages do not print an ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "CSU's international pages do not print a TOEFL institution code.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed among accepted English tests on the requirements page.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

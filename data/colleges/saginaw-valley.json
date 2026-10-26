@@ -1,0 +1,83 @@
+{
+  "slug": "saginaw-valley",
+  "name": "Saginaw Valley State University",
+  "short_name": "SVSU",
+  "state_region": "MI",
+  "city": "University Center",
+  "latitude": 43.51176,
+  "longitude": -83.964273,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.svsu.edu",
+  "admissions_url": "https://www.svsu.edu/admissions/",
+  "ipeds_unit_id": 172051,
+  "undergrad_enrollment": 6280,
+  "intl_undergrads": 252,
+  "student_faculty_ratio": 16.3,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Saginaw Valley State University Common Data Set 2025-2026 (XLSX)",
+      "url": "https://www.svsu.edu/media/officeofinstitutionalresearch/CDS%202025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11586,
+    "admits": 9087,
+    "enrolled": 1336,
+    "in_state_applicants": 9532,
+    "in_state_admits": 7650,
+    "out_state_applicants": 496,
+    "out_state_admits": 344,
+    "intl_applicants": 1558,
+    "intl_admits": 1093,
+    "gpa_avg": 3.55,
+    "pct_reporting_gpa": 94.09,
+    "gpa_distribution": {
+      "4.0": 19.89,
+      "3.75-3.99": 22.28,
+      "3.50-3.74": 17.74,
+      "3.25-3.49": 13.37,
+      "3.00-3.24": 11.3,
+      "2.50-2.99": 12.17,
+      "2.0-2.49": 3.18,
+      "1.0-1.99": 0.08
+    },
+    "notes": "CDS C1 (fall 2025), residency rows: in-state 9,532 applied / 7,650 admitted / 1,231 enrolled; out-of-state 496 / 344 / 36; international 1,558 / 1,093 / 69 (70% admitted). No waitlist, early decision or early action; no application closing date (rolling). SVSU reports test-blind admissions, so C9 SAT/ACT percentiles and percent submitting are blank and no scores are stored. Undergrad and international counts are B1/B2 'Total undergraduates' (6,280; nonresident 252). Student-faculty ratio is the Fall 2025 value from I-2 (16.3)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "NC",
+    "recommendations": "NC",
+    "alumni_relation": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8: SAT/ACT 'not considered for admission, even if submitted'; the CDS note says SVSU has moved to test-blind admissions and received scores are used for class placement."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 14280,
+    "tuition_out_of_state_usd": 14280,
+    "tuition_intl_usd": 14280,
+    "required_fees_usd": 0,
+    "room_board_usd": 13000,
+    "books_usd": 1220,
+    "other_usd": 1340,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 245,
+    "intl_avg_award_usd": 11403,
+    "notes": "CDS G1 first-year 2026-27: one flat block tuition of $14,280 is listed for every residency (it includes the Red & White Scholarship that SVSU applies to out-of-state and international students); no required fees. H6: 245 nonresident undergraduates received institutional aid (average $11,403)."
+  }
+}

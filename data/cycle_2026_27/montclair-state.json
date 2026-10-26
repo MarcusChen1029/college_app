@@ -1,0 +1,209 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Montclair State - International First-year Applicants (deadlines, requirements, English proficiency, scholarships)",
+      "url": "https://www.montclair.edu/global/how-to-apply/undergraduate-freshman-students/",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Montclair State - How to Apply to Montclair's Undergraduate Programs",
+      "url": "https://www.montclair.edu/admissions-aid/how-apply-montclair-state-university/how-apply-montclairs-undergraduate-programs",
+      "accessed": "2026-10-26"
+    },
+    "isa": {
+      "kind": "financial_aid_site",
+      "title": "Montclair State - International Scholarships and Aid",
+      "url": "https://www.montclair.edu/admissions-aid/financial-aid/international-scholarships-and-aid",
+      "accessed": "2026-10-26"
+    },
+    "intladm": {
+      "kind": "admissions_site",
+      "title": "Montclair State - International Admissions",
+      "url": "https://www.montclair.edu/admissions-aid/international-admissions",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "admissions_site",
+      "title": "Montclair State - Undergraduate Student Costs 2026-27",
+      "url": "https://www.montclair.edu/admissions-aid/tuition-and-fees/undergraduate-student-costs",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Submitting SAT or ACT scores is optional for first-year applicants, including international applicants. Official scores can be sent with CEEB code 002520 (SAT) or ACT code 2572.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Apply with the Montclair State application or the Common App; $65 non-refundable fee (fee waivers are need-based). International first-year applicants submit secondary transcripts (certified English translation), an essay/personal statement (prompts vary by major), and English proficiency scores if not exempt. A recommendation letter from a counselor or teacher is strongly encouraged but not required for most majors (Dance, Musical Theatre and Theatre require two). Nursing needs a nursing-specific essay and extra recommendations; some College of the Arts programs require auditions or portfolios. Admission is rolling.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-12-01",
+      "notify": "2026-12-24",
+      "label": "Early Action, international (fall 2027 entry)",
+      "notes": "Decisions released by Dec. 24, 2026 (College of the Arts applicants may hear later because of audition/portfolio review). The page encourages early application for scholarship consideration.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "due": "2027-02-01",
+      "notify": "2027-04-01",
+      "label": "Nursing application deadline (fall 2027 entry)",
+      "notes": "Decisions released by Apr. 1, 2027.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Scholarship consideration deadline (fall 2027 entry)",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "Final international application deadline (fall 2027 entry)",
+      "notes": "Suggested deadline for students outside the U.S.; students already in the U.S. may have more flexibility. Decisions typically 3-6 weeks after the application is complete. The page's January-start (spring) line prints 'November 1, 2027', which is not used here.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-06-15",
+      "label": "I-20 application deadline (fall 2027 entry)",
+      "notes": "I-20 is issued within 5-10 business days after a complete I-20 application.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for U.S. citizens and for students who graduated from (or attended an international school following the system of) the United States or a listed English-speaking country (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Nigeria, South Africa, United Kingdom). Other accepted proof: iTEP 3.7, SAT EBRW 480+, or ACT English 22+. The page lists no ESL or conditional-admission pathway for first-year applicants.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "'Old version' of the TOEFL iBT. School code 2520.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "'New version' minimum 4.0; the page does not name the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "notes": "Pearson PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 16588,
+    "tuition_out_of_state_usd": 27924,
+    "tuition_intl_usd": 27924,
+    "required_fees_usd": 1222,
+    "room_board_usd": 17450,
+    "books_usd": 1330,
+    "other_usd": 3882,
+    "total_coa_usd": 51808,
+    "src": "costs",
+    "notes": "Out-of-state on-campus estimate for 2026-27 (international F-1/J-1 students pay out-of-state tuition): tuition $27,924, fees $1,222, housing $10,838, food $6,612, books $1,330, travel $1,380, miscellaneous $2,430, loan fee $72 (total $51,808). In-state tuition is $16,588."
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Montclair cannot offer need-based aid to international students. Qualified first-year international students are automatically awarded the renewable (up to four years) Presidential Scholarship based on GPA criteria; the amount and GPA cutoffs are not published (details are given upon acceptance). Talent-based performing arts awards are also open to international students.",
+    "src": "isa"
+  },
+  "majors": [
+    {
+      "program": "Nursing (BS)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": null,
+      "notes": "Separate Feb. 1 application deadline for international applicants, nursing-specific essay and extra recommendations."
+    },
+    {
+      "program": "Performing arts (Dance, Music, Music Therapy, Musical Theatre, Theatre)",
+      "category": "arts_design",
+      "admit_model": "direct_major",
+      "capped": null,
+      "notes": "Audition and audition fee; a resume is required for Dance, Musical Theatre and Theatre, which also need two recommendation letters."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "2520",
+      "note": "CEEB code printed as 002520.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "2572",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "2520",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code listed; send official scores to Montclair State.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No code listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No code listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

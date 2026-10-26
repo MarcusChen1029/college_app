@@ -1,0 +1,79 @@
+{
+  "slug": "mcphs",
+  "name": "MCPHS University",
+  "short_name": "MCPHS",
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.336825,
+  "longitude": -71.101244,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.mcphs.edu/",
+  "admissions_url": "https://www.mcphs.edu/admission-and-aid",
+  "ipeds_unit_id": 166656,
+  "undergrad_enrollment": 3469,
+  "intl_undergrads": 443,
+  "student_faculty_ratio": 9,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (fall 2024: admissions, test scores, enrollment, ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=166656",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM fall 2024 counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=166656",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=166656",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 6010,
+    "admits": 5121,
+    "enrolled": 673,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 1,
+    "notes": "Baseline from IPEDS (fall 2024 entering class): no MCPHS Common Data Set could be found on mcphs.edu. College Navigator shows 6,010 applicants, 85% admitted, 13% of admits enrolled; the exact counts (5,121 admitted, 673 enrolled) are IPEDS ADM values read from the Urban Institute Education Data Portal. Undergraduate enrollment of 3,469 (fall 2024) covers all MCPHS campuses (Boston, Worcester, Manchester, online), not Boston only; College Navigator reports 12% of undergraduates as U.S. nonresidents (no headcount). SAT/ACT percentiles come from only 48 SAT and 8 ACT submitters (7% and 1% of enrolled first-years), so treat them as indicative. GPA, residency and international applicant splits are not available."
+  },
+  "scores": {
+    "SAT_ERW": [
+      570,
+      610,
+      678
+    ],
+    "SAT_MATH": [
+      590,
+      645,
+      738
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      29,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      31
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      29
+    ]
+  }
+}

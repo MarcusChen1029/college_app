@@ -1,0 +1,102 @@
+{
+  "slug": "uw-milwaukee",
+  "name": "University of Wisconsin-Milwaukee",
+  "short_name": "UWM",
+  "state_region": "WI",
+  "city": "Milwaukee",
+  "latitude": 43.076848,
+  "longitude": -87.880488,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://uwm.edu/",
+  "admissions_url": "https://uwm.edu/undergrad-admission/",
+  "ipeds_unit_id": 240453,
+  "undergrad_enrollment": 19207,
+  "intl_undergrads": 383,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "UW-Milwaukee Common Data Set 2025-2026 (public Excel)",
+      "url": "https://uwm.edu/institutional-research/wp-content/uploads/sites/268/2026/10/CDS-PDF-2025-2026-Excel_Template_publish_redacted.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator profile (student-to-faculty ratio, campus setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=240453",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "intlcost": {
+      "kind": "admissions_site",
+      "title": "UWM Center for International Education - Fees & Scholarships",
+      "url": "https://uwm.edu/cie/international-admissions/cost-scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 19465,
+    "admits": 15229,
+    "enrolled": 3885,
+    "in_state_applicants": 14021,
+    "in_state_admits": 11319,
+    "out_state_applicants": 3410,
+    "out_state_admits": 2683,
+    "intl_applicants": 2034,
+    "intl_admits": 1227,
+    "gpa_avg": 3.13,
+    "pct_reporting_gpa": 98.9,
+    "gpa_distribution": {
+      "4.0": 1.54,
+      "3.75-3.99": 12.26,
+      "3.50-3.74": 14.64,
+      "3.25-3.49": 16.31,
+      "3.00-3.24": 16.78,
+      "2.50-2.99": 24.2,
+      "2.0-2.49": 13.77,
+      "1.0-1.99": 0.5
+    },
+    "notes": "CDS C1 (fall 2025 entering class); international = the 'Nonresidents' residency row (2,034 applied, 1,227 admitted, 40 enrolled). In-state counts include students of unknown residency (CDS note). UWM did not report SAT/ACT percentiles or percent submitting (C9/C10 left blank because scores are self-reported). Undergrad enrollment 19,207 and 383 nonresident undergrads are CDS B1/B2 (fall 2025). No early decision or early action; no waitlist."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "intlcost",
+    "tuition_intl_usd": 22247,
+    "required_fees_usd": 2158,
+    "other_usd": 15000,
+    "total_coa_usd": 41663,
+    "intl_need_aid_awarded": 152,
+    "intl_avg_award_usd": 4117,
+    "notes": "UWM international cost page (2026-27, two semesters): nonresident tuition $22,247 plus segregated and international student fees $2,158; page estimate of $41,663 includes $15,000 living expenses (12 months) and $2,258 international health insurance (12 months). CDS H6 (2024-25 aid): 152 degree-seeking nonresident undergraduates received institutional aid, average $4,117. A $200 International Student Processing Fee is due after admission."
+  }
+}

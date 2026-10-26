@@ -1,0 +1,146 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SUNY Old Westbury - International Admissions: Admissions Requirements & Deadlines (English proficiency)",
+      "url": "https://www.oldwestbury.edu/admissions/international-students/admissions-requirements-deadlines",
+      "accessed": "2026-10-26"
+    },
+    "how": {
+      "kind": "admissions_site",
+      "title": "SUNY Old Westbury - How to Apply (International)",
+      "url": "https://www.oldwestbury.edu/admissions/international-students/how-apply-international",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "SUNY Old Westbury - First-Year Admissions (deadlines, test policy, fee, codes)",
+      "url": "https://www.oldwestbury.edu/admissions/first-year-students",
+      "accessed": "2026-10-26"
+    },
+    "bursar": {
+      "kind": "financial_aid_site",
+      "title": "SUNY Old Westbury Bursar - 2026-2027 Undergraduate Tuition & Fees",
+      "url": "https://www.oldwestbury.edu/division/division-business-finance/bursar/undergraduate-costs/2026-2027-undergraduate-tuition-fees",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "SUNY Old Westbury - Tuition & Aid",
+      "url": "https://www.oldwestbury.edu/admissions/tuition-aid",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are optional for undergraduate admission (required only for special programs such as the B.S./D.O. in Biological Sciences); scores are considered if sent. SAT/ACT do not count as proof of English proficiency. SAT code 2866, ACT code 2939.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply with the Common App or the SUNY application (SUNY code 46); $50 non-refundable fee. International freshmen need an equivalent secondary school average of 80 (U.S. average) or above, a WES or ECE evaluation (waived only for a few countries), a roughly 250-word essay or the SUNY supplemental application, at least one counselor or teacher recommendation, a bank-issued financial statement and a notarized sponsor letter for the I-20, and immunization records.",
+    "src": "how"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Early Action, recommended date (fall 2027 entry)",
+      "notes": "Domestic first-year page; printed without a year and the page header still says 'Apply for Fall 2026', taken as the fall 2027 cycle. No separate international deadline is published.",
+      "src": "fy"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-03-15",
+      "label": "Recommended application date, fall 2027 entry",
+      "notes": "Applications are reviewed on a rolling, first-come basis after the recommended dates until enrollment goals are met; spring entry date is Oct. 15. Printed without a year, taken as fall 2027. International applicants need time for the I-20 and visa, so apply well before March.",
+      "src": "fy"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required for international students whose native language is not English; no country-based waiver list is published. Accepted proofs: TOEFL (paper 513, computer 183, iBT 61), IELTS 6.0, iTEP 3.5 or Step EIKEN Grade Pre-1. Duolingo and PTE are not listed. Conditional-admission pathways: ELS Level 112 (English for Academic Purposes), Stony Brook Intensive English Center Level B, a C or higher in a U.S. college English composition course, Nassau Community College LINCC, Fulton-Montgomery Community College ESL, or qualifying CLEP/AP/IB exam scores. SAT/ACT do not count.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Internet-based minimum 61 (also 513 paper / 183 computer). The page gives no new 1-6 scale minimum.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Minimum composite score.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 7070,
+    "tuition_out_of_state_usd": 18920,
+    "tuition_intl_usd": 18920,
+    "required_fees_usd": 1352,
+    "room_board_usd": 15340,
+    "src": "bursar",
+    "notes": "Bursar table is per semester; annual figures are twice the printed amounts. Out-of-state/international full-time tuition $9,460 per semester ($7,070 a year for NY residents); mandatory fees $676 per semester (college, activity, athletic, health service, technology, transportation), plus a one-time $100-150 orientation fee. Room and board = Woodlands double $4,445 + Panther's All-Access meal plan $3,225 per semester; the Tuition & Aid page shows $14,990, so confirm. Health insurance not included."
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "none",
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "Need-based aid is for U.S. citizens and permanent residents. No scholarship for incoming international students was found; the only international-related award seen is a study-abroad scholarship.",
+    "src": "aid"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "2866",
+      "src": "fy"
+    },
+    "act": {
+      "code": "2939",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code was found on the pages read.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Duolingo is not among the listed English proofs.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not among the listed English proofs.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

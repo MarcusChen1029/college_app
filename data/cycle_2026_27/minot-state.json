@@ -1,0 +1,184 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "Minot State - International admissions: how to apply, deadlines, entrance exams",
+   "url": "https://www.minotstateu.edu/enroll/international/admissions-reqs.shtml",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "Minot State - First-year admission requirements",
+   "url": "https://www.minotstateu.edu/enroll/freshman/admissions-reqs.shtml",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Minot State - Cost & Aid (international cost of attendance)",
+   "url": "https://www.minotstateu.edu/enroll/cost.shtml",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Minot State - Tuition and fees 2026-27",
+   "url": "https://www.minotstateu.edu/busoffic/pages/tuition-fees/2026-27.shtml",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Minot State - Academic Excellence Scholarship (eligibility)",
+   "url": "https://www.minotstateu.edu/finaid/scholarships/Academic-Excellence-Scholarship.shtml",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "Minot State Department of Nursing - Standard admission to the nursing major",
+   "url": "https://www.minotstateu.edu/nursing/standard-admission.shtml",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Minot State is test-optional for admission (GPA and core courses decide). International applicants must still submit one English entrance exam, and SAT total 920 or ACT composite 17 with English 18 is accepted as that exam. Scores are also used for math and English placement and some scholarships.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "notes": "First-year requirement is a 2.5 cumulative high school GPA (4.0 scale) and 13 core units (4 English, 3 math, 3 lab science, 3 social science); applicants below that are still considered if the record shows a high probability of success. International high school credentials must be evaluated document-by-document by WES or ECE at the applicant's cost. Also required: one entrance exam, the Application for Form I-20 with certified finances, and a passport copy. An admission email comes within two weeks of receiving all documents; full acceptance requires all items.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "Fall 2027 international application deadline, living outside the US (best consideration)",
+   "notes": "Application and all supporting documents. The page prints June 15 without a year; treated as 2027. Spring entry: Oct. 15 for applicants outside the US.",
+   "src": "req"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-15",
+   "label": "Fall 2027 deadline for international applicants already living in the US (best consideration)",
+   "notes": "Spring entry: Nov. 15 for applicants within the US.",
+   "src": "req"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_all_international",
+  "waiver_notes": "All international undergraduates must submit one official entrance exam. Exemptions: at least two years at a regionally accredited US institution, or Composition I and II at a regionally accredited US institution with a grade of B or better. Tests must be taken within two years; only IELTS scores may be emailed, all other scores must come from the testing body. Alternatives accepted as the entrance exam: SAT total 920; ACT composite 17 and English 18; ACCUPLACER WritePlacer 5 or NextGen Writing 256. The undergraduate catalog still lists an older Duolingo minimum of 95; the current how-to-apply page says 105. No ESL or conditional-admission pathway is described on the international pages.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "For exams taken before 2026-01-21.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "For exams taken on or after 2026-01-21. The page gives 4 without naming the 1-6 scale.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall band.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic.",
+   "src": "req"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 7977,
+  "tuition_out_of_state_usd": 7977,
+  "tuition_intl_usd": 7977,
+  "required_fees_usd": 1606,
+  "intl_extra_fees_usd": 150,
+  "room_board_usd": 9200,
+  "other_usd": 2280,
+  "total_coa_usd": 21213,
+  "notes": "Flat tuition for all students (12-18 credits): tuition $7,977.36 + college/NDSA $1,305.60 + technology $168 + Connect ND $132 = $9,582.96 (tuition schedule). The international cost page shows $9,733 tuition and fees (the $150 difference is entered as an extra international fee; the page does not itemize it), housing and food $9,200 (double room, base meal plan), mandatory health insurance $2,280 (entered as other), total $21,213. Books are not listed.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "notes": "International students are not eligible for US federal or state need-based aid and must certify a year of funds for the I-20. Minot State's Academic Excellence Scholarship (up to $10,000) is for US or Canadian citizens only. A third-party listing mentions an international 'Global Award' (about $2,625 per year), but no such award appears on Minot State's current official pages, so it is unconfirmed and no merit scholarship is recorded.",
+  "src": "schol"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": false,
+   "notes": "Apply to the nursing major after support courses: 2.8 GPA in required support courses, C or better in each, and a proficient TEAS score. Deadlines are Feb. 1 (fall) and Sept. 15 (spring); $25 fee. Guaranteed admission is limited to North Dakota high school graduates. The page gives no seat count.",
+   "src": "nurs"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The international pages print no SAT code; look it up in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "The international pages print no ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed; look it up in the ETS code search.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "IELTS scores may be emailed to the admissions office; no code is listed.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

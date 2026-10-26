@@ -1,0 +1,146 @@
+{
+ "sources": {
+  "ia": {
+   "kind": "admissions_site",
+   "title": "UW-Whitewater - International Admissions (freshmen, costs, scholarships)",
+   "url": "https://www.uww.edu/global-education/international-students/international-admissions",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "UW-Whitewater - Freshman applicant",
+   "url": "https://www.uww.edu/admissions/apply/freshman-applicant",
+   "accessed": "2026-10-26"
+  },
+  "tu": {
+   "kind": "financial_aid_site",
+   "title": "UW-Whitewater - Tuition and fees (2026-2027 academic year)",
+   "url": "https://www.uww.edu/admissions/tuition",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The freshman application page lists ACT/SAT scores as optional (ACT code 4684, SAT code 1921). For international applicants, SAT EBRW 430 or ACT English 17 can also satisfy the English proficiency requirement.",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply with the Universities of Wisconsin application or the Common App; the freshman page calls both free. International freshman file: an official credential evaluation of secondary records that includes a GPA, from ECE, WES or OneEarthEvaluation only (other companies not accepted); proof of English; a passport biographical page. Financial documents (bank statement, certification of finance) are needed for the I-20 but not for the admission decision. International students can start only in fall or spring. The page lists minimum units of 4 English, 3 math, 3 natural science, 3 social science and 4 electives and says non-academic factors (leadership, service, talents) are also considered; essays and recommendations are not mentioned.",
+  "src": "ia"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International freshman recommended application and documents date (fall 2027 entry)",
+   "notes": "The page says to submit the application and all supporting materials before 'Fall semester start: July 1' (year not printed; treated as fall 2027). Later applications may be considered depending on time left for visa processing. For comparison, the general freshman page recommends applying before May 1, 2027 and may close applications at capacity.",
+   "src": "ia"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-07-01",
+   "label": "International Freshman Excellence scholarship: must be admitted by (fall 2027 entry)",
+   "notes": "Year not printed; treated as fall 2027. Excellence needs an equivalent GPA of 3.4 or higher.",
+   "src": "ia"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-07-15",
+   "label": "International Freshman Merit and Distinction scholarships: must be admitted by (fall 2027 entry)",
+   "notes": "Year not printed; treated as fall 2027. Merit needs an equivalent GPA of 2.5 or higher, Distinction 3.0 or higher.",
+   "src": "ia"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "One score from the accepted list is enough, taken within the 24 months before applying. Met automatically by freshmen who attended and graduated from a US high school for at least two years, by citizens who lived for the two prior years in listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, New Zealand, United Kingdom, Jamaica), or with IB English A1/A2 grade 4+. Other accepted options: SAT EBRW 430 and ACT English 17 (freshmen only), EIKEN Pre-1, iTEP 3.7, GTEC 1150, or completing WESLI level 700 coursework with a B or better. The page describes no conditional-admission or pathway program of the university's own.",
+  "src": "ia"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Listed as 'TOEFL iBT: 4.0 (71 on previous scale)'. ETS institution code 1921.",
+   "src": "ia"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "The new-scale minimum printed on the page, 4.0 (equal to 71 on the previous 0-120 scale).",
+   "src": "ia"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic, 6.0 overall band; no subscore minimum is printed. A clear scan of your own Test Report Form is accepted.",
+   "src": "ia"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Duolingo English Test 110.",
+   "src": "ia"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "PTE Academic 48. Contact intladmission@uww.edu for how to send PTE and other non-ETS scores.",
+   "src": "ia"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 9235,
+  "tuition_out_of_state_usd": 19336,
+  "tuition_intl_usd": 19756,
+  "room_board_usd": 8830,
+  "other_usd": 3510,
+  "total_coa_usd": 34276,
+  "notes": "2026-27 tuition and fees: $9,235 Wisconsin resident, $19,336 nonresident, $19,756 international (international page). The international room-and-food estimate is $8,830. Required UW System international student health insurance adds $2,180 a year, and personal expenses are estimated at $3,510; the $34,276 total (tuition and fees, housing and food, insurance, personal) is the amount the page lists as proof of funds for an I-20.",
+  "src": "ia"
+ },
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "Automatic-by-GPA international freshman scholarships, renewable for up to 8 semesters: Merit $2,000 per year (equivalent GPA 2.5+), Distinction $4,000 (3.0+), Excellence $6,000 (3.4+). Not open to fully sponsored students. Renewal needs active F-1 status, a 2.5 GPA at UW-Whitewater and involvement in at least three intercultural programs or organizations each semester. A separate $1,000-per-year Business and Computer Science International Student Provost Scholarship goes to international undergraduates in those majors. Whether need-based aid exists for international students is not stated.",
+  "src": "ia"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1921",
+   "note": "SAT code on the freshman application page; scores are optional.",
+   "src": "fr"
+  },
+  "act": {
+   "code": "4684",
+   "note": "ACT code on the freshman application page; scores are optional.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": "1921",
+   "note": "ETS institution code for TOEFL score submission.",
+   "src": "ia"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

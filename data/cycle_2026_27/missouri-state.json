@@ -1,0 +1,178 @@
+{
+ "sources": {
+  "ug": {
+   "kind": "admissions_site",
+   "title": "Missouri State International Services - First-time college students (undergraduate admission requirements)",
+   "url": "https://international.missouristate.edu/services/70305.htm",
+   "accessed": "2026-10-26"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "Missouri State International Services - Undergraduate application checklist",
+   "url": "https://international.missouristate.edu/Services/undergraduate-application.htm",
+   "accessed": "2026-10-26"
+  },
+  "future": {
+   "kind": "admissions_site",
+   "title": "Missouri State International Services - Future students (important deadlines)",
+   "url": "https://www.missouristate.edu/InternationalServices/future.htm",
+   "accessed": "2026-10-26"
+  },
+  "cut": {
+   "kind": "admissions_site",
+   "title": "Missouri State - English proficiency cut scores for undergraduate and graduate admission (policy document dated 2023-09-06)",
+   "url": "https://www.missouristate.edu/Policy/_Files/2023-09-06_MSU_UG_and_Grad_cut_scores_for_English_Proficiency_Tests.docx",
+   "accessed": "2026-10-26"
+  },
+  "eap": {
+   "kind": "admissions_site",
+   "title": "Missouri State International Services - English as a Foreign Language / I Succeed program",
+   "url": "https://www.missouristate.edu/InternationalServices/english-proficiency-option2.htm",
+   "accessed": "2026-10-26"
+  },
+  "costs": {
+   "kind": "admissions_site",
+   "title": "Missouri State International Services - International costs",
+   "url": "https://www.missouristate.edu/InternationalServices/international-costs.htm",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "Missouri State Admissions - Admission requirements and deadlines (domestic first-year)",
+   "url": "https://www.missouristate.edu/Admissions/admission-requirements.htm",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Missouri State Admissions - How to apply (first-year)",
+   "url": "https://www.missouristate.edu/Admissions/how-to-apply.htm",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not required for international admission (checklist). Domestic first-year applicants with a 3.00+ high school GPA and the required courses are guaranteed admission without scores; below 3.00 a selection index applies (e.g. GPA 2.85-2.99 needs ACT 21 / SAT 1060). International first-year applicants need an academic record equivalent to a 2.5 GPA on a 4.0 scale.",
+  "src": "chk"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International applicants use Missouri State's International Student Application ('own'); the $50 fee must be paid before processing (2.95% card surcharge). Required: official records for classes 9-11 or 10-12 with English translation, TOEFL/IELTS or other accepted test sent directly, statement of financial support and an official bank letter. The domestic application fee is $40 and the Common App is accepted for domestic first-year applicants.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": null,
+   "due": "2027-06-01",
+   "label": "Undergraduate application deadline for fall 2027 (international)",
+   "notes": "The International Services page lists Fall undergraduate June 1 with no year, treated as fall 2027; the I-20 request deadline is also June 1 and I-20 issuance for fall starts March 1. Domestic first-year applicants hear first-round decisions by Dec. 15, 2026.",
+   "src": "future"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for applicants in nonimmigrant status whose primary language is not English; the minimum is CEFR B2. Citizens of approved exempt countries are exempt, and applicants with one or more years of full-time secondary or post-secondary study in the U.S. or a country where English is the primary language may be exempt at the discretion of International Services. Students below B2 can complete Missouri State's English for Academic Purposes (EAP) program, and individual subscores below the stated floors trigger an EAP course in the first semester.",
+  "src": "cut"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Any single band below 15 requires an EAP course in the first semester. The policy document does not give a new 1-6 scale minimum, so no TOEFL_IBT_2026 value is listed.",
+   "src": "cut"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Any subscore below 5.0 requires an EAP course in the first semester.",
+   "src": "cut"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Subscores below 95 require an EAP course in the first semester.",
+   "src": "cut"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "Subscores below 44 require an EAP course in the first semester. Also accepted: Linguaskill 162, iTEP Academic 3.7, GTEC 1180.",
+   "src": "cut"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "Missouri State publishes a 40% reduction in international tuition (the International Partnership Scholarship) for students who complete the 14-credit 'I Succeed' first-semester package, which is required for students at CEFR B1 English and optional at B2+; the page says the lower price continues for all classes (about $3,475 saved per semester, exact prices may change). No other international merit scholarship or need-based aid was found, so the aid policy is left unset.",
+  "src": "eap"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "costs",
+  "tuition_usd": null,
+  "tuition_out_of_state_usd": null,
+  "tuition_intl_usd": 23760,
+  "required_fees_usd": null,
+  "room_board_usd": null,
+  "books_usd": null,
+  "other_usd": 15068,
+  "total_coa_usd": 40519,
+  "notes": "International Costs page (undated, accessed 2026-10-26; labeled 2026-2027 as the current page): undergraduate tuition and fees $23,760 per year at 15 credit hours per semester, living expenses $15,068 (housing, food and personal, not itemised, in other_usd), health insurance $1,691, total $40,519. Before the 40% I Succeed reduction."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6665",
+   "note": "Missouri State code for SAT.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "2370",
+   "note": "Missouri State code for ACT.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "6665",
+   "note": "Missouri State school code for TOEFL/IELTS reports.",
+   "src": "chk"
+  },
+  "ielts": {
+   "code": null,
+   "note": "Scores must be sent directly by the testing agency; the checklist gives school code 6665 for TOEFL/IELTS, but IELTS does not use numeric ETS codes.",
+   "src": "chk"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "cut"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "cut"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

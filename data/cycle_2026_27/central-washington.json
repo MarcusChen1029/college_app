@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "CWU - International Student Admissions (undergraduate first-year)",
+   "url": "https://www.cwu.edu/admissions-aid/apply/international.php",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "CWU - Conditional Admission (UESL program)",
+   "url": "https://www.cwu.edu/academics/international-programs/esl-programs/uesl-program-curriculum/conditional-admission-international-students.php",
+   "accessed": "2026-10-26"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "CWU - First-Year Student Admissions",
+   "url": "https://www.cwu.edu/admissions-aid/apply/undergraduate-admissions.php",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "CWU Financial Aid - Cost of Attendance 2026-2027 (Non-Resident Undergrad, Ellensburg)",
+   "url": "https://www.cwu.edu/admissions-aid/financial-aid-scholarships/additional-resources/cost-attendance.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "CWU - Cost, Aid and Value (2026-2027 tuition)",
+   "url": "https://www.cwu.edu/admissions-aid/cost-aid-value.php",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - CWU admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=234827",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "CWU says it is a test-optional school: SAT/ACT scores are not required for admission but can be sent for class placement. The 2024-25 CDS (C8) says scores are not considered unless they would have a positive effect on the decision, and College Navigator lists SAT/ACT as 'Not considered (Test Blind)'. Admission is by high school GPA (2.7+ is guaranteed admission through the CWU Guaranteed Admission Program; 2.50-2.69 may need a personal statement; 2.00-2.49 requires a personal statement and holistic review) plus core courses (4 English, 4 math, 3 science, 3 social science, 2 world language, 1 arts for out-of-state applicants).",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "notes": "Apply through the CWU portal or the Common App; $60 nonrefundable fee. A $400 enrollment deposit is required from first-year international students before the I-20 is issued. Documents: proof of English proficiency unless exempt, official transcripts (electronic accepted; a course-by-course evaluation may be requested), Confidential Financial Statement signed by the student and sponsor plus a bank statement dated within three months showing funds for one academic year (no dollar amount given). CDS C7 lists essays and recommendations as not considered (letters are read only on appeal).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": null,
+   "label": "First-year priority date for fall 2027: not yet published",
+   "notes": "CWU's international page lists Fall Quarter 2026 as 'January 31st, 2025' (almost certainly a typo for 2026; the domestic first-year page says January 31, 2026) and no fall 2027 date. The 2024-25 CDS lists a 3/1 priority date. Winter 2027 entry: Nov 1, 2026; spring 2027: Feb 1, 2027. Confirm the fall 2027 date with CWU.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Application (fall 2027): rolling after the priority date",
+   "notes": "Applications after the priority date are accepted on a space-available basis. The CDS says there is no closing date and applicants are admitted until classes start.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: applicants from listed countries (including Australia, Canada except Quebec, Ireland, New Zealand, the United Kingdom, Singapore, Nigeria, Ghana, Kenya, South Africa, Jamaica and others on the page). Also accepted instead of a test: SAT EBRW 530 or ACT English 19, IB Higher Level English grade 5+, Cambridge IGCSE/GCE/GCSE/A-level English First Language grade C+, two U.S. college English composition courses at C, completing school outside the U.S. taught in English (official school letter), PEAP level 6, LanguageCert 65, or UESL with a B or higher plus recommendation. Test scores must be under two years old.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Institutional TOEFL (ITP) not accepted. Conditional admission: students below the minimum can apply to the UESL English program at the same time (UESL application fee $50) and be fully admitted after UESL levels 4 and 5 (at least two academic terms) with B or higher in every class plus a program recommendation, or by reaching a qualifying test score during UESL.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "The page states '71 iBT/3.5 on the new scale'.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Scores sent directly from IELTS.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Duolingo English Test.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "Pearson PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "C1 Advanced score of 180 or higher; C2 Proficiency 200 or higher.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "All admitted international students are automatically considered for merit scholarships by incoming GPA: 2.7-2.9 gets $6,979, 3.0-3.6 gets $9,294, 3.7-4.0 gets $12,380 (annual amounts as listed, re-awarded each year from spring-quarter cumulative GPA). Eligible students are emailed within 2-3 weeks of admission and confirm through the International Student Scholarship form. Exchange, government-sponsored, UESL and resident-tuition students are not eligible. The CDS H6 nonresident aid figures could not be read consistently, so they are not used.",
+  "src": "intl"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 7716,
+  "tuition_out_of_state_usd": 27041,
+  "tuition_intl_usd": 27041,
+  "required_fees_usd": 2396,
+  "room_board_usd": 16280,
+  "books_usd": 900,
+  "other_usd": 2766,
+  "total_coa_usd": 49383,
+  "notes": "CWU 2026-27 cost of attendance for a non-resident undergraduate on the Ellensburg campus: tuition $27,041, mandatory fees $2,396, housing $9,718 and food $6,562 (room_board_usd $16,280), books and supplies $900, personal $1,500, transportation $1,200 and loan fees $66 (other_usd $2,766), annual total $49,383. In-state tuition $7,716 per the cost page.",
+  "src": "coa"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4044",
+   "note": "CWU school code, as printed on the international admissions page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": "4044",
+   "note": "The page prints '#4044' as CWU's school code under the IELTS test as well.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,179 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Lewis - International admission: application requirements",
+   "url": "https://www.lewisu.edu/admissions/international/applicationreq.htm",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Lewis - English proficiency requirements for international admission",
+   "url": "https://www.lewisu.edu/admissions/international/english-proficiency-requirements.htm",
+   "accessed": "2026-10-26"
+  },
+  "app": {
+   "kind": "admissions_site",
+   "title": "Lewis - First-year application process and deadline chart",
+   "url": "https://www.lewisu.edu/admissions/undergraduate/application.htm",
+   "accessed": "2026-10-26"
+  },
+  "topt": {
+   "kind": "admissions_site",
+   "title": "Lewis - Test-optional applications",
+   "url": "https://www.lewisu.edu/admissions/undergraduate/test-optional.htm",
+   "accessed": "2026-10-26"
+  },
+  "tuitint": {
+   "kind": "financial_aid_site",
+   "title": "Lewis - International tuition and financial aid (scholarships)",
+   "url": "https://www.lewisu.edu/admissions/international/tuition.htm",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "other",
+   "title": "Lewis - Tuition and fees (fall 2026 / spring 2027) and room and board rates",
+   "url": "https://www.lewisu.edu/welcome/offices/business/bursar/tuitionrates.htm",
+   "accessed": "2026-10-26"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "Lewis - Undergraduate programs",
+   "url": "https://www.lewisu.edu/academics/programs/ugrad.htm",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Lewis is test-optional for first-year applicants for all programs, with the same consideration for admission and merit scholarships (scores, if sent, are also used in the scholarship review). Test-optional applicants submit a personal statement or graded school assignment. Official scores are requested before registration for course placement. The international page lists no SAT/ACT requirement.",
+  "src": "topt"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "notes": "International first-year documents: application, secondary transcripts or national exam results, secondary school completion certificate, English proficiency scores, passport copy; then an affidavit of support for the I-20. Holistic review focuses on cumulative and core GPA and course rigor; recommendations are optional. No application fee amount is stated on the pages reviewed.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "First-year early action, fall term (fall 2027 entry)",
+   "notes": "From the first-year deadline chart (no year printed; treated as fall 2027); early action decisions come before the holiday break. The international page lists no separate international deadline.",
+   "src": "app"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-01-01",
+   "label": "Lasallian Scholarship Program deadline (apply and be admitted by this date)",
+   "notes": "Same chart; year treated as 2027.",
+   "src": "app"
+  },
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Priority scholarship consideration (fall 2027 entry)",
+   "notes": "The chart says applicants have the best chance for admission and scholarship consideration by applying before March 1.",
+   "src": "app"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "First-year regular admission, fall term (fall 2027 entry)",
+   "notes": "Spring term regular admission is January 1. Lewis aims to review a complete file in one to two weeks.",
+   "src": "app"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants whose previous education was taught primarily in English may be exempt: citizens of countries on Lewis's waiver list need no test; others can combine IGCSE/A Level or IB results with an ACT or SAT score, or submit an ESL graduation certificate from a partner school (ELS, Kaplan, LaSallian Language Center, local community colleges). U.S.-based transfer students with a degree or two college English courses may be waived. Lewis may test English on arrival and place students in support courses.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "The page gives no minimum on the new 1-6 TOEFL scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Listed as 'Duolingo Academic'.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 52,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International undergraduate scholarships are based on previous-school GPA converted to a U.S. 4.0 scale and are calculated automatically after the application and documents are in; the tuition page says up to $18,000 per year for full-time students at the Romeoville campus (the international overview says '$17K maximum'). Lewis says merit scholarships are awarded regardless of citizenship. No need-based aid for international students is described; Mpower no-cosigner loans are available.",
+  "src": "tuitint"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1404",
+   "note": "CEEB code for SAT from Lewis Quick Facts.",
+   "src": "facts"
+  },
+  "act": {
+   "code": "1058",
+   "note": "ACT code from Lewis Quick Facts.",
+   "src": "facts"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international pages list no TOEFL code; search for Lewis University in the ETS code list.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

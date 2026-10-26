@@ -1,0 +1,154 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "VSU - International students (undergraduate admission, deadlines, English proficiency)",
+   "url": "https://www.valdosta.edu/admissions/undergraduate/student-information/international-students.php",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "VSU - Freshman admission requirements",
+   "url": "https://www.valdosta.edu/admissions/undergraduate/student-information/freshman-admission-requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "VSU - Undergraduate admissions FAQs",
+   "url": "https://www.valdosta.edu/admissions/undergraduate/faqs.php",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "VSU - Apply now (application portal)",
+   "url": "https://www.valdosta.edu/admissions/undergraduate/apply-now.php",
+   "accessed": "2026-10-26"
+  },
+  "toefl": {
+   "kind": "admissions_site",
+   "title": "VSU - TOEFL and SAT information (institution code)",
+   "url": "https://www.valdosta.edu/academics/international-programs/student-information/toefl-test-information.php",
+   "accessed": "2026-10-26"
+  },
+  "eli": {
+   "kind": "admissions_site",
+   "title": "VSU English Language Institute - Program information",
+   "url": "https://www.valdosta.edu/academics/international-programs/english-language-institute/program.php",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "VSU - Fee schedule for undergraduates, effective Fall 2026 (PDF)",
+   "url": "https://www.valdosta.edu/administration/finance-admin/financial-services/students/services/fee-schedule-for-undergraduates-effective-fall-2026.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "flexible",
+  "notes": "Applicants with an academic GPA of 3.2 or higher can be admitted without ACT/SAT; those with a GPA of 3.1 or lower should submit official scores. Listed score minimums are SAT EBRW 480 and Math 440, or ACT English or Reading 17 and Math 17; the page also states a Freshman Index minimum of 2040 (500 x HSGPA + SAT EBRW + SAT Math). Required high school curriculum is 17 units (4 English, 4 math, 4 science, 3 social science, 2 foreign language). The international page does not mention ACT/SAT.",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Apply through the VSU application portal (apply.valdosta.edu); the Common App is not mentioned. The FAQ states a $40 application fee. International applicants send sealed official transcripts (non-U.S. coursework evaluated by a NACES member), a Certificate of Finance form (minimum $35,284 for nine months), medical form with immunization proof, a copy of passport and visa, and must buy the VSU medical insurance plan. The international page lists no minimum GPA.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-01",
+   "label": "International application deadline (fall 2027)",
+   "notes": "International page: fall April 1, spring August 1, summer February 1. Printed without a year; treated as fall 2027. The freshman and FAQ pages print no domestic deadline.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of non-native speakers. Completing Level 6 of the VSU English Language Institute (ELI) with a B or better in each class lets a student be admitted without TOEFL or IELTS if all other requirements are met; the page does not call this conditional admission. Cambridge IGCSE/O Level English 'D' or better also counts. Duolingo and SAT/ACT are not listed on the international page, although the TOEFL information page lists SAT 900 combined.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "Paper-based 523 also listed. No 1-6 band value given.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 169,
+   "notes": "Cambridge English Scale score from B2 First, C1 Advanced or C2 Proficiency (Proficiency 180). Michigan English Test 55 is also accepted.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 5670,
+  "tuition_out_of_state_usd": 21300,
+  "tuition_intl_usd": 21900,
+  "required_fees_usd": 1636,
+  "room_board_usd": 8718,
+  "notes": "From the Fall 2026 fee schedule, doubled for two semesters at 15 credit hours: out-of-country tuition $10,950 per semester, mandatory fees $818 per semester ($1,636 per year, matching the CDS). Room and board is the schedule's minimum housing ($2,701, basic double room) plus the Blazer Weekly 8 meal plan ($1,658) per term; freshmen are listed on the Unlimited or 10-meal plans, so actual cost is higher. International students must buy the VSU health insurance (rate not read). The schedule estimates $33,454 for two semesters including $600 books per term.",
+  "src": "fees"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international page says partial out-of-state tuition-waiver scholarships are available on a limited basis; contact the Center for International Programs. No amounts are published on the page read.",
+  "src": "intl"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5855",
+   "note": "School code given for SAT registration.",
+   "src": "toefl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "toefl"
+  },
+  "toefl": {
+   "code": "5855",
+   "note": "Same school code given for TOEFL.",
+   "src": "toefl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

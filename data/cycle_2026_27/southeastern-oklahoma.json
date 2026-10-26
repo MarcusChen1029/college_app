@@ -1,0 +1,160 @@
+{
+  "sources": {
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Southeastern - International undergraduate students (freshmen)",
+      "url": "https://www.se.edu/international-student/international-undergraduate-students-freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Southeastern - International student admissions overview",
+      "url": "https://www.se.edu/international-student/",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Southeastern - Tuition and costs (expected costs 2026-2027)",
+      "url": "https://www.se.edu/financial-aid/tuition-costs",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Southeastern - Scholarships at Southeastern",
+      "url": "https://www.se.edu/financial-aid/scholarships-at-southeastern/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Southeastern catalog - Tuition and Fees (2025-2026)",
+      "url": "https://catalog.se.edu/?p=122",
+      "accessed": "2026-10-26"
+    },
+    "acad": {
+      "kind": "other",
+      "title": "Southeastern - Undergraduate academics (majors list)",
+      "url": "https://www.se.edu/undergraduate-academics/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "International first-year applicants need a high school GPA of 2.7, OR an ACT composite of 20, OR an SAT of 1030; so scores are only one of three ways to qualify.",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "US$30 non-refundable fee. Documents: transcripts evaluated by a NACES-member credential service, Undergraduate Affidavit of Financial Support, and an original bank statement (signed and stamped by a bank official, dated within 6 months of the start term) showing a liquid US$ balance that covers the first year. Essays, recommendations and interviews are not mentioned on the pages read.",
+    "src": "ug"
+  },
+  "deadlines": [
+    {
+      "kind": "scholarship",
+      "due": "2027-01-31",
+      "label": "Honors, President's Leadership Class, John Massey Leadership Scholars and Parsons Scholars applications (fall 2027)",
+      "notes": "Jan. 31, no year printed, treated as 2027. Only for new incoming freshmen; the page does not say whether international students are eligible.",
+      "src": "schol"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "General Scholarship application: priority date (fall 2027)",
+      "notes": "Mar. 1, no year printed, treated as 2027. The final General Scholarship deadline is Aug. 1. You must be admitted first; the page does not say whether international students are eligible.",
+      "src": "schol"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall 2027 (applicants outside the U.S.)",
+      "notes": "Fall deadline is June 1 for students outside the U.S. and July 1 for students already in the U.S.; no year is printed, so fall 2027 is assumed. Spring deadlines are Nov. 1 (outside U.S.) and Dec. 1 (in the U.S.). No summer admission for international students.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Test scores are not needed if English is your first language or you graduated from a U.S. high school with four years of English. Students with a TOEFL iBT of 48-60 (old 0-120 scale) or an IELTS of 5.0 may meet the requirement instead by completing at least 12 weeks in an ESL program approved by the Oklahoma State Regents.",
+    "src": "ug"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "The page lists 'TOEFL Internet-Based (iBT) 3.5' and says the iBT changed in 2026 to a new adaptive format with a 1-6 scale, so 3.5 is on the new scale. Paper-based 500 and computer-based 173 are also accepted. The old-scale iBT minimum is not printed (the ESL footnote covers 48-60).",
+      "src": "ug"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Overall band.",
+      "src": "ug"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "notes": "PTE Academic. iTEP Academic 3.5 is also accepted. Duolingo and Cambridge are not listed on the page.",
+      "src": "ug"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "The international admissions pages list no scholarships specific to international students. Freshman scholarship programs (Honors, President's Leadership Class, John Massey Leadership Scholars, Parsons Scholars, General Scholarship) require admission first; amounts and international eligibility are not published on the page read. Federal aid is not available to international students in general.",
+    "src": "schol"
+  },
+  "cost": {
+    "src": "tuition",
+    "notes": "Expected costs 2026-27 (tuition page): undergraduate tuition $243 per credit hour in-state and $569 out-of-state, with per-credit fees (student services $9, health and wellness $4, student infrastructure $13); the page says an out-of-state waiver offsets nonresident tuition so you pay the in-state rate, but it does not say whether international students qualify. 2025-26 catalog lists an international student status maintenance fee of $75. Housing runs $1,660-$3,790 per semester and meal plans $1,580-$2,300 per semester. The college-level figures above are 2024-25 College Navigator numbers."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Southeastern's international pages do not print an SAT code; look it up in the College Board code search.",
+      "src": "ug"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages read; look it up at act.org.",
+      "src": "ug"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read; look it up in the ETS code search.",
+      "src": "ug"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

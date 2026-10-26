@@ -1,0 +1,137 @@
+{
+  "slug": "detroit-mercy",
+  "name": "University of Detroit Mercy",
+  "short_name": "Detroit Mercy",
+  "state_region": "MI",
+  "city": "Detroit",
+  "latitude": 42.414222,
+  "longitude": -83.139158,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.udmercy.edu",
+  "admissions_url": "https://www.udmercy.edu/admission/international/admission-process.php",
+  "ipeds_unit_id": 169716,
+  "undergrad_enrollment": 3422,
+  "intl_undergrads": 955,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Detroit Mercy Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.udmercy.edu/academics/academic-affairs/research/files/cds/2425_UDM_CDS_Final.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - University of Detroit Mercy (locale, enrollment, student-faculty ratio, SAT/ACT)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=169716",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=169716",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 6514,
+    "admits": 4913,
+    "enrolled": 650,
+    "in_state_applicants": 4671,
+    "in_state_admits": 4058,
+    "out_state_applicants": 733,
+    "out_state_admits": 613,
+    "intl_applicants": 1110,
+    "intl_admits": 242,
+    "pct_submit_sat": 51,
+    "pct_submit_act": 6,
+    "gpa_avg": 3.7,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 24,
+      "3.75-3.99": 26,
+      "3.50-3.74": 19,
+      "3.25-3.49": 14,
+      "2.50-2.99": 10,
+      "2.0-2.49": 7
+    },
+    "notes": "CDS C1 (fall 2024 entering class; the 2025-26 CDS posted on the school's site has no readable values). 75% of all applicants were admitted, but only 242 of 1,110 international applicants (22%) were admitted and 33 enrolled, so international admission is far more selective than the overall rate. Early action available (non-binding); no early decision. C11 prints one GPA column (all enrolled students) with 'N/A' for the 3.00-3.24 band, so that band is omitted. Test-score submitters: 51% SAT (329 students), 6% ACT (39); the C9 heading says 'Fall 2023' but College Navigator shows the same percentiles for fall 2024."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1030,
+      1120,
+      1250
+    ],
+    "SAT_ERW": [
+      520,
+      560,
+      630
+    ],
+    "SAT_MATH": [
+      510,
+      560,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      26,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      22,
+      26,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "I",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2026) dropdown selections did not extract cleanly; the admissions site and catalog state that SAT/ACT are optional for most programs."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 33606,
+    "tuition_out_of_state_usd": 33606,
+    "required_fees_usd": 0,
+    "room_board_usd": 10636,
+    "books_usd": 1468,
+    "intl_need_aid_awarded": 126,
+    "intl_avg_award_usd": 18443,
+    "notes": "CDS G1 (2025-26 first-year): tuition $33,606, required fees $0, food and housing $10,636 (commuter food and housing $11,280 is also printed); G5 books and supplies $1,468. Tuition varies by program (G4: 15% of full-time undergraduates pay more). CDS H6 (2024-25 estimated): 126 degree-seeking undergraduate nonresidents received institutional aid, average $18,443 (total $2,323,779)."
+  }
+}

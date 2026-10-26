@@ -1,0 +1,168 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "St. John's University - International Undergraduate Admission Requirements",
+      "url": "https://www.stjohns.edu/admission/international-admission/undergraduate-application-requirements",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "St. John's University - International Admission FAQs",
+      "url": "https://www.stjohns.edu/admission/international-admission/international-admission-faqs",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "St. John's University - Apply (Fall 2027 deadlines)",
+      "url": "https://www.stjohns.edu/admission/apply",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "St. John's University - Scholarships",
+      "url": "https://www.stjohns.edu/admission/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "St. John's University - 2026-27 Estimated Annual Cost of Attendance",
+      "url": "https://www.stjohns.edu/admission/tuition-and-financial-aid/tuition/2026-27-estimated-annual-cost-attendance",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "International first-year applicants who submit an English proficiency score do not need SAT/ACT (unless the program requires it); applicants exempt from the English test who skip SAT/ACT can request to be reviewed test-optional. SAT/ACT is not needed for conditional-admission review. School codes: SAT 2799, ACT 2888.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Apply with the free St. John's application or the Common App; the requirements page says there is no application fee for online submissions (the FAQ page still mentions a $70 non-refundable fee). Required: official academic records with certified English translation and an English test unless exempt. Essay and recommendation letters are strongly encouraged but not required, except Pharmacy (both required). Applicants with an education gap over three months submit a statement of activity.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-12-01",
+      "label": "Early Action (fall 2027 entry)",
+      "notes": "Pharmacy and Bio-Optometry have their own deadlines and accept fall applicants only.",
+      "src": "apply"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular Decision (fall 2027 entry)",
+      "notes": "St. John's follows a rolling admission policy: applications after the deadline are considered while space is available (not for Pharmacy and Bio-Optometry).",
+      "src": "apply"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants who graduate from a secondary school in a country where English is an official language need no test. Three pathways: Direct Admission, the ELITE program (enroll full-time in the degree program with credit-bearing ESL courses), and Conditional Admission (full-time non-credit English Language Institute first, then the degree program; no English or SAT/ACT scores needed, but interest must be marked on the application). Thresholds are effective for fall 2026: TOEFL iBT 80+ direct / 61-79 ELITE / 33-60 conditional; IELTS 6.5+ / 6 / 3.0-5.5; Duolingo 110+ / 95-105 / 90 or below; PTE 53 / 44-52 / 43 or below; SAT EWR 440+ direct (400-430 ELITE); ACT English 15+ direct (14 ELITE).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Direct admission 80+; ELITE 61-79; conditional admission 33-60 (fall 2026 table).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Direct admission 4+ on the 1-6 scale; ELITE 3.5; conditional 3 or below.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Direct 6.5+; ELITE 6; conditional 3.0-5.5.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "Direct 110+; ELITE 95-105; conditional 90 or below.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Direct 53; ELITE 44-52; conditional 43 or below.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 176,
+      "notes": "Direct 176+ (B2 First, C1 Advanced or C2 Proficiency); ELITE 167-175 (B2 First).",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 56140,
+    "tuition_intl_usd": 56140,
+    "required_fees_usd": 1660,
+    "room_board_usd": 21958,
+    "books_usd": 844,
+    "other_usd": 3188,
+    "total_coa_usd": 83790,
+    "src": "coa",
+    "notes": "Queens campus, living on campus, 2026-27: tuition $56,140 (12-18 credits per semester), fees $1,660, housing $13,728, food $8,230, books $844, loan fees $58, personal $2,110, transportation $1,020 (total $83,790). Business majors in years 3-4 pay a tuition differential. One tuition rate for all students."
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "The FAQ says St. John's has no financial aid for international students but its merit scholarships are competitive; the admission application automatically determines eligibility. For the fall 2026 entering class merit scholarships were awarded up to $36,000 annually for up to four years (no per-GPA grid is published; test-optional applicants are still considered). Catholic Scholars (separate application, $10,000 per year) and the Catholic School Scholarship ($3,000 per year, automatic) also apply to international students.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "Pharmacy (Pharm.D.) and Bio-Optometry",
+      "admit_model": "direct_major",
+      "capped": null,
+      "notes": "Fall start only; essay and recommendation letters are required for Pharmacy."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "2799",
+      "src": "intl"
+    },
+    "act": {
+      "code": "2888",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: an 83% admit rate (fall 2024) with SAT section medians of 620 EBRW / 620 Math among the 23% who submit, and a New York City campus, place it just above the open-access D tier."
+  }
+}

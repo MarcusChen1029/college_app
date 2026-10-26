@@ -1,0 +1,135 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Cal State East Bay International Admissions - International Application & Document Deadlines (page 'last updated 9/15/26')",
+   "url": "https://www.csueastbay.edu/iao/how-to-apply/international-deadlines.html",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Cal State East Bay International Admissions - First Time Freshmen Admission Requirements",
+   "url": "https://www.csueastbay.edu/iao/how-to-apply/first-time-freshman/admission-requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Cal State East Bay International Admissions - English Proficiency Requirement",
+   "url": "https://www.csueastbay.edu/iao/how-to-apply/english-proficiency-req/index.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "admissions_site",
+   "title": "Cal State East Bay International Admissions - International Student Scholarships (Global Scholarships)",
+   "url": "https://www.csueastbay.edu/iao/future-students/scholarships.html",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "Cal State East Bay International Admissions - Tuition and Fees (non-resident costs and I-20 amount)",
+   "url": "https://www.csueastbay.edu/iao/future-students/fees-payments.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)', and the international freshman page says SAT/ACT are not required for admission. Scores are optional and are used only for English/Math placement, as an alternative proof of English (SAT 550 Verbal or ACT 22 English), and for the Global Excellence Scholarship. Eligibility for non-U.S. high school graduates is a 3.0 GPA.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App) and pay the $70 non-refundable fee. Needs a 3.0 GPA for applicants who graduated outside the U.S.; A-G coursework is not required for them. College Navigator shows the secondary school GPA, record and college-prep program are required while essays and recommendations are not considered. Documents: transcripts, proof of English proficiency, and financial documents (official bank statement or letter showing at least one year of expenses) for the I-20.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-31",
+   "label": "International first-year application deadline, Cal State Apply (fall 2027)",
+   "notes": "Filing opens Oct 1, 2026. The page prints 'May 31' without a year and its landing page says fall 2027 applications are open, so it is treated as May 31, 2027. The office strongly encourages applying early because visa processing can take weeks after the I-20 is issued; some academic programs may have earlier deadlines.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-15",
+   "label": "International Admissions document deadline (fall applicants)",
+   "notes": "The page prints 'June 15' without a year; treated as 2027. Official documents must be submitted before registering for classes.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for applicants educated in countries the school lists as having official English-medium instruction (for example the United States, United Kingdom, Ireland, Canada except Quebec, Australia, New Zealand, South Africa, Ghana, Fiji, Jamaica; Singapore and India are not on the list). Scores are valid for two years. IELTS General Training, IELTS One Skill Retake, TOEFL Essentials and TOEFL My Best Score are not accepted. Other accepted proofs: Michigan English Test 51, DAAD B2, CBSE Year 12 English A2 84, SAT 550 Verbal, AP English 3, ACT 22 English, IB English A 6 SL / 5 HL. Applicants who are academically qualified but below the English minimum can get conditional admission and attend the Global Academy Intensive English Program.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Exams taken before Jan 21, 2026 (0-120 scale); Home Edition accepted. Graduate minimum is 80.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Exams taken on or after Jan 21, 2026; the page lists 3.5 for undergraduates and 4.0 for graduates without naming the scale (assumed to be the new 1-6 band scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic overall 6 for undergraduates (6.5 graduate).",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Graduate minimum is 105.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "PTE Academic; graduate minimum is 58.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "Global Scholarships (separate application in the Pioneer Scholarships Portal after submitting Cal State Apply): Global Excellence Scholarship is a limited number of full non-resident tuition waivers (over $14,000 per year), renewable up to four years, for freshmen with a 3.3+ GPA; Global Honors Scholarship is a limited number of one-year awards of $2,900+. Both ask applicants to demonstrate financial need and enroll in 15 units a semester; awards are competitive and not guaranteed. International students may apply only for merit-based awards in the general Pioneer Scholarships Portal (most $300 to $3,000). Conditional admission with the Global Academy Intensive English Program is available for students below the English minimum.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 24496,
+  "room_board_usd": 18509,
+  "other_usd": 1500,
+  "total_coa_usd": 44505,
+  "notes": "From the school's non-resident estimate for students beginning Spring 2027 (15 units per semester): tuition and fees $24,496 combined (stored as tuition_intl_usd; the page does not split fees out), health insurance $1,500 (stored in other_usd), living expenses $18,509 (stored in room_board_usd), total I-20 amount $44,505. Dependents need $5,000 extra per spouse and per child.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ }
+}

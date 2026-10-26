@@ -1,0 +1,100 @@
+{
+  "slug": "incarnate-word",
+  "name": "University of the Incarnate Word",
+  "short_name": "UIW",
+  "state_region": "TX",
+  "city": "San Antonio",
+  "latitude": 29.46708,
+  "longitude": -98.46583,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.uiw.edu",
+  "admissions_url": "https://www.uiw.edu/admissions/",
+  "ipeds_unit_id": 225627,
+  "undergrad_enrollment": 4638,
+  "intl_undergrads": 182,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of the Incarnate Word Common Data Set 2024-2025 (PDF)",
+      "url": "https://my.uiw.edu/ir/_docs/cds-24-25.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 11305,
+    "admits": 11096,
+    "enrolled": 1016,
+    "in_state_applicants": 10498,
+    "in_state_admits": 10353,
+    "out_state_applicants": 338,
+    "out_state_admits": 330,
+    "intl_applicants": 462,
+    "intl_admits": 413,
+    "pct_submit_sat": 26,
+    "pct_submit_act": 6,
+    "gpa_avg": 3.54,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 17,
+      "3.75-3.99": 25,
+      "3.50-3.74": 23,
+      "3.25-3.49": 16,
+      "3.00-3.24": 11,
+      "2.50-2.99": 5,
+      "2.0-2.49": 2,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS 2024-2025 is the latest posted (fall 2024 entering class); the 2025-2026 CDS is not on UIW's Institutional Research page yet. Residency split from the C1 table: 462 international applicants, 413 admitted (the unknown-residency row is 7 applicants). C9: 261 students submitted SAT and 58 ACT. B1/B2: undergraduate total 4,638 with 182 nonresident (international) undergraduates; student-to-faculty ratio 12:1. No early decision or early action; deferral up to 1 semester. The C7 importance checkboxes could not be read reliably from the PDF text, so factors are omitted."
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      520,
+      580
+    ],
+    "SAT_MATH": [
+      430,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      24
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "The CDS C8A checkbox could not be read reliably from the PDF text; the admissions site states test submission is optional."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 36450,
+    "required_fees_usd": 2200,
+    "room_board_usd": 15290,
+    "books_usd": 300,
+    "other_usd": 2368,
+    "intl_need_aid_awarded": 150,
+    "intl_avg_award_usd": 28829,
+    "notes": "CDS G1 (2025-2026): tuition $36,450, required fees $2,200, food and housing $15,290; G5 books $300. CDS H6 (2024-25): 150 degree-seeking nonresidents received institutional aid, average $28,829 (total $4,324,408); the need/non-need boxes were not readable."
+  }
+}

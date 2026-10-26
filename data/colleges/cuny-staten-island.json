@@ -1,0 +1,67 @@
+{
+  "slug": "cuny-staten-island",
+  "name": "College of Staten Island, CUNY",
+  "short_name": "CSI",
+  "state_region": "NY",
+  "city": "Staten Island",
+  "latitude": 40.601831,
+  "longitude": -74.14849,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.csi.cuny.edu/",
+  "admissions_url": "https://www.csi.cuny.edu/admissions",
+  "ipeds_unit_id": 190558,
+  "undergrad_enrollment": 10051,
+  "intl_undergrads": 210,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, SAT, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190558",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190558",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "navigator",
+    "applicants": 14002,
+    "admits": null,
+    "enrolled": null,
+    "pct_submit_sat": 7,
+    "notes": "Baseline from College Navigator (IPEDS fall 2024): 14,002 applicants, 92% admitted (rounded; the number of admits is not shown), 17% of admits enrolled. Admits and enrolled left null because only rounded percentages are published; no Common Data Set was found on CSI's site (two attempts) and CSI is missing from the IPEDS ADM2023 file, so no exact counts, international split or GPA. CSI says the average high school average of its fall 2025 students was 87.9 (an average, not a cutoff)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      460,
+      530,
+      620
+    ],
+    "SAT_MATH": [
+      430,
+      510,
+      630
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 7490,
+    "tuition_out_of_state_usd": 15440,
+    "books_usd": 1500,
+    "room_board_usd": 21155,
+    "other_usd": 6216,
+    "total_coa_usd": 36361,
+    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus food and housing; total is the in-state on-campus figure (out-of-state on-campus $44,311). CSI states international students pay the out-of-state tuition and fees. CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time plus fees."
+  }
+}

@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "Illinois State - International admission requirements (documents, English proficiency)",
+   "url": "https://illinoisstate.edu/admissions/international/requirements/",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Illinois State - International students (scholarships, costs, pathways)",
+   "url": "https://illinoisstate.edu/admissions/international/",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Illinois State - Application deadlines",
+   "url": "https://illinoisstate.edu/apply/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Illinois State - Freshman admission requirements (test-optional, GPA range)",
+   "url": "https://illinoisstate.edu/admissions/freshman-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "fee": {
+   "kind": "admissions_site",
+   "title": "Illinois State - Application fee and waiver",
+   "url": "https://illinoisstate.edu/apply/fee-waiver/",
+   "accessed": "2026-10-26"
+  },
+  "app": {
+   "kind": "admissions_site",
+   "title": "Illinois State - International application information",
+   "url": "https://illinoisstate.edu/apply/international/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Illinois State - Undergraduate International Admissions Scholarship",
+   "url": "https://illinoisstate.edu/admissions/international/undergraduate-scholarship/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Standardized test scores are not required and submitting them cannot hurt an application. International freshmen need not submit SAT/ACT unless they attended a U.S. high school for three or more years, but scores may make them eligible for scholarships.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "notes": "Application fee $65 for summer/fall 2027 ($55 spring 2027). International undergraduates apply through the Student Application Portal (the Common App is also accepted for fall freshmen, with no preference); applicants recruited by INTO use the INTO Illinois State application. Required: unofficial academic records with official word-for-word English translation, English proficiency score (unless waived), passport, and a declaration of finances (bank statement within 6 months). Optional ~500-word academic personal statement; may be requested if the application needs further review. Fine arts majors have extra requirements.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-01",
+   "label": "Freshman priority deadline, fall 2027 (priority window Aug. 1 - Nov. 1)",
+   "notes": "Apply before the priority date for best consideration for scholarships and for competitive or limited-enrollment majors. Page is the general freshman schedule and prints no year; taken as the fall 2027 cycle. Not specific to international applicants.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "Freshman application and required-document deadline, fall 2027 (final documents for enrollment July 15)",
+   "notes": "Deadlines for summer and fall freshmen are subject to change without notice. Spring 2027 entry: application Nov. 1, documents Nov. 15, 2026. No separate international deadline is published; international students need extra time for the visa process.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for non-native speakers from non-Anglophone countries unless waiver qualifications are met (see ISU English Waiver Guidelines). Waiver-eligible countries include Australia, Canada, Ireland, New Zealand, the UK, Anglophone African countries (e.g. Ghana, Kenya, Nigeria, South Africa) and the Anglophone Caribbean. Scores must be dated within two years; PDF copies are fine for the application and official scores are needed after admission. Academic English and Pathway programs (including INTO Illinois State) are available for applicants who need English support.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 81,
+   "notes": "TOEFL iBT. TOEFL Essentials 8.5 is also accepted.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "'New TOEFL (beginning January 2026)' minimum 4.5, on the 1-6 scale.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band score.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 55,
+   "notes": "PTE Academic. Michigan English Test (MET) 58 is also accepted.",
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Undergraduate International Admissions Scholarship: automatic with admission for a cumulative GPA of 3.0+ (4.0 scale) and English proficiency; valued up to $5,000 per year and renewable (needs continuous 12+ hour enrollment and a 2.75 GPA). It cannot be combined with full-tuition scholarships or waivers. International students are generally not eligible for the same aid as Americans. Submitting SAT/ACT may open other scholarships.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Wonsook Kim College of Fine Arts programs",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "The international requirements page says fine arts majors have additional admission requirements; see the college's own admission requirements.",
+   "src": "req"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The admissions pages read do not print the SAT school code; look up Illinois State University in the College Board code search.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "The admissions pages read do not print the ACT code; look it up at act.org.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code printed; PDF copies of scores can be used to apply and official scores are requested after admission.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "C",
+  "computer_science": "D",
+  "engineering": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "business": "Editorial judgment: AACSB-accredited College of Business, in the roughly 41-100 band."
+ }
+}

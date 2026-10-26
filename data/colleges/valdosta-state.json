@@ -1,0 +1,106 @@
+{
+  "slug": "valdosta-state",
+  "name": "Valdosta State University",
+  "short_name": "VSU",
+  "state_region": "GA",
+  "city": "Valdosta",
+  "latitude": 30.847402,
+  "longitude": -83.289282,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.valdosta.edu",
+  "admissions_url": "https://www.valdosta.edu/admissions/undergraduate/student-information/international-students.php",
+  "ipeds_unit_id": 141264,
+  "undergrad_enrollment": 7166,
+  "intl_undergrads": 97,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Valdosta State University Common Data Set - Fall 2024 (2024-2025 edition, PDF)",
+      "url": "https://www.valdosta.edu/administration/institutional-research/documents/common-data-set/cds-2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Valdosta State University (fall 2024 enrollment, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141264",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141264",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 6267,
+    "admits": 4521,
+    "enrolled": 1132,
+    "in_state_applicants": 4320,
+    "in_state_admits": 3111,
+    "out_state_applicants": 1813,
+    "out_state_admits": 1334,
+    "intl_applicants": 87,
+    "intl_admits": 41,
+    "pct_submit_sat": 31,
+    "pct_submit_act": 13,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 97.7,
+    "gpa_distribution": {
+      "4.0": 10.1,
+      "3.75-3.99": 17.7,
+      "3.50-3.74": 19.7,
+      "3.25-3.49": 23.5,
+      "3.00-3.24": 15.9,
+      "2.50-2.99": 10.1,
+      "2.0-2.49": 2.7,
+      "1.0-1.99": 0.2
+    },
+    "notes": "From VSU's Fall 2024 Common Data Set (C1, C9, C11). CDS counts differ slightly from IPEDS (6,267 vs 6,253 applicants). Residency split: in-state 4,320, out-of-state 1,813, international 87, unknown 47 applicants; international admits 41 (47% of international applicants vs 72% overall) and 9 enrolled. GPA bands are the 'all enrolled students' column; 0.1% had a GPA below 1.0. A 2025-2026 CDS PDF is posted but its filled-in values did not extract as text, so the 2024-2025 edition was used. Undergraduate enrollment and student-faculty ratio are IPEDS fall 2024. The CDS marks one importance box per factor with no readable column, so 'factors' is omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      930,
+      1000,
+      1108
+    ],
+    "SAT_ERW": [
+      480,
+      520,
+      570
+    ],
+    "SAT_MATH": [
+      440,
+      490,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      22
+    ],
+    "ACT_ENGLISH": [
+      15,
+      18,
+      22
+    ],
+    "ACT_MATH": [
+      16,
+      17,
+      20
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "flexible",
+    "notes": "VSU admissions page: applicants with an academic GPA of 3.2 or higher can be admitted without ACT/SAT; those with 3.1 or lower should submit official scores."
+  }
+}

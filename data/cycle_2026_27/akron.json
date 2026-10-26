@@ -1,0 +1,153 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "University of Akron - International admissions: how to apply (deadlines, English proficiency, test-optional)",
+   "url": "https://www.uakron.edu/international/apply/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "admissions_site",
+   "title": "University of Akron - Tuition and scholarships for international students",
+   "url": "https://www.uakron.edu/international/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "University of Akron - Scholarships and grants for undergraduates (2026-27 new students)",
+   "url": "https://www.uakron.edu/finaid/scholarship-programs/new-freshmen.dot",
+   "accessed": "2026-10-26"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "University of Akron Main Campus Common Data Set 2025-2026 (PDF)",
+   "url": "https://www.uakron.edu/ir/docs/CDS/CDS%202025-2026%20University%20of%20Akron%20Main%20Campus.pdf",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The SAT or ACT is not required for admission or scholarship consideration; scores sent directly from the testing agency (SAT code 1829, ACT code 3338) are considered in holistic review. SAT EBRW 500 or ACT English 18 can also serve as English-proficiency proof. Merit scholarship awards are based on GPA and curriculum.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Apply through UA's own application. Required for first-time international students: official secondary transcripts with projected graduation date, a NACES course-by-course credential evaluation (TEC, WES, ECE, IEE or IFCS), and proof of English proficiency; SAT/ACT is optional. CDS C13 reports no application fee, but the International Center scholarship page mentions an 'application fee' in a deadline table, so the international fee is left null. First-time international students typically cannot start in summer. Official documents are needed for admission, scholarships and the I-20.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International application deadline, fall 2027 entry",
+   "notes": "Page lists 'Fall: June 1; Spring: October 1' without a year; taken as fall 2027 (spring 2027 would be Oct. 1, 2026). Rolling admission; if documents arrive after the deadline the application may be deferred to the next semester. Domestic first-years (CDS C14): priority date May 1, closing date Aug. 1, decisions rolling from Oct. 1. The scholarships page has a table with a May 1 fall date under its transfer-student heading; June 1 from the 'how to apply' page is used.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for: 3 or more years of high school in a school whose primary language of instruction is English; citizens of the page's list of English-exempt countries; IB English score of 5 (higher level) or 6 (standard level); A-level English Language or Language and Literature grade C or higher; AP English Language or Literature score of 3 or higher; a completed US college English Composition course with C or better; or a passing ESL/ELI program at another regionally accredited US college. Scores must be less than two years old; institutional TOEFL is not accepted. The page does not mention a conditional-admission or English pathway program.",
+  "src": "apply"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "For tests taken before Jan. 21, 2026.",
+   "src": "apply"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Page states 'minimum score is 3.5 for tests taken after January 21, 2026' without naming the 1-6 scale.",
+   "src": "apply"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "apply"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "apply"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "src": "apply"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "notes": "C1 Advanced (CAE). Also accepted: SAT EBRW 500, ACT English 18, LanguageCert Academic 65, GTEC 1126/1135.",
+   "src": "apply"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "New international freshmen are automatically considered for merit scholarships with admission (based on GPA and curriculum, amounts vary; 12+ credits per semester, normally renewable for four years while in good standing at 2.0 GPA). The 2026-27 scholarship table does not state international-specific amounts. CDS H6: 200 nonresident undergraduates received institutional non-need aid, average $9,112.",
+  "src": "fa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1829",
+   "note": "SAT institution code as printed on the international admissions page.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "3338",
+   "note": "ACT institution code.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "1829",
+   "note": "TOEFL institution code; the same code is listed for SAT.",
+   "src": "apply"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "apply"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "apply"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

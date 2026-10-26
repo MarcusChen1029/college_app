@@ -1,0 +1,88 @@
+{
+  "slug": "west-alabama",
+  "name": "University of West Alabama",
+  "short_name": "UWA",
+  "state_region": "AL",
+  "city": "Livingston",
+  "latitude": 32.588132,
+  "longitude": -88.186329,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.uwa.edu",
+  "admissions_url": "https://www.uwa.edu/admissions/international-students/",
+  "ipeds_unit_id": 101587,
+  "undergrad_enrollment": 2983,
+  "intl_undergrads": 62,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - University of West Alabama (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=101587",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=101587",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=101587",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 2729,
+    "admits": 1164,
+    "enrolled": 389,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 61,
+    "notes": "Baseline from IPEDS fall 2024 (exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal; percentages and percentiles from College Navigator). No Common Data Set was found on UWA's site (the Institutional Effectiveness pages link none), so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 3%, ACT 61%); the SAT figures rest on very few students. The 43% admit rate is as IPEDS reports it; UWA's published minimums are low (ACT 17, SAT 920 or 2.5 GPA), so the counting of applicants may differ from other schools."
+  },
+  "scores": {
+    "SAT_ERW": [
+      440,
+      460,
+      560
+    ],
+    "SAT_MATH": [
+      420,
+      470,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      21
+    ],
+    "ACT_ENGLISH": [
+      15,
+      18,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      17,
+      19
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "scorecard",
+    "tuition_usd": 10990,
+    "tuition_out_of_state_usd": 20090,
+    "books_usd": 1206,
+    "room_board_usd": 8230,
+    "notes": "College Navigator (IPEDS 2024-25): published tuition and fees $10,990 in-state, $20,090 out-of-state; on-campus food and housing $8,230; books and supplies $1,206. Current 2026-27 direct costs for international undergraduates are on the UWA Tuition & Fees page (see cycle data)."
+  }
+}

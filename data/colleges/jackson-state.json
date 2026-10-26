@@ -1,0 +1,72 @@
+{
+  "slug": "jackson-state",
+  "name": "Jackson State University",
+  "short_name": "Jackson State",
+  "state_region": "MS",
+  "city": "Jackson",
+  "latitude": 32.296105,
+  "longitude": -90.207405,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.jsums.edu",
+  "admissions_url": "https://www.jsums.edu/admissions/",
+  "ipeds_unit_id": 175856,
+  "undergrad_enrollment": 4650,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=175856",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=175856",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 14141,
+    "admits": 12873,
+    "enrolled": 978,
+    "pct_submit_sat": 12,
+    "pct_submit_act": 29,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, exact counts). JSU's newest posted Common Data Set is 2019-2020, too old to use, so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 15,487 applicants, 93% admitted, 7% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 4,650 is fall 2024."
+  },
+  "scores": {
+    "SAT_ERW": [
+      440,
+      490,
+      550
+    ],
+    "SAT_MATH": [
+      410,
+      470,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      18,
+      20
+    ],
+    "ACT_ENGLISH": [
+      14,
+      17,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      16,
+      18
+    ]
+  }
+}

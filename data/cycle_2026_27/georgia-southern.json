@@ -1,0 +1,139 @@
+{
+ "sources": {
+  "ar": {
+   "kind": "admissions_site",
+   "title": "Georgia Southern - Admission requirements for international students",
+   "url": "https://www.georgiasouthern.edu/admissions-aid/international-students/admission-requirements-for-international-students",
+   "accessed": "2026-10-26"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "Georgia Southern - Application deadlines and requirements",
+   "url": "https://georgiasouthern.edu/admissions-aid/apply/deadlines-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Georgia Southern - International students (overview and FAQ)",
+   "url": "https://www.georgiasouthern.edu/admissions-aid/international-students",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "First-year applicants (including international) need a 2.5+ GPA and SAT or ACT scores meeting subscore minimums: SAT EBRW 480+ and Math 440+, or ACT English or Reading 17+ and Math 17+ (CLT is accepted domestically). College Navigator lists test-optional for fall 2024, but the current pages require scores. The University College pathway lists only a 2.0 GPA and transcript.",
+  "src": "ar"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app"
+  ],
+  "app_fee_usd": 30,
+  "notes": "Apply on Georgia Southern's own application or the Common App (first-year). $30 non-refundable fee (credit card). Official high school transcripts are mailed or emailed by a school official to intladmissions@georgiasouthern.edu, with a certified English translation if not in English; SAT/ACT scores must come from the testing agency. Essays and recommendations are not mentioned on the page.",
+  "src": "ar"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-04-01",
+   "label": "Priority international undergraduate admission (fall 2027)",
+   "notes": "The international FAQ says priority admission for fall is typically the preceding April 1 (spring: Nov. 1). Dates print without a year; treated as fall 2027.",
+   "src": "faq"
+  },
+  {
+   "kind": "application",
+   "due": "2027-08-01",
+   "label": "Fall semester application deadline (general undergraduate)",
+   "notes": "General deadline for Fall full term; decisions depend on submitting all documents at least one week before classes. An I-20 and visa take time, so apply well before this date.",
+   "src": "dl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "International Merit Scholarship priority deadline (fall only)",
+   "notes": "Out-of-country tuition waiver worth about $13,000 per year.",
+   "src": "ar"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-01-15",
+   "label": "Freshman academic scholarship deadline (fall only)",
+   "notes": "Competitive scores listed: SAT 1300+ or ACT 28; leadership and extracurricular involvement expected.",
+   "src": "ar"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native English speakers must show proof of English proficiency with TOEFL, IELTS, SAT or ACT scores sent directly by the testing agency. Non-native speakers who attend four years of high school in the United States do not need proof. The page lists only SAT, ACT, TOEFL and IELTS; Duolingo, PTE and Cambridge are not mentioned. No conditional-admission or ESL pathway is described on the international undergraduate page.",
+  "src": "ar"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "Listed as 'TOEFL: 69 IBT'; no new 1-6 scale value is given. SAT EBRW 480+ or ACT English/Reading 17+ also satisfies the requirement for first-year students.",
+   "src": "ar"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "ar"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 18550,
+  "room_board_usd": 11904,
+  "other_usd": 4200,
+  "intl_extra_fees_usd": 2936,
+  "total_coa_usd": 37590,
+  "notes": "International page 'Annual Cost Estimate for Undergraduate Students (2026-2027)': tuition and fees $18,550 (12 credit hours), room and board $11,904, health insurance $2,936, personal expenses (books, supplies, transportation, entertainment) $4,200, total $37,590 (the page labels the total '2024-2025' by mistake). An I-20 requires proof of funds for at least one year of expenses.",
+  "src": "ar"
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Merit Scholarship (out-of-country tuition waiver) is worth about $13,000 per year, lasts 4 years for freshmen, is competitive, for fall admits only, priority deadline Feb. 1; criteria are good academic standing, financial need and commitment to the university. The page also says Georgia Southern offers a limited number of need-based and academic scholarships for international students. Freshman academic scholarships (Jan. 15) look for SAT 1300+ / ACT 28.",
+  "src": "ar"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The reviewed Georgia Southern pages do not print a numeric SAT code; look it up in the College Board code search.",
+   "src": "ar"
+  },
+  "act": {
+   "code": null,
+   "note": "The reviewed Georgia Southern pages do not print a numeric ACT code; look it up at act.org.",
+   "src": "ar"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; results must be sent directly by the testing service.",
+   "src": "ar"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; results must be sent directly by the testing service.",
+   "src": "ar"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

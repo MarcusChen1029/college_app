@@ -1,0 +1,107 @@
+{
+  "slug": "bellarmine",
+  "name": "Bellarmine University",
+  "short_name": "Bellarmine",
+  "state_region": "KY",
+  "city": "Louisville",
+  "latitude": 38.219279,
+  "longitude": -85.704997,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.bellarmine.edu/",
+  "admissions_url": "https://www.bellarmine.edu/admissions/undergraduate/index.php",
+  "ipeds_unit_id": 156286,
+  "undergrad_enrollment": 2365,
+  "intl_undergrads": 48,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Bellarmine University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.bellarmine.edu/institutional-research-and-effectiveness/docs/common-data-sets/CDS-PDF-2025-2026_For_Publication.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4804,
+    "admits": 4502,
+    "enrolled": 659,
+    "pct_submit_sat": 6,
+    "pct_submit_act": 53,
+    "gpa_avg": 3.49,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 9.1,
+      "3.75-3.99": 26.5,
+      "3.50-3.74": 21.3,
+      "3.25-3.49": 14.0,
+      "3.00-3.24": 13.1,
+      "2.50-2.99": 14.6,
+      "2.0-2.49": 1.2,
+      "1.0-1.99": 0.2
+    },
+    "notes": "CDS C1 totals for fall 2025 first-time, first-year students (men 1,681 + women 3,123 applied; 1,586 + 2,916 admitted; 255 + 404 enrolled). The residency split of applicants/admits (including international) was left blank in the CDS, so intl_applicants/intl_admits are empty; 11 of the 659 enrolled first-years were nonresidents (B2). GPA distribution is for all enrolled students (C11). Undergrad enrollment is B1 'Total all undergraduates' (2,365); intl_undergrads is the B2 nonresident count in that total (48). Early decision: none; early action: yes (C21/C22). No waitlist data reported. Test-optional."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1076,
+      1175,
+      1300
+    ],
+    "SAT_ERW": [
+      538,
+      595,
+      660
+    ],
+    "SAT_MATH": [
+      538,
+      580,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      16,
+      20,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: SAT/ACT scores are used in admission decisions if submitted but not required (and used for advising)."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 50660,
+    "required_fees_usd": 1600,
+    "room_board_usd": 11770,
+    "books_usd": 500,
+    "other_usd": 3628,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 40,
+    "intl_avg_award_usd": 45317,
+    "notes": "CDS G1 for 2026-27 (first-year and all undergraduates): tuition 50,660; required fees 1,600; food and housing 11,770 (housing 5,890 + meals 5,880); books 500; residential transportation 1,080 not included in other. CDS H6: institutional non-need-based aid is available to nonresidents; 40 degree-seeking nonresident undergraduates received institutional aid, average 45,317 (total 1,812,685); H7 asks them only for an International Student's Certification of Finances."
+  }
+}

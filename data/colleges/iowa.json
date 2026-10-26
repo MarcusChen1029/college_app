@@ -1,0 +1,130 @@
+{
+  "slug": "iowa",
+  "name": "University of Iowa",
+  "short_name": null,
+  "state_region": "IA",
+  "city": "Iowa City",
+  "latitude": 41.661935,
+  "longitude": -91.536425,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://uiowa.edu",
+  "admissions_url": "https://admissions.uiowa.edu",
+  "ipeds_unit_id": 153658,
+  "undergrad_enrollment": 23407,
+  "intl_undergrads": 266,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Iowa Common Data Set 2025-2026 (PDF)",
+      "url": "https://provost.uiowa.edu/sites/provost.uiowa.edu/files/2026-04/CDS_2526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 31454,
+    "admits": 25131,
+    "enrolled": 5561,
+    "in_state_applicants": 5892,
+    "in_state_admits": 4984,
+    "out_state_applicants": 24060,
+    "out_state_admits": 19510,
+    "intl_applicants": 1502,
+    "intl_admits": 637,
+    "waitlist_offered": 12,
+    "waitlist_accepted": 1,
+    "waitlist_admitted": 1,
+    "pct_submit_sat": 22,
+    "pct_submit_act": 60,
+    "gpa_avg": 3.86,
+    "pct_reporting_gpa": 99.42,
+    "gpa_distribution": {
+      "4.0": 35.45,
+      "3.75-3.99": 28.83,
+      "3.50-3.74": 18.88,
+      "3.25-3.49": 12.08,
+      "3.00-3.24": 3.82,
+      "2.50-2.99": 0.9,
+      "2.0-2.49": 0.04,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 residency split (in-state 5,892 / out-of-state 24,060 / international 1,502 applicants; international admit rate computed 637/1,502 = 42.4%, 52 enrolled). Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (23,407; nonresident 266). No early decision or early action in the CDS (the admissions site now lists an Early Action date, see cycle file). Application closing date May 1. GPA distribution is the 'all enrolled students' column. Applicants also pass through the Regent Admission Index (RAI) used by Iowa's public universities."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1130,
+      1230,
+      1320
+    ],
+    "SAT_ERW": [
+      560,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      550,
+      610,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'. C8F: the Iowa Board of Regents lets students include or omit scores; applicants without a score may be asked for additional academic documents."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "costs",
+    "tuition_usd": 11971,
+    "tuition_out_of_state_usd": 34247,
+    "tuition_intl_usd": 35442,
+    "room_board_usd": 14022,
+    "books_usd": 950,
+    "total_coa_usd": 53042,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 161,
+    "intl_avg_award_usd": 23085,
+    "notes": "Estimated 2026-27 costs from the Admissions cost pages (the CDS G section is left blank). The tuition figures are tuition AND fees combined: Iowa residents $11,971, nonresidents $34,247, international Liberal Arts & Sciences $35,442 (Business $38,847, Engineering $37,030, Nursing $39,316). Total $53,042 is the international LAS estimate and includes $2,628 health insurance. CDS H6 (final 2024-25): only institutional non-need-based aid for nonresidents; 161 degree-seeking nonresidents received aid, averaging $23,085 ($3,716,639 total)."
+  }
+}

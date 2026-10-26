@@ -1,0 +1,179 @@
+{
+  "sources": {
+    "app": {
+      "kind": "admissions_site",
+      "title": "Iowa State - International Undergraduate Application Information",
+      "url": "https://www.iastate.edu/admission-and-aid/admissions/international-students/international-undergraduate-application-information",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Iowa State - International First-Year Requirements",
+      "url": "https://www.iastate.edu/admission-and-aid/admissions/international-admissions/international-first-year-requirements",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Iowa State - English proficiency requirement",
+      "url": "https://www.iastate.edu/admission-and-aid/admissions/international-admissions/english-proficiency-requirement",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Iowa State - International FAQ",
+      "url": "https://www.iastate.edu/admission-and-aid/admissions/international-admissions/frequently-asked-questions",
+      "accessed": "2026-10-26"
+    },
+    "merit": {
+      "kind": "financial_aid_site",
+      "title": "Iowa State - International Merit Scholarships",
+      "url": "https://www.iastate.edu/admission-and-aid/admissions/international-admissions/international-merit-scholarships",
+      "accessed": "2026-10-26"
+    },
+    "excel": {
+      "kind": "financial_aid_site",
+      "title": "Iowa State - International Student Excellence Award",
+      "url": "https://www.iastate.edu/admission-and-aid/admissions/international-admissions/international-student-excellence-award",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for international applicants educated abroad, but a 1200+ SAT or 25+ ACT composite automatically counts as meeting the 3.0 GPA requirement, and SAT/ACT is required to qualify for the automatic Excellence awards (President's and Dean's).",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Formula-style admission: international first-years need a high school GPA equivalent to 3.0/4.0 (or SAT 1200+/ACT 25+) plus core courses (4 English, 3 math incl. algebra and geometry, 3 science incl. 2 lab, 2 social studies). Rolling admission with no closing date; apply 6-8 weeks before needed for the I-20/visa. No essays, recommendations or merit certificates are required. $65 fee, no waiver. Bank statement or sponsor letter required ($52,000 for most majors, $54,300 for Design and Animal Enterprise and Innovation per the requirements page; another Iowa State page shows $49,300). Official English test results may arrive up to 30 days after the deadline.",
+    "src": "app"
+  },
+  "deadlines": [
+    {
+      "kind": "scholarship",
+      "due": "2027-02-15",
+      "label": "International Merit Scholarship priority deadline (fall 2027)",
+      "notes": "Priority date for the OneApp International Merit Scholarship application (page prints no year; taken as the fall 2027 cycle) (Award of Achievement up to $40,000; Award of Distinction up to $16,000). Admission itself is rolling with no application closing date.",
+      "src": "merit"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Accept offer of admission (fall); final International Merit Scholarship date",
+      "notes": "Accepting by May 1 is required for the automatic International Student Excellence Award and for the Merit Scholarship.",
+      "src": "merit"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for native English speakers residing in a country where English is a primary official language, graduates of U.S. high schools, and those with a B or higher in the equivalent of Iowa State's English 1500 or 2500 at an accredited U.S. college. Alternatives to a test: SAT EBRW 460, ACT English 19, IB English 5, AP English Language 3 or Literature 4, IGCSE/O-Level D in First Language English or C in ESL. IELTS One Skill Retake and TOEFL MyBest scores are not accepted. No conditional admission or ESL pathway program is described on the international admissions pages reviewed.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "subs": {
+        "speaking": 17,
+        "writing": 17
+      },
+      "notes": "71 iBT with at least 17 on Speaking and Writing (exams taken before 2026-01-21).",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "subs": {
+        "each_section": 3.5
+      },
+      "notes": "4.0 with a minimum band of 3.5 on the 6.0 scale (exams from 2026-01-21).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.5
+      },
+      "notes": "6.0 overall with all subscores 5.5 or above; One Skill Retake not accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Minimum Duolingo English Test score is 105.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "notes": "48 overall.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Automatic International Student Excellence Award for admitted first-years, no separate application: President's $56,000 total ($14,000/yr, needs SAT/ACT), Dean's $48,000 ($12,000/yr, needs SAT/ACT), Innovator's $40,000 ($10,000/yr, GPA 3.70+, no test needed), Launchpad $24,000 ($6,000/yr, GPA 3.50-3.69, no test needed); up to 8 semesters. Cannot be combined with the competitive International Merit Scholarship (OneApp; up to $40,000 or $16,000). Must accept the offer by May 1.",
+    "src": "excel"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6306",
+      "note": "Iowa State SAT code.",
+      "src": "app"
+    },
+    "act": {
+      "code": "1320",
+      "note": "Iowa State ACT code.",
+      "src": "app"
+    },
+    "toefl": {
+      "code": "6306",
+      "note": "Iowa State TOEFL (ETS) code.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "IELTS does not use institution codes.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Duolingo does not use institution codes.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE does not use institution codes.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "C",
+    "engineering": "C",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "engineering": "Editorial judgment (not from a cited ranking): one of the larger and better-known public engineering colleges in the Midwest.",
+    "computer_science": "Editorial judgment (not from a cited ranking): large CS program inside a well-regarded engineering college."
+  }
+}

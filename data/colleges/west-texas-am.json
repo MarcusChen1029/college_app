@@ -1,0 +1,122 @@
+{
+  "slug": "west-texas-am",
+  "name": "West Texas A&M University",
+  "short_name": "WTAMU",
+  "state_region": "TX",
+  "city": "Canyon",
+  "latitude": 34.982789,
+  "longitude": -101.914736,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.wtamu.edu",
+  "admissions_url": "https://www.wtamu.edu/student-support/international-student-services/Applicants/INSTRUCTIONS%20TO%20APPLY/international-undergraduate.html",
+  "ipeds_unit_id": 229814,
+  "undergrad_enrollment": 7110,
+  "intl_undergrads": 113,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "West Texas A&M University Common Data Set 2025-2026 (PDF; page footers still read 2024-2025, data are the fall 2025 class)",
+      "url": "https://www.wtamu.edu/_files/docs/academics/Institutional%20Research/CDS.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229814",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7270,
+    "admits": 4857,
+    "enrolled": 1197,
+    "in_state_applicants": 4283,
+    "in_state_admits": 3742,
+    "out_state_applicants": 510,
+    "out_state_admits": 466,
+    "intl_applicants": 30,
+    "intl_admits": 28,
+    "pct_submit_sat": 46,
+    "pct_submit_act": 31,
+    "gpa_avg": 3.61,
+    "pct_reporting_gpa": 98.29,
+    "notes": "CDS C1 (fall 2025 first-years): 7,270 applied, 4,857 admitted (66.8%). 2,447 applicants (621 admitted) have unknown residency, so in-state and out-of-state rows do not sum to the totals; international 28 of 30 admitted, 9 enrolled. Enrolled 1,197 is the full-time plus part-time count (C1 by status and by residency); the by-sex rows sum to 1,165. SAT submitters 554 (46%), ACT 370 (31%). No waitlist, no early decision or early action; priority and closing date 8/1 for domestic applicants. The GPA distribution (C11) is filled in only for score submitters, so it is omitted; the average GPA 3.61 (C12) covers all reporting students. Class rank (C10): top tenth 16%, top quarter 42%. Undergraduate enrollment 7,110 is B1 total undergraduates; the nonresident undergraduate count could not be read from the B2 table and is left null. Student-faculty ratio 15:1 is CDS I-2."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1050,
+      1150
+    ],
+    "SAT_ERW": [
+      480,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      470,
+      520,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      23
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      23
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "NC",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. SAT, ACT, AP, CLEP and TSI are used for placement (C8G)."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6672,
+    "tuition_out_of_state_usd": 21837,
+    "tuition_intl_usd": 21837,
+    "required_fees_usd": 2992,
+    "room_board_usd": 11101,
+    "books_usd": 1600,
+    "other_usd": 4898,
+    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $6,672, nonresident tuition $21,837, required fees $2,992, on-campus food and housing $11,101 (housing $5,995 + meal plan $4,150). G5: books $1,600, transportation $2,894, other $2,004 (other_usd = transportation + other). Per-credit-hour: $207 resident, $688 nonresident. The CDS H6 nonresident-aid items were blank, so no international aid counts are recorded."
+  }
+}

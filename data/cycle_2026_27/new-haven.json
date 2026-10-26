@@ -1,0 +1,190 @@
+{
+  "sources": {
+    "req": {
+      "kind": "admissions_site",
+      "title": "University of New Haven - Admission requirements for international undergraduate first-year students",
+      "url": "https://www.newhaven.edu/admissions/undergraduate/international/admission-requirements/index.php",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "University of New Haven - English language requirement for international undergraduate applicants",
+      "url": "https://newhaven.edu/admissions/undergraduate/international/admission-requirements/english-language.php",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "University of New Haven - First-year student application process (deadlines)",
+      "url": "https://www.newhaven.edu/admissions/undergraduate/the-application-process/first-year-student-application-process/index.php",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "University of New Haven - Merit scholarships for undergraduate students",
+      "url": "https://www.newhaven.edu/admissions/financial-aid/undergraduate/scholarships/index.php",
+      "accessed": "2026-10-26"
+    },
+    "intlaid": {
+      "kind": "financial_aid_site",
+      "title": "University of New Haven - Financial aid information for international students",
+      "url": "https://www.newhaven.edu/admissions/financial-aid/international.php",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "University of New Haven Bursar - Undergraduate tuition and fees 2026-2027",
+      "url": "https://www.newhaven.edu/about/departments/bursars/tuition/undergraduate-2026-2027.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The university does not require SAT/ACT scores for most programs; scores are required for home-schooled, online-school and some other populations and programs. For international applicants the SAT EBRW section can also satisfy the English requirement (450).",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Common App or the UNewHaven application. International first-years submit official certified secondary records with a grading-system explanation (a NACES-type evaluation if not in English), at least one academic letter of recommendation, a 250-650 word essay, and a passport copy. Early Decision also needs an interview and the FAFSA contract. The $50 fee comes from the 2026-27 bursar page; a fee waiver process exists.",
+    "src": "req"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-12-01",
+      "label": "Early Decision (binding), fall 2027 entry",
+      "notes": "Requires an interview and the Early Decision contract. Early Decision and Early Action admits receive a guaranteed minimum $20,000 annual merit scholarship. The page prints no year; taken as the fall 2027 cycle.",
+      "src": "fy"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-12-15",
+      "label": "Early Action I (non-binding), fall 2027 entry",
+      "notes": "Guaranteed minimum $20,000 annual merit scholarship if admitted.",
+      "src": "fy"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2027-02-15",
+      "label": "Early Action II (non-binding), fall 2027 entry",
+      "notes": "Guaranteed minimum $20,000 annual merit scholarship if admitted.",
+      "src": "fy"
+    },
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-03-01",
+      "label": "Regular Decision priority date (rolling), fall 2027 entry",
+      "notes": "Regular Decision is rolling for applications after Feb 15; decisions within 4-6 weeks of a complete application.",
+      "src": "fy"
+    },
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International undergraduate priority deadline, fall 2027 entry",
+      "notes": "The international first-year requirements page lists a fall priority deadline of May 1 (spring: November 1). Taken as fall 2027; this differs from the general first-year Mar 1 priority date.",
+      "src": "req"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants from countries where English is the official language do not need to submit English test scores. Others need one of the listed tests before enrolling. Conditional admission (acceptance letter only, no conditional I-20) is offered to academically admissible students who still need to meet the English requirement.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 75,
+      "notes": "Scores below 75 can still receive conditional admission.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Academic IELTS; below 6.0 can receive conditional admission.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "The requirement lists print 105, while the conditional-admission paragraph on the English page says 'below 100'; 105 is used here, confirm with admissions.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Below 53 can receive conditional admission.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The financial aid office does not award aid to international students (FAFSA-based). All first-time applicants are automatically considered for merit scholarships of $15,000-$33,000 per year, applied to tuition, renewable up to eight semesters; the page does not separate international students. Early Decision and Early Action admits get a minimum $20,000 per year. International students pay mandatory student health insurance ($1,900 in 2026-27).",
+    "src": "sch"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2026-2027",
+    "src": "tuit",
+    "tuition_usd": 49340,
+    "required_fees_usd": 1930,
+    "intl_extra_fees_usd": 1900,
+    "room_board_usd": 20998,
+    "books_usd": 1324,
+    "other_usd": 2638,
+    "total_coa_usd": 76230,
+    "notes": "2026-27 estimate, full-time resident on campus: tuition $49,340 plus general fee $1,930 = $51,270; food and housing $20,998 (weighted average); books $1,324; indirect other $2,638 (miscellaneous $2,026, transportation $544, loan fees $68); total $76,230. International students also pay mandatory health insurance of $1,900 (shown as intl_extra_fees_usd), which is not in the total. The page lists no separate international tuition rate."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "3663",
+      "note": "School CEEB code printed as 003663 on the international requirements page.",
+      "src": "req"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages reviewed.",
+      "src": "req"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL code is printed on the pages reviewed.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "engineering": "D",
+    "business": "D"
+  },
+  "tier_notes": {}
+}

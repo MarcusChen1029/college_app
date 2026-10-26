@@ -1,0 +1,124 @@
+{
+  "slug": "unc-charlotte",
+  "name": "University of North Carolina at Charlotte",
+  "short_name": "UNC Charlotte",
+  "state_region": "NC",
+  "city": "Charlotte",
+  "latitude": 35.306022,
+  "longitude": -80.730919,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.charlotte.edu",
+  "admissions_url": "https://admissions.charlotte.edu",
+  "ipeds_unit_id": 199139,
+  "undergrad_enrollment": 26213,
+  "intl_undergrads": 700,
+  "student_faculty_ratio": 20.3,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "UNC Charlotte Common Data Set 2025-2026 (XLSX)",
+      "url": "https://ir.charlotte.edu/wp-content/uploads/sites/871/2026/06/CDS-2025-26.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 27218,
+    "admits": 21170,
+    "enrolled": 4934,
+    "in_state_applicants": 18398,
+    "in_state_admits": 15202,
+    "out_state_applicants": 8106,
+    "out_state_admits": 5419,
+    "intl_applicants": 714,
+    "intl_admits": 549,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 27,
+    "gpa_avg": 3.56,
+    "pct_reporting_gpa": 93.74,
+    "gpa_distribution": {
+      "4.0": 4.4,
+      "3.75-3.99": 23.6,
+      "3.50-3.74": 30.6,
+      "3.25-3.49": 26.0,
+      "3.00-3.24": 12.5,
+      "2.50-2.99": 2.5,
+      "2.0-2.49": 0.4,
+      "1.0-1.99": 0.1
+    },
+    "notes": "Fall 2025 first-time first-year cohort, CDS C1 residency table (in-state / out-of-state / nonresident: 18,398 / 8,106 / 714 applied; 15,202 / 5,419 / 549 admitted; 4,305 / 497 / 132 enrolled). Only 16% of enrollees submitted SAT and 27% ACT, so the score percentiles describe part of the class. GPA distribution is the 'all enrolled students' column of C11. Undergraduate enrollment is the B1 total undergraduates (13,380 men + 12,833 women); intl_undergrads is the B2 nonresident total undergraduates (700). Early action exists (C22, closes Nov 1); no early decision and no waitlist."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1150,
+      1250,
+      1340
+    ],
+    "SAT_ERW": [
+      570,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      570,
+      630,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT or ACT 'required for some' (students with a weighted high school GPA below 2.80 must submit a score). Admissions site: for fall 2027 applicants tests are optional with a weighted GPA of 2.8 or higher at the end of junior year."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 3812,
+    "tuition_out_of_state_usd": 20018,
+    "tuition_intl_usd": 20018,
+    "required_fees_usd": 3505,
+    "room_board_usd": 12390,
+    "intl_need_aid": false,
+    "notes": "CDS G1 (2025-26, first-year): in-state tuition $3,812, out-of-state/nonresident $20,018, required fees $3,505, on-campus housing $7,310 + food $5,080 = $12,390. The tuition_usd field is the in-state figure. The 2025-26 CDS has no nonresident-specific financial aid counts, so those fields are left empty."
+  }
+}

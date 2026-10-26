@@ -1,0 +1,101 @@
+{
+  "slug": "kennesaw-state",
+  "name": "Kennesaw State University",
+  "short_name": "KSU",
+  "state_region": "GA",
+  "city": "Kennesaw",
+  "latitude": 34.038807,
+  "longitude": -84.583052,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.kennesaw.edu/",
+  "admissions_url": "https://www.kennesaw.edu/admissions/",
+  "ipeds_unit_id": 486840,
+  "undergrad_enrollment": 46069,
+  "intl_undergrads": 901,
+  "student_faculty_ratio": 24,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Kennesaw State University Common Data Set 2025-2026 (web page)",
+      "url": "https://campus.kennesaw.edu/offices-services/data-strategy/institutional-research/publications/common-data-set/cds-2025-2026.php",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Kennesaw State University (campus setting: Suburb: Large)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=486840",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 33513,
+    "admits": 26622,
+    "enrolled": 9537,
+    "pct_submit_sat": 41.0,
+    "pct_submit_act": 12.0,
+    "gpa_avg": 3.48,
+    "pct_reporting_gpa": 98.49,
+    "gpa_distribution": {
+      "4.0": 6.17,
+      "3.75-3.99": 21.35,
+      "3.50-3.74": 24.69,
+      "3.25-3.49": 23.75,
+      "3.00-3.24": 14.83,
+      "2.50-2.99": 9.18,
+      "2.0-2.49": 0.03,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 (fall 2025). The CDS leaves the in-state/out-of-state/international split blank, so international applicant and admit counts are not available. No waitlist; no early decision or early action. Undergrad enrollment is B1 total undergraduates (46,069, including non-degree-seeking); intl_undergrads is the B2 nonresident total (901). SAT composite 25/50/75 = 1010/1100/1210 (mean 1111); only the ACT composite mean (22.4) is given, so ACT percentiles are omitted. Note: KSU now requires SAT/ACT and raises the minimum high school GPA to 3.0 for fall 2027 entry, so the 2025 admit rate (79%) overstates how easy fall 2027 admission will be."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_ERW": [
+      510,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      480,
+      540,
+      610
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 5760,
+    "tuition_out_of_state_usd": 21660,
+    "tuition_intl_usd": 22290,
+    "required_fees_usd": 1188,
+    "room_board_usd": 14348,
+    "books_usd": 1500,
+    "other_usd": 3995,
+    "notes": "CDS G1/G5 (first-year, 2026-27): 'Nonresident' tuition $22,290 (out-of-state $21,660). Per credit hour: $192 in-state, $722 out-of-state, $743 nonresident. Transportation estimate $2,222 not included in other_usd. CDS H6 marks institutional aid for nonresidents as available but the counts and averages are N/A and the page does not show which aid type applies."
+  }
+}

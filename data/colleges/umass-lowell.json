@@ -1,0 +1,118 @@
+{
+  "slug": "umass-lowell",
+  "name": "University of Massachusetts Lowell",
+  "short_name": "UMass Lowell",
+  "state_region": "MA",
+  "city": "Lowell",
+  "latitude": 42.652864,
+  "longitude": -71.326809,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.uml.edu/",
+  "admissions_url": "https://www.uml.edu/admissions/",
+  "ipeds_unit_id": 166513,
+  "undergrad_enrollment": 12122,
+  "intl_undergrads": 305,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Massachusetts Lowell Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.uml.edu/docs/CDS_2024-2025%20Final_tcm18-403507.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 13676,
+    "admits": 11345,
+    "enrolled": 2011,
+    "in_state_applicants": 10271,
+    "in_state_admits": 8503,
+    "out_state_applicants": 2783,
+    "out_state_admits": 2296,
+    "intl_applicants": 622,
+    "intl_admits": 546,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 2,
+    "gpa_avg": 3.72,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 32.62,
+      "3.75-3.99": 15.76,
+      "3.50-3.74": 15.27,
+      "3.25-3.49": 16.46,
+      "3.00-3.24": 14.77,
+      "2.50-2.99": 5.02,
+      "2.0-2.49": 0.1
+    },
+    "notes": "CDS C1 (fall 2024 entering class); this is the newest CDS on UMass Lowell's Common Data Set page when checked, so the figures are one cycle old. Residency split (known physical address): in-state 10,271 / out-of-state 2,783 / international 622 applicants; 8,503 / 2,296 / 546 admitted; 1,778 / 193 / 40 enrolled. Undergrad enrollment is B1 'Total undergraduate Students' (6,897 + 5,211 + 3 + 11 = 12,122); the nonresident count (305) is the B2 'Total Undergraduates' column. SAT/ACT percentiles cover only the 27% (550) / 2% (46) of enrollees who submitted scores. CDS C14 (2024-25): priority date Nov. 5, closing date June 1."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1200,
+      1270,
+      1360
+    ],
+    "SAT_ERW": [
+      590,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      590,
+      640,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      23,
+      27,
+      34
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F (2024-25): freshmen applicants 'have the option to decide whether to have standardized test scores used in the evaluation process'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid_awarded": 120,
+    "intl_avg_award_usd": 12606,
+    "notes": "CDS H6 (2024-25): institutional non-need-based aid is available to nonresidents; 120 undergraduate degree-seeking nonresidents received it (average $12,606, total $1,512,741)."
+  }
+}

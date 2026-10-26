@@ -1,0 +1,169 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "McNeese - International undergraduate admission requirements",
+      "url": "https://www.mcneese.edu/admissions/international-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "McNeese - Admission requirements (first-time freshmen)",
+      "url": "https://www.mcneese.edu/admissions/requirements/",
+      "accessed": "2026-10-26"
+    },
+    "isch": {
+      "kind": "financial_aid_site",
+      "title": "McNeese - International scholarships",
+      "url": "https://www.mcneese.edu/about-us/leadership-team/administrative-and-student-affairs/division-of-administrative-and-student-affairs/student-central/financial-aid/international-scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "financial_aid_site",
+      "title": "McNeese - Estimated costs, academic year 2026-2027",
+      "url": "https://www.mcneese.edu/admissions/estimated-costs/",
+      "accessed": "2026-10-26"
+    },
+    "i20": {
+      "kind": "admissions_site",
+      "title": "McNeese International Student Services - Requesting your I-20",
+      "url": "https://www.mcneese.edu/about-us/leadership-team/administrative-and-student-affairs/division-of-administrative-and-student-affairs/student-success-and-retention/international/requesting-your-i-20/",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: programs/majors (completions 2024-25), admissions considerations",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159717",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "IPEDS lists SAT/ACT as not required but considered. The admission requirements page nonetheless lists official ACT/SAT scores among first-time freshman documents, and the international page ties college-level readiness to ACT English 18 or SAT ERW 500 and ACT Math 19 or SAT Math 510, with alternatives such as ACCUPLACER. Confirm with admissions whether international applicants without scores are placed by ACCUPLACER. The international freshman minimum is a 2.35 high school GPA.",
+    "src": "ipeds"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 20,
+    "notes": "The $20 undergraduate application fee is the College Navigator figure for 2024-25; neither the international page nor the I-20 page prints a fee, so confirm it. After admission, new international students email the intl office: Affidavit of Support, a sponsor bank statement or letter dated within six months, and a passport copy for the I-20 (no funding amount is printed). The page says McNeese may admit a limited number of students by exception.",
+    "src": "ipeds"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall term (fall 2027 entry)",
+      "notes": "The international page says 'Fall applications - due June 1' (spring: October 1); the general admissions page gives August 1 for fall. No year is printed, so treated as fall 2027. Late international applications: contact intinfo@mcneese.edu.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Besides the tests below, college-level English readiness can be shown by ACT English 18, SAT ERW 500, ACCUPLACER Writing 250, A Level/O Level/GCSE English grade C, IB HL English 4, KCSE English B, completion of ELS Level 112, a US high school transcript, or one year of full-time US college enrollment. No intensive English or conditional admission program is described on the page; ELS Level 112 completion is accepted.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Transfer applicants from international institutions need 71.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "The page prints 'TOEFL iBT (effective date 1/21/2026) 4.5' next to the 79 minimum; the 1-6 scale is not named.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Transfer applicants from international institutions need 6.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "The scholarship page requires 110 for the international scholarship.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "The scholarship page requires 56 for the international scholarship.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "costs",
+    "tuition_usd": 9668,
+    "tuition_out_of_state_usd": 10668,
+    "tuition_intl_usd": 11668,
+    "intl_extra_fees_usd": 500,
+    "books_usd": 1385,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "notes": "Estimated costs page (based on 2025-26 actual costs, subject to change): annual tuition and fees $9,668 Louisiana, $10,668 out of state, $11,668 international (so the tuition figures here include required fees). Health insurance for international students only is $500 per year (shown as extra fees). On-campus housing and meal plan $9,500-$11,900; off-campus housing and food $12,572; transportation $3,754 and personal expenses $2,742 are not charged by the university."
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International scholarship for first-time freshmen: $1,000 per year for a 3.0 high school GPA plus one of IELTS 6.5, TOEFL 79, Duolingo 110, PTE 56 or SAT 1200 (the page lists every row at $1,000; it does not say whether the awards stack). Renewable for up to 8 continuous fall/spring semesters; students must be fully admitted first; awards depend on funding and are not guaranteed; students sponsored by government or government-affiliated programs are not eligible. No scholarship deadline is printed. The page names no need-based aid for international students. Applicants indicate interest in scholarships on the admission application.",
+    "src": "isch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "McNeese's pages do not print an SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "McNeese's pages do not print an ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is listed on the international page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

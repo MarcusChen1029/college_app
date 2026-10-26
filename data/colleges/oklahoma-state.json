@@ -1,0 +1,130 @@
+{
+  "slug": "oklahoma-state",
+  "name": "Oklahoma State University (Stillwater)",
+  "short_name": "Oklahoma State",
+  "state_region": "OK",
+  "city": "Stillwater",
+  "latitude": 36.123085,
+  "longitude": -97.069743,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://go.okstate.edu/",
+  "admissions_url": "https://admissions.okstate.edu/",
+  "ipeds_unit_id": 207388,
+  "undergrad_enrollment": 23003,
+  "intl_undergrads": 418,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Oklahoma State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://ira.okstate.edu/site-files/documents/cds/CDS-2025-2026-PDF.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Oklahoma State University-Main Campus (campus setting: Town: Distant)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207388",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 28024,
+    "admits": 20646,
+    "enrolled": 5160,
+    "in_state_applicants": 9828,
+    "in_state_admits": 7231,
+    "out_state_applicants": 16541,
+    "out_state_admits": 13110,
+    "intl_applicants": 1655,
+    "intl_admits": 305,
+    "pct_submit_sat": 16.8,
+    "pct_submit_act": 63.0,
+    "gpa_avg": 3.76,
+    "pct_reporting_gpa": 99.63,
+    "gpa_distribution": {
+      "4.0": 35.5,
+      "3.75-3.99": 22.84,
+      "3.50-3.74": 16.44,
+      "3.25-3.49": 10.78,
+      "3.00-3.24": 7.72,
+      "2.50-2.99": 5.84,
+      "2.0-2.49": 0.78,
+      "1.0-1.99": 0.12
+    },
+    "notes": "CDS C1 (fall 2025). International (non-resident, by address at application) admit rate was only 305 of 1,655 (18%), far below the in-state 74% and out-of-state 79%, so do not assume an easy admit for international applicants who miss the 3.0 GPA + English 'assured admission' criteria. No waitlist; no early decision or early action. Undergrad enrollment is B1 total undergraduates (23,003); intl_undergrads is the B2 nonresident total (418). SAT composite 25/50/75 = 1060/1160/1250. GPA distribution is the 'all enrolled students' column (sums to 100.02)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_ERW": [
+      540,
+      590,
+      640
+    ],
+    "SAT_MATH": [
+      520,
+      570,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "C",
+    "gpa": "C",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027): SAT/ACT use is marked as not required for admission; the CDS says students may apply 'without consideration of a test score' and be reviewed on their high school transcript."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 5417,
+    "tuition_out_of_state_usd": 20937,
+    "tuition_intl_usd": 20937,
+    "required_fees_usd": 3827,
+    "room_board_usd": 9845,
+    "books_usd": 1400,
+    "other_usd": 3420,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 169,
+    "intl_avg_award_usd": 10492,
+    "notes": "CDS G1/G5 (first-year, 2025-26): tuition is 30 credit hours at $180.55 resident / $697.90 nonresident per credit hour ($5,416.50 / $20,937.00); room and board is the on-campus food-and-housing figure. Transportation estimate $2,300 not included in other_usd. CDS H6: institutional need-based and non-need-based aid are both available to nonresidents; 169 nonresident undergraduates received it (avg $10,492)."
+  }
+}

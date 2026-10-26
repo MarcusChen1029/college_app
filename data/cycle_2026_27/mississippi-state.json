@@ -1,0 +1,141 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "MSU Undergraduate Admissions - International (freshman requirements, English proficiency, fee)",
+   "url": "https://www.admissions.msstate.edu/apply/admission-process/international",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "MSU Undergraduate Admissions - Freshman Admissions (test-optional, rolling, codes)",
+   "url": "https://www.admissions.msstate.edu/apply/admission-process/freshman-admissions",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "MSU Undergraduate Catalog - Applications (fall consideration date)",
+   "url": "https://catalog.msstate.edu/undergraduate/admissionsinformation/applications/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "MSU Student Financial Aid - International Scholarships (fall 2027 and spring 2028)",
+   "url": "https://www.sfa.msstate.edu/scholarships/international-scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for freshmen. For international applicants an ACT 20 or SAT 1030 is requested only if the evaluated GPA is below 3.0 or when applying for scholarships. Scholarships needing a minimum score count scores on file by Dec. 1.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "notes": "$60 fee for international students ($50 domestic). Certified, translated transcripts; MSU recommends a NACES-member course-by-course evaluation. Common App opens Aug. 5; MSU's own application opens Aug. 1.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "Fall 2027 application (rolling)",
+   "notes": "The catalog says fall applications should be received by Aug. 1; the freshman page says the application stays open until the 10th day of classes. Students outside the U.S. should apply at least four months before enrollment. Decisions usually take 2-3 weeks once materials are complete.",
+   "src": "cat"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Priority date for the General Scholarship Application (incoming freshmen)",
+   "notes": "Application opens Oct. 1. The automatic non-resident academic scholarship needs no separate application.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of a list of English-speaking countries are exempt, as are degree-seeking freshmen with two years at and graduation from an accredited U.S. high school with at least a C in English. Intensive English training does not by itself waive the requirement, but students who lack a qualifying score enroll in the English Language Institute (ELI), and completing ELI counts as demonstrating proficiency. Some departments require higher scores.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "The page does not mention the new 1-6 TOEFL scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "MSU policy AOP 12.29 (2023) lists 120; the current admissions page says 105.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Non-resident academic scholarship is awarded automatically on admission by 9th-11th grade GPA, renewable up to 4 years (fall 2027 entrants): $12,000/yr at 3.30-3.59, $16,000/yr at 3.60-4.09, $19,000/yr at 4.10+. Competitive awards (e.g. Maroon and White) need the General Scholarship Application and qualifying SAT/ACT by Dec. 1. Students with active agent contracts are ineligible. Need-based aid for internationals is not mentioned.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1480",
+   "src": "fr"
+  },
+  "act": {
+   "code": "2220",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international admissions page does not print a TOEFL institution code.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not on the list of accepted English tests.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Bagley College of Engineering is a large research engineering college."
+ }
+}

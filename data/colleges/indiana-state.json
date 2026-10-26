@@ -1,0 +1,103 @@
+{
+  "slug": "indiana-state",
+  "name": "Indiana State University",
+  "short_name": "Indiana State",
+  "state_region": "IN",
+  "city": "Terre Haute",
+  "latitude": 39.469073,
+  "longitude": -87.407846,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.indianastate.edu",
+  "admissions_url": "https://www.indianastate.edu/admissions",
+  "ipeds_unit_id": 151324,
+  "undergrad_enrollment": 6352,
+  "intl_undergrads": 104,
+  "student_faculty_ratio": null,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Indiana State University Common Data Set 2025-2026 (PDF, 06.16.26 update)",
+      "url": "https://indianastate.edu/sites/default/files/2026-06/CDS%202025.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 13329,
+    "admits": 12205,
+    "enrolled": 1602,
+    "in_state_applicants": 9840,
+    "in_state_admits": 9107,
+    "out_state_applicants": 3047,
+    "out_state_admits": 2708,
+    "intl_applicants": 440,
+    "intl_admits": 390,
+    "pct_submit_sat": 71,
+    "pct_submit_act": 5,
+    "gpa_avg": 3.31,
+    "pct_reporting_gpa": 99.8,
+    "gpa_distribution": {
+      "4.0": 12.2,
+      "3.75-3.99": 15.07,
+      "3.50-3.74": 14.07,
+      "3.25-3.49": 14.01,
+      "3.00-3.24": 12.51,
+      "2.50-2.99": 27.7,
+      "2.0-2.49": 4.44
+    },
+    "notes": "Fall 2025 first-time first-year class (CDS C1 residency breakdown: 440 international applicants, 390 admitted, 26 enrolled; 2 applicants of unknown residency). Undergrad enrollment 6,352 and intl 104 are the B2 total undergraduates / nonresident figures. GPA distribution is the 'all enrolled students' column of C11 (the 1.0-1.99 and below-1.0 rows are blank). CDS C7 factor checkboxes are not legible in the PDF text, so factors are omitted. Student-to-faculty ratio is blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      890,
+      1000,
+      1110
+    ],
+    "SAT_ERW": [
+      460,
+      510,
+      580
+    ],
+    "SAT_MATH": [
+      430,
+      480,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      23,
+      26
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A answered 'No' (SAT/ACT not used in admission); admissions site says scores are not required for admission."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9978,
+    "tuition_out_of_state_usd": 22646,
+    "tuition_intl_usd": 22646,
+    "required_fees_usd": 280,
+    "room_board_usd": 12408,
+    "books_usd": 1290,
+    "notes": "CDS G1/G5 (2025-26, first-year): the CDS lists one nonresident tuition figure ($22,646) equal to out-of-state tuition, used as the international rate. The university tuition page lists 2026-27 out-of-state/international tuition of $11,641 per semester (about $23,282 per year; in-state $4,989 per semester unchanged)."
+  }
+}

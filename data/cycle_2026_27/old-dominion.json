@@ -1,0 +1,140 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Old Dominion University - International Admissions (undergraduate checklist, deadlines, scholarship)",
+   "url": "https://www.odu.edu/admission/international",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Old Dominion University - International admissions FAQ",
+   "url": "https://www.odu.edu/admission/international/process/answers",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Old Dominion University - English Proficiency (conditional admission, accepted tests)",
+   "url": "https://www.odu.edu/admissions/proficiency",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International page: SAT/ACT are optional (the checklist adds 'though highly recommended'); FAQ: neither is required, but they are recommended for the ISS undergraduate scholarship. CDS C8A marks SAT/ACT as required for some programs. A sufficient SAT/ACT verbal score can also satisfy the English requirement.",
+  "src": "faq"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International applicants apply through ODU's own online portal (monarch.odu.edu) with a non-refundable $50 fee. Checklist: all prior secondary transcripts and diploma/leaving certificate (certified English translations), English proficiency, financial documentation (F/J visa applicants), passport page. Unofficial uploads are accepted at application; official copies are needed after admission. Typical decision time 4-6 weeks. Essays and recommendations are not listed for undergraduates.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-15",
+   "label": "International fall (August) application deadline",
+   "notes": "Spring entry Oct. 1, summer entry Feb. 1. Late applications are reviewed at the discretion of International Admissions. The page prints no year; taken as fall 2027. Domestic first-year priority date 12/1 and closing 2/1 appear in the CDS (C14) without a year.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All non-native speakers must show proficiency. Alternatives to a test: a bachelor's/master's equivalent from an accredited institution in a country where English is official; two college English composition courses (C or better) at a regionally accredited U.S. institution; or completing the Monarch English Transition (MET) program. Also accepted: SAT reading 480+, GRE verbal, GCSE/GCE O-level English pass, Cambridge CPE grade C or higher. Conditional admission: highly qualified applicants lacking only English may be admitted pending the on-campus English Language Center (Intensive English Program if TOEFL below 61 pre-2026 / 3.5 new, IELTS below 5.5, Duolingo 105 and below; MET semi-intensive program if TOEFL 61-78 / 4, IELTS 5.5-6.0, Duolingo 110-115). Not available for online students or every program.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Exams taken before Jan. 21, 2026; MyBest scores not accepted. Paper-based 550 also accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Exams taken on or after Jan. 21, 2026; the page does not name the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Listed as 'CPE: C or higher' (Cambridge C2 Proficiency); no other Cambridge level is listed.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": null,
+  "notes": "ODU's International Student Scholarship is a renewable (up to four years) undergraduate merit award of $5,000 to $16,000 per year for qualified international applicants. The FAQ recommends submitting SAT/ACT for this scholarship. The admissions pages do not mention need-based aid for international students; the CDS marks institutional need-based and non-need-based aid as available to nonresidents (10 awarded, avg $16,000). Whether a separate scholarship form is needed is not stated.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "College of Health Sciences programs (Nursing, Dental Hygiene, Medical Technology, etc.)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "notes": "Highly selective and competitive; students are encouraged to apply during their sophomore year to start the program track in junior year. University admission does not guarantee entry; a supplemental application is required once admitted."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5126",
+   "note": "ODU says its CEEB code for all standardized test reporting is 005126 (4-digit form 5126).",
+   "src": "faq"
+  },
+  "act": {
+   "code": null,
+   "note": "ODU's pages give only the CEEB code 005126; look up the ACT code at act.org.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No separate TOEFL code is printed; ODU's page says the CEEB code for all standardized test reporting is 005126.",
+   "src": "faq"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

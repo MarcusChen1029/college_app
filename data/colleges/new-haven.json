@@ -1,0 +1,73 @@
+{
+  "slug": "new-haven",
+  "name": "University of New Haven",
+  "short_name": "New Haven",
+  "state_region": "CT",
+  "city": "West Haven",
+  "latitude": 41.291314,
+  "longitude": -72.961472,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.newhaven.edu/",
+  "admissions_url": "https://www.newhaven.edu/admissions/",
+  "ipeds_unit_id": 129941,
+  "undergrad_enrollment": 4903,
+  "intl_undergrads": 166,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile, University of New Haven (IPEDS fall 2024 admissions and enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=129941",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=129941",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=129941",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 13498,
+    "admits": 10872,
+    "enrolled": 1296,
+    "pct_submit_sat": 26,
+    "notes": "Baseline from IPEDS via College Navigator (fall 2024): 21,765 applicants, 60% admitted, 10% of admits enrolled; admit and enrollee counts are not printed, so they are left null. No readable Common Data Set was found (the Institutional Research site is behind a campus login), so GPA, residency and international splits are not available. 338 enrolled first-years (26%) submitted SAT; SAT section percentiles are those of submitters and only SAT is reported (no ACT percentiles; no SAT composite percentile is published). Undergraduate enrollment 4,903 is fall 2024. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+  },
+  "scores": {
+    "SAT_ERW": [
+      540,
+      590,
+      645
+    ],
+    "SAT_MATH": [
+      520,
+      570,
+      620
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 47332,
+    "books_usd": 1264,
+    "room_board_usd": 19808,
+    "other_usd": 2230,
+    "total_coa_usd": 70634,
+    "notes": "College Navigator 2024-25 for full-time beginning undergraduates living on campus; tuition includes required fees. Current 2026-27 figures are in the cycle file."
+  }
+}

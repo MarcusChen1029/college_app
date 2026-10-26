@@ -1,0 +1,45 @@
+{
+  "slug": "kean",
+  "name": "Kean University",
+  "short_name": null,
+  "state_region": "NJ",
+  "city": "Union",
+  "latitude": 40.677981,
+  "longitude": -74.233503,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.kean.edu",
+  "admissions_url": "https://www.kean.edu/offices/admissions",
+  "ipeds_unit_id": 185262,
+  "undergrad_enrollment": 11234,
+  "intl_undergrads": 682,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023) and fall 2023 enrollment (EF2023A)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=185262",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (fall 2024 admissions summary, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=185262",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 12142,
+    "admits": 9335,
+    "enrolled": 1968,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 0,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); no Common Data Set was found on Kean's Institutional Research pages, so GPA, residency and international applicant splits are not available. College Navigator (fall 2024): 13,936 applicants, 76% admitted, 19% of admits enrolled. SAT/ACT percentiles are omitted because only about 1% of enrolled first-years submitted SAT scores (10 students in fall 2023). Undergraduate enrollment 11,234 and 682 nonresident-alien undergraduates are IPEDS fall 2023 (full-time plus part-time). Kean merged with New Jersey City University on July 1, 2026; these figures predate the merger."
+  }
+}

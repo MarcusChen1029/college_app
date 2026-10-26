@@ -1,0 +1,122 @@
+{
+  "slug": "rhode-island",
+  "name": "University of Rhode Island",
+  "short_name": "URI",
+  "state_region": "RI",
+  "city": "Kingston",
+  "latitude": 41.484691,
+  "longitude": -71.527356,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.uri.edu",
+  "admissions_url": "https://web.uri.edu/admission/",
+  "ipeds_unit_id": 217484,
+  "undergrad_enrollment": 14466,
+  "intl_undergrads": 178,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Rhode Island Common Data Set 2025-2026 (PDF)",
+      "url": "https://web.uri.edu/ir/wp-content/uploads/sites/276/CDS-PDF-2025-2026_fillablePDF.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 28021,
+    "admits": 20892,
+    "enrolled": 3431,
+    "in_state_applicants": 4368,
+    "in_state_admits": 3179,
+    "out_state_applicants": 23100,
+    "out_state_admits": 17302,
+    "intl_applicants": 553,
+    "intl_admits": 411,
+    "waitlist_offered": 1430,
+    "waitlist_accepted": 60,
+    "waitlist_admitted": 9,
+    "ed_applicants": 202,
+    "ed_admits": 150,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 1.49,
+    "gpa_avg": 3.65,
+    "pct_reporting_gpa": 99.18,
+    "gpa_distribution": {
+      "4.0": 28,
+      "3.75-3.99": 15,
+      "3.50-3.74": 21,
+      "3.25-3.49": 13,
+      "3.00-3.24": 15,
+      "2.50-2.99": 7,
+      "2.0-2.49": 1
+    },
+    "notes": "CDS C1 (fall 2025 entering class). International: 553 applied, 411 admitted (74%), 34 enrolled; overall admit rate 75%. 'Enrolled' is the C1 total of first-time, first-year students (3,431, full- plus part-time). GPA distribution is the 'all enrolled students' column of C11. SAT scores are submitted by only 23% of enrollees (test-optional); CDS lists ED (Nov 1) applicants 202 / admitted 150 in C21. Undergrad enrollment is B1 total undergraduates (14,466); intl_undergrads is the B1 total nonresident-alien undergraduates (178)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1090,
+      1210,
+      1310
+    ],
+    "SAT_ERW": [
+      550,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      520,
+      590,
+      645
+    ],
+    "ACT_COMPOSITE": [
+      24.5,
+      28,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "VI",
+    "recommendations": "VI",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: students are not required to submit standardized test scores; scores are used for placement and considered if submitted."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 15148,
+    "tuition_out_of_state_usd": 36070,
+    "tuition_intl_usd": 36070,
+    "required_fees_usd": 2328,
+    "room_board_usd": 15070,
+    "books_usd": 1290,
+    "other_usd": 2360,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 126,
+    "intl_avg_award_usd": 26565,
+    "notes": "CDS G1 (first-year, 2026-27; room-only $9,470, board-only $5,600). CDS H6: only institutional non-need-based aid is available to nonresidents; 126 nonresident undergraduates received it, average $26,565. URI's international page says merit awards have historically ranged $8,750 to $15,000 per year (those are first-year awards; the H6 average covers all years and may include other awards)."
+  }
+}

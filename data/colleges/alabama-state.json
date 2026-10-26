@@ -1,0 +1,73 @@
+{
+  "slug": "alabama-state",
+  "name": "Alabama State University",
+  "short_name": "Alabama State",
+  "state_region": "AL",
+  "city": "Montgomery",
+  "latitude": 32.364317,
+  "longitude": -86.295677,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.alasu.edu/",
+  "admissions_url": "https://www.alasu.edu/admissions/index.php",
+  "ipeds_unit_id": 100724,
+  "undergrad_enrollment": 3521,
+  "intl_undergrads": 87,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Alabama State University (fall 2024 admissions, test scores, enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=100724",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions and fall enrollment counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=100724",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 7229,
+    "admits": 7052,
+    "enrolled": 1056,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 34,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). Alabama State's institutional data page links Common Data Sets only through 2021-2022, so no CDS is used: international applicants/admits, GPA, SAT total and admission factors are not included. College Navigator prints 98% admitted. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 1%, ACT 34%), so the SAT range rests on very few students; no 50th percentiles are printed. Undergraduate enrollment 3,521 and nonresident-alien undergraduates 87 are IPEDS fall 2024 enrollment."
+  },
+  "scores": {
+    "SAT_ERW": [
+      399,
+      null,
+      505
+    ],
+    "SAT_MATH": [
+      350,
+      null,
+      462
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      null,
+      20
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 11248,
+    "books_usd": 1600,
+    "room_board_usd": 7816,
+    "other_usd": 3392,
+    "total_coa_usd": 24056,
+    "tuition_out_of_state_usd": 19576,
+    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus cost of attendance for Alabama residents ($32,384 total at the out-of-state tuition rate). The university's tuition page for 2024-25 prints $11,068 in-state / $19,936 out-of-state tuition and fees; international students pay the out-of-state rate."
+  }
+}

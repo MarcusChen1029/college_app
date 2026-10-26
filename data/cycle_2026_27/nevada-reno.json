@@ -1,0 +1,164 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Nevada, Reno - Undergraduate international student admissions",
+   "url": "https://www.unr.edu/admissions/international/undergraduate",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Nevada, Reno - Freshman admissions, requirements and deadlines (Fall 2027)",
+   "url": "https://www.unr.edu/admissions/freshman",
+   "accessed": "2026-10-26"
+  },
+  "home": {
+   "kind": "admissions_site",
+   "title": "University of Nevada, Reno - International student admissions (scholarships overview)",
+   "url": "https://www.unr.edu/admissions/international",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "other",
+   "title": "University of Nevada, Reno - International undergraduate tuition and fees",
+   "url": "https://www.unr.edu/tuition-and-fees/international",
+   "accessed": "2026-10-26"
+  },
+  "oiss": {
+   "kind": "other",
+   "title": "UNR Office of International Students and Scholars - International scholarships and funding",
+   "url": "https://www.unr.edu/oiss/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "University of Nevada, Reno Common Data Set 2025-2026 (G1 tuition, H6 nonresident aid)",
+   "url": "https://dataden.unr.edu/Resources/CDS/CDS_2025-2026.pdf",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The international page says SAT/ACT scores are not required for admission or scholarship consideration, and the freshman page lists them as optional for admission. Admission needs a 3.0 weighted academic GPA in core courses plus 4 English, 3 math, 3 natural science and 3 social science units. SAT/ACT scores can also be used to satisfy the English requirement.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 95,
+  "notes": "International Student Application online with a $95 non-refundable fee. Also needed: passport biographical page, official high school transcripts sent by the school to OISS@unr.edu or by mail, and English proof. CDS C7 check boxes were not readable, so essay and recommendation weight is unknown; the freshman page does not list an essay or recommendations as required.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action (fall 2027 entry)",
+   "notes": "From the freshman deadlines page: Early Action gives an earlier decision and early class registration and is non-binding. The international page lists no separate international dates, so these freshman dates are used; confirm with OISS.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-15",
+   "label": "Scholarship and financial aid deadline (fall 2027 entry)",
+   "notes": "Submit the application and required documents by Feb. 15 to be considered for the greatest amount of scholarships (freshman deadlines page). College and department scholarships also use the annual MyNEVADA scholarship application, due Feb. 15.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-04-07",
+   "label": "Final application deadline (fall 2027 entry)",
+   "notes": "Last day to apply for fall 2027 per the freshman deadlines page; no separate international deadline is published, and visa processing time may make earlier applying wise.",
+   "src": "fy"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-15",
+   "label": "Deadline to retain scholarship offers",
+   "notes": "Pay the deposit and complete the required questionnaire by this date to keep awarded scholarships.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: students from listed English-speaking countries (including Australia, Canada except Quebec, Ghana, Ireland, Jamaica, Kenya, Malaysia, New Zealand, Nigeria, Singapore, South Africa, United Kingdom and others). Also accepted: graduation from, or in progress at, a U.S. high school; SAT/ACT scores may be used to satisfy the requirement.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "TOEFL score 61+. The page does not give a separate new-scale (1-6) minimum.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic version only.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test score 95.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 46,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 169,
+   "notes": "Cambridge English Language Assessment score of 169+.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international admissions page says new international students can receive $1,000 to $12,000 scholarships, and general University scholarships range from $500 to $8,000 per year. OISS awards $300-$5,000 per year to degree-seeking F-1/J-1 students. Need-based help for international students is limited to the Institutional Methodology form after one year of study (priority Feb. 1). A Pack Exchange Program (200% of base tuition) exists only for international students who graduated from a U.S. high school in listed western states. CDS H6 (2025-26): 1,484 nonresident undergraduates received institutional aid, average $2,862. No conditional-admission or intensive-English pathway is described on the pages checked.",
+  "src": "home"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 29572,
+  "required_fees_usd": 1841,
+  "room_board_usd": 12928,
+  "books_usd": 1200,
+  "total_coa_usd": 45541,
+  "notes": "UNR international undergraduate cost table (the page does not state an academic year; used as the current estimate): base tuition $9,383 ($312.75/credit, 30 credits) plus non-resident tuition fee $20,189 (tuition_intl 29,572), mandatory student fees $1,841 (incl. international student fees). On-campus housing $7,000-$11,000 and meals $5,928-$7,488; room_board and total use the low end (published total range $45,541-$51,101). The CDS 2025-26 G1 lists nonresident tuition $28,308 plus fees $1,642. Health insurance and personal costs are not in the total. A separate admissions page still says $23,562 a year in estimated tuition, which conflicts with the cost table.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Carnegie R1 flagship that admits about 83% of first-years with middle SAT 1170, so a little above an open-access school; D+ is an editorial judgment, not a ranking."
+ }
+}

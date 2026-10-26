@@ -1,0 +1,74 @@
+{
+  "slug": "uconn-stamford",
+  "name": "University of Connecticut-Stamford",
+  "short_name": "UConn Stamford",
+  "state_region": "CT",
+  "city": "Stamford",
+  "latitude": 41.056081,
+  "longitude": -73.542206,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://stamford.uconn.edu/",
+  "admissions_url": "https://admissions.uconn.edu/",
+  "ipeds_unit_id": 436836,
+  "undergrad_enrollment": 2482,
+  "intl_undergrads": 124,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: University of Connecticut-Stamford (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=436836",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=436836",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=436836",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 7121,
+    "admits": 5710,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 2,
+    "notes": "Baseline from IPEDS / College Navigator for the Stamford campus (fall 2024): 10,937 applicants, 83% admitted (rounded; the admit count is not shown), 10% of admitted enrolled. UConn's Common Data Set (see data/colleges/uconn.json) is for the whole university, not Stamford, so no CDS figures are used. SAT/ACT percentiles are for enrolled first-time students; 265 submitted SAT (28%) and only 15 submitted ACT (2%), so the ACT percentiles are very thin. IPEDS lists SAT/ACT as required to be considered, but UConn's admissions pages say test scores are optional for the foreseeable future. Admissions rules are set by UConn Undergraduate Admissions for all five campuses; only the regional-campus May 1 deadline and campus-specific cost differ. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "enrolled": 622
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      550,
+      630
+    ],
+    "SAT_MATH": [
+      460,
+      530,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      29,
+      32
+    ],
+    "ACT_ENGLISH": [
+      24,
+      27,
+      32
+    ]
+  }
+}
