@@ -2,6 +2,7 @@
 // and the plan the review table shows before anything is saved. The MCP tool uses the same validators.
 
 import {
+  courseIssues,
   CREDIT_UNITS,
   courseKey,
   CURRICULA,
@@ -221,7 +222,7 @@ export function buildImportPlan(data: unknown, existing: Existing, source: Sourc
       const replaced = hit !== undefined && replaceSchools.has(idx) && hit.schoolId !== null && hit.schoolId === found?.id;
       const duplicateOf = hit && !replaced ? hit.id : null;
       if (!hit || replaced) keys.set(key, { id: "(an earlier row in this paste)", schoolId: null });
-      rows.push({ schoolIndex: idx, schoolName: name, input: cv.value, raw: rawCourse, errors: [], warnings: prep.warnings, duplicateOf });
+      rows.push({ schoolIndex: idx, schoolName: name, input: cv.value, raw: rawCourse, errors: [], warnings: [...courseIssues(cv.value), ...prep.warnings], duplicateOf });
     });
   });
   return { error: null, schools, rows };
@@ -267,7 +268,8 @@ export function planMcpAdd(args: { school: Partial<SchoolInput> & { name: string
       rejected.push({ index, errors: cv.errors });
       return;
     }
-    if (prep.warnings.length) warnings.push({ index, messages: prep.warnings });
+    const messages = [...courseIssues(cv.value), ...prep.warnings];
+    if (messages.length) warnings.push({ index, messages });
     const key = courseKey(found?.name ?? name, cv.value);
     if (keys.has(key)) {
       duplicates++;

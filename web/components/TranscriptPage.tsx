@@ -8,6 +8,7 @@ import { TranscriptMappedView } from "@/components/TranscriptMappedView";
 import { TranscriptSchoolForm } from "@/components/TranscriptSchoolForm";
 import { useStudent } from "@/lib/student-store";
 import {
+  courseIssues,
   courseStatus,
   emptyCourse,
   emptySchool,
@@ -39,13 +40,15 @@ function gradesText(c: TranscriptCourse): string {
 const STATUS_TONE = { graded: "done", in_progress: "progress", planned: "neutral" } as const;
 const STATUS_LABEL = { graded: "Graded", in_progress: "In progress", planned: "Planned" } as const;
 
-function CourseRow({ course, school, onEdit, onRemove }: { course: TranscriptCourse; school: TranscriptSchool; onEdit: () => void; onRemove: () => void }) {
+function CourseRow({ course, school, year, onEdit, onRemove }: { course: TranscriptCourse; school: TranscriptSchool; year?: string; onEdit: () => void; onRemove: () => void }) {
   const status = courseStatus(course);
+  const issues = courseIssues(course);
   void school;
   return (
     <li className="space-y-2 p-4">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
+          {year && <p className="text-xs font-semibold text-zinc-600">{year}</p>}
           <p className="font-medium">
             {course.name}
             {course.isSummer && <span className="text-sm font-normal text-zinc-500"> · Summer</span>}
@@ -60,6 +63,13 @@ function CourseRow({ course, school, onEdit, onRemove }: { course: TranscriptCou
           </p>
           <p className="text-sm">{gradesText(course)}</p>
           {course.notes && <p className="text-xs text-zinc-500">{course.notes}</p>}
+          {issues.length > 0 && (
+            <ul className="mt-1 list-disc pl-5 text-sm text-urgent">
+              {issues.map((m) => (
+                <li key={m}>{m}</li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {course.source !== "manual" && (
@@ -67,7 +77,7 @@ function CourseRow({ course, school, onEdit, onRemove }: { course: TranscriptCou
               AI
             </span>
           )}
-          <StatusPill tone={STATUS_TONE[status]}>{STATUS_LABEL[status]}</StatusPill>
+          {issues.length > 0 ? <StatusPill tone="urgent">Missing grade</StatusPill> : <StatusPill tone={STATUS_TONE[status]}>{STATUS_LABEL[status]}</StatusPill>}
         </div>
       </div>
       <div className="flex flex-wrap items-center gap-2">
@@ -88,8 +98,40 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState<string | null>(null);
   const courses = transcriptCourses.filter((c) => c.schoolId === school.id);
-  const years = [...new Set(courses.map((c) => c.academicYear))].sort((a, b) => a - b);
+  // Courses with a missing required grade float to the top until fixed, then drop back into their year.
+  const flagged = courses.filter((c) => courseIssues(c).length > 0).sort((a, b) => a.academicYear - b.academicYear || a.sortOrder - b.sortOrder);
+  const rest = courses.filter((c) => !flagged.includes(c));
+  const years = [...new Set(rest.map((c) => c.academicYear))].sort((a, b) => a - b);
   const nextOrder = courses.reduce((m, c) => Math.max(m, c.sortOrder), 0) + 1;
+
+  const yearLabel = (year: number) => `${year}-${String((year + 1) % 100).padStart(2, "0")}`;
+
+  const row = (c: TranscriptCourse, year?: string) =>
+    editing === c.id ? (
+      <li key={c.id} className="p-4">
+        <TranscriptCourseForm
+          initial={c}
+          school={school}
+          submitLabel="Save course"
+          onSave={(v) => {
+            updateTranscriptCourse(c.id, v);
+            setEditing(null);
+          }}
+          onCancel={() => setEditing(null)}
+        />
+      </li>
+    ) : (
+      <CourseRow
+        key={c.id}
+        course={c}
+        school={school}
+        year={year}
+        onEdit={() => setEditing(c.id)}
+        onRemove={() => {
+          if (confirm(`Remove ${c.name} from your transcript?`)) removeTranscriptCourse(c.id);
+        }}
+      />
+    );
 
   function removeSchool() {
     if (!confirm(`Remove ${school.name} and its ${courses.length} course${courses.length === 1 ? "" : "s"} from your transcript?`)) return;
@@ -131,42 +173,27 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
         </div>
       )}
 
-      {years.length === 0 && !adding && <p className="text-sm text-zinc-500">No courses yet for this school.</p>}
+      {flagged.length > 0 && (
+        <div className="space-y-1">
+          <h3 className="text-sm font-semibold text-urgent">
+            Needs a grade ({flagged.length}) <span className="font-normal text-zinc-600">· fix these and they move back to their year</span>
+          </h3>
+          <ul className="divide-y divide-urgent-line rounded-lg border border-urgent-line bg-urgent-bg" aria-label="Courses missing a required grade">
+            {flagged.map((c) => row(c, yearLabel(c.academicYear)))}
+          </ul>
+        </div>
+      )}
+      {courses.length === 0 && !adding && <p className="text-sm text-zinc-500">No courses yet for this school.</p>}
       {years.map((year) => (
         <div key={year} className="space-y-1">
           <h3 className="text-sm font-semibold text-zinc-700">
-            {year}-{String((year + 1) % 100).padStart(2, "0")}
+            {yearLabel(year)}
           </h3>
           <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
-            {courses
+            {rest
               .filter((c) => c.academicYear === year)
               .sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name))
-              .map((c) =>
-                editing === c.id ? (
-                  <li key={c.id} className="p-4">
-                    <TranscriptCourseForm
-                      initial={c}
-                      school={school}
-                      submitLabel="Save course"
-                      onSave={(v) => {
-                        updateTranscriptCourse(c.id, v);
-                        setEditing(null);
-                      }}
-                      onCancel={() => setEditing(null)}
-                    />
-                  </li>
-                ) : (
-                  <CourseRow
-                    key={c.id}
-                    course={c}
-                    school={school}
-                    onEdit={() => setEditing(c.id)}
-                    onRemove={() => {
-                      if (confirm(`Remove ${c.name} from your transcript?`)) removeTranscriptCourse(c.id);
-                    }}
-                  />
-                ),
-              )}
+              .map((c) => row(c))}
           </ul>
         </div>
       ))}

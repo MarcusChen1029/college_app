@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
+  courseIssues,
   courseKey,
   courseStatus,
   emptyCourse,
@@ -63,6 +64,19 @@ test("courseStatus is derived from the terms", () => {
   assert.equal(courseStatus({ terms: [{ ...g, status: "planned" }, { ...g, term: "S2", status: "planned" }], finalGrade: null }), "planned");
   assert.equal(courseStatus({ terms: [], finalGrade: "A" }), "graded");
   assert.equal(courseStatus({ terms: [g], finalGrade: null }), "graded");
+});
+
+test("courseIssues flags graded terms with no grade, and courses with no grade at all", () => {
+  const g = { term: "S1", grade: "A", status: "graded" } as const;
+  assert.deepEqual(courseIssues({ terms: [g, { ...g, term: "S2" }], finalGrade: null, isWithdrawn: false }), []);
+  assert.deepEqual(courseIssues({ terms: [g, { ...g, term: "S2", grade: "  " }], finalGrade: null, isWithdrawn: false }), ["Semester 2 is marked Graded but has no grade."]);
+  // A blank grade is fine while the term is in progress or planned.
+  assert.deepEqual(courseIssues({ terms: [{ ...g, grade: "", status: "in_progress" }, { ...g, term: "S2", grade: "", status: "planned" }], finalGrade: null, isWithdrawn: false }), []);
+  assert.equal(courseIssues({ terms: [], finalGrade: null, isWithdrawn: false }).length, 1);
+  assert.deepEqual(courseIssues({ terms: [], finalGrade: "B+", isWithdrawn: false }), []);
+  assert.deepEqual(courseIssues({ terms: [], finalGrade: null, isWithdrawn: true }), []);
+  // Withdrawn does not excuse a term that claims a grade it doesn't have.
+  assert.equal(courseIssues({ terms: [{ ...g, grade: "" }], finalGrade: null, isWithdrawn: true }).length, 1);
 });
 
 test("courseKey ignores case, spacing and full-width characters", () => {

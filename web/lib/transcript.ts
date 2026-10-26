@@ -324,7 +324,18 @@ export function courseStatus(c: Pick<CourseInput, "terms" | "finalGrade">): "gra
   return "graded";
 }
 
-export const normalizeName = (s: string): string => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+/**
+ * Required grades that are missing. AIs sometimes misread a grade and leave it blank while still marking the term graded,
+ * so these are warnings (the course still saves from an import) that the Edit tab floats to the top until they are fixed.
+ * The course form refuses to save while any are left.
+ */
+export function courseIssues(c: Pick<CourseInput, "terms" | "finalGrade" | "isWithdrawn">): string[] {
+  const issues = c.terms.filter((t) => t.status === "graded" && !t.grade.trim()).map((t) => `${TERM_LABEL[t.term]} is marked Graded but has no grade.`);
+  if (!c.isWithdrawn && c.terms.length === 0 && !c.finalGrade?.trim()) issues.push("No grade entered. Add the grade, or set a term to In progress or Planned.");
+  return issues;
+}
+
+export const normalizeName =(s: string): string => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
 /** Identity of a course for de-duplication: the same school, year, name and period are the same course. */
 export const courseKey = (schoolName: string, c: Pick<CourseInput, "academicYear" | "name" | "period"> & Partial<Pick<CourseInput, "isSummer" | "isRepeat">>): string =>
