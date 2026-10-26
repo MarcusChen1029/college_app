@@ -2,7 +2,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { CgGradePlan, FillRow } from "../../../web/lib/commonapp-fill.ts";
-import { cgRows, fillCgGrade } from "./cg.ts";
+import { cgRows, changedToYesNote, fillCgGrade } from "./cg.ts";
 import { TIMING } from "./dom.ts";
 import { fakeCommonApp } from "./fake-commonapp.ts";
 import { fixture, html } from "./test-dom.ts";
@@ -125,4 +125,51 @@ test("Other Courses: the question's Yes is clicked before the Add button", async
   // The fake has no dialog to open on this page, so the fill stops there; the point is the order of clicks.
   assert.deepEqual(fake.log.slice(0, 2), ["click:option_ques_1933_2371-input", "click:addCG"]);
   assert.match(result.stoppedReason ?? "", /dialog did not open/);
+});
+
+test("a school that is not in Common App's list names the options read and both ways out, and fills nothing", async () => {
+  const doc = ninthGrade();
+  setShown(doc, "schoolNameControl1", "");
+  const fake = fakeCommonApp(doc);
+  const result = await fillCgGrade(plan({ schoolName: "Lincoln High" }), "replace", doc);
+  assert.equal(result.filled, 0);
+  assert.equal(result.stoppedReason, undefined);
+  assert.equal(result.blanks.length, 1);
+  assert.equal(result.blanks[0]!.field, "school");
+  assert.ok(
+    result.blanks[0]!.reason.startsWith(
+      "Your tracker school 'Lincoln High' doesn't match any school in Common App's list ('West Lafayette Junior-Senior High School'). Rename it in the tracker to match exactly, or add it in Common App's Education section.",
+    ),
+    result.blanks[0]!.reason,
+  );
+  assert.ok(!fake.log.some(isCloseOrContinue), fake.log.join("\n"));
+  // Closing the empty School Name list goes through "Clear selection" (a pick of nothing); no value is ever picked.
+  assert.ok(!fake.log.some((l) => /^pick:[^=]+=./.test(l)), fake.log.join("\n"));
+});
+
+const otherCoursesPage = (checked: "yes" | "no" | null) => {
+  at("/common/13/59");
+  const on = (a: "yes" | "no") => (checked === a ? " checked" : "");
+  return html(`<main><h1>Other Courses</h1>
+<p id="title_ques_1933">Do you have any other courses on your transcript with grades?</p>
+<mat-radio-group id="radioGroup1933"><input type="radio" name="q1933" id="option_ques_1933_2371-input"${on("yes")}><label for="option_ques_1933_2371-input"> Yes </label>
+<input type="radio" name="q1933" id="option_ques_1933_2372-input"${on("no")}><label for="option_ques_1933_2372-input"> No </label></mat-radio-group>
+<button id="addCG">Add Other Courses</button></main>`);
+};
+
+test("a 'courses to report?' answer changed from No to Yes is noted for the report", async () => {
+  const doc = otherCoursesPage("no");
+  fakeCommonApp(doc);
+  const result = await fillCgGrade(plan({ grade: "other" }), "replace", doc);
+  assert.deepEqual(result.notes, ["Changed your answer to 'courses to report' to Yes for Other Courses."]);
+  assert.equal(changedToYesNote("12"), "Changed your answer to 'courses to report' to Yes for 12th grade.");
+});
+
+test("no note when the question was unanswered or already Yes", async () => {
+  for (const checked of [null, "yes"] as const) {
+    const doc = otherCoursesPage(checked);
+    fakeCommonApp(doc);
+    const result = await fillCgGrade(plan({ grade: "other" }), "replace", doc);
+    assert.equal(result.notes, undefined, String(checked));
+  }
 });

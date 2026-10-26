@@ -12,6 +12,7 @@ import {
   filledText,
   offerText,
   offersFor,
+  OPEN_RELOADS_NOTE,
   runFill,
   startFill,
   STATUS,
@@ -204,8 +205,11 @@ function reportView(outcome: FillOutcome, targets: Target[], tabId: number): voi
       h("p", { class: "done" }, filledText(item)),
       item.note ? h("p", { class: "warn" }, item.note) : false,
       needsSaveGuidance(item) ? h("p", { class: "warn" }, STOP_GUIDANCE) : false,
+      ...(item.changes ?? []).map((c) => h("p", { class: "note" }, c)),
       item.blanks.length ? h("ul", {}, ...item.blanks.map((b) => h("li", {}, blankText(b)))) : false,
       button(`Open ${targetLabel(item.target)} on Common App`, () => void chrome.tabs.update(tabId, { url: targetUrl(item.target) }), "link"),
+      // After a stop the tab may hold an open dialog with unsaved rows; any of these links navigates that tab away.
+      outcome.stopped ? h("p", { class: "note" }, OPEN_RELOADS_NOTE) : false,
     );
   });
   const done = new Set(outcome.items.map((i) => i.target));

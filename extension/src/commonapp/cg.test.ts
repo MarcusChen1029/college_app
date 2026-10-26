@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { cgGradeBox, cgRows, headerMismatch, otherGradeBox, unreachableReason } from "./cg.ts";
+import { cgGradeBox, cgRows, headerMismatch, otherGradeBox, schoolMissingText, unreachableReason } from "./cg.ts";
 import { fixture, html } from "./test-dom.ts";
 import type { CgGradePlan } from "../../../web/lib/commonapp-fill.ts";
 
@@ -87,4 +87,14 @@ test("Keep mode never changes a header the existing rows depend on", () => {
   assert.match(headerMismatch(doc, plan({ scale: "1-100" })) ?? "", /Grading Scale 'A-F'.*'1-100'/);
   assert.match(headerMismatch(doc, plan({ scheduleStem: "quarter" })) ?? "", /Schedule 'Semesters'/);
   assert.match(headerMismatch(doc, plan({ schoolYear: "2024-25" })) ?? "", /School Year '2023-24'/);
+});
+
+test("schoolMissingText names up to five options read and both ways out", () => {
+  assert.equal(
+    schoolMissingText("Lincoln High", ["West Lafayette Junior-Senior High School"]),
+    "Your tracker school 'Lincoln High' doesn't match any school in Common App's list ('West Lafayette Junior-Senior High School'). Rename it in the tracker to match exactly, or add it in Common App's Education section.",
+  );
+  const seven = ["A", "B", "C", "D", "E", "F", "G"];
+  assert.match(schoolMissingText("X", seven), /\('A', 'B', 'C', 'D', 'E', and 2 more\)/);
+  assert.match(schoolMissingText("X", []), /\(no schools\)/);
 });

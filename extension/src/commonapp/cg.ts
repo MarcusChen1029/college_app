@@ -3,7 +3,7 @@
 // then Continue only if nothing failed. On a locator failure the dialog is left OPEN and nothing is pressed (X would save).
 // Never touches the C&G intro question, never ticks "I have reported all of my courses", never submits.
 
-import { matchStem, rowsToAdd, type CgGradeKey, type CgGradePlan, type CommonAppScale, type FillRow, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
+import { matchOption, matchStem, rowsToAdd, type CgGradeKey, type CgGradePlan, type CommonAppScale, type FillRow, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
 import {
   cgCreditId,
   cgDialog,
@@ -124,8 +124,12 @@ async function reachGradePage(doc: Document, grade: CgGradeKey): Promise<void> {
 
 const labelOf = (doc: Document, input: Element) => (doc.querySelector(`label[for="${input.id}"]`)?.textContent ?? "").trim().toLowerCase();
 
-/** 12th grade and Other Courses ask "courses to report?" before the Add button shows; answer Yes (only called when the plan has rows). */
-async function answerYesIfAsked(doc: Document, grade: CgGradeKey): Promise<void> {
+/** The report line for a "courses to report?" answer the filler changed from No to Yes. */
+export const changedToYesNote = (grade: CgGradeKey) => `Changed your answer to 'courses to report' to Yes for ${GRADE_LABEL[grade]}.`;
+
+/** 12th grade and Other Courses ask "courses to report?" before the Add button shows; answer Yes (only called when the plan has rows).
+ *  When the student had answered No, a note for the report goes into `notes` as soon as the answer is changed (an unanswered question needs none). */
+async function answerYesIfAsked(doc: Document, grade: CgGradeKey, notes: string[]): Promise<void> {
   const q = CG_YES_NO_QUESTION[grade];
   if (q == null || cgDialog(doc)) return;
   const addShown = () => {
@@ -138,9 +142,14 @@ async function answerYesIfAsked(doc: Document, grade: CgGradeKey): Promise<void>
     if (addShown()) return; // no such question on this page at all: nothing to answer
     throw new PageChanged(`no Yes/No question before the "Add ${GRADE_LABEL[grade]}" button`);
   }
-  const yes = [...doc.querySelectorAll(`input[type="radio"][id^="option_ques_${q}_"]`)].filter((r) => labelOf(doc, r) === "yes");
+  const radios = [...doc.querySelectorAll(`input[type="radio"][id^="option_ques_${q}_"]`)];
+  const yes = radios.filter((r) => labelOf(doc, r) === "yes");
   if (yes.length !== 1) throw new PageChanged(`the 'courses to report?' question has ${yes.length ? "more than one" : "no"} Yes answer`);
-  if (!isChecked(yes[0]!)) click(yes[0]!);
+  if (!isChecked(yes[0]!)) {
+    const wasNo = radios.some((r) => labelOf(doc, r) === "no" && isChecked(r));
+    click(yes[0]!);
+    if (wasNo) notes.push(changedToYesNote(grade));
+  }
   await need(() => isChecked(yes[0]!) && addShown(), `the "Add ${GRADE_LABEL[grade]}" button did not appear after answering Yes`);
 }
 
@@ -184,12 +193,27 @@ async function removeRow(doc: Document, n: number): Promise<void> {
 
 const header = (doc: Document, id: string, label: string) => need(() => doc.getElementById(id), `no ${label} select`);
 
+/** Why a grade was skipped when the tracker's school name matches none of Common App's School Name options (the first few are named). */
+export function schoolMissingText(name: string, options: readonly string[]): string {
+  const shown = options.slice(0, 5).map((o) => `'${o}'`);
+  if (options.length > 5) shown.push(`and ${options.length - 5} more`);
+  const list = shown.length ? shown.join(", ") : "no schools";
+  return `Your tracker school '${name}' doesn't match any school in Common App's list (${list}). Rename it in the tracker to match exactly, or add it in Common App's Education section.`;
+}
+
 /** School Name and School Year. false = not in Common App's list: the grade is skipped (a blank says why). */
 async function setSchoolAndYear(doc: Document, plan: CgGradePlan, blank: (course: string, field: string, reason: string) => void): Promise<boolean> {
   const school = await header(doc, "schoolNameControl1", "School Name");
-  if (!sameText(matShownText(school), plan.schoolName) && (await selectMatOption(school, plan.schoolName)) === null) {
-    blank("", "school", `School '${plan.schoolName}' is not in Common App's School Name list: add it in Common App's Education section first. ${LEFT_OPEN}`);
-    return false;
+  if (!sameText(matShownText(school), plan.schoolName)) {
+    let options: string[] = [];
+    const picked = await chooseMatOption(school, (opts) => {
+      options = opts.filter((o) => o !== CLEAR_SELECTION);
+      return matchOption(options, plan.schoolName);
+    });
+    if (picked === null) {
+      blank("", "school", `${schoolMissingText(plan.schoolName, options)} ${LEFT_OPEN}`);
+      return false;
+    }
   }
   const year = await header(doc, "schoolYearControl1", "School Year");
   if (!sameText(matShownText(year), plan.schoolYear) && (await selectMatOption(year, plan.schoolYear)) === null) {
@@ -321,11 +345,14 @@ export async function fillCgGrade(plan: CgGradePlan, mode: "replace" | "keep", d
   resetStop();
   const blanks: Skipped[] = [...plan.skipped];
   const blank = (course: string, field: string, reason: string) => blanks.push({ where: plan.grade, course, field, reason });
+  const notes: string[] = [];
   let filled = 0;
-  if (!plan.rows.length) return { filled, blanks };
+  /** The page result; `notes` only when there are any. */
+  const result = (stoppedReason?: string): PageResult => ({ filled, blanks, ...(notes.length ? { notes } : {}), ...(stoppedReason ? { stoppedReason } : {}) });
+  if (!plan.rows.length) return result();
   try {
     await reachGradePage(doc, plan.grade);
-    await answerYesIfAsked(doc, plan.grade); // Ruling K: only reached with rows to fill
+    await answerYesIfAsked(doc, plan.grade, notes); // Ruling K: only reached with rows to fill
     await openDialog(doc, plan.grade);
 
     const existing = cgRows(doc).filter((r) => !r.blank);
@@ -333,10 +360,10 @@ export async function fillCgGrade(plan: CgGradePlan, mode: "replace" | "keep", d
       const why = headerMismatch(doc, plan);
       if (why) {
         blank("", "grade", `${why} ${LEFT_OPEN}`);
-        return { filled, blanks };
+        return result();
       }
     }
-    if (!(await setSchoolAndYear(doc, plan, blank))) return { filled, blanks };
+    if (!(await setSchoolAndYear(doc, plan, blank))) return result();
     if (mode === "replace") for (const r of cgRows(doc).filter((x) => x.n > 1).sort((a, b) => b.n - a.n)) await removeRow(doc, r.n);
     await setScaleAndSchedule(doc, plan);
 
@@ -358,10 +385,10 @@ export async function fillCgGrade(plan: CgGradePlan, mode: "replace" | "keep", d
     try {
       await waitFor(() => !cgDialog(doc), { timeoutMs: TIMING.saveMs });
     } catch {
-      return { filled, blanks, stoppedReason: "Common App did not close the dialog after Continue: read its messages, then press Continue yourself." };
+      return result("Common App did not close the dialog after Continue: read its messages, then press Continue yourself.");
     }
-    return { filled, blanks };
+    return result();
   } catch (e) {
-    return { filled, blanks, stoppedReason: stopText(e, !!cgDialog(doc)) };
+    return result(stopText(e, !!cgDialog(doc)));
   }
 }

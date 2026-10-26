@@ -5,7 +5,8 @@
 
 import { matchOption, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
 
-export type PageResult = { filled: number; blanks: Skipped[]; stoppedReason?: string };
+/** `notes`: things the filler changed on the page besides the courses (e.g. a "courses to report?" answer), for the report. */
+export type PageResult = { filled: number; blanks: Skipped[]; notes?: string[]; stoppedReason?: string };
 
 /** A locator failed: Common App's page is not what the recorded facts describe. The message names what was missing. */
 export class PageChanged extends Error {

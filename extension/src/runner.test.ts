@@ -10,6 +10,7 @@ import {
   needsSaveGuidance,
   offersFor,
   offerText,
+  OPEN_RELOADS_NOTE,
   runFill,
   startFill,
   STATUS,
@@ -291,4 +292,27 @@ test("save guidance only for a Courses & Grades item that stopped on a page stop
   const re = await runFill(["9", "10"], wrapped, askKeep, () => stop);
   assert.equal(re.stopped, true);
   assert.equal(needsSaveGuidance(re.items.at(-1)!), false);
+});
+
+// ---- final review fixes -------------------------------------------------------------------------------------------------
+
+test("a page's notes reach the report item as changes, on a finished page and on a stopped one", async () => {
+  const note = "Changed your answer to 'courses to report' to Yes for 12th grade.";
+  const a = fakeDriver({ fill: { "12": { filled: 1, blanks: [], notes: [note] } } });
+  const ra = await runFill(["12"], a.driver, askKeep, neverStop);
+  assert.deepEqual(ra.items, [{ target: "12", filled: 1, blanks: [], changes: [note] }]);
+
+  const b = fakeDriver({ fill: { "12": { filled: 0, blanks: [], notes: [note], stoppedReason: "Stopped." } } });
+  const rb = await runFill(["12"], b.driver, askKeep, neverStop);
+  assert.deepEqual(rb.items[0]!.changes, [note]);
+  assert.equal(rb.items[0]!.note, "Stopped.");
+
+  // No notes: no changes key at all.
+  const c = fakeDriver();
+  const rc = await runFill(["9"], c.driver, askKeep, neverStop);
+  assert.equal("changes" in rc.items[0]!, false);
+});
+
+test("the reload warning for the Open links says what is lost", () => {
+  assert.equal(OPEN_RELOADS_NOTE, "Opening reloads the page: anything not yet saved in an open popup is discarded.");
 });

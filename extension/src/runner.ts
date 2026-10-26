@@ -22,8 +22,12 @@ export type Driver = {
   fill(target: Target, mode: FillMode): Promise<PageResult>;
 };
 
-/** `stoppedOnPage`: the Common App page itself reported a stop (its stoppedReason), as opposed to a driver error or a Stop between steps. */
-export type ReportItem = { target: Target; filled: number; blanks: Skipped[]; note?: string; stoppedOnPage?: boolean };
+/** `stoppedOnPage`: the Common App page itself reported a stop (its stoppedReason), as opposed to a driver error or a Stop between steps.
+ *  `changes`: what the page changed besides the courses (PageResult.notes). */
+export type ReportItem = { target: Target; filled: number; blanks: Skipped[]; note?: string; changes?: string[]; stoppedOnPage?: boolean };
+
+/** Shown next to each "Open … on Common App" link after a stop: following it reloads the tab, which drops an open dialog's unsaved rows. */
+export const OPEN_RELOADS_NOTE = "Opening reloads the page: anything not yet saved in an open popup is discarded.";
 
 /** Only a Courses & Grades page that stopped by itself can have a dialog left open with unsaved rows; every other stop leaves nothing to save. */
 export function needsSaveGuidance(item: ReportItem): boolean {
@@ -72,11 +76,12 @@ export async function runFill(
       const mode = existing.length > 0 ? await ask(target, existing.length) : "keep";
       if (shouldStop()) return { items, stopped: true };
       const result = await driver.fill(target, mode);
+      const changes = result.notes?.length ? { changes: result.notes } : {};
       if (result.stoppedReason) {
-        items.push({ target, filled: result.filled, blanks: result.blanks, note: result.stoppedReason, stoppedOnPage: true });
+        items.push({ target, filled: result.filled, blanks: result.blanks, ...changes, note: result.stoppedReason, stoppedOnPage: true });
         return { items, stopped: true };
       }
-      items.push({ target, filled: result.filled, blanks: result.blanks });
+      items.push({ target, filled: result.filled, blanks: result.blanks, ...changes });
     } catch (e) {
       const reason = e instanceof Error ? e.message : String(e);
       items.push({ target, filled: 0, blanks: [], note: `Stopped: ${reason}` });
