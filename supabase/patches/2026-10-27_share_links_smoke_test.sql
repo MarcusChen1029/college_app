@@ -121,7 +121,7 @@ begin
   if public.parent_view(current_setting('smoke.p1')) is not null then raise exception 'FAIL: replaced parent token still works'; end if;
   v := public.parent_view(current_setting('smoke.p2'));
   if v is null then raise exception 'FAIL: active parent token returned null'; end if;
-  if v #>> '{student,name}' <> 'Smoke Student' or v #>> '{student,grad_year}' <> '2027' then
+  if v #>> '{student,name}' is distinct from 'Smoke Student' or v #>> '{student,grad_year}' is distinct from '2027' then
     raise exception 'FAIL: parent view student block wrong: %', v -> 'student';
   end if;
   if jsonb_array_length(v -> 'colleges') <> 1 or v #>> '{colleges,0,checklist,essay_list,0,status}' <> 'final' then
@@ -145,7 +145,7 @@ begin
   pv := public.portfolio_view(current_setting('smoke.pf'));
   if pv is null then raise exception 'FAIL: active portfolio token returned null'; end if;
   if pv::text like '%SMOKESECRET%' then raise exception 'FAIL: portfolio leaks a secret: %', pv; end if;
-  if pv #>> '{header,fullName}' <> 'Smoke Student' or pv -> 'scores' <> 'null'::jsonb then
+  if pv #>> '{header,fullName}' is distinct from 'Smoke Student' or pv -> 'scores' is distinct from 'null'::jsonb then
     raise exception 'FAIL: portfolio header/scores wrong: %', pv;
   end if;
   if jsonb_array_length(pv #> '{activities,commonApp,activities}') <> 1

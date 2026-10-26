@@ -103,6 +103,11 @@ switches), rendered through the same `buildResume`, so "what you see on the rés
 
 ## Known limits / follow-ups
 
+- **Role switch suspends, not revokes.** The views check `is_role(owner, 'student')` on every request, so switching
+  to teacher makes all of a student's links return "no longer active", and switching back to student makes the same
+  (unrevoked) links work again. This is intentional: the role switch keeps the other side's data. A student who wants
+  a link dead for good should turn it off before switching.
+
 - The token is in the URL path, so it appears in hosting access logs (Vercel). Acceptable for a revocable, read-only
   link; same exposure as any "anyone with the link" share.
 - No rate limiting on `parent_view` / `portfolio_view`; 256-bit tokens make guessing infeasible.

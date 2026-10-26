@@ -43,6 +43,8 @@ declare
 begin
   if uid is null or not public.is_role(uid, 'student') then raise exception 'students only'; end if;
   if p_kind is null or p_kind not in ('parent', 'portfolio') then raise exception 'unknown link kind'; end if;
+  -- Serialize per student so two concurrent calls can't both pass the revoke step and hit the unique index.
+  perform pg_advisory_xact_lock(hashtext('share_links:' || uid::text));
   tok := rtrim(translate(encode(extensions.gen_random_bytes(32), 'base64'), E'+/\n', '-_'), '=');
   update public.share_links set revoked_at = now()
   where student_id = uid and kind = p_kind and revoked_at is null;
