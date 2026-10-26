@@ -13,6 +13,7 @@ import type { Recommender, RecommenderRole, RecommenderStatus } from "./recommen
 import type { ResumeSettings } from "./resume.ts";
 import type { Scholarship, ScholarshipStatus } from "./scholarships.ts";
 import type { TestDetails } from "./scores.ts";
+import type { CourseInput, Overrides, SchoolInput, Term, TranscriptCourse, TranscriptSchool } from "./transcript.ts";
 
 export const STATUSES = [
   "researching",
@@ -228,3 +229,147 @@ export const fromEntry = (userId: string, e: ListEntry) => ({
   ...portalColumns(e.portal),
   aid_offer_usd: e.aidOfferUsd ?? null,
 });
+
+/** A row of the transcript_schools table (migration 0030). Private to the student: read only by the browser store and the student's own MCP tools. */
+export type TranscriptSchoolRow = {
+  id: string;
+  name: string;
+  country: string | null;
+  kind: TranscriptSchool["kind"];
+  curriculum: TranscriptSchool["curriculum"];
+  default_scale: TranscriptSchool["defaultScale"];
+  default_period: TranscriptSchool["defaultPeriod"];
+  first_year: number | null;
+  last_year: number | null;
+  printed_gpa: string | null;
+  printed_gpa_scale: string | null;
+  gpa_weighted: boolean | null;
+  class_rank: string | null;
+  notes: string | null;
+  created_at: string;
+};
+export const TRANSCRIPT_SCHOOL_COLUMNS =
+  "id, name, country, kind, curriculum, default_scale, default_period, first_year, last_year, printed_gpa, printed_gpa_scale, gpa_weighted, class_rank, notes, created_at";
+export const toTranscriptSchool = (r: TranscriptSchoolRow): TranscriptSchool => ({
+  id: r.id,
+  name: r.name,
+  country: r.country ?? "",
+  kind: r.kind,
+  curriculum: r.curriculum,
+  defaultScale: r.default_scale,
+  defaultPeriod: r.default_period,
+  firstYear: r.first_year,
+  lastYear: r.last_year,
+  printedGpa: r.printed_gpa ?? "",
+  printedGpaScale: r.printed_gpa_scale ?? "",
+  gpaWeighted: r.gpa_weighted,
+  classRank: r.class_rank ?? "",
+  notes: r.notes ?? "",
+  createdAt: r.created_at,
+});
+/** The writable columns (no id / created_at / updated_at). */
+export const transcriptSchoolColumns = (s: SchoolInput) => ({
+  name: s.name,
+  country: s.country,
+  kind: s.kind,
+  curriculum: s.curriculum,
+  default_scale: s.defaultScale,
+  default_period: s.defaultPeriod,
+  first_year: s.firstYear,
+  last_year: s.lastYear,
+  printed_gpa: s.printedGpa,
+  printed_gpa_scale: s.printedGpaScale,
+  gpa_weighted: s.gpaWeighted,
+  class_rank: s.classRank,
+  notes: s.notes,
+});
+export const fromTranscriptSchool = (userId: string, s: TranscriptSchool) => ({ id: s.id, user_id: userId, ...transcriptSchoolColumns(s) });
+
+/** A row of the transcript_courses table (migration 0030). numeric columns may arrive as strings. */
+export type TranscriptCourseRow = {
+  id: string;
+  school_id: string;
+  academic_year: number;
+  grade_level: number | null;
+  name: string;
+  period_type: TranscriptCourse["period"];
+  terms: Term[] | null;
+  final_grade: string | null;
+  grade_scale: TranscriptCourse["scale"];
+  scale_max: number | string | null;
+  level: TranscriptCourse["level"];
+  credit: number | string | null;
+  credit_unit: TranscriptCourse["creditUnit"];
+  subject: TranscriptCourse["subject"];
+  sub_subject: string | null;
+  language_name: string | null;
+  is_summer: boolean;
+  is_repeat: boolean;
+  is_college: boolean;
+  college_name: string | null;
+  is_withdrawn: boolean;
+  notes: string | null;
+  source: TranscriptCourse["source"];
+  overrides: Overrides | null;
+  sort_order: number;
+  created_at: string;
+};
+export const TRANSCRIPT_COURSE_COLUMNS =
+  "id, school_id, academic_year, grade_level, name, period_type, terms, final_grade, grade_scale, scale_max, level, credit, credit_unit, subject, sub_subject, language_name, is_summer, is_repeat, is_college, college_name, is_withdrawn, notes, source, overrides, sort_order, created_at";
+const num = (v: number | string | null): number | null => (v == null || v === "" ? null : Number(v));
+export const toTranscriptCourse = (r: TranscriptCourseRow): TranscriptCourse => ({
+  id: r.id,
+  schoolId: r.school_id,
+  academicYear: r.academic_year,
+  gradeLevel: r.grade_level,
+  name: r.name,
+  period: r.period_type,
+  terms: Array.isArray(r.terms) ? r.terms : [],
+  finalGrade: r.final_grade || null,
+  scale: r.grade_scale,
+  scaleMax: num(r.scale_max),
+  level: r.level,
+  credit: num(r.credit),
+  creditUnit: r.credit_unit,
+  subject: r.subject,
+  subSubject: r.sub_subject || null,
+  languageName: r.language_name ?? "",
+  isSummer: r.is_summer,
+  isRepeat: r.is_repeat,
+  isCollege: r.is_college,
+  collegeName: r.college_name ?? "",
+  isWithdrawn: r.is_withdrawn,
+  notes: r.notes ?? "",
+  source: r.source,
+  overrides: r.overrides ?? {},
+  sortOrder: r.sort_order,
+  createdAt: r.created_at,
+});
+/** The writable columns (no id / created_at / updated_at). */
+export const transcriptCourseColumns = (c: CourseInput) => ({
+  school_id: c.schoolId,
+  academic_year: c.academicYear,
+  grade_level: c.gradeLevel,
+  name: c.name,
+  period_type: c.period,
+  terms: c.terms,
+  final_grade: c.finalGrade,
+  grade_scale: c.scale,
+  scale_max: c.scaleMax,
+  level: c.level,
+  credit: c.credit,
+  credit_unit: c.creditUnit,
+  subject: c.subject,
+  sub_subject: c.subSubject,
+  language_name: c.languageName,
+  is_summer: c.isSummer,
+  is_repeat: c.isRepeat,
+  is_college: c.isCollege,
+  college_name: c.collegeName,
+  is_withdrawn: c.isWithdrawn,
+  notes: c.notes,
+  source: c.source,
+  overrides: c.overrides,
+  sort_order: c.sortOrder,
+});
+export const fromTranscriptCourse = (userId: string, c: TranscriptCourse) => ({ id: c.id, user_id: userId, ...transcriptCourseColumns(c) });

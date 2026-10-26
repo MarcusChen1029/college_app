@@ -1,0 +1,98 @@
+{
+  "version": "transcript.v1",
+  "schools": [
+    {
+      "name": "Taipei First Girls' High School",
+      "country": "Taiwan",
+      "kind": "high_school",
+      "curriculum": "other",
+      "defaultScale": "percent_100",
+      "defaultPeriod": "semester",
+      "firstYear": 2023,
+      "lastYear": 2026,
+      "printedGpa": "92.5",
+      "printedGpaScale": "100",
+      "gpaWeighted": false,
+      "classRank": "",
+      "courses": [
+        {
+          "academicYear": 2024,
+          "gradeLevel": 10,
+          "name": "數學 (Mathematics)",
+          "period": "semester",
+          "terms": [
+            { "term": "S1", "grade": "92", "status": "graded" },
+            { "term": "S2", "grade": "88", "status": "graded" }
+          ],
+          "level": "honors",
+          "credit": 2,
+          "creditUnit": "not_listed",
+          "subject": "mathematics",
+          "subSubject": "algebra_2"
+        },
+        {
+          "academicYear": 2025,
+          "gradeLevel": 11,
+          "name": "Physics",
+          "period": "semester",
+          "terms": [
+            { "term": "S1", "grade": "85", "status": "graded" },
+            { "term": "S2", "grade": "", "status": "in_progress" }
+          ],
+          "level": "regular",
+          "credit": 2,
+          "creditUnit": "not_listed",
+          "subject": "science",
+          "subSubject": "physics"
+        },
+        {
+          "academicYear": 2025,
+          "gradeLevel": 11,
+          "name": "Honors Chemistry",
+          "level": "super_honors",
+          "subject": "science",
+          "subSubject": "chemistry"
+        }
+      ]
+    },
+    {
+      "name": "IB World School",
+      "country": "Singapore",
+      "kind": "high_school",
+      "curriculum": "ib",
+      "defaultScale": "ib_7",
+      "defaultPeriod": "full_year",
+      "courses": [
+        {
+          "academicYear": 2025,
+          "gradeLevel": 11,
+          "name": "Biology HL",
+          "period": "full_year",
+          "terms": [{ "term": "FY", "grade": "6", "status": "graded" }],
+          "level": "ib_hl",
+          "credit": 1,
+          "subject": "science",
+          "subSubject": "biology"
+        }
+      ]
+    },
+    {
+      "name": "Cambridge Prep",
+      "country": "United Kingdom",
+      "kind": "high_school",
+      "curriculum": "a_level",
+      "defaultScale": "a_level",
+      "defaultPeriod": "full_year",
+      "courses": [
+        {
+          "academicYear": 2025,
+          "name": "Mathematics (A-level)",
+          "period": "full_year",
+          "finalGrade": "A*",
+          "level": "a_level",
+          "subject": "mathematics"
+        }
+      ]
+    }
+  ]
+}

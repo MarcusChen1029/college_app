@@ -13,13 +13,24 @@ import { REGIONS } from "../regions";
 import { DEFAULT_OPTIONS, EMPTY_HEADER } from "../resume";
 import {
   COLLEGE_COLUMNS_NO_LOGINS,
+  fromTranscriptCourse,
+  fromTranscriptSchool,
   PROFILE_COLUMNS_NO_LOGINS,
   toEntry,
   toProfile,
+  toTranscriptCourse,
+  toTranscriptSchool,
+  TRANSCRIPT_COURSE_COLUMNS,
+  TRANSCRIPT_SCHOOL_COLUMNS,
+  transcriptCourseColumns,
   type CollegeRow,
   type ListEntry,
   type ProfileRow,
+  type TranscriptCourseRow,
+  type TranscriptSchoolRow,
 } from "../student-rows";
+import { courseStatus, newTranscriptId, type TranscriptCourse, type TranscriptSchool } from "../transcript";
+import { planCourseUpdate, planMcpAdd, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
 import type { CollegeSummary, Lookups } from "../types";
 import { userClient } from "./auth";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
@@ -188,6 +199,20 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
 async function applications(s: Student) {
   const [list, summaries, deadlines, lookups] = await Promise.all([readList(s), getSummaries(), getDeadlines(), getLookups()]);
   return { list, summaries, deadlines, lookups, items: list.map((e) => describe(e, findSummary(summaries, e.slug), s, deadlines, lookups)) };
+}
+
+/** The student's whole transcript (their own rows only; RLS and the explicit user_id filter both apply). */
+async function readTranscript(s: Student): Promise<{ schools: TranscriptSchool[]; courses: TranscriptCourse[] }> {
+  const [sc, co] = await Promise.all([
+    s.db.from("transcript_schools").select(TRANSCRIPT_SCHOOL_COLUMNS).eq("user_id", s.userId).order("created_at"),
+    s.db.from("transcript_courses").select(TRANSCRIPT_COURSE_COLUMNS).eq("user_id", s.userId).order("created_at"),
+  ]);
+  if (sc.error) throw new Error(`Couldn't load the transcript: ${sc.error.message}`);
+  if (co.error) throw new Error(`Couldn't load the transcript: ${co.error.message}`);
+  return {
+    schools: ((sc.data ?? []) as unknown as TranscriptSchoolRow[]).map(toTranscriptSchool),
+    courses: ((co.data ?? []) as unknown as TranscriptCourseRow[]).map(toTranscriptCourse),
+  };
 }
 
 const READ = { readOnlyHint: true, openWorldHint: false } as const;
@@ -663,6 +688,142 @@ export function registerTools(server: McpServer) {
           return r.ok ? { columns: { resume: r.value }, value: { header: { ...EMPTY_HEADER, ...r.value.header }, options: { ...DEFAULT_OPTIONS, ...r.value.options } } } : { error: r.error };
         }),
       );
+    }),
+  );
+
+  // ── Transcript ──
+
+  server.registerTool(
+    "get_transcript_format",
+    {
+      title: "Get the transcript format",
+      description: `The standard format (${TRANSCRIPT_FORMAT_VERSION}) for the student's transcript: the JSON shape, every allowed value and the rules (copy grades exactly as printed, never convert). Read this before calling add_transcript_courses.`,
+      inputSchema: z.object({}),
+      annotations: READ,
+    },
+    guarded(async () => json({ version: TRANSCRIPT_FORMAT_VERSION, format: transcriptFormatText() })),
+  );
+
+  server.registerTool(
+    "get_transcript",
+    {
+      title: "Get the transcript",
+      description: "The student's transcript: every school with its courses (ids for update_transcript_course / delete_transcript_course, term grades exactly as printed, level, credit, category, status and where the course came from).",
+      inputSchema: z.object({}),
+      annotations: READ,
+    },
+    guarded(async (s) => {
+      const t = await readTranscript(s);
+      return json({
+        schools: t.schools.map((sc) => ({
+          id: sc.id,
+          name: sc.name,
+          country: sc.country,
+          kind: sc.kind,
+          curriculum: sc.curriculum,
+          defaultScale: sc.defaultScale,
+          defaultPeriod: sc.defaultPeriod,
+          printedGpa: sc.printedGpa || null,
+          printedGpaScale: sc.printedGpaScale || null,
+          gpaWeighted: sc.gpaWeighted,
+          classRank: sc.classRank || null,
+          courses: t.courses
+            .filter((c) => c.schoolId === sc.id)
+            .map((c) => ({
+              id: c.id,
+              academicYear: c.academicYear,
+              gradeLevel: c.gradeLevel,
+              name: c.name,
+              period: c.period,
+              terms: c.terms,
+              finalGrade: c.finalGrade,
+              scale: c.scale,
+              scaleMax: c.scaleMax,
+              level: c.level,
+              credit: c.credit,
+              creditUnit: c.creditUnit,
+              subject: c.subject,
+              subSubject: c.subSubject,
+              languageName: c.languageName || null,
+              isSummer: c.isSummer,
+              isRepeat: c.isRepeat,
+              isCollege: c.isCollege,
+              collegeName: c.collegeName || null,
+              isWithdrawn: c.isWithdrawn,
+              notes: c.notes || null,
+              status: courseStatus(c),
+              source: c.source,
+            })),
+        })),
+      });
+    }),
+  );
+
+  server.registerTool(
+    "add_transcript_courses",
+    {
+      title: "Add transcript courses",
+      description:
+        "Add courses to one school on the student's transcript (the school is created if its name is new). Each course follows get_transcript_format; grades are copied exactly as printed. Valid courses are saved right away and marked as added by AI; invalid ones are rejected with the reason and their position, and courses the student already has are skipped.",
+      inputSchema: z.object({
+        school: z.object({ name: z.string().min(1).max(200) }).loose(),
+        courses: z.array(z.unknown()).min(1).max(100),
+      }),
+      annotations: WRITE,
+    },
+    guarded(async (s, args) => {
+      const existing = await readTranscript(s);
+      const plan = planMcpAdd(args, existing);
+      if (plan.schoolErrors.length) return toolError(`The school was rejected: ${plan.schoolErrors.join(" ")}`);
+      const summary = { duplicatesSkipped: plan.duplicates, rejected: plan.rejected };
+      if (!plan.accepted.length) return json({ added: 0, ...summary });
+      let schoolId = plan.schoolId;
+      if (!schoolId && plan.newSchool) {
+        const school: TranscriptSchool = { ...plan.newSchool, id: newTranscriptId(), createdAt: new Date().toISOString() };
+        check((await s.db.from("transcript_schools").insert(fromTranscriptSchool(s.userId, school))).error, "the school");
+        schoolId = school.id;
+      }
+      if (!schoolId) return toolError("Couldn't work out which school to add the courses to.");
+      const base = existing.courses.filter((c) => c.schoolId === schoolId).reduce((m, c) => Math.max(m, c.sortOrder), 0) + 1;
+      const now = new Date().toISOString();
+      const rows = plan.accepted.map((c, i) => fromTranscriptCourse(s.userId, { ...c, schoolId: schoolId as string, sortOrder: base + i, id: newTranscriptId(), createdAt: now }));
+      check((await s.db.from("transcript_courses").insert(rows)).error, "the courses");
+      return json({ added: rows.length, school: plan.newSchool?.name ?? existing.schools.find((x) => x.id === schoolId)?.name, ...summary });
+    }),
+  );
+
+  server.registerTool(
+    "update_transcript_course",
+    {
+      title: "Update a transcript course",
+      description: "Change fields of one transcript course. Only the fields in `patch` change; the school can't be changed. Grades stay exactly as printed. ids come from get_transcript.",
+      inputSchema: z.object({ id: z.string().min(1).max(100), patch: z.record(z.string(), z.unknown()) }),
+      annotations: WRITE,
+    },
+    guarded(async (s, { id, patch }) => {
+      const { data, error } = await s.db.from("transcript_courses").select(TRANSCRIPT_COURSE_COLUMNS).eq("id", id).eq("user_id", s.userId).maybeSingle();
+      if (error) throw new Error(error.message);
+      if (!data) return toolError("No transcript course with that id. Use get_transcript to see the ids.");
+      const r = planCourseUpdate(toTranscriptCourse(data as unknown as TranscriptCourseRow), patch);
+      if (!r.ok) return toolError(`The change was rejected: ${r.errors.join(" ")}`);
+      const upd = await s.db.from("transcript_courses").update(transcriptCourseColumns(r.value)).eq("id", id).eq("user_id", s.userId);
+      check(upd.error, "the course");
+      return json({ updated: id });
+    }),
+  );
+
+  server.registerTool(
+    "delete_transcript_course",
+    {
+      title: "Delete a transcript course",
+      description: "Permanently delete one course from the student's transcript. Confirm with the student first. ids come from get_transcript.",
+      inputSchema: z.object({ id: z.string().min(1).max(100) }),
+      annotations: DESTROY,
+    },
+    guarded(async (s, { id }) => {
+      const { data, error } = await s.db.from("transcript_courses").delete().eq("id", id).eq("user_id", s.userId).select("id");
+      check(error, "the course");
+      return (data ?? []).length ? json({ deleted: id }) : toolError("No transcript course with that id. Use get_transcript to see the ids.");
     }),
   );
 }
