@@ -225,7 +225,7 @@ test("the prompt lists every application's own subject options and asks for syst
 test("systemSubjects tags become per-system subject overrides, matched against each system's list", () => {
   const data = fixture();
   data.schools[0].courses = [
-    { academicYear: 2025, name: "Calculus", subject: "mathematics", subSubject: "calculus", systemSubjects: { common_app: "calculus", stars: "Mathematics", csu: "C", uc: "C – Mathematics", uiuc: "Mathematics", ut: "Math", bogus: "x" } },
+    { academicYear: 2025, name: "Calculus", finalGrade: "A", subject: "mathematics", subSubject: "calculus", systemSubjects: { common_app: "calculus", stars: "Mathematics", csu: "C", uc: "C – Mathematics", uiuc: "Mathematics", ut: "Math", bogus: "x" } },
   ];
   const plan = buildImportPlan(data, none, "ai_import");
   const row = plan.rows[0];
@@ -240,6 +240,19 @@ test("systemSubjects tags become per-system subject overrides, matched against e
   assert.equal(row.warnings.length, 2);
   assert.ok(row.warnings.some((w) => /ut/.test(w)));
   assert.ok(row.warnings.some((w) => /bogus/.test(w)));
+});
+
+test("a term marked graded with no grade still imports, with a warning", () => {
+  const data = fixture();
+  data.schools[0].courses = [
+    { academicYear: 2025, name: "Chemistry", period: "semester", terms: [{ term: "S1", grade: "B+", status: "graded" }, { term: "S2", grade: "", status: "graded" }] },
+  ];
+  const row = buildImportPlan(data, none, "ai_import").rows[0];
+  assert.ok(row.input, row.errors.join());
+  assert.deepEqual(row.warnings, ["Semester 2 is marked Graded but has no grade."]);
+  const mcp = planMcpAdd({ school: { name: "Lincoln High" }, courses: [{ academicYear: 2025, name: "Chemistry", period: "semester", terms: [{ term: "S1", grade: "", status: "graded" }] }] }, none);
+  assert.equal(mcp.accepted.length, 1);
+  assert.deepEqual(mcp.warnings, [{ index: 0, messages: ["Semester 1 is marked Graded but has no grade."] }]);
 });
 
 test("planMcpAdd keeps valid system tags and reports the rest", () => {

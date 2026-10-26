@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+  courseIssues,
   CREDIT_UNITS,
   GRADE_SCALES,
   LEVEL_LABEL,
@@ -81,6 +82,8 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
     });
     const result = validateCourse({ ...f, terms, finalGrade: f.finalGrade.trim() || null });
     if (!result.ok) return setErrors(result.errors);
+    const missing = courseIssues(result.value);
+    if (missing.length) return setErrors(missing);
     setErrors([]);
     onSave(result.value);
   }
@@ -170,12 +173,22 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
         </legend>
         {termCodes.map((code) => {
           const r = row(code);
+          // A term explicitly marked Graded must carry its grade.
+          const needsGrade = r.status === "graded" && !r.grade.trim();
           return (
             <div key={code} className="grid items-end gap-2 sm:grid-cols-[8rem_1fr_1fr_10rem]">
               <span className="pb-2 text-sm font-medium">{TERM_LABEL[code]}</span>
               <label className="text-xs text-zinc-600">
-                Grade
-                <input className={fieldClass} aria-label={`${TERM_LABEL[code]} grade`} value={r.grade} maxLength={LIMITS.grade} onChange={(e) => setRow(code, { grade: e.target.value })} />
+                Grade{r.status === "graded" && <span className="text-urgent"> (required)</span>}
+                <input
+                  className={`${fieldClass} ${needsGrade ? "border-urgent-line!" : ""}`}
+                  aria-label={`${TERM_LABEL[code]} grade`}
+                  aria-invalid={needsGrade || undefined}
+                  required={r.status === "graded"}
+                  value={r.grade}
+                  maxLength={LIMITS.grade}
+                  onChange={(e) => setRow(code, { grade: e.target.value })}
+                />
               </label>
               <label className="text-xs text-zinc-600">
                 Weighted grade (if printed)
