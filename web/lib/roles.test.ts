@@ -70,7 +70,7 @@ test("redirectFor: teachers are kept out of student-only pages, students are not
 const hrefsOf = (items: readonly (readonly [string, string])[]) => items.map(([h]) => h);
 
 test("navFor: teacher, student, and public navs", () => {
-  assert.deepEqual(hrefsOf(navFor("teacher", { signedIn: true, started: false })), ["/teacher", "/teacher/students", "/teacher/classes", "/teacher/deadlines", "/teacher/tasks", "/colleges", "/compare"]);
+  assert.deepEqual(hrefsOf(navFor("teacher", { signedIn: true, started: false })), ["/teacher", "/teacher/students", "/teacher/classes", "/teacher/deadlines", "/teacher/tasks", "/teacher/charts", "/colleges", "/compare"]);
   assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: false })), ["/colleges", "/pricing", "/help"]);
   assert.deepEqual(navFor(undefined, { signedIn: false, started: true }), navFor("student", { signedIn: true, started: false }));
   assert.deepEqual(hrefsOf(navFor(undefined, { signedIn: false, started: true })), ["/colleges", "/compare", "/application", "/writing", "/tools", "/profile"]);
