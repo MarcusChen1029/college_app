@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { computeFit } from "@/lib/fit";
 import { fmtDate, fmtPct, INTL_AID, TEST_POLICY } from "@/lib/format";
+import type { MessageKey, TFunction } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { BASE_TIERS, TIER_ORDER, tierRank } from "@/lib/tiers";
 import { buttonClass } from "@/lib/ui";
@@ -11,8 +13,12 @@ import type { CollegeSummary, Lookups, TierCode } from "@/lib/types";
 import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 
+// Lookup labels live in lib/format.ts (English, shared with tests); translate them here by stored value.
+const lookupLabel = (t: TFunction, group: "testPolicy" | "intlAid", map: Record<string, string>, k: string) =>
+  k in map ? t(`colleges.${group}.${k}` as MessageKey) : k;
 
 export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary[]; lookups: Lookups }) {
+  const t = useT();
   const student = useStudent();
   const [q, setQ] = useState("");
   const [category, setCategory] = useState("general");
@@ -62,69 +68,69 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <input className={`${select} w-56`} placeholder="Search name or city…" value={q} onChange={(e) => setQ(e.target.value)} />
+        <input className={`${select} w-56`} placeholder={t("colleges.tableSearchPlaceholder")} value={q} onChange={(e) => setQ(e.target.value)} />
         <select className={select} value={category} onChange={(e) => {
           setCategory(e.target.value);
           setMinTier("");
-        }} aria-label="Tier category">
+        }} aria-label={t("colleges.tierCategory")}>
           {lookups.categories.map((c) => (
             <option key={c.key} value={c.key}>
-              {c.key === "general" ? "Tier: general" : `Tier: ${c.label}`}
+              {c.key === "general" ? t("colleges.tierGeneral") : t("colleges.tierOf", { label: c.label })}
             </option>
           ))}
         </select>
-        <select className={select} value={minTier} onChange={(e) => setMinTier(e.target.value as TierCode | "")} aria-label="Minimum tier">
-          <option value="">Any tier</option>
-          {(category === "general" ? TIER_ORDER : BASE_TIERS).map((t) => (
-            <option key={t} value={t}>
-              {t === TIER_ORDER[0] ? `${t} only` : `${t} or better`}
+        <select className={select} value={minTier} onChange={(e) => setMinTier(e.target.value as TierCode | "")} aria-label={t("colleges.minTier")}>
+          <option value="">{t("colleges.anyTier")}</option>
+          {(category === "general" ? TIER_ORDER : BASE_TIERS).map((tier) => (
+            <option key={tier} value={tier}>
+              {tier === TIER_ORDER[0] ? t("colleges.tierOnly", { t: tier }) : t("colleges.tierOrBetter", { t: tier })}
             </option>
           ))}
         </select>
-        <select className={select} value={state} onChange={(e) => setState(e.target.value)} aria-label="State">
-          <option value="">All states</option>
+        <select className={select} value={state} onChange={(e) => setState(e.target.value)} aria-label={t("colleges.state")}>
+          <option value="">{t("colleges.allStates")}</option>
           {states.map((s) => (
             <option key={s}>{s}</option>
           ))}
         </select>
-        <select className={select} value={testPolicy} onChange={(e) => setTestPolicy(e.target.value)} aria-label="Test policy">
-          <option value="">Any test policy</option>
-          {Object.entries(TEST_POLICY).map(([k, v]) => (
+        <select className={select} value={testPolicy} onChange={(e) => setTestPolicy(e.target.value)} aria-label={t("colleges.testPolicy")}>
+          <option value="">{t("colleges.anyTestPolicy")}</option>
+          {Object.entries(TEST_POLICY).map(([k]) => (
             <option key={k} value={k}>
-              {v}
+              {lookupLabel(t, "testPolicy", TEST_POLICY, k)}
             </option>
           ))}
         </select>
-        <select className={select} value={plan} onChange={(e) => setPlan(e.target.value)} aria-label="Application plan">
-          <option value="">Any plan</option>
+        <select className={select} value={plan} onChange={(e) => setPlan(e.target.value)} aria-label={t("colleges.applicationPlan")}>
+          <option value="">{t("colleges.anyPlan")}</option>
           {planKeys.map((k) => (
             <option key={k} value={k}>
-              Offers {planLabel(k)}
+              {t("colleges.offersPlan", { plan: planLabel(k) })}
             </option>
           ))}
         </select>
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" checked={intlAidOnly} onChange={(e) => setIntlAidOnly(e.target.checked)} />
-          Aid for internationals
+          {t("colleges.aidForIntl")}
         </label>
-        <select className={`${select} ml-auto`} value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} aria-label="Sort">
-          <option value="tier">Sort: tier</option>
-          <option value="admit">Sort: admit rate</option>
-          <option value="deadline">Sort: next deadline</option>
-          <option value="name">Sort: name</option>
+        <select className={`${select} ml-auto`} value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} aria-label={t("colleges.sort")}>
+          <option value="tier">{t("colleges.sortByTier")}</option>
+          <option value="admit">{t("colleges.sortByAdmit")}</option>
+          <option value="deadline">{t("colleges.sortByDeadline")}</option>
+          <option value="name">{t("colleges.sortByName")}</option>
         </select>
       </div>
 
       {selected.length > 0 && (
         <div className="flex items-center gap-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm">
           <span>
-            {selected.length} selected{selected.length >= 4 ? " (max 4)" : ""}
+            {t("colleges.selectedCount", { n: selected.length })}{selected.length >= 4 ? t("colleges.maxFour") : ""}
           </span>
           <Link className="font-medium text-blue-700 underline" href={`/compare?c=${selected.join(",")}`}>
-            Compare side by side →
+            {t("colleges.compareSideBySide")}
           </Link>
           <button className="ml-auto text-zinc-500 hover:underline" onClick={() => setSelected([])}>
-            Clear
+            {t("colleges.clear")}
           </button>
         </div>
       )}
@@ -134,15 +140,15 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
           <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
             <tr>
               <th className="w-8 p-2" />
-              <th className="p-2">Tier</th>
-              <th className="p-2">College</th>
-              <th className="p-2 text-right">Admit rate</th>
-              <th className="p-2 text-right">SAT 25–75</th>
-              <th className="p-2">Testing</th>
-              <th className="p-2">Plans</th>
-              <th className="p-2">Next deadline</th>
-              <th className="p-2">Intl aid</th>
-              <th className="p-2">{hasScores ? "Your fit" : "Fit"}</th>
+              <th className="p-2">{t("colleges.thTier")}</th>
+              <th className="p-2">{t("colleges.thCollege")}</th>
+              <th className="p-2 text-right">{t("colleges.thAdmitRate")}</th>
+              <th className="p-2 text-right">{t("colleges.thSat")}</th>
+              <th className="p-2">{t("colleges.thTesting")}</th>
+              <th className="p-2">{t("colleges.thPlans")}</th>
+              <th className="p-2">{t("colleges.thNextDeadline")}</th>
+              <th className="p-2">{t("colleges.thIntlAid")}</th>
+              <th className="p-2">{hasScores ? t("colleges.thYourFit") : t("colleges.thFit")}</th>
               <th className="p-2" />
             </tr>
           </thead>
@@ -153,7 +159,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
               return (
                 <tr key={c.slug} className="border-t border-zinc-100 hover:bg-zinc-50">
                   <td className="p-2">
-                    <input type="checkbox" aria-label={`Select ${c.name} to compare`} checked={selected.includes(c.slug)} onChange={() => toggle(c.slug)} />
+                    <input type="checkbox" aria-label={t("colleges.selectToCompare", { name: c.name })} checked={selected.includes(c.slug)} onChange={() => toggle(c.slug)} />
                   </td>
                   <td className="p-2">
                     <span className="flex items-center gap-2">
@@ -166,34 +172,34 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
                       {c.name}
                     </Link>
                     <div className="text-xs text-zinc-500">
-                      {c.city}, {c.state_region} · {c.control === "public" ? "Public" : "Private"}
+                      {c.city}, {c.state_region} · {c.control === "public" ? t("colleges.public") : t("colleges.private")}
                     </div>
                   </td>
                   <td className="p-2 text-right tabular-nums">
                     {fmtPct(c.admit_rate)}
                     {student.profile.international && c.intl_admit_rate != null && (
-                      <div className="text-xs text-zinc-500">intl {fmtPct(c.intl_admit_rate)}</div>
+                      <div className="text-xs text-zinc-500">{t("colleges.intlRate", { pct: fmtPct(c.intl_admit_rate) })}</div>
                     )}
                   </td>
                   <td className="p-2 text-right tabular-nums">
                     {c.sat_p25 != null ? `${Number(c.sat_p25)}–${Number(c.sat_p75)}` : <span className="text-zinc-400">—</span>}
                   </td>
-                  <td className="p-2">{c.test_policy ? <Pill>{TEST_POLICY[c.test_policy] ?? c.test_policy}</Pill> : "—"}</td>
+                  <td className="p-2">{c.test_policy ? <Pill>{lookupLabel(t, "testPolicy", TEST_POLICY, c.test_policy)}</Pill> : "—"}</td>
                   <td className="p-2 text-xs">{[...(c.plans ?? [])].sort().join(" · ") || "—"}</td>
                   <td className="p-2 tabular-nums">{fmtDate(c.next_deadline)}</td>
-                  <td className="p-2 text-xs">{c.intl_aid_policy ? INTL_AID[c.intl_aid_policy] : <span className="text-zinc-400">Unknown</span>}</td>
-                  <td className="p-2">{fit ? <FitBadge fit={fit.fit} reason={fit.reason} /> : <span className="text-xs text-zinc-400">{hasScores ? "—" : "add scores"}</span>}</td>
+                  <td className="p-2 text-xs">{c.intl_aid_policy ? lookupLabel(t, "intlAid", INTL_AID, c.intl_aid_policy) : <span className="text-zinc-400">{t("colleges.unknown")}</span>}</td>
+                  <td className="p-2">{fit ? <FitBadge fit={fit.fit} result={fit} /> : <span className="text-xs text-zinc-400">{hasScores ? "—" : t("colleges.addScoresShort")}</span>}</td>
                   <td className="p-2 text-right">
                     {!inList && !student.canAdd ? (
-                      <Link href="/pricing" className="whitespace-nowrap rounded-md border border-blue-600 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-50" title={`Your ${student.plan.name} plan list is full`}>
-                        Upgrade
+                      <Link href="/pricing" className="whitespace-nowrap rounded-md border border-blue-600 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-50" title={t("colleges.planFull", { plan: student.plan.name })}>
+                        {t("colleges.upgrade")}
                       </Link>
                     ) : (
                     <button
                       className={buttonClass(inList ? "secondary" : "primary", "sm")}
                       onClick={() => (inList ? student.remove(c.slug) : student.add(c))}
                     >
-                      {inList ? "✓ In list" : "+ My list"}
+                      {inList ? t("colleges.inList") : t("colleges.myListAdd")}
                     </button>
                     )}
                   </td>
@@ -210,7 +216,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
             {rows.length === 0 && (
               <tr>
                 <td colSpan={11} className="p-6 text-center text-zinc-500">
-                  No colleges match these filters.
+                  {t("colleges.noFilterMatch")}
                 </td>
               </tr>
             )}
@@ -218,8 +224,7 @@ export function CollegeBrowser({ colleges, lookups }: { colleges: CollegeSummary
         </table>
       </div>
       <p className="text-xs text-zinc-500">
-        Admit rates and SAT ranges come from each college&apos;s latest Common Data Set (enrolled first-years). Hover a fit label to see the
-        reasoning. Tiers are an editorial v0 scale (S → D).
+        {t("colleges.footnote")}
       </p>
     </div>
   );

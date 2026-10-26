@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useT } from "@/lib/i18n/client";
 import { groupByDate, monthGrid, monthOf, monthTitle, shiftMonth } from "@/lib/calendar";
 import { daysUntil, fmtDate } from "@/lib/format";
 import { deadlineTone, type Tone } from "@/lib/status";
@@ -11,7 +12,7 @@ export type CalendarEvent = { id: string; date: string; label: string; college: 
 
 const URGENCY: Tone[] = ["urgent", "soon", "neutral", "progress", "done"];
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const WEEKDAYS = ["profile.cal.wd0", "profile.cal.wd1", "profile.cal.wd2", "profile.cal.wd3", "profile.cal.wd4", "profile.cal.wd5", "profile.cal.wd6"] as const;
 const navButton = "grid h-8 w-8 place-items-center rounded-full border-2 border-zinc-200 text-sm font-semibold hover:bg-zinc-50 focus-visible:outline-3 focus-visible:outline-blue-400";
 
 /** The most urgent tone among a day's deadlines. */
@@ -27,6 +28,7 @@ function dayTone(events: CalendarEvent[], today: string): Tone {
  * deadline (or this month); picking a day lists that day's deadlines, otherwise the month's are listed.
  */
 export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; today: string }) {
+  const t = useT();
   const byDate = useMemo(() => groupByDate(events, (e) => e.date), [events]);
   const next = useMemo(() => events.map((e) => e.date).filter((d) => d >= today).sort()[0], [events, today]);
   const [view, setView] = useState(() => monthOf(next ?? today));
@@ -46,13 +48,13 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
   return (
     <div>
       <div className="flex items-center justify-between gap-2">
-        <button type="button" className={navButton} onClick={() => go(-1)} aria-label="Previous month">
+        <button type="button" className={navButton} onClick={() => go(-1)} aria-label={t("profile.cal.prev")}>
           ‹
         </button>
         <h3 className="text-sm font-bold" aria-live="polite">
           {monthTitle(view.year, view.month)}
         </h3>
-        <button type="button" className={navButton} onClick={() => go(1)} aria-label="Next month">
+        <button type="button" className={navButton} onClick={() => go(1)} aria-label={t("profile.cal.next")}>
           ›
         </button>
       </div>
@@ -60,11 +62,11 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
       <div className="mt-3 grid grid-cols-7 text-center text-[11px] font-semibold uppercase tracking-wide text-zinc-400" aria-hidden>
         {WEEKDAYS.map((w) => (
           <span key={w} className="py-1">
-            {w}
+            {t(w)}
           </span>
         ))}
       </div>
-      <div role="group" aria-label={`Deadlines in ${monthTitle(view.year, view.month)}`} className="grid grid-cols-7 gap-y-1">
+      <div role="group" aria-label={t("profile.cal.deadlinesIn", { month: monthTitle(view.year, view.month) })} className="grid grid-cols-7 gap-y-1">
         {weeks.flat().map((c) => {
           const here = byDate.get(c.iso) ?? [];
           const isToday = c.iso === today;
@@ -83,7 +85,7 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
               type="button"
               disabled={here.length === 0}
               aria-pressed={here.length ? isPicked : undefined}
-              aria-label={`${fmtDate(c.iso)}${isToday ? " (today)" : ""}${here.length ? `: ${here.length} ${here.length === 1 ? "deadline" : "deadlines"}` : ""}`}
+              aria-label={`${fmtDate(c.iso)}${isToday ? t("profile.cal.today") : ""}${here.length ? t(here.length === 1 ? "profile.cal.dayOne" : "profile.cal.dayMany", { n: here.length }) : ""}`}
               onClick={() => setPicked(isPicked ? null : c.iso)}
               className={`relative mx-auto grid h-9 w-9 place-items-center rounded-full text-sm focus-visible:outline-3 focus-visible:outline-blue-400 disabled:cursor-default ${tone} ${c.inMonth ? "" : "opacity-35"} ${isToday ? "ring-2 ring-ink" : ""}`}
             >
@@ -99,9 +101,9 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
       </div>
 
       <div className="mt-4 border-t border-zinc-100 pt-3">
-        <p className="text-xs font-semibold text-zinc-500">{picked ? fmtDate(picked) : `This month (${monthEvents.length})`}</p>
+        <p className="text-xs font-semibold text-zinc-500">{picked ? fmtDate(picked) : t("profile.cal.thisMonth", { n: monthEvents.length })}</p>
         {listed.length === 0 ? (
-          <p className="mt-1.5 text-sm text-zinc-600">{events.length === 0 ? "Add colleges to your list and their deadlines will show up here." : "No deadlines this month."}</p>
+          <p className="mt-1.5 text-sm text-zinc-600">{events.length === 0 ? t("profile.cal.emptyAll") : t("profile.cal.emptyMonth")}</p>
         ) : (
           <ul className="mt-1 divide-y divide-zinc-100">
             {listed.map((e) => (

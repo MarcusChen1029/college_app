@@ -27,6 +27,7 @@ import { estimateGpaPercentiles, GPA_BAND_ORDER } from "@/lib/gpa";
 import { referenceTone } from "@/lib/status";
 import type { CollegeDetail } from "@/lib/types";
 import { toneClass } from "@/lib/ui";
+import { getT } from "@/lib/i18n/server";
 
 export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
   return (
@@ -38,6 +39,7 @@ export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
 
 async function College({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const t = await getT();
   const [c, lookups] = await Promise.all([getCollege(slug), getLookups()]);
   if (!c) notFound();
 
@@ -46,7 +48,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const ref = (id: string | null | undefined) => (id ? srcNum.get(id) : undefined);
   const stats = [...c.admission_stats].sort((a, b) => (a.source_note === null ? -1 : 1) - (b.source_note === null ? -1 : 1) || b.cds_year.localeCompare(a.cds_year))[0];
   const scores = c.test_score_percentiles.filter((s) => s.cds_year === stats?.cds_year);
-  const score = (t: string) => scores.find((s) => s.test === t);
+  const score = (k: string) => scores.find((s) => s.test === k);
   const policy = [...c.test_policies].sort((a, b) => b.cycle.localeCompare(a.cycle))[0];
   const req = [...c.application_requirements].sort((a, b) => b.cycle.localeCompare(a.cycle))[0];
   const cost = [...c.cost_aid].sort((a, b) => b.year.localeCompare(a.year))[0];
@@ -56,7 +58,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const general = c.institution_tiers.find((t) => t.category_key === "general")?.tier_code;
   const catLabel = (k: string | null) => lookups.categories.find((x) => x.key === k)?.label ?? k ?? "";
   const planLabel = (k: string | null) => lookups.plans.find((p) => p.key === k)?.label ?? k ?? "";
-  const testName = (k: string) => lookups.englishTests.find((t) => t.key === k)?.name ?? k;
+  const testName = (k: string) => lookups.englishTests.find((x) => x.key === k)?.name ?? k;
 
   return (
     <article className="space-y-8">
@@ -66,19 +68,19 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <div>
             <h1 className="text-2xl font-semibold">{c.name}</h1>
             <p className="text-sm text-zinc-500">
-              {c.city}, {c.state_region} · {c.control === "public" ? "Public" : "Private"}
+              {c.city}, {c.state_region} · {c.control === "public" ? t("college.public") : t("college.private")}
               {c.setting && ` · ${c.setting}`}
-              {c.academic_calendar && ` · ${c.academic_calendar} calendar`}
+              {c.academic_calendar && ` · ${t("college.calendar", { x: c.academic_calendar })}`}
             </p>
             <div className="mt-2 flex flex-wrap gap-3 text-sm">
               {c.website && (
                 <a className="text-blue-600 hover:underline" href={c.website} target="_blank" rel="noreferrer">
-                  Website ↗
+                  {t("college.website")}
                 </a>
               )}
               {c.admissions_url && (
                 <a className="text-blue-600 hover:underline" href={c.admissions_url} target="_blank" rel="noreferrer">
-                  Admissions ↗
+                  {t("college.admissions")}
                 </a>
               )}
             </div>
@@ -91,20 +93,20 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         <>
       {/* Key numbers */}
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        <Stat label="Admit rate" value={fmtPct(stats?.admit_rate)} sub={stats ? `${fmtInt(stats.admits)} of ${fmtInt(stats.applicants)}` : undefined} />
-        <Stat label="ED admit rate" value={fmtPct(stats?.ed_admit_rate)} sub={stats?.ed_applicants ? `${fmtInt(stats.ed_admits)} of ${fmtInt(stats.ed_applicants)}` : "not reported"} />
-        <Stat label="International admit rate" value={fmtPct(stats?.intl_admit_rate)} sub={stats?.intl_applicants ? `${fmtInt(stats.intl_admits)} of ${fmtInt(stats.intl_applicants)}` : "not reported"} />
-        <Stat label="Undergraduates" value={fmtInt(c.undergrad_enrollment)} sub={c.pct_international_ug != null ? `${fmtPct(c.pct_international_ug)} international` : undefined} />
-        <Stat label="Student : faculty" value={c.student_faculty_ratio ? `${Number(c.student_faculty_ratio)} : 1` : "—"} />
+        <Stat label={t("college.admitRate")} value={fmtPct(stats?.admit_rate)} sub={stats ? t("college.xOfY", { x: fmtInt(stats.admits), y: fmtInt(stats.applicants) }) : undefined} />
+        <Stat label={t("college.edAdmitRate")} value={fmtPct(stats?.ed_admit_rate)} sub={stats?.ed_applicants ? t("college.xOfY", { x: fmtInt(stats.ed_admits), y: fmtInt(stats.ed_applicants) }) : t("college.notReported")} />
+        <Stat label={t("college.intlAdmitRate")} value={fmtPct(stats?.intl_admit_rate)} sub={stats?.intl_applicants ? t("college.xOfY", { x: fmtInt(stats.intl_admits), y: fmtInt(stats.intl_applicants) }) : t("college.notReported")} />
+        <Stat label={t("college.undergrads")} value={fmtInt(c.undergrad_enrollment)} sub={c.pct_international_ug != null ? t("college.pctInternational", { x: fmtPct(c.pct_international_ug) }) : undefined} />
+        <Stat label={t("college.studentFaculty")} value={c.student_faculty_ratio ? `${Number(c.student_faculty_ratio)} : 1` : "—"} />
         <Stat
-          label="Waitlist"
-          value={stats?.waitlist_admitted != null ? `${fmtInt(stats.waitlist_admitted)} admitted` : "—"}
-          sub={stats?.waitlist_offered ? `of ${fmtInt(stats.waitlist_offered)} offered` : undefined}
+          label={t("college.waitlist")}
+          value={stats?.waitlist_admitted != null ? t("college.nAdmitted", { n: fmtInt(stats.waitlist_admitted) }) : "—"}
+          sub={stats?.waitlist_offered ? t("college.ofNOffered", { n: fmtInt(stats.waitlist_offered) }) : undefined}
         />
       </section>
       {stats && (
         <p className="-mt-5 text-xs text-zinc-500">
-          {stats.source_note ? "Admissions-site figures" : `Common Data Set ${stats.cds_year}`}
+          {stats.source_note ? t("college.admissionsSiteFigures") : t("college.cdsYear", { year: stats.cds_year })}
           <Ref n={ref(stats.source_id)} />
           {stats.notes && <> · {stats.notes}</>}
         </p>
@@ -112,7 +114,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
 
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Testing */}
-        <Section title="Test scores (enrolled first-years)">
+        <Section title={t("college.testScoresTitle")}>
           <div className="mb-3 flex flex-wrap items-center gap-2 text-sm">
             {policy && (
               <>
@@ -122,7 +124,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   <Pill tone="blue">{TEST_POLICY[policy.policy] ?? policy.policy}</Pill>
                 )}
                 <span className="text-zinc-500">
-                  for {policy.cycle} applicants
+                  {t("college.forCycleApplicants", { cycle: policy.cycle })}
                   <Ref n={ref(policy.source_id)} />
                 </span>
               </>
@@ -133,20 +135,20 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-zinc-500">
                 <tr>
-                  <th className="py-1">Test</th>
-                  <th className="py-1 text-right">25th</th>
-                  <th className="py-1 text-right">50th</th>
-                  <th className="py-1 text-right">75th</th>
+                  <th className="py-1">{t("college.colTest")}</th>
+                  <th className="py-1 text-right">{t("college.col25")}</th>
+                  <th className="py-1 text-right">{t("college.col50")}</th>
+                  <th className="py-1 text-right">{t("college.col75")}</th>
                 </tr>
               </thead>
               <tbody className="tabular-nums">
                 {[
-                  ["SAT_TOTAL", "SAT total"],
-                  ["SAT_ERW", "SAT reading & writing"],
-                  ["SAT_MATH", "SAT math"],
-                  ["ACT_COMPOSITE", "ACT composite"],
-                  ["ACT_MATH", "ACT math"],
-                  ["ACT_ENGLISH", "ACT English"],
+                  ["SAT_TOTAL", t("college.satTotal")],
+                  ["SAT_ERW", t("college.satErw")],
+                  ["SAT_MATH", t("college.satMath")],
+                  ["ACT_COMPOSITE", t("college.actComposite")],
+                  ["ACT_MATH", t("college.actMath")],
+                  ["ACT_ENGLISH", t("college.actEnglish")],
                 ].map(([k, label]) => {
                   const s = score(k);
                   if (!s) return null;
@@ -162,27 +164,27 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               </tbody>
             </table>
           ) : (
-            <p className="text-sm text-zinc-500">{policy?.policy === "blind" ? "Test-blind — no SAT/ACT data is used or reported." : "No score percentiles reported."}</p>
+            <p className="text-sm text-zinc-500">{policy?.policy === "blind" ? t("college.testBlind") : t("college.noScores")}</p>
           )}
           {stats && (stats.pct_submit_sat != null || stats.pct_submit_act != null) && (
             <p className="mt-2 text-xs text-zinc-500">
-              Submitted SAT: {fmtPct(stats.pct_submit_sat, 0)} · Submitted ACT: {fmtPct(stats.pct_submit_act, 0)} of enrolled first-years
+              {t("college.submittedScores", { sat: fmtPct(stats.pct_submit_sat, 0), act: fmtPct(stats.pct_submit_act, 0) })}
             </p>
           )}
         </Section>
 
         {/* GPA */}
-        <Section title="High-school GPA">
+        <Section title={t("college.gpaTitle")}>
           {stats?.gpa_avg != null || stats?.gpa_distribution ? (
             <>
               <div className="mb-3 flex flex-wrap gap-6 text-sm">
                 <div>
-                  <div className="text-xs text-zinc-500">Average (CDS C12)</div>
+                  <div className="text-xs text-zinc-500">{t("college.gpaAverage")}</div>
                   <div className="text-xl font-semibold tabular-nums">{stats?.gpa_avg != null ? Number(stats.gpa_avg).toFixed(2) : "—"}</div>
                 </div>
                 {gpaEst && (
                   <div>
-                    <div className="text-xs text-zinc-500">Estimated 25th / 50th / 75th*</div>
+                    <div className="text-xs text-zinc-500">{t("college.gpaEstimated")}</div>
                     <div className="text-xl font-semibold tabular-nums">
                       {gpaEst.p25.toFixed(2)} / {gpaEst.p50.toFixed(2)} / {gpaEst.p75.toFixed(2)}
                     </div>
@@ -203,12 +205,11 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                 </div>
               )}
               <p className="mt-2 text-xs text-zinc-500">
-                *The CDS does not publish GPA percentiles; estimated from the C11 band distribution. {fmtPct(stats?.pct_reporting_gpa, 0)} of
-                enrolled students reported a GPA.
+                {t("college.gpaFootnote", { pct: fmtPct(stats?.pct_reporting_gpa, 0) })}
               </p>
             </>
           ) : (
-            <p className="text-sm text-zinc-500">This college does not report GPA in its Common Data Set.</p>
+            <p className="text-sm text-zinc-500">{t("college.gpaNone")}</p>
           )}
         </Section>
       </div>
@@ -216,7 +217,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       )}
 
       {c.programs.length > 0 && (
-        <Section title="Courses (apply to a course through UCAS)">
+        <Section title={t("college.coursesTitle")}>
           <ul className="space-y-3">
             {[...c.programs]
               .sort((a, b) => a.name.localeCompare(b.name))
@@ -226,44 +227,44 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                     <h3 className="text-base font-semibold">{p.name}</h3>
                     {p.ucas_code && <Pill>{p.ucas_code}</Pill>}
                     {p.award && <span className="text-xs text-zinc-500">{p.award}</span>}
-                    {p.duration_years != null && <span className="text-xs text-zinc-500">{p.duration_years} years</span>}
+                    {p.duration_years != null && <span className="text-xs text-zinc-500">{t("college.nYears", { n: p.duration_years })}</span>}
                     {p.application_deadline && (
-                      <DeadlineChip date={p.application_deadline} days={daysUntil(p.application_deadline)} done={false} reference label="Apply by" />
+                      <DeadlineChip date={p.application_deadline} days={daysUntil(p.application_deadline)} done={false} reference label={t("college.applyBy")} />
                     )}
                   </div>
                   <dl className="mt-2 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
-                    <Row k="A-levels" v={p.a_level_offer ?? "—"} />
-                    <Row k="IB" v={p.ib_offer ?? (p.ib_points != null ? `${p.ib_points} points` : "—")} />
-                    <Row k="Subjects" v={p.required_subjects ?? "—"} />
-                    <Row k="Admissions test" v={p.admissions_test ?? "None listed"} />
-                    <Row k="IELTS" v={p.ielts_overall != null ? `${p.ielts_overall} overall${p.ielts_component != null ? `, ${p.ielts_component} in each part` : ""}` : "—"} />
-                    {p.toefl_note && <Row k="TOEFL" v={p.toefl_note} />}
-                    <Row k="International fee" v={p.intl_fee_gbp != null ? `£${p.intl_fee_gbp.toLocaleString("en-GB")} per year` : "Not found"} />
+                    <Row k={t("college.aLevels")} v={p.a_level_offer ?? "—"} />
+                    <Row k={t("college.ib")} v={p.ib_offer ?? (p.ib_points != null ? t("college.nPoints", { n: p.ib_points }) : "—")} />
+                    <Row k={t("college.subjects")} v={p.required_subjects ?? "—"} />
+                    <Row k={t("college.admissionsTest")} v={p.admissions_test ?? t("college.noneListed")} />
+                    <Row k={t("college.ielts")} v={p.ielts_overall != null ? `${t("college.ieltsOverall", { n: p.ielts_overall })}${p.ielts_component != null ? t("college.ieltsEach", { n: p.ielts_component }) : ""}` : "—"} />
+                    {p.toefl_note && <Row k={t("college.toefl")} v={p.toefl_note} />}
+                    <Row k={t("college.intlFee")} v={p.intl_fee_gbp != null ? t("college.perYear", { fee: `£${p.intl_fee_gbp.toLocaleString("en-GB")}` }) : t("college.notFound")} />
                     {p.success_pct != null && (
                       <Row
-                        k="Applicants"
-                        v={`${p.interviewed_pct != null ? `${p.interviewed_pct}% interviewed, ` : ""}${p.success_pct}% successful${p.intake != null ? `, about ${p.intake} places` : ""}`}
+                        k={t("college.applicants")}
+                        v={`${p.interviewed_pct != null ? t("college.pctInterviewed", { n: p.interviewed_pct }) : ""}${t("college.pctSuccessful", { n: p.success_pct })}${p.intake != null ? t("college.aboutPlaces", { n: p.intake }) : ""}`}
                       />
                     )}
                   </dl>
                   {(p.english_note || p.notes) && <p className="mt-2 text-xs text-zinc-500">{[p.english_note, p.notes].filter(Boolean).join(" ")}</p>}
                   <p className="mt-1 text-xs text-zinc-500">
                     <a className="text-blue-600 hover:underline" href={p.source_url} target="_blank" rel="noreferrer">
-                      Course page ↗
+                      {t("college.coursePage")}
                     </a>{" "}
-                    · checked {fmtDate(p.retrieved_on)}
+                    {t("college.checked", { date: fmtDate(p.retrieved_on) })}
                   </p>
                 </li>
               ))}
           </ul>
           <p className="mt-2 text-xs text-zinc-500">
-            UK offers are grade-based and set per course; fit labels are not available yet. Always confirm on the course page before applying.
+            {t("college.ukNote")}
           </p>
         </Section>
       )}
 
       {/* Deadlines */}
-      <Section title={`Deadlines (${deadlines[0]?.cycle ?? "current"} cycle)`}>
+      <Section title={t("college.deadlinesTitle", { cycle: deadlines[0]?.cycle ?? t("college.currentCycle") })}>
         {deadlines.length ? (
           <ol className="relative space-y-3 border-l border-zinc-200 pl-5">
             {deadlines.map((d) => (
@@ -279,20 +280,20 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   <Ref n={ref(d.source_id)} />
                 </div>
                 {(d.notification_date || d.notification_note) && (
-                  <div className="ml-28 pl-3 text-xs text-zinc-500">Decision: {d.notification_date ? fmtDate(d.notification_date) : d.notification_note}</div>
+                  <div className="ml-28 pl-3 text-xs text-zinc-500">{t("college.decision", { x: d.notification_date ? fmtDate(d.notification_date) : (d.notification_note ?? "") })}</div>
                 )}
                 {d.notes && <div className="ml-28 pl-3 text-xs text-zinc-500">{d.notes}</div>}
               </li>
             ))}
           </ol>
         ) : (
-          <p className="text-sm text-zinc-500">No deadlines recorded yet.</p>
+          <p className="text-sm text-zinc-500">{t("college.noDeadlines")}</p>
         )}
       </Section>
 
       <div className="grid gap-8 lg:grid-cols-2">
         {/* English */}
-        {(isUS || c.english_requirements.length > 0) && <Section title="English proficiency (international applicants)">
+        {(isUS || c.english_requirements.length > 0) && <Section title={t("college.englishTitle")}>
           {c.english_policies ? (
             <>
               <p className="mb-2 text-sm">
@@ -302,16 +303,16 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               {c.english_policies.waiver_notes && <p className="mb-3 text-xs text-zinc-500">{c.english_policies.waiver_notes}</p>}
             </>
           ) : (
-            <p className="text-sm text-zinc-500">Not recorded.</p>
+            <p className="text-sm text-zinc-500">{t("college.notRecorded")}</p>
           )}
           {c.english_requirements.length > 0 && (
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-zinc-500">
                 <tr>
-                  <th className="py-1">Test</th>
-                  <th className="py-1 pl-3 text-right">Minimum</th>
-                  <th className="py-1 pl-3 text-right">Recommended</th>
-                  <th className="py-1 pl-3">Notes</th>
+                  <th className="py-1">{t("college.colTest")}</th>
+                  <th className="py-1 pl-3 text-right">{t("college.colMinimum")}</th>
+                  <th className="py-1 pl-3 text-right">{t("college.colRecommended")}</th>
+                  <th className="py-1 pl-3">{t("college.colNotes")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -327,7 +328,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                     <td className="py-1.5 pl-3 text-xs text-zinc-500">
                       {e.min_subscores && (
                         <div>
-                          Subscores:{" "}
+                          {t("college.subscores")}{" "}
                           {Object.entries(e.min_subscores)
                             .map(([k, v]) => `${k.replace(/_/g, " ")} ${v}+`)
                             .join(", ")}
@@ -340,31 +341,31 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               </tbody>
             </table>
           )}
-          <p className="mt-2 text-xs text-zinc-500">TOEFL iBT moved to a 1–6 scale on Jan 21, 2026; schools list both scales.</p>
+          <p className="mt-2 text-xs text-zinc-500">{t("college.toeflNote")}</p>
         </Section>}
 
         {/* Requirements */}
-        {isUS && <Section title="Application requirements">
+        {isUS && <Section title={t("college.requirementsTitle")}>
           {req ? (
             <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm">
-              <Row k="Platform" v={req.platforms.map((p) => PLATFORM[p] ?? p).join(", ") || "—"} />
-              <Row k="Application fee" v={req.app_fee_usd != null ? `${fmtUsd(req.app_fee_usd)}${req.fee_waiver ? " (waiver available)" : ""}` : req.fee_waiver ? "Fee waiver available" : "—"} />
-              <Row k="Essays" v={req.supplemental_essays ?? "—"} />
-              <Row k="Recommendations" v={req.teacher_recs != null ? `${req.teacher_recs} teacher${req.counselor_rec ? " + counselor" : ""}` : "—"} />
-              <Row k="Interview" v={req.interview ? INTERVIEW[req.interview] : "—"} />
-              <Row k="Portfolio" v={req.portfolio ?? "—"} />
-              {req.midyear_report != null && <Row k="Midyear report" v={req.midyear_report ? "Required" : "Not required"} />}
+              <Row k={t("college.platform")} v={req.platforms.map((p) => PLATFORM[p] ?? p).join(", ") || "—"} />
+              <Row k={t("college.appFee")} v={req.app_fee_usd != null ? (req.fee_waiver ? t("college.feeWithWaiver", { fee: fmtUsd(req.app_fee_usd) }) : fmtUsd(req.app_fee_usd)) : req.fee_waiver ? t("college.feeWaiverAvailable") : "—"} />
+              <Row k={t("college.essays")} v={req.supplemental_essays ?? "—"} />
+              <Row k={t("college.recommendations")} v={req.teacher_recs != null ? t(req.counselor_rec ? "college.nTeacherCounselor" : "college.nTeacher", { n: req.teacher_recs }) : "—"} />
+              <Row k={t("college.interview")} v={req.interview ? INTERVIEW[req.interview] : "—"} />
+              <Row k={t("college.portfolio")} v={req.portfolio ?? "—"} />
+              {req.midyear_report != null && <Row k={t("college.midyearReport")} v={req.midyear_report ? t("college.required") : t("college.notRequired")} />}
               {(req.css_profile_required || req.fafsa_required) && (
-                <Row k="Aid forms" v={[req.css_profile_required && "CSS Profile", req.fafsa_required && "FAFSA"].filter(Boolean).join(" + ")} />
+                <Row k={t("college.aidForms")} v={[req.css_profile_required && "CSS Profile", req.fafsa_required && "FAFSA"].filter(Boolean).join(" + ")} />
               )}
             </dl>
           ) : (
-            <p className="text-sm text-zinc-500">Not recorded yet.</p>
+            <p className="text-sm text-zinc-500">{t("college.notRecordedYet")}</p>
           )}
           {req?.notes && <p className="mt-2 text-xs text-zinc-500">{req.notes}</p>}
           {req && (
             <p className="mt-1 text-xs text-zinc-500">
-              {req.cycle} cycle
+              {t("college.cycleSuffix", { cycle: req.cycle })}
               <Ref n={ref(req.source_id)} />
             </p>
           )}
@@ -374,49 +375,49 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       {isUS && (
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Cost & aid */}
-        <Section title={`Cost & aid${cost ? ` (${cost.year})` : ""}`}>
+        <Section title={cost ? t("college.costTitleYear", { year: cost.year }) : t("college.costTitle")}>
           {cost ? (
             <>
               <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm tabular-nums">
-                <Row k={cost.tuition_out_of_state_usd ? "Tuition (in-state)" : "Tuition"} v={fmtUsd(cost.tuition_usd)} />
-                {cost.tuition_out_of_state_usd != null && <Row k="Tuition (out-of-state)" v={fmtUsd(cost.tuition_out_of_state_usd)} />}
-                {cost.tuition_intl_usd != null && <Row k="Tuition (international)" v={fmtUsd(cost.tuition_intl_usd)} />}
-                {cost.required_fees_usd != null && <Row k="Required fees" v={fmtUsd(cost.required_fees_usd)} />}
-                {cost.intl_extra_fees_usd != null && <Row k="International fee" v={fmtUsd(cost.intl_extra_fees_usd)} />}
-                <Row k="Housing & food" v={fmtUsd(cost.room_board_usd)} />
-                {cost.total_coa_usd != null && <Row k="Total cost of attendance" v={fmtUsd(cost.total_coa_usd)} />}
+                <Row k={cost.tuition_out_of_state_usd ? t("college.tuitionInState") : t("college.tuition")} v={fmtUsd(cost.tuition_usd)} />
+                {cost.tuition_out_of_state_usd != null && <Row k={t("college.tuitionOut")} v={fmtUsd(cost.tuition_out_of_state_usd)} />}
+                {cost.tuition_intl_usd != null && <Row k={t("college.tuitionIntl")} v={fmtUsd(cost.tuition_intl_usd)} />}
+                {cost.required_fees_usd != null && <Row k={t("college.requiredFees")} v={fmtUsd(cost.required_fees_usd)} />}
+                {cost.intl_extra_fees_usd != null && <Row k={t("college.intlFee")} v={fmtUsd(cost.intl_extra_fees_usd)} />}
+                <Row k={t("college.housingFood")} v={fmtUsd(cost.room_board_usd)} />
+                {cost.total_coa_usd != null && <Row k={t("college.totalCoa")} v={fmtUsd(cost.total_coa_usd)} />}
               </dl>
               <div className="mt-4 rounded-lg bg-zinc-50 p-3 text-sm">
-                <div className="font-medium">For international students</div>
-                <div>{cost.intl_aid_policy ? INTL_AID[cost.intl_aid_policy] : "Aid policy not verified yet"}</div>
+                <div className="font-medium">{t("college.forIntl")}</div>
+                <div>{cost.intl_aid_policy ? INTL_AID[cost.intl_aid_policy] : t("college.aidNotVerified")}</div>
                 {cost.intl_need_aid_awarded != null && (
                   <div className="text-xs text-zinc-500">
-                    {fmtInt(cost.intl_need_aid_awarded)} international students received aid, average {fmtUsd(cost.intl_avg_award_usd)} (CDS H6)
+                    {t("college.intlAidReceived", { n: fmtInt(cost.intl_need_aid_awarded), avg: fmtUsd(cost.intl_avg_award_usd) })}
                   </div>
                 )}
               </div>
               {cost.notes && <p className="mt-2 text-xs text-zinc-500">{cost.notes}</p>}
               <p className="mt-1 text-xs text-zinc-500">
-                Source
+                {t("college.source")}
                 <Ref n={ref(cost.source_id)} />
               </p>
             </>
           ) : (
-            <p className="text-sm text-zinc-500">Not recorded yet.</p>
+            <p className="text-sm text-zinc-500">{t("college.notRecordedYet")}</p>
           )}
         </Section>
 
         {/* Tiers + majors */}
-        <Section title="Subject tiers & how majors are admitted">
+        <Section title={t("college.tiersTitle")}>
           <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {lookups.categories
               .filter((cat) => cat.key !== "general")
               .map((cat) => {
-                const t = c.institution_tiers.find((x) => x.category_key === cat.key);
+                const catTier = c.institution_tiers.find((x) => x.category_key === cat.key);
                 return (
                   <div key={cat.key} className="flex items-center gap-2 text-sm">
-                    <TierBadge tier={t?.tier_code} size="sm" />
-                    <span className={t ? "" : "text-zinc-400"}>{cat.label}</span>
+                    <TierBadge tier={catTier?.tier_code} size="sm" />
+                    <span className={catTier ? "" : "text-zinc-400"}>{cat.label}</span>
                   </div>
                 );
               })}
@@ -427,23 +428,23 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-medium">{m.program}</span>
                   {m.category_key && <Pill>{catLabel(m.category_key)}</Pill>}
-                  {m.capped && <Pill tone="red">Capped</Pill>}
+                  {m.capped && <Pill tone="red">{t("college.capped")}</Pill>}
                 </div>
                 <div className="text-xs text-zinc-500">
-                  {ADMIT_MODEL[m.admit_model]} · Switching in later: {m.internal_transfer ? TRANSFER[m.internal_transfer] : "—"}
+                  {t("college.switchingIn", { model: ADMIT_MODEL[m.admit_model] ?? "", x: m.internal_transfer ? TRANSFER[m.internal_transfer] : "—" })}
                 </div>
                 {m.notes && <div className="text-xs text-zinc-500">{m.notes}</div>}
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-xs text-zinc-500">Tiers and major-admission summaries are an editorial v0 — review before relying on them.</p>
+          <p className="mt-2 text-xs text-zinc-500">{t("college.tiersNote")}</p>
         </Section>
       </div>
       )}
 
       {/* Factors */}
       {c.admission_factors.length > 0 && (
-        <Section title={`What the admissions office weighs (CDS C7, ${c.admission_factors[0].cds_year})`}>
+        <Section title={t("college.factorsTitle", { year: c.admission_factors[0].cds_year })}>
           <div className="grid gap-4 sm:grid-cols-4">
             {["very_important", "important", "considered", "not_considered"].map((imp) => (
               <div key={imp}>
@@ -460,14 +461,14 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           </div>
           {c.admission_factors.some((f) => f.factor === "demonstrated_interest" && f.importance !== "not_considered") && (
             <p className="mt-3 text-sm">
-              <Pill tone="blue">Tip</Pill> <span className="ml-1">Demonstrated interest counts here — visit, attend info sessions, and open their emails.</span>
+              <Pill tone="blue">{t("college.tip")}</Pill> <span className="ml-1">{t("college.interestTip")}</span>
             </p>
           )}
         </Section>
       )}
 
       {/* Sources */}
-      <Section title="Sources">
+      <Section title={t("college.sourcesTitle")}>
         <ol className="space-y-1 text-sm">
           {c.sources.map((s, i) => (
             <li key={s.id} id={`src-${i + 1}`} className="flex gap-2">
@@ -475,14 +476,14 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               <a className="text-blue-600 hover:underline" href={s.url} target="_blank" rel="noreferrer">
                 {s.title ?? s.url}
               </a>
-              <span className="text-xs text-zinc-500">accessed {fmtDate(s.accessed_on)}</span>
+              <span className="text-xs text-zinc-500">{t("college.accessed", { date: fmtDate(s.accessed_on) })}</span>
             </li>
           ))}
         </ol>
       </Section>
 
       <Link href="/colleges" className="inline-block text-sm text-blue-600 hover:underline">
-        ← All colleges
+        {t("college.allColleges")}
       </Link>
     </article>
   );

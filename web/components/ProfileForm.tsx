@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 
 const noop = () => () => {};
@@ -13,11 +14,12 @@ function num(v: string, min: number, max: number) {
 
 /** GPA box. Uncontrolled and saves on blur. */
 export function GpaEditor() {
+  const t = useT();
   const { profile, setProfile } = useStudent();
   const field = "w-20 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
   return (
     <label className="flex flex-col gap-1 text-sm">
-      <span className="text-xs text-zinc-500">GPA (unweighted)</span>
+      <span className="text-xs text-zinc-500">{t("profile.gpaUnweighted")}</span>
       <input
         className={field}
         inputMode="decimal"
@@ -30,11 +32,12 @@ export function GpaEditor() {
 }
 
 export function InternationalToggle() {
+  const t = useT();
   const { profile, setProfile } = useStudent();
   return (
     <label className="flex items-center gap-2 text-sm">
       <input type="checkbox" checked={!!profile.international} onChange={(e) => setProfile({ ...profile, international: e.target.checked })} />
-      <span>International applicant</span>
+      <span>{t("profile.internationalApplicant")}</span>
     </label>
   );
 }

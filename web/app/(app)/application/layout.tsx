@@ -1,4 +1,4 @@
-import { SectionTabs } from "@/components/SectionTabs";
+import { NavText, SectionTabs } from "@/components/SectionTabs";
 import type { NavItem } from "@/lib/roles";
 
 const TABS: readonly NavItem[] = [
@@ -14,7 +14,9 @@ const TABS: readonly NavItem[] = [
 export default function ApplicationLayout({ children }: LayoutProps<"/application">) {
   return (
     <div className="space-y-5">
-      <h1 className="text-2xl font-semibold">My colleges</h1>
+      <h1 className="text-2xl font-semibold">
+        <NavText label="My colleges" />
+      </h1>
       <SectionTabs label="My colleges" tabs={TABS} />
       {children}
     </div>

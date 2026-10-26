@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { fieldClass } from "@/components/TranscriptCourseForm";
 import { StatusPill } from "@/components/StatusPill";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { LEVEL_LABEL, SUBJECT_LABEL, type CourseInput } from "@/lib/transcript";
 import { buildImportPlan, buildPrompt, parseImportText, TRANSCRIPT_FORMAT_VERSION, type ImportPlan } from "@/lib/transcript-import";
@@ -12,6 +13,7 @@ type Mode = "add" | "replace";
 
 /** Copy a prompt for any AI, paste its JSON back, review every row, then save. Nothing is saved before the review. */
 export function TranscriptImport({ onDone }: { onDone?: () => void }) {
+  const t = useT();
   const { transcriptSchools, transcriptCourses, addTranscriptSchool, addTranscriptCourses, replaceSchoolCourses } = useStudent();
   const [text, setText] = useState("");
   const [parseError, setParseError] = useState<string | null>(null);
@@ -35,7 +37,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      setParseError("Couldn't copy automatically. Select the prompt below and copy it by hand.");
+      setParseError(t("transcript.copyFailed"));
     }
   }
 
@@ -72,7 +74,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
     if (!plan) return;
     const replacing = plan.schools.flatMap((s, i) => (s.existingId && modeOf(i) === "replace" ? [replaceCount(s.existingId)] : []));
     const lost = replacing.reduce((a, b) => a + b, 0);
-    if (lost > 0 && !confirm(`Replacing deletes ${lost} existing course${lost === 1 ? "" : "s"} and their per-system overrides. Continue?`)) return;
+    if (lost > 0 && !confirm(lost === 1 ? t("transcript.confirmReplace", { n: lost }) : t("transcript.confirmReplaceMany", { n: lost }))) return;
     plan.schools.forEach((s, i) => {
       const mine = rows.map((_, ri) => ri).filter((ri) => rows[ri].schoolIndex === i && included(ri));
       const replace = s.existingId !== null && modeOf(i) === "replace";
@@ -93,18 +95,16 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
     <div className="space-y-5">
       <section aria-labelledby="imp-1" className="space-y-3 rounded-lg border border-zinc-200 p-5">
         <h2 id="imp-1" className="font-display text-lg font-bold">
-          1. Get your transcript typed up by an AI
+          {t("transcript.imp1")}
         </h2>
-        <p className="text-sm text-zinc-600">
-          Copy this prompt, give it to any AI you use (Claude, ChatGPT, Gemini) together with your transcript as a PDF, photo or pasted text, then paste its answer below. The AI is told to copy every grade exactly as printed and never convert it.
-        </p>
+        <p className="text-sm text-zinc-600">{t("transcript.imp1Body")}</p>
         <div className="flex flex-wrap items-center gap-2">
           <button type="button" className={buttonClass("primary", "sm")} onClick={copyPrompt}>
-            Copy prompt for your AI
+            {t("transcript.copyPrompt")}
           </button>
           {copied && (
             <span role="status" className="text-sm text-done">
-              Copied
+              {t("transcript.copied")}
             </span>
           )}
         </div>
@@ -112,14 +112,14 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
 
       <section aria-labelledby="imp-2" className="space-y-3 rounded-lg border border-zinc-200 p-5">
         <h2 id="imp-2" className="font-display text-lg font-bold">
-          2. Paste the AI&apos;s answer
+          {t("transcript.imp2")}
         </h2>
         <label className="text-sm font-medium">
-          The JSON ({TRANSCRIPT_FORMAT_VERSION})
+          {t("transcript.theJson", { version: TRANSCRIPT_FORMAT_VERSION })}
           <textarea className={`${fieldClass} min-h-40 font-mono text-xs`} value={text} onChange={(e) => setText(e.target.value)} placeholder={`{ "version": "${TRANSCRIPT_FORMAT_VERSION}", "schools": [ ... ] }`} />
         </label>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={review} disabled={!text.trim()}>
-          Review
+          {t("transcript.review")}
         </button>
         {parseError && (
           <p role="alert" className="text-sm text-urgent">
@@ -136,13 +136,13 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
       {plan && !plan.error && (
         <section aria-labelledby="imp-3" className="space-y-4 rounded-lg border border-zinc-200 p-5">
           <h2 id="imp-3" className="font-display text-lg font-bold">
-            3. Review before saving
+            {t("transcript.imp3")}
           </h2>
           {plan.schools.map((s, i) => (
             <div key={i} className="space-y-1 rounded-md bg-zinc-50 p-3 text-sm">
               <p className="font-medium">
-                {s.name || "(no school name)"}{" "}
-                <span className="font-normal text-zinc-500">{s.existingId ? "· already on your transcript" : s.input ? "· new school" : ""}</span>
+                {s.name || t("transcript.noSchoolName")}{" "}
+                <span className="font-normal text-zinc-500">{s.existingId ? t("transcript.alreadyOnTranscript") : s.input ? t("transcript.newSchool") : ""}</span>
               </p>
               {s.errors.map((e) => (
                 <p key={e} className="text-urgent">
@@ -151,17 +151,17 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
               ))}
               {s.existingId && (
                 <fieldset className="flex flex-wrap items-center gap-4">
-                  <legend className="sr-only">What to do with {s.name}&apos;s existing courses</legend>
+                  <legend className="sr-only">{t("transcript.existingCoursesLegend", { name: s.name })}</legend>
                   <label className="inline-flex items-center gap-2">
                     <input type="radio" name={`mode-${i}`} checked={modeOf(i) === "add"} onChange={() => setModes((m) => ({ ...m, [i]: "add" }))} />
-                    Add to existing courses
+                    {t("transcript.addToExisting")}
                   </label>
                   <label className="inline-flex items-center gap-2">
                     <input type="radio" name={`mode-${i}`} checked={modeOf(i) === "replace"} onChange={() => setModes((m) => ({ ...m, [i]: "replace" }))} />
-                    Replace this school&apos;s courses
+                    {t("transcript.replaceCourses")}
                   </label>
                   {modeOf(i) === "replace" && (
-                    <span className="text-urgent">This deletes {replaceCount(s.existingId)} existing course{replaceCount(s.existingId) === 1 ? "" : "s"} and their per-system overrides.</span>
+                    <span className="text-urgent">{replaceCount(s.existingId) === 1 ? t("transcript.replaceWarn", { n: 1 }) : t("transcript.replaceWarnMany", { n: replaceCount(s.existingId) })}</span>
                   )}
                 </fieldset>
               )}
@@ -169,19 +169,19 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
           ))}
 
           {rows.length === 0 ? (
-            <p className="text-sm text-zinc-500">No courses found in that answer.</p>
+            <p className="text-sm text-zinc-500">{t("transcript.noCoursesFound")}</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full min-w-[40rem] text-left text-sm">
                 <thead className="text-xs text-zinc-500">
                   <tr>
-                    <th className="p-2">Save</th>
-                    <th className="p-2">School</th>
-                    <th className="p-2">Year</th>
-                    <th className="p-2">Course</th>
-                    <th className="p-2">Level · subject</th>
-                    <th className="p-2">Credit</th>
-                    <th className="p-2">Result</th>
+                    <th className="p-2">{t("transcript.colSave")}</th>
+                    <th className="p-2">{t("transcript.colSchool")}</th>
+                    <th className="p-2">{t("transcript.colYear")}</th>
+                    <th className="p-2">{t("transcript.colCourse")}</th>
+                    <th className="p-2">{t("transcript.colLevelSubject")}</th>
+                    <th className="p-2">{t("transcript.colCredit")}</th>
+                    <th className="p-2">{t("transcript.colResult")}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-100">
@@ -190,7 +190,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                       <td className="p-2">
                         <input
                           type="checkbox"
-                          aria-label={`Save row ${i + 1}`}
+                          aria-label={t("transcript.saveRowAria", { n: i + 1 })}
                           disabled={!savable(i)}
                           checked={included(i)}
                           onChange={(e) =>
@@ -217,9 +217,9 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                             ))}
                           </ul>
                         ) : r.duplicateOf !== null ? (
-                          <StatusPill tone="neutral">Already in your transcript (tick to save anyway)</StatusPill>
+                          <StatusPill tone="neutral">{t("transcript.duplicate")}</StatusPill>
                         ) : (
-                          <StatusPill tone="done">Ready</StatusPill>
+                          <StatusPill tone="done">{t("transcript.ready")}</StatusPill>
                         )}
                         {r.warnings.length > 0 && (
                           <ul className="mt-1 list-disc pl-4 text-xs text-soon">
@@ -238,12 +238,12 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
 
           <div className="flex flex-wrap items-center gap-3">
             <button type="button" className={buttonClass("primary", "sm")} onClick={save} disabled={includedCount === 0 || replaceEmpty}>
-              Save {includedCount} course{includedCount === 1 ? "" : "s"}
+              {includedCount === 1 ? t("transcript.saveCourses", { n: includedCount }) : t("transcript.saveCoursesMany", { n: includedCount })}
             </button>
             <button type="button" className={buttonClass("secondary", "sm")} onClick={() => setData(undefined)}>
-              Cancel
+              {t("common.cancel")}
             </button>
-            {replaceEmpty && <span className="text-sm text-urgent">A school set to Replace needs at least one course to save; otherwise switch it to Add.</span>}
+            {replaceEmpty && <span className="text-sm text-urgent">{t("transcript.replaceNeedsOne")}</span>}
           </div>
         </section>
       )}

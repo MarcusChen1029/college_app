@@ -6,9 +6,16 @@ import { Suspense, useCallback, useRef, useState } from "react";
 import { AccountMenu } from "@/components/AccountPanel";
 import { MenuSheet, type SheetAccount } from "@/components/MenuSheet";
 import { SignInButton } from "@/components/SignInDialog";
+import { navLabel, type TFunction } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
 import { accountMenuFor, activeNavHref, navFor, startedFrom, type NavItem } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
+
+/** roles.ts keeps English labels (its tests assert them); translate at the edge. */
+function translateItems(t: TFunction, items: readonly NavItem[]): NavItem[] {
+  return items.map(([href, label]) => [href, navLabel(t, label)] as const);
+}
 
 function NavLinks({ items, pathname }: { items: readonly NavItem[]; pathname: string | null }) {
   const active = pathname === null ? null : activeNavHref(pathname, items.map(([href]) => href));
@@ -38,11 +45,12 @@ function ActiveNavLinks({ items }: { items: readonly NavItem[] }) {
 }
 
 function MenuButton({ open, onClick, buttonRef }: { open: boolean; onClick?: () => void; buttonRef?: React.Ref<HTMLButtonElement> }) {
+  const t = useT();
   return (
     <button
       ref={buttonRef}
       type="button"
-      aria-label="Open menu"
+      aria-label={t("menu.open")}
       aria-expanded={open}
       aria-controls="site-menu"
       aria-haspopup="dialog"
@@ -75,6 +83,7 @@ function PhoneMenu({ items, account }: { items: readonly NavItem[]; account: She
 /** The header links and account area (desktop bar) plus the phone menu button. Teachers get their own links and never "Get started". */
 export function SiteNav() {
   const student = useStudent();
+  const t = useT();
   const { role, auth, ready, sessionChecked } = student;
 
   // Until the stored state is known, same-height placeholders: no links to flash and swap.
@@ -89,9 +98,9 @@ export function SiteNav() {
   }
 
   const started = startedFrom(student);
-  const items = navFor(role, { signedIn: !!auth, started });
-  const menu = accountMenuFor(role);
-  const name = student.teacherProfile?.displayName ?? auth?.email?.split("@")[0] ?? "Account";
+  const items = translateItems(t, navFor(role, { signedIn: !!auth, started }));
+  const menu = translateItems(t, accountMenuFor(role));
+  const name = student.teacherProfile?.displayName ?? auth?.email?.split("@")[0] ?? t("account.fallbackName");
   const signOut = () => void student.signOut();
   const account: SheetAccount = auth
     ? { kind: "signedIn", name, title: auth.email ? `${name} (${auth.email})` : name, items: menu, onSignOut: signOut }
@@ -109,10 +118,10 @@ export function SiteNav() {
           <AccountMenu label={name} title={auth.email ? `${name} (${auth.email})` : name} items={menu} onSignOut={signOut} />
         ) : (
           <>
-            <SignInButton className={buttonClass("quiet", "sm")}>Sign in</SignInButton>
-            {started ? <AccountMenu label="More" items={menu} /> : (
+            <SignInButton className={buttonClass("quiet", "sm")}>{t("account.signIn")}</SignInButton>
+            {started ? <AccountMenu label={t("account.more")} items={menu} /> : (
               <Link href="/start" className={buttonClass("primary", "sm")}>
-                Get started
+                {t("account.getStarted")}
               </Link>
             )}
           </>

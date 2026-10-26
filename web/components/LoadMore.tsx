@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useT } from "@/lib/i18n/client";
 
 const STEP = 20;
 
@@ -16,6 +17,7 @@ export function useVisibleCount(resetKey: string, total: number) {
 // Place after the last rendered row; calls `onVisible` when it scrolls into (or near) view.
 // Keyed by the row count so it re-observes after each batch, even if it never left the viewport.
 export function LoadMore({ onVisible, count }: { onVisible: () => void; count: number }) {
+  const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
@@ -32,7 +34,7 @@ export function LoadMore({ onVisible, count }: { onVisible: () => void; count: n
   return (
     <div ref={ref} className="py-2 text-center text-xs text-zinc-400">
       <button type="button" onClick={onVisible} className="underline">
-        Show more
+        {t("colleges.showMore")}
       </button>
     </div>
   );

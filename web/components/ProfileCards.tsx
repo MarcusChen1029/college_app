@@ -1,11 +1,18 @@
 "use client";
 
 import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey, TFunction } from "@/lib/i18n";
 import { cleanRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, ACT_SCALE, SAT_SCALE, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
 import { GpaEditor, InternationalToggle } from "./ProfileForm";
-import { ActEditor, EnglishEditor, SatEditor } from "./TestScoresForm";
+import { ActEditor, EnglishEditor, SatEditor, testLabel } from "./TestScoresForm";
+
+/** Region name in the current language (the REGIONS table itself stays English). */
+export function regionName(t: TFunction, code: RegionCode): string {
+  return t(`profile.region.${code}` as MessageKey);
+}
 
 type CardKey = "gpa" | "sat" | "act" | "english" | "regions";
 
@@ -35,6 +42,7 @@ function Card({
   summary: ReactNode;
   children: ReactNode;
 }) {
+  const t = useT();
   const panelId = `${id}-panel`;
   const buttonId = `${id}-button`;
   const onKeyDown = (e: KeyboardEvent) => {
@@ -57,7 +65,7 @@ function Card({
           {summary}
         </span>
         <span aria-hidden className={`mt-0.5 shrink-0 text-xs font-semibold text-ink/70 ${open ? "hidden" : ""}`}>
-          Edit
+          {t("common.edit")}
         </span>
       </button>
       <div
@@ -71,7 +79,7 @@ function Card({
           <div className="space-y-4 border-t-2 border-ink/10 bg-white/70 p-4">
             {children}
             <button type="button" onClick={onClose} className="rounded-full border-2 border-ink bg-white px-4 py-1.5 text-sm font-semibold hover:bg-sun/60">
-              Done
+              {t("common.done")}
             </button>
           </div>
         </div>
@@ -81,8 +89,9 @@ function Card({
 }
 
 function Value({ value, sub }: { value: string | number | null | undefined; sub?: string }) {
+  const t = useT();
   if (value == null || value === "")
-    return <span className="mt-1 block font-display text-lg font-bold text-ink/60">+ Add</span>;
+    return <span className="mt-1 block font-display text-lg font-bold text-ink/60">{t("profile.add")}</span>;
   return (
     <>
       <span className="mt-1 block font-display text-3xl font-bold">{value}</span>
@@ -92,12 +101,13 @@ function Value({ value, sub }: { value: string | number | null | undefined; sub?
 }
 
 export function RegionsEditor() {
+  const t = useT();
   const { profile, updateProfile } = useStudent();
   const selected = cleanRegions(profile.targetRegions);
   const save = (next: RegionCode[]) => updateProfile({ targetRegions: cleanRegions(next) });
   const toggle = (code: RegionCode) => save(selected.includes(code) ? selected.filter((c) => c !== code) : [...selected, code]);
   const makeDefault = (code: RegionCode) => save([code, ...selected.filter((c) => c !== code)]);
-  const label = (code: RegionCode) => REGIONS.find((r) => r.code === code)!.label;
+  const label = (code: RegionCode) => regionName(t, code);
 
   return (
     <div className="space-y-3 text-sm">
@@ -110,21 +120,21 @@ export function RegionsEditor() {
               className={`flex cursor-pointer items-center gap-2 rounded-full border-2 border-ink px-3 py-1.5 font-medium has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-blue-400 ${on ? "bg-sun" : "bg-white hover:bg-sun/40"}`}
             >
               <input type="checkbox" className="accent-ink" checked={on} onChange={() => toggle(r.code)} />
-              {r.label}
+              {regionName(t, r.code)}
             </label>
           );
         })}
       </div>
       {selected.length > 1 && (
-        <ol className="space-y-1.5" aria-label="Region priority">
+        <ol className="space-y-1.5" aria-label={t("profile.regionPriority")}>
           {selected.map((code, i) => (
             <li key={code} className="flex items-center gap-2">
               <span className="font-medium">{label(code)}</span>
               {i === 0 ? (
-                <span className="rounded-full bg-ink px-2 py-0.5 text-xs font-semibold text-white">Default</span>
+                <span className="rounded-full bg-ink px-2 py-0.5 text-xs font-semibold text-white">{t("profile.default")}</span>
               ) : (
                 <button type="button" onClick={() => makeDefault(code)} className="text-xs font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900">
-                  Make default
+                  {t("profile.makeDefault")}
                 </button>
               )}
             </li>
@@ -133,14 +143,15 @@ export function RegionsEditor() {
       )}
       <p className="text-xs text-zinc-500">
         {selected.length === 0
-          ? "None chosen, so Colleges and Portals show every region."
-          : "Colleges and Portals only show these regions. Your first one opens by default on Colleges."}
+          ? t("profile.regionsNone")
+          : t("profile.regionsSome")}
       </p>
     </div>
   );
 }
 
 export function ProfileCards() {
+  const t = useT();
   const { profile } = useStudent();
   const base = useId();
   const [open, setOpen] = useState<CardKey | null>(null);
@@ -158,13 +169,13 @@ export function ProfileCards() {
   const englishKey = englishKeys[0];
   const english = englishKey ? profile.tests!.english![englishKey]! : null;
   const englishSub = englishKey
-    ? [sectionSummary(ENGLISH_TESTS[englishKey], english?.sections), englishKeys.length > 1 ? `+${englishKeys.length - 1} more` : ""].filter(Boolean).join(" · ")
+    ? [sectionSummary(ENGLISH_TESTS[englishKey], english?.sections), englishKeys.length > 1 ? t("profile.more", { n: englishKeys.length - 1 }) : ""].filter(Boolean).join(" · ")
     : undefined;
   const regions = cleanRegions(profile.targetRegions);
 
   return (
-    <section aria-label="Your numbers" className="grid grid-cols-2 gap-3 md:grid-cols-5">
-      <Card {...props("gpa")} label="GPA (unweighted)" tint="bg-sun/60" summary={<Value value={profile.gpa} sub={profile.international ? "International" : undefined} />}>
+    <section aria-label={t("profile.numbers")} className="grid grid-cols-2 gap-3 md:grid-cols-5">
+      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint="bg-sun/60" summary={<Value value={profile.gpa} sub={profile.international ? t("profile.international") : undefined} />}>
         <GpaEditor />
         <InternationalToggle />
       </Card>
@@ -176,7 +187,7 @@ export function ProfileCards() {
       </Card>
       <Card
         {...props("english")}
-        label={englishKey ? ENGLISH_TESTS[englishKey].label : "English test"}
+        label={englishKey ? testLabel(t, englishKey, ENGLISH_TESTS[englishKey].label) : t("profile.englishTest")}
         tint="bg-blue-100"
         summary={<Value value={english?.total} sub={englishSub} />}
       >
@@ -184,7 +195,7 @@ export function ProfileCards() {
       </Card>
       <Card
         {...props("regions")}
-        label="Regions applying to"
+        label={t("profile.regionsApplying")}
         tint="bg-coral/40"
         className={open === "regions" ? "" : "col-span-2 md:col-span-1"}
         summary={
@@ -194,8 +205,8 @@ export function ProfileCards() {
             <span className="mt-1.5 flex flex-wrap gap-1.5">
               {regions.map((c, i) => (
                 <span key={c} className="rounded-full border-2 border-ink bg-white px-2 py-0.5 text-xs font-semibold">
-                  {REGIONS.find((r) => r.code === c)!.label}
-                  {i === 0 && regions.length > 1 && <span className="sr-only"> (default)</span>}
+                  {regionName(t, c)}
+                  {i === 0 && regions.length > 1 && <span className="sr-only">{t("profile.defaultSr")}</span>}
                 </span>
               ))}
             </span>

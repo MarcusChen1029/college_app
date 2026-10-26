@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useId, useState } from "react";
 import { btn } from "@/components/TeacherClassCard";
+import { errorText } from "@/components/TeacherText";
+import { useT } from "@/lib/i18n/client";
 import { addNote, deleteNote, listNotes, NOTE_MAX, updateNote, type TeacherNote } from "@/lib/links-api";
 import { noteDate, noteEdited, noteErrorMessage, noteSaveable } from "@/lib/notes-view";
 import { buttonClass } from "@/lib/ui";
@@ -13,6 +15,7 @@ type Run = (fn: () => Promise<unknown>) => Promise<boolean>;
 
 /** One note: its text (never HTML), when it was written, and Edit / Delete. Edit swaps the text for a textarea. */
 function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: Run }) {
+  const t = useT();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(note.body);
   const id = useId();
@@ -23,7 +26,7 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
       {editing ? (
         <div>
           <label htmlFor={id} className="sr-only">
-            Edit note from {when}
+            {t("teacher.notes.editAria", { when })}
           </label>
           <textarea id={id} value={draft} maxLength={NOTE_MAX} rows={4} onChange={(e) => setDraft(e.target.value)} className={area} />
           <p className="mt-1 text-xs text-zinc-500">
@@ -36,7 +39,7 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-xs text-zinc-500">
           <time dateTime={note.createdAt}>{when}</time>
-          {noteEdited(note.createdAt, note.updatedAt) && <span> (edited)</span>}
+          {noteEdited(note.createdAt, note.updatedAt) && <span> {t("teacher.notes.edited")}</span>}
         </p>
         <div className="flex gap-2">
           {editing ? (
@@ -47,7 +50,7 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
                 className={btn}
                 onClick={() => void run(() => updateNote(note.id, draft))}
               >
-                Save
+                {t("common.save")}
               </button>
               <button
                 type="button"
@@ -58,22 +61,22 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
                   setDraft(note.body);
                 }}
               >
-                Cancel
+                {t("common.cancel")}
               </button>
             </>
           ) : (
             <>
-              <button type="button" disabled={busy} className={btn} aria-label={`Edit note from ${when}`} onClick={() => setEditing(true)}>
-                Edit
+              <button type="button" disabled={busy} className={btn} aria-label={t("teacher.notes.editAria", { when })} onClick={() => setEditing(true)}>
+                {t("common.edit")}
               </button>
               <button
                 type="button"
                 disabled={busy}
                 className={btn}
-                aria-label={`Delete note from ${when}`}
-                onClick={() => confirm("Delete this note? This can't be undone.") && void run(() => deleteNote(note.id))}
+                aria-label={t("teacher.notes.deleteAria", { when })}
+                onClick={() => confirm(t("teacher.notes.confirmDelete")) && void run(() => deleteNote(note.id))}
               >
-                Delete
+                {t("common.delete")}
               </button>
             </>
           )}
@@ -85,6 +88,7 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
 
 /** The teacher's own notes about one student, newest first. Reloads the list after every change. */
 export function TeacherNotes({ studentId, studentName }: { studentId: string; studentName: string }) {
+  const t = useT();
   const [data, setData] = useState<TeacherNote[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
@@ -139,19 +143,19 @@ export function TeacherNotes({ studentId, studentName }: { studentId: string; st
     <section className="space-y-4" aria-labelledby={`${id}-heading`}>
       <div>
         <h2 id={`${id}-heading`} className="font-display text-xl font-bold">
-          Private notes
+          {t("teacher.notes.heading")}
         </h2>
-        <p className="text-sm text-zinc-500">Only you can see these notes. They are deleted if the student leaves or you remove them from your list.</p>
+        <p className="text-sm text-zinc-500">{t("teacher.notes.help")}</p>
       </div>
 
       {!data ? (
         error ? (
           <div className="space-y-3">
             <p role="alert" className="text-sm text-urgent">
-              {error}
+              {errorText(t, error)}
             </p>
             <button type="button" className={btn} onClick={() => void refresh()}>
-              Try again
+              {t("teacher.tryAgain")}
             </button>
           </div>
         ) : (
@@ -161,7 +165,7 @@ export function TeacherNotes({ studentId, studentName }: { studentId: string; st
         <>
           <form onSubmit={submit} className="space-y-2 rounded-2xl border border-zinc-200 p-4">
             <label htmlFor={`${id}-new`} className="text-sm font-medium">
-              New note about {studentName}
+              {t("teacher.notes.newNote", { name: studentName })}
             </label>
             <textarea id={`${id}-new`} value={draft} maxLength={NOTE_MAX} rows={4} onChange={(e) => setDraft(e.target.value)} className={area} />
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -169,25 +173,25 @@ export function TeacherNotes({ studentId, studentName }: { studentId: string; st
                 {draft.length} / {NOTE_MAX}
               </p>
               <button type="submit" disabled={busy || !noteSaveable(draft, NOTE_MAX)} className={primary}>
-                Add note
+                {t("teacher.notes.add")}
               </button>
             </div>
           </form>
           {actionError && (
             <p role="alert" className="text-sm text-urgent">
-              {actionError}
+              {errorText(t, actionError)}
             </p>
           )}
           {error && (
             <p role="alert" className="text-sm text-urgent">
-              {error}{" "}
+              {errorText(t, error)}{" "}
               <button type="button" className="font-semibold underline underline-offset-4" onClick={() => void refresh()}>
-                Try again
+                {t("teacher.tryAgain")}
               </button>
             </p>
           )}
           {data.length === 0 ? (
-            <p className="text-sm text-zinc-500">No notes yet.</p>
+            <p className="text-sm text-zinc-500">{t("teacher.notes.empty")}</p>
           ) : (
             <ul className="space-y-3">
               {data.map((n) => (

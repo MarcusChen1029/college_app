@@ -21,28 +21,43 @@ import {
   type PortalSystem,
 } from "@/lib/portals";
 import { activeRegions, regionLabel, type RegionCode } from "@/lib/regions";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey, TFunction } from "@/lib/i18n";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 
 const noop = () => () => {};
+
+/** Looks up a per-system translation (name or hint); falls back to the English text when the key is missing. */
+const sysText = (t: TFunction, kind: "name" | "hint", key: string, fallback: string) => {
+  const k = `portals.${kind}.${key}` as MessageKey;
+  const v = t(k);
+  return v === k ? fallback : v;
+};
+const regionName = (t: TFunction, code: string) => {
+  const k = `portals.region.${code}` as MessageKey;
+  const v = t(k);
+  return v === k ? regionLabel(code) : v;
+};
 const input = "min-w-0 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
 
 function CopyButton({ value, label }: { value: string; label: string }) {
+  const t = useT();
   const [done, setDone] = useState(false);
   if (!value) return null;
   return (
     <button
       type="button"
       className="shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800"
-      aria-label={`Copy ${label}`}
+      aria-label={label}
       onClick={async () => {
         await navigator.clipboard.writeText(value);
         setDone(true);
         setTimeout(() => setDone(false), 1500);
       }}
     >
-      {done ? "Copied" : "Copy"}
+      {done ? t("common.copied") : t("common.copy")}
     </button>
   );
 }
@@ -70,6 +85,7 @@ function LoginRow({
   onRename?: (name: string) => void;
   indent?: boolean;
 }) {
+  const t = useT();
   const [open, setOpen] = useState(!name && !!onRename);
   const [show, setShow] = useState(false);
   const save = (patch: Partial<Login>) => {
@@ -77,7 +93,7 @@ function LoginRow({
     if (next.url !== login.url || next.username !== login.username || next.password !== login.password) onSave(next);
   };
   const link = safeLink(openUrl(login, official ?? null));
-  const label = name || "Untitled portal";
+  const label = name || t("portals.untitled");
   return (
     <li className={indent ? "ml-6" : ""}>
       <div className={`rounded-xl border ${open ? "border-blue-300 bg-blue-50/40" : "border-zinc-200"}`}>
@@ -85,7 +101,7 @@ function LoginRow({
           role="button"
           tabIndex={0}
           aria-expanded={open}
-          aria-label={`${open ? "Hide" : "Show"} login for ${label}`}
+          aria-label={open ? t("portals.hideLogin", { label }) : t("portals.showLogin", { label })}
           className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-zinc-50"
           onClick={() => setOpen((v) => !v)}
           onKeyDown={(e) => {
@@ -102,14 +118,14 @@ function LoginRow({
               rel="noopener noreferrer"
               className="font-semibold text-blue-700 hover:underline"
               onClick={(e) => e.stopPropagation()}
-              title={`Open ${label}`}
+              title={t("portals.open", { label })}
             >
               {label} ↗
             </a>
           ) : (
             <span className="font-semibold">{label}</span>
           )}
-          <span className="min-w-0 flex-1 truncate text-xs text-zinc-500">{login.username || (link ? "No login saved" : "No link or login saved")}</span>
+          <span className="min-w-0 flex-1 truncate text-xs text-zinc-500">{login.username || (link ? t("portals.noLogin") : t("portals.noLinkOrLogin"))}</span>
           <span aria-hidden className="text-zinc-400">
             {open ? "▾" : "▸"}
           </span>
@@ -121,8 +137,8 @@ function LoginRow({
               <input
                 className={`${input} w-full font-semibold`}
                 defaultValue={name}
-                placeholder="Portal name, e.g. Scholarship portal"
-                aria-label="Portal name"
+                placeholder={t("portals.namePlaceholder")}
+                aria-label={t("portals.nameLabel")}
                 autoFocus={!name}
                 onBlur={(e) => e.target.value.trim() !== name && onRename(e.target.value.trim())}
               />
@@ -132,40 +148,40 @@ function LoginRow({
                 type="url"
                 className={input}
                 defaultValue={login.url}
-                placeholder={official ?? "Portal link"}
-                aria-label={`Link for ${label}`}
+                placeholder={official ?? t("portals.linkPlaceholder")}
+                aria-label={t("portals.linkFor", { label })}
                 onBlur={(e) => save({ url: e.target.value.trim() })}
               />
               <div className="flex items-center gap-1">
                 <input
                   className={`${input} flex-1`}
                   defaultValue={login.username}
-                  placeholder="Username / email"
+                  placeholder={t("portals.usernamePlaceholder")}
                   autoComplete="off"
-                  aria-label={`Username for ${label}`}
+                  aria-label={t("portals.usernameFor", { label })}
                   onBlur={(e) => save({ username: e.target.value.trim() })}
                 />
-                <CopyButton value={login.username} label={`username for ${label}`} />
+                <CopyButton value={login.username} label={t("portals.copyUsername", { label })} />
               </div>
               <div className="flex items-center gap-1">
                 <input
                   type={show ? "text" : "password"}
                   className={`${input} flex-1`}
                   defaultValue={login.password}
-                  placeholder="Password"
+                  placeholder={t("portals.passwordPlaceholder")}
                   autoComplete="new-password"
-                  aria-label={`Password for ${label}`}
+                  aria-label={t("portals.passwordFor", { label })}
                   onBlur={(e) => save({ password: e.target.value })}
                 />
                 <button type="button" className="shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100" onClick={() => setShow((v) => !v)}>
-                  {show ? "Hide" : "Show"}
+                  {show ? t("portals.hide") : t("portals.show")}
                 </button>
-                <CopyButton value={login.password} label={`password for ${label}`} />
+                <CopyButton value={login.password} label={t("portals.copyPassword", { label })} />
               </div>
             </div>
             {onRemove && (
               <button type="button" className={buttonClass("danger", "sm")} onClick={onRemove}>
-                Remove
+                {t("common.remove")}
               </button>
             )}
           </div>
@@ -201,6 +217,7 @@ function Group({ title, aside, children }: { title: string; aside?: React.ReactN
 }
 
 export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
+  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
@@ -240,7 +257,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     const added = campusesOf(data, s);
     const remaining = (s.campuses ?? []).filter((c) => !added.includes(c));
     return [
-      <LoginRow key={s.key} name={s.name} hint={s.hint} official={s.url} login={data.systems?.[s.key] ?? EMPTY_LOGIN} onSave={(l) => setSystem(s.key, l)} />,
+      <LoginRow key={s.key} name={sysText(t, "name", s.key, s.name)} hint={sysText(t, "hint", s.key, s.hint)} official={s.url} login={data.systems?.[s.key] ?? EMPTY_LOGIN} onSave={(l) => setSystem(s.key, l)} />,
       ...added.map((c) => (
         <LoginRow
           key={campusKey(s.key, c)}
@@ -256,10 +273,10 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
           <select
             className={`${input} text-xs`}
             value=""
-            aria-label={`Add a ${s.name} campus portal`}
+            aria-label={t("portals.addCampusLabel", { name: sysText(t, "name", s.key, s.name) })}
             onChange={(e) => e.target.value && setCampus(campusKey(s.key, e.target.value), EMPTY_LOGIN)}
           >
-            <option value="">+ Add a campus portal…</option>
+            <option value="">{t("portals.addCampus")}</option>
             {remaining.map((c) => (
               <option key={c}>{c}</option>
             ))}
@@ -279,40 +296,38 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       <select
         className={buttonClass("primary", "sm")}
         value=""
-        aria-label={`Add a portal${region === "ANY" ? "" : ` for ${regionLabel(region)}`}`}
+        aria-label={region === "ANY" ? t("portals.addPortalLabel") : t("portals.addPortalLabelFor", { region: regionName(t, region) })}
         onChange={(e) => {
           const v = e.target.value;
           if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "", ...(region === "ANY" ? {} : { region }) }]);
           else if (v) setSystem(v, EMPTY_LOGIN);
         }}
       >
-        <option value="">+ Add portal</option>
+        <option value="">{t("portals.addPortal")}</option>
         {left.map((s) => (
           <option key={s.key} value={s.key}>
-            {s.name}
+            {sysText(t, "name", s.key, s.name)}
           </option>
         ))}
-        <option value="custom">Something else…</option>
+        <option value="custom">{t("portals.somethingElse")}</option>
       </select>
     );
     const body =
       added.length === 0 && mine.length === 0 ? (
         <p className="text-sm text-zinc-500">
-          {region === "ANY"
-            ? "English tests (TOEFL, IELTS, Duolingo, PTE…) and anything else that isn't tied to one country — add only the ones you use."
-            : "Testing, aid and visa sites, scholarships, housing — add only the ones you use."}
+          {region === "ANY" ? t("portals.anyHelp") : t("portals.countryHelp")}
         </p>
       ) : (
         <ul className="space-y-2">
           {added.map((s) => (
             <LoginRow
               key={s.key}
-              name={s.name}
-              hint={s.hint}
+              name={sysText(t, "name", s.key, s.name)}
+              hint={sysText(t, "hint", s.key, s.hint)}
               official={s.url}
               login={data.systems![s.key]}
               onSave={(l) => setSystem(s.key, l)}
-              onRemove={() => window.confirm(`Remove ${s.name}?`) && setSystem(s.key, null)}
+              onRemove={() => window.confirm(t("portals.removeConfirm", { name: sysText(t, "name", s.key, s.name) })) && setSystem(s.key, null)}
             />
           ))}
           {mine.map((p) => (
@@ -322,7 +337,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
               login={p}
               onRename={(name) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, name } : x)))}
               onSave={(l) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, ...l } : x)))}
-              onRemove={() => window.confirm(`Remove "${p.name || "this portal"}"?`) && setCustom(custom.filter((x) => x.id !== p.id))}
+              onRemove={() => window.confirm(t("portals.removeCustomConfirm", { name: p.name || t("portals.thisPortal") })) && setCustom(custom.filter((x) => x.id !== p.id))}
             />
           ))}
         </ul>
@@ -335,16 +350,16 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     const applications = systemsForRegion(region).filter((s) => s.group === "application");
     const { menu, body } = optionalBlock(region);
     return (
-      <Section key={region} title={regionLabel(region)}>
+      <Section key={region} title={regionName(t, region)}>
         <div className="space-y-5">
-          <Group title="Submitted colleges">
+          <Group title={t("portals.groupSubmitted")}>
             {inCountry.length === 0 ? (
               <p className="text-sm text-zinc-500">
-                A college&apos;s applicant portal shows up here once you mark it Submitted on{" "}
+                {t("portals.submittedEmptyPre")}
                 <Link href="/application/list" className="text-blue-600 underline">
-                  My list
+                  {t("portals.myList")}
                 </Link>
-                . Its login usually arrives by email after you apply.
+                {t("portals.submittedEmptyPost")}
               </p>
             ) : (
               <ul className="space-y-2">
@@ -352,7 +367,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
                   <LoginRow
                     key={college.slug}
                     name={college.short_name ?? college.name}
-                    hint="Applicant status portal; the login usually arrives by email after you apply."
+                    hint={t("portals.submittedHint")}
                     login={entry.portal}
                     onSave={(portal) => student.update(college.slug, { portal })}
                   />
@@ -361,15 +376,15 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
             )}
           </Group>
 
-          <Group title="Application systems">
+          <Group title={t("portals.groupApplication")}>
             {applications.length === 0 ? (
-              <p className="text-sm text-zinc-500">No application systems are listed for {regionLabel(region)} yet. Add your own below.</p>
+              <p className="text-sm text-zinc-500">{t("portals.noSystems", { region: regionName(t, region) })}</p>
             ) : (
               <ul className="space-y-2">{applications.flatMap(systemRows)}</ul>
             )}
           </Group>
 
-          <Group title="Other" aside={menu}>
+          <Group title={t("portals.groupOther")} aside={menu}>
             {body}
           </Group>
         </div>
@@ -382,27 +397,27 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   return (
     <div className="space-y-6">
       <p className={`rounded-lg border px-3 py-2 text-xs ${toneClass("soon")}`}>
-        {student.auth ? "Saved to your account" : "Saved in this browser only"} without extra encryption. Use passwords you don&apos;t use anywhere else.
+        {student.auth ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
         {" · "}
         {(() => {
           const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
-          return `${n} ${n === 1 ? "login" : "logins"} saved`;
+          return n === 1 ? t("portals.loginsSavedOne", { n }) : t("portals.loginsSavedMany", { n });
         })()}
       </p>
 
       {hiddenCount > 0 && (
         <p className="rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
-          {hiddenCount} saved {hiddenCount === 1 ? "login for a country" : "logins for countries"} you&apos;re not applying to {hiddenCount === 1 ? "is" : "are"} hidden. Change regions on{" "}
+          {hiddenCount === 1 ? t("portals.hiddenOnePre", { n: hiddenCount }) : t("portals.hiddenManyPre", { n: hiddenCount })}
           <Link href="/profile" className="text-blue-600 underline">
-            your profile
+            {t("portals.yourProfile")}
           </Link>
-          .
+          {t("portals.hiddenPost")}
         </p>
       )}
 
       {regions.map(countrySection)}
 
-      <Section title="Any country" aside={any.menu}>
+      <Section title={t("portals.anyCountry")} aside={any.menu}>
         {any.body}
       </Section>
     </div>

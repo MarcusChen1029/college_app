@@ -1,5 +1,9 @@
+"use client";
+
 import { fmtDate } from "@/lib/format";
-import { deadlineText, deadlineTone, referenceTone, type Tone } from "@/lib/status";
+import type { TFunction } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
+import { deadlineTone, referenceTone, type Tone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 
 export function StatusIcon({ tone }: { tone: Tone }) {
@@ -53,11 +57,19 @@ export function StatusPill({ tone, children, title }: { tone: Tone; children: Re
   );
 }
 
+/** lib/status.ts deadlineText, in the visitor's language. */
+function deadlineWords(t: TFunction, days: number): string {
+  if (days < 0) return t("status.deadline.overdue");
+  if (days === 0) return t("status.deadline.today");
+  if (days === 1) return t("status.deadline.tomorrow");
+  return t("status.deadline.days", { n: days });
+}
+
 export function DeadlineChip({
   date,
   days,
   done,
-  doneLabel = "Done",
+  doneLabel,
   reference = false,
   label,
 }: {
@@ -69,8 +81,9 @@ export function DeadlineChip({
   reference?: boolean;
   label?: string;
 }) {
+  const t = useT();
   const tone = reference ? referenceTone(days) : deadlineTone(days, done);
-  const text = done ? doneLabel : reference && days < 0 ? "passed" : deadlineText(days);
+  const text = done ? (doneLabel ?? t("status.done")) : reference && days < 0 ? t("status.deadline.passed") : deadlineWords(t, days);
   return (
     <StatusPill tone={tone}>
       {label ? `${label} ` : ""}

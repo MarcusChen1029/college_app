@@ -3,17 +3,19 @@
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { SignInButton } from "@/components/SignInDialog";
+import { useT } from "@/lib/i18n/client";
 import type { NavItem } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
 
 /** The reminder-emails switch. It lives under the deadline calendar; reminders are only sent to signed-in accounts. */
 export function ReminderToggle() {
   const student = useStudent();
+  const t = useT();
   if (!student.auth) {
     return (
       <p className="text-sm text-zinc-600">
-        <SignInButton className="font-semibold text-blue-700 underline underline-offset-4">Sign in</SignInButton>{" "}
-        to get deadline reminders by email.
+        <SignInButton className="font-semibold text-blue-700 underline underline-offset-4">{t("reminders.signInLink")}</SignInButton>{" "}
+        {t("reminders.signInRest")}
       </p>
     );
   }
@@ -26,10 +28,8 @@ export function ReminderToggle() {
         onChange={(e) => student.setProfile({ ...student.profile, reminderEmails: e.target.checked })}
       />
       <span>
-        Email me deadline reminders
-        <span className="block text-xs text-zinc-500">
-          14, 3 and 1 days before each deadline for colleges on my list (only the plan I picked; skipped once I&apos;ve applied).
-        </span>
+        {t("reminders.toggle")}
+        <span className="block text-xs text-zinc-500">{t("reminders.toggleHint")}</span>
       </span>
     </label>
   );
@@ -46,6 +46,7 @@ export function SettingsLink({ children, className }: { children: React.ReactNod
 
 /** A header drop-down: the username (with Sign out) or "More" (without). Items are real links; Esc and an outside click close it. */
 export function AccountMenu({ label, title, items, onSignOut }: { label: string; title?: string; items: readonly NavItem[]; onSignOut?: () => void }) {
+  const t = useT();
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -104,7 +105,7 @@ export function AccountMenu({ label, title, items, onSignOut }: { label: string;
                 onSignOut();
               }}
             >
-              Sign out
+              {t("account.signOut")}
             </button>
           )}
         </div>

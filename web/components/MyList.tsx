@@ -5,8 +5,9 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { progress, type Checklist } from "@/lib/checklist";
-import { hasDecision, isDeadlineDone, RESULT_LABEL, resultStatus, stage } from "@/lib/application";
+import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
+import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { resultTone, stageTone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
@@ -14,7 +15,7 @@ import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { AddCustomCollege } from "./AddCustomCollege";
 import { StudentAiContextButton } from "./AiContextButton";
 import { FitBadge, TierBadge } from "./badges";
-import { ChecklistPanel, SELECT, SELECT_BASE } from "./ChecklistPanel";
+import { ChecklistPanel, SELECT, SELECT_BASE, usePlanLabel, useResultLabel } from "./ChecklistPanel";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -24,10 +25,12 @@ const noop = () => () => {};
 
 /** In progress → Ready (checklist complete) → Submitted. Decisions are recorded on Results. */
 function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string; onSubmit: (submitted: boolean) => void }) {
+  const t = useT();
+  const resultLabel = useResultLabel();
   if (hasDecision(entry.status)) {
     return (
       <Link href="/application/results" className="hover:underline">
-        <StatusPill tone={resultTone(resultStatus(entry.status))}>{RESULT_LABEL[resultStatus(entry.status)]}</StatusPill>
+        <StatusPill tone={resultTone(resultStatus(entry.status))}>{resultLabel(resultStatus(entry.status))}</StatusPill>
       </Link>
     );
   }
@@ -37,25 +40,26 @@ function StatusCell({ entry, name, onSubmit }: { entry: ListEntry; name: string;
       className={`${SELECT_BASE} ${toneClass(stageTone(st))}`}
       value={st === "submitted" ? "submitted" : "working"}
       onChange={(e) => onSubmit(e.target.value === "submitted")}
-      aria-label={`Status for ${name}`}
-      title={st === "in_progress" ? "Finish every checklist item to mark it Ready, then Submitted." : undefined}
+      aria-label={t("application.statusFor", { name })}
+      title={st === "in_progress" ? t("application.statusHint") : undefined}
     >
-      <option value="working">{st === "ready" ? "✓ Ready" : "In progress"}</option>
+      <option value="working">{st === "ready" ? t("application.stage.ready") : t("application.stage.inProgress")}</option>
       <option value="submitted" disabled={st === "in_progress"}>
-        Submitted
+        {t("application.stage.submitted")}
       </option>
     </select>
   );
 }
 
 function ProgressBadge({ checklist }: { checklist: Checklist }) {
+  const t = useT();
   const { done, total, missing } = progress(checklist);
   return (
     <div className="flex items-center gap-2 whitespace-nowrap text-xs">
       <span className="tabular-nums text-zinc-600">
         {done}/{total}
       </span>
-      <StatusPill tone={missing === 0 ? "done" : "neutral"}>{missing === 0 ? "all done" : `${missing} missing`}</StatusPill>
+      <StatusPill tone={missing === 0 ? "done" : "neutral"}>{missing === 0 ? t("application.progress.allDone") : t("application.progress.missing", { n: missing })}</StatusPill>
     </div>
   );
 }
@@ -73,6 +77,8 @@ export function MyList({
   englishTests: Lookups["englishTests"];
   codes: ScoreCode[];
 }) {
+  const t = useT();
+  const planLabel = usePlanLabel();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [openSlug, setOpenSlug] = useState<string | null>(null);
@@ -86,32 +92,33 @@ export function MyList({
   const listed = student.list.flatMap((e) => colleges.filter((c) => c.slug === e.slug));
   const addCustomButton = (
     <button className="rounded border border-zinc-300 px-2 py-0.5 text-xs font-medium hover:bg-zinc-100" onClick={() => setAdding(true)}>
-      + Custom college
+      {t("application.addCustom")}
     </button>
   );
   const banner = (
     <div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
       {student.auth ? (
         <span className="text-zinc-500">
-          Synced to <span className="font-medium text-zinc-700">{student.auth.email}</span>
-          {student.syncing && " · syncing…"}
+          {t("application.syncedTo")} <span className="font-medium text-zinc-700">{student.auth.email}</span>
+          {student.syncing && t("application.syncing")}
         </span>
       ) : (
         <span className="text-zinc-500">
-          Saved in this browser only.{" "}
-          <SignInButton className="text-blue-600 underline">Sign in</SignInButton>{" "}
-          to keep your list on every device.
+          {t("application.localOnly")}{" "}
+          <SignInButton className="text-blue-600 underline">{t("account.signIn")}</SignInButton>{" "}
+          {t("application.keepList")}
         </span>
       )}
       <span className="ml-auto flex items-center gap-3">
         <span className="text-xs text-zinc-500">
           <span className={`tabular-nums ${student.canAdd ? "" : "font-medium text-soon"}`}>
             {student.list.length}
-            {student.plan.limit != null && ` / ${student.plan.limit}`} colleges
+            {student.plan.limit != null && ` / ${student.plan.limit}`}
+            {t("application.collegesSuffix")}
           </span>{" "}
-          · {student.plan.name} plan ·{" "}
+          · {t("application.planName", { name: student.plan.name })} ·{" "}
           <Link href="/pricing" className="text-blue-600 underline">
-            {student.plan.key === "senior" ? "Plans" : "Upgrade"}
+            {student.plan.key === "senior" ? t("application.plans") : t("application.upgrade")}
           </Link>
         </span>
         {addCustomButton}
@@ -120,15 +127,14 @@ export function MyList({
       </span>
       {student.plan.limit != null && student.list.length > student.plan.limit && (
         <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>
-          Your list has more colleges than the {student.plan.name} plan allows ({student.plan.limit}). You keep them all, but can&apos;t add more
-          until you remove some or upgrade.
+          {t("application.overLimit", { name: student.plan.name, limit: student.plan.limit })}
         </span>
       )}
       {student.error && (
         <span className={`rounded border px-2 py-0.5 ${toneClass("urgent")}`}>
           {student.error}{" "}
           <button className="underline" onClick={student.clearError}>
-            dismiss
+            {t("application.dismiss")}
           </button>
         </span>
       )}
@@ -146,11 +152,11 @@ export function MyList({
       {banner}
       {addDialog}
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
-        Your list is empty. Add colleges from the{" "}
+        {t("application.emptyPre")}
         <Link href="/colleges" className="text-blue-600 underline">
-          Colleges
-        </Link>{" "}
-        page.
+          {t("nav.colleges")}
+        </Link>
+        {t("application.emptyPost")}
       </p>
       </>
     );
@@ -206,10 +212,10 @@ export function MyList({
             )}
             {opened.entry.custom?.website && (
               <a href={opened.entry.custom.website} target="_blank" rel="noreferrer" className="text-xs text-blue-600 underline">
-                Website ↗
+                {t("application.website")}
               </a>
             )}
-            {fits.get(opened.college.slug) && <FitBadge fit={fits.get(opened.college.slug)!.fit} reason={fits.get(opened.college.slug)!.reason} />}
+            {fits.get(opened.college.slug) && <FitBadge fit={fits.get(opened.college.slug)!.fit} result={fits.get(opened.college.slug)!} />}
             <ProgressBadge checklist={opened.entry.checklist} />
           </div>
         }
@@ -232,11 +238,11 @@ export function MyList({
         <table className="w-full min-w-[560px] text-sm">
           <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
             <tr>
-              <th className="p-2">College</th>
-              <th className="p-2">Fit</th>
-              <th className="p-2">Plan</th>
-              <th className="p-2">Status</th>
-              <th className="p-2">Checklist</th>
+              <th className="p-2">{t("application.col.college")}</th>
+              <th className="p-2">{t("application.col.fit")}</th>
+              <th className="p-2">{t("application.col.plan")}</th>
+              <th className="p-2">{t("application.col.status")}</th>
+              <th className="p-2">{t("application.col.checklist")}</th>
               <th className="w-8 p-2" />
             </tr>
           </thead>
@@ -257,24 +263,24 @@ export function MyList({
                       <div>
                         {collegeLink(college, college.short_name ?? college.name, "font-medium hover:underline")}
                         {entry.custom && (
-                          <div className="text-[11px] text-zinc-500">Custom{place(college, entry) && ` · ${place(college, entry)}`}</div>
+                          <div className="text-[11px] text-zinc-500">{t("application.custom")}{place(college, entry) && ` · ${place(college, entry)}`}</div>
                         )}
                       </div>
                     </div>
                   </td>
-                  <td className="p-2">{fit ? <FitBadge fit={fit.fit} reason={fit.reason} /> : <span className="text-xs text-zinc-400">—</span>}</td>
+                  <td className="p-2">{fit ? <FitBadge fit={fit.fit} result={fit} /> : <span className="text-xs text-zinc-400">—</span>}</td>
                   <td className="p-2">
                     <select
                       className={SELECT}
                       value={entry.plan ?? ""}
                       onChange={(e) => student.update(entry.slug, { plan: e.target.value || null })}
-                      aria-label={`Plan for ${college.name}`}
+                      aria-label={t("application.planFor", { name: college.name })}
                     >
-                      <option value="">Undecided</option>
+                      <option value="">{t("application.undecided")}</option>
                       {planOptions(college).map((p) => (
                         <option key={p.key} value={p.key}>
-                          {p.label}
-                          {p.binding ? " (binding)" : ""}
+                          {planLabel(p.key, p.label)}
+                          {p.binding ? t("application.binding") : ""}
                         </option>
                       ))}
                     </select>
@@ -294,7 +300,7 @@ export function MyList({
                       className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
                       onClick={() => setOpenSlug(entry.slug)}
                       aria-haspopup="dialog"
-                      aria-label={`Open checklist for ${college.name}`}
+                      aria-label={t("application.openChecklist", { name: college.name })}
                     >
                       ▸
                     </button>
@@ -306,19 +312,19 @@ export function MyList({
         </table>
         {hasScores && (
           <p className="border-t border-zinc-100 p-2 text-xs text-zinc-500">
-            Balance: {counts.super_reach} super reach · {counts.reach} reach · {counts.target} target · {counts.safety} safety
-            {counts.safety === 0 && " — consider adding at least one safety."}
+            {t("application.balance", { superReach: counts.super_reach, reach: counts.reach, target: counts.target, safety: counts.safety })}
+            {counts.safety === 0 && t("application.noSafety")}
           </p>
         )}
         {entries.filter(({ entry }) => entry.plan === "ED" || entry.plan === "ED2").length > 1 && (
           <p className="border-t border-zinc-100 p-2 text-xs text-urgent">
-            You picked Early Decision at more than one college. ED is binding — you can only apply ED to one school per round.
+            {t("application.multiEd")}
           </p>
         )}
       </div>
 
       <aside>
-        <h2 className="mb-2 font-semibold">Upcoming dates</h2>
+        <h2 className="mb-2 font-semibold">{t("application.upcomingDates")}</h2>
         {upcoming.length ? (
           <ol className="space-y-2 text-sm">
             {upcoming.map(({ d, college, entry }) => {
@@ -329,14 +335,14 @@ export function MyList({
                     <DeadlineChip date={d.due_date!} days={days} done={isDeadlineDone(d.kind, entry.status)} />
                   </div>
                   <div>
-                    {college.short_name ?? college.name} — {d.label ?? plans.find((p) => p.key === d.plan_key)?.label ?? d.kind}
+                    {college.short_name ?? college.name} — {d.label ?? (plans.find((p) => p.key === d.plan_key) ? planLabel(d.plan_key, plans.find((p) => p.key === d.plan_key)!.label) : d.kind)}
                   </div>
                 </li>
               );
             })}
           </ol>
         ) : (
-          <p className="text-sm text-zinc-500">No upcoming dates.</p>
+          <p className="text-sm text-zinc-500">{t("application.noUpcoming")}</p>
         )}
       </aside>
     </div>

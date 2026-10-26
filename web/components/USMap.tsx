@@ -3,6 +3,8 @@
 import { geoContains, geoPath } from "d3-geo";
 import { interpolateZoom } from "d3-interpolate";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { MessageKey } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
 import { regionGeo } from "@/lib/region-geo";
 import type { RegionCode } from "@/lib/regions";
 import { tierLetter, type TierLetter } from "@/lib/tiers";
@@ -45,6 +47,7 @@ export function USMap({
   region?: RegionCode;
   children?: React.ReactNode;
 }) {
+  const t = useT();
   const g = regionGeo(region);
   const box = useRef<HTMLDivElement>(null);
   const group = useRef<SVGGElement>(null);
@@ -148,7 +151,7 @@ export function USMap({
       className="relative h-full min-h-[420px] w-full overflow-hidden rounded-3xl border-2 border-blue-100 bg-gradient-to-br from-blue-100 via-blue-50 to-white"
       style={{ backgroundImage: "radial-gradient(#b7e3fb 1.2px, transparent 1.2px)", backgroundSize: "24px 24px" }}
     >
-      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="group" aria-label={g.ariaLabel} className="absolute inset-0 block h-full w-full">
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="group" aria-label={t(`colleges.mapLabel.${region}` as MessageKey)} className="absolute inset-0 block h-full w-full">
         <rect width={w} height={h} fill="transparent" onClick={() => onSelect(null)} />
         <g ref={group} style={{ transformOrigin: "0 0" }}>
           {geo.context.map((s) => (

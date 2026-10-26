@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import { btn } from "@/components/TeacherClassCard";
 import { TeacherGate } from "@/components/TeacherGate";
+import { errorText, statusText } from "@/components/TeacherText";
+import { useT } from "@/lib/i18n/client";
+import type { TFunction } from "@/lib/i18n";
 import { teacherOutcomes } from "@/lib/charts-api";
 import {
   buildChart,
   CHART_BOX,
   defaultMetric,
-  METRIC_LABEL,
   MIN_STUDENTS,
   OUTCOME_LABEL,
   OUTCOMES,
@@ -25,7 +27,9 @@ import { useLoad } from "@/lib/use-load";
 
 // Full literal class strings (Tailwind scans source). Colours are the status tokens; shape carries the meaning too.
 const MARK_COLOR: Record<Outcome, string> = { admitted: "text-done", waitlisted: "text-soon", denied: "text-urgent" };
-const SHAPE_NAME: Record<Outcome, string> = { admitted: "circle", waitlisted: "triangle", denied: "cross" };
+const SHAPE_KEY = { admitted: "teacher.charts.shapeCircle", waitlisted: "teacher.charts.shapeTriangle", denied: "teacher.charts.shapeCross" } as const;
+
+const metricText = (t: TFunction, metric: TestMetric) => t(metric === "sat" ? "teacher.charts.metricSat" : "teacher.charts.metricAct");
 
 function Marker({ outcome, x, y, size = 5 }: { outcome: Outcome; x: number; y: number; size?: number }) {
   const cls = MARK_COLOR[outcome];
@@ -43,32 +47,34 @@ function Marker({ outcome, x, y, size = 5 }: { outcome: Outcome; x: number; y: n
 }
 
 function Legend({ college }: { college: CollegeOutcomes }) {
+  const t = useT();
   const counts = outcomeCounts(college.points);
   return (
-    <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Legend and counts">
+    <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label={t("teacher.charts.legendAria")}>
       {OUTCOMES.map((o) => (
         <li key={o} className="flex items-center gap-2">
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
             <Marker outcome={o} x={8} y={8} size={5} />
           </svg>
           <span>
-            {OUTCOME_LABEL[o]} <span className="font-semibold">{counts[o]}</span>
-            <span className="sr-only"> ({SHAPE_NAME[o]} marker)</span>
+            {statusText(t, OUTCOME_LABEL[o])} <span className="font-semibold">{counts[o]}</span>
+            <span className="sr-only"> {t("teacher.charts.shapeMarker", { shape: t(SHAPE_KEY[o]) })}</span>
           </span>
         </li>
       ))}
-      <li className="text-zinc-500">{counts.total} students in all</li>
+      <li className="text-zinc-500">{t("teacher.charts.studentsInAll", { n: counts.total })}</li>
     </ul>
   );
 }
 
 function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMetric }) {
+  const t = useT();
   const m = buildChart(college.points, metric);
   const b = CHART_BOX;
   const plotBottom = b.height - b.bottom;
   const plotRight = b.width - b.right;
   const counts = outcomeCounts(college.points);
-  const label = `${college.name}: ${METRIC_LABEL[metric]} against GPA for ${counts.total} students. ${counts.admitted} admitted, ${counts.waitlisted} waitlisted, ${counts.denied} denied.`;
+  const label = t("teacher.charts.scatterAria", { college: college.name, metric: metricText(t, metric), total: counts.total, admitted: counts.admitted, waitlisted: counts.waitlisted, denied: counts.denied });
   return (
     <figure className="space-y-2">
       <svg viewBox={`0 0 ${b.width} ${b.height}`} className="w-full max-w-2xl" role="img" aria-label={label}>
@@ -91,10 +97,10 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
         <line x1={b.left} x2={plotRight} y1={plotBottom} y2={plotBottom} className="stroke-zinc-400" strokeWidth={1} />
         <line x1={b.left} x2={b.left} y1={b.top} y2={plotBottom} className="stroke-zinc-400" strokeWidth={1} />
         <text x={(b.left + plotRight) / 2} y={b.height - 6} textAnchor="middle" className="fill-zinc-700 text-[12px] font-semibold">
-          GPA (unweighted, rounded to 0.05)
+          {t("teacher.charts.axisGpa")}
         </text>
         <text x={14} y={(b.top + plotBottom) / 2} textAnchor="middle" transform={`rotate(-90 14 ${(b.top + plotBottom) / 2})`} className="fill-zinc-700 text-[12px] font-semibold">
-          {METRIC_LABEL[metric]}
+          {metricText(t, metric)}
         </text>
         {m.points.map((p, i) => (
           <Marker key={i} outcome={p.outcome} x={p.x} y={p.y} />
@@ -102,8 +108,7 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
       </svg>
       {m.unplotted > 0 && (
         <figcaption className="text-xs text-zinc-500">
-          {m.unplotted} {m.unplotted === 1 ? "student has" : "students have"} no GPA or {metric.toUpperCase()} on file, so {m.unplotted === 1 ? "is" : "are"} counted above but not
-          drawn.
+          {t(m.unplotted === 1 ? "teacher.charts.unplotted.one" : "teacher.charts.unplotted.other", { n: m.unplotted, metric: metric.toUpperCase() })}
         </figcaption>
       )}
     </figure>
@@ -111,16 +116,17 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
 }
 
 function PointTable({ college, metric }: { college: CollegeOutcomes; metric: TestMetric }) {
+  const t = useT();
   return (
     <details className="text-sm">
-      <summary className="cursor-pointer font-medium text-blue-700">Show as a table</summary>
+      <summary className="cursor-pointer font-medium text-blue-700">{t("teacher.charts.showTable")}</summary>
       <table className="mt-2 w-full max-w-md text-left">
         <thead className="text-zinc-500">
           <tr>
             <th className="py-1 pr-4 font-medium">GPA</th>
             <th className="py-1 pr-4 font-medium">{metric.toUpperCase()}</th>
-            <th className="py-1 pr-4 font-medium">Plan</th>
-            <th className="py-1 font-medium">Outcome</th>
+            <th className="py-1 pr-4 font-medium">{t("teacher.charts.thPlan")}</th>
+            <th className="py-1 font-medium">{t("teacher.charts.thOutcome")}</th>
           </tr>
         </thead>
         <tbody>
@@ -129,7 +135,7 @@ function PointTable({ college, metric }: { college: CollegeOutcomes; metric: Tes
               <td className="py-1 pr-4">{p.gpa?.toFixed(2) ?? "-"}</td>
               <td className="py-1 pr-4">{p[metric] ?? "-"}</td>
               <td className="py-1 pr-4">{p.plan ?? "-"}</td>
-              <td className="py-1">{OUTCOME_LABEL[p.outcome]}</td>
+              <td className="py-1">{statusText(t, OUTCOME_LABEL[p.outcome])}</td>
             </tr>
           ))}
         </tbody>
@@ -139,17 +145,17 @@ function PointTable({ college, metric }: { college: CollegeOutcomes; metric: Tes
 }
 
 function FloorNotice({ data }: { data: ClassOutcomes }) {
+  const t = useT();
   return (
     <div className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-600">
-      <p className="font-semibold text-ink">Not enough results to chart yet.</p>
+      <p className="font-semibold text-ink">{t("teacher.charts.floorTitle")}</p>
       <p className="mt-2">
-        To keep students anonymous, charts appear once at least {MIN_STUDENTS} students here have recorded a decision (admitted, waitlisted or denied), and a
-        college appears only when at least {MIN_STUDENTS} of them applied there. So far: {data.studentsWithOutcomes} of {MIN_STUDENTS}.
+        {t("teacher.charts.floorBody", { min: MIN_STUDENTS, n: data.studentsWithOutcomes })}
       </p>
       <p className="mt-2">
-        Students record decisions on their Results page.{" "}
+        {t("teacher.charts.resultsPage")}
         <Link href="/teacher/students" className="font-semibold text-blue-700 underline underline-offset-4">
-          See your students
+          {t("teacher.charts.seeStudents")}
         </Link>
       </p>
     </div>
@@ -157,6 +163,7 @@ function FloorNotice({ data }: { data: ClassOutcomes }) {
 }
 
 function OutcomesPanel({ classId }: { classId: string | null }) {
+  const t = useT();
   const load = useCallback(() => teacherOutcomes(classId), [classId]);
   const { data, error, retry } = useLoad(load);
   const [collegeId, setCollegeId] = useState<string | null>(null);
@@ -166,10 +173,10 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
     return error ? (
       <div className="space-y-3">
         <p role="alert" className="text-sm text-urgent">
-          {error}
+          {errorText(t, error)}
         </p>
         <button type="button" className={btn} onClick={retry}>
-          Try again
+          {t("teacher.tryAgain")}
         </button>
       </div>
     ) : (
@@ -181,8 +188,9 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
   if (data.colleges.length === 0) {
     return (
       <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-600">
-        No college has decisions from {MIN_STUDENTS} or more of these students yet
-        {data.hiddenColleges > 0 ? ` (${data.hiddenColleges} ${data.hiddenColleges === 1 ? "college is" : "colleges are"} below that and hidden)` : ""}.
+        {data.hiddenColleges > 0
+          ? t(data.hiddenColleges === 1 ? "teacher.charts.noCollegeHidden.one" : "teacher.charts.noCollegeHidden.other", { min: MIN_STUDENTS, n: data.hiddenColleges })
+          : t("teacher.charts.noCollege", { min: MIN_STUDENTS })}
       </p>
     );
   }
@@ -194,7 +202,7 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end gap-4">
         <label className="text-sm font-medium">
-          College
+          {t("teacher.charts.college")}
           <select
             value={college.collegeId}
             onChange={(e) => setCollegeId(e.target.value)}
@@ -207,7 +215,7 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
             ))}
           </select>
         </label>
-        <div role="group" aria-label="Test score axis" className="flex gap-2">
+        <div role="group" aria-label={t("teacher.charts.axisGroup")} className="flex gap-2">
           {(["sat", "act"] as const).map((k) => (
             <button key={k} type="button" aria-pressed={metric === k} className={buttonClass("secondary", "sm", metric === k)} onClick={() => setMetricChoice(k)}>
               {k.toUpperCase()}
@@ -221,8 +229,7 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
       <PointTable college={college} metric={metric} />
       {data.hiddenColleges > 0 && (
         <p className="text-xs text-zinc-500">
-          {data.hiddenColleges} more {data.hiddenColleges === 1 ? "college has" : "colleges have"} decisions from fewer than {MIN_STUDENTS} of these students and{" "}
-          {data.hiddenColleges === 1 ? "is" : "are"} not shown.
+          {t(data.hiddenColleges === 1 ? "teacher.charts.hidden.one" : "teacher.charts.hidden.other", { n: data.hiddenColleges, min: MIN_STUDENTS })}
         </p>
       )}
     </div>
@@ -230,6 +237,7 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
 }
 
 function ChartsView() {
+  const t = useT();
   const loadClasses = useCallback(async () => (await loadTeacherOverview()).classes, []);
   const classes = useLoad(loadClasses).data ?? [];
   const [classId, setClassId] = useState<string>("");
@@ -238,20 +246,19 @@ function ChartsView() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="space-y-1">
-          <h1 className="font-display text-3xl font-bold">Class charts</h1>
+          <h1 className="font-display text-3xl font-bold">{t("teacher.charts.title")}</h1>
           <p className="max-w-2xl text-sm text-zinc-600">
-            How your students did at each college: GPA against test score, by decision. Points are anonymous, with no names and no order, and only groups of{" "}
-            {MIN_STUDENTS} or more students are shown.
+            {t("teacher.charts.intro", { min: MIN_STUDENTS })}
           </p>
         </div>
         <label className="text-sm font-medium">
-          Students
+          {t("teacher.students.heading")}
           <select value={classId} onChange={(e) => setClassId(e.target.value)} className="ml-2 rounded-md border border-zinc-300 px-3 py-2 text-sm">
-            <option value="">All my students</option>
+            <option value="">{t("teacher.charts.allMine")}</option>
             {classes.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}
-                {c.archived ? " (archived)" : ""}
+                {c.archived ? ` ${t("teacher.charts.archivedSuffix")}` : ""}
               </option>
             ))}
           </select>

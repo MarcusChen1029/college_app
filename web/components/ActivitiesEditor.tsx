@@ -4,9 +4,7 @@ import { useState, useSyncExternalStore } from "react";
 import {
   CA_ACTIVITY_TYPES,
   CA_LIMITS,
-  CA_TIMING,
   GRADES,
-  HONOR_LEVELS,
   move,
   newCaActivity,
   newCaHonor,
@@ -27,11 +25,82 @@ import {
   type UcEntry,
 } from "@/lib/activities";
 import { SignInButton } from "@/components/SignInDialog";
+import type { MessageKey, TFunction } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const input = "w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
+
+// Stored values stay English (Common App activity types, enum ids); these maps only supply the visible label.
+const CA_TYPE_KEYS: Record<(typeof CA_ACTIVITY_TYPES)[number], MessageKey> = {
+  Academic: "writing.caType.academic",
+  Art: "writing.caType.art",
+  "Athletics: Club": "writing.caType.athleticsClub",
+  "Athletics: JV/Varsity": "writing.caType.athleticsVarsity",
+  "Career Oriented": "writing.caType.careerOriented",
+  "Community Service (Volunteer)": "writing.caType.communityService",
+  "Computer/Technology": "writing.caType.computerTech",
+  Cultural: "writing.caType.cultural",
+  Dance: "writing.caType.dance",
+  "Debate/Speech": "writing.caType.debateSpeech",
+  Environmental: "writing.caType.environmental",
+  "Family Responsibilities": "writing.caType.familyResponsibilities",
+  "Foreign Exchange": "writing.caType.foreignExchange",
+  "Foreign Language": "writing.caType.foreignLanguage",
+  Internship: "writing.caType.internship",
+  "Journalism/Publication": "writing.caType.journalism",
+  "Junior R.O.T.C.": "writing.caType.rotc",
+  LGBT: "writing.caType.lgbt",
+  "Music: Instrumental": "writing.caType.musicInstrumental",
+  "Music: Vocal": "writing.caType.musicVocal",
+  Religious: "writing.caType.religious",
+  Research: "writing.caType.research",
+  Robotics: "writing.caType.robotics",
+  "School Spirit": "writing.caType.schoolSpirit",
+  "Science/Math": "writing.caType.scienceMath",
+  "Social Justice": "writing.caType.socialJustice",
+  "Student Govt./Politics": "writing.caType.studentGovt",
+  "Theater/Drama": "writing.caType.theater",
+  "Work (Paid)": "writing.caType.workPaid",
+  "Other Club/Activity": "writing.caType.otherClub",
+};
+const typeLabel = (t: TFunction, type: string) => {
+  const key = (CA_TYPE_KEYS as Record<string, MessageKey | undefined>)[type];
+  return key ? t(key) : type;
+};
+const CA_TIMING_KEYS: Record<CaTiming, MessageKey> = { school: "writing.timing.school", break: "writing.timing.break" };
+const HONOR_KEYS: Record<HonorLevel, MessageKey> = {
+  school: "writing.honorLevel.school",
+  state_regional: "writing.honorLevel.state_regional",
+  national: "writing.honorLevel.national",
+  international: "writing.honorLevel.international",
+};
+const AWARD_KEYS: Record<UcAwardLevel, MessageKey> = {
+  school: "writing.awardLevel.school",
+  city: "writing.awardLevel.city",
+  state: "writing.awardLevel.state",
+  regional: "writing.awardLevel.regional",
+  national: "writing.awardLevel.national",
+  international: "writing.awardLevel.international",
+};
+const UC_FORM_KEYS: Record<UcCategory, { label: MessageKey; name: MessageKey; organization?: MessageKey; extra?: MessageKey; description: MessageKey }> = {
+  award: { label: "writing.uc.award.label", name: "writing.uc.award.name", extra: "writing.uc.award.extra", description: "writing.uc.award.description" },
+  edprep: { label: "writing.uc.edprep.label", name: "writing.uc.edprep.name", description: "writing.uc.edprep.description" },
+  extracurricular: { label: "writing.uc.extracurricular.label", name: "writing.uc.extracurricular.name", description: "writing.uc.extracurricular.description" },
+  coursework: { label: "writing.uc.coursework.label", name: "writing.uc.coursework.name", description: "writing.uc.coursework.description" },
+  volunteer: { label: "writing.uc.volunteer.label", name: "writing.uc.volunteer.name", extra: "writing.uc.volunteer.extra", description: "writing.uc.volunteer.description" },
+  work: {
+    label: "writing.uc.work.label",
+    name: "writing.uc.work.name",
+    organization: "writing.uc.work.organization",
+    extra: "writing.uc.work.extra",
+    description: "writing.uc.work.description",
+  },
+};
+const labels = <K extends string>(keys: Record<K, MessageKey>, t: TFunction) =>
+  Object.fromEntries((Object.keys(keys) as K[]).map((k) => [k, t(keys[k])])) as Record<K, string>;
 
 // ── small fields ──
 
@@ -101,7 +170,7 @@ function Checks<K extends string>({ label, options, value, onChange }: { label: 
   );
 }
 
-const GRADE_OPTIONS = Object.fromEntries(GRADES.map((g) => [g, g === "PG" ? "Post-grad" : g])) as Record<Grade, string>;
+const gradeOptions = (t: TFunction) => Object.fromEntries(GRADES.map((g) => [g, g === "PG" ? t("writing.grade.PG") : g])) as Record<Grade, string>;
 
 // ── entry card ──
 
@@ -124,23 +193,24 @@ function Card({
   onRemove: () => void;
   children: React.ReactNode;
 }) {
+  const t = useT();
   const btn = "grid h-7 w-7 place-items-center rounded-md text-zinc-500 hover:bg-zinc-100";
   return (
     <li className="rounded-2xl border border-zinc-200">
       <div className="flex items-center gap-2 p-3">
         <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-50 text-xs font-bold text-blue-700">{index + 1}</span>
         <button type="button" onClick={onToggle} className="min-w-0 flex-1 text-left" aria-expanded={open}>
-          <span className="block truncate font-semibold">{title || <span className="font-normal text-zinc-400">Untitled</span>}</span>
+          <span className="block truncate font-semibold">{title || <span className="font-normal text-zinc-400">{t("writing.untitled")}</span>}</span>
           {subtitle && <span className="block truncate text-xs text-zinc-500">{subtitle}</span>}
         </button>
-        <button type="button" className={btn} onClick={() => onMove(-1)} aria-label="Move up">
+        <button type="button" className={btn} onClick={() => onMove(-1)} aria-label={t("writing.moveUp")}>
           ↑
         </button>
-        <button type="button" className={btn} onClick={() => onMove(1)} aria-label="Move down">
+        <button type="button" className={btn} onClick={() => onMove(1)} aria-label={t("writing.moveDown")}>
           ↓
         </button>
         <button type="button" className={buttonClass("danger", "sm")} onClick={onRemove}>
-          Remove
+          {t("common.remove")}
         </button>
       </div>
       {open && <div className="grid gap-3 border-t border-zinc-100 p-3 sm:grid-cols-2">{children}</div>}
@@ -151,40 +221,43 @@ function Card({
 const wide = "sm:col-span-2";
 
 function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<CaActivity>) => void }) {
+  const t = useT();
   return (
     <>
       <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">Activity type</span>
+        <span className="text-xs text-zinc-500">{t("writing.activityType")}</span>
         <select className={input} value={a.type} onChange={(e) => set({ type: e.target.value })}>
-          <option value="">Choose…</option>
-          {CA_ACTIVITY_TYPES.map((t) => (
-            <option key={t}>{t}</option>
+          <option value="">{t("writing.choose")}</option>
+          {CA_ACTIVITY_TYPES.map((type) => (
+            <option key={type} value={type}>
+              {typeLabel(t, type)}
+            </option>
           ))}
         </select>
       </label>
-      <TextField label="Position / leadership" value={a.position} max={CA_LIMITS.position} onSave={(position) => set({ position })} />
+      <TextField label={t("writing.position")} value={a.position} max={CA_LIMITS.position} onSave={(position) => set({ position })} />
       <div className={wide}>
-        <TextField label="Organization name" value={a.organization} max={CA_LIMITS.organization} onSave={(organization) => set({ organization })} />
+        <TextField label={t("writing.organizationName")} value={a.organization} max={CA_LIMITS.organization} onSave={(organization) => set({ organization })} />
       </div>
       <div className={wide}>
-        <TextField label="Description (accomplishments, recognition)" value={a.description} max={CA_LIMITS.description} rows={2} onSave={(description) => set({ description })} />
+        <TextField label={t("writing.caDescription")} value={a.description} max={CA_LIMITS.description} rows={2} onSave={(description) => set({ description })} />
       </div>
-      <Checks label="Grade levels" options={GRADE_OPTIONS} value={a.grades} onChange={(grades) => set({ grades })} />
-      <Checks<CaTiming> label="Timing" options={CA_TIMING} value={a.timing} onChange={(timing) => set({ timing })} />
+      <Checks label={t("writing.gradeLevels")} options={gradeOptions(t)} value={a.grades} onChange={(grades) => set({ grades })} />
+      <Checks<CaTiming> label={t("writing.timing")} options={labels(CA_TIMING_KEYS, t)} value={a.timing} onChange={(timing) => set({ timing })} />
       <div className="flex gap-3">
-        <NumberField label="Hours / week" value={a.hoursPerWeek} max={168} onSave={(hoursPerWeek) => set({ hoursPerWeek })} />
-        <NumberField label="Weeks / year" value={a.weeksPerYear} max={52} onSave={(weeksPerYear) => set({ weeksPerYear })} />
+        <NumberField label={t("writing.hoursWeek")} value={a.hoursPerWeek} max={168} onSave={(hoursPerWeek) => set({ hoursPerWeek })} />
+        <NumberField label={t("writing.weeksYear")} value={a.weeksPerYear} max={52} onSave={(weeksPerYear) => set({ weeksPerYear })} />
       </div>
       <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">Continue in college?</span>
+        <span className="text-xs text-zinc-500">{t("writing.continueCollege")}</span>
         <select
           className={`${input} w-auto`}
           value={a.continueInCollege == null ? "" : a.continueInCollege ? "yes" : "no"}
           onChange={(e) => set({ continueInCollege: e.target.value === "" ? null : e.target.value === "yes" })}
         >
           <option value="">—</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="yes">{t("common.yes")}</option>
+          <option value="no">{t("common.no")}</option>
         </select>
       </label>
     </>
@@ -192,73 +265,76 @@ function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<CaActivi
 }
 
 function CaHonorFields({ h, set }: { h: CaHonor; set: (p: Partial<CaHonor>) => void }) {
+  const t = useT();
   return (
     <>
       <div className={wide}>
-        <TextField label="Honor title" value={h.title} max={CA_LIMITS.honorTitle} onSave={(title) => set({ title })} />
+        <TextField label={t("writing.honorTitle")} value={h.title} max={CA_LIMITS.honorTitle} onSave={(title) => set({ title })} />
       </div>
-      <Checks label="Grade levels" options={GRADE_OPTIONS} value={h.grades} onChange={(grades) => set({ grades })} />
-      <Checks<HonorLevel> label="Level(s) of recognition" options={HONOR_LEVELS} value={h.levels} onChange={(levels) => set({ levels })} />
+      <Checks label={t("writing.gradeLevels")} options={gradeOptions(t)} value={h.grades} onChange={(grades) => set({ grades })} />
+      <Checks<HonorLevel> label={t("writing.honorLevels")} options={labels(HONOR_KEYS, t)} value={h.levels} onChange={(levels) => set({ levels })} />
     </>
   );
 }
 
 function UcFields({ e, set }: { e: UcEntry; set: (p: Partial<UcEntry>) => void }) {
+  const t = useT();
   const form = UC_CATEGORIES[e.category];
+  const fk = UC_FORM_KEYS[e.category];
   return (
     <>
       <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">Category</span>
+        <span className="text-xs text-zinc-500">{t("writing.category")}</span>
         <select className={input} value={e.category} onChange={(ev) => set({ category: ev.target.value as UcCategory })}>
           {UC_CATEGORY_KEYS.map((k) => (
             <option key={k} value={k}>
-              {UC_CATEGORIES[k].label}
+              {t(UC_FORM_KEYS[k].label)}
             </option>
           ))}
         </select>
       </label>
-      <TextField key={`name-${e.category}`} label={form.name} value={e.name} max={UC_LIMITS.name} onSave={(name) => set({ name })} />
-      {form.organization && <TextField label={form.organization} value={e.organization} max={UC_LIMITS.name} onSave={(organization) => set({ organization })} />}
+      <TextField key={`name-${e.category}`} label={t(fk.name)} value={e.name} max={UC_LIMITS.name} onSave={(name) => set({ name })} />
+      {fk.organization && <TextField label={t(fk.organization)} value={e.organization} max={UC_LIMITS.name} onSave={(organization) => set({ organization })} />}
       {e.category === "award" && (
         <div className="flex flex-wrap gap-3">
           <label className="flex flex-col gap-1">
-            <span className="text-xs text-zinc-500">Level of recognition</span>
+            <span className="text-xs text-zinc-500">{t("writing.levelOfRecognition")}</span>
             <select className={`${input} w-auto`} value={e.awardLevel ?? ""} onChange={(ev) => set({ awardLevel: (ev.target.value || null) as UcAwardLevel | null })}>
               <option value="">—</option>
               {(Object.keys(UC_AWARD_LEVELS) as UcAwardLevel[]).map((k) => (
                 <option key={k} value={k}>
-                  {UC_AWARD_LEVELS[k]}
+                  {t(AWARD_KEYS[k])}
                 </option>
               ))}
             </select>
           </label>
           <label className="flex flex-col gap-1">
-            <span className="text-xs text-zinc-500">Type</span>
+            <span className="text-xs text-zinc-500">{t("writing.awardType")}</span>
             <select
               className={`${input} w-auto`}
               value={e.awardType ?? ""}
               onChange={(ev) => set({ awardType: (ev.target.value || null) as UcEntry["awardType"] })}
             >
               <option value="">—</option>
-              <option value="academic">Academic</option>
-              <option value="non_academic">Non-academic</option>
+              <option value="academic">{t("writing.awardAcademic")}</option>
+              <option value="non_academic">{t("writing.awardNonAcademic")}</option>
             </select>
           </label>
         </div>
       )}
-      {form.extra && (
+      {fk.extra && (
         <div className={wide}>
-          <TextField key={`extra-${e.category}`} label={form.extra} value={e.extra} max={UC_LIMITS.extra} rows={2} onSave={(extra) => set({ extra })} />
+          <TextField key={`extra-${e.category}`} label={t(fk.extra)} value={e.extra} max={UC_LIMITS.extra} rows={2} onSave={(extra) => set({ extra })} />
         </div>
       )}
       <div className={wide}>
-        <TextField key={`desc-${e.category}`} label={form.description} value={e.description} max={UC_LIMITS.description} rows={4} onSave={(description) => set({ description })} />
+        <TextField key={`desc-${e.category}`} label={t(fk.description)} value={e.description} max={UC_LIMITS.description} rows={4} onSave={(description) => set({ description })} />
       </div>
-      <Checks label="Grade levels" options={GRADE_OPTIONS} value={e.grades} onChange={(grades) => set({ grades })} />
+      <Checks label={t("writing.gradeLevels")} options={gradeOptions(t)} value={e.grades} onChange={(grades) => set({ grades })} />
       {form.hours && (
         <div className="flex gap-3">
-          <NumberField label="Hours / week" value={e.hoursPerWeek} max={168} onSave={(hoursPerWeek) => set({ hoursPerWeek })} />
-          <NumberField label="Weeks / year" value={e.weeksPerYear} max={52} onSave={(weeksPerYear) => set({ weeksPerYear })} />
+          <NumberField label={t("writing.hoursWeek")} value={e.hoursPerWeek} max={168} onSave={(hoursPerWeek) => set({ hoursPerWeek })} />
+          <NumberField label={t("writing.weeksYear")} value={e.weeksPerYear} max={52} onSave={(weeksPerYear) => set({ weeksPerYear })} />
         </div>
       )}
     </>
@@ -293,6 +369,7 @@ function EntryList<T extends Item>({
   render: (item: T, set: (p: Partial<T>) => void) => React.ReactNode;
   extraAction?: React.ReactNode;
 }) {
+  const t = useT();
   const [open, setOpen] = useState<string | null>(null);
   const full = items.length >= limit;
   return (
@@ -319,7 +396,7 @@ function EntryList<T extends Item>({
         </span>
       </div>
       {items.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">Nothing here yet.</p>
+        <p className="rounded-lg border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">{t("writing.nothingYet")}</p>
       ) : (
         <ol className="space-y-2">
           {items.map((item, i) => (
@@ -332,7 +409,7 @@ function EntryList<T extends Item>({
               onToggle={() => setOpen(open === item.id ? null : item.id)}
               onMove={(dir) => onChange(move(items, i, dir))}
               onRemove={() => {
-                if (window.confirm(`Remove "${title(item) || "Untitled"}"?`)) onChange(items.filter((x) => x.id !== item.id));
+                if (window.confirm(t("writing.confirmRemove", { name: title(item) || t("writing.untitled") }))) onChange(items.filter((x) => x.id !== item.id));
               }}
             >
               {render(item, (p) => onChange(items.map((x) => (x.id === item.id ? { ...x, ...p } : x))))}
@@ -344,11 +421,10 @@ function EntryList<T extends Item>({
   );
 }
 
-const grades = (g: Grade[]) => (g.length ? `Grades ${g.join(", ")}` : "");
-const hours = (h: number | null, w: number | null) => (h != null || w != null ? `${h ?? "?"} hr/wk · ${w ?? "?"} wk/yr` : "");
 const join = (...parts: string[]) => parts.filter(Boolean).join(" · ");
 
 export function ActivitiesEditor() {
+  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [tab, setTab] = useState<"common" | "uc">("common");
@@ -363,6 +439,9 @@ export function ActivitiesEditor() {
   const drafts = ucDraftsFromCommonApp(data);
   const room = UC_LIMITS.entries - data.uc.length;
 
+  const grades = (g: Grade[]) => (g.length ? t("writing.gradesList", { list: g.join(", ") }) : "");
+  const hours = (h: number | null, w: number | null) => (h != null || w != null ? t("writing.hoursSummary", { h: h ?? "?", w: w ?? "?" }) : "");
+
   const tabBtn = (key: typeof tab, label: string) => (
     <button
       type="button"
@@ -376,54 +455,58 @@ export function ActivitiesEditor() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-2">
-        {tabBtn("common", "Common App")}
-        {tabBtn("uc", "UC application")}
+        {tabBtn("common", t("writing.tabCommonApp"))}
+        {tabBtn("uc", t("writing.tabUc"))}
         <span className="ml-auto text-xs text-zinc-500">
-          {student.auth ? "Synced to your account." : "Saved in this browser only. "}
-          {!student.auth && <SignInButton className="text-blue-600 underline">Sign in</SignInButton>}
+          {student.auth ? t("writing.synced") : t("writing.savedLocal")}
+          {!student.auth && <SignInButton className="text-blue-600 underline">{t("account.signIn")}</SignInButton>}
         </span>
       </div>
 
       {tab === "common" ? (
         <>
           <EntryList<CaActivity>
-            heading="Activities"
+            heading={t("writing.headingActivities")}
             items={data.commonApp.activities}
             limit={CA_LIMITS.activities}
-            addLabel="+ Add activity"
+            addLabel={t("writing.addActivity")}
             make={newCaActivity}
             onChange={(activities) => save({ ...data, commonApp: { ...data.commonApp, activities } })}
             title={(a) => a.organization || a.position}
-            subtitle={(a) => join(a.type, a.position && a.organization ? a.position : "", grades(a.grades), hours(a.hoursPerWeek, a.weeksPerYear))}
+            subtitle={(a) => join(typeLabel(t, a.type), a.position && a.organization ? a.position : "", grades(a.grades), hours(a.hoursPerWeek, a.weeksPerYear))}
             render={(a, set) => <CaActivityFields a={a} set={set} />}
           />
           <EntryList<CaHonor>
-            heading="Honors"
+            heading={t("writing.headingHonors")}
             items={data.commonApp.honors}
             limit={CA_LIMITS.honors}
-            addLabel="+ Add honor"
+            addLabel={t("writing.addHonor")}
             make={newCaHonor}
             onChange={(honors) => save({ ...data, commonApp: { ...data.commonApp, honors } })}
             title={(h) => h.title}
-            subtitle={(h) => join(h.levels.map((l) => HONOR_LEVELS[l]).join(", "), grades(h.grades))}
+            subtitle={(h) => join(h.levels.map((l) => t(HONOR_KEYS[l])).join(", "), grades(h.grades))}
             render={(h, set) => <CaHonorFields h={h} set={set} />}
           />
           <p className="text-xs text-zinc-500">
-            List activities in order of importance. Common App limits: position {CA_LIMITS.position}, organization {CA_LIMITS.organization}, description{" "}
-            {CA_LIMITS.description} and honor title {CA_LIMITS.honorTitle} characters. Check the live form before submitting.
+            {t("writing.caLimitsNote", {
+              position: CA_LIMITS.position,
+              organization: CA_LIMITS.organization,
+              description: CA_LIMITS.description,
+              honorTitle: CA_LIMITS.honorTitle,
+            })}
           </p>
         </>
       ) : (
         <>
           <EntryList<UcEntry>
-            heading="Activities & awards"
+            heading={t("writing.headingUc")}
             items={data.uc}
             limit={UC_LIMITS.entries}
-            addLabel="+ Add entry"
+            addLabel={t("writing.addEntry")}
             make={() => newUcEntry("extracurricular")}
             onChange={(uc) => save({ ...data, uc })}
             title={(e) => e.name}
-            subtitle={(e) => join(UC_CATEGORIES[e.category].label, grades(e.grades), UC_CATEGORIES[e.category].hours ? hours(e.hoursPerWeek, e.weeksPerYear) : "")}
+            subtitle={(e) => join(t(UC_FORM_KEYS[e.category].label), grades(e.grades), UC_CATEGORIES[e.category].hours ? hours(e.hoursPerWeek, e.weeksPerYear) : "")}
             render={(e, set) => <UcFields e={e} set={set} />}
             extraAction={
               drafts.length > 0 && (
@@ -432,16 +515,15 @@ export function ActivitiesEditor() {
                   disabled={room <= 0}
                   className={buttonClass("secondary", "sm")}
                   onClick={() => save({ ...data, uc: [...data.uc, ...drafts.slice(0, room)] })}
-                  title="Creates UC drafts from your Common App activities and honors. The UC boxes are longer, so expand the text afterwards."
+                  title={t("writing.copyFromCommonAppTitle")}
                 >
-                  Copy {Math.min(drafts.length, Math.max(room, 0))} from Common App
+                  {t("writing.copyFromCommonApp", { n: Math.min(drafts.length, Math.max(room, 0)) })}
                 </button>
               )
             }
           />
           <p className="text-xs text-zinc-500">
-            Up to {UC_LIMITS.entries} entries across six categories. Descriptions take up to {UC_LIMITS.description} characters; awards, volunteering and
-            work add a {UC_LIMITS.extra}-character box. Check the live form before submitting.
+            {t("writing.ucLimitsNote", { entries: UC_LIMITS.entries, description: UC_LIMITS.description, extra: UC_LIMITS.extra })}
           </p>
         </>
       )}

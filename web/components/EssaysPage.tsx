@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ESSAY_STATUSES, isDone, newEssay, safeLink, type Checklist, type Essay } from "@/lib/checklist";
 import { docTitle } from "@/lib/google-doc-title";
-import { PS_PROMPTS, PS_WORDS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, UC_WORDS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
+import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey } from "@/lib/i18n";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { essayTone } from "@/lib/status";
 import { buttonClass, toneClass } from "@/lib/ui";
@@ -35,11 +37,19 @@ async function googlePost(path: string, body: unknown = {}): Promise<{ status: n
   return { status: res.status, data: (await res.json().catch(() => ({}))) as Record<string, unknown> };
 }
 
-const GOOGLE_NOTICE: Record<string, string> = {
-  connected: "Google Docs connected. + New Google Doc now creates the doc in your Google Drive and links it here.",
-  error: "Couldn't connect Google Docs. Try again, or keep using + New Google Doc and Paste link.",
-  reconnect: "Google Docs access has expired or was removed. Press Connect Google Docs to turn it back on.",
-  failed: "Couldn't create the Google Doc. Try again in a moment, or use Paste link.",
+const GOOGLE_NOTICE: Record<string, MessageKey> = {
+  connected: "writing.notice.connected",
+  error: "writing.notice.error",
+  reconnect: "writing.notice.reconnect",
+  failed: "writing.notice.failed",
+};
+
+const STATUS_KEYS: Record<Essay["status"], MessageKey> = {
+  not_started: "writing.status.not_started",
+  brainstorming: "writing.status.brainstorming",
+  drafting: "writing.status.drafting",
+  revising: "writing.status.revising",
+  final: "writing.status.final",
 };
 
 // Read once on load: /api/google/callback sends the student back with ?google=connected|error.
@@ -66,6 +76,7 @@ function EssayRow({
   /** A fixed name instead of an editable one (personal statement, UC questions). */
   label?: string;
 }) {
+  const t = useT();
   const [pasteFailed, setPasteFailed] = useState(false);
   const [creating, setCreating] = useState(false);
   const [createFailed, setCreateFailed] = useState(false);
@@ -112,8 +123,8 @@ function EssayRow({
               ref={titleRef}
               className={`${input} min-w-48 flex-1`}
               defaultValue={essay.title}
-              placeholder="Prompt or name, e.g. Why us?"
-              aria-label={`Essay ${index + 1} name`}
+              placeholder={t("writing.namePlaceholder")}
+              aria-label={t("writing.essayNameAria", { n: index + 1 })}
               onBlur={(e) => e.target.value !== essay.title && onChange({ title: e.target.value })}
             />
           </>
@@ -121,17 +132,17 @@ function EssayRow({
         <select
           className={`${inputBase} ${toneClass(essayTone(essay.status))}`}
           value={essay.status}
-          aria-label={`${label ?? `Essay ${index + 1}`} status`}
+          aria-label={t("writing.statusAria", { name: label ?? t("writing.essayN", { n: index + 1 }) })}
           onChange={(e) => onChange({ status: e.target.value as Essay["status"] })}
         >
-          {ESSAY_STATUSES.map(([k, label]) => (
+          {ESSAY_STATUSES.map(([k]) => (
             <option key={k} value={k}>
-              {label}
+              {t(STATUS_KEYS[k])}
             </option>
           ))}
         </select>
         {onRemove && (
-          <button type="button" className="rounded px-1 text-zinc-400 hover:text-urgent" aria-label={`Remove essay ${index + 1}`} onClick={onRemove}>
+          <button type="button" className="rounded px-1 text-zinc-400 hover:text-urgent" aria-label={t("writing.removeEssayAria", { n: index + 1 })} onClick={onRemove}>
             ✕
           </button>
         )}
@@ -145,18 +156,18 @@ function EssayRow({
               rel="noopener noreferrer"
               className={buttonClass("primary", "sm")}
             >
-              Open Google Doc ↗
+              {t("writing.openDoc")}
             </a>
             <input
               key={essay.url}
               type="url"
               className={`${input} min-w-48 flex-1 text-xs text-zinc-500`}
               defaultValue={essay.url}
-              aria-label={`Essay ${index + 1} Google Doc link`}
+              aria-label={t("writing.docLinkAria", { n: index + 1 })}
               onBlur={(e) => e.target.value.trim() !== essay.url && onChange({ url: e.target.value.trim() })}
             />
             <button type="button" className="text-xs text-zinc-500 hover:text-urgent" onClick={() => onChange({ url: "" })}>
-              Unlink
+              {t("writing.unlink")}
             </button>
           </>
         ) : (
@@ -166,10 +177,10 @@ function EssayRow({
                 type="button"
                 disabled={creating}
                 className={buttonClass("primary", "sm")}
-                title="Creates a Google Doc in your Drive, links it to this essay and opens it."
+                title={t("writing.newDocCreateTitle")}
                 onClick={createDoc}
               >
-                {creating ? "Creating…" : "+ New Google Doc ↗"}
+                {creating ? t("writing.creating") : t("writing.newDoc")}
               </button>
             ) : (
               <a
@@ -177,34 +188,34 @@ function EssayRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={buttonClass("primary", "sm")}
-                title="Opens a blank Google Doc in a new tab. Copy its link and press Paste link."
+                title={t("writing.newDocBlankTitle")}
               >
-                + New Google Doc ↗
+                {t("writing.newDoc")}
               </a>
             )}
             <button type="button" className="rounded-md border border-zinc-300 px-3 py-1 text-sm hover:bg-zinc-50" onClick={paste}>
-              Paste link
+              {t("writing.pasteLink")}
             </button>
             {docs && !docs.connected && (
               <button
                 type="button"
                 className="rounded-md border border-blue-300 px-3 py-1 text-sm text-blue-700 hover:bg-blue-50"
-                title="Lets this site create essay docs in your Google Drive in one click. It can only see files it creates."
+                title={t("writing.connectDocsTitle")}
                 onClick={docs.connect}
               >
-                Connect Google Docs
+                {t("writing.connectDocs")}
               </button>
             )}
             <input
               type="url"
               className={`${input} min-w-48 flex-1`}
               defaultValue=""
-              placeholder="…or paste an existing Google Doc link"
-              aria-label={`Essay ${index + 1} Google Doc link`}
+              placeholder={t("writing.pastePlaceholder")}
+              aria-label={t("writing.docLinkAria", { n: index + 1 })}
               onBlur={(e) => e.target.value.trim() && onChange({ url: e.target.value.trim() })}
             />
-            {pasteFailed && <span className="w-full text-xs text-urgent">No link found on your clipboard. Copy the doc&apos;s address first, or paste it into the box.</span>}
-            {createFailed && <span className="w-full text-xs text-urgent">{GOOGLE_NOTICE.failed}</span>}
+            {pasteFailed && <span className="w-full text-xs text-urgent">{t("writing.pasteFailed")}</span>}
+            {createFailed && <span className="w-full text-xs text-urgent">{t(GOOGLE_NOTICE.failed)}</span>}
           </>
         )}
       </div>
@@ -213,14 +224,15 @@ function EssayRow({
 }
 
 /** One essay with a fixed name (status + Google Doc), stored on the profile rather than on a college. */
-function SharedDoc({ name, doc, onChange, google }: { name: string; doc: Partial<EssayDoc>; onChange: (patch: Partial<EssayDoc>) => void; google?: GoogleAccess }) {
+/** `name` is the English name used for the Google Doc title; `display` is what the student sees. */
+function SharedDoc({ name, display, doc, onChange, google }: { name: string; display: string; doc: Partial<EssayDoc>; onChange: (patch: Partial<EssayDoc>) => void; google?: GoogleAccess }) {
   const docs: GoogleDocs | undefined = google && { connected: google.connected, connect: google.connect, create: () => google.createNamed(name) };
   return (
     <ul>
       <EssayRow
         essay={{ id: name, title: name, url: doc.url ?? "", status: doc.status ?? "not_started" }}
         index={0}
-        label={name}
+        label={display}
         docs={docs}
         onChange={(p) => onChange({ ...(p.status ? { status: p.status } : {}), ...(p.url !== undefined ? { url: p.url } : {}) })}
       />
@@ -232,18 +244,20 @@ const SHARED_CARD = "space-y-3 rounded-3xl border-2 border-zinc-200 p-5";
 const PROMPT_BOX = "rounded-xl border border-zinc-200 p-3";
 
 function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess }) {
+  const t = useT();
   const ps = essays.ps ?? {};
   const set = (patch: NonNullable<PersonalEssays["ps"]>) => onChange({ ...essays, ps: { ...ps, ...patch } });
   return (
     <section className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-xl font-bold">Common App personal statement</h2>
-        <span className="text-xs text-zinc-500">{PS_WORDS} · one essay sent to every Common App college</span>
+        <h2 className="text-xl font-bold">{t("writing.psHeading")}</h2>
+        <span className="text-xs text-zinc-500">{t("writing.psWords")} · {t("writing.psNote")}</span>
       </div>
-      <SharedDoc name="Common App Personal Statement" doc={ps} onChange={set} google={google} />
+      <SharedDoc name="Common App Personal Statement" display={t("writing.psName")} doc={ps} onChange={set} google={google} />
       <details className={PROMPT_BOX}>
         <summary className="cursor-pointer text-sm font-medium">
-          Prompts: choose one{ps.prompt ? ` (you chose #${ps.prompt})` : ""}
+          {t("writing.psPrompts")}
+          {ps.prompt ? t("writing.psChose", { n: ps.prompt }) : ""}
         </summary>
         <ul className="mt-2 space-y-2">
           {PS_PROMPTS.map((p) => (
@@ -259,7 +273,7 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
         </ul>
         {ps.prompt && (
           <button type="button" className="mt-2 text-xs text-zinc-500 hover:text-urgent" onClick={() => set({ prompt: null })}>
-            Clear choice
+            {t("writing.clearChoice")}
           </button>
         )}
       </details>
@@ -268,31 +282,33 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
 }
 
 function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess }) {
+  const t = useT();
   const uc = essays.uc ?? {};
   const picks = uc.picks ?? [];
   const setUc = (patch: NonNullable<PersonalEssays["uc"]>) => onChange({ ...essays, uc: { ...uc, ...patch } });
   return (
     <section className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-xl font-bold">UC personal insight questions</h2>
+        <h2 className="text-xl font-bold">{t("writing.ucHeading")}</h2>
         <span className="text-xs text-zinc-500">
-          Choose {UC_PICKS} of {UC_PIQS.length} · {UC_WORDS} ·{" "}
+          {t("writing.ucChoose", { pick: UC_PICKS, total: UC_PIQS.length })} · {t("writing.ucWords")} ·{" "}
           <span className={`tabular-nums ${picks.length === UC_PICKS ? "font-medium text-done" : ""}`}>
-            {picks.length}/{UC_PICKS} chosen
+            {t("writing.ucChosen", { n: picks.length, pick: UC_PICKS })}
           </span>
         </span>
       </div>
       <ul className="space-y-2">
         {UC_PIQS.map((q) => {
           const picked = picks.includes(q.id);
-          const name = `UC PIQ ${q.id}`;
+          const name = `UC PIQ ${q.id}`; // English: becomes the Google Doc title
+          const display = t("writing.ucName", { n: q.id });
           return (
             <li key={q.id} className={`${PROMPT_BOX} space-y-2`}>
               <div className="flex items-start gap-2">
                 <input
                   type="checkbox"
                   className="mt-1"
-                  aria-label={`Answer question ${q.id}`}
+                  aria-label={t("writing.answerQuestionAria", { n: q.id })}
                   checked={picked}
                   disabled={!picked && picks.length >= UC_PICKS}
                   onChange={() => {
@@ -309,7 +325,7 @@ function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChan
               </div>
               {picked && (
                 <div className="pl-6">
-                  <SharedDoc name={name} doc={uc.docs?.[q.id] ?? {}} onChange={(p) => setUc({ docs: { ...uc.docs, [q.id]: { ...uc.docs?.[q.id], ...p } } })} google={google} />
+                  <SharedDoc name={name} display={display} doc={uc.docs?.[q.id] ?? {}} onChange={(p) => setUc({ docs: { ...uc.docs, [q.id]: { ...uc.docs?.[q.id], ...p } } })} google={google} />
                 </div>
               )}
             </li>
@@ -331,6 +347,7 @@ function CollegeEssays({
   onChange: (checklist: Checklist) => void;
   google?: GoogleAccess;
 }) {
+  const t = useT();
   const docs: GoogleDocs | undefined = google && {
     connected: google.connected,
     connect: google.connect,
@@ -347,7 +364,7 @@ function CollegeEssays({
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <span
           className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${done ? "bg-done text-white" : "border border-zinc-300"}`}
-          aria-label={done ? "essays done" : "essays not done"}
+          aria-label={done ? t("writing.essaysDoneAria") : t("writing.essaysNotDoneAria")}
         >
           {done ? "✓" : ""}
         </span>
@@ -356,10 +373,10 @@ function CollegeEssays({
             {college.name}
           </Link>
         </h2>
-        {essays.length > 0 && !c.no_essays && <span className="text-xs tabular-nums text-zinc-500">{finals}/{essays.length} final</span>}
+        {essays.length > 0 && !c.no_essays && <span className="text-xs tabular-nums text-zinc-500">{t("writing.finalCount", { done: finals, total: essays.length })}</span>}
         <label className="ml-auto flex items-center gap-1.5 text-xs text-zinc-600">
           <input type="checkbox" checked={!!c.no_essays} onChange={(e) => set({ no_essays: e.target.checked })} />
-          This college requires no essays
+          {t("writing.noEssaysRequired")}
         </label>
       </div>
       {!c.no_essays && (
@@ -378,14 +395,14 @@ function CollegeEssays({
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-zinc-500">No essays added yet.</p>
+            <p className="text-sm text-zinc-500">{t("writing.noEssaysYet")}</p>
           )}
           <button
             type="button"
             className="rounded-md border border-dashed border-zinc-300 px-3 py-1 text-sm text-zinc-600 hover:border-zinc-400 hover:text-zinc-900"
             onClick={() => set({ essay_list: [...essays, newEssay()] })}
           >
-            + Add essay
+            {t("writing.addEssay")}
           </button>
         </div>
       )}
@@ -394,6 +411,7 @@ function CollegeEssays({
 }
 
 export function EssaysPage({ colleges, platforms }: { colleges: CollegeSummary[]; platforms: Record<string, string[]> }) {
+  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
@@ -460,11 +478,11 @@ export function EssaysPage({ colleges, platforms }: { colleges: CollegeSummary[]
   if (entries.length === 0) {
     return (
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
-        Add colleges to{" "}
+        {t("writing.emptyPre")}
         <Link href="/application/list" className="text-blue-600 underline">
-          My list
-        </Link>{" "}
-        and their essays will show up here.
+          {t("nav.myList")}
+        </Link>
+        {t("writing.emptyPost")}
       </p>
     );
   }
@@ -476,8 +494,8 @@ export function EssaysPage({ colleges, platforms }: { colleges: CollegeSummary[]
           role="status"
           className={`flex items-start gap-3 rounded-lg border px-3 py-2 text-sm ${toneClass(notice === "connected" ? "done" : "soon")}`}
         >
-          <span className="flex-1">{GOOGLE_NOTICE[notice]}</span>
-          <button type="button" className="text-xs opacity-70 hover:opacity-100" aria-label="Dismiss" onClick={() => setNotice(null)}>
+          <span className="flex-1">{t(GOOGLE_NOTICE[notice])}</span>
+          <button type="button" className="text-xs opacity-70 hover:opacity-100" aria-label={t("writing.dismiss")} onClick={() => setNotice(null)}>
             ✕
           </button>
         </p>

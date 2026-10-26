@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { openSignIn } from "@/components/SignInDialog";
+import { useT } from "@/lib/i18n/client";
 import type { NavItem } from "@/lib/roles";
 import { buttonClass } from "@/lib/ui";
 
@@ -29,6 +30,7 @@ export function MenuSheet({
   active: string | null;
   account: SheetAccount;
 }) {
+  const t = useT();
   const ref = useRef<HTMLDialogElement>(null);
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const pathname = usePathname();
@@ -72,21 +74,21 @@ export function MenuSheet({
     <dialog
       ref={ref}
       id="site-menu"
-      aria-label="Site menu"
+      aria-label={t("menu.siteMenu")}
       onClose={onClose}
       onClick={(e) => e.target === ref.current && ref.current.close()}
       className="m-0 max-h-dvh w-full max-w-none overflow-y-auto border-b border-zinc-200 bg-white p-0 text-zinc-900 shadow-lg backdrop:bg-black/30"
     >
       <div className="px-4 pb-4">
         <div className="flex h-[69px] items-center justify-between">
-          <span className="font-display text-lg font-bold tracking-tight">Menu</span>
-          <button type="button" aria-label="Close menu" onClick={() => ref.current?.close()} className="flex size-11 items-center justify-center rounded-lg hover:bg-zinc-100">
+          <span className="font-display text-lg font-bold tracking-tight">{t("menu.title")}</span>
+          <button type="button" aria-label={t("menu.close")} onClick={() => ref.current?.close()} className="flex size-11 items-center justify-center rounded-lg hover:bg-zinc-100">
             <svg aria-hidden viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
         </div>
-        <nav aria-label="Menu">
+        <nav aria-label={t("menu.title")}>
           {items.map(([href, label]) => (
             <Link
               key={href}
@@ -116,16 +118,16 @@ export function MenuSheet({
                 account.onSignOut();
               }}
             >
-              Sign out
+              {t("account.signOut")}
             </button>
           ) : (
             <div className="flex items-center gap-3 px-3 pt-2">
               <button type="button" onClick={signIn} className={`${buttonClass("secondary", "md")} min-h-11`}>
-                Sign in
+                {t("account.signIn")}
               </button>
               {account.getStarted && (
                 <Link href="/start" onClick={() => ref.current?.close()} className={`${buttonClass("primary", "md")} min-h-11`}>
-                  Get started
+                  {t("account.getStarted")}
                 </Link>
               )}
             </div>

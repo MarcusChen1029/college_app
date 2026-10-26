@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
 /** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). */
 export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
   const student = useStudent();
+  const t = useT();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   return (
@@ -27,7 +29,7 @@ export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
         className={`${buttonClass("secondary")} w-full sm:w-auto`}
       >
         <GoogleMark />
-        {busy ? "Opening Google…" : "Continue with Google"}
+        {busy ? t("signIn.opening") : t("signIn.google")}
       </button>
       {error && <p className="text-sm text-urgent">{error}</p>}
     </>

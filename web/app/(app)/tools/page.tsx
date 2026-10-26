@@ -1,74 +1,81 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FillerDownload } from "@/components/FillerDownload";
+import { getT } from "@/lib/i18n/server";
+import type { TFunction } from "@/lib/i18n";
 import { buttonClass, toneClass } from "@/lib/ui";
 
 export const metadata: Metadata = { title: "Tools" };
 
 const card = "rounded-2xl border border-zinc-200 p-6";
 
-const INSTALL_STEPS = [
-  "Unzip the file.",
+const installSteps = (t: TFunction) => [
+  t("tools.filler.step1"),
   <>
-    Open <code className="rounded bg-zinc-100 px-1 py-0.5 text-[13px]">chrome://extensions</code> in Chrome.
+    {t("tools.filler.step2a")}
+    <code className="rounded bg-zinc-100 px-1 py-0.5 text-[13px]">chrome://extensions</code>
+    {t("tools.filler.step2b")}
   </>,
   <>
-    Turn on <strong>Developer mode</strong> (top right).
+    {t("tools.filler.step3a")}
+    <strong>{t("tools.filler.step3strong")}</strong>
+    {t("tools.filler.step3b")}
   </>,
   <>
-    Click <strong>Load unpacked</strong> and choose the unzipped folder.
+    {t("tools.filler.step4a")}
+    <strong>{t("tools.filler.step4strong")}</strong>
+    {t("tools.filler.step4b")}
   </>,
-  "Click the extension's icon, open the side panel, and sign in.",
+  t("tools.filler.step5"),
 ];
 
-export default function ToolsPage() {
+export default async function ToolsPage() {
+  const t = await getT();
   return (
     <div className="max-w-3xl space-y-6">
-      <h1 className="font-display text-3xl font-bold">Tools</h1>
+      <h1 className="font-display text-3xl font-bold">{t("tools.title")}</h1>
 
       <section aria-labelledby="resume-heading" className={`${card} space-y-3`}>
         <h2 id="resume-heading" className="text-xl font-bold">
-          Résumé generator
+          {t("tools.resume.heading")}
         </h2>
-        <p className="text-sm text-zinc-600">Build a one-page résumé from your activities and profile.</p>
+        <p className="text-sm text-zinc-600">{t("tools.resume.blurb")}</p>
         <Link href="/tools/resume" className={buttonClass("primary")}>
-          Open résumé generator
+          {t("tools.resume.open")}
         </Link>
       </section>
 
       <section aria-labelledby="interests-heading" className={`${card} space-y-3`}>
         <h2 id="interests-heading" className="text-xl font-bold">
-          Interest quiz
+          {t("tools.interests.heading")}
         </h2>
-        <p className="text-sm text-zinc-600">
-          30 quick questions give you a three-letter Holland (RIASEC) code, matching careers from O*NET, and college programs worth a look.
-        </p>
+        <p className="text-sm text-zinc-600">{t("tools.interests.blurb")}</p>
         <Link href="/tools/interests" className={buttonClass("primary")}>
-          Take the quiz
+          {t("tools.interests.cta")}
         </Link>
       </section>
 
       <section aria-labelledby="filler-heading" className={`${card} space-y-4`}>
         <div className="flex flex-wrap items-center gap-2">
           <h2 id="filler-heading" className="text-xl font-bold">
-            College application filler
+            {t("tools.filler.heading")}
           </h2>
-          <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${toneClass("progress")}`}>Beta</span>
+          <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${toneClass("progress")}`}>{t("tools.filler.beta")}</span>
         </div>
         <p className="text-sm text-zinc-600">
-          A Chrome extension that fills Common App&apos;s Courses &amp; Grades and Current Year Courses from your transcript in one click, adds your courses to the UC application, STARS and Cal State Apply, and helps you type them into UIUC&apos;s SRAR and UT Austin&apos;s coursework form.
+          {t("tools.filler.blurb")}
         </p>
         <p role="note" className={`rounded-xl border px-4 py-3 text-sm ${toneClass("soon")}`}>
-          Beta. Check every course and grade after filling. The extension fills whichever account is open in that browser.
+          {t("tools.filler.note")}
         </p>
         <FillerDownload>
           <a href="/downloads/common-app-filler.zip" download className={buttonClass("primary")}>
-            Download for Chrome (.zip)
+            {t("tools.filler.download")}
           </a>
           <div className="space-y-2">
-            <h3 className="text-sm font-bold">How to install</h3>
+            <h3 className="text-sm font-bold">{t("tools.filler.howTo")}</h3>
             <ol className="list-decimal space-y-1 pl-5 text-sm text-zinc-700">
-              {INSTALL_STEPS.map((step, i) => (
+              {installSteps(t).map((step, i) => (
                 <li key={i}>{step}</li>
               ))}
             </ol>
@@ -76,9 +83,9 @@ export default function ToolsPage() {
         </FillerDownload>
         <p className="text-sm text-zinc-600">
           <Link href="/application/transcript" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
-            Fill your transcript first
+            {t("tools.filler.fillFirst")}
           </Link>
-          . The extension copies it into your applications.
+          {t("tools.filler.copiesIt")}
         </p>
       </section>
     </div>

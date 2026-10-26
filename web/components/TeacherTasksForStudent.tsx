@@ -2,6 +2,7 @@
 
 import { useCallback, useState, useSyncExternalStore } from "react";
 import { DeadlineChip, StatusPill } from "@/components/StatusPill";
+import { useT } from "@/lib/i18n/client";
 import { myTeachers } from "@/lib/links-api";
 import { useStudent } from "@/lib/student-store";
 import { sortStudentTasks, taskDays, taskTone, type StudentTask } from "@/lib/tasks";
@@ -11,6 +12,7 @@ import { errMsg, useLoad } from "@/lib/use-load";
 const noop = () => () => {};
 
 function TaskList() {
+  const tr = useT();
   // Only students linked to at least one teacher get the section; everyone else gets nothing at all.
   const load = useCallback(async () => {
     const teachers = await myTeachers();
@@ -26,12 +28,12 @@ function TaskList() {
     return (
       <section aria-labelledby="teacher-tasks" className="space-y-2 rounded-lg border border-zinc-200 p-5">
         <h2 id="teacher-tasks" className="font-display text-lg font-bold">
-          From my teachers
+          {tr("application.tasks.title")}
         </h2>
         <p role="alert" className="text-sm text-urgent">
           {error}{" "}
           <button type="button" className="underline" onClick={retry}>
-            Try again
+            {tr("application.tasks.retry")}
           </button>
         </p>
       </section>
@@ -61,7 +63,7 @@ function TaskList() {
   return (
     <section aria-labelledby="teacher-tasks" className="space-y-3 rounded-lg border border-zinc-200 p-5">
       <h2 id="teacher-tasks" className="font-display text-lg font-bold">
-        From my teachers {tasks.length > 0 && <span className="text-sm font-normal text-zinc-500">({open} to do)</span>}
+        {tr("application.tasks.title")} {tasks.length > 0 && <span className="text-sm font-normal text-zinc-500">{tr("application.tasks.toDo", { n: open })}</span>}
       </h2>
       {actionError && (
         <p role="alert" className="text-sm text-urgent">
@@ -69,7 +71,7 @@ function TaskList() {
         </p>
       )}
       {tasks.length === 0 ? (
-        <p className="text-sm text-zinc-500">No tasks from your teachers or counselors right now.</p>
+        <p className="text-sm text-zinc-500">{tr("application.tasks.none")}</p>
       ) : (
         <ul className="divide-y divide-zinc-100">
           {tasks.map((t) => {
@@ -80,14 +82,14 @@ function TaskList() {
                   <input type="checkbox" className="mt-1 size-4 shrink-0" checked={t.done} onChange={(e) => void toggle(t, e.target.checked)} />
                   <span className="min-w-0">
                     <span className={`block font-medium [overflow-wrap:anywhere] ${t.done ? "text-zinc-500 line-through" : ""}`}>{t.title}</span>
-                    <span className="block text-xs text-zinc-500">From {t.teacherName}</span>
+                    <span className="block text-xs text-zinc-500">{tr("application.tasks.from", { name: t.teacherName })}</span>
                     {t.details && <span className="mt-1 block text-sm whitespace-pre-line text-zinc-600 [overflow-wrap:anywhere]">{t.details}</span>}
                   </span>
                 </label>
                 {t.dueOn && days != null ? (
-                  <DeadlineChip date={t.dueOn} days={days} done={t.done} label="Due" />
+                  <DeadlineChip date={t.dueOn} days={days} done={t.done} label={tr("application.tasks.due")} />
                 ) : (
-                  <StatusPill tone={taskTone(t, today)}>{t.done ? "Done" : "No due date"}</StatusPill>
+                  <StatusPill tone={taskTone(t, today)}>{t.done ? tr("application.tasks.done") : tr("application.tasks.noDue")}</StatusPill>
                 )}
               </li>
             );

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER, resumeText, type ResumeHeader, type ResumeOptions, type ResumeSource } from "@/lib/resume";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
@@ -11,18 +13,19 @@ const noop = () => () => {};
 const plainHeading = { fontFamily: "inherit", letterSpacing: "normal" };
 const input = "w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
 
-const HEADER_FIELDS: [keyof ResumeHeader, string, string][] = [
-  ["fullName", "Full name", "Alex Lin"],
-  ["email", "Email", "alex@example.com"],
-  ["phone", "Phone", "+886 912 345 678"],
-  ["location", "City, country", "Taipei, Taiwan"],
-  ["school", "High school", "Taipei American School"],
-  ["gradYear", "Class of", "2027"],
+const HEADER_FIELDS: [keyof ResumeHeader, MessageKey, string][] = [
+  ["fullName", "tools.rb.field.fullName", "Alex Lin"],
+  ["email", "tools.rb.field.email", "alex@example.com"],
+  ["phone", "tools.rb.field.phone", "+886 912 345 678"],
+  ["location", "tools.rb.field.location", "Taipei, Taiwan"],
+  ["school", "tools.rb.field.school", "Taipei American School"],
+  ["gradYear", "tools.rb.field.gradYear", "2027"],
 ];
 
-const SOURCES: Record<ResumeSource, string> = { both: "Both (no duplicates)", common: "Common App only", uc: "UC only" };
+const SOURCES: Record<ResumeSource, MessageKey> = { both: "tools.rb.source.both", common: "tools.rb.source.common", uc: "tools.rb.source.uc" };
 
 export function ResumeBuilder() {
+  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [copied, setCopied] = useState(false);
@@ -41,10 +44,10 @@ export function ResumeBuilder() {
     <div className="grid gap-8 lg:grid-cols-[18rem_1fr]">
       <aside className="space-y-6 print:hidden">
         <section className="space-y-3">
-          <h2 className="font-bold">Header</h2>
-          {HEADER_FIELDS.map(([key, label, placeholder]) => (
+          <h2 className="font-bold">{t("tools.rb.header")}</h2>
+          {HEADER_FIELDS.map(([key, labelKey, placeholder]) => (
             <label key={key} className="flex flex-col gap-1">
-              <span className="text-xs text-zinc-500">{label}</span>
+              <span className="text-xs text-zinc-500">{t(labelKey)}</span>
               <input
                 className={input}
                 placeholder={placeholder}
@@ -56,40 +59,40 @@ export function ResumeBuilder() {
         </section>
 
         <section className="space-y-2 text-sm">
-          <h2 className="font-bold">Content</h2>
+          <h2 className="font-bold">{t("tools.rb.content")}</h2>
           <fieldset className="space-y-1">
-            <legend className="mb-1 text-xs text-zinc-500">Activities from</legend>
+            <legend className="mb-1 text-xs text-zinc-500">{t("tools.rb.activitiesFrom")}</legend>
             {(Object.keys(SOURCES) as ResumeSource[]).map((s) => (
               <label key={s} className="flex items-center gap-2">
                 <input type="radio" name="source" checked={options.source === s} onChange={() => setOptions({ source: s })} />
-                {SOURCES[s]}
+                {t(SOURCES[s])}
               </label>
             ))}
           </fieldset>
           <label className="flex items-center gap-2 pt-1">
             <input type="checkbox" checked={options.showScores} onChange={(e) => setOptions({ showScores: e.target.checked })} />
-            GPA and test scores
+            {t("tools.rb.showScores")}
           </label>
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={options.showHours} onChange={(e) => setOptions({ showHours: e.target.checked })} />
-            Hours per week / weeks per year
+            {t("tools.rb.showHours")}
           </label>
           <p className="pt-1 text-xs text-zinc-500">
-            Scores come from your{" "}
+            {t("tools.rb.scoresFrom")}
             <Link href="/profile" className="text-blue-600 underline">
-              Profile
+              {t("tools.rb.profile")}
             </Link>
-            ; entries from{" "}
+            {t("tools.rb.entriesFrom")}
             <Link href="/writing/activities" className="text-blue-600 underline">
-              Activities
+              {t("tools.rb.activities")}
             </Link>
-            .
+            {t("tools.rb.sentenceEnd")}
           </p>
         </section>
 
         <section className="flex flex-col gap-2">
           <button type="button" onClick={() => window.print()} className={buttonClass("primary", "sm")}>
-            Print / save as PDF
+            {t("tools.rb.print")}
           </button>
           <button
             type="button"
@@ -100,15 +103,15 @@ export function ResumeBuilder() {
             }}
             className={buttonClass("secondary", "sm")}
           >
-            {copied ? "Copied ✓" : "Copy as plain text"}
+            {copied ? t("tools.rb.copied") : t("tools.rb.copyText")}
           </button>
-          <p className="text-xs text-zinc-500">In the print dialog, choose &quot;Save as PDF&quot; and turn off headers and footers.</p>
+          <p className="text-xs text-zinc-500">{t("tools.rb.printHint")}</p>
         </section>
       </aside>
 
       <article className="mx-auto w-full max-w-[8.5in] rounded-lg border border-zinc-200 bg-white p-10 font-serif text-[13px] leading-snug text-zinc-900 shadow-sm print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none">
         <header className="text-center">
-          <h2 className="text-2xl font-bold" style={{ ...plainHeading, letterSpacing: "0.025em" }}>{header.fullName || <span className="text-zinc-300 print:hidden">Your name</span>}</h2>
+          <h2 className="text-2xl font-bold" style={{ ...plainHeading, letterSpacing: "0.025em" }}>{header.fullName || <span className="text-zinc-300 print:hidden">{t("tools.rb.yourName")}</span>}</h2>
           {contact.length > 0 && <p className="mt-1 text-zinc-600">{contact.join("  ·  ")}</p>}
         </header>
 
@@ -145,11 +148,11 @@ export function ResumeBuilder() {
 
         {empty && (
           <p className="mt-8 text-center font-sans text-sm text-zinc-500 print:hidden">
-            No activities yet. Add them on the{" "}
+            {t("tools.rb.emptyA")}
             <Link href="/writing/activities" className="text-blue-600 underline">
-              Activities
-            </Link>{" "}
-            page and they&apos;ll appear here.
+              {t("tools.rb.activities")}
+            </Link>
+            {t("tools.rb.emptyB")}
           </p>
         )}
       </article>

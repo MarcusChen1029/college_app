@@ -30,6 +30,7 @@ import {
   type TermStatus,
   type TranscriptSchool,
 } from "@/lib/transcript";
+import { useT } from "@/lib/i18n/client";
 import { buttonClass } from "@/lib/ui";
 
 export const fieldClass = "mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm";
@@ -57,6 +58,7 @@ const toRows = (c: CourseInput): Partial<Record<TermCode, TermRow>> =>
 
 /** Add / edit form for one course. onSave gets a validated value. */
 export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onCancel }: { initial: CourseInput; school: TranscriptSchool; submitLabel: string; onSave: (v: CourseInput) => void; onCancel?: () => void }) {
+  const t = useT();
   const [f, setF] = useState<Draft>(toDraft(initial));
   const [rows, setRows] = useState<Partial<Record<TermCode, TermRow>>>(toRows(initial));
   const [errors, setErrors] = useState<string[]>([]);
@@ -85,10 +87,10 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
     return [{ term: code, grade, ...(weighted ? { gradeWeighted: weighted } : {}), status, ...(credit ? { credit } : {}) }];
   });
   // The course credit shown while any term credit is filled: their sum, as validateCourse will store it (null while a credit isn't a number yet).
-  const termCredits = terms.map((t) => ({ ...t, credit: t.credit == null ? null : Number(t.credit) })) as Term[];
-  const summedCredit = termCredits.some((t) => t.credit != null && !Number.isFinite(t.credit)) ? null : termCreditSum(termCredits);
+  const termCredits = terms.map((tm) => ({ ...tm, credit: tm.credit == null ? null : Number(tm.credit) })) as Term[];
+  const summedCredit = termCredits.some((tm) => tm.credit != null && !Number.isFinite(tm.credit)) ? null : termCreditSum(termCredits);
   // Same rule as termCreditSum: only a credit on a term that is not "none" replaces the course credit.
-  const anyTermCredit = terms.some((t) => t.status !== "none" && t.credit != null);
+  const anyTermCredit = terms.some((tm) => tm.status !== "none" && tm.credit != null);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -103,17 +105,17 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
   return (
     <form onSubmit={submit} className="grid gap-3 sm:grid-cols-2">
       <label className="text-sm font-medium sm:col-span-2">
-        Course name <span className="font-normal text-zinc-500">(exactly as on the transcript)</span>
+        {t("transcript.courseName")} <span className="font-normal text-zinc-500">{t("transcript.courseNameHint")}</span>
         <input className={fieldClass} value={f.name} maxLength={LIMITS.courseName} onChange={(e) => set("name", e.target.value)} placeholder="AP Calculus BC" />
       </label>
       <label className="text-sm font-medium">
-        School year starts
+        {t("transcript.schoolYearStarts")}
         <input className={fieldClass} inputMode="numeric" value={f.academicYear} onChange={(e) => set("academicYear", e.target.value)} placeholder="2025" />
       </label>
       <label className="text-sm font-medium">
-        Grade level <span className="font-normal text-zinc-500">(optional)</span>
+        {t("transcript.gradeLevel")} <span className="font-normal text-zinc-500">{t("transcript.optional")}</span>
         <select className={fieldClass} value={f.gradeLevel} onChange={(e) => set("gradeLevel", e.target.value)}>
-          <option value="">Not sure</option>
+          <option value="">{t("transcript.notSure")}</option>
           {[7, 8, 9, 10, 11, 12, 13].map((n) => (
             <option key={n} value={n}>
               {n}
@@ -122,7 +124,7 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
         </select>
       </label>
       <label className="text-sm font-medium">
-        Subject
+        {t("transcript.subject")}
         <select className={fieldClass} value={f.subject} onChange={(e) => changeSubject(e.target.value as Subject)}>
           {SUBJECTS.map((s) => (
             <option key={s} value={s}>
@@ -133,9 +135,9 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
       </label>
       {SUB_SUBJECTS[f.subject].length > 0 && (
         <label className="text-sm font-medium">
-          Sub-subject <span className="font-normal text-zinc-500">(optional)</span>
+          {t("transcript.subSubject")} <span className="font-normal text-zinc-500">{t("transcript.optional")}</span>
           <select className={fieldClass} value={f.subSubject ?? ""} onChange={(e) => set("subSubject", e.target.value || null)}>
-            <option value="">None</option>
+            <option value="">{t("common.none")}</option>
             {SUB_SUBJECTS[f.subject].map((s) => (
               <option key={s} value={s}>
                 {SUB_SUBJECT_LABEL[s] ?? s}
@@ -146,12 +148,12 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
       )}
       {f.subject === "world_language" && (
         <label className="text-sm font-medium">
-          Language
-          <input className={fieldClass} value={f.languageName} maxLength={LIMITS.short} onChange={(e) => set("languageName", e.target.value)} placeholder="Spanish" />
+          {t("transcript.language")}
+          <input className={fieldClass} value={f.languageName} maxLength={LIMITS.short} onChange={(e) => set("languageName", e.target.value)} placeholder={t("transcript.languagePh")} />
         </label>
       )}
       <label className="text-sm font-medium">
-        Level
+        {t("transcript.level")}
         <select className={fieldClass} value={f.level} onChange={(e) => set("level", e.target.value as CourseInput["level"])}>
           {LEVELS.map((l) => (
             <option key={l} value={l}>
@@ -161,7 +163,7 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
         </select>
       </label>
       <label className="text-sm font-medium">
-        How final grades are issued
+        {t("transcript.howIssued")}
         <select
           className={fieldClass}
           value={f.period}
@@ -181,7 +183,7 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
 
       <fieldset className="space-y-2 sm:col-span-2">
         <legend className="text-sm font-medium">
-          Grades <span className="font-normal text-zinc-500">(exactly as printed; leave a term&apos;s grade empty if the transcript shows none. Each term&apos;s credit as printed, if the transcript lists it per term)</span>
+          {t("transcript.gradesLegend")} <span className="font-normal text-zinc-500">{t("transcript.gradesHint")}</span>
         </legend>
         {termCodes.map((code) => {
           const r = row(code);
@@ -191,10 +193,10 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
             <div key={code} className="grid items-end gap-2 sm:grid-cols-[8rem_1fr_1fr_6rem_10rem]">
               <span className="pb-2 text-sm font-medium">{TERM_LABEL[code]}</span>
               <label className="text-xs text-zinc-600">
-                Grade{r.status === "graded" && <span className="text-urgent"> (required)</span>}
+                {t("transcript.grade")}{r.status === "graded" && <span className="text-urgent"> {t("transcript.required")}</span>}
                 <input
                   className={`${fieldClass} ${needsGrade ? "border-urgent-line!" : ""}`}
-                  aria-label={`${TERM_LABEL[code]} grade`}
+                  aria-label={t("transcript.termGradeAria", { term: TERM_LABEL[code] })}
                   aria-invalid={needsGrade || undefined}
                   required={r.status === "graded"}
                   value={r.grade}
@@ -203,19 +205,19 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
                 />
               </label>
               <label className="text-xs text-zinc-600">
-                Weighted grade (if printed)
-                <input className={fieldClass} aria-label={`${TERM_LABEL[code]} weighted grade`} value={r.gradeWeighted} maxLength={LIMITS.grade} onChange={(e) => setRow(code, { gradeWeighted: e.target.value })} />
+                {t("transcript.weightedGradeField")}
+                <input className={fieldClass} aria-label={t("transcript.termWeightedAria", { term: TERM_LABEL[code] })} value={r.gradeWeighted} maxLength={LIMITS.grade} onChange={(e) => setRow(code, { gradeWeighted: e.target.value })} />
               </label>
               <label className="text-xs text-zinc-600">
-                Credit
-                <input className={fieldClass} inputMode="decimal" aria-label={`${TERM_LABEL[code]} credit`} value={r.credit} onChange={(e) => setRow(code, { credit: e.target.value })} />
+                {t("transcript.creditField")}
+                <input className={fieldClass} inputMode="decimal" aria-label={t("transcript.termCreditAria", { term: TERM_LABEL[code] })} value={r.credit} onChange={(e) => setRow(code, { credit: e.target.value })} />
               </label>
               <label className="text-xs text-zinc-600">
-                Status
-                <select className={fieldClass} aria-label={`${TERM_LABEL[code]} status`} value={r.status} onChange={(e) => setRow(code, { status: e.target.value as TermStatus })}>
+                {t("transcript.statusField")}
+                <select className={fieldClass} aria-label={t("transcript.termStatusAria", { term: TERM_LABEL[code] })} value={r.status} onChange={(e) => setRow(code, { status: e.target.value as TermStatus })}>
                   {TERM_STATUSES.map((s) => (
                     <option key={s} value={s}>
-                      {s === "none" ? "Auto" : TERM_STATUS_LABEL[s]}
+                      {s === "none" ? t("transcript.auto") : TERM_STATUS_LABEL[s]}
                     </option>
                   ))}
                 </select>
@@ -227,12 +229,12 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
 
       {f.period !== "full_year" && (
         <label className="text-sm font-medium">
-          Final / year grade <span className="font-normal text-zinc-500">(only if printed)</span>
+          {t("transcript.finalYearGrade")} <span className="font-normal text-zinc-500">{t("transcript.onlyIfPrinted")}</span>
           <input className={fieldClass} value={f.finalGrade} maxLength={LIMITS.grade} onChange={(e) => set("finalGrade", e.target.value)} />
         </label>
       )}
       <label className="text-sm font-medium">
-        Grade scale
+        {t("transcript.gradeScale")}
         <select className={fieldClass} value={f.scale} onChange={(e) => set("scale", e.target.value as CourseInput["scale"])}>
           {GRADE_SCALES.map((s) => (
             <option key={s} value={s}>
@@ -243,23 +245,23 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
       </label>
       {f.scale === "other" && (
         <label className="text-sm font-medium">
-          Highest possible mark
+          {t("transcript.highestMark")}
           <input className={fieldClass} inputMode="decimal" value={f.scaleMax} onChange={(e) => set("scaleMax", e.target.value)} placeholder="150" />
         </label>
       )}
       {anyTermCredit ? (
         <label className="text-sm font-medium">
-          Credit <span className="font-normal text-zinc-500">(sum of the term credits)</span>
-          <input className={fieldClass.replace("bg-white", "bg-zinc-50")} readOnly aria-label="Credit (sum of the term credits)" value={summedCredit == null ? "" : String(summedCredit)} />
+          {t("transcript.creditField")} <span className="font-normal text-zinc-500">{t("transcript.creditSum")}</span>
+          <input className={fieldClass.replace("bg-white", "bg-zinc-50")} readOnly aria-label={t("transcript.creditSumAria")} value={summedCredit == null ? "" : String(summedCredit)} />
         </label>
       ) : (
         <label className="text-sm font-medium">
-          Credit <span className="font-normal text-zinc-500">(as printed)</span>
+          {t("transcript.creditField")} <span className="font-normal text-zinc-500">{t("transcript.creditAsPrinted")}</span>
           <input className={fieldClass} inputMode="decimal" value={f.credit} onChange={(e) => set("credit", e.target.value)} placeholder="1" />
         </label>
       )}
       <label className="text-sm font-medium">
-        Credit unit
+        {t("transcript.creditUnit")}
         <select className={fieldClass} value={f.creditUnit} onChange={(e) => set("creditUnit", e.target.value as CourseInput["creditUnit"])}>
           {CREDIT_UNITS.map((u) => (
             <option key={u} value={u}>
@@ -272,34 +274,34 @@ export function TranscriptCourseForm({ initial, school, submitLabel, onSave, onC
       <div className="flex flex-wrap gap-4 text-sm sm:col-span-2">
         {(
           [
-            ["isSummer", "Summer course"],
-            ["isRepeat", "Repeated course"],
-            ["isCollege", "College / dual-enrollment course"],
-            ["isWithdrawn", "Withdrawn"],
+            ["isSummer", "transcript.summerCourse"],
+            ["isRepeat", "transcript.repeatedCourse"],
+            ["isCollege", "transcript.collegeCourse"],
+            ["isWithdrawn", "transcript.withdrawn"],
           ] as const
         ).map(([key, label]) => (
           <label key={key} className="inline-flex items-center gap-2">
             <input type="checkbox" checked={f[key]} onChange={(e) => set(key, e.target.checked)} />
-            {label}
+            {t(label)}
           </label>
         ))}
       </div>
       {f.isCollege && (
         <label className="text-sm font-medium sm:col-span-2">
-          College name
+          {t("transcript.collegeName")}
           <input className={fieldClass} value={f.collegeName} maxLength={LIMITS.schoolName} onChange={(e) => set("collegeName", e.target.value)} />
         </label>
       )}
       <label className="text-sm font-medium sm:col-span-2">
-        Notes <span className="font-normal text-zinc-500">(optional)</span>
+        {t("transcript.notes")} <span className="font-normal text-zinc-500">{t("transcript.optional")}</span>
         <input className={fieldClass} value={f.notes} maxLength={LIMITS.notes} onChange={(e) => set("notes", e.target.value)} />
       </label>
 
       <div className="flex flex-wrap items-center gap-2 sm:col-span-2 sm:justify-end">
-        <span className="mr-auto text-xs text-zinc-500">Defaults come from {school.name}.</span>
+        <span className="mr-auto text-xs text-zinc-500">{t("transcript.defaultsFrom", { name: school.name })}</span>
         {onCancel && (
           <button type="button" className={buttonClass("secondary", "sm")} onClick={onCancel}>
-            Cancel
+            {t("common.cancel")}
           </button>
         )}
         <button type="submit" className={buttonClass("primary", "sm")}>
