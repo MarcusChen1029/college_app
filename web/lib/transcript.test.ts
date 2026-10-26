@@ -113,3 +113,8 @@ test("courseKey tells a repeat or summer course from the original", () => {
   assert.notEqual(courseKey("S", a), courseKey("S", { ...a, isSummer: true }));
   assert.equal(courseKey("S", a), courseKey("S", { ...a, isRepeat: false, isSummer: false }));
 });
+
+test("math sub-subjects cover Common App's Pre-Algebra and Trigonometry", () => {
+  assert.ok(SUB_SUBJECTS.mathematics.includes("pre_algebra"));
+  assert.ok(SUB_SUBJECTS.mathematics.includes("trigonometry"));
+});

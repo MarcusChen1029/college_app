@@ -30,7 +30,7 @@ export type Subject = (typeof SUBJECTS)[number];
 /** Second level of the category. Finer than any one system on purpose: arts keeps performing arts apart from visual arts. */
 export const SUB_SUBJECTS: Record<Subject, readonly string[]> = {
   english: [],
-  mathematics: ["algebra_1", "geometry", "algebra_2", "precalculus", "calculus", "statistics", "other"],
+  mathematics: ["pre_algebra", "algebra_1", "geometry", "algebra_2", "trigonometry", "precalculus", "calculus", "statistics", "other"],
   science: ["biology", "chemistry", "physics", "earth_space", "integrated", "other"],
   history_social: [],
   world_language: ["other"],
@@ -42,7 +42,7 @@ export const SUB_SUBJECTS: Record<Subject, readonly string[]> = {
   other: [],
 };
 
-export const SYSTEM_KEYS = ["common_app", "stars", "csu", "uc"] as const;
+export const SYSTEM_KEYS = ["common_app", "stars", "csu", "uc", "uiuc", "ut"] as const;
 export type SystemKey = (typeof SYSTEM_KEYS)[number];
 export const OVERRIDE_FIELDS = ["level", "subject", "subSubject", "period", "credit"] as const;
 export type OverrideField = (typeof OVERRIDE_FIELDS)[number];
@@ -84,7 +84,7 @@ export const SUBJECT_LABEL: Record<Subject, string> = {
   arts: "Arts", computer_science: "Computer science", business: "Business", pe_health: "PE / health", career_technical: "Career-technical", other: "Other",
 };
 export const SUB_SUBJECT_LABEL: Record<string, string> = {
-  algebra_1: "Algebra I", geometry: "Geometry", algebra_2: "Algebra II", precalculus: "Precalculus", calculus: "Calculus", statistics: "Statistics",
+  pre_algebra: "Pre-algebra", trigonometry: "Trigonometry", algebra_1: "Algebra I", geometry: "Geometry", algebra_2: "Algebra II", precalculus: "Precalculus", calculus: "Calculus", statistics: "Statistics",
   biology: "Biology", chemistry: "Chemistry", physics: "Physics", earth_space: "Earth & space", integrated: "Integrated science",
   visual: "Visual arts", music: "Music", theater: "Theater", dance: "Dance", interdisciplinary: "Interdisciplinary arts", other: "Other",
 };

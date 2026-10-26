@@ -8,10 +8,13 @@ import {
   GRADE_SCALES,
   LEVELS,
   normalizeName,
+  type Overrides,
   PERIOD_TYPES,
   SCHOOL_KINDS,
   SUB_SUBJECTS,
   SUBJECTS,
+  SYSTEM_KEYS,
+  type SystemKey,
   TERM_CODES,
   TERM_STATUSES,
   TERMS_FOR_PERIOD,
@@ -24,6 +27,7 @@ import {
   type TranscriptSchool,
   type Validated,
 } from "./transcript.ts";
+import { matchSubjectOption, SYSTEMS } from "./transcript-maps.ts";
 
 export const TRANSCRIPT_FORMAT_VERSION = "transcript.v1";
 /** The schoolId a planned course carries until its (new) school has been created. */
@@ -35,6 +39,11 @@ type Existing = { schools: TranscriptSchool[]; courses: TranscriptCourse[] };
 export function transcriptFormatText(): string {
   const subSubjects = SUBJECTS.filter((s) => SUB_SUBJECTS[s].length).map((s) => `  ${s}: ${SUB_SUBJECTS[s].join(", ")}`).join("\n");
   const termsFor = PERIOD_TYPES.map((p) => `  ${p}: ${TERMS_FOR_PERIOD[p].join(", ")}`).join("\n");
+  const appLists = SYSTEM_KEYS.map((k) => {
+    const m = SYSTEMS[k];
+    const l = m.subjectList;
+    return `- ${k} (${m.label})${l.verified ? "" : " [area names are official; the exact dropdown wording is not published]"}: ${l.options.join(" | ")}${l.note ? `\n    ${l.note}` : ""}`;
+  }).join("\n");
   return `Answer with ONE JSON object in format "${TRANSCRIPT_FORMAT_VERSION}":
 
 {
@@ -64,6 +73,7 @@ export function transcriptFormatText(): string {
           "level": "ap",
           "credit": 1, "creditUnit": "carnegie",
           "subject": "mathematics", "subSubject": "calculus", "languageName": "",
+          "systemSubjects": { "common_app": "Calculus", "stars": "Mathematics", "csu": "C – Mathematics", "uc": "C – Mathematics", "uiuc": "Mathematics", "ut": "Mathematics" },
           "isSummer": false, "isRepeat": false, "isCollege": false, "collegeName": "", "isWithdrawn": false,
           "notes": "anything you were unsure about"
         }
@@ -93,7 +103,11 @@ Rules:
 4. Use null (or an empty string for text) when something is not on the transcript. Never guess. Put anything you are unsure about in the course's "notes".
 5. Courses still in progress use status "in_progress" with an empty grade; courses not started yet use "planned".
 6. academicYear is the calendar year the school year starts (2025 for 2025-26).
-7. Output JSON only, with no commentary.`;
+7. Every application names its subjects differently. For EACH course fill "systemSubjects" with one entry per application key below, choosing the option from that application's own list that best fits the course and copying it exactly. If nothing fits, use that application's "Other" option; never invent an option. "subject" and "subSubject" (above) are our own general categories; keep filling them too.
+8. Output JSON only, with no commentary.
+
+Subject options by application (copy the text exactly):
+${appLists}`;
 }
 
 /** The whole prompt the student copies: the format spec plus what to do with the attached transcript. */
@@ -117,21 +131,47 @@ export function parseImportText(text: string): { ok: true; data: unknown } | { o
   }
 }
 
-export type ImportRow = { schoolIndex: number; schoolName: string; input: CourseInput | null; raw: unknown; errors: string[]; duplicateOf: string | null };
+export type ImportRow = { schoolIndex: number; schoolName: string; input: CourseInput | null; raw: unknown; errors: string[]; warnings: string[]; duplicateOf: string | null };
 export type ImportSchool = { name: string; existingId: string | null; input: SchoolInput | null; errors: string[] };
 export type ImportPlan = { error: string | null; schools: ImportSchool[]; rows: ImportRow[] };
 
 const isObject = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
 
-/** Course fields that come from the context, not the AI. */
-const withDefaults = (raw: Record<string, unknown>, schoolId: string, school: Pick<SchoolInput, "defaultScale" | "defaultPeriod"> | undefined, source: Source) => ({
-  ...raw,
-  schoolId,
-  scale: raw.scale ?? school?.defaultScale,
-  period: raw.period ?? school?.defaultPeriod,
-  source,
-  overrides: undefined,
-});
+/**
+ * Turns an AI's `systemSubjects` ({ common_app: "Calculus", uc: "C – Mathematics", ... }) into per-application subject overrides,
+ * merged onto `base`. Each value must match an option of that application's own list (see matchSubjectOption); anything else is left
+ * out with a warning, so a wrong tag never blocks a course.
+ */
+export function systemSubjectOverrides(v: unknown, base: Overrides = {}): { overrides: Overrides; warnings: string[] } {
+  const overrides: Overrides = JSON.parse(JSON.stringify(base));
+  const warnings: string[] = [];
+  if (v == null) return { overrides, warnings };
+  if (!isObject(v)) return { overrides, warnings: ["systemSubjects must be an object keyed by application."] };
+  for (const [key, val] of Object.entries(v)) {
+    if (!(SYSTEM_KEYS as readonly string[]).includes(key)) {
+      warnings.push(`systemSubjects: "${key}" is not an application we know.`);
+      continue;
+    }
+    if (val == null || val === "") continue;
+    const sys = key as SystemKey;
+    const matched = typeof val === "string" ? matchSubjectOption(SYSTEMS[sys].subjectList.options, val) : null;
+    if (!matched) {
+      warnings.push(`${key}: "${String(val)}" is not one of ${SYSTEMS[sys].label}'s subjects, so it was left out.`);
+      continue;
+    }
+    overrides[sys] = { ...(overrides[sys] ?? {}), subject: matched };
+  }
+  return { overrides, warnings };
+}
+
+/** Course fields that come from the context, not the AI, plus the subject tags the AI gave for each application. */
+function prepare(raw: Record<string, unknown>, schoolId: string, school: Pick<SchoolInput, "defaultScale" | "defaultPeriod"> | undefined, source: Source) {
+  const tags = systemSubjectOverrides(raw.systemSubjects);
+  return {
+    fields: { ...raw, schoolId, scale: raw.scale ?? school?.defaultScale, period: raw.period ?? school?.defaultPeriod, source, overrides: tags.overrides },
+    warnings: tags.warnings,
+  };
+}
 
 /** Every course the student already has, by key, remembering its school so a replace can leave that school's own courses out. */
 function existingKeys(existing: Existing): Map<string, { id: string; schoolId: string | null }> {
@@ -167,12 +207,13 @@ export function buildImportPlan(data: unknown, existing: Existing, source: Sourc
     const schoolId = found?.id ?? `${NEW_SCHOOL_ID}:${idx}`;
     (Array.isArray(courses) ? courses : []).forEach((rawCourse: unknown) => {
       if (!isObject(rawCourse)) {
-        rows.push({ schoolIndex: idx, schoolName: name, input: null, raw: rawCourse, errors: ["This course isn't an object."], duplicateOf: null });
+        rows.push({ schoolIndex: idx, schoolName: name, input: null, raw: rawCourse, errors: ["This course isn't an object."], warnings: [], duplicateOf: null });
         return;
       }
-      const cv = validateCourse(withDefaults(rawCourse, schoolId, defaults, source));
+      const prep = prepare(rawCourse, schoolId, defaults, source);
+      const cv = validateCourse(prep.fields);
       if (!cv.ok) {
-        rows.push({ schoolIndex: idx, schoolName: name, input: null, raw: rawCourse, errors: cv.errors, duplicateOf: null });
+        rows.push({ schoolIndex: idx, schoolName: name, input: null, raw: rawCourse, errors: cv.errors, warnings: prep.warnings, duplicateOf: null });
         return;
       }
       const key = courseKey(name, cv.value);
@@ -180,7 +221,7 @@ export function buildImportPlan(data: unknown, existing: Existing, source: Sourc
       const replaced = hit !== undefined && replaceSchools.has(idx) && hit.schoolId !== null && hit.schoolId === found?.id;
       const duplicateOf = hit && !replaced ? hit.id : null;
       if (!hit || replaced) keys.set(key, { id: "(an earlier row in this paste)", schoolId: null });
-      rows.push({ schoolIndex: idx, schoolName: name, input: cv.value, raw: rawCourse, errors: [], duplicateOf });
+      rows.push({ schoolIndex: idx, schoolName: name, input: cv.value, raw: rawCourse, errors: [], warnings: prep.warnings, duplicateOf });
     });
   });
   return { error: null, schools, rows };
@@ -193,6 +234,8 @@ export type McpAddPlan = {
   schoolErrors: string[];
   accepted: CourseInput[];
   rejected: { index: number; errors: string[] }[];
+  /** Subject tags that were left out because they are not in that application's list. */
+  warnings: { index: number; messages: string[] }[];
   duplicates: number;
 };
 
@@ -203,7 +246,7 @@ export function planMcpAdd(args: { school: Partial<SchoolInput> & { name: string
   let newSchool: SchoolInput | null = null;
   if (!found) {
     const sv = validateSchool(args.school ?? {});
-    if (!sv.ok) return { schoolId: null, newSchool: null, schoolErrors: sv.errors, accepted: [], rejected: [], duplicates: 0 };
+    if (!sv.ok) return { schoolId: null, newSchool: null, schoolErrors: sv.errors, accepted: [], rejected: [], warnings: [], duplicates: 0 };
     newSchool = sv.value;
   }
   const defaults = found ?? newSchool ?? undefined;
@@ -211,17 +254,20 @@ export function planMcpAdd(args: { school: Partial<SchoolInput> & { name: string
   const keys = existingKeys(existing);
   const accepted: CourseInput[] = [];
   const rejected: { index: number; errors: string[] }[] = [];
+  const warnings: { index: number; messages: string[] }[] = [];
   let duplicates = 0;
   args.courses.forEach((raw, index) => {
     if (!isObject(raw)) {
       rejected.push({ index, errors: ["This course isn't an object."] });
       return;
     }
-    const cv = validateCourse(withDefaults(raw, schoolId, defaults, "mcp"));
+    const prep = prepare(raw, schoolId, defaults, "mcp");
+    const cv = validateCourse(prep.fields);
     if (!cv.ok) {
       rejected.push({ index, errors: cv.errors });
       return;
     }
+    if (prep.warnings.length) warnings.push({ index, messages: prep.warnings });
     const key = courseKey(found?.name ?? name, cv.value);
     if (keys.has(key)) {
       duplicates++;
@@ -230,7 +276,7 @@ export function planMcpAdd(args: { school: Partial<SchoolInput> & { name: string
     keys.set(key, { id: "(an earlier row)", schoolId: null });
     accepted.push(cv.value);
   });
-  return { schoolId: found?.id ?? null, newSchool, schoolErrors: [], accepted, rejected, duplicates };
+  return { schoolId: found?.id ?? null, newSchool, schoolErrors: [], accepted, rejected, warnings, duplicates };
 }
 
 /** What an AI may not change on an existing course: where it lives, who made it, the student's own per-system choices. */
@@ -242,5 +288,7 @@ export function planCourseUpdate(current: TranscriptCourse, patch: Record<string
   void _id;
   void _created;
   const safe = Object.fromEntries(Object.entries(patch).filter(([k]) => !(PROTECTED as readonly string[]).includes(k)));
-  return validateCourse({ ...base, ...safe });
+  // `systemSubjects` adds per-application subject tags onto the course's existing overrides (the student's other choices stay).
+  const tags = systemSubjectOverrides(patch.systemSubjects, current.overrides);
+  return validateCourse({ ...base, ...safe, overrides: tags.overrides });
 }

@@ -49,6 +49,14 @@ export const STARS_MAP: SystemMap = {
     },
     unverified(null),
   ),
+  subjectList: {
+    options: [
+      "English", "Mathematics", "Science", "History / Social Studies", "World Language", "Business", "Computer Science",
+      "Fine Arts / Music", "Physical Education / Health / Gym", "Other Subject Area",
+    ],
+    verified: true,
+    note: "Psychology and economics go under History / Social Studies. Music, band, choir, art, dance and theater are all \"Fine Arts / Music\". STARS also asks for a Generic Course Title under each subject; those lists are not published.",
+  },
   subSubject: () => unverified(null, "STARS's Generic Course Title lists could not be retrieved", SUBJECT_SRC),
   period: table(
     PERIOD_TYPES,

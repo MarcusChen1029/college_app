@@ -6,9 +6,12 @@ import { COMMON_APP_MAP } from "./transcript-maps/common-app.ts";
 import { CSU_MAP } from "./transcript-maps/csu.ts";
 import { STARS_MAP } from "./transcript-maps/stars.ts";
 import { UC_MAP } from "./transcript-maps/uc.ts";
+import { UIUC_MAP } from "./transcript-maps/uiuc.ts";
+import { UT_MAP } from "./transcript-maps/ut.ts";
 import type { MapEntry, MappedCourse, MappedField, SystemMap } from "./transcript-maps/types.ts";
 
 export type { MapEntry, MapStatus, MappedCourse, MappedField, MappedFieldKey, SystemMap } from "./transcript-maps/types.ts";
+export { matchSubjectOption } from "./transcript-maps/types.ts";
 export type SystemId = SystemKey;
 
 export const SYSTEMS: Record<SystemId, SystemMap> = {
@@ -16,10 +19,12 @@ export const SYSTEMS: Record<SystemId, SystemMap> = {
   stars: STARS_MAP,
   csu: CSU_MAP,
   uc: UC_MAP,
+  uiuc: UIUC_MAP,
+  ut: UT_MAP,
 };
 export const SYSTEM_IDS = Object.keys(SYSTEMS) as SystemId[];
 
-const OVERRIDE_NOTE = "Set by you";
+const OVERRIDE_NOTE = "Set on this course";
 
 /** "2025-26" for a course whose academic year starts in 2025. */
 export const yearLabel = (y: number): string => `${y}-${String((y + 1) % 100).padStart(2, "0")}`;
@@ -46,7 +51,7 @@ export function mapCourse(system: SystemId, school: TranscriptSchool, course: Tr
     { key: "name", label: "Course name", value: course.name, status: "verified" },
     { key: "year", label: "School year", value: yearLabel(course.academicYear), status: "verified" },
     { key: "gradeLevel", label: "Grade level", value: course.gradeLevel == null ? null : String(course.gradeLevel), status: "verified" },
-    { key: "subject", label: "Subject", ...pick(map.subject[course.subject], ov.subject) },
+    { key: "subject", label: "Subject", ...pick(map.subjectFor?.(course.subject, course.subSubject) ?? map.subject[course.subject], ov.subject) },
     { key: "subSubject", label: "Sub-subject", ...pick(map.subSubject(course.subject, course.subSubject), ov.subSubject) },
     { key: "level", label: "Course level", ...pick(map.level[course.level], ov.level) },
     { key: "period", label: "Term system", ...pick(map.period[course.period], ov.period) },

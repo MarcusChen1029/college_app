@@ -60,7 +60,8 @@ Plan: all US colleges next, then UK/CA/AU.
   one standardized coursework record per student at `/application/transcript` (tabs Edit / Import / View as). Tables `transcript_schools` and `transcript_courses`
   (per-user RLS, composite FK so a course can only join the same student's school). Teachers get **no** access; no RPC, roster or context pack reads them.
   Grades are stored exactly as printed, never converted. Pure code: `web/lib/transcript.ts` (model, validators, merge), `transcript-maps.ts` + `transcript-maps/*.ts`
-  (Common App, STARS, Cal State Apply, UC mapping tables; every value is `verified | unverified | none`; unverified values get no Copy button),
+  (Common App, STARS, Cal State Apply, UC, UIUC SRAR, UT Austin mapping tables; every value is `verified | unverified | none`; unverified values get no Copy button;
+  each system also carries `subjectList`, its own exact subject dropdown, which the AI prompt lists so the AI tags every course per application via `systemSubjects` -> per-system overrides),
   `transcript-import.ts` (format spec, copy-prompt for any AI, JSON reader, import plan, MCP add/update planning). Import is paste-JSON with a review table; MCP tools
   (`get_transcript_format`, `get_transcript`, `add_transcript_courses`, `update_transcript_course`, `delete_transcript_course`) save directly and are badged "AI".
   Adding another system = one new `SystemMap` file plus an entry in `SYSTEMS` (the completeness test fails until every canonical value is mapped).
@@ -124,8 +125,8 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 1. Help the owner verify the Vercel fix and Google sign-in end to end (Google provider must be enabled in Supabase first; see `DEPLOY.md` §3).
 2. Add a friendly error/config page: when env vars are missing, show a clear message instead of the generic error
    (e.g. check in `app/layout.tsx` and add `app/error.tsx`).
-3. Transcript mapping gaps (all flagged `unverified` in the app): Common App's Subject and Grading Scale dropdowns (need a logged-in screenshot), UIUC SRAR dropdowns
-   (not yet a mapped system: needs an applicant account or admissions email), UC term/grading-system strings, STARS full Course Level list, CSU A/B/F area names.
+3. Transcript mapping gaps (flagged `unverified` in the app): Common App's Grading Scale labels (its Subject, Level and Credit lists are now official, from Common App's data catalogs), UC's exact
+   dropdown wording and discipline dropdown, STARS Generic Course Title lists and full Course Level list, UIUC's full Type/Grade lists, UT's levels and terms (behind a login).
    Research with source URLs: `docs/superpowers/research/`.
 3b. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
 4. Phase 3: bulk-import base rows for all US colleges from College Scorecard / IPEDS (name, location, size, admit rate,

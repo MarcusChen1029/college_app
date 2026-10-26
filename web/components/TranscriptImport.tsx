@@ -221,6 +221,13 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                         ) : (
                           <StatusPill tone="done">Ready</StatusPill>
                         )}
+                        {r.warnings.length > 0 && (
+                          <ul className="mt-1 list-disc pl-4 text-xs text-soon">
+                            {r.warnings.map((w) => (
+                              <li key={w}>{w}</li>
+                            ))}
+                          </ul>
+                        )}
                       </td>
                     </tr>
                   ))}

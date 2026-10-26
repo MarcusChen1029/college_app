@@ -9,6 +9,8 @@ const DAVIS = "https://www.ucdavis.edu/admissions/undergraduate/first-year/appli
 const IB = verified("IB", QRG);
 const NH_NOTE = "Flag UC-approved honors courses only";
 const NOT_AG = "Not an A-G subject; it may go under Other coursework in Activities & awards";
+const WORDING = "UC's A-G area names are official, but the exact dropdown wording is not published";
+const area = (value: string, note?: string) => unverified(value, note ? `${WORDING}. ${note}` : WORDING, QRG);
 
 const LETTER_SIGN = /^([A-F])[+-]$/i;
 const PASS_FAIL = /^(p|np|cr|nc|pass|fail|credit|no credit)$/i;
@@ -36,20 +38,28 @@ export const UC_MAP: SystemMap = {
   subject: table(
     SUBJECTS,
     {
-      history_social: verified("A – History / social science", QRG),
-      english: verified("B – English", QRG),
-      mathematics: verified("C – Mathematics", QRG),
-      science: verified("D – Science", QRG),
-      world_language: verified("E – Language other than English", QRG),
-      arts: verified("F – Visual and performing arts", QRG),
-      computer_science: unverified("G – College-preparatory elective", "Computer science may count under C or D when the school lists it there", QRG),
-      other: verified("G – College-preparatory elective", QRG),
+      history_social: area("A – History / social science"),
+      english: area("B – English"),
+      mathematics: area("C – Mathematics"),
+      science: area("D – Science"),
+      world_language: area("E – Language other than English"),
+      arts: area("F – Visual and performing arts"),
+      computer_science: area("G – College-preparatory elective", "Computer science may count under C or D when the school lists it there"),
+      other: area("G – College-preparatory elective"),
       business: none(NOT_AG),
       pe_health: none(NOT_AG),
       career_technical: none(NOT_AG),
     },
     unverified(null),
   ),
+  subjectList: {
+    options: [
+      "A – History / social science", "B – English", "C – Mathematics", "D – Science", "E – Language other than English",
+      "F – Visual and performing arts", "G – College-preparatory elective",
+    ],
+    verified: false,
+    note: "These are UC's A-G area names; the exact dropdown wording is not published. For visual and performing arts UC's disciplines are Dance, Music, Theater, Visual Arts and Interdisciplinary Arts; for science: Biology/Life Sciences, Chemistry, Physics, Earth & Space Sciences, Integrated Science. PE, business and career-technical courses are not A-G subjects.",
+  },
   subSubject: (subject, sub) => {
     const POLICY = "A discipline in UC's policy; the application may not ask for it";
     if (subject === "arts") {
