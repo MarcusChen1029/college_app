@@ -168,6 +168,18 @@ Mapping rules (from tracker data to Common App):
 - Grades: S1/S2/T1-3/Q1-4 → matching term column; `finalGrade` (or FY term) → Final. Only `graded` terms are filled. Use `grade`
   (as printed), never `gradeWeighted`. Exact option-text match or blank + report. *(My call.)*
 - Credits: the tracker has one credit per course → **Final credit** box *(my call)*. `creditUnit = not_listed` → tick N/A.
+- **Owner's decisions 2026-10-26** (they replace the two lines above where they differ; code: `web/lib/commonapp-fill.ts` `cellsInDialog`):
+  - Per-term credits: a term may carry its own `credit` (transcript format `transcript.v2`); the tracker stores the course credit as the
+    sum of the term credits. Each term column's credit box gets that term's credit as printed; **Final credit = the sum** of the term
+    credits filled (else the course credit, as before). N/A only when there is no credit at all and the unit is `not_listed`.
+  - **No Grade = 0 credit**: a term of the dialog's schedule with status `none`, or missing while the course has other terms of that
+    schedule, is filled with Common App's "No Grade" option and credit 0 (exact match like any grade; a list without it → blank + report).
+    In-progress / planned terms stay blank.
+  - **Computed Final**: a printed final grade (or FY term) still wins. With none, on an integer scale (1-100, 1-7, 1-10, 1-11, 1-20) when
+    every graded term grade is a number and no term is unfinished, Final = the average of the graded terms rounded half up (88/93 → 91);
+    the report warns that it was computed. Otherwise Final is left blank and reported. This is the only exception to "as printed", and it
+    lives in the fill plan only: the stored transcript keeps only printed grades.
+  - Courses on another scale or term system keep the rules above (no grades / only the printed final) and get only Final credit.
 - Courses from a second school in the same grade: *(my call)* v1 fills the main school's courses and lists the others in the report.
   "Add courses from another transcript" is a later step.
 - Warnings from `COMMON_APP_MAP.rules` are added to the report.

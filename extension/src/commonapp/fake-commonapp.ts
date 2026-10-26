@@ -20,7 +20,7 @@ function setShown(sel: Element, value: string): void {
   el.textContent = value;
 }
 
-function optionsFor(doc: Document, id: string): string[] {
+function optionsFor(doc: Document, id: string, words: readonly string[]): string[] {
   if (id === "schoolNameControl1") return ["West Lafayette Junior-Senior High School"];
   if (id === "schoolYearControl1") return ["2024-25", "2023-24", "2022-23"];
   if (id === "gradingScaleControl1") return SCALES;
@@ -30,7 +30,7 @@ function optionsFor(doc: Document, id: string): string[] {
   if (id.startsWith("grade")) {
     const scale = shown(doc.getElementById("gradingScaleControl1")!);
     const values = scale === "1-100" ? Array.from({ length: 106 }, (_, i) => String(105 - i)) : AF;
-    return [...values, ...WORDS];
+    return [...values, ...words];
   }
   return [];
 }
@@ -38,8 +38,9 @@ function optionsFor(doc: Document, id: string): string[] {
 /** log: every click and pick; closed: the dialog element Continue/X removed (still readable after the fill). */
 export type FakeCommonApp = { log: string[]; closed: Element | null };
 
-/** Wires the fake onto `doc` (a C&G page). `log` gets "click:<id or text>" for every click, plus "pick:<selectId>=<text>" for each option chosen. */
-export function fakeCommonApp(doc: Document): FakeCommonApp {
+/** Wires the fake onto `doc` (a C&G page). `log` gets "click:<id or text>" for every click, plus "pick:<selectId>=<text>" for each option chosen.
+ *  `words` replaces the 9 words every grade list ends with (to test a list without "No Grade"). */
+export function fakeCommonApp(doc: Document, config: { words?: readonly string[] } = {}): FakeCommonApp {
   const log: string[] = [];
   const fake: FakeCommonApp = { log, closed: null };
   let removing = 0;
@@ -85,7 +86,7 @@ export function fakeCommonApp(doc: Document): FakeCommonApp {
     if (select) {
       if (doc.getElementById(`${select.id}-panel`)) return;
       const cur = shown(select);
-      const opts = ["Clear selection", ...optionsFor(doc, select.id)]
+      const opts = ["Clear selection", ...optionsFor(doc, select.id, config.words ?? WORDS)]
         .map((o) => `<mat-option role="option" aria-selected="${o === cur}"><span class="mdc-list-item__primary-text"> ${o} </span></mat-option>`).join("");
       const pane = doc.createElement("div");
       pane.className = "cdk-overlay-pane";

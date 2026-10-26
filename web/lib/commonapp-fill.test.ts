@@ -6,6 +6,8 @@ import { emptyCourse, emptySchool, type Term, type TranscriptCourse, type Transc
 const school = (o: Partial<TranscriptSchool> = {}): TranscriptSchool => ({ id: "s", createdAt: "2026-10-01T00:00:00Z", ...emptySchool(), name: "Lincoln High", country: "United States", ...o });
 const course = (o: Partial<TranscriptCourse> = {}): TranscriptCourse => ({ id: "c", createdAt: "2026-10-01T00:00:00Z", ...emptyCourse("s"), name: "Drama", academicYear: 2023, gradeLevel: 9, credit: 1, terms: [graded("S1", "A")], ...o });
 const graded = (term: Term["term"], grade: string, extra: Partial<Term> = {}): Term => ({ term, grade, status: "graded", ...extra });
+/** Skipped entries other than the "no final grade" ones that every letter-grade course without a printed final gets. */
+const notFinal = (p: { skipped: { field: string }[] }) => p.skipped.filter((s) => s.field !== "final grade");
 
 test("schoolYearLabel writes the two-digit end year", () => {
   assert.equal(schoolYearLabel(2023), "2023-24");
@@ -44,7 +46,7 @@ test("fills a graded 9th-grade semester course", () => {
   assert.equal(p.scheduleStem, "semester");
   assert.deepEqual(p.rows[0], {
     trackerId: "drama", name: "Drama", subject: "Other/Elective", level: "Regular/Standard",
-    grades: { "1": "88", "2": "93", final: "91" }, credit: "4", creditNA: false,
+    grades: { "1": "88", "2": "93", final: "91" }, credits: { final: "4" }, creditNA: false,
   });
 });
 
@@ -63,7 +65,8 @@ test("maps term codes onto the four term columns and the final column", () => {
   assert.deepEqual(rowOf("t").grades, { "1": "A", "2": "B", "3": "C" });
   assert.deepEqual(rowOf("f").grades, { final: "A-" });
   assert.deepEqual(plans.map((p) => p.scheduleStem), ["quarter", "trimester", "year"]);
-  assert.deepEqual(plans.flatMap((p) => p.skipped), []);
+  // Letter grades have no average, so the quarter and trimester rows' Final is left for the student.
+  assert.deepEqual(plans.flatMap((p) => p.skipped).map((s) => `${s.course}/${s.field}`), ["Drama/final grade", "Art/final grade"]);
 });
 
 test("only graded terms with a grade are filled", () => {
@@ -91,7 +94,7 @@ test("an in-progress course does not displace the graded ones in the same grade"
   ]);
   assert.equal(plans.length, 1);
   assert.deepEqual(plans[0]!.rows.map((r) => r.name), ["Done"]);
-  assert.equal(plans[0]!.skipped.length, 1);
+  assert.equal(notFinal(plans[0]!).length, 1);
   assert.equal(plans[0]!.skipped[0]!.reason, "in progress: goes to Current Year Courses");
 });
 
@@ -114,7 +117,7 @@ test("a college school's course does not show up in a high-school plan's skipped
     [course({ id: "a", schoolId: "hs" }), course({ id: "x", schoolId: "col", name: "Calc at CC" })],
   );
   assert.equal(plans.length, 1);
-  assert.deepEqual(plans[0]!.skipped, []);
+  assert.deepEqual(notFinal(plans[0]!), []);
 });
 
 test("no grade level goes to Other courses", () => {
@@ -133,11 +136,11 @@ test("credit: not listed ticks N/A; a missing credit is blank and reported", () 
   const rows = plans[0]!.rows;
   const row = (id: string) => rows.find((r) => r.trackerId === id)!;
   assert.equal(row("na").creditNA, true);
-  assert.equal(row("na").credit, null);
+  assert.deepEqual(row("na").credits, {});
   assert.equal(row("none").creditNA, false);
-  assert.equal(row("none").credit, null);
-  assert.equal(row("half").credit, "0.5");
-  assert.deepEqual(plans[0]!.skipped, [{ where: "9", course: "No credit", field: "credit", reason: "no credit in tracker" }]);
+  assert.equal(row("none").credits.final, undefined);
+  assert.deepEqual(row("half").credits, { "2": "0", final: "0.5" });
+  assert.deepEqual(plans[0]!.skipped.filter((s) => s.field === "credit"), [{ where: "9", course: "No credit", field: "credit", reason: "no credit in tracker" }]);
 });
 
 test("second school in the same grade is reported, not filled", () => {
@@ -153,7 +156,7 @@ test("second school in the same grade is reported, not filled", () => {
   const p = plans[0]!;
   assert.equal(p.schoolName, "School A");
   assert.equal(p.rows.length, 3);
-  assert.equal(p.skipped.length, 1);
+  assert.equal(notFinal(p).length, 1);
   assert.equal(p.skipped[0]!.course, "Four");
   assert.ok(p.skipped[0]!.reason.startsWith("another school (School B)"), p.skipped[0]!.reason);
 });
@@ -167,7 +170,7 @@ test("a second school year in the same grade is reported, not filled", () => {
   const p = plans[0]!;
   assert.equal(p.schoolYear, "2023-24");
   assert.equal(p.rows.length, 2);
-  assert.equal(p.skipped.length, 1);
+  assert.equal(notFinal(p).length, 1);
   assert.equal(p.skipped[0]!.course, "Summer");
   assert.ok(p.skipped[0]!.reason.startsWith("another school year (2024-25)"), p.skipped[0]!.reason);
 });
@@ -227,13 +230,13 @@ test("mixed scales: the grade uses the most common scale; a course on another sc
   assert.equal(p.scale, "1-100");
   const ib = p.rows.find((r) => r.trackerId === "3")!;
   // Never 6/100 and 7/100: an IB grade typed against the 1-100 list.
-  assert.deepEqual(ib, { trackerId: "3", name: "IB Biology HL", subject: "Other/Elective", level: "Regular/Standard", grades: {}, credit: "1", creditNA: false });
+  assert.deepEqual(ib, { trackerId: "3", name: "IB Biology HL", subject: "Other/Elective", level: "Regular/Standard", grades: {}, credits: { final: "1" }, creditNA: false });
   assert.deepEqual(p.skipped.filter((s) => s.course === "IB Biology HL"), [
     { where: "9", course: "IB Biology HL", field: "grades", reason: "grades are on scale 1-7; this grade uses 1-100 on Common App: enter them by hand" },
   ]);
-  // Same-scale rows are untouched.
-  assert.deepEqual(p.rows.find((r) => r.trackerId === "1")!.grades, { "1": "90", "2": "92" });
-  assert.deepEqual(p.rows.find((r) => r.trackerId === "2")!.grades, { "1": "85", "2": "88" });
+  // Same-scale rows keep their grades (and get the rounded average as Final).
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "1")!.grades, { "1": "90", "2": "92", final: "91" });
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "2")!.grades, { "1": "85", "2": "88", final: "87" });
   assert.ok(!p.skipped.some((s) => s.course === "Math" || s.course === "Physics"), JSON.stringify(p.skipped));
 });
 
@@ -246,8 +249,8 @@ test("mixed scales: a 0.0-5.0 course in a 0.0-4.0 grade gets no grades", () => {
   const p = plans[0]!;
   assert.equal(p.scale, "0.0-4.0");
   assert.deepEqual(p.rows.find((r) => r.trackerId === "c")!.grades, {});
-  assert.deepEqual(p.rows.find((r) => r.trackerId === "a")!.grades, { "1": "3.7" });
-  assert.deepEqual(p.skipped, [{ where: "9", course: "AP Chem", field: "grades", reason: "grades are on scale 0.0-5.0; this grade uses 0.0-4.0 on Common App: enter them by hand" }]);
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "a")!.grades, { "1": "3.7", "2": "No Grade" });
+  assert.deepEqual(p.skipped.filter((s) => s.field === "grades"), [{ where: "9", course: "AP Chem", field: "grades", reason: "grades are on scale 0.0-5.0; this grade uses 0.0-4.0 on Common App: enter them by hand" }]);
 });
 
 test("a course on another term system keeps only its final grade; its term grades are reported, never moved across", () => {
@@ -264,7 +267,8 @@ test("a course on another term system keeps only its final grade; its term grade
   assert.deepEqual(p.rows.find((r) => r.trackerId === "4")!.grades, {});
   assert.deepEqual(p.rows.find((r) => r.trackerId === "1")!.grades, { "1": "A", "2": "B" });
   const reason = (term: string) => `the course is on a quarter schedule; this grade uses the semester schedule on Common App, which has no ${term} column: enter it by hand`;
-  assert.deepEqual(p.skipped, [
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "2")!.grades, { "1": "B", "2": "No Grade" });
+  assert.deepEqual(p.skipped.filter((s) => s.field !== "final grade"), [
     { where: "9", course: "Health", field: "Q1 grade", reason: reason("Q1") },
     { where: "9", course: "Health", field: "Q2 grade", reason: reason("Q2") },
     { where: "9", course: "Lab", field: "Q1 grade", reason: reason("Q1") },
@@ -277,7 +281,7 @@ test("a full-year course in a semester grade keeps its final grade with nothing 
     course({ id: "2", name: "Band", period: "full_year", terms: [graded("FY", "A-")] }),
   ]);
   assert.deepEqual(plans[0]!.rows.find((r) => r.trackerId === "2")!.grades, { final: "A-" });
-  assert.deepEqual(plans[0]!.skipped, []);
+  assert.deepEqual(plans[0]!.skipped.filter((s) => s.course === "Band"), []);
 });
 
 test("the review repro: two 1-100 courses, an IB course and a quarter course in one semester grade", () => {
@@ -290,8 +294,8 @@ test("the review repro: two 1-100 courses, an IB course and a quarter course in 
   assert.equal(p.scale, "1-100");
   assert.equal(p.scheduleStem, "semester");
   assert.deepEqual(p.rows.map((r) => [r.name, r.grades]), [
-    ["Math", { "1": "90", "2": "92" }],
-    ["Physics", { "1": "85", "2": "88" }],
+    ["Math", { "1": "90", "2": "92", final: "91" }],
+    ["Physics", { "1": "85", "2": "88", final: "87" }],
     ["IB Biology HL", {}],
     ["Health", {}],
   ]);
@@ -412,4 +416,110 @@ test("current year plan: dual enrollment level and subject override apply", () =
   ])!;
   assert.equal(plan.rows[0]!.level, "Dual Enrollment");
   assert.equal(plan.rows[1]!.subject, "Religion");
+});
+
+// Owner decisions 2026-10-26: per-term credits, "No Grade" = 0 credit, and the Final grade as the rounded average when none is printed.
+const pct = (o: Partial<TranscriptCourse>) => course({ scale: "percent_100", period: "semester", credit: null, ...o });
+const withCredit = (term: Term["term"], grade: string, credit: number): Term => graded(term, grade, { credit });
+
+test("the owner's three rows: Final = rounded average of the terms, Final credit = sum of the term credits", () => {
+  const p = buildCgPlan([school()], [
+    pct({ id: "d", name: "Drama", terms: [withCredit("S1", "88", 2), withCredit("S2", "93", 2)] }),
+    pct({ id: "h", name: "Early World History", terms: [withCredit("S1", "86", 5), withCredit("S2", "89", 5)] }),
+    pct({ id: "e", name: "English 9", terms: [withCredit("S1", "81", 8), withCredit("S2", "88", 8)] }),
+  ])[0]!;
+  assert.deepEqual(p.rows.map((r) => [r.name, r.grades, r.credits, r.creditNA]), [
+    ["Drama", { "1": "88", "2": "93", final: "91" }, { "1": "2", "2": "2", final: "4" }, false],
+    ["Early World History", { "1": "86", "2": "89", final: "88" }, { "1": "5", "2": "5", final: "10" }, false],
+    ["English 9", { "1": "81", "2": "88", final: "85" }, { "1": "8", "2": "8", final: "16" }, false],
+  ]);
+  assert.deepEqual(p.skipped, []);
+  for (const [name, g] of [["Drama", "91"], ["Early World History", "88"], ["English 9", "85"]])
+    assert.ok(p.warnings.includes(`${name}: Final grade ${g} is the rounded average of the term grades`), p.warnings.join(" | "));
+});
+
+test("a term with no grade (status none, or missing) is No Grade with credit 0; Final = the graded term, Final credit = its credit", () => {
+  const p = buildCgPlan([school()], [
+    pct({ id: "n", name: "Band", terms: [withCredit("S1", "90", 1), { term: "S2", grade: "", status: "none", credit: 0 }] }),
+    pct({ id: "m", name: "Choir", terms: [withCredit("S2", "84", 1.5)] }),
+  ])[0]!;
+  const row = (id: string) => p.rows.find((r) => r.trackerId === id)!;
+  assert.deepEqual(row("n").grades, { "1": "90", "2": "No Grade", final: "90" });
+  assert.deepEqual(row("n").credits, { "1": "1", "2": "0", final: "1" });
+  assert.deepEqual(row("m").grades, { "1": "No Grade", "2": "84", final: "84" });
+  assert.deepEqual(row("m").credits, { "1": "0", "2": "1.5", final: "1.5" });
+});
+
+test("uneven term credits add up for Final credit", () => {
+  const p = buildCgPlan([school()], [pct({ terms: [withCredit("S1", "90", 3), withCredit("S2", "80", 2)] })])[0]!;
+  assert.deepEqual(p.rows[0]!.credits, { "1": "3", "2": "2", final: "5" });
+  assert.equal(p.rows[0]!.grades.final, "85");
+});
+
+test("without term credits, Final credit is the course credit (term credit boxes stay empty)", () => {
+  const p = buildCgPlan([school()], [pct({ credit: 1, terms: [graded("S1", "90"), graded("S2", "80")] })])[0]!;
+  assert.deepEqual(p.rows[0]!.credits, { final: "1" });
+});
+
+test("letter grades with no printed Final: Final left blank and reported", () => {
+  const p = buildCgPlan([school()], [course({ name: "Art", terms: [graded("S1", "A"), graded("S2", "B+")] })])[0]!;
+  assert.deepEqual(p.rows[0]!.grades, { "1": "A", "2": "B+" });
+  assert.deepEqual(p.skipped, [{ where: "9", course: "Art", field: "final grade", reason: "no final grade on the transcript; type it yourself" }]);
+  assert.ok(!p.warnings.some((w) => w.includes("rounded average")));
+});
+
+test("a printed Final wins over the average", () => {
+  const p = buildCgPlan([school()], [pct({ finalGrade: "95", terms: [graded("S1", "88"), graded("S2", "93")] })])[0]!;
+  assert.equal(p.rows[0]!.grades.final, "95");
+  assert.ok(!p.warnings.some((w) => w.includes("rounded average")));
+  const fy = buildCgPlan([school()], [pct({ terms: [graded("S1", "88"), graded("S2", "93"), graded("FY", "92")] })])[0]!;
+  assert.equal(fy.rows[0]!.grades.final, "92");
+});
+
+test("the average rounds half up", () => {
+  const p = buildCgPlan([school()], [pct({ terms: [graded("S1", "90"), graded("S2", "91")] })])[0]!;
+  assert.equal(p.rows[0]!.grades.final, "91");
+  const down = buildCgPlan([school()], [pct({ terms: [graded("S1", "90"), graded("S2", "90.4")] })])[0]!;
+  assert.equal(down.rows[0]!.grades.final, "90");
+});
+
+test("no average for a non-integer scale, a non-numeric grade, or an unfinished course", () => {
+  const p = buildCgPlan([school()], [
+    pct({ id: "w", name: "Words", terms: [graded("S1", "90"), graded("S2", "Pass")] }),
+    pct({ id: "u", name: "Unfinished", terms: [graded("S1", "90"), { term: "S2", grade: "", status: "in_progress" }] }),
+  ])[0]!;
+  assert.equal(p.rows.find((r) => r.trackerId === "w")!.grades.final, undefined);
+  const u = p.rows.find((r) => r.trackerId === "u")!;
+  assert.deepEqual(u.grades, { "1": "90" });
+  assert.deepEqual(p.skipped.filter((s) => s.field === "final grade").map((s) => `${s.course}: ${s.reason}`), [
+    "Words: no final grade on the transcript; type it yourself",
+    "Unfinished: a term is not graded yet, so there is no final grade; type it yourself",
+  ]);
+  const dec = buildCgPlan([school()], [course({ scale: "gpa_decimal", scaleMax: 4, terms: [graded("S1", "3.7"), graded("S2", "3.3")] })])[0]!;
+  assert.equal(dec.scale, "0.0-4.0");
+  assert.equal(dec.rows[0]!.grades.final, undefined);
+});
+
+test("a course on another term system: no No Grade columns, Final credit is the sum of its term credits", () => {
+  const p = buildCgPlan([school()], [
+    pct({ id: "1", name: "Math", terms: [graded("S1", "90"), graded("S2", "92")] }),
+    pct({ id: "2", name: "Physics", terms: [graded("S1", "85"), graded("S2", "88")] }),
+    pct({ id: "3", name: "Health", period: "quarter", finalGrade: "95", terms: [withCredit("Q1", "95", 0.25), withCredit("Q2", "94", 0.25)] }),
+  ])[0]!;
+  const h = p.rows.find((r) => r.trackerId === "3")!;
+  assert.deepEqual(h.grades, { final: "95" });
+  assert.deepEqual(h.credits, { final: "0.5" });
+});
+
+test("N/A credit: no term credits, no course credit, not listed; the No Grade 0s are not typed into N/A boxes", () => {
+  const p = buildCgPlan([school()], [pct({ creditUnit: "not_listed", terms: [graded("S1", "90")] })])[0]!;
+  assert.equal(p.rows[0]!.creditNA, true);
+  assert.deepEqual(p.rows[0]!.credits, {});
+  assert.deepEqual(p.rows[0]!.grades, { "1": "90", "2": "No Grade", final: "90" });
+});
+
+test("a graded term with no credit while another term has one: its credit box blank and reported; Final credit counts only what is there", () => {
+  const p = buildCgPlan([school()], [pct({ name: "Drama", terms: [withCredit("S1", "88", 2), graded("S2", "93")] })])[0]!;
+  assert.deepEqual(p.rows[0]!.credits, { "1": "2", final: "2" });
+  assert.deepEqual(p.skipped, [{ where: "9", course: "Drama", field: "S2 credit", reason: "no credit for this term in the tracker; Final credit may be too low" }]);
 });

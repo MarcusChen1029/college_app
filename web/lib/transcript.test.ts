@@ -132,3 +132,37 @@ test("math sub-subjects cover Common App's Pre-Algebra and Trigonometry", () => 
   assert.ok(SUB_SUBJECTS.mathematics.includes("pre_algebra"));
   assert.ok(SUB_SUBJECTS.mathematics.includes("trigonometry"));
 });
+
+test("term credits: validated like the course credit, blank is null, and their sum becomes the course credit", () => {
+  const t = (term: string, credit: unknown, status = "graded", grade = "A") => ({ term, grade, status, credit });
+  const sum = validateCourse({ ...base(), credit: 9, terms: [t("S1", 2), t("S2", "2.5")] });
+  assert.equal(sum.ok, true);
+  if (sum.ok) {
+    assert.deepEqual(sum.value.terms.map((x) => x.credit), [2, 2.5]);
+    assert.equal(sum.value.credit, 4.5);
+  }
+  // Uneven credits add up; a "none" (no grade) term counts as 0 whatever it carries.
+  const uneven = validateCourse({ ...base(), credit: null, terms: [t("S1", 3), t("S2", 2)] });
+  assert.equal(uneven.ok && uneven.value.credit, 5);
+  const none = validateCourse({ ...base(), credit: null, terms: [t("S1", 2), t("S2", 2, "none", "")] });
+  assert.equal(none.ok && none.value.credit, 2);
+  // Blank term credits are null and leave the course credit as typed.
+  const blank = validateCourse({ ...base(), credit: 1, terms: [t("S1", ""), t("S2", null)] });
+  assert.equal(blank.ok, true);
+  if (blank.ok) {
+    assert.deepEqual(blank.value.terms, [{ term: "S1", grade: "A", status: "graded" }, { term: "S2", grade: "A", status: "graded" }]);
+    assert.equal(blank.value.credit, 1);
+  }
+  // Only "none" terms with a credit (0) do not wipe the course credit.
+  const onlyNone = validateCourse({ ...base(), credit: 1, terms: [t("S1", null), t("S2", 0, "none", "")] });
+  assert.equal(onlyNone.ok && onlyNone.value.credit, 1);
+  // Floating-point sums stay tidy.
+  const tidy = validateCourse({ ...base(), credit: null, terms: [t("S1", 0.1), t("S2", 0.2)] });
+  assert.equal(tidy.ok && tidy.value.credit, 0.3);
+  // Same limits as the course credit.
+  assert.equal(validateCourse({ ...base(), terms: [t("S1", -1)] }).ok, false);
+  assert.equal(validateCourse({ ...base(), terms: [t("S1", LIMITS.credit + 1)] }).ok, false);
+  assert.equal(validateCourse({ ...base(), terms: [t("S1", "two")] }).ok, false);
+  // A sum over the limit is refused rather than stored.
+  assert.equal(validateCourse({ ...base(), terms: [t("S1", 60), t("S2", 60)] }).ok, false);
+});

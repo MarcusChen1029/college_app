@@ -269,3 +269,27 @@ test("planCourseUpdate merges systemSubjects into existing overrides", () => {
   assert.equal(r.ok, true);
   if (r.ok) assert.deepEqual(r.value.overrides, { common_app: { level: "Honors", subject: "Biology" }, stars: { subject: "Science" } });
 });
+
+test("format v2: per-term credits in the example and the rules; the app sums them on import", () => {
+  assert.equal(TRANSCRIPT_FORMAT_VERSION, "transcript.v2");
+  const f = transcriptFormatText();
+  assert.match(f, /\{ "term": "S1", "grade": "[^"]+", [^}]*"credit": 2 \}/);
+  assert.match(f, /\{ "term": "S2", "grade": "[^"]+", [^}]*"credit": 2 \}/);
+  assert.ok(f.includes("each term's credit"), f);
+  assert.ok(f.includes("do not add them up"), f);
+  assert.ok(f.includes(`"status": "none"`) && f.includes(`"credit": 0`), f);
+  // Rule 1 stays: the averaging happens only in the Common App filler, never in the stored data.
+  assert.ok(f.includes("Never convert, round, average"), f);
+
+  const data = {
+    version: TRANSCRIPT_FORMAT_VERSION,
+    schools: [{ name: "Kang Chiao", defaultScale: "percent_100", courses: [
+      { academicYear: 2023, gradeLevel: 9, name: "Drama", period: "semester", credit: null, terms: [{ term: "S1", grade: "88", status: "graded", credit: 2 }, { term: "S2", grade: "93", status: "graded", credit: 2 }] },
+      { academicYear: 2023, gradeLevel: 9, name: "Band", period: "semester", terms: [{ term: "S1", grade: "90", status: "graded", credit: 1 }, { term: "S2", grade: "", status: "none", credit: 0 }] },
+    ] }],
+  };
+  const plan = buildImportPlan(data, none, "ai_import");
+  assert.deepEqual(plan.rows.map((r) => r.errors), [[], []]);
+  assert.deepEqual(plan.rows.map((r) => r.input!.credit), [4, 1]);
+  assert.deepEqual(plan.rows[0]!.input!.terms.map((t) => t.credit), [2, 2]);
+});

@@ -3,7 +3,7 @@
 // then Continue only if nothing failed. On a locator failure the dialog is left OPEN and nothing is pressed (X would save).
 // Never touches the C&G intro question, never ticks "I have reported all of my courses", never submits.
 
-import { matchOption, matchStem, rowsToAdd, type CgGradeKey, type CgGradePlan, type CommonAppScale, type FillRow, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
+import { matchOption, matchStem, NO_GRADE, rowsToAdd, type CgGradeKey, type CgGradePlan, type CommonAppScale, type FillRow, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
 import {
   cgCreditId,
   cgDialog,
@@ -275,6 +275,8 @@ async function fillRow(doc: Document, plan: CgGradePlan, row: FillRow, n: number
   } else setText(name as HTMLInputElement, row.name);
   await pick(await get(cgFieldId("level", 1, n), "Course Level"), row.level, "level");
 
+  // Columns whose grade could not be set: their credit is left blank too (a "No Grade" 0 credit without its "No Grade" says nothing).
+  const failed = new Set<TermColumn>();
   for (const col of COLUMNS) {
     checkStop();
     const want = row.grades[col];
@@ -284,15 +286,28 @@ async function fillRow(doc: Document, plan: CgGradePlan, row: FillRow, n: number
       if (overwrite && box) await clearBox(box);
       continue;
     }
+    failed.add(col);
     if (!box) {
       blank(row.name, field, plan.scale === "Other" ? `no single ${colName(col)} grade box on Common App for this course` : `Common App's ${plan.scheduleStem} schedule has no ${colName(col)} column`);
       continue;
     }
-    if (box.tagName === "INPUT") typeExact(box, want, field);
-    else if ((await selectMatOption(box, want)) === null) {
+    if (box.tagName === "INPUT") {
+      // Scale "Other" has typed grades and no "No Grade" option; never type the words in as if they were a grade.
+      if (want === NO_GRADE) {
+        blank(row.name, field, `scale Other has no '${NO_GRADE}' option: enter what your transcript shows for this term`);
+        continue;
+      }
+      if (want.length > maxLen(box)) {
+        typeExact(box, want, field); // reports it as too long, types nothing
+        continue;
+      }
+      setText(box as HTMLInputElement, want);
+    } else if ((await selectMatOption(box, want)) === null) {
       blank(row.name, field, `'${want}' is not in Common App's list`);
       if (overwrite) await clearMatSelect(box);
+      continue;
     }
+    failed.delete(col);
   }
 
   checkStop();
@@ -312,7 +327,16 @@ async function fillRow(doc: Document, plan: CgGradePlan, row: FillRow, n: number
   if (row.creditNA) await setNA(true);
   else {
     await setNA(false);
-    if (row.credit != null) typeExact(await get(cgFieldId("credit", 1, n), "Final credit"), row.credit, "credit");
+    // Term credits, then Final credit, exact text (owner, 2026-10-26: per-term credits; Final is their sum, worked out in the plan).
+    for (const col of COLUMNS) {
+      checkStop();
+      const want = row.credits[col];
+      if (want == null || (col !== "final" && failed.has(col))) continue;
+      const field = col === "final" ? "credit" : `${colName(col)} credit`;
+      const box = doc.getElementById(cgCreditId(col, 1, n));
+      if (!box) blank(row.name, field, `Common App's ${plan.scheduleStem} schedule has no ${colName(col)} credit box`);
+      else typeExact(box, want, field);
+    }
   }
 }
 

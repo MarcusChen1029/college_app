@@ -5,7 +5,7 @@
 
 import { mapCourse, yearLabel } from "./transcript-maps.ts";
 import { COMMON_APP_MAP } from "./transcript-maps/common-app.ts";
-import { courseStatus, normalizeName, TERMS_FOR_PERIOD, type GradeScale, type PeriodType, type TermCode, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
+import { addCredits, courseStatus, normalizeName, termCreditSum, TERMS_FOR_PERIOD, type GradeScale, type PeriodType, type TermCode, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 /** The Grading Scale dropdown, in Common App's order. After "Other" the student types each grade instead of picking it. */
 export const COMMON_APP_GRADING_SCALES = ["A-F", "1-100", "0.0-4.0", "0.0-5.0", "1-7", "1-10", "1-11", "1-20", "Other"] as const;
@@ -21,7 +21,8 @@ export type FillRow = {
   subject: string | null;
   level: string | null;
   grades: Partial<Record<TermColumn, string>>;
-  credit: string | null;
+  /** Credit boxes by column (credit{1..4}Control / creditFinalControl), exact text. Empty when creditNA. */
+  credits: Partial<Record<TermColumn, string>>;
   creditNA: boolean;
 };
 export type Skipped = { where: CgGradeKey | "current"; course: string; field: string; reason: string };
@@ -39,6 +40,15 @@ export type CgGradePlan = {
 const GRADE_ORDER: CgGradeKey[] = ["9", "10", "11", "12", "other"];
 const STEM: Record<PeriodType, ScheduleStem> = { full_year: "year", semester: "semester", trimester: "trimester", quarter: "quarter" };
 const COLUMN: Record<TermCode, TermColumn> = { S1: "1", T1: "1", Q1: "1", S2: "2", T2: "2", Q2: "2", T3: "3", Q3: "3", Q4: "4", FY: "final" };
+/** The term columns the dialog shows for each Schedule (Yearly has only Final). */
+const SCHEDULE_COLUMNS: Record<ScheduleStem, TermColumn[]> = { semester: ["1", "2"], trimester: ["1", "2", "3"], quarter: ["1", "2", "3", "4"], year: [] };
+/** Grading Scales whose grades are whole numbers, so a term average can be rounded to one of the list's options. */
+const INTEGER_SCALES: readonly CommonAppScale[] = ["1-100", "1-7", "1-10", "1-11", "1-20"];
+/** Common App's grade option for a term the course was not taken (owner, 2026-10-26: it means 0 credit). Matched exactly like any grade. */
+export const NO_GRADE = "No Grade";
+const NUMERIC = /^\d+(\.\d+)?$/;
+/** Credit as text without trailing zeros: 2, 2.5, 0.25. */
+const creditText = (n: number): string => String(addCredits([n]));
 
 /** "2023-24" for the year starting in 2023. */
 export function schoolYearLabel(year: number): string {
@@ -94,22 +104,93 @@ function subjectAndLevel(school: TranscriptSchool, c: TranscriptCourse, where: S
   return { subject, level: dual ?? pick("level"), warnings: mapped.warnings };
 }
 
-/** The grades this course can have in a dialog with Grading Scale `scale` and Schedule `stem`; what is left out is reported.
+type Cells = { grades: Partial<Record<TermColumn, string>>; credits: Partial<Record<TermColumn, string>> };
+
+/** The course's total credit: the sum of its term credits when it has them, else the course credit. */
+function totalCredit(c: TranscriptCourse): number | null {
+  return termCreditSum(c.terms) ?? c.credit;
+}
+
+/** The grade and credit boxes this course fills in a dialog with Grading Scale `scale` and Schedule `stem`; what is left out is reported.
  *  - Another scale: no grades at all. They would be matched against this scale's options (an IB "6" would become 6 on 1-100).
- *  - Another term system: only the final grade. A quarter's Q1 is not the dialog's Semester 1, so term grades are never moved across. */
-function gradesInDialog(c: TranscriptCourse, scale: CommonAppScale, stem: ScheduleStem, where: CgGradeKey, skipped: Skipped[]): Partial<Record<TermColumn, string>> {
-  const grades = gradesFor(c);
+ *  - Another term system: only the final grade. A quarter's Q1 is not the dialog's Semester 1, so term grades are never moved across.
+ *  In both cases only Final credit is filled (the course's total).
+ *  - Same term system (owner, 2026-10-26): each term column gets its grade and credit as printed; a term with no grade ("none", or missing
+ *    while the course has other terms of this system) gets "No Grade" and credit 0; in-progress / planned terms stay blank. Final is the printed
+ *    final grade, else the rounded (half up) average of the graded terms on an integer scale, else blank and reported. Final credit is the sum of
+ *    the term credits used, or the course credit when no term has one. */
+function cellsInDialog(c: TranscriptCourse, scale: CommonAppScale, stem: ScheduleStem, where: CgGradeKey, skipped: Skipped[], warnings: string[]): Cells {
+  const printed = gradesFor(c);
+  const total = totalCredit(c);
+  const finalCreditOnly = total != null ? { final: creditText(total) } : {};
   const own = gradingScaleFor(c.scale, c.scaleMax);
   if (own !== scale) {
     skipped.push({ where, course: c.name, field: "grades", reason: `grades are on scale ${own}; this grade uses ${scale} on Common App: enter them by hand` });
-    return {};
+    return { grades: {}, credits: finalCreditOnly };
   }
-  if (STEM[c.period] === stem) return grades;
-  for (const t of c.terms) {
-    if (t.status !== "graded" || !t.grade.trim() || COLUMN[t.term] === "final") continue;
-    skipped.push({ where, course: c.name, field: `${t.term} grade`, reason: `the course is on a ${STEM[c.period]} schedule; this grade uses the ${stem} schedule on Common App, which has no ${t.term} column: enter it by hand` });
+  if (STEM[c.period] !== stem) {
+    for (const t of c.terms) {
+      if (t.status !== "graded" || !t.grade.trim() || COLUMN[t.term] === "final") continue;
+      skipped.push({ where, course: c.name, field: `${t.term} grade`, reason: `the course is on a ${STEM[c.period]} schedule; this grade uses the ${stem} schedule on Common App, which has no ${t.term} column: enter it by hand` });
+    }
+    return { grades: printed.final ? { final: printed.final } : {}, credits: finalCreditOnly };
   }
-  return grades.final ? { final: grades.final } : {};
+
+  const grades: Partial<Record<TermColumn, string>> = {};
+  const credits: Partial<Record<TermColumn, string>> = {};
+  const cols = SCHEDULE_COLUMNS[stem];
+  const termOf = (col: TermColumn) => c.terms.find((t) => COLUMN[t.term] === col);
+  // A course with only a year grade has no term columns of its own: its missing terms are not "No Grade".
+  const hasTerms = cols.some((col) => termOf(col));
+  // Same rule as termCreditSum: credits on "none" terms (always 0) don't count.
+  const hasTermCredits = c.terms.some((t) => t.status !== "none" && t.credit != null);
+  const graded: string[] = [];
+  const termCredits: number[] = [];
+  let unfinished = false;
+  for (const col of cols) {
+    const t = termOf(col);
+    if (!t || t.status === "none") {
+      if (hasTerms) {
+        grades[col] = NO_GRADE;
+        credits[col] = "0";
+      }
+      continue;
+    }
+    const g = t.grade.trim();
+    if (t.status !== "graded" || !g) {
+      // In progress, planned, or a graded term whose grade is missing (flagged in the tracker): blank, and no average.
+      unfinished = true;
+      continue;
+    }
+    grades[col] = g;
+    graded.push(g);
+    if (t.credit != null) {
+      credits[col] = creditText(t.credit);
+      termCredits.push(t.credit);
+    } else if (hasTermCredits) {
+      // Other terms carry credits, so this one's is missing rather than "listed once for the course": say so, never guess it.
+      skipped.push({ where, course: c.name, field: `${t.term} credit`, reason: "no credit for this term in the tracker; Final credit may be too low" });
+    }
+  }
+
+  if (printed.final) grades.final = printed.final;
+  else if (graded.length) {
+    if (!unfinished && INTEGER_SCALES.includes(scale) && graded.every((g) => NUMERIC.test(g))) {
+      const avg = graded.reduce((sum, g) => sum + Number(g), 0) / graded.length;
+      // Round half up; toFixed first so 90.49999999 from floating point is not taken for 90.5 or the other way round.
+      grades.final = String(Math.round(Number(avg.toFixed(6))));
+      warnings.push(`${c.name}: Final grade ${grades.final} is the rounded average of the term grades`);
+    } else {
+      skipped.push({
+        where, course: c.name, field: "final grade",
+        reason: unfinished ? "a term is not graded yet, so there is no final grade; type it yourself" : "no final grade on the transcript; type it yourself",
+      });
+    }
+  }
+
+  if (termCredits.length) credits.final = creditText(addCredits(termCredits));
+  else if (c.credit != null) credits.final = creditText(c.credit);
+  return { grades, credits };
 }
 
 export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCourse[]): CgGradePlan[] {
@@ -160,11 +241,12 @@ export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCour
     const rows: FillRow[] = rowsOf.map((c) => {
       const { subject, level, warnings: ruleWarnings } = subjectAndLevel(mainSchool, c, grade, skipped);
       for (const w of ruleWarnings) warnings.push(`${c.name}: ${w}`);
-      const hasCredit = c.credit != null;
+      const cells = cellsInDialog(c, scale, stem, grade, skipped, warnings);
+      // Only a real credit counts: the 0s of No Grade terms are not one. N/A makes every credit box read-only, so nothing is typed then.
+      const hasCredit = cells.credits.final != null;
       const creditNA = !hasCredit && c.creditUnit === "not_listed";
       if (!hasCredit && !creditNA) skipped.push({ where: grade, course: c.name, field: "credit", reason: "no credit in tracker" });
-      const grades = gradesInDialog(c, scale, stem, grade, skipped);
-      return { trackerId: c.id, name: c.name, subject, level, grades, credit: hasCredit ? String(c.credit) : null, creditNA };
+      return { trackerId: c.id, name: c.name, subject, level, grades: cells.grades, credits: creditNA ? {} : cells.credits, creditNA };
     });
 
     plans.push({ grade, schoolName: mainSchool.name, schoolYear: schoolYearLabel(mainYear), scale, scheduleStem: stem, rows, skipped, warnings });

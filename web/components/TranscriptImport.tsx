@@ -116,7 +116,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
         </h2>
         <label className="text-sm font-medium">
           The JSON ({TRANSCRIPT_FORMAT_VERSION})
-          <textarea className={`${fieldClass} min-h-40 font-mono text-xs`} value={text} onChange={(e) => setText(e.target.value)} placeholder='{ "version": "transcript.v1", "schools": [ ... ] }' />
+          <textarea className={`${fieldClass} min-h-40 font-mono text-xs`} value={text} onChange={(e) => setText(e.target.value)} placeholder={`{ "version": "${TRANSCRIPT_FORMAT_VERSION}", "schools": [ ... ] }`} />
         </label>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={review} disabled={!text.trim()}>
           Review

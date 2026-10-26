@@ -22,7 +22,7 @@ function ninthGrade(): Document {
   return doc;
 }
 
-const row = (o: Partial<FillRow>): FillRow => ({ trackerId: "t1", name: "Algebra I", subject: "Algebra", level: "Honors", grades: { "1": "95", "2": "88", final: "91" }, credit: "1", creditNA: false, ...o });
+const row = (o: Partial<FillRow>): FillRow => ({ trackerId: "t1", name: "Algebra I", subject: "Algebra", level: "Honors", grades: { "1": "95", "2": "88", final: "91" }, credits: { final: "1" }, creditNA: false, ...o });
 const plan = (o: Partial<CgGradePlan>): CgGradePlan => ({
   grade: "9", schoolName: "West Lafayette Junior-Senior High School", schoolYear: "2023-24", scale: "A-F", scheduleStem: "semester",
   rows: [row({})], skipped: [], warnings: [], ...o,
@@ -172,4 +172,39 @@ test("no note when the question was unanswered or already Yes", async () => {
     const result = await fillCgGrade(plan({ grade: "other" }), "replace", doc);
     assert.equal(result.notes, undefined, String(checked));
   }
+});
+
+test("per-term credits and No Grade: grades picked exactly, then each credit box typed exactly", async () => {
+  const doc = ninthGrade();
+  const fake = fakeCommonApp(doc);
+  const r = row({ grades: { "1": "88", "2": "No Grade", final: "88" }, credits: { "1": "2", "2": "0", final: "2" } });
+  const result = await fillCgGrade(plan({ scale: "1-100", rows: [r] }), "replace", doc);
+  assert.deepEqual(result, { filled: 1, blanks: [] });
+  for (const p of ["pick:grade1Control_T1C1=88", "pick:grade2Control_T1C1=No Grade", "pick:gradeFinalControl_T1C1=88"]) assert.ok(fake.log.includes(p), p);
+  const dialog = fake.closed!;
+  const value = (id: string) => (dialog.querySelector(`#${id}`) as HTMLInputElement).value;
+  assert.deepEqual([value("credit1Control_T1C1"), value("credit2Control_T1C1"), value("creditFinalControl_T1C1")], ["2", "0", "2"]);
+});
+
+test("a grade list without No Grade: that grade and its credit stay blank and are reported, never a closest option", async () => {
+  const doc = ninthGrade();
+  const fake = fakeCommonApp(doc, { words: ["Incomplete", "Pass - (Pass/Fail)"] });
+  const r = row({ name: "Band", grades: { "1": "90", "2": "No Grade", final: "90" }, credits: { "1": "1", "2": "0", final: "1" } });
+  const result = await fillCgGrade(plan({ scale: "1-100", rows: [r] }), "replace", doc);
+  assert.equal(result.stoppedReason, undefined);
+  assert.deepEqual(result.blanks, [{ where: "9", course: "Band", field: "term 2 grade", reason: "'No Grade' is not in Common App's list" }]);
+  assert.ok(!fake.log.some((l) => /^pick:grade2Control_T1C1=./.test(l)), fake.log.join("\n"));
+  const dialog = fake.closed!;
+  const value = (id: string) => (dialog.querySelector(`#${id}`) as HTMLInputElement).value;
+  assert.deepEqual([value("credit1Control_T1C1"), value("credit2Control_T1C1"), value("creditFinalControl_T1C1")], ["1", "", "1"]);
+});
+
+test("N/A ticked: no credit box is typed into", async () => {
+  const doc = ninthGrade();
+  const fake = fakeCommonApp(doc);
+  const result = await fillCgGrade(plan({ scale: "1-100", rows: [row({ grades: { "1": "90" }, credits: {}, creditNA: true })] }), "replace", doc);
+  assert.deepEqual(result, { filled: 1, blanks: [] });
+  const dialog = fake.closed!;
+  assert.ok(dialog.querySelector("#creditNA_T1C1-input")!.hasAttribute("checked"));
+  for (const id of ["credit1Control_T1C1", "credit2Control_T1C1", "creditFinalControl_T1C1"]) assert.equal((dialog.querySelector(`#${id}`) as HTMLInputElement).value, "", id);
 });

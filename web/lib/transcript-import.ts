@@ -30,7 +30,8 @@ import {
 } from "./transcript.ts";
 import { matchSubjectOption, SYSTEMS } from "./transcript-maps.ts";
 
-export const TRANSCRIPT_FORMAT_VERSION = "transcript.v1";
+/** v2 (2026-10-26): a term may carry its own "credit". v1 answers still read (the field is optional). */
+export const TRANSCRIPT_FORMAT_VERSION = "transcript.v2";
 /** The schoolId a planned course carries until its (new) school has been created. */
 export const NEW_SCHOOL_ID = "new-school";
 
@@ -66,13 +67,13 @@ export function transcriptFormatText(): string {
           "name": "course name exactly as printed",
           "period": "semester",
           "terms": [
-            { "term": "S1", "grade": "A-", "gradeWeighted": "4.7", "status": "graded" },
-            { "term": "S2", "grade": "", "status": "in_progress" }
+            { "term": "S1", "grade": "A-", "gradeWeighted": "4.7", "status": "graded", "credit": 2 },
+            { "term": "S2", "grade": "B+", "status": "graded", "credit": 2 }
           ],
           "finalGrade": null,
           "scale": "letter_plus_minus", "scaleMax": null,
           "level": "ap",
-          "credit": 1, "creditUnit": "carnegie",
+          "credit": null, "creditUnit": "carnegie",
           "subject": "mathematics", "subSubject": "calculus", "languageName": "",
           "systemSubjects": { "common_app": "Calculus", "stars": "Mathematics", "csu": "C – Mathematics", "uc": "C – Mathematics", "uiuc": "Mathematics", "ut": "Mathematics" },
           "isSummer": false, "isRepeat": false, "isCollege": false, "collegeName": "", "isWithdrawn": false,
@@ -103,9 +104,12 @@ Rules:
 3. "terms" holds the grade for each term the transcript shows. "finalGrade" is the year/final grade only if the transcript prints one; otherwise null.
 4. Use null (or an empty string for text) when something is not on the transcript. Never guess. Put anything you are unsure about in the course's "notes".
 5. Courses still in progress use status "in_progress" with an empty grade; courses not started yet use "planned".
-6. academicYear is the calendar year the school year starts (2025 for 2025-26).
-7. Every application names its subjects differently. For EACH course fill "systemSubjects" with one entry per application key below, choosing the option from that application's own list that best fits the course and copying it exactly. If nothing fits, use that application's "Other" option; never invent an option. "subject" and "subSubject" (above) are our own general categories; keep filling them too.
-8. Output JSON only, with no commentary.
+   A term the transcript lists with no grade (the course was not taken that term) uses "status": "none" with "grade": "" and "credit": 0.
+6. Credits: if the transcript prints each term's credit, put it on that term as "credit" (as printed, terms can differ) and leave the course "credit" null;
+   do not add them up yourself (the app adds them up). If it prints one credit for the whole course, put it in the course "credit".
+7. academicYear is the calendar year the school year starts (2025 for 2025-26).
+8. Every application names its subjects differently. For EACH course fill "systemSubjects" with one entry per application key below, choosing the option from that application's own list that best fits the course and copying it exactly. If nothing fits, use that application's "Other" option; never invent an option. "subject" and "subSubject" (above) are our own general categories; keep filling them too.
+9. Output JSON only, with no commentary.
 
 Subject options by application (copy the text exactly):
 ${appLists}`;
