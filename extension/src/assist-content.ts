@@ -7,6 +7,10 @@ import { nextBox } from "./assist/next.ts";
 import { fillStarsCourse, StarsStop, starsExistingNames, starsPageYear } from "./stars/fill.ts";
 import type { AssistMessage, AssistResponse } from "./messages.ts";
 import { SITE_ORIGINS } from "./sites.ts";
+import { runCsuSchool } from "./csu/run.ts";
+import { onCourseworkPage } from "./csu/fill.ts";
+
+let csuStop = false;
 
 let last: Element | null = null;
 document.addEventListener("focusin", (e) => {
@@ -61,6 +65,21 @@ chrome.runtime.onMessage.addListener((raw: unknown, sender, sendResponse: (r: As
       fillStarsCourse(document, msg.row, msg.scale).then(
         (r) => sendResponse({ type: "starsFill", ok: true, saved: r.saved, blanks: r.blanks }),
         (e: unknown) => sendResponse({ type: "starsFill", ok: false, error: e instanceof StarsStop || e instanceof Error ? e.message : String(e) }),
+      );
+      return true; // async response
+    case "csuStop":
+      csuStop = true;
+      sendResponse({ type: "csuStop" });
+      return false;
+    case "csuFill":
+      if (!SITE_ORIGINS.csu.includes(location.origin) || !onCourseworkPage(document)) {
+        sendResponse({ type: "csuFill", result: { added: [], skippedExisting: 0, stopped: "Open Academic History > High School Coursework on Cal State Apply first." } });
+        return false;
+      }
+      csuStop = false;
+      runCsuSchool(document, msg.plan, () => csuStop).then(
+        (result) => sendResponse({ type: "csuFill", result }),
+        (e: unknown) => sendResponse({ type: "csuFill", result: { added: [], skippedExisting: 0, stopped: e instanceof Error ? e.message : String(e) } }),
       );
       return true; // async response
     default:

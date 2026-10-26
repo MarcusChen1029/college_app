@@ -3,6 +3,8 @@ import type { CgGradeKey, CgGradePlan, CurrentYearPlan } from "../../web/lib/com
 import type { PageResult } from "./commonapp/dom.ts";
 import type { InsertResult } from "./assist/insert.ts";
 import type { StarsRow } from "../../web/lib/stars-fill.ts";
+import type { CsuSchoolPlan } from "../../web/lib/csu-fill.ts";
+import type { CsuRunResult } from "./csu/run.ts";
 import type { FillTarget } from "./commonapp/pages.ts";
 
 export type { FillTarget } from "./commonapp/pages.ts";
@@ -39,7 +41,9 @@ export type AssistMessage =
   | { type: "assistTarget" }
   | { type: "assistInsert"; value: string; advance: boolean }
   | { type: "starsPage" }
-  | { type: "starsFill"; row: StarsRow; scale: string | null };
+  | { type: "starsFill"; row: StarsRow; scale: string | null }
+  | { type: "csuFill"; plan: CsuSchoolPlan }
+  | { type: "csuStop" };
 export type AssistResponse =
   | { type: "ready"; path: string }
   | { type: "assistTarget"; label: string | null }
@@ -47,6 +51,8 @@ export type AssistResponse =
   /** year: the coursework page's `yr` (null on any other STARS page). */
   | { type: "starsPage"; year: number | null; existing: string[] }
   | { type: "starsFill"; ok: true; saved: boolean; blanks: string[] }
-  | { type: "starsFill"; ok: false; error: string };
+  | { type: "starsFill"; ok: false; error: string }
+  | { type: "csuFill"; result: CsuRunResult }
+  | { type: "csuStop" };
 
 export type ExtensionMessage = PanelRequest | ContentMessage | AssistMessage;

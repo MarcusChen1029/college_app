@@ -6,6 +6,8 @@ import { buildSystemPlan, FILL_SYSTEMS } from "../../web/lib/system-fill.ts";
 import { buildStarsIntlPlans } from "../../web/lib/stars-fill.ts";
 import { assistView } from "./assist-panel.ts";
 import { starsAutoView } from "./stars/panel.ts";
+import { csuAutoView } from "./csu/panel.ts";
+import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
 import { createDriver, type TabsApi } from "./chrome-driver.ts";
 import { targetUrl } from "./commonapp/pages.ts";
 import type { PanelResponse } from "./messages.ts";
@@ -146,7 +148,11 @@ async function readyView(): Promise<void> {
   if (site !== "common_app") {
     if (!transcript) return void refresh();
     const onSite = tab.site === site ? tab.id : null;
-    const auto = site === "stars" && onSite != null ? await starsAutoView(buildStarsIntlPlans(transcript.schools, transcript.courses), onSite) : null;
+    const auto =
+      onSite == null ? null
+      : site === "stars" ? await starsAutoView(buildStarsIntlPlans(transcript.schools, transcript.courses), onSite)
+      : site === "csu" ? csuAutoView(buildCsuPlans(transcript.schools, transcript.courses), onSite)
+      : null;
     const node = await assistView(buildSystemPlan(site, transcript.schools, transcript.courses), onSite, auto);
     if (view !== "ready" || shownSite !== site) return;
     show(
