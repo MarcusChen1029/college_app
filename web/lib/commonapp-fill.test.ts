@@ -255,7 +255,9 @@ test("matchStem picks the first option that starts with the stem", () => {
   assert.equal(matchStem(options, "quarter"), "Quarter");
   assert.equal(matchStem(options, "year"), "Yearly");
   assert.equal(matchStem(options, "semester"), "Semester");
-  assert.equal(matchStem(["Semesters", "Trimesters", "Quarters", "Yearly"], "quarter"), "Quarters");
+  // The C&G dialog's Schedule select read live (2026-10-26): "Other" is a fifth option that no stem may pick.
+  const dialog = ["Semesters", "Trimesters", "Quarters", "Yearly", "Other"];
+  assert.deepEqual((["semester", "trimester", "quarter", "year"] as const).map((s) => matchStem(dialog, s)), ["Semesters", "Trimesters", "Quarters", "Yearly"]);
   assert.equal(matchStem(["Semester", "Quarter"], "trimester"), null);
 });
 
