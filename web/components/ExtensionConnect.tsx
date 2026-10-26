@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { openSignIn } from "@/components/SignInDialog";
@@ -62,7 +63,21 @@ export function ExtensionConnect() {
       </div>
     );
   }
-  if (student.role !== "student") return skeleton; // no account type yet: RoleGate is sending them to /welcome
+  if (student.role === null) {
+    // No account type yet. This page is exempt from the /welcome redirect (redirectFor) so the popup is not lost; say what to do instead.
+    return (
+      <div className={card}>
+        <h1 className="font-display text-2xl font-bold">Choose your account type first</h1>
+        <p className="text-sm text-zinc-600">
+          Choose &apos;Student&apos; first at <Link href="/welcome" className="font-medium underline">/welcome</Link>, then click Sign in in the extension again.
+        </p>
+        <Link href="/welcome" className={buttonClass("primary")}>
+          Go to /welcome
+        </Link>
+      </div>
+    );
+  }
+  if (student.role !== "student") return skeleton; // role still loading
 
   async function allow() {
     setBusy(true);
