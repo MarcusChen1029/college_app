@@ -17,25 +17,16 @@ node scripts/extension-id.mjs "<base64 key>"   # prints the id derived from a ke
 
 ## Load and sign in (manual check)
 
-Messages sent with `chrome.runtime.sendMessage` are not delivered to the frame that sent them, so the sign-in calls below must be run from the side panel's console, not from the service worker console. The service worker console is only used to look at `chrome.storage.local`.
+Everything below is done from the side panel; no console is needed except for the optional token check in step 7.
 
 1. Run the tracker locally: `cd web && npm run dev`. `web/.env.local` must contain `NEXT_PUBLIC_EXTENSION_ID=omnpdpbgbbdbnnaimhppoclimbeeognl`; restart the dev server if you just added it.
 2. Build the extension: `cd extension && node build.mjs`.
 3. In Chrome open `chrome://extensions`, turn on Developer mode, click "Load unpacked" and choose the `extension/dist` folder.
 4. Check that the extension card shows the id `omnpdpbgbbdbnnaimhppoclimbeeognl`. If it shows a different id, the manifest `key` was not picked up.
-5. Open the side panel: click the extension's toolbar icon (the puzzle-piece menu lists it if it is not pinned). Until Task 8 it only shows the text "Common App filler".
-6. Open the panel's console: right-click inside the side panel, choose Inspect, then open the Console tab of the window that appears.
-7. Sign in. In the panel console run:
-   `await chrome.runtime.sendMessage({type:"signIn"})`
-   A window opens showing the tracker's connect page (sign in to the tracker first if asked). Click Allow. Expected response: `{type: "signIn", ok: true}`. If you click Cancel the response is `{type: "signIn", ok: false}`.
-8. Confirm the token is stored. On `chrome://extensions`, click "service worker" on the extension card to open its console and run:
-   `await chrome.storage.local.get("token")`
-   Expected: `{token: "<long string>"}`.
-9. Fetch the transcript. In the panel console run:
-   `await chrome.runtime.sendMessage({type:"loadTranscript"})`
-   Expected for a student account: `{type: "loadTranscript", result: {ok: true, schools: [...], courses: [...]}}` with camelCase fields such as `academicYear`. A teacher account gives `result: {ok: false, reason: "students_only"}`. No token or a revoked token gives `result: {ok: false, reason: "signed_out"}` and the stored token is removed.
-10. Sign out. In the panel console run:
-    `await chrome.runtime.sendMessage({type:"signOut"})`
-    Expected response: `{type: "signOut"}`. Run the `chrome.storage.local.get("token")` command from step 8 in the service worker console again; it now returns `{}`.
+5. Open the side panel: click the extension's toolbar icon (the puzzle-piece menu lists it if it is not pinned). Signed out, it shows a "Sign in" button.
+6. Click "Sign in". A window opens showing the tracker's connect page (sign in to the tracker first if asked). Click Allow. The panel then lists "9th grade (N courses)" and so on, plus "Current year courses", all ticked. If you click Cancel, the panel says "Sign in did not finish. Try again." A teacher account is told the extension is for student accounts.
+7. Optional: confirm the token is stored. On `chrome://extensions`, click "service worker" on the extension card to open its console and run `await chrome.storage.local.get("token")`. Expected: `{token: "<long string>"}`.
+8. Click "Sign out" in the panel. The panel returns to the "Sign in" button. Run the command from step 7 again; it now returns `{}`.
+9. To fill: sign in again, open your Common App (https://apply.commonapp.org/) in the active tab of the same window (otherwise the panel says "Open your Common App in this window first." and "Fill selected" is disabled), untick what you do not want, and click "Fill selected". The panel asks "Replace them" or "Keep them, add the rest" for any page that already has courses, and ends with a report. Tick "I have reported all of my courses for this grade" on each grade yourself.
 
 The token lives only in `chrome.storage.local` and is never logged.

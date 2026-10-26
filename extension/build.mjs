@@ -20,4 +20,5 @@ await build({ ...common, entryPoints: { content: "src/content.ts", panel: "src/p
 
 copyFileSync("manifest.json", "dist/manifest.json");
 copyFileSync("panel.html", "dist/panel.html");
+copyFileSync("panel.css", "dist/panel.css");
 console.log(`built dist/ (TRACKER_URL=${trackerUrl})`);
