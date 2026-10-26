@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { buildCgPlan, gradingScaleFor, schoolYearLabel } from "./commonapp-fill.ts";
+import { buildCgPlan, buildCurrentYearPlan, gradingScaleFor, matchOption, matchStem, rowsToAdd, schoolYearLabel } from "./commonapp-fill.ts";
 import { emptyCourse, emptySchool, type Term, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 const school = (o: Partial<TranscriptSchool> = {}): TranscriptSchool => ({ id: "s", createdAt: "2026-10-01T00:00:00Z", ...emptySchool(), name: "Lincoln High", country: "United States", ...o });
@@ -240,4 +240,104 @@ test("a course with a different term system than the grade's schedule is flagged
 test("Common App's own rule warnings are carried into the plan", () => {
   const plans = buildCgPlan([school()], [course({ name: "Chem", terms: [], finalGrade: "90" })]);
   assert.ok(plans[0]!.warnings.some((w) => w.includes("Chem") && w.includes("term grades")), plans[0]!.warnings.join(" | "));
+});
+
+test("matchOption is an exact match after trimming, collapsing spaces and ignoring case", () => {
+  assert.equal(matchOption(["A-", "A", "B+"], " a- "), "A-");
+  assert.equal(matchOption(["105", "100"], "100.0"), null);
+  assert.equal(matchOption(["Pass - (Pass/Fail)"], "P"), null);
+  assert.equal(matchOption(["Math (Other)"], "math  (other)"), "Math (Other)");
+});
+
+test("matchStem picks the first option that starts with the stem", () => {
+  const options = ["Semesters", "Trimesters", "Quarters", "Yearly"];
+  assert.equal(matchStem(options, "quarter"), "Quarters");
+  assert.equal(matchStem(options, "year"), "Yearly");
+  assert.equal(matchStem(options, "semester"), "Semesters");
+  assert.equal(matchStem(["Semester", "Quarter"], "trimester"), null);
+});
+
+test("rowsToAdd keeps only rows whose name is not already there, counting duplicates", () => {
+  const rows = [{ name: "PE" }, { name: "PE" }, { name: "Math" }];
+  assert.deepEqual(rowsToAdd(rows, ["pe "]), [{ name: "PE" }, { name: "Math" }]);
+  assert.deepEqual(rowsToAdd(rows, []), rows);
+  assert.deepEqual(rowsToAdd(rows, ["PE", "pe", "MATH"]), []);
+});
+
+const ip = (term: Term["term"]): Term => ({ term, grade: "", status: "in_progress" });
+const planned = (term: Term["term"]): Term => ({ term, grade: "", status: "planned" });
+
+test("current year plan: the most recent year's courses with their schedule", () => {
+  const plan = buildCurrentYearPlan([school()], [
+    course({ id: "old", name: "Old", academicYear: 2025 }),
+    course({ id: "a", name: "AP Physics", academicYear: 2026, period: "semester", subject: "science", level: "ap", terms: [ip("S1")] }),
+    course({ id: "b", name: "Art", academicYear: 2026, period: "full_year", terms: [planned("FY")] }),
+  ])!;
+  assert.deepEqual(plan.rows.map((r) => [r.trackerId, r.schedule]), [["a", "First Semester"], ["b", "Full Year"]]);
+  assert.equal(plan.rows[0]!.subject, "Science (Other)");
+  assert.equal(plan.rows[0]!.level, "Advanced Placement (AP)");
+  assert.deepEqual(plan.skipped, []);
+});
+
+test("current year plan: when every course is graded the most recent year is still used", () => {
+  const plan = buildCurrentYearPlan([school()], [
+    course({ id: "old", name: "Old", academicYear: 2025 }),
+    course({ id: "a", name: "A", academicYear: 2026 }),
+    course({ id: "b", name: "B", academicYear: 2026 }),
+  ])!;
+  assert.deepEqual(plan.rows.map((r) => r.trackerId), ["a", "b"]);
+});
+
+test("current year plan: schedule from which terms the course has", () => {
+  const plan = buildCurrentYearPlan([school()], [
+    course({ id: "s2", name: "S2 only", academicYear: 2026, terms: [ip("S2")] }),
+    course({ id: "both", name: "Both", academicYear: 2026, terms: [ip("S1"), planned("S2")] }),
+    course({ id: "fy", name: "FY term", academicYear: 2026, terms: [{ term: "FY", grade: "A", status: "graded" }] }),
+    course({ id: "q4", name: "All quarters", academicYear: 2026, period: "quarter", terms: [ip("Q1"), planned("Q2"), planned("Q3"), planned("Q4")] }),
+  ])!;
+  const sched = (id: string) => plan.rows.find((r) => r.trackerId === id)!.schedule;
+  assert.equal(sched("s2"), "Second Semester");
+  assert.equal(sched("both"), "Full Year");
+  assert.equal(sched("fy"), "Full Year");
+  assert.equal(sched("q4"), "Full Year");
+});
+
+test("current year plan: single trimester/quarter terms have no confirmed wording yet", () => {
+  const plan = buildCurrentYearPlan([school()], [
+    course({ id: "t", name: "Tri", academicYear: 2026, period: "trimester", terms: [ip("T2")] }),
+    course({ id: "q", name: "Qtr", academicYear: 2026, period: "quarter", terms: [ip("Q3")] }),
+  ])!;
+  assert.deepEqual(plan.rows.map((r) => r.schedule), [null, null]);
+  assert.deepEqual(plan.skipped, [
+    { where: "current", course: "Tri", field: "schedule", reason: "schedule wording not confirmed" },
+    { where: "current", course: "Qtr", field: "schedule", reason: "schedule wording not confirmed" },
+  ]);
+});
+
+test("current year plan: the scheduling system is the most common period; full year means year", () => {
+  const sem = buildCurrentYearPlan([school()], [
+    course({ id: "1", name: "One", academicYear: 2026, period: "semester", terms: [ip("S1")] }),
+    course({ id: "2", name: "Two", academicYear: 2026, period: "semester", terms: [ip("S1")] }),
+    course({ id: "3", name: "Three", academicYear: 2026, period: "full_year", terms: [planned("FY")] }),
+  ])!;
+  assert.equal(sem.scheduleStem, "semester");
+  const year = buildCurrentYearPlan([school()], [course({ academicYear: 2026, period: "full_year", terms: [planned("FY")] })])!;
+  assert.equal(year.scheduleStem, "year");
+});
+
+test("current year plan: college schools are left out; no high-school courses means no plan", () => {
+  const schools = [school({ id: "hs" }), school({ id: "col", name: "CC", kind: "college" })];
+  assert.equal(buildCurrentYearPlan(schools, [course({ schoolId: "col", academicYear: 2026 })]), null);
+  assert.equal(buildCurrentYearPlan(schools, []), null);
+  const plan = buildCurrentYearPlan(schools, [course({ id: "hs1", schoolId: "hs", academicYear: 2025 }), course({ id: "cc", schoolId: "col", academicYear: 2026 })])!;
+  assert.deepEqual(plan.rows.map((r) => r.trackerId), ["hs1"]);
+});
+
+test("current year plan: dual enrollment level and subject override apply", () => {
+  const plan = buildCurrentYearPlan([school()], [
+    course({ id: "d", name: "College Algebra", academicYear: 2026, isCollege: true, level: "regular", terms: [ip("S1")] }),
+    course({ id: "o", name: "Override", academicYear: 2026, overrides: { common_app: { subject: "Religion" } }, terms: [ip("S1")] }),
+  ])!;
+  assert.equal(plan.rows[0]!.level, "Dual Enrollment");
+  assert.equal(plan.rows[1]!.subject, "Religion");
 });

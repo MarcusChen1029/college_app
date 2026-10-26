@@ -4,7 +4,7 @@
 
 import { mapCourse, yearLabel } from "./transcript-maps.ts";
 import { COMMON_APP_MAP } from "./transcript-maps/common-app.ts";
-import { courseStatus, type GradeScale, type PeriodType, type TermCode, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
+import { courseStatus, normalizeName, TERMS_FOR_PERIOD, type GradeScale, type PeriodType, type TermCode, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 /** The Grading Scale dropdown, in Common App's order. After "Other" the student types each grade instead of picking it. */
 export const COMMON_APP_GRADING_SCALES = ["A-F", "1-100", "0.0-4.0", "0.0-5.0", "1-7", "1-10", "1-11", "1-20", "Other"] as const;
@@ -76,6 +76,23 @@ function gradesFor(c: TranscriptCourse): Partial<Record<TermColumn, string>> {
   return out;
 }
 
+/** Subject and level in Common App's words (map, then the student's override); a missing one is blank and reported. Dual-enrollment courses are
+ *  entered under the high school with level "Dual Enrollment", whatever level the transcript gave; a student override still wins. */
+function subjectAndLevel(school: TranscriptSchool, c: TranscriptCourse, where: Skipped["where"], skipped: Skipped[]): { subject: string | null; level: string | null; warnings: string[] } {
+  const mapped = mapCourse("common_app", school, c);
+  const pick = (key: "subject" | "level"): string | null => {
+    const f = mapped.fields.find((x) => x.key === key)!;
+    if (f.value == null || f.status === "none") {
+      skipped.push({ where, course: c.name, field: key, reason: f.note ?? `no Common App ${key} for this course` });
+      return null;
+    }
+    return f.value;
+  };
+  const subject = pick("subject");
+  const dual = c.isCollege && !c.overrides.common_app?.level ? COMMON_APP_MAP.level.dual_enrollment.value : null;
+  return { subject, level: dual ?? pick("level"), warnings: mapped.warnings };
+}
+
 export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCourse[]): CgGradePlan[] {
   const byId = new Map(schools.map((s) => [s.id, s]));
   const byGrade = new Map<CgGradeKey, TranscriptCourse[]>();
@@ -124,27 +141,74 @@ export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCour
     if (otherPeriod.length) warnings.push(`Schedule ${stem} was used for this grade; these courses use another term system, so check their grade columns: ${otherPeriod.map((c) => `${c.name} (${STEM[c.period]})`).join(", ")}.`);
 
     const rows: FillRow[] = rowsOf.map((c) => {
-      const mapped = mapCourse("common_app", mainSchool, c);
-      const pick = (key: "subject" | "level"): string | null => {
-        const f = mapped.fields.find((x) => x.key === key)!;
-        if (f.value == null || f.status === "none") {
-          skipped.push({ where: grade, course: c.name, field: key, reason: f.note ?? `no Common App ${key} for this course` });
-          return null;
-        }
-        return f.value;
-      };
-      const subject = pick("subject");
-      // Common App wants dual-enrollment courses under the high school entered as "Dual Enrollment", whatever level the transcript gave; a student override still wins.
-      const dual = c.isCollege && !c.overrides.common_app?.level ? COMMON_APP_MAP.level.dual_enrollment.value : null;
-      const level = dual ?? pick("level");
+      const { subject, level, warnings: ruleWarnings } = subjectAndLevel(mainSchool, c, grade, skipped);
+      for (const w of ruleWarnings) warnings.push(`${c.name}: ${w}`);
       const hasCredit = c.credit != null;
       const creditNA = !hasCredit && c.creditUnit === "not_listed";
       if (!hasCredit && !creditNA) skipped.push({ where: grade, course: c.name, field: "credit", reason: "no credit in tracker" });
-      for (const w of mapped.warnings) warnings.push(`${c.name}: ${w}`);
       return { trackerId: c.id, name: c.name, subject, level, grades: gradesFor(c), credit: hasCredit ? String(c.credit) : null, creditNA };
     });
 
     plans.push({ grade, schoolName: mainSchool.name, schoolYear: schoolYearLabel(mainYear), scale, scheduleStem: stem, rows, skipped, warnings });
   }
   return plans;
+}
+
+/** The option equal to `wanted` after trimming, collapsing spaces and ignoring case; never a partial match. */
+export function matchOption(options: readonly string[], wanted: string): string | null {
+  const w = normalizeName(wanted);
+  return options.find((o) => normalizeName(o) === w) ?? null;
+}
+
+/** The first option whose text starts with the stem ("quarter" finds "Quarters", "year" finds "Yearly"). */
+export function matchStem(options: readonly string[], stem: ScheduleStem): string | null {
+  return options.find((o) => o.trim().toLowerCase().startsWith(stem)) ?? null;
+}
+
+/** Keep mode: the rows whose course name is not already on the page. Names are matched like options, and each existing row covers only one tracker row. */
+export function rowsToAdd<T extends { name: string }>(rows: T[], existingNames: string[]): T[] {
+  const left = new Map<string, number>();
+  for (const n of existingNames) left.set(normalizeName(n), (left.get(normalizeName(n)) ?? 0) + 1);
+  return rows.filter((r) => {
+    const key = normalizeName(r.name);
+    const n = left.get(key) ?? 0;
+    if (n > 0) left.set(key, n - 1);
+    return n === 0;
+  });
+}
+
+export type CurrentYearRow = { trackerId: string; name: string; subject: string | null; level: string | null; schedule: string | null };
+export type CurrentYearPlan = { scheduleStem: ScheduleStem; rows: CurrentYearRow[]; skipped: Skipped[] };
+
+/** Common App's Schedule wording for one course, from which terms it has; null when that is not known. */
+function currentSchedule(c: TranscriptCourse): string | null {
+  const codes = new Set(c.terms.map((t) => t.term));
+  if (c.period === "full_year" || codes.has("FY")) return "Full Year";
+  if (c.period === "semester") {
+    if (codes.has("S1") && codes.has("S2")) return "Full Year";
+    if (codes.has("S1")) return "First Semester";
+    if (codes.has("S2")) return "Second Semester";
+    return null;
+  }
+  // Every term of a trimester or quarter year is the whole year; a single one needs wording that has not been read from Common App yet.
+  return TERMS_FOR_PERIOD[c.period].filter((t) => t !== "FY").every((t) => codes.has(t)) ? "Full Year" : null;
+}
+
+/** Education > Current or Most Recent Year Courses: the high-school courses of the latest academic year (the finished year, if school is over). null when there are none. */
+export function buildCurrentYearPlan(schools: TranscriptSchool[], courses: TranscriptCourse[]): CurrentYearPlan | null {
+  const byId = new Map(schools.map((s) => [s.id, s]));
+  const hs = [...courses].sort((a, b) => a.sortOrder - b.sortOrder).filter((c) => byId.get(c.schoolId)?.kind === "high_school");
+  if (!hs.length) return null;
+  const latest = Math.max(...hs.map((c) => c.academicYear));
+  const skipped: Skipped[] = [];
+  const rows: CurrentYearRow[] = [];
+  const periods: PeriodType[] = [];
+  for (const c of hs.filter((x) => x.academicYear === latest)) {
+    const { subject, level } = subjectAndLevel(byId.get(c.schoolId)!, c, "current", skipped);
+    const schedule = currentSchedule(c);
+    if (schedule == null) skipped.push({ where: "current", course: c.name, field: "schedule", reason: c.terms.length ? "schedule wording not confirmed" : "no terms in tracker" });
+    rows.push({ trackerId: c.id, name: c.name, subject, level, schedule });
+    periods.push(c.period);
+  }
+  return { scheduleStem: STEM[mostCommon(periods)], rows, skipped };
 }
