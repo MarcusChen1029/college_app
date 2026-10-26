@@ -7,6 +7,7 @@ import { ConnectedExtensions } from "@/components/ConnectedExtensions";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { MyCounselors } from "@/components/MyCounselors";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
+import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
@@ -115,6 +116,7 @@ function SignedIn() {
         </section>
       )}
       {student.role === "student" && <MyCounselors />}
+      {student.role === "student" && <ShareLinkPanel kind="parent" id="share" />}
       {student.role === "student" && <ConnectedExtensions />}
       <RoleSwitcher />
     </>
