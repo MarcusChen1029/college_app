@@ -1,0 +1,193 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "CUNY - The CUNY Application (deadlines for freshman and international applicants, fee, English test scores)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/",
+      "accessed": "2026-10-26"
+    },
+    "tests": {
+      "kind": "admissions_site",
+      "title": "CUNY - Standardized Testing Policy (test optional)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/covid-19-standardized-tests/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "CUNY - TOEFL / IELTS / PTE / Duolingo Scores Comparison (minimums by college)",
+      "url": "https://www.cuny.edu/admissions/undergraduate/apply/toefl/",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "CUNY - Undergraduate tuition and college costs (F-1/J-1 pay the NYS non-resident rate)",
+      "url": "https://www.cuny.edu/financial-aid/tuition-and-college-costs/tuition-fees/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "CSI - How To Apply: International First-Year Students",
+      "url": "https://www.csi.cuny.edu/admissions/applying-csi/international/how-apply-international-first-year-students",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "CSI Undergraduate Catalog - International Admission",
+      "url": "https://csi-undergraduate.catalog.cuny.edu/admissions/international-admission",
+      "accessed": "2026-10-26"
+    },
+    "frosh": {
+      "kind": "admissions_site",
+      "title": "CSI - Freshmen admission",
+      "url": "https://www.csi.cuny.edu/admissions/applying-csi/freshmen",
+      "accessed": "2026-10-26"
+    },
+    "cal": {
+      "kind": "admissions_site",
+      "title": "CSI - Admissions Calendar",
+      "url": "https://www.csi.cuny.edu/admissions/admissions-calendar",
+      "accessed": "2026-10-26"
+    },
+    "cond": {
+      "kind": "admissions_site",
+      "title": "CSI - International conditional admission",
+      "url": "https://www.csi.cuny.edu/admissions/applying-csi/international/conditional-admission",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "CSI - International cost and scholarships",
+      "url": "https://www.csi.cuny.edu/admissions/applying-csi/international/cost-scholarship",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CUNY-wide: test optional for undergraduate admission; first-year applicants may choose whether to submit SAT or ACT scores and the absence of scores cannot be used to deny admission. College Navigator quotes the policy as in force through the spring 2027 semester; the CUNY page gives no end date, so fall 2027 entry is not separately confirmed. CSI's freshmen page repeats that CUNY is test optional.",
+    "src": "frosh"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Apply with the CUNY Application (freshman), $65 non-refundable. International documents: photocopies of secondary school transcripts or marksheets, official transcripts from any U.S. high school, photocopy of the diploma or external exam certificates (e.g. CXC, GCSE, GCE, WASSCE), certified English translations, emailed to international@csi.cuny.edu; the application cannot be completed without them. Baccalaureate admission is a holistic review of grades and trends; the average high school average of fall 2025 students was 87.9 (not a cutoff). Applicants not admitted to a bachelor's program may be offered an associate program (guaranteed to applicants with a high school or equivalency diploma) or request a baccalaureate appeal.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2026-12-01",
+      "label": "International first-year application deadline (fall 2027 entry)",
+      "notes": "Fall: application due December 1 and supporting documents due December 15 (CSI international page; same as the CUNY-wide international column). The pages print no year, so treated as fall 2027. CSI's general admissions calendar shows February 1 as the (domestic) priority date, with first decisions March 15 and an April 30 end of the application period; the international dates above are used.",
+      "src": "fy"
+    },
+    {
+      "kind": "other",
+      "plan": "ROLLING",
+      "due": "2026-12-15",
+      "label": "International supporting documents due (fall 2027 entry)",
+      "notes": "Transcripts/marksheets, diploma or exam certificates and English translations emailed to international@csi.cuny.edu.",
+      "src": "fy"
+    },
+    {
+      "kind": "deposit",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "Fall deposit / national reply date",
+      "notes": "If admitted after May 1 the deposit is due 15 days after notification.",
+      "src": "cal"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required if educated in a non-English-speaking environment; CSI asks applicants to email international@csi.cuny.edu to confirm before testing. Applicants without proof of English proficiency who are otherwise admissible can apply for conditional admission, meeting the requirement with CSI's institutional TOEFL exam or through the English Language Institute (ELI).",
+    "src": "fy"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 45,
+      "notes": "Internet-based TOEFL; CSI's minimum is the lowest of the CUNY four-year colleges on the CUNY chart (CUNY chart and CSI page agree). No score on the new 1-6 scale is given.",
+      "src": "fy"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "IELTS Academic overall band; academic exam only.",
+      "src": "fy"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 75,
+      "notes": "CSI page and CUNY chart agree.",
+      "src": "fy"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 39,
+      "notes": "PTE Academic.",
+      "src": "fy"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "CSI: international students pay out-of-state tuition and fees. CSI, the CSI Foundation and departments award scholarships for academic excellence and service; the international cost page does not say whether international students are eligible, so the policy is left null.",
+    "src": "cost"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the CUNY or college pages checked; pick the college by name in the College Board search.",
+      "src": "tests"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the CUNY or college pages checked; look it up at act.org.",
+      "src": "tests"
+    },
+    "toefl": {
+      "code": "2778",
+      "note": "CSI institutional code for score reporting is 2778 (CSI page); the CUNY-wide code on the CUNY page is 2950.",
+      "src": "fy"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS institution code is listed; send results to CUNY through the IELTS system.",
+      "src": "dates"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No Duolingo institution code is listed.",
+      "src": "dates"
+    },
+    "pte": {
+      "code": null,
+      "note": "No PTE institution code is listed.",
+      "src": "dates"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: about 92% of applicants admitted (College Navigator fall 2024), CUNY test-optional, and the lowest English minimums among CUNY four-year colleges (TOEFL 45 / IELTS 5.0), so an SAT ~1100 international applicant is a very likely admit."
+  }
+}

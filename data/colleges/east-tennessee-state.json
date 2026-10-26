@@ -1,0 +1,72 @@
+{
+  "slug": "east-tennessee-state",
+  "name": "East Tennessee State University",
+  "short_name": "ETSU",
+  "state_region": "TN",
+  "city": "Johnson City",
+  "latitude": 36.301643,
+  "longitude": -82.366954,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.etsu.edu",
+  "admissions_url": "https://www.etsu.edu/admissions/",
+  "ipeds_unit_id": 220075,
+  "undergrad_enrollment": 10829,
+  "intl_undergrads": 168,
+  "student_faculty_ratio": 15,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator also shows fall 2024",
+      "url": "https://nces.ed.gov/collegenavigator/?id=220075",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=220075",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 9903,
+    "admits": 8622,
+    "enrolled": 2141,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 80,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); no recent Common Data Set is published (ETSU's CDS page lists only 2004-05 through 2010-11). College Navigator's fall 2024 figures: 10,050 applicants, 86% admitted, 25% of admits enrolled; SAT 7% and ACT 76% of enrollees; middle-50% SAT EBRW 510-620, SAT Math 470-580, ACT composite 19-26. International applicant and admit counts, GPA and residency splits are not available. 10,829 undergraduates is the fall 2024 College Navigator count; the international undergraduate count is left blank (ETSU says nearly 350 international students of all levels, from 60+ countries)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      540,
+      600
+    ],
+    "SAT_MATH": [
+      460,
+      510,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "PFW International Education - International admission requirements",
+      "url": "https://www.pfw.edu/admissions-financial-aid/international-education/international-admission-requirements",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "PFW Undergraduate Admissions - Admission requirements",
+      "url": "https://www.pfw.edu/admissions-financial-aid/admissions/requirements",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "PFW Financial Aid - Types of financial aid (university scholarship criteria and amounts)",
+      "url": "https://www.pfw.edu/admissions-financial-aid/financial-aid/types-financial-aid",
+      "accessed": "2026-10-26"
+    },
+    "sb256": {
+      "kind": "other",
+      "title": "PFW International Education - Senate Bill 256",
+      "url": "https://www.pfw.edu/admissions-financial-aid/international-education/senate-bill-256",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "PFW is a test-optional institution; SAT/ACT are strongly encouraged (not required) for engineering applicants. Engineering (civil, mechanical, computer, electrical) needs one of: SAT Math 570, ACT Math 24+, PFW math placement 50+, AP Calculus AB 4+, AP Calculus BC 3+, or qualifying dual/college math credit (MA 15400+).",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "International first-year admission: completed application, $30 application fee, cumulative GPA of at least 2.3 on a 4.0 scale, and proof of English proficiency. Official transcripts are sent directly by the school; PFW's Office of International Education prepares a credential evaluation for non-U.S. schools. The domestic fee waiver announced in March 2026 applies to domestic students only. Indiana law SB 256 adds a security review for some international applicants (see the PFW SB 256 page).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "International application deadline, fall 2027 entry (residing outside the U.S.)",
+      "notes": "Page prints 'May 1 (Fall)' without a year; treated as fall 2027. Spring deadline for applicants outside the U.S. is Nov. 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-07-15",
+      "label": "International application deadline, fall 2027 entry (residing within the U.S.)",
+      "notes": "Page prints 'July 15 (Fall)' without a year; treated as fall 2027. Spring deadline for applicants inside the U.S. is Dec. 1.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Citizens of the listed English-speaking countries (e.g. Canada, UK, Ireland, Australia, Nigeria, Singapore, South Africa, Philippines) are exempt. Other ways to show proficiency: SAT EBRW 580 or ACT 20 (sent officially), O/AS/A Level first-language English grade C or better, IB English SL/HL 5+, ELS level 112, 'Academic English for Purdue Fort Wayne' with a C or better, two years of U.S. high school English with C or better (ESL does not count), or a U.S. university English course with C or better. Results are valid for two years.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Exams before 2026-01-21 (0-120 scale). TOEFL Essentials 8 is also accepted.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Page lists 4.5 for tests taken after Jan. 21, 2026, without naming the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "The undergraduate section prints 110; a graduate section on the same page prints 115.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Automatic PFW academic scholarships (no separate application; minimum 2.5 GPA, full-time, renewable). The out-of-state first-time beginner table, which the page says includes international students, pays per year: GPA 3.5+ $3,000, 3.0-3.49 $2,000, 2.5-2.99 $500. International students submit final transcripts by the end of the first term. The page cites students beginning fall 2022 and later; no international need-based aid is described.",
+    "src": "sch"
+  },
+  "majors": [
+    {
+      "program": "Engineering (Civil, Mechanical, Computer, Electrical)",
+      "category": "engineering",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "International first-year engineering applicants need one of: SAT Math 570, ACT Math 24+, PFW math placement 50+, AP Calculus AB 4+/BC 3+, or qualifying dual/college math credit (MA 15400+), in addition to general requirements."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "1336",
+      "note": "PFW SAT school code.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "1217",
+      "note": "PFW ACT school code.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "The PFW pages read do not print a TOEFL code (they list SAT 1336 and ACT 1217); confirm with the Office of International Education before sending scores.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "GVSU - International Application (undergraduate deadlines, English proficiency)",
+   "url": "https://www.gvsu.edu/admissions/international-application-14",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "GVSU - Undergraduate Application (freshman requirements, test policy, rolling admission)",
+   "url": "https://www.gvsu.edu/admissions/undergraduate-application-12",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "GVSU - International Scholarships and Assistantships",
+   "url": "https://www.gvsu.edu/admissions/international-scholarships-and-assistantships-24",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "GVSU Office of Financial Aid - Tuition & Fees 2026-2027",
+   "url": "https://www.gvsu.edu/financialaid/tuition-fees-26-27-268.htm",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are optional for admission; all admitted students are considered for merit scholarships without scores, but the top scholarships require scores. The undergraduate application page says scores are 'not required for domestic undergraduate applicants' and the international page lists no test requirement beyond English proficiency.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "No application fee. Apply with the GVSU application or the Common App. Needs an official transcript in English (WAEC results for West African applicants). Admission is rolling and reviewed holistically (courses, cumulative GPA, GPA trend, test scores if sent). Admission to GVSU does not guarantee entry to some programs (including Engineering, Nursing and Seidman College of Business), which have extra requirements listed in the catalog. After admission an international student sends the Financial Verification Form for the I-20.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International application deadline, fall 2027",
+   "notes": "The page prints 'June 1' for Fall Semester (August) with no year; taken as fall 2027. GVSU admits on a rolling basis and says admission to any term is subject to earlier closing without notice. The winter (January) deadline is Nov 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-01",
+   "label": "Financial Verification Form for I-20 due (fall 2027)",
+   "notes": "Deadline to submit the Financial Verification Form for the I-20 (fall semester). Year assumed 2027; for winter it is Nov 15.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-15",
+   "label": "International Merit Scholarship application (recommended date)",
+   "notes": "GVSU recommends applying by Feb 15; review begins in October and continues until funds are awarded. Fall-start students only.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for applicants from a list of English-speaking countries (e.g. Australia, Canada, Ghana, Ireland, Kenya, Nigeria, New Zealand, South Africa, United Kingdom), for non-citizens with a U.S. high school/college diploma, 30+ U.S. college credits with C or higher in college English, or at least two years at an accredited U.S. high school. Alternatives to a test: SAT EBRW 470, ACT English 15, AP English Language 3, IB English HL 5, Michigan English Test 52. Scores must be sent by the testing agency. No conditional admission or ESL pathway is described on GVSU's official admissions pages.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 86,
+   "notes": "Scores on the prior 0-120 scale. Accepts TOEFL iBT and Home Edition; MyBest scores and TOEFL Essentials are not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "New 1-6 scale (exams from Jan. 2026); the page states '4.5 (86 on prior scoring scale)'.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Send the TRF number to GVSU by email with full name and GVSU reference number.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Send results through the Duolingo portal.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic; send via the PTE portal.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 180,
+   "notes": "C1 Advanced and C2 Proficiency only.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 16520,
+  "tuition_out_of_state_usd": 23492,
+  "tuition_intl_usd": 23492,
+  "required_fees_usd": null,
+  "room_board_usd": 11100,
+  "books_usd": 800,
+  "other_usd": 2700,
+  "notes": "Tuition page 2026-27: lower division (0-54 credits) Michigan resident $16,520/year, non-resident $23,492/year (12-15 credits per semester). Housing and food $11,100 (unlimited meal plan, traditional living center). Required fees are not itemized on that page. Books and other expenses are CDS G5 figures (not updated for 2026-27). Admitted international students on listed visa types receive the GVSU International Scholarship, so they pay the Michigan rate.",
+  "src": "tuit"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "GVSU International Scholarship: automatic for admitted undergraduate international students on E2, F1, H4, K2, L2, R2, TN or TD visas; covers the non-resident surcharge so they pay the Michigan tuition rate (about $6,700 per year, renewable up to 4 years). International Merit Scholarship: $2,500 per year, renewable up to four years, for fall-start first-time college students with a separate application (recommended by Feb 15). The two can be combined.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1258",
+   "note": "GVSU SAT school code as printed on the freshman application page.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "2005",
+   "note": "GVSU ACT school code as printed on the freshman application page.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": "1258",
+   "note": "GVSU TOEFL institutional code.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code; email the TRF number to GVSU admissions.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Search 'Grand Valley State University' in the Duolingo portal; no numeric code.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "Search 'Grand Valley State University' in the PTE portal; no numeric code.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

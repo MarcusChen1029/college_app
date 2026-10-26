@@ -1,0 +1,125 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UNG - How to apply as an international student (requirements, English proficiency, FAQ)",
+   "url": "https://ung.edu/undergraduate-admissions/how-to-apply/international-student.php",
+   "accessed": "2026-10-26"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "UNG - Undergraduate application deadlines",
+   "url": "https://ung.edu/undergraduate-admissions/deadlines.php",
+   "accessed": "2026-10-26"
+  },
+  "nf": {
+   "kind": "admissions_site",
+   "title": "UNG - How to apply as a new freshman (GPA-only and freshman index admission)",
+   "url": "https://ung.edu/undergraduate-admissions/how-to-apply/new-freshmen.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are optional. Bachelor's admission: either an unweighted 3.0 GPA in the Required High School Curriculum (GPA only, no scores needed), or a 2.4+ GPA with SAT EBRW 480+ and Math 440+ (or ACT English/Reading 17+ and Math 17+) and a freshman index of 2200+ (SAT FI = 500 x GPA + 1.06 x (EBRW + Math) - 74). Associate pathway needs a 2.0 GPA; applicants who miss bachelor's criteria are automatically considered for an associate pathway. International applicants must also meet these traditional freshman criteria.",
+  "src": "nf"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Apply through GAFutures: $40 non-refundable fee, online or on paper. International transcripts need a document-by-document evaluation from a NACES or AICE member sent directly to UNG (a GPA calculation is not required). English proficiency scores must come from the testing agency. After admission, request an I-20 from the Center for Global Engagement; proof of about $43,000 in funds is needed for a bachelor's degree. Essays and recommendations are not mentioned.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International application and all supporting documents (fall 2027 entry)",
+   "notes": "International column of the deadline table: Fall May 1, Spring Nov. 1, no summer; applications and all supporting documents are due on that date (not available at the Blue Ridge campus or online). Year not printed; treated as fall 2027. UNG warns it will likely reach capacity before a deadline and stop accepting applications, so apply early.",
+   "src": "dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native speakers must submit an approved English proficiency score. A waiver applies after a secondary or college degree where English was the official language of instruction, or after English 1101/1102 with a C or better at a US institution. Bachelor's-degree minimums are listed (associate pathway is lower: TOEFL iBT 69 / 3.5 new scale, IELTS 6.0, PTE 53, Cambridge 169). Other accepted routes: SAT EBRW 480 or ACT English or Reading 17, Accuplacer Reading 243 + WritePlacer 4, Michigan English Test 59 (bachelor's), EIKEN Pre-1, IGCSE/GCSE/A-level English, or completion of an approved USG campus-based ESL program. Duolingo is not listed. Scores are valid 2 years.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Bachelor's degree; for tests taken before 2026. Includes Home Edition and MyBest. Associate pathway minimum is 69.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Bachelor's degree; tests taken in 2026 or later (the page lists 4.0 without naming the 1-6 scale). Associate pathway minimum is 3.5.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Bachelor's degree, IELTS Academic (including Online). Associate pathway minimum is 6.0.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Bachelor's degree, conventional and online. Associate pathway minimum is 53.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 177,
+   "notes": "Cambridge English Scale score (B2 First, C1 Advanced or C2 Proficiency), bachelor's degree. Associate pathway minimum is 169.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students do not qualify for US financial aid. After academic admission they receive information about the International Student Scholarship, which reduces tuition by roughly $3,000 per semester (approximate figure from the admissions FAQ). CDS H6 marks both need-based and non-need institutional aid as available to nonresidents but gives no counts or amounts.",
+  "src": "intl"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5497",
+   "note": "UNG SAT code.",
+   "src": "nf"
+  },
+  "act": {
+   "code": "0848",
+   "note": "UNG ACT code.",
+   "src": "nf"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; scores must be sent directly by the testing service.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores must be sent directly by the testing service.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

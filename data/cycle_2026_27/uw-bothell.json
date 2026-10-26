@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - Application Dates & Deadlines (first-year, autumn 2027)",
+   "url": "https://www.uwb.edu/admissions/apply/application-dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - First-year admissions requirements",
+   "url": "https://www.uwb.edu/admissions/apply/first-year/admissions-requirements",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - First-year international students",
+   "url": "https://www.uwb.edu/admissions/apply/international/first-year",
+   "accessed": "2026-10-26"
+  },
+  "intlhome": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - International students (overview)",
+   "url": "https://www.uwb.edu/admissions/apply/international",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - Undergraduate admissions FAQ",
+   "url": "https://www.uwb.edu/admissions/apply/faq",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - English language proficiency",
+   "url": "https://www.uwb.edu/admissions/apply/english-language-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "costs": {
+   "kind": "admissions_site",
+   "title": "UW Bothell - Costs and aid (nonresident tuition and fees 2026-27)",
+   "url": "https://www.uwb.edu/admissions/costs-aid",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "UW Bothell Financial Aid - Scholarships",
+   "url": "https://www.uwb.edu/financial-aid/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "i20": {
+   "kind": "other",
+   "title": "UW Bothell International Student Services - I-20 funding",
+   "url": "https://www.uwb.edu/international-student-services/i-20-funding",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - UW Bothell admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=377555",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "UW Bothell's FAQ says it does not require SAT or ACT scores; students who have taken them are welcome to send scores, with no advantage or disadvantage. College Navigator (fall 2024) lists SAT/ACT as 'not required, but considered (test optional)'. This is a Bothell policy; UW Seattle and Tacoma have their own admissions.",
+  "src": "faq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 85,
+  "notes": "First-year international applicants apply through the Common App; the online fee is $85 for international students ($70 domestic). Minimum cumulative GPA 2.0 and Washington's College Academic Distribution Requirements (4 English, 3 math, 3 social studies, 3 science, 2 world language, 1 senior-year math-based quantitative course, 1/2 arts, 1/2 elective); students who must prove English proficiency are exempt from the world language requirement. Holistic review: College Navigator shows GPA, school record, college-prep program, essay and English proficiency are required to be considered. Documents: official records from every school, certified English translations, and credential evaluations for post-secondary work. The application stays 'Incomplete' until English proficiency is met. A $250 deposit follows acceptance. Which rules are UW-wide: only the state-set course requirements. UW Bothell has its own admissions office, application dates, English minimums and Common Data Set, separate from UW Seattle and UW Tacoma.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action deadline (autumn 2027 first-year)",
+   "notes": "The dates page lists Autumn 2027 first-year dates: application opens Aug 15, 2026; early action decisions in January 2027. It gives no separate international deadline.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular Decision deadline (autumn 2027 first-year)",
+   "notes": "Regular decision notifications in March 2027. The first-year page also says the final application date is January 15. No separate international deadline is published; international applicants must also complete English proficiency or the application is incomplete.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Proof is required for students who did not complete most of their primary and secondary education in the U.S., Australia, Canada, Ireland, New Zealand or the U.K. UW Bothell decides whether proficiency is met. Without a test: four years of U.S. high school English with 3.0+ each year plus SAT EBRW 560 (or SAT Critical Reading 500) or ACT English 21; or 90 quarter transferable credits from a U.S. regionally accredited college with a 2.75 GPA and 3.0 in English 131 and 141 equivalents; or a U.S. bachelor's degree. Scores are valid two years. iTEP 3.9 and GATEWAY 475 are also accepted but are not selectable tests here. No conditional admission or ESL pathway is described on the pages checked.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 83,
+   "notes": "For exams taken before Jan 21, 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "For exams taken on or after Jan 21, 2026 (1-6 scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band score.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Duolingo English Test.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "International students have limited institutional funding. The UW Bothell General Scholarship is open to international students who meet the enrollment and GPA conditions, by invitation email and a separate application; amount and deadline are not listed. The Husky Promise is for Washington residents only. The CDS H6 box for nonresidents (INTL_NO) appears to be marked, meaning no institutional aid reported for them.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 45822,
+  "room_board_usd": 17538,
+  "books_usd": 900,
+  "notes": "Nonresident tuition and fees are $15,274 per quarter (10-18 credits) for autumn, winter and spring = $45,822 (tuition_intl_usd is tuition and fees combined; the page gives no split). room_board_usd and books_usd are CDS G1/G5 figures (on-campus food and housing $17,538, books $900), whose academic year is not clearly stated (the CDS checkbox says final 2026-27 costs were due 6/1/2026). UW Bothell's I-20 funding requirement for undergraduate nonresidents is $74,823 per academic year (tuition, living expenses and health insurance; no breakdown given).",
+  "src": "costs"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "9964",
+   "note": "UW Bothell TOEFL institution code.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Regional UW campus (about 5,750 undergraduates) admitting about 86% of first-years and 92% of international applicants; D+ is an editorial judgment reflecting the University of Washington name, not a ranking."
+ }
+}

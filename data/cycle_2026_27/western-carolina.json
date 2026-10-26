@@ -1,0 +1,161 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "WCU - International students (undergraduate deadlines, English proficiency)",
+      "url": "https://www.wcu.edu/learn/office-of-global-engagement/international-students/index.aspx",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "WCU - Costs for international students (proof of funding)",
+      "url": "https://www.wcu.edu/learn/office-of-global-engagement/international-students/costs-for-international-students.aspx",
+      "accessed": "2026-10-26"
+    },
+    "promise": {
+      "kind": "admissions_site",
+      "title": "WCU - NC Promise tuition plan",
+      "url": "https://www.wcu.edu/apply/undergraduate-admissions/costs-and-aid/ncpromise-faq.aspx",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "WCU - First-year admission requirements",
+      "url": "https://www.wcu.edu/apply/undergraduate-admissions/first-year-students/admission-requirements.aspx",
+      "accessed": "2026-10-26"
+    },
+    "paths": {
+      "kind": "admissions_site",
+      "title": "WCU - First-year admission paths",
+      "url": "https://www.wcu.edu/apply/undergraduate-admissions/first-year-students/admission-paths.aspx",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "For students entering fall 2025 or spring 2026, a standardized test score (SAT or ACT) is required only when the weighted high school GPA is below 2.80; otherwise it is optional. The page does not restate this for fall 2027. International students who graduate from a US high school must take the SAT or ACT (minimums SAT 880, ACT 18).",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Application fee $65 per CDS 2025-2026 C13 (the international page gives no separate rate; fee waivers need third-party verified financial need). Minimum course requirements: 4 English, 2 social studies, 4 math, 3 science, 2 other academic units. Required: international transcript evaluation by a NACES member (except US-school transcripts), official transcripts, English proof. Essays are not required of all applicants. Common App use not confirmed on the pages read.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "International freshman application deadline, fall 2027",
+      "notes": "Page prints no year; treated as fall 2027. Applies to the application plus official test scores and transcripts. WCU makes many decisions after its Jan. 1 and Feb. 1 regular deadlines, so apply well before Feb. 1. Spring entry: Oct. 1 (all applicants). The WCU early-college page lists April 1 for international freshmen, which conflicts with the main international page.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "All international students must show English proficiency unless they come from a listed English-primary country, completed the IB diploma, completed high school or higher education in an English-medium institution (the school must send a letter to WCU), or finished 24+ credit hours at a US college.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 75,
+      "notes": "75 internet-based (537 paper-based). School code 5897. No 1-6 scale score is listed.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.0
+      },
+      "notes": "6.0 overall, no section below 5.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Duolingo English Test 95.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "PTE Academic 50.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "NC Promise sets tuition for international undergraduates at $3,500 per fall or spring semester. International students apply for WCU scholarships through the Scholarship Portal after applying; amounts are not published (scholarships@wcu.edu). CDS H6: 81 nonresident undergraduates received institutional aid (average $6,100). WCU's pages do not describe a conditional-admission or ESL pathway for degree applicants.",
+    "src": "cost"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 7000,
+    "tuition_out_of_state_usd": 7000,
+    "tuition_usd": 1000,
+    "required_fees_usd": 3598,
+    "room_board_usd": 13033,
+    "other_usd": 6355,
+    "total_coa_usd": 30304,
+    "notes": "WCU international costs page: minimum proof of funding for the I-20 is $30,304 for the first year = $10,598 tuition and fees + $13,033 living expenses + $6,355 other personal expenses (health insurance, travel). Tuition for international undergraduates is $3,500 per fall/spring semester under NC Promise. The page does not print the academic year; amounts match the CDS 2026-27 figures.",
+    "src": "cost"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "5897",
+      "note": "WCU SAT school code per the international students page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "3172",
+      "note": "WCU ACT school code per the international students page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "5897",
+      "note": "WCU TOEFL school code per the international students page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; the page links to the IELTS USA official score-sending service.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

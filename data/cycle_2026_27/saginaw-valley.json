@@ -1,0 +1,161 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Office of International Programs - International First-Year Student Requirements (deadlines, fee, English)",
+   "url": "https://www.svsu.edu/officeofinternationalprograms/admissions/first-yearstudent/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Office of International Programs - English Language Proficiency",
+   "url": "https://www.svsu.edu/officeofinternationalprograms/additional/englishlanguagerequirements/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Office of International Programs - Cost of Attendance & Scholarships for International Students",
+   "url": "https://www.svsu.edu/officeofinternationalprograms/admissions/costsscholarships/",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "SVSU - Tuition and Fees 2026-27",
+   "url": "https://www.svsu.edu/go/costandaid/tuitionandfees/",
+   "accessed": "2026-10-26"
+  },
+  "dom": {
+   "kind": "admissions_site",
+   "title": "SVSU - Freshmen admissions (criteria, test policy, codes)",
+   "url": "https://www.svsu.edu/admissions/freshmen/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "SVSU does not use SAT/ACT for admission or most scholarships (the freshmen page calls this 'test-optional'; the CDS calls it test-blind). Scores are used only for English and math placement; without them students take SVSU placement testing or start in remedial courses. International applicants may also use SAT EBRW 500 or ACT 18 as proof of English.",
+  "src": "dom"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Own online application. International first-year applicants pay a $50 application fee (domestic applicants pay none). Need a 2.5 GPA on a 4.0 scale (SVSU converts it; below 2.5 may be admitted on probation), a passport copy and a high school transcript (unofficial accepted for the decision, official on arrival). No essay or recommendation required (CDS C7). Direct admission to Nursing and Occupational Therapy exists for domestic freshmen on the admissions page.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International first-year application deadline, fall 2027",
+   "notes": "The page prints 'July 1' for Fall (Nov 1 for Winter) with no year; taken as fall 2027. International first-years cannot start in Spring or Summer. SVSU admits on a rolling basis with no application closing date in the CDS.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The page says the English requirement 'may be waived for applicants from certain countries' without printing the list. Alternatives to a language test: SAT EBRW 500 or ACT English/writing 18. No conditional admission or ESL pathway is described on the international pages read.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Page lists 'TOEFL iBT 4.0 overall band score' (1-6 scale); no minimum for the old 0-120 scale is printed. Institution code 1766; scanned score reports may be uploaded.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Overall band 5.5. Institution code 1766; scanned reports may be uploaded.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Send through the Duolingo English Test.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "Pearson PTE overall score 50.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 14280,
+  "tuition_out_of_state_usd": 24000,
+  "tuition_intl_usd": 14280,
+  "required_fees_usd": 0,
+  "room_board_usd": 13000,
+  "books_usd": 1220,
+  "other_usd": 2640,
+  "total_coa_usd": 29920,
+  "notes": "International page (2026-27): block tuition $14,280 for 12-18 credits per semester, housing and meals $13,000 (optional), miscellaneous $2,640 including mandatory health insurance; estimated total $29,920 (excludes the $1,220 books estimate). Out-of-state and international students have a standard tuition rate of $24,000 that the Red & White Scholarship reduces to $14,280 automatically. No fees for freshmen and sophomores; professional fees apply to select juniors and seniors.",
+  "src": "aid"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "All applications are reviewed for scholarships with no separate application; awards renew with satisfactory progress. Red & White Award (largest; cuts international tuition from $24,000 to the resident rate of $14,280), President's International Scholarship ($1,000-$5,000 per year, competitive), Global Bridge Scholarship ($1,000-$5,000 per year), YES/FLEX Alumni Scholarship ($1,500 per year), GAC Pathway Scholarship ($2,000 one time). CDS H6: 245 nonresidents received institutional aid, average $11,403.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1766",
+   "note": "SVSU SAT school code.",
+   "src": "dom"
+  },
+  "act": {
+   "code": "2057",
+   "note": "SVSU ACT code as printed on the freshmen admissions page; the international English page prints 1766 for the ACT, so confirm with the ACT code search.",
+   "src": "dom"
+  },
+  "toefl": {
+   "code": "1766",
+   "note": "Institution code for TOEFL and IELTS score reports.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": "1766",
+   "note": "Send via your IELTS test center using institution code 1766.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Send results through the Duolingo English Test portal; no numeric code.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

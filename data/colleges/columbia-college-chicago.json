@@ -1,0 +1,98 @@
+{
+  "slug": "columbia-college-chicago",
+  "name": "Columbia College Chicago",
+  "short_name": "Columbia Chicago",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.874261,
+  "longitude": -87.624667,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.colum.edu",
+  "admissions_url": "https://www.colum.edu/admissions",
+  "ipeds_unit_id": 144281,
+  "undergrad_enrollment": 4346,
+  "intl_undergrads": 221,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Columbia College Chicago Common Data Set 2025-2026 (PDF)",
+      "url": "https://about.colum.edu/effectiveness/columbia_college_chicago_common_dataset_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Columbia College Chicago",
+      "url": "https://nces.ed.gov/collegenavigator/?id=144281",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10839,
+    "admits": 7999,
+    "enrolled": 632,
+    "in_state_applicants": 3230,
+    "in_state_admits": 2503,
+    "out_state_applicants": 6118,
+    "out_state_admits": 4807,
+    "intl_applicants": 1491,
+    "intl_admits": 689,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 17.88,
+      "3.75-3.99": 15.98,
+      "3.50-3.74": 14.08,
+      "3.25-3.49": 16.77,
+      "3.00-3.24": 15.98,
+      "2.50-2.99": 16.14,
+      "2.0-2.49": 3.17
+    },
+    "notes": "CDS C1: international first-year applicants 1,491, admitted 689 (46%), enrolled 14, versus a 74% overall admit rate. Admission is test-free, so no SAT/ACT data are reported (C9 is blank). No early decision or early action; no waitlist. GPA distribution and 3.43 average are C11/C12 (all enrolled first-years). Factors are C7 'general' admission (programs with specific criteria, such as BFA/BMus portfolios and auditions, are decided on the work submitted). Undergraduate enrollment 4,346 and 221 nonresident undergraduates are CDS B1/B2 (fall 2025)."
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "I",
+    "test_scores": "NC",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8 table marks could not be read; Columbia's freshman page says admission is entirely test-free, and C7 lists test scores as not considered."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 35498,
+    "tuition_out_of_state_usd": 35498,
+    "tuition_intl_usd": 35498,
+    "required_fees_usd": 1892,
+    "room_board_usd": 19466,
+    "books_usd": 1950,
+    "other_usd": 4340,
+    "intl_need_aid_awarded": 178,
+    "intl_avg_award_usd": 10942,
+    "notes": "CDS G1/G5: tuition $35,498 (12-18 credits, two semesters), required fees $1,892 (includes the estimated U-Pass), food and housing $19,466, books $1,950, transportation $1,100 plus other $3,240 (other_usd = $4,340). CDS H6: 178 degree-seeking nonresidents received institutional aid averaging $10,942 (total $1,947,625); the CDS marks both need-based and non-need-based institutional aid as available to nonresidents."
+  }
+}

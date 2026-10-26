@@ -1,0 +1,95 @@
+{
+  "slug": "northeastern-state",
+  "name": "Northeastern State University",
+  "short_name": "NSU",
+  "state_region": "OK",
+  "city": "Tahlequah",
+  "latitude": 35.919939,
+  "longitude": -94.967229,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.nsuok.edu",
+  "admissions_url": "https://offices.nsuok.edu/admissions/",
+  "ipeds_unit_id": 207263,
+  "undergrad_enrollment": 5085,
+  "intl_undergrads": 189,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Northeastern State University Common Data Set 2024-2025 (Excel)",
+      "url": "https://offices.nsuok.edu/_resources/documents/Legacy-CDS_2024-2025.xlsx",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions and test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207263",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 2011,
+    "admits": 1998,
+    "enrolled": 664,
+    "pct_submit_act": 84.6,
+    "gpa_avg": 3.45,
+    "pct_reporting_gpa": 95.2,
+    "gpa_distribution": {
+      "4.0": 11.9,
+      "3.75-3.99": 22.7,
+      "3.50-3.74": 21.6,
+      "3.25-3.49": 14.8,
+      "3.00-3.24": 13.4,
+      "2.50-2.99": 11.3,
+      "2.0-2.49": 3.3,
+      "1.0-1.99": 1.0
+    },
+    "notes": "CDS C1 (Fall 2024 entering class): 2,011 applied, 1,998 admitted (99.4%), 664 enrolled (592 in-state, 57 out-of-state, 15 international). The CDS gives no international applicant or admit counts. IPEDS College Navigator reports 1,727 applicants and 100% admitted for fall 2024, which differs from the CDS. NSU's 2025-2026 CDS Excel file was also posted but is incomplete and internally inconsistent (admits exceed applicants, SAT and cost sections blank), so the 2024-2025 CDS is used. Open-style admission with rolling decisions; no early decision or early action, no waitlist. The CDS reports ACT scores only (84.6% submitted; no SAT percentiles; College Navigator shows 4% submitted the SAT). Undergraduate enrollment 5,085 and nonresident count 189 are the B1/B2 'Total Undergraduates' figures (fall 2024)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      17,
+      21
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "recommended",
+    "notes": "CDS C8A (2024-2025): ACT 'required for some'; the CDS marks standardized tests 'very important'. The CDS cost section (G) is blank."
+  }
+}

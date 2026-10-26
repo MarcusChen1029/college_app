@@ -1,0 +1,171 @@
+{
+ "sources": {
+  "adm": {
+   "kind": "admissions_site",
+   "title": "MSU Texas - Undergraduate admissions (apply, fees, test-optional, priority and final dates)",
+   "url": "https://msutexas.edu/admissions/index.php",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "MSU Texas - Freshman admission requirements",
+   "url": "https://msutexas.edu/admissions/requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "MSU Texas Global Education - International undergraduate (freshman) admission",
+   "url": "https://msutexas.edu/global-education/international-students/undergraduate-admissions.php",
+   "accessed": "2026-10-26"
+  },
+  "tests": {
+   "kind": "admissions_site",
+   "title": "MSU Texas Global Education - International students: test scores (English proficiency)",
+   "url": "https://msutexas.edu/global-education/international-students/test-scores.php",
+   "accessed": "2026-10-26"
+  },
+  "i20": {
+   "kind": "admissions_site",
+   "title": "MSU Texas Global Education - I-20 requirements (proof of funds)",
+   "url": "https://msutexas.edu/global-education/international-students/i-20-requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "MSU Texas Global Education - International student scholarships",
+   "url": "https://msutexas.edu/global-education/international-students/international-students-experience.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "MSU Texas - Cost of attendance 2026-27",
+   "url": "https://msutexas.edu/finaid/cost-of-attendance.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "MSU Texas is test-optional: ACT/SAT scores are optional and have no effect on the admission decision, but can help with course placement, a TSI exemption and academic merit scholarships. Admission paths: GPA 3.0-4.0 or top 25% of class is automatic; 2.75-2.99 unconditional with two or more AP/IB/honors/dual-credit courses; 2.50-2.74 conditional; 2.25-2.49 MSU Bridge Program (page last modified 11/06/2025).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply with MSU's own Mustang Advantage application (a TargetX portal; the international page says to use its Apply Now link) or ApplyTexas ('own'). Fee is $50; an ApplyTexas international applicant pays an additional $50 to evaluate international transcripts. International applicants may apply for fall or spring only (no summer intake). Proof of funds for one full year is required before the I-20 is issued: bank statements dated within six months, no stated dollar amount; non-liquid assets, credit cards, stocks and retirement accounts are not accepted. Transcripts in other languages need an official translation.",
+  "src": "adm"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Priority application date, fall (fall 2027 entry)",
+   "notes": "Undergraduate admissions page: priority March 1 for fall (Nov. 1 for spring). Page prints no year; treated as fall 2027. Not stated whether it applies to international applicants.",
+   "src": "adm"
+  },
+  {
+   "kind": "application",
+   "due": "2027-08-01",
+   "label": "International application deadline, fall (applicants outside the U.S.)",
+   "notes": "International page: fall August 1, spring December 1 (no year printed; treated as fall 2027). Same dates for F-1 students already in the U.S. transferring. Proof-of-funds deadlines on the I-20 page for fall 2026 were July 1 (outside the U.S.) and Aug. 10 (inside the U.S.), so send financial documents well before Aug. 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The test-score page lists no exemptions. The undergraduate catalog was not readable, so any native-English or U.S.-school waiver is unconfirmed; ask the Global Education Office (globalscholars@msutexas.edu).",
+  "src": "tests"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "MSU's score reporting number is 6408; official scores go to the Office of International Services where required. The page does not name the new 1-6 TOEFL scale.",
+   "src": "tests"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "tests"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "tests"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "tests"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The international students page lists Academic Merit, Donor, Global Ambassadors, Good Neighbor, International Baccalaureate and Mexican Border Nation Waiver scholarships but prints no amounts, eligibility or deadlines (amounts 'vary every new academic year'). Academic merit scholarships for freshmen require SAT/ACT scores. Also accepted on the test-score page: iTEP 4.0, which has no separate field here.",
+  "src": "schol"
+ },
+ "cost": {
+  "src": "cost",
+  "year": "2026-2027",
+  "tuition_usd": 10732,
+  "tuition_out_of_state_usd": 23570,
+  "room_board_usd": 11814,
+  "books_usd": 1000,
+  "other_usd": 3974,
+  "total_coa_usd": 40358,
+  "notes": "MSU cost-of-attendance page, 2026-27: tuition and fees combined $10,732 (Texas resident) and $23,570 (U.S. non-resident); the international table repeats the non-resident figures. Total $40,358 is the non-resident on/off-campus total (housing and meals $11,814, books $1,000, transportation $1,600, personal $2,374); the international table prints books as $140, which does not add up to its total. College Navigator listed 2024-25 out-of-state tuition and fees of $12,530, far below the current $23,570, so confirm with MSU."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read; look it up in the College Board code search.",
+   "src": "tests"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read; look it up at act.org.",
+   "src": "tests"
+  },
+  "toefl": {
+   "code": "6408",
+   "note": "Listed as MSU's 'score reporting number' on the test-score page; the page does not say which test it is for.",
+   "src": "tests"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "tests"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "tests"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "tests"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,197 @@
+{
+ "sources": {
+  "eng": {
+   "kind": "admissions_site",
+   "title": "ETSU International Enrollment and Services - English proficiency requirements",
+   "url": "https://www.etsu.edu/international/proficiency-requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "pol": {
+   "kind": "admissions_site",
+   "title": "ETSU - International Applicants Undergraduate Admission Policy (PDF)",
+   "url": "https://oupub.etsu.edu/policies/documents/international-applicants-undergraduate-admissions-policy.pdf",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "ETSU Undergraduate Admissions - Application deadlines",
+   "url": "https://www.etsu.edu/admissions/apply/deadlines.php",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "ETSU Undergraduate Admissions - Applying to ETSU (freshman test policy)",
+   "url": "https://www.etsu.edu/admissions/apply/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "ETSU International Enrollment and Services - FAQ",
+   "url": "https://www.etsu.edu/international/faq/default.php",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "ETSU - International merit scholarships",
+   "url": "https://www.etsu.edu/international/scholarships/merit.php",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "ETSU - International scholarships overview",
+   "url": "https://www.etsu.edu/international/scholarships/default.php",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "ETSU - Estimated cost of attendance for international students (2026-27)",
+   "url": "https://www.etsu.edu/international/cost/coa.php",
+   "accessed": "2026-10-26"
+  },
+  "path": {
+   "kind": "admissions_site",
+   "title": "ETSU - Global Pathways to ETSU: Computing",
+   "url": "https://www.etsu.edu/international/prospective/computing.php",
+   "accessed": "2026-10-26"
+  },
+  "cdspage": {
+   "kind": "other",
+   "title": "ETSU Institutional Research - Common Data Sets (archive stops at 2010-11)",
+   "url": "https://www.etsu.edu/provost/pds/ir/external_gov/cds.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ETSU's freshman page says ACT/SAT scores are not required for admission; a score is needed to be considered for ETSU's guaranteed scholarships for in-state and border-county students, and without one students take the Accuplacer for course placement. International merit scholarships are based on GPA only (no test needed). Certain programs require test scores for program admission. The international admission policy sets no minimum GPA or test score and reviews transcripts against the standards of the country of origin.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "fee_waiver": false,
+  "notes": "The undergraduate application fee for international applicants is $35 and fee waivers are not currently available to them (domestic freshmen pay $25). Official transcripts or documentation with a certified translation are required; applicants using an Approved Partner may submit unofficial transcripts first, but official ones are due by the last day of classes of the first semester. Admission to ETSU does not guarantee admission to specialized or limited-enrollment programs.",
+  "src": "faq"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-08-19",
+   "label": "Undergraduate application deadline, fall 2027 entry",
+   "notes": "Date from ETSU's undergraduate deadlines page: apply by Thursday, August 19, 2027 (11:59 p.m. Eastern); all documents due Monday, August 23, 2027. No separate international deadline is published on the international pages reviewed, so earlier submission is advisable to allow time for the I-20 and visa. The Global Pathways: Computing page lists only a stale deadline (fall 2025).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: applicants from listed English-speaking countries (e.g. Australia, Canada, Ghana, Ireland, Jamaica, Kenya, New Zealand, Nigeria, South Africa, United Kingdom, Zimbabwe; full list on the proficiency page); applicants with two semesters of college English composition (ENGL 1010 and 1020) at a U.S. college with a C or better; or at least one year as an exchange student in, or graduation from, a U.S. high school. Other proofs accepted: ACT Reading and English 19, SAT EBRW 500, GTEC 1051 (CBT) or 1074, Oxford ELLT 6, iTEP Academic 3.6, OHLA Advanced Level II. Scores are valid for two years. Pathway option: Global Pathways to ETSU (e.g. Computing) admits applicants with a GPA above 2.3 and the minimum English scores, and ETSU works with Approved Partners.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "For tests taken before January 21, 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "For tests taken after January 21, 2026; the page lists 3.5 without naming the scale, read as the new 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Overall 5.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test 95.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "notes": "PTE Academic 43.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Listed as 'ESOL B2' (Cambridge English B2 level); no numeric score is given.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 30686,
+  "room_board_usd": 9320,
+  "books_usd": 1300,
+  "other_usd": 6854,
+  "total_coa_usd": 48160,
+  "notes": "ETSU international estimated cost of attendance 2026-27 (undergraduate, 15 credit hours per semester): tuition and fees $30,686 (fees included, not split out), housing $5,000, board $4,320, textbooks and supplies $1,300, health insurance $1,614 and miscellaneous $5,240 (other = $6,854), total $48,160. The international cost-and-scholarships page shows a lower illustrative total of $40,006 (tuition $15,343 plus housing and meal plan $4,660 per semester, before insurance and miscellaneous).",
+  "src": "coa"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International Merit Scholarships need no separate application; every new degree-seeking international applicant is considered: Blue $5,000/year (high school GPA above 3.0), Gold $7,000/year (above 3.5), Elite $9,000/year (above 3.75), renewable for up to 8 semesters with a 2.75 GPA and full-time enrollment. They cannot be combined with scholarships that cover out-of-state tuition (e.g. Creative Arts or STEM Community Outreach, which reduce tuition to the in-state rate, roughly $19,000-$20,000 a year). ETSU reports more than $6,000,000 in institutional scholarships to international students in 2024-25. International students are not eligible for federal aid.",
+  "src": "merit"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages reviewed; look it up in the College Board code search.",
+   "src": "apply"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages reviewed; look it up at act.org.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages reviewed; scores must come from the testing agency.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

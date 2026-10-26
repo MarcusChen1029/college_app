@@ -1,0 +1,144 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UT Tyler - International Admissions (undergraduate requirements, English proficiency, deadlines)",
+      "url": "https://www.uttyler.edu/admissions/international/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UT Tyler - First-Year Admissions",
+      "url": "https://www.uttyler.edu/admissions-aid/first-year/first-year.php",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UT Tyler - Scholarships for International Undergraduate Students",
+      "url": "https://www.uttyler.edu/admissions-aid/international/freshman-scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The first-year page asks applicants to send ACT or SAT scores 'if available'; the international page says UT Tyler does not require ACT/SAT for admission but encourages scores for class placement (that sentence still names the 2022-2023 and 2023-2024 years). Admission rests on class rank/GPA: top 25% automatic, other quartiles need a 2.75 GPA.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "International freshmen apply on ApplyTexas ('own'; opens Aug. 1); the first-year page also mentions the Common App. $75 non-refundable international fee ($60 domestic). Requirements: accredited high school program; top 25% of class is automatic, 2nd to 4th quartile need a minimum 2.75 GPA, and a school that does not rank needs a 2.75 GPA. Foreign transcripts need translation and a course-by-course evaluation with a GPA from WES, The Evaluation Company or another listed agency. ACT/SAT are optional. TSI is required before enrollment.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-31",
+      "label": "International undergraduate fall deadline, applicants outside the U.S. (fall 2027)",
+      "notes": "International table: Fall May 31 (if out of country) or June 30 (if already in the United States); Spring Oct. 31 / Nov. 30; Summer Feb. 28 / March 30. The table prints no year, so fall 2027 is assumed. Application opens Aug. 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Scholarship application deadline (fall 2027 entry)",
+      "notes": "First-year page: December 1 is the 'application deadline to be eligible for scholarships'. The international scholarship page (headed 2022-2023) lists December 1 priority and March 1 final dates for the Patriot Scholarship and Academic Excellence Scholarship; Honors Scholars is December 1 only. Confirm the current year with international admissions.",
+      "src": "fy"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for a high school diploma or any degree from a U.S. institution, a B or higher in ENGL 1301 and 1302 (or equivalent) at an accredited U.S. institution, naturalized U.S. citizens, and citizens or degree holders of exempt countries (e.g. Australia, Canada except Quebec, Ghana, Ireland, Jamaica, Kenya, New Zealand, Nigeria, United Kingdom). Completing Level 6 of UT Tyler's Intensive English Language Institute (IELI) with no grade below A, or Level 7 with no grade below B, may earn a waiver. Scores must be less than 2 years old at the start of the term. The pages read do not describe a conditional admission pathway through IELI.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Paper-based TOEFL 550 is also accepted. The page does not give the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_section": 6.0
+      },
+      "notes": "6.5 band score with 6.0 in each subsection (stated in the shared English-proficiency block).",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Pearson PTE Academic. EIKEN Grade 1 is also listed.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The international scholarship page (headed 2022-2023, so confirm amounts) lists: Honors Scholars $10,000 (3.75+ GPA, Dec. 1, interview, four-year eligibility); Patriot Scholarship $1,000-$5,000 (3.5+ GPA, priority Dec. 1, final March 1); Academic Excellence Scholarship $2,000 (top 25% with 3.0 GPA, or 3.5 GPA for international/unranked students; no application). Awards must be confirmed by May 1 and funding is limited. CDS nonresident aid figures are blank in the PDF.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The international admissions pages do not print an SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages read; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6850",
+      "note": "UT Tyler ETS code for TOEFL.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is needed; ask the IELTS test center to send scores electronically to UT Tyler.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,179 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Rutgers Admissions - Newark Application Dates & Deadlines",
+      "url": "https://admissions.rutgers.edu/apply/dates-deadlines/newark",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Rutgers Admissions - Required Credentials for First-Year Applicants (testing policy, fee, essay)",
+      "url": "https://admissions.rutgers.edu/apply/first-year-applicants",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Rutgers Admissions - Required Credentials for International Applicants (English proficiency, I-20)",
+      "url": "https://admissions.rutgers.edu/apply/international-applicants",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "admissions_site",
+      "title": "Rutgers Admissions - Rutgers-Newark Scholarships",
+      "url": "https://admissions.rutgers.edu/newark-scholarships",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "Rutgers-Newark is test blind: SAT and ACT are not required and are not used for most undergraduate applicants. Only applicants to the Rutgers-Newark 7-year BA/MD joint-degree program must submit a score. Scores on file can be used for placement exemption (CDS). Rutgers states its test-optional and test-blind policies run through 2027.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 70,
+    "supplemental_essays": "A short original essay is required on the Rutgers Application or Common App (no Common App supplement); a short statement is needed to be considered for honors.",
+    "notes": "$70 non-refundable fee, same for Common App and Rutgers Application. Letters of recommendation are not used. International-school applicants self-report courses and grades in STARS; official documents are required of admitted students. Admitted students complete an I-20 financial statement (ISFS) with bank documentation. Open to F-1 first-year applicants for fall 2027 in Arts & Sciences, Rutgers Business School, School of Criminal Justice and School of Public Affairs and Administration (availability chart as of 2026-10-26).",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "notify": "2027-01-31",
+      "label": "Early Action (non-binding), fall 2027",
+      "notes": "Dates apply to all first-year applicants including international; there is no separate international deadline. These are not hard cutoffs: you may apply later while the school still has space. Candidate reply date May 1, 2027.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-12-01",
+      "notify": "2027-02-28",
+      "label": "Regular Decision, fall 2027",
+      "notes": "Decisions posted online no later than Feb 28, 2027; reply date May 1, 2027. Applications after Dec 1 are reviewed only while schools of application have not met enrollment goals. The CDS (fall 2023) described a Dec 1 priority date with rolling notification.",
+      "src": "dates"
+    },
+    {
+      "kind": "deposit",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "Candidate's reply date (fall 2027)",
+      "notes": "Students admitted after May 1 must respond within one week of admission.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required of all students whose secondary schooling was outside the U.S. in a country where English is not the principal language, regardless of residency status; scores must be from the past two years. May be waived case by case for English-medium schooling (email RUinternational@admissions.rutgers.edu). Exempt with a B or better in a college-level English Composition course at an accredited U.S. college (not ESL or online). Also accepted: SAT EBRW 550, ACT English 21, Michigan English Test 56. Nursing and pharmacy have higher minimums.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Internet-based test and Home Edition, taken through January 21, 2026. Rutgers TOEFL code 2765.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Exams from January 22, 2026 onward (Newark 4.0; New Brunswick 4.5). The page lists the value without naming the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Newark minimum is 6.5 as of January 1, 2024.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "notes": "130 for the Ernest Mario School of Pharmacy and School of Nursing.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Cambridge Assessment test at level B2 (no numeric score given).",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "CDS H6: no institutional need-based aid for nonresidents; institutional non-need-based aid is available (31 nonresidents received it, average $7,467 in the CDS year). The Newark scholarships page (Chancellor's Scholarship up to $5,000 a year, Carr Scholarship) lists U.S. citizen, national or permanent-resident eligibility and does not mention F-1 students, so no published international scholarship was confirmed (merit_scholarships left null).",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "School of Arts & Sciences-Newark",
+      "admit_model": "school_college",
+      "capped": false,
+      "notes": "Open to first-year F-1 applicants for fall 2027 (availability chart, 2026-10-26)."
+    },
+    {
+      "program": "Rutgers Business School-Newark",
+      "category": "business",
+      "admit_model": "school_college",
+      "capped": false,
+      "notes": "Open to first-year F-1 applicants for fall 2027 (availability chart, 2026-10-26)."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Rutgers-Newark is test blind; no SAT code is needed except for the BA/MD program. No code is printed on the admissions pages checked.",
+      "src": "fy"
+    },
+    "act": {
+      "code": null,
+      "note": "Rutgers-Newark is test blind; no ACT code is needed except for the BA/MD program. No code is printed on the admissions pages checked.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": "2765",
+      "note": "Rutgers TOEFL code (all campuses).",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS institution code is listed on the Rutgers pages.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No Duolingo institution code is listed on the Rutgers pages.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not on Rutgers' list of accepted English tests.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: part of the Rutgers research university; admits about 79% of applicants (70% of international applicants, CDS fall 2023) and is test blind, so an SAT ~1100 international applicant is a likely admit if the English requirement is met. Placed just above the open-access D tier."
+  }
+}

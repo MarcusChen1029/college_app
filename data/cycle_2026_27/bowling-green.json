@@ -1,0 +1,158 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "BGSU - Undergraduate International Admission Requirements",
+   "url": "https://www.bgsu.edu/admissions/international/undergraduate/admission-requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "BGSU - How to Apply (international undergraduate): fee and deadlines",
+   "url": "https://www.bgsu.edu/admissions/international/undergraduate/how-to-apply.html",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "admissions_site",
+   "title": "BGSU - International undergraduate tuition and scholarships",
+   "url": "https://www.bgsu.edu/admissions/international/undergraduate/tuition.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not required for admission. International applicants must submit one of them only to be considered for merit scholarships (SAT composite of verbal and math, or ACT composite with a competitive English band score).",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": false,
+  "notes": "International application fee $75, no fee waivers. Requires official secondary transcripts (and any college transcripts) and proof of English; no essays or recommendation letters. Minimum cumulative high school GPA 2.5 on a 4.0 scale. College Navigator lists a $45 undergraduate fee for 2024-25; the international page says $75.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-18",
+   "label": "International deadline: application and all supporting documents (fall 2027 entry)",
+   "notes": "Stated for Fall 2027 admission. Spring 2027 entry: November 6, 2026.",
+   "src": "apply"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-02",
+   "label": "Last day BGSU issues I-20s for fall 2027",
+   "notes": "Spring 2027: November 20, 2026.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants may instead complete ELS Intensive English for Academic Purposes Level 112, or attend a high school or other higher education institution that uses English as the primary language of instruction for at least one academic year. The TOEFL MyBest score is not accepted.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Page lists 71 for 2025 and before. MyBest not accepted.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Page says 'TOEFL iBT: 4' for 2026 and beyond without naming the 1-6 band scale.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Automatic merit scholarships for international students (no separate application; requires a complete admission application and, for the academic award, SAT/ACT or TOEFL/IELTS-type scores). BG Success Scholarship $4,000/year for all international freshmen and transfers with GPA 3.0+, renewable four years. Freshman Academic Scholarship $1,000 to $8,000/year by GPA and test scores (estimates: $1,000 at GPA 3.0-3.19 with SAT 1050/ACT 21 or TOEFL 71-80; $3,000 at GPA 3.2-3.49, SAT 1160/ACT 25; $5,000 at GPA 3.5-3.69, SAT 1260/ACT 28; $8,000 at GPA 3.7-4.0, SAT 1380/ACT 31). To be considered for fall 2026 the page said apply by June 20, 2026; the fall 2027 date is not yet posted.",
+  "src": "tuit"
+ },
+ "cost": {
+  "src": "tuit",
+  "year": "2026-2027",
+  "tuition_intl_usd": 23500,
+  "room_board_usd": 12500,
+  "total_coa_usd": 39500,
+  "intl_merit_aid": true,
+  "notes": "BGSU international estimate for 2026-27 at 12 credits: tuition and fees combined $23,500, room and meals $12,500, insurance and books $3,500 (total $39,500). The tuition_intl_usd figure includes required fees. Falcon Tuition Guarantee locks tuition for four years; aviation flight technology costs more. An international student services fee applies each fall and spring (amount not stated on the page)."
+ },
+ "score_codes": {
+  "sat": {
+   "code": "1069",
+   "note": "BGSU SAT college code as printed on the international requirements page.",
+   "src": "req"
+  },
+  "act": {
+   "code": "3240",
+   "note": "BGSU ACT college code as printed on the international requirements page.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "About 81% of applicants admitted (IPEDS fall 2024); enrolled-student SAT medians 560 EBRW / 550 Math, ACT median 22."
+ }
+}

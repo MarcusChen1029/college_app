@@ -1,0 +1,188 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "Tennessee Tech - International admission requirements",
+   "url": "https://www.tntech.edu/admissions/international/requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "frosh": {
+   "kind": "admissions_site",
+   "title": "Tennessee Tech - International admissions: new freshmen coming from abroad",
+   "url": "https://www.tntech.edu/admissions/international/freshmen/index.php",
+   "accessed": "2026-10-26"
+  },
+  "esl": {
+   "kind": "admissions_site",
+   "title": "Tennessee Tech - International admissions: test score table",
+   "url": "https://www.tntech.edu/admissions/international/freshmen/esl.php",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "Tennessee Tech - Conditional Letter of Admission (CLA)",
+   "url": "https://www.tntech.edu/admissions/international/cond-admission.php",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Tennessee Tech - Undergraduate admissions: apply (application fees)",
+   "url": "https://www.tntech.edu/admissions/apply/index.php",
+   "accessed": "2026-10-26"
+  },
+  "catalog": {
+   "kind": "other",
+   "title": "Tennessee Tech Undergraduate Catalog - Admissions (application deadlines)",
+   "url": "https://undergrad.catalog.tntech.edu/admissions",
+   "accessed": "2026-10-26"
+  },
+  "bursar": {
+   "kind": "other",
+   "title": "Tennessee Tech Bursar - Tuition and fees (2026-27 per-semester rates)",
+   "url": "https://www.tntech.edu/bursar/tuition/index.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "CDS C8F: no test scores are needed for freshmen with a 3.0 high school GPA and a college-prep curriculum; with a GPA under 3.0, ACT 17 composite and 15+ on all subscores, or SAT 920 total, is needed. The international requirements page calls the SAT and ACT optional (reference scores: SAT 460 in Reading or Math, ACT 17 in English or Math); the test score table lists ACT 17 composite/15+ subscores and SAT 930 total/460+ subscores, and says applicants interested in scholarships should submit 600+ on each SAT subscore. Engineering and Computer Science: ACT 17 composite and 17 Math, or SAT 930 total and 470 Math; Engineering Technology: ACT 17 or SAT 930. Nursing and health pre-professional programs set higher score requirements.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Apply through the separate International Undergraduate application; the one-time fee is $40 ($25 for domestic undergraduates). General admission GPA is 2.50 on a 4.0 scale. Required: certified or original transcripts/marked sheets for all high school years (an emailed copy is accepted for initial review), an English test (only one is required), passport copy and proof of funds; the I-20 estimate is $43,448 (subject to change). Chinese applicants may qualify through the Gaokao.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "Application deadline, fall 2027 entry (university-wide)",
+   "notes": "The undergraduate catalog gives August 1 for fall entry (receipt of application, test scores for freshmen, transcripts and other materials); it is not specific to international applicants and no separate international undergraduate date was found. CDS C14 says there is no application closing date and C16 says decisions are rolling, so apply well before. Students are encouraged to apply up to a year ahead.",
+   "src": "catalog"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-15",
+   "label": "Scholarship application deadline for fall 2027 entry",
+   "notes": "Catalog: students who wish to be considered for scholarships must apply for scholarships by December 15 of the year before fall enrollment. Admission is needed first; the Office of International Programs has scholarships only for international undergraduates, which are limited.",
+   "src": "catalog"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waivers for full admission: SAT evidence-based reading/writing 460+; ACT English over 15; English composition equivalent to ENGL 1010 with a C or better from a U.S. college; IGCSE O or A Level English grade C or better; IB Language A (Language and Literature) score 5+ (the test score table accepts scores of 4 to 7); AP English Language and Composition score 3+; or 28+ on the ACCUPLACER. Applicants who do not meet the English requirement can get a Conditional Letter of Admission (high school GPA over 2.5) to study in an agreement ESL provider (Kings, ELS/ILSC, EF, FLS, Staffordhouse, ZONI, The Language Company, CEL/EC, BridgeEnglish, The House of Tutors) or attend Tennessee Tech's Center for ESL.",
+  "src": "frosh"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "iBT 61 (also the Home Edition); paper-based 500. TOEFL Essentials 3.5 (students then take the ACCUPlacer; 4.0 waives it). The pages do not list a new 1-6 scale minimum.",
+   "src": "esl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "5.5 or higher; the IELTS Indicator (home edition) 5.5 is also accepted. Scores older than 3 years are not accepted.",
+   "src": "esl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "notes": "Duolingo English Test (home test), 85.",
+   "src": "esl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 52,
+   "notes": "PTE Academic 52; PTE Express 60.",
+   "src": "esl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 162,
+   "notes": "Cambridge scale score of 162 or above. Other accepted tests include TOEIC 580+ (the requirements page says 600+), MET 80/100, LANGUAGECERT Academic CEFR B2 and iTEP 3.5+ (extra ESL support required).",
+   "src": "esl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Only admitted students are eligible. The Office of International Programs has scholarships available exclusively for international undergraduates; current award amounts are not published on the pages reviewed. CDS H6 marks institutional need-based and non-need-based aid as available to nonresidents (91 nonresident undergraduates awarded, average $16,003); need criteria are not published, and international students cannot receive federal aid. The 2026-27 bursar schedule shows $6,298 tuition and fees per 12-credit semester for in-state students plus a $7,932 per-semester international out-of-state charge (about $28,460 a year in tuition and fees).",
+  "src": "req"
+ },
+ "majors": [
+  {
+   "program": "Engineering (incl. Computer Science and Engineering Technology)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Program GPA requirement 2.85; applicants who meet the general 2.50 GPA but not the program requirement are admitted to Interdisciplinary Studies with a program-interest attribute. Engineering and Computer Science also list ACT 17 composite and 17 Math, or SAT 930 total and 470 Math."
+  },
+  {
+   "program": "Nursing",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Program GPA requirement 3.00 (same for health-related pre-professional programs); a student who meets the general requirements but not the program's is admitted to Interdisciplinary Studies with a program-interest attribute. Higher test score requirements apply."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages reviewed; look it up in the College Board code search.",
+   "src": "esl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages reviewed; look it up at act.org.",
+   "src": "esl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; scores must be sent directly by the testing agency.",
+   "src": "esl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; IELTS scores are verified through the IELTS system.",
+   "src": "esl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "esl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "esl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "D+ rather than D: strongest enrolled profile of this group (middle-50% ACT 21-27, average GPA 3.72) with a 79% overall admit rate. Note the international admit rate is much lower (37%, 291 of 782, CDS C1). Editorial judgment."
+ }
+}

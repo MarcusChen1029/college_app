@@ -1,0 +1,42 @@
+{
+  "slug": "georgia-gwinnett",
+  "name": "Georgia Gwinnett College",
+  "short_name": "GGC",
+  "state_region": "GA",
+  "city": "Lawrenceville",
+  "latitude": 33.979409,
+  "longitude": -84.00459,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.ggc.edu",
+  "admissions_url": "https://www.ggc.edu/admissions",
+  "ipeds_unit_id": 447689,
+  "undergrad_enrollment": 12230,
+  "intl_undergrads": 481,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Georgia Gwinnett College (fall 2024 admissions, enrollment, campus setting: Suburb: Large)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=447689",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts and nonresident-alien undergraduates (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=447689",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 6153,
+    "admits": 5876,
+    "enrolled": 2612,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator; exact counts from the NCES IPEDS ADM2024 file via the Urban Institute Education Data Portal): 6,153 applied (2,416 men, 3,737 women), 5,876 admitted, 2,612 enrolled. GGC lists a 2025 Fall Semester Common Data Set, but its page and files block automated access (HTTP 403) and the Wayback copy was rate-limited, so no CDS figures (international applicants/admits, GPA, SAT/ACT percentiles, factors) are included. IPEDS shows no SAT/ACT score ranges for GGC (test-optional). International undergraduates (481) are IPEDS fall 2024 nonresident aliens, about 3.9% of 12,230 undergraduates."
+  }
+}

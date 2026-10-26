@@ -1,0 +1,44 @@
+{
+ "slug": "cal-state-east-bay",
+ "name": "California State University, East Bay",
+ "short_name": "Cal State East Bay",
+ "state_region": "CA",
+ "city": "Hayward",
+ "latitude": 37.657694,
+ "longitude": -122.054135,
+ "setting": "suburban",
+ "control": "public",
+ "website": "https://www.csueastbay.edu",
+ "admissions_url": "https://www.csueastbay.edu/admissions/",
+ "ipeds_unit_id": 110574,
+ "undergrad_enrollment": 9909,
+ "intl_undergrads": 252,
+ "student_faculty_ratio": 22,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: Admissions fall 2023 (ADM2023 data file), fall 2024 admissions summary and enrollment, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110574",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110574",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 13274,
+  "admits": 12851,
+  "enrolled": 994,
+  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class: 13,274 applicants, 12,851 admitted, 994 enrolled). College Navigator also shows fall 2024: 11,867 applicants, 97% admitted, 7% of admitted students enrolled (rounded percentages; no counts given). No public Common Data Set was found on csueastbay.edu (the Institutional Effectiveness & Research office publishes dashboards instead), so applications by residency (international applicants and admits), GPA and score ranges are not available and are left null. Undergraduate enrollment is the fall 2024 College Navigator figure (9,909); international undergraduate headcount is not published there (only 4% of first-time students came from foreign countries in fall 2023), so intl_undergrads is null. CSU campuses are test-blind, so no SAT/ACT percentiles."
+ },
+ "scores": {}
+}

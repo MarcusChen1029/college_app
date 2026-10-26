@@ -1,0 +1,177 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Murray State - International student application (requirements, deadlines)",
+      "url": "https://www.murraystate.edu/admissions/international/Admissions/index.aspx",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "Murray State - Scholarships and cost of attendance for international students",
+      "url": "https://www.murraystate.edu/admissions/international/Costs.aspx",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Murray State - First-time freshman admission requirements",
+      "url": "https://www.murraystate.edu/admissions/ftf/requirements.aspx",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Murray State - Scholarships for first-year students (fall 2027)",
+      "url": "https://www.murraystate.edu/admissions/scholarships/newfreshmen.aspx",
+      "accessed": "2026-10-26"
+    },
+    "scholhome": {
+      "kind": "financial_aid_site",
+      "title": "Murray State - Scholarships (important dates)",
+      "url": "https://www.murraystate.edu/admissions/scholarships/index.aspx",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Murray State - International admissions FAQ (conditional admission types)",
+      "url": "https://www.murraystate.edu/admissions/international/Admissions/faqs.aspx",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Murray State calls its process test-optional: freshmen with an unweighted high school GPA of 2.75 or higher are admitted, and 2.0-2.74 gets holistic review. International applicants need a high school GPA of at least 2.0 and English proof; an SAT total of 960 is one of the accepted English proofs.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 100,
+    "notes": "International application fee is $100 online ($200 if applying for conditional admission through the ESL program); domestic freshmen pay $40. Required uploads: passport, high school transcripts (GPA 2.0+) with certified translation, graduation certificate, bank statement of at least $30,706 or a scholarship letter, and English proof. Common App use not confirmed on the pages read.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-07-19",
+      "label": "International bachelor's application deadline, Fall 2027 (August intake)",
+      "notes": "From the international application page, which lists the Fall 2027 intake explicitly. Spring 2027 (January intake): Nov. 15. Transfer students already in the US: July 20 for fall.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "General Scholarship Application deadline (competitive scholarships)",
+      "notes": "Competitive scholarships are open to all students and require admission first. The first-year Academic Achievement scholarships and the Presidential Fellowship (Dec. 1, 2026 deadline) are stated as available only to domestic students.",
+      "src": "scholhome"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "English proof is not required from citizens of the listed English-speaking countries or from graduates of a US high school; it is also met by admission to or completion of Murray State's ESL program, five O-level passes (GCE/GCSE/IGCSE/AICE/HIGCSE) or Cambridge English B2+, or one full-time semester (12+ credits) at a US institution with a 2.5 GPA. Accepted tests (full admission / admission with condition): IELTS 6.0 / 5.5, TOEFL iBT 71 / 61, SAT 960, GTEC 1190 / 1100, PTE 51 / 45, Duolingo 100 / 90, TOEIC 790 / 700, Kaplan Advanced / Higher Intermediate. Admitted with condition means undergraduates must keep a 2.0 GPA in the first semester. Applicants below those scores can apply for conditional admission starting in the ESL program.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "rec": 71,
+      "notes": "71 = standard requirement; 61 = full admission with condition (2.0 GPA in the first semester). The page gives no 1-6 scale scores. The older FAQ page says a TOEFL of 60 or less, or an IELTS of 5.0, leads to ESL conditional admission.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "rec": 6.0,
+      "notes": "6.0 overall = standard; 5.5 = admission with condition.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 90,
+      "rec": 100,
+      "notes": "100 or higher = standard; 90 = admission with condition.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 45,
+      "rec": 51,
+      "notes": "51 = standard; 45 = admission with condition.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": null,
+      "notes": "Page accepts a level of B2 or higher on the Cambridge English exam (or five O-level subject passes on GCE/GCSE/IGCSE/AICE/HIGCSE); no numeric score is printed.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "CDS H6: only institutional non-need-based aid for nonresidents. The first-year Academic Achievement scholarships ($1,000-$10,000, by GPA) and the Presidential Fellowship are domestic-only. International students can compete for general competitive scholarships after admission, and first-time transfer students get $1,500-$5,000 a year by GPA (2.75+). No published international freshman award schedule was found; ask msu.intl@murraystate.edu.",
+    "src": "cost"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 15990,
+    "room_board_usd": 12484,
+    "other_usd": 2232,
+    "total_coa_usd": 30706,
+    "notes": "International costs page, bachelor's degree, one academic year: tuition and fees combined $15,990, housing and meals $12,484, books and insurance $2,232, total $30,706 (this is also the bank-balance requirement). The page does not print the academic year; its transfer scholarship table is labelled 2026-27.",
+    "src": "cost"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The admissions pages read do not print Murray State's SAT code; look it up in the College Board code search.",
+      "src": "fy"
+    },
+    "act": {
+      "code": null,
+      "note": "The admissions pages read do not print Murray State's ACT code; look it up at act.org.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read; confirm with msu.intl@murraystate.edu.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

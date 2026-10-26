@@ -1,0 +1,105 @@
+{
+ "slug": "cal-state-san-bernardino",
+ "name": "California State University, San Bernardino",
+ "short_name": "Cal State San Bernardino",
+ "state_region": "CA",
+ "city": "San Bernardino",
+ "latitude": 34.182622,
+ "longitude": -117.323801,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.csusb.edu",
+ "admissions_url": "https://www.csusb.edu/admissions",
+ "ipeds_unit_id": 110510,
+ "undergrad_enrollment": 15948,
+ "intl_undergrads": 182,
+ "student_faculty_ratio": 22,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "California State University, San Bernardino Common Data Set 2025-2026 (PDF; fall 2025 first-year class)",
+   "url": "https://www.csusb.edu/sites/default/files/upload/file/2026/CDS_2025-2026_NEW.pdf",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 admissions summary and enrollment, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110510",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "cds",
+  "applicants": 14947,
+  "admits": 14095,
+  "enrolled": 2162,
+  "in_state_applicants": 14218,
+  "in_state_admits": 13472,
+  "out_state_applicants": 326,
+  "out_state_admits": 288,
+  "intl_applicants": 403,
+  "intl_admits": 335,
+  "pct_submit_sat": 15,
+  "pct_submit_act": 1,
+  "gpa_avg": 3.39,
+  "pct_reporting_gpa": 99.91,
+  "gpa_distribution": {
+   "4.0": 14.54,
+   "3.75-3.99": 14.91,
+   "3.50-3.74": 16.81,
+   "3.25-3.49": 13.06,
+   "3.00-3.24": 15.51,
+   "2.50-2.99": 21.16,
+   "2.0-2.49": 4.03,
+   "1.0-1.99": 0.0
+  },
+  "notes": "CDS C1 fall 2025 first-year class. Totals match the sum of the residency table (in-state 14,218 + out-of-state 326 + international 403 applicants; 13,472 + 288 + 335 admits; 2,138 + 13 + 11 enrolled). International applicants were admitted at about 83% versus about 94% overall. College Navigator shows fall 2024: 14,543 applicants, 94% admitted. SAT/ACT are not used in admission, so the score ranges below describe only the 15% of enrollees (317 students) who voluntarily submitted an SAT (ACT: 13 students, too few to report). The CDS C7 marks standardized test scores 'very important' and the C8 form field appears to mark SAT/ACT as recommended, which conflicts with the CSU-wide test-blind policy that College Navigator reports; the test_scores factor is therefore omitted. Undergraduate enrollment (15,948) is the CDS B1 total; intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (182)."
+ },
+ "scores": {
+  "SAT_TOTAL": [
+   890,
+   1000,
+   1130
+  ],
+  "SAT_ERW": [
+   450,
+   520,
+   580
+  ],
+  "SAT_MATH": [
+   430,
+   480,
+   560
+  ]
+ },
+ "factors": {
+  "rigor": "NC",
+  "class_rank": "NC",
+  "gpa": "VI",
+  "essay": "NC",
+  "recommendations": "NC",
+  "interview": "NC",
+  "extracurriculars": "NC",
+  "talent_ability": "NC",
+  "character": "NC",
+  "first_generation": "NC",
+  "alumni_relation": "NC",
+  "geographic_residence": "I",
+  "state_residency": "NC",
+  "religious_affiliation": "NC",
+  "volunteer_work": "NC",
+  "work_experience": "NC",
+  "demonstrated_interest": "NC"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "source": "cds",
+  "intl_need_aid": null,
+  "intl_need_aid_awarded": 0,
+  "notes": "CDS H6 reports no institutional aid awarded to degree-seeking nonresident undergraduates (0 recipients). The CDS tuition fields were not used; costs come from CSUSB's international tuition-and-fees page."
+ }
+}

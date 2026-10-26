@@ -1,0 +1,121 @@
+{
+  "slug": "angelo-state",
+  "name": "Angelo State University",
+  "short_name": "Angelo State",
+  "state_region": "TX",
+  "city": "San Angelo",
+  "latitude": 31.440914,
+  "longitude": -100.465051,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.angelo.edu",
+  "admissions_url": "https://www.angelo.edu/admissions-and-aid/apply/",
+  "ipeds_unit_id": 222831,
+  "undergrad_enrollment": 10103,
+  "intl_undergrads": 295,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Angelo State University Common Data Set 2025-2026 (Excel)",
+      "url": "https://www.angelo.edu/live/files/29768-common-data-set-2025-2026",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions and test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=222831",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6865,
+    "admits": 5479,
+    "enrolled": 1359,
+    "in_state_applicants": 6547,
+    "in_state_admits": 5225,
+    "out_state_applicants": 261,
+    "out_state_admits": 199,
+    "intl_applicants": 57,
+    "intl_admits": 55,
+    "pct_submit_sat": 29.07,
+    "pct_submit_act": 43.56,
+    "gpa_avg": 3.71,
+    "pct_reporting_gpa": 88.52,
+    "gpa_distribution": {
+      "4.0": 19.2,
+      "3.75-3.99": 27.35,
+      "3.50-3.74": 24.85,
+      "3.25-3.49": 15.96,
+      "3.00-3.24": 6.57,
+      "2.50-2.99": 4.24,
+      "2.0-2.49": 1.58,
+      "1.0-1.99": 0.08
+    },
+    "notes": "CDS C1 (Fall 2025 entering class): 6,865 applied, 5,479 admitted (79.8%), 1,359 enrolled; residency rows (in-state / out-of-state / international) sum to the totals. International (nonresident) first-years: 57 applied, 55 admitted (96%), 35 enrolled. No early decision or early action, no waitlist, rolling admission. GPA columns are the 'all enrolled students' set; 0.17% had a GPA below 1.0 and is omitted. Undergraduate enrollment 10,103 and nonresident count 295 are the B1/B2 'Total Undergraduates' figures. The CDS lists SAT composite 25th/50th percentiles (860/990) but the 75th percentile cells are blank (#REF!), so the SAT/ACT percentile ranges shown come from IPEDS (fall 2024) instead."
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      520,
+      590
+    ],
+    "SAT_MATH": [
+      440,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "VI",
+    "gpa": "C",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT or ACT 'recommended'; ACT-only and SAT-only 'not required for admission, but considered if submitted'. C8F: Angelo State has a test-optional policy; applicants can ask to be reviewed without scores."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 5620,
+    "tuition_out_of_state_usd": 17770,
+    "tuition_intl_usd": 17770,
+    "required_fees_usd": 3964,
+    "room_board_usd": 13800,
+    "books_usd": 1200,
+    "other_usd": 4000,
+    "intl_need_aid": true,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 13,
+    "intl_avg_award_usd": 8347,
+    "notes": "CDS G1 (first-year, full-time; the CDS ticks '2026-27 costs not available', so these are the 2025-26 figures): in-state tuition $5,620, nonresident tuition $17,770, required fees $3,964, on-campus food and housing $13,800 (housing $8,800 + meal plan $5,000). G5 estimates: books $1,200, transportation $2,050, other $1,950 (other_usd = transportation + other). Per-credit-hour: $188 in-state, $593 nonresident. H6: institutional need-based and non-need-based aid is available to nonresidents; 13 nonresidents received it (average $8,347)."
+  }
+}

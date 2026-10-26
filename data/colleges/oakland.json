@@ -1,0 +1,121 @@
+{
+  "slug": "oakland",
+  "name": "Oakland University",
+  "short_name": "OU",
+  "state_region": "MI",
+  "city": "Rochester",
+  "latitude": 42.674573,
+  "longitude": -83.216418,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.oakland.edu",
+  "admissions_url": "https://www.oakland.edu/futurestudents/",
+  "ipeds_unit_id": 171571,
+  "undergrad_enrollment": 12587,
+  "intl_undergrads": 243,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Oakland University Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.oakland.edu/media/Oakland/Assets/OIRA/files/Publications/CDS_2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 17593,
+    "admits": 15454,
+    "enrolled": 2268,
+    "pct_submit_sat": 79,
+    "pct_submit_act": 5,
+    "gpa_avg": 3.48,
+    "pct_reporting_gpa": 99.8,
+    "gpa_distribution": {
+      "4.0": 16.4,
+      "3.75-3.99": 20.8,
+      "3.50-3.74": 16.6,
+      "3.25-3.49": 13.4,
+      "3.00-3.24": 12.5,
+      "2.50-2.99": 19.8,
+      "2.0-2.49": 0.5
+    },
+    "notes": "CDS C1 (fall 2024): the applied/admitted/enrolled totals are 17,593 / 15,454 / 2,268; the in-state, out-of-state and international residency breakdown in C1 was left blank, so intl_applicants and intl_admits are null and the international admit rate is unknown (the overall rate is 88%). The male/female admit rows in C1 are inconsistent with the applicant rows (men admitted 9,207 vs 7,032 applied), so only the totals are used. Undergrad and international counts are B1/B2 'Total undergraduates' (12,587; nonresident 243). No waitlist, early decision or early action, no application closing date, rolling notification beginning July 1. SAT 79% (1,782 students) and ACT 5% (115) submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      920,
+      1040,
+      1160
+    ],
+    "SAT_ERW": [
+      470,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      430,
+      520,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      25,
+      29
+    ],
+    "ACT_ENGLISH": [
+      20,
+      24,
+      30
+    ],
+    "ACT_MATH": [
+      20,
+      25,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: SAT or ACT 'not required for admission, but considered if submitted'; the CDS note says they are recommended for additional scholarship consideration and course placement."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 15863,
+    "tuition_out_of_state_usd": 23873,
+    "tuition_intl_usd": 23873,
+    "required_fees_usd": null,
+    "room_board_usd": 10932,
+    "books_usd": 700,
+    "other_usd": 2600,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 127,
+    "intl_avg_award_usd": 5851,
+    "notes": "CDS G1 first-year (labelled 2025-2026); the cycle file's figures from Oakland's international page replace these. H6: only institutional non-need-based aid is available to nonresidents; 127 nonresident undergraduates received it (average $5,851)."
+  }
+}

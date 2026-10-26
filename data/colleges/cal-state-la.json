@@ -1,0 +1,93 @@
+{
+ "slug": "cal-state-la",
+ "name": "California State University, Los Angeles",
+ "short_name": "Cal State LA",
+ "state_region": "CA",
+ "city": "Los Angeles",
+ "latitude": 34.066927,
+ "longitude": -118.168965,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.calstatela.edu",
+ "admissions_url": "https://www.calstatela.edu/admissions",
+ "ipeds_unit_id": 110592,
+ "undergrad_enrollment": 19586,
+ "intl_undergrads": 733,
+ "student_faculty_ratio": 21,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "California State University, Los Angeles Common Data Set 2025-2026 (PDF; fall 2025 first-year class)",
+   "url": "https://www.calstatela.edu/sites/default/files/CDS2526_CalStateLA.pdf",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 admissions summary and enrollment, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110592",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "cds",
+  "applicants": 36694,
+  "admits": 33209,
+  "enrolled": 2920,
+  "in_state_applicants": 33359,
+  "in_state_admits": 31008,
+  "out_state_applicants": 2539,
+  "out_state_admits": 1744,
+  "intl_applicants": 796,
+  "intl_admits": 457,
+  "gpa_avg": 3.21,
+  "gpa_distribution": {
+   "4.0": 6.26,
+   "3.75-3.99": 9.77,
+   "3.50-3.74": 14.74,
+   "3.25-3.49": 16.54,
+   "3.00-3.24": 18.38,
+   "2.50-2.99": 26.62,
+   "2.0-2.49": 7.22,
+   "1.0-1.99": 0.47
+  },
+  "notes": "CDS C1 fall 2025 first-year class; totals are the residency-table sums (in-state 33,359 + out-of-state 2,539 + international 796 applicants; 31,008 + 1,744 + 457 admits; 2,905 + 0 + 15 enrolled). C1's gender lines add to slightly lower totals (35,898 applicants, 32,752 admits, 2,938 enrolled), an inconsistency in the CDS. International applicants were admitted at about 57% versus about 91% overall. College Navigator shows fall 2024: 32,723 applicants, 91% admitted. C11 GPA ranges and the 3.21 average (C12) are for all enrolled first-year students. SAT/ACT are not used in admission (CDS C8A), so no test score ranges are reported. Undergraduate enrollment is the College Navigator fall 2024 headcount (19,586); the CDS B1 undergraduate total (22,077) does not reconcile with its own degree-seeking lines, so it was not used. intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (733)."
+ },
+ "scores": {},
+ "factors": {
+  "rigor": "C",
+  "class_rank": "NC",
+  "gpa": "VI",
+  "test_scores": "NC",
+  "essay": "NC",
+  "recommendations": "NC",
+  "interview": "NC",
+  "extracurriculars": "NC",
+  "talent_ability": "NC",
+  "character": "NC",
+  "first_generation": "NC",
+  "alumni_relation": "NC",
+  "geographic_residence": "C",
+  "state_residency": "C",
+  "religious_affiliation": "NC",
+  "volunteer_work": "NC",
+  "work_experience": "NC",
+  "demonstrated_interest": "NC"
+ },
+ "cds_test_policy": {
+  "cycle": "2026-27",
+  "policy": "blind",
+  "notes": "CDS 2025-2026 C8A marks SAT/ACT as not used in admission decisions."
+ },
+ "cost": {
+  "year": "2026-2027",
+  "source": "cds",
+  "intl_need_aid": null,
+  "intl_need_aid_awarded": 8,
+  "intl_avg_award_usd": 9042,
+  "notes": "CDS H6: 8 degree-seeking nonresident undergraduates received institutional scholarship or grant aid (need-based or non-need-based, the CDS does not say which), average $9,042, total $72,335. The CDS tuition fields were not used; costs come from Cal State LA's fee and cost-of-attendance pages."
+ }
+}

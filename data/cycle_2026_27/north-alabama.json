@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UNA Office of International Affairs - Undergraduate admissions for international students",
+      "url": "https://www.una.edu/international/admissions/undergraduate.html",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "UNA Office of International Affairs - Admissions frequently asked questions",
+      "url": "https://www.una.edu/international/admissions/frequently-asked-questions.html",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "UNA Office of International Affairs - International student scholarships",
+      "url": "https://www.una.edu/international/costs-and-scholarships/scholarships.html",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "financial_aid_site",
+      "title": "UNA Office of International Affairs - Costs and scholarships (estimated international costs)",
+      "url": "https://www.una.edu/international/costs-and-scholarships/index.html",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "UNA - New freshmen admission requirements",
+      "url": "https://www.una.edu/admissions/new-freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "esl": {
+      "kind": "admissions_site",
+      "title": "UNA Office of International Affairs - Academic English Program (ESL) admissions",
+      "url": "https://www.una.edu/international/admissions/esl.html",
+      "accessed": "2026-10-26"
+    },
+    "programs": {
+      "kind": "other",
+      "title": "UNA Office of International Affairs - Academic programs sheet (as of April 2025)",
+      "url": "https://www.una.edu/international/academic-programs-sheet.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UNA is test optional: students can apply with or without ACT/SAT; scores are encouraged for scholarships and course placement. International students are not required to submit SAT/ACT for admission; applicants without scores take UNA's Academic Placement Test before registering. Freshman admission generally needs a 2.5 unweighted GPA and 13 core high school units (2.00-2.49 may be considered for conditional admission).",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 35,
+    "notes": "International applicants pay a non-refundable $35 fee (no waivers, no wire transfers). Required: passport copy, official high school diploma and transcripts (notarized or attested), financial documents for the I-20 (bank letter or statements dated within six months), and an English proficiency test. The international admissions page does not state a minimum GPA; the domestic freshman page says 2.5 unweighted. External credential evaluation (IEE, WES, TEC) is requested case by case. UNA also offers an on-campus Academic English Program (ESL); conditional admission needs two applications, one to the ESL program and one to the degree program.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall semester (fall 2027 entry)",
+      "notes": "Page says 'Fall Semester: June 1' (application and all supplemental materials due before June 1). The page prints no year, so treated as 2027. Spring semester deadline is October 1. The CDS reports no application closing date and rolling notification.",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "English proficiency is required of all international students, met either with a test score or through UNA's Academic English (ESL) Program. The FAQ says a medium-of-instruction (MOI) document can be accepted, and applicants who completed a US-equivalent diploma or degree in English in a listed country (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Kenya, Nigeria, Singapore, South Africa, UK, Zimbabwe) may be exempt from TOEFL/IELTS.",
+    "src": "faq"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "UNA ETS code 1735. TOEFL computer-based 173 and TOEIC 600 are also listed. The page gives no minimum on the new 1-6 TOEFL scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 90,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 46,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International recruitment scholarship: $10,000 for the first year ($5,000 per semester) for all admitted undergraduates who study on campus; the FAQ gives a range of $8,000-$10,000 per year. Keep a 2.5+ GPA after semester 3 to keep the full amount. The Global Learning Community scholarship adds $1,500 per semester applied to eligible UNA housing. No separate scholarship application or essay; UNA says it offers no fully-funded scholarships and states that 95% of international students receive scholarships. The CDS (H6) also ticks need-based institutional aid for nonresidents, but the international office describes only these automatic scholarships.",
+    "src": "sch"
+  },
+  "cost": {
+    "total_coa_usd": 36527,
+    "src": "costs",
+    "notes": "International office estimate for 30 undergraduate credit hours over nine months: tuition and fees $26,547 + living expenses $8,280 + books, supplies and technology $1,700 = $36,527. The page prints no academic year. Academic English Program (20 courses) is estimated at $24,477."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "1735",
+      "note": "UNA's SAT school code per the international admissions page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "0014",
+      "note": "UNA's ACT school code per the international admissions page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "1735",
+      "note": "ETS code 1735 per the international admissions page (the page says to send original English test scores directly to UNA).",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; send IELTS results directly to UNA.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

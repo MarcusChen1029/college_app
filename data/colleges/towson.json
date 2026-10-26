@@ -1,0 +1,145 @@
+{
+  "slug": "towson",
+  "name": "Towson University",
+  "short_name": "Towson",
+  "state_region": "MD",
+  "city": "Towson",
+  "latitude": 39.393622,
+  "longitude": -76.611164,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.towson.edu",
+  "admissions_url": "https://www.towson.edu/admissions/",
+  "ipeds_unit_id": 164076,
+  "undergrad_enrollment": 16361,
+  "intl_undergrads": 148,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Towson University Common Data Set 2025-2026, Section C: First-Time, First-Year Admission (PDF)",
+      "url": "https://www.towson.edu/ir/documents/cds_c_2526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_b": {
+      "kind": "cds",
+      "title": "Towson University Common Data Set 2025-2026, Section B: Enrollment and Persistence (PDF)",
+      "url": "https://www.towson.edu/ir/documents/cds_b_2526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_g": {
+      "kind": "cds",
+      "title": "Towson University Common Data Set 2025-2026, Section G: Annual Expenses (PDF)",
+      "url": "https://www.towson.edu/ir/cds_g_2526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_h": {
+      "kind": "cds",
+      "title": "Towson University Common Data Set 2025-2026, Section H: Financial Aid (PDF)",
+      "url": "https://www.towson.edu/ir/documents/cds_h_2526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 20772,
+    "admits": 16735,
+    "enrolled": 2908,
+    "in_state_applicants": 15452,
+    "in_state_admits": 12418,
+    "out_state_applicants": 4880,
+    "out_state_admits": 3914,
+    "pct_submit_sat": 20,
+    "pct_submit_act": 1,
+    "gpa_avg": 3.81,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 34.56,
+      "3.75-3.99": 17.92,
+      "3.50-3.74": 19.36,
+      "3.25-3.49": 16.88,
+      "3.00-3.24": 9.49,
+      "2.50-2.99": 1.69,
+      "2.0-2.49": 0.1
+    },
+    "notes": "Fall 2025 first-time first-year cohort. Totals are the sum of the male + female + unknown-sex rows in CDS C1 (no single total is printed). The C1 residency table prints only in-state and out-of-state (together 20,332 applied and 16,332 admitted), so intl_applicants/intl_admits are left null; CDS B2 lists 15 nonresident first-year enrollees. TU says it is permanently test-optional; only 20% of enrollees submitted SAT (583 students) and 1% ACT (17), so the ACT percentiles rest on very few students. Average GPA 3.81 is weighted. Non-binding early action (C22): 15,387 applications, 12,668 admitted. No early decision, no waitlist."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      920,
+      1070,
+      1230
+    ],
+    "SAT_ERW": [
+      480,
+      550,
+      640
+    ],
+    "SAT_MATH": [
+      440,
+      510,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      26,
+      27
+    ],
+    "ACT_ENGLISH": [
+      18,
+      25,
+      27
+    ],
+    "ACT_MATH": [
+      17,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A/C8F: SAT/ACT not required for admission, but considered if submitted; TU is permanently test-optional for admission and scholarships."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds_g",
+    "tuition_usd": 7990,
+    "tuition_out_of_state_usd": 28248,
+    "tuition_intl_usd": 28248,
+    "required_fees_usd": 4700,
+    "room_board_usd": 14962,
+    "books_usd": 960,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 53,
+    "intl_avg_award_usd": 15746,
+    "notes": "CDS G1 (2026-27, first-year): in-state tuition $7,990, out-of-state/nonresident $28,248, required fees $4,700; housing $8,672 + food $6,290 = $14,962 (TU's cost page budgets Premium housing $10,076 + Silver dining $6,290). International students pay out-of-state tuition. CDS H6: only institutional non-need-based aid is available to nonresidents; 53 received it (avg $15,746, total $834,564). The tuition_usd field is the in-state figure."
+  }
+}

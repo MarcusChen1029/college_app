@@ -1,0 +1,111 @@
+{
+  "slug": "uh-downtown",
+  "name": "University of Houston-Downtown",
+  "short_name": "UHD",
+  "state_region": "TX",
+  "city": "Houston",
+  "latitude": 29.7661,
+  "longitude": -95.359338,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uhd.edu",
+  "admissions_url": "https://www.uhd.edu/admissions/",
+  "ipeds_unit_id": 225432,
+  "undergrad_enrollment": 12441,
+  "intl_undergrads": 229,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Houston-Downtown Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.uhd.edu/documents/provost/ie/institutional-research/common-data-set/cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, student-faculty ratio, programs, fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=225432",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7355,
+    "admits": 6465,
+    "enrolled": 1185,
+    "in_state_applicants": 7215,
+    "in_state_admits": 6347,
+    "out_state_applicants": 91,
+    "out_state_admits": 79,
+    "intl_applicants": 49,
+    "intl_admits": 39,
+    "pct_submit_sat": 60,
+    "pct_submit_act": 4,
+    "gpa_avg": 3.33,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 13.16,
+      "3.75-3.99": 10.13,
+      "3.50-3.74": 14.77,
+      "3.25-3.49": 18.31,
+      "3.00-3.24": 17.13,
+      "2.50-2.99": 24.47,
+      "2.0-2.49": 1.86,
+      "1.0-1.99": 0.17
+    },
+    "notes": "CDS C1 residency split (fall 2025): in-state 7,215 / out-of-state 91 / international 49 applicants; admitted 6,347 / 79 / 39; enrolled 1,165 / 7 / 13. Undergraduate enrollment 12,441 and nonresident undergraduates 229 are the CDS B1 'Total Undergraduates' figures (fall 2025); the student-faculty ratio (18:1) is the fall 2024 College Navigator figure because the CDS ratio could not be read. No waiting list, no early decision or early action. UHD is test-optional, so SAT/ACT percentiles describe the 60% (SAT) and 4% (ACT) of enrollees who submitted scores."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      880,
+      970,
+      1050
+    ],
+    "SAT_ERW": [
+      440,
+      490,
+      540
+    ],
+    "SAT_MATH": [
+      430,
+      480,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      21
+    ],
+    "ACT_ENGLISH": [
+      14,
+      18,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      17,
+      19
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'UHD freshman applicants have the option to apply for admission with or without a SAT and/or ACT test score ... The test optional policy applies to both domestic and international freshman students.' Freshman-transfer and GED/homeschool applicants are not eligible to be test optional."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 7433,
+    "tuition_out_of_state_usd": 19583,
+    "tuition_intl_usd": 19583,
+    "required_fees_usd": 1456,
+    "books_usd": 660,
+    "room_board_usd": 14802,
+    "other_usd": 4674,
+    "notes": "CDS G1/G5 (2025-26, first-year): non-resident tuition $19,583 plus required fees $1,456. UHD has no on-campus housing; the room-and-board figure is the food and housing estimate for commuters not living at home. G5 also lists transportation $3,016. College Navigator (2024-25) showed out-of-state tuition and fees $17,548 and out-of-state off-campus total cost of attendance $36,964."
+  }
+}

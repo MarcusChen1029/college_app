@@ -1,0 +1,75 @@
+{
+  "slug": "bowling-green",
+  "name": "Bowling Green State University (Main Campus)",
+  "short_name": "BGSU",
+  "state_region": "OH",
+  "city": "Bowling Green",
+  "latitude": 41.375513,
+  "longitude": -83.640896,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.bgsu.edu",
+  "admissions_url": "https://www.bgsu.edu/admissions.html",
+  "ipeds_unit_id": 201441,
+  "undergrad_enrollment": 14783,
+  "intl_undergrads": 379,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via NCES College Navigator, fall 2024 admissions and enrollment (BGSU Main Campus)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=201441",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=201441",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 21153,
+    "pct_submit_sat": 21,
+    "pct_submit_act": 61,
+    "notes": "Baseline from IPEDS (fall 2024 entering class) via College Navigator: 21,153 applicants, 81% admitted (80% of men, 82% of women), 21% of admitted enrolled. College Navigator gives only rounded percentages, so the admit count is left null. BGSU's Common Data Set is published only as an embedded Tableau dashboard that could not be read as text, so international applicant/admit counts, GPA and SAT total are not available. SAT/ACT percentiles are for enrolled first-time students; 21% submitted SAT, 61% ACT. Undergraduate enrollment is fall 2024 (14,783)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      560,
+      610
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "College Navigator (fall 2024): SAT/ACT not required, but considered if submitted (test optional)."
+  }
+}

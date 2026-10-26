@@ -1,0 +1,122 @@
+{
+  "slug": "northern-kentucky",
+  "name": "Northern Kentucky University",
+  "short_name": "NKU",
+  "state_region": "KY",
+  "city": "Highland Heights",
+  "latitude": 39.029714,
+  "longitude": -84.463483,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.nku.edu",
+  "admissions_url": "https://www.nku.edu/admissions-aid/index.html",
+  "ipeds_unit_id": 157447,
+  "undergrad_enrollment": 9927,
+  "intl_undergrads": 349,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Northern Kentucky University Common Data Set 2023-2024 (PDF)",
+      "url": "https://www.nku.edu/institutional-research/reports/_documents/CDS_2023-2024_Northern-Kentucky-University.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=157447",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 9674,
+    "admits": 6073,
+    "enrolled": 1295,
+    "in_state_applicants": 4519,
+    "in_state_admits": 3330,
+    "out_state_applicants": 3524,
+    "out_state_admits": 2441,
+    "intl_applicants": 1625,
+    "intl_admits": 299,
+    "pct_submit_sat": 5,
+    "pct_submit_act": 79,
+    "gpa_avg": 3.39,
+    "pct_reporting_gpa": 97.22,
+    "gpa_distribution": {
+      "4.0": 6.04,
+      "3.75-3.99": 23.99,
+      "3.50-3.74": 18.9,
+      "3.25-3.49": 17.24,
+      "3.00-3.24": 13.82,
+      "2.50-2.99": 14.93,
+      "2.0-2.49": 4.92,
+      "1.0-1.99": 0.16
+    },
+    "notes": "Fall 2023 entering class (C1, C9, C11, C12). NKU's 2024-2025 CDS PDF on its site is an unfilled template and no 2025-2026 CDS is posted, so 2023-2024 is the latest usable one. International first-year applicants 1,625, admitted 299, enrolled 12 (C1 residency table); a further 6 applicants of unknown residency (3 admitted) are not in the in-state/out-of-state/international columns. No waitlist."
+  },
+  "scores": {
+    "SAT_ERW": [
+      457.5,
+      515,
+      572.5
+    ],
+    "SAT_MATH": [
+      457.5,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS 2023-2024 C8F: ACT/SAT required for any student under 21 with a high school GPA below 2.75 seeking a degree program; students with 2.75+ applying to select programs may be required to submit scores."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "intl_need_aid_awarded": 298,
+    "intl_avg_award_usd": 15100,
+    "notes": "CDS 2023-2024 H6: 298 undergraduate degree-seeking nonresidents received institutional aid, average $15,100 (total $4,499,790); the CDS does not say whether it was need- or non-need-based. CDS G1 tuition fields were not readable; tuition and fees come from NKU's international costs page."
+  }
+}

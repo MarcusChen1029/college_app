@@ -1,0 +1,127 @@
+{
+  "slug": "nebraska-kearney",
+  "name": "University of Nebraska at Kearney",
+  "short_name": "UNK",
+  "state_region": "NE",
+  "city": "Kearney",
+  "latitude": 40.701452,
+  "longitude": -99.098699,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.unk.edu",
+  "admissions_url": "https://www.unk.edu/admissions/",
+  "ipeds_unit_id": 181215,
+  "undergrad_enrollment": 4056,
+  "intl_undergrads": 240,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Nebraska at Kearney Common Data Set 2025-2026 (PDF; page headers print 2024-2025 but items ask for fall 2025 data)",
+      "url": "https://www.unk.edu/factbook/_files/cds-2025-26-pdf_final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 5226,
+    "admits": 4479,
+    "enrolled": 803,
+    "in_state_applicants": 4653,
+    "in_state_admits": 4075,
+    "out_state_applicants": 320,
+    "out_state_admits": 254,
+    "intl_applicants": 253,
+    "intl_admits": 150,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 90,
+    "gpa_avg": 3.52,
+    "pct_reporting_gpa": 91.41,
+    "gpa_distribution": {
+      "4.0": 17.03,
+      "3.75-3.99": 30.11,
+      "3.50-3.74": 15.53,
+      "3.25-3.49": 10.63,
+      "3.00-3.24": 11.04,
+      "2.50-2.99": 10.63,
+      "2.0-2.49": 4.22,
+      "1.0-1.99": 0.68
+    },
+    "notes": "CDS C1 (fall 2025 entering class). International applicants were admitted at a much lower rate (150 of 253, 59%) than in-state (87.6%) or out-of-state (79.4%) applicants; international enrollees: 28. Only 28 students submitted SAT scores (3%) and 723 submitted ACT (90%), so SAT percentiles rest on a very small sample. No early decision or early action, no waitlist. Undergrad count and intl_undergrads are the B1 totals (4,056 undergraduates, 240 nonresidents). The posted PDF looks like a working copy (placeholder text in the respondent block and 2024-2025 page headers) although its items are for fall 2025."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      903,
+      1010,
+      1158
+    ],
+    "SAT_ERW": [
+      470,
+      520,
+      560
+    ],
+    "SAT_MATH": [
+      430,
+      505,
+      593
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "I",
+    "essay": "NC",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027): SAT/ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 7320,
+    "tuition_out_of_state_usd": 15990,
+    "tuition_intl_usd": 15990,
+    "required_fees_usd": 2153,
+    "room_board_usd": 12294,
+    "books_usd": 798,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 63,
+    "intl_avg_award_usd": 4301,
+    "notes": "CDS G1 first-year figures: in-state tuition $7,320, nonresident tuition $15,990 ($533 x 30 credits), required fees $2,153, food and housing $12,294; G5 books $798. The CDS box says 2026-27 costs were not yet final when it was completed, so the in-state tuition, fees and books may be 2025-26 values; the nonresident rate and housing match the UNK 2026-27 international cost page. CDS H6: only institutional non-need-based aid is available to nonresidents; 63 nonresident undergraduates received it (average $4,301)."
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "NSU - International Undergraduate Admission (deadlines, English proficiency, 2026-27 cost estimate)",
+      "url": "https://offices.nsuok.edu/international/UndergraduateAdmission.aspx",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "NSU - Admission Requirements (first-time freshmen)",
+      "url": "https://offices.nsuok.edu/admissions/Admission/Requirements.aspx",
+      "accessed": "2026-10-26"
+    },
+    "ftf": {
+      "kind": "admissions_site",
+      "title": "NSU - First-Time Freshman Admission Information",
+      "url": "https://offices.nsuok.edu/admissions/Admission/FirstTimeFreshmen.aspx",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "NSU - International Student Scholarships and non-resident tuition waiver",
+      "url": "https://scholarships.nsuok.edu/InternationalStudents.aspx",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "recommended",
+    "notes": "The Admission Requirements page lists three routes (any one is enough): 2.70 four-year GPA with upper-50% class rank, 2.7 GPA in the 15 required courses, or ACT 20+ (or an SAT equivalent from a concordance table), and says applicants should have taken the ACT or a similar test. An older admissions FAQ mentions a test-optional pilot for students with a 2.7 GPA; scholarships still need scores. The international admissions page does not mention SAT/ACT.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 25,
+    "fee_waiver": false,
+    "notes": "Online NSU application; $25 non-refundable fee, no fee waivers. International applicants send sealed official transcripts (at least 3 years of high school, with a 4.0-scale GPA) to the Office of International Programs and must show funds for the first year before an I-20/DS-2019 is issued (financial statement form, documents dated within 3 months). College credit earned outside the U.S. needs a WES or ECE course-by-course evaluation to transfer. Required high school units: 15 (4 English, 3 lab science, 3 math, 3 history/citizenship, 2 other).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International application deadline, fall semester (fall 2027 entry)",
+      "notes": "Admission Deadlines on the international page: Fall July 1, Spring Nov. 1; no summer or other international-specific date. The page prints no year, so fall 2027 is assumed.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-07-01",
+      "label": "International incoming-student scholarship deadline, fall (fall 2027)",
+      "notes": "Presidential (3.75 GPA), Academic Excellence (3.0) and International Freshmen (2.75) scholarships; fall deadline July 1, spring Nov. 1; applications go to international@nsuok.edu.",
+      "src": "schol"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-08-01",
+      "label": "Non-resident 50% tuition waiver, fall 2027 starters",
+      "notes": "Summer starters June 1, fall starters Aug. 1 (Spring 2027 starters Jan. 1). Incoming freshmen need a 3.0 minimum GPA and must live on campus (exceptions for legacy students).",
+      "src": "schol"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "General Foundation Scholarship final deadline (new international students, 2027-2028)",
+      "notes": "Priority College Committee deadline March 1, 2027; final General Committee deadline May 1, 2027.",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "One of TOEFL, IELTS, PTE Academic or iTEP Academic is required for international applicants; applicants with more than 24 credit hours at a U.S. university are exempt. The page mentions no Duolingo or Cambridge option, no conditional admission and no ESL pathway.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Institution code 6485. The page does not give the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "notes": "PTE Academic. iTEP Academic 3.5 is also accepted (no separate field here).",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_out_of_state_usd": 18368,
+    "tuition_intl_usd": 18368,
+    "intl_extra_fees_usd": 300,
+    "room_board_usd": 9020,
+    "books_usd": 800,
+    "total_coa_usd": 29538,
+    "notes": "NSU's 2026-27 F-1/J-1 estimate: tuition and fees (out-of-state, 30 credit hours) $18,367.50, international fees $300 (plus a one-time $50 orientation fee), health insurance about $1,000, books $800, housing and food $9,020; estimated total $29,537.50 (rounded to dollars here; the total includes the insurance and one-time fee). Non-resident tuition is $334.25 per undergraduate credit hour. The in-state rate is not on the pages read (College Navigator 2024-25: $7,810 in-state, $17,290 out-of-state).",
+    "src": "intl"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "One-year international scholarships by GPA: Presidential (3.75) $2,000-$5,000, Academic Excellence (3.0) $1,000-$2,000, International Freshmen (2.75) $500-$1,000; applicants need a 2.75 GPA and full degree-program admission. A non-resident 50% tuition waiver (half of the $334.25 per-credit non-resident tuition) requires a 3.0 GPA for freshmen and living on campus. The 2024-2025 CDS (H6) reports no institutional aid awarded to nonresidents that year (0 recipients), so published awards are competitive and not guaranteed.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The international admissions page does not print an SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages read; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6485",
+      "note": "NSU TOEFL institution code; official report can also be mailed to 600 N Grand Avenue, Tahlequah, OK 74464.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Duolingo is not listed as an accepted test on the page read.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

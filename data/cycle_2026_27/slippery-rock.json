@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "SRU - International Admissions (undergraduate requirements, dates and deadlines)",
+   "url": "https://www.sru.edu/admissions/international-admissions",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "SRU - First-Year Student Admission Requirements",
+   "url": "https://www.sru.edu/admissions/first-year-students/first-year-student-admission-requirements",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "SRU Academic Catalog 2026-2027 - First-Year Applicants",
+   "url": "https://catalog.sru.edu/undergraduate/admission/first-year-applicants/",
+   "accessed": "2026-10-26"
+  },
+  "icost": {
+   "kind": "financial_aid_site",
+   "title": "SRU - International Costs and Scholarships",
+   "url": "https://www.sru.edu/admissions/international-admissions/international-costs-and-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "matrix": {
+   "kind": "financial_aid_site",
+   "title": "SRU - International student estimated cost of attendance 2026-2027 (PDF)",
+   "url": "https://www.sru.edu/documents/admissions/international/Estimated%20Cost%20Matrix%20Degree%2C%20Non%20%26%20Post-Bac%202026-27.pdf",
+   "accessed": "2026-10-26"
+  },
+  "fyhome": {
+   "kind": "admissions_site",
+   "title": "SRU - First-Year Students (SAT/ACT codes)",
+   "url": "https://www.sru.edu/admissions/first-year-students",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SRU is test optional through 2028: ACT/SAT scores are not required, but students may submit them. Students applying to a LECOM pre-professional advising area must submit SAT or ACT scores to LECOM. Students with a 3.25 or higher cumulative core-course GPA are automatically admitted.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "International freshmen apply on SRU's online application ($30, non-refundable), then submit official English-translated secondary records (subjects and marks, certificates, exam results), TOEFL/IELTS/Duolingo (or other listed proof) if not a native English speaker, and a passport photo-page copy. Financial verification is required for the I-20/DS-2019 but is not used to judge admission. Not approved for F-1/J-1 (SEVP): Nursing BSN, Nursing 1+2+1, RN to BSN, Aviation, Construction Management, Electrical and Computer Engineering, Commercial Music. First-year students are required to live on campus. The domestic first-year page says students with a 3.25+ core GPA are automatically admitted and others are reviewed individually (possible waitlist). No essay or recommendation is listed.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International fall admission date (fall 2027 entry)",
+   "notes": "The international admissions page lists 'Fall Admission: May 1' (spring: Oct. 1) without a year; taken as fall 2027. The catalog says first-year students are admitted on a rolling basis for all terms and should apply early. Admission offers not confirmed with a deposit may be rescinded after May 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All non-native speakers of English must submit an official score report. The page directs exemption questions to international.admissions@sru.edu; the transfer and post-baccalaureate sections say the requirement may be waived with a C or better in College Writing (or equivalent) from a regionally accredited U.S. institution. Also accepted: ELS Schools score report of 112 or higher, or STEP Eiken Grade 2A. The page describes no ESL or conditional-admission pathway.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 62,
+   "notes": "Also accepts 500 on the paper test or 173 on the computer-based test. SRU TOEFL code 2658.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "The page says 'New TOEFL iBT minimum score 4.0 or higher'; it does not name the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall band 6.0 or above.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Only scores of 95 and above are accepted.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "src": "matrix",
+  "tuition_out_of_state_usd": 16500,
+  "tuition_intl_usd": 12504,
+  "required_fees_usd": 3271,
+  "room_board_usd": 10900,
+  "books_usd": 800,
+  "other_usd": 1700,
+  "total_coa_usd": 29265,
+  "notes": "International cost matrix 2026-27 (bachelor's degree, 15 credits, average on-campus room and meals): tuition $12,504 (SRU gives international students a reduced out-of-state rate, about $3,996 below the full non-Pennsylvania rate of $16,500; the international page says about $3,500), fees $3,271, room and meal $10,900, enrollment deposit $90, books $800, personal $1,700 = $29,265; the $1,500 Provost Scholarship brings the I-20 financial verification amount to $27,765. The 2027-28 estimate is $26,934."
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for Title IV funds. All new undergraduate international students receive a non-need-based tuition reduction (about $3,500 per the international page, about $3,996 per the cost matrix) and the $1,500 Provost Scholarship for Global Diversity & Academic Achievement is awarded on admission with no extra application (renewal needs a 3.0 GPA; the reduced tuition needs a 2.5 GPA). A $500 Presidential Award follows after the first year or semester with a 3.5 cumulative GPA. Need-based institutional aid for internationals is not described.",
+  "src": "icost"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN and Nursing 1+2+1)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Competitive and space-limited; BSN needs a 3.7 GPA (Nursing 1+2+1 a 3.6) with a Nov. 1 priority date. SRU cannot issue an I-20 or DS-2019 for Nursing, so students needing a student visa cannot enroll in it."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2658",
+   "note": "SRU SAT code (test-optional).",
+   "src": "fyhome"
+  },
+  "act": {
+   "code": "3716",
+   "note": "SRU ACT code (test-optional).",
+   "src": "fyhome"
+  },
+  "toefl": {
+   "code": "2658",
+   "note": "SRU TOEFL institution code.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as an accepted English test on the international page.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

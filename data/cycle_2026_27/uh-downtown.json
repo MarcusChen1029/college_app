@@ -1,0 +1,122 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UHD - International admissions (deadlines, fee, documents, English proficiency)",
+   "url": "https://www.uhd.edu/admissions/international/index.html",
+   "accessed": "2026-10-26"
+  },
+  "lang": {
+   "kind": "admissions_site",
+   "title": "UHD - International admissions: language proficiency",
+   "url": "https://www.uhd.edu/admissions/international/international-language.aspx",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "UHD - Freshman admissions (requirements, test-optional)",
+   "url": "https://www.uhd.edu/admissions/freshman/index.html",
+   "accessed": "2026-10-26"
+  },
+  "waiver": {
+   "kind": "financial_aid_site",
+   "title": "UHD - Competitive Scholarship Tuition Waiver requirements",
+   "url": "https://www.uhd.edu/financial/scholarships/competitive-scholarship-tuition-waiver.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "UHD is test-optional for freshmen, domestic and international: choose on the application to be reviewed with or without SAT/ACT scores (the international page offers an Admissions Application Update Form to request test-optional status). Guaranteed admission for top-quarter class rank; second quarter needs SAT 930 or 2.5 GPA; lower ranks need SAT 930 and 2.5 GPA (ACT 18 equivalent). Applicants without scores still need official scores for TSI placement and scholarships.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 80,
+  "notes": "Apply through UHD's own 'UHD Direct' freshman application (connect.uhd.edu); the pages do not mention ApplyTexas or the Common App. International fee is $80 non-refundable (the domestic freshman fee is $50). Required: official transcript evaluation of secondary school scores with mark sheets and graduation date (certified English translation if needed) and either SAT/ACT scores or the test-optional request. International applicants also need an Affidavit of Support and a certified sponsor bank letter showing at least $35,000 issued within the past three months.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "International freshman application deadline, fall 2027",
+   "notes": "International page: freshman and freshman-transfer deadline June 1, 2027 (spring: Oct. 30, 2026; summer: April 2, 2027). The domestic freshman page lists a later fall priority date of Aug. 6, 2027; use the June 1 international date. CDS C14 also gives a fall closing date of 6/1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: graduates of secondary schools in Australia, the Bahamas, Belize, the British Islands, Ghana, Jamaica, Liberia, New Zealand, Sierra Leone, South Africa, Trinidad, the United States, the Virgin Islands, the West Indies and Zimbabwe. Transfer students are exempt with 12+ U.S. college-level hours including Composition I and II with a C or better. The pages mention no conditional admission and no ESL program.",
+  "src": "lang"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Paper-based 550 or computer-based 213 also listed. The pages do not mention the new 1-6 TOEFL scale.",
+   "src": "lang"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Academic IELTS.",
+   "src": "lang"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "The international admissions pages list no scholarships for international students. UHD's Competitive Scholarship Tuition Waiver can reduce non-resident and international tuition for students holding a competitive scholarship of at least $1,000 per term from a college or department scholarship committee. The CDS nonresident-aid section (H6) could not be read from the PDF text.",
+  "src": "waiver"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the international pages; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the international pages; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "6922",
+   "note": "UHD school code for TOEFL.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "lang"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Duolingo is not listed as an accepted test on the pages read.",
+   "src": "lang"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as an accepted test on the pages read.",
+   "src": "lang"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

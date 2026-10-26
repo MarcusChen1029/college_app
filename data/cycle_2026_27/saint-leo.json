@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Saint Leo University - First-Time Students (University Campus admission)",
+   "url": "https://www.saintleo.edu/admissions/first-time-students",
+   "accessed": "2026-10-26"
+  },
+  "tos": {
+   "kind": "admissions_site",
+   "title": "Saint Leo University - Test-Optional Policy",
+   "url": "https://www.saintleo.edu/admissions/test-optional-policy",
+   "accessed": "2026-10-26"
+  },
+  "docs": {
+   "kind": "admissions_site",
+   "title": "Saint Leo University - Application Documents (campus and international applicants)",
+   "url": "https://www.saintleo.edu/admissions/application-documents",
+   "accessed": "2026-10-26"
+  },
+  "adm": {
+   "kind": "admissions_site",
+   "title": "Saint Leo University - Admissions (rolling admission)",
+   "url": "https://www.saintleo.edu/admissions",
+   "accessed": "2026-10-26"
+  },
+  "cge": {
+   "kind": "admissions_site",
+   "title": "Saint Leo University - Center for Global Engagement: international admission requirements, Bridge Pathway",
+   "url": "https://www.saintleo.edu/international/cge",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Saint Leo University - University Campus Grants and Scholarships (2026-2027)",
+   "url": "https://www.saintleo.edu/tuition-financial-aid/aid/grants-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "dep": {
+   "kind": "admissions_site",
+   "title": "Saint Leo University - Admitted Students (enrollment deposit)",
+   "url": "https://www.saintleo.edu/admissions/admitted-students",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "Saint Leo University - Bachelor of Science in Nursing (campus)",
+   "url": "https://www.saintleo.edu/programs/health-professions-degrees/bachelors-degree-nursing",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional since 2018: applicants who do not submit SAT/ACT get full consideration without penalty under the Test-Optional Policy (grades in core classes and course rigor drive the decision). The international requirements page states no ACT/SAT is required.",
+  "src": "tos"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "supplemental_essays": "Essay optional.",
+  "notes": "Data is for University Campus (residential) first-time students, not the online/WorldWide programs. Apply with the Saint Leo application or the Common App (opens Aug 1). Official high school transcript required; letter of recommendation optional for first-time students. International applicants add a passport copy, a Certificate of Finance form plus a bank statement or other proof of finance (within 6 months) for the I-20, English proficiency documentation, and may be asked for a resume and a recommendation/statement of purpose for holistic review. Minimum GPA 2.0/4.0 for international undergraduates (borderline cases reviewed holistically). Application fee is not stated on the pages reviewed. Enrollment deposit is a nonrefundable $500.",
+  "src": "docs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Rolling admission: no application deadline published (fall 2027)",
+   "notes": "Saint Leo evaluates applications on a rolling basis and publishes no fixed freshman or international deadline or priority date; the Common App for the next cycle opens Aug 1. Apply early enough for the I-20 and visa.",
+   "src": "adm"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "A Medium of Instruction (MOI) letter is accepted, and applicants from a published list of English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Kenya) are exempt from testing. Applicants scoring in the Bridge Pathway range (IELTS 5.5-6.0, TOEFL 59-70, Duolingo 90-104, PTE 50-58) are still admitted to a degree program and take extra English support in the Bridge Program (first semester: 9 general education credits and 6 elective credits).",
+  "src": "cge"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Direct admission minimum; Bridge Pathway 59-70. The page says TOEFL iBT uses 'the new band-score system (0-120 scale)'; MyBest scores accepted. A 1-6 scale minimum is not published.",
+   "src": "cge"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Direct admission; a minimum writing sub-score applies. Bridge Pathway 5.5-6.0.",
+   "src": "cge"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Direct admission; Bridge Pathway 90-104.",
+   "src": "cge"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "notes": "Direct admission; Bridge Pathway 50-58.",
+   "src": "cge"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for U.S. federal aid; the international page points to merit and university scholarships (ask the admissions counselor) and outside funding. The 2026-27 first-year University Campus awards are listed as 'up to' $24,000 (Presidential), $21,000 (Dean's), $20,000 (Excellence), $18,000 (University) and $15,000 (Campus); the page does not say how they are awarded to international students (the Catholic Promise and Local Promise awards require U.S. citizenship or Florida residency). Students become eligible to apply for Saint Leo grants and scholarships after paying the $500 deposit.",
+  "src": "sch"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN (campus)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Freshmen are admitted into the BSN major, but progression to junior-level nursing courses is competitive (NursingCAS application in sophomore year, cumulative college GPA 3.30+, TEAS composite 72+). Admission does not guarantee progression."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5638",
+   "note": "Saint Leo SAT code.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "0755",
+   "note": "Saint Leo ACT code.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The pages reviewed list no TOEFL institution code; confirm with admissions before sending.",
+   "src": "cge"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "cge"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "cge"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "cge"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

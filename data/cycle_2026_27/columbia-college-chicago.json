@@ -1,0 +1,214 @@
+{
+ "sources": {
+  "frosh": {
+   "kind": "admissions_site",
+   "title": "Columbia College Chicago - Freshman requirements and deadlines",
+   "url": "https://www.colum.edu/admissions/requirements/freshman",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Columbia College Chicago - International undergraduate students",
+   "url": "https://www.colum.edu/admissions/requirements/international",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Columbia College Chicago - English language proficiency",
+   "url": "https://www.colum.edu/admissions/requirements/english-language",
+   "accessed": "2026-10-26"
+  },
+  "time": {
+   "kind": "admissions_site",
+   "title": "Columbia College Chicago - Undergraduate admissions timeline and dates (spring and fall 2027)",
+   "url": "https://www.colum.edu/admissions/additional-information/timeline/",
+   "accessed": "2026-10-26"
+  },
+  "port": {
+   "kind": "admissions_site",
+   "title": "Columbia College Chicago - Portfolio and audition submission requirements",
+   "url": "https://www.colum.edu/portfolio",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Columbia College Chicago - Tuition and fees 2026-27 (undergraduate)",
+   "url": "https://www.colum.edu/student-financial-services/where-to-start/tuition-fees/2026-27-undergradnew",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "Columbia's admissions process is entirely test-free: standardized test scores play no role in admission or merit scholarships. AP/IB results can be sent after admission for credit (AP 3+, IB 4+).",
+  "src": "frosh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Short personal statement (writing sample) about your goals at Columbia, submitted inside the application; Creative Writing and some other majors add their own written samples.",
+  "portfolio": "BFA and BMus applicants must submit a portfolio, audition and/or interview for their intended major (deadlines vary by program). It is not required for BA or BS applicants, but it is the only way to be considered for a talent-based scholarship. AI-generated work should not be submitted unless its use is disclosed.",
+  "notes": "No application fee. Required: official secondary transcripts (international records with official English translation; a third-party evaluation is needed only for non-US college credit), English proficiency evidence if English is not your country's primary language, and the writing sample. Interior Architecture BFA needs a 2.75 high school GPA. Proof of funds of at least $64,453 for 2026-27 is needed for the I-20. The international page still carries an old 'Fall 2020 application is now closed' banner.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-01",
+   "label": "Priority application deadline, all programs and terms (fall 2027 entry)",
+   "notes": "Applications are reviewed on a rolling basis with decisions typically within three weeks; applications continue to be accepted after Nov. 1. No early decision or early action. Portfolio/audition uploads are also due Nov. 1 for priority. The page lists no separate international dates.",
+   "src": "time"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "label": "Final deadline: Acting (BFA), Comedy Writing and Performance (BFA), Fashion Design (BFA), Musical Theatre (BFA), Performance and Songwriting (BMus)",
+   "notes": "Applications, transcripts and pre-screen audition/portfolio materials are due Dec. 1, 2026 for these programs and are not accepted afterwards. Film and Television (BFA) has a Dec. 1 priority review date (applications are still accepted later).",
+   "src": "time"
+  },
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-01-15",
+   "label": "Application, transcripts and audition/portfolio materials for priority admission and scholarship review (all other programs)",
+   "notes": "Rolling review continues after this date. The 2025-26 CDS (C14) lists Aug. 1 as the fall application closing date; the current timeline page does not restate a closing date.",
+   "src": "time"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Tuition deposit ($250) deadline for fall 2027",
+   "notes": "Nonrefundable after May 1.",
+   "src": "time"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if English is not your country's primary language. Alternatives to a test: a transcript from a US or English-medium high school with at least three years of passing grades; two semesters of US college English Composition with C or better; IB Diploma or IB English Language and Literature 5+; Cambridge A-Level English grade C+; AP English Language 4+; HKDSE English 5+; EF SET 51-60; ELS level 112; Kaplan Advanced completion; or an ESL course at a preferred partner institution. Citizens of Australia, Canada, New Zealand, UK, Ghana and Singapore need no proof. The requirement cannot be waived for US residence or employment alone.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "rec": 80,
+   "notes": "Recommended iBT score 80 or higher (550 on the paper test). No hard minimum is stated. The new 1-6 scale is not listed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 60,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency with a Cambridge English score of 176 or above.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International students are automatically considered for the renewable Columbia Excellence Award by high school GPA: 3.75+ $12,500; 3.30-3.74 $10,500; 3.00-3.29 $8,500 (amounts as printed on the international page). A competitive, renewable talent-based scholarship (up to four years) needs creative work samples in the intended major. The FAFSA is US citizens and permanent residents only. CDS H6 marks both need-based and non-need-based institutional aid as available to nonresidents, but the international page describes only merit and talent awards.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Film and Television (BFA)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Portfolio required for BFA; Dec. 1, 2026 priority review date."
+  },
+  {
+   "program": "Acting for Stage and Screen, Musical Theatre, Comedy Writing and Performance (BFA)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Pre-screen materials then an audition/interview for selected applicants; Dec. 1, 2026 final deadline."
+  },
+  {
+   "program": "Fashion Design (BFA)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Portfolio required; Dec. 1, 2026 final deadline."
+  },
+  {
+   "program": "Interior Architecture (BFA)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Minimum 2.75 high school GPA for freshman applicants."
+  },
+  {
+   "program": "Arts and Entertainment Management (BA)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "BA applicants submit a roughly 500-word essay on why they want to study business and management in the arts and media; a portfolio is not required."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "Columbia is test-free; SAT scores are not used for admission or scholarships.",
+   "src": "frosh"
+  },
+  "act": {
+   "code": null,
+   "note": "Columbia is test-free; ACT scores are not used for admission or scholarships.",
+   "src": "frosh"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed on the English proficiency page.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "arts_design": "Editorial estimate: a large urban arts and media college with well-known film, audio, fashion and performance programs; no ranking cited, so placed in the 41-100 band."
+ }
+}

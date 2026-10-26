@@ -1,0 +1,138 @@
+{
+  "slug": "southeastern-louisiana",
+  "name": "Southeastern Louisiana University",
+  "short_name": "Southeastern",
+  "state_region": "LA",
+  "city": "Hammond",
+  "latitude": 30.514652,
+  "longitude": -90.468676,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.southeastern.edu",
+  "admissions_url": "https://www.southeastern.edu/apply/",
+  "ipeds_unit_id": 160612,
+  "undergrad_enrollment": 14294,
+  "intl_undergrads": 266,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Southeastern Louisiana University Common Data Set 2025, Section C: First-time First-year Admissions (PDF; Fall 2025 data, 2025-2026 edition)",
+      "url": "https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-C-First-time-First-year-Admissions.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_b": {
+      "kind": "cds",
+      "title": "Southeastern Louisiana University Common Data Set 2025, Section B: Enrollment and Persistence (PDF)",
+      "url": "https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-B-Enrollment-and-Persistence.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_g": {
+      "kind": "cds",
+      "title": "Southeastern Louisiana University Common Data Set 2025, Section G: Annual Expense (PDF; 2025-2026 costs, 2026-27 not yet published)",
+      "url": "https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-G-Annual-Expense.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_h": {
+      "kind": "cds",
+      "title": "Southeastern Louisiana University Common Data Set 2025, Section H: Financial Aid (PDF)",
+      "url": "https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-H-Financial-Aid.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds_i": {
+      "kind": "cds",
+      "title": "Southeastern Louisiana University Common Data Set 2025, Section I: Instructional Faculty and Class Size (PDF)",
+      "url": "https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-I-Instructional-Faculty.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6790,
+    "admits": 6213,
+    "enrolled": 2359,
+    "in_state_applicants": 6291,
+    "in_state_admits": 5746,
+    "out_state_applicants": 177,
+    "out_state_admits": 165,
+    "intl_applicants": 308,
+    "intl_admits": 288,
+    "pct_submit_act": 96,
+    "gpa_avg": 3.46,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 5.4,
+      "3.75-3.99": 22.5,
+      "3.50-3.74": 24.5,
+      "3.25-3.49": 21.7,
+      "3.00-3.24": 12.8,
+      "2.50-2.99": 10.7,
+      "2.0-2.49": 2.2,
+      "1.0-1.99": 0.2
+    },
+    "notes": "CDS C1 (Fall 2025): 6,790 applied, 6,213 admitted (91%); international 308 applied, 288 admitted (94%), 26 enrolled. 14 applicants of unknown residency (all admitted) are in the totals only. Enrolled 2,359 is the C1 first-time first-year count (full- and part-time); CDS B1/B2 shows 2,436 degree-seeking first-time first-years, so treat enrollment as approximate. 96% of enrolled first-years submitted ACT scores (1,712); SAT scores are not reported in C9. No waitlist, no early decision/action; CDS C14 gives a Jan. 15 priority date and Aug. 1 closing date. Undergraduate enrollment is the B1 total (14,294 incl. non-degree-seeking; 9,795 degree-seeking); nonresidents 266 (B2)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      20,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      20,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      18,
+      20,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "recommended",
+    "notes": "CDS C8A (Fall 2026): Southeastern uses SAT/ACT in admission decisions; the 'SAT or ACT' and 'ACT only' rows are checked 'Recommended' and 'SAT only' is 'Not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds_g",
+    "tuition_usd": 5777,
+    "tuition_out_of_state_usd": 18255,
+    "required_fees_usd": 3266,
+    "room_board_usd": 10200,
+    "books_usd": 1386,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 229,
+    "intl_avg_award_usd": 15939,
+    "notes": "CDS G1 first-year figures for 2025-2026 (the 2026-27 figures are not yet published): in-state tuition $5,777, nonresident alien tuition $18,255 ($897 per credit hour), required fees $3,266, on-campus food and housing $10,200. CDS H6 (2024-25): 229 degree-seeking nonresident aliens received institutional non-need-based aid (average $15,939, total $3,649,929)."
+  }
+}

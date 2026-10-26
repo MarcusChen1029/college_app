@@ -1,0 +1,148 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UNC Pembroke - Freshman Admissions Process (deadlines, requirements)",
+   "url": "https://www.uncp.edu/admissions/how-to-apply/freshmen.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UNC Pembroke - International Students (how to apply, deadlines, scholarships)",
+   "url": "https://uncp.edu/admissions/how-to-apply/international-students.html",
+   "accessed": "2026-10-26"
+  },
+  "eli": {
+   "kind": "admissions_site",
+   "title": "UNC Pembroke - English Language Institute (English proficiency admission requirements)",
+   "url": "https://uncp.edu/departments/global-engagement/english-language-institute",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "UNC Pembroke - Nursing: Prelicensure (BSN)",
+   "url": "https://www.uncp.edu/academics/all-majors-and-minors/nursing-pre-licensure.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not needed for most applicants. Students with a weighted high school GPA of 2.50-2.79 must submit a score (ACT 17+ or SAT 930+ per the CDS); the minimum weighted GPA is 2.5. International pages say applicants 'may be required' to submit English-proficiency and test scores.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 55,
+  "notes": "Apply through the UNCP application, CFNC or the Common App (a UNCP account is still needed). International first-year applicants also send an English translation of the official high school transcript and proof of financial support for the I-20; the international page does not state a different fee. Minimum course units follow UNC System rules (4 English, 4 math, 3 science, 2 social studies incl. US history).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "label": "Early Action (fall 2027 entry)",
+   "notes": "Early admission and merit scholarship consideration; same dates on the freshman and international pages. Decisions are typically sent within two weeks of a complete file.",
+   "src": "intl"
+  },
+  {
+   "kind": "priority",
+   "due": "2027-02-01",
+   "label": "Priority admission (fall 2027 entry)",
+   "notes": "Priority consideration for admission, financial aid and the Maynor Honors College.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "Final application deadline (fall 2027 entry)",
+   "notes": "Rolling admission. The international page lists the same dates as the freshman table (no separate international column). Spring 2027: EA Oct 1, priority Nov 1, final Jan 1. The CDS also lists 8/1 as the closing date. The English Language Institute page separately lists June 17 (fall) and Nov 11 (spring) as priority dates for ELI applicants.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants who do not meet the English minimum can apply to the English Language Institute (ELI) and move into academic classes after finishing the program (conditional pathway). The pages do not list an exemption rule; a staging copy of the ELI page (snappy.uncp.edu, Nov 2024) showed older minimums TOEFL 68 / Duolingo 95.",
+  "src": "eli"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Undergraduate minimum from the English Language Institute page. The new 1-6 TOEFL scale is not mentioned.",
+   "src": "eli"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Undergraduate minimum overall.",
+   "src": "eli"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Undergraduate minimum.",
+   "src": "eli"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "F-1 students get no federal aid. Institutional scholarships are matched through the BraveAssist portal after a general application; Early Action (Dec 1 for fall) is the merit-scholarship consideration date. No international scholarship amounts are published; CDS H6: 66 nonresident undergraduates got institutional non-need-based aid, avg $6,293.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Nursing, prelicensure BSN",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Students enter UNCP, complete 58-62 hours of lower-division prerequisites, then apply for the upper-division nursing phase (junior year). Needs a 2.5 GPA on the prerequisite hours, TEAS and a supplemental application (Feb 15). Admission to UNCP does not guarantee admission to nursing.",
+   "src": "nurs"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5534",
+   "note": "UNCP code for SAT.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3138",
+   "note": "UNCP code for ACT.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5534",
+   "note": "UNCP code for TOEFL.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}
