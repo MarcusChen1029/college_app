@@ -6,11 +6,13 @@
   "scripts": {
     "build": "node build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node --test \"src/*.test.ts\" \"scripts/*.test.mjs\""
+    "test": "node --test \"src/**/*.test.ts\" \"scripts/*.test.mjs\""
   },
   "devDependencies": {
     "@types/chrome": "^0.1.0",
+    "@types/node": "^24.19.2",
     "esbuild": "^0.25.0",
+    "linkedom": "^0.18.14",
     "typescript": "^5.9.0"
   }
 }

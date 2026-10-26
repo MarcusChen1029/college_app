@@ -9,7 +9,7 @@ Pinned extension id: `omnpdpbgbbdbnnaimhppoclimbeeognl` (derived from the public
 ```bash
 cd extension
 npm install
-npm test            # node --test on src/*.test.ts and scripts/*.test.mjs
+npm test            # node --test on src/**/*.test.ts and scripts/*.test.mjs
 npx tsc --noEmit
 node build.mjs      # writes dist/ ; TRACKER_URL=https://your-tracker.example node build.mjs for a deployed tracker (default http://localhost:3000)
 node scripts/extension-id.mjs "<base64 key>"   # prints the id derived from a key
