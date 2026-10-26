@@ -36,6 +36,18 @@ export default function ToolsPage() {
         </Link>
       </section>
 
+      <section aria-labelledby="interests-heading" className={`${card} space-y-3`}>
+        <h2 id="interests-heading" className="text-xl font-bold">
+          Interest quiz
+        </h2>
+        <p className="text-sm text-zinc-600">
+          30 quick questions give you a three-letter Holland (RIASEC) code, matching careers from O*NET, and college programs worth a look.
+        </p>
+        <Link href="/tools/interests" className={buttonClass("primary")}>
+          Take the quiz
+        </Link>
+      </section>
+
       <section aria-labelledby="filler-heading" className={`${card} space-y-4`}>
         <div className="flex flex-wrap items-center gap-2">
           <h2 id="filler-heading" className="text-xl font-bold">
