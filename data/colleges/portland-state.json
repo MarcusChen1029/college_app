@@ -1,0 +1,48 @@
+{
+  "slug": "portland-state",
+  "name": "Portland State University",
+  "short_name": "PSU",
+  "state_region": "OR",
+  "city": "Portland",
+  "latitude": 45.511601,
+  "longitude": -122.686289,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.pdx.edu",
+  "admissions_url": "https://www.pdx.edu/admissions",
+  "ipeds_unit_id": 209807,
+  "undergrad_enrollment": 15426,
+  "intl_undergrads": null,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), as published in the Urban Institute Education Data Portal",
+      "url": "https://nces.ed.gov/collegenavigator/?id=209807",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "scorecard": {
+      "kind": "scorecard",
+      "title": "College Scorecard (admission rate, SAT midpoints, cost)",
+      "url": "https://collegescorecard.ed.gov/school/?209807",
+      "accessed": "2026-10-26"
+    },
+    "facts": {
+      "kind": "other",
+      "title": "Portland State University - Facts: PSU by the Numbers (fall 2025)",
+      "url": "https://www.pdx.edu/portland-state-university-facts",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 9077,
+    "admits": 8248,
+    "enrolled": 1502,
+    "notes": "Baseline from IPEDS (fall 2024 entering class). PSU's posted Common Data Set archive stops at 2022-23, so no CDS was used; GPA distribution, residency and international splits, and SAT/ACT percentiles are not loaded. College Scorecard lists only SAT midpoints (about 575 reading and 550 math). Undergraduate enrollment (15,426) and the 18:1 student-faculty ratio are from PSU's fall 2025 facts page, which says international students are 4% of all students (all levels); an undergraduate-only international count was not found."
+  }
+}

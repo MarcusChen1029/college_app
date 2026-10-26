@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Ole Miss - International Students (undergraduate application requirements, fee, English tests, Intensive English)",
+   "url": "https://olemiss.edu/admissions/undergraduate-admissions/application-process/international-students/",
+   "accessed": "2026-10-26"
+  },
+  "nf": {
+   "kind": "admissions_site",
+   "title": "Ole Miss Office of Global Engagement - New Freshman International Admissions (SAT/ACT by GPA, deadline FAQ)",
+   "url": "https://olemiss.edu/global/international-students-oge/international-student-admissions/new-freshman-international-student-admissions/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Ole Miss - English Proficiency Requirements",
+   "url": "https://olemiss.edu/global/international-students-oge/international-student-admissions/english-proficiency-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Ole Miss - Scholarships for international undergraduate students (International Academic Excellence)",
+   "url": "https://olemiss.edu/global/international-students-oge/scholarships-international-students/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Ole Miss - Cost of Attendance (Oxford, full-time undergraduate, campus housing)",
+   "url": "https://olemiss.edu/admissions/cost-of-attendance/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "flexible",
+  "notes": "Test requirement depends on US-scale GPA for internationals: 3.0-4.0 is admissible without SAT/ACT; 2.5-2.99 needs SAT 880+ or ACT 16+; 2.0-2.49 needs SAT 960+ or ACT 18+. Scores also raise scholarship awards.",
+  "src": "nf"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Apply with the UM application or the Common App; the $75 fee cannot be waived for international students. Transcript must cover at least 6 semesters and counts as official only if sent by the school or via Common App. Competitive programs (Honors College, Croft, Pharmacy, etc.) have separate applications.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-02-01",
+   "label": "Recommended international deadline, fall 2027 entry",
+   "notes": "Admission is rolling with decisions in a few weeks; Ole Miss recommends international students apply before Feb. 1 (fall) or Oct. 1 (spring) to leave time for the visa process. The page prints no year, so it is taken as the current cycle.",
+   "src": "nf"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: completed the Intensive English Program Advanced Plus level with a B or higher; 2+ years at and graduation from an accredited U.S. high school (domestic standards then apply); citizens of listed English-speaking countries. Scores must be under two years old. Conditional admission is possible below TOEFL 69 / IELTS 5.5 / PTE 47 (separate Intensive English application). Scores 69-78 TOEFL, 5.5 IELTS or 47-52 PTE may be admitted but must take IE 090/091 in the first term.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "each_section": 19
+   },
+   "notes": "Tests before Jan. 21, 2026; TOEFL MyBest accepted with the same minimums.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "subs": {
+    "each_section": 4
+   },
+   "notes": "Tests after Jan. 21, 2026 (1-6 scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "100-109 places into IE 090/091.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 169,
+   "subs": {
+    "each_section": 162
+   },
+   "notes": "B2 First, C1 Advanced or C2 Proficiency score of 169+, no part below 162.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "src": "coa",
+  "year": "2026-2027",
+  "tuition_usd": 10278,
+  "tuition_out_of_state_usd": 31068,
+  "tuition_intl_usd": 31068,
+  "required_fees_usd": 160,
+  "room_board_usd": 13610,
+  "books_usd": 1200,
+  "other_usd": 6900,
+  "total_coa_usd": 52938,
+  "notes": "Official COA page, full-time undergraduate: out-of-state tuition $31,068 (12 hours x $1,294.50 x 2 terms; in-state $10,278), capital improvements fee $100 and activity fee $60, housing estimate $8,030 (UM housing ranges $6,134-$16,000) and food $5,580, books $1,200, personal $3,500, travel $3,400 (other_usd = personal + travel); out-of-state total $52,938. International students pay the non-resident rate."
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International Academic Excellence scholarships are automatic on admission (no separate application), by US-scale GPA, for 4 years: Mississippi Premier $28,893/yr (3.9-4.0; max 20 awardees per country per year, in order of admission), Champion $12,000 (3.75-3.89), Magnolia $9,500 (3.5-3.74), Legacy $5,000 (3.25-3.49). Separate SAT/ACT scholarships (from $3,000 up to $15,000 at the 3.0-3.49 GPA tier, rising with score) cannot be stacked with them. Need-based aid for internationals is not mentioned.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1840",
+   "src": "sch"
+  },
+  "act": {
+   "code": null,
+   "note": "The international pages give school code 1840 (SAT and English tests); an ACT code is not listed there.",
+   "src": "sch"
+  },
+  "toefl": {
+   "code": "1840",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "Submit reports to study@olemiss.edu or directly to UM with code 1840.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Submit to study@olemiss.edu or directly to UM (code 1840).",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "Submit to study@olemiss.edu or directly to UM (code 1840).",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Accountancy is the best-known strength."
+ }
+}

@@ -1,0 +1,95 @@
+{
+  "slug": "ole-miss",
+  "name": "University of Mississippi",
+  "short_name": "Ole Miss",
+  "state_region": "MS",
+  "city": "University",
+  "latitude": 34.365529,
+  "longitude": -89.537434,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.olemiss.edu/",
+  "admissions_url": "https://olemiss.edu/admissions/",
+  "ipeds_unit_id": 176017,
+  "undergrad_enrollment": 22939,
+  "intl_undergrads": 287,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Mississippi Common Data Set 2025-2026 (PDF, UM_CDS_2025_2026.pdf)",
+      "url": "https://olemiss.box.com/s/6bzcp3bynrhjvncy710c5n4ia9206jd7",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - University of Mississippi (student-to-faculty ratio, calendar system, locale)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=176017",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 37621,
+    "admits": 36635,
+    "enrolled": 5458,
+    "in_state_applicants": 4307,
+    "in_state_admits": 4230,
+    "out_state_applicants": 32875,
+    "out_state_admits": 31976,
+    "intl_applicants": 439,
+    "intl_admits": 429,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 61,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 99.93,
+    "gpa_distribution": {
+      "4.0": 28.66,
+      "3.75-3.99": 18.32,
+      "3.50-3.74": 16.94,
+      "3.25-3.49": 13.79,
+      "3.00-3.24": 10.69,
+      "2.50-2.99": 10.19,
+      "2.0-2.49": 1.36,
+      "1.0-1.99": 0.06
+    },
+    "notes": "CDS C1 (fall 2025 entering class; the CDS office reports the Oxford and regional campuses together). International: 439 applied, 429 admitted. SAT scores were submitted by 27% (1,459) and ACT by 61% (3,341) of enrollees. Undergrad enrollment and nonresident count are the B1 'Total Undergraduates' column (22,939; nonresident 287). Student-to-faculty ratio 18:1 is from College Navigator. G1 (costs) was left blank in this CDS, so costs come from the admissions cost-of-attendance page."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      990,
+      1080,
+      1175
+    ],
+    "SAT_ERW": [
+      500,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      470,
+      530,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      25,
+      29
+    ],
+    "ACT_ENGLISH": [
+      20,
+      24,
+      29
+    ],
+    "ACT_MATH": [
+      19,
+      23,
+      27
+    ]
+  }
+}

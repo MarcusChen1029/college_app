@@ -1,0 +1,188 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "K-State Admissions - Detailed requirements for international students",
+      "url": "https://www.k-state.edu/admissions/undergrad/manhattan/apply/international/requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "K-State Admissions - English proficiency for international students",
+      "url": "https://www.k-state.edu/admissions/undergrad/manhattan/apply/international/english-proficiency.html",
+      "accessed": "2026-10-26"
+    },
+    "online": {
+      "kind": "admissions_site",
+      "title": "K-State Online - International Students (admission requirements, deadlines, application fee)",
+      "url": "https://online.k-state.edu/how-to-apply/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "wna": {
+      "kind": "financial_aid_site",
+      "title": "K-State Student Financial Assistance - Wildcat Nonresident Award",
+      "url": "https://www.k-state.edu/sfa/scholarships-aid/scholarships/future-students/wildcat-nonresident/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "K-State Student Financial Assistance - Future student scholarships and awards",
+      "url": "https://www.k-state.edu/sfa/scholarships-aid/scholarships/future-students/",
+      "accessed": "2026-10-26"
+    },
+    "file": {
+      "kind": "admissions_site",
+      "title": "K-State Admissions - Academic file completion (ACT/SAT codes)",
+      "url": "https://www.k-state.edu/admissions/undergrad/manhattan/enroll/academic-file/domestic/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT/SAT are not required for admission and are considered if submitted; the Wildcat Nonresident Award does not use scores. The College of Architecture, Planning and Design strongly encourages a score.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 80,
+    "notes": "Formula-style admission: international first-years need a high school curriculum from an accredited secondary school and a minimum 2.5 GPA on a 4.0 scale. $80 undergraduate international application fee is printed on the K-State Online international page (the Manhattan pages do not state one; the domestic CDS fee is $40). Final transcripts are needed on arrival if admitted in the final school year. Scholarship awards are automatic on admission; international students apply for the K-State Scholarship Network (KSN) by March 15.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-12-01",
+      "label": "Priority application date (fall 2027)",
+      "notes": "From CDS C14 (priority date December 1st, no closing date); the Manhattan site refers to a 'Priority Application Date' for scholarships without printing it. The year is inferred as the 2026-27 cycle.",
+      "src": "sch"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "International undergraduate fall application deadline",
+      "notes": "Printed on the K-State Online international page (fall Aug. 1, spring Jan. 1, summer May 1). The Manhattan international pages print no closing date and the CDS says there is none, so apply early; the Dec. 1 priority date applies to scholarship consideration.",
+      "src": "online"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-15",
+      "label": "K-State Scholarship Network (KSN) profile deadline for international students",
+      "notes": "College and departmental awards after admission. Freshman scholarship upgrades use grades and scores received by April 1.",
+      "src": "sch"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "English proficiency is not required for admission, but must be met before enrolling in courses. Options: (1) waive English classes with a qualifying score or transcript (scores under 2 years old); (2) pre-place with TOEFL, IELTS or DET scores; (3) be admitted without proof and take the K-State English Language Program (ELP) placement test (WildCAT online or EPT on arrival) and be placed into intensive, part-time or full-time academic classes. ELP courses may count toward the degree depending on the major. Also accepted: SAT EBRW 460, ACT English 21, IB, A-level and O-level English, Eiken Pre-1; transfer students with English Composition I and II at C or higher and four years of U.S. high school English at C or higher are exempt.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Test dates before 2026-01-21 (includes MyBest).",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Test dates on or after 2026-01-21 (includes MyBest).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "6.5 or above.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "110 or above.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Overall score of 53.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "B2 First grade A; C1 Advanced grade A, B or C; C2 Proficiency level C1 or grade A, B or C (no numeric scale printed).",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Wildcat Nonresident Award (domestic and international, no ACT/SAT needed) discounts the nonresident part of tuition by GPA: 3.90+ 100% (about $19,101/yr), 3.75-3.89 80% (about $15,281/yr), 3.50-3.74 60% (about $11,461/yr), 3.25-3.49 50% (about $9,551/yr); renewable up to four years with a 3.0 K-State GPA. CDS H6: only institutional non-need-based aid is available to nonresidents.",
+    "src": "wna"
+  },
+  "majors": [
+    {
+      "program": "Architecture, Planning and Design (College of APD)",
+      "category": "arts_design",
+      "admit_model": "school_college",
+      "capped": false,
+      "notes": "Requires English proficiency proof for admission (unlike most K-State majors); ACT/SAT submission is strongly encouraged."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6334",
+      "note": "K-State SAT code.",
+      "src": "file"
+    },
+    "act": {
+      "code": "1428",
+      "note": "K-State ACT code.",
+      "src": "file"
+    },
+    "toefl": {
+      "code": null,
+      "note": "The undergraduate pages reviewed do not print a TOEFL code (graduate pages use 6334); confirm with ETS before sending.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

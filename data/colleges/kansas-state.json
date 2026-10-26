@@ -1,0 +1,124 @@
+{
+  "slug": "kansas-state",
+  "name": "Kansas State University",
+  "short_name": "K-State",
+  "state_region": "KS",
+  "city": "Manhattan",
+  "latitude": 39.188648,
+  "longitude": -96.581077,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.k-state.edu",
+  "admissions_url": "https://www.k-state.edu/admissions/",
+  "ipeds_unit_id": 155399,
+  "undergrad_enrollment": 16555,
+  "intl_undergrads": 253,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Kansas State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.k-state.edu/data/institutional-research/resources/common-data-set/CDS_2025_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 15591,
+    "admits": 13642,
+    "enrolled": 3775,
+    "in_state_applicants": 7088,
+    "in_state_admits": 6643,
+    "out_state_applicants": 7102,
+    "out_state_admits": 6536,
+    "intl_applicants": 1401,
+    "intl_admits": 463,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 80,
+    "gpa_avg": 3.86,
+    "pct_reporting_gpa": 86.54,
+    "gpa_distribution": {
+      "4.0": 13,
+      "3.75-3.99": 39,
+      "3.50-3.74": 21,
+      "3.25-3.49": 13,
+      "3.00-3.24": 7,
+      "2.50-2.99": 6,
+      "2.0-2.49": 1,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1 residency split (in-state 7,088 / out-of-state 7,102 / international 1,401 applicants). International admit rate computed 463/1,401 = 33.0%, with 43 enrolled, much lower than the overall 87.5%, so international applicants should not assume near-certain admission. Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (16,555; nonresident 253). No early decision or early action; no waitlist; no application closing date; priority date December 1. GPA distribution is the 'all enrolled students' column (reported by 86.5% of students)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1040,
+      1140,
+      1260
+    ],
+    "SAT_ERW": [
+      520,
+      600,
+      660
+    ],
+    "SAT_MATH": [
+      500,
+      570,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      19,
+      23,
+      26
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'; scores are also used for advising and placement."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 10601,
+    "tuition_out_of_state_usd": 28555,
+    "tuition_intl_usd": 28555,
+    "required_fees_usd": 978,
+    "room_board_usd": 11520,
+    "books_usd": 1062,
+    "notes": "CDS G1 first-year rates (the CDS ticks '2026-27 costs not available yet, expected 7/23/2026', so these are treated as 2025-26 rates; the 'Nonresident' tuition line is used for international students). H6: only institutional non-need-based aid is available to nonresidents; the CDS leaves the recipient count and dollar amounts blank."
+  }
+}

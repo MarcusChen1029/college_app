@@ -9,7 +9,9 @@ GPA average + band distribution, admit rates incl. ED/international), **ED/EA/RE
 **English test requirements** (TOEFL old 0–120 and new 1–6 scale, IELTS, Duolingo, PTE, Cambridge),
 test policy, application requirements, cost & international aid, how majors are admitted, and a
 **source URL for every fact**. 100 popular US colleges are loaded (the original 10 demo colleges plus 90 added
-2026-10-22: Ivies and other top privates, UCs and major flagships, popular privates, top liberal-arts colleges).
+2026-10-22: Ivies and other top privates, UCs and major flagships, popular privates, top liberal-arts colleges), plus
+40 high-admit "safety" colleges for a ~1100 SAT international applicant added 2026-10-26 (wave 1; candidate list with the
+remaining ~90 in `docs/superpowers/research/2026-10-26-safety-college-candidates.md`).
 Plan: all US colleges next, then UK/CA/AU.
 
 ## Stack & services
@@ -103,7 +105,17 @@ UK colleges apply **by course through UCAS** and are grade-based: set `"country_
 fields, and put courses in a `"programs"` array (table `programs`, migration 0015). Fit labels only exist for US colleges.
 Loaded so far: Oxford, UCL, Edinburgh (3 courses each). Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
 
-## Current status (2026-10-22)
+## Current status (2026-10-26)
+Safety wave 1 (40 colleges) loaded insert-only; 143 institutions live (140 US + 3 UK). How wave 1 was run, for the next wave:
+pick ~40 "todo" rows from the candidate list, 8 sonnet agents x 5 colleges with one shared brief (CDS read as text, never as
+images; firecrawl credits ran out, curl/WebFetch worked), a fresh agent spot-checks facts against sources, then
+`build_seed.py --insert-only --only ...` split per college and loaded through `execute_sql`. Map pins and `setting` come from
+IPEDS HD2024 (LOCALE 1x urban, 2x suburban, 3x/4x rural), not from the agents. Many of these publics admit internationals far
+less often than domestic applicants (CDS C1): Arkansas 12%, Oklahoma State 18%, W. Michigan 28%, UNM 29%, K-State 33%, Idaho 34%,
+CU Denver 34%, WVU 36%, UNT 41%, Iowa 42%. They stay in the list; `fit.ts` uses the international rate for international students.
+Baseline-only (IPEDS) in wave 1: george-mason, louisville, mississippi-state, portland-state, unlv, ut-arlington.
+
+### Status 2026-10-22
 100 colleges live in Supabase (row counts verified against the local data). Baseline-only colleges (IPEDS fall 2023,
 no CDS SAT total/GPA/ED yet): arizona, brown, cu-boulder, fordham, johns-hopkins, miami, ohio-state, pomona.
 UConn has no 2026-27 deadlines (its admissions site was down). New colleges without a short_name show IPEDS names

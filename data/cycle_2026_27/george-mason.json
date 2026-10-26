@@ -1,0 +1,220 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "George Mason University - Dates and Deadlines (freshman)",
+   "url": "https://www.gmu.edu/freshman/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "George Mason University - Apply as a Freshman",
+   "url": "https://www.gmu.edu/freshman/apply",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "George Mason University - Freshman Requirements",
+   "url": "https://www.gmu.edu/freshman/requirements",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "George Mason University - International Freshman Requirements",
+   "url": "https://www.gmu.edu/freshman/requirements/international",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "George Mason University - English Language Requirements",
+   "url": "https://www.gmu.edu/international/english-language-requirements",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "George Mason University - International Financial Aid",
+   "url": "https://www.gmu.edu/international/financial-aid",
+   "accessed": "2026-10-26"
+  },
+  "sel": {
+   "kind": "admissions_site",
+   "title": "George Mason University - Selective Majors (freshman)",
+   "url": "https://www.gmu.edu/freshman/requirements/selective-majors",
+   "accessed": "2026-10-26"
+  },
+  "status": {
+   "kind": "admissions_site",
+   "title": "George Mason University - Freshman Application Status (decision timing)",
+   "url": "https://www.gmu.edu/freshman/application-status",
+   "accessed": "2026-10-26"
+  },
+  "gate": {
+   "kind": "other",
+   "title": "George Mason University Gateway - Freshman International Direct",
+   "url": "https://gateway.gmu.edu/programs/undergraduate/freshman-international-direct",
+   "accessed": "2026-10-26"
+  },
+  "iapp": {
+   "kind": "admissions_site",
+   "title": "George Mason University - International Applicants (merit scholarships)",
+   "url": "https://www.gmu.edu/admissions-aid/visit-explore/international",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Score optional since 2007 for SAT/ACT, including international applicants. Applicants to Computer Science or Engineering may be considered without scores if they meet the math requirements (four years of high school math including a course above Algebra II, grades of B or higher). If scores are submitted, official results must arrive before the first day of classes.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "fee_waiver": true,
+  "notes": "Common App or Mason's own application are reviewed equally; $75 freshman fee, waivers available. Certified official, original transcripts and leaving/entrance exam results (certified English translation if needed). Personal statement (about 250 words) is optional but strongly encouraged; two recommendation letters (one counselor, one teacher) are suggested, not required. Resume only for applicants with enrollment gaps.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (non-binding; international Honors College consideration)",
+   "notes": "Decision in mid-December. Early applicants get priority for the Honors College and merit scholarships. The page prints no year; taken as the current (fall 2027) cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "Decision in spring. Later applications are reviewed on a space-available basis.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International final deadline for fall semester",
+   "notes": "Listed only for international freshman applicants; applications after Feb. 1 are space-available.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waivers include four years at a George Mason-recognized accredited US secondary school with a C or better in each non-ESL college-prep English course; four years of non-ESL English with C/4 or better under IB or UK curricula (fall 2026 applicants onward); four years at a school in a listed waiver-eligible country where English is the primary language of instruction; six English Composition credits (C or better) from a recognized US institution; or a bachelor's or higher degree from a recognized US institution. Also accepted: SAT EBRW 500+, ACT English and Reading 20+ each, IB HL English A 6. Scores must be under two years old; TOEFL MyBest and Home Edition accepted; IELTS Indicator not accepted. Pathway: the Gateway Freshman International Direct program admits academically qualified applicants (high school GPA 2.9+) with English slightly lower (TOEFL iBT 70 / new 4.0 with 3.5 each skill, IELTS 6.0 with 5.5 each skill, PTE 53, Duolingo 100): one semester of English and transition courses (14-16 credits) with a direct-entry I-20, then progression to a degree; the Gateway page says its information applies to students starting spring 2027 and later.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "subs": {
+    "each_section": 18
+   },
+   "notes": "Tests taken before Jan. 21, 2026. College of Engineering and Computing applicants: 80 overall, no section minimum. TOEFL institution code 5827.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Tests taken on or after Jan. 21, 2026; the page does not name the 1-6 scale. Engineering and Computing applicants: 4.5, no section minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_section": 6.0
+   },
+   "notes": "Engineering and Computing applicants: 6.5, no section minimum. IELTS Indicator not accepted; One Skill Retake accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "notes": "Pearson Test of English Academic.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Mason offers a limited number of merit-based scholarships to highly qualified international freshmen and transfers on F-1 visas; all admitted applicants are considered automatically (no separate application) through a holistic review in which GPA and test scores matter most. Awards renew for up to four years for freshmen. Amounts are not published. Non-US citizens are not eligible for federal aid; the page does not describe need-based institutional aid for international students.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Computer Science and Engineering (College of Engineering and Computing)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "notes": "Needs four years of high school math including a course above Algebra II, plus SAT Math 550 / ACT Math 24 or B (not B-) or higher in all math through Algebra II. Admitted students who do not qualify are placed in CEC Undeclared."
+  },
+  {
+   "program": "Nursing, BSN (School of Nursing)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Direct-admission freshman applications get a second review by the School of Nursing admission committee; described as highly competitive. Students admitted to the university but not to the School become undeclared."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "George Mason's admissions pages do not print an SAT code; have the College Board send scores to George Mason University (Fairfax).",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "George Mason's admissions pages do not print an ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "5827",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Large public research university; admits about 87% of applicants, with a wide score range, so an SAT ~1100 international applicant is a likely admit.",
+  "computer_science": "Editorial estimate: large College of Engineering and Computing near Washington DC; no ranking cited.",
+  "engineering": "Editorial estimate: College of Engineering and Computing; no ranking cited.",
+  "business": "Editorial estimate: undergraduate business school at a large research university; no ranking cited.",
+  "biology_life_sci": "Editorial estimate; no ranking cited.",
+  "pre_med": "Editorial estimate; no ranking cited.",
+  "economics": "Editorial estimate; no ranking cited.",
+  "math_physics": "Editorial estimate; no ranking cited.",
+  "humanities": "Editorial estimate; no ranking cited.",
+  "arts_design": "Editorial estimate; no ranking cited.",
+  "nursing": "Editorial estimate: School of Nursing with a selective BSN; no ranking cited."
+ }
+}

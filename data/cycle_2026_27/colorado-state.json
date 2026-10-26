@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "CSU Admissions - International freshman application guide (deadlines, fee, documents)",
+   "url": "https://admissions.colostate.edu/apply/international-freshmen/",
+   "accessed": "2026-10-26"
+  },
+  "docs": {
+   "kind": "admissions_site",
+   "title": "CSU Admissions - Application supporting documents (test policy, score codes)",
+   "url": "https://admissions.colostate.edu/apply/submitting-documents/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CSU International Programs - English language proficiency (undergraduate and graduate)",
+   "url": "https://international.colostate.edu/iec/international-admissions/english-language-proficiency/",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "CSU International Programs - Conditional admission (undergraduate) and Intensive English Program",
+   "url": "https://international.colostate.edu/iec/international-admissions/conditional-admission/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "CSU International Programs - International scholarships and tuition",
+   "url": "https://international.colostate.edu/iec/international-admissions/scholarships-and-tuition/",
+   "accessed": "2026-10-26"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "CSU Admissions - Financial aid and scholarships",
+   "url": "https://admissions.colostate.edu/cost-financial-aid/financial-aid-scholarships/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "CSU does not require SAT/ACT. The admissions site says submitted scores are reviewed only if the applicant emails a request, are not given much weight, and are not used to decline an application or in scholarship decisions; CDS C8A answers 'No' to using SAT/ACT in admission.",
+  "src": "docs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 65,
+  "fee_waiver": true,
+  "notes": "International freshmen apply with the Common App: 250-650 word essay, most recent transcripts (certified English translation if needed), passport copy and financial-support documents for the I-20. The $65 fee is the international freshman fee (CDS C13 lists $50 generally). Review is holistic; students with a 3.0+ GPA and a steady or upward trend are generally admitted. Recommendation letters and interview are not mentioned on the page.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early action (non-binding), fall 2027 entry",
+   "notes": "Complete file by Nov. 15 for full consideration and automatic scholarship review by Jan. 15. The page prints dates without a year; taken as the current cycle. CDS C14: priority date Nov. 15, closing date July 31, rolling notification from Oct. 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "Regular decision, fall 2027 entry",
+   "notes": "Full consideration by Jan. 15, scholarship review by Feb. 28; applications are then reviewed on a rolling basis until mid-summer but scholarships may not be available. The page prints no year.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-15",
+   "label": "International scholarships: highest consideration",
+   "notes": "Dec. 15 is highest consideration and Mar. 15 regular consideration; no separate scholarship application. The page prints no year.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No test needed with SAT EBRW 520+, ACT English/Reading 20+, IB HL English 5+, AP English Language or Literature 4+, IGCSE/A-level English C or better (official, not predicted), WAEC/WASSCE English B3+, or Gaokao English 105+ plus an online interview. Exempt if English is the first language and the applicant is from Australia, Canada, Ireland, New Zealand or the UK. Conditional admission: applicants who meet academic standards but lack a qualifying score enroll in CSU's Intensive English Program (most finish in 1-2 semesters; IEP courses carry no degree credit), then move into degree courses; send evidence by June 1 (fall) or Nov. 15 (spring).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 72,
+   "notes": "Exams before Jan. 2026. Paper-based TOEFL considered case by case. No subscore minimum listed.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Exams after Jan. 2026; CSU accepts both score types. The page does not name the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "All admitted international undergraduates are automatically considered for scholarships of $2,000-$12,000 per year, renewable up to four years with good academic standing; no separate application. CSU says no institutional scholarship covers the full cost of attendance. Federal aid is limited to U.S. citizens and permanent residents. The CDS (H6) checks both need-based and non-need-based institutional aid for nonresidents, but the aid pages do not describe need-based aid for international students, so intl_need_aid is left unconfirmed.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4075",
+   "src": "docs"
+  },
+  "act": {
+   "code": "0504",
+   "src": "docs"
+  },
+  "toefl": {
+   "code": "4075",
+   "src": "docs"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; the documents page says IELTS results can be uploaded as a PDF in the Admissions Dashboard.",
+   "src": "docs"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed on the documents page.",
+   "src": "docs"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed for undergraduate English proficiency.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "engineering": "Editorial judgment: R1 research university with a broad engineering college; placed in the 41-100 band, not a published ranking.",
+  "biology_life_sci": "Editorial judgment: large life, agricultural and environmental science programs at an R1 university; placed in the 41-100 band, not a published ranking."
+ }
+}

@@ -1,0 +1,241 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Cincinnati - Admissions deadlines",
+   "url": "https://admissions.uc.edu/apply/deadlines.html",
+   "accessed": "2026-10-26"
+  },
+  "prep": {
+   "kind": "admissions_site",
+   "title": "University of Cincinnati - Requirements & timelines",
+   "url": "https://admissions.uc.edu/prepare/requirements-timelines.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Cincinnati - Admission requirements for international first-year students",
+   "url": "https://admissions.uc.edu/information/international/requirements/freshman.html",
+   "accessed": "2026-10-26"
+  },
+  "exempt": {
+   "kind": "admissions_site",
+   "title": "University of Cincinnati - English language requirement exemptions",
+   "url": "https://admissions.uc.edu/information/international/requirements/english-exemption.html",
+   "accessed": "2026-10-26"
+  },
+  "cla": {
+   "kind": "admissions_site",
+   "title": "University of Cincinnati - Conditional admission (international)",
+   "url": "https://admissions.uc.edu/information/international/requirements/cla.html",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Cincinnati - International scholarships",
+   "url": "https://admissions.uc.edu/information/international/finance/scholarship.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "UC states it is test-optional for all programs; the international first-year page also says SAT or ACT are optional. SAT EBRW 480 / ACT English 19 can be submitted to meet the English requirement.",
+  "src": "prep"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 100,
+  "notes": "International applicants apply with the Common App, pay a $100 non-refundable fee (the deadlines page says the fee is waived for fall applicants who apply by the Nov 1 Early Action deadline) and submit transcripts and test scores; a letter of recommendation is optional. Students are admitted directly into a major and may list two majors. Engineering, Business, Nursing, Design (DAAP), Music (CCM) and Medicine often fill early, so apply by Nov 1.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (fall 2027 entry)",
+   "note": "Decisions are released on Cincinnati Decision Day, the second Wednesday in December.",
+   "notes": "Non-binding. Needed for priority consideration for competitive programs, the University Honors Program and merit-based scholarships (including the International Outreach Award). The pages give month/day only; the year is assumed for fall 2027 entry.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Rolling deadline (fall 2027 entry)",
+   "notes": "Space-available basis after Nov 1; applications after Nov 1 are not considered for scholarships and some programs may already be closed. The conditional admission (English pathway) fall deadline is also March 1. Spring deadline is Nov 1 and summer is March 1.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-01",
+   "label": "Complete application by this date to guarantee International Outreach Award consideration",
+   "notes": "No separate scholarship application; awards are announced shortly after the admission decision.",
+   "src": "aid"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Confirmation deadline (fall)",
+   "notes": "Online form plus a non-refundable confirmation fee.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt (decided by International Admissions) if: one year of US or first-language-English-country high school with a C or better in standard English; IGCSE/O-Level English (first language) C or higher; IB English A / Language & Literature (HL 4+, SL 5+, not English B); or 24 semester hours at a US accredited university with C- or higher in English Composition. Scores must be no more than 2 years old. SAT EBRW 480 or ACT English 19 (the only tests accepted for Nursing) or ELS level 112 also satisfy the requirement. Conditional admission with the Cincinnati ELS center is offered for Allied Health, Arts & Sciences, CECH, Engineering (not Aerospace or Freshman Engineering), Business and DAAP (not Architecture, Fashion, Communication, Industrial or Interior Design).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "writing": 20,
+    "speaking": 20,
+    "other_sections": 15
+   },
+   "notes": "Exams before Jan 2026. Applies to all colleges except CCM (66 overall, 15 each section) and Nursing (TOEFL not accepted; SAT/ACT English only).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "writing": 4.0,
+    "speaking": 4.0,
+    "other_sections": 3.5
+   },
+   "notes": "Exams after Jan 2026, same colleges as above; CCM requires 3.5 on every section. The page lists these values without naming the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "writing": 6.0,
+    "speaking": 6.0,
+    "other_sections": 5.5
+   },
+   "notes": "CCM: 6.0 overall, 5.0 each section. Not accepted for Nursing.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "subs": {
+    "production": 100,
+    "conversation": 100
+   },
+   "notes": "CCM: 100 overall, 80 production and 80 conversation. Not accepted for Nursing.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Not accepted for Nursing.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 176,
+   "notes": "C1 Advanced is the recommended exam. Not accepted for Nursing.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "UC does not offer full-tuition or need-based scholarships to undergraduate international students. The International Outreach Award is $5,000-$15,000 per year (Uptown/Main campus; $2,000-$4,000 at regional campuses), needs a 3.0+ unweighted GPA, is applied to the non-resident surcharge only and is renewable for up to 8 semesters. It is reviewed automatically from the admission application.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "College of Engineering & Applied Science",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Students are admitted directly into a major. UC lists Engineering among colleges that often fill early; apply by the Nov 1 Early Action deadline."
+  },
+  {
+   "program": "Lindner College of Business",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Direct admission to a major. Listed among colleges that often close shortly after Nov 1."
+  },
+  {
+   "program": "College of Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Priority application deadline Nov 1. For English proficiency Nursing accepts only SAT EBRW 480 or ACT English 19."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1833",
+   "note": "College Board code for University of Cincinnati; scores can also be emailed to international.admissions@uc.edu for online verification.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3340",
+   "note": "ACT code for University of Cincinnati.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "1833",
+   "note": "ETS code; scores can also be emailed for verification.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code: email the score report to international.admissions@uc.edu or have the test center send it to UC Undergraduate Admissions.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code listed: send the report electronically from your Duolingo English Test account to University of Cincinnati.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code listed: send the report electronically from Pearson and email a copy to international.admissions@uc.edu.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Large public research university with an 88% overall admit rate and SAT middle 50% of 1160-1340 (CDS 2025-26). Placed just above D on the strength of its size, research profile and co-op program.",
+  "computer_science": "Editorial judgment (v1): established program at a large public research university; estimated in the 41-100 band nationally.",
+  "engineering": "Editorial judgment (v1): large co-op-based engineering college (UC's site calls its co-op program one of the leading ones in the US); estimated in the 41-100 band nationally.",
+  "business": "Editorial judgment (v1): undergraduate business college with co-op; estimated in the 41-100 band nationally.",
+  "biology_life_sci": "Editorial judgment (v1): sizeable life-science programs at a public research university; estimated in the 41-100 band.",
+  "pre_med": "Editorial judgment (v1): UC has its own College of Medicine and a large health-science presence; estimated in the 41-100 band for pre-health preparation.",
+  "arts_design": "Editorial judgment (v1): UC's DAAP (design, architecture, art, planning) and CCM (music) are distinctive programs named on its admissions pages; estimated in the 41-100 band.",
+  "nursing": "Editorial judgment (v1): direct-admit BSN; estimated in the 41-100 band."
+ }
+}

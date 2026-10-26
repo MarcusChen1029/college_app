@@ -1,0 +1,150 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UT Arlington Admissions - International first-year students",
+      "url": "https://www.uta.edu/admissions/apply/international-undergraduate/international-freshmen",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "UT Arlington Catalog - Undergraduate Admissions (international, deadlines, English)",
+      "url": "https://catalog.uta.edu/academicregulations/admissions/undergraduate/",
+      "accessed": "2026-10-26"
+    },
+    "mav": {
+      "kind": "financial_aid_site",
+      "title": "UT Arlington - Maverick Academic Scholarship",
+      "url": "https://www.uta.edu/administration/fao/scholarships/maverick-academic-scholarship",
+      "accessed": "2026-10-26"
+    },
+    "nrw": {
+      "kind": "financial_aid_site",
+      "title": "UT Arlington - Non-Resident Tuition Waiver and Grants (2026-2027 eligibility)",
+      "url": "https://www.uta.edu/administration/fao/scholarships/competitive-scholarship-non-resident-tuition-waiver",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international first-year page says UTA is test optional (SAT/ACT help with admission decisions, testing exemptions and scholarships). Guaranteed admission: 3.25+ GPA with no test minimum; 3.0-3.24 GPA with SAT 1130 / ACT 23; 2.90-2.99 with SAT 1250 / ACT 26. Everyone else gets individual holistic review (a personal statement is requested) and is admitted conditionally, needing a 2.0 GPA after the first term. Conflict: the UTA catalog still says freshmen educated outside the U.S. need SAT 980 / ACT 19, so confirm with UTA.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "UTA recommends the Common App but also accepts ApplyTexas ('own'); the fee is $75 and non-refundable. Non-U.S. transcripts must be uploaded for review by Foreign Credentials Service of America (FCSA), which charges a $90 processing fee. No essay is required for guaranteed admission.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-02-15",
+      "label": "Fall priority date, first-year (fall 2027 entry)",
+      "notes": "Applications are accepted after the priority date, but meeting it ensures guaranteed consideration. The page prints no year; fall 2027 is assumed.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Merit-based scholarship deadline",
+      "notes": "Application and all required documents must be in by then for scholarship consideration.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International students: fall priority application deadline",
+      "notes": "From the UTA catalog's priority-deadline table (international fall May 1; spring Oct 1; summer Mar 1). Decisions take about 3-5 weeks after the file is complete. The catalog does not print a year; fall 2027 is assumed and the first-year page's Feb 15 priority date is earlier.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required from international students from non-native English-speaking countries. Exempt: graduates of secondary or post-secondary schools in listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, New Zealand, United Kingdom, Singapore, South Africa), who meet English proficiency; SAT verbal 480 or ACT English 19; English Composition I and II with C or better plus 24 U.S. transferable hours; English-based IB, AP, American or British curriculum completion; or a U.S.-accredited degree. Scores must be sent directly by the testing provider.",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "On the 120-point scale.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "On the 6-point scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "105 for engineering majors; 100 for all other majors.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Every incoming freshman is reviewed for the Maverick Academic Scholarship ($1,000-$8,000 a year for fall, renewable up to three more years; SAT/ACT optional). For 2026-27, non-residents receiving the $8,000 Maverick award (or Presidential Honors $13,000 / Presidential $10,000) are eligible for a Non-Resident Tuition Waiver (in-state rates); lower awards carry an International Grant of up to $10,000 ($4,000 award), $8,000 ($2,000 award) or $5,000 ($1,000 award). Waivers and grants are not guaranteed and depend on funding. UTA's pages did not state whether need-based aid exists for international students.",
+    "src": "nrw"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No numeric SAT code is printed on the pages read; pick UT Arlington in the College Board search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No numeric ACT code is printed on the pages read; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No institution code is printed on the pages read; scores must come directly from ETS.",
+      "src": "cat"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Scores must be sent directly from the testing provider; no code listed.",
+      "src": "cat"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Scores must be sent directly from Duolingo; no code listed.",
+      "src": "cat"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

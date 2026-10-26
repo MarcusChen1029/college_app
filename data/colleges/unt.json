@@ -1,0 +1,117 @@
+{
+  "slug": "unt",
+  "name": "University of North Texas",
+  "short_name": "UNT",
+  "state_region": "TX",
+  "city": "Denton",
+  "latitude": 33.211178,
+  "longitude": -97.148422,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unt.edu",
+  "admissions_url": "https://www.unt.edu/admissions/index.html",
+  "ipeds_unit_id": 227216,
+  "undergrad_enrollment": 34414,
+  "intl_undergrads": 1546,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of North Texas Common Data Set 2025-2026 (PDF)",
+      "url": "https://institutionalresearch.unt.edu/cds_univnorthtx_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - University of North Texas",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227216",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 41250,
+    "admits": 29242,
+    "enrolled": 6388,
+    "in_state_applicants": 36749,
+    "in_state_admits": 26788,
+    "out_state_applicants": 2245,
+    "out_state_admits": 1537,
+    "intl_applicants": 2253,
+    "intl_admits": 917,
+    "pct_submit_sat": 40.0,
+    "pct_submit_act": 8.0,
+    "notes": "CDS C1 totals (men 19,128 + women 22,122 applicants; 29,242 admitted; 6,388 enrolled). The C2 residency table sums to 41,247 applicants (in-state 36,749 / out-of-state 2,245 / international 2,253); admits and enrolled agree. International first-year admit rate is 40.7% (917 of 2,253) versus 72.9% in-state; the CDS does not say why. UNT left high school GPA (C11/C12) blank, so GPA fields are omitted. Undergraduate enrollment 34,414 is CDS B2 total undergraduates (degree-seeking nonresidents: 1,546). The CDS file prints year digits incompletely, so the 2025-2026 label comes from the file name. Student-faculty ratio 25:1 is from IPEDS College Navigator."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      960,
+      1080,
+      1210
+    ],
+    "SAT_ERW": [
+      490,
+      550,
+      620
+    ],
+    "SAT_MATH": [
+      460,
+      530,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "interview": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 8673,
+    "tuition_out_of_state_usd": 20823,
+    "required_fees_usd": 2990,
+    "room_board_usd": 11194,
+    "books_usd": 1120,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 1075,
+    "intl_avg_award_usd": 5928,
+    "notes": "CDS G1 first-year full-year amounts (nonresident tuition equals out-of-state $20,823; per credit hour $685 nonresident vs $280 in-state). The CDS marks 2026-27 costs as not yet available, so these are most likely 2025-26 amounts. CDS H6: only institutional non-need-based aid is available to nonresidents; 1,075 degree-seeking nonresident undergraduates received it (avg $5,928). CDS C7 rows for test scores, essay and recommendations were left unmarked, so they are omitted."
+  }
+}

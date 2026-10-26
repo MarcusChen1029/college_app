@@ -1,0 +1,113 @@
+{
+  "slug": "utep",
+  "name": "The University of Texas at El Paso",
+  "short_name": "UTEP",
+  "state_region": "TX",
+  "city": "El Paso",
+  "latitude": 31.77015,
+  "longitude": -106.504098,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utep.edu",
+  "admissions_url": "https://www.utep.edu/admissions/",
+  "ipeds_unit_id": 228796,
+  "undergrad_enrollment": 22223,
+  "intl_undergrads": 843,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "UTEP Common Data Set 2025-2026 (PDF, masked)",
+      "url": "https://www.utep.edu/planning/cierp/_Files/docs/common-data-set/CDS%202025-26%20-Masked%20-%20v2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - The University of Texas at El Paso",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228796",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 12357,
+    "admits": 12350,
+    "enrolled": 4569,
+    "in_state_applicants": 11928,
+    "in_state_admits": 11928,
+    "out_state_applicants": 128,
+    "out_state_admits": 127,
+    "intl_applicants": 301,
+    "intl_admits": 295,
+    "pct_submit_sat": 1.99,
+    "pct_submit_act": 2.82,
+    "gpa_avg": 3.32,
+    "pct_reporting_gpa": 83.44,
+    "gpa_distribution": {
+      "4.0": 0.16,
+      "3.75-3.99": 19.22,
+      "3.50-3.74": 23.07,
+      "3.25-3.49": 21.24,
+      "3.00-3.24": 17.65,
+      "2.50-2.99": 11.36,
+      "2.0-2.49": 4.64,
+      "1.0-1.99": 2.44
+    },
+    "notes": "CDS C1 (fall 2025 first-years): 12,350 of 12,357 applicants admitted (99.9%); international 295 of 301 admitted, 190 enrolled. GPA bands are the 'all enrolled students' column of C11 (a further 0.24% had GPA below 1.0). Only 91 enrollees submitted SAT and 129 ACT scores (C9), so the score percentiles describe a very small, self-selected group. The CDS C7 importance marks could not be read from the PDF text, so admission factors are omitted. Undergraduate enrollment 22,223 is CDS B1 total undergraduates; 843 is degree-seeking nonresident undergraduates (B2). Student-faculty ratio 21:1 is from IPEDS College Navigator."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      850,
+      950,
+      1050
+    ],
+    "SAT_ERW": [
+      430,
+      490,
+      540
+    ],
+    "SAT_MATH": [
+      410,
+      460,
+      520
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      19,
+      22
+    ],
+    "ACT_MATH": [
+      16,
+      17,
+      20
+    ],
+    "ACT_ENGLISH": [
+      14,
+      17,
+      22
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "flexible",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT marked 'required for some' applicants."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7704,
+    "tuition_out_of_state_usd": 23022,
+    "tuition_intl_usd": 23022,
+    "required_fees_usd": 2068,
+    "room_board_usd": 11500,
+    "books_usd": 1200,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 373,
+    "intl_avg_award_usd": 10216,
+    "notes": "CDS G1 first-year full-year amounts for 2026-27 (nonresident tuition equals out-of-state; per credit hour $787 nonresident vs $262 in-state). The $11,500 food-and-housing line is printed without a label in the extracted text and is read as on-campus food and housing. CDS H6: institutional need-based and non-need-based aid exists for nonresidents; 373 degree-seeking nonresident undergraduates received aid (avg $10,216, total $3,810,516)."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "slug": "idaho",
+  "name": "University of Idaho",
+  "short_name": "U of I",
+  "state_region": "ID",
+  "city": "Moscow",
+  "latitude": 46.727406,
+  "longitude": -117.014167,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.uidaho.edu",
+  "admissions_url": "https://www.uidaho.edu/admissions",
+  "ipeds_unit_id": 142285,
+  "undergrad_enrollment": 9269,
+  "intl_undergrads": 399,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Idaho Common Data Set (latest posted: fall 2023 / 2023-2024) (PDF)",
+      "url": "https://content-hub.uidaho.edu/api/public/content/bf62e21cc0114b06bed65dc2a5e6c633?v=aee281dc",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), as published in the Urban Institute Education Data Portal",
+      "url": "https://nces.ed.gov/collegenavigator/?id=142285",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 12222,
+    "admits": 9666,
+    "enrolled": 1869,
+    "in_state_applicants": 7113,
+    "in_state_admits": 6420,
+    "out_state_applicants": 2901,
+    "out_state_admits": 2493,
+    "intl_applicants": 2208,
+    "intl_admits": 753,
+    "pct_submit_sat": 64,
+    "pct_submit_act": 6,
+    "gpa_avg": 3.4,
+    "pct_reporting_gpa": 98.3,
+    "gpa_distribution": {
+      "4.0": 7.4,
+      "3.75-3.99": 25.7,
+      "3.50-3.74": 18.7,
+      "3.25-3.49": 16.6,
+      "3.00-3.24": 13.6,
+      "2.50-2.99": 14.6,
+      "2.0-2.49": 3.2,
+      "1.0-1.99": 0.2
+    },
+    "notes": "The latest Common Data Set U of I posts is for fall 2023 (2023-24), so these figures are two classes old. Newer IPEDS (fall 2024 entering class): 13,443 applied, 10,154 admitted (75.5%), 2,025 enrolled. The international row (2,208 applied, 753 admitted, 116 enrolled) counts all international applicants, so it likely includes many who were admitted but never completed or did not qualify; U of I says its minimum GPA for international first-year applicants is 2.5. Undergraduate counts are the CDS B1/B2 'Total Undergraduates' (9,269, of whom 399 are nonresident) as of fall 2023; U of I's newsroom reports fall 2025 undergraduate headcount of 7,978. Student-faculty ratio is fall 2023 (17 to 1). No early decision or early action."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1076,
+      1200
+    ],
+    "SAT_ERW": [
+      490,
+      547,
+      610
+    ],
+    "SAT_MATH": [
+      460,
+      529,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      25,
+      29
+    ],
+    "ACT_ENGLISH": [
+      19,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      29
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "The CDS (fall 2023 edition) says SAT/ACT are used and rates test scores very important; U of I's current first-year page says scores are not required with a 3.00+ GPA."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 1734,
+    "intl_avg_award_usd": 12390,
+    "notes": "CDS H6 (2022-23 aid year): 1,734 degree-seeking nonresident undergraduates received institutional aid (avg $12,390); the figure covers all nonresident undergraduates, not only international students. The CDS tuition fields could not be read as text, so costs come from U of I's financial aid office pages."
+  }
+}

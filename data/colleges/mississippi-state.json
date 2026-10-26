@@ -1,0 +1,76 @@
+{
+  "slug": "mississippi-state",
+  "name": "Mississippi State University",
+  "short_name": "Mississippi State",
+  "state_region": "MS",
+  "city": "Mississippi State",
+  "latitude": 33.454852,
+  "longitude": -88.790139,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.msstate.edu/",
+  "admissions_url": "https://www.admissions.msstate.edu/",
+  "ipeds_unit_id": 176080,
+  "undergrad_enrollment": 18230,
+  "intl_undergrads": 230,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); fall 2023 enrollment (EF2023A); College Navigator (2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=176080",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 20877,
+    "admits": 15934,
+    "enrolled": 3751,
+    "pct_submit_sat": 5,
+    "pct_submit_act": 84,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). The 2025-26 CDS is posted only as an Excel file on ir.msstate.edu and could not be read as text, so SAT total, GPA and residency splits are not added. College Navigator for fall 2024 shows 23,346 applicants, 78% admitted, SAT ERW 560/620/670, Math 540/590/680, ACT 21/25/29. Undergrad enrollment (18,230) and nonresident-alien undergraduates (230) are fall 2023 IPEDS (EF2023A); student-to-faculty ratio 16:1 from College Navigator."
+  },
+  "scores": {
+    "SAT_ERW": [
+      570,
+      610,
+      690
+    ],
+    "SAT_MATH": [
+      540,
+      610,
+      720
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      25,
+      29
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      30
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      27
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 10202,
+    "tuition_out_of_state_usd": 27637,
+    "books_usd": 1200,
+    "room_board_usd": 12902,
+    "other_usd": 6409,
+    "total_coa_usd": 48148,
+    "notes": "College Navigator (IPEDS) 2024-25: tuition includes required fees; on-campus cost of attendance for out-of-state students is $48,148. MSU's own current tuition page was not read, so current-year figures may differ."
+  }
+}

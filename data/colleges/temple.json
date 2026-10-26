@@ -1,0 +1,121 @@
+{
+  "slug": "temple",
+  "name": "Temple University",
+  "short_name": "Temple",
+  "state_region": "PA",
+  "city": "Philadelphia",
+  "latitude": 39.980546,
+  "longitude": -75.156859,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.temple.edu/",
+  "admissions_url": "https://admissions.temple.edu/",
+  "ipeds_unit_id": 216339,
+  "undergrad_enrollment": 21031,
+  "intl_undergrads": 891,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Temple University Common Data Set 2025-2026 (with 2026-27 tuition update) (PDF)",
+      "url": "https://ira.temple.edu/sites/ira/files/media/document/CDS%202025-26_Temple%20University_26-27%20Tuition%20Update.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_loc": {
+      "kind": "ipeds",
+      "title": "IPEDS institutional directory (location, locale) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/directory/2023/?unitid=216339",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 42824,
+    "admits": 36922,
+    "enrolled": 5303,
+    "in_state_applicants": 14512,
+    "in_state_admits": 12641,
+    "out_state_applicants": 24878,
+    "out_state_admits": 21812,
+    "intl_applicants": 3434,
+    "intl_admits": 2469,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 1,
+    "notes": "CDS C1 (fall 2025 entering class); residency split from the C1 residency table (in-state 14,512 / out-of-state 24,878 / international 3,434 applicants; 12,641 / 21,812 / 2,469 admitted; 3,339 / 1,779 / 185 enrolled). Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (21,031; 891 nonresidents). Nonbinding early action (closes 11/1, notified 1/10); no early decision. The GPA table (C11/C12) is blank in the CDS, so gpa_avg and the distribution are left null. SAT middle 50% is for the 19% (1,000 students) who submitted; ACT submitted by 1% (76 students). Temple is test optional."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1030,
+      1200,
+      1310
+    ],
+    "SAT_ERW": [
+      530,
+      610,
+      670
+    ],
+    "SAT_MATH": [
+      490,
+      580,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      27,
+      30
+    ],
+    "ACT_ENGLISH": [
+      23,
+      28,
+      33
+    ],
+    "ACT_MATH": [
+      21,
+      25,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; C8F: 'We are test optional.'"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 23480,
+    "tuition_out_of_state_usd": 40473,
+    "tuition_intl_usd": 40473,
+    "required_fees_usd": 1098,
+    "room_board_usd": 15884,
+    "books_usd": 1330,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 624,
+    "intl_avg_award_usd": 17619,
+    "notes": "CDS G1 (first-year, 2026-27 update). Tuition is a weighted average because Temple has differential tuition by school/college (G4: 60% of undergraduates pay more). H6: only institutional non-need-based aid is available to nonresidents; 624 nonresidents received it (avg $17,619; total $10,994,319)."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "umass-boston",
+  "name": "University of Massachusetts Boston",
+  "short_name": "UMass Boston",
+  "state_region": "MA",
+  "city": "Boston",
+  "latitude": 42.312881,
+  "longitude": -71.036865,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.umb.edu/",
+  "admissions_url": "https://www.umb.edu/admissions/",
+  "ipeds_unit_id": 166638,
+  "undergrad_enrollment": 12234,
+  "intl_undergrads": 844,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Massachusetts Boston Common Data Set 2023-2024 (PDF)",
+      "url": "https://www.umb.edu/media/umassboston/editor-uploads/institutional-research-assessment-planning/CDS-PDF-23-24.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_loc": {
+      "kind": "ipeds",
+      "title": "IPEDS institutional directory (location, locale) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/directory/2023/?unitid=166638",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 20918,
+    "admits": 17353,
+    "enrolled": 2463,
+    "in_state_applicants": 12558,
+    "in_state_admits": 10044,
+    "out_state_applicants": 6279,
+    "out_state_admits": 5470,
+    "intl_applicants": 2081,
+    "intl_admits": 1839,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 2,
+    "gpa_avg": 3.5,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 20,
+      "3.75-3.99": 13,
+      "3.50-3.74": 13,
+      "3.25-3.49": 16,
+      "3.00-3.24": 15,
+      "2.50-2.99": 20,
+      "2.0-2.49": 2
+    },
+    "notes": "CDS C1 (fall 2023 entering class). This is the newest CDS UMass Boston had posted on its Common Data Set page when checked (2023-2024; no 2024-25 or 2025-26 file listed), so the figures are two cycles old. Residency split: in-state 12,558 / out-of-state 6,279 / international 2,081 applicants; 10,044 / 5,470 / 1,839 admitted; 1,968 / 287 / 208 enrolled. Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (12,234; 844 international). CDS C6 marks admission as open for most students with selective admission to some programs. SAT/ACT percentiles cover only the 28% (695) / 2% (54) of enrollees who submitted scores; the GPA 'all enrolled' column sums to 99%. CDS C14 (2023-24): priority date 11/1, closing date 2/15."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1090,
+      1180,
+      1290
+    ],
+    "SAT_ERW": [
+      540,
+      590,
+      650
+    ],
+    "SAT_MATH": [
+      540,
+      590,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      31
+    ],
+    "ACT_MATH": [
+      22,
+      26,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (2023-24): SAT/ACT 'not required for admission, but considered for some'; the current admissions pages offer a test-optional plan to all first-year applicants including international applicants."
+  }
+}

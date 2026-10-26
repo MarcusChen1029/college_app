@@ -1,0 +1,113 @@
+{
+  "slug": "western-michigan",
+  "name": "Western Michigan University",
+  "short_name": "WMU",
+  "state_region": "MI",
+  "city": "Kalamazoo",
+  "latitude": 42.282194,
+  "longitude": -85.613759,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://wmich.edu",
+  "admissions_url": "https://wmich.edu/admissions",
+  "ipeds_unit_id": 172699,
+  "undergrad_enrollment": 13714,
+  "intl_undergrads": 1284,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Western Michigan University Common Data Set 2025-2026 (PDF)",
+      "url": "https://files.wmich.edu/s3fs-public/2026-02/wmu_cds_2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 20927,
+    "admits": 17853,
+    "enrolled": 2303,
+    "in_state_applicants": 14374,
+    "in_state_admits": 12555,
+    "out_state_applicants": 5745,
+    "out_state_admits": 5072,
+    "intl_applicants": 808,
+    "intl_admits": 226,
+    "pct_submit_sat": 50.1,
+    "pct_submit_act": 3.6,
+    "gpa_avg": 3.55,
+    "pct_reporting_gpa": 98.5,
+    "gpa_distribution": {
+      "4.0": 18.8,
+      "3.75-3.99": 21.7,
+      "3.50-3.74": 17.0,
+      "3.25-3.49": 14.8,
+      "3.00-3.24": 13.1,
+      "2.50-2.99": 13.6,
+      "2.0-2.49": 0.9,
+      "1.0-1.99": 0.1
+    },
+    "notes": "Counts are CDS C1 (fall 2025). International first-year admit rate in the CDS is 28% (226 of 808), much lower than the overall 85.3%. GPA distribution is the 'all enrolled students' column of C11. No waiting list, early decision or early action. Only 84 enrollees submitted ACT scores, so ACT percentiles describe a small group. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 1,284)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      960,
+      1080,
+      1200
+    ],
+    "SAT_ERW": [
+      490,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      460,
+      530,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      26,
+      28
+    ],
+    "ACT_ENGLISH": [
+      19,
+      24,
+      29
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT/ACT are not considered in admission decisions, but C8F says scores are used only if they benefit the student and students are not penalized for them."
+  }
+}

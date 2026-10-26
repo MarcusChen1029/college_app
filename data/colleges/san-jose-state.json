@@ -1,0 +1,120 @@
+{
+  "slug": "san-jose-state",
+  "name": "San Jose State University",
+  "short_name": "SJSU",
+  "state_region": "CA",
+  "city": "San Jose",
+  "latitude": 37.336569,
+  "longitude": -121.880621,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.sjsu.edu",
+  "admissions_url": "https://www.sjsu.edu/admissions/",
+  "ipeds_unit_id": 122755,
+  "undergrad_enrollment": 29895,
+  "intl_undergrads": 1589,
+  "student_faculty_ratio": 27,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "San Jose State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.sjsu.edu/irsa/docs/cds/20260113_CDS%202025%20FINAL.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 37124,
+    "admits": 29845,
+    "enrolled": 4943,
+    "in_state_applicants": 34882,
+    "in_state_admits": 28137,
+    "out_state_applicants": 1432,
+    "out_state_admits": 1070,
+    "intl_applicants": 810,
+    "intl_admits": 638,
+    "pct_submit_sat": 9,
+    "pct_submit_act": 1,
+    "gpa_avg": 3.5,
+    "pct_reporting_gpa": 99.41,
+    "gpa_distribution": {
+      "4.0": 17.1,
+      "3.75-3.99": 17.6,
+      "3.50-3.74": 20.0,
+      "3.25-3.49": 18.6,
+      "3.00-3.24": 13.4,
+      "2.50-2.99": 12.8,
+      "2.0-2.49": 0.5,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 fall 2025 first-year class. Residency split is by physical address at application (C1). No early decision or early action; no waitlist. All majors are 'impacted' (more eligible applicants than space), so meeting CSU minimums does not guarantee admission. SJSU is test-blind: only 9% (SAT) and 1% (ACT) of enrolled students had scores, so the score ranges below describe that small self-selected group."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1010,
+      1160,
+      1270
+    ],
+    "SAT_ERW": [
+      500,
+      580,
+      650
+    ],
+    "SAT_MATH": [
+      490,
+      580,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      16,
+      22,
+      27
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "I",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT are not used in admission decisions ('not considered for admission, even if submitted')."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 103,
+    "intl_avg_award_usd": 9127,
+    "notes": "CDS H6: 103 degree-seeking nonresident undergraduates received institutional aid (avg $9,127, total $940,096). CDS G1 tuition and fee fields were left blank, so costs come from SJSU's Bursar and financial aid office pages (see cost notes)."
+  }
+}

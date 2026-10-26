@@ -1,0 +1,169 @@
+{
+ "sources": {
+  "dl": {
+   "kind": "admissions_site",
+   "title": "Wayne State - International admissions: checklist and deadlines",
+   "url": "https://wayne.edu/admissions/international/deadlines",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Wayne State - English proficiency requirements (international undergraduate)",
+   "url": "https://wayne.edu/admissions/international/english-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "pay": {
+   "kind": "financial_aid_site",
+   "title": "Wayne State - International admissions: paying for college",
+   "url": "https://wayne.edu/admissions/international/paying-for-college",
+   "accessed": "2026-10-26"
+  },
+  "isch": {
+   "kind": "financial_aid_site",
+   "title": "Wayne State - Scholarships for international students",
+   "url": "https://wayne.edu/scholarships/international",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "financial_aid_site",
+   "title": "Wayne State - First-year undergraduate scholarships (fall 2027)",
+   "url": "https://wayne.edu/scholarships/freshmen",
+   "accessed": "2026-10-26"
+  },
+  "warrior": {
+   "kind": "financial_aid_site",
+   "title": "Wayne State - Warrior Award (fall 2027)",
+   "url": "https://wayne.edu/scholarships/warrior",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The international checklist asks for an SAT/ACT score or test-optional documents (one essay, an activities list and an optional letter of recommendation). Merit scholarships are considered on GPA if no score is submitted.",
+  "src": "dl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 25,
+  "notes": "Complete the university undergraduate application with the $25 fee. Documents: transcripts translated into English by an accredited evaluation agency plus original-language transcripts, course descriptions (for transfer credit), signed statement of financial support with a bank statement (not older than six months), passport/photo proof of citizenship and visa documents. $50 enrollment deposit, nonrefundable after May 1 for first-year students. The page does not mention the Common App.",
+  "src": "dl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "International fall application deadline (fall 2027)",
+   "notes": "Winter (January) deadline is Dec 1 and spring/summer is April 1. The page gives month/day only; the year is assumed for fall 2027. CDS C14 also lists Aug 1 as the first-year closing date.",
+   "src": "dl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "Priority date for maximum merit scholarship consideration (fall 2027)",
+   "notes": "The scholarship pages give Feb 1, 2027 (priority) and April 1, 2027 (final). The international checklist page separately says to submit all documents by December 1 for merit scholarship consideration; confirm which applies with Admissions.",
+   "src": "fr"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit becomes nonrefundable ($50)",
+   "notes": "Deposit is due when you accept the offer.",
+   "src": "dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if your native language is English, you completed all secondary/postsecondary education in the US, Canada or another listed English-speaking country (US high school students need at least two years), you hold a US associate degree, or you have transfer credit equivalent to WSU's composition requirements with a 2.0 GPA. Completing the highest level of WSU's English Language Institute also satisfies the requirement. Test results must be no more than two years old and must be sent by the testing agency (institution code 1898). TOEFL SuperScore is not accepted.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Exams taken before January 21, 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Exams taken on or after January 21, 2026. The page lists this value without naming the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Page says scores of 6.5 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "No citizenship needed for admission or merit awards; all incoming students are considered automatically. Fall 2027 first-year awards: Warrior Award $6,500 per year, Gold Award $4,500 per year, Green Award up to $2,500 per year, each for four years (3.0 GPA and full-time enrollment to keep). Federal aid is for US citizens and permanent residents only. CDS H6 boxes show both need-based and non-need-based institutional aid for nonresidents, but Wayne State's pages describe only merit awards.",
+  "src": "fr"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "Wayne State's admissions pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "dl"
+  },
+  "act": {
+   "code": null,
+   "note": "Wayne State's admissions pages do not print an ACT code; look it up at act.org.",
+   "src": "dl"
+  },
+  "toefl": {
+   "code": "1898",
+   "note": "Institution code for English proficiency tests; results must come directly from the testing agency to the Office of Undergraduate Admissions.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "Send results directly from the testing agency; the page gives institution code 1898 for English test reports.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Send results directly from the testing agency; the page gives institution code 1898 for English test reports.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "Wayne State's undergraduate page does not list PTE as an accepted test.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Public research university in Detroit; 84% overall admit rate and SAT middle 50% of 1060-1290 (CDS 2025-26). Placed just above D because of its research profile and test profile."
+ }
+}

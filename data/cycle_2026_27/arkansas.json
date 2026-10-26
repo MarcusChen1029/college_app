@@ -1,0 +1,192 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "UA International Admissions - Undergraduate Students (deadlines, requirements, fee, codes)",
+   "url": "https://international-students.uark.edu/admissions/undergraduate-students.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UA International Admissions - English Language Proficiency (tests and minimum scores)",
+   "url": "https://international-students.uark.edu/admissions/english-language-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "UA Undergraduate Catalog 2026-27 - International Students (admission, English requirement, conditional admission)",
+   "url": "https://catalog.uark.edu/undergraduatecatalog/enrollmentservices/internationalstudents/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "UA International Cost & Funding (estimated cost of attendance, non-resident undergraduate)",
+   "url": "https://international-students.uark.edu/cost-and-funding/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "UA Academic Scholarship Office - Non-Resident New Freshman Academic Scholarships",
+   "url": "https://scholarships.uark.edu/guide-to-academic-freshman-scholarships/nonresident-freshman-scholarships.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "recommended",
+  "notes": "For international freshmen the SAT or ACT is used for academic advisement and placement (a placement test is given before enrollment if no score arrives) and is required to be considered for scholarships; the page also says UA recommends that freshman applicants sit for the SAT. No minimum score for admission is listed.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "notes": "Online application plus $65 non-refundable fee. Also needed: Summary of Educational Experience form, unofficial transcripts (official ones if admitted), passport name page, official English score, and a bank statement or support letter before an I-20 is issued. Entering freshmen need the equivalent of a 3.0 GPA and four years of English plus three each of math, natural science and social studies (catalog).",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-01",
+   "label": "Priority admission deadline (fall 2027, international)",
+   "notes": "Listed under 'Scholarship Deadlines' on the international page; the page prints no year, so it is taken as the current cycle.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-15",
+   "label": "Priority scholarship deadline",
+   "notes": "SAT or ACT must be received by the scholarship deadline; contact scholars@uark.edu.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "Final scholarship deadline",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "Fall semester application deadline (international)",
+   "notes": "Priority is given to applications by this date; later ones are processed as space is available. The undergraduate catalog says May 31 instead. Spring deadline is Oct. 1 (catalog: Oct. 31).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Native speakers from listed English-speaking countries are exempt; also exempt: English Composition I and II with A-C at a U.S. regionally accredited college, grades 10-12 at a U.S. accredited high school, or a case-by-case waiver from the Director of International Admissions. A degree from India, Pakistan, Philippines, Hong Kong, Nigeria, Singapore, Ghana or Kenya does not exempt. Tests must be under two years old. Undergraduate-only alternatives: SAT EBRW 500 or ACT English 19. Applicants below the minimum may get conditional admission and take the Intensive English sequence (ELAC), completing Level VI with a B average to satisfy the requirement.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Old 0-120 scale value from the 2026-27 catalog. Institutional TOEFL 550 is accepted only through UA Testing Services.",
+   "src": "cat"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "The English proficiency page lists 'TOEFL Internet-Based 4.0'; it does not name the 1-6 scale but the value matches it.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Academic only; General Training not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 176,
+   "notes": "C1 Advanced. iTEP Academic 3.9 is also accepted.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "src": "cost",
+  "year": "2026-2027",
+  "total_coa_usd": 56256,
+  "notes": "UA's estimate for a non-resident undergraduate living in a dorm: tuition $30,604 + fees $2,580 + books $1,270 + room $10,144 + board $5,550 + personal $3,452 + transportation $2,656 = $56,256."
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "UA does not provide loans to international students. Freshman academic scholarships are decided from the scholarship application, SAT/ACT and GPA (priority Nov. 15, final Feb. 1). The non-resident scholarship page says most awards require recipients to be U.S. citizens, residents or foreign nationals permitted to study in the U.S.; its automatic New Arkansan Non-Resident Tuition Award ($15,600-$20,000 a year) is listed only for applicants from nine named U.S. states, so no international-specific amounts were confirmed. Confirm with scholars@uark.edu.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6866",
+   "src": "dates"
+  },
+  "act": {
+   "code": "0144",
+   "src": "dates"
+  },
+  "toefl": {
+   "code": "6866",
+   "src": "dates"
+  },
+  "ielts": {
+   "code": null,
+   "note": "IELTS institution code 232, or email the TRF number to intlapp@uark.edu.",
+   "src": "dates"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed on the international admissions pages.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "Send PTE-A scores to the University of Arkansas; no code is listed.",
+   "src": "dates"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Public flagship with a 74% overall admit rate and SAT middle 50% of 1020-1210, but the CDS shows only 182 of 1,578 international applicants admitted, so it is not a sure safety for internationals.",
+  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Walton College is the undergraduate business school.",
+  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "economics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure)."
+ }
+}

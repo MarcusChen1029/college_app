@@ -1,0 +1,127 @@
+{
+  "slug": "kansas",
+  "name": "University of Kansas",
+  "short_name": "KU",
+  "state_region": "KS",
+  "city": "Lawrence",
+  "latitude": 38.958549,
+  "longitude": -95.247567,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://ku.edu",
+  "admissions_url": "https://admissions.ku.edu",
+  "ipeds_unit_id": 155317,
+  "undergrad_enrollment": 22544,
+  "intl_undergrads": 690,
+  "student_faculty_ratio": 18.1,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Kansas Common Data Set 2025-2026 (PDF, sections A-J)",
+      "url": "https://aire.ku.edu/sites/air/files/files/CDS/KUCDS_2025_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 22187,
+    "admits": 20541,
+    "enrolled": 5040,
+    "in_state_applicants": 7479,
+    "in_state_admits": 7037,
+    "out_state_applicants": 14011,
+    "out_state_admits": 12847,
+    "intl_applicants": 697,
+    "intl_admits": 657,
+    "pct_submit_sat": 7.1,
+    "pct_submit_act": 50.7,
+    "gpa_avg": 3.71,
+    "pct_reporting_gpa": 98,
+    "gpa_distribution": {
+      "4.0": 38,
+      "3.75-3.99": 21,
+      "3.50-3.74": 17,
+      "3.25-3.49": 12,
+      "3.00-3.24": 7,
+      "2.50-2.99": 4,
+      "2.0-2.49": 1,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1 residency split (in-state 7,479 / out-of-state 14,011 / international 697 applicants; international admit rate computed 657/697 = 94.3%, 157 enrolled). Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (22,544; nonresident 690). No early decision or early action; no waitlist. Admission is formula-style: students are assured admission with a 3.25+ GPA, or ACT 21 / SAT 1060 with a 2.0+ GPA (CDS C6); international applicants are admitted at a 2.5 GPA per the international admissions page."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1080,
+      1170,
+      1280
+    ],
+    "SAT_ERW": [
+      550,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      520,
+      580,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      19,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: SAT/ACT not required for admission but considered; KU highly encourages scores, which do not hurt admission eligibility but may be used by professional schools and for placement."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 11298,
+    "tuition_out_of_state_usd": 30177,
+    "tuition_intl_usd": 30177,
+    "required_fees_usd": 1155,
+    "room_board_usd": 11798,
+    "books_usd": 1224,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 330,
+    "intl_avg_award_usd": 12572,
+    "notes": "CDS G1 (2025-26): out-of-state tuition is also paid by international students. H6 (final AY2025): only institutional non-need-based aid (International Admissions Scholarships); 330 international undergraduates received aid, averaging $12,572 ($4,148,695 total). The international admissions cost page (year not printed) estimates $33,854 tuition and fees plus $18,424 living expenses = $52,278 per year. Course fees vary by school."
+  }
+}
