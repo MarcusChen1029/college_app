@@ -91,7 +91,8 @@ export const SUB_SUBJECT_LABEL: Record<string, string> = {
 
 export const LIMITS = { schoolName: 200, courseName: 200, grade: 40, notes: 500, credit: 100, short: 100 } as const;
 
-export type Term = { term: TermCode; grade: string; gradeWeighted?: string; status: TermStatus };
+/** One term's grade as printed. `credit` is that term's credit as printed (terms can carry different credits); a "none" term counts as 0. */
+export type Term = { term: TermCode; grade: string; gradeWeighted?: string; status: TermStatus; credit?: number | null };
 
 export type TranscriptSchool = {
   id: string;
@@ -127,6 +128,7 @@ export type TranscriptCourse = {
   scale: GradeScale;
   scaleMax: number | null;
   level: Level;
+  /** The course's total credit. When any term carries a credit, this is the sum of the term credits (see validateCourse). */
   credit: number | null;
   creditUnit: CreditUnit;
   subject: Subject;
@@ -222,6 +224,29 @@ export function validateSchool(i: Partial<Record<keyof SchoolInput, unknown>>): 
   return errors.length ? { ok: false, errors } : { ok: true, value };
 }
 
+/** An optional credit in [0, LIMITS.credit], or null. Accepts numeric strings from form inputs. */
+function creditValue(v: unknown, label: string, errors: string[]): number | null {
+  if (v == null || v === "") return null;
+  const n = typeof v === "string" ? Number(v) : v;
+  if (typeof n !== "number" || !Number.isFinite(n) || n < 0 || n > LIMITS.credit) {
+    errors.push(`${label} must be a number from 0 to ${LIMITS.credit}.`);
+    return null;
+  }
+  return n;
+}
+
+/** Adds credits without floating-point dust (0.1 + 0.2 is 0.3). */
+export const addCredits = (xs: number[]): number => Number(xs.reduce((a, b) => a + b, 0).toFixed(4));
+
+/**
+ * The course credit implied by its terms: the sum of the term credits, a "none" (not taken / no grade) term counting as 0.
+ * null when no term other than a "none" one carries a credit, so the course credit stays as entered.
+ */
+export function termCreditSum(ts: readonly Term[]): number | null {
+  if (!ts.some((t) => t.status !== "none" && t.credit != null)) return null;
+  return addCredits(ts.map((t) => (t.status === "none" ? 0 : (t.credit ?? 0))));
+}
+
 function terms(v: unknown, period: PeriodType, errors: string[]): Term[] {
   if (v == null) return [];
   if (!Array.isArray(v)) {
@@ -242,7 +267,8 @@ function terms(v: unknown, period: PeriodType, errors: string[]): Term[] {
     const status = choice(TERM_STATUSES, t.status, "graded", "Term status", errors);
     const grade = text(t.grade, LIMITS.grade, `Grade for ${t.term}`, errors);
     const weighted = text(t.gradeWeighted, LIMITS.grade, `Weighted grade for ${t.term}`, errors);
-    out.push(weighted ? { term: t.term, grade, gradeWeighted: weighted, status } : { term: t.term, grade, status });
+    const credit = creditValue(t.credit, `Credit for ${t.term}`, errors);
+    out.push({ term: t.term, grade, ...(weighted ? { gradeWeighted: weighted } : {}), status, ...(credit != null ? { credit } : {}) });
   }
   return out;
 }
@@ -275,11 +301,13 @@ export function validateCourse(i: Partial<Record<keyof CourseInput, unknown>>): 
   if (sub && !SUB_SUBJECTS[subject].includes(sub)) errors.push(`Sub-subject "${sub}" doesn't belong to ${subject}.`);
   const academicYear = wholeNumber(i.academicYear, 1990, 2100, "Academic year", errors);
   if (academicYear == null) errors.push("Enter the academic year.");
-  let credit: number | null = null;
-  if (i.credit != null && i.credit !== "") {
-    const n = typeof i.credit === "string" ? Number(i.credit) : i.credit;
-    if (typeof n !== "number" || !Number.isFinite(n) || n < 0 || n > LIMITS.credit) errors.push(`Credit must be a number from 0 to ${LIMITS.credit}.`);
-    else credit = n;
+  let credit = creditValue(i.credit, "Credit", errors);
+  const courseTerms = terms(i.terms, period, errors);
+  // Per-term credits win: the course credit is their sum (the form, the JSON import and the MCP tools all save through here).
+  const summed = termCreditSum(courseTerms);
+  if (summed != null) {
+    if (summed > LIMITS.credit) errors.push(`The term credits add up to ${summed}; the total must be ${LIMITS.credit} or less.`);
+    else credit = summed;
   }
   let scaleMax: number | null = null;
   if (i.scaleMax != null && i.scaleMax !== "") {
@@ -294,7 +322,7 @@ export function validateCourse(i: Partial<Record<keyof CourseInput, unknown>>): 
     gradeLevel: wholeNumber(i.gradeLevel, 5, 13, "Grade level", errors),
     name,
     period,
-    terms: terms(i.terms, period, errors),
+    terms: courseTerms,
     finalGrade,
     scale: choice(GRADE_SCALES, i.scale, "letter_plus_minus", "Grade scale", errors),
     scaleMax,
