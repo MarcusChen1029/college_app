@@ -1,0 +1,153 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "ATU International Admissions Portal - FAQ (deadlines, English proficiency, funding, academic records)",
+      "url": "https://admissions.atu.edu/portal/intl_informational_portal?cmd=faq",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "ATU International Students and Scholars - English proficiency requirements",
+      "url": "https://www.atu.edu/imsso/EnglishProficiencyRequirements.php",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "other",
+      "title": "ATU International Students and Scholars - Costs for full-time international students 2026-2027",
+      "url": "https://www.atu.edu/imsso/costs.php",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "ATU International Students and Scholars - Scholarships",
+      "url": "https://www.atu.edu/imsso/scholarships.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international undergraduate FAQ requires only a 2.0 GPA, English proficiency and secondary-school records; SAT, ACT or ACCUPLACER scores are encouraged. Students admitted without scores take the ACCUPLACER on arrival before registering. (Domestic applicants must submit ACT/SAT under an Arkansas state requirement, per the CDS.)",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply in the ATU international application portal. The $50 application fee must be paid before the in-office credential evaluation of foreign secondary records. First-time students submit mark sheets/certificates showing 12 years of schooling (unofficial uploads are accepted for admission). Evidence of funding of $29,950 for 9 months (plus $3,000 per dependent) is needed before an I-20 is issued. Minimum entering GPA 2.0; the CDS shows an almost-open admit rate (3,701 of 3,797 admitted).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International application deadline for NEW visa applicants (fall 2027 entry)",
+      "notes": "Dates are printed without a year; treated as fall 2027. For new visa applicants the spring deadline is Nov. 1 and summer April 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "Deadline for CURRENT visa holders already inside the U.S. (fall 2027 entry)",
+      "notes": "For current visa holders the spring deadline is Dec. 1 and summer May 10.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-31",
+      "label": "International Excellence / IB scholarship file complete (fall 2027 entry)",
+      "notes": "Complete file = international undergraduate application, scholarship application, high school transcript with GPA and two letters of recommendation, received by March 31 for fall (September 30 for spring).",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants from traditionally English-speaking countries who believe the requirement should be waived must email internationaladmissions@atu.edu after applying. Transfer students from U.S. colleges may instead show College English Composition I and II with a C or better. Scores must be no more than 2 years old. A copy of an official TOEFL, IELTS or PTE report can be uploaded to the application portal.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Valid MyBest TOEFL scores accepted. Other accepted TOEFL forms: written 500, computerized 173, TOEFL Essentials 8. The graduate minimum (79) does not apply to undergraduates.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "iBT on the 1-6 scale (graduate minimum is 4.0).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 42,
+      "notes": "Pearson Test of English. EIKEN Grade 2A is also accepted. Duolingo and Cambridge are not listed.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "First-time international students (high school seniors with a 3.25+ cumulative GPA) can compete for the International Excellence Scholarship ($4,500 per semester for up to 8 semesters, must live on campus) or the International Baccalaureate Scholarship ($2,550 per semester); awards are competitive and may be taxable depending on the home country. Federal aid is not available to international students. ATU also lets a student who enrolls with a 2.25 GPA pay in-state tuition (about half of the out-of-state rate). CDS H6: nonresidents can receive institutional non-need-based aid; 26 did, averaging $9,723.",
+    "src": "schol"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "costs",
+    "tuition_intl_usd": 12720,
+    "required_fees_usd": 2864,
+    "intl_extra_fees_usd": 1646,
+    "room_board_usd": 11390,
+    "books_usd": 1330,
+    "total_coa_usd": 29950,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 26,
+    "intl_avg_award_usd": 9723,
+    "notes": "ATU international estimate for 12 credit hours per semester: tuition $12,720 ($529.98 per credit hour), fees $2,864 (include a $50 international student services fee), room and board $11,390, books $1,330, mandatory health insurance $1,646 (shown as the international extra), total $29,950. A student entering with a 2.25 GPA can get the in-state rate (roughly half the tuition), so the real cost may be lower. The CDS G1 listed in-state tuition $7,718 and out-of-state $15,436 but marked 2026-27 costs as not yet final."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "ATU's international pages give no SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "ATU's international pages give no ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6010",
+      "note": "ATU ETS school code for sending TOEFL scores directly.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "nursing": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

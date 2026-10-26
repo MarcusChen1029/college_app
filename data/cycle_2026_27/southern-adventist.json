@@ -1,0 +1,120 @@
+{
+  "sources": {
+    "gen": {
+      "kind": "admissions_site",
+      "title": "Southern Adventist University - Undergraduate admission requirements and important dates",
+      "url": "https://www.southern.edu/undergrad/admissions/general-admissions.html",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Southern Adventist University - International student admissions",
+      "url": "https://www.southern.edu/academics/internationalstudents/future.html",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "other",
+      "title": "Southern Adventist University - Tuition and fees (2026-2027 sample yearly cost)",
+      "url": "https://www.southern.edu/undergrad/finances/tuition.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Southern Adventist University - Grants and scholarships",
+      "url": "https://www.southern.edu/undergrad/finances/grants-and-scholarships.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Minimum GPA 2.5 plus ACT 18 or SAT 960, but test scores are not required if the high school GPA is 2.75 or higher. Scores are still needed for certain programs (School of Education and Psychology, School of Journalism and Communication) and for classes with test prerequisites, and they set the Renewable Academic Scholarship. The international page lists 'ACT or SAT scores' among documents to submit.",
+    "src": "gen"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply online at Southern's own application. International documents: evaluated high school transcripts (SpanTran is recommended, about $140; not needed for Bermuda and Bahamas), ACT/SAT, English proficiency scores, declaration of finances, passport page, and a $3,000 international commitment deposit. Minimum 2.5 GPA on a 4.0 scale including English, math, natural science, religion, social science and foreign language. Applicants below the standard can be admitted on academic probation (GPA 2.25+ and ACT 16 or SAT 880). The application fee is not stated on the admissions pages (College Navigator listed $25 for 2024-25), so it is left blank.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-03-01",
+      "label": "Freshman priority deadline (priority processing and scholarship consideration), fall 2027",
+      "notes": "Dates are printed without a year; treated as fall 2027. There is no priority deadline for winter or summer.",
+      "src": "gen"
+    },
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International acceptance deadline (fall 2027 entry)",
+      "notes": "International students must complete the acceptance process by this date or no I-20 is issued for the semester. Winter (January) semester acceptance deadline is October 5. Other fall dates: declaration of finances June 22, I-20 deadline July 6.",
+      "src": "intl"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-06-24",
+      "label": "International commitment deposit ($3,000) due (fall 2027 entry)",
+      "notes": "Winter semester international deposit deadline is November 18.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: citizens of Australia, The Bahamas, Bermuda, Canada, Ireland, Jamaica, New Zealand, Barbados, Trinidad and Tobago, South Africa or the United Kingdom; or students who complete four years of U.S. secondary school with a 2.5 GPA and either a 3.0 in English subjects or ACT Composite, English and Reading of 18+. iTEP is also accepted (4.0+ regular admit, 3.0-3.9 with ESL). Southern offers a limited ESL program: scores in the middle band admit the student with ESL support (conditional pathway); scores below it are not admitted.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "79+ = regular admit; 45-78 = admit with ESL support; 44 or lower = not admitted. Paper-delivered TOEFL: 550+ regular, 450-549 with ESL.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "6.5+ = regular admit; 5.5-6.0 = admit with ESL support; 5.4 or lower = not admitted.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "notes": "115+ = regular admit; 85-114 = admit with ESL support; 84 or lower = not admitted. Duolingo has given Southern a limited number of fee-waiver coupons for high-achieving, low-income applicants (apply first, then request).",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "merit_scholarships": null,
+    "notes": "Southern lists automatic freshman merit awards by GPA and ACT/SAT points (Honors $2,000, Dean $4,000, Presidential $6,000 per year, or 50% tuition at the top band) and a full-tuition award at ACT 33-36 depending on GPA, but the pages do not say whether international students are eligible. The Three-Way church scholarship match is explicitly open to international undergraduates ($500 per year maximum). Federal aid requires U.S. citizenship or eligible status. Ask the admissions office what international applicants receive.",
+    "src": "schol"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "tuit",
+    "tuition_usd": 28900,
+    "required_fees_usd": 1500,
+    "room_board_usd": 9900,
+    "total_coa_usd": 40300,
+    "notes": "Sample yearly cost for a residence hall student: tuition $28,900 (12-16 hours), general fee $1,500, residence hall rent $6,000, food allowance $3,900 = $40,300; commuter total $30,400. Southern says the typical out-of-pocket amount is $11,800 per year after scholarships and grants. The page does not mention separate international fees or health insurance."
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "nursing": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

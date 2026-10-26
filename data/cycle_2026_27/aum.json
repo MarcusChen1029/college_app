@@ -1,0 +1,166 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "AUM - International student admissions",
+      "url": "https://www.aum.edu/international-student-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "AUM Office of Global Initiatives - International undergraduate student requirements and deadlines",
+      "url": "https://www.aum.edu/global-initiatives/international-undergraduate-student-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "AUM - English proficiency test score requirements (international students)",
+      "url": "https://www.aum.edu/international-students/test-score-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "AUM - Undergraduate student admissions (freshman requirements, test waivers, SAT/ACT codes)",
+      "url": "https://www.aum.edu/admissions/undergraduate-student-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "AUM - International Undergrad AUM Scholarship",
+      "url": "https://www.aum.edu/scholarship/international-undergrad-aum-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "schw": {
+      "kind": "financial_aid_site",
+      "title": "AUM - International Undergrad Warhawk Scholarship",
+      "url": "https://www.aum.edu/scholarship/international-undergrad-warhawk-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "other",
+      "title": "AUM - Tuition & fees 2026-2027 and estimated cost of attendance",
+      "url": "https://www.aum.edu/admissions/tuition-and-fees/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "AUM says ACT/SAT scores are not required for admission and that scholarships and admission are considered without a score on file; scores can still help with scholarships. Freshman minimums on the admissions page: 2.3 unweighted high school GPA and ACT 18 or SAT 940 (minimum) when a score is submitted. The 2025-26 CDS ticks 'Recommended' for SAT/ACT. AUM evaluates GPA, grade trends and course rigor.",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "International applicants use AUM's online international application, which has no application fee (domestic freshmen pay $25 per CDS C13). Send a passport copy, the official high school transcript (with English translation if needed), proof of English proficiency (unless exempt), a bank statement and sponsor letter (the requirements page says the statement should show at least $33,233) and a supplemental international student form. A non-refundable $100 I-20 processing fee is charged after acceptance. CDS C7 lists essays and recommendations as not considered; no interview.",
+    "src": "req"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "International applicants: fall 2027 application deadline",
+      "notes": "AUM's international requirements page says it accepts students throughout the year and asks fall applicants to apply by July 15 (no year printed; treated as fall 2027). Spring: Nov 15; summer: April 15. The domestic undergraduate page lists Aug 1 for fall, but the international date is used here. Undergraduate international applications are processed in 5 to 8 business days once complete.",
+      "src": "req"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: students with 24 semester credit hours (or AUM English composition equivalent) from an accredited US college, a US secondary diploma or US bachelor's/master's degree, citizens of listed English-speaking countries (UK, Ireland, Canada except Quebec, Australia, New Zealand, Nigeria, Ghana, Jamaica and others), or students in certain government/military contract programs. Also accepted instead of a test: ACT composite 18 with English 18 (code 0057), SAT 860 combined with 450 Critical Reading (code 1036), iTEP 3.7, AP English Language or Literature 3+, IB English A 4+, or completion of AUM's Intensive English Program, AUGlobal GLOB 0310 or ELS Level 112. Submit only one test.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Institution code 1036. Paper-based TOEFL minimum 500.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "The test-score page lists 'New Scale of 1-6 band: 3.5'.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Page asks for CEFR level B2 on Cambridge English exams (Preliminary, First, Advanced, Proficient, Business Preliminary, Vantage and Higher); no numeric score is given.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "International Undergrad AUM Scholarship: $2,000 a year ($8,000 total over four years) for freshmen with a 2.75/4.0 high school GPA or TOEFL iBT 68 / paper 520 / IELTS 6.0. International Undergrad Warhawk Scholarship: $4,000 a year ($16,000 total) with a 3.0 GPA or TOEFL iBT 76 / paper 540 / IELTS 6.5. AUM's international page says scholarships are 'up to $4,000 per year'; how to apply and whether the two combine are not stated. CDS H6 ticks both need-based and non-need-based institutional aid for nonresident undergraduates, but AUM's international pages list only these merit awards. International students are not eligible for federal aid.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "1036",
+      "src": "ug"
+    },
+    "act": {
+      "code": "0057",
+      "src": "ug"
+    },
+    "toefl": {
+      "code": "1036",
+      "note": "AUM institutional code printed on the test-score page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; scores are sent directly by the testing agency.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

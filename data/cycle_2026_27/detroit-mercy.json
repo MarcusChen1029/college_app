@@ -1,0 +1,165 @@
+{
+ "sources": {
+  "proc": {
+   "kind": "admissions_site",
+   "title": "University of Detroit Mercy - International admission process (freshman deadlines, requirements, English minimums)",
+   "url": "https://www.udmercy.edu/admission/international/admission-process.php",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "Detroit Mercy Undergraduate Catalog 2026-2027 - Admission to the University",
+   "url": "https://www.udmercy.edu/academics/catalog/undergraduate2026-2027/admission/index.php",
+   "accessed": "2026-10-26"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "University of Detroit Mercy - Financial aid for international students",
+   "url": "https://www.udmercy.edu/admission/financial-aid/type/international.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "University of Detroit Mercy - Cost of Attendance 2026-27",
+   "url": "https://www.udmercy.edu/admission/financial-aid/cost/index.php",
+   "accessed": "2026-10-26"
+  },
+  "cdsfee": {
+   "kind": "cds",
+   "title": "Detroit Mercy Common Data Set 2024-2025, section C13 (application fee)",
+   "url": "https://www.udmercy.edu/academics/academic-affairs/research/files/cds/2425_UDM_CDS_Final.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Catalog and international page: high school applicants do not need to submit an SAT or ACT score for most undergraduate programs but may choose to; some programs may require one. A competitive SAT or ACT score can also serve as English proficiency for freshman applicants.",
+  "src": "proc"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply on Detroit Mercy's own application or the Common App. International freshman checklist: high school transcript, 250-word essay on any topic, one letter of recommendation (guidance counselor or teacher), bank statement showing funds for the first year, Statement of Financial Support form if the account is a sponsor's, and a passport copy. CDS C13 (2024-25) says Detroit Mercy has no application fee; the admissions pages do not mention a fee. Some programs have earlier deadlines or extra requirements (5-year Physician Assistant and 7-year Dental: January 15).",
+  "src": "proc"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-01",
+   "label": "Early Action (fall 2027 entry)",
+   "notes": "Non-binding. The international page prints 'Early Action: November 1' with no year; taken as fall 2027. The catalog says early action applicants are notified by December 1.",
+   "src": "proc"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Scholarship priority deadline",
+   "notes": "Applicants by this date are considered first for scholarships (catalog).",
+   "src": "proc"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Regular/rolling admission deadline (fall 2027 entry)",
+   "notes": "Decisions are released as applications are completed; the international page urges applying early because of visa time. CDS C14 also lists March 1 as the closing date and December 1 as the priority date.",
+   "src": "proc"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for admission to most programs, but proficiency must be shown before classes start: citizenship of an English-official country, a degree from a U.S. or English-medium institution, a minimum test score, or (freshmen only) a competitive SAT or ACT score. Students without a qualifying score take an English placement test on arrival; those who do not pass must enroll in the American Language and Culture Program (ALCP) and may have to defer the start of classes a semester or more. ALCP classes do not count toward full-time status for scholarships. Nursing applicants must have TOEFL iBT 83 (4 on the new scale) on file before a decision.",
+  "src": "cat"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 81,
+   "notes": "Paper-based minimum 550. Nursing 83. Some older catalog pages (2024-25) list iBT 80; the 2026-27 catalog and the admission page say 81.",
+   "src": "cat"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "The international page gives '4 in the new scale' alongside the 81 iBT minimum; nursing also 4 (83 on the old scale).",
+   "src": "proc"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band score.",
+   "src": "cat"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "cat"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "International freshmen who enroll full-time (and pass the English requirement) receive a Detroit Mercy scholarship of up to $10,000 per academic year based on cumulative high school GPA; it is renewable and cannot be combined with other university grants. Canadian freshmen can also earn a $1,000 Visit Grant. International students are not eligible for federal or state aid. CDS H6 (2024-25 est.): 126 degree-seeking undergraduate nonresidents received institutional aid averaging $18,443, which is above the published $10,000 scholarship cap, so other awards may exist; the aid page describes no need-based aid for international undergraduates.",
+  "src": "fa"
+ },
+ "majors": [],
+ "cost": {
+  "year": "2026-2027",
+  "src": "cost",
+  "tuition_usd": 34276,
+  "tuition_out_of_state_usd": 34276,
+  "tuition_intl_usd": 34276,
+  "room_board_usd": 11502,
+  "books_usd": 1468,
+  "total_coa_usd": 51654,
+  "notes": "2026-27 full-time on-campus cost of attendance for business, humanities, health professions and science: tuition $34,276, housing and food $11,502, books $1,468, transportation $1,190, personal $3,146, loan fees $72 = $51,654. Architecture and engineering tuition is $35,498 (total $52,876). No separate international tuition rate is published."
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the Detroit Mercy admissions pages.",
+   "src": "proc"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the Detroit Mercy admissions pages.",
+   "src": "proc"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is printed on the Detroit Mercy admissions pages.",
+   "src": "proc"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "proc"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "proc"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "hawaii-pacific",
+  "name": "Hawaii Pacific University",
+  "short_name": "HPU",
+  "state_region": "HI",
+  "city": "Honolulu",
+  "latitude": 21.310306,
+  "longitude": -157.859645,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.hpu.edu",
+  "admissions_url": "https://www.hpu.edu/admissions/",
+  "ipeds_unit_id": 141644,
+  "undergrad_enrollment": 3533,
+  "intl_undergrads": 342,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Hawaii Pacific University (fall 2024 admissions, enrollment, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141644",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141644",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 14538,
+    "admits": 12282,
+    "enrolled": 543,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 8,
+    "notes": "No Common Data Set file is posted by HPU (its 'By the Numbers' page cites one but links none), so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 14,206 applicants, 86% admitted, 4% of admitted enrolled; its SAT middle 50% (EBRW 510-610, Math 488-590) rests on only 72 submitters, so the fall 2023 percentiles are kept. IPEDS gives no international applicant/admit split and no GPA data. Undergraduate enrollment 3,533 and student-to-faculty ratio 15:1 are College Navigator fall 2024."
+  },
+  "scores": {
+    "SAT_ERW": [
+      548,
+      590,
+      650
+    ],
+    "SAT_MATH": [
+      520,
+      565,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      25,
+      29
+    ],
+    "ACT_ENGLISH": [
+      19,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      18,
+      24,
+      26
+    ]
+  }
+}

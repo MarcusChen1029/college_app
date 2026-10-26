@@ -1,0 +1,96 @@
+{
+  "slug": "dallas-baptist",
+  "name": "Dallas Baptist University",
+  "short_name": "DBU",
+  "state_region": "TX",
+  "city": "Dallas",
+  "latitude": 32.710017,
+  "longitude": -96.947006,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.dbu.edu",
+  "admissions_url": "https://www.dbu.edu/admissions/",
+  "ipeds_unit_id": 224226,
+  "undergrad_enrollment": 2785,
+  "intl_undergrads": 188,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - Dallas Baptist University (fall 2024 admissions, enrollment, test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=224226",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "DBU Office of Financial Aid - 2026/27 Undergraduate Full-Time Cost of Attendance (PDF)",
+      "url": "https://www.dbu.edu/cashier/_documents/federal-cost-of-attendance-disclosures-26-27.pdf",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=224226",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=224226",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 8018,
+    "admits": 7303,
+    "enrolled": 579,
+    "pct_submit_sat": 29,
+    "pct_submit_act": 15,
+    "notes": "Baseline from IPEDS College Navigator (fall 2024 entering class): 6,163 applicants, 89% admitted, 11% of admitted enrolled. College Navigator prints only rounded percentages, so admit and enrolled counts are left null. DBU's Common Data Set could not be found on dbu.edu (the Institutional Effectiveness and Research pages link none), so international applicant counts, GPA and ED data are not available. Test-score percentiles come from only 180 SAT and 91 ACT submitters (29% and 15% of enrollees). Undergraduate enrollment 2,785 and student-faculty ratio 16:1 are IPEDS fall 2024. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      470,
+      535,
+      593
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      18,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "coa",
+    "tuition_usd": 41190,
+    "required_fees_usd": 2370,
+    "room_board_usd": 12898,
+    "books_usd": 1290,
+    "other_usd": 2892,
+    "total_coa_usd": 60640,
+    "notes": "DBU 2026/27 on-campus cost of attendance: block tuition $41,190 ($20,595 per semester, 12-18 hours), fees $2,370, housing $5,898 and meals $7,000 (budget estimates), books $1,290, other = transportation $1,150 + personal $1,650 + loan fees $92. The same rates apply to international students."
+  }
+}

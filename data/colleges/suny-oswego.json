@@ -1,0 +1,77 @@
+{
+  "slug": "suny-oswego",
+  "name": "SUNY Oswego",
+  "short_name": "SUNY Oswego",
+  "state_region": "NY",
+  "city": "Oswego",
+  "latitude": 43.454287,
+  "longitude": -76.540798,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.oswego.edu/",
+  "admissions_url": "https://www.oswego.edu/admissions/",
+  "ipeds_unit_id": 196194,
+  "undergrad_enrollment": 5517,
+  "intl_undergrads": 177,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "SUNY Oswego Common Data Set 2024-2025 (PDF linked from the Institutional Research data page)",
+      "url": "https://drive.google.com/file/d/1e7WOVkoFxwtWSWOeS89YHXeFULWx4NuP/view?usp=drive_link",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (fall 2024: enrollment, ratio, SAT/ACT ranges)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196194",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196194",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 15148,
+    "admits": 12204,
+    "enrolled": 1265,
+    "in_state_applicants": 13874,
+    "in_state_admits": 11073,
+    "out_state_applicants": 783,
+    "out_state_admits": 669,
+    "intl_applicants": 491,
+    "intl_admits": 462,
+    "gpa_avg": 3.11,
+    "pct_reporting_gpa": 99,
+    "pct_submit_sat": 23,
+    "notes": "CDS C1 (fall 2024 first-year class; residency by known physical address): 462 of 491 international applicants were admitted (94%) versus 81% overall; 31 international students enrolled. Average high school GPA 3.11 uses the CDS conversion (HS average x 0.08 - 4.0 from a 100-point scale); the GPA band table could not be read from the PDF text. 23% (291 students) submitted SAT; the CDS shows no ACT submitters (IPEDS: 3%, 34 students). IPEDS fall 2024 ranges: SAT EBRW 530-630, Math 540-640, ACT composite 23-29. No early decision/early action. Undergrad enrollment (5,517) is from College Navigator, fall 2024; it lists 3% nonresident (no headcount)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1080,
+      1180,
+      1250
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 7070,
+    "tuition_out_of_state_usd": 17320,
+    "tuition_intl_usd": 17320,
+    "required_fees_usd": 1755,
+    "room_board_usd": 17026,
+    "books_usd": 1000,
+    "notes": "CDS G1 (first-year, 2024-25): nonresident tuition $17,320, required fees $1,755, food and housing on campus $17,026. These are 2024-25 figures; 2026-27 rates were not confirmed."
+  }
+}

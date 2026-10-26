@@ -1,0 +1,79 @@
+{
+  "slug": "palm-beach-atlantic",
+  "name": "Palm Beach Atlantic University",
+  "short_name": "PBA",
+  "state_region": "FL",
+  "city": "West Palm Beach",
+  "latitude": 26.7044,
+  "longitude": -80.05247,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.pba.edu",
+  "admissions_url": "https://www.pba.edu/admissions/undergraduate/international/",
+  "ipeds_unit_id": 136330,
+  "undergrad_enrollment": 3312,
+  "intl_undergrads": 227,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Palm Beach Atlantic University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=136330",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=136330",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=136330",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 10335,
+    "admits": 8474,
+    "enrolled": 841,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 14,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was read, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 25%, ACT 14%). International undergraduates are left null; the school says students come from about 75-85 countries."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      540,
+      620
+    ],
+    "SAT_MATH": [
+      450,
+      510,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      16,
+      20,
+      25
+    ]
+  }
+}

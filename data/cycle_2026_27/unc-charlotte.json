@@ -1,0 +1,177 @@
+{
+  "sources": {
+    "dl": {
+      "kind": "admissions_site",
+      "title": "UNC Charlotte - International first-year admission: Deadlines & Review",
+      "url": "https://admissions.charlotte.edu/apply/international-students/first-year-admission/deadlines-review/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UNC Charlotte - International first-year admission (application checklist)",
+      "url": "https://admissions.charlotte.edu/apply/international-students/first-year-admission/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UNC Charlotte - Proof of English Proficiency (international)",
+      "url": "https://admissions.charlotte.edu/apply/international-students/proof-of-english-proficiency/",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "UNC Charlotte - First-year application requirements and deadlines",
+      "url": "https://admissions.charlotte.edu/apply/first-year-students/application-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "rev": {
+      "kind": "admissions_site",
+      "title": "UNC Charlotte - First-year application review (test policy, competitive majors)",
+      "url": "https://admissions.charlotte.edu/apply/first-year-students/application-review/",
+      "accessed": "2026-10-26"
+    },
+    "adm": {
+      "kind": "admissions_site",
+      "title": "UNC Charlotte - First-year admitted for fall (next steps, score codes)",
+      "url": "https://admissions.charlotte.edu/enroll/next-steps-checklists/first-year-admitted-fall/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UNC Charlotte University Scholarship Office - FAQs for students (international applicants)",
+      "url": "https://scholarships.charlotte.edu/apply/faqs-for-students/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Fall 2027 applicants with a weighted GPA of 2.8 or higher at the end of junior year do not need SAT/ACT (scores may be self-reported); applicants below 2.8 must submit SAT or ACT. The pages give no separate international rule. CLT scores are optional and cannot replace required SAT/ACT.",
+    "src": "rev"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 80,
+    "notes": "International first-year fee is $80 (the domestic page and CDS list $75). Apply via the Future 49er Portal or Common App. Needs official high school transcripts for the last three years plus a course-by-course credential evaluation from a NACES agency (the university does not evaluate foreign transcripts), one essay, and proof of English proficiency. No interview or recommendation letters. Business, Nursing, Computer Science and Engineering are competitive majors that expect an above-average profile.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "label": "Early Action (fall 2027 entry)",
+      "notes": "The page prints no year; assumed the fall 2027 cycle. Decision by Jan 30. Required documents are due within 15 days after the deadline. Spring-term first-year applicants also apply by Nov 1.",
+      "src": "dl"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular deadline (fall 2027 entry)",
+      "notes": "Decision by April 1; documents due within 15 days. Applications after Feb 1 are reviewed only as space is available (decisions after April 1). The CDS lists a June 1 closing date. The international page has a single table (no separate international dates) and advises applying early for visa processing.",
+      "src": "dl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Citizens currently studying in a country on the English Proficiency Exempt Country List are exempt. Other routes: SAT EBRW 500, ACT Reading 19/20, ELTI Level 5, or a US high school diploma with two completed years. Applicants who need more English can apply for conditional admission through the on-campus English Language Training Institute (ELTI), with guaranteed bachelor's admission after finishing it and no new application. Scores are valid for 2 years; minimums do not guarantee admission.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "subs": {
+        "each_section": 14
+      },
+      "notes": "Old 0-120 scale, from the Proof of English Proficiency page (institution code 5105). That page is older than the application checklist, which shows a new-scale figure.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "subs": {
+        "each_section": 4
+      },
+      "notes": "Checklist page: 'TOEFL IBT: 4 or higher (minimum of 4 in each sub score)'. It does not name the 1-6 scale but the numbers fit it.",
+      "src": "fy"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Overall 6.0. The sub-score minimum is 5.5 on the application checklist but 5.0 on the Proof of English Proficiency page.",
+      "src": "fy"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Both pages list 105.",
+      "src": "fy"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 52,
+      "subs": {
+        "each_section": 42
+      },
+      "notes": "Application checklist: 52 (minimum 42 each). The Proof of English Proficiency page still lists 48 (minimum 35 each); the higher, newer figure is used.",
+      "src": "fy"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Need-based aid requires a FAFSA (US citizens and permanent residents only). Admitted students apply for merit scholarships through the NinerScholars portal; there is no automatic merit award and no international-specific amounts are published. Early scholarships for incoming first-years: Feb 15; most others Apr 1; the FAQ also lists Dec 1 for Honors College priority and university-wide merit scholarships.",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5105",
+      "note": "UNC Charlotte SAT code.",
+      "src": "adm"
+    },
+    "act": {
+      "code": "3163",
+      "note": "UNC Charlotte ACT code.",
+      "src": "adm"
+    },
+    "toefl": {
+      "code": "5105",
+      "note": "Institution code listed on the Proof of English Proficiency page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

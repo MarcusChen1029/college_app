@@ -1,0 +1,87 @@
+{
+  "slug": "loyola-chicago",
+  "name": "Loyola University Chicago",
+  "short_name": "Loyola Chicago",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 42.000765,
+  "longitude": -87.656872,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.luc.edu",
+  "admissions_url": "https://www.luc.edu/undergrad/admissions/internationalstudents/",
+  "ipeds_unit_id": 146719,
+  "undergrad_enrollment": 12640,
+  "intl_undergrads": 275,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Loyola University Chicago Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.luc.edu/media/lucedu/oie/CDS%202025-26%20-%20Loyola%20University%20Chicago%20-%20Final_af.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 43954,
+    "admits": 33009,
+    "enrolled": 2605,
+    "in_state_applicants": 20089,
+    "in_state_admits": 15546,
+    "out_state_applicants": 15530,
+    "out_state_admits": 13530,
+    "intl_applicants": 7973,
+    "intl_admits": 3769,
+    "waitlist_offered": 0,
+    "waitlist_accepted": 0,
+    "waitlist_admitted": 0,
+    "pct_submit_sat": 39,
+    "pct_submit_act": 15,
+    "gpa_avg": 3.74,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 42.6,
+      "3.75-3.99": 19.7,
+      "3.50-3.74": 16.3,
+      "3.25-3.49": 11.5,
+      "3.00-3.24": 6.6,
+      "2.50-2.99": 3.3
+    },
+    "notes": "Fall 2025 entering class (CDS C1; the PDF page headers still say 2024-2025 but the data are for Fall 2025 and the file is the 2025-26 CDS on the OIRA page). Residency split: in-state 20,089 / out-of-state 15,530 / international 7,973 / unknown 362 applicants (international admit rate about 47%). No early decision or early action (C21/C22) and no waitlist. Test-optional: only 39% (SAT) and 15% (ACT) of enrollees submitted scores, so the 25th-75th percentiles describe submitters, who are a stronger group than the whole class. The SAT section percentiles in C9 do not add up to the composite, so only the composite and ACT composite are stored. Undergraduate enrollment 12,640 is B1 total undergraduates; international 275 is the B2 nonresident total-undergraduates column. C7 factor boxes and C16 notification were not reliably readable, so factors are omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1220,
+      null,
+      1390
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      null,
+      31
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 56930,
+    "tuition_out_of_state_usd": 56930,
+    "tuition_intl_usd": 56930,
+    "required_fees_usd": 1580,
+    "room_board_usd": 17980,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 229,
+    "intl_avg_award_usd": 26906,
+    "notes": "CDS G1 (first-year, 2026-27): tuition $56,930, required fees $1,580, food and housing $17,980 (housing $11,270 + food $6,710). Private university with one tuition rate. CDS H6: institutional need-based and non-need-based aid are both available to nonresidents; 229 degree-seeking nonresidents received it, average $26,906 (total $6,161,586)."
+  }
+}

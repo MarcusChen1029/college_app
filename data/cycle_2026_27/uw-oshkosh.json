@@ -1,0 +1,103 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UW Oshkosh - International First-Year application (steps, English proficiency)",
+      "url": "https://www.uwosh.edu/admissions/international/apply/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "UW Oshkosh - International students FAQ (application deadlines, scholarships)",
+      "url": "https://www.uwosh.edu/admissions/international/frequently-asked-questions/",
+      "accessed": "2026-10-26"
+    },
+    "tgs": {
+      "kind": "financial_aid_site",
+      "title": "UW Oshkosh - Titan Global Scholars (international tuition discount)",
+      "url": "https://www.uwosh.edu/admissions/titan-global-scholars/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international first-year page says ACT and SAT scores are not required for admission.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply with the Universities of Wisconsin Application (apply.wisconsin.edu). Send high school transcripts (official or unofficial; original language plus official English translation) to applyworldwide@uwosh.edu; final official transcripts are needed after graduation. The international page states no application fee amount (the CDS 2023-24 C13 says UW Oshkosh has no application fee). After admission the immigration document application needs a financial verification form, bank statement and passport copy. No minimum GPA is published for international first-year applicants.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "International fall term application deadline (fall 2027 entry)",
+      "notes": "The international FAQ lists Summer April 15, Fall July 15 and Spring December 1 with no year; taken as fall 2027. The application opens August 1 of the year before. Titan Global Scholars needs no separate application.",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not required if English is an official language of the applicant's country of origin (list on the page, e.g. Canada excluding Quebec, UK, Ireland, Nigeria, Ghana, Kenya, South Africa, Philippines, Australia, New Zealand), or after the most recent two semesters or academic year of study in the United States immediately before attending UWO. The FAQ says otherwise the requirement cannot be waived. The page also accepts ACT English 18, SAT evidence-based writing 460, IGCSE English C or higher, British A-Level English C or better, HKDSE English level 4 or higher, WESLI 700 level B or better and Kings Go Prepared level 3 or 4 with 70 percent. No on-campus ESL conditional admission is described on the pages read.",
+    "src": "fy"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Table row 'TOEFL iBT (Pre-January 2026)'; undergraduate minimum 71.",
+      "src": "fy"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Table row 'TOEFL iBT' (new scale): 4.0 or higher for undergraduates.",
+      "src": "fy"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "fy"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "fy"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "src": "fy"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Titan Global Scholars: all international applicants sponsored for an F-1 or J-1 visa by UW Oshkosh are automatically considered (no separate application). Nonresident tuition discount by cumulative GPA: 3.75-4.00 = 100 percent (Black and Gold Elite), 3.00-3.74 = 75 percent (Advantage), 2.50-2.99 = 50 percent (Access); worth about $16,000 to $32,000+ over four years. Requires full-time degree enrollment (12+ credits) and a 2.5 cumulative GPA to keep it; lasts up to 150 attempted credits. The FAQ also says admitted students get a chance to apply for a need-based scholarship during the immigration application, but no amounts or rules are published, so the international need-aid flag and aid policy are left empty.",
+    "src": "tgs"
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "computer_science": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

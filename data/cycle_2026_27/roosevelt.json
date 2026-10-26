@@ -1,0 +1,144 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Roosevelt - International admission",
+      "url": "https://www.roosevelt.edu/admission/international",
+      "accessed": "2026-10-26"
+    },
+    "elp": {
+      "kind": "admissions_site",
+      "title": "Roosevelt - English Language Proficiency Requirement",
+      "url": "https://www.roosevelt.edu/admission/international/english-language-proficiency",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Roosevelt - Undergraduate admission requirements",
+      "url": "https://www.roosevelt.edu/admission/undergraduate",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "Roosevelt - Tuition & Fees for 2026-2027",
+      "url": "https://www.roosevelt.edu/tuition-aid/tuition",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Roosevelt is test-optional: ACT/SAT are encouraged but not required for admission. International applicants must instead send Duolingo, IELTS or TOEFL scores unless exempt (see English policy).",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "fee_waiver": false,
+    "notes": "Own online application (admission portal). The international page says a $40 application fee is required and cannot be waived for international students. Freshman minimum is a 2.0 cumulative unweighted high school GPA over at least 3 years; self-reported GPA is accepted for most programs, with an official transcript required after admission. Coursework from outside the U.S. needs a foreign credential evaluation. A personal statement, recommendations or transcripts may be requested after initial review. Admission letter in 3-5 business days once transcripts and the English score are uploaded. To get the I-20: $200 non-refundable deposit (credited to tuition), proof of funds ($38,000 for undergraduates per the page), and a passport copy. Some programs have extra requirements (performing arts auditions, nursing, pharmacy).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "other",
+      "due": "2027-07-31",
+      "label": "Fall 2027 tuition payment due (international)",
+      "notes": "No application deadline for international first-year applicants was found on the admission pages (applications appear to be reviewed on a rolling basis for fall and spring starts). The page prints 'Fall payment is due on July 31' without a year, taken as 2027.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2026-12-15",
+      "label": "Spring 2027 tuition payment due (international)",
+      "notes": "Printed as 'Spring payment is due on December 15'; no year given, taken as the spring 2027 term.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required of everyone who completed their education outside the U.S. Exempt with 30 transferable semester hours including English 101/102 at an accredited U.S. college, or four consecutive years of secondary school (or a degree) in the U.S. or a listed English-speaking country (e.g. Canada except Quebec, UK, Ireland, Australia, New Zealand, Ghana, Nigeria, South Africa). Only TOEFL, IELTS and Duolingo are listed on the international pages (PTE and Cambridge are not mentioned); official scores sent directly by the testing agency are required before an application is reviewed. Conditional route: scores in the lower band are admitted but must take the 0-credit ELP-199 English Language and Academic Skills course; Roosevelt's affiliated International Study Center also runs pathway programs (details not verified here).",
+    "src": "elp"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 60,
+      "notes": "60-79: admitted but must take ELP-199; 80 and above: no English course requirement; below 60 not eligible. No 1-6 scale minimum is published.",
+      "src": "elp"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "5.0-6.0: must take ELP-199; 6.5 and above: no English course requirement; below 5.0 not eligible.",
+      "src": "elp"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 85,
+      "notes": "85-124: must take ELP-199; 125 and above: no English course requirement; below 85 not eligible.",
+      "src": "elp"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International students cannot receive U.S. federal or state aid and must show they can pay all expenses. Roosevelt says it offers no full scholarships to international students but gives limited merit scholarships to graduate and undergraduate students; contact the admission counselor for eligibility. Award amounts are not published.",
+    "src": "intl"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2026-2027",
+    "src": "tuition",
+    "tuition_usd": 24197,
+    "tuition_out_of_state_usd": 24197,
+    "tuition_intl_usd": 24197,
+    "notes": "Full-time undergraduate tuition per academic year (12-18 credits per semester) for most colleges, $24,197 for 2026-27 (performing arts music/theatre programs $35,086); the general and student activity fees are included in tuition for full-time undergraduates. Other per-semester charges include the CTA U-Pass $123 and student health fee $27.06 (not summed here). On-campus housing ranges from $10,000 to $19,130 per academic year depending on the room, and meal plans are separate; the international page estimates $12,000 for living expenses and still lists undergraduate tuition at $23,100."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "1666",
+      "note": "Printed on the undergraduate admission page.",
+      "src": "ug"
+    },
+    "act": {
+      "code": "1124",
+      "note": "Printed on the undergraduate admission page.",
+      "src": "ug"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed; scores must be sent directly by ETS.",
+      "src": "elp"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Scores must be sent directly by the British Council; no code listed.",
+      "src": "elp"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Scores must be sent directly by Duolingo; no code listed.",
+      "src": "elp"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "engineering": "No undergraduate engineering degree confirmed, so no tier."
+  }
+}

@@ -1,0 +1,165 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Oregon - International students (first-year requirements, deadlines, fee, test policy)",
+   "url": "https://www.uoregon.edu/admissions/undergraduate/find-your-path/international-students",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "University of Oregon - English proficiency requirements (international)",
+   "url": "https://www.uoregon.edu/admissions/undergraduate/find-your-path/international/requirements/english-proficiency/",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "University of Oregon - Conditional undergraduate admission",
+   "url": "https://www.uoregon.edu/admissions/undergraduate/find-your-path/international/applying/conditional-admission/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "admissions_site",
+   "title": "University of Oregon - International scholarships",
+   "url": "https://www.uoregon.edu/admissions/undergraduate/find-your-path/international/documents-and-scholarships/international-scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "University of Oregon Financial Aid - 2026-27 estimated undergraduate cost of attendance",
+   "url": "https://financialaid.uoregon.edu/cost_of_attendance",
+   "accessed": "2026-10-26"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "University of Oregon Common Data Set 2024-2025 (C8F test policy, H6 nonresident aid)",
+   "url": "https://isduwmygvmdozhpvzaix.supabase.co/storage/v1/object/public/sources/university-of-oregon/2024-25/f551eb7a0d5269eb93460438a6246c5855caee031bf594b26218fcc1edae209a.pdf",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not required; CDS C8F says Oregon is test-optional. The international page says SAT and ACT are not required and that merit scholarships are decided by holistic review without them. International applicants may use SAT/ACT scores to show English proficiency (EBRW 520 for full admission).",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Apply with the Oregon application or the Common App; both carry a non-refundable $75 fee that is not waived for international students (the CDS still prints $65). Minimum B (3.00) GPA, English proficiency (conditional admission possible) and proof of financial support. An optional personal statement and two recommendations are only for students with special circumstances. CDS C7 lists essay and recommendations as not considered. Some programs have earlier department deadlines.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-05",
+   "label": "International first-year Early Action (fall 2027 entry)",
+   "notes": "Supporting documents due Nov. 15; Clark Honors College early action documents due Nov. 7. Decision by Jan. 5. The page lists 'Early Action Deadline: November 1, 2026'.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-01-15",
+   "label": "International first-year Regular application (fall 2027 entry)",
+   "notes": "Supporting documents due Feb. 15; applying by Jan. 15 means automatic consideration for General University Scholarships. Clark Honors College has the same Jan. 15 / Feb. 15 dates. The page prints dates without a year; treated as fall 2027 entry.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "plan": "ROLLING",
+   "due": "2027-07-15",
+   "label": "Last date international applications are accepted for fall 2027",
+   "notes": "Applications are accepted on a rolling basis until July 15, but scholarships with earlier deadlines may be missed. English test results should arrive at least 12 weeks before International Student Orientation.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for citizens of listed English-speaking countries (e.g. Australia, Canada English-speaking provinces, Ireland, New Zealand, United Kingdom, Nigeria, Ghana, Kenya, South Africa, Jamaica and others). Waived for the full IB Diploma, IGCSE English grade C or higher, 2 US college writing courses (C- or better), 3 years of US college-prep language arts (B- or better) or 3 years at a UK/NZ/AU secondary school (B- or better). Scores must be within two years of enrollment.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Taken before Jan 2026. 80-120 = full admission; 61-79 = admitted with Academic English for International Students (AEIS) support; below 61 = conditional admission (intensive English first). min is the lowest score for admission without the intensive program. UO TOEFL code 4846.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.6,
+   "notes": "Taken after Jan 2026 (1-6 scale). 4.5 or higher = full admission; 3.6-4.0 = AEIS support; 3.5 or lower = conditional admission. The page prints 3.6 as the AEIS floor.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "6.5-9.0 = full admission; 5.5-6.0 = AEIS support; below 5.5 = conditional admission.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "110-130 = full admission; 100-109 = AEIS support; below 100 = conditional admission.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Applicants who apply by Jan. 15 are automatically considered for General University Scholarships (no amounts published on the international pages). Application-based: International Cultural Service Program (ICSP) partial tuition scholarship (need, merit, cultural service; renewable), a work-study program of 50+ awards of $1,000-$4,500, and Division of Global Engagement endowed scholarships of about $1,000-$12,000. CDS H6: 40 nonresident undergraduates received institutional aid, average $15,792. Conditional admission with UO Global Welcome (intensive English) is offered; no pathway fee is published on the pages checked.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 17475,
+  "tuition_out_of_state_usd": 47466,
+  "tuition_intl_usd": 47466,
+  "room_board_usd": 18183,
+  "books_usd": 1434,
+  "other_usd": 4173,
+  "total_coa_usd": 71256,
+  "notes": "UO 2026-27 estimated cost of attendance for a nonresident: tuition and fees $47,466 (resident $17,475), on-campus housing and food $18,183, books $1,434, miscellaneous $2,673 plus transportation $1,500 (entered together as other). Excludes the one-time $570 matriculation fee; first-years must live on campus. Tuition is locked for up to five years (Oregon Guarantee). Health insurance for international students is not itemized.",
+  "src": "coa"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4846",
+   "note": "UO TOEFL institution code as printed on the international page.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "C",
+  "computer_science": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "C",
+  "math_physics": "D",
+  "humanities": "C",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "AAU-member flagship; 88% admit rate but middle SAT 1250, so well above an open-access school. Editorial judgment, not a ranking.",
+  "computer_science": "Solid program at a large research university; not a national top-40 CS department.",
+  "business": "Lundquist College of Business is a respected program, not top-15.",
+  "biology_life_sci": "Strong research university with good life sciences; below national top-40.",
+  "economics": "Mid-ranked economics department at an AAU school.",
+  "humanities": "Broad College of Arts and Sciences with strong programs in several fields; mid-tier nationally.",
+  "arts_design": "Design, architecture, journalism and music/dance schools are well regarded; mid-tier nationally."
+ }
+}

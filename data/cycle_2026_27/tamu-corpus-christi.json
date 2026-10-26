@@ -1,0 +1,156 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "TAMU-CC - International freshmen (English proficiency, test policy, deadlines, fee)",
+   "url": "https://www.tamucc.edu/admissions/international-freshmen.php",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "TAMU-CC Undergraduate Catalog - Admissions (international admission, priority dates)",
+   "url": "https://catalog.tamucc.edu/undergraduate/admissions/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "TAMU-CC - International student scholarships",
+   "url": "https://www.tamucc.edu/cost-and-aid/scholarships/international-students.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are optional for freshman and international freshman admission. Applicants in the top half of their class (1st and 2nd quarter) are guaranteed admission with no test minimum; 3rd and 4th quarter applicants get a holistic review (3rd quarter automatic admission with SAT 1170 / ACT 23, 4th quarter 1270 / 27). Scores are 'strongly encouraged' for advising and can matter for merit scholarships and the Honors Program. The international page's Step 4 says scores are 'required for an admissions decision' under an 'OPTIONAL' heading; the rest of the page and the catalog say optional. CDS C8 ticks 'Recommended'.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Apply through ApplyTexas ('own') or the Common App. The international application fee is $75 (non-refundable); a late fee of $85 applies after the priority date. International applicants must send a course-by-course transcript evaluation from an approved agency (WES not accepted for high school) and U.S. college transcripts if any. After admission: Affidavit of Support in U.S. currency, TB screening and immunizations, and proof of health insurance. Nursing, engineering, graphic design, music and theatre have extra requirements after university acceptance. The CDS lists 7/1 as the closing date and 3/1 as a priority date (domestic).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-06-01",
+   "label": "International fall priority date (fall 2027 entry)",
+   "notes": "Rolling admissions. The page prints 'June 1' without a year; treated as fall 2027. Applications after this date are still processed but carry the $85 late fee. The catalog lists the same June 1 date for international fall applicants.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-01",
+   "label": "International incoming freshman scholarship application deadline",
+   "notes": "The scholarship application is open Oct. 15 to May 1. The year is not printed; treated as 2027.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ghana, Ireland, Jamaica, New Zealand, Nigeria, United Kingdom, plus several Caribbean territories); applicants who completed all four years of high school in the U.S. with a U.S. diploma; two years of English-taught instruction at a U.S. or Canadian high school or college; a U.S. or Canadian bachelor's degree; or other compelling evidence reviewed by Admissions. SAT EBRW 550+ or ACT English 21+ also satisfies the requirement. The university also has an English as a Second Language International (ESLI) program and an International Pathway Program; their admission terms were not found.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 73,
+   "notes": "Exams taken before 2026-01-21. Paper-based 537 and computer-based 205 are also listed.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Exams taken on or after 2026-01-21. The page lists 'Minimum total score: 4' without naming the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic overall band 6.0; IELTS General is not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "accepted",
+   "min": 100,
+   "notes": "Duolingo English Test 100 (English3 105). The page frames Duolingo as accepted where TOEFL and IELTS are impacted (COVID-19 wording), so confirm before relying on it.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 175,
+   "notes": "C1 Advanced (CAE) 175 or C2 Proficiency (CPE) 180.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International incoming freshman scholarships are $1,000 to $4,000 a year for up to four years, by high school GPA (U.S. 4.0 scale) and English score: President's International Excellence Award $3,001-$4,000 (GPA 3.5+, IELTS 7.0 or TOEFL iBT 94); International Achieve Scholar $2,001-$3,000 (3.3+, IELTS 6.5 / iBT 89); International Islander Scholar $1,001-$2,000 (3.2+, IELTS 6.5 / iBT 84); International Impact Scholar $1,000 (3.0+, IELTS 6.5 / iBT 79). Apply Oct. 15 to May 1. The scholarship page says these awards do not qualify the student for the in-state tuition waiver, and ESLI graduates are not eligible. No need-based institutional aid for nonresidents (CDS H6).",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT institution code is printed on the pages reviewed; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages reviewed; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages reviewed; have ETS send scores to Texas A&M University-Corpus Christi.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

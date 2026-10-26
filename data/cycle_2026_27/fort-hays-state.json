@@ -1,0 +1,159 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "FHSU - International admissions (deadlines by student type)",
+   "url": "https://www.fhsu.edu/international/admissions/index",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "FHSU - International on-campus undergraduate admission",
+   "url": "https://www.fhsu.edu/international/admissions/admission-requirements/on-campus",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "FHSU - International language requirements",
+   "url": "https://www.fhsu.edu/international/admissions/Language-Requirements/index",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "FHSU - Estimated educational expenses 2026-2027, international undergraduate (PDF)",
+   "url": "https://www.fhsu.edu/international/admissions/financial/tuition/estimated-educational-expenses.pdf",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "FHSU - Scholarships for international students",
+   "url": "https://www.fhsu.edu/international/admissions/financial/scholarships/index",
+   "accessed": "2026-10-26"
+  },
+  "wr": {
+   "kind": "financial_aid_site",
+   "title": "FHSU - World Ready International Scholarship criteria (PDF)",
+   "url": "https://www.fhsu.edu/international/admissions/financial/scholarships/fhsu-world-ready-scholarship-criteria.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "FHSU's international scholarship page states that an ACT/SAT score is not required to apply for admission as an international student; it is only needed to qualify for the Freshman Scholarship. Admission rests on a 2.5 GPA (4.0 scale) from the secondary transcript.",
+  "src": "schol"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply through the FHSU international application portal; the $50 fee is non-refundable and valid for 12 months. Required: passport ID page, official transcripts (English or with NACES word-for-word translation; first-year minimum 2.5/4.0), English proficiency, and the International Student Financial Data and I-20 Request Form with a certified bank statement covering one year (at least the current estimated expenses, $30,239 for 2026-27). Essays and recommendations are not listed. These are the on-campus (Hays) rules; online and partnership programs have different, later deadlines.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "Fall 2027 on-campus international application deadline",
+   "notes": "Last day to submit a completed application including all admission documents. The page prints June 1 without a year; treated as 2027. Spring 2028 entry: Nov. 1 (the same page also prints Oct. 1 once). Summer is not permitted for on-campus international students.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-15",
+   "label": "Last day FHSU issues I-20s for fall 2027 (on-campus)",
+   "notes": "Spring entry: Nov. 15.",
+   "src": "req"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exceptions: 24 or more accredited US college credits with the admission GPA; English as the home country's native language; or current US high school enrollment with a 2.5 GPA and two years of English. Institutional TOEFL, TOEFL Essentials and institutional completion scores are not accepted. Applicants below the minimum can be admitted and sent an I-20 if they complete the online Intensive English Program of The Language Company (TLC) at Level 9. iTEP 3.6 is also accepted. The page gives no PTE or Cambridge minimum.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "No new 1-6 scale minimum is listed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 15624,
+  "room_board_usd": 9725,
+  "books_usd": 700,
+  "other_usd": 4190,
+  "total_coa_usd": 30239,
+  "notes": "FHSU international undergraduate estimate (12 credits per semester): tuition and fees $15,624 ($651 per credit before the July 1 final rate, entered as one combined figure); McMindes Hall room and board $9,725; mandatory health insurance $3,000, miscellaneous $1,000, orientation/registration $150, housing contract fee $40 (together $4,190, entered as other); books $700; total $30,239. Figures are provisional until July.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "FHSU World Ready International Scholarship: $1,000 per year ($500 per semester), awarded automatically to new first-time on-campus international students who stay at a 2.5 GPA (undergraduate). The Freshman Scholarship ($1,500-$3,750 per year, automatic, based on ACT/SAT and high school GPA) is open to first-time on-campus international students who submit scores. Stouffer and Solko & Olliff scholarships (amounts vary) need an application after admission. No international need-based aid is described.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The international pages print no SAT code; look it up in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "The international pages print no ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; look it up in the ETS code search. Scores must come from the testing company directly to FHSU.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as an accepted test.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,155 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Mercy University - International Admissions",
+      "url": "https://www.mercy.edu/admissions/international",
+      "accessed": "2026-10-26"
+    },
+    "fact": {
+      "kind": "admissions_site",
+      "title": "Mercy University - International Student Fast Facts (2026-2027 costs, scholarships)",
+      "url": "https://mercy.edu/media/international-fact-sheet",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Mercy University Undergraduate Catalog - Undergraduate Admissions",
+      "url": "https://ug.catalog.mercy.edu/admissions/undergraduate",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for international undergraduates (required for traditional Nursing and some specialized programs and for NCAA Division II athletes); scores may be submitted for consideration. An SAT Critical Reading score of 500+ is one of the English-waiver routes.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "notes": "Apply through the Common App or mercy.edu; $40 non-refundable fee (undergraduate catalog). Foreign transcripts need a course-by-course credential evaluation from a NACES/AICE member (waived for some programs). Music Production and Recording, Nursing, Pre-Occupational Therapy Assistant and Veterinary Technology need supplemental documents. International enrollment deposit $400 commuter / $500 resident, refundable if the F-1 visa is denied.",
+    "src": "cat"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission (fall 2027 entry); no application deadline published",
+      "notes": "Mercy admits on a rolling basis. First-time F-1 applicants are asked to submit documents and the I-20 request at least 60 days before the term starts (30 days for U.S. F-1 transfers). No priority date is listed.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for citizens of listed English-speaking countries (e.g. Canada, UK, Ireland, Australia, Singapore, South Africa), two years of regular English at a U.S. high school, an American GED, 12+ U.S. college credits (2.0 GPA), SAT Critical Reading 500+, AP English 3+, IB English B SL 4+, Cambridge English 160+, GTEC 1,140+, or B2 on the CEFR through an approved school. Conditional admission (bachelor's only): applicants below the minimum can finish ESL at Oxford International - New York (Manhattan) or other approved schools (EF, ELS, EC) to B2 CEFR, and the TOEFL/IELTS requirement is then met; Mercy also runs a University Pathway Program with Oxford International.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Undergraduate minimum for exams taken before 2026-01-21.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Exams on or after 2026-01-21; the page lists '4' without naming the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Undergraduate minimum.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Undergraduate minimum on the current page (an older Mercy page listed 100).",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "notes": "Undergraduate minimum.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 160,
+      "notes": "Listed as a waiver, not a test option: B2 First, C1 Advanced or C2 Proficiency with 160+ waives the English requirement for undergraduates.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 23550,
+    "tuition_intl_usd": 23550,
+    "room_board_usd": 16130,
+    "src": "fact",
+    "notes": "International fact sheet, cost of attendance per year (2026-2027): undergraduate tuition $23,550; room and board, double occupancy, $16,130 at the Westchester campus ($17,500 at the New York City campus). Required fees are not given."
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Fact sheet: undergraduate academic merit scholarships of $4,000-$10,000 per year for freshman applicants ($3,000-$8,000 for transfers). The international page says all incoming full-time freshmen and transfers are automatically reviewed based on academic standing. International students are not eligible for federal or state aid; institutional need-based aid for them is not described.",
+    "src": "fact"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code was found on the pages read; use the College Board code search.",
+      "src": "cat"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT institution code was found on the pages read; use the ACT code search.",
+      "src": "cat"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code was found on the pages read.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No IELTS code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No Duolingo code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No PTE code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

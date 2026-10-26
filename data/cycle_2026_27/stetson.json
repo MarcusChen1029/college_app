@@ -1,0 +1,174 @@
+{
+ "sources": {
+  "fyi": {
+   "kind": "admissions_site",
+   "title": "Stetson - First-year application instructions and deadlines (Internet Archive copy, Dec 2025)",
+   "url": "https://www.stetson.edu/administration/admissions/first-year-application-instructions.php",
+   "accessed": "2026-10-26"
+  },
+  "types": {
+   "kind": "admissions_site",
+   "title": "Stetson - Undergraduate application types (Internet Archive copy, Sep 2024)",
+   "url": "https://www.stetson.edu/administration/admissions/application-types.php",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Stetson - International student admissions (Internet Archive copy, Jul 2026; the deadline table on it is old and ignored)",
+   "url": "https://www.stetson.edu/administration/admissions/international-students.php",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Stetson Undergraduate Catalog - Admissions (PDF, 2025-26 cycle)",
+   "url": "https://catalog.stetson.edu/undergraduate/general-information/admissions/admissions.pdf",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Stetson - Scholarships, 2025-2026 award year (Internet Archive copy, Sep 2026)",
+   "url": "https://www.stetson.edu/administration/financial-aid/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "plan": {
+   "kind": "financial_aid_site",
+   "title": "Stetson WORLD - International student financial planning (Internet Archive copy, Aug 2024)",
+   "url": "https://www.stetson.edu/other/world/international-students/financial-planning.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Score-optional: SAT or ACT results are not required and applicants may choose not to have them considered; CLT is optional too (no code). Stetson values achievement, leadership and character above standardized testing. Test-submitting students enrolled with SAT 988-1213 (middle 50%).",
+  "src": "fyi"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "CDS C13 answers 'No' to having an application fee. Required: application and an official high school transcript (self-reported grades are accepted for the decision; official transcript due by the end of the first semester). Writing sample and recommendation letters are optional. International applicants also send English translations, a professional equivalency evaluation of their transcripts, proof of English proficiency and, after admission, a Certification of Finances and bank proof of one year of funding for the I-20. The School of Music requires an audition.",
+  "src": "fyi"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "notify": "2026-12-01",
+   "label": "Early Decision (binding) - fall 2027 entry",
+   "notes": "Enrollment deposit due Jan 15 for ED admits. Pages print no year; treated as fall 2027 entry. A search-engine snippet mentioned an Early Decision II round on Jan 5, which the current first-year page does not list (unconfirmed).",
+   "src": "fyi"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "notify": "2026-12-15",
+   "label": "Early Action (non-binding) - fall 2027 entry",
+   "notes": "Notification date is from CDS C16 (2024-25).",
+   "src": "fyi"
+  },
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-01-15",
+   "label": "Regular admission - rolling, priority date",
+   "notes": "The current first-year page lists Regular Admission only as 'Rolling'; the 2025-26 catalog gives January 15 as the priority date and CDS C14 gives Nov 1 as a priority date. Jan 15 is shown as the latest published priority date. There is no separate international deadline.",
+   "src": "cat"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit ($500, non-refundable)",
+   "notes": "Due May 1, or within 30 days if admitted later (CDS C17); the deposit must be received before the I-20 is issued.",
+   "src": "cat"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for international applicants who do not come from an English-speaking country or have not attended an English-speaking school for at least three years. Freshmen who qualify for the exemption are encouraged but not required to send TOEFL scores. Also accepted: ELS Intensive English level 112 completion and TOEFL Essentials (minimum 9). Scores must come directly from the testing agency. No separate conditional-admission program is described.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "The page states minimums 'equivalent to 79 (TOEFL)'; no score on the new 1-6 scale is published in the page copy read.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Federal aid is limited to US citizens; international students may apply for Stetson scholarships. Merit scholarships for new first-years are decided by the admissions committee when the application is complete (no separate application): Presidential up to $40,000, Dean's up to $32,000, Faculty-Merit up to $27,000 per year, renewable for eight semesters. J. Ollie Edmunds Distinguished Scholarship (four years of expenses, selected on leadership) is open to scholars from around the world. The CDS shows 197 nonresident undergraduates received non-need institutional aid.",
+  "src": "sch"
+ },
+ "majors": [
+  {
+   "program": "Music (School of Music)",
+   "category": "arts_design",
+   "admit_model": "school_college",
+   "notes": "A virtual or in-person audition is required for admission to the School of Music."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5630",
+   "note": "Stetson SAT code.",
+   "src": "fyi"
+  },
+  "act": {
+   "code": "0756",
+   "note": "Stetson ACT code.",
+   "src": "fyi"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The pages read do not print a TOEFL institution code.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as accepted on the pages read.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

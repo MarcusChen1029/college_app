@@ -1,0 +1,193 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "UMaine - Application Information (first-year, test optional, deadlines)",
+      "url": "https://umaine.edu/admissions/apply/apply-info/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UMaine - International Undergraduate Admissions (deadlines, English proficiency, codes)",
+      "url": "https://umaine.edu/admissions/apply/international-undergraduate-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "UMaine - International Scholarships, Fall 2027-Spring 2028",
+      "url": "https://umaine.edu/admissions/cost-aid/merit-scholarships/international-scholarships-26-27/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "UMaine Student Financial Services - Cost of Attendance 2026-27",
+      "url": "https://umaine.edu/sfs/costs/",
+      "accessed": "2026-10-26"
+    },
+    "gouapply": {
+      "kind": "admissions_site",
+      "title": "UMaine - Apply (Common App / ApplyMaine, fee-free)",
+      "url": "https://go.umaine.edu/apply/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UMaine is test optional for all programs; SAT/ACT are not required for admission or for merit scholarships.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Apply with the Common App or the ApplyMaine application. The Apply and Application Information pages say it is free to apply; an older UMaine International Programs FAQ mentions a $50 international fee, which the current international page does not repeat. International applicants must submit a NACES-accredited transcript evaluation (exemptions: WASSCE, IB, US/Canadian schools, Cambridge International) unless waived. A school recommendation is part of a complete first-year application and an essay is recommended; Nursing applicants answer extra essay prompts.",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-12-01",
+      "label": "First-year Early Action (fall 2027 entry)",
+      "notes": "Completing the application and all documents by Dec. 1 gives a guaranteed decision before year end and consideration for the maximum merit scholarships (an extra $3,000 Early Action Award on the international scholarship page).",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-03-01",
+      "label": "Regular application deadline (fall 2027 entry)",
+      "notes": "First-year and transfer; scholarships awarded as funds are available. Admission is rolling.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "Final international deadline, living outside the US and Canada (fall 2027)",
+      "notes": "Later applications are reviewed on a space-available basis and most are moved to spring. The page prints no year; treated as 2027 for fall 2027 entry. International applicants residing in the US or Canada: final deadline Aug. 1, 2027.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for native English speakers or those educated in English (listed countries incl. Canada except Quebec, Ireland, Kenya, Nigeria, UK, Australia, NZ, Ghana); 2+ years studying in the US or Canada in a non-ESL track; passing a US college English Composition course with C or higher; South African NSC English Home Language; a school letter or transcript stating English is the language of instruction for all subjects; SAT Reading/Writing 550+ or ACT English 24+. CEFR level B2 completed is also accepted. Official scores must come from the testing agency. UMaine accepts TOEFL MyBest scores.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Minimum for tests taken before January 2026. TOEFL Essentials (not a selectable test here) needs 8.5.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Minimum for the new TOEFL (post-January 2026); the page does not name the 1-6 scale but 4.5 is listed as the post-January 2026 score.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "Effective Spring 2024 semester.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International scholarships (Fall 2027) are awarded at admission from high school GPA and rigor, minimum 2.5 GPA, no extra application: Flagship Leaders Commitment $9,000-$12,000 per year, an Early Action Award of up to $3,000 more, and a Flagship Match Commitment listed at $16,200 per year (the page gives no eligibility detail). The Global Flagship Match ($25,110) is only for international students from Maine high schools. Renewable up to 4 years if GPA and credit rules are met. Need-based federal aid (FAFSA) is not available to international students; no international need-based aid is described.",
+    "src": "sch"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 13230,
+    "tuition_out_of_state_usd": 38340,
+    "tuition_intl_usd": 38340,
+    "required_fees_usd": 1070,
+    "room_board_usd": 14696,
+    "books_usd": 1000,
+    "other_usd": 2200,
+    "total_coa_usd": 57006,
+    "notes": "UMaine cost of attendance 2026-27 (Orono): Maine/Canadian resident tuition $13,230; the Out-of-State and International rate is $38,340 (15 credits per semester); fees $1,070; double room plus Unlimited Flex meal plan $14,696; books $1,000; travel/misc $2,200; international students must have health insurance. Total COA $57,006 is for the out-of-state/international rate.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Mechanical Engineering (College of Engineering)",
+      "category": "engineering",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Mechanical Engineering applications received after Feb. 28 are considered on a space-available basis."
+    },
+    {
+      "program": "Nursing (BSN)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Nursing applicants must answer extra written prompts (first-year) in addition to the application."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "3916",
+      "note": "UMaine SAT institution code per the international admissions page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1664",
+      "note": "UMaine ACT institution code per the international admissions page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "3916",
+      "note": "TOEFL institution code as printed on the English proficiency section of the international page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

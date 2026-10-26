@@ -1,0 +1,186 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Farmingdale State College - Incoming first-year students",
+      "url": "https://www.farmingdale.edu/admissions/incoming-freshman-applicant.shtml",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Farmingdale State College - Admissions FAQ",
+      "url": "https://www.farmingdale.edu/admissions/faq.shtml",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Farmingdale State College - Admissions dates and deadlines",
+      "url": "https://www.farmingdale.edu/admissions/dates-deadlines.shtml",
+      "accessed": "2026-10-26"
+    },
+    "howto": {
+      "kind": "admissions_site",
+      "title": "Farmingdale State College - International Education: How to apply",
+      "url": "https://www.farmingdale.edu/international-education/how-to-apply.shtml",
+      "accessed": "2026-10-26"
+    },
+    "reqs": {
+      "kind": "admissions_site",
+      "title": "Farmingdale State College - International student admissions required documents",
+      "url": "https://www.farmingdale.edu/international-education/pdf/in-admission-reqs.shtml",
+      "accessed": "2026-10-26"
+    },
+    "std": {
+      "kind": "admissions_site",
+      "title": "Farmingdale State College - Admission requirements, bachelor degrees (chart, undated PDF)",
+      "url": "https://www.farmingdale.edu/admissions/pdf/admissions_standards_2.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The admissions FAQ states 'Farmingdale is now SAT/ACT optional'. Some programs still list scores: the admission chart gives SAT 1100 or ACT 22 for the Dental Hygiene entry-level BS.",
+    "src": "faq"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "SUNY Application or Common App, $50 fee (the FAQ says fee waivers exist but also that a state campus cannot waive it; unresolved). Official high school transcript required; recommendation letters and a personal statement are highly recommended, not required. Coursework from outside the US needs a NACES credential evaluation ('applications lacking a NACES evaluation will not be reviewed'); international applicants also submit the SUNY autobiographical essay and passport copy. Applicants are typically notified about two weeks after all documents arrive.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "Fall application deadline, fall 2027 entry (domestic and international)",
+      "notes": "Fall June 1 and spring Nov. 1 (international page) / Jan. 3 (first-year page); no year is printed, so treated as fall 2027. Rolling admissions. The 2024-25 CDS also lists a priority date of Jan. 3.",
+      "src": "howto"
+    },
+    {
+      "kind": "application",
+      "due": "2027-01-15",
+      "label": "Earlier deadline for Nursing and Professional Pilot (fall 2027)",
+      "notes": "Dates page: Nursing application and document deadline January 15 (TEAS by February 15); Professional Pilot application January 15, documents February 1; Dental Hygiene first priority January 15. No year printed; treated as fall 2027.",
+      "src": "dates"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Tuition deposit ($100)",
+      "notes": "Due May 1, or within 30 days of acceptance for students accepted after April 1.",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The only alternative listed is an official transcript from an accredited US college with C+ or better in a college-level writing course. Scores must be within two years before the application term. The SAT Evidence-Based Reading score of 400 is also listed as accepted proof.",
+    "src": "reqs"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 74,
+      "src": "reqs"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "The How to Apply page lists 'TOEFL-IBT 74 or 4.0'.",
+      "src": "howto"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "reqs"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "The required-documents page (modified 10/21/26) says 110; the older How to Apply page says 105. 110 is recorded.",
+      "src": "reqs"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "reqs"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "none",
+    "meets_full_need": false,
+    "merit_scholarships": false,
+    "notes": "The How to Apply page states 'Financial aid and scholarships are not available to international students.' Proof of funds for the I-20: $40,000 if living on campus, $28,000 if living off campus with a local sponsor providing room and meals (Professional Pilot adds about $9,000/semester). SUNY-mandated health insurance applies to F-1/J-1 students. No ESL, conditional-admission or pathway program is described on the international pages.",
+    "src": "howto"
+  },
+  "majors": [
+    {
+      "program": "Business Management",
+      "category": "business",
+      "admit_model": "direct_major",
+      "notes": "Admission chart: 87 minimum high school average, Algebra II Regents (chart is undated)."
+    },
+    {
+      "program": "Computer Programming and Information Systems",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "notes": "Admission chart: 85 minimum high school average, Algebra II Regents (chart is undated)."
+    },
+    {
+      "program": "Nursing (BS, 4-year, freshman entry)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": true,
+      "notes": "Admission chart: 90 minimum average, Biology Regents 75+, Chemistry Regents 70+, Algebra II, TEAS proficient or higher. Application and document deadline January 15; admission is competitive because seating is limited."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "2526",
+      "note": "SAT code printed on the admission chart.",
+      "src": "std"
+    },
+    "act": {
+      "code": "2918",
+      "note": "ACT code printed on the admission chart.",
+      "src": "std"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the international pages.",
+      "src": "reqs"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "reqs"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "reqs"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "reqs"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "computer_science": "D",
+    "biology_life_sci": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

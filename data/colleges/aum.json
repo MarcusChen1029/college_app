@@ -1,0 +1,135 @@
+{
+  "slug": "aum",
+  "name": "Auburn University at Montgomery",
+  "short_name": "AUM",
+  "state_region": "AL",
+  "city": "Montgomery",
+  "latitude": 32.36736,
+  "longitude": -86.177544,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.aum.edu",
+  "admissions_url": "https://www.aum.edu/admissions/",
+  "ipeds_unit_id": 100830,
+  "undergrad_enrollment": 3649,
+  "intl_undergrads": 120,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "AUM Common Data Set 2025-2026 (PDF; fall 2025 data, template header reads 2026-2027)",
+      "url": "https://www.aum.edu/wp-content/uploads/2026/07/CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds24": {
+      "kind": "cds",
+      "title": "AUM Common Data Set 2024-2025 (PDF; fall 2024 data)",
+      "url": "https://www.aum.edu/wp-content/uploads/2025/05/CDS-2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (fall 2024 admissions: 2,694 applicants, 92% admitted)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=100830",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds24",
+    "applicants": 2694,
+    "admits": 2467,
+    "enrolled": 364,
+    "intl_applicants": 638,
+    "intl_admits": 621,
+    "pct_submit_sat": 4,
+    "pct_submit_act": 53,
+    "gpa_avg": 3.44,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 7,
+      "3.75-3.99": 18,
+      "3.50-3.74": 22,
+      "3.25-3.49": 23,
+      "3.00-3.24": 19,
+      "2.50-2.99": 7,
+      "2.0-2.49": 3
+    },
+    "notes": "Fall 2024 first-time first-year class from the 2024-25 CDS. Applicants 2,694 / admitted 2,467 / enrolled 364 are the sums of the C1 men and women rows and match College Navigator (2,694 applicants, 92% admitted, 15% of admits enrolled). The C1 residency table in the same CDS does not reconcile (its totals are 2,512 applicants / 162 enrolled, and out-of-state shows 57 applied but 199 admitted), so only the international row is used: 638 applied, 621 admitted, 30 enrolled (the 30 matches the B2 nonresident first-time count); the in-state/out-of-state split is left out. The 2025-26 CDS (fall 2025) reports 410 applicants, 407 admits and 407 enrolled in C1, i.e. the enrolled count in all three rows, so it was not used for admit rates. GPA is the 'all enrolled students' column of C11 (sums to 99 as printed). Admission factors, test-score percentiles, enrollment (3,649 undergraduates, 120 nonresident, fall 2025) and costs come from the 2025-26 CDS. SAT percentiles come from only 11 enrolled students (3%); 208 students (51%) submitted ACT."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1020,
+      1190,
+      1380
+    ],
+    "SAT_ERW": [
+      530,
+      590,
+      730
+    ],
+    "SAT_MATH": [
+      520,
+      580,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      21
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027) ticks 'Recommended' for SAT or ACT; the admissions site says scores are not required for admission."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11820,
+    "tuition_out_of_state_usd": 26520,
+    "tuition_intl_usd": 26520,
+    "books_usd": 2500,
+    "room_board_usd": 19368,
+    "total_coa_usd": 51908,
+    "intl_need_aid": true,
+    "intl_avg_award_usd": 14645,
+    "notes": "CDS G1 for 2026-27 (30 credit hours): in-state $11,820, out-of-state and international $26,520; required fees, housing and food were not filled in (suppressed). Housing and food $19,368, books $2,500 and total cost of attendance $51,908 (non-Alabama resident, 13 credits a semester, includes about $1,890 personal and $3,625 transportation) are from AUM's Tuition & Fees page. International students also pay for health insurance (about $826.50 for fall 2026). CDS H6 (nonresident undergraduates): both need-based and non-need-based institutional aid are available; total $1,069,071 at an average of $14,645 (the printed count of 130 recipients does not fit those two figures, which imply about 73)."
+  }
+}

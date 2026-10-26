@@ -1,0 +1,122 @@
+{
+  "slug": "st-marys-tx",
+  "name": "St. Mary's University (Texas)",
+  "short_name": "St. Mary's",
+  "state_region": "TX",
+  "city": "San Antonio",
+  "latitude": 29.453244,
+  "longitude": -98.562778,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.stmarytx.edu",
+  "admissions_url": "https://www.stmarytx.edu/admission/",
+  "ipeds_unit_id": 228149,
+  "undergrad_enrollment": 2330,
+  "intl_undergrads": 123,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "St. Mary's University Common Data Set 2025-2026 (PDF)",
+      "url": "https://cdn.stmarytx.edu/wp-content/uploads/2026/05/CDS_Completed-2025-2026-PDF.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "consumer": {
+      "kind": "other",
+      "title": "St. Mary's University - Consumer Information (Fall 2025 enrollment, student-to-teacher ratio)",
+      "url": "https://www.stmarytx.edu/compliance/consumer-information/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4402,
+    "admits": 4057,
+    "enrolled": 569,
+    "in_state_applicants": 3783,
+    "in_state_admits": 3488,
+    "out_state_applicants": 192,
+    "out_state_admits": 171,
+    "intl_applicants": 427,
+    "intl_admits": 378,
+    "gpa_avg": 3.61,
+    "pct_reporting_gpa": 99.6,
+    "gpa_distribution": {
+      "4.0": 24.24,
+      "3.75-3.99": 17.24,
+      "3.50-3.74": 26.39,
+      "3.25-3.49": 13.1,
+      "3.00-3.24": 9.69,
+      "2.50-2.99": 9.16,
+      "2.0-2.49": 0.18
+    },
+    "notes": "Read from the CDS form fields (C1, C9, C11, C12). The university's Consumer Information page lists slightly different first-year counts (4,267 applied, 4,055 admitted, 566 enrolled); the CDS figures are used here. International row: 427 applicants, 378 admitted. C9: 218 SAT and 55 ACT submitters among 569 enrollees (percent not stated reliably, so pct_submit is omitted). No wait list; no early decision or early action. SAT total (composite) percentiles are not published, only ERW and Math. Undergraduate enrollment 2,330 and the 11:1 ratio are from the university's Consumer Information page (fall 2025); 123 nonresident undergraduates are from CDS B2."
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      540,
+      600
+    ],
+    "SAT_MATH": [
+      460,
+      520,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      15,
+      19,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      20
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: not required for admission, but considered if submitted; students applying without scores submit a personal statement."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 38404,
+    "required_fees_usd": 1478,
+    "room_board_usd": 13438,
+    "books_usd": 1300,
+    "intl_need_aid_awarded": 55,
+    "intl_avg_award_usd": 42263,
+    "notes": "CDS G1 (full 2026-2027 year): tuition $38,404, required fees $1,478, food and housing $13,438; books $1,300. CDS H6: 55 degree-seeking nonresidents received institutional aid, average $42,263 (total $2,324,499) for the aid year the CDS marks as 2023-24; the CDS does not say whether this is need-based or merit aid."
+  }
+}

@@ -1,0 +1,169 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "CSUSM Global Programs and Services - International first-time freshman: I want to apply",
+   "url": "https://www.csusm.edu/global/admissions/ugadmiss/wanttoapply.html",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "CSUSM Global Programs and Services - International first-time freshman important deadlines (Fall 2027)",
+   "url": "https://www.csusm.edu/global/admissions/ugadmiss/importantdeadlines.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CSUSM Global Programs and Services - English language proficiency requirements (freshman and transfer)",
+   "url": "https://www.csusm.edu/global/admissions/english-proficiency/freshman-and-transfer-students.html",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "CSUSM American Language and Culture Institute - Undergraduate conditional admission",
+   "url": "https://www.csusm.edu/global/alci/programs/ugradconditionaladmission.html",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "CSUSM Global Programs and Services - Tuition and fees (estimated annual cost 2026-2027)",
+   "url": "https://www.csusm.edu/global/admissions/tuitionandfees.html",
+   "accessed": "2026-10-26"
+  },
+  "finaid": {
+   "kind": "financial_aid_site",
+   "title": "CSUSM Global Programs and Services - International student financial aid and tuition waivers",
+   "url": "https://www.csusm.edu/global/intstudents/finaid.html",
+   "accessed": "2026-10-26"
+  },
+  "yawh": {
+   "kind": "other",
+   "title": "CSUSM #YouAreWelcomeHere scholarship application (form dated 2021)",
+   "url": "https://www.csusm.edu/global/intstudents/yawh-scholarshipapplication-final-2021.pdf",
+   "accessed": "2026-10-26"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "CSUSM Common Data Set 2025-2026 (C8A test policy, G1 2026-27 tuition and fees, C13 application fee)",
+   "url": "https://www.csusm.edu/ipa/cds-files/cds-doc/cds_2025-2026.xlsx",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "CSUSM's CDS (C8A) answers No to using SAT/ACT in admission decisions, and the CSU system is test-blind; only 64 SAT and 13 ACT submitters among 2,705 enrolled first-years. The international freshman page says SAT or ACT is 'recommended but not required'; treat them as not used for admission. Eligibility for international freshmen is the equivalent of a C+ (2.5) GPA, 2.0 for conditional admission.",
+  "src": "cds"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through CSUSM International Admissions (online application, or a paper application if the online one is difficult); the CDS lists a $70 application fee (the international page does not state one). Needed: official transcripts with certified English translation (copies accepted for the decision), passport copy, Affidavit of Financial Support with a bank statement dated within 6 months, and English proficiency proof. CDS C7: GPA is very important; essay, recommendations, interview and test scores are not considered.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International first-year application deadline, out-of-country applicants (fall 2027)",
+   "notes": "Fall 2027 applications open Oct. 1, 2026 and close June 1, 2027 for applicants outside the U.S.; applicants already in the U.S. must contact International Admissions for their deadline. Decisions are made on a continuing basis once all records are received; classes start Aug. 30, 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-15",
+   "label": "Final document deadline (fall 2027)",
+   "notes": "Final academic records with all term grades and proof of graduation. Official transcripts and test scores must arrive before an I-20 is issued; in-progress records are enough for an admission decision.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Freshmen may instead show 3 years at a high school where English was the principal language of instruction (confirm eligibility with International Admissions). Guaranteed conditional admission is available through the American Language and Culture Institute if there is no passing score.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "subs": {
+    "writing": 19,
+    "each_section": 14
+   },
+   "notes": "Writing no lower than 19 and no section below 14. The page does not give a new-scale (1-6) minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "subs": {
+    "writing": 5.5,
+    "each_section": 5.0
+   },
+   "notes": "Writing no lower than 5.5 and no section below 5.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test score of 95.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "Pearson Test of English Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 168,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency; 160 and above is eligible for the pathway program.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "The #YouAreWelcomeHere scholarship for first-year international applicants is advertised on the freshman page as covering up to 50% of non-resident tuition; the 2021 application form says a minimum of 50%, renewable up to 4 years with a 3.0 GPA, with a 500-1,000 word essay or short video and an April 1 deadline (confirm current terms with iapply@csusm.edu). Partial tuition waivers are only open to F-1 students after one semester in residence. International students are not eligible for most aid. Conditional admission: the Intensive English Pathway takes any English level, the University Access Program needs TOEFL 51 or IELTS 5.0; both lead to guaranteed admission (program fees not checked).",
+  "src": "apply"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 18142,
+  "required_fees_usd": 2496,
+  "room_board_usd": 19245,
+  "other_usd": 8813,
+  "total_coa_usd": 48696,
+  "notes": "CSUSM international estimate for 2026-27 at the 12-unit minimum load: tuition and fees $20,638 (basic tuition $6,838 + $471/unit non-resident charge for 24 units + fees $2,496, so tuition_intl is 20,638 minus fees), room and board $19,245, living expenses $8,813 (mandatory 12-month health insurance, books and personal), total $48,696; summer not included. tuition_usd, tuition_out_of_state_usd (30 units) and required_fees_usd are CDS G1 2026-27 values.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

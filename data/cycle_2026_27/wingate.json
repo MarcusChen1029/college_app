@@ -1,0 +1,128 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Wingate University - International Student Admissions",
+      "url": "https://www.wingate.edu/admissions/international",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Wingate University - Undergraduate Admissions (rolling admission, test-optional, school codes)",
+      "url": "https://www.wingate.edu/admissions/undergraduate-admissions",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Wingate University - Cost: 2026-2027 tuition, fees, housing and meal plan",
+      "url": "https://www.wingate.edu/admissions/financial-aid/cost",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Wingate advertises 'test score optional'. The recommended application items are a self-reported GPA and an SAT, ACT or CLT score; applicants who cannot provide a score are asked for a 250-word personal essay instead. The international page says to submit official test scores 'if applicable'.",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "No application fee. International applicants also email a passport copy and have a school official send the official high school transcript to internationaladmissions@wingate.edu. After admission: $100 non-refundable international processing fee, then a $2,500 enrollment and tuition deposit ($300 enrollment + $2,200 tuition deposit) before the I-20 is issued. Decision within two weeks of a complete file. Applicants must be at least 17 by the first day of class.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Page gives 'fall semester applications must be received no later than June 1' with no year; taken as 2027 for fall 2027 entry. Spring applications by Nov 1. Domestic first-year admission is rolling with no deadline.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-01",
+      "label": "Recommended deadline for all I-20 documents (fall entry)",
+      "notes": "Wingate recommends all I-20 documentation be submitted by July 1 for fall (Nov 1 for spring). Year not printed; taken as 2027.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "English proficiency is required before the I-20 is issued rather than for the admission decision. Exempt: citizens of listed English-speaking countries; 3+ years at a high school (international or American) taught in English with a school letter or transcript; or 24 transferable US college hours with a C or better in English composition. Otherwise any one of: SAT EBRW 450, ACT Reading and English 17 each, ELS level 112, ELTI (UNC Charlotte) level 6, or the test scores listed. Scores must be under 24 months old.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "The English Proficiency section lists 'TOEFL iBT 70'.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "The Student Visa Information section of the same page lists 'TOEFL iBT score of 4'; the page does not name the 1-6 scale, but 4 cannot be on the 0-120 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Academic module.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 43836,
+    "required_fees_usd": 450,
+    "intl_extra_fees_usd": 200,
+    "room_board_usd": 12099,
+    "notes": "Traditional undergraduate: tuition $21,918 per semester; required fees $225 per term (health & wellness $100, student activity $100, technology $25); international student fee $100 per term; standard residence hall $3,592 + standard meal plan $2,302 + NC meal plan tax $155.39 per term (annual room and board rounded). Program fees (e.g. nursing, labs) are extra.",
+    "src": "cost"
+  },
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Admitted international students are awarded a merit scholarship; the page says these 'can range from $15,000 - $30,500' but are not guaranteed, and there are no full-ride awards. Additional aid is available through the Alternative Financial Aid Application (amounts not published). Most students must show $30,000-$49,000 in funds for the I-20, depending on scholarship.",
+    "src": "intl"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "5908",
+      "note": "Wingate SAT code.",
+      "src": "ug"
+    },
+    "act": {
+      "code": "3176",
+      "note": "Wingate ACT code.",
+      "src": "ug"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "biology_life_sci": "D",
+    "business": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

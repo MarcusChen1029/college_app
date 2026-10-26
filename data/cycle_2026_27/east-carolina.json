@@ -1,0 +1,151 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "ECU Admissions - Freshmen application (deadlines, test policy, school codes)",
+      "url": "https://admissions.ecu.edu/apply/freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "ECU Global Affairs - International Undergraduate Admission",
+      "url": "https://global-affairs.ecu.edu/international-students/international-ug/",
+      "accessed": "2026-10-26"
+    },
+    "grad": {
+      "kind": "other",
+      "title": "ECU Graduate School - International students (institutional code)",
+      "url": "https://gradschool.ecu.edu/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "guide": {
+      "kind": "other",
+      "title": "ECU - Applying to Undergraduate Degree Programs (pathways guide, 2018; ECULA conditional admission)",
+      "url": "https://advising.ecu.edu/wp-content/pv-uploads/sites/115/2018/08/Undergrad-pathways-guide.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Students with a weighted high school GPA of 2.8 or higher are not required to submit SAT/ACT; below 2.8 an ACT or SAT score is required (page text says 'Fall 2026 and Spring 2027'; the counselor page applies the same rule to Spring and Fall 2027). The international page lists SAT/ACT only as English-proficiency options.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "Apply with the ECU application, CFNC or the Common App; rolling admission. International first-year applicants send official secondary-school records (officially translated into English) directly to international@ecu.edu, and non-US university coursework needs a course-by-course NACES evaluation. The international page does not list financial documents or a recommendation requirement.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-11-01",
+      "label": "Priority freshman application deadline (fall 2027 entry)",
+      "notes": "Domestic freshman page; ECU has rolling admission. Spring 2027 term deadline is Dec 1, 2026.",
+      "src": "fy"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-15",
+      "label": "Deadline to be eligible to apply for other merit-based university scholarships",
+      "notes": "Freshman page wording. Scholarships are applied for through the ECUAWard portal after admission; which awards are open to international students is not stated.",
+      "src": "fy"
+    },
+    {
+      "kind": "priority",
+      "due": "2027-04-01",
+      "label": "Final freshman priority application deadline (fall 2027 entry)",
+      "notes": "Domestic freshman page.",
+      "src": "fy"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-30",
+      "label": "International fall application deadline (fall 2027 entry)",
+      "notes": "International page: fall (August) applicants apply by June 30 each year, spring (January) applicants by Dec 15; ECU encourages applying 100 days before the term starts. The page prints no year, so fall 2027 is assumed.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: diploma from a US high school with two years of attendance; diploma from a high school in an exempt country (list not shown); or a B or better in an academic English writing/composition course at a US college. SAT EBRW 450 and ACT English/Writing 19 are also accepted as proof. An older ECU guide (2018) says applicants who meet academic requirements but not the English requirement can start in the ECU Language Academy (ECULA) under conditional admission; that guide's minimums (TOEFL 71, Duolingo 95) are out of date versus the current page, so confirm with international@ecu.edu.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Page wording: 'before 2026, a minimum score of 71'.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Page wording: '2026 onward, a minimum score of 4'; the page does not name the scale or iBT, so it is read as the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Overall minimum 6.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Current page lists 105 (the 2018 guide lists 95).",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "No international-specific scholarship, amount or need-based program is published on the pages read. Merit scholarships are applied for through the ECUAWard portal after admission (freshman deadline Dec 15, 2026 for eligibility); some also consider FAFSA need, which F-1 students cannot file. CDS H6: 53 nonresident undergraduates received institutional aid, average $19,182.",
+    "src": "fy"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5180",
+      "note": "ECU SAT code.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "3094",
+      "note": "ECU ACT code.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "The undergraduate pages list no TOEFL code. The Graduate School page gives ECU's institutional code as 5180 (the same as the SAT code); confirm before sending.",
+      "src": "grad"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

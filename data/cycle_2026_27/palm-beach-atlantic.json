@@ -1,0 +1,139 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "PBA - International undergraduate admissions",
+   "url": "https://www.pba.edu/admissions/undergraduate/international/",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "PBA - Freshman admissions",
+   "url": "https://www.pba.edu/admissions/undergraduate/freshman/",
+   "accessed": "2026-10-26"
+  },
+  "art": {
+   "kind": "other",
+   "title": "PBA 2025-2026 Articulation Agreement Manual (admission requirements, English proficiency)",
+   "url": "https://catalog.pba.edu/mime/media/view/53/4262/2025-26+PBA_Articulation_Manual.pdf",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "PBA - Tuition & fees (2026-2027)",
+   "url": "https://www.pba.edu/financial-aid/tuition-fees/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "PBA - Scholarships",
+   "url": "https://www.pba.edu/financial-aid/types-of-aid/scholarships/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Admission is test optional; SAT, ACT or CLT scores are considered if sent. The international page says freshmen's scores are not required but may be sent for bonus scholarships. PBA reserves the right to request a score, and some scholarships (Honors, Farish) need one.",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply on PBA's own application or the Common App (the international page calls the application free). Official high school transcript, with an official NACES course-by-course evaluation for non-U.S. schools. Decisions come in about 72 hours after the application is complete. A $300 enrollment deposit is needed before International Student Services issues the I-20.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Rolling admission (fall 2027 entry); no application deadline published",
+   "notes": "PBA begins reviewing applications each September on a rolling basis. No international-specific or final application deadline is printed on the freshman or international pages. Class selection and housing are first come, first served by deposit date.",
+   "src": "fr"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for students from a country where English is not the primary language. Waived for students who have attended a U.S. school, an English language school, or a non-U.S. school taught in English for at least one academic semester. No conditional admission or ESL pathway is described on the pages read.",
+  "src": "art"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "From the 2025-26 Articulation Manual (freshmen). The international page names TOEFL, IELTS or Duolingo but prints no scores.",
+   "src": "art"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "art"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Freshman minimum is 100 in the manual; the same manual lists 105 in the transfer section, so confirm with admissions.",
+   "src": "art"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 43000,
+  "notes": "Full-time day undergraduate tuition $21,500 per semester ($43,000 per year, 12-18 credits). General fees for full-time students and room and board are not printed on the tuition page, so they are left null. College Navigator lists 2024-25 food and housing of $13,800 on campus.",
+  "src": "tuition"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "The international page says international students are eligible for many scholarships and aid but gives no amounts; the scholarships page lists none specific to international students. Freshman awards: Academic Merit (amount varies by GPA), Honors $2,500/yr (3.5 weighted GPA plus SAT 1270 or ACT 26), Farish Scholars (full tuition and fees; 3.5 GPA plus SAT 1330 or ACT 29 or CLT 89, interview). Federal aid requires U.S. citizenship or eligible noncitizen status.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5553",
+   "note": "School code for SAT results.",
+   "src": "fr"
+  },
+  "act": {
+   "code": "0739",
+   "note": "School code for ACT results.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read; results must be sent directly by the testing service.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,120 @@
+{
+  "slug": "central-connecticut",
+  "name": "Central Connecticut State University",
+  "short_name": "CCSU",
+  "state_region": "CT",
+  "city": "New Britain",
+  "latitude": 41.692502,
+  "longitude": -72.765991,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.ccsu.edu/",
+  "admissions_url": "https://www.ccsu.edu/admissions",
+  "ipeds_unit_id": 128771,
+  "undergrad_enrollment": 9463,
+  "intl_undergrads": 164,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Central Connecticut State University Common Data Set 2025-2026 (XLSX)",
+      "url": "https://docs.ccsu.edu/oira/institutionalData/commonDataSet/Common_Data_Set_2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile, Central Connecticut State University (student-to-faculty ratio, setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=128771",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10176,
+    "admits": 8070,
+    "enrolled": 1762,
+    "in_state_applicants": 8577,
+    "in_state_admits": 7164,
+    "out_state_applicants": 1209,
+    "out_state_admits": 836,
+    "intl_applicants": 390,
+    "intl_admits": 70,
+    "pct_submit_sat": 42.6,
+    "pct_submit_act": 0.8,
+    "gpa_avg": 3.15,
+    "pct_reporting_gpa": 98,
+    "gpa_distribution": {
+      "4.0": 6.3,
+      "3.75-3.99": 7.9,
+      "3.50-3.74": 14.1,
+      "3.25-3.49": 16.9,
+      "3.00-3.24": 17.0,
+      "2.50-2.99": 27.7,
+      "2.0-2.49": 9.6,
+      "1.0-1.99": 0.4
+    },
+    "notes": "CDS C1 (fall 2025): international first-year applicants 390, admitted 70 (18%), enrolled 10, far below the 79% overall admit rate, so international applicants are not near-certain admits. No waitlist, no early decision or early action. GPA distribution is the 'all enrolled students' column of C11 (average 3.15 on a 4.0 scale, reported by 98%). SAT percentiles are of the 751 enrolled first-years who submitted SAT; ACT is reported by only 6 students so ACT percentiles are omitted. Undergraduate enrollment 9,463 is CDS B1 and the 164 nonresident undergraduates are CDS B2 (156 degree-seeking). Student-to-faculty ratio 14:1 is College Navigator."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      900,
+      1010,
+      1140
+    ],
+    "SAT_ERW": [
+      460,
+      520,
+      590
+    ],
+    "SAT_MATH": [
+      430,
+      490,
+      560
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027 applicants): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6998,
+    "tuition_out_of_state_usd": 10498,
+    "tuition_intl_usd": 20938,
+    "required_fees_usd": 6052,
+    "room_board_usd": 13472,
+    "books_usd": 1600,
+    "other_usd": 2261,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 115,
+    "intl_avg_award_usd": 9918,
+    "notes": "CDS G1 (2026-27): tuition in-state $6,998, out-of-state (New England/NEBHE rate) $10,498, nonresident $20,938; required fees $6,052; on-campus food and housing $13,472. The admissions-site tuition page lists an international full-time rate of $13,455 per term ($26,910 a year, tuition plus fees), within $80 of CDS nonresident tuition plus fees. Other = transportation $672 plus other expenses $1,589 (G5, residents). H6: only institutional non-need-based aid is available to nonresidents; 115 nonresident undergraduates received it, averaging $9,918."
+  }
+}

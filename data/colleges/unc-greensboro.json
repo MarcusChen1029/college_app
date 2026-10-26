@@ -1,0 +1,89 @@
+{
+  "slug": "unc-greensboro",
+  "name": "University of North Carolina at Greensboro",
+  "short_name": "UNC Greensboro",
+  "state_region": "NC",
+  "city": "Greensboro",
+  "latitude": 36.068236,
+  "longitude": -79.809414,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uncg.edu",
+  "admissions_url": "https://admissions.uncg.edu",
+  "ipeds_unit_id": 199148,
+  "undergrad_enrollment": 14416,
+  "intl_undergrads": 227,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199148",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199148",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=199148",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 12379,
+    "admits": 11120,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 10,
+    "notes": "Baseline from IPEDS via College Navigator (fall 2024 entering class); no Common Data Set could be found on UNCG's institutional research site. Admits is derived from the reported 89% admit rate (12,948 x 0.89, so approximate); enrolled is left empty (College Navigator gives only 'percent admitted who enrolled', 21%). Only 48 enrollees submitted SAT and 232 ACT, so the score percentiles describe a small group. SAT total, GPA, residency/international splits are not available. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "enrolled": 2613
+  },
+  "scores": {
+    "SAT_ERW": [
+      590,
+      615,
+      685
+    ],
+    "SAT_MATH": [
+      560,
+      590,
+      670
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      21,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      19,
+      22,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 7661,
+    "tuition_out_of_state_usd": 24012,
+    "books_usd": 850,
+    "room_board_usd": 10688,
+    "other_usd": 3386,
+    "notes": "College Navigator estimated expenses for beginning undergraduates, 2024-25: tuition and fees in-state $7,661, out-of-state $24,012; books $850; on-campus food and housing $10,688; other $3,386. The current-cycle cost block (2026-27) overrides these."
+  }
+}

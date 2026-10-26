@@ -1,0 +1,172 @@
+{
+ "sources": {
+  "steps": {
+   "kind": "admissions_site",
+   "title": "DBU - Undergraduate admissions steps (application, test-preferred policy, fee)",
+   "url": "https://www.dbu.edu/undergraduate/admissions/index.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "DBU International - Undergraduate admissions checklist",
+   "url": "https://www.dbu.edu/international/new-students/admissions-steps/undergraduate.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "DBU International - Test scores for admissions (English proficiency, PDF updated March 20, 2026)",
+   "url": "https://www.dbu.edu/international/_documents/admissions-test-scores.pdf",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "DBU - Admissions deadlines (rolling)",
+   "url": "https://www.dbu.edu/admissions/index.html",
+   "accessed": "2026-10-26"
+  },
+  "acad": {
+   "kind": "financial_aid_site",
+   "title": "DBU - International academic scholarships",
+   "url": "https://www.dbu.edu/financial-aid/aid-types/scholarships/academic-international.html",
+   "accessed": "2026-10-26"
+  },
+  "css": {
+   "kind": "financial_aid_site",
+   "title": "DBU - International Christian Service Scholarship",
+   "url": "https://www.dbu.edu/financial-aid/aid-types/scholarships/christian-service-international.html",
+   "accessed": "2026-10-26"
+  },
+  "isch": {
+   "kind": "financial_aid_site",
+   "title": "DBU - International Student Scholarship",
+   "url": "https://www.dbu.edu/financial-aid/aid-types/scholarships/international-student.html",
+   "accessed": "2026-10-26"
+  },
+  "iep": {
+   "kind": "other",
+   "title": "DBU English Language Institute - Intensive English Program costs and dates",
+   "url": "https://www.dbu.edu/international/english-language-institute/intensive-english-program/costs-dates.html",
+   "accessed": "2026-10-26"
+  },
+  "majors": {
+   "kind": "other",
+   "title": "DBU - Undergraduate majors",
+   "url": "https://www.dbu.edu/undergraduate-programs/majors.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "recommended",
+  "notes": "DBU calls itself 'test-preferred': ACT, SAT or CLT scores are not required for admission, and applicants without scores get a holistic review, but scores are strongly encouraged and are used for merit scholarships. The international checklist does not state a different rule.",
+  "src": "steps"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply on DBU's own online application; the undergraduate checklist states 'Application fee: $0'. The international checklist asks for transcripts, a passport copy, an essay ('Why I Want to Study at DBU', 250 words minimum), English test scores (not required for students entering the Intensive English Program) and, for an I-20, financial documents. A minimum GPA for international freshmen was not found. Admission is rolling and no application deadline is published; DBU only says some financial aid has priority deadlines (no dates printed), so the deadline list is empty. The Fall 2027 IEP term starts Aug. 10, 2027.",
+  "src": "intl"
+ },
+ "deadlines": [],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No proof of English needed for citizens of, or those who earned a high school diploma or one full year of university study in, listed English-speaking countries (e.g. Australia, Bahamas, Canada except Quebec, Ghana, Jamaica, New Zealand, South Africa, Trinidad and Tobago, United Kingdom). Other options: SAT EBRW 500+, IB Higher-Level English A1 score of 5, AP English Language 3, KCSE English grade B. English scores are good for 2 years. DBU has an English Language Institute with an Intensive English Program (five 8-week sessions a year); applicants entering the IEP do not need English test scores, but the terms for moving from IEP to degree study were not found.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "The PDF (updated March 2026) lists 'TOEFL 4' for undergraduates without naming the scale; the value fits the 1-6 scale. An old 0-120 minimum is not published. The same sheet also lists MET 65 and iTEP 3.7 for undergraduates.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "IELTS Academic overall band 6.0 with no section band below 5.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "subs": {
+    "each_section": 90
+   },
+   "notes": "Duolingo English Test 100 with no subscore below 90.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 163,
+   "notes": "CAE (C1 Advanced) 163.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "The larger international awards are restricted: International Academic Scholarships ($8,000-$14,000 a year, tuition only, by GPA/test/class rank, up to eight semesters) and the Christian Service Scholarship ($4,000 a year, plus up to $3,000 Christian Leadership) are open to students from Canada, Mexico, or affiliated with ACSI schools or DBU Global Community partner schools, and require on-campus housing. The International Student Scholarship, open to any new international student on need and merit, is generally a one-time grant of $500 to $2,500. International students are not eligible for federal aid. Percentages of aid recipients are not published for international students.",
+  "src": "acad"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages reviewed; look it up in the College Board code search.",
+   "src": "steps"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages reviewed; look it up at act.org.",
+   "src": "steps"
+  },
+  "toefl": {
+   "code": "6159",
+   "note": "Institution code printed on the English test score sheet.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,139 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Penn State - How to apply (dates, fee, test-optional)",
+      "url": "https://www.psu.edu/admission/undergraduate/how-to-apply/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Penn State - Admission requirements for international students (English proficiency)",
+      "url": "https://www.psu.edu/resources/international-students/admission-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Penn State - International students FAQs (financial aid)",
+      "url": "https://www.psu.edu/resources/faq/international-students",
+      "accessed": "2026-10-26"
+    },
+    "bulletin": {
+      "kind": "admissions_site",
+      "title": "Penn State University Bulletin - Penn State Abington (majors and campus facts)",
+      "url": "https://bulletins.psu.edu/undergraduate/colleges/abington/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Penn State first-year applicants may choose whether to self-report SAT/ACT scores through MyPennState; no superscoring and ACT Science is not accepted. The Abington CDS C8A agrees: not required, considered if submitted.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "Penn State application fee is $75 for international applicants ($65 domestic). Application is the same for all Penn State campuses; the Abington campus site returned HTTP 403 to automated access, so deadlines, English minimums and fee are the university-wide Undergraduate Admissions rules and should be confirmed with Penn State Abington Admissions. Abington CDS C7: GPA very important, rigor important; essay, recommendations, interview not considered. Penn State Abington (near Philadelphia) lists 26 four-year majors (for example Accounting, Biology, Business, Computer Science, Cybersecurity, Data Sciences, Finance, Information Technology); for other Penn State majors it offers the first two years, then students change campus (University Bulletin, Abington). First-year students usually must finish two years on the starting campus before a change of campus.",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-01",
+      "notify": "2026-12-24",
+      "label": "Early Action (university-wide)",
+      "notes": "Apply by Nov 1 to receive a decision by Dec 24. The Abington CDS (C22) lists the same Nov 1 closing and Dec 24 notification dates.",
+      "src": "apply"
+    },
+    {
+      "kind": "priority",
+      "plan": "RD",
+      "due": "2026-12-01",
+      "label": "Recommended submission deadline for all applications",
+      "notes": "Dec 1 is a recommended date, not a hard closing date: the Abington CDS (C14) reports no application closing date and admission is rolling. No regular-decision notification date is published on the page.",
+      "src": "apply"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "University-wide rule. Required of international applicants whose native language is not English (US citizens and permanent residents are exempt). Alternatives: SAT EBRW 570+ (code 2660), ACT English 24+ (code 3656), GCSE/GCE English language A-C, IB English A 5+, four years at a US high school, or certification from Penn State's Intensive English Communication Program (IECP). Test scores must be under two years old; TOEFL MyBest is not accepted.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Exams taken before Jan 21, 2026.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Exams taken after Jan 21, 2026.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Academic test.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "none",
+    "meets_full_need": false,
+    "merit_scholarships": false,
+    "notes": "Penn State states there is essentially no financial aid available for international undergraduate students, and the Abington CDS (H6) reports no institutional aid for nonresidents.",
+    "src": "aid"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "2660",
+      "note": "Penn State undergraduate admissions code (same for all campuses).",
+      "src": "intl"
+    },
+    "act": {
+      "code": "3656",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "2660",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code is listed; official reports go from the testing service to Undergraduate Admissions.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No code is listed; official reports go from the testing service to Undergraduate Admissions.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {
+    "general": "Admits about 94% of applicants (93% of international applicants) with average GPA 3.20 and SAT middle 50% of 1100-1303 among submitters; the Penn State degree and name lift it slightly above open-access campuses."
+  }
+}

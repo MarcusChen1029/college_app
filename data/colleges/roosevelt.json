@@ -1,0 +1,79 @@
+{
+  "slug": "roosevelt",
+  "name": "Roosevelt University",
+  "short_name": "Roosevelt",
+  "state_region": "IL",
+  "city": "Chicago",
+  "latitude": 41.876055,
+  "longitude": -87.624952,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.roosevelt.edu",
+  "admissions_url": "https://www.roosevelt.edu/admission/international",
+  "ipeds_unit_id": 148487,
+  "undergrad_enrollment": 2868,
+  "intl_undergrads": 141,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Roosevelt University (IPEDS fall 2024 admissions, enrollment, test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=148487",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=148487&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=148487",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 7427,
+    "admits": 7216,
+    "enrolled": 631,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 4,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Roosevelt's website (its consumer-information pages carry enrollment statistics only). Counts from the IPEDS ADM2024 file via the Urban Institute API mirror: 7,427 applicants, 7,216 admitted (97%), 631 enrolled (630 full-time + 1 part-time); College Navigator shows the same 7,427 applicants and 97% admitted. International and residency splits and GPA are not published. SAT/ACT percentiles are for the 143 SAT and 27 ACT submitters among enrolled first-time students (test-optional). Undergraduate enrollment 2,868 and student-to-faculty ratio 11:1 are College Navigator fall 2024."
+  },
+  "scores": {
+    "SAT_ERW": [
+      465,
+      520,
+      600
+    ],
+    "SAT_MATH": [
+      430,
+      465,
+      575
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      26
+    ],
+    "ACT_MATH": [
+      16,
+      22,
+      26
+    ]
+  }
+}

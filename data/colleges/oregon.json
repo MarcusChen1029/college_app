@@ -1,0 +1,99 @@
+{
+ "slug": "oregon",
+ "name": "University of Oregon",
+ "short_name": "Oregon",
+ "state_region": "OR",
+ "city": "Eugene",
+ "latitude": 44.045146,
+ "longitude": -123.075792,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.uoregon.edu",
+ "admissions_url": "https://admissions.uoregon.edu/",
+ "ipeds_unit_id": 209551,
+ "undergrad_enrollment": 20622,
+ "intl_undergrads": 353,
+ "student_faculty_ratio": 19,
+ "academic_calendar": "quarter",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "University of Oregon Common Data Set 2024-2025 (official page: ir.uoregon.edu/uo-overview/common-data-set; the PDF was read from a public mirror of that file because the official SharePoint link requires a Microsoft login)",
+   "url": "https://isduwmygvmdozhpvzaix.supabase.co/storage/v1/object/public/sources/university-of-oregon/2024-25/f551eb7a0d5269eb93460438a6246c5855caee031bf594b26218fcc1edae209a.pdf",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 enrollment, student-to-faculty ratio, admissions summary",
+   "url": "https://nces.ed.gov/collegenavigator/?id=209551",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=209551",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "cds",
+ "stats": {
+  "cds_year": "2024-2025",
+  "source": "cds",
+  "applicants": 40021,
+  "admits": 35337,
+  "enrolled": 5087,
+  "waitlist_offered": 1598,
+  "waitlist_accepted": 641,
+  "waitlist_admitted": 631,
+  "pct_submit_sat": 8,
+  "pct_submit_act": 5,
+  "gpa_avg": 3.73,
+  "pct_reporting_gpa": 99.94,
+  "gpa_distribution": {
+   "4.0": 33.26,
+   "3.75-3.99": 20.85,
+   "3.50-3.74": 16.86,
+   "3.25-3.49": 12.75,
+   "3.00-3.24": 9.38,
+   "2.50-2.99": 6.75,
+   "2.0-2.49": 0.16,
+   "1.0-1.99": 0.0
+  },
+  "notes": "CDS C1 fall 2024 first-year class: 40,021 applied, 35,337 admitted (88%), 5,087 enrolled (full-time plus part-time). Oregon left the C1 residency breakdown (in-state, out-of-state, international) blank, so international applicants and admits are null; CDS H6 lists 40 degree-seeking nonresident undergraduates with institutional aid. GPA distribution is the 'all enrolled students' column of C11. SAT/ACT figures cover the 8% (SAT, 412 students) and 5% (ACT, 272 students) of enrollees who submitted scores; Oregon is test-optional. The C7 factor check boxes could not be read reliably, so factors are omitted. The CDS cost table is labelled 2024-25 and was not used; costs come from the financial aid office."
+ },
+ "scores": {
+  "SAT_TOTAL": [
+   1130,
+   1250,
+   1360
+  ],
+  "SAT_ERW": [
+   580,
+   640,
+   690
+  ],
+  "SAT_MATH": [
+   550,
+   610,
+   670
+  ],
+  "ACT_COMPOSITE": [
+   23,
+   27,
+   30
+  ],
+  "ACT_MATH": [
+   20,
+   25,
+   27
+  ],
+  "ACT_ENGLISH": [
+   22,
+   26,
+   31
+  ]
+ }
+}
