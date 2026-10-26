@@ -65,6 +65,12 @@ Plan: all US colleges next, then UK/CA/AU.
   `transcript-import.ts` (format spec, copy-prompt for any AI, JSON reader, import plan, MCP add/update planning). Import is paste-JSON with a review table; MCP tools
   (`get_transcript_format`, `get_transcript`, `add_transcript_courses`, `update_transcript_course`, `delete_transcript_course`) save directly and are badged "AI".
   Adding another system = one new `SystemMap` file plus an entry in `SYSTEMS` (the completeness test fails until every canonical value is mapped).
+- **Extension** (`extension/`, Chrome MV3 side panel, pinned id `omnpdpbgbbdbnnaimhppoclimbeeognl` = `NEXT_PUBLIC_EXTENSION_ID` in `web/.env.example`; spec `docs/superpowers/specs/2026-10-26-common-app-fill-extension-design.md`,
+  plan `docs/superpowers/plans/2026-10-26-common-app-fill-extension.md`): fills the Common App courses & grades section from the Transcript. Build with `cd extension && node build.mjs`
+  (`TRACKER_URL=... node build.mjs` for a deployed tracker; default `http://localhost:3000`), load `extension/dist` unpacked; steps in `extension/README.md`. It never holds a Supabase session:
+  the student approves it at `/extension/connect`, which mints a **transcript-only token** (migration 0031, table `extension_tokens`, must be applied to the project before the live run; students revoke it under Settings > Connected extensions, then Fill says "Sign in again").
+  **Never test fills on the owner's real Common App account.** Use the throwaway test account (Purdue, nothing submitted) in a separate Chrome profile signed in only to it.
+  The live end-to-end run has not been done yet: follow `extension/TESTING.md`.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every
@@ -78,6 +84,7 @@ Plan: all US colleges next, then UK/CA/AU.
 cd web && npm install && npm run dev        # http://localhost:3000 (needs web/.env.local = copy of .env.example)
 cd web && npx tsc --noEmit && npm run lint && npm test && npm run build   # run all before committing
 python3 scripts/build_seed.py               # after editing data/*.json
+cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App filler extension; live check is extension/TESTING.md
 ```
 
 ## Rules for this repo
