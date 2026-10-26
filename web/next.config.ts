@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  // Old URLs for routes that moved (My colleges tabs, Writing section, Settings).
+  // Old URLs for routes that moved (My colleges tabs, Writing section, Tools, Settings).
   async redirects() {
     return [
       { source: "/my-list", destination: "/application/list", permanent: true },
@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
       { source: "/portals", destination: "/application/portals", permanent: true },
       { source: "/application/essays", destination: "/writing/essays", permanent: false },
       { source: "/activities", destination: "/writing/activities", permanent: false },
-      { source: "/resume", destination: "/writing/resume", permanent: false },
+      { source: "/resume", destination: "/tools/resume", permanent: false },
+      { source: "/writing/resume", destination: "/tools/resume", permanent: false },
       { source: "/account", destination: "/settings", permanent: false },
     ];
   },

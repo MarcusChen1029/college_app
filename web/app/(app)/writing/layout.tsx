@@ -4,7 +4,6 @@ import type { NavItem } from "@/lib/roles";
 const TABS: readonly NavItem[] = [
   ["/writing/essays", "Essays"],
   ["/writing/activities", "Activities"],
-  ["/writing/resume", "Résumé"],
 ];
 
 export default function WritingLayout({ children }: LayoutProps<"/writing">) {
