@@ -94,6 +94,24 @@ function subjectAndLevel(school: TranscriptSchool, c: TranscriptCourse, where: S
   return { subject, level: dual ?? pick("level"), warnings: mapped.warnings };
 }
 
+/** The grades this course can have in a dialog with Grading Scale `scale` and Schedule `stem`; what is left out is reported.
+ *  - Another scale: no grades at all. They would be matched against this scale's options (an IB "6" would become 6 on 1-100).
+ *  - Another term system: only the final grade. A quarter's Q1 is not the dialog's Semester 1, so term grades are never moved across. */
+function gradesInDialog(c: TranscriptCourse, scale: CommonAppScale, stem: ScheduleStem, where: CgGradeKey, skipped: Skipped[]): Partial<Record<TermColumn, string>> {
+  const grades = gradesFor(c);
+  const own = gradingScaleFor(c.scale, c.scaleMax);
+  if (own !== scale) {
+    skipped.push({ where, course: c.name, field: "grades", reason: `grades are on scale ${own}; this grade uses ${scale} on Common App: enter them by hand` });
+    return {};
+  }
+  if (STEM[c.period] === stem) return grades;
+  for (const t of c.terms) {
+    if (t.status !== "graded" || !t.grade.trim() || COLUMN[t.term] === "final") continue;
+    skipped.push({ where, course: c.name, field: `${t.term} grade`, reason: `the course is on a ${STEM[c.period]} schedule; this grade uses the ${stem} schedule on Common App, which has no ${t.term} column: enter it by hand` });
+  }
+  return grades.final ? { final: grades.final } : {};
+}
+
 export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCourse[]): CgGradePlan[] {
   const byId = new Map(schools.map((s) => [s.id, s]));
   const byGrade = new Map<CgGradeKey, TranscriptCourse[]>();
@@ -133,13 +151,11 @@ export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCour
       else rowsOf.push(c);
     }
 
+    // One Grading Scale and one Schedule per dialog: the most common. Courses on another scale or term system still get a row, but their
+    // grades are limited by gradesInDialog (never typed against another scale's options, never put in another term system's columns).
     const scales = ofSchool.filter((c) => c.academicYear === mainYear).map((c) => gradingScaleFor(c.scale, c.scaleMax));
     const scale = mostCommon(scales);
     const stem = mostCommon(ofSchool.filter((c) => c.academicYear === mainYear).map((c) => STEM[c.period]));
-    const otherScale = rowsOf.filter((c) => gradingScaleFor(c.scale, c.scaleMax) !== scale);
-    if (otherScale.length) warnings.push(`Grading scale ${scale} was used for this grade; these courses use another scale, so check their grades: ${otherScale.map((c) => `${c.name} (${gradingScaleFor(c.scale, c.scaleMax)})`).join(", ")}.`);
-    const otherPeriod = rowsOf.filter((c) => c.period !== "full_year" && STEM[c.period] !== stem);
-    if (otherPeriod.length) warnings.push(`Schedule ${stem} was used for this grade; these courses use another term system, so check their grade columns: ${otherPeriod.map((c) => `${c.name} (${STEM[c.period]})`).join(", ")}.`);
 
     const rows: FillRow[] = rowsOf.map((c) => {
       const { subject, level, warnings: ruleWarnings } = subjectAndLevel(mainSchool, c, grade, skipped);
@@ -147,7 +163,8 @@ export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCour
       const hasCredit = c.credit != null;
       const creditNA = !hasCredit && c.creditUnit === "not_listed";
       if (!hasCredit && !creditNA) skipped.push({ where: grade, course: c.name, field: "credit", reason: "no credit in tracker" });
-      return { trackerId: c.id, name: c.name, subject, level, grades: gradesFor(c), credit: hasCredit ? String(c.credit) : null, creditNA };
+      const grades = gradesInDialog(c, scale, stem, grade, skipped);
+      return { trackerId: c.id, name: c.name, subject, level, grades, credit: hasCredit ? String(c.credit) : null, creditNA };
     });
 
     plans.push({ grade, schoolName: mainSchool.name, schoolYear: schoolYearLabel(mainYear), scale, scheduleStem: stem, rows, skipped, warnings });

@@ -49,18 +49,21 @@ test("fills a graded 9th-grade semester course", () => {
 });
 
 test("maps term codes onto the four term columns and the final column", () => {
+  // One term system per grade (a grade's dialog has one Schedule), so each system gets its own grade here.
   const plans = buildCgPlan(
     [school()],
     [
-      course({ id: "q", period: "quarter", terms: [graded("Q1", "A"), graded("Q2", "B"), graded("Q3", "C"), graded("Q4", "D")] }),
-      course({ id: "t", name: "Art", period: "trimester", terms: [graded("T1", "A"), graded("T2", "B"), graded("T3", "C")] }),
-      course({ id: "f", name: "Band", period: "full_year", terms: [graded("FY", "A-")] }),
+      course({ id: "q", gradeLevel: 9, period: "quarter", terms: [graded("Q1", "A"), graded("Q2", "B"), graded("Q3", "C"), graded("Q4", "D")] }),
+      course({ id: "t", gradeLevel: 10, name: "Art", period: "trimester", terms: [graded("T1", "A"), graded("T2", "B"), graded("T3", "C")] }),
+      course({ id: "f", gradeLevel: 11, name: "Band", period: "full_year", terms: [graded("FY", "A-")] }),
     ],
   );
-  const rows = plans[0]!.rows;
-  assert.deepEqual(rows.find((r) => r.trackerId === "q")!.grades, { "1": "A", "2": "B", "3": "C", "4": "D" });
-  assert.deepEqual(rows.find((r) => r.trackerId === "t")!.grades, { "1": "A", "2": "B", "3": "C" });
-  assert.deepEqual(rows.find((r) => r.trackerId === "f")!.grades, { final: "A-" });
+  const rowOf = (id: string) => plans.flatMap((p) => p.rows).find((r) => r.trackerId === id)!;
+  assert.deepEqual(rowOf("q").grades, { "1": "A", "2": "B", "3": "C", "4": "D" });
+  assert.deepEqual(rowOf("t").grades, { "1": "A", "2": "B", "3": "C" });
+  assert.deepEqual(rowOf("f").grades, { final: "A-" });
+  assert.deepEqual(plans.map((p) => p.scheduleStem), ["quarter", "trimester", "year"]);
+  assert.deepEqual(plans.flatMap((p) => p.skipped), []);
 });
 
 test("only graded terms with a grade are filled", () => {
@@ -214,27 +217,85 @@ test("plans come in order 9, 10, 11, 12, other and only for grades with courses"
   assert.deepEqual(plans.map((p) => p.grade), ["9", "11", "12", "other"]);
 });
 
-test("mixed scales in one grade use the most common and name the others", () => {
+test("mixed scales: the grade uses the most common scale; a course on another scale gets its row but no grades", () => {
   const plans = buildCgPlan([school()], [
-    course({ id: "1", name: "Math", scale: "percent_100", terms: [graded("S1", "90")] }),
-    course({ id: "2", name: "Science", scale: "percent_100", terms: [graded("S1", "85")] }),
-    course({ id: "3", name: "Spanish", scale: "letter", terms: [graded("S1", "A")] }),
+    course({ id: "1", name: "Math", scale: "percent_100", terms: [graded("S1", "90"), graded("S2", "92")] }),
+    course({ id: "2", name: "Physics", scale: "percent_100", terms: [graded("S1", "85"), graded("S2", "88")] }),
+    course({ id: "3", name: "IB Biology HL", scale: "ib_7", scaleMax: 7, level: "regular", subject: "other", terms: [graded("S1", "6"), graded("S2", "7")], finalGrade: "7" }),
   ]);
   const p = plans[0]!;
   assert.equal(p.scale, "1-100");
-  assert.ok(p.warnings.some((w) => w.includes("Spanish")), p.warnings.join(" | "));
-  assert.ok(!p.warnings.some((w) => w.includes("Math")));
+  const ib = p.rows.find((r) => r.trackerId === "3")!;
+  // Never 6/100 and 7/100: an IB grade typed against the 1-100 list.
+  assert.deepEqual(ib, { trackerId: "3", name: "IB Biology HL", subject: "Other/Elective", level: "Regular/Standard", grades: {}, credit: "1", creditNA: false });
+  assert.deepEqual(p.skipped.filter((s) => s.course === "IB Biology HL"), [
+    { where: "9", course: "IB Biology HL", field: "grades", reason: "grades are on scale 1-7; this grade uses 1-100 on Common App: enter them by hand" },
+  ]);
+  // Same-scale rows are untouched.
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "1")!.grades, { "1": "90", "2": "92" });
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "2")!.grades, { "1": "85", "2": "88" });
+  assert.ok(!p.skipped.some((s) => s.course === "Math" || s.course === "Physics"), JSON.stringify(p.skipped));
 });
 
-test("a course with a different term system than the grade's schedule is flagged", () => {
+test("mixed scales: a 0.0-5.0 course in a 0.0-4.0 grade gets no grades", () => {
   const plans = buildCgPlan([school()], [
-    course({ id: "1", name: "Math", period: "semester" }),
-    course({ id: "2", name: "Science", period: "semester" }),
-    course({ id: "3", name: "Lab", period: "quarter", terms: [graded("Q1", "A")] }),
+    course({ id: "a", name: "History", scale: "gpa_decimal", scaleMax: 4, terms: [graded("S1", "3.7")] }),
+    course({ id: "b", name: "English", scale: "gpa_decimal", scaleMax: 4, terms: [graded("S1", "3.3")] }),
+    course({ id: "c", name: "AP Chem", scale: "gpa_decimal", scaleMax: 5, terms: [graded("S1", "4.7")], finalGrade: "4.7" }),
+  ]);
+  const p = plans[0]!;
+  assert.equal(p.scale, "0.0-4.0");
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "c")!.grades, {});
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "a")!.grades, { "1": "3.7" });
+  assert.deepEqual(p.skipped, [{ where: "9", course: "AP Chem", field: "grades", reason: "grades are on scale 0.0-5.0; this grade uses 0.0-4.0 on Common App: enter them by hand" }]);
+});
+
+test("a course on another term system keeps only its final grade; its term grades are reported, never moved across", () => {
+  const plans = buildCgPlan([school()], [
+    course({ id: "1", name: "Math", period: "semester", terms: [graded("S1", "A"), graded("S2", "B")] }),
+    course({ id: "2", name: "Science", period: "semester", terms: [graded("S1", "B")] }),
+    course({ id: "3", name: "Health", period: "quarter", terms: [graded("Q1", "A"), graded("Q2", "B")], finalGrade: "A" }),
+    course({ id: "4", name: "Lab", period: "quarter", terms: [graded("Q1", "A")] }),
   ]);
   const p = plans[0]!;
   assert.equal(p.scheduleStem, "semester");
-  assert.ok(p.warnings.some((w) => w.includes("Lab")), p.warnings.join(" | "));
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "3")!.grades, { final: "A" });
+  // Q1 is not Semester 1: with no final grade the row has no grades at all.
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "4")!.grades, {});
+  assert.deepEqual(p.rows.find((r) => r.trackerId === "1")!.grades, { "1": "A", "2": "B" });
+  const reason = (term: string) => `the course is on a quarter schedule; this grade uses the semester schedule on Common App, which has no ${term} column: enter it by hand`;
+  assert.deepEqual(p.skipped, [
+    { where: "9", course: "Health", field: "Q1 grade", reason: reason("Q1") },
+    { where: "9", course: "Health", field: "Q2 grade", reason: reason("Q2") },
+    { where: "9", course: "Lab", field: "Q1 grade", reason: reason("Q1") },
+  ]);
+});
+
+test("a full-year course in a semester grade keeps its final grade with nothing reported", () => {
+  const plans = buildCgPlan([school()], [
+    course({ id: "1", name: "Math", period: "semester" }),
+    course({ id: "2", name: "Band", period: "full_year", terms: [graded("FY", "A-")] }),
+  ]);
+  assert.deepEqual(plans[0]!.rows.find((r) => r.trackerId === "2")!.grades, { final: "A-" });
+  assert.deepEqual(plans[0]!.skipped, []);
+});
+
+test("the review repro: two 1-100 courses, an IB course and a quarter course in one semester grade", () => {
+  const p = buildCgPlan([school()], [
+    course({ id: "1", name: "Math", scale: "percent_100", period: "semester", gradeLevel: 11, terms: [graded("S1", "90"), graded("S2", "92")] }),
+    course({ id: "2", name: "Physics", scale: "percent_100", period: "semester", gradeLevel: 11, terms: [graded("S1", "85"), graded("S2", "88")] }),
+    course({ id: "3", name: "IB Biology HL", scale: "ib_7", scaleMax: 7, period: "semester", gradeLevel: 11, terms: [graded("S1", "6"), graded("S2", "7")] }),
+    course({ id: "4", name: "Health", scale: "percent_100", period: "quarter", gradeLevel: 11, terms: [graded("Q1", "95")] }),
+  ])[0]!;
+  assert.equal(p.scale, "1-100");
+  assert.equal(p.scheduleStem, "semester");
+  assert.deepEqual(p.rows.map((r) => [r.name, r.grades]), [
+    ["Math", { "1": "90", "2": "92" }],
+    ["Physics", { "1": "85", "2": "88" }],
+    ["IB Biology HL", {}],
+    ["Health", {}],
+  ]);
+  assert.deepEqual(p.skipped.map((s) => `${s.course}/${s.field}`), ["IB Biology HL/grades", "Health/Q1 grade"]);
 });
 
 test("Common App's own rule warnings are carried into the plan", () => {
