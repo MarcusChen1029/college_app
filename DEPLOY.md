@@ -18,6 +18,7 @@ Both are safe to re-run.
 3. **Environment variables** (Production + Preview), from `web/.env.example`:
    - `NEXT_PUBLIC_SUPABASE_URL` = `https://eyvmtaggayqizllaseiu.supabase.co`
    - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` = the `sb_publishable_…` key in `web/.env.example`
+   - `NEXT_PUBLIC_EXTENSION_ID` = `omnpdpbgbbdbnnaimhppoclimbeeognl`: the Common App filler extension's id. `/extension/connect` only sends a sign-in token back to this extension; without it the page says "Extension sign-in isn't set up yet". Baked in at build time, so redeploy after setting it.
 4. Deploy, then note the production URL (e.g. `https://college-tracker.vercel.app`). Pick the branch to deploy: merge `claude/inspiring-hypatia-817lp8` into `main` first, or set it as the production branch.
 
 ## 3. Supabase sign-in (Authentication settings)

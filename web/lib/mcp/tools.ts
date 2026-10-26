@@ -708,7 +708,7 @@ export function registerTools(server: McpServer) {
     "get_transcript",
     {
       title: "Get the transcript",
-      description: "The student's transcript: every school with its courses (ids for update_transcript_course / delete_transcript_course, term grades exactly as printed, level, credit, category, status and where the course came from).",
+      description: "The student's transcript: every school with its courses (ids for update_transcript_course / delete_transcript_course, term grades and term credits exactly as printed, level, credit (the sum of the term credits when they are listed per term), category, status and where the course came from).",
       inputSchema: z.object({}),
       annotations: READ,
     },
@@ -764,7 +764,7 @@ export function registerTools(server: McpServer) {
     {
       title: "Add transcript courses",
       description:
-        "Add courses to one school on the student's transcript (the school is created if its name is new). Each course follows get_transcript_format; grades are copied exactly as printed. Valid courses are saved right away and marked as added by AI; invalid ones are rejected with the reason and their position, and courses the student already has are skipped.",
+        "Add courses to one school on the student's transcript (the school is created if its name is new). Each course follows get_transcript_format; grades are copied exactly as printed. A credit printed per term goes on that term (`credit`); the app sets the course credit to their sum, and a term with no grade is status `none` with an empty grade and credit 0. Valid courses are saved right away and marked as added by AI; invalid ones are rejected with the reason and their position, and courses the student already has are skipped.",
       inputSchema: z.object({
         school: z.object({ name: z.string().min(1).max(200) }).loose(),
         courses: z.array(z.unknown()).min(1).max(100),
@@ -796,7 +796,7 @@ export function registerTools(server: McpServer) {
     "update_transcript_course",
     {
       title: "Update a transcript course",
-      description: "Change fields of one transcript course. Only the fields in `patch` change; the school can't be changed. Grades stay exactly as printed. ids come from get_transcript.",
+      description: "Change fields of one transcript course. Only the fields in `patch` change; the school can't be changed. Grades stay exactly as printed. When any term carries a `credit`, the course credit is always the sum of the term credits (patch `terms` to change it). ids come from get_transcript.",
       inputSchema: z.object({ id: z.string().min(1).max(100), patch: z.record(z.string(), z.unknown()) }),
       annotations: WRITE,
     },

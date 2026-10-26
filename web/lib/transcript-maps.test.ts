@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { mapCourse, SYSTEM_IDS, SYSTEMS, type MappedCourse } from "./transcript-maps.ts";
+import { mapCourse, matchSubjectOption, SYSTEM_IDS, SYSTEMS, type MappedCourse } from "./transcript-maps.ts";
 import { emptyCourse, emptySchool, LEVELS, PERIOD_TYPES, SUB_SUBJECTS, SUBJECTS, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 const school = (o: Partial<TranscriptSchool> = {}): TranscriptSchool => ({ id: "s", createdAt: "2026-10-01T00:00:00Z", ...emptySchool(), name: "Lincoln High", country: "United States", ...o });
@@ -33,10 +33,96 @@ test("Common App maps AP, honors and quarter exactly", () => {
   assert.equal(field(mapCourse("common_app", school(), course({ level: "honors" })), "level").value, "Honors");
 });
 
-test("Common App marks its subject dropdown as unverified", () => {
-  const f = field(mapCourse("common_app", school(), course({ subject: "english" })), "subject");
-  assert.equal(f.status, "unverified");
+test("Common App subjects are verified and split math and science by course", () => {
+  const subj = (subject: TranscriptCourse["subject"], sub: string | null = null) => field(mapCourse("common_app", school(), course({ subject, subSubject: sub })), "subject");
+  assert.equal(subj("english").value, "English");
+  assert.equal(subj("english").status, "verified");
+  assert.equal(subj("mathematics", "calculus").value, "Calculus");
+  assert.equal(subj("mathematics", "algebra_2").value, "Algebra");
+  assert.equal(subj("mathematics", "pre_algebra").value, "Pre-Algebra");
+  assert.equal(subj("mathematics", "trigonometry").value, "Trigonometry");
+  assert.equal(subj("mathematics", "statistics").value, "Math (Other)");
+  assert.equal(subj("mathematics").value, "Math (Other)");
+  assert.equal(subj("science", "biology").value, "Biology");
+  assert.equal(subj("science", "earth_space").value, "Earth/Environmental Science");
+  assert.equal(subj("science", "integrated").value, "Science (Other)");
+  assert.equal(subj("arts", "music").value, "Art (Visual or Performing)");
+  assert.equal(subj("arts", "dance").value, "Art (Visual or Performing)");
+  assert.equal(subj("history_social").value, "History/Social Science");
+  assert.equal(subj("world_language").value, "Foreign/World Language");
+  assert.equal(subj("pe_health").value, "Physical Education/Health");
+  assert.equal(subj("business").value, "Other/Elective");
 });
+
+test("every mapped subject is one of that system's own listed options", () => {
+  for (const id of SYSTEM_IDS) {
+    const list = SYSTEMS[id].subjectList;
+    assert.ok(list.options.length >= 6, `${id} has a subject list`);
+    for (const s of SUBJECTS) {
+      for (const sub of [null, ...SUB_SUBJECTS[s]]) {
+        const f = field(mapCourse(id, school(), course({ subject: s, subSubject: sub })), "subject");
+        if (f.value !== null) assert.ok(list.options.includes(f.value), `${id}: "${f.value}" (${s}/${sub}) is not in its list`);
+      }
+    }
+  }
+});
+
+test("Common App lists its 20 official subjects, STARS its 10, UIUC its 6", () => {
+  assert.equal(SYSTEMS.common_app.subjectList.options.length, 20);
+  assert.equal(SYSTEMS.common_app.subjectList.verified, true);
+  assert.ok(SYSTEMS.common_app.subjectList.options.includes("Religion"));
+  assert.equal(SYSTEMS.stars.subjectList.options.length, 10);
+  assert.ok(SYSTEMS.stars.subjectList.options.includes("Fine Arts / Music"));
+  assert.deepEqual([...SYSTEMS.uiuc.subjectList.options], ["English", "Mathematics", "Science", "Social Science", "Language Other Than English", "Other"]);
+  assert.ok(SYSTEMS.csu.subjectList.options.includes("D1 – Biological Science"));
+  assert.equal(SYSTEMS.uc.subjectList.verified, true);
+  assert.ok(SYSTEMS.uc.subjectList.options.includes("Computer Science (Science)"));
+});
+
+test("matchSubjectOption matches case, dashes, spacing and A-G letter codes", () => {
+  const csu = SYSTEMS.csu.subjectList.options;
+  assert.equal(matchSubjectOption(csu, "c – mathematics"), "C – Mathematics");
+  assert.equal(matchSubjectOption(csu, "C - Mathematics"), "C – Mathematics");
+  assert.equal(matchSubjectOption(csu, "C"), "C – Mathematics");
+  assert.equal(matchSubjectOption(csu, "D1"), "D1 – Biological Science");
+  assert.equal(matchSubjectOption(csu, "D"), null); // ambiguous: D1 or D2
+  assert.equal(matchSubjectOption(SYSTEMS.common_app.subjectList.options, "  calculus "), "Calculus");
+  assert.equal(matchSubjectOption(SYSTEMS.common_app.subjectList.options, "Music"), null);
+  assert.equal(matchSubjectOption(SYSTEMS.ut.subjectList.options, ""), null);
+});
+
+test("UIUC puts arts and computer science under Other, has no credit and no sub-category", () => {
+  const f = (subject: TranscriptCourse["subject"]) => field(mapCourse("uiuc", school(), course({ subject })), "subject");
+  assert.equal(f("history_social").value, "Social Science");
+  assert.equal(f("world_language").value, "Language Other Than English");
+  assert.equal(f("arts").value, "Other");
+  assert.equal(f("computer_science").value, "Other");
+  assert.equal(field(mapCourse("uiuc", school(), course()), "credit").status, "none");
+  assert.equal(field(mapCourse("uiuc", school(), course()), "subSubject").status, "none");
+});
+
+test("UT Austin takes five areas plus Other, completed courses only", () => {
+  assert.equal(field(mapCourse("ut", school(), course({ subject: "history_social" })), "subject").value, "Social Studies");
+  assert.equal(field(mapCourse("ut", school(), course({ subject: "arts" })), "subject").value, "Other");
+  const w = mapCourse("ut", school(), course({ terms: [{ term: "S2", grade: "", status: "in_progress" }] })).warnings.join(" ");
+  assert.match(w, /completed/i);
+});
+
+test("UC's subject is its own course category (read live): exact where the sub-category says it, else left open", () => {
+  const algebra = field(mapCourse("uc", school(), course({ subject: "mathematics", subSubject: "algebra_1" })), "subject");
+  assert.equal(algebra.value, "Algebra I");
+  assert.equal(algebra.status, "verified");
+  const open = field(mapCourse("uc", school(), course({ subject: "mathematics", subSubject: "trigonometry" })), "subject");
+  assert.equal(open.value, null);
+  assert.equal(open.status, "unverified");
+});
+
+test("CSU area names are official, and science splits into D1 and D2", () => {
+  assert.equal(field(mapCourse("csu", school(), course({ subject: "history_social" })), "subject").status, "verified");
+  assert.equal(field(mapCourse("csu", school(), course({ subject: "english" })), "subject").value, "B – English");
+  assert.equal(field(mapCourse("csu", school(), course({ subject: "arts" })), "subject").value, "F – Visual & Performing Arts");
+});
+
 
 test("STARS maps arts to Fine Arts / Music for every arts sub-subject", () => {
   for (const sub of SUB_SUBJECTS.arts) {
@@ -86,8 +172,8 @@ test("STARS asks for the unweighted grade and IP for in-progress terms", () => {
   assert.ok(m.warnings.some((w) => /IP/.test(w)));
 });
 
-test("all four systems are registered", () => {
-  assert.deepEqual([...SYSTEM_IDS].sort(), ["common_app", "csu", "stars", "uc"]);
+test("all six systems are registered", () => {
+  assert.deepEqual([...SYSTEM_IDS].sort(), ["common_app", "csu", "stars", "uc", "uiuc", "ut"]);
 });
 
 test("CSU maps course types exactly", () => {
@@ -99,11 +185,10 @@ test("CSU maps course types exactly", () => {
 
 test("CSU maps subjects to A-G areas and splits science", () => {
   assert.match(field(mapCourse("csu", school(), course({ subject: "mathematics" })), "subject").value ?? "", /^C /);
-  const bio = field(mapCourse("csu", school(), course({ subject: "science", subSubject: "biology" })), "subSubject");
+  const bio = field(mapCourse("csu", school(), course({ subject: "science", subSubject: "biology" })), "subject");
   assert.match(bio.value ?? "", /^D1/);
-  const phys = field(mapCourse("csu", school(), course({ subject: "science", subSubject: "physics" })), "subSubject");
+  const phys = field(mapCourse("csu", school(), course({ subject: "science", subSubject: "physics" })), "subject");
   assert.match(phys.value ?? "", /^D2/);
-  assert.equal(field(mapCourse("csu", school(), course({ subject: "history_social" })), "subject").status, "unverified");
 });
 
 test("CSU warns for non-US and college schools", () => {
@@ -138,7 +223,7 @@ test("UC rejects Pass/Fail, and uses IP, PL and NO codes", () => {
 test("UC has no credit field, and maps arts to its five disciplines", () => {
   const m = mapCourse("uc", school(), course({ subject: "arts", subSubject: "dance" }));
   assert.equal(field(m, "credit").status, "none");
-  assert.equal(field(m, "subject").value, "F – Visual and performing arts");
+  assert.equal(field(m, "subject").value, "Dance");
   assert.equal(field(m, "subSubject").value, "Dance");
   assert.equal(field(mapCourse("uc", school(), course({ subject: "arts", subSubject: "interdisciplinary" })), "subSubject").value, "Interdisciplinary Arts");
 });

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { ReminderToggle } from "@/components/AccountPanel";
+import { ConnectedExtensions } from "@/components/ConnectedExtensions";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { MyCounselors } from "@/components/MyCounselors";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
@@ -114,6 +115,7 @@ function SignedIn() {
         </section>
       )}
       {student.role === "student" && <MyCounselors />}
+      {student.role === "student" && <ConnectedExtensions />}
       <RoleSwitcher />
     </>
   );

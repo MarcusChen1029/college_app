@@ -40,7 +40,7 @@ Plan: all US colleges next, then UK/CA/AU.
     `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
     row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
   - Navigation (UX redesign phase 2): nav model in `web/lib/roles.ts` (`navFor`/`accountMenuFor`/`startedFrom`); sign-in is a dialog opened with `openSignIn()`;
-    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays/Activities/Resume are under `/writing/*`.
+    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays and Activities are under `/writing/*`; the Résumé generator moved to the **Tools** page (`/tools`, `/tools/resume`; `/resume` and `/writing/resume` redirect), which also offers the Common App filler download (Beta).
   - Switching role (migration 0025): `RoleSwitcher` (Settings page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
     account has links (a student must leave their teachers, a teacher must remove their students); leaving teacher mode revokes all join codes and archives
     classes. The other side's data is kept so switching back restores it.
@@ -62,10 +62,22 @@ Plan: all US colleges next, then UK/CA/AU.
   one standardized coursework record per student at `/application/transcript` (tabs Edit / Import / View as). Tables `transcript_schools` and `transcript_courses`
   (per-user RLS, composite FK so a course can only join the same student's school). Teachers get **no** access; no RPC, roster or context pack reads them.
   Grades are stored exactly as printed, never converted. Pure code: `web/lib/transcript.ts` (model, validators, merge), `transcript-maps.ts` + `transcript-maps/*.ts`
-  (Common App, STARS, Cal State Apply, UC mapping tables; every value is `verified | unverified | none`; unverified values get no Copy button),
+  (Common App, STARS, Cal State Apply, UC, UIUC SRAR, UT Austin mapping tables; every value is `verified | unverified | none`; unverified values get no Copy button;
+  each system also carries `subjectList`, its own exact subject dropdown, which the AI prompt lists so the AI tags every course per application via `systemSubjects` -> per-system overrides),
   `transcript-import.ts` (format spec, copy-prompt for any AI, JSON reader, import plan, MCP add/update planning). Import is paste-JSON with a review table; MCP tools
   (`get_transcript_format`, `get_transcript`, `add_transcript_courses`, `update_transcript_course`, `delete_transcript_course`) save directly and are badged "AI".
   Adding another system = one new `SystemMap` file plus an entry in `SYSTEMS` (the completeness test fails until every canonical value is mapped).
+- **Extension** (`extension/`, Chrome MV3 side panel, pinned id `omnpdpbgbbdbnnaimhppoclimbeeognl` = `NEXT_PUBLIC_EXTENSION_ID` in `web/.env.example`; spec `docs/superpowers/specs/2026-10-26-common-app-fill-extension-design.md`,
+  plan `docs/superpowers/plans/2026-10-26-common-app-fill-extension.md`): fills the Common App courses & grades section from the Transcript. Build with `cd extension && node build.mjs`
+  (`TRACKER_URL=... node build.mjs` for a deployed tracker; default `http://localhost:3000`), load `extension/dist` unpacked; steps in `extension/README.md`. The Tools page serves a zip of it from `web/public/downloads/common-app-filler.zip`, built for `https://www.track-ur-college.com`: run `cd extension && npm run package` after any extension change and commit the new zip (builds into a temp dir, leaves `dist/` alone). It never holds a Supabase session:
+  the student approves it at `/extension/connect`, which mints a **transcript-only token** (migration 0031, table `extension_tokens`, must be applied to the project before the live run; students revoke it under Settings > Connected extensions, then Fill says "Sign in again").
+  **Never test fills on the owner's real Common App account.** Use the throwaway test account (Purdue, nothing submitted) in a separate Chrome profile signed in only to it.
+  The live end-to-end run has not been done yet: follow `extension/TESTING.md`.
+  Other portals (2026-10-27): the panel's "Fill for" picker follows the active tab (`extension/src/sites.ts`). STARS
+  (both coursework pages), Cal State Apply (High School Coursework, US schools) and UC (Enter courses & grades) get "Add courses", each verified
+  on a live test account (plans `web/lib/stars-fill.ts`, `csu-fill.ts`, `uc-fill.ts`); UIUC and UT get the fill assistant (click a box, press a
+  value; plans `web/lib/system-fill.ts`). Live DOM facts:
+  `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every
@@ -79,13 +91,15 @@ Plan: all US colleges next, then UK/CA/AU.
 cd web && npm install && npm run dev        # http://localhost:3000 (needs web/.env.local = copy of .env.example)
 cd web && npx tsc --noEmit && npm run lint && npm test && npm run build   # run all before committing
 python3 scripts/build_seed.py               # after editing data/*.json
+cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App filler extension; live check is extension/TESTING.md
+cd extension && npm run package   # rebuilds web/public/downloads/common-app-filler.zip (live-site build) after extension changes
 ```
 
 ## Rules for this repo
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0031**; 0026-0029 are written but not yet applied to the project) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0032**; 0026-0029 are written but not yet applied to the project) **and** apply it to the project.
 - **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
   through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
   differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a
@@ -143,8 +157,9 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 1. Help the owner verify the Vercel fix and Google sign-in end to end (Google provider must be enabled in Supabase first; see `DEPLOY.md` §3).
 2. Add a friendly error/config page: when env vars are missing, show a clear message instead of the generic error
    (e.g. check in `app/layout.tsx` and add `app/error.tsx`).
-3. Transcript mapping gaps (all flagged `unverified` in the app): Common App's Subject and Grading Scale dropdowns (need a logged-in screenshot), UIUC SRAR dropdowns
-   (not yet a mapped system: needs an applicant account or admissions email), UC term/grading-system strings, STARS full Course Level list, CSU A/B/F area names.
+3. Transcript mapping gaps (flagged `unverified` in the app). Common App is done: its Subject, Level and Credit lists are official (data catalogs) and its
+   Grading Scale list is verified from a live account (A-F, 1-100, 0.0-4.0, 0.0-5.0, 1-7, 1-10, 1-11, 1-20, Other; `web/lib/commonapp-fill.ts`). Still open: UC's exact
+   dropdown wording and discipline dropdown, STARS Generic Course Title lists and full Course Level list, UIUC's full Type/Grade lists, UT's levels and terms (behind a login).
    Research with source URLs: `docs/superpowers/research/`.
 3b. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
 4. Phase 3: bulk-import base rows for all US colleges from College Scorecard / IPEDS (name, location, size, admit rate,

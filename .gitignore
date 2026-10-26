@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+extension/dist/
+extension/node_modules/
+*.pem

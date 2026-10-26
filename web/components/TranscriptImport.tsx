@@ -116,7 +116,7 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
         </h2>
         <label className="text-sm font-medium">
           The JSON ({TRANSCRIPT_FORMAT_VERSION})
-          <textarea className={`${fieldClass} min-h-40 font-mono text-xs`} value={text} onChange={(e) => setText(e.target.value)} placeholder='{ "version": "transcript.v1", "schools": [ ... ] }' />
+          <textarea className={`${fieldClass} min-h-40 font-mono text-xs`} value={text} onChange={(e) => setText(e.target.value)} placeholder={`{ "version": "${TRANSCRIPT_FORMAT_VERSION}", "schools": [ ... ] }`} />
         </label>
         <button type="button" className={buttonClass("secondary", "sm")} onClick={review} disabled={!text.trim()}>
           Review
@@ -220,6 +220,13 @@ export function TranscriptImport({ onDone }: { onDone?: () => void }) {
                           <StatusPill tone="neutral">Already in your transcript (tick to save anyway)</StatusPill>
                         ) : (
                           <StatusPill tone="done">Ready</StatusPill>
+                        )}
+                        {r.warnings.length > 0 && (
+                          <ul className="mt-1 list-disc pl-4 text-xs text-soon">
+                            {r.warnings.map((w) => (
+                              <li key={w}>{w}</li>
+                            ))}
+                          </ul>
                         )}
                       </td>
                     </tr>

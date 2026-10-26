@@ -1,12 +1,13 @@
-// Cal State Apply (CSU), High School Coursework. Course types and the C, D, E, G area names are from Liaison's
-// Cal State Apply help center; the A, B and F area names and the term-system wording are not on the pages researched.
+// Cal State Apply (CSU), High School Coursework. Course types, Term Type options and A-G area names were read on a live Cal State Apply
+// test account (2026-10-27, docs/superpowers/research/2026-10-27-portal-dom.md §2); the help center and the Freshman Application Guide agree.
 import { LEVELS, PERIOD_TYPES, SUBJECTS } from "../transcript.ts";
 import { isNonUs, none, table, unverified, verified, type SystemMap } from "./types.ts";
 
 const HELP = "https://help.liaisonedu.com/Cal_State_Apply_Applicant_Help_Center/Filling_Out_Your_Cal_State_Apply_Application/Cal_State_Apply_Academic_History";
 const COURSEWORK = `${HELP}/03_High_School_Coursework`;
 const AG = `${HELP}/07_A-G_Matching`;
-const AREA_NOTE = "This area's name was not on the Cal State Apply pages researched";
+const GUIDE = "https://www.calstate.edu/apply/freshman/Documents/cal-state-apply-freshman-application-guide.pdf";
+const LIVE = "https://calstate.cas.myliaison.com/applicant/my-application";
 const IB = verified("International Baccalaureate", COURSEWORK);
 
 export const CSU_MAP: SystemMap = {
@@ -27,30 +28,39 @@ export const CSU_MAP: SystemMap = {
   subject: table(
     SUBJECTS,
     {
-      history_social: unverified("A – History / Social Science", AREA_NOTE, AG),
-      english: unverified("B – English", AREA_NOTE, AG),
-      mathematics: verified("C – Mathematics", AG),
-      science: verified("D – Science (D1 Biological, D2 Physical)", AG),
-      world_language: verified("E – Language Other Than English (LOTE)", AG),
-      arts: unverified("F – Visual and Performing Arts", AREA_NOTE, AG),
+      history_social: verified("A – History / Social Science", LIVE),
+      english: verified("B – English", LIVE),
+      mathematics: verified("C – Mathematics", LIVE),
+      science: unverified(null, "Choose D1 (biological) or D2 (physical) science", GUIDE),
+      world_language: verified("E – Language Other than English", LIVE),
+      arts: verified("F – Visual & Performing Arts", LIVE),
       computer_science: unverified("G – College-Preparatory Elective", "Computer science may count under another area", AG),
       business: unverified("G – College-Preparatory Elective", "Only A-G approved courses count", AG),
       pe_health: unverified("G – College-Preparatory Elective", "Only A-G approved courses count", AG),
       career_technical: unverified("G – College-Preparatory Elective", "Only A-G approved courses count", AG),
-      other: verified("G – College-Preparatory Elective", AG),
+      other: verified("G – College-Preparatory Elective", LIVE),
     },
     unverified(null),
   ),
-  subSubject: (subject, sub) => {
-    if (subject !== "science") return none();
-    if (sub === "biology") return verified("D1 – Biological Science", AG);
-    if (sub === "chemistry" || sub === "physics") return verified("D2 – Physical Science", AG);
-    if (sub === "earth_space") return unverified("D2 – Physical Science", "Earth and space science may be matched differently", AG);
-    return unverified(null, "Choose D1 or D2 when matching", AG);
+  subjectFor: (subject, sub) => {
+    if (subject !== "science") return null;
+    if (sub === "biology") return verified("D1 – Biological Science", LIVE);
+    if (sub === "chemistry" || sub === "physics") return verified("D2 – Physical Science", LIVE);
+    if (sub === "earth_space") return unverified("D2 – Physical Science", "Earth and space science may be matched differently", GUIDE);
+    return unverified(null, "Choose D1 (biological) or D2 (physical) science", GUIDE);
   },
+  subjectList: {
+    options: [
+      "A – History / Social Science", "B – English", "C – Mathematics", "D1 – Biological Science", "D2 – Physical Science",
+      "E – Language Other than English", "F – Visual & Performing Arts", "G – College-Preparatory Elective",
+    ],
+    verified: true,
+    note: "Biology and life science are D1; chemistry, physics and earth science are D2. Music, art, dance and theater are all F. Anything else that counts is G.",
+  },
+  subSubject: () => none("Cal State Apply has no sub-category under an A-G area"),
   period: table(
     PERIOD_TYPES,
-    { full_year: unverified("Year"), semester: unverified("Semester"), trimester: unverified("Trimester"), quarter: unverified("Quarter") },
+    { full_year: verified("Full Year", LIVE), semester: verified("Semester", LIVE), trimester: verified("Trimester", LIVE), quarter: verified("Quarter", LIVE) },
     unverified(null),
   ),
   rules: (school, course) => {

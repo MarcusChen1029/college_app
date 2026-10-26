@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "College application filler",
+  "version": "0.1.0",
+  "description": "Fills your courses and grades into Common App, UC, STARS, Cal State Apply, UIUC and UT Austin from your College Tracker transcript.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6SS2a8nN+nnYOc5k3C6RsynLlmfwrBTO2vONuZYMIwsVmAUE5XHcTbaENrrUkE6uUHVNbBHtJTxpOn1VhOdwefJOx/jpZSyXflogUjal47tbC0I1tPwpYTl6OjjKgy6jtmk2eul5VQKxkvCWLGrvTiQ2/CmATpz3oiSS304cqg0pDdX/AbbF5fYyiFCtJHhiB6u1+ELFzpekH8xys1b4p0dCVXdqW12qfO6Ty+bKC7nKYIJWWPUa0zXtYDIVTuy7LAFPZPrTtrrRWrlDbV7v7e396oVopaVKURdqeN08L8b+6EqhrWrnrgcvOjMs46svFunO/42rG6vxlhoBvFPEhQIDAQAB",
+  "permissions": [
+    "identity",
+    "storage",
+    "sidePanel",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://apply.commonapp.org/*",
+    "https://apply.universityofcalifornia.edu/*",
+    "https://srar.selfreportedtranscript.com/*",
+    "https://calstate.cas.myliaison.com/*",
+    "https://calstate.liaisoncas.com/*",
+    "https://myillini.illinois.edu/*",
+    "https://utdirect.utexas.edu/*",
+    "https://mystatus.admissions.utexas.edu/*",
+    "https://admissions.utexas.edu/*",
+    "https://eyvmtaggayqizllaseiu.supabase.co/*"
+  ],
+  "action": {
+    "default_title": "College application filler"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://apply.commonapp.org/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://apply.universityofcalifornia.edu/*",
+        "https://srar.selfreportedtranscript.com/*",
+        "https://calstate.cas.myliaison.com/*",
+        "https://calstate.liaisoncas.com/*",
+        "https://myillini.illinois.edu/*",
+        "https://utdirect.utexas.edu/*",
+        "https://mystatus.admissions.utexas.edu/*",
+        "https://admissions.utexas.edu/*"
+      ],
+      "js": [
+        "assist-content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

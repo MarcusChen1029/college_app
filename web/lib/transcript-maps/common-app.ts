@@ -1,13 +1,25 @@
-// Common App "Courses & Grades" (first-year). Levels and schedule values are from Common App's Academic Record
-// Reporting deck (Nov 2025). The Subject and Grading Scale dropdowns are NOT public, so those stay unverified.
-import { LEVELS, PERIOD_TYPES, SUBJECTS } from "../transcript.ts";
-import { none, table, unverified, verified, type SystemMap } from "./types.ts";
+// Common App "Courses & Grades" (first-year). Levels, schedules, credits and the 20-option Subject list are from Common App's own 2026-27
+// data catalogs (linked from the Data-catalogs support article). The Grading Scale dropdown was read from a live account (2026-10-26);
+// it is verified and lives in ../commonapp-fill.ts as COMMON_APP_GRADING_SCALES.
+import { LEVELS, PERIOD_TYPES, SUBJECTS, type Subject } from "../transcript.ts";
+import { none, table, unverified, verified, type MapEntry, type SystemMap } from "./types.ts";
 
 const DECK = "https://www.commonapp.org/files/webinar_decks/Academic-Record-Reporting.pdf";
-const IB = verified("International Baccalaureate (IB)", DECK, "Common App does not distinguish HL and SL");
-const NA = verified("N/A", DECK);
+const CATALOG = "https://appsupport.commonapp.org/applicantsupport/s/article/Data-catalogs";
+const IB = verified("International Baccalaureate (IB)", CATALOG, "Common App does not distinguish HL and SL");
+const NA = verified("N/A", CATALOG);
 
-const SUBJECT_NOTE = "Common App's Subject dropdown could not be verified from public pages";
+/** The Subject dropdown, in Common App's own order. One flat list: no sub-categories. */
+export const COMMON_APP_SUBJECTS = [
+  "Pre-Algebra", "Algebra", "Geometry", "Trigonometry", "Pre-Calculus", "Calculus", "Math (Other)",
+  "Biology", "Chemistry", "Physics", "Earth/Environmental Science", "Science (Other)",
+  "English", "History/Social Science", "Foreign/World Language", "Physical Education/Health", "Art (Visual or Performing)",
+  "Computer Science", "Religion", "Other/Elective",
+] as const;
+
+const S = (value: string, note?: string): MapEntry => verified(value, CATALOG, note);
+const MATH: Record<string, string> = { pre_algebra: "Pre-Algebra", algebra_1: "Algebra", algebra_2: "Algebra", geometry: "Geometry", trigonometry: "Trigonometry", precalculus: "Pre-Calculus", calculus: "Calculus" };
+const SCIENCE: Record<string, string> = { biology: "Biology", chemistry: "Chemistry", physics: "Physics", earth_space: "Earth/Environmental Science" };
 
 export const COMMON_APP_MAP: SystemMap = {
   id: "common_app",
@@ -15,24 +27,24 @@ export const COMMON_APP_MAP: SystemMap = {
   level: table(
     LEVELS,
     {
-      regular: verified("Regular/Standard", DECK),
-      accelerated: verified("Accelerated", DECK),
-      advanced: verified("Advanced", DECK),
-      honors: verified("Honors", DECK),
-      high_honors: verified("High Honors", DECK),
-      ap: verified("Advanced Placement (AP)", DECK),
+      regular: verified("Regular/Standard", CATALOG),
+      accelerated: verified("Accelerated", CATALOG),
+      advanced: verified("Advanced", CATALOG),
+      honors: verified("Honors", CATALOG),
+      high_honors: verified("High Honors", CATALOG),
+      ap: verified("Advanced Placement (AP)", CATALOG),
       ib_hl: IB,
       ib_sl: IB,
       ib: IB,
-      pre_ib: verified("Pre-IB", DECK),
-      a_level: unverified("AS/A-level/International A-level, Cambridge AICE", "The deck prints this on two lines; it may be two separate options", DECK),
-      gcse_igcse: unverified("GCSE, IGCSE", "The deck prints this on two lines; it may be two separate options", DECK),
-      college_prep: verified("College Prep", DECK),
-      dual_enrollment: verified("Dual Enrollment", DECK),
-      enriched: verified("Enriched", DECK),
-      gifted: verified("Gifted", DECK),
-      intensive: verified("Intensive", DECK),
-      regents: verified("Regents", DECK),
+      pre_ib: verified("Pre-IB", CATALOG),
+      a_level: verified("AS/A-level/International A-level, Cambridge AICE", CATALOG, "One option"),
+      gcse_igcse: verified("GCSE, IGCSE", CATALOG, "One option"),
+      college_prep: verified("College Prep", CATALOG),
+      dual_enrollment: verified("Dual Enrollment", CATALOG),
+      enriched: verified("Enriched", CATALOG),
+      gifted: verified("Gifted", CATALOG),
+      intensive: verified("Intensive", CATALOG),
+      regents: verified("Regents", CATALOG),
       other: NA,
       none: NA,
     },
@@ -41,19 +53,31 @@ export const COMMON_APP_MAP: SystemMap = {
   subject: table(
     SUBJECTS,
     {
-      english: unverified("English", SUBJECT_NOTE),
-      mathematics: unverified("Mathematics", SUBJECT_NOTE),
-      science: unverified("Science", SUBJECT_NOTE),
-      history_social: unverified("History/Social Science", SUBJECT_NOTE),
-      world_language: unverified("Foreign Language", SUBJECT_NOTE),
-      arts: unverified("Arts", SUBJECT_NOTE),
-      computer_science: unverified("Computer Science", SUBJECT_NOTE),
-      business: unverified("Business", SUBJECT_NOTE),
-      pe_health: unverified("Physical Education", SUBJECT_NOTE),
+      english: S("English"),
+      mathematics: S("Math (Other)", "Common App splits math by course; pick the sub-subject to get Algebra, Geometry, Calculus ..."),
+      science: S("Science (Other)", "Common App splits science by course; pick the sub-subject to get Biology, Chemistry, Physics ..."),
+      history_social: S("History/Social Science"),
+      world_language: S("Foreign/World Language"),
+      arts: S("Art (Visual or Performing)", "One option for visual art, music, dance and theater"),
+      computer_science: S("Computer Science"),
+      pe_health: S("Physical Education/Health"),
+      business: S("Other/Elective"),
+      career_technical: S("Other/Elective"),
+      other: S("Other/Elective"),
     },
-    unverified(null, SUBJECT_NOTE),
+    S("Other/Elective"),
   ),
-  subSubject: () => none("Common App's Subject list has no documented sub-subject"),
+  subjectFor: (subject: Subject, sub: string | null) => {
+    if (subject === "mathematics") return S(sub ? MATH[sub] ?? "Math (Other)" : "Math (Other)");
+    if (subject === "science") return S(sub ? SCIENCE[sub] ?? "Science (Other)" : "Science (Other)");
+    return null;
+  },
+  subjectList: {
+    options: COMMON_APP_SUBJECTS,
+    verified: true,
+    note: "One flat list with no sub-categories: music, dance, theater and visual art are all \"Art (Visual or Performing)\". Math and science are split by course, each with an \"(Other)\" option. Business, career-technical and anything else that is not listed go in \"Other/Elective\"; religion has its own option.",
+  },
+  subSubject: () => none("Common App's Subject list has no sub-category"),
   period: table(
     PERIOD_TYPES,
     {
