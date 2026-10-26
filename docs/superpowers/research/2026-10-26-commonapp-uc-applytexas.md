@@ -11,7 +11,7 @@ Legend:
 ---------------------------------------------------------------------------
 ## 0. Headline findings
 
-1. **Common App (C&G)** is a per-course grid. Course Level has 17 verified labels (flat list, possibly 19; see 1.4). The **Subject dropdown values, Grading Scale list, per-scale grade values and credit units are NOT VERIFIED**. The Education > "Current or Most Recent Year Courses" section uses the same Schedule and Course Level lists.
+1. **Common App (C&G)** is a per-course grid. Course Level has 17 verified labels (flat list, possibly 19; see 1.4). The **per-scale grade values and credit units are NOT VERIFIED** (the Grading Scale list is verified, see 1.2). The Education > "Current or Most Recent Year Courses" section uses the same Schedule and Course Level lists.
 2. **UC Academic History** is built on the A-G framework, not a free-form course grid. The CA course list is pre-populated from the school's A-G list, with Subject area, course name and honors type locked to that list. Honors type, grade-per-term, IP/PL/NO codes and the "no +/-" rule are VERIFIED. **No per-course credit field was found in any official UC source.** The exact dropdown wording for term systems and grading systems is only SECONDARY.
 3. **ApplyTexas does NOT collect course-by-course coursework** in its Core Questions as far as I could verify. Its official guide says schools collect a Self-Reported Academic Record (SRAR) separately and that ApplyTexas has no transcript upload. **UT Austin itself** takes the transcript (grades 9-11 + class rank) and uses the Common App for summer/fall. It only asks for course entry via an "Academic Coursework Entry Form" in MyStatus for non-Texas-high-school students, and the form's fields are NOT VERIFIED (behind login).
 
@@ -36,7 +36,7 @@ Per course row (required): Subject, Course Name, Course Level, at least one grad
 | School Name | dropdown | only schools already added in the Education section; extra transcripts via "Add Courses from Another Transcript" |
 | School Year | dropdown | per grade grid; academic year (e.g., 2025-26) |
 | Grade level | grid / tab | 9th, 10th, 11th, 12th, plus "Other Courses" |
-| Grading Scale | dropdown | list NOT VERIFIED; includes an "Other" option, after which grades are typed into the individual grade boxes (https://appsupport.commonapp.org/applicantsupport/s/article/What-if-my-Grading-Scale-doesn-t-appear-in-the-dropdown). Third-party counselor guides show "A-F" as one option (SECONDARY). |
+| Grading Scale | dropdown | **VERIFIED** (live account, read-only, 2026-10-26): "A-F", "1-100", "0.0-4.0", "0.0-5.0", "1-7", "1-10", "1-11", "1-20", "Other". After "Other", grades are typed into the individual grade boxes (https://appsupport.commonapp.org/applicantsupport/s/article/What-if-my-Grading-Scale-doesn-t-appear-in-the-dropdown). The list lives in `web/lib/commonapp-fill.ts`. |
 | Schedule | dropdown | Semester, Trimester, Quarterly, Yearly (see 1.3) |
 | Subject | dropdown | **values NOT VERIFIED** (no official or counselor page listed them; "use best judgment" per a Collegewise guide) |
 | Course Name | free text | enter exactly as on transcript |

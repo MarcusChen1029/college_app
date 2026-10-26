@@ -15,8 +15,8 @@ export function validateTeacher(i: { displayName: string; school: string }):
   return { ok: true, value: { displayName, school: i.school.trim() || null } };
 }
 
-/** Pages that only make sense for a student (their own list, profile, résumé…). */
-export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/writing"] as const;
+/** Pages that only make sense for a student (their own list, profile, tools…). */
+export const STUDENT_ONLY_PATHS = ["/profile", "/application", "/activities", "/resume", "/connect-ai", "/oauth", "/start", "/pricing", "/writing", "/tools"] as const;
 
 export function isStudentOnlyPath(pathname: string): boolean {
   return STUDENT_ONLY_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -34,8 +34,9 @@ export function homePathFor(role: Role | null): string {
  */
 export function redirectFor(role: Role | null | undefined, pathname: string, signedIn: boolean): string | null {
   if (!signedIn || role === undefined) return null;
-  // The AI-connection consent screen is mid-flow elsewhere; don't lose it by detouring through /welcome.
-  if (role === null) return pathname === "/welcome" || pathname.startsWith("/oauth/") ? null : "/welcome";
+  // The AI-connection consent screen and the extension's sign-in popup are mid-flow elsewhere; don't lose them by detouring through
+  // /welcome (the extension popup must end at the extension's own address). Those pages tell a no-role user what to do instead.
+  if (role === null) return pathname === "/welcome" || pathname.startsWith("/oauth/") || pathname.startsWith("/extension/") ? null : "/welcome";
   if (pathname === "/welcome") return homePathFor(role);
   if (role === "teacher" && isStudentOnlyPath(pathname)) return "/teacher";
   return null;
@@ -48,6 +49,7 @@ const STUDENT_NAV: readonly NavItem[] = [
   ["/compare", "Compare"],
   ["/application", "My colleges"],
   ["/writing", "Writing"],
+  ["/tools", "Tools"],
   ["/profile", "Profile"],
 ];
 

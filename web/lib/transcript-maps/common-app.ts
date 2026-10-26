@@ -1,5 +1,6 @@
 // Common App "Courses & Grades" (first-year). Levels, schedules, credits and the 20-option Subject list are from Common App's own 2026-27
-// data catalogs (linked from the Data-catalogs support article). Only the Grading Scale dropdown labels are still unpublished.
+// data catalogs (linked from the Data-catalogs support article). The Grading Scale dropdown was read from a live account (2026-10-26);
+// it is verified and lives in ../commonapp-fill.ts as COMMON_APP_GRADING_SCALES.
 import { LEVELS, PERIOD_TYPES, SUBJECTS, type Subject } from "../transcript.ts";
 import { none, table, unverified, verified, type MapEntry, type SystemMap } from "./types.ts";
 
