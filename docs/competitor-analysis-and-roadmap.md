@@ -99,7 +99,7 @@ Facts found while sizing (2026-10-25):
 | **Phase 3: backlog** | | | | | |
 | 9 | In-app AI helper (essay feedback, list suggestions) | L | Maia, BridgeU, Cialfo, OverGrad, Naviance | Server-side API calls, rate limits, privacy stance for minors. Do #4 first. | todo |
 | 10 | Shareable portfolio link from activities + resume | M | Xello, Naviance, SchooLinks | Private by default. | todo |
-| 11 | Class-level scattergrams (anonymous aggregates) | L | Naviance, Xello, SchooLinks, Unifrog | Needs enough students; minimum group size to avoid identifying individuals. | todo |
+| 11 | Class-level scattergrams (anonymous aggregates) | L | Naviance, Xello, SchooLinks, Unifrog | Needs enough students; minimum group size to avoid identifying individuals. | built 2026-10-27 (`/teacher/charts`, floor of 5 students; spec docs/superpowers/specs/2026-10-27-class-charts-design.md); migration 0033 NOT yet applied, smoke test in supabase/patches/ not run |
 | 12 | Translated UI (for example zh-TW) | L | Xello | Retrofits every page; only if students need it. | todo |
 | 13 | Interest quiz based on O*NET | L | Xello, Naviance, SchooLinks, Maia | Check O*NET licensing first. Low value for a tracker. | todo |
 | 14 | Standardized transcript: one coursework record, AI-assisted import (copy prompt or MCP), views mapped to Common App, STARS, Cal State Apply and UC | L | Xello, Naviance, Parchment (record side only) | Migration 0030. Teachers excluded. Feeds a later auto-fill browser extension. See `docs/superpowers/specs/2026-10-26-transcript-design.md`. | built 2026-10-26; migration 0030 applied; several system dropdowns unverified |
