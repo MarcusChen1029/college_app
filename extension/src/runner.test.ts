@@ -7,6 +7,7 @@ import {
   blankText,
   buildPlans,
   filledText,
+  needsSaveGuidance,
   offersFor,
   offerText,
   runFill,
@@ -216,4 +217,78 @@ test("report wording", () => {
   assert.equal(filledText({ target: "9", filled: 12, blanks: [] }), "Filled 12 courses");
   assert.equal(filledText({ target: "9", filled: 1, blanks: [] }), "Filled 1 course");
   assert.equal(blankText({ where: "9", course: "Drama", field: "grade 1", reason: "grade 'A-' not in Common App's list" }), "Drama: grade 1 left blank: grade 'A-' not in Common App's list");
+});
+
+// ---- fix round 1: Stop is honoured at every step ----------------------------------------------------------------------
+
+const fillCalls = (calls: string[]) => calls.filter((c) => c.startsWith("fill:"));
+
+test("stop during open: no inspect, no fill", async () => {
+  const { driver, calls } = fakeDriver();
+  let stop = false;
+  const d: Driver = { ...driver, async open(t) { await driver.open(t); stop = true; } };
+  const { items, stopped } = await runFill(["9", "10"], d, askKeep, () => stop);
+  assert.equal(stopped, true);
+  assert.deepEqual(calls, ["open:9"]);
+  assert.deepEqual(items, []);
+});
+
+test("stop during inspect: zero fill calls", async () => {
+  const { driver, calls } = fakeDriver({ existing: { "9": ["Drama"] } });
+  let stop = false;
+  let asked = false;
+  const d: Driver = { ...driver, async inspect(t) { const r = await driver.inspect(t); stop = true; return r; } };
+  const { stopped } = await runFill(["9", "10"], d, async () => { asked = true; return "keep"; }, () => stop);
+  assert.equal(stopped, true);
+  assert.equal(fillCalls(calls).length, 0);
+  assert.equal(asked, false);
+});
+
+test("stop while the Replace/Keep question is pending: zero fill calls", async () => {
+  const { driver, calls } = fakeDriver({ existing: { "9": ["Drama"] } });
+  let stop = false;
+  let release: (m: FillMode) => void = () => {};
+  const ask = () => new Promise<FillMode>((resolve) => (release = resolve));
+  const run = runFill(["9", "10"], driver, ask, () => stop);
+  await new Promise((r) => setTimeout(r, 5));
+  stop = true; // the panel's Stop sets the flag, then dismisses the prompt
+  release("keep");
+  const { items, stopped } = await run;
+  assert.equal(stopped, true);
+  assert.equal(fillCalls(calls).length, 0);
+  assert.deepEqual(items, []);
+});
+
+// ---- fix round 1: the "nothing was saved" guidance ---------------------------------------------------------------------
+
+test("save guidance only for a Courses & Grades item that stopped on a page stoppedReason", async () => {
+  // page stoppedReason on a grade: guidance
+  const a = fakeDriver({ fill: { "10": { filled: 2, blanks: [], stoppedReason: "Common App did not close the dialog" } } });
+  const ra = await runFill(["9", "10"], a.driver, askKeep, neverStop);
+  assert.equal(needsSaveGuidance(ra.items[0]!), false, "grade 9 was filled and saved before the stop");
+  assert.equal(needsSaveGuidance(ra.items[1]!), true);
+
+  // page stoppedReason on Current Year: no dialog, no guidance
+  const b = fakeDriver({ fill: { current: { filled: 0, blanks: [], stoppedReason: "Stopped." } } });
+  const rb = await runFill(["current"], b.driver, askKeep, neverStop);
+  assert.equal(needsSaveGuidance(rb.items[0]!), false);
+
+  // navigation / open error: no dialog opened
+  const c = fakeDriver();
+  c.driver.open = async () => { throw new Error("Common App did not finish loading"); };
+  const rc = await runFill(["9"], c.driver, askKeep, neverStop);
+  assert.equal(needsSaveGuidance(rc.items[0]!), false);
+
+  // a thrown error during fill is the driver's, not a page stop
+  const d = fakeDriver({ fill: { "9": new Error("The Common App page stopped responding") } });
+  const rd = await runFill(["9"], d.driver, askKeep, neverStop);
+  assert.equal(needsSaveGuidance(rd.items[0]!), false);
+
+  // Stop between grades: a stopped run whose last item filled normally
+  let stop = false;
+  const e = fakeDriver();
+  const wrapped: Driver = { ...e.driver, async fill(t, m) { const r = await e.driver.fill(t, m); stop = true; return r; } };
+  const re = await runFill(["9", "10"], wrapped, askKeep, () => stop);
+  assert.equal(re.stopped, true);
+  assert.equal(needsSaveGuidance(re.items.at(-1)!), false);
 });

@@ -15,6 +15,7 @@ import {
   runFill,
   startFill,
   STATUS,
+  needsSaveGuidance,
   STOP_GUIDANCE,
   TICK_REMINDER,
   targetLabel,
@@ -147,8 +148,10 @@ async function run(tabId: number): Promise<void> {
   stopRequested = false;
   const status = h("p", { class: "status" }, "Starting...");
   const prompt = h("div", {});
+  let dismissPrompt: (() => void) | null = null;
   const stop = button("Stop", () => {
     stopRequested = true;
+    dismissPrompt?.(); // a pending Replace/Keep question must not keep the run blocked; runFill sees the stop flag and fills nothing
     status.textContent = "Stopping after the current field...";
     stop.disabled = true;
     chrome.tabs.sendMessage(tabId, { type: "stop" }).catch(() => {});
@@ -158,9 +161,11 @@ async function run(tabId: number): Promise<void> {
   const ask = (target: Target, count: number) =>
     new Promise<FillMode>((resolve) => {
       const choose = (mode: FillMode) => {
+        dismissPrompt = null;
         prompt.replaceChildren();
         resolve(mode);
       };
+      dismissPrompt = () => choose("keep");
       prompt.replaceChildren(
         h("div", { class: "ask" }, h("p", {}, askText(target, count)), h("div", { class: "row" }, button("Replace them", () => choose("replace"), "btn"), button("Keep them, add the rest", () => choose("keep"), "btn primary"))),
       );
@@ -191,15 +196,14 @@ function reportView(outcome: FillOutcome, targets: Target[], tabId: number): voi
     if (outcome.reason === "signed_out") return signedOutView(outcome.status);
     return messageView(outcome.status, button("Back", () => void refresh(), "btn primary"));
   }
-  const sections = outcome.items.map((item, i) => {
-    const stoppedHere = outcome.stopped && i === outcome.items.length - 1;
+  const sections = outcome.items.map((item) => {
     return h(
       "section",
       { class: "item" },
       h("h2", {}, targetLabel(item.target)),
       h("p", { class: "done" }, filledText(item)),
       item.note ? h("p", { class: "warn" }, item.note) : false,
-      stoppedHere && item.target !== "current" ? h("p", { class: "warn" }, STOP_GUIDANCE) : false,
+      needsSaveGuidance(item) ? h("p", { class: "warn" }, STOP_GUIDANCE) : false,
       item.blanks.length ? h("ul", {}, ...item.blanks.map((b) => h("li", {}, blankText(b)))) : false,
       button(`Open ${targetLabel(item.target)} on Common App`, () => void chrome.tabs.update(tabId, { url: targetUrl(item.target) }), "link"),
     );

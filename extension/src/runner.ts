@@ -22,7 +22,13 @@ export type Driver = {
   fill(target: Target, mode: FillMode): Promise<PageResult>;
 };
 
-export type ReportItem = { target: Target; filled: number; blanks: Skipped[]; note?: string };
+/** `stoppedOnPage`: the Common App page itself reported a stop (its stoppedReason), as opposed to a driver error or a Stop between steps. */
+export type ReportItem = { target: Target; filled: number; blanks: Skipped[]; note?: string; stoppedOnPage?: boolean };
+
+/** Only a Courses & Grades page that stopped by itself can have a dialog left open with unsaved rows; every other stop leaves nothing to save. */
+export function needsSaveGuidance(item: ReportItem): boolean {
+  return item.stoppedOnPage === true && item.target !== "current";
+}
 
 export const GRADE_ORDER: CgGradeKey[] = ["9", "10", "11", "12", "other"];
 export const CURRENT_LABEL = "Current year courses";
@@ -58,12 +64,16 @@ export async function runFill(
   for (const target of targets) {
     if (shouldStop()) return { items, stopped: true };
     try {
+      // Stop is re-checked after every await: it may have been pressed during navigation, inspect or the Replace/Keep prompt.
       await driver.open(target);
+      if (shouldStop()) return { items, stopped: true };
       const { existing } = await driver.inspect(target);
+      if (shouldStop()) return { items, stopped: true };
       const mode = existing.length > 0 ? await ask(target, existing.length) : "keep";
+      if (shouldStop()) return { items, stopped: true };
       const result = await driver.fill(target, mode);
       if (result.stoppedReason) {
-        items.push({ target, filled: result.filled, blanks: result.blanks, note: result.stoppedReason });
+        items.push({ target, filled: result.filled, blanks: result.blanks, note: result.stoppedReason, stoppedOnPage: true });
         return { items, stopped: true };
       }
       items.push({ target, filled: result.filled, blanks: result.blanks });
