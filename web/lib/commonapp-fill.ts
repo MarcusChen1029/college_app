@@ -3,6 +3,7 @@
 // Grading Scale list and the dialog's schedule wording were read from a live account (read-only, 2026-10-26).
 
 import { mapCourse, yearLabel } from "./transcript-maps.ts";
+import { COMMON_APP_MAP } from "./transcript-maps/common-app.ts";
 import { courseStatus, type GradeScale, type PeriodType, type TermCode, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 /** The Grading Scale dropdown, in Common App's order. After "Other" the student types each grade instead of picking it. */
@@ -133,7 +134,9 @@ export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCour
         return f.value;
       };
       const subject = pick("subject");
-      const level = pick("level");
+      // Common App wants dual-enrollment courses under the high school entered as "Dual Enrollment", whatever level the transcript gave; a student override still wins.
+      const dual = c.isCollege && !c.overrides.common_app?.level ? COMMON_APP_MAP.level.dual_enrollment.value : null;
+      const level = dual ?? pick("level");
       const hasCredit = c.credit != null;
       const creditNA = !hasCredit && c.creditUnit === "not_listed";
       if (!hasCredit && !creditNA) skipped.push({ where: grade, course: c.name, field: "credit", reason: "no credit in tracker" });

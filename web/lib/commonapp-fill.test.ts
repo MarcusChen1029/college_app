@@ -185,6 +185,25 @@ test("subject and level come from the Common App map", () => {
   assert.equal(row("m").level, "Advanced Placement (AP)");
 });
 
+test("dual-enrollment courses are entered with level Dual Enrollment", () => {
+  const plans = buildCgPlan([school()], [
+    course({ id: "a", name: "College Algebra", isCollege: true, level: "regular" }),
+    course({ id: "b", name: "College Bio", isCollege: true, level: "ap" }),
+    course({ id: "c", name: "Dual by level", level: "dual_enrollment" }),
+    course({ id: "d", name: "Plain", level: "regular" }),
+  ]);
+  const level = (id: string) => plans[0]!.rows.find((r) => r.trackerId === id)!.level;
+  assert.equal(level("a"), "Dual Enrollment");
+  assert.equal(level("b"), "Dual Enrollment");
+  assert.equal(level("c"), "Dual Enrollment");
+  assert.equal(level("d"), "Regular/Standard");
+});
+
+test("a student's level override beats the dual-enrollment rule", () => {
+  const plans = buildCgPlan([school()], [course({ isCollege: true, level: "regular", overrides: { common_app: { level: "Honors" } } })]);
+  assert.equal(plans[0]!.rows[0]!.level, "Honors");
+});
+
 test("plans come in order 9, 10, 11, 12, other and only for grades with courses", () => {
   const plans = buildCgPlan([school()], [
     course({ id: "o", gradeLevel: null }),
