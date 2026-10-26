@@ -57,6 +57,7 @@ const TEACHER_NAV: readonly NavItem[] = [
   ["/teacher/classes", "Classes"],
   ["/teacher/deadlines", "Deadlines"],
   ["/teacher/tasks", "Tasks"],
+  ["/teacher/charts", "Charts"],
   ["/colleges", "Explore"],
   ["/compare", "Compare"],
 ];
