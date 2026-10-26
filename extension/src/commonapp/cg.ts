@@ -48,16 +48,22 @@ export function unreachableReason(path: string): string | null {
 
 const rowEl = (doc: Document, n: number) => doc.getElementById(cgFieldId("courseName", 1, n))?.closest("ca-cng-course") ?? null;
 
-/** Transcript 1's rows: course number, name, and whether the row is empty (no name, no subject/level/grade shown). */
+/** Transcript 1's rows: course number, name, and whether the row is empty. Empty = no name, no subject/level/grade shown, every grade and
+ *  credit box empty and N/A unticked; anything else is a course the student entered, which Keep must never touch. */
 export function cgRows(doc: Document): { n: number; name: string; blank: boolean }[] {
   const root = cgDialog(doc) ?? doc;
+  const empty = (i: Element) => !((i as HTMLInputElement).value ?? "").trim();
   return [...root.querySelectorAll('input[id^="courseNameControl_T1C"]')].map((input) => {
     const n = Number(input.id.slice("courseNameControl_T1C".length));
     const name = ((input as HTMLInputElement).value ?? "").trim();
     const row = input.closest("ca-cng-course");
-    const selectsEmpty = [...(row?.querySelectorAll("mat-select") ?? [])].every((s) => !matShownText(s));
-    const textGradesEmpty = [...(row?.querySelectorAll('input[id^="gradeControl_"]') ?? [])].every((g) => !((g as HTMLInputElement).value ?? "").trim());
-    return { n, name, blank: !name && selectsEmpty && textGradesEmpty };
+    const all = (sel: string) => [...(row?.querySelectorAll(sel) ?? [])];
+    const selectsEmpty = all("mat-select").every((s) => !matShownText(s));
+    const textGradesEmpty = all('input[id^="gradeControl_"]').every(empty);
+    const creditsEmpty = all('input[id^="credit"][id*="Control_T1C"]').every(empty);
+    const na = doc.getElementById(cgFieldId("creditNA", 1, n));
+    const naOff = !na || !isChecked(na);
+    return { n, name, blank: !name && selectsEmpty && textGradesEmpty && creditsEmpty && naOff };
   });
 }
 
@@ -126,12 +132,14 @@ async function answerYesIfAsked(doc: Document, grade: CgGradeKey): Promise<void>
     const b = doc.getElementById("addCG");
     return b && isShown(b) ? b : null;
   };
-  const yes = [...doc.querySelectorAll(`input[type="radio"][id^="option_ques_${q}_"]`)].filter((r) => labelOf(doc, r) === "yes");
-  if (!yes.length) {
-    if (addShown()) return;
+  // Any element of question q (its radios, title, group or "Clear answer" button) means the question is on the page.
+  const asked = doc.querySelector(`[id^="option_ques_${q}_"], #title_ques_${q}, #clear_ques_${q}, #radioGroup${q}`);
+  if (!asked) {
+    if (addShown()) return; // no such question on this page at all: nothing to answer
     throw new PageChanged(`no Yes/No question before the "Add ${GRADE_LABEL[grade]}" button`);
   }
-  if (yes.length !== 1) throw new PageChanged("the 'courses to report?' question has more than one Yes");
+  const yes = [...doc.querySelectorAll(`input[type="radio"][id^="option_ques_${q}_"]`)].filter((r) => labelOf(doc, r) === "yes");
+  if (yes.length !== 1) throw new PageChanged(`the 'courses to report?' question has ${yes.length ? "more than one" : "no"} Yes answer`);
   if (!isChecked(yes[0]!)) click(yes[0]!);
   await need(() => isChecked(yes[0]!) && addShown(), `the "Add ${GRADE_LABEL[grade]}" button did not appear after answering Yes`);
 }

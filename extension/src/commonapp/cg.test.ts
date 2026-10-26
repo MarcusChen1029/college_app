@@ -12,14 +12,33 @@ test("cgRows reads each transcript-1 row with its name and whether it is blank",
   ]);
 });
 
-test("cgRows marks a row with no name, subject, level or grade as blank", () => {
+/** Empties course n of the fixture: name, every select, every credit box, N/A. */
+function emptyRow(doc: Document, n: number): void {
+  (doc.getElementById(`courseNameControl_T1C${n}`) as HTMLInputElement).value = "";
+  const row = doc.getElementById(`courseNameControl_T1C${n}`)!.closest("ca-cng-course")!;
+  for (const t of row.querySelectorAll(".mat-mdc-select-min-line")) t.textContent = "";
+  for (const c of row.querySelectorAll('input[id^="credit"][id*="Control_"]')) (c as HTMLInputElement).value = "";
+  doc.getElementById(`creditNA_T1C${n}-input`)!.removeAttribute("checked");
+}
+
+test("cgRows marks a row with nothing in any box and N/A unticked as blank", () => {
   const doc = fixture("cg-dialog.html");
-  (doc.getElementById("courseNameControl_T1C3") as HTMLInputElement).value = "";
-  for (const t of doc.getElementById("courseNameControl_T1C3")!.closest("ca-cng-course")!.querySelectorAll(".mat-mdc-select-min-line")) t.textContent = "";
+  emptyRow(doc, 3);
   assert.deepEqual(cgRows(doc)[2], { n: 3, name: "", blank: true });
   // Name gone but a grade still there: not blank.
   const doc2 = fixture("cg-dialog.html");
   (doc2.getElementById("courseNameControl_T1C3") as HTMLInputElement).value = "";
+  assert.equal(cgRows(doc2)[2]!.blank, false);
+});
+
+test("cgRows: a row with only a credit, or only N/A ticked, is not blank", () => {
+  const doc = fixture("cg-dialog.html");
+  emptyRow(doc, 3);
+  (doc.getElementById("credit2Control_T1C3") as HTMLInputElement).value = "0.5";
+  assert.equal(cgRows(doc)[2]!.blank, false);
+  const doc2 = fixture("cg-dialog.html");
+  emptyRow(doc2, 3);
+  doc2.getElementById("creditNA_T1C3-input")!.setAttribute("checked", "");
   assert.equal(cgRows(doc2)[2]!.blank, false);
 });
 

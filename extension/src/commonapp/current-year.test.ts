@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { cyCountInput, cyField, cyRadios, readCurrentYear } from "./current-year.ts";
+import { cyCountInput, cyField, cyRadios, fillCurrentYear, readCurrentYear } from "./current-year.ts";
 import { ngValues, selectNgOption, TIMING } from "./dom.ts";
 import { fixture } from "./test-dom.ts";
 
@@ -54,4 +54,18 @@ test("a semester-wording schedule under the Quarter system is left blank (exact 
   assert.equal(clicked, false);
   assert.deepEqual(ngValues(input), []);
   assert.equal(ng.querySelector("ng-dropdown-panel"), null);
+});
+
+test("fillCurrentYear: a locator failure never presses Continue", async () => {
+  (globalThis as { location?: unknown }).location = { pathname: "/common/4/24" };
+  Object.assign(TIMING, { pageMs: 300, saveMs: 300 });
+  const doc = fixture("current-year.html");
+  const clicks: string[] = [];
+  doc.addEventListener("click", (e) => clicks.push((e.target as Element).id || (e.target as Element).tagName));
+  const rows = ["A", "B", "C", "D"].map((name) => ({ trackerId: name, name, subject: "Algebra", level: "Honors", schedule: "Full Year" }));
+  // 4 courses need the count changed; the fixture's ng-select never opens a list, so the fill must stop there.
+  const result = await fillCurrentYear({ scheduleStem: "semester", rows, skipped: [] }, "replace", doc);
+  assert.equal(result.filled, 0);
+  assert.match(result.stoppedReason ?? "", /^Common App's page changed \(the list for "text_ques_307" did not open\)\. Nothing on this page is saved yet/);
+  assert.ok(!clicks.includes("sectionContinue24"));
 });
