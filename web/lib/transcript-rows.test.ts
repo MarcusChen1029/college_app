@@ -69,3 +69,9 @@ test("writable columns leave out ids and timestamps", () => {
   assert.equal(fromTranscriptCourse("u1", course).user_id, "u1");
   assert.equal(fromTranscriptCourse("u1", course).school_id, "s1");
 });
+
+test("per-term credits survive the round trip through the terms jsonb", () => {
+  const c: TranscriptCourse = { ...course, credit: 4, terms: [{ term: "S1", grade: "88", status: "graded", credit: 2 }, { term: "S2", grade: "93", status: "graded", credit: 2 }] };
+  const row = { ...fromTranscriptCourse("u1", c), created_at: c.createdAt } as unknown as TranscriptCourseRow;
+  assert.deepEqual(toTranscriptCourse(row).terms, c.terms);
+});
