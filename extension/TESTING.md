@@ -79,3 +79,29 @@ Things only a live run can confirm (from the Task 7 report, "Concerns"). If the 
 - Scale "Other" with Trimesters or Quarters: the box labels were assumed, only Semesters was recorded.
 
 Proof for the owner's records: keep the screenshots of the three reports (Fill all, Keep, Replace).
+
+## G. STARS, Cal State Apply and the fill assistant (2026-10-27)
+
+Use only throwaway accounts (the owner made one each for UC, STARS and Cal State Apply). Each portal signs out after about 15-20 minutes
+idle, and UC also signs out when it is opened in a second tab: do one portal at a time, in one tab, right after signing in.
+Page facts are in `docs/superpowers/research/2026-10-27-portal-dom.md`.
+
+STARS (school outside the US):
+1. On the throwaway record, the school needs Grade Scale, dates, Education System, school year and "I plan to graduate" before
+   "Enter Courses" opens. Open a year (e.g. "Enter Coursework/Exams taken in 9th Grade (2023-2024)").
+2. In the side panel, "Fill for" switches to STARS. Under "Add 2023-24 courses automatically", answer the Grading Scale question if asked
+   (100-point schools: pass mark 60 or 70) and press "Add courses to STARS". Expected: the page reloads once per course; each course appears in
+   STARS's table with the tracker's name (upper-cased by STARS), the grades per term, and the credit. Names already in the table are skipped.
+3. Open one added course with Edit: name, level, length, scale, grade and credit match the tracker. Press Cancel Edit.
+Verified on 2026-10-27 by injecting the page filler into a live record (semester course with In Progress, full-year Honors course with
+credit 1); the panel's run loop is covered by unit tests only.
+
+Cal State Apply (US high school only; schools outside the US skip course entry):
+1. High Schools Attended must list the school with its Term Type. Open Academic History > High School Coursework.
+2. In the panel, press "Add courses to <school>". Expected: for each course the course form opens, a missing grade level is added first
+   ("Add Grade Level"), title, Course Type and each term's grade are picked, Save is pressed, and the course shows in the school's list.
+3. Set A-G areas yourself on A-G Matching (the panel lists the code for each course).
+Each step was tried by hand on a live account on 2026-10-27; the combined run has NOT been run live yet. Report the panel's message if it stops.
+
+Fill assistant (UC, UIUC, UT, and any page the automatic fillers don't cover): click a box on the portal, press a value in the panel.
+Verified on real STARS controls: radio by label, Telerik dropdown, Telerik date box, Telerik dropdown tree.

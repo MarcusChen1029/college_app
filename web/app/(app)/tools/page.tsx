@@ -44,7 +44,7 @@ export default function ToolsPage() {
           <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${toneClass("progress")}`}>Beta</span>
         </div>
         <p className="text-sm text-zinc-600">
-          A Chrome extension that fills Common App&apos;s Courses &amp; Grades and Current Year Courses from your transcript in one click, and helps you type your courses into the UC application, STARS, Cal State Apply, UIUC&apos;s SRAR and UT Austin&apos;s coursework form.
+          A Chrome extension that fills Common App&apos;s Courses &amp; Grades and Current Year Courses from your transcript in one click, adds your courses to STARS and Cal State Apply, and helps you type them into the UC application, UIUC&apos;s SRAR and UT Austin&apos;s coursework form.
         </p>
         <p role="note" className={`rounded-xl border px-4 py-3 text-sm ${toneClass("soon")}`}>
           Beta. Check every course and grade after filling. The extension fills whichever account is open in that browser.

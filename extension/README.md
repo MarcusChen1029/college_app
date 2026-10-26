@@ -40,6 +40,8 @@ Everything below is done from the side panel; no console is needed except for th
 
 10. Fill assistant (UC, STARS, Cal State Apply, UIUC, UT): open the portal's coursework page in the active tab. The panel switches to that system (or pick one under "Fill for"), lists every course grouped by school, grade and year with each value already in that system's words (`web/lib/system-fill.ts`), and lists what is left out and why. Click the first box of a course on the page, then press "Fill from here" to type its values in page order, or press values one at a time: each goes into the box last clicked and focus moves to the next box. A value that can't go in (no exactly matching option, read-only box) is copied to the clipboard instead. Dropdowns are matched on the exact option text only. Nothing is saved or submitted. A "?" on a value means its wording is not confirmed on an official page.
 
+STARS (coursework page of a school outside the US) and Cal State Apply (High School Coursework, US schools) also get an "Add courses" button that saves each course with the portal's own Save button and checks it was saved (`src/stars/*`, `src/csu/*`, plans in `web/lib/stars-fill.ts` and `web/lib/csu-fill.ts`). Live checks: `TESTING.md` section G.
+
 The assistant knows no portal's layout; it handles standard controls (text boxes, native selects, radios, tick boxes), ARIA comboboxes, Angular Material / ng-select lists and Telerik RadComboBox (STARS). Portal hosts are in `src/sites.ts` and `manifest.json` (keep them in step).
 
 The token lives only in `chrome.storage.local` and is never logged.
