@@ -1,0 +1,37 @@
+{
+ "slug": "sf-state",
+ "name": "San Francisco State University",
+ "short_name": "SF State",
+ "state_region": "CA",
+ "city": "San Francisco",
+ "latitude": 37.721224,
+ "longitude": -122.476799,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.sfsu.edu",
+ "admissions_url": "https://future.sfsu.edu/admissions",
+ "ipeds_unit_id": 122597,
+ "undergrad_enrollment": 20756,
+ "intl_undergrads": 924,
+ "student_faculty_ratio": 19,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: Admissions fall 2023 (ADM2023), fall 2023 enrollment (EF2023A), student-to-faculty ratio and calendar (IC2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=122597",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 29878,
+  "admits": 28727,
+  "enrolled": 2985,
+  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 28,221 applicants, 96% admitted, 9% of admitted students enrolled (percentages are rounded). No current Common Data Set was found on ir.sfsu.edu or air.sfsu.edu. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are left null. The CSU is test-blind, so no SAT/ACT percentiles are reported."
+ },
+ "scores": {}
+}

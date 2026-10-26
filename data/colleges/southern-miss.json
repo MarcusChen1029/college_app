@@ -1,0 +1,100 @@
+{
+  "slug": "southern-miss",
+  "name": "University of Southern Mississippi",
+  "short_name": "Southern Miss",
+  "state_region": "MS",
+  "city": "Hattiesburg",
+  "latitude": 31.32661,
+  "longitude": -89.331236,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.usm.edu",
+  "admissions_url": "https://www.usm.edu/undergraduate-admissions/",
+  "ipeds_unit_id": 176372,
+  "undergrad_enrollment": 10193,
+  "intl_undergrads": 484,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Southern Mississippi Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.usm.edu/institutional-research/cds_2024_2025_final.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 7048,
+    "admits": 6986,
+    "enrolled": 1731,
+    "pct_submit_act": 98.62,
+    "gpa_avg": 3.46,
+    "pct_reporting_gpa": 99.89,
+    "gpa_distribution": {
+      "4.0": 16.24,
+      "3.75-3.99": 22.48,
+      "3.50-3.74": 18.42,
+      "3.25-3.49": 13.31,
+      "3.00-3.24": 12.79,
+      "2.50-2.99": 10.33,
+      "2.0-2.49": 6.43
+    },
+    "notes": "CDS C1 (Fall 2024): men 2,582 + women 4,466 applied; 2,551 + 4,435 admitted (99.1%). Enrolled first-years are 1,731 by residency (in-state 1,147, out-of-state 384, international 200); the by-sex rows sum to 1,745. USM reports no international applicant/admit counts. Only ACT scores are reported (98.6% of enrolled first-years submitted ACT, 1,721 students); no SAT percentiles. No early decision/early action, no waitlist, no application closing date. The 2025-2026 CDS was not found on usm.edu (checked 2026-10-26), so the 2024-2025 CDS is used. Undergraduate enrollment and nonresident count are B1/B2 'Total Undergraduates' (10,193; 484)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      20,
+      24,
+      29
+    ],
+    "ACT_ENGLISH": [
+      19,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cost",
+    "tuition_usd": 10794,
+    "tuition_out_of_state_usd": 12794,
+    "tuition_intl_usd": 12820,
+    "room_board_usd": 11854,
+    "books_usd": 1432,
+    "other_usd": 5254,
+    "total_coa_usd": 34188,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 241,
+    "intl_avg_award_usd": 13787,
+    "notes": "tuition_usd and tuition_out_of_state_usd are the official 2026-27 resident / non-resident annual rates from the USM freshman admissions page (the non-resident rate includes a $1,000 per semester non-resident fee; both include capital-improvement and activity fees). The rest comes from the International Student and Scholar Services cost page (I-20 budget for fall 2026 admits, which adds required health insurance $2,528 and uses an estimated $12,820 non-resident tuition plus $300 fees): total $34,188 for nine months. CDS H6 (2024-25): 241 nonresidents received institutional aid, average $13,787."
+  }
+}

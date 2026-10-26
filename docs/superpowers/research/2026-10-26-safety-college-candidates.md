@@ -49,62 +49,62 @@ Scorecard numbers are for screening only; the college files use the CDS or IPEDS
 | 176017 | University of Mississippi | MS | public | 97 | 1126 | 221 | wave 1 |
 | 232982 | Old Dominion University | VA | public | 90 | 1120 | 212 | wave 1 |
 | 145813 | Illinois State University | IL | public | 88 | 1100 | 158 | wave 1 |
-| 140951 | Savannah College of Art and Design | GA | private | 83 | 1173 | 2113 | todo |
-| 173920 | Minnesota State University-Mankato | MN | public | 88 | 1150 | 1061 | todo |
-| 110608 | California State University-Northridge | CA | public | 93 | - | 935 | todo |
-| 106458 | Arkansas State University | AR | public | 82 | 1115 | 922 | todo |
-| 206695 | Youngstown State University | OH | public | 84 | 1055 | 919 | todo |
+| 140951 | Savannah College of Art and Design | GA | private | 83 | 1173 | 2113 | wave 2 |
+| 173920 | Minnesota State University-Mankato | MN | public | 88 | 1150 | 1061 | wave 2 |
+| 110608 | California State University-Northridge | CA | public | 93 | - | 935 | wave 2 |
+| 106458 | Arkansas State University | AR | public | 82 | 1115 | 922 | wave 2 |
+| 206695 | Youngstown State University | OH | public | 84 | 1055 | 919 | wave 2 |
 | 183026 | Southern New Hampshire University | NH | private | 100 | - | 832 | skip: mostly online |
-| 174783 | Saint Cloud State University | MN | public | 95 | 1092 | 706 | todo |
-| 133669 | Florida Atlantic University | FL | public | 66 | 1110 | 703 | todo |
-| 185262 | Kean University | NJ | public | 76 | 1020 | 701 | todo |
-| 122597 | San Francisco State University | CA | public | 96 | - | 692 | todo |
+| 174783 | Saint Cloud State University | MN | public | 95 | 1092 | 706 | wave 2 |
+| 133669 | Florida Atlantic University | FL | public | 66 | 1110 | 703 | wave 2 |
+| 185262 | Kean University | NJ | public | 76 | 1020 | 701 | wave 2 |
+| 122597 | San Francisco State University | CA | public | 96 | - | 692 | wave 2 |
 | 104717 | Grand Canyon University | AZ | private | 79 | 1077 | 668 | skip: mostly online |
 | 207582 | Oral Roberts University | OK | private | 99 | 1055 | 648 | todo |
 | 190655 | CUNY New York City College of Technology | NY | public | 80 | 1010 | 612 | todo |
-| 230603 | Southern Utah University | UT | public | 82 | 1135 | 610 | todo |
-| 214713 | Pennsylvania State University-Penn State Harrisburg | PA | public | 98 | 1227 | 570 | todo |
-| 163453 | Morgan State University | MD | public | 82 | 970 | 567 | todo |
-| 169798 | Eastern Michigan University | MI | public | 80 | 1055 | 550 | todo |
-| 202134 | Cleveland State University | OH | public | 91 | 1035 | 539 | todo |
+| 230603 | Southern Utah University | UT | public | 82 | 1135 | 610 | wave 2 |
+| 214713 | Pennsylvania State University-Penn State Harrisburg | PA | public | 98 | 1227 | 570 | wave 2 |
+| 163453 | Morgan State University | MD | public | 82 | 970 | 567 | wave 2 |
+| 169798 | Eastern Michigan University | MI | public | 80 | 1055 | 550 | wave 2 |
+| 202134 | Cleveland State University | OH | public | 91 | 1035 | 539 | wave 2 |
 | 179557 | Southeast Missouri State University | MO | public | 74 | 950 | 514 | todo |
-| 227368 | The University of Texas Rio Grande Valley | TX | public | 94 | 985 | 513 | todo |
-| 168005 | Suffolk University | MA | private | 82 | 1180 | 508 | todo |
-| 110556 | California State University-Fresno | CA | public | 95 | - | 484 | todo |
-| 176372 | University of Southern Mississippi | MS | public | 99 | 1190 | 483 | todo |
-| 110617 | California State University-Sacramento | CA | public | 94 | - | 439 | todo |
-| 159993 | University of Louisiana at Monroe | LA | public | 85 | 1165 | 433 | todo |
-| 179566 | Missouri State University-Springfield | MO | public | 91 | 1105 | 417 | todo |
+| 227368 | The University of Texas Rio Grande Valley | TX | public | 94 | 985 | 513 | wave 2 |
+| 168005 | Suffolk University | MA | private | 82 | 1180 | 508 | wave 2 |
+| 110556 | California State University-Fresno | CA | public | 95 | - | 484 | wave 2 |
+| 176372 | University of Southern Mississippi | MS | public | 99 | 1190 | 483 | wave 2 |
+| 110617 | California State University-Sacramento | CA | public | 94 | - | 439 | wave 2 |
+| 159993 | University of Louisiana at Monroe | LA | public | 85 | 1165 | 433 | wave 2 |
+| 179566 | Missouri State University-Springfield | MO | public | 91 | 1105 | 417 | wave 2 |
 | 232557 | Liberty University | VA | private | 99 | - | 415 | skip: mostly online |
 | 166656 | Massachusetts College of Pharmacy and Health Sciences | MA | private | 85 | 1240 | 406 | todo |
-| 206604 | Wright State University-Main Campus | OH | public | 96 | 1098 | 398 | todo |
-| 219356 | South Dakota State University | SD | public | 98 | 1100 | 387 | todo |
+| 206604 | Wright State University-Main Campus | OH | public | 96 | 1098 | 398 | wave 2 |
+| 219356 | South Dakota State University | SD | public | 98 | 1100 | 387 | wave 2 |
 | 447689 | Georgia Gwinnett College | GA | public | 96 | 1055 | 385 | todo |
-| 110565 | California State University-Fullerton | CA | public | 91 | - | 378 | todo |
-| 219471 | University of South Dakota | SD | public | 99 | 1170 | 376 | todo |
+| 110565 | California State University-Fullerton | CA | public | 91 | - | 378 | wave 2 |
+| 219471 | University of South Dakota | SD | public | 99 | 1170 | 376 | wave 2 |
 | 159717 | McNeese State University | LA | public | 78 | 1080 | 369 | todo |
 | 137032 | Saint Leo University | FL | private | 78 | 1040 | 364 | todo |
 | 232937 | Norfolk State University | VA | public | 88 | 972 | 357 | skip: mostly online |
-| 102368 | Troy University | AL | public | 96 | 1043 | 355 | todo |
-| 240453 | University of Wisconsin-Milwaukee | WI | public | 91 | 1090 | 355 | todo |
-| 206941 | University of Central Oklahoma | OK | public | 78 | 1090 | 349 | todo |
+| 102368 | Troy University | AL | public | 96 | 1043 | 355 | wave 2 |
+| 240453 | University of Wisconsin-Milwaukee | WI | public | 91 | 1090 | 355 | wave 2 |
+| 206941 | University of Central Oklahoma | OK | public | 78 | 1090 | 349 | wave 2 |
 | 101879 | University of North Alabama | AL | public | 87 | - | 345 | todo |
-| 159647 | Louisiana Tech University | LA | public | 86 | 1175 | 339 | todo |
-| 181394 | University of Nebraska at Omaha | NE | public | 87 | 1120 | 329 | todo |
-| 195809 | St. John's University-New York | NY | private | 83 | 1205 | 327 | todo |
-| 149231 | Southern Illinois University Edwardsville | IL | public | 98 | 1040 | 313 | todo |
-| 139931 | Georgia Southern University | GA | public | 88 | 1095 | 305 | todo |
-| 166513 | University of Massachusetts-Lowell | MA | public | 83 | 1255 | 298 | todo |
-| 220978 | Middle Tennessee State University | TN | public | 69 | 1110 | 297 | todo |
-| 188030 | New Mexico State University-Main Campus | NM | public | 89 | 1030 | 295 | todo |
+| 159647 | Louisiana Tech University | LA | public | 86 | 1175 | 339 | wave 2 |
+| 181394 | University of Nebraska at Omaha | NE | public | 87 | 1120 | 329 | wave 2 |
+| 195809 | St. John's University-New York | NY | private | 83 | 1205 | 327 | wave 2 |
+| 149231 | Southern Illinois University Edwardsville | IL | public | 98 | 1040 | 313 | wave 2 |
+| 139931 | Georgia Southern University | GA | public | 88 | 1095 | 305 | wave 2 |
+| 166513 | University of Massachusetts-Lowell | MA | public | 83 | 1255 | 298 | wave 2 |
+| 220978 | Middle Tennessee State University | TN | public | 69 | 1110 | 297 | wave 2 |
+| 188030 | New Mexico State University-Main Campus | NM | public | 89 | 1030 | 295 | wave 2 |
 | 157447 | Northern Kentucky University | KY | public | 68 | 1097 | 292 | todo |
-| 194091 | New York Institute of Technology | NY | private | 81 | 1210 | 290 | todo |
+| 194091 | New York Institute of Technology | NY | private | 81 | 1210 | 290 | wave 2 |
 | 147536 | National Louis University | IL | private | 95 | - | 282 | skip: mostly online |
 | 157401 | Murray State University | KY | public | 86 | 1080 | 275 | todo |
-| 185590 | Montclair State University | NJ | public | 88 | 1110 | 274 | todo |
+| 185590 | Montclair State University | NJ | public | 88 | 1110 | 274 | wave 2 |
 | 101480 | Jacksonville State University | AL | public | 78 | 1125 | 270 | todo |
-| 169248 | Central Michigan University | MI | public | 90 | 1115 | 264 | todo |
-| 220862 | University of Memphis | TN | public | 72 | 1088 | 259 | todo |
+| 169248 | Central Michigan University | MI | public | 90 | 1115 | 264 | wave 2 |
+| 220862 | University of Memphis | TN | public | 72 | 1088 | 259 | wave 2 |
 | 226833 | Midwestern State University | TX | public | 94 | - | 246 | todo |
 | 110574 | California State University-East Bay | CA | public | 97 | - | 242 | todo |
 | 106704 | University of Central Arkansas | AR | public | 89 | 1070 | 239 | todo |

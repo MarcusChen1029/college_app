@@ -1,0 +1,142 @@
+{
+ "sources": {
+  "adm": {
+   "kind": "admissions_site",
+   "title": "NMSU Undergraduate Admissions - International students (requirements, English, deadlines)",
+   "url": "https://admissions.nmsu.edu/how-to-apply/international/index.html",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "NMSU International Student and Scholar Services - FAQs for future students",
+   "url": "https://isss.nmsu.edu/faqs/faqs.html",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "NMSU International Student and Scholar Services - Scholarships (International Competitive Scholarship)",
+   "url": "https://isss.nmsu.edu/new-students/scholarships.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-time freshmen qualify with a secondary-school GPA of 2.75 or an ACT composite of 21 or an SAT of 1060 (or GED 480 / HiSET 45), so scores are an alternative to GPA rather than required. International applicants also need a foreign credential evaluation from a NACES-approved agency.",
+  "src": "adm"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International undergraduate applications are processed by International Student and Scholar Services; the $50 fee cannot be waived or deferred. Transcripts, test scores and credential evaluations must come directly from the school, testing agency or evaluation agency (email admissions@nmsu.edu). The process can take up to 3 months.",
+  "src": "faq"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": null,
+   "due": "2027-07-01",
+   "label": "Fall 2027: application must be initiated",
+   "notes": "Published as 'July 1 (application initiated)' with no year, treated as fall 2027. NMSU says it has no university-wide deadline beyond these dates but advises applying 6 months or more ahead.",
+   "src": "adm"
+  },
+  {
+   "kind": "application",
+   "plan": null,
+   "due": "2027-07-15",
+   "label": "Fall 2027: all supporting documents received",
+   "notes": "Published as 'July 15 (all documents submitted)' with no year, treated as fall 2027.",
+   "src": "adm"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-07-15",
+   "label": "International Competitive Scholarship window closes (fall 2027)",
+   "notes": "The application is open May 15 to July 15 for fall (year not printed, treated as 2027) and closes earlier once the available awards are used; it is only open to students with an I-20.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of the listed English-speaking countries (e.g. UK, Ireland, Canada except Quebec, Australia, New Zealand, Singapore, Philippines, South Africa, Nigeria, Kenya and others) are exempt. Others may be waived after two full years at a U.S. high school or 24 semester credits at a U.S. college with a 2.0 GPA. NMSU may still require any applicant to submit a test. Scores must be less than two years old; institutional TOEFL is not accepted. Admitted international students take NMSU's English Language Placement Test.",
+  "src": "adm"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "The admissions page states 'minimum TOEFL of 3.5 iBT', which is the new 1-6 scale. An old-scale (0-120) admission minimum is not printed on that page.",
+   "src": "adm"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "adm"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "adm"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": true,
+  "notes": "International Competitive Scholarship: a tuition discount (in-state instead of out-of-state tuition) plus a $100 cash stipend each fall and spring, for new degree-seeking F-1 students with an I-20, renewable up to 8 semesters. Freshman eligibility e.g. GPA 3.50 with TOEFL 68 / IELTS 6.0 / Duolingo 95, or GPA 3.25 with TOEFL 79 / IELTS 6.5 / Duolingo 100, or GPA 3.50 for students from English-exempt countries. Awards are limited and competitive and the separate application closes when awards run out. (TOEFL values here are the scholarship tiers, not the admission minimum.)",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "NMSU's pages read do not print a separate SAT code; look it up in the College Board code search.",
+   "src": "faq"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read; look it up at act.org.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": "4531",
+   "note": "The FAQ gives institution code 4531 for TOEFL, IELTS, GRE and Duolingo results.",
+   "src": "faq"
+  },
+  "ielts": {
+   "code": null,
+   "note": "The FAQ says to use institution code 4531 for IELTS results; IELTS has no numeric ETS code.",
+   "src": "faq"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "The FAQ says to use institution code 4531 for Duolingo results.",
+   "src": "faq"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed among NMSU's accepted undergraduate tests.",
+   "src": "adm"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "SCAD - First-year international students admission requirements (PDF, revised October 2026)",
+   "url": "https://www.scad.edu/sites/default/files/PDF/Admission-information-Freshman-international.pdf",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "SCAD - Apply",
+   "url": "https://www.scad.edu/admission/apply",
+   "accessed": "2026-10-26"
+  },
+  "intlpage": {
+   "kind": "admissions_site",
+   "title": "SCAD - International admission information",
+   "url": "https://www.scad.edu/admission/admission-information/international",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "SCAD - Frequently asked questions (admission)",
+   "url": "https://www.scad.edu/admission/admission-information/frequently-asked-questions",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "SCAD - Scholarships for entering students",
+   "url": "https://www.scad.edu/admission/financial-aid-and-scholarships/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "other",
+   "title": "SCAD - Undergraduate tuition and fees 2026-27",
+   "url": "https://www.scad.edu/admission/tuition-and-fees/undergraduate",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SCAD is test-optional: SAT/ACT scores may be submitted but applications without them are considered, and lack of scores does not affect admission or scholarship consideration.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own",
+   "common_app"
+  ],
+  "app_fee_usd": 100,
+  "portfolio": "Not required for undergraduate admission, but strongly encouraged: a portfolio, audition or writing submission is scored on a rubric and can make a student eligible for achievement/honors scholarships. See SCAD portfolio guidelines for each major.",
+  "supplemental_essays": "Statement of purpose (max 500 words) is optional supplementary material; the International Student Scholarship needs a 500-word essay.",
+  "notes": "Apply on SCAD's online application ($100 non-refundable) or the Common App; there is also a one-time $500 enrollment fee after admission. Required: unofficial high school transcripts or mark sheets (official ones before Aug. 1 for fall) and English proficiency evidence if the first language is not English. Recommendations, achievement profile and interview are optional. No minimum GPA is published; SCAD gives preference to a 3.0 GPA or above, and applicants below that are encouraged to add supplementary materials.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Rolling admission: no application deadline (fall 2027)",
+   "notes": "SCAD accepts applications year-round for fall (September), winter, spring and summer quarters; decisions take about 2-4 weeks. Apply at least 30 days before the start of the quarter, and ideally six months ahead to arrange financial aid and a visa. International scholarship funds are limited and go to the earliest qualifiers.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "English proficiency evidence is requested from non-native speakers, but a student below these scores can still be admitted and will take the SCAD Language Studio (SLS) placement test at international orientation to decide ESL classes. The ESL waiver is granted for the scores below, SAT reading 550+ or ACT reading 22+ and writing 8+, full secondary study in English-medium schools, or SLS completion within two years. Scores must come from one test sitting; TOEFL MyBest and superscoring are not accepted. Meeting the composite but not a section minimum is reviewed case by case; no exception if the composite is missed.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "recommended_option",
+   "rec": 85,
+   "subs": {
+    "each_section": 20
+   },
+   "notes": "ESL waiver score for tests taken before Jan. 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "recommended_option",
+   "rec": 4.5,
+   "subs": {
+    "listening": 4.0,
+    "speaking": 4.0,
+    "reading": 4.5,
+    "writing": 4.5
+   },
+   "notes": "ESL waiver score for tests taken on or after Jan. 21, 2026 (1-6 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "recommended_option",
+   "rec": 6.5,
+   "subs": {
+    "reading": 6.5,
+    "writing": 6.5
+   },
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "recommended_option",
+   "rec": 120,
+   "subs": {
+    "listening": 115,
+    "speaking": 115,
+    "reading": 120,
+    "writing": 120
+   },
+   "notes": "Section scores are minimums (Reading and Writing 120-125, Listening and Speaking 115-120).",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 42975,
+  "tuition_intl_usd": 42975,
+  "required_fees_usd": 125,
+  "intl_extra_fees_usd": 1417,
+  "notes": "Full-time tuition $14,325 per quarter ($42,975 for three quarters, 15 credit hours). $125 annual student health fee (Savannah campus); mandatory international student health insurance $1,417 for Sept. 1, 2026 - Aug. 31, 2027. Housing in Savannah about $10,065-$18,849 per year plus a $750 application fee; meal plans $1,575-$6,750 per year (not summed into a room and board figure). One-time $500 enrollment fee and $100 application fee.",
+  "src": "tuition"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for U.S. federal or state aid. Every admitted student is automatically reviewed for institutional scholarships (Academic, Achievement, Honors with a 3.5+ GPA or outstanding portfolio, Distinguished Scholars by nomination), and an International Student Scholarship needs a 500-word essay. Funds are limited and go to the earliest qualifiers; amounts are not published on the pages reviewed. Awards renew with a 3.0 GPA.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5631",
+   "note": "SCAD SAT code (also the AP code).",
+   "src": "faq"
+  },
+  "act": {
+   "code": "0855",
+   "note": "SCAD ACT code.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": "5631",
+   "note": "SCAD TOEFL institution code; request scores be sent directly to SCAD. TOEFL MyBest is not accepted.",
+   "src": "faq"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No IELTS institution code is listed.",
+   "src": "faq"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "arts_design": "B"
+ },
+ "tier_notes": {
+  "arts_design": "Editorial estimate: SCAD is one of the largest US art and design universities with well-known animation, film, illustration, fashion and design programs; no ranking cited, so placed in the 16-40 band."
+ }
+}

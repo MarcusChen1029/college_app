@@ -1,0 +1,90 @@
+{
+  "slug": "utrgv",
+  "name": "The University of Texas Rio Grande Valley",
+  "short_name": "UTRGV",
+  "state_region": "TX",
+  "city": "Edinburg",
+  "latitude": 26.306759,
+  "longitude": -98.173567,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utrgv.edu",
+  "admissions_url": "https://www.utrgv.edu/admissions/",
+  "ipeds_unit_id": 227368,
+  "undergrad_enrollment": 28674,
+  "intl_undergrads": 450,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227368",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227368",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 13542,
+    "admits": 11486,
+    "enrolled": 5634,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 26,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 13,542 applicants, 11,486 admitted, 5,634 enrolled. College Navigator fall 2024: 18,377 applicants, 94% admitted. IPEDS reports no nonresident-alien applicant counts for UTRGV, so international admit figures are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 28,674 and student-faculty ratio 20:1 are fall 2024 College Navigator figures. No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      520,
+      570
+    ],
+    "SAT_MATH": [
+      440,
+      500,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      22
+    ],
+    "ACT_ENGLISH": [
+      15,
+      18,
+      22
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      21
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 9987,
+    "tuition_out_of_state_usd": 19827,
+    "books_usd": 1250,
+    "room_board_usd": 9728,
+    "other_usd": 3918,
+    "total_coa_usd": 34723,
+    "notes": "College Navigator 2024-25: tuition and fees in-state $9,987, out-of-state $19,827; on-campus food and housing $9,728, other expenses $3,918. total_coa_usd is the published out-of-state on-campus total (the rate an international student would normally face; UTRGV does not publish a separate international tuition rate on the pages read)."
+  }
+}

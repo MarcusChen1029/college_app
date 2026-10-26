@@ -1,0 +1,155 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Morgan State - Application deadlines",
+      "url": "https://www.morgan.edu/office-of-undergraduate-admission-and-recruitment/how-to-apply/application-deadlines",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Morgan State - Applying as a freshman (test-optional, fee)",
+      "url": "https://www.morgan.edu/office-of-undergraduate-admission-and-recruitment/how-to-apply/freshman-applicants",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Morgan State - Freshman admission requirements",
+      "url": "https://www.morgan.edu/office-of-undergraduate-admission-and-recruitment/how-to-apply/freshman-applicants/admission-requirements",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Morgan State - English language proficiency (international applicants)",
+      "url": "https://www.morgan.edu/office-of-undergraduate-admission-and-recruitment/how-to-apply/international-applicants/application-requirements/english-language-proficiency",
+      "accessed": "2026-10-26"
+    },
+    "oiss": {
+      "kind": "admissions_site",
+      "title": "Morgan State OISS - Admission steps for international students",
+      "url": "https://www.morgan.edu/international-students-and-scholars-(oiss)/admission-steps-for-international-students",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Morgan State - Scholarships (freshman awards)",
+      "url": "https://www.morgan.edu/finaid/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "bursar": {
+      "kind": "other",
+      "title": "Morgan State Bursar - Tuition and fees, fall 2026 - spring 2027",
+      "url": "https://www.morgan.edu/bursar/tuition-and-fees/fall-2026-spring-2027",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Morgan says applying test-optional does not help or hurt admission and does not affect consideration for merit scholarships or the Honors College. Admission is holistic: weighted and unweighted GPA are considered; no minimum GPA is published. Required courses: 4 English, 3 science (with lab), 3 history/social science, 4 math, 2 foreign language or advanced technology.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 35,
+    "notes": "Apply with the Morgan application, the Common App or the Common Black College Application (use only one). The $35 non-refundable fee is stated on the freshman page; a separate international fee is not published. International applicants also send financial documents (bank statement or affidavit of support) for the I-20 and applications are not reviewed until complete. Essays and recommendations are not listed.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2026-11-15",
+      "label": "International applicants: fall 2027 application deadline",
+      "notes": "From the International Applicants column of the deadlines table (Fall 2027: Application Nov 15, Documents Due Dec 15). Freshman (domestic) dates differ: priority Dec 1, application Apr 1, documents Apr 30. The OISS page cites Dec 1 for the international fall application; the admissions table is used here.",
+      "src": "dates"
+    },
+    {
+      "kind": "other",
+      "due": "2026-12-15",
+      "label": "International applicants: supporting documents due (fall 2027)",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "TOEFL, IELTS or Duolingo scores are usually required; Morgan may waive in some cases, such as studying in English in high school (OISS page). Cambridge and PTE are not listed. Morgan lists a paper-based TOEFL minimum of 550 alongside the iBT.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Page does not say which iBT scale; the 0-120 scale is assumed. Paper-based minimum 550. Institution code 5416.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "Overall band score as printed on the page.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": null,
+    "notes": "Morgan's freshman scholarship page lists the Troy E. Quinn Merit Award (up to $6,000 per year, automatic for first-time full-time fall freshmen; apply by Dec 1) and the J.C. Bozeman Need Grant (up to $2,000, non-Maryland residents, requires FAFSA, so not available to international students). The page does not say whether international students qualify for any award and its eligibility text refers to fall 2020, so confirm with Financial Aid (finaid@morgan.edu).",
+    "src": "aid"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2026-2027",
+    "src": "bursar",
+    "tuition_usd": 5935,
+    "tuition_out_of_state_usd": 17265,
+    "required_fees_usd": 2531,
+    "notes": "Bursar schedule for fall 2026 - spring 2027, full-time (12+ credits) undergraduate, doubled to a year: Maryland resident tuition $2,967.50/semester, non-resident $8,632.50/semester, fees $1,265.50/semester. The page does not state that international students pay the non-resident rate, so tuition_intl_usd is left null. Mandatory health insurance is separate ($781.95 fall + $1,159.05 spring = $1,941.00). Room and board are not given as annual totals, so they are left null."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5416",
+      "src": "fy"
+    },
+    "act": {
+      "code": "1722",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": "5416",
+      "note": "Institution code printed on the English proficiency page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D",
+    "engineering": "D"
+  },
+  "tier_notes": {}
+}

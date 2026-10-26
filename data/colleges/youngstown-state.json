@@ -1,0 +1,125 @@
+{
+  "slug": "youngstown-state",
+  "name": "Youngstown State University",
+  "short_name": "YSU",
+  "state_region": "OH",
+  "city": "Youngstown",
+  "latitude": 41.104928,
+  "longitude": -80.64659,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://ysu.edu",
+  "admissions_url": "https://ysu.edu/admissions",
+  "ipeds_unit_id": 206695,
+  "undergrad_enrollment": 9688,
+  "intl_undergrads": 977,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Youngstown State University Common Data Set 2025-2026 (Excel)",
+      "url": "https://ysu.edu/sites/default/files/institutional-research/CDS_202526_UpdatedAnnualExpense.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9090,
+    "admits": 8313,
+    "enrolled": 1891,
+    "in_state_applicants": 4478,
+    "in_state_admits": 3965,
+    "out_state_applicants": 1280,
+    "out_state_admits": 1130,
+    "intl_applicants": 3333,
+    "intl_admits": 3218,
+    "pct_submit_sat": 9,
+    "pct_submit_act": 39,
+    "gpa_avg": 3.07,
+    "pct_reporting_gpa": 20.8,
+    "gpa_distribution": {
+      "4.0": 21.6,
+      "3.75-3.99": 12.7,
+      "3.50-3.74": 15.2,
+      "3.25-3.49": 12.7,
+      "3.00-3.24": 9.5,
+      "2.50-2.99": 11.4,
+      "2.0-2.49": 7.2,
+      "1.0-1.99": 6.6
+    },
+    "notes": "Counts are CDS C1 (fall 2025). International admit rate is 96.5% (3,218 of 3,333); 268 international first-years enrolled. No waiting list, early decision or early action. Only 20.8% of first-years had a high school GPA on file (C12), so the 3.07 average covers that group; the C11 'all enrolled' column also shows 3.1% below 1.0 (omitted here). Undergrad and international counts are B1 'Total Undergraduates' (nonresident 977)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1000,
+      1110,
+      1260
+    ],
+    "SAT_ERW": [
+      520,
+      580,
+      640
+    ],
+    "SAT_MATH": [
+      480,
+      540,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11717,
+    "tuition_out_of_state_usd": 12077,
+    "tuition_intl_usd": 12077,
+    "required_fees_usd": 68,
+    "room_board_usd": 12000,
+    "books_usd": 1290,
+    "intl_need_aid": false,
+    "notes": "CDS G1 first-year: the CDS prints one nonresident tuition rate ($12,077) for out-of-state and international students. H6: only institutional non-need-based aid is available to nonresidents; the recipient count and average were reported as N/A."
+  }
+}

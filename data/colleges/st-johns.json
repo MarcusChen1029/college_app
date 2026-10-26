@@ -1,0 +1,72 @@
+{
+  "slug": "st-johns",
+  "name": "St. John's University",
+  "short_name": "St. John's",
+  "state_region": "NY",
+  "city": "Queens",
+  "latitude": 40.722523,
+  "longitude": -73.796104,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.stjohns.edu/",
+  "admissions_url": "https://www.stjohns.edu/admission",
+  "ipeds_unit_id": 195809,
+  "undergrad_enrollment": 15640,
+  "intl_undergrads": 335,
+  "student_faculty_ratio": 16,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024) via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=195809",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_portal": {
+      "kind": "ipeds",
+      "title": "IPEDS admissions counts and fall 2024 enrollment (nonresident undergraduates) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=195809",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 24208,
+    "admits": 20196,
+    "enrolled": 2350,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 2,
+    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; test submission rates and percentiles from College Navigator. No public Common Data Set was found (St. John's Institutional Research page links only an At a Glance PDF and a fast fact card), so GPA, residency splits and international applicant counts are not available. SAT/ACT percentiles cover the 23% (538) / 2% (43) of enrollees who submitted scores. Undergraduate enrollment and the nonresident count (335, about 2%) are IPEDS fall 2024 undergraduate headcounts."
+  },
+  "scores": {
+    "SAT_ERW": [
+      580,
+      620,
+      670
+    ],
+    "SAT_MATH": [
+      570,
+      620,
+      670
+    ],
+    "ACT_COMPOSITE": [
+      24,
+      27,
+      29
+    ],
+    "ACT_ENGLISH": [
+      24,
+      27,
+      32
+    ],
+    "ACT_MATH": [
+      21,
+      25,
+      26
+    ]
+  }
+}

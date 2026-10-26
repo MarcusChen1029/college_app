@@ -1,0 +1,105 @@
+{
+  "slug": "memphis",
+  "name": "University of Memphis",
+  "short_name": null,
+  "state_region": "TN",
+  "city": "Memphis",
+  "latitude": 35.118878,
+  "longitude": -89.938068,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.memphis.edu",
+  "admissions_url": "https://www.memphis.edu/admissions/",
+  "ipeds_unit_id": 220862,
+  "undergrad_enrollment": 15538,
+  "intl_undergrads": 307,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Memphis Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.memphis.edu/oir/oirweb/WebReports/ProfilesAndFactbooks/cds2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 12641,
+    "admits": 9958,
+    "enrolled": 2044,
+    "pct_submit_sat": 5,
+    "pct_submit_act": 90,
+    "gpa_avg": 3.63,
+    "pct_reporting_gpa": 99.4,
+    "gpa_distribution": {
+      "4.0": 29,
+      "3.75-3.99": 18,
+      "3.50-3.74": 17,
+      "3.25-3.49": 14,
+      "3.00-3.24": 10,
+      "2.50-2.99": 10,
+      "2.0-2.49": 2
+    },
+    "notes": "Fall 2025 first-year class (CDS C1: 12,641 applicants = 4,783 men + 7,857 women + 1 unknown; 9,958 admitted). The CDS leaves the residency split (in-state / out-of-state / international) blank, so intl applicants and admits are not recorded; first-time nonresident enrollees were 43 and total nonresident undergraduates 307 (B2). Only 5% of enrollees (97 students) submitted SAT versus 90% (1,842) ACT, so SAT percentiles describe a small group. No early decision, early action or wait list. C8F says test scores are required unless waived by a particularly strong high school GPA (and still recommended)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1040,
+      1220
+    ],
+    "SAT_ERW": [
+      480,
+      550,
+      620
+    ],
+    "SAT_MATH": [
+      450,
+      520,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "NC",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9744,
+    "tuition_out_of_state_usd": 18300,
+    "tuition_intl_usd": 24360,
+    "required_fees_usd": 2016,
+    "room_board_usd": 12316,
+    "books_usd": 920,
+    "other_usd": 6846,
+    "intl_need_aid_awarded": 165,
+    "intl_avg_award_usd": 18732,
+    "notes": "CDS G1/G5/H6. The CDS box says 2026-27 costs were not yet available (expected September 2026), so these are most likely 2025-26 rates. Tuition shown is the nonresident-alien rate ($24,360) plus required fees $2,016; other = transportation $3,966 + other $2,880. H6: 165 nonresident undergraduates received institutional aid, average $18,732. The admissions page 'F-1 Undergraduate International Estimated Cost of Attendance' lists tuition and fees of $20,040 for one year, living about $13,000, books $1,000 and a required proof of funding of $32,824."
+  }
+}

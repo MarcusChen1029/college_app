@@ -1,0 +1,138 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Cal State Fullerton - Admission Deadlines (fall 2027)",
+   "url": "https://admissions.fullerton.edu/deadlines/index.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "CSUF International Education and Engagement - Undergraduate First-Time Freshman Admission Requirements",
+   "url": "https://international.fullerton.edu/prospective-students/admissions-requirements/undergraduate-admission-requirements/undergraduate-first-time-freshman-admission-requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "app": {
+   "kind": "admissions_site",
+   "title": "CSUF International Education and Engagement - Application",
+   "url": "https://international.fullerton.edu/prospective-students/additional-information/application.html",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "other",
+   "title": "CSUF International Education and Engagement - Undergraduate Cost of Attendance",
+   "url": "https://international.fullerton.edu/prospective-students/cost-of-attendance/undergraduate-cost-of-attendance.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "CSUF International Students and Scholars - Scholarships",
+   "url": "https://international.fullerton.edu/international-students-and-scholars/scholarships/index.html",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - CSUF admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110565",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "The CSU system no longer uses SAT/ACT in admission decisions; College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)'. Admission uses a Multi Factor Admission Score for U.S. graduates and a 'competitive GPA' for graduates of schools outside the U.S.",
+  "src": "nav"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply; $70 fee. Graduates of schools outside the U.S. need 3 years of mathematics (algebra, geometry, intermediate algebra) and a competitive GPA (no number published); full A-G courses are required only for U.S. high school graduates. Official transcripts with certified translations; passport copy and recent financial documents (under 6 months) are needed for the I-20. Some majors have supplemental requirements. College Navigator shows essays and recommendations are not considered.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2026-11-30",
+   "label": "First-year application filing period closes, Cal State Apply (fall 2027)",
+   "notes": "Cal State Apply opens Aug 1, 2026 and submissions run Oct 1 to Nov 30, 2026. CSUF's international pages say applications open Oct 1 for fall but publish no separate international deadline, so plan for Nov 30, 2026 unless the admissions office confirms a later date.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-02-15",
+   "label": "Official initial transcripts due (selected students only)",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Intent to Enroll deadline",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-15",
+   "label": "Final deadline for final official transcripts",
+   "notes": "Priority date for final transcripts is July 1, 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The page says additional options to meet the requirement are available and some countries are exempt, but does not list them. It names no Duolingo, Cambridge or new-scale TOEFL minimum for first-time freshmen.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Page says 'TOEFL: 61+'; the new 1-6 scale is not mentioned.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "CSUF's international cost page states scholarships are limited and only for CSUF enrolled students. The two international scholarships listed (Minh Tam Nguyen for international undergraduates, GPA 3.0+; Abroova and Prabakar, needs-based) are for currently enrolled students, so no entrance scholarship for new international freshmen was found. No ESL or conditional-admission pathway is described on the pages checked.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 18543,
+  "room_board_usd": 24034,
+  "other_usd": 1820,
+  "total_coa_usd": 44397,
+  "notes": "CSUF estimate for one academic year (24 units): tuition and fees $18,543, living expenses $24,034, health insurance $1,820 (other), total $44,397. The page does not state the academic year; it is treated as current. No separate books line is given.",
+  "src": "coa"
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ },
+ "tier_notes": {
+  "general": "Very large Orange County public (about 37,000 undergraduates) that receives over 50,000 first-year applications, admits about 87-91%, and has no test requirement; D+ is an editorial judgment, not a ranking."
+ }
+}

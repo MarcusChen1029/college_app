@@ -106,7 +106,10 @@ fields, and put courses in a `"programs"` array (table `programs`, migration 001
 Loaded so far: Oxford, UCL, Edinburgh (3 courses each). Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
 
 ## Current status (2026-10-26)
-Safety wave 1 (40 colleges) loaded insert-only; 143 institutions live (140 US + 3 UK). How wave 1 was run, for the next wave:
+Safety waves 1 and 2 (40 colleges each) loaded insert-only; 183 institutions live (180 US + 3 UK). Wave 2 is mostly IPEDS
+baselines (Cal State, small publics and privates rarely post a current CDS); blank international undergrad counts were
+filled from IPEDS EF2023A. Watch for column mix-ups in deadline tables (Morgan State had domestic dates in place of the
+international Nov 15). How wave 1 was run, for the next wave:
 pick ~40 "todo" rows from the candidate list, 8 sonnet agents x 5 colleges with one shared brief (CDS read as text, never as
 images; firecrawl credits ran out, curl/WebFetch worked), a fresh agent spot-checks facts against sources, then
 `build_seed.py --insert-only --only ...` split per college and loaded through `execute_sql`. Map pins and `setting` come from

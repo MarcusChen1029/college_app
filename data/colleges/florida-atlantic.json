@@ -1,0 +1,96 @@
+{
+  "slug": "florida-atlantic",
+  "name": "Florida Atlantic University",
+  "short_name": "FAU",
+  "state_region": "FL",
+  "city": "Boca Raton",
+  "latitude": 26.372421,
+  "longitude": -80.102978,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.fau.edu",
+  "admissions_url": "https://www.fau.edu/admissions/",
+  "ipeds_unit_id": 133669,
+  "undergrad_enrollment": 25626,
+  "intl_undergrads": 724,
+  "student_faculty_ratio": 24,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Florida Atlantic University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.fau.edu/iea/documents/pdf/cds/cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Florida Atlantic University (student-to-faculty ratio, fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=133669",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 41299,
+    "admits": 24023,
+    "enrolled": 4260,
+    "in_state_applicants": 25020,
+    "in_state_admits": 16345,
+    "out_state_applicants": 15063,
+    "out_state_admits": 6956,
+    "intl_applicants": 1216,
+    "intl_admits": 722,
+    "pct_submit_sat": 76.38,
+    "pct_submit_act": 22.61,
+    "gpa_avg": 3.87,
+    "pct_reporting_gpa": 99.84,
+    "gpa_distribution": {
+      "4.0": 38.89,
+      "3.75-3.99": 22.22,
+      "3.50-3.74": 19.63,
+      "3.25-3.49": 13.9,
+      "3.00-3.24": 4.84,
+      "2.50-2.99": 0.38,
+      "2.0-2.49": 0.12
+    },
+    "notes": "Fall 2025 first-year class from the CDS C1 residency table (in-state 25,020 / out-of-state 15,063 / international 1,216 applicants; international admit rate 59.4% vs 58.2% overall). Undergrad enrollment and intl count are the B1/B2 'Total Undergraduates' figures (25,626; nonresident 724). The CDS C7 factor checkboxes and C8 test boxes are not machine-readable, so factors are omitted; SAT/ACT are required by Florida Board of Governors rule per the admissions site. GPA distribution is the 'all enrolled students' column of C11. ACT subscore percentiles omitted (rows misaligned in the text layer)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1050,
+      1120,
+      1220
+    ],
+    "SAT_ERW": [
+      540,
+      580,
+      630
+    ],
+    "SAT_MATH": [
+      510,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      23,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6099,
+    "tuition_out_of_state_usd": 21655,
+    "tuition_intl_usd": 21655,
+    "room_board_usd": 16414,
+    "books_usd": 1288,
+    "intl_need_aid_awarded": 287,
+    "intl_avg_award_usd": 14494,
+    "notes": "CDS G1/G5/H6 (30 credits for the full year at $203.29 per credit in-state / $721.84 per credit out-of-state; per-credit rates equal the 2024-25 IPEDS rates, so these may be carried forward). Food and housing on campus $16,414 (housing $11,324 + food $5,090). H6: 287 nonresident undergraduates received institutional aid, average $14,494. The international admissions page estimates $17,324 tuition and fees for 24 credits (fall + spring) and a $46,246 total cost of attendance."
+  }
+}

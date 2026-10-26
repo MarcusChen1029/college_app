@@ -1,0 +1,72 @@
+{
+  "slug": "scad",
+  "name": "Savannah College of Art and Design (Savannah)",
+  "short_name": "SCAD",
+  "state_region": "GA",
+  "city": "Savannah",
+  "latitude": 32.072964,
+  "longitude": -81.09395,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.scad.edu",
+  "admissions_url": "https://www.scad.edu/admission",
+  "ipeds_unit_id": 140951,
+  "undergrad_enrollment": 15552,
+  "intl_undergrads": 2207,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Savannah College of Art and Design (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=140951",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts and nonresident-alien undergraduates (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=140951",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 15956,
+    "admits": 13241,
+    "enrolled": 3496,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 12,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES IPEDS ADM2024 file via the Urban Institute Education Data Portal). SCAD does not publish a Common Data Set on the pages reviewed, so GPA, international applicants/admits and factors are not recorded. The 2,207 international undergraduates are IPEDS fall 2024 nonresident aliens (about 14% of 15,552). Percentiles come only from the 16% (SAT) and 12% (ACT) of enrolled students who submitted scores; SCAD is test-optional."
+  },
+  "scores": {
+    "SAT_ERW": [
+      540,
+      610,
+      660
+    ],
+    "SAT_MATH": [
+      490,
+      550,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      25,
+      30
+    ],
+    "ACT_MATH": [
+      18,
+      21,
+      25
+    ]
+  }
+}

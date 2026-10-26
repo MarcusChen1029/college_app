@@ -1,0 +1,72 @@
+{
+  "slug": "siue",
+  "name": "Southern Illinois University Edwardsville",
+  "short_name": "SIUE",
+  "state_region": "IL",
+  "city": "Edwardsville",
+  "latitude": 38.793949,
+  "longitude": -89.997779,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.siue.edu",
+  "admissions_url": "https://www.siue.edu/admissions/",
+  "ipeds_unit_id": 149231,
+  "undergrad_enrollment": 8975,
+  "intl_undergrads": 219,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023) and fall 2023 enrollment (EF2023A)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=149231",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (fall 2024 admissions summary, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=149231",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 8937,
+    "admits": 8688,
+    "enrolled": 1602,
+    "pct_submit_sat": 49,
+    "pct_submit_act": 19,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); no Common Data Set was found on SIUE's Institutional Research and Studies pages, so GPA, residency and international applicant splits are not available. College Navigator (fall 2024): 10,150 applicants, 97% admitted, 16% of admits enrolled; fall 2024 SAT middle 50%: ERW 490-600, Math 460-590; ACT 20-27. Undergraduate enrollment 8,975 and 219 nonresident-alien undergraduates are IPEDS fall 2023 (full-time plus part-time). An undated SIUE FAQ gives middle 50% of 20-26 ACT and 1020-1270 SAT for first-year students."
+  },
+  "scores": {
+    "SAT_ERW": [
+      460,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      440,
+      500,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      22,
+      26
+    ]
+  }
+}

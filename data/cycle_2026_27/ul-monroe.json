@@ -1,0 +1,124 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "ULM - International student admissions information (freshman standards, deadlines, English scores)",
+      "url": "https://www.ulm.edu/admissions/international.html",
+      "accessed": "2026-10-26"
+    },
+    "dl": {
+      "kind": "admissions_site",
+      "title": "ULM - Application deadlines",
+      "url": "https://www.ulm.edu/admissions/deadlines.html",
+      "accessed": "2026-10-26"
+    },
+    "oos": {
+      "kind": "financial_aid_site",
+      "title": "ULM Scholarships - Out-of-State Warhawk Scholarship (international freshmen)",
+      "url": "https://www.ulm.edu/scholarships/outofstate.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "International first-time freshmen must submit the SAT or ACT to be admitted and to qualify for academic aid: SAT EBRW 500+ (ACT 18) and Math 510+ (ACT 19); if one section meets it, the other can be as low as SAT Math 430 (ACT Math 16) or SAT EBRW 440 (ACT English 15). IPEDS lists SAT/ACT as not required but considered (test-optional) for domestic applicants. Scores must be sent officially (SAT code 6482, ACT code 1598).",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "International freshmen need a secondary program comparable to US high school graduation with a 2.50 minimum GPA (including English and math courses for scholarship consideration), SAT/ACT scores, an English proficiency score, translated official transcripts and mark sheets, a statement of financial backing with proof of funding, a valid passport and, after admission, immunization records. Documents may be uploaded for provisional admission, but transcripts and SAT scores count as official only when the hard copy arrives. An I-20 is sent 7-10 business days after admission.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International application and documents deadline (fall 2027 entry)",
+      "notes": "The page prints Fall June 1, Spring November 1 and Summer March 1 without a year; fall is treated as June 1, 2027. All required documents must be in by the date, and the deadlines page already shows the fall 2026 international on-campus window as closed.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Testing may be waived with SAT EBRW 640 and a 1200 composite, or if the applicant's country is on ULM's English Placement Exempt list (list not reproduced here). Scores must be valid and taken within two years. IELTS 7, TOEFL 100 or Duolingo 120 exempts students from ESL; students admitted below those scores take a placement test on arrival.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "100 exempts from ESL. The out-of-state scholarship page lists lower scores (TOEFL 71, IELTS 6.0, Duolingo 95) than these admission minimums; confirm with ULM which applies.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "7.0 exempts from ESL.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "120 exempts from ESL.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The Out-of-State Warhawk Scholarship is a fee waiver of $6,050 a semester ($12,100 a year) for first-time, full-time international freshmen (and transfers with 12+ college hours and a 2.5 GPA) who are non-Louisiana residents with a 2.5 high school GPA, SAT English 440 / ACT English 15, SAT Math 430 / ACT Math 16 and the language scores listed on the scholarship page. ULM's pages mention only merit-based awards for international students; no need-based institutional aid is described. The fee waiver can be combined with domestic-style academic scholarships priced by ACT/SAT.",
+    "src": "oos"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "6482",
+      "note": "ULM SAT school code.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1598",
+      "note": "ULM ACT school code.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL code is listed; the page asks for official scores sent to ULM.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not listed as an accepted test.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Admit rate about 85% (IPEDS fall 2024); tiers rest on the program list in IPEDS/College Navigator and editorial judgment."
+  }
+}

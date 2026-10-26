@@ -1,0 +1,72 @@
+{
+  "slug": "georgia-southern",
+  "name": "Georgia Southern University",
+  "short_name": null,
+  "state_region": "GA",
+  "city": "Statesboro",
+  "latitude": 32.426153,
+  "longitude": -81.784045,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.georgiasouthern.edu",
+  "admissions_url": "https://admissions.georgiasouthern.edu/",
+  "ipeds_unit_id": 139931,
+  "undergrad_enrollment": 23541,
+  "intl_undergrads": 327,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Georgia Southern University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=139931",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts and nonresident-alien undergraduates (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=139931",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 20840,
+    "admits": 18317,
+    "enrolled": 5170,
+    "pct_submit_sat": 35,
+    "pct_submit_act": 18,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES IPEDS ADM2024 file via the Urban Institute Education Data Portal). A Common Data Set for 2025-2026 is listed on Georgia Southern's Digital Commons but its file is blocked behind a bot challenge and could not be read as text, so no CDS figures (international applicants/admits, GPA, SAT total, factors) are included. International undergraduates (327) are IPEDS fall 2024 nonresident aliens, about 1.4% of 23,541 undergraduates; the international page says about 500 students who are not U.S. citizens attend across all levels. College Navigator listed SAT/ACT as 'test optional' for fall 2024, but current admissions pages require scores."
+  },
+  "scores": {
+    "SAT_ERW": [
+      528,
+      555,
+      583
+    ],
+    "SAT_MATH": [
+      458,
+      500,
+      550
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      16,
+      19,
+      22
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      22
+    ]
+  }
+}

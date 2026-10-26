@@ -1,0 +1,125 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "SCSU - How to apply (first-year admission)",
+      "url": "https://www.stcloudstate.edu/scsu4u/admissions/default.aspx",
+      "accessed": "2026-10-26"
+    },
+    "app": {
+      "kind": "admissions_site",
+      "title": "SCSU International Admissions - Application requirements (undergraduate)",
+      "url": "https://www.stcloudstate.edu/internationaladmissions/application/default.aspx",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "SCSU International Admissions - English proficiency requirements (undergraduate)",
+      "url": "https://www.stcloudstate.edu/internationaladmissions/english-proficiency.aspx",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "'SCSU is completely test optional.' Submit ACT/SAT only if they may enhance admission or scholarship consideration. Guaranteed admission with a 2.5 GPA (4.0 scale) for students with no college credits.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "SCSU's own online application; no application fee ('SCSU no longer requires an application fee'). No essay or recommendations are required (optional). International applicants must show a bank statement of at least US$29,178 for the first year (dated within 6 months) and a Financial Form.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-07-01",
+      "label": "International priority deadline, fall 2027 (applicants outside the U.S.)",
+      "notes": "Applicants inside the U.S.: July 15. Later applications are still considered but may be deferred to the next term. The page prints dates without a year; treated as fall 2027. CDS 2024-25 (C14) lists Aug. 15 as the general closing date with rolling admission.",
+      "src": "app"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Alternatives to a test: graduation from a U.S. high school; English-medium high school or university graduation with a 2.5 GPA plus a principal's letter; IGCSE/O-Levels with C or above in English, math, a hard science, a social science and one other subject; 12+ U.S. university credits with 2.5 GPA; completion of SCSU's Intensive English Center; ELS level 112; SAT ERW 400+ (or Reading 20+); ACT English 15+; LanguageCERT 60. Reports must be under 2 years old. Conditional admission is available for qualified applicants whose English is below the requirement.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "subs": {
+        "reading": 15,
+        "writing": 15,
+        "listening": 15
+      },
+      "notes": "Tests before 2026-01-21. Paper TOEFL 500.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "subs": {
+        "reading": 3.5,
+        "writing": 3.0,
+        "listening": 3.0
+      },
+      "notes": "Tests on/after 2026-01-21 (page does not name the 1-6 scale).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Indicator at 5.5 is accepted 'until further notice'.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Official report must come through the Duolingo dashboard. A separate graduate-admissions knowledge-base article says Duolingo will not be accepted from Summer 2026; the undergraduate page still lists it, so confirm with International Admissions.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 47,
+      "notes": "PTE Academic, score report website only.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Academic and Cultural Sharing Scholarship (ACSS) lowers international undergraduate tuition (about $8,652 per year on the costs page; renewable each semester with a 2.5 GPA and cultural-sharing activities). The costs page says students opt in at orientation; other SCSU pages describe it as applied automatically to the first semester. Need-based awards depend on FAFSA, which international students cannot file.",
+    "src": "intlcost"
+  },
+  "majors": [],
+  "score_codes": {
+    "toefl": {
+      "code": "6679",
+      "note": "SCSU TOEFL code from the international application page.",
+      "src": "app"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,135 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Sacramento State - International first-time freshman requirements",
+   "url": "https://csus.edu/international-programs-global-engagement/application-admissions-process/undergraduate.html",
+   "accessed": "2026-10-26"
+  },
+  "bursar": {
+   "kind": "other",
+   "title": "Sacramento State Bursar - Tuition, Fees and Living Costs 2026-2027",
+   "url": "https://www.csus.edu/administration-business-affairs/bursar/tuition-living-costs.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Sacramento State - Scholarships",
+   "url": "http://www.csus.edu/apply/financial-aid-scholarships/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - Sacramento State admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110617",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "The CSU system no longer uses SAT/ACT in admission decisions; College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)'. Sacramento State's international page lists no SAT/ACT requirement.",
+  "src": "nav"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply; $70 non-refundable fee by credit/debit card or PayPal. Needs a high school transcript with at least 3.0 on a 4.0 scale (or 80% average) and the diploma. Upload scanned PDFs through the International Admission Documents portal; unofficial transcripts and scores are fine at first. Passport copy required. Proof of funds is not needed for review but is strongly encouraged to avoid I-20 delays. Credential evaluations are not required (WES, ACEI or ECE only if submitted). College Navigator shows essays and recommendations are not considered.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-15",
+   "label": "International application deadline, Cal State Apply (fall 2027)",
+   "notes": "Fall 2027 filing period is Oct 1, 2026 to May 15, 2027. Late-application appeals are accepted through June 15.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-05-30",
+   "label": "International document deadline (fall 2027)",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "One option required. Sacramento State publishes a PDF list of countries where TOEFL/IELTS is waived (not read). MyBest TOEFL scores are not accepted; scores must come from the testing provider's portal. Also accepted: GTEC 1125, Sacramento State English Language Institute Level 7, ELS Level 112, FLS Level 16, TLC Level 9, UCLA Extension Level 6. Cambridge exams are not listed.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 64,
+   "notes": "Tests taken before Jan 21, 2026. ETS code 4671.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Tests on or after Jan 21, 2026; the page prints '3.5 IBT', which appears to be the 1-6 scale (verify with the university).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "Sacramento State's scholarships page says the Scholarships Office awards nearly $4 million a year but does not say whether international students are eligible and names no awards. Contact scholarshipfaqs@csus.edu. No conditional-admission or ESL pathway is described on the pages checked, although its English Language Institute (Level 7) counts as English proof.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 2818,
+  "room_board_usd": 20212,
+  "books_usd": 1240,
+  "other_usd": 5336,
+  "total_coa_usd": 50574,
+  "notes": "Computed from the Bursar page: tuition $3,419 per semester (6+ units) twice, campus fees $1,409 per semester twice, and the nonresident tuition fee of $471 per unit for an assumed 30 units ($14,130). Living on campus $20,212, books $1,240, transportation $1,528 plus personal $3,808 (other). The Bursar page has no F-1 budget; health insurance is not included.",
+  "src": "bursar"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "4671",
+   "note": "Sacramento State ETS code (printed as 004671).",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ }
+}

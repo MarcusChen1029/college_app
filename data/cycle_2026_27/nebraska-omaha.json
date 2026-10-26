@@ -1,0 +1,191 @@
+{
+ "sources": {
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UNO Undergraduate Admissions - English proficiency for admission",
+   "url": "https://www.unomaha.edu/undergraduate-admissions/international-students/english-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "UNO Undergraduate Admissions - Conditional undergraduate admission",
+   "url": "https://www.unomaha.edu/admissions/undergraduate/international-students/conditional-admission.php",
+   "accessed": "2026-10-26"
+  },
+  "icat": {
+   "kind": "admissions_site",
+   "title": "UNO Catalog - International applicants",
+   "url": "https://catalog.unomaha.edu/aboutuno/undergraduate-admissions/international-applicants/",
+   "accessed": "2026-10-26"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "UNO Catalog - Application deadline dates",
+   "url": "https://catalog.unomaha.edu/aboutuno/undergraduate-admissions/application-deadline-dates/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UNO Undergraduate Admissions - First-year student admission requirements",
+   "url": "https://www.unomaha.edu/undergraduate-admissions/apply/first-year/requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "how": {
+   "kind": "admissions_site",
+   "title": "UNO Undergraduate Admissions - How to apply (first-year; SAT/ACT codes)",
+   "url": "https://www.unomaha.edu/undergraduate-admissions/apply/first-year/how-to-apply.php",
+   "accessed": "2026-10-26"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "UNO Admissions - Undergraduate admissions checklist (international)",
+   "url": "https://www.unomaha.edu/admissions/undergraduate/checklist.php",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UNO International at UNO - Scholarships and funding",
+   "url": "https://www.unomaha.edu/international-at-uno/student-support/scholarships-and-funding.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "UNO Undergraduate Admissions - Estimated cost of attendance (fall 2026 / spring 2027)",
+   "url": "https://www.unomaha.edu/undergraduate-admissions/tuition-and-aid/estimated-cost-of-attendance.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-year admission needs the 16 core course units plus any one of: cumulative GPA 3.0, upper half of class, ACT 20+ or SAT 1040+. UNO says test scores may not be needed for admission and are used for placement and scholarships.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 45,
+  "notes": "International applicants apply online at apply.unomaha.edu (NU application) and pay a $45 non-refundable fee (domestic applicants pay none). Documents: transcripts from every school with certified English translation, passport copy, English proficiency, and for F-1/J-1 a financial affidavit plus bank statements through the iGlobal form after admission.",
+  "src": "icat"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": null,
+   "due": "2027-08-16",
+   "label": "Fall 2027: complete admission file due",
+   "notes": "The catalog sets one deadline for all undergraduate applicants, one week before classes start; no separate international deadline is published. I-20s are issued up to 30 days before the admitted session, so apply well ahead. UNO encourages first-year applicants to apply in the first semester of their final year for scholarship consideration.",
+   "src": "dl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: applicants from Australia, Canada, Ireland, New Zealand and the United Kingdom whose first language is English. Other ways to show proficiency: UNO Intensive English Program (IEP) completion, a U.S. A.A./A.S. with a 2.5 GPA, English Composition I and Public Speaking with a C or better plus 2.5 GPA, four years of U.S. high school English, or an official medium-of-instruction letter (catalog). TOEFL MyBest scores, TOEFL Essentials and IELTS Indicator are not accepted. Applicants who meet academic standards but not the English requirement can get conditional admission through the IEP.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "General undergraduate direct admission. Engineering programs 80 (writing sub-score 20), English major 100.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Tests taken in 2026 or later, general undergraduate. Engineering 4.0, English major 5.0.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Engineering 6.5 (writing 5.5), English major 7.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Engineering 110, English major 130.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "PTE Academic. Engineering 53, English major 66.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International Academic Excellence Scholarship funds partial tuition starting at about $3,000 per year (actual amount varies with tuition), renewable up to five years, for on-campus full-time study; all newly admitted first-time and transfer undergraduates are considered automatically after admission. Smaller awards: Sieu Mei Tu Endowment (graduates of Asian high schools, amount varies, fall deadline April 1) and Tom and Janet Miller ($1,000, IEP alumni with financial hardship).",
+  "src": "schol"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "cost",
+  "tuition_usd": 9880,
+  "tuition_out_of_state_usd": 26400,
+  "tuition_intl_usd": null,
+  "required_fees_usd": null,
+  "room_board_usd": 13548,
+  "books_usd": 1264,
+  "other_usd": 4240,
+  "total_coa_usd": 45452,
+  "notes": "UNO estimate for fall 2026 / spring 2027, full-time on campus: tuition and fees $9,880 Nebraska resident, $26,400 out-of-state; housing and food $13,548; books $1,264; personal $2,540 plus transportation $1,700 (in other_usd). total_coa_usd is the out-of-state on-campus total. The page does not state an international rate; international students are not Nebraska residents and the out-of-state figure is shown as the closest published rate. Some colleges (Engineering, Business, IS&T) carry extra tuition per the checklist."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6420",
+   "note": "UNO SAT code (test scores are used for placement and scholarships).",
+   "src": "how"
+  },
+  "act": {
+   "code": "2464",
+   "note": "UNO ACT code.",
+   "src": "how"
+  },
+  "toefl": {
+   "code": null,
+   "note": "UNO's TOEFL code was not found on the official pages read; check ETS or UNO International Admissions.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "Scores must be sent directly from the testing agency; no institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

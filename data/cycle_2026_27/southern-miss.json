@@ -1,0 +1,144 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "USM - International undergraduate admissions (requirements, English proficiency, deadlines)",
+      "url": "https://www.usm.edu/undergraduate-admissions/international-admissions/index.php",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "other",
+      "title": "USM International Student and Scholar Services - Cost of study",
+      "url": "https://www.usm.edu/isss/costsfinancial-aid.php",
+      "accessed": "2026-10-26"
+    },
+    "fr": {
+      "kind": "admissions_site",
+      "title": "USM - Undergraduate admissions, freshmen (merit scholarships, 2026-27 tuition)",
+      "url": "https://www.usm.edu/undergraduate-admissions/freshmen.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "International freshman checklist: SAT or ACT is optional (required only for Freshman Merit Scholarship consideration). USM's CDS adds that students with a 3.2+ cumulative GPA and the college-preparatory curriculum do not need ACT/SAT, and that Accuplacer can replace SAT/ACT. SAT verbal 480 or ACT English 20 also counts as proof of English.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own",
+      "common_app"
+    ],
+    "app_fee_usd": 45,
+    "notes": "USM application or Common Application, $45 non-refundable fee, high school transcripts and/or school-leaving exam results, and proof of English proficiency. Strong freshman applicants present a 2.5 minimum GPA in core academic subjects, evaluated against the applicant's home education system; applicants must be 17 by the first day of classes. Financial documents are needed for the I-20.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International application deadline (fall 2027 entry)",
+      "notes": "The page prints 'Fall admission (August start date) - May 1' and 'Spring admission (January start date) - October 1' without a year; fall is treated as May 1, 2027. Applications must reach International Student and Scholar Services by the deadline. The domestic freshman priority deadline for fall 2027 is listed as August 2027.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not required of applicants from the United Kingdom, Australia, English-speaking Canadian provinces, New Zealand, Ireland and English-speaking Caribbean islands (freshmen from African countries must still submit proof). Also met by IB, Cambridge IGCSE/A-Level or a US/Canadian-curriculum school abroad with C or better in all English courses (final three years), three final years at a US/UK/Canada/Australia/NZ secondary school with C or better in English, or C or better in English Composition I and II at an accredited US college. Other accepted tests: SAT verbal 480 / ACT English 20, iTEP Academic 4.0, Oxford ELLT 7, Kaplan 450, Gateway 375.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "The page prints 'score of 4 (new)/71 (old)' and does not name the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Academic, overall.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 54,
+      "notes": "PTE Academic or PTE Express overall.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "B2 First, C1 Advanced or C2 Proficiency; no minimum score is printed.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "No scholarship specific to international freshmen was found; the international page says SAT/ACT is required for Freshman Merit Scholarship consideration. The freshman merit scale (GPA and ACT) runs from $1,500 per year to full tuition (ACT 32+ with 3.25+ GPA), and Honors College admits get $3,000 per year for four years. Whether international GPAs are scored for these awards is not stated. CDS H6 (2024-25): only non-need-based institutional aid for nonresidents; 241 recipients, average $13,787.",
+    "src": "fr"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "1479",
+      "note": "Page prints 'TOEFL/SAT ETS code: 1479'.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "USM's international pages give no ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "1479",
+      "note": "Page prints 'TOEFL/SAT ETS code: 1479'. Official scores are accepted directly from the testing agency.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "nursing": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

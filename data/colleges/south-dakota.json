@@ -1,0 +1,115 @@
+{
+  "slug": "south-dakota",
+  "name": "University of South Dakota",
+  "short_name": "USD",
+  "state_region": "SD",
+  "city": "Vermillion",
+  "latitude": 42.786019,
+  "longitude": -96.925283,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.usd.edu/",
+  "admissions_url": "https://www.usd.edu/admissions-and-aid",
+  "ipeds_unit_id": 219471,
+  "undergrad_enrollment": 7619,
+  "intl_undergrads": 408,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of South Dakota Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.usd.edu/-/media/Project/USD/DotEdu/About/Departments-Offices-and-Resources/Institutional-Research-Planning-and-Assessment/USD-Common-Data-Set.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator profile (student-to-faculty ratio, campus setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219471",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "intlcost": {
+      "kind": "admissions_site",
+      "title": "USD - International Tuition & Costs",
+      "url": "https://www.usd.edu/Admissions-and-Aid/Tuition-and-Costs/International-Tuition-and-Costs",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 5965,
+    "admits": 5892,
+    "enrolled": 1418,
+    "in_state_applicants": 2025,
+    "in_state_admits": 2011,
+    "out_state_applicants": 2088,
+    "out_state_admits": 2075,
+    "intl_applicants": 1852,
+    "intl_admits": 1806,
+    "pct_submit_sat": 4.2,
+    "pct_submit_act": 61.9,
+    "gpa_avg": 3.51,
+    "pct_reporting_gpa": 94.6,
+    "gpa_distribution": {
+      "4.0": 10.22,
+      "3.75-3.99": 30.5,
+      "3.50-3.74": 17.9,
+      "3.25-3.49": 15.66,
+      "3.00-3.24": 11.71,
+      "2.50-2.99": 10.74,
+      "2.0-2.49": 2.68,
+      "1.0-1.99": 0.59
+    },
+    "notes": "CDS C1 residency table (fall 2024 entering class): the column under INTERNATIONAL gives 1,852 applied / 1,806 admitted / 197 enrolled (enrolled matches the B1 first-time nonresident count of 197). SAT percentiles are based on only 60 enrolled students. No early decision or early action; no waitlist. Applicant counts by residency sum to the total. Check marks for C7 (factors) are not readable in the PDF text, so factors are omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1145,
+      1200,
+      1260
+    ],
+    "SAT_ERW": [
+      530,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      595,
+      635,
+      695
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2026) check boxes are not readable in the PDF text; policy taken from the international admissions page instead."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "intlcost",
+    "tuition_intl_usd": 13616,
+    "room_board_usd": 9498,
+    "other_usd": 2400,
+    "total_coa_usd": 25514,
+    "notes": "USD international cost page (30 credits per year; the page does not name the academic year): tuition and fees $13,616, living expenses $9,498, other (books, insurance, discipline fees) $2,400. The page leaves the total blank; $25,514 is the sum of those three lines. The page also mentions an annual tuition fee of $13,299, which does not match its own table. The CDS (2024-25) G1 tuition figures ($7,773 / $11,283) look out of date and are not used."
+  }
+}
