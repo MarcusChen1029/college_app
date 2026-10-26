@@ -58,16 +58,15 @@ const FALSE = ["no", "false", "n", "0", "unchecked", ""];
 
 /** Listbox options on the page. Dropdown libraries render them only while the list is open, so these are the open list's. */
 function visibleOptions(doc: Document): Element[] {
-  // Telerik RadComboBox (STARS) renders its list as li.rcbItem inside .rcbList, without ARIA roles.
-  return [...doc.querySelectorAll('[role="option"], .ng-option, mat-option, .rcbList li.rcbItem, .rcbList li.rcbHovered')].filter(
-    (o) => o.getAttribute("aria-disabled") !== "true" && !o.classList.contains("rcbDisabled"),
-  );
+  return [...doc.querySelectorAll('[role="option"], .ng-option, mat-option')].filter((o) => o.getAttribute("aria-disabled") !== "true");
 }
 
-async function pickOption(doc: Document, value: string): Promise<Element | null> {
+/** Waits for the option reading exactly `value` (among `selector`'s matches when given, else any open list's options). */
+async function pickOption(doc: Document, value: string, selector?: string): Promise<Element | null> {
   const start = Date.now();
   for (;;) {
-    const hit = visibleOptions(doc).find((o) => sameText(text(o), value));
+    const options = selector ? [...doc.querySelectorAll(selector)] : visibleOptions(doc);
+    const hit = options.find((o) => sameText(text(o), value));
     if (hit) return hit;
     if (Date.now() - start >= ASSIST_TIMING.optionsMs) return null;
     await sleep(ASSIST_TIMING.stepMs);
@@ -140,19 +139,25 @@ export async function insertValue(target: Element | null, value: string): Promis
     (leaf as HTMLElement).click();
     return { ok: true, how: "picked" };
   }
+  const telerik = combo?.closest(".RadComboBox");
+  if (telerik) {
+    // STARS keeps every combobox's list in the page (#<id>_DropDown), so look only in this one's. Open it first: a click on an item of a
+    // closed list did not always take (seen live); typing would only change the box's text.
+    openList(telerik);
+    const item = await pickOption(doc, value, `#${telerik.id}_DropDown li`);
+    if (!item) return { ok: false, reason: `No option reads "${value}" in this list.` };
+    fire(item, "mouseover");
+    fire(item, "mousedown");
+    (item as HTMLElement).click();
+    return { ok: true, how: "picked" };
+  }
   if (combo) {
     const input = (combo.matches("input") ? combo : combo.querySelector("input:not([type=hidden])")) as HTMLInputElement | null;
     // A list that is already open may hold the option; else type to filter (editable) or open it (read-only).
     let option = visibleOptions(doc).find((o) => sameText(text(o), value)) ?? null;
-    const telerik = combo.closest(".RadComboBox");
     if (!option) {
       if (input && !input.readOnly) setText(input, value);
-      else openList(telerik ?? combo);
-      option = await pickOption(doc, value);
-    }
-    // A Telerik list without filtering does not open on typing: open it and look again.
-    if (!option && telerik && input && !input.readOnly) {
-      openList(telerik);
+      else openList(combo);
       option = await pickOption(doc, value);
     }
     if (option) {

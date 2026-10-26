@@ -88,11 +88,12 @@ test("siteOf matches portal origins exactly", () => {
 });
 
 test("Telerik RadComboBox (STARS): opens the list with its arrow and clicks the matching li", async () => {
-  const doc = html(`<div class="RadComboBox" id="w"><input class="rcbInput" readonly id="x_Input"><span class="rcbArrowCell"><a id="arrow">select</a></span></div><div class="rcbList"></div>`);
+  const doc = html(`<div class="RadComboBox" id="w"><input class="rcbInput" readonly id="x_Input"><span class="rcbArrowCell"><a id="arrow">select</a></span></div><div id="w_DropDown"><ul class="rcbList"></ul></div><div id="other_DropDown"><ul class="rcbList"><li class="rcbItem">Computer Science</li></ul></div>`);
   let picked = "";
   doc.getElementById("arrow")!.addEventListener("click", () => {
-    doc.querySelector(".rcbList")!.innerHTML = `<li class="rcbItem">Science</li><li class="rcbItem">Computer Science</li>`;
-    doc.querySelectorAll("li")[1]!.addEventListener("click", () => (picked = "Computer Science"));
+    // Another combobox's list also holds "Computer Science"; only this one's (#w_DropDown) may be used.
+    doc.querySelector("#w_DropDown .rcbList")!.innerHTML = `<li class="rcbItem">Science</li><li class="rcbItem">Computer Science</li>`;
+    doc.querySelectorAll("#w_DropDown li")[1]!.addEventListener("click", () => (picked = "Computer Science"));
   });
   const input = doc.getElementById("x_Input") as HTMLInputElement;
   input.readOnly = true;
