@@ -128,12 +128,16 @@ begin
     raise exception 'FAIL: parent view colleges wrong: %', v -> 'colleges';
   end if;
 
-  -- No forbidden key anywhere in the tree, and no planted secret anywhere in the text.
+  -- No forbidden key anywhere in the tree, and no planted secret anywhere in the text. The one allowed
+  -- "transcript" key is the checklist's "transcript sent" tick, which must stay a plain boolean (or null).
   select k into bad
-  from jsonb_path_query(v, '$.**') p(x),
+  from jsonb_path_query(v #- '{colleges,0,checklist,transcript}', '$.**') p(x),
        lateral jsonb_object_keys(case when jsonb_typeof(p.x) = 'object' then p.x else '{}'::jsonb end) k
   where k = any (forbidden) limit 1;
   if bad is not null then raise exception 'FAIL: parent view has forbidden key %', bad; end if;
+  if coalesce(jsonb_typeof(v #> '{colleges,0,checklist,transcript}'), 'null') not in ('boolean', 'null') then
+    raise exception 'FAIL: checklist transcript is not a tick: %', v #> '{colleges,0,checklist,transcript}';
+  end if;
   if v::text like '%SMOKESECRET%' then raise exception 'FAIL: parent view leaks a secret: %', v; end if;
 
   -- Wrong kind: a portfolio token does not open the parent view (and vice versa); junk is null, not an error.
