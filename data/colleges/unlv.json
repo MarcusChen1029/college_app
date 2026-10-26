@@ -1,0 +1,65 @@
+{
+  "slug": "unlv",
+  "name": "University of Nevada, Las Vegas",
+  "short_name": "UNLV",
+  "state_region": "NV",
+  "city": "Las Vegas",
+  "latitude": 36.106047,
+  "longitude": -115.138462,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unlv.edu/",
+  "admissions_url": "https://www.unlv.edu/admissions",
+  "ipeds_unit_id": 182281,
+  "undergrad_enrollment": 25794,
+  "intl_undergrads": 446,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023) and fall 2023 enrollment (EF2023A); College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=182281",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 12232,
+    "admits": 11774,
+    "enrolled": 4583,
+    "pct_submit_sat": 11,
+    "pct_submit_act": 67,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). UNLV's 2025-26 and 2024-25 Common Data Set PDFs on it.unlv.edu have no readable text layer for the filled-in values (only the blank form text extracts), so the IPEDS baseline is used; GPA, residency splits and factors are not added. Undergrad enrollment (25,794) and nonresident undergrads (446) are IPEDS fall 2023 (EF2023A); student-faculty ratio 19 to 1 is College Navigator (fall 2024). College Navigator also shows fall 2024: 12,730 applicants, 96% admitted."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      480,
+      540,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  }
+}

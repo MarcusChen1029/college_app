@@ -1,0 +1,49 @@
+{
+  "slug": "midwestern-state",
+  "name": "Midwestern State University",
+  "short_name": "MSU Texas",
+  "state_region": "TX",
+  "city": "Wichita Falls",
+  "latitude": 33.874809,
+  "longitude": -98.519386,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://msutexas.edu",
+  "admissions_url": "https://msutexas.edu/admissions/index.php",
+  "ipeds_unit_id": 226833,
+  "undergrad_enrollment": 4303,
+  "intl_undergrads": 175,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=226833",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=226833",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 5824,
+    "admits": 5089,
+    "enrolled": 806,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 5,824 applicants, 5,089 admitted, 806 enrolled. College Navigator fall 2024: 7,803 applicants, 94% admitted, 13% of admitted enrolled. IPEDS reports no international applicant counts and no SAT/ACT percentiles for this college (it is test-optional), so those are null. Undergraduate enrollment 4,303 and student-faculty ratio 18:1 are fall 2024 College Navigator figures; nonresident students are about 6% of undergraduates (rounded). The latest Common Data Set found on msutexas.edu is from 2021-22/2022-23 (archive), too old to use, so this is the IPEDS baseline."
+  }
+}

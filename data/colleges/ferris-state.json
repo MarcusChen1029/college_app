@@ -1,0 +1,84 @@
+{
+  "slug": "ferris-state",
+  "name": "Ferris State University",
+  "short_name": "Ferris State",
+  "state_region": "MI",
+  "city": "Big Rapids",
+  "latitude": 43.687724,
+  "longitude": -85.481925,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.ferris.edu",
+  "admissions_url": "https://www.ferris.edu/admissions/",
+  "ipeds_unit_id": 169910,
+  "undergrad_enrollment": 8980,
+  "intl_undergrads": 95,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Ferris State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.ferris.edu/admissions/testing/resources/common/CDS2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (student-to-faculty ratio, campus setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=169910",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11885,
+    "admits": 9790,
+    "enrolled": 1485,
+    "in_state_applicants": 10179,
+    "in_state_admits": 8436,
+    "out_state_applicants": 1019,
+    "out_state_admits": 822,
+    "intl_applicants": 687,
+    "intl_admits": 532,
+    "pct_submit_sat": 72.65,
+    "pct_submit_act": 1.27,
+    "gpa_avg": 3.35,
+    "pct_reporting_gpa": 99.73,
+    "gpa_distribution": {
+      "4.0": 10.61,
+      "3.75-3.99": 16.87,
+      "3.50-3.74": 17.07,
+      "3.25-3.49": 15.28,
+      "3.00-3.24": 12.29,
+      "2.50-2.99": 21.63,
+      "2.0-2.49": 5.85,
+      "1.0-1.99": 0.4
+    },
+    "notes": "CDS C1/C2 (counts read from the PDF text; its values print apart from the labels, but the by-residency totals add up to the C1 totals). International = the C2 international column (687 applied, 532 admitted, 12 enrolled). GPA ranges are the 'all enrolled students' column of C11. Only 19 enrolled students (1.27%) reported ACT, so that range is thin. The CDS C7 factor checkmarks could not be read, so no factors are recorded. Ferris says it does not have open admission but admits some students below its criteria case by case. Undergrad 8,980 and 95 nonresident undergrads are the CDS B1 figures; ratio 15:1 is from College Navigator."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      900,
+      1000,
+      1120
+    ],
+    "SAT_ERW": [
+      450,
+      510,
+      570
+    ],
+    "SAT_MATH": [
+      430,
+      490,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      22,
+      24
+    ]
+  }
+}

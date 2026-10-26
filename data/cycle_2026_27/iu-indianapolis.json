@@ -1,0 +1,166 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "IU Indianapolis - Dates and deadlines (international applicants, beginning freshmen)",
+   "url": "https://international.indianapolis.iu.edu/admissions/how-apply/freshman/deadlines.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "IU Indianapolis - English proficiency requirements for undergraduate applicants",
+   "url": "https://international.indianapolis.iu.edu/admissions/how-apply/freshman/english.html",
+   "accessed": "2026-10-26"
+  },
+  "steps": {
+   "kind": "admissions_site",
+   "title": "IU Indianapolis - Steps to apply (application fee, platforms)",
+   "url": "https://indianapolis.iu.edu/admissions/apply/steps-to-apply.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "IU Indianapolis - Scholarships: admissions-based scholarships and scholarships for international students",
+   "url": "https://indianapolis.iu.edu/cost-aid/scholarships/apply/iu-indianapolis/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "IU Indianapolis - International cost of attendance (9-month estimate)",
+   "url": "https://international.indianapolis.iu.edu/admissions/tuition-fees.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: the applicant chooses whether SAT or ACT scores are considered. For international applicants an SAT EBRW score of 410 or ACT English 17 can also satisfy the English requirement.",
+  "src": "eng"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "notes": "Apply with Apply IU or the Common App (submit only one). CDS C13 and the steps page give a $65 nonrefundable fee; the steps page also shows $70 for one international application path (graduate and non-degree), so $65 is used for first-year applicants. Transcript required; applicants above a 3.0 GPA need only the final high school transcript. International applicants must document finances for a visa.",
+  "src": "steps"
+ },
+ "deadlines": [
+  {
+   "kind": "scholarship",
+   "due": "2026-12-15",
+   "label": "International 'apply by' date for Honors College admission-timing and scholarship consideration (fall 2027 entry)",
+   "notes": "Page lists December 15 without a year (2026-27 cycle); treated as December 2026 for fall 2027. The Honors College application itself is shown as February 15 on the dates page and March 1 on the scholarships page.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-15",
+   "label": "International 'apply by' date to be considered for admissions-based scholarships (fall 2027 entry)",
+   "notes": "Page lists February 15 without a year; treated as 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International 'apply by' deadline, fall 2027 entry",
+   "notes": "Page lists May 1 without a year; treated as 2027. Domestic fall deadline is July 1 (CDS lists June 1). Spring entry: December 8.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Priority date for $100 international enrollment deposit",
+   "notes": "If admitted on or after April 2, the deadline is 30 days after admission.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "English can also be shown by completing upper secondary school with at least three years of study in a designated English-speaking country, IU Indianapolis Program for Intensive English (PIE) Level 5, ELS Level 109, GCSE/O Level English language grade C, IB HL English A grade 4, or a C in a U.S. freshman English composition course. Scores must be no more than two years old. Separate IU Indianapolis placement testing (EAP) may apply to some students after admission.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 60,
+   "notes": "School code 1325.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "New scoring as of January 2026 (1-6 band scale); school code 1325.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Page says 90 for Fall 2026 applications and 95 starting with Spring 2027 applications, so 95 applies to fall 2027.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International applicants are considered automatically for an admission-based scholarship when they apply; scholarship amounts for international students are not published on the pages read. Students must be enrolled full-time; funds cannot be used for intensive English study. Further scholarships (including Honors College) need separate applications. CDS H6: 117 nonresident undergraduates received institutional aid, average $12,369.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "1325",
+   "note": "School code from the English requirements page.",
+   "src": "eng"
+  },
+  "sat": {
+   "code": "1325",
+   "note": "School code from the English requirements page (SAT).",
+   "src": "eng"
+  },
+  "act": {
+   "code": "1214",
+   "note": "School code from the English requirements page (ACT).",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed on the page.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as an accepted English test on the undergraduate page.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

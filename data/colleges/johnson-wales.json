@@ -1,0 +1,79 @@
+{
+  "slug": "johnson-wales",
+  "name": "Johnson & Wales University (Providence)",
+  "short_name": "JWU Providence",
+  "state_region": "RI",
+  "city": "Providence",
+  "latitude": 41.819956,
+  "longitude": -71.41277,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.jwu.edu",
+  "admissions_url": "https://www.jwu.edu/admissions/",
+  "ipeds_unit_id": 217235,
+  "undergrad_enrollment": 3908,
+  "intl_undergrads": 142,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS data via NCES College Navigator, fall 2024 (Johnson & Wales University-Providence)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217235",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217235",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=217235",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 8841,
+    "admits": 7400,
+    "enrolled": 1056,
+    "pct_submit_sat": 14,
+    "pct_submit_act": 2,
+    "notes": "Baseline from IPEDS via College Navigator (fall 2024). JWU does not publish a Common Data Set that could be found (jwu.edu is behind a bot-protection page); the www.jwu.edu pages could not be read, so deadlines, test policy and requirements come from the JWU online catalog. College Navigator prints 7,828 applicants and 88% admitted (85% men, 90% women) but not the admit count, so admits is left null rather than back-computed; 16% of admitted students enrolled. Undergraduate enrollment is fall 2024 (3,908 of 4,303 total). International applicant counts, GPA, ED and residency splits are not available from this source. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+  },
+  "scores": {
+    "SAT_ERW": [
+      460,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      430,
+      500,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      27
+    ],
+    "ACT_ENGLISH": [
+      20,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      26
+    ]
+  }
+}

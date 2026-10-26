@@ -1,0 +1,79 @@
+{
+  "slug": "southern-maine",
+  "name": "University of Southern Maine",
+  "short_name": "USM",
+  "state_region": "ME",
+  "city": "Portland",
+  "latitude": 43.662863,
+  "longitude": -70.274247,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://usm.maine.edu/",
+  "admissions_url": "https://usm.maine.edu/office-of-admissions/",
+  "ipeds_unit_id": 161554,
+  "undergrad_enrollment": 5525,
+  "intl_undergrads": 80,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161554",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (fall 2024 admissions summary, enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161554",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161554",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 5823,
+    "admits": 4618,
+    "enrolled": 718,
+    "pct_submit_sat": 12,
+    "pct_submit_act": 1,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). USM's official CDS page lists only the 2022-2023 edition; a 2024-2025 CDS copy found online contained only Section A, so no CDS figures (international applicant split, GPA, factors) are available. College Navigator (fall 2024): 5,822 applicants, 79% admitted, 15% of admits enrolled; undergraduate enrollment 5,525 is fall 2024. Test scores are not used in admission decisions, so the SAT/ACT ranges describe only the few students who submitted them (83 SAT, 9 ACT in fall 2023)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      505,
+      560,
+      640
+    ],
+    "SAT_MATH": [
+      490,
+      560,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      25,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      19,
+      25
+    ],
+    "ACT_MATH": [
+      19,
+      25,
+      28
+    ]
+  }
+}

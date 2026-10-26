@@ -1,0 +1,61 @@
+{
+  "slug": "metro-state-mn",
+  "name": "Metropolitan State University",
+  "short_name": "Metro State",
+  "state_region": "MN",
+  "city": "Saint Paul",
+  "latitude": 44.957256,
+  "longitude": -93.074361,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.metrostate.edu",
+  "admissions_url": "https://www.metrostate.edu/apply",
+  "ipeds_unit_id": 174020,
+  "undergrad_enrollment": 5904,
+  "intl_undergrads": 127,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment and admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=174020",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=174020",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 542,
+    "admits": 523,
+    "enrolled": 158,
+    "pct_submit_act": 8,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). No Common Data Set for Metro State was found online, so there is no international applicant split and no GPA data. Only 12 enrolled students (8%) reported ACT scores and none reported SAT, so the ACT range is very thin. College Navigator's fall 2024 figures: 698 applicants, 99% admitted, 34% of admitted enrolled, ACT 16/19/21 (14 students). The first-year class is tiny because Metro State mainly serves transfer students (1,668 undergraduate transfer-ins in fall 2024). Undergrad 5,904 is fall 2024 (College Navigator)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      23
+    ],
+    "ACT_ENGLISH": [
+      14,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      24
+    ]
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "slug": "northern-arizona",
+  "name": "Northern Arizona University",
+  "short_name": "NAU",
+  "state_region": "AZ",
+  "city": "Flagstaff",
+  "latitude": 35.188449,
+  "longitude": -111.653724,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://nau.edu/",
+  "admissions_url": "https://nau.edu/admissions/",
+  "ipeds_unit_id": 105330,
+  "undergrad_enrollment": 22203,
+  "intl_undergrads": 391,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Northern Arizona University Common Data Set 2025-2026 (PDF)",
+      "url": "https://in.nau.edu/wp-content/uploads/sites/129/2026/04/CDS-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 39685,
+    "admits": 35561,
+    "enrolled": 4540,
+    "in_state_applicants": 17003,
+    "in_state_admits": 15317,
+    "out_state_applicants": 21613,
+    "out_state_admits": 19261,
+    "intl_applicants": 1069,
+    "intl_admits": 983,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 27,
+    "gpa_avg": 3.7,
+    "pct_reporting_gpa": 91,
+    "gpa_distribution": {
+      "4.0": 32,
+      "3.75-3.99": 19,
+      "3.50-3.74": 15,
+      "3.25-3.49": 12,
+      "3.00-3.24": 10,
+      "2.50-2.99": 10,
+      "2.0-2.49": 2
+    },
+    "notes": "CDS C1/C9/C11/C12 (fall 2025). Only 154 enrolled students (3%) submitted SAT, so SAT percentiles describe a small self-selected group. Of 983 admitted international first-years only 12 enrolled (C1 residency table). The 1.0-1.99 GPA band is under 1% and omitted. No waitlist; no early decision or early action. Student-faculty ratio is I-2 (fall 2025, 19 to 1)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1010,
+      1175,
+      1280
+    ],
+    "SAT_ERW": [
+      520,
+      590,
+      650
+    ],
+    "SAT_MATH": [
+      483,
+      565,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      27
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 12096,
+    "tuition_out_of_state_usd": 29568,
+    "tuition_intl_usd": 29568,
+    "required_fees_usd": 1343,
+    "room_board_usd": 14432,
+    "books_usd": 900,
+    "other_usd": 4500,
+    "intl_need_aid_awarded": 129,
+    "intl_avg_award_usd": 9320,
+    "notes": "CDS G1/G5 (2026-27): nonresident tuition equals out-of-state ($29,568); room and board = housing $7,790 + food $6,642; other_usd = other expenses $2,000 + transportation $2,500. G4: 20% of full-time undergraduates pay more because of program fees. H6: only institutional non-need-based aid is available to nonresidents; 129 received it (avg $9,320)."
+  }
+}

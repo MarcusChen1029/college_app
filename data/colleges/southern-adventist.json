@@ -1,0 +1,79 @@
+{
+  "slug": "southern-adventist",
+  "name": "Southern Adventist University",
+  "short_name": "Southern",
+  "state_region": "TN",
+  "city": "Collegedale",
+  "latitude": 35.048254,
+  "longitude": -85.052088,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.southern.edu",
+  "admissions_url": "https://www.southern.edu/undergrad/admissions/general-admissions.html",
+  "ipeds_unit_id": 221661,
+  "undergrad_enrollment": 2929,
+  "intl_undergrads": 184,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions & Enrollment survey, fall 2024 entering class (ADM2024), via the Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=221661&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "NCES College Navigator - Southern Adventist University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=221661",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=221661",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 2907,
+    "admits": 1904,
+    "enrolled": 703,
+    "pct_submit_sat": 46,
+    "pct_submit_act": 60,
+    "notes": "Baseline from IPEDS fall 2024 (no Common Data Set found on southern.edu): 2,907 applied, 1,904 admitted (65%), 703 enrolled (37% yield). College Navigator: SAT/ACT 'not required, but considered'; GPA and secondary school record required; English proficiency test required. SAT submitted by 321 enrolled first-time students (46%), ACT by 420 (60%). International applicant counts, GPA distribution and residency splits are not published."
+  },
+  "scores": {
+    "SAT_ERW": [
+      530,
+      590,
+      660
+    ],
+    "SAT_MATH": [
+      490,
+      550,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  }
+}

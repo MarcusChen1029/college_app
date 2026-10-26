@@ -1,0 +1,186 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Nebraska - International Student Admission Requirements",
+      "url": "https://admissions.unl.edu/apply/admission-requirements/international/",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Nebraska - International Dates & Deadlines",
+      "url": "https://admissions.unl.edu/apply/international-dates-deadlines/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Nebraska - First-Year College Student Admission Requirements",
+      "url": "https://admissions.unl.edu/apply/admission-requirements/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "iep": {
+      "kind": "admissions_site",
+      "title": "Nebraska - Intensive English Program (conditional admission)",
+      "url": "https://admissions.unl.edu/apply/admission-requirements/intensive-english-program/",
+      "accessed": "2026-10-26"
+    },
+    "amb": {
+      "kind": "financial_aid_site",
+      "title": "Nebraska - Global Ambassador Scholarship",
+      "url": "https://admissions.unl.edu/cost/scholarships/global-ambassador-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "del": {
+      "kind": "financial_aid_site",
+      "title": "Nebraska - Global Delegate Scholarship",
+      "url": "https://admissions.unl.edu/cost/scholarships/global-delegate-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "lau": {
+      "kind": "financial_aid_site",
+      "title": "Nebraska - Global Laureate Scholarship",
+      "url": "https://admissions.unl.edu/cost/scholarships/global-laureate-scholarship/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT/SAT are not required for general admission; scores may be required for the College of Architecture and the College of Engineering, and domestic scholarship awards can use the highest composite score.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 45,
+    "notes": "Admission is granted to international applicants who meet the core coursework requirements (4 units upper-level math, 3 natural sciences, 3 social sciences, 4 English/native language) and demonstrate English proficiency; the first-year page also sets performance routes (3.0 GPA, or ACT 20, or SAT 1040, or top half of class) for guaranteed admission, and other applicants go to committee review. Required documents in MyRED: final secondary school transcript signed and stamped by a principal, school certificate or diploma, and English scores. $45 fee by credit card. Late applications may be waitlisted. Some colleges (Architecture, Education, Engineering, Journalism) set higher English minimums; applicants not in those colleges can enter via the Explore Center.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-11-01",
+      "notify": "2027-02-11",
+      "label": "Priority admission deadline, fall 2027",
+      "notes": "Applying by Nov. 1 gets scholarship offers on Feb. 11, 2027; later applicants are notified on a rolling basis from Feb. 25. Application opens Aug. 1.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "Final application and enrollment deposit deadline, fall 2027",
+      "notes": "Late applications may be waitlisted behind applicants who meet assured admission requirements. International applicants must submit all materials by May 1 to be considered for academic scholarships.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "All materials due for international academic scholarship consideration",
+      "src": "dates"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-15",
+      "label": "Final deadline to submit English proficiency scores (fall 2027)",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for graduates of a U.S. high school or applicants with 30 transferable semester hours from a U.S. college. Applicants who do not meet the English requirement can be conditionally admitted through the Intensive English Program (IEP): recommended minimum TOEFL 35, IELTS 5.0 or Duolingo 70; progress to full admission is reviewed at the end of each semester; IEP application deadlines May 1 (summer/fall) and Dec. 1 (spring), $45 fee. Also accepted: ACT English 20, SAT Reading and Writing 520 (SAT Writing 26), and the Nebraska English Language Test (ELT) 80 with a 78 subscore (85 for Journalism). PTE and Cambridge are not listed.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "subs": {
+        "each_section": 18
+      },
+      "notes": "Old 0-120 scale. College minimums: Engineering 80, Journalism and Mass Communications 100. Paper-based test: 550 with 55 subscores (Journalism 600).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "subs": {
+        "each_section": 4.0
+      },
+      "notes": "New 1-6 scale, general admission.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_section": 6.0
+      },
+      "notes": "Journalism and Mass Communications requires 7.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "subs": {
+        "each_section": 105
+      },
+      "notes": "Architecture and Education and Human Sciences require 120.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "All admitted international students are automatically reviewed for Global tuition scholarships (holistic, no separate application; must meet the English requirement for unconditional admission, pay the enrollment deposit by May 1 and have all materials in by then): Global Laureate $15,000/yr (up to $60,000), Global Ambassador $10,000/yr (up to $40,000), Global Delegate $4,000/yr (up to $16,000), for up to four years with a 3.0 GPA and 24 credits per year. The need-based status of aid for nonresidents is not confirmed from the sources reviewed.",
+    "src": "amb"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6877",
+      "note": "Nebraska SAT code.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "2482",
+      "note": "Nebraska ACT code.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6877",
+      "note": "Nebraska TOEFL (ETS) code.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Submit the test report number (TRF) to admissions@unl.edu with your NUID and request results from the testing center; no code.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

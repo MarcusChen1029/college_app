@@ -1,0 +1,73 @@
+{
+  "slug": "ut-arlington",
+  "name": "The University of Texas at Arlington",
+  "short_name": "UT Arlington",
+  "state_region": "TX",
+  "city": "Arlington",
+  "latitude": 32.729718,
+  "longitude": -97.11296,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uta.edu",
+  "admissions_url": "https://www.uta.edu/admissions",
+  "ipeds_unit_id": 228769,
+  "undergrad_enrollment": 32545,
+  "intl_undergrads": null,
+  "student_faculty_ratio": 23,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - The University of Texas at Arlington (admissions fall 2024, test scores, expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228769",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 24623,
+    "pct_submit_sat": 70.0,
+    "pct_submit_act": 12.0,
+    "notes": "Baseline from IPEDS College Navigator (fall 2024 entering class); no Common Data Set could be found on uta.edu. Navigator gives 24,623 applicants and 80% admitted (79% of men, 81% of women) but no admitted or enrolled counts, so those are left null; 26% of admitted students enrolled. SAT scores were submitted by 3,638 enrolled first-timers (70%) and ACT by 599 (12%). SAT total, GPA, residency and international splits come from the CDS and are not added."
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      560,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      22,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 11950,
+    "tuition_out_of_state_usd": 29582,
+    "room_board_usd": 11228,
+    "books_usd": 1000,
+    "other_usd": 5384,
+    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; on-campus food and housing $11,228. Newer 2026-27 charges are on UTA's Student Accounts tuition charts and were not read."
+  }
+}

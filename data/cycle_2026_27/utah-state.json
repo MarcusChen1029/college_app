@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "USU - International undergraduate admissions: steps to apply",
+   "url": "https://www.usu.edu/admissions/international/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "USU - International undergraduate English requirements",
+   "url": "https://www.usu.edu/admissions/international/english",
+   "accessed": "2026-10-26"
+  },
+  "costs": {
+   "kind": "financial_aid_site",
+   "title": "USU - Paying for school as an international undergraduate (Logan)",
+   "url": "https://www.usu.edu/admissions/international/undergraduate-costs.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The international admissions steps page asks for transcripts (minimum GPA 2.7) and English proof; SAT and ACT appear there only as ways to show English (SAT EBRW 500, ACT English 18). CDS C8A marks SAT/ACT as not required for admission but considered if submitted.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "fee_waiver": false,
+  "notes": "USU undergraduate application with a $50 non-refundable fee (no waivers for international undergraduates). Official transcripts for the last three years of high school with certified English translations; minimum GPA 2.7 (some majors require more); English proficiency scores sent at least a month before the deadline. Admitted students pay a $200 enrollment deposit before the I-20 process and must show a year of funds. F-1 students must take most classes face-to-face on the Logan main campus. The CDS shows no essay, interview or extracurricular consideration.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Fall priority application deadline (fall 2027 entry)",
+   "notes": "Printed as March 01 without a year (treated as fall 2027). No later final fall deadline is listed on the page; late applications may be processed for the next available semester. Spring priority deadline is Oct. 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-04-01",
+   "label": "Fall priority enrollment deposit ($200)",
+   "notes": "Spring deposit deadline is Nov. 1. The $200 deposit is required before starting the I-20 process.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived with at least 3 years of secondary education completed in English with satisfactory English courses (ESL excluded), or at least 24 credits of English-medium coursework at an accredited US institution (ESL excluded); applicants who think they qualify can file an English Language Proficiency Appeal after applying. Other accepted proof: MET 52, SAT EBRW 500, ACT English 18. Scores older than two years are not accepted and must be sent by the testing agency (IELTS, MET and Cambridge student copies can be uploaded). PTE is not mentioned on the page. No conditional-admission or ESL pathway is described on the pages reviewed.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Tests taken before 2026-01-21; Home Edition accepted. The page does not label the scale.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Tests taken on or after 2026-01-21: at least 4.0 on the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "IELTS Academic: 6.0 overall with at least 5.0 in each subscale. General Training not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency score of 169.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "intl_extra_fees_usd": 250,
+  "other_usd": 8442,
+  "total_coa_usd": 46062,
+  "notes": "International undergraduate estimate for Fall 2026 and Spring 2027 (9 months, Logan): tuition and fees $29,222, international student fee $250, living expenses $8,148, personal expenses $8,442, total $46,062. The $29,222 tuition-and-fees estimate is higher than CDS tuition plus required fees ($25,717 + $793), and the page does not itemize the difference (it notes differential tuition and program fees may apply). Proof of one year of funds is required for the I-20.",
+  "src": "costs"
+ },
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "The international undergraduate scholarship list shows the Afton B. Tew Scholarship ($1,000, 1-4 years), the Kim Nam Kyun Scholarship ($2,000, 1-4 years, must be admitted to apply), an International Nonresident Tuition Waiver (HB118, amount varies, 1-4 years) and an International Alumni Legacy Nonresident Waiver (amount varies, 1 year). CDS H6 checks both need-based and non-need-based institutional aid for nonresidents and reports 1,564 recipients averaging $15,299, but that count is far larger than the 218 nonresident undergraduates in B2, so it is not used as an international figure. Eligibility rules for each award were not reviewed.",
+  "src": "costs"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4857",
+   "note": "USU institution code for SAT.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4276",
+   "note": "USU institution code for ACT.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "4857",
+   "note": "USU institution code for TOEFL; the English page gives 4857.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "Upload the student copy of the score report to the online application; no institution code is listed.",
+   "src": null
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Send results to USU from the Duolingo portal; no institution code is listed.",
+   "src": null
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Admits about 92% of first-year applicants; D+ rather than D because USU is a large research university with a wide program range. Editorial judgment, not a ranking.",
+  "engineering": "Editorial judgment: civil, electrical and mechanical engineering bachelor's degrees awarded (IPEDS completions) at a research university; placed in the 41-100 band, not a published ranking.",
+  "biology_life_sci": "Editorial judgment: large life, agricultural and natural-resource programs at a land-grant research university; placed in the 41-100 band, not a published ranking."
+ }
+}

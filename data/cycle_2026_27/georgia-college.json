@@ -1,0 +1,178 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Georgia College - First-Year Student admissions (Common App, Early Action, fee, decision schedule)",
+   "url": "https://www.gcsu.edu/admissions/first-year",
+   "accessed": "2026-10-26"
+  },
+  "test": {
+   "kind": "admissions_site",
+   "title": "Georgia College - SAT/ACT Test Information (score use, minimums, codes)",
+   "url": "https://www.gcsu.edu/admissions/satact-test-information",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Georgia College International Admissions - International Applications (undergraduate requirements, English proficiency)",
+   "url": "https://www.gcsu.edu/international/requirements",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Georgia College International Admissions - Application Checklist/Deadlines (due dates, score codes)",
+   "url": "https://www.gcsu.edu/international/application-checklist-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Georgia College International Admissions - Tuition/Funding/Scholarship Information (2025-26 estimates, ISS)",
+   "url": "https://www.gcsu.edu/international/tuition-fees",
+   "accessed": "2026-10-26"
+  },
+  "oos": {
+   "kind": "admissions_site",
+   "title": "Georgia College - Out of State Students (first-time freshman deadline, Distinguished Scholars Award)",
+   "url": "https://www.gcsu.edu/admissions/out-state",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "SAT or ACT (or Classic Learning Test) is required; USG minimums are SAT 480 EBRW / 440 Math or ACT 17 English / 17 Math, and meeting them does not guarantee admission. Superscoring is used within SAT or ACT. International applicants with no transfer credit must submit SAT or ACT unless a waiver is granted; waived students still need English proficiency. Self-reported scores are accepted for first review; official scores are due by April 1 after admission. Admitted-student profile on the site: SAT 1110 / 1196 / 1270 (25th / avg / 75th, EBRW+Math), ACT 23 / 26 / 29, GPA 3.50 / 3.73 / 3.93.",
+  "src": "test"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "supplemental_essays": false,
+  "app_fee_usd": 50,
+  "notes": "Fall 2027 first-year applications go exclusively through Common App; the Common App essay (one of seven prompts) is required. One or two teacher/counselor letters and a resume are highly recommended, not required; no specific recommendation form. International applicants also submit a Declaration of Finances with original bank documents, official transcripts with English translations (the International Education Center evaluates them, an outside NACES evaluation only if documents cannot be verified), and may attach an optional International Student Scholarship application.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-10-15",
+   "label": "Early Action (fall 2027 entry)",
+   "notes": "Page prints Oct 15 with no year; the fall 2027 application opened Aug 1, so this is Oct 15, 2026 (already past as of Oct 26, 2026). Application, $50 fee, transcript and essay due Oct 15; test scores and optional materials accepted through Oct 25. Non-binding; early applicants are considered for the President's Scholarship Competition (early December). Decisions are posted by late November (no exact date published).",
+   "note": "Decisions posted by late November",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "International / out-of-state fall first-year recommended deadline (fall 2027 entry)",
+   "notes": "International Admissions lists April 1 for the fall semester as the recommended submission date (no year printed; treated as fall 2027) and states that admission is rolling, with first-year applicants urged to apply early because freshman space is limited. The out-of-state page also lists April 1 as the first-time freshman application deadline. Monthly decisions begin in January.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-01",
+   "label": "Preference date for incoming-freshman academic scholarships",
+   "notes": "International page: students admitted by Feb 1 for fall are automatically considered for most academic scholarships; those who apply by Nov 1 are given preference. The page prints no year; shown as Nov 1, 2026 for fall 2027 entry (already past as of Oct 26, 2026).",
+   "src": "cost"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International undergraduate applicants show English proficiency through one of: TOEFL iBT 69, IELTS 6.0, SAT Reading+Writing 480, ACT English 17, PTE Academic 53, or another score approved by the USG Board of Regents. Duolingo is not listed. The site does not describe a conditional-admission or ESL pathway for first-year applicants.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "For tests taken before Jan 21, 2026. Institution code 5252.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "For tests taken on or after Jan 21, 2026 (new 1-6 scale, as stated on the page).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Student Scholarships (ISS) are a full or one-half waiver of out-of-state tuition, based on academic ability, extracurricular involvement and financial need; apply with the ISS section of the international application, and a limited number are competed for once a year after enrollment. A Distinguished Scholars Award covering the out-of-state tuition difference (about $20,326 per year for fall 2026) is advertised to non-Georgia residents with a 3.64 high school GPA, SAT 1179 or ACT 25; the page does not say whether international students qualify. The dollar value of an ISS waiver is not published separately.",
+  "src": "cost"
+ },
+ "cost": {
+  "year": "2025-2026",
+  "tuition_intl_usd": 30892,
+  "room_board_usd": 12732,
+  "books_usd": 2000,
+  "other_usd": 1106,
+  "total_coa_usd": 49728,
+  "notes": "International estimate (tuition and fees 30,892 for 7+ credits per semester; room and meals 12,732; books 2,000; health insurance 2,998; other 1,106; total 49,728). In-state and domestic out-of-state figures not entered because a single clear 2025-26 page was not found.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5252",
+   "note": "SAT/AP/CLEP code 5252 (admissions test page).",
+   "src": "test"
+  },
+  "act": {
+   "code": "0828",
+   "note": "ACT code 0828.",
+   "src": "test"
+  },
+  "toefl": {
+   "code": "5252",
+   "note": "ETS institution code 5252, per the International Admissions checklist.",
+   "src": "dates"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code; request the report from the IELTS test center where you took the exam.",
+   "src": "dates"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Duolingo English Test is not listed among accepted English proficiency options for undergraduate applicants.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Public liberal arts university that describes itself as one of the three most selective publics in Georgia and a top-five public in U.S. News's Regional South category; not a nationally ranked research university."
+ }
+}

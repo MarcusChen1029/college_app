@@ -1,0 +1,145 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Bethel University (TN) - International Students (admissions)",
+      "url": "https://www.bethelu.edu/admissions/international",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Bethel University (TN) - International student tuition and aid (2026-2027)",
+      "url": "https://www.bethelu.edu/admissions/international/tuition-aid",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Bethel University (TN) - First-Year Students admissions",
+      "url": "https://www.bethelu.edu/admissions/first-year",
+      "accessed": "2026-10-26"
+    },
+    "nurs": {
+      "kind": "other",
+      "title": "Bethel University (TN) - Nursing, Direct Entry B.S.N.",
+      "url": "https://www.bethelu.edu/academics/degrees-and-programs/nursing-program",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test optional for applicants with a weighted GPA of 2.25 or above; applicants below 2.25 must submit ACT or SAT. Writing is not considered and tests are superscored.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "Non-refundable $30 fee; apply on Bethel's online application or the Common App. Official transcripts must come directly from the high school. The admissions pages are dated to the 2025-26 cycle (applications open Aug. 1, 2025), so dates for fall 2027 are assumed to repeat.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-31",
+      "label": "Application deadline, fall 2027 entry",
+      "notes": "Fall July 31, spring Dec. 15, summer May 15 (same dates on the international page). Printed for the 2025-26 cycle with no fall 2027 date, so this assumes the date repeats. The page also lists Dec. 1, 2025 as the 'Application Deadline for Top Scholarships'; the equivalent date for fall 2027 entry is not yet published.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International page lists minimums for TOEFL (paper 513, computer-based 183, internet 65), iTEP 3.6, IELTS 5 overall with 5 in each area, and Duolingo 80 or above. PTE is not listed. If TOEFL is not available, the page describes a video and audio interview as an alternative. Conditional admission / ESL pathway is not described.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 65,
+      "notes": "Internet-based minimum 65 (paper 513, computer-based 183). No 1-6 scale minimum is given.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "subs": {
+        "each_section": 5.0
+      },
+      "notes": "5 overall with 5 in each exam area.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 80,
+      "notes": "80 or above.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "tuition_usd": 20160,
+    "tuition_intl_usd": 20160,
+    "room_board_usd": 11520,
+    "intl_extra_fees_usd": 2114,
+    "total_coa_usd": 31680,
+    "notes": "International in-person 2026-27: tuition for 12-18 hours $10,080 per semester ($20,160 per year); residence hall and meal plan $5,760 per semester ($11,520 per year; varies by hall and plan). Page estimate $31,680 per year excludes course fees and books (books $37 per credit hour, opt-out possible). Required international student insurance $2,114 per year. 2024-25 College Navigator listing was $18,712 tuition and fees."
+  },
+  "aid": {
+    "intl_aid_policy": null,
+    "merit_scholarships": true,
+    "notes": "The international tuition/aid page lists first-year academic merit awards of $4,000-$12,000 per year (Presidential $12,000, Trustee $10,000, Provost $8,000, Deans $6,000, Bethel Honor $4,000); a 3.0 cumulative GPA or ACT 20 (if submitted) is considered competitive. Hendrix Scholarship (full tuition/fees/room/meals or tuition/fees) needs 3.5 GPA or ACT 24/SAT 1190; its listed deadline was Dec. 1, 2025. Athletic and Renaissance (audition) scholarships also exist. Need-based aid for international students is not described. Awards cover fall and spring for up to ten semesters.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Nursing, Direct Entry B.S.N.",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "First-year direct entry needs a 3.0 high school GPA or ACT 20 / SAT 1030. The page does not state enrollment caps or whether international students are eligible, so confirm with admissions."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the admissions pages found.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the admissions pages found.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the admissions pages found.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not listed on the international page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

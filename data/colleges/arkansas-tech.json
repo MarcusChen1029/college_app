@@ -1,0 +1,82 @@
+{
+  "slug": "arkansas-tech",
+  "name": "Arkansas Tech University",
+  "short_name": "ATU",
+  "state_region": "AR",
+  "city": "Russellville",
+  "latitude": 35.296091,
+  "longitude": -93.137172,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.atu.edu",
+  "admissions_url": "https://www.atu.edu/admissions/",
+  "ipeds_unit_id": 106467,
+  "undergrad_enrollment": 8279,
+  "intl_undergrads": 93,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Arkansas Tech University Common Data Set 2025-2026 (PDF, ATU Institutional Research 'CDS_fall_2025')",
+      "url": "https://www.atu.edu/ir/docs/cds/CDS_fall_2025.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 3797,
+    "admits": 3701,
+    "enrolled": 1225,
+    "in_state_applicants": 3450,
+    "in_state_admits": 3368,
+    "out_state_applicants": 340,
+    "out_state_admits": 327,
+    "intl_applicants": 7,
+    "intl_admits": 6,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 87,
+    "gpa_avg": 3.42,
+    "pct_reporting_gpa": 98.29,
+    "gpa_distribution": {
+      "4.0": 14.87,
+      "3.75-3.99": 20.76,
+      "3.50-3.74": 17.28,
+      "3.25-3.49": 13.04,
+      "3.00-3.24": 10.88,
+      "2.50-2.99": 14.53,
+      "2.0-2.49": 7.31,
+      "1.0-1.99": 1.33
+    },
+    "notes": "CDS C1 (Fall 2025): residency rows (in-state / out-of-state / international / unknown) sum to the totals (3,797 applied, 3,701 admitted, 1,225 enrolled). Only 7 first-year international applicants (6 admitted, 6 enrolled) in this CDS, so the international admit rate is not meaningful. C9: 3.00% (33 students) submitted SAT and 87.00% (1,067) submitted ACT. The SAT composite row (25th/50th/75th = 900/900/1160) looks like a data-entry slip (50th equals 25th), so SAT_TOTAL is omitted. The PDF stores text in an unreadable font encoding; numbers were read by page coordinates and cross-checked (GPA bands sum to 99.99%). C7 factor checkboxes could not be read, so 'factors' is omitted. Undergraduate enrollment is the B1 'Total Undergraduates' figure (8,279; 5,277 degree-seeking, the rest mostly non-degree/dual-credit); intl_undergrads is the B2 nonresident total (93)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      510,
+      570
+    ],
+    "SAT_MATH": [
+      445,
+      510,
+      585
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  }
+}

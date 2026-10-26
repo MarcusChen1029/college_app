@@ -1,0 +1,186 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "University of Idaho - International student admissions (requirements, English proficiency, deadlines)",
+   "url": "https://www.uidaho.edu/international/admissions",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "University of Idaho - First-year student admissions (requirements, school codes)",
+   "url": "https://www.uidaho.edu/admissions-apply/first-year-students",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "University of Idaho - Admissions dates and deadlines",
+   "url": "https://www.uidaho.edu/admissions-apply/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "University of Idaho - Scholarships for international students (Invitation to Idaho, #YouAreWelcomeHere)",
+   "url": "https://www.uidaho.edu/financial-aid/scholarships/international-scholarship",
+   "accessed": "2026-10-26"
+  },
+  "oos": {
+   "kind": "financial_aid_site",
+   "title": "University of Idaho - Out-of-state scholarships (WUE, Invitation to Idaho eligibility)",
+   "url": "https://www.uidaho.edu/financial-aid/scholarships/out-of-state-scholarship",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "University of Idaho - Cost of attendance 2026-27 (incl. international student costs)",
+   "url": "https://www.uidaho.edu/financial-aid/cost-of-attendance",
+   "accessed": "2026-10-26"
+  },
+  "alcp": {
+   "kind": "admissions_site",
+   "title": "University of Idaho - American Language and Culture Program (intensive English)",
+   "url": "https://www.uidaho.edu/international/admissions/american-language-culture-program",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-year applicants with a 3.00+ cumulative unweighted GPA are admitted automatically and test scores are not required. Applicants with a 2.60-2.99 GPA must submit ACT/SAT scores or opt in to the Vandal Gateway Program; 2.30-2.59 are admitted through Vandal Gateway regardless of scores. International first-year applicants need at least a 2.5 GPA on the U.S. scale (converted by U of I).",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply through U of I's own application (the fee is $50 for international students, paid in the portal). International first-year students need a 2.5 GPA on a 4.0 scale as converted by the Admissions Office plus admissibility to university study in the home country; a Certificate of Financial Responsibility, bank statement and passport copy are required for the I-20. CDS (fall 2023 edition) rated GPA and test scores 'very important' and every other factor not considered.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International fall 2027 application date (recommended latest)",
+   "notes": "U of I admits on a rolling basis with no hard deadline, but international applicants should apply at least three months before the start and no later than May 1 (fall), Oct 1 (spring) or Mar 1 (summer) to leave time for evaluation and the visa. The fall 2027 application opens in August 2026.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived with a previous degree from an accredited U.S. institution, or at the Admissions Office's judgment after passed English classes at U.S. institutions. Waiver requests are also accepted from citizens of listed English-speaking countries (e.g. UK, Ireland, Australia, Canada and several others; some require a school letter showing English medium of instruction). Other accepted proofs: SAT EBRW 550+, Cambridge C1 Advanced or C2 Proficiency pass, Cambridge O Levels pass, ELS Level 112, SCEL Level 140, Lewis-Clark State Institute of Intensive English bridge program, or completing U of I's ALCP advanced level. Tests must be less than 2 years old.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "Tests taken before Jan 21, 2026 (0-120 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Tests taken after Jan 21, 2026 (1-6 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "Pearson PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "A pass on C1 Advanced or C2 Proficiency (the page gives no numeric score).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Invitation to Idaho is awarded automatically (no application) to new international students admitted with a 3.0+ GPA who enroll full time: it lowers the published international tuition ($29,016 on the scholarship page) to $13,294, renewable 3 more years with a 2.5 U of I GPA. Those who do not qualify can apply for the #YouAreWelcomeHere scholarship (50% of tuition for up to four years; essay or video; 3.0 GPA to renew), which cannot be combined with Invitation to Idaho. International students cannot receive U.S. federal aid. English pathway: the on-campus American Language and Culture Program (ALCP); completing its advanced level satisfies the English requirement.",
+  "src": "aid"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 9824,
+  "tuition_out_of_state_usd": 29300,
+  "tuition_intl_usd": 29300,
+  "intl_extra_fees_usd": 760,
+  "room_board_usd": 12995,
+  "books_usd": 1260,
+  "other_usd": 6712,
+  "total_coa_usd": 50267,
+  "notes": "U of I 2026-27 undergraduate budget: tuition and fees are combined ($9,824 in-state, $29,300 non-resident, $13,538 for Invitation to Idaho/WUE recipients). total_coa_usd is the non-resident figure; with Invitation to Idaho it is $34,505. International students also pay an international student fee ($380 per semester, entered as $760) and required health insurance (about $2,412 a year), which are not in that total. Other = transportation $2,874 plus personal $3,838.",
+  "src": "coa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "4843",
+   "note": "U of I school code for SAT.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "0928",
+   "note": "U of I school code for ACT.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is listed on U of I's international admissions page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Offered inside a research-active engineering college; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "engineering": "College of Engineering at Idaho's only Carnegie R1 university (per U of I); placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "biology_life_sci": "U of I has a College of Agricultural and Life Sciences; placed C as a solid regional program. Editorial judgment, not a ranking."
+ }
+}

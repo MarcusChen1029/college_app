@@ -1,0 +1,132 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "EMU - Information for international undergraduate students (deadlines)",
+   "url": "https://www.emich.edu/admissions/international/undergraduates/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "EMU - Application process for international undergraduate students",
+   "url": "https://www.emich.edu/admissions/international/undergraduates/how-to-apply.php",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "EMU - Undergraduate Students Estimated Cost of Attendance and international scholarships",
+   "url": "https://www.emich.edu/admissions/international/costs-scholarships/undergraduate-cost-attendance.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "IPEDS fall 2024 lists SAT/ACT as 'not required, but considered (test optional)'. The international scholarship has a higher award for applicants who submit a 25+ ACT or 1200+ SAT. SAT EBRW 480 or ACT English 19 can be used to meet the English requirement.",
+  "src": "aid"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Apply through EMU's own application (app.emich.edu). Decisions can be made on academic performance, but admission is not final until the English requirement is met and the I-20 process is complete. Application fee, GPA minimums and document lists were not read: emich.edu blocks automated access, and these notes come from search-result excerpts of the EMU pages, so verify on the page.",
+  "src": "eng"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-24",
+   "label": "International fall application deadline (fall 2027)",
+   "notes": "Search-result excerpt of EMU's international undergraduate deadlines: fall 2027 applications due June 24, 2027 and financial documents for the I-20 due July 8, 2027 (winter 2027: Nov 11, 2026). EMU's general undergraduate pages describe rolling admission; confirm the date with international admissions.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "SAT EBRW 480 or ACT English 19 can replace an English test. Waivers depend on the country where the education took place, regardless of the language of instruction. Admission can be offered before the English requirement is met, but it is not finalized until it is met. The pages read do not name a specific ESL or pathway program.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Indicator also accepted. Michigan English Test (MET) 53 is also accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Per EMU's cost page (read via search excerpt): scholarships are awarded at admission with no extra application. 3.0+ GPA with 25+ ACT or 1200+ SAT gets $5,000 per year tuition plus a $2,000 housing award; 3.0+ GPA with no scores gets $3,000 plus the $2,000 housing award. EMU also says it does not charge international undergraduates non-resident tuition, and a 4WARD Graduation Scholarship (3.0+ GPA) has EMU pay tuition in years 3 and 4 after two years at the current rate. Verify the current terms on the page.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "EMU's international pages read did not print an SAT code; look it up in the College Board code search.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "EMU's international pages read did not print an ACT code; look it up at act.org.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The EMU pages read did not print a TOEFL code; EMU accepts a copy of the official result emailed to admissions for verification.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

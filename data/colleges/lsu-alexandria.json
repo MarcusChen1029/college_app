@@ -1,0 +1,90 @@
+{
+  "slug": "lsu-alexandria",
+  "name": "Louisiana State University of Alexandria",
+  "short_name": "LSUA",
+  "state_region": "LA",
+  "city": "Alexandria",
+  "latitude": 31.178616,
+  "longitude": -92.414409,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.lsua.edu/",
+  "admissions_url": "https://www.lsua.edu/admissions",
+  "ipeds_unit_id": 159382,
+  "undergrad_enrollment": 6815,
+  "intl_undergrads": 71,
+  "student_faculty_ratio": 33,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 admissions and test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159382",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159382",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159382",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 706,
+    "pct_submit_sat": 4,
+    "pct_submit_act": 99,
+    "notes": "Baseline from IPEDS (fall 2024 entering class): 959 applicants and a 92% admit rate (67% of those admitted enrolled). The admitted count is left null because IPEDS gives only the rounded percentage. No Common Data Set was found for LSUA; international applicant/admit counts, residency splits and GPA are not available. Undergraduate enrollment (6,815) is the fall 2024 IPEDS total and includes many part-time, dual-enrollment and online students. SAT percentiles rest on only 26 submitters; 580 submitted ACT. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "admits": 654,
+    "enrolled": 482
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      480,
+      520,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      19,
+      22
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      17,
+      21
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 7050,
+    "tuition_out_of_state_usd": 14650,
+    "books_usd": 1200,
+    "room_board_usd": 9598,
+    "other_usd": 3332,
+    "total_coa_usd": 28780,
+    "notes": "College Navigator 2024-25 (tuition and fees): in-state $7,050, out-of-state $14,650; on-campus total expenses $21,180 in-state and $28,780 out-of-state (total shown is out-of-state). Current 2026-27 per-semester figures are in the cycle file."
+  }
+}

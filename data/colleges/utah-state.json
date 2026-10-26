@@ -1,0 +1,117 @@
+{
+  "slug": "utah-state",
+  "name": "Utah State University (Logan)",
+  "short_name": "Utah State",
+  "state_region": "UT",
+  "city": "Logan",
+  "latitude": 41.740748,
+  "longitude": -111.81391,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.usu.edu",
+  "admissions_url": "https://www.usu.edu/admissions/",
+  "ipeds_unit_id": 230728,
+  "undergrad_enrollment": 26629,
+  "intl_undergrads": 218,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Utah State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.usu.edu/oda/files/common-data-sets/CDS2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 21235,
+    "admits": 19562,
+    "enrolled": 4594,
+    "pct_submit_sat": 11,
+    "pct_submit_act": 72,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 99,
+    "gpa_distribution": {
+      "4.0": 12.5,
+      "3.75-3.99": 36.5,
+      "3.50-3.74": 11.6,
+      "3.25-3.49": 18.4,
+      "3.00-3.24": 8.8,
+      "2.50-2.99": 3.2,
+      "2.0-2.49": 8.5,
+      "1.0-1.99": 0.5
+    },
+    "notes": "CDS C1 (fall 2025 first-time first-year): 21,235 applied, 19,562 admitted (92.1%), 4,594 enrolled (institution-wide CDS). The residency table (in-state / out-of-state / international) is blank in the CDS, so no international applicant or admit counts are available; B2 shows 22 nonresident first-year students enrolled. GPA distribution is copied exactly as printed in C11 (the 2.0-2.49 band shows 8.5%, which looks high next to a 3.6 average, but it is the published figure). Undergraduate enrollment is B1 'Total Undergraduates' (26,629 incl. part-time and non-degree; 20,236 degree-seeking); 218 nonresidents is the B2 total column (107 degree-seeking). No early decision/action; no waitlist; student-to-faculty ratio 20:1 (I-2). C7 lists GPA and test scores as very important even though C8A marks SAT/ACT as not required but considered."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1090,
+      1190,
+      1310
+    ],
+    "SAT_ERW": [
+      540,
+      610,
+      670
+    ],
+    "SAT_MATH": [
+      530,
+      580,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      19,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; scores are also used for advising (C8D) and placement (C8G)."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 8272,
+    "tuition_out_of_state_usd": 25717,
+    "tuition_intl_usd": 25717,
+    "required_fees_usd": 793,
+    "room_board_usd": 9746,
+    "books_usd": 856,
+    "notes": "CDS G1/G5 first-year 2026-27: in-state tuition $8,272, out-of-state and nonresident $25,717, required fees $793, on-campus food and housing $9,746, books $856, transportation $2,648, other $1,628. Tuition varies by program (G4 = yes)."
+  }
+}

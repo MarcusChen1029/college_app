@@ -1,0 +1,157 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Bellarmine University - Application Deadlines",
+   "url": "https://www.bellarmine.edu/admissions/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Bellarmine University - First-Year Admission Requirements",
+   "url": "https://www.bellarmine.edu/admissions/undergraduate/requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "to": {
+   "kind": "admissions_site",
+   "title": "Bellarmine University - Test-Optional Admission",
+   "url": "https://www.bellarmine.edu/admissions/test-optional-admission/",
+   "accessed": "2026-10-26"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "Bellarmine University - Undergraduate Admission (First Year / International requirements)",
+   "url": "https://www.bellarmine.edu/admissions/undergraduate/index.php",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Bellarmine University - Admission Requirements for International Students",
+   "url": "https://www.bellarmine.edu/international-services/admission-requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Bellarmine University - Institutional Assistance (merit scholarships)",
+   "url": "https://www.bellarmine.edu/financial-aid/scholarships-funding/institutional.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: applicants choose whether to submit SAT/ACT, and merit scholarships do not require scores. Exception: international students whose native language is not English and who attend high school outside the U.S. must submit TOEFL, IELTS or MELAB (or may submit an ACT/SAT in place of them). Middle-50% of admitted students who submit scores: ACT 22-27, SAT 1060-1260; median admitted GPA 3.7.",
+  "src": "to"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply through Common App or the Bellarmine App; the deadlines page says early action applicants pay no application fee and online applicants have the fee waived. International applicants must also send a course-by-course credential evaluation (The Evaluation Company or WES for non-U.S. schools), proof of funding for one academic year, and at least one letter of recommendation from a teacher or counselor who knows their language skills. Minimum high school units: 4 English, 3 math, 3 social studies/history, 2 lab sciences, 2 foreign language. A full-tuition scholarship also needs a recommendation letter.",
+  "src": "ug"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action (fall 2027 entry)",
+   "notes": "Page prints Nov 1 with no year; treated as Nov 1, 2026 for fall 2027 entry (the year is inferred, not printed). Early action applicants pay no fee and are notified of institutional scholarships in November.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Bellarmine Scholars and Fellows (full-ride / full-tuition) application",
+   "notes": "Page prints Dec 1 with no year (treated as Dec 1, 2026). Five Scholar awards (four-year full ride) and five Fellow awards (four-year full tuition); applicants must be admitted before Dec 1 to apply. Whether international students are eligible is not stated.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision requested date (fall 2027 entry)",
+   "notes": "The page 'requests' standard applications by Feb 1 (no year printed; treated as Feb 1, 2027). The 2025-26 CDS reports rolling notification and an Aug 15 closing date. No separate international deadline is published.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Met without a test if the student earned a secondary diploma in a TOEFL-exempt country, or completed at least one year of full-time university study (24 credit hours, 2.0 GPA) in an exempt country; 'language training at an approved center' is also listed as evidence. Students with outstanding English skills may instead submit ACT 21 composite or SAT 1060. Some programs, such as nursing, may set higher language minimums; check the program page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "The page prints 'Internet-based test 79 or 80' (paper-based 550, computer-based 213); 80 is shown as the safer figure. MELAB 78 is also accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Results are sent with a video interview and writing sample.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Bellarmine says 100% of incoming first-year students receive institutional gift aid; Scarlet Scholarships (tuition awards, priority date Feb 1) are based on the admission application with no separate application. The CDS shows 40 degree-seeking nonresident undergraduates received institutional aid averaging $45,317, and international aid is non-need-based. Need-based grants require the FAFSA. Bellarmine Scholars/Fellows need a separate scholarship application by Dec 1.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code was found on Bellarmine's admissions pages; look up Bellarmine University in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code was found on Bellarmine's admissions pages; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code was found on Bellarmine's international pages.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Send results to Bellarmine through the Duolingo account; no code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed among accepted tests.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

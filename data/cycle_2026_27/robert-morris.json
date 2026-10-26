@@ -1,0 +1,121 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "RMU - International student admission process (undergraduate English scores, deadlines, conditional admission)",
+      "url": "https://www.rmu.edu/admissions/international/requirements",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "RMU - Scholarships (international student scholarships by weighted GPA)",
+      "url": "https://www.rmu.edu/admissions/financial-aid/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "ur": {
+      "kind": "admissions_site",
+      "title": "RMU - Undergraduate admissions requirements (test-optional, program GPA minimums)",
+      "url": "https://www.rmu.edu/admissions/undergraduate/requirements",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "RMU has waived the standardized-test requirement for all programs for freshman applicants. Nursing admits directly with a 3.0 GPA plus SAT 1080+ or ACT 22+, or with a 3.4 GPA without scores. Preference for admission goes to a cumulative 3.0 GPA or higher; most majors can be decided from a self-reported GPA, confirmed later on the official transcript.",
+    "src": "ur"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Free online application at rmu.edu/apply (College Navigator showed a $30 fee for 2024-25). International freshmen send official secondary transcripts, English test scores (an SAT EBRW of 540+ may be accepted in lieu) and a passport copy. To be considered for a scholarship the applicant must send a NACES foreign transcript evaluation with a US GPA. After acceptance an enrollment deposit (waived with proof of a fully funded scholarship) unlocks the I-20 request.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-05-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Page says 'May 1 for Fall attendance and November 1 for Spring attendance' with no year; taken as fall 2027. The page does not say whether admission is rolling.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants must submit an approved English exam (TOEFL, IELTS, PTE or Duolingo); an SAT EBRW score of 540 or higher may be accepted instead. Conditional admission or test waivers exist for students in partner programs: University of Pittsburgh English Language Institute (levels 5 or 6 with 85 percent in most courses and an 80 percent average) and ELS Language Center (Level 112); students still enrolled in those programs can be conditionally admitted and upgraded after finishing. No exemption by country is listed.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 55,
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "IELTS Academic overall band.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 90,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 42,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Academic scholarships are offered to undergraduate international students at the point of acceptance, based on weighted high school GPA (international freshmen): $28,000 for 3.8+, $26,000 for 3.40-3.79, $23,000 for 3.10-3.39, $19,000 for 2.70-3.09, $13,000 for 2.50-2.69, $11,000 below 2.50. The page does not label the amounts as per year; it says full-time students may keep institutional scholarships for up to four years with an overall 2.0 GPA (fully online students are not eligible). A NACES transcript evaluation with a US GPA is required if the transcript has none. No international need-based aid is described.",
+    "src": "sch"
+  },
+  "majors": [
+    {
+      "program": "Engineering",
+      "category": "engineering",
+      "admit_model": "direct_major",
+      "notes": "Direct admission with a 3.0 GPA, B or better in trigonometry or pre-calculus and a strong math and science background. Engineering tuition is higher ($20,400 per semester)."
+    },
+    {
+      "program": "Computer Science",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "notes": "Direct admission with a 3.25 GPA and a B in trigonometry, pre-calculus or calculus."
+    },
+    {
+      "program": "Nursing",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "notes": "Direct admission with a 3.0 GPA, SAT 1080+ or ACT 22+ and B or better in all math and science courses including chemistry with lab; without test scores a 3.4 GPA is needed. Nursing tuition is higher ($20,400 per semester)."
+    },
+    {
+      "program": "Biology",
+      "category": "biology_life_sci",
+      "admit_model": "direct_major",
+      "notes": "Direct admission with a 3.2 GPA and a strong science background (Biology/Pre-Med needs 3.5)."
+    }
+  ],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "engineering": "D",
+    "biology_life_sci": "D",
+    "computer_science": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

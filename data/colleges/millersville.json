@@ -1,0 +1,73 @@
+{
+  "slug": "millersville",
+  "name": "Millersville University of Pennsylvania",
+  "short_name": "Millersville",
+  "state_region": "PA",
+  "city": "Millersville",
+  "latitude": 40.000337,
+  "longitude": -76.357381,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.millersville.edu/",
+  "admissions_url": "https://www.millersville.edu/admissions/",
+  "ipeds_unit_id": 214041,
+  "undergrad_enrollment": 5823,
+  "intl_undergrads": 87,
+  "student_faculty_ratio": 19,
+  "academic_calendar": null,
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214041",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214041",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214041",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 6989,
+    "pct_submit_sat": 18,
+    "notes": "Baseline from IPEDS via College Navigator (fall 2024 entering class); no readable Common Data Set: Millersville's CDS page says its PDFs were taken offline for accessibility and must be requested from ir@millersville.edu. College Navigator prints only rounded percentages (86% admitted, 18% of admitted enrolled), so admits and enrolled counts are left null. International applicant counts, GPA and class-rank splits are not available. SAT percentiles are from the 221 enrolled first-years who submitted SAT (18%); ACT percentiles are not published. Undergraduate enrollment and student-faculty ratio (19 to 1) are College Navigator figures. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "admits": 6249,
+    "enrolled": 1175
+  },
+  "scores": {
+    "SAT_ERW": [
+      520,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      540,
+      590
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 11128,
+    "tuition_out_of_state_usd": 22952,
+    "books_usd": 1000,
+    "room_board_usd": 12830,
+    "other_usd": 3400,
+    "notes": "College Navigator estimated expenses 2024-2025 (tuition and fees; on-campus food and housing). Superseded for international students by the cycle-file international cost."
+  }
+}

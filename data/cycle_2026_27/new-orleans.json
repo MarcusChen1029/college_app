@@ -1,0 +1,169 @@
+{
+  "sources": {
+    "req": {
+      "kind": "admissions_site",
+      "title": "LSU New Orleans - Freshman international undergraduate requirements",
+      "url": "https://www.lsuneworleans.edu/admissions/apply-international/requirements",
+      "accessed": "2026-10-26"
+    },
+    "chk": {
+      "kind": "admissions_site",
+      "title": "LSU New Orleans - Undergraduate international checklist",
+      "url": "https://www.lsuneworleans.edu/admissions/apply-international-student/international-checklist",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "LSU New Orleans - International Admissions (priority deadlines, waivers, I-20 estimate)",
+      "url": "https://www.lsuneworleans.edu/admissions/apply-international",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "LSU New Orleans - Important Dates and Deadlines",
+      "url": "https://www.lsuneworleans.edu/admissions/deadlines",
+      "accessed": "2026-10-26"
+    },
+    "fr": {
+      "kind": "admissions_site",
+      "title": "LSU New Orleans - First-time freshman admission requirements",
+      "url": "https://www.lsuneworleans.edu/admissions/apply-freshman/requirements",
+      "accessed": "2026-10-26"
+    },
+    "ielp": {
+      "kind": "admissions_site",
+      "title": "LSU New Orleans - Intensive English Language Program: Conditional Admission",
+      "url": "https://www.lsuneworleans.edu/ielp/conditional-admission",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "LSU New Orleans - Scholarships and Awards (incl. international undergraduate awards)",
+      "url": "https://www.lsuneworleans.edu/financial-aid/types/scholarships-and-awards",
+      "accessed": "2026-10-26"
+    },
+    "bursar": {
+      "kind": "financial_aid_site",
+      "title": "LSU New Orleans - Bursar tuition and fees",
+      "url": "https://www.lsuneworleans.edu/bursar/tuition-fees",
+      "accessed": "2026-10-26"
+    },
+    "prog": {
+      "kind": "other",
+      "title": "LSU New Orleans - Undergraduate programs",
+      "url": "https://www.lsuneworleans.edu/academics/undergraduate-programs",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "The freshman requirements page is explicit that LSU New Orleans is 'not test-optional': domestic applicants without scores must take the Accuplacer. The international checklist asks first-time freshmen for official SAT/ACT results (TOEFL/IELTS is needed too if the SAT/ACT reading score is below the minimum), and the freshman minimums include a math score of ACT 19 or SAT 510 (or prior college math credit). A 2.5 core GPA is also required for international freshmen. The pages do not say whether an international freshman can substitute a placement exam for SAT/ACT; confirm with International Admissions.",
+    "src": "chk"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "notes": "Apply with the university's online application. International freshmen send transcripts from every secondary school (foreign transcripts need a course-by-course evaluation from a NACES member; IEE and SpanTran are preferred partners), official SAT/ACT results, a financial support form, a passport copy and an immunization form or waiver. Domestic undergraduate application fees are currently waived; the pages do not state an international application fee. The I-20 is not processed until financial documents arrive; the university's estimate is about $35,000 per academic year plus $5,000 per dependent.",
+    "src": "chk"
+  },
+  "deadlines": [
+    {
+      "kind": "scholarship",
+      "due": "2026-12-15",
+      "label": "Priority date for international scholarships and awards (fall 2027 entry)",
+      "notes": "Scholarships page lists a December 15 priority deadline for the International Tuition Award and International Book Award; the international checklist also says transcripts, test results and admission by January 15 are needed for fall scholarship consideration. Year is not printed; treated as the 2026-27 cycle.",
+      "src": "sch"
+    },
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International undergraduate application deadline, fall 2027",
+      "notes": "Listed as the international fall deadline on both the deadlines page and the International Admissions page (domestic first-time freshmen: August 7). No year is printed; treated as fall 2027. The spring international deadline is November 1 and summer April 1.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Meet one: ACT English 18, SAT EBRW 500, TOEFL iBT 4.5, IELTS 6.5, PTE Academic 50, Duolingo 100, or prior credit in a regionally accredited college-level general-education English course. TOEFL/IELTS/Duolingo are not required for undergraduates from a list of English-speaking countries (including Canada excluding Quebec, Ghana, Jamaica, Nigeria, New Zealand, the U.K.) or for applicants who completed high school or college work in the U.S. Applicants who do not meet the English requirement can be admitted conditionally through the Intensive English Language Program (IELP); completing IELP classes and passing its exit exam means no TOEFL is needed, but math scores must still be submitted before full admissibility.",
+    "src": "req"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "The requirements page lists 'TOEFL iBT 4.5', which is on the new 1-6 band scale; no 0-120 minimum is given on the current page. LSU New Orleans' ETS institution code is 6379.",
+      "src": "req"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "req"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Undergraduate minimum 100 (graduate 105).",
+      "src": "req"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "PTE Academic.",
+      "src": "req"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Awards for first-time, full-time international undergraduates (no FAFSA needed): International Tuition Award up to $2,000 per aid year and up to $8,000 over 4 years (3.0 non-weighted cumulative GPA, priority deadline Dec. 15) and International Book Award up to $1,000 (2.5 GPA, one-year limit, priority Dec. 15). Institutional scholarships go only to students entering in fall or summer. The larger freshman scholarships (Homer Hitt $75,000, President $20,000, Provost $16,000 and others over 4 years) are listed under domestic undergraduates, and the page does not state whether international students can receive them. The bursar page's yearly estimates (15 hours per semester, year not labeled) are $10,518 for Louisiana residents and $15,354 for non-residents, plus a $150 international fee.",
+    "src": "sch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The pages reviewed do not print a numeric SAT code; look it up in the College Board code search.",
+      "src": "chk"
+    },
+    "act": {
+      "code": null,
+      "note": "The pages reviewed do not print a numeric ACT code; look it up at act.org.",
+      "src": "chk"
+    },
+    "toefl": {
+      "code": "6379",
+      "note": "ETS code listed on the international checklist.",
+      "src": "chk"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "req"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "req"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "req"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D"
+  },
+  "tier_notes": {}
+}

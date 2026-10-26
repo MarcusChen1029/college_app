@@ -1,0 +1,145 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "West Virginia State University - International Undergraduate Student Admissions",
+   "url": "https://wvstateu.edu/admissions/international-student-admissions/international-undergraduate-student-admissions/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "WVSU - English language proficiency requirements, undergraduate admissions (PDF)",
+   "url": "https://wvstateu.edu/wp-content/uploads/2024/08/WVSU-English-Language-Proficiency-requirements-Undergradaute-Admissions.pdf",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "West Virginia State University - Undergraduate Admissions (first-time freshman)",
+   "url": "https://wvstateu.edu/admissions/undergraduate-admissions/",
+   "accessed": "2026-10-26"
+  },
+  "yj": {
+   "kind": "financial_aid_site",
+   "title": "West Virginia State University - Yellow Jacket Scholarship",
+   "url": "https://wvstateu.edu/admissions/financial-aid/scholarships/yellow-jacket-scholarship/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "West Virginia State University - 2025-2026 Cost of Attendance",
+   "url": "https://wvstateu.edu/admissions/financial-aid/2025-2026-cost-of-attendance/",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "West Virginia State University - Academic Degrees",
+   "url": "https://wvstateu.edu/academics/academic-degrees/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The first-time freshman and international requirement lists (transcript with a 2.0 cumulative GPA for freshmen; a 'C' average for international applicants) do not mention SAT/ACT scores. SAT 940 or ACT 18 can instead serve as proof of English proficiency.",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 20,
+  "notes": "International checklist: $20 application fee, online application, official transcripts (certified English translation; NACES course-by-course evaluation for non-US post-secondary study without an articulation agreement), proof of English proficiency, statement of purpose, financial affidavit of support with bank statements covering the first year (two full semesters), FERPA form, MMR immunization record and a passport copy. Applicants must have graduated secondary school with a 'C' average or better. Admission status and scholarship amount are determined once academic credentials are received.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "International application (rolling, fall 2027 entry)",
+   "notes": "The page says all international applications are processed on a rolling basis and should be submitted as early as possible; no deadline dates are printed. The undergraduate admissions page suggests starting at least six months before the semester.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Any one of four measures satisfies the requirement: completing an Intensive English program in the U.S. (WVSU's own ESL program is temporarily suspended; a partner-institution program is accepted), a qualifying academic program (graduation from an accredited U.S. high school with a 2.00 GPA and a passing English grade, or a U.S. degree), citizenship/first language of a listed English-speaking country (for example Canada, UK, Ireland, Australia, Nigeria, South Africa), or a qualifying test score. Other accepted scores: SAT 940, ACT 18, GTEC 1176, MELAB 70, AP English Language & Composition 3.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Paper-based 500. TOEFL reporting code 5903. No 1-6 band value is given.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "meets_full_need": false,
+  "notes": "Yellow Jacket Scholarship table for out-of-state and international first-time freshmen by high school GPA (3.0-3.4 / 3.5-3.7 / 3.8-4.0): living on campus $3,000 / $4,500 / $6,000 per year; living off campus $2,000 / $3,000 / $4,000. The same page's general eligibility says a FAFSA by June 30 for U.S. citizens and eligible noncitizens, so confirm with the university how international students qualify. Need-based aid for international students is not mentioned.",
+  "src": "yj"
+ },
+ "cost": {
+  "year": "2025-2026",
+  "tuition_usd": 9570,
+  "tuition_out_of_state_usd": 14990,
+  "books_usd": 1290,
+  "room_board_usd": 10718,
+  "other_usd": 3801,
+  "total_coa_usd": 30799,
+  "notes": "2025-26 estimated annual cost for out-of-state undergraduates living on campus: tuition and fees $14,990, books $1,290, housing and meals $10,718, transportation $1,340, personal $2,390, loan fees $71, total $30,799. No separate international rate is printed (the international cost sheet linked from the admissions page is for 2021-22). The 2026-27 fee schedule PDF's full-time row could not be read.",
+  "src": "coa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "fr"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": "5903",
+   "note": "WVSU TOEFL reporting code from the English proficiency sheet.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

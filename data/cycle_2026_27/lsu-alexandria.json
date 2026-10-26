@@ -1,0 +1,135 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "LSU of Alexandria - International Students (undergraduate admission)",
+      "url": "https://www.lsua.edu/apply/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "LSU of Alexandria - First-Year Students admission requirements",
+      "url": "https://www.lsua.edu/apply/first-year-students",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "LSU of Alexandria - Costs & Tuition",
+      "url": "https://www.lsua.edu/admissions/cost-and-tuition/",
+      "accessed": "2026-10-26"
+    },
+    "pay": {
+      "kind": "financial_aid_site",
+      "title": "LSU of Alexandria - Payment & Scholarships",
+      "url": "http://www.lsua.edu/student-engagement/international-programs/payment-scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international page says ACT/SAT are not required for admission but are used for scholarship eligibility and fee waivers. For domestic first-year applicants no score is needed with a 2.75+ GPA (TOPS) or 3.0+ with JumpStart completion; otherwise ACT, SAT or Accuplacer is required. IPEDS fall 2024 listed SAT/ACT as required to be considered, so confirm.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 80,
+    "notes": "International applicants pay a $20 application fee plus a $60 non-refundable international student fee. Freshmen must be graduates of a recognized secondary school comparable to a U.S. high school. Proof of funds: $26,500 per year (international page). Apply online or by mailed form.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "On-campus fall application deadline (fall 2027 entry)",
+      "notes": "Printed as August 1 with no year; assumed 2027. The international page also says all materials must be on file at least 60 days before the semester starts, which is earlier. Spring Dec. 1, summer May 1; 100% online programs have separate deadlines.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Beyond the tests listed, the page accepts GTEC 1182, ACT English 18, SAT ERW 500 or ACCUPLACER NG Writing 250 as proof of English. Conditional admission or an ESL pathway is not described.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "TOEFL iBT taken before 1/20/2026: 79; paper test 550.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "TOEFL iBT taken after 1/20/2026: 4.5 or better (the page does not name the 1-6 scale).",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "At least 6.5.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Score of 100.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "notes": "LSUA's cost page (12 semester hours, subject to change for fall 2026): Louisiana resident tuition and fees $3,465.95 per semester, non-resident $7,097.83, plus about $650 for books. Non-resident first-time freshmen with a 2.25 GPA and 21 ACT / 1030 SAT who are ready for college English and math receive an out-of-state fee waiver that brings tuition to the resident rate. International-specific tuition and room and board are not listed on the pages found."
+  },
+  "aid": {
+    "intl_aid_policy": null,
+    "merit_scholarships": null,
+    "notes": "First-time freshman scholarships depend on ACT/SAT and GPA (scholarship calculator); transfers with 3.0+ GPA get $1,500 per year; students in 100% online programs are not eligible. The pages do not say whether international students qualify, and no international scholarships are listed.",
+    "src": "pay"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "1632",
+      "note": "LSUA SAT code from the international page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1589",
+      "note": "LSUA ACT code from the international page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the international page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not listed on the international page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "nursing": "D",
+    "biology_life_sci": "D"
+  },
+  "tier_notes": {}
+}

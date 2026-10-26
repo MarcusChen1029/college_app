@@ -1,0 +1,124 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "PVAMU - International Admissions (freshman and transfer requirements)",
+      "url": "https://www.pvamu.edu/admissions/international/",
+      "accessed": "2026-10-26"
+    },
+    "crit": {
+      "kind": "admissions_site",
+      "title": "PVAMU - Criteria for Admissions (freshman, international students)",
+      "url": "https://www.pvamu.edu/admissions/criteria-for-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "PVAMU - Application Deadlines",
+      "url": "https://www.pvamu.edu/admissions/application-deadlines/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "PVAMU Catalog - Undergraduate Information (international student admission)",
+      "url": "https://catalog.pvamu.edu/admissionsinformationandrequirements/undergraduate_information/",
+      "accessed": "2026-10-26"
+    },
+    "iss": {
+      "kind": "other",
+      "title": "PVAMU Global Engagement - Prospective and Incoming International Students (I-20, financial documents)",
+      "url": "https://www.pvamu.edu/globalengagement/iss/prospective-incoming-international-students/",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "PVAMU Office of Scholarship Services - University Merit Scholarships",
+      "url": "https://www.pvamu.edu/oss/university-scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The freshman criteria page is headed 'Automatic Admissions Requirements/ Test Optional': automatic admission with the required courses and any one of top 35% of class, cumulative GPA 3.2, or SAT 1060 / ACT 21; others go to holistic review. The same page's international freshman checklist still lists 'SAT 800 or ACT 15', which the newer International Admissions page does not; confirm with admissions.",
+    "src": "crit"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply through PANTHER Apply or ApplyTexas; the international fee is $50 (domestic $40). International freshmen need a minimum 3.2 GPA (international page), a passing result in the home-country secondary qualification (page lists '5 passing grades on the GCE, CXC, West African School Certificate or O-levels'), a notarized affidavit of financial support and a bank statement or employment letter; foreign college transcripts need a course-by-course evaluation.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-12-01",
+      "label": "Fall 2027 scholarship priority date (undergraduate FF/FI/TI)",
+      "notes": "Deadlines table column 'Fall (Scholarship Priority)' for rows FF, FI (freshmen international) and TI (transfer international). The page says applications for Fall 2027 are open.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Fall scholarship deadline",
+      "notes": "Scholarship line of the same page: Fall - March 1.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "due": "2027-05-17",
+      "label": "Fall 2027 application deadline (freshman international)",
+      "notes": "Column 'Fall' for FF/FI/TI. All accompanying documents must be received by the deadline; students receiving a University Scholarship may be considered after it.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required for applicants whose native language is not English. The catalog says a graduate of a U.S. secondary school, or a student with ACT English 18 or SAT Verbal 400, is exempt from the TOEFL; the newer International Admissions page does not repeat this.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 64,
+      "notes": "International Admissions page: 'TOEFL 500 paper / 64 internet based, or IELTS 6.5'. The criteria page and catalog state only 'a score of 500 on the TOEFL'.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "Page: Duolingo 'is not accepted at this time'.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Admitted recent high school graduates are automatically considered for University Merit Scholarships (Presidential $11,400 per year: GPA 3.25 and SAT 1190 / ACT 24; Regents' full tuition and housing: GPA 3.50 and SAT 1260 / ACT 27, with an out-of-state tuition waiver for non-residents). The pages do not say whether international students are eligible, and international need-based aid is not described.",
+    "src": "aid"
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,227 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Towson University - Freshman Applicants (deadlines, test-optional, steps)",
+   "url": "https://www.towson.edu/admissions/undergrad/freshmen/",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Towson University - For International Students (requirements, FAQs)",
+   "url": "https://www.towson.edu/admissions/international/",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Towson University 2026-2027 Catalog - International Undergraduate Admissions",
+   "url": "https://catalog.towson.edu/undergraduate/admissions/international-undergraduate-admissions/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Towson University - English Proficiency",
+   "url": "https://www.towson.edu/admissions/international/english-proficiency.html",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Towson University - International Student Scholarships",
+   "url": "https://www.towson.edu/admissions/financialaid/programs/scholarships/international.html",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Towson University - Tuition & Expenses (2026-2027 costs)",
+   "url": "https://www.towson.edu/admissions/tuition/",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "Towson University Department of Nursing - Admission Requirements (basic/pre-licensure)",
+   "url": "https://www.towson.edu/chp/departments/nursing/undergrad/nursing/admission/",
+   "accessed": "2026-10-26"
+  },
+  "bus": {
+   "kind": "other",
+   "title": "Towson University 2026-2027 Catalog - Major in Business Administration",
+   "url": "https://catalog.towson.edu/undergraduate/business-economics/business-administration/",
+   "accessed": "2026-10-26"
+  },
+  "cs": {
+   "kind": "other",
+   "title": "Towson University 2026-2027 Catalog - Major in Computer Science",
+   "url": "https://catalog.towson.edu/undergraduate/fisher-science-mathematics/computer-information-sciences/computer-science/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "TU does not require the SAT or ACT for admission or scholarships; submitted scores are considered but do not hurt an application. SAT EBRW 540 or ACT English 21 can also be used to meet the English proficiency requirement.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 50,
+  "supplemental_essays": "Common App activities list and college essay are required (holistic review).",
+  "notes": "Official high school transcript required (sent by the school, ideally through Common App); a non-English transcript needs an official translation by the school; college work outside the U.S. needs a NACES course-by-course evaluation. Fee waivers exist. Holistic review weighs courses, grades and rigor most; CDS C7 lists recommendations as not considered. A non-refundable $200 enrollment deposit is due after admission, before an I-20 is issued.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "label": "Early Action, Honors College and automatic merit scholarship deadline (fall 2027)",
+   "notes": "Applications complete after Nov 1 may not be considered for merit scholarships. EA decisions come by mid-January; merit awards by the end of February.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular decision deadline (fall 2027)",
+   "notes": "Decisions by early March. The catalog also lists Feb 1 as the regular application deadline for international freshmen.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "International scholarship deadline (fall 2027)",
+   "notes": "No separate application for the International Student Scholarship; the You Are Welcome Here scholarship needs its own YAWH application, also due Feb 1. Fall awards are announced in March.",
+   "src": "aid"
+  },
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "International freshman final deadline (fall 2027)",
+   "notes": "Late application deadline for international students only (listed as the International Freshman Deadline); scholarship consideration is tied to the earlier dates. Spring 2027 freshman deadline is Nov 1, 2026.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Anyone who attended school outside the U.S. must show English proficiency. Undergraduates may be exempt after at least 3 years of education in a listed English-speaking country (e.g. Australia, Canada except Quebec, Ireland, Ghana). Other ways to meet it: SAT EBRW 540, ACT English 21, IB English SL 5, GCSE/IGCSE English C, a C in U.S. college composition, or TU English Language Center level 5 completion. Applicants below the minimum can use the TU Academic Pathway (conditional pathway through the English Language Center).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "subs": {
+    "each_section": 17
+   },
+   "notes": "Tests taken before 2026-01-21; TU code 5404. Also accepted: TOEFL Essentials 8.0 overall (8.0 each), iTEP 3.9.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "each_section": 3.5
+   },
+   "notes": "Tests taken after 2026-01-21 (1-6 scale): 4 overall with subscores of 3.5.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "6.0 overall with band scores of 5.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 49,
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Only merit scholarships; no need-based aid for international students. The International Student Scholarship goes to new undergraduates with no separate application (award amounts vary; best consideration if the file is complete by Feb 1). The You Are Welcome Here scholarship (a select number of international fall freshmen, about half of tuition, separate application due Feb 1, must enroll by May 1) cannot be combined with it. CDS H6: 53 nonresident undergraduates got institutional non-need-based aid, avg $15,746.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing, basic/pre-licensure BS",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Screened, competitive major with its own application; students who list nursing are classified pre-nursing. Minimum criteria include a 3.0 GPA, prerequisite courses with C or better and a TEAS score of Proficient or higher; admission to TU does not guarantee admission to nursing."
+  },
+  {
+   "program": "Business Administration (College of Business and Economics)",
+   "category": "business",
+   "admit_model": "pre_major_competitive",
+   "capped": false,
+   "notes": "Students enter as pre-Business Administration (PBUA) and are admitted to a business major, concentration or track after completing the required courses with at least a C; overall GPA of 2.00 or higher."
+  },
+  {
+   "program": "Computer Science BS",
+   "category": "computer_science",
+   "admit_model": "undeclared_open",
+   "capped": false,
+   "notes": "Department of Computer & Information Sciences; tracks in AI, Cyber Operations and Software Engineering; the B.S. is ABET-accredited. The catalog page describes no separate admission screen."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5404",
+   "note": "TU SAT code.",
+   "src": "eng"
+  },
+  "act": {
+   "code": "1718",
+   "note": "TU ACT code.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "5404",
+   "note": "TU TOEFL code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores are sent directly from the testing service.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "D+ rather than D for its regional standing (TU cites US News No. 3 public university in the North, a regional ranking) and an average weighted GPA of 3.81; still admits about 81% with SAT median 1070."
+ }
+}

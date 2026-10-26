@@ -1,0 +1,187 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "JSU - Undergraduate international admissions (deadlines, requirements)",
+   "url": "https://www.jsu.edu/admissions/international-admissions/undergraduate.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "JSU - Undergraduate English proficiency requirements (international)",
+   "url": "https://www.jsu.edu/admissions/international-admissions/english-proficiency.html",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "JSU - International students FAQs (application fee, deposit, scholarships)",
+   "url": "https://www.jsu.edu/admissions/international-admissions/faqs.html",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "JSU - First-time freshmen admissions (test-optional policy)",
+   "url": "https://www.jsu.edu/admissions/freshmen/index.html",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "JSU Bursar - Tuition, fees and estimated cost of attendance 2026-2027",
+   "url": "https://www.jsu.edu/bursar/fees/index.html",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "JSU - First-time freshman merit-based scholarships (2027-2028)",
+   "url": "https://www.jsu.edu/finaid/scholarships/new-student-merit-based-scholarships.html",
+   "accessed": "2026-10-26"
+  },
+  "ih": {
+   "kind": "admissions_site",
+   "title": "JSU - Jones International House Program scholarship",
+   "url": "https://www.jsu.edu/ihop/about/international-house-scholarship.html",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "admissions_site",
+   "title": "JSU - Undergraduate programs listing (international admissions)",
+   "url": "https://www.jsu.edu/admissions/international-admissions/programs-listing.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "JSU is test-optional for freshman admission: ACT/SAT are not required and admission is based on high school GPA. International freshmen need a high school GPA of 2.0/4.0 (evaluated on the US scale). Scores can still help with placement, some programs and merit scholarship upgrades (test scores can only raise a scholarship, not lower it).",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International freshmen apply on JSU's own application: $50 non-refundable fee (the Bursar fee table lists $35; the international admissions page and FAQ say $50). Documents: international high school records showing a 2.0/4.0 GPA (translated if not in English), passport copy, English proficiency proof unless from an exempt country, and a financial statement (at least $38,300 effective spring 2027). Documents are uploaded to the application portal, not emailed; SAT/ACT/iTEP scores must come from the testing agency. An admitted student pays a $200 international application deposit before the I-20 is issued. Essays and recommendations are not mentioned.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International application period closes (fall 2027 entry)",
+   "notes": "Fall 2027 application period is Aug. 10, 2026 to June 1, 2027 (classes begin Aug. 18, 2027). Spring 2027 period is June 1 to Nov. 1, 2026. JSU offers no summer intake for undergraduate international students. No earlier priority date is printed for admission.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-04-01",
+   "label": "Jones International House Program application deadline (priority March 1)",
+   "notes": "Program gives a tuition and fees scholarship plus a housing scholarship for up to 2 years. The page prints March 1 (priority) and April 1 without a year; treated as 2027. Applicant must already have a JSU ID and be admitted; undergraduate international applicants need a 2.5/4.0 high school GPA.",
+   "src": "ih"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-01",
+   "label": "Test scores due for freshman merit-scholarship upgrades (fall admits)",
+   "notes": "Merit scholarships are awarded automatically on admission from the highest cumulative high school GPA; scores received by May 1 can raise the award. Year not printed; treated as 2027.",
+   "src": "merit"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Students from listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Kenya, Nigeria, New Zealand, South Africa, United Kingdom) are exempt from the test requirement; transfers with 24+ credit hours from accredited US institutions may also be exempt. Alternatives to a test: completion of JSU's English Language Institute (ELI) Level 4, iTEP 3.7, ACT composite 18 (English 14+) or SAT composite 960. The page also prints a SAT Critical Reading minimum of 19, which looks like a typo and is not recorded. Scores must be sent from the testing agency.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Undergraduate minimum for tests taken before 2026-01-21 (graduate: 79).",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Undergraduate minimum for tests taken on or after 2026-01-21. The page lists 3.5 without naming the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Undergraduate minimum (graduate: 6.0).",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "notes": "Undergraduate minimum (graduate: 100).",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 45,
+   "notes": "Undergraduate minimum (graduate: 56).",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 10800,
+  "tuition_out_of_state_usd": 21600,
+  "tuition_intl_usd": 21600,
+  "required_fees_usd": 2860,
+  "intl_extra_fees_usd": 300,
+  "room_board_usd": 10394,
+  "books_usd": 1056,
+  "other_usd": 2260,
+  "notes": "Bursar page, 2026-2027 block tuition: 12-18 credit hours cost $5,400 per semester in-state and $10,800 per semester out-of-state and international, so the yearly figures are two semesters. Fees ($2,860) and room and board ($6,104 housing + $4,290 meals, on campus) are JSU's published average estimates; the in-state estimate lists $10,800 tuition. Other = miscellaneous $2,260; transportation estimate $2,106 not included. International student fee is $150 per semester. Total cost of attendance is not published for international students.",
+  "src": "fees"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are not eligible for financial aid but can earn scholarships. Freshman merit awards are automatic on admission, based on high school GPA (2027-28: $1,000-$8,000 a year for GPA 2.00-4.0+, up to $10,500 with ACT 31+/SAT 1390+), last up to 8 semesters, and out-of-state students who receive one pay the remaining tuition at the in-state rate. The merit page does not explicitly address international applicants, but JSU's international FAQ lists it. The Jones International House Program offers a tuition-and-fees plus housing scholarship (up to 2 years). CDS H6 reports 329 nonresidents with institutional aid, average $10,022, although B2 counts only 231 nonresident undergraduates, so treat that figure with caution.",
+  "src": "merit"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The reviewed JSU pages do not print a numeric SAT code; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "The reviewed JSU pages do not print a numeric ACT code; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; results must be sent from the testing agency.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; results must be sent from the testing agency.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

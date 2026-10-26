@@ -1,0 +1,134 @@
+{
+  "slug": "iup",
+  "name": "Indiana University of Pennsylvania",
+  "short_name": "IUP",
+  "state_region": "PA",
+  "city": "Indiana",
+  "latitude": 40.617531,
+  "longitude": -79.159332,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.iup.edu/",
+  "admissions_url": "https://www.iup.edu/admissions/",
+  "ipeds_unit_id": 213020,
+  "undergrad_enrollment": 7425,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "IUP Common Data Set 2025-2026 (PDF; page headers still read 2024-2025, data are fall 2025)",
+      "url": "https://www.iup.edu/planningandassessment/files/university_data/common_data_set/cds-2025-26-iup-for-web.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds2": {
+      "kind": "cds",
+      "title": "IUP Common Data Set 2025-2026, part 2 (PDF)",
+      "url": "https://www.iup.edu/planningandassessment/files/university_data/common_data_set/cds-2025-26-iup-for-web-2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7951,
+    "admits": 7273,
+    "enrolled": 1871,
+    "in_state_applicants": 7397,
+    "in_state_admits": 6755,
+    "out_state_applicants": 441,
+    "out_state_admits": 407,
+    "intl_applicants": 113,
+    "intl_admits": 111,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 1,
+    "gpa_avg": 3.34,
+    "pct_reporting_gpa": 98.3,
+    "gpa_distribution": {
+      "4.0": 20,
+      "3.75-3.99": 13,
+      "3.50-3.74": 16,
+      "3.25-3.49": 14,
+      "3.00-3.24": 12,
+      "2.50-2.99": 17,
+      "2.0-2.49": 7,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1 (fall 2025 entering class; applicants = male 2,755 + female 5,196). International first-years: 113 applied, 111 admitted (98%), 8 enrolled, so IUP admitted almost every international applicant. Open to nearly all applicants (91% overall admit rate). SAT/ACT optional (C8A). SAT percentiles are for the 25% (460) of enrolled first-years who submitted; ACT figures come from only 11 students and are unreliable. GPA distribution is the all-enrolled column of C11. Undergraduate enrollment 7,425 is the CDS B1 total; 59 nonresident degree-seeking undergraduates is CDS B2 (135 counting non-degree-seeking). The CDS PDF text is jumbled in places; values were cross-checked by sums (residency totals match C1)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      970,
+      1070,
+      1180
+    ],
+    "SAT_ERW": [
+      500,
+      550,
+      620
+    ],
+    "SAT_MATH": [
+      450,
+      520,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      21,
+      28
+    ],
+    "ACT_ENGLISH": [
+      13,
+      17,
+      26
+    ],
+    "ACT_MATH": [
+      14,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted; C8F says 'We are test optional at this time.'"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7994,
+    "tuition_out_of_state_usd": 11592,
+    "tuition_intl_usd": 19842,
+    "required_fees_usd": 3730,
+    "room_board_usd": 13350,
+    "books_usd": 1100,
+    "other_usd": 2080,
+    "intl_need_aid_awarded": 32,
+    "intl_avg_award_usd": 2198,
+    "notes": "CDS G1/G5/H6 as printed: first-year tuition $7,994 in-state, $11,592 out-of-state, $19,842 nonresident; fees $3,730; food and housing $13,350; books $1,100; other_usd = transportation $500 + other $1,580. These CDS tuition figures are lower than IUP's current 2026-27 billing page, which is used for the cost figures. CDS H6: 32 undergraduate degree-seeking nonresidents received institutional aid averaging $2,198 (total $70,336); non-need-based institutional aid is ticked as available."
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Troy University - International student admission (undergraduate requirements, English proficiency)",
+      "url": "https://www.troy.edu/applications-admissions/admissions-process-requirements/international-student/index.html",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Troy University - Undergraduate admission requirements (first-time freshman, test optional)",
+      "url": "https://www.troy.edu/applications-admissions/admissions-process-requirements/undergraduate/index.html",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "other",
+      "title": "Troy University - International tuition and fees (2026-2027 estimated costs)",
+      "url": "https://www.troy.edu/international/tuition-fees.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Troy University - International scholarships (International Trojan Opportunity)",
+      "url": "https://www.troy.edu/international/scholarships-more.html",
+      "accessed": "2026-10-26"
+    },
+    "esl": {
+      "kind": "other",
+      "title": "Troy University - English as a Second Language (ESL) program",
+      "url": "https://www.troy.edu/international/esl/index.html",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Troy University Undergraduate Catalog 2024-2025 (international admission, ESL Pathway)",
+      "url": "https://catalog.troy.edu/mime/media/view/4/152/24-25+Undergraduate+Catalog.pdf",
+      "accessed": "2026-10-26"
+    },
+    "fee": {
+      "kind": "admissions_site",
+      "title": "Troy University Helpdesk - What is the application fee?",
+      "url": "https://helpdesk.troy.edu/TDClient/KB/ArticleDet?ID=44483",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Students beginning classes in 2027 can be admitted without ACT or RSAT scores (test-optional: unconditional admission with a 3.0 GPA, conditional with 2.5). With scores, unconditional admission needs a 2.0 GPA and ACT 20 / RSAT 1030, conditional ACT 17-19 with a 2.5 GPA. The international page lists no SAT/ACT requirement; SAT EBRW 480 or ACT English 20 can serve as proof of English (2024-25 catalog).",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "$30 is the undergraduate application fee on Troy's helpdesk page; no separate international fee is listed. Documents (accepted by email via your recruiter): international application, official grade 10-12 transcripts/mark sheets and diploma with English translations, bank statement issued within six months (account owner must be a person), sponsor letter if the account is not in the applicant's name, passport valid six months past the intended enrollment date, and English proficiency. SAT/ACT scores go electronically to Troy code 1738.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Application (fall 2027): no fixed international deadline published",
+      "notes": "The 2024-25 catalog says to apply at least three months before the proposed term; the CDS reports rolling decisions. Degree-seeking international deadlines are not listed on the current international page. The separate ESL program lists deadlines of Fall I June 1, Fall II Sept 1, Spring I Nov 1, Spring II Feb 1 and Summer April 15.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants from American Samoa, Anguilla, Antigua and Barbuda, Australia, The Bahamas, Barbados, Belize, Bermuda, British Virgin Islands, Canada (except Quebec), Dominica, Falkland Islands, Grenada, Guyana, Ireland, Jamaica, Jersey, Liberia, Montserrat, New Zealand, Saint Helena, Saint Kitts and Nevis, Saint Lucia, Saint Martin, Saint Vincent and the Grenadines, Trinidad and Tobago, Turks and Caicos Islands and the United Kingdom need not submit proof (the list appears after the graduate section of the page). Medium-of-instruction letters are not accepted. Conditional admission and ESL: per the 2024-25 catalog, students below the minimums can enter the Pathway program (academic classes with ESL support; ESL Pathway cutoffs IELTS 5.0, TOEFL 50-60, iTEP 3.0-3.4, PTE 35-46, Duolingo 85-90), and students with no score can be admitted conditionally, take the ESL placement test on arrival and be placed in academics, ESL or Pathway. Troy's own intensive-English ESL program (8-week terms) runs on the Troy campus. Contact intlrecruit@troy.edu.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Page prints 'at least 3.5 (old scale 61)'.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 46,
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Page lists 'Cambridge A/AS score of at least a C1' (as printed). Also accepted: iTEP 3.5, MET 51, Oxford ELLT 6.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The International Trojan Opportunity scholarship is for entering international freshmen and transfers enrolled full-time (12+ hours) who meet admission and English requirements; it is applied for through AwardSpring, is renewable for students in good standing, and the cost table shows it as $9,932 a year (page text: 'waive the out-of-state tuition cost'). Troy also lists a Chancellor's Endowed General Scholarship, an International Student Scholarship and the Lindsey Endowed Scholarship. CDS H6 reports only non-need-based institutional aid for nonresidents (351 recipients, average $15,702).",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "1738",
+      "note": "Page: SAT and ACT scores must be sent electronically using Troy's school code 1738.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1738",
+      "note": "Page: SAT and ACT scores must be sent electronically using Troy's school code 1738.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL code is listed; applicants may upload a PDF of the report and Troy verifies it with the testing agency.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "nursing": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

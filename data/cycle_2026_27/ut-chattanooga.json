@@ -1,0 +1,123 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UTC International Student and Scholar Services - Prospective International Students",
+      "url": "https://www.utc.edu/academic-affairs/center-for-global-education/international-student-and-scholar-services/prospective-students",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UTC - Freshman Requirements",
+      "url": "https://www.utc.edu/seniors",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UTC International Student and Scholar Services - Scholarships",
+      "url": "https://utc.edu/enrollment-management-and-student-affairs/center-for-global-education/international-student-and-scholar-services/scholarships",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "The Freshman Requirements page lists GPA plus ACT combinations (2.85 GPA with ACT 18, or 2.5 GPA with ACT 21) for all first-time freshmen and says all applicants must submit ACT/SAT scores. An older 'Test Optional Admission' page (written for spring and fall 2022: 3.0 GPA plus one teacher recommendation) is still online, and IPEDS shows 94% of fall 2024 entrants submitted the ACT, so the sources conflict. These pages were read through search extracts because utc.edu could not be fetched here; confirm with admissions whether international applicants may apply test-optional.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [],
+    "app_fee_usd": 30,
+    "notes": "$30 non-refundable international application fee. International applicants submit an official attested and sealed final secondary transcript or diploma (and transcripts from any college attended), proof of funding dated within six months of applying, a passport photo page and, once enrolled, medical insurance. The application platform is not stated on the pages read.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International application documentation deadline, fall 2027",
+      "notes": "The international page lists an Application Documentation Deadline of July 1 without naming the term; an older catalog says materials are due July 1 for fall and Nov. 1 for spring, so it is treated as fall 2027. The general first-year page lists a fall priority date, but sources disagree (Dec. 1 vs May 1), so it is not recorded.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-07-01",
+      "label": "International Undergraduate Student Scholarship application (fall entry)",
+      "notes": "Applicants must already be fully accepted, hold a UTCID and complete a 'Why UTC?' project; fall-semester entrants only because funding is limited.",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants from an approved English-speaking country, or with a degree from a U.S. institution within the past two years, may request an exemption with a waiver form. Scores must be no more than two years old. No conditional-admission or ESL pathway into the undergraduate program was confirmed on the pages read.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Undergraduate minimum. No 1-6 scale value is given on the page.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Undergraduate minimum.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 85,
+      "notes": "Undergraduate minimum on the 10-160 scale.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Federal financial aid is not available to international students. UTC International Undergraduate Student Scholarship: up to $5,000 for one academic year, not renewable, for first-time international students entering in the fall who are fully accepted; apply by July 1; students already receiving other scholarships are not eligible.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Not printed on the pages read; look up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "Not printed on the pages read; look up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "1831",
+      "note": "Institution code given on the international page for score reporting (read through a search extract).",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "nursing": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

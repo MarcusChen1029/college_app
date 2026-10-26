@@ -1,0 +1,98 @@
+{
+  "slug": "george-mason",
+  "name": "George Mason University",
+  "short_name": "George Mason",
+  "state_region": "VA",
+  "city": "Fairfax",
+  "latitude": 38.83195,
+  "longitude": -77.307063,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.gmu.edu/",
+  "admissions_url": "https://www.gmu.edu/admissions-aid",
+  "ipeds_unit_id": 232186,
+  "undergrad_enrollment": 28334,
+  "intl_undergrads": 1574,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=232186",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=232186",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS fall 2024 undergraduate enrollment by race/ethnicity (nonresident alien) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/fall-enrollment/2024/undergraduate/race/?unitid=232186&sex=99&class_level=99&ftpt=99&degree_seeking=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_loc": {
+      "kind": "ipeds",
+      "title": "IPEDS institutional directory (location, locale) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/directory/2023/?unitid=232186",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 25234,
+    "admits": 22074,
+    "enrolled": 4464,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 2,
+    "notes": "Baseline from IPEDS (fall 2024 entering class): counts from the ADM2024 file via the Urban Institute Education Data Portal (25,234 applied, 22,074 admitted, 4,464 enrolled), matching College Navigator's 87% admitted / 20% yield. George Mason's 2025-2026 Common Data Set exists on oiep.gmu.edu but returned HTTP 403 (bot protection) to direct and tool fetches, so CDS-only items (SAT total, GPA, residency and international splits, admission factors) are not added. SAT/ACT percentiles cover only the 19% (829) / 2% (80) of enrollees who submitted scores. Undergrad enrollment 28,334 and nonresident undergrads 1,574 are IPEDS fall 2024."
+  },
+  "scores": {
+    "SAT_ERW": [
+      580,
+      640,
+      680
+    ],
+    "SAT_MATH": [
+      580,
+      630,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      23,
+      27,
+      31
+    ],
+    "ACT_MATH": [
+      22,
+      25,
+      27
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 14220,
+    "tuition_out_of_state_usd": 38688,
+    "tuition_intl_usd": 38688,
+    "room_board_usd": 15725,
+    "books_usd": 1288,
+    "other_usd": 3667,
+    "total_coa_usd": 34900,
+    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25: tuition and fees $14,220 in-state / $38,688 out-of-state; on-campus food and housing $15,725; books $1,288; other $3,667; total on-campus $34,900 in-state / $59,368 out-of-state. 2026-27 rates were not checked."
+  }
+}

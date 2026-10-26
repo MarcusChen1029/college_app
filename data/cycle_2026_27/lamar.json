@@ -1,0 +1,170 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Lamar University - International Undergraduate Admission",
+      "url": "https://www.lamar.edu/admissions/how-to-apply/international/international-undergraduate.html",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Lamar University - International admissions (application deadlines)",
+      "url": "https://www.lamar.edu/admissions/how-to-apply/international/index.html",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Lamar University - Admission requirements and deadlines (fall 2026 dates)",
+      "url": "https://www.lamar.edu/admissions/how-to-apply/admissions-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Lamar University - English Language Proficiency Requirements",
+      "url": "https://www.lamar.edu/admissions/how-to-apply/international/english-language-proficiency-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Lamar University - Freshman Admission Requirements",
+      "url": "https://www.lamar.edu/admissions/how-to-apply/freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Lamar University - Incoming freshmen scholarships",
+      "url": "https://www.lamar.edu/financial-aid/scholarships/incoming-freshmen-scholarship.html",
+      "accessed": "2026-10-26"
+    },
+    "pres": {
+      "kind": "financial_aid_site",
+      "title": "Lamar University - Presidential and Southeast Texas Legends Scholars",
+      "url": "https://www.lamar.edu/financial-aid/scholarships/presidential-and-southeast-texas-legends-scholars.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The freshman page says applicants do not have to submit SAT/ACT scores for admission, and a minimum SAT/ACT composite can also be used through secondary review. The international page nonetheless says international freshmen 'should have' SAT and/or ACT scores sent by the testing agency (no minimum given). Scores are needed for Lamar's merit scholarships (international students need SAT 1010+ / ACT 19+ for the lowest tier) and can exempt students from Texas TSI testing.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "International page: apply through ApplyTexas (the domestic freshman page also accepts the Common App); pay the $75 non-refundable fee by emailed link 1-2 business days after applying (the domestic freshman fee is $25). Freshmen need a cumulative 2.5 GPA on all secondary work. International applicants must send an official course-by-course evaluation of all secondary and post-secondary work directly from the evaluating agency (Lamar does not evaluate in-house; the applicant pays the agency). The I-20 and financial documents come after the acceptance letter. Applications take 2-3 weeks to process.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-04-15",
+      "label": "International priority deadline, fall 2027 entry",
+      "notes": "Fall priority April 15 (spring Sept. 1, summer Jan. 1). Printed without a year; treated as fall 2027.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International final deadline, fall 2027 entry",
+      "notes": "Fall final July 1 (spring Dec. 1, summer April 15). Printed without a year on the international page; the requirements page lists July 1, 2026 for fall 2026, so July 1, 2027 is expected but not yet printed. Domestic fall deadline was July 28, 2026 with documents due Aug. 4. All deadlines are 5:00 pm Central Time.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-15",
+      "label": "Presidential Scholarship application closes",
+      "notes": "Presidential and Southeast Texas Legends applications (via myScholarships) open Aug. 15 and close Jan. 15 (year not printed; treated as 2027); endowed scholarships are awarded after the Jan. 15 priority date. Presidential applicants need an admission offer first; international students may qualify through SAT 1330+ or ACT 29+.",
+      "src": "pres"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for applicants from a listed English waiver country (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Nigeria, Singapore, South Africa, UK), 48 credits of secondary/post-secondary study in a waiver country or taught in English, completion of Intensive English level 112 at a U.S. institution, or English Composition I and II at an accredited U.S. institution with a B or better. Requested through an online waiver form; exemption is not guaranteed. The page does not describe conditional admission or an ESL pathway.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Undergraduate minimum 71. TOEFL and PTE scores go to institution code 6360. Graduate Category I programs also need 71 and Category II 79; those do not apply to undergraduates.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "1-6 scale minimum 4 for undergraduates (graduate Category II 4.5).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Applicants may email a PDF of the official IELTS score card to admissions@lamar.edu. No subscore minimum is printed.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Minimum 105 for undergraduates.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 59,
+      "notes": "Minimum 59 for undergraduates; scores sent to code 6360.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Incoming-freshman merit scholarships list international eligibility by SAT/ACT: Presidential (full four years: tuition, fees, room and board, books; SAT 1330+/ACT 29+), Cardinal Elite $40,000 (SAT 1330+/ACT 29+), Academic Excellence $32,000 (SAT 1200-1320/ACT 25-28), Distinguished Scholars $20,000 (SAT 1080-1190/ACT 21-24), University Scholars $8,000 (SAT 1010-1070/ACT 19-21). The page does not say whether the dollar figures are totals or per year, and some thresholds on it contain typos. The Presidential scholarship also needs an essay, resume and references. A scholarship of $1,000 or more can waive nonresident tuition under Texas rules (stated on Lamar's graduate page; not confirmed for undergraduates). CDS H6 ticks both need-based and non-need-based institutional aid for nonresidents (layout of the two ticks is unclear); 45 nonresident undergraduates received aid, average $17,442. International students are not eligible for federal aid.",
+    "src": "sch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The international pages do not print an SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "The international pages do not print an ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6360",
+      "note": "Lamar University institutional code for TOEFL and PTE.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code; email the PDF score card to admissions@lamar.edu.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": "6360",
+      "note": "The English page says to send TOEFL and PTE scores with school code 6360.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D"
+  },
+  "tier_notes": {}
+}

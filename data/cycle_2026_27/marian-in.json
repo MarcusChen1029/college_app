@@ -1,0 +1,146 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Marian University - International Undergraduate First-Year Students (deadlines, English proficiency, documents)",
+      "url": "https://www.marian.edu/admissions/international-admissions/first-year-student",
+      "accessed": "2026-10-26"
+    },
+    "idx": {
+      "kind": "admissions_site",
+      "title": "Marian University - International Admissions",
+      "url": "https://www.marian.edu/admissions/international-admissions",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Marian University Undergraduate Catalog of Programs 2026-2027 (admission, international applicants)",
+      "url": "https://www.marian.edu/academics/_assets/_documents/2026-27-Undergraduate-Catalog.pdf",
+      "accessed": "2026-10-26"
+    },
+    "hs": {
+      "kind": "admissions_site",
+      "title": "Marian University - Admission (high school students, program requirements)",
+      "url": "https://www.marian.edu/admissions/",
+      "accessed": "2026-10-26"
+    },
+    "fyship": {
+      "kind": "financial_aid_site",
+      "title": "Marian University - First-Year Scholarships",
+      "url": "https://www.marian.edu/admissions/financial-aid/first-year-scholarships/index.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "2026-27 catalog: 'Marian University is test blind. ACT and/or SAT scores are not used for admission or scholarship consideration.'",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "own",
+      "common_app"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Free online application or the Common App. Admission is decided mainly on the weighted cumulative GPA over at least six semesters: 2.75 is required, and 2.0-2.74 needs a personal statement and two faculty letters reviewed by the committee. International applicants submit transcripts (unofficial copies for review), a financial verification form with a bank statement under six months old, and a $100 enrollment deposit before the I-20 is issued; nursing, engineering and education have additional program requirements.",
+    "src": "cat"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International application deadline (fall 2027 entry)",
+      "notes": "Admission decisions are made on a rolling basis. The page prints no year, so the fall date is taken as 2027. The catalog also asks international applicants to apply at least 60 days before the start term.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-06-08",
+      "label": "International application materials deadline (fall)",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-06-15",
+      "label": "I-20 document deadline (fall)",
+      "notes": "Admitted students must submit official final documents, the $100 enrollment deposit, passport copy and proof of finances by this date.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required if the first language is not English or high school was in a country where English is not an official or widely spoken language. May be waived with three years of upper secondary school in a listed English-speaking country, one year at a U.S. high school, or 24 credits from an accredited U.S. college. ELS Level 112 is also accepted. Nursing (BSN) has no exemptions: TOEFL iBT 83 with speaking 26, IELTS 6.5 with speaking 7, or Duolingo 120 before clinical courses.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "notes": "Tests taken before Jan 21, 2026. The 2026-27 catalog still lists 69 as the TOEFL iBT minimum.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Tests taken on or after Jan 21, 2026 ('4.0 overall').",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "IELTS Academic.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The international admissions page says international students may qualify for academic, talent, athletic and faith-based scholarships. Marian Scholars awards of $8,000 to $18,000 per year are applied at admission for a cumulative GPA of 2.75 or higher (first-year scholarships page; it does not say whether international students are included). International need-based aid is not described.",
+    "src": "idx"
+  },
+  "majors": [
+    {
+      "program": "Nursing (BSN)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "notes": "Admission to the university is direct into a program, but nursing has additional requirements (BSN catalog: 2.80 cumulative GPA, NSG 129 passed with C+ or higher, prerequisites); the English-proficiency bar for nursing is higher."
+    },
+    {
+      "program": "Engineering (E.S. Witchger School of Engineering)",
+      "category": "engineering",
+      "admit_model": "direct_major",
+      "notes": "Admissions page says nursing, education and engineering have additional admission requirements beyond university acceptance; the specific engineering criteria were not found."
+    }
+  ],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

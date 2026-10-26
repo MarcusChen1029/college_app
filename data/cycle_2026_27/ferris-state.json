@@ -1,0 +1,110 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Ferris State - Apply as an International Student",
+      "url": "https://www.ferris.edu/international/office-of-international-education/international-admissions.htm",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Ferris State - English Proficiency Policies",
+      "url": "https://www.ferris.edu/international/office-of-international-education/english-proficiency-policies.htm",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Ferris State - Incoming International Student Scholarships",
+      "url": "https://www.ferris.edu/admissions/financialaid/scholarship/Incoming/incoming-international.htm",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The CDS (C8) says Ferris is test optional and considers ACT/SAT scores if submitted. The international page says SAT is not required and can substitute for English scores. A SAT or ACT score is one input to the Woodbridge N. Ferris scholarship amount (the top Founder's tier needs ACT 31/SAT 1350).",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply online and choose 'International - All Levels'. Needs official secondary transcripts and finishing exams (the office converts them to a U.S.-equivalent GPA used for admission and scholarships), English proof, a financial statement of $36,600 in liquid funds (the 'Canadian students' figure is lower), and a passport copy. Decision and scholarship come within 2 weeks of a complete file; the $100 International Orientation fee is paid after admission to receive the I-20. BS in Artificial Intelligence and BS in Information Security and Intelligence require an essay; College of Engineering Technology programs require proven math proficiency. The application fee is not stated on the pages read.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Application (fall 2027): no international undergraduate deadline published",
+      "notes": "The international undergraduate page lists no deadline; decisions come within 2 weeks of a complete file. Confirm with the Office of International Education and allow time for the I-20 and visa.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Other proofs: SAT reading/writing 510+, ACT reading 19+, ELS level 112 with C or better, IB English 4+, A-level C or higher, CEFR B2, IGCSE/O-level/GCSE grades in English, or two or more years at a U.S. high school, an IB school, or an English-medium international school, or a semester of credit at a U.S. college. Citizens of listed English-speaking countries may be exempt. Ferris may require an English placement test on arrival.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Previous scoring scale.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "New TOEFL iBT scoring system (1-6 scale).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "src": "eng"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 24416,
+    "room_board_usd": 12035,
+    "notes": "International page: estimated first-year international tuition $24,416 per year (14 credits per semester at $872 per credit; the page does not state the academic year). Housing, meal plan and health insurance about $15,336 per year. CDS G1 (2026-27, final July 2026): on-campus food and housing $12,035 for first-year students. Canadian students pay in-state tuition (about $14,952).",
+    "src": "intl"
+  },
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Woodbridge N. Ferris Scholarships are automatic for first-time international students, based on high school GPA (4.0 scale) plus a submitted test score: Founder's up to $10,000/yr (3.9 GPA and ACT 31/SAT 1350/TOEFL 96/IELTS 7.5/PTE 66/Duolingo 120), President's $6,500 (4.0), Provost's $5,500 (3.5), Dean's $4,500 (3.25-3.49), Ferris Crimson $3,000 (3.0), each renewable at 2.75-3.3 cumulative GPA. The international page says awards of $3,000 to $10,000 are made at admission. Students can earn up to $15,000 a year in an on-campus job. CDS H6: 68 nonresident undergraduates received institutional aid averaging $12,130. No need-based aid for international students is described.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

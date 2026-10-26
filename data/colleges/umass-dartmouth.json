@@ -1,0 +1,92 @@
+{
+  "slug": "umass-dartmouth",
+  "name": "University of Massachusetts Dartmouth",
+  "short_name": "UMass Dartmouth",
+  "state_region": "MA",
+  "city": "North Dartmouth",
+  "latitude": 41.62869,
+  "longitude": -71.004552,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.umassd.edu",
+  "admissions_url": "https://www.umassd.edu/undergraduate/",
+  "ipeds_unit_id": 167987,
+  "undergrad_enrollment": 5731,
+  "intl_undergrads": 76,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "UMass Dartmouth Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.umassd.edu/media/umassdartmouth/institutional-research/CDS-2024-2025-20250602.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - University of Massachusetts-Dartmouth (fall 2024 enrollment, 2024-25 cost)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=167987",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=167987",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 10669,
+    "admits": 9670,
+    "enrolled": 1303,
+    "in_state_applicants": 6741,
+    "in_state_admits": 6150,
+    "out_state_applicants": 3164,
+    "out_state_admits": 2833,
+    "intl_applicants": 761,
+    "intl_admits": 687,
+    "pct_submit_sat": 10,
+    "pct_submit_act": 1,
+    "gpa_avg": 3.29,
+    "pct_reporting_gpa": 99.46,
+    "notes": "CDS 2024-2025 (fall 2024 entering class), C1: exact counts; the residency columns also include 3 applicants of unknown residency. International admit rate 687 of 761. Only 10% of enrollees submitted SAT and 1% ACT (C9), so the percentiles come from a small group. The GPA distribution and the C7 importance checkboxes were not machine-readable, so they are omitted. The 2025-2026 CDS was not found as a file (the university's archive page stops at 2024-25); this is the latest readable year."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1050,
+      1160,
+      1260
+    ],
+    "SAT_ERW": [
+      530,
+      590,
+      640
+    ],
+    "SAT_MATH": [
+      520,
+      580,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      30
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 15612,
+    "tuition_out_of_state_usd": 32567,
+    "books_usd": 1400,
+    "room_board_usd": 18566,
+    "other_usd": 1772,
+    "notes": "College Navigator (IPEDS 2024-25): tuition figures include required fees; room and board and other expenses are on-campus. International students are charged the out-of-state rate (the CDS also mentions a NEBHE regional rate for some New England states). The international admissions page asks for proof of funds of at least $54,000."
+  }
+}

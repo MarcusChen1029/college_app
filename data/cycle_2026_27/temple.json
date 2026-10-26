@@ -1,0 +1,199 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Temple University - First-year International Students (deadlines, testing, English proficiency)",
+   "url": "https://admissions.temple.edu/apply/international-students/first-year-international-students",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Temple University - International Students FAQ",
+   "url": "https://admissions.temple.edu/apply/international-students/frequently-asked-questions",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Temple University - International Student Scholarships",
+   "url": "https://payingforcollege.temple.edu/what-financial-aid/financial-aid-offer/scholarships/international-student-scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Temple is test optional: SAT/ACT are not required and applicants who apply without them are equally eligible for merit scholarships. Official SAT or ACT may be submitted if desired.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app"
+  ],
+  "app_fee_usd": 55,
+  "notes": "Temple uses only the Common App ($55, waiver available). Official secondary transcripts with English translations are required (grades 9-11 plus current 12th-grade progress); letters of recommendation are optional (max two). Some Boyer (music), Tyler (art) and Theater, Film and Media Arts majors need an audition, interview or portfolio. Sponsor must show about $35,000 for the I-20 (FAQ). No separate application for the Sullivan Honors College.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-10",
+   "label": "Early Action (non-binding)",
+   "notes": "Apply by Nov. 1 for a decision by Jan. 10. The page prints no year; taken as the current (fall 2027) cycle, application opens Aug. 1. Early Action applicants get priority review.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "Decision usually shortly after the application is complete; can exceed eight weeks in peak season (Oct-Mar). Pre-Nursing and Musical Theater deadlines are not extended.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "#YouAreWelcomeHere scholarship application",
+   "notes": "Separate essay or video application for first-year international applicants; $20,000 per year, renewable. Winners announced by Apr. 1.",
+   "src": "aid"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "#WhyUS scholarship application",
+   "notes": "Separate creative-prompt application; $2,000-$10,000 per year, up to four years. Winners announced by Apr. 1.",
+   "src": "aid"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment deposit deadline",
+   "notes": "Housing is guaranteed for students who commit by May 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No English test needed if English is your native language or you completed three or more years, at the time of application, in a curriculum where English was the sole language of instruction. Accepted tests: TOEFL iBT (incl. Home Edition), IELTS (or Indicator), PTE Academic, ITEP Academic Plus, Duolingo, Cambridge C1/C2, Michigan English Test, or SAT EBRW 550+. Bridge Program: academically qualified students slightly below the minimums (TOEFL 74-78 / 3.5 new scale, IELTS 5.5, Duolingo 100-105, PTE 50-52, Cambridge 160-179) are fully admitted and take 12 credits with extra English support in the first semester. Applicants with no scores or lower scores may get provisional admission and the Intensive English Language Program (FAQ). Some majors, including Fox School of Business, require higher scores (FAQ: TOEFL 84, IELTS 6.5, PTE 56).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Old 0-120 scale, direct admission. The page says 'no sub-scores below 4.0' beside '79 old score / 4.0 new score'. Bridge: 74-78. FAQ also lists conditional admission at 65-78. Fox School of Business: 84. Temple TOEFL institution code 2906.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "New 1-6 scale, direct admission; Bridge 3.5 with no sub-score below 3.5.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS or IELTS Indicator. Bridge 5.5. Fox School of Business 6.5 (FAQ).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "notes": "Bridge 100-105.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Bridge 50-52. Fox School of Business 56 (FAQ).",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 180,
+   "notes": "Cambridge C1 Advanced or C2 Proficiency. Bridge 160-179.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "FAQ: need-based aid is not available to international students. Merit scholarships for first-year international students range up to $20,000 per year for up to four years (FAQ: $1,000-$20,000); no separate application, the admissions application is the scholarship application. Separate-application awards: #YouAreWelcomeHere (two first-year students per the scholarships page, $20,000/yr) and #WhyUS ($2,000-$10,000/yr). Bridge students keep any earned merit scholarship.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Pre-Nursing",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "notes": "The first-year page says the application deadlines for the Pre-Nursing program have not been extended beyond Feb. 1; the progression rules into the nursing major are not on the international page."
+  },
+  {
+   "program": "Boyer, Tyler and Theater, Film and Media Arts majors",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "notes": "Some majors in these schools may require an audition, interview or portfolio; check each school's requirements."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "2906",
+   "note": "Temple lists SAT or TOEFL through ETS/College Board with school code 2906.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "3724",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "2906",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code; email your TRF number to Temple International Admissions with full name and TUid.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "C",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Large public research university; admits most applicants (about 86%) with SAT middle 50% 1030-1310, so an SAT ~1100 international applicant is a likely admit.",
+  "computer_science": "Editorial estimate: large program at a research university; no ranking cited.",
+  "engineering": "Editorial estimate: College of Engineering at a research university; no ranking cited.",
+  "business": "Editorial estimate: Fox School of Business is a well-known regional business school; no ranking cited.",
+  "biology_life_sci": "Editorial estimate; no ranking cited.",
+  "pre_med": "Editorial estimate; no ranking cited.",
+  "economics": "Editorial estimate; no ranking cited.",
+  "math_physics": "Editorial estimate; no ranking cited.",
+  "humanities": "Editorial estimate; no ranking cited.",
+  "arts_design": "Editorial estimate: Tyler School of Art and Architecture and Boyer College of Music and Dance; no ranking cited.",
+  "nursing": "Editorial estimate; no ranking cited."
+ }
+}

@@ -1,0 +1,144 @@
+{
+  "sources": {
+    "req": {
+      "kind": "admissions_site",
+      "title": "Francis Marion University - Admissions Requirements (freshman and international)",
+      "url": "https://www.fmarion.edu/admissions/requirements/",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Francis Marion University - Apply Now (rolling admission)",
+      "url": "https://www.fmarion.edu/admissions/applynow/",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "other",
+      "title": "Francis Marion University - 2026-27 Tuition & Fees (PDF)",
+      "url": "https://www.fmarion.edu/wp-content/uploads/2026/06/2026-27-Student-Fee-distribution-web-all-pages.pdf",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Francis Marion University - Scholarships",
+      "url": "https://www.fmarion.edu/financialassistance/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "asch": {
+      "kind": "financial_aid_site",
+      "title": "Francis Marion University - Admissions Scholarships Application",
+      "url": "https://www.fmarion.edu/admissions/admissions-scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The requirements page says submission of ACT and SAT scores is optional (SAT code 5442, ACT code 3856). The international requirements list no test scores. No minimum GPA is printed for freshmen; admission looks at HS academics, recommendations and activities, plus the core course units (4 English, 4 math, 3 lab science, 2 same foreign language, 3 social science incl. U.S. history, 1 fine arts, 1 elective, 1 PE/ROTC).",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 41,
+    "notes": "Online application at fmarion.edu/applynow; $41 non-refundable fee (the international section does not state a separate fee). International applicants send official transcripts or school certificates directly from the school with an English-evaluated translation and a grading-scale explanation; university-level work from outside the U.S. must be certified by WES. Proof of funds (bank, employer or sponsor statement plus the Certificate of Financial Support) is required before the I-20; the page states a cost of attendance of 'approximately U.S. $33,139' per year, which looks older than the 2026-27 fee sheet. A health history form, immunization record, TB (PPD) test and proof of health insurance (F-1: $50,000 major medical, $25,000 repatriation, $50,000 evacuation, deductible up to $100) are required before registering. Faxes and applicant-mailed copies are not accepted. Contact: International Programs, melissa.dungan@fmarion.edu.",
+    "src": "req"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International degree-seeking students must be accepted by this date (fall 2027)",
+      "notes": "Accepted by July 1 for the fall semester (Nov. 1 spring; April 1 late spring/summer). Printed without a year; treated as fall 2027. Domestic undergraduate admission is rolling with a final cutoff at noon on the Friday before classes start; decisions are made as soon as the file is complete.",
+      "src": "req"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-15",
+      "label": "Admissions Scholarship application due",
+      "notes": "FMU Admission Scholarship application (also used for out-of-state waivers and other admissions scholarships) is due March 15; the year is not printed and is treated as 2027. Merit awards go out in rounds with larger awards earlier, so apply early.",
+      "src": "sch"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The TOEFL, IELTS or Duolingo English Test is required of all international students except those whose native language is English. U.S. transfer students may be admitted without TOEFL if they have a high SAT verbal score or good grades in freshman English. The page does not list a country-exemption list, conditional admission or an ESL pathway.",
+    "src": "req"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "'At least a 500 (61 on the internet based version)'. The page does not give a 1-6 scale minimum.",
+      "src": "req"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "notes": "IELTS may be used in lieu of TOEFL; no minimum score is printed.",
+      "src": "req"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "notes": "Duolingo English Test may be used in lieu of TOEFL; no minimum score is printed.",
+      "src": "req"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The international page says international undergraduates pay all expenses and the University does not award financial aid to them, although some scholarships are available for qualified students. The Academic Distinction Award ($1,000+ for top 40% of class, SAT 1100/ACT 22, 3.0 GPA) is for South Carolina residents. The Admissions Scholarships application (due March 15) covers out-of-state waivers and other admissions scholarships ($500 up to full tuition, room and board); strong GPA (3.0 weighted), class rank and test scores are considered, and eligibility for international students is not spelled out. Students from Brandenburg, Thuringia, Rhineland-Palatinate (Germany), Queensland (Australia) and Taiwan may qualify for in-state tuition under the Sister-State initiative.",
+    "src": "asch"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "fees",
+    "tuition_usd": 10384,
+    "tuition_out_of_state_usd": 20768,
+    "tuition_intl_usd": 20768,
+    "required_fees_usd": 776,
+    "room_board_usd": 11370,
+    "notes": "From the 2026-27 fee sheet, full-time undergraduate per semester: tuition $5,192 for SC residents and $10,384 for non-residents, plus required fees (registration $20, activity $156, IT $112, facility $100 = $388); annual figures here are two semesters. Resident example total on the sheet: $5,580 per semester. Housing and dining: residence hall double room including the All-Access Plus meal plan is $5,685 per semester ($11,370 a year); apartments and other meal plans cost less or more. The sheet text is garbled in places; the non-resident tuition and housing figures were matched to the sheet's own structure (non-resident total = $10,772 per semester, which equals College Navigator's $21,544 annual tuition and fees for 2024-25). Books and other expenses not stated."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5442",
+      "note": "FMU SAT code.",
+      "src": "req"
+    },
+    "act": {
+      "code": "3856",
+      "note": "FMU ACT code.",
+      "src": "req"
+    },
+    "toefl": {
+      "code": null,
+      "note": "The international requirements page does not print a TOEFL institution code; look it up with ETS.",
+      "src": "req"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "req"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "req"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not mentioned on the international page.",
+      "src": "req"
+    }
+  },
+  "tiers": {
+    "general": "D"
+  },
+  "tier_notes": {}
+}

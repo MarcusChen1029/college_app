@@ -1,0 +1,113 @@
+{
+  "slug": "kent-state",
+  "name": "Kent State University at Kent",
+  "short_name": "Kent State",
+  "state_region": "OH",
+  "city": "Kent",
+  "latitude": 41.146653,
+  "longitude": -81.342533,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.kent.edu",
+  "admissions_url": "https://www.kent.edu/admissions",
+  "ipeds_unit_id": 203517,
+  "undergrad_enrollment": 21144,
+  "intl_undergrads": 932,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Kent State University at Kent Common Data Set 2025-2026 (DOCX)",
+      "url": "https://www-s3-live.kent.edu/s3fs-root/s3fs-public/file/KC%20CDS_2025-2026-Final_web_0.docx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 25526,
+    "admits": 16015,
+    "enrolled": 4026,
+    "in_state_applicants": 16510,
+    "in_state_admits": 10028,
+    "out_state_applicants": 5903,
+    "out_state_admits": 3421,
+    "intl_applicants": 3113,
+    "intl_admits": 2566,
+    "pct_submit_sat": 16,
+    "pct_submit_act": 43,
+    "gpa_avg": 3.64,
+    "pct_reporting_gpa": 98.1,
+    "gpa_distribution": {
+      "4.0": 25.3,
+      "3.75-3.99": 18.78,
+      "3.50-3.74": 17.64,
+      "3.25-3.49": 15.15,
+      "3.00-3.24": 13.0,
+      "2.50-2.99": 9.07,
+      "2.0-2.49": 0.86,
+      "1.0-1.99": 0.2
+    },
+    "notes": "CDS is for the Kent campus only (Kent State publishes a separate CDS for each campus). Counts are CDS C1 (fall 2025); GPA distribution is the 'all enrolled students' column of C11. No early decision, early action or waiting list. The CDS admit rate (62.7%) is lower than the rate implied by the fall 2024 figures on third-party sites; only the CDS figures are used here. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 932)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      990,
+      1120,
+      1230
+    ],
+    "SAT_ERW": [
+      510,
+      570,
+      640
+    ],
+    "SAT_MATH": [
+      480,
+      550,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  }
+}

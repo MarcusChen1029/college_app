@@ -1,0 +1,150 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Mercyhurst University - International Admissions (undergraduate requirements, English minimums, scholarships)",
+      "url": "https://www.mercyhurst.edu/admissions/international",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Mercyhurst University - Undergraduate Admissions (rolling admission, test-optional, application)",
+      "url": "https://www.mercyhurst.edu/admissions-aid/undergraduate-admissions",
+      "accessed": "2026-10-26"
+    },
+    "aff": {
+      "kind": "financial_aid_site",
+      "title": "Mercyhurst University - Financial Aid and Affordability (estimated tuition, fees, housing and meals 2026-2027)",
+      "url": "https://www.mercyhurst.edu/admissions-aid/financial-aid-guide/financial-aid-and-affordability",
+      "accessed": "2026-10-26"
+    },
+    "couns": {
+      "kind": "admissions_site",
+      "title": "Mercyhurst University - Information for School Counselors and Enrollment Partners (PDF; undated, cites a 2021 freshman profile)",
+      "url": "https://www.mercyhurst.edu/sites/default/files/counselorinformationweb.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "'We do not require SAT or ACT scores, though students who believe their scores represent a positive component of their admissions portfolio are invited to submit them.' An older counselor handout says scores are strongly recommended for merit-scholarship consideration; the current undergraduate page does not repeat that.",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "coalition",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Mercyhurst's own application is described as free (apply.mercyhurst.edu); the Common App and Coalition application are also accepted. International undergraduates submit the online application, official transcripts in English and proof of English proficiency, then upload a bank affidavit, certification of finances and passport photo page to the Admissions Portal. Transfer students from non-U.S. universities also need a certified credit evaluation (WES, ECE or SpanTran). Dance and Music applicants need an audition (older counselor handout). F-1 students are automatically billed for the university health insurance plan unless they have qualifying U.S. coverage.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission (fall 2027 entry): no international undergraduate deadline published",
+      "notes": "The undergraduate page says admission is rolling and the sooner you apply the sooner you hear back; no date is printed. An older, undated counselor handout lists March 1 as a recommended application date, with offers released weekly from late September and a May 1 confirmation date; that is not repeated on the current site, so it is not recorded as a deadline. Allow time for the I-20 and visa.",
+      "src": "ug"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_all_international",
+    "waiver_notes": "The international page says 'students with demonstrated English proficiency are invited to apply' and lists the accepted tests; it names no waivers or exemptions. Contact the International Student Office (iso@mercyhurst.edu, 814-824-3059) about exemptions; no ESL or conditional-admission pathway is described.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "subs": {
+        "each_section": 17.25
+      },
+      "notes": "Minimum 17.25 in each section. TOEFL Essentials is also accepted (8.0 overall and 8.0 each section) but is not a selectable test here. The page gives no value for the new 1-6 TOEFL scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.8,
+      "subs": {
+        "each_section": 5.8
+      },
+      "notes": "Minimum 5.8 overall and 5.8 in each section.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "subs": {
+        "each_section": 100
+      },
+      "notes": "Minimum 100 overall and 100 in each section.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Page says '53+'.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": null,
+    "notes": "The international page says scholarships for international students are awarded to those 'with strong high school academic achievements and financial need'; no amounts, number of awards or application steps are published for internationals. The financial aid page says institutional scholarships go up to $25,000 but does not say whether international students are eligible. International students are not eligible for federal aid.",
+    "src": "intl"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "aff",
+    "tuition_usd": 45900,
+    "required_fees_usd": 2930,
+    "room_board_usd": 13716,
+    "notes": "Estimated 2026-27 residential cost from the financial aid page: basic tuition $45,900 (flat for 12-18 credits), standard fees $2,930, housing $6,154 (Baldwin/McAuley Hall double) plus Laker Unlimited meals $7,562 = $13,716. One-time orientation ($280) and ID ($50) fees are excluded; the page totals $62,876 with them. Warde Hall/Mercy suite housing is $8,848. F-1 students are also billed the health insurance plan (amount not published on the page)."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

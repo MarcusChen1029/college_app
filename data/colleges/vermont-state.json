@@ -1,0 +1,50 @@
+{
+  "slug": "vermont-state",
+  "name": "Vermont State University",
+  "short_name": "VTSU",
+  "state_region": "VT",
+  "city": "Randolph",
+  "latitude": 43.939623,
+  "longitude": -72.604498,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://vermontstate.edu/",
+  "admissions_url": "https://vermontstate.edu/admission/",
+  "ipeds_unit_id": 231165,
+  "undergrad_enrollment": 4108,
+  "intl_undergrads": 107,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: Vermont State University (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=231165",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=231165",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=231165",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 3130,
+    "admits": 2605,
+    "notes": "Baseline from IPEDS / College Navigator (fall 2024): 3,529 applicants, 82% admitted (rounded; the admit count is not shown), 23% of admitted enrolled. No Common Data Set was found on vermontstate.edu (searched twice), so SAT/ACT percentiles, GPA, intl applicants/admits and C7 factors are not filled in. IPEDS lists SAT/ACT as not considered, while the admissions site says scores are optional and considered if submitted. Vermont State is a multi-campus university (Castleton, Johnson, Lyndon, Randolph, Williston and learning sites); IPEDS reports it as one institution. The Randolph address is the IPEDS main address. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "enrolled": 567
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "lewis-clark-state",
+  "name": "Lewis-Clark State College",
+  "short_name": "LC State",
+  "state_region": "ID",
+  "city": "Lewiston",
+  "latitude": 46.412199,
+  "longitude": -117.024875,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.lcsc.edu/",
+  "admissions_url": "https://www.lcsc.edu/admissions",
+  "ipeds_unit_id": 142328,
+  "undergrad_enrollment": 3793,
+  "intl_undergrads": 53,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "cn": {
+      "kind": "ipeds",
+      "title": "College Navigator - Lewis-Clark State College (fall 2024 enrollment, student-faculty ratio, admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=142328",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=142328",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 4256,
+    "admits": 3821,
+    "enrolled": 438,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); no Common Data Set was found on the LC State site. College Navigator fall 2024 shows 4,086 applicants and 88% admitted. IPEDS reports no SAT/ACT percentiles for this school, and no GPA, international-applicant or residency splits are available. Undergraduate enrollment (3,793; about 3,800 total including a handful of graduate students) and the 16:1 student-faculty ratio are from College Navigator, fall 2024. Many enrolled students are in associate and career-technical programs, not only bachelor's degrees."
+  }
+}

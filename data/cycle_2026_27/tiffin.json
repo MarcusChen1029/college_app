@@ -1,0 +1,155 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Tiffin University - International admissions: Admission requirements (deadlines, fee, English minimums)",
+      "url": "https://www.tiffin.edu/admissions/international-students/admission-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "intlug": {
+      "kind": "admissions_site",
+      "title": "Tiffin University - International undergraduate admission requirements",
+      "url": "https://www.tiffin.edu/admissions/international-students/undergraduate-admission-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Tiffin University - Admission requirements for first-year students",
+      "url": "https://www.tiffin.edu/admissions/undergraduate-admissions/admission-requirements-for-first-year-students/",
+      "accessed": "2026-10-26"
+    },
+    "bull": {
+      "kind": "other",
+      "title": "Tiffin University 2026-2027 Academic Bulletin (International undergraduate students)",
+      "url": "https://www.tiffin.edu/wp-content/uploads/2026_27-Academic-Bulletin.pdf",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "Tiffin University - Tuition and fees (undergraduate on campus 2026-2027)",
+      "url": "https://www.tiffin.edu/admissions/financial-aid/tuition-fees/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Tiffin University - Grants and scholarships for international students",
+      "url": "https://www.tiffin.edu/admissions/financial-aid/grants-scholarships-international/",
+      "accessed": "2026-10-26"
+    },
+    "progs": {
+      "kind": "admissions_site",
+      "title": "Tiffin University - View all programs",
+      "url": "https://www.tiffin.edu/academics/view-all-programs/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT scores are not required for traditional acceptance; they are used for placement and may be requested for special consideration (for example if the GPA is below 2.0). Minimum cumulative high school GPA 2.0. International applicants may use ACT English 18 or SAT 880 as proof of English instead of a language test.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "$75 non-refundable fee, paid in the application portal. International freshmen need a high school transcript (2.0 GPA, English translation if needed), English proof, a bank or government statement showing funds for one academic year, and a passport copy; a visa copy if held. Unofficial copies are accepted for review and official originals are due by the first day of orientation. Essays and recommendations are not required (a writing sample, letters or an interview may be requested). Admission decisions are made immediately after review.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "International application deadline, fall (August) intake (fall 2027 entry)",
+      "notes": "The international admissions page says the application deadline for the August (Fall) intake is July 15th and November 15th for the January (Spring) intake; no year is printed, so the date is treated as fall 2027. Domestic admission has no published deadline and decisions are made immediately.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants whose instruction was in English may be waived with a letter from the principal or registrar; applicants educated mainly in listed English-speaking countries (e.g. Canada excluding Quebec, Australia, Singapore, UK) are exempt. Admissions may still request proof from any applicant. Conditional admission and ESL pathways are not mentioned on the pages read.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "The admissions table lists TOEFL 61 without naming iBT (TOEFL Home accepted). CONFLICT: the 2026-27 Academic Bulletin states TOEFL 72 iBT, IELTS 5, Duolingo 105, PTE 51 for international undergraduates; confirm with ia@tiffin.edu before relying on the lower figure.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "Admissions page; the bulletin also says 5.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 85,
+      "notes": "Admissions table says 85; the page text also mentions 120, and the bulletin says 105.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 42,
+      "notes": "Admissions page; the bulletin says 51.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 35700,
+    "tuition_out_of_state_usd": 35700,
+    "tuition_intl_usd": 35700,
+    "required_fees_usd": 1000,
+    "room_board_usd": 13388,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 74,
+    "intl_avg_award_usd": 25437,
+    "notes": "Undergraduate on campus 2026-27: tuition $1,190 per credit hour, $35,700 per year; technology fee $225 and campus services fee $275 per semester ($1,000 per year). Housing and food in the cost estimate: $13,388. The page states tuition and fees are the same for international and domestic students. Books and a total are not published on the page. CDS H6 (fall 2023): 74 undergraduate nonresidents received institutional aid, average $25,437 (the CDS does not say need or non-need).",
+    "src": "tuit"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "International first-year merit scholarships are decided during academic review (GPA tiers). For fall 2027 entry (the 2027-2028 column): Trustee $19,000 (3.8+), President $18,000 (3.5-3.79), Dean Grant $16,000 (3.0-3.49), 1888 Grant $14,000 (2.5-2.99), Green & Gold Grant $12,000 (2.49 and below); the 2026-27 column is $18,000 to $11,000. International students who qualify are also considered for a supplementary $1,000/year grant. Amounts are not increased after the first year; full-time enrollment is required. Whether the award is automatic is not stated.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "Business (BBA: Accounting, Finance, Marketing, Management and others)",
+      "category": "business",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission."
+    },
+    {
+      "program": "Computer Science (BS: software development, network and systems administration, video game design and others) and Cybersecurity (BS)",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission."
+    },
+    {
+      "program": "Biology (BS, Pre-Professional Pathway, on campus)",
+      "category": "biology_life_sci",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission. There is no stand-alone nursing major (pre-licensure nursing is a dual-degree pathway with a partner college)."
+    }
+  ],
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "computer_science": "D",
+    "biology_life_sci": "D"
+  },
+  "tier_notes": {}
+}

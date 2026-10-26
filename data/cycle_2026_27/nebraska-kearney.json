@@ -1,0 +1,176 @@
+{
+  "sources": {
+    "req": {
+      "kind": "admissions_site",
+      "title": "UNK - Admissions Requirements (first-time freshmen)",
+      "url": "https://www.unk.edu/admissions/undergraduate/admissions-requirements.php",
+      "accessed": "2026-10-26"
+    },
+    "docs": {
+      "kind": "admissions_site",
+      "title": "UNK Global - Application Requirements, Documents and Fees",
+      "url": "https://www.unk.edu/international/international-admissions/application-documents-and-fees.php",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UNK Global - English Proficiency Requirements",
+      "url": "https://www.unk.edu/international/international-admissions/admission-requirements.php",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UNK Global - International Student Scholarships and Aid",
+      "url": "https://www.unk.edu/international/international-admissions/scholarship-opportunities.php",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "admissions_site",
+      "title": "UNK Global - Costs (international undergraduates, 2026-2027)",
+      "url": "https://www.unk.edu/international/international-admissions/costs.php",
+      "accessed": "2026-10-26"
+    },
+    "pgm": {
+      "kind": "other",
+      "title": "UNK - Program search",
+      "url": "https://www.unk.edu/academics/program-search/index.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Freshmen must meet the 16-unit core course requirements and one performance criterion: ACT 20, SAT 1040, top half of the class, or a 3.0 cumulative GPA, so test scores are one option rather than a requirement (CDS C8A: SAT/ACT considered if submitted). International applicants need a 3.0 cumulative high school GPA; below that they may be considered through Admission by Review. UNK uses ACT/SAT for placement, Honors and academic merit scholarships, and strongly encourages submitting them.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 45,
+    "notes": "Online application with a $45 non-refundable fee (the same fee is charged on the international application). International undergraduates submit: passport copy, a 3.0 cumulative high school GPA, official high school transcript and diploma certified by a NACES-approved evaluation service, and English proficiency scores with the application. After admission, a financial affidavit and bank document are needed for the I-20 (no dollar amount is stated; the costs page says students must prove support for the estimated academic-year total). Core courses: 16 units (4 English, 3 math including Algebra I-II and Geometry, 3 social science, 3 natural science, 2 world language, 1 elective). Admission by Review is available to those who miss the criteria.",
+    "src": "docs"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-15",
+      "label": "International application documents due, fall 2027 entry",
+      "notes": "UNK Global lists document deadlines of June 15 (fall), Nov. 15 (spring) and March 15 (summer). No year is printed, taken as fall 2027. The undergraduate catalog says international students should finish the steps at least four months before enrollment, so apply earlier for a smooth I-20 and visa process. Students below the English minimums may apply to the English Language Institute.",
+      "src": "docs"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: a diploma or degree from an accredited U.S. institution (AAS and GED do not qualify); IB diploma with a 5+ in a Higher Level English course; high school or U.S. bachelor's education in listed countries or regions (including Australia, Canada, Ireland, New Zealand and the UK); or CEFR B2+ shown on a high school transcript. An ACT English score of 20 or an SAT critical reading score of 494 also meets the requirement (the requirements table lists SAT 1030 and ACT 20). Unofficial scores are not accepted. Conditional admission: students below the minimums (or from countries where tests are unavailable) can enter the English Language Institute (ELI), take a placement exam on arrival and study intensive English full- or part-time before degree courses; ELI placement fee $50, estimated 2026-27 ELI cost $25,689 including housing, meals and insurance.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Full undergraduate admission. TOEFL ITP is not accepted for degree-seeking undergraduates.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Listed as 'TOEFL Internet-Based (New) 4.0'; the page notes the iBT moves to an adaptive 1-6 scale in January 2026 while scores are still reported on the 0-120 scale during the transition.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Academic IELTS only, sent electronically through IELTS E-Delivery; paper Test Report Forms are not accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Minimum for full undergraduate admission.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 51,
+      "notes": "Overall score of 51.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 160,
+      "notes": "Cambridge Certificate in Advanced English (CAE) 160; Cambridge English B2 or higher (CEFR B2+) is also accepted.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "All admitted international degree-seeking students on campus are automatically considered for the International Loper Tuition Waiver: a 30% cut in nonresident tuition (from $533 to $373.10 per credit hour in 2026-27), about $4,797 per year and $19,188 over four years, for 12+ credit hours a semester, renewable with a 2.5 GPA and 24+ hours a year, up to ten semesters. The scholarship page also prints older figures ($4,599/yr and $18,396 over four years, and a heading of $4,383); the 2026-27 rate table and the costs page both use $4,797. The Kearney Noon Rotary International Scholarship also exists but lists no amount. Federal aid is not available to international students. CDS H6: 63 nonresidents received institutional non-need-based aid (average $4,301).",
+    "src": "schol"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 15990,
+    "intl_extra_fees_usd": 4577,
+    "total_coa_usd": 35064,
+    "notes": "UNK Global costs page (2026-27, 15 credit hours a semester, double room, meal plan): international tuition and fees $18,193, housing and meal plan $12,294, health insurance $4,577, total $35,064 before the tuition waiver ($30,267 after the $4,797 waiver); books and indirect costs are not included. intl_extra_fees_usd is the required health insurance. The CDS lists required fees of $2,153 for first-year students, $50 less than implied by the $18,193 page total.",
+    "src": "costs"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code was found on the admissions pages read; look up University of Nebraska at Kearney in the College Board code search.",
+      "src": "req"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code was found on the admissions pages read; look it up at act.org.",
+      "src": "req"
+    },
+    "toefl": {
+      "code": "6467",
+      "note": "UNK's ETS institution code per the English Proficiency Requirements page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Scores must be sent electronically through IELTS E-Delivery; no institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "engineering": "No tier: UNK lists only 2+2 / 3+2 engineering foundations programs and a chemical engineering 3+1 emphasis, not a stand-alone undergraduate engineering degree. No nursing tier: the program search shows only Pre-Nursing."
+  }
+}

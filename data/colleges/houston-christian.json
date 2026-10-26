@@ -1,0 +1,130 @@
+{
+  "slug": "houston-christian",
+  "name": "Houston Christian University",
+  "short_name": "HCU",
+  "state_region": "TX",
+  "city": "Houston",
+  "latitude": 29.693819,
+  "longitude": -95.515954,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://hc.edu",
+  "admissions_url": "https://hc.edu/admissions/",
+  "ipeds_unit_id": 225399,
+  "undergrad_enrollment": 3277,
+  "intl_undergrads": 143,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Houston Christian University Common Data Set 2025-2026 (PDF)",
+      "url": "https://hc.edu/publications/IRE/ire2526/HCU-CDS-2025-2026_PDF_Publish_07-17-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Houston Christian University (IPEDS, fall 2024 admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=225399",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11768,
+    "admits": 10174,
+    "enrolled": 1001,
+    "in_state_admits": 8951,
+    "out_state_admits": 926,
+    "intl_admits": 165,
+    "pct_submit_sat": 25.37,
+    "pct_submit_act": 4.1,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 93.31,
+    "gpa_distribution": {
+      "4.0": 2.79,
+      "3.75-3.99": 20.88,
+      "3.50-3.74": 23.13,
+      "3.25-3.49": 23.23,
+      "3.00-3.24": 18.84,
+      "2.50-2.99": 9.96,
+      "2.0-2.49": 0.96,
+      "1.0-1.99": 0.21
+    },
+    "notes": "CDS fall 2025 entering class (C1). Applicants = men 4,428 + women 7,337 + unknown 3 (the CDS total cell was left at 0); admitted 10,174 (86.5%); enrolled 1,001. Admits by residency: Texas 8,951, other states 926, international 165, unknown 132. International enrolled first-years: 43. International applicants (C1 residency row) were not reported, so intl_applicants is left null. College Navigator shows 8,455 applicants / 84% admitted for fall 2024. C9: 254 enrollees (25.37%) submitted SAT and 41 (4.10%) ACT. C11/C12 GPA: 93.31% reported, average 3.43. Undergraduate enrollment 3,277 and nonresident 143 are the B1/B2 'Total Undergraduates' figures (all students, including part-time and non-degree). Student-faculty ratio 17:1 (3,742 students, 215 faculty; CDS I-2)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      980,
+      1090,
+      1210
+    ],
+    "SAT_ERW": [
+      500,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      470,
+      540,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      22,
+      27
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      27
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "C",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT not required for admission but considered if submitted. C8F: 'Freshmen applicants will have the option of applying with test scores or applying as \"test optional\" and not including scores.'"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 42050,
+    "required_fees_usd": 2680,
+    "room_board_usd": 13642,
+    "books_usd": 1330,
+    "other_usd": 4721,
+    "total_coa_usd": 64423,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 113,
+    "intl_avg_award_usd": 31106,
+    "notes": "CDS G1/G5 (2026-27, residential): tuition $42,050; required fees $2,680; housing $9,072 + meals $4,570 = $13,642; books $1,330; transportation $1,919 + other $2,802 = $4,721. total_coa_usd is the sum of those components (not a printed total). CDS H6: institutional need-based and non-need-based aid are both marked available to nonresidents; 113 degree-seeking nonresidents received it, average $31,106, total $3,514,978."
+  }
+}

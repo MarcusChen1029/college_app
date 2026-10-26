@@ -1,0 +1,95 @@
+{
+  "slug": "uccs",
+  "name": "University of Colorado Colorado Springs",
+  "short_name": "UCCS",
+  "state_region": "CO",
+  "city": "Colorado Springs",
+  "latitude": 38.892735,
+  "longitude": -104.800296,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uccs.edu/",
+  "admissions_url": "https://www.uccs.edu/apply",
+  "ipeds_unit_id": 126580,
+  "undergrad_enrollment": 9302,
+  "intl_undergrads": 83,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (via College Navigator)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=126580",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=126580",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=126580",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 13103,
+    "pct_submit_sat": 34,
+    "pct_submit_act": 6,
+    "notes": "Baseline from IPEDS via College Navigator (fall 2024 entering class). UCCS's 2025-26 Common Data Set PDF is an empty template and its 2024-25 CDS keeps labels and values in separate text layers that cannot be matched reliably, so no CDS figures are used. IPEDS gives 97% admitted (rounded), so the admit count is left null; international applicant/admit counts, GPA and class-rank data are not added. Undergraduate enrollment is fall 2024 (9,302). Test-score percentiles apply to enrolled first-time students. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "admits": 12653,
+    "enrolled": 1747
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      580,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      18,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "UCCS admissions page: UCCS is test-optional; no minimum GPA or ACT/SAT requirement."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 10149,
+    "tuition_out_of_state_usd": 24336,
+    "tuition_intl_usd": 24336,
+    "room_board_usd": 12918,
+    "books_usd": 1800,
+    "other_usd": 5488,
+    "notes": "College Navigator (IPEDS) estimated expenses for full-time beginning undergraduates, 2024-25: tuition and fees in-state $10,149, out-of-state $24,336; on-campus food and housing $12,918; books $1,800; other $5,488. Current (2026-27) rates were not confirmed; the bursar's tuition pages and bill estimator carry them."
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "NKU - Undergraduate international admission instructions",
+      "url": "https://www.nku.edu/admissions-aid/choose-your-path/international/application-process/undergrad/index.html",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "NKU - International undergraduate student costs (2025-2026)",
+      "url": "https://www.nku.edu/admissions-aid/choose-your-path/international/tuition-fees/undergrad/index.html",
+      "accessed": "2026-10-26"
+    },
+    "aelp": {
+      "kind": "admissions_site",
+      "title": "NKU - American English Language Program",
+      "url": "https://www.nku.edu/admissions-aid/choose-your-path/international/application-process/american-english-language-program/index.html",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "NKU - Undergraduate admissions process (direct admit)",
+      "url": "https://www.nku.edu/admissions-aid/choose-your-path/undergraduate/admissions-process/index.html",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "NKU - International admissions FAQ",
+      "url": "https://www.nku.edu/admissions-aid/choose-your-path/international/application-process/faqs/index.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "admissions_site",
+      "title": "NKU - Scholarships for current international students",
+      "url": "https://www.nku.edu/international-students/student-resources/scholarships/index.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "NKU directly admits high school seniors with an unweighted GPA of 2.75 or higher (fall 2026 page); the page does not mention test scores. CDS 2023-2024 C8F says ACT/SAT are required for under-21 applicants below a 2.75 GPA, and select programs may require them. International freshmen must submit ONE of TOEFL, IELTS, PTE Academic, SAT or ACT as English proof, so a test report is effectively needed (SAT/ACT can serve as that proof).",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 44,
+    "notes": "International application fee is $44 (non-refundable, paid after submitting the NKU undergraduate online application; the AELP fee is a separate $55). Required: passport copy, official transcripts from all secondary schools (certified English translation), official English test report. Common App use not confirmed on the pages read. Nursing, Health Science, Radiologic Technology, Radiation Therapy and Respiratory Care have higher standards; Music needs an audition.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-04-15",
+      "label": "Final overseas application deadline, fall intake (fall 2027 entry)",
+      "notes": "Page prints no year; treated as fall 2027. Applications must come with all required documents. NKU admits on a rolling basis (CDS: notification begins mid-August for the fall 2023 cycle). Spring intake: final overseas application Oct. 15.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-05-01",
+      "label": "Undergraduate confirmation deadline (fall intake)",
+      "notes": "Page prints no year; treated as fall 2027. Spring-intake confirmation is Oct. 22.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-05-15",
+      "label": "Final overseas I-20 request deadline (fall intake)",
+      "notes": "Page prints no year; treated as fall 2027. Needs the I-20 request form and valid financial documents. Spring-intake I-20 request: Nov. 1.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "All non-native English speakers must send official English proficiency scores. International freshmen submit ONE of TOEFL, IELTS, PTE Academic, SAT or ACT. Full admission without restrictions needs TOEFL iBT 79 (reading 14+), IELTS 6.5 (reading 5.5+, writing 5+), PTE 55, or SAT EBRW 480+ (or Writing and Language 25+ and Reading 26+) or ACT English 18 and Reading 20. Lower scores (TOEFL iBT 61, IELTS 5.5 with reading and writing 5+, PTE 44 with reading 42+) give admission with restrictions: placement tests in each deficient area before registering. Applicants below those can get conditional admission through the American English Language Program (full admission there needs IELTS 5.5 or TOEFL iBT 61; students below that start in AELP, levels 1-6).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "rec": 79,
+      "notes": "61 = admission with restrictions (placement tests before registering); 79 with reading 14+ = full admission without restrictions. Paper TOEFL 550 (reading 48) full / 500 restricted. School code 1574.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "rec": 6.5,
+      "notes": "5.5 with reading and writing 5+ = admission with restrictions; 6.5 with reading 5.5+ and writing 5+ = full admission.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "rec": 55,
+      "notes": "44 with reading 42+ = admission with restrictions; 55 = full admission.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "NKU's international admission and cost pages publish no scholarship amounts for new international freshmen; the international-student scholarship page only lists awards for current NKU students (e.g. Weiss $500). CDS 2023-2024 H6 shows 298 nonresident undergraduates received institutional aid (average $15,100), so institutional aid exists but the program is not published; ask isss@nku.edu.",
+    "src": "faq"
+  },
+  "cost": {
+    "year": "2025-2026",
+    "tuition_intl_usd": 15000,
+    "tuition_out_of_state_usd": 15000,
+    "required_fees_usd": 850,
+    "room_board_usd": 12314,
+    "books_usd": 900,
+    "other_usd": 1786,
+    "total_coa_usd": 30850,
+    "notes": "NKU international costs page, standard rate: $625 per credit hour, $7,500 per semester (12+ credits); fees $850 (vary by program); residence hall $7,360 + meal plan $4,954 (typical); books $900; required health insurance $1,786; estimate $30,850. A lower $463/credit rate applies only to F-1 students graduating from Kentucky, Ohio or Indiana high schools. 2026-27 rates not yet posted.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Nursing and other selective health programs (Health Science, Radiologic Technology, Radiation Therapy, Respiratory Care)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": true,
+      "notes": "NKU's international page says these programs require higher standards than regular admission; the specific thresholds are not published there."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "1574",
+      "note": "NKU SAT school code per the international admissions page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1566",
+      "note": "NKU ACT school code per the international admissions page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "1574",
+      "note": "NKU TOEFL school code per the international admissions page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; send IELTS results to NKU electronically.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Duolingo is not listed among NKU's accepted undergraduate tests.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

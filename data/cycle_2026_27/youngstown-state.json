@@ -1,0 +1,173 @@
+{
+ "sources": {
+  "frosh": {
+   "kind": "admissions_site",
+   "title": "YSU International Programs Office - Apply as an International Freshman",
+   "url": "https://ysu.edu/international-programs-office/apply-now/quick-menu/apply-as-international-freshman",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "YSU Undergraduate Catalog 2026-2027 - International Undergraduate Admission",
+   "url": "https://catalog.ysu.edu/undergraduate/general-information/admission/international-undergraduate-admission/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "YSU International Programs Office - English Proficiency Requirements",
+   "url": "https://ysu.edu/international-programs-office/apply-now/quick-menu/more-information/english-proficiency-requirements",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "YSU International Programs Office - Tuition & Costs 2026-2027",
+   "url": "https://ysu.edu/international-programs-office/apply-now/quick-menu/tuition-costs",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "YSU International Programs Office - Scholarships",
+   "url": "https://ysu.edu/international-programs-office/apply-now/quick-menu/scholarship",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not required for admission (CDS C8: considered if submitted). A 26 ACT / 1240 SAT is the Sokolov Honors College threshold (for 2026-27, applicants with a 3.5+ GPA and no test are also encouraged to apply). SAT 920 or ACT 17 can be used to meet the English requirement.",
+  "src": "aid"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "International freshmen apply through YSU's own portal; the $75 non-refundable fee can be paid via Flywire. Minimum 2.00 high school GPA. Passport copy and official credentials are required: a NACES credential evaluation (IEE, TEC or Scholaro), except applicants from Nepal, Bangladesh, India, Sri Lanka, Malaysia, Vietnam, Taiwan and Thailand, whose school sends records by email to intadm@ysu.edu. F-1 students must show funds for one year. Decisions take at least 10 business days after the file is complete. The page says applications from countries affected by U.S. travel restrictions are temporarily not being processed.",
+  "src": "frosh"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-06-01",
+   "label": "International freshman priority deadline, fall 2027",
+   "notes": "Catalog lists fall June 1 and spring Nov 1 as priority deadlines (no year printed; fall 2027 assumed). Summer admission is not available to international students.",
+   "src": "cat"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt if education was in English at a secondary or post-secondary school in a listed country (Australia, Canada, Ghana, Ireland, Kenya, Nigeria, South Africa, United Kingdom and others), after 24 semester hours of English-medium college work, or after ELI Level 5. SAT 920 (EBRW+Math) or ACT 17 also meets the requirement. Scores older than two years are not accepted. Conditional admission is offered with English study at YSU's English Language Institute (ELI); the 1-semester International Pathway Program accepts IELTS 5.0, TOEFL 46 or Duolingo 85.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 67,
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Page lists 'Updated 2026 TOEFL iBT scoring system: 4' without naming the 1-6 scale. Pre-nursing and dental hygiene also need a writing subscore of 4.0.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "At least 5.0 on each subscale; writing 6.0 for pre-nursing and dental hygiene.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Writing subscore 105 for pre-nursing and dental hygiene.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 17177,
+  "required_fees_usd": null,
+  "room_board_usd": 12000,
+  "books_usd": 1200,
+  "other_usd": 1491,
+  "total_coa_usd": 31868,
+  "notes": "YSU International Programs Office estimate for 2026-27 (9 months, 12-18 credits): average tuition and fees $17,177, room and board $12,000, books $1,200, mandatory health insurance $1,491; total $31,868. The tuition rate is locked for four years from first enrollment. International undergraduates pay the non-resident rate.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Scholarship Awards for first-time freshmen, by high school GPA: $1,000 (3.0-3.39), $2,000 (3.4-3.69), $3,000 (3.7+) per year, renewable up to 4 years with 24 credits per year and a 3.0 GPA; spring starters receive the award from the following fall. Sokolov Honors College (26 ACT/1240 SAT, 3.5 GPA): $1,000 tuition plus $2,000 housing. Federal aid is not available to international students.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN), Dental Hygiene (BDH), Radiologic Technology, Respiratory Care and related health programs",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Restricted programs: applicants are admitted to a pre-major (e.g. Pre-Nursing) and apply later; the major cannot be changed into a restricted program after the initial decision. Pre-Nursing needs high school chemistry with a C or better plus a minimum English writing subscore."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "1975",
+   "note": "The English proficiency page gives 1975 as YSU's institution code (the ACT code is the exception).",
+   "src": "eng"
+  },
+  "act": {
+   "code": "3368",
+   "note": "YSU ACT code.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "1975",
+   "note": "YSU institution code (also listed for graduate admissions).",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Send scores through the Duolingo link on the English proficiency page (go.duolingo.com/YSU); no code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

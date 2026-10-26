@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "ug": {
+   "kind": "admissions_site",
+   "title": "ESU Office of International Education - Admissions process for undergraduate students",
+   "url": "https://www.emporia.edu/office-international-education/admissions-costs/admissions-process-undergraduate-students/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "ESU Office of International Education - Total annual cost for international students",
+   "url": "https://www.emporia.edu/office-international-education/admissions-costs/total-cost-international-students/",
+   "accessed": "2026-10-26"
+  },
+  "pres": {
+   "kind": "financial_aid_site",
+   "title": "ESU - Presidential Scholarship (freshman GPA/ACT table)",
+   "url": "https://www.emporia.edu/admissions-costs/admissions-and-costs/scholarships/presidential-scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "ESU - English proficiency requirements (placement-test exemption scores)",
+   "url": "https://www.emporia.edu/humanities-social-sciences/languages-literature-writing/intensive-english-program/english-proficiency-requirements/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT or SAT scores are not required for undergraduate international applicants (except athletes); submitting them can qualify students for academic scholarships.",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "notes": "Own online application; $60 non-refundable fee. New freshmen need completion of secondary school with a cumulative GPA of 2.5 or better (converted to the US scale). Steps: apply, apply for scholarships, receive admission package, apply for visa. Essays and recommendations are not listed.",
+  "src": "ug"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International fall 2027 application deadline",
+   "notes": "Rolling admission; the cost page prints Fall: May 1 without a year (treated as 2027). Spring: Oct. 1; summer: March 1.",
+   "src": "cost"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Proficiency is shown by citizenship of Australia, Belize, Canada (except Quebec), Commonwealth Caribbean, Ghana, Ireland, Liberia, New Zealand, Nigeria, UK or US; a degree completed in one of those countries; or four years of Cambridge International curriculum / two years of AS or A level. Scores below the exemption level do not necessarily block admission: students are tested at orientation and may receive an I-20 for the Intensive English Program (IEP) first. Scores may be submitted until the first day of international orientation.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 72,
+   "subs": {
+    "each_section": 15
+   },
+   "notes": "This is the exemption level from the ESU English placement test (academic I-20); no new 1-6 scale value is listed.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "Exemption level.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Exemption level.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 49,
+   "subs": {
+    "each_section": 40
+   },
+   "notes": "Exemption level.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 15675,
+  "room_board_usd": 9950,
+  "other_usd": 3000,
+  "total_coa_usd": 28625,
+  "notes": "ESU international page (no academic year is printed; entered as 2026-2027 as the current page): non-resident undergraduate flat-rate tuition and fees $15,675 (12+ credit hours with at least one on campus), on-campus living $9,950, insurance/books/etc. $3,000 (entered as other), total $28,625. The page also lists a lower 'Partnership/Diversity Award' rate (tuition and fees $10,125, total $23,075) without stating who qualifies. Kansas resident total is $20,305.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Presidential Scholarship is automatic from the admission application and transcripts: $1,250-$3,000 per year by unweighted GPA (3.0 to 3.95+) or ACT (21 to 30+), renewable with a 3.0 ESU GPA and 24 credit hours. The international page says it is based on SAT and/or GPA. Also an International Ambassador Scholarship (leadership) and transfer scholarships (24+ credits). Stackable scholarships cannot exceed the cost of attendance. No international need-based aid is described.",
+  "src": "pres"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The international pages print no SAT code; look it up in the College Board code search. SAT/ACT are optional.",
+   "src": "ug"
+  },
+  "act": {
+   "code": null,
+   "note": "The international pages print no ACT code; look it up at act.org.",
+   "src": "ug"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; look it up in the ETS code search.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

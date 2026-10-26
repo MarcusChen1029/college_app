@@ -1,0 +1,150 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Lee University - International Admissions",
+      "url": "https://www.leeuniversity.edu/admissions/international/",
+      "accessed": "2026-10-26"
+    },
+    "book": {
+      "kind": "admissions_site",
+      "title": "Lee University - International Student Booklet (admissions policies, expenses; FA25 edition)",
+      "url": "https://www.leeuniversity.edu/wp-content/uploads/FA25_UpdatedInternationalStudentBooklet.pdf",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Lee University - Admissions Requirements",
+      "url": "https://www.leeuniversity.edu/admissions/admissions-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Lee University - Undergraduate tuition and fees 2026-2027 (PDF)",
+      "url": "https://www.leeuniversity.edu/wp-content/uploads/Undergraduate-Tuition-2026-2027-2.pdf",
+      "accessed": "2026-10-26"
+    },
+    "fa": {
+      "kind": "financial_aid_site",
+      "title": "Lee University - Getting Started (financial aid early action)",
+      "url": "https://www.leeuniversity.edu/financial-aid/getting-started/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The admissions requirements page says applicants can apply without test scores; its minimums for those who submit are ACT 17, SAT 900, CLT 57, with a 2.0 high school GPA. The international page says to submit a TOEFL score or an SAT/ACT score. The 2024-25 CDS lists SAT/ACT as 'recommend' and rates test scores very important in its factor table.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 25,
+    "fee_waiver": true,
+    "notes": "Apply on Lee's own application. International applicants also submit certified English-language transcripts, a sponsor's guarantee form with an original bank statement (US$41,000 for the first two semesters, plus US$5,000 per spouse and US$2,500 per child), a signed estimate-of-expenses form and a US$200 housing deposit. The $25 fee is from the booklet and the 2024-25 CDS (the web page does not state it).",
+    "src": "book"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission, no application closing date (fall 2027 entry)",
+      "notes": "CDS C14 says there is no application closing date and C16 says decisions are rolling beginning Aug. 1; no international deadline is published, only advice to apply well ahead of entry for the I-20 and visa.",
+      "src": "book"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Early action date for scholarships and financial aid (fall 2027 entry; assumed)",
+      "notes": "The financial aid page says applicants who complete the Lee application, Scholarship Profile and FAFSA before December 1 are early action candidates, with rolling decisions after; it notes the fall 2026 early action date was moved to Feb. 14 because of FAFSA delays. The December 1, 2026 date for fall 2027 is an assumption. The FAFSA applies to U.S. aid applicants, not international students.",
+      "src": "fa"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "All international students must submit an English proficiency score; this may be waived for native English speakers or those educated in English. Official SAT scores are also accepted. If a score is below the minimum, email international@leeuniversity.edu to discuss probationary admission.",
+    "src": "book"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 45,
+      "notes": "Internet-based 45 or higher (paper 450). No minimum is given on the 1-6 scale.",
+      "src": "book"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Minimum score of 6.",
+      "src": "book"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Minimum 80; 110 is preferred.",
+      "src": "book"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "tuition_usd": 25440,
+    "tuition_intl_usd": 25440,
+    "required_fees_usd": 820,
+    "notes": "Full-time tuition (12-16 hours) is $12,720 per semester ($25,440 per year) and the student services fee is $410 per semester ($820 per year). Lee's estimated average cost is $18,825 per semester with housing and a meal plan ($13,130 without), excluding books and course fees. Double room $1,890-$2,860 per semester by hall; meal plans $2,370-$2,710 per semester. The international booklet (older edition) used a $41,000 yearly budget for proof of funds."
+  },
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "merit_scholarships": true,
+    "notes": "CDS 2024-25 H6 shows only institutional non-need-based aid for nonresidents: 73 of 85 degree-seeking nonresident undergraduates received it, averaging $17,750 ($1,295,778 total). The admissions page says merit awards consider ACT/SAT and high school transcript automatically with the Scholarship Profile; amounts are not published there. The booklet says Lee has no loans for international undergraduates and U.S. federal aid is unavailable.",
+    "src": "intl"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the pages found.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages found.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages found.",
+      "src": "book"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "book"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "book"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not listed as accepted.",
+      "src": "book"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "nursing": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

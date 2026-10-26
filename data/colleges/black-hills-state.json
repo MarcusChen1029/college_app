@@ -1,0 +1,85 @@
+{
+  "slug": "black-hills-state",
+  "name": "Black Hills State University",
+  "short_name": "BHSU",
+  "state_region": "SD",
+  "city": "Spearfish",
+  "latitude": 44.494889,
+  "longitude": -103.870966,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.bhsu.edu",
+  "admissions_url": "https://www.bhsu.edu/admissions/",
+  "ipeds_unit_id": 219046,
+  "undergrad_enrollment": 3301,
+  "intl_undergrads": 51,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS data via College Navigator, Black Hills State University (fall 2024 entering class)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219046",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "rtk": {
+      "kind": "other",
+      "title": "BHSU Student Right to Know Data - 2025 Fall Enrollment Profile",
+      "url": "https://bhsu.edu/academics/academic-affairs/institutional-research/right-to-know.html",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219046",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219046",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 1617,
+    "pct_submit_sat": 6,
+    "pct_submit_act": 66,
+    "notes": "Baseline from IPEDS via College Navigator (fall 2024 entering class); no Common Data Set was found on bhsu.edu or by search. College Navigator prints 96% of applicants admitted and 30% of those admitted enrolled, but not the counts, so admits and enrolled are left null rather than computed from rounded percentages. SAT scores were submitted by only 30 enrolled students (6%), ACT by 317 (66%), so the SAT percentiles describe a very small group. GPA, residency and international applicant counts are not published. Undergraduate enrollment (3,301) is the fall 2025 figure from BHSU's Right to Know page; the nonresident-alien share there is a rounded 1.5%, so intl_undergrads is left null. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "admits": 1527,
+    "enrolled": 489
+  },
+  "scores": {
+    "SAT_ERW": [
+      465,
+      530,
+      565
+    ],
+    "SAT_MATH": [
+      500,
+      530,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  }
+}

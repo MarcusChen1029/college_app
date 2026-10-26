@@ -1,0 +1,127 @@
+{
+  "slug": "wayne-state",
+  "name": "Wayne State University",
+  "short_name": "Wayne State",
+  "state_region": "MI",
+  "city": "Detroit",
+  "latitude": 42.358994,
+  "longitude": -83.068998,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://wayne.edu",
+  "admissions_url": "https://wayne.edu/admissions",
+  "ipeds_unit_id": 172644,
+  "undergrad_enrollment": 16390,
+  "intl_undergrads": 394,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Wayne State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://oira.wayne.edu/common-data-set/2025-2026-cds.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 17263,
+    "admits": 14430,
+    "enrolled": 3071,
+    "in_state_applicants": 15236,
+    "in_state_admits": 12973,
+    "out_state_applicants": 1363,
+    "out_state_admits": 1051,
+    "intl_applicants": 664,
+    "intl_admits": 406,
+    "pct_submit_sat": 35.88,
+    "pct_submit_act": 2.64,
+    "gpa_avg": 3.42,
+    "pct_reporting_gpa": 95.47,
+    "gpa_distribution": {
+      "4.0": 14.67,
+      "3.75-3.99": 19.51,
+      "3.50-3.74": 15.96,
+      "3.25-3.49": 14.02,
+      "3.00-3.24": 14.12,
+      "2.50-2.99": 20.26,
+      "2.0-2.49": 1.43,
+      "1.0-1.99": 0.03
+    },
+    "notes": "Counts are CDS C1 (fall 2025; 917 applicants of unknown gender are included in the totals). GPA distribution is the 'all enrolled students' column of C11. No waiting list, early decision or early action. Only 81 enrollees submitted ACT scores (1,102 submitted SAT), so ACT percentiles describe a small group. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 394)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1060,
+      1180,
+      1290
+    ],
+    "SAT_ERW": [
+      550,
+      600,
+      650
+    ],
+    "SAT_MATH": [
+      510,
+      580,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      29
+    ],
+    "ACT_MATH": [
+      22,
+      25,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 marks SAT/ACT in the 'required for some' column; Wayne State's admissions pages let first-year applicants submit scores or test-optional documents."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 14188,
+    "tuition_out_of_state_usd": 32498,
+    "tuition_intl_usd": 32498,
+    "required_fees_usd": 2298,
+    "room_board_usd": 12844,
+    "books_usd": 1370,
+    "intl_need_aid": null,
+    "intl_need_aid_awarded": 287,
+    "intl_avg_award_usd": 10539,
+    "notes": "CDS G1 first-year 2026-27 (CDS lists the same rate for nonresident and international; tuition varies by program for about 78% of undergraduates). CDS H6: 287 nonresidents received institutional aid, average $10,539 (total $3,024,685)."
+  }
+}

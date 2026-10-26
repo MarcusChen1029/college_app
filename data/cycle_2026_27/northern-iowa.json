@@ -1,0 +1,178 @@
+{
+ "sources": {
+  "pol": {
+   "kind": "admissions_site",
+   "title": "UNI International Admissions - Admission policies (undergraduate)",
+   "url": "https://admissions.uni.edu/international/undergraduate-students/admission-policies",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UNI International Admissions - English proficiency",
+   "url": "https://admissions.uni.edu/international/english-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "UNI International Admissions - Apply",
+   "url": "https://admissions.uni.edu/international/apply",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "UNI International Admissions - Frequently asked questions",
+   "url": "https://admissions.uni.edu/international/frequently-asked-questions",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UNI International Admissions - Undergraduate scholarships",
+   "url": "https://admissions.uni.edu/international/undergraduate-students/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "other",
+   "title": "UNI International Admissions - Tuition & fees (2026-27 cost of attendance)",
+   "url": "https://admissions.uni.edu/international/tuition-fees",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International first-year applicants do not need SAT or ACT; scores may be considered for scholarships (International Scholars Award can use SAT 1020+ instead of a 3.0 GPA). CDS C8 lists SAT/ACT as 'considered if submitted'; the University's Presidential Scholar award uses ACT 29+/SAT 1340+.",
+  "src": "pol"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International first-year file: application, $50 non-refundable fee, high school transcripts (unofficial accepted for admission, official required later), English test scores and financial documents. Apply with the UNI International Application or the Common App; a paper application is also accepted. Domestic application fee is $40 (CDS C13). Essay, recommendations and interview are not listed as required for international applicants.",
+  "src": "pol"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "International application (fall 2027 entry): rolling",
+   "notes": "UNI admits on a rolling basis with no strict deadline for undergraduates; applying early is encouraged so a visa appointment can be secured before the semester starts. Spring 2027 and fall 2027 intakes are both mentioned on the scholarships page. The FAQ gives no decision-time promise for undergraduates.",
+   "src": "faq"
+  },
+  {
+   "kind": "scholarship",
+   "plan": null,
+   "due": "2027-02-01",
+   "label": "UNI Scholarship Application priority deadline",
+   "notes": "The application opens July 1 and the page prints no year; taken as Feb. 1, 2027. Applicants must be admitted first. The International Scholars Award ($2,000-$5,000/yr) needs no application.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Proof of English is required of undergraduate non-native speakers. Alternatives to a test include SAT EBRW 480+, ACT English 20+, IB English A1/A2 grade 4-7 (HL or SL), AP English Language 4-5, IGCSE/GCE A-level English grade A-C, MET 57+, Manchester Exam 400+, UNI CIEP completion certificate, or 24+ transferable semester hours from a regionally accredited U.S. college. Students without proof can be admitted conditionally and take the Culture and Intensive English Program (CIEP) on campus after a placement exam, with no separate CIEP application.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Unrestricted (full) admission. English Pathway Program admits at TOEFL 61 (admission-policies page says 61-78): students take special credit-bearing course sections in their first semester. The 1-6 new-scale minimum is not given.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic overall band; IELTS Indicator also accepted. English Pathway Program: 5.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "English Pathway Program: 95 (admission-policies page says 95-100).",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 52,
+   "notes": "For unrestricted admission.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "notes": "Certificate in C1 Advanced score of 169 or higher, for unrestricted admission.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Automatic International Scholars Award of $2,000-$5,000 per year (renewable up to four years) for a 3.0 GPA or SAT 1020+, no separate application. International Excel Award $1,000-$4,000 per year (needs proof of English, leadership/service examples and the UNI Scholarship Application); Presidential Scholar Award $4,000 per year (3.80+ GPA and ACT 29+/SAT 1340+, or 3.95+ GPA test-optional). Partner-state students (e.g. Taiwan, Hebei, Maharashtra) get an extra $4,000 award. CDS H6: 68 nonresident undergraduates received non-need institutional aid, average $5,771.",
+  "src": "schol"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 21578,
+  "required_fees_usd": 1451,
+  "room_board_usd": 10646,
+  "books_usd": 500,
+  "total_coa_usd": 38196,
+  "notes": "International page, undergraduate, Aug 2026-May 2027: tuition $21,578, fees $1,451, mandatory health insurance $2,520, books $500, housing and meals $10,646, personal $1,500, total $38,196. College of Business majors pay about $2,058 more as juniors/seniors.",
+  "src": "tuit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "UNI's international pages give no SAT code; look it up in the College Board code search.",
+   "src": "pol"
+  },
+  "act": {
+   "code": null,
+   "note": "UNI's international pages give no ACT code; look it up at act.org.",
+   "src": "pol"
+  },
+  "toefl": {
+   "code": null,
+   "note": "UNI's English proficiency page gives no ETS code; select the University of Northern Iowa in the ETS list.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "C",
+  "computer_science": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {
+  "business": "AACSB-accredited College of Business (UNI cites AACSB accreditation held by under 5% of business schools); regional rather than national strength."
+ }
+}

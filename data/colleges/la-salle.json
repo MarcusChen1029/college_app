@@ -1,0 +1,51 @@
+{
+  "slug": "la-salle",
+  "name": "La Salle University",
+  "short_name": "La Salle",
+  "state_region": "PA",
+  "city": "Philadelphia",
+  "latitude": 40.037979,
+  "longitude": -75.153061,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.lasalle.edu",
+  "admissions_url": "https://www.lasalle.edu/admissions-and-aid/international/",
+  "ipeds_unit_id": 213367,
+  "undergrad_enrollment": 2080,
+  "intl_undergrads": 112,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - La Salle University (enrollment, student-faculty ratio, admissions considerations)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=213367",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), via the Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=213367",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=213367",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 4782,
+    "admits": 4619,
+    "enrolled": 437,
+    "notes": "Baseline: no Common Data Set found on lasalle.edu (2 searches, no CDS page). Exact counts are IPEDS ADM2024 (fall 2024 first-time degree-seeking: 4,782 applied, 4,619 admitted = 97%, 437 enrolled), matching College Navigator's 4,782 applicants and 97% admitted. IPEDS does not split international applicants, so intl_applicants/intl_admits are not available. SAT/ACT scores are not reported to IPEDS, so no percentiles."
+  },
+  "scores_source": "ipeds",
+  "scores": {}
+}

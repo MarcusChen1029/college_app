@@ -1,0 +1,165 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "KSU - Undergraduate international requirements (deadlines, tests, English proficiency)",
+   "url": "https://kennesaw.edu/admissions/undergraduate/admission-requirements/international.php",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "KSU - Freshman / transfer freshman admission requirements",
+   "url": "https://kennesaw.edu/admissions/undergraduate/admission-requirements/freshman.php",
+   "accessed": "2026-10-26"
+  },
+  "oos": {
+   "kind": "admissions_site",
+   "title": "KSU - Out-of-state tuition waivers and Flight to Excellence scholarships",
+   "url": "https://kennesaw.edu/admissions/undergraduate/out-of-state-tuition/index.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "SAT or ACT is required for first-year applicants (the CLT is also accepted from fall 2027). Minimums: SAT 500 EBRW and 490 Math, or ACT 18 English-or-Reading and 18 Math, in addition to the GPA minimum. Architecture needs SAT 500/570 or ACT 18 / 23 Math. KSU superscores SAT and ACT separately but does not mix them.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Application fee $40. Fall 2027 first-year admission requires a minimum 3.0 high school GPA (2.5 through summer 2027) recalculated on the 17-unit Required High School Curriculum, plus qualifying SAT/ACT. International applicants need an official document-by-document credential evaluation including GPA from a NACES or AICE member service (e.g. IEE, The Evaluation Company) and English proficiency. The pages do not mention essays or recommendations; whether the Common App is accepted is not stated on these pages.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-02",
+   "label": "Fall 2027 international priority application deadline (documents due Nov. 16, 2026)",
+   "notes": "Priority gives early access to on-campus housing and orientation sign-up, and priority consideration for the Flight to Excellence out-of-state waiver (freshmen: Nov. 2, 2026).",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "Fall 2027 international regular application and document deadline",
+   "notes": "Classes begin Aug. 23, 2027. Spring 2027 entry: application Nov. 16, 2026, documents Dec. 1, 2026.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Non-native speakers must validate English proficiency; being exempt from SAT/ACT does not exempt a non-native applicant from English proficiency. Alternatives to the tests below: SAT EBRW 500, ACT English or Reading 18, MET 77, EIKEN Pre-1, IGCSE/O-Level/GCSE/A-Level English grade B or better, completion of a USG campus ESL program or English Composition I with C or better. Conditional admission is available while enrolled in KSU's Intensive English Program (IEP); full admission is reviewed after completing the highest IEP level.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Exams taken before Jan. 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Exams taken on or after Jan. 21, 2026, minimum 4 on the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Page lists '115 (Writing Section)'; it is not clear whether the 115 applies to the overall score or only the writing sub-score.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Pearson PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 177,
+   "notes": "Cambridge C1 Advanced (CAE) 177; C2 Proficiency (CPE) 180.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Flight to Excellence Scholarship is an out-of-state tuition waiver (pay in-state tuition plus fees; $5,760 vs $22,290 nonresident tuition in 2026-27) for domestic out-of-state and international students. Freshmen need a 3.5 high school GPA and SAT 1050 / ACT 20 / CLT 68 minimums; it is competitive, limited in number, and renews with a 2.5 GPA for up to 8 semesters. Priority deadline Nov. 2, 2026 for fall 2027 freshmen; no separate application. Dollar value is not published beyond the in-state rate.",
+  "src": "oos"
+ },
+ "majors": [
+  {
+   "program": "Architecture degree program",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Higher requirements and limited seats: 3.0 GPA, SAT 500 EBRW / 570 Math or ACT English-or-Reading 18 / Math 23; apply by Jan. 31 for the following fall.",
+   "src": "intl"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "5359",
+   "note": "KSU SAT school code.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "0833",
+   "note": "KSU ACT school code.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international page does not print a TOEFL institution code; look up Kennesaw State University in the ETS search.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "C",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Editorial judgment: very large computing and software engineering college (CCSE) with ABET-accredited programs; not a top-40 school, so roughly the 41-100 band."
+ }
+}

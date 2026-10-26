@@ -1,0 +1,193 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "WSU - International students: how to apply for admission",
+   "url": "https://www.wichita.edu/admissions/international/undergraduate/HowtoApply.php",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "WSU - International freshman admission (grade-based or SAT/ACT-based, codes)",
+   "url": "https://www.wichita.edu/admissions/international/undergraduate/FreshmanAdmission.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "WSU - TOEFL, IELTS and Duolingo English requirements (undergraduate)",
+   "url": "https://www.wichita.edu/admissions/international/toefl_ielts_req.php",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "WSU - International application service levels and deadlines",
+   "url": "https://www.wichita.edu/admissions/international/service_levels.php",
+   "accessed": "2026-10-26"
+  },
+  "gs": {
+   "kind": "financial_aid_site",
+   "title": "WSU - Global Select Scholarships",
+   "url": "https://www.wichita.edu/GlobalSelect",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "WSU - Financial aid for international students",
+   "url": "https://www.wichita.edu/admissions/international/scholarshipsfinancialaid.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "WSU - International undergraduate estimated expenses 2026-27",
+   "url": "https://www.wichita.edu/admissions/international/undergraduate/TotalExpenses.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "cost": {
+  "src": "cost",
+  "year": "2026-2027",
+  "tuition_intl_usd": 20100,
+  "room_board_usd": 12700,
+  "books_usd": 1200,
+  "other_usd": 2300,
+  "total_coa_usd": 36300,
+  "notes": "International estimated expenses, 9 months fall/spring (2026-27): tuition and fees combined $20,100, housing and meals $12,700, books $1,200, medical insurance $2,300 (shown as other_usd) = $36,300 before scholarships; $30,800 after the Global Select scholarship. Kansas rates are announced in July, so actual cost may differ. One-time $200 international enrollment fee and $150 orientation fee."
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Option 1 admits international freshmen on high school grades and the SAT or ACT is not required. Option 2 admits on test results alone (SAT 1060 combined EBRW+Math with 490+ on each section, or ACT composite 21 with 18+ on every section) and is meant for students who want admission before finishing high school or attended an unrecognized school. SAT/ACT are not used for the Global Select scholarship.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Application fee depends on processing speed: Basic $75 (4-5 weeks), Standard $150 (2-3 weeks), Premium $250 (3 business days); fees are non-refundable. Required: certification of financial support, bank statement, official transcripts from all schools (front and back), passport name page, and TOEFL/IELTS/SAT/ACT results are optional at application (see English notes). The grade needed for admission under Option 1 depends on the country; the specific minimum was not on the pages read. Select 'International Undergraduate or Intensive English' when starting the application.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-15",
+   "label": "Fall 2027 international application deadline, Basic service ($75, 4-5 weeks)",
+   "notes": "Processing time starts when ALL documents are received. Classes begin mid-August 2027.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "Fall 2027 international application deadline, Standard service ($150, 2-3 weeks)",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "Fall 2027 international application deadline, Premium service ($250, 3 business days)",
+   "notes": "Spring 2027 entry: Sep. 15 / Nov. 1 / Dec. 1, 2026 for Basic / Standard / Premium.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "recommended",
+  "waiver_notes": "A TOEFL or IELTS score is not required to apply; it can be sent later, or WSU tests English after arrival (WSU English Proficiency Exam, $75). Students who do not meet the English requirement get conditional admission and enroll in the Intensive English Language Center; the I-20 then lists Intensive English with a note of the academic admission. Half-time academic study alongside Intensive English is allowed with lower scores (TOEFL 61-71 / 3.5 new scale, IELTS 5.5, Duolingo 95-104, PTE 40-48). Also accepted: SAT EBRW 410, ACT English 20, Cambridge A/AS English grade C, 24 U.S. college credits, four years of U.S. high school English with C+. Tests must be less than two years old; IELTS General Training and One Skill Retake are not accepted.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 72,
+   "notes": "Full-time academic study, tests before Jan. 21, 2026; 61-71 allows half-time academic plus Intensive English.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Full-time academic study, tests on or after Jan. 21, 2026 (1-6 scale); 3.5 allows half-time academic plus Intensive English.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic or Indicator overall band; 5.5 for half-time academic plus Intensive English.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "95-104 allows half-time academic plus Intensive English.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 49,
+   "notes": "PTE Academic; 40-48 allows half-time academic plus Intensive English.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Global Select Scholarship: automatic at admission with one scholarship question on the application; undergraduates need a 3.0 GPA (or international equivalent); a 36% tuition discount (tuition only, not fees) worth an estimated $5,500 per academic year at 12 credit hours, renewable to the end of the program; SAT/ACT not used. Continuing-student scholarships (usually $500-$2,500 per year) require a year at WSU first, and there are no scholarships based on financial need.",
+  "src": "gs"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6884",
+   "note": "WSU SAT institution code.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "1472",
+   "note": "WSU ACT institution code.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code printed; copies of scores are verified with ETS, or send them to Wichita State University - Office of International Education.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No numeric code; request the IELTS test center to send to 'Wichita State University - Office of International Education', Admissions, 1845 Fairmount Box 122, Wichita KS 67260.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; send certified results from the Duolingo English Test.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed; official PTE Academic scores must be sent by Pearson.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "engineering": "C",
+  "business": "D",
+  "computer_science": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "engineering": "Editorial judgment: College of Engineering with strong aerospace ties (National Institute for Aviation Research); in the roughly 41-100 national band."
+ }
+}

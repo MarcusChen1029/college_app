@@ -1,0 +1,49 @@
+{
+  "slug": "st-thomas-fl",
+  "name": "St. Thomas University (Florida)",
+  "short_name": "STU",
+  "state_region": "FL",
+  "city": "Miami Gardens",
+  "latitude": 25.922071,
+  "longitude": -80.253273,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.stu.edu",
+  "admissions_url": "https://www.stu.edu/Admissions",
+  "ipeds_unit_id": 137476,
+  "undergrad_enrollment": 4486,
+  "intl_undergrads": 275,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - St. Thomas University (FL) (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=137476",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=137476",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=137476",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 7095,
+    "admits": 6947,
+    "enrolled": 726,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was read, so international applicants/admits, GPA and admission factors are not included. St. Thomas is test optional and reports no SAT/ACT percentiles."
+  }
+}

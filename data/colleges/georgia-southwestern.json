@@ -1,0 +1,79 @@
+{
+  "slug": "georgia-southwestern",
+  "name": "Georgia Southwestern State University",
+  "short_name": "GSW",
+  "state_region": "GA",
+  "city": "Americus",
+  "latitude": 32.054662,
+  "longitude": -84.217738,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://gsw.edu",
+  "admissions_url": "https://gsw.edu/admissions/undergraduate/international",
+  "ipeds_unit_id": 139764,
+  "undergrad_enrollment": 3024,
+  "intl_undergrads": 145,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Georgia Southwestern State University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=139764",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=139764",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=139764",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 2328,
+    "admits": 1750,
+    "enrolled": 551,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 11,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was read, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 25%, ACT 11%)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      460,
+      510,
+      570
+    ],
+    "SAT_MATH": [
+      430,
+      480,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      17,
+      22
+    ],
+    "ACT_ENGLISH": [
+      14,
+      16,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      16,
+      20
+    ]
+  }
+}

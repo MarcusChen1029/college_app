@@ -1,0 +1,159 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "UK International Center - Admission Requirements (freshman: fee, English tests, deadlines, codes)",
+   "url": "https://international.uky.edu/apply/admission-requirements",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "UK International Center - Scholarships (international freshmen)",
+   "url": "https://international.uky.edu/apply/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "fsch": {
+   "kind": "financial_aid_site",
+   "title": "UK Student Success - Incoming Freshmen Scholarships",
+   "url": "https://studentsuccess.uky.edu/financial-aid-and-scholarships/academic-scholarships/incoming-freshmen-scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT are listed as optional tests for international freshmen but are required for engineering programs. International Bluegrass Scholarship tiers can use SAT 1200/1360 as an alternative to a higher GPA.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "notes": "UK International Application for Undergraduate Admission or the Common App; $60 non-refundable fee; official transcripts in English; English proficiency scores sent directly from the testing center.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-12-01",
+   "label": "Priority deadline, fall 2027 (August start), international",
+   "notes": "The page prints 'December 1 for Fall semester (August start)' and no year, so it is taken as the current cycle; spring priority is Oct. 15. The freshman scholarship deadline is also Dec. 1 and funds can run out earlier.",
+   "src": "req"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Freshman scholarship deadline (Bluegrass, William C. Parker)",
+   "src": "sch"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-15",
+   "label": "International Ambassador Scholarship priority deadline",
+   "notes": "Requires supplementary materials and minimum GPA 2.5.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of a list of English-speaking countries are exempt from testing (list linked on the requirements page). The page lists the accepted tests only; conditional admission or an English pathway program is not described there.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Tests taken on or before Jan. 20, 2026. TOEFL Essentials 7.5 is also accepted.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Tests taken on or after Jan. 21, 2026: 4 or above overall and in each subscore.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International freshmen admitted for fall are considered for the renewable Bluegrass Scholarship ($6,500 at 3.0 GPA; $10,000 at 3.5 or 3.0 with SAT 1200; $13,000 at 3.6 or 3.5 with SAT 1200; $16,000 at 3.8 or 3.5 with SAT 1360; deadline Dec. 1), the William C. Parker Scholarship (variable amount, holistic review of all applicants with GPA 3.0+, priority Dec. 1) and the International Ambassador Scholarship (listed as $3,000, min GPA 2.5, priority Feb. 15). Scholarships can be combined; none are awarded for spring. Need-based aid for internationals is not mentioned.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1837",
+   "src": "req"
+  },
+  "act": {
+   "code": "1554",
+   "src": "req"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The requirements page asks that scores come directly from the testing center but prints no TOEFL code.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not on the list of accepted tests for first-year applicants.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "C",
+  "pre_med": "C",
+  "economics": "C",
+  "math_physics": "C",
+  "humanities": "C",
+  "arts_design": "D",
+  "nursing": "C"
+ },
+ "tier_notes": {
+  "general": "Public flagship with a 94% overall admit rate (90% for internationals) and SAT middle 50% of 1058-1270; large research university with an academic medical center.",
+  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "economics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "math_physics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "humanities": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
+  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure)."
+ }
+}

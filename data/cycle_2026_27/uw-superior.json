@@ -1,0 +1,118 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UW-Superior - How to apply: international students (English proficiency, deadlines, fees)",
+      "url": "https://uwsuper.edu/admissions/how-to-apply/international/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international page says SAT or ACT scores are encouraged but not required for admission.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply with the UW System application. There is no application fee, but a $50 International Admissions Processing Service (IAPS) fee is required after submitting. Needs official (or clear scans of official) secondary records with literal English translations, English proficiency evidence, a financial verification form with bank documents covering the first year, and a passport copy; the written statement is preferred but optional. No minimum GPA is published for international first-year applicants. Decisions take about 2-3 weeks after all documents arrive.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-05-01",
+      "label": "Preferred deadline, fall 2027 (international)",
+      "notes": "Page prints May 1 as the preferred fall deadline with no year; taken as fall 2027. Spring term: preferred October 1, final November 15. Students in F-1 status in the U.S. are considered after the deadline case by case.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "Final deadline, fall 2027 (international)",
+      "notes": "Applications and all required materials must arrive by 11:59 PM Central Time. No year is printed; taken as fall 2027.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International applicants educated primarily outside the U.S. must show proficiency, except applicants primarily educated in a listed English-speaking country, three years at a U.S. (or U.S.-accredited) high school with a diploma, or a U.S. degree or two years at a U.S. college. UW-Superior may require evidence from any applicant. Other accepted measures: SAT ERW 470, ACT English 18, MET 69, TOEFL paper 500, iTEP Academic 4.0, Cambridge C1/C2 pass, and partner language programs (ELS level 110, FLS level 16, TLC level 9, WESLI recommendation). Depending on scores, students may take a combination of ESL and non-ESL courses in the first semester. Online undergraduate programs need higher scores (IELTS 6.5, TOEFL 80, Duolingo 115).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "TOEFL MyBest also accepted at 61 (minimum single test date score 56).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "subs": {
+        "writing": 3.0
+      },
+      "notes": "New scale: 3.5 overall with writing 3.0 or higher.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 47,
+      "notes": "Pearson Test of English Academic.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 169,
+      "notes": "B2 First 169; C1 Advanced and C2 Proficiency accepted with a pass.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Nonresident Tuition Waiver (NTW): automatic for qualifying international degree-seeking undergraduates, no separate application; more than 90 percent of international students receive it. First-year GPA 2.90-3.39 waives $5,900 per year (tuition and fees then $12,255); GPA 3.40+ (NTW Scholar) waives $8,100 per year ($10,055). Renewable up to four years. Separately, two #YouAreWelcomeHere scholarships of $8,400 per year are awarded each fall (GPA 3.5+, separate application, cannot be combined with NTW). No need-based aid for international students is described.",
+    "src": "intlcost"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "1920",
+      "note": "UW-Superior SAT institutional code.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4682",
+      "note": "UW-Superior ACT institutional code.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "biology_life_sci": "D"
+  },
+  "tier_notes": {}
+}

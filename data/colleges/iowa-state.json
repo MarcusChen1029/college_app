@@ -1,0 +1,127 @@
+{
+  "slug": "iowa-state",
+  "name": "Iowa State University",
+  "short_name": "Iowa State",
+  "state_region": "IA",
+  "city": "Ames",
+  "latitude": 42.026212,
+  "longitude": -93.648504,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.iastate.edu",
+  "admissions_url": "https://www.admissions.iastate.edu",
+  "ipeds_unit_id": 153603,
+  "undergrad_enrollment": 26346,
+  "intl_undergrads": 985,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Iowa State University Common Data Set 2025-26 (PDF)",
+      "url": "https://www.ir.iastate.edu/files/documents/cds/CDS-25-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 24625,
+    "admits": 21652,
+    "enrolled": 6160,
+    "in_state_applicants": 5921,
+    "in_state_admits": 5452,
+    "out_state_applicants": 15521,
+    "out_state_admits": 14133,
+    "intl_applicants": 3183,
+    "intl_admits": 2067,
+    "pct_submit_sat": 12,
+    "pct_submit_act": 45,
+    "gpa_avg": 3.76,
+    "pct_reporting_gpa": 99.87,
+    "gpa_distribution": {
+      "4.0": 30.93,
+      "3.75-3.99": 26.8,
+      "3.50-3.74": 18.18,
+      "3.25-3.49": 11.25,
+      "3.00-3.24": 7.29,
+      "2.50-2.99": 5.0,
+      "2.0-2.49": 0.4,
+      "1.0-1.99": 0.02
+    },
+    "notes": "CDS C1 residency split (in-state 5,921 / out-of-state 15,521 / international 3,183 applicants; international admit rate computed 2,067/3,183 = 64.9%, 141 enrolled). Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (26,346; nonresident 985). No early decision or early action; no waitlist; no application closing date (rolling). GPA distribution is the 'all enrolled students' column; 0.13% had a GPA below 1.0 and is omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1153,
+      1260,
+      1360
+    ],
+    "SAT_ERW": [
+      580,
+      630,
+      680
+    ],
+    "SAT_MATH": [
+      570,
+      630,
+      690
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      25,
+      28
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      20,
+      25,
+      28
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9530,
+    "tuition_out_of_state_usd": 28578,
+    "tuition_intl_usd": 28578,
+    "required_fees_usd": 1561,
+    "room_board_usd": 10928,
+    "books_usd": 800,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 566,
+    "intl_avg_award_usd": 13144,
+    "notes": "CDS G1 first-year rates (the CDS ticks '2026-27 costs not available yet', so these are treated as 2025-26 rates; the 'Nonresident' tuition line is used for international students). H6 (final 2024-25): only institutional non-need-based aid is available to nonresidents; 566 degree-seeking nonresidents received institutional aid, averaging $13,144 ($7,439,681 total). Tuition varies by program (G4: 63% pay more than the G1 figure)."
+  }
+}

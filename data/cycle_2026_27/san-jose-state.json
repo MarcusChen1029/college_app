@@ -1,0 +1,225 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "SJSU - Admission Deadlines (Fall 2027)",
+   "url": "https://www.sjsu.edu/admissions/deadlines/index.php",
+   "accessed": "2026-10-26"
+  },
+  "elig": {
+   "kind": "admissions_site",
+   "title": "SJSU - International first-year CSU eligibility requirements",
+   "url": "https://www.sjsu.edu/admissions/international-freshman/admission-requirements/csu-eligibility-requirements/index.php",
+   "accessed": "2026-10-26"
+  },
+  "steps": {
+   "kind": "admissions_site",
+   "title": "SJSU - International first-year steps to admission",
+   "url": "https://www.sjsu.edu/admissions/international-freshman/want-to-apply/international-freshman-steps-to-admission/index.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "SJSU - English proficiency requirement (international first-year)",
+   "url": "https://www.sjsu.edu/admissions/international-freshman/admission-requirements/english-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "support": {
+   "kind": "admissions_site",
+   "title": "SJSU - International support programs (scholarships, International Gateways)",
+   "url": "https://www.sjsu.edu/admissions/international-freshman/want-to-apply/international-support-programs/index.php",
+   "accessed": "2026-10-26"
+  },
+  "impact": {
+   "kind": "admissions_site",
+   "title": "SJSU - Fall 2025 first-year impaction results by major",
+   "url": "https://www.sjsu.edu/admissions/impaction/freshmen-impaction-results/2025-fall.php",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "SJSU Bursar - Fall 2026 registration fees",
+   "url": "https://www.sjsu.edu/bursar/fees-due-dates/tuition-other-fees/fall.php",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "SJSU Financial Aid - 2026-2027 Cost of Attendance (student budget)",
+   "url": "https://www.sjsu.edu/faso/process/cost-of-attendance.php",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "SJSU Financial Aid - Scholarships for international students",
+   "url": "https://www.sjsu.edu/faso/types-of-aid/scholarships/international-students.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "SJSU (a CSU campus) does not use SAT/ACT in admission decisions; the CDS C8A marks them 'not considered'. SJSU's international steps page still says SAT/ACT scores are 'encouraged' (Step 9, optional), which conflicts with the CDS; treat scores as not needed. Admission is based on a converted U.S. GPA of at least 3.0 plus college-prep course requirements.",
+  "src": "elig"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App). No essays or recommendations are used (CDS C7). Needs a converted U.S. GPA of 3.0+, 4 years of college-prep English (if English is the medium of instruction) and 3 years of college-prep math with C- or better, and partial official high school transcripts; final transcripts due July 15, 2027. All majors are impacted, so some require a higher GPA than 3.0. Animation and Illustration applicants add three drawing exercises.",
+  "src": "elig"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "International first-year application deadline, Cal State Apply (fall 2027)",
+   "notes": "Cal State Apply opens Aug 1, 2026 and submissions open Oct 1, 2026; the domestic first-year deadline is Nov 30, 2026 but international first-year applicants have until Apr 1, 2027. Partial transcripts due Mar 23, 2027. CDS C16: admission decisions are sent on a rolling basis beginning Feb 15, so earlier is safer because majors can fill.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-05-02",
+   "label": "International document deadline",
+   "notes": "Outstanding documents and English test scores on the MySJSU To Do List are due by this date.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Intent to Enroll deadline and orientation fee",
+   "notes": "Housing application deadline is also May 1 ($50 application fee and $300 initial payment).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if the school's medium of instruction is not English. Waived with 60 semester/90 quarter transferable units at a U.S. college, 3 years of full-time study at a U.S. college, or 3 years full-time at an institution where English is the primary language of instruction; 'O' level exams passed in one sitting (5 subjects incl. Math and English, not ESL English) also waive the test. Scores older than 2 years are not valid and must be sent electronically by the testing center.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Tests taken before Jan 21, 2026 (0-120 scale), non-engineering majors. All Engineering majors: 80. TOEFL Home Edition accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Exams on/after Jan 21, 2026 (1-6 scale), non-engineering majors. All Engineering majors: 4.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Engineering: 6.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "No separate Engineering minimum is listed.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "Engineering: 53.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "SJSU's financial aid office says international students are eligible only for merit-based scholarships; need-based aid is unavailable to them. No amounts or international-specific scholarship names are published on that page. SJSU's international-programs page also mentions International Gateways, which offers academic and TOEFL preparation courses on campus; no conditional-admission pathway is described on the page.",
+  "src": "aid"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 2715,
+  "room_board_usd": 22912,
+  "books_usd": 1004,
+  "other_usd": 4021,
+  "total_coa_usd": 51865,
+  "notes": "Computed from published rates: full-time undergraduate tuition $3,419 per semester plus nonresident tuition $471 per unit (Fall 2026 and Spring 2027), assuming 15 units a term; fees from the Bursar page. Room and board is campus housing $15,543 plus food $7,369; other = transportation $1,121 plus personal $2,900 (SJSU 2026-27 budget, marked draft). Total = SJSU's $37,735 campus-housing budget plus $14,130 nonresident tuition (30 units). International students must also buy CSU-provided health insurance (cost not found).",
+  "src": "coa"
+ },
+ "majors": [
+  {
+   "program": "Engineering (College of Engineering majors)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Applicants are ranked in the chosen major and an alternate major; engineering applicants are ranked with a modified eligibility index that adds math GPA. Engineering majors also have higher English minimums (TOEFL 80 / new scale 4, IELTS 6.5, PTE 53)."
+  },
+  {
+   "program": "Animation and Illustration BFA",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Requires three short supplemental drawing exercises due one week after the application deadline; otherwise only the alternate major is considered."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4687",
+   "note": "SJSU school code for SAT results (SAT is not used in admission decisions).",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "ACT scores are not used in admission and no ACT code is listed on SJSU's admissions pages.",
+   "src": "steps"
+  },
+  "toefl": {
+   "code": "4687",
+   "note": "SJSU school code for TOEFL results; scores must be sent electronically by ETS after you submit the Cal State Apply application.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "Submit IELTS through your Cal State Apply application (no SJSU-specific code).",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "C",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "computer_science": "Silicon Valley location and employer ties lift it above most regional publics; this is an editorial judgment, not a ranking.",
+  "engineering": "Large engineering college located in Silicon Valley; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "business": "Business college located in Silicon Valley; placed C as a solid regional program. Editorial judgment, not a ranking.",
+  "arts_design": "Offers a dedicated Animation and Illustration major with a drawing-exercise requirement; placed C. Editorial judgment, not a ranking."
+ }
+}

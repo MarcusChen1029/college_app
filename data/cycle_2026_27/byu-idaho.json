@@ -1,0 +1,193 @@
+{
+ "sources": {
+  "frosh": {
+   "kind": "admissions_site",
+   "title": "BYU-Idaho - Incoming freshmen (admission review areas)",
+   "url": "https://www.byui.edu/admissions/apply/freshmen",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "BYU-Idaho - How to apply",
+   "url": "https://www.byui.edu/admissions/apply",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "BYU-Idaho - International application process (deadlines, I-20)",
+   "url": "https://www.byui.edu/admissions/apply/international-students/application-process",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "BYU-Idaho - Required scores on English proficiency tests (effective Winter 2027)",
+   "url": "https://www.byui.edu/admissions/apply/international-students/english-requirements",
+   "accessed": "2026-10-26"
+  },
+  "fin": {
+   "kind": "admissions_site",
+   "title": "BYU-Idaho - International students: finances",
+   "url": "https://www.byui.edu/admissions/apply/international-students/finances",
+   "accessed": "2026-10-26"
+  },
+  "eval": {
+   "kind": "admissions_site",
+   "title": "BYU-Idaho - International students: academic evaluation",
+   "url": "https://www.byui.edu/admissions/apply/international-students/academic-evaluation",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "BYU-Idaho - 2026-2027 tuition and expenses",
+   "url": "https://www.byui.edu/financial-aid/tuition-expenses",
+   "accessed": "2026-10-26"
+  },
+  "acadsch": {
+   "kind": "financial_aid_site",
+   "title": "BYU-Idaho - Academic scholarships (incoming freshmen)",
+   "url": "https://www.byui.edu/financial-aid/scholarships/academic",
+   "accessed": "2026-10-26"
+  },
+  "nonmember": {
+   "kind": "financial_aid_site",
+   "title": "BYU-Idaho Financial Aid FAQ - scholarships are based on member tuition rates",
+   "url": "https://www.byui.edu/financial-aid/faqs/do-i-get-a-full-tuition-scholarship-if-im-a-non-member",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Admissions says it reviews GPA and performance on standardized tests (e.g. ACT, SAT) but states no minimum score; College Navigator (IPEDS) lists SAT/ACT as 'not required, but considered'. The academic scholarships page lists ACT or SAT scores among what is needed for scholarship review.",
+  "src": "frosh"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Own BYU-Idaho application; the site states no application fee and no essays. Admission is reviewed in three areas: Church endorsement, academic achievement (GPA and test scores) and seminary attendance/graduation with a positive seminary recommendation. Applicants who are members of The Church of Jesus Christ of Latter-day Saints must be in good standing with endorsements from their bishop or branch president and stake president (or mission president); non-members must agree to follow the Code of Honor and may be interviewed by their own church leader or a local Church leader. All students must agree to the Honor Code (including dress and grooming standards). International applicants need an IERF (preferred) or TEC credential evaluation of their academic records. Minimum GPA is not published on the pages reviewed.",
+  "src": "frosh"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-01",
+   "label": "International application deadline - fall semester 2027",
+   "notes": "International steps page lists Fall May 1, Winter August 15, Spring January 15, with no year printed (treated as fall 2027 entry) and advises starting six months early. The general How to Apply page lists Fall Sept. 1, Winter Dec. 15, Spring Apr. 1; the page does not say these are the domestic dates, so use the international ones.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waivers are rarely granted and are decided by a committee: (1) 24 or more credits in the past two years at an accredited US college or university with a 3.0 cumulative GPA (BYU-Pathway credit does not count), or (2) all years of high school completed in the US. Every subtest minimum and the overall minimum must be met; scores must be under two years old. TOEFL Essentials and TOEFL PBT are not accepted. Duolingo is not listed among the accepted tests. No conditional-admission or on-campus ESL pathway is described on the English requirements page.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 72,
+   "subs": {
+    "each_section": 18
+   },
+   "notes": "For applicants to Winter 2027 and later whose TOEFL scores were earned before 2026: 72 overall and 18 in each subscore. The page does not name the scale. iBT, Home Edition and Paper Edition accepted; MyBest scores accepted if under two years old.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "each_section": 4.0
+   },
+   "notes": "Scores earned on the redesigned (January 2026) TOEFL: 4.0 overall and 4.0 in each section, effective Winter 2027. The page does not name the 1-6 scale but says BYU-Idaho adjusted its minimums to the new scoring.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 6.0
+   },
+   "notes": "IELTS Academic only. 6.0 overall and 6.0 in reading, writing, speaking and listening.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "subs": {
+    "each_section": 59
+   },
+   "notes": "PTE Academic only. 59 overall and in each of reading, writing, speaking and listening.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 170,
+   "subs": {
+    "each_section": 170
+   },
+   "notes": "B2 First, C1 Advanced or C2 Proficiency only. 170 overall and in each section (including Use of English).",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 5088,
+  "tuition_intl_usd": 10176,
+  "room_board_usd": 5796,
+  "books_usd": 606,
+  "notes": "On-Track campus semester tuition 2026-27 is $2,544 for Church members and $5,088 for non-members (international students who are not members pay the non-member rate). Fields above are annualized as two semesters (tuition_usd = member rate 5,088; tuition_intl_usd = non-member rate 10,176; room_board = 2 x $2,898 on-campus housing and food for a single student aged 18-25; books = 2 x $303); BYU-Idaho runs three semesters a year, so a three-semester year costs more. The school's one-semester non-member cost of attendance for a single student aged 18-25 is $11,440 (tuition 5,088, loan fees 29, books 303, transportation 1,694, personal 1,428, housing and food 2,898). The international finances page (timestamped 2022, so possibly stale) asks for proof of funds of $23,750 a year for members and $29,000 for non-members and an initial deposit of at least $4,000 before the I-20 is issued; it lists a $6,000 foreign deposit for non-members in one table and about $4,000 elsewhere.",
+  "src": "tuition"
+ },
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "The international finances page says there are no scholarships specific to international students; BYU-Idaho scholarships are open to anyone who meets their criteria. Four-year academic scholarships (full, half or quarter tuition: $2,544, $1,272 or $636 per semester in 2026-27) are applied automatically and need transcripts and ACT/SAT scores, but all BYU-Idaho scholarships are based on member tuition rates, so non-members receive less in dollar terms. Eligibility of international students and need-based aid for them is not stated.",
+  "src": "acadsch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the admissions pages reviewed; select BYU-Idaho in the College Board code search.",
+   "src": null
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the admissions pages reviewed; look it up at act.org.",
+   "src": null
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is printed on the English requirements page; look it up in the ETS code list.",
+   "src": null
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": null
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": null
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

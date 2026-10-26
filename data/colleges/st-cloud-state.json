@@ -1,0 +1,136 @@
+{
+  "slug": "st-cloud-state",
+  "name": "St. Cloud State University",
+  "short_name": "SCSU",
+  "state_region": "MN",
+  "city": "St. Cloud",
+  "latitude": 45.553227,
+  "longitude": -94.152657,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.stcloudstate.edu/",
+  "admissions_url": "https://www.stcloudstate.edu/internationaladmissions/",
+  "ipeds_unit_id": 174783,
+  "undergrad_enrollment": 8209,
+  "intl_undergrads": 764,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "St. Cloud State University Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.stcloudstate.edu/AIR/_files/documents/common-data-sets/cds-2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator profile (student-to-faculty ratio, campus setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=174783",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "intlcost": {
+      "kind": "admissions_site",
+      "title": "SCSU International Admissions - Costs and Scholarships",
+      "url": "https://www.stcloudstate.edu/internationaladmissions/costs.aspx",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 5976,
+    "admits": 5665,
+    "enrolled": 938,
+    "in_state_applicants": 2785,
+    "in_state_admits": 2544,
+    "out_state_applicants": 424,
+    "out_state_admits": 405,
+    "intl_applicants": 2763,
+    "intl_admits": 2712,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 22,
+    "gpa_avg": 3.3,
+    "pct_reporting_gpa": 90,
+    "gpa_distribution": {
+      "4.0": 6,
+      "3.75-3.99": 14,
+      "3.50-3.74": 15,
+      "3.25-3.49": 16,
+      "3.00-3.24": 18,
+      "2.50-2.99": 22,
+      "2.0-2.49": 8,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS C1 (fall 2024 entering class): international = 'Nonresidents' row (2,763 applied, 2,712 admitted, 197 enrolled); 4 applicants had unknown residency. SAT percentiles come from only 13 enrolled students. This is the newest CDS posted (no 2025-26 file found). The CDS prints average GPA as 3.3 and percent reporting as 0.9. No early decision or early action."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1070,
+      1170,
+      1210
+    ],
+    "SAT_ERW": [
+      510,
+      570,
+      615
+    ],
+    "SAT_MATH": [
+      515,
+      560,
+      645
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      15,
+      19,
+      23
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "I",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (2024-25) marks SAT/ACT as 'Recommended'; the admissions site says SCSU is completely test optional, which is used instead."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "intlcost",
+    "tuition_intl_usd": 19910,
+    "required_fees_usd": 1474,
+    "room_board_usd": 10970,
+    "other_usd": 5476,
+    "total_coa_usd": 37830,
+    "notes": "SCSU international costs page (updated 2025-07-25, 9 months): tuition with the Academic and Cultural Sharing Scholarship (ACSS) $11,258; tuition and fees without it $21,384 ($19,910 tuition + $1,474 fees); room and board $10,970; insurance, books and supplies $5,476. The page's I-20 total WITH ACSS is $29,178; $37,830 here is the sum of the published no-scholarship lines."
+  }
+}

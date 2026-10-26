@@ -1,0 +1,178 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Cal State LA - Fall 2027 Admission Deadlines (Undergraduates), international first-time freshmen",
+   "url": "https://www.calstatela.edu/admissions/fall-2027-admission-deadlines-undergraduates",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "Cal State LA - International Freshman Admission",
+   "url": "https://www.calstatela.edu/admissions/international-freshman-admission",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Cal State LA - English Language Proficiency (undergraduate minimums)",
+   "url": "https://www.calstatela.edu/admissions/english-language-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "Cal State LA Student Fees - Fall 2026 undergraduate fees and nonresident tuition",
+   "url": "https://www.calstatela.edu/finance-onestop/student-fees",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Cal State LA Financial Aid - 2026-2027 Cost of Attendance",
+   "url": "https://www.calstatela.edu/financialaid/cost-attendance",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "financial_aid_site",
+   "title": "Cal State LA Financial Aid - Scholarship FAQ (undated; mentions international students)",
+   "url": "https://www.calstatela.edu/financialaid/scholarship-faq",
+   "accessed": "2026-10-26"
+  },
+  "intlapp": {
+   "kind": "admissions_site",
+   "title": "Cal State LA - International Applicants (F-1 visa and I-20 documents)",
+   "url": "https://www.calstatela.edu/admissions/international-applicants",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "Cal State LA's CDS 2025-2026 (C8A) says SAT/ACT are not used in admission decisions, and College Navigator lists them as 'Not considered (Test Blind)'. Eligibility for non-U.S. high school graduates is a 3.00 GPA in academic coursework from the last 3 years of high school.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App); the $70 fee is from the CDS (C13) and College Navigator, the international pages do not repeat it. Needs a 3.00 GPA for non-U.S. high school graduates (2.50 for California residents/graduates, 3.00 for other U.S. graduates). Official academic records with the grading scale through the fall 2026 term, proof of high school completion by the end of spring 2027, official English scores if required, and proof of financial support for the I-20. CDS C7: essays, recommendations and interviews are not considered. Offers are provisional until final transcripts and scores are verified. Music (BM) applicants must also audition; Pre-Nursing has additional requirements (the Jan 15, 2027 NursingCAS supplemental deadline on the deadlines page is for upper-division transfers and second-bachelor's applicants, not freshmen).",
+  "src": "fresh"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-03-31",
+   "label": "International first-time freshman application deadline, Cal State Apply (fall 2027)",
+   "notes": "Filing period is Oct 1, 2026 to Mar 31, 2027 (Cal State Apply previews open Aug 1, 2026). International first-year applicants have a different (later) date than the domestic Nov 30 deadline; fall offers are typically sent in March, so applying early is safer.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-04-30",
+   "label": "Official English proficiency scores and official transcripts (if non-U.S. schools attended)",
+   "notes": "Deadline for international first-time freshmen. The page gives no separate document deadline for freshmen.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-02-05",
+   "label": "Music (BM) audition requirement (music applicants only)",
+   "notes": "Applies to music applicants in every international category.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment Confirmation Deposit ($100)",
+   "notes": "Non-refundable $100 deposit that counts toward the State University Fee (tuition); due May 1 for fall admits.",
+   "src": "fresh"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for freshmen who completed 3+ years of high school academic coursework taught in English at a high school in the U.S. or a listed English-medium country. Official scores must be sent by the testing agency and are valid for 2 years. Duolingo reports are sent through the Duolingo account. The English page does not describe conditional admission or an on-campus English program.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Exams taken before Jan 21, 2026 (0-120 scale).",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Exams taken on or after Jan 21, 2026; the page lists '3.5 iBT or higher' without naming the scale (assumed to be the new 1-6 band scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Band 5.5 or higher for undergraduates; scores are submitted through Cal State Apply.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Send through your Duolingo account.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "PTE Academic; reports go to California State University, Los Angeles.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "No international scholarship or admission-based merit award was found. Cal State LA's scholarship FAQ (undated) says it has no special funds to recruit international students, though enrolled international students can compete for scholarships with other students after performing well. The CDS (H6) does show 8 nonresident undergraduates received institutional aid averaging $9,042. No conditional admission or English program is described on the pages checked. Confirm with the admissions office.",
+  "src": "faq"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 1094,
+  "room_board_usd": 21654,
+  "books_usd": 1128,
+  "other_usd": 7780,
+  "total_coa_usd": 52630,
+  "notes": "Computed from published rates: basic tuition $3,419 per semester (6.1+ units) twice, plus nonresident tuition of $471 per unit for an assumed 30 units a year ($14,130). Required fees = campus fees $547.04 per semester (Fall 2026 fee table: undergraduate total $3,966.04 minus tuition $3,419), doubled and rounded. Living costs are Cal State LA's on-campus 2026-27 budget: housing $13,682 plus food $7,972; other = transportation $3,002 plus personal $4,726 plus loan fees $52. Total = the school's $38,500 California-resident on-campus budget plus $14,130 nonresident tuition (its own tuition-and-fees line, $7,938, is $6 above the fee-table sum). International students must also carry health insurance; the cost was not found.",
+  "src": "coa"
+ },
+ "majors": [
+  {
+   "program": "Music (BM)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Requires an audition; the international deadline for the audition requirement is Feb 5, 2027."
+  }
+ ],
+ "score_codes": {
+  "toefl": {
+   "code": "4399",
+   "note": "Cal State LA institutional code for TOEFL scores.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ }
+}

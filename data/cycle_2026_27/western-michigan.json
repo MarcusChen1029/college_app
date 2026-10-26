@@ -1,0 +1,158 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "WMU - International student application deadlines, cost of attendance and funding",
+   "url": "https://wmich.edu/internationaladmissions",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "WMU - English proficiency requirements (undergraduate)",
+   "url": "https://wmich.edu/internationaladmissions/proficiency",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "WMU - International funding and the Global Education Merit Scholarship",
+   "url": "https://wmich.edu/international/financial-aid",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "WMU's CDS says SAT/ACT scores will only be used if they benefit a student and students will not be penalized for them. The international page lists no SAT/ACT requirement; SAT EBRW 500 can be used to meet the English requirement.",
+  "src": "eng"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 100,
+  "notes": "International undergraduates apply through WMU's own application and pay a non-refundable $100 fee (CDS C13 lists $40 for domestic applicants). Unofficial transcripts are enough for the decision; official ones are due by the end of the first semester. A passport identification page is required. Some colleges (Business, Engineering and Applied Sciences) charge additional tuition and fees.",
+  "src": "dates"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International undergraduate fall deadline (fall 2027)",
+   "notes": "Spring deadline is Sept 1 and summer is Feb 1. WMU says many programs admit on a rolling basis and late applications may still be processed but admission for the desired term is not guaranteed. The page gives month/day only; the year is assumed for fall 2027.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "No proof of English is needed after four years of upper secondary school or one year of full-time university study in a listed English-speaking country (for some countries only in an English-language system). Other routes: IB English HL grade 5, IGCSE English A-C, Cambridge Advanced A-C, ELS level 112, SAT EBRW 500, WMU Pathway II or the CELCIS English program. Tests must be taken within two years of applying. Students below the minimum can start in WMU's Center for English Language and Culture for International Students (CELCIS). Aviation Flight Science needs higher scores.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Aviation Flight Science: 91. TOEFL Essentials 7 (Aviation 9) also accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Exams from 2026 on; Aviation Flight Science 4.5. The page lists these values without naming the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic; Aviation Flight Science 7.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Aviation Flight Science 115.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "PTE Academic and Pearson English Express; Aviation Flight Science 64. Michigan English Test also accepted (48; Aviation 64).",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Cambridge Advanced English Certificate with grade A, B or C; no numeric score given.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 22590,
+  "room_board_usd": 12570,
+  "other_usd": 2090,
+  "total_coa_usd": 37250,
+  "notes": "WMU's estimated 2026-27 cost for international undergraduates (lower level, up to 55 credits): $22,590 tuition and fees, $12,570 housing and meals (Bronco 14 plan, traditional double room), $2,090 health insurance; about $3,600 more for personal expenses and books is not in the total. Upper level is $24,630 tuition and fees; Business adds about $1,740 and Engineering and Applied Sciences about $1,610 to the lower-level total. The WMU CDS G1 reports 2025-26 tuition because 2026-27 was not yet final ($15,814 in-state, $19,768 non-resident).",
+  "src": "dates"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Global Education Undergraduate Merit Scholarship: up to $10,000 per year toward tuition for up to eight semesters, no separate application, 3.0+ GPA, F-1/J-1 degree-seeking students; awarded on a rolling basis while funds last, and not everyone eligible gets one. Not available for fully online programs. The WMU CDS (H6) says institutional aid is not available to nonresidents, which conflicts with the funding page; the funding page is used here.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "WMU's international pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "WMU's international pages do not print an ACT code; look it up at act.org.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "1902",
+   "note": "WMU institutional code for TOEFL and other ETS exams.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code listed: reports can be emailed by the testing agency, mailed to International Student and Scholar Services, or hand-delivered.",
+   "src": "dates"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code listed: reports can be emailed by the testing agency, mailed to International Student and Scholar Services, or hand-delivered.",
+   "src": "dates"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code listed: reports can be emailed by the testing agency, mailed to International Student and Scholar Services, or hand-delivered.",
+   "src": "dates"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

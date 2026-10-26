@@ -1,0 +1,84 @@
+{
+  "slug": "byu-idaho",
+  "name": "Brigham Young University-Idaho",
+  "short_name": "BYU-Idaho",
+  "state_region": "ID",
+  "city": "Rexburg",
+  "latitude": 43.818408,
+  "longitude": -111.782431,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.byui.edu",
+  "admissions_url": "https://www.byui.edu/admissions/",
+  "ipeds_unit_id": 142522,
+  "undergrad_enrollment": 24450,
+  "intl_undergrads": 1358,
+  "student_faculty_ratio": 22,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023) via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=142522",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "enroll": {
+      "kind": "other",
+      "title": "BYU-Idaho newsroom - Fall 2025 enrollment (24,450 campus-based matriculated students)",
+      "url": "https://www.byui.edu/newsroom/announcements/byu-idaho-celebrates-largest-incoming-class-for-second-year-in-a-row",
+      "accessed": "2026-10-26"
+    },
+    "acad": {
+      "kind": "admissions_site",
+      "title": "BYU-Idaho - Academic requirements and admission statistics (fall 2022 campus-based applicants)",
+      "url": "https://www.byui.edu/admissions/application-help/academic-requirements",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=142522",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 10303,
+    "admits": 9989,
+    "enrolled": 4334,
+    "pct_submit_sat": 32,
+    "pct_submit_act": 40,
+    "notes": "No Common Data Set was found for BYU-Idaho, so this is the IPEDS baseline (fall 2023 entering class, ADM2023): 10,303 applicants, 9,989 admitted (97%), 4,334 enrolled, which reads as the on-campus first-year class. College Navigator's newer fall 2024 line (18,951 applicants, 96% admitted, 44% of admits enrolled, about 8,000 enrolled) is far larger and appears to include online/BYU-Pathway students, so it is not used here. BYU-Idaho's own page gives a fall 2022 campus-based admit rate of 94% (12,046 of 12,871) with average admitted GPA 3.60, ACT 25, SAT 975. Residency and international splits are not published. Undergraduate headcount is the fall 2025 campus-based total (24,450); the 45,585 in IPEDS includes online students. The year has three semesters (fall, winter, spring)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      480,
+      540,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      26
+    ]
+  }
+}

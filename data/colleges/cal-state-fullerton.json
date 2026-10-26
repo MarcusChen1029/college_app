@@ -1,0 +1,37 @@
+{
+ "slug": "cal-state-fullerton",
+ "name": "California State University, Fullerton",
+ "short_name": "Cal State Fullerton",
+ "state_region": "CA",
+ "city": "Fullerton",
+ "latitude": 33.881506,
+ "longitude": -117.885446,
+ "setting": "suburban",
+ "control": "public",
+ "website": "https://www.fullerton.edu",
+ "admissions_url": "https://admissions.fullerton.edu/",
+ "ipeds_unit_id": 110565,
+ "undergrad_enrollment": 37125,
+ "intl_undergrads": 475,
+ "student_faculty_ratio": 26,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: Admissions fall 2023 (ADM2023), fall 2023 enrollment (EF2023A), student-to-faculty ratio and calendar (IC2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110565",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 48591,
+  "admits": 42149,
+  "enrolled": 7070,
+  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 53,559 applicants, 91% admitted, 14% of admitted students enrolled (percentages are rounded). No public Common Data Set page was found on fullerton.edu. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are left null. The CSU is test-blind, so no SAT/ACT percentiles are reported."
+ },
+ "scores": {}
+}

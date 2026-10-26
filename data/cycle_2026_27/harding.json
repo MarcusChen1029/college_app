@@ -1,0 +1,137 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Harding University - Undergraduate admissions process (application checklist)",
+      "url": "https://www.harding.edu/admissions/apply-undergrad/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Harding University - International student admissions",
+      "url": "https://www.harding.edu/admissions/international/",
+      "accessed": "2026-10-26"
+    },
+    "esl": {
+      "kind": "admissions_site",
+      "title": "Harding University - English as a Second Language program",
+      "url": "https://www.harding.edu/life-at-harding/arc/academic-programs/esl/index",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Harding University - Tuition, costs, scholarships and financial aid",
+      "url": "https://www.harding.edu/admissions/cost/index",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "Official SAT, ACT or CLT scores are a required part of admission (ACT science section not needed). Admission and scholarship eligibility for all international students require meeting minimum test score requirements, but the page does not publish the minimums. Send scores with SAT code 6267 or ACT code 0124.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Nonrefundable $50 fee. International steps: apply online; send transcripts through myiee.org (the $120 'Document report + GPA' option for a non-U.S. high school, or the school counselor sends a U.S. transcript); TOEFL or IELTS if English is not the official language; passport copy; confidential reference (required); and a $1,000 international deposit applied to first-semester tuition (refundable if the student cannot attend; no acceptance without it). The I-20 is sent only after acceptance. After acceptance, a $250 international enrollment fee and housing choice are due by May 1.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International application deadline (fall 2027 entry)",
+      "notes": "Dates are printed without a year; treated as fall 2027. Spring semester application deadline is October 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-01",
+      "label": "All required items for international admission due (fall 2027 entry)",
+      "notes": "Spring semester: all required items due November 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Enrollment fee and housing preferences (fall 2027 entry)",
+      "notes": "International page: $250 enrollment fee, deadline May 1. Domestic applicants get a discounted fee during the Oct. 1 to March 15 priority commitment period.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-10-31",
+      "label": "Walton International Scholarship Program deadline (as listed on Harding's aid page)",
+      "notes": "The aid page lists the program (run by wispweb.org) with 'Deadline: October 31' and no year; check eligibility and the year with WISP.",
+      "src": "cost"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "TOEFL or IELTS is required 'if the official language is not English'; the page does not list other exemptions. Harding runs a full-time English as a Second Language (ELS/ESL) program and a hybrid International Advance Program (9-12 hours of major classes while studying English); the ESL page describes the TOEFL 70 / IELTS 6.0 as the level for unconditional admission, so lower scores go through the ESL pathway. Scores must be sent directly from the testing center.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "Page states TOEFL 550 (paper) or an equivalent combined 70 on the iBT. Duolingo, PTE, Cambridge and the 1-6 TOEFL scale are not listed.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Federal aid is not available to international students and the university will not give assistance above actual tuition. Admitted freshmen can receive an Academic Achievement Scholarship of $7,000-$11,000 per year for four years based on test scores and GPA (full-time, 3.0 GPA to renew); the Trustee Scholar full-tuition award needs a 3.5 GPA and ACT 31 / SAT 1390 / CLT 100. The pages do not say whether these awards are open to international students. The College of Business lists a Sam Walton Scholarship ($3,000 per year, preference to non-U.S. business majors).",
+    "src": "cost"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "tuition_usd": 28350,
+    "required_fees_usd": 1200,
+    "room_board_usd": 10400,
+    "total_coa_usd": 39950,
+    "notes": "First-year estimate for 30 credit hours on Harding's cost page (the page does not label its year, so 2026-27 is assumed): tuition $945 per hour = $28,350, technology fee $1,200, freshman housing $5,000, all-access meals $5,400 = $39,950 billable. The international admissions page still shows an older estimate ($37,484 including a $500 international fee and $1,692 health insurance with tuition $25,590), so budget extra for the international fee and mandatory insurance."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6267",
+      "note": "Harding SAT code.",
+      "src": "apply"
+    },
+    "act": {
+      "code": "0124",
+      "note": "Harding ACT code.",
+      "src": "apply"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is listed on Harding's international pages; look it up in the ETS code search.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "nursing": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

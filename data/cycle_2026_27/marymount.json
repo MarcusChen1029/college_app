@@ -1,0 +1,131 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Marymount University - International First-Year Students (requirements, English proficiency, IELP)",
+      "url": "https://marymount.edu/admissions/intl-first-year-students",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Marymount University - First-year admission requirements (rolling admission, test policy)",
+      "url": "https://marymount.edu/admissions/undergraduate-students/admission-reqirements/",
+      "accessed": "2026-10-26"
+    },
+    "fa": {
+      "kind": "financial_aid_site",
+      "title": "Marymount University - Financial advice for international students (first-year scholarships)",
+      "url": "https://marymount.edu/admissions/international/financial-advice-for-international-students/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Marymount University - Scholarships and aid (first-year merit scholarships)",
+      "url": "https://marymount.edu/admissions/financial-aid/scholarships-1/",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "financial_aid_site",
+      "title": "Marymount University - Tuition & fees 2026-2027",
+      "url": "https://marymount.edu/admissions/student-accounts/tuition-fees/2026-2027/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "The first-year requirements page says Marymount does not consider SAT/ACT scores for admission or scholarships unless the applicant is home-schooled or from an unaccredited or ungraded school (those must submit SAT, ACT or CLT; recommended 980 SAT or 18 ACT). The international page still lists SAT/ACT as 'optional' items, and an SAT EBRW of 450 or ACT 18 can serve as English proficiency proof.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "CDS C13 (2023-24) reports no application fee; not re-confirmed on the current admissions pages. International first-year applicants submit official transcripts sent by the school (with certified English translations; national exam results where relevant), English proficiency proof and, optionally, recommendations and a personal statement. A resume is requested for any gaps in enrollment. Admission is rolling with no deadline; decisions take about 4-6 weeks.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission, no application deadline",
+      "notes": "Both the first-year and the international pages say there is no application deadline; applications are reviewed as they become complete.",
+      "src": "req"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Priority consideration for first-year academic scholarships",
+      "notes": "The international financial advice page asks for the application and supporting documents by March 1 for priority consideration; no year printed, taken as 2027.",
+      "src": "fa"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived after four consecutive years of college-preparatory English (not ESL or remedial) with C or better at a US high school (excluding Puerto Rico), 30 credits plus an English composition course (C or better) at a US regionally accredited institution, or a US associate, bachelor's or master's degree. Alternatives to the tests below: SAT EBRW 450 or ACT 18 on both Reading and Writing. Scores must be under two years old. Applicants who meet every other requirement but not English can apply for conditional admission through the selective Intensive English Language Program (IELP) and receive full admission once the requirement is met.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Page words it as 'overall score within the range of 79'. The international transfer page adds a minimum of 4 for exams on or after 2026-01-21, but the first-year page does not.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Academic.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Page words it as 'overall score within the range of 100-105'.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 54,
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 42678,
+    "required_fees_usd": 1400,
+    "intl_avg_award_usd": 18534,
+    "notes": "Full-time undergraduate (12-18 credits): tuition $21,339 per semester; fees per year: technology $550, student activity $250, health & well-being $200, facility $400. Excludes nursing fee ($2,300 per year), health insurance, and a one-time $450 new first-college freshman fee. Room and board is not on the tuition page (the 2023-24 CDS lists $17,000 for 2024-25). intl_avg_award_usd is the 2023-24 CDS H6 average institutional award to 133 degree-seeking nonresident undergraduates ($18,534).",
+    "src": "tf"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "The international page says eligible full-time first-year applicants are automatically offered the highest scholarship they qualify for with their admission application. The general first-year merit list (not specific to international students) runs from Presidential, up to $28,000 a year with on-campus housing and up to $20,000 for commuters, down to Achievement Award, up to $20,000 / $16,000; renewable for four years with a 2.0 GPA. Need-based aid for international students is not described, so it is left unconfirmed.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,147 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Fayetteville State University - Application Deadlines for Spring, Summer, & Fall 2027",
+   "url": "https://www.uncfsu.edu/admission-and-aid/dates-and-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "Fayetteville State University - Freshman admission",
+   "url": "https://www.uncfsu.edu/admission-and-aid/undergraduate-admissions/freshman",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Fayetteville State University - International Students (admission)",
+   "url": "https://www.uncfsu.edu/admission-and-aid/international",
+   "accessed": "2026-10-26"
+  },
+  "vs": {
+   "kind": "admissions_site",
+   "title": "Fayetteville State University International Education Center - International admission requirements (TOEFL school code)",
+   "url": "https://www.uncfsu.edu/academics/colleges-schools-and-departments/international-education-center/visiting-scholars",
+   "accessed": "2026-10-26"
+  },
+  "np": {
+   "kind": "financial_aid_site",
+   "title": "Fayetteville State University - NC Promise",
+   "url": "https://www.uncfsu.edu/admission-and-aid/nc-promise",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Fayetteville State University - Admissions Scholarships",
+   "url": "https://www.uncfsu.edu/admission-and-aid/undergraduate-admissions/admissions-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "Fayetteville State University - Academic Program Finder",
+   "url": "https://www.uncfsu.edu/academics/program-finder",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Freshman page: applicants with a weighted high school GPA of 2.50 up to (not including) 2.80 must submit an ACT of 17+ or SAT of 930+; no test requirement is listed for other applicants. The international page says SAT/ACT is required if the calculated GPA is between 2.5 and 2.8 (GPA must be at least 2.5).",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply through the Broncoville portal, NC Connect (CFNC) or Choose NC; $50 non-refundable fee. Letters of recommendation are not required. International applicants also need transcripts with a course-by-course evaluation and GPA calculation from a NACES member (Atlas Credential Evaluations also accepted) and financial documents: the page says proof of funding for at least one academic year for admission, and, in a separate section, four academic years for the I-20; confirm with the Office of International Programs.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-07-30",
+   "label": "Fall 2027 first-year application deadline (general; no separate international date published)",
+   "notes": "The dates page, titled for Spring, Summer and Fall 2027, lists July 30 for fall first-year applicants. No separate international undergraduate deadline is printed (the only international deadline listed is March 1 for graduate applicants), so confirm timing for the I-20 with the Office of International Programs.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "Scholarship application deadline (portal opens October 31, 2026)",
+   "notes": "First-year applicants are automatically considered for merit scholarships; whether international students qualify is not stated.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The international page lists English proficiency scores '(If applicable)' and prints no exemption list. An older International Education Center page says a TOEFL report is required unless the applicant is from an official English-speaking country (countries not listed on that page).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Paper-based minimum 500. No 1-6 band value is given.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 94,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "merit_scholarships": null,
+  "meets_full_need": false,
+  "notes": "The international page lists no institutional international scholarships; it points to a Scholarship Opportunities page for external funding for admitted international students. FSU merit scholarships for first-time freshmen (Platinum $5,000, Gold $3,000, Silver $2,000 per year for unweighted GPA 3.75+, 3.50-3.74, 3.2-3.49) need no extra application, but the pages do not say whether international students qualify. International students are eligible for the NC Promise tuition rate.",
+  "src": "intl"
+ },
+ "cost": {
+  "year": "2027-2028",
+  "tuition_intl_usd": 8000,
+  "required_fees_usd": 3452,
+  "room_board_usd": 7000,
+  "notes": "NC Promise (starts fall 2027, international students eligible, no extra application): out-of-state undergraduate tuition $4,000 per semester, so $8,000 for two semesters. Fees $1,726, health insurance $1,312 and a traditional-dorm room and board estimate of $3,500 are printed per semester (the figures here are doubled for two semesters; health insurance, $2,624 for the year, is not included). The page's per-semester total for out-of-state students living on campus is $10,538 (2027-2028 rates).",
+  "src": "np"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5212",
+   "note": "SAT code printed on the freshman admission page.",
+   "src": "fr"
+  },
+  "act": {
+   "code": "3098",
+   "note": "ACT code printed on the freshman admission page.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": "5212",
+   "note": "TOEFL school code printed on an older International Education Center admissions page; scores must be sent electronically.",
+   "src": "vs"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

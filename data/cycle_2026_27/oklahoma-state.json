@@ -1,0 +1,195 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "OSU - International freshman admission process",
+   "url": "https://go.okstate.edu/admissions/international/freshman",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "OSU - International dates and deadlines",
+   "url": "https://go.okstate.edu/admissions/international/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "eli": {
+   "kind": "admissions_site",
+   "title": "OSU - Conditional admission for international students",
+   "url": "https://go.okstate.edu/admissions/international/eli",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "OSU - Freshman admission requirements and codes",
+   "url": "https://go.okstate.edu/admissions/freshman",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "OSU - International scholarships",
+   "url": "https://go.okstate.edu/scholarships-financial-aid/types-of-aid/scholarships-and-grants/international-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "admissions_site",
+   "title": "OSU - Program-specific admission criteria",
+   "url": "https://go.okstate.edu/admissions/program-specific-admission-criteria",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Students can apply without consideration of a test score and be admitted on a full review of the high school transcript. International 'assured admission' is stated as high school GPA 3.0+ (4.0 scale, recalculated by OSU) plus the English requirement; no SAT/ACT is listed. Scores raise scholarship awards (ACT/SAT/IELTS/TOEFL/Duolingo/PTE grid).",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 90,
+  "notes": "International application fee is $90 (domestic $50). OSU application opens July 1; Common App opens Aug. 1; submit only one. The application is also the scholarship application. Required uploads: passport ID page, English test, transcripts (OSU does not accept third-party credential evaluations), financial guarantee form plus bank letter. A leadership and involvement resume is needed for full scholarship consideration.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International fall application deadline (applicants not living in the U.S.)",
+   "notes": "Applicants currently living in the U.S. have July 1. The page lists 'Fall: June 1' without printing a year; taken as the fall 2027 cycle. Spring is Nov. 1 (Dec. 1 if living in the U.S.).",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-11-01",
+   "label": "Early Opportunity Scholarship deadline (freshmen)",
+   "notes": "Complete application incl. leadership and involvement resume, and submit test scores, for maximum scholarship consideration.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "Priority scholarship deadline (freshmen)",
+   "notes": "Full scholarship consideration requires all materials by this date; later applications are considered only if funds remain. Absolute scholarship deadline is Aug. 13.",
+   "src": "aid"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "College Decision Date (enrollment deposit $300, $250 refundable until May 1)",
+   "notes": "Enrollment deposit opens Dec. 1; some scholarships must be accepted by May 1.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for graduates of an accredited high school where English is the primary language of instruction in a country where English is the primary language, and for students who attended English-speaking U.S. high schools for 2+ years. TOEFL/IELTS scores are valid two years. Conditional admission is offered to students who meet everything except English (see notes on the English rows).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Page gives 'iBT TOEFL Internet-Based Score 3.5+' (the 1-6 scale) and does not list an old 0-120 minimum. Conditional admission minimum 3.0. TOEFL send code 6546. Institutional-test TOEFL not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "IELTS Academic. Conditional admission minimum 5.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Accepted from fall 2024. Conditional admission minimum 85.",
+   "src": "eli"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 46,
+   "notes": "PTE Academic. Conditional admission minimum 36. iTEP Academic 3.5 (conditional 3.0) is also accepted but is not a listed test here.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Achievement Freshmen Scholarships (automatic with the application, partial tuition waiver) range $5,000-$15,000 per year; the grid is by GPA and test (e.g. IELTS 6.0 / SAT 1160-1220 with 3.0-3.24 GPA = $9,500; 'GPA only, no test' awards $6,000-$9,000). Alumni legacy $5,000. College/department scholarships vary. CDS H6: need-based aid is also available to nonresidents (169 recipients, avg $10,492). The admissions page says $7,000-$15,000 and the scholarship page says $5,000-$15,000.",
+  "src": "aid"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN, College of Education and Human Sciences)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Students are admitted to BSN and moved to Professional Nursing only if admitted through a secondary application.",
+   "src": "prog"
+  },
+  {
+   "program": "Music, Music Education, Acting, Musical Theatre",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Freshman admission requires a separate audition process with the department.",
+   "src": "prog"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "6546",
+   "note": "OSU official SAT code.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "3424",
+   "note": "OSU official ACT code.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "6546",
+   "note": "TOEFL DI code on the international page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; copies of official scores are accepted if verifiable online.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "engineering": "C",
+  "business": "C",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D",
+  "computer_science": "D"
+ },
+ "tier_notes": {
+  "engineering": "Editorial judgment: established ABET-accredited engineering college (CEAT) in the roughly 41-100 national band.",
+  "business": "Editorial judgment: Spears School of Business, AACSB-accredited, roughly 41-100 band."
+ }
+}

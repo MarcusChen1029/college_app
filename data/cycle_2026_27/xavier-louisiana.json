@@ -1,0 +1,141 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Xavier University of Louisiana - Applying to Xavier: Undergraduate Students (international)",
+      "url": "https://www.xula.edu/international-ed/applying-undergrad-students.html",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Xavier University of Louisiana - First-Time Freshman Admissions: Requirements and How to Apply",
+      "url": "https://www.xula.edu/admissions/undergraduate-admission/firsttimefreshmen/index.html",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "financial_aid_site",
+      "title": "Xavier University of Louisiana - Tuition and Fees, College of Arts and Sciences & Pre-Pharmacy, Fall 2026 and Spring 2027 (PDF)",
+      "url": "https://www.xula.edu/fiscal-services/office-of-student-accounts/oofsa-assets/forms-2026-2027/cas_pre-pharm-2026-2027.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The freshman page says Xavier is test-optional (it describes the policy in pandemic terms, so confirm it still applies); applicants who do not submit SAT/ACT must submit an essay and resume instead. The CDS (C8F) says test scores are required for students with a GPA below 3.0. The page states there is no minimum GPA or test score for admission.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "counselor_rec": true,
+    "notes": "Application is free (Xavier application or Common App). Freshmen need an official transcript and a counselor recommendation; the international page also lists a personal statement and financial documentation. Non-native English speakers submit TOEFL, IELTS or Duolingo. The pages print no cycle year; deadlines are assumed to repeat for fall 2027.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Preferred scholarship deadline (fall 2027 entry)",
+      "notes": "Printed as December 1 with no year; assumed Dec. 1, 2026 for fall 2027 entry.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-03-01",
+      "label": "Preferred application deadline, fall (fall 2027 entry)",
+      "notes": "Printed as March 1 with no year; assumed 2027. Late international applications may be cut off June 1 because of visa processing time. CDS C16: decisions on a rolling basis beginning Oct. 1; reply by May 1. The international page also gives Sept. 1 for spring entry.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Students whose native language is English or who come from countries where English is the native language are exempt; transfer applicants with U.S. high school or college work may qualify for a waiver. The freshman page says TOEFL/IELTS are required only for non-native speakers. Conditional admission or an ESL pathway is not described.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Internet-based 80; paper-based 550. No minimum is given on the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 7.0,
+      "notes": "Overall band 7.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "The page lists 'between 105 and 115'; 105 is taken as the minimum.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "fees",
+    "tuition_usd": 27670,
+    "notes": "Full-time tuition (12-18 hours) is $13,835 per semester, $27,670 per year, for the College of Arts and Sciences and Pre-Pharmacy (fee sheet, fall 2026 and spring 2027). Separate per-semester fees on the sheet include information technology $462, health and wellness $214, student activity $144, ID $11 and a $350 book bundle; annual student health insurance is $2,327. Room and board is not published on the pages found. The international page lists a U.S. visa fee of $185 and a SEVIS fee of $350."
+  },
+  "aid": {
+    "intl_aid_policy": null,
+    "merit_scholarships": true,
+    "notes": "International applicants are automatically considered for merit scholarships on admission (Board of Trustees, Presidential, Xavier University Academic); Music Department awards up to $10,000; pre-med Board of Trustees and JW Carmichael scholarship up to $40,000; athletic awards case by case. International students are not eligible for federal aid. CDS H6 checkboxes are unreadable, but it shows 66 nonresident aid recipients with an average institutional award of $17,229 (the table's year is not clear).",
+    "src": "intl"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the admissions pages found.",
+      "src": "fy"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the admissions pages found.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the admissions pages found.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not listed on the international page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "biology_life_sci": "C",
+    "pre_med": "C",
+    "computer_science": "D",
+    "business": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {
+    "general": "D+: private Catholic HBCU in New Orleans with a strong science and pre-health reputation; mid-size undergraduate program (about 2,600) with a PharmD and several graduate health programs. Editorial judgment.",
+    "biology_life_sci": "C: the largest bachelor's program by completions (134 biology, 15 neuroscience, 14 biochemistry in IPEDS 2024-25), a fully accredited College of Pharmacy and a broad life-science pipeline. Editorial judgment.",
+    "pre_med": "C: pre-health is the school's core strength: biology, chemistry (37), public health (65) and psychology (62) bachelor's completions feed health-professions graduate programs. Editorial judgment."
+  }
+}

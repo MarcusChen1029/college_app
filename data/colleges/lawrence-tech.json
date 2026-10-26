@@ -1,0 +1,92 @@
+{
+  "slug": "lawrence-tech",
+  "name": "Lawrence Technological University",
+  "short_name": "Lawrence Tech",
+  "state_region": "MI",
+  "city": "Southfield",
+  "latitude": 42.474072,
+  "longitude": -83.25003,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://ltu.edu",
+  "admissions_url": "https://ltu.edu/admissions/",
+  "ipeds_unit_id": 170675,
+  "undergrad_enrollment": 2661,
+  "intl_undergrads": 216,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Lawrence Technological University Common Data Set 2025-2026 (PDF)",
+      "url": "https://ltu.edu/wp-content/uploads/2026/04/2025_2026_CDS_EXTERNAL.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=170675",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 3412,
+    "admits": 2764,
+    "enrolled": 379,
+    "pct_submit_sat": 44.73,
+    "pct_submit_act": 4.21,
+    "gpa_avg": 3.45,
+    "pct_reporting_gpa": 99.2,
+    "gpa_distribution": {
+      "4.0": 18.8,
+      "3.75-3.99": 22.0,
+      "3.50-3.74": 15.9,
+      "3.25-3.49": 14.6,
+      "3.00-3.24": 13.0,
+      "2.50-2.99": 11.9,
+      "2.0-2.49": 3.4,
+      "1.0-1.99": 0.3
+    },
+    "notes": "CDS C1 (fall 2025): 3,412 applicants, 2,764 admitted, 379 enrolled (369 full-time + 10 part-time). The CDS does not report international applicants or admits in C1 and gives no in-state/out-of-state split. SAT 44.7% and ACT 4.2% of enrolled first-years submitted scores (C9). No class rank reported. Undergrad enrollment is B1 'Total All Undergraduates' (2,661); the international undergraduate count is left null (B2 nonresident cells are not reliably readable from the PDF). Student-faculty ratio 11:1 from CDS I-2."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1030,
+      1150,
+      1250
+    ],
+    "SAT_ERW": [
+      510,
+      560,
+      630
+    ],
+    "SAT_MATH": [
+      510,
+      590,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      26,
+      28
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 43440,
+    "tuition_out_of_state_usd": 43440,
+    "tuition_intl_usd": 43440,
+    "required_fees_usd": 2400,
+    "room_board_usd": 12484,
+    "books_usd": 1874,
+    "other_usd": 2946,
+    "intl_need_aid_awarded": 127,
+    "intl_avg_award_usd": 12824,
+    "notes": "CDS G1/G5 (2025-26): nonresident-alien tuition equals the standard private tuition ($43,440 for 15 credits per term); fees $2,400; on-campus room and board $12,484; books $1,874; other $2,946 (transportation $2,528 is not included in other). CDS H6: 127 undergraduate degree-seeking nonresident aliens received institutional aid (need or non-need, the PDF does not say which), average $12,824. The tuition page shows an undated annual estimate of $47,850 tuition and fees (30 credits), $60,830 total."
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "slug": "cuny-city-tech",
+  "name": "CUNY New York City College of Technology (City Tech)",
+  "short_name": "City Tech",
+  "state_region": "NY",
+  "city": "Brooklyn",
+  "latitude": 40.695483,
+  "longitude": -73.987856,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.citytech.cuny.edu/",
+  "admissions_url": "https://www.citytech.cuny.edu/admissions/",
+  "ipeds_unit_id": 190655,
+  "undergrad_enrollment": 14486,
+  "intl_undergrads": 540,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190655",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, SAT, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190655",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190655",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 21007,
+    "admits": 16962,
+    "enrolled": 3375,
+    "pct_submit_sat": 2,
+    "notes": "Baseline from IPEDS ADM2023 (fall 2023 entering class). No Common Data Set was found on City Tech's site (two attempts), so no international split, GPA or residency data. College Navigator fall 2024: 24,745 applicants, 80% admitted, 18% of admits enrolled (counts of admits not shown). Mixed associate/bachelor's college: IPEDS counts include associate-degree applicants. International applicant counts are not published."
+  },
+  "scores": {
+    "SAT_ERW": [
+      460,
+      510,
+      570
+    ],
+    "SAT_MATH": [
+      440,
+      500,
+      570
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 7332,
+    "tuition_out_of_state_usd": 15282,
+    "books_usd": 1500,
+    "room_board_usd": 22260,
+    "other_usd": 6216,
+    "total_coa_usd": 37308,
+    "notes": "College Navigator 2024-25: tuition includes required fees; off-campus (City Tech has no campus housing) food and housing; total is the in-state off-campus figure (out-of-state off-campus $45,258). F-1/J-1 students pay the New York State non-resident rate. CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time (12+ credits) plus fees."
+  }
+}

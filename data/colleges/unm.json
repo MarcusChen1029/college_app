@@ -1,0 +1,95 @@
+{
+  "slug": "unm",
+  "name": "University of New Mexico (Main Campus)",
+  "short_name": "UNM",
+  "state_region": "NM",
+  "city": "Albuquerque",
+  "latitude": 35.083868,
+  "longitude": -106.620155,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unm.edu/",
+  "admissions_url": "https://admissions.unm.edu/",
+  "ipeds_unit_id": 187985,
+  "undergrad_enrollment": 18466,
+  "intl_undergrads": 308,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of New Mexico Common Data Set 2025-2026 (PDF)",
+      "url": "https://oia.unm.edu/resources/cds_25_26_updated.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 13589,
+    "admits": 10866,
+    "enrolled": 3775,
+    "in_state_applicants": 6870,
+    "in_state_admits": 5608,
+    "out_state_applicants": 5939,
+    "out_state_admits": 5032,
+    "intl_applicants": 780,
+    "intl_admits": 226,
+    "pct_submit_sat": 54,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.4,
+    "pct_reporting_gpa": 75.5,
+    "gpa_distribution": {
+      "4.0": 12.9,
+      "3.75-3.99": 18.0,
+      "3.50-3.74": 20.8,
+      "3.25-3.49": 11.8,
+      "3.00-3.24": 16.1,
+      "2.50-2.99": 17.8,
+      "2.0-2.49": 2.6
+    },
+    "notes": "CDS C1/C9/C11/C12 (fall 2025). International first-years were admitted at a much lower rate (226 of 780, about 29%) than domestic applicants (about 83%), so UNM is not a near-certain admit for international applicants. The CDS PDF lost its checkbox states, so C7 factors and C8 test policy could not be read and are omitted (test policy comes from the admissions site). Student-faculty ratio is I-2 (fall 2025, 15 to 1). Undergrad and international counts are the B1 total (18,466) and B2 nonresident total-undergraduate column (308)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      920,
+      1030,
+      1170
+    ],
+    "SAT_ERW": [
+      480,
+      530,
+      610
+    ],
+    "SAT_MATH": [
+      430,
+      500,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11585,
+    "tuition_out_of_state_usd": 34734,
+    "required_fees_usd": 1640,
+    "room_board_usd": 12471,
+    "notes": "CDS G1 (first-year, 2026-27): in-state $11,585, out-of-state/nonresident $34,734, required fees $1,639.80 (rounded), food and housing $12,471. International students pay the nonresident rate unless they receive a scholarship (see aid)."
+  }
+}

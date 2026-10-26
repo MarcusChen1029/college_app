@@ -1,0 +1,134 @@
+{
+  "slug": "northern-colorado",
+  "name": "University of Northern Colorado",
+  "short_name": null,
+  "state_region": "CO",
+  "city": "Greeley",
+  "latitude": 40.410855,
+  "longitude": -104.692777,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unco.edu/",
+  "admissions_url": "https://www.unco.edu/admissions-aid/",
+  "ipeds_unit_id": 127741,
+  "undergrad_enrollment": 6480,
+  "intl_undergrads": 103,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Northern Colorado Common Data Set 2023-2024 (PDF)",
+      "url": "https://www.unco.edu/app/uploads/2025/10/UNC-Common-Data-Set-2023-24.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - University of Northern Colorado (IPEDS fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=127741",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=127741",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 9479,
+    "admits": 8880,
+    "enrolled": 1229,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 4,
+    "gpa_avg": 3.52,
+    "pct_reporting_gpa": 99.1,
+    "gpa_distribution": {
+      "4.0": 24,
+      "3.75-3.99": 16.7,
+      "3.50-3.74": 16.3,
+      "3.25-3.49": 15.7,
+      "3.00-3.24": 13.6,
+      "2.50-2.99": 11.9,
+      "2.0-2.49": 1.72,
+      "1.0-1.99": 0.1
+    },
+    "notes": "Fall 2023 entering class from CDS C1 (applicants 3,332 men + 6,137 women + 10 another gender; admits 3,077 + 5,803 + 0; enrolled 373 + 856). UNC's newer 2024-25 CDS is an image-only PDF that could not be read as text, so the 2023-24 CDS is used. The residency split of applicants/admits is suppressed in the CDS, so intl_applicants/intl_admits are null (nonresidents were 103 of 6,616 undergraduates in fall 2023). College Navigator (IPEDS fall 2024) shows 11,127 applicants and an 86% admit rate. Undergraduate enrollment (6,480) and student-faculty ratio (14:1) are from College Navigator, fall 2024."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      970,
+      1070,
+      1170
+    ],
+    "SAT_ERW": [
+      490,
+      540,
+      600
+    ],
+    "SAT_MATH": [
+      480,
+      530,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      21,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS 2023-24 C8 (for fall 2025 admission, latest readable): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 9296,
+    "tuition_out_of_state_usd": 23490,
+    "tuition_intl_usd": 23490,
+    "required_fees_usd": 2714,
+    "room_board_usd": 15230,
+    "books_usd": 1200,
+    "intl_avg_award_usd": 6037,
+    "intl_merit_aid": true,
+    "notes": "CDS G1 (first-year, 2024-25; the 2023-24 CDS reports the following year's prices). UNC's tuition page for 2026-27 lists nonresident tuition of $13,047 per semester at 15 credits, plus per-credit fees (activity $72.58, capital $59.30 and LEAF $1.00, each capped at 10 credits; technology $15.23) and a one-time $260 new-student fee; it gives no housing figure. CDS H6: 49 degree-seeking nonresidents received institutional aid in 2023-24 (average $6,037, total $295,797)."
+  }
+}

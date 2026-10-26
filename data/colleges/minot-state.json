@@ -1,0 +1,79 @@
+{
+  "slug": "minot-state",
+  "name": "Minot State University",
+  "short_name": "Minot State",
+  "state_region": "ND",
+  "city": "Minot",
+  "latitude": 48.246961,
+  "longitude": -101.29861,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.minotstateu.edu",
+  "admissions_url": "https://www.minotstateu.edu/enroll/",
+  "ipeds_unit_id": 200253,
+  "undergrad_enrollment": 2499,
+  "intl_undergrads": 220,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Minot State University (fall 2024 admissions, enrollment, student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=200253",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=200253",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 745,
+    "admits": 538,
+    "enrolled": 365,
+    "pct_submit_sat": 8,
+    "pct_submit_act": 58,
+    "notes": "No readable Common Data Set: Minot State's CDS page now points to a login-only SharePoint folder, so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 701 applicants, 65% admitted, 78% of admitted enrolled (the admit rate fell from 72% in fall 2023, so it is not an open-admission school for every applicant). IPEDS gives no international applicant/admit split and no GPA data. Undergraduate enrollment 2,499 and student-to-faculty ratio 11:1 are College Navigator fall 2024."
+  },
+  "scores": {
+    "SAT_ERW": [
+      480,
+      520,
+      580
+    ],
+    "SAT_MATH": [
+      450,
+      520,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  }
+}

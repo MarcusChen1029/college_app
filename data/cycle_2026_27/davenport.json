@@ -1,0 +1,178 @@
+{
+  "sources": {
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Davenport University 2026-2027 Undergraduate Catalog - Admissions (incl. international students and English proficiency)",
+      "url": "https://catalog.davenport.edu/content.php?catoid=14&navoid=707",
+      "accessed": "2026-10-26"
+    },
+    "dead": {
+      "kind": "admissions_site",
+      "title": "Davenport University - International admissions deadlines",
+      "url": "https://www.davenport.edu/international/student-services/deadlines",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Davenport University - International students",
+      "url": "https://www.davenport.edu/international",
+      "accessed": "2026-10-26"
+    },
+    "hs": {
+      "kind": "admissions_site",
+      "title": "Davenport University - How to prepare for college (ACT/SAT waiver, application)",
+      "url": "https://www.davenport.edu/highschool",
+      "accessed": "2026-10-26"
+    },
+    "chk": {
+      "kind": "admissions_site",
+      "title": "Davenport University - International Undergraduate Admissions Checklist (PDF, 2021 upload)",
+      "url": "https://www.davenport.edu/sites/default/files/2021-02/International%20Undergraduate%20Admissions%20Checklist%20(1)%20(1)%20(1)%20(1).pdf",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Davenport University - 2026-2027 undergraduate cost of attendance budget",
+      "url": "https://www.davenport.edu/financial-aid/tuition-fees/budget",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "Davenport University - Tuition and fees",
+      "url": "https://www.davenport.edu/admissions-aid/tuition-fees",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Davenport University - Scholarships",
+      "url": "https://www.davenport.edu/financial-aid/scholarships",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Davenport's high school page says it will continue to waive the ACT/SAT requirement for admission; first-time students need an official high school transcript with a minimum 2.0 GPA (catalog). The international catalog line reads 'Diploma or Transcript with 2.0+ GPA on 4.0 scale AND applicable test score'; the test there appears to refer to the English proficiency options (ACT/SAT English scores are among them). SAT 1160 / ACT 24 with a 3.5 GPA is needed only for the Nursing high school direct-admit option.",
+    "src": "hs"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply through Davenport's own online application. The high school page calls the application 'free'; an international-specific fee is not stated on the pages read, so the fee is left null. International applicants need official transcripts (course-by-course evaluation from a NACES member for schools outside the US/Canada), a signed financial support form, a bank letter or statement issued within 9 months of the intended start, a passport photo page copy, and English proof. Admission is reviewed on a rolling basis.",
+    "src": "cat"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-21",
+      "label": "International applicants outside the U.S. needing an F-1 visa: complete admission file (fall 2027 entry)",
+      "notes": "Davenport's international deadlines page lists Fall Semester (2027) June 21, 2027 for students outside the U.S. who need an F-1 visa (Winter 2027 is Nov. 2, 2026). Students transferring from a U.S. institution (and Canadian citizens) have August 2, 2027. The page does not say whether it covers undergraduate programs only. Domestic admission is rolling with no fixed deadline.",
+      "src": "dead"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Test results must be within the last 2 years. Alternatives or waivers: citizens or graduates of waiver countries where English is the official language; U.S. high school graduation; transferable college English and math credits; ACT 18+ Reading and English; SAT 450+ Evidence-Based Reading and Writing; AP English Language 3+; IB English 5; successful completion of ELS Language Centers Level 112 (an ESL pathway).",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "2026-27 undergraduate catalog. Graduate programs require higher scores (TOEFL 79).",
+      "src": "cat"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "2026-27 undergraduate catalog.",
+      "src": "cat"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 90,
+      "notes": "2026-27 undergraduate catalog.",
+      "src": "cat"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 46,
+      "notes": "2026-27 undergraduate catalog.",
+      "src": "cat"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 32945,
+    "tuition_out_of_state_usd": 32945,
+    "tuition_intl_usd": 32945,
+    "room_board_usd": 14280,
+    "books_usd": 780,
+    "other_usd": 3008,
+    "total_coa_usd": 52023,
+    "intl_merit_aid": true,
+    "notes": "Davenport's 2026-27 undergraduate budget (30 credits, 8 months, dependent on-campus column): tuition and fees $32,945 combined, food and housing $14,280, books and supplies $780, personal $3,008 (transportation $944 and loan fees $66 are not included in other), total $52,023. Per-credit tuition is $1,059 on the first rate listed and $1,148 on a second block that names the Great Lakes Bay, Lansing and Warren campuses; the Grand Rapids rate was not confirmed. Tuition is the same for international students on the pages read.",
+    "src": "coa"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "The international page says merit-based scholarships of up to $10,000 per year may be available. The scholarships page lists Executive $10,000/yr (3.85+ GPA), Distinction $9,000 (3.50-3.84), Momentum $7,000 (3.0-3.49), Impact $6,000 (2.75-2.99) and Signature $5,000 (below 2.75); it does not say these are specific to international students, and it lists no international-only awards. Federal and state aid are not available to international students.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "Business (BBA, D.W. Maine College of Business)",
+      "category": "business",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Majors include Finance, Human Resource Management, Management, Marketing and Operations and Supply Chain Management; no separate admission criteria are published beyond general admission."
+    },
+    {
+      "program": "Computer Science and Cyber Defense (BS, College of Technology)",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission. Davenport is a National Center of Academic Excellence in Cyber Defense Education."
+    },
+    {
+      "program": "Nursing, BSN Pre-Licensure",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": true,
+      "notes": "Admission to the university is not admission to Nursing. High school direct admit: seniors with 3.5+ GPA and SAT 1160+/ACT 24+ (limited seats). Standard admission: 3.0+ GPA strongly recommended, TEAS exam and an essay. Students may take up to 33 credits as undeclared pre-nursing."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Davenport's international checklist (2021 upload) says 'School code is 1183' for official test results without naming which test; confirm per test before use.",
+      "src": "chk"
+    },
+    "act": {
+      "code": null,
+      "note": "Same checklist school code 1183 (not confirmed per test).",
+      "src": "chk"
+    },
+    "toefl": {
+      "code": null,
+      "note": "Same checklist school code 1183 (not confirmed per test).",
+      "src": "chk"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "computer_science": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

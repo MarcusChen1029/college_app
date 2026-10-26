@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Indiana State - International Freshman Admissions",
+      "url": "https://indianastate.edu/admissions/international/international-freshman-admissions",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Indiana State - Meeting English Language Requirement Scores",
+      "url": "https://indianastate.edu/admissions/international/meeting-english-language-requirement-scores",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "Indiana State - Freshman admissions",
+      "url": "https://indianastate.edu/admissions/freshman",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Indiana State - Scholarships",
+      "url": "https://indianastate.edu/costs-aid/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "award": {
+      "kind": "financial_aid_site",
+      "title": "Indiana State - International Scholar Award (scholarship listing)",
+      "url": "https://indstate.academicworks.com/opportunities/102473",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Indiana State - Undergraduate tuition rates",
+      "url": "https://indianastate.edu/costs-aid/undergraduate-tuition-rates",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for admission; scores are needed only for certain merit-based scholarships and must be sent officially. Freshman admission asks for a cumulative GPA of 2.4 or higher on a 4.0 scale and a rigorous college-preparatory curriculum. The international page states no separate minimum GPA or score.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 65,
+    "notes": "Indiana State's own online application (the Common App is not mentioned). Nonrefundable $65 fee. Required: credential evaluation from a NACES member or official transcripts sent directly by the school, financial guarantee (affidavit of support) plus an original current bank statement mailed by the bank, official English scores unless exempt, and a passport copy. Essays and recommendations are not mentioned.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International priority deadline, fall 2027 entry",
+      "notes": "Printed without a year, treated as fall 2027. Domestic freshman priority deadline is Aug. 1; the CDS lists application closing date Aug. 1 and priority June 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "Admission needed by this date for an I-20 (fall 2027 entry)",
+      "notes": "Page says students must be admitted by July 1 to receive an I-20 for fall; spring is Oct. 15 priority and Nov. 15 admit-by. Printed without a year, treated as fall 2027.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: citizens of exempt countries, a degree or diploma from an approved exempt country, or 24 transferable credits completed in an exempt country (entering undergraduates). Accepted alternatives: completion of listed intensive English programs (e.g., ELS level 112, IU level 6, Spring International level 6) or an accepted NACES credential evaluation covering English. Scores must be two years old or less by the first day of class. The page does not mention conditional admission.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Business majors 79. Institution code 1322. The page does not give a 1-6 scale value.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Business majors 6.5.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "95 or higher.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 45,
+      "notes": "PTE Academic 45.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "notes": "An International Scholar Award of $5,000 a year (renewable up to three more years, first-year international students not fully sponsored, 3.0 high school GPA, automatic consideration when admitted by the deadline) appears in a university scholarship listing, but that listing is not dated for fall 2027 (its status field reads 'Ended on 03/01/2021') and the current page could not be reached, so confirm with scholarships@indstate.edu. The freshman scholarships page says many awards give first consideration to students admitted by Dec. 1 and does not mention international status. The CDS H6 policy checkboxes are not legible. International students are not eligible for federal aid.",
+    "src": "award"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The pages fetched do not print an SAT code.",
+      "src": "fresh"
+    },
+    "act": {
+      "code": null,
+      "note": "The pages fetched do not print an ACT code.",
+      "src": "fresh"
+    },
+    "toefl": {
+      "code": "1322",
+      "note": "TOEFL institution code printed on the international pages.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

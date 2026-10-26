@@ -1,0 +1,207 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Texas A&M University-Victoria - International admission deadlines",
+   "url": "https://www.tamuv.edu/international/apply-to-program/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "Texas A&M University-Victoria - International freshman requirements",
+   "url": "https://www.tamuv.edu/international/undergraduate-admissions/freshman-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Texas A&M University-Victoria - English proficiency requirement",
+   "url": "https://www.tamuv.edu/international/apply-to-program/english-proficiency/",
+   "accessed": "2026-10-26"
+  },
+  "ftic": {
+   "kind": "admissions_site",
+   "title": "Texas A&M University-Victoria - First-time-in-college admission standards",
+   "url": "https://www.tamuv.edu/admissions/first-time-in-college-students/",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Texas A&M University-Victoria - International Student Merit Scholarship",
+   "url": "https://www.tamuv.edu/international/international-scholarships/merit/",
+   "accessed": "2026-10-26"
+  },
+  "cult": {
+   "kind": "financial_aid_site",
+   "title": "Texas A&M University-Victoria - International Student Cultural Scholarship",
+   "url": "https://www.tamuv.edu/international/international-scholarships/cultural/",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "other",
+   "title": "Texas A&M University-Victoria - Tuition and fees, 2026-2027 schedule of charges",
+   "url": "https://www.tamuv.edu/student-business-services/tuition-and-fees/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Texas A&M University-Victoria - Cost of attendance 2026-2027",
+   "url": "https://www.tamuv.edu/financial-aid/cost-of-attendance/",
+   "accessed": "2026-10-26"
+  },
+  "majors": {
+   "kind": "admissions_site",
+   "title": "Texas A&M University-Victoria - Majors and degrees",
+   "url": "https://www.tamuv.edu/majors-degrees/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International freshman page lists SAT/ACT scores as optional (submit to institution code 6917). Domestic first-time students qualify for assured admission by meeting ONE of: 2.5 unweighted GPA, SAT 980 / ACT 19, or top 50% of class; a Student Success Plan route admits 2.0-2.49 GPA, SAT 940 / ACT 18 or top 50%. International applicants need a 2.0 of 4.0 GPA (converted by the International Programs staff).",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 25,
+  "notes": "Apply through ApplyTexas (international application); the $25 fee is non-refundable (the first-time-in-college page says a fee waiver may be available; eligibility is not stated for international students). International applicants also submit official secondary school records (with English translation), proof of English proficiency, an F-1 Student Agreement Form, a Letter of Financial Sponsorship plus bank statements covering one year of cost of attendance, and a passport copy. Essays and recommendations are not required for international freshmen.",
+  "src": "fr"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "International priority deadline, fall 2027 (students outside the U.S.)",
+   "notes": "The page prints 'June 15th' with no year; taken as June 15, 2027 for fall 2027 entry. Complete application and documents must be received by this date to guarantee a decision. June 15 is also the international scholarship deadline for fall.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-15",
+   "label": "Last date to apply for fall 2027 (students outside the U.S.)",
+   "notes": "Students may apply until July 15th; applications after the priority date are reviewed case by case. Year not printed; taken as 2027. U.S.-based international transfer students have an Aug 18 fall deadline. Spring entry: priority Nov 15, apply until Dec 10.",
+   "src": "dates"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-06-15",
+   "label": "International Merit Scholarship application, fall 2027",
+   "notes": "Year not printed; taken as June 15, 2027. The student must already be admitted and both the general scholarship application and the international merit application must be complete.",
+   "src": "merit"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for students whose native language is not English or whose instruction was not in English. Exempt: citizens of listed native-English countries, applicants with a U.S. high school diploma or degree, applicants who finished freshman English composition with C+ or better, and those with higher education completed at an English-medium institution verified by a NACES member. Others can request a waiver through a Listening, Speaking and Writing assessment with the International Programs office. Scores must be less than 3 years old.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Internet-based minimum 61; paper-based minimum 500. Institution code 6917.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "notes": "The page names Duolingo first and says the university requires 85 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Cambridge English Level B1 or higher; no numeric score is given. Other accepted proofs: iTEP 3.5, SAT 1100 (Reading+Math), ACT 18, MELAB 69, WASSCE/WAEC C4 in English, completion of a CEA-accredited English program.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "International Student Merit Scholarship: for F-1 students it applies the in-state tuition rate and can reduce the cost of attendance by $3,000 to $10,000 over two semesters (tuition and fees only; essay and resume required; apply by June 15 for fall; keep 2.5 GPA and 10 volunteer hours). International Student Cultural Scholarship: $1,500 per year ($750 per semester) for F-1/J-1 students on first-come basis, applied to out-of-state tuition and fees; a student can hold only one international scholarship. Need-based aid for international students is not stated.",
+  "src": "merit"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "tuition",
+  "tuition_usd": 5111,
+  "tuition_out_of_state_usd": 15383,
+  "tuition_intl_usd": 15383,
+  "required_fees_usd": 2038,
+  "room_board_usd": 13590,
+  "books_usd": 700,
+  "other_usd": 3796,
+  "total_coa_usd": 39693,
+  "notes": "Schedule of charges 2026-27, 12 credit hours per semester doubled to a year: resident tuition $2,555.28 per semester; non-resident and international tuition $7,691.28 per semester; fees $337.44 service + $585.60 extended access + $96.00 library per semester. The cost-of-attendance page shows a higher all-in figure for tuition and fees ($21,607 per year out-of-state/international, $8,767 in-state), which includes charges not itemized in the schedule. room_board_usd, books, other (transportation $1,425 plus miscellaneous $2,371) and total_coa_usd are the dorm column of that page's out-of-state/international per-year table. Freshmen must live on campus; the 2024-25 international cost page also lists mandatory F-1 health insurance of $3,147."
+ },
+ "majors": [
+  {
+   "program": "Nursing, BS",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Listed among the bachelor's programs on the majors page; entry requirements for the nursing program are not given on the admissions pages.",
+   "src": "majors"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "6917",
+   "note": "Institutional code printed on the international freshman requirements page.",
+   "src": "fr"
+  },
+  "act": {
+   "code": "6917",
+   "note": "Same institutional code printed on the freshman requirements page for SAT and ACT reports.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": "6917",
+   "note": "Institution code printed on the English proficiency page.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; the page says applicants can submit their TRF number for staff to verify online.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed; official scores are sent from Duolingo or verified through the applicant's score profile.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,148 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Saint Peter's - Apply to Saint Peter's: International Undergraduate (English proficiency, documents)",
+      "url": "https://www.saintpeters.edu/international/apply-to-an-undergraduate-program/",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Saint Peter's - International FAQ (deadlines, fee, scholarships)",
+      "url": "https://www.saintpeters.edu/international/frequently-asked-questions/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Saint Peter's Undergraduate Catalog - Admissions Information (test-optional policy, international deadlines)",
+      "url": "https://catalogs.saintpeters.edu/undergraduate/generalinformation/admissionsinformation/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Saint Peter's - Scholarships (freshman scholarship table)",
+      "url": "https://www.saintpeters.edu/enrollment-services/student-financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "financial_aid_site",
+      "title": "Saint Peter's - Tuition and Fees 2026-2027",
+      "url": "https://www.saintpeters.edu/enrollment-services/student-accounts/tuition-and-fees/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "First-year applicants may choose not to submit SAT/ACT. Scores are still required for candidates for high merit scholarships, pre-professional joint programs and home-schooled students unless waived. Scores that are submitted are also used for placement.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Apply with the Common Application or the Saint Peter's International Student Application (PDF). No application fee (international FAQ). Required: transcripts with English translation sent directly from the school or an EducationUSA advisor, one recommendation, a short essay/personal statement, proof of English proficiency, plus I-20 financial support statement and passport copy. $150 non-refundable tuition deposit after admission. Decisions are typically within 2-3 weeks of a complete file (FAQ and catalog).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International fall application deadline (fall 2027 entry)",
+      "notes": "International FAQ: June 1 for fall and November 1 for spring. The undergraduate catalog instead says August 1 for fall (one month before the term), so the pages disagree; the page prints no year, so treated as fall 2027. Late applications may be considered as time permits; applying at least three months ahead is recommended.",
+      "src": "faq"
+    },
+    {
+      "kind": "other",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "Catalog international fall deadline (fall 2027 entry)",
+      "notes": "Undergraduate catalog date; conflicts with the June 1 date on the international FAQ. Confirm with intadmission@saintpeters.edu.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Students whose native language is not English must submit one approved English test sent directly from the testing agency. In lieu of TOEFL/IELTS, SAT EBRW 510+ or ACT English and Writing 19+ in each section is accepted (the catalog still says SAT Critical Reading 450+, so the pages differ). Also accepted: ELS course completion with score 112, Kaplan Advanced Level, FLS level 15. TOEFL may be waived by the Dean of International Enrollment; the FAQ says citizens of Canada, Australia, Ireland, New Zealand and the UK may be exempt. No conditional-admission or on-campus ESL pathway is described.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Exams taken before January 21, 2026.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Exams taken on or after January 21, 2026; the page prints \"4\" without naming the scale (presumably the new 1-6 scale).",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Pearson PTE Academic or Pearson Express test.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "accepted",
+      "min": null,
+      "notes": "The page and FAQ say IELTS scores are accepted (sent directly by the British Council, IDP or Cambridge) but print no minimum score.",
+      "src": "faq"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "FAQ: international undergraduates are eligible for scholarships (up to 4 years or 120 credits) based on school marks and test scores, but there are no full scholarships for international students; the Dean of International Enrollment holds the current list. The freshman merit table (awarded at admission by GPA: $20,000 to $30,000 a year, Presidential full tuition) is not labeled domestic-only, but the page does not say it applies to international students, so confirm. Need-based aid for internationals is not described.",
+    "src": "faq"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "2806",
+      "note": "SAT/CEEB code.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "2604",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "2806",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No code listed; the testing body sends results directly.",
+      "src": "faq"
+    },
+    "pte": {
+      "code": null,
+      "note": "No code listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "nursing": "D",
+    "economics": "D",
+    "humanities": "D",
+    "math_physics": "D"
+  },
+  "tier_notes": {
+    "general": "Editorial judgment: small Jesuit regional university in Jersey City (near Manhattan) offering 50+ majors including business, nursing, biology and computer science; no nationally ranked programs found, so general and subject tiers are D."
+  }
+}

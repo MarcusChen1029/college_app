@@ -1,0 +1,169 @@
+{
+  "sources": {
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "UT San Antonio - Freshman admissions (guaranteed admission, test policy, deadlines)",
+      "url": "https://future.utsa.edu/freshman/admissions/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UT San Antonio - International admissions (freshman, fee, deadlines)",
+      "url": "https://future.utsa.edu/international/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "UTSA Catalog - International Undergraduate Student Admission (English proficiency)",
+      "url": "https://catalog.utsa.edu/policies/admission/undergraduate/internationalundergraduatestudents/",
+      "accessed": "2026-10-26"
+    },
+    "dps": {
+      "kind": "financial_aid_site",
+      "title": "UTSA One Stop - Distinguished Presidential Scholarship",
+      "url": "https://onestop.utsa.edu/scholarships/distinguished-scholarships/distinguished-presidential-scholarship/",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "UTSA One Stop - Financial aid for international students",
+      "url": "https://onestop.utsa.edu/financialaid/apply/financial-aid-for-international-students/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are optional for admission; scores are reviewed only if submitted and may help qualify for guaranteed admission (top 25% of class: no minimum; 2nd 25%: SAT 1170 or ACT 24). Everyone else gets a holistic review. International freshman applicants: SAT/ACT optional.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "Apply through ApplyTexas ('own') or the Common App, one application per term. The $75 fee is non-refundable and fee waivers are not available to international freshmen. International freshmen need the equivalent of a U.S. high school diploma, a minimum 2.5 GPA (4.0 scale) and English proficiency; official transcripts need certified English translations. For holistic review an essay and two recommendations are highly suggested. Some majors have extra requirements; others are admitted into University College 'academic studies' first.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-01-15",
+      "label": "Priority freshman deadline and Distinguished Presidential Scholarship admit-by date (fall 2027)",
+      "notes": "Fall freshmen admitted by January 15 get automatic scholarship consideration (up to $24,000 over four years).",
+      "src": "fresh"
+    },
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International freshman deadline: submit application (fall 2027)",
+      "notes": "All fees, transcripts and test scores must be received by 5:00 p.m. CT. Missing documents may still be submitted by June 15 (domestic freshman deadline is the same June 1 / June 15).",
+      "src": "fresh"
+    },
+    {
+      "kind": "other",
+      "due": "2027-06-15",
+      "label": "International freshman: last day to submit missing documents (fall 2027)",
+      "src": "fresh"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for graduates of a U.S. high school or listed English-speaking country with two full years of standard English courses; B- or better in college English Composition I; SAT EBRW 500+ or ACT English 21+; a bachelor's degree or higher from the U.S. or a listed English-speaking country; or citizens of listed countries (e.g. Australia, Canada except Quebec, Ireland, New Zealand, Nigeria, Singapore, South Africa, United Kingdom). Scores are judged on the scale in effect when the test was taken.",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Exams taken before Jan. 21, 2026.",
+      "src": "cat"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Exams taken on or after Jan. 21, 2026.",
+      "src": "cat"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "cat"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "cat"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "notes": "PTE Academic.",
+      "src": "cat"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "notes": "C1 Advanced, grade C or higher (scale 180). Also accepted: iTEP Academic 3.8; TOEFL ITP paper test 550 only for the UTSA Academic English Program or International Pathway. Students below the minimums may look at UTSA's Academic English Program or International Pathway (global.utsa.edu; entry scores not checked here); Shorelight Education also offers support programs.",
+      "src": "cat"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International students are not eligible for federal aid. The merit-based Distinguished Presidential Scholarship for fall freshmen admitted by Jan. 15 pays $500-$6,000 a year by class rank and SAT/ACT (e.g. top 20% with 1170 SAT / 24 ACT: $2,500; top 25% with 1150 / 24: $500; applicants without scores go to committee review) and is valued up to $24,000 over four years; nonresident/international recipients of at least $1,000 a year get a nonresident tuition waiver while eligibility is maintained. The need-based International Student Grant requires F-1/J-1 status and full-time enrollment; the Good Neighbor Program covers tuition for eligible Western Hemisphere countries (its current funding status is unconfirmed).",
+    "src": "dps"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6919",
+      "src": "fresh"
+    },
+    "act": {
+      "code": "4239",
+      "src": "fresh"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No institution code is printed on the admissions pages; have ETS send scores to UT San Antonio.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; scores are sent directly from the testing agency.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed; scores are sent directly from the testing agency.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed; scores are sent directly from the testing agency.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

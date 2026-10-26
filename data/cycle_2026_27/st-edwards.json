@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "St. Edward's - International student admission (deadlines, requirements)",
+   "url": "https://www.stedwards.edu/admission/international",
+   "accessed": "2026-10-26"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "St. Edward's - Undergraduate application deadlines and checklist",
+   "url": "https://www.stedwards.edu/admission/undergraduate/deadlines-checklist",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "St. Edward's - Financial aid for international students",
+   "url": "https://www.stedwards.edu/cost-aid/financial-aid/international-students",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "St. Edward's - Scholarships (first-year merit scholarships)",
+   "url": "https://www.stedwards.edu/cost-and-aid/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "St. Edward's - Majors, minors, certificates and pre-professional studies",
+   "url": "https://www.stedwards.edu/academics/programs",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT or ACT scores are optional (the international page says so directly). The SAT essay is not required.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply through the Common App, the St. Edward's application or ApplyTexas. The $50 fee is waived for applications by Jan. 1 (Early Application deadlines). Required: online application, essay, high school or college transcripts and an academic recommendation form; TOEFL, IELTS, Duolingo or Kaplan Test of English if English is not the first language (Kaplan accepted on a provisional basis). The undergraduate deadlines page lists an additional Nov. 1 'First Review' date; it does not appear on the international page. Whether the Early Application plans are binding is not stated; no early decision plan is mentioned.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2026-12-01",
+   "label": "Early Application (fall 2027 entry)",
+   "notes": "No application fee if applied by this date. Dates are printed without a year and treated as the fall 2027 cycle.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "due": "2027-01-01",
+   "label": "Early Application II (fall 2027 entry)",
+   "notes": "No application fee if applied by this date.",
+   "src": "intl"
+  },
+  {
+   "kind": "priority",
+   "due": "2027-02-01",
+   "label": "Priority Application (Moreau and other academic scholarships)",
+   "notes": "The international page ties this date to the Moreau Scholarship and other academic scholarships.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "due": "2027-05-01",
+   "label": "Final Application (fall 2027 entry)",
+   "notes": "Last date to be considered for fall admission; earlier applications are encouraged.",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Final enrollment deposit",
+   "notes": "Non-refundable deposit (students admitted late deposit within two weeks of acceptance).",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2027-02-15",
+   "label": "CSS Profile priority deadline (international applicants, new students)",
+   "notes": "St. Edward's CSS Profile code is 6619. No CSS Profile fee waiver.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The international page requires TOEFL, IELTS, Duolingo English Test or Kaplan Test of English (provisional) only 'if English is not your first language'. Exemption rules and minimum scores for first-year applicants are not published on the pages reviewed; the 79 iBT / 6.0 IELTS / 550 ITP figures found on the site apply to a partner dual-degree program, not to first-year applicants.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": null,
+   "notes": "Accepted; no first-year minimum published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": null,
+   "notes": "Accepted; no first-year minimum published.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": null,
+   "notes": "Duolingo English Test accepted; no first-year minimum published.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "Undergraduate international students are considered for academic scholarships through the admission application, and for need-based grants by filing the CSS Profile for international applicants (code 6619, priority Feb. 15). First-year merit scholarships range from $14,000 to $32,000 a year for students admitted through regular admission (not limited to internationals); the Moreau Scholarship (full tuition, one per Holy Cross high school) lists international applicants submitting test or English scores. Not eligible for U.S. federal loans. Whether the university is need-blind or meets full need for internationals is not stated.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6619",
+   "note": "Printed on the international admission page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4156",
+   "note": "Printed on the international admission page.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages reviewed; have ETS send scores to St. Edward's University.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,181 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "University of Iowa - First-Year Admissions (deadlines, fee, test policy)",
+      "url": "https://admissions.uiowa.edu/apply/first-year",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "University of Iowa - International First-Year Admission Requirements",
+      "url": "https://admissions.uiowa.edu/international-first-year-admission-requirements",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "University of Iowa - English Proficiency Requirements",
+      "url": "https://admissions.uiowa.edu/english-proficiency-requirements",
+      "accessed": "2026-10-26"
+    },
+    "test": {
+      "kind": "admissions_site",
+      "title": "University of Iowa - ACT and SAT Test Scores (no-harm policy, decision timeline)",
+      "url": "https://admissions.uiowa.edu/testing",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "University of Iowa - First-Year Non-Resident Scholarships",
+      "url": "https://admissions.uiowa.edu/finances/scholarships-international-students",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "admissions_site",
+      "title": "University of Iowa - Estimated Costs for International Students (2026-27)",
+      "url": "https://admissions.uiowa.edu/finances/estimated-costs-international-students",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "'No harm' policy: scores are used only if they help. SAT/ACT are not required of international applicants educated abroad, but are required for academic scholarships, direct admission to the Tippie College of Business and the Honors Program (per the international requirements page); the first-year page says all admitted applicants are also considered for scholarships without a score. SAT/ACT can also satisfy the English requirement.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 55,
+    "notes": "International first-years need a 3.0 GPA (U.S. B or better) on academic courses, three years of secondary coursework, completion of secondary school and the college-specific high school course requirements (CLAS, Engineering, Business or Nursing). $55 non-refundable fee as listed on the First-Year Admissions page (a separate international rate is not stated); fee waiver available. Rolling decisions from August. Applicants who meet the Regent Admission Index (RAI) with a test score usually hear sooner. Nursing and Medical Laboratory Science have additional international requirements.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-02",
+      "label": "Early Action deadline, fall 2027 (documents by Nov. 9)",
+      "notes": "Decisions on or before late January. Shown on the first-year page; it does not say whether international applicants are treated differently.",
+      "src": "test"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Regular admission deadline, fall 2027 (documents by Feb. 8)",
+      "notes": "Decisions on or before early March. Applicants after Feb. 1 are not eligible for merit scholarships and are admitted case by case, space permitting.",
+      "src": "test"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-03",
+      "label": "Summer/fall acceptance deadline",
+      "src": "fy"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "Complete application for merit scholarship consideration (National Scholars Award)",
+      "notes": "Test scores taken through Dec. 12, 2026 count; scores arriving before Feb. 8, 2027 can still be used.",
+      "src": "aid"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for citizens (listing English as first language) of countries where English is official (the page lists, among others, Australia, Canada, Ireland, Nigeria, South Africa and the UK), 3+ years at a U.S. high school, or 30 s.h. of U.S. college credit at a 2.50 GPA. Duolingo and PTE are not listed on the undergraduate page. Also accepted: TOEFL Essentials 9, ACT English 21, SAT Reading+Writing 540, AP English 4, IB HL English 5. Students admitted on a TOEFL below 100 (or with an IELTS/other subscore below the threshold) must take ESL courses (ESL4100/4130/4180/4200) unless they test out on the on-campus English Placement Exam. Admission with ESL coursework is the pathway for lower scores.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "subs": {
+        "each_section": 17
+      },
+      "notes": "80 with all subscores 17+ (tests before Jan. 2026, and Home Edition). Below 100 means all four ESL courses; 100 waives the English Placement Exam.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "subs": {
+        "each_section": 3.5
+      },
+      "notes": "4.0 with all subscores 3.5+ (tests after Jan. 2026); subscores below 5.0 add ESL coursework.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_section": 6.0
+      },
+      "notes": "6.5 overall, no subscore below 6.0; subscores below 7.5 add ESL coursework.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "National Scholars Award for nonresident first-years (includes international): $2,000-$15,000 per year for up to four years, awarded automatically on admission to those with a complete application by Feb. 1, 2027, based on GPA and test scores (scholarship reviewed both with and without a score; test scores at or above 26 ACT/1230 SAT open larger awards). Renewal needs a 2.75 GPA and full-time enrollment. International students do not qualify for need-based aid from Student Financial Aid.",
+    "src": "aid"
+  },
+  "majors": [
+    {
+      "program": "Business (Tippie College of Business)",
+      "category": "business",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "Direct admission to Tippie requires SAT/ACT scores. Tuition for Business is higher ($38,847 vs $35,442 for LAS international)."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6681",
+      "note": "University of Iowa SAT code.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "1356",
+      "note": "University of Iowa ACT code.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": "6681",
+      "note": "ETS institution code; leave the department code blank.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Send through the IELTS test center; no institution code.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "C",
+    "biology_life_sci": "D",
+    "pre_med": "C",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "C",
+    "arts_design": "D",
+    "nursing": "C"
+  },
+  "tier_notes": {
+    "general": "Admit rate about 80%, SAT middle 50% 1130-1320; slightly stronger than a pure open-access flagship, but not selective.",
+    "business": "Editorial judgment (not from a cited ranking): Tippie is a well-regarded AACSB business school at a large research university.",
+    "pre_med": "Editorial judgment: pre-med students are on the same campus as the University of Iowa Hospitals and Clinics and the Carver College of Medicine.",
+    "humanities": "Editorial judgment: long-standing writing and creative-writing culture (the Iowa Writers' Workshop is graduate-level) benefits undergraduate English and writing students.",
+    "nursing": "Editorial judgment: College of Nursing is a long-established program tied to a major academic medical center."
+  }
+}

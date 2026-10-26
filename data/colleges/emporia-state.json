@@ -1,0 +1,68 @@
+{
+ "slug": "emporia-state",
+ "name": "Emporia State University",
+ "short_name": "Emporia State",
+ "state_region": "KS",
+ "city": "Emporia",
+ "latitude": 38.414784,
+ "longitude": -96.179021,
+ "setting": "rural",
+ "control": "public",
+ "website": "https://www.emporia.edu",
+ "admissions_url": "https://www.emporia.edu/office-international-education/admissions-costs/admissions-process-undergraduate-students/",
+ "ipeds_unit_id": 155025,
+ "undergrad_enrollment": 2396,
+ "intl_undergrads": 94,
+ "student_faculty_ratio": 16,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+   "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "navigator": {
+   "kind": "ipeds",
+   "title": "College Navigator - Emporia State University (fall 2024 admissions, enrollment, student-to-faculty ratio, tuition)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=155025",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=155025",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 1592,
+  "admits": 1556,
+  "enrolled": 409,
+  "pct_submit_act": 38,
+  "notes": "No current Common Data Set: the newest file ESU posts on its Common Data Set page is 2018-19, so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 1,918 applicants, 98% admitted, 23% of admitted enrolled (no admit count printed, so none is computed). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. IPEDS reports no SAT percentiles or SAT submission rate for ESU. Undergraduate enrollment 2,396 and student-to-faculty ratio 16:1 are College Navigator fall 2024."
+ },
+ "scores": {
+  "ACT_COMPOSITE": [
+   18,
+   21,
+   24
+  ],
+  "ACT_ENGLISH": [
+   16,
+   20,
+   24
+  ],
+  "ACT_MATH": [
+   17,
+   19,
+   23
+  ]
+ }
+}

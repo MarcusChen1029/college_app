@@ -1,0 +1,132 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UWM - New freshman admission",
+      "url": "https://uwm.edu/undergrad-admission/apply/new-freshman/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UWM Center for International Education - Bachelor's application, deadlines and requirements",
+      "url": "https://uwm.edu/cie/international-admissions/bachelors-application/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UWM Center for International Education - English language proficiency requirement (bachelor's)",
+      "url": "https://uwm.edu/cie/international-admissions/bachelors-application/english-proficiency-requirement/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UWM is test-optional: 'UWM will consider applicants for admission with or without one of these standardized test scores.' International bachelor's applicants may submit SAT/ACT but they are not required; scores are used for math/English placement and can improve scholarship eligibility.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "supplemental_essays": "Essay (250-650 words) is optional but recommended.",
+    "notes": "No application fee for undergraduate (bachelor's) programs; admitted international students pay a $200 International Student Processing Fee. Apply with the UW System Application or the Common App. Recommendation letters are optional. No minimum GPA is published; classroom performance is the main factor. Admission is conditional on the final transcript.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-11-01",
+      "label": "Priority date (fall 2027 entry)",
+      "notes": "CDS 2025-26 (C14) prints Nov. 1 as the priority date without a year; treated as the 2026-27 cycle.",
+      "src": "fy"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "International admits: be admitted by this date for full scholarship consideration (fall)",
+      "notes": "International merit awards are made monthly until funds run out; no separate application.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall 2027 (applicants outside the U.S.)",
+      "notes": "Applicants already inside the U.S.: Aug. 1. The page prints deadlines without a year; treated as fall 2027. CDS C14 lists Aug. 1 as the general closing date with rolling admission from Aug. 1.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proof can be a qualifying test score, at least 18 months of full-time English-medium university study, or completion of the last two years of English-medium secondary school. Test scores must be no more than 2 years old. TOEFL Home Edition is not accepted. All new students take an English placement test on arrival.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 74,
+      "notes": "Full admission, tests before 2026-01-21. Conditional 'Foundation' admission: 69-73 (up to two semesters of English for Academic Purposes alongside degree courses). TOEFL Home Edition not accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Full admission, tests on/after 2026-01-21 (page does not name the 1-6 scale). Foundation admission: 3.5.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Foundation admission: 5.5.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Foundation admission: 95-100. Score report can be uploaded to the application portal.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 46,
+      "notes": "Listed as PTEA. Foundation admission: 36-45.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Newly admitted international degree-seeking undergraduates are automatically considered for an academic-merit scholarship of up to $6,000 per academic year ($3,000 per semester), renewable for up to four years; no separate application. CDS H6 also ticks institutional need-based and non-need-based aid for nonresidents, but no international need-based program is described on the CIE page.",
+    "src": "intlcost"
+  },
+  "majors": [],
+  "score_codes": {
+    "toefl": {
+      "code": "1473",
+      "note": "UWM TOEFL (ETS) code; scores must be sent electronically by ETS.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

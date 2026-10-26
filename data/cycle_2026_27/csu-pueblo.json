@@ -1,0 +1,145 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "CSU Pueblo Catalog - Admission Requirements (preferred deadlines, enrollment deposit)",
+      "url": "https://catalog.csupueblo.edu/admission-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "CSU Pueblo Catalog - First Year Students (requirements, test policy)",
+      "url": "https://catalog.csupueblo.edu/admission-requirements/first-year-students/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "CSU Pueblo Catalog - International Students (documents, English proficiency, financial statement)",
+      "url": "https://catalog.csupueblo.edu/admission-requirements/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "CSU Pueblo - Information for First Year Students (FAQ)",
+      "url": "https://www.csupueblo.edu/admissions/frequently-asked-questions/first-year-students.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "CSU Pueblo - International Programs: Scholarships and Financing",
+      "url": "https://www.csupueblo.edu/center-for-student-support-and-advocacy/international-programs/scholarships-and-grants/index.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "First-year applicants are not required to submit SAT/ACT scores for admission; some scholarships may consider them and scores can help with math placement. Minimum cumulative weighted high school GPA 2.3 (4.0 scale); below 2.3 can still be admitted after a Statement Regarding Academic Performance. The catalog page states its standards for entry in Fall 2025, Spring 2026 or Summer 2026, so Fall 2027 rules are assumed unchanged.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own",
+      "common_app"
+    ],
+    "app_fee_usd": 30,
+    "supplemental_essays": "Not listed as required.",
+    "notes": "$30 non-refundable fee for international undergraduate applicants ($25 on the first-year page; the FAQ says Colorado residents apply free). International applicants send official transcripts of all secondary or college work, evaluated by an approved credential agency (course-by-course, US GPA on a 4.0 scale), a passport copy and, for F-1/J-1 students, a financial statement (no dollar amount printed). First-year students must submit final transcripts showing graduation before the end of their first semester. Non-refundable $85 enrollment deposit.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2026-11-01",
+      "label": "Recommended application date for maximum scholarship eligibility",
+      "notes": "The FAQ recommends that high school seniors apply by November 1 of the senior year for maximum scholarship eligibility; the year is not printed (assumed the fall 2027 cycle).",
+      "src": "faq"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "Fall semester preferred deadline (fall 2027 entry)",
+      "notes": "Catalog: 'preferred deadlines' (fall Aug. 1, spring Jan. 2, summer Mar. 1), which the Office of Admissions may extend; the page prints no year and no separate international date, so it is treated as fall 2027. International applicants needing an F-1 visa should allow time for the financial statement and I-20.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Residents of the UK, Ireland, Australia, New Zealand and Canada are exempt. Other applicants may instead email a U.S. transcript showing full-time degree enrollment with a 2.5+ GPA for 2 or more semesters. A search extract of the Center for International Programs page says conditional admission is offered to applicants who lack English proficiency; the catalog page does not describe it.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Exams taken before 2026-01-21. Undergraduate nursing: 79-80. Paper-based TOEFL 500 also accepted (nursing 550).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "Exams taken after 2026-01-21 (1-6 scale). Undergraduate nursing: 4 (the nursing row prints the cutoff as 2026-01-26).",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic band score. Undergraduate nursing: 6.0.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Not accepted for undergraduate nursing, which requires 110 per the same table.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International Merit Scholarship: $8,000 per academic year for new F-1 students with a minimum incoming 3.0 GPA, full-time, first bachelor's degree, renewable up to four years for freshmen; applies to Fall 2026 and later; cannot be combined with other institutional non-athletic aid (read through a search extract of the scholarships page). No need-based aid for international students was found.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Not printed on the pages read; look up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "Not printed on the pages read; look up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "The catalog international page prints no institution code (a search extract mentioned one but the page fetched did not confirm it).",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "nursing": "D",
+    "engineering": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

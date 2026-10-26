@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Northern State University - International Students (admission process)",
+   "url": "https://northern.edu/admissions/international-students",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Northern State University - Undergraduate Admissions Requirements",
+   "url": "https://northern.edu/admissions/undergraduate-admissions-requirements",
+   "accessed": "2026-10-26"
+  },
+  "sheet": {
+   "kind": "admissions_site",
+   "title": "Northern State University - International Degree-Seeker Factsheet (PDF titled 2023/2024; linked from the international page as the 2025-2026 sheet)",
+   "url": "https://northern.edu/sites/default/files/academics/international-programs/information-sheet-international-degree-seekers.pdf",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "Northern State University - Tuition and Costs (2026-2027 undergraduate)",
+   "url": "https://northern.edu/financial-aid/tuition-costs",
+   "accessed": "2026-10-26"
+  },
+  "wolf": {
+   "kind": "financial_aid_site",
+   "title": "Northern State University - WolfPACT Scholarship",
+   "url": "https://northern.edu/financial-aid/scholarships/wolfpact",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "admissions_site",
+   "title": "Northern State University - Nursing Admissions (BSN)",
+   "url": "https://northern.edu/academics/college-arts-and-sciences/departments/nursing/admission",
+   "accessed": "2026-10-26"
+  },
+  "deg": {
+   "kind": "other",
+   "title": "Northern State University - Degrees and programs",
+   "url": "https://northern.edu/degrees",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT or SAT is not required. Applicants can be admitted with any one of: ACT 18 (SAT 960), a high school GPA of 2.6, or top 60% of the graduating class (the international page prints SAT 970 instead of 960). The international page lists SAT/ACT among the tests that can be sent in place of an English test. Some scholarships (WolfPACT) use ACT/SAT scores but also have a no-score track.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 25,
+  "notes": "International degree-seeking first-year file: online application with $25 non-refundable fee, high school transcript/marks sheet (certified English translation if needed; mailed official transcripts required upon admission), one test score (English test or SAT/ACT), passport page, Declaration of Finances form with bank statement, immunization form. Essay and recommendations are not listed. The IPEDS undergraduate application fee for 2024-25 was $20. After admission the student gets an I-20 and F-1 visa instructions.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": null,
+   "label": "International application (fall 2027 entry): no deadline published",
+   "notes": "Neither the international students page nor the undergraduate requirements page prints an application deadline or a decision timeline. Apply early enough to get an I-20 and an F-1 visa appointment before the semester.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-01",
+   "label": "WolfPACT scholarship priority deadline (first-year, fall 2027)",
+   "notes": "The page prints 'Priority deadline: March 1' without a year; taken as March 1, 2027. No separate application: send the admission application, fee, high school transcript and ACT/SAT scores (scores optional for the no-score track) for an official award notice.",
+   "src": "wolf"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The international page asks for one of: TOEFL iBT, IELTS, Duolingo, SAT 970+ or ACT 18+, so a qualifying SAT/ACT can stand in for an English test. The factsheet (titled 2023/2024) says the English score is not required for applicants from English-speaking countries; the current page names no country list. No ESL or conditional-admission pathway is mentioned on the pages read. Nursing (BSN) sets higher English minimums for non-native speakers.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "The page prints 'TOEFL IBT (61-70 or above)'; the exact threshold inside that range is not stated, and 61 is the lowest figure printed (the factsheet says 61 or higher). Nursing BSN: 84 with Speaking 26 (exams before 2026-01-21); for exams on/after 2026-01-21 on the 1-6 scale, 4.5 overall with Speaking 5.0. The general-program minimum on the 1-6 scale is not published. Institution code 6487 per the page.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Nursing BSN: 6.5 overall with at least 6.0 in each module.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Nursing BSN: 110.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "The WolfPACT merit scholarship (4-year totals from $4,000 for a 3.00-3.49 GPA with no/low test score, up to $16,000 for a 3.75+ GPA with ACT 28+/SAT 1300+; 3.0 GPA to renew) needs no separate application. The current WolfPACT page says 'all first-year students' without naming international students; the factsheet (titled 2023/2024) says WolfPACT is available to international degree-seekers and points to patrick.woods@northern.edu for other awards. Whether international students can receive need-based aid is not stated on the pages read.",
+  "src": "wolf"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 10077,
+  "tuition_out_of_state_usd": 12379,
+  "tuition_intl_usd": null,
+  "room_board_usd": 11274,
+  "notes": "2026-27 yearly estimates for 30 credit hours: tuition and fees combined $10,077 resident (includes new freshmen from the listed South Dakota Advantage states) and $12,379 out-of-state; housing $6,300 (average residence hall) plus food $4,974 (21 meals/week) = $11,274. The page does not say which rate international students pay, though the factsheet (titled 2023/2024) lists a $200 per-semester international student fee and ~$1,316 health insurance on top of tuition; current amounts are not confirmed. Out-of-state per-credit tuition is $376.40.",
+  "src": "tuit"
+ },
+ "majors": [
+  {
+   "program": "Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": false,
+   "notes": "Apply to NSU as pre-nursing; most students apply to the BSN in sophomore year after prerequisites (min. college GPA 2.7). Direct admission for first-time freshmen with ACT 27+ and HS GPA 3.5+, or HS GPA 3.8+ (keep a 3.0 college GPA). Nursing application window is Aug 15-Sep 30 for fall. Non-native English speakers need TOEFL 84/IELTS 6.5/Duolingo 110 unless exempt. Seat limits are not published on the page."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "6487",
+   "note": "SAT school code per the international and undergraduate requirements pages.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "NSU's pages give two different ACT codes (3916 on the requirements page, 3169 on the international page); confirm with NSU before sending.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "6487",
+   "note": "The international page prints school code 6487 next to TOEFL iBT.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,97 @@
+{
+  "slug": "ndsu",
+  "name": "North Dakota State University",
+  "short_name": "NDSU",
+  "state_region": "ND",
+  "city": "Fargo",
+  "latitude": 46.893127,
+  "longitude": -96.800838,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ndsu.edu",
+  "admissions_url": "https://www.ndsu.edu/admission",
+  "ipeds_unit_id": 200332,
+  "undergrad_enrollment": 9762,
+  "intl_undergrads": 99,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "NDSU Common Data Set 2024-2025 (xlsx)",
+      "url": "https://www.ndsu.edu/sites/default/files/fileadmin/oira/Common_Data_Set/NDSU_CDS_2024-2025.xlsx",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 7228,
+    "admits": 6864,
+    "enrolled": 2197,
+    "in_state_applicants": 2055,
+    "in_state_admits": 1925,
+    "out_state_applicants": 5058,
+    "out_state_admits": 4839,
+    "intl_applicants": 115,
+    "intl_admits": 100,
+    "pct_submit_sat": 0.6,
+    "pct_submit_act": 51.8,
+    "gpa_avg": 3.52,
+    "pct_reporting_gpa": 94.9,
+    "gpa_distribution": {
+      "4.0": 9.4,
+      "3.75-3.99": 29.9,
+      "3.50-3.74": 20.0,
+      "3.25-3.49": 14.0,
+      "3.00-3.24": 12.2,
+      "2.50-2.99": 13.3,
+      "2.0-2.49": 1.1,
+      "1.0-1.99": 0.1
+    },
+    "notes": "CDS 2024-2025 (fall 2024 entering class). Undergraduate enrollment (9,762) and nonresident count (99) are the B2 'Total Undergraduates (degree and non-degree)' column. No waitlist policy. Only 13 enrolled first-years submitted SAT scores (0.6%), so SAT percentiles are not shown; ACT is the test most students submit."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2024 entry): SAT or ACT 'not required for admission, but considered if submitted'."
+  }
+}

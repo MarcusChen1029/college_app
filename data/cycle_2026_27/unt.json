@@ -1,0 +1,176 @@
+{
+  "sources": {
+    "dl": {
+      "kind": "admissions_site",
+      "title": "UNT - Freshman application deadlines and fees",
+      "url": "https://www.unt.edu/admissions/freshman/deadlines-fees.html",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "UNT - Freshman admission requirements",
+      "url": "https://www.unt.edu/admissions/freshman/admission-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UNT - International admissions: deadlines and fees",
+      "url": "https://www.unt.edu/admissions/international/deadlines-fees.html",
+      "accessed": "2026-10-26"
+    },
+    "steps": {
+      "kind": "admissions_site",
+      "title": "UNT - International admissions: steps to apply",
+      "url": "https://www.unt.edu/admissions/international/steps-to-apply.html",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UNT - English language proficiency (international)",
+      "url": "https://www.unt.edu/admissions/international/english-language-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UNT Financial Aid - UNT Excellence Scholarship",
+      "url": "https://financialaid.unt.edu/unt-excellence-scholarships.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UNT is test-score-optional, but scores can help with admission decisions, testing exemptions and scholarships. SAT 1100 or ACT 22 meets the test-score route to guaranteed admission (other routes: top 30% of class, 3.25 unweighted GPA, 3.0 dual-credit GPA, 3.0 core-course GPA).",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 85,
+    "notes": "Apply with ApplyTexas (listed as 'own') or the Common App; the fee is $85 for international applicants ($75 U.S.), and international applicants who do not qualify for Texas residency cannot get a fee waiver. International freshmen upload official transcripts (English and native language) through myUNT; UNT evaluates non-U.S. credentials itself and does not use third-party evaluation reports. Essays and recommendations are not listed as required. Admission to UNT does not guarantee admission to every major; some programs have extra requirements.",
+    "src": "steps"
+  },
+  "deadlines": [
+    {
+      "kind": "scholarship",
+      "due": "2027-01-15",
+      "label": "UNT Excellence Scholarship - guaranteed award amounts (admitted with transcript)",
+      "notes": "Based on the Fall 2026 scholarship page: students admitted with a transcript on file by Jan. 15 get the listed amounts; admission between Jan. 16 and Mar. 1 is reviewed holistically and may be lower. Fall 2027 dates are assumed to follow the same pattern.",
+      "src": "schol"
+    },
+    {
+      "kind": "priority",
+      "due": "2027-03-01",
+      "label": "Priority date: apply and be admitted for scholarship consideration (fall 2027 entry)",
+      "notes": "Based on the Fall 2026 pages ('apply and be admitted by March 1'); applications continue to be reviewed after this date.",
+      "src": "dl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "International freshman fall application deadline",
+      "notes": "Admission decisions are made on a rolling basis. The page prints 'July 15' without a year (domestic freshman deadline July 31); fall 2027 is assumed. The online application, all documents and the fee must be received by then.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived by citizenship in a listed English-speaking country (UK, Ireland, Canada except Quebec, Australia, New Zealand, South Africa and listed Caribbean countries); by high school graduation plus 3 years' attendance in an approved country; by AP English Language 5, IB HL English A 5, Cambridge IGCSE/GCE English C, SAT 560+ on both reading and writing, or ACT English 21+; or by completing Level 6 at UNT's IELI. Medium-of-instruction letters are not accepted. Scores must be under 2 years old and from a single sitting (MyBest and IELTS One Skill Retake not accepted).",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Exams taken before Jan. 21, 2026; MyBest not accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Exams taken on or after Jan. 21, 2026 (1-6 scale).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "IELTS Academic, overall band; One Skill Retake not accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "C1 Advanced or C2 Proficiency, minimum level C1 (no numeric score printed). UNT also accepts the Michigan English Test (MET) with section scores of 54. Applicants without acceptable English proof may qualify for conditional admission with study at UNT's Intensive English Language Institute (IELI) first; College of Music applicants are handled separately.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "UNT Excellence Scholarship ($2,000-$12,000 a year by class rank and unweighted GPA, renewable up to 4 years, +$1,000 bonus for SAT 1350/ACT 30) and the $1,000-a-year UNT Achievement Scholarship are automatic for first-time freshmen admitted by the priority date; the page states they apply to international students too. International recipients may get a Texas competitive scholarship waiver covering the difference between in-state and out-of-state tuition (Selective Service requirement applies where relevant). The CDS reports institutional aid for nonresidents as non-need-based only.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6481",
+      "src": "eng"
+    },
+    "act": {
+      "code": "4136",
+      "src": "eng"
+    },
+    "toefl": {
+      "code": "6481",
+      "note": "ETS institution code, electronic reports.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Send electronically through IELTS; no institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Send electronically through Duolingo; no institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "Send electronically through Pearson; no institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

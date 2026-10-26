@@ -1,0 +1,120 @@
+{
+  "slug": "east-carolina",
+  "name": "East Carolina University",
+  "short_name": "ECU",
+  "state_region": "NC",
+  "city": "Greenville",
+  "latitude": 35.607186,
+  "longitude": -77.368291,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.ecu.edu",
+  "admissions_url": "https://admissions.ecu.edu",
+  "ipeds_unit_id": 198464,
+  "undergrad_enrollment": 21445,
+  "intl_undergrads": 149,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "East Carolina University Common Data Set 2024-2025 (PDF)",
+      "url": "https://ipar.ecu.edu/wp-content/pv-uploads/sites/130/CDS_2024-2025_Redacted.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (undergraduate enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=198464",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=198464",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 26369,
+    "admits": 23527,
+    "enrolled": 4022,
+    "in_state_applicants": 17413,
+    "in_state_admits": 16367,
+    "out_state_applicants": 8643,
+    "out_state_admits": 6867,
+    "intl_applicants": 313,
+    "intl_admits": 292,
+    "pct_submit_sat": 10,
+    "pct_submit_act": 23,
+    "gpa_avg": 3.28,
+    "pct_reporting_gpa": 99.83,
+    "gpa_distribution": {
+      "4.0": 2.71,
+      "3.75-3.99": 14.67,
+      "3.50-3.74": 17.46,
+      "3.25-3.49": 17.96,
+      "3.00-3.24": 18.88,
+      "2.50-2.99": 26.92,
+      "2.0-2.49": 1.39
+    },
+    "notes": "Fall 2024 first-time first-year cohort, CDS C1 residency table (in-state / out-of-state / international: 17,413 / 8,643 / 313 applied; 16,367 / 6,867 / 292 admitted; 3,308 / 701 / 13 enrolled). The 2024-2025 CDS is the newest ECU publishes (no 2025-2026 edition found). Only 10% (403) of enrollees submitted SAT and 23% (918) ACT. GPA distribution is the 'all enrolled students' column of C11. Undergraduate enrollment (21,445) is from College Navigator, not the CDS (the CDS B1 table is an image). C7 factor checkboxes are not machine-readable, so factors are omitted."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1060,
+      1150,
+      1220
+    ],
+    "SAT_ERW": [
+      520,
+      580,
+      630
+    ],
+    "SAT_MATH": [
+      520,
+      560,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: students with a weighted high school GPA below 2.8 must submit an ACT or SAT score; 2.8 or higher are not required to submit."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 4452,
+    "tuition_out_of_state_usd": 20729,
+    "tuition_intl_usd": 20729,
+    "required_fees_usd": 2909,
+    "room_board_usd": 11350,
+    "books_usd": 1510,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 53,
+    "intl_avg_award_usd": 19182,
+    "notes": "CDS G1 (2024-25, first-year): in-state tuition $4,452, out-of-state/nonresident $20,729, required fees $2,909, on-campus housing $6,498 + food $4,852 = $11,350; books $1,510. The CDS shows 2025-26 costs were not yet final. H6: 53 degree-seeking nonresident undergraduates received institutional aid (average $19,182, total $1,016,624); the CDS text does not show whether it was need- or non-need-based. The tuition_usd field is the in-state figure."
+  }
+}

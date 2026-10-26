@@ -1,0 +1,50 @@
+{
+  "slug": "maine",
+  "name": "University of Maine",
+  "short_name": "UMaine",
+  "state_region": "ME",
+  "city": "Orono",
+  "latitude": 44.899257,
+  "longitude": -68.669332,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://umaine.edu",
+  "admissions_url": "https://go.umaine.edu/",
+  "ipeds_unit_id": 161253,
+  "undergrad_enrollment": 9601,
+  "intl_undergrads": 212,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: University of Maine (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161253",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161253",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161253",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 13995,
+    "admits": 13395,
+    "notes": "Baseline from IPEDS / College Navigator (fall 2024): 14,044 applicants, 97% admitted (rounded; the admit count is not shown). UMaine's 2025-2026 Common Data Set exists (umaine.edu/oira/common-data-set) but is a Word file on a sign-in-protected SharePoint link, so it could not be read; SAT/ACT percentiles, GPA, intl applicants/admits and C7 factors are therefore not filled in. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "enrolled": 1868
+  }
+}

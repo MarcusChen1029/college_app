@@ -1,0 +1,50 @@
+{
+  "slug": "suny-old-westbury",
+  "name": "SUNY Old Westbury",
+  "short_name": null,
+  "state_region": "NY",
+  "city": "Old Westbury",
+  "latitude": 40.799021,
+  "longitude": -73.571907,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.oldwestbury.edu/",
+  "admissions_url": "https://www.oldwestbury.edu/admissions",
+  "ipeds_unit_id": 196237,
+  "undergrad_enrollment": 4260,
+  "intl_undergrads": 153,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024) via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196237",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_portal": {
+      "kind": "ipeds",
+      "title": "IPEDS admissions counts, fall 2024 (applicants, admits, enrollees) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=196237",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=196237",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 7760,
+    "admits": 6490,
+    "enrolled": 806,
+    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; enrollment and student-faculty ratio from College Navigator. No public Common Data Set was found. College Navigator shows no SAT/ACT percentiles or submission rates (test-optional); GPA, residency splits and international applicant counts are not available. Undergraduate enrollment is the IPEDS fall 2024 headcount (4,260)."
+  }
+}

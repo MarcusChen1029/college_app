@@ -1,0 +1,173 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Millersville - International undergraduate students (first-year process, deadlines)",
+   "url": "https://www.millersville.edu/international/prospective-students/undergraduate-students.php",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Millersville - English proficiency requirements (international)",
+   "url": "https://www.millersville.edu/international/prospective-students/english-proficiency.php",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Millersville - International FAQs",
+   "url": "https://www.millersville.edu/international/frequently-asked-questions.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Millersville - International student tuition and fees (2026-2027)",
+   "url": "https://www.millersville.edu/international/cost-tuition.php",
+   "accessed": "2026-10-26"
+  },
+  "eli": {
+   "kind": "admissions_site",
+   "title": "Millersville - English Language Institute (conditional admission)",
+   "url": "https://www.millersville.edu/international/prospective-students/english-language-learners.php",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Millersville - Admissions scholarships (international scholarships contact)",
+   "url": "https://www.millersville.edu/finaid/financial-aid-options/scholarships/admissions-scholarships.php",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International FAQ: SAT/ACT are not required for admission; admissibility rests on the transcript-based U.S.-equivalent GPA (generally 3.0+ on a U.S.-weighted 4.0 scale). SAT/ACT may satisfy English proficiency (SAT EBRW 500+, ACT English 21+) and placement.",
+  "src": "faq"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply with the Millersville application or the Common App. The FAQ says international applicants pay no application fee. Unofficial transcripts are uploaded with the application; International Admissions evaluates them to a U.S. GPA. First-year students must live on campus unless they qualify for a waiver.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "Advisory international deadline, fall 2027",
+   "notes": "Rolling admission with no strict deadline; the page advises applying at least two months before term start for visa processing and gives the advisory date as Fall - June 1 (no year printed, treated as 2027). Spring: November 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived with a U.S. associate degree, full IB Diploma in English, a high school diploma and/or citizenship from a listed English-speaking country, one full U.S. high school year with C or better in standard English, GCSE/GCE English C or better, IB English score 4+, or WAEC C6+. Test scores must be under 2 years old (SAT/ACT within 5 years). Applicants without an admissible score may apply for Conditional Admission and start at the English Language Institute.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "The page lists no new-scale (1-6) TOEFL score.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "IELTS Academic overall band 6.0 with no subscore lower than 5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "notes": "Cambridge English Qualifications.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": null,
+  "notes": "Millersville's admissions-scholarships page lists an 'International Scholarships' contact (717-871-7506, international@millersville.edu). Award names and amounts could not be confirmed: the international financial-assistance page was unreachable (404) when checked, so scholarship amounts are left null. Confirm with International Admissions.",
+  "src": "schol"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 17620,
+  "intl_extra_fees_usd": 300,
+  "room_board_usd": 13890,
+  "other_usd": 1400,
+  "total_coa_usd": 33660,
+  "notes": "International estimated annual proof-of-funding for 2026-2027: tuition and fees $17,620 (includes some mandatory fees; 12-18 credits per semester), living expenses $13,890, health insurance $750, books and miscellaneous $1,400, total $33,660. A separate $150 per semester international student fee ($300 per year) is charged in addition and is not in that total.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No institution code is printed on the Millersville international admission pages; look it up with the test provider and send scores directly to Millersville.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "No institution code is printed on the Millersville international admission pages; look it up with the test provider and send scores directly to Millersville.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No institution code is printed on the Millersville international admission pages; look it up with the test provider and send scores directly to Millersville.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is printed on the Millersville international admission pages; look it up with the test provider and send scores directly to Millersville.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is printed on the Millersville international admission pages; look it up with the test provider and send scores directly to Millersville.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is printed on the Millersville international admission pages; look it up with the test provider and send scores directly to Millersville.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

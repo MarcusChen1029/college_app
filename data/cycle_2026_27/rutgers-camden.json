@@ -1,0 +1,161 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Rutgers Undergraduate Admissions - Camden application dates and deadlines (first-year fall 2027)",
+   "url": "https://admissions.rutgers.edu/apply/dates-deadlines/camden",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Rutgers Undergraduate Admissions - First-Year Applicants (test policy, platforms, fee, essay, SAT/ACT codes)",
+   "url": "https://admissions.rutgers.edu/apply/first-year-applicants",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Rutgers Undergraduate Admissions - International Applicants (English proficiency table by campus, documents)",
+   "url": "https://admissions.rutgers.edu/apply/international-applicants",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Rutgers-Camden Admissions - Scholarships (International Chancellor's Scholarship)",
+   "url": "https://admissions.camden.rutgers.edu/costs-and-aid/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "aid2": {
+   "kind": "financial_aid_site",
+   "title": "Rutgers-Camden Admissions - International Chancellor's Scholarship",
+   "url": "https://admissions.camden.rutgers.edu/international-chancellor-scholarship",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Camden is test-optional (Rutgers states test-optional policies 'through 2027'); applicants who do not submit scores get full consideration. Exception: applicants to the BS/DO program must submit at least one ACT or SAT score.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "teacher_recs": 0,
+  "counselor_rec": false,
+  "supplemental_essays": "A short original essay is required (Rutgers Application: 3,800 characters; Common App: 250-650 words).",
+  "notes": "Apply with the Rutgers Application or the Common App; the $70 non-refundable fee is the same on both. Letters of recommendation are 'not used' for admission; activities are recommended. Current high school students report coursework through the STARS record. Per the Camden deadlines page, F-1 first-year fall 2027 applicants can enroll full-time in the College of Arts & Sciences, School of Business-Camden or School of Nursing-Camden. Financial documents (ISFS) are due after the offer is accepted, for the I-20.",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2027-01-31",
+   "label": "Early Action (non-binding), first-year fall 2027",
+   "notes": "Online decision January 31, 2027; candidate reply May 1, 2027. The page says 'These are not deadlines. You may apply after due dates have passed'; later applications are reviewed in the order received. Required credentials are due two weeks after the application due date. The page lists no separate international date.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2026-12-01",
+   "notify": "2027-02-28",
+   "label": "Regular Decision, first-year fall 2027",
+   "notes": "Online decision February 28, 2027; candidate reply May 1, 2027. Not a hard deadline (see Early Action note). The page lists no separate international date.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "plan": "RD",
+   "due": "2027-05-01",
+   "label": "Candidate reply date",
+   "notes": "Printed as the reply date for both plans; the earlier Rutgers page text says it is not a hard deadline and enrollment stays open while space remains.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required if secondary school was outside the U.S. in a country where English is not the primary language; scores must be under two years old. Waivers for English-medium schooling are decided case by case (email RUinternational@admissions.rutgers.edu after the application is complete). A B or better in a college-level English Composition course at an accredited U.S. college also exempts; ESL courses, courses taken outside the U.S. and correspondence/online courses do not. The page's table also lists SAT EBRW 550, ACT English 21 and Michigan English Test 56 as accepted proof.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Camden minimum for TOEFL iBT / Home Edition taken through January 21, 2026 (old 0-120 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Camden minimum for tests taken from January 22, 2026 (new 1-6 scale). Nursing requires 5.5 on the new scale (100 on the old scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Camden minimum; New Brunswick and Newark are 6.5.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Nursing and Pharmacy require 130.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Cambridge Assessment test at level B2 (no numeric score printed).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "notes": "Rutgers-Camden's International Chancellor's Scholarship goes to nonsponsored F-1 first-year and transfer students with no separate application. The two Camden pages disagree on size: the scholarships page says 'up to $17,000 per year', while the dedicated scholarship page lists weighted-GPA tiers for first-years (2.8-3.19: $16,000; 3.2-3.69: $18,000; 3.7-4.0: $21,000 per year), renewable with a 2.5 GPA; confirm the current amount with the office. The scholarships page also lists a #YouAreWelcomeHere Scholarship covering a minimum of 50% of tuition for first-year international students. No need-based aid for international students is described.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2765",
+   "src": "fy"
+  },
+  "act": {
+   "code": "2592",
+   "note": "ACT score must include the writing component.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "2765",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

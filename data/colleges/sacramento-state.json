@@ -1,0 +1,37 @@
+{
+ "slug": "sacramento-state",
+ "name": "California State University, Sacramento",
+ "short_name": "Sacramento State",
+ "state_region": "CA",
+ "city": "Sacramento",
+ "latitude": 38.559415,
+ "longitude": -121.423549,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.csus.edu",
+ "admissions_url": "https://www.csus.edu/apply/admissions/",
+ "ipeds_unit_id": 110617,
+ "undergrad_enrollment": 28268,
+ "intl_undergrads": 474,
+ "student_faculty_ratio": 24,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: Admissions fall 2023 (ADM2023), fall 2023 enrollment (EF2023A), student-to-faculty ratio and calendar (IC2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110617",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 25994,
+  "admits": 24336,
+  "enrolled": 3884,
+  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 27,702 applicants, 94% admitted, 15% of admitted students enrolled (percentages are rounded). The newest Sacramento State Common Data Set found online is 2022-2023, so it was not used. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are left null. The CSU is test-blind, so no SAT/ACT percentiles are reported."
+ },
+ "scores": {}
+}

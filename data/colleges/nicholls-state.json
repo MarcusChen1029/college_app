@@ -1,0 +1,79 @@
+{
+  "slug": "nicholls-state",
+  "name": "Nicholls State University",
+  "short_name": "Nicholls State",
+  "state_region": "LA",
+  "city": "Thibodaux",
+  "latitude": 29.794486,
+  "longitude": -90.801571,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.nicholls.edu",
+  "admissions_url": "https://www.nicholls.edu/international/",
+  "ipeds_unit_id": 159966,
+  "undergrad_enrollment": 5518,
+  "intl_undergrads": 88,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Nicholls State University (IPEDS fall 2024 enrollment, locale, student-faculty ratio, test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159966",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=159966&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159966",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 3369,
+    "admits": 3059,
+    "enrolled": 1082,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 82,
+    "notes": "Baseline from IPEDS (fall 2024 entering class). Nicholls' Common Data Set page (nicholls.edu/irep/common-data-set/) only lists CDS files through 2018-19, too old to use. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 3,369 applicants, 3,059 admitted, 1,082 enrolled (1,075 full-time + 7 part-time). College Navigator shows 3% submitting SAT (34 students) and 82% submitting ACT (884 students); SAT percentiles rest on a small group. International applicant counts, GPA and class rank are not published."
+  },
+  "scores": {
+    "SAT_ERW": [
+      472,
+      525,
+      608
+    ],
+    "SAT_MATH": [
+      462,
+      555,
+      588
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      24
+    ]
+  }
+}

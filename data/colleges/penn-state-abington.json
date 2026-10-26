@@ -1,0 +1,128 @@
+{
+  "slug": "penn-state-abington",
+  "name": "Penn State Abington",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Abington",
+  "latitude": 40.117101,
+  "longitude": -75.110724,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.abington.psu.edu/",
+  "admissions_url": "https://www.abington.psu.edu/admissions",
+  "ipeds_unit_id": 214801,
+  "undergrad_enrollment": 2710,
+  "intl_undergrads": 151,
+  "student_faculty_ratio": 14.1,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Penn State Abington Common Data Set 2025-2026 (PDF)",
+      "url": "https://opair.psu.edu/files/2026/09/CDS_2025_2026_Abington_v3.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8321,
+    "admits": 7800,
+    "enrolled": 651,
+    "in_state_applicants": 2619,
+    "in_state_admits": 2418,
+    "out_state_applicants": 4913,
+    "out_state_admits": 4651,
+    "intl_applicants": 789,
+    "intl_admits": 731,
+    "pct_submit_sat": 19.97,
+    "pct_submit_act": 1.38,
+    "gpa_avg": 3.2,
+    "pct_reporting_gpa": 95,
+    "gpa_distribution": {
+      "4.0": 2,
+      "3.75-3.99": 15,
+      "3.50-3.74": 15,
+      "3.25-3.49": 20,
+      "3.00-3.24": 17,
+      "2.50-2.99": 21,
+      "2.0-2.49": 10,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS C1/C9/C11/C12, Penn State Abington campus only, fall 2025 entering class (residency split as printed in C1; totals check: in-state + out-of-state + international = total). No early decision; early action closes 11/01 with notification 12/24; no application closing date, rolling. Enrollment: 2,710 undergraduates (CDS B1), 151 nonresident undergraduates (B2). International first-years: 789 applied, 731 admitted (93%), 49 enrolled. SAT/ACT optional (considered if submitted); score percentiles are for the 130 enrolled SAT submitters (ACT: only 9 students). GPA distribution is the 'all enrolled students' column of C11."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1100,
+      1200,
+      1303
+    ],
+    "SAT_ERW": [
+      560,
+      620,
+      663
+    ],
+    "SAT_MATH": [
+      538,
+      600,
+      660
+    ],
+    "ACT_COMPOSITE": [
+      25,
+      28,
+      33
+    ],
+    "ACT_ENGLISH": [
+      24,
+      27,
+      35
+    ],
+    "ACT_MATH": [
+      25,
+      28,
+      31
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 14684,
+    "tuition_out_of_state_usd": 25584,
+    "tuition_intl_usd": 25584,
+    "required_fees_usd": 630,
+    "room_board_usd": 12786,
+    "books_usd": 1290,
+    "other_usd": 5356,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 0,
+    "intl_avg_award_usd": 0,
+    "notes": "CDS G1/G5 first-year 2026-27, Penn State Abington campus: tuition in-state $14,684, out-of-state/nonresident $25,584 (international students pay the nonresident rate); required fees $630; food and housing $12,786 as printed (housing $10,786 + food $2,000; the G5 estimate for students living off campus is $18,276); books $1,290; other_usd = transportation $2,244 + other expenses $3,112. Tuition varies by program (G4). CDS H6: institutional scholarship and grant aid is not available to nonresident undergraduates."
+  }
+}

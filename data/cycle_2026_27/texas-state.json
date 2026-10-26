@@ -1,0 +1,185 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Texas State Admissions - Apply for Admission (freshman and international deadlines)",
+      "url": "https://www.admissions.txst.edu/future-students/apply-for-admission.html",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "Texas State Admissions - Freshman admission requirements",
+      "url": "https://www.admissions.txst.edu/future-students/freshman/admission-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Texas State Admissions - International admissions requirements (incl. English proficiency)",
+      "url": "https://www.admissions.txst.edu/future-students/international/admissions-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "Texas State Financial Aid - International scholarships",
+      "url": "https://www.finaid.txstate.edu/scholarships/international.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for applicants ranked in the top 75% of their class (admission, Honors College, merit scholarships); scores are considered if submitted. Applicants in the bottom quarter must submit scores that meet assured-admission standards (4th quartile: ACT 29 / SAT 1330). Assured admission also lists ACT 22 / SAT 1090 for the 2nd quartile and ACT 26 / SAT 1250 for the 3rd quartile. Applicants from non-ranking schools are assigned a rank by Texas State. International applicants: scores are listed as optional.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 90,
+    "notes": "Apply on the TXST Application, Common App or ApplyTexas ('own' = TXST App/ApplyTexas); submit only one. Fee is $90 for international applicants (no waivers) and $75 domestic. The essay is optional on the freshman checklist; the admission review also considers curriculum, rigor and grades. International applicants send secondary transcripts and exam results with certified English translations if needed. McCoy College of Business BBA majors are limited access (freshmen not meeting assured admission may enter as Pre-Business).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2026-12-01",
+      "label": "International fall freshman priority date (fall 2027 entry)",
+      "notes": "Apply by the priority date to also meet the scholarship deadline. The page does not print a year; fall 2027 entry is assumed.",
+      "src": "apply"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International fall freshman final deadline",
+      "notes": "International Application Deadlines section of the Apply page: 'December 1 (Priority) / June 1 (Final)'. The domestic freshman section of the same page lists July 15 as final. Applicants who need a visa should finish at least a month early.",
+      "src": "apply"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Good Neighbor Scholarship application (BOSS) for the following academic year",
+      "notes": "Open to students from nations of the Western Hemisphere other than Cuba and the U.S.; awards the resident/nonresident tuition difference. Date taken from the international scholarships page.",
+      "src": "aid"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: diploma or bachelor's degree from a listed English-speaking country (e.g. UK, Ireland, Canada except Quebec, Australia, New Zealand, Singapore, Nigeria, Kenya, Philippines and others listed); a U.S. high school diploma with 3 full years of non-ESL English; or 30+ transferable credits incl. College Writing I and II with C or higher. Other proofs: SAT EBRW 520, ACT English 21, IB English 4, GCE/IGCSE English C, WASSCE B3. Scores must be under 2 years old and not single-skill; teacher-certification programs require TOEFL iBT regardless of country.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 78,
+      "subs": {
+        "each_section": 19,
+        "writing": 18
+      },
+      "notes": "Each section 19 except Writing 18.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "subs": {
+        "each_section": 4
+      },
+      "notes": "Updated 6-point scale: total 4, each section 4.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_section": 6.0
+      },
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Some online-program pages list 110.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 52,
+      "notes": "PTE Academic overall.",
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 176,
+      "notes": "B2 First, C1 Advanced or C2 Proficiency. Also accepted: TOEFL Essentials 8.5 and iTEP 3.8. No ESL or conditional-admission pathway was found on the international admissions page.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International students can compete for academic scholarships if admitted by the scholarship deadline. A Texas State competitive or merit scholarship of $1,000+ can bring a nonresident tuition waiver (resident rate; Selective Service registration or exemption and lawful presence required). Need-based Tuition Assistance for Mexican Students (TAMS) and the merit-based Good Neighbor Scholarship (Western Hemisphere) are listed; online-degree students are not eligible for institutional scholarships. CDS H6 says institutional need-based and non-need-based aid exists for nonresidents (1,131 recipients, avg $22,760).",
+    "src": "aid"
+  },
+  "majors": [
+    {
+      "program": "Business Administration BBA (McCoy College of Business)",
+      "category": "business",
+      "admit_model": "pre_major_competitive",
+      "capped": true,
+      "notes": "All BBA majors are Limited Access; freshmen not meeting assured admission can be admitted as Pre-Business and must then meet requirements for their chosen major."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "6667",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4178",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6667",
+      "note": "Page prints the TOEFL code as 006667.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Select Texas State University as the recipient; no numeric code.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Select Texas State University as the recipient; no numeric code.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "Select Texas State University as the recipient (Pearson Academic); no numeric code.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

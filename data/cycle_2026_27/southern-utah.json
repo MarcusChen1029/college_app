@@ -1,0 +1,140 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SUU - International undergraduate admission requirements",
+      "url": "https://www.suu.edu/international/undergraduate-admission-requirements.html",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "financial_aid_site",
+      "title": "SUU - International student estimated costs and scholarships",
+      "url": "https://www.suu.edu/international/estimated-costs.html",
+      "accessed": "2026-10-26"
+    },
+    "first": {
+      "kind": "admissions_site",
+      "title": "SUU - First-year student admission",
+      "url": "https://www.suu.edu/admissions/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "iep": {
+      "kind": "admissions_site",
+      "title": "SUU - Intensive English Program admission requirements",
+      "url": "https://www.suu.edu/international/intensive-english-admission-requirements.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "SUU does not use SAT/ACT scores in admission (CDS C8A). First-time freshmen with a cumulative unweighted GPA of 2.4 or higher are fully admitted; below 2.4 are provisionally admitted into the COMPASS program. International applicants need a foreign transcript that converts to at least a 2.0 on a 4.0 scale. An ACT 18 or SAT critical reading 450 can be used as English-proficiency proof (not as an admission test).",
+    "src": "first"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 60,
+    "notes": "International application fee is $60 (US currency only); the CDS lists no application fee for domestic applicants. Applicants show funds for the first year with an official bank document and the International Student Financial Form. No essay or recommendations are listed on the international requirements page; CDS C7 reports no weight on essays, recommendations or interviews.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-04-15",
+      "label": "Fall priority deadline - international (fall 2027 entry)",
+      "notes": "SUU admits on a rolling basis. The page prints no year; taken as fall 2027. Spring-semester priority date is October 15 and summer is February 15. Allow at least one month for processing, shipping and embassy appointments.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-15",
+      "label": "Fall final deadline - international (fall 2027 entry)",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Alternatives to a test: an undergraduate degree from an accredited US or English-speaking-country institution, or an official transcript from an English language program showing an 80% or B average; ACT 18 or SAT critical reading 450 also appear on the list of accepted proofs. Scores must be no more than two years old and official (screenshots not accepted). Other accepted tests: iTEP Academic 4.2, TOEFL Essentials 7.5, Michigan English Test 52, LanguageCert Academic 60. SUU offers an Intensive English Program; the pages reviewed do not describe a conditional-admission pathway into degree programs (contact intladm@suu.edu).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Page labels this the old iBT scale.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Page labels this the new iBT scale; the 1-6 band scale is not named on the page.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "International scholarships are awarded automatically on the admission application (no separate application): International Founders' Scholarship $9,000/yr for 4 years, Deans' $7,000/yr for 4 years, Centurium $4,000/yr for 4 years. The committee weighs GPA (awardees typically 3.0), citizenship and financial need; international scholarships cannot be combined with other substantial SUU tuition scholarships. CDS H6: need-based and non-need-based institutional aid is available to nonresidents.",
+    "src": "costs"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "4092",
+      "note": "Code printed on SUU's international requirements page next to the SAT line.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4271",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "4092",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

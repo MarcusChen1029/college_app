@@ -1,0 +1,168 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Kean - International freshmen applicants",
+      "url": "https://www.kean.edu/offices/admissions/international-freshmen-applicants",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Kean - International admissions FAQ (deadlines, fee, ESL)",
+      "url": "https://www.kean.edu/offices/admissions/international-admissions-frequently-asked-questions",
+      "accessed": "2026-10-26"
+    },
+    "topt": {
+      "kind": "admissions_site",
+      "title": "Kean - SAT test-optional admission",
+      "url": "https://www.kean.edu/test-optional-admission",
+      "accessed": "2026-10-26"
+    },
+    "news": {
+      "kind": "other",
+      "title": "Kean - Board of Trustees approves in-state tuition rates for all students (Sept 16, 2025)",
+      "url": "https://www.kean.edu/news/kean-university-board-trustees-approves-state-tuition-rates-all-students",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "other",
+      "title": "Kean Student Accounting - Tuition and fees 2026-2027",
+      "url": "https://www.kean.edu/offices/student-accounting/tuition-and-fees-2026-2027",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Kean Financial Aid - Cost of attendance 2026-2027",
+      "url": "https://www.kean.edu/offices/financial-aid/cost-attendance",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test-optional for first-year applicants with a high school GPA of 3.0 or higher and at least 16 college-preparatory courses; home-schooled, online high school and GED applicants must submit scores. The test-optional page does not address international applicants. If sent, Kean superscores SAT (highest ERW and Math) and uses the highest ACT composite. Test-optional admits still take placement tests and are not eligible for merit scholarships.",
+    "src": "topt"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "International applicants submit a course-by-course transcript evaluation (including GPA) from a NACES-affiliated agency. Two English-language recommendation letters and a 1-2 page personal essay are recommended on the international page; the test-optional page lists a transcript, two letters, an essay and an activities list as required for test-optional applicants. A promo code waiving the $75 fee is available by attending a virtual information session.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-04-30",
+      "label": "Preferred international freshman application deadline (fall 2027)",
+      "notes": "Applications are accepted on a rolling basis after this date. The FAQ prints no year; taken as fall 2027.",
+      "src": "faq"
+    },
+    {
+      "kind": "application",
+      "due": "2027-02-15",
+      "label": "Architectural Studies (B.A.) international freshman deadline",
+      "src": "faq"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Preferred tuition deposit deadline",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required if secondary education was in a non-English-primary country. A waiver can be requested with official documentation that secondary school instruction was in English; applicants to fully online programs are not eligible. Scores must be from the past two years and sent directly by the testing agency. Kean has no ESL program; the SUPERA Spanish-speaking program lets freshmen take general education courses in Spanish while completing ESL requirements and has no English test or SAT requirement.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Paper-based minimum 550.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Exams taken after Jan 21, 2026: the page prints 'a minimum total score of 4' without naming the scale (presumably the new 1-6 scale); confirm with admissions.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": null,
+    "notes": "No international scholarship names or amounts were found on Kean's international admissions pages. Starting fall 2026 the Board of Trustees eliminated out-of-state tuition, so international students pay the same rate as New Jersey residents (about $16,370 per year for tuition and fees in 2026-27). Test-optional admits cannot receive merit scholarships.",
+    "src": "faq"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2026-2027",
+    "src": "coa",
+    "tuition_usd": 13577,
+    "tuition_out_of_state_usd": 13577,
+    "tuition_intl_usd": 13577,
+    "required_fees_usd": 2794,
+    "room_board_usd": 20168,
+    "books_usd": 1280,
+    "other_usd": 3536,
+    "total_coa_usd": 41422,
+    "notes": "Cost of attendance 2026-27, full-time undergraduate living on campus (double occupancy): tuition and fees $16,370, housing and food $20,168, books $1,280, transportation $1,620, personal $1,916, loan fees $68, total $41,422. Tuition = 2 x $6,788.50 and fees = $2,793.67 (rounded) per the Student Accounting schedule. Out-of-state tuition no longer exists (Board vote of Sept 15, 2025, effective fall 2026), so international students pay this single rate."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "2517",
+      "note": "CEEB code printed on the international freshmen page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "The international freshmen page gives only the CEEB code 2517 for SAT; no separate ACT code is printed.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages reviewed; scores must be sent directly by the testing agency.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

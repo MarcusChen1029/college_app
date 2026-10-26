@@ -1,0 +1,195 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "PLU - International first-year admission (dates, checklist, English proficiency)",
+   "url": "https://www.plu.edu/admission-international/apply/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "PLU - First-year application (test policy, direct admission programs)",
+   "url": "https://www.plu.edu/admission-first-year/apply/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "PLU - International cost and financial support (2026-2027)",
+   "url": "https://www.plu.edu/admission-international/cost-scholarship/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "PLU - International scholarships and grants (effective Fall 2026)",
+   "url": "https://www.plu.edu/admission-international/cost/international-scholarships-and-grants/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "PLU does not require tests; applicants decide whether to have ACT or SAT scores considered. The admission GPA (weighted for AP/IB/Cambridge/Honors, max 4.50) is used for admission and scholarships.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Apply with the Common App or PLU's international first-year application; the page says it is free to apply. Needs a personal essay of at least 250 words, official English-translated transcripts, and an optional academic recommendation. After admission a bank statement, passport copy and $200 enrollment deposit are needed before the I-20/DS-2019.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-01",
+   "notify": "2026-12-01",
+   "label": "Early Action I (fall 2027 entry)",
+   "notes": "Page prints no year; treated as the fall 2027 cycle. Decision and scholarship notice by Dec. 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-12-01",
+   "notify": "2027-01-01",
+   "label": "Early Action II (fall 2027 entry)",
+   "notes": "Decision and scholarship notice by Jan. 1. Also the date to be considered for Presidential Scholarships.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision (fall 2027 entry)",
+   "notes": "Decision and scholarship notice within a month.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "Final application deadline (fall 2027 entry)",
+   "notes": "Applications completed after Feb. 1 are reviewed on a rolling basis.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Alternatives to a test: one college English class with B or better (semester system) or two (quarter system); SAT EBRW 500+; ACT English 21+; GCE O-Level English B; a pre-approved non-PLU ESL program (CEFR B2); a secondary diploma from Nordic countries or the Netherlands (English grade 7+) or from a listed English-medium country (e.g. U.S., Canada, UK, Australia, Ireland, Nigeria, South Africa, Philippines); or documentation that all instruction was in English for at least 2 years. No conditional-admission or ESL pathway is described.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Page says 'TOEFL: 4.0' without naming the scale and gives no old 0-120 score; 4.0 matches the new 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 56,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Merit Awards of $8,000-$32,000 per year (first-year and transfer, no application). Stackable: Housing Grant $2,500/yr for living on campus, Visit Scholarship $1,000/yr, Presidential Scholarship (3.8 weighted GPA plus leadership, apply by Dec. 1; variable amount), Artistic Achievement Awards $1,000-$7,500 (audition), Alumni Dependent $1,000; International Access Grant $2,000 for Nordic-country students. PLU says students should expect to pay at least half or more of tuition plus all living costs themselves; no need-based aid for international students is described.",
+  "src": "schol"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 55760,
+  "room_board_usd": 14670,
+  "other_usd": 4491,
+  "total_coa_usd": 74921,
+  "notes": "PLU's 2026-2027 international student expense estimate: tuition and fees $55,760; room and meals $14,670; health insurance, books and personal expenses $4,491; total $74,921, which is the amount of the required financial guarantee minus the scholarship in the admission letter.",
+  "src": "cost"
+ },
+ "majors": [
+  {
+   "program": "Business (School of Business)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applying to PLU is also applying to the business school; no separate application."
+  },
+  {
+   "program": "Computer Science",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Not an impacted major; no separate application."
+  },
+  {
+   "program": "Nursing (BSN)",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": false,
+   "notes": "No separate application. If selected, admission to the BSN program starting in the third year is guaranteed after completing academic requirements."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No institution code is printed on the PLU international admission pages; look it up with the test provider and send scores directly to PLU.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No institution code is printed on the PLU international admission pages; look it up with the test provider and send scores directly to PLU.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No institution code is printed on the PLU international admission pages; look it up with the test provider and send scores directly to PLU.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is printed on the PLU international admission pages; look it up with the test provider and send scores directly to PLU.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is printed on the PLU international admission pages; look it up with the test provider and send scores directly to PLU.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is printed on the PLU international admission pages; look it up with the test provider and send scores directly to PLU.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

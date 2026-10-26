@@ -1,0 +1,195 @@
+{
+  "sources": {
+    "dl": {
+      "kind": "admissions_site",
+      "title": "SIUE International Admissions - Application deadlines",
+      "url": "https://siue.edu/admissions/international/how-to-apply/application-deadlines.shtml",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "SIUE International Admissions - English proficiency requirements",
+      "url": "https://siue.edu/admissions/international/how-to-apply/english-proficiency.shtml",
+      "accessed": "2026-10-26"
+    },
+    "ug": {
+      "kind": "admissions_site",
+      "title": "SIUE International Admissions - Undergraduate requirements",
+      "url": "https://siue.edu/admissions/international/how-to-apply/undergraduate.shtml",
+      "accessed": "2026-10-26"
+    },
+    "first": {
+      "kind": "admissions_site",
+      "title": "SIUE - Apply as a first-time freshman",
+      "url": "https://www.siue.edu/apply/first-year.shtml",
+      "accessed": "2026-10-26"
+    },
+    "geo": {
+      "kind": "financial_aid_site",
+      "title": "SIUE - International GEO Award",
+      "url": "https://siue.edu/financial-aid/scholarships/scholarships-awards-grants/list-feed/geo-award.shtml",
+      "accessed": "2026-10-26"
+    },
+    "scholar": {
+      "kind": "financial_aid_site",
+      "title": "SIUE - International undergraduate scholarships",
+      "url": "https://siue.edu/financial-aid/scholarships/scholarships-awards-grants/international-undergraduate.shtml",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "other",
+      "title": "SIUE - Estimated tuition, fees and living expenses for international students 2026-2027",
+      "url": "https://siue.edu/paying-for-college/international.shtml",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SIUE International Admissions - Home (GEO, Intensive English Pathway)",
+      "url": "https://siue.edu/admissions/international/",
+      "accessed": "2026-10-26"
+    },
+    "iep": {
+      "kind": "admissions_site",
+      "title": "SIUE - Intensive English Pathway",
+      "url": "https://siue.edu/admissions/international/iep/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT are not required for admission consideration; students are encouraged to submit them for course placement. First-year admission criteria: cumulative GPA 2.6+ (4.0 scale), or GPA 2.0-2.59 with ACT 19+ / SAT 990+, or top 10% class rank; others may get additional review. The international requirements page states no minimum GPA or test policy.",
+    "src": "first"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "notes": "Two-step process for international applicants: online application with academic records (unofficial transcripts are accepted at first; official ones after admission), then financial documents so SIUE can issue the I-20. $40 non-refundable fee plus a $1.10 card convenience fee (international page). Domestic first-years may use the SIUE application or the Common App; whether international applicants may use the Common App is not stated. Essays and recommendations are not listed.",
+    "src": "ug"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "Fall priority deadline - international (fall 2027 entry)",
+      "notes": "The page prints no year; taken as fall 2027. STEM and business applicants face the same May 1 (fall) cutoff and SIUE may not process applications from outside the US after it.",
+      "src": "dl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "Fall final deadline - international (fall 2027 entry)",
+      "src": "dl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-06-15",
+      "label": "Fall financial-documents deadline - international",
+      "src": "dl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived or satisfied by: graduating from a US high school; an accredited diploma or degree from the US or a primarily English-speaking country (UK, Ireland, Australia, New Zealand, English-speaking Canada); an Intensive English Language Program certificate equivalent to TOEFL iBT 79; ACT English/Reading 21; SAT EBRW 530 (480 before March 2016); or English 101 and 102 with a C or better at a US regionally accredited institution. Michigan English Test 53 also accepted. Scores must be under two years old and sent directly. The Intensive English Pathway admits students below the standard minimums (IELTS 5.0 with no part under 4.5, TOEFL 45, Duolingo 80, MET 41) and lets them take some credit-bearing courses alongside English classes; whether it gives guaranteed conditional admission is not stated.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 72,
+      "notes": "Page does not name the scale or mention the new 1-6 scale; the 0-120 scale is assumed. GEO Award eligibility cites TOEFL 79 or IELTS 6.5.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.5
+      },
+      "notes": "No component below 5.5.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "International GEO Award: a reduced tuition rate for academically qualified first-time, full-time international undergraduates (the admission application is the GEO application; cited English level TOEFL 79 / IELTS 6.5). For 2026-27 it is valued at $10,676 per year (12 credits per semester), good for up to eight semesters. The GEO+ rule moves international undergraduates to in-state tuition after 24 credits. SIUE's international scholarship list also names the Meridian Scholarship (full tuition, fees, room and board; priority Nov 15, final Dec 1, new first-years) - the page does not state its eligibility rules for international applicants, so confirm before relying on it.",
+    "src": "geo"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "tuition_intl_usd": 20531,
+    "required_fees_usd": 3069,
+    "total_coa_usd": 40970,
+    "notes": "SIUE's international estimate for 2026-27: tuition $20,531, general student fees $3,069, living expenses $17,370 (includes mandatory health insurance $2,583, food, housing, transportation, books and personal), total funds required $40,970. These figures are before any GEO Award reduction. The in-state tuition rate and room and board are not published on the pages reviewed."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "1759",
+      "note": "Page prints 'ACT/SAT: Institution code 1759'.",
+      "src": "ug"
+    },
+    "act": {
+      "code": "1759",
+      "note": "Page prints 'ACT/SAT: Institution code 1759'.",
+      "src": "ug"
+    },
+    "toefl": {
+      "code": "1759",
+      "note": "The English proficiency page prints the institutional code as 001759.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed; official reports go directly from the testing service to SIUE.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D",
+    "engineering": "D"
+  },
+  "tier_notes": {}
+}

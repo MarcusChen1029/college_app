@@ -1,0 +1,127 @@
+{
+  "slug": "illinois-state",
+  "name": "Illinois State University",
+  "short_name": "Illinois State",
+  "state_region": "IL",
+  "city": "Normal",
+  "latitude": 40.509403,
+  "longitude": -88.990058,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://illinoisstate.edu/",
+  "admissions_url": "https://illinoisstate.edu/admissions/",
+  "ipeds_unit_id": 145813,
+  "undergrad_enrollment": 19513,
+  "intl_undergrads": 165,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Illinois State University Common Data Set 2025-2026 (PDF, ISU ReD repository)",
+      "url": "https://ir.library.illinoisstate.edu/cds/25/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Illinois State University (campus setting: Suburb: Midsize)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=145813",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 23826,
+    "admits": 20382,
+    "enrolled": 4253,
+    "in_state_applicants": 22162,
+    "in_state_admits": 19001,
+    "out_state_applicants": 1245,
+    "out_state_admits": 1007,
+    "intl_applicants": 382,
+    "intl_admits": 345,
+    "pct_submit_sat": 45.12,
+    "pct_submit_act": 6.98,
+    "gpa_avg": 3.63,
+    "pct_reporting_gpa": 99.93,
+    "gpa_distribution": {
+      "4.0": 24.78,
+      "3.75-3.99": 17.06,
+      "3.50-3.74": 16.61,
+      "3.25-3.49": 15.91,
+      "3.00-3.24": 15.76,
+      "2.50-2.99": 9.74,
+      "2.0-2.49": 0.14,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 (fall 2025; residency split excludes 37 applicants / 29 admits of unknown residency). International: 345 of 382 admitted (90%). No waitlist; no early decision or early action. Undergrad enrollment is B1 total undergraduates (19,513); intl_undergrads is the B2 nonresident total (165). SAT composite 25/50/75 = 1000/1110/1210. GPA distribution is the 'all enrolled students' column. The university reports the middle 50% GPA of admitted fall 2026 freshmen as 3.29-4.05 (self-reported)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_ERW": [
+      510,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      470,
+      530,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      27
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      19,
+      23,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: standardized test scores are not required; applicants may submit an ACT or SAT score and it cannot affect their standing negatively."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 12669,
+    "tuition_out_of_state_usd": 25338,
+    "tuition_intl_usd": 25338,
+    "required_fees_usd": 4146,
+    "room_board_usd": 12460,
+    "books_usd": 830,
+    "other_usd": 3422,
+    "notes": "CDS G1/G5 (first-year, 2026-27): required fees ($4,146.30) include student health insurance, automatically charged at 9+ credit hours and waivable with proof of insurance. Tuition varies by program for about 30% of undergraduates. Transportation estimate $2,452 not included in other_usd. The CDS H6 nonresident-aid section was left blank."
+  }
+}

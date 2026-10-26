@@ -1,0 +1,78 @@
+{
+  "slug": "uw-superior",
+  "name": "University of Wisconsin-Superior",
+  "short_name": "UW-Superior",
+  "state_region": "WI",
+  "city": "Superior",
+  "latitude": 46.717629,
+  "longitude": -92.091007,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.uwsuper.edu/",
+  "admissions_url": "https://uwsuper.edu/admissions/",
+  "ipeds_unit_id": 240426,
+  "undergrad_enrollment": 2037,
+  "intl_undergrads": 185,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, student-faculty ratio, setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=240426",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "intlcost": {
+      "kind": "admissions_site",
+      "title": "UW-Superior - Paying for college: international students (2026-27 estimated costs, NTW scholarships)",
+      "url": "https://uwsuper.edu/paying-for-college/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=240426",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 2310,
+    "admits": 2163,
+    "enrolled": 260,
+    "pct_submit_act": 21,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023). UW-Superior's Common Data Set is linked from its institutional research page but sits behind a Microsoft sign-in and could not be read, so CDS figures (international applicants/admits, GPA) are not added. IPEDS reports ACT only (no SAT). College Navigator for fall 2024 shows 1,517 applicants, 93% admitted, 19% of admits enrolled."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      18,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      15,
+      19,
+      23
+    ],
+    "ACT_MATH": [
+      17,
+      18,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "intlcost",
+    "tuition_intl_usd": 18155,
+    "room_board_usd": 7945,
+    "books_usd": 1090,
+    "other_usd": 2255,
+    "total_coa_usd": 32385,
+    "intl_merit_aid": true,
+    "notes": "UW-Superior international page, 2026-27 estimate for full-time on-campus students: nonresident tuition and fees $18,155; most affordable double room with a 13-meal plan $7,945 (room_board_usd; the page suggests $1,285 more for extra meals); required health insurance $2,255 (other_usd); books about $1,090; orientation fee $255 once. total_coa_usd is the page's minimum funding to show for an F-1 visa without a scholarship ($32,385; it also includes personal expenses). With the NTW scholarship the page's total is $22,710 or $20,510."
+  }
+}

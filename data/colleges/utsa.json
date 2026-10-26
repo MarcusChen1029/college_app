@@ -1,0 +1,120 @@
+{
+  "slug": "utsa",
+  "name": "The University of Texas at San Antonio",
+  "short_name": "UTSA",
+  "state_region": "TX",
+  "city": "San Antonio",
+  "latitude": 29.583709,
+  "longitude": -98.620657,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utsa.edu",
+  "admissions_url": "https://future.utsa.edu",
+  "ipeds_unit_id": 229027,
+  "undergrad_enrollment": 31127,
+  "intl_undergrads": 427,
+  "student_faculty_ratio": 23.8,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "UTSA Common Data Set 2024-2025 (Excel)",
+      "url": "https://www.utsa.edu/ir/docs/resources/commonDataSet/CDS_2024-2025.xlsx",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - The University of Texas at San Antonio (expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229027",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 25422,
+    "admits": 22063,
+    "enrolled": 5980,
+    "in_state_applicants": 23871,
+    "in_state_admits": 20828,
+    "out_state_applicants": 1093,
+    "out_state_admits": 793,
+    "intl_applicants": 458,
+    "intl_admits": 442,
+    "pct_submit_sat": 61.0,
+    "pct_submit_act": 7.0,
+    "notes": "CDS 2024-2025 (fall 2024 first-years), the newest CDS listed on UTSA's Institutional Research page (a 2025-26 file was not available). C1: 25,422 applicants, 22,063 admitted, 5,980 enrolled. International admit rate 96.5% (442 of 458), 104 enrolled. UTSA left high school GPA (C11/C12) blank, so GPA fields are omitted; 16% of enrollees were in the top tenth and 55% in the top quarter of their class (C10). Undergraduate enrollment 31,127 is CDS B1 total undergraduates; 427 is degree-seeking nonresident undergraduates (B2). Student-faculty ratio 23.8 is CDS I-2 (fall 2024)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1010,
+      1110,
+      1210
+    ],
+    "SAT_ERW": [
+      510,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      490,
+      540,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      23,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS 2024-25 C8A: SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 9011,
+    "tuition_out_of_state_usd": 22051,
+    "room_board_usd": 14912,
+    "books_usd": 1000,
+    "other_usd": 3002,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 340,
+    "intl_avg_award_usd": 6646,
+    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; on-campus food and housing $14,912. The CDS left section G (costs) blank. CDS 2024-25 H6: 340 degree-seeking nonresident undergraduates received institutional aid (avg $6,646, total $2,259,506); the CDS did not mark whether it was need- or non-need-based."
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "slug": "iu-south-bend",
+  "name": "Indiana University South Bend",
+  "short_name": "IU South Bend",
+  "state_region": "IN",
+  "city": "South Bend",
+  "latitude": 41.665324,
+  "longitude": -86.221991,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://southbend.iu.edu",
+  "admissions_url": "https://admissions.iusb.edu",
+  "ipeds_unit_id": 151342,
+  "undergrad_enrollment": 4206,
+  "intl_undergrads": 69,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Indiana University South Bend Common Data Set 2025-2026 (IU Institutional Analytics CDS app, campus South Bend, year 2025)",
+      "url": "https://iuapps.iu.edu/cds/?i=home&p=index&section=C.+First-Time%2C+First-Year+Admission&year=2025&campus=South+Bend",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "tui": {
+      "kind": "financial_aid_site",
+      "title": "Indiana University 2025-27 approved tuition, program and mandatory fee rates (full-time undergraduate, annual; South Bend)",
+      "url": "https://finance.iu.edu/doc/2025-2027-tuition-and-fee-schedule-approved.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 2761,
+    "admits": 2249,
+    "enrolled": 938,
+    "in_state_applicants": 2410,
+    "in_state_admits": 2024,
+    "out_state_applicants": 286,
+    "out_state_admits": 179,
+    "intl_applicants": 65,
+    "intl_admits": 46,
+    "pct_submit_sat": 20.0,
+    "pct_submit_act": 1.4,
+    "gpa_avg": 3.11,
+    "pct_reporting_gpa": 93.18,
+    "gpa_distribution": {
+      "4.0": 7.44,
+      "3.75-3.99": 11.33,
+      "3.50-3.74": 11.9,
+      "3.25-3.49": 13.27,
+      "3.00-3.24": 12.93,
+      "2.50-2.99": 25.63,
+      "2.0-2.49": 16.25,
+      "1.0-1.99": 1.26
+    },
+    "notes": "CDS C1 (fall 2025 first-years, IU South Bend campus): 2,761 applied, 2,249 admitted, 938 enrolled; international 65 applied / 46 admitted (71%) / 5 enrolled, out-of-state 286 / 179 / 29. No waitlist. C9: 188 enrolled students submitted SAT (20.0%) and 13 submitted ACT (1.4%), so the ACT percentiles rest on very few students. GPA distribution is the 'all enrolled students' column of C11 as printed (sums to 100.01). Undergraduate enrollment is B1 'Total All Undergraduate Students' (4,206); intl_undergrads is the B2 'Nonresidents' total undergraduates (69; 14 first-years). Student-faculty ratio 15 is the CDS I-section ratio (3,874.69 students / 264 faculty)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1060,
+      1150
+    ],
+    "SAT_ERW": [
+      480,
+      550,
+      600
+    ],
+    "SAT_MATH": [
+      440,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      19,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      19,
+      21,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; C8F: test scores are considered when a student is on the cusp of the Guided Pathways Program or 'conditional' admission cut-off."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "tui",
+    "tuition_usd": 7717,
+    "tuition_out_of_state_usd": 22548,
+    "tuition_intl_usd": 22548,
+    "required_fees_usd": 707,
+    "room_board_usd": 9816,
+    "books_usd": 1290,
+    "other_usd": 2724,
+    "intl_need_aid_awarded": 23,
+    "intl_avg_award_usd": 8059,
+    "notes": "Indiana University's approved 2026-27 full-time undergraduate rates for South Bend: resident tuition $7,716.78, nonresident tuition $22,547.78, combined mandatory fee $707.34 (nonresident total $23,255.12); international students are charged the nonresident rate (the CDS G1 shows $22,325, which equals the 2025-26 nonresident rate). Food and housing $9,816, books $1,290, and other $2,724 (transportation $364 + other expenses $2,360, resident student) are from CDS G1/G5; the CDS box says final 2026-27 costs were not yet available, so the room-and-board and expense figures may be 2025-26 estimates. No total cost of attendance is printed. CDS H6 (the aid year appears to be 2024-25 final; the checkbox is ambiguous in the text): both need-based and non-need-based institutional aid are ticked as available to nonresidents; 23 undergraduate nonresidents received it, average $8,059 (total $185,367). Program differentials (for example nursing $4,478.40) are extra."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "sources": {
+    "policies": {
+      "kind": "admissions_site",
+      "title": "Niagara University - Admissions Policies (first-year requirements, test-optional policy)",
+      "url": "https://www.niagara.edu/admissions/policies/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Niagara University - International Admissions",
+      "url": "https://www.niagara.edu/admissions/international-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Niagara University - Undergraduate Scholarships & Grants",
+      "url": "https://www.niagara.edu/tuition-aid/scholarships-grants/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Niagara has a test-optional admissions policy for first-year applicants that covers all majors and merit scholarship consideration. If scores are submitted, the best SAT or ACT score is used. Some programs may still ask for scores; confirm with admissions (716-286-8700).",
+    "src": "policies"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": null,
+    "supplemental_essays": "250-word essay is encouraged, not required.",
+    "notes": "Apply with the Common App or Niagara's own application. Required: official high school transcript (at least 16 academic units); a teacher/counselor recommendation, a 250-word essay and an activities resume are 'highly encouraged' but not required. Nursing needs 3 years of high school science including chemistry and biology with at least 80%. Foreign transcripts need a course-by-course NACES evaluation. The application fee is not stated on the pages checked.",
+    "src": "policies"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International (non-Canadian) fall application deadline, fall 2027 entry",
+      "notes": "The International Admissions page prints 'May 1' for fall and 'Nov. 1' for spring with no year; treated as fall 2027. Niagara reviews on a rolling basis (decisions in about 3-4 weeks after the application is complete); domestic first-year applicants have no deadline.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Test waived if English is your native language, you were taught in English at your high school (letter required), you spent one year or more studying in the United States, or you attended a US college or university for a year. Niagara approves only three tests: IELTS, TOEFL and Duolingo.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Score required for unconditional acceptance. The page does not give a score for the new 1-6 TOEFL scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Required for unconditional acceptance.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "Required for unconditional acceptance.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "notes": "No international-specific scholarship found, and the pages do not say whether international students qualify for the freshman merit awards. Listed first-year merit awards (2025-26 page): Trustees' $25,000, Presidential $22,000, Dean's $20,000, Achievement Award $18,000, NU Grant $15,000 per year, based on transcript and/or test scores; total merit cannot exceed 75% of tuition and fees. Federal and NY state aid require citizenship or residency. Conditional admission (English pathway program such as Embassy English, C1 level) is described in Niagara's undergraduate catalog per a search excerpt; the catalog page itself could not be read, so confirm with admissions.",
+    "src": "sch"
+  },
+  "majors": [
+    {
+      "program": "Nursing (BS)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "notes": "Needs 3 years of high school science including chemistry and biology with at least 80%; the policies page says nursing reviews may take longer because the program is competitive. Source: admissions policies page.",
+      "capped": false
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is printed on the admissions pages checked; look it up in the College Board code search.",
+      "src": "policies"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the admissions pages checked; look it up at act.org.",
+      "src": "policies"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the international admissions page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "humanities": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

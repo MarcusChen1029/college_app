@@ -1,0 +1,64 @@
+{
+  "slug": "marian-in",
+  "name": "Marian University (Indianapolis)",
+  "short_name": "Marian",
+  "state_region": "IN",
+  "city": "Indianapolis",
+  "latitude": 39.813233,
+  "longitude": -86.202643,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.marian.edu/",
+  "admissions_url": "https://www.marian.edu/admissions",
+  "ipeds_unit_id": 151786,
+  "undergrad_enrollment": 2378,
+  "intl_undergrads": 65,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=151786",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Marian University (enrollment fall 2024, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=151786",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "admissions_site",
+      "title": "Marian University - Tuition and Fees (2026/2027)",
+      "url": "https://www.marian.edu/admissions/tuition-and-fees",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=151786",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 3883,
+    "admits": 3702,
+    "enrolled": 620,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). No Common Data Set could be found on marian.edu. IPEDS reports no SAT/ACT figures and the 2026-27 catalog says the university is test blind, so no score ranges are recorded. International applicant/admit counts and GPA are not available."
+  },
+  "scores": {},
+  "cost": {
+    "year": "2026-2027",
+    "source": "tuition",
+    "tuition_usd": 43400,
+    "books_usd": 1200,
+    "room_board_usd": 15040,
+    "notes": "Marian's tuition page for 2026/2027: full-time (12-19 hours) $21,700 per semester ($43,400 per year), room and board $15,040, book estimate $1,200 per year. The page's total on-campus cost is $58,440 (tuition plus room and board); the page does not state other expenses, so no total cost of attendance is recorded. Fall 2027 rates are not yet published."
+  }
+}

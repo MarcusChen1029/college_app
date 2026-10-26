@@ -1,0 +1,143 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Augusta University - Undergraduate International Students",
+      "url": "https://www.augusta.edu/admissions/international.php",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "Augusta University - Freshman Admissions (requirements, 2027 dates)",
+      "url": "https://www.augusta.edu/admissions/freshman.php",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Augusta University - Cost of Attendance 2026-2027",
+      "url": "https://www.augusta.edu/finaid/costofattendance.php",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Augusta University - Scholarships",
+      "url": "https://www.augusta.edu/finaid/scholarships.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "Freshmen must submit SAT, ACT or CLT scores (one is enough; SAT/ACT are superscored). Minimums: SAT Evidence-Based Reading and Writing 480 and Math 440; ACT English or Reading 17 and Math 17. Meeting the minimums does not guarantee admission.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 60,
+    "notes": "Apply on Augusta's own online application; $60 non-refundable (NACAC, College Board and ACT fee waivers accepted). Minimum 3.00 GPA recalculated on the 17 required high school courses (4 English, 4 math, 4 science, 3 social science, 2 foreign language). International applicants send official transcripts from every school; a NACES course-by-course evaluation is recommended, not required. Nursing applicants apply separately through NursingCAS. Enrollment deposit $200. International applicants should confirm acceptance at least 90 days before the semester starts to allow I-20 processing.",
+    "src": "fresh"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-10-31",
+      "label": "Early Action deadline (fall 2027 entry)",
+      "notes": "Decisions released on or before Nov 15, 2026. The page is headed 'Important Dates for 2027 Applications' and does not give separate international dates.",
+      "src": "fresh"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "AU scholarship deadline",
+      "src": "fresh"
+    },
+    {
+      "kind": "application",
+      "due": "2027-07-01",
+      "label": "Final application deadline (fall 2027)",
+      "notes": "The international page says documents are due before the 'assigned application deadline' without listing a separate date.",
+      "src": "fresh"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived with graduation from a U.S. high school, completion of an approved University System of Georgia ESL program, a degree earned where English is the language of instruction, or English 1101/1102 with a C or better at an accredited U.S. institution. Alternative test minimums: SAT EBRW 480, ACT English 17, EIKEN Pre-1, MET 59, IGCSE/O-level English D, GCSE or GCE A-level English C. No conditional-admission or ESL pathway for first-year international applicants was found on the page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Applies to tests taken before 2026.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Page prints 4.0 for tests taken in 2026 or later.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Overall.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "src": "intl"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 177,
+      "notes": "Cambridge English Scale score.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 7134,
+    "tuition_out_of_state_usd": 24568,
+    "required_fees_usd": 1350,
+    "room_board_usd": 13138,
+    "books_usd": 1330,
+    "other_usd": 5002,
+    "total_coa_usd": 45388,
+    "notes": "Augusta cost of attendance 2026-27, on-campus: out-of-state tuition $24,568, fees $1,350, food $4,574, housing $8,564, books $1,330, loan fee $96, miscellaneous $3,078, transportation $1,828 = $45,388 (in-state total $27,954 with tuition $7,134). Other = loan fee + miscellaneous + transportation. The page does not name an international rate; out-of-state is assumed.",
+    "src": "coa"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": null,
+    "notes": "No scholarship for international students and no rule on their eligibility was found. Augusta uses the Scholarship Universe portal (need, merit and talent awards); most institutional awards have a Feb 1 deadline and only admitted students can access it.",
+    "src": "sch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5406",
+      "src": "fresh"
+    },
+    "act": {
+      "code": "0836",
+      "src": "fresh"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

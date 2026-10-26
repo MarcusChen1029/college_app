@@ -1,0 +1,127 @@
+{
+  "slug": "unc-pembroke",
+  "name": "University of North Carolina at Pembroke",
+  "short_name": "UNC Pembroke",
+  "state_region": "NC",
+  "city": "Pembroke",
+  "latitude": 34.688313,
+  "longitude": -79.200347,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.uncp.edu",
+  "admissions_url": "https://www.uncp.edu/admissions/",
+  "ipeds_unit_id": 199281,
+  "undergrad_enrollment": 5648,
+  "intl_undergrads": 272,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of North Carolina at Pembroke Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.uncp.edu/_files/2025-2026-cds.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8526,
+    "admits": 8278,
+    "enrolled": 899,
+    "in_state_applicants": 5406,
+    "in_state_admits": 5300,
+    "out_state_applicants": 1430,
+    "out_state_admits": 1337,
+    "intl_applicants": 1690,
+    "intl_admits": 1641,
+    "pct_submit_sat": 4,
+    "pct_submit_act": 14,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 97.44,
+    "gpa_distribution": {
+      "4.0": 19,
+      "3.75-3.99": 11,
+      "3.50-3.74": 14,
+      "3.25-3.49": 15,
+      "3.00-3.24": 15,
+      "2.50-2.99": 23,
+      "2.0-2.49": 3,
+      "1.0-1.99": 0
+    },
+    "notes": "Fall 2025 first-time first-year cohort, CDS C1 residency table (in-state / out-of-state / international: 5,406 / 1,430 / 1,690 applied; 5,300 / 1,337 / 1,641 admitted; 755 / 104 / 40 enrolled). Only 34 enrolled students (4%) submitted SAT and 125 (14%) ACT, so the score percentiles describe a small group. No early decision or early action in the CDS (C21/C22); no waitlist."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      835,
+      915,
+      1068
+    ],
+    "SAT_ERW": [
+      410,
+      455,
+      543
+    ],
+    "SAT_MATH": [
+      403,
+      460,
+      528
+    ],
+    "ACT_COMPOSITE": [
+      14,
+      16,
+      20
+    ],
+    "ACT_ENGLISH": [
+      11,
+      14,
+      18
+    ],
+    "ACT_MATH": [
+      14,
+      16,
+      17
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'required for some' applicants (weighted HS GPA 2.50-2.79 must submit ACT 17 / SAT 930)."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 1000,
+    "tuition_out_of_state_usd": 7000,
+    "tuition_intl_usd": 7000,
+    "required_fees_usd": 2685,
+    "room_board_usd": 12120,
+    "books_usd": 1000,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 66,
+    "intl_avg_award_usd": 6293,
+    "notes": "CDS G1 (2026-27, first-year): in-state tuition $1,000 and out-of-state/nonresident $7,000 (NC Promise tuition); housing $6,094 + food $6,026 = $12,120. CDS H6: only institutional non-need-based aid is available to nonresidents; 66 nonresident undergraduates received it (avg $6,293, total $415,326). The tuition_usd field is the in-state figure."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "umes",
+  "name": "University of Maryland Eastern Shore",
+  "short_name": "UMES",
+  "state_region": "MD",
+  "city": "Princess Anne",
+  "latitude": 38.207386,
+  "longitude": -75.686852,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.umes.edu/",
+  "admissions_url": "https://www.umes.edu/admissions",
+  "ipeds_unit_id": 163338,
+  "undergrad_enrollment": 2476,
+  "intl_undergrads": 61,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=163338",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=163338&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=163338",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 9306,
+    "admits": 8972,
+    "enrolled": 774,
+    "notes": "Baseline from IPEDS fall 2024 (admit rate 96.4%). No Common Data Set was found on umes.edu (site search and its Decision Science & Visualization pages), so no international split, GPA or residency data. UMES is test-optional and College Navigator reports no SAT/ACT percentiles. College Navigator shows about 2% of undergraduates from foreign countries (rounded)."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 9076,
+    "tuition_out_of_state_usd": 20122,
+    "room_board_usd": 11351,
+    "books_usd": 1250,
+    "other_usd": 5000,
+    "total_coa_usd": 37723,
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $9,076, out-of-state $20,122; books $1,250; on-campus food and housing $11,351; other expenses $5,000; total on campus out-of-state $37,723."
+  }
+}

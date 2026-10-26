@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Lawrence Tech - International students (undergraduate) admission: deadlines, English proficiency, how to apply",
+   "url": "https://ltu.edu/admissions/international-students/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Lawrence Tech - First-year students admission (test-optional, rolling)",
+   "url": "https://ltu.edu/admissions/first-year-students/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Lawrence Tech - Scholarships (first-year merit and international merit)",
+   "url": "https://ltu.edu/admissions/financial-aid/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Lawrence Tech - Tuition and fees (estimated annual cost)",
+   "url": "https://ltu.edu/admissions/tuition-and-fees/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: submitted SAT/ACT scores 'will NOT influence the admission decision' and are used only for course placement and potential scholarship upgrades (first-year page). International applicants do not need SAT or ACT scores. Admission uses a weighted recalculated high school GPA; no minimum GPA is published. The CDS test-use checkboxes could not be read from the PDF text.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply through LTU's own application portal. International fee is $50 (non-refundable); the CDS lists $30, the admissions pages say $50. Required: official transcripts (sealed, from the issuing school; credential evaluation by WES preferred, or InCred/other NACES members) and English proof. A 500-word essay is listed as optional; recommendation letters are not mentioned. Admitted F-1 students receive an I-20. No separate portfolio or interview requirement is listed.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-27",
+   "label": "International application, all documents due (fall 2027 entry)",
+   "notes": "LTU posts international dates as 'all documents at least 90 days before the term starts': fall 2026 was May 26, 2026 and the page lists May 27, 2027 for fall 2027; spring 2027 is Oct. 13, 2026. Late applications may not be reviewed for that term. Domestic first-year admission is rolling with about a two-week response and no fixed deadline.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Considered met by U.S. high school graduates with at least two years of standard-level English at a B or higher, British curriculum or IB Diploma graduates, and holders of a bachelor's or master's degree from Australia, Canada, Ireland, New Zealand, the UK or the US. Applicants who need help are referred to ESL coursework at Language Center International. The page does not mention conditional admission or a pathway program with score cutoffs. The Michigan English Test (minimum 56) is also accepted but is not in this tracker's test list.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 60,
+   "notes": "Undergraduate minimum (graduate is 79). No section minimums listed.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "New 1-6 scale; undergraduate minimum (graduate is 4.5).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Undergraduate minimum (graduate is 6.0).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Undergraduate minimum (graduate is 105).",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic; undergraduate minimum (graduate is 60).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "First-year merit awards are $4,000-$16,000 per year (Presidential $16,000 down to Trustee Grant $4,000), tests not required for fall 2026; the page does not say whether international first-years are eligible. It states that all admitted international graduate students are automatically considered for $5,000-$10,000 per year international merit scholarships (3.0 GPA, renewable for up to two years). CDS H6: 127 nonresident undergraduates received institutional aid, average $12,824.",
+  "src": "schol"
+ },
+ "majors": [
+  {
+   "program": "Engineering (College of Engineering)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "The first-year page lists no separate application, portfolio or direct-admission cutoff; it recommends Algebra 1 and 2, trigonometry, pre-calculus, two semesters of chemistry and two of physics."
+  },
+  {
+   "program": "Computer Science",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Same first-year requirements as above; no separate admission cutoff is published."
+  },
+  {
+   "program": "Architecture (College of Architecture and Design)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "The first-year page lists no portfolio requirement; recommended coursework is as above."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "LTU's admissions pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "LTU's admissions pages do not print an ACT code; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "LTU's admissions pages do not print a TOEFL institution code.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

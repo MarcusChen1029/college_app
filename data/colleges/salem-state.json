@@ -1,0 +1,84 @@
+{
+  "slug": "salem-state",
+  "name": "Salem State University",
+  "short_name": null,
+  "state_region": "MA",
+  "city": "Salem",
+  "latitude": 42.503575,
+  "longitude": -70.890234,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.salemstate.edu/",
+  "admissions_url": "https://www.salemstate.edu/admissions",
+  "ipeds_unit_id": 167729,
+  "undergrad_enrollment": 4867,
+  "intl_undergrads": 151,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Salem State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.salemstate.edu/sites/default/files/pdfs/CDS-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator (fall 2024 enrollment, student-faculty ratio, setting)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=167729",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=167729",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7496,
+    "admits": 7188,
+    "enrolled": 777,
+    "pct_submit_sat": 7.46,
+    "gpa_avg": 3.22,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 9.78,
+      "3.75-3.99": 11.33,
+      "3.50-3.74": 13.26,
+      "3.25-3.49": 14.03,
+      "3.00-3.24": 14.41,
+      "2.50-2.99": 24.32,
+      "2.0-2.49": 12.87
+    },
+    "notes": "CDS C1 (fall 2025 entering class): 7,496 first-year applicants, 7,188 admitted, 777 enrolled (about 96% admitted). The CDS PDF text layer is partly scrambled, so the C7 factor checkboxes, C8 policy boxes, C1 residency/international splits, G1 costs and H6 aid boxes could not be read; those are left empty. SAT percentiles are for the 58 enrolled first-years who submitted SAT scores (7.46%); the ACT row is blank. GPA distribution is the 'all enrolled students' column of C11 (rows with 0% omitted); average GPA 3.22 (C12, 100% reporting). B1 shows 33 nonresident first-time first-year students. Enrollment of 4,867 undergraduates is IPEDS fall 2024."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      873,
+      1015,
+      1148
+    ],
+    "SAT_ERW": [
+      453,
+      530,
+      620
+    ],
+    "SAT_MATH": [
+      390,
+      485,
+      558
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "The CDS C8A boxes could not be read from the PDF; Salem State's admissions pages state it is test-optional."
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Angelo State - International Student Admission Requirements (undergraduate)",
+      "url": "https://www.angelo.edu/life-on-campus/explore/center-for-international-studies/apply/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Angelo State - English Language Proficiency (international)",
+      "url": "https://www.angelo.edu/life-on-campus/explore/center-for-international-studies/apply/english-proficiency.php",
+      "accessed": "2026-10-26"
+    },
+    "sat": {
+      "kind": "admissions_site",
+      "title": "Angelo State - SAT or ACT Exam for International Students",
+      "url": "https://www.angelo.edu/life-on-campus/explore/center-for-international-studies/apply/sat-or-act-exam.php",
+      "accessed": "2026-10-26"
+    },
+    "ft": {
+      "kind": "admissions_site",
+      "title": "Angelo State - First-Time Student Admission Requirements",
+      "url": "https://www.angelo.edu/admissions-and-aid/apply/first-time-students/",
+      "accessed": "2026-10-26"
+    },
+    "elli": {
+      "kind": "admissions_site",
+      "title": "Angelo State - English Language Learners' Institute (ELLI) dates and costs",
+      "url": "https://www.angelo.edu/life-on-campus/explore/center-for-international-studies/apply/elli/costs.php",
+      "accessed": "2026-10-26"
+    },
+    "elliapp": {
+      "kind": "admissions_site",
+      "title": "Angelo State - Apply to the English Language Learners' Institute",
+      "url": "https://www.angelo.edu/life-on-campus/explore/center-for-international-studies/apply/elli/apply/",
+      "accessed": "2026-10-26"
+    },
+    "dist": {
+      "kind": "financial_aid_site",
+      "title": "Angelo State - ASU Distinguished Scholarship (first-time students)",
+      "url": "https://www.angelo.edu/admissions-and-aid/paying-for-college/scholarships/asu-distinguished/first-time/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT or SAT scores are optional for international first-year applicants and for domestic applicants (test-optional policy); international freshmen need a qualifying score only to earn an ASU Distinguished Scholarship. The international page states no minimum scores.",
+    "src": "sat"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "fee_waiver": false,
+    "notes": "Apply through ApplyTexas ('own'); $50 non-refundable fee, no fee waivers for international applicants. Also needed: official high school transcript (and any college transcripts), a sponsor-completed Official Financial Statement with original signatures, an official bank statement in U.S. dollars, and English proficiency. Send documents as scanned PDFs to CIS@angelo.edu. After admission the I-20 is issued. TSI assessment (can be taken after arrival), meningitis vaccine and TB screening are required for enrollment, not admission. Domestic first-years are guaranteed admission by class rank/GPA/test (top 25%; next 25% with 2.5 GPA or 17 ACT / 920 SAT; third quarter with 2.7 GPA or 21 / 1060); the international page does not state a GPA or rank rule.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Application (fall 2027): no undergraduate international deadline published",
+      "notes": "The undergraduate international and first-time student pages print no deadline. Angelo State's graduate program tables list international deadlines of Nov. 1 (spring), March 1 (summer) and June 10 (fall) but those are not stated for undergraduates; confirm with cis@angelo.edu / 325-942-2083 and allow time for the I-20 and visa. Exams should be taken at least 8 weeks before the deadline.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-04-01",
+      "label": "ASU Distinguished Scholarship priority: be admitted by April 1 (fall 2027)",
+      "notes": "Students admitted by April 1 are reviewed automatically; later admits are reviewed as funds allow. No separate application. International freshmen must have a qualifying ACT/SAT score. The page shows the 2026-27 award table with no year on the date; treated as April 1, 2027 for fall 2027 entry.",
+      "src": "dist"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Every applicant who is not a native English speaker must show English proficiency. The pages read list no test exemptions; certificates from ELS Educational Services (112) or a CEA-accredited English program are accepted with official transcripts and certification. Conditional admission: the ELLI (English Language Learners' Institute) application offers an 'English Only' or 'Conditional Admission into Angelo State University' option; ELLI is a non-credit 7-week-session program on campus ($3,108 tuition and fees per 7-week session, $5,176 per 14 weeks, plus a $50 application fee). The conditions for moving into a degree program are not stated on the pages read.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "notes": "Listed as 'iTOEFL' (internet-based). Paper-based TOEFL 550 is also listed. The page does not give the new 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "notes": "The table lists 'Pearsons' 60, read here as Pearson PTE Academic.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": null,
+      "notes": "Table lists Cambridge B2, CAE C1 and CPE C2 as passing levels; no numeric score is given.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Every admitted student is automatically considered for the ASU Distinguished Scholarship (2026-27 table): $2,000/yr (ACT 21, SAT 1060-1090, top 40% or 3.25 GPA) up to $10,000/yr (ACT 34-36 or SAT 1490-1600 with 3.5 GPA), renewable over four years; international freshmen must have a qualifying ACT/SAT score. A scholarship of $1,000 or more makes the student eligible for in-state tuition rates (international SAT/ACT page). Angelo State says 60% of undergraduates receive a Distinguished Scholarship. CDS H6: 13 nonresidents received institutional aid, average $8,347.",
+    "src": "dist"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6644",
+      "note": "Same institution code as TOEFL; send official scores to the Center for International Studies.",
+      "src": "sat"
+    },
+    "act": {
+      "code": "4164",
+      "note": "Angelo State ACT code.",
+      "src": "sat"
+    },
+    "toefl": {
+      "code": "6644",
+      "note": "TOEFL and SAT share code 6644.",
+      "src": "sat"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "central-oklahoma",
+  "name": "University of Central Oklahoma",
+  "short_name": "UCO",
+  "state_region": "OK",
+  "city": "Edmond",
+  "latitude": 35.6552,
+  "longitude": -97.471508,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://www.uco.edu",
+  "admissions_url": "https://www.uco.edu/admissions/",
+  "ipeds_unit_id": 206941,
+  "undergrad_enrollment": 10777,
+  "intl_undergrads": 314,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=206941",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=206941",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 4945,
+    "admits": 4043,
+    "enrolled": 1889,
+    "pct_submit_sat": 0,
+    "pct_submit_act": 89,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 4,945 applicants, 4,043 admitted, 1,889 enrolled. College Navigator fall 2024: 5,855 applicants, 78% admitted. IPEDS reports no nonresident-alien applicant counts for UCO, so international admit figures are null; nonresidents are about 3% of undergraduates (fall 2024, rounded). UCO reports ACT only (no SAT percentiles). Undergraduate enrollment 10,777 and 18:1 ratio are fall 2024. No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 8818,
+    "tuition_out_of_state_usd": 19704,
+    "books_usd": 1600,
+    "room_board_usd": 9700,
+    "other_usd": 8400,
+    "total_coa_usd": 39404,
+    "notes": "College Navigator 2024-25: tuition and fees in-state $8,818, out-of-state $19,704; on-campus food and housing $9,700, other $8,400; total_coa_usd is the out-of-state on-campus total."
+  }
+}

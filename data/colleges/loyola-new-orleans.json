@@ -1,0 +1,126 @@
+{
+  "slug": "loyola-new-orleans",
+  "name": "Loyola University New Orleans",
+  "short_name": "Loyola New Orleans",
+  "state_region": "LA",
+  "city": "New Orleans",
+  "latitude": 29.936141,
+  "longitude": -90.120417,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.loyno.edu",
+  "admissions_url": "https://www.loyno.edu/admissions",
+  "ipeds_unit_id": 159656,
+  "undergrad_enrollment": 2871,
+  "intl_undergrads": 135,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Loyola University New Orleans Common Data Set 2025-2026 (PDF)",
+      "url": "https://academicaffairs.loyno.edu/sites/default/files/cds-pdf-2025-2026_2026.04.16.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Loyola University New Orleans (IPEDS, fall 2024 admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159656",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6080,
+    "admits": 5507,
+    "enrolled": 752,
+    "pct_submit_sat": 6,
+    "pct_submit_act": 40,
+    "gpa_avg": 3.54,
+    "pct_reporting_gpa": 99.47,
+    "gpa_distribution": {
+      "4.0": 20.21,
+      "3.75-3.99": 15.03,
+      "3.50-3.74": 17.82,
+      "3.25-3.49": 16.36,
+      "3.00-3.24": 13.7,
+      "2.50-2.99": 15.69,
+      "2.0-2.49": 0.66
+    },
+    "notes": "CDS fall 2025 entering class (C1): 6,080 applicants, 5,507 admitted (90.6%), 752 enrolled. The CDS men and women rows sum to 6,066 applicants and 5,495 admits; the form's total cells read 6,080 and 5,507, which is what is recorded. The CDS does not report an in-state, out-of-state or international breakdown of applicants (C1 residency table blank), so intl_applicants/intl_admits are left null. College Navigator shows 5,140 applicants / 93% admitted for fall 2024. C9: 46 enrollees (6%) submitted SAT and 298 (40%) ACT; SAT composite 25th/50th/75th = 1092.5/1165/1285. C11/C12: 99.47% reported a high school GPA (average 3.54); distribution percentages are shares of all first-years, so they sum to 99.47. Undergraduate enrollment 2,871 and nonresident 135 are the B1/B2 'Total Undergraduates' figures (College Navigator fall 2024: 3,007). Student-faculty ratio 12:1 (2,967 students / 252 faculty)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1092.5,
+      1165,
+      1285
+    ],
+    "SAT_ERW": [
+      560,
+      615,
+      660
+    ],
+    "SAT_MATH": [
+      520,
+      570,
+      617.5
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      27
+    ],
+    "ACT_MATH": [
+      19,
+      20,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "C",
+    "extracurriculars": "I",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'Test Optional; Placement is determined by voluntarily submitted official SAT/ACT scores: AP, IB, and CLEP exams; or dual-enrollment or transfer'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 51008,
+    "required_fees_usd": 2400,
+    "room_board_usd": 16180,
+    "books_usd": 1394,
+    "other_usd": 3934,
+    "total_coa_usd": 74916,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 109,
+    "intl_avg_award_usd": 32309,
+    "notes": "CDS G1/G5 (2026-27, first-year, residential): tuition $51,008; required fees $2,400; housing $9,680 + meals $6,500 = $16,180; books $1,394; transportation $1,072 + other $2,862 = $3,934. total_coa_usd is the sum of those components (not a printed total). CDS H6: institutional need-based and non-need-based aid are both marked available to nonresidents; 109 nonresidents received it, average $32,309, total $3,521,657 (the CDS also counts 109 degree-seeking nonresident undergraduates)."
+  }
+}

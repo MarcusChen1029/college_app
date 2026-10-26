@@ -1,0 +1,90 @@
+{
+  "slug": "winthrop",
+  "name": "Winthrop University",
+  "short_name": "Winthrop",
+  "state_region": "SC",
+  "city": "Rock Hill",
+  "latitude": 34.941515,
+  "longitude": -81.031404,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.winthrop.edu",
+  "admissions_url": "https://www.winthrop.edu/admissions/",
+  "ipeds_unit_id": 218964,
+  "undergrad_enrollment": 4289,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Winthrop University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.winthrop.edu/uploadedFiles/institutional-effectiveness/cds202526.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=218964",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7356,
+    "admits": 6018,
+    "enrolled": 1014,
+    "in_state_applicants": 6171,
+    "in_state_admits": 5110,
+    "out_state_applicants": 1018,
+    "out_state_admits": 851,
+    "intl_applicants": 167,
+    "intl_admits": 57,
+    "pct_submit_sat": 28,
+    "pct_submit_act": 11,
+    "notes": "CDS C1 residency table (fall 2025): applicants 6,171 in-state / 1,018 out-of-state / 167 international (7,356 total); admits 5,110 / 851 / 57 (6,018); enrolled 885 / 119 / 10 (1,014). International applicants were admitted at a much lower rate than the total (57 of 167). The CDS sex-split rows of C1 show only 6,171 applicants and 5,110 admits, so the residency table totals are used. Undergraduate enrollment 4,289 is the CDS B1 'Total all undergraduates' (fall 2025); 14:1 ratio is CDS I-2. Winthrop reports a high school GPA average of 3.99 (C12) and a GPA distribution whose alignment could not be read reliably, so GPA fields are omitted. SAT/ACT percentiles are for enrolled first-year students (C9). The CDS checkboxes in C7 contradict C8A (test scores marked very important yet not used), so the factors are omitted."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1020,
+      1120,
+      1210
+    ],
+    "SAT_ERW": [
+      535,
+      590,
+      640
+    ],
+    "SAT_MATH": [
+      480,
+      530,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'We are test-optional for 2026-27 academic year. Decision has not been made for Fall 2027 admits.' C8A also marks SAT/ACT as not considered for admission."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 11130,
+    "tuition_out_of_state_usd": 25170,
+    "required_fees_usd": 3550,
+    "room_board_usd": 14112,
+    "books_usd": 1200,
+    "intl_need_aid_awarded": 61,
+    "intl_avg_award_usd": 24492,
+    "notes": "CDS G1 (first-year, 2025-26): in-state tuition $11,130, out-of-state $25,170, required fees $3,550, on-campus food and housing $14,112; G5 books $1,200, transportation $2,702 and other expenses $4,168 for residents. H6: 61 undergraduate degree-seeking nonresidents received institutional aid (avg $24,492; total $1,494,033); the need-based versus non-need-based checkbox could not be read."
+  }
+}

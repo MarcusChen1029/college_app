@@ -1,0 +1,135 @@
+{
+  "slug": "penn-state-harrisburg",
+  "name": "Penn State Harrisburg",
+  "short_name": null,
+  "state_region": "PA",
+  "city": "Middletown",
+  "latitude": 40.204253,
+  "longitude": -76.741216,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://harrisburg.psu.edu/",
+  "admissions_url": "https://harrisburg.psu.edu/admissions",
+  "ipeds_unit_id": 214713,
+  "undergrad_enrollment": 4041,
+  "intl_undergrads": 500,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Penn State Harrisburg Common Data Set 2025-2026 (PDF)",
+      "url": "https://opair.psu.edu/files/2026/09/CDS_2025_2026_Harrisburg_v3.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Penn State Harrisburg (fall 2024 admissions summary)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214713",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 14072,
+    "admits": 13607,
+    "enrolled": 1152,
+    "in_state_applicants": 2026,
+    "in_state_admits": 1888,
+    "out_state_applicants": 9787,
+    "out_state_admits": 9531,
+    "intl_applicants": 2259,
+    "intl_admits": 2188,
+    "pct_submit_sat": 22.66,
+    "pct_submit_act": 2.0,
+    "gpa_avg": 3.29,
+    "pct_reporting_gpa": 94,
+    "gpa_distribution": {
+      "4.0": 3,
+      "3.75-3.99": 18,
+      "3.50-3.74": 17,
+      "3.25-3.49": 17,
+      "3.00-3.24": 18,
+      "2.50-2.99": 20,
+      "2.0-2.49": 6,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1/C9/C11/C12, Penn State Harrisburg campus only, fall 2025 entering class (residency split as printed in C1). No early decision; early action closes 11/01 with notification 12/24; no application closing date. SAT/ACT optional (considered if submitted); score percentiles are for the 261 enrolled students who submitted SAT (23 submitted ACT). GPA distribution is the 'all enrolled students' column of C11."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1160,
+      1250,
+      1335
+    ],
+    "SAT_ERW": [
+      580,
+      630,
+      670
+    ],
+    "SAT_MATH": [
+      570,
+      620,
+      680
+    ],
+    "ACT_COMPOSITE": [
+      26,
+      28,
+      30
+    ],
+    "ACT_ENGLISH": [
+      24,
+      28,
+      31
+    ],
+    "ACT_MATH": [
+      25,
+      27,
+      33
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 15388,
+    "tuition_out_of_state_usd": 26904,
+    "tuition_intl_usd": 26904,
+    "required_fees_usd": 630,
+    "room_board_usd": 17336,
+    "books_usd": 1290,
+    "other_usd": 5356,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 0,
+    "intl_avg_award_usd": 0,
+    "notes": "CDS G1/G5 first-year 2026-27, Harrisburg campus: tuition in-state $15,388, out-of-state/nonresident $26,904 (international students pay the nonresident rate); required fees $630; on-campus food and housing $17,336; books $1,290; other_usd = transportation $2,244 + other expenses $3,112. Tuition varies by year of study and program (G3/G4). CDS H6: institutional scholarship and grant aid is not available to nonresident undergraduates."
+  }
+}

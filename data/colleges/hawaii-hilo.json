@@ -1,0 +1,79 @@
+{
+  "slug": "hawaii-hilo",
+  "name": "University of Hawaii at Hilo",
+  "short_name": "UH Hilo",
+  "state_region": "HI",
+  "city": "Hilo",
+  "latitude": 19.701189,
+  "longitude": -155.080847,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://hilo.hawaii.edu/",
+  "admissions_url": "https://hilo.hawaii.edu/admissions/",
+  "ipeds_unit_id": 141565,
+  "undergrad_enrollment": 2292,
+  "intl_undergrads": 105,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141565",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - University of Hawaii at Hilo (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141565",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=141565",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 2562,
+    "admits": 2300,
+    "enrolled": 367,
+    "pct_submit_sat": 23,
+    "pct_submit_act": 41,
+    "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). UH Hilo does not publish a Common Data Set that could be found (its Institutional Research pages list none), so GPA, international and residency splits are not added; the international admit rate is unknown. College Navigator for fall 2024 shows 2,301 applicants, 61% admitted and 25% of admits enrolled (admit count not given as an exact number), SAT EBRW 490/610 and Math 455/565, ACT composite 15/22 (25th/75th), with 15% SAT and 41% ACT submitters. Undergraduate enrollment 2,292 and student-faculty ratio 11:1 are from College Navigator (fall 2024)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      478,
+      535,
+      570
+    ],
+    "SAT_MATH": [
+      420,
+      500,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      19,
+      22
+    ],
+    "ACT_ENGLISH": [
+      14,
+      18,
+      21
+    ],
+    "ACT_MATH": [
+      15,
+      17,
+      20
+    ]
+  }
+}

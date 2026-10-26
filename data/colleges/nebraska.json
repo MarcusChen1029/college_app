@@ -1,0 +1,126 @@
+{
+  "slug": "nebraska",
+  "name": "University of Nebraska-Lincoln",
+  "short_name": "Nebraska",
+  "state_region": "NE",
+  "city": "Lincoln",
+  "latitude": 40.817598,
+  "longitude": -96.700508,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unl.edu",
+  "admissions_url": "https://admissions.unl.edu",
+  "ipeds_unit_id": 181464,
+  "undergrad_enrollment": 19787,
+  "intl_undergrads": 457,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Nebraska-Lincoln Common Data Set 2025-2026 (web edition, sections A-J)",
+      "url": "https://iea.unl.edu/common-data-set-2025-2026/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 18648,
+    "admits": 16372,
+    "enrolled": 4734,
+    "in_state_applicants": 9229,
+    "in_state_admits": 8169,
+    "out_state_applicants": 8413,
+    "out_state_admits": 7673,
+    "intl_applicants": 1006,
+    "intl_admits": 530,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 81,
+    "gpa_avg": 3.54,
+    "pct_reporting_gpa": 91,
+    "gpa_distribution": {
+      "4.0": 8,
+      "3.75-3.99": 24,
+      "3.50-3.74": 21,
+      "3.25-3.49": 30,
+      "3.00-3.24": 12,
+      "2.50-2.99": 4,
+      "2.0-2.49": 1
+    },
+    "notes": "CDS C1 residency split (in-state 9,229 / out-of-state 8,413 / international 1,006 applicants; international admit rate computed 530/1,006 = 52.7%, 64 enrolled), so international applicants are admitted less often than the overall 87.8%. Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (19,787; nonresident 457). No early decision or early action; no waitlist. Application closing date May 1 and priority date Nov. 1 (C14). GPA distribution is the 'all enrolled students' column; the CDS reports whole percentages."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1070,
+      1190,
+      1310
+    ],
+    "SAT_ERW": [
+      540,
+      600,
+      670
+    ],
+    "SAT_MATH": [
+      520,
+      590,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      20,
+      24,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "I",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but consider if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9090,
+    "tuition_out_of_state_usd": 29160,
+    "tuition_intl_usd": 29160,
+    "required_fees_usd": 2382,
+    "room_board_usd": 13950,
+    "books_usd": 1128,
+    "other_usd": 2388,
+    "intl_need_aid_awarded": 120,
+    "intl_avg_award_usd": 10391,
+    "notes": "CDS G1 first-year rates for 2026-27; the 'Non-resident (International)' tuition line is used. H6 (final 2024-25): 120 degree-seeking nonresidents received institutional aid, averaging $10,391 ($1,246,965 total); the web edition does not show which aid types are ticked. Tuition varies by program (G4: 43% pay more than the G1 figure)."
+  }
+}

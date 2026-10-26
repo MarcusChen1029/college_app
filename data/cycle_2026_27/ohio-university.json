@@ -1,0 +1,194 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Ohio University - How to apply as an international first-year student (fee, English proficiency, test policy)",
+   "url": "https://www.ohio.edu/admissions/international/apply",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Ohio University - International dates and deadlines",
+   "url": "https://www.ohio.edu/admissions/international/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "fydates": {
+   "kind": "admissions_site",
+   "title": "Ohio University - First-year dates and deadlines",
+   "url": "https://www.ohio.edu/admissions/apply/dates-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "to": {
+   "kind": "admissions_site",
+   "title": "Ohio University - Test-optional admission pathway",
+   "url": "https://www.ohio.edu/admissions/apply/test-optional",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "admissions_site",
+   "title": "Ohio University - International costs and scholarships (2026-27, Athens)",
+   "url": "https://www.ohio.edu/admissions/international/costs-aid",
+   "accessed": "2026-10-26"
+  },
+  "excel": {
+   "kind": "financial_aid_site",
+   "title": "Ohio University - OHIO Excellence Awards (fall 2027 first-year)",
+   "url": "https://www.ohio.edu/admissions/tuition/ohio-excellence-awards",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Permanent test-optional pathway for Athens first-year applicants; international applications 'do not require submission of ACT or SAT'. Scores may be submitted (SAT code 1593, ACT code 3314) and count as one factor in holistic review; test-optional applicants remain eligible for merit scholarships. SAT 1060 (EBRW 540) or ACT 21 can also serve as English-proficiency evidence.",
+  "src": "to"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 75,
+  "notes": "Apply via the Common App or OHIO's own application. International application fee is $75. Records from every secondary school attended (certified English translations if needed); admission requires above-average grades, generally at least 6 Cambridge IGCSE/O-level passes at C or higher or an IB average of about 5 of 7. The early-action application also serves as the merit-scholarship application.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Fall early action (international, fall 2027 entry)",
+   "notes": "No year is printed on the page; taken as the current cycle (the scholarship page names Nov. 15, 2026 for fall 2027 entrants). Early action gives priority for direct entry to academic programs and merit scholarships. Merit scholarships are for fall starters only.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-02-01",
+   "label": "Fall rolling admission deadline (international)",
+   "notes": "No year is printed; taken as the current cycle. International spring rolling deadline is Nov. 1 (domestic first-year spring is Dec. 1).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt unless proof is requested: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Nigeria, UK, Zimbabwe) and students with three years of higher secondary schooling in an English-speaking system including three years of non-ESL college-prep English at B or better. Tests must be no more than one year old. Applicants who submit no score or fall short can be admitted to the Ohio Program of Intensive English (OPIE) and move to academic study after reaching the required level; Global Gateway/conditional admission is not mentioned.",
+  "src": "apply"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 72,
+   "subs": {
+    "writing": 17
+   },
+   "notes": "Pre-2026 scoring; writing subscore at least 17. TOEFL paper edition: 520 with composition 5 or higher.",
+   "src": "apply"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "writing": 4.0
+   },
+   "notes": "New scoring; writing subscore at least 4.",
+   "src": "apply"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "No subscore below 5.5.",
+   "src": "apply"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "apply"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "PTE Academic.",
+   "src": "apply"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "src": "apply"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 26792,
+  "room_board_usd": 14536,
+  "other_usd": 5498,
+  "total_coa_usd": 46826,
+  "notes": "OHIO's international Athens estimate for one academic year (2026-27): tuition and fees $26,792 (not split), lodging (Classic Double) $8,954 plus meals (Traditional 14) $5,582, personal expenses $2,259 and health insurance $3,239 (other = $5,498); total $46,826. A separate books figure is not listed. The OHIO Guarantee fixes tuition, room, meal plan and fees for four years for nonresident students.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International first-years admitted directly to an academic program (not English/pathway programs) are considered for merit awards when starting in fall; merit is based on recalculated 4.0 GPA, test scores are used only if they raise eligibility, and the early-action application (Nov. 15) is the scholarship application. Amounts are not published for international students (the OHIO Trustee Award for nonresidents is up to $7,000 per year, but the page does not say whether international students are eligible). No need-based aid policy for international students is described.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1593",
+   "note": "SAT school code; scores must come directly from the College Board.",
+   "src": "apply"
+  },
+  "act": {
+   "code": "3314",
+   "note": "ACT school code; scores must come directly from ACT.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international admissions pages do not print a TOEFL institution code.",
+   "src": "apply"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "apply"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "apply"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "apply"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "general": "Editorial judgment: an 85% admit rate (fall 2024) with SAT section medians of 600 EBRW / 590 Math and ACT median 25 among the minority who submit scores place it just above the open-access D tier."
+ }
+}

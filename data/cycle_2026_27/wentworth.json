@@ -1,0 +1,230 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Wentworth - How to Apply for Undergraduate Admissions (deadlines, test policy)",
+   "url": "https://wit.edu/admissions/requirements",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Wentworth - First Year Students (when to apply)",
+   "url": "https://wit.edu/admissions/undergraduate/first-year",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Wentworth - Undergraduate International Admissions",
+   "url": "https://wit.edu/admissions/undergraduate/international",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Wentworth - English Proficiency Requirement",
+   "url": "https://wit.edu/admissions/international/english-proficiency-requirement",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Wentworth - Scholarships (Presidential Merit Scholarship)",
+   "url": "https://wit.edu/admissions/financial-aid/merit-scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional since 2018. International students need not submit SAT/ACT but must prove English proficiency. Merit scholarship eligibility does not depend on submitting scores. Home-schooled applicants and applicants from schools with narrative assessments instead of 4.0 grades are excluded from the test-optional policy.",
+  "src": "dates"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Common Application or the Wentworth application; $50 fee (waivable for financial need per CDS). Applicants apply to a specific major. Official transcript sent directly from the school (Naviance/Parchment accepted); up to two recommendation letters are optional; no portfolio required for first-year applicants, including architecture and design majors. Prerequisites: four years of English, Algebra II and one lab science (CDS: 9 required units). Optional one-on-one interview for international applicants. A bank letter showing funds of USD $71,382 is required for the I-20, not for admission.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ED",
+   "due": "2026-11-01",
+   "label": "Early Decision, fall 2027 entry",
+   "notes": "Notification by early December; enrollment deposit by May 1. The 2025-26 CDS answered No to an early decision plan, but the current admissions pages list this round. Pages print no year; taken as fall 2027 entry.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action round 1",
+   "notes": "Notified by mid-December. Early application scholarship ($2,000) is awarded to students applying by ED (Nov 1), EA1 (Nov 15) or EA2 (Jan 1). No year is printed; taken as fall 2027 entry.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2027-01-01",
+   "label": "Early Action round 2",
+   "notes": "Notified by mid-February.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-02-01",
+   "label": "Regular Decision",
+   "notes": "Notified by April 1; enroll by May 1. The international undergraduate page lists no separate international deadlines, so the first-year dates apply.",
+   "src": "dates"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2027-02-01",
+   "label": "International need-based aid application: ED, EA1, EA2 applicants",
+   "notes": "Must be submitted before the admission decision. Limited International Grant for admitted international students.",
+   "src": "intl"
+  },
+  {
+   "kind": "financial_aid",
+   "due": "2027-03-01",
+   "label": "International need-based aid application: Regular Decision applicants",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: secondary education in a listed English-speaking country (or a bachelor's degree from one); 3+ years of college-prep English at an English-language high school; C or higher in English I and II at a U.S. college; SAT EBRW 525+ (code 3958) or ACT reading 18 and English 20 (code 1928). Intensive English alternative: completion of listed ESL levels (Approach ISC B2, ASC English Level 5, BU CELOP, EF, ELS, FLS) with a letter from the center director or teacher. TOEFL, IELTS and DET scores are valid for two years.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "subs": {
+    "each_section": 17
+   },
+   "notes": "Tests taken on or before Jan 20, 2026; no subsection below 17. ETS code 3958.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "subs": {
+    "each_section": 4
+   },
+   "notes": "Tests taken on or after Jan 21, 2026; page prints 4 with no subsection lower than 4 without naming the scale (it is the 1-6 scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "IELTS Academic; no subscore below 5.5.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "PTE Academic or PTE Express.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are considered for merit scholarships based on secondary-school results; the Presidential Merit Scholarship (tuition, renewable 8 semesters) averages $20,000-$25,000 for Wentworth students generally (page not specific to international students). Starting with fall 2026 applicants a limited number of need-based International Grants are offered; the need-based aid application must be filed before the admission decision. CDS H6: 158 nonresidents received institutional aid, avg $9,677.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Engineering (aerospace, biomedical, civil, computer, electrical, mechanical and others)",
+   "category": "engineering",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applicants apply to a specific major. Precalculus is not required, but some programs (applied mathematics, computer science, cybersecurity, data science, engineering) may require a summer course to complete the math sequence."
+  },
+  {
+   "program": "Computer Science, Cybersecurity, Data Science and Applied AI",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applicants apply to a specific major; some may require a summer math course (see engineering note)."
+  },
+  {
+   "program": "Architecture, Interior Design and Industrial Design",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "No portfolio is required for first-year applicants (required only for transfers seeking design/drawing credit)."
+  },
+  {
+   "program": "Business Management and Project/Construction Management",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Applicants apply to a specific major; no extra admission requirements stated."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "3958",
+   "note": "Wentworth school code (also its TOEFL code).",
+   "src": "eng"
+  },
+  "act": {
+   "code": "1928",
+   "note": "Wentworth ACT code.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "3958",
+   "note": "ETS school code; send scores directly via ETS.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; official results must be sent to the school.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "C",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "C"
+ },
+ "tier_notes": {
+  "general": "Editorial judgment: an 88% admit rate (76% for international applicants) and a 1300 SAT median among the 22% who submit place Wentworth just above the open-access D tier.",
+  "engineering": "Editorial estimate: a technical institute in Boston with ABET-accredited engineering programs; no ranking cited, placed in the 41-100 band for undergraduate engineering.",
+  "arts_design": "Editorial estimate: accredited architecture, interior and industrial design programs; no ranking cited."
+ }
+}

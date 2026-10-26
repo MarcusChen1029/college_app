@@ -1,0 +1,85 @@
+{
+  "slug": "boise-state",
+  "name": "Boise State University",
+  "short_name": "Boise State",
+  "state_region": "ID",
+  "city": "Boise",
+  "latitude": 43.604284,
+  "longitude": -116.203301,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.boisestate.edu",
+  "admissions_url": "https://www.boisestate.edu/admissions/",
+  "ipeds_unit_id": 142115,
+  "undergrad_enrollment": 25308,
+  "intl_undergrads": 155,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Boise State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.boisestate.edu/ie/wp-content/uploads/sites/501/2026/04/Boise-State-University-CDS_2025-2026_PDF.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds24": {
+      "kind": "cds",
+      "title": "Boise State University Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.boisestate.edu/ie/wp-content/uploads/sites/501/2025/07/Boise-State-University_CDS_2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Boise State University (fall 2024 admissions summary)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=142115",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 17582,
+    "admits": 14749,
+    "enrolled": 3881,
+    "in_state_applicants": 9980,
+    "in_state_admits": 7920,
+    "out_state_applicants": 7535,
+    "out_state_admits": 6778,
+    "intl_applicants": 67,
+    "intl_admits": 51,
+    "notes": "CDS C1 (fall 2025 first-time first-year): 17,582 applied, 14,749 admitted (83.9%), 3,881 enrolled; residency table in-state 9,980/7,920, out-of-state 7,535/6,778, international 67/51 (76% admitted). Only about 67 international first-year applicants per year, so the international sample is small. In the 2025-26 CDS file the C7 factor boxes, C8 policy boxes, C9-C12 test-score/GPA tables and the G tuition table are blank in the text layer, so test scores, GPA and factors are not taken from it. Undergraduate enrollment is B1 'Total All Undergraduates' (25,308 incl. part-time and non-degree); 155 nonresident undergraduates is the B2 total column. No early decision/action; student-to-faculty ratio 20:1 (CDS I-2). Boise State is not test-blind for internationals (see test policy) but domestic admission ignores SAT/ACT."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2024-2025",
+      "source": "cds24",
+      "applicants": 16082,
+      "admits": 14025,
+      "enrolled": 3379,
+      "in_state_applicants": 9420,
+      "in_state_admits": 7957,
+      "out_state_applicants": 6588,
+      "out_state_admits": 6012,
+      "intl_applicants": 74,
+      "intl_admits": 56,
+      "pct_submit_sat": 49,
+      "pct_submit_act": 5,
+      "gpa_avg": 3.44,
+      "pct_reporting_gpa": 99.8,
+      "gpa_distribution": {
+        "4.0": 5.0,
+        "3.75-3.99": 26.6,
+        "3.50-3.74": 21.7,
+        "3.25-3.49": 17.2,
+        "3.00-3.24": 15.2,
+        "2.50-2.99": 12.9,
+        "2.0-2.49": 0.7,
+        "1.0-1.99": 0.0
+      },
+      "notes": "Fall 2024 first-year class from the 2024-25 CDS (the latest Boise State CDS whose GPA table is readable). C11 also lists 0.8% below 1.0 as printed, so the bands sum to about 100%. Residency: international 74 applied, 56 admitted, 13 enrolled. C9: 49% of enrollees submitted SAT (1,646) and 5% ACT (168); among submitters SAT composite 25th/75th percentile 960/1180, SAT ERW 490/610, ACT composite 20/26 (50th percentile and SAT math were not readable, so no score row is stored)."
+    }
+  ]
+}

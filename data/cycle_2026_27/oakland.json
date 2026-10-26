@@ -1,0 +1,173 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Oakland University - International undergraduate admissions (deadlines, English proficiency, costs)",
+   "url": "https://www.oakland.edu/futurestudents/apply/international/",
+   "accessed": "2026-10-26"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "Oakland University - First-year students (criteria, test-optional policy, codes)",
+   "url": "https://www.oakland.edu/futurestudents/apply/freshmen/",
+   "accessed": "2026-10-26"
+  },
+  "vb": {
+   "kind": "admissions_site",
+   "title": "Oakland University - 2026 International Viewbook (English proficiency table, GAPP pathway)",
+   "url": "https://www.oakland.edu/media/Oakland/Assets/ISSO/files/ADM-29210_IntlViewbook_FINAL_ADA-(1).pdf",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Oakland University - Scholarships, Tuition and Financial Aid",
+   "url": "https://www.oakland.edu/futurestudents/scholarships-cost-aid/",
+   "accessed": "2026-10-26"
+  },
+  "nra": {
+   "kind": "financial_aid_site",
+   "title": "Oakland University - Non-Resident Awards",
+   "url": "https://www.oakland.edu/futurestudents/scholarships-cost-aid/non-resident-awards/",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "Oakland University - Tuition and Cost of Attendance 2026-2027",
+   "url": "https://www.oakland.edu/financialaid/costs/tuition-rates/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "OU has permanently removed the standardized-test requirement for first-year admission (applicants need a 2.5 minimum GPA). Scores may be sent to support scholarship eligibility and course placement. Admission is based on cumulative GPA of 3.2+ (2.5 to 3.19 may be admitted after review of preparation), course quality and grade trend.",
+  "src": "first"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Own online application; no essay or recommendation letters required (essay optional). International applicants submit transcripts (literal English translation if not in English; unofficial copies accepted for first-year), English test scores and financial documents. Application fee: CDS C13 answers No; the admissions pages read do not mention a fee. Direct admission to Nursing (BSN) applies by Oct 31 of senior year; music, theatre and dance majors require an audition.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International application deadline, fall 2027",
+   "notes": "The page says to submit the completed application by July 1 for fall (Nov 1 winter, Mar 1 summer); no year is printed, so it is taken as fall 2027. Admission is rolling with decisions beginning July 1 per the CDS. Completed applications can be deferred up to one year.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for international applicants, other visa holders, permanent residents and applicants whose first language is not English, unless they have one year of study and a diploma from a U.S. high school; a full high school diploma earned at a non-U.S. school taught entirely in English; 24 transferable credits (excluding ESL) from a U.S. college; a degree from a regionally accredited U.S. college; or completion of ELS Level 112. Some programs require higher English levels. Oakland also has the Global Achievement Pathways Program (GAPP), which admits students to a degree with lower English scores while they take ESL classes for one or two semesters (viewbook: for example TOEFL iBT 69-78 one semester, 62-68 two semesters; Duolingo 95 one semester, 90 two; PTE 48-52 one semester, 44-47 two); lower scores go to the ESL Institute first.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "For exams before Jan. 20, 2026 (0-120 scale). GAPP: 69-78 needs one semester of ESL alongside courses, 62-68 two semesters (viewbook).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "For exams on or after Jan. 21, 2026 (1-6 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "IELTS Indicator copies are also accepted for the application. Viewbook GAPP route starts at IELTS 6.0 (minimum section 5.5) with one semester of ESL.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "GAPP: 95 one semester of ESL, 90 two semesters (viewbook).",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "PTE Academic. GAPP: 48-52 one semester of ESL, 44-47 two semesters (viewbook).",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 15426,
+  "tuition_out_of_state_usd": 19788,
+  "tuition_intl_usd": 19788,
+  "required_fees_usd": 0,
+  "room_board_usd": 11454,
+  "other_usd": 2292,
+  "total_coa_usd": 33534,
+  "notes": "International page estimate (fall and winter, 12-14 credits per semester): out-of-state tuition $19,788, living expenses $11,454 (entered under room and board), medical insurance $2,292 (under other), total $33,534; budget about $4,000 more for books and personal costs. $15,426 is the in-state-equivalent tuition shown for Canadian/Mexican students with the Non-Resident Award. The page does not date this table. 2026-27 per-credit rates: non-resident lower division $795.75 (upper $853.25); Michigan lower division $574.50. OU charges no mandatory fees.",
+  "src": "intl"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "OU's scholarship page says international students are not eligible for OU scholarships except where noted; the Non-Resident Award (in-state tuition rate) goes to U.S. out-of-state students and to citizens and permanent residents of Canada and Mexico with a 2.5+ GPA, who must live on campus two years. The international viewbook nevertheless says competitive scholarships for international students exist and CDS H6 shows 127 nonresidents received institutional non-need-based aid (average $5,851), but no international award amounts are published.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "1497",
+   "note": "Oakland University SAT school code.",
+   "src": "first"
+  },
+  "act": {
+   "code": "2033",
+   "note": "Oakland University ACT school code.",
+   "src": "first"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The pages read do not print a TOEFL institution code; look it up in the ETS code search.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

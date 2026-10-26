@@ -1,0 +1,169 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Frostburg State - International Students (deadlines, English proficiency)",
+      "url": "https://www.frostburg.edu/admissions-and-cost/undergraduate/apply/international-students.php",
+      "accessed": "2026-10-26"
+    },
+    "proc": {
+      "kind": "admissions_site",
+      "title": "Frostburg State - International student application procedures",
+      "url": "https://www.frostburg.edu/student-life/campus-services/center-for-international-ed/international-students/application-procedures.php",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Frostburg State - How to apply (fee, early action, test-optional)",
+      "url": "https://www.frostburg.edu/admissions-and-cost/undergraduate/apply/index.php",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Frostburg State - Admission requirements (test-optional policy, school codes)",
+      "url": "https://www.frostburg.edu/admissions-and-cost/undergraduate/apply/admission-requirements.php",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Frostburg State - Dates and deadlines",
+      "url": "https://www.frostburg.edu/admissions-and-cost/undergraduate/apply/dates-and-deadlines.php",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "financial_aid_site",
+      "title": "Frostburg State - Tuition & fees (rates for Fall 2026-Spring 2027)",
+      "url": "https://www.frostburg.edu/admissions-and-cost/tuition-and-fees/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Frostburg State - Scholarships (admissions merit awards, foundation scholarships)",
+      "url": "https://www.frostburg.edu/admissions-and-cost/financial-aid/types-of-aid/scholarships.php",
+      "accessed": "2026-10-26"
+    },
+    "ta": {
+      "kind": "financial_aid_site",
+      "title": "Frostburg State - Tuition and aid (merit calculator excludes international students)",
+      "url": "https://www.frostburg.edu/admissions-and-cost/undergraduate/tuition-and-aid.php",
+      "accessed": "2026-10-26"
+    },
+    "rowe": {
+      "kind": "financial_aid_site",
+      "title": "Frostburg State - Harold R. Rowe International Student Scholarships",
+      "url": "https://www.frostburg.edu/student-life/campus-services/center-for-international-ed/international-students/financial-issues/rowe-scholarship.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Frostburg is test optional: submitted SAT/ACT scores are considered but do not hurt an application, and applicants without scores get full consideration, including for merit scholarships.",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 45,
+    "fee_waiver": true,
+    "notes": "$45 non-refundable fee (a waiver may be provided through the applicant's high school). Personal statement and 1-2 recommendation letters are optional. International applicants also submit a course-by-course foreign credential evaluation of all transcripts (ECE, ICDE, Josef Silney or WES), a financial certification form with a bank statement showing support for one year, a passport copy and proof of English proficiency. International students cannot use payment plans.",
+    "src": "proc"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Page says 'apply by June 1st for Fall and October 15th for Spring' to allow time for visa processing; no year printed, taken as 2027. Domestic applications open August 1 and are accepted until space runs out.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Early Action (non-binding)",
+      "notes": "Domestic first-year page: apply by November 15 for a decision in 2-4 weeks; regular applications are 'encouraged by February 1'. No year printed, taken as the fall 2027 cycle. International applicants have the June 1 deadline above.",
+      "src": "apply"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Foundation scholarship priority deadline",
+      "notes": "Foundation scholarship applications are accepted until August 1. Year not printed; taken as 2027.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proof of English proficiency is needed if English is not the first language; the procedures page says it may be waived for students whose primary language is English. Scores must be sent directly by the testing agency.",
+    "src": "proc"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "Page lists 'TOEFL 3.5' without naming the scale; 3.5 can only be the new 1-6 scale. Older catalogs (2020-22) gave a 0-120 minimum of 61, which the current pages no longer list.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Undergraduate and exchange minimum.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 85,
+      "notes": "Undergraduate minimum.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 7640,
+    "tuition_out_of_state_usd": 23306,
+    "required_fees_usd": 3138,
+    "room_board_usd": 15242,
+    "notes": "Rates for Fall 2026-Spring 2027 on the tuition page: Maryland resident tuition $7,640, out-of-state tuition $23,306, fees $3,138, housing and meals $15,242 (depends on accommodation). The page lists no separate international rate (international students are non-residents, so the out-of-state rate is the one that can apply, but this is not stated). Regional rate $17,198 is for residents of nearby PA/VA/WV/OH counties only.",
+    "src": "tf"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "merit_scholarships": null,
+    "notes": "Federal aid is not available to international students. Admissions merit scholarships screen all incoming first-year students automatically, but the online merit calculator says awards for international students are not included, so international merit eligibility is unconfirmed. The Harold R. Rowe International Student Scholarship (GPA 2.5+, preference for financial need; deadlines July 1 for fall and October 15 for spring) is open to enrolled or accepted full-time international students; no amount is published.",
+    "src": "ta"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "5402",
+      "note": "Frostburg SAT code.",
+      "src": "req"
+    },
+    "act": {
+      "code": "1714",
+      "note": "Frostburg ACT code.",
+      "src": "req"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

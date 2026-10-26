@@ -1,0 +1,108 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Point Park University - International first-year and transfer undergraduate admission requirements",
+   "url": "https://www.pointpark.edu/admissions/internationalstudents/requirements/FirstYearUG",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Point Park University - International student scholarship options (2026-2027)",
+   "url": "https://www.pointpark.edu/admissions/InternationalStudents/ScholarshipOptions",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Point Park University - Freshmen applicants (full-time undergraduate requirements)",
+   "url": "https://www.pointpark.edu/admissions/undergraduate/fulltimeundergraduate/requirements/freshmen/index",
+   "accessed": "2026-10-26"
+  },
+  "tb": {
+   "kind": "admissions_site",
+   "title": "Point Park University - Test blind admission",
+   "url": "https://www.pointpark.edu/admissions/undergraduate/fulltimeundergraduate/requirements/freshmen/testoptionaladmission",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "Beginning in 2024 all domestic freshman applicants are reviewed test blind (needs a weighted cumulative GPA of 2.5 by the end of junior year in college-preparatory courses); CDS C8A says SAT/ACT are not used. The test-blind page adds that international students must still submit a completed application and standardized test scores; the international page lists those as English-proficiency evidence (SAT EBRW 470+ or ACT English 17+ also count). The freshman page separately calls scores optional.",
+  "src": "tb"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Personal essay optional.",
+  "notes": "Free online application (no fee, no deadline, no early decision). Required: official high school transcript (international: with English translation and a certified credential evaluation at the applicant's cost), passport ID and visa pages if applicable, and proof of English proficiency. Letters of recommendation and a resume are optional. Straight acceptance needs a cumulative weighted 2.5 GPA in a college-preparatory program (3 years math, 2 years history or social science, 3 years science incl. 1 lab). Decision within 10 business days of a complete file. Performing arts programs may have audition or portfolio steps that these pages do not describe.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "label": "Rolling admission, no application deadline (fall 2027 entry)",
+   "notes": "The freshman page says 'no fee, no deadline and no early decision' and CDS C14/C16 report no closing date and rolling notification. The international page publishes no separate deadline; contact iss@pointpark.edu or +1 412 392 4775 for I-20 timing.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of listed English-speaking countries are exempt (the page notes Canada excluding Quebec and the U.S. excluding Puerto Rico). Scores must be less than two years old. Alternatives to TOEFL/IELTS/Duolingo: SAT EBRW 470+ or ACT English 17+; completing Duquesne University ESL (Advanced Level B), ELS Language Center Intensive Level 112, or University of Pittsburgh English Language Institute full-time level 5 or 6 (85 percent in most courses, 80 percent average). Conditional admission may be offered pending completion of those ESL programs.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Institution code 2676.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic IELTS.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Merit-based freshman scholarships of $16,000-$26,000 per year are awarded on high school GPA and English proficiency to full-time traditional freshmen; admitted students are automatically considered and no separate application is described. Awards offset tuition and fees only, require satisfactory academic progress to keep, and do not apply to summer. CDS H6: only institutional non-need-based aid is available to nonresidents (113 recipients, average $31,472).",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "2676",
+   "note": "Printed as the Point Park code next to the SAT EBRW 470+ English option.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "2676",
+   "note": "Point Park institution code.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "biology_life_sci": "D"
+ },
+ "tier_notes": {}
+}

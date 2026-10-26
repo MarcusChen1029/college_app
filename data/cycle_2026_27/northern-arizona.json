@@ -1,0 +1,139 @@
+{
+ "sources": {
+  "steps": {
+   "kind": "admissions_site",
+   "title": "NAU - Steps to apply: international student (English proficiency, fee, documents)",
+   "url": "https://nau.edu/how-to-apply/international/apply-steps/",
+   "accessed": "2026-10-26"
+  },
+  "bach": {
+   "kind": "admissions_site",
+   "title": "NAU Center for International Education - Earn a bachelor's degree (requirements, TOEFL table)",
+   "url": "https://in.nau.edu/center-international-education/apply-bachelors/",
+   "accessed": "2026-10-26"
+  },
+  "paths": {
+   "kind": "admissions_site",
+   "title": "NAU Center for International Education - Paths for international students (priority dates, scholarship)",
+   "url": "https://in.nau.edu/center-international-education/paths/",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "NAU Admissions - Freshman applications, fees and transcripts (score codes)",
+   "url": "https://in.nau.edu/admissions/freshman-students/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "NAU ISSS - International student scholarships (International Excellence Award)",
+   "url": "https://in.nau.edu/isss/scholarships/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are not required for admission; CDS C8F: scores are optional, used case by case to enhance the academic profile, and not required for scholarship consideration.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International applicants use NAU's international application: $50 undergraduate fee (the domestic fee is $40), official transcripts (certified translation if not in English), passport copy, English proficiency and proof of financial support for the I-20. Minimum 2.5 GPA for the last 3 years of secondary school. The enrollment fee for first-year undergraduates is $325. No essay or recommendation is listed.",
+  "src": "bach"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Priority admission, fall 2027 (international)",
+   "notes": "NAU accepts international undergraduate applications year-round; applying by the priority date gives an earlier decision, access to the housing application and more time for the I-20 and visa. Spring priority is Sept. 15. NAU recommends applying 4-6 months before the start date.",
+   "src": "paths"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "Application closing date, fall (CDS)",
+   "notes": "CDS C14 gives Aug. 1 (no year printed) and C16 says decisions are sent on a rolling basis. The international pages publish no hard deadline other than the priority dates.",
+   "src": "fresh"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Other accepted proof: ACT English and Reading 21+, SAT EBRW 350+, IB English A (5 HL / 6 SL) or English B (7), transfer of one 3-credit English composition course, four years of English at a high school taught entirely in English (with school verification), exchange students with B2 English; citizens of English-speaking countries need no proof. Applicants below the minimum may enroll in the Program in Intensive English (PIE), with entry scores of Duolingo 55, IELTS 4 or TOEFL 20, until they meet NAU's requirement.",
+  "src": "bach"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "TOEFL iBT and iBT Home Edition; MyBest score accepted.",
+   "src": "bach"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "The page lists '3.5 effective 1/21/2026' beside the 70 minimum (the new 1-6 scale).",
+   "src": "bach"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "bach"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "bach"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 56,
+   "src": "bach"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International Excellence Award (IEA): up to $11,000 per year as an out-of-state tuition waiver for first-time, full-time F-1 undergraduates on the Flagstaff campus with a 3.0+ GPA at admission; no separate application, awarded first come, first served; renewable with full-time enrollment and a 3.0 GPA. Not available to sponsored students or dual-degree or PIE students. CDS H6: nonresidents get institutional non-need-based aid only. Foreign citizens are not eligible for FAFSA.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4006",
+   "src": "fresh"
+  },
+  "act": {
+   "code": "0086",
+   "src": "fresh"
+  },
+  "toefl": {
+   "code": "4006",
+   "src": "steps"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

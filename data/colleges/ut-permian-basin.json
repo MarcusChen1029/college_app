@@ -1,0 +1,111 @@
+{
+  "slug": "ut-permian-basin",
+  "name": "The University of Texas Permian Basin",
+  "short_name": "UTPB",
+  "state_region": "TX",
+  "city": "Odessa",
+  "latitude": 31.889509,
+  "longitude": -102.329634,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utpb.edu",
+  "admissions_url": "https://www.utpb.edu/admissions-aid/apply-to-ut-permian-basin/index",
+  "ipeds_unit_id": 229018,
+  "undergrad_enrollment": 3991,
+  "intl_undergrads": 197,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "The University of Texas Permian Basin Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.utpb.edu/university-offices/institutional-research-and-effectiveness/docs/comondataset2026-accessible-final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, student-faculty ratio, fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229018",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 1563,
+    "admits": 1508,
+    "enrolled": 618,
+    "in_state_applicants": 1408,
+    "in_state_admits": 1359,
+    "out_state_applicants": 64,
+    "out_state_admits": 63,
+    "intl_applicants": 87,
+    "intl_admits": 82,
+    "pct_submit_sat": 40,
+    "pct_submit_act": 5,
+    "gpa_avg": 3.33,
+    "pct_reporting_gpa": 38,
+    "gpa_distribution": {
+      "4.0": 11,
+      "3.75-3.99": 16,
+      "3.50-3.74": 16,
+      "3.25-3.49": 16,
+      "3.00-3.24": 13,
+      "2.50-2.99": 20,
+      "2.0-2.49": 7,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS C1 residency split (fall 2025): 4 applicants and admits of unknown residency are not in the in-state/out-of-state/international columns. Undergrad enrollment 3,991 and nonresident undergrads 197 are the CDS B1 'Total Undergraduates' figures (fall 2025); the student-faculty ratio (19:1) is the fall 2024 College Navigator figure because the CDS ratio could not be read. No waiting list, no early decision or early action. Only 38% of enrollees reported a high school GPA, so the GPA figures describe a minority."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      900,
+      1010,
+      1090
+    ],
+    "SAT_ERW": [
+      460,
+      520,
+      560
+    ],
+    "SAT_MATH": [
+      440,
+      490,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      21,
+      23
+    ],
+    "ACT_ENGLISH": [
+      15,
+      20,
+      22
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'The university is test-optional. If the student submits SAT or ACT scores, we will consider it for TSI exemption or higher scholarship.'"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 6577,
+    "tuition_out_of_state_usd": 18727,
+    "tuition_intl_usd": 18727,
+    "required_fees_usd": 3034,
+    "room_board_usd": 14292,
+    "books_usd": 1684,
+    "other_usd": 1872,
+    "notes": "CDS G1 (first-year, on-campus; the CDS labels this block 2026-2027): non-resident tuition equals out-of-state, $18,727 for 30 credits. G5 on-campus estimate also lists transportation $1,778 and other expenses $1,872. Certain programs carry additional course fees. College Navigator (2024-25) showed out-of-state total cost of attendance $40,840 on campus."
+  }
+}

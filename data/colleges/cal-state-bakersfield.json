@@ -1,0 +1,61 @@
+{
+ "slug": "cal-state-bakersfield",
+ "name": "California State University, Bakersfield",
+ "short_name": "CSUB",
+ "state_region": "CA",
+ "city": "Bakersfield",
+ "latitude": 35.350005,
+ "longitude": -119.104711,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.csub.edu",
+ "admissions_url": "https://www.csub.edu/admissions/",
+ "ipeds_unit_id": 110486,
+ "undergrad_enrollment": 9897,
+ "intl_undergrads": 100,
+ "student_faculty_ratio": 22,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "CSUB Common Data Set 2025-26 (PDF file 'CDS-2025-2026_Data Collection_FINAL REVISED', linked from the Institutional Research, Planning and Assessment reports page)",
+   "url": "https://csub.box.com/s/lyzdwd5ky6ii1s73o65nojnlxzst8lha",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 admissions summary, test-blind consideration, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110486",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "cds",
+  "applicants": 14532,
+  "admits": 12230,
+  "enrolled": 1366,
+  "in_state_applicants": 12907,
+  "in_state_admits": 11189,
+  "out_state_applicants": 1088,
+  "out_state_admits": 842,
+  "intl_applicants": 537,
+  "intl_admits": 199,
+  "gpa_avg": 3.44,
+  "pct_reporting_gpa": 100.0,
+  "gpa_distribution": {
+   "4.0": 15.7,
+   "3.75-3.99": 14.3,
+   "3.50-3.74": 19.1,
+   "3.25-3.49": 15.3,
+   "3.00-3.24": 16.8,
+   "2.50-2.99": 16.8,
+   "2.0-2.49": 1.8,
+   "1.0-1.99": 0.2
+  },
+  "notes": "CDS C1 fall 2025 first-year class: 14,532 applied, 12,230 admitted (84%), 1,366 enrolled. Residency split as printed: international 537 applicants and 199 admitted (about 37%), versus 12,907 in-state applicants and 11,189 admitted; the international admit rate is much lower than the domestic one. Only 15 international first-years enrolled. intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (100); undergrad_enrollment is the CDS B total of all undergraduates (9,897). SAT/ACT: CSU campuses are test-blind (CDS C8A answers No); the C9 score tables cover only a few dozen enrolled students and the C7 factor check boxes could not be read reliably, so scores and factors are omitted. College Navigator (fall 2024) shows 13,229 applicants and 94% admitted."
+ },
+ "scores": {}
+}

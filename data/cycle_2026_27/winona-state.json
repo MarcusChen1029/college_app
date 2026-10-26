@@ -1,0 +1,163 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Winona State - International admissions (deadlines, English proficiency, fees)",
+   "url": "https://www.winona.edu/admissions/apply/international/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Winona State - First-year admissions",
+   "url": "https://www.winona.edu/admissions/apply/first-year/",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "other",
+   "title": "Winona State - International student tuition and fees",
+   "url": "https://www.winona.edu/financial-aid/cost/international-tuition/",
+   "accessed": "2026-10-26"
+  },
+  "ccsp": {
+   "kind": "financial_aid_site",
+   "title": "Winona State - Cross-Cultural Scholarship Program",
+   "url": "https://www.winona.edu/student-life/support/international-services/cross-cultural-scholarship-program/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT and SAT are not required for admission. First-year applicants with a cumulative high school GPA of 3.0 or higher (4.0 scale) are guaranteed admission once the required courses (4 English, 3 math, 3 science, 3 social studies, 1 elective) are done; others are reviewed individually. Scores help with course placement and some scholarships. For international applicants, ACT 19 or SAT 1060 is also accepted as proof of English.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 20,
+  "notes": "International applicants pay a $20 application fee plus a $100 processing fee before review starts. Records are uploaded to the My Warrior Life portal; unofficial transcripts are enough for the decision but original or certified copies with English translation are due before the first semester. Decisions are given 2-3 weeks after all documents (first-year page). The first-year page waives the application fee for applications completed Oct 1-31, but the international page does not mention that. Some degree programs have extra entrance requirements.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International fall application deadline (applicants not attending a U.S. school), fall 2027 entry",
+   "notes": "Page lists May 1 for students not currently in a U.S. high school or college and Aug. 10 for those who are. It prints fall 2026 class dates, so the same dates are assumed for fall 2027. Spring: Sep. 1 (outside U.S.) or Dec. 1 (in U.S.). Program deadlines can differ.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-10",
+   "label": "International fall application deadline (applicants already attending a U.S. school), fall 2027 entry",
+   "notes": "Assumed to repeat for fall 2027; the page does not print the year.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "The page says the English requirement may be waived in some cases; applicants log into the My Warrior Life portal to ask. ACT 19 or SAT 1060 is accepted in place of an English test. Pre-licensure Nursing needs TOEFL iBT 84 with a speaking score of 26, or IELTS 6.5 with 6.0 on every module. No conditional admission or ESL pathway is mentioned on the page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 68,
+   "notes": "Undergraduate minimum (graduate 80). Paper TOEFL 520 also listed. Nursing needs 84 with speaking 26.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Listed as 'New TOEFL IBT' 4 for undergraduate (4.5 graduate); the page does not name the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Undergraduate minimum (graduate 6.5). Nursing needs 6.5 overall with 6.0 on all modules.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": null,
+   "notes": "The undergraduate cell on the page reads just '5' (graduate 110+, nursing graduate 115+), which looks like a typo, so no minimum is stored. Confirm with admissions before testing.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 47,
+   "notes": "PTE Academic, undergraduate minimum (graduate 58).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Every international student automatically receives the Cross-Cultural Scholarship, which covers the difference between resident and non-resident tuition, so they pay the Minnesota resident rate. To keep it, a student completes one cultural sharing and one cultural learning project each fall and spring semester, attends orientation and completes course OR100. No other international merit scholarship amounts are published on these pages. International students are not eligible for federal aid.",
+  "src": "ccsp"
+ },
+ "cost": {
+  "year": "2025-2026",
+  "tuition_usd": 8934,
+  "tuition_intl_usd": 8934,
+  "required_fees_usd": 1304,
+  "intl_extra_fees_usd": 150,
+  "room_board_usd": 10240,
+  "notes": "Tuition of $8,934 already includes the Cross-Cultural Scholarship. Year label is as printed on the page (2025-2026); 2026-27 rates not found.",
+  "src": "tuit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6680",
+   "note": "Code from the first-year and international pages; the international transfer section lists 2162 for the SAT, apparently an error (2162 is the ACT code).",
+   "src": "fy"
+  },
+  "act": {
+   "code": "2162",
+   "note": "Winona State ACT code.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "6680",
+   "note": "Winona State TOEFL code per the international page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "IELTS and PTE reports are submitted through the My Warrior Life portal; no code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Request the official score be sent directly to Winona State; no code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "Submit the PTE score report through the My Warrior Life portal; no code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D",
+  "computer_science": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

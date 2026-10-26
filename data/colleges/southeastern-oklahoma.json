@@ -1,0 +1,90 @@
+{
+  "slug": "southeastern-oklahoma",
+  "name": "Southeastern Oklahoma State University",
+  "short_name": "Southeastern",
+  "state_region": "OK",
+  "city": "Durant",
+  "latitude": 34.006808,
+  "longitude": -96.376864,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.se.edu",
+  "admissions_url": "https://www.se.edu/admissions/",
+  "ipeds_unit_id": 207847,
+  "undergrad_enrollment": 3224,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207847",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207847",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 1221,
+    "admits": 981,
+    "enrolled": 530,
+    "pct_submit_sat": 12,
+    "pct_submit_act": 68,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 1,221 applicants, 981 admitted, 530 enrolled. College Navigator fall 2024: 1,315 applicants, 76% admitted (counts of admits not shown). IPEDS reports no international applicant or admit counts for Southeastern, so those are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 3,224 and the 25:1 ratio are fall 2024. No Common Data Set for recent years was found on the web (only a 2011-12 copy on a third-party host), so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      530,
+      580
+    ],
+    "SAT_MATH": [
+      470,
+      520,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      23
+    ],
+    "ACT_ENGLISH": [
+      17,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 7530,
+    "tuition_out_of_state_usd": 16740,
+    "books_usd": 1200,
+    "room_board_usd": 7760,
+    "other_usd": 3216,
+    "total_coa_usd": 28916,
+    "notes": "College Navigator 2024-25: tuition and fees in-state $7,530, out-of-state $16,740; on-campus food and housing $7,760, other $3,216; total_coa_usd is the out-of-state on-campus total."
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "oral-roberts",
+  "name": "Oral Roberts University",
+  "short_name": "ORU",
+  "state_region": "OK",
+  "city": "Tulsa",
+  "latitude": 36.049129,
+  "longitude": -95.952547,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://oru.edu",
+  "admissions_url": "https://oru.edu/admissions/international/index.php",
+  "ipeds_unit_id": 207582,
+  "undergrad_enrollment": 5017,
+  "intl_undergrads": 711,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Oral Roberts University (IPEDS fall 2024 admissions, enrollment, test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207582",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=207582&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207582",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 5022,
+    "admits": 4967,
+    "enrolled": 935,
+    "pct_submit_sat": 11,
+    "pct_submit_act": 7,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on ORU's website. Counts come from the IPEDS ADM2024 file (via the Urban Institute API mirror): 5,022 applicants, 4,967 admitted (99%), 935 enrolled (748 full-time + 187 part-time); College Navigator shows the same 5,022 applicants and 99% admitted. International and residency splits and GPA are not published. SAT/ACT percentiles are for the 93 SAT and 59 ACT submitters among enrolled first-time students (ORU is test-optional). Undergraduate enrollment 5,017 is fall 2024."
+  },
+  "scores": {
+    "SAT_ERW": [
+      580,
+      620,
+      660
+    ],
+    "SAT_MATH": [
+      540,
+      580,
+      650
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      22,
+      24,
+      31
+    ],
+    "ACT_MATH": [
+      20,
+      22,
+      25
+    ]
+  }
+}

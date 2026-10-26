@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "MTSU Office of International Affairs - Undergraduate admission",
+   "url": "https://intered.mtsu.edu/admission/",
+   "accessed": "2026-10-26"
+  },
+  "fund": {
+   "kind": "admissions_site",
+   "title": "MTSU Office of International Affairs - Funding / international merit scholarships",
+   "url": "https://intered.mtsu.edu/funding/",
+   "accessed": "2026-10-26"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "MTSU - How to apply: undergraduate (first-time freshmen)",
+   "url": "https://www.mtsu.edu/how-to-apply/undergraduate/",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "MTSU - Important dates and deadlines",
+   "url": "https://www.mtsu.edu/how-to-apply/deadlines/",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "other",
+   "title": "MTSU One Stop - What does it cost? (2026-27 rates and cost of attendance)",
+   "url": "https://www.mtsu.edu/tuition/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "MTSU - Undergraduate registration and mandatory fees, Fall 2026 / Spring 2027 (PDF)",
+   "url": "https://www.mtsu.edu/tuition/wp-content/uploads/sites/94/2026/06/26-27_Undergraduate.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "required",
+  "notes": "The first-time freshman page says all students must submit an ACT/SAT score to be considered. Guaranteed admission needs the college-prep courses plus a 3.0 GPA OR ACT 22 / SAT 1100 (EBRW + Math), or a 2.7 GPA with ACT 19 / SAT 990. Others can go to admission by review with a personal statement form.",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "International applicants apply through MTSU's own online application ($30 non-refundable; $25 for domestic freshmen). MTSU is no longer on the Common App. Official transcripts must come from the school's official email; a NACES course-by-course evaluation is needed for any non-U.S. college work. Processing takes up to 30 days once complete. The pages do not mention essays or recommendations for guaranteed admission.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-07-01",
+   "label": "International application deadline, fall 2027 entry",
+   "notes": "Fall deadline is July 1 of the same year; spring is Nov 1 of the previous year. Printed without a year, treated as fall 2027. A complete file is needed before an I-20 can be issued.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-06-01",
+   "label": "International merit scholarship priority date (fall)",
+   "notes": "Funds are distributed first-come, first-served until exhausted; spring priority is Oct 1.",
+   "src": "fund"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "F-1 applicants must submit proof of English proficiency unless English is the official language of their country of citizenship, they graduated from a high school (U.S. or abroad) whose main language of instruction is English, have SAT Critical Reading/EBRW 510+ or ACT composite 22+, or completed ENGL 1010 and 1020 (or a year of English with B or higher) or an associate degree or higher at a U.S. college. Scores are valid for two years and must come from the testing agency. MTSU also accepts iTEP 3.5 and ELS Level 110 certificate (iTEP 3.8, ELS 112 for Professional Pilot and Nursing). MTSU has an Intensive English Language Program.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Page lists 'TOEFL iBT - 4' without naming the scale; read as the new 1-6 scale. Professional Pilot and Nursing: 4.5.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Professional Pilot and Nursing: 6.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "notes": "Professional Pilot and Nursing: 95.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 59,
+   "notes": "Professional Pilot and Nursing: 70.",
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 11424,
+  "tuition_out_of_state_usd": 34888,
+  "books_usd": 1260,
+  "room_board_usd": 13460,
+  "other_usd": 5482,
+  "total_coa_usd": 55090,
+  "intl_need_aid_awarded": 296,
+  "intl_avg_award_usd": 15064,
+  "notes": "MTSU financial-aid cost of attendance for 2026-27 (14 credits): out-of-state tuition and fees $34,888 vs in-state $11,424, books $1,260, on-campus living $13,460, misc $2,314 and transportation $3,168 (other = $5,482), total $55,090 out-of-state on campus. MTSU pages do not list a separate international rate, so the out-of-state rate is the relevant one for F-1 students. Mandatory international health insurance $1,729 per year unless covered privately. CDS H6: 296 nonresident undergraduates received institutional non-need aid, average $15,064 (CDS G1 was left blank).",
+  "src": "tuition"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "F-1 first-year and transfer students are considered for renewable international merit scholarships: Global Scholar $16,000/year (GPA 3.75-4.0, SAT 1370+ or ACT 30+), International Achievement $12,000 (GPA 3.5-3.74 or SAT 1210+/ACT 25+), International Access $6,000 (GPA 3.0-3.49, SAT 1040+/ACT 20+). Priority deadlines June 1 (fall) and Oct 1 (spring); funds run out first-come, first-served. Contact: international@mtsu.edu. CDS H6 marks only non-need-based institutional aid for nonresidents.",
+  "src": "fund"
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "MTSU pages reviewed do not print a numeric SAT code; look it up in the College Board code search.",
+   "src": "ug"
+  },
+  "act": {
+   "code": null,
+   "note": "MTSU pages reviewed do not print a numeric ACT code; look it up at act.org.",
+   "src": "ug"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; scores must be sent directly by the testing agency.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; official scores must be sent by the testing agency.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

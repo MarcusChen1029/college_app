@@ -1,0 +1,79 @@
+{
+  "slug": "colorado-state",
+  "name": "Colorado State University (Fort Collins)",
+  "short_name": null,
+  "state_region": "CO",
+  "city": "Fort Collins",
+  "latitude": 40.574805,
+  "longitude": -105.080732,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.colostate.edu/",
+  "admissions_url": "https://admissions.colostate.edu/",
+  "ipeds_unit_id": 126818,
+  "undergrad_enrollment": 26490,
+  "intl_undergrads": 657,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Colorado State University Common Data Set FY2026 (2025-2026 edition, March 2026) (PDF)",
+      "url": "https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/03/CSU_CDS_FY2026_Access.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 38365,
+    "admits": 34004,
+    "enrolled": 5376,
+    "gpa_avg": 3.7,
+    "pct_reporting_gpa": 99.9,
+    "gpa_distribution": {
+      "4.0": 29.9,
+      "3.75-3.99": 18.4,
+      "3.50-3.74": 16.6,
+      "3.25-3.49": 15.1,
+      "3.00-3.24": 12.1,
+      "2.50-2.99": 7.7,
+      "2.0-2.49": 0.1
+    },
+    "notes": "CDS C1/C11/C12 (fall 2025 entering class). CSU does not consider SAT/ACT scores, so C9 percentiles are not reported. CDS gives no residency or international split for applicants/admits (C1 says N/A). Student-faculty ratio is I-2 (fall 2024, 17 to 1). Undergrad enrollment is the B1 total (26,490); the international count is the B2 nonresident total (657). No waitlist; early action only (no early decision)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "I",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 11093,
+    "tuition_out_of_state_usd": 33432,
+    "required_fees_usd": 2681,
+    "room_board_usd": 17508,
+    "books_usd": 1200,
+    "other_usd": 3240,
+    "intl_need_aid_awarded": 295,
+    "intl_avg_award_usd": 15607,
+    "notes": "CDS G1 lists 2024-25 costs (2025-26 costs were not final when the CDS was filed); no separate international tuition, so nonresident tuition applies. G4: 56% of full-time undergraduates pay more because tuition varies by program. H6: 295 degree-seeking nonresident undergraduates received institutional aid (avg $15,607); the CDS checks both need-based and non-need-based aid as available to nonresidents."
+  }
+}

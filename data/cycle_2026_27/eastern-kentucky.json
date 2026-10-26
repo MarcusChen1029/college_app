@@ -1,0 +1,161 @@
+{
+  "sources": {
+    "cat": {
+      "kind": "admissions_site",
+      "title": "EKU Academic Catalog 2026-2027 - Admission to the University (incl. requirements for international students)",
+      "url": "https://catalogs.eku.edu/undergraduate/admission-residency/admission/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "EKU - International Students (application, deadlines, proof of finances)",
+      "url": "https://www.eku.edu/info-for/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "EKU Admissions - Important dates",
+      "url": "https://www.eku.edu/admissions/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "EKU Tuition & Aid - Cost of attendance overview",
+      "url": "https://www.eku.edu/tuition-and-aid/",
+      "accessed": "2026-10-26"
+    },
+    "nurs": {
+      "kind": "admissions_site",
+      "title": "EKU School of Nursing - Bachelor of Science in Nursing",
+      "url": "https://www.eku.edu/chs/nursing/bs-nursing/",
+      "accessed": "2026-10-26"
+    },
+    "acad": {
+      "kind": "admissions_site",
+      "title": "EKU - Academic programs",
+      "url": "https://www.eku.edu/academics/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Standard Admission needs an unweighted high school GPA of 2.5-4.0; 2.0-2.49 gets Success First Admission. ACT/SAT are not required or used for admission but are needed for course placement (otherwise placement testing). International freshmen need a 2.5 GPA on a 4.0 scale.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "EKU's international page says the application is free (about 15 minutes) at application.eku.edu. Required: Declaration and Certification of Finances with a supporting bank letter (applicants must verify $28,614), official secondary records with a 2.5 GPA (official evaluation and translation if not in English or not on a 4.0 scale), and English proof.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-08-01",
+      "label": "Fall admission deadline (fall 2027 entry)",
+      "notes": "Page prints no year; treated as fall 2027. Spring deadline Dec. 1, summer May 1. No separate international date is published; the catalog says all application materials must be received by this date.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Alternatives to a test: completion of ELS Level 112; ACT English 18 and Reading 19 (or SAT EBRW 510+); EIKEN Pre-1 for Japanese students. Applicants may petition to appeal the English requirement (committee review with an oral and written interview). Conditional admission: EKU offers a Conditional Letter of Admission to applicants who meet every requirement except English and study English at an ELS center first.",
+    "src": "cat"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "subs": {
+        "each_section": 16
+      },
+      "notes": "Internet-based 71 with no band score below 16 (paper 530, computer 195). No 1-6 scale value is given.",
+      "src": "cat"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.0
+      },
+      "notes": "6.0 overall with at least 5.0 in every category.",
+      "src": "cat"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "95 or higher.",
+      "src": "cat"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "No scholarship for new international undergraduates was found on EKU's international page, and no CDS was readable for nonresident aid data. EKU's merit scholarship tables are based on GPA and ACT and international eligibility is not stated; ask the admissions office (admissions@eku.edu).",
+    "src": "intl"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 10650,
+    "tuition_out_of_state_usd": 12240,
+    "tuition_intl_usd": 12240,
+    "required_fees_usd": 1110,
+    "notes": "EKU cost-of-attendance table, 2026-27 full-time on-campus: in-state tuition $5,325 per semester, 'Out of State & International' $6,120 per semester (12-15 credit hours). Required fees per semester: $150 special use, $150 asset preservation, $255 Exceptional Eastern Experience (x2 = $1,110); a student health fee may also apply. Housing and food estimates on that table were ambiguous, so room_board is left to the 2024-25 College Navigator figure. Proof of funds required for the I-20: $28,614.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Nursing, Pre-RN Bachelor of Science in Nursing (BSN)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": null,
+      "notes": "Students enter as pre-baccalaureate nursing majors and apply after the first three semesters; admission is competitive (minimum EKU GPA 2.5, C or better in prerequisites). Fall applications due Mar. 31, spring Oct. 31. Seat count not published."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "EKU's SAT code is not printed on the pages read; look it up in the College Board code search.",
+      "src": "cat"
+    },
+    "act": {
+      "code": null,
+      "note": "EKU's ACT code is not printed on the pages read; look it up at act.org.",
+      "src": "cat"
+    },
+    "toefl": {
+      "code": null,
+      "note": "EKU's TOEFL code is not printed on the pages read.",
+      "src": "cat"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "cat"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "cat"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not listed among EKU's accepted undergraduate tests.",
+      "src": "cat"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "humanities": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

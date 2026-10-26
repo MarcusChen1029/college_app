@@ -1,0 +1,130 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "SFA - First-Year Students (admission requirements and test policy)",
+   "url": "https://www.sfasu.edu/apply/first-year",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "SFA Office of International Programs - Undergraduate Admissions",
+   "url": "https://www.sfasu.edu/international/admissions/undergraduate",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "SFA Office of International Programs - English Proficiency Requirement",
+   "url": "https://www.sfasu.edu/international/admissions/english-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "SFA Office of International Programs - Scholarships",
+   "url": "https://www.sfasu.edu/international/current-students/scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Page heading: test-optional for the 2025-26 and 2026-27 terms; scores are not required, are encouraged because some scholarships use them, and will not disadvantage an applicant. Top 25% of class admitted automatically; second quarter needs SAT 1030 / ACT 20, third quarter SAT 1170 / ACT 24, fourth quarter file review; otherwise holistic review. The page does not say whether test-optional continues after 2026-27. The international page says test scores are never required for international admission (it also lists them as required in one place; confirm with the office).",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Application link is to SFA's own application-for-admission page; the CDS lists applytexas.org and commonapp.org as application URLs. CDS C13 shows an application fee of $50, but the admissions pages read do not state a fee, so it is not recorded as the live figure. International first-year applicants need a minimum 2.5 cumulative GPA on a course-by-course credential evaluation of all secondary schools. SAT code 6682, ACT code 4188.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "International fall application deadline (fall 2027 entry)",
+   "notes": "International page: fall, submit all documents by June 1; spring, October 1; summer has no listed deadline (email international@sfasu.edu). The page prints no year; treated as fall 2027. Domestic first-year admission is rolling with no application deadline; CDS C16 says decisions begin March 15.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waiver for students who earned a secondary or post-secondary diploma in English in listed countries (e.g. Canada except Quebec, UK, Australia, Ireland, Nigeria, Singapore, Ghana, Kenya). Also met by a US high school diploma or higher in the two years before starting, completion of ELS Level 112, or Texas Intensive English Program (TIEP) Level 160 (no grade below B) or Level 150 (all A). Tests must be no more than two years old. Educator Preparation programs allow no waivers. No conditional admission is mentioned; the ELS and TIEP completions are the only intensive-English routes listed.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Listed minimum for tests taken before Jan. 21, 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.5,
+   "notes": "Listed minimum for tests taken after Jan. 21, 2026. The page does not name the scale for 4.5; it is read as the new 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Overall band.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Accepted for undergraduate admission only.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "OIP scholarship is $1,000 per year (requires financial need, 2.75 GPA for undergraduates, application due April 30; the page does not say whether new freshmen can apply). Recipients of a competitive scholarship of $1,000 or more may pay Texas resident tuition (page: about $4,500 less per semester). Scholarship funds are limited. Financial proof for the I-20: $39,428, or $28,708 with a scholarship of $1,000 or more.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6682",
+   "note": "SFA SAT code as printed on the first-year page.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "4188",
+   "note": "SFA ACT code as printed on the first-year page.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "southwestern-oklahoma",
+  "name": "Southwestern Oklahoma State University",
+  "short_name": "SWOSU",
+  "state_region": "OK",
+  "city": "Weatherford",
+  "latitude": 35.535281,
+  "longitude": -98.707768,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.swosu.edu",
+  "admissions_url": "https://www.swosu.edu/admissions/",
+  "ipeds_unit_id": 207865,
+  "undergrad_enrollment": 4347,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207865",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=207865",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 1689,
+    "admits": 1689,
+    "enrolled": 736,
+    "pct_submit_sat": 0,
+    "pct_submit_act": 78,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 1,689 applicants, 1,689 admitted, 736 enrolled. College Navigator says SWOSU has an open admission policy and reports no fall 2024 admissions or test data. IPEDS lists no international applicant or admit counts, so those are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). SWOSU reports ACT only (no SAT percentiles). Undergraduate enrollment 4,347 is fall 2024; the 19:1 ratio has no year on College Navigator. The newest SWOSU Common Data Sets found online are 2019-20 and older, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      16,
+      19,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      22
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 8469,
+    "tuition_out_of_state_usd": 8499,
+    "books_usd": 1318,
+    "room_board_usd": 7634,
+    "other_usd": 8746,
+    "total_coa_usd": 26197,
+    "notes": "College Navigator 2024-25: tuition and fees in-state $8,469, out-of-state $8,499; on-campus food and housing $7,634, other $8,746; total_coa_usd is the out-of-state on-campus total. International students are classed as nonresidents; see the cycle notes for SWOSU's published international cost estimate."
+  }
+}

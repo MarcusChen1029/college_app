@@ -1,0 +1,137 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Concordia Nebraska - Undergraduate international students (admission requirements, English minimums)",
+   "url": "https://www.cune.edu/international-students/undergraduate-international-student",
+   "accessed": "2026-10-26"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "Concordia Nebraska - Undergraduate admissions (enrollment process incl. international)",
+   "url": "https://www.cune.edu/admissions/undergraduate",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Concordia Nebraska - Undergraduate cost and aid (2026-27)",
+   "url": "https://www.cune.edu/costs-and-aid/undergraduate",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Concordia Nebraska - Undergraduate scholarships (Fall 2027 amounts)",
+   "url": "https://www.cune.edu/costs-and-aid/undergraduate/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "Concordia Nebraska 2026-2027 Undergraduate Catalog (rolling admission, international English minimums, programs)",
+   "url": "https://www.cune.edu/application/files/5117/7584/8917/UG_Catalog_26-27-Final.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "International freshmen must submit an ACT or SAT only if their evaluated high school GPA is below 3.0; with a 3.0 or higher it is not required. Scores also help determine academic scholarships.",
+  "src": "intl"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "Free online application. Needs a high school transcript with an evaluation report (WES, InCred) unless it is in English or from an American international school, plus an English test. Admission is based on the evaluated transcript, test (if GPA is below 3.0) and English score. After acceptance: visa status form, financial verification with notarized bank letters, and a $300 enrollment fee before the I-20. Concordia is Lutheran (LCMS); no faith statement or interview is listed for admission. The 2026-27 catalog describes rolling admission and publishes no closing date.",
+  "src": "ug"
+ },
+ "deadlines": [],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Students who have studied for two or more years in the US at an English-speaking high school may use successful course completion on the transcript as proof. The 2026-27 catalog also accepts the E3PT (65 overall, minimum 15 in each skill). No conditional-admission or ESL pathway program is described on the pages read.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 78,
+   "notes": "No new 1-6 scale minimum is published.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "The international admissions page says 6.5; the 2026-27 catalog says 6.0. The stricter page value is used.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 43000,
+  "required_fees_usd": 800,
+  "room_board_usd": 11950,
+  "other_usd": 160,
+  "total_coa_usd": 55910,
+  "notes": "Concordia's 2026-27 undergraduate price list (not specific to international students): tuition $43,000, student services fee $800, basic housing $5,250 plus meal plan $6,700 (entered as $11,950), student accident insurance $160 (entered as other), total $55,910. The page says full-time students received on average $29,000 in scholarships and grants in 2024-25 (all students, not international only); international students also need their own health insurance.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Academic merit scholarships are automatic on acceptance and the international acceptance packet includes the academic scholarship. Fall 2027 first-year amounts by high school GPA: Achievement Award $16,000 (2.00-3.37), Dean's $17,000-$18,000 (3.38-3.87), Regent's $19,000-$20,000 (3.88-4.0), President's $24,000 (4.0 with ACT 31+). Faith-based awards (Lutheran Commitment minimum $29,000) require Lutheran membership or ties. Need-based grants are tied to the FAFSA, which international students cannot file.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The international pages print no SAT code; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "The international pages print no ACT code; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; look it up in the ETS code search. Official scores must be forwarded to Concordia.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as an accepted test.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

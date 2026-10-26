@@ -1,0 +1,145 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "CMU - Apply as an International Undergraduate Student",
+   "url": "https://www.cmich.edu/international-admissions/undergraduate/apply-international-freshman",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CMU - Determining English Proficiency",
+   "url": "https://www.cmich.edu/international-admissions/contact/english-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "CMU - International Undergraduate Student Costs & Scholarships",
+   "url": "https://www.cmich.edu/international-admissions/undergraduate/cost-scholarships",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "CDS C8 (fall 2027): SAT/ACT are not required for admission but considered if submitted. International admission needs transcripts and proof of English; the SAT (EBRW 520) or ACT (English 21) can be used to meet the English requirement.",
+  "src": "eng"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 55,
+  "notes": "Apply with CMU's own application or the Common App (CMU's Common App code is shown on the page as Central27). The $55 non-refundable fee is waived through Oct 31 of the 2026 fall season; the page does not say what the fee will be for later applicants. Currently enrolled high-school students need grade 9-11 transcripts for a decision and must graduate before starting. CMU's international page reports a 52.8% acceptance rate for international freshmen in fall 2023.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-15",
+   "label": "International preferred admission date, fall 2027",
+   "notes": "Page recommends applying by May 15 for fall (late August) and Oct 1 for spring. No hard deadline is printed. Year assumed for fall 2027.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for applicants from a list of English-speaking countries (list on the apply page), graduates of a US high school with at least 3 years of attendance, or completion of English-medium secondary or post-secondary study, or 24+ graded post-secondary credits at a 2.50 GPA from an English-medium institution. Other proofs: IB English HL 5, AP English 4, GCSE A or B, MET 52, ELS Level 112. Scores are valid two years. The page lists scores 'for regular admission', but does not describe a conditional-admission route.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Regular admission; paper-based 550.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 22050,
+  "required_fees_usd": null,
+  "room_board_usd": 17596,
+  "books_usd": null,
+  "other_usd": 1600,
+  "total_coa_usd": 41246,
+  "notes": "CMU's international undergraduate estimate for 2026-27 (24 credits, on-campus housing with a meal plan): tuition and fees $22,050, living expenses $17,596, health insurance $1,600; total $41,246. First-years must live on campus for two years.",
+  "src": "aid"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Automatic merit awards by GPA, no separate application: International President's Award (3.3+ GPA) gives the U.S. resident tuition rate (about $9,144 per year saved); International Scholar Award (3.0-3.29) $4,000 per year for 4 years; International Opportunity Award (2.8-2.9) $1,000 per year for 4 years. Proof of English is required; government-sponsored students are not eligible. CMU says 34% of eligible international freshmen do not pay the full international rate. The competitive Centralis scholarship can cover tuition, fees and housing.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "CMU's international pages do not print an SAT code; look it up in the College Board code search.",
+   "src": "eng"
+  },
+  "act": {
+   "code": null,
+   "note": "CMU's international pages do not print an ACT code; look it up at act.org.",
+   "src": "eng"
+  },
+  "toefl": {
+   "code": "1106",
+   "note": "CMU TOEFL school code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

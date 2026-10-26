@@ -1,0 +1,155 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "TSU Admissions - International (deadlines, requirements, English proficiency)",
+      "url": "https://www.tnstate.edu/international/",
+      "accessed": "2026-10-26"
+    },
+    "fr": {
+      "kind": "admissions_site",
+      "title": "TSU Admissions - Freshmen (admission criteria, test policy, SAT/ACT codes)",
+      "url": "https://www.tnstate.edu/admissions/freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "oims": {
+      "kind": "financial_aid_site",
+      "title": "TSU Office of Institutional Merit Scholarships - How to be considered",
+      "url": "https://www.tnstate.edu/oims/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "TSU Merit Scholarships (Fall 2026): Renaissance, 1912 Heritage, Torch Scholars",
+      "url": "https://www.tnstate.edu/oims/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "other",
+      "title": "TSU Tuition & Costs",
+      "url": "https://www.tnstate.edu/admissions/tuition-costs/",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "other",
+      "title": "TSU Bursar - Other applicable fees and charges, 2025-2026 (application fee $25)",
+      "url": "https://wst-media.sfo2.digitaloceanspaces.com/TSU/wp-content/uploads/2026/06/06183141/Fees-and-Tuition-2025-2026-FINAL-Other-Applicable-Fees-and-Charges-B.pdf",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "TSU says it is not test-optional and does not accept superscores. Freshmen are guaranteed admission with a 3.2+ weighted high school GPA, or a 2.5+ weighted GPA with ACT 19 or SAT 990. The international page says freshman applicants under 21 must submit ACT/SAT scores; students over 21 do not. Applicants who are denied can appeal with a personal statement.",
+    "src": "fr"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 25,
+    "notes": "Apply through the Future Tiger Portal ($25). International freshmen send a high school transcript plus a credential evaluation for any school outside the US (WES, The Evaluation Company/SpanTran, ECE, AES or IEE), ACT/SAT scores if under 21, English proficiency proof, a passport copy, notarized financial evidence for the I-20 (dated within 6 months; ask oia@tnstate.edu for the amount) and health/immunization forms. CDS C7 lists essays, recommendations and interview as not considered.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International applicants living overseas: fall 2027 application deadline",
+      "notes": "From the 'Students Currently Overseas' column (fall: June 1). Students already in the US have different dates (fall: July 1, documents Aug 1). The page gives no year; treated as fall 2027. Spring: Nov 1 overseas.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-01",
+      "label": "International applicants living overseas: all supporting documents due (fall 2027)",
+      "notes": "Transcripts, test scores, application fee and other documents must be received by July 1 to be considered (overseas column).",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants whose native language is not English must meet one option: TOEFL iBT, IELTS, Duolingo, PTE, 12 hours of US college credit with a 2.0 cumulative GPA, or completion of TSU's Intensive English Program Level 7. Older TSU Office of International Affairs material says test scores are valid for two years. Cambridge exams are not listed.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "The page does not give a score for the new 1-6 TOEFL scale and does not print a TOEFL institution code.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "Minimum overall score.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 75,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "Pearson PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "Institutional merit scholarships are open to first-time freshmen and international students and are considered automatically once the admission application, official transcript and ACT/SAT scores are in (some awards need a separate application). Amounts per year for out-of-state/international students: Renaissance $8,500 (weighted GPA 3.75+ or ACT 28/SAT 1300+), 1912 Heritage $6,500 (GPA 3.25-3.74 or ACT 25-27/SAT 1200-1290), Torch Scholars $4,500 (GPA 3.0-3.24 or ACT 20-24/SAT 1030-1190). Renewal needs a 3.0 GPA, 15 credits a semester and, as printed, a FAFSA each year, which international students cannot file, so ask TSU how renewal works for them. Only one merit scholarship can be held. The full-ride awards (Presidential, Watkins) are for U.S. citizens. CDS H6 ticks institutional need-based aid for nonresident undergraduates (84 recipients, average $19,162), but the TSU international pages describe only merit awards. Amounts and criteria are for Fall 2026 entry; Fall 2027 terms are not yet posted.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "1803",
+      "src": "fr"
+    },
+    "act": {
+      "code": "4010",
+      "src": "fr"
+    },
+    "toefl": {
+      "code": null,
+      "note": "TSU's admissions pages do not print a TOEFL institution code; pick Tennessee State University (Nashville) in the ETS list.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

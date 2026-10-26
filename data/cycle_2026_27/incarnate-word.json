@@ -1,0 +1,164 @@
+{
+  "sources": {
+    "adm": {
+      "kind": "admissions_site",
+      "title": "UIW - Admissions requirements (freshman: test optional, apply by Nov 1, rolling)",
+      "url": "https://www.uiw.edu/admissions/freshman-admissions/admission-to-uiw.html",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "UIW - Freshman admissions (2.5 GPA, applications accepted year-round)",
+      "url": "https://www.uiw.edu/admissions/freshman-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "UIW - Apply to UIW (no application fee, no tests required)",
+      "url": "https://www.uiw.edu/apply/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UIW - International admissions (undergraduate requirements)",
+      "url": "https://www.uiw.edu/admissions/internationaladmissions/index.html",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UIW - English proficiency (international undergraduate)",
+      "url": "https://www.uiw.edu/admissions/internationaladmissions/english_proficiency.html",
+      "accessed": "2026-10-26"
+    },
+    "cond": {
+      "kind": "admissions_site",
+      "title": "UIW - Conditional admission for international students (UNAM - San Antonio)",
+      "url": "https://www.uiw.edu/admissions/internationaladmissions/conditionaladmissions.html",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "UIW - International scholarships (effective Fall 2026)",
+      "url": "https://www.uiw.edu/admissions/internationaladmissions/scholarships.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The admissions page states test score submission is optional and the Apply page says no tests are required. An older Admissions Terminology page still says first-year students must submit ACT/SAT (no minimum score); the current pages take precedence. Freshman English-proficiency alternatives: SAT EBRW 520+ or ACT English 20+.",
+    "src": "adm"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "No application fee for freshmen. Apply through UIW's portal, ApplyTexas or the Common App; international applicants use the separate international application (applyintl.uiw.edu). Required: online application, official high school transcript in English, proof of English proficiency, passport copy and any US visa, proof of financial support. A minimum 2.5 GPA (4.0 scale) is required for unconditional admission. The international page prints no application fee.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission: no international application deadline published (fall 2027)",
+      "notes": "UIW says applications are accepted all year and reviewed on a rolling basis. The international page prints no deadline; allow time for the I-20 and visa. Contact intladmis@uiwtx.edu to confirm.",
+      "src": "intl"
+    },
+    {
+      "kind": "priority",
+      "due": "2026-11-01",
+      "label": "Freshmen encouraged to apply by Nov. 1 (fall 2027)",
+      "notes": "The freshman admissions page encourages applying by Nov. 1 for the following fall; it does not say this applies to international applicants and prints no year (treated as fall 2027).",
+      "src": "adm"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: graduates of US high schools; international or bi-national curriculum schools that award a US diploma, hold US regional accreditation or offer the IB diploma; third-country nationals who completed secondary or tertiary education in Australia, Canada (excluding Quebec), New Zealand or the UK (other English-speaking countries case by case). Freshman alternatives: SAT EBRW 520+, ACT English 20+, WAEC/SSCE English C4+, GCSE/IGCSE English First Language C+, KCSE English C+. TOEIC 650 is also accepted. Applicants below the minimum can be conditionally admitted into an ESL pathway with UNAM - San Antonio (see aid notes).",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "The page lists no minimum for the new 1-6 TOEFL.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "IELTS Academic, overall band.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "PTE Academic.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Cambridge Advanced (CAE) at level C1; the page gives no numeric score.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "First-time freshmen are automatically considered for academic scholarships based on high school GPA: $9,000-$22,000 per year (effective Fall 2026); the page gives no per-GPA tiers. Renewal needs a 2.0 cumulative GPA and 12 UIW credits each semester. 15% tuition discounts (Fall 2026) for undergraduates applying independently of an agent from Latin America, or from Indonesia, the Philippines, Thailand or Vietnam. CDS H6: 150 nonresidents received institutional aid, average $28,829. Conditional admission: UIW partners with UNAM - San Antonio for intensive English; students may apply without English scores, UNAM issues an I-20 for English courses only, intakes August and January (the page does not say how students move into degree courses). No international need-based aid is described.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "UIW pages read do not print a numeric SAT code; look it up in the College Board code search."
+    },
+    "act": {
+      "code": null,
+      "note": "UIW pages read do not print a numeric ACT code; look it up at act.org."
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read (UIW lists code 6303 for TOEIC only)."
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

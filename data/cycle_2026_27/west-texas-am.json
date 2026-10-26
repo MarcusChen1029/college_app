@@ -1,0 +1,171 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "WTAMU - International application dates",
+      "url": "https://www.wtamu.edu/student-support/international-student-services/Applicants/international-application-dates.html",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "WTAMU - International freshman applicants (undergraduate)",
+      "url": "https://www.wtamu.edu/student-support/international-student-services/Applicants/INSTRUCTIONS%20TO%20APPLY/international-undergraduate.html",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "WTAMU - English proficiency requirements (undergraduate)",
+      "url": "https://www.wtamu.edu/student-support/international-student-services/Applicants/international-undergraduate-test-scores.html",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "WTAMU - International tuition and I-20 costs, 2026-2027",
+      "url": "https://www.wtamu.edu/student-support/international-student-services/Applicants/international-resident-tuition.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. The international freshman page lists no SAT/ACT requirement; ACT English 21 or SAT EBRW 560 can be used as English proficiency (freshmen only).",
+    "src": "cds"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 90,
+    "fee_waiver": false,
+    "notes": "Apply through the WTAMU applicant portal; non-refundable international application fee $90, no fee waivers. Needed: high school transcript and completion certificate (unofficial copies accepted at the admission stage, official copies if admitted), a foreign credential evaluation report sent directly by the agency (student-submitted evaluations are not accepted), proof of English proficiency, and a minimum U.S.-equivalent GPA of 2.0/4.0. Non-English documents need a certified English translation. Financial verification (and an affidavit of support if needed) is uploaded after admission, for F-1 applicants only.",
+    "src": "fy"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-15",
+      "label": "Application submission deadline, fall 2027",
+      "notes": "Dates are printed without a year; treated as fall 2027. Application fee payment is due July 1. Spring entry: application Nov. 1; summer: May 1 (no I-20s are issued for summer terms). No priority or final dates are listed.",
+      "src": "dates"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-15",
+      "label": "Document and I-20 document submission deadline, fall 2027",
+      "notes": "All supporting documents and the I-20 documents are due July 15.",
+      "src": "dates"
+    },
+    {
+      "kind": "other",
+      "due": "2027-08-01",
+      "label": "Last day I-20s are issued for fall 2027",
+      "notes": "Printed as 'Last Day I-20s Will Be Issued: August 1st'.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Citizens of Australia, Canada (except Quebec), Ireland, Liberia, Nigeria, New Zealand, the United Kingdom, the United States, Ghana and listed Commonwealth Caribbean countries are exempt; applicants educated in those countries may be exempt after transcript review. If the language of instruction at the current or most recent school was entirely English, the registrar can send a letter saying so. Scores must come directly from the testing agency and are valid for 2 years. TOEFL Essentials and MyBest scores and IELTS One Skill Retake are not accepted. Freshmen may also use ACT English 21 or SAT EBRW 560. The pages describe no conditional admission or ESL pathway.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 74,
+      "notes": "For tests taken on or before Jan. 20, 2026. Home Edition accepted. Institution code 6938.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "For tests taken on or after Jan. 21, 2026. The page lists 4.0 without naming the 1-6 scale; no subscore minimums.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Overall band; IELTS Indicator at-home accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": null,
+      "notes": "Certificate of Proficiency in English (CPE) or Certificate of Advanced English (CAE); no minimum score is listed.",
+      "src": "eng"
+    }
+  ],
+  "cost": {
+    "tuition_intl_usd": 22936,
+    "total_coa_usd": 44847,
+    "notes": "International cost page 2026-27 (bachelor's, 15 credits per semester, Aug.-May): tuition $22,936, fees $3,558, room and board $10,279, books/supplies/travel $4,624, health insurance $3,450 = $44,847 (the minimum I-20 financial documentation). This differs from the CDS nonresident tuition ($21,837) and fees ($2,992); the international page is the more specific source.",
+    "src": "cost"
+  },
+  "aid": {
+    "merit_scholarships": true,
+    "meets_full_need": false,
+    "notes": "No scholarship amounts are published for international students. A WT scholarship of $1,000 or more per academic year may qualify an international student for the lower 'scholarship' tuition rate: 2026-27 bachelor's tuition $10,096 instead of $22,936 (total $32,007 instead of $44,847); the page warns that after 2025-26 not every $1,000+ recipient will qualify. After admission, activate the student account (about 48 hours) and complete the General Scholarship application, which reviews for all scholarships.",
+    "src": "cost"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No numeric SAT code is printed on the pages read; search the College Board code list by name.",
+      "src": "eng"
+    },
+    "act": {
+      "code": null,
+      "note": "No numeric ACT code is printed on the pages read; look it up at act.org.",
+      "src": "eng"
+    },
+    "toefl": {
+      "code": "6938",
+      "note": "WTAMU TOEFL school code.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

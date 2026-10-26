@@ -1,0 +1,79 @@
+{
+  "slug": "alabama-am",
+  "name": "Alabama A&M University",
+  "short_name": "Alabama A&M",
+  "state_region": "AL",
+  "city": "Normal",
+  "latitude": 34.783368,
+  "longitude": -86.568502,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.aamu.edu",
+  "admissions_url": "https://www.aamu.edu/campus-life/student-activities/multicultural-affairs/international-students/",
+  "ipeds_unit_id": 100654,
+  "undergrad_enrollment": 6370,
+  "intl_undergrads": 112,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Alabama A&M University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=100654",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=100654",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=100654",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 23406,
+    "admits": 13564,
+    "enrolled": 1968,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 67,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was found on AAMU's institutional research pages, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 27%, ACT 67%)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      420,
+      470,
+      530
+    ],
+    "SAT_MATH": [
+      390,
+      440,
+      510
+    ],
+    "ACT_COMPOSITE": [
+      14,
+      17,
+      19
+    ],
+    "ACT_ENGLISH": [
+      13,
+      16,
+      19
+    ],
+    "ACT_MATH": [
+      14,
+      16,
+      17
+    ]
+  }
+}

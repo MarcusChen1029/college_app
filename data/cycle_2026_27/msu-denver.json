@@ -1,0 +1,151 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "MSU Denver - International student admission (deadlines and requirements)",
+      "url": "https://www.msudenver.edu/admissions/student-types/international-student/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "MSU Denver - Undergraduate international English proficiency requirements",
+      "url": "https://www.msudenver.edu/admissions/student-types/international-student/undergraduate-international-english-proficiency-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "ftc": {
+      "kind": "admissions_site",
+      "title": "MSU Denver - First-time college student admission",
+      "url": "https://www.msudenver.edu/admissions/student-types/first-time-college-student/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "MSU Denver - Scholarships",
+      "url": "https://www.msudenver.edu/financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Admissions page: 'Test scores are optional'; ACT/SAT or transfer credits can exempt a student from math/English placement exams. The CDS says test scores are not used in admission decisions. Domestic guaranteed admission is a 2.0 unweighted high school GPA; international applicants are not covered by that guarantee on the pages read.",
+    "src": "ftc"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "fee_waiver": false,
+    "notes": "International application fee is $50 (domestic applications are free). Apply with the Roadrunner Application (recommended for international students) or the Common App. Needs official secondary credentials with final results and graduation date (professional English translation if needed), a NACES course-by-course evaluation for any international university work, English proficiency evidence, and financial documentation (bank statement under five months old plus F-1 financial affidavit). No minimum GPA is stated for international applicants.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-15",
+      "label": "International first-time application deadline (fall 2027 entry)",
+      "notes": "From the international deadlines table (first-time international column; transfers from U.S. institutions are July 1, 2027). Spring 2027 is Nov. 1, 2026 and summer 2027 is April 1, 2027. The page recommends applying early.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Scores valid 2 years (Cambridge and SAT/ACT/AP 5 years). Also accepted: LanguageCert 65, Michigan English Test 59, ACT 18 English and 17 overall, SAT 470 Reading and Writing, AP English Language or Literature 3+. Exemptions: citizens of listed majority-English countries; completion of an accredited intensive English program within 5 years; US high school graduation after 2+ years, GED/HiSET, US AA/AS, or 24 semester hours of college work within 5 years; and listed national qualifications (e.g. IB English A grade 4, IGCSE/GCSE C or 4, WASSCE C6, India CBSE/ICSE 60%). Medium of instruction is not accepted. TOEFL Essentials and My Best Score are not accepted. Conditional admission is not mentioned on the pages read.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 72,
+      "notes": "Home Edition accepted; no subscore minimums listed.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Listed as 'TOEFL iBT (New)' without naming the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Academic overall band.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 49,
+      "notes": "PTE Academic.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 169,
+      "notes": "B2 First, C1 Advanced or C2 Proficiency; valid 5 years.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "none",
+    "intl_need_aid": false,
+    "meets_full_need": false,
+    "merit_scholarships": false,
+    "notes": "CDS H6 states institutional scholarship and grant aid is not available to degree-seeking nonresidents. The scholarships page lists no international merit award (the President's Academic Achievement Scholarship, up to $2,000 a year, requires U.S. citizenship, eligible non-citizen, DACA or ASSET status); the page does not explicitly say F-1 students are excluded from every foundation scholarship.",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is published on the pages read; look it up in the College Board code search.",
+      "src": null
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT institution code is published on the admissions pages read; look it up at act.org.",
+      "src": null
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is published on the pages read; look it up in the ETS search.",
+      "src": null
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "economics": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {}
+}

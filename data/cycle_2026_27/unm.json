@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "tl": {
+   "kind": "admissions_site",
+   "title": "UNM International Admissions - Freshmen and transfer application timeline and steps",
+   "url": "https://international.unm.edu/undergraduate/application-timeline-and-steps.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UNM International Admissions - English proficiency requirements",
+   "url": "https://international.unm.edu/english-proficiency.html",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "UNM CELAC - Conditional admission to UNM",
+   "url": "https://celac.unm.edu/admission/unm-conditional-admission.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "UNM International Admissions - Undergraduate scholarships and cost of attendance",
+   "url": "https://international.unm.edu/undergraduate/scholarship-and-cost-of-attendance.html",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "UNM Office of Admissions - Freshman admissions process (fee, test policy, codes)",
+   "url": "https://admissions.unm.edu/future-students/freshmen/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT, SAT, CLT and other scores are not required to be considered for admission but may be helpful in some cases. Engineering applicants (all Electrical and Computer Engineering) must still submit an English proficiency score.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "International applicants apply online and pay a $50 fee (the domestic freshman fee is $25), then send official transcripts, graduation certificates (translated if needed) and English scores. Essays, portfolios and recommendations are not needed for admission (domestic freshman page). Funding for one year must be shown before the I-20 is issued.",
+  "src": "tl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Priority application, fall 2027 (international)",
+   "notes": "International Admissions lists March 1, 2027 priority and May 1, 2027 final for fall 2027 entry because of visa appointment delays. Domestic freshmen have a June 1 priority date.",
+   "src": "tl"
+  },
+  {
+   "kind": "application",
+   "due": "2027-05-01",
+   "label": "Final application deadline, fall 2027 (international)",
+   "src": "tl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-01",
+   "label": "Required documents deadline, fall 2027 (international)",
+   "src": "tl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-03-15",
+   "label": "Priority scholarship consideration, fall admission",
+   "notes": "Transcripts and English scores should be received by this date for best consideration; later applicants are considered as funds allow. Spring admission priority is May 1.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Test not required with four years of U.S. high school at a 2.5+ GPA, ACT English 19+, SAT EBRW 500+, or two semesters of freshman English composition (C or better) at a regionally accredited U.S. college; Electrical and Computer Engineering applicants must still submit a proficiency score. Other accepted: TOEFL Essentials B2, LanguageCert 68 (no skill below 60), Oxford Test of English 125, PTE Express 76. Conditional admission: students who meet academic requirements but not English can start in UNM's Center for English Language and American Culture (CELAC), pay a $50 CELAC fee, and transfer to degree study on CELAC's recommendation (TOEFL PBT 520 also accepted on that page).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 68,
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Page prints '68 (4.0)'.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 47,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "Cambridge C1 Advanced (CAE) at level C1 or C2 Proficiency (CPE); the page gives a CEFR level, not a numeric score.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "All undergraduate applicants are automatically considered; one award only, no stacking. International Amigo Scholarship: in-state tuition rate (about $27,000/yr value; fees not included) for 3.5 GPA, or 3.0 GPA plus ACT 26 / SAT 1240, or 3.25 GPA with 30+ transferable credits. Leadership Scholarship: about $17,000/yr, 3.0 GPA. Beca Mexico (Mexican citizens): 1.5x resident tuition, 2.5 GPA. Renewable up to four years with 15 credit hours and a 2.5 GPA each semester. UNM lists 2027-28 tuition and fees of $11,700 (Amigo), $20,893 (Leadership) and $38,850 (no scholarship). The page does not mention need-based aid for international students, so that is left unconfirmed.",
+  "src": "sch"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4845",
+   "src": "fresh"
+  },
+  "act": {
+   "code": "2650",
+   "src": "fresh"
+  },
+  "toefl": {
+   "code": "4845",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code; upload the IELTS results page through the International Admissions link.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code; send the score to UNM through the Duolingo website.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code; upload the PTE results page through the International Admissions link.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

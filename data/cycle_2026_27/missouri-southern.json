@@ -1,0 +1,133 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "MSSU - International incoming students (deadlines, fee, English minimums, steps)",
+      "url": "https://www.mssu.edu/admissions/international-incoming-students.php",
+      "accessed": "2026-10-26"
+    },
+    "guide": {
+      "kind": "admissions_site",
+      "title": "MSSU - Undergraduate International Admissions Guide 2026-27 (costs, scholarships, requirements)",
+      "url": "https://www.mssu.edu/admissions/files/26-27%20International%20Guide.pdf",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "MSSU - International student scholarships",
+      "url": "https://www.mssu.edu/student-affairs/financial-aid/scholarships/international-scholarships.php",
+      "accessed": "2026-10-26"
+    },
+    "ft": {
+      "kind": "admissions_site",
+      "title": "MSSU - Admissions information for first-time students (minimum standards, test policy)",
+      "url": "https://www.mssu.edu/admissions/admissions-first-time-students.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT is 'not required for admissions but may be requested when enrolling in classes to assist with placement'; MSSU has been test optional since August 2020 (CDS C8F).",
+    "src": "ft"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 60,
+    "notes": "Own online application; $60 non-refundable international fee (must be paid before acceptance). Freshmen must meet one of: 2.25 cumulative GPA, top 50% of class, or ACT 21 / SAT 1060 (per the international guide). Needs passport photo page, transcripts (university work needs a credential evaluation), proof of finances for one year, and a health center screening. After getting a visa, a $3,000 enrollment deposit is required. CDS C13 shows a $30 fee (resident rate) and an Aug 1 priority date with no closing date for first-year domestic applicants. No faith or interview requirement found.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International fall 2027 application deadline",
+      "notes": "Fall = June 1 on the international page; no year is printed, taken as fall 2027. An older MSSU catalog page gave July 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2026-11-01",
+      "label": "International spring 2027 application deadline",
+      "notes": "Spring = November 1; no year printed, taken as spring 2027 entry. Summer = April 1.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for freshmen who completed 3 or more years and graduated from a US high school; transfers from US colleges with English Comp I and II at C or higher. Applicants below the minimums can apply to the Intensive English Program. Students with a TOEFL writing score below 25 must take an on-campus placement exam.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 68,
+      "notes": "TOEFL writing below 25 means an extra placement exam. No new 1-6 scale minimum is published.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "MOSO International Achievement Scholarship $5,500 for the first year (24 credit hours) for freshmen educated outside the US with 2.75 high school GPA and the English minimums (renewable up to 8 semesters with 2.75 college GPA); MOSO First-Year International Award $1,000 one-time (2.25 GPA); MOSO International Retention Scholarship $1,000 ($500 per semester) after 24 credits with 3.0 GPA. CDS H6: 99 nonresidents received non-need-based aid, average $7,899. No international need-based aid found.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "MSSU's admissions pages do not print a SAT code; look it up in the College Board code search.",
+      "src": "ft"
+    },
+    "act": {
+      "code": null,
+      "note": "MSSU's admissions pages do not print an ACT code; look it up at act.org.",
+      "src": "ft"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages reviewed.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

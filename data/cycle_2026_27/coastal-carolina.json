@@ -1,0 +1,197 @@
+{
+  "sources": {
+    "ifr": {
+      "kind": "admissions_site",
+      "title": "Coastal Carolina University - International Freshman admission",
+      "url": "https://www.coastal.edu/admissions/international/internationalfreshman/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Coastal Carolina University - English Proficiency Requirements",
+      "url": "https://www.coastal.edu/admissions/international/englishproficiencyrequirements/",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Coastal Carolina University - International admissions FAQ",
+      "url": "https://www.coastal.edu/admissions/international/frequentlyaskedquestions/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "admissions_site",
+      "title": "Coastal Carolina University - International costs and scholarships (2026-2027)",
+      "url": "https://www.coastal.edu/admissions/international/costsandscholarships/",
+      "accessed": "2026-10-26"
+    },
+    "merit": {
+      "kind": "financial_aid_site",
+      "title": "Coastal Carolina University - International Student Merit Awards",
+      "url": "https://www.coastal.edu/admissions/meritawardsintl/",
+      "accessed": "2026-10-26"
+    },
+    "fa": {
+      "kind": "admissions_site",
+      "title": "Coastal Carolina University - Freshman application process and deadlines",
+      "url": "https://www.coastal.edu/admissions/freshman/freshmanapp/",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Coastal Carolina University - Application types and fees",
+      "url": "https://www.coastal.edu/admissions/apply/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Domestic freshmen with a minimum 3.5 weighted HS GPA may choose not to submit SAT/ACT (test optional; not a guarantee of admission, and a challenging curriculum plus leadership/work/service evidence is expected). The international FAQ says SAT/ACT is NOT required of international applicants, except those from an English-speaking exempt country or with 2+ years at a U.S. high school. The international merit-award table lists SAT/ACT or TOEFL/IELTS/Duolingo thresholds, and the merit page says SAT/ACT scores are considered only for applicants who do not apply test optional.",
+    "src": "faq"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply on Coastal's own application or the Common App. The fee is not stated consistently: the international freshman page and the CDS say $45, while the freshman application pages say $60, so it is left blank. Also required: at least 3 years of official secondary transcripts or national exam results (original language plus official English translation) emailed to internationaladmissions@coastal.edu, and a copy of a valid passport (no decision is made without it). The Confidential Financial Statement and bank documents are needed before the I-20, not for the admission decision. Test-optional applicants may be asked for recommendation letters and an essay or personal statement.",
+    "src": "ifr"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-10-15",
+      "notify": "2026-12-01",
+      "label": "Early Decision (binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+      "notes": "Apply Oct. 15, know Dec. 1, enroll by Jan. 15 (years not printed; treated as the 2026-27 cycle). Listed on the freshman application page; the international pages do not mention ED or EA.",
+      "src": "fa"
+    },
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "notify": "2026-12-15",
+      "label": "Early Action (non-binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+      "notes": "Apply Nov. 15, know Dec. 15, reply by May 1.",
+      "src": "fa"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "notify": "2027-03-01",
+      "label": "Regular Decision, fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+      "notes": "Apply Feb. 1, know Mar. 1, reply by May 1. The merit-award page says funding is limited after these priority dates.",
+      "src": "fa"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International fall applicants: recommended completion date",
+      "notes": "The international FAQ says Coastal has rolling admission (space permitting) and recommends complete fall applications by June 1 (spring Nov. 1, summer May 1). The international merit page uses June 1 as its fall priority date. Printed without a year; treated as fall 2027.",
+      "src": "faq"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No extra English proof is needed from citizens of listed English-speaking countries (e.g. UK, Ireland, Canada except Quebec, Australia, New Zealand, Singapore, Philippines, Nigeria, Kenya, South Africa, Jamaica); those applicants and anyone with 2+ years of U.S. or English-speaking-country high school must instead submit SAT or ACT. Other ways to show proficiency: SAT EBRW 550 with combined 1070, ACT English and Reading 21 with composite 21, IB English A grade 5+, Cambridge AS/A level English, CAE/CPE at C1 or higher, GCSE/O-level English C or higher, TOEIC 645, GTEC 1140, MET/MELAB 74, ELS Level 110 (undergraduate), or 2 years at a U.S. high school with a B average in English. Scores must be within 2 years of the application date. Conditional admission (one year to submit English proof) is offered only to applicants who do not need an F-1/J-1 visa. The Global Achievement Pathway (English support plus coursework) is currently not offered.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "iBT 71 (paper-based 527). TOEFL code 5837. The page does not give a 1-6 scale minimum.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.0
+      },
+      "notes": "6.0 overall with no sub-score lower than 5.0. No institution code.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "95 for undergraduates; results valid for 2 years from the test date.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 51,
+      "notes": "Minimum score of 51.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Cambridge CAE or CPE at level C1 or higher; Cambridge AS/A level English or O level English grade C also accepted. No numeric minimum printed.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "All international applicants are automatically considered for merit awards (no separate application) if admitted by the priority dates (June 1 fall for international applicants, or Oct. 15 / Nov. 15 / Feb. 1 for freshmen). International freshman awards per year: Presidential $19,662 (SAT 1390+/ACT 31+/TOEFL 110/IELTS 8.0/Duolingo 130 and an A average), President's $13,000 (1300+/28+/102/7.5/120, B+), Provost's $10,000 (1200+/25+/90/7.0/110, B+), Coastal Scholar $7,500 (SAT 1100+/ACT 22+/TOEFL 79/IELTS 6.5/Duolingo 105, B+), Teal Scholar $4,500 (SAT 1030+/ACT 20+/TOEFL 74/IELTS 6.5/Duolingo 100, B). Applicants applying test optional are not scored on SAT/ACT. Awards are renewable annually; funding historically runs out after the priority dates. Non-Resident Tuition Waivers (in-state rate, about $18,286 savings) are limited to the Sister-State Program (Rhineland-Palatinate, Thuringia, Brandenburg, Queensland, Taiwan) and a limited number for Aruba and Iceland. CDS H6: only non-need-based institutional aid for nonresidents; 78 recipients, average $27,105. International students are not eligible for federal aid.",
+    "src": "merit"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "tuition_intl_usd": 31301,
+    "room_board_usd": 12558,
+    "books_usd": 1342,
+    "other_usd": 4534,
+    "total_coa_usd": 49736,
+    "intl_merit_aid": true,
+    "notes": "From the international costs page (2026-27, fall and spring only): undergraduate out-of-state tuition and fees combined $31,301 (stored as tuition_intl_usd; in-state and separate fee amounts are not given for 2026-27); housing $7,830 + meals $4,728 = $12,558; books $1,342; other living expenses $4,534; estimated undergraduate cost of attendance $49,736. F-1/J-1 applicants must show funds at least equal to this total. The 2025-26 CDS figures are in the colleges file."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5837",
+      "note": "SAT institutional code (also used for TOEFL).",
+      "src": "ifr"
+    },
+    "act": {
+      "code": "3843",
+      "note": "ACT institutional code.",
+      "src": "ifr"
+    },
+    "toefl": {
+      "code": "5837",
+      "note": "TOEFL institutional code.",
+      "src": "ifr"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code for IELTS; request that scores be sent to Coastal Carolina University.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code; select Coastal Carolina University when sending results.",
+      "src": "faq"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D"
+  },
+  "tier_notes": {}
+}

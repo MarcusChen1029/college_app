@@ -1,0 +1,140 @@
+{
+  "sources": {
+    "ug": {
+      "kind": "admissions_site",
+      "title": "CMU - International first-time freshman requirements",
+      "url": "https://www.coloradomesa.edu/admissions/requirements/international/undergraduate.html",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "CMU catalog 2025-2026 - Admission of international students",
+      "url": "https://catalog.coloradomesa.edu/undergraduate-admission-information/undergraduate-admission-information-procedures-degree-seeking-students/admission-international-students/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "CMU - International scholarship opportunities",
+      "url": "https://www.coloradomesa.edu/admissions/requirements/international/scholarship-opportunities.html",
+      "accessed": "2026-10-26"
+    },
+    "broch": {
+      "kind": "admissions_site",
+      "title": "CMU - International Programs brochure 2023-24 (PDF)",
+      "url": "https://www.coloradomesa.edu/admissions/requirements/international/ao_international-brochure_2324_web.pdf",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "CMU - International admissions home",
+      "url": "https://www.coloradomesa.edu/admissions/requirements/international/index.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "International page: 'The SAT or ACT test is optional but recommended'; students without scores may need math and English placement exams. CDS C6 reports an open admission policy for all students and C8 lists SAT/ACT as not required but considered if submitted.",
+    "src": "ug"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "notes": "International file: online application with a $40 non-refundable fee (the brochure says a waiver code is available on request; a 'Free Application Week' banner was shown on the international page), official secondary transcript, proof of English proficiency, and for the I-20 the CMU Notarized Statement of Financial Support plus bank statements covering one year of costs (add $5,000 for a spouse and $4,000 per child). Health insurance is automatically billed through CMU's international group plan. No minimum GPA is published; the merit scholarship uses a U.S.-equivalent 3.0. The CDS lists essay, recommendations and interview as 'considered' only.",
+    "src": "ug"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International: fully admitted with I-20 issued (fall 2027 entry)",
+      "notes": "The international page states that for fall an applicant must be fully admitted and have an I-20 issued by May 1 (visa appointment secured by Aug. 1); the page prints no year, so treated as fall 2027. Spring: admitted with I-20 by Oct. 1. Applicants who miss it defer to the next semester. Applying earlier is needed because the I-20 requires financial documents.",
+      "src": "ug"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Minimum Reading and Writing subscores apply to TOEFL and IELTS, but the values are not printed on the pages read. Also accepted: Oxford ELLT minimum 6; completion of an approved intensive English program (pre-approved by the CMU International Student Admissions Office); full-time enrollment at a U.S. high school, college or university (case by case); other evidence case by case. Medium-of-instruction certificates are not accepted. Students below the minimums can apply for conditional admission to CMU and attend an approved intensive English provider (stated in the 2023-24 international brochure; not repeated on the current requirements page). PTE and Cambridge are not listed.",
+    "src": "ug"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "Scores from before 2026 (the catalog also accepts 525 paper-based).",
+      "src": "ug"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Updated 6-point scale, exams taken in 2026 and after (catalog: 'minimum average of 4').",
+      "src": "ug"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Band 6 overall.",
+      "src": "ug"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "ug"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "intl_need_aid": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "CMU International Merit Scholarship: $9,000 per year ($4,500 per semester) for a U.S.-equivalent cumulative GPA of 3.0 or higher (transfers 2.5), renewable for up to 9 semesters excluding summers. Returning International Student Scholarship: $1,000 per year after 30 CMU credits at a 3.75 GPA, combinable. CDS H6 ticks both need-based and non-need-based institutional aid as available to nonresidents, but the counts and amounts are blank and the international pages list only these merit awards.",
+    "src": "schol"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is published on the international pages read; look it up in the College Board code search.",
+      "src": null
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT institution code is published on the admissions pages read; look it up at act.org.",
+      "src": null
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is published on the international pages read; look it up in the ETS search.",
+      "src": null
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": null
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "engineering": "D",
+    "biology_life_sci": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,79 @@
+{
+ "slug": "concordia-nebraska",
+ "name": "Concordia University, Nebraska",
+ "short_name": "Concordia Nebraska",
+ "state_region": "NE",
+ "city": "Seward",
+ "latitude": 40.914853,
+ "longitude": -97.089054,
+ "setting": "rural",
+ "control": "private_nonprofit",
+ "website": "https://www.cune.edu",
+ "admissions_url": "https://www.cune.edu/international-students/undergraduate-international-student",
+ "ipeds_unit_id": 180984,
+ "undergrad_enrollment": 3000,
+ "intl_undergrads": 120,
+ "student_faculty_ratio": 14,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+   "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "navigator": {
+   "kind": "ipeds",
+   "title": "College Navigator - Concordia University-Nebraska (fall 2024 admissions, enrollment, student-to-faculty ratio, tuition)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=180984",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=180984",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 1587,
+  "admits": 1429,
+  "enrolled": 381,
+  "pct_submit_sat": 1,
+  "pct_submit_act": 6,
+  "notes": "No Common Data Set found on cune.edu (searched 2026-10-26), so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 1,583 applicants, 86% admitted, 25% of admitted enrolled (no admit count printed, so none is computed). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. Test-score percentiles rest on tiny groups (5 SAT and 18 ACT submitters in 2023). Undergraduate enrollment 3,000 (College Navigator fall 2024) is institution-wide and includes online students; the Seward campus itself has about 1,200 students per the international page. Student-to-faculty ratio 14:1."
+ },
+ "scores": {
+  "SAT_ERW": [
+   530,
+   580,
+   625
+  ],
+  "SAT_MATH": [
+   510,
+   560,
+   610
+  ],
+  "ACT_COMPOSITE": [
+   19,
+   23,
+   26
+  ],
+  "ACT_ENGLISH": [
+   18,
+   22,
+   28
+  ],
+  "ACT_MATH": [
+   18,
+   23,
+   26
+  ]
+ }
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "middle-tennessee",
+  "name": "Middle Tennessee State University",
+  "short_name": "MTSU",
+  "state_region": "TN",
+  "city": "Murfreesboro",
+  "latitude": 35.848005,
+  "longitude": -86.360618,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.mtsu.edu",
+  "admissions_url": "https://www.mtsu.edu/how-to-apply/",
+  "ipeds_unit_id": 220978,
+  "undergrad_enrollment": 18444,
+  "intl_undergrads": 436,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Middle Tennessee State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://iepr.mtsu.edu/wp-content/uploads/sites/23/2026/07/CDS_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 17724,
+    "admits": 11277,
+    "enrolled": 3267,
+    "in_state_applicants": 10033,
+    "in_state_admits": 7797,
+    "out_state_applicants": 5562,
+    "out_state_admits": 2419,
+    "intl_applicants": 2129,
+    "intl_admits": 1061,
+    "pct_submit_sat": 6.6,
+    "pct_submit_act": 91.77,
+    "gpa_avg": 3.62,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 23.62,
+      "3.75-3.99": 25.0,
+      "3.50-3.74": 19.52,
+      "3.25-3.49": 14.29,
+      "3.00-3.24": 10.56,
+      "2.50-2.99": 5.97,
+      "2.0-2.49": 0.7,
+      "1.0-1.99": 0.28
+    },
+    "notes": "Fall 2025 first-year class (CDS C1). International applicants were admitted at 49.8% (1,061 of 2,129) versus 63.6% overall, so intl admission is tighter than the headline rate. Undergrad enrollment 18,444 and nonresident count 436 are the B1/B2 total-undergraduate figures. Only 6.6% of enrollees submitted SAT (215 students) versus 91.8% ACT (2,999). The CDS marks SAT/ACT 'required to be considered' (C8A) but the admissions site offers guaranteed admission on a 3.0 GPA alone; no early decision or early action; deferral up to one semester. Nonacademic C7 factors were left blank in the CDS."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1020,
+      1120,
+      1220
+    ],
+    "SAT_ERW": [
+      515,
+      570,
+      630
+    ],
+    "SAT_MATH": [
+      495,
+      550,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "slug": "central-michigan",
+  "name": "Central Michigan University",
+  "short_name": "CMU",
+  "state_region": "MI",
+  "city": "Mount Pleasant",
+  "latitude": 43.591203,
+  "longitude": -84.77525,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.cmich.edu",
+  "admissions_url": "https://www.cmich.edu/undergraduate/apply",
+  "ipeds_unit_id": 169248,
+  "undergrad_enrollment": 10238,
+  "intl_undergrads": 285,
+  "student_faculty_ratio": 16.6,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Central Michigan University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.cmich.edu/docs/default-source/academic-affairs-division/academic-administration/academic-planning-analysis/reports-(public)/common-data-sets/cds-2024-2025.pdf?sfvrsn=b0421437_16",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 22287,
+    "admits": 20289,
+    "enrolled": 1986,
+    "pct_submit_sat": 52.4,
+    "pct_submit_act": 5.3,
+    "gpa_avg": 3.48,
+    "pct_reporting_gpa": 99.95,
+    "gpa_distribution": {
+      "4.0": 17.88,
+      "3.75-3.99": 20.15,
+      "3.50-3.74": 15.42,
+      "3.25-3.49": 15.21,
+      "3.00-3.24": 17.13,
+      "2.50-2.99": 12.29,
+      "2.0-2.49": 1.66,
+      "1.0-1.99": 0.2
+    },
+    "notes": "Counts are CDS C1 (fall 2025), summed from the male and female rows; CMU left the in-state, out-of-state and international rows of C1 blank (reported as 0), so intl_applicants and intl_admits are null. CMU's international admissions page says its fall 2023 acceptance rate was 52.8% for international undergraduate freshmen (vs about 91% overall), so this school is less of a sure thing than the overall rate suggests. No waiting list, early decision or early action. GPA distribution is the C11 'all enrolled' column. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 285)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      970,
+      1100,
+      1210
+    ],
+    "SAT_ERW": [
+      500,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      470,
+      530,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      24,
+      28
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      29
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but consider if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 15570,
+    "tuition_out_of_state_usd": 15570,
+    "tuition_intl_usd": 27000,
+    "required_fees_usd": 450,
+    "room_board_usd": 12872,
+    "books_usd": 1326,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 27,
+    "intl_avg_award_usd": 16805,
+    "notes": "CDS G1 first-year 2026-27: resident and non-resident US students pay the same $15,570; the international rate is $27,000 (before merit awards). H6: only institutional non-need-based aid is available to nonresidents; 27 nonresident undergraduates received it in 2024-25 (avg $16,805). The CDS file is named 'cds-2024-2025' but its cover and sections are the 2025-2026 edition."
+  }
+}

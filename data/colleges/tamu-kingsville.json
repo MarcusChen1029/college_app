@@ -1,0 +1,127 @@
+{
+  "slug": "tamu-kingsville",
+  "name": "Texas A&M University-Kingsville",
+  "short_name": "Texas A&M-Kingsville",
+  "state_region": "TX",
+  "city": "Kingsville",
+  "latitude": 27.525168,
+  "longitude": -97.882387,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.tamuk.edu",
+  "admissions_url": "https://www.tamuk.edu/enrollment-management/admission/future-students/international/index.html",
+  "ipeds_unit_id": 228705,
+  "undergrad_enrollment": 5386,
+  "intl_undergrads": 72,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Texas A&M University-Kingsville Common Data Set 2024-2025 (PDF; latest edition posted, fall 2024 class)",
+      "url": "https://www.tamuk.edu/pes/_files_oir/CDS_reports/2024-2025_TAMUK_CDS.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 8846,
+    "admits": 8043,
+    "enrolled": 1286,
+    "in_state_applicants": 8695,
+    "in_state_admits": 7903,
+    "out_state_applicants": 113,
+    "out_state_admits": 110,
+    "intl_applicants": 32,
+    "intl_admits": 30,
+    "pct_submit_sat": 27,
+    "pct_submit_act": 9,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 99.76,
+    "gpa_distribution": {
+      "4.0": 23,
+      "3.75-3.99": 12,
+      "3.50-3.74": 19,
+      "3.25-3.49": 15,
+      "3.00-3.24": 12,
+      "2.50-2.99": 13,
+      "2.0-2.49": 4,
+      "1.0-1.99": 2
+    },
+    "notes": "CDS C1 (fall 2024 first-years; the 2024-2025 edition is the newest on tamuk.edu/pes): 8,846 applied, 8,043 admitted (90.9%), 1,286 enrolled. International: 32 applied, 30 admitted, 5 enrolled; 6 applicants of unknown residency. No waitlist, no early decision or early action. GPA distribution is the 'all enrolled students' column (C11); average GPA 3.43 is C12. Class rank (C10, 94% reporting): top tenth 12%, top quarter 39%. SAT submitters 348 (27%), ACT 115 (9%). Undergraduate enrollment 5,386 and 72 nonresidents are B2 total undergraduates. Student-faculty ratio 18:1 is CDS I-2."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      890,
+      990,
+      1080
+    ],
+    "SAT_ERW": [
+      460,
+      510,
+      550
+    ],
+    "SAT_MATH": [
+      420,
+      480,
+      540
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      18,
+      22
+    ],
+    "ACT_MATH": [
+      16,
+      17,
+      20
+    ],
+    "ACT_ENGLISH": [
+      14,
+      17,
+      21
+    ]
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2026): SAT or ACT 'not required for admission, but considered if submitted'. C8F: a composite ACT of 19 or a combined SAT of 1000 meets the admission requirement."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 5137,
+    "tuition_out_of_state_usd": 18133,
+    "tuition_intl_usd": 18133,
+    "required_fees_usd": 4755,
+    "room_board_usd": 10823,
+    "books_usd": 1190,
+    "other_usd": 3322,
+    "intl_need_aid_awarded": 17,
+    "intl_avg_award_usd": 1522,
+    "notes": "CDS G1 (first-year, 2025-26; the CDS ticks that final 2025-26 costs were not yet available): in-state tuition $5,137, nonresident tuition $18,133, required fees $4,755, on-campus food and housing $10,823 (housing $6,400 + meal plan $4,423). G5 (residents): books $1,190, transportation $1,315, other $2,007 (other_usd = transportation + other). Per-credit-hour: $171 resident, $604 nonresident. H6: 17 degree-seeking nonresident undergraduates received institutional aid, average $1,522 (total $25,867)."
+  }
+}

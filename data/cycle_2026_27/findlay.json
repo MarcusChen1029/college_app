@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "crit": {
+      "kind": "admissions_site",
+      "title": "University of Findlay - International admission criteria (undergraduate)",
+      "url": "https://www.findlay.edu/admissions-aid/international-students/international-admission-criteria/",
+      "accessed": "2026-10-26"
+    },
+    "waive": {
+      "kind": "admissions_site",
+      "title": "University of Findlay - Waiving of English score requirements",
+      "url": "https://www.findlay.edu/admissions/international/waive-english-proficiency-requirements",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "University of Findlay - First-year admission requirements",
+      "url": "https://www.findlay.edu/admissions-aid/first-year-students/requirements-and-deadlines/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "University of Findlay - International scholarships (2026-27 academic year)",
+      "url": "https://www.findlay.edu/admissions-aid/international-students/scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "University of Findlay - 2026-2027 cost of attendance",
+      "url": "https://www.findlay.edu/admissions-aid/cost-of-attendance/",
+      "accessed": "2026-10-26"
+    },
+    "ielp": {
+      "kind": "other",
+      "title": "University of Findlay catalog - Intensive English Language Program (ENIN/IELP)",
+      "url": "http://catalog.findlay.edu/en/current/Undergraduate-Catalog/Major-Requirements/College-of-Arts-Humanities-and-Social-Sciences/Department-of-Language-and-Culture/Intensive-English-Language-Program-ENIN-IELP",
+      "accessed": "2026-10-26"
+    },
+    "progs": {
+      "kind": "admissions_site",
+      "title": "University of Findlay - Undergraduate programs",
+      "url": "https://www.findlay.edu/academics/undergraduate/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT/SAT are optional; if submitted they are considered for merit scholarships and scholarship competition days and cannot lower merit aid. The international page says the ACT or SAT is not required. Minimum GPA: the international page says 2.0 on a 4.0 scale, while the main first-year page says 3.0 cumulative; confirm with the admissions office.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply through the university's own portal (apply.findlay.edu). The application fee is not stated on the pages read (other search snippets conflict), so it is left null. International freshmen need high school transcripts and leaving certificate or diploma, a passport bio page copy, and a bank statement showing funds for at least the first year. No personal essay or recommendation letters are mentioned on the first-year page.",
+    "src": "crit"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-20",
+      "label": "International application deadline, fall (August) start (fall 2027 entry)",
+      "notes": "The international criteria page lists Fall: June 20 and Spring: November 10 without a year, so the dates are treated as fall 2027. Start terms are Fall (August) and Spring (January). The first-year page lists no deadlines.",
+      "src": "crit"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No test needed for citizens of, or those who completed studies in, the UK, USA, Canada, Australia, Ireland, New Zealand or Ghana (Ghanaian high school degrees). Graduates of an English Medium high school with school verification are exempt; English Version schools must show CEFR B2 equivalent, ACT 20 or SAT 1040 and complete the Foundations/Bridge Program in year one. Students below the direct-admit score can enter the Intensive English Language Program (IELP, four levels, about one semester each, classes start fall, spring and an 8-week summer ELS section); completing IELP waives the test requirement. New USCIS rules mean IELP students get an IELP-only I-20 first. Students with no score and no waiver take Accuplacer at orientation.",
+    "src": "waive"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Undergraduate direct admission. Some older pages still show 500 (paper scale).",
+      "src": "crit"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Undergraduate direct admission.",
+      "src": "crit"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Listed on the criteria and waiver pages; some pages omit Duolingo.",
+      "src": "crit"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "PTE Academic. iTEP 3.5 and completion of Level 8 of The Language Company are also accepted.",
+      "src": "crit"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 40698,
+    "tuition_out_of_state_usd": 40698,
+    "tuition_intl_usd": 40698,
+    "required_fees_usd": 1500,
+    "room_board_usd": 13740,
+    "books_usd": 1000,
+    "other_usd": 1544,
+    "intl_merit_aid": true,
+    "notes": "2026-27 undergraduate on-campus estimate (standard program, before aid): tuition $40,698, mandatory fees $1,500, housing $7,120 plus food $6,620, books and supplies $1,000, miscellaneous personal $1,544, transportation $1,030 (not included in other). The page shows no total, so total_coa is left null. Pharmacy, Equestrian and Animal Science programs have different rates.",
+    "src": "coa"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "International undergraduate merit scholarships (2026-27) are applied automatically at admission with no separate application: Trustee $25,000 (GPA 4.0+, ACT 27/SAT 1290), Presidential $24,000 (3.9; 24/1190), Deans $22,500 (3.65; 21/1090), Faculty $20,000 (3.3), Merit $18,500 (3.29 or lower); a 30 ACT or 1360 SAT adds $2,000, and the highest applicable amount is used. Renewal terms are not stated. IELP students receive $750 per semester. No international need-based aid is described.",
+    "src": "schol"
+  },
+  "majors": [
+    {
+      "program": "Business Administration (emphases incl. Accounting, Finance, Marketing, Management, Business Analytics)",
+      "category": "business",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission."
+    },
+    {
+      "program": "Computer Science (BS, emphases incl. data analytics, information assurance, web and database)",
+      "category": "computer_science",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission."
+    },
+    {
+      "program": "Biology (BS, Pre-Medicine emphasis available)",
+      "category": "biology_life_sci",
+      "admit_model": "direct_major",
+      "capped": false,
+      "notes": "No separate admission criteria are published beyond general admission."
+    }
+  ],
+  "tiers": {
+    "general": "D",
+    "business": "D",
+    "computer_science": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

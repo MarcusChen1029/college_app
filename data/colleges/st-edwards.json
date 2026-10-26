@@ -1,0 +1,92 @@
+{
+  "slug": "st-edwards",
+  "name": "St. Edward's University",
+  "short_name": "St. Edward's",
+  "state_region": "TX",
+  "city": "Austin",
+  "latitude": 30.229618,
+  "longitude": -97.754998,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.stedwards.edu",
+  "admissions_url": "https://www.stedwards.edu/admission",
+  "ipeds_unit_id": 227845,
+  "undergrad_enrollment": 2499,
+  "intl_undergrads": 180,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator - Saint Edward's University (fall 2024 admissions, enrollment, test scores)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227845",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "other",
+      "title": "St. Edward's University - Undergraduate tuition and fees 2026-2027",
+      "url": "https://www.stedwards.edu/cost-aid/undergraduate-tuition-fees",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227845",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227845",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 5611,
+    "admits": 4696,
+    "enrolled": 659,
+    "pct_submit_sat": 18,
+    "pct_submit_act": 4,
+    "notes": "Baseline from IPEDS College Navigator (fall 2024 entering class): 5,830 applicants, 81% admitted, 10% of admitted enrolled. College Navigator prints only rounded percentages, so admit and enrolled counts are left null. A St. Edward's Common Data Set could not be found (not on stedwards.edu via search or direct paths), so international applicant counts, GPA and ED data are not available. Test percentiles come from only 81 SAT and 20 ACT submitters (18% and 4% of enrollees); the ACT figures are especially thin. Undergraduate enrollment 2,499 and student-faculty ratio 12:1 are IPEDS fall 2024. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      570,
+      630
+    ],
+    "SAT_MATH": [
+      470,
+      540,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      26,
+      28
+    ],
+    "ACT_ENGLISH": [
+      21,
+      23,
+      30
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cost",
+    "tuition_usd": 51498,
+    "required_fees_usd": 900,
+    "notes": "St. Edward's 2026-27: full-time flat tuition $25,749 per term (12-18 hours) = $51,498 a year; comprehensive fee $450 per semester. Housing ($4,382) and meal plan ($3,464) are listed as estimates without a stated period, and health insurance (est. $1,460 per semester) is billed unless waived, so room and board and total cost of attendance are left null. New first-years must live on campus. The university reports an average first-year tuition after scholarships and grants of $11,486 for 2026-27."
+  }
+}

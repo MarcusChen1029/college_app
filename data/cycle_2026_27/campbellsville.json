@@ -1,0 +1,187 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Campbellsville University - International applications for admission (undergraduate checklist)",
+   "url": "https://www.campbellsville.edu/academics/international-education/international-applications-admission.html",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "Campbellsville University 2026-2027 Undergraduate Catalog - Admissions Information (incl. International Student Admission)",
+   "url": "https://catalog.campbellsville.edu/content.php?catoid=24&navoid=1227",
+   "accessed": "2026-10-26"
+  },
+  "adm": {
+   "kind": "admissions_site",
+   "title": "Campbellsville University - Admissions (first-year and international requirements)",
+   "url": "https://www.campbellsville.edu/admission-and-aid/index.html",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Campbellsville University - Apply (application process and roadmap to starting in fall)",
+   "url": "https://www.campbellsville.edu/admission-and-aid/apply.html",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Campbellsville University - Scholarships and Grants",
+   "url": "https://www.campbellsville.edu/admission-and-aid/scholarships-and-grants/index.html",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Campbellsville University - Cost of Attendance 2026-2027",
+   "url": "https://www.campbellsville.edu/admission-and-aid/financial-aid/cost-of-attendance.html",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "financial_aid_site",
+   "title": "Campbellsville University - 2026-2027 Tuition and Fees",
+   "url": "https://www.campbellsville.edu/admission-and-aid/financial-aid/tuition-and-fees.html",
+   "accessed": "2026-10-26"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "Campbellsville University - Academic programs",
+   "url": "https://www.campbellsville.edu/academics/academic-affairs/academic-programs.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT are not required for undergraduate admission (catalog and admissions page); scores may be used for course placement, athletic eligibility and scholarship eligibility. The minimum high school GPA is generally 2.0. The admissions page says some international programs may require SAT/ACT, but the catalog international steps ask for SAT/ACT only from native English speakers.",
+  "src": "adm"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "Campbellsville's own online application (Workday). The fee is unclear: the international catalog steps say an application fee and enrollment deposit are required, the admissions page says waivers exist, and the apply roadmap calls the application 'FREE'. International checklist: transcripts in the original language and English, a NACES credential evaluation (WES, ECE, Josef Silny, SpanTran, etc.), passport copy, bank statement showing funds for one year (dated within 6 months) with an affidavit of support, housing application and medical history form; the admissions page also lists a letter of recommendation and an interview 'if required'. No international deadline is printed. Christian university (Christ-centered); a prior-conduct clearance applies to applicants with a criminal or expulsion history.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Rolling admission (fall 2027 entry)",
+   "notes": "No application deadline is published for international undergraduates; the apply roadmap says to apply August-November before a fall start. The international page says to apply early for visa time.",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-31",
+   "label": "Competitive scholarship applications",
+   "notes": "Apply roadmap: 'Submit Competitive Scholarship Applications by December 31st' (no year printed; taken as the cycle for fall 2027). Faith-based and community scholarships close March 15. The page does not say whether these are open to international students.",
+   "src": "apply"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "Enrollment decision deadline",
+   "notes": "Apply roadmap: tell Campbellsville your decision by May 1 (National College Decision Day). Written for on-campus undergraduates generally; the catalog says international students must pay an enrollment deposit.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for students whose native language is not English. Accepted proof (2026-27 catalog): TOEFL paper 500 or iBT 3.5, IELTS, PTE 52, Duolingo 95, an approved test from another agency, or successful completion of Campbellsville's ESL Institute (ESLI) program. Native English speakers send SAT or ACT scores instead. No separate conditional-admission policy was found; Campbellsville also runs ESL, Intensive English (IELP) and EFL certificate programs.",
+  "src": "cat"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Catalog: 'TOEFL ... 3.5 or higher on the internet-based test' (paper-based 500). The catalog does not name the scale; 3.5 cannot be a 0-120 score, so it is read as the new 1-6 scale. No minimum on the old 0-120 scale is printed on Campbellsville's own pages (third-party sites list 61).",
+   "src": "cat"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "The same 2026-27 catalog page contradicts itself: the admissions-requirements table says IELTS 5, the International Student Admission section says IELTS 6. The higher value is shown.",
+   "src": "cat"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Listed in the catalog's International Student Admission section, not in its requirements table.",
+   "src": "cat"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 52,
+   "src": "cat"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": null,
+  "notes": "No international-specific scholarship was found. Freshman merit scholarships on the Campbellsville campus are set by high school GPA (Trustees up to $16,500, Provost up to $15,500, Dean up to $14,500, Founders up to $13,500 per year, renewable with a 2.0 GPA); a Presidential Scholarship (full tuition, housing and books) needs a 3.5 GPA or 25 ACT / 1200 SAT plus an essay and interview. The scholarships page does not say whether international students qualify, so eligibility is unconfirmed. International students cannot use FAFSA-based aid.",
+  "src": "schol"
+ },
+ "majors": [],
+ "cost": {
+  "year": "2026-2027",
+  "src": "coa",
+  "tuition_usd": 29760,
+  "tuition_out_of_state_usd": 29760,
+  "tuition_intl_usd": 29760,
+  "required_fees_usd": 500,
+  "room_board_usd": 10984,
+  "books_usd": 800,
+  "total_coa_usd": 48362,
+  "notes": "Campbellsville campus, traditional undergraduate living on campus: tuition $14,880 per semester (12-18 hours) x 2 = $29,760; technology fee $300 + activity fee $200; food and housing $10,984; books $800; total COA $48,362 including personal expenses, transportation and loan fees (published). The tuition page lists room and board of $4,884-$5,920 per semester depending on the hall. No separate international tuition rate is published."
+ },
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the Campbellsville admissions pages.",
+   "src": "adm"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the Campbellsville admissions pages.",
+   "src": "adm"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is printed on the Campbellsville admissions pages.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,79 @@
+{
+ "slug": "olivet-nazarene",
+ "name": "Olivet Nazarene University",
+ "short_name": "ONU",
+ "state_region": "IL",
+ "city": "Bourbonnais",
+ "latitude": 41.155237,
+ "longitude": -87.875165,
+ "setting": "suburban",
+ "control": "private_nonprofit",
+ "website": "https://www.olivet.edu/",
+ "admissions_url": "https://www.olivet.edu/admissions",
+ "ipeds_unit_id": 147828,
+ "undergrad_enrollment": 2711,
+ "intl_undergrads": 53,
+ "student_faculty_ratio": 15,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=147828",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "navigator": {
+   "kind": "ipeds",
+   "title": "College Navigator - Olivet Nazarene University (fall 2024 admissions and enrollment)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=147828",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=147828",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 4426,
+  "admits": 2961,
+  "enrolled": 649,
+  "pct_submit_sat": 34,
+  "pct_submit_act": 16,
+  "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). No Common Data Set was found on olivet.edu or by search, so no CDS was used; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 5,789 applicants and a 56% admit rate (exact admit count not published there); undergraduate enrollment and the 15:1 student-faculty ratio are fall 2024."
+ },
+ "scores": {
+  "SAT_ERW": [
+   480,
+   540,
+   600
+  ],
+  "SAT_MATH": [
+   480,
+   540,
+   590
+  ],
+  "ACT_COMPOSITE": [
+   18,
+   23,
+   28
+  ],
+  "ACT_ENGLISH": [
+   18,
+   24,
+   28
+  ],
+  "ACT_MATH": [
+   18,
+   22,
+   27
+  ]
+ }
+}

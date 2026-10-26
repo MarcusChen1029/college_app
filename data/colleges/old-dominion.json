@@ -1,0 +1,131 @@
+{
+  "slug": "old-dominion",
+  "name": "Old Dominion University",
+  "short_name": "ODU",
+  "state_region": "VA",
+  "city": "Norfolk",
+  "latitude": 36.886418,
+  "longitude": -76.30666,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.odu.edu/",
+  "admissions_url": "https://www.odu.edu/admission",
+  "ipeds_unit_id": 232982,
+  "undergrad_enrollment": 17504,
+  "intl_undergrads": 212,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Old Dominion University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.odu.edu/sites/default/files/2026/documents/cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_loc": {
+      "kind": "ipeds",
+      "title": "IPEDS institutional directory (location, locale) via Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/directory/2023/?unitid=232982",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 15024,
+    "admits": 13725,
+    "enrolled": 2697,
+    "in_state_applicants": 11577,
+    "in_state_admits": 10701,
+    "out_state_applicants": 3236,
+    "out_state_admits": 2820,
+    "intl_applicants": 211,
+    "intl_admits": 204,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 1,
+    "gpa_avg": 3.43,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 19,
+      "3.75-3.99": 13,
+      "3.50-3.74": 15,
+      "3.25-3.49": 15,
+      "3.00-3.24": 13,
+      "2.50-2.99": 25
+    },
+    "notes": "CDS C1 (fall 2025 entering class); residency split from the C1 residency table (in-state 11,577 / out-of-state 3,236 / international 211 applicants; 10,701 / 2,820 / 204 admitted; 2,494 / 167 / 36 enrolled). Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (17,504; 212 nonresidents). SAT/ACT percentiles cover only the 7% (184) / 1% (24) of enrollees who submitted scores. The CDS gives no GPA band below 2.50 (distribution sums to 100). Domestic early action closes 12/1 (notified 1/15, CDS C22); no early decision."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1120,
+      1190,
+      1270
+    ],
+    "SAT_ERW": [
+      580,
+      610,
+      660
+    ],
+    "SAT_MATH": [
+      540,
+      580,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      27
+    ],
+    "ACT_ENGLISH": [
+      21,
+      23,
+      26
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      26
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "I",
+    "interview": "NC",
+    "extracurriculars": "I",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "I",
+    "work_experience": "I",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027): SAT or ACT marked 'required for some' (programs); the international admissions pages say SAT/ACT are optional."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 8040,
+    "tuition_out_of_state_usd": 28605,
+    "tuition_intl_usd": 28605,
+    "required_fees_usd": 5280,
+    "room_board_usd": 15720,
+    "books_usd": 1790,
+    "intl_need_aid": null,
+    "intl_need_aid_awarded": 10,
+    "intl_avg_award_usd": 16000,
+    "notes": "CDS G1 (first-year, 2025-26); 2026-27 rates not found. H6: both institutional need-based and non-need-based aid are marked available to nonresidents; 10 nonresidents were awarded aid, average $16,000 (the CDS lists a $300,000 total, which does not equal 10 x $16,000)."
+  }
+}

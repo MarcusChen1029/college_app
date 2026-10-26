@@ -1,0 +1,159 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SUNY Oswego - International undergraduate applicants",
+      "url": "https://ww1.oswego.edu/international/undergraduate-applicants",
+      "accessed": "2026-10-26"
+    },
+    "intl2": {
+      "kind": "admissions_site",
+      "title": "SUNY Oswego - Admissions: International applicants",
+      "url": "https://ww1.oswego.edu/admissions/undergraduate-admissions/how-apply/international-applicants",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "SUNY Oswego - English proficiency requirements (international)",
+      "url": "https://ww1.oswego.edu/international/english-proficiency-requirements",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "SUNY Oswego - First-year and transfer scholarships (incl. Destination Oswego)",
+      "url": "https://ww1.oswego.edu/admissions/undergraduate-admissions/scholarships",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "'SUNY Oswego is SAT/ACT optional'; international applicants are not required to submit SAT or ACT scores. Scores may be used for ALEKS/placement and scholarship profiles.",
+    "src": "intl2"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "SUNY Application (plus the SUNY Supplemental Application) or Common App; $50 non-refundable fee. International applicants send official transcripts, proof of English, and a teacher/counselor evaluation; a minimum GPA equivalent to 2.5 on a 4.0 scale is stated. An original signed and stamped bank statement showing first-year funds is requested before applying (sponsor statement if a sponsor pays); a gap statement may be requested. A site banner offered a free application 'now through Nov. 2' (year not stated).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-15",
+      "label": "Recommended deadline for international applicants: all documents in by mid-May (fall 2027 entry)",
+      "notes": "Rolling review; applicants are urged to submit everything by May 15 for fall (Nov. 15 for spring). Pages print no year; treated as fall 2027. The 2024-25 CDS lists a Feb. 1 priority date and rolling decisions beginning Oct. 1.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-15",
+      "label": "Priority date for scholarship consideration, fall 2027",
+      "notes": "Scholarships page: apply by January 15 for fall admission (November 15 for spring) for priority consideration; no separate scholarship application.",
+      "src": "sch"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "'Exemptions are possible under certain circumstances' (contact the international office). Scores must be taken within two years of submission. Other accepted evidence includes SAT EBRW 500, ACT English and Reading average 19, IB HL English A 4, A-level English C, IGCSE First Language English C.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Exams taken before 1/21/2026. Test Center, Home Edition and Paper accepted. TOEFL Essentials: 8.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Exams taken after 1/21/2026. The page prints '4' without naming the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Overall band.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 55,
+      "notes": "PTE Academic.",
+      "src": "eng"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 180,
+      "notes": "Cambridge English Proficiency (CPE) or Advanced (CAE) at 180; B2 First is not listed. The page also accepts iTEP (80%+ final level), ELS Level 112, Michigan English Test 52, Oxford ELLT 6.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "All international applicants are considered for scholarships at application, no separate application. Destination Oswego Scholarship: $9,000 per year ($4,500/semester) beginning fall 2027 for full-time first-year students who are international or non-NY residents; must live on campus, keep a 3.0 GPA each semester, renewable up to eight semesters. First-year merit awards by typical HS average: Presidential $6,000 (96+), Dean's $4,000 (93-95), Merit Plus $2,500 (90-92), Merit $750 (85-89) per year; the page does not say whether international students are eligible for these. CDS H6 (2024-25) shows 172 nonresident undergraduates received institutional aid averaging $6,888 (the aid-type checkbox is unreadable). English pathway: applicants below the minimum can enroll in the English for Academic Purposes (EAP) program through Oxford International Digital Institute, and proof of enrollment can lead to conditional admission; another admissions page says below-minimum students need intensive English study before admission. The international page estimates total cost of attendance at $41,493 per year (year not stated).",
+    "src": "sch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is printed on the pages checked; look it up in the College Board code search.",
+      "src": "intl2"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages checked; look it up at act.org.",
+      "src": "intl2"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the English proficiency page.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "business": "D",
+    "computer_science": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {
+    "general": "Admit rate about 81% (94% for international applicants in the 2024-25 CDS), but CDS SAT middle 50% of 1080-1250 among the 23% who submit is a notch above open-access SUNY colleges. Editorial judgment, wave 4 (2026-10-26)."
+  }
+}

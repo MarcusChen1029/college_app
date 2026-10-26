@@ -1,0 +1,86 @@
+{
+ "slug": "nevada-reno",
+ "name": "University of Nevada, Reno",
+ "short_name": "Nevada",
+ "state_region": "NV",
+ "city": "Reno",
+ "latitude": 39.543642,
+ "longitude": -119.815377,
+ "setting": "urban",
+ "control": "public",
+ "website": "https://www.unr.edu",
+ "admissions_url": "https://www.unr.edu/admissions",
+ "ipeds_unit_id": 182290,
+ "undergrad_enrollment": 19117,
+ "intl_undergrads": 167,
+ "student_faculty_ratio": 17,
+ "academic_calendar": "semester",
+ "sources": {
+  "cds": {
+   "kind": "cds",
+   "title": "University of Nevada, Reno Common Data Set 2025-2026 (Decision Support)",
+   "url": "https://dataden.unr.edu/Resources/CDS/CDS_2025-2026.pdf",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator: fall 2024 undergraduate enrollment, student-to-faculty ratio",
+   "url": "https://nces.ed.gov/collegenavigator/?id=182290",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=182290",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "cds",
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "cds",
+  "applicants": 19136,
+  "admits": 15908,
+  "enrolled": 3747,
+  "pct_submit_sat": 16,
+  "pct_submit_act": 61,
+  "gpa_avg": 3.42,
+  "pct_reporting_gpa": 99.9,
+  "notes": "CDS C1 fall 2025 first-year class: 19,136 applied (7,614 men + 11,453 women + 69 unknown sex), 15,908 admitted (83%), 3,747 enrolled (men 1,612, women 2,114, unknown sex 21, full-time plus part-time). The CDS left the C1 residency breakdown (in-state, out-of-state, international) blank, so international applicants and admits are null. College Navigator (fall 2024) shows 17,679 applicants and 74% admitted. SAT/ACT percentiles cover the 16% (SAT, 593 students) and 61% (ACT, 2,284 students) of enrollees who submitted scores. The C11 GPA table prints only two populated columns (students who submitted scores / did not) and a blank all-students column, so no GPA distribution is stored. The C7 factor check boxes could not be read reliably, so factors are omitted."
+ },
+ "scores": {
+  "SAT_TOTAL": [
+   1060,
+   1170,
+   1280
+  ],
+  "SAT_ERW": [
+   540,
+   600,
+   660
+  ],
+  "SAT_MATH": [
+   510,
+   580,
+   640
+  ],
+  "ACT_COMPOSITE": [
+   18,
+   22,
+   25
+  ],
+  "ACT_MATH": [
+   17,
+   20,
+   25
+  ],
+  "ACT_ENGLISH": [
+   16,
+   21,
+   25
+  ]
+ }
+}

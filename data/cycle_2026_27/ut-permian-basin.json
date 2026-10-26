@@ -1,0 +1,155 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UTPB - Apply as an international student (requirements, English proficiency)",
+   "url": "https://utpb.edu/admissions-aid/apply-to-ut-permian-basin/international-student",
+   "accessed": "2026-10-26"
+  },
+  "fresh": {
+   "kind": "admissions_site",
+   "title": "UTPB - Apply as a freshman (platforms, fee, GPA criteria, test-optional)",
+   "url": "https://www.utpb.edu/admissions-aid/apply-to-ut-permian-basin/freshmen",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "UTPB 2025-2026 Undergraduate Catalog - International Students",
+   "url": "https://utpb.smartcatalogiq.com/en/2025-2026/2025-2026-undergraduate-catalog/admissions/international-students",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "UTPB - Freshman Merit Scholarships",
+   "url": "https://www.utpb.edu/admissions-aid/scholarships/freshmen-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "pres": {
+   "kind": "financial_aid_site",
+   "title": "UTPB - Presidential Scholarship",
+   "url": "https://www.utpb.edu/admissions-aid/scholarships/presidential-scholarship",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT and ACT are optional for admission; scores are supporting documents for admission and scholarship decisions and can earn a TSI exemption. Automatic admission at a 3.0 unweighted GPA or top 25% of class; 2.75-2.99 is reviewed holistically; below 2.75 gets additional review and possible conditional admission.",
+  "src": "fresh"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "Apply through ApplyTexas ('own') or the Common App (freshman page); the international page names ApplyTexas. $40 fee. All academic records must be evaluated by a credential service (WES, The Evaluation Company, FCSA, ECE, GCE or GEO) and sent to admissions@utpb.edu, with certified English translations. A Certification of Finances form with a bank, institution or sponsor letter is needed for the I-20 (no minimum amount stated). Bacterial meningitis vaccination is required for most on-campus students under 22.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "International: submit transcripts and documents at least 120 days before the fall 2027 term starts",
+   "notes": "No calendar date is published. The international page says documents are due at least 120 days before the semester begins; the catalog says apply at least 120 days before enrollment, with test scores and academic records received no later than 60 days before. Fall classes normally begin in late August, so plan for roughly late April 2027 (estimate, not a published date).",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2026-12-01",
+   "label": "Presidential Scholarship application (full tuition and designated fees)",
+   "notes": "Page says applications are due each December 1 (the current-cycle window is open until Dec. 1, 2026) and recipients are notified by January 15. It does not say whether international students are eligible.",
+   "src": "pres"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-04-15",
+   "label": "Freshman merit scholarship: apply for admission by this date to be eligible",
+   "notes": "Freshman merit page says applicants must have applied by April 15 (awards made Sept. 1 to April 15) and register for orientation by June 1. The page prints no year (it is partly out of date); treated as fall 2027. International eligibility is not stated.",
+   "src": "merit"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: applicants from countries where English is the sole official and primary conversational language (the page lists e.g. Australia, Canada except Quebec, Ghana, India, Ireland, Jamaica, Kenya, Nigeria, Singapore, United Kingdom, among others). The catalog also exempts students with 24 transferable semester hours from a regionally accredited U.S. institution including English 1301 and 1302 with a C or better. Scores must be sent directly from the testing service.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Paper-based 550 (computer-based 213 in the catalog). The page does not mention the new 1-6 TOEFL scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "subs": {
+    "each_section": 6.0
+   },
+   "notes": "Overall band 6.5 with at least 6.0 in each subsection.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Freshman merit scholarships are automatic at admission, no application: Falcon Elite $4,000/yr (3.90+ unweighted GPA), Excellence $3,000 (3.70-3.89), Achievement $2,000 (3.35-3.69), Recognition $1,000 (3.25-3.34); renewable up to 4 years with 12 credits per term and a 2.50 GPA. The scholarship pages do not say whether international students qualify, and the 2025-26 catalog states 'The University has no financial aid available for international students.' CDS H6 (as extracted from the PDF text; the need/non-need box was unreadable) shows 103 undergraduate nonresidents with institutional aid, average $6,683.",
+  "src": "merit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read; look it up in the College Board code search.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "6914",
+   "note": "UTPB TOEFL institution code; scores must come directly from ETS.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "UTPB lists a six-digit Duolingo institution number, 276692 (too long for the 4-character code field); scores can also be sent directly from the testing center.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed as accepted.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

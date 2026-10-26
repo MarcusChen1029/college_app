@@ -1,0 +1,121 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "La Roche University - First-year student admission",
+   "url": "https://laroche.edu/Admissions/Undergraduate/First_Year_Students/",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "La Roche University - International undergraduate application",
+   "url": "https://laroche.edu/Admissions/International/Apply_Now/International_Undergraduate/",
+   "accessed": "2026-10-26"
+  },
+  "path": {
+   "kind": "admissions_site",
+   "title": "La Roche University - Pathway Program (English score tracks)",
+   "url": "https://laroche.edu/Admissions/International/Pathway_Program/",
+   "accessed": "2026-10-26"
+  },
+  "yawh": {
+   "kind": "financial_aid_site",
+   "title": "La Roche University - #YouAreWelcomeHere Scholarship",
+   "url": "https://laroche.edu/Admissions/International/-YouAreWelcomeHere_Scholarship/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "La Roche University - International scholarship opportunities",
+   "url": "https://laroche.edu/admissions/international/scholarship-opportunities/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "La Roche University - International admissions FAQ",
+   "url": "https://laroche.edu/Admissions/International/Frequently_Asked_Questions/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT and ACT scores are optional for first-year and international applicants; they are considered if submitted and may also be used to determine direct admission. Some majors and programs have their own test score and GPA requirements. IPEDS (fall 2024) lists a high school GPA and record as required to be considered.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "supplemental_essays": "Optional short essay (250 words or less) on why a La Roche degree matters.",
+  "notes": "Apply with the Common App, the LRU online application or a paper form. International applicants send a high school transcript and diploma with notarized English translation, a TOEFL/IELTS/Duolingo score if available (otherwise La Roche's English placement test decides Pathway or ESL placement), a passport photo page, a signed Affidavit of Support and an official sponsor bank statement dated within three months of the semester start. The pages do not state an application fee, a minimum GPA or recommendation requirements (IPEDS lists recommendations as required to be considered).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2026-11-01",
+   "label": "Recommended complete-application date, fall 2027 entry",
+   "notes": "The first-year page says applicants can apply at any time and recommends a complete application by Nov. 1 (fall) or Dec. 15 (spring) for the best financial aid and housing options; decisions come 10-14 days after a complete application. No year is printed, so Nov. 1 is taken as 2026 for fall 2027. No separate international deadline is published; contact international@laroche.edu or 412-536-1279.",
+   "src": "fy"
+  },
+  {
+   "kind": "deposit",
+   "label": "Nonrefundable $5,000 payment toward first-semester tuition",
+   "notes": "Required to be registered (and for the I-20); $2,000 for the ESL-only program. No due date is published.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Applicants submit TOEFL, IELTS or Duolingo scores if available. Scores set the track: direct admission to the degree, a one-semester or two-semester Pathway (English courses plus degree credits), or ESL below that. Applicants without scores take La Roche's English placement test. No exemption by country or school is listed on the pages read.",
+  "src": "path"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Minimum for direct admission; the Pathway page lists the test as 'TOEFL' without naming iBT. One-semester Pathway 60-78, two-semester Pathway 46-59, ESL 45 or lower. A search-result snippet of a linked 2026 Pathway flyer (404 when fetched) showed higher cutoffs (direct admission TOEFL 87), so confirm with the international office.",
+   "src": "path"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Minimum for direct admission. One-semester Pathway 6.0, two-semester Pathway 5.5, ESL 5.0 or lower.",
+   "src": "path"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 115,
+   "notes": "Minimum for direct admission. One-semester Pathway 105-110, two-semester Pathway 90-100, ESL 85 or lower.",
+   "src": "path"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "PTE Academic, minimum for direct admission. One-semester Pathway 50-57, two-semester Pathway 42-49, ESL 41 or lower.",
+   "src": "path"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "All international undergraduate applicants are automatically considered for the La Roche International Merit Award; the FAQ says directly admitted international undergraduates can receive up to $17,000 per year based on academic performance, renewable for four years with good standing (not for ESL, Pathway or summer courses). The #YouAreWelcomeHere Scholarship is $19,000 per year, renewable, for first-year international applicants who submit a 500-1,000 word essay or 2-5 minute video on intercultural learning; its fall 2026 deadline has passed and the fall 2027 date is to be announced. No international need-based aid is described.",
+  "src": "yawh"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "computer_science": "D",
+  "biology_life_sci": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,116 @@
+{
+  "slug": "hawaii",
+  "name": "University of Hawaii at Manoa",
+  "short_name": "UH Manoa",
+  "state_region": "HI",
+  "city": "Honolulu",
+  "latitude": 21.298598,
+  "longitude": -157.818979,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://manoa.hawaii.edu",
+  "admissions_url": "https://manoa.hawaii.edu/admissions/",
+  "ipeds_unit_id": 141574,
+  "undergrad_enrollment": 15375,
+  "intl_undergrads": 551,
+  "student_faculty_ratio": 13.4,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Hawai'i at Manoa Common Data Set 2024-2025 (PDF)",
+      "url": "https://manoa.hawaii.edu/miro/wp-content/uploads/2025/07/Common_Data_Set_2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "snapshot": {
+      "kind": "admissions_site",
+      "title": "UH Manoa Admissions - Freshman admission snapshot, fall 2025 admitted class",
+      "url": "https://manoa.hawaii.edu/admissions/freshman/",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "snapshot",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 16722,
+    "admits": 14481,
+    "enrolled": 3123,
+    "gpa_avg": 3.68,
+    "pct_reporting_gpa": 79.1,
+    "gpa_distribution": {
+      "4.0": 27,
+      "3.75-3.99": 23,
+      "3.50-3.74": 20,
+      "3.25-3.49": 15,
+      "3.00-3.24": 10,
+      "2.50-2.99": 5,
+      "2.0-2.49": 0,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS fall 2024 first-year class (C1, C11, C12); the CDS gives no residency split and left the SAT/ACT percentile and percent-submitting cells blank. Undergraduate counts are the CDS B1/B2 totals (15,375 undergraduates, of whom 551 are nonresident). Student-faculty ratio 13.4:1 (CDS I-2). The newer fall 2025 class, with a residency split, is in the second statistics row."
+  },
+  "stats_extra": [
+    {
+      "cds_year": "2025-2026",
+      "source": "snapshot",
+      "applicants": 17389,
+      "admits": 15302,
+      "enrolled": 3319,
+      "in_state_applicants": 5354,
+      "in_state_admits": 4808,
+      "out_state_applicants": 11640,
+      "out_state_admits": 10193,
+      "intl_applicants": 395,
+      "intl_admits": 301,
+      "notes": "From UH Manoa's published fall 2025 admitted-class snapshot: Hawaii residents 5,354 applied / 4,808 admitted / 1,933 enrolled; U.S. out-of-state (not WUE) 4,099 / 3,387 / 360; WUE states 7,541 / 6,806 / 973; international 395 / 301 / 53 enrolled. Out-of-state here is the sum of non-WUE and WUE applicants (11,640 applied, 10,193 admitted). Admitted-student GPA 25th-75th percentile 3.49-4.04. The SAT (1130-1350) and ACT (21-29) ranges loaded for this college are the 25th-75th percentiles of admitted students from the same page, not of enrolled students."
+    }
+  ],
+  "scores": {
+    "SAT_TOTAL": [
+      1130,
+      null,
+      1350
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      null,
+      29
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "C",
+    "state_residency": "I",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "UH Manoa is test-optional with a 'Do No Harm' policy: a submitted score that would hurt the applicant is excluded."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 255,
+    "intl_avg_award_usd": 16080,
+    "notes": "CDS H6: 255 degree-seeking nonresident undergraduates received institutional aid (avg $16,080, total $4,100,332); the CDS does not make clear which aid year this covers and counts all nonresidents, not only international students."
+  }
+}

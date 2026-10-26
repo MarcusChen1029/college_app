@@ -1,0 +1,149 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "East Texas A&M - International undergraduate admissions",
+      "url": "https://www.etamu.edu/international/undergrad",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "East Texas A&M - Apply (application fee, platforms)",
+      "url": "https://www.etamu.edu/apply/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "East Texas A&M - Freshman admission",
+      "url": "https://www.etamu.edu/freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "East Texas A&M - Freshman cost of attendance (non-resident)",
+      "url": "https://www.etamu.edu/freshmen/cost",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "flexible",
+    "notes": "Undergraduate admission rests on any one of: top 30% of class, ACT composite 21+, or SAT 1060+ (the freshman page says test scores are not required and the top 30% are automatically admitted). The CDS marks SAT/ACT as 'recommended'. International students without a class rank can qualify with SAT 1060 or ACT 21. A recommended high school curriculum of four credits each in English, math, science and social studies is also listed.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "Apply with the university's own application, ApplyTexas or the Common App (choose East Texas A&M). The Apply page lists a $30 application fee for undergraduates (it does not give a separate international fee). Required: official high school transcripts evaluated by an independent credential-evaluation agency (the school does not accept student-submitted unofficial evaluations), English proficiency proof, and a Financial Statement form for the I-20. No financial-documentation dollar amount is listed.",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-06-01",
+      "label": "Freshman priority date (fall 2027 entry, CDS C14)",
+      "notes": "From the CDS (all freshmen); notification is rolling from Oct. 1. The CDS lists a domestic closing date of Aug. 15.",
+      "src": "cds"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "International fall application deadline (fall 2027 entry)",
+      "notes": "International page: Fall Aug. 1, Spring Oct. 1, Summer Mar. 1, with the footnote that applications must be submitted 90 days before the semester starts and that applications received after May 1 are reviewed case by case; the page also says all requirements should be complete at least three months before the semester. Years are not printed; fall 2027 assumed.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waivers: advanced-level Texas Intensive English Program (TIEP) completion; one year at a Texas public high school with English III or IV grade B or better; all secondary/postsecondary education in a listed English-speaking country (e.g. Australia, Canada except Quebec, Ireland, New Zealand, United Kingdom, Jamaica, Ghana); 12+ transferable credits with C or better in ENG 1301 and 1302; GCE/GCSE/IGCSE, WASC, KCSE or SSCE English with C or higher, or IB English grade 4+. Four years of U.S. high school, SAT EBRW 560 or ACT English 21 also satisfy the requirement. The pages describe no conditional admission or ESL program beyond TIEP as a waiver route.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Unofficial TOEFL/IELTS scores can be uploaded to the Applicant Portal for verification. The page does not mention the new 1-6 TOEFL scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "6.0 overall band.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "100 minimum score. Gateway English Test (formerly English3) 405 overall is also accepted.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "CDS H6: institutional need-based and non-need-based aid are both available to degree-seeking nonresident undergraduates (24 recipients, average $9,622). The international admissions page describes no scholarship amounts, and the cost page lists no non-resident tuition waiver.",
+    "src": "cost"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6188",
+      "note": "East Texas A&M SAT code per the international admissions page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4088",
+      "note": "East Texas A&M ACT code per the international admissions page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

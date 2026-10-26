@@ -1,0 +1,76 @@
+{
+  "slug": "louisville",
+  "name": "University of Louisville",
+  "short_name": "UofL",
+  "state_region": "KY",
+  "city": "Louisville",
+  "latitude": 38.216862,
+  "longitude": -85.760412,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://louisville.edu/",
+  "admissions_url": "https://louisville.edu/admissions/",
+  "ipeds_unit_id": 157289,
+  "undergrad_enrollment": 16194,
+  "intl_undergrads": 233,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023); fall 2023 enrollment (EF2023A); College Navigator (2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=157289",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 14821,
+    "admits": 11937,
+    "enrolled": 3117,
+    "pct_submit_sat": 15,
+    "pct_submit_act": 88,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). UofL's 2024-25 CDS is linked from its website only through a document-viewer page that could not be downloaded as text, and no 2025-26 CDS is posted, so SAT total, GPA and residency splits are not added. College Navigator for fall 2024 shows 15,668 applicants, 79% admitted, SAT ERW 530/580/640, Math 510/570/630, ACT 19/23/27. Undergrad enrollment (16,194) and nonresident-alien undergraduates (233) are fall 2023 IPEDS (EF2023A); student-to-faculty ratio 14:1 from College Navigator."
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      570,
+      630
+    ],
+    "SAT_MATH": [
+      510,
+      560,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      19,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      17,
+      22,
+      26
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 13136,
+    "tuition_out_of_state_usd": 29482,
+    "books_usd": 1270,
+    "room_board_usd": 12576,
+    "other_usd": 8132,
+    "total_coa_usd": 51460,
+    "notes": "College Navigator (IPEDS) 2024-25: tuition includes required fees; on-campus cost of attendance for out-of-state students is $51,460. UofL's own international cost-of-attendance page was not read, so current-year figures may differ."
+  }
+}

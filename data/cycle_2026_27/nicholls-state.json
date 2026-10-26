@@ -1,0 +1,174 @@
+{
+  "sources": {
+    "ff": {
+      "kind": "admissions_site",
+      "title": "Nicholls State University - International first-time freshmen",
+      "url": "https://www.nicholls.edu/international/first-time-freshmen/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Nicholls State University - International Student Services",
+      "url": "https://www.nicholls.edu/international/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Nicholls State University 2025-2026 Catalog - Admissions (international student admission)",
+      "url": "https://www.nicholls.edu/academics/resources/catalog/catalog-2025-2026/admissions-2025-2026/",
+      "accessed": "2026-10-26"
+    },
+    "adm": {
+      "kind": "admissions_site",
+      "title": "Nicholls State University - Admissions (first-time freshman requirements)",
+      "url": "https://www.nicholls.edu/admissions/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Nicholls State University - First-Time Freshman scholarships",
+      "url": "https://www.nicholls.edu/financial-aid/scholarships/first-time-freshman/",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Nicholls State University - Cost of Attending Nicholls (2025-2026 estimates)",
+      "url": "https://www.nicholls.edu/financial-aid/coa/",
+      "accessed": "2026-10-26"
+    },
+    "progs": {
+      "kind": "other",
+      "title": "Nicholls State University - Academic degrees",
+      "url": "https://www.nicholls.edu/academics/degrees/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Nicholls' admissions page lists a 2.35 overall high school GPA and 2.0 core GPA with the 19-unit core curriculum and no ACT/SAT minimum for standard graduates (it says admissions will work with students who have not taken the ACT); the page does not use the words test-optional. The 2025-26 catalog lists ACT/SAT scores among documents for non-US high school graduates, and the international page uses ACT/SAT (or other tests) to show university-level English and math readiness, so international applicants should expect to send some score. Out-of-state freshmen who miss the GPA/core standard can qualify with ACT 23 / SAT 1130 or ACT 21 / SAT 1060 plus a core GPA, per the catalog.",
+    "src": "adm"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "Fee conflict: the international freshman page says a $30 processing fee paid with the online application; the 2025-26 catalog lists a $20 application fee (and $30 late fee) with no separate international fee. International freshman documents: Summary of Educational Background by Years form, official secondary transcripts sent directly by the school with official English translation, Affidavit of Support plus bank statement, immunization form (needed for enrollment), housing application and ACT/SAT scores (catalog). High school GPA minimum 2.35. Nicholls does not charge international students out-of-state fees.",
+    "src": "ff"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-04-15",
+      "label": "International fall 2027 application deadline",
+      "notes": "International deadlines are April 15 (fall) and October 15 (spring); later applications move to the next semester. Domestic priority dates (July 25 fall, December 15 spring) do not apply to international applicants. Years are not printed on the pages; April 15 is taken as 2027 for fall 2027 entry.",
+      "src": "ff"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-31",
+      "label": "Academic scholarship materials (priority)",
+      "notes": "Scholarships page: application materials including ACT scores and transcripts are due by January 31 of the senior year (no year printed; taken as 2027). The page does not say whether international students are eligible.",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for students from countries where English is the native language (list linked from the page); also satisfied by a US high school diploma. University-level English can also be shown with SAT EBRW 500, ACT English 18, ACCUPLACER Next-Generation Writing 250 or ELS level 112 completion. The catalog and international pages mention no ESL pathway or conditional admission.",
+    "src": "ff"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "The page prints 'TOEFL: 4.0 (80)'.",
+      "src": "ff"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "The same line gives 4.0 alongside 80, read as the new 1-6 scale.",
+      "src": "ff"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "ff"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "ff"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": null,
+    "notes": "No international-specific scholarship was found. Freshman academic scholarships are set by GPA and ACT (for example $2,000-$3,000 per year for a 3.0-3.5 GPA with ACT 21-30+; ACT-based, superscore not used), and the international page says an approved scholarship can offset the financial-support requirement, but eligibility of international students is not stated. International students pay the same tuition as Louisiana residents (no out-of-state fee).",
+    "src": "schol"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2025-2026",
+    "src": "coa",
+    "tuition_usd": 8672,
+    "tuition_out_of_state_usd": null,
+    "tuition_intl_usd": 8672,
+    "required_fees_usd": null,
+    "room_board_usd": 11248,
+    "books_usd": 1385,
+    "other_usd": 6388,
+    "total_coa_usd": 27693,
+    "notes": "Nicholls' cost-of-attendance page shows only 2025-2026 estimates (no 2026-27 figures yet), for a resident full-time undergraduate living on campus: tuition and mandatory fees $8,672 (combined), food and housing $11,248, books $1,385, transportation $3,650, personal $2,666, loan fees $72 (other = 3,650 + 2,666 + 72), total $27,693. The international page states international students do not pay out-of-state fees, so the resident figure is used as the international tuition."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "6221",
+      "note": "SAT school code printed on the international first-time freshman page.",
+      "src": "ff"
+    },
+    "act": {
+      "code": "1580",
+      "note": "ACT school code printed on the international first-time freshman page.",
+      "src": "ff"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL code is printed on the admissions pages.",
+      "src": "ff"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ff"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ff"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ff"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

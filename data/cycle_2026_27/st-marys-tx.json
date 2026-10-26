@@ -1,0 +1,159 @@
+{
+  "sources": {
+    "fy": {
+      "kind": "admissions_site",
+      "title": "St. Mary's - First-Year Admission (dates, test optional or personal statement)",
+      "url": "https://www.stmarytx.edu/admission/first-year/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "St. Mary's - International Student Admission",
+      "url": "https://www.stmarytx.edu/admission/international-admission/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "other",
+      "title": "St. Mary's - English Proficiency policy",
+      "url": "https://www.stmarytx.edu/policies/academic-affairs/english-proficiency/",
+      "accessed": "2026-10-26"
+    },
+    "iep": {
+      "kind": "admissions_site",
+      "title": "St. Mary's - Intensive English Program",
+      "url": "https://www.stmarytx.edu/campuslife/international/iep/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "St. Mary's - Scholarships (merit range, Global Scholars Program)",
+      "url": "https://www.stmarytx.edu/admission/cost-aid/financial-aid-resources/scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Applicants must submit ACT/SAT scores or a personal statement ('it is your choice, but one must be submitted'). Admission is rolling.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "coalition",
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "The St. Mary's application, ApplyTexas, Common App and Coalition App are all accepted free of charge. Required: application, high school transcript, and either test scores or a personal statement; one recommendation letter and a resume are optional. International applicants submit the application plus official high school transcripts (scratch card information for West African exam countries). CDS C7 rates GPA very important, and rigor, test scores, essay, extracurriculars, character and volunteer work important.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International fall 2027 application: all items due by May 1",
+      "notes": "The international page lists fall (August-December) entry due May 1 and spring due Oct. 1; no year is printed, treated as fall 2027. Decisions come about 3-4 weeks after all materials, including transcripts and English scores, arrive.",
+      "src": "intl"
+    },
+    {
+      "kind": "priority",
+      "due": "2026-12-15",
+      "label": "Priority date for admission and general merit scholarships (fall 2027)",
+      "notes": "The first-year page prints Dec. 15 without a year; treated as fall 2027. Admission is rolling.",
+      "src": "fy"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-10-31",
+      "label": "Preferred date for Specialty Scholarships (fall 2027)",
+      "notes": "Year not printed; treated as fall 2027 entry.",
+      "src": "fy"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "Apply by Feb. 1 for automatic academic merit scholarship consideration",
+      "notes": "From the scholarships page for first-time freshmen who enroll full-time; the page does not say whether international students qualify.",
+      "src": "sch"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Preferred enrollment deposit date",
+      "src": "fy"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: applicants with a US high school diploma or a degree from an accredited US institution, a bachelor's or equivalent from a non-US university in a country where English is the main language of instruction, and citizens of listed countries (e.g. Canada except Quebec, UK, Australia, Nigeria); waivers are decided case by case, and AP/IB and other curricula may be considered in place of tests. Scores must be within six months of the application date and come directly from the testing agency. Applicants without the scores can take the Intensive English Program (online, about $1,350 per course plus a $100 deposit; needs B1 level and an iTEP placement test); the pages do not describe a conditional-admission route for undergraduates.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "The pages do not list a minimum for the new 1-6 TOEFL.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "110 or higher for undergraduates (graduate minimum is 115).",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "First-time freshmen who apply by Feb. 1 and enroll full-time are automatically considered for academic merit scholarships of $10,000-$26,000 per year; the page does not say whether international students are eligible. The Global Scholars Program gives international students $2,000 per year for academic excellence and cultural understanding (renewed annually). The university reports that nearly 98% of first-time freshmen receive scholarships or institutional grants. CDS H6: 55 nonresidents received institutional aid, average $42,263.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The pages read do not print a numeric SAT code; look it up in the College Board code search (FAFSA school code 003623 is not an SAT code)."
+    },
+    "act": {
+      "code": null,
+      "note": "The pages read do not print a numeric ACT code; look it up at act.org."
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read."
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the pages read."
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

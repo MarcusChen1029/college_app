@@ -1,0 +1,117 @@
+{
+  "slug": "wichita-state",
+  "name": "Wichita State University",
+  "short_name": "Wichita State",
+  "state_region": "KS",
+  "city": "Wichita",
+  "latitude": 37.718882,
+  "longitude": -97.292361,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.wichita.edu/",
+  "admissions_url": "https://www.wichita.edu/admissions/",
+  "ipeds_unit_id": 156125,
+  "undergrad_enrollment": 14906,
+  "intl_undergrads": 2147,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Wichita State University Common Data Set 2025-2026 (Excel, Office of Planning and Analysis)",
+      "url": "https://www.wichita.edu/services/planning_and_analysis/documents/WSU_2025_2026_CDS_OPAweb.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Wichita State University (campus setting: City: Large)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=156125",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8736,
+    "admits": 6311,
+    "enrolled": 1738,
+    "in_state_applicants": 4784,
+    "in_state_admits": 3361,
+    "out_state_applicants": 3379,
+    "out_state_admits": 2484,
+    "intl_applicants": 573,
+    "intl_admits": 466,
+    "pct_submit_sat": 4.2,
+    "pct_submit_act": 71.0,
+    "gpa_avg": 3.41,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 7.0,
+      "3.75-3.99": 25.0,
+      "3.50-3.74": 22.0,
+      "3.25-3.49": 13.0,
+      "3.00-3.24": 11.0,
+      "2.50-2.99": 16.0,
+      "2.0-2.49": 5.0,
+      "1.0-1.99": 1.0
+    },
+    "notes": "CDS C1 (fall 2025). International first-year applicants: 466 of 573 admitted (81%). No waitlist; no early decision or early action. Undergrad enrollment 14,906 is B1/B2 total undergraduates including non-degree-seeking; intl_undergrads 2,147 is the B2 nonresident total (only 438 of them degree-seeking undergraduates, 55 first-time first-year). Only 73 enrolled freshmen (4.2%) submitted SAT, so SAT percentiles (composite 1050/1160/1260) rest on a small group; ACT composite is 17/21/24. GPA distribution is the 'all enrolled students' column."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_ERW": [
+      525,
+      600,
+      640
+    ],
+    "SAT_MATH": [
+      505,
+      560,
+      635
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      15,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "intl_need_aid_awarded": 118,
+    "intl_avg_award_usd": 8358,
+    "notes": "CDS H6: 118 nonresident undergraduates received institutional aid, average $8,358 (the CDS ticks both need-based and non-need-based aid; the international aid page says scholarships are not based on financial need). CDS G1 costs were not filled in, so resident and nonresident tuition are not recorded."
+  }
+}

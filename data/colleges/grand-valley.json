@@ -1,0 +1,98 @@
+{
+  "slug": "grand-valley",
+  "name": "Grand Valley State University",
+  "short_name": "GVSU",
+  "state_region": "MI",
+  "city": "Allendale",
+  "latitude": 42.963001,
+  "longitude": -85.889826,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.gvsu.edu",
+  "admissions_url": "https://www.gvsu.edu/admissions/",
+  "ipeds_unit_id": 170082,
+  "undergrad_enrollment": 19154,
+  "intl_undergrads": 241,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Grand Valley State University Common Data Set 2025-2026 (XLSX)",
+      "url": "https://www.gvsu.edu/cms4/asset/EFAB4AD2-A926-8D16-A5685AB71E0C7DC3/cds_2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 27261,
+    "admits": 25274,
+    "enrolled": 4335,
+    "in_state_applicants": 22770,
+    "in_state_admits": 21130,
+    "out_state_applicants": 3431,
+    "out_state_admits": 3262,
+    "intl_applicants": 1060,
+    "intl_admits": 872,
+    "pct_submit_sat": 54.2,
+    "pct_submit_act": 3.0,
+    "gpa_avg": 3.4,
+    "pct_reporting_gpa": 98.87,
+    "notes": "CDS C1 (fall 2025). International = the 'Nonresident' rows of C1: 1,060 applied, 872 admitted (82%), only 34 enrolled. Undergrad total and nonresident count are B1/B2 'Total undergraduates' (19,154; nonresident 241). No waitlist, early decision or early action; no application closing date (rolling) and no application fee. SAT/ACT percentiles are for enrolled students who submitted scores (SAT 2,350 students = 54.2% of 4,335; ACT 129 = 3.0%, so the ACT figures rest on few students). C11 GPA ranges were split by test submitters vs non-submitters and left blank for all enrolled students, so gpa_distribution is omitted; mean GPA 3.40 is C12."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      920,
+      1030,
+      1170
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      26,
+      30
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "I",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "NC",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 15872,
+    "tuition_out_of_state_usd": 22588,
+    "tuition_intl_usd": 22588,
+    "required_fees_usd": 0,
+    "room_board_usd": 10788,
+    "books_usd": 800,
+    "other_usd": 2700,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 222,
+    "intl_avg_award_usd": 9304,
+    "notes": "CDS G1 first-year; the CDS flags that final 2026-27 charges were not yet available, so the cycle file's figures from the tuition page replace these. H6: 222 nonresident degree-seeking undergraduates received institutional aid, average $9,304."
+  }
+}

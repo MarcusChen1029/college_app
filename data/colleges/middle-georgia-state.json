@@ -1,0 +1,79 @@
+{
+  "slug": "middle-georgia-state",
+  "name": "Middle Georgia State University",
+  "short_name": "MGA",
+  "state_region": "GA",
+  "city": "Macon",
+  "latitude": 32.808092,
+  "longitude": -83.732058,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.mga.edu",
+  "admissions_url": "https://www.mga.edu/admissions/international-students/index.php",
+  "ipeds_unit_id": 482158,
+  "undergrad_enrollment": 7692,
+  "intl_undergrads": 122,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - Middle Georgia State University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=482158",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=482158",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=482158",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 4346,
+    "admits": 4332,
+    "enrolled": 1319,
+    "pct_submit_sat": 18,
+    "pct_submit_act": 7,
+    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). Admission is effectively open (99.7% admitted). No Common Data Set was found on MGA's institutional research pages, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 18%, ACT 7%)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      460,
+      530,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      14,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      20,
+      25
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "slug": "siu-carbondale",
+  "name": "Southern Illinois University Carbondale",
+  "short_name": "SIU Carbondale",
+  "state_region": "IL",
+  "city": "Carbondale",
+  "latitude": 37.714193,
+  "longitude": -89.217273,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://siu.edu",
+  "admissions_url": "https://siu.edu/international/admissions/",
+  "ipeds_unit_id": 149222,
+  "undergrad_enrollment": 8416,
+  "intl_undergrads": 126,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Southern Illinois University Carbondale Common Data Set 2025-2026 (PDF form fields)",
+      "url": "https://irs.siu.edu/_common/documents/cds_2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Southern Illinois University-Carbondale (locale, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=149222",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11089,
+    "admits": 10473,
+    "enrolled": 1535,
+    "in_state_applicants": 9064,
+    "in_state_admits": 8551,
+    "out_state_applicants": 1702,
+    "out_state_admits": 1647,
+    "intl_applicants": 323,
+    "intl_admits": 275,
+    "pct_submit_sat": 39.02,
+    "pct_submit_act": 8.66,
+    "gpa_avg": 3.291,
+    "pct_reporting_gpa": 99.5,
+    "gpa_distribution": {
+      "4.0": 5.57,
+      "3.75-3.99": 20.96,
+      "3.50-3.74": 15.72,
+      "3.25-3.49": 14.73,
+      "3.00-3.24": 12.7,
+      "2.50-2.99": 20.1,
+      "2.0-2.49": 10.15,
+      "1.0-1.99": 0.07
+    },
+    "notes": "CDS C1 (fall 2025 entering class): 94% of applicants admitted; international 323 applied, 275 admitted (85%), 10 enrolled. Only 126 of 8,416 undergraduates (B1 totals) are nonresidents, so the international undergraduate community is small. GPA distribution is the 'all enrolled students' column of C11. No early decision or early action. The CDS was filled in as a PDF form; values were read from the form fields."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      890,
+      1020,
+      1180
+    ],
+    "SAT_ERW": [
+      450,
+      520,
+      610
+    ],
+    "SAT_MATH": [
+      430,
+      500,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "VI",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9833,
+    "tuition_out_of_state_usd": 9833,
+    "tuition_intl_usd": 24581,
+    "required_fees_usd": 3951,
+    "room_board_usd": 12341,
+    "books_usd": 780,
+    "intl_need_aid": null,
+    "intl_need_aid_awarded": 44,
+    "intl_avg_award_usd": 19488,
+    "notes": "CDS G1 (first-year; the CDS marks cost data as of June 2026). Tuition shown is the 15-credit-hour flat annual rate: $9,833 for Illinois residents and domestic nonresidents, $24,581.40 for international students (who may qualify for the in-state rate through the High Achievers Alternate Tuition Rate). Tuition varies by program (G4). CDS H6 ticks both need-based and non-need-based institutional aid for nonresidents: 44 nonresidents received it, average $19,488. The 44 count is for all degree-seeking undergraduate nonresidents, not just first-year."
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "slug": "lee-university",
+  "name": "Lee University",
+  "short_name": "Lee (TN)",
+  "state_region": "TN",
+  "city": "Cleveland",
+  "latitude": 35.166019,
+  "longitude": -84.871399,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.leeuniversity.edu/",
+  "admissions_url": "https://www.leeuniversity.edu/admissions/admissions-requirements/",
+  "ipeds_unit_id": 220613,
+  "undergrad_enrollment": 3271,
+  "intl_undergrads": 85,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Lee University Common Data Set 2024-25 (PDF)",
+      "url": "https://www.leeuniversity.edu/wp-content/uploads/2024-2025-CDS.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 enrollment and admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=220613",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 2388,
+    "admits": 1684,
+    "enrolled": 589,
+    "in_state_applicants": 1271,
+    "in_state_admits": 954,
+    "out_state_applicants": 1018,
+    "out_state_admits": 694,
+    "intl_applicants": 95,
+    "intl_admits": 34,
+    "pct_submit_sat": 21,
+    "pct_submit_act": 69,
+    "gpa_avg": 3.63,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 17,
+      "3.75-3.99": 36,
+      "3.50-3.74": 19,
+      "3.25-3.49": 12,
+      "3.00-3.24": 9,
+      "2.50-2.99": 5,
+      "2.0-2.49": 1,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS 2024-25 C1 (fall 2024): 2,388 applied, 1,684 admitted, 589 enrolled. International first-year applicants: 95 applied, 34 admitted, 23 enrolled, so international admission was much more selective than the overall admit rate. The 2025-26 CDS is listed on lee.edu but its PDF could not be retrieved, so 2024-25 is used. Undergraduate enrollment (3,271) and intl_undergrads (85 nonresidents, all undergraduates) are CDS B1. No waitlist, ED or EA; no application closing date (C14)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1020,
+      1140,
+      1210
+    ],
+    "SAT_ERW": [
+      540,
+      580,
+      630
+    ],
+    "SAT_MATH": [
+      500,
+      550,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      17,
+      22,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "I",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "racial_ethnic_status": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "I"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "recommended",
+    "notes": "CDS 2024-25 C8 (for fall 2025 entry): SAT or ACT 'recommend'. Students with 16 college semester hours (24 for Tennessee residents) are not required to provide scores. The admissions page now says applicants can apply test-optional."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "cds",
+    "tuition_usd": 24120,
+    "required_fees_usd": 750,
+    "notes": "CDS 2024-25 G1 (first-year): tuition $24,120, required fees $750, on-campus housing only $5,290 and food only $5,160; non-resident tuition is the same. Current 2026-27 figures are in the cycle file."
+  }
+}

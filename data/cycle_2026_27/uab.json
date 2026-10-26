@@ -1,0 +1,160 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UAB Undergraduate Admissions - International freshman",
+      "url": "https://www.uab.edu/admissions/apply/international/freshman",
+      "accessed": "2026-10-26"
+    },
+    "howto": {
+      "kind": "admissions_site",
+      "title": "UAB Undergraduate Admissions - Freshman how to apply (deadlines, $40 fee, score codes)",
+      "url": "https://www.uab.edu/admissions/apply/freshman/how-to-apply",
+      "accessed": "2026-10-26"
+    },
+    "topt": {
+      "kind": "admissions_site",
+      "title": "UAB Undergraduate Admissions - Test-optional admission policy",
+      "url": "https://www.uab.edu/admissions/apply/test-optional",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "UAB Undergraduate Catalog - Admission (international freshman minimum GPA 2.75, deadlines)",
+      "url": "https://catalog.uab.edu/undergraduate/admission/",
+      "accessed": "2026-10-26"
+    },
+    "elp": {
+      "kind": "other",
+      "title": "UAB Undergraduate Catalog - English Language Programs, INTO UAB (pathway programs)",
+      "url": "https://catalog.uab.edu/undergraduate/elp/",
+      "accessed": "2026-10-26"
+    },
+    "place": {
+      "kind": "admissions_site",
+      "title": "UAB Undergraduate Admissions - Course placement information for freshmen",
+      "url": "https://www.uab.edu/admissions/apply/admitted/placement",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "admissions_site",
+      "title": "UAB Undergraduate Admissions - Scholarships for international students",
+      "url": "https://www.uab.edu/admissions/cost/scholarships/international-students",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test-optional for Summer/Fall 2027 entry only for applicants with a 3.5+ weighted high school GPA (international students who graduate in 2027 are included). With a self-reported GPA of 3.49 or below, SAT/ACT scores are required for review; applicants who send scores are recommended to have at least ACT 20 or SAT 1030. The test-optional or with-scores choice is final once the application is submitted. UAB will not offer test-optional admission for Fall 2028 and later. Early medical, dental and optometry acceptance programs and the Honors College need scores.",
+    "src": "topt"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 40,
+    "notes": "Apply with the UAB application or the Common App ($40 nonrefundable). International applicants also send official proof of English proficiency (unless English is their first language) and official transcripts in English. UAB says applicants who live and attend high school outside the US apply through INTO UAB; INTO's own fee and deadlines are not published on the UAB page. International freshmen need at least a 2.75 GPA on the US 4.0 scale (UAB evaluation), must declare a major, and need a bank statement or affidavit of support for the I-20.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-06-01",
+      "label": "Fall 2027 priority admission deadline (international freshman)",
+      "notes": "UAB's international freshman page and catalog list June 1 for fall without a year; treated as fall 2027. Later applications are considered as space allows. UAB advises international students to apply at least six months before the start date. Applicants outside the US apply through INTO UAB, whose fall 2027 date is not published.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "Accepted by this date to be considered for the UAB International Scholarship (August intake)",
+      "notes": "The page gives no year; treated as 2027. Students must already be accepted by May 1 (Nov 1 for the January intake), so the application should be complete well before then.",
+      "src": "sch"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No score needed if English is the first language, after 2+ years at a US high school, or with 24+ transferable semester hours from a US college. Scores must be from the last 2 years. TOEFL MyBest and IELTS OneSkill retakes are accepted. For writing placement (EH 101): TOEFL writing 23 or IELTS writing 6.0; below that a student is placed in the INTO UAB writing course.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 77,
+      "notes": "Institution code 1856. TOEFL Essentials 8.5 also accepted. The page does not give a score for the new 1-6 TOEFL scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.5
+      },
+      "notes": "6.0 overall with at least 5.5 on each section. IELTS is checked with the TRF code; no official report needed.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "notes": "The page also lists IELA 176 and Gaokao 120 as accepted.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": false,
+    "notes": "UAB International Scholarship: US $7,500 per year, considered automatically at admission for first-year, full-time degree-seeking students living outside the US who finished secondary school outside the US within 3 years with a 3.0/4.0 GPA, have no prior college work and expect an F-1 visa. First come, first served while funds last; renewable for 4 years; not for students on government scholarships or other external support. Other UAB scholarships use the BSMART application (due April 1). Whether international students can get need-based aid is not stated. INTO UAB pathway programs (for students below direct-entry GPA/English levels): accelerated 1 semester (TOEFL 77, IELTS 6.0, Duolingo 120, GPA 2.0); standard 2 semesters (TOEFL 60, IELTS 5.5, Duolingo 90); comprehensive 3 semesters (TOEFL 50, IELTS 5.0, Duolingo 75).",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "1856",
+      "src": "howto"
+    },
+    "act": {
+      "code": "0056",
+      "src": "howto"
+    },
+    "toefl": {
+      "code": "1856",
+      "note": "UAB institutional code printed on the international freshman page.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "Verified with the TRF code on the report; no institution code is needed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "C",
+    "pre_med": "C",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "C"
+  },
+  "tier_notes": {
+    "general": "Public research university with an academic medical center; admits about 94% of applicants (CDS 2025-26). Placed just above D for its research profile.",
+    "biology_life_sci": "Editorial estimate: large life-science programs next to a major academic medical center; no ranking cited.",
+    "pre_med": "Editorial estimate: UAB has its own medical school and early medical/dental/optometry acceptance programs (test-optional page); no ranking cited.",
+    "nursing": "Editorial estimate: School of Nursing in an academic medical center; no ranking cited."
+  }
+}

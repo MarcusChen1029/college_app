@@ -1,0 +1,126 @@
+{
+  "slug": "north-alabama",
+  "name": "University of North Alabama",
+  "short_name": "UNA",
+  "state_region": "AL",
+  "city": "Florence",
+  "latitude": 34.80731,
+  "longitude": -87.680407,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.una.edu",
+  "admissions_url": "https://www.una.edu/admissions/",
+  "ipeds_unit_id": 101879,
+  "undergrad_enrollment": 8437,
+  "intl_undergrads": 352,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of North Alabama Common Data Set 2025-2026 (PDF; the page header still reads 2024-2025 but the data are for Fall 2025)",
+      "url": "https://www.una.edu/research/Institutional%20Data/una-common-data-set-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6847,
+    "admits": 4800,
+    "enrolled": 1094,
+    "in_state_applicants": 5323,
+    "in_state_admits": 3810,
+    "out_state_applicants": 1340,
+    "out_state_admits": 890,
+    "intl_applicants": 184,
+    "intl_admits": 100,
+    "pct_submit_sat": 3,
+    "pct_submit_act": 74,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 96,
+    "gpa_distribution": {
+      "4.0": 18,
+      "3.75-3.99": 30,
+      "3.50-3.74": 19,
+      "3.25-3.49": 11,
+      "3.00-3.24": 10,
+      "2.50-2.99": 9,
+      "2.0-2.49": 3,
+      "1.0-1.99": 0
+    },
+    "notes": "CDS C1 (Fall 2025 entering class): 6,847 applied, 4,800 admitted (70%); international 184 applied, 100 admitted (54%), 29 enrolled. Only 3% (28 students) of enrolled first-years submitted SAT scores and 74% (814) ACT, so the score ranges describe self-selected submitters. No early decision/action, no waitlist, no application closing date; notification is rolling. The file is labeled 'Common Data Set 2024-2025' on every page but reports Fall 2025 data. Undergraduate enrollment and nonresident count are the B1/B2 totals (8,437 total undergraduates; 352 nonresidents)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1018,
+      1110,
+      1250
+    ],
+    "SAT_ERW": [
+      530,
+      555,
+      608
+    ],
+    "SAT_MATH": [
+      498,
+      535,
+      612
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      27
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      28
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: SAT/ACT not used in admission decisions ('We do not consider ACT or SAT scores for admission purposes. They are used for scholarship and placement purposes.')."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 10500,
+    "tuition_out_of_state_usd": 21000,
+    "required_fees_usd": 3200,
+    "room_board_usd": 11050,
+    "books_usd": 2000,
+    "intl_need_aid": false,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 338,
+    "intl_avg_award_usd": 14021,
+    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $10,500 ($350 per credit hour x 30), nonresident $21,000 ($700 per credit hour), required fees $3,200, on-campus food and housing $11,050. CDS H6: 338 degree-seeking nonresident undergraduates received institutional aid (average $14,021, total $4,739,086); both need-based and non-need-based institutional aid boxes are ticked."
+  }
+}

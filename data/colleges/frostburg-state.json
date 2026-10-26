@@ -1,0 +1,53 @@
+{
+  "slug": "frostburg-state",
+  "name": "Frostburg State University",
+  "short_name": "Frostburg State",
+  "state_region": "MD",
+  "city": "Frostburg",
+  "latitude": 39.650918,
+  "longitude": -78.934293,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.frostburg.edu",
+  "admissions_url": "https://www.frostburg.edu/admissions-and-cost/undergraduate/index.php",
+  "ipeds_unit_id": 162584,
+  "undergrad_enrollment": 3436,
+  "intl_undergrads": 513,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Frostburg State University Common Data Set 2025-2026 (PDF; only B1 and C1 are filled in)",
+      "url": "https://www.frostburg.edu/archive/_files/pdf/air/ipeds/2025-2026/cds-2025-26.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "nav": {
+      "kind": "ipeds",
+      "title": "College Navigator - Frostburg State University (student-faculty ratio, fall 2024 admissions)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=162584",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=162584",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 4839,
+    "admits": 4389,
+    "notes": "Only B1 and C1 are filled in the CDS PDF (first-year applicants 2,285 men + 2,554 women; admits 2,070 + 2,319). The enrolled count is left null because the form's C1 enrollee fields disagree with each other; the international and in-state/out-of-state split is blank; no test, GPA or C7 factor data. College Navigator (IPEDS fall 2024): 5,037 applicants, 89% admitted, 13% of admits enrolled. Undergraduate enrollment 3,436 is CDS B1 total undergraduates, fall 2025; student-faculty ratio 13:1 from College Navigator (the CDS gives 12:1)."
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 is blank; policy taken from the admissions site."
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "slug": "southeast-missouri-state",
+  "name": "Southeast Missouri State University",
+  "short_name": "SEMO",
+  "state_region": "MO",
+  "city": "Cape Girardeau",
+  "latitude": 37.311107,
+  "longitude": -89.531187,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://semo.edu",
+  "admissions_url": "https://semo.edu/international/admissions/",
+  "ipeds_unit_id": 179557,
+  "undergrad_enrollment": 7682,
+  "intl_undergrads": 442,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Southeast Missouri State University Common Data Set 2025-2026 (PDF)",
+      "url": "https://semo.edu/institutional-research/_pdfs/accessible_version_cds-pdf-2025-2026-southeastmissouristateuniversity.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10541,
+    "admits": 8063,
+    "enrolled": 1307,
+    "in_state_applicants": 4752,
+    "in_state_admits": 4088,
+    "out_state_applicants": 2554,
+    "out_state_admits": 2324,
+    "intl_applicants": 3214,
+    "intl_admits": 1637,
+    "pct_submit_sat": 8,
+    "pct_submit_act": 56,
+    "gpa_avg": 3.53,
+    "pct_reporting_gpa": 99.08,
+    "gpa_distribution": {
+      "4.0": 21.05,
+      "3.75-3.99": 18.19,
+      "3.50-3.74": 17.5,
+      "3.25-3.49": 16.58,
+      "3.00-3.24": 10.1,
+      "2.50-2.99": 12.03,
+      "2.0-2.49": 3.24,
+      "1.0-1.99": 1.16
+    },
+    "notes": "CDS C1 (fall 2025 first-time first-year): 10,541 applicants, 8,063 admitted, 1,307 enrolled. International: 3,214 applied, 1,637 admitted (about 51%, much lower than the 76% overall rate), 107 enrolled. GPA distribution is the 'all enrolled students' column of C11 (0.15% below 1.0 not shown). No early decision/action and no waitlist. Percentiles: SAT 8% (111 students) and ACT 56% (729) of enrolled first-years submitted scores; ACT Reading 19/23/28 and Science 18/21/24 are not stored. Undergraduate enrollment 7,682 and 442 nonresident undergraduates are the B1/B2 'Total Undergraduates' figures."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      990,
+      1120,
+      1210
+    ],
+    "SAT_ERW": [
+      500,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      480,
+      550,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'Test optional'. (The C8A form field for SAT/ACT is set to 'recommended'.)"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9150,
+    "tuition_out_of_state_usd": 9150,
+    "tuition_intl_usd": 18000,
+    "required_fees_usd": 1410,
+    "room_board_usd": 12150,
+    "intl_merit_aid": true,
+    "intl_avg_award_usd": 8011,
+    "notes": "CDS G1 (first-year, 2026-27): domestic/in-state and out-of-state US tuition $9,150, nonresident (international) tuition $18,000, required fees $1,410, food and housing $12,150. H6: 467 nonresident undergraduates received institutional aid, average $8,011 (the need-based/non-need-based boxes could not be read reliably). SEMO's cost page shows $600 per credit hour for international students ($19,410 with fees for 30 hours), housing $8,450 + meals $3,570, and a total estimate of $34,452.20 on campus ($29,391 off campus); that page's housing and meals total $12,020 vs the CDS $12,150."
+  }
+}

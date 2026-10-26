@@ -1,0 +1,93 @@
+{
+  "slug": "elmhurst",
+  "name": "Elmhurst University",
+  "short_name": null,
+  "state_region": "IL",
+  "city": "Elmhurst",
+  "latitude": 41.897164,
+  "longitude": -87.945369,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.elmhurst.edu",
+  "admissions_url": "https://www.elmhurst.edu/admission/",
+  "ipeds_unit_id": 144962,
+  "undergrad_enrollment": 3213,
+  "intl_undergrads": 102,
+  "student_faculty_ratio": 15,
+  "academic_calendar": null,
+  "sources": {
+    "databook": {
+      "kind": "other",
+      "title": "Elmhurst University Institutional Research Data Book 2025-2026 (PDF; freshman applicants, admits, enrollees, GPA; Fall 2025)",
+      "url": "https://www.elmhurst.edu/wp-content/uploads/2026/02/DataBook2025_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: Elmhurst University (Fall 2024 test score percentiles, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=144962",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=144962",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "databook",
+    "applicants": 6743,
+    "admits": 5051,
+    "enrolled": 542,
+    "gpa_avg": 3.68,
+    "notes": "Baseline: no Common Data Set was found on Elmhurst's site (it publishes an institutional Data Book instead). Counts are the Data Book's new FRESHMEN for Fall 2025 (6,743 applied, 5,051 admitted, 542 enrolled); average high school GPA 3.68 is the Data Book figure. International applicant and admit counts are not published; the Data Book shows 18 nonresident-alien new freshmen enrolled in Fall 2025 (37 in 2024). Test-score percentiles are IPEDS Fall 2024 (College Navigator): 23% of enrolled first-time students submitted SAT, 5% ACT; Elmhurst is test-optional. No official SAT total 25/50/75 is published, so SAT ERW and Math are listed separately (the Data Book gives an SAT composite 25th of 995 and 75th of 1,250 for Fall 2025)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      570,
+      640
+    ],
+    "SAT_MATH": [
+      480,
+      560,
+      620
+    ],
+    "ACT_COMPOSITE": [
+      23,
+      26,
+      30
+    ],
+    "ACT_ENGLISH": [
+      23,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      19,
+      24,
+      27
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "IPEDS: SAT/ACT 'not required, but considered'; Elmhurst's admissions site says test-optional."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "ipeds",
+    "tuition_usd": 45258,
+    "required_fees_usd": 600,
+    "room_board_usd": 13170,
+    "books_usd": 1290,
+    "intl_need_aid": false,
+    "notes": "Tuition, student fee ($300 per term) and room/board from Elmhurst's 2026-27 tuition page (room $7,454 + 17-meal board $5,716.30, rounded); books from its cost-of-attendance page. New full-time first-year students also pay a one-time $275 matriculation fee. Private university: no separate international tuition."
+  }
+}

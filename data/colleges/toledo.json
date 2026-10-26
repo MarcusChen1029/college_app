@@ -1,0 +1,116 @@
+{
+  "slug": "toledo",
+  "name": "University of Toledo",
+  "short_name": "UToledo",
+  "state_region": "OH",
+  "city": "Toledo",
+  "latitude": 41.660572,
+  "longitude": -83.614714,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utoledo.edu",
+  "admissions_url": "https://www.utoledo.edu/admission",
+  "ipeds_unit_id": 206084,
+  "undergrad_enrollment": 10726,
+  "intl_undergrads": 815,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Toledo Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.utoledo.edu/offices/institutional-research/report-library/common-data-set/docs/cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10571,
+    "admits": 9397,
+    "enrolled": 1723,
+    "in_state_applicants": 6582,
+    "in_state_admits": 6078,
+    "out_state_applicants": 2620,
+    "out_state_admits": 2324,
+    "intl_applicants": 1369,
+    "intl_admits": 995,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 33,
+    "pct_reporting_gpa": 99.42,
+    "notes": "Counts are CDS C1 (fall 2025). The CDS left the C11 GPA table and the C12 average GPA blank (only the 99.42% share submitting GPA is given), so gpa_avg and the distribution are null. No early decision or early action; no application closing date (rolling from Oct 1). Undergrad and international counts are B1 'Total Undergraduates' (nonresident 815)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      980,
+      1130,
+      1245
+    ],
+    "SAT_ERW": [
+      500,
+      570,
+      630
+    ],
+    "SAT_MATH": [
+      480,
+      560,
+      625
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      27
+    ]
+  },
+  "factors": {
+    "rigor": "NC",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027) marks SAT/ACT in the 'required for some' column; Common App lists the university as test optional for first-year applicants."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11238,
+    "tuition_out_of_state_usd": 20598,
+    "tuition_intl_usd": 20598,
+    "required_fees_usd": 1662,
+    "room_board_usd": 16861,
+    "books_usd": 1290,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 444,
+    "intl_avg_award_usd": 5451,
+    "notes": "CDS G1 first-year 2026-27 (tuition has a guaranteed rate for four years). UToledo's international page lists $12,900 tuition and general fees + $9,360 out-of-state surcharge + about $1,900 program fees (plus $600 for Engineering), $14,850 on-campus room and meals and $2,600 medical insurance. CDS H6: 444 nonresidents received institutional aid, average $5,451."
+  }
+}

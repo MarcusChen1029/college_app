@@ -1,0 +1,79 @@
+{
+  "slug": "harding",
+  "name": "Harding University",
+  "short_name": "Harding",
+  "state_region": "AR",
+  "city": "Searcy",
+  "latitude": 35.247386,
+  "longitude": -91.726143,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.harding.edu",
+  "admissions_url": "https://www.harding.edu/admissions",
+  "ipeds_unit_id": 107044,
+  "undergrad_enrollment": 3536,
+  "intl_undergrads": 172,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions & Enrollment survey, fall 2024 entering class (ADM2024), via the Urban Institute Education Data Portal",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=107044&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "NCES College Navigator - Harding University (fall 2024 admissions, test scores, enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=107044",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=107044",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 2714,
+    "admits": 1914,
+    "enrolled": 854,
+    "pct_submit_sat": 18,
+    "pct_submit_act": 75,
+    "notes": "Baseline from IPEDS fall 2024 (no Common Data Set found on harding.edu): 2,714 applied, 1,914 admitted (71%), 854 enrolled (45% yield). College Navigator: SAT/ACT, GPA, secondary school record, recommendations and an English proficiency test are 'required to be considered'; essay and rank are not considered. SAT submitted by 157 enrolled first-time students (18%), ACT by 643 (75%); Harding also accepts the CLT. No SAT total percentile is published (only section scores). International applicant counts, GPA distribution and residency splits are not published."
+  },
+  "scores": {
+    "SAT_ERW": [
+      530,
+      590,
+      660
+    ],
+    "SAT_MATH": [
+      520,
+      560,
+      630
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      24,
+      29
+    ],
+    "ACT_ENGLISH": [
+      20,
+      24,
+      31
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      26
+    ]
+  }
+}

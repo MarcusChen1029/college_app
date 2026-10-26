@@ -1,0 +1,108 @@
+{
+  "slug": "iu-indianapolis",
+  "name": "Indiana University Indianapolis",
+  "short_name": "IU Indianapolis",
+  "state_region": "IN",
+  "city": "Indianapolis",
+  "latitude": 39.772948,
+  "longitude": -86.172217,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://indianapolis.iu.edu",
+  "admissions_url": "https://indianapolis.iu.edu/admissions/",
+  "ipeds_unit_id": 151111,
+  "undergrad_enrollment": 14834,
+  "intl_undergrads": 273,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Indiana University Indianapolis Common Data Set 2025-2026 (IU Institutional Analytics CDS app, campus IU-Indianapolis, year 2025, section C)",
+      "url": "https://iuapps.iu.edu/cds/?i=home&p=index&section=C.+First-Time%2C+First-Year+Admission&year=2025&campus=IU-Indianapolis",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 16460,
+    "admits": 12846,
+    "enrolled": 3218,
+    "in_state_applicants": 11978,
+    "in_state_admits": 9634,
+    "out_state_applicants": 3857,
+    "out_state_admits": 2862,
+    "intl_applicants": 625,
+    "intl_admits": 350,
+    "pct_submit_sat": 28.5,
+    "pct_submit_act": 2.4,
+    "gpa_avg": 3.49,
+    "pct_reporting_gpa": 93.47,
+    "gpa_distribution": {
+      "4.0": 19.38,
+      "3.75-3.99": 16.62,
+      "3.50-3.74": 18.22,
+      "3.25-3.49": 16.52,
+      "3.00-3.24": 14.73,
+      "2.50-2.99": 12.2,
+      "2.0-2.49": 2.13,
+      "1.0-1.99": 0.2
+    },
+    "notes": "CDS C1 (Fall 2025 first-time first-year, IU Indianapolis campus): 16,460 applied, 12,846 admitted (78%). International: 625 applied, 350 admitted (56%), 19 enrolled, so international applicants are admitted far less often than domestic ones. No early decision; no waitlist. C9: 28.5% of enrolled students submitted SAT (918), 2.4% ACT (78). IU Indianapolis was created in 2024 when IUPUI was split; every figure here is the IU Indianapolis Fall 2025 CDS, no IUPUI-era figure is used. C7 factor checkboxes could not be read reliably from the text and are omitted. Undergraduate enrollment and intl_undergrads are the B1/B2 'Total Undergraduates' figures (14,834; nonresident 273 including non-degree students)."
+  },
+  "scores_source": "cds",
+  "scores": {
+    "SAT_TOTAL": [
+      1040,
+      1140,
+      1240
+    ],
+    "SAT_ERW": [
+      530,
+      580,
+      640
+    ],
+    "SAT_MATH": [
+      500,
+      560,
+      610
+    ],
+    "ACT_COMPOSITE": [
+      22,
+      25,
+      31
+    ],
+    "ACT_ENGLISH": [
+      21,
+      24,
+      30
+    ],
+    "ACT_MATH": [
+      20,
+      25,
+      29
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: IU Indianapolis has a test-optional admission policy; the applicant decides at application whether SAT or ACT scores are considered."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 9518,
+    "tuition_out_of_state_usd": 33983,
+    "tuition_intl_usd": 33983,
+    "required_fees_usd": 1244,
+    "room_board_usd": 13656,
+    "books_usd": 1290,
+    "intl_extra_fees_usd": 331,
+    "intl_merit_aid": true,
+    "intl_need_aid_awarded": 117,
+    "intl_avg_award_usd": 12369,
+    "notes": "CDS G1 first-year 2026-27: in-state tuition $9,518, out-of-state $33,983 (international students pay the out-of-state rate), required fees $1,244, on-campus food and housing $13,656; G5 books $1,290. The international office estimates $36,110 tuition and fees (incl. the $331/year international services fee) and $56,258 total for 9 months. H6: 117 nonresident undergraduates received institutional aid, average $12,369; the need-based/non-need-based checkboxes in H6 are ambiguous in the text, so intl_need_aid is left unset."
+  }
+}

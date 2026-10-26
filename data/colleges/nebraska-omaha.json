@@ -1,0 +1,82 @@
+{
+  "slug": "nebraska-omaha",
+  "name": "University of Nebraska Omaha",
+  "short_name": "UNO",
+  "state_region": "NE",
+  "city": "Omaha",
+  "latitude": 41.258769,
+  "longitude": -96.008516,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.unomaha.edu",
+  "admissions_url": "https://www.unomaha.edu/admissions/",
+  "ipeds_unit_id": 181394,
+  "undergrad_enrollment": 11756,
+  "intl_undergrads": 389,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=181394",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=181394",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm",
+    "applicants": 9889,
+    "admits": 8594,
+    "enrolled": 2156,
+    "intl_applicants": 24,
+    "intl_admits": 20,
+    "pct_submit_sat": null,
+    "pct_submit_act": 74,
+    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 9,889 applicants, 8,594 admitted, 2,156 enrolled; international (nonresident alien) first-time applicants 24, admitted 20, enrolled 9, so the international sample is very small. College Navigator fall 2024: 9,246 applicants, 87% admitted. UNO reports ACT only (no SAT percentiles). Undergraduate enrollment 11,756 and 15:1 ratio are fall 2024; nonresidents are about 3% of undergraduates (rounded). No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      18,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 8718,
+    "tuition_out_of_state_usd": 23206,
+    "books_usd": 1226,
+    "room_board_usd": 12130,
+    "other_usd": 4032,
+    "total_coa_usd": 40594,
+    "notes": "College Navigator 2024-25: tuition and fees in-state $8,718, out-of-state $23,206; on-campus food and housing $12,130, other $4,032; total_coa_usd is the out-of-state on-campus total."
+  }
+}

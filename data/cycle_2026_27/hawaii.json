@@ -1,0 +1,198 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UH Manoa Admissions - International admission requirements (English proficiency, deadlines)",
+   "url": "https://manoa.hawaii.edu/admissions/international/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UH Manoa Admissions - Freshman admission (requirements, test-optional policy, deadlines)",
+   "url": "https://manoa.hawaii.edu/admissions/freshman/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "UH Manoa Financial Aid - 2026-2027 Cost of Attendance",
+   "url": "https://manoa.hawaii.edu/fas/cost/2026-2027-cost-of-attendance/",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "UH Manoa Financial Aid - Academic merit scholarships (incl. International Merit Award)",
+   "url": "https://manoa.hawaii.edu/fas/types-of-aid/scholarships/academic-merit-scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "nws": {
+   "kind": "financial_aid_site",
+   "title": "UH Manoa Financial Aid - New Warrior Scholarships (incl. Manoa International Excellence Scholarship)",
+   "url": "https://manoa.hawaii.edu/fas/types-of-aid/scholarships/new-warrior-scholarships/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are optional. UH Manoa uses a 'Do No Harm' policy: a submitted score that would hurt your chance of admission or scholarship is left out. Admitted students' middle 50% was SAT 1130-1350 and ACT 21-29 (fall 2025). International applicants may also submit IB, A-Level, Gaokao or other national exam results in place of SAT/ACT, per the international page.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through UH Manoa's own application ($70, nonrefundable). International freshmen need a cumulative GPA comparable to a U.S. B (3.00) or higher, and official secondary-school transcripts mailed directly by the school or ministry, a Supplementary Information Form for international applicants, and certification of financial support with bank statements for the I-20. Admitted fall 2025 first-years had a middle 50% GPA of 3.49-4.04. Required courses: 4 English, 3 math, 3 science, 3 social science, 4 college-prep, 5 electives. Nursing, social work, education and some other programs have earlier deadlines.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-01-05",
+   "label": "Priority deadline (fall 2027)",
+   "notes": "Freshman priority deadline for the best access to financial aid and housing. This is also the deadline to apply to be considered for New Warrior Scholarships, including the Manoa International Excellence Scholarship (supplemental application due Feb 2, 2027).",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "International fall 2027 final application deadline",
+   "notes": "Late applications may be accepted after the final deadline. Incomplete applications are not considered. Spring entry is Oct 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-06-01",
+   "label": "International Merit Award priority date (fall entry)",
+   "notes": "Awarded to admitted F-1 applicants with a 3.3+ GPA; no separate application, the Office of Admissions selects recipients. Earlier is better.",
+   "src": "merit"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Everyone not born in the U.S. must show English proficiency. Scores in the lower column let you be admitted through the English Language Institute (ELI), which adds English courses; scores in the higher column make you ELI exempt. Exempt by experience: native English speaker; last 6 years of schooling in the U.S. or American Samoa, Australia, Canada (except Quebec), Guam, Ireland, New Zealand, Saipan, Singapore or the UK; 60 transferable U.S. credits at 2.00 GPA; a UH community college A.A.; or a bachelor's degree from the U.S. or those countries. Last 3 years of U.S. high school with 3.20 GPA plus SAT reading 470 admits through ELI.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "rec": 100,
+   "notes": "61 = admission through the English Language Institute (ELI); 100 = ELI exempt. TOEFL PBT 500 / 600; TOEFL Essentials 7.0 / 10.5.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "rec": 5.0,
+   "notes": "Same thresholds on the 1-6 scale: 3.5 for admission through the ELI, 5 for ELI exempt.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "rec": 7.0,
+   "notes": "Academic test. 5.5 = admission through the ELI; 7.0 = ELI exempt.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "rec": 135,
+   "notes": "90 = admission through the ELI; 135 = ELI exempt.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "rec": 68,
+   "notes": "PTE Academic. 44 = admission through the ELI; 68 = ELI exempt.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "required_option",
+   "min": 161,
+   "rec": 185,
+   "notes": "Cambridge English scale: 161 = admission through the ELI; 185 = ELI exempt.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "F-1 applicants who are admitted with a 3.3+ high school GPA are considered automatically for the International Merit Award, equal to 150% of Hawaii resident tuition (about $16,380 a year in 2023-24 per the page; 150% of the 2026-27 resident tuition of $11,760 would be $17,640). The more selective Manoa International Excellence Scholarship (3.7+ GPA; apply for admission by Jan 5, supplemental form by Feb 2) brings tuition down to the Hawaii resident rate, about $22,032 a year for 4 years.",
+  "src": "merit"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 11760,
+  "tuition_out_of_state_usd": 33792,
+  "tuition_intl_usd": 33792,
+  "required_fees_usd": 914,
+  "room_board_usd": 15690,
+  "books_usd": 1330,
+  "other_usd": 4034,
+  "total_coa_usd": 55760,
+  "notes": "UH Manoa 2026-27 budget for a full-time (12 credits a semester) non-resident living on campus: tuition $33,792, fees $914, books $1,330, housing $8,222, food $7,468, personal $2,698, transportation $1,336. Resident tuition is $11,760. Some programs (e.g. engineering, architecture, business) charge higher fees; health insurance for F-1 students is not itemized in this budget.",
+  "src": "coa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is published on the freshman or international pages; look it up in the College Board code search.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is published on the freshman or international pages.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is published on the international page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D+",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "C",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "C",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "biology_life_sci": "Marine biology and tropical ecology benefit from the Hawaii location and an ocean and earth science school on campus; placed C. Editorial judgment, not a ranking.",
+  "math_physics": "Astronomy and physical science research benefit from the Hawaii location; placed C. Editorial judgment, not a ranking."
+ }
+}

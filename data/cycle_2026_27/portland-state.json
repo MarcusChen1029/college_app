@@ -1,0 +1,218 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Portland State - International first-year admission requirements and steps to apply",
+   "url": "https://www.pdx.edu/admissions/international/first-year",
+   "accessed": "2026-10-26"
+  },
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Portland State - Undergraduate dates and deadlines",
+   "url": "https://www.pdx.edu/admissions/deadlines",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Portland State - English language proficiency requirement (international)",
+   "url": "https://www.pdx.edu/admissions/international/english-language-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Portland State - First-year admission (test-optional, school codes)",
+   "url": "https://www.pdx.edu/admissions/first-year",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Portland State - International student scholarships",
+   "url": "https://www.pdx.edu/student-finance/international-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "fin": {
+   "kind": "admissions_site",
+   "title": "Portland State - Required financial documentation for international students (2026-27 estimated costs)",
+   "url": "https://www.pdx.edu/admissions/international/financial-documentation",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "Portland State - Undergraduate tuition and fees 2026-27",
+   "url": "https://www.pdx.edu/student-finance/tuition/undergraduate",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Submitting SAT or ACT scores is optional and not required to receive an admission decision. For admitted international students on visas, an SAT EBRW of 560+ can also be used as proof of English proficiency.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "notes": "Apply through PSU's online application ($60 for international first-years). International first-year applicants need a cumulative GPA of at least 2.5 on the U.S. 4.0 scale (PSU converts it) and completed secondary school equivalent to U.S. high school; applicants below 3.0 GPA are considered by holistic review. Unofficial transcripts from non-U.S. schools can be used to get a decision; official ones are needed later. English test results are asked of admitted students. Allow four to six weeks for a decision once documents are in.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "Fall 2027 application deadline (domestic and international undergraduates)",
+   "notes": "Application opens Aug 1, 2026; documents are due by Aug 5, 2027 and fall term begins Sept 27, 2027. PSU publishes no earlier international cutoff; allow time for the I-20 and visa.",
+   "src": "dates"
+  },
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Priority date: PSU scholarships and Tuition Free Degree",
+   "notes": "March 1 is the deadline for PSU general and most departmental scholarships; international students are also automatically reviewed for the International Achievement Scholarship at admission with no separate application.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-06-15",
+   "label": "Fall term enrollment confirmation priority deadline",
+   "notes": "The same date is the on-campus housing application priority deadline.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required of admitted undergraduates on non-immigrant visas. Alternatives to a test: U.S. associate degree (2.50 GPA, WR 121 plus another college writing course at C- or better), a bachelor's or higher degree from a university in Australia, English-speaking Canada, Ghana, Ireland, Kenya, New Zealand, Nigeria, South Africa, Uganda, the UK, the U.S. or Zimbabwe, citizenship of those countries with English-medium schooling, an IB diploma with 30+ points, Level 5 of the Pacific International Academy ESL program at the University of Portland (PSU's ESL partner), or PCC ESOL Level 8 with B or better. Scores must be under 2 years old; IELTS One Skill Retake is not accepted.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "subs": {
+    "reading": 15,
+    "writing": 15
+   },
+   "notes": "Tests taken before Jan 21, 2026.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "subs": {
+    "reading": 3.5,
+    "writing": 3.5
+   },
+   "notes": "Tests taken on or after Jan 21, 2026 (1-6 scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "reading": 6.0,
+    "writing": 6.0
+   },
+   "notes": "Academic IELTS; One Skill Retake scores not accepted.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 53,
+   "notes": "Academic PTE.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "All admitted undergraduate international students are automatically considered for merit scholarships of up to $10,000 per year. The International Achievement Scholarship pays $3,000 to $10,000 a year for up to 12 terms for first-years (typical entering GPA 3.25+; no separate application). The University Honors Laurels Scholarship adds up to $3,000 a year for students admitted to the Honors College. Awards apply to tuition and require 12 credits a quarter.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 13593,
+  "tuition_out_of_state_usd": 36249,
+  "tuition_intl_usd": 25632,
+  "required_fees_usd": 5775,
+  "room_board_usd": 17445,
+  "books_usd": 750,
+  "other_usd": 2211,
+  "total_coa_usd": 51813,
+  "notes": "International figures are PSU's 2026-27 estimate for a 9-month year at 12 credits a quarter: tuition $25,632 ($712 a credit base rate; engineering and business pay up to $782.60), fees plus mandatory health insurance $5,775 (insurance is $1,189 a quarter), housing and meals $17,445, books $750, transportation $828 plus personal $1,383. The $13,593 resident and $36,249 nonresident amounts are PSU's all-in tuition and fees estimate at about 16 credits a term and are on a different basis.",
+  "src": "fin"
+ },
+ "majors": [
+  {
+   "program": "Engineering (Maseeh College: civil, computer, electrical, environmental, mechanical)",
+   "category": "engineering",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Students must make a separate application to enroll in restricted upper-division engineering coursework; see the program pages for deadlines and prerequisites."
+  },
+  {
+   "program": "Music (composition, education, jazz, performance and others)",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Requires a separate application or audition for admission to the program."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": "4610",
+   "note": "PSU SAT code (scores are optional for admission).",
+   "src": "fy"
+  },
+  "act": {
+   "code": "3492",
+   "note": "PSU ACT code (scores are optional for admission).",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "4610",
+   "note": "TOEFL code 4610, department code 00; same institutional code is used when ordering IELTS, PTE and SAT reports.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "PSU says to use institutional code 4610 when ordering score reports.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "PSU says to use institutional code 4610 when ordering score reports.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,123 @@
+{
+ "sources": {
+  "ia": {
+   "kind": "admissions_site",
+   "title": "LC State International Programs - Application for First-Year International Student",
+   "url": "https://www.lcsc.edu/international/admissions/first-year-international-applicants",
+   "accessed": "2026-10-26"
+  },
+  "br": {
+   "kind": "admissions_site",
+   "title": "LC State International Programs - Bridge Pathway applicants",
+   "url": "https://www.lcsc.edu/international/admissions/bridge-pathway-applicants",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "LC State - English Language Proficiency Requirements (PDF dated May 2022, linked from the international admissions pages)",
+   "url": "https://www.lcsc.edu/media/ml1h014q/english-proficiency-requirements-2022.pdf",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "LC State Academic Catalog - Admissions (international degree-seeking freshmen, Bridge Pathway)",
+   "url": "https://catalog.lcsc.edu/student-affairs/admissions/",
+   "accessed": "2026-10-26"
+  },
+  "sc": {
+   "kind": "financial_aid_site",
+   "title": "LC State International Programs - Scholarships (Presidential Academic Waiver)",
+   "url": "https://www.lcsc.edu/international/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "LC State International Programs - Cost of attendance (undergraduate academic year)",
+   "url": "https://www.lcsc.edu/international/cost-of-attendance",
+   "accessed": "2026-10-26"
+  },
+  "cfr": {
+   "kind": "financial_aid_site",
+   "title": "LC State - International Student Certification of Financial Responsibility, 2026-2027 (PDF)",
+   "url": "https://www.lcsc.edu/media/y0gjvomm/2026-2027.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The international freshman application steps list no SAT or ACT requirement (application fee, passport, English proficiency, transcripts). The catalog says admission is based on academic merit including grades and test scores, and that ACT/SAT or the Writing Placement Exam and ALEKS are used to place students in English and math. Regular admission needs a 2.0 GPA on a 4.0 scale.",
+  "src": "cat"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply with LC State's own international application at apply.lcsc.edu; the $50 fee is non-refundable. File: passport identification page, proof of English proficiency, official school transcripts and records (with a copy of the diploma and any national graduation tests). The catalog requires evidence of high school completion and a minimum 2.0 cumulative GPA on a 4.0 scale, converted by the Admissions Office; some applicants must send transcripts to an outside evaluator (e.g. WES or INCRED) at their own cost. Financial documents and the signed Certificate of Financial Responsibility are not needed for admission but are needed for the I-20. Essays and recommendations are not listed.",
+  "src": "ia"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International first-year priority deadline (fall 2027 entry)",
+   "notes": "The page prints 'Fall 2027: August 23-December 16 (*Priority Deadline June 1)' with no year on the June 1 date; treated as June 1, 2027. The page recommends applying by the priority deadline for early scholarship consideration and visa processing time. It prints no final closing date apart from the window 'August 23-December 16', and its spring line still reads 'Spring 2026', so confirm the dates with International Programs. The separate Bridge Pathway has a fall priority deadline of March 1.",
+   "src": "ia"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt with documentation: graduating from a US high school after at least 3 years of attendance; 14+ transferable credits at an accredited US college with a GPA of 2.0+; an associate or bachelor's degree from a US college; finishing the LC State Bridge Pathway with a 3.0 Bridge GPA and a C or better in a for-credit class; proof that English was the medium of secondary instruction (case by case); or being a native English speaker from a listed country or territory (e.g. Australia, Canada except Quebec, India, Ireland, Nigeria, Philippines, South Africa, United Kingdom). The score table is a PDF dated May 2022 that the current international pages still link to, so confirm it with International Programs. Applicants below the undergraduate minimums can enter the Bridge Pathway English program (TOEFL iBT 54, IELTS 4.5, Duolingo 80 in that table; minimum 2.0 GPA; 3.0 Bridge GPA to progress); Bridge students cannot get scholarships or waivers during their Bridge terms.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Undergraduate minimum in the May 2022 table (paper-based 500). Bridge Pathway minimum is 54. The page does not give a new 1-6 scale value.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Undergraduate minimum in the May 2022 table; Bridge Pathway minimum is 4.5. No subscore minimum is printed.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "notes": "Undergraduate minimum in the May 2022 table; Bridge Pathway minimum is 80.",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 8226,
+  "tuition_out_of_state_usd": 23938,
+  "tuition_intl_usd": 23938,
+  "room_board_usd": 8687,
+  "other_usd": 2150,
+  "total_coa_usd": 34775,
+  "notes": "2026-27 academic year from the LC State international cost page and Certificate of Financial Responsibility: tuition and fees $23,938 (Idaho resident portion $8,226 plus a non-resident/international portion of $15,712), shared dorm room and meal plan $8,687, other (health insurance, course materials) $2,150; $34,775 is the total shown on the I-20. Costs are subject to change.",
+  "src": "coa"
+ },
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "New undergraduates are automatically considered for the Presidential Academic Waiver: with a 3.0+ GPA it is $6,115 per semester, applied only to the non-resident portion of tuition. It renews each semester with a 3.0 cumulative GPA and 12+ credits, and is not available to fully sponsor-funded students. Other scholarships and waivers are listed by the Financial Aid Office. Bridge students are not eligible during their Bridge terms. Whether need-based aid exists for international students is not stated.",
+  "src": "sc"
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

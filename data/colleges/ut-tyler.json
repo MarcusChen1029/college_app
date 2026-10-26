@@ -1,0 +1,96 @@
+{
+  "slug": "ut-tyler",
+  "name": "The University of Texas at Tyler",
+  "short_name": "UT Tyler",
+  "state_region": "TX",
+  "city": "Tyler",
+  "latitude": 32.315772,
+  "longitude": -95.254337,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uttyler.edu",
+  "admissions_url": "https://www.uttyler.edu/admissions-aid/",
+  "ipeds_unit_id": 228802,
+  "undergrad_enrollment": 8219,
+  "intl_undergrads": 234,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "The University of Texas at Tyler Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.uttyler.edu/offices/information-analysis/files/cds-2025-26-final.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=228802",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 5476,
+    "admits": 5194,
+    "enrolled": 1541,
+    "in_state_applicants": 5379,
+    "in_state_admits": 5108,
+    "out_state_applicants": 63,
+    "out_state_admits": 53,
+    "intl_applicants": 34,
+    "intl_admits": 33,
+    "pct_submit_sat": 39,
+    "pct_submit_act": 14,
+    "gpa_avg": 3.24,
+    "pct_reporting_gpa": 77.26,
+    "notes": "CDS C1 (Fall 2025 entering class): men 1,992 + women 3,484 applied (5,476); admitted 5,194; enrolled 1,541; residency rows (in-state / out-of-state / international) sum to the totals. International first-years: 34 applied, 33 admitted (97%), 12 enrolled. No early decision or early action; rolling notification. The CDS PDF text lost its checkbox marks, so the C7 factor importance ratings and C8A test-policy box could not be read and 'factors' is omitted. GPA: the average is 3.24 (77.26% reporting); the 'all enrolled students' distribution has 6.43% below 1.0, which makes the 4.0 to 1.0 bands sum to only 93.6%, so the distribution is left out rather than shown incomplete (bands: 4.0 3.41%, 3.75-3.99 31.27%, 3.50-3.74 25.71%, 3.25-3.49 17.22%, 3.00-3.24 10.08%, 2.50-2.99 5.71%, 2.0-2.49 0.16%, 1.0-1.99 0.00%). Undergraduate enrollment 8,219 and nonresident count 234 are the B1/B2 'Total Undergraduates' figures (fall 2025). The CDS carries 2024-2025 page headers on a 2025-2026 collection."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      990,
+      1080,
+      1190
+    ],
+    "SAT_ERW": [
+      500,
+      550,
+      610
+    ],
+    "SAT_MATH": [
+      480,
+      530,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7232,
+    "tuition_out_of_state_usd": 22680,
+    "tuition_intl_usd": 22680,
+    "required_fees_usd": 2504,
+    "room_board_usd": 13756,
+    "books_usd": 2920,
+    "other_usd": 3138,
+    "notes": "CDS G1 (first-year, full-time, as printed under the 2026-2027 heading): in-state tuition $7,232, nonresident tuition $22,680 (about $756/credit hour x 30), required fees $2,504, on-campus food and housing $13,756 (housing $9,074 + meal plan $4,684). G5 resident estimates: books $2,920, transportation $1,424, other $1,714 (other_usd = transportation + other). UT Tyler publishes no separate international tuition rate on the pages read; tuition_intl_usd is the nonresident rate."
+  }
+}

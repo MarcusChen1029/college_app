@@ -1,0 +1,93 @@
+{
+  "slug": "marymount",
+  "name": "Marymount University",
+  "short_name": "Marymount",
+  "state_region": "VA",
+  "city": "Arlington",
+  "latitude": 38.905562,
+  "longitude": -77.128785,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://marymount.edu",
+  "admissions_url": "https://marymount.edu/admissions",
+  "ipeds_unit_id": 232706,
+  "undergrad_enrollment": 2503,
+  "intl_undergrads": 218,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Marymount University Common Data Set 2023-2024 (PDF)",
+      "url": "https://marymount.edu/wp-content/uploads/2024/07/CDS_UNL2_2023_2024_Final_7.3.24.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "nav": {
+      "kind": "ipeds",
+      "title": "College Navigator - Marymount University (enrollment fall 2024, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=232706",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=232706",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "cds",
+    "applicants": 3599,
+    "admits": 2876,
+    "enrolled": 410,
+    "in_state_applicants": 1504,
+    "in_state_admits": 1317,
+    "out_state_applicants": 1463,
+    "out_state_admits": 1229,
+    "intl_applicants": 632,
+    "intl_admits": 330,
+    "gpa_avg": 3.3,
+    "pct_reporting_gpa": 100.0,
+    "gpa_distribution": {
+      "4.0": 12,
+      "3.75-3.99": 15,
+      "3.50-3.74": 14,
+      "3.25-3.49": 13,
+      "3.00-3.24": 13,
+      "2.50-2.99": 27,
+      "2.0-2.49": 6
+    },
+    "pct_submit_sat": 6,
+    "pct_submit_act": 2,
+    "notes": "CDS 2023-24 is the newest Marymount posts that could be found (fall 2023 entering class). C1 residency table: international 632 applied, 330 admitted (52%). Enrolled 410 (CDS gender rows; matches IPEDS) while the residency enrollee row sums to 407. SAT/ACT percentiles not reported (the university does not use scores). Undergraduate enrollment 2,503 is fall 2024 (College Navigator)."
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "C",
+    "gpa": "VI",
+    "test_scores": "NC",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "I",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "blind",
+    "notes": "CDS C8 (2023-24): the institution does not use SAT/ACT scores in admission decisions, except for home-schooled applicants and applicants from unaccredited or ungraded schools."
+  }
+}

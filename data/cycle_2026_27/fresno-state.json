@@ -1,0 +1,146 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Fresno State International Office - Freshman Admission Requirements",
+   "url": "https://cge.fresnostate.edu/international/future/undergrad/",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "Fresno State International Office - Conditional Admission Requirements",
+   "url": "https://cge.fresnostate.edu/international/future/conditional/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "Fresno State International Office - Estimated Yearly Costs",
+   "url": "https://cge.fresnostate.edu/international/future/fees/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Fresno State International Office - Financial Assistance",
+   "url": "https://cge.fresnostate.edu/international/future/fees/financialassistance.html",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - Fresno State admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110556",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "The CSU system no longer uses SAT/ACT in admission decisions; College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)'. SAT Reading and Writing 550 or ACT English 22 only count as proof of English proficiency on Fresno State's international page. The page states no minimum GPA.",
+  "src": "nav"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (a paper application is also offered) with a $70 fee; email unofficial documents to intladmissions@csufresno.edu. Documents: transcripts or mark sheets with English translation, graduation certificate, passport page, and financial documents plus an Affidavit of Support (these two may be sent after admission). A personal statement is encouraged but not required; recommendations are optional. The page does not state a minimum GPA or course pattern.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-07-01",
+   "label": "Fall international application deadline, applicants outside the U.S.",
+   "notes": "Applications open Aug 1. The page prints no year; treated as fall 2027. Consideration after the deadline is not guaranteed.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "due": "2027-08-01",
+   "label": "Fall international application deadline, applicants already in the U.S.",
+   "notes": "Opens and closes Aug 1. The page prints no year; treated as fall 2027.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-15",
+   "label": "Muhareb Family Grant expression of interest (fall 2027)",
+   "notes": "Letter of interest for newly admitted international students; no separate application.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for students who studied 3+ years in U.S. high schools, or 3 years of full-time academic study in listed English-instruction countries/regions (Australia, Canada [Quebec needs English demonstration], Ireland, New Zealand, UK, many Caribbean and African countries). Other accepted proofs: SAT Reading and Writing 550, ACT English 22, AP English Language or Literature 3, IB English A HL 4, GTEC 1095, iTEP 3.6, Eiken Pre-1, ELS 112, FLS 16, TLC 9, Fresno State American English Institute Advanced Level.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "New TOEFL iBT, exams starting Jan 21, 2026 (1-6 scale).",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Institutional code 4312.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Page text: '6.0 or with 5.5 band score in each section'.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 45,
+   "notes": "Pearson's Test of English.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Dean's Scholarship Tuition Waiver for international students and out-of-state residents, about $1,250 to $3,750 each (70+ international students received one last year). Muhareb Family Grant: $1,000 to $1,500 for a select group of newly admitted international students in their first semester, chosen on academic achievement, financial need and funding; no application, but send an expression of interest by May 15, 2027 (fall 2027). Conditional admission: students without a qualifying TOEFL/IELTS can be admitted to ESL plus a degree program (two-year language-study I-20, American English Institute on campus); placement needs one score report with no minimum. Same fall deadlines (July 1 outside the U.S., Aug 1 in the U.S.).",
+  "src": "aid"
+ },
+ "cost": {
+  "year": "2027-2028",
+  "tuition_intl_usd": 20979,
+  "room_board_usd": 11634,
+  "other_usd": 2978,
+  "total_coa_usd": 35591,
+  "notes": "Fresno State's estimate for Fall 2027/Spring 2028 (undergraduate, 12 units a semester): tuition and fees $20,979 (one combined figure), food and housing $11,634, books and insurance $2,978 (other), total $35,591. The Fall 2026/Spring 2027 estimate is $34,434. International students must buy the university-approved insurance.",
+  "src": "fees"
+ },
+ "score_codes": {
+  "toefl": {
+   "code": "4312",
+   "note": "Fresno State institutional code for English test scores.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ }
+}

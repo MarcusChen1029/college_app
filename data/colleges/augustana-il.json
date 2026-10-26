@@ -1,0 +1,106 @@
+{
+  "slug": "augustana-il",
+  "name": "Augustana College (Rock Island)",
+  "short_name": "Augustana",
+  "state_region": "IL",
+  "city": "Rock Island",
+  "latitude": 41.502365,
+  "longitude": -90.55057,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.augustana.edu",
+  "admissions_url": "https://www.augustana.edu/admissions/apply/international/procedure",
+  "ipeds_unit_id": 143084,
+  "undergrad_enrollment": 2536,
+  "intl_undergrads": 507,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Augustana College (IL) Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.augustana.edu/files/2026-04/2025-26_CDS_Augustana_College_IL_V2.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7956,
+    "admits": 5273,
+    "enrolled": 671,
+    "in_state_applicants": 3923,
+    "in_state_admits": 2889,
+    "out_state_applicants": 1415,
+    "out_state_admits": 1056,
+    "intl_applicants": 2618,
+    "intl_admits": 1328,
+    "ed_applicants": 93,
+    "ed_admits": 87,
+    "waitlist_offered": 403,
+    "waitlist_accepted": 12,
+    "waitlist_admitted": 5,
+    "pct_submit_sat": 49,
+    "pct_submit_act": 10,
+    "gpa_avg": 3.4,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 3.58,
+      "3.75-3.99": 21.46,
+      "3.50-3.74": 21.16,
+      "3.25-3.49": 20.86,
+      "3.00-3.24": 15.8,
+      "2.50-2.99": 15.5,
+      "2.0-2.49": 1.64
+    },
+    "notes": "Fall 2025 entering class (CDS C1 residency table: international 2,618 applied, 1,328 admitted, 139 enrolled). Early decision figures (93 applied, 87 admitted) are labelled 'Fall 2024 entering class' in CDS C21. GPA distribution is the 'all enrolled students' column of C11. The C7 factor checkboxes and C8A test-policy boxes did not extract from the PDF text, so factors are omitted; the test policy comes from the admissions site. Undergraduate enrollment 2,536 is B1 total undergraduates; international 507 is the B2 nonresident total-undergraduates column."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      1020,
+      1140,
+      1280
+    ],
+    "SAT_ERW": [
+      520,
+      570,
+      640
+    ],
+    "SAT_MATH": [
+      500,
+      570,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      21,
+      24,
+      28
+    ],
+    "ACT_MATH": [
+      18,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      27
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 53186,
+    "tuition_out_of_state_usd": 53186,
+    "tuition_intl_usd": 53186,
+    "required_fees_usd": 160,
+    "room_board_usd": 12862,
+    "total_coa_usd": 66208,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 506,
+    "intl_avg_award_usd": 39902,
+    "notes": "CDS G1 (first-year, 2026-27): tuition $53,186, required fees $160, housing $6,440 + food $6,422 = $12,862; comprehensive $66,208. Private college with one tuition rate. CDS H6: 506 degree-seeking nonresidents were awarded institutional aid (need- or non-need-based), average $39,902."
+  }
+}

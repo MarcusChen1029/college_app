@@ -1,0 +1,152 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Louisiana Tech Office of International Affairs - Undergraduate admissions (requirements, English, Bulldog Out-of-State Scholarship)",
+      "url": "https://www.latech.edu/student-life/international-affairs/undergaduate-admissions.php",
+      "accessed": "2026-10-26"
+    },
+    "pol": {
+      "kind": "admissions_site",
+      "title": "Louisiana Tech Policy 2306: Admissions Requirements (freshmen)",
+      "url": "https://www.latech.edu/administration/policies/p-2306.php",
+      "accessed": "2026-10-26"
+    },
+    "ft": {
+      "kind": "admissions_site",
+      "title": "Louisiana Tech - First-time, first-year student information",
+      "url": "https://www.latech.edu/admissions/apply/first-time-student.php",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Louisiana Tech - Freshman scholarships (Bulldog Out-of-State Scholarship, priority deadline)",
+      "url": "https://www.latech.edu/admissions/scholarships/freshman-scholarships.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test scores are not required for an initial admission decision but are required for merit-based scholarships; when the GPA is not strong, scores can be used in the evaluation. International freshmen need a 2.5 GPA on the US scale; SAT EBRW 500 (or Accuplacer 250) is one way to show English proficiency. Policy 2306 lets out-of-state applicants qualify with ACT 26 / SAT 1240 or a core GPA of 3.0, or by meeting the in-state rule (core GPA 2.5, or ACT 23 / SAT 1130 with core GPA 2.0).",
+    "src": "ft"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 20,
+    "notes": "The $20 fee is the CDS C13 figure (waivable); an older catalog listed $30 for international students, so confirm the current international fee. International applicants complete the online application and email all documents (PDF) to international@latech.edu, even when official copies are sent by the testing agency or school. Freshman requirement: 2.5 GPA converted to the US scale by Louisiana Tech's admissions coordinator. An I-20 needs a bank statement or scholarship letter (not older than 6 months) covering a year of study. Louisiana Tech runs on the quarter system.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-01-15",
+      "label": "Priority deadline for freshman admission scholarships (fall 2027 entry)",
+      "notes": "The scholarships page says to apply by Jan 15 of the senior year; the CDS (C14) lists Jan 1 as the priority date.",
+      "src": "sch"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Application (fall 2027): no published closing date",
+      "notes": "CDS C14 states there is no application closing date and the current international page gives none; an older catalog asked for complete international applications two months before the first quarter. Apply as early as possible for I-20 and visa processing.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Proof of English proficiency can be a high school curriculum taught in English, SAT EBRW 500+, English Accuplacer 250+, or one of the tests below. Placing into regular English classes needs a 3.0 converted GPA, SAT EBRW 500+, Accuplacer 250+ or the language test (otherwise placement in the lowest level, with an option to test up).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Pre-2026 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "The page prints 'TOEFL iBT (4.5, 79 pre-2026)'.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "105 is listed for the Bulldog Out-of-State Scholarship.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "The page notes PTE is not currently accepted for the Bulldog Scholarship, although its scholarship criteria also list PTE 58.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The Bulldog Out-of-State Scholarship is an out-of-state tuition waiver worth about 50% of tuition costs (the international page's example: tuition and fees $23,418 vs $12,369); recipients are treated as in-state for tuition. International freshmen need a 2.5 US-scale GPA, one admission test (TOEFL 4.5/79, IELTS 6.5, Duolingo 105, PTE 58, SAT 1130 or ACT 23), one English criterion (test, SAT English 500, ACT 23, Accuplacer 250) and one math criterion (SAT Math 510, Accuplacer 250 or a 3.0 GPA); keep a 2.0 quarterly GPA. Accept it in the application portal and upload the signed agreement. International students get no need-based aid.",
+    "src": "intl"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Louisiana Tech's international pages give no SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "Louisiana Tech's international pages give no ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL code is listed; the page asks applicants to also email a PDF of the report to international@latech.edu.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed on the international admissions page.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "arts_design": "D",
+    "humanities": "D"
+  },
+  "tier_notes": {
+    "general": "D+ rather than D: 72% admit rate (55% for international applicants) and a strong enrolled profile in the CDS (average GPA 3.66; middle-50% ACT 27-31 among the 32% who submit scores), the most selective of the regional publics in this group. Editorial judgment."
+  }
+}

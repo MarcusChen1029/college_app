@@ -1,0 +1,148 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UW-Stout - How to apply: undergraduate international and ESL students",
+      "url": "https://www.uwstout.edu/admissions-aid/how-apply/international-english-second-language-students",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UW-Stout - How to apply: new first-year students",
+      "url": "https://www.uwstout.edu/admissions-aid/how-apply/how-apply-new-first-year-students",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "UW-Stout Office of International Education - International student scholarships",
+      "url": "https://www.uwstout.edu/academics/office-international-education/international-student-scholarships",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The first-year page says ACT or SAT scores are optional through summer 2028 (considered if provided). Admission is holistic: academic rigor, GPA, grade trend, class rank, test scores if provided, and non-academic factors.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "International undergraduates apply with the shared Universities of Wisconsin (UW) Application; the $50 international admissions processing fee is paid after submitting, before a decision. (The first-year page also accepts the Common App for new freshmen, but the international page lists only the UW Application.) Needs a passport copy and secondary and post-secondary records with English translations. No minimum GPA is published. High school course expectations: 4 English, 3 math, 3 social science, 3 science, 4 electives. Conditional (ESL) degree admission is available for students who need ESL before starting a major.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International undergraduate application deadline, fall 2027 entry",
+      "notes": "Application opens Aug. 1, 2026; review starts as soon as a complete application arrives. Spring 2028 deadline is Nov. 15, 2027. International students already in F-1 status are considered after the deadline case by case. The first-year page lists a Jan. 1, 2027 priority deadline for fall 2027 first-year applicants; the international page does not mention it.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-04-01",
+      "label": "#YouAreWelcomeHere Scholarship application closes (fall 2027 entry)",
+      "notes": "Separate application (essay of 500-1,000 words or a 2-5 minute video), open Jan. 1 to Apr. 1, 2027; winners notified by Apr. 15, 2027. Not available to ESL Institute students. The International Student Tuition Scholarship needs no application.",
+      "src": "sch"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The requirement may be waived for applicants from English-speaking countries, decided by the Admissions Office after applying. Other options: completing UW-Stout's ESL program, or transfer credit equivalent to English 101 with a C or higher from a regionally accredited school. Duolingo applicants must do extra ESL Institute testing and may be required to take ESL courses. The page also links a table of all English proficiency options that could not be read.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "Exams taken before 2026-01-21.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Exams taken on or after 2026-01-21; the page does not name the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "IELTS One Skill Retake also accepted.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "subs": {
+        "each_section": 90
+      },
+      "notes": "Minimum 115 overall and 90 or higher in each sub-score. The ESL Institute may require additional testing and ESL courses for Duolingo applicants.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 48,
+      "notes": "PTE Academic.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "merit_separate_app": true,
+    "notes": "All international degree applicants are automatically considered for the International Student Tuition Scholarship: up to $5,000 per year for first-year and transfer students with a cumulative GPA of 3.0 or higher (4.0 scale), renewable each semester (15 credits per semester, 3.0 GPA, global-involvement requirement). Not available for ESL Institute courses. A limited number of #YouAreWelcomeHere scholarships (50% of nonresident tuition, excluding fees, renewable up to four years) need a separate application; the two awards cannot be combined. ESL pathway: the ESL Institute (five levels) admits with no minimum English test score; conditional degree students must finish the high-advanced level with a 2.0 ESL GPA before starting degree courses.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the UW-Stout pages read; select UW-Stout in the College Board search.",
+      "src": "fy"
+    },
+    "act": {
+      "code": "4652",
+      "note": "UW-Stout ACT code.",
+      "src": "sch"
+    },
+    "toefl": {
+      "code": "1740",
+      "note": "UW-Stout TOEFL institutional code (listed under Institutional Codes).",
+      "src": "sch"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

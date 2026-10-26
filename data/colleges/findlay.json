@@ -1,0 +1,60 @@
+{
+  "slug": "findlay",
+  "name": "The University of Findlay",
+  "short_name": "Findlay",
+  "state_region": "OH",
+  "city": "Findlay",
+  "latitude": 41.053344,
+  "longitude": -83.652313,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.findlay.edu/",
+  "admissions_url": "https://www.findlay.edu/admissions-aid/",
+  "ipeds_unit_id": 202763,
+  "undergrad_enrollment": 4062,
+  "intl_undergrads": 92,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator (NCES/IPEDS) institution profile",
+      "url": "https://nces.ed.gov/collegenavigator/?id=202763",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=202763",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=202763",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 3760,
+    "admits": 3246,
+    "enrolled": 613,
+    "notes": "Baseline from College Navigator (IPEDS fall 2024 entering class): 4,065 applicants, 83% admitted, 17% of admitted enrolled; exact admit and enrolled counts and SAT/ACT percentiles are not shown, so they are left null. A Common Data Set could not be found (the Institutional Research page links an IPEDS Data Feedback Report, not a CDS). About 2% of undergraduates are U.S. nonresidents (rounded percentage, so no count is given). Undergraduate enrollment 4,062 is the fall 2024 total. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 41164,
+    "books_usd": 2000,
+    "room_board_usd": 11200,
+    "other_usd": 2504,
+    "total_coa_usd": 56868,
+    "notes": "College Navigator 2024-25 (superseded by the 2026-27 figures in the cycle file): tuition and fees $41,164; on-campus room and board $11,200; books $2,000; other $2,504."
+  }
+}

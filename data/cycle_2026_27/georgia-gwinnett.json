@@ -1,0 +1,135 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "GGC - International student admission requirements (undergraduate)",
+   "url": "https://www.ggc.edu/admission-aid/undergraduate-admission/international-student-admission-requirements",
+   "accessed": "2026-10-26"
+  },
+  "dl": {
+   "kind": "admissions_site",
+   "title": "GGC - Undergraduate admission deadlines",
+   "url": "https://www.ggc.edu/admission-aid/undergraduate-admission-deadlines",
+   "accessed": "2026-10-26"
+  },
+  "fr": {
+   "kind": "admissions_site",
+   "title": "GGC - Freshmen admission (never attended college): GPA, test-optional policy, codes",
+   "url": "https://www.ggc.edu/admission-aid/undergraduate-admission/freshmen-admission-never-attended-college",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "other",
+   "title": "GGC - Undergraduate tuition and fees (Fall 2026 through Summer 2027)",
+   "url": "https://www.ggc.edu/admission-aid/student-accounts/undergraduate-tuition-and-fees-student-accounts",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "GGC - Cost of attendance 2026-2027",
+   "url": "https://www.ggc.edu/admission-aid/financial-aid/cost-of-attendance",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "GGC is test-optional for admission. Freshmen need a 2.00 GPA recalculated on the 17 units of the Required High School Curriculum; international applicants need the same 2.00 GPA shown on a NACES or InCred credential evaluation. Scores may be required for scholarship consideration and are recommended for English and math placement (without them, students may be placed into corequisite learning support).",
+  "src": "fr"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "Apply by creating a Grizzly Profile; $30 non-refundable fee. Freshmen send an official document-by-document credential evaluation (including GPA) from a NACES member or InCred to the evaluator, not foreign transcripts to GGC. After admission, F-1 students must show a bank statement or bank letter covering one academic year of expenses (sponsors also sign an Affidavit of Financial Support). Essays and recommendations are not mentioned.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-05-01",
+   "label": "Priority application deadline, fall semester (fall 2027 entry)",
+   "notes": "The Priority tab of the deadlines page lists Fall May 1, Spring Nov. 1, Summer April 1 (no year printed; treated as fall 2027). The Regular tab currently shows only Spring 2027 (applications Dec. 1, documents Dec. 15); a regular fall 2027 date is not yet published. Applications are open for Spring, Summer and Fall 2027. Dates may be extended.",
+   "src": "dl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-07-01",
+   "label": "International out-of-state tuition waiver application window closes",
+   "notes": "Window runs April 1 to July 1; a second window runs Oct. 1 to Dec. 15. The page does not say which term each window covers. Competitive, limited and not guaranteed. Year not printed; treated as 2027.",
+   "src": "req"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "International applicants must show English proficiency (see the University System of Georgia English Proficiency Chart for approved exams). Placement into college-level English without a co-requisite on Next Gen ACCUPLACER (Reading Comprehension 237 and WritePlacer 4) waives the requirement; transfer students with English 1101 or 1102 at a C or better from a US accredited institution may also be waived. The GGC page lists only TOEFL iBT and IELTS minimums and does not mention Duolingo, PTE, Cambridge or a conditional-admission/ESL pathway.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "Listed as 'TOEFL IBT 69'; no new 1-6 scale value is given.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "req"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 4140,
+  "tuition_out_of_state_usd": 16560,
+  "tuition_intl_usd": 17040,
+  "required_fees_usd": 1244,
+  "room_board_usd": 15810,
+  "books_usd": 1670,
+  "other_usd": 3080,
+  "notes": "Tuition page (Fall 2026 to Summer 2027), flat rate for 15+ credits per semester, doubled for two semesters: in-state $2,070, out-of-state $8,280, out-of-country $8,520 per semester. Mandatory fees are the sum of the listed per-semester fees ($622) doubled; the cost-of-attendance page shows tuition plus mandatory fees of $17,814 for out-of-state residents (it is not specific to out-of-country tuition). Housing and meals $15,810 (on campus), books $1,670, miscellaneous $3,080; transportation $2,880 is not included in other_usd. Total cost of attendance for out-of-country students is not published.",
+  "src": "tuit"
+ },
+ "aid": {
+  "intl_need_aid": true,
+  "intl_aid_policy": "need_aware_limited",
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "F-1 students can apply to International Student and Scholar Services for an international out-of-state tuition waiver: limited, highly competitive, not guaranteed, judged on demonstrated financial need, essay quality and community service. The amount of the waiver is not published. Test scores may be required for other scholarships; no international merit scholarship is described.",
+  "src": "req"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "4796",
+   "note": "GGC SAT school code.",
+   "src": "fr"
+  },
+  "act": {
+   "code": "5478",
+   "note": "GGC ACT school code.",
+   "src": "fr"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the reviewed pages.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

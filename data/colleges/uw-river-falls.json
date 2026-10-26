@@ -1,0 +1,68 @@
+{
+ "slug": "uw-river-falls",
+ "name": "University of Wisconsin-River Falls",
+ "short_name": "UWRF",
+ "state_region": "WI",
+ "city": "River Falls",
+ "latitude": 44.8534,
+ "longitude": -92.622641,
+ "setting": "rural",
+ "control": "public",
+ "website": "https://www.uwrf.edu/",
+ "admissions_url": "https://www.uwrf.edu/admissions/",
+ "ipeds_unit_id": 240471,
+ "undergrad_enrollment": 4880,
+ "intl_undergrads": 53,
+ "student_faculty_ratio": 19,
+ "academic_calendar": "semester",
+ "sources": {
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=240471",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  },
+  "navigator": {
+   "kind": "ipeds",
+   "title": "College Navigator - University of Wisconsin-River Falls (fall 2024 admissions and enrollment)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=240471",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=240471",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2023-2024",
+  "source": "ipeds",
+  "applicants": 5903,
+  "admits": 4818,
+  "enrolled": 1063,
+  "pct_submit_act": 39,
+  "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). UWRF's Institutional Research page does not list a Common Data Set, so none was used; SAT, GPA, international and residency splits are not added (no SAT percentiles reported). College Navigator for fall 2024 shows 5,519 applicants, 82% admitted (exact count not published there) and ACT composite 19/23/26 for the 19% who submitted; undergraduate enrollment and the 19:1 student-faculty ratio are fall 2024."
+ },
+ "scores": {
+  "ACT_COMPOSITE": [
+   19,
+   22,
+   25
+  ],
+  "ACT_ENGLISH": [
+   17,
+   21,
+   24
+  ],
+  "ACT_MATH": [
+   17,
+   21,
+   25
+  ]
+ }
+}
