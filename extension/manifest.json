@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Common App filler",
+  "version": "0.1.0",
+  "description": "Fills the Common App courses and grades section from your College Tracker transcript.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6SS2a8nN+nnYOc5k3C6RsynLlmfwrBTO2vONuZYMIwsVmAUE5XHcTbaENrrUkE6uUHVNbBHtJTxpOn1VhOdwefJOx/jpZSyXflogUjal47tbC0I1tPwpYTl6OjjKgy6jtmk2eul5VQKxkvCWLGrvTiQ2/CmATpz3oiSS304cqg0pDdX/AbbF5fYyiFCtJHhiB6u1+ELFzpekH8xys1b4p0dCVXdqW12qfO6Ty+bKC7nKYIJWWPUa0zXtYDIVTuy7LAFPZPrTtrrRWrlDbV7v7e396oVopaVKURdqeN08L8b+6EqhrWrnrgcvOjMs46svFunO/42rG6vxlhoBvFPEhQIDAQAB",
+  "permissions": ["identity", "storage", "sidePanel", "tabs"],
+  "host_permissions": [
+    "https://apply.commonapp.org/*",
+    "https://eyvmtaggayqizllaseiu.supabase.co/*"
+  ],
+  "action": { "default_title": "Common App filler" },
+  "side_panel": { "default_path": "panel.html" },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    {
+      "matches": ["https://apply.commonapp.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
