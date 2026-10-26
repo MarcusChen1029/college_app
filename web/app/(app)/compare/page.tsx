@@ -4,6 +4,7 @@ import { Pill, TierBadge } from "@/components/badges";
 import { CompareFit } from "@/components/CompareFit";
 import { getDeadlines, getLookups, getSummaries } from "@/lib/data";
 import { ENGLISH_POLICY, fmtDate, fmtInt, fmtPct, fmtUsd, INTL_AID, TEST_POLICY } from "@/lib/format";
+import { getT } from "@/lib/i18n/server";
 import type { CollegeSummary } from "@/lib/types";
 
 export const metadata = { title: "Compare" };
@@ -11,7 +12,9 @@ export const metadata = { title: "Compare" };
 export default function ComparePage({ searchParams }: PageProps<"/compare">) {
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">Compare colleges</h1>
+      <Suspense fallback={<div className="h-8" />}>
+        <Title />
+      </Suspense>
       <Suspense fallback={<div className="h-96 animate-pulse rounded-lg bg-zinc-100" />}>
         <Compare searchParams={searchParams} />
       </Suspense>
@@ -19,8 +22,14 @@ export default function ComparePage({ searchParams }: PageProps<"/compare">) {
   );
 }
 
+async function Title() {
+  const t = await getT();
+  return <h1 className="text-2xl font-semibold">{t("college.compareTitle")}</h1>;
+}
+
 async function Compare({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
+  const t = await getT();
   const wanted = String(sp.c ?? "")
     .split(",")
     .map((s) => s.trim())
@@ -32,7 +41,7 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
   if (picked.length === 0) {
     return (
       <div className="space-y-3 text-sm">
-        <p className="text-zinc-500">Pick up to four colleges:</p>
+        <p className="text-zinc-500">{t("college.pickUpToFour")}</p>
         <div className="flex flex-wrap gap-2">
           {all.map((c) => (
             <Link key={c.slug} href={`/compare?c=${c.slug}`} className="rounded-md border border-zinc-200 px-2 py-1 hover:bg-zinc-50">
@@ -41,7 +50,11 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
           ))}
         </div>
         <p className="text-zinc-500">
-          Or tick colleges on the <Link className="text-blue-600 underline" href="/colleges">Colleges</Link> page and press Compare.
+          {t("college.orTick")}{" "}
+          <Link className="text-blue-600 underline" href="/colleges">
+            {t("college.collegesLink")}
+          </Link>{" "}
+          {t("college.pageAndPress")}
         </p>
       </div>
     );
@@ -52,24 +65,24 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
 
   type RowDef = [string, (c: CollegeSummary) => React.ReactNode];
   const rows: RowDef[] = [
-    ["Tier (general)", (c) => <TierBadge tier={c.general_tier} />],
+    [t("college.rowTierGeneral"), (c) => <TierBadge tier={c.general_tier} />],
     ...lookups.categories
       .filter((k) => k.key !== "general")
-      .map((k): RowDef => [`Tier: ${k.label}`, (c) => <TierBadge tier={c.tiers?.[k.key]} size="sm" />]),
-    ["Location", (c) => `${c.city}, ${c.state_region}`],
-    ["Type", (c) => (c.control === "public" ? "Public" : "Private")],
-    ["Undergraduates", (c) => fmtInt(c.undergrad_enrollment)],
-    ["% international", (c) => fmtPct(c.pct_international_ug)],
-    ["Admit rate", (c) => fmtPct(c.admit_rate)],
-    ["ED admit rate", (c) => fmtPct(c.ed_admit_rate)],
-    ["International admit rate", (c) => fmtPct(c.intl_admit_rate)],
-    ["SAT 25th / 50th / 75th", (c) => (c.sat_p25 != null ? `${Number(c.sat_p25)} / ${Number(c.sat_p50)} / ${Number(c.sat_p75)}` : "—")],
-    ["ACT 25th / 50th / 75th", (c) => (c.act_p25 != null ? `${Number(c.act_p25)} / ${Number(c.act_p50)} / ${Number(c.act_p75)}` : "—")],
-    ["Average GPA", (c) => (c.gpa_avg != null ? Number(c.gpa_avg).toFixed(2) : "—")],
-    ["Testing", (c) => (c.test_policy ? <Pill>{TEST_POLICY[c.test_policy]}</Pill> : "—")],
-    ["English test", (c) => (c.english_policy ? ENGLISH_POLICY[c.english_policy] : "—")],
+      .map((k): RowDef => [t("college.rowTierOf", { label: k.label }), (c) => <TierBadge tier={c.tiers?.[k.key]} size="sm" />]),
+    [t("college.rowLocation"), (c) => `${c.city}, ${c.state_region}`],
+    [t("college.rowType"), (c) => (c.control === "public" ? t("college.public") : t("college.private"))],
+    [t("college.undergrads"), (c) => fmtInt(c.undergrad_enrollment)],
+    [t("college.rowPctIntl"), (c) => fmtPct(c.pct_international_ug)],
+    [t("college.admitRate"), (c) => fmtPct(c.admit_rate)],
+    [t("college.edAdmitRate"), (c) => fmtPct(c.ed_admit_rate)],
+    [t("college.intlAdmitRate"), (c) => fmtPct(c.intl_admit_rate)],
+    [t("college.rowSat"), (c) => (c.sat_p25 != null ? `${Number(c.sat_p25)} / ${Number(c.sat_p50)} / ${Number(c.sat_p75)}` : "—")],
+    [t("college.rowAct"), (c) => (c.act_p25 != null ? `${Number(c.act_p25)} / ${Number(c.act_p50)} / ${Number(c.act_p75)}` : "—")],
+    [t("college.rowAvgGpa"), (c) => (c.gpa_avg != null ? Number(c.gpa_avg).toFixed(2) : "—")],
+    [t("college.rowTesting"), (c) => (c.test_policy ? <Pill>{TEST_POLICY[c.test_policy]}</Pill> : "—")],
+    [t("college.rowEnglish"), (c) => (c.english_policy ? ENGLISH_POLICY[c.english_policy] : "—")],
     [
-      "Application deadlines",
+      t("college.rowDeadlines"),
       (c) => (
         <ul className="space-y-0.5">
           {appDeadlines(c.id).map((d) => (
@@ -81,11 +94,11 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
         </ul>
       ),
     ],
-    ["Tuition (in-state / base)", (c) => fmtUsd(c.tuition_usd)],
-    ["Tuition (out-of-state)", (c) => fmtUsd(c.tuition_out_of_state_usd)],
-    ["Total cost of attendance", (c) => fmtUsd(c.total_coa_usd)],
-    ["Aid for internationals", (c) => (c.intl_aid_policy ? INTL_AID[c.intl_aid_policy] : "Not verified")],
-    ["Your fit", (c) => <CompareFit college={c} />],
+    [t("college.rowTuitionBase"), (c) => fmtUsd(c.tuition_usd)],
+    [t("college.tuitionOut"), (c) => fmtUsd(c.tuition_out_of_state_usd)],
+    [t("college.totalCoa"), (c) => fmtUsd(c.total_coa_usd)],
+    [t("college.rowAidIntl"), (c) => (c.intl_aid_policy ? INTL_AID[c.intl_aid_policy] : t("college.notVerified"))],
+    [t("college.rowFit"), (c) => <CompareFit college={c} />],
   ];
 
   return (

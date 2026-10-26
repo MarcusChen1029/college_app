@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { Modal } from "@/components/Modal";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 
 const OPEN_SIGN_IN_EVENT = "open-sign-in";
@@ -24,6 +25,7 @@ export function SignInButton({ className, children }: { className?: string; chil
 /** The dialog itself. `returnTo` (the page the visitor was on) is captured when it opens; null means closed. */
 export function SignInDialogHost() {
   const student = useStudent();
+  const t = useT();
   const [returnTo, setReturnTo] = useState<string | null>(null);
 
   useEffect(() => {
@@ -37,10 +39,10 @@ export function SignInDialogHost() {
   if (returnTo === null) return null;
 
   return (
-    <Modal title={<h2 className="font-display text-lg font-bold">Sign in</h2>} onClose={() => setReturnTo(null)} className="w-[min(26rem,calc(100vw-2rem))]">
+    <Modal title={<h2 className="font-display text-lg font-bold">{t("signIn.title")}</h2>} onClose={() => setReturnTo(null)} className="w-[min(26rem,calc(100vw-2rem))]">
       <div className="space-y-3">
         <GoogleSignIn returnTo={returnTo} />
-        <p className="text-sm text-zinc-600">Your list and scores on this device are saved to your account when you sign in.</p>
+        <p className="text-sm text-zinc-600">{t("signIn.savedNote")}</p>
       </div>
     </Modal>
   );

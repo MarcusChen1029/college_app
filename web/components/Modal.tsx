@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useT } from "@/lib/i18n/client";
 
 // Pop-up over the page with a blurred backdrop. Opens on mount; Esc, ✕ or a click outside closes it.
 export function Modal({
@@ -14,6 +15,7 @@ export function Modal({
   className?: string;
   children: React.ReactNode;
 }) {
+  const t = useT();
   const ref = useRef<HTMLDialogElement>(null);
   // No close() on cleanup: it would fire onClose (React re-runs effects in dev), and unmounting removes the dialog anyway.
   useEffect(() => {
@@ -31,7 +33,7 @@ export function Modal({
       <div className="flex max-h-[90vh] flex-col outline-none" tabIndex={-1} autoFocus>
         <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4">
           <div className="min-w-0 flex-1">{title}</div>
-          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => ref.current?.close()} aria-label="Close">
+          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => ref.current?.close()} aria-label={t("common.close")}>
             ✕
           </button>
         </div>

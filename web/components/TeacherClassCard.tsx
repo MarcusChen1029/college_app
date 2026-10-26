@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { StatusPill } from "@/components/StatusPill";
+import { useT } from "@/lib/i18n/client";
 import { formatCode } from "@/lib/join-codes";
 import { archiveClass, newCode, removeFromClass, revokeCode, type LinkedStudent, type TeacherClass } from "@/lib/links-api";
 
@@ -25,13 +26,14 @@ type CodeBoxProps = {
 
 /** A join code in large mono text with Copy / New code / Turn code off (or Turn code on when it is off). */
 export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNew, onOff }: CodeBoxProps) {
+  const t = useT();
   const [copied, setCopied] = useState(false);
 
   if (!code) {
     return (
       <div className="flex flex-wrap items-center gap-3">
-        <p className="text-sm text-zinc-500">The join code is off, so nobody can join.</p>
-        <button type="button" disabled={busy} className={btn} aria-label={subject ? `Turn code on for ${subject}` : undefined} onClick={onNew}>
+        <p className="text-sm text-zinc-500">{t("teacher.classes.codeOff")}</p>
+        <button type="button" disabled={busy} className={btn} aria-label={subject ? t("teacher.classes.turnOnFor", { name: subject }) : undefined} onClick={onNew}>
           {turnOnLabel}
         </button>
       </div>
@@ -51,19 +53,19 @@ export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNe
   }
 
   function renew() {
-    if (confirm("The current code will stop working. Make a new one?")) onNew();
+    if (confirm(t("teacher.classes.renewConfirm"))) onNew();
   }
 
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-3">
         <span className={`font-mono text-2xl font-bold tracking-widest ${expired ? "text-zinc-400 line-through" : ""}`}>{formatCode(code)}</span>
-        {expired && <StatusPill tone="soon">Expired</StatusPill>}
-        <button type="button" className={btn} aria-label={subject ? `Copy code for ${subject}` : "Copy your one-on-one code"} onClick={copy}>
-          Copy
+        {expired && <StatusPill tone="soon">{t("teacher.classes.expired")}</StatusPill>}
+        <button type="button" className={btn} aria-label={subject ? t("teacher.classes.copyFor", { name: subject }) : t("teacher.classes.copyOwn")} onClick={copy}>
+          {t("common.copy")}
         </button>
         <span role="status" className="text-sm text-zinc-500">
-          {copied ? "Copied" : ""}
+          {copied ? t("common.copied") : ""}
         </span>
       </div>
       <div className="flex flex-wrap gap-2">
@@ -71,13 +73,13 @@ export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNe
           type="button"
           disabled={busy}
           className={btn}
-          aria-label={subject ? `Generate a new code for ${subject}` : "Generate a new code to replace your one-on-one code"}
+          aria-label={subject ? t("teacher.classes.newCodeFor", { name: subject }) : t("teacher.classes.newCodeOwn")}
           onClick={renew}
         >
-          New code
+          {t("teacher.classes.newCode")}
         </button>
-        <button type="button" disabled={busy} className={btn} aria-label={subject ? `Turn code off for ${subject}` : "Turn code off for your one-on-one code"} onClick={onOff}>
-          Turn code off
+        <button type="button" disabled={busy} className={btn} aria-label={subject ? t("teacher.classes.turnOffFor", { name: subject }) : t("teacher.classes.turnOffOwn")} onClick={onOff}>
+          {t("teacher.classes.turnOff")}
         </button>
       </div>
     </div>
@@ -88,6 +90,7 @@ type ClassCardProps = { cls: TeacherClass; members: LinkedStudent[]; now: number
 
 /** One class: name, code controls, archive, and an expandable member list. Archived classes show Restore only. */
 export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
+  const t = useT();
   const [open, setOpen] = useState(false);
 
   return (
@@ -98,18 +101,18 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
           {cls.schoolYear && <p className="text-sm text-zinc-500">{cls.schoolYear}</p>}
         </div>
         {cls.archived ? (
-          <button type="button" disabled={busy} className={btn} aria-label={`Restore ${cls.name}`} onClick={() => run(() => archiveClass(cls.id, false))}>
-            Restore
+          <button type="button" disabled={busy} className={btn} aria-label={t("teacher.classes.restoreAria", { name: cls.name })} onClick={() => run(() => archiveClass(cls.id, false))}>
+            {t("teacher.classes.restore")}
           </button>
         ) : (
           <button
             type="button"
             disabled={busy}
             className={btn}
-            aria-label={`Archive ${cls.name}`}
-            onClick={() => confirm(`Archive "${cls.name}"? Its join code stops working; students stay linked to you.`) && run(() => archiveClass(cls.id, true))}
+            aria-label={t("teacher.classes.archiveAria", { name: cls.name })}
+            onClick={() => confirm(t("teacher.classes.archiveConfirm", { name: cls.name })) && run(() => archiveClass(cls.id, true))}
           >
-            Archive
+            {t("teacher.classes.archive")}
           </button>
         )}
       </div>
@@ -119,7 +122,7 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
           expiresAt={cls.codeExpiresAt}
           now={now}
           busy={busy}
-          turnOnLabel="Turn code on"
+          turnOnLabel={t("teacher.classes.turnOn")}
           subject={cls.name}
           onNew={() => run(() => newCode("class", cls.id))}
           onOff={() => run(() => revokeCode("class", cls.id))}
@@ -129,13 +132,13 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
         <button
           type="button"
           aria-expanded={open}
-          aria-label={`${open ? "Hide" : "Show"} students (${members.length}) in ${cls.name}`}
+          aria-label={t(open ? "teacher.classes.hideStudentsAria" : "teacher.classes.showStudentsAria", { n: members.length, name: cls.name })}
           className="text-sm font-semibold text-blue-700 underline underline-offset-4" onClick={() => setOpen(!open)}>
-          {open ? "Hide" : "Show"} students ({members.length})
+          {t(open ? "teacher.classes.hideStudents" : "teacher.classes.showStudents", { n: members.length })}
         </button>
         {open &&
           (members.length === 0 ? (
-            <p className="mt-2 text-sm text-zinc-500">{cls.archived ? "No students in this class." : "No students yet. Share the code above."}</p>
+            <p className="mt-2 text-sm text-zinc-500">{cls.archived ? t("teacher.classes.noStudentsArchived") : t("teacher.classes.noStudentsYet")}</p>
           ) : (
             <ul className="mt-2 divide-y divide-zinc-100">
               {members.map((s) => (
@@ -147,10 +150,10 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
                     type="button"
                     disabled={busy}
                     className={btn}
-                    aria-label={`Remove from class: ${s.displayName} in ${cls.name}`}
-                    onClick={() => confirm(`Remove ${s.displayName} from "${cls.name}"?`) && run(() => removeFromClass(cls.id, s.studentId))}
+                    aria-label={t("teacher.classes.removeFromAria", { student: s.displayName, class: cls.name })}
+                    onClick={() => confirm(t("teacher.classes.removeFromConfirm", { student: s.displayName, class: cls.name })) && run(() => removeFromClass(cls.id, s.studentId))}
                   >
-                    Remove from class
+                    {t("teacher.classes.removeFromClass")}
                   </button>
                 </li>
               ))}

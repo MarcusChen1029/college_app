@@ -15,6 +15,7 @@ import {
   validateSchool,
   type SchoolInput,
 } from "@/lib/transcript";
+import { useT } from "@/lib/i18n/client";
 import { buttonClass } from "@/lib/ui";
 
 type Draft = Omit<SchoolInput, "firstYear" | "lastYear" | "gpaWeighted"> & { firstYear: string; lastYear: string; gpaWeighted: "" | "yes" | "no" };
@@ -28,6 +29,7 @@ const toDraft = (s: SchoolInput): Draft => ({
 
 /** Add / edit form for one school or college on the transcript. */
 export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }: { initial: SchoolInput; submitLabel: string; onSave: (v: SchoolInput) => void; onCancel?: () => void }) {
+  const t = useT();
   const [f, setF] = useState<Draft>(toDraft(initial));
   const [errors, setErrors] = useState<string[]>([]);
   const set = <K extends keyof Draft>(k: K, v: Draft[K]) => setF((cur) => ({ ...cur, [k]: v }));
@@ -43,15 +45,15 @@ export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }:
   return (
     <form onSubmit={submit} className="grid gap-3 sm:grid-cols-2">
       <label className="text-sm font-medium sm:col-span-2">
-        School name
-        <input className={fieldClass} value={f.name} maxLength={LIMITS.schoolName} onChange={(e) => set("name", e.target.value)} placeholder="Taipei First Girls' High School" />
+        {t("transcript.schoolName")}
+        <input className={fieldClass} value={f.name} maxLength={LIMITS.schoolName} onChange={(e) => set("name", e.target.value)} placeholder={t("transcript.schoolNamePh")} />
       </label>
       <label className="text-sm font-medium">
-        Country
-        <input className={fieldClass} value={f.country} maxLength={LIMITS.short} onChange={(e) => set("country", e.target.value)} placeholder="Taiwan" />
+        {t("transcript.country")}
+        <input className={fieldClass} value={f.country} maxLength={LIMITS.short} onChange={(e) => set("country", e.target.value)} placeholder={t("transcript.countryPh")} />
       </label>
       <label className="text-sm font-medium">
-        Kind
+        {t("transcript.kind")}
         <select className={fieldClass} value={f.kind} onChange={(e) => set("kind", e.target.value as SchoolInput["kind"])}>
           {SCHOOL_KINDS.map((k) => (
             <option key={k} value={k}>
@@ -61,7 +63,7 @@ export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }:
         </select>
       </label>
       <label className="text-sm font-medium">
-        Curriculum
+        {t("transcript.curriculum")}
         <select className={fieldClass} value={f.curriculum} onChange={(e) => set("curriculum", e.target.value as SchoolInput["curriculum"])}>
           {CURRICULA.map((c) => (
             <option key={c} value={c}>
@@ -71,7 +73,7 @@ export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }:
         </select>
       </label>
       <label className="text-sm font-medium">
-        Usual grade scale
+        {t("transcript.usualScale")}
         <select className={fieldClass} value={f.defaultScale} onChange={(e) => set("defaultScale", e.target.value as SchoolInput["defaultScale"])}>
           {GRADE_SCALES.map((s) => (
             <option key={s} value={s}>
@@ -81,7 +83,7 @@ export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }:
         </select>
       </label>
       <label className="text-sm font-medium">
-        How final grades are issued
+        {t("transcript.howIssued")}
         <select className={fieldClass} value={f.defaultPeriod} onChange={(e) => set("defaultPeriod", e.target.value as SchoolInput["defaultPeriod"])}>
           {PERIOD_TYPES.map((p) => (
             <option key={p} value={p}>
@@ -91,37 +93,37 @@ export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }:
         </select>
       </label>
       <label className="text-sm font-medium">
-        First year <span className="font-normal text-zinc-500">(optional)</span>
+        {t("transcript.firstYear")} <span className="font-normal text-zinc-500">{t("transcript.optional")}</span>
         <input className={fieldClass} inputMode="numeric" value={f.firstYear} onChange={(e) => set("firstYear", e.target.value)} placeholder="2022" />
       </label>
       <label className="text-sm font-medium">
-        Last year <span className="font-normal text-zinc-500">(optional)</span>
+        {t("transcript.lastYear")} <span className="font-normal text-zinc-500">{t("transcript.optional")}</span>
         <input className={fieldClass} inputMode="numeric" value={f.lastYear} onChange={(e) => set("lastYear", e.target.value)} placeholder="2026" />
       </label>
       <label className="text-sm font-medium">
-        GPA printed on the transcript <span className="font-normal text-zinc-500">(optional)</span>
+        {t("transcript.printedGpa")} <span className="font-normal text-zinc-500">{t("transcript.optional")}</span>
         <input className={fieldClass} value={f.printedGpa} maxLength={LIMITS.grade} onChange={(e) => set("printedGpa", e.target.value)} />
       </label>
       <label className="text-sm font-medium">
-        GPA scale <span className="font-normal text-zinc-500">(e.g. 4.0, 100)</span>
+        {t("transcript.gpaScale")} <span className="font-normal text-zinc-500">{t("transcript.gpaScaleHint")}</span>
         <input className={fieldClass} value={f.printedGpaScale} maxLength={LIMITS.grade} onChange={(e) => set("printedGpaScale", e.target.value)} />
       </label>
       <label className="text-sm font-medium">
-        Is that GPA weighted?
+        {t("transcript.gpaWeighted")}
         <select className={fieldClass} value={f.gpaWeighted} onChange={(e) => set("gpaWeighted", e.target.value as Draft["gpaWeighted"])}>
-          <option value="">Not sure</option>
-          <option value="yes">Weighted</option>
-          <option value="no">Unweighted</option>
+          <option value="">{t("transcript.notSure")}</option>
+          <option value="yes">{t("transcript.weighted")}</option>
+          <option value="no">{t("transcript.unweighted")}</option>
         </select>
       </label>
       <label className="text-sm font-medium">
-        Class rank <span className="font-normal text-zinc-500">(as printed, optional)</span>
+        {t("transcript.classRank")} <span className="font-normal text-zinc-500">{t("transcript.classRankHint")}</span>
         <input className={fieldClass} value={f.classRank} maxLength={LIMITS.short} onChange={(e) => set("classRank", e.target.value)} placeholder="5 / 130" />
       </label>
       <div className="flex flex-wrap items-center gap-2 sm:col-span-2 sm:justify-end">
         {onCancel && (
           <button type="button" className={buttonClass("secondary", "sm")} onClick={onCancel}>
-            Cancel
+            {t("common.cancel")}
           </button>
         )}
         <button type="submit" className={buttonClass("primary", "sm")}>

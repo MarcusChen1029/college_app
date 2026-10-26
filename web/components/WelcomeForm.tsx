@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
+import { useT } from "@/lib/i18n/client";
 import { homePathFor, validateTeacher } from "@/lib/roles";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
@@ -12,6 +13,7 @@ const choice = "rounded-2xl border-2 border-zinc-200 p-5 text-left hover:border-
 
 /** First sign-in: pick student or teacher/counselor (saved once through the set_my_role RPC). */
 export function WelcomeForm() {
+  const t = useT();
   const student = useStudent();
   const router = useRouter();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -26,7 +28,7 @@ export function WelcomeForm() {
   if (!student.auth) {
     return (
       <div className="space-y-3">
-        <p className="text-zinc-600">Sign in to set up your account as a student or as a teacher/counselor.</p>
+        <p className="text-zinc-600">{t("profile.welcome.signInPrompt")}</p>
         <GoogleSignIn returnTo="/welcome" />
       </div>
     );
@@ -50,35 +52,35 @@ export function WelcomeForm() {
   function submitTeacher(e: React.FormEvent) {
     e.preventDefault();
     const v = validateTeacher({ displayName: name, school });
-    if (!v.ok) return setError(v.error);
+    if (!v.ok) return setError(v.error === "Enter your name." ? t("profile.welcome.enterName") : v.error);
     void save("teacher", v.value);
   }
 
   return (
     <div className="space-y-5">
-      <p className="text-sm text-zinc-500">Signed in as {student.auth.email}. You can only choose once.</p>
+      <p className="text-sm text-zinc-500">{t("profile.welcome.signedInAs", { email: student.auth.email ?? "" })}</p>
       <div className="grid gap-4 sm:grid-cols-2">
         <button type="button" disabled={busy} className={choice} onClick={() => save("student")}>
-          <span className="block font-display text-lg font-bold">I&apos;m a student</span>
-          <span className="mt-1 block text-sm text-zinc-500">Build my college list, track deadlines and essays.</span>
+          <span className="block font-display text-lg font-bold">{t("profile.welcome.student")}</span>
+          <span className="mt-1 block text-sm text-zinc-500">{t("profile.welcome.studentHint")}</span>
         </button>
         <button type="button" disabled={busy} className={`${choice} ${asTeacher ? "border-blue-500 bg-blue-50" : ""}`} onClick={() => setAsTeacher(true)}>
-          <span className="block font-display text-lg font-bold">I&apos;m a teacher or counselor</span>
-          <span className="mt-1 block text-sm text-zinc-500">Support students in a class or one-on-one.</span>
+          <span className="block font-display text-lg font-bold">{t("profile.welcome.teacher")}</span>
+          <span className="mt-1 block text-sm text-zinc-500">{t("profile.welcome.teacherHint")}</span>
         </button>
       </div>
       {asTeacher && (
         <form onSubmit={submitTeacher} className="space-y-3 rounded-2xl border border-zinc-200 p-5">
           <label className="block text-sm font-medium">
-            Your name
-            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2" placeholder="Ms. Lee" />
+            {t("profile.welcome.yourName")}
+            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2" placeholder={t("profile.welcome.namePlaceholder")} />
           </label>
           <label className="block text-sm font-medium">
-            School <span className="font-normal text-zinc-500">(optional)</span>
-            <input value={school} onChange={(e) => setSchool(e.target.value)} className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2" placeholder="Lincoln High School" />
+            {t("profile.welcome.school")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
+            <input value={school} onChange={(e) => setSchool(e.target.value)} className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2" placeholder={t("profile.welcome.schoolPlaceholder")} />
           </label>
           <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
-            {busy ? "Saving…" : "Continue as teacher"}
+            {busy ? t("common.saving") : t("profile.welcome.continue")}
           </button>
         </form>
       )}

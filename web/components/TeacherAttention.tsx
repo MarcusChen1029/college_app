@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FlagPills } from "@/components/TeacherFlags";
 import { studentHref } from "@/components/TeacherRosterTable";
+import { useT } from "@/lib/i18n/client";
 import { teacherRoster } from "@/lib/links-api";
 import { ALL_CLASSES, buildRows, viewRows } from "@/lib/roster-view";
 import { useLoad } from "@/lib/use-load";
@@ -17,26 +18,27 @@ async function fetchAttention() {
 
 /** Dashboard card: the students with the most attention flags. A failure here only shows a muted line. */
 export function TeacherAttention() {
+  const t = useT();
   const { data, error, retry } = useLoad(fetchAttention);
 
   return (
     <section className="space-y-3 rounded-2xl border border-zinc-200 p-5" aria-labelledby="attention-heading">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="attention-heading" className="font-display text-xl font-bold">
-          Needs attention
+          {t("teacher.attention.heading")}
         </h2>
         {data && data.total > 0 && (
           <Link href="/teacher/students" className="text-sm font-semibold text-blue-700 underline underline-offset-4">
-            View all {data.total} students
+            {t("teacher.attention.viewAll", { n: data.total })}
           </Link>
         )}
       </div>
       {!data ? (
         error ? (
           <p role="alert" className="text-sm text-zinc-500">
-            Couldn&apos;t load your students just now.{" "}
+            {t("teacher.attention.loadError")}{" "}
             <button type="button" className="font-semibold text-blue-700 underline underline-offset-4" onClick={retry}>
-              Try again
+              {t("teacher.tryAgain")}
             </button>
           </p>
         ) : (
@@ -44,19 +46,19 @@ export function TeacherAttention() {
         )
       ) : data.total === 0 ? (
         <p className="text-sm text-zinc-500">
-          No students are linked yet. Share a class code or your one-on-one code from{" "}
+          {t("teacher.attention.nonePre")}
           <Link href="/teacher/classes" className="font-semibold text-blue-700 underline underline-offset-4">
-            Classes
+            {t("teacher.classes.title")}
           </Link>
-          .
+          {t("teacher.attention.nonePost")}
         </p>
       ) : data.top.length === 0 ? (
-        <p className="text-sm text-zinc-500">Nobody needs attention right now.</p>
+        <p className="text-sm text-zinc-500">{t("teacher.attention.nobody")}</p>
       ) : (
         <>
           {data.flagged > data.top.length && (
             <p className="text-sm text-zinc-500">
-              Showing {data.top.length} of {data.flagged} students with flags.
+              {t("teacher.attention.showing", { shown: data.top.length, total: data.flagged })}
             </p>
           )}
           <ul className="divide-y divide-zinc-100">

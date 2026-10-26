@@ -1,14 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { Fragment, useState, useSyncExternalStore } from "react";
+import { useT } from "@/lib/i18n/client";
 import { PLANS, type PlanKey } from "@/lib/plans";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, toneClass } from "@/lib/ui";
 
 const noop = () => () => {};
 
+/** Renders <b>…</b> as bold so each sentence is one translatable string. */
+function Rich({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(<b>.*?<\/b>)/).map((part, i) => (part.startsWith("<b>") ? <strong key={i}>{part.slice(3, -4)}</strong> : <Fragment key={i}>{part}</Fragment>))}
+    </>
+  );
+}
+
 export function PricingPlans() {
+  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const [justChose, setJustChose] = useState<PlanKey | null>(null);
@@ -29,14 +40,14 @@ export function PricingPlans() {
               }`}
             >
               <h2 className="font-display text-xl font-bold">{p.name}</h2>
-              <p className="mt-1 text-sm text-zinc-500">{p.blurb}</p>
+              <p className="mt-1 text-sm text-zinc-500">{t(`misc.pricing.blurb.${p.key}`)}</p>
               <p className="mt-5 flex items-baseline gap-1">
                 {p.priceTwd === 0 ? (
-                  <span className="font-display text-4xl font-bold">Free</span>
+                  <span className="font-display text-4xl font-bold">{t("misc.pricing.free")}</span>
                 ) : (
                   <>
                     <span className="font-display text-4xl font-bold tabular-nums">NT${p.priceTwd}</span>
-                    <span className="text-sm text-zinc-500">/ month</span>
+                    <span className="text-sm text-zinc-500">{t("misc.pricing.perMonth")}</span>
                   </>
                 )}
               </p>
@@ -44,31 +55,30 @@ export function PricingPlans() {
                 <li className="flex gap-2">
                   <span className="text-done">✓</span>
                   <span>
-                    <strong>{p.limit == null ? "Unlimited" : `Up to ${p.limit}`}</strong> colleges in My list
+                    <Rich text={p.limit == null ? t("misc.pricing.limitUnlimited") : t("misc.pricing.limitUpTo", { n: p.limit })} />
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-done">✓</span>Checklist, essays, portal logins and school codes
+                  <span className="text-done">✓</span>{t("misc.pricing.featChecklist")}
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-done">✓</span>Deadline reminders by email
+                  <span className="text-done">✓</span>{t("misc.pricing.featReminders")}
                 </li>
                 <li className="flex gap-2">
                   <span className="text-done">✓</span>
                   {p.fullAiContext ? (
                     <span>
-                      <strong>Copy for AI, full:</strong> every college&apos;s deadlines, English minimums, essays, cost and aid, with a source link
-                      for each number
+                      <Rich text={t("misc.pricing.featAiFull")} />
                     </span>
                   ) : (
-                    <span>Copy for AI: your profile and list summary, ready to paste into ChatGPT, Claude or Gemini</span>
+                    <span>{t("misc.pricing.featAiBasic")}</span>
                   )}
                 </li>
                 {p.connectAi && (
                   <li className="flex gap-2">
                     <span className="text-done">✓</span>
                     <span>
-                      <strong>Connect AI:</strong> link your own ChatGPT or Claude and update your applications by chat
+                      <Rich text={t("misc.pricing.featConnect")} />
                     </span>
                   </li>
                 )}
@@ -76,14 +86,14 @@ export function PricingPlans() {
                   <li className="flex gap-2">
                     <span className="text-done">✓</span>
                     <span>
-                      <strong>College application filler (Beta):</strong> a Chrome extension that fills Common App Courses &amp; Grades from your transcript and helps with UC, STARS, Cal State Apply, UIUC and UT
+                      <Rich text={t("misc.pricing.featFiller")} />
                     </span>
                   </li>
                 )}
               </ul>
               {over && !isCurrent && (
                 <p className={`mt-4 rounded-md border p-2 text-xs ${toneClass("soon")}`}>
-                  You have {listed} colleges. You&apos;ll keep them, but can&apos;t add more until you&apos;re under {p.limit}.
+                  {t("misc.pricing.over", { n: listed, limit: p.limit ?? 0 })}
                 </p>
               )}
               <button
@@ -94,7 +104,7 @@ export function PricingPlans() {
                   setJustChose(p.key);
                 }}
               >
-                {isCurrent ? "Current plan" : `Choose ${p.name}`}
+                {isCurrent ? t("misc.pricing.currentPlan") : t("misc.pricing.choose", { name: p.name })}
               </button>
             </section>
           );
@@ -103,16 +113,16 @@ export function PricingPlans() {
 
       {justChose && current === justChose && (
         <p className={`rounded-md border p-3 text-sm ${toneClass("done")}`} role="status">
-          You&apos;re on the {PLANS.find((p) => p.key === justChose)!.name} plan.{" "}
+          {t("misc.pricing.onPlan", { name: PLANS.find((p) => p.key === justChose)!.name })}{" "}
           <Link href="/application/list" className="underline">
-            Go to My list
+            {t("misc.pricing.goToList")}
           </Link>
         </p>
       )}
 
       <p className="text-xs text-zinc-500">
-        Payments aren&apos;t set up yet, so every plan is free to choose for now.{" "}
-        {mounted && student.ready && !student.auth && "Your plan is saved in this browser; sign in to keep it on every device."}
+        {t("misc.pricing.footer")}{" "}
+        {mounted && student.ready && !student.auth && t("misc.pricing.footerSaved")}
       </p>
     </div>
   );

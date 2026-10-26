@@ -6,6 +6,7 @@ import { TranscriptCourseForm } from "@/components/TranscriptCourseForm";
 import { TranscriptImport } from "@/components/TranscriptImport";
 import { TranscriptMappedView } from "@/components/TranscriptMappedView";
 import { TranscriptSchoolForm } from "@/components/TranscriptSchoolForm";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import {
   courseIssues,
@@ -17,30 +18,39 @@ import {
   PERIOD_LABEL,
   SUB_SUBJECT_LABEL,
   SUBJECT_LABEL,
-  TERM_STATUS_LABEL,
   type TranscriptCourse,
   type TranscriptSchool,
 } from "@/lib/transcript";
 import { toneClass, buttonClass } from "@/lib/ui";
 
 type Tab = "edit" | "import" | "view";
-const TABS: readonly [Tab, string][] = [
-  ["edit", "Edit"],
-  ["import", "Import"],
-  ["view", "View as"],
+const TABS: readonly [Tab, "transcript.tabEdit" | "transcript.tabImport" | "transcript.tabView"][] = [
+  ["edit", "transcript.tabEdit"],
+  ["import", "transcript.tabImport"],
+  ["view", "transcript.tabView"],
 ];
 
+type T = ReturnType<typeof useT>;
+
 /** The grades as printed: one entry per term, then the final grade. */
-function gradesText(c: TranscriptCourse): string {
-  const parts = c.terms.map((t) => `${t.term} ${t.grade || TERM_STATUS_LABEL[t.status].toLowerCase()}`);
-  if (c.finalGrade) parts.push(c.terms.length ? `Final ${c.finalGrade}` : c.finalGrade);
-  return parts.length ? parts.join(" · ") : "No grades yet";
+function gradesText(c: TranscriptCourse, t: T): string {
+  const parts = c.terms.map((tm) => `${tm.term} ${tm.grade || termStatusText(tm.status, t).toLowerCase()}`);
+  if (c.finalGrade) parts.push(c.terms.length ? t("transcript.final", { grade: c.finalGrade }) : c.finalGrade);
+  return parts.length ? parts.join(" · ") : t("transcript.noGradesYet");
 }
 
+const TERM_STATUS_KEY = {
+  graded: "transcript.statusGraded",
+  in_progress: "transcript.statusInProgress",
+  planned: "transcript.statusPlanned",
+  none: "transcript.statusNone",
+} as const;
+const termStatusText = (s: keyof typeof TERM_STATUS_KEY, t: T) => t(TERM_STATUS_KEY[s]);
+
 const STATUS_TONE = { graded: "done", in_progress: "progress", planned: "neutral" } as const;
-const STATUS_LABEL = { graded: "Graded", in_progress: "In progress", planned: "Planned" } as const;
 
 function CourseRow({ course, school, year, onEdit, onRemove }: { course: TranscriptCourse; school: TranscriptSchool; year?: string; onEdit: () => void; onRemove: () => void }) {
+  const t = useT();
   const status = courseStatus(course);
   const issues = courseIssues(course);
   void school;
@@ -51,17 +61,17 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
           {year && <p className="text-xs font-semibold text-zinc-600">{year}</p>}
           <p className="font-medium">
             {course.name}
-            {course.isSummer && <span className="text-sm font-normal text-zinc-500"> · Summer</span>}
-            {course.isRepeat && <span className="text-sm font-normal text-zinc-500"> · Repeat</span>}
-            {course.isCollege && <span className="text-sm font-normal text-zinc-500"> · College{course.collegeName ? `: ${course.collegeName}` : ""}</span>}
-            {course.isWithdrawn && <span className="text-sm font-normal text-zinc-500"> · Withdrawn</span>}
+            {course.isSummer && <span className="text-sm font-normal text-zinc-500"> · {t("transcript.summer")}</span>}
+            {course.isRepeat && <span className="text-sm font-normal text-zinc-500"> · {t("transcript.repeat")}</span>}
+            {course.isCollege && <span className="text-sm font-normal text-zinc-500"> · {t("transcript.college")}{course.collegeName ? `: ${course.collegeName}` : ""}</span>}
+            {course.isWithdrawn && <span className="text-sm font-normal text-zinc-500"> · {t("transcript.withdrawn")}</span>}
           </p>
           <p className="text-sm text-zinc-600">
             {LEVEL_LABEL[course.level]} · {SUBJECT_LABEL[course.subject]}
             {course.subSubject ? ` (${SUB_SUBJECT_LABEL[course.subSubject] ?? course.subSubject})` : ""} · {PERIOD_LABEL[course.period]}
-            {course.credit != null ? ` · ${course.credit} credit` : ""}
+            {course.credit != null ? ` · ${t("transcript.creditAmount", { credit: course.credit })}` : ""}
           </p>
-          <p className="text-sm">{gradesText(course)}</p>
+          <p className="text-sm">{gradesText(course, t)}</p>
           {course.notes && <p className="text-xs text-zinc-500">{course.notes}</p>}
           {issues.length > 0 && (
             <ul className="mt-1 list-disc pl-5 text-sm text-urgent">
@@ -73,19 +83,19 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {course.source !== "manual" && (
-            <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${toneClass("neutral")}`} title={course.source === "mcp" ? "Added by an AI through Connect AI" : "Imported from an AI's answer"}>
+            <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${toneClass("neutral")}`} title={course.source === "mcp" ? t("transcript.aiMcp") : t("transcript.aiImport")}>
               AI
             </span>
           )}
-          {issues.length > 0 ? <StatusPill tone="urgent">Missing grade</StatusPill> : <StatusPill tone={STATUS_TONE[status]}>{STATUS_LABEL[status]}</StatusPill>}
+          {issues.length > 0 ? <StatusPill tone="urgent">{t("transcript.missingGrade")}</StatusPill> : <StatusPill tone={STATUS_TONE[status]}>{termStatusText(status, t)}</StatusPill>}
         </div>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <button type="button" className={buttonClass("secondary", "sm")} aria-label={`Edit ${course.name}`} onClick={onEdit}>
-          Edit
+        <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("transcript.editCourseAria", { name: course.name })} onClick={onEdit}>
+          {t("common.edit")}
         </button>
-        <button type="button" className={buttonClass("danger", "sm")} aria-label={`Remove ${course.name}`} onClick={onRemove}>
-          Remove
+        <button type="button" className={buttonClass("danger", "sm")} aria-label={t("transcript.removeCourseAria", { name: course.name })} onClick={onRemove}>
+          {t("transcript.remove")}
         </button>
       </div>
     </li>
@@ -93,6 +103,7 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
 }
 
 function SchoolSection({ school }: { school: TranscriptSchool }) {
+  const t = useT();
   const { transcriptCourses, updateTranscriptSchool, removeTranscriptSchool, addTranscriptCourses, updateTranscriptCourse, removeTranscriptCourse } = useStudent();
   const [editingSchool, setEditingSchool] = useState(false);
   const [adding, setAdding] = useState(false);
@@ -112,7 +123,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
         <TranscriptCourseForm
           initial={c}
           school={school}
-          submitLabel="Save course"
+          submitLabel={t("transcript.saveCourse")}
           onSave={(v) => {
             updateTranscriptCourse(c.id, v);
             setEditing(null);
@@ -128,13 +139,13 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
         year={year}
         onEdit={() => setEditing(c.id)}
         onRemove={() => {
-          if (confirm(`Remove ${c.name} from your transcript?`)) removeTranscriptCourse(c.id);
+          if (confirm(t("transcript.confirmRemoveCourse", { name: c.name }))) removeTranscriptCourse(c.id);
         }}
       />
     );
 
   function removeSchool() {
-    if (!confirm(`Remove ${school.name} and its ${courses.length} course${courses.length === 1 ? "" : "s"} from your transcript?`)) return;
+    if (!confirm(courses.length === 1 ? t("transcript.confirmRemoveSchool", { name: school.name, n: courses.length }) : t("transcript.confirmRemoveSchoolMany", { name: school.name, n: courses.length }))) return;
     removeTranscriptSchool(school.id);
   }
 
@@ -143,7 +154,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
       {editingSchool ? (
         <TranscriptSchoolForm
           initial={school}
-          submitLabel="Save school"
+          submitLabel={t("transcript.saveSchool")}
           onSave={(v) => {
             updateTranscriptSchool(school.id, v);
             setEditingSchool(false);
@@ -157,17 +168,17 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
               {school.name}
             </h2>
             <p className="text-sm text-zinc-600">
-              {[KIND_LABEL[school.kind], school.country, school.printedGpa ? `GPA ${school.printedGpa}${school.printedGpaScale ? ` / ${school.printedGpaScale}` : ""}` : "", school.classRank ? `Rank ${school.classRank}` : ""]
+              {[KIND_LABEL[school.kind], school.country, school.printedGpa ? `GPA ${school.printedGpa}${school.printedGpaScale ? ` / ${school.printedGpaScale}` : ""}` : "", school.classRank ? t("transcript.rank", { rank: school.classRank }) : ""]
                 .filter(Boolean)
                 .join(" · ")}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <button type="button" className={buttonClass("secondary", "sm")} aria-label={`Edit ${school.name}`} onClick={() => setEditingSchool(true)}>
-              Edit school
+            <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("transcript.editSchoolAria", { name: school.name })} onClick={() => setEditingSchool(true)}>
+              {t("transcript.editSchool")}
             </button>
-            <button type="button" className={buttonClass("danger", "sm")} aria-label={`Remove ${school.name}`} onClick={removeSchool}>
-              Remove school
+            <button type="button" className={buttonClass("danger", "sm")} aria-label={t("transcript.removeSchoolAria", { name: school.name })} onClick={removeSchool}>
+              {t("transcript.removeSchool")}
             </button>
           </div>
         </div>
@@ -176,14 +187,14 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
       {flagged.length > 0 && (
         <div className="space-y-1">
           <h3 className="text-sm font-semibold text-urgent">
-            Needs a grade ({flagged.length}) <span className="font-normal text-zinc-600">· fix these and they move back to their year</span>
+            {t("transcript.needsGrade", { n: flagged.length })} <span className="font-normal text-zinc-600">{t("transcript.needsGradeHint")}</span>
           </h3>
-          <ul className="divide-y divide-urgent-line rounded-lg border border-urgent-line bg-urgent-bg" aria-label="Courses missing a required grade">
+          <ul className="divide-y divide-urgent-line rounded-lg border border-urgent-line bg-urgent-bg" aria-label={t("transcript.missingGradeList")}>
             {flagged.map((c) => row(c, yearLabel(c.academicYear)))}
           </ul>
         </div>
       )}
-      {courses.length === 0 && !adding && <p className="text-sm text-zinc-500">No courses yet for this school.</p>}
+      {courses.length === 0 && !adding && <p className="text-sm text-zinc-500">{t("transcript.noCourses")}</p>}
       {years.map((year) => (
         <div key={year} className="space-y-1">
           <h3 className="text-sm font-semibold text-zinc-700">
@@ -203,7 +214,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
           <TranscriptCourseForm
             initial={{ ...emptyCourse(school.id, school), sortOrder: nextOrder }}
             school={school}
-            submitLabel="Add course"
+            submitLabel={t("transcript.addCourseSubmit")}
             onSave={(v) => {
               addTranscriptCourses(school.id, [{ ...v, sortOrder: nextOrder }], "manual");
               setAdding(false);
@@ -213,7 +224,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
         </div>
       ) : (
         <button type="button" className={buttonClass("secondary", "sm")} onClick={() => setAdding(true)}>
-          Add a course
+          {t("transcript.addCourseButton")}
         </button>
       )}
     </section>
@@ -221,6 +232,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
 }
 
 function EditTab() {
+  const t = useT();
   const { transcriptSchools, ready, addTranscriptSchool } = useStudent();
   const [addingSchool, setAddingSchool] = useState(false);
   return (
@@ -228,18 +240,18 @@ function EditTab() {
       {!ready ? (
         <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
       ) : transcriptSchools.length === 0 && !addingSchool ? (
-        <p className="text-sm text-zinc-500">No transcript yet. Add a school, then its courses, or use the Import tab to have an AI do the typing.</p>
+        <p className="text-sm text-zinc-500">{t("transcript.noTranscript")}</p>
       ) : (
         transcriptSchools.map((s) => <SchoolSection key={s.id} school={s} />)
       )}
       {addingSchool ? (
         <section aria-labelledby="school-add" className="space-y-3 rounded-lg border border-zinc-200 p-5">
           <h2 id="school-add" className="font-display text-lg font-bold">
-            Add a school
+            {t("transcript.addSchoolHeading")}
           </h2>
           <TranscriptSchoolForm
             initial={emptySchool()}
-            submitLabel="Add school"
+            submitLabel={t("transcript.addSchoolSubmit")}
             onSave={(v) => {
               addTranscriptSchool(v);
               setAddingSchool(false);
@@ -249,7 +261,7 @@ function EditTab() {
         </section>
       ) : (
         <button type="button" className={buttonClass("primary", "sm")} onClick={() => setAddingSchool(true)}>
-          Add a school
+          {t("transcript.addSchoolButton")}
         </button>
       )}
     </div>
@@ -258,25 +270,24 @@ function EditTab() {
 
 /** The student's standardized transcript. Private: teachers never see it. */
 export function TranscriptPage() {
+  const t = useT();
   const { error, clearError } = useStudent();
   const [tab, setTab] = useState<Tab>("edit");
   return (
     <div className="space-y-5">
-      <p className="text-sm text-zinc-500">
-        Keep one standardized record of your coursework. Grades are stored exactly as printed on your transcript and never converted. This record is private to you; teachers and counselors you link to cannot see it.
-      </p>
+      <p className="text-sm text-zinc-500">{t("transcript.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
           {error}{" "}
           <button type="button" className="underline" onClick={clearError}>
-            Dismiss
+            {t("transcript.dismiss")}
           </button>
         </p>
       )}
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Transcript views">
+      <div className="flex flex-wrap gap-2" role="group" aria-label={t("transcript.viewsLabel")}>
         {TABS.map(([key, label]) => (
           <button key={key} type="button" aria-pressed={tab === key} className={buttonClass("secondary", "sm", tab === key)} onClick={() => setTab(key)}>
-            {label}
+            {t(label)}
           </button>
         ))}
       </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
+import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
@@ -15,6 +16,7 @@ import { ProfileCards } from "./ProfileCards";
 const noop = () => () => {};
 
 export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSummary[]; deadlines: Deadline[] }) {
+  const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
@@ -53,7 +55,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   const now = new Date();
   const today = isoOf(now.getFullYear(), now.getMonth(), now.getDate());
 
-  const name = student.auth?.email?.split("@")[0] ?? "Guest";
+  const name = student.auth?.email?.split("@")[0] ?? t("profile.guest");
 
   return (
     <div className="space-y-8">
@@ -64,13 +66,13 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
         <div className="min-w-0 flex-1">
           <h1 className="truncate text-3xl font-bold">{name}</h1>
           <p className="text-sm text-zinc-600">
-            {student.auth ? `Signed in as ${student.auth.email}` : "Not signed in. Your info is saved in this browser only."}
+            {student.auth ? t("profile.signedInAs", { email: student.auth.email ?? "" }) : t("profile.notSignedIn")}
             {" · "}
-            {profile.international ? "Applying from abroad" : "Applying from the US"}
+            {profile.international ? t("profile.fromAbroad") : t("profile.fromUS")}
           </p>
         </div>
         <Link href="/start" className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-white">
-          Redo setup
+          {t("profile.redoSetup")}
         </Link>
       </section>
 
@@ -79,14 +81,14 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-8">
           <section className="rounded-3xl border-2 border-zinc-200 p-6">
-            <h2 className="text-xl font-bold">How my list looks</h2>
+            <h2 className="text-xl font-bold">{t("profile.listHeading")}</h2>
             {entries.length === 0 ? (
               <p className="mt-2 text-sm text-zinc-600">
-                Nothing here yet. Add colleges from the{" "}
+                {t("profile.emptyPre")}{" "}
                 <Link href="/colleges" className="font-semibold text-blue-700 underline underline-offset-4">
-                  Colleges
+                  {t("nav.colleges")}
                 </Link>{" "}
-                page.
+                {t("profile.emptyPost")}
               </p>
             ) : (
               <>
@@ -100,22 +102,22 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
                     ))}
                   </div>
                 ) : (
-                  <p className="mt-2 text-sm text-zinc-600">Add an SAT or ACT score above to see super reach, reach, target and safety counts.</p>
+                  <p className="mt-2 text-sm text-zinc-600">{t("profile.scoresHint")}</p>
                 )}
                 <div className="mt-5">
                   <div className="flex justify-between text-sm">
-                    <span>Checklist progress</span>
+                    <span>{t("profile.checklistProgress")}</span>
                     <span className="font-semibold">
-                      {checklistDone} of {checklistTotal}
+                      {t("profile.checklistCount", { done: checklistDone, total: checklistTotal })}
                     </span>
                   </div>
                   <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-zinc-100">
                     <div className="h-full rounded-full bg-blue-500" style={{ width: `${checklistTotal ? (checklistDone / checklistTotal) * 100 : 0}%` }} />
                   </div>
                   <p className="mt-2 text-sm text-zinc-600">
-                    {submitted} of {entries.length} applications submitted.{" "}
+                    {t("profile.submittedCount", { submitted, total: entries.length })}{" "}
                     <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
-                      Open my list
+                      {t("profile.openList")}
                     </Link>
                   </p>
                 </div>
@@ -126,13 +128,13 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
         <aside aria-labelledby="deadlines-heading" className="h-fit space-y-4 rounded-3xl border-2 border-zinc-200 p-6">
           <h2 id="deadlines-heading" className="text-xl font-bold">
-            Deadlines
+            {t("nav.deadlines")}
           </h2>
           <DeadlineCalendar events={events} today={today} />
           <p className="border-t border-zinc-100 pt-4 text-sm text-zinc-600">
-            Reminder emails:{" "}
+            {t("profile.reminderEmails")}{" "}
             <Link href="/settings#reminders" className="font-semibold text-blue-700 underline underline-offset-4">
-              Settings
+              {t("nav.settings")}
             </Link>
           </p>
         </aside>

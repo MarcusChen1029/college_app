@@ -2,11 +2,25 @@
 
 import { useState, useSyncExternalStore } from "react";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishTestKey, type ScoreScale, type SectionScores } from "@/lib/scores";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const field = "w-24 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
+
+/** Section name for a score box, translated by its key (falls back to the English label). */
+export function sectionLabel(t: TFunction, key: string, fallback: string): string {
+  const k = `profile.sec.${key}` as MessageKey;
+  const out = t(k);
+  return out === k ? fallback : out;
+}
+
+/** English-test name; the test names stay English except the 2026 band scale note. */
+export function testLabel(t: TFunction, key: string, fallback: string): string {
+  return key === "toefl_band" ? t("profile.testToeflBand") : fallback;
+}
 
 /** Uncontrolled score box: saves on blur, and puts the old value back if the new one is out of range. */
 function ScoreInput({ label, value, scale, onSave }: { label: string; value: number | null | undefined; scale: { min: number; max: number; step: number }; onSave: (n: number | null) => void }) {
@@ -34,16 +48,18 @@ function ScoreInput({ label, value, scale, onSave }: { label: string; value: num
 }
 
 function Sections({ scale, values, onSave }: { scale: ScoreScale; values: SectionScores | undefined; onSave: (key: string, n: number | null) => void }) {
+  const t = useT();
   return (
     <>
       {scale.sections.map((s) => (
-        <ScoreInput key={s.key} label={s.label} value={values?.[s.key]} scale={s} onSave={(n) => onSave(s.key, n)} />
+        <ScoreInput key={s.key} label={sectionLabel(t, s.key, s.label)} value={values?.[s.key]} scale={s} onSave={(n) => onSave(s.key, n)} />
       ))}
     </>
   );
 }
 
 export function SatEditor() {
+  const t = useT();
   const { profile, setProfile } = useStudent();
   const tests = profile.tests ?? {};
   const setSat = (key: string, n: number | null) => {
@@ -53,30 +69,32 @@ export function SatEditor() {
   return (
     <div className="space-y-2 text-sm">
       <div className="flex flex-wrap items-end gap-3">
-        <ScoreInput label="Total" value={profile.sat} scale={SAT_SCALE} onSave={(n) => setProfile({ ...profile, sat: n })} />
+        <ScoreInput label={t("profile.total")} value={profile.sat} scale={SAT_SCALE} onSave={(n) => setProfile({ ...profile, sat: n })} />
         <Sections scale={SAT_SCALE} values={tests.sat} onSave={setSat} />
       </div>
-      <p className="text-xs text-zinc-500">Entering both sections fills in the total.</p>
+      <p className="text-xs text-zinc-500">{t("profile.satHint")}</p>
     </div>
   );
 }
 
 export function ActEditor() {
+  const t = useT();
   const { profile, setProfile } = useStudent();
   const tests = profile.tests ?? {};
   const setAct = (key: string, n: number | null) => setProfile({ ...profile, tests: { ...tests, act: { ...tests.act, [key]: n } } });
   return (
     <div className="space-y-2 text-sm">
       <div className="flex flex-wrap items-end gap-3">
-        <ScoreInput label="Composite" value={profile.act} scale={ACT_SCALE} onSave={(n) => setProfile({ ...profile, act: n })} />
+        <ScoreInput label={t("profile.composite")} value={profile.act} scale={ACT_SCALE} onSave={(n) => setProfile({ ...profile, act: n })} />
         <Sections scale={ACT_SCALE} values={tests.act} onSave={setAct} />
       </div>
-      <p className="text-xs text-zinc-500">Science and Writing are optional on the current ACT; leave them blank if you didn&apos;t take them.</p>
+      <p className="text-xs text-zinc-500">{t("profile.actHint")}</p>
     </div>
   );
 }
 
 export function EnglishEditor() {
+  const t = useT();
   const { profile, setProfile } = useStudent();
   const tests = profile.tests ?? {};
   const english = tests.english ?? {};
@@ -93,23 +111,23 @@ export function EnglishEditor() {
 
   return (
     <div className="space-y-3 text-sm">
-      {added.length === 0 && <p className="text-xs text-zinc-500">None yet. International applicants usually need one; add each test you took.</p>}
+      {added.length === 0 && <p className="text-xs text-zinc-500">{t("profile.englishNone")}</p>}
       {added.map((key) => {
         const scale = ENGLISH_TESTS[key];
         const score = english[key]!;
         return (
           <div key={key} className="rounded-2xl border border-zinc-200 p-3">
             <div className="mb-2 flex items-center justify-between gap-2">
-              <span className="font-medium">{scale.label}</span>
+              <span className="font-medium">{testLabel(t, key, scale.label)}</span>
               <button type="button" className={buttonClass("danger", "sm")} onClick={() => setEnglish(key, null)}>
-                Remove
+                {t("common.remove")}
               </button>
             </div>
             <div className="flex flex-wrap items-end gap-3">
-              <ScoreInput label="Overall" value={score.total} scale={scale} onSave={(n) => setEnglish(key, { total: n })} />
+              <ScoreInput label={t("profile.overall")} value={score.total} scale={scale} onSave={(n) => setEnglish(key, { total: n })} />
               <Sections scale={scale} values={score.sections} onSave={(k, n) => setEnglish(key, { sections: { ...score.sections, [k]: n } })} />
               <label className="flex flex-col gap-1">
-                <span className="text-xs text-zinc-500">Test date</span>
+                <span className="text-xs text-zinc-500">{t("profile.testDate")}</span>
                 <input
                   type="date"
                   className={`${field} w-36`}
@@ -124,10 +142,10 @@ export function EnglishEditor() {
       {available.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
           <select className={`${field} w-auto`} value={pick} onChange={(e) => setPick(e.target.value as EnglishTestKey | "")}>
-            <option value="">Choose a test…</option>
+            <option value="">{t("profile.chooseTest")}</option>
             {available.map((k) => (
               <option key={k} value={k}>
-                {ENGLISH_TESTS[k].label}
+                {testLabel(t, k, ENGLISH_TESTS[k].label)}
               </option>
             ))}
           </select>
@@ -140,7 +158,7 @@ export function EnglishEditor() {
               setPick("");
             }}
           >
-            + Add English test
+            {t("profile.addEnglish")}
           </button>
         </div>
       )}
@@ -150,6 +168,7 @@ export function EnglishEditor() {
 
 /** All test editors stacked, for places that want the full form in one go. */
 export function TestScoresForm() {
+  const t = useT();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   if (!mounted) return null;
   return (
@@ -163,7 +182,7 @@ export function TestScoresForm() {
         <ActEditor />
       </fieldset>
       <fieldset className="space-y-3">
-        <legend className="font-semibold">English tests</legend>
+        <legend className="font-semibold">{t("profile.englishTests")}</legend>
         <EnglishEditor />
       </fieldset>
     </div>

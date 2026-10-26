@@ -1,15 +1,25 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { codeErrorMessage, isPlausibleCode, normalizeCode, type CodePreview } from "@/lib/join-codes";
+import type { TFunction } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
+import { isPlausibleCode, normalizeCode, type CodeError, type CodePreview } from "@/lib/join-codes";
 import { leaveTeacher, myTeachers, previewCode, redeemCode, setShareEssays, type MyTeacher } from "@/lib/links-api";
 import { buttonClass } from "@/lib/ui";
 
 const btn = buttonClass("secondary", "sm");
-const errMsg = (e: unknown) => (e instanceof Error ? e.message : "Something went wrong. Please try again.");
+
+/** lib/join-codes.ts codeErrorMessage, in the visitor's language. */
+function codeError(t: TFunction, error: CodeError): string {
+  if (error === "rate_limited") return t("settings.code.rateLimited");
+  if (error === "invalid") return t("settings.code.invalid");
+  return t("common.tryAgain");
+}
 
 /** Student view: linked teachers (essay sharing, leave) and a "join with a code" flow with a confirm step. */
 export function MyCounselors() {
+  const t = useT();
+  const errMsg = useCallback((e: unknown) => (e instanceof Error ? e.message : t("common.tryAgain")), [t]);
   const [teachers, setTeachers] = useState<MyTeacher[] | null>(null);
   const [listError, setListError] = useState<string | null>(null);
   const [code, setCode] = useState("");
@@ -26,26 +36,26 @@ export function MyCounselors() {
       setTeachers(null); // don't keep showing a list that may be out of date
       setListError(errMsg(e));
     }
-  }, []);
+  }, [errMsg]);
 
   useEffect(() => {
     let live = true;
     myTeachers().then(
-      (t) => live && setTeachers(t),
+      (list) => live && setTeachers(list),
       (e) => live && setListError(errMsg(e)),
     );
     return () => {
       live = false;
     };
-  }, []);
+  }, [errMsg]);
 
-  async function toggleEssays(t: MyTeacher, value: boolean) {
+  async function toggleEssays(teacher: MyTeacher, value: boolean) {
     setListError(null);
     setBusy(true);
-    const set = (v: boolean) => setTeachers((cur) => cur && cur.map((x) => (x.teacherId === t.teacherId ? { ...x, shareEssays: v } : x)));
+    const set = (v: boolean) => setTeachers((cur) => cur && cur.map((x) => (x.teacherId === teacher.teacherId ? { ...x, shareEssays: v } : x)));
     set(value);
     try {
-      await setShareEssays(t.teacherId, value);
+      await setShareEssays(teacher.teacherId, value);
     } catch (e) {
       set(!value);
       setListError(errMsg(e));
@@ -54,12 +64,12 @@ export function MyCounselors() {
     }
   }
 
-  async function leave(t: MyTeacher) {
-    if (!confirm(`Leave ${t.displayName}? They will no longer see your data.`)) return;
+  async function leave(teacher: MyTeacher) {
+    if (!confirm(t("settings.counselors.leaveConfirm", { name: teacher.displayName }))) return;
     setBusy(true);
     setListError(null);
     try {
-      await leaveTeacher(t.teacherId);
+      await leaveTeacher(teacher.teacherId);
       await load();
     } catch (e) {
       setListError(errMsg(e));
@@ -72,12 +82,12 @@ export function MyCounselors() {
     e.preventDefault();
     setJoinError(null);
     setPreview(null);
-    if (!isPlausibleCode(code)) return setJoinError(codeErrorMessage("invalid"));
+    if (!isPlausibleCode(code)) return setJoinError(codeError(t, "invalid"));
     setBusy(true);
     const res = await previewCode(code);
     setBusy(false);
     if (res.ok) setPreview({ code: normalizeCode(code), data: res.preview });
-    else setJoinError(codeErrorMessage(res.error));
+    else setJoinError(codeError(t, res.error));
   }
 
   async function join() {
@@ -90,14 +100,14 @@ export function MyCounselors() {
       await load();
     } else {
       setPreview(null);
-      setJoinError(codeErrorMessage(res.error));
+      setJoinError(codeError(t, res.error));
     }
     setBusy(false);
   }
 
   return (
     <div className="space-y-5 rounded-lg border border-zinc-200 p-5">
-      <h3 className="font-display text-lg font-bold">My counselors and teachers</h3>
+      <h3 className="font-display text-lg font-bold">{t("settings.counselors.title")}</h3>
       {listError && (
         <p role="alert" className="text-sm text-urgent">
           {listError}
@@ -106,33 +116,49 @@ export function MyCounselors() {
       {teachers === null ? (
         listError ? (
           <button type="button" className={btn} onClick={() => void load()}>
-            Try again
+            {t("error.retry")}
           </button>
         ) : (
           <div className="h-16 animate-pulse rounded-lg bg-zinc-100" />
         )
       ) : teachers.length === 0 ? (
-        <p className="text-sm text-zinc-500">You aren&apos;t linked to anyone yet. Enter the code your teacher or counselor gave you.</p>
+        <p className="text-sm text-zinc-500">{t("settings.counselors.empty")}</p>
       ) : (
         <ul className="divide-y divide-zinc-100">
-          {teachers.map((t) => (
-            <li key={t.teacherId} className="space-y-2 py-3 first:pt-0">
+          {teachers.map((teacher) => (
+            <li key={teacher.teacherId} className="space-y-2 py-3 first:pt-0">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <p className="font-medium">{t.displayName}</p>
+                  <p className="font-medium">{teacher.displayName}</p>
                   <p className="text-sm text-zinc-500">
-                    {[t.school, t.classNames.length > 0 ? `Class: ${t.classNames.join(", ")}` : null, `Linked ${new Date(t.linkedAt).toLocaleDateString()}`]
+                    {[
+                      teacher.school,
+                      teacher.classNames.length > 0 ? t("settings.counselors.class", { names: teacher.classNames.join(", ") }) : null,
+                      t("settings.counselors.linked", { date: new Date(teacher.linkedAt).toLocaleDateString() }),
+                    ]
                       .filter(Boolean)
                       .join(" · ")}
                   </p>
                 </div>
-                <button type="button" disabled={busy} className={buttonClass("danger", "sm")} aria-label={`Leave ${t.displayName}`} onClick={() => void leave(t)}>
-                  Leave
+                <button
+                  type="button"
+                  disabled={busy}
+                  className={buttonClass("danger", "sm")}
+                  aria-label={t("settings.counselors.leaveLabel", { name: teacher.displayName })}
+                  onClick={() => void leave(teacher)}
+                >
+                  {t("settings.counselors.leave")}
                 </button>
               </div>
               <label className="flex items-center gap-2 text-sm">
-                <input type="checkbox" aria-label={`Let them see my essays (${t.displayName})`} checked={t.shareEssays} disabled={busy} onChange={(e) => void toggleEssays(t, e.target.checked)} />
-                Let them see my essays
+                <input
+                  type="checkbox"
+                  aria-label={t("settings.counselors.shareEssaysLabel", { name: teacher.displayName })}
+                  checked={teacher.shareEssays}
+                  disabled={busy}
+                  onChange={(e) => void toggleEssays(teacher, e.target.checked)}
+                />
+                {t("settings.counselors.shareEssays")}
               </label>
             </li>
           ))}
@@ -141,7 +167,7 @@ export function MyCounselors() {
 
       <form onSubmit={check} className="flex flex-wrap items-end gap-3">
         <label className="min-w-40 flex-1 text-sm font-medium">
-          Join with a code
+          {t("settings.counselors.joinCode")}
           <input
             value={code}
             onChange={(e) => setCode(e.target.value)}
@@ -152,7 +178,7 @@ export function MyCounselors() {
           />
         </label>
         <button type="submit" disabled={busy || code.trim() === ""} className={buttonClass("primary", "sm")}>
-          Check code
+          {t("settings.counselors.check")}
         </button>
       </form>
       {joinError && (
@@ -166,24 +192,23 @@ export function MyCounselors() {
           <p className="font-semibold">
             {preview.data.teacherName}
             {preview.data.school ? ` (${preview.data.school})` : ""}{" "}
-            <span className="font-normal">{preview.data.className ? `class ${preview.data.className}` : "one-on-one"}</span>
+            <span className="font-normal">
+              {preview.data.className ? t("settings.counselors.inClass", { name: preview.data.className }) : t("settings.counselors.oneOnOne")}
+            </span>
           </p>
           {preview.data.alreadyLinked && (
             <p className="text-sm">
-              You&apos;re already linked to {preview.data.teacherName}
-              {preview.data.className ? "; joining adds you to this class." : "."}
+              {t("settings.counselors.already", { name: preview.data.teacherName })}
+              {preview.data.className ? t("settings.counselors.alreadyClass") : t("settings.counselors.alreadyEnd")}
             </p>
           )}
-          <p className="text-sm text-zinc-700">
-            They will be able to see your profile, test scores, college list, deadlines, checklist and activities (and essays, if you leave that on). They will
-            never see your portal logins or private notes.
-          </p>
+          <p className="text-sm text-zinc-700">{t("settings.counselors.whatTheySee")}</p>
           <div className="flex flex-wrap gap-2">
             <button type="button" disabled={busy} className={buttonClass("primary", "sm")} onClick={() => void join()}>
-              Confirm and join
+              {t("settings.counselors.confirm")}
             </button>
             <button type="button" disabled={busy} className={btn} onClick={() => setPreview(null)}>
-              Cancel
+              {t("common.cancel")}
             </button>
           </div>
         </div>

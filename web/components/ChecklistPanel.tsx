@@ -11,8 +11,27 @@ import {
 } from "@/lib/checklist";
 import { parseOffer } from "@/lib/aid";
 import { ENGLISH_POLICY, fmtUsd, TEST_POLICY } from "@/lib/format";
+import { RESULT_OPTIONS } from "@/lib/application";
+import type { MessageKey } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n/client";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+
+const PLAN_KEYS = ["ED", "ED2", "EA", "REA", "RD", "ROLLING"];
+
+/** Application-plan names come from the database in English; in other languages known plan keys get a translated name. */
+export function usePlanLabel() {
+  const t = useT();
+  const locale = useLocale();
+  return (key: string | null | undefined, fallback: string) =>
+    locale !== "en" && key && PLAN_KEYS.includes(key) ? t(`application.planLabel.${key}` as MessageKey) : fallback;
+}
+
+/** Decision names (lib/application.ts RESULT_LABEL stays English for its tests; this is the translated edge). */
+export function useResultLabel() {
+  const t = useT();
+  return (r: (typeof RESULT_OPTIONS)[number]) => t(`application.result.${r}`);
+}
 
 // No bg/border colour here: a tone class is added instead (Tailwind orders by stylesheet, so competing utilities would win).
 export const SELECT_BASE = "rounded border px-1 py-0.5 text-xs";
@@ -28,6 +47,7 @@ type Props = {
 };
 
 export function ChecklistPanel({ entry, college, international, onChange, onRemove }: Props) {
+  const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
   const essays = c.essay_list ?? [];
@@ -35,79 +55,83 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
-      <Section title="Essays" done={isDone("essays", c)} className="md:col-span-2">
+      <Section title={t("application.cl.essays")} done={isDone("essays", c)} className="md:col-span-2">
         <p className="text-xs text-zinc-600">
           {c.no_essays
-            ? "No essays required."
+            ? t("application.cl.noEssays")
             : essays.length > 0
-              ? `${finals}/${essays.length} essays final.`
-              : "No essays added yet."}{" "}
+              ? t("application.cl.essaysFinal", { final: finals, total: essays.length })
+              : t("application.cl.noEssaysYet")}{" "}
           <Link href="/writing/essays" className="text-blue-600 underline">
-            Manage on the Essays page
+            {t("application.cl.manageEssays")}
           </Link>
         </p>
       </Section>
 
-      <Section title="Recommendations" done={isDone("recommendations", c)}>
+      <Section title={t("application.cl.recommendations")} done={isDone("recommendations", c)}>
         <Check checked={!!c.recommendations} onChange={(v) => set({ recommendations: v })}>
-          All recommendations submitted
+          {t("application.cl.allRecs")}
         </Check>
       </Section>
 
-      <Section title="Transcript" done={isDone("transcript", c)}>
+      <Section title={t("application.cl.transcript")} done={isDone("transcript", c)}>
         <Check checked={!!c.transcript} onChange={(v) => set({ transcript: v })}>
-          Transcript sent
+          {t("application.cl.transcriptSent")}
         </Check>
       </Section>
 
-      <Section title="Test scores" done={isDone("test_scores", c)} hint={college.test_policy ? (TEST_POLICY[college.test_policy] ?? college.test_policy) : null}>
+      <Section
+        title={t("application.cl.testScores")}
+        done={isDone("test_scores", c)}
+        hint={college.test_policy ? (policyText(t, "testPolicy", college.test_policy) ?? TEST_POLICY[college.test_policy] ?? college.test_policy) : null}
+      >
         <PlanPicker
           value={c.test_plan ?? null}
           options={TEST_PLANS}
-          label={`Test plan for ${college.name}`}
+          label={t("application.cl.testPlanFor", { name: college.name })}
           onChange={(v) => set({ test_plan: v as TestPlan | null })}
         />
         {c.test_plan !== "optional" && (
           <Check checked={!!c.test_scores} onChange={(v) => set({ test_scores: v })}>
-            Scores sent
+            {t("application.cl.scoresSent")}
           </Check>
         )}
-        {c.test_plan === "optional" && college.test_policy === "required" && <Warn>{college.short_name ?? college.name} requires test scores.</Warn>}
+        {c.test_plan === "optional" && college.test_policy === "required" && <Warn>{t("application.cl.requiresScores", { name: college.short_name ?? college.name })}</Warn>}
       </Section>
 
       <Section
-        title="English test"
+        title={t("application.cl.englishTest")}
         done={isDone("english_test", c)}
         hint={
           college.english_policy
-            ? `${ENGLISH_POLICY[college.english_policy] ?? college.english_policy}${international ? "" : " · usually only for international applicants"}`
+            ? `${policyText(t, "englishPolicy", college.english_policy) ?? ENGLISH_POLICY[college.english_policy] ?? college.english_policy}${international ? "" : t("application.cl.intlOnlyHint")}`
             : null
         }
       >
         <PlanPicker
           value={c.english_plan ?? null}
           options={ENGLISH_PLANS}
-          label={`English test for ${college.name}`}
+          label={t("application.cl.englishTestFor", { name: college.name })}
           onChange={(v) => set({ english_plan: v as EnglishPlan | null })}
         />
         {c.english_plan !== "not_required" && (
           <Check checked={!!c.english_test} onChange={(v) => set({ english_test: v })}>
-            Score sent
+            {t("application.cl.scoreSent")}
           </Check>
         )}
         {c.english_plan === "not_required" && international && college.english_policy === "required_all_international" && (
-          <Warn>Required for all international applicants — check the waiver rules.</Warn>
+          <Warn>{t("application.cl.englishRequiredAll")}</Warn>
         )}
       </Section>
 
       <Section
-        title="Financial aid offer"
+        title={t("application.cl.aidOffer")}
         done={entry.aidOfferUsd != null}
-        hint={college.total_coa_usd != null ? `Published cost ${fmtUsd(college.total_coa_usd)}/yr` : "No published cost on file"}
+        hint={college.total_coa_usd != null ? t("application.cl.publishedCost", { amount: fmtUsd(college.total_coa_usd) }) : t("application.cl.noPublishedCost")}
         className="md:col-span-2"
       >
         <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-600">
-          <label htmlFor={`aid-${entry.slug}`}>Yearly aid in your award letter (USD)</label>
+          <label htmlFor={`aid-${entry.slug}`}>{t("application.cl.yearlyAid")}</label>
           <input
             id={`aid-${entry.slug}`}
             inputMode="numeric"
@@ -115,7 +139,7 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
             // Keyed on the saved value so a change from elsewhere (or a clear) shows up.
             key={entry.aidOfferUsd ?? "none"}
             defaultValue={entry.aidOfferUsd ?? ""}
-            placeholder="e.g. 45000"
+            placeholder={t("application.cl.aidPlaceholder")}
             onBlur={(e) => {
               const next = parseOffer(e.target.value);
               if (next !== (entry.aidOfferUsd ?? null)) onChange({ aidOfferUsd: next });
@@ -123,9 +147,9 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
             }}
           />
           <span className="text-zinc-500">
-            Only you see this.{" "}
+            {t("application.cl.onlyYou")}{" "}
             <Link href="/application/results" className="text-blue-600 underline">
-              Compare offers
+              {t("application.cl.compareOffers")}
             </Link>
           </span>
         </div>
@@ -133,19 +157,19 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
 
       <div className="md:col-span-2">
         <label className="mb-1 block text-xs font-medium text-zinc-500" htmlFor={`notes-${entry.slug}`}>
-          Notes
+          {t("common.notes")}
         </label>
         <textarea
           id={`notes-${entry.slug}`}
           rows={2}
           className={`${INPUT} w-full`}
           defaultValue={entry.notes}
-          placeholder="Essay ideas, recommenders, portal login reminders…"
+          placeholder={t("application.cl.notesPlaceholder")}
           onBlur={(e) => e.target.value !== entry.notes && onChange({ notes: e.target.value })}
         />
         <div className="mt-1 text-right">
           <button className="text-xs text-zinc-500 hover:text-urgent" onClick={onRemove}>
-            Remove from list
+            {t("application.cl.removeFromList")}
           </button>
         </div>
       </div>
@@ -166,6 +190,7 @@ function Section({
   className?: string;
   children: React.ReactNode;
 }) {
+  const t = useT();
   return (
     <section className={`rounded-md border border-zinc-200 bg-white p-2.5 ${className}`}>
       <div className="mb-1.5 flex items-center gap-2">
@@ -173,7 +198,7 @@ function Section({
           className={`inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
             done ? "bg-done text-white" : "border border-zinc-300"
           }`}
-          aria-label={done ? "done" : "not done"}
+          aria-label={done ? t("application.cl.done") : t("application.cl.notDone")}
         >
           {done ? "✓" : ""}
         </span>
@@ -219,14 +244,26 @@ function PlanPicker({
   label: string;
   onChange: (v: string | null) => void;
 }) {
+  const t = useT();
+  const planName = (k: string, l: string) =>
+    k === "optional" ? t("application.cl.testOptionalPlan") : k === "not_required" ? t("application.cl.notRequiredWaived") : l;
   return (
     <select className={SELECT} value={value ?? ""} aria-label={label} onChange={(e) => onChange(e.target.value || null)}>
-      <option value="">Undecided</option>
+      <option value="">{t("application.undecided")}</option>
       {options.map(([k, l]) => (
         <option key={k} value={k}>
-          {l}
+          {planName(k, l)}
         </option>
       ))}
     </select>
   );
+}
+
+/** Translated policy text for a known key; undefined for unknown keys so the caller falls back to the English table. */
+function policyText(t: ReturnType<typeof useT>, group: "testPolicy" | "englishPolicy", key: string): string | undefined {
+  const known =
+    group === "testPolicy"
+      ? ["required", "recommended", "optional", "flexible", "blind"]
+      : ["required_nonnative", "required_all_international", "recommended", "not_required"];
+  return known.includes(key) ? t(`application.${group}.${key}` as MessageKey) : undefined;
 }

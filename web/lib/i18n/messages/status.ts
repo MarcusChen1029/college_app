@@ -1,0 +1,48 @@
+// Shared status words: deadline chips, fit labels and reasons, tier badges.
+import type { Translation } from "../core.ts";
+
+export const en = {
+  "status.deadline.overdue": "overdue",
+  "status.deadline.today": "today",
+  "status.deadline.tomorrow": "tomorrow",
+  "status.deadline.days": "{n} days",
+  "status.deadline.passed": "passed",
+  "status.done": "Done",
+  "status.tier": "Tier {tier}",
+  "status.fit.super_reach": "Super reach",
+  "status.fit.reach": "Reach",
+  "status.fit.target": "Target",
+  "status.fit.safety": "Safety",
+  "status.fitWhy.rate": "admit rate {rate}%",
+  "status.fitWhy.intlRate": "international admit rate {rate}%",
+  "status.fitWhy.above": "{test} at/above the 75th percentile",
+  "status.fitWhy.within": "{test} in the middle 50%",
+  "status.fitWhy.below": "{test} below the 25th percentile",
+  "status.fitWhy.longShot": "under 10% is a long shot for everyone",
+  "status.fitWhy.reachAll": "under 15% is a reach for everyone",
+  "status.fitWhy.noScore": "no comparable score",
+  "status.fitWhy.sep": "; ",
+} as const;
+
+export const zhTW: Translation<typeof en> = {
+  "status.deadline.overdue": "已逾期",
+  "status.deadline.today": "今天",
+  "status.deadline.tomorrow": "明天",
+  "status.deadline.days": "剩 {n} 天",
+  "status.deadline.passed": "已過",
+  "status.done": "完成",
+  "status.tier": "等級 {tier}",
+  "status.fit.super_reach": "極難衝刺校",
+  "status.fit.reach": "衝刺校",
+  "status.fit.target": "目標校",
+  "status.fit.safety": "保底校",
+  "status.fitWhy.rate": "錄取率 {rate}%",
+  "status.fitWhy.intlRate": "國際生錄取率 {rate}%",
+  "status.fitWhy.above": "{test} 在第 75 百分位數以上",
+  "status.fitWhy.within": "{test} 落在中間 50%",
+  "status.fitWhy.below": "{test} 低於第 25 百分位數",
+  "status.fitWhy.longShot": "錄取率低於 10%，對任何人都很難",
+  "status.fitWhy.reachAll": "錄取率低於 15%，對任何人都是衝刺",
+  "status.fitWhy.noScore": "沒有可比較的成績",
+  "status.fitWhy.sep": "；",
+};

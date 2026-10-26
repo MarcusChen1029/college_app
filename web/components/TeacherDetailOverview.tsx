@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { useT } from "@/lib/i18n/client";
 import { collegeNames } from "@/lib/links-api";
 import { englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
 import { useLoad } from "@/lib/use-load";
@@ -17,7 +18,10 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
-const Missing = () => <span className="text-zinc-400">Not entered</span>;
+function Missing() {
+  const t = useT();
+  return <span className="text-zinc-400">{t("teacher.overview.notEntered")}</span>;
+}
 
 /** A headline score with the filled-in section scores underneath. */
 function Score({ value, scale, sections }: { value: number | null; scale: ScoreScale; sections?: SectionScores }) {
@@ -32,6 +36,7 @@ function Score({ value, scale, sections }: { value: number | null; scale: ScoreS
 }
 
 export function OverviewPanel({ detail }: { detail: StudentDetail }) {
+  const t = useT();
   const p = detail.profile;
   const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
   return (
@@ -42,17 +47,17 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
       <Item label="ACT">
         <Score value={p.actComposite} scale={ACT_SCALE} sections={p.testDetails.act} />
       </Item>
-      <Item label="GPA (unweighted)">{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
-      <Item label={english.length > 1 ? "English tests" : "English test"}>
+      <Item label={t("teacher.overview.gpa")}>{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
+      <Item label={english.length > 1 ? t("teacher.overview.englishTests") : t("teacher.overview.englishTest")}>
         {english.length > 0 ? (
           <ul className="space-y-2">
-            {english.map((t) => (
-              <li key={t.key}>
+            {english.map((e) => (
+              <li key={e.key}>
                 <p>
-                  {t.label}
-                  {t.total != null && <span className="font-display text-xl font-bold"> {t.total}</span>}
+                  {e.label}
+                  {e.total != null && <span className="font-display text-xl font-bold"> {e.total}</span>}
                 </p>
-                {t.parts.length > 0 && <p className="text-zinc-600">{t.parts.map((s) => `${s.label} ${s.value}`).join(" · ")}</p>}
+                {e.parts.length > 0 && <p className="text-zinc-600">{e.parts.map((s) => `${s.label} ${s.value}`).join(" · ")}</p>}
               </li>
             ))}
           </ul>
@@ -60,25 +65,26 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
           <Missing />
         )}
       </Item>
-      <Item label="Intended field">{p.intendedCategory ? humanize(p.intendedCategory) : <Missing />}</Item>
-      <Item label="Target regions">{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-400">Not chosen</span>}</Item>
-      <Item label="International student">{p.isInternational ? "Yes" : "No"}</Item>
-      <Item label="Needs financial aid">{p.needsAid ? "Yes" : "No"}</Item>
-      <Item label="Profile last updated">{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : <span className="text-zinc-400">Never</span>}</Item>
+      <Item label={t("teacher.overview.field")}>{p.intendedCategory ? humanize(p.intendedCategory) : <Missing />}</Item>
+      <Item label={t("teacher.overview.regions")}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-400">{t("teacher.overview.notChosen")}</span>}</Item>
+      <Item label={t("teacher.overview.international")}>{p.isInternational ? t("common.yes") : t("common.no")}</Item>
+      <Item label={t("teacher.overview.needsAid")}>{p.needsAid ? t("common.yes") : t("common.no")}</Item>
+      <Item label={t("teacher.overview.updated")}>{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : <span className="text-zinc-400">{t("teacher.time.never")}</span>}</Item>
     </dl>
   );
 }
 
 /** The student's interested colleges in their own order, with names from the database (a title made from the slug if unknown). */
 export function InterestedPanel({ detail }: { detail: StudentDetail }) {
+  const t = useT();
   const names = interestedNames(detail);
   const slugs = detail.profile.interested;
   const load = useCallback(() => collegeNames(slugs), [slugs]);
   const { data: real, loading } = useLoad(load); // if the lookup fails `real` stays null and the fallback names show
-  if (names.length === 0) return <p className="text-sm text-zinc-500">{detail.displayName} hasn&apos;t marked any colleges as interested.</p>;
+  if (names.length === 0) return <p className="text-sm text-zinc-500">{t("teacher.overview.interestedNone", { name: detail.displayName })}</p>;
   return (
     <div className="space-y-3">
-      <p className="text-sm text-zinc-500">Colleges {detail.displayName} is considering but hasn&apos;t put on their list.</p>
+      <p className="text-sm text-zinc-500">{t("teacher.overview.interestedIntro", { name: detail.displayName })}</p>
       <ul className="flex flex-wrap gap-2" aria-busy={loading}>
         {names.map((n) =>
           loading ? (

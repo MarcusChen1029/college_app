@@ -2,34 +2,39 @@
 
 import { useState } from "react";
 import { SCHOOL_DOMAINS } from "@/lib/school-domains";
-import { FIT_LABEL, type Fit } from "@/lib/fit";
+import type { Fit, FitResult } from "@/lib/fit";
+import { useT } from "@/lib/i18n/client";
+import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { pillTone } from "@/lib/status";
 import { fitClass, fitDotClass, FIT_LEVEL, tierClass, toneClass } from "@/lib/ui";
 import type { TierCode } from "@/lib/types";
 
 export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undefined; size?: "sm" | "md" }) {
+  const t = useT();
   if (!tier) return <span className="text-zinc-400">—</span>;
   const plus = tier.length > 1;
   const dims = size === "sm" ? `h-5 text-[11px] ${plus ? "min-w-5 px-1" : "w-5"}` : `h-7 text-sm ${plus ? "min-w-7 px-1.5" : "w-7"}`;
   return (
-    <span className={`inline-flex items-center justify-center rounded-md font-display font-bold ${dims} ${tierClass(tier)}`} title={`Tier ${tier}`}>
+    <span className={`inline-flex items-center justify-center rounded-md font-display font-bold ${dims} ${tierClass(tier)}`} title={t("status.tier", { tier })}>
       {tier}
     </span>
   );
 }
 
-export function FitBadge({ fit, reason }: { fit: Fit; reason?: string }) {
+/** `result` (from computeFit) gives the hover text in the visitor's language. */
+export function FitBadge({ fit, result }: { fit: Fit; result?: FitResult }) {
+  const t = useT();
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${fitClass(fit)}`}
-      title={reason}
+      title={result ? fitReasonText(t, result) : undefined}
     >
       <span className="flex gap-0.5" aria-hidden="true">
         {[1, 2, 3, 4].map((n) => (
           <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[fit] ? fitDotClass(fit) : ""}`} />
         ))}
       </span>
-      {FIT_LABEL[fit]}
+      {fitLabel(t, fit)}
     </span>
   );
 }

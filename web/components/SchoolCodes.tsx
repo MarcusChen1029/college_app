@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey } from "@/lib/i18n";
 import type { CollegeSummary, ScoreCode, ScoreCodeTest } from "@/lib/types";
 
 const TEST_LABEL: Record<ScoreCodeTest, string> = {
@@ -13,10 +15,10 @@ const TEST_LABEL: Record<ScoreCodeTest, string> = {
 };
 
 const VIEWS = {
-  all: { label: "All school codes", tests: ["sat", "act", "toefl", "ielts", "duolingo", "pte"] },
-  testing: { label: "Testing required", tests: ["sat", "act"] },
-  english: { label: "English test required", tests: ["toefl", "ielts", "duolingo", "pte"] },
-} as const satisfies Record<string, { label: string; tests: readonly ScoreCodeTest[] }>;
+  all: { label: "application.codes.viewAll", tests: ["sat", "act", "toefl", "ielts", "duolingo", "pte"] },
+  testing: { label: "application.codes.viewTesting", tests: ["sat", "act"] },
+  english: { label: "application.codes.viewEnglish", tests: ["toefl", "ielts", "duolingo", "pte"] },
+} as const satisfies Record<string, { label: MessageKey; tests: readonly ScoreCodeTest[] }>;
 type View = keyof typeof VIEWS;
 
 const ENGLISH_REQUIRED = new Set(["required_nonnative", "required_all_international"]);
@@ -28,6 +30,7 @@ const includes: Record<View, (c: CollegeSummary) => boolean> = {
 };
 
 export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; codes: ScoreCode[] }) {
+  const tr = useT();
   const dialog = useRef<HTMLDialogElement>(null);
   const [view, setView] = useState<View>("all");
   const [copied, setCopied] = useState<string | null>(null);
@@ -75,7 +78,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
         className="rounded-md border border-zinc-300 bg-white px-2.5 py-1 text-xs font-medium hover:bg-zinc-50"
         onClick={() => dialog.current?.showModal()}
       >
-        School codes
+        {tr("application.codes.button")}
       </button>
       <dialog
         ref={dialog}
@@ -84,10 +87,10 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
       >
         <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4">
           <div>
-            <h2 className="font-semibold">School codes</h2>
-            <p className="text-xs text-zinc-500">Codes to enter when sending scores to the colleges on your list. Click a code to copy it.</p>
+            <h2 className="font-semibold">{tr("application.codes.button")}</h2>
+            <p className="text-xs text-zinc-500">{tr("application.codes.intro")}</p>
           </div>
-          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => dialog.current?.close()} aria-label="Close">
+          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => dialog.current?.close()} aria-label={tr("common.close")}>
             ✕
           </button>
         </div>
@@ -102,13 +105,13 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
                 className={`rounded px-2.5 py-1 ${view === v ? "bg-zinc-900 text-white" : "text-zinc-600 hover:text-zinc-900"}`}
                 onClick={() => setView(v)}
               >
-                {VIEWS[v].label}
+                {tr(VIEWS[v].label)}
               </button>
             ))}
           </div>
           {rows.length > 0 && (
             <button className="ml-auto text-xs text-blue-600 underline" onClick={() => copy(asText(), "all")}>
-              {copied === "all" ? "Copied!" : "Copy list"}
+              {copied === "all" ? tr("application.codes.copiedBang") : tr("application.codes.copyList")}
             </button>
           )}
         </div>
@@ -117,10 +120,10 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
           {rows.length === 0 ? (
             <p className="rounded-md border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">
               {view === "testing"
-                ? "No college on your list requires the SAT or ACT."
+                ? tr("application.codes.emptyTesting")
                 : view === "english"
-                  ? "No college on your list requires an English test."
-                  : "Your list is empty."}
+                  ? tr("application.codes.emptyEnglish")
+                  : tr("application.codes.emptyAll")}
             </p>
           ) : (
             <table className="w-full min-w-[480px] text-sm">
@@ -148,15 +151,15 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
                               <button
                                 className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs tabular-nums hover:bg-blue-100"
                                 onClick={() => copy(sc.code!, id)}
-                                title={sc.notes ?? "Copy code"}
+                                title={sc.notes ?? tr("application.codes.copyCode")}
                               >
-                                {copied === id ? "Copied" : sc.code}
+                                {copied === id ? tr("common.copied") : sc.code}
                               </button>
                               {sc.source_url && <SourceLink url={sc.source_url} />}
                             </span>
                           ) : noteNo.has(id) ? (
                             <span className="text-xs text-zinc-500" title={sc?.notes ?? undefined}>
-                              no code<sup className="ml-0.5 text-[10px] text-blue-600">{noteNo.get(id)}</sup>
+                              {tr("application.codes.noCode")}<sup className="ml-0.5 text-[10px] text-blue-600">{noteNo.get(id)}</sup>
                             </span>
                           ) : (
                             <span className="text-xs text-zinc-400">—</span>
@@ -185,8 +188,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
             </ol>
           )}
           <p className="mt-3 text-[11px] text-zinc-400">
-            — = not confirmed yet. Codes come from each college&apos;s official site (src). Double-check the code in the testing portal before you
-            send.
+            {tr("application.codes.footer")}
           </p>
         </div>
       </dialog>
@@ -195,8 +197,9 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
 }
 
 function SourceLink({ url }: { url: string }) {
+  const tr = useT();
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-zinc-400 hover:text-blue-600" title="Official source">
+    <a href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-zinc-400 hover:text-blue-600" title={tr("application.codes.officialSource")}>
       src
     </a>
   );

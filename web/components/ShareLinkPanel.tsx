@@ -1,48 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createShareLink, listShareLinks, revokeShareLink, type ShareLink } from "@/lib/share-api";
-import { lastViewedText, shareUrl, type ShareKind } from "@/lib/share-links";
 import { fmtDate } from "@/lib/format";
+import type { MessageKey } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
+import { createShareLink, listShareLinks, revokeShareLink, type ShareLink } from "@/lib/share-api";
+import { shareUrl, type ShareKind } from "@/lib/share-links";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
-const errMsg = (e: unknown) => (e instanceof Error ? e.message : "Something went wrong. Please try again.");
-
-const COPY: Record<ShareKind, { heading: string; intro: string; create: string }> = {
-  parent: {
-    heading: "Share with a parent",
-    intro:
-      "A read-only page with your college list, plans, deadlines, checklist progress and decisions. It never shows your essays, notes, portal logins, transcript, aid offers or email.",
-    create: "Create parent link",
-  },
-  portfolio: {
-    heading: "Share as a portfolio link",
-    intro:
-      "A public page with your name, school, class year and activities, shown the way this résumé shows them (hours and scores only if they are switched on here). It never shows your email, phone or address.",
-    create: "Create portfolio link",
-  },
+const COPY: Record<ShareKind, { heading: MessageKey; intro: MessageKey; create: MessageKey }> = {
+  parent: { heading: "settings.share.parentHeading", intro: "settings.share.parentIntro", create: "settings.share.parentCreate" },
+  portfolio: { heading: "settings.share.portfolioHeading", intro: "settings.share.portfolioIntro", create: "settings.share.portfolioCreate" },
 };
 
 /** Create / copy / turn off the one active share link of a kind. Students only; the caller checks the role. */
 export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
+  const t = useT();
   const [links, setLinks] = useState<ShareLink[] | null>(null);
   const [url, setUrl] = useState<string | null>(null); // only right after creating; the token is never stored
   const [copied, setCopied] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const text = COPY[kind];
+  const errMsg = (e: unknown) => (e instanceof Error ? e.message : t("common.tryAgain"));
 
   useEffect(() => {
     let live = true;
     listShareLinks(kind).then(
       (l) => live && setLinks(l),
-      (e) => live && setError(errMsg(e)),
+      (e) => live && setError(e instanceof Error ? e.message : t("common.tryAgain")),
     );
     return () => {
       live = false;
     };
-  }, [kind]);
+  }, [kind, t]);
 
   const active = links?.find((l) => !l.revokedAt) ?? null;
 
@@ -81,16 +73,20 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
       await navigator.clipboard.writeText(url);
       setCopied(true);
     } catch {
-      setError("Couldn't copy. Select the link and copy it yourself.");
+      setError(t("settings.share.copyFailed"));
     }
   }
+
+  // lib/share-links.ts lastViewedText, in the visitor's language.
+  const lastViewed = (iso: string | null | undefined) =>
+    iso ? t("settings.share.lastOpened", { date: fmtDate(iso.slice(0, 10)) }) : t("settings.share.neverOpened");
 
   return (
     <section id={id} aria-labelledby={`share-${kind}-heading`} className="scroll-mt-4 rounded-2xl border border-zinc-200 p-6 print:hidden">
       <h2 id={`share-${kind}-heading`} className="mb-1 text-xl font-bold">
-        {text.heading}
+        {t(text.heading)}
       </h2>
-      <p className="mb-3 text-sm text-zinc-500">{text.intro}</p>
+      <p className="mb-3 text-sm text-zinc-500">{t(text.intro)}</p>
       {error && (
         <p role="alert" className="mb-2 text-sm text-urgent">
           {error}
@@ -103,7 +99,7 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
           {url && (
             <div className="space-y-2">
               <label className="block font-medium" htmlFor={`share-${kind}-url`}>
-                Your link (copy it now: for safety it is shown only once)
+                {t("settings.share.yourLink")}
               </label>
               <div className="flex flex-wrap gap-2">
                 <input
@@ -114,7 +110,7 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
                   className="min-w-0 flex-1 rounded-lg border border-zinc-300 px-3 py-2 font-mono text-xs"
                 />
                 <button type="button" className={buttonClass("primary", "sm")} onClick={copy}>
-                  {copied ? "Copied" : "Copy"}
+                  {copied ? t("common.copied") : t("common.copy")}
                 </button>
               </div>
             </div>
@@ -122,23 +118,23 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
           {active ? (
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-zinc-600">
-                Link on since {fmtDate(active.createdAt.slice(0, 10))} · {lastViewedText(active.lastViewedAt)}
+                {t("settings.share.onSince", { date: fmtDate(active.createdAt.slice(0, 10)) })} · {lastViewed(active.lastViewedAt)}
               </p>
               <div className="flex flex-wrap gap-2">
                 <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={create}>
-                  New link
+                  {t("settings.share.newLink")}
                 </button>
                 <button type="button" className={buttonClass("danger", "sm")} disabled={busy} onClick={() => revoke(active)}>
-                  Turn off
+                  {t("settings.share.turnOff")}
                 </button>
               </div>
             </div>
           ) : (
             <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={create}>
-              {busy ? "Creating…" : text.create}
+              {busy ? t("settings.share.creating") : t(text.create)}
             </button>
           )}
-          {active && !url && <p className="text-xs text-zinc-500">Lost the link? Make a new one; the old link stops working.</p>}
+          {active && !url && <p className="text-xs text-zinc-500">{t("settings.share.lost")}</p>}
         </div>
       )}
     </section>

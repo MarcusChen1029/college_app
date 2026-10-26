@@ -1,6 +1,9 @@
 "use client";
 
 import { useMemo, useState, useSyncExternalStore } from "react";
+import { en } from "@/lib/i18n/en";
+import { useT } from "@/lib/i18n/client";
+import type { MessageKey, TFunction } from "@/lib/i18n";
 import { INTEREST_CAREERS, ONET_VERSION } from "@/lib/interest-careers";
 import {
   ANSWER_LABELS,
@@ -19,6 +22,11 @@ import {
   type Answers,
 } from "@/lib/interest-quiz";
 import { buttonClass } from "@/lib/ui";
+
+/** Chinese text for quiz data (items, types, careers) is keyed by id; anything without an entry shows its English text. */
+function tr(t: TFunction, key: string, fallback: string): string {
+  return key in en ? t(key as MessageKey) : fallback;
+}
 
 // Tiny localStorage-backed store; every access is wrapped because storage can be blocked or empty.
 const listeners = new Set<() => void>();
@@ -48,6 +56,7 @@ function writeRaw(value: string | null) {
 }
 
 export default function InterestQuiz() {
+  const t = useT();
   const raw = useSyncExternalStore(subscribe, readRaw, () => null);
   // If storage is blocked we keep answers in memory so the quiz still works.
   const [memory, setMemory] = useState<Answers | null>(null);
@@ -76,15 +85,15 @@ export default function InterestQuiz() {
   return (
     <div className="space-y-6">
       {done ? (
-        <Results answers={answers} onRetake={retake} onBack={() => setPos(total - 1)} />
+        <Results t={t} answers={answers} onRetake={retake} onBack={() => setPos(total - 1)} />
       ) : (
         <section className="space-y-5 rounded-2xl border-2 border-ink bg-white p-5" aria-live="polite">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm text-zinc-600">
               <span>
-                Question {current + 1} of {total}
+                {t("quiz.question", { current: current + 1, total })}
               </span>
-              <span>{answeredCount(answers)} answered</span>
+              <span>{t("quiz.answered", { n: answeredCount(answers) })}</span>
             </div>
             <div
               className="h-2 overflow-hidden rounded-full bg-zinc-100"
@@ -92,13 +101,13 @@ export default function InterestQuiz() {
               aria-valuemin={0}
               aria-valuemax={total}
               aria-valuenow={answeredCount(answers)}
-              aria-label="Quiz progress"
+              aria-label={t("quiz.progress")}
             >
               <div className="h-full bg-ink" style={{ width: `${(answeredCount(answers) / total) * 100}%` }} />
             </div>
           </div>
-          <p className="text-sm font-semibold text-zinc-600">How much would you enjoy this?</p>
-          <h2 className="font-display text-2xl font-bold">{QUESTIONS[current].text}</h2>
+          <p className="text-sm font-semibold text-zinc-600">{t("quiz.prompt")}</p>
+          <h2 className="font-display text-2xl font-bold">{tr(t, `quiz.item.${QUESTIONS[current].id}`, QUESTIONS[current].text)}</h2>
           <div className="grid gap-2 sm:grid-cols-5">
             {ANSWER_LABELS.map((label, i) => (
               <button
@@ -107,40 +116,38 @@ export default function InterestQuiz() {
                 onClick={() => answer(i + 1)}
                 className={buttonClass("secondary", "md", answers[current] === i + 1)}
               >
-                {label}
+                {tr(t, `quiz.answer.${i + 1}`, label)}
               </button>
             ))}
           </div>
           <div className="flex items-center justify-between">
             <button type="button" className={buttonClass("quiet", "sm")} disabled={current === 0} onClick={() => setPos(current - 1)}>
-              Back
+              {t("quiz.back")}
             </button>
             {answers[current] !== null && (
               <button type="button" className={buttonClass("quiet", "sm")} onClick={() => setPos(current + 1)}>
-                Skip ahead
+                {t("quiz.skip")}
               </button>
             )}
           </div>
         </section>
       )}
       <p className="text-xs text-zinc-500">
-        This is not the official O*NET Interest Profiler. Career interest scores and occupation titles come from the O*NET {ONET_VERSION} Database
-        by the U.S. Department of Labor, Employment and Training Administration, used under{" "}
+        {t("quiz.attr1", { version: ONET_VERSION })}
         <a className="underline underline-offset-4" href="https://creativecommons.org/licenses/by/4.0/">
           CC BY 4.0
         </a>
-        . We selected a subset of occupations and compare your profile to them ourselves; USDOL/ETA has not approved, endorsed, or tested this quiz.
-        Linked programs are from the{" "}
+        {t("quiz.attr2")}
         <a className="underline underline-offset-4" href="https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56">
           NCES CIP 2020 to SOC 2018 crosswalk
         </a>
-        . O*NET&reg; is a trademark of USDOL/ETA.
+        {t("quiz.attr3")}
       </p>
     </div>
   );
 }
 
-function Results({ answers, onRetake, onBack }: { answers: Answers; onRetake: () => void; onBack: () => void }) {
+function Results({ t, answers, onRetake, onBack }: { t: TFunction; answers: Answers; onRetake: () => void; onBack: () => void }) {
   const scores = scoreAnswers(answers);
   const code = interestCode(scores);
   const matches = matchCareers(scores, INTEREST_CAREERS, 12);
@@ -151,25 +158,25 @@ function Results({ answers, onRetake, onBack }: { answers: Answers; onRetake: ()
     <div className="space-y-6">
       <section className="space-y-4 rounded-2xl border-2 border-ink bg-white p-5">
         <div>
-          <p className="text-sm font-semibold text-zinc-600">Your interest code</p>
+          <p className="text-sm font-semibold text-zinc-600">{t("quiz.yourCode")}</p>
           <p className="font-display text-5xl font-bold tracking-widest">{code.join("")}</p>
-          <p className="mt-1 text-zinc-600">{code.map((t) => TYPE_INFO[t].name).join(" / ")}</p>
+          <p className="mt-1 text-zinc-600">{code.map((c) => tr(t, `quiz.type.${c}.name`, TYPE_INFO[c].name)).join(" / ")}</p>
         </div>
         <ul className="space-y-3">
           {[...RIASEC]
             .sort((a, b) => (scores[b] ?? 0) - (scores[a] ?? 0) || RIASEC.indexOf(a) - RIASEC.indexOf(b))
-            .map((t) => (
-              <li key={t} className="space-y-1">
+            .map((c) => (
+              <li key={c} className="space-y-1">
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="font-semibold">
-                    {t} &middot; {TYPE_INFO[t].name}
+                    {c} &middot; {tr(t, `quiz.type.${c}.name`, TYPE_INFO[c].name)}
                   </span>
-                  <span className="text-sm text-zinc-600">{scores[t] ?? 0}%</span>
+                  <span className="text-sm text-zinc-600">{scores[c] ?? 0}%</span>
                 </div>
-                <div className="h-2.5 overflow-hidden rounded-full bg-zinc-100" role="img" aria-label={`${TYPE_INFO[t].name} ${scores[t] ?? 0} percent`}>
-                  <div className="h-full bg-ink" style={{ width: `${scores[t] ?? 0}%` }} />
+                <div className="h-2.5 overflow-hidden rounded-full bg-zinc-100" role="img" aria-label={t("quiz.scoreAria", { name: tr(t, `quiz.type.${c}.name`, TYPE_INFO[c].name), n: scores[c] ?? 0 })}>
+                  <div className="h-full bg-ink" style={{ width: `${scores[c] ?? 0}%` }} />
                 </div>
-                <p className="text-sm text-zinc-600">{TYPE_INFO[t].blurb}</p>
+                <p className="text-sm text-zinc-600">{tr(t, `quiz.type.${c}.blurb`, TYPE_INFO[c].blurb)}</p>
               </li>
             ))}
         </ul>
@@ -177,32 +184,32 @@ function Results({ answers, onRetake, onBack }: { answers: Answers; onRetake: ()
 
       {flat ? (
         <p className="rounded-xl border border-neutral-line bg-neutral-bg p-4 text-neutral">
-          Your answers were about equal for every type, so no career stands out. Retake it and use the full range, from strongly dislike to strongly like.
+          {t("quiz.flat")}
         </p>
       ) : (
         <>
           <section className="space-y-3">
-            <h2 className="text-xl font-bold">Careers that fit your profile</h2>
+            <h2 className="text-xl font-bold">{t("quiz.careersHeading")}</h2>
             <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
               {matches.map(({ career, similarity }) => (
                 <li key={career.code} className="flex items-start justify-between gap-3 p-3">
                   <div>
                     <a className="font-semibold text-blue-700 underline underline-offset-4" href={onetUrl(career.code)} target="_blank" rel="noreferrer">
-                      {career.title}
+                      {tr(t, `quiz.career.${career.code}`, career.title)}
                     </a>
                     <p className="text-sm text-zinc-600">
-                      {career.zone === 5 ? "Usually needs a graduate degree" : "Usually needs a bachelor's degree"} &middot; O*NET {career.code}
+                      {career.zone === 5 ? t("quiz.reqGrad") : t("quiz.reqBach")} &middot; O*NET {career.code}
                     </p>
                   </div>
-                  <span className="shrink-0 text-sm text-zinc-600">{Math.round(Math.max(0, similarity) * 100)}% match</span>
+                  <span className="shrink-0 text-sm text-zinc-600">{t("quiz.matchPct", { n: Math.round(Math.max(0, similarity) * 100) })}</span>
                 </li>
               ))}
             </ul>
           </section>
           <section className="space-y-3">
-            <h2 className="text-xl font-bold">College programs to look at</h2>
+            <h2 className="text-xl font-bold">{t("quiz.programsHeading")}</h2>
             <p className="text-sm text-zinc-600">
-              Programs the NCES crosswalk links to your top careers. A program name here is a starting point; check each college&apos;s own major list.
+              {t("quiz.programsBlurb")}
             </p>
             <ul className="flex flex-wrap gap-2">
               {programs.map((p) => (
@@ -217,10 +224,10 @@ function Results({ answers, onRetake, onBack }: { answers: Answers; onRetake: ()
 
       <div className="flex flex-wrap gap-3">
         <button type="button" className={buttonClass("primary")} onClick={onRetake}>
-          Retake
+          {t("quiz.retake")}
         </button>
         <button type="button" className={buttonClass("secondary")} onClick={onBack}>
-          Change my last answer
+          {t("quiz.changeLast")}
         </button>
       </div>
     </div>

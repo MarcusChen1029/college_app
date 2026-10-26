@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
-import { activeRegions, regionLabel, REGIONS, type RegionCode } from "@/lib/regions";
+import type { MessageKey, TFunction } from "@/lib/i18n";
+import { useT } from "@/lib/i18n/client";
+import { fitReasonText } from "@/lib/i18n/fit-text";
+import { activeRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import { BASE_TIERS, tierRank } from "@/lib/tiers";
@@ -17,6 +20,10 @@ import { TIER_FILL } from "./USMap";
 import { USMap3D } from "./USMap3D";
 
 type Sort = "tier" | "admit" | "name";
+
+// Lookup labels live in lib/format.ts (English, shared with tests); translate them here by stored value.
+const policyLabel = (t: TFunction, group: "testPolicy" | "englishPolicy", map: Record<string, string>, k: string) =>
+  k in map ? t(`colleges.${group}.${k}` as MessageKey) : k;
 
 // Eases a number from 0 up to `value` so stats feel like they land rather than appear.
 function useCountUp(value: number | null, ms = 800) {
@@ -41,6 +48,7 @@ function useCountUp(value: number | null, ms = 800) {
 }
 
 function AdmitRing({ rate, label }: { rate: number | null; label: string }) {
+  const t = useT();
   const shown = useCountUp(rate);
   const [on, setOn] = useState(false);
   useEffect(() => {
@@ -52,7 +60,7 @@ function AdmitRing({ rate, label }: { rate: number | null; label: string }) {
   const pct = rate == null ? 0 : Math.min(100, Math.max(0, rate));
   return (
     <div className="flex items-center gap-3">
-      <svg width={88} height={88} viewBox="0 0 88 88" role="img" aria-label={`${label}: ${rate == null ? "not reported" : `${rate}%`}`}>
+      <svg width={88} height={88} viewBox="0 0 88 88" role="img" aria-label={`${label}: ${rate == null ? t("colleges.notReported") : `${rate}%`}`}>
         <circle cx={44} cy={44} r={R} fill="none" stroke="#e9f2fa" strokeWidth={10} />
         <circle
           cx={44}
@@ -73,13 +81,14 @@ function AdmitRing({ rate, label }: { rate: number | null; label: string }) {
       </svg>
       <div>
         <p className="text-xs font-medium text-zinc-500">{label}</p>
-        <p className="text-sm text-zinc-600">of applicants get in</p>
+        <p className="text-sm text-zinc-600">{t("colleges.ofApplicants")}</p>
       </div>
     </div>
   );
 }
 
 function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | null; p75: number; estimated: boolean; you: number | null }) {
+  const t = useT();
   const pos = (v: number) => `${Math.min(100, Math.max(0, ((v - 400) / 1200) * 100))}%`;
   const [on, setOn] = useState(false);
   useEffect(() => {
@@ -89,7 +98,7 @@ function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | 
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <p className="text-xs font-medium text-zinc-500">SAT {p50 != null ? "median" : "middle 50%"}</p>
+        <p className="text-xs font-medium text-zinc-500">{p50 != null ? t("colleges.satMedian") : t("colleges.satMiddle")}</p>
         <p className="font-display text-lg font-bold">
           {estimated && "≈ "}
           {p50 ?? "—"}
@@ -103,7 +112,7 @@ function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | 
         {p50 != null && <span className="absolute -top-1 h-5 w-1 -translate-x-1/2 rounded bg-ink" style={{ left: pos(p50) }} />}
         {you != null && (
           <span className="absolute -top-6 -translate-x-1/2 text-center text-[10px] font-bold leading-none text-coral" style={{ left: pos(you) }}>
-            You
+            {t("colleges.you")}
             <span className="mx-auto mt-0.5 block h-3 w-3 translate-y-[5px] rounded-full border-2 border-white bg-coral shadow" />
           </span>
         )}
@@ -111,9 +120,9 @@ function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | 
       <p className="mt-1 flex justify-between text-[11px] text-zinc-500">
         <span>400</span>
         <span>
-          Middle 50%: {estimated && "≈ "}
+          {t("colleges.middle50")}{estimated && "≈ "}
           {p25}–{p75}
-          {estimated && " (section scores added)"}
+          {estimated && t("colleges.sectionAdded")}
         </span>
         <span>1600</span>
       </p>
@@ -130,14 +139,14 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
   );
 }
 
-function englishText(e: EnglishSummary | undefined) {
+function englishText(t: TFunction, e: EnglishSummary | undefined) {
   if (!e) return { mins: "—", note: null as string | null };
   const mins = [
-    e.toefl != null && `TOEFL ${e.toefl}${e.toefl2026 != null ? ` (${e.toefl2026} new)` : ""}`,
+    e.toefl != null && `TOEFL ${e.toefl}${e.toefl2026 != null ? ` (${t("colleges.toeflNew", { n: e.toefl2026 })})` : ""}`,
     e.ielts != null && `IELTS ${e.ielts}`,
     e.duolingo != null && `Duolingo ${e.duolingo}`,
   ].filter(Boolean);
-  return { mins: mins.length ? mins.join(" · ") : "No minimum published", note: e.policy ? ENGLISH_POLICY[e.policy] ?? e.policy : null };
+  return { mins: mins.length ? mins.join(" · ") : t("colleges.noMinimum"), note: e.policy ? policyLabel(t, "englishPolicy", ENGLISH_POLICY, e.policy) : null };
 }
 
 function DetailCard({
@@ -153,6 +162,7 @@ function DetailCard({
   side: "left" | "right";
   onClose: () => void;
 }) {
+  const t = useT();
   const student = useStudent();
   const inList = student.has(college.slug);
   const hasScores = student.profile.sat != null || student.profile.act != null;
@@ -160,7 +170,7 @@ function DetailCard({
   // Fit labels are built on SAT/ACT and US admit rates, so they only apply to US colleges for now.
   const fit = hasScores && isUS ? computeFit(student.profile, college) : null;
   const intl =!!student.profile.international && college.intl_admit_rate != null;
-  const eng = englishText(english);
+  const eng = englishText(t, english);
 
   const satRange =
     college.sat_p25 != null && college.sat_p75 != null
@@ -184,40 +194,40 @@ function DetailCard({
             {college.control && <> · <span className="capitalize">{college.control.replace(/_/g, " ")}</span></>}
           </p>
         </div>
-        <button type="button" onClick={onClose} aria-label="Close details" className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-lg leading-none text-zinc-500 hover:bg-zinc-100">
+        <button type="button" onClick={onClose} aria-label={t("colleges.closeDetails")} className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-lg leading-none text-zinc-500 hover:bg-zinc-100">
           ×
         </button>
       </header>
 
       <div className="mt-4 space-y-4">
         {(isUS || college.admit_rate != null) && (
-          <AdmitRing rate={intl ? college.intl_admit_rate : college.admit_rate} label={intl ? "International admit rate" : "Admit rate"} />
+          <AdmitRing rate={intl ? college.intl_admit_rate : college.admit_rate} label={intl ? t("colleges.intlAdmitRate") : t("colleges.admitRate")} />
         )}
         {!isUS ? (
-          <p className="text-sm text-zinc-500">Admission is by course and predicted grades (A-levels / IB). See the courses on the full details page.</p>
+          <p className="text-sm text-zinc-500">{t("colleges.ukAdmission")}</p>
         ) : satRange ? (
           <SatBar {...satRange} you={student.profile.sat ?? null} />
         ) : (
-          <p className="text-sm text-zinc-500">No SAT scores reported.</p>
+          <p className="text-sm text-zinc-500">{t("colleges.noSat")}</p>
         )}
       </div>
 
       <div className="mt-3">
-        {isUS && <Row label="Testing">{college.test_policy ? TEST_POLICY[college.test_policy] ?? college.test_policy : "—"}</Row>}
-        <Row label="English test">
+        {isUS && <Row label={t("colleges.testing")}>{college.test_policy ? policyLabel(t, "testPolicy", TEST_POLICY, college.test_policy) : "—"}</Row>}
+        <Row label={t("colleges.englishTest")}>
           {eng.mins}
           {eng.note && <span className="block text-xs font-normal text-zinc-500">{eng.note}</span>}
         </Row>
-        <Row label="Next deadline">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</Row>
-        {isUS && <Row label="Your fit">
+        <Row label={t("colleges.nextDeadline")}>{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</Row>
+        {isUS && <Row label={t("colleges.yourFit")}>
           {fit ? (
             <>
               <FitBadge fit={fit.fit} />
-              <span className="mt-1 block text-xs font-normal text-zinc-500">{fit.reason}</span>
+              <span className="mt-1 block text-xs font-normal text-zinc-500">{fitReasonText(t, fit)}</span>
             </>
           ) : (
             <Link href="/start" className="font-semibold text-blue-700 underline underline-offset-4">
-              Add your scores
+              {t("colleges.addYourScores")}
             </Link>
           )}
         </Row>}
@@ -226,7 +236,7 @@ function DetailCard({
       <div className="mt-4 flex gap-2">
         {!inList && !student.canAdd ? (
           <Link href="/pricing" className={`flex-1 ${buttonClass("secondary")}`}>
-            List full · Upgrade
+            {t("colleges.listFullUpgrade")}
           </Link>
         ) : (
         <button
@@ -234,23 +244,23 @@ function DetailCard({
           onClick={() => (inList ? student.remove(college.slug) : student.add({ slug: college.slug, id: college.id }))}
           className={`flex-1 ${buttonClass(inList ? "secondary" : "primary")}`}
         >
-          {inList ? "✓ In my list" : "+ Add to my list"}
+          {inList ? t("colleges.inMyList") : t("colleges.addToMyList")}
         </button>
         )}
         {!inList && (
           <button
             type="button"
             onClick={() => student.toggleInterested(college.slug)}
-            aria-label={student.isInterested(college.slug) ? "Remove from Interested" : "Add to Interested"}
+            aria-label={student.isInterested(college.slug) ? t("colleges.removeInterested") : t("colleges.addInterested")}
             aria-pressed={student.isInterested(college.slug)}
-            title={student.isInterested(college.slug) ? "On your Interested page. Click to remove." : "Keep it on your Interested page while you decide"}
+            title={student.isInterested(college.slug) ? t("colleges.interestedOnTitle") : t("colleges.interestedOffTitle")}
             className={buttonClass("secondary", "md", student.isInterested(college.slug))}
           >
             {student.isInterested(college.slug) ? "★" : "☆"}
           </button>
         )}
         <Link href={`/colleges/${college.slug}`} className={buttonClass("secondary")}>
-          Full details
+          {t("colleges.fullDetails")}
         </Link>
       </div>
     </article>
@@ -268,6 +278,7 @@ export function CollegeExplorer({
   english: Record<string, EnglishSummary>;
   satEstimates: Record<string, SatEstimate>;
 }) {
+  const t = useT();
   const student = useStudent();
   const [view, setView] = useState<"map" | "table">("map");
   const [q, setQ] = useState("");
@@ -311,7 +322,7 @@ export function CollegeExplorer({
   const other = side === "right" ? "left" : "right";
 
   const regionSwitch = (
-    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label="Country">
+    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label={t("colleges.country")}>
       {REGIONS.filter((r) => offered.includes(r.code)).map((r) => (
         <button
           key={r.code}
@@ -323,7 +334,7 @@ export function CollegeExplorer({
           }}
           className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${region === r.code ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
         >
-          {r.short}
+          {t(`colleges.regionShort.${r.code}` as MessageKey)}
           <span className="ml-1 text-xs font-normal opacity-70">{regionCounts[r.code] ?? 0}</span>
         </button>
       ))}
@@ -342,9 +353,9 @@ export function CollegeExplorer({
   );
 
   const toggle = (
-    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label="View">
-      {tab("map", "Map")}
-      {tab("table", "Table")}
+    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label={t("colleges.view")}>
+      {tab("map", t("colleges.viewMap"))}
+      {tab("table", t("colleges.viewTable"))}
     </div>
   );
 
@@ -364,7 +375,7 @@ export function CollegeExplorer({
     student.profile.sat != null && `SAT ${student.profile.sat}`,
     student.profile.act != null && `ACT ${student.profile.act}`,
     student.profile.gpa != null && `GPA ${student.profile.gpa}`,
-    student.profile.international && "International",
+    student.profile.international && t("colleges.statsIntl"),
   ].filter(Boolean);
 
   return (
@@ -375,22 +386,22 @@ export function CollegeExplorer({
         <Link href={stats.length ? "/profile" : "/start"} className="rounded-2xl bg-blue-50 px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-blue-100">
           {stats.length ? (
             <>
-              Your stats: {stats.join(" · ")} · <span className="text-blue-700 underline">edit</span>
+              {t("colleges.statsPrefix", { stats: stats.join(" · ") })}<span className="text-blue-700 underline">{t("colleges.statsEdit")}</span>
             </>
           ) : (
-            "Add your scores to see super reach, reach, target and safety →"
+            t("colleges.addScoresCta")
           )}
         </Link>
         <input
           type="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Search name, city or state"
-          aria-label="Search colleges"
+          placeholder={t("colleges.searchPlaceholder")}
+          aria-label={t("colleges.searchAria")}
           className="w-full rounded-full border-2 border-zinc-200 bg-white px-4 py-2 text-sm focus:border-blue-400 focus:outline-none"
         />
-        <div className="flex gap-1.5 text-xs font-semibold" role="group" aria-label="Sort">
-          {([["tier", "Top tier"], ["admit", "Admit rate"], ["name", "A–Z"]] as const).map(([k, label]) => (
+        <div className="flex gap-1.5 text-xs font-semibold" role="group" aria-label={t("colleges.sort")}>
+          {([["tier", t("colleges.sortTier")], ["admit", t("colleges.sortAdmit")], ["name", t("colleges.sortName")]] as const).map(([k, label]) => (
             <button
               key={k}
               type="button"
@@ -403,8 +414,8 @@ export function CollegeExplorer({
           ))}
         </div>
         <ul className="min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
-          {inRegion.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">No {regionLabel(region)} colleges added yet.</li>}
-          {inRegion.length > 0 && rows.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">No college matches &ldquo;{q}&rdquo;.</li>}
+          {inRegion.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{t("colleges.noneInRegion", { region: t(`colleges.region.${region}` as MessageKey) })}</li>}
+          {inRegion.length > 0 && rows.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{t("colleges.noMatch", { q })}</li>}
           {rows.slice(0, shown.count).map((c) => {
             const fit = hasScores && region === "US" ? computeFit(student.profile, c) : null;
             const on = c.slug === selected;
@@ -422,10 +433,10 @@ export function CollegeExplorer({
                     <span className="block truncate font-semibold">{c.short_name ?? c.name}</span>
                     <span className="block truncate text-xs text-zinc-500">
                       {[c.city, c.state_region].filter(Boolean).join(", ")}
-                      {c.admit_rate != null && ` · ${fmtPct(c.admit_rate, 0)} admit`}
+                      {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
                     </span>
                   </span>
-                  {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) ? <Pill tone="blue">On list</Pill> : null}
+                  {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) ? <Pill tone="blue">{t("colleges.onList")}</Pill> : null}
                 </button>
               </li>
             );
@@ -441,11 +452,11 @@ export function CollegeExplorer({
       <div className="h-[58dvh] lg:h-full">
         <USMap3D key={region} region={region} pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
           <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
-            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold shadow-sm" aria-label="Tier colours">
-              {BASE_TIERS.map((t) => (
-                <li key={t} className="flex items-center gap-1">
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: TIER_FILL[t] }} />
-                  {t}
+            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold shadow-sm" aria-label={t("colleges.tierColours")}>
+              {BASE_TIERS.map((tier) => (
+                <li key={tier} className="flex items-center gap-1">
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: TIER_FILL[tier] }} />
+                  {tier}
                 </li>
               ))}
             </ul>
@@ -455,15 +466,15 @@ export function CollegeExplorer({
                 onClick={() => setSelected(null)}
                 className="pointer-events-auto rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold shadow-sm hover:bg-blue-50"
               >
-                Whole map
+                {t("colleges.wholeMap")}
               </button>
             )}
           </div>
 
           {!current && (
             <p className="pointer-events-none absolute inset-x-0 bottom-4 mx-auto w-fit rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-lg">
-              <span className="lg:hidden">Pick a college below to see it on the map</span>
-              <span className="max-lg:hidden">Pick a college from the list to see it on the map</span>
+              <span className="lg:hidden">{t("colleges.pickBelow")}</span>
+              <span className="max-lg:hidden">{t("colleges.pickFromList")}</span>
             </p>
           )}
 

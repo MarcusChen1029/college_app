@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { fieldClass } from "@/components/TranscriptCourseForm";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { type OverrideField, type TranscriptCourse, type TranscriptSchool } from "@/lib/transcript";
 import { mapCourse, SYSTEM_IDS, SYSTEMS, type MappedCourse, type MappedField, type MappedFieldKey, type SystemId } from "@/lib/transcript-maps";
@@ -9,19 +10,28 @@ import { isNonUs } from "@/lib/transcript-maps/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 
 type Layout = {
-  banner: string;
+  banner: "transcript.bannerCommonApp" | "transcript.bannerStars" | "transcript.bannerCsu" | "transcript.bannerUc" | "transcript.bannerUiuc" | "transcript.bannerUt";
   columns: { key: MappedFieldKey; label: string }[];
   /** The heading a course is listed under. */
   group: (m: MappedCourse, c: TranscriptCourse) => string;
 };
 
 const byGradeLevel = (_m: MappedCourse, c: TranscriptCourse) => (c.gradeLevel && c.gradeLevel >= 9 && c.gradeLevel <= 12 ? `${c.gradeLevel}th grade` : "Other courses");
+const GROUP_NTH = /^(\d+)th grade$/;
+/** Group headings are matched by their English text; only what is displayed is translated. */
+function groupLabel(g: string, t: ReturnType<typeof useT>): string {
+  const nth = GROUP_NTH.exec(g);
+  if (nth) return t("transcript.gradeNth", { n: nth[1] });
+  if (g === "Other courses") return t("transcript.otherCourses");
+  if (g === "Not an A-G subject") return t("transcript.notAgSubject");
+  return g;
+}
 const field = (m: MappedCourse, key: MappedFieldKey) => m.fields.find((f) => f.key === key)!;
 
 /** Each system's own order and wording, so the student can copy a row straight across. */
 const LAYOUTS: Record<SystemId, Layout> = {
   common_app: {
-    banner: "Common App needs at least one grade and one credit for every course. Enter grades exactly as printed.",
+    banner: "transcript.bannerCommonApp",
     columns: [
       { key: "subject", label: "Subject" },
       { key: "name", label: "Course name" },
@@ -32,7 +42,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
     group: byGradeLevel,
   },
   stars: {
-    banner: "STARS wants the unweighted grade when both are printed, and IP for courses without a final grade.",
+    banner: "transcript.bannerStars",
     columns: [
       { key: "subject", label: "Subject area" },
       { key: "genericTitle", label: "Course/Exam Content" },
@@ -45,7 +55,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
     group: (_m, c) => `${c.academicYear}-${String((c.academicYear + 1) % 100).padStart(2, "0")}`,
   },
   csu: {
-    banner: "Cal State Apply: applicants who attended only foreign high schools skip course entry. Grades are letter grade, Pass, In Progress, Planned or No Grade.",
+    banner: "transcript.bannerCsu",
     columns: [
       { key: "name", label: "Course title" },
       { key: "gradeLevel", label: "Grade level" },
@@ -56,7 +66,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
     group: byGradeLevel,
   },
   uc: {
-    banner: "UC ignores + and -, does not accept Pass/Fail for A-G, and uses IP, PL and NO codes. It has no per-course credit field.",
+    banner: "transcript.bannerUc",
     columns: [
       { key: "name", label: "Course" },
       { key: "subSubject", label: "Discipline" },
@@ -67,7 +77,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
     group: (m) => field(m, "subject").value ?? "Not an A-G subject",
   },
   uiuc: {
-    banner: "UIUC's SRAR has no credit field. List every semester, trimester or quarter grade separately and do not list a final grade. Arts, computer science and PE are all subject \"Other\".",
+    banner: "transcript.bannerUiuc",
     columns: [
       { key: "gradeLevel", label: "Year" },
       { key: "period", label: "Term" },
@@ -79,7 +89,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
     group: byGradeLevel,
   },
   ut: {
-    banner: "UT Austin's coursework form (only for applicants from non-Texas high schools) takes completed courses from grade 9 on, in five areas plus Other. If there is no credit, a year course counts 1 and a semester course 0.5.",
+    banner: "transcript.bannerUt",
     columns: [
       { key: "subject", label: "Subject" },
       { key: "name", label: "Course name" },
@@ -95,14 +105,16 @@ const OVERRIDABLE: readonly MappedFieldKey[] = ["level", "subject", "subSubject"
 const copy = (v: string) => void navigator.clipboard?.writeText(v).catch(() => {});
 
 /** School-level facts a system asks for, from the transcript's own school record. */
-function schoolFacts(system: SystemId, s: TranscriptSchool): string[] {
-  const gpa = s.printedGpa ? `GPA ${s.printedGpa}${s.printedGpaScale ? ` (scale ${s.printedGpaScale})` : ""}${s.gpaWeighted == null ? "" : s.gpaWeighted ? ", weighted" : ", unweighted"}` : "";
-  const rank = s.classRank ? `Class rank ${s.classRank}` : "";
+function schoolFacts(system: SystemId, s: TranscriptSchool, t: ReturnType<typeof useT>): string[] {
+  const gpaText = `${s.printedGpa}${s.printedGpaScale ? t("transcript.gpaScaleFact", { scale: s.printedGpaScale }) : ""}${s.gpaWeighted == null ? "" : s.gpaWeighted ? t("transcript.weightedFact") : t("transcript.unweightedFact")}`;
+  const gpa = s.printedGpa ? t("transcript.gpaFact", { gpa: gpaText }) : "";
+  const rank = s.classRank ? t("transcript.rankFact", { rank: s.classRank }) : "";
   if (system === "common_app" || system === "stars") return [gpa, rank].filter(Boolean);
   return [];
 }
 
 function Cell({ f, onOverride }: { f: MappedField; onOverride?: () => void }) {
+  const t = useT();
   const empty = f.value == null || f.value === "";
   return (
     <div className="space-y-1">
@@ -110,18 +122,18 @@ function Cell({ f, onOverride }: { f: MappedField; onOverride?: () => void }) {
         <span className={f.status === "unverified" ? "text-zinc-500 italic" : f.status === "none" ? "text-zinc-400" : ""}>{empty ? "—" : f.value}</span>
         {f.status === "unverified" && (
           <span className={`rounded-full border px-1.5 text-xs font-semibold ${toneClass("soon")}`} title={f.note}>
-            unverified
+            {t("transcript.unverified")}
           </span>
         )}
-        {f.overridden && <span className={`rounded-full border px-1.5 text-xs font-semibold ${toneClass("progress")}`}>overridden</span>}
+        {f.overridden && <span className={`rounded-full border px-1.5 text-xs font-semibold ${toneClass("progress")}`}>{t("transcript.overridden")}</span>}
         {f.status === "verified" && !empty && (
-          <button type="button" className="text-xs text-blue-700 underline underline-offset-2" aria-label={`Copy ${f.label}: ${f.value}`} onClick={() => copy(f.value as string)}>
-            Copy
+          <button type="button" className="text-xs text-blue-700 underline underline-offset-2" aria-label={t("transcript.copyAria", { label: f.label, value: f.value as string })} onClick={() => copy(f.value as string)}>
+            {t("common.copy")}
           </button>
         )}
         {onOverride && (
-          <button type="button" className="text-xs text-blue-700 underline underline-offset-2" aria-label={`Override ${f.label}`} onClick={onOverride}>
-            Override
+          <button type="button" className="text-xs text-blue-700 underline underline-offset-2" aria-label={t("transcript.overrideAria", { label: f.label })} onClick={onOverride}>
+            {t("transcript.override")}
           </button>
         )}
       </div>
@@ -133,6 +145,7 @@ function Cell({ f, onOverride }: { f: MappedField; onOverride?: () => void }) {
 
 /** The transcript laid out the way each application system asks for it. Read-only except for per-course overrides. */
 export function TranscriptMappedView() {
+  const t = useT();
   const { transcriptSchools, transcriptCourses, ready, updateTranscriptCourse } = useStudent();
   const [system, setSystem] = useState<SystemId>("common_app");
   const [overriding, setOverriding] = useState<{ courseId: string; key: MappedFieldKey } | null>(null);
@@ -153,20 +166,20 @@ export function TranscriptMappedView() {
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Application system">
+      <div className="flex flex-wrap gap-2" role="group" aria-label={t("transcript.systemGroupAria")}>
         {SYSTEM_IDS.map((id) => (
           <button key={id} type="button" aria-pressed={system === id} className={buttonClass("secondary", "sm", system === id)} onClick={() => setSystem(id)}>
             {SYSTEMS[id].label}
           </button>
         ))}
       </div>
-      <p className="rounded-md bg-zinc-50 p-3 text-sm text-zinc-700">{layout.banner}</p>
-      <p className="text-xs text-zinc-500">Values marked &quot;unverified&quot; are our best guess; the system&apos;s own dropdown could not be checked. Only verified values have a Copy button.</p>
+      <p className="rounded-md bg-zinc-50 p-3 text-sm text-zinc-700">{t(layout.banner)}</p>
+      <p className="text-xs text-zinc-500">{t("transcript.unverifiedNote")}</p>
 
       {!ready ? (
         <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
       ) : transcriptSchools.length === 0 ? (
-        <p className="text-sm text-zinc-500">Add a school and its courses on the Edit tab first.</p>
+        <p className="text-sm text-zinc-500">{t("transcript.addFirst")}</p>
       ) : (
         transcriptSchools.map((school) => {
           const courses = transcriptCourses.filter((c) => c.schoolId === school.id);
@@ -180,13 +193,13 @@ export function TranscriptMappedView() {
                 <h2 id={`view-${school.id}`} className="font-display text-lg font-bold">
                   {school.name}
                 </h2>
-                {schoolFacts(system, school).length > 0 && <p className="text-sm text-zinc-600">{schoolFacts(system, school).join(" · ")}</p>}
-                {isNonUs(school) && <p className="text-sm text-soon">Type grades as printed; do not convert them to a US scale.</p>}
+                {schoolFacts(system, school, t).length > 0 && <p className="text-sm text-zinc-600">{schoolFacts(system, school, t).join(" · ")}</p>}
+                {isNonUs(school) && <p className="text-sm text-soon">{t("transcript.nonUsNote")}</p>}
               </div>
-              {mapped.length === 0 && <p className="text-sm text-zinc-500">No courses for this school yet.</p>}
+              {mapped.length === 0 && <p className="text-sm text-zinc-500">{t("transcript.noCoursesForSchool")}</p>}
               {groups.map((g) => (
                 <div key={g} className="space-y-1">
-                  <h3 className="text-sm font-semibold text-zinc-700">{g}</h3>
+                  <h3 className="text-sm font-semibold text-zinc-700">{groupLabel(g, t)}</h3>
                   <div className="overflow-x-auto">
                     <table className="w-full min-w-[36rem] text-left text-sm">
                       <thead className="text-xs text-zinc-500">
@@ -210,12 +223,12 @@ export function TranscriptMappedView() {
                                   <td key={c.key} className="p-2">
                                     {isOverriding ? (
                                       <span className="flex items-center gap-1">
-                                        <input aria-label={`Override ${f.label}`} className={fieldClass} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Exact value in the system" />
+                                        <input aria-label={t("transcript.overrideAria", { label: f.label })} className={fieldClass} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder={t("transcript.overridePh")} />
                                         <button type="button" className={buttonClass("primary", "sm")} onClick={() => saveOverride(course)}>
-                                          Save
+                                          {t("common.save")}
                                         </button>
                                         <button type="button" className={buttonClass("secondary", "sm")} onClick={() => setOverriding(null)}>
-                                          Cancel
+                                          {t("common.cancel")}
                                         </button>
                                       </span>
                                     ) : (

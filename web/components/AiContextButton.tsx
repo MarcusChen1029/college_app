@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { buildContextPack, type PackCollege } from "@/lib/ai-context";
 import { customDeadline, customSummary } from "@/lib/custom-college";
 import type { StudentProfile } from "@/lib/fit";
+import { useT } from "@/lib/i18n/client";
 import type { Plan } from "@/lib/plans";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeDetail, CollegeSummary, Deadline, Lookups } from "@/lib/types";
@@ -51,6 +52,7 @@ function Dialog({
   lookups: Pick<Lookups, "plans" | "englishTests">;
   onClose: () => void;
 }) {
+  const tr = useT();
   const full = plan.fullAiContext;
   const load = useDetails(colleges.map((c) => c.college.slug), full);
   const [copied, setCopied] = useState<"copied" | "failed" | null>(null);
@@ -87,57 +89,54 @@ function Dialog({
   };
 
   return (
-    <Modal title={<h2 className="text-lg font-semibold">Copy for AI</h2>} onClose={onClose}>
+    <Modal title={<h2 className="text-lg font-semibold">{tr("application.ai.title")}</h2>} onClose={onClose}>
       <div className="space-y-3 text-sm">
         <p className="text-zinc-600">
-          Paste this into ChatGPT, Claude or Gemini so it starts from your real scores, list and deadlines instead of guessing. Portal logins and
-          notes are never included.
+          {tr("application.ai.intro")}
         </p>
         {full ? (
           <p className={`rounded-md border p-2 text-xs ${toneClass("done")}`}>
-            Full version ({plan.name} plan): each college&apos;s deadlines, English minimums, essays, cost and aid, how majors are admitted, your
-            activities and a numbered source link for every number.
+            {tr("application.ai.full", { plan: plan.name })}
           </p>
         ) : (
           <p className="rounded-md bg-blue-50 p-2 text-xs text-blue-900">
-            Free version: your profile and a one-line summary per college.{" "}
+            {tr("application.ai.freePre")}
             <Link href="/pricing" className="font-semibold underline">
-              Upgrade
-            </Link>{" "}
-            to include every college&apos;s deadlines, English minimums, essays, cost and aid, your activities, and a source link for every number,
-            so your AI can check its answers against official data.
+              {tr("application.ai.freeUpgrade")}
+            </Link>
+            {tr("application.ai.freePost")}
           </p>
         )}
         {load?.state === "error" && (
           <p className={`rounded-md border p-2 text-xs ${toneClass("soon")}`}>
-            Couldn&apos;t load college details ({load.message}). The text below has the summary only for now.
+            {tr("application.ai.loadError", { message: load.message })}
           </p>
         )}
         {text == null ? (
-          <div className="h-80 animate-pulse rounded-md bg-zinc-100" aria-label="Loading college details" />
+          <div className="h-80 animate-pulse rounded-md bg-zinc-100" aria-label={tr("application.ai.loadingAria")} />
         ) : (
           <textarea
             readOnly
             value={text}
             className="h-80 w-full resize-y rounded-md border border-zinc-300 bg-zinc-50 p-2 font-mono text-xs"
-            aria-label="Context to paste into your AI"
+            aria-label={tr("application.ai.textAria")}
             onFocus={(e) => e.currentTarget.select()}
           />
         )}
         <div className="flex flex-wrap items-center gap-2">
           <button className={buttonClass("primary", "sm")} disabled={!text} onClick={copy}>
-            Copy to clipboard
+            {tr("application.ai.copyClipboard")}
           </button>
           <button
             className={buttonClass("secondary", "sm")}
             disabled={!text}
             onClick={download}
           >
-            Download .md
+            {tr("application.ai.download")}
           </button>
           {copied && (
             <span role="status" className="text-xs text-zinc-500">
-              {copied === "copied" ? "Copied. Paste it as your first message." : "Couldn't copy. Click the text, then press Ctrl+C."}
+              {copied === "copied" ? tr("application.ai.copiedOk") : tr("application.ai.copyFail")}
             </span>
           )}
         </div>
@@ -147,6 +146,7 @@ function Dialog({
 }
 
 export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClose">) {
+  const tr = useT();
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -155,7 +155,7 @@ export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClo
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
       >
-        ✦ Copy for AI
+        {tr("application.ai.button")}
       </button>
       {open && <Dialog {...props} onClose={() => setOpen(false)} />}
     </>

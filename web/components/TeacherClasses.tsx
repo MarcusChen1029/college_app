@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { btn, ClassCard, CodeBox } from "@/components/TeacherClassCard";
+import { errorText } from "@/components/TeacherText";
+import { useT } from "@/lib/i18n/client";
 import { buttonClass } from "@/lib/ui";
 import {
   createClass,
@@ -26,6 +28,7 @@ async function fetchAll(): Promise<Data> {
 
 /** Teacher dashboard body: classes with join codes, and one-on-one students. Reloads after every action. */
 export function TeacherClasses() {
+  const t = useT();
   const [overview, setOverview] = useState<TeacherOverview | null>(null);
   const [students, setStudents] = useState<LinkedStudent[]>([]);
   const [now, setNow] = useState(0);
@@ -79,7 +82,7 @@ export function TeacherClasses() {
   function submit(e: React.FormEvent) {
     e.preventDefault();
     const n = name.trim();
-    if (!n) return setError("Give the class a name.");
+    if (!n) return setError(t("teacher.classes.giveName"));
     run(async () => {
       await createClass(n, year.trim() || undefined);
       setName("");
@@ -91,10 +94,10 @@ export function TeacherClasses() {
     return error ? (
       <div className="space-y-3">
         <p role="alert" className="text-sm text-urgent">
-          {error}
+          {errorText(t, error)}
         </p>
         <button type="button" className={btn} onClick={() => void load()}>
-          Try again
+          {t("teacher.tryAgain")}
         </button>
       </div>
     ) : (
@@ -111,29 +114,29 @@ export function TeacherClasses() {
     <div className="space-y-8">
       {error && (
         <p role="alert" className="text-sm text-urgent">
-          {error}
+          {errorText(t, error)}
         </p>
       )}
 
       <section className="space-y-4" aria-labelledby="classes-heading">
         <h2 id="classes-heading" className="font-display text-xl font-bold">
-          Classes
+          {t("teacher.classes.title")}
         </h2>
         <form onSubmit={submit} className="flex flex-wrap items-end gap-3 rounded-2xl border border-zinc-200 p-5">
           <label className="min-w-40 flex-1 text-sm font-medium">
-            Class name
-            <input value={name} onChange={(e) => setName(e.target.value)} className={input} placeholder="Grade 12 College Prep" />
+            {t("teacher.classes.className")}
+            <input value={name} onChange={(e) => setName(e.target.value)} className={input} placeholder={t("teacher.classes.classPlaceholder")} />
           </label>
           <label className="w-40 text-sm font-medium">
-            School year <span className="font-normal text-zinc-500">(optional)</span>
+            {t("teacher.classes.schoolYear")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
             <input value={year} onChange={(e) => setYear(e.target.value)} className={input} placeholder="2026-27" />
           </label>
           <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
-            Create class
+            {t("teacher.classes.create")}
           </button>
         </form>
         {active.length === 0 ? (
-          <p className="text-sm text-zinc-500">No classes yet. Create a class, then give students the code.</p>
+          <p className="text-sm text-zinc-500">{t("teacher.classes.none")}</p>
         ) : (
           <ul className="space-y-4">
             {active.map((c) => (
@@ -143,7 +146,7 @@ export function TeacherClasses() {
         )}
         {archived.length > 0 && (
           <details className="rounded-2xl border border-zinc-200 p-4">
-            <summary className="cursor-pointer text-sm font-semibold">Archived ({archived.length})</summary>
+            <summary className="cursor-pointer text-sm font-semibold">{t("teacher.classes.archived", { n: archived.length })}</summary>
             <ul className="mt-3 space-y-4">
               {archived.map((c) => (
                 <ClassCard key={c.id} cls={c} members={members(c.id)} now={now} busy={busy} run={run} />
@@ -155,23 +158,23 @@ export function TeacherClasses() {
 
       <section className="space-y-4" aria-labelledby="one-on-one-heading">
         <h2 id="one-on-one-heading" className="font-display text-xl font-bold">
-          One-on-one students
+          {t("teacher.classes.oneOnOneHeading")}
         </h2>
         <div className="space-y-2 rounded-2xl border border-zinc-200 p-5">
-          <p className="text-sm text-zinc-500">Students who enter this code link to you directly, without joining a class.</p>
+          <p className="text-sm text-zinc-500">{t("teacher.classes.oneOnOneHelp")}</p>
           <CodeBox
             code={overview.individualCode}
             expiresAt={overview.individualCodeExpiresAt}
             now={now}
             busy={busy}
-            turnOnLabel="Create my one-on-one code"
+            turnOnLabel={t("teacher.classes.createOneOnOne")}
             onNew={() => run(() => newCode("individual"))}
             onOff={() => run(() => revokeCode("individual"))}
           />
         </div>
-        <h3 className="font-semibold">All linked students ({students.length})</h3>
+        <h3 className="font-semibold">{t("teacher.classes.allLinked", { n: students.length })}</h3>
         {students.length === 0 ? (
-          <p className="text-sm text-zinc-500">No students yet. Share a class code or your one-on-one code.</p>
+          <p className="text-sm text-zinc-500">{t("teacher.classes.noStudents")}</p>
         ) : (
           <ul className="divide-y divide-zinc-100 rounded-2xl border border-zinc-200 px-5">
             {students.map((s) => (
@@ -181,10 +184,10 @@ export function TeacherClasses() {
                     <span className="font-medium">{s.displayName}</span> <span className="text-zinc-500">{s.email}</span>
                   </p>
                   <p className="flex flex-wrap items-center gap-1.5 text-xs text-zinc-500">
-                    Linked {new Date(s.linkedAt).toLocaleDateString()}
+                    {t("teacher.linked", { date: new Date(s.linkedAt).toLocaleDateString() })}
                     {s.classIds.map((id) => (
                       <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-zinc-700">
-                        {className(id) ?? "Class"}
+                        {className(id) ?? t("teacher.col.classFallback")}
                       </span>
                     ))}
                   </p>
@@ -193,10 +196,10 @@ export function TeacherClasses() {
                   type="button"
                   disabled={busy}
                   className={btn}
-                  aria-label={`Remove student ${s.displayName}`}
-                  onClick={() => confirm(`Remove ${s.displayName}? They will lose this link; you can't see their data any more.`) && run(() => removeStudent(s.studentId))}
+                  aria-label={t("teacher.classes.removeAria", { name: s.displayName })}
+                  onClick={() => confirm(t("teacher.classes.removeConfirm", { name: s.displayName })) && run(() => removeStudent(s.studentId))}
                 >
-                  Remove student
+                  {t("teacher.classes.removeStudent")}
                 </button>
               </li>
             ))}

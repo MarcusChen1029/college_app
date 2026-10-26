@@ -2,17 +2,21 @@
 
 import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
-import { isSubmitted, RESULT_LABEL, RESULT_OPTIONS, resultStatus } from "@/lib/application";
+import { isSubmitted, RESULT_OPTIONS, resultStatus } from "@/lib/application";
+import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import { resultTone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Lookups } from "@/lib/types";
 import { TierBadge } from "./badges";
-import { SELECT_BASE } from "./ChecklistPanel";
+import { SELECT_BASE, usePlanLabel, useResultLabel } from "./ChecklistPanel";
 
 const noop = () => () => {};
 
 export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; plans: Lookups["plans"] }) {
+  const t = useT();
+  const planLabel = usePlanLabel();
+  const resultLabel = useResultLabel();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
@@ -28,11 +32,11 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
   if (rows.length === 0) {
     return (
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
-        No submitted applications yet. Mark a college Submitted on{" "}
+        {t("application.res.emptyPre")}
         <Link href="/application/list" className="text-blue-600 underline">
-          My list
-        </Link>{" "}
-        once its checklist is complete.
+          {t("nav.myList")}
+        </Link>
+        {t("application.res.emptyPost")}
       </p>
     );
   }
@@ -41,14 +45,14 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
 
   return (
     <div className="space-y-3">
-      <p className="text-sm text-zinc-600">{counts.map(([r, n]) => `${n} ${RESULT_LABEL[r].toLowerCase()}`).join(" · ")}</p>
+      <p className="text-sm text-zinc-600">{counts.map(([r, n]) => t("application.res.count", { n, label: resultLabel(r).toLowerCase() })).join(" · ")}</p>
       <div className="overflow-x-auto rounded-lg border border-zinc-200">
         <table className="w-full min-w-[480px] text-sm">
           <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
             <tr>
-              <th className="p-2">College</th>
-              <th className="p-2">Plan</th>
-              <th className="p-2">Decision</th>
+              <th className="p-2">{t("application.col.college")}</th>
+              <th className="p-2">{t("application.col.plan")}</th>
+              <th className="p-2">{t("application.col.decision")}</th>
             </tr>
           </thead>
           <tbody>
@@ -64,17 +68,17 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
                       </Link>
                     </div>
                   </td>
-                  <td className="p-2 text-zinc-600">{plans.find((p) => p.key === entry.plan)?.label ?? "—"}</td>
+                  <td className="p-2 text-zinc-600">{(() => { const p = plans.find((x) => x.key === entry.plan); return p ? planLabel(p.key, p.label) : "—"; })()}</td>
                   <td className="p-2">
                     <select
                       className={`${SELECT_BASE} ${toneClass(resultTone(result))}`}
                       value={result}
                       onChange={(e) => student.update(entry.slug, { status: e.target.value as typeof result })}
-                      aria-label={`Decision for ${college.name}`}
+                      aria-label={t("application.res.decisionFor", { name: college.name })}
                     >
                       {RESULT_OPTIONS.map((r) => (
                         <option key={r} value={r}>
-                          {RESULT_LABEL[r]}
+                          {resultLabel(r)}
                         </option>
                       ))}
                     </select>
@@ -86,11 +90,11 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
         </table>
       </div>
       <p className="text-xs text-zinc-500">
-        Submitted by mistake? Set it back to &quot;Waiting for decision&quot;, then change it on{" "}
+        {t("application.res.undoPre", { label: resultLabel("submitted") })}
         <Link href="/application/list" className="text-blue-600 underline">
-          My list
+          {t("nav.myList")}
         </Link>
-        .
+        {t("application.res.undoPost")}
       </p>
     </div>
   );

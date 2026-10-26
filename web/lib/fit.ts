@@ -38,7 +38,15 @@ export type FitInput = {
   test_policy: string | null;
 };
 
-export type FitResult = { fit: Fit; reason: string };
+/** The pieces `reason` is built from, so the UI can word them in another language (lib/i18n/fit-text.ts). */
+export type FitReasonParts = {
+  rate: string; // already formatted, e.g. "12.3"
+  intl: boolean;
+  score: { test: "SAT" | "ACT"; band: "above" | "within" | "below" } | null;
+  note: "longShot" | "reachAll" | "noScore" | null;
+};
+
+export type FitResult = { fit: Fit; reason: string; parts: FitReasonParts };
 
 type Band = "above" | "within" | "below" | "unknown";
 
@@ -52,11 +60,14 @@ function band(score: number | null | undefined, p25: number | null, p75: number 
 export function computeFit(student: StudentProfile, college: FitInput): FitResult | null {
   const rate = student.international && college.intl_admit_rate != null ? college.intl_admit_rate : college.admit_rate;
   if (rate == null) return null;
-  const rateLabel = `${student.international && college.intl_admit_rate != null ? "international " : ""}admit rate ${Number(rate).toFixed(1)}%`;
+  const intl = !!student.international && college.intl_admit_rate != null;
+  const rateText = Number(rate).toFixed(1);
+  const rateLabel = `${intl ? "international " : ""}admit rate ${rateText}%`;
 
   // Test-blind schools ignore scores entirely.
   let scoreBand: Band = "unknown";
   let scoreLabel = "";
+  let score: FitReasonParts["score"] = null;
   if (college.test_policy !== "blind") {
     const sat = band(student.sat, college.sat_p25, college.sat_p75);
     const act = band(student.act, college.act_p25, college.act_p75);
@@ -66,26 +77,33 @@ export function computeFit(student: StudentProfile, college: FitInput): FitResul
     const which = scoreBand === sat ? "SAT" : "ACT";
     if (scoreBand !== "unknown") {
       scoreLabel = { above: `${which} at/above the 75th percentile`, within: `${which} in the middle 50%`, below: `${which} below the 25th percentile` }[scoreBand];
+      score = { test: which, band: scoreBand };
     }
   }
 
-  const why = (s: string) => [rateLabel, scoreLabel, s].filter(Boolean).join("; ");
+  const NOTE = { longShot: "under 10% is a long shot for everyone", reachAll: "under 15% is a reach for everyone", noScore: "no comparable score" };
+  const result = (fit: Fit, note: FitReasonParts["note"] = null): FitResult => ({
+    fit,
+    reason: [rateLabel, scoreLabel, note ? NOTE[note] : ""].filter(Boolean).join("; "),
+    parts: { rate: rateText, intl, score, note },
+  });
+  const noScore = scoreBand === "unknown" ? "noScore" : null;
 
-  if (rate < 10) return { fit: "super_reach", reason: why("under 10% is a long shot for everyone") };
+  if (rate < 10) return result("super_reach", "longShot");
   if (rate < 15) {
-    if (scoreBand === "below") return { fit: "super_reach", reason: why("") };
-    return { fit: "reach", reason: why("under 15% is a reach for everyone") };
+    if (scoreBand === "below") return result("super_reach");
+    return result("reach", "reachAll");
   }
   if (rate < 30) {
-    if (scoreBand === "above") return { fit: "target", reason: why("") };
-    if (scoreBand === "below") return { fit: "super_reach", reason: why("") };
-    return { fit: "reach", reason: why(scoreBand === "unknown" ? "no comparable score" : "") };
+    if (scoreBand === "above") return result("target");
+    if (scoreBand === "below") return result("super_reach");
+    return result("reach", noScore);
   }
   if (rate < 60) {
-    if (scoreBand === "above") return { fit: "safety", reason: why("") };
-    if (scoreBand === "below") return { fit: "reach", reason: why("") };
-    return { fit: "target", reason: why(scoreBand === "unknown" ? "no comparable score" : "") };
+    if (scoreBand === "above") return result("safety");
+    if (scoreBand === "below") return result("reach");
+    return result("target", noScore);
   }
-  if (scoreBand === "below") return { fit: "target", reason: why("") };
-  return { fit: "safety", reason: why("") };
+  if (scoreBand === "below") return result("target");
+  return result("safety");
 }

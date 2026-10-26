@@ -1,4 +1,4 @@
-import { SectionTabs } from "@/components/SectionTabs";
+import { NavText, SectionTabs } from "@/components/SectionTabs";
 import type { NavItem } from "@/lib/roles";
 
 const TABS: readonly NavItem[] = [
@@ -9,7 +9,9 @@ const TABS: readonly NavItem[] = [
 export default function WritingLayout({ children }: LayoutProps<"/writing">) {
   return (
     <div className="space-y-5">
-      <h1 className="text-2xl font-semibold print:hidden">Writing</h1>
+      <h1 className="text-2xl font-semibold print:hidden">
+        <NavText label="Writing" />
+      </h1>
       <SectionTabs label="Writing" tabs={TABS} />
       {children}
     </div>
