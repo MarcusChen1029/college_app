@@ -250,10 +250,12 @@ test("matchOption is an exact match after trimming, collapsing spaces and ignori
 });
 
 test("matchStem picks the first option that starts with the stem", () => {
-  const options = ["Semesters", "Trimesters", "Quarters", "Yearly"];
-  assert.equal(matchStem(options, "quarter"), "Quarters");
+  // The Current Year radios read live (2026-10-26): Semester, Trimester, Quarter, Yearly.
+  const options = ["Semester", "Trimester", "Quarter", "Yearly"];
+  assert.equal(matchStem(options, "quarter"), "Quarter");
   assert.equal(matchStem(options, "year"), "Yearly");
-  assert.equal(matchStem(options, "semester"), "Semesters");
+  assert.equal(matchStem(options, "semester"), "Semester");
+  assert.equal(matchStem(["Semesters", "Trimesters", "Quarters", "Yearly"], "quarter"), "Quarters");
   assert.equal(matchStem(["Semester", "Quarter"], "trimester"), null);
 });
 
@@ -302,16 +304,23 @@ test("current year plan: schedule from which terms the course has", () => {
   assert.equal(sched("q4"), "Full Year");
 });
 
-test("current year plan: single trimester/quarter terms have no confirmed wording yet", () => {
+test("current year plan: single trimester/quarter terms use Common App's wording (read live 2026-10-26)", () => {
   const plan = buildCurrentYearPlan([school()], [
     course({ id: "t", name: "Tri", academicYear: 2026, period: "trimester", terms: [ip("T2")] }),
     course({ id: "q", name: "Qtr", academicYear: 2026, period: "quarter", terms: [ip("Q3")] }),
+    course({ id: "q4", name: "Qtr4", academicYear: 2026, period: "quarter", terms: [ip("Q4")] }),
   ])!;
-  assert.deepEqual(plan.rows.map((r) => r.schedule), [null, null]);
-  assert.deepEqual(plan.skipped, [
-    { where: "current", course: "Tri", field: "schedule", reason: "schedule wording not confirmed" },
-    { where: "current", course: "Qtr", field: "schedule", reason: "schedule wording not confirmed" },
-  ]);
+  assert.deepEqual(plan.rows.map((r) => r.schedule), ["Second Trimester", "Third Quarter", "Fourth Quarter"]);
+  assert.deepEqual(plan.skipped, []);
+});
+
+test("current year plan: some but not all terms of a trimester/quarter year cannot be one option", () => {
+  const plan = buildCurrentYearPlan([school()], [
+    course({ id: "q", name: "Qtr", academicYear: 2026, period: "quarter", terms: [ip("Q1"), planned("Q2")] }),
+  ])!;
+  assert.deepEqual(plan.rows.map((r) => r.schedule), [null]);
+  assert.equal(plan.skipped.length, 1);
+  assert.equal(plan.skipped[0]!.field, "schedule");
 });
 
 test("current year plan: the scheduling system is the most common period; full year means year", () => {

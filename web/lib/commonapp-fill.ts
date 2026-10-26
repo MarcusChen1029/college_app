@@ -1,6 +1,7 @@
 // The fill plan for Common App's "Courses & Grades": which tracker courses go into which grade's dialog, with every
 // value already in Common App's own words. Pure data in, pure data out; the browser extension just types the plan in.
-// Grading Scale list and the dialog's schedule wording were read from a live account (read-only, 2026-10-26).
+// Grading Scale list and the dialog's schedule wording were read from a live account (read-only, 2026-10-26). The Current Year page's
+// schedule options were read on the test account (2026-10-26); see docs/superpowers/research/2026-10-27-commonapp-dom.md.
 
 import { mapCourse, yearLabel } from "./transcript-maps.ts";
 import { COMMON_APP_MAP } from "./transcript-maps/common-app.ts";
@@ -190,9 +191,19 @@ function currentSchedule(c: TranscriptCourse): string | null {
     if (codes.has("S2")) return "Second Semester";
     return null;
   }
-  // Every term of a trimester or quarter year is the whole year; a single one needs wording that has not been read from Common App yet.
-  return TERMS_FOR_PERIOD[c.period].filter((t) => t !== "FY").every((t) => codes.has(t)) ? "Full Year" : null;
+  // Every term of a trimester or quarter year is the whole year. A single term has its own option (read live, test account 2026-10-26).
+  // Two or three of them would need several options picked at once (the field is multi-select), which one value cannot say: null.
+  const terms = TERMS_FOR_PERIOD[c.period].filter((t) => t !== "FY");
+  if (terms.every((t) => codes.has(t))) return "Full Year";
+  const have = terms.filter((t) => codes.has(t));
+  return have.length === 1 ? (SINGLE_TERM[have[0]!] ?? null) : null;
 }
+
+/** Common App's Current Year schedule options for a single trimester or quarter (the "Semester" system's two are handled above). */
+const SINGLE_TERM: Partial<Record<TermCode, string>> = {
+  T1: "First Trimester", T2: "Second Trimester", T3: "Third Trimester",
+  Q1: "First Quarter", Q2: "Second Quarter", Q3: "Third Quarter", Q4: "Fourth Quarter",
+};
 
 /** Education > Current or Most Recent Year Courses: the high-school courses of the latest academic year (the finished year, if school is over). null when there are none. */
 export function buildCurrentYearPlan(schools: TranscriptSchool[], courses: TranscriptCourse[]): CurrentYearPlan | null {
@@ -206,7 +217,7 @@ export function buildCurrentYearPlan(schools: TranscriptSchool[], courses: Trans
   for (const c of hs.filter((x) => x.academicYear === latest)) {
     const { subject, level } = subjectAndLevel(byId.get(c.schoolId)!, c, "current", skipped);
     const schedule = currentSchedule(c);
-    if (schedule == null) skipped.push({ where: "current", course: c.name, field: "schedule", reason: c.terms.length ? "schedule wording not confirmed" : "no terms in tracker" });
+    if (schedule == null) skipped.push({ where: "current", course: c.name, field: "schedule", reason: c.terms.length ? "terms are not the whole year or a single term: pick the schedule options by hand" : "no terms in tracker" });
     rows.push({ trackerId: c.id, name: c.name, subject, level, schedule });
     periods.push(c.period);
   }
