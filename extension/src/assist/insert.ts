@@ -21,11 +21,21 @@ function fire(el: Element, type: string, init: Record<string, unknown> = {}): vo
 
 /** Sets a text box's value and fires the events React, Angular and plain pages listen to. From the content script's isolated world
  *  the value goes straight to the element, so React's value tracker sees a change and runs onChange. */
-export function setText(input: HTMLInputElement | HTMLTextAreaElement, value: string): void {
+export function setText(input: HTMLInputElement | HTMLTextAreaElement, value: string, commit = false): void {
   (input as HTMLElement).focus?.();
+  fireFocus(input, "focus", "focusin");
   input.value = value;
   fire(input, "input");
   fire(input, "change");
+  // Some inputs only take a typed value on blur (Telerik's date boxes on STARS keep it unsaved otherwise). Never for a combobox: blur closes its list.
+  if (commit) fireFocus(input, "blur", "focusout");
+}
+
+function fireFocus(el: Element, own: "focus" | "blur", bubbling: "focusin" | "focusout"): void {
+  const view = (el.ownerDocument?.defaultView ?? globalThis) as unknown as Record<string, typeof Event | undefined>;
+  const Ctor = view.FocusEvent ?? view.Event ?? Event;
+  el.dispatchEvent(new Ctor(own, { bubbles: false } as EventInit));
+  el.dispatchEvent(new Ctor(bubbling, { bubbles: true } as EventInit));
 }
 
 /** The label a control shows: <label for>, wrapping <label>, aria-label, aria-labelledby. */
@@ -67,7 +77,13 @@ async function pickOption(doc: Document, value: string): Promise<Element | null>
 /** The combobox a focused element belongs to (the element itself, or an ancestor with role=combobox), or null. */
 function comboboxOf(el: Element): Element | null {
   if (el.getAttribute("role") === "combobox" || el.hasAttribute("aria-autocomplete")) return el;
-  return el.closest('[role="combobox"], mat-select, ng-select, .RadComboBox');
+  return el.closest('[role="combobox"], mat-select, ng-select, .RadComboBox, .RadDropDownTree');
+}
+
+/** Telerik RadDropDownTree (STARS's Education System): the leaf items of its tree (regions are folders, never a value). The tree is in the
+ *  page even while closed, and a click on a leaf selects it (checked on STARS, 2026-10-27). */
+function treeLeaves(root: Element): Element[] {
+  return [...root.querySelectorAll(".RadTreeView .rtText")].filter((e) => !e.closest("li")?.querySelector("ul"));
 }
 
 /** Opens a closed dropdown: Telerik's arrow, else a click on the box itself. */
@@ -115,6 +131,15 @@ export async function insertValue(target: Element | null, value: string): Promis
   }
 
   const combo = comboboxOf(target);
+  if (combo?.matches(".RadDropDownTree")) {
+    const scope = combo.ownerDocument.querySelector(`#${combo.id}_EmbeddedTree`) ?? combo;
+    // The tree's popup lives outside the widget, under the widget's id + "_EmbeddedTree" (one per school row).
+    const leaf = treeLeaves(scope).find((e) => sameText(text(e), value));
+    if (!leaf) return { ok: false, reason: `No choice in this list reads "${value}".` };
+    fire(leaf, "mousedown");
+    (leaf as HTMLElement).click();
+    return { ok: true, how: "picked" };
+  }
   if (combo) {
     const input = (combo.matches("input") ? combo : combo.querySelector("input:not([type=hidden])")) as HTMLInputElement | null;
     // A list that is already open may hold the option; else type to filter (editable) or open it (read-only).
@@ -142,7 +167,7 @@ export async function insertValue(target: Element | null, value: string): Promis
   if (tag === "input" || tag === "textarea") {
     const input = target as HTMLInputElement;
     if (input.readOnly || input.disabled) return { ok: false, reason: "That box is read-only." };
-    setText(input, value);
+    setText(input, value, true);
     return { ok: true, how: "typed" };
   }
 

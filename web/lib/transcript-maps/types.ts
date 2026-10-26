@@ -23,9 +23,11 @@ export type SystemMap = {
   termGrade?: (t: Term) => string | null;
   /** Set when the system has no per-course credit field; the text explains it. */
   noCredit?: string;
+  /** The system's generic course title for this course (STARS's "Course/Exam Content"); absent when the system has none. */
+  genericTitle?: (school: TranscriptSchool, course: TranscriptCourse) => MapEntry;
 };
 
-export type MappedFieldKey = "name" | "year" | "gradeLevel" | "subject" | "subSubject" | "level" | "period" | "grades" | "credit";
+export type MappedFieldKey = "name" | "year" | "gradeLevel" | "subject" | "subSubject" | "level" | "period" | "grades" | "credit" | "genericTitle";
 export type MappedField = { key: MappedFieldKey; label: string; value: string | null; status: MapStatus; note?: string; source?: string; overridden?: boolean };
 export type MappedCourse = { system: SystemKey; fields: MappedField[]; warnings: string[] };
 

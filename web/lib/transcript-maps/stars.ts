@@ -2,13 +2,15 @@
 // lengths are exact values from STARS's own help center; the full Course Level list and the Generic Course Title
 // lists were not retrievable, so those stay unverified.
 import { LEVELS, PERIOD_TYPES, SUBJECTS } from "../transcript.ts";
-import { table, unverified, verified, type SystemMap } from "./types.ts";
+import { isNonUs, table, unverified, verified, type SystemMap } from "./types.ts";
+import { STARS_INTL_SUBJECT, STARS_INTL_TITLES, starsIntlOtherTitle } from "./stars-lists.ts";
 
 const HELP = "https://starsrecord.zendesk.com/hc/en-us/articles";
 const SUBJECT_SRC = `${HELP}/37027194180251`;
 const LEVEL_SRC = `${HELP}/37036006202523`;
 const LENGTH_SRC = `${HELP}/37036235354779`;
 const IB = verified("International Baccalaureate (IB)", LEVEL_SRC);
+const LIVE = "https://srar.selfreportedtranscript.com";
 const OTHER_LEVEL = unverified(null, "STARS's full Course Level dropdown could not be retrieved", LEVEL_SRC);
 
 export const STARS_MAP: SystemMap = {
@@ -68,6 +70,14 @@ export const STARS_MAP: SystemMap = {
     },
     unverified(null),
   ),
+  genericTitle: (school, course) => {
+    // Only the international page's lists were seen live; a US school's lists are not published.
+    if (!isNonUs(school)) return unverified(null, "STARS's generic course titles for US schools could not be read; pick it on STARS", SUBJECT_SRC);
+    const title = course.name.normalize("NFKC").trim().toUpperCase().replace(/\s+/g, " ");
+    const list = STARS_INTL_TITLES[STARS_INTL_SUBJECT[course.subject]];
+    if (list.includes(title)) return verified(title, LIVE);
+    return unverified(starsIntlOtherTitle(course.subject), "No title in STARS's list matches the course name exactly; pick a closer one if there is", LIVE);
+  },
   rules: (_school, course) => {
     const out: string[] = [];
     if (course.terms.some((t) => t.gradeWeighted)) out.push("STARS wants the unweighted grade when both are printed.");

@@ -46,7 +46,8 @@ async function saveDone(system: FillSystem, ids: Set<string>): Promise<void> {
 }
 
 /** Builds the assistant for `plan`. `tabId` is the portal tab (null when the active tab is not on this system: buttons then copy). */
-export async function assistView(plan: SystemPlan, tabId: number | null): Promise<HTMLElement> {
+/** `auto`: the system's automatic filler section, shown above the course list when the open page supports one. */
+export async function assistView(plan: SystemPlan, tabId: number | null, auto: HTMLElement | null = null): Promise<HTMLElement> {
   const done = await loadDone(plan.system);
   const status = h("p", { class: "status" }, tabId == null ? "Open the portal in this window to type values in. Until then, pressing a value copies it." : "Click a box on the page, then press the value here.");
 
@@ -108,6 +109,7 @@ export async function assistView(plan: SystemPlan, tabId: number | null): Promis
     "div",
     {},
     h("h2", {}, `${plan.label}: fill assistant`),
+    auto,
     status,
     h("p", { class: "muted" }, "Click the first box of a course on the page, then press \"Fill from here\" to type its values in page order, or press values one at a time. Nothing is saved or submitted for you."),
     plan.notes.length ? h("ul", { class: "warnings" }, ...plan.notes.map((n) => h("li", {}, n))) : false,

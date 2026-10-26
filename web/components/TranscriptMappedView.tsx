@@ -35,6 +35,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
     banner: "STARS wants the unweighted grade when both are printed, and IP for courses without a final grade.",
     columns: [
       { key: "subject", label: "Subject area" },
+      { key: "genericTitle", label: "Course/Exam Content" },
       { key: "name", label: "Course name" },
       { key: "level", label: "Course level" },
       { key: "period", label: "Course length" },
@@ -89,7 +90,7 @@ const LAYOUTS: Record<SystemId, Layout> = {
   },
 };
 
-const OVERRIDABLE: readonly MappedFieldKey[] = ["level", "subject", "subSubject", "period", "credit"];
+const OVERRIDABLE: readonly MappedFieldKey[] = ["level", "subject", "subSubject", "period", "credit", "genericTitle"];
 
 const copy = (v: string) => void navigator.clipboard?.writeText(v).catch(() => {});
 

@@ -1,9 +1,12 @@
 // Content script on the UC, STARS, Cal State Apply, UIUC and UT portals: the fill assistant's page side. It remembers the box the student
-// last clicked and, when the side panel sends a value, puts it there and moves focus to the next box. It never submits or saves.
+// last clicked and, when the side panel sends a value, puts it there and moves focus to the next box. On STARS's coursework page it also
+// fills one course and presses Save Course when the panel asks (stars/fill.ts). It never submits an application or record.
 
 import { insertValue, labelOf } from "./assist/insert.ts";
 import { nextBox } from "./assist/next.ts";
+import { fillStarsCourse, StarsStop, starsExistingNames, starsPageYear } from "./stars/fill.ts";
 import type { AssistMessage, AssistResponse } from "./messages.ts";
+import { SITE_ORIGINS } from "./sites.ts";
 
 let last: Element | null = null;
 document.addEventListener("focusin", (e) => {
@@ -47,6 +50,19 @@ chrome.runtime.onMessage.addListener((raw: unknown, sender, sendResponse: (r: As
       );
       return true; // async response
     }
+    case "starsPage":
+      sendResponse({ type: "starsPage", year: starsPageYear(location), existing: starsExistingNames(document) });
+      return false;
+    case "starsFill":
+      if (!SITE_ORIGINS.stars.includes(location.origin) || starsPageYear(location) == null) {
+        sendResponse({ type: "starsFill", ok: false, error: "This is not a STARS coursework page" });
+        return false;
+      }
+      fillStarsCourse(document, msg.row, msg.scale).then(
+        (r) => sendResponse({ type: "starsFill", ok: true, saved: r.saved, blanks: r.blanks }),
+        (e: unknown) => sendResponse({ type: "starsFill", ok: false, error: e instanceof StarsStop || e instanceof Error ? e.message : String(e) }),
+      );
+      return true; // async response
     default:
       return false;
   }

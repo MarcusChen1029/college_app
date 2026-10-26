@@ -86,3 +86,13 @@ test("rowValues lists fields then grades", () => {
   assert.equal(v[0]!.value, "English 10");
   assert.deepEqual(v.slice(-2).map((x) => x.value), ["B+", "A-"]);
 });
+
+test("STARS for a school outside the US uses that page's lists: English is under Languages, with the generic title", () => {
+  const [row] = only(buildSystemPlan("stars", [school({ country: "Taiwan" })], [course({ name: "Algebra 1", subject: "mathematics", level: "honors" }), course({ id: "e" })]));
+  assert.equal(field(row!, "subject"), "Mathematics");
+  assert.equal(field(row!, "genericTitle"), "ALGEBRA 1");
+  assert.equal(field(row!, "level"), "Honors");
+  const eng = only(buildSystemPlan("stars", [school({ country: "Taiwan" })], [course()]))[0]!;
+  assert.equal(field(eng, "subject"), "Languages");
+  assert.equal(field(eng, "genericTitle"), "OTHER ENGLISH");
+});

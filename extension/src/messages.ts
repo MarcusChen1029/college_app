@@ -2,6 +2,7 @@ import type { TranscriptResult } from "./auth.ts";
 import type { CgGradeKey, CgGradePlan, CurrentYearPlan } from "../../web/lib/commonapp-fill.ts";
 import type { PageResult } from "./commonapp/dom.ts";
 import type { InsertResult } from "./assist/insert.ts";
+import type { StarsRow } from "../../web/lib/stars-fill.ts";
 import type { FillTarget } from "./commonapp/pages.ts";
 
 export type { FillTarget } from "./commonapp/pages.ts";
@@ -33,10 +34,19 @@ export type ContentResponse =
   | { type: "fill"; ok: false; error: string };
 
 /** Side panel -> fill assistant content script (UC, STARS, Cal State Apply, UIUC, UT). `advance` moves focus to the next box after. */
-export type AssistMessage = { type: "ready" } | { type: "assistTarget" } | { type: "assistInsert"; value: string; advance: boolean };
+export type AssistMessage =
+  | { type: "ready" }
+  | { type: "assistTarget" }
+  | { type: "assistInsert"; value: string; advance: boolean }
+  | { type: "starsPage" }
+  | { type: "starsFill"; row: StarsRow; scale: string | null };
 export type AssistResponse =
   | { type: "ready"; path: string }
   | { type: "assistTarget"; label: string | null }
-  | { type: "assistInsert"; result: InsertResult; label: string };
+  | { type: "assistInsert"; result: InsertResult; label: string }
+  /** year: the coursework page's `yr` (null on any other STARS page). */
+  | { type: "starsPage"; year: number | null; existing: string[] }
+  | { type: "starsFill"; ok: true; saved: boolean; blanks: string[] }
+  | { type: "starsFill"; ok: false; error: string };
 
 export type ExtensionMessage = PanelRequest | ContentMessage | AssistMessage;

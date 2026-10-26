@@ -4,12 +4,14 @@
 // Common App has its own, page-specific plan in commonapp-fill.ts.
 
 import { mapCourse, SYSTEMS, yearLabel, type MapStatus } from "./transcript-maps.ts";
+import { STARS_INTL_LEVEL, STARS_INTL_LEVELS, STARS_INTL_SUBJECT, STARS_INTL_SUBJECTS } from "./transcript-maps/stars-lists.ts";
+import { isNonUs } from "./transcript-maps/types.ts";
 import { TERM_LABEL, type SystemKey, type Term, type TermCode, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 export const FILL_SYSTEMS = ["uc", "stars", "csu", "uiuc", "ut"] as const satisfies readonly SystemKey[];
 export type FillSystem = (typeof FILL_SYSTEMS)[number];
 
-export type EntryFieldKey = "name" | "subject" | "subSubject" | "level" | "period" | "credit" | "summer" | "repeat" | "college";
+export type EntryFieldKey = "name" | "subject" | "subSubject" | "genericTitle" | "level" | "period" | "credit" | "summer" | "repeat" | "college";
 export type EntryField = { key: EntryFieldKey; label: string; value: string; status: MapStatus; note?: string };
 /** One grade box: the system's label for the term and the value to type. */
 export type EntryGrade = { term: TermCode | "final"; label: string; value: string };
@@ -113,16 +115,32 @@ const RULES: Record<FillSystem, Rules> = {
   },
 };
 
-const FIELD_LABEL: Partial<Record<EntryFieldKey, string>> = { subject: "Subject", subSubject: "Discipline", level: "Level", period: "Term system", credit: "Credit" };
+const FIELD_LABEL: Partial<Record<EntryFieldKey, string>> = { subject: "Subject", subSubject: "Discipline", genericTitle: "Course/Exam Content", level: "Level", period: "Term system", credit: "Credit" };
+const LIVE_STARS = "Read on STARS's page for schools outside the US";
+
+/** STARS shows schools outside the US another page with other lists (English is under "Languages"): use those, keeping a valid override. */
+function starsIntl(c: TranscriptCourse, key: "subject" | "level"): { value: string | null; status: MapStatus; note?: string } {
+  const ov = c.overrides.stars?.[key];
+  const list: readonly string[] = key === "subject" ? STARS_INTL_SUBJECTS : STARS_INTL_LEVELS;
+  const hit = ov ? list.find((o) => o.toLowerCase() === ov.toLowerCase()) : undefined;
+  if (hit) return { value: hit, status: "verified" };
+  if (key === "subject") return { value: STARS_INTL_SUBJECT[c.subject], status: "verified", note: LIVE_STARS };
+  const level = c.isCollege ? "Dual Enrollment" : STARS_INTL_LEVEL[c.level];
+  return level ? { value: level, status: "verified", note: LIVE_STARS } : { value: null, status: "unverified", note: "No single STARS level fits; pick it on STARS" };
+}
 
 function fieldsFor(system: FillSystem, school: TranscriptSchool, c: TranscriptCourse): { fields: EntryField[]; warnings: string[] } {
   const mapped = mapCourse(system, school, c);
   const fields: EntryField[] = [{ key: "name", label: "Course name", value: c.name, status: "verified" }];
-  for (const key of ["subject", "subSubject", "level", "period", "credit"] as const) {
-    const f = mapped.fields.find((x) => x.key === key)!;
+  const intl = system === "stars" && isNonUs(school);
+  for (const key of ["subject", "subSubject", "genericTitle", "level", "period", "credit"] as const) {
+    const found = mapped.fields.find((x) => x.key === key);
+    if (!found) continue;
+    let f: { value: string | null; status: MapStatus; note?: string } = found;
+    if (intl && (key === "subject" || key === "level")) f = starsIntl(c, key);
     let value = f.value;
     if (key === "period") value = RULES[system].period?.(c) ?? value;
-    if (key === "level" && system === "stars" && c.isCollege && !c.overrides.stars?.level) value = "Dual Enrollment";
+    if (key === "level" && system === "stars" && !intl && c.isCollege && !c.overrides.stars?.level) value = "Dual Enrollment";
     if (value == null || f.status === "none") continue;
     fields.push({ key, label: FIELD_LABEL[key]!, value, status: f.status, ...(f.note ? { note: f.note } : {}) });
   }
