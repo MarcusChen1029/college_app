@@ -22,13 +22,15 @@ Add one school, kind "High school", named exactly **West Lafayette Junior-Senior
 - Grade scale "Letters with +/-" (Common App's A-F), Period "Semester", Subject "Other" and Level "Regular / standard" (the defaults; Common App shows them as Other/Elective and Regular/Standard).
 - Academic year as in the table (the year the school year starts: 2022 means 2022-23). Each grade has its own year, so the 12th-grade courses are the latest year and become the Current Year courses.
 - Grades: type the **term grades** in Semester 1 and Semester 2 (status "Graded") **and** the **Final grade**, exactly as shown. The "Note" column is only an explanation, not part of a grade.
+- Credits: where the table shows credits in the term columns (e.g. "credit 3"), type them in that term's **Credit** box; the course Credit box then shows their sum and cannot be edited. Otherwise type the course Credit.
+- Test Biology's Semester 2 has no grade: leave its grade empty, Status "Auto", and type `0` in its Credit box (the transcript shows no grade that term).
 
 | Grade level | Academic year | Course | Semester 1 | Semester 2 | Final grade | Credit | Note |
 |---|---|---|---|---|---|---|---|
-| 9 | 2022 | Test Algebra I | `A` | `A-` | `A` | 1 | |
+| 9 | 2022 | Test Algebra I | `A`, credit 3 | `A-`, credit 2 | `A` | (sum: 5) | Uneven term credits |
 | 9 | 2022 | Test English 9 | `B+` | `B` | `B+` | 1 | |
 | 10 | 2023 | Test Geometry | `A-` | `A` | `A-` | 1 | |
-| 10 | 2023 | Test Biology | `B` | `B+` | `B` | 1 | |
+| 10 | 2023 | Test Biology | `B`, credit 1 | no grade, credit 0 | `B` | (sum: 1) | Semester 2 becomes "No Grade" |
 | 11 | 2024 | Test Chemistry | `A++` | `A` | `A` | 1 | `A++` is not in Common App's A-F list on purpose |
 | 11 | 2024 | Test US History | `A` | `A` | `A` | (leave blank) | No credit on purpose |
 | 12 | 2025 | Test Calculus | status "In progress", no grade | status "In progress", no grade | (none) | 1 | In progress |
@@ -41,7 +43,10 @@ Before the first Fill, on the Common App test account answer Yes to the Courses 
 6. In the panel click "Sign in". A window opens on the tracker's connect page; click Allow. The panel lists 9th, 10th, 11th grade (2 courses each) and "Current year courses", all ticked.
 7. First, by hand on the Common App test account, answer Yes to the Courses & Grades intro question. Then put the Common App tab (test account) in the active tab of the same window and click "Fill selected".
 8. Expected, for each grade:
-   - 9th (School Year 2022-23) and 10th (2023-24): "Filled 2 courses", no blanks listed. Each dialog shows School West Lafayette Junior-Senior High School, Grading Scale A-F, Schedule Semesters, and per course the Semester 1, Semester 2 and Final grades from the table and Final credit 1.
+   - 9th (School Year 2022-23) and 10th (2023-24): "Filled 2 courses", no blanks listed. Each dialog shows School West Lafayette Junior-Senior High School, Grading Scale A-F, Schedule Semesters, and per course the Semester 1, Semester 2 and Final grades from the table. Credits:
+     - Test Algebra I: Semester 1 credit 3, Semester 2 credit 2, Final credit 5.
+     - Test Biology: Semester 1 `B` credit 1, Semester 2 grade **No Grade** with credit 0, Final `B`, Final credit 1.
+     - Test English 9 and Test Geometry: term credit boxes empty, Final credit 1.
    - 11th (2024-25): "Filled 2 courses". The report lists exactly two blanks:
      - `Test US History: credit left blank: no credit in tracker`
      - `Test Chemistry: term 1 grade left blank: 'A++' is not in Common App's list` (its Semester 2 `A` and Final `A` are filled)

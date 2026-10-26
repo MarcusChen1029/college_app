@@ -517,3 +517,9 @@ test("N/A credit: no term credits, no course credit, not listed; the No Grade 0s
   assert.deepEqual(p.rows[0]!.credits, {});
   assert.deepEqual(p.rows[0]!.grades, { "1": "90", "2": "No Grade", final: "90" });
 });
+
+test("a graded term with no credit while another term has one: its credit box blank and reported; Final credit counts only what is there", () => {
+  const p = buildCgPlan([school()], [pct({ name: "Drama", terms: [withCredit("S1", "88", 2), graded("S2", "93")] })])[0]!;
+  assert.deepEqual(p.rows[0]!.credits, { "1": "2", final: "2" });
+  assert.deepEqual(p.skipped, [{ where: "9", course: "Drama", field: "S2 credit", reason: "no credit for this term in the tracker; Final credit may be too low" }]);
+});

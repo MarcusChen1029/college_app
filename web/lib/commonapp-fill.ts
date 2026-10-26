@@ -142,6 +142,8 @@ function cellsInDialog(c: TranscriptCourse, scale: CommonAppScale, stem: Schedul
   const termOf = (col: TermColumn) => c.terms.find((t) => COLUMN[t.term] === col);
   // A course with only a year grade has no term columns of its own: its missing terms are not "No Grade".
   const hasTerms = cols.some((col) => termOf(col));
+  // Same rule as termCreditSum: credits on "none" terms (always 0) don't count.
+  const hasTermCredits = c.terms.some((t) => t.status !== "none" && t.credit != null);
   const graded: string[] = [];
   const termCredits: number[] = [];
   let unfinished = false;
@@ -165,6 +167,9 @@ function cellsInDialog(c: TranscriptCourse, scale: CommonAppScale, stem: Schedul
     if (t.credit != null) {
       credits[col] = creditText(t.credit);
       termCredits.push(t.credit);
+    } else if (hasTermCredits) {
+      // Other terms carry credits, so this one's is missing rather than "listed once for the course": say so, never guess it.
+      skipped.push({ where, course: c.name, field: `${t.term} credit`, reason: "no credit for this term in the tracker; Final credit may be too low" });
     }
   }
 
