@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FillerDownload } from "@/components/FillerDownload";
 import { buttonClass, toneClass } from "@/lib/ui";
 
 export const metadata: Metadata = { title: "Tools" };
@@ -48,17 +49,19 @@ export default function ToolsPage() {
         <p role="note" className={`rounded-xl border px-4 py-3 text-sm ${toneClass("soon")}`}>
           Beta. Check every course and grade on Common App after filling. The extension fills whichever Common App account is open in that browser.
         </p>
-        <a href="/downloads/common-app-filler.zip" download className={buttonClass("primary")}>
-          Download for Chrome (.zip)
-        </a>
-        <div className="space-y-2">
-          <h3 className="text-sm font-bold">How to install</h3>
-          <ol className="list-decimal space-y-1 pl-5 text-sm text-zinc-700">
-            {INSTALL_STEPS.map((step, i) => (
-              <li key={i}>{step}</li>
-            ))}
-          </ol>
-        </div>
+        <FillerDownload>
+          <a href="/downloads/common-app-filler.zip" download className={buttonClass("primary")}>
+            Download for Chrome (.zip)
+          </a>
+          <div className="space-y-2">
+            <h3 className="text-sm font-bold">How to install</h3>
+            <ol className="list-decimal space-y-1 pl-5 text-sm text-zinc-700">
+              {INSTALL_STEPS.map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+          </div>
+        </FillerDownload>
         <p className="text-sm text-zinc-600">
           <Link href="/application/transcript" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
             Fill your transcript first

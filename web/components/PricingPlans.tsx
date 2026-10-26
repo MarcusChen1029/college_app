@@ -20,18 +20,14 @@ export function PricingPlans() {
       <div className="grid gap-4 md:grid-cols-3">
         {PLANS.map((p) => {
           const isCurrent = current === p.key;
-          const featured = p.key === "junior";
           const over = p.limit != null && listed > p.limit;
           return (
             <section
               key={p.key}
               className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
-                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : featured ? "border-blue-200" : "border-zinc-200"
+                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : "border-zinc-200"
               }`}
             >
-              {featured && (
-                <span className="absolute -top-3 left-6 rounded-full bg-blue-600 px-2.5 py-0.5 text-xs font-semibold text-white">Most popular</span>
-              )}
               <h2 className="font-display text-xl font-bold">{p.name}</h2>
               <p className="mt-1 text-sm text-zinc-500">{p.blurb}</p>
               <p className="mt-5 flex items-baseline gap-1">
@@ -73,6 +69,14 @@ export function PricingPlans() {
                     <span className="text-done">✓</span>
                     <span>
                       <strong>Connect AI:</strong> link your own ChatGPT or Claude and update your applications by chat
+                    </span>
+                  </li>
+                )}
+                {p.key === "senior" && (
+                  <li className="flex gap-2">
+                    <span className="text-done">✓</span>
+                    <span>
+                      <strong>Common App filler (Beta):</strong> a Chrome extension that fills Courses &amp; Grades from your transcript
                     </span>
                   </li>
                 )}
