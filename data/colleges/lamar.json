@@ -1,0 +1,97 @@
+{
+  "slug": "lamar",
+  "name": "Lamar University",
+  "short_name": "Lamar",
+  "state_region": "TX",
+  "city": "Beaumont",
+  "latitude": 30.042738,
+  "longitude": -94.072244,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.lamar.edu",
+  "admissions_url": "https://www.lamar.edu/admissions/",
+  "ipeds_unit_id": 226091,
+  "undergrad_enrollment": 8387,
+  "intl_undergrads": 82,
+  "student_faculty_ratio": 20,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Lamar University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.lamar.edu/data-analytics-reporting-analysis/_files/documents/common-data-set-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Lamar University (student-to-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=226091",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7460,
+    "admits": 6231,
+    "enrolled": 1685,
+    "in_state_applicants": 7260,
+    "in_state_admits": 6063,
+    "out_state_applicants": 132,
+    "out_state_admits": 108,
+    "intl_applicants": 68,
+    "intl_admits": 60,
+    "pct_submit_sat": 45,
+    "pct_submit_act": 5,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 98,
+    "notes": "CDS C1 (fall 2025): 7,460 applied, 6,231 admitted, 1,685 enrolled; residency split in-state 7,260 / out-of-state 132 / international 68 applicants (60 admitted, 11 enrolled). Texas-based applicant pool: only 68 international applicants. The printed SAT composite row is inconsistent with the section scores, so no SAT total is stored; section and ACT percentiles are from C9 (45% of enrolled first-years submitted SAT, 5% ACT). The GPA-range table in C11 is garbled in the PDF text, so no GPA distribution is stored. No early decision or early action; admission is rolling with no closing date. Intl undergraduate count is the B2 nonresident total (82; 80 degree-seeking). The CDS student-to-faculty line is outdated (fall 2022), so the ratio is from College Navigator (20 to 1)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      525,
+      590
+    ],
+    "SAT_MATH": [
+      440,
+      500,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      16,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      24
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A: the SAT/ACT policy row is unreadable in the PDF text; the admissions site says test scores are not required."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7785,
+    "tuition_out_of_state_usd": 19935,
+    "tuition_intl_usd": 19935,
+    "required_fees_usd": 3109,
+    "room_board_usd": 10544,
+    "books_usd": 1560,
+    "intl_need_aid_awarded": 45,
+    "intl_avg_award_usd": 17442,
+    "intl_merit_aid": true,
+    "notes": "CDS G1 (full year 2026-27, 12-credit minimum): tuition in-state $7,785, out-of-state and international $19,935; required fees $3,109; food and housing $10,544 (housing $6,754 + food $3,790); books $1,560. The G1/G5 tables are laid out unevenly in the PDF text, so values were matched by arithmetic (housing + food = $10,544). CDS H6: 45 nonresident undergraduates received institutional aid, average $17,442 (total $784,871)."
+  }
+}

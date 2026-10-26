@@ -1,0 +1,74 @@
+{
+  "slug": "northern-state",
+  "name": "Northern State University",
+  "short_name": "NSU",
+  "state_region": "SD",
+  "city": "Aberdeen",
+  "latitude": 45.450829,
+  "longitude": -98.484728,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://northern.edu",
+  "admissions_url": "https://northern.edu/admissions/international-students",
+  "ipeds_unit_id": 219259,
+  "undergrad_enrollment": 3169,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Northern State University (fall 2024 enrollment, 2024-25 student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219259",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219259",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 1082,
+    "admits": 1004,
+    "enrolled": 319,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 82,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023); no Common Data Set is published on NSU's Institutional Research page (checked 2026-10-26). College Navigator also shows fall 2024: 1,086 applicants, 93% admitted (exact admit count not given). SAT percentiles are not listed because only 2 enrolled students (1%) submitted SAT scores; the ACT percentiles rest on 260 students (82%). International applicant and admit counts, GPA distribution and SAT total are not available from IPEDS."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "NSU's undergraduate requirements page says an ACT or SAT score is not required for admission; IPEDS lists SAT/ACT as 'not required, but considered'."
+  }
+}

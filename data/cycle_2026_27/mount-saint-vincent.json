@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "chk": {
+   "kind": "admissions_site",
+   "title": "University of Mount Saint Vincent - International application checklist and timeline",
+   "url": "https://mountsaintvincent.edu/admission/undergraduate-college-admission/apply-international-students/application-checklist-and-timeline/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "University of Mount Saint Vincent - International Student FAQs",
+   "url": "https://mountsaintvincent.edu/admission/undergraduate-college-admission/apply-international-students/international-student-faq/",
+   "accessed": "2026-10-26"
+  },
+  "hs": {
+   "kind": "admissions_site",
+   "title": "University of Mount Saint Vincent - First-year application checklist and timeline (test scores, fee, rolling admission)",
+   "url": "https://mountsaintvincent.edu/admission/undergraduate-college-admission/apply-high-school-students/application-checklist-timeline/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "University of Mount Saint Vincent - Scholarships (Dean's Merit, International Student Merit)",
+   "url": "https://mountsaintvincent.edu/admission/financial-aid/financial-aid-options/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "University of Mount Saint Vincent - Tuition/Fees (merit scholarship range)",
+   "url": "https://mountsaintvincent.edu/campus-life/campus-services/student-accounts/tuition-and-fees/",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "other",
+   "title": "University of Mount Saint Vincent 2026-2027 Undergraduate Catalog (tuition and fees, admission, majors)",
+   "url": "https://mountsaintvincent.edu/wp-content/uploads/2026/07/UMSV-2026-2027-Undergraduate-Catalog-FINAL.pdf",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Standardized test scores (SAT code 2088, ACT code 2823) are optional for first-year applicants. However the international pages say every first-year international applicant 'must submit test scores of some kind': SAT/ACT or an English proficiency test (TOEFL, IELTS, GTECH CBT, Pearson PTE; the checklist also lists Duolingo).",
+  "src": "hs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "supplemental_essays": "Optional supplemental essay of 250-300 words.",
+  "notes": "'There is no fee to apply to the Mount'. Applications are accepted with a self-reported GPA (nursing applicants submit transcripts). International secondary transcripts must be in English in U.S. format or come with an official grading scale; otherwise a NACES translation/evaluation is needed (SpanTran, Josef Silny, WES, Global Credential Evaluators). Passport copy required. After admission: bank statements with at least three months of history and a final balance above the remaining cost of attendance, then the I-20 is sent by FedEx. Catholic-tradition, nonsectarian university in the Riverdale section of New York City.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "EA",
+   "due": "2026-11-15",
+   "label": "Early Action, first-year (fall 2027 entry)",
+   "notes": "International checklist: 'Early Action: November 15'. No year is printed; taken as fall 2027 entry.",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-03-01",
+   "label": "Final deadline, first-year (fall 2027 entry)",
+   "notes": "International checklist: 'Final Deadline: March 1' (no year printed; taken as fall 2027). The first-year page describes rolling admission with a March 1 priority date and a decision within four weeks of a complete application. Spring semester deadline is October 15.",
+   "src": "chk"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Required for students from a country whose official language is not English or whose native language is not English. Waived with citizenship, residency and education in a designated English-speaking nation; four years at a U.S. high school with a B or better in non-ESL English and a 2.5 GPA; an international high school taught entirely in English with the same B / 2.5 conditions; or three college credits with a B or better in first-year English composition. Other accepted proof: GTECH CBT 1100, SAT EBRW 550, ACT English 22. Conditional admission: applicants without enough English are directed to an on-campus English language program before applying (the checklist calls it the English Language Service (ELS) program; the 2026-27 catalog says Kings Education).",
+  "src": "chk"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 80,
+   "notes": "Listed as 'online TOEFL - 80'; the paper-based minimum is 550. The 1-6 scale is not mentioned.",
+   "src": "chk"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "src": "chk"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Listed on the international checklist and in the 2026-27 catalog.",
+   "src": "chk"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 58,
+   "notes": "Pearson PTE.",
+   "src": "chk"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "International applicants are reviewed for merit scholarships the same way as domestic ones: the International Student Merit Scholarship is awarded at acceptance (four years for first-year students) based on cumulative GPA and standardized test scores, renewable with a 3.2 GPA. The amount is not published for international students; the Tuition/Fees page says merit scholarships in general range from $17,000 to $30,000 per year. Premier Programs offer full-tuition or room-and-board awards. Federal aid (FAFSA) does not apply to international students.",
+  "src": "schol"
+ },
+ "majors": [],
+ "cost": {
+  "year": "2026-2027",
+  "src": "cat",
+  "tuition_usd": 46500,
+  "tuition_out_of_state_usd": 46500,
+  "tuition_intl_usd": 46500,
+  "required_fees_usd": 1920,
+  "room_board_usd": 16200,
+  "notes": "2026-27 catalog, first-year students: full-time tuition $46,500 per year (12-18 credits a term; $1,350 per credit part-time); room and board $16,200 (shared occupancy); technology fee $800, student activity fee $420 and academic service fee $700 (required_fees is their sum). Student health insurance $3,006 is required unless waived with proof of coverage. Program costs average $1,000 a year for texts and supplies. The catalog does not print a total cost of attendance."
+ },
+ "score_codes": {
+  "sat": {
+   "code": "2088",
+   "note": "SAT code printed on the first-year checklist.",
+   "src": "hs"
+  },
+  "act": {
+   "code": "2823",
+   "note": "ACT code printed on the first-year checklist.",
+   "src": "hs"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL code is printed on the UMSV admissions pages.",
+   "src": "chk"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "chk"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "chk"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "chk"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

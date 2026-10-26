@@ -1,0 +1,80 @@
+{
+  "slug": "csu-pueblo",
+  "name": "Colorado State University Pueblo",
+  "short_name": "CSU Pueblo",
+  "state_region": "CO",
+  "city": "Pueblo",
+  "latitude": 38.30859,
+  "longitude": -104.579033,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.csupueblo.edu/",
+  "admissions_url": "https://www.csupueblo.edu/admissions/index.html",
+  "ipeds_unit_id": 128106,
+  "undergrad_enrollment": 5086,
+  "intl_undergrads": 62,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=128106",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=128106&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=128106",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 2902,
+    "admits": 2754,
+    "enrolled": 618,
+    "pct_submit_sat": 1,
+    "pct_submit_act": 3,
+    "notes": "Baseline from IPEDS fall 2024 (admit rate 94.9%). The 2025-2026 Common Data Set exists on csupueblo.edu but the www.csupueblo.edu host refused connections from this environment in several attempts, so no international split, GPA or residency data. Test scores from College Navigator cover only 18 ACT submitters (3%) and 4 SAT submitters (1%), so the ACT percentiles rest on a very small sample and SAT percentiles are not reported. International applicant counts are not published."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      17,
+      20,
+      25
+    ],
+    "ACT_MATH": [
+      16,
+      21,
+      27
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 9720,
+    "tuition_out_of_state_usd": 17944,
+    "room_board_usd": 12100,
+    "books_usd": 1460,
+    "other_usd": 3294,
+    "total_coa_usd": 34798,
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $9,720, out-of-state $17,944; books $1,460; on-campus food and housing $12,100; other expenses $3,294; total on campus out-of-state $34,798 (in-state $26,574). The 2026-27 cost-of-attendance page could not be read, so 2026-27 figures are not given."
+  }
+}

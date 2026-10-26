@@ -1,0 +1,102 @@
+{
+  "slug": "marshall",
+  "name": "Marshall University",
+  "short_name": "Marshall",
+  "state_region": "WV",
+  "city": "Huntington",
+  "latitude": 38.422482,
+  "longitude": -82.428964,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.marshall.edu/",
+  "admissions_url": "https://www.marshall.edu/admissions/",
+  "ipeds_unit_id": 237525,
+  "undergrad_enrollment": 9960,
+  "intl_undergrads": 112,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Marshall University Common Data Set 2025-2026 (PDF; page headers still print 2024-2025, data are Fall 2025)",
+      "url": "https://www.marshall.edu/irp/files/CDS-PDF-2025-2026-Excel_finalaccess.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 6827,
+    "admits": 6597,
+    "enrolled": 1938,
+    "in_state_applicants": 3570,
+    "in_state_admits": 3451,
+    "out_state_applicants": 3164,
+    "out_state_admits": 3055,
+    "intl_applicants": 93,
+    "intl_admits": 91,
+    "pct_submit_sat": 71,
+    "pct_submit_act": 42,
+    "gpa_avg": 3.6,
+    "pct_reporting_gpa": 98.9,
+    "gpa_distribution": {
+      "4.0": 32,
+      "3.75-3.99": 16,
+      "3.50-3.74": 14,
+      "3.25-3.49": 11,
+      "3.00-3.24": 9,
+      "2.50-2.99": 11,
+      "2.0-2.49": 6,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS C1 (Fall 2025). International: 93 applied, 91 admitted, 16 enrolled (C1 residency table). GPA distribution is the 'all enrolled students' column of C11. No early decision or early action; no waitlist. SAT composite percentiles 940/1040/1140 are also published; the composite is not a stored test type. The CDS file's page headers say 2024-2025 but the cohort and dates refer to Fall 2025. The C7 factor checkboxes could not be read reliably from the text, so no factors are recorded."
+  },
+  "scores": {
+    "SAT_ERW": [
+      480,
+      540,
+      590
+    ],
+    "SAT_MATH": [
+      450,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      19,
+      22,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      24
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A says SAT/ACT are used in admission decisions (which box is ticked cannot be read from the text); the university catalog states test scores are not required for admission."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7770,
+    "tuition_out_of_state_usd": 18772,
+    "tuition_intl_usd": 18772,
+    "required_fees_usd": 1618,
+    "room_board_usd": 13826,
+    "books_usd": 1100,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 48,
+    "intl_avg_award_usd": 23681,
+    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $7,770, out-of-state/nonresident $18,772, required fees $1,618, food and housing $13,826. Tuition varies by program (G4: 86.5% pay more than the G1 figure). CDS H6: only institutional non-need-based aid is available to nonresidents; 48 nonresidents received it (average $23,681)."
+  }
+}

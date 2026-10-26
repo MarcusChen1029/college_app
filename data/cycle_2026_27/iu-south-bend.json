@@ -1,0 +1,176 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "IU South Bend - How to Apply: International Students (deadlines, fee, documents, conditional admission)",
+   "url": "https://admissions.iusb.edu/apply/international.html",
+   "accessed": "2026-10-26"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "IU South Bend Office of International Student Services - Applicant checklist",
+   "url": "https://admissions.iusb.edu/oiss/admissions/apply/check-list.html",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "IU South Bend Office of International Student Services - English Proficiency",
+   "url": "https://admissions.iusb.edu/oiss/admissions/explore/toefl.html",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "IU South Bend - Admission Requirements (first-year, conditional admission)",
+   "url": "https://admissions.iusb.edu/apply/admission-requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "oiss": {
+   "kind": "admissions_site",
+   "title": "IU South Bend Office of International Student Services - Admission requirements",
+   "url": "https://admissions.iusb.edu/oiss/admissions/requirements/index.html",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "IU South Bend Office of International Student Services - Scholarships and Loans",
+   "url": "https://admissions.iusb.edu/oiss/admissions/explore/paying.html",
+   "accessed": "2026-10-26"
+  },
+  "oos": {
+   "kind": "financial_aid_site",
+   "title": "IU South Bend - Out-of-State Scholarships (Chancellor's Merit Award)",
+   "url": "https://southbend.iu.edu/students/scholarships/out-of-state.html",
+   "accessed": "2026-10-26"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "Indiana University South Bend Common Data Set 2025-2026 (IU CDS app, campus South Bend)",
+   "url": "https://iuapps.iu.edu/cds/?i=home&p=index&section=C.+First-Time%2C+First-Year+Admission&year=2025&campus=South+Bend",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "CDS C8A (Fall 2027) marks SAT/ACT as 'not required for admission, but considered if submitted'; scores are used mainly when a student is near the Guided Pathways or conditional-admission cut-off. The English test alternative 'SAT EBRW 530' is listed separately on the English proficiency page.",
+  "src": "cds"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": null,
+  "supplemental_essays": "Optional undergraduate statement of purpose (used when awarding first-year scholarships).",
+  "notes": "Undergraduate applicants use the IU application, not the Common App. Full first-year admission asks for roughly a B average and a Core 40 or Academic Honors diploma (or out-of-state equivalent); applicants who fall short may get conditional admission case by case (CDS: Guided Pathways, 2.0+ GPA). Upload transcripts to the applicant portal; official transcripts are due within the first four weeks of enrollment, with a verified translation if not in English. Passport copy needed; financial documents (under 12 months old) are needed only to get an I-20 and no dollar amount is published. All first-time international undergraduates take English and mathematics placement exams on arrival unless exempt. The two international pages disagree on the application fee ($60 on the how-to-apply page, $65 on the Office of International Student Services checklist), so it is left null. F-1 students can start only in fall or spring.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International fall priority date (fall 2027 entry)",
+   "notes": "The international pages list priority dates only (fall June 1, spring October 1, summer April 1) and accept applications year-round; missing a priority date can delay admission to the next semester for applicants outside the U.S. No year is printed; taken as fall 2027. The CDS also lists a non-restrictive Early Action closing date of Nov. 1 and a domestic priority date of Aug. 1; the international pages do not mention an Early Action date.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-06-15",
+   "label": "International first-year scholarship ($2,000): admitted and applied by this date",
+   "notes": "Up to twelve $2,000 first-year awards for F-1/J-1 students admitted for fall by June 15; original transcripts on file by June 22. No year is printed; taken as fall 2027.",
+   "src": "sch"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Native English speakers (list of countries on the site) are exempt, as are applicants who complete 3 years of a U.S. high school or 24 transferable semester credit hours. Other accepted evidence: SAT EBRW 530; WAEC SSCE/Ordinary Level/KCSE grade A or B; Cambridge IGCSE/GCE O Level C or higher; EIKEN Pre-1; completion of The Language Company Level 9, ELS Level 109, IU Bloomington CELT Level 7 or IU Indianapolis PIE Level 5; or the IUSB Interim Placement Examination on the Director of Admissions' recommendation. Applicants who have not met the requirement can apply for Conditional Admission: they receive a conditional acceptance letter if they meet the academic requirements and are not fully admitted until the English requirement is met. Scores must be under two years old and sent directly from the testing agency.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "71 or higher. TOEFL institution code 1339.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "The page reads '4.0 on the iBT, beginning January 21, 2026'; it does not name the 1-6 scale.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "6.0 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 48,
+   "notes": "Pearson Test of English Academic, 48 or higher.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": null,
+   "notes": "Listed as 'Cambridge English B2'; no numeric score is printed.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Up to twelve $2,000 first-year scholarships for F-1/J-1 students admitted for fall by June 15 (first year only). The International Student Fee Remission Scholarship ($4,000-$6,000 a year on average) is for students with at least one year of study, a 3.0 GPA and demonstrated need. IU Foundation and college scholarships are due March 1. The Chancellor's Merit Award (pay 150% of in-state tuition, 3.0 GPA) lists 'eligible non-citizen' and the page cites an Indiana law limiting institutional scholarship funds for non-citizens, so F-1 eligibility is unclear; the OISS page says it is open to F-1/J-1 undergraduates who come from a U.S. high school or college. CDS H6: 23 nonresident undergraduates received institutional aid, average $8,059.",
+  "src": "sch"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The admissions pages reviewed print no SAT code; look up Indiana University South Bend in the College Board code search.",
+   "src": "req"
+  },
+  "act": {
+   "code": null,
+   "note": "The admissions pages reviewed print no ACT code; look it up at act.org.",
+   "src": "req"
+  },
+  "toefl": {
+   "code": "1339",
+   "note": "IU South Bend's TOEFL test center code; scores must come directly from ETS (hand-carried reports are not accepted).",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D"
+ },
+ "tier_notes": {}
+}

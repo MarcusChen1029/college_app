@@ -1,0 +1,89 @@
+{
+  "slug": "augusta",
+  "name": "Augusta University",
+  "short_name": "Augusta",
+  "state_region": "GA",
+  "city": "Augusta",
+  "latitude": 33.47037,
+  "longitude": -81.989071,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.augusta.edu/",
+  "admissions_url": "https://www.augusta.edu/admissions/",
+  "ipeds_unit_id": 482149,
+  "undergrad_enrollment": 6049,
+  "intl_undergrads": 76,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=482149",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Augusta University (fall 2024 enrollment, 2024-25 cost)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=482149",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=482149",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 5892,
+    "admits": 5262,
+    "enrolled": 1224,
+    "pct_submit_sat": 56,
+    "pct_submit_act": 20,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); exact counts. No public Common Data Set was found on augusta.edu (the Institutional Effectiveness reporting page links none), so GPA, residency and international applicant/admit counts are null. College Navigator for fall 2024 shows 6,011 applicants and 86% admitted (percentage only)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      520,
+      570,
+      630
+    ],
+    "SAT_MATH": [
+      500,
+      540,
+      600
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      26
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 8414,
+    "tuition_out_of_state_usd": 24734,
+    "books_usd": 1240,
+    "room_board_usd": 12404,
+    "other_usd": 4884,
+    "notes": "College Navigator (IPEDS 2024-25): tuition includes required fees; room and board and other expenses are on-campus."
+  }
+}

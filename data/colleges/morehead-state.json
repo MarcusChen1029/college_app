@@ -1,0 +1,98 @@
+{
+  "slug": "morehead-state",
+  "name": "Morehead State University",
+  "short_name": "Morehead State",
+  "state_region": "KY",
+  "city": "Morehead",
+  "latitude": 38.186768,
+  "longitude": -83.434021,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.moreheadstate.edu",
+  "admissions_url": "https://www.moreheadstate.edu/admissions",
+  "ipeds_unit_id": 157386,
+  "undergrad_enrollment": 7941,
+  "intl_undergrads": 98,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Morehead State University Common Data Set 2025-2026 (PDF; file is named cds-2025-2026 and reports Fall 2025 data, though its page headers still read 2024-2025)",
+      "url": "https://moreheadstate.edu/_files/files/about-msu/leadership/ppe-institutional-research/cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8087,
+    "admits": 6735,
+    "enrolled": 1275,
+    "in_state_applicants": 4857,
+    "in_state_admits": 4462,
+    "out_state_applicants": 1732,
+    "out_state_admits": 1543,
+    "intl_applicants": 1426,
+    "intl_admits": 730,
+    "pct_submit_sat": 4,
+    "pct_submit_act": 82,
+    "gpa_avg": 3.47,
+    "pct_reporting_gpa": 100,
+    "gpa_distribution": {
+      "4.0": 8,
+      "3.75-3.99": 28,
+      "3.50-3.74": 21,
+      "3.25-3.49": 15,
+      "3.00-3.24": 10,
+      "2.50-2.99": 13,
+      "2.0-2.49": 4,
+      "1.0-1.99": 0
+    },
+    "notes": "Fall 2025 first-time first-year class (CDS C1 residency breakdown: 1,426 international applicants, 730 admitted, 44 enrolled; 72 applicants of unknown residency). International admit rate (about half) is far lower than the overall rate. Undergraduate enrollment 7,941 and nonresident 98 are the B2 total-undergraduate figures, which include many non-degree dual-credit students (degree-seeking undergraduates: 4,541). GPA distribution is the 'all enrolled students' column of C11 (whole percents, summing to 99). SAT percentiles rest on only 45 students (4%); ACT was submitted by 1,041 (82%). CDS C7 factor checkboxes are not legible in the PDF text, so factors are omitted. Student-to-faculty ratio 16:1 is from CDS section I."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      940,
+      1030,
+      1130
+    ],
+    "SAT_ERW": [
+      500,
+      545,
+      605
+    ],
+    "SAT_MATH": [
+      460,
+      500,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      25
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      23
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A column marks are not legible; the admission requirements page says the ACT/SAT are generally not required for undergraduate admission but are needed for scholarships, placement or some programs."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "notes": "The CDS section G dollar figures are blank in the PDF text; costs come from the university tuition pages (see cycle file)."
+  }
+}

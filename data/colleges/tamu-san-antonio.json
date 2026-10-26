@@ -1,0 +1,111 @@
+{
+  "slug": "tamu-san-antonio",
+  "name": "Texas A&M University-San Antonio",
+  "short_name": "A&M-San Antonio",
+  "state_region": "TX",
+  "city": "San Antonio",
+  "latitude": 29.304762,
+  "longitude": -98.52417,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.tamusa.edu/",
+  "admissions_url": "https://www.tamusa.edu/admissions/index.html",
+  "ipeds_unit_id": 459949,
+  "undergrad_enrollment": 6790,
+  "intl_undergrads": 27,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Texas A&M University-San Antonio Common Data Set 2025-2026 (Excel)",
+      "url": "https://www.tamusa.edu/office-institutional-research/documents/CDS-PDF-2025-2026-Excel_Template_updated_final_2.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator (student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=459949",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8936,
+    "admits": 8442,
+    "enrolled": 1293,
+    "pct_submit_sat": 42,
+    "pct_submit_act": 5,
+    "notes": "CDS C1 first-time, first-year totals (applied 8,936; admitted 8,442 = 3,603 men + 4,839 women; enrolled 1,293). The 2025-26 CDS does not report international applicants/admits, GPA, or SAT/ACT composite percentiles, so those are left empty; the cell for applied-by-sex printed as a spreadsheet error but the totals are given. Undergrad enrollment is B 'Total all undergraduates' (6,790); intl_undergrads is the CDS B nonresident count among degree-seeking undergraduates (27). Only 2 of the 1,293 first-year students were nonresidents. No waitlist, no early decision/early action."
+  },
+  "scores": {
+    "SAT_ERW": [
+      430,
+      480,
+      540
+    ],
+    "SAT_MATH": [
+      410,
+      470,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      18,
+      21
+    ],
+    "ACT_ENGLISH": [
+      13,
+      15,
+      20
+    ],
+    "ACT_MATH": [
+      15,
+      17,
+      20
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "class_rank": "I",
+    "gpa": "I",
+    "test_scores": "C",
+    "essay": "NC",
+    "recommendations": "NC",
+    "interview": "NC",
+    "extracurriculars": "NC",
+    "talent_ability": "NC",
+    "character": "NC",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "NC",
+    "work_experience": "NC",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8: scores are used in admission and advising (SAT, ACT, AP, CLEP, TSI listed); admissions site waives them for top 35% / 3.0 GPA applicants."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 8032,
+    "tuition_out_of_state_usd": 18878,
+    "required_fees_usd": 0,
+    "room_board_usd": 12070,
+    "books_usd": 1200,
+    "other_usd": 2956,
+    "intl_need_aid": false,
+    "intl_need_aid_awarded": 40,
+    "intl_avg_award_usd": 13713,
+    "notes": "CDS G1 (first-year, year of the 2025-26 CDS): tuition 8,032 in-state and 18,878 out-of-state with required fees reported as 0 (i.e. fees appear to be included); on-campus food and housing 12,070; transportation 1,664 not included. No separate international tuition is printed. CDS H6: only institutional non-need-based aid is available to nonresidents; 40 nonresidents received it (avg 13,713)."
+  }
+}

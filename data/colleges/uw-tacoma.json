@@ -1,0 +1,54 @@
+{
+  "slug": "uw-tacoma",
+  "name": "University of Washington Tacoma",
+  "short_name": "UW Tacoma",
+  "state_region": "WA",
+  "city": "Tacoma",
+  "latitude": 47.244594,
+  "longitude": -122.438541,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.tacoma.uw.edu",
+  "admissions_url": "https://www.tacoma.uw.edu/admissions",
+  "ipeds_unit_id": 377564,
+  "undergrad_enrollment": 4207,
+  "intl_undergrads": 74,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "quarter",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS data via College Navigator, University of Washington-Tacoma Campus (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=377564",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=377564",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=377564",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 3161,
+    "notes": "Baseline from IPEDS via College Navigator, fall 2024 first-time applicants: 4,068 applied and 83% were admitted (percent only; the admit count is not computed from the rounded percentage). No Common Data Set for UW Tacoma could be found (the UW Seattle institutional data pages cover Seattle only), so admits, enrolled, international counts, GPA and test figures are left null. Undergraduate enrollment 4,207 and student-to-faculty ratio 15:1 are from College Navigator (fall 2024). UW Tacoma does not use SAT/ACT in its admission review, so no test-score percentiles are listed. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "admits": 2622,
+    "enrolled": 666
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "UW Tacoma: SAT/ACT optional and 'not part of our admissions review process'; scores can be submitted to satisfy English proficiency."
+  }
+}

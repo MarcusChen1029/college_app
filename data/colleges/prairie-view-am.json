@@ -1,0 +1,89 @@
+{
+  "slug": "prairie-view-am",
+  "name": "Prairie View A&M University",
+  "short_name": "PVAMU",
+  "state_region": "TX",
+  "city": "Prairie View",
+  "latitude": 30.092425,
+  "longitude": -95.989475,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.pvamu.edu/",
+  "admissions_url": "https://www.pvamu.edu/admissions/",
+  "ipeds_unit_id": 227526,
+  "undergrad_enrollment": 8877,
+  "intl_undergrads": 66,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227526",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Prairie View A&M University (enrollment fall 2024, estimated expenses 2024-25)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227526",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=227526",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 8777,
+    "admits": 6609,
+    "enrolled": 2112,
+    "pct_submit_sat": 85,
+    "pct_submit_act": 24,
+    "notes": "Baseline from IPEDS (fall 2023 entering class). No current Common Data Set was found: the newest one on pvamu.edu/ir is an old edition from the 2016-2020 fact book. International applicant/admit counts, GPA and residency splits are not available."
+  },
+  "scores": {
+    "SAT_ERW": [
+      440,
+      480,
+      520
+    ],
+    "SAT_MATH": [
+      410,
+      460,
+      510
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      18,
+      20
+    ],
+    "ACT_ENGLISH": [
+      14,
+      17,
+      20
+    ],
+    "ACT_MATH": [
+      15,
+      17,
+      20
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 11299,
+    "books_usd": 1571,
+    "room_board_usd": 10317,
+    "other_usd": 4611,
+    "total_coa_usd": 27798,
+    "tuition_out_of_state_usd": 26874,
+    "notes": "College Navigator 2024-25 estimated expenses for full-time beginning undergraduates: tuition and fees $11,299 in-state, $26,874 out-of-state (international students pay out-of-state); on-campus total $27,798 in-state, $43,373 out-of-state."
+  }
+}

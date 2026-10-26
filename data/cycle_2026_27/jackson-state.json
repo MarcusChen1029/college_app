@@ -1,0 +1,131 @@
+{
+  "sources": {
+    "pol": {
+      "kind": "admissions_site",
+      "title": "JSU Undergraduate Admissions - Admission policies (updated 9.12.25)",
+      "url": "https://www.jsums.edu/admissions/files/2025/09/ADMISSION-POLICIES-9.12.25.pdf",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "JSU Undergraduate Admissions - International students",
+      "url": "https://www.jsums.edu/admissions/requirements/international-students/",
+      "accessed": "2026-10-26"
+    },
+    "isss": {
+      "kind": "admissions_site",
+      "title": "JSU Global - International Student and Scholar Services",
+      "url": "https://www.jsums.edu/global/isss-recruitment/",
+      "accessed": "2026-10-26"
+    },
+    "glob": {
+      "kind": "admissions_site",
+      "title": "JSU Global - Admissions",
+      "url": "https://www.jsums.edu/global/admissions/",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "other",
+      "title": "JSU Traditional Undergraduate Tuition & Fees per credit hour schedule, 2026-2027 (PDF)",
+      "url": "https://www.jsums.edu/businessfinance/files/2026/09/FY-26-27-Fee-Sheet-UG.pdf",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "other",
+      "title": "JSU Global - Cost of study",
+      "url": "https://www.jsums.edu/global/cost-of-study/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "JSU Financial Aid - Scholarships",
+      "url": "https://www.jsums.edu/financialaid/scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Policy document (updated 9.12.25): JSU is test optional; freshmen with an unweighted 3.20 GPA need no ACT/SAT. Other routes: 2.50 GPA or top 50% with ACT 16, or 2.00 GPA with ACT 18 (SAT equivalents accepted). For applicants from non-U.S. high schools the policy says 'ACT or SAT scores may be required', and the JSU Global admissions page (copyright 2023) lists ACT 16 or SAT 790 (excluding writing) for international undergraduates. Confirm with JSU Global.",
+    "src": "pol"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 25,
+    "notes": "Non-refundable $25 application fee (admission policy, freshman). Applications go through JSU's own Future Tigers portal. International transcripts need a professional course-by-course evaluation (WES, Josef Silny, ECE, IEE or similar). A Certified Declaration of Financial Support covering one academic year is submitted to JSU Global after admission (no dollar amount published). International students need an IGRA blood test and chest X-ray done in the U.S. no more than six weeks before classes. Decisions are said to take 7-10 business days after documents arrive.",
+    "src": "pol"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-08-12",
+      "label": "International priority deadline, fall 2027 entry",
+      "notes": "International admissions page prints 'Fall: August 12' (priority) without a year (treated as fall 2027). It advises applying four months before the term. The admission policy separately says students are encouraged to apply on or before July 15 for fall. Spring priority date Jan. 13.",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-07-15",
+      "label": "Recommended apply-by date for fall (admission policy)",
+      "notes": "Policy document: 'encouraged to apply on or before' July 15 for fall; year not printed (treated as 2027).",
+      "src": "pol"
+    },
+    {
+      "kind": "scholarship",
+      "due": null,
+      "label": "Freshman academic scholarship application window: Nov. 1 to Feb. 1",
+      "notes": "Provost (3.25 GPA + ACT 25 or SAT 1130; tuition only) and Presidential (3.5 GPA + ACT 32 or SAT 1420; full tuition, fees, room and board) scholarships. The page shows no year and does not say whether international students are eligible, so no date is recorded.",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt: non-citizens who graduated from a U.S. high school; transfers from a U.S. college with 30 transfer hours; citizens of English-speaking countries on JSU Global's list (e.g. UK, Australia, Canada, New Zealand, Ireland, Nigeria, Ghana, certain Caribbean islands); students who complete JSU's English as a Second Language Institute (ESLI). The ISSS page also accepts ACT English 19 or SAT Critical Reading 480. Duolingo, Cambridge and the new TOEFL 1-6 scale are not listed for undergraduates (the graduate school lists 4.0 on the 1-6 scale).",
+    "src": "pol"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "notes": "Minimum iBT 69 (CBT 194, PBT 525).",
+      "src": "pol"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Admission policy (9.12.25) and JSU Global admissions page say 6.5; the ISSS page says 6.0. The higher figure is recorded.",
+      "src": "pol"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "PTE-A 53 appears only on the ISSS page, not in the admission policy.",
+      "src": "isss"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 9408,
+    "tuition_out_of_state_usd": 13408,
+    "required_fees_usd": 440,
+    "notes": "JSU 2026-27 undergraduate fee sheet, per semester at 12-19 credit hours: Mississippi-resident tuition $4,704, non-resident adds $2,000 (total tuition $6,704), mandatory fees $220; totals $4,924 resident / $6,924 non-resident. Annual figures here are two semesters (tuition $9,408 resident, $13,408 non-resident; fees $440). F-1 students also pay a $100 international student fee per semester (JSU Global). Whether international students are billed the non-resident rate is not stated, so the international tuition field is blank. Housing and meal prices for 2026-27 were not clear enough to record.",
+    "src": "fees"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "ISSS page: no minimum test score for admission of international students, but ACT 25 (verbal and math) or SAT 1130 (reading and math) or higher qualifies for an out-of-state tuition fee waiver (the older fee-waiver form also needs a 3.25 GPA to renew). No scholarships are named specifically for international students.",
+    "src": "isss"
+  },
+  "majors": [],
+  "tiers": {
+    "general": "D"
+  },
+  "tier_notes": {}
+}

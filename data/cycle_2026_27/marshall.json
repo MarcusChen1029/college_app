@@ -1,0 +1,160 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Marshall University - International admissions deadlines and requirements",
+   "url": "https://www.marshall.edu/international-admissions/international-admissions-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Marshall University - Proof of English proficiency (international)",
+   "url": "https://www.marshall.edu/international-admissions/proof-of-english-proficiency/",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Marshall University Undergraduate Catalog - Admissions (freshmen, international students)",
+   "url": "https://catalog.marshall.edu/undergraduate/admissions/",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "Marshall University - Merit-based scholarships (John Marshall Scholarship)",
+   "url": "https://www.marshall.edu/sfa/types-of-aid/merit-based-scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "iss": {
+   "kind": "admissions_site",
+   "title": "Marshall University International Student Services - Financial information",
+   "url": "https://www.marshall.edu/iss/future-students/financial-information/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test scores are not required for admission. Admission needs a high school GPA of at least 2.00; a GPA of 3.00+ (or 2.00+ with ACT 19 / SAT 990) is admitted directly to the major's college, and test-free applicants with a 2.00-2.99 GPA enter University College. International applicants may need official SAT/ACT for direct entry to some programs (e.g. Science, Engineering and Computer Sciences, Nursing). Scores are also used for scholarships.",
+  "src": "cat"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "International degree-seeking application fees are currently waived (CDS C13 also lists $0). Required: official secondary coursework sent from the issuing school (a NACES/AICE evaluation is an optional alternative), minimum 2.00 GPA (converted by the International Admissions Office), proof of English proficiency, and ACT/SAT for some majors. CDS C7 checkboxes were unreadable, so essay/recommendation policy is not recorded.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "International fall application deadline (fall 2027 entry)",
+   "notes": "All required documents must be received by the Fall June 15 date to guarantee consideration (Spring Oct. 15, Summer Mar. 15). The page prints no year; fall 2027 assumed. The CDS lists a domestic priority/closing date of 8/23 and rolling notification from Sept. 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: equivalent of a U.S. high school diploma or college degree from an approved English-speaking country (list on the page); one year of study at a U.S. high school with a C or higher in English; 24 undergraduate credits at a U.S.-accredited university; transfer credit equivalent to ENG 101 with C or better; completion of an approved ESL program; IGCSE/O-Level English First Language C or higher; IB English A (HL 4+, SL 5+). SAT EBRW 480 or ACT English/Reading 18 also satisfy the requirement. Marshall's pages do not describe a conditional admission pathway.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Exams taken before 2026-01-21; undergraduate minimum.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Exams taken after 2026-01-20: the page lists '4.0 or 72' for undergraduates (4.5 or 86 for graduate). The 1-6 band is assumed from the 4.0/4.5 values.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic overall.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 57,
+   "notes": "PTE Academic or PTE Express. The undergraduate catalog lists PTEA 50, which conflicts with the international admissions page (57); 57 is the international page value.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 169,
+   "notes": "Cambridge English overall score.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International students are treated as nonresidents for scholarships. The John Marshall Scholarship (freshman merit; high school GPA and, where applicable, test scores) pays nonresidents $14,000 (GPA 3.9+ with ACT 30/SAT 1360), $9,000 (GPA 3.8), $7,000 (GPA 3.5) or $5,000 (GPA 3.0) per year; it is renewable for four years. Only institutional non-need-based aid is available to nonresidents (CDS H6).",
+  "src": "merit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5396",
+   "note": "Marshall University SAT code per the international admissions page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the international admissions pages; look it up at act.org.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on Marshall's English proficiency page.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

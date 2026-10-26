@@ -1,0 +1,196 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "BHSU - International Students (undergraduate application steps, English proficiency, costs, scholarships)",
+   "url": "https://www.bhsu.edu/academics/programs/international-studies.html",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "BHSU - Apply (first-year admission requirements)",
+   "url": "https://www.bhsu.edu/admissions/apply.html",
+   "accessed": "2026-10-26"
+  },
+  "tf": {
+   "kind": "financial_aid_site",
+   "title": "BHSU - Tuition & Fees (2026-2027)",
+   "url": "https://www.bhsu.edu/admissions/tuition-fees.html",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "BHSU - Business Administration program page",
+   "url": "https://www.bhsu.edu/academics/programs/business-administration.html",
+   "accessed": "2026-10-26"
+  },
+  "bio": {
+   "kind": "other",
+   "title": "BHSU - Biology program page",
+   "url": "https://www.bhsu.edu/academics/programs/biology.html",
+   "accessed": "2026-10-26"
+  },
+  "math": {
+   "kind": "other",
+   "title": "BHSU - Mathematics program page",
+   "url": "https://www.bhsu.edu/academics/programs/mathematics.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "BHSU says it is wholly test optional: scores are not required if the student meets another minimum (cumulative GPA 2.6 or top 60% of class); an ACT composite of 18 (SAT 970) also qualifies. Scores may be used for some scholarship eligibility and for initial math and English placement.",
+  "src": "apply"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 25,
+  "notes": "International undergraduate steps: online application with $25 fee (not waived for financial inability); official transcripts mailed to BHSU International Relations (first-time freshman GPA 2.6 on a 4.0 scale); English proficiency scores sent by the testing agency; passport copy; bank statement or letter showing funds for one academic year; I-20 request form. College Navigator lists the domestic application fee as $20 (2024-25). Admission also expects 4 years English, 3 math, 3 lab science, 3 social science and 1 fine arts with a 2.0 GPA. Essay and recommendations are not considered per IPEDS.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International application deadline, fall 2027 entry (students who need a visa)",
+   "notes": "International page prints 'Fall Enrollment: June 1' with no year (treated as fall 2027); spring enrollment is Nov. 1. The page says the deadline can be extended for applicants already in the U.S. who do not need a visa.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-01",
+   "label": "Scholarships of Distinction: apply for admission before Feb. 1 for full consideration",
+   "notes": "Merit awards of up to $4,000 per year for new first-time students; no separate application. Applicants after Feb. 1 are considered as funds allow. Year not printed; taken as 2027.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-01",
+   "label": "International Scholarship Application priority deadline (fall semester)",
+   "notes": "Priority deadline printed as 'Fall Semester - May 1' (spring semester Oct. 1); students must first be admitted and send final official transcripts. Year not printed; taken as 2027.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exceptions: the student attended secondary or post-secondary school in the U.S. for one academic year; the student is from a native English-speaking country (countries not listed); for some West African countries a WAEC English score above C4. Scores must be sent by the testing agency. Other accepted tests: SAT Evidence-Based Reading and Writing 480, GATEWAY 375, iTEP 3.6. No conditional admission or ESL pathway is described on the page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "src": "intl"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 8024,
+  "tuition_out_of_state_usd": 11292,
+  "tuition_intl_usd": 11292,
+  "required_fees_usd": 1203,
+  "intl_extra_fees_usd": 400,
+  "room_board_usd": 8438,
+  "books_usd": 1000,
+  "other_usd": 1422,
+  "total_coa_usd": 24227,
+  "notes": "Intl page, undergraduate 2026-27: tuition $376.40/credit x 30 = $11,292; general activity fees $1,203; international student fee $400 ($200/semester); discipline fees about $472 (not split out); standard double room $4,338 plus standard meal plan $4,100; health insurance $1,422 (shown in other_usd); books $1,000; total $24,227, excluding $2,000-$5,000 personal spending per semester. SD resident tuition $8,024 from the Tuition & Fees page; that page's financial-aid cost of attendance for a nonresident living on campus is $29,356 (includes miscellaneous and transportation).",
+  "src": "intl"
+ },
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "F-1 students are eligible for the Global Ambassador Scholarship (competitive, international-only; free on-campus housing for up to eight semesters, estimated at about $14,000 over four years; chosen on essay, GPA, test scores and activities) and for Scholarships of Distinction (up to $4,000 per year based on unweighted GPA and/or ACT/SAT). International students are not eligible for federal aid.",
+  "src": "intl"
+ },
+ "majors": [
+  {
+   "program": "Business Administration (AACSB-accredited; specializations incl. Accounting, Economics)",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Program page lists specializations including Accounting and Agribusiness/Ranch Management; economics is a specialization of the business degree.",
+   "src": "prog"
+  },
+  {
+   "program": "Biology (emphases: Environmental Biology; Cellular Biology & Physiology)",
+   "category": "biology_life_sci",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Program page describes the two emphases; no separate admission requirement is stated.",
+   "src": "bio"
+  },
+  {
+   "program": "Mathematics",
+   "category": "math_physics",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Program page mentions statistics, computer programming and financial mathematics courses.",
+   "src": "math"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages checked.",
+   "src": "apply"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages checked.",
+   "src": "apply"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the international page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,89 @@
+{
+  "slug": "xavier-louisiana",
+  "name": "Xavier University of Louisiana",
+  "short_name": "Xavier (LA)",
+  "state_region": "LA",
+  "city": "New Orleans",
+  "latitude": 29.964162,
+  "longitude": -90.107307,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.xula.edu/",
+  "admissions_url": "https://www.xula.edu/admissions/undergraduate-admission/firsttimefreshmen/index.html",
+  "ipeds_unit_id": 160904,
+  "undergrad_enrollment": 2579,
+  "intl_undergrads": 69,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Xavier University of Louisiana Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.xula.edu/opira/cds_2025-2026_pdf_xavier-university-of-louisiana_final-irdswebsite.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 enrollment, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=160904",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 11210,
+    "admits": 7561,
+    "enrolled": 844,
+    "in_state_applicants": 2525,
+    "in_state_admits": 1718,
+    "out_state_applicants": 8014,
+    "out_state_admits": 5767,
+    "intl_applicants": 671,
+    "intl_admits": 76,
+    "pct_submit_sat": 35.66,
+    "pct_submit_act": 44.31,
+    "gpa_avg": 3.57,
+    "pct_reporting_gpa": 99.29,
+    "gpa_distribution": {
+      "4.0": 19.69,
+      "3.75-3.99": 18.26,
+      "3.50-3.74": 20.53,
+      "3.25-3.49": 15.39,
+      "3.00-3.24": 13.48,
+      "2.50-2.99": 11.93,
+      "2.0-2.49": 0.72
+    },
+    "notes": "CDS C1 (fall 2025): 11,210 applied, 7,561 admitted, 844 enrolled. International first-year applicants were admitted at a much lower rate than domestic ones (671 applied, 76 admitted, 11 enrolled), so international admission is far more selective than the overall admit rate suggests. No waitlist, ED or EA. C7 factor checkboxes are unreadable in the PDF text, so factors are omitted. SAT ERW and ACT Math percentiles in C9 look inconsistent (ERW 550/580/580; ACT Math 75th = 23.75) and are not used. Undergraduate enrollment is CDS B1 total undergraduates (fall 2025, 2,579); intl_undergrads is the B1 nonresident count (69)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      950,
+      1040,
+      1150
+    ],
+    "SAT_MATH": [
+      460,
+      510,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "notes": "CDS G1 and G5 columns lost their headers in the PDF text, so CDS tuition, fee and housing figures are not copied here; see the cycle file for the 2026-27 tuition schedule."
+  }
+}

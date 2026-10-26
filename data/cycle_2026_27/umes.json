@@ -1,0 +1,157 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UMES - International undergraduate admission requirements",
+      "url": "https://www.umes.edu/admissions/international",
+      "accessed": "2026-10-26"
+    },
+    "manual": {
+      "kind": "admissions_site",
+      "title": "UMES International Admissions Manual (updated 2025-09-24, PDF)",
+      "url": "https://www.umes.edu/admissions/wp-content/uploads/sites/44/2026/09/International-Admissions-Manual.pdf",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UMES - First-year (freshman) admission requirements",
+      "url": "https://www.umes.edu/admissions/freshman",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "other",
+      "title": "UMES Schedule of Fees and Expenses 2026-2027 (PDF)",
+      "url": "https://www.umes.edu/comptroller/wp-content/uploads/sites/56/2026/06/FY26-27Tuitionand-Fees-Final.pdf",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UMES Financial Aid - Scholarships",
+      "url": "https://www.umes.edu/financialaid/scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "UMES is test-optional for first-year admission; SAT/ACT scores are considered when submitted. A 2.5 GPA is desired (lower GPAs may be considered through programs such as Summer Bridge). Required courses: 4 English, 4 math, 3 natural science, 3 social science. International applicants may submit SAT/ACT in place of an English test.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own",
+      "common_app"
+    ],
+    "app_fee_usd": 35,
+    "supplemental_essays": "Essay not required (personal statement optional).",
+    "notes": "Apply with the UMES Standard Application, the Common App or the Common Black College Application. Recommendation letters are optional. International applicants also need original secondary transcripts with an English-language credit evaluation, a passport copy, a Certificate of Finances with a bank statement (the manual states $33,500 per year must be verified, based on 2024-25 costs), and an Affidavit of Support. Non-refundable $100 enrollment deposit; $300 housing deposit.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-03-01",
+      "label": "International fall application deadline (fall 2027 entry)",
+      "notes": "International manual: F-1 applicants must apply by Mar. 1 (later applicants are moved to the next term), submit financial documents and I-20 requirements by Apr. 15 and pay the enrollment deposit by May 1; the page prints no year, so fall 2027 is assumed. The domestic first-year page lists a Nov. 15 priority date and a Feb. 15 fall deadline, which the manual says should not be used by F-1 applicants.",
+      "src": "manual"
+    },
+    {
+      "kind": "other",
+      "due": "2027-04-15",
+      "label": "Financial documents and I-20 requirements due (fall 2027)",
+      "notes": "From the international manual; year assumed.",
+      "src": "manual"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Last day to confirm enrollment with the $100 deposit (fall 2027)",
+      "notes": "From the international manual; year assumed.",
+      "src": "manual"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for native speakers educated in the US, UK, Canada (except Quebec and Nunavut), Ireland, Australia, New Zealand or the Commonwealth Caribbean, for listed countries (Botswana, The Gambia, Ghana, Liberia, Malawi, Mauritius, Namibia, Nigeria, Samoa, Sierra Leone, Solomon Islands, South Africa), for graduates of a US high school and for transfers from accredited US colleges. SAT/ACT scores are accepted in place of an English test. Non-native speakers without an accepted score must complete ESL course(s) during their first year at UMES. Scores must be within 24 months.",
+    "src": "manual"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 62,
+      "notes": "Internet-based. The web page and checklist say 62; an older instruction page in the same manual says 61. Applicants below the minimum are generally not considered unless they take ESL courses.",
+      "src": "manual"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 7.0,
+      "notes": "Printed as 'minimum score of 7' in the manual's English Proficiency Exam Policy; this looks high next to TOEFL 62, so confirm with admissions.",
+      "src": "manual"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "Printed as a range, 'minimum score of 110-120'; the lower value is recorded.",
+      "src": "manual"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 56,
+      "src": "manual"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The manual says financial aid is not available for international students; the international page says they may be eligible for merit scholarships based on academic profile. No amounts or criteria are published, and the scholarships page lists only outside sponsors for international students.",
+    "src": "intl"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Not printed on the pages read; look up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "Not printed on the pages read; look up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "Not printed on the pages read.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,177 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Bowie State - International admissions (deadlines, credentials, English proficiency, I-20 documents)",
+   "url": "https://www.bowiestate.edu/admissions-and-aid/international-admissions.php",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Bowie State - Freshman admissions (dates, test-optional, transcripts)",
+   "url": "https://www.bowiestate.edu/admissions-and-aid/undergraduate-admissions/freshman-admissions.php",
+   "accessed": "2026-10-26"
+  },
+  "topt": {
+   "kind": "admissions_site",
+   "title": "Bowie State - Test-optional admissions policy",
+   "url": "https://www.bowiestate.edu/admissions-and-aid/undergraduate-admissions/test-optional-policy.php",
+   "accessed": "2026-10-26"
+  },
+  "iss": {
+   "kind": "admissions_site",
+   "title": "Bowie State - International Student Services (admissions and arrival)",
+   "url": "https://www.bowiestate.edu/about/administration-and-governance/division-of-academic-affairs/international-student-services/",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "other",
+   "title": "Bowie State Student Accounts - Undergraduate tuition and fees, fall 2026 / spring 2027",
+   "url": "https://www.bowiestate.edu/about/administration-and-governance/division-of-enrollment-management/office-of-student-accounts/tuition-and-fees/undergraduate-tutition-and-fees/fall-spring-tuition-and-fees.php",
+   "accessed": "2026-10-26"
+  },
+  "housing": {
+   "kind": "other",
+   "title": "Bowie State Student Accounts - Housing and meal fees, fall 2026 - spring 2027",
+   "url": "https://www.bowiestate.edu/about/administration-and-governance/division-of-enrollment-management/office-of-student-accounts/tuition-and-fees/housing-and-meal-fees.php",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Bowie State - Scholarship opportunities",
+   "url": "https://www.bowiestate.edu/admissions-and-aid/financial-aid/types-of-financial-aid/scholarship-opportunities/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Applicants can be admitted without SAT or ACT scores if their high school GPA is 2.5 or higher, based on the transcript alone; GPA 2.50-2.99 with the USM college-readiness course core is placed in English and math by department criteria. Honors Program applicants must still submit test scores. CDS C8A also lists SAT/ACT as not required but considered if submitted.",
+  "src": "topt"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 40,
+  "notes": "The $40 fee comes from CDS C13 (waivable for applicants with financial need); the apply page only says application fees vary by program and applicant type. There is no separate international application: apply as a freshman and choose 'Student Visa' in the Citizenship section. International applicants submit a NACES credential evaluation of foreign records (certified English translations if needed) and, for the I-20, a bank statement showing at least $30,000 (plus $3,000 per dependent). Essays and recommendations are 'considered' per CDS C7, not required. Which application platforms are accepted besides Bowie State's own is not stated on the pages read.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "International applicants outside the U.S.: fall 2027 application deadline",
+   "notes": "From the International Admissions page (applies to graduate and undergraduate): apply by June 1; supporting documents are due by June 30. The page prints no year, so fall 2027 is assumed. The International Student Services page and the catalog instead give an earlier date of April 1 for fall, so apply by April 1 to be safe and confirm with ugradadmissions@bowiestate.edu. Spring entry: Nov 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-30",
+   "label": "International applicants: supporting documents due (fall 2027)",
+   "notes": "Applies if the application was submitted by June 1 (International Admissions page).",
+   "src": "intl"
+  },
+  {
+   "kind": "other",
+   "due": "2027-04-01",
+   "label": "Earlier international deadline stated on the International Student Services page",
+   "notes": "That page says applications and ALL supporting documents for international students are due April 1 for fall and Nov 1 for spring, which conflicts with the June 1 date on the International Admissions page.",
+   "src": "iss"
+  },
+  {
+   "kind": "priority",
+   "due": "2027-02-15",
+   "label": "Priority admission, fall 2027 (freshman page)",
+   "notes": "The freshman page lists Dec 1 early admission decision, Feb 15 priority and June 1 regular deadlines; the international page uses its own June 1 date. Years are not printed.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-15",
+   "label": "Private donor and merit scholarship application closes (2027-28 year)",
+   "notes": "The application opens Nov. 1 and closes Feb 15; the page does not say whether F-1 students are eligible.",
+   "src": "aid"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international students must submit English proficiency scores unless they graduated from a U.S. high school, are transferring after at least one year at an English-language U.S. college, or have English as native language or language of instruction (undergraduates: at least three years of education in a listed exempt country such as Canada except Quebec, the UK, Ireland, Australia, New Zealand, Nigeria, Ghana, Singapore). Even with a waiver or passing score, undergraduates may still have to take an English placement exam on arrival. Score reports must be sent directly by ETS.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 73,
+   "notes": "Undergraduate minimums: internet-based 73, computer-based 173, paper-based 500 (graduate minimum is 75 iBT). The page does not say which iBT scale; the 0-120 scale is assumed.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.0,
+   "notes": "Undergraduate minimum overall 5.0 (graduate 5.5).",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Undergraduate minimum 105 (graduate 115).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": null,
+  "notes": "No scholarship or aid page for international undergraduates was found, and the CDS H6 section on institutional aid for nonresidents is blank. The scholarships page lists private donor and departmental scholarships (nursing, computer science cybersecurity, education, band) open to new full-time students without saying whether F-1 students qualify. F-1 students are not eligible for the FAFSA (school code 002062 applies to U.S. aid applicants). Ask internationaloffice@bowiestate.edu or financial aid before relying on any award."
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "tuition",
+  "tuition_usd": 6672,
+  "tuition_out_of_state_usd": 17880,
+  "required_fees_usd": 3534,
+  "notes": "Fall 2026 / spring 2027 full-time undergraduate (12+ credits) annual tuition: in-state $6,672, out-of-state $17,880. Annual mandatory fees (same for both): athletic $1,250, intramural and recreation $64, health service $191, university construction $218, student center $1,250, student activity $221, technology $309, plus sustainability $2.50 and Bulldog Card $13 per semester (total $3,534). The page does not state that international students pay the out-of-state rate, so tuition_intl_usd is left null. Housing runs about $3,936 to $6,854 per semester depending on hall and meals $551 to $3,282 per semester, so room_board_usd is left null; the CDS G1 cost section is blank."
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the admissions pages (only the FAFSA school code 002062); look it up in the College Board code search.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the admissions pages; look it up at act.org.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The page says ETS must send the score report directly to Bowie State but prints no institution code.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

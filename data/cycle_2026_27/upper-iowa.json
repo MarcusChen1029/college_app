@@ -1,0 +1,169 @@
+{
+  "sources": {
+    "how": {
+      "kind": "admissions_site",
+      "title": "Upper Iowa University - International How to Apply (freshman steps, English proficiency, conditional admission)",
+      "url": "https://uiu.edu/admissions/international-admissions/international-how-to-apply/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Upper Iowa University - International Admissions (rolling admission, scholarships overview)",
+      "url": "https://uiu.edu/admissions/international-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "fay": {
+      "kind": "admissions_site",
+      "title": "Upper Iowa University - Fayette Campus Admissions (required documents, admissions factors for freshmen)",
+      "url": "https://uiu.edu/admissions/fayette-admissions/",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Upper Iowa University - Scholarships for International Students",
+      "url": "https://uiu.edu/admissions/international-admissions/international-scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "Upper Iowa University - Tuition and Costs (2026-27, Fayette campus)",
+      "url": "https://uiu.edu/admissions/tuition-and-costs/",
+      "accessed": "2026-10-26"
+    },
+    "progs": {
+      "kind": "other",
+      "title": "Upper Iowa University - Program Finder",
+      "url": "https://uiu.edu/academics/program-finder/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Fayette freshmen: ACT/SAT submission is optional for applicants with a cumulative high school GPA of 2.4 or higher on a 4.0 scale; below 2.4, ACT or SAT scores must be submitted. International applicants are asked for official secondary transcripts; the international page does not mention an SAT/ACT requirement (SAT/ACT sub-scores are only one way to show English proficiency).",
+    "src": "fay"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "UIU's own online application, free (about 15 minutes). International freshman steps: official secondary transcripts in English (or evaluated by WES, ECE or SpanTran; WAEC/WASSCE students may give scratch-card details), proof of English proficiency, passport copy, official bank statement showing funds for one full year (sent by the bank, no older than 6 months; affidavit of support if sponsored) and the non-refundable deposit (International Student Deposit $250 on the 2026-27 costs page). Fayette says it decides within two business days of a complete file. UIU may request additional documents or an interview.",
+    "src": "how"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission (fall 2027 entry)",
+      "notes": "No admission deadline for international students; UIU advises applying at least two months ahead to get a visa in time. The Fayette campus uses semesters, but the international page also says courses start every 8 weeks.",
+      "src": "intl"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Enrollment deposit refund cutoff",
+      "notes": "Fayette page: the $100 enrollment deposit is refundable through May 1 of the application year (December 31 for second-semester applicants). The international student deposit is a separate non-refundable $250.",
+      "src": "fay"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for students transferring from a US institution or educated in one of UIU's listed waiver countries (PDF list on the page). Test scores must be within the last two calendar years. Also accepted: MELAB 69, MUET 4.0, Cambridge O Level English D, IGCSE English D, HKCEE English (Syllabus B) D, HKALE English (AS) E, HKDSE 3, ELS 112, Oxford Online Placement Test 70, SAT critical reading sub-score 430 (institution code 6885), ACT English 18 (code 1360), TOEFL paper 500. Conditional admission: a student who meets all other requirements can be admitted if they complete UIU's Intensive English program (at least one semester level; no testing out) before academic classes.",
+    "src": "how"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Internet-based 61 or higher (paper-based 500). Institution code 6885. No minimum on the new 1-6 scale is printed.",
+      "src": "how"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "subs": {
+        "writing": 5.0
+      },
+      "notes": "Overall band 5.0 and writing band 5.0 or higher.",
+      "src": "how"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 83,
+      "src": "how"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "src": "how"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "International scholarships are automatic at admission, based on high school GPA, no separate application: Trustee (3.50-4.00) $4,000 per year, Presidential (3.00-3.49) $2,500, Dean's (2.50-2.99) $1,000, Achievement (2.00-2.49) $500. Transfer awards $500-$1,500 per year (a $5,500 Fayette transfer award needs 48 transferable credits). International students who get an athletic scholarship are not eligible. No international need-based aid was found; FAFSA aid is for US citizens and eligible non-citizens.",
+    "src": "schol"
+  },
+  "majors": [],
+  "cost": {
+    "year": "2026-2027",
+    "src": "cost",
+    "tuition_usd": 19180,
+    "tuition_out_of_state_usd": 19180,
+    "tuition_intl_usd": 19180,
+    "required_fees_usd": 1275,
+    "intl_extra_fees_usd": 250,
+    "room_board_usd": 9874,
+    "books_usd": null,
+    "total_coa_usd": null,
+    "notes": "Fayette campus, full-time 12-18 credits: tuition $9,590 per semester ($19,180 per year), student fees $637.50 per semester ($1,275). One-time International Student Orientation $250 (shown as extra fees). Room and board shown is a sum of published items, not a published total: Garbee Hall double room $4,034 per year plus Peacock Blue unlimited meal plan $5,840 per year (undergraduates living on campus must have a meal plan; the cheaper Peacock Basic plan is only for Lee Tower and Hofmaster residents). Other rooms run $4,766-$7,944 per year. Books are not priced. No separate international tuition rate is published. Heading on the costs page: 2026-27 tuition and fees."
+  },
+  "score_codes": {
+    "sat": {
+      "code": "6885",
+      "note": "SAT institution code given on the international how-to-apply page.",
+      "src": "how"
+    },
+    "act": {
+      "code": "1360",
+      "note": "ACT institution code given on the international how-to-apply page.",
+      "src": "how"
+    },
+    "toefl": {
+      "code": "6885",
+      "note": "TOEFL institution code given on the international how-to-apply page.",
+      "src": "how"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

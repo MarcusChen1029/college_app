@@ -1,0 +1,117 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "TSU - International Admissions (undergraduate requirements, deadlines)",
+      "url": "https://www.tsu.edu/admissions/international/index.php",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "TSU - Freshman Admissions",
+      "url": "https://www.tsu.edu/admissions/freshman.php",
+      "accessed": "2026-10-26"
+    },
+    "costs": {
+      "kind": "financial_aid_site",
+      "title": "TSU - College Costs (estimated cost for 2027-2028)",
+      "url": "https://www.tsu.edu/admissions/financial-aid/college-costs.php",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "TSU - Scholarships (competitive scholarship waiver)",
+      "url": "https://tsu.edu/admissions/financial-aid/types-of-aid/scholarships/index.php",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "financial_aid_site",
+      "title": "TSU Undergraduate Catalog - Types of Financial Aid and Assistance",
+      "url": "https://catalog.tsu.edu/undergraduate/financial-aid-assistance/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "The international undergraduate page lists official SAT or ACT results for freshmen: SAT 900 (Critical Reading and Math combined) or ACT 17 composite. The domestic freshman page says 'if required, see notice below' but the notice is not on the page, so test-optional status could not be confirmed.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 78,
+    "notes": "Apply through ApplyTexas (goapplytexas.org). The fee is $78 for international applicants ($42 for domestic freshmen). Freshman page: minimum 2.50 unweighted GPA, ACT 17 or SAT 900, official transcript, placement testing after admission. International applicants also send complete official records (with certified English translations and a course-by-course evaluation for foreign transcripts) and an affidavit of financial support showing $48,568 or more.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-07-15",
+      "label": "Fall application deadline - international new students",
+      "notes": "The page prints 'Fall - July 15' with no year; taken as fall 2027. Spring is Oct 31. Students already in the U.S. who are transferring have earlier dates (Fall June 15).",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if the applicant graduated from a U.S. accredited high school, English is the native language, or the applicant holds a degree from or is transferring from a U.S. accredited college; the page also lists exempt countries. No conditional admission or ESL pathway program is described on the page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "Page also lists 500 paper-based and 173 computer-based; no new 1-6 scale value is given.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.0,
+      "notes": "Overall.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2027-2028",
+    "tuition_usd": 9174,
+    "tuition_out_of_state_usd": 21416,
+    "books_usd": 1654,
+    "room_board_usd": 19470,
+    "total_coa_usd": 48568,
+    "notes": "TSU 'estimated cost for the 2027-2028 academic year', on-campus out-of-state column: tuition and fees $21,416, living expenses $19,470, books $1,654, personal $3,222, transportation $2,806 = $48,568 (the same amount international applicants must show). In-state tuition and fees $9,174; in-state living expenses $15,064. TSU does not publish a separate international tuition rate on this page.",
+    "src": "costs"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": null,
+    "notes": "No scholarship specifically for international students was found. Under Texas Education Code 54.213, a non-resident or international student who wins a competitive university scholarship of at least $1,000 can pay the resident tuition rate (must be requested each semester). The catalog says international students seeking a first bachelor's degree cannot get Pell Grants, Federal Work-Study or Federal Direct Loans.",
+    "src": "sch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "6824",
+      "src": "fresh"
+    },
+    "act": {
+      "code": "4216",
+      "src": "fresh"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

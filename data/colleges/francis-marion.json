@@ -1,0 +1,77 @@
+{
+  "slug": "francis-marion",
+  "name": "Francis Marion University",
+  "short_name": "Francis Marion",
+  "state_region": "SC",
+  "city": "Florence",
+  "latitude": 34.189777,
+  "longitude": -79.652854,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.fmarion.edu",
+  "admissions_url": "https://www.fmarion.edu/admissions/",
+  "ipeds_unit_id": 218061,
+  "undergrad_enrollment": 3692,
+  "intl_undergrads": 86,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=218061",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=218061",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 3489,
+    "admits": 2869,
+    "enrolled": 632,
+    "pct_submit_sat": 19,
+    "pct_submit_act": 15,
+    "notes": "Baseline from IPEDS (fall 2023 entering class): 3,489 applied, 2,869 admitted, 632 enrolled. No Common Data Set could be found on fmarion.edu (the institutional research pages link none), so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 3,616 applicants, 86% admitted and 22% of those enrolled (rounded percentages), SAT EBRW 450/510/575, SAT Math 420/480/540, ACT composite 16/20/24, 3,692 undergraduates (used for enrollment here), student-to-faculty ratio 13 to 1. Test optional; 16% of fall 2024 enrollees submitted SAT and 11% ACT."
+  },
+  "scores": {
+    "SAT_ERW": [
+      470,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      430,
+      500,
+      548
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      23
+    ],
+    "ACT_ENGLISH": [
+      16,
+      19,
+      22
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "College Navigator (fall 2024): SAT/ACT 'not required, but considered'."
+  }
+}

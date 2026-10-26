@@ -1,0 +1,121 @@
+{
+ "sources": {
+  "apply": {
+   "kind": "admissions_site",
+   "title": "IU East - How to apply (priority dates, documents)",
+   "url": "https://east.iu.edu/admissions/apply/index.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "IU East - How to apply as an international student (fee, records, English proficiency)",
+   "url": "https://east.iu.edu/admissions/apply/international-students/index.html",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "IU East - Admission requirements",
+   "url": "https://east.iu.edu/admissions/apply/requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "topt": {
+   "kind": "admissions_site",
+   "title": "IU East - Test optional admission",
+   "url": "https://east.iu.edu/admissions/apply/test-optional.html",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "Indiana University 2025-27 approved tuition, program and mandatory fee rates",
+   "url": "https://finance.iu.edu/doc/2025-2027-tuition-and-fee-schedule-approved.pdf",
+   "accessed": "2026-10-26"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "IU East - Financial aid steps for international students",
+   "url": "https://east.iu.edu/cost-aid/financial-aid/apply/steps/international-students.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional since the 2021 terms: applicants choose on the application whether IU East considers SAT/ACT scores. The School of Education requires a test score, and IU East's merit-based scholarships require submitted scores.",
+  "src": "topt"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 65,
+  "notes": "Apply IU application (select IU East as home campus); the international page states a $65 non-refundable fee. Holistic review of diploma type (Indiana Academic Honors or Core 40 expected, comparable credits for other systems), GPA, class rank (upper half) and test scores if submitted; conditional admission may be available to those below the criteria. International applicants submit official academic records sent directly by the issuing school, with certified English translations; private credential evaluations (ECE, WES) do not replace official transcripts. The pages reviewed look partly dated (banner from 2020).",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "scholarship",
+   "plan": "ROLLING",
+   "due": "2027-03-01",
+   "label": "Early-application scholarship date, fall",
+   "notes": "Printed as an early application scholarship date of March 1 with no year; taken as fall 2027 entry.",
+   "src": "apply"
+  },
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "Application priority date, fall 2027 entry",
+   "notes": "Printed as 'May 1 - Application priority date for Fall Semester' with no year; taken as fall 2027. Spring priority date is October 1. Applications are reviewed daily and the page says an update comes within 48 hours of a complete file. No separate international deadline is printed.",
+   "src": "apply"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for citizens of, or those with three full years of secondary school in, the listed approved English-speaking countries (e.g. Australia, Canada, UK, Singapore, Hong Kong, Nigeria, Philippines), or with 26+ credit hours from a U.S. post-secondary institution including a 100-level English composition course. Alternatives to a language test: SAT EBRW 560 or ACT English 21; STEP Eiken Pre-First Grade for residents of Japan. No ESL or conditional pathway is described for international applicants.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "Printed as a 'provisional minimum of 79+' internet-based score (also 550 paper / 213 computer-based). The page does not list the new 1-6 TOEFL scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall 6.0 or higher.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Duolingo English Test 100+.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "merit_scholarships": null,
+  "notes": "International students are not eligible for U.S. federal aid or loans. IU East points them to IU East scholarships (use the 'Citizenship' filter) and external scholarships; no international scholarship amounts are published on the pages reviewed.",
+  "src": "intlaid"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 8424,
+  "tuition_out_of_state_usd": 23255,
+  "tuition_intl_usd": 23255,
+  "notes": "IU 2025-27 approved rates for IU East full-time undergraduates, 2026-27: resident tuition $7,716.78 + mandatory fee $707.34 = $8,424.12; nonresident tuition $22,547.78 + mandatory fee $707.34 = $23,255.12. International students are assumed to pay the nonresident rate; the pages do not say so explicitly. IU East has no campus housing (IPEDS), so room and board are not listed. Program differentials apply to some majors.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

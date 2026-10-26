@@ -1,0 +1,73 @@
+{
+  "slug": "west-virginia-state",
+  "name": "West Virginia State University",
+  "short_name": "WVSU",
+  "state_region": "WV",
+  "city": "Institute",
+  "latitude": 38.380541,
+  "longitude": -81.765034,
+  "setting": "suburban",
+  "control": "public",
+  "website": "https://wvstateu.edu/",
+  "admissions_url": "https://wvstateu.edu/admissions/",
+  "ipeds_unit_id": 237899,
+  "undergrad_enrollment": 3110,
+  "intl_undergrads": 4,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS / College Navigator - West Virginia State University (fall 2024 admissions, test scores, enrollment, 2024-25 costs)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=237899",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_api": {
+      "kind": "other",
+      "title": "NCES IPEDS fall 2024 admissions and fall enrollment counts (Urban Institute Education Data Portal)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=237899",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 6163,
+    "admits": 5914,
+    "enrolled": 326,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 2,
+    "notes": "Baseline from IPEDS fall 2024 (exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal; nonresident-alien undergraduates from NCES IPEDS fall 2024 enrollment by race (same portal)). No Common Data Set could be found online, so international applicants/admits, GPA and admission factors are not included. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 6 students, ACT 6 students), so they rest on very few students. Undergraduate enrollment 3,110 and 4 nonresident-alien undergraduates are IPEDS fall 2024; College Navigator prints the student-to-faculty ratio as 13 to 1."
+  },
+  "scores": {
+    "SAT_ERW": [
+      410,
+      510,
+      550
+    ],
+    "SAT_MATH": [
+      350,
+      420,
+      490
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      18,
+      20
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 9570,
+    "tuition_out_of_state_usd": 14990,
+    "books_usd": 1206,
+    "room_board_usd": 13522,
+    "other_usd": 3761,
+    "total_coa_usd": 28059,
+    "notes": "College Navigator 2024-25: tuition includes required fees; total is the on-campus cost of attendance for West Virginia residents ($33,479 at the out-of-state rate)."
+  }
+}

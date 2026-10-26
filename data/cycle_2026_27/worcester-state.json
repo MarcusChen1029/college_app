@@ -1,0 +1,160 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Worcester State University - International Applicants (undergraduate process, English tests, scholarships)",
+      "url": "https://www.worcester.edu/admissions-aid/international-applicants/",
+      "accessed": "2026-10-26"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Worcester State University - Apply (undergraduate application deadlines)",
+      "url": "https://www.worcester.edu/admissions-aid/apply/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Worcester State University Undergraduate Catalog - International Applicants",
+      "url": "https://catalog.worcester.edu/undergraduate/admissions/international-applicants/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test-optional: SAT/ACT are not required and international applicants may opt in to the test-optional policy; the catalog recommends submitting a personal essay to support the application. CDS C8: not required for admission, but considered if submitted.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Common App or the Worcester State Application. International documents: official secondary transcript or national exam results with a professional credential evaluation, English test if applicable, original bank letter or notarized financial affidavit (currently at least $34,900 for one year, subject to change) and a passport copy; minimum 2.0 cumulative GPA, and meeting minimums does not guarantee admission. Nursing (BSN) and Occupational Studies are selective majors with firm deadlines.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Early Action (first-year, fall 2027 entry)",
+      "notes": "Listed as 'Early Action (First-Years Only)' in the deadlines table; the page does not say whether international applicants can use it. The page prints no year, so it is taken as the current cycle.",
+      "src": "apply"
+    },
+    {
+      "kind": "priority",
+      "due": "2027-01-15",
+      "label": "Nursing (BSN) and Occupational Studies fall deadline",
+      "notes": "The catalog gives January 15 for Fall-only Nursing (BSN) and Occupational Studies applicants instead of April 1; no year printed, taken as fall 2027.",
+      "src": "cat"
+    },
+    {
+      "kind": "priority",
+      "plan": "RD",
+      "due": "2027-03-01",
+      "label": "Regular Decision priority date (domestic first-year, fall)",
+      "notes": "Domestic first-year priority date in the deadlines table; international students use the April 1 date below. CDS C13 lists rolling admission starting Nov 1 and a May 1 application closing date.",
+      "src": "apply"
+    },
+    {
+      "kind": "priority",
+      "due": "2027-04-01",
+      "label": "International students: fall priority deadline",
+      "notes": "Deadlines table: 'International Students - Fall entrance priority deadline April 1'; the catalog says all documents must be submitted before April 1 for fall. Spring (Nov 15) is open to international applicants only in limited cases listed in the catalog. No year printed, taken as fall 2027.",
+      "src": "apply"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Admissions deposit (needed before an I-20 is issued)",
+      "notes": "Catalog: Worcester State will not issue a Form I-20 until the admissions deposit is paid; the fall deposit deadline is May 1 with no exceptions.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required for applicants whose native language is not English or who studied in a country where English is not the native language. Applicants with an Associate of Arts or Science degree from a regionally accredited U.S. college are not required to submit a test.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Minimum for exams taken before Jan 21, 2026 (international applicants page and catalog agree).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Minimum for exams taken after Jan 21, 2026; the page prints '4' without naming the scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "The International Applicants page says 6.5; the catalog table says 6.0 for the same test. The stricter 6.5 is recorded; confirm with admissions.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "Undergraduate minimum on both the page and the catalog.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International students are automatically considered for a merit scholarship of up to $18,000 USD ($2,250 per semester for up to eight semesters); renewal needs a 2.5 GPA, full-time enrollment and out-of-state classification. The page says there are no need-based scholarships or financial aid for international students. CDS H lists 44 nonresident undergraduates with institutional aid (average $4,168); the CDS text still says $15,000, so the newer website figure is used.",
+    "src": "intl"
+  },
+  "majors": [
+    {
+      "program": "Nursing (BSN Track I)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "internal_transfer": "not_possible",
+      "notes": "Selective major with rigorous criteria and a firm January 15 deadline; meeting the minimums does not guarantee admission, and current students cannot change their major to Nursing (BSN Track I)."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": "3524",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1914",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "3524",
+      "note": "The page gives Worcester State code 3524 for the English test score reports (TOEFL, IELTS, PTE, DAAD, EIKEN, Duolingo, iTEP).",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

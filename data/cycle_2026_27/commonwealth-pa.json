@@ -1,0 +1,200 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Commonwealth University - International Students (how to apply, deadlines, English proficiency)",
+   "url": "https://www.commonwealthu.edu/admissions/how-to-apply/international-students",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Commonwealth University - First Year Admissions",
+   "url": "https://www.commonwealthu.edu/admissions/how-to-apply/first-year-college-students",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Commonwealth University - How to Apply (priority deadlines for selective programs)",
+   "url": "https://www.commonwealthu.edu/admissions/how-to-apply",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Commonwealth University - Out-of-State and International Scholarships",
+   "url": "https://www.commonwealthu.edu/cost-and-aid/scholarships/out-of-state",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Commonwealth University - Tuition, Cost & Ways to Pay",
+   "url": "https://www.commonwealthu.edu/cost-and-aid/tuition-cost-ways-pay",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "Commonwealth University - Undergraduate programs",
+   "url": "https://www.commonwealthu.edu/academics/programs",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional for 2027-28; applicants who submit a high school transcript receive full consideration for admission and scholarships. Some programs set their own requirements (e.g. SAT 1200+/ACT 25 to be considered for the accelerated 3+2 Physician Assistant interview, TEAS 65+ for Lock Haven ASN nursing, music audition). For international applicants an SAT of 980 (EBRW 500+) or ACT 20 can also satisfy English proficiency.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "notes": "Apply with the university's own online application (one application can name one, two or all three campuses). $35 non-refundable fee, paid by credit card at submission. International first-years send official English-translated secondary records and certificates (unofficial copies may be uploaded first); the university may ask for a credential evaluation (WES, IERF, ECE or The Evaluation Company). The pages checked do not state essay or recommendation requirements.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "International first-year application deadline, fall 2027 entry",
+   "notes": "International page prints 'Fall Semester: June 1st' with no year (treated as fall 2027 entry). Spring semester is Nov. 1. Domestic applicants: most programs are rolling with no closing date (CDS C14).",
+   "src": "intl"
+  },
+  {
+   "kind": "priority",
+   "due": "2026-11-15",
+   "label": "Priority deadline for selective programs (nursing, accelerated health science, medical imaging)",
+   "notes": "Nov. 15 priority consideration for Nursing (BSN at Bloomsburg and Mansfield, ASN at Lock Haven), accelerated 3+2 PA and 3+3 PT, Medical Imaging; Music (BS/BM) is Dec. 15. Year not printed; taken as the 2027-28 cycle.",
+   "src": "apply"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-05-01",
+   "label": "International merit scholarship: complete application and pay deposit by May 1",
+   "notes": "Scholarship page: international students must complete their application and pay the deposit by May 1 of the senior year (year not printed; taken as 2027). Funding is limited and first come, first served.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required for applicants from: American Samoa, Australia, Bahamas, Barbados, Belize, Canada (except Quebec), Dominica, Grenada, Grand Cayman, Ghana, Guyana, Ireland, Jamaica, Liberia, New Zealand, South Africa, Trinidad & Tobago, UK (England, N. Ireland, Scotland, Wales), U.S. Pacific Trust. Students with more than one semester of for-credit study at a U.S. institution may be exempt. Scores must come directly from the testing body. No conditional admission or ESL pathway program is described on the page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 70,
+   "notes": "Internet-based 70; page also lists 197 computer-based, 525 paper-based and TOEFL Essentials 8-9.5.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "Page lists '4 (new internet-based)' without naming the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 46,
+   "notes": "Pearson PTE Academic.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 160,
+   "notes": "Cambridge English score of 160 or higher (First B2, Advanced C1, Proficiency).",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Scholarship page: GPA-based merit scholarships for international first-years who apply and pay the deposit by May 1; the page says award amounts will be finalized once the institutional aid budget is approved, so no amounts are given here. CDS H6 instead marks need-based (not non-need-based) institutional aid for nonresidents, with 31 recipients averaging $10,413. International students are not eligible for federal aid.",
+  "src": "schol"
+ },
+ "majors": [
+  {
+   "program": "Nursing, BSN (Bloomsburg, Mansfield)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "capped": true,
+   "notes": "Selective with Nov. 15 priority consideration; extra requirements apply (the page does not detail them for BSN)."
+  },
+  {
+   "program": "Business Administration (B.S.B.A.) and Accounting",
+   "category": "business",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Listed on the programs page; no separate admission requirement is stated."
+  },
+  {
+   "program": "Computer Science / Applied Computer Science (B.S.)",
+   "category": "computer_science",
+   "admit_model": "direct_major",
+   "capped": false,
+   "notes": "Listed on the programs page; no separate admission requirement is stated."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the admissions pages checked.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the admissions pages checked.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "2646",
+   "note": "Listed as 'DI Code: 2646' on the international page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {
+  "nursing": "D: a selective BSN program on two campuses with its own priority round, but a regional program rather than a nationally ranked one (no ranking evidence for C). Editorial judgment."
+ }
+}

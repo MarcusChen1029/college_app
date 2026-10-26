@@ -1,0 +1,89 @@
+{
+  "slug": "ut-chattanooga",
+  "name": "The University of Tennessee at Chattanooga",
+  "short_name": "UTC",
+  "state_region": "TN",
+  "city": "Chattanooga",
+  "latitude": 35.047519,
+  "longitude": -85.300247,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.utc.edu/",
+  "admissions_url": "https://www.utc.edu/enrollment-management-and-student-affairs/admissions",
+  "ipeds_unit_id": 221740,
+  "undergrad_enrollment": 10202,
+  "intl_undergrads": 61,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=221740",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=221740&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=221740",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 10494,
+    "admits": 8510,
+    "enrolled": 2489,
+    "pct_submit_sat": 7,
+    "pct_submit_act": 94,
+    "notes": "Baseline from IPEDS fall 2024 (admit rate 81.1%). UTC's Common Data Set PDFs sit on utc.edu, which could not be fetched from this environment (certificate error on every attempt), so no international split, GPA or residency data. Test scores from College Navigator cover enrolled first-time students (ACT 2,328, 94%; SAT 163, 7%). College Navigator shows 0% of first-time students from foreign countries and 1% U.S. nonresidents. International applicant counts are not published."
+  },
+  "scores": {
+    "SAT_ERW": [
+      513,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      540,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ],
+    "ACT_ENGLISH": [
+      20,
+      23,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      21,
+      25
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 10448,
+    "tuition_out_of_state_usd": 18512,
+    "room_board_usd": 12604,
+    "books_usd": 1400,
+    "other_usd": 4100,
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $10,448, out-of-state $18,512; books $1,400; on-campus food and housing $12,604; other expenses $4,100. UTC's international cost page lists full-time tuition and fees of $28,134 per year, living expenses $16,632 and a total of $47,022, but does not label the academic year, so those are not stored as structured figures."
+  }
+}

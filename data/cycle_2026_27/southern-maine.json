@@ -1,0 +1,172 @@
+{
+  "sources": {
+    "apply": {
+      "kind": "admissions_site",
+      "title": "University of Southern Maine - Undergraduate admission (deadlines, fees, test policy, requirements)",
+      "url": "https://usm.maine.edu/office-of-admissions/apply/undergraduate-admission/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "University of Southern Maine - International Programs: Application deadlines",
+      "url": "https://usm.maine.edu/office-international-programs/application-deadlines/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "University of Southern Maine - English language requirements",
+      "url": "https://usm.maine.edu/office-international-programs/english-language-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "aid": {
+      "kind": "financial_aid_site",
+      "title": "University of Southern Maine - International undergraduate scholarships",
+      "url": "https://usm.maine.edu/office-international-programs/undergraduate-scholarships/",
+      "accessed": "2026-10-26"
+    },
+    "budget": {
+      "kind": "admissions_site",
+      "title": "University of Southern Maine - 2026-2027 estimated annual expenses for international students",
+      "url": "https://usm.maine.edu/office-international-programs/international-student-budgets/",
+      "accessed": "2026-10-26"
+    },
+    "process": {
+      "kind": "admissions_site",
+      "title": "University of Southern Maine - International admission application process",
+      "url": "https://usm.maine.edu/office-international-programs/applying-for-international-admission/",
+      "accessed": "2026-10-26"
+    },
+    "majors": {
+      "kind": "other",
+      "title": "University of Southern Maine Academic Catalog - Majors",
+      "url": "https://catalog.usm.maine.edu/content.php?catoid=19&navoid=1058",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "Page says SAT and ACT scores do not influence the admission decision and are not required; scores may be submitted but are not used.",
+    "src": "apply"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "counselor_rec": true,
+    "notes": "Common Application or the University of Maine System application. The $50 application fee applies to international applicants only (free for US and Canadian applicants). International first-year applicants submit official secondary transcripts with certified English translations, financial documentation, and a school counselor statement and/or recommendation letter; a personal essay is recommended. Admission is based primarily on academic background, course rigor and grades. BS in Nursing first-year applications are due Feb 1 and nursing is admitted for fall only.",
+    "src": "apply"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-12-01",
+      "label": "Early action application deadline",
+      "notes": "Supporting materials due Dec 15; admission decision guaranteed by Jan 15 if both are met. Dates print no year; taken as the fall 2027 entry cycle.",
+      "src": "apply"
+    },
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-02-01",
+      "label": "Priority deadline for academic scholarship consideration",
+      "notes": "Supporting materials due Feb 15. The international scholarship page says international applicants who apply by the stated deadline are automatically considered; the stated international deadline is June 1.",
+      "src": "apply"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-01",
+      "label": "International student application deadline - fall 2027 entry",
+      "notes": "USM admits on a rolling basis. Both the international programs page and the undergraduate admission page list June 1 for international fall applicants (the general final fall deadline is Aug 15). Spring entry deadline for international students is Oct 15. No year is printed; taken as fall 2027.",
+      "src": "intl"
+    },
+    {
+      "kind": "deposit",
+      "due": "2027-05-01",
+      "label": "Priority enrollment deposit deadline",
+      "src": "apply"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The English language requirements page lists minimum test scores only and states no waiver rules; confirm exemptions with the Office of Admissions. An Admissions Pathway Program (undergraduate only) accepts lower scores: TOEFL 60, IELTS 5.5-6.0, PTE 46, Duolingo 90. An Intensive ESOL program accepts TOEFL 45, IELTS 5.0, Duolingo 75.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Direct entry to undergraduate degree programs; internet-based and superscored. Pathway program minimum 60.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Direct entry. Pathway program 5.5-6.0.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Direct entry. Pathway program 90.",
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Direct entry. Pathway program 46.",
+      "src": "eng"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "budget",
+    "tuition_intl_usd": 29100,
+    "required_fees_usd": 3390,
+    "room_board_usd": 14000,
+    "books_usd": 1000,
+    "other_usd": 6000,
+    "total_coa_usd": 53490,
+    "notes": "International undergraduate budget for 2026-27 (Tuition Level 1; Level 2 $30,870 and Level 3 $32,580 depending on major; totals $53,490 / $55,260 / $56,970): tuition $29,100, academic fees $3,390, room and board $14,000, books $1,000, health insurance $3,000 and personal expenses $3,000 (shown together as other). In-state and out-of-state 2026-27 tuition were not found; College Navigator 2024-25 lists tuition and fees of $11,284 in-state and $27,944 out-of-state."
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "merit_scholarships": true,
+    "notes": "All international undergraduates who apply by the deadline are automatically considered for merit scholarships, awarded at admission by high school GPA and renewable for 4 years: USM Scholar (GPA 2.75-2.99) $7,000/year, Dirigo Scholar (3.0-3.49) $11,000/year, Presidential Scholar (3.5+) $11,000/year, plus a one-time $2,000 Presidential Recognition Award (3.5+). A $1,000/year housing scholarship is available to those who indicated interest in on-campus housing. The page lists only merit awards and no need-based aid for international students, so need-based aid is left unconfirmed. An Admissions Pathway Program and Intensive ESOL program are available for students below the direct-entry English scores.",
+    "src": "aid"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "3691",
+      "note": "CEEB code printed on the undergraduate admission page; scores are optional and not used in decisions.",
+      "src": "apply"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code printed on the admission page; look it up at act.org.",
+      "src": "apply"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,157 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Plymouth State - International Students (undergraduate)",
+   "url": "https://www.plymouth.edu/admissions/undergraduate/international-students",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Plymouth State - First-Year Students",
+   "url": "https://www.plymouth.edu/admissions/undergraduate/first-year-students",
+   "accessed": "2026-10-26"
+  },
+  "cat": {
+   "kind": "admissions_site",
+   "title": "Plymouth State Academic Catalog - Undergraduate Admissions",
+   "url": "https://coursecatalog.plymouth.edu/admissions/undergraduate/",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Plymouth State - Scholarships (undergraduate merit-based, fall 2027 and spring 2028 entry)",
+   "url": "https://www.plymouth.edu/admissions/financial-assistance/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "tf": {
+   "kind": "financial_aid_site",
+   "title": "Plymouth State Student Financial Services - Tuition & Fees (2026-27 estimated)",
+   "url": "https://www.plymouth.edu/student-financial-services/billing-information/tuition-fees",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "The undergraduate catalog says submitted standardized test scores are a voluntary submission of information the applicant wishes to share and are not an academic credential needed for admission. The international and first-year pages list no SAT/ACT requirement.",
+  "src": "cat"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Apply with the Common App or the Panther App. First-year file: official transcripts (final junior-year grades at minimum), an essay and one academic recommendation. International file adds notarized transcripts in English showing a 100-point or 4.0 GPA (otherwise a course evaluation, e.g. TEC), a passport copy, a US visa copy if already in the US and proof of English; after a conditional acceptance, an international financial certification form and notarized bank statements. The $50 fee is the College Navigator 2024-25 undergraduate fee; the admissions pages reviewed do not print it. Music and Theatre applicants must audition; pre-licensure Nursing needs a 3.0 overall and science GPA.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-04-01",
+   "label": "International application deadline (fall 2027 entry)",
+   "notes": "The international page prints 'Fall Semester: April 1' without a year; treated here as fall 2027 entry. Admission is rolling and the catalog calls April 1 the priority date. The spring semester international deadline is Nov. 1 (year not printed).",
+   "src": "intl"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "International student deposit deadline (fall 2027 entry)",
+   "notes": "Printed as 'Fall Semester: May 1' without a year. Priority housing deadline is 'mid-March' (no exact date printed).",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Students from countries where English is not the primary language must show proof of English proficiency; waivers are considered case by case. Applicants meeting the listed scores enter their degree program directly. The international page lists IELTS, TOEFL and Duolingo; the undergraduate catalog also lists PTE Academic and ELS level 112, with lower minimums (TOEFL 530 paper / 71 online, IELTS 5.5 with no band below 5.0, Duolingo 85). No conditional or ESL pathway program is described on the pages reviewed.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "Online (iBT) score 71; paper-based minimum 530. The page does not mention the new 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "subs": {
+    "each_section": 6.0
+   },
+   "notes": "Minimum 6.0 with no band less than 6.0 on the international page; the catalog lists 5.5 with no band below 5.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "International page minimum 100; the catalog lists 85.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "accepted",
+   "notes": "Listed only in the undergraduate catalog, as 'a minimum score of 46-51'; no single minimum is printed.",
+   "src": "cat"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 15444,
+  "tuition_out_of_state_usd": 26872,
+  "room_board_usd": 14008,
+  "notes": "Estimated 2026-27 direct-bill full-time tuition and mandatory fees: $15,444 NH resident, $26,872 out-of-state; room and meals $14,008 (double room, unlimited meal plan). Rates are not final until the June 2026 board meeting. The page lists no separate international rate; the scholarship table groups international students with out-of-state students.",
+  "src": "tf"
+ },
+ "aid": {
+  "merit_scholarships": true,
+  "notes": "Every admitted student is considered for GPA-based merit scholarships, assigned at the time of admission and renewable up to eight semesters. Fall 2027 entry (out-of-state/NEBHE/international, per year): 4.0+ Chancellor $16,000; 3.75-3.99 Presidential $15,000; 3.25-3.74 Deans $14,000; 2.75-3.24 Aspire $13,000; 2.50-2.74 Promise $9,000; 2.25-2.49 Achieve $5,000; below 2.24 Strive $3,000. Plus a $2,000 on-campus housing scholarship. Whether need-based aid exists for international students is not stated.",
+  "src": "sch"
+ },
+ "majors": [
+  {
+   "program": "Nursing (pre-licensure BSN)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Requires overall GPA 3.0 or higher, 3.0 or higher in high school science (biology and chemistry required), Algebra I, II and Geometry, and a strong application essay. Seat limits are not stated on the page."
+  },
+  {
+   "program": "Music and Theatre",
+   "category": "arts_design",
+   "admit_model": "direct_major",
+   "notes": "Applicants to the Music or Theatre programs must audition."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No numeric SAT code is printed on the admissions pages reviewed; look it up in the College Board code search. Scores are optional.",
+   "src": "cat"
+  },
+  "act": {
+   "code": null,
+   "note": "No numeric ACT code is printed on the admissions pages reviewed; look it up at act.org. Scores are optional.",
+   "src": "cat"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the international page; ask Admissions or check the ETS code search.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

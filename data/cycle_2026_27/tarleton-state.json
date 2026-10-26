@@ -1,0 +1,152 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Tarleton State - International applicants (requirements, English proficiency, deadlines)",
+   "url": "https://www.tarleton.edu/admissions/international-applicants/",
+   "accessed": "2026-10-26"
+  },
+  "ftic": {
+   "kind": "admissions_site",
+   "title": "Tarleton State - First-time-in-college admission requirements",
+   "url": "https://www.tarleton.edu/admissions/first-time-in-college-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "adm": {
+   "kind": "admissions_site",
+   "title": "Tarleton State - Undergraduate admissions (application deadlines)",
+   "url": "https://www.tarleton.edu/admissions/",
+   "accessed": "2026-10-26"
+  },
+  "gs": {
+   "kind": "financial_aid_site",
+   "title": "Tarleton State - President's Guaranteed Scholarship Program (freshman)",
+   "url": "https://www.tarleton.edu/scholarships/guaranteed-awards/freshman-guaranteed-scholarship/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT/CLT scores are not required for an admission decision; they are encouraged for scholarships or to fulfil the TSI requirement. First-time freshmen from a foreign high school are exempt from the Texas Uniform Admissions Policy and are reviewed individually (including GPA); scores can help individual review. Students at a U.S. high school on a visa follow the Texas public/private/out-of-state rank-and-curriculum rules.",
+  "src": "ftic"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 50,
+  "notes": "Online application, $50 non-refundable fee, official domestic transcript or an international transcript evaluation (NACES/AICE member, in English, must include GPA and GPA scale), proof of English proficiency. After admission: affidavit of financial support, bank letter or statement, and passport copy. Allow at least 60 days for document processing. Recommendation letters are not required but accepted.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-15",
+   "label": "International fall application deadline (fall 2027 entry)",
+   "notes": "Enforced international deadlines: Spring Nov. 1, Summer Mar. 15 (generally not accepted for undergraduates except Medical Laboratory Science majors), Fall June 15. Years are not printed; fall 2027 assumed. Domestic freshmen: fall Aug. 1 (CDS C14 also lists a Mar. 1 priority date).",
+   "src": "adm"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-02-15",
+   "label": "General scholarship application priority date (fall 2027 entry)",
+   "notes": "President's Guaranteed Scholarship Program: applying through the Tarleton General Scholarship application is required; later applications are considered as funding allows. The page does not state whether international students are eligible.",
+   "src": "gs"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Ghana, Nigeria, New Zealand, United Kingdom); 6 college hours of English incl. 3 of composition (C or better) at a U.S., Canadian (non-Quebec), British or Australian institution; SAT EBRW 550 or ACT English 21; two years at an accredited U.S. high school; a school letter verifying all secondary education was in English (reviewed by Admissions); or completion of Level 9 at The Language Company. Scores must be no more than 2 years old at the start of the term (TOEFL/IELTS valid 3 years, PTE/Duolingo 2 years per the footnote).",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 69,
+   "notes": "Internet-based TOEFL. The page also accepts TOEFL Essentials 7 and TOEFL ITP Plus for China 460.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Listed as '69 or 3.5 (effective 1/21/2026)'; the page does not name the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "The President's Guaranteed Scholarship (first-time freshmen in the top half of their high school class) pays $500 to $4,000 a year depending on rank and test scores, renewable up to 4 years; only students in the top 25% may qualify for an out-of-state tuition waiver. The page does not say whether international students are eligible, and no international-specific scholarship is published, so aid policy is left unset.",
+  "src": "gs"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "6817",
+   "note": "Tarleton SAT code per the international applicants page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "4204",
+   "note": "Tarleton ACT code per the international applicants page.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed; scores can be sent to admissions@tarleton.edu or downloaded on notification.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; send scores to admissions@tarleton.edu.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -276,71 +276,71 @@ Built from IPEDS HD2024 + ADM2023 + EF2023A (no API): four-year, public or priva
 | 148654 | University of Illinois Springfield | IL | public | 84 | 1090 | 90 | wave 5 |
 | 156620 | Eastern Kentucky University | KY | public | 78 | 1055 | 90 | wave 5 |
 | 190646 | CUNY Medgar Evers College | NY | public | 83 | 980 | 90 | wave 5 |
-| 154493 | Upper Iowa University | IA | private | 93 | 1050 | 88 | todo |
-| 159966 | Nicholls State University | LA | public | 96 | 1015 | 88 | todo |
-| 155681 | Pittsburg State University | KS | public | 88 | - | 87 | todo |
-| 200332 | North Dakota State University-Main Campus | ND | public | 96 | - | 87 | todo |
-| 214041 | Millersville University of Pennsylvania | PA | public | 89 | 1120 | 87 | todo |
-| 236230 | Pacific Lutheran University | WA | private | 81 | 1130 | 87 | todo |
-| 218061 | Francis Marion University | SC | public | 82 | 1030 | 86 | todo |
-| 218724 | Coastal Carolina University | SC | public | 80 | 1120 | 86 | todo |
-| 226091 | Lamar University | TX | public | 86 | 1030 | 85 | todo |
-| 126580 | University of Colorado Colorado Springs | CO | public | 97 | 1130 | 83 | todo |
-| 228529 | Tarleton State University | TX | public | 94 | 1060 | 81 | todo |
-| 237525 | Marshall University | WV | public | 96 | 1020 | 81 | todo |
-| 139366 | Columbus State University | GA | public | 99 | 950 | 80 | todo |
-| 161554 | University of Southern Maine | ME | public | 79 | 1120 | 80 | todo |
-| 185129 | New Jersey City University | NJ | public | 89 | - | 79 | todo |
-| 214166 | Mount Aloysius College | PA | private | 90 | 1030 | 79 | todo |
-| 225502 | University of Houston-Victoria | TX | public | 77 | 1090 | 79 | todo |
-| 162007 | Bowie State University | MD | public | 84 | 935 | 78 | todo |
-| 229063 | Texas Southern University | TX | public | 93 | 900 | 78 | todo |
-| 167987 | University of Massachusetts-Dartmouth | MA | public | 92 | 1150 | 76 | todo |
-| 482149 | Augusta University | GA | public | 89 | 1110 | 76 | todo |
-| 151324 | Indiana State University | IN | public | 92 | - | 75 | todo |
-| 377564 | University of Washington-Tacoma Campus | WA | public | 83 | - | 74 | todo |
-| 157386 | Morehead State University | KY | public | 82 | - | 72 | todo |
-| 160904 | Xavier University of Louisiana | LA | private | 74 | 1050 | 72 | todo |
-| 220613 | Lee University | TN | private | 72 | 1120 | 72 | todo |
-| 159382 | Louisiana State University-Alexandria | LA | public | 93 | 1010 | 71 | todo |
-| 186371 | Rutgers University-Camden | NJ | public | 78 | 1120 | 69 | todo |
-| 100724 | Alabama State University | AL | public | 96 | 966 | 68 | todo |
-| 218742 | University of South Carolina-Upstate | SC | public | 70 | 1060 | 68 | todo |
-| 217688 | Charleston Southern University | SC | private | 76 | 1060 | 67 | todo |
-| 193399 | University of Mount Saint Vincent | NY | private | 85 | 1110 | 66 | todo |
-| 198136 | Campbell University | NC | private | 94 | - | 66 | todo |
-| 227526 | Prairie View A & M University | TX | public | 75 | 940 | 66 | todo |
-| 151786 | Marian University | IN | private | 95 | - | 65 | todo |
-| 168430 | Worcester State University | MA | public | 90 | 1145 | 65 | todo |
-| 228431 | Stephen F Austin State University | TX | public | 88 | 1070 | 65 | todo |
-| 171146 | University of Michigan-Flint | MI | public | 69 | 1100 | 64 | todo |
-| 101587 | University of West Alabama | AL | public | 87 | 905 | 62 | todo |
-| 128106 | Colorado State University Pueblo | CO | public | 100 | 990 | 62 | todo |
-| 163338 | University of Maryland Eastern Shore | MD | public | 90 | - | 61 | todo |
-| 221740 | The University of Tennessee-Chattanooga | TN | public | 77 | 1080 | 61 | todo |
-| 108092 | University of Arkansas-Fort Smith | AR | public | 81 | - | 59 | todo |
-| 139311 | Clayton  State University | GA | public | 71 | 970 | 59 | todo |
-| 175856 | Jackson State University | MS | public | 91 | 960 | 59 | todo |
-| 207847 | Southeastern Oklahoma State University | OK | public | 80 | 1050 | 59 | todo |
-| 207865 | Southwestern Oklahoma State University | OK | public | 100 | - | 59 | todo |
-| 218964 | Winthrop University | SC | public | 75 | 1120 | 59 | todo |
-| 219259 | Northern State University | SD | public | 93 | - | 59 | todo |
-| 232566 | Longwood University | VA | public | 85 | 1110 | 59 | todo |
-| 201104 | Ashland University | OH | private | 81 | 1080 | 58 | todo |
-| 233277 | Radford University | VA | public | 91 | 1050 | 58 | todo |
-| 123554 | Saint Mary's College of California | CA | private | 89 | - | 56 | todo |
-| 151342 | Indiana University-South Bend | IN | public | 86 | 1070 | 56 | todo |
-| 198543 | Fayetteville State University | NC | public | 80 | 950 | 56 | todo |
-| 196015 | SUNY College of Technology at Canton | NY | public | 96 | - | 55 | todo |
-| 237899 | West Virginia State University | WV | public | 96 | 955 | 55 | todo |
-| 183080 | Plymouth State University | NH | public | 91 | - | 54 | todo |
-| 240189 | University of Wisconsin-Whitewater | WI | public | 83 | - | 54 | todo |
-| 142328 | Lewis-Clark State College | ID | public | 90 | - | 53 | todo |
-| 147828 | Olivet Nazarene University | IL | private | 67 | 1080 | 53 | todo |
-| 240471 | University of Wisconsin-River Falls | WI | public | 82 | - | 53 | todo |
-| 151388 | Indiana University-East | IN | public | 71 | 1130 | 52 | todo |
-| 459949 | Texas A&M University-San Antonio | TX | public | 92 | 950 | 52 | todo |
-| 139861 | Georgia College & State University | GA | public | 88 | 1150 | 51 | todo |
-| 156286 | Bellarmine University | KY | private | 94 | 1145 | 51 | todo |
-| 219046 | Black Hills State University | SD | public | 94 | - | 51 | todo |
-| 498562 | Commonwealth University of Pennsylvania | PA | public | 95 | 1090 | 50 | todo |
+| 154493 | Upper Iowa University | IA | private | 93 | 1050 | 88 | wave 6 |
+| 159966 | Nicholls State University | LA | public | 96 | 1015 | 88 | wave 6 |
+| 155681 | Pittsburg State University | KS | public | 88 | - | 87 | wave 6 |
+| 200332 | North Dakota State University-Main Campus | ND | public | 96 | - | 87 | wave 6 |
+| 214041 | Millersville University of Pennsylvania | PA | public | 89 | 1120 | 87 | wave 6 |
+| 236230 | Pacific Lutheran University | WA | private | 81 | 1130 | 87 | wave 6 |
+| 218061 | Francis Marion University | SC | public | 82 | 1030 | 86 | wave 6 |
+| 218724 | Coastal Carolina University | SC | public | 80 | 1120 | 86 | wave 6 |
+| 226091 | Lamar University | TX | public | 86 | 1030 | 85 | wave 6 |
+| 126580 | University of Colorado Colorado Springs | CO | public | 97 | 1130 | 83 | wave 6 |
+| 228529 | Tarleton State University | TX | public | 94 | 1060 | 81 | wave 6 |
+| 237525 | Marshall University | WV | public | 96 | 1020 | 81 | wave 6 |
+| 139366 | Columbus State University | GA | public | 99 | 950 | 80 | wave 6 |
+| 161554 | University of Southern Maine | ME | public | 79 | 1120 | 80 | wave 6 |
+| 185129 | New Jersey City University | NJ | public | 89 | - | 79 | skip: merged into Kean University (Jul 2026) |
+| 214166 | Mount Aloysius College | PA | private | 90 | 1030 | 79 | wave 6 |
+| 225502 | University of Houston-Victoria | TX | public | 77 | 1090 | 79 | wave 6 |
+| 162007 | Bowie State University | MD | public | 84 | 935 | 78 | wave 6 |
+| 229063 | Texas Southern University | TX | public | 93 | 900 | 78 | wave 6 |
+| 167987 | University of Massachusetts-Dartmouth | MA | public | 92 | 1150 | 76 | wave 6 |
+| 482149 | Augusta University | GA | public | 89 | 1110 | 76 | wave 6 |
+| 151324 | Indiana State University | IN | public | 92 | - | 75 | wave 6 |
+| 377564 | University of Washington-Tacoma Campus | WA | public | 83 | - | 74 | wave 6 |
+| 157386 | Morehead State University | KY | public | 82 | - | 72 | wave 6 |
+| 160904 | Xavier University of Louisiana | LA | private | 74 | 1050 | 72 | wave 6 |
+| 220613 | Lee University | TN | private | 72 | 1120 | 72 | wave 6 |
+| 159382 | Louisiana State University-Alexandria | LA | public | 93 | 1010 | 71 | wave 6 |
+| 186371 | Rutgers University-Camden | NJ | public | 78 | 1120 | 69 | wave 6 |
+| 100724 | Alabama State University | AL | public | 96 | 966 | 68 | wave 6 |
+| 218742 | University of South Carolina-Upstate | SC | public | 70 | 1060 | 68 | wave 6 |
+| 217688 | Charleston Southern University | SC | private | 76 | 1060 | 67 | wave 6 |
+| 193399 | University of Mount Saint Vincent | NY | private | 85 | 1110 | 66 | wave 6 |
+| 198136 | Campbell University | NC | private | 94 | - | 66 | wave 6 |
+| 227526 | Prairie View A & M University | TX | public | 75 | 940 | 66 | wave 6 |
+| 151786 | Marian University | IN | private | 95 | - | 65 | wave 6 |
+| 168430 | Worcester State University | MA | public | 90 | 1145 | 65 | wave 6 |
+| 228431 | Stephen F Austin State University | TX | public | 88 | 1070 | 65 | wave 6 |
+| 171146 | University of Michigan-Flint | MI | public | 69 | 1100 | 64 | wave 6 |
+| 101587 | University of West Alabama | AL | public | 87 | 905 | 62 | wave 6 |
+| 128106 | Colorado State University Pueblo | CO | public | 100 | 990 | 62 | wave 6 |
+| 163338 | University of Maryland Eastern Shore | MD | public | 90 | - | 61 | wave 6 |
+| 221740 | The University of Tennessee-Chattanooga | TN | public | 77 | 1080 | 61 | wave 6 |
+| 108092 | University of Arkansas-Fort Smith | AR | public | 81 | - | 59 | wave 6 |
+| 139311 | Clayton  State University | GA | public | 71 | 970 | 59 | wave 6 |
+| 175856 | Jackson State University | MS | public | 91 | 960 | 59 | wave 6 |
+| 207847 | Southeastern Oklahoma State University | OK | public | 80 | 1050 | 59 | wave 6 |
+| 207865 | Southwestern Oklahoma State University | OK | public | 100 | - | 59 | wave 6 |
+| 218964 | Winthrop University | SC | public | 75 | 1120 | 59 | wave 6 |
+| 219259 | Northern State University | SD | public | 93 | - | 59 | wave 6 |
+| 232566 | Longwood University | VA | public | 85 | 1110 | 59 | wave 6 |
+| 201104 | Ashland University | OH | private | 81 | 1080 | 58 | wave 6 |
+| 233277 | Radford University | VA | public | 91 | 1050 | 58 | wave 6 |
+| 123554 | Saint Mary's College of California | CA | private | 89 | - | 56 | wave 6 |
+| 151342 | Indiana University-South Bend | IN | public | 86 | 1070 | 56 | wave 6 |
+| 198543 | Fayetteville State University | NC | public | 80 | 950 | 56 | wave 6 |
+| 196015 | SUNY College of Technology at Canton | NY | public | 96 | - | 55 | wave 6 |
+| 237899 | West Virginia State University | WV | public | 96 | 955 | 55 | wave 6 |
+| 183080 | Plymouth State University | NH | public | 91 | - | 54 | wave 6 |
+| 240189 | University of Wisconsin-Whitewater | WI | public | 83 | - | 54 | wave 6 |
+| 142328 | Lewis-Clark State College | ID | public | 90 | - | 53 | wave 6 |
+| 147828 | Olivet Nazarene University | IL | private | 67 | 1080 | 53 | wave 6 |
+| 240471 | University of Wisconsin-River Falls | WI | public | 82 | - | 53 | wave 6 |
+| 151388 | Indiana University-East | IN | public | 71 | 1130 | 52 | wave 6 |
+| 459949 | Texas A&M University-San Antonio | TX | public | 92 | 950 | 52 | wave 6 |
+| 139861 | Georgia College & State University | GA | public | 88 | 1150 | 51 | wave 6 |
+| 156286 | Bellarmine University | KY | private | 94 | 1145 | 51 | wave 6 |
+| 219046 | Black Hills State University | SD | public | 94 | - | 51 | wave 6 |
+| 498562 | Commonwealth University of Pennsylvania | PA | public | 95 | 1090 | 50 | wave 6 |

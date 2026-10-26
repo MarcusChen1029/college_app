@@ -10,8 +10,8 @@ GPA average + band distribution, admit rates incl. ED/international), **ED/EA/RE
 test policy, application requirements, cost & international aid, how majors are admitted, and a
 **source URL for every fact**. 100 popular US colleges are loaded (the original 10 demo colleges plus 90 added
 2026-10-22: Ivies and other top privates, UCs and major flagships, popular privates, top liberal-arts colleges), plus
-40 high-admit "safety" colleges for a ~1100 SAT international applicant added 2026-10-26 (wave 1; candidate list with the
-remaining ~90 in `docs/superpowers/research/2026-10-26-safety-college-candidates.md`).
+316 high-admit "safety" colleges for a ~1100 SAT international applicant added 2026-10-26 in six waves (candidate list and
+per-college status in `docs/superpowers/research/2026-10-26-safety-college-candidates.md`).
 Plan: all US colleges next, then UK/CA/AU.
 
 ## Stack & services
@@ -106,14 +106,18 @@ fields, and put courses in a `"programs"` array (table `programs`, migration 001
 Loaded so far: Oxford, UCL, Edinburgh (3 courses each). Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
 
 ## Current status (2026-10-26)
-Safety waves 1 and 2 (40 colleges each) loaded insert-only; 183 institutions live (180 US + 3 UK). Wave 2 is mostly IPEDS
-baselines (Cal State, small publics and privates rarely post a current CDS); blank international undergrad counts were
-filled from IPEDS EF2023A. Watch for column mix-ups in deadline tables (Morgan State had domestic dates in place of the
-international Nov 15). How wave 1 was run, for the next wave:
-pick ~40 "todo" rows from the candidate list, 8 sonnet agents x 5 colleges with one shared brief (CDS read as text, never as
-images; firecrawl credits ran out, curl/WebFetch worked), a fresh agent spot-checks facts against sources, then
-`build_seed.py --insert-only --only ...` split per college and loaded through `execute_sql`. Map pins and `setting` come from
-IPEDS HD2024 (LOCALE 1x urban, 2x suburban, 3x/4x rural), not from the agents. Many of these publics admit internationals far
+Safety waves 1-6 (316 colleges) loaded insert-only; 419 institutions live (416 US + 3 UK). Both candidate pools are used up
+(pool 1 from College Scorecard, pool 2 from local IPEDS HD2024 + ADM2023 + EF2023A). Held: central-arkansas (uca.edu was
+unreachable, no sourced data). Skipped: NJCU (merged into Kean, July 2026) and mostly-online schools. Many later-wave schools
+are IPEDS baselines (no current CDS). Process, for the next wave: one shared brief, 3 colleges per sonnet agent (the harness
+caps concurrent subagents at 20; queue the rest), CDS read as text only (firecrawl credits and the Scorecard demo key ran out;
+curl/WebFetch/College Navigator worked). Then: map pins, `setting` and blank international undergrad counts from IPEDS
+(LOCALE 1x urban, 2x suburban, 3x/4x rural); missing or percentage-derived admit counts replaced with exact IPEDS ADM2023
+figures; computed deadlines removed; a fresh agent spot-checks 6 risky colleges (24 facts) against sources; then
+`build_seed.py --insert-only --only ...` split per college, loaded through `execute_sql` by haiku loaders, and a DB-side
+per-column fingerprint diff against the local data (loaders retype SQL and do make typos). Known recurring source traps:
+domestic deadlines filed as international (Morgan State, Fayetteville State, Coastal Carolina) and CDS PDFs whose columns
+must be read by position. Many of these publics admit internationals far
 less often than domestic applicants (CDS C1): Arkansas 12%, Oklahoma State 18%, W. Michigan 28%, UNM 29%, K-State 33%, Idaho 34%,
 CU Denver 34%, WVU 36%, UNT 41%, Iowa 42%. They stay in the list; `fit.ts` uses the international rate for international students.
 Baseline-only (IPEDS) in wave 1: george-mason, louisville, mississippi-state, portland-state, unlv, ut-arlington.

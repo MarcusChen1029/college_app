@@ -1,0 +1,89 @@
+{
+  "slug": "texas-southern",
+  "name": "Texas Southern University",
+  "short_name": "TSU",
+  "state_region": "TX",
+  "city": "Houston",
+  "latitude": 29.721046,
+  "longitude": -95.361113,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.tsu.edu/",
+  "admissions_url": "https://www.tsu.edu/admissions/",
+  "ipeds_unit_id": 229063,
+  "undergrad_enrollment": 6844,
+  "intl_undergrads": 78,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229063",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Texas Southern University (fall 2024 enrollment, 2024-25 cost)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229063",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229063",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 7867,
+    "admits": 7344,
+    "enrolled": 1657,
+    "pct_submit_sat": 48,
+    "pct_submit_act": 18,
+    "notes": "Baseline from IPEDS (fall 2023 entering class); exact counts. TSU does not appear to publish a Common Data Set (none found on tsu.edu), so GPA, residency and international applicant/admit counts are null. College Navigator for fall 2024 shows 9,391 applicants and 97% admitted (percentage only, no admit count)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      420,
+      470,
+      510
+    ],
+    "SAT_MATH": [
+      380,
+      430,
+      490
+    ],
+    "ACT_COMPOSITE": [
+      15,
+      17,
+      19
+    ],
+    "ACT_ENGLISH": [
+      13,
+      16,
+      19
+    ],
+    "ACT_MATH": [
+      15,
+      16,
+      17
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 9173,
+    "tuition_out_of_state_usd": 21473,
+    "books_usd": 1654,
+    "room_board_usd": 12800,
+    "other_usd": 6028,
+    "notes": "College Navigator (IPEDS 2024-25): tuition includes required fees; room and board is on-campus."
+  }
+}

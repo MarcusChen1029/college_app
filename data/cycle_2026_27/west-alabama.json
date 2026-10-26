@@ -1,0 +1,158 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UWA - Application Information for International Students",
+   "url": "https://www.uwa.edu/admissions/international-students/application-information/",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UWA - English Language Proficiency Evaluation & Appeals",
+   "url": "https://www.uwa.edu/admissions/international-students/english-proficiency-evaluation/",
+   "accessed": "2026-10-26"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "UWA - Admissions (undergraduate students)",
+   "url": "https://www.uwa.edu/admissions/undergraduate-students/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "financial_aid_site",
+   "title": "UWA - Tuition & Fees (2026-2027 undergraduate costs per semester)",
+   "url": "https://www.uwa.edu/tuition-expenses/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UWA - Scholarships (international student scholarships)",
+   "url": "https://www.uwa.edu/financial-aid/scholarships/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-time freshmen must meet ONE of: ACT 17, SAT 920, or 2.5 cumulative high school GPA, so scores are not strictly required; the page lists ACT/SAT scores as '(if applicable)'. No explicit test-optional statement was found. The international page lists ACT 19 / SAT 980 with the note '(Currently Waived)' and says applicants who cannot test at home take a placement test at UWA on arrival.",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "The $30 non-refundable fee is from the domestic undergraduate admissions page (waived during 'It's Free Application Week', Oct. 5-9; no year printed); the international page does not state a fee. International documents: passport valid 6+ months past term start, official high school transcript and diploma (certified translation if not English; a credential evaluation by a NACES or AICE member may be required), English proficiency score, English-language bank statements, sponsor Statement of Financial Support, immunization and medical forms. No minimum bank balance is listed. A $3,000 non-refundable deposit (applied to tuition and fees) is due within 10 business days of visa issuance. No minimum GPA is stated for international applicants.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "RD",
+   "due": "2027-06-01",
+   "label": "International fall application deadline (fall 2027 entry)",
+   "notes": "International page: documents due Fall Semester June 1, Spring Semester October 1, Summer Semester March 1. The page prints no year; treated as fall 2027. The domestic undergraduate page lists no application deadline.",
+   "src": "intl"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-04-15",
+   "label": "Trustee scholarship application deadline",
+   "notes": "Trustee Academic awards range from $2,000 to $12,000 per year (3.0 GPA to renew). April 15 is printed without a year; treated as 2027. Not available to international students attending through a partnership or memorandum of agreement. The international talent and exceptional-student awards list no deadline.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Two tiers: 'Admission' (full) and 'Admission with ESL' (meets the entrance requirement but ESL placement testing and ESL 102/103 coursework may be required after enrollment). Exemptions: secondary or higher degree from an accredited institution in a country where English is the official and primary language of education and government (India/Philippines case by case with a ministry letter); completion of a CEA-accredited English program; a Council of International Schools high school taught in English (ESL placement may still be required); a 'C' or better in Written English I and II at a regionally accredited US institution; undergraduates with high SAT/ACT EBRW scores may petition (no threshold printed). Also accepted: LanguageCert Academic (70 admission / 60 ESL) and TOEIC (770 / 700-769, only under a university agreement). An appeal route exists for scores below the ESL tier (department letter plus support plan, 60 days before the first term).",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "61-89 = Admission with ESL; 90 = full Admission without ESL.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "3.5 = Admission with ESL (matches old 61-89); 4.5 = full Admission (old 90). The page labels these as 2026 scoring.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.0,
+   "subs": {
+    "each_section": 5.0
+   },
+   "notes": "5.0-6.0 (5.0 minimum on each subscore) = Admission with ESL; 6.5 (6.0 minimum on subscores) = full Admission.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 90,
+   "notes": "90 = Admission with ESL; 110 = full Admission.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 42,
+   "notes": "42-60 = Admission with ESL; 61 = full Admission.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International Talent Scholarship covers in-state tuition plus $100 (about $4,650 per term; 3.0 GPA on transcripts when applying, must live on campus and keep a 3.0 GPA). Exceptional International Student Scholarship is $1,000 per semester for the first two semesters (new students, live on campus, not renewable). Trustee academic awards ($2,000-$12,000 per year) may be open to international students not attending through a partnership agreement. 2026-27 undergraduate costs per 15-credit semester: international tuition $9,750, housing $2,000-$3,600, meal plan $1,752-$2,176, Tiger One fee $1,845 (includes international and student insurance); page total estimate $15,729.50-$17,753.50 per semester.",
+  "src": "schol"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "ug"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "ug"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

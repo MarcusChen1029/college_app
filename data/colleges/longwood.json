@@ -1,0 +1,69 @@
+{
+  "slug": "longwood",
+  "name": "Longwood University",
+  "short_name": "Longwood",
+  "state_region": "VA",
+  "city": "Farmville",
+  "latitude": 37.297975,
+  "longitude": -78.396987,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.longwood.edu",
+  "admissions_url": "https://www.longwood.edu/admissions/international-students/",
+  "ipeds_unit_id": 232566,
+  "undergrad_enrollment": 3314,
+  "intl_undergrads": 59,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Longwood University (fall 2024 enrollment, 2024-25 student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=232566",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=232566",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds_adm",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 6078,
+    "admits": 5154,
+    "enrolled": 793,
+    "pct_submit_sat": 31,
+    "pct_submit_act": 3,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023); Longwood's Common Data Set page lists files only through 2019-2020, so no recent CDS was read. College Navigator also shows fall 2024: 5,391 applicants, 90% admitted (exact admit count not given), SAT EBRW 530/580/630 and Math 500/540/580 for 205 submitters (25%). Longwood's admission-requirements page prints 'accepted students at a glance' (undated): mid-range GPA 3.35-4.02, SAT 1040-1230, ACT 21-27. ACT percentiles are not listed because only 23 enrolled students (3%) submitted ACT in fall 2023. International applicant and admit counts, GPA distribution and SAT total are not available from IPEDS."
+  },
+  "scores": {
+    "SAT_ERW": [
+      520,
+      570,
+      620
+    ],
+    "SAT_MATH": [
+      500,
+      540,
+      570
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "Longwood's admission-requirements page: test-optional for fall 2027 for all majors except nursing, which requires scores."
+  }
+}

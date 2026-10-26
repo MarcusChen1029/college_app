@@ -1,0 +1,143 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UM-Flint - First-Year Student Admissions",
+   "url": "https://www.umflint.edu/admissions/first-year-students/",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "UM-Flint - International Admissions (important dates)",
+   "url": "https://www.umflint.edu/admissions/international-students/",
+   "accessed": "2026-10-26"
+  },
+  "fyi": {
+   "kind": "admissions_site",
+   "title": "UM-Flint - First-Year International Student Admissions",
+   "url": "https://www.umflint.edu/admissions/international-students/first-year-international-students/",
+   "accessed": "2026-10-26"
+  },
+  "merit": {
+   "kind": "financial_aid_site",
+   "title": "UM-Flint - First-Year Merit Scholarships",
+   "url": "https://www.umflint.edu/admissions/paying-for-college/first-year-merit-scholarship/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "admissions_site",
+   "title": "UM-Flint Center for Global Engagement - International Tuition & Fees",
+   "url": "https://www.umflint.edu/cge/student-resources/tuition-fees/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: SAT/ACT are not required for admission and are used only to qualify for higher merit scholarships (never to lower an offer or change the decision). Applicants without scores can still get a First-Year Opportunity Scholarship based on GPA. The pages read were captured by the Internet Archive (June 2026 for the first-year page) because umflint.edu blocks automated requests.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "The first-year page calls the online application free (it can also be submitted through the Common App); CDS C13 shows a $30 fee with online applications free. International first-year applicants upload attested transcripts, proof of English, a passport copy and an affidavit of financial support (needed for the I-20) through iStart Services; the page says a response comes 2 to 4 weeks after the application and documents. The TOEFL institution code is 1853.",
+  "src": "fyi"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-07-01",
+   "label": "International fall priority deadline (fall 2027 entry)",
+   "notes": "International pages: fall priority deadline July 1, winter priority Nov. 1; later applicants may not get a decision in time to enroll. The pages print no year; treated as fall 2027. Fall I-20 issue deadline is Aug. 1; priority housing application Feb. 1. The domestic first-year page (June 2026) lists only fall 2026 (Aug. 10) and winter 2027 (Dec. 18) application deadlines; no fall 2027 date was printed.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Proof of English is required of all international applicants. Exemptions: four years in a US high school with C/2.0 or better in all English classes (official transcript), or citizenship in / previous education in an English-proficiency-exempt country (decided by International Admissions). Other accepted evidence: SAT Reading 480, ACT English 20, ELS Level 112 completion, iTEP Academic 3.5, MET 53, Michigan Language Center Advanced Star 1, TOEFL Essentials 6.5. No conditional-admission or ESL pathway is described. The English score table comes from the July 2025 Internet Archive copy of the page (the live site blocks automated reads), so confirm scores with admissions.",
+  "src": "fyi"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Paper-based 500 also accepted. Institution code 1853. The page does not list the new 1-6 TOEFL scale.",
+   "src": "fyi"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "IELTS Academic, overall band.",
+   "src": "fyi"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 100,
+   "notes": "Scores must be sent to UM-Flint directly from Duolingo, not uploaded.",
+   "src": "fyi"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 46,
+   "notes": "Pearson PTE Academic.",
+   "src": "fyi"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International first-year students are automatically considered for First-Year Merit Scholarships (no separate application). The June 2025 scholarship page lists Maize & Blue awards of $1,000 to $10,000 per year for 4 years (renewal 2.75 GPA) based on GPA and optional test scores; a GPA-only First-Year Opportunity Scholarship gives $1,000 per year (2.7-3.7 GPA) or $3,000 per year (3.7+). The Aug 2026 tuition page says awards go up to $5,000 a year, so the current amounts need confirming. The True Blue award is described as full in-state tuition. CDS H6: only non-need-based institutional aid for nonresidents (30 recipients, average $5,815).",
+  "src": "merit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the pages read.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the pages read.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "1853",
+   "note": "UM-Flint TOEFL institution code as printed on the first-year international page.",
+   "src": "fyi"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "fyi"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Scores are sent directly to UM-Flint from Duolingo; no code is listed.",
+   "src": "fyi"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "fyi"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

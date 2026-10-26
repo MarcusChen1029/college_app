@@ -1,0 +1,183 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Mount Aloysius - International students",
+   "url": "https://www.mtaloy.edu/international/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Mount Aloysius - Admissions requirements (first-year and international)",
+   "url": "https://www.mtaloy.edu/admissions/admissions-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Mount Aloysius - Apply (rolling admission, fee-waived application)",
+   "url": "https://www.mtaloy.edu/admissions/apply/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Mount Aloysius - Admissions FAQs",
+   "url": "https://www.mtaloy.edu/admissions/faqs/",
+   "accessed": "2026-10-26"
+  },
+  "catalog": {
+   "kind": "other",
+   "title": "Mount Aloysius College 2026-2027 College Catalog (PDF; admissions, international students, programs)",
+   "url": "https://catalog.mtaloy.edu/mime/media/view/18/2993/2026-2027+College+Catalog.pdf",
+   "accessed": "2026-10-26"
+  },
+  "tuition": {
+   "kind": "admissions_site",
+   "title": "Mount Aloysius - Tuition and fees 2026-2027",
+   "url": "https://www.mtaloy.edu/admissions/tuition-fees/",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "Mount Aloysius - Scholarships, grants and financial aid (International Grant)",
+   "url": "https://www.mtaloy.edu/admissions/financial-aid/scholarships/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test optional for most programs. SAT/ACT are required only to be considered for the cooperative programs in Dental Medicine, Occupational Therapy, Pharmacy, Osteopathic Medicine, Physician Assistant and Physical Therapy. Nursing applicants (2+2 and BSN 3.5) must take the TEAS for direct acceptance. International applicants follow the same policy; SAT/ACT scores taken within the last two years may be submitted.",
+  "src": "req"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "The apply page says the college is currently offering a fee-waived application, subject to change; the FAQ lists a $30 application fee without saying whether it applies to undergraduates. Apply with the college application (apply.mtaloy.edu) or the Common App. International applicants send official secondary records with certified English translations (a WES or other NACES evaluation is strongly encouraged), proof of health insurance and health forms, and return a financial affidavit within two weeks of acceptance. A $250 enrollment deposit triggers the I-20. Essays and recommendations are not listed for first-year applicants.",
+  "src": "apply"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "plan": "ROLLING",
+   "due": "2027-01-01",
+   "label": "Priority date for nursing and health sciences (fall 2027 entry)",
+   "notes": "The apply page says students interested in nursing and health sciences are encouraged to apply by January 1; no year is printed, so it is taken as January 1, 2027 for fall 2027 entry.",
+   "src": "apply"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "label": "Rolling admission for fall and spring starts",
+   "notes": "Applications are accepted throughout the year with no fixed closing date. No separate international application deadline is published; international students may start in the fall or spring semester. Programs and courses can fill or be waitlisted after the national May 1 enrollment date.",
+   "src": "faq"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-05-01",
+   "label": "National enrollment deadline (fall 2027 entry)",
+   "notes": "The FAQ says the college follows the national May 1 enrollment deadline; no year is printed, so it is taken as May 1, 2027. The enrollment deposit is $250 (the I-20 is issued when it is received).",
+   "src": "faq"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "A TOEFL, IELTS, PTE Academic or Duolingo score is required for applicants whose native language is not English, unless they hold a certificate of completion from an English-medium education system. Every applicant is reviewed case by case and admission is never guaranteed.",
+  "src": "catalog"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Minimum 61 (internet-based). The international page also prints a computer-based score of 173. Undergraduates scoring comparable to IELTS 6.0 or below must take a 6-credit transition seminar (see IELTS note).",
+   "src": "catalog"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Minimum 5.5. Undergraduate international students scoring 6.0 or below on IELTS (or comparable TOEFL or other scores) must take a six-credit transition seminar course; students who completed an ESL program in the U.S., come from an English-speaking country, or transfer in 24+ credits from a U.S. college with a 2.5+ GPA are exempt.",
+   "src": "catalog"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "src": "catalog"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 42,
+   "notes": "PTE Academic.",
+   "src": "catalog"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "The scholarships page says full-time international students living on campus are eligible for a $17,000 International Grant plus a $2,000 Residence Hall Grant, and those living off campus receive a $12,000 International Grant; the page does not say whether the International Grant is per year (the Residence Hall Grant is described as $2,000 a year). Separate academic awards for new full-time students are set by high school GPA (up to $16,000 to $44,000 over four years). A search-engine snippet of the same page showed older figures ($15,000, $3,000 and $11,000), so confirm current amounts with admissions. Eligible non-citizens with an Alien Registration Number or permanent residency can file the FAFSA; other international students are not eligible for federal aid. Need-based aid for international students is not stated.",
+  "src": "aid"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "src": "tuition",
+  "tuition_usd": 27218,
+  "required_fees_usd": 1504,
+  "total_coa_usd": 50232,
+  "notes": "Tuition is $13,609 per semester (General Studies, doubled to a year); Health Studies $14,773 and Nursing $15,382 per semester. Comprehensive fee $752 per semester. Resident students must buy a meal plan: shared-room housing plus meals runs $5,465 to $7,777 per semester, so room_board_usd is left null. total_coa_usd is the college's on-campus budget for most majors (Health Studies $52,560, Nursing $53,778). The page does not give a separate international tuition rate. Housing is mandatory for traditional-age full-time international students."
+ },
+ "majors": [
+  {
+   "program": "Nursing, traditional pre-licensure BSN (3.5 years)",
+   "category": "nursing",
+   "admit_model": "direct_major",
+   "notes": "Applicants must take the TEAS and submit scores for direct acceptance; no minimum TEAS score is published on the admissions pages.",
+   "src": "req"
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No SAT code is printed on the admissions pages (the only code listed is Federal School Code 003302, used for the FAFSA); look it up in the College Board code search.",
+   "src": "faq"
+  },
+  "act": {
+   "code": null,
+   "note": "No ACT code is printed on the admissions pages; look it up at act.org.",
+   "src": "faq"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the admissions pages.",
+   "src": "req"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "humanities": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

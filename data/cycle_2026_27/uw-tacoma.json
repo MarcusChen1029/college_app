@@ -1,0 +1,195 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma - International Undergraduate Admissions",
+      "url": "https://www.tacoma.uw.edu/admissions/international-undergraduate-admissions",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma - First-Year Admission Requirements",
+      "url": "https://www.tacoma.uw.edu/admissions/first-year-admission-requirements",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma - Application Dates and Deadlines",
+      "url": "https://www.tacoma.uw.edu/admissions/application-dates-and-deadlines",
+      "accessed": "2026-10-26"
+    },
+    "test": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma - Submitting Standardized Test Scores",
+      "url": "https://www.tacoma.uw.edu/admissions/submitting-standardized-test-scores",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma Catalog - English Proficiency Requirements",
+      "url": "https://www.tacoma.uw.edu/catalog/english-proficiency-requirements",
+      "accessed": "2026-10-26"
+    },
+    "engpage": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma - English Language Proficiency (undergraduate)",
+      "url": "https://www.tacoma.uw.edu/admissions/english-language-proficiency",
+      "accessed": "2026-10-26"
+    },
+    "tuit": {
+      "kind": "other",
+      "title": "UW Tacoma Registrar - Tuition Rates 2026-27",
+      "url": "https://www.tacoma.uw.edu/registrar/tuition-rates",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "UW Tacoma Financial Aid - Cost of Attendance 2026-27",
+      "url": "https://www.tacoma.uw.edu/finaid/cost-attendance",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "UW Tacoma - Scholarships",
+      "url": "https://www.tacoma.uw.edu/finaid/scholarships",
+      "accessed": "2026-10-26"
+    },
+    "tfa": {
+      "kind": "admissions_site",
+      "title": "UW Tacoma - Tuition & Financial Aid",
+      "url": "https://www.tacoma.uw.edu/admissions/tuition-financial-aid",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "SAT/ACT scores are optional and not required; the test page says the SAT/ACT is not part of the admissions review process and is not used for scholarships. Scores (SAT EBRW 560 or ACT English 22) can instead be used to satisfy the English proficiency requirement. International first-year applicants need a 2.7 or higher GPA and the high school course requirements (CADRs).",
+    "src": "test"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app"
+    ],
+    "app_fee_usd": 75,
+    "notes": "$75 international application fee (domestic fee is $60). Required: CADR courses (English 4, math 3, social science 3, lab science 3, world language 2, art 0.5, elective 0.5, senior-year quantitative course 1), 2.7 or higher GPA, personal statement, activities log and proof of English proficiency. The first-year requirements page describes the Common App; the international page only says the international first-year application is online. Official transcripts and English scores are due the quarter before starting (July for autumn); proof of finances is needed for the I-20. Decisions usually take about 8 weeks.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "EA",
+      "due": "2026-11-15",
+      "label": "Autumn early action (autumn 2027 entry)",
+      "notes": "Decision by January; considered for merit scholarships. Dates are for first-year applicants; the international page does not list separate deadlines.",
+      "src": "dates"
+    },
+    {
+      "kind": "priority",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "Autumn priority application and scholarship date",
+      "notes": "Automatic merit scholarship consideration; the first-year merit scholarship page is written for Washington residents.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-05-31",
+      "label": "Autumn final application deadline",
+      "notes": "All applications and supporting materials must be received. Winter quarter: Oct. 15 priority, Nov. 15 final.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if primary and secondary education took place in Australia, Canada, Ireland, New Zealand, the United Kingdom or the United States (birth in those countries alone is not enough). Alternatively, official SAT EBRW 560 (old test: reading or writing 500) or ACT English 22 satisfies the requirement. Must be met one quarter before starting (July for autumn). Milgard School of Business transfer applicants need TOEFL 83 or IELTS 6.5. The pages do not mention conditional admission or an intensive English pathway.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 76,
+      "notes": "Tests taken before Jan. 21, 2026. Institution code 9965. An older page lists 83 for the Milgard business school only.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Tests taken on or after Jan. 21, 2026 (1-6 scale).",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Academic IELTS only.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 110,
+      "notes": "110 or higher.",
+      "src": "eng"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 14002,
+    "tuition_out_of_state_usd": 45918,
+    "tuition_intl_usd": 45918,
+    "room_board_usd": 17631,
+    "books_usd": 900,
+    "other_usd": 3582,
+    "notes": "Tuition page 2026-27 annual rates (autumn, winter, spring; rates include student fees): resident $14,002, nonresident $45,918 (nonresident covers international students). Housing and food $17,631 (living on or off campus), books $900, personal $2,508 plus transportation $1,074 from the 2026-27 student budget (which still shows 2025-26 tuition of $45,111).",
+    "src": "tuit"
+  },
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The admissions site says the university does consider international students for merit scholarships, and federal aid is only for U.S. citizens and permanent residents. The Incoming First-Year Merit Scholarship page is written for Washington legal residents, and no international-specific award or amount is published, so confirm eligibility with admissions.",
+    "src": "tfa"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "4445",
+      "note": "UW Tacoma SAT institution code.",
+      "src": "test"
+    },
+    "act": {
+      "code": "4493",
+      "note": "UW Tacoma ACT institution code.",
+      "src": "test"
+    },
+    "toefl": {
+      "code": "9965",
+      "note": "Undergraduate TOEFL institution code (graduate is 4854).",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

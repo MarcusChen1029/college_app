@@ -1,0 +1,95 @@
+{
+  "slug": "columbus-state",
+  "name": "Columbus State University",
+  "short_name": "Columbus State",
+  "state_region": "GA",
+  "city": "Columbus",
+  "latitude": 32.50096,
+  "longitude": -84.94106,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.columbusstate.edu/",
+  "admissions_url": "https://www.columbusstate.edu/admissions/",
+  "ipeds_unit_id": 139366,
+  "undergrad_enrollment": 6147,
+  "intl_undergrads": 85,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Columbus State University Common Data Set 2024-2025 (PDF; newest edition posted)",
+      "url": "https://www.columbusstate.edu/institutional-research/_docs/common-data-set/cds-2024-2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile (fall 2024 admissions summary)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=139366",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 3651,
+    "admits": 3617,
+    "enrolled": 1175,
+    "in_state_applicants": 3400,
+    "in_state_admits": 3370,
+    "out_state_applicants": 236,
+    "out_state_admits": 232,
+    "intl_applicants": 15,
+    "intl_admits": 15,
+    "pct_submit_sat": 13,
+    "pct_submit_act": 12,
+    "gpa_avg": 3.18,
+    "pct_reporting_gpa": 99.0,
+    "notes": "CDS 2024-2025 (fall 2024 entering class); the 2025-2026 edition was not posted on Columbus State's CDS page. C1 residency split (in-state / out-of-state / international): applicants 3,400 / 236 / 15, admits 3,370 / 232 / 15, enrolled 1,084 / 85 / 6; the extracted PDF layout was garbled, but each row sums exactly to the printed totals (3,651 / 3,617 / 1,175). The GPA band distribution is omitted because the C11 column layout could not be read reliably; the C12 average of 3.18 is explicit. Only 13% submitted SAT and 12% ACT scores, so the score ranges describe a small self-selected group. The CDS C7 factor checkboxes were unreadable and are omitted. No early decision or early action; no waitlist."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      800,
+      930,
+      1030
+    ],
+    "SAT_ERW": [
+      440,
+      500,
+      530
+    ],
+    "SAT_MATH": [
+      360,
+      430,
+      530
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      19,
+      22
+    ],
+    "ACT_ENGLISH": [
+      14,
+      18,
+      22
+    ],
+    "ACT_MATH": [
+      16,
+      17,
+      22
+    ]
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 5610,
+    "tuition_out_of_state_usd": 20250,
+    "required_fees_usd": 1410,
+    "room_board_usd": 12070,
+    "books_usd": 1760,
+    "notes": "CDS G1 as printed for the full 2025-2026 year (30 credit hours): in-state tuition $5,610 ($187/credit), out-of-state $20,250 ($675/credit); the CDS also lists a separate 'Non-resident' tuition of $21,270 without saying who pays it, so tuition_intl is left empty. Required fees $1,410; on-campus food and housing $12,070; books $1,760 (G5)."
+  }
+}

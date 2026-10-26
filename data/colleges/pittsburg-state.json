@@ -1,0 +1,71 @@
+{
+  "slug": "pittsburg-state",
+  "name": "Pittsburg State University",
+  "short_name": "Pitt State",
+  "state_region": "KS",
+  "city": "Pittsburg",
+  "latitude": 37.392071,
+  "longitude": -94.702473,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.pittstate.edu",
+  "admissions_url": "https://www.pittstate.edu/admission/international-admission-information.html",
+  "ipeds_unit_id": 155681,
+  "undergrad_enrollment": 4491,
+  "intl_undergrads": 133,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Pittsburg State University Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.pittstate.edu/oie/_files/documents/cds-final-2024-2025-for-psu-website1.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 4085,
+    "admits": 3565,
+    "enrolled": 897,
+    "in_state_applicants": 2439,
+    "in_state_admits": 2094,
+    "out_state_applicants": 1515,
+    "out_state_admits": 1349,
+    "intl_applicants": 131,
+    "intl_admits": 122,
+    "pct_submit_act": 64,
+    "gpa_avg": 3.48,
+    "pct_reporting_gpa": 93.41,
+    "gpa_distribution": {
+      "4.0": 17.7,
+      "3.75-3.99": 24.4,
+      "3.50-3.74": 15.67,
+      "3.25-3.49": 12.56,
+      "3.00-3.24": 9.09,
+      "2.50-2.99": 13.88,
+      "2.0-2.49": 5.62,
+      "1.0-1.99": 1.08
+    },
+    "notes": "CDS 2024-2025, Fall 2024 first-time first-year class. C1 residency split: in-state 2,439 applied / 2,094 admitted; out-of-state 1,515 / 1,349; international 131 / 122 (enrolled split by residency was not reported). The enrolled figure 897 is the sum of full-time and part-time enrollees in C1. IPEDS (College Navigator) shows 3,138 applicants and 2,806 admits for the same fall, so the two sources differ. 64% (572 students) submitted ACT; no SAT scores reported. GPA distribution is the 'all enrolled students' column of C11. Undergraduate enrollment 4,491 and nonresident undergraduates 133 are the B1 'Total undergraduates' column (degree- and non-degree-seeking)."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      15,
+      19,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      23
+    ]
+  }
+}

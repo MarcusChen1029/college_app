@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "NDSU - International undergraduate admission (apply, English proficiency, dates)",
+   "url": "https://www.ndsu.edu/international/apply",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "NDSU Admission - First-year students",
+   "url": "https://www.ndsu.edu/admission/first-year",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "NDSU - International student scholarship",
+   "url": "https://www.ndsu.edu/international/apply/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "NDSU - International tuition and cost information",
+   "url": "https://www.ndsu.edu/international/apply/cost",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "NDSU is test-optional: ACT/SAT are not required for admission and decisions rely on high school GPA and core coursework; scores may be sent and are also used for math and English placement. Recommended GPA 2.75+ (4.0 scale) and 14 core high school units.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 35,
+  "notes": "The $35 fee is the international undergraduate application fee. International first-year applicants need a U.S.-equivalent GPA of 2.75 or higher (transcripts evaluated in-house) and English proficiency; unofficial transcripts are uploaded with the application, official ones are mailed after admission. The domestic application fee was not checked.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-15",
+   "label": "International recommended deadline, fall 2027 (August start)",
+   "notes": "Page states May 15 for the Fall 2026 semester; treated as the same date for fall 2027. Rolling admission, documents evaluated as received. Spring entry: November 1.",
+   "src": "intl"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-08-01",
+   "label": "Domestic first-year application deadline, fall 2027",
+   "notes": "Domestic first-year page lists Fall 2027 applications by August 1; decisions typically 2-3 weeks after materials are complete. Shown for reference; international students use the earlier recommended date.",
+   "src": "fy"
+  },
+  {
+   "kind": "scholarship",
+   "due": "2027-07-01",
+   "label": "Admitted by this date for automatic international scholarship (August start)",
+   "notes": "Applicants admitted before July 1 (fall) are considered automatically; no separate scholarship application.",
+   "src": "schol"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, New Zealand, Nigeria, UK, Ghana); 2 years in good standing at a post-secondary institution in a listed country; 2 years at a U.S. high school or regionally accredited U.S. college; English Composition 1 and 2 with B or higher; U.S. GED taken in English. Scores valid 2 years. ACT English 18 or SAT EBRW 480 also meets the requirement.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 71,
+   "notes": "For tests taken before 2026-01-21.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "For tests taken on/after 2026-01-21; page lists '4.0' without naming the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "Automatic international scholarship by U.S.-equivalent GPA, up to 8 semesters: 3.5-4.0 = $12,000 ($1,500/semester); 3.0-3.49 = $8,000 ($1,000/semester). NDSU states it offers no full scholarships. Applicants may also be considered for conditional admission. CDS H6 (2024-25): only institutional non-need-based aid for nonresidents; 53 received it, average $8,382.",
+  "src": "schol"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 20025,
+  "room_board_usd": 10647,
+  "books_usd": 1175,
+  "notes": "International base-rate undergraduate tuition AND fees estimate for 2 semesters of 12 credits ($753.32 tuition + $71.70 fees per credit); engineering $21,862. The cost page does not label the academic year. Housing $4,885 (shared) + 7-day meal plan $5,762 = $10,647. Also listed: ISS support fee $250, health insurance $2,190, one-time $200 new student fee. Page total $34,287 (base rate). Domestic tuition not checked.",
+  "src": "cost"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "No institution code is printed on the NDSU international admission page; look it up with the test provider and have scores sent directly to NDSU.",
+   "src": "intl"
+  },
+  "act": {
+   "code": null,
+   "note": "No institution code is printed on the NDSU international admission page; look it up with the test provider and have scores sent directly to NDSU.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No institution code is printed on the NDSU international admission page; look it up with the test provider and have scores sent directly to NDSU.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is printed on the NDSU international admission page; look it up with the test provider and have scores sent directly to NDSU.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is printed on the NDSU international admission page; look it up with the test provider and have scores sent directly to NDSU.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is printed on the NDSU international admission page; look it up with the test provider and have scores sent directly to NDSU.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

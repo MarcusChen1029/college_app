@@ -1,0 +1,157 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Campbell University - International Student (undergraduate requirements, English proficiency, financial support)",
+   "url": "https://www.campbell.edu/admissions/undergraduate/international/",
+   "accessed": "2026-10-26"
+  },
+  "hs": {
+   "kind": "admissions_site",
+   "title": "Campbell University - High School / New Student admissions (test optional, no fee or deadline)",
+   "url": "https://www.campbell.edu/admissions/undergraduate/high-school-student/",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "Campbell University - Freshman admission requirements",
+   "url": "https://www.campbell.edu/admissions/undergraduate/high-school-student/admissions-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "faq": {
+   "kind": "admissions_site",
+   "title": "Campbell University - Admissions FAQ (rolling admission, no fee, essay and recommendations)",
+   "url": "https://www.campbell.edu/admissions/admissions-faq/",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "Campbell University - Scholarship Opportunities",
+   "url": "https://www.campbell.edu/financial-aid/scholarships/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "financial_aid_site",
+   "title": "Campbell University - Undergraduate Cost of Attendance",
+   "url": "https://www.campbell.edu/student-financial-services/cost-of-attendance/undergraduate-cost-of-attendance/",
+   "accessed": "2026-10-26"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "Campbell University - Undergraduate programs",
+   "url": "https://www.campbell.edu/academics/undergraduate-programs/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Fall undergraduate applicants may be reviewed for admission and merit scholarships without SAT, ACT or CLT scores; scores are 'highly encouraged' and used for course placement (placement exams are offered if none are submitted). The international page, however, says an SAT or ACT score is required for scholarship consideration and can also show English proficiency.",
+  "src": "hs"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "'There's no cost or deadline to apply'. Campbell is a Common App member and also has its own application. Personal essay and teacher recommendations are not required but are reviewed if sent. International documents: application, transcripts and national exam results (translated and evaluated into English by an agency such as IEE, The Evaluation Company or WES, or any NACES member; certified as true copies), a statement of financial support for one year (dated within six months), and a Visa Clearance form for applicants already at a U.S. high school. Recommended high school units: 4 English, 3 math (Algebra II and Geometry), 2 social science, 2 lab science. Christian university.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "Rolling admission (fall 2027 entry)",
+   "notes": "No application deadline is published for any applicant: 'There isn't a deadline'; applications are reviewed once complete and accepted until the semester start date, though Campbell advises against waiting. The Early Campbell Commitment Program offers priority housing and additional scholarships to early applicants (dates not printed on the pages read).",
+   "src": "faq"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_all_international",
+  "waiver_notes": "The international page says English proficiency 'may be demonstrated by' TOEFL, IELTS (Cambridge Examinations), SAT or ACT, and prints no exemption rules for native speakers or English-medium schools. Campbell's TOEFL, SAT and ACT institutional code is 5100. The page lists the TOEFL as iBT 61, computer-based 173 or paper-based 500. The undergraduate catalog could not be reached (its host has a certificate error), so a Duolingo or PTE minimum, if any, is not confirmed. No conditional-admission or ESL pathway was found on the pages read.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Internet-based TOEFL 61; the page also lists computer-based 173 and paper-based 500. The page does not mention the 2026 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "Page text: 'Cambridge Examinations IELTS can be used instead of the TOEFL with a grade of 5.5'.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": null,
+  "merit_scholarships": true,
+  "notes": "Merit scholarships (Scott-Ellis program) are determined automatically at admission for main-campus applicants, and the international page requires an SAT or ACT score sent by the testing agency 'for scholarship consideration'. No international-specific scholarship amounts are published; the FAQ gives an average aid package of $27,203 for all students. Federal aid does not apply to international students.",
+  "src": "schol"
+ },
+ "majors": [],
+ "cost": {
+  "year": "2026-2027",
+  "src": "coa",
+  "tuition_usd": 41250,
+  "tuition_out_of_state_usd": 41250,
+  "tuition_intl_usd": 41250,
+  "required_fees_usd": 2060,
+  "room_board_usd": 15030,
+  "books_usd": 830,
+  "total_coa_usd": 68749,
+  "notes": "Estimated 2026-27 cost of attendance living on campus: tuition $41,250 (full-time, 12+ hours), fees $2,060, housing $8,280 and food $6,750 (room_board is their sum), books $830, supplies $1,100, transportation $2,178, personal $5,642, course materials $586, federal loan fees $73; total $68,749. No separate international tuition rate is published."
+ },
+ "score_codes": {
+  "sat": {
+   "code": "5100",
+   "note": "Institutional code for SAT/ACT/TOEFL printed on the international page.",
+   "src": "intl"
+  },
+  "act": {
+   "code": "5100",
+   "note": "Institutional code for SAT/ACT/TOEFL printed on the international page.",
+   "src": "intl"
+  },
+  "toefl": {
+   "code": "5100",
+   "note": "Institutional code printed on the international page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "Duolingo is not listed on the undergraduate international page.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "PTE is not listed on the undergraduate international page.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

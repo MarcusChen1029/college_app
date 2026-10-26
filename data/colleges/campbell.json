@@ -1,0 +1,49 @@
+{
+  "slug": "campbell",
+  "name": "Campbell University",
+  "short_name": "Campbell",
+  "state_region": "NC",
+  "city": "Buies Creek",
+  "latitude": 35.409149,
+  "longitude": -78.738238,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.campbell.edu",
+  "admissions_url": "https://www.campbell.edu/admissions/undergraduate/international/",
+  "ipeds_unit_id": 198136,
+  "undergrad_enrollment": 2699,
+  "intl_undergrads": 66,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Campbell University (IPEDS fall 2024 enrollment, setting, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=198136",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=198136&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=198136",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 6956,
+    "admits": 6064,
+    "enrolled": 616,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Campbell's website or by web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 6,956 applicants, 6,064 admitted, 616 enrolled (598 full-time + 18 part-time). The same source shows 3,680 applicants / 3,470 admitted for fall 2023, so the 2024 applicant count may include a reporting change. Campbell is test-optional and College Navigator shows no SAT/ACT percentiles. International applicant counts, GPA and class-rank data are not published. College Navigator shows 2% of undergraduates as U.S. nonresidents. Undergraduate enrollment (2,699) is the main campus; total enrollment is 4,963 with graduate and professional programs."
+  }
+}

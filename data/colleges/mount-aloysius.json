@@ -1,0 +1,63 @@
+{
+  "slug": "mount-aloysius",
+  "name": "Mount Aloysius College",
+  "short_name": "Mount Aloysius",
+  "state_region": "PA",
+  "city": "Cresson",
+  "latitude": 40.459679,
+  "longitude": -78.600898,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.mtaloy.edu",
+  "admissions_url": "https://www.mtaloy.edu/admissions/",
+  "ipeds_unit_id": 214166,
+  "undergrad_enrollment": 2942,
+  "intl_undergrads": 79,
+  "student_faculty_ratio": 11,
+  "academic_calendar": "semester",
+  "sources": {
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator profile - Mount Aloysius College (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214166",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024), exact counts via the Urban Institute Education Data Portal mirror",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=214166",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=214166",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 1577,
+    "admits": 1294,
+    "enrolled": 318,
+    "pct_submit_sat": 10,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found for Mount Aloysius (search of the college site returned only the 2025-26 and 2026-27 catalogs), so GPA, residency and international applicant splits are not available. Undergraduate enrollment 2,942 and the 11-to-1 student-faculty ratio are from College Navigator (fall 2024). SAT percentiles are for only 32 enrolled first-time students (10% submitting); no ACT percentiles are reported. IPEDS shows 1,577 applicants, 1,294 admitted (82%) and 318 enrolled."
+  },
+  "scores": {
+    "SAT_ERW": [
+      473,
+      540,
+      598
+    ],
+    "SAT_MATH": [
+      445,
+      530,
+      570
+    ]
+  }
+}

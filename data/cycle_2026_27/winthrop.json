@@ -1,0 +1,175 @@
+{
+  "sources": {
+    "ug": {
+      "kind": "admissions_site",
+      "title": "Winthrop - International undergraduate application instructions",
+      "url": "https://www.winthrop.edu/international/undergraduate-application-instructions.aspx",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Winthrop - International freshmen students",
+      "url": "https://www.winthrop.edu/international/freshmen-students.aspx",
+      "accessed": "2026-10-26"
+    },
+    "dates": {
+      "kind": "admissions_site",
+      "title": "Winthrop Office of Admissions - Application timeline",
+      "url": "https://www.winthrop.edu/admissions/application-timeline.aspx",
+      "accessed": "2026-10-26"
+    },
+    "proc": {
+      "kind": "admissions_site",
+      "title": "Winthrop Office of Admissions - Freshman application process",
+      "url": "https://www.winthrop.edu/admissions/freshman-application-process.aspx",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "Winthrop Financial Aid - Academic scholarships",
+      "url": "https://www.winthrop.edu/finaid/academic-scholarships.aspx",
+      "accessed": "2026-10-26"
+    },
+    "isch": {
+      "kind": "financial_aid_site",
+      "title": "Winthrop International Center - Scholarships",
+      "url": "https://www.winthrop.edu/international/scholarships.aspx",
+      "accessed": "2026-10-26"
+    },
+    "majors": {
+      "kind": "other",
+      "title": "Winthrop - Majors and programs",
+      "url": "https://www.winthrop.edu/majors/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "International pages: SAT/ACT not required but 'highly recommended for potential scholarship eligibility'. Freshman process page: 'Winthrop is test optional'; applicants indicate on the application whether they want scores considered. Freshman academic scholarships for out-of-state students are scored on GPA, or GPA plus SAT/ACT.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 60,
+    "notes": "International applicants pay a non-refundable US$60 fee (domestic freshmen $50). Required: official transcripts and mark sheets sent directly by the issuing school (portal uploads are not accepted), a course-by-course credential evaluation with GPA from a foreign evaluation agency (a NACES member is recommended), English proficiency proof, and a passport photo page. Letters of recommendation, essays and activities are 'considered if submitted', not required (domestic freshman page). F/J applicants must show funds for one year (affidavit of support plus bank letter); no dollar amount is printed.",
+    "src": "ug"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "RD",
+      "due": "2026-11-01",
+      "label": "Fall priority deadline for freshmen (fall 2027 entry)",
+      "notes": "The timeline page prints 'Fall Priority Deadline - November 1' with no year; Nov. 1, 2026 is assumed for fall 2027. The page has no notes for international applicants, and the international pages print no deadline, so it is unclear whether this applies to them. Completed applications after Feb. 1 are reviewed monthly; the CDS says Winthrop has no application closing date.",
+      "src": "dates"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-02-01",
+      "label": "Freshman scholarship deadline (fall 2027)",
+      "notes": "Completed application, fee and transcript by Feb. 1 (year assumed 2027); the FAQ page says Feb. 15 elsewhere. The scholarships page notes the Winthrop Scholars Guarantee details for fall 2027 are 'coming in late Fall 2026'.",
+      "src": "schol"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-05-01",
+      "label": "Regular deadline for freshmen (fall 2027 entry)",
+      "notes": "The timeline page prints 'Regular Deadline - May 1' with an asterisk and no year (May 1, 2027 assumed); applications after the posted deadlines are 'evaluated if space is available'. No separate international date is published.",
+      "src": "dates"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for graduates of a high school where English is the primary language of instruction, for two full-time semesters at an accredited U.S. institution plus two English composition courses with C- or higher (online composition not accepted), and for citizens of listed countries (e.g. Australia, Canada except Quebec, India, Ireland, Jamaica, New Zealand, Nigeria, Philippines, Singapore, South Africa, United Kingdom). First-year applicants may also use an SAT Evidence-Based Reading and Writing score of 480 or higher, Oxford ELLT 6 (no subscore below 5), or completion of ELS level 112. Official score reports must come directly from the testing agency.",
+    "src": "ug"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 68,
+      "notes": "520 on the paper-based test is also accepted. The page does not give a new 1-6 scale minimum.",
+      "src": "ug"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.0
+      },
+      "notes": "Overall band 6.0 with no subscore lower than 5.",
+      "src": "ug"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Duolingo English Test.",
+      "src": "ug"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 47,
+      "notes": "PTE Academic and PTE Academic Online.",
+      "src": "ug"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The International Center says freshman academic scholarships (first-time undergraduates who submit SAT/ACT) are evaluated automatically at admission. Out-of-state freshman awards pair an annual scholarship ($1,000 to $6,000) with an out-of-state tuition waiver, but the page does not say whether international students are treated as out-of-state. International Ambassador Scholarship: $250 per semester plus an out-of-state grant for F/J students, with 30 service hours per semester; the total grant cannot exceed the out-of-state tuition portion. CDS H6: 61 nonresidents received institutional aid (average $24,492). Federal aid is not available to international students.",
+    "src": "isch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "Winthrop's international pages do not print an SAT code; look it up in the College Board code search.",
+      "src": "ug"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages read; look it up at act.org.",
+      "src": "ug"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read; look it up in the ETS code search.",
+      "src": "ug"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

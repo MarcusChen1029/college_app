@@ -1,0 +1,149 @@
+{
+ "sources": {
+  "fy": {
+   "kind": "admissions_site",
+   "title": "A&M-San Antonio - First-Year Admissions (deadlines, criteria, fee, score codes)",
+   "url": "https://www.tamusa.edu/admissions/applying-for-admission/first-year-students.html",
+   "accessed": "2026-10-26"
+  },
+  "intl": {
+   "kind": "admissions_site",
+   "title": "A&M-San Antonio International Affairs - Bachelor Degree: Freshman (requirements, English proficiency, TOEFL code)",
+   "url": "https://www.tamusa.edu/International-Affairs/international-students/Bachelor-Degree-Freshman-Requirements.html",
+   "accessed": "2026-10-26"
+  },
+  "ia": {
+   "kind": "admissions_site",
+   "title": "A&M-San Antonio International Affairs - International Admissions (deadlines pointer, conditional admission, TSI)",
+   "url": "https://www.tamusa.edu/International-Affairs/international-students/apply-for-admission.html",
+   "accessed": "2026-10-26"
+  },
+  "aid": {
+   "kind": "financial_aid_site",
+   "title": "A&M-San Antonio International Affairs - Scholarship Information",
+   "url": "https://www.tamusa.edu/International-Affairs/scholarships/index.html",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Automatic admission (accredited U.S. high school graduates) needs top 35% of class OR a 3.0 cumulative GPA with no SAT/ACT required; applicants with no minimum GPA need SAT 1020/1100 or ACT 22. Applicants educated outside the U.S. (including international students) are reviewed through the Committee Review Process, which may weigh high school attended, first-generation status, employment, special abilities, activities, achievement and leadership. Texas Success Initiative (TSI) placement testing applies to non-exempt students (international students can take it online).",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "Apply at BecomeAJaguar.com (fee waivers only through ApplyTexas). The first-year page states a $30 fee; the older international page says $50 by money order. International applicants need a course-by-course foreign credential evaluation sent directly from an approved agency (dated within 1 year), and meningitis vaccination evidence if 22 or younger. Essays and recommendations are not listed (CDS C7: not considered).",
+  "src": "fy"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-01-15",
+   "label": "Priority application deadline (fall 2027 entry)",
+   "notes": "Listed on the first-year page for Fall 2027. The international page does not give separate dates and points to these first-year deadlines. CDS C14 lists a Feb 15 priority date, which differs from the website.",
+   "src": "fy"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-30",
+   "label": "Final application deadline (fall 2027 entry)",
+   "notes": "Rolling admission (CDS C16); no notification date published. International F-1 applicants need time for credential evaluation and the I-20, so apply well before this date.",
+   "src": "fy"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "All international students must show English proficiency unless they qualify for a waiver: full secondary or postsecondary education in an approved English-speaking country (list on the page; Puerto Rico not exempt), at least 12 credit hours with grade C or better at a U.S. or approved English-speaking institution, or completion of the advanced-level Texas Intensive English Program (TIEP). Waivers are reviewed individually. Scores must be under 2 years old, sent directly by the testing agency.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Institution code 6712; paper-based 500 also accepted; institutional (residual) TOEFL not accepted.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "The page prints '3.5 (TOEFL iBT)' next to 61 without naming the 1-6 scale; shown here as the new-scale equivalent.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "The first-year admissions page says IELTS 6.0; the international freshman page says 5.0 overall. The higher figure is shown; confirm with admissions.",
+   "src": "fy"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 85,
+   "notes": "Can be taken online.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "The international scholarship page lists only graduate awards (Graduate Merit, Hagan) and the Good Neighbor Scholarship (tuition exemption for talented students from eligible Western Hemisphere countries, not Cuba or the U.S.; undergraduate GPA 2.0+; deadline Feb 15; selected by the state). No undergraduate international merit scholarship amount is published. Admitted students with JagWire logins can use ScholarshipUniverse. After admission, international undergraduates must show funds of $40,450 for one year.",
+  "src": "aid"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": "5996",
+   "note": "College Board code printed on the first-year admissions page.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "5350",
+   "note": "ACT code printed on the first-year admissions page.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "6712",
+   "note": "Exam code on the international freshman page.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; scores must be sent directly by the testing agency.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ },
+ "tier_notes": {}
+}

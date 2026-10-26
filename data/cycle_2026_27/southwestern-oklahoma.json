@@ -1,0 +1,142 @@
+{
+  "sources": {
+    "ug": {
+      "kind": "admissions_site",
+      "title": "SWOSU - International undergraduate admissions",
+      "url": "https://www.swosu.edu/admissions/international-students/undergraduate-student-admissions.php",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "SWOSU Undergraduate Catalog 2025-2026 (PDF)",
+      "url": "https://bulldog.swosu.edu/publications/catalog/swosu-undergraduate-catalog-2025-2026.pdf",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "SWOSU - Tuition and fees 2026-2027",
+      "url": "https://www.swosu.edu/paying-for-swosu/tuition-and-fees/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "SWOSU - Costs and aid (annual cost estimates)",
+      "url": "https://www.swosu.edu/paying-for-swosu/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The 2025-26 catalog says submitting ACT or SAT scores is optional for international applicants because SWOSU is in a test-optional pilot program. International students are encouraged to take the Accuplacer CPT at the SWOSU Assessment Center before enrolling.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 100,
+    "notes": "US$100 non-refundable international application fee. Documents: high school transcript translated into English (course-by-course NACES-member evaluation for coursework outside the U.S.), passport photo page, signed Undergraduate Certificate of Financial Resources, and a sponsor-name bank statement showing 3-6 months of history and dated within 1 month of applying. Applicants from Gambia, Ghana, Nigeria, Liberia and Sierra Leone also provide WAEC scratch card details. Some mostly-online programs may not qualify for an I-20.",
+    "src": "ug"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Application (fall 2027): no international deadline published",
+      "notes": "The international undergraduate page and the 2025-26 catalog print no application deadline for first-year international students.",
+      "src": "ug"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Academic and Foundation scholarship paperwork: best-consideration date (fall 2027)",
+      "notes": "The 2025-26 catalog lists March 1 for Regents' baccalaureate or academic scholarship documents and for the Foundation Scholarship Application (no year printed, treated as 2027). The catalog does not say whether international students are eligible.",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No test-score waiver is printed for first-year international applicants. Students slightly below the minimum (TOEFL iBT 48 or higher, IELTS 5.0, PTE 36, iTEP 3.0) may complete 12 weeks at The Language Company (ESL, with at least two-thirds advanced-level instruction); students below that can apply for ESL through The Language Company. International transfer students with at least 24 U.S. credit hours do not need scores.",
+    "src": "ug"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "The page does not give a minimum on the new 1-6 scale.",
+      "src": "ug"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "IELTS Academic, overall band.",
+      "src": "ug"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "notes": "PTE Academic. iTEP Academic 3.5 is also accepted. Duolingo and Cambridge are not listed.",
+      "src": "ug"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "Federal aid is not available to international students. The 2025-26 catalog says SWOSU offers its In-State Plus $1 Program to international students (nonresidents paying in-state tuition plus $1 per credit hour, per SWOSU program materials); the exact rate and whether it is automatic could not be confirmed because SWOSU's program page could not be loaded. Institutional scholarship eligibility for international students is not stated.",
+    "src": "cat"
+  },
+  "cost": {
+    "src": "tuition",
+    "notes": "2026-27 tuition page: undergraduate tuition $252 per credit hour resident and $582 nonresident ($252 + $330), plus mandatory fees of $29.20 per credit hour and an academic enhancement fee of $15 per hour. Catalog: international students are treated as nonresidents; fees include a $100 international maintenance fee per semester and mandatory health insurance. The Costs and Aid page (undated, accessed 2026-10-26) shows undergraduate annual estimates of $9,131 resident, $16,241 nonresident and $26,608 international, without saying what they include; these do not show the In-State Plus $1 rate. Confirm with SWOSU before relying on either figure."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "SWOSU's international pages do not print an SAT code; look it up in the College Board code search.",
+      "src": "ug"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the pages read; look it up at act.org.",
+      "src": "ug"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read; look it up in the ETS code search.",
+      "src": "ug"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "ug"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

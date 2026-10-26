@@ -1,0 +1,49 @@
+{
+  "slug": "mount-saint-vincent",
+  "name": "University of Mount Saint Vincent",
+  "short_name": "Mount Saint Vincent",
+  "state_region": "NY",
+  "city": "Bronx",
+  "latitude": 40.913657,
+  "longitude": -73.908887,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://mountsaintvincent.edu",
+  "admissions_url": "https://mountsaintvincent.edu/admission/undergraduate-college-admission/apply-international-students/",
+  "ipeds_unit_id": 193399,
+  "undergrad_enrollment": 2725,
+  "intl_undergrads": 66,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - University of Mount Saint Vincent (IPEDS fall 2024 enrollment, setting, student-faculty ratio)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=193399",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_counts": {
+      "kind": "ipeds",
+      "title": "IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=193399&sex=99",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=193399",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds",
+    "applicants": 3546,
+    "admits": 3018,
+    "enrolled": 410,
+    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on the University's website or by web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 3,546 applicants, 3,018 admitted, 410 enrolled (396 full-time + 14 part-time); fall 2023 was 3,775 / 3,195 / 489. UMSV is test-optional: only 8 enrolled first-time students (2%) submitted SAT scores in fall 2024, so SAT/ACT percentiles are not shown. International applicant counts and GPA data are not published. College Navigator shows 3% of undergraduates as U.S. nonresidents and 6% of first-time students from foreign countries. Undergraduate enrollment (2,725) includes 837 transfer-in students."
+  }
+}

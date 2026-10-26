@@ -1,0 +1,152 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Ashland University - International Admissions (English proficiency, admissions criteria, FAQs)",
+   "url": "https://www.ashland.edu/international-admissions",
+   "accessed": "2026-10-26"
+  },
+  "ug": {
+   "kind": "admissions_site",
+   "title": "Ashland University - Undergraduate Admissions (first-year steps to apply, test scores)",
+   "url": "https://www.ashland.edu/undergraduate-admissions",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "financial_aid_site",
+   "title": "Ashland University - International Student Tuition & Fees (2026-27 undergraduate estimates)",
+   "url": "https://www.ashland.edu/international-student-tuition-fees",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "Ashland University - Scholarships (2026-27 international first-year academic scholarships)",
+   "url": "https://www.ashland.edu/ashland-university-scholarships",
+   "accessed": "2026-10-26"
+  },
+  "prog": {
+   "kind": "other",
+   "title": "Ashland University - Academic Programs",
+   "url": "https://www.ashland.edu/academic-programs",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Sending ACT, CLT or SAT scores is optional for all majors except Nursing (scores required).",
+  "src": "ug"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": null,
+  "notes": "First-year students apply with Ashland's free application or the Common App; the international page says a non-refundable application fee is charged and cannot be waived but prints no amount, so the fee is left blank. International undergraduates need the online application and official education credentials/transcripts (an evaluation of foreign records by a NACES member is required before admission; applicants from Ghana, Nigeria, Sierra Leone, Liberia and The Gambia also send official WAEC/WASSCE scores). Minimum GPA 2.5 (3.5 for Nursing). A $1,000 USD enrollment deposit is required before the I-20 is issued (refundable only if the visa is denied). Decisions take about 10-14 business days once all documents are in. Essay and recommendations are not listed.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": null,
+   "label": "International undergraduate application (fall 2027 entry): no deadline published",
+   "notes": "The international and undergraduate admissions pages print no application deadline for fall 2027. Decisions come about 10-14 business days after documents are complete, then the I-20 takes about 5-7 business days. Academic-scholarship eligibility uses grades on file through August 1 for fall; students admitted after that use their grades at admission.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Proof of English is required before admission and 'Medium of Instruction is not an acceptable English proficiency waiver'. Ashland no longer has an English language program or IEP, so there is no conditional-admission pathway for students below the minimums. Other exemptions are not listed on the page. Nursing sets higher minimums.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 67,
+   "notes": "Undergraduate minimum; Nursing 84. Page footnote: TOEFL scores are transitioning from the 0-120 scale to the 1-6 scale in 2027.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "Undergraduate minimum printed as '67 or 3.5'; Nursing 4.5.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Undergraduate minimum; Nursing 7.0.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 120,
+   "notes": "Undergraduate minimum; Nursing 130.",
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 50,
+   "notes": "PTE Academic; Nursing 59.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "International first-year academic scholarships for 2026-27 by high school GPA, amounts as printed (the page does not label them per year): AU International Gold 4.00+ $14,000; Presidential 3.80-3.99 $13,000; Provost 3.50-3.79 $12,000; Director 3.00-3.49 $11,000; Ambassador 2.70-2.99 $9,000; below 2.70 nothing. Renewal needs a 3.00 GPA for Gold and Presidential and 2.00 for the others. No separate application; must be full-time, pursuing a first bachelor's degree and charged the comprehensive tuition rate; not available in summer. Ashland offers no full-tuition scholarships and international students are not eligible for U.S. federal or state aid; athletic awards come from the coach.",
+  "src": "sch"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 35400,
+  "required_fees_usd": 1360,
+  "room_board_usd": 13530,
+  "books_usd": 800,
+  "other_usd": 1810,
+  "total_coa_usd": 52900,
+  "notes": "International page, undergraduate 2026-27 yearly estimate: comprehensive tuition $35,400; activity/service fee $300 plus campus access fee $1,060 (= $1,360); board (regular, double/triple) $7,250 plus meal plan $6,280 (= $13,530); estimated health insurance $1,810 (other); books and supplies $800; total $52,900. 2025-26 total was $48,722.",
+  "src": "tuit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "Ashland's admissions pages print no SAT code; look it up in the College Board code search.",
+   "src": "ug"
+  },
+  "act": {
+   "code": null,
+   "note": "Ashland's admissions pages print no ACT code; look it up at act.org.",
+   "src": "ug"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international page prints no TOEFL code; select Ashland University in the ETS list.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}
