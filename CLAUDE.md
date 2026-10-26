@@ -132,7 +132,8 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 1. Help the owner verify the Vercel fix and Google sign-in end to end (Google provider must be enabled in Supabase first; see `DEPLOY.md` §3).
 2. Add a friendly error/config page: when env vars are missing, show a clear message instead of the generic error
    (e.g. check in `app/layout.tsx` and add `app/error.tsx`).
-3. Transcript mapping gaps (flagged `unverified` in the app): Common App's Grading Scale labels (its Subject, Level and Credit lists are now official, from Common App's data catalogs), UC's exact
+3. Transcript mapping gaps (flagged `unverified` in the app). Common App is done: its Subject, Level and Credit lists are official (data catalogs) and its
+   Grading Scale list is verified from a live account (A-F, 1-100, 0.0-4.0, 0.0-5.0, 1-7, 1-10, 1-11, 1-20, Other; `web/lib/commonapp-fill.ts`). Still open: UC's exact
    dropdown wording and discipline dropdown, STARS Generic Course Title lists and full Course Level list, UIUC's full Type/Grade lists, UT's levels and terms (behind a login).
    Research with source URLs: `docs/superpowers/research/`.
 3b. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
