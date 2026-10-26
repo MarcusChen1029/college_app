@@ -50,7 +50,6 @@ const LAYOUTS: Record<SystemId, Layout> = {
       { key: "gradeLevel", label: "Grade level" },
       { key: "level", label: "Course type" },
       { key: "subject", label: "A-G area" },
-      { key: "subSubject", label: "D1 / D2" },
       { key: "grades", label: "Grades" },
     ],
     group: byGradeLevel,
@@ -65,6 +64,28 @@ const LAYOUTS: Record<SystemId, Layout> = {
       { key: "gradeLevel", label: "Grade level" },
     ],
     group: (m) => field(m, "subject").value ?? "Not an A-G subject",
+  },
+  uiuc: {
+    banner: "UIUC's SRAR has no credit field. List every semester, trimester or quarter grade separately and do not list a final grade. Arts, computer science and PE are all subject \"Other\".",
+    columns: [
+      { key: "gradeLevel", label: "Year" },
+      { key: "period", label: "Term" },
+      { key: "subject", label: "Subject" },
+      { key: "name", label: "Course name" },
+      { key: "grades", label: "Grade" },
+      { key: "level", label: "Type" },
+    ],
+    group: byGradeLevel,
+  },
+  ut: {
+    banner: "UT Austin's coursework form (only for applicants from non-Texas high schools) takes completed courses from grade 9 on, in five areas plus Other. If there is no credit, a year course counts 1 and a semester course 0.5.",
+    columns: [
+      { key: "subject", label: "Subject" },
+      { key: "name", label: "Course name" },
+      { key: "grades", label: "Grades" },
+      { key: "credit", label: "Credit" },
+    ],
+    group: byGradeLevel,
   },
 };
 

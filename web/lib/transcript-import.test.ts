@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { buildImportPlan, buildPrompt, parseImportText, planCourseUpdate, planMcpAdd, transcriptFormatText, TRANSCRIPT_FORMAT_VERSION, type ImportPlan } from "./transcript-import.ts";
-import { emptySchool, GRADE_SCALES, LEVELS, LIMITS, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
+import { emptySchool, GRADE_SCALES, LEVELS, LIMITS, SYSTEM_KEYS, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 const none = { schools: [] as TranscriptSchool[], courses: [] as TranscriptCourse[] };
 
@@ -210,4 +210,49 @@ test("an AI patch with a numeric final grade keeps it as text", () => {
   const current = { id: "c1", createdAt: "x", ...added.accepted[0], schoolId: "s1" } as TranscriptCourse;
   const r = planCourseUpdate(current, { finalGrade: 92 });
   assert.equal(r.ok && r.value.finalGrade, "92");
+});
+
+test("the prompt lists every application's own subject options and asks for systemSubjects", () => {
+  const p = buildPrompt();
+  assert.ok(p.includes("systemSubjects"));
+  for (const must of ["Art (Visual or Performing)", "Earth/Environmental Science", "Fine Arts / Music", "D1 – Biological Science", "Language Other Than English", "Social Studies", "Religion"]) {
+    assert.ok(p.includes(must), must);
+  }
+  for (const k of SYSTEM_KEYS) assert.ok(p.includes(`"${k}"`) || p.includes(`${k}:`), k);
+  assert.match(p, /UIUC[^\n]*Other/);
+});
+
+test("systemSubjects tags become per-system subject overrides, matched against each system's list", () => {
+  const data = fixture();
+  data.schools[0].courses = [
+    { academicYear: 2025, name: "Calculus", subject: "mathematics", subSubject: "calculus", systemSubjects: { common_app: "calculus", stars: "Mathematics", csu: "C", uc: "C – Mathematics", uiuc: "Mathematics", ut: "Math", bogus: "x" } },
+  ];
+  const plan = buildImportPlan(data, none, "ai_import");
+  const row = plan.rows[0];
+  assert.ok(row.input, row.errors.join());
+  assert.deepEqual(row.input!.overrides, {
+    common_app: { subject: "Calculus" },
+    stars: { subject: "Mathematics" },
+    csu: { subject: "C – Mathematics" },
+    uc: { subject: "C – Mathematics" },
+    uiuc: { subject: "Mathematics" },
+  });
+  assert.equal(row.warnings.length, 2);
+  assert.ok(row.warnings.some((w) => /ut/.test(w)));
+  assert.ok(row.warnings.some((w) => /bogus/.test(w)));
+});
+
+test("planMcpAdd keeps valid system tags and reports the rest", () => {
+  const r = planMcpAdd({ school: { name: "Lincoln High" }, courses: [{ academicYear: 2025, name: "Band", subject: "arts", subSubject: "music", systemSubjects: { common_app: "Art (Visual or Performing)", uiuc: "Fine Arts" } }] }, none);
+  assert.deepEqual(r.accepted[0].overrides, { common_app: { subject: "Art (Visual or Performing)" } });
+  assert.equal(r.warnings.length, 1);
+  assert.equal(r.warnings[0].index, 0);
+});
+
+test("planCourseUpdate merges systemSubjects into existing overrides", () => {
+  const added = planMcpAdd({ school: { name: "Lincoln High" }, courses: [{ academicYear: 2025, name: "Biology" }] }, none);
+  const current = { id: "c1", createdAt: "x", ...added.accepted[0], schoolId: "s1", overrides: { common_app: { level: "Honors" } } } as TranscriptCourse;
+  const r = planCourseUpdate(current, { systemSubjects: { common_app: "Biology", stars: "Science" } });
+  assert.equal(r.ok, true);
+  if (r.ok) assert.deepEqual(r.value.overrides, { common_app: { level: "Honors", subject: "Biology" }, stars: { subject: "Science" } });
 });

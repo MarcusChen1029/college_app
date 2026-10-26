@@ -11,6 +11,10 @@ export type SystemMap = {
   label: string;
   level: Record<Level, MapEntry>;
   subject: Record<Subject, MapEntry>;
+  /** When the system's subject depends on the course's sub-subject (Common App splits math and science), this wins over `subject`; null = use `subject`. */
+  subjectFor?: (subject: Subject, sub: string | null) => MapEntry | null;
+  /** The system's own subject dropdown: exact option text, and whether that list is confirmed from an official page. */
+  subjectList: { options: readonly string[]; verified: boolean; note?: string };
   subSubject: (subject: Subject, sub: string | null) => MapEntry;
   period: Record<PeriodType, MapEntry>;
   /** What the student should know before copying this course into the system (warnings, not edits). */
@@ -44,3 +48,21 @@ export const isNonUs = (school: Pick<TranscriptSchool, "country">): boolean => {
   const c = school.country.trim().toLowerCase().replace(/\./g, "");
   return c !== "" && !["us", "usa", "united states", "united states of america", "america"].includes(c);
 };
+
+const flat = (s: string): string => s.normalize("NFKC").toLowerCase().replace(/[\u2010-\u2015-]/g, "-").replace(/\s+/g, " ").trim();
+
+/**
+ * Finds the option an AI meant: the exact text (ignoring case, dash style and spacing), or a bare A-G letter code ("C", "D1")
+ * when exactly one option starts with it. Returns the option's own text, or null.
+ */
+export function matchSubjectOption(options: readonly string[], input: string): string | null {
+  const q = flat(input);
+  if (!q) return null;
+  const exact = options.find((o) => flat(o) === q);
+  if (exact) return exact;
+  if (/^[a-g][12]?$/.test(q)) {
+    const hits = options.filter((o) => flat(o).startsWith(`${q} `));
+    return hits.length === 1 ? hits[0] : null;
+  }
+  return null;
+}
