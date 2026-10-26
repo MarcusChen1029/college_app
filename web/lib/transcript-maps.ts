@@ -53,6 +53,7 @@ export function mapCourse(system: SystemId, school: TranscriptSchool, course: Tr
     { key: "gradeLevel", label: "Grade level", value: course.gradeLevel == null ? null : String(course.gradeLevel), status: "verified" },
     { key: "subject", label: "Subject", ...pick(map.subjectFor?.(course.subject, course.subSubject) ?? map.subject[course.subject], ov.subject) },
     { key: "subSubject", label: "Sub-subject", ...pick(map.subSubject(course.subject, course.subSubject), ov.subSubject) },
+    ...(map.genericTitle ? [{ key: "genericTitle" as const, label: "Generic course title", ...pick(map.genericTitle(school, course), ov.genericTitle) }] : []),
     { key: "level", label: "Course level", ...pick(map.level[course.level], ov.level) },
     { key: "period", label: "Term system", ...pick(map.period[course.period], ov.period) },
     { key: "grades", label: "Grades", value: gradesValue(course, map.termGrade ?? defaultTermGrade), status: "verified" },

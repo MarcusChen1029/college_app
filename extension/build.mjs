@@ -18,7 +18,7 @@ const common = {
   logLevel: "info",
 };
 await build({ ...common, entryPoints: { background: "src/background.ts" }, format: "esm" });
-await build({ ...common, entryPoints: { content: "src/content.ts", panel: "src/panel.ts" }, format: "iife" });
+await build({ ...common, entryPoints: { content: "src/content.ts", "assist-content": "src/assist-content.ts", panel: "src/panel.ts" }, format: "iife" });
 
 copyFileSync("manifest.json", join(out, "manifest.json"));
 copyFileSync("panel.html", join(out, "panel.html"));

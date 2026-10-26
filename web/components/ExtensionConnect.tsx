@@ -39,7 +39,7 @@ export function ExtensionConnect() {
     return (
       <div className={card}>
         <h1 className="font-display text-2xl font-bold">This link didn&apos;t come from the extension.</h1>
-        <p className="text-sm text-zinc-600">Open the Common App filler extension and choose Connect to start again.</p>
+        <p className="text-sm text-zinc-600">Open the College application filler extension and choose Connect to start again.</p>
       </div>
     );
   }
@@ -49,7 +49,7 @@ export function ExtensionConnect() {
     return (
       <div className={card}>
         <h1 className="font-display text-2xl font-bold">Sign in to continue</h1>
-        <p className="text-sm text-zinc-600">The Common App filler extension is asking to connect. Sign in first, then you can allow or cancel.</p>
+        <p className="text-sm text-zinc-600">The College application filler extension is asking to connect. Sign in first, then you can allow or cancel.</p>
         <button type="button" className={buttonClass("primary")} onClick={openSignIn}>
           Sign in
         </button>
@@ -103,7 +103,7 @@ export function ExtensionConnect() {
     <div className={card}>
       <h1 className="font-display text-2xl font-bold">Connect the extension</h1>
       <p className="text-sm text-zinc-700">
-        <strong>Common App filler</strong> wants to read your transcript (schools, courses, grades). It cannot see anything else in your account.
+        <strong>College application filler</strong> wants to read your transcript (schools, courses, grades). It cannot see anything else in your account.
       </p>
       <p className="text-sm text-zinc-600">
         Signed in as <span className="font-medium">{student.auth.email}</span>. You can disconnect it any time in Settings.

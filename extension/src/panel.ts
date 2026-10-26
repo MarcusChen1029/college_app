@@ -2,9 +2,17 @@
 // textContent (never innerHTML): course names and Common App messages are data, not markup.
 
 import type { TranscriptResult } from "./auth.ts";
+import { buildSystemPlan, FILL_SYSTEMS } from "../../web/lib/system-fill.ts";
+import { buildStarsIntlPlans } from "../../web/lib/stars-fill.ts";
+import { assistView } from "./assist-panel.ts";
+import { starsAutoView } from "./stars/panel.ts";
+import { csuAutoView } from "./csu/panel.ts";
+import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
 import { createDriver, type TabsApi } from "./chrome-driver.ts";
-import { COMMONAPP_ORIGIN, targetUrl } from "./commonapp/pages.ts";
+import { targetUrl } from "./commonapp/pages.ts";
 import type { PanelResponse } from "./messages.ts";
+import { SITE_HOME, SITE_LABEL, siteOf, type Site } from "./sites.ts";
+import { button, h, type Child } from "./ui.ts";
 import {
   askText,
   blankText,
@@ -29,21 +37,8 @@ import {
 
 const app = document.getElementById("app")!;
 
-type Child = Node | string | null | false;
-function h(tag: string, attrs: Record<string, string> = {}, ...children: Child[]): HTMLElement {
-  const el = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
-  for (const c of children) if (c) el.append(c);
-  return el;
-}
-function button(label: string, onClick: () => void, cls = "btn", disabled = false): HTMLButtonElement {
-  const b = h("button", { type: "button", class: cls }, label) as HTMLButtonElement;
-  b.disabled = disabled;
-  b.addEventListener("click", onClick);
-  return b;
-}
 function show(...nodes: Child[]): void {
-  app.replaceChildren(h("h1", {}, "Common App filler"), ...nodes.filter((n): n is Node | string => !!n));
+  app.replaceChildren(h("h1", {}, "College application filler"), ...nodes.filter((n): n is Node | string => !!n));
 }
 
 // ---- messages to the background ----------------------------------------------------------------------------------------
@@ -72,19 +67,25 @@ async function signOut(): Promise<void> {
   }
 }
 
-/** The tab to drive: the active tab of this window, only if it is on Common App. */
-async function commonAppTabId(): Promise<number | null> {
+/** The active tab of this window and the application system it is on (null for any other site). */
+async function activeTab(): Promise<{ id: number | null; site: Site | null }> {
   try {
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-    return tab?.id !== undefined && tab.url?.startsWith(COMMONAPP_ORIGIN + "/") ? tab.id : null;
+    return { id: tab?.id ?? null, site: siteOf(tab?.url) };
   } catch {
-    return null;
+    return { id: null, site: null };
   }
 }
+
 
 // ---- views -------------------------------------------------------------------------------------------------------------
 
 let ticked = new Set<Target>();
+let transcript: { schools: Parameters<typeof buildPlans>[0]; courses: Parameters<typeof buildPlans>[1] } | null = null;
+/** The system the student picked in the panel; null = follow the active tab. */
+let picked: Site | null = null;
+/** The system shown last, so a tab change re-renders only when it changes what is shown. */
+let shownSite: Site | null = null;
 let view: "other" | "ready" = "other";
 let currentOffers: Offer[] = [];
 let stopRequested = false;
@@ -117,15 +118,52 @@ async function refresh(): Promise<void> {
     if (result.reason === "students_only") return messageView(STATUS.studentsOnly, button("Sign out", async () => { await signOut(); signedOutView(); }));
     return messageView(STATUS.network, button("Try again", () => void refresh(), "btn primary"));
   }
+  transcript = { schools: result.schools, courses: result.courses };
   currentOffers = offersFor(buildPlans(result.schools, result.courses));
   ticked = new Set(currentOffers.map((o) => o.target));
   await readyView();
 }
 
+/** "Fill for: [system]" picker; follows the active tab until the student picks one. */
+function sitePicker(current: Site): HTMLElement {
+  const select = h("select", { "aria-label": "Application system" }) as HTMLSelectElement;
+  for (const s of ["common_app", ...FILL_SYSTEMS] as Site[]) {
+    const o = h("option", { value: s }, SITE_LABEL[s]) as HTMLOptionElement;
+    o.selected = s === current;
+    select.append(o);
+  }
+  select.addEventListener("change", () => {
+    picked = select.value as Site;
+    void readyView();
+  });
+  return h("label", { class: "picker" }, "Fill for ", select);
+}
+
 async function readyView(): Promise<void> {
   view = "ready";
-  const tabId = await commonAppTabId();
+  const tab = await activeTab();
   if (view !== "ready") return; // the view changed while we looked at the tabs
+  const site: Site = picked ?? tab.site ?? "common_app";
+  shownSite = site;
+  if (site !== "common_app") {
+    if (!transcript) return void refresh();
+    const onSite = tab.site === site ? tab.id : null;
+    const auto =
+      onSite == null ? null
+      : site === "stars" ? await starsAutoView(buildStarsIntlPlans(transcript.schools, transcript.courses), onSite)
+      : site === "csu" ? csuAutoView(buildCsuPlans(transcript.schools, transcript.courses), onSite)
+      : null;
+    const node = await assistView(buildSystemPlan(site, transcript.schools, transcript.courses), onSite, auto);
+    if (view !== "ready" || shownSite !== site) return;
+    show(
+      sitePicker(site),
+      tab.site !== site && button(`Open ${SITE_LABEL[site]}`, () => void chrome.tabs.create({ url: SITE_HOME[site] }), "link"),
+      node,
+      h("div", { class: "row" }, button("Reload transcript", () => void refresh()), button("Sign out", async () => { await signOut(); signedOutView(); })),
+    );
+    return;
+  }
+  const tabId = tab.site === "common_app" ? tab.id : null;
   const boxes = currentOffers.map((o) => {
     const box = h("input", { type: "checkbox" }) as HTMLInputElement;
     box.checked = ticked.has(o.target);
@@ -138,6 +176,7 @@ async function readyView(): Promise<void> {
   });
   const fill = button("Fill selected", () => void run(tabId!), "btn primary", tabId === null || ticked.size === 0);
   show(
+    sitePicker("common_app"),
     currentOffers.length ? h("div", { class: "list" }, ...boxes) : h("p", { class: "note" }, "No courses with grades or current-year courses were found in your transcript."),
     tabId === null && h("p", { class: "note" }, "Open your Common App in this window first."),
     h("div", { class: "row" }, fill, button("Sign out", async () => { await signOut(); signedOutView(); })),
@@ -225,12 +264,16 @@ function reportView(outcome: FillOutcome, targets: Target[], tabId: number): voi
 }
 
 // The Fill button depends on the active tab: re-render when it changes (but never over a run or a report).
-const retab = () => {
-  if (view === "ready") void readyView();
+const retab = async () => {
+  if (view !== "ready") return;
+  // The assistant keeps its place (scroll, status) unless the tab moved to another system.
+  const { site } = await activeTab();
+  if (shownSite !== "common_app" && (picked ?? site ?? "common_app") === shownSite) return;
+  void readyView();
 };
-chrome.tabs.onActivated.addListener(retab);
+chrome.tabs.onActivated.addListener(() => void retab());
 chrome.tabs.onUpdated.addListener((_id, change) => {
-  if (change.url || change.status === "complete") retab();
+  if (change.url || change.status === "complete") void retab();
 });
 
 void refresh();

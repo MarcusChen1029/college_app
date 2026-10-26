@@ -44,7 +44,8 @@ export const SUB_SUBJECTS: Record<Subject, readonly string[]> = {
 
 export const SYSTEM_KEYS = ["common_app", "stars", "csu", "uc", "uiuc", "ut"] as const;
 export type SystemKey = (typeof SYSTEM_KEYS)[number];
-export const OVERRIDE_FIELDS = ["level", "subject", "subSubject", "period", "credit"] as const;
+/** genericTitle: STARS's "Course/Exam Content" (its generic course title), the one value no map can derive from the course name. */
+export const OVERRIDE_FIELDS = ["level", "subject", "subSubject", "period", "credit", "genericTitle"] as const;
 export type OverrideField = (typeof OVERRIDE_FIELDS)[number];
 export type Overrides = Partial<Record<SystemKey, Partial<Record<OverrideField, string>>>>;
 

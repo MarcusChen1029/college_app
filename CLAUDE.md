@@ -73,6 +73,10 @@ Plan: all US colleges next, then UK/CA/AU.
   the student approves it at `/extension/connect`, which mints a **transcript-only token** (migration 0031, table `extension_tokens`, must be applied to the project before the live run; students revoke it under Settings > Connected extensions, then Fill says "Sign in again").
   **Never test fills on the owner's real Common App account.** Use the throwaway test account (Purdue, nothing submitted) in a separate Chrome profile signed in only to it.
   The live end-to-end run has not been done yet: follow `extension/TESTING.md`.
+  Other portals (2026-10-27): the panel's "Fill for" picker follows the active tab (`extension/src/sites.ts`). STARS
+  (international coursework page) and Cal State Apply (High School Coursework, US schools) get "Add courses" (plans `web/lib/stars-fill.ts`,
+  `web/lib/csu-fill.ts`); UC, UIUC and UT get the fill assistant (click a box, press a value; plans `web/lib/system-fill.ts`). Live DOM facts:
+  `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every

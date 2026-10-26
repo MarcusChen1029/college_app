@@ -76,7 +76,7 @@ export function PricingPlans() {
                   <li className="flex gap-2">
                     <span className="text-done">✓</span>
                     <span>
-                      <strong>Common App filler (Beta):</strong> a Chrome extension that fills Courses &amp; Grades from your transcript
+                      <strong>College application filler (Beta):</strong> a Chrome extension that fills Common App Courses &amp; Grades from your transcript and helps with UC, STARS, Cal State Apply, UIUC and UT
                     </span>
                   </li>
                 )}

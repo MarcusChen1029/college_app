@@ -39,15 +39,15 @@ export default function ToolsPage() {
       <section aria-labelledby="filler-heading" className={`${card} space-y-4`}>
         <div className="flex flex-wrap items-center gap-2">
           <h2 id="filler-heading" className="text-xl font-bold">
-            Common App filler
+            College application filler
           </h2>
           <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${toneClass("progress")}`}>Beta</span>
         </div>
         <p className="text-sm text-zinc-600">
-          A Chrome extension that fills Common App&apos;s Courses &amp; Grades and Current Year Courses from your transcript in one click.
+          A Chrome extension that fills Common App&apos;s Courses &amp; Grades and Current Year Courses from your transcript in one click, adds your courses to STARS and Cal State Apply, and helps you type them into the UC application, UIUC&apos;s SRAR and UT Austin&apos;s coursework form.
         </p>
         <p role="note" className={`rounded-xl border px-4 py-3 text-sm ${toneClass("soon")}`}>
-          Beta. Check every course and grade on Common App after filling. The extension fills whichever Common App account is open in that browser.
+          Beta. Check every course and grade after filling. The extension fills whichever account is open in that browser.
         </p>
         <FillerDownload>
           <a href="/downloads/common-app-filler.zip" download className={buttonClass("primary")}>
@@ -66,7 +66,7 @@ export default function ToolsPage() {
           <Link href="/application/transcript" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
             Fill your transcript first
           </Link>
-          . The extension copies it into Common App.
+          . The extension copies it into your applications.
         </p>
       </section>
     </div>
