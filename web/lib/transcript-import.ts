@@ -29,7 +29,7 @@ import {
   type Validated,
 } from "./transcript.ts";
 import { matchSubjectOption, SYSTEMS } from "./transcript-maps.ts";
-import { STARS_INTL_TITLES } from "./transcript-maps/stars-lists.ts";
+import { STARS_INTL_TITLES, STARS_US_TITLES } from "./transcript-maps/stars-lists.ts";
 
 /** v2 (2026-10-26): a term may carry its own "credit". v1 answers still read (the field is optional). */
 export const TRANSCRIPT_FORMAT_VERSION = "transcript.v2";
@@ -47,7 +47,8 @@ export function transcriptFormatText(): string {
     const l = m.subjectList;
     return `- ${k} (${m.label})${l.verified ? "" : " [area names are official; the exact dropdown wording is not published]"}: ${l.options.join(" | ")}${l.note ? `\n    ${l.note}` : ""}`;
   }).join("\n");
-  const starsTitles = Object.entries(STARS_INTL_TITLES).map(([area, titles]) => `- ${area}: ${titles.join(" | ")}`).join("\n");
+  const titleBlock = (lists: Record<string, readonly string[]>) => Object.entries(lists).map(([area, titles]) => `- ${area}: ${titles.join(" | ")}`).join("\n");
+  const starsTitles = `For a school OUTSIDE the US:\n${titleBlock(STARS_INTL_TITLES)}\n\nFor a school IN the US:\n${titleBlock(STARS_US_TITLES)}`;
   return `Answer with ONE JSON object in format "${TRANSCRIPT_FORMAT_VERSION}":
 
 {
@@ -112,9 +113,10 @@ Rules:
    do not add them up yourself (the app adds them up). If it prints one credit for the whole course, put it in the course "credit".
 7. academicYear is the calendar year the school year starts (2025 for 2025-26).
 8. Every application names its subjects differently. For EACH course fill "systemSubjects" with one entry per application key below, choosing the option from that application's own list that best fits the course and copying it exactly. If nothing fits, use that application's "Other" option; never invent an option. "subject" and "subSubject" (above) are our own general categories; keep filling them too.
-9. Only when the school is outside the United States: also fill "starsTitle", STARS's "Course/Exam Content" for the course, copied exactly from the
-   list below for its STARS subject area (English courses are under Languages). Pick the title that names the same course (an honors or AP
-   course takes the plain title, e.g. "AP Calculus BC" -> "CALCULUS"); if none does, use that area's "OTHER …" title. For a US school leave it out.
+9. Also fill "starsTitle", STARS's generic course title ("Course/Exam Content"), copied exactly from the list below for the school's location
+   and the course's STARS subject area (outside the US, English courses are under Languages). Pick the title that names the same course (an
+   honors or AP course takes the plain title, e.g. "AP Calculus BC" -> "CALCULUS 2 (BC)" for a US school, "CALCULUS" outside the US); if none
+   does, use that area's "OTHER ..." title.
 10. Output JSON only, with no commentary.
 
 Subject options by application (copy the text exactly):
@@ -178,7 +180,7 @@ export function systemSubjectOverrides(v: unknown, base: Overrides = {}): { over
   return { overrides, warnings };
 }
 
-const ALL_STARS_TITLES = new Set(Object.values(STARS_INTL_TITLES).flat());
+const ALL_STARS_TITLES = new Set([...Object.values(STARS_INTL_TITLES).flat(), ...Object.values(STARS_US_TITLES).flat()]);
 
 /** Adds an AI's `starsTitle` as the STARS generic-title override when it is one of STARS's titles (exact, case-insensitive); else a warning. */
 export function starsTitleOverride(v: unknown, base: Overrides): { overrides: Overrides; warnings: string[] } {

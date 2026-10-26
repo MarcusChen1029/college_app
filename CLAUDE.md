@@ -74,8 +74,9 @@ Plan: all US colleges next, then UK/CA/AU.
   **Never test fills on the owner's real Common App account.** Use the throwaway test account (Purdue, nothing submitted) in a separate Chrome profile signed in only to it.
   The live end-to-end run has not been done yet: follow `extension/TESTING.md`.
   Other portals (2026-10-27): the panel's "Fill for" picker follows the active tab (`extension/src/sites.ts`). STARS
-  (international coursework page) and Cal State Apply (High School Coursework, US schools) get "Add courses" (plans `web/lib/stars-fill.ts`,
-  `web/lib/csu-fill.ts`); UC, UIUC and UT get the fill assistant (click a box, press a value; plans `web/lib/system-fill.ts`). Live DOM facts:
+  (both coursework pages), Cal State Apply (High School Coursework, US schools) and UC (Enter courses & grades) get "Add courses", each verified
+  on a live test account (plans `web/lib/stars-fill.ts`, `csu-fill.ts`, `uc-fill.ts`); UIUC and UT get the fill assistant (click a box, press a
+  value; plans `web/lib/system-fill.ts`). Live DOM facts:
   `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)

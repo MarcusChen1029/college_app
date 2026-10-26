@@ -4,6 +4,8 @@ import type { PageResult } from "./commonapp/dom.ts";
 import type { InsertResult } from "./assist/insert.ts";
 import type { StarsRow } from "../../web/lib/stars-fill.ts";
 import type { CsuSchoolPlan } from "../../web/lib/csu-fill.ts";
+import type { UcGradePlan } from "../../web/lib/uc-fill.ts";
+import type { UcFillResult } from "./uc/fill.ts";
 import type { CsuRunResult } from "./csu/run.ts";
 import type { FillTarget } from "./commonapp/pages.ts";
 
@@ -43,16 +45,22 @@ export type AssistMessage =
   | { type: "starsPage" }
   | { type: "starsFill"; row: StarsRow; scale: string | null }
   | { type: "csuFill"; plan: CsuSchoolPlan }
-  | { type: "csuStop" };
+  | { type: "csuStop" }
+  | { type: "ucPage" }
+  | { type: "ucFill"; plan: UcGradePlan };
 export type AssistResponse =
   | { type: "ready"; path: string }
   | { type: "assistTarget"; label: string | null }
   | { type: "assistInsert"; result: InsertResult; label: string }
   /** year: the coursework page's `yr` (null on any other STARS page). */
-  | { type: "starsPage"; year: number | null; existing: string[] }
+  | { type: "starsPage"; year: number | null; kind: "intl" | "us" | null; existing: string[]; pageText: string }
   | { type: "starsFill"; ok: true; saved: boolean; blanks: string[] }
   | { type: "starsFill"; ok: false; error: string }
   | { type: "csuFill"; result: CsuRunResult }
-  | { type: "csuStop" };
+  | { type: "csuStop" }
+  /** grade: the open "Enter courses & grades" page's grade level (null elsewhere); names: courses on it, or on a grade summary page. */
+  | { type: "ucPage"; grade: number | null; names: string[]; pageText: string }
+  | { type: "ucFill"; ok: true; result: UcFillResult }
+  | { type: "ucFill"; ok: false; error: string };
 
 export type ExtensionMessage = PanelRequest | ContentMessage | AssistMessage;

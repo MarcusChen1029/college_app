@@ -225,7 +225,7 @@ test("the prompt lists every application's own subject options and asks for syst
 test("systemSubjects tags become per-system subject overrides, matched against each system's list", () => {
   const data = fixture();
   data.schools[0].courses = [
-    { academicYear: 2025, name: "Calculus", finalGrade: "A", subject: "mathematics", subSubject: "calculus", systemSubjects: { common_app: "calculus", stars: "Mathematics", csu: "C", uc: "C – Mathematics", uiuc: "Mathematics", ut: "Math", bogus: "x" } },
+    { academicYear: 2025, name: "Calculus", finalGrade: "A", subject: "mathematics", subSubject: "calculus", systemSubjects: { common_app: "calculus", stars: "Mathematics", csu: "C", uc: "Calculus", uiuc: "Mathematics", ut: "Math", bogus: "x" } },
   ];
   const plan = buildImportPlan(data, none, "ai_import");
   const row = plan.rows[0];
@@ -234,7 +234,7 @@ test("systemSubjects tags become per-system subject overrides, matched against e
     common_app: { subject: "Calculus" },
     stars: { subject: "Mathematics" },
     csu: { subject: "C – Mathematics" },
-    uc: { subject: "C – Mathematics" },
+    uc: { subject: "Calculus" },
     uiuc: { subject: "Mathematics" },
   });
   assert.equal(row.warnings.length, 2);

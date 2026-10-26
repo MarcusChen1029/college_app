@@ -4,11 +4,12 @@
 
 import { insertValue, labelOf } from "./assist/insert.ts";
 import { nextBox } from "./assist/next.ts";
-import { fillStarsCourse, StarsStop, starsExistingNames, starsPageYear } from "./stars/fill.ts";
+import { fillStarsCourse, StarsStop, starsExistingNames, starsPageKind, starsPageYear } from "./stars/fill.ts";
 import type { AssistMessage, AssistResponse } from "./messages.ts";
 import { SITE_ORIGINS } from "./sites.ts";
 import { runCsuSchool } from "./csu/run.ts";
 import { onCourseworkPage } from "./csu/fill.ts";
+import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
 
 let csuStop = false;
 
@@ -55,7 +56,7 @@ chrome.runtime.onMessage.addListener((raw: unknown, sender, sendResponse: (r: As
       return true; // async response
     }
     case "starsPage":
-      sendResponse({ type: "starsPage", year: starsPageYear(location), existing: starsExistingNames(document) });
+      sendResponse({ type: "starsPage", year: starsPageYear(location), kind: starsPageKind(location), existing: starsExistingNames(document), pageText: document.body.innerText.slice(0, 4000) });
       return false;
     case "starsFill":
       if (!SITE_ORIGINS.stars.includes(location.origin) || starsPageYear(location) == null) {
@@ -65,6 +66,21 @@ chrome.runtime.onMessage.addListener((raw: unknown, sender, sendResponse: (r: As
       fillStarsCourse(document, msg.row, msg.scale).then(
         (r) => sendResponse({ type: "starsFill", ok: true, saved: r.saved, blanks: r.blanks }),
         (e: unknown) => sendResponse({ type: "starsFill", ok: false, error: e instanceof StarsStop || e instanceof Error ? e.message : String(e) }),
+      );
+      return true; // async response
+    case "ucPage": {
+      const grade = SITE_ORIGINS.uc.includes(location.origin) ? ucPageGrade(location) : null;
+      sendResponse({ type: "ucPage", grade, names: grade != null ? ucExistingNames(document) : ucSummaryNames(document), pageText: document.body.innerText.slice(0, 3000) });
+      return false;
+    }
+    case "ucFill":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucPageGrade(location) == null) {
+        sendResponse({ type: "ucFill", ok: false, error: "Open a grade's Enter courses & grades page on UC first" });
+        return false;
+      }
+      fillUcPage(document, msg.plan).then(
+        (result) => sendResponse({ type: "ucFill", ok: true, result }),
+        (e: unknown) => sendResponse({ type: "ucFill", ok: false, error: e instanceof Error ? e.message : String(e) }),
       );
       return true; // async response
     case "csuStop":

@@ -2,13 +2,11 @@
 // Save Course button; the student's existing courses are never changed or removed (names already on the page are skipped).
 
 import type { StarsPagePlan } from "../../../web/lib/stars-fill.ts";
-import type { AssistMessage, AssistResponse } from "../messages.ts";
+import { afterReload, sendTo as send } from "../tab-wait.ts";
 import { button, h } from "../ui.ts";
-import { runStarsYear, type StarsTab } from "./run.ts";
+import { planForPage, runStarsYear, type StarsTab } from "./run.ts";
 
 const PICKS_KEY = "starsScalePicks";
-const RELOAD_MS = 30000;
-const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 async function loadPicks(): Promise<string[]> {
   try {
@@ -26,52 +24,22 @@ async function savePicks(picks: string[]): Promise<void> {
   }
 }
 
-async function send(tabId: number, msg: AssistMessage): Promise<AssistResponse | null> {
-  try {
-    return ((await chrome.tabs.sendMessage(tabId, msg)) as AssistResponse | undefined) ?? null;
-  } catch {
-    return null;
-  }
-}
-
-/** Waits for the reload a Save Course starts (loading, then complete), then for the new page's content script. */
-function afterSave(tabId: number): Promise<void> {
-  return new Promise((resolve, reject) => {
-    let sawLoading = false;
-    const timer = setTimeout(() => done(new Error("STARS did not finish saving (no reload). Check the page for a message")), RELOAD_MS);
-    const listener = (id: number, change: { status?: string }) => {
-      if (id !== tabId) return;
-      if (change.status === "loading") sawLoading = true;
-      else if (change.status === "complete" && sawLoading) void ready();
-    };
-    const done = (err?: Error) => {
-      clearTimeout(timer);
-      chrome.tabs.onUpdated.removeListener(listener);
-      if (err) reject(err);
-      else resolve();
-    };
-    const ready = async () => {
-      for (let i = 0; i < 50; i++) {
-        if ((await send(tabId, { type: "ready" }))?.type === "ready") return done();
-        await sleep(200);
-      }
-      done(new Error("The STARS page did not respond after saving"));
-    };
-    chrome.tabs.onUpdated.addListener(listener);
-  });
-}
-
 const yearText = (endYear: number) => `${endYear - 1}-${String(endYear % 100).padStart(2, "0")}`;
 
 /** The section, or a note when this STARS page is not a coursework page. */
 export async function starsAutoView(plans: StarsPagePlan[], tabId: number): Promise<HTMLElement> {
   const page = await send(tabId, { type: "starsPage" });
   const year = page?.type === "starsPage" ? page.year : null;
-  if (year == null) {
-    return h("p", { class: "note" }, "To add courses automatically, open a year's coursework page on STARS (Enter Coursework, then a grade). Schools outside the US only for now.");
+  if (page?.type !== "starsPage" || year == null) {
+    return h("p", { class: "note" }, "To add courses automatically, open a year's coursework page on STARS (Enter Coursework, then a grade).");
   }
-  const plan = plans.find((p) => p.endYear === year);
-  if (!plan || !plan.rows.length) return h("p", { class: "note" }, `Your transcript has no courses to add for ${yearText(year)} at a school outside the US.`);
+  const plan = planForPage(plans, page);
+  if (!plan || !plan.rows.length) {
+    const many = plans.filter((p) => p.kind === page.kind && p.endYear === year).length > 1;
+    return h("p", { class: "note" }, many
+      ? `Several schools in your transcript have ${yearText(year)} courses and this page's school name matches none of them exactly: give the school the same name in the tracker as on STARS.`
+      : `Your transcript has no courses to add for ${yearText(year)} at a ${page.kind === "us" ? "US" : "non-US"} school.`);
+  }
   const existing = page?.type === "starsPage" ? page.existing : [];
 
   const picks = await loadPicks();
@@ -103,7 +71,7 @@ export async function starsAutoView(plans: StarsPagePlan[], tabId: number): Prom
     stop = false;
     go.disabled = true;
     stopBtn.disabled = false;
-    const tab: StarsTab = { send: (m) => send(tabId, m), afterSave: () => afterSave(tabId) };
+    const tab: StarsTab = { send: (m) => send(tabId, m), afterSave: () => afterReload(tabId, "STARS") };
     const r = await runStarsYear(plan, chosen(), tab, () => stop, (t) => (status.textContent = t));
     go.disabled = false;
     stopBtn.disabled = true;

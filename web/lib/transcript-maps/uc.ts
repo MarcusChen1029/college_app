@@ -3,14 +3,14 @@
 // term and grading systems are only in secondary sources, so those stay unverified.
 import { LEVELS, PERIOD_TYPES, SUBJECTS, type Term } from "../transcript.ts";
 import { none, table, unverified, verified, type SystemMap } from "./types.ts";
+import { ucDisciplineLabels } from "./uc-lists.ts";
 
 const QRG = "https://admission.universityofcalifornia.edu/counselors/_files/documents/quick-reference-guide-to-uc-admissions.pdf";
+const LIVE = "https://apply.universityofcalifornia.edu/my-application/";
 const DAVIS = "https://www.ucdavis.edu/admissions/undergraduate/first-year/application-tips";
 const IB = verified("IB", QRG);
 const NH_NOTE = "Flag UC-approved honors courses only";
 const NOT_AG = "Not an A-G subject; it may go under Other coursework in Activities & awards";
-const WORDING = "UC's A-G area names are official, but the exact dropdown wording is not published";
-const area = (value: string, note?: string) => unverified(value, note ? `${WORDING}. ${note}` : WORDING, QRG);
 
 const LETTER_SIGN = /^([A-F])[+-]$/i;
 const PASS_FAIL = /^(p|np|cr|nc|pass|fail|credit|no credit)$/i;
@@ -35,30 +35,37 @@ export const UC_MAP: SystemMap = {
     },
     verified("NH", QRG, "Not honors"),
   ),
+  // UC's "Subject Area/Course Category" is a course category, not an A-G letter (read live 2026-10-27). It follows from our sub-category
+  // where that is one-to-one (subjectFor); otherwise it is left for the student or the AI tag.
   subject: table(
     SUBJECTS,
     {
-      history_social: area("A – History / social science"),
-      english: area("B – English"),
-      mathematics: area("C – Mathematics"),
-      science: area("D – Science"),
-      world_language: area("E – Language other than English"),
-      arts: area("F – Visual and performing arts"),
-      computer_science: area("G – College-preparatory elective", "Computer science may count under C or D when the school lists it there"),
-      other: area("G – College-preparatory elective"),
+      english: verified("English", LIVE),
+      history_social: unverified(null, "U.S. History, Civics/American Government or World History/Cultures/Hist. Geography: depends on the course", LIVE),
+      world_language: unverified(null, "\"Yr 1-4+ Lang Other Than English\" by year of study", LIVE),
+      computer_science: unverified(null, "Computer Science is under Mathematics or Science, depending on the school", LIVE),
+      other: unverified(null, "A College-Prep Elective category, depending on the course", LIVE),
       business: none(NOT_AG),
       pe_health: none(NOT_AG),
       career_technical: none(NOT_AG),
     },
-    unverified(null),
+    unverified(null, "Depends on the course", LIVE),
   ),
+  subjectFor: (subject, sub) => {
+    const m: Record<string, Record<string, string>> = {
+      mathematics: { algebra_1: "Algebra I", geometry: "Geometry", algebra_2: "Algebra II", precalculus: "Pre-Calculus", calculus: "Calculus", statistics: "Statistics" },
+      science: { biology: "Biology/Life Sciences", chemistry: "Chemistry", physics: "Physics", earth_space: "Earth and Space Sciences" },
+      arts: { visual: "Visual Arts", music: "Music", theater: "Theater", dance: "Dance", interdisciplinary: "Interdisciplinary Arts" },
+    };
+    if (!m[subject]) return null;
+    const v = sub ? m[subject]![sub] : undefined;
+    return v ? verified(v, LIVE) : unverified(null, "Depends on the course", LIVE);
+  },
   subjectList: {
-    options: [
-      "A – History / social science", "B – English", "C – Mathematics", "D – Science", "E – Language other than English",
-      "F – Visual and performing arts", "G – College-preparatory elective",
-    ],
-    verified: false,
-    note: "These are UC's A-G area names; the exact dropdown wording is not published. For visual and performing arts UC's disciplines are Dance, Music, Theater, Visual Arts and Interdisciplinary Arts; for science: Biology/Life Sciences, Chemistry, Physics, Earth & Space Sciences, Integrated Science. PE, business and career-technical courses are not A-G subjects.",
+    // UC's own "Subject Area/Course Category" options (read live 2026-10-27); a tag here becomes the course's UC subject.
+    options: ucDisciplineLabels(),
+    verified: true,
+    note: "Pick UC's own course category. A language course is \"Yr N Lang Other Than English\" by its year of study; Computer Science counts under Mathematics or Science, so say which. PE, business and career-technical courses are not A-G: leave them out for UC.",
   },
   subSubject: (subject, sub) => {
     const POLICY = "A discipline in UC's policy; the application may not ask for it";

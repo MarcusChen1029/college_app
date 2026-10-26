@@ -14,7 +14,14 @@ the live pages with the built-in browser; nothing was submitted. Where a fact is
   All of these are required before "Enter Courses" (`goStep('ceeb','<ceeb>')`), else a "Required Fields Missing" dialog.
 - Summary: `/srt/SchoolSummary.aspx?sel_sender_ceeb=<ceeb>`, one link per year: `openCourseEntry('<ceeb>','<endYear>','9th Grade (2023-2024)')`.
 - Coursework for a school outside the US: `/srt/EnterInternationalCoursework-yr-<endYear>.aspx?selCeeb=<ceeb>&yr=<endYear>&sel_sender_ceeb=<ceeb>`
-  (`yr` = the year the school year ends: 2024 = 2023-24). The page for a US school was not seen (no US school on the test record).
+  (`yr` = the year the school year ends: 2024 = 2023-24).
+- Coursework for a US school: `/srt/EnterCoursework-yr-<n>.aspx?selCeeb=<ceeb>&yr=<endYear>&...` (the file name's number is NOT the year; use `yr`).
+  Differences from the international page (seen live on a New Jersey school): no `academic_level`, no `course_language`, no `grade_scale_id`
+  (the school's Grade Scale from Enter Schools applies); per term also `summer_course_yn_<n>` and `retake_course_yn_<n>`; subjects
+  "English … World Language, Computer Science / Info Tech, Business, Fine Arts / Music, Phys. Ed / Health / Gym, Other Subject Area"; 29 levels
+  and its own titles ("ENGLISH 1" … , `STARS_US_*` in stars-lists.ts). The table's name column is "Course Name". **Before any course saves, the
+  year's GPA box `year_gpa` must be filled or `no_annual_gpa` ("I have not received an annual GPA for this academic year") ticked** (validator
+  `v_year_gpa`); the filler stops and asks the student. The coursework page names the school ("ENTER 10TH GRADE (2024-2025) COURSEWORK FOR …").
 
 ### 1.2 International coursework form (ids are `ctl00_mainContent_<name>`)
 Fields in order: `academic_level` (RadComboBox, read-only), `subject_area`, `course_cd` ("Course/Exam Content" = generic title; list loads after
@@ -33,6 +40,9 @@ page). After a save the form clears except academic level and language. Exact op
   A click on an `li` while the list is closed worked for some boxes and not for `grade_scale_id`: always open first. Some picks post back
   (subject loads the title list; length adds the grade boxes): wait ~2.5 s after each.
 - RadDateInput / RadTextBox: set the value, then fire focus, input, change, blur and focusout. Without the blur the hidden value stays empty.
+- A pick shows its value before STARS finishes the update it starts; a Save Course pressed right after lost the grades. Wait ~1.5 s and re-check.
+- The course name box is reset to the generic title by later picks: type the name (and credits) last.
+- After choosing a subject, the title list may still be the previous subject's for a moment: compare before trusting it.
 - RadDropDownTree: the tree lives outside the widget in `#<widgetId>_EmbeddedTree`; a click on a leaf `.rtText` selects it even while closed.
 - Radios: click the radio whose `<label for>` text matches.
 
@@ -50,8 +60,13 @@ page). After a save the form clears except academic level and language. Exact op
   labelled None, Advanced Placement, International Baccalaureate, Honors, and one grade combobox per term `highSchoolCourseGrades.<i>`
   labelled "Fall", "Spring" for semesters (trimester/quarter labels not seen). Grade options: A+ A A- B+ B B- C+ C C- D+ D D- F, No Course,
   Pass, No Pass; the current school year also has In Progress and Planned. Buttons: Cancel, "Add Another" checkbox, Save.
-- MUI Autocomplete opens on mousedown on its input; options are `[role=option]` in a popper. From the page's own JS world, setting
-  `input.value` needs the native setter (a content script's isolated world sets it natively anyway).
+- MUI Autocomplete opens on mousedown on its input; options are `[role=option]` in its own listbox (`aria-controls` = "<id>-listbox": use it,
+  a list that is still closing is another input's). A mousedown right after a drawer opens can be lost: retry until options show. From the
+  page's own JS world, setting `input.value` needs the native setter (a content script's isolated world sets it natively anyway).
+- Picking the course title re-renders the form and clears a Course Type chosen before it: set Course Type last and check it. "Add Grade Level"
+  opens a sub-form and leaves the Grade Level box empty.
+- Verified run (2026-10-27): 4 planned courses, 2 already there were skipped, 2 added (one needing a new 10th-grade level, one In Progress /
+  Planned); the edit form shows the stored Course Type.
 - A-G Matching (`/23505`): "Update A-G Courses" opens a drawer with one row per course and an MUI Select (`div[role=combobox]`, aria-label
   "select-grade") whose options are a code and a name: A History / Social Science, B English, C Mathematics, D1 Biological Science,
   D2 Physical Science, E Language Other than English, F Visual & Performing Arts, G College-Preparatory Elective, "- No match".
@@ -59,9 +74,20 @@ page). After a save the form clears except academic level and language. Exact op
 
 ## 3. UC (apply.universityofcalifornia.edu)
 
-The application signs you out when it is opened in a second tab (it went to `/my-application/login/logout`). Use a single tab.
-Academic history links: `/my-application/acadhistFrHighSchool`, `/acadHistFrCollege`, `/acadHistFrCollegeCoursesMain`.
-The course form itself was not reached in this session (signed out).
+The application signs you out when it is opened in a second tab (it went to `/my-application/login/logout`). Use a single tab; in-app links
+are full page loads.
+- High school: `/acadhistFrHighSchoolSearch` (In California / Outside California (in the U.S.) / Outside the U.S., country select, school search)
+  -> `/acadHistFrInfo?action=add&schId=<code>...`: start/end month+year selects, grading system checkboxes (exact list `UC_GRADING_SYSTEMS`),
+  term system checkboxes ("Semester (2 final grades per year)" etc.), grades attended rows (`attendgrade<i>` 9th-12th + `attendsyear<i>`
+  "2023 - 2024", summer tick), graduation Yes/No, degree, graduation month/year, language of instruction. All plain `<select>`s / checkboxes.
+- Grade pages: `/acadHistFrGrades/09` ... `/12`, then "Enter courses & grades" -> `/acadHistFrHighSchoolClasses/editClasses/<NN>/<id>`.
+  Rows `academics_hs_classes_add_<i>_subject` (course category with A-G optgroups, `UC_DISCIPLINES`; two options are both "Computer Science",
+  value 16 under Mathematics and 50 under Science), `_class_title`, `_honors` (HL / IB / NH / AP), `_grade1`..`_grade4` (hidden boxes 3-4 exist
+  on a Semester school), `_subject_language_code` (LOTE language, `UC_LANGUAGES`). Grade options on "0-100 (Taiwan)": 100..0 and NO; 12th grade
+  adds IP and PL. "Add another course" `#addManualHSClass`, "Save & continue" `#save`, "Cancel" `#cancel-btn`. Existing courses come back as
+  filled rows. After saving, the grade page lists "Subject area/Course category | Course name | Hnrs | Term | G1..G4 | Language name".
+- Verified run (2026-10-27): 4 planned 9th-grade courses, 1 already there skipped, 3 added (English, IB biology, Chinese 2 with language Chinese
+  and NO for the second semester) and listed correctly.
 
 ## 4. UT Austin
 

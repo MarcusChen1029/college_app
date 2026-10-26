@@ -178,3 +178,75 @@ export function starsIntlScalesFor(scale: GradeScale, max: number | null): strin
   if ((scale === "other" || scale === "gpa_decimal") && max === 5) return [s[8], s[9], s[10]];
   return [];
 }
+
+// ---- The coursework page for a school in the US ("EnterCoursework"), read live on 2026-10-27 ----
+
+export const STARS_US_SUBJECTS = [
+  "English", "Mathematics", "Science", "History / Social Studies", "World Language", "Computer Science / Info Tech", "Business", "Fine Arts / Music",
+  "Phys. Ed / Health / Gym", "Other Subject Area",
+] as const;
+export type StarsUsSubject = (typeof STARS_US_SUBJECTS)[number];
+
+export const STARS_US_LEVELS = [
+  "Standard", "Honors", "AP (Advanced Placement)", "College Prep", "Dual Enrollment", "Accelerated", "Advanced", "AICE", "College Credit Plus (CCP)",
+  "College in HS", "Dual Credit (SDC)", "Early College Experience(ECE)", "Enriched", "Gifted and Talented", "High Honors", "IB (Higher/HL)",
+  "IB (Intl. Baccalaureate)", "IB (Predicted)", "IB (Standard/SL)", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Pre-AICE", "Pre-AP",
+  "Pre-Honors", "Pre-IB", "Regents",
+] as const;
+
+export const STARS_US_SUBJECT: Record<Subject, StarsUsSubject> = {
+  english: "English", mathematics: "Mathematics", science: "Science", history_social: "History / Social Studies", world_language: "World Language",
+  arts: "Fine Arts / Music", computer_science: "Computer Science / Info Tech", business: "Business", pe_health: "Phys. Ed / Health / Gym",
+  career_technical: "Other Subject Area", other: "Other Subject Area",
+};
+
+export const STARS_US_LEVEL: Record<Level, string | null> = {
+  regular: "Standard", accelerated: "Accelerated", advanced: "Advanced", honors: "Honors", high_honors: "High Honors", ap: "AP (Advanced Placement)",
+  ib_hl: "IB (Higher/HL)", ib_sl: "IB (Standard/SL)", ib: "IB (Intl. Baccalaureate)", pre_ib: "Pre-IB", a_level: "AICE", gcse_igcse: null,
+  college_prep: "College Prep", dual_enrollment: "Dual Enrollment", enriched: "Enriched", gifted: "Gifted and Talented", intensive: null, regents: "Regents",
+  other: null, none: "Standard",
+};
+
+export const STARS_US_TITLES: Record<StarsUsSubject, readonly string[]> = {
+  English: [
+    "ENGLISH 1", "ENGLISH 2", "ENGLISH 3", "ENGLISH 4", "ENGLISH LANGUAGE AND COMPOSITION", "ENGLISH LANGUAGE AND LITERATURE", "ENGLISH LITERATURE AND COMPOSITION",
+    "ENGLISH LITERATURE", "AMERICAN LITERATURE", "BRITISH LITERATURE", "CLASSIC LITERATURE", "COMMUNICATIONS", "CREATIVE WRITING", "ENGLISH COMPOSITION 1",
+    "ENGLISH COMPOSITION 2", "ESL 1 (ENGL AS A SECOND LANG 1)", "ESL 2 (ENGL AS A SECOND LANG 2)", "FORENSIC SPEECH-DEBATE", "JOURNALISM", "MYTHOLOGY",
+    "PUBLIC SPEAKING", "RESEARCH (ENGLISH)", "SEMINAR", "WORLD LITERATURE", "OTHER ENGLISH",
+  ],
+  Mathematics: [
+    "ALGEBRA 1", "GEOMETRY", "ALGEBRA 2", "TRIGONOMETRY", "PRECALCULUS", "STATISTICS 1", "CALCULUS", "CALCULUS 1 (AB)", "CALCULUS 2 (BC)",
+    "CALCULUS 3 (MULTIVARIATE)", "STATISTICS 2", "ADVANCED MATH", "ALGEBRA - ABSTRACT", "ALGEBRA 1 PART 1", "ALGEBRA 1 PART 2", "ALGEBRA 2 PART 1",
+    "ALGEBRA 2 PART 2", "ALGEBRA 3", "APPLIED MATH", "BUSINESS MATH", "CONSUMER MATH", "DIFFERENTIAL EQUATIONS", "DISCRETE MATH", "ELEMENTARY FUNCTIONS",
+    "FINITE MATHEMATICS", "GENERAL MATH", "INTEGRATED MATH 1", "INTEGRATED MATH 2", "INTEGRATED MATH 3", "INTEGRATED MATH 4", "LINEAR ALGEBRA",
+    "LINEAR PROGRAMMING", "MATH ANALYSIS", "PRE-ALGEBRA", "SEQUENTIAL MATH 1", "SEQUENTIAL MATH 2", "SEQUENTIAL MATH 3", "TRIGONOMETRY/GEOMETRY",
+    "IB MATH ANALYSIS AND APPROACHES HL", "IB MATH ANALYSIS AND APPROACHES SL", "IB MATH APPLICATIONS AND INTERPRETATIONS HL",
+    "IB MATH APPLICATIONS AND INTERPRETATIONS SL", "OTHER MATH", "ALGEBRA 2/TRIGONOMETRY", "ALGEBRA 3/TRIGONOMETRY", "COLLEGE ALGEBRA",
+    "COLLEGE ALGEBRA/TRIGONOMETRY", "COLLEGE MATH", "TRIGONOMETRY/PRE-CALCULUS",
+  ],
+  Science: [
+    "BIOLOGY", "CHEMISTRY", "PHYSICS", "ENVIRONMENTAL SCIENCE", "EARTH SCIENCE", "ANATOMY & PHYSIOLOGY", "PHYSICAL SCIENCE", "AEROSPACE", "AEROSPACE ENGINEERING",
+    "ANATOMY", "ASTRONOMY", "BOTANY", "CIVIL ENGINEERING", "ECOLOGY", "ELECTRICITY AND MAGNETISM", "ENGINEERING DESIGN AND DEVELOPMENT", "FORENSIC SCIENCE",
+    "GENETICS", "GEOLOGY", "INTEGRATED SCIENCE", "INTRO TO ENGINEERING", "INTRO TO SCIENCE", "LIFE SCIENCE", "MARINE SCIENCE/BIOLOGY", "METEOROLOGY",
+    "MICROBIOLOGY", "NUTRITION/FOOD SCIENCE", "OCEANOGRAPHY", "ORGANIC CHEMISTRY", "PHYSIOLOGY", "PRINCIPLES OF ENGINEERING", "SCIENCE, TECH, & SOCIETY",
+    "ZOOLOGY", "OTHER SCIENCE",
+  ],
+  "History / Social Studies": STARS_INTL_TITLES["History / Social Studies"],
+  "World Language": [
+    ...["SPANISH", "FRENCH", "LATIN", "AMERICAN INDIAN", "AMERICAN SIGN LANGUAGE", "ARABIC", "CHINESE", "CLASSICAL GREEK", "CLASSICAL HEBREW", "FILIPINO", "GERMAN",
+      "GREEK", "HEBREW", "HINDI", "ITALIAN", "JAPANESE", "KOREAN", "PORTUGUESE", "RUSSIAN", "SWAHILI", "URDU", "VIETNAMESE"].flatMap((l) => [1, 2, 3, 4, 5, 6].map((n) => `${l} ${n}`)),
+    "SPANISH FOR NATIVE SPEAKERS", "SPANISH LANGUAGE & CULTURE", "SPANISH LANGUAGE & LITERATURE", "SPANISH LITERATURE", "SPANISH LITERATURE & CULTURE",
+    "FRENCH LANGUAGE & CULTURE", "FRENCH LANGUAGE & LITERATURE", "FRENCH LITERATURE", "AMERICAN INDIAN IMMERSION", "AMERICAN INDIAN LANGUAGE & LITERATURE",
+    "AMERICAN INDIAN LITERATURE", "ARABIC LANGUAGE & LITERATURE", "ARABIC LITERATURE", "BRAILLE", "CHINESE LANGUAGE & CULTURE", "CHINESE LANGUAGE & LITERATURE",
+    "CHINESE LITERATURE", "FILIPINO LANGUAGE & LITERATURE", "FILIPINO LITERATURE", "GERMAN LANGUAGE & CULTURE", "GERMAN LANGUAGE & LITERATURE",
+    "GERMAN LITERATURE", "GREEK LANGUAGE & LITERATURE", "GREEK LITERATURE", "HEBREW LANGUAGE & LITERATURE", "HEBREW LITERATURE", "ITALIAN LANGUAGE & CULTURE",
+    "ITALIAN LANGUAGE & LITERATURE", "ITALIAN LITERATURE", "JAPANESE LANGUAGE & CULTURE", "JAPANESE LANGUAGE & LITERATURE", "JAPANESE LITERATURE",
+    "KOREAN LANGUAGE & LITERATURE", "KOREAN LITERATURE", "PORTUGUESE LANGUAGE & LITERATURE", "PORTUGUESE LITERATURE", "RUSSIAN LANGUAGE & LITERATURE",
+    "RUSSIAN LITERATURE", "SWAHILI LANGUAGE & LITERATURE", "SWAHILI LITERATURE", "VIETNAMESE LANGUAGE & LITERATURE", "VIETNAMESE LITERATURE", "OTHER LANGUAGE",
+  ],
+  "Computer Science / Info Tech": STARS_INTL_TITLES["Computer Science / Info Tech"],
+  Business: STARS_INTL_TITLES.Business,
+  "Fine Arts / Music": STARS_INTL_TITLES["Fine Arts / Music"],
+  "Phys. Ed / Health / Gym": STARS_INTL_TITLES["Phys. Ed / Health / Gym"],
+  "Other Subject Area": STARS_INTL_TITLES["Other Subject Area"],
+};
