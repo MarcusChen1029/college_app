@@ -49,6 +49,8 @@ test("redirectFor: the OAuth consent screen is not interrupted for a no-role use
 test("redirectFor: the extension sign-in popup is not sent to /welcome for a no-role user", () => {
   assert.equal(redirectFor(null, "/extension/connect", true), null);
   assert.equal(redirectFor("student", "/extension/connect", true), null);
+  assert.equal(redirectFor(null, "/share/parent/x", true), null);
+  assert.equal(redirectFor("teacher", "/share/portfolio/x", true), null);
   assert.equal(redirectFor(null, "/extension", true), "/welcome");
   assert.equal(redirectFor(null, "/extensions/connect", true), "/welcome");
 });

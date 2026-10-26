@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ResumeBuilder } from "@/components/ResumeBuilder";
+import { PortfolioShare } from "@/components/ShareLinkPanel";
 
 export const metadata = { title: "Résumé" };
 
@@ -14,6 +15,7 @@ export default function ResumePage() {
         <p className="text-sm text-zinc-500">An activity resume built from your Activities page and profile. Edit the header, then print or copy it.</p>
       </div>
       <ResumeBuilder />
+      <PortfolioShare />
     </div>
   );
 }
