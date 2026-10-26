@@ -52,6 +52,10 @@ Plan: all US colleges next, then UK/CA/AU.
     deleted when the link ends. The roster CSV (`web/lib/roster-export.ts`, `csv.ts`) neutralises spreadsheet formulas in student-controlled text and
     exports only the rows shown. Teacher accounts (Phases 1-4) are done; ideas not built: counselor->student comments, assigning tasks to a class,
     teacher email digests, verified-school badges.
+  - Share links (migration 0032, **written, not yet applied**; spec `docs/superpowers/specs/2026-10-27-share-links-design.md`): a student makes a read-only
+    parent link (Settings) or a portfolio link (Tools > Résumé); pages `/share/parent/<token>` and `/share/portfolio/<token>` call anon RPCs
+    `parent_view` / `portfolio_view` that return an explicit field list (never email, portals, notes, aid, essays, transcript, contact lines).
+    Hashed tokens, one active link per kind; pure code in `web/lib/share-links.ts`, wrappers in `share-api.ts`.
   - Colors and buttons (UX redesign, spec `docs/superpowers/specs/2026-10-24-ux-redesign-design.md`; phases 0-1 done, 2-6 next):
     status tones in `web/lib/status.ts` (urgent ≤7 days, soon ≤21, done = application deadline submitted), classes in `web/lib/ui.ts`
     (`toneClass`, `fitClass`, `tierClass`, `buttonClass`), tokens in `globals.css`, components `StatusPill`/`DeadlineChip`/`FitBadge`/`TierBadge`.
@@ -99,7 +103,7 @@ cd extension && npm run package   # rebuilds web/public/downloads/common-app-fil
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0032**; 0026-0029 are written but not yet applied to the project) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0033**; 0026-0029 and 0032 are written but not yet applied to the project) **and** apply it to the project.
 - **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
   through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
   differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a

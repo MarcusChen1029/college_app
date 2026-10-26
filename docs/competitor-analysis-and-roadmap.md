@@ -93,12 +93,12 @@ Facts found while sizing (2026-10-25):
 | **Phase 2: teacher and parent depth** | | | | | |
 | 5 | Teacher assigns tasks to a class or student, with due dates and completion | M-L | OverGrad, Cialfo, SchooLinks | New tables + SECURITY DEFINER RPCs on `teacher_links` / `class_members`. Needs a privacy review like teacher notes. | built 2026-10-25; migration 0028 NOT yet applied, smoke test in supabase/patches/ not run |
 | 6 | Teacher email digest | M | OverGrad, Cialfo | Builds on #5. Real sends blocked until Resend secrets are set (dry-run until then). | built 2026-10-25 (opt-in weekly, off by default); migration 0029 NOT yet applied, function not deployed or run under Deno |
-| 7 | Parent read-only view | L | 7 of 10 competitors | Tokenized link is simpler than a third role; migration 0025's role switch assumes student/teacher. Explicit column list; no portals, notes or aid. | todo |
+| 7 | Parent read-only view | L | 7 of 10 competitors | Tokenized link is simpler than a third role; migration 0025's role switch assumes student/teacher. Explicit column list; no portals, notes or aid. | built 2026-10-27 (share link from Settings, `/share/parent/<token>`; spec docs/superpowers/specs/2026-10-27-share-links-design.md); migration 0032 NOT yet applied, smoke test in supabase/patches/ not run |
 | **Parallel track** | | | | | |
 | 8 | Bulk US colleges from IPEDS / Scorecard (existing Phase 3 plan) | L for pipeline, then ongoing | Cialfo, BridgeU, Maia, Unifrog | Biggest visible gap (100 vs 15,000+). Mark baseline rows as baseline; use insert-only seeds so students' lists are not wiped. | todo |
 | **Phase 3: backlog** | | | | | |
 | 9 | In-app AI helper (essay feedback, list suggestions) | L | Maia, BridgeU, Cialfo, OverGrad, Naviance | Server-side API calls, rate limits, privacy stance for minors. Do #4 first. | todo |
-| 10 | Shareable portfolio link from activities + resume | M | Xello, Naviance, SchooLinks | Private by default. | todo |
+| 10 | Shareable portfolio link from activities + resume | M | Xello, Naviance, SchooLinks | Private by default. | built 2026-10-27 (link from Tools > Résumé, `/share/portfolio/<token>`, same mechanism as #7); migration 0032 NOT yet applied |
 | 11 | Class-level scattergrams (anonymous aggregates) | L | Naviance, Xello, SchooLinks, Unifrog | Needs enough students; minimum group size to avoid identifying individuals. | todo |
 | 12 | Translated UI (for example zh-TW) | L | Xello | Retrofits every page; only if students need it. | todo |
 | 13 | Interest quiz based on O*NET | L | Xello, Naviance, SchooLinks, Maia | Check O*NET licensing first. Low value for a tracker. | todo |
