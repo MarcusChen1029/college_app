@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import {
   CA_ACTIVITY_TYPES,
@@ -27,7 +26,9 @@ import {
   type UcCategory,
   type UcEntry,
 } from "@/lib/activities";
+import { SignInButton } from "@/components/SignInDialog";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const input = "w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
@@ -42,7 +43,7 @@ function TextField({ label, value, max, rows, onSave }: { label: string; value: 
     <label className="flex flex-col gap-1">
       <span className="flex justify-between text-xs text-zinc-500">
         {label}
-        <span className={`tabular-nums ${v.length >= max ? "font-semibold text-amber-700" : ""}`}>
+        <span className={`tabular-nums ${v.length >= max ? "font-semibold text-soon" : ""}`}>
           {v.length}/{max}
         </span>
       </span>
@@ -138,7 +139,7 @@ function Card({
         <button type="button" className={btn} onClick={() => onMove(1)} aria-label="Move down">
           ↓
         </button>
-        <button type="button" className="px-2 text-xs text-zinc-500 hover:text-rose-600" onClick={onRemove}>
+        <button type="button" className={buttonClass("danger", "sm")} onClick={onRemove}>
           Remove
         </button>
       </div>
@@ -298,7 +299,7 @@ function EntryList<T extends Item>({
     <section className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
         <h2 className="text-xl font-bold">{heading}</h2>
-        <span className={`text-sm tabular-nums ${full ? "font-semibold text-amber-700" : "text-zinc-500"}`}>
+        <span className={`text-sm tabular-nums ${full ? "font-semibold text-soon" : "text-zinc-500"}`}>
           {items.length} / {limit}
         </span>
         <span className="ml-auto flex flex-wrap gap-2">
@@ -306,7 +307,7 @@ function EntryList<T extends Item>({
           <button
             type="button"
             disabled={full}
-            className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-40"
+            className={buttonClass("primary", "sm")}
             onClick={() => {
               const item = make();
               onChange([...items, item]);
@@ -379,11 +380,7 @@ export function ActivitiesEditor() {
         {tabBtn("uc", "UC application")}
         <span className="ml-auto text-xs text-zinc-500">
           {student.auth ? "Synced to your account." : "Saved in this browser only. "}
-          {!student.auth && (
-            <Link href="/profile#account" className="text-blue-600 underline">
-              Sign in
-            </Link>
-          )}
+          {!student.auth && <SignInButton className="text-blue-600 underline">Sign in</SignInButton>}
         </span>
       </div>
 
@@ -433,7 +430,7 @@ export function ActivitiesEditor() {
                 <button
                   type="button"
                   disabled={room <= 0}
-                  className="rounded-md border border-blue-600 px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50 disabled:opacity-40"
+                  className={buttonClass("secondary", "sm")}
                   onClick={() => save({ ...data, uc: [...data.uc, ...drafts.slice(0, room)] })}
                   title="Creates UC drafts from your Common App activities and honors. The UC boxes are longer, so expand the text afterwards."
                 >

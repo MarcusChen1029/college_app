@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER, resumeText, type ResumeHeader, type ResumeOptions, type ResumeSource } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 // The global h1–h3 rule sets the display font; resume headings follow the serif body instead.
@@ -79,7 +80,7 @@ export function ResumeBuilder() {
               Profile
             </Link>
             ; entries from{" "}
-            <Link href="/activities" className="text-blue-600 underline">
+            <Link href="/writing/activities" className="text-blue-600 underline">
               Activities
             </Link>
             .
@@ -87,7 +88,7 @@ export function ResumeBuilder() {
         </section>
 
         <section className="flex flex-col gap-2">
-          <button type="button" onClick={() => window.print()} className="rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700">
+          <button type="button" onClick={() => window.print()} className={buttonClass("primary", "sm")}>
             Print / save as PDF
           </button>
           <button
@@ -97,7 +98,7 @@ export function ResumeBuilder() {
               setCopied(true);
               setTimeout(() => setCopied(false), 2000);
             }}
-            className="rounded-md border border-zinc-300 px-3 py-2 text-sm font-medium hover:bg-zinc-50"
+            className={buttonClass("secondary", "sm")}
           >
             {copied ? "Copied ✓" : "Copy as plain text"}
           </button>
@@ -145,7 +146,7 @@ export function ResumeBuilder() {
         {empty && (
           <p className="mt-8 text-center font-sans text-sm text-zinc-500 print:hidden">
             No activities yet. Add them on the{" "}
-            <Link href="/activities" className="text-blue-600 underline">
+            <Link href="/writing/activities" className="text-blue-600 underline">
               Activities
             </Link>{" "}
             page and they&apos;ll appear here.

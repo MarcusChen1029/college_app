@@ -23,6 +23,9 @@ export const isSubmitted = (s: Status) => SUBMITTED.includes(s);
 /** True once the application is in and a decision (not just "waiting") has been recorded. */
 export const hasDecision = (s: Status) => isSubmitted(s) && s !== "submitted" && s !== "interview";
 
+/** A deadline counts as done only once the application is submitted (aid, deposits etc. keep showing days left). */
+export const isDeadlineDone = (kind: string, status: Status): boolean => kind === "application" && isSubmitted(status);
+
 export type Stage = "in_progress" | "ready" | "submitted";
 
 export function stage(status: Status, checklist: Checklist): Stage {

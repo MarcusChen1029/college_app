@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { LegacyAccountHash } from "@/components/LegacyAccountHash";
 import { ProfileDashboard } from "@/components/ProfileDashboard";
 import { getDeadlines, getSummaries } from "@/lib/data";
 
@@ -11,8 +12,11 @@ async function Data() {
 
 export default function ProfilePage() {
   return (
-    <Suspense fallback={<div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />}>
-      <Data />
-    </Suspense>
+    <>
+      <LegacyAccountHash />
+      <Suspense fallback={<div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />}>
+        <Data />
+      </Suspense>
+    </>
   );
 }

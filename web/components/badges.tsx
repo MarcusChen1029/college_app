@@ -3,51 +3,39 @@
 import { useState } from "react";
 import { SCHOOL_DOMAINS } from "@/lib/school-domains";
 import { FIT_LABEL, type Fit } from "@/lib/fit";
-import { tierLetter, type TierLetter } from "@/lib/tiers";
+import { pillTone } from "@/lib/status";
+import { fitClass, fitDotClass, FIT_LEVEL, tierClass, toneClass } from "@/lib/ui";
 import type { TierCode } from "@/lib/types";
-
-const TIER_STYLE: Record<TierLetter, string> = {
-  S: "bg-violet-600 text-white",
-  A: "bg-blue-600 text-white",
-  B: "bg-teal-600 text-white",
-  C: "bg-amber-500 text-white",
-  D: "bg-zinc-500 text-white",
-};
 
 export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undefined; size?: "sm" | "md" }) {
   if (!tier) return <span className="text-zinc-400">—</span>;
   const plus = tier.length > 1;
   const dims = size === "sm" ? `h-5 text-[11px] ${plus ? "min-w-5 px-1" : "w-5"}` : `h-7 text-sm ${plus ? "min-w-7 px-1.5" : "w-7"}`;
   return (
-    <span className={`inline-flex items-center justify-center rounded-md font-bold ${dims} ${TIER_STYLE[tierLetter(tier)]}`} title={`Tier ${tier}`}>
+    <span className={`inline-flex items-center justify-center rounded-md font-display font-bold ${dims} ${tierClass(tier)}`} title={`Tier ${tier}`}>
       {tier}
     </span>
   );
 }
 
-const FIT_STYLE: Record<Fit, string> = {
-  super_reach: "bg-rose-600 text-white ring-rose-700 dark:bg-rose-700 dark:ring-rose-500",
-  reach: "bg-rose-100 text-rose-800 ring-rose-300 dark:bg-rose-950 dark:text-rose-200 dark:ring-rose-800",
-  target: "bg-amber-100 text-amber-800 ring-amber-300 dark:bg-amber-950 dark:text-amber-200 dark:ring-amber-800",
-  safety: "bg-emerald-100 text-emerald-800 ring-emerald-300 dark:bg-emerald-950 dark:text-emerald-200 dark:ring-emerald-800",
-};
-
 export function FitBadge({ fit, reason }: { fit: Fit; reason?: string }) {
   return (
-    <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ring-1 ${FIT_STYLE[fit]}`} title={reason}>
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${fitClass(fit)}`}
+      title={reason}
+    >
+      <span className="flex gap-0.5" aria-hidden="true">
+        {[1, 2, 3, 4].map((n) => (
+          <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[fit] ? fitDotClass(fit) : ""}`} />
+        ))}
+      </span>
       {FIT_LABEL[fit]}
     </span>
   );
 }
 
 export function Pill({ children, tone = "zinc" }: { children: React.ReactNode; tone?: "zinc" | "blue" | "green" | "red" }) {
-  const tones = {
-    zinc: "bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200",
-    blue: "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-200",
-    green: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-200",
-    red: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-200",
-  };
-  return <span className={`inline-block rounded px-1.5 py-0.5 text-xs font-medium ${tones[tone]}`}>{children}</span>;
+  return <span className={`inline-block rounded border px-1.5 py-0.5 text-xs font-medium ${toneClass(pillTone(tone))}`}>{children}</span>;
 }
 
 /** The school's logo (its site icon), shown left of the tier. Hides itself when there is none. */

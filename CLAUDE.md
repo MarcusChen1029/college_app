@@ -26,11 +26,44 @@ Plan: all US colleges next, then UK/CA/AU.
     Builds never touch Supabase; pages wrap data in `<Suspense>`.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
     signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
-  - Google Docs (Essays page, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
+  - Google Docs (Writing > Essays page, `/writing/essays`, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
     Needs server env vars `GOOGLE_DOCS_CLIENT_ID`, `GOOGLE_DOCS_CLIENT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`,
     `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64, 32 bytes) and migration 0016 (`google_tokens`, **written, not yet applied**).
     Without them the page keeps the docs.new + paste-link flow.
+  - Roles (migration 0020, plan in `docs/superpowers/specs/2026-10-24-teacher-counselor-design.md`): each account is a `student` or a `teacher`,
+    chosen once at `/welcome` via RPC `set_my_role` (tables `user_roles`, `teacher_profiles`; existing users were backfilled as students).
+    `student-store.ts` loads the role first and only students load/merge list data. `RoleGate` redirects, `SiteNav` swaps the nav, `/teacher` is the
+    teacher home. Teachers must never get SELECT on student tables (portal passwords live in them); later phases read through SECURITY DEFINER RPCs.
+  - Linking (migration 0021): teachers make `classes` and `join_codes` (class code, or one personal "individual" code); a student redeems a code via
+    `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
+    row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
+  - Navigation (UX redesign phase 2): nav model in `web/lib/roles.ts` (`navFor`/`accountMenuFor`/`startedFrom`); sign-in is a dialog opened with `openSignIn()`;
+    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays/Activities/Resume are under `/writing/*`.
+  - Switching role (migration 0025): `RoleSwitcher` (Settings page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
+    account has links (a student must leave their teachers, a teacher must remove their students); leaving teacher mode revokes all join codes and archives
+    classes. The other side's data is kept so switching back restores it.
+  - Teacher read access (migrations 0022/0023): teachers read students only through `teacher_roster(p_today)`, `teacher_student(id, p_today)`,
+    `teacher_deadlines(days, p_today)`; they return an explicit column list (never `portals`, `portal_*`, `notes`, `resume`, aid offers; essay titles/links
+    are stripped when the student's `share_essays` is off). The client sends its local date as `p_today`. Flags/progress are computed in `web/lib/roster.ts`;
+    teacher pages are `/teacher`, `/teacher/students` (`?s=<id>` for detail), `/teacher/deadlines`.
+  - Teacher notes (migration 0024): `teacher_notes` are private to the author (RLS) and tied to the teacher<->student link by a composite FK, so they are
+    deleted when the link ends. The roster CSV (`web/lib/roster-export.ts`, `csv.ts`) neutralises spreadsheet formulas in student-controlled text and
+    exports only the rows shown. Teacher accounts (Phases 1-4) are done; ideas not built: counselor->student comments, assigning tasks to a class,
+    teacher email digests, verified-school badges.
+  - Colors and buttons (UX redesign, spec `docs/superpowers/specs/2026-10-24-ux-redesign-design.md`; phases 0-1 done, 2-6 next):
+    status tones in `web/lib/status.ts` (urgent ≤7 days, soon ≤21, done = application deadline submitted), classes in `web/lib/ui.ts`
+    (`toneClass`, `fitClass`, `tierClass`, `buttonClass`), tokens in `globals.css`, components `StatusPill`/`DeadlineChip`/`FitBadge`/`TierBadge`.
+    Never write raw red/amber/green/rose/emerald classes, and never leave `bg-white`/`border-zinc-*` next to a tone or button class
+    (Tailwind stylesheet order wins). No dark mode.
   - Fit labels: `web/lib/fit.ts` (uses the international admit rate when the student is international). GPA percentile estimate: `web/lib/gpa.ts`.
+- **Transcript** (migration 0030, applied; spec `docs/superpowers/specs/2026-10-26-transcript-design.md`, plan `docs/superpowers/plans/2026-10-26-transcript.md`):
+  one standardized coursework record per student at `/application/transcript` (tabs Edit / Import / View as). Tables `transcript_schools` and `transcript_courses`
+  (per-user RLS, composite FK so a course can only join the same student's school). Teachers get **no** access; no RPC, roster or context pack reads them.
+  Grades are stored exactly as printed, never converted. Pure code: `web/lib/transcript.ts` (model, validators, merge), `transcript-maps.ts` + `transcript-maps/*.ts`
+  (Common App, STARS, Cal State Apply, UC mapping tables; every value is `verified | unverified | none`; unverified values get no Copy button),
+  `transcript-import.ts` (format spec, copy-prompt for any AI, JSON reader, import plan, MCP add/update planning). Import is paste-JSON with a review table; MCP tools
+  (`get_transcript_format`, `get_transcript`, `add_transcript_courses`, `update_transcript_course`, `delete_transcript_course`) save directly and are badged "AI".
+  Adding another system = one new `SystemMap` file plus an entry in `SYSTEMS` (the completeness test fails until every canonical value is mapped).
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every
@@ -50,7 +83,11 @@ python3 scripts/build_seed.py               # after editing data/*.json
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0020**) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0031**; 0026-0029 are written but not yet applied to the project) **and** apply it to the project.
+- **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
+  through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
+  differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a
+  code problem; don't rename migrations or repair history to silence it without the owner deciding to.
 - **Supabase MCP quirk:** INSERT/SELECT/DDL via `execute_sql`/`apply_migration` work. UPDATE/DELETE/DROP wait for the
   owner's approval and time out after 60 s if nobody approves. Approve the prompt when it appears, or put the SQL in
   `supabase/patches/` and have the owner run it in the dashboard SQL Editor.
@@ -73,7 +110,7 @@ UConn has no 2026-27 deadlines (its admissions site was down). New colleges with
 (e.g. "University of California-Riverside").
 
 ### Earlier status (2026-10-20)
-Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my-list/account),
+Done: schema + RLS, 10 colleges seeded, tier review v1, data gaps patched, web app (list/detail/compare/my colleges/settings),
 sign-in + synced list + checklist, reminder function + cron. All SQL patches have been run on the live DB.
 
 **Open issue (Vercel):** the deployed site shows "A server error occurred". Cause confirmed: env vars are missing in Vercel.
@@ -87,6 +124,14 @@ Owner still needs to set (Supabase dashboard): Auth Site URL + redirect URLs (`h
 1. Help the owner verify the Vercel fix and Google sign-in end to end (Google provider must be enabled in Supabase first; see `DEPLOY.md` §3).
 2. Add a friendly error/config page: when env vars are missing, show a clear message instead of the generic error
    (e.g. check in `app/layout.tsx` and add `app/error.tsx`).
-3. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
+3. Transcript mapping gaps (all flagged `unverified` in the app): Common App's Subject and Grading Scale dropdowns (need a logged-in screenshot), UIUC SRAR dropdowns
+   (not yet a mapped system: needs an applicant account or admissions email), UC term/grading-system strings, STARS full Course Level list, CSU A/B/F area names.
+   Research with source URLs: `docs/superpowers/research/`.
+3b. Fill data gaps: CDS for the 8 baseline-only colleges above, UConn deadlines, short names. Berkeley CDS C7/C9/C11. Its CDS is a multi-tab Google Sheet: download it as .xlsx manually and parse it.
 4. Phase 3: bulk-import base rows for all US colleges from College Scorecard / IPEDS (name, location, size, admit rate,
    SAT ranges, cost), marked as such. CDS details can then be added school by school.
+
+## Competitor research & feature roadmap
+`docs/competitor-analysis-and-roadmap.md` (2026-10-25) compares us with Xello, SchooLinks, OverGrad, Unifrog, BridgeU, Cialfo, FolderWave,
+MaiaLearning, Naviance and Parchment, and holds a prioritized feature roadmap with effort estimates and a status column. Read it before
+planning new features, and update the status column when an item lands.

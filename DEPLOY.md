@@ -45,7 +45,7 @@ Set these in **Edge Functions → Secrets**:
 | `REMINDER_FROM` | e.g. `College Tracker <reminders@yourdomain.com>` (domain verified in Resend) |
 | `APP_URL` | your Vercel production URL (used for links in the email) |
 
-Students control reminders on `/account` (on by default; reminders go out 14, 3 and 1 days before each deadline). Sent reminders are recorded in `reminder_log`, so nobody gets the same reminder twice.
+Students control reminders in **Settings** (`/settings`, Reminders card) (on by default; reminders go out 14, 3 and 1 days before each deadline). Sent reminders are recorded in `reminder_log`, so nobody gets the same reminder twice.
 
 To test without waiting for the cron job (SQL editor):
 

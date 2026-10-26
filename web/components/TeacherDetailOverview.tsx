@@ -1,0 +1,95 @@
+"use client";
+
+import { useCallback } from "react";
+import { collegeNames } from "@/lib/links-api";
+import { englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { useLoad } from "@/lib/use-load";
+import type { StudentDetail } from "@/lib/roster";
+import { regionLabel } from "@/lib/regions";
+import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib/scores";
+
+function Item({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="space-y-1 rounded-2xl border border-zinc-200 p-4">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">{label}</dt>
+      <dd className="text-sm">{children}</dd>
+    </div>
+  );
+}
+
+const Missing = () => <span className="text-zinc-400">Not entered</span>;
+
+/** A headline score with the filled-in section scores underneath. */
+function Score({ value, scale, sections }: { value: number | null; scale: ScoreScale; sections?: SectionScores }) {
+  const parts = sectionScores(scale, sections);
+  if (value == null && parts.length === 0) return <Missing />;
+  return (
+    <>
+      {value != null && <p className="font-display text-xl font-bold">{value}</p>}
+      {parts.length > 0 && <p className="text-zinc-600">{parts.map((p) => `${p.label} ${p.value}`).join(" · ")}</p>}
+    </>
+  );
+}
+
+export function OverviewPanel({ detail }: { detail: StudentDetail }) {
+  const p = detail.profile;
+  const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
+  return (
+    <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <Item label="SAT">
+        <Score value={p.satTotal} scale={SAT_SCALE} sections={p.testDetails.sat} />
+      </Item>
+      <Item label="ACT">
+        <Score value={p.actComposite} scale={ACT_SCALE} sections={p.testDetails.act} />
+      </Item>
+      <Item label="GPA (unweighted)">{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
+      <Item label={english.length > 1 ? "English tests" : "English test"}>
+        {english.length > 0 ? (
+          <ul className="space-y-2">
+            {english.map((t) => (
+              <li key={t.key}>
+                <p>
+                  {t.label}
+                  {t.total != null && <span className="font-display text-xl font-bold"> {t.total}</span>}
+                </p>
+                {t.parts.length > 0 && <p className="text-zinc-600">{t.parts.map((s) => `${s.label} ${s.value}`).join(" · ")}</p>}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Missing />
+        )}
+      </Item>
+      <Item label="Intended field">{p.intendedCategory ? humanize(p.intendedCategory) : <Missing />}</Item>
+      <Item label="Target regions">{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-400">Not chosen</span>}</Item>
+      <Item label="International student">{p.isInternational ? "Yes" : "No"}</Item>
+      <Item label="Needs financial aid">{p.needsAid ? "Yes" : "No"}</Item>
+      <Item label="Profile last updated">{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : <span className="text-zinc-400">Never</span>}</Item>
+    </dl>
+  );
+}
+
+/** The student's interested colleges in their own order, with names from the database (a title made from the slug if unknown). */
+export function InterestedPanel({ detail }: { detail: StudentDetail }) {
+  const names = interestedNames(detail);
+  const slugs = detail.profile.interested;
+  const load = useCallback(() => collegeNames(slugs), [slugs]);
+  const { data: real, loading } = useLoad(load); // if the lookup fails `real` stays null and the fallback names show
+  if (names.length === 0) return <p className="text-sm text-zinc-500">{detail.displayName} hasn&apos;t marked any colleges as interested.</p>;
+  return (
+    <div className="space-y-3">
+      <p className="text-sm text-zinc-500">Colleges {detail.displayName} is considering but hasn&apos;t put on their list.</p>
+      <ul className="flex flex-wrap gap-2" aria-busy={loading}>
+        {names.map((n) =>
+          loading ? (
+            <li key={n.slug} aria-hidden="true" className="h-7 w-28 animate-pulse rounded-full bg-zinc-100" />
+          ) : (
+            <li key={n.slug} className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-800">
+              {real?.get(n.slug) ?? n.name}
+            </li>
+          ),
+        )}
+      </ul>
+    </div>
+  );
+}

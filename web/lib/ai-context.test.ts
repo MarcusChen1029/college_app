@@ -162,3 +162,9 @@ test("empty list still produces a usable pack", () => {
   const md = buildContextPack(input({ colleges: [] }));
   assert.match(md, /No colleges on my list yet/);
 });
+
+test("never includes per-college portal logins, notes or aid offers even if the entry carries them", () => {
+  const leaky = { portal: { url: "https://apply.example.edu", username: "kid@x.com", password: "s3cret-pw" }, notes: "private essay idea", aidOfferUsd: 61234 } as never;
+  const md = buildContextPack(input({ full: true }, { detail: detail(), ...(leaky as object) }));
+  assert.doesNotMatch(md, /s3cret-pw|kid@x\.com|apply\.example\.edu|private essay idea|61,?234/);
+});

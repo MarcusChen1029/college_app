@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { MyList } from "@/components/MyList";
+import { TeacherTasksForStudent } from "@/components/TeacherTasksForStudent";
 import { getDeadlines, getLookups, getScoreCodes, getSummaries } from "@/lib/data";
 
 export const metadata = { title: "My list" };
@@ -12,6 +13,7 @@ async function Data() {
 export default function MyListPage() {
   return (
     <div className="space-y-4">
+      <TeacherTasksForStudent />
       <p className="text-sm text-zinc-500">
         Plan and checklist for every college you&apos;re applying to. A college is <strong>Ready</strong> once its checklist is complete, and only then
         can it be marked Submitted.

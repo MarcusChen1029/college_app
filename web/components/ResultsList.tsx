@@ -4,21 +4,13 @@ import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 import { isSubmitted, RESULT_LABEL, RESULT_OPTIONS, resultStatus } from "@/lib/application";
 import { registerColleges, useStudent } from "@/lib/student-store";
+import { resultTone } from "@/lib/status";
+import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Lookups } from "@/lib/types";
 import { TierBadge } from "./badges";
-import { SELECT } from "./ChecklistPanel";
+import { SELECT_BASE } from "./ChecklistPanel";
 
 const noop = () => () => {};
-
-const TONE: Record<(typeof RESULT_OPTIONS)[number], string> = {
-  submitted: "",
-  admitted: "border-emerald-400 bg-emerald-50 text-emerald-800",
-  enrolled: "border-emerald-500 bg-emerald-100 font-semibold text-emerald-900",
-  deferred: "border-amber-300 bg-amber-50 text-amber-800",
-  waitlisted: "border-amber-300 bg-amber-50 text-amber-800",
-  rejected: "border-rose-300 bg-rose-50 text-rose-800",
-  withdrawn: "text-zinc-500",
-};
 
 export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; plans: Lookups["plans"] }) {
   const student = useStudent();
@@ -75,7 +67,7 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
                   <td className="p-2 text-zinc-600">{plans.find((p) => p.key === entry.plan)?.label ?? "—"}</td>
                   <td className="p-2">
                     <select
-                      className={`${SELECT} ${TONE[result]}`}
+                      className={`${SELECT_BASE} ${toneClass(resultTone(result))}`}
                       value={result}
                       onChange={(e) => student.update(entry.slug, { status: e.target.value as typeof result })}
                       aria-label={`Decision for ${college.name}`}

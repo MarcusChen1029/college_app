@@ -5,9 +5,10 @@ import { useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
+import { isDeadlineDone } from "@/lib/application";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
-import { AccountPanel, ReminderToggle } from "./AccountPanel";
+import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
 import { ProfileCards } from "./ProfileCards";
 
@@ -40,7 +41,14 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     deadlines
       .filter((d) => d.institution_id === college.id && d.due_date)
       .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
-      .map((d) => ({ id: d.id, date: d.due_date!, label: d.label ?? d.kind, college: college.short_name ?? college.name, slug: college.slug })),
+      .map((d) => ({
+        id: d.id,
+        date: d.due_date!,
+        label: d.label ?? d.kind,
+        college: college.short_name ?? college.name,
+        slug: college.slug,
+        done: isDeadlineDone(d.kind, entry.status),
+      })),
   );
   const now = new Date();
   const today = isoOf(now.getFullYear(), now.getMonth(), now.getDate());
@@ -84,22 +92,12 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
               <>
                 {hasScores ? (
                   <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
-                    <div className="rounded-2xl bg-rose-300 p-3">
-                      <p className="font-display text-3xl font-bold">{counts.super_reach}</p>
-                      <p className="text-xs font-medium">Super reach</p>
-                    </div>
-                    <div className="rounded-2xl bg-rose-100 p-3">
-                      <p className="font-display text-3xl font-bold">{counts.reach}</p>
-                      <p className="text-xs font-medium">Reach</p>
-                    </div>
-                    <div className="rounded-2xl bg-amber-100 p-3">
-                      <p className="font-display text-3xl font-bold">{counts.target}</p>
-                      <p className="text-xs font-medium">Target</p>
-                    </div>
-                    <div className="rounded-2xl bg-emerald-100 p-3">
-                      <p className="font-display text-3xl font-bold">{counts.safety}</p>
-                      <p className="text-xs font-medium">Safety</p>
-                    </div>
+                    {(["super_reach", "reach", "target", "safety"] as const).map((f) => (
+                      <div key={f} className="flex flex-col items-center gap-2 rounded-2xl bg-zinc-50 p-3">
+                        <p className="font-display text-3xl font-bold">{counts[f]}</p>
+                        <FitBadge fit={f} />
+                      </div>
+                    ))}
                   </div>
                 ) : (
                   <p className="mt-2 text-sm text-zinc-600">Add an SAT or ACT score above to see super reach, reach, target and safety counts.</p>
@@ -124,11 +122,6 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
               </>
             )}
           </section>
-
-          <section id="account" className="space-y-3">
-            <h2 className="text-xl font-bold">Account</h2>
-            <AccountPanel />
-          </section>
         </div>
 
         <aside aria-labelledby="deadlines-heading" className="h-fit space-y-4 rounded-3xl border-2 border-zinc-200 p-6">
@@ -136,9 +129,12 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             Deadlines
           </h2>
           <DeadlineCalendar events={events} today={today} />
-          <div className="border-t border-zinc-100 pt-4">
-            <ReminderToggle />
-          </div>
+          <p className="border-t border-zinc-100 pt-4 text-sm text-zinc-600">
+            Reminder emails:{" "}
+            <Link href="/settings#reminders" className="font-semibold text-blue-700 underline underline-offset-4">
+              Settings
+            </Link>
+          </p>
         </aside>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { PLANS, type PlanKey } from "@/lib/plans";
 import { useStudent } from "@/lib/student-store";
+import { buttonClass, toneClass } from "@/lib/ui";
 
 const noop = () => () => {};
 
@@ -24,8 +25,8 @@ export function PricingPlans() {
           return (
             <section
               key={p.key}
-              className={`relative flex flex-col rounded-2xl border bg-white p-6 dark:bg-zinc-950 ${
-                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : featured ? "border-blue-200 dark:border-blue-900" : "border-zinc-200 dark:border-zinc-800"
+              className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
+                isCurrent ? "border-blue-500 ring-2 ring-blue-500/30" : featured ? "border-blue-200" : "border-zinc-200"
               }`}
             >
               {featured && (
@@ -45,19 +46,19 @@ export function PricingPlans() {
               </p>
               <ul className="mt-5 flex-1 space-y-2 text-sm">
                 <li className="flex gap-2">
-                  <span className="text-emerald-600">✓</span>
+                  <span className="text-done">✓</span>
                   <span>
                     <strong>{p.limit == null ? "Unlimited" : `Up to ${p.limit}`}</strong> colleges in My list
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-emerald-600">✓</span>Checklist, essays, portal logins and school codes
+                  <span className="text-done">✓</span>Checklist, essays, portal logins and school codes
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-emerald-600">✓</span>Deadline reminders by email
+                  <span className="text-done">✓</span>Deadline reminders by email
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-emerald-600">✓</span>
+                  <span className="text-done">✓</span>
                   {p.fullAiContext ? (
                     <span>
                       <strong>Copy for AI, full:</strong> every college&apos;s deadlines, English minimums, essays, cost and aid, with a source link
@@ -69,7 +70,7 @@ export function PricingPlans() {
                 </li>
                 {p.connectAi && (
                   <li className="flex gap-2">
-                    <span className="text-emerald-600">✓</span>
+                    <span className="text-done">✓</span>
                     <span>
                       <strong>Connect AI:</strong> link your own ChatGPT or Claude and update your applications by chat
                     </span>
@@ -77,16 +78,12 @@ export function PricingPlans() {
                 )}
               </ul>
               {over && !isCurrent && (
-                <p className="mt-4 rounded-md bg-amber-50 p-2 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">
+                <p className={`mt-4 rounded-md border p-2 text-xs ${toneClass("soon")}`}>
                   You have {listed} colleges. You&apos;ll keep them, but can&apos;t add more until you&apos;re under {p.limit}.
                 </p>
               )}
               <button
-                className={`mt-5 rounded-full px-4 py-2.5 text-sm font-semibold ${
-                  isCurrent
-                    ? "cursor-default bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
-                    : "bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
-                }`}
+                className={`mt-5 ${buttonClass(isCurrent ? "secondary" : "primary")}`}
                 disabled={isCurrent || current == null}
                 onClick={() => {
                   student.setPlan(p.key);
@@ -101,7 +98,7 @@ export function PricingPlans() {
       </div>
 
       {justChose && current === justChose && (
-        <p className="rounded-md bg-emerald-50 p-3 text-sm text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200" role="status">
+        <p className={`rounded-md border p-3 text-sm ${toneClass("done")}`} role="status">
           You&apos;re on the {PLANS.find((p) => p.key === justChose)!.name} plan.{" "}
           <Link href="/application/list" className="underline">
             Go to My list

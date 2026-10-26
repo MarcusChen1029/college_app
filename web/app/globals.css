@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
-/* The site is light-only: white + sky blue, navy ink, a few bright accents.
-   `dark:` utilities only apply under a `.dark` ancestor, which nothing sets. */
-@custom-variant dark (&:where(.dark, .dark *));
+/* White + sky blue, navy ink, a few bright accents.
+   The site is light-only (no dark mode yet; see the redesign spec §4). */
 
 :root {
   color-scheme: light;
@@ -49,6 +48,35 @@
   --color-coral: #ff7a66;
   --color-mint: #6fd9b3;
   --color-lilac: #b9a8ff;
+
+  /* Status and fit: see docs/superpowers/specs/2026-10-24-ux-redesign-design.md §4 */
+  --color-urgent: #b91c1c;
+  --color-urgent-bg: #fef2f2;
+  --color-urgent-line: #fecaca;
+  --color-soon: #92400e;
+  --color-soon-bg: #fffbeb;
+  --color-soon-line: #fde68a;
+  --color-done: #15803d;
+  --color-done-bg: #f0fdf4;
+  --color-done-line: #bbf7d0;
+  --color-progress: #12304a;
+  --color-progress-bg: #cdeafc;
+  --color-progress-line: #9fd5f5;
+  --color-neutral: #3f5a73;
+  --color-neutral-bg: #e9f2fa;
+  --color-neutral-line: #d6e5f1;
+  --color-fit-super-reach: #86198f;
+  --color-fit-super-reach-bg: #fdf4ff;
+  --color-fit-super-reach-line: #f0abfc;
+  --color-fit-reach: #7e22ce;
+  --color-fit-reach-bg: #faf5ff;
+  --color-fit-reach-line: #d8b4fe;
+  --color-fit-target: #4338ca;
+  --color-fit-target-bg: #eef2ff;
+  --color-fit-target-line: #a5b4fc;
+  --color-fit-safety: #0f766e;
+  --color-fit-safety-bg: #f0fdfa;
+  --color-fit-safety-line: #5eead4;
 }
 
 body {
@@ -227,4 +255,9 @@ h3,
 /* Resume prints with letter-size margins. */
 @page {
   margin: 0.6in;
+}
+
+/* Link-like buttons lost the pointer cursor. */
+button:not(:disabled) {
+  cursor: pointer;
 }

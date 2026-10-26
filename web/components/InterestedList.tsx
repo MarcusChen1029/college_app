@@ -6,6 +6,7 @@ import { computeFit } from "@/lib/fit";
 import { fmtPct } from "@/lib/format";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { FitBadge, TierBadge } from "./badges";
 
 const noop = () => () => {};
@@ -33,7 +34,7 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
   return (
     <div className="space-y-3">
       {!student.canAdd && (
-        <p className="rounded bg-amber-50 px-3 py-2 text-xs text-amber-800">
+        <p className={`rounded border px-3 py-2 text-xs ${toneClass("soon")}`}>
           Your list is full on the {student.plan.name} plan. Remove a college from{" "}
           <Link href="/application/list" className="underline">
             My list
@@ -66,14 +67,14 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
                 <span className="text-xs text-zinc-500">Already on my list</span>
               ) : (
                 <button
-                  className="rounded-md bg-blue-600 px-3 py-1 text-xs font-medium text-white hover:bg-blue-700 disabled:opacity-40"
+                  className={buttonClass("primary", "sm")}
                   disabled={!student.canAdd}
                   onClick={() => student.promote({ slug: c.slug, id: c.id })}
                 >
                   Move to my list
                 </button>
               )}
-              <button className="text-xs text-zinc-500 hover:text-rose-600" onClick={() => student.toggleInterested(c.slug)}>
+              <button className={buttonClass("danger", "sm")} onClick={() => student.toggleInterested(c.slug)}>
                 Remove
               </button>
             </li>

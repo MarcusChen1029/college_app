@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { buildContextPack, type PackCollege } from "@/lib/ai-context";
+import { customDeadline, customSummary } from "@/lib/custom-college";
 import type { StudentProfile } from "@/lib/fit";
 import type { Plan } from "@/lib/plans";
-import type { CollegeDetail, Deadline, Lookups } from "@/lib/types";
+import { useStudent } from "@/lib/student-store";
+import type { CollegeDetail, CollegeSummary, Deadline, Lookups } from "@/lib/types";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { Modal } from "./Modal";
 
 type Details = Record<string, CollegeDetail | null>;
@@ -86,17 +89,17 @@ function Dialog({
   return (
     <Modal title={<h2 className="text-lg font-semibold">Copy for AI</h2>} onClose={onClose}>
       <div className="space-y-3 text-sm">
-        <p className="text-zinc-600 dark:text-zinc-300">
+        <p className="text-zinc-600">
           Paste this into ChatGPT, Claude or Gemini so it starts from your real scores, list and deadlines instead of guessing. Portal logins and
           notes are never included.
         </p>
         {full ? (
-          <p className="rounded-md bg-emerald-50 p-2 text-xs text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
+          <p className={`rounded-md border p-2 text-xs ${toneClass("done")}`}>
             Full version ({plan.name} plan): each college&apos;s deadlines, English minimums, essays, cost and aid, how majors are admitted, your
             activities and a numbered source link for every number.
           </p>
         ) : (
-          <p className="rounded-md bg-blue-50 p-2 text-xs text-blue-900 dark:bg-blue-950 dark:text-blue-100">
+          <p className="rounded-md bg-blue-50 p-2 text-xs text-blue-900">
             Free version: your profile and a one-line summary per college.{" "}
             <Link href="/pricing" className="font-semibold underline">
               Upgrade
@@ -106,27 +109,27 @@ function Dialog({
           </p>
         )}
         {load?.state === "error" && (
-          <p className="rounded-md bg-amber-50 p-2 text-xs text-amber-800 dark:bg-amber-950 dark:text-amber-200">
+          <p className={`rounded-md border p-2 text-xs ${toneClass("soon")}`}>
             Couldn&apos;t load college details ({load.message}). The text below has the summary only for now.
           </p>
         )}
         {text == null ? (
-          <div className="h-80 animate-pulse rounded-md bg-zinc-100 dark:bg-zinc-900" aria-label="Loading college details" />
+          <div className="h-80 animate-pulse rounded-md bg-zinc-100" aria-label="Loading college details" />
         ) : (
           <textarea
             readOnly
             value={text}
-            className="h-80 w-full resize-y rounded-md border border-zinc-300 bg-zinc-50 p-2 font-mono text-xs dark:border-zinc-700 dark:bg-zinc-900"
+            className="h-80 w-full resize-y rounded-md border border-zinc-300 bg-zinc-50 p-2 font-mono text-xs"
             aria-label="Context to paste into your AI"
             onFocus={(e) => e.currentTarget.select()}
           />
         )}
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50" disabled={!text} onClick={copy}>
+          <button className={buttonClass("primary", "sm")} disabled={!text} onClick={copy}>
             Copy to clipboard
           </button>
           <button
-            className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:hover:bg-zinc-900"
+            className={buttonClass("secondary", "sm")}
             disabled={!text}
             onClick={download}
           >
@@ -148,7 +151,7 @@ export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClo
   return (
     <>
       <button
-        className="rounded-md border border-zinc-300 bg-white px-2.5 py-1 text-xs font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+        className={buttonClass("secondary", "sm")}
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
       >
@@ -156,5 +159,38 @@ export function AiContextButton(props: Omit<Parameters<typeof Dialog>[0], "onClo
       </button>
       {open && <Dialog {...props} onClose={() => setOpen(false)} />}
     </>
+  );
+}
+
+/**
+ * The button wired to the signed-in or local student's own list. Renders nothing while loading or when the list is empty.
+ * Custom colleges have no row in our data, so they are built from what the student typed.
+ */
+export function StudentAiContextButton({
+  colleges,
+  deadlines,
+  plans,
+  englishTests,
+}: {
+  colleges: CollegeSummary[];
+  deadlines: Deadline[];
+  plans: Lookups["plans"];
+  englishTests: Lookups["englishTests"];
+}) {
+  const student = useStudent();
+  if (!student.ready || student.list.length === 0) return null;
+  const resolve = (e: (typeof student.list)[number]) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
+  const allDeadlines = [...deadlines, ...student.list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d)];
+  return (
+    <AiContextButton
+      colleges={student.list.flatMap((e) => {
+        const college = resolve(e);
+        return college ? [{ college, plan: e.plan, status: e.status, checklist: e.checklist }] : [];
+      })}
+      profile={student.profile}
+      plan={student.plan}
+      deadlines={allDeadlines}
+      lookups={{ plans, englishTests }}
+    />
   );
 }

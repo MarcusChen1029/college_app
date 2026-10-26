@@ -9,18 +9,21 @@ import {
   type EnglishPlan,
   type TestPlan,
 } from "@/lib/checklist";
-import { ENGLISH_POLICY, TEST_POLICY } from "@/lib/format";
+import { parseOffer } from "@/lib/aid";
+import { ENGLISH_POLICY, fmtUsd, TEST_POLICY } from "@/lib/format";
 import type { ListEntry } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 
-export const SELECT = "rounded border border-zinc-300 bg-white px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
-const INPUT = "rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900";
+// No bg/border colour here: a tone class is added instead (Tailwind orders by stylesheet, so competing utilities would win).
+export const SELECT_BASE = "rounded border px-1 py-0.5 text-xs";
+export const SELECT = `${SELECT_BASE} border-zinc-300 bg-white`;
+const INPUT = "rounded border border-zinc-300 bg-white px-1.5 py-0.5 text-xs";
 
 type Props = {
   entry: ListEntry;
   college: CollegeSummary;
   international: boolean;
-  onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes">>) => void;
+  onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
@@ -33,13 +36,13 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
   return (
     <div className="grid gap-3 md:grid-cols-2">
       <Section title="Essays" done={isDone("essays", c)} className="md:col-span-2">
-        <p className="text-xs text-zinc-600 dark:text-zinc-300">
+        <p className="text-xs text-zinc-600">
           {c.no_essays
             ? "No essays required."
             : essays.length > 0
               ? `${finals}/${essays.length} essays final.`
               : "No essays added yet."}{" "}
-          <Link href="/application/essays" className="text-blue-600 underline dark:text-blue-400">
+          <Link href="/writing/essays" className="text-blue-600 underline">
             Manage on the Essays page
           </Link>
         </p>
@@ -97,6 +100,37 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
         )}
       </Section>
 
+      <Section
+        title="Financial aid offer"
+        done={entry.aidOfferUsd != null}
+        hint={college.total_coa_usd != null ? `Published cost ${fmtUsd(college.total_coa_usd)}/yr` : "No published cost on file"}
+        className="md:col-span-2"
+      >
+        <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-600">
+          <label htmlFor={`aid-${entry.slug}`}>Yearly aid in your award letter (USD)</label>
+          <input
+            id={`aid-${entry.slug}`}
+            inputMode="numeric"
+            className={`${INPUT} w-28`}
+            // Keyed on the saved value so a change from elsewhere (or a clear) shows up.
+            key={entry.aidOfferUsd ?? "none"}
+            defaultValue={entry.aidOfferUsd ?? ""}
+            placeholder="e.g. 45000"
+            onBlur={(e) => {
+              const next = parseOffer(e.target.value);
+              if (next !== (entry.aidOfferUsd ?? null)) onChange({ aidOfferUsd: next });
+              else e.target.value = entry.aidOfferUsd != null ? String(entry.aidOfferUsd) : "";
+            }}
+          />
+          <span className="text-zinc-500">
+            Only you see this.{" "}
+            <Link href="/application/results" className="text-blue-600 underline">
+              Compare offers
+            </Link>
+          </span>
+        </div>
+      </Section>
+
       <div className="md:col-span-2">
         <label className="mb-1 block text-xs font-medium text-zinc-500" htmlFor={`notes-${entry.slug}`}>
           Notes
@@ -110,7 +144,7 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
           onBlur={(e) => e.target.value !== entry.notes && onChange({ notes: e.target.value })}
         />
         <div className="mt-1 text-right">
-          <button className="text-xs text-zinc-500 hover:text-rose-600" onClick={onRemove}>
+          <button className="text-xs text-zinc-500 hover:text-urgent" onClick={onRemove}>
             Remove from list
           </button>
         </div>
@@ -133,17 +167,17 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`rounded-md border border-zinc-200 bg-white p-2.5 dark:border-zinc-800 dark:bg-zinc-950 ${className}`}>
+    <section className={`rounded-md border border-zinc-200 bg-white p-2.5 ${className}`}>
       <div className="mb-1.5 flex items-center gap-2">
         <span
           className={`inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
-            done ? "bg-emerald-600 text-white" : "border border-zinc-300 dark:border-zinc-600"
+            done ? "bg-done text-white" : "border border-zinc-300"
           }`}
           aria-label={done ? "done" : "not done"}
         >
           {done ? "✓" : ""}
         </span>
-        <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-300">{title}</h3>
+        <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-600">{title}</h3>
         {hint && <span className="ml-auto text-[11px] text-zinc-400">{hint}</span>}
       </div>
       <div className="space-y-1.5">{children}</div>
@@ -152,7 +186,7 @@ function Section({
 }
 
 function Warn({ children }: { children: React.ReactNode }) {
-  return <p className="text-[11px] text-rose-600 dark:text-rose-400">{children}</p>;
+  return <p className="text-[11px] text-urgent">{children}</p>;
 }
 
 function Check({
@@ -167,7 +201,7 @@ function Check({
   children: React.ReactNode;
 }) {
   return (
-    <label className={`flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-300 ${className}`}>
+    <label className={`flex items-center gap-1.5 text-xs text-zinc-600 ${className}`}>
       <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       {children}
     </label>

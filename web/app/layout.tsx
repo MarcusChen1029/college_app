@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AccountLink } from "@/components/AccountPanel";
+import { Suspense } from "react";
 import { Wave } from "@/components/Doodles";
+import { RoleGate } from "@/components/RoleGate";
+import { SignInDialogHost } from "@/components/SignInDialog";
+import { SiteNav } from "@/components/SiteNav";
 import { missingSupabaseEnv } from "@/lib/config";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
@@ -22,45 +25,28 @@ export const metadata: Metadata = {
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
 
-const NAV = [
-  ["/colleges", "Colleges"],
-  ["/compare", "Compare"],
-  ["/application", "My application"],
-  ["/activities", "Activities"],
-  ["/resume", "Resume"],
-  ["/profile", "Profile"],
-  ["/connect-ai", "Connect AI"],
-  ["/pricing", "Pricing"],
-] as const;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const missingEnv = missingSupabaseEnv();
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-ink">
         <header className="sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white/95">
-          <nav className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm font-medium">
-            <Link href="/" className="font-display text-lg font-bold tracking-tight">
+          <nav aria-label="Primary" className="mx-auto flex max-w-7xl items-center gap-x-4 px-4 lg:gap-x-6 py-3 text-sm font-medium">
+            <Link href="/" className="shrink-0 whitespace-nowrap font-display text-lg font-bold tracking-tight">
               <span aria-hidden className="mr-1.5 inline-block rounded-md bg-blue-500 px-1.5 text-white">
                 C
               </span>
               College Tracker
             </Link>
-            <div className="flex items-center gap-5">
-              {NAV.map(([href, label]) => (
-                <Link key={href} href={href} className="text-zinc-600 hover:text-blue-600">
-                  {label}
-                </Link>
-              ))}
-            </div>
-            <span className="ml-auto flex items-center gap-4">
-              <AccountLink />
-              <Link href="/start" className="rounded-full bg-ink px-4 py-1.5 text-white hover:bg-blue-700">
-                Get started
-              </Link>
-            </span>
+            <SiteNav />
           </nav>
         </header>
+        <Suspense>
+          <RoleGate />
+        </Suspense>
+        <Suspense>
+          <SignInDialogHost />
+        </Suspense>
         <main className="flex-1">
           {missingEnv.length > 0 ? (
             <div className="mx-auto max-w-xl px-4 py-24 text-center">

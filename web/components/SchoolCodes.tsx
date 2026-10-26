@@ -72,34 +72,34 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
   return (
     <>
       <button
-        className="rounded-md border border-zinc-300 bg-white px-2.5 py-1 text-xs font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+        className="rounded-md border border-zinc-300 bg-white px-2.5 py-1 text-xs font-medium hover:bg-zinc-50"
         onClick={() => dialog.current?.showModal()}
       >
         School codes
       </button>
       <dialog
         ref={dialog}
-        className="m-auto w-[min(56rem,calc(100vw-2rem))] rounded-lg border border-zinc-200 bg-white p-0 text-zinc-900 shadow-xl backdrop:bg-black/30 backdrop:backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+        className="m-auto w-[min(56rem,calc(100vw-2rem))] rounded-lg border border-zinc-200 bg-white p-0 text-zinc-900 shadow-xl backdrop:bg-black/30 backdrop:backdrop-blur-sm"
         onClick={(e) => e.target === dialog.current && dialog.current.close()}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4 dark:border-zinc-800">
+        <div className="flex items-start justify-between gap-4 border-b border-zinc-200 p-4">
           <div>
             <h2 className="font-semibold">School codes</h2>
             <p className="text-xs text-zinc-500">Codes to enter when sending scores to the colleges on your list. Click a code to copy it.</p>
           </div>
-          <button className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200" onClick={() => dialog.current?.close()} aria-label="Close">
+          <button className="text-zinc-400 hover:text-zinc-700" onClick={() => dialog.current?.close()} aria-label="Close">
             ✕
           </button>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 p-4 pb-2">
-          <div className="inline-flex rounded-md border border-zinc-200 p-0.5 text-xs dark:border-zinc-800" role="tablist">
+          <div className="inline-flex rounded-md border border-zinc-200 p-0.5 text-xs" role="tablist">
             {(Object.keys(VIEWS) as View[]).map((v) => (
               <button
                 key={v}
                 role="tab"
                 aria-selected={view === v}
-                className={`rounded px-2.5 py-1 ${view === v ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900" : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"}`}
+                className={`rounded px-2.5 py-1 ${view === v ? "bg-zinc-900 text-white" : "text-zinc-600 hover:text-zinc-900"}`}
                 onClick={() => setView(v)}
               >
                 {VIEWS[v].label}
@@ -107,7 +107,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
             ))}
           </div>
           {rows.length > 0 && (
-            <button className="ml-auto text-xs text-blue-600 underline dark:text-blue-400" onClick={() => copy(asText(), "all")}>
+            <button className="ml-auto text-xs text-blue-600 underline" onClick={() => copy(asText(), "all")}>
               {copied === "all" ? "Copied!" : "Copy list"}
             </button>
           )}
@@ -115,7 +115,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
 
         <div className="max-h-[65vh] overflow-auto px-4 pb-4">
           {rows.length === 0 ? (
-            <p className="rounded-md border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500 dark:border-zinc-700">
+            <p className="rounded-md border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">
               {view === "testing"
                 ? "No college on your list requires the SAT or ACT."
                 : view === "english"
@@ -136,7 +136,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
               </thead>
               <tbody>
                 {rows.map((c) => (
-                  <tr key={c.id} className="border-t border-zinc-100 dark:border-zinc-800">
+                  <tr key={c.id} className="border-t border-zinc-100">
                     <td className="py-2 pr-2 font-medium">{c.short_name ?? c.name}</td>
                     {tests.map((t) => {
                       const sc = find(c.id, t);
@@ -146,7 +146,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
                           {sc?.code ? (
                             <span className="inline-flex items-center gap-1">
                               <button
-                                className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs tabular-nums hover:bg-blue-100 dark:bg-zinc-800 dark:hover:bg-blue-950"
+                                className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs tabular-nums hover:bg-blue-100"
                                 onClick={() => copy(sc.code!, id)}
                                 title={sc.notes ?? "Copy code"}
                               >
@@ -156,7 +156,7 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
                             </span>
                           ) : noteNo.has(id) ? (
                             <span className="text-xs text-zinc-500" title={sc?.notes ?? undefined}>
-                              no code<sup className="ml-0.5 text-[10px] text-blue-600 dark:text-blue-400">{noteNo.get(id)}</sup>
+                              no code<sup className="ml-0.5 text-[10px] text-blue-600">{noteNo.get(id)}</sup>
                             </span>
                           ) : (
                             <span className="text-xs text-zinc-400">—</span>
@@ -170,10 +170,10 @@ export function SchoolCodes({ colleges, codes }: { colleges: CollegeSummary[]; c
             </table>
           )}
           {notes.length > 0 && (
-            <ol className="mt-3 space-y-1 border-t border-zinc-100 pt-3 text-xs text-zinc-600 dark:border-zinc-800 dark:text-zinc-300">
+            <ol className="mt-3 space-y-1 border-t border-zinc-100 pt-3 text-xs text-zinc-600">
               {notes.map((n, i) => (
                 <li key={i} className="flex gap-1.5">
-                  <span className="w-4 shrink-0 text-right tabular-nums text-blue-600 dark:text-blue-400">{i + 1}</span>
+                  <span className="w-4 shrink-0 text-right tabular-nums text-blue-600">{i + 1}</span>
                   <span>
                     <span className="font-medium">
                       {n.college} · {TEST_LABEL[n.test]}:

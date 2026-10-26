@@ -9,6 +9,7 @@ import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import { BASE_TIERS, tierRank } from "@/lib/tiers";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
+import { buttonClass } from "@/lib/ui";
 import { CollegeBrowser } from "./CollegeBrowser";
 import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
@@ -224,14 +225,14 @@ function DetailCard({
 
       <div className="mt-4 flex gap-2">
         {!inList && !student.canAdd ? (
-          <Link href="/pricing" className="flex-1 rounded-full border-2 border-blue-600 px-4 py-2 text-center text-sm font-semibold text-blue-700 hover:bg-blue-50">
+          <Link href="/pricing" className={`flex-1 ${buttonClass("secondary")}`}>
             List full · Upgrade
           </Link>
         ) : (
         <button
           type="button"
           onClick={() => (inList ? student.remove(college.slug) : student.add({ slug: college.slug, id: college.id }))}
-          className={`flex-1 rounded-full px-4 py-2.5 text-sm font-semibold ${inList ? "bg-zinc-100 text-zinc-700 hover:bg-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"}`}
+          className={`flex-1 ${buttonClass(inList ? "secondary" : "primary")}`}
         >
           {inList ? "✓ In my list" : "+ Add to my list"}
         </button>
@@ -241,13 +242,14 @@ function DetailCard({
             type="button"
             onClick={() => student.toggleInterested(college.slug)}
             aria-label={student.isInterested(college.slug) ? "Remove from Interested" : "Add to Interested"}
-            title="Keep it on your Interested page while you decide"
-            className={`rounded-full border-2 px-3 py-2 text-sm font-semibold ${student.isInterested(college.slug) ? "border-amber-400 bg-amber-100 text-amber-800" : "border-zinc-300 hover:bg-zinc-50"}`}
+            aria-pressed={student.isInterested(college.slug)}
+            title={student.isInterested(college.slug) ? "On your Interested page. Click to remove." : "Keep it on your Interested page while you decide"}
+            className={buttonClass("secondary", "md", student.isInterested(college.slug))}
           >
             {student.isInterested(college.slug) ? "★" : "☆"}
           </button>
         )}
-        <Link href={`/colleges/${college.slug}`} className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-blue-50">
+        <Link href={`/colleges/${college.slug}`} className={buttonClass("secondary")}>
           Full details
         </Link>
       </div>

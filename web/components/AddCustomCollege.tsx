@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { cleanCustom, type CustomCollege } from "@/lib/custom-college";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { Modal } from "./Modal";
 
-const INPUT = "w-full rounded border border-zinc-300 bg-white px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+const INPUT = "w-full rounded border border-zinc-300 bg-white px-2 py-1 text-sm";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -53,12 +54,12 @@ export function AddCustomCollege({ onAdd, onClose }: { onAdd: (c: CustomCollege)
           <input className={INPUT} value={form.website ?? ""} onChange={(e) => set({ website: e.target.value })} placeholder="example.edu/admissions" />
         </Field>
         <p className="text-xs text-zinc-500">We have no tier, admit rate or score data for this college, so it won&apos;t get a fit label. You can still track its plan, status and checklist.</p>
-        {error && <p className="rounded bg-rose-50 px-2 py-1 text-xs text-rose-700 dark:bg-rose-950 dark:text-rose-200">{error}</p>}
+        {error && <p className={`rounded border px-2 py-1 text-xs ${toneClass("urgent")}`}>{error}</p>}
         <div className="flex justify-end gap-2">
-          <button type="button" className="rounded px-3 py-1.5 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800" onClick={onClose}>
+          <button type="button" className={buttonClass("quiet", "sm")} onClick={onClose}>
             Cancel
           </button>
-          <button type="submit" className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
+          <button type="submit" className={buttonClass("primary", "sm")}>
             Add to my list
           </button>
         </div>

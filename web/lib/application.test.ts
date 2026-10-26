@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { hasDecision, isSubmitted, resultStatus, stage } from "./application.ts";
+import { hasDecision, isDeadlineDone, isSubmitted, resultStatus, stage } from "./application.ts";
 
 const complete = { no_essays: true, recommendations: true, transcript: true, test_plan: "optional", english_plan: "not_required" } as const;
 
@@ -24,4 +24,10 @@ test("decisions vs waiting", () => {
   assert.equal(hasDecision("waitlisted"), true);
   assert.equal(resultStatus("interview"), "submitted");
   assert.equal(resultStatus("rejected"), "rejected");
+});
+
+test("only application deadlines can be done", () => {
+  assert.equal(isDeadlineDone("application", "submitted"), true);
+  assert.equal(isDeadlineDone("application", "in_progress"), false);
+  assert.equal(isDeadlineDone("financial_aid", "submitted"), false);
 });
