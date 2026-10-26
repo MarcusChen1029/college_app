@@ -1,0 +1,89 @@
+{
+  "slug": "flagler",
+  "name": "Flagler College",
+  "short_name": "Flagler",
+  "state_region": "FL",
+  "city": "St. Augustine",
+  "latitude": 29.892733,
+  "longitude": -81.314887,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.flagler.edu",
+  "admissions_url": "https://www.flagler.edu/admissions-aid",
+  "ipeds_unit_id": 133711,
+  "undergrad_enrollment": 2409,
+  "intl_undergrads": 95,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023) and 2024-25 costs, via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=133711",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Flagler College Common Data Set 2023-2024 (PDF; academic calendar A4 only)",
+      "url": "https://www.flagler.edu/sites/default/files/2024-12/CDS%202023-2024.pdf",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=133711",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 5509,
+    "admits": 4302,
+    "enrolled": 655,
+    "pct_submit_sat": 21,
+    "pct_submit_act": 10,
+    "notes": "Baseline from IPEDS (fall 2023 entering class): 5,509 applied, 4,302 admitted, 655 enrolled. Flagler's 2023-2024 CDS was readable only as scrambled text (GPA and international splits are blank in it), so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 5,004 applicants, about 81% admitted (rounded %), 2,409 undergraduates (used for enrollment here). Test optional."
+  },
+  "scores": {
+    "SAT_ERW": [
+      520,
+      560,
+      620
+    ],
+    "SAT_MATH": [
+      470,
+      530,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      24
+    ],
+    "ACT_ENGLISH": [
+      18,
+      22,
+      25
+    ],
+    "ACT_MATH": [
+      17,
+      19,
+      23
+    ]
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 29900,
+    "tuition_intl_usd": 29900,
+    "room_board_usd": 15130,
+    "books_usd": 1260,
+    "total_coa_usd": 50442,
+    "notes": "College Navigator 2024-25: tuition and fees combined $29,900; on-campus food and housing $15,130; books and supplies $1,260; total on-campus estimate $50,442. The international FAQ says international students pay the same costs as U.S. citizens plus a required health insurance policy (amount not published). 2026-27 prices were not found."
+  }
+}

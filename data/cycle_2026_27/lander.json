@@ -1,0 +1,155 @@
+{
+  "sources": {
+    "how": {
+      "kind": "admissions_site",
+      "title": "Lander University - International students: How to Apply",
+      "url": "https://www.lander.edu/admissions/undergraduate/international-students/how-to-apply.html",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Lander University - International Students",
+      "url": "https://www.lander.edu/admissions/undergraduate/international-students/index.html",
+      "accessed": "2026-10-26"
+    },
+    "esl": {
+      "kind": "admissions_site",
+      "title": "Lander University - ESL Program (ELS Language Centers)",
+      "url": "https://www.lander.edu/admissions/undergraduate/international-students/esl-program.html",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Lander University - Freshman admission",
+      "url": "https://www.lander.edu/admissions/undergraduate/freshmen.html",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "other",
+      "title": "Lander University - Undergraduate International Student Expenses 2026-2027 (fee sheet, updated 9/03/2025)",
+      "url": "https://www.lander.edu/admissions/_files/Documents/fee-sheet-for-undergraduate-international-students-2026-27.pdf",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Lander University - Freshman scholarships (2026-2027)",
+      "url": "https://www.lander.edu/admissions/tuition-financial-aid/scholarships/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Freshman page: SAT/ACT is test optional, but scores are required for Lander academic scholarships. Applicants are evaluated on course prerequisites, high school GPA and SAT/ACT scores if submitted. No minimum GPA is printed. The international page does not require SAT/ACT; an SAT verbal 450 or ACT verbal 18 is one optional way to show English proficiency.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Online application on Lander's site (no Common App listed). International applicants need official school records in the original language plus certified English translations, a course-by-course evaluation from a NACES-certified service (applicant pays), an affidavit of support stating the amount and length of funds, and English proficiency evidence; credentials must arrive at least 6 months before the term. Application fee is not stated on the admissions pages. Mandatory student health insurance applies after enrollment.",
+    "src": "how"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-06-15",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "Fall June 15, spring Nov. 1, summer March 15 (international). Printed without a year; treated as fall 2027. The same page asks for credentials at least 6 months before the term, which is earlier than June 15 for an August start. Domestic freshmen apply by Aug. 1 on a rolling basis.",
+      "src": "how"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not required if English is the official native language, ENGL 101 and 102 were completed at a U.S. regionally accredited college, SAT verbal 450 or ACT verbal 18 is submitted, or the applicant holds a bachelor's degree from a regionally accredited U.S. institution. TOEIC 600 is also accepted. Lander contracts with ELS Language Centers for English instruction; the ESL page says students can be admitted to Lander on completing ELS program level 112. Conditional admission is not described.",
+    "src": "how"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 70,
+      "notes": "Institution code 5363. The page does not give a separate 1-6 scale minimum.",
+      "src": "how"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.0
+      },
+      "notes": "6.0 overall with no subscore below 5.0.",
+      "src": "how"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "notes": "Minimum 105.",
+      "src": "how"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "Minimum 53.",
+      "src": "how"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "src": "fees",
+    "tuition_usd": 10700,
+    "tuition_out_of_state_usd": 20300,
+    "tuition_intl_usd": 20300,
+    "required_fees_usd": 1500,
+    "intl_extra_fees_usd": 1800,
+    "room_board_usd": 12436,
+    "books_usd": 500,
+    "other_usd": 4400,
+    "total_coa_usd": 40936,
+    "notes": "From the fee sheet for fall and spring (Aug-May, full time 12-18 credits): tuition $10,700 plus out-of-state fee $9,600 (international students pay $20,300); university fees $1,200 and auxiliary fee $300 (required fees $1,500). International extras $1,800 = required health insurance (average) $1,500 plus a one-time $300 matriculation fee. Living: room and board $12,436, books $500, transportation $2,400, personal $2,000 (other $4,400). The sheet totals $40,936 for 9 months; the column labels in the PDF text are misaligned, so each line was matched by arithmetic (the lines sum to the printed totals). Summer terms are extra."
+  },
+  "aid": {
+    "notes": "Freshman academic scholarship tiers (President's, Trustee's, Provost's, Dean's) pay $500-$6,000/year plus a $4,000-$8,000 tuition abatement for out-of-state students, based on ACT/SAT and a 3.5 weighted GPA (or 3.0 unweighted); apply by May 1 for automatic consideration. The scholarship page does not say whether international students qualify, and scores are required to be considered. A departmental International Student Scholarship (accounting, management/marketing, finance/economics emphasis) exists with no amount published. International students are not eligible for federal aid.",
+    "src": "sch"
+  },
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The international admissions pages do not print a numeric SAT code; look it up in the College Board code search.",
+      "src": "how"
+    },
+    "act": {
+      "code": null,
+      "note": "The international admissions pages do not print an ACT code; look it up at act.org.",
+      "src": "how"
+    },
+    "toefl": {
+      "code": "5363",
+      "note": "Lander institutional code printed on the international How to Apply page.",
+      "src": "how"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    }
+  },
+  "tiers": {
+    "general": "D"
+  },
+  "tier_notes": {}
+}

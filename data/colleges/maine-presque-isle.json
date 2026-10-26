@@ -1,0 +1,50 @@
+{
+  "slug": "maine-presque-isle",
+  "name": "University of Maine at Presque Isle",
+  "short_name": "UMPI",
+  "state_region": "ME",
+  "city": "Presque Isle",
+  "latitude": 46.672285,
+  "longitude": -68.016343,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.umpi.edu/",
+  "admissions_url": "https://www.umpi.edu/admissions/",
+  "ipeds_unit_id": 161341,
+  "undergrad_enrollment": 2758,
+  "intl_undergrads": 136,
+  "student_faculty_ratio": 30,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: University of Maine at Presque Isle (fall 2024 admissions and enrollment)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161341",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161341",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=161341",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 755,
+    "admits": 733,
+    "notes": "Baseline from IPEDS / College Navigator (fall 2024): 757 applicants, 100% admitted (rounded; the admit count is not shown), 19% of admitted enrolled. The newest Common Data Set UMPI posts is 2021-2022 (umpi.edu/about/common-data-set), so it was not used; SAT/ACT percentiles, GPA, intl applicants/admits and C7 factors are not filled in. IPEDS lists SAT/ACT as not considered, while the admissions site says scores are optional and can qualify a student for the Merit Award. Enrollment (2,758 undergraduates) includes UMPI's large online/competency-based YourPace program; admissions figures are not split out by on-campus vs online. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "enrolled": 132
+  }
+}

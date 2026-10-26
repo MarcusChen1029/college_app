@@ -1,0 +1,124 @@
+{
+  "slug": "colorado-mesa",
+  "name": "Colorado Mesa University",
+  "short_name": null,
+  "state_region": "CO",
+  "city": "Grand Junction",
+  "latitude": 39.080643,
+  "longitude": -108.553275,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.coloradomesa.edu/",
+  "admissions_url": "https://www.coloradomesa.edu/future.html",
+  "ipeds_unit_id": 127556,
+  "undergrad_enrollment": 9459,
+  "intl_undergrads": 108,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Colorado Mesa University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.coloradomesa.edu/institutional-research/documents/common-data-set/cds2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=127556",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 13165,
+    "admits": 10946,
+    "enrolled": 2340,
+    "pct_submit_sat": 41,
+    "pct_submit_act": 5,
+    "gpa_avg": 3.38,
+    "pct_reporting_gpa": 97.2,
+    "gpa_distribution": {
+      "4.0": 20.5,
+      "3.75-3.99": 16,
+      "3.50-3.74": 14.8,
+      "3.25-3.49": 14.0,
+      "3.00-3.24": 10.1,
+      "2.50-2.99": 15.5,
+      "2.0-2.49": 6.8,
+      "1.0-1.99": 2.3
+    },
+    "notes": "CDS C1 (fall 2025): applicants = 5,886 men + 7,279 women; admits = 4,879 men + 6,067 women (the unknown-sex admit cell is suppressed, 'C or t', and unknown-sex applicants are 0). CMU reports an open admission policy for all students (C6, with selective admission to some programs). The in-state/out-of-state/international split of applicants and admits is suppressed in the CDS, so intl_applicants and intl_admits are null; degree-seeking nonresident undergraduates were 101 in B2 (the total-undergraduate nonresident cell is suppressed). The GPA distribution in C11 is only printed for the 'students who submitted scores' column; the average GPA of 3.38 (C12) covers all who submitted a GPA. Undergraduate enrollment is B1 'Total All Undergraduates' (9,459)."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      930,
+      1040,
+      1158
+    ],
+    "SAT_ERW": [
+      470,
+      530,
+      590
+    ],
+    "SAT_MATH": [
+      450,
+      510,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      19,
+      25
+    ],
+    "ACT_ENGLISH": [
+      15,
+      20,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "I",
+    "gpa": "VI",
+    "test_scores": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "C",
+    "geographic_residence": "C",
+    "state_residency": "C",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "C"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 11480,
+    "tuition_out_of_state_usd": 29325,
+    "tuition_intl_usd": 29325,
+    "room_board_usd": 13904,
+    "books_usd": 2400,
+    "intl_merit_aid": true,
+    "notes": "CDS G1 (first-year, 2026-27). The CDS tuition cells (11,480 in-state; 29,325 out-of-state and international) equal the G6 per-credit rates ($336.90 / $931.70) plus the $45.80 per-credit required fee, times 30 credits, so they appear to include required fees; required_fees_usd is therefore left null. Food and housing on campus $13,904 (housing $7,850 + meal plan $6,054). CMU's international admissions page estimates $42,259 per year for undergraduates (tuition and fees $23,460 for 24 in-person credits, residence hall and meal plan $13,151, health insurance $1,148, books and other $4,500)."
+  }
+}

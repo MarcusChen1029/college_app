@@ -1,0 +1,74 @@
+{
+ "slug": "eastern-illinois",
+ "name": "Eastern Illinois University",
+ "short_name": "EIU",
+ "state_region": "IL",
+ "city": "Charleston",
+ "latitude": 39.479843,
+ "longitude": -88.175658,
+ "setting": "rural",
+ "control": "public",
+ "website": "https://www.eiu.edu",
+ "admissions_url": "https://www.eiu.edu/admissions/",
+ "ipeds_unit_id": 144892,
+ "undergrad_enrollment": 4058,
+ "intl_undergrads": 121,
+ "student_faculty_ratio": 14,
+ "academic_calendar": "semester",
+ "sources": {
+  "facts": {
+   "kind": "other",
+   "title": "EIU Institutional Research - 2025 Key Publication Facts (PDF; first-time freshmen applications/acceptances/enrollments, fall 2025 profile)",
+   "url": "https://www.eiu.edu/ir/docs/2025_EIU_Key_Publication_Facts.pdf",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "ipeds": {
+   "kind": "ipeds",
+   "title": "IPEDS via College Navigator - Eastern Illinois University (fall 2024 SAT percentiles, 2024-25 cost)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=144892",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  },
+  "ipeds_ef": {
+   "kind": "ipeds",
+   "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+   "url": "https://nces.ed.gov/collegenavigator/?id=144892",
+   "cds_year": "2023-2024",
+   "accessed": "2026-10-26"
+  }
+ },
+ "scores_source": "ipeds",
+ "stats": {
+  "cds_year": "2025-2026",
+  "source": "facts",
+  "applicants": 12388,
+  "admits": 8804,
+  "enrolled": 798,
+  "pct_submit_sat": 3,
+  "notes": "No current Common Data Set is posted (EIU's CDS page stops at 2019-20), so this is a baseline: first-time freshman applications/acceptances/enrollments for fall 2025 from EIU Institutional Research's Key Publication Facts (fall 2024 was 12,539 / 8,194 / 779). SAT percentiles and the 3% SAT-submission rate (22 students) are IPEDS fall 2024 via College Navigator; no ACT figures were reported. International applicant/admit counts, GPA and residency splits are not published in these sources. Undergraduate enrollment 4,058 is fall 2025 and excludes 2,673 high-school dual-credit students (College Navigator's fall 2024 figure of 6,785 includes them)."
+ },
+ "scores": {
+  "SAT_ERW": [
+   460,
+   510,
+   560
+  ],
+  "SAT_MATH": [
+   420,
+   490,
+   530
+  ]
+ },
+ "cost": {
+  "year": "2024-2025",
+  "source": "ipeds",
+  "tuition_usd": 13679,
+  "tuition_out_of_state_usd": 16217,
+  "room_board_usd": 12282,
+  "books_usd": 150,
+  "total_coa_usd": 30593,
+  "intl_need_aid": false,
+  "notes": "College Navigator 2024-25: tuition shown includes required fees; total cost of attendance is the on-campus out-of-state figure ($28,055 in-state). EIU's international page says international students are budgeted at regular out-of-state rates. Fall 2026 figures are not yet in College Navigator; EIU's own 2026-27 cost calculator is interactive and was not used."
+ }
+}

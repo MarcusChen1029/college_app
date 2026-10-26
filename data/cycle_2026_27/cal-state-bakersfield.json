@@ -1,0 +1,147 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "CSUB International Student Programs - Dates and Deadlines (Spring 2027 and Fall 2027)",
+   "url": "https://www.csub.edu/isp/earn-a-degree/dates-and-deadlines.shtml",
+   "accessed": "2026-10-26"
+  },
+  "req": {
+   "kind": "admissions_site",
+   "title": "CSUB International Student Programs - Admission Requirements (undergraduate)",
+   "url": "https://www.csub.edu/isp/earn-a-degree/admission-requirements.shtml",
+   "accessed": "2026-10-26"
+  },
+  "how": {
+   "kind": "admissions_site",
+   "title": "CSUB International Student Programs - Welcome Future Roadrunner (how to apply)",
+   "url": "https://www.csub.edu/isp/welcome-future-roadrunner.shtml",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "CSUB Student Financial Services - Tuition and Fees (Fall 2026)",
+   "url": "https://www.csub.edu/student-financial/tuition-fees/index.shtml",
+   "accessed": "2026-10-26"
+  },
+  "cds": {
+   "kind": "cds",
+   "title": "CSUB Common Data Set 2025-26 (C8A test policy)",
+   "url": "https://csub.box.com/s/lyzdwd5ky6ii1s73o65nojnlxzst8lha",
+   "cds_year": "2025-2026",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - CSUB admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110486",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "CSUB's CDS (C8A) answers No to using SAT/ACT in admission decisions, and College Navigator (IPEDS fall 2024) lists SAT/ACT as 'Not considered (Test Blind)'. The international admission page lists an SAT EBRW score of 550 only as one way to show English proficiency. Eligibility for international freshmen is a 2.5 overall GPA.",
+  "src": "cds"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App); $70 fee paid online by credit card. Minimum 2.5 overall GPA for freshmen. Needed: Affidavit of Financial Support, international student health insurance agreement, bank statements in English dated within 6 months showing at least $38,956 in liquid funds, official transcripts in English with proof of graduation (non-U.S. transcripts need a course-by-course evaluation from a NACES member such as WES), and a passport copy. The CDS shows essays and recommendations are not considered.",
+  "src": "req"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-01",
+   "label": "Undergraduate international application and document submission deadline (fall 2027)",
+   "notes": "Applications for fall 2027 open Aug 1, 2026. The dates page lists a single 'Undergraduate International Application and document submission deadline' of June 1, 2027 (the page does not split freshman and transfer); the spring 2027 equivalent is Sept 28, 2026. Domestic first-year dates are earlier and do not apply to international applicants.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "CSUB may waive the test for citizens of listed countries (for example Australia, Canada except Quebec, England, Ireland, Scotland, Wales, New Zealand, Singapore, Nigeria and others on the page). Other ways to meet it: SAT Evidence-Based Reading and Writing 550 or higher, or a college English course with a C or better (online English courses not accepted).",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Page text: 'Score of 3.5 or 61 iBT required.' Send scores to school code 4110.",
+   "src": "req"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "From the same line ('3.5 or 61 iBT'); the page does not name the 1-6 scale.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "subs": {
+    "each_section": 5.5
+   },
+   "notes": "Overall 5.5 with at least 5.5 in each section.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test minimum score of 95.",
+   "src": "req"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 43,
+   "notes": "Pearson Test of English Academic, minimum 43. The page does not list Cambridge.",
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": null,
+  "meets_full_need": false,
+  "merit_scholarships": null,
+  "notes": "The CSUB international undergraduate pages checked list no scholarships or financial aid for international applicants (scholarships are mentioned only as sponsor types for financial documents). No conditional-admission or ESL pathway is described on these pages; confirm with CSUB International Student Programs.",
+  "src": "req"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 2104,
+  "notes": "Computed from Fall 2026 published rates: tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees $1,052 per semester twice (ASB 249, Health Facility 3, Health Service 207.75, IRA 91.25, RunnerPass 6, Student Body 468, Campus Programming 25, Student Involvement 2). Housing, food, books and insurance not added because no international budget was found; spring 2027 fees were assumed equal to fall 2026.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4110",
+   "note": "CSUB school code for TOEFL results.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

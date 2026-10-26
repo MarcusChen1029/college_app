@@ -1,0 +1,84 @@
+{
+  "slug": "msu-denver",
+  "name": "Metropolitan State University of Denver",
+  "short_name": "MSU Denver",
+  "state_region": "CO",
+  "city": "Denver",
+  "latitude": 39.744202,
+  "longitude": -105.00504,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.msudenver.edu/",
+  "admissions_url": "https://www.msudenver.edu/admissions/",
+  "ipeds_unit_id": 127565,
+  "undergrad_enrollment": 17274,
+  "intl_undergrads": 105,
+  "student_faculty_ratio": 17,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "MSU Denver Common Data Set 2024-2025 (PDF, updated June 2026)",
+      "url": "https://www.msudenver.edu/wp-content/uploads/2026/06/CDS_2024-2025_Updated_06-29-26_jjb3.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Metropolitan State University of Denver (IPEDS fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=127565",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 11749,
+    "admits": 11610,
+    "enrolled": 1962,
+    "in_state_applicants": 8843,
+    "in_state_admits": 8730,
+    "out_state_applicants": 2752,
+    "out_state_admits": 2726,
+    "intl_applicants": 27,
+    "intl_admits": 27,
+    "notes": "Fall 2024 entering class from CDS C1 (the CDS has no 2025-26 edition yet). Applicants and admits are the printed residency totals (in-state, out-of-state, international 27, and 127 of unknown residency are also included in the totals); enrolled 1,962 is the sum of the printed full- and part-time counts by gender. The printed enrolled residency row (1,710 / 290 / 7 / 127) does not sum to 1,962, so enrolled splits are not recorded. College Navigator shows 11,622 applicants and a 99% admit rate for the same year. Only 27 international first-year applicants (all admitted) are recorded, so the sample is tiny. MSU Denver is an access institution; the CDS does not print SAT/ACT percentiles, GPA or class rank (all NA). Undergraduate enrollment and the nonresident count (105) are B1/B2 total undergraduates."
+  },
+  "factors": {
+    "rigor": "C",
+    "class_rank": "NC",
+    "gpa": "C",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "NC",
+    "extracurriculars": "C",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "NC",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "NC"
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8 answers 'No' to using SAT/ACT in admission decisions (not considered even if submitted) and C8F says 'Test Optional'."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 9135,
+    "tuition_out_of_state_usd": 28695,
+    "tuition_intl_usd": 28695,
+    "required_fees_usd": 1989,
+    "books_usd": 1460,
+    "intl_need_aid": false,
+    "intl_merit_aid": false,
+    "notes": "CDS G1 (2025-26). On-campus food and housing is not reported (MSU Denver is mostly commuter); G5 lists $13,167 housing and $4,491 food for a commuter not living at home. The international admissions page estimates $48,488 for 2025-26 for F-1 degree-seeking students (tuition and fees $23,766, living $17,070, health insurance, books and supplies $7,652); that tuition figure is lower than the CDS nonresident tuition plus fees, which the page does not explain. CDS H6: institutional scholarship and grant aid is not available to nonresidents."
+  }
+}

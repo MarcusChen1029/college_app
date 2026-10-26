@@ -1,0 +1,170 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "Northwest - International application timeline (deadlines)",
+   "url": "https://www.nwmissouri.edu/admissions/international/timeline.htm",
+   "accessed": "2026-10-26"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "Northwest - International application checklist (requirements, English minimums, bank statement)",
+   "url": "https://www.nwmissouri.edu/admissions/international/apply.htm",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "Northwest - Language requirements for international students",
+   "url": "https://www.nwmissouri.edu/admissions/international/englishproficiency.htm",
+   "accessed": "2026-10-26"
+  },
+  "fa": {
+   "kind": "financial_aid_site",
+   "title": "Northwest - Cost and scholarships for international students",
+   "url": "https://www.nwmissouri.edu/admissions/international/finaid.htm",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "financial_aid_site",
+   "title": "Northwest Student Account Services - International student fees 2026-27",
+   "url": "https://www.nwmissouri.edu/studentaccounts/intlcosts.htm",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "ACT/SAT are optional for international applicants and are not required for admission; if available they may be considered for undergraduate scholarship eligibility.",
+  "src": "chk"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "International application has no fee. Needs passport copy, official transcripts (certified, with translations; undergraduate minimum cumulative GPA 2.0 after conversion to the US scale; 5 GCSE/IGCSE/O Level subjects at D or better), and an English score. After acceptance: Statement of Support and a bank statement showing at least $36,858 (the 2025-26 undergraduate estimate on the checklist) before the I-20 is issued. No essay required per the international admissions page.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-06-15",
+   "label": "International fall 2027 application deadline (applying from abroad)",
+   "notes": "Dates print without a year; treated as fall 2027. Applications incomplete by the deadline roll to the next session. Spring (January) entry: application Nov. 1, documents Nov. 15. Students transferring from a US school have later dates (fall: July 15).",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-01",
+   "label": "International fall 2027 document deadline",
+   "notes": "All admission documents must be received by this date (year not printed; treated as 2027).",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Exempt: citizens of listed English-speaking countries/territories; ACT composite 21 or SAT 1060; a US high school diploma (transcript reviewed, extra scores may be required); a US or English-speaking-country degree; IGCSE/GCSE/O Level English first language grade B or better; IB English Language & Literature HL score of 5 or higher. Also accepted: iTEP 3.5, MET 46, GTEC 1100, Oxford ELLT 6, TOEIC 586, EIKEN Pre-1, SAKAE 11-12. No conditional-admission or ESL pathway program is described on the pages read.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "For tests taken before 2026-01-21.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 3.5,
+   "notes": "For tests taken on or after 2026-01-21; the page prints 3.5 without naming the scale (assumed the new 1-6 band scale).",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 162,
+   "notes": "C1 Advanced (formerly CAE).",
+   "src": "eng"
+  }
+ ],
+ "cost": {
+  "year": "2026-2027",
+  "tuition_intl_usd": 23250,
+  "room_board_usd": 12620,
+  "other_usd": 2250,
+  "total_coa_usd": 38120,
+  "notes": "Student Account Services estimate for international undergraduates (15 credit hours per semester): tuition $18,000 plus fees $5,250 (entered as one combined figure), on-campus living for 9 months $12,620 (South Complex double, Residential Unlimited food plan), health insurance about $1,650 plus orientation/student service fees $600 (entered as other), total $38,120. Personal expenses ($4,500) and one-time vaccine/TB costs are listed separately and not included. Textbooks and a laptop are provided to eligible students per the cost page, so no books figure. The admissions cost page shows a different 'international' direct-expense estimate of $39,622.",
+  "src": "cost"
+ },
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "merit_separate_app": false,
+  "notes": "Northwest International Achievement Scholarship (NIAS): automatic for new international freshmen with a 2.75+ high school GPA; covers the in-state/out-of-state tuition difference (about $9,000 in year one), renewable with a 3.00 Northwest GPA, stackable with academic merit awards. Admission-based academic merit scholarships (GPA plus ACT/SAT chart) are automatic, with exceptional ACT/SAT scores helping; IB diploma award $1,000. No need-based aid for international students.",
+  "src": "fa"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "The international pages print no SAT code; look it up in the College Board code search. SAT/ACT are optional.",
+   "src": "chk"
+  },
+  "act": {
+   "code": null,
+   "note": "The international pages print no ACT code; look it up at act.org.",
+   "src": "chk"
+  },
+  "toefl": {
+   "code": null,
+   "note": "No TOEFL institution code is printed on the pages read; look it up in the ETS code search.",
+   "src": "chk"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D"
+ },
+ "tier_notes": {}
+}

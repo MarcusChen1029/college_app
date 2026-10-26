@@ -1,0 +1,138 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "LSU Shreveport - International First Year Admission",
+      "url": "https://lsus.edu/international-admissions/int-first-time-freshman",
+      "accessed": "2026-10-26"
+    },
+    "guide": {
+      "kind": "admissions_site",
+      "title": "LSU Shreveport - 2025 Freshmen Guidebook (admissions requirements, PDF)",
+      "url": "https://lsus.edu/Documents/Admissions/2025%20Freshmen%20Guidebook%20Smaller.pdf",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "LSU Shreveport - Cost of Attendance (2026-2027)",
+      "url": "https://lsus.edu/costs-and-aid/cost-of-attendance",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "IPEDS (fall 2024) lists SAT/ACT as 'not required, but considered'. The 2025 freshman guidebook admits first-time students with a core GPA of 2.0+ OR an ACT 20 / SAT 1030, plus placement into college-level math or English (ACT English 18 or SAT ERW 500; ACT Math 19 or SAT Math 510). The international first-year page lists no test requirement; ACT 24 / SAT 1160 is required for the LSUS International Scholarship.",
+    "src": "guide"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 30,
+    "notes": "International application fee $30 (IPEDS lists $20 for domestic applicants; first-time freshmen applying Nov 1, 2025 to Jan 31, 2026 paid no fee). Freshmen need a course-by-course credential evaluation from a NACES or AICE member sent directly to LSUS, proof of English if applicable, passport photo page, affidavit of financial support, immunization form and (before arrival) health insurance.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Official academic records due, 30 days before the program start (fall 2027)",
+      "notes": "The international page says official academic records must arrive no later than 30 days before the start of the program and publishes no other application deadline. The date is computed from the first day of fall 2027 classes, listed as Aug 23, 2027 (tbc). (No date is printed; the computed date was removed.)",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if the applicant earned a U.S. high school diploma or any degree from an accredited U.S. institution; has a 2.5 GPA with 30 credit hours at a regionally accredited U.S. institution (with non-remedial math and English); or is a national of, or completed secondary or tertiary education in, a listed English-language country (e.g. Australia, Canada, Ghana, Ireland, Kenya, Nigeria, Singapore, South Africa, UK, Zimbabwe). TOEFL paper-based 500 is also accepted. No English-language or conditional-admission pathway is described on the first-year page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_section": 5.5
+      },
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 47,
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 7668,
+    "tuition_intl_usd": 20493,
+    "room_board_usd": 11578,
+    "books_usd": 1386,
+    "notes": "International estimate (two semesters at 15 credit hours): tuition and fees $20,493, books $1,200, living $10,000, insurance $800, total $32,493. The cost-of-attendance page lists undergraduate tuition and fees of $7,668 (12 hours per semester, residency not stated), books $1,386 and on-campus housing and food $11,578.",
+    "src": "coa"
+  },
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "LSUS International Scholarship: every campus-based international applicant is considered at application; needs a 2.0+ secondary GPA and ACT 24 / SAT 1160. It is worth $13,154 a year (cutting the estimated total to $19,339), limited to 8 semesters, kept with full-time study, a 2.5 GPA and 24+ credits per year. An SAT near 1100 would fall below the stated test minimum. Other scholarships are listed in the admitted-students portal.",
+    "src": "intl"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6355",
+      "note": "LSUS SAT school code (freshman guidebook).",
+      "src": "guide"
+    },
+    "act": {
+      "code": "1593",
+      "note": "LSUS ACT school code (freshman guidebook).",
+      "src": "guide"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is listed on the pages checked; look it up in the ETS code search.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D"
+  },
+  "tier_notes": {}
+}

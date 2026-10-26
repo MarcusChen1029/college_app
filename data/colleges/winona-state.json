@@ -1,0 +1,95 @@
+{
+  "slug": "winona-state",
+  "name": "Winona State University",
+  "short_name": "WSU",
+  "state_region": "MN",
+  "city": "Winona",
+  "latitude": 44.046159,
+  "longitude": -91.643723,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.winona.edu",
+  "admissions_url": "https://www.winona.edu/admissions/apply/international/",
+  "ipeds_unit_id": 175272,
+  "undergrad_enrollment": 5317,
+  "intl_undergrads": 105,
+  "student_faculty_ratio": 14,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=175272",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Data Center file ADM2023 (admissions counts and test percentiles)",
+      "url": "https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=175272",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 6159,
+    "admits": 4220,
+    "enrolled": 1162,
+    "pct_submit_sat": 2,
+    "pct_submit_act": 44,
+    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023): 6,159 applied, 4,220 admitted, 1,162 enrolled. Winona State's newest posted Common Data Set is 2022-2023 (numbers not machine-readable), so no CDS is used; GPA distribution, residency and international applicant/admit counts are not available. College Navigator shows 6,642 applicants and 75% admitted for Fall 2024 (exact admits not given, so none are stored). Undergraduate enrollment (5,317) is the College Navigator Fall 2024 figure; international undergraduate count left null."
+  },
+  "scores": {
+    "SAT_ERW": [
+      510,
+      540,
+      610
+    ],
+    "SAT_MATH": [
+      470,
+      550,
+      640
+    ],
+    "ACT_COMPOSITE": [
+      19,
+      22,
+      25
+    ],
+    "ACT_ENGLISH": [
+      18,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      18,
+      22,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "Winona State does not require ACT or SAT for admission; scores are encouraged for placement and some scholarships."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "ipeds",
+    "tuition_usd": 8934,
+    "tuition_intl_usd": 8934,
+    "required_fees_usd": 1304,
+    "intl_extra_fees_usd": 150,
+    "room_board_usd": 10240,
+    "intl_need_aid": false,
+    "notes": "International page (heading says 2025-2026; health insurance dates are Aug 2026-Aug 2027): tuition $8,934 for 24-36 credits after the automatic Cross-Cultural Scholarship, student fees $1,304, international programs fee $150, double room with 14-meal plan $10,240, mandatory eWarrior laptop program $970, health insurance $2,956. The page's printed total ($24,097) does not match its own lines, so no total is stored. Books and personal expenses are not included."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "slug": "pennwest",
+  "name": "Pennsylvania Western University",
+  "short_name": "PennWest",
+  "state_region": "PA",
+  "city": "California",
+  "latitude": 40.064964,
+  "longitude": -79.88679,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.pennwest.edu/",
+  "admissions_url": "https://www.pennwest.edu/admissions",
+  "ipeds_unit_id": 498571,
+  "undergrad_enrollment": 7586,
+  "intl_undergrads": 97,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS via College Navigator: Pennsylvania Western University profile (fall 2024 enrollment, fall 2024 admissions and test scores, student-faculty ratio, setting; one IPEDS unit covering the California, Clarion and Edinboro campuses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=498571",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2024 entering class (ADM2024): exact counts via the Urban Institute Education Data Portal API",
+      "url": "https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=498571",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "admissions_site",
+      "title": "PennWest - Undergraduate tuition and fees (Costs 2026-2027)",
+      "url": "https://www.pennwest.edu/affording-college/tuition-fees/undergraduate/index.php",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "admissions_site",
+      "title": "PennWest - Undergraduate cost of attendance (housing, food, books)",
+      "url": "https://www.pennwest.edu/affording-college/tuition-fees/coa.php",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=498571",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "ipeds_adm",
+    "applicants": 5930,
+    "admits": 5594,
+    "enrolled": 1529,
+    "pct_submit_sat": 21,
+    "pct_submit_act": 3,
+    "notes": "Baseline from IPEDS (fall 2024 entering class, ADM2024); exact totals (enrolled = full-time 1,467 + part-time 62). College Navigator shows 94% admitted and 27% of admits enrolled. PennWest is one institution (formed 2022 from California, Clarion and Edinboro universities) and no Common Data Set was found on its Institutional Research pages or by search, so GPA, international applicant counts and residency splits are not available. SAT/ACT percentiles are for enrolled first-time students (test-optional, self-selected)."
+  },
+  "scores": {
+    "SAT_ERW": [
+      480,
+      540,
+      580
+    ],
+    "SAT_MATH": [
+      460,
+      520,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      14,
+      20,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      22,
+      24
+    ]
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "tuition",
+    "tuition_usd": 8338,
+    "tuition_out_of_state_usd": 12508,
+    "tuition_intl_usd": 12508,
+    "required_fees_usd": 5141,
+    "room_board_usd": 12890,
+    "books_usd": 1260,
+    "intl_merit_aid": true,
+    "notes": "Tuition page 'Costs (2026-2027)', per term, 12-18 credits: in-state tuition $4,169 (tuition + fees $6,262.50); out-of-state/international tuition $6,254 (tuition + fees $8,824.50), so fees are $2,570.50 per term for out-of-state/international. The page gives no annual figures; the annual values here are two terms (semester calendar) x the per-term amounts: tuition $8,338 in-state and $12,508 out-of-state/international, fees $5,141. The page shows a single combined 'out-of-state/international' rate. room_board_usd = housing $8,100 + food $4,790 from the cost-of-attendance page, which does not name a year and shows different tuition ($11,574) and fees ($4,224) for out-of-state, so verify with the university. Scholarships may lower the tuition rate (see aid notes)."
+  }
+}

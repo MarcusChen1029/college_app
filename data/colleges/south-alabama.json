@@ -1,0 +1,74 @@
+{
+  "slug": "south-alabama",
+  "name": "University of South Alabama",
+  "short_name": "South Alabama",
+  "state_region": "AL",
+  "city": "Mobile",
+  "latitude": 30.696033,
+  "longitude": -88.178711,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.southalabama.edu",
+  "admissions_url": "https://www.southalabama.edu/departments/admissions/",
+  "ipeds_unit_id": 102094,
+  "undergrad_enrollment": 9530,
+  "intl_undergrads": 111,
+  "student_faculty_ratio": 19,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of South Alabama Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.southalabama.edu/departments/institutionalresearch/resources/usa-cds-2025-2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 admissions and test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=102094",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 10360,
+    "admits": 9795,
+    "enrolled": 2137,
+    "pct_submit_sat": 6.0,
+    "pct_submit_act": 83.0,
+    "gpa_avg": 3.75,
+    "pct_reporting_gpa": 99.81,
+    "gpa_distribution": {
+      "4.0": 34.04,
+      "3.75-3.99": 20.39,
+      "3.50-3.74": 17.21,
+      "3.25-3.49": 11.77,
+      "3.00-3.24": 10.17,
+      "2.50-2.99": 5.72,
+      "2.0-2.49": 0.7,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 (Fall 2025): 10,360 applied (3,506 men, 6,854 women), 9,795 admitted (94.5%), 2,137 enrolled (1,524 in-state, 600 out-of-state, 13 international). The CDS international applicant and admit cells are blank. IPEDS reports 12,982 applicants and a 71% admit rate for fall 2024, but the fall 2024 CDS also shows about 9,200 admits (9,906 applied), so the two sources count applicants differently. Undergraduate enrollment 9,530 and nonresident count 111 are the B1/B2 'Total Undergraduates' figures. SAT/ACT percentile ranges come from IPEDS (fall 2024) because the 2025-26 CDS PDF text is partly garbled (it lists an SAT composite 25th/50th/75th of 1010/1090/1200). GPA bands are the 'all enrolled students' column. The CDS checkbox sections (C7 factors, C8 policy, H6) are not reliably legible, so factors are omitted."
+  },
+  "scores": {
+    "SAT_ERW": [
+      500,
+      560,
+      610
+    ],
+    "SAT_MATH": [
+      470,
+      550,
+      580
+    ],
+    "ACT_COMPOSITE": [
+      20,
+      23,
+      26
+    ]
+  }
+}

@@ -1,0 +1,172 @@
+{
+ "sources": {
+  "req": {
+   "kind": "admissions_site",
+   "title": "EIU - Undergraduate international admission requirements (GPA, English scores, waivers)",
+   "url": "https://www.eiu.edu/international/ugrequirements.php",
+   "accessed": "2026-10-26"
+  },
+  "chk": {
+   "kind": "admissions_site",
+   "title": "EIU - International undergraduate checklist for admission (deadlines, fee, documents)",
+   "url": "https://www.eiu.edu/international/undergraduate_checklist.php",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "EIU - Conditional admission for international undergraduates",
+   "url": "https://www.eiu.edu/international/conditional_admission.php",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "EIU - First-year and transfer admission requirements (test-optional standards)",
+   "url": "https://www.eiu.edu/admissions/admissions_requirements.php",
+   "accessed": "2026-10-26"
+  },
+  "sch": {
+   "kind": "financial_aid_site",
+   "title": "EIU - International undergraduate and graduate scholarships and awards",
+   "url": "https://www.eiu.edu/international/international_scholarships.php",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "other",
+   "title": "EIU - Cost for international students (international student fee, Excellence Award)",
+   "url": "https://www.eiu.edu/international/costs.php",
+   "accessed": "2026-10-26"
+  },
+  "nurs": {
+   "kind": "other",
+   "title": "EIU School of Nursing - Direct entry option for incoming freshmen",
+   "url": "https://www.eiu.edu/nurse/DirectEntry.php",
+   "accessed": "2026-10-26"
+  },
+  "nursadm": {
+   "kind": "other",
+   "title": "EIU School of Nursing - Admission requirements (traditional prelicensure BSN)",
+   "url": "https://www.eiu.edu/nurse/AdmissionRequirements.php",
+   "accessed": "2026-10-26"
+  },
+  "maj": {
+   "kind": "other",
+   "title": "EIU - Majors, minors and graduate programs",
+   "url": "https://www.eiu.edu/majors/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "First-year applicants may apply without SAT/ACT: guaranteed admission with a 2.8 GPA and college-prep coursework; 2.5-2.79 is reviewed individually. With scores, the standard is a 2.5 GPA plus SAT 960 or ACT 18. The international undergraduate pages do not mention SAT/ACT.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 30,
+  "notes": "International application fee is a non-refundable $30 (valid one year). Required: official secondary transcripts (the checklist says minimum 2.5 GPA on a 4.0 scale, the requirements page says 2.00), English proficiency scores or a waiver, financial affidavit with a bank statement showing one year of funding, and a passport copy. No I-20 is issued without official records. The page gives no year with the deadlines; treated as fall 2027.",
+  "src": "chk"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-15",
+   "label": "International application deadline, fall term (fall 2027 entry)",
+   "notes": "The checklist prints 'May 15 for Fall Admission / November 1 for Spring Admission' without a year; treated as fall 2027 (the spring 2028 deadline would be Nov. 1, 2027).",
+   "src": "chk"
+  },
+  {
+   "kind": "application",
+   "due": "2026-12-01",
+   "notify": "2027-01-31",
+   "label": "Nursing (prelicensure BSN) direct-entry application, opens Oct. 1",
+   "notes": "Competitive, limited seats, needs a 3.75 high-school GPA; decisions by Jan. 31. Dates have no year on the page; treated as for fall 2027 entry. Other pre-nursing students apply to the major by March 1 of freshman year.",
+   "src": "nurs"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived with 24 semester hours at a U.S. college, ELS Level 112 certificate, Language Company Level 9, Kaplan Proficiency Level, two consecutive years of study in an English-primary country within the past two years, or two terms of EAP Level 6 at SIU Carbondale CESL. Scores are valid two years. Conditional admission is possible for applicants who meet everything except the English requirement; they must then show English mastery to the Office of International Students and Scholars.",
+  "src": "req"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "Paper-based TOEFL 500 also accepted. The page gives no minimum on the new 1-6 TOEFL scale. EIU TOEFL code 1199.",
+   "src": "req"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic module.",
+   "src": "req"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "src": "req"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "New first-year and transfer international undergraduates are eligible for an International Scholar Award of $1,000 per fall and spring semester ($2,000/yr; up to $8,000 over four years for first-years) with no minimum GPA. An International Excellence Award assesses tuition at the in-state rate for undergraduates with a 3.5 GPA (4.0 scale) at admission. A competitive International Student Scholarship (partial tuition, 3.00 GPA, based on need and/or academic excellence) is also offered. EIU also charges a $230 international student fee per academic year.",
+  "src": "sch"
+ },
+ "majors": [
+  {
+   "program": "Nursing (B.S.), traditional prelicensure",
+   "category": "nursing",
+   "admit_model": "pre_major_competitive",
+   "capped": true,
+   "notes": "Most students enter as pre-nursing and apply by March 1 of freshman year (2.75 prerequisite GPA, C or better in prerequisites). A limited direct-entry track admits high-school seniors with a 3.75 GPA."
+  }
+ ],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "EIU's international pages list no SAT code; look it up in the College Board code search.",
+   "src": "chk"
+  },
+  "act": {
+   "code": null,
+   "note": "EIU's international pages list no ACT code; look it up at act.org.",
+   "src": "chk"
+  },
+  "toefl": {
+   "code": "1199",
+   "note": "EIU school code, sent directly from the testing service.",
+   "src": "chk"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed; send IELTS results directly from the test center.",
+   "src": "chk"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "req"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "engineering": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "economics": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

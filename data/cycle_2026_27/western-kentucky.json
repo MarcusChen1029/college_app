@@ -1,0 +1,173 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "WKU International Admissions - Academic admission requirements (undergraduate)",
+      "url": "https://wku.edu/international/intlreq.php",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "WKU International Admissions - English proficiency requirements",
+      "url": "https://www.wku.edu/international/intltoefl.php",
+      "accessed": "2026-10-26"
+    },
+    "tipi": {
+      "kind": "admissions_site",
+      "title": "WKU - TIPI / international overview flyer (spring 2025 PDF)",
+      "url": "https://www.wku.edu/international/international_recruitment_materials/tipi_wku_overview_flyer_spring_2025.pdf",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "WKU International - Funding opportunities flyer (PDF, (c) 2018)",
+      "url": "https://www.wku.edu/international/scholarship-sheet.pdf",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "WKU Undergraduate Catalog - Admission",
+      "url": "https://catalog.wku.edu/undergraduate/enrolling/admission/",
+      "accessed": "2026-10-26"
+    },
+    "nurs": {
+      "kind": "admissions_site",
+      "title": "WKU School of Nursing - Bachelor of Science in Nursing (BSN)",
+      "url": "https://www.wku.edu/nursing/bsn/index.php",
+      "accessed": "2026-10-26"
+    },
+    "acad": {
+      "kind": "admissions_site",
+      "title": "WKU - Academic departments and colleges",
+      "url": "https://www.wku.edu/academics/",
+      "accessed": "2026-10-26"
+    },
+    "cds": {
+      "kind": "cds",
+      "title": "Western Kentucky University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.wku.edu/instres/documents/cds_2025_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "CDS C8: SAT/ACT not required for admission if the unweighted high school GPA is 2.50 or higher (encouraged for placement); 2.00-2.49 requires a test and a Composite Admission Index of at least 60 (Summer Scholars Program). International freshmen need a 2.5 GPA (converted to a 4-point scale) and each application is reviewed case by case. An SAT EBRW of 460 is one accepted proof of English proficiency.",
+    "src": "cds"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "International application fee is a $75 non-refundable fee (domestic fee is $50 per CDS C13). Required: online application, official academic records from every school (literal English translation if not in English), English proficiency proof, and financial documentation (one year of funds, bank statement; affidavit of support if the account belongs to someone else) for the I-20. Common App use is not confirmed on the pages read.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "Application closing date (fall 2027 entry)",
+      "notes": "CDS C14 prints 'Aug 1' with no year; treated as fall 2027. WKU admits on a rolling basis. For international applicants all documents, English proof, financial proof and the fee must arrive before a decision is made; the international page asks for them by December 14 to be processed before the winter-break closure (Dec. 18 to Jan. 4), which is a processing cutoff, not an admission deadline. No separate international fall deadline is published.",
+      "src": "cds"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants from non-English-speaking countries must meet one of the listed options; scores must be within two years of application (undergraduate catalog). Accepted alternatives to a test: SAT EBRW 460 (or Critical Reading 450 before March 2016), ELS Language Center Level 109 or higher, or completing the ESLi program at WKU. Nursing requires higher scores than other programs (thresholds not on the page). Conditional pathway: WKU's International Pathway to Academic Success (IPAS) admits students with lower English scores and a 2.25 GPA, at no additional cost. Pathways minimums: TOEFL iBT 61-70, IELTS 5.5, PTE 45-51, Duolingo 90 (a 100 Duolingo is needed for the one-semester pathway and 90 for the two-semester pathway).",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 71,
+      "notes": "Direct admission minimum 71 (paper 525, computer 197). IPAS pathway: 61-70. No 1-6 scale value is given; the English page was last modified 8/30/22.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "Direct admission 6.0; IPAS pathway 5.5.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "notes": "Direct admission 100; IPAS pathway 90 (two-semester) or 100 (one-semester).",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 52,
+      "notes": "PTE Academic 52 for direct admission; IPAS pathway 45-51.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Tuition Incentive Program International (TIPI): up to 8 semesters for F-1 undergraduates from all African countries, Afghanistan, Bangladesh, India, Malaysia, Nepal, Pakistan and Vietnam; $3,000 per academic year for a 3.0-3.49 GPA, $9,500 for 3.5-4.0 (spring 2025 flyer); renewable, fall/spring only, can be combined with WKU merit awards. An older 2018 WKU flyer also lists a one-time International Undergraduate Merit Scholarship ($1,000-$10,000 by GPA) and a $1,500 per semester International Diplomat award; current status unconfirmed. CDS H6: 45 nonresident undergraduates received institutional aid (average $27,705). Admissions-page estimate of 2025-26 international cost: $43,413 (tuition $28,478, living $12,360, insurance $2,575).",
+    "src": "tipi"
+  },
+  "majors": [
+    {
+      "program": "Nursing, Bachelor of Science in Nursing (BSN)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": null,
+      "notes": "BSN admission is competitive and needs a separate application after admission to WKU (fall deadline Feb. 1, spring Sept. 1; HESI entrance exam; minimum 3.0 GPA for students admitted fall 2024 or later). Guaranteed Nursing Admission exists for first-time full-time freshmen with a 3.6 GPA or ACT 23 / SAT 1130."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "WKU's SAT code is not printed on the admissions pages read; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "WKU's ACT code is not printed on the pages read; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "WKU's TOEFL code is not printed on the pages read.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

@@ -1,0 +1,64 @@
+{
+  "slug": "saint-peters",
+  "name": "Saint Peter's University",
+  "short_name": null,
+  "state_region": "NJ",
+  "city": "Jersey City",
+  "latitude": 40.727105,
+  "longitude": -74.071541,
+  "setting": "urban",
+  "control": "private_nonprofit",
+  "website": "https://www.saintpeters.edu/",
+  "admissions_url": "https://www.saintpeters.edu/admission/",
+  "ipeds_unit_id": 186432,
+  "undergrad_enrollment": 2263,
+  "intl_undergrads": 128,
+  "student_faculty_ratio": 12,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186432",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator - Saint Peter's University (fall 2024 admissions and enrollment, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186432",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=186432",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": null,
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 4381,
+    "admits": 3966,
+    "enrolled": 454,
+    "notes": "Baseline from IPEDS ADM2023 (fall 2023 entering class; exact counts). No Common Data Set was found on saintpeters.edu or by web search (the Fact Book is behind a login), so there is no international split, GPA or SAT/ACT data; Saint Peter's reports no SAT/ACT percentiles to IPEDS (test-optional). College Navigator fall 2024: 5,217 applicants, 90% admitted, 11% of admits enrolled (admit counts not shown)."
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "College Navigator fall 2024 lists SAT/ACT as not required but considered (test optional)."
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "tuit",
+    "tuition_usd": 41770,
+    "tuition_out_of_state_usd": 41770,
+    "tuition_intl_usd": 41770,
+    "required_fees_usd": 1400,
+    "notes": "Saint Peter's Student Accounts, 2026-27 College of Arts & Sciences full-time flat rate $20,885 per semester ($41,770 per year, 12-18 credits); comprehensive fee $1,400 per year; one rate for all students (no separate non-resident or international rate listed). First-year double room $7,800 per year (Millennium or Whelan Hall); meal plans $3,990-$7,070 per year. Room and board total, books and other expenses are not summed because they depend on the housing and meal plan chosen. College Navigator 2024-25 estimates: books and supplies $1,000, on-campus food and housing $17,794, off-campus food and housing $7,500."
+  }
+}

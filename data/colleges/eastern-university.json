@@ -1,0 +1,68 @@
+{
+  "slug": "eastern-university",
+  "name": "Eastern University",
+  "short_name": "Eastern",
+  "state_region": "PA",
+  "city": "St. Davids",
+  "latitude": 40.050448,
+  "longitude": -75.370316,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.eastern.edu",
+  "admissions_url": "https://www.eastern.edu/admissions-financial-aid/undergraduate-admissions/apply-eastern/application-steps-international",
+  "ipeds_unit_id": 212133,
+  "undergrad_enrollment": 2500,
+  "intl_undergrads": 94,
+  "student_faculty_ratio": 21,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Eastern University Common Data Set 2024-2025 (PDF)",
+      "url": "https://www.eastern.edu/sites/default/files/inline-files/CDS_2024_2025.pdf",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator - Eastern University (enrollment, student-faculty ratio, test scores note)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=212133",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=212133",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2024-2025",
+    "source": "cds",
+    "applicants": 3108,
+    "admits": 2821,
+    "enrolled": 591,
+    "pct_submit_sat": 1,
+    "gpa_avg": 3.2,
+    "pct_reporting_gpa": 98,
+    "gpa_distribution": {
+      "4.0": 3,
+      "3.75-3.99": 16,
+      "3.50-3.74": 15,
+      "3.25-3.49": 16,
+      "3.00-3.24": 13,
+      "2.50-2.99": 28,
+      "2.0-2.49": 9,
+      "1.0-1.99": 1
+    },
+    "notes": "CDS C1 (fall 2024 entering class): 3,108 applied, 2,821 admitted (91%), 591 enrolled; matches IPEDS. The C1 residency table says 'Data not available', so in-state, out-of-state and international applicant/admit counts are null (international admit odds are unknown). C9 test-score tables are empty; College Navigator lists 1 enrolled student (1%) submitting SAT and notes scores are generally not considered except for applicants with a GPA below 2.75. C11 prints one GPA column (all enrolled students); the bands sum to 101 from rounding and reproduce the 3.20 average. C7 factor checkboxes could not be read, so no factors are recorded. The 2025-26 CDS was not found (2024-25 is the latest posted)."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "books_usd": 1351,
+    "notes": "CDS G5 books and supplies $1,351 (2025-26). CDS G1 2025-26 first-year tuition was $39,188, required fees $928, on-campus food and housing $14,038."
+  }
+}

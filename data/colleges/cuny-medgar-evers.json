@@ -1,0 +1,80 @@
+{
+  "slug": "cuny-medgar-evers",
+  "name": "CUNY Medgar Evers College",
+  "short_name": "Medgar Evers",
+  "state_region": "NY",
+  "city": "Brooklyn",
+  "latitude": 40.666256,
+  "longitude": -73.957076,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.mec.cuny.edu/",
+  "admissions_url": "https://www.mec.cuny.edu/admissions/",
+  "ipeds_unit_id": 190646,
+  "undergrad_enrollment": 3736,
+  "intl_undergrads": 90,
+  "student_faculty_ratio": 13,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190646",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "navigator": {
+      "kind": "ipeds",
+      "title": "College Navigator (IPEDS fall 2024 admissions, enrollment, SAT, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190646",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=190646",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "navigator",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 11239,
+    "admits": 9372,
+    "enrolled": 757,
+    "pct_submit_sat": 3,
+    "notes": "Baseline from IPEDS ADM2023 (fall 2023 entering class; exact counts). No Common Data Set was found on Medgar Evers' institutional research page (it lists fact sheets and dashboards only), so no international split, GPA or residency data; international applicant counts are not published. College Navigator fall 2024: 12,015 applicants, 86% admitted, 6% of admits enrolled (admit counts not shown). SAT percentiles are for only 20 enrolled students (3%) who submitted SAT in fall 2024, so they are a thin sample. Mixed associate/bachelor's college: IPEDS counts include associate-degree applicants."
+  },
+  "scores": {
+    "SAT_ERW": [
+      440,
+      480,
+      520
+    ],
+    "SAT_MATH": [
+      410,
+      440,
+      500
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "College Navigator: first-year applicants can choose whether to submit SAT/ACT through the spring 2027 semester (CUNY-wide test-optional policy)."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "navigator",
+    "tuition_usd": 7352,
+    "tuition_out_of_state_usd": 15302,
+    "tuition_intl_usd": 15302,
+    "books_usd": 1500,
+    "room_board_usd": 22260,
+    "other_usd": 6216,
+    "total_coa_usd": 45278,
+    "notes": "College Navigator 2024-25: tuition includes required fees; off-campus food and housing (Medgar Evers has no campus housing); total is the out-of-state off-campus figure (in-state off-campus $37,328). F-1/J-1 students pay the New York State non-resident rate (CUNY). CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time (12+ credits) plus fees."
+  }
+}

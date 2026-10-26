@@ -1,0 +1,72 @@
+{
+  "slug": "lander",
+  "name": "Lander University",
+  "short_name": "Lander",
+  "state_region": "SC",
+  "city": "Greenwood",
+  "latitude": 34.199892,
+  "longitude": -82.164736,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.lander.edu",
+  "admissions_url": "https://www.lander.edu/admissions/",
+  "ipeds_unit_id": 218229,
+  "undergrad_enrollment": 3776,
+  "intl_undergrads": 96,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=218229",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=218229",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 5184,
+    "admits": 3521,
+    "enrolled": 846,
+    "pct_submit_sat": 36,
+    "pct_submit_act": 18,
+    "notes": "Baseline from IPEDS (fall 2023 entering class): 5,184 applied, 3,521 admitted, 846 enrolled. No readable Common Data Set was found on Lander's site, so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 4,565 applicants, about 81% admitted (rounded %), 3,776 undergraduates (used for enrollment here). Test optional; students submitting SAT/ACT are a minority."
+  },
+  "scores": {
+    "SAT_ERW": [
+      490,
+      540,
+      590
+    ],
+    "SAT_MATH": [
+      470,
+      520,
+      570
+    ],
+    "ACT_COMPOSITE": [
+      17,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      15,
+      20,
+      23
+    ],
+    "ACT_MATH": [
+      16,
+      18,
+      22
+    ]
+  }
+}

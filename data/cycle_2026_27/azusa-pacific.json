@@ -1,0 +1,203 @@
+{
+  "sources": {
+    "dates": {
+      "kind": "admissions_site",
+      "title": "APU International Services - Undergraduate admission requirements and deadlines",
+      "url": "https://www.apu.edu/international/enrollment/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "APU International Services - First-Year International Students (admission requirements)",
+      "url": "https://www.apu.edu/international/enrollment/undergraduate-requirements/first-time/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "APU Academic Catalog 2026-2027 - International Undergraduate Admission",
+      "url": "https://catalog.apu.edu/admissions/undergraduate-policies/international-students/international-undergraduate-admission/",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "APU International Services - English Proficiency",
+      "url": "https://www.apu.edu/international/enrollment/admission-requirements/proficiency/",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "APU Undergraduate Admissions - Freshman application requirements and deadlines",
+      "url": "https://www.apu.edu/undergraduate-admissions/freshman/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "APU Undergraduate Admissions - Cost and aid (2026-27 tuition overview)",
+      "url": "https://www.apu.edu/undergraduate-admissions/cost/",
+      "accessed": "2026-10-26"
+    },
+    "funds": {
+      "kind": "financial_aid_site",
+      "title": "APU International Services - Costs and Scholarships (proof of funds)",
+      "url": "https://www.apu.edu/international/enrollment/tuition/",
+      "accessed": "2026-10-26"
+    },
+    "acad": {
+      "kind": "financial_aid_site",
+      "title": "APU Financial Aid - Academic Scholarships (2027-28 and 2026-27 tables)",
+      "url": "https://www.apu.edu/financial-aid/types/academic/",
+      "accessed": "2026-10-26"
+    },
+    "intlaid": {
+      "kind": "other",
+      "title": "APU article - Financial Aid for International Students: 3 Crucial Tips (undated)",
+      "url": "https://www.apu.edu/articles/financial-aid-for-international-students-3-crucial-tips/",
+      "accessed": "2026-10-26"
+    },
+    "prog": {
+      "kind": "other",
+      "title": "APU Academic Catalog - Find Your Program (undergraduate majors)",
+      "url": "https://catalog.apu.edu/program-search/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "blind",
+    "notes": "APU's freshman page says it no longer considers ACT, SAT or CLT scores as a basis for admission; scores may still be used to waive course requirements or to set additional academic scholarship awards. The 2026-27 catalog lists SAT/ACT as optional for international first-year applicants. SAT/ACT scores do not replace the English proficiency requirement on the pages reviewed.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "supplemental_essays": "Personal statement of one to two pages (required) plus a signed Statement of Agreement with Institutional Policy.",
+    "teacher_recs": 0,
+    "app_fee_usd": 45,
+    "notes": "Apply on the APU portal or the Common App (submit only one). International first-years also send sealed official high school transcripts, a foreign transcript evaluation, proof of English proficiency, a passport copy, and a bank statement with the Undergraduate Affidavit of Financial Support. Recommendations are not required (a character reference from a pastor, coach or employer is encouraged); the catalog lists a minimum U.S.-system 2.75 high school GPA for international applicants (3.0 for full consideration on the domestic freshman page; 2.5-2.99 may get conditional admission). BSN nursing and some arts programs need extra materials. Interview policy is not stated.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "plan": "ROLLING",
+      "due": "2027-02-15",
+      "label": "Priority application deadline, international (fall 2027 entry)",
+      "notes": "International Services page: Feb. 15 is the recommended priority date for admission and scholarship consideration (no year printed; treated as fall 2027). Admission is rolling and a waiting list may begin before the final date. The domestic freshman page lists Mar. 1 priority instead.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "Final deadline for applicants outside the U.S. (fall 2027 entry)",
+      "notes": "Final deadline is June 1 for applicants already inside the U.S. Applications may face an enrollment waiting list before these dates. Conflict: the International Services page also lists an Early Action date (Dec. 3, freshmen only) and the 2026-27 catalog lists Nov. 15, but the domestic freshman page says APU has no early action, so no Early Action deadline is recorded here.",
+      "src": "dates"
+    },
+    {
+      "kind": "application",
+      "due": "2026-11-15",
+      "label": "BSN Nursing freshman deadline (fall 2027 entry)",
+      "notes": "Freshman page: all BSN materials, including prerequisite proof and a one-page nursing goals statement, are due by Nov. 15 (taken as Nov. 15, 2026 for fall 2027). BSN applicants should show a 3.5 minimum GPA. International eligibility for the BSN is not stated.",
+      "src": "fy"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if all of the following are documented: at least two years of full-time secondary or postsecondary study in English without ESL/EFL support (catalog: 48 semester units), ended no more than two years before applying, with an official letter from the school confirming English as the language of instruction. Otherwise TOEFL, IELTS or Duolingo; PTE and Cambridge are not listed. Test results are valid 2 years. Applicants at the conditional score levels may be required to take TESL 100 (a credit-bearing university English course); TESL 500 is offered as extra support. No separate ESL pathway program is described on the pages reviewed (an older ALCI page returned 404).",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "subs": {
+        "reading": 20,
+        "listening": 20,
+        "speaking": 18,
+        "writing": 22
+      },
+      "notes": "International Services page: total 80 with these section minimums. The 2026-27 catalog lists only sections (L20 R20 W22 S18) and a conditional level of L16 R16 W18 S15, where TESL 100 may be required. Admissions considers component scores.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "International Services page says 6.5 overall for undergraduates; the 2026-27 catalog says 6.0 (conditional 5.5, possibly with TESL 100). The higher figure is recorded; confirm with admissions.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "notes": "Same minimum on the International Services page and the catalog.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "APU says every admitted traditional undergraduate gets some academic scholarship based on GPA and test scores. 2027-28 table (first-years, per year, renewable up to four years): Trustees full tuition; Presidents $24,000 (GPA 4.25+); Provosts $23,000 (4.0-4.24); Deans $21,000 (3.5-3.99); Directors $19,000 (3.0-3.49); Mary Hill Award $15,000 (under 3.0). The scholarship page does not say whether international students are eligible; an undated APU article says international students not winning the other merit awards are considered for International Scholarship I and II and the APU Grant (amounts there are outdated and not recorded). International students are not eligible for U.S. federal aid.",
+    "src": "acad"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 45980,
+    "required_fees_usd": 800,
+    "room_board_usd": 11290,
+    "total_coa_usd": 58070,
+    "notes": "APU 2026-27 estimate for a first-year living on campus: tuition (12-18 units) $45,980, university service fee $800, housing $6,490, dining plan $4,800 = $58,070 (books and other costs not included). For F-1/J-1 visas the International Services page says proof of funds must show $65,871 for undergraduates, pending new health insurance costs.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Nursing, BSN (traditional)",
+      "category": "nursing",
+      "admit_model": "direct_major",
+      "capped": true,
+      "notes": "Freshman applicants submit prerequisite proof and a goals statement by Nov. 15; the page asks for a 3.5 minimum GPA. International eligibility is not stated."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is printed on the APU admissions pages reviewed; APU does not use SAT scores for admission decisions.",
+      "src": "fy"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT institution code is printed on the APU admissions pages reviewed.",
+      "src": "fy"
+    },
+    "toefl": {
+      "code": "4596",
+      "note": "APU institution code for official score reports (valid 2 years).",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "The page says official score reports must be requested to be sent to APU; no IELTS code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "The page says official score reports must be sent to APU; no Duolingo code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

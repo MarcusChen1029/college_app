@@ -1,0 +1,162 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Northwestern State University - International Student Admission Requirements",
+      "url": "https://www.nsula.edu/admissions/international/international-student-admission-requirements/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Northwestern State University 2026-2027 Catalog (PDF) - Admission to the University",
+      "url": "https://dps.apps.nsula.edu/view/18291/26-27%20Northwestern%20Catalog%20-%20final.pdf",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Northwestern State University - Cost of Attendance (2026-2027 aid year)",
+      "url": "https://www.nsula.edu/financial-aid/cost-of-attendance/",
+      "accessed": "2026-10-26"
+    },
+    "fees": {
+      "kind": "financial_aid_site",
+      "title": "Northwestern State University - Fall 2026 Tuition & Fees, Natchitoches Campus (PDF)",
+      "url": "https://dps.apps.nsula.edu/view/18544",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "flexible",
+    "notes": "IPEDS (fall 2024) lists SAT/ACT as 'not required, but considered'. For international freshmen the admissions checklist asks for official ACT or SAT scores with minimums of ACT 18 English / 19 Math or SAT 450 Verbal / 460 Math, and the catalog also accepts ACCUPLACER as an alternative. Domestic regular admission needs no minimum ACT with a 2.35 GPA (catalog). An SAT of about 1100 clears the published minimums.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 20,
+    "fee_waiver": true,
+    "notes": "Catalog: $20 non-refundable application fee (economic-hardship waivers exist); the international page gives no fee amount. Freshman applicants need a document-by-document evaluation with cumulative GPA from an approved U.S. evaluation agency (AACRAO, ECE and others), proof of English proficiency if applicable, financial statement, health and immunization forms, and a passport copy. No I-20 is issued until fully admitted. Interviews are not required (catalog).",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-07-01",
+      "label": "International preferred application deadline (fall 2027 entry)",
+      "notes": "International page: July 1 for fall (all requirements in by then; later files may delay admission to the next semester); November 1 for spring. Printed without a year, treated as 2027. The catalog's general dates are Aug 1 (application) and Aug 8 (credentials) and say international applications and credentials are needed at least two months before the term.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-01",
+      "label": "Academic/leadership scholarship priority date 1",
+      "notes": "Catalog: priority dates Dec 1 and Mar 1 for the following academic year; applicants must apply for admission and send test scores (out-of-state students also a six-semester transcript). Amounts and international eligibility are not stated.",
+      "src": "cat"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-03-01",
+      "label": "Academic/leadership scholarship priority date 2",
+      "notes": "Second catalog priority date (see Dec 1).",
+      "src": "cat"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not required for students whose native language is English or who transfer from a U.S. college. Also accepted as proof: TOEFL paper-based 550, ACT English 18, SAT ERW 500 or ACCUPLACER NG Writing 250. No intensive English or conditional-admission pathway is described on the international admissions page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Tests taken before Jan 21, 2026 (catalog).",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "Tests taken on or after Jan 21, 2026; the catalog states 4.5 without naming the 1-6 scale.",
+      "src": "cat"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 10174,
+    "tuition_out_of_state_usd": 20962,
+    "tuition_intl_usd": 20962,
+    "intl_extra_fees_usd": 120,
+    "room_board_usd": 11761,
+    "books_usd": 1385,
+    "other_usd": 6497,
+    "notes": "Tuition and fees are computed from the Fall 2026 Natchitoches schedule at 15 credit hours: $5,087.05 per semester in-state (2 semesters = $10,174); nonresidents add the out-of-state fee of $5,394 per semester at 12+ hours (= $20,962 a year); international students also pay a $60 per semester international student fee (catalog) = $120. The cost-of-attendance page shows undergraduate tuition and fees of $10,772 without naming residency. Room and board is the on-campus figure; other = transportation $3,755 + miscellaneous $2,742 (COA page, 2026-27 aid year).",
+    "src": "fees"
+  },
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "The catalog describes academic/leadership scholarships based on test scores, GPA, rank and activities, but no international-specific scholarship or published award amounts were found, and it is not stated whether international freshmen qualify. CDS H6 (aid to nonresidents) is not legible in the PDF text.",
+    "src": "cat"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6492",
+      "note": "NSU SAT school code (international admissions page).",
+      "src": "intl"
+    },
+    "act": {
+      "code": "1600",
+      "note": "NSU ACT school code (international admissions page).",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is listed on the pages checked; look it up in the ETS code search.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not on NSU's accepted list.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

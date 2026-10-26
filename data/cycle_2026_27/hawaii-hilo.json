@@ -1,0 +1,170 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UH Hilo - Admissions for International Students (checklist, deadlines, English proficiency)",
+      "url": "https://hilo.hawaii.edu/admissions/international_instructions.php",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "UH Hilo - Freshman Application (requirements, fee, deadlines)",
+      "url": "https://hilo.hawaii.edu/admissions/freshman.php",
+      "accessed": "2026-10-26"
+    },
+    "eli": {
+      "kind": "admissions_site",
+      "title": "UH Hilo English Language Institute - How to Apply",
+      "url": "https://hilo.hawaii.edu/academics/eli/HowtoApply.php",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "UH Hilo - Plan Your Costs: International Student Budget (2026-2027)",
+      "url": "https://hilo.hawaii.edu/admissions/estimated-costs-for-international-students.php",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "UH Hilo International Student Services - Scholarships for International Students",
+      "url": "https://hilo.hawaii.edu/international/scholarships.php",
+      "accessed": "2026-10-26"
+    },
+    "deg": {
+      "kind": "other",
+      "title": "UH Hilo - Explore Our Degrees",
+      "url": "https://hilo.hawaii.edu/degrees/",
+      "accessed": "2026-10-26"
+    },
+    "bsn": {
+      "kind": "other",
+      "title": "UH Hilo School of Nursing - BSN Admission Information",
+      "url": "https://hilo.hawaii.edu/depts/nursing/bsn/admission-information.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "The international page says a standardized test is not required for admission; SAT, ACT, IB Diploma or A-level results may earn college credit or exempt applicants from English requirements. The domestic freshman page considers a cumulative GPA below 2.7 on a sliding scale with official ACT/SAT scores.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "Apply through the UH Hawaii Central Application (Fall 2027 link on the admissions pages); no Common App link was found. International first-years send an official English-language high school transcript, a passport copy, the International Student Supplemental Information Form and a sponsor bank statement or bank verification. Admission is based on the secondary school record: minimum 2.7 GPA (4.0 scale) and four years of English, three of math (Algebra I, Geometry, Algebra II), three of natural science and seven of college-preparatory electives. The financial support requirement is $37,080 on the international admission page and $39,258 on the 2026-27 cost page. Essays, recommendations and interviews are not mentioned.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "priority",
+      "due": "2027-03-01",
+      "label": "Recommended date for F-1 applicants (fall 2027 entry)",
+      "notes": "Recommended so there is time for the I-20, SEVIS fee and visa interview. No year is printed; the page links the Fall 2027 application, so this is taken as March 1, 2027.",
+      "src": "intl"
+    },
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-05-01",
+      "label": "International application deadline (fall 2027 entry)",
+      "notes": "Listed on the page as the 'International Student Priority Deadline' for Fall: May 1. The domestic freshman deadline is July 1 (documents July 15). Spring entry: October 1. No decision dates are published.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "recommended",
+    "waiver_notes": "A test score is not required if the other admission requirements are met: applicants with no score, or a score below the direct-admission levels, are admitted first to the English Language Institute (ELI). Applicants with three years of full-time schooling in English (documented) at a school in Australia, Canada (not Quebec), Ireland, New Zealand, the UK or the US need no test. Scores in the placement ranges (TOEFL iBT 61-99, IELTS 5.5-6.5, Duolingo 90) allow degree-program admission but require the English Language Placement Assessment on arrival and possible ESL classes; TOEFL iBT 100+ or IELTS 7.0+ avoids the placement assessment. SAT EBRW 525+ or ACT English plus Reading 40 (each 18+) also counts for direct admission.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "recommended_option",
+      "min": 61,
+      "notes": "Direct admission to a degree program (paper-delivered TOEFL: 46). 61-99 requires the placement assessment; 100+ does not. Applicants without a score can enter the ELI. The page gives no section minimums.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "recommended_option",
+      "min": 5.5,
+      "notes": "Direct admission to a degree program; 5.5-6.5 requires the placement assessment, 7.0+ does not (ELI page).",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "recommended_option",
+      "min": 90,
+      "notes": "Direct admission to a degree program; the ELI page lists 90 as still requiring the placement assessment.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "UH Hilo International Student Scholarship: a limited number are awarded each year to F-1 students with outstanding academic merit and financial need; admitted new international students are considered automatically (no separate application) and notified by email. No amounts are published. International students can also use the UH System Common Scholarship Application (the 2026-27 deadline was March 2; 2027-28 dates not yet posted) and college dean's scholarships. International students on F-1 visas do not file the FAFSA.",
+    "src": "sch"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 20448,
+    "required_fees_usd": 770,
+    "room_board_usd": 10814,
+    "books_usd": 1350,
+    "other_usd": 5876,
+    "total_coa_usd": 39258,
+    "notes": "UH Hilo 2026-27 international budget as on the I-20: tuition $20,448, estimated fees $770, meals and housing $10,814, books and supplies $1,350, and other $5,876 (transportation $1,500 + personal care $2,776 + required medical insurance $1,600), total $39,258. The page's summary line for books and medical insurance ($2,935) does not match its itemized $2,950, so the itemized figures are used.",
+    "src": "cost"
+  },
+  "majors": [
+    {
+      "program": "Nursing, BSN (via Exploratory Health Sciences)",
+      "category": "nursing",
+      "admit_model": "pre_major_competitive",
+      "capped": true,
+      "notes": "Freshmen enter as Exploratory Health Sciences; the upper-division nursing major is competitive and space-available, based on natural science grades (3.0 required) and a TEAS score of at least 70%. BSN applications are due Nov. 1 for fall entry. International eligibility is not addressed on the page."
+    }
+  ],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT institution code is printed on the UH Hilo admissions pages reviewed; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT institution code is printed on the UH Hilo admissions pages reviewed.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages reviewed; the page says to send official results to the Admissions Office.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

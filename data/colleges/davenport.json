@@ -1,0 +1,60 @@
+{
+  "slug": "davenport",
+  "name": "Davenport University",
+  "short_name": "Davenport",
+  "state_region": "MI",
+  "city": "Grand Rapids",
+  "latitude": 42.850013,
+  "longitude": -85.533519,
+  "setting": "suburban",
+  "control": "private_nonprofit",
+  "website": "https://www.davenport.edu/",
+  "admissions_url": "https://www.davenport.edu/admissions-aid",
+  "ipeds_unit_id": 169479,
+  "undergrad_enrollment": 3741,
+  "intl_undergrads": 128,
+  "student_faculty_ratio": 18,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "College Navigator (NCES/IPEDS) institution profile",
+      "url": "https://nces.ed.gov/collegenavigator/?id=169479",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=169479",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=169479",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 3869,
+    "admits": 3755,
+    "enrolled": 587,
+    "notes": "Baseline from College Navigator (IPEDS fall 2024 entering class): 4,391 applicants, 98% admitted, 14% of admitted enrolled; exact admit and enrolled counts and SAT/ACT percentiles are not shown on the page, so they are left null. A Common Data Set could not be found (Davenport's Institutional Research page lists a Data Book and DU Facts, not a CDS). Davenport has a large online enrollment; Navigator figures are institution-wide. Catalog minimum is a 2.0 high school GPA. About 3% of first-time undergraduates are from foreign countries (rounded percentage, so no count is given). Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+  },
+  "cost": {
+    "year": "2024-2025",
+    "source": "ipeds",
+    "tuition_usd": 24466,
+    "books_usd": 916,
+    "room_board_usd": 12928,
+    "other_usd": 3280,
+    "total_coa_usd": 41590,
+    "notes": "College Navigator 2024-25 (superseded by the 2026-27 figures in the cycle file): tuition and required fees $24,466; on-campus room and board $12,928; other expenses $3,280."
+  }
+}

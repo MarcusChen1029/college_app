@@ -1,0 +1,92 @@
+{
+  "slug": "texas-womans",
+  "name": "Texas Woman's University",
+  "short_name": "TWU",
+  "state_region": "TX",
+  "city": "Denton",
+  "latitude": 33.226211,
+  "longitude": -97.127842,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://twu.edu",
+  "admissions_url": "https://twu.edu/admissions/",
+  "ipeds_unit_id": 229179,
+  "undergrad_enrollment": 9962,
+  "intl_undergrads": 161,
+  "student_faculty_ratio": 16,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Texas Woman's University Common Data Set 2025-2026 (PDF)",
+      "url": "https://twu.edu/media/documents/irdm/CDS_2025-2026-(1).pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (profile, student-to-faculty ratio, programs, fall 2024)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=229179",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 7804,
+    "admits": 7536,
+    "enrolled": 1502,
+    "pct_submit_sat": 48,
+    "pct_submit_act": 8,
+    "gpa_avg": 3.24,
+    "pct_reporting_gpa": 98.27,
+    "gpa_distribution": {
+      "4.0": 4.81,
+      "3.75-3.99": 17.82,
+      "3.50-3.74": 14.7,
+      "3.25-3.49": 18.16,
+      "3.00-3.24": 13.28,
+      "2.50-2.99": 19.85,
+      "2.0-2.49": 11.38,
+      "1.0-1.99": 0.0
+    },
+    "notes": "CDS C1 (fall 2025 first-year class): 7,804 applied, 7,536 admitted, 1,502 enrolled. The in-state / out-of-state / international split in C1 was left blank, so international applicants and admits are not published. Undergraduate enrollment 9,962 and nonresident undergraduates 161 are the CDS B1/B2 'Total Undergraduates' figures; the student-to-faculty ratio (16:1) is the fall 2024 College Navigator figure. TWU is coeducational but 8,790 of its 9,962 undergraduates are women. No waiting list, early decision or early action. TWU is test-optional, so SAT percentiles describe the 48% (SAT) and 8% (ACT) of enrollees who submitted scores; no ACT percentiles were reported. The PDF header says 'Common Data Set 2024-2025' but its data are for fall 2025 and it is posted as the 2025-2026 edition. CDS C7 factor checkboxes could not be read from the PDF text, so no factors are recorded."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      910,
+      1010,
+      1110
+    ],
+    "SAT_ERW": [
+      470,
+      520,
+      580
+    ],
+    "SAT_MATH": [
+      430,
+      490,
+      540
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8F: 'TWU is test-optional. Scores should be submitted if a student is using their scores to claim a TSI exemption.'"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "source": "cds",
+    "tuition_usd": 7140,
+    "tuition_out_of_state_usd": 19980,
+    "tuition_intl_usd": 19980,
+    "required_fees_usd": 3850,
+    "room_board_usd": 13230,
+    "books_usd": 1231,
+    "intl_need_aid": true,
+    "intl_need_aid_awarded": 55,
+    "intl_avg_award_usd": 6683,
+    "notes": "CDS G1 (first-year): nonresident tuition $19,980, required fees $3,850, on-campus food and housing $13,230 (the form's G1 text asks for 2026-27 costs; the filing does not say otherwise). H6: institutional need-based and non-need-based aid are both available to nonresident undergraduates; 55 received it (average $6,683, total $240,274)."
+  }
+}

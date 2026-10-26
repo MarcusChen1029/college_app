@@ -1,0 +1,130 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "SHSU - International Students: undergraduate freshman steps, deadlines and English proficiency",
+      "url": "https://www.shsu.edu/admissions/apply/international-steps-checklist",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "SHSU Undergraduate Catalog 2026-2027 - Admission Standards for Undergraduate Students",
+      "url": "https://catalog.shsu.edu/undergraduate/academic-policies-procedures/admission-standards/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "SHSU - Scholarships (Scholarships4Kats, non-resident tuition waiver rule)",
+      "url": "https://www.shsu.edu/cost-aid/types-of-aid/scholarships.php",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "ACT/SAT is marked optional for beginning freshmen in the 2026-27 catalog and CDS C8A says 'not required for admission, but considered if submitted'. Automatic admission paths for domestic applicants: unweighted GPA 3.0+ (with or without scores), GPA 2.5-2.99 with ACT 22 / SAT 1110, GPA 2.25-2.49 with ACT 25 / SAT 1210, or top 10% with a distinguished diploma; others get holistic review. Scores are still needed for certain scholarships. The international page lists no SAT/ACT requirement (SAT/ACT verbal appear only as English proficiency options).",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 90,
+    "notes": "Apply on ApplyTexas or the Common App; the international application fee is $90 and the page lists no waiver. Needed: official high school transcripts (electronic preferred, SHSU school code 003606 for e-transcripts) with certified English translation if needed, passport copy, immunization records (bacterial meningitis vaccine for students under 22, before registering), and financial support documentation for one academic year (official, issued within 6 months). The page says a transcript evaluation is required only for international graduate students. I-20 is issued after admission and receipt of all documents. The 2026-27 catalog requires a minimum GPA of 2.5 for beginning freshmen from a non-English-instruction high school abroad.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-08-01",
+      "label": "Application deadline, fall 2027",
+      "notes": "The page lists Fall Aug. 1, Spring Dec. 15, Summer May 15 with no year and no separate international column; treated as fall 2027. CDS C14 also shows an 8/1 priority and closing date. SHSU strongly encourages international students outside the U.S. to apply at least 90 days before the semester starts (about early May for fall) to allow time for the I-20 and visa.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-11-01",
+      "label": "Scholarships4Kats priority date for freshman scholarships",
+      "notes": "The scholarships page says to complete the Scholarships4Kats application by the Nov. 1 priority date (applications open the September before) and can still be submitted later; no year is printed, so Nov. 1, 2026 is inferred for fall 2027 entry. The page does not say whether international students are eligible for each award.",
+      "src": "sch"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applicants whose high school or college is on SHSU's official English language nations list may be exempt; a waiver may also be considered for high school or college coursework taught in English, judged from official transcripts. Other ways to show proficiency: ACT verbal 27, SAT verbal 600, IB English SL 4, Cambridge O-Level English C, CXC/CCSLC/CSEC/CAPE English IV, a C or better in English Composition I at a regionally accredited U.S. college, or completing an intensive English program recognized by SHSU or TIEC. The pages describe no conditional admission or ESL pathway program. (A search result showed an older SHSU intranet page listing IELTS 6.5; the public admissions page and the 2026-27 catalog both say 6.0.)",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 69,
+      "notes": "TOEFL iBT or iBT Special Home Edition. The pages do not give the new 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 100,
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "meets_full_need": false,
+    "notes": "No international-specific scholarship is listed on the pages read. Per the scholarships page, a single competitive SHSU scholarship of at least $1,000 can earn a non-resident tuition waiver for the period it covers. CDS H6 (fall 2025): 59 degree-seeking nonresident undergraduates received institutional aid, average $17,724; the H6 policy boxes are all ticked, so whether it is need-based or merit is unclear. FAFSA is listed as the form for nonresident aid applicants.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No numeric SAT code is printed on the pages read; search the College Board code list by name.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No numeric ACT code is printed on the pages read; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the pages read.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "economics": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

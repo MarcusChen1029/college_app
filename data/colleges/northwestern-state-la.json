@@ -1,0 +1,81 @@
+{
+  "slug": "northwestern-state-la",
+  "name": "Northwestern State University of Louisiana",
+  "short_name": "Northwestern State (LA)",
+  "state_region": "LA",
+  "city": "Natchitoches",
+  "latitude": 31.750666,
+  "longitude": -93.097797,
+  "setting": "rural",
+  "control": "public",
+  "website": "https://www.nsula.edu",
+  "admissions_url": "https://www.nsula.edu/admissions/",
+  "ipeds_unit_id": 160038,
+  "undergrad_enrollment": 7501,
+  "intl_undergrads": 145,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Northwestern State University of Louisiana Common Data Set 2025-2026 (PDF)",
+      "url": "https://dps.apps.nsula.edu/view/17818/CDS-PDF-2025-2026_PDF_Template.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    },
+    "cds23": {
+      "kind": "cds",
+      "title": "Northwestern State University of Louisiana Common Data Set 2023-2024 (PDF; international applicant counts)",
+      "url": "https://dps.apps.nsula.edu/view/13318",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 admissions and test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=160038",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 2723,
+    "admits": 2578,
+    "enrolled": 1057,
+    "pct_submit_sat": 1.96,
+    "pct_submit_act": 90.84,
+    "gpa_avg": 3.4,
+    "pct_reporting_gpa": 97.85,
+    "gpa_distribution": {
+      "4.0": 7.83,
+      "3.75-3.99": 21.78,
+      "3.50-3.74": 19.96,
+      "3.25-3.49": 19.58,
+      "3.00-3.24": 11.56,
+      "2.50-2.99": 15.76,
+      "2.0-2.49": 3.06,
+      "1.0-1.99": 0.38
+    },
+    "notes": "CDS C1 (Fall 2025): 2,723 applied (817 men, 1,906 women), 2,578 admitted (94.7%), 1,057 enrolled. The 2025-26 CDS leaves the in-state / out-of-state / international split blank; the 2023-24 CDS (Fall 2023) reported 15 international first-year applicants, 15 admitted and 12 enrolled (all applicants 3,189, admitted 2,985, enrolled 1,031). Undergraduate enrollment 7,501 and nonresident count 145 are the B1/B2 'Total Undergraduates' figures. SAT/ACT percentile ranges come from IPEDS (fall 2024) because the CDS percentile table is misaligned in the PDF text. GPA bands are the 'all enrolled students' column (the 0.10% below 1.0 is omitted); the CDS average is 3.40. The CDS checkbox sections (C7 factors, C8 test policy, H6) are not readable as text, so factors are omitted."
+  },
+  "scores": {
+    "SAT_ERW": [
+      448,
+      510,
+      610
+    ],
+    "SAT_MATH": [
+      418,
+      520,
+      553
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ]
+  }
+}

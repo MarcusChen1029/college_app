@@ -1,0 +1,160 @@
+{
+ "sources": {
+  "dates": {
+   "kind": "admissions_site",
+   "title": "CSUMB International - Important Dates (undergraduate, Fall 2027, tentative)",
+   "url": "https://csumb.edu/international/important-dates/",
+   "accessed": "2026-10-26"
+  },
+  "how": {
+   "kind": "admissions_site",
+   "title": "CSUMB Admissions - International (how to apply)",
+   "url": "https://csumb.edu/admissions-aid/how-to-apply/international/",
+   "accessed": "2026-10-26"
+  },
+  "bach": {
+   "kind": "admissions_site",
+   "title": "CSUMB International - Bachelor's Admission Requirements",
+   "url": "https://csumb.edu/international/program-options/bachelors-degree/bachelors-admission-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "CSUMB International - Conditional Admission (American Language and Culture Program)",
+   "url": "https://www.csumb.edu/international/program-options/conditional-admission/",
+   "accessed": "2026-10-26"
+  },
+  "costs": {
+   "kind": "admissions_site",
+   "title": "CSUMB International - Student Tuition & Fees (2025-2026 cost estimate, scholarships)",
+   "url": "https://www.csumb.edu/international/program-options/bachelors-degree/international-student-tuition--fees-at-cal-state-monterey-bay/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "CSUMB Admissions and Aid - Tuition and Fees (2026-2027)",
+   "url": "https://csumb.edu/admissions-aid/costs-financial-aid/tuition-fees/",
+   "accessed": "2026-10-26"
+  },
+  "first": {
+   "kind": "admissions_site",
+   "title": "CSUMB Admissions - First Year (test scores optional, $70 fee)",
+   "url": "https://csumb.edu/admissions-aid/how-to-apply/first-year/",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - CSUMB admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=409698",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)' and the CSU system does not use SAT/ACT in admission decisions. CSUMB's first-year page says test scores are optional and used only for advising and placement.",
+  "src": "nav"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App); $70 fee by card or PayPal. Freshman GPA minimum: the Bachelor's Admission Requirements page says 2.50 on a 4.0 scale, the how-to-apply page says 2.40, so the stricter 2.50 is safest. Needed: official transcripts and a high school diploma or equivalent, passport photo page, proof of funding and a financial affidavit (the pages give no amount), and English proficiency proof. Academic and English requirements must be met by the end of the term before enrollment.",
+  "src": "bach"
+ },
+ "deadlines": [
+  {
+   "kind": "priority",
+   "due": "2027-03-01",
+   "label": "Priority application deadline, undergraduate international (fall 2027)",
+   "notes": "The dates page marks all Fall 2027 dates as tentative and subject to change; applications open Oct 1, 2026. The CSU-wide Nov 30 priority date and Feb 15 document date on the first-year page are for domestic applicants.",
+   "src": "dates"
+  },
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-06-01",
+   "label": "Final application deadline, undergraduate international (fall 2027)",
+   "notes": "Tentative. The spring 2027 international page says admission is rolling.",
+   "src": "dates"
+  },
+  {
+   "kind": "other",
+   "due": "2027-07-01",
+   "label": "Document deadline, degree-seeking international (fall 2027)",
+   "notes": "Date when all final admission documents must be submitted; tentative.",
+   "src": "dates"
+  },
+  {
+   "kind": "deposit",
+   "due": "2027-07-01",
+   "label": "Enrollment confirmation payment deadline (degree-seeking, fall 2027)",
+   "notes": "Listed on the dates page as the enrollment confirmation and payment deadline; tentative.",
+   "src": "dates"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required with three or more years at a U.S. high school or college, or at a high school where English was the principal language of instruction (listed countries include the U.S., Australia, Belize, Canada, United Kingdom, New Zealand, Nigeria, Antigua and Barbuda, Bahamas, Cayman Islands, Trinidad and Tobago), or after transferring a course that meets CSUMB GE Area A2 (written communication). Applicants below the minimums may qualify for conditional admission.",
+  "src": "bach"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "iBT 61; paper-based minimum 500. The pages give no new-scale (1-6) minimum.",
+   "src": "bach"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Overall band 6.0 per the Bachelor's requirements page (the how-to-apply page prints '60', treated as a typo).",
+   "src": "bach"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test 95.",
+   "src": "bach"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 45,
+   "notes": "Pearson Test of English Academic 45. Cambridge is accepted only for credit by exam, not as an English proficiency test.",
+   "src": "bach"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": null,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "CSUMB says it offers limited institutional scholarships for international students (CSUMB International Student Scholarship, applied for at csumb.academicworks.com); the how-to-apply page says they help waive the non-resident portion of tuition. No award amounts are published. Conditional admission: apply to the American Language and Culture Program (ALCP, levels 1 to 4) and indicate interest; it does not guarantee admission to a degree program and no program cost was found on the pages checked.",
+  "src": "costs"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "required_fees_usd": 2349,
+  "notes": "Tuition $3,419 per semester (6.1+ units), $6,838 a year, and campus fees $2,349 a year are from CSUMB's 2026-27 tuition and fees page. The page gives no nonresident per-unit rate, so nonresident tuition is left null. CSUMB's international page (2025-2026 estimate, not updated) shows nonresident tuition and campus fees of $19,200 at 12 units per semester, living expenses $17,448, personal expenses and books $5,038 and mandatory health insurance $1,700, for a total of $43,386.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {},
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "lsu-shreveport",
+  "name": "Louisiana State University Shreveport",
+  "short_name": "LSUS",
+  "state_region": "LA",
+  "city": "Shreveport",
+  "latitude": 32.428465,
+  "longitude": -93.70561,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.lsus.edu",
+  "admissions_url": "https://www.lsus.edu/undergraduate-admissions",
+  "ipeds_unit_id": 159416,
+  "undergrad_enrollment": 2651,
+  "intl_undergrads": 98,
+  "student_faculty_ratio": 30,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS College Navigator (fall 2024 admissions and test scores, 2024-25 expenses)",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159416",
+      "cds_year": "2024-2025",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159416",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_adm2023": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions 2023 (ADM2023): fall 2023 applicants, admits, enrolled",
+      "url": "https://nces.ed.gov/collegenavigator/?id=159416",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds_adm2023",
+    "applicants": 949,
+    "admits": 785,
+    "pct_submit_sat": 5,
+    "pct_submit_act": 81,
+    "notes": "Baseline from IPEDS (fall 2024): 1,917 applicants and a 51% admit rate (31% of admitted students enrolled). The admits figure is derived (51% x 1,917, rounded), because IPEDS publishes only the percentage. Enrolled count, residency splits, international applicant/admit numbers and GPA are not published: no Common Data Set newer than 2016-17 is posted on lsus.edu. Undergraduate enrollment is the fall 2024 IPEDS figure; the student-faculty ratio of 30 to 1 is as printed by College Navigator (year not stated). SAT percentiles rest on only 15 submitting students; 247 submitted ACT. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "enrolled": 285
+  },
+  "scores": {
+    "SAT_ERW": [
+      515,
+      550,
+      605
+    ],
+    "SAT_MATH": [
+      485,
+      540,
+      590
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      24
+    ]
+  }
+}

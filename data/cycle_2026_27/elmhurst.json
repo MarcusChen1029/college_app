@@ -1,0 +1,169 @@
+{
+ "sources": {
+  "intl": {
+   "kind": "admissions_site",
+   "title": "Elmhurst - Admission for first-year international students (deadlines, English proficiency, scholarships)",
+   "url": "https://www.elmhurst.edu/admission/international-students/admission-requirements/first-year/",
+   "accessed": "2026-10-26"
+  },
+  "intlhome": {
+   "kind": "admissions_site",
+   "title": "Elmhurst - International student admission requirements (overview, merit scholarships)",
+   "url": "https://www.elmhurst.edu/admission/international-students/admission-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "Elmhurst - First-year student admission requirements (test-optional)",
+   "url": "https://www.elmhurst.edu/admission/first-year-students/admission-requirements/",
+   "accessed": "2026-10-26"
+  },
+  "apply": {
+   "kind": "admissions_site",
+   "title": "Elmhurst - Apply (no application fee; Common App accepted)",
+   "url": "https://www.elmhurst.edu/admission/apply/",
+   "accessed": "2026-10-26"
+  },
+  "tuit": {
+   "kind": "other",
+   "title": "Elmhurst - Undergraduate tuition 2026-2027",
+   "url": "https://www.elmhurst.edu/admission/financial-aid/tuition-fees/undergraduate/",
+   "accessed": "2026-10-26"
+  },
+  "coa": {
+   "kind": "other",
+   "title": "Elmhurst - Cost of attendance 2026-2027",
+   "url": "https://www.elmhurst.edu/admission/financial-aid/tuition-fees/cost-of-attendance/",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "Test-optional: applicants do not need to submit SAT or ACT scores to be considered; the international page lists SAT/ACT only as English-proficiency alternatives. Admission looks at grade trends from freshman through junior year and course rigor; at the Admission Review Board's discretion an applicant may be asked for an interview, essay or teacher evaluation form. No minimum GPA is published.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 0,
+  "notes": "No application fee. International first-year file: application, secondary transcript for all years (certified English translation if needed), IB/AP/CLEP scores if any, proof of English proficiency, then Declaration of Finances and Affidavit of Support (collected Mar. 1-Jun. 1 for fall). Fall I-20s are sent from June 1. Some majors require an audition or portfolio.",
+  "src": "intl"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-01",
+   "label": "International first-year application window closes (fall 2027 entry)",
+   "notes": "Page says apply between September 1 and May 1, or until all spaces are filled, with no priority date. No year is printed; taken as the fall 2027 cycle (opens Sep 1, 2026). Spring entry: Aug 1 to Nov 1.",
+   "src": "intl"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Waived for citizens who attended high school in listed English-speaking countries (e.g. Canada's English-speaking provinces, Australia, Ireland, UK, Jamaica); also for two semesters of U.S. college English (B or better), an American international school with passing English grades, an English-language IB program, South Korean CSAT English 1, or (I)GCSE English First Language C/4 / A-level English C. SAT EBRW 520 or ACT English and Reading 22 also satisfy the requirement. No conditional admission or ESL pathway is mentioned on the page.",
+  "src": "intl"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 79,
+   "notes": "For tests taken before January 21, 2026.",
+   "src": "intl"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4,
+   "notes": "For tests taken after January 21, 2026; the page prints 4 without naming the 1-6 scale.",
+   "src": "intl"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.5,
+   "notes": "Composite score.",
+   "src": "intl"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 110,
+   "src": "intl"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 55,
+   "notes": "PTE Academic and Express; the page labels this 2027 and beyond.",
+   "src": "intl"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "min": 160,
+   "notes": "B2 First, C1 Advanced or C2 Proficiency.",
+   "src": "intl"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "International first-year awards need no separate application and are based on the admission application: International Chairman's Award up to $20,000 and International Discovery Award $1,000-$5,000 (academic merit), plus international student tuition grants (amounts not listed). The overview page says merit awards can be worth up to $20,000 per year. International students are not eligible for federal aid.",
+  "src": "intl"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 45258,
+  "required_fees_usd": 600,
+  "room_board_usd": 13170,
+  "books_usd": 1290,
+  "notes": "Full-time undergraduate tuition $45,258 (2026-27), student fee $300 per term, room $7,454 plus 17-meal board $5,716.30; first-year students also pay a $275 matriculation fee. The cost-of-attendance page lists different room ($8,150) and food ($7,880) estimates, so budgets can differ from billed charges.",
+  "src": "tuit"
+ },
+ "majors": [],
+ "score_codes": {
+  "sat": {
+   "code": null,
+   "note": "Elmhurst's admissions pages give no SAT code; look it up in the College Board code search.",
+   "src": "fy"
+  },
+  "act": {
+   "code": null,
+   "note": "Elmhurst's admissions pages give no ACT code; look it up at act.org.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": null,
+   "note": "The international page gives no ETS code; select Elmhurst University in the ETS list.",
+   "src": "intl"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  },
+  "pte": {
+   "code": null,
+   "note": "No institution code is listed.",
+   "src": "intl"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

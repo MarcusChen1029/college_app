@@ -1,0 +1,140 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Metro State - International student admissions (application deadlines)",
+      "url": "https://www.metrostate.edu/apply/get-started/international",
+      "accessed": "2026-10-26"
+    },
+    "req": {
+      "kind": "admissions_site",
+      "title": "Metro State - International undergraduate students (requirements, English proficiency)",
+      "url": "https://www.metrostate.edu/students/support/international/undergraduate-requirements",
+      "accessed": "2026-10-26"
+    },
+    "prog": {
+      "kind": "admissions_site",
+      "title": "Metro State - International student program availability",
+      "url": "https://www.metrostate.edu/students/support/international/available-programs",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Metro State - First-year students",
+      "url": "https://www.metrostate.edu/apply/get-started/freshmen",
+      "accessed": "2026-10-26"
+    },
+    "tui": {
+      "kind": "financial_aid_site",
+      "title": "Metro State - Tuition (fall 2026, spring 2027, summer 2027)",
+      "url": "https://www.metrostate.edu/apply/tuition",
+      "accessed": "2026-10-26"
+    },
+    "coa": {
+      "kind": "financial_aid_site",
+      "title": "Metro State - Cost of attendance 2026-27",
+      "url": "https://www.metrostate.edu/finances/aid/getting-started/cost",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Metro State - Grants and scholarships",
+      "url": "https://www.metrostate.edu/finances/aid/getting-started/grants-scholarships",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Admission is based on high school GPA and record; the IPEDS profile notes that test scores are 'considered only if an admissions decision cannot be made from secondary school grades and records'. The international pages do not ask for SAT/ACT (they only appear as optional ways to prove English: SAT reading 570+ or ACT English 24+).",
+    "src": "req"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": null,
+    "notes": "Apply through Metro State's online application. International first-year applicants need official secondary transcripts sent directly to International Student Services; foreign high school records must be evaluated by an accredited agency (e.g. ECE, WES) and must show a U.S. GPA equivalent of at least 3.0 (domestic first-year students are admitted automatically at 2.75+). The application fee is not stated on the pages read. Important limits: F-1 students can only enroll in on-campus programs and only a published list of programs is open to international students; the university has no campus housing (College Navigator) and may not serve students physically outside the U.S.",
+    "src": "req"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-05-01",
+      "label": "Final application date for out-of-country international students, fall 2027 entry",
+      "notes": "The page prints no year; treated as fall 2027. These are final submission dates, not the date by which materials should arrive; apply well ahead because transcript evaluation takes time. Spring entry: Sept. 1; summer: March 15. In-country transfer students: fall Aug. 1. The domestic first-year priority date is March 1 (not stated for international applicants).",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Alternatives to a test: Michigan English Test 56+ (colleges with an ESL program only), ELS level 112, SAT reading/writing 570+, ACT English 24+. Exemptions: 16 credits with 2.5 GPA at a U.S. college, graduation from a U.S. high school, graduation from an English-medium high school or university with 2.5 GPA (principal's letter required), IGCSE/O-levels with C or above in English, math, a science, a social science and one more subject, a U.S. associate or bachelor's degree, or citizenship of a listed English-speaking country.",
+    "src": "req"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "notes": "For exams taken before Jan. 21, 2026.",
+      "src": "req"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "For exams taken after Jan. 22, 2026 (page does not name the 1-6 scale).",
+      "src": "req"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "notes": "Academic test; score report can be uploaded.",
+      "src": "req"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "notes": "Official report sent through the Metro State dashboard.",
+      "src": "req"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 50,
+      "notes": "Only scores accessed via the Score Report Website are valid.",
+      "src": "req"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_usd": 10930,
+    "tuition_intl_usd": 10930,
+    "room_board_usd": 15864,
+    "books_usd": 1500,
+    "other_usd": 9064,
+    "total_coa_usd": 37357,
+    "notes": "Metro State charges the same tuition rate to all students regardless of residency ($322.00 per undergraduate credit plus $42.30 per credit in standard course fees). The $10,930 is the university's own estimate for 15 credits per term over two terms. Cost of attendance page (2026-27): tuition and fees $10,930, books $1,500, living allowance $15,864, personal expenses $5,246, transportation $3,818, total $37,357. Other = personal + transportation. There is no campus housing, so the living figure is an allowance only. Nursing BSN and natural sciences courses carry extra per-credit differentials.",
+    "src": "coa"
+  },
+  "aid": {
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": null,
+    "notes": "No international-specific scholarship or aid was found on the international pages or the grants and scholarships page. The federal and state grants listed there are applied for through the FAFSA, and the Minnesota State Grant is for Minnesota residents.",
+    "src": "sch"
+  },
+  "majors": [],
+  "score_codes": {},
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

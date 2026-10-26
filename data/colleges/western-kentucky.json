@@ -1,0 +1,99 @@
+{
+  "slug": "western-kentucky",
+  "name": "Western Kentucky University",
+  "short_name": "WKU",
+  "state_region": "KY",
+  "city": "Bowling Green",
+  "latitude": 36.985035,
+  "longitude": -86.456828,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.wku.edu",
+  "admissions_url": "https://www.wku.edu/admissions/",
+  "ipeds_unit_id": 157951,
+  "undergrad_enrollment": 13732,
+  "intl_undergrads": 74,
+  "student_faculty_ratio": 18.7,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "Western Kentucky University Common Data Set 2025-2026 (PDF)",
+      "url": "https://www.wku.edu/instres/documents/cds_2025_2026.pdf",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "cds",
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 9692,
+    "admits": 8863,
+    "enrolled": 2643,
+    "pct_submit_sat": 9.3,
+    "pct_submit_act": 69.8,
+    "gpa_avg": 3.47,
+    "pct_reporting_gpa": 99.8,
+    "gpa_distribution": {
+      "4.0": 9.97,
+      "3.75-3.99": 27.11,
+      "3.50-3.74": 19.45,
+      "3.25-3.49": 14.18,
+      "3.00-3.24": 11.53,
+      "2.50-2.99": 14.83,
+      "2.0-2.49": 2.92
+    },
+    "notes": "CDS C1 (fall 2025) gives applicants/admits/enrolled by gender only (summed); no residency or international split is published, so intl_applicants and intl_admits are null. B2 lists 74 nonresident undergraduates (all undergraduates incl. non-degree) and 13 nonresident first-time students. GPA distribution is the 'all enrolled' column of C11. No early decision or early action; no waitlist; rolling notification. SAT/ACT percentiles in C9 cover only the 246 SAT and 1,844 ACT submitters."
+  },
+  "scores": {
+    "SAT_TOTAL": [
+      930,
+      1040,
+      1130
+    ],
+    "SAT_ERW": [
+      480,
+      520,
+      580
+    ],
+    "SAT_MATH": [
+      450,
+      505,
+      560
+    ],
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      26
+    ],
+    "ACT_MATH": [
+      17,
+      20,
+      25
+    ]
+  },
+  "cds_test_policy": {
+    "cycle": "2026-27",
+    "policy": "optional",
+    "notes": "CDS C8A (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. C8F: 2.50+ unweighted HS GPA needs no test; 2.00-2.49 GPA must submit a test and reach a Composite Admission Index of 60."
+  },
+  "cost": {
+    "year": "2025-2026",
+    "source": "cds",
+    "tuition_usd": 12072,
+    "tuition_out_of_state_usd": 27000,
+    "tuition_intl_usd": 27648,
+    "room_board_usd": 13080,
+    "books_usd": 1000,
+    "intl_need_aid": null,
+    "intl_need_aid_awarded": 45,
+    "intl_avg_award_usd": 27705,
+    "notes": "CDS G1: WKU marked its 2026-27 costs not yet available and printed FINAL 2025-26 figures (tuition per year; required fees not readable in the CDS). International (nonresident) tuition $27,648 vs out-of-state $27,000. H6: institutional need-based AND non-need-based aid exists for nonresidents; 45 nonresident undergraduates received it (avg $27,705)."
+  }
+}

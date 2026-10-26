@@ -1,0 +1,165 @@
+{
+  "sources": {
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Houston Christian University - English Proficiency (international applicants)",
+      "url": "https://hc.edu/admissions/international/english-proficiency/",
+      "accessed": "2026-10-26"
+    },
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Houston Christian University - Future International Students (required documents)",
+      "url": "https://hc.edu/admissions/international/future-students/",
+      "accessed": "2026-10-26"
+    },
+    "guide": {
+      "kind": "admissions_site",
+      "title": "Houston Christian University - International Student Admissions Guide (PDF; deadlines, documents)",
+      "url": "https://hc.edu/publications/admissions/InternationalStudents/Admissions-Info-Handout.pdf",
+      "accessed": "2026-10-26"
+    },
+    "app": {
+      "kind": "admissions_site",
+      "title": "Houston Christian University - Applying to HCU (freshman application)",
+      "url": "https://hc.edu/admissions/applying-to-hcu/",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "admissions_site",
+      "title": "Houston Christian University Catalog - Undergraduate Policies (test-optional admission)",
+      "url": "https://hc.edu/university-catalog/current/undergraduate-policies/",
+      "accessed": "2026-10-26"
+    },
+    "merit": {
+      "kind": "financial_aid_site",
+      "title": "Houston Christian University - Freshmen Merit Awards (2027-28)",
+      "url": "https://hc.edu/finaid/types-of-aid/merit-awards/freshmen-merit-awards/",
+      "accessed": "2026-10-26"
+    },
+    "fin": {
+      "kind": "admissions_site",
+      "title": "Houston Christian University - International Financial Documentation",
+      "url": "https://hc.edu/admissions/international/financial-documentation/",
+      "accessed": "2026-10-26"
+    },
+    "maj": {
+      "kind": "other",
+      "title": "Houston Christian University - Majors and Programs",
+      "url": "https://hc.edu/academics/majors-and-programs/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Freshmen may apply 'test optional': SAT or ACT scores are not required to be considered for admission (the traditional option submits scores, which are then considered). International applicants outside the U.S. still need proof of English proficiency, which SAT/ACT scores can supply (SAT 480 EBRW and 1010 combined; ACT 20 English and 21 composite per the English page).",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "supplemental_essays": "No essay component on the HCU application.",
+    "app_fee_usd": 0,
+    "notes": "HCU's own online application (the page does not mention the Common App); 'no fee for undergraduate applications' (CDS C13 also says no application fee). International freshmen outside the U.S. submit: high school transcripts for grades 9, 10 and 11 (a foreign transcript evaluation may be requested; WAEC-type regional exam results are not accepted), proof of English proficiency, a passport copy valid 6 months beyond arrival, and financial documentation (HCU Financial Affidavit plus 3 months of bank statements or an official bank letter showing one academic year of funds) for the I-20. Interview and recommendation requirements are not stated on the pages reviewed.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International application deadline, fall 2027 entry",
+      "notes": "HCU's International Student Admissions Guide gives Fall: June 1, Spring: November 1, Summer: March 1 (no year printed; treated as fall 2027). CDS C14 says the university has no application closing date for domestic first-years, and admission decisions are quick once all documents are in. Allow time for the I-20 and visa.",
+      "src": "guide"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Only one option is needed: an English test, two semesters of non-remedial U.S. college freshman English (grade C or better), an HCU-approved English language program (Language Consultants International, The Learning Institute of Texas, or BEI), graduation from an accredited U.S. high school or an international high school taught fully in English, or citizenship of a listed English-speaking country (e.g. Australia, Canada, Ghana, Ireland, Jamaica, Kenya, New Zealand, Nigeria, South Africa, United Kingdom). Official scores must come directly from the testing agency. The pages do not describe a conditional-admission or ESL bridge at HCU.",
+    "src": "eng"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "notes": "Exams taken before 2026-01-21. HCU's TOEFL code is 6282. No section minimums are listed.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.0,
+      "notes": "Exams taken after 2026-01-21. The page lists '4.0' without naming the 1-6 scale.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Academic module. HCU has no IELTS institution code; scores are sent directly.",
+      "src": "eng"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 105,
+      "src": "eng"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "PTE Academic.",
+      "src": "eng"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": true,
+    "intl_aid_policy": "need_aware_limited",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "HCU merit scholarships are applied automatically and 'open to international students; the requirements remain the same for all applicants.' Freshman awards for the 2027-28 year (unweighted HS GPA, test-optional): Founders up to $27,000 (GPA 3.88-4.0), President's up to $24,000 (3.68-3.87), Legacy up to $22,000 (3.30-3.67), University Grant I up to $16,000 (3.0-3.29), University Grant II up to $14,000 (2.99 or below), per year; SAT/ACT awards of $2,000-$3,000 stack on top. Merit renewal needs a 3.0 (Founders, President's) or 2.5 (Legacy, grants) HCU GPA and full-time enrollment. International students cannot receive federal aid. CDS H6 marks both institutional need-based and non-need-based aid as available to nonresidents (113 recipients, average $31,106); the website describes only merit awards.",
+    "src": "merit"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "6282",
+      "note": "College Board code for HCU as listed on the English proficiency page.",
+      "src": "eng"
+    },
+    "act": {
+      "code": "4101",
+      "note": "ACT code for HCU as listed on the English proficiency page.",
+      "src": "eng"
+    },
+    "toefl": {
+      "code": "6282",
+      "note": "ETS institution code.",
+      "src": "eng"
+    },
+    "ielts": {
+      "code": null,
+      "note": "HCU states there is no institution code for IELTS; scores are sent directly.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "eng"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

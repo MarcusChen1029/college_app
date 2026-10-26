@@ -1,0 +1,129 @@
+{
+  "sources": {
+    "how": {
+      "kind": "admissions_site",
+      "title": "Flagler College - How to Apply, International Students",
+      "url": "https://www.flagler.edu/admissions-aid/application-process/international-applicants/how-apply-international-students",
+      "accessed": "2026-10-26"
+    },
+    "faq": {
+      "kind": "admissions_site",
+      "title": "Flagler College - International Student FAQ",
+      "url": "https://www.flagler.edu/admissions-aid/application-process/international-applicants/international-student-faq",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Flagler College - First Year Applicants",
+      "url": "https://www.flagler.edu/admissions-aid/first-year",
+      "accessed": "2026-10-26"
+    },
+    "dl": {
+      "kind": "admissions_site",
+      "title": "Flagler College - Deadlines & Key Dates (first-year)",
+      "url": "https://www.flagler.edu/admissions-aid/application-process/first-year-applicants/deadlines-key-dates",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "First-year applicants: test-optional (not test-blind) with a 'Do No Harm' approach, so submitted scores are used only if they help. Homeschooled and GED applicants cannot use the test-optional path. International applicants must still show English proficiency with SAT, ACT, TOEFL, IELTS, Duolingo or listed national exams, and official scores must be submitted with the application.",
+    "src": "fy"
+  },
+  "requirements": {
+    "platforms": [
+      "common_app",
+      "own"
+    ],
+    "app_fee_usd": 50,
+    "notes": "$50 first-year application fee. Transcripts sent electronically by the school (email, Parchment, SCOIR or Common App), an essay of at least 250 words, test scores or English proficiency evidence, and credit evaluation from a NACES service for non-US study. The international page calls teacher/counselor recommendations optional but recommended; the first-year page says one academic recommendation is required, so plan to submit one. A bank letter showing funds for one academic year is required before an I-20 is issued.",
+    "src": "how"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ED",
+      "due": "2026-11-01",
+      "label": "Early Decision application due (fall 2027 entry)",
+      "notes": "Binding. Page prints 'November 1' without a year; treated as fall 2027 entry. Admission decision before Dec. 15; ED enrollment deposit due Jan. 15. No Early Action; no separate international dates are published.",
+      "src": "dl"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-03-01",
+      "label": "Regular Decision application due (fall 2027 entry)",
+      "notes": "Printed without a year; treated as fall 2027. RD enrollment deposit due May 1. Some programs have different deadlines.",
+      "src": "dl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_all_international",
+    "waiver_notes": "Applicants whose native language is not English may satisfy the requirement with SAT, ACT, TOEFL, IELTS, Duolingo English Test, or passing English scores on GCE, GCSE, IGCSE, BGCSE, CXC, CSEC, CAPE, CEFR (B2 or higher) or IB exams. No minimum scores are published on the current pages. Flagler does not offer intensive English (ESL) courses, and students who are not proficient in English will not be admitted. Duolingo scores must be sent through the shared Duolingo portal.",
+    "src": "how"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "accepted",
+      "notes": "Accepted; no minimum score is published.",
+      "src": "how"
+    },
+    {
+      "test": "IELTS",
+      "status": "accepted",
+      "notes": "Accepted; no minimum score is published.",
+      "src": "how"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "notes": "Accepted; no minimum score is published. Send through the shared Duolingo portal.",
+      "src": "how"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": false,
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "International FAQ: only merit-based and athletic aid are available to international students; no separate application for merit scholarships and no amounts are published.",
+    "src": "faq"
+  },
+  "score_codes": {
+    "sat": {
+      "code": "5235",
+      "note": "Flagler SAT code printed on the international How to Apply page.",
+      "src": "how"
+    },
+    "act": {
+      "code": "0772",
+      "note": "Flagler ACT code printed on the international How to Apply page.",
+      "src": "how"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is printed on the admissions pages; search for Flagler College when ordering.",
+      "src": "how"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "how"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Send through the shared Duolingo portal; no code is listed.",
+      "src": "how"
+    },
+    "pte": {
+      "code": null,
+      "note": "PTE is not mentioned on the international pages.",
+      "src": "how"
+    }
+  },
+  "tiers": {
+    "general": "D"
+  },
+  "tier_notes": {}
+}

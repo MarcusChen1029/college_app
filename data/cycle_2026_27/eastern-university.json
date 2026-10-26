@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "Eastern University - Application Steps for International Students (requirements, English minimums, scholarships, I-20)",
+      "url": "https://eastern.edu/admissions-financial-aid/undergraduate-admissions/apply-eastern/application-steps-international",
+      "accessed": "2026-10-26"
+    },
+    "eng": {
+      "kind": "admissions_site",
+      "title": "Eastern University - English Language Proficiency Requirements and Testing",
+      "url": "https://www.eastern.edu/student-life/international-student-services/prospective-international-students-first-stop/english",
+      "accessed": "2026-10-26"
+    },
+    "fy": {
+      "kind": "admissions_site",
+      "title": "Eastern University - Application Steps for First-year Students",
+      "url": "https://www.eastern.edu/admissions-financial-aid/undergraduate-admissions/apply-eastern/application-steps-first-year",
+      "accessed": "2026-10-26"
+    },
+    "cat": {
+      "kind": "other",
+      "title": "Eastern University 2026-2027 Academic Catalog - Admission of Traditional Baccalaureate Undergraduate Students",
+      "url": "https://catalog.eastern.edu/undergraduate/admission/admission-traditional-baccalaureate-undergraduate-students/",
+      "accessed": "2026-10-26"
+    },
+    "sch": {
+      "kind": "financial_aid_site",
+      "title": "Eastern University - Undergraduate Scholarships, Grants, and Other Aid",
+      "url": "https://www.eastern.edu/admissions-financial-aid/undergraduate-admissions/afford-eastern/undergraduate-scholarships-grants",
+      "accessed": "2026-10-26"
+    },
+    "tf": {
+      "kind": "financial_aid_site",
+      "title": "Eastern University - Traditional Undergraduate Tuition & Fees: 2026-2027",
+      "url": "https://www.eastern.edu/about/offices-centers/student-accounts-office/tuition-fees/tuition-fees-2026-2027/traditional",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Catalog: 'Eastern University uses a test-optional admissions policy'; SAT/ACT are not required, though the university reserves the right to request scores. College Navigator adds that scores are generally not considered except for applicants with a GPA below 2.75.",
+    "src": "cat"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 0,
+    "notes": "Eastern's online application is free. International applicants submit the online traditional undergraduate application; official transcripts evaluated and sent by a NACES member (e.g. WES, TEC, IFCS, ECE, IERF); an English test score unless waived; a passport scan; and a bank statement or letter plus the Statement of Financial Support. Optional: national exam results or the SAT, a one-page essay on fit with the university mission, and letters of reference. Decisions come within 4-6 weeks of a complete international file (1-2 weeks for domestic first-years). The I-20 requires admission, six months of sponsor financial statements covering tuition, room and board, and the international student health forms. The catalog expects a college-preparatory curriculum and a cumulative high school GPA of 2.0 or higher.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": null,
+      "label": "Rolling admission (fall 2027 entry): no application closing date published",
+      "notes": "The first-year and international pages print no application deadline. The 2024-25 Common Data Set (C14) lists 8/1 as the application closing date for fall entry, but the admissions pages do not say so for fall 2027.",
+      "src": "fy"
+    },
+    {
+      "kind": "other",
+      "due": null,
+      "label": "International: all materials due 90 days before the intended start date",
+      "notes": "The international page says all materials must be received by Eastern no later than 90 days before the intended start date so the I-20 can be issued. For a late-August 2027 start that is roughly late May to early June 2027; the page does not print a calendar date.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The English test (TOEFL, IELTS or Duolingo) is required if English is not an official language in the applicant's home country. It is waived with: an official statement from the previous school (or a link to its website) showing English was the language of instruction; two or more years of work in the U.S.; citizenship of a listed English-speaking country (the page lists, among others, Australia, Canada except Quebec, Ghana, Ireland, Jamaica, Kenya, Nigeria, Philippines, Singapore, South Africa and the United Kingdom); or a degree from a U.S. college or university. TOEFL must be taken within 2 years of the entry term. No conditional admission or ESL pathway is described for traditional undergraduates.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "English proficiency page: 'a minimum TOEFL score of 79 or 4 of the new 2026 scoring format'. TOEFL, IELTS or Duolingo is accepted.",
+      "src": "eng"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Application-steps page lists 'TOEFL: 4 (Internet-based test)'; the English page names it as the new 2026 scoring format.",
+      "src": "eng"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "Take the Academic version; IELTS sends scores directly and uses no institution code.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "notes": "Minimum 115 on the international application-steps page for traditional undergraduates; the English page gives 100 only for online undergraduate and graduate programs.",
+      "src": "intl"
+    }
+  ],
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": null,
+    "merit_scholarships": true,
+    "notes": "International Student Grant of $15,000-$26,000 for qualified international students (cannot be combined with other Eastern aid); on-campus employment averages about $1,000 per year; Church Matching Grant and Ministerial Discount may apply. First-year merit awards of $16,000-$27,000 are described for all admitted first-years, but the pages do not say whether they apply to international students. The scholarships page says undocumented and international students who want need-based institutional aid must file a paper FAFSA with tax returns and a letter; whether such aid is awarded to internationals is not stated. International students are not eligible for federal aid. The 2024-25 CDS nonresident aid figures could not be read reliably, so none are recorded.",
+    "src": "intl"
+  },
+  "cost": {
+    "year": "2026-2027",
+    "src": "tf",
+    "tuition_usd": 40560,
+    "required_fees_usd": 746,
+    "room_board_usd": 14726,
+    "notes": "From the 2026-27 Tuition & Fees page (effective fall 2026 and spring 2027). Tuition $20,280 per semester x2 = $40,560 (12-18 credits). Student services fee $373 per semester x2 = $746. Room and board uses basic housing ($3,866 per semester) plus the board plan ($3,497 per semester) x2 = $14,726; other room types run up to $4,883 per semester (apartment) and a single-room premium of $775 per semester applies."
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "No SAT code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "No ACT code is printed on the admissions pages.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "2220",
+      "note": "Eastern's TOEFL institution code is 2220.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "IELTS uses no institution code; scores are sent directly from IELTS.",
+      "src": "eng"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "business": "D",
+    "math_physics": "D"
+  },
+  "tier_notes": {}
+}

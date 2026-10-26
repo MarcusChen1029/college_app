@@ -1,0 +1,182 @@
+{
+ "sources": {
+  "steps": {
+   "kind": "admissions_site",
+   "title": "UIS - International student steps for application (deadlines, fee)",
+   "url": "https://www.uis.edu/international-applicants/international-steps-application",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "UIS - English proficiency requirements (undergraduate minimum scores)",
+   "url": "https://www.uis.edu/international-applicants/english-proficiency-requirements",
+   "accessed": "2026-10-26"
+  },
+  "fy": {
+   "kind": "admissions_site",
+   "title": "UIS - First-year applicants admission requirements",
+   "url": "https://www.uis.edu/admission-aid/how-apply/first-year-applicants/requirements-admission",
+   "accessed": "2026-10-26"
+  },
+  "schol": {
+   "kind": "financial_aid_site",
+   "title": "UIS - Academic and merit scholarships",
+   "url": "https://www.uis.edu/cost-aid/scholarships",
+   "accessed": "2026-10-26"
+  },
+  "star": {
+   "kind": "financial_aid_site",
+   "title": "UIS - Star Scholar Award for new first-year students",
+   "url": "https://www.uis.edu/financial-aid/types-aid/scholarships/uis-star-scholar-award",
+   "accessed": "2026-10-26"
+  },
+  "intlaid": {
+   "kind": "financial_aid_site",
+   "title": "UIS - Financial assistance for international students",
+   "url": "https://www.uis.edu/financial-aid/applying-aid/international-students",
+   "accessed": "2026-10-26"
+  },
+  "cost": {
+   "kind": "other",
+   "title": "UIS - Estimated cost of attendance 2026-27",
+   "url": "https://www.uis.edu/cost-aid/cost-attendance",
+   "accessed": "2026-10-26"
+  },
+  "progs": {
+   "kind": "other",
+   "title": "UIS - Undergraduate programs",
+   "url": "https://www.uis.edu/undergraduate-education/undergraduate-programs",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "optional",
+  "notes": "SAT/ACT are optional for first-year applicants; scores on an official high-school transcript are accepted. The international steps page lists college-prep coursework, U.S.-equivalent GPA and a personal statement as the basis for first-year admission.",
+  "src": "fy"
+ },
+ "requirements": {
+  "platforms": [
+   "common_app",
+   "own"
+  ],
+  "app_fee_usd": 60,
+  "notes": "Undergraduate application fee is $60. First-year applicants write a personal statement (the Common App essay satisfies it); minimum coursework is 4 English, 3 social studies, 3 math, 3 lab science and 2 foreign language or fine arts, and students lacking some units may be admitted conditionally. Applicants with non-U.S. schooling need a credential evaluation (waived for IB, CIS, U.S. State Dept-assisted and U.S.-accredited schools). Decisions are rolling (biweekly).",
+  "src": "steps"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "plan": "ROLLING",
+   "due": "2027-05-15",
+   "label": "International (F-1) application deadline, fall term (fall 2027 entry)",
+   "notes": "The page prints 'Fall Term Deadline: May 15th' and 'Spring Term Deadline: Nov 15th' without a year; treated as fall 2027. Applications should arrive at least 3 months before the intended start; some programs have earlier deadlines.",
+   "src": "steps"
+  },
+  {
+   "kind": "priority",
+   "due": "2026-12-01",
+   "label": "Priority / early action date (fall 2027 entry)",
+   "notes": "From CDS C14 and C22 (Dec. 1, rolling notification), not repeated on the admissions pages; treated as the date for fall 2027 entry.",
+   "src": "cds"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Citizens of a list of English-speaking countries (for example Australia, Canada except Quebec, Ghana, Kenya, Nigeria, Singapore, South Africa, UK) are waived automatically. Petition-based exemptions include 3+ years of U.S. or DoD high school, or 60 college credits in a listed country. Scores must be under 2 years old. Alternatives to a test: SAT verbal 570, ACT English 24, AP English 4+, IB English A 5+, ELS Level 112, or an English language program at CEFR B2. UIS Global partnership students are handled separately.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 75,
+   "notes": "UIS code 1787. TOEFL Essentials (8.0) also accepted. Communication BA needs 95.",
+   "src": "eng"
+  },
+  {
+   "test": "TOEFL_IBT_2026",
+   "status": "required_option",
+   "min": 4.0,
+   "notes": "Listed as 'New TOEFL (effective January 2026)', undergraduate minimum 4.0.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 6.0,
+   "notes": "Academic. Communication BA needs 7.0.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 105,
+   "notes": "Communication BA needs 120.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 60,
+   "notes": "PTE Academic. Communication BA needs 65.",
+   "src": "eng"
+  },
+  {
+   "test": "CAMBRIDGE",
+   "status": "accepted",
+   "notes": "B2 First is the undergraduate minimum; the page gives no numeric score.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "merit_only",
+  "meets_full_need": false,
+  "merit_scholarships": true,
+  "notes": "UIS says financial assistance for international students is limited. First-year, international and transfer applicants are automatically reviewed for merit scholarships (Star Scholar Award $3,000-$7,000/yr by unweighted GPA on the 2025-26 schedule, renewable; Capital Scholars Honors up to $8,000/yr), and donor-funded scholarships (apply early Nov to mid-Feb) are open to international students. The Out-of-State Scholarship is not available to international or UIS Global students. CDS H6: 52 nonresident undergraduates received institutional aid, average $13,083.",
+  "src": "intlaid"
+ },
+ "score_codes": {
+  "sat": {
+   "code": "0834",
+   "note": "UIS SAT code from the first-year requirements page.",
+   "src": "fy"
+  },
+  "act": {
+   "code": "1137",
+   "note": "UIS ACT code from the first-year requirements page.",
+   "src": "fy"
+  },
+  "toefl": {
+   "code": "1787",
+   "note": "UIS TOEFL code.",
+   "src": "eng"
+  },
+  "ielts": {
+   "code": null,
+   "note": "No code; request an electronic copy of the score to be sent to UIS.",
+   "src": "eng"
+  },
+  "duolingo": {
+   "code": null,
+   "note": "No code; request an electronic copy of the score to be sent to UIS.",
+   "src": "eng"
+  },
+  "pte": {
+   "code": null,
+   "note": "No code; request an electronic copy of the score to be sent to UIS.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "pre_med": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D"
+ },
+ "tier_notes": {}
+}

@@ -1,0 +1,172 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "University of South Alabama - International Admissions Requirements & Deadlines",
+      "url": "https://www.southalabama.edu/departments/international/requirements-deadline.html",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "University of South Alabama - Freshmen admission requirements",
+      "url": "https://www.southalabama.edu/departments/admissions/freshmen.html",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "University of South Alabama - Global USA International Student Scholarships",
+      "url": "https://www.southalabama.edu/departments/globalusa/internationalscholarships.html",
+      "accessed": "2026-10-26"
+    },
+    "exp": {
+      "kind": "other",
+      "title": "University of South Alabama - Estimated expenses for international students (2026-2027)",
+      "url": "https://www.southalabama.edu/departments/immigration/estimated-expenses.html",
+      "accessed": "2026-10-26"
+    },
+    "tuition": {
+      "kind": "financial_aid_site",
+      "title": "University of South Alabama - Tuition and Fees",
+      "url": "https://www.southalabama.edu/departments/financialaffairs/studentaccounting/tuition.html",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "optional",
+    "notes": "Test-optional for spring, summer and fall 2027 applicants: a high school GPA of 3.4 or better is automatically admitted; below 3.4 goes to review and may be asked for an essay and letter of recommendation. ACT 21 / SAT 1060 or better is recommended for scholarship consideration. The international requirements page lists no SAT/ACT requirement and a minimum 2.5 GPA.",
+    "src": "fresh"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 35,
+    "notes": "International application with a $35 processing fee. Academic records need a cumulative GPA of at least 2.5 as calculated by the Office of International Admissions; unofficial copies are accepted for admission, official ones before check-in. A non-refundable $500 deposit is required before an I-20 or DS-2019 is issued, with bank statements showing funds for one year.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "ROLLING",
+      "due": "2027-04-01",
+      "label": "International application deadline, applicants outside the U.S. (fall 2027 entry)",
+      "notes": "International page: fall Apr 1 (outside the U.S.) and Jul 15 (inside the U.S.); later applications are considered for the next session. Printed without a year, treated as 2027. Domestic priority date for fall is also Jul 15.",
+      "src": "intl"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-15",
+      "label": "Global Freshman Scholars priority deadline 1",
+      "notes": "Must be fully admitted by this date, then apply through JagSPOT. The award is competitive and limited.",
+      "src": "schol"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-05-01",
+      "label": "Global Freshman Scholars priority deadline 2",
+      "notes": "Second priority date (fully admitted by then).",
+      "src": "schol"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Citizens of, or those who completed secondary education in, listed English-exempt countries (including Australia, Canada, Ireland, Jamaica, Nigeria, Singapore, South Africa, the UK and the US) need no proof. Also accepted: iTEP 3.6 and a grade of A, B or C on UK Advanced-level English exams. No intensive English pathway or conditional admission for freshmen is described on the page.",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 61,
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 3.5,
+      "notes": "The page states 'TOEFL: 61 or 3.5 (6-point scoring)'.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 5.5,
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 95,
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 44,
+      "notes": "Pearson Academic.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 20486,
+    "room_board_usd": 9330,
+    "books_usd": 1000,
+    "other_usd": 3439,
+    "total_coa_usd": 34255,
+    "notes": "International estimate used for I-20 issuance: tuition and fees $20,486 (12 credit hours per fall and spring semester), housing and food $9,330, books $1,000, health insurance $3,439 (other), total $34,255. Per-credit-hour undergraduate tuition is $386 in-state and $772 out-of-state for Arts and Sciences, higher in Computing and Allied Health ($802 out-of-state), Business ($822), Engineering ($832) and Nursing ($870); the tuition page's title says 2025-2026 but the rate tables are headed 2026-2027.",
+    "src": "exp"
+  },
+  "aid": {
+    "intl_aid_policy": "merit_only",
+    "meets_full_need": false,
+    "merit_scholarships": true,
+    "notes": "Global Freshman Scholars Talent and Ability Scholarship (from fall 2026): competitive, for degree-seeking international freshmen on F-1/H-4/L-2 with a 3.0+ high school GPA; the award is in-state tuition rates, renewable up to four years with a 3.0 GPA each year; no dollar figure is listed. Endowed awards (Carter GlobalUSA, Pitsios, Constantine) need 3.0-3.5 GPAs; apply through JagSPOT. The CDS H6 section on aid to nonresidents is not reliably legible.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": null,
+      "note": "The admissions pages say to send scores to South Alabama but do not print a numeric SAT code; look it up in the College Board code search.",
+      "src": "intl"
+    },
+    "act": {
+      "code": null,
+      "note": "The admissions pages do not print a numeric ACT code; look it up at act.org.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": null,
+      "note": "No TOEFL institution code is listed on the pages checked; look it up in the ETS code search.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D+",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "humanities": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {
+    "general": "Admits about 71% (IPEDS) to 94% (CDS) of applicants with an SAT middle 50% around 1010-1200 (CDS); slightly above a plain D because it is a large research-oriented public with engineering, computing and nursing programs."
+  }
+}

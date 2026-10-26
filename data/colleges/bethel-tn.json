@@ -1,0 +1,72 @@
+{
+  "slug": "bethel-tn",
+  "name": "Bethel University (Tennessee)",
+  "short_name": "Bethel (TN)",
+  "state_region": "TN",
+  "city": "McKenzie",
+  "latitude": 36.137848,
+  "longitude": -88.516762,
+  "setting": "rural",
+  "control": "private_nonprofit",
+  "website": "https://www.bethelu.edu",
+  "admissions_url": "https://www.bethelu.edu/admissions",
+  "ipeds_unit_id": 219718,
+  "undergrad_enrollment": 2674,
+  "intl_undergrads": 92,
+  "student_faculty_ratio": 15,
+  "academic_calendar": "semester",
+  "sources": {
+    "ipeds": {
+      "kind": "ipeds",
+      "title": "IPEDS Admissions survey, fall 2023 entering class (ADM2023), via College Navigator",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219718",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    },
+    "ipeds_ef": {
+      "kind": "ipeds",
+      "title": "IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount",
+      "url": "https://nces.ed.gov/collegenavigator/?id=219718",
+      "cds_year": "2023-2024",
+      "accessed": "2026-10-26"
+    }
+  },
+  "scores_source": "ipeds",
+  "stats": {
+    "cds_year": "2023-2024",
+    "source": "ipeds",
+    "applicants": 3318,
+    "admits": 3224,
+    "enrolled": 402,
+    "pct_submit_sat": 25,
+    "pct_submit_act": 100,
+    "notes": "Baseline from IPEDS (fall 2023 entering class): 3,318 applied, 3,224 admitted, 402 enrolled. No Common Data Set was found for Bethel (TN), so GPA and international applicant/admit counts are not available. SAT percentiles rest on only 101 submitters. Newer College Navigator figures (fall 2024) differ sharply: 1,486 applicants, about 60% admitted (rounded %), ACT 15/18/21, SAT ERW 410/460/570, SAT Math 420/460/550; 2,674 undergraduates (used for enrollment here). Test optional with weighted GPA 2.25 or above."
+  },
+  "scores": {
+    "SAT_ERW": [
+      300,
+      475,
+      525
+    ],
+    "SAT_MATH": [
+      325,
+      500,
+      575
+    ],
+    "ACT_COMPOSITE": [
+      16,
+      20,
+      24
+    ],
+    "ACT_ENGLISH": [
+      16,
+      19,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      20,
+      24
+    ]
+  }
+}

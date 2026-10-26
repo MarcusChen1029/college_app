@@ -1,0 +1,153 @@
+{
+ "sources": {
+  "check": {
+   "kind": "admissions_site",
+   "title": "CSUDH International Applicants - Application Checklist",
+   "url": "https://www.csudh.edu/future-students/international/application-checklist",
+   "accessed": "2026-10-26"
+  },
+  "docs": {
+   "kind": "admissions_site",
+   "title": "CSUDH International Applicants - Required Documentation (undergraduate)",
+   "url": "https://www.csudh.edu/future-students/international/required-documentation",
+   "accessed": "2026-10-26"
+  },
+  "eng": {
+   "kind": "admissions_site",
+   "title": "CSUDH International Applicants - English Proficiency",
+   "url": "https://www.csudh.edu/future-students/international/english-proficiency",
+   "accessed": "2026-10-26"
+  },
+  "fin": {
+   "kind": "admissions_site",
+   "title": "CSUDH International Applicants - Financial Certification",
+   "url": "https://www.csudh.edu/future-students/international/financial-certification",
+   "accessed": "2026-10-26"
+  },
+  "cond": {
+   "kind": "admissions_site",
+   "title": "CSUDH - Conditional Admissions: ALCP (IELP)",
+   "url": "https://www.csudh.edu/international/alcp/conditional-admissions/",
+   "accessed": "2026-10-26"
+  },
+  "applied": {
+   "kind": "admissions_site",
+   "title": "CSUDH - I Have Applied (Fall 2027 first-year document deadline)",
+   "url": "https://www.csudh.edu/future-students/have-applied/",
+   "accessed": "2026-10-26"
+  },
+  "fees": {
+   "kind": "other",
+   "title": "CSUDH Tuition and Other Mandatory Fees, 2026-2027 academic year (PDF)",
+   "url": "https://www.csudh.edu/Assets/csudh-sites/student-financial-services/docs/2026-2027/FY%202026-2027%20Student%20Fees%20-1-.pdf",
+   "accessed": "2026-10-26"
+  },
+  "nav": {
+   "kind": "ipeds",
+   "title": "IPEDS via NCES College Navigator - CSUDH admissions considerations (fall 2024)",
+   "url": "https://nces.ed.gov/collegenavigator/?id=110547",
+   "cds_year": "2024-2025",
+   "accessed": "2026-10-26"
+  }
+ },
+ "test_policy": {
+  "policy": "blind",
+  "notes": "College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)' and the CSU system does not use SAT/ACT in admission decisions. SAT EBRW 550 or ACT English 22 only count as ways to show English proficiency. CSUDH's international pages list no minimum GPA.",
+  "src": "nav"
+ },
+ "requirements": {
+  "platforms": [
+   "own"
+  ],
+  "app_fee_usd": 70,
+  "notes": "Apply through Cal State Apply (not the Common App); $70 non-refundable fee. Freshmen send photocopies of all upper secondary and external exam results (certified English translations if not issued in English), English proficiency proof, financial certification of $38,292 for the first year (the page gives no year), an Affidavit of Financial Support if sponsored, and an Educational History form for gaps of a year or more. Unofficial photocopies are enough for review; official records are required if admitted. No minimum GPA is stated on the international pages. College Navigator shows essays and recommendations are not considered.",
+  "src": "docs"
+ },
+ "deadlines": [
+  {
+   "kind": "application",
+   "due": "2027-05-01",
+   "label": "International undergraduate application deadline, fall (Cal State Apply)",
+   "notes": "The checklist page gives Fall = May 1 with no year, and labels Fall 2026 as Oct 1, 2025 to May 1, 2026; treated as May 1, 2027 for fall 2027 (inferred, not printed). Applicants abroad are urged to submit documents by May 1.",
+   "src": "check"
+  },
+  {
+   "kind": "other",
+   "due": "2027-06-01",
+   "label": "International undergraduate document deadline, fall",
+   "notes": "Page gives 'Fall = June 1' without a year; treated as 2027. The domestic first-year page lists June 30, 2027 as its Fall 2027 document deadline, which is a different date.",
+   "src": "check"
+  }
+ ],
+ "english_policy": {
+  "policy": "required_nonnative",
+  "waiver_notes": "Not required after at least three full-time years of secondary school or higher education in the U.S. or in a listed country where English is the sole language of instruction. Conditional admission through the American Language and Culture Program (ALCP) leads to an English proficiency waiver for the next available term. Test scores are valid for two years.",
+  "src": "eng"
+ },
+ "english": [
+  {
+   "test": "TOEFL_IBT",
+   "status": "required_option",
+   "min": 61,
+   "notes": "TOEFL iBT 61. The page does not give a new-scale (1-6) minimum. TOEFL institution code 4098.",
+   "src": "eng"
+  },
+  {
+   "test": "IELTS",
+   "status": "required_option",
+   "min": 5.5,
+   "notes": "IELTS 5.5; the page gives no sub-score minimums.",
+   "src": "eng"
+  },
+  {
+   "test": "DUOLINGO",
+   "status": "required_option",
+   "min": 95,
+   "notes": "Duolingo English Test 95.",
+   "src": "eng"
+  },
+  {
+   "test": "PTE",
+   "status": "required_option",
+   "min": 44,
+   "notes": "Pearson Test of English Academic 44. Cambridge is not listed. Other accepted evidence: SAT EBRW 550, ACT English 22, AP English Language or Literature 3, IB English HL 4, or a GE English Composition course with C-.",
+   "src": "eng"
+  }
+ ],
+ "aid": {
+  "intl_need_aid": false,
+  "intl_aid_policy": "none",
+  "meets_full_need": false,
+  "merit_scholarships": false,
+  "notes": "The Financial Certification page states there are no scholarships or financial aid available at CSUDH to international students; limited on-campus work only. Conditional admission through ALCP (American Language and Culture Program) is for applicants who meet all other requirements but not the English score; ALCP charges a $55 fee to CSUDH plus a $150 CSUDH Foundation fee, the page does not guarantee admission, and program tuition is not stated.",
+  "src": "fin"
+ },
+ "cost": {
+  "year": "2026-2027",
+  "tuition_usd": 6838,
+  "tuition_out_of_state_usd": 20968,
+  "tuition_intl_usd": 20968,
+  "required_fees_usd": 1868,
+  "notes": "Computed from the official 2026-27 fee schedule: undergraduate tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees: $936.36 in fall and $931.36 in spring ($1,867.72, rounded). CSUDH's own international budget on the Financial Certification page totals $38,292 but uses an older $396 per unit nonresident rate and states no year, so it is not used.",
+  "src": "fees"
+ },
+ "majors": [],
+ "score_codes": {
+  "toefl": {
+   "code": "4098",
+   "note": "CSUDH institution code for TOEFL results.",
+   "src": "eng"
+  }
+ },
+ "tiers": {
+  "general": "D",
+  "computer_science": "D",
+  "business": "D",
+  "biology_life_sci": "D",
+  "math_physics": "D",
+  "humanities": "D",
+  "arts_design": "D",
+  "nursing": "D"
+ },
+ "tier_notes": {}
+}

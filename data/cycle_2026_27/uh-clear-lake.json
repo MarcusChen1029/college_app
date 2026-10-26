@@ -1,0 +1,162 @@
+{
+  "sources": {
+    "intl": {
+      "kind": "admissions_site",
+      "title": "UHCL - How to apply as an international freshman (deadlines, fee, SAT/ACT, English proficiency, financial documents)",
+      "url": "https://www.uhcl.edu/admissions/apply/international/how-to-apply-international/freshman/",
+      "accessed": "2026-10-26"
+    },
+    "cost": {
+      "kind": "financial_aid_site",
+      "title": "UHCL - Costs and aid information for international students (I-20 cost of attendance, scholarships)",
+      "url": "https://www.uhcl.edu/admissions/apply/international/costs-aid/index.aspx",
+      "accessed": "2026-10-26"
+    },
+    "schol": {
+      "kind": "financial_aid_site",
+      "title": "UHCL - Scholarships (Hawk Scholars, Hawk Housing)",
+      "url": "https://www.uhcl.edu/costs-aid/scholarships/index.aspx",
+      "accessed": "2026-10-26"
+    },
+    "fresh": {
+      "kind": "admissions_site",
+      "title": "UHCL - Freshman admissions (domestic deadlines, optional SAT/ACT)",
+      "url": "https://www.uhcl.edu/admissions/apply/freshman/",
+      "accessed": "2026-10-26"
+    }
+  },
+  "test_policy": {
+    "policy": "required",
+    "notes": "The international freshman page lists 'Submit official SAT/ACT scores' as a requirement for applicants educated outside the U.S. and prints no minimum score; admission is by holistic review. The domestic freshman page calls SAT/ACT scores optional and uses rank-and-score thresholds for U.S. high school graduates (top 11-25%: SAT 1030 / ACT 20; top 26-50%: SAT 1130 / ACT 23). Confirm the current rule with the international office (oias@uhcl.edu) before relying on test-optional status.",
+    "src": "intl"
+  },
+  "requirements": {
+    "platforms": [
+      "own"
+    ],
+    "app_fee_usd": 75,
+    "notes": "Apply through ApplyTexas (listed as 'own'). The $75 non-refundable fee is paid through E-Services about three days after applying. International freshmen must hold the equivalent of a U.S. high school diploma and mail official secondary transcripts and diploma (sent by the school or certified by the Ministry of Education, a university registrar, EducationUSA or an embassy; a NACES course-by-course evaluation is required only for any university-level coursework). Financial documents: bank statements no older than six months covering at least one academic-year estimate, plus an Affidavit of Support; the I-20 is not issued until they are reviewed. Names on test reports must match the passport.",
+    "src": "intl"
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "due": "2027-06-01",
+      "label": "International freshman fall application deadline (fall 2027 entry)",
+      "notes": "Page lists 'Fall - Final Deadline: Apply by June 1' without a year; fall 2027 assumed. Spring: apply by Dec. 1; summer is not open to international freshmen. The domestic freshman page has later dates (fall priority July 15, final Aug. 1).",
+      "src": "intl"
+    },
+    {
+      "kind": "other",
+      "due": "2027-06-15",
+      "label": "International freshman fall document deadline (fall 2027 entry)",
+      "notes": "Page lists 'Document Deadline: June 15' for fall (spring Dec. 15); year not printed, fall 2027 assumed.",
+      "src": "intl"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Waived for students educated in a country where English is an official language, as listed (e.g. Australia, Canada except Quebec, Ghana, India, Ireland, Jamaica, Kenya, Nigeria, Philippines, Singapore, South Africa, United Kingdom, Zimbabwe). Scores must be no more than two years old and come directly from the testing company. Completing level 112 of the ELS Intensive English Language program also satisfies the requirement (the page does not describe it as conditional admission).",
+    "src": "intl"
+  },
+  "english": [
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "notes": "Exams taken before 2026-01-21. UHCL institution code 6916.",
+      "src": "intl"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "notes": "Exams taken on or after 2026-01-21 ('4'); the page does not name the 1-6 scale.",
+      "src": "intl"
+    },
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "notes": "6.0 on the IELTS exam.",
+      "src": "intl"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "notes": "Minimum 115; some programs may require a higher score.",
+      "src": "intl"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 53,
+      "notes": "53 on the PTE exam.",
+      "src": "intl"
+    }
+  ],
+  "cost": {
+    "year": "2026-2027",
+    "tuition_intl_usd": 26700,
+    "room_board_usd": 15500,
+    "other_usd": 6500,
+    "total_coa_usd": 48700,
+    "notes": "UHCL I-20 estimate for international undergraduates (page header 'I-20 Amounts Spring-Fall 2027'): tuition and fees $26,700 for 24 credit hours a year, living expenses $15,500 (on-campus housing), other (medical insurance, books) $6,500, total $48,700. For comparison College Navigator (2024-25) lists out-of-state tuition and fees $21,114 and in-state $7,770.",
+    "src": "cost"
+  },
+  "aid": {
+    "intl_need_aid": null,
+    "intl_aid_policy": null,
+    "meets_full_need": false,
+    "merit_scholarships": null,
+    "notes": "The international cost page lists the Hawk Scholars Scholarship for new international undergraduate and graduate students (amount and criteria not published on the pages read) and says many international students receive scholarships; the Hawk Housing Scholarship (international eligible) gives $1,000 for fall and $1,000 for spring toward a standard double room in Hunter Hall. Some international students may qualify for resident tuition. No CDS section H6 is available, so need-based aid for nonresidents is not confirmed.",
+    "src": "schol"
+  },
+  "majors": [],
+  "score_codes": {
+    "sat": {
+      "code": "6916",
+      "note": "UHCL SAT code per the international freshman page.",
+      "src": "intl"
+    },
+    "act": {
+      "code": "4171",
+      "note": "UHCL ACT code per the international freshman page.",
+      "src": "intl"
+    },
+    "toefl": {
+      "code": "6916",
+      "note": "UHCL TOEFL institution code.",
+      "src": "intl"
+    },
+    "ielts": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    },
+    "duolingo": {
+      "code": null,
+      "note": "Duolingo sends scores through a link in the verification email; no code listed.",
+      "src": "intl"
+    },
+    "pte": {
+      "code": null,
+      "note": "No institution code is listed.",
+      "src": "intl"
+    }
+  },
+  "tiers": {
+    "general": "D",
+    "computer_science": "D",
+    "engineering": "D",
+    "business": "D",
+    "biology_life_sci": "D",
+    "pre_med": "D",
+    "math_physics": "D",
+    "humanities": "D",
+    "arts_design": "D",
+    "nursing": "D"
+  },
+  "tier_notes": {}
+}

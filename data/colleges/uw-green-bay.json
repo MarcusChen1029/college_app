@@ -1,0 +1,81 @@
+{
+  "slug": "uw-green-bay",
+  "name": "University of Wisconsin-Green Bay",
+  "short_name": "UW-Green Bay",
+  "state_region": "WI",
+  "city": "Green Bay",
+  "latitude": 44.532298,
+  "longitude": -87.919973,
+  "setting": "urban",
+  "control": "public",
+  "website": "https://www.uwgb.edu",
+  "admissions_url": "https://www.uwgb.edu/apply/international/",
+  "ipeds_unit_id": 240277,
+  "undergrad_enrollment": 10995,
+  "intl_undergrads": 195,
+  "student_faculty_ratio": 25,
+  "academic_calendar": "semester",
+  "sources": {
+    "cds": {
+      "kind": "cds",
+      "title": "University of Wisconsin-Green Bay Common Data Set 2025-2026 (XLSX answer sheet)",
+      "url": "https://www.uwgb.edu/getmedia/e4d65779-195e-47a8-95a8-b4e72bc34978/CDS-2025-2026.xlsx",
+      "cds_year": "2025-2026",
+      "accessed": "2026-10-26"
+    }
+  },
+  "stats": {
+    "cds_year": "2025-2026",
+    "source": "cds",
+    "applicants": 8984,
+    "admits": 6716,
+    "enrolled": 1175,
+    "in_state_applicants": 7755,
+    "in_state_admits": 5914,
+    "out_state_applicants": 389,
+    "out_state_admits": 277,
+    "intl_applicants": 840,
+    "intl_admits": 525,
+    "pct_submit_sat": 1.6,
+    "pct_submit_act": 29.7,
+    "gpa_avg": 2.98,
+    "pct_reporting_gpa": 98.89,
+    "notes": "CDS C1 and C2. International = the 'nonresident' row of C2 (840 applied, 525 admitted). The CDS shows no waitlist and no early plans. The CDS's by-residency enrollment counts are inconsistent with the total (in-state enrolled exceeds the 1,175 total) so they are not recorded. The GPA-range table could not be matched to its columns, so only the CDS C12 average is kept. SAT is not summarized because only 16 enrolled students submitted it. Undergrad 10,995 and 195 nonresident undergrads are the CDS B1 figures (fall 2025); ratio 25:1 is CDS I2. The CDS C7 table rates standardized test scores 'very important' although the admissions site says scores are optional and do not affect the admission decision; that single factor is therefore left out."
+  },
+  "scores": {
+    "ACT_COMPOSITE": [
+      18,
+      21,
+      25
+    ],
+    "ACT_ENGLISH": [
+      17,
+      21,
+      24
+    ],
+    "ACT_MATH": [
+      16,
+      20,
+      24
+    ]
+  },
+  "factors": {
+    "rigor": "VI",
+    "class_rank": "NC",
+    "gpa": "VI",
+    "essay": "C",
+    "recommendations": "C",
+    "interview": "C",
+    "extracurriculars": "VI",
+    "talent_ability": "C",
+    "character": "C",
+    "first_generation": "C",
+    "alumni_relation": "NC",
+    "geographic_residence": "NC",
+    "state_residency": "NC",
+    "religious_affiliation": "NC",
+    "volunteer_work": "C",
+    "work_experience": "C",
+    "demonstrated_interest": "I"
+  }
+}
