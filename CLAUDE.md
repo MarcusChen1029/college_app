@@ -38,7 +38,7 @@ Plan: all US colleges next, then UK/CA/AU.
     `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
     row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
   - Navigation (UX redesign phase 2): nav model in `web/lib/roles.ts` (`navFor`/`accountMenuFor`/`startedFrom`); sign-in is a dialog opened with `openSignIn()`;
-    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays/Activities/Resume are under `/writing/*`.
+    account, reminders and the role switch live at `/settings` (old `/account` and `#account` redirect); Essays and Activities are under `/writing/*`; the Résumé generator moved to the **Tools** page (`/tools`, `/tools/resume`; `/resume` and `/writing/resume` redirect), which also offers the Common App filler download (Beta).
   - Switching role (migration 0025): `RoleSwitcher` (Settings page for students, dashboard for teachers) calls RPC `change_my_role`. It is refused while the
     account has links (a student must leave their teachers, a teacher must remove their students); leaving teacher mode revokes all join codes and archives
     classes. The other side's data is kept so switching back restores it.
@@ -67,7 +67,7 @@ Plan: all US colleges next, then UK/CA/AU.
   Adding another system = one new `SystemMap` file plus an entry in `SYSTEMS` (the completeness test fails until every canonical value is mapped).
 - **Extension** (`extension/`, Chrome MV3 side panel, pinned id `omnpdpbgbbdbnnaimhppoclimbeeognl` = `NEXT_PUBLIC_EXTENSION_ID` in `web/.env.example`; spec `docs/superpowers/specs/2026-10-26-common-app-fill-extension-design.md`,
   plan `docs/superpowers/plans/2026-10-26-common-app-fill-extension.md`): fills the Common App courses & grades section from the Transcript. Build with `cd extension && node build.mjs`
-  (`TRACKER_URL=... node build.mjs` for a deployed tracker; default `http://localhost:3000`), load `extension/dist` unpacked; steps in `extension/README.md`. It never holds a Supabase session:
+  (`TRACKER_URL=... node build.mjs` for a deployed tracker; default `http://localhost:3000`), load `extension/dist` unpacked; steps in `extension/README.md`. The Tools page serves a zip of it from `web/public/downloads/common-app-filler.zip`, built for `https://www.track-ur-college.com`: run `cd extension && npm run package` after any extension change and commit the new zip (builds into a temp dir, leaves `dist/` alone). It never holds a Supabase session:
   the student approves it at `/extension/connect`, which mints a **transcript-only token** (migration 0031, table `extension_tokens`, must be applied to the project before the live run; students revoke it under Settings > Connected extensions, then Fill says "Sign in again").
   **Never test fills on the owner's real Common App account.** Use the throwaway test account (Purdue, nothing submitted) in a separate Chrome profile signed in only to it.
   The live end-to-end run has not been done yet: follow `extension/TESTING.md`.
@@ -85,6 +85,7 @@ cd web && npm install && npm run dev        # http://localhost:3000 (needs web/.
 cd web && npx tsc --noEmit && npm run lint && npm test && npm run build   # run all before committing
 python3 scripts/build_seed.py               # after editing data/*.json
 cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App filler extension; live check is extension/TESTING.md
+cd extension && npm run package   # rebuilds web/public/downloads/common-app-filler.zip (live-site build) after extension changes
 ```
 
 ## Rules for this repo

@@ -15,6 +15,15 @@ node build.mjs      # writes dist/ ; TRACKER_URL=https://your-tracker.example no
 node scripts/extension-id.mjs "<base64 key>"   # prints the id derived from a key
 ```
 
+## Package for the live site
+
+```bash
+cd extension
+npm run package    # builds with TRACKER_URL=https://www.track-ur-college.com into a temp dir, zips it to ../web/public/downloads/common-app-filler.zip
+```
+
+The Tools page (`/tools`) offers that zip to students. Rerun the command and commit the new zip after any extension change. `extension/dist` is not touched, so local development keeps pointing at `http://localhost:3000`. The zip has `manifest.json` at its root (with the pinned `key`, so the id stays `omnpdpbgbbdbnnaimhppoclimbeeognl`); `scripts/package.test.mjs` checks the committed zip. Zip writing is a small built-in helper (`scripts/zip.mjs`, node:zlib), so there is no extra dependency and it works on Windows.
+
 ## Load and sign in (manual check)
 
 Everything below is done from the side panel; no console is needed except for the optional token check in step 7.
