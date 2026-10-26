@@ -3,7 +3,7 @@
 // lists were not retrievable, so those stay unverified.
 import { LEVELS, PERIOD_TYPES, SUBJECTS } from "../transcript.ts";
 import { isNonUs, table, unverified, verified, type SystemMap } from "./types.ts";
-import { STARS_INTL_SUBJECT, STARS_INTL_TITLES, starsIntlOtherTitle } from "./stars-lists.ts";
+import { STARS_INTL_SUBJECT, STARS_INTL_TITLES, STARS_US_SUBJECT, STARS_US_TITLES, starsIntlOtherTitle } from "./stars-lists.ts";
 
 const HELP = "https://starsrecord.zendesk.com/hc/en-us/articles";
 const SUBJECT_SRC = `${HELP}/37027194180251`;
@@ -43,9 +43,9 @@ export const STARS_MAP: SystemMap = {
       history_social: verified("History / Social Studies", SUBJECT_SRC),
       world_language: verified("World Language", SUBJECT_SRC),
       arts: verified("Fine Arts / Music", SUBJECT_SRC),
-      computer_science: verified("Computer Science", SUBJECT_SRC),
+      computer_science: verified("Computer Science / Info Tech", LIVE),
       business: verified("Business", SUBJECT_SRC),
-      pe_health: verified("Physical Education / Health / Gym", SUBJECT_SRC),
+      pe_health: verified("Phys. Ed / Health / Gym", LIVE),
       career_technical: unverified("Other Subject Area", "No career-technical area exists in STARS's list", SUBJECT_SRC),
       other: unverified("Other Subject Area", undefined, SUBJECT_SRC),
     },
@@ -53,8 +53,8 @@ export const STARS_MAP: SystemMap = {
   ),
   subjectList: {
     options: [
-      "English", "Mathematics", "Science", "History / Social Studies", "World Language", "Business", "Computer Science",
-      "Fine Arts / Music", "Physical Education / Health / Gym", "Other Subject Area",
+      "English", "Mathematics", "Science", "History / Social Studies", "World Language", "Computer Science / Info Tech", "Business",
+      "Fine Arts / Music", "Phys. Ed / Health / Gym", "Other Subject Area",
     ],
     verified: true,
     note: "Psychology and economics go under History / Social Studies. Music, band, choir, art, dance and theater are all \"Fine Arts / Music\". STARS also asks for a Generic Course Title under each subject; those lists are not published.",
@@ -71,12 +71,13 @@ export const STARS_MAP: SystemMap = {
     unverified(null),
   ),
   genericTitle: (school, course) => {
-    // Only the international page's lists were seen live; a US school's lists are not published.
-    if (!isNonUs(school)) return unverified(null, "STARS's generic course titles for US schools could not be read; pick it on STARS", SUBJECT_SRC);
+    // Both pages' lists were read live (2026-10-27); a US school's page has its own titles ("ENGLISH 1" vs "ENGLISH 9 (FIRST YEAR)").
     const title = course.name.normalize("NFKC").trim().toUpperCase().replace(/\s+/g, " ");
-    const list = STARS_INTL_TITLES[STARS_INTL_SUBJECT[course.subject]];
+    const us = !isNonUs(school);
+    const list = us ? STARS_US_TITLES[STARS_US_SUBJECT[course.subject]] : STARS_INTL_TITLES[STARS_INTL_SUBJECT[course.subject]];
     if (list.includes(title)) return verified(title, LIVE);
-    return unverified(starsIntlOtherTitle(course.subject), "No title in STARS's list matches the course name exactly; pick a closer one if there is", LIVE);
+    const other = us ? list.find((t) => t.startsWith("OTHER"))! : starsIntlOtherTitle(course.subject);
+    return unverified(other, "No title in STARS's list matches the course name exactly; pick a closer one if there is", LIVE);
   },
   rules: (_school, course) => {
     const out: string[] = [];

@@ -75,7 +75,8 @@ test("Common App lists its 20 official subjects, STARS its 10, UIUC its 6", () =
   assert.ok(SYSTEMS.stars.subjectList.options.includes("Fine Arts / Music"));
   assert.deepEqual([...SYSTEMS.uiuc.subjectList.options], ["English", "Mathematics", "Science", "Social Science", "Language Other Than English", "Other"]);
   assert.ok(SYSTEMS.csu.subjectList.options.includes("D1 – Biological Science"));
-  assert.equal(SYSTEMS.uc.subjectList.verified, false);
+  assert.equal(SYSTEMS.uc.subjectList.verified, true);
+  assert.ok(SYSTEMS.uc.subjectList.options.includes("Computer Science (Science)"));
 });
 
 test("matchSubjectOption matches case, dashes, spacing and A-G letter codes", () => {
@@ -107,10 +108,13 @@ test("UT Austin takes five areas plus Other, completed courses only", () => {
   assert.match(w, /completed/i);
 });
 
-test("UC marks its area names unverified because the dropdown wording is not published", () => {
-  const f = field(mapCourse("uc", school(), course({ subject: "mathematics" })), "subject");
-  assert.equal(f.value, "C – Mathematics");
-  assert.equal(f.status, "unverified");
+test("UC's subject is its own course category (read live): exact where the sub-category says it, else left open", () => {
+  const algebra = field(mapCourse("uc", school(), course({ subject: "mathematics", subSubject: "algebra_1" })), "subject");
+  assert.equal(algebra.value, "Algebra I");
+  assert.equal(algebra.status, "verified");
+  const open = field(mapCourse("uc", school(), course({ subject: "mathematics", subSubject: "trigonometry" })), "subject");
+  assert.equal(open.value, null);
+  assert.equal(open.status, "unverified");
 });
 
 test("CSU area names are official, and science splits into D1 and D2", () => {
@@ -219,7 +223,7 @@ test("UC rejects Pass/Fail, and uses IP, PL and NO codes", () => {
 test("UC has no credit field, and maps arts to its five disciplines", () => {
   const m = mapCourse("uc", school(), course({ subject: "arts", subSubject: "dance" }));
   assert.equal(field(m, "credit").status, "none");
-  assert.equal(field(m, "subject").value, "F – Visual and performing arts");
+  assert.equal(field(m, "subject").value, "Dance");
   assert.equal(field(m, "subSubject").value, "Dance");
   assert.equal(field(mapCourse("uc", school(), course({ subject: "arts", subSubject: "interdisciplinary" })), "subSubject").value, "Interdisciplinary Arts");
 });

@@ -90,3 +90,20 @@ test("starsTitle from an AI must be one of STARS's titles", () => {
   assert.deepEqual(bad.overrides, {});
   assert.equal(bad.warnings.length, 1);
 });
+
+test("a US school gets the US page: its own titles and levels, no 'taken in' level, no scale question, grades as printed", async () => {
+  const { buildStarsPlans } = await import("./stars-fill.ts");
+  const us = school({ country: "United States", name: "Lincoln High" });
+  const [p] = buildStarsPlans([us], [course({ name: "Algebra 2", subSubject: "algebra_2", level: "honors", scale: "letter_plus_minus", terms: [term("S1", "A-"), { term: "S2", grade: "", status: "in_progress" }] })]);
+  assert.equal(p!.kind, "us");
+  const r = p!.rows[0]!;
+  assert.equal(r.academicLevel, null);
+  assert.equal(r.title, "ALGEBRA 2");
+  assert.equal(r.level, "Honors");
+  assert.deepEqual(r.scaleOptions, []);
+  assert.deepEqual(p!.scaleQuestions, []);
+  assert.deepEqual(r.boxes.map((b) => b.grade), ["A-", "In Progress"]);
+  const [e] = buildStarsPlans([us], [course({ name: "English 9", subject: "english", subSubject: null })]);
+  assert.equal(e!.rows[0]!.subject, "English");
+  assert.equal(e!.rows[0]!.title, "OTHER ENGLISH");
+});

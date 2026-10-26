@@ -3,10 +3,12 @@
 
 import type { TranscriptResult } from "./auth.ts";
 import { buildSystemPlan, FILL_SYSTEMS } from "../../web/lib/system-fill.ts";
-import { buildStarsIntlPlans } from "../../web/lib/stars-fill.ts";
+import { buildStarsPlans } from "../../web/lib/stars-fill.ts";
 import { assistView } from "./assist-panel.ts";
 import { starsAutoView } from "./stars/panel.ts";
 import { csuAutoView } from "./csu/panel.ts";
+import { ucAutoView } from "./uc/panel.ts";
+import { buildUcPlans } from "../../web/lib/uc-fill.ts";
 import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
 import { createDriver, type TabsApi } from "./chrome-driver.ts";
 import { targetUrl } from "./commonapp/pages.ts";
@@ -150,8 +152,9 @@ async function readyView(): Promise<void> {
     const onSite = tab.site === site ? tab.id : null;
     const auto =
       onSite == null ? null
-      : site === "stars" ? await starsAutoView(buildStarsIntlPlans(transcript.schools, transcript.courses), onSite)
+      : site === "stars" ? await starsAutoView(buildStarsPlans(transcript.schools, transcript.courses), onSite)
       : site === "csu" ? csuAutoView(buildCsuPlans(transcript.schools, transcript.courses), onSite)
+      : site === "uc" ? await ucAutoView(buildUcPlans(transcript.schools, transcript.courses), onSite)
       : null;
     const node = await assistView(buildSystemPlan(site, transcript.schools, transcript.courses), onSite, auto);
     if (view !== "ready" || shownSite !== site) return;

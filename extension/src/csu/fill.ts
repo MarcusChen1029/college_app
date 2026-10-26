@@ -82,13 +82,35 @@ export async function existingTitles(doc: Document, schoolName: string): Promise
   });
 }
 
-/** Opens an MUI Autocomplete and clicks the option reading exactly `value`. */
-async function pickAuto(input: HTMLInputElement, value: string, label: string): Promise<void> {
+/** The options of `input`'s own list (MUI links it with aria-controls = "<id>-listbox"); a list that is still closing is not this one's. */
+const options = (input: HTMLInputElement): Element[] => {
   const doc = input.ownerDocument;
-  input.focus();
-  fire(input, "mousedown");
-  const option = await until(() => [...doc.querySelectorAll('[role="option"]')].find((o) => same(text(o), value)), CSU_TIMING.listMs, `"${value}" is not in Cal State Apply's ${label} list`);
+  const box = doc.getElementById(input.getAttribute("aria-controls") || `${input.id}-listbox`);
+  return box ? [...box.querySelectorAll('[role="option"]')] : [];
+};
+
+/** Opens an MUI Autocomplete's list. A mousedown right after a drawer opens can be lost (seen live), so it is retried until options show. */
+async function openAuto(input: HTMLInputElement, label: string): Promise<Element[]> {
+  const start = Date.now();
+  for (let tries = 0; ; tries++) {
+    if (tries % 6 === 0) {
+      input.blur();
+      input.focus();
+      fire(input, "mousedown");
+    }
+    const o = options(input);
+    if (o.length) return o;
+    if (Date.now() - start >= CSU_TIMING.listMs) throw new CsuStop(`Cal State Apply's ${label} list did not open`);
+    await sleep(CSU_TIMING.stepMs);
+  }
+}
+
+/** Opens an MUI Autocomplete and clicks the option reading exactly `value`. `action`: the option opens something instead of filling the box. */
+async function pickAuto(input: HTMLInputElement, value: string, label: string, action = false): Promise<void> {
+  await openAuto(input, label);
+  const option = await until(() => options(input).find((o) => same(text(o), value)), CSU_TIMING.listMs, `"${value}" is not in Cal State Apply's ${label} list`);
   (option as HTMLElement).click();
+  if (action) return;
   await until(() => same(input.value, value) || input.value.length > 0, CSU_TIMING.listMs, `Cal State Apply did not take "${value}" for ${label}`);
 }
 
@@ -107,7 +129,8 @@ function drawerButton(drawer: Element, label: string): HTMLElement {
 /** Adds "9th Grade • 2023-2024" through the course form's "Add Grade Level" sub-form, then returns to the course form. */
 async function addGradeLevel(doc: Document, row: CsuRow): Promise<void> {
   const course = topDrawer(doc)!;
-  await pickAuto(field(course, "gradeLevelId", "Grade Level"), "Add Grade Level", "Grade Level");
+  // "Add Grade Level" opens a sub-form and leaves the box empty (seen live).
+  await pickAuto(field(course, "gradeLevelId", "Grade Level"), "Add Grade Level", "Grade Level", true);
   const sub = await until(() => {
     const d = topDrawer(doc);
     return d && d.querySelector('[id="yearId"]') ? d : null;
@@ -131,13 +154,7 @@ export async function fillCsuCourse(doc: Document, row: CsuRow): Promise<CsuCour
   if (row.summer) throw new CsuStop(`${row.name} is a summer course: Cal State Apply's summer grade levels were not seen yet, so add it by hand`);
   const levelOption = csuGradeLevelOption(row);
   const gl = field(drawer, "gradeLevelId", "Grade Level");
-  gl.focus();
-  fire(gl, "mousedown");
-  const options = await until(() => {
-    const o = [...doc.querySelectorAll('[role="option"]')];
-    return o.length ? o : null;
-  }, CSU_TIMING.listMs, "Cal State Apply's Grade Level list did not open");
-  const has = options.some((o) => same(text(o), levelOption));
+  const has = (await openAuto(gl, "Grade Level")).some((o) => same(text(o), levelOption));
   fire(gl, "keydown", { key: "Escape" });
   await sleep(200);
   if (!has) await addGradeLevel(doc, row);
@@ -148,12 +165,8 @@ export async function fillCsuCourse(doc: Document, row: CsuRow): Promise<CsuCour
   const title = field(form, "courseName", "Course Title");
   title.focus();
   setReactValue(title, row.name);
-  const echo = await until(() => [...doc.querySelectorAll('[role="option"]')].find((o) => same(text(o), row.name)), CSU_TIMING.listMs, `Cal State Apply did not offer the title "${row.name}"`);
+  const echo = await until(() => options(title).find((o) => same(text(o), row.name)), CSU_TIMING.listMs, `Cal State Apply did not offer the title "${row.name}"`);
   (echo as HTMLElement).click();
-
-  const radio = [...form.querySelectorAll('input[name="courseTypeLkupId"]')].find((r) => same(text(r.closest("label")), row.courseType));
-  if (!radio) throw new CsuStop(`Cal State Apply has no Course Type "${row.courseType}"`);
-  (radio as HTMLInputElement).click();
 
   const boxes = [...form.querySelectorAll('input[id^="highSchoolCourseGrades."]')] as HTMLInputElement[];
   if (boxes.length !== row.grades.length) throw new CsuStop(`Cal State Apply shows ${boxes.length} grade boxes; the tracker has ${row.grades.length} terms for ${row.name}. Check the school's Term Type`);
@@ -164,6 +177,12 @@ export async function fillCsuCourse(doc: Document, row: CsuRow): Promise<CsuCour
     else await pickAuto(boxes[i]!, g, `${label} grade`);
   }
   if (blanks.length) return { blanks };
+  // Course Type last: picking the title re-renders the form and cleared a radio chosen before it (seen live).
+  const radio = [...form.querySelectorAll('input[name="courseTypeLkupId"]')].find((r) => same(text(r.closest("label")), row.courseType)) as HTMLInputElement | undefined;
+  if (!radio) throw new CsuStop(`Cal State Apply has no Course Type "${row.courseType}"`);
+  radio.click();
+  if (!radio.checked) (radio.closest("label") as HTMLElement | null)?.click();
+  await until(() => radio.checked, CSU_TIMING.listMs, `Cal State Apply did not take Course Type "${row.courseType}"`);
   drawerButton(form, "Save").click();
   await until(() => topDrawer(doc) !== form || !form.isConnected || !form.querySelector('[id="courseName"]'), CSU_TIMING.drawerMs, `Cal State Apply did not save ${row.name} (a required box may be empty)`);
   return { blanks };

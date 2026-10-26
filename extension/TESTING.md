@@ -94,14 +94,21 @@ STARS (school outside the US):
    STARS's table with the tracker's name (upper-cased by STARS), the grades per term, and the credit. Names already in the table are skipped.
 3. Open one added course with Edit: name, level, length, scale, grade and credit match the tracker. Press Cancel Edit.
 Verified on 2026-10-27 by injecting the page filler into a live record (semester course with In Progress, full-year Honors course with
-credit 1); the panel's run loop is covered by unit tests only.
+credit 1); the panel's run loop is covered by unit tests only. US school: the same button works on "EnterCoursework"; STARS first needs the
+year's GPA at the top of the page (or its "I have not received an annual GPA" tick) - the filler stops and says so. Verified live the same day
+(semester Honors course 93 / IP, full-year AP course with credit 1).
 
 Cal State Apply (US high school only; schools outside the US skip course entry):
 1. High Schools Attended must list the school with its Term Type. Open Academic History > High School Coursework.
 2. In the panel, press "Add courses to <school>". Expected: for each course the course form opens, a missing grade level is added first
    ("Add Grade Level"), title, Course Type and each term's grade are picked, Save is pressed, and the course shows in the school's list.
 3. Set A-G areas yourself on A-G Matching (the panel lists the code for each course).
-Each step was tried by hand on a live account on 2026-10-27; the combined run has NOT been run live yet. Report the panel's message if it stops.
+Verified end to end on 2026-10-27 (the run skipped 2 existing courses, added 2, one with a new grade level). Report the panel's message if it stops.
 
-Fill assistant (UC, UIUC, UT, and any page the automatic fillers don't cover): click a box on the portal, press a value in the panel.
+UC: open Academic history > a grade > "Enter courses & grades". Press "Add Nth grade courses to UC": new courses go into empty rows (rows are
+added as needed), "Save & continue" is pressed once, and the panel checks the grade page lists every added course. Courses whose UC subject
+can't be told from the tracker (e.g. history without "U.S."/"World" in the name, computer science, languages without a year number) are left
+for you and listed; tag them for UC in the tracker or with the AI import. Verified end to end on 2026-10-27 (3 added, 1 existing skipped).
+
+Fill assistant (UIUC, UT, and any page the automatic fillers don't cover): click a box on the portal, press a value in the panel.
 Verified on real STARS controls: radio by label, Telerik dropdown, Telerik date box, Telerik dropdown tree.

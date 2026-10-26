@@ -4,7 +4,7 @@
 
 import type { StarsRow } from "../../../web/lib/stars-fill.ts";
 
-export const STARS_TIMING = { stepMs: 100, listMs: 4000, postbackMs: 8000 };
+export const STARS_TIMING = { stepMs: 100, listMs: 4000, postbackMs: 8000, settleMs: 1500 };
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 const text = (el: Element | null | undefined): string => (el?.textContent ?? "").replace(/\s+/g, " ").trim();
@@ -28,9 +28,16 @@ async function until<T>(probe: () => T | null | undefined | false, ms: number, w
   }
 }
 
-/** The page's school year: the `yr` URL parameter (2024 = 2023-24), or null when this is not the coursework page. */
+/** The coursework page's kind: a school outside the US ("EnterInternationalCoursework") or in the US ("EnterCoursework"), else null. */
+export function starsPageKind(loc: { pathname: string }): "intl" | "us" | null {
+  if (/\/srt\/EnterInternationalCoursework/i.test(loc.pathname)) return "intl";
+  if (/\/srt\/EnterCoursework/i.test(loc.pathname)) return "us";
+  return null;
+}
+
+/** The page's school year: the `yr` URL parameter (2024 = 2023-24; the file name's year differs on the US page), or null off the coursework page. */
 export function starsPageYear(loc: { pathname: string; search: string }): number | null {
-  if (!/\/srt\/EnterInternationalCoursework/i.test(loc.pathname)) return null;
+  if (!starsPageKind(loc)) return null;
   const yr = Number(new URLSearchParams(loc.search).get("yr"));
   return Number.isInteger(yr) && yr > 1990 ? yr : null;
 }
@@ -38,7 +45,8 @@ export function starsPageYear(loc: { pathname: string; search: string }): number
 /** Course names already saved for this year (the table's Course/Exam Name column; one row per term, so names repeat). */
 export function starsExistingNames(doc: Document): string[] {
   const headers = [...doc.querySelectorAll("th")].map((th) => text(th));
-  const col = headers.findIndex((h) => h === "Course/Exam Name");
+  // "Course/Exam Name" on the international page, "Course Name" on the US page (both seen live).
+  const col = headers.findIndex((h) => h === "Course/Exam Name" || h === "Course Name");
   if (col < 0) return [];
   const table = doc.querySelectorAll("th")[col]!.closest("table")!;
   return [...table.querySelectorAll("tr")].flatMap((tr) => {
@@ -96,15 +104,25 @@ export type StarsFillResult = { saved: boolean; blanks: string[] };
  */
 export async function fillStarsCourse(doc: Document, row: StarsRow, scale: string | null): Promise<StarsFillResult> {
   const blanks: string[] = [];
-  await pickRad(doc, "academic_level", row.academicLevel, "Courses/Exams Were Taken in");
+  // The US page requires the year's GPA, or the tick "I have not received an annual GPA", before any course saves (seen live). The tracker
+  // has no per-year GPA, and the tick is a statement only the student can make.
+  const yearGpa = doc.getElementById(ID("year_gpa")) as HTMLInputElement | null;
+  const noGpa = doc.getElementById("no_annual_gpa") as HTMLInputElement | null;
+  if (yearGpa && !yearGpa.value.trim() && !noGpa?.checked) {
+    throw new StarsStop("STARS needs this year's GPA first: type it at the top of the page (or tick \"I have not received an annual GPA\" if that is true), then run again");
+  }
+  if (row.academicLevel) await pickRad(doc, "academic_level", row.academicLevel, "Courses/Exams Were Taken in");
   await pickRad(doc, "subject_area", row.subject, "Subject Area");
   await pickRad(doc, "course_cd", row.title, "Course/Exam Content");
   if (row.level) await pickRad(doc, "course_level", row.level, "Proficiency Level");
   else blanks.push("Proficiency Level");
   await pickRad(doc, "term", row.length, "Course Length");
   await until(() => doc.getElementById(`${ID("grade_1")}_Input`), STARS_TIMING.postbackMs, "STARS did not show the grade boxes");
-  if (scale) await pickRad(doc, "grade_scale_id", scale, "Grading Scale");
-  else blanks.push("Grading Scale");
+  // Only the international page has a per-course scale; the US page uses the school's Grade Scale.
+  if (doc.getElementById(ID("grade_scale_id"))) {
+    if (scale) await pickRad(doc, "grade_scale_id", scale, "Grading Scale");
+    else blanks.push("Grading Scale");
+  }
   for (const [i, box] of row.boxes.entries()) {
     const n = i + 1;
     if (!doc.getElementById(`${ID(`grade_${n}`)}_Input`)) throw new StarsStop(`STARS shows fewer grade boxes than this course has terms (${row.boxes.length})`);
@@ -121,6 +139,12 @@ export async function fillStarsCourse(doc: Document, row: StarsRow, scale: strin
     if (box.credit != null && Number(shown) !== Number(box.credit)) throw new StarsStop(`STARS did not keep the credit ${box.credit} for term ${i + 1}`);
   }
   if (blanks.some((b) => b === "Grading Scale" || b === "Proficiency Level" || b.startsWith("Grade "))) return { saved: false, blanks };
+  // A pick shows its value before STARS finishes the update it starts; saving then lost the grades (seen live). Let it settle, then re-check.
+  await sleep(STARS_TIMING.settleMs);
+  for (const [i, box] of row.boxes.entries()) {
+    if (box.grade && radValue(doc, `grade_${i + 1}`) !== box.grade) throw new StarsStop(`STARS cleared grade ${i + 1}; nothing was saved for this course`);
+  }
+  if ((doc.getElementById(ID("exact_course_title")) as HTMLInputElement | null)?.value !== row.name) throw new StarsStop(`STARS did not keep the course name "${row.name}"`);
   const save = doc.getElementById(ID("btn_submit")) as HTMLElement | null;
   if (!save) throw new StarsStop("STARS's Save Course button is not on the page");
   // Let the panel get the answer before the page posts and this script goes away.

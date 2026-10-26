@@ -13,10 +13,19 @@ export type StarsRunResult = { added: string[]; skippedExisting: number; stopped
 
 const upper = (s: string) => s.normalize("NFKC").trim().toUpperCase().replace(/\s+/g, " ");
 
-async function page(tab: StarsTab): Promise<{ year: number | null; existing: string[] }> {
+async function page(tab: StarsTab): Promise<{ year: number | null; kind: "intl" | "us" | null; existing: string[] }> {
   const r = await tab.send({ type: "starsPage" });
   if (r?.type !== "starsPage") throw new Error("The STARS page did not answer. Reload it and try again.");
   return r;
+}
+
+/** The plan for the open page: same page kind and school year; when several schools share them, the one whose name the page shows. */
+export function planForPage(plans: StarsPagePlan[], page: { year: number | null; kind: "intl" | "us" | null; pageText: string }): StarsPagePlan | null {
+  const same = plans.filter((p) => p.kind === page.kind && p.endYear === page.year);
+  if (same.length <= 1) return same[0] ?? null;
+  const text = page.pageText.toLowerCase();
+  const named = same.filter((p) => text.includes(p.schoolName.toLowerCase()));
+  return named.length === 1 ? named[0]! : null;
 }
 
 export async function runStarsYear(plan: StarsPagePlan, picked: readonly string[], tab: StarsTab, shouldStop: () => boolean, progress: (text: string) => void): Promise<StarsRunResult> {
@@ -27,7 +36,7 @@ export async function runStarsYear(plan: StarsPagePlan, picked: readonly string[
   } catch (e) {
     return { added, skippedExisting: 0, stopped: (e as Error).message };
   }
-  if (state.year !== plan.endYear) return { added, skippedExisting: 0, stopped: `Open the ${plan.endYear - 1}-${String(plan.endYear % 100).padStart(2, "0")} coursework page on STARS first.` };
+  if (state.year !== plan.endYear || state.kind !== plan.kind) return { added, skippedExisting: 0, stopped: `Open the ${plan.endYear - 1}-${String(plan.endYear % 100).padStart(2, "0")} coursework page on STARS first.` };
   const todo = starsRowsToAdd(plan.rows, state.existing);
   const skippedExisting = plan.rows.length - todo.length;
   for (const [i, row] of todo.entries()) {

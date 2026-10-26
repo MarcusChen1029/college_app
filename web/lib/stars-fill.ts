@@ -1,5 +1,6 @@
-// The fill plan for STARS's coursework page for a school outside the US ("EnterInternationalCoursework", one page per school year):
-// every course with each box already in STARS's own words. Pure data in, pure data out; the extension types it in.
+// The fill plan for STARS's coursework pages, one page per school and school year: "EnterInternationalCoursework" for a school outside
+// the US, "EnterCoursework" for a US school (other lists, no "taken in" level, no per-course scale). Every course has each box already in
+// STARS's own words. Pure data in, pure data out; the extension types it in.
 // Lists and page facts: transcript-maps/stars-lists.ts and docs/superpowers/research/2026-10-27-portal-dom.md §1.
 
 import { mapCourse } from "./transcript-maps.ts";
@@ -12,17 +13,24 @@ import {
   STARS_INTL_SUBJECT,
   STARS_INTL_SUBJECTS,
   STARS_INTL_TITLES,
+  STARS_US_LEVEL,
+  STARS_US_LEVELS,
+  STARS_US_SUBJECT,
+  STARS_US_SUBJECTS,
+  STARS_US_TITLES,
   starsIntlScalesFor,
-  type StarsIntlSubject,
 } from "./transcript-maps/stars-lists.ts";
 import { addCredits, normalizeName, TERMS_FOR_PERIOD, type Term, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 export type StarsBox = { grade: string | null; credit: string | null };
+/** Which coursework page: a school outside the US ("intl") or in the US ("us"). */
+export type StarsPageKind = "intl" | "us";
 export type StarsRow = {
   trackerId: string;
   name: string;
-  academicLevel: string;
-  subject: StarsIntlSubject;
+  /** "Courses/Exams Were Taken in" (international page only). */
+  academicLevel: string | null;
+  subject: string;
   title: string;
   level: string | null;
   length: "Full Year" | "Semester" | "Trimester" | "Quarterly";
@@ -33,6 +41,7 @@ export type StarsRow = {
 };
 export type StarsSkip = { course: string; field: string; reason: string };
 export type StarsPagePlan = {
+  kind: StarsPageKind;
   /** The school year's end ("yr" in the page URL): 2024 for 2023-24. */
   endYear: number;
   schoolName: string;
@@ -56,15 +65,20 @@ export function starsIntlGrade(printed: string): string | null {
   return STARS_INTL_GRADE_WORDS.find((w) => normalizeName(w) === normalizeName(g)) ?? null;
 }
 
-function subjectOf(c: TranscriptCourse): StarsIntlSubject {
+const LISTS = {
+  intl: { subjects: STARS_INTL_SUBJECTS as readonly string[], subject: STARS_INTL_SUBJECT as Record<string, string>, titles: STARS_INTL_TITLES as Record<string, readonly string[]>, levels: STARS_INTL_LEVELS as readonly string[], level: STARS_INTL_LEVEL },
+  us: { subjects: STARS_US_SUBJECTS as readonly string[], subject: STARS_US_SUBJECT as Record<string, string>, titles: STARS_US_TITLES as Record<string, readonly string[]>, levels: STARS_US_LEVELS as readonly string[], level: STARS_US_LEVEL },
+} as const;
+
+function subjectOf(c: TranscriptCourse, kind: StarsPageKind): string {
   const ov = c.overrides.stars?.subject;
-  const hit = ov ? STARS_INTL_SUBJECTS.find((s) => normalizeName(s) === normalizeName(ov)) : undefined;
-  return hit ?? STARS_INTL_SUBJECT[c.subject];
+  const hit = ov ? LISTS[kind].subjects.find((s) => normalizeName(s) === normalizeName(ov)) : undefined;
+  return hit ?? LISTS[kind].subject[c.subject]!;
 }
 
 /** The generic title: the student's (or AI's) choice when it is in this subject's list, else the map (exact name match, else "OTHER …"). */
-function titleOf(school: TranscriptSchool, c: TranscriptCourse, subject: StarsIntlSubject, warnings: string[]): string {
-  const list = STARS_INTL_TITLES[subject];
+function titleOf(school: TranscriptSchool, c: TranscriptCourse, kind: StarsPageKind, subject: string, warnings: string[]): string {
+  const list = LISTS[kind].titles[subject]!;
   const ov = c.overrides.stars?.genericTitle;
   if (ov && list.includes(upper(ov))) return upper(ov);
   const f = mapCourse("stars", school, c).fields.find((x) => x.key === "genericTitle");
@@ -73,18 +87,27 @@ function titleOf(school: TranscriptSchool, c: TranscriptCourse, subject: StarsIn
   return value;
 }
 
-function levelOf(c: TranscriptCourse, skipped: StarsSkip[]): string | null {
+function levelOf(c: TranscriptCourse, kind: StarsPageKind, skipped: StarsSkip[]): string | null {
   const ov = c.overrides.stars?.level;
-  const hit = ov ? STARS_INTL_LEVELS.find((l) => normalizeName(l) === normalizeName(ov)) : undefined;
-  const level = hit ?? (c.isCollege ? "Dual Enrollment" : STARS_INTL_LEVEL[c.level]);
+  const hit = ov ? LISTS[kind].levels.find((l) => normalizeName(l) === normalizeName(ov)) : undefined;
+  const level = hit ?? (c.isCollege ? "Dual Enrollment" : LISTS[kind].level[c.level]);
   if (!level) skipped.push({ course: c.name, field: "Proficiency Level", reason: "no single STARS level fits this course's level; pick it on STARS" });
   return level;
 }
 
 /** Grade boxes. A printed year grade beside term grades means Full Year with only that grade (STARS's rule); otherwise one box per term. */
-function boxesOf(c: TranscriptCourse, skipped: StarsSkip[], warnings: string[]): { length: StarsRow["length"]; boxes: StarsBox[] } {
+/** A grade for a US school's page: the school's scale decides STARS's list (numbers seen live; letters not seen), so the grade goes as printed
+ *  and the filler picks it only if STARS lists it exactly. Words ("In Progress", "Withdrawn", ...) are matched to STARS's spelling. */
+export function starsUsGrade(printed: string): string | null {
+  const g = printed.trim();
+  if (!g) return null;
+  if (/^\d{1,3}$/.test(g)) return String(Number(g));
+  return STARS_INTL_GRADE_WORDS.find((w) => normalizeName(w) === normalizeName(g)) ?? g.toUpperCase();
+}
+
+function boxesOf(c: TranscriptCourse, kind: StarsPageKind, skipped: StarsSkip[], warnings: string[]): { length: StarsRow["length"]; boxes: StarsBox[] } {
   const grade = (printed: string, what: string): string | null => {
-    const g = starsIntlGrade(printed);
+    const g = kind === "intl" ? starsIntlGrade(printed) : starsUsGrade(printed);
     if (g == null && printed.trim()) skipped.push({ course: c.name, field: `${what} grade`, reason: `"${printed}" is not a grade STARS lists on this scale; type it yourself` });
     return g;
   };
@@ -115,32 +138,35 @@ function boxesOf(c: TranscriptCourse, skipped: StarsSkip[], warnings: string[]):
   return { length: LENGTH[c.period], boxes };
 }
 
-/** One plan per (school outside the US, school year), in transcript order. US schools use STARS's other page, which this plan does not cover. */
-export function buildStarsIntlPlans(schools: TranscriptSchool[], courses: TranscriptCourse[]): StarsPagePlan[] {
+/** One plan per (high school, school year), in transcript order; `kind` says which of STARS's two pages it is for. */
+export function buildStarsPlans(schools: TranscriptSchool[], courses: TranscriptCourse[]): StarsPagePlan[] {
   const byId = new Map(schools.map((s) => [s.id, s]));
   const plans = new Map<string, StarsPagePlan>();
   for (const c of [...courses].sort((a, b) => a.academicYear - b.academicYear || a.sortOrder - b.sortOrder)) {
     const school = byId.get(c.schoolId);
-    if (!school || school.kind !== "high_school" || !isNonUs(school)) continue;
+    if (!school || school.kind !== "high_school") continue;
+    const kind: StarsPageKind = isNonUs(school) ? "intl" : "us";
     const key = `${school.id}|${c.academicYear}`;
     let plan = plans.get(key);
     if (!plan) {
-      plan = { endYear: c.academicYear + 1, schoolName: school.name, scaleQuestions: [], rows: [], skipped: [], warnings: [] };
+      plan = { kind, endYear: c.academicYear + 1, schoolName: school.name, scaleQuestions: [], rows: [], skipped: [], warnings: [] };
       plans.set(key, plan);
     }
     const gl = c.gradeLevel;
     if (gl == null || gl < 9 || gl > 13) {
-      plan.skipped.push({ course: c.name, field: "course", reason: "STARS's international page takes grades 9-13 only; set the grade level in the tracker or enter it by hand" });
+      plan.skipped.push({ course: c.name, field: "course", reason: "STARS's coursework pages take grades 9-13; set the grade level in the tracker or enter it by hand" });
       continue;
     }
-    const subject = subjectOf(c);
-    const title = titleOf(school, c, subject, plan.warnings);
-    const level = levelOf(c, plan.skipped);
-    const { length, boxes } = boxesOf(c, plan.skipped, plan.warnings);
-    const scaleOptions = starsIntlScalesFor(c.scale, c.scaleMax);
+    const subject = subjectOf(c, kind);
+    const title = titleOf(school, c, kind, subject, plan.warnings);
+    const level = levelOf(c, kind, plan.skipped);
+    const { length, boxes } = boxesOf(c, kind, plan.skipped, plan.warnings);
+    // The US page has no per-course scale: STARS uses the school's Grade Scale from Enter Schools.
+    const scaleOptions = kind === "intl" ? starsIntlScalesFor(c.scale, c.scaleMax) : [];
     if (scaleOptions.length > 1 && !plan.scaleQuestions.some((q) => q.join("|") === scaleOptions.join("|"))) plan.scaleQuestions.push(scaleOptions);
-    if (!scaleOptions.length) plan.skipped.push({ course: c.name, field: "Grading Scale", reason: "STARS's international page has no scale for this kind of grade (e.g. letters); pick one on STARS" });
-    plan.rows.push({ trackerId: c.id, name: c.name, academicLevel: STARS_INTL_ACADEMIC_LEVELS[gl - 9]!, subject, title, level, length, scaleOptions, boxes });
+    if (kind === "intl" && !scaleOptions.length) plan.skipped.push({ course: c.name, field: "Grading Scale", reason: "STARS's international page has no scale for this kind of grade (e.g. letters); pick one on STARS" });
+    const academicLevel = kind === "intl" ? STARS_INTL_ACADEMIC_LEVELS[gl - 9]! : null;
+    plan.rows.push({ trackerId: c.id, name: c.name, academicLevel, subject, title, level, length, scaleOptions, boxes });
   }
   return [...plans.values()];
 }
@@ -150,6 +176,10 @@ export function starsRowsToAdd(rows: StarsRow[], existingNames: string[]): Stars
   const have = new Set(existingNames.map(upper));
   return rows.filter((r) => !have.has(upper(r.name)));
 }
+
+/** The international page's plans only. */
+export const buildStarsIntlPlans = (schools: TranscriptSchool[], courses: TranscriptCourse[]): StarsPagePlan[] =>
+  buildStarsPlans(schools, courses).filter((p) => p.kind === "intl");
 
 /** The scale to pick for a row: its only option, else the student's answer among its options, else null (asked first). */
 export function starsScaleFor(row: StarsRow, picked: readonly string[]): string | null {
