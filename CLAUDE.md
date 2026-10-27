@@ -95,8 +95,11 @@ Plan: all US colleges next, then UK/CA/AU.
   also returned by `extension_transcript`) first, then the name word by word with abbreviations expanded (Intl, Sch, Cmp, HS, St...), never a guess between two close names.
   Other portals (2026-10-27): the panel's "Fill for" picker follows the active tab (`extension/src/sites.ts`). STARS
   (both coursework pages), Cal State Apply (High School Coursework, US schools) and UC (Enter courses & grades) get "Add courses", each verified
-  on a live test account (plans `web/lib/stars-fill.ts`, `csu-fill.ts`, `uc-fill.ts`); UIUC and UT get the fill assistant (click a box, press a
-  value; plans `web/lib/system-fill.ts`). Live DOM facts:
+  on a live test account (plans `web/lib/stars-fill.ts`, `csu-fill.ts`, `uc-fill.ts`). UIUC's SRAR (myIllini, Courses Years 9-11 / Year 12)
+  also gets "Add courses" (2026-10-28; plan `web/lib/uiuc-fill.ts`, one row per term grade; `extension/src/uiuc/*`): it adds rows with Add Course,
+  presses Save Progress and never touches Submit (`#btn_submit` is the FINAL submit on /Preview; a unit test guards it), Education or Other
+  Academic; page alerts are caught by a MAIN-world hook (`src/uiuc-main.ts`). Built from the live DOM facts in portal-dom.md §5 but not yet run
+  end to end. UT gets the fill assistant (click a box, press a value; plans `web/lib/system-fill.ts`). Live DOM facts:
   `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)

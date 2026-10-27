@@ -18,7 +18,8 @@ const common = {
   logLevel: "info",
 };
 await build({ ...common, entryPoints: { background: "src/background.ts" }, format: "esm" });
-await build({ ...common, entryPoints: { content: "src/content.ts", "assist-content": "src/assist-content.ts", panel: "src/panel.ts" }, format: "iife" });
+// uiuc-main runs in myIllini's own (MAIN) world: the dormant alert/confirm hook the UIUC filler switches on while it adds courses.
+await build({ ...common, entryPoints: { content: "src/content.ts", "assist-content": "src/assist-content.ts", panel: "src/panel.ts", "uiuc-main": "src/uiuc-main.ts" }, format: "iife" });
 
 copyFileSync("manifest.json", join(out, "manifest.json"));
 copyFileSync("panel.html", join(out, "panel.html"));

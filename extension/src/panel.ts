@@ -8,6 +8,8 @@ import { assistView } from "./assist-panel.ts";
 import { starsAutoView } from "./stars/panel.ts";
 import { csuAutoView } from "./csu/panel.ts";
 import { ucAutoView } from "./uc/panel.ts";
+import { uiucAutoView } from "./uiuc/panel.ts";
+import { buildUiucPlans } from "../../web/lib/uiuc-fill.ts";
 import { buildUcPlans } from "../../web/lib/uc-fill.ts";
 import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
 import { createDriver, type TabsApi } from "./chrome-driver.ts";
@@ -151,10 +153,11 @@ async function readyView(): Promise<void> {
     if (!transcript) return void refresh();
     const onSite = tab.site === site ? tab.id : null;
     const auto =
-      onSite == null ? (site === "stars" || site === "uc" || site === "csu" ? h("p", { class: "note" }, `Open ${SITE_LABEL[site]} in this window (signed in), and the extension adds your courses for you.`) : null)
+      onSite == null ? (site === "stars" || site === "uc" || site === "csu" || site === "uiuc" ? h("p", { class: "note" }, `Open ${SITE_LABEL[site]} in this window (signed in), and the extension adds your courses for you.`) : null)
       : site === "stars" ? await starsAutoView(buildStarsPlans(transcript.schools, transcript.courses), onSite)
       : site === "csu" ? csuAutoView(buildCsuPlans(transcript.schools, transcript.courses), onSite)
       : site === "uc" ? ucAutoView(buildUcPlans(transcript.schools, transcript.courses), onSite)
+      : site === "uiuc" ? uiucAutoView(buildUiucPlans(transcript.schools, transcript.courses), onSite)
       : null;
     const node = await assistView(buildSystemPlan(site, transcript.schools, transcript.courses), onSite, auto);
     if (view !== "ready" || shownSite !== site) return;

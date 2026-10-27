@@ -67,13 +67,13 @@ test("every mapped subject is one of that system's own listed options", () => {
   }
 });
 
-test("Common App lists its 20 official subjects, STARS its 10, UIUC its 6", () => {
+test("Common App lists its 20 official subjects, STARS its 10, UIUC its 7", () => {
   assert.equal(SYSTEMS.common_app.subjectList.options.length, 20);
   assert.equal(SYSTEMS.common_app.subjectList.verified, true);
   assert.ok(SYSTEMS.common_app.subjectList.options.includes("Religion"));
   assert.equal(SYSTEMS.stars.subjectList.options.length, 10);
   assert.ok(SYSTEMS.stars.subjectList.options.includes("Fine Arts / Music"));
-  assert.deepEqual([...SYSTEMS.uiuc.subjectList.options], ["English", "Mathematics", "Science", "Social Science", "Language Other Than English", "Other"]);
+  assert.deepEqual([...SYSTEMS.uiuc.subjectList.options], ["English", "Mathematics", "Science", "Social Science", "Language Other Than English", "Other", "Technical"]);
   assert.ok(SYSTEMS.csu.subjectList.options.includes("D1 – Biological Science"));
   assert.equal(SYSTEMS.uc.subjectList.verified, true);
   assert.ok(SYSTEMS.uc.subjectList.options.includes("Computer Science (Science)"));

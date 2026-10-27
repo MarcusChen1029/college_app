@@ -96,10 +96,11 @@ const RULES: Record<FillSystem, Rules> = {
     extra: (c) => [{ key: "summer", label: "Summer course", value: c.isSummer ? "Yes" : "No", status: "verified" }],
     notes: ["Repeated course: Cal State Apply wants only the highest grade.", "Students who attended only high schools outside the US skip course entry."],
   },
-  // UIUC first-year FAQ: list every term grade, never average; no final grade when terms exist; IP for senior courses in progress.
+  // UIUC first-year FAQ: list every term grade, never average; no final grade when terms exist. Senior courses not finished are
+  // "In Progress" (the Year 12 page's own value, seen live 2026-10-28).
   uiuc: {
     exclude: () => null,
-    grades: (c) => termsThenFinal(c, (t) => (t.status === "in_progress" || t.status === "planned" ? "IP" : t.status === "none" ? null : t.grade.trim()), false),
+    grades: (c) => termsThenFinal(c, (t) => (t.status === "in_progress" || t.status === "planned" ? "In Progress" : t.status === "none" ? null : t.grade.trim()), false),
     extra: (c) => (c.isRepeat ? [{ key: "repeat", label: "Repeated course", value: "Yes", status: "verified" }] : []),
     notes: ["UIUC wants every semester, trimester or quarter grade on its own; do not enter a year average."],
   },
