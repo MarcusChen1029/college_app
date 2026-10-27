@@ -179,9 +179,17 @@ export function MyList({
 
   // "Sent to all": tick scores sent on every listed college that takes them.
   const sentFallback = {
+    transcript: null,
+    recommendations: null,
     test_scores: onlyTestPlan(student.profile.sat, student.profile.act),
     english_test: onlyEnglishPlan(student.profile.tests?.english),
   };
+  const sentConfirm = {
+    transcript: "application.allSent.transcriptConfirm",
+    recommendations: "application.allSent.recsConfirm",
+    test_scores: "application.allSent.testsConfirm",
+    english_test: "application.allSent.englishConfirm",
+  } as const;
   const sentPatches = (kind: SentKind) =>
     entries.flatMap(({ entry }) => {
       const next = markSent(entry.checklist, kind, sentFallback[kind]);
@@ -189,8 +197,7 @@ export function MyList({
     });
   const markAllSent = (kind: SentKind) => {
     const patches = sentPatches(kind);
-    const msg = kind === "test_scores" ? "application.allSent.testsConfirm" : "application.allSent.englishConfirm";
-    if (!window.confirm(t(msg, { n: patches.length }))) return;
+    if (!window.confirm(t(sentConfirm[kind], { n: patches.length }))) return;
     for (const p of patches) student.update(p.slug, { checklist: p.checklist });
   };
   const sentButton = (kind: SentKind, label: string) => {
@@ -268,6 +275,8 @@ export function MyList({
       <div>
       <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
         <span>{t("application.allSent.label")}</span>
+        {sentButton("transcript", t("application.allSent.transcript"))}
+        {sentButton("recommendations", t("application.allSent.recs"))}
         {sentButton("test_scores", t("application.allSent.tests"))}
         {sentButton("english_test", t("application.allSent.english"))}
       </div>

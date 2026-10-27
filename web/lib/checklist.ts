@@ -66,14 +66,15 @@ export function progress(c: Checklist) {
   return { done, total: CHECKLIST.length, missing: CHECKLIST.length - done };
 }
 
-export type SentKind = "test_scores" | "english_test";
+export type SentKind = "transcript" | "recommendations" | "test_scores" | "english_test";
 
 /**
- * "Scores sent" for one college when the student sends them to every college at once.
- * An undecided plan takes `fallbackPlan` (the one test the student has a score for), else stays undecided.
+ * One college's checklist after the student marks an item sent to every college at once.
+ * For scores, an undecided plan takes `fallbackPlan` (the one test the student has a score for), else stays undecided.
  * Null when there is nothing to change: already sent, or the college doesn't get scores (optional / not required).
  */
-export function markSent(c: Checklist, kind: SentKind, fallbackPlan: TestPlan | EnglishPlan | null): Checklist | null {
+export function markSent(c: Checklist, kind: SentKind, fallbackPlan: TestPlan | EnglishPlan | null = null): Checklist | null {
+  if (kind === "transcript" || kind === "recommendations") return c[kind] ? null : { ...c, [kind]: true };
   const planKey = kind === "test_scores" ? "test_plan" : "english_plan";
   const plan = c[planKey];
   if (plan === "optional" || plan === "not_required") return null;
