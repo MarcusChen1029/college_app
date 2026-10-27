@@ -6,6 +6,8 @@ import type { StarsRow } from "../../web/lib/stars-fill.ts";
 import type { CsuSchoolPlan } from "../../web/lib/csu-fill.ts";
 import type { UcGradePlan } from "../../web/lib/uc-fill.ts";
 import type { UcFillResult } from "./uc/fill.ts";
+import type { UiucRow } from "../../web/lib/uiuc-fill.ts";
+import type { UiucFillResult, UiucPageInfo } from "./uiuc/fill.ts";
 import type { CsuRunResult } from "./csu/run.ts";
 import type { FillTarget } from "./commonapp/pages.ts";
 import type { StarsSchool } from "./stars/nav.ts";
@@ -53,7 +55,11 @@ export type AssistMessage =
   | { type: "starsSchools" }
   | { type: "starsYearPath"; ceeb: string; year: number }
   /** UC grade page: click the school's "Enter courses & grades". */
-  | { type: "ucOpenClasses"; grade: number; schoolName: string; schoolCode?: string };
+  | { type: "ucOpenClasses"; grade: number; schoolName: string; schoolCode?: string }
+  /** myIllini SRAR: which page this is, its school blocks and saved rows; add rows to one school block; press Save Progress. */
+  | { type: "uiucPage" }
+  | { type: "uiucFill"; area: number; rows: UiucRow[] }
+  | { type: "uiucSave" };
 export type AssistResponse =
   | { type: "ready"; path: string }
   | { type: "assistTarget"; label: string | null }
@@ -73,6 +79,11 @@ export type AssistResponse =
   /** path: null when STARS offers no such year for the school (years: the ones it does offer). */
   | { type: "starsYearPath"; path: string | null; years: number[] }
   | { type: "ucOpenClasses"; ok: true }
-  | { type: "ucOpenClasses"; ok: false; error: string };
+  | { type: "ucOpenClasses"; ok: false; error: string }
+  | { type: "uiucPage"; page: UiucPageInfo }
+  | { type: "uiucFill"; ok: true; result: UiucFillResult }
+  | { type: "uiucFill"; ok: false; error: string }
+  | { type: "uiucSave"; ok: true }
+  | { type: "uiucSave"; ok: false; error: string };
 
 export type ExtensionMessage = PanelRequest | ContentMessage | AssistMessage;

@@ -107,3 +107,43 @@ The Academic Coursework Entry Form is in MyStatus and appears only after an appl
 ## 5. UIUC
 
 myIllini shows "First-year applicants apply through the Common App"; the SRAR appears only after a Common App submission to UIUC.
+
+Seen live 2026-10-28 on the owner's real account (Common App submitted, SRAR filled by hand-run scripts, NOT final-submitted).
+ASP.NET MVC + jQuery + Bootstrap 4, origin `https://myillini.illinois.edu`. One form `#MainForm` (POST to the page URL) per page.
+
+Pages (left nav, in order; each has `#btn_save` "Save Progress" and `#btn_submit` "Submit Page", both `input[type=button]`):
+- `/Apply/Application/Education`: school details pre-filled from Common App. Grading scale radios `HighSchools[<key>].GradingScaleTypeID`:
+  `2` = "A-F grades Or numerical grades with an A-F conversion listed on the transcript", `3` = "Other" (class `otherGradingType`; for six
+  hard-coded US school codes UIUC alerts "select A-F and enter the conversion"). "New Scale/Conversion" = `a.AddScale` (href
+  `/Apply/Application/AddLegend?HSIndex=...`; jQuery GETs it and appends a `.legendRow` to `.legendRecords`; handler returns false, so
+  `.click()` is safe). Row inputs: `.HSscale` "Numerical Range" (maxlength 10) and `.HSletterEquivalent` "Grade/Notation" (maxlength 30).
+  The first row's inputs get title hints "90-100" / "A" via a `.hint()` plugin that puts the title into `.value` while empty, so an empty
+  first row READS as "90-100" = "A": compare against `title` before trusting a value. The courses pages stay locked ("You must first
+  complete and submit the Education section") until this page is SUBMITTED (Submit Page), not just saved.
+  Grading type 3 (Other) turns the course Grade/Mark box into free text (maxlength 10); type 2 makes it a select of A+..F, P, W, WF, ME,
+  NC, PFP, PFF, S, U. UIUC's China help page: numeric grades without an A-F conversion -> "Other" + enter the conversion rows.
+- `/Apply/Application/FreshmanSRAR` (Courses Years 9-11) and `/Apply/Application/FreshmanSRAR?IsLower=False` (Courses Year 12). One
+  editor `.GradeEditor` per school (`.SchoolArea`), saved rows in `.gradeArea` (one child per row, text like
+  "Drama 88 Year: 9th Year Term: 1st Semester Subject: Other Type: Regular Repeated: No Copy Edit Delete").
+  Editor fields (classes): `.TermYear` (9-11 page: 1=9th, 2=10th, 3=11th, 0=Pre-High School; 12 page: 4=12th, 5=Post-12th),
+  `.Term` (`.2.1` 1st Semester, `.2.2` 2nd Semester, `.3.1-.3.3` trimesters, `.4.1-.4.4` quarters, `.5.1` Summer, `.1.1` All Year),
+  `.CourseTypeID` subject (ENG English, M Mathematics, SCI Science, S Social Science, FL Language Other Than English, OTH Other,
+  TECH Technical), `.CourseName` (maxlength 255), `.CourseGrade` (see above; on the Year 12 page it defaults to the value
+  "In Progress", which is what UIUC wants for unfinished 12th-grade courses), `.AdvancedTypeID` type (None Regular, Academic,
+  Accelerated, Advanced, AP "AP Course", AP Prep, A Level, AS Level, IGCSE, College Prep, Enriched, Gifted, High Honors, Honors, IB HL,
+  IB SL, MYP), `.IsRepeat` checkbox, `input.addGrade` "Add Course". Checkbox `HighSchools[i].NoLowerCoursesTaken` /
+  `NoUpperCoursesTaken` = "I did not attend this school during ...".
+  Add Course POSTs the editor to `/Apply/Application/AddGradePost`; on success it appends the row to `.gradeArea`, shows
+  "Your course has been added above." and AutoSave()s; the editor keeps its values. An error reply (text starting "Error") goes to an
+  alert. Picking "All Year" on the 9-11 page opens `#termDialog` (semesters / trimesters / quarters / yearly) unless the school uses block
+  scheduling. A-Level/AS types pop a confirm() for non-international schools. The page sets `window.onbeforeunload` while there are
+  unsaved changes.
+  Subject help (verbatim categories): English includes Drama and Speech; Mathematics includes AP Computer Science A/Principles;
+  Technical = Drafting, Engineering, Information Processing, PLTW, Graphic Design, CAD, Web Design; Other = Religion, Art, Music, Dance,
+  PE, Driver's Ed, Health, Consumer Education.
+- `/Apply/Application/OtherAcademic`: `ForeignLanguageCode` select (e.g. LZH Chinese, LJA Japanese; each listed twice), 
+  `ForeignLanguageLevel` (0.5 ... 4.0, 4.5 = "4+"), checkbox `HasNotTakenForeignLanguage`. One language only: the highest level.
+- `/Apply/Application/Preview` (Review and Submit): "Review" opens `/Apply/Application/ViewApplication` (read-only, full record) and
+  **`#btn_submit` here is "I'm done! Submit my record." - the FINAL submission. It has the same id as every page's Submit Page button:
+  never click `#btn_submit` on /Preview.**
+- Status page `/Apply/Application/Status` lists "Self-Reported Academic Record" under Missing Items until the final submission.

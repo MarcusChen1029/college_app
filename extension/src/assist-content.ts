@@ -1,6 +1,7 @@
 // Content script on the UC, STARS, Cal State Apply, UIUC and UT portals: the fill assistant's page side. It remembers the box the student
 // last clicked and, when the side panel sends a value, puts it there and moves focus to the next box. On STARS's coursework page it also
-// fills one course and presses Save Course when the panel asks (stars/fill.ts). It never submits an application or record.
+// fills one course and presses Save Course when the panel asks (stars/fill.ts). On myIllini's SRAR courses pages it adds course rows and
+// presses Save Progress (uiuc/fill.ts). It never submits an application or record.
 
 import { insertValue, labelOf } from "./assist/insert.ts";
 import { nextBox } from "./assist/next.ts";
@@ -12,6 +13,11 @@ import { onCourseworkPage } from "./csu/fill.ts";
 import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
 import { starsSchools, starsSummaryPath, starsYearPath, starsYears } from "./stars/nav.ts";
 import { ucClassesLink, ucCoursesButtons } from "./uc/nav.ts";
+import { fillUiucArea, uiucPageInfo, uiucSave } from "./uiuc/fill.ts";
+import { pageDialogs } from "./uiuc/dialogs.ts";
+
+const onMyIllini = () => SITE_ORIGINS.uiuc.includes(location.origin);
+let uiucBusy = false;
 
 /** A STARS page's HTML, read like opening it (same site, the student's own session). null when STARS sent the sign-in page instead. */
 async function starsHtml(path: string): Promise<string | null> {
@@ -120,6 +126,33 @@ ${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
       })();
       return true; // async response
     }
+    case "uiucPage":
+      if (!onMyIllini()) return false;
+      sendResponse({ type: "uiucPage", page: uiucPageInfo(document, location) });
+      return false;
+    case "uiucFill":
+      if (!onMyIllini()) return false;
+      if (uiucBusy) {
+        sendResponse({ type: "uiucFill", ok: false, error: "Already adding courses on this page" });
+        return false;
+      }
+      uiucBusy = true;
+      fillUiucArea(document, location, msg.area, msg.rows, pageDialogs(window))
+        .then(
+          (result) => sendResponse({ type: "uiucFill", ok: true, result }),
+          (e: unknown) => sendResponse({ type: "uiucFill", ok: false, error: e instanceof Error ? e.message : String(e) }),
+        )
+        .finally(() => (uiucBusy = false));
+      return true; // async response
+    case "uiucSave":
+      if (!onMyIllini()) return false;
+      try {
+        uiucSave(document, location); // presses Save Progress just after this answer (the page reloads)
+        sendResponse({ type: "uiucSave", ok: true });
+      } catch (e) {
+        sendResponse({ type: "uiucSave", ok: false, error: e instanceof Error ? e.message : String(e) });
+      }
+      return false;
     case "csuStop":
       csuStop = true;
       sendResponse({ type: "csuStop" });

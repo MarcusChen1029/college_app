@@ -119,5 +119,19 @@ Navigation verified live 2026-10-27 on both throwaway accounts: STARS's school/y
 can't be told from the tracker (e.g. history without "U.S."/"World" in the name, computer science, languages without a year number) are left
 for you and listed; tag them for UC in the tracker or with the AI import. Verified end to end on 2026-10-27 (3 added, 1 existing skipped).
 
-Fill assistant (UIUC, UT, and any page the automatic fillers don't cover): click a box on the portal, press a value in the panel.
+Fill assistant (UT, and any page the automatic fillers don't cover): click a box on the portal, press a value in the panel.
 Verified on real STARS controls: radio by label, Telerik dropdown, Telerik date box, Telerik dropdown tree.
+
+## H. UIUC SRAR on myIllini (not yet run end to end)
+
+Built 2026-10-28 from the live DOM facts in `docs/superpowers/research/2026-10-27-portal-dom.md` §5. The owner's myIllini account is a REAL
+application (SRAR not final-submitted): run it only when the owner is watching, and never press "I'm done! Submit my record." for them.
+1. On myIllini, fill and Submit the Education page yourself (grading scale: "Other" plus the conversion rows when the transcript prints numbers
+   without an A-F conversion). Until then the courses pages are locked and the panel says so.
+2. Open any myIllini page in the active tab. "Fill for" switches to UIUC; under "Add your courses to UIUC" tick the grades and press Fill selected.
+   Expected: the tab opens Courses Years 9-11, adds one row per term grade for the ticked 9th-11th grades (rows already listed are counted, not
+   re-added), presses Save Progress, then does the same on Courses Year 12 with In Progress for unfinished terms. The report lists per grade:
+   added, already there, not added (with why: no UIUC subject chosen, an A-F school with numeric grades, a missing grade) and any message the
+   page showed.
+3. Check the rows on myIllini, then press Submit Page on each courses page and Other Academic Information yourself.
+
