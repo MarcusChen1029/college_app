@@ -10,7 +10,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants",
+      "applies_to": null,
       "choose": null,
       "category": "why_us",
       "source": 1
@@ -21,7 +21,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants",
+      "applies_to": null,
       "choose": null,
       "category": "community",
       "source": 1
@@ -32,7 +32,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": false,
-      "applies_to": "Optional; applicants may answer one of the three optional prompts",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -46,7 +46,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": false,
-      "applies_to": "Optional; applicants may answer one of the three optional prompts",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -60,7 +60,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": false,
-      "applies_to": "Optional; applicants may answer one of the three optional prompts",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1

@@ -10,7 +10,7 @@
       "word_limit": 100,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants",
+      "applies_to": null,
       "choose": null,
       "category": "why_us",
       "source": 1
@@ -21,7 +21,7 @@
       "word_limit": null,
       "char_limit": 150,
       "required": false,
-      "applies_to": "All first-year applicants (optional; an applicant who chooses the written supplement answers one of the four)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -35,7 +35,7 @@
       "word_limit": 150,
       "char_limit": null,
       "required": false,
-      "applies_to": "All first-year applicants (optional; an applicant who chooses the written supplement answers one of the four)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -49,7 +49,7 @@
       "word_limit": 300,
       "char_limit": null,
       "required": false,
-      "applies_to": "All first-year applicants (optional; an applicant who chooses the written supplement answers one of the four)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -63,7 +63,7 @@
       "word_limit": null,
       "char_limit": 100,
       "required": false,
-      "applies_to": "All first-year applicants (optional; an applicant who chooses the written supplement answers one of the four)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1

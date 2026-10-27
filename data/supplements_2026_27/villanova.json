@@ -10,7 +10,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants (answer one of the five prompts)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -24,7 +24,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants (answer one of the five prompts)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -38,7 +38,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants (answer one of the five prompts)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -52,7 +52,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants (answer one of the five prompts)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
@@ -66,7 +66,7 @@
       "word_limit": 250,
       "char_limit": null,
       "required": true,
-      "applies_to": "All first-year applicants (answer one of the five prompts)",
+      "applies_to": null,
       "choose": {
         "group": "A",
         "pick": 1
