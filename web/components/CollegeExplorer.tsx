@@ -1,7 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { englishFit, hasEnglishScore } from "@/lib/english-fit";
+import {
+  admitRateFor,
+  effectiveFilters,
+  filtersToQuery,
+  medianFor,
+  nextSort,
+  parseFilters,
+  rowMatches,
+  sortRows,
+  tierFor,
+  type ExploreFilters,
+  type ExploreRow,
+  type FilterContext,
+  type SortKey,
+} from "@/lib/explore-filters";
+import { scoreField, type FieldEvidence } from "@/lib/field-match";
 import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
@@ -10,16 +28,18 @@ import { fitReasonText } from "@/lib/i18n/fit-text";
 import { activeRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
-import { BASE_TIERS, tierRank } from "@/lib/tiers";
+import { scoredTests, testsToCompare } from "@/lib/test-plan";
+import { BASE_TIERS } from "@/lib/tiers";
+import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { buttonClass } from "@/lib/ui";
 import { CollegeBrowser } from "./CollegeBrowser";
+import { EnglishFitLine } from "./EnglishFit";
+import { ExploreFilterBar } from "./ExploreFilterBar";
 import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 import { TIER_FILL } from "./USMap";
 import { USMap3D } from "./USMap3D";
-
-type Sort = "tier" | "admit" | "name";
 
 // Lookup labels live in lib/format.ts (English, shared with tests); translate them here by stored value.
 const policyLabel = (t: TFunction, group: "testPolicy" | "englishPolicy", map: Record<string, string>, k: string) =>
@@ -165,7 +185,7 @@ function DetailCard({
   const t = useT();
   const student = useStudent();
   const inList = student.has(college.slug);
-  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const hasScores = scoredTests(student.profile).length > 0;
   const isUS = (college.country_code ?? "US") === "US";
   // Fit labels are built on SAT/ACT and US admit rates, so they only apply to US colleges for now.
   const fit = hasScores && isUS ? computeFit(student.profile, college) : null;
@@ -217,6 +237,7 @@ function DetailCard({
         <Row label={t("colleges.englishTest")}>
           {eng.mins}
           {eng.note && <span className="block text-xs font-normal text-zinc-500">{eng.note}</span>}
+          <EnglishFitLine english={english} className="mt-1 justify-end text-right" />
         </Row>
         <Row label={t("colleges.nextDeadline")}>{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</Row>
         {isUS && <Row label={t("colleges.yourFit")}>
@@ -272,24 +293,40 @@ export function CollegeExplorer({
   lookups,
   english,
   satEstimates,
+  programFees,
+  evidence,
 }: {
   colleges: CollegeSummary[];
   lookups: Lookups;
   english: Record<string, EnglishSummary>;
   satEstimates: Record<string, SatEstimate>;
+  programFees: Record<string, ProgramFees>;
+  evidence: Record<string, FieldEvidence>;
 }) {
   const t = useT();
   const student = useStudent();
-  const [view, setView] = useState<"map" | "table">("map");
-  const [q, setQ] = useState("");
-  const [sort, setSort] = useState<Sort>("tier");
+  const profile = student.profile;
+  const searchParams = useSearchParams();
+  // The URL is the starting point (a shared or bookmarked view); after that React state leads and is mirrored back into
+  // the URL with replaceState, so typing in the search box never fights the router.
+  const [f, setF] = useState<ExploreFilters>(() => parseFilters(searchParams));
+  useEffect(() => {
+    const q = filtersToQuery(f);
+    const next = `${window.location.pathname}${q ? `?${q}` : ""}`;
+    if (next !== `${window.location.pathname}${window.location.search}`) window.history.replaceState(window.history.state, "", next);
+  }, [f]);
+  const set = (patch: Partial<ExploreFilters>) => setF((cur) => ({ ...cur, ...patch }));
   const [selected, setSelected] = useState<string | null>(null);
-  // Only the regions the student is applying to are offered (all of them while none is chosen). Until the reader
-  // picks one, follow their first target region (it can arrive after sign-in loads).
-  const [picked, setPicked] = useState<RegionCode | null>(null);
-  const targets = student.profile.targetRegions;
-  const offered = useMemo(() => activeRegions(targets), [targets]);
-  const region = picked && offered.includes(picked) ? picked : offered[0];
+
+  // Only the regions the student is applying to are offered (all of them while none is chosen), plus one a shared link names.
+  // Until the reader picks one, follow their first target region (it can arrive after sign-in loads).
+  const targets = profile.targetRegions;
+  const offered = useMemo(() => {
+    const base = activeRegions(targets);
+    return f.region && !base.includes(f.region) ? [...base, f.region] : base;
+  }, [targets, f.region]);
+  const region: RegionCode = f.region && offered.includes(f.region) ? f.region : offered[0];
+  const isUS = region === "US";
   const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
   const regionCounts = useMemo(() => {
     const n: Record<string, number> = {};
@@ -297,29 +334,76 @@ export function CollegeExplorer({
     return n;
   }, [colleges]);
 
-  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const hasScores = scoredTests(profile).length > 0;
+  const international = !!profile.international;
+  const myEnglish = profile.tests?.english;
+  const hasEnglish = hasEnglishScore(myEnglish);
+  const tests = testsToCompare(profile);
+  const myScores = { sat: scoredTests(profile).includes("sat") ? (profile.sat ?? undefined) : undefined, act: scoredTests(profile).includes("act") ? (profile.act ?? undefined) : undefined };
+  const currency = currencyFor(region);
 
-  const rows = useMemo(() => {
-    const term = q.trim().toLowerCase();
-    return inRegion
-      .filter((c) => !term || `${c.name} ${c.short_name ?? ""} ${c.city ?? ""} ${c.state_region ?? ""}`.toLowerCase().includes(term))
-      .sort((a, b) => {
-        if (sort === "name") return a.name.localeCompare(b.name);
-        if (sort === "admit") return (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
-        return tierRank(a.general_tier) - tierRank(b.general_tier) || (a.admit_rate ?? 999) - (b.admit_rate ?? 999);
-      });
-  }, [inRegion, q, sort]);
+  // Everything a row shows or is filtered on, computed once per college.
+  const enriched = useMemo<ExploreRow[]>(
+    () =>
+      inRegion.map((c) => ({
+        c,
+        fit: hasScores && isUS ? computeFit(profile, c) : null,
+        english: englishFit(myEnglish, english[c.id]),
+        tuition: estimatedTuition(c, international, programFees[c.id]),
+        sat: medianFor(c, "sat", satEstimates[c.id]),
+        act: medianFor(c, "act"),
+        admit: admitRateFor(c, international),
+      })),
+    [inRegion, hasScores, isUS, profile, myEnglish, english, international, programFees, satEstimates],
+  );
 
-  const shown = useVisibleCount(`${q}|${sort}`, rows.length);
+  const ctx: FilterContext = { evidence, currency, isUS, hasScores, hasEnglish };
+  const eff = effectiveFilters(f, ctx);
+  const effKey = filtersToQuery({ ...eff, view: "map", region: null });
+  const rows = useMemo(
+    () => sortRows(enriched.filter((r) => rowMatches(r, eff, ctx)), eff.sort, eff.category),
+    // eff/ctx are rebuilt each render; effKey (their query string) captures every value that matters.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [enriched, effKey, evidence],
+  );
+  const fieldHidden = useMemo(
+    () => (eff.field ? inRegion.filter((c) => scoreField(c, evidence[c.slug], eff.field!).status === "no_data").length : 0),
+    [inRegion, evidence, eff.field],
+  );
 
+  const states = useMemo(() => [...new Set(inRegion.map((c) => c.state_region).filter(Boolean))].sort() as string[], [inRegion]);
+  const planKeys = useMemo(() => [...new Set(inRegion.flatMap((c) => c.plans ?? []))].sort(), [inRegion]);
+
+  const shown = useVisibleCount(`${region}|${effKey}`, rows.length);
   const pins = useMemo(
-    () => rows.map((c) => ({ slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier: c.general_tier })),
+    () => rows.map(({ c }) => ({ slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier: c.general_tier })),
     [rows],
   );
   const current = inRegion.find((c) => c.slug === selected) ?? null;
   // Put the card on the side away from the pin so it never covers the college it describes.
   const side: "left" | "right" = current?.longitude != null ? cardSideFor(region, current.longitude) : "right";
   const other = side === "right" ? "left" : "right";
+
+  const filterBar = (compact: boolean) => (
+    <ExploreFilterBar
+      f={eff}
+      set={set}
+      count={rows.length}
+      total={inRegion.length}
+      fieldHidden={fieldHidden}
+      isUS={isUS}
+      hasScores={hasScores}
+      hasEnglish={hasEnglish}
+      international={international}
+      currency={currency}
+      studyFields={profile.studyFields}
+      states={states}
+      planKeys={planKeys}
+      lookups={lookups}
+      sortTests={tests}
+      compact={compact}
+    />
+  );
 
   const regionSwitch = (
     <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label={t("colleges.country")}>
@@ -329,7 +413,8 @@ export function CollegeExplorer({
           type="button"
           aria-pressed={region === r.code}
           onClick={() => {
-            setPicked(r.code);
+            // Budgets are in each country's own currency and states differ, so those two filters reset.
+            if (r.code !== region) set({ region: r.code, maxTuition: null, state: "" });
             setSelected(null);
           }}
           className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${region === r.code ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
@@ -344,9 +429,9 @@ export function CollegeExplorer({
   const tab = (v: "map" | "table", label: string) => (
     <button
       type="button"
-      aria-pressed={view === v}
-      onClick={() => setView(v)}
-      className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${view === v ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
+      aria-pressed={f.view === v}
+      onClick={() => set({ view: v })}
+      className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${f.view === v ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
     >
       {label}
     </button>
@@ -365,25 +450,51 @@ export function CollegeExplorer({
     </Link>
   );
 
-  if (view === "table") {
+  const stats = [
+    myScores.sat != null && `SAT ${myScores.sat}`,
+    myScores.act != null && `ACT ${myScores.act}`,
+    profile.gpa != null && `GPA ${profile.gpa}`,
+    international && t("colleges.statsIntl"),
+  ].filter(Boolean);
+
+  const statsLink = (
+    <Link href={stats.length ? "/profile" : "/start"} className="rounded-2xl bg-blue-50 px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-blue-100">
+      {stats.length ? (
+        <>
+          {t("colleges.statsPrefix", { stats: stats.join(" · ") })}
+          <span className="text-blue-700 underline">{t("colleges.statsEdit")}</span>
+        </>
+      ) : (
+        t("colleges.addScoresCta")
+      )}
+    </Link>
+  );
+
+  if (f.view === "table") {
     return (
       <div className="space-y-4">
-        <div className="flex flex-wrap gap-2">
-          <div className="w-full max-w-xs">{toggle}</div>
-          <div className="w-full max-w-xs">{regionSwitch}</div>
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="w-full sm:w-auto sm:min-w-56">{toggle}</div>
+          <div className="w-full sm:w-auto sm:min-w-56">{regionSwitch}</div>
           {matchLink}
+          <div className="w-full sm:ml-auto sm:w-auto">{statsLink}</div>
         </div>
-        <CollegeBrowser key={region} colleges={inRegion} lookups={lookups} />
+        {filterBar(false)}
+        <CollegeBrowser
+          rows={rows}
+          resetKey={`${region}|${effKey}`}
+          isUS={isUS}
+          tests={tests}
+          myScores={myScores}
+          showEnglish={hasEnglish || international}
+          hasScores={hasScores}
+          sort={eff.sort}
+          onSort={(key: SortKey) => set({ sort: nextSort(eff.sort, key) })}
+          tierFor={(r) => tierFor(r.c, eff.category)}
+        />
       </div>
     );
   }
-
-  const stats = [
-    student.profile.sat != null && `SAT ${student.profile.sat}`,
-    student.profile.act != null && `ACT ${student.profile.act}`,
-    student.profile.gpa != null && `GPA ${student.profile.gpa}`,
-    student.profile.international && t("colleges.statsIntl"),
-  ].filter(Boolean);
 
   return (
     <div className="grid gap-4 lg:h-[calc(100dvh-5.25rem)] lg:grid-cols-[330px_1fr]">
@@ -391,41 +502,14 @@ export function CollegeExplorer({
         {toggle}
         {regionSwitch}
         {matchLink}
-        <Link href={stats.length ? "/profile" : "/start"} className="rounded-2xl bg-blue-50 px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-blue-100">
-          {stats.length ? (
-            <>
-              {t("colleges.statsPrefix", { stats: stats.join(" · ") })}<span className="text-blue-700 underline">{t("colleges.statsEdit")}</span>
-            </>
-          ) : (
-            t("colleges.addScoresCta")
-          )}
-        </Link>
-        <input
-          type="search"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder={t("colleges.searchPlaceholder")}
-          aria-label={t("colleges.searchAria")}
-          className="w-full rounded-full border-2 border-zinc-200 bg-white px-4 py-2 text-sm focus:border-blue-400 focus:outline-none"
-        />
-        <div className="flex gap-1.5 text-xs font-semibold" role="group" aria-label={t("colleges.sort")}>
-          {([["tier", t("colleges.sortTier")], ["admit", t("colleges.sortAdmit")], ["name", t("colleges.sortName")]] as const).map(([k, label]) => (
-            <button
-              key={k}
-              type="button"
-              aria-pressed={sort === k}
-              onClick={() => setSort(k)}
-              className={`rounded-full px-3 py-1 ${sort === k ? "bg-blue-500 text-white" : "bg-zinc-100 text-zinc-600 hover:bg-blue-100"}`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        {statsLink}
+        {filterBar(true)}
         <ul className="min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
           {inRegion.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{t("colleges.noneInRegion", { region: t(`colleges.region.${region}` as MessageKey) })}</li>}
-          {inRegion.length > 0 && rows.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{t("colleges.noMatch", { q })}</li>}
-          {rows.slice(0, shown.count).map((c) => {
-            const fit = hasScores && region === "US" ? computeFit(student.profile, c) : null;
+          {inRegion.length > 0 && rows.length === 0 && (
+            <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{eff.q.trim() ? t("colleges.noMatch", { q: eff.q }) : t("colleges.noFilterMatch")}</li>
+          )}
+          {rows.slice(0, shown.count).map(({ c, fit }) => {
             const on = c.slug === selected;
             return (
               <li key={c.slug}>
@@ -437,14 +521,19 @@ export function CollegeExplorer({
                 >
                   <SchoolLogo slug={c.slug} />
                   <TierBadge tier={c.general_tier} />
+                  {/* The fit badge sits under the name: beside it, the narrow sidebar cut names to a few letters. */}
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold">{c.short_name ?? c.name}</span>
                     <span className="block truncate text-xs text-zinc-500">
                       {[c.city, c.state_region].filter(Boolean).join(", ")}
                       {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
                     </span>
+                    {(fit || student.has(c.slug)) && (
+                      <span className="mt-1 flex">
+                        {fit ? <FitBadge fit={fit.fit} /> : <Pill tone="blue">{t("colleges.onList")}</Pill>}
+                      </span>
+                    )}
                   </span>
-                  {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) ? <Pill tone="blue">{t("colleges.onList")}</Pill> : null}
                 </button>
               </li>
             );

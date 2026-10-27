@@ -1,0 +1,41 @@
+{
+  "slug": "northeastern",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Declaration and Certification of Finances (DCF) form, completed in the Application Status Check; later, financial documentation with the I-20 request in myOGS",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "DCF is required for the application to be considered complete",
+        "date": null,
+        "note": "The DCF is available in the Application Status Check after the application is submitted and processed; no separate DCF date is published on the pages read"
+      }
+    ],
+    "notes": "Source 1 says non-U.S. citizen applicants must submit the DCF for the application to be complete; source 2 says it is completed through the Application Status Check. For the I-20 (requested in myOGS in the spring) source 2 says applicants must provide a copy of the passport identity page and financial documentation showing available funds equal to or exceeding the amount needed for at least a full academic year. The Office of Global Services financial requirements page (accepted document types, issue-date window) could not be read because the site blocked automated fetches, so those details are not included. International students are not eligible for need-based aid at Northeastern, only merit scholarships.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.northeastern.edu/apply/first-year/",
+      "title": "Northeastern Undergraduate Admissions: First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.northeastern.edu/international/",
+      "title": "Northeastern Undergraduate Admissions: International Affairs",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.northeastern.edu/application-information/required-materials/",
+      "title": "Northeastern Undergraduate Admissions: Required Materials",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: downgraded from 'none' to 'unknown'. No Northeastern page says there is no supplement, and the Required Materials page (source 3) describes the application as 'the application with Northeastern-specific questions' without saying whether any are written questions. Official pages list no essay; third-party guides say Northeastern has no supplemental essay, but that is not an official source. Check the Northeastern section of the Common App. Source 1 lists the first-year requirements (Common App or Coalition application, $75 fee, recommendations, transcripts, optional testing, English proficiency, DCF for non-U.S. citizens) and no college-specific essay or supplement, so supplements is recorded as 'none'; the page does not say in words that there is no supplement. The only writing item is a Personal Statement (500-word limit) inside the optional portfolio for College of Arts, Media and Design applicants. The pages do not name a cycle year; they are the live pages read on 2026-10-27. Source 2 lists ED II January 15 and Regular Decision February 1 without a year."
+}

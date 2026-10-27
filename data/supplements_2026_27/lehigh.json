@@ -1,0 +1,19 @@
+{
+  "slug": "lehigh",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Bank statement or certificate (finances), requested only if admitted and enrolling; no bank statement is needed at the time of application",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Separate from proof of funds: non-U.S. citizens who cannot pay the full cost of attendance must submit the CSS Profile (or the ISAFA if the $25 fee is a hardship) by the application deadline (Early Decision I Nov 1; Early Decision II or Regular Decision Jan 15). The admissions requirements page also names a Lehigh Certificate of Finances form for those who will need aid. Lehigh is need-aware for non-U.S. citizens. No date or form details for the post-admission bank statement are published.",
+    "source": 2
+  },
+  "sources": [
+    { "n": 1, "url": "https://www2.lehigh.edu/admissions/admissions-requirements", "title": "Lehigh Admissions: Admissions Requirements", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://www2.lehigh.edu/admissions/international-students", "title": "Lehigh Admissions: International Students", "accessed": "2026-10-27" }
+  ],
+  "notes": "Lehigh's official requirements page lists 'Common Application or Coalition Application with Scoir with Lehigh Questions and Writing Supplement' as a first-year requirement, so a writing supplement exists, but no official Lehigh page or public Common App page read here gives the 2026-27 prompt text, word limits or required/optional status (the prompts appear only inside the application). Third-party guides were not used. Check the Common App or Coalition application for the exact questions."
+}

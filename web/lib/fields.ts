@@ -175,13 +175,16 @@ export function fieldByKey(key: string): FieldDef | undefined {
 export const cipContains = (outer: string, inner: string) =>
   inner === outer || inner.startsWith(outer.includes(".") ? outer : `${outer}.`);
 
+/** The field's prefixes that count on their own: one inside another listed prefix is skipped ("52.08" next to "52"). */
+export const countedCips = (field: FieldDef): string[] => field.cips.filter((p) => !field.cips.some((q) => q !== p && cipContains(q, p)));
+
 /**
  * Graduates in a field from per-prefix counts (each prefix in `cip` is the sum of its own 6-digit codes, as the build
  * script writes them). A prefix inside another listed prefix is skipped so it is not counted twice ("52" + "52.08" =
  * the "52" count). Each exclude is subtracted once if it lies inside a counted prefix. Never below 0.
  */
 export function fieldGrads(cip: Record<string, number>, field: FieldDef): number {
-  const counted = field.cips.filter((p) => !field.cips.some((q) => q !== p && cipContains(q, p)));
+  const counted = countedCips(field);
   let sum = 0;
   for (const p of new Set(counted)) sum += cip[p] ?? 0;
   for (const ex of new Set(field.exclude ?? [])) {

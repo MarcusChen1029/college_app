@@ -53,6 +53,7 @@ export type ProfileRow = {
   sat_total: number | null;
   act_composite: number | null;
   gpa_unweighted: number | null;
+  gpa_weighted?: number | null; // migration 0037; numeric comes back as a string from some clients
   is_international: boolean;
   target_regions: string[] | null;
   study_fields?: string[] | null;
@@ -84,7 +85,7 @@ export type CollegeRow = {
   institutions: { slug: string } | null;
 };
 
-const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, study_fields, reminder_emails, plan, test_details, interested, activities, resume, essays";
+const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, test_details, interested, activities, resume, essays";
 const COLLEGE_BASE = "id, custom, institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
 
 /** What the website reads (includes the saved logins). */
@@ -104,6 +105,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   sat: r.sat_total,
   act: r.act_composite,
   gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
+  gpaWeighted: r.gpa_weighted != null ? Number(r.gpa_weighted) : null,
   international: r.is_international,
   targetRegions: r.target_regions ?? [],
   studyFields: cleanStudyFields(r.study_fields),
@@ -121,6 +123,7 @@ export const fromProfile = (userId: string, p: StudentProfile) => ({
   sat_total: p.sat ?? null,
   act_composite: p.act ?? null,
   gpa_unweighted: p.gpa ?? null,
+  gpa_weighted: p.gpaWeighted ?? null,
   is_international: !!p.international,
   target_regions: p.targetRegions ?? [],
   study_fields: cleanStudyFields(p.studyFields),

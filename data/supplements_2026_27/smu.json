@@ -1,0 +1,41 @@
+{
+  "slug": "smu",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Proof of funds covering one year of estimated expenses (tuition and fees, living expenses, other required expenses such as health insurance), submitted with the I-20 request after admission",
+    "when": "before_i20",
+    "deadlines": [],
+    "notes": "SMU points to its 'Request your I-20' presentation for the list of acceptable documents; that file was not readable as text, so the document types are not listed here. Estimated expenses are on the Estimated Expenses for I-20 page (2026-2027 cost of attendance).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.smu.edu/admission/apply/international/application-checklist",
+      "title": "SMU Undergraduate Admission: International application checklist",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.smu.edu/enrollment-services/international/new-student-information/estimated-expenses-i20",
+      "title": "SMU International Office: Estimated Expenses for I-20",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.smu.edu/admission/apply/undergraduate-admission/requirements-guidelines",
+      "title": "SMU Undergraduate Admission: Admission Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.smu.edu/enrollment-services/international/new-student-information",
+      "title": "SMU International Office: New SMU International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: downgraded from 'none' to 'unknown'. The checklist (source 1) lists only a 'Personal essay' and the requirements page (source 3) says each application platform has its own essay prompts, but no SMU page says there are no SMU-specific questions, and third-party guides dated for 2026-27 report two required 250-word SMU prompts in the Common App (not used as a source; no official SMU page publishing them was found). Check the SMU section of the Common App. 'none' rests on SMU's international application checklist (source 1), which lists only application, personal essay, transcript, test scores (optional), English proficiency, recommendations and a resume (optional) and no school-specific writing; the general requirements page (source 3) likewise only says each application platform has its own essay prompts (250-650 words). The pages do not name the cycle; the checklist deadlines (Nov 1 and Jan 15) match the Common App 2026-27 grid. SMU's separate scholarship essays (for example President's Scholars, Hunt Leadership Scholars) were not checked on SMU's own scholarship pages and are not included. No published date for the proof of funds was found."
+}

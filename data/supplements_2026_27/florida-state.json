@@ -1,0 +1,47 @@
+{
+  "slug": "florida-state",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Certification of Financial Responsibility (CFR), an online form with instructions sent after admission; the FSU Center for Global Engagement separately asks for funding documents (bank statement, letter or scholarship letter) and a signed International Funding Document (IFD) with the I-20 application",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "I-20 application opens about 2 business days after formal admission",
+        "date": null,
+        "note": "No fixed calendar date published. The CFR instructions arrive “Shortly after admission.”"
+      }
+    ],
+    "notes": "Two FSU offices describe the step differently: Admissions says CFR instructions arrive after admission and applicants must show proof of financial support for the first year; the Center for Global Engagement says the I-20 application needs the passport page, funding documentation dated within the past six months and in English, and a signed IFD. Bank statements must be on the institution’s letterhead showing account owner and available amount; letters must be signed by a manager. Check both pages after admission.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.fsu.edu/first-year/wwlf",
+      "title": "FSU Admissions: What We’re Looking For (Essay & Resume)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.fsu.edu/first-year/apply",
+      "title": "FSU Admissions: First-Year How to Apply",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.fsu.edu/international/first-year",
+      "title": "FSU Admissions: International First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://cge.fsu.edu/international-students/new-students/step-2-obtain-your-form-i-20",
+      "title": "FSU Center for Global Engagement: Step 2 Obtain your Form I-20",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: 'none' kept; source 1 (re-read) lists the 650-word essay on one of seven Common App-matching topics and a resume as the only writing, which fits the brief's rule for 'none'. FSU requires one essay of at most 650 words (choose from a list of seven topics that match the Common App personal statement prompts) and a resume of up to two pages, both uploaded to the Admissions Portal; FSU pulls them from the Common App for Common App applicants. No separate college-specific supplemental question is listed on sources 1 or 2, so supplements is none and no prompts are entered here. The checklist note on source 2 says additional supplemental applications or materials may be added to a student’s portal checklist (for example for talent-based majors); this file does not cover those. The cycle label comes from the live pages (2026 deadlines, Fall 2026 admit profile); the essay page does not print a cycle year. Source 4 lists cost estimates that change yearly; none are copied here."
+}

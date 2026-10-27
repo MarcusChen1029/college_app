@@ -1,0 +1,47 @@
+{
+  "slug": "uf",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Sponsor Certification Form + proof of funds + copy of passport photo page, submitted in the New International Student Request on the ISSS Portal",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "UF International Center (UFIC) emails undergraduates detailed I-20 instructions after the Office of Admissions sends admission data. Acceptable proof: liquid accounts (checking, savings), education loans, scholarships, assistantships/fellowships. Not acceptable: salary, credit cards, insurance policies, property. UFIC's funding page (written for extensions and dependents, figures for 2025/2026) says bank letters must be on bank letterhead with logo/stamp/seal, show the account holder's name in English and an issue date within the last six months, the available balance, currency and account type, and be in English or have a certified translation. No first-year amount or calendar deadline is published on the I-20 process page.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.ufl.edu/apply/freshman/",
+      "title": "UF Admissions: Freshman - How To Apply",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.ufl.edu/english-common-app-guide",
+      "title": "UF Admissions: 2026-27 Common App Guide",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://internationalcenter.ufl.edu/iss/obtaining-f-1-status/new-f-1-students/i-20-process/",
+      "title": "UF International Center: I-20 Process",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://internationalcenter.ufl.edu/iss/maintaining-f-1-status/funding-requirements/",
+      "title": "UF International Center: Funding Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://www.honors.ufl.edu/admissions/first-year-honors-student-admissions/",
+      "title": "UF Honors Program: First-Year Honors Student Admissions",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "UF's official pages (sources 1, 2, 5) say first-year applicants complete the Common App personal essay and the UF Supplement ('a few additional short-answer questions'), that Honors applicants answer an additional Honors essay, and that Innovation Academy applicants write an additional short essay, all inside the Common App. The exact prompt text, word limits and which questions are required are not published on any UF page that could be read (they only appear inside the Common App once UF is added), so no prompts are recorded; marked unknown rather than inventing text. Third-party sites quote a 250-word 'most meaningful commitment outside the classroom' question and a 400-word Honors essay, but they are not official and were not used. UF does not accept letters of recommendation (source 2) and the Honors essay cannot be added after submitting (source 5)."
+}

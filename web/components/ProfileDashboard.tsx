@@ -6,8 +6,11 @@ import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
+import { customDeadline, customSummary } from "@/lib/custom-college";
 import { isDeadlineDone } from "@/lib/application";
+import { deadlineApplies } from "@/lib/deadline-rules";
 import { useStudent } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
@@ -22,11 +25,16 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
   const { profile } = student;
+  // Custom colleges count too (no fit, but their checklist, submission and deadline do).
   const entries = student.list
-    .map((e) => ({ entry: e, college: colleges.find((c) => c.slug === e.slug) }))
+    .map((e) => ({ entry: e, college: e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug) }))
     .filter((x): x is { entry: typeof x.entry; college: CollegeSummary } => !!x.college);
+  const allDeadlines = [
+    ...deadlines,
+    ...student.list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d),
+  ];
 
-  const hasScores = profile.sat != null || profile.act != null;
+  const hasScores = scoredTests(profile).length > 0;
   const counts = { super_reach: 0, reach: 0, target: 0, safety: 0 };
   if (hasScores)
     entries.forEach(({ college }) => {
@@ -40,9 +48,9 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
   // Every dated deadline for the colleges on the list (only the plan picked for applications), past ones included.
   const events: CalendarEvent[] = entries.flatMap(({ entry, college }) =>
-    deadlines
+    allDeadlines
       .filter((d) => d.institution_id === college.id && d.due_date)
-      .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
+      .filter((d) => deadlineApplies(d, { plan: entry.plan, international: !!profile.international }))
       .map((d) => ({
         id: d.id,
         date: d.due_date!,

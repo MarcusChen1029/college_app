@@ -1,0 +1,154 @@
+{
+  "slug": "uc-irvine",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": "uc-piq",
+  "prompts": [
+    {
+      "key": "piq-1-leadership",
+      "prompt": "Describe an example of your leadership experience in which you have positively influenced others, helped resolve disputes or contributed to group efforts over time.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-2-creativity",
+      "prompt": "Every person has a creative side, and it can be expressed in many ways: problem solving, original and innovative thinking, and artistically, to name a few. Describe how you express your creative side.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-3-talent",
+      "prompt": "What would you say is your greatest talent or skill? How have you developed and demonstrated that talent over time?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-4-education",
+      "prompt": "Describe how you have taken advantage of a significant educational opportunity or worked to overcome an educational barrier you have faced.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-5-challenge",
+      "prompt": "Describe the most significant challenge you have faced and the steps you have taken to overcome this challenge. How has this challenge affected your academic achievement?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "piq-6-academic-subject",
+      "prompt": "Think about an academic subject that inspires you. Describe how you have furthered this interest inside and/or outside of the classroom.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "piq-7-community",
+      "prompt": "What have you done to make your school or your community a better place?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "piq-8-strong-candidate",
+      "prompt": "Beyond what has already been shared in your application, what do you believe makes you a strong candidate for admissions to the University of California?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Confidential Financial Statement (CFS) submitted through the Applicant Portal, with signed financial documents including a current bank letter or proof of funding, plus the passport biographical page; F-1 students must show 9 months of financial support",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Bank statement or letter must be dated within 3 months of submission, show bank name, account holder, balance and currency, and be in English and U.S. dollars (unofficial translations and online currency conversions accepted). Parents or private sponsors also need a bank statement in their name and a letter of financial support. Redact account numbers and send only the page with the total balance. Upload the documents; do not email them. UCI says to complete the CFS as soon as possible; no date is published.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/personal-insight-questions.html",
+      "title": "UC Admissions: Personal insight questions (first-year; 4 of 8, max 350 words each)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf",
+      "title": "UC Admissions: Presenting yourself on the first-year UC application 2026-27 (counselor guide)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://ic.uci.edu/resources-2/financial-documentation/",
+      "title": "UCI International Center: Financial Documentation",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admissions.uci.edu/admitted/first-year.php",
+      "title": "UCI Admissions: First-Year Checklist (admitted students)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The 8 Personal Insight Questions are the same for all UC campuses (answer 4, max 350 words each); text copied from the UC Admissions page (source 1), which does not print a cycle year. Source 2 (UC counselor guide titled 2026-27) confirms the same format for the 2026-27 application: respond to 4 of the 8 questions, 350 words maximum per response. The UC application also has optional Additional comments boxes (source 2); they are not essay prompts and are not listed here. No UCI-specific written questions were found, but UCI's first-year application pages were not read in full (the page fetched did not load content), so UC Irvine program-specific supplements (for example arts auditions or portfolios) are not confirmed either way. The UCI admitted-student checklist (source 4) is still the fall 2026 version; it describes the CFS step under International students: Upload your Confidential Financial Statement (CFS), and the amount and rules come from the International Center (source 3)."
+}

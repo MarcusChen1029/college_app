@@ -1,0 +1,97 @@
+{
+  "slug": "tufts",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "engaged-with-tufts",
+      "prompt": "Please describe how you have learned about and engaged with Tufts during your college search process.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "favorite-assignment",
+      "prompt": "Tell us about one of your favorite school assignments in the past two years. What was the assignment and why did you enjoy it?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "School of Arts and Sciences applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "engineering-project",
+      "prompt": "Tell us about an engineering or science-related project that you have helped build, design, create, or iterate in the past two years. What was the project and what was your role?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "School of Engineering applicants",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "bfa-portfolio-piece",
+      "prompt": "Tell us more about a specific piece in your portfolio. What were the ideas you intended to explore, and how did those ideas inform the process of making the piece?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Bachelor of Fine Arts (BFA) applicants",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "combined-degree-portfolio-piece",
+      "prompt": "Tell us more about a specific piece in your portfolio. How did an academic course, project, or interest inspire the ideas that you explored in this piece? Or, how did making this piece influence your academic interests?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Combined Degree (BFA+BA/BS) applicants",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documents for the I-20 / DS-2019 request: personal or family bank statement, Tufts financial aid award letter, third-party scholarship letter, or approved loan confirmation; plus the Financial Affidavit of Support if a family member, other individual or non-Tufts organization funds you",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Financial documents with the I-20 / DS-2019 request in the International Center Portal (after paying the enrollment deposit)",
+        "date": null,
+        "note": "No date is published for the 2027 entry cycle. The International Center page's I-20 request deadline (June 30) is for Fall 2026 arrival; it says to submit as early as possible."
+      }
+    ],
+    "notes": "Documents must cover at least the first academic year against the International Center's Estimate of Expenses table (the 2026-2027 figures shown there are estimates pending Board approval), be clear PDF or JPEG files, in English or with a translation, and be no more than six months old on the date of submission. Accepted: bank statements, Tufts financial aid awards (Tufts email or official letter), scholarship letters, approved loans (approval, not application). Not accepted: income tax or salary statements, property deeds or rental agreements, investment or stock portfolios, promissory notes, credit card lines of credit, chartered accountant statements, or assets not available as liquid cash. The affidavit is not needed when funds are your own accounts or a Tufts scholarship or aid package. An optional Financial Documentation Cover Sheet is available. The request is opened after the enrollment deposit is paid; processing usually takes 7 to 10 business days.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.tufts.edu/apply/essay-questions/",
+      "title": "Tufts Admissions: Short Answer Questions (Short Answer Prompts for the Class of 2031)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://icenter.tufts.edu/get-started/checklist-for-new-students/financial-requirements/",
+      "title": "Tufts International Center: Financial Requirements for Form I-20 / Form DS-2019",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://icenter.tufts.edu/get-started/checklist-for-new-students/student-visa-certificate/",
+      "title": "Tufts International Center: I-20 / DS-2019 Visa Certificate Request",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Prompt 1 is stated as 75-150 words and prompt 2 as 100-200 words; word_limit holds the maximum (the minimums are not stored). The page labels the prompts for the Class of 2031 (fall 2027 entry) and says all first-year applicants answer prompt 1 plus the prompt for their intended school or program. No optional prompts are listed. Tufts strongly discourages generative AI for the answers. The timing of the I-20 request (after the enrollment deposit) comes from source 3, which describes the Fall 2026 cycle; no fall 2027 dates were published. No finance document requirement was found at the application stage."
+}

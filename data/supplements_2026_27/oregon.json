@@ -1,0 +1,80 @@
+{
+  "slug": "oregon",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "university-essay",
+      "prompt": "Write an essay of 650 words or less in which you share information that we cannot find elsewhere on your application. Any topic you choose is welcome.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "clark-honors",
+      "prompt": "What's something you believed in that you changed your mind about and what made you change it? Be thoughtful and provide concrete examples to support your response.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Clark Honors College applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "additional-social-justice",
+      "prompt": "What have you learned from a social justice issue that inspires you, and how will you apply these lessons to drive change?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "additional-community",
+      "prompt": "The University of Oregon values difference, and we take pride in our diverse community. Please explain how you will share your experiences, values, and interests with our community. In what ways can you imagine offering your support to others?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial Certification and Immigration Information form plus financial documents: a bank statement, certificate of deposit, or scholarship letter equal to the cost of one academic year, prepared within the last six months",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "The international page says to submit financial documents after receiving the admissions decision. The I-20 is emailed after UO reviews the documents. The page gives no dollar amount (it links to a cost of attendance page) and no fixed date for the documents. International applications are accepted on a rolling basis until July 15 for Fall.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.uoregon.edu/admissions/undergraduate/find-your-path/first-year-students/",
+      "title": "University of Oregon: First-Year Admission Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.uoregon.edu/admissions/undergraduate/find-your-path/international-students/",
+      "title": "University of Oregon: International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The first-year page says the application includes the 650-word essay (Common App or Oregon application); it lists ideas (future ambitions and goals; a special talent, extracurricular activity, or unusual interest; a significant experience) but says any topic is welcome. The optional additional essay is introduced on the page with a paragraph about belonging, equity and inclusion, then the two options; maximum 500 words, not required. The Clark Honors prompt appears in the Common App right below the honors question. Pages show Fall 2027 dates (Early Action November 1, 2026), so treated as the 2026-27 cycle."
+}

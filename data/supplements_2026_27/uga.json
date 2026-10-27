@@ -1,0 +1,13 @@
+{
+  "slug": "uga",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": null,
+  "sources": [
+    { "n": 1, "url": "https://admissions.uga.edu/blog/fall-2027-essay-questions/", "title": "UGA Admissions blog: Fall 2027 Essay Question (published May 21, 2026)", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://globalengagement.uga.edu/immigration/international-students/admitted-international-students/", "title": "UGA Office of Global Engagement: Admitted International Students", "accessed": "2026-10-27" }
+  ],
+  "notes": "Source 1 (UGA Admissions): first-year applicants for Fall 2027 write only the Common App personal essay (250-650 words, any Common App prompt) and UGA will not have a second essay, so there is no supplement. The earlier UGA book essay is gone. International financial documents: UGA publishes nothing for first-year applicants. Source 2 only says admitted students get an email from Immigration Services on how to request the I-20, and that consular officers check financial resources; no document list, amount or date was found for undergraduates (the Graduate School certificate of finances is graduate-only)."
+}

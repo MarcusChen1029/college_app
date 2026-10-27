@@ -1,0 +1,210 @@
+{
+  "slug": "cornell",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "cals-major",
+      "prompt": "What interests you about the major you selected? Tell us about experiences (both in and outside of the classroom), questions, and goals that influenced your choice.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Agriculture and Life Sciences (CALS) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "cals-why-cals",
+      "prompt": "What draws you to Cornell’s College of Agriculture and Life Sciences (CALS)? Reflect on the learning, community, or impact opportunities that matter most to you, and share how they align with Cornell CALS (as you understand it currently).",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Agriculture and Life Sciences (CALS) applicants",
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "aap-barch",
+      "prompt": "Describe how your interests connect to architecture. Include an example of a creative project, design experience, or personal passion that sparked your interest in pursuing a 5-year professional degree in architecture. Reflect on how this experience shaped your understanding of the field and your motivation to study architecture.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Architecture, Art, and Planning: B.Arch applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "aap-bfa",
+      "prompt": "Submit an artist statement describing your creative interests and practice. Address how your work reflects your artistic voice, influences, and process, and how studying art at Cornell AAP would support and expand your practice. (You will  also be prompted to upload a copy to your Slideroom portal.)",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Architecture, Art, and Planning: BFA applicants",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "aap-urs",
+      "prompt": "Describe your interest in urban and regional studies. Discuss experiences, ideas, or issues that have shaped your interest in cities, communities, and regional systems, and explain how URS at Cornell aligns with your academic and career goals.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Architecture, Art, and Planning: Urban and Regional Studies (URS) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "arts-sciences-intellectual",
+      "prompt": "At the College of Arts and Sciences, your education is yours to shape. Describe an intellectual passion, question, or idea that has captured your attention—whether it emerges from your studies or extends beyond your coursework. What specific aspects of our liberal arts curriculum would you draw on to explore and connect your varied interests?",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Arts and Sciences applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "brooks-policy",
+      "prompt": "Discuss your interest in pursuing a major in policy at the Cornell Jeb E. Brooks School of Public Policy and what draws you to this field of study. You are encouraged to consider including details related to your personal experiences, values, academic influences, or extracurricular activities that have shaped your perspective and future goals.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell Jeb E. Brooks School of Public Policy applicants (all applicants)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "brooks-dc-start",
+      "prompt": "Please describe why you are interested in being considered for the Brooks School DC Start program.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Brooks School DC Start applicants only",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "business-student",
+      "prompt": "What kind of a business student are you? Using your personal, academic, or volunteer/work experiences, describe the topics or issues that you care about and why they are important to you. Your response should convey how your interests align with the school to which you are applying within the Cornell SC Johnson College of Business (Charles H. Dyson School of Applied Economics and Management or the Cornell Peter and Stephanie Nolan School of Hotel Administration).",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell SC Johnson College of Business applicants (Dyson School or Nolan School of Hotel Administration)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "engineering-why-engineering",
+      "prompt": "Fundamentally, engineering is the application of math, science, and technology to solve complex problems. Why do you want to study engineering?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell David A. Duffield College of Engineering applicants (long essay 1)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "engineering-why-duffield",
+      "prompt": "Why do you think you would love to study at Duffield Engineering?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell David A. Duffield College of Engineering applicants (long essay 2)",
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "engineering-joy",
+      "prompt": "What brings you joy?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell David A. Duffield College of Engineering applicants (short answer 1)",
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "engineering-contribute",
+      "prompt": "What do you believe you will contribute to the Duffield Engineering community beyond what you've already detailed in your application? What unique voice will you bring?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell David A. Duffield College of Engineering applicants (short answer 2)",
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "engineering-activity",
+      "prompt": "What is one activity, club, team, organization, work/volunteer experience or family responsibility that is especially meaningful to you? Please briefly tell us about its significance for you.",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell David A. Duffield College of Engineering applicants (short answer 3)",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "engineering-achievement",
+      "prompt": "What is one award you have received, or achievement you have attained, that has meant the most to you? Please briefly describe its importance to you.",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Cornell David A. Duffield College of Engineering applicants (short answer 4)",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "human-ecology-experience",
+      "prompt": "The College of Human Ecology prepares students to respond to human needs through an education organized around the interconnected issues that profoundly affect individuals, communities, and the institutions that shape our lives. Think about an extracurricular/community engagement/work experience that most closely connects you to the CHE mission and your intended choice of major. Tell us what that experience taught you about your broader community and its needs, and the impact you can make. How will your intended CHE major help you make that impact? (Refer to our essay application tips as you write your essay.)",
+      "word_limit": 550,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Human Ecology (CHE) applicants",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "ilr-topics",
+      "prompt": "Using your personal, academic, or volunteer/work experiences, describe the topics or issues that you care about and why they are important to you. Your response should show us that your interests align with the ILR School.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "School of Industrial and Labor Relations (ILR) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Declaration of Finances form (2027-28, International Undergraduate Students) signed by a parent or sponsor, plus bank proof of one year of support, uploaded in the Applicant Portal to get the I-20",
+    "when": "after_admission",
+    "deadlines": [
+      { "label": "Form submission deadline: first-year Early Decision", "date": null, "note": "March 1 (the form gives no year)" },
+      { "label": "Form submission deadline: first-year Regular Decision", "date": null, "note": "June 1 (the form gives no year)" }
+    ],
+    "notes": "Bank proof means a checking or savings bank statement (not a long statement with transaction history) that belongs to the person signing the form, on official letterhead, showing account type, currency and the USD equivalent, dated within the last 3 months, with an English translation. A separate scholarship letter may be submitted. Not accepted: employment or salary statements, insurance, property or personal assets, lines of credit, investments, stocks, bonds, pension or retirement accounts, and income tax returns. The total must equal at least one year of expenses; the form lists $103,826 as the estimated academic-year total and says support is expected to rise about 3-5 percent a year. Financial aid students add their Cornell award summary to the upload. Cornell says to allow 3-4 weeks to prepare and send the I-20.",
+    "source": 2
+  },
+  "sources": [
+    { "n": 1, "url": "https://faq.enrollment.cornell.edu/kb/article/479-what-are-the-essay-questions-for-the-fall-2027-application/", "title": "Cornell Undergraduate Admissions FAQ: What are the essay questions for the Fall 2027 application?", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://admissions.cornell.edu/sites/default/files/2026-09/2027-28%20Declaration%20of%20Finances%20Form%20FY%20and%20Transfer_Fillable%20Form.pdf", "title": "Cornell Admissions: 2027-28 Declaration of Finances, International Undergraduate Students", "accessed": "2026-10-27" }
+  ],
+  "notes": "Each applicant answers only the prompt(s) for the college or school they apply to, so every prompt is required: true with applies_to. The source page does not label any prompt required or optional. The FAQ page was shown in 'preview mode' with no date, but its text matches the Cornell Arts and Sciences and Human Ecology admissions pages for Fall 2027. Applicants to the Dyson School and the Nolan School of Hotel Administration answer the same SC Johnson prompt. The exact Early Decision and Regular Decision year for the finance deadlines is not printed on the form. The live admissions page that links this form was not located; the PDF itself is on admissions.cornell.edu."
+}

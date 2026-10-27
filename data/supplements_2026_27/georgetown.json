@@ -1,0 +1,146 @@
+{
+  "slug": "georgetown",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "short-activity",
+      "prompt": "Briefly discuss the significance to you of the school or summer activity in which you have been most involved.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "short-viewpoints",
+      "prompt": "In all our lives, we interact with people who hold different viewpoints than our own. Describe such an event you experienced. What did you learn from the experience?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "essay-personal",
+      "prompt": "As Georgetown is a diverse community, the Admissions Committee would like to know more about you in your own words. Please submit a brief personal or creative essay which you feel best describes you and reflects on your personal background and individual experiences, skills, and talents.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "school-arts-sciences",
+      "prompt": "Founded in 1789, the Georgetown College of Arts & Sciences is committed to the Jesuit traditions of an integrated education and of productive research in the natural sciences, humanities, social sciences, and fine arts. Describe your interest in studying in the College of Arts & Sciences. Applicants interested in the sciences, mathematics, or languages are encouraged to make specific reference to their choice of major.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the College of Arts & Sciences",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-mccourt",
+      "prompt": "For nearly 50 years, Georgetown University’s McCourt School of Public Policy has equipped leaders and changemakers with the interdisciplinary skills to address local, national and global policy problems. Undergraduate public policy students at Georgetown will have the unique opportunity to live and study on two campuses, spending their first two years immersed on the Hilltop, before completing the second half of their time at Georgetown on the Capitol Campus, immersed in the policy world. Describe your primary motivations for studying public policy at Georgetown University and dedicating your undergraduate studies toward a future related to public service.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the McCourt School of Public Policy",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-earth-commons",
+      "prompt": "Through this joint program between the College of Arts & Sciences and the Earth Commons Institute, you’ll explore theories and practical skills in the classroom, in the field, and around the world, and put it all together to make a difference. Describe your primary motivations for studying environment and sustainability at Georgetown University to effect positive change in the world.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the Earth Commons Institute",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-nursing",
+      "prompt": "Georgetown University’s Berkley School of Nursing is committed to the formation of ethical, empathetic, and transformational nursing leaders. Describe the factors that have influenced your interest in studying Nursing at Georgetown University.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the Berkley School of Nursing",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-health",
+      "prompt": "Georgetown University’s School of Health was founded to advance the health and well-being of people locally, nationally, and globally through innovative research, the delivery of interdisciplinary education, and transformative engagement of communities. Describe the factors that influenced your interest in studying health care at Georgetown University, specifically addressing your intended related major: Global Health, Health Care Management & Policy, or Human Science.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the School of Health",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-sfs",
+      "prompt": "Georgetown University’s Walsh School of Foreign Service was founded more than a century ago to prepare generations of leaders with the foundational skills to address global issues. Describe your primary motivations for studying international affairs at Georgetown University and dedicating your undergraduate studies toward a future in global service.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the Walsh School of Foreign Service",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-msb",
+      "prompt": "Georgetown University’s McDonough School of Business provides graduates with essential global, ethical, analytical, financial, and diverse perspectives on the economies of our nation and the world. Describe your primary motivations for studying business at Georgetown University.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to the McDonough School of Business",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documents uploaded with the Form I-20 / DS-2019 request in the International Student Portal: a statement of a personal checking, savings or investment account (bank name, account holder and immediately available funds; plus a Family Support Letter if the account is not in the student's name), and/or an approved loan, a Georgetown scholarship letter, or an outside sponsor scholarship letter. Must show funding for the first 9-month academic year, be in English, less than 6 months old, and state the currency.",
+    "when": "before_i20",
+    "deadlines": [],
+    "notes": "Georgetown's Office of Global Services says the F-1/J-1 process begins only after a student is fully admitted and has confirmed enrollment. Not valid: more than four statements, funds from a non-family member, evidence of employment or income, tax returns, property valuations, credit card limits. No date is published on these pages. Georgetown's admissions page for international applicants says non-US citizens who request aid are considered for a very limited number of need-based scholarships and should submit a CSS Profile (that is aid, not the I-20 proof of funds).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://uadmissions.georgetown.edu/apply/first-year-applicants/application-requirements-and-forms/",
+      "title": "Georgetown Undergraduate Admissions: Application Requirements and Forms (Georgetown Writing Supplement)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://internationalservices.georgetown.edu/students/new-students/required-documents/",
+      "title": "Georgetown Office of Global Services: Required Documentation for F-1 or J-1 Eligibility",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://uadmissions.georgetown.edu/applying-georgetown/international",
+      "title": "Georgetown Undergraduate Admissions: International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The requirements page does not print a cycle year; it is the live page on 2026-10-27 (copyright 2026) and the international applicants page refers to students entering in Fall 2027, so it is recorded as 2026-27. The page says students may apply with either the Georgetown Application or the Common Application and the same writing supplement applies (the page says a Common App personal statement may be used for Essay 1 if it fits that prompt). Essay 2 is one school-specific prompt: the applicant answers only the one for the school they apply to. The page lists the alumni interview as required when assigned (not an essay). No published date for the international I-20 financial documents was found."
+}

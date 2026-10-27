@@ -1,0 +1,118 @@
+{
+  "slug": "mit",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "field-of-study",
+      "prompt": "What field of study appeals to you the most right now? (Note: Applicants select from a drop-down list.) Reflect on what has led you to this interest.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "different-path",
+      "prompt": "While some reach their goals following well-trodden paths, others blaze their own trails achieving the unexpected. In what ways have you done something different than what was expected in your educational journey?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "problems-impact",
+      "prompt": "How have your personal and academic experiences influenced the types of problems you would want to tackle with an MIT education and the impact you aim to make on your community?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "unexpected-challenge",
+      "prompt": "How did you manage a situation or challenge that you didn’t expect? What did you learn from it?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "short-fun",
+      "prompt": "What do you do just for fun?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-admire",
+      "prompt": "Who is someone you admire, whether you know them personally or look up to them from afar? Tell us why.",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-topic",
+      "prompt": "What’s a topic, academic or non-academic, that you could talk about for hours?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-generalist",
+      "prompt": "MIT values both “generalists” with varied interests and “specialists” who focus deeply on one or a few passions. Which do you think best describes you, and why?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documentation (bank letter or statement; plus a signed Financial Affidavit of Support Letter if a family member sponsors) uploaded in the iMIT portal when requesting the I-20",
+    "when": "before_i20",
+    "deadlines": [],
+    "notes": "MIT's International Students Office says documents must meet or exceed the total cost of attendance and reflect 12 months of expenses or the whole program length; be on official letterhead, in English (or with a certified translation), signed by an authorized official, state the holder's name, issue date and total available funds; and be issued within the past 1-2 months when the request is submitted (the page also says documents must be issued within six months of the date of entry to the U.S.). Accepted personal accounts: checking, savings or certificate of deposit only. The date by which admitted first-years must request the I-20 is not on the page read.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://mitadmissions.org/apply/firstyear/essays-activities-academics/",
+      "title": "MIT Admissions: First-year applicants - Essays, activities & academics",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://iso.mit.edu/getting-started/requesting-an-i-20-or-ds-2019/financial-documentation-requirements/",
+      "title": "MIT International Students Office: Financial Documentation Requirements",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "MIT uses its own application, not the Common App. Source 1 is written for the 2026-2027 application. It says the main essays are 'approximately 100-200 words each' depending on the question (per-question limits are not given, so word_limit is null) and the four short-response questions have 'only space for 40 to 50 words each' (recorded as 50). The page does not say whether each question is required or optional; all eight are recorded as required, which is an assumption. It also mentions one final open-ended additional-information text box, not recorded as a prompt. The same page asks for four activities and a self-reported coursework form (U.S. school systems only). The ISO page covers all MIT students and does not say when admitted first-years submit; it is not an application-stage requirement. Financial aid (CSS Profile) is separate and was not researched."
+}

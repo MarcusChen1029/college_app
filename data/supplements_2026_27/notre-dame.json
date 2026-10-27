@@ -1,0 +1,103 @@
+{
+  "slug": "notre-dame",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "non-negotiables",
+      "prompt": "Everyone has different priorities when considering their higher education options and building their college or university list. Tell us about your “non-negotiable” factor(s) when searching for your future college home.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "faith",
+      "prompt": "How does faith influence the decisions you make?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "personal-experiences",
+      "prompt": "What is distinctive about your personal experiences and development (eg, family support, culture, disability, personal background, community)? Why are these experiences important to you and how will you enrich the Notre Dame community?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "service",
+      "prompt": "Notre Dame’s undergraduate experience is characterized by a collective sense of care for every person. How do you foster service to others in your community?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "fight-for",
+      "prompt": "What would you fight for?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Evidence of funds for one academic year (full tuition and fees plus living expenses), uploaded with the I-20 request in ISSAlink after confirming admission: student bank statement, family or sponsor bank statement plus sponsorship letter, bank letter on letterhead confirming sufficient funds, government funding letter, bank loan approval letter, non-retirement stocks or bonds, or employment/salary statements; Notre Dame award amounts in the admission letter count",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Request I-20 in ISSAlink once admission is confirmed (confirmation deadline May 1)",
+        "date": null,
+        "note": "ISSA publishes no document due date. Undergraduates wait 72 hours after confirming admission before logging in to ISSAlink; ISSA allows eight business days to process a request."
+      }
+    ],
+    "notes": "Not accepted: non-liquid assets (land, buildings, cars, jewelry), insurance policies, lines of credit, income tax returns, business accounts with multiple owners, and screenshots of bank information. Funding documents must be dated within the past 6 months when a scholarship does not cover the full expenses. The I-20 request also needs the admission letter and passport biographical page. Dollar amounts come from the admission letter and the Financial Aid cost-of-attendance pages, not from ISSA's PDF.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.nd.edu/apply/application-overview/",
+      "title": "Notre Dame Undergraduate Admissions: How to Apply (Notre Dame Writing Supplement)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://issa.nd.edu/students/getting-started/request-an-i-20-or-ds-2019/",
+      "title": "Notre Dame ISSA: Request I-20 or DS-2019",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://issa.nd.edu/assets/568124/f_1_j_1_minimum_financial_requirements_for_initial_documents_05_2024_.pdf",
+      "title": "Notre Dame ISSA: F-1/J-1 Minimum Financial Requirements for Initial Documents",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://financialaid.nd.edu/apply-or-renew/international-students/",
+      "title": "Notre Dame Financial Aid: International Undergraduate Students (CSS Profile, 2027-28)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The How to Apply page does not name the cycle, but it lists test-optional 'through 2026-2027' for current seniors, and the international financial aid page (source 4) shows November 1, 2026 and January 2027 admission dates, so the supplement is treated as 2026-27. The required question is 150 words maximum; for the choose-two group the page says each response 'should be between 50-100 words', stored as word_limit 100. QuestBridge applicants use a separate supplement that was not collected. The ISSA financial requirements PDF is the only published summary; its file name says 05_2024 and its footer says 'Updated 11 2022', so confirm with ISSA before submitting. Source 2 describes the ISSAlink request steps. Need-based aid for international applicants is the CSS Profile, which is not the I-20 proof (source 4)."
+}

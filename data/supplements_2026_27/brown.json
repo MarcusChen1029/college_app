@@ -1,0 +1,130 @@
+{
+  "slug": "brown",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "open-curriculum",
+      "prompt": "\"There is something distinctive about Brown students. It is a blend of intellectual curiosity, creativity, and humility. A commitment to collaboration. An openness to new ideas and perspectives. A desire to make the world better. And it is resilience: the ability to recover and thrive after experiencing difficulties.\" From President Christina Paxson's 2025 Convocation Address. How will you use these characteristics or others to shape your approach to the Open Curriculum?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "growing-up",
+      "prompt": "Students entering Brown often find that making their home on College Hill naturally invites reflection on where they came from. Share how an aspect of your growing up has inspired or challenged you, and what unique contributions this might allow you to make to the Brown community.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "teach-a-class",
+      "prompt": "If you could teach a class on any one thing, whether academic or otherwise, what would it be?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "joy",
+      "prompt": "Brown students care deeply about their work and the world around them. Students find contentment, satisfaction, and meaning in daily interactions and major discoveries. Whether big or small, mundane or spectacular, tell us about something that brings you joy.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "plme-why-medicine",
+      "prompt": "Why medicine?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Program in Liberal Medical Education (PLME) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "plme-why-plme",
+      "prompt": "Why PLME?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Program in Liberal Medical Education (PLME) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "plme-great-doctor",
+      "prompt": "Tell us something about yourself, beyond your interest in medicine, that you think will make you a great doctor.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Program in Liberal Medical Education (PLME) applicants",
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "brdd-dual-degree",
+      "prompt": "The Brown | RISD Dual Degree Program draws on the complementary strengths of Brown University and Rhode Island School of Design (RISD) to provide students with the opportunity to explore and engage with diverse spheres of academic and creative inquiry. Considering your understanding of the academic programs at Brown and RISD, describe how and why the specific blend of RISD's experimental, immersive art and design program and Brown's wide-ranging courses and curricula could constitute an optimal undergraduate education for you. Reflect on how you might integrate or synthesize content, approaches, and methods from these two distinct learning experiences. Additionally, how might you contribute to the Dual Degree community and its commitment to interdisciplinary work?",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Brown | RISD Dual Degree Program applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Bank statement or bank letter (checking or savings) showing the full first-year amount, or a Brown/external scholarship letter; plus a Financial Sponsorship Declaration if the account is not in the student's name",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Financial documents for the I-20 (uploaded in the ISSS Gateway after you accept the offer of admission)",
+        "date": null,
+        "note": "No calendar date is published on the pages read. The Gateway opens after you accept the offer by the admissions deadline, activate your Brown account and receive the Gateway welcome email."
+      }
+    ],
+    "notes": "Accepted: bank statements in checking or savings accounts, or bank letters, showing an exact balance (or a bank officer's confirmation that the balance meets the required amount), with the account holder's name in English and dated within the last 90 days; Brown financial aid or scholarship letters; external scholarship letters naming the student and amount. Not accepted: tax documents, salary statements, property deeds, stock or mutual fund statements, retirement accounts, frozen funds, term accounts, time deposits or CDs with future maturity. Amount to document for the 2026-27 undergraduate College: USD 106,330 (tuition and fees 77,552 + room and board 19,464 + other 9,314); Brown | RISD Dual Degree: USD 107,560. The Gateway shows the exact amount.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.brown.edu/apply/how-apply",
+      "title": "Brown Undergraduate Admission: How to Apply (essay questions, 2026-2027 cycle)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://isss.brown.edu/international-students/new-student-guide",
+      "title": "Brown ISSS: New Student Guide (I-20 steps)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://isss.brown.edu/international-students/new-student-guide/estimate-expenses",
+      "title": "Brown ISSS: Estimate of Expenses for I-20 / DS-2019 Issuance",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Essays copied from Brown's How to Apply page, which labels them the 2026-2027 cycle. The page says four essays are required for all first-year and transfer applicants; PLME applicants add three and Brown | RISD Dual Degree applicants add one. (The page's PLME and Dual Degree sentences say 'three essays required of all first-year applicants', which disagrees with its own list of four; all four listed are included.) The PLME 'beyond your interest in medicine' prompt is tagged identity as the closest category. Brown's admission international page returned 403, so I-20 finance rules come from the ISSS pages (source 2 says the Gateway upload step comes after accepting the offer). Brown's first-year international aid page lists CSS Profile deadlines (Nov. 2, 2026 ED; Feb. 1, 2027 RD); those are aid materials, not the I-20 proof of funds."
+}

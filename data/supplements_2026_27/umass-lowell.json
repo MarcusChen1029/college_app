@@ -1,0 +1,46 @@
+{
+  "slug": "umass-lowell",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Bank statement or bank letter (dated within the last six months) showing the account holder's name, account type, currency and balance; a sponsor also submits a Declaration and Certification of Finances (DCF) form with original hand signatures. Total funds must equal or exceed the Estimate of Expenses for the first year.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "ISSO deadline for I-20 request, fall semester admits",
+        "date": null,
+        "note": "August 1 (year not stated on the page)"
+      },
+      {
+        "label": "ISSO deadline for I-20 request, spring semester admits",
+        "date": null,
+        "note": "December 15 (year not stated on the page)"
+      }
+    ],
+    "notes": "The I-20 page lists confirming admission by paying the enrollment deposit as the step before submitting financial documents, and the Visa Document Request E-Form in the UMass VIP portal. The financial documents page itself states no submission deadline. Not accepted: investment accounts, salary confirmation, pay statements, retirement plans, home equity, tax returns. Educational loans need a sanction letter from the provider.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.uml.edu/admissions/apply/",
+      "title": "UMass Lowell Admissions: Apply to an On-Campus Undergraduate Program (first-year applicants, Spring or Fall 2027)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.uml.edu/isso/new-international-students/required-financial-documents.aspx",
+      "title": "UMass Lowell ISSO: Required Financial Documents",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.uml.edu/isso/new-international-students/applying-for-your-i-20-ds-2019/",
+      "title": "UMass Lowell ISSO: Applying for Your I-20/DS-2019",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Supplements 'none': the first-year checklist (source 1, for Spring or Fall 2027) lists only a personal essay of 250-650 words, with no college-specific written questions. Applicants may use a Common Application essay option or, on the UMass Lowell application, one of these three prompts: 'What do you do in your spare time?' / 'What is the greatest challenge your generation will face? What ideas do you have for dealing with this issue?' / 'Formulate the perfect admissions essay question and answer it.' These are alternatives to the personal statement, not additional essays, so they are not listed as prompts. Source 3 gives the I-20 sequence (deposit first, then documents); its August 1 and December 15 dates are ISSO visa-document deadlines, not tied to financial documents specifically."
+}

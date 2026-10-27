@@ -1,0 +1,35 @@
+{
+  "slug": "middlebury",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "I-20 application form + bank statement or bank letter covering the first academic year (cost of attendance minus Middlebury or external aid) + signed financial sponsor letter + proof of financial aid, if any + passport ID page, submitted to International Student and Scholar Services (ISSS)",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Submit the I-20 application with financial documents, ideally by this date for September entrants",
+        "date": null,
+        "note": "The page says 'ideally, by June 1 for September entrants' (November 1 for February entrants); no year is stated"
+      }
+    ],
+    "notes": "The page lists 2026-27 total estimated cost of USD 96,386 as the starting amount to document (before subtracting aid; travel not included); this is the current-year chart, the fall 2027 figure is not published yet. The bank statement must be dated on or after February 16 for September entrants. Funds must be immediately available (checking or savings; investments or restricted assets not accepted; CDs must mature by the program start). The CSS Profile and IDOC tax documents for financial aid are a separate process and are not this proof of funds.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.middlebury.edu/college/admissions/application-instructions-and-deadlines",
+      "title": "Middlebury Admissions: Application Instructions and Deadlines",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.middlebury.edu/international-student-and-scholar-services/forms-and-resources/new-and-returning-student-forms-0",
+      "title": "Middlebury ISSS: I-20 Application Instructions (College)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Source 1 says for the application essay: 'Use the prompts on the application. We do not require a supplemental essay.' The only extra materials it lists are optional arts supplements through SlideRoom (portfolio uploads, not written questions). Its deadline table shows ED I Nov 2, ED II Jan 4, Regular Jan 4. The ISSS page (updated 09/28/2026) describes the I-20 process for students entering in 2026-27 and Spring 2027; the same steps are expected for fall 2027 entry but that year's amounts and dates are not published yet."
+}

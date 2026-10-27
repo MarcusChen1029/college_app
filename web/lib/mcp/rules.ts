@@ -23,6 +23,7 @@ import {
 } from "../activities.ts";
 import { hasDecision, isSubmitted } from "../application.ts";
 import { CHECKLIST, ENGLISH_PLANS, ESSAY_STATUSES, isDone, newEssay, progress, safeLink, TEST_PLANS, type Checklist, type Essay } from "../checklist.ts";
+import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
 import { canAddMore, getPlan } from "../plans.ts";
@@ -30,6 +31,7 @@ import { cleanRegions, isRegion } from "../regions.ts";
 import { DEFAULT_OPTIONS, EMPTY_HEADER, type ResumeHeader, type ResumeSettings, type ResumeSource } from "../resume.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishScore, type ScoreScale, type SectionScores, type TestDetails } from "../scores.ts";
 import type { Status } from "../student-rows.ts";
+import { isPlanMonth, TEST_CHOICES, withPlanned, withTestChoice, type TestChoice } from "../test-plan.ts";
 import type { Deadline } from "../types.ts";
 
 export type Check<T> = { ok: true; value: T; warnings: string[] } | { ok: false; error: string };
@@ -348,6 +350,26 @@ export function applyProfilePatch(profile: StudentProfile, patch: Record<string,
         next.gpa = v as number | null;
         break;
       }
+      case "gpaWeighted": {
+        if (v !== null && !(typeof v === "number" && Number.isFinite(v) && v >= 0 && v <= 6)) return fail("gpaWeighted must be a number from 0 to 6 (as printed on the transcript), or null.");
+        next.gpaWeighted = v as number | null;
+        break;
+      }
+      case "testChoice": {
+        if (!TEST_CHOICES.includes(v as TestChoice)) return fail(`testChoice must be one of: ${TEST_CHOICES.join(", ")}. "planned" = will take a test but has no score yet; "none" = not taking one (test-optional).`);
+        tests().plan = withTestChoice(tests().plan, v as TestChoice);
+        break;
+      }
+      case "plannedTest": {
+        if (v !== "sat" && v !== "act") return fail('plannedTest must be "sat" or "act".');
+        tests().plan = withPlanned(tests().plan, { test: v });
+        break;
+      }
+      case "plannedMonth": {
+        if (v !== null && !isPlanMonth(v)) return fail("plannedMonth must be YYYY-MM (e.g. 2026-12), or null when the month isn't known.");
+        tests().plan = withPlanned(tests().plan, { month: v });
+        break;
+      }
       case "sat":
       case "act": {
         const r = total(key === "sat" ? SAT_SCALE : ACT_SCALE, v, key.toUpperCase());
@@ -408,7 +430,7 @@ export function applyProfilePatch(profile: StudentProfile, patch: Record<string,
         break;
       }
       default:
-        return fail(`Can't change "${key}". Allowed: gpa, sat, act, satSections, actSections, english, international, targetRegions.`);
+        return fail(`Can't change "${key}". Allowed: gpa, gpaWeighted, sat, act, satSections, actSections, testChoice, plannedTest, plannedMonth, english, international, targetRegions.`);
     }
   }
   next = { ...next };
@@ -456,14 +478,14 @@ export type UpcomingDeadline = { slug: string; college: string; due_date: string
 
 /**
  * Dates for listed colleges, soonest first, within `days` days (all future dates when omitted). Same filter as My list:
- * once the student picked a plan, only that plan's application deadline is shown.
+ * once the student picked a plan, only that plan's application deadline is shown; international students get no FAFSA-only dates.
  */
-export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date()): UpcomingDeadline[] {
+export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date(), international = false): UpcomingDeadline[] {
   return listed
     .flatMap((c) =>
       deadlines
         .filter((d) => d.institution_id === c.id && d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
-        .filter((d) => d.kind !== "application" || !c.plan || d.plan_key === c.plan)
+        .filter((d) => deadlineApplies(d, { plan: c.plan, international }))
         .map((d) => ({ slug: c.slug, college: c.name, due_date: d.due_date!, days: daysUntil(d.due_date!, today), kind: d.kind, plan_key: d.plan_key, label: d.label })),
     )
     .sort((a, b) => a.due_date.localeCompare(b.due_date));

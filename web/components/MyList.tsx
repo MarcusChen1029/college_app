@@ -6,9 +6,12 @@ import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { markSent, onlyEnglishPlan, onlyTestPlan, progress, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
+import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
+import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import { resultTone, stageTone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
@@ -16,10 +19,12 @@ import { AddCustomCollege } from "./AddCustomCollege";
 import { StudentAiContextButton } from "./AiContextButton";
 import { FitBadge, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT, SELECT_BASE, usePlanLabel, useResultLabel } from "./ChecklistPanel";
+import { CrunchCard } from "./CrunchCard";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
 import { DeadlineChip, StatusPill } from "./StatusPill";
+import { TeacherTasksForStudent } from "./TeacherTasksForStudent";
 
 const noop = () => () => {};
 
@@ -70,12 +75,18 @@ export function MyList({
   plans,
   englishTests,
   codes,
+  intro,
+  essayCounts,
 }: {
   colleges: CollegeSummary[];
   deadlines: Deadline[];
   plans: Lookups["plans"];
   englishTests: Lookups["englishTests"];
   codes: ScoreCode[];
+  /** Explains the table; rendered just above it, below the "due soon" card and teacher tasks. */
+  intro?: React.ReactNode;
+  /** Essays each researched college asks of everyone, by slug (for the "due soon" card). */
+  essayCounts?: Record<string, number>;
 }) {
   const t = useT();
   const planLabel = usePlanLabel();
@@ -84,7 +95,8 @@ export function MyList({
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
-  if (!mounted || !student.ready) return null;
+  if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
+  const international = !!student.profile.international;
 
   // Custom colleges have no row in our data; build the same shape from what the student typed.
   const resolve = (e: ListEntry) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
@@ -148,7 +160,10 @@ export function MyList({
 
   if (entries.length === 0) {
     return (
-      <>
+      <div className="space-y-4">
+      <TeacherTasksForStudent />
+      {intro}
+      <div>
       {banner}
       {addDialog}
       <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
@@ -158,24 +173,43 @@ export function MyList({
         </Link>
         {t("application.emptyPost")}
       </p>
-      </>
+      </div>
+      </div>
     );
   }
 
-  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const hasScores = scoredTests(student.profile).length > 0;
   const fits = new Map(entries.map(({ college }) => [college.slug, hasScores ? computeFit(student.profile, college) : null]));
   const counts = { super_reach: 0, reach: 0, target: 0, safety: 0 };
   fits.forEach((f) => f && counts[f.fit]++);
 
-  // Upcoming dates for listed colleges. If a plan is chosen, show only that plan's application deadline.
+  // The next week of application deadlines and what is still open for them (the card at the top).
+  const crunch = buildCrunch(
+    entries.map(({ entry, college }) => ({
+      slug: entry.slug,
+      name: college.short_name ?? college.name,
+      collegeId: college.id,
+      plan: entry.plan,
+      status: entry.status,
+      checklist: entry.checklist,
+    })),
+    allDeadlines,
+  );
+  const inCrunch = new Set(crunch.kind === "crunch" ? crunch.apps.map((a) => a.deadlineId) : []);
+
+  // Upcoming dates for listed colleges. If a plan is chosen, show only that plan's application deadline; no FAFSA-only
+  // dates for international students. Application deadlines the card above covers collapse into one line per day.
   const upcoming = entries
     .flatMap(({ entry, college }) =>
       allDeadlines
-        .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0)
-        .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
+        .filter((d) => d.institution_id === college.id && d.due_date && daysUntil(d.due_date) >= 0 && !inCrunch.has(d.id))
+        .filter((d) => deadlineApplies(d, { plan: entry.plan, international }))
         .map((d) => ({ d, college, entry })),
     )
     .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!));
+  const upcomingRows = [...(crunch.kind === "crunch" ? crunch.dates.map((cd) => ({ date: cd.date, cd })) : []), ...upcoming.map((u) => ({ date: u.d.due_date!, ...u }))].sort(
+    (a, b) => a.date.localeCompare(b.date) || Number("d" in a) - Number("d" in b),
+  );
 
   // "Sent to all": tick scores sent on every listed college that takes them.
   const sentFallback = {
@@ -195,9 +229,9 @@ export function MyList({
       const next = markSent(entry.checklist, kind, sentFallback[kind]);
       return next ? [{ slug: entry.slug, checklist: next }] : [];
     });
-  const markAllSent = (kind: SentKind) => {
-    const patches = sentPatches(kind);
-    if (!window.confirm(t(sentConfirm[kind], { n: patches.length }))) return;
+  const markAllSent = (kind: SentKind, only?: string[]) => {
+    const patches = sentPatches(kind).filter((p) => !only || only.includes(p.slug));
+    if (!patches.length || !window.confirm(t(sentConfirm[kind], { n: patches.length }))) return;
     for (const p of patches) student.update(p.slug, { checklist: p.checklist });
   };
   const sentButton = (kind: SentKind, label: string) => {
@@ -231,7 +265,11 @@ export function MyList({
   const place = (c: CollegeSummary, e: ListEntry) => [c.city, c.state_region, e.custom?.country].filter(Boolean).join(", ");
 
   return (
-    <>
+    <div className="space-y-4">
+    <CrunchCard crunch={crunch} onOpen={setOpenSlug} onMarkSent={markAllSent} essayCounts={essayCounts} />
+    <TeacherTasksForStudent />
+    {intro}
+    <div>
     {banner}
     {addDialog}
     {opened && (
@@ -372,9 +410,23 @@ export function MyList({
 
       <aside>
         <h2 className="mb-2 font-semibold">{t("application.upcomingDates")}</h2>
-        {upcoming.length ? (
+        {upcomingRows.length ? (
           <ol className="space-y-2 text-sm">
-            {upcoming.map(({ d, college, entry }) => {
+            {upcomingRows.map((row) => {
+              if ("cd" in row) {
+                const { cd } = row;
+                return (
+                  <li key={`crunch-${cd.date}`} className="rounded-md border border-zinc-200 p-2">
+                    <div>
+                      <DeadlineChip date={cd.date} days={cd.days} done={false} />
+                    </div>
+                    <a href="#crunch" className="hover:underline">
+                      {cd.apps.length === 1 ? t("application.crunch.upcomingOne", { name: cd.apps[0].name }) : t("application.crunch.upcomingMany", { n: cd.apps.length })}
+                    </a>
+                  </li>
+                );
+              }
+              const { d, college, entry } = row;
               const days = daysUntil(d.due_date!);
               return (
                 <li key={d.id} className="rounded-md border border-zinc-200 p-2">
@@ -393,6 +445,7 @@ export function MyList({
         )}
       </aside>
     </div>
-    </>
+    </div>
+    </div>
   );
 }

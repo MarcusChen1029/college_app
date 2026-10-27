@@ -1,0 +1,91 @@
+{
+  "slug": "uiuc",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "major-experience",
+      "prompt": "Explain, in detail, an experience you’ve had in the past 3 to 4 years related to your first-choice major. This can be an experience from an extracurricular activity, in a class you’ve taken, or through something else.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants with a first-choice major (not Undeclared)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "major-goals",
+      "prompt": "Describe your personal and/or career goals after graduating from Illinois and how your selected first-choice major will help you achieve them.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants with a first-choice major (not Undeclared)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "undeclared-goals",
+      "prompt": "What are your future career or academic goals? You may include courses you took in high school and how these impacted your goals.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Undeclared applicants (replace the first-choice major essays)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "undeclared-interests",
+      "prompt": "What are your academic interests? Please include 2-3 majors you’re considering at Illinois and why.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Undeclared applicants (replace the first-choice major essays)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "second-choice",
+      "prompt": "Please explain your interest in your second-choice major or your overall academic or career goals.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants who list a second-choice major",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documents (types not published on the pages read) plus the online I-20 application",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Illinois says international applicants do not submit financial verification papers with the application; it requests financial documents and official transcripts only if you are admitted and choose to attend. International students who need an I-20 must submit the online I-20 application (SEVIS codes CHI214F01070000 for F-1, P-1-00209 for J-1). No amount or calendar date is published on these pages.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.illinois.edu/apply/freshman/essays",
+      "title": "Illinois Undergraduate Admissions: Essay Prompts (First-Year Essays)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.admissions.illinois.edu/first-year-apply-faq/",
+      "title": "Illinois Undergraduate Admissions: First-Year Apply FAQ",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.admissions.illinois.edu/summer-fall-admitted-checklist/",
+      "title": "Illinois Undergraduate Admissions: Summer & Fall Admitted Checklist",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The essay page is undated: it does not name a cycle, but the same site's international page already refers to fall 2027, so it is treated as the 2026-27 cycle. Each Illinois essay is 'about 150 words' (the word_limit 150 is that approximate figure). The first-year application has 2-3 Illinois essays in the Writing section of the Common App, plus the Common App personal essay (250-650 words), which is not listed here. The checklist (source 3) is the page that sends admitted international students to the I-20 application; the amount of funds and acceptable document types were not found for first-year applicants."
+}

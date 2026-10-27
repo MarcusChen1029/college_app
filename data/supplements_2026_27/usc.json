@@ -1,0 +1,65 @@
+{
+  "slug": "usc",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Financial Statement of Personal or Family Support (signed form) + proof of sufficient funds + copy of current passport, uploaded via the USC Applicant Portal",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "Upload the Financial Statement of Personal or Family Support",
+        "date": null,
+        "note": "Within two weeks of your application deadline for timely review (USC lists Nov 1 for Early Decision and Early Action, Dec 1 for performing arts majors, Jan 10 for Regular Decision of most majors)."
+      }
+    ],
+    "notes": "USC requires international applicants, including those already living in the U.S., to submit this statement at the time of application. The portal only opens a couple of days after the Common App is processed, and USC's admission blog says it is fine to upload after the deadline but as soon as possible. Acceptable documents: bank statement, bank letter, organizational sponsor (government, corporation, etc.), approved/sanctioned education loan ('in-principle' loans not accepted), investment portfolio; documents must be dated August 2026 or later. Not typically accepted: tax returns, mortgages, employment or salary statements, pending or provisional loans, property valuations, life insurance, retirement accounts. After admission and the commitment deposit, USC asks students to request the Initial I-20 in Trojan International and upload financial documents and a passport copy again; the admitted-student page gives no deadline for that step.",
+    "source": 1
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.usc.edu/prospective-students/how-to-apply/international-students/",
+      "title": "USC Undergraduate Admission: International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.usc.edu/prospective-students/how-to-apply/first-year-students/",
+      "title": "USC Undergraduate Admission: First-Year Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.admissionblog.usc.edu/p/early-action-and-early-decision-application",
+      "title": "USC Office of Admission: Early Action & Early Decision Application Deadline FAQs for Fall 2027 First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admission.usc.edu/admitted-students/next-steps-fall/",
+      "title": "USC Undergraduate Admission: Next Steps Fall",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://viterbiadmission.usc.edu/2026/last-minute-tips-before-applying-by-november-1/",
+      "title": "USC Viterbi Admission: Common App is Live! Applying to USC Viterbi? Start Here.",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 6,
+      "url": "https://www.admissionblog.usc.edu/p/application-insights-from-the-dean",
+      "title": "USC Office of Admission: Application Insights from the Dean of Admission (August 18, 2025)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 7,
+      "url": "https://www.admissionblog.usc.edu/p/answering-the-usc-writing-questions",
+      "title": "USC Office of Admission: Answering the USC Writing Questions in the Common Application (September 30, 2022)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Supplements status is 'unknown' because no official USC page gives the exact 2026-27 (fall 2027 entry) question text. What official USC pages say: source 5 (August 2026) says Viterbi applicants have no engineering-specific written supplements and finish once they complete the Common App and USC application questions, so USC questions exist this cycle; source 6 (August 2025, last cycle) says USC requires an additional short written response limited to 250 words about academic interests, and that Dornsife and Viterbi majors may show extra short answers in the Common App after the major is chosen; source 7 (September 2022, old) quotes the older wording 'Describe how you plan to pursue your academic interests and why you want to explore them at USC specifically. Please feel free to address your first- and second-choice major selections. (Max 250 words)' plus ten one-word 'Quick Takes'. Because those are not 2026-27 texts, no prompts are recorded; the student should read the USC section of the Common App writing questions. Source 4 is labeled for fall 2026 arrivals and is the only source for the post-admission I-20 request step. Sources 2 and 3 confirm the international financial statement timing."
+}

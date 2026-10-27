@@ -1,0 +1,64 @@
+{
+  "slug": "rochester",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-us",
+      "prompt": "The University of Rochester is a place where curiosity and creativity meet. How will you combine our academic flexibility and co-curricular opportunities to create an experience that reflects your interests and ambitions?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "International Financial Support Form (IFSF) for applicants who can meet the full cost of attendance (a sponsor letter is added if funding comes from a government, private sponsor or other source not listed on the IFSF); applicants who need need-based aid submit the CSS Profile instead",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "IFSF due by the application deadline of your admissions round (Early Decision I)",
+        "date": null,
+        "note": "Published application deadline: November 1. The IFSF is required by the application deadline for your round."
+      },
+      {
+        "label": "IFSF due by the application deadline of your admissions round (Early Decision II and Regular Decision)",
+        "date": null,
+        "note": "Published application deadline: January 5. The IFSF is required by the application deadline for your round."
+      }
+    ],
+    "notes": "The international page says the application remains incomplete without a completed IFSF, and that applicants who cannot secure funding to cover the cost of attendance through private funds or sponsorship cannot be admitted. The dates-and-deadlines page lists a later supplemental-materials deadline (ED I December 1, ED II February 1, RD February 15) for materials other than the application itself, but the first-year page states the IFSF or CSS Profile is required by the application deadline for your round. Acceptable funding sources are listed on the IFSF form itself, which was not read (it sits on an application-portal registration page).",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.rochester.edu/applying/how-to-apply/",
+      "title": "URochester Undergraduate Admissions: How to Apply (Supplemental Essay Prompt for 2026-27 Application Cycle)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.rochester.edu/applying/first-year-students/",
+      "title": "URochester Undergraduate Admissions: First-Year Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.rochester.edu/applying/international-students/",
+      "title": "URochester Undergraduate Admissions: International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admissions.rochester.edu/applying/dates-and-deadlines/",
+      "title": "URochester Undergraduate Admissions: Dates & Deadlines",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The prompt is the official one labeled 'Supplemental Essay Prompt for 2026-27 Application Cycle' (source 1); source 2 says applicants complete the URochester-specific questions on both the Common App and the Coalition application. Source 2 also says applicants to combined degree programs complete a short essay related to their interest in the program, but the prompt text and limit are not published on the pages read, so none is listed. Application deadlines (source 4): Early Decision I November 1; Early Decision II and Regular Decision January 5; the page does not print the year."
+}

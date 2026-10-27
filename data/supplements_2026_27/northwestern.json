@@ -1,0 +1,114 @@
+{
+  "slug": "northwestern",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "background-engagement",
+      "prompt": "We want to be sure we’re considering your application in the context of your personal experiences: What aspects of your background (your identity, your school setting, your community, your household, etc.) have most shaped how you see yourself engaging in Northwestern’s community, be it academically, extracurricularly, culturally, politically, socially, or otherwise?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All Common Application and Coalition with Scoir applicants (optional for QuestBridge applicants)",
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "the-rock",
+      "prompt": "Painting “The Rock” is a tradition at Northwestern that invites all forms of expression—students promote campus events or extracurricular groups, support social or activist causes, show their Wildcat spirit (what we call “Purple Pride”), celebrate their culture, and more. What would you paint on The Rock, and why?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "interdisciplinary-idea",
+      "prompt": "Northwestern fosters a distinctively interdisciplinary culture. We believe discovery and innovation thrive at the intersection of diverse ideas, perspectives, and academic interests. Within this setting, if you could dream up an undergraduate class, research project, or creative effort (a start-up, a design prototype, a performance, etc.), what would it be? Who might be some ideal classmates or collaborators?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "communities",
+      "prompt": "Community and belonging matter at Northwestern. Tell us about one or more communities, networks, or student groups you see yourself connecting with on campus.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "location",
+      "prompt": "Northwestern’s location is special: on the shore of Lake Michigan, steps from downtown Evanston, just a few miles from Chicago. What aspects of our location are most compelling to you, and why?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "background-diversity",
+      "prompt": "Northwestern is a place where people with diverse backgrounds from all over the world can study, live, and talk with one another. This range of experiences and viewpoints immeasurably enriches learning. How might your individual background contribute to this diversity of perspectives in Northwestern’s classrooms and around our campus?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 2 },
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof that funds are guaranteed for the first year of study (tuition, living and miscellaneous expenses), uploaded in the OISS Portal I-20 request: student or sponsor bank statement or bank letter (dated within the last six months, in English, with currency named), a Sponsor Statement of Support form for each family/friend sponsor, or a signed support letter for employer/government/outside scholarships; Northwestern award letters count for Northwestern funds",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "OISS Portal opens for fall-term admitted students (needs the tuition deposit and about two weeks for systems to sync)",
+        "date": null,
+        "note": "Published as March 1 for fall-term students; the page gives no year. I-20 processing is up to 4 weeks after the request is submitted."
+      }
+    ],
+    "notes": "The I-20 request also needs the passport biographical page and the Northwestern admission letter. Original financial documents may be requested at the visa appointment or port of entry.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.northwestern.edu/apply/requirements.html",
+      "title": "Northwestern Undergraduate Admissions: Application Materials (2026-27 First-Year Writing Supplements)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.northwestern.edu/faqs/writing-supplements/",
+      "title": "Northwestern Undergraduate Admissions: Writing Supplements FAQ",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.northwestern.edu/international/international-students/steps-newly-admitted/financial-documentation-requirements.html",
+      "title": "Northwestern OISS: Financial Documentation Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.northwestern.edu/international/international-students/steps-newly-admitted/immigration-document-request.html",
+      "title": "Northwestern OISS: Immigration Document Request",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The personal essay is optional for Northwestern (source 2). The five optional questions are answered as at least one and no more than two (the page says 'We encourage you to answer at least one and no more than two'); they are marked required false with pick 2 as the maximum. The optional-question limit is published as 'fewer than 200 words per question', stored as 200 here. All short answers are optional for QuestBridge applicants. Bienen School of Music, ISP, MMSS and Music Theatre applicants have separate supplement materials that were not collected. Financial dollar amounts for the I-20 come from the Financial Details section of the OISS Portal request, which is not public. Source 4 is the page that lists the tuition deposit and portal-access dates."
+}

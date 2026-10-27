@@ -1,0 +1,92 @@
+{
+  "slug": "umass-amherst",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-major",
+      "prompt": "Why did you choose this major(s)?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "why-umass",
+      "prompt": "Why do you want to attend UMass Amherst?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "honors-community",
+      "prompt": "Commonwealth Honors College is a community in which students examine complex questions, learn across differences, and connect their academic interests to the world around them. What is one perspective, experience, or question you would bring to this community, and how would you hope to develop it at UMass Amherst? Learn more about the Commonwealth Honors College here: umass.edu/honors",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "community",
+      "prompt": "At UMass Amherst, no two students are alike. Our communities and groups often define us and shape our individual worlds. Community can refer to various aspects, including shared geography, religion, race/ethnicity, income, ideology, and more. Please choose one of your communities or groups and describe its significance. Explain how, as a product of this community or group, you would enrich our campus.",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Certification that sufficient resources are available for the first calendar year (exclusive of travel); financial documents are submitted to the International Programs Office (IPO) by the instructions in its 'Visa Sponsorship' email",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Request the I-20 only after the IPO 'Visa Sponsorship' email arrives (sent after admission and payment of the non-refundable enrollment fee)",
+        "date": null,
+        "note": "No calendar date published on the page"
+      }
+    ],
+    "notes": "UMass Amherst requires no visa or immigration documents at the time of application. Undergraduate international students cannot receive need-based aid; they must also indicate how they will meet expenses in later years. The exact document list is on the IPO site (umass.edu/ipo/iss/visa-sponsorship), which could not be read (blocked), so it is not listed here.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.umass.edu/sites/default/files/2026-09/FY27AdmissionsUREPUMassReadySetApply_EmpoweringVoiceEssay_Fillable.pdf",
+      "title": "UMass Amherst Admissions (FY27): Empowering Your Voice: Writing Your Best College Essay (2026-2027 Common App questions and UMass custom questions)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.umass.edu/admissions/undergraduate-admissions/apply/international-students/financial-and-visa-information",
+      "title": "UMass Amherst Undergraduate Admissions: Financial and Visa Information (International Students)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.umass.edu/admissions/first-year-application-instructions",
+      "title": "UMass Amherst Undergraduate Admissions: First-Year Application Instructions",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Prompt text and the 100-word limit are from the fall 2027 (FY27) admissions guide (source 1). The undated First-Year Application Instructions page (source 3) lists the same three questions but words the community question more briefly ('Tell us about a community you are a part of and explain how, as a product of this group or community, you would enrich our campus.') and says Honors-interested applicants get the Honors question, others the community question; the guide's wording was used. The third question is required for everyone: choose the Honors College version or the community version."
+}

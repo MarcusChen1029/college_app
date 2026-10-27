@@ -1,0 +1,86 @@
+{
+  "slug": "virginia-tech",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "ut-prosim-community",
+      "prompt": "Virginia Tech's motto is \"Ut Prosim\" which means 'That I May Serve'. Share how you contribute to a community that is important to you. How long have you been involved? What have you learned and how would you like to share that with others at Virginia Tech?",
+      "word_limit": 120,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All degree-seeking first-year applicants",
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "ut-prosim-inclusion",
+      "prompt": "Have you had an experience when you or someone you know were not being included? Did you reach out to anyone for assistance, direction, or resources? Were you able to affect change and/or influence others? Did this experience change your perspective and if so, how?",
+      "word_limit": 120,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All degree-seeking first-year applicants",
+      "choose": null,
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "ut-prosim-leadership",
+      "prompt": "Share a time when you were most proud of yourself either as a role model or when you displayed your leadership. What specific skills did you contribute to the experience? How did others rely on you for guidance? What did you learn about yourself during this time?",
+      "word_limit": 120,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All degree-seeking first-year applicants",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "ut-prosim-goal",
+      "prompt": "Describe a goal that you have set and the steps you will take to achieve it. What made you set this goal for yourself? What is your timeline to achieve this goal? Who do you seek encouragement or guidance from and how do they support your progress as you work on this goal?",
+      "word_limit": 120,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All degree-seeking first-year applicants",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of sufficient funds for the first year (bank statement or letter, loan certificate or letter, government or sponsor letter, or scholarship award letter), submitted with the New International Student Intake Form in the IntlHokies portal; a signed Affidavit of Support if the account is not in the student's name",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Virginia Tech's Cranwell International Center says students must show proof of adequate funding for at least one year before an I-20 or DS-2019 can be issued. Documents must be no more than six months old, in liquid (immediately available) form, in English or translated, show the date, account holder name and balance or award amount, and be 10MB or less (PDF, JPG, PNG, BMP or GIF). The intake form is available after the student's record is forwarded to Cranwell and a VT username is created, which follows the $400 enrollment deposit (due May 1 for Early Action and Regular Decision). The page lists an estimated undergraduate cost of attendance of $67,372 for calendar year 2026 (a figure for fall 2027 entry is not published there). No submission date is published.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.vt.edu/admissions/undergraduate/apply/ut-prosim-short-answer-questions.html",
+      "title": "Virginia Tech Admissions: Ut Prosim Profile: 2026-2027 Short Answer Questions",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.vt.edu/admissions/undergraduate/apply/freshman-requirements.html",
+      "title": "Virginia Tech Admissions: First-year Admissions Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://international.vt.edu/new_students/pre-departure_steps.html",
+      "title": "Virginia Tech Cranwell International Center: Pre-departure Steps (financial requirements)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.vt.edu/admissions/international/accepting-the-offer.html",
+      "title": "Virginia Tech Admissions: Accepting the International Offer of Admission",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The Ut Prosim Profile page says it is required for all degree-seeking applicants with a 120-word limit for each response; it shows four questions and no choose-N rule, so all four are recorded as required. Responses are final once the application is submitted. No additional college-, major- or Honors-specific written questions were found on the first-year requirements page (source 2). The financial-document wording comes from the Cranwell page, which also mentions a March 12, 2026 webinar, so it describes the fall 2026 entry process; no 2027-entry version was found."
+}

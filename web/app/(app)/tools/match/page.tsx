@@ -3,21 +3,25 @@ import { Suspense } from "react";
 import { FieldMatch } from "@/components/FieldMatch";
 import { getSummaries } from "@/lib/data";
 import completions from "@/lib/data/field-completions.json";
+import outcomes from "@/lib/data/outcomes.json";
 import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/field-match";
 import { toMatchRow } from "@/lib/field-match-view";
 import { getT } from "@/lib/i18n/server";
+import { fieldEarningsFor, type OutcomesData } from "@/lib/outcomes";
 
 export const metadata: Metadata = { title: "College match by field" };
 
-// The IPEDS file stays on the server: only the evidence for the colleges in the list goes to the browser.
+// The IPEDS and Scorecard files stay on the server: only the evidence for the colleges in the list goes to the browser.
 async function Match() {
   const colleges = (await getSummaries()).map(toMatchRow);
   const evidence: Record<string, FieldEvidence> = {};
   for (const c of colleges) {
     const ev = buildEvidence(completions as FieldCompletions, c.slug);
-    if (ev) evidence[c.slug] = ev;
+    if (!ev) continue;
+    const earnings = c.country_code === "US" ? fieldEarningsFor(outcomes as OutcomesData, c.slug) : {};
+    evidence[c.slug] = Object.keys(earnings).length ? { ...ev, earnings } : ev;
   }
-  return <FieldMatch colleges={colleges} evidence={evidence} />;
+  return <FieldMatch colleges={colleges} evidence={evidence} released={(outcomes as OutcomesData).released} />;
 }
 
 export default async function MatchPage() {

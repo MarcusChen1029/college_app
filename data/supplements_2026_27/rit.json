@@ -1,0 +1,53 @@
+{
+  "slug": "rit",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "individualized-study",
+      "prompt": "RIT is pleased to be able to offer a limited number of students the opportunity to customize a degree pathway. What personal or professional outcome are you hoping to achieve? In what ways have you prepared yourself for this distinctive educational experience?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "School of Individualized Study (Individualized Program BS) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Sponsor Letter/Declaration of Financial Support form plus financial support documents (bank savings or checking statement or letter confirming available funds, term/fixed deposit, student loan sanction letter, or original government/agency sponsor letter), uploaded to the RIT Admissions Portal to obtain the I-20; passport ID page also uploaded",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Financial support documents for the I-20",
+        "date": null,
+        "note": "No calendar date published. RIT's I-20 is sent by email within 7-10 business days after the admissions counselor verifies the uploaded documents."
+      }
+    ],
+    "notes": "Documents must be issued within the past 6 months, carry the issuing institution's official stamp or seal, state the account holder's name, be in U.S. dollars (or come with an official conversion document) and be in English. Must show enough to cover tuition, fees, supplies, health insurance and living expenses for at least one academic year (two semesters); RIT merit scholarships count toward the total and funds from multiple sources may be combined. Not accepted: investment portfolios, provident funds, retirement plans, salary agreements or pay stubs, lines of credit, deeds to real estate. A dollar amount is not stated on the page.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.rit.edu/admissions/first-year-application",
+      "title": "RIT Admissions: First-Year Undergraduate Application (School of Individualized Study and essay requirements)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.rit.edu/admissions/first-year/accepted-students/international-guide",
+      "title": "RIT Admissions: Guide for Accepted International Undergraduate Students (Obtaining Your I-20 Form)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.rit.edu/honors/admissions-process",
+      "title": "RIT Honors Program: Admissions Process",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "RIT's application page says no supplemental essays are required unless applying to the Honors Program or the Individualized Program BS (source 1). Only the Individualized Program BS prompt text is published. The Honors Program page (source 3) says applicants who express Honors interest on the application give a short essay response of 1-2 paragraphs, but it does not publish the prompt, so no Honors prompt is listed. The application page does not name the application year; it was live and accepting fall applications on 2026-10-27, so the cycle is recorded as 2026-27."
+}

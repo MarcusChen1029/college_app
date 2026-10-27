@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   ENGLISH_PLANS,
+  intlSteps,
   isDone,
   TEST_PLANS,
   type Checklist,
@@ -42,16 +43,19 @@ type Props = {
   entry: ListEntry;
   college: CollegeSummary;
   international: boolean;
+  /** When this college wants proof of finances (from the supplements data, once loaded); nothing date-like is shown without it. */
+  financeWhen?: string | null;
   onChange: (patch: Partial<Pick<ListEntry, "checklist" | "notes" | "aidOfferUsd">>) => void;
   onRemove: () => void;
 };
 
-export function ChecklistPanel({ entry, college, international, onChange, onRemove }: Props) {
+export function ChecklistPanel({ entry, college, international, financeWhen = null, onChange, onRemove }: Props) {
   const t = useT();
   const c = entry.checklist;
   const set = (patch: Partial<Checklist>) => onChange({ checklist: { ...c, ...patch } });
   const essays = c.essay_list ?? [];
   const finals = essays.filter((e) => e.status === "final").length;
+  const steps = intlSteps(c, entry.status, { international, financeWhen });
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
@@ -123,6 +127,18 @@ export function ChecklistPanel({ entry, college, international, onChange, onRemo
           <Warn>{t("application.cl.englishRequiredAll")}</Warn>
         )}
       </Section>
+
+      {steps.length > 0 && (
+        <Section title={t("application.intl.title")} done={steps.every((s) => s.done)} hint={t("application.intl.notReady")} className="md:col-span-2">
+          {steps.map((s) => (
+            <Check key={s.key} checked={s.done} onChange={(v) => set({ [s.key]: v })}>
+              {t(`application.intl.${s.key}`)}
+              {s.when && <span className="text-zinc-500"> · {s.when}</span>}
+            </Check>
+          ))}
+          <p className="text-[11px] text-zinc-500">{t("application.intl.financesHint")}</p>
+        </Section>
+      )}
 
       <Section
         title={t("application.cl.aidOffer")}

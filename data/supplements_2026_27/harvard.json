@@ -1,0 +1,85 @@
+{
+  "slug": "harvard",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "life-experiences",
+      "prompt": "Harvard has long recognized the importance of enrolling a student body with a diversity of perspectives and experiences. How will the life experiences that shaped who you are today enable you to contribute to Harvard?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "disagreed",
+      "prompt": "Describe a time when you strongly disagreed with someone about an idea or issue. How did you communicate or engage with this person? What did you learn from this experience?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "shaped-you",
+      "prompt": "Briefly describe any of your extracurricular activities, employment experience, travel, or family responsibilities that have shaped who you are.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "future-use",
+      "prompt": "How do you hope to use your Harvard education in the future?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "roommates",
+      "prompt": "Top 3 things your roommates might like to know about you.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial certification documentation requested by the Harvard College admissions / financial aid office after you accept an offer of admission",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Harvard's International Office says the first steps of the visa process are managed by the school you will attend: once you accept an offer, the admissions or financial aid office requests documentation of your financial ability to study in the U.S., it can take time because evidence of guaranteed funding often comes from several sources, and the HIO issues the I-20 or DS-2019 (up to about 10 days after the school requests it). The current Harvard College pages do not list the exact documents, amounts or a date.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://college.harvard.edu/admissions/apply/application-requirements",
+      "title": "Harvard College Admissions: Application Requirements (Completing the Harvard supplement questions)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.hio.harvard.edu/visas-immigration/student",
+      "title": "Harvard International Office: Student Visas (Get Your I-20 or DS-2019 from Harvard)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The application requirements page does not print a cycle year; it is the live page on 2026-10-27 and is recorded as 2026-27. The five Harvard questions are answered in the Common Application. The page lists no other required written supplement; optional supplementary materials (writing samples, media via Slideroom) are not essays. For international proof of funds, a Harvard College form titled 'I-20 Certification of Finances' (labelled 2020-21, with a bank-official certification) exists on the applicant site, but it is five years old and was not used; the current document list was not found, so none is stated beyond the HIO description."
+}

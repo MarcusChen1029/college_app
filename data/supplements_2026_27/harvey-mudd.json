@@ -1,0 +1,77 @@
+{
+  "slug": "harvey-mudd",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "problems-impact",
+      "prompt": "The problems that Harvey Mudd College students hope to tackle are shaped by their experiences, values, and communities. Through our intentionally interdisciplinary curriculum and our mission to develop \"a clear understanding of the impact of their work,\" Mudders develop the skills needed to address these complex challenges and contribute meaningfully to society. Share how an experience you’ve had or community you belong to has shaped the kinds of problems you want to solve and the impact you want to make.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "asking-for-help",
+      "prompt": "No one succeeds alone, and at Harvey Mudd College, no one expects you to. In and out of the classroom, HMC students are encouraged to embrace challenges, collaborate with one another, and ask for support when they need it. Describe a time when asking for help made a difference in your work or wellbeing. What led you to reach out, and what did you take away from the experience?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "challenge",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "International Student Certification of Finances (PDF) plus a signed 2025 official foreign tax return with English translation, bank statements and (if you hold stocks or bonds) a consolidated brokerage statement, all submitted to the College Board IDOC. Required for international applicants who apply for need-based financial aid (after the CSS Profile).",
+    "when": "with_application",
+    "deadlines": [
+      { "label": "Early Decision 1: CSS Profile", "date": "2026-11-15", "note": null },
+      { "label": "Early Decision 1: Certification of Finances, tax return, bank statements (ending Oct 31, 2026) via IDOC", "date": "2026-12-01", "note": null },
+      { "label": "Early Decision 2: CSS Profile", "date": "2027-01-05", "note": null },
+      { "label": "Early Decision 2: Certification of Finances, tax return, bank statements (ending Dec 31, 2026) via IDOC", "date": "2027-01-20", "note": null },
+      { "label": "Regular Decision: CSS Profile", "date": "2027-02-01", "note": null },
+      { "label": "Regular Decision: Certification of Finances, tax return, bank statements (ending Dec 31, 2026) via IDOC", "date": "2027-02-15", "note": null }
+    ],
+    "notes": "These are the financial aid documents for international applicants requesting need-based aid, due after the admission application but before a decision; the CSS Profile (code 4341) is separate. Students whose home country prohibits the CSS Profile may send the International Student Financial Aid Application (PDF) instead. The pages also list 'Other documentation as requested by the Office of Financial Aid'. HMC's admitted-student page says the I-20 is issued after acceptance and lists proof of finances among port-of-entry documents, but it does not describe a separate I-20 funding document, amount or date.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.hmc.edu/admission/apply/first-year-students/",
+      "title": "Harvey Mudd College Admission: First-Year Applicants (Required Additional Writing)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.hmc.edu/admission/regular-decision-international-applicants/",
+      "title": "Harvey Mudd College: Regular Decision International Applicants (financial aid instructions and deadlines)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.hmc.edu/admission/afford/international-student-financial-aid/international-deadlines/early-decision-1-international-applicants/",
+      "title": "Harvey Mudd College: Early Decision 1 International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.hmc.edu/admission/afford/international-student-financial-aid/international-deadlines/early-decision-2-international-applicants/",
+      "title": "Harvey Mudd College: Early Decision 2 International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://www.hmc.edu/international-students/admitted-students/",
+      "title": "Harvey Mudd College: Admitted International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The first-year page names the Fall 2027 entry term, so the cycle is 2026-27. Both written responses are in addition to the Common App personal essay. Prompt text is copied from the page; the opening context paragraph of each question is part of the published question. Early Decision 1 and 2 financial dates come from sources 3 and 4 (the Regular Decision dates are in source 2)."
+}

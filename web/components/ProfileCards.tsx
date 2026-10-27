@@ -1,20 +1,21 @@
 "use client";
 
 import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
+import { testCardView } from "@/lib/i18n/test-plan-text";
 import { cleanRegions, REGIONS, type RegionCode } from "@/lib/regions";
-import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, ACT_SCALE, SAT_SCALE, sectionSummary } from "@/lib/scores";
+import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, sectionSummary } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
 import { GpaEditor, InternationalToggle } from "./ProfileForm";
-import { ActEditor, EnglishEditor, SatEditor, testLabel } from "./TestScoresForm";
+import { EnglishEditor, TestChoiceEditor, testLabel } from "./TestScoresForm";
 
 /** Region name in the current language (the REGIONS table itself stays English). */
 export function regionName(t: TFunction, code: RegionCode): string {
   return t(`profile.region.${code}` as MessageKey);
 }
 
-type CardKey = "gpa" | "sat" | "act" | "english" | "regions";
+type CardKey = "gpa" | "test" | "english" | "regions";
 
 /** Saves whatever field is mid-edit (they save on blur) before its card closes or hides. */
 function commitFocus() {
@@ -91,11 +92,16 @@ function Card({
 function Value({ value, sub }: { value: string | number | null | undefined; sub?: string }) {
   const t = useT();
   if (value == null || value === "")
-    return <span className="mt-1 block font-display text-lg font-bold text-ink/60">{t("profile.add")}</span>;
+    return (
+      <>
+        <span className="mt-1 block font-display text-lg font-bold text-ink/60">{t("profile.add")}</span>
+        {sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{sub}</span>}
+      </>
+    );
   return (
     <>
       <span className="mt-1 block font-display text-3xl font-bold">{value}</span>
-      {sub && <span className="mt-0.5 block truncate text-xs text-ink/70">{sub}</span>}
+      {sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{sub}</span>}
     </>
   );
 }
@@ -152,6 +158,7 @@ export function RegionsEditor() {
 
 export function ProfileCards() {
   const t = useT();
+  const locale = useLocale();
   const { profile } = useStudent();
   const base = useId();
   const [open, setOpen] = useState<CardKey | null>(null);
@@ -172,18 +179,31 @@ export function ProfileCards() {
     ? [sectionSummary(ENGLISH_TESTS[englishKey], english?.sections), englishKeys.length > 1 ? t("profile.more", { n: englishKeys.length - 1 }) : ""].filter(Boolean).join(" · ")
     : undefined;
   const regions = cleanRegions(profile.targetRegions);
+  const gpaSub = [profile.gpaWeighted != null && t("profile.gpaWeightedShort", { gpa: profile.gpaWeighted }), profile.international && t("profile.international")].filter(Boolean).join(" · ");
+  const test = testCardView(t, locale, profile);
 
   return (
-    <section aria-label={t("profile.numbers")} className="grid grid-cols-2 gap-3 md:grid-cols-5">
-      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint="bg-sun/60" summary={<Value value={profile.gpa} sub={profile.international ? t("profile.international") : undefined} />}>
+    <section aria-label={t("profile.numbers")} className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint="bg-sun/60" summary={<Value value={profile.gpa} sub={gpaSub || undefined} />}>
         <GpaEditor />
         <InternationalToggle />
       </Card>
-      <Card {...props("sat")} label="SAT" tint="bg-mint/50" summary={<Value value={profile.sat} sub={sectionSummary(SAT_SCALE, profile.tests?.sat)} />}>
-        <SatEditor />
-      </Card>
-      <Card {...props("act")} label="ACT" tint="bg-lilac/40" summary={<Value value={profile.act} sub={sectionSummary(ACT_SCALE, profile.tests?.act)} />}>
-        <ActEditor />
+      <Card
+        {...props("test")}
+        label={test.label}
+        tint="bg-mint/50"
+        summary={
+          test.small && test.value != null ? (
+            <>
+              <span className="mt-1 block font-display text-lg font-bold">{test.value}</span>
+              {test.sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{test.sub}</span>}
+            </>
+          ) : (
+            <Value value={test.value} sub={test.sub} />
+          )
+        }
+      >
+        <TestChoiceEditor />
       </Card>
       <Card
         {...props("english")}
@@ -197,7 +217,6 @@ export function ProfileCards() {
         {...props("regions")}
         label={t("profile.regionsApplying")}
         tint="bg-coral/40"
-        className={open === "regions" ? "" : "col-span-2 md:col-span-1"}
         summary={
           regions.length === 0 ? (
             <Value value={null} />

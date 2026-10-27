@@ -1,0 +1,35 @@
+{
+  "slug": "binghamton",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "International Student Financial Statement (signed by any sponsors) plus official bank statement(s) showing available funds for the first year (English translation if needed)",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "An I-20 or DS-2019 is not issued until verification of first-year funds is received; the Office of International Student and Scholar Services issues it once the student is admitted and has submitted the documents. The Financial Statement form says the amount must be at least $54,800 (as of July 2026, subject to change; $6,000 more for a spouse, $4,000 for each child) and that all documentation must be dated within one year of initial enrollment. No submission date is published.",
+    "source": 1
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.binghamton.edu/admissions/undergraduate/apply/international/first-year.html",
+      "title": "Binghamton: International First-year Students: Apply",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.binghamton.edu/admissions/undergraduate/pdf/international_student_financial_application.pdf",
+      "title": "Binghamton: International Student Financial Statement form",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.binghamton.edu/admissions/undergraduate/apply/freshman/",
+      "title": "Binghamton: First-year Applicants: Get Started Here (last updated 10/19/26)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Binghamton's first-year application page (source 3) lists the application, transcript, optional test scores and one teacher/counselor recommendation, and does not mention an essay or any college-specific questions, but it also does not state that there are none. An older catalog entry says an essay is required, which most likely means the Common App personal statement. No official statement of Binghamton-specific supplemental prompts was found, so supplements is unknown rather than none. The amount and one-year dating rule come from the Financial Statement form (source 2)."
+}

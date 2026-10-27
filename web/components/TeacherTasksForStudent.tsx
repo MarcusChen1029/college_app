@@ -41,6 +41,8 @@ function TaskList() {
   }
   if (!data) return null;
 
+  // No tasks at all: an empty card would only push the deadlines and the table down, so show nothing.
+  if (data.length === 0) return null;
   const today = new Date();
   const tasks: StudentTask[] = sortStudentTasks(data.map((t) => (t.id in pending ? { ...t, done: pending[t.id] } : t)));
   const open = tasks.filter((t) => !t.done).length;
@@ -63,39 +65,35 @@ function TaskList() {
   return (
     <section aria-labelledby="teacher-tasks" className="space-y-3 rounded-lg border border-zinc-200 p-5">
       <h2 id="teacher-tasks" className="font-display text-lg font-bold">
-        {tr("application.tasks.title")} {tasks.length > 0 && <span className="text-sm font-normal text-zinc-500">{tr("application.tasks.toDo", { n: open })}</span>}
+        {tr("application.tasks.title")} <span className="text-sm font-normal text-zinc-500">{tr("application.tasks.toDo", { n: open })}</span>
       </h2>
       {actionError && (
         <p role="alert" className="text-sm text-urgent">
           {actionError}
         </p>
       )}
-      {tasks.length === 0 ? (
-        <p className="text-sm text-zinc-500">{tr("application.tasks.none")}</p>
-      ) : (
-        <ul className="divide-y divide-zinc-100">
-          {tasks.map((t) => {
-            const days = taskDays(t, today);
-            return (
-              <li key={t.id} className="flex flex-wrap items-start justify-between gap-2 py-3">
-                <label className="flex min-w-0 items-start gap-3">
-                  <input type="checkbox" className="mt-1 size-4 shrink-0" checked={t.done} onChange={(e) => void toggle(t, e.target.checked)} />
-                  <span className="min-w-0">
-                    <span className={`block font-medium [overflow-wrap:anywhere] ${t.done ? "text-zinc-500 line-through" : ""}`}>{t.title}</span>
-                    <span className="block text-xs text-zinc-500">{tr("application.tasks.from", { name: t.teacherName })}</span>
-                    {t.details && <span className="mt-1 block text-sm whitespace-pre-line text-zinc-600 [overflow-wrap:anywhere]">{t.details}</span>}
-                  </span>
-                </label>
-                {t.dueOn && days != null ? (
-                  <DeadlineChip date={t.dueOn} days={days} done={t.done} label={tr("application.tasks.due")} />
-                ) : (
-                  <StatusPill tone={taskTone(t, today)}>{t.done ? tr("application.tasks.done") : tr("application.tasks.noDue")}</StatusPill>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <ul className="divide-y divide-zinc-100">
+        {tasks.map((t) => {
+          const days = taskDays(t, today);
+          return (
+            <li key={t.id} className="flex flex-wrap items-start justify-between gap-2 py-3">
+              <label className="flex min-w-0 items-start gap-3">
+                <input type="checkbox" className="mt-1 size-4 shrink-0" checked={t.done} onChange={(e) => void toggle(t, e.target.checked)} />
+                <span className="min-w-0">
+                  <span className={`block font-medium [overflow-wrap:anywhere] ${t.done ? "text-zinc-500 line-through" : ""}`}>{t.title}</span>
+                  <span className="block text-xs text-zinc-500">{tr("application.tasks.from", { name: t.teacherName })}</span>
+                  {t.details && <span className="mt-1 block text-sm whitespace-pre-line text-zinc-600 [overflow-wrap:anywhere]">{t.details}</span>}
+                </span>
+              </label>
+              {t.dueOn && days != null ? (
+                <DeadlineChip date={t.dueOn} days={days} done={t.done} label={tr("application.tasks.due")} />
+              ) : (
+                <StatusPill tone={taskTone(t, today)}>{t.done ? tr("application.tasks.done") : tr("application.tasks.noDue")}</StatusPill>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

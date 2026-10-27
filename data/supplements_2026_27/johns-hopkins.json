@@ -1,0 +1,35 @@
+{
+  "slug": "johns-hopkins",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "engaging-across-differences",
+      "prompt": "At Johns Hopkins, community is built through dialogue, collaboration, and a willingness to engage across differences.\n\nWhether on campus or in the broader world, community depends on bridge builders who can listen to differing perspectives, challenge their own assumptions, or work together toward shared goals.\n\nDrawing on your own experiences, what have you learned about engaging across differences and how has it shaped the way you think about building bridges, enhancing community, and working with others?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Certification of Finances (COF) form, submitted through the applicant portal (international citizens who apply for aid also submit the CSS Profile, which is not the proof-of-finance form)",
+    "when": "with_application",
+    "deadlines": [
+      { "label": "Early Decision I application deadline", "date": "2026-11-01", "note": "The international applicants page says to submit the COF before the deadline of the admissions plan you apply under" },
+      { "label": "Early Decision II and Regular Decision application deadline", "date": "2027-01-02", "note": "Same rule as above" }
+    ],
+    "notes": "The COF form is created in the applicant portal after the application is submitted. Without it the application is incomplete. The financial aid page instead says to submit the COF by the financial aid deadline for the admissions plan (Early Decision I Nov 15, 2026; Early Decision II and Regular Decision Jan 15, 2027), so the earlier application deadline is the safe date.",
+    "source": 2
+  },
+  "sources": [
+    { "n": 1, "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/", "title": "Johns Hopkins Admissions: Application Deadlines & Requirements (2026-2027 Supplemental Essay Prompt; International Certification of Finances form)", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://apply.jhu.edu/international-applicants/", "title": "Johns Hopkins Admissions: International Applicants (Certification of Finances FAQ)", "accessed": "2026-10-27" },
+    { "n": 3, "url": "https://apply.jhu.edu/tuition-aid/how-to-apply-for-financial-aid/", "title": "Johns Hopkins Admissions: How to Apply for Financial Aid", "accessed": "2026-10-27" }
+  ],
+  "notes": "The page labels the supplement as a checklist item for all first-year applicants; it does not use the word required next to it, but Additional Materials and the Direct Matriculation Program are the only items marked Optional. The optional Direct Matriculation Program (master's/MBA) asks for a short essay whose prompt and limit are shown only in the applicant portal and on each program page, so it is not listed. Deadlines come from the page dated for 2026-27 (Early Decision I Nov 1, 2026; Early Decision II and Regular Decision Jan 2, 2027); the page says updated dates are published each August."
+}

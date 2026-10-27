@@ -1,0 +1,63 @@
+{
+  "slug": "vassar",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Certification of Finances form with proof of funds (current bank statement dated within 90 days showing liquid assets, or an official proof-of-funds letter from the bank), submitted with the other international financial aid documents (CSS Profile plus parent tax documents through College Board IDOC)",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "Financial aid deadline, Early Decision I",
+        "date": "2026-11-15",
+        "note": "Deadline listed for the financial aid application; the page does not give a separate due date for the Certification of Finances"
+      },
+      {
+        "label": "Financial aid deadline, Early Decision II",
+        "date": "2027-01-01",
+        "note": null
+      },
+      {
+        "label": "Financial aid deadline, Regular Decision",
+        "date": "2027-02-01",
+        "note": null
+      }
+    ],
+    "notes": "Vassar's Student Financial Services page lists the Certification of Finances among the required documents for international students applying for aid. The form itself says every international student (aid or not) must submit it before Vassar can issue an I-20 or DS-2019, and asks for the annual support for all four years in US dollars with documentation attached (source 3). International students who want aid at any time must apply for it when they apply for admission (source 2). Vassar does not accept the ISFAA in place of the CSS Profile and gives no CSS Profile fee waiver codes to international students (source 1). No separate submission date for students who do not apply for aid is published. The deadline pages show no year; the cycle years were applied.",
+    "source": 1
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://offices.vassar.edu/student-financial-services/financial-aid/prospective-students/",
+      "title": "Vassar Student Financial Services: Prospective Students (financial aid application requirements, 2027-2028 CSS Profile)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.vassar.edu/admission/apply/international/",
+      "title": "Vassar Admission: International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://offices.vassar.edu/student-financial-services/wp-content/uploads/sites/57/docs/Vassar-Certification-of-Finances-Form.pdf",
+      "title": "Vassar College Certification of Finances form",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.vassar.edu/admission/apply/requirements/",
+      "title": "Vassar Admission: First-Year Applicants (requirements checklist)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://www.vassar.edu/admission/apply/questbridge/",
+      "title": "Vassar Admission: QuestBridge Finalists",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "No official 2026-27 statement of Vassar-specific supplemental essay prompts was found, so supplements is unknown rather than none. Vassar's first-year requirements page (source 4) lists the Common App or Coalition Application, fee, school report, teacher evaluation and mid-year report, and describes only one optional extra, 'Your Space' (an open-ended optional upload with no prompt text). It does not state that there are no supplemental questions, and it does not mention the personal essay either, so its silence is not proof. The page footer shows a 2022 copyright and may not have been updated for this cycle. QuestBridge finalists complete a separate Vassar QuestBridge Writing Supplement (source 5), prompts not public."
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "pitt",
+  "cycle": "2025-26",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "personal-statement",
+      "prompt": "Share information not included elsewhere in your University of Pittsburgh admissions application.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "International applicants, and applicants seeking scholarship consideration, Frederick Honors College consideration, or test-optional review",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of funds for the first year: bank statements or letters, savings accounts, loan documentation, or stocks/bonds available for immediate withdrawal (issued within the past six months, in English, showing currency and amount), plus a signed Attestation of Financial Support from each sponsor; uploaded in the My OIS portal",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "After admission and the enrollment deposit, the Office of Admissions and Financial Aid notifies the Office of International Services (OIS), which emails the student to upload documents in My OIS. Do not send documents before OIS makes contact. Real estate, personal property, retirement accounts, salary information and tax returns are not accepted. Estimated Pittsburgh-campus costs are in the 2026-27 handout (for example $73,819 for the Dietrich School). No fixed date is published.",
+    "source": 4
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.pitt.edu/personal-statement/",
+      "title": "Pitt Admissions: Personal Statement or Essay",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.pitt.edu/update/",
+      "title": "Pitt Admissions: Fall 2027 Applicant Resources",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.pitt.edu/international/",
+      "title": "Pitt Admissions: International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.ois.pitt.edu/sites/default/files/historical_docs/Undergraduate-Financial-Document-Handout.pdf",
+      "title": "Pitt OIS: International Undergraduate Financial Information 2026-2027",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Pitt has no college-specific supplemental prompt. The Pitt Personal Statement (or the Common App essay, which Pitt accepts in its place) is required for international students, scholarship consideration, Frederick Honors College consideration and test-optional applicants, so a student whose Common App essay is accepted may not need to write anything extra. No word limit is stated. The personal statement page is labelled 'Fall 2026 application cycle', which is why the cycle is 2025-26; the Fall 2027 resources page (source 2) repeats the test-optional requirement and the international page (source 3) says an essay or personal statement is required for scholarship consideration. Guaranteed admission programs (for example Medicine, due November 1, domestic only) have their own short answers; they were not recorded because they are not for international first-years."
+}

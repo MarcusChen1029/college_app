@@ -1,0 +1,64 @@
+{
+  "slug": "claremont-mckenna",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-cmc",
+      "prompt": "CMC’s mission is to prepare students for thoughtful and productive lives and responsible leadership in business, government, and the professions. With this mission in mind, please explain why you want to attend Claremont McKenna College.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "open-academy-dialogue",
+      "prompt": "A critical part of fulfilling our mission is living out the commitments of CMC’s Open Academy: Freedom of Expression, Viewpoint Diversity, and Constructive Dialogue. We want to learn more about your commitment to listening and learning from others with different viewpoints, perspectives, and life experiences from your own.\nDescribe a time when engaging with someone about a specific topic resulted in you changing your attitude, belief, or behavior, or you changed the belief or behavior of someone else. What was the change that occurred for you, and what facilitated that change? What did you learn from that experience, and how has it informed how you engage with others?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documentation uploaded so CMC's Designated School Official can issue the initial Form I-20 (the page does not list which documents)",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Once accepted, the student is asked to upload the necessary documents for the DSO to issue the initial I-20; the same financial documentation is later brought to the visa interview (CMC's new-student page suggests bank statements and scholarship award letters as proof of financial support). This is separate from the CMC Financial Aid Application for International Students, which is only for need-based aid and is submitted with the application (CMC does not accept the CSS Profile or IFSAA from international applicants).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.cmc.edu/admission/first-year-application-instructions",
+      "title": "CMC Admission: Application Instructions for First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.cmc.edu/student-life/international-student-services/incoming-students/applying-for-f1-student-visa",
+      "title": "CMC International Student Services: Applying for an F-1 student visa",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.cmc.edu/admission/international",
+      "title": "CMC Admission: Application Instructions for First-Year International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.cmc.edu/student-life/international-student-services/new-students",
+      "title": "CMC International Student Services: New Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The instructions page does not label the prompts with a year, but the same page says the test-optional policy applies through the Fall 2027 entry term and lists a Jan. 10 Regular Decision deadline, so these are treated as 2026-27. No word limits are stated on the page. The page calls both prompts required, found in both the Common App and the Coalition Application. CMC also lists optional two-minute video prompts (responsible leadership; a public policy issue; the Athenaeum speaker; a collaboration challenge). These are video, not written, so they are not included. No published date or deadline for the I-20 financial documents was found, and no document list or dollar amount."
+}

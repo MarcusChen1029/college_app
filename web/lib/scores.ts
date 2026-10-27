@@ -67,6 +67,15 @@ export type TestDetails = {
   sat?: SectionScores;
   act?: SectionScores;
   english?: Partial<Record<EnglishTestKey, EnglishScore>>;
+  plan?: TestPlan; // which admission test the student uses (lib/test-plan.ts)
+};
+
+/** The student's SAT/ACT choice. `using` = tests with a score the student wants used;
+ * `planned` = a test they will take but have no score for yet; `notTaking` = applying test-free. */
+export type TestPlan = {
+  using?: ("sat" | "act")[];
+  planned?: { test: "sat" | "act"; month?: string | null } | null; // month as YYYY-MM
+  notTaking?: boolean;
 };
 
 /** Parses a typed score; null when empty, out of range or off the test's step. */

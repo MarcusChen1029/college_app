@@ -1,0 +1,81 @@
+{
+  "slug": "arizona",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "app-essay-fit",
+      "prompt": "Why is the University of Arizona the right fit for you and how will your chosen academic area of study align with your interests, goals, and values?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "app-essay-other",
+      "prompt": "Is there anything else you’d like to share that you have not already included?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "franke-honors",
+      "prompt": "The W.A. Franke Honors College emphasizes five core values: We Seek, We Connect, We Create, We Evolve, and We Celebrate. Which of these values resonates the most with you, and how do you imagine pursuing that value/those values as a Franke Honors Wildcat? Please limit your response to 500 words. We encourage you to share information that is not reflected in other components of your application to the University of Arizona.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "W.A. Franke Honors College applicants",
+      "choose": null,
+      "category": "other",
+      "source": 2
+    }
+  ],
+  "intl_finance": {
+    "document": "Funding documents uploaded with the Undergraduate I-20 request in MyGlobal: bank letter or statement (checking, savings or investments; dated within the last 3 months; shows account type, holder, balance and currency), or proof of scholarship or sponsorship; plus a Declaration of Support if the funds belong to family or friends. Passport biographical page also required.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "I-20 request deadline for Fall entry",
+        "date": null,
+        "note": "July 1 for Fall. I-20 is not issued until the admitted first-year student pays the enrollment fee and registers for orientation (Academic Connection date)."
+      }
+    ],
+    "notes": "The required amount comes from the calculator on the Financial Guarantee page (based on 2026-2027 tuition and fees); the amount was not copied here because it depends on program and start term. An English translation of a non-English bank statement is recommended.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.arizona.edu/admissions/first-year/apply",
+      "title": "University of Arizona: First-Year Applying & Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://frankehonors.arizona.edu/admissions/application-process/incoming-freshman",
+      "title": "W.A. Franke Honors College: Application Process, Incoming First-Year Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://international.arizona.edu/international-students/financial-guarantee-requirement-new-students",
+      "title": "Arizona International: Financial Guarantee Requirement for New Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://international.arizona.edu/international-students/i-20-ds-2019-requests",
+      "title": "Arizona International: I-20 & DS-2019 Requests",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The general application essay is optional (the page says the university strongly encourages a 500-word essay); the page does not label the cycle, so 2026-27 is inferred from the current Common App page and the Franke Honors page, which lists Fall 2027 admission. The page does not say whether the 500-word limit covers both questions or only the first. The Honors college requires the application essay as well as the Honors response for consideration (source 1 and 2 wording: 'To be considered you must complete the application essay'), so Honors applicants should treat the two optional questions as required. Deadlines for the I-20 request are in source 4 (July 1 for Fall)."
+}

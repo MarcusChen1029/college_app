@@ -1,0 +1,113 @@
+{
+  "slug": "purdue",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-purdue-opportunities",
+      "prompt": "How will opportunities at Purdue support your interests, both in and out of the classroom?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "why-major-campus",
+      "prompt": "Briefly discuss your reasons for choosing your major and your interest in studying at this campus location (Indianapolis or West Lafayette).",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "why-alternate-major",
+      "prompt": "Briefly discuss your reasons for pursuing the alternate major and campus location (Indianapolis or West Lafayette) you have selected.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants who select an alternate major and campus on the application",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "honors-interdisciplinary",
+      "prompt": "Tell us about an experience you had which connected ideas from more than one discipline or subject. How did it impact you?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "John Martinson Honors College applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "honors-passion",
+      "prompt": "Tell us about a time you were able to get involved with or explore a topic you are passionate about. What did you take away from that experience?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "John Martinson Honors College applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "honors-destination",
+      "prompt": "Share about a destination you would like to travel to, why it interests you, and how you would engage with the culture while there.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "John Martinson Honors College applicants",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "honors-leadership",
+      "prompt": "Describe a leadership experience you have had in your school or community. How did this shape your approach to leadership?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "John Martinson Honors College applicants",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Official financial support documents (scanned) uploaded with the ISS Notification of Intent (NOI) form, plus passport",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "After Purdue Admissions admits the student, ISS emails access to the MyISS NOI eforms (within about a week of the ISS database being updated). The NOI requires scanned official financial support documents and the passport before an immigration document is prepared. A Form I-20 or DS-2019 is issued once everything is complete. No date is published on this page.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.purdue.edu/become-student/guide/",
+      "title": "Purdue Admissions: Application Guide (Application Essay Guide)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.purdue.edu/gpp/iss/student/incoming/index.html",
+      "title": "Purdue ISS: Incoming Students (International Undergraduate Notification of Intent)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.purdue.edu/become-student/international/",
+      "title": "Purdue Admissions: International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The guide page (last modified 2026-09-08) does not label the cycle; it is the live page for the Nov. 1 early action deadline and is listed as 2026-27. The Common App personal essay (250-650 words) is not a supplement and is not recorded. Honors College applicants answer all four honors prompts, each in 200 words or fewer. The alternate-major question appears only when an alternate major is selected. Purdue's international page (source 3) says that, under Indiana law from 2026, applicants who hold citizenship in certain countries (China including Hong Kong and Macau, Russia, North Korea, Iran, Venezuela, Cuba, or others the U.S. or Indiana identify) are asked for additional details about background, funding and affiliations before an admission decision; this is separate from the NOI financial documents. The ISS page does not list accepted document types, a minimum amount or a due date for the NOI documents, and links no undergraduate financial-document page."
+}

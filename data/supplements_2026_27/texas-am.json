@@ -1,0 +1,113 @@
+{
+  "slug": "texas-am",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "tell-your-story",
+      "prompt": "Tell us your story. What unique opportunities or challenges have you experienced throughout your high school career that have shaped who you are today?",
+      "word_limit": 750,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "life-event-college",
+      "prompt": "Describe a life event which you feel has prepared you to be successful in college.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "life-goals",
+      "prompt": "In a few words, what are some of your life goals and objectives?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "why-major",
+      "prompt": "In a few words, why have you chosen your academic major(s)?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "why-tamu",
+      "prompt": "We know you have a lot of options. In a few words, why did you choose to apply to Texas A&M?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "plans-beyond-bachelors",
+      "prompt": "Briefly describe any educational plans you have beyond earning your bachelor’s degree.",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "optional-shaped-abilities",
+      "prompt": "Are there experiences or opportunities that have shaped or influenced your abilities or academic record, which you have not already written about?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of finances (bank statement or equivalent liquid-funds document; third-party funds need a Declaration of Financial Support form or signed letter) submitted to International Student & Scholar Services (ISSS) to get the I-20. F-1 students must show at least one year of funding for the estimated cost of their program.",
+    "when": "before_i20",
+    "deadlines": [],
+    "notes": "Documents must be dated within 6 months of the date ISSS reviews them, on official letterhead, show the account holder name, current balance and currency (need not be USD, XE converter used), and be liquid assets; no Social Security numbers. Not accepted: statements of property/jewelry/cars, Chartered Accountant statements, pay stubs, trusts, passbooks. ISSS recommends bringing documents dated within 6 months to the visa interview. The ISSS page lists estimated cost-of-attendance tables for 2026 and 2027 I-20 requests; the dollar amounts were not read and are not copied here. The pages read do not give a calendar deadline for financial documents.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.tamu.edu/apply/freshman/index.html",
+      "title": "Texas A&M Admissions: Freshman, Essay & Short Answer Questions",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.tamu.edu/apply/international/international-freshman.html",
+      "title": "Texas A&M Admissions: International Freshman",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://global.tamu.edu/isss/student-scholar-resources/costs.html",
+      "title": "Texas A&M Global Engagement (ISSS): Costs and Financial Documents",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The same questions appear on the international freshman page (source 2). The essay section does not carry a cycle label, but the page lists Fall 2027 entry dates (application opens Aug 1, College Station deadline Dec 1, additional documents Dec 15), so it is treated as 2026-27. Fact-check 2026-10-27: the 100-word limit for the plans-beyond-bachelor's question is confirmed, not assumed: on both source 1 and source 2 it is the fourth item directly under the heading 'Required Short Answer Questions (100 words max):', before the next heading ('Optional Short Answer Question (250 words max)'). Applicants may use the Common App or ApplyTexas; ApplyTexas applicants also complete an Extracurricular Activities Form (not an essay). The College of Engineering's Entry to a Major (ETAM) essays are for students already enrolled, not part of the first-year application, so they are not included. The pages read do not state that financial documents are requested only after admission; ISSS says new F-1 students submit them to get an I-20, so timing is recorded as before_i20."
+}

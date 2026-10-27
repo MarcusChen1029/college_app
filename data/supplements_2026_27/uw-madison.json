@@ -1,0 +1,42 @@
+{
+  "slug": "uw-madison",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-uw-madison",
+      "prompt": "Tell us why you would like to attend the University of Wisconsin–Madison. In addition, please include why you are interested in studying the major(s) you have selected. If you selected undecided, please describe your areas of possible academic interest.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "each-student-unique",
+      "prompt": "Each student is unique. Please tell us about the particular life experiences, talents, commitments, and/or interests you will bring to our campus.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants using the Universities of Wisconsin Application (Common App applicants respond to one of the Common App personal statement prompts instead)",
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of funding for one full year of study (bank documents or other financial verification), submitted with the I-20 request through the Terra Dotta portal",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Financial documents should not be sent to the Office of Admission and Recruitment as part of the application. The portal opens once the student has accepted the offer of admission. The dollar amount and document rules are on the International Student Services site, which was not read.",
+    "source": 2
+  },
+  "sources": [
+    { "n": 1, "url": "https://admissions.wisc.edu/essays", "title": "UW–Madison Admissions: Admissions Essays", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://admissions.wisc.edu/international/", "title": "UW–Madison Admissions: International Students Applying to UW–Madison", "accessed": "2026-10-27" }
+  ],
+  "notes": "The essays page names no application cycle (footer shows 2026); it is the live page used for this cycle. It states that the maximum word count for each essay is 650 (recommends 300-500), so 650 is recorded for both prompts. The Common App personal statement is not listed here. The exact dollar amount for proof of funding was not found on the pages read."
+}

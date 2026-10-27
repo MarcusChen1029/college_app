@@ -1,0 +1,106 @@
+{
+  "slug": "villanova",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "writing-supplement-1",
+      "prompt": "As Pope Leo XIV (Villanova Class of 1977) has said, “no one can single-handedly bear the weight of the challenges the world is facing, just as no one is so weak that they cannot play their part.” What have you done to play your part in advancing equity and justice in your community?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "writing-supplement-2",
+      "prompt": "What is a lesson in life that you have learned that you would want to share with others at Villanova?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "writing-supplement-3",
+      "prompt": "\"Villanova\" means \"new home.\" Why do you want to call Villanova your new home?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "writing-supplement-4",
+      "prompt": "Villanova embraces Artificial Intelligence (AI) with a commitment to thoughtful, ethical use rooted in our Augustinian mission and values. How do you see technology helping you to lead, serve, and contribute to the common good?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "writing-supplement-5",
+      "prompt": "At Villanova, we often say \"each of us strengthens all of us.\" Please detail a time when someone has borrowed some of your strength in their time of need.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Certification of Finances form plus a bank statement or bank letter dated within the last three months, uploaded through the Applicant Status Page",
+    "when": "with_application",
+    "deadlines": [],
+    "notes": "The page says these documents must reach the Office of Undergraduate Admission 'by the designated deadlines' for the application to be considered complete, but it does not state those dates. International admission review is need-aware. Students applying for need-based aid also need the CSS Profile (Villanova code 2959) and, per the financial assistance office, the Certification of Finances with a supporting bank letter in English and US dollars (source 3). The Form I-20 is issued to enrolling students in the spring before fall enrollment (source 2).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.villanova.edu/university/undergraduate-admission/applying-to-villanova/application-essays.html",
+      "title": "Villanova Admission: First-Year Writing Supplement (2026-2027)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.villanova.edu/university/undergraduate-admission/applying-to-villanova/first-year-applicants.html",
+      "title": "Villanova Admission: First-Year Applicants (international financial documentation)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.villanova.edu/university/office-of-financial-assistance/financial-aid-process/international-students.html",
+      "title": "Villanova Office of Financial Assistance: International Student Financial Aid Process",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Prompt text is copied from the official 2026-2027 writing supplement page. The page asks for 'about 250 words' and says a few words over or under is fine, so word_limit 250 is a suggested length, not a hard cap. The supplement must differ from the Common App or Coalition essay. The bank-letter sample linked from the first-year page could not be downloaded (HTTP 403), and no exact submission date for the Certification of Finances was found."
+}

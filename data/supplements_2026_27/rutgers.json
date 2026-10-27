@@ -1,0 +1,41 @@
+{
+  "slug": "rutgers",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Rutgers International Student Financial Statement (ISFS) plus a bank letter or statement from the sponsor's financial institution on bank letterhead, uploaded to the Rutgers Global portal together with a passport photo page; needed to receive the I-20",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "ISFS and bank documents for the I-20 (after you accept the offer of admission)",
+        "date": null,
+        "note": "No calendar date published. Documents must be signed and dated no more than six months before Rutgers receives the completed I-20 application."
+      }
+    ],
+    "notes": "The balance shown must be greater than or equal to the amount on the ISFS. The 2027-2028 sample ISFS (source 3) lists estimated annual costs of $66,759 for year 1 (tuition and fees $40,839; room and board $17,805; miscellaneous $8,115), asks for bank statements for a checking or savings account, expects years 2-4 to rise 5 percent a year, and adds $5,000 for a spouse and $4,000 per child. Rutgers says to keep the original bank letter for the visa interview.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.rutgers.edu/apply/first-year-applicants",
+      "title": "Rutgers Admissions: Required Credentials for First-Year Applicants (Essay)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.rutgers.edu/apply/international-applicants",
+      "title": "Rutgers Admissions: Required Credentials for International Applicants (The Form I-20 Process)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.rutgers.edu/sites/default/files/2026-08/ISFS%202027_SAMPLE.pdf",
+      "title": "Rutgers: F-1 International Student Financial Statement (2027-2028 sample)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Source 1 says Rutgers requires one short original essay (Common App 250-650 words; 3,800 characters on the Rutgers Application) and that there are no supplemental essays required for the Common App. It also says a short statement is required if you choose to be considered for honors. The Honors College essay prompt and limit could not be read from its official page (honorscollege.rutgers.edu/admissions/how-apply returned HTTP 403), so no honors prompt is listed; search summaries describe an up-to-500-word question but this is unconfirmed. The first-year and international pages do not name the application year; the ISFS sample is for 2027-2028."
+}

@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Pill, TierBadge } from "@/components/badges";
 import { CollegeActions } from "@/components/CollegeActions";
+import { CollegeSupplementsSection, EssaysRequirement, IntlFinanceNote, SupplementSourceItems } from "@/components/CollegeSupplements";
+import { CollegeOutcomes } from "@/components/CollegeOutcomes";
+import { EnglishFitLine } from "@/components/EnglishFit";
+import { collegeEnglishFrom } from "@/lib/english-fit";
 import { DeadlineChip, StatusIcon, StatusPill } from "@/components/StatusPill";
 import { getCollege, getLookups } from "@/lib/data";
 import {
@@ -309,6 +313,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           ) : (
             <p className="text-sm text-zinc-500">{t("college.notRecorded")}</p>
           )}
+          <EnglishFitLine english={collegeEnglishFrom(c.english_policies, c.english_requirements)} className="mb-3" />
           {c.english_requirements.length > 0 && (
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-zinc-500">
@@ -354,7 +359,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm">
               <Row k={t("college.platform")} v={req.platforms.map((p) => PLATFORM[p] ?? p).join(", ") || "—"} />
               <Row k={t("college.appFee")} v={req.app_fee_usd != null ? (req.fee_waiver ? t("college.feeWithWaiver", { fee: fmtUsd(req.app_fee_usd) }) : fmtUsd(req.app_fee_usd)) : req.fee_waiver ? t("college.feeWaiverAvailable") : "—"} />
-              <Row k={t("college.essays")} v={req.supplemental_essays ?? "—"} />
+              <Row k={t("college.essays")} v={<EssaysRequirement slug={c.slug} fallback={req.supplemental_essays} t={t} />} />
               <Row k={t("college.recommendations")} v={req.teacher_recs != null ? t(req.counselor_rec ? "college.nTeacherCounselor" : "college.nTeacher", { n: req.teacher_recs }) : "—"} />
               <Row k={t("college.interview")} v={req.interview ? INTERVIEW[req.interview] : "—"} />
               <Row k={t("college.portfolio")} v={req.portfolio ?? "—"} />
@@ -375,6 +380,8 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           )}
         </Section>}
       </div>
+
+      {isUS && <CollegeSupplementsSection slug={c.slug} offset={c.sources.length} t={t} />}
 
       {isUS && (
       <div className="grid gap-8 lg:grid-cols-2">
@@ -399,6 +406,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                     {t("college.intlAidReceived", { n: fmtInt(cost.intl_need_aid_awarded), avg: fmtUsd(cost.intl_avg_award_usd) })}
                   </div>
                 )}
+                <IntlFinanceNote slug={c.slug} offset={c.sources.length} t={t} />
               </div>
               {cost.notes && <p className="mt-2 text-xs text-zinc-500">{cost.notes}</p>}
               <p className="mt-1 text-xs text-zinc-500">
@@ -446,6 +454,8 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       </div>
       )}
 
+      {isUS && <CollegeOutcomes slug={c.slug} />}
+
       {/* Factors */}
       {c.admission_factors.length > 0 && (
         <Section title={t("college.factorsTitle", { year: c.admission_factors[0].cds_year })}>
@@ -483,6 +493,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               <span className="text-xs text-zinc-500">{t("college.accessed", { date: fmtDate(s.accessed_on) })}</span>
             </li>
           ))}
+          <SupplementSourceItems slug={c.slug} offset={c.sources.length} t={t} />
         </ol>
       </Section>
 

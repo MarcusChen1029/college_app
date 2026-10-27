@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FieldMatchRow } from "@/components/FieldMatchRow";
+import { fmtDate } from "@/lib/format";
 import { FIELD_AREAS, FIELDS, cleanStudyFields, type FieldKey } from "@/lib/fields";
 import { recommend, type Bucket, type FieldEvidence } from "@/lib/field-match";
 import type { MatchRow } from "@/lib/field-match-view";
@@ -10,13 +11,14 @@ import { useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { REGIONS, cleanRegions, type RegionCode } from "@/lib/regions";
 import { useStudent } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import { buttonClass } from "@/lib/ui";
 
 const BUCKETS: Bucket[] = ["reach", "target", "safety", "unknown"];
 const PER_BUCKET = 8;
 const select = "h-10 w-full rounded-xl border-2 border-zinc-200 bg-white px-3 text-sm focus:border-blue-400 focus:outline-none disabled:opacity-50";
 
-export function FieldMatch({ colleges, evidence }: { colleges: MatchRow[]; evidence: Record<string, FieldEvidence> }) {
+export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRow[]; evidence: Record<string, FieldEvidence>; released: string }) {
   const t = useT();
   const student = useStudent();
   const profile = student.profile;
@@ -41,10 +43,13 @@ export function FieldMatch({ colleges, evidence }: { colleges: MatchRow[]; evide
   );
   const [open, setOpen] = useState<Partial<Record<Bucket, boolean>>>({});
   const total = BUCKETS.reduce((n, b) => n + result.buckets[b].length, 0);
-  const hasScores = profile.sat != null || profile.act != null;
+  const hasScores = scoredTests(profile).length > 0;
 
   const setFields = (next: FieldKey[]) => student.updateProfile({ studyFields: cleanStudyFields(next) });
   const fieldName = second ? `${label(main)} + ${label(second)}` : label(main);
+  // Scorecard earnings for the main direction only (the same one the graduate count describes).
+  const earningsFor = (slug: string) => (main === "undecided" ? undefined : evidence[slug]?.earnings?.[main]);
+  const showEarningsNote = main !== "undecided" && colleges.some((c) => earningsFor(c.slug));
 
   return (
     <div className="space-y-6">
@@ -116,7 +121,7 @@ export function FieldMatch({ colleges, evidence }: { colleges: MatchRow[]; evide
             </div>
             <ul className="space-y-2">
               {(all ? list : list.slice(0, PER_BUCKET)).map((rec) => (
-                <FieldMatchRow key={rec.college.slug} rec={rec} />
+                <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} />
               ))}
             </ul>
             {list.length > PER_BUCKET && (
@@ -148,13 +153,14 @@ export function FieldMatch({ colleges, evidence }: { colleges: MatchRow[]; evide
           <p className="mt-2 text-sm text-zinc-500">{t("match.weakerIntro")}</p>
           <ul className="mt-2 space-y-2">
             {result.weaker.map((rec) => (
-              <FieldMatchRow key={rec.college.slug} rec={rec} />
+              <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} />
             ))}
           </ul>
         </details>
       )}
 
       <p className="text-xs text-zinc-500">{t("match.dataNote")}</p>
+      {showEarningsNote && <p className="text-xs text-zinc-500">{t("outcomes.match.note", { date: fmtDate(released) })}</p>}
     </div>
   );
 }

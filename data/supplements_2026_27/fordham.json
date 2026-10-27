@@ -1,0 +1,78 @@
+{
+  "slug": "fordham",
+  "cycle": "2026-27",
+  "supplements": "optional_only",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "short-a",
+      "prompt": "At Fordham, we expect students to care for and engage with their communities and be active citizens for positive change. Please share an experience you had that caused you to develop a new perspective, change your point of view, and/or empower you to take an action or be courageous. Your response should include examples of your personal growth (e.g., what did you learn, did your point of view change, did you develop new skills or strengths?).",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "short-b",
+      "prompt": "Our motto is “New York is my campus, Fordham is my school.” New York City is a diverse and global city that provides Fordham students with a special kind of educational experience, full of both challenge and opportunity. What has prepared you to embrace the unique opportunity of living and learning in New York City?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "short-c",
+      "prompt": "At Fordham, we have a tradition of having our graduating seniors send a message to their younger selves. What will the future “you” tell the “you” of today about what you accomplished as a Fordham student?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Fordham University Statement of Funding (applicants who will fully fund their study); applicants seeking need-based aid instead submit the CSS Profile and show at least $50,000 USD per year. Students needing Fordham F-1 sponsorship also upload the Application for Certificate of Eligibility (AFCOE), bank/financial statements and the passport data page",
+    "when": "with_application",
+    "deadlines": [],
+    "notes": "The Statement of Funding is for first-year fall-term applicants on a non-immigrant visa (Fordham’s review is need-aware); “for eligible applicants, the form will be available in the applicant portal in red above the application checklist following submission of the application.” No separate due date is published for it. The page does not say when the AFCOE and bank statements are due; they are uploaded through the applicant portal.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.fordham.edu/undergraduate-admission/apply/what-were-looking-for/writing-for-the-common-application/",
+      "title": "Fordham Undergraduate Admission: Writing for the Common Application",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.fordham.edu/undergraduate-admission/international-students/",
+      "title": "Fordham Undergraduate Admission: International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.fordham.edu/undergraduate-admission/apply/",
+      "title": "Fordham Undergraduate Admission: How to Apply (deadlines Nov. 1, 2026 to Jan. 3, 2027)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The Common App essay is required; everything else in Fordham’s writing section is optional. The three short responses are “your choice of one of three” at 300 words max, and the requirements page lists them as optional. Fordham also offers the optional Common App Challenges and Circumstances and Additional Information sections, not entered as prompts. The Writing page does not print a cycle year; source 3 on the same site shows 2026-27 deadlines. The A/B/C order is Fordham’s; the categories are our judgement."
+}

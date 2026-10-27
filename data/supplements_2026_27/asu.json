@@ -1,0 +1,90 @@
+{
+  "slug": "asu",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "barrett-1",
+      "prompt": "What is a question you find yourself returning to repeatedly? How does your pursuit of an answer, or even just the persistence of the question itself, suggest you are a strong fit for Barrett?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Barrett, The Honors College applicants (separate free Barrett application)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "barrett-2",
+      "prompt": "Tell us about a time when something did not go according to plan. Focus less on the outcome and more on how the ways you responded in the moment suggest you are a strong fit for Barrett.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Barrett, The Honors College applicants (separate free Barrett application)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "challenge",
+      "source": 2
+    },
+    {
+      "key": "barrett-3",
+      "prompt": "What is an object that connects you to your family or community, and how or why does it do this? How does this connection make you a strong fit for Barrett?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Barrett, The Honors College applicants (separate free Barrett application)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 2
+    }
+  ],
+  "intl_finance": {
+    "document": "ASU Financial Guarantee form plus financial documents (bank statements, bank certification or balance certificate showing liquid assets only, dated within the last 12 months and signed or wet stamped by an authorized bank representative; or a sponsor/scholarship letter), uploaded in My ASU. Passport copy also needed.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Financial Guarantee form and documents for the I-20",
+        "date": null,
+        "note": "No fixed date is published. ASU says to submit them as soon as possible because an I-20 can take up to 70 business days."
+      }
+    ],
+    "notes": "The total available balance across all documents must meet or exceed the amount on the Financial Guarantee form for one academic year (9 months) of tuition, fees and living expenses; the figure depends on program and campus and is on ASU's form (not copied here). Documents must be in English or have a certified translation. The My ASU uploader accepts each document type only once, so combine files first. Process starts after ASU notifies the applicant of admission.",
+    "source": 4
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.asu.edu/apply/first-year/admission",
+      "title": "ASU Admission: First-year admission requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://barretthonors.asu.edu/why-barrett/faqs",
+      "title": "Barrett, The Honors College: FAQs (primary application essay for 2027)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://barretthonors.asu.edu/admissions/first-year-student",
+      "title": "Barrett, The Honors College: First-year student admissions",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admission.asu.edu/I-20-process",
+      "title": "ASU Admission: I-20 Process",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "ASU's own first-year application has no essay or personal statement (source 1: 'we do not require an essay or personal statement'). The only written prompts are for the separate Barrett Honors application: choose one of three prompts and write 300-500 words (word_limit shows the 500 maximum); the FAQ says AI should not be used. The FAQ heading says 'primary Barrett application essay for 2027' but does not say 'first-year'; Barrett Upper Level Entry and Barrett Online applicants write other essays that are not listed. The Financial Guarantee page did not load in readable form, so the dollar amount was not confirmed."
+}

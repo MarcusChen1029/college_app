@@ -3,6 +3,7 @@
 
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
 import { CHECKLIST, ESSAY_STATUSES, isDone, type Checklist } from "./checklist.ts";
+import { deadlineApplies } from "./deadline-rules.ts";
 import { computeFit, FIT_LABEL, type StudentProfile } from "./fit.ts";
 import {
   ADMIT_MODEL,
@@ -21,10 +22,14 @@ import {
   TEST_POLICY,
   TRANSFER,
 } from "./format.ts";
+import { makeT } from "./i18n/index.ts";
+import { testPlanText } from "./i18n/test-plan-text.ts";
 import { programApplyVia, programFee } from "./programs.ts";
 import { regionLabel } from "./regions.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "./scores.ts";
+import { intlFinanceLine, supplementLines, type SupplementSource } from "./supplements.ts";
 import type { Status } from "./student-store";
+import { scoredTests } from "./test-plan.ts";
 import type { CollegeDetail, CollegeSummary, Deadline } from "./types";
 
 export type PackCollege = {
@@ -68,13 +73,18 @@ function profileSection(p: StudentProfile): string[] {
     const parts = ENGLISH_TESTS[k].sections.filter((x) => s.sections?.[x.key] != null).map((x) => `${x.label} ${s.sections[x.key]}`).join(" / ");
     return [`  - ${ENGLISH_TESTS[k].label}: ${s.total}${parts ? ` (${parts})` : ""}${s.date ? `, taken ${fmtDate(s.date)}` : ""}`];
   });
+  const used = scoredTests(p);
+  const unused = (test: "sat" | "act") => (used.includes(test) ? "" : " (saved, but I'm not using this test)");
+  const planText = p.tests?.plan ? testPlanText(makeT("en"), "en", p.tests) : "";
   return [
     "## About me",
     `- Applicant type: ${p.international ? "International student" : "Not marked as international"}`,
     `- Target regions: ${p.targetRegions?.length ? p.targetRegions.map(regionLabel).join(", ") : "not chosen"}`,
     `- GPA (unweighted, 4.0 scale): ${p.gpa ?? "not entered"}`,
-    `- SAT: ${sat}`,
-    `- ACT: ${act}`,
+    ...(p.gpaWeighted != null ? [`- GPA (weighted, as on my transcript; the school's own scale, so not comparable with college averages): ${p.gpaWeighted}`] : []),
+    ...(planText ? [`- Admission test: ${planText}`] : []),
+    `- SAT: ${sat}${p.sat != null ? unused("sat") : ""}`,
+    `- ACT: ${act}${p.act != null ? unused("act") : ""}`,
     english.length ? "- English tests:" : "- English tests: none entered",
     ...english,
   ];
@@ -96,10 +106,10 @@ function activitiesSection(p: StudentProfile): string[] {
   ];
 }
 
-function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date) {
+function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date, international: boolean) {
   const d = all
     .filter((d) => d.institution_id === p.college.id && d.due_date && daysUntil(d.due_date, today) >= 0)
-    .filter((d) => d.kind !== "application" || !p.plan || d.plan_key === p.plan)
+    .filter((d) => deadlineApplies(d, { plan: p.plan, international }))
     .sort((a, b) => a.due_date!.localeCompare(b.due_date!))[0];
   if (!d) return "—";
   return `${fmtDate(d.due_date)} — ${d.label ?? (d.plan_key ? labels[d.plan_key] ?? d.plan_key : d.kind.replace(/_/g, " "))}`;
@@ -107,7 +117,7 @@ function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, st
 
 function listSection(input: PackInput, today: Date): string[] {
   if (!input.colleges.length) return ["## My list", "No colleges on my list yet."];
-  const hasScores = input.profile.sat != null || input.profile.act != null;
+  const hasScores = scoredTests(input.profile).length > 0;
   const intl = !!input.profile.international;
   return [
     `## My list (${input.colleges.length} colleges)`,
@@ -119,7 +129,7 @@ function listSection(input: PackInput, today: Date): string[] {
       const rate = intl && c.intl_admit_rate != null ? `${fmtPct(c.intl_admit_rate)} (international)` : fmtPct(c.admit_rate);
       const sat = c.sat_p25 != null && c.sat_p75 != null ? `${c.sat_p25}–${c.sat_p75}` : "—";
       const plan = p.plan ? input.planLabels[p.plan] ?? p.plan : "Undecided";
-      return `| ${[name(c), place(c) || "—", plan, statusLabel(p), fit ? FIT_LABEL[fit.fit] : "—", rate, sat, nextDeadline(p, input.deadlines, input.planLabels, today)].map(cell).join(" | ")} |`;
+      return `| ${[name(c), place(c) || "—", plan, statusLabel(p), fit ? FIT_LABEL[fit.fit] : "—", rate, sat, nextDeadline(p, input.deadlines, input.planLabels, today, intl)].map(cell).join(" | ")} |`;
     }),
     "",
     "Fit labels compare my scores with the college's admit rate and middle-50% scores. They are rough estimates, not predictions.",
@@ -150,6 +160,15 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
     if (!used.includes(id)) used.push(id);
     return ` [${used.indexOf(id) + 1}]`;
   };
+  // Supplements files carry their own source list; they join the same numbering under "supp:<url>" ids.
+  const suppSources = new Map<string, SupplementSource>();
+  const suppRef = (s: SupplementSource) => {
+    const id = `supp:${s.url}`;
+    suppSources.set(id, s);
+    if (!used.includes(id)) used.push(id);
+    return ` [${used.indexOf(id) + 1}]`;
+  };
+  const supp = d.supplements;
   const lines: string[] = [head];
 
   lines.push(`- About: ${join([d.control?.replace(/_/g, " "), d.setting, d.undergrad_enrollment != null && `${fmtInt(d.undergrad_enrollment)} undergraduates`, d.pct_international_ug != null && `${fmtPct(d.pct_international_ug)} international`]) || "—"}`);
@@ -228,10 +247,12 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
         req.midyear_report && "midyear report",
       ])}${ref(req.source_id)}`,
     );
-    // Free text; a bare "true"/"false" says nothing the notes don't, so skip it.
-    if (req.supplemental_essays && !/^(true|false)$/i.test(req.supplemental_essays.trim())) lines.push(`  - Supplemental essays: ${req.supplemental_essays}${ref(req.source_id)}`);
+    // Free text; a bare "true"/"false" says nothing the notes don't, so skip it. The prompts below replace it when on file.
+    if (!supp && req.supplemental_essays && !/^(true|false)$/i.test(req.supplemental_essays.trim())) lines.push(`  - Supplemental essays: ${req.supplemental_essays}${ref(req.source_id)}`);
     if (req.notes) lines.push(`  - Notes: ${req.notes}`);
   }
+  // US colleges only: UK/CA/AU applications have no college supplements in this sense.
+  if (supp !== undefined && (d.country_code ?? "US") === "US") lines.push(...supplementLines(supp, suppRef));
 
   const cost = latest(d.cost_aid, (x) => x.year);
   if (cost) {
@@ -247,6 +268,8 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
     );
     if (cost.notes) lines.push(`  - Notes: ${cost.notes}`);
   }
+  const finance = intlFinanceLine(supp ?? null, suppRef);
+  if (finance) lines.push(finance);
 
   if (d.major_admissions.length) {
     lines.push("- How majors are admitted:");
@@ -281,6 +304,8 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
   if (used.length) {
     lines.push("", "Sources:");
     used.forEach((id, i) => {
+      const ss = suppSources.get(id);
+      if (ss) return lines.push(`${i + 1}. ${ss.title} — ${ss.url} (accessed ${ss.accessed})`);
       const s = d.sources.find((x) => x.id === id)!;
       lines.push(`${i + 1}. ${s.title ?? s.kind} — ${s.url} (accessed ${s.accessed_on})`);
     });

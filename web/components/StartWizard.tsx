@@ -3,14 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore, type ReactNode } from "react";
 import { openSignIn } from "@/components/SignInDialog";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
+import { testCardView } from "@/lib/i18n/test-plan-text";
 import { cleanRegions } from "@/lib/regions";
-import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "@/lib/scores";
+import { ENGLISH_TEST_KEYS, ENGLISH_TESTS } from "@/lib/scores";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 import { GpaEditor } from "./ProfileForm";
 import { RegionsEditor, regionName } from "./ProfileCards";
-import { ActEditor, EnglishEditor, SatEditor, testLabel } from "./TestScoresForm";
+import { EnglishEditor, TestChoiceEditor, testLabel } from "./TestScoresForm";
 
 const noop = () => () => {};
 
@@ -32,6 +33,7 @@ function Block({ title, children }: { title: string; children: ReactNode }) {
 
 export function StartWizard() {
   const t = useT();
+  const locale = useLocale();
   const student = useStudent();
   const router = useRouter();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -46,6 +48,7 @@ export function StartWizard() {
   const regions = cleanRegions(profile.targetRegions);
   const englishKey = ENGLISH_TEST_KEYS.find((k) => profile.tests?.english?.[k]?.total != null);
   const english = englishKey ? profile.tests!.english![englishKey]! : null;
+  const test = testCardView(t, locale, profile);
 
   const go = (to: number) => {
     commitFocus();
@@ -146,11 +149,8 @@ export function StartWizard() {
             <Block title="GPA">
               <GpaEditor />
             </Block>
-            <Block title="SAT">
-              <SatEditor />
-            </Block>
-            <Block title="ACT">
-              <ActEditor />
+            <Block title={t("profile.test.title")}>
+              <TestChoiceEditor />
             </Block>
             <Block title={t("profile.englishTest")}>
               <EnglishEditor />
@@ -179,9 +179,8 @@ export function StartWizard() {
             {[
               [t("profile.start.applyingFrom"), profile.international ? t("profile.start.valAbroad") : t("profile.start.valUS")],
               [t("profile.start.regions"), regions.length ? regions.map((c) => regionName(t, c)).join(", ") : t("profile.start.valAll")],
-              ["GPA", profile.gpa ?? "—"],
-              ["SAT", profile.sat ?? "—", sectionSummary(SAT_SCALE, profile.tests?.sat)],
-              ["ACT", profile.act ?? "—", sectionSummary(ACT_SCALE, profile.tests?.act)],
+              ["GPA", profile.gpa ?? "—", profile.gpaWeighted != null ? t("profile.gpaWeightedShort", { gpa: profile.gpaWeighted }) : ""],
+              [test.label, test.value ?? "—", test.sub],
               [englishKey ? testLabel(t, englishKey, ENGLISH_TESTS[englishKey].label) : t("profile.englishTest"), english?.total ?? "—"],
             ].map(([k, v, sub]) => (
               <li key={String(k)} className="rounded-2xl bg-blue-50 p-3">

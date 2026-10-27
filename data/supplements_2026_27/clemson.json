@@ -1,0 +1,61 @@
+{
+  "slug": "clemson",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "honors-academic-goals",
+      "prompt": "Tell us about your academic interests and professional goals (to the extent that you have identified them at this point). What experiences, talents, accomplishments, and/or characteristics inspired and contributed to these goals? What avenues have you explored to learn more about this or to gain experience in this area to date? Note: This is your opportunity to tell us who you are as a thinker. Please focus your essay on you, your experiences, and your ideas, not on what the Honors College or Clemson offers.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Clemson Honors College applicants (separate Honors application)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "honors-common-app-essay",
+      "prompt": "The second essay is based on your response to one of the Common App essay prompts. If you have already written a response to one of these prompts in your Common App, that response is considered your second Honors application essay. If one is not on file, you are required to submit a response to one of the seven Common App essay prompts.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Clemson Honors College applicants (separate Honors application)",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "honors-special-circumstances",
+      "prompt": "Please use this space to share any special circumstances affecting your application that warrant consideration by the selection committee.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": false,
+      "applies_to": "Clemson Honors College applicants (separate Honors application)",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "IS-50 Financial Attestation Form plus bank statements or other financial documents, uploaded in the iStart portal (Request Certificate of Eligibility e-form, Financial Certification section) to get the I-20",
+    "when": "after_admission",
+    "deadlines": [
+      { "label": "Fall term: submit all Certificate of Eligibility materials", "date": null, "note": "July 1 (the page gives no year)" },
+      { "label": "Summer term: submit all Certificate of Eligibility materials", "date": null, "note": "April 1 (the page gives no year)" },
+      { "label": "Spring term: submit all Certificate of Eligibility materials", "date": null, "note": "November 15 (the page gives no year)" }
+    ],
+    "notes": "F-1 students must show funding that covers at least the first academic year. Documents must be issued within the last six months, show the account holder's name, the statement date and the liquid balance (the summary page is enough), and be in English or a certified translation. A sponsor (any account holder who is not the student) signs Part IV of the IS-50. Multiple statements must be combined into one PDF for upload. Clemson says it works with admitted students on funding verification and offers no scholarships to international undergraduates. The amount to show is calculated by the IS-50 form; the copy of the form that was read is dated 03/30/2023, so check the current form in the iStart portal for the amount. Deadlines come from the Certificate of Eligibility instructions (source 4).",
+    "source": 5
+  },
+  "sources": [
+    { "n": 1, "url": "https://www.clemson.edu/cuhonors/admissions/first-year-student.html", "title": "Clemson Honors College: First-Year Honors Admissions (Fall 2027 essay prompts)", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://www.clemson.edu/admissions/undergraduate-admissions/apply/first-year.html", "title": "Clemson Admissions: How to Apply, First-Year", "accessed": "2026-10-27" },
+    { "n": 3, "url": "https://www.clemson.edu/admissions/undergraduate-admissions/apply/international.html", "title": "Clemson Admissions: International Student Application Process", "accessed": "2026-10-27" },
+    { "n": 4, "url": "https://www.clemson.edu/campus-life/campus-services/international/forms%20folder/Student_Instructions_on_How_to_Request_Certificate_of_Eligibility.pdf", "title": "Clemson Immigration Services: How to request your Certificate of Eligibility", "accessed": "2026-10-27" },
+    { "n": 5, "url": "https://www.clemson.edu/campus-life/campus-services/international/forms%20folder/IS50_Financial_Certification.pdf", "title": "Clemson Immigration Services: IS-50 Financial Attestation Form", "accessed": "2026-10-27" },
+    { "n": 6, "url": "https://www.clemson.edu/campus-life/campus-services/international/student-arrival/budgeting.html", "title": "Clemson Immigration Services: Build Your Budget", "accessed": "2026-10-27" }
+  ],
+  "notes": "The general Clemson first-year application (Clemson, Coalition or Common App) lists no essay or writing supplement in its requirements (sources 2 and 3), and source 2 says personal statements and similar uploads are optional and not required for admission. The only written prompts found are in the separate Clemson Honors College application, which an applicant opens in the admissions portal after applying and which source 1 labels Fall 2027; supplements is set to required because Honors Essays 1 and 2 are required for students who apply to Honors. Honors Essay 2 is not a new prompt: it reuses a Common App essay response, and the prompt text above is how the Honors page describes it. No sourced 'none' statement was found for the general application, so the general application is not confirmed to have zero questions beyond what its requirements page lists. The Clemson, Coalition and Common App forms themselves were not viewed. Source 6 (budget page) says to use the Financial Attestation Form to find the funding amount; it was read only to confirm that."
+}

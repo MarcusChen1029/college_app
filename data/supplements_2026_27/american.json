@@ -1,0 +1,224 @@
+{
+  "slug": "american",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "au-short-answer",
+      "prompt": "American University students identify as changemakers and describe themselves as passionate. Describe a belief, hobby, idea, issue, or topic about which you’re excited.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "honors-1",
+      "prompt": "Tell us about a piece of creative work (e.g. artwork, music, literature, film, etc.) that has influenced the way you view the world and why. (300 words)",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "AU Honors Program applicants (optional program application; answer all three Honors questions)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "honors-2",
+      "prompt": "If you could design the ideal Honors course, what would it be and what would you want to learn from it? Why does this topic interest you? (300 words)",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "AU Honors Program applicants (optional program application; answer all three Honors questions)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "honors-3",
+      "prompt": "Technological and scientific advances often create benefits while also using large amounts of resources and/or causing unintended harms. How should society decide what costs and risks are acceptable in pursuit of progress? (300 words)",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "AU Honors Program applicants (optional program application; answer all three Honors questions)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "lincoln-1",
+      "prompt": "Tell us about a morally complicated text that you think would lead to good discussion for first year college students. In what way is the text morally complicated and why do you recommend it? (No more than 500 words)",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Lincoln Scholars Program applicants (optional program application)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "lincoln-2",
+      "prompt": "One goal of the Lincoln Scholars program is to encourage intellectual and political diversity on campus. What does this goal mean to you and why does a program with this goal interest you? (No more than 500 words)",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Lincoln Scholars Program applicants (optional program application)",
+      "choose": null,
+      "category": "why_us",
+      "source": 2
+    },
+    {
+      "key": "lincoln-3",
+      "prompt": "List five texts, magazines, movies, websites, podcasts, music, or other media (no social media apps or platforms) that are important to you and explain briefly why you like each one. Please list a variety of types of media. (1-2 sentences per item, no more than 400 words total).",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Lincoln Scholars Program applicants (optional program application)",
+      "choose": null,
+      "category": "short_answer",
+      "source": 2
+    },
+    {
+      "key": "sakura-1",
+      "prompt": "The Sakura Scholars program requires students to study in both the United States and Japan, learn the Japanese language, focus on regional topics in East Asia and the Pacific, and complete a capstone for the joint bachelor’s degree in Global International Relations. Why are you interested in this program? What are your personal and/or professional goals and how will this program help you to reach them? (500 words or less)",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Sakura Scholars Program (AU/Ritsumeikan joint degree) applicants (optional program application)",
+      "choose": null,
+      "category": "why_major",
+      "source": 2
+    },
+    {
+      "key": "sakura-2",
+      "prompt": "In this joint degree program, you will gain first-hand comparative international experience as you spend two years at American University and two years at Ritsumeikan University. Think of a time when you faced a challenge or found yourself in an unexpected situation. Explain what happened, what you learned, and how this experience might help you adapt to different intercultural situations, and work through future challenges as a Sakura Scholar. (500 words or less)",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Sakura Scholars Program (AU/Ritsumeikan joint degree) applicants (optional program application)",
+      "choose": null,
+      "category": "challenge",
+      "source": 2
+    },
+    {
+      "key": "global-1",
+      "prompt": "In your view, what is the greatest challenge facing humanity today and how do you envision yourself being part of the solution?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Global Scholars Program applicants (optional three-year program application)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "global-2",
+      "prompt": "Describe a situation in which you had to work harder than you expected. When and how did you know that your current efforts were not enough? How did you adjust? (500 words maximum)",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Global Scholars Program applicants (optional three-year program application)",
+      "choose": null,
+      "category": "challenge",
+      "source": 2
+    },
+    {
+      "key": "ppl-1",
+      "prompt": "The Politics, Policy and Law Scholars Program is an intensive course of study in which students from diverse backgrounds live and learn together. Given its intense and unique nature, why do you want to be a part of the program? Why do you think you would be a good fit for the Politics, Policy and Law Scholars Program? 250 words maximum.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Politics, Policy and Law Scholars applicants (optional three-year program application)",
+      "choose": null,
+      "category": "why_us",
+      "source": 2
+    },
+    {
+      "key": "ppl-2",
+      "prompt": "The Living Learning Community and cohort aspects are integral parts of the of the Politics, Policy and Law Scholars Program. Describe a specific project, course, or other experience that required you to work with others toward a shared goal or to resolve conflict and build consensus. How did you contribute to accomplishing the goal or resolving conflict? How did you engage with others? How has this experience prepared you for the PPL program? Be specific. 250 words maximum.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Politics, Policy and Law Scholars applicants (optional three-year program application)",
+      "choose": null,
+      "category": "community",
+      "source": 2
+    },
+    {
+      "key": "ppl-3",
+      "prompt": "You have been hired to advise a member of Congress or a state legislator (you can choose which one, but you should pick one) about the issues that affect Americans aged 18-26. You have been asked to identify one legal, political, or policy issue that will resonate with this group of Americans and recommend a policy proposal that he or she should support and promote. Explain the issue, explain why the elected official should highlight it, and propose a specific original policy solution. Provide support for your proposed solution. Your proposal should not simply be to support another individual’s already created policy. 650 words maximum.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Politics, Policy and Law Scholars applicants (optional three-year program application)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    },
+    {
+      "key": "public-health-1",
+      "prompt": "Explain what you hope to gain from joining a cohort program majoring in public health. Please include whether you plan to pursue the 3-year accelerated track or 4-year program track. Explain how your academic and extracurricular experiences have prepared you for this special academic program. 500 words maximum.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Public Health Scholars (3-year and 4-year tracks) applicants (optional program application)",
+      "choose": null,
+      "category": "why_major",
+      "source": 2
+    },
+    {
+      "key": "public-health-2",
+      "prompt": "Explain how your personal background will bring a unique perspective to the Public Health Scholars program and contribute to the collective of public health students and faculty at American University. 250 words maximum.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Public Health Scholars (3-year and 4-year tracks) applicants (optional program application)",
+      "choose": null,
+      "category": "identity",
+      "source": 2
+    }
+  ],
+  "intl_finance": {
+    "document": "AU Declaration of Finances Form (AU DFF), submitted through the AU applicant portal, reflecting at least US$83,680 for the first year of study and living expenses. After admission and enrollment: official bank letter, AU CFIS form completed by applicant and parent, and a copy of the passport.",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "AU Declaration of Finances Form (F-1/J-1 applicants)",
+        "date": null,
+        "note": "Due by the application deadline of the round you apply in. The form must be signed and dated within the past three months. The bank letter, AU CFIS form and passport copy are collected later, only if you are admitted and enroll (deposit)."
+      }
+    ],
+    "notes": "Only for students who need an F-1 or J-1 visa. AU is need aware for international students and does not accept the CSS Profile, FAFSA or College Board ISFAA from them. The page does not say which academic year the US$83,680 figure covers. Students applying for the Emerging Global Leader Scholarship also need a bank letter confirming at least US$4,000.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.american.edu/admissions/first-year/checklist.cfm",
+      "title": "American University: Prospective First-Year Student Application Checklist",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.american.edu/admissions/first-year/special-academic-programs.cfm",
+      "title": "American University: Applying to Special Academic Programs",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.american.edu/admissions/international/instructions.cfm",
+      "title": "American University: First Year Applicants (International instructions)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.american.edu/learning-communities/honors/prospective-students.cfm",
+      "title": "American University: Honors Program prospective students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "american.edu blocked direct downloads (HTTP 403 bot challenge) and the browser pane was refused, so the text of sources 1-4 was read from the Internet Archive's 2026-10-05 capture of those official pages (page text states the 2026-2027 cycle). Re-check the live pages. The AU Supplemental Short Answer is listed under Optional on the checklist and no word limit is given there. Special-program applications (Honors, Lincoln, Sakura, Global, PPL, Public Health) are optional extra applications made in the Future Eagle portal after the Common App; the questions are required only if you apply to that program. DC Community Impact Scholars needs no extra essay. Program deadline is December 1 (Sakura Scholars: November 1 for Early Decision I, December 1 for the other rounds). The Honors page (source 4) says Honors applicants answer three Honors essay questions. AU also requires the Common App personal essay."
+}

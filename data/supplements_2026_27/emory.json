@@ -1,0 +1,109 @@
+{
+  "slug": "emory",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "academic-interests",
+      "prompt": "What academic areas are you interested in exploring at Emory University and why?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "community",
+      "prompt": "Emory University has a strong commitment to building community. Tell us about a community that you have been part of where your personal participation helped to change or shape the community for the better.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "cultural-awareness",
+      "prompt": "Reflect on a personal experience where you intentionally expanded your cultural awareness.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "service",
+      "prompt": "Emory University’s unique mission calls for service to humanity. Share how you might personally contribute to this mission of service to humanity.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "disagreement",
+      "prompt": "In a scholarly community, differing ideas often collide before they converge. How do you personally navigate disagreement in a way that promotes progress and deepens meaningful dialogue?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Documentation of Finances (completed in the admission portal), or a statement from your bank or financial institution as proof of sufficient funding",
+    "when": "unknown",
+    "deadlines": [],
+    "notes": "Emory’s international page says international students must certify sufficient funds this way. Applicants who apply for financial aid still must provide it, but it does not need to show the full first-year cost. The page gives no due date. Separately, after admission Emory’s ISSS asks for financial documents (less than 12 months old when the I-20 request is submitted) and a Financial Sponsor Form for any account not in the student’s name, uploaded with the New Student I-20 Request.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://blog.emoryadmission.com/2026/08/emorys-short-answer-questions-2026-27/",
+      "title": "Emory Admission Blog: Emory’s Short Answer Questions 2026-27 (Aug 1, 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://apply.emory.edu/apply/international",
+      "title": "Emory Admission: International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://apply.emory.edu/apply/faqs",
+      "title": "Emory Admission: Frequently Asked Questions",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "http://isss.emory.edu/students/new-students/financial-requirements-and-sponsor-form",
+      "title": "Emory ISSS: Financial Requirements and Sponsor Form",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The 200-word length for the academic-interests question is published as “200 Words Recommended Length”, not a hard limit; the 150-word limit on the other four is published as “(150 Words)”. Emory says it is continuing the same questions as last cycle. The Common App personal statement is separate. Emory’s pages do not state a date for the Documentation of Finances; check the applicant portal checklist or ask the admission office."
+}

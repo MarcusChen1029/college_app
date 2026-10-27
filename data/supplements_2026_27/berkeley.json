@@ -1,0 +1,160 @@
+{
+  "slug": "berkeley",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": "uc-piq",
+  "prompts": [
+    {
+      "key": "piq-1-leadership",
+      "prompt": "Describe an example of your leadership experience in which you have positively influenced others, helped resolve disputes or contributed to group efforts over time.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-2-creativity",
+      "prompt": "Every person has a creative side, and it can be expressed in many ways: problem solving, original and innovative thinking, and artistically, to name a few. Describe how you express your creative side.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-3-talent",
+      "prompt": "What would you say is your greatest talent or skill? How have you developed and demonstrated that talent over time?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-4-education",
+      "prompt": "Describe how you have taken advantage of a significant educational opportunity or worked to overcome an educational barrier you have faced.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-5-challenge",
+      "prompt": "Describe the most significant challenge you have faced and the steps you have taken to overcome this challenge. How has this challenge affected your academic achievement?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "piq-6-academic-subject",
+      "prompt": "Think about an academic subject that inspires you. Describe how you have furthered this interest inside and/or outside of the classroom.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "piq-7-community",
+      "prompt": "What have you done to make your school or your community a better place?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "piq-8-strong-candidate",
+      "prompt": "Beyond what has already been shared in your application, what do you believe makes you a strong candidate for admissions to the University of California?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Non-immigrant Information Form (NIF) with a financial sponsor's guarantee of first-year funds; Berkeley International Office (BIO) accepts bank statements dated within 3 months, and for a parent/private sponsor the sponsor's bank statement plus a signed Guarantee of Financial Support (Private Sponsors) form",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Admissions page: all admitted international students complete the NIF; a guarantee by the applicant's financial sponsor proving sufficient funds for the first year of study is required; BIO issues the I-20/DS-2019 once it receives the completed NIF. BIO may request additional documents at its discretion. No date is published on the pages read.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/personal-insight-questions.html",
+      "title": "UC Admissions: Personal insight questions (first-year; 4 of 8, max 350 words each)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf",
+      "title": "UC Admissions: Presenting yourself on the first-year UC application 2026-27 (counselor guide)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.berkeley.edu/requirements-for-international-students/",
+      "title": "UC Berkeley Undergraduate Admissions: Requirements for International Students (Financial Documentation / Student Visa Information)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://internationaloffice.berkeley.edu/students/current/proofoffunding",
+      "title": "Berkeley International Office: Required Funding Documentation",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://admissions.berkeley.edu/application-tips",
+      "title": "UC Berkeley Undergraduate Admissions: Application Tips",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The 8 Personal Insight Questions are the same for all UC campuses (answer 4, max 350 words each); text copied from the UC Admissions page (source 1), which does not print a cycle year. Source 2 (UC counselor guide titled 2026-27) confirms the same format for the 2026-27 application: respond to 4 of the 8 questions, 350 words maximum per response. The UC application also has optional Additional comments boxes (source 2); they are not essay prompts and are not listed here. intl_finance details are from the admissions page (source 3) and the BIO funding page (source 4), which is a general page for new and extension requests and does not show an undergraduate dollar amount in the text read; check BIO's cost of attendance page for the amount. Source 5 names only the PIQs and the two Additional Comments boxes for the written part of the application and says Berkeley does not conduct interviews; no Berkeley-specific written questions were found."
+}

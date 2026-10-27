@@ -1,0 +1,118 @@
+{
+  "slug": "caltech",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "stem-interest",
+      "prompt": "Caltech has a rigorous core curriculum and students don't declare a major until the end of their first year. However, some students arrive knowing which academic fields and areas already most excite them, or which novel fields and areas they most want to explore.\nIf you had to choose an area of interest or two today, what would you choose?\n*Note that you are under no obligation to follow this choice if admitted.\nWhy did you choose your proposed area of interest? If you selected 'other', what topics are you interested in pursuing?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "scholarly-character-collaboration",
+      "prompt": "Option 1 -- COLLABORATION: STEM as shared learning\nTell us about a time your learning in STEM was shaped by another person or group — either because you needed help, offered help, changed your thinking through collaboration, or contributed to someone else's understanding. What did that experience teach you about learning and working with others?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 1 },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "scholarly-character-process",
+      "prompt": "Option 2 -- PROCESS: The thought behind the outcome\nTell us about a time your approach to a STEM problem, concept, or project mattered as much as the outcome. How did you work through uncertainty or persist creatively in tackling the problem? What would you still defend about your process, regardless of the outcome?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "A", "pick": 1 },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "scientific-drive-learning",
+      "prompt": "Option 1 -- LEARNING: STEM as a never-ending rabbit hole\nRegardless of your STEM interest listed above, take this opportunity to nerd out and talk to us about whatever STEM rabbit hole you have found yourself falling into. Be as specific or broad as you would like.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "B", "pick": 2 },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "scientific-drive-pursuing",
+      "prompt": "Option 2 -- PURSUING: STEM as sustained intellectual engagement\nTell us about a STEM question, problem, idea, or project that has held your attention over time. What drew you to it, how have you pursued it, and what do you still want to understand?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "B", "pick": 2 },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "scientific-drive-making",
+      "prompt": "Option 3 -- MAKING: STEM as creation\nTell us about something you created, tested, repaired, modeled, coded, built, or redesigned. What problem were you trying to solve and what did the process reveal to you?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": { "group": "B", "pick": 2 },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "fun-question",
+      "prompt": "Caltech students bring more than academic ability to the communities they join. What is something you would be excited to do, share, teach, make, start, or contribute as part of the Caltech community?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "academic-context",
+      "prompt": "Caltech cares about context. Is there anything about your academic preparation, coursework, school context, or learning experiences that would help us better understand your readiness for Caltech?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": null,
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays",
+      "title": "Caltech Undergraduate Admissions: Supplemental Application Essays (Fall 2027)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.admissions.caltech.edu/apply/first-year-applicants/application-requirements",
+      "title": "Caltech Undergraduate Admissions: First-Year Application Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.finaid.caltech.edu/applying/how/newinternationalrd",
+      "title": "Caltech Financial Aid: New International Applicants, Regular Decision",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The page is labeled Fall 2027 and shows the 2026-27 first-year questions. The 150-200 word range is stated only for the STEM interest question; the minimum of 100 words for the Fun Question is also published (the maximum is 150). The optional academic context question states no word limit. Caltech's published international pages only describe the International Financial Aid Statement of Intent (asked in the application) and aid forms (CSS Profile etc.); no proof-of-funds or I-20 financial document requirement was found on any Caltech admissions or financial aid page, so intl_finance is null. The aid page found is labeled for fall 2026 entry, so its deadlines were not used."
+}

@@ -1,0 +1,68 @@
+{
+  "slug": "tulane",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Declaration and Certification of Finances form (signed by a bank official, or with a bank statement showing available funds attached instead of the signature) with the yearly funding list completed; attach a letter if a government or organization scholarship pays tuition",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "Early Decision I: Certification of Finances (international applicants)",
+        "date": null,
+        "note": "The deadlines page (source 3) prints November 1 with no year, so no date is recorded."
+      },
+      {
+        "label": "Early Action: Certification of Finances (international applicants)",
+        "date": null,
+        "note": "The deadlines page (source 3) prints November 10 with no year, so no date is recorded."
+      },
+      {
+        "label": "Early Decision II: Certification of Finances (international applicants)",
+        "date": null,
+        "note": "The deadlines page (source 3) prints January 15 with no year, so no date is recorded."
+      },
+      {
+        "label": "Regular Decision: Certification of Finances (international applicants)",
+        "date": null,
+        "note": "The deadlines page (source 3) prints January 15 with no year, so no date is recorded."
+      }
+    ],
+    "notes": "The form is required for non-US citizen and non-permanent-resident applicants; Tulane says it will not review the application until the form is submitted, and a late form delays the admission decision. It is completed in the Green Wave Portal after starting the application and uploaded as a scanned PDF to the application status portal. Applicants certify the amount they and their family can contribute per year, up to the listed cost. The form posted now shows a 2026-2027 estimate of $99,569 per year; it says maximum need-based aid for international students is $30,000 per year and the maximum merit scholarship considered automatically is $55,000, so certifying at least $44,569 (the total cost minus $55,000) is needed to be admitted at the earliest date. Need-based aid needs the CSS Profile (deadline 15 February for Regular Decision per the international page).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.tulane.edu/apply/instructions/",
+      "title": "Tulane Admission: Application Instructions (checklist)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.tulane.edu/Certification-of-Finances-PDF",
+      "title": "Tulane Admission: Declaration and Certification of Finances (PDF)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admission.tulane.edu/apply/deadlines-forms",
+      "title": "Tulane Admission: Important Dates, Deadlines, & Forms",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admission.tulane.edu/international",
+      "title": "Tulane Admission: International Admission",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://admission.tulane.edu/plan-for-college",
+      "title": "Tulane Admission: Start Planning for College (last modified April 9, 2020, Class of 2025)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Supplements are unknown rather than none. Tulane's own pages do not state the 2026-27 position: the only official page found that describes the optional Why Tulane statement (source 5) is from 2020, while the application instructions checklist (source 1) and the deadlines page (source 3) mention only the application, personal statement and activities list, without saying there are no supplemental questions. Non-official sources report that Tulane removed the Why Tulane essay for fall 2027 applicants, but no official Tulane page confirming it was found (the Common App writing panel is not public), so no prompt is listed. Confirm in the Common App before relying on this. The certification form still shows 2026/2027 as Year 1 and its file date is January 2026, so it may be refreshed for the fall 2027 cycle. Fact-check 2026-10-27: the Certification of Finances dates were set to null because the deadlines page prints month and day without a year (re-read via WebFetch: no year anywhere in the page body); the month and day are kept in each deadline note. The instructions page (source 1, re-read 2026-10-27) still lists only 'Application (including list of activities and personal statement)' and no Why Tulane question, so supplements stays unknown."
+}

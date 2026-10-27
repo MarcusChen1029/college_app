@@ -1,0 +1,109 @@
+{
+  "slug": "wake-forest",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-wake",
+      "prompt": "Why Wake?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "books",
+      "prompt": "List five books you’ve read that have intrigued you.",
+      "word_limit": null,
+      "char_limit": 150,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "intellectual-curiosity",
+      "prompt": "Tell us what piques your intellectual curiosity or has helped you understand the world’s complexity. This can include a work you’ve read, a project you’ve completed for a class, and even co-curricular activities in which you have been involved.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "maya-angelou",
+      "prompt": "Dr. Maya Angelou, renowned author, poet, civil-rights activist, and former Wake Forest University Reynolds Professor of American Studies, inspired others to celebrate their identities and to honor each person’s dignity. Choose one of Dr. Angelou’s powerful quotes. How does this quote relate to your lived experience or reflect how you plan to contribute to the Wake Forest community?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "top-ten-list",
+      "prompt": "Give us your Top Ten List. (The choice of theme is yours.)",
+      "word_limit": null,
+      "char_limit": 100,
+      "required": false,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "short_answer",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Confidential Financial Information for International Applicants form, with bank document(s) for personal or family funds, a sponsor's letter of support if applicable, and scholarship award letters if applicable",
+    "when": "with_application",
+    "deadlines": [],
+    "notes": "Wake Forest says unless an international applicant is offered a merit scholarship, the applicant must show sufficient support with this form before the University will consider the applicant for admission (source 3); the form itself says applicants must demonstrate the ability to meet expenses prior to admission (source 4). Wake Forest offers no need-based aid to international students. Admitted international applicants who pay the admission deposit are issued an I-20. No submission date is published. The only copy of the form found is a 2019 upload whose cost figures refer to 2023/2024, so the current version and amounts should be checked with the admissions office.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.wfu.edu/2026/07/wake-forest-applications-open-august-1-heres-whats-new/",
+      "title": "Wake Forest Admissions blog: Wake Forest Applications Open August 1! Here's What's New (July 22, 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.wfu.edu/apply/",
+      "title": "Wake Forest Admissions: How to Apply",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.wfu.edu/become-a-deacon/international/",
+      "title": "Wake Forest Admissions: International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://prod.wp.cdn.aws.wfu.edu/sites/203/2019/09/International-Financial-Form.pdf",
+      "title": "Wake Forest: Confidential Financial Information for International Applicants (form)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Prompts come from the official 2026-27 admissions blog post (source 1): the written supplement is optional and the applicant chooses one of four prompts, and 'Why Wake?' is still required at up to 100 words in the supplemental questions section. The post does not give the full wording of the 'Why Wake?' question, so the prompt field holds only the name the post uses for it. Character limits are 150 per book title (prompt 1) and 100 per line (Top Ten List). The same four optional questions appear word for word in Wake Forest's own 2025-26 print application (read from a Wayback Machine copy), which was used only as a cross-check of the wording. Wake Forest also offers an optional 2-3 minute video response and an optional interview; those are not written prompts and are not listed."
+}

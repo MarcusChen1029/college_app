@@ -1,0 +1,108 @@
+{
+  "slug": "stony-brook",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "honors-fit",
+      "prompt": "Please discuss why you are a good fit for your preferred University Honors Program (Honors College, WISE or University Scholars).",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Honors College, WISE or University Scholars applicants (one statement for the preferred program, uploaded to the StartSBU Portal)",
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "yardi-fit",
+      "prompt": "Please discuss why you are a good fit for the Yardi Scholars Program and a good fit for your College of Business major.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Yardi Scholars applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "scholars-medicine",
+      "prompt": "What aspects about medicine/dental medicine intrigue you? Describe how these aspects influence your life.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Scholars for Medicine and Scholars for Dental Medicine applicants (additional to the honors statement)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "simons-stem-self",
+      "prompt": "Tell us more about yourself; in particular, how your academic, extracurricular and life experiences have influenced your desire to pursue a career in STEM. Additionally, explain how the Stony Brook Simons STEM program will help you achieve these goals.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Simons STEM Scholars applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 2
+    },
+    {
+      "key": "simons-stem-phd",
+      "prompt": "Please tell us how pursuing a Phd in STEM will help you achieve your educational and professional aspirations?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Simons STEM Scholars applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 2
+    },
+    {
+      "key": "simons-stem-communities",
+      "prompt": "How are the perspectives of multiple communities helpful to the advancement of STEM research?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Simons STEM Scholars applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 2
+    }
+  ],
+  "intl_finance": {
+    "document": "Documents showing the ability to meet one year of educational and living expenses, submitted through accessVIS (Stony Brook's visa and immigration portal) when requesting the I-20 (Certificate of Visa Eligibility).",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "accessVIS login instructions sent to admitted students (Fall entry)",
+        "date": null,
+        "note": "after March 1 (Spring entry: after October 1)"
+      }
+    ],
+    "notes": "The page states financial documentation is not needed for an admission decision. Only admitted students who deposit and complete the I-20 request in accessVIS receive an I-20. The page links a VIS webpage listing the exact documents and estimated costs; that page was not read.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.stonybrook.edu/undergraduate-admissions/first-year/",
+      "title": "Stony Brook Undergraduate Admissions: First-Year (Honors Program Essays, Statements, or Supplemental Documents)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.stonybrook.edu/commcms/simonsscholars/prospective/roadmap.php",
+      "title": "Stony Brook Simons STEM Scholars: Application Roadmap",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.stonybrook.edu/undergraduate-admissions/first-year/international.html",
+      "title": "Stony Brook Undergraduate Admissions: International First-Year Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Stony Brook has no college-wide supplemental prompt: general applicants submit only an essay on a topic of their choice (the Common App/SUNY App essay, uploaded with the application or to the StartSBU Portal), so the required prompts above apply only to students applying to the named programs. The honors statement is asked to be 'approximately 250 words'; 250 is recorded as the limit. The Yardi Scholars statement limit is also approximately 250 words (same page paragraph). Honors deadlines for Fall 2027: priority November 1, final January 15; Simons STEM applications due November 1 (the Simons page, source 2, shows 2027 selection weekends). Some restricted majors may have extra requirements; no additional written prompts were found on the pages read. The International page (source 3) repeats the honors statement without Yardi."
+}

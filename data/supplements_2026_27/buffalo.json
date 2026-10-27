@@ -1,0 +1,47 @@
+{
+  "slug": "buffalo",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "International Applicant Financial Form (Financial Form 2027) + bank statement/letter or other acceptable proof of funds for the first year",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Complete the form if admitted for spring 2027 or fall 2027 and an I-20 is needed. Estimated first-year total shown for a fall or spring admit: $61,030 (tuition $29,070, fees $4,166, student health insurance $2,300, on-campus housing and dining $18,606, related expenses $6,888); UB says costs are estimates subject to change and the related-expenses figures are 2025-26 estimates. Documents must be on official letterhead, show liquid assets, be dated within six months of submission to UB, be in English or officially translated, state the currency and the account holder's name. Not acceptable: letters of employment/salary statements, credit card statements, insurance policy statements, tax returns, trust funds, mutual funds, stock statements, valuation statements, chartered accountant statements, cryptocurrency. Documents are uploaded through the Applicant Status Page; scans are accepted.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.buffalo.edu/admissions/apply/first-year.html",
+      "title": "UB Undergraduate Admissions: First-Year",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.buffalo.edu/admissions/apply/international/first-year.html",
+      "title": "UB Undergraduate Admissions: International First-Year",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.buffalo.edu/admissions/costs/tuition/international-financial-form.html",
+      "title": "UB Undergraduate Admissions: International Financial Details",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.buffalo.edu/internationaladmissions/get-ready-to-apply/apply/immigration-and-financial-documents-checklist.html",
+      "title": "UB Undergraduate Admissions: Immigration Steps",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://www.buffalo.edu/honors/admissions/apply.html",
+      "title": "UB University Honors College: How to Apply",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "UB's first-year and international first-year pages list no college-specific written questions, but they also never state that there are none (the international page says admission considers \"essay\"; another UB international checklist marks the personal essay optional), so supplements is unknown rather than none. First-year applicants to the University Honors College apply in the Academics section of the Common App or Coalition app (or an ApplySUNY Honors supplemental form) and write an Honors essay, but UB's page does not publish the first-year prompt; the two 500-word prompts on that page are for transfer/current-student and Singapore applicants, so they are not included. The financial form page says the form is for students already admitted; no deadline date is published for it, and the financial estimate is labeled for 2025-26 related costs."
+}

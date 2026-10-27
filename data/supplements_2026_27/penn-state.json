@@ -1,0 +1,158 @@
+{
+  "slug": "penn-state",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "shc-essay",
+      "prompt": "Identify an important global or local issue that you believe does not receive sufficient attention. Why is this issue often overlooked or under-addressed? Analyze possible paths forward and propose a realistic strategy to raise awareness and advance solutions. Finally, evaluate your proposal's potential to create meaningful change, considering its feasibility, limitations, trade-offs, implementation challenges, and possible unintended consequences.",
+      "word_limit": 800,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "other",
+      "source": 5
+    },
+    {
+      "key": "shc-empowered-growth",
+      "prompt": "One of the Schreyer Honors College values is Empowered Growth. What values, beliefs or experiences have empowered you to grow intellectually and/or personally?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 5
+    },
+    {
+      "key": "shc-anywhere",
+      "prompt": "If you were able to go anywhere in the world, outside of the country you currently reside in, where would you go and why?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "short_answer",
+      "source": 5
+    },
+    {
+      "key": "shc-activities",
+      "prompt": "List your extracurricular activities over the last four years. This can include school and non-school activities. Please include any leadership roles you have had.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "activity",
+      "source": 5
+    },
+    {
+      "key": "shc-leadership",
+      "prompt": "Describe a significant leadership experience that has shaped who you are. This may include roles in your community, family, research, work, or extracurricular involvement. What challenges did you encounter, how did you respond, and what did you learn about leadership from this experience? How has this perspective influenced your approach to leading or collaborating with others?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "activity",
+      "source": 5
+    },
+    {
+      "key": "shc-awards",
+      "prompt": "List awards or other recognitions (if any) you have received in or outside of school over the last four years.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "short_answer",
+      "source": 5
+    },
+    {
+      "key": "shc-recognition-impact",
+      "prompt": "Reflecting on the recognitions listed above, which one stands out as having an impact on your outlook and why?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "other",
+      "source": 5
+    },
+    {
+      "key": "shc-book-media",
+      "prompt": "Tell us about a book or other media that has made you think about something in a new way.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 5
+    },
+    {
+      "key": "shc-community",
+      "prompt": "Select one community or group that has been meaningful to you over the past four years. This could be defined by shared geography, identity, interests, values, or experiences. How has your involvement shaped your perspectives, choices, and sense of belonging? Provide specific examples, and reflect on how this influence continues to affect how you engage with others or your academic and personal goals.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "community",
+      "source": 5
+    },
+    {
+      "key": "shc-optional-additional",
+      "prompt": "Please use this space to share information you would like us to consider that has not been discussed elsewhere in your application (this is optional).",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": false,
+      "applies_to": "Schreyer Honors College applicants (separate Schreyer application, deadline November 15)",
+      "choose": null,
+      "category": "other",
+      "source": 5
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial guarantee: proof of funds plus a signed Certification of Financial Support, covering the estimated first-year cost of attendance (amount published by International Student and Scholar Advising)",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "No financial or visa documents are required at the time of application; applicants should not send them until they receive an admissions decision. After the offer and payment of acceptance fees, ISSA opens a file for the visa eligibility document and emails next steps. The guarantee must be no more than 6 months old. The dollar amount and exact documents are on the ISSA site; no fixed date is published on these pages.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.psu.edu/resources/first-year-students/steps-to-apply",
+      "title": "Penn State: First-Year Students, Steps to Apply",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.psu.edu/resources/international-students/steps-to-apply",
+      "title": "Penn State: International Students, Steps to Apply",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://global.psu.edu/page/financial-guarantee-requirements",
+      "title": "Penn State Global: Financial Guarantee Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.psu.edu/resources/first-year-students/requirements",
+      "title": "Penn State: Admissions Requirements for First-Year Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://shc.psu.edu/admissions/first-year",
+      "title": "Schreyer Honors College: First-Year Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The steps-to-apply pages list the application, fee and STARS record as required and say the Activities section and Personal Statement are optional (a Common App essay is accepted as the Personal Statement); they list no supplemental essay. They add that some programs require additional items (check the Application Checklist in MyPennState) and some require recommendations, so program-specific writing (for example honors or direct-admit programs) was not checked. The pages do not state a cycle; treated as current (accessed 2026-10-27). The global.psu.edu page is the University Park view of a campus selector; its date was not confirmed. Fact-check 2026-10-27: changed 'none' to 'required'. The general Penn State application still has no supplemental essay (the Personal Statement is optional and the Common App essay is accepted for it, source 1), but the first-year requirements page (source 4) lists programs with extra written requirements: the Schreyer Honors College (essays and short answers) and the Millennium Scholars Program (essay question responses, not published on the pages read, so not listed). The Schreyer page (source 5) labels these the 2027 Essay Question (800 words maximum) and 2027 Short Answer Questions (8 required and 1 optional, 200-word limit each)."
+}

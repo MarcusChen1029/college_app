@@ -1,0 +1,124 @@
+{
+  "slug": "stanford",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "short-1",
+      "prompt": "What is the most significant challenge that society faces today?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-2",
+      "prompt": "How did you spend your last two summers?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-3",
+      "prompt": "What historical moment or event do you wish you could have witnessed?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-4",
+      "prompt": "Briefly elaborate on one of your extracurricular activities, a job you hold, or responsibilities you have for your family.",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "short-5",
+      "prompt": "List five things that are important to you.",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "essay-learning",
+      "prompt": "The Stanford community is deeply curious and driven to learn in and out of the classroom. Reflect on an idea or experience that makes you genuinely excited about learning.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "essay-roommate",
+      "prompt": "Virtually all of Stanford's undergraduates live on campus. Write a note to your future roommate that reveals something about you or that will help your roommate—and us—get to know you better.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "essay-contribution",
+      "prompt": "Please describe what aspects of your life experiences, interests, and character would help you make a distinctive contribution as an undergraduate to Stanford University.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of funding for one year (personal bank statement or letter from a financial institution; family funding needs the family member's bank statement plus a support letter; Stanford undergraduate financial aid letter also accepted), uploaded to Bechtel Connect to request the I-20. Amounts in US dollars or with a US dollar conversion.",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "All funding documents must be no older than six months. The I-20 requires proof of funding for one academic year (nine months or three quarters). Admitted undergraduates receive the I-20 request instructions from the Office of Undergraduate Admissions; Bechtel says the I-20 is issued digitally within four weeks after a complete request. No date for submitting the documents is published on the pages read.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.stanford.edu/apply/first-year/apply.html",
+      "title": "Stanford Undergraduate Admission: First-Year Applicants, Application and Essays (updated July 21, 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://bechtel.stanford.edu/navigate-international-life/visas/f-1-and-j-1-student-visas/applying-visa-document-newly-admitted",
+      "title": "Stanford Bechtel International Center: Before Applying for a Visa Document for Newly Admitted Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admission.stanford.edu/apply/international/index.html",
+      "title": "Stanford Undergraduate Admission: International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The Stanford Questions page does not name the cycle; it is marked 2026-27 because it says the Questions become available in early August each year, was last updated July 21, 2026, and the requirements page (updated September 10, 2026) lists Nov 1 and Jan 5 deadlines. Re-check the wording in the Common App once Stanford is added to the list. The page gives a 3-word minimum and 50-word maximum for the short questions and a 100-word minimum and 250-word maximum for the essays. The old Certification of Finances PDFs on financialaid.stanford.edu are from earlier years and were not used; the Bechtel page above is the current I-20 funding instruction. International citizens who request financial aid are considered in admission evaluation (source 3); this is not a document requirement."
+}

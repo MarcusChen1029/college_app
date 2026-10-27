@@ -1,3 +1,6 @@
+import type { CollegeSupplements } from "./supplements.ts";
+import type { CollegeEnglish } from "./english-fit.ts";
+
 // Subject tiers are plain S–D; the general tier may also be S++, S+, A++, … D+.
 export type TierCode = "S++" | "S+" | "S" | "A++" | "A+" | "A" | "B++" | "B+" | "B" | "C++" | "C+" | "C" | "D++" | "D+" | "D";
 
@@ -200,6 +203,9 @@ export type CollegeDetail = {
     internal_transfer: string | null;
     notes: string | null;
   }[];
+  /** Not from the database: supplemental prompts from lib/data/supplements.json, attached by the AI-context callers
+   * (/api/college-details, MCP). undefined = not attached; null = no file for this college (not researched). */
+  supplements?: CollegeSupplements | null;
 };
 
 export type Lookups = {
@@ -209,13 +215,15 @@ export type Lookups = {
   englishTests: { key: string; name: string; max_score: number | null }[];
 };
 
-// Per-college English-test summary for the map card: policy plus minimum totals by test.
+// Per-college English-test summary for the map card and table: policy plus minimum totals by test.
+// `tests` is the full per-test view lib/english-fit.ts compares the student's scores with.
 export type EnglishSummary = {
   policy: string | null;
   toefl: number | null; // TOEFL iBT, 0–120
   toefl2026: number | null; // TOEFL iBT new 1–6 scale
   ielts: number | null;
   duolingo: number | null;
+  tests: CollegeEnglish["tests"];
 };
 
 // Estimated SAT total percentiles, summed from the section (ERW + Math) percentiles.
