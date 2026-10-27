@@ -33,11 +33,12 @@ test("subject, exact generic title, level and semester boxes", () => {
   assert.deepEqual(p!.warnings, []);
 });
 
-test("English goes under Languages; no exact title means OTHER ENGLISH with a warning", () => {
+test("English goes under Languages; a name STARS has no title for means OTHER ENGLISH, listed once in titleOther", () => {
   const [p] = rows([course({ name: "English Language Arts 9", subject: "english" })]);
   assert.equal(p!.rows[0]!.subject, "Languages");
   assert.equal(p!.rows[0]!.title, "OTHER ENGLISH");
-  assert.deepEqual(p!.warnings, ["English Language Arts 9: Course/Exam Content set to OTHER ENGLISH; pick a closer title on STARS if there is one"]);
+  assert.deepEqual(p!.titleOther, ["English Language Arts 9"]);
+  assert.deepEqual(p!.warnings, []);
 });
 
 test("the generic-title override wins when it is in the subject's list", () => {
@@ -105,5 +106,13 @@ test("a US school gets the US page: its own titles and levels, no 'taken in' lev
   assert.deepEqual(r.boxes.map((b) => b.grade), ["A-", "In Progress"]);
   const [e] = buildStarsPlans([us], [course({ name: "English 9", subject: "english", subSubject: null })]);
   assert.equal(e!.rows[0]!.subject, "English");
-  assert.equal(e!.rows[0]!.title, "OTHER ENGLISH");
+  assert.equal(e!.rows[0]!.title, "ENGLISH 1");
+});
+
+test("one credit printed for the whole course is split evenly over the terms it runs", () => {
+  const [p] = rows([course({ credit: 10, terms: [{ term: "S1", grade: "", status: "in_progress" }, { term: "S2", grade: "", status: "in_progress" }] })]);
+  assert.deepEqual(p!.rows[0]!.boxes, [{ grade: "In Progress", credit: "5" }, { grade: "In Progress", credit: "5" }]);
+  assert.equal(p!.creditsSplit, 1);
+  const [q] = rows([course({ credit: 2, terms: [{ term: "S1", grade: "", status: "none" }, { term: "S2", grade: "", status: "in_progress" }] })]);
+  assert.deepEqual(q!.rows[0]!.boxes.map((b) => b.credit), ["0", "2"]);
 });

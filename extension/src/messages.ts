@@ -43,7 +43,7 @@ export type AssistMessage =
   | { type: "assistTarget" }
   | { type: "assistInsert"; value: string; advance: boolean }
   | { type: "starsPage" }
-  | { type: "starsFill"; row: StarsRow; scale: string | null }
+  | { type: "starsFill"; row: StarsRow; scale: string | null; language: string | null }
   | { type: "csuFill"; plan: CsuSchoolPlan }
   | { type: "csuStop" }
   | { type: "ucPage" }
@@ -53,7 +53,7 @@ export type AssistResponse =
   | { type: "assistTarget"; label: string | null }
   | { type: "assistInsert"; result: InsertResult; label: string }
   /** year: the coursework page's `yr` (null on any other STARS page). */
-  | { type: "starsPage"; year: number | null; kind: "intl" | "us" | null; existing: string[]; pageText: string }
+  | { type: "starsPage"; year: number | null; kind: "intl" | "us" | null; existing: string[]; pageText: string; errors: string[] }
   | { type: "starsFill"; ok: true; saved: boolean; blanks: string[] }
   | { type: "starsFill"; ok: false; error: string }
   | { type: "csuFill"; result: CsuRunResult }

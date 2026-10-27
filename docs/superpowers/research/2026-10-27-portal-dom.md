@@ -43,6 +43,12 @@ page). After a save the form clears except academic level and language. Exact op
 - A pick shows its value before STARS finishes the update it starts; a Save Course pressed right after lost the grades. Wait ~1.5 s and re-check.
 - The course name box is reset to the generic title by later picks: type the name (and credits) last.
 - After choosing a subject, the title list may still be the previous subject's for a moment: compare before trusting it.
+- Full-year run with the owner's real transcript on the throwaway record (2026-10-27, 2023-24: 12 courses, 2024-25: 6): the page updates a
+  pick starts can reset ANY box, before or after it (Proficiency Level and the grades were cleared). The filler waits until the form has had
+  no DOM changes for 0.7 s after each pick, then checks every box and re-applies what was reset (up to twice) before Save Course.
+- "Language of Instruction" (`course_language`) is empty on a fresh page load and required; STARS only keeps it after a save in the same
+  session. A failed save shows validators `ctl00_mainContent_v_<field>` ("Required") instead of reloading.
+- The school's Grade Scale, dates and school-year type on Enter Schools decide which year pages exist ("2023-2024" ... "2026-2027").
 - RadDropDownTree: the tree lives outside the widget in `#<widgetId>_EmbeddedTree`; a click on a leaf `.rtText` selects it even while closed.
 - Radios: click the radio whose `<label for>` text matches.
 
