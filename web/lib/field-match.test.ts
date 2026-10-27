@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   RECOMMEND_THRESHOLD,
+  SMALL_CAP,
   buildEvidence,
   combine,
   recommend,
@@ -50,22 +51,38 @@ test("Waterloo-like (non-US, no subject tiers): no data for business, estimated 
   assert.equal(eng.strength, 78); // min(94 - 8, 78)
 });
 
-test("Caltech-like: business tier C with 2 grads -> small, capped at 55", () => {
+test("Caltech-like: business tier C with 2 grads -> small, capped below the threshold", () => {
   const c = college("caltech", "S+", { business: "C", engineering: "A" });
   const s = scoreField(c, us(235, { business: 2, engineering: 73 }), "business");
   assert.equal(s.depth, "small");
   assert.equal(s.confidence, "rated");
-  assert.equal(s.strength, 55);
+  assert.equal(s.strength, SMALL_CAP);
+  assert.ok(SMALL_CAP < RECOMMEND_THRESHOLD); // a tiny program is never recommended
   // A strong tier on a tiny program is still capped.
   const strong = scoreField(college("x", "S", { business: "S" }), us(1000, { business: 3 }), "business");
-  assert.equal(strong.strength, 55);
+  assert.equal(strong.strength, SMALL_CAP);
 });
 
 test("depth none but a direct tier exists -> treated as small", () => {
   const s = scoreField(college("x", "A", { nursing: "B" }), us(1000, {}), "nursing");
   assert.equal(s.status, "ok");
   assert.equal(s.depth, "small");
-  assert.equal(s.strength, 55);
+  assert.equal(s.strength, SMALL_CAP);
+});
+
+test("depth none with only a partial tier -> not offered (Harvard: economics tier, no finance major)", () => {
+  const c = college("harvard", "S++", { economics: "S" });
+  assert.equal(scoreField(c, us(1912, { economics: 300 }), "finance_accounting").status, "not_offered");
+  assert.equal(scoreField(college("p", "S++", { computer_science: "A", math_physics: "S" }), us(1324, {}), "data_science").status, "not_offered");
+});
+
+test("famous-not-for-field takes each country in turn", () => {
+  const usFamous = ["a", "b", "c", "d", "e", "f", "g", "h", "i"].map((s) => college(s, "S++"));
+  const waterloo = college("waterloo", "S", {}, { country_code: "CA" });
+  const evidence = Object.fromEntries(usFamous.map((c) => [c.slug, us(1000, {})]));
+  const r = recommend({ colleges: [...usFamous, waterloo], evidence, student: {}, fields: ["business"] });
+  assert.ok(r.famousNotForField.some((x) => x.college.slug === "waterloo"));
+  assert.equal(r.famousNotForField[1].college.slug, "waterloo");
 });
 
 test("direct tier beats the general tier", () => {

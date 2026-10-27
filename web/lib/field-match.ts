@@ -25,7 +25,7 @@ export const GENERAL_POINTS: Record<TierCode, number> = {
 /** Ceiling for a reputation-based estimate, by program depth. Non-US "established" means a matching course exists. */
 export const ESTIMATE_CAP = { small: 50, established: 70, large: 78, non_us_established: 78 } as const;
 export const ESTIMATE_DISCOUNT = 8; // estimate = general points - 8, then capped
-export const SMALL_CAP = 55; // a tiny program never scores above this
+export const SMALL_CAP = 50; // a tiny program never scores above this (kept below RECOMMEND_THRESHOLD)
 export const LARGE_BONUS = 3; // a rated field with a large program
 export const SMALL_GRADS = 10; // fewer graduates a year than this = small
 export const LARGE_GRADS = 200; // this many, or LARGE_SHARE of all bachelor's, = large
@@ -140,8 +140,11 @@ export function scoreField(college: ScoreCollege, evidence: FieldEvidence | unde
   const proxyMean = weightedMean(proxy);
 
   if (depth === "none") {
-    if (directMean == null) return noScore("not_offered", depth, grads, share, tier);
-    depth = "small"; // the tier says a program exists; IPEDS files it under another code
+    // Only the field's own tier (sole, full-weight mapping) proves a program exists that IPEDS files under another
+    // code. A partial one does not: Harvard's economics tier says nothing about a finance major.
+    const own = def.tiers.length === 1 && !def.tiers[0].proxy ? college.tiers?.[def.tiers[0].category] : null;
+    if (!own) return noScore("not_offered", depth, grads, share, tier);
+    depth = "small";
   }
 
   const capSmall = (n: number) => (depth === "small" ? Math.min(SMALL_CAP, n) : n);
@@ -216,5 +219,15 @@ export function recommend<C extends MatchCollege>({ colleges, evidence, student,
   for (const list of Object.values(buckets)) list.sort(byStrength);
   weaker.sort(byStrength);
   famous.sort((a, b) => tierRank(a.college.general_tier) - tierRank(b.college.general_tier) || a.college.name.localeCompare(b.college.name));
-  return { buckets, weaker, famousNotForField: famous.slice(0, FAMOUS_MAX) };
+  return { buckets, weaker, famousNotForField: interleaveByCountry(famous).slice(0, FAMOUS_MAX) };
+}
+
+/** Take the best of each country in turn, so one country's long list can't hide the others (e.g. Waterloo for business). */
+function interleaveByCountry<C extends MatchCollege>(sorted: Rec<C>[]): Rec<C>[] {
+  const byCountry = new Map<string, Rec<C>[]>();
+  for (const r of sorted) byCountry.set(r.college.country_code, [...(byCountry.get(r.college.country_code) ?? []), r]);
+  const queues = [...byCountry.values()];
+  const out: Rec<C>[] = [];
+  for (let i = 0; out.length < sorted.length; i++) for (const q of queues) if (q[i]) out.push(q[i]);
+  return out;
 }
