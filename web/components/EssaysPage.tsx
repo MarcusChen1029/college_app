@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ESSAY_STATUSES, isDone, newEssay, safeLink, type Checklist, type Essay } from "@/lib/checklist";
+import { customSummary, isCustomSlug } from "@/lib/custom-college";
 import { docTitle } from "@/lib/google-doc-title";
 import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
 import { useT } from "@/lib/i18n/client";
@@ -369,9 +370,13 @@ function CollegeEssays({
           {done ? "✓" : ""}
         </span>
         <h2 className="text-xl font-bold">
-          <Link href={`/colleges/${college.slug}`} className="hover:underline">
-            {college.name}
-          </Link>
+          {isCustomSlug(college.slug) ? (
+            college.name
+          ) : (
+            <Link href={`/colleges/${college.slug}`} className="hover:underline">
+              {college.name}
+            </Link>
+          )}
         </h2>
         {essays.length > 0 && !c.no_essays && <span className="text-xs tabular-nums text-zinc-500">{t("writing.finalCount", { done: finals, total: essays.length })}</span>}
         <label className="ml-auto flex items-center gap-1.5 text-xs text-zinc-600">
@@ -466,8 +471,9 @@ export function EssaysPage({ colleges, platforms }: { colleges: CollegeSummary[]
 
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
+  // Custom colleges have no row in our data; without them here their Essays item could never be finished.
   const entries = student.list.flatMap((entry) => {
-    const college = colleges.find((c) => c.slug === entry.slug);
+    const college = entry.custom ? customSummary(entry.rowId ?? entry.slug, entry.custom) : colleges.find((c) => c.slug === entry.slug);
     return college ? [{ entry, college }] : [];
   });
 

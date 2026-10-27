@@ -5,6 +5,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { newId } from "@/lib/activities";
 import { isSubmitted } from "@/lib/application";
 import { safeLink } from "@/lib/checklist";
+import { customSummary } from "@/lib/custom-college";
 import {
   campusesOf,
   campusKey,
@@ -246,7 +247,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
 
   // A college's portal joins this page once its application is submitted.
   const submitted = student.list.flatMap((e) => {
-    const college = colleges.find((c) => c.slug === e.slug);
+    const college = e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug);
     return college && isSubmitted(e.status) ? [{ entry: e, college }] : [];
   });
 

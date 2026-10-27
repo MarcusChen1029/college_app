@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 import { isSubmitted, RESULT_OPTIONS, resultStatus } from "@/lib/application";
+import { customSummary, isCustomSlug } from "@/lib/custom-college";
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import { resultTone } from "@/lib/status";
@@ -25,7 +26,7 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
   const rows = student.list
     .filter((e) => isSubmitted(e.status))
     .flatMap((entry) => {
-      const college = colleges.find((c) => c.slug === entry.slug);
+      const college = entry.custom ? customSummary(entry.rowId ?? entry.slug, entry.custom) : colleges.find((c) => c.slug === entry.slug);
       return college ? [{ entry, college }] : [];
     });
 
@@ -63,9 +64,13 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
                   <td className="p-2">
                     <div className="flex items-center gap-2">
                       <TierBadge tier={college.general_tier} size="sm" />
-                      <Link href={`/colleges/${college.slug}`} className="font-medium hover:underline">
-                        {college.short_name ?? college.name}
-                      </Link>
+                      {isCustomSlug(college.slug) ? (
+                        <span className="font-medium">{college.short_name ?? college.name}</span>
+                      ) : (
+                        <Link href={`/colleges/${college.slug}`} className="font-medium hover:underline">
+                          {college.short_name ?? college.name}
+                        </Link>
+                      )}
                     </div>
                   </td>
                   <td className="p-2 text-zinc-600">{(() => { const p = plans.find((x) => x.key === entry.plan); return p ? planLabel(p.key, p.label) : "—"; })()}</td>
