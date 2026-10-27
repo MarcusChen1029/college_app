@@ -66,6 +66,32 @@ export function ucDiscipline(c: TranscriptCourse): { area: string; text: string;
   }
 }
 
+/**
+ * UC's subject when the course's category alone doesn't name one, from what the transcript itself shows, with a warning so the student
+ * sees the choice. null = still left for the student.
+ * - A language course without a year number ("AP Chinese Language and Culture"): its year is one more than the same language's courses in
+ *   earlier school years at this school (Chinese I, Chinese II, then AP Chinese = year 3).
+ * - Computer science: UC's college-prep elective for it ("Elective -Math -Computer Science"); UC also lists Computer Science under
+ *   Mathematics and Science, which the student can pick instead.
+ * - AP Seminar / AP Research (no single subject): "Elective -Interdisciplinary".
+ */
+export function ucDisciplineFromTranscript(c: TranscriptCourse, mine: readonly TranscriptCourse[]): { discipline: UcRow["discipline"]; warning: string } | null {
+  if (c.subject === "world_language" && c.languageName.trim()) {
+    const before = mine.filter((x) => x.subject === "world_language" && normalizeName(x.languageName) === normalizeName(c.languageName) && x.academicYear < c.academicYear);
+    const years = new Set(before.map((x) => x.academicYear)).size;
+    const n = years + 1;
+    const text = `Yr ${n >= 4 ? "4+" : n} Lang Other Than English`;
+    return { discipline: byText(text), warning: `${c.name}: entered as "${text}" (year ${n} of ${c.languageName} on your transcript); change it on UC if your school counts it differently` };
+  }
+  if (c.subject === "computer_science") {
+    return { discipline: byText("Elective -Math -Computer Science"), warning: `${c.name}: entered as the college-prep elective "Elective -Math -Computer Science"; on UC you can pick Computer Science under Mathematics or Science instead` };
+  }
+  if (/\bAP\s+(Seminar|Research)\b/i.test(c.name)) {
+    return { discipline: byText("Elective -Interdisciplinary"), warning: `${c.name}: entered as the college-prep elective "Elective -Interdisciplinary"` };
+  }
+  return null;
+}
+
 /** A printed grade in UC's words: + and - dropped, whole numbers as printed. null = UC can't take it (Pass/Fail, decimals, other marks). */
 export function ucGrade(printed: string): string | null {
   const g = printed.trim();
@@ -113,7 +139,19 @@ export function buildUcPlans(schools: TranscriptSchool[], courses: TranscriptCou
         skip("course", "not an A-G course: UC says to leave it out here (it may go under Activities & awards > Other coursework)");
         continue;
       }
-      const discipline = ucDiscipline(c);
+      let discipline = ucDiscipline(c);
+      if (!discipline) {
+        const guess = ucDisciplineFromTranscript(c, mine);
+        if (guess) {
+          discipline = guess.discipline;
+          plan.warnings.push(guess.warning);
+        }
+      }
+      // Home economics, counseling, defence education and the like have no A-G area: UC says to leave them out, like PE.
+      if (!discipline && c.subject === "other") {
+        skip("course", "not an A-G subject: UC says to leave it out here (it may go under Activities & awards > Other coursework)");
+        continue;
+      }
       if (!discipline) skip("Subject Area/Course Category", "UC's subject could not be told from the course; pick it on UC (or set it for UC in the tracker)");
       const grades = boxes.map((code): string | null => {
         if (c.period !== school.defaultPeriod) return null;
