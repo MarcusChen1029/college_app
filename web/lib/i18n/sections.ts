@@ -4,6 +4,7 @@ import * as college from "./messages/college.ts";
 import * as colleges from "./messages/colleges.ts";
 import * as common from "./messages/common.ts";
 import * as home from "./messages/home.ts";
+import * as match from "./messages/match.ts";
 import * as misc from "./messages/misc.ts";
 import * as portals from "./messages/portals.ts";
 import * as profile from "./messages/profile.ts";
@@ -24,6 +25,7 @@ export const SECTIONS = {
   colleges,
   common,
   home,
+  match,
   misc,
   portals,
   profile,

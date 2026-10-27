@@ -8,6 +8,7 @@ export const zhTW: Messages = {
   ...S.colleges.zhTW,
   ...S.common.zhTW,
   ...S.home.zhTW,
+  ...S.match.zhTW,
   ...S.misc.zhTW,
   ...S.portals.zhTW,
   ...S.profile.zhTW,

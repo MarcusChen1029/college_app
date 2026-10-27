@@ -6,6 +6,7 @@ export type Fit = "super_reach" | "reach" | "target" | "safety";
 export const FIT_LABEL: Record<Fit, string> = { super_reach: "Super reach", reach: "Reach", target: "Target", safety: "Safety" };
 
 import type { ActivityData } from "./activities";
+import type { FieldKey } from "./fields";
 import type { PersonalEssays } from "./personal-essays";
 import type { PlanKey } from "./plans";
 import type { PortalData } from "./portals";
@@ -18,6 +19,7 @@ export type StudentProfile = {
   gpa?: number | null; // unweighted, 4.0 scale
   international?: boolean;
   targetRegions?: string[]; // countries applying to (US, GB); first = default on the colleges page
+  studyFields?: FieldKey[]; // up to 2 study directions (lib/fields.ts); empty = undecided
   reminderEmails?: boolean; // account setting; defaults to on
   plan?: PlanKey; // defaults to free
   tests?: TestDetails; // section scores + English tests
