@@ -5,3 +5,9 @@ export function docTitle(college: { name: string; short_name: string | null }, _
   const school = (college.short_name ?? "").trim() || college.name.trim();
   return `${school}_${index + 1}`;
 }
+
+/** A college prompt's doc: "<College short name>_<prompt title>", e.g. "Purdue_Why this major". */
+export function slotDocTitle(college: { name: string; short_name: string | null }, promptTitle: string): string {
+  const school = (college.short_name ?? "").trim() || college.name.trim();
+  return `${school}_${promptTitle}`;
+}

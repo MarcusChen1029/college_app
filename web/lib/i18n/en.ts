@@ -18,6 +18,7 @@ export const en = {
   ...S.settings.en,
   ...S.share.en,
   ...S.status.en,
+  ...S.supplements.en,
   ...S.teacher.en,
   ...S.tools.en,
   ...S.transcript.en,

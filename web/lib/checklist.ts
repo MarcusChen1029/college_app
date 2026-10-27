@@ -19,7 +19,8 @@ export const ESSAY_STATUSES = [
   ["final", "Final"],
 ] as const;
 export type EssayStatus = (typeof ESSAY_STATUSES)[number][0];
-export type Essay = { id: string; title: string; url: string; status: EssayStatus };
+/** `prompt_key`: the supplemental prompt this essay answers (lib/supplements.ts); absent on essays added by hand. */
+export type Essay = { id: string; title: string; url: string; status: EssayStatus; prompt_key?: string };
 
 export const TEST_PLANS = [
   ["sat", "SAT"],

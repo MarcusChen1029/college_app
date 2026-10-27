@@ -27,6 +27,7 @@ import { testPlanText } from "./i18n/test-plan-text.ts";
 import { programApplyVia, programFee } from "./programs.ts";
 import { regionLabel } from "./regions.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "./scores.ts";
+import { intlFinanceLine, supplementLines, type SupplementSource } from "./supplements.ts";
 import type { Status } from "./student-store";
 import { scoredTests } from "./test-plan.ts";
 import type { CollegeDetail, CollegeSummary, Deadline } from "./types";
@@ -159,6 +160,15 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
     if (!used.includes(id)) used.push(id);
     return ` [${used.indexOf(id) + 1}]`;
   };
+  // Supplements files carry their own source list; they join the same numbering under "supp:<url>" ids.
+  const suppSources = new Map<string, SupplementSource>();
+  const suppRef = (s: SupplementSource) => {
+    const id = `supp:${s.url}`;
+    suppSources.set(id, s);
+    if (!used.includes(id)) used.push(id);
+    return ` [${used.indexOf(id) + 1}]`;
+  };
+  const supp = d.supplements;
   const lines: string[] = [head];
 
   lines.push(`- About: ${join([d.control?.replace(/_/g, " "), d.setting, d.undergrad_enrollment != null && `${fmtInt(d.undergrad_enrollment)} undergraduates`, d.pct_international_ug != null && `${fmtPct(d.pct_international_ug)} international`]) || "—"}`);
@@ -237,10 +247,12 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
         req.midyear_report && "midyear report",
       ])}${ref(req.source_id)}`,
     );
-    // Free text; a bare "true"/"false" says nothing the notes don't, so skip it.
-    if (req.supplemental_essays && !/^(true|false)$/i.test(req.supplemental_essays.trim())) lines.push(`  - Supplemental essays: ${req.supplemental_essays}${ref(req.source_id)}`);
+    // Free text; a bare "true"/"false" says nothing the notes don't, so skip it. The prompts below replace it when on file.
+    if (!supp && req.supplemental_essays && !/^(true|false)$/i.test(req.supplemental_essays.trim())) lines.push(`  - Supplemental essays: ${req.supplemental_essays}${ref(req.source_id)}`);
     if (req.notes) lines.push(`  - Notes: ${req.notes}`);
   }
+  // US colleges only: UK/CA/AU applications have no college supplements in this sense.
+  if (supp !== undefined && (d.country_code ?? "US") === "US") lines.push(...supplementLines(supp, suppRef));
 
   const cost = latest(d.cost_aid, (x) => x.year);
   if (cost) {
@@ -256,6 +268,8 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
     );
     if (cost.notes) lines.push(`  - Notes: ${cost.notes}`);
   }
+  const finance = intlFinanceLine(supp ?? null, suppRef);
+  if (finance) lines.push(finance);
 
   if (d.major_admissions.length) {
     lines.push("- How majors are admitted:");
@@ -290,6 +304,8 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
   if (used.length) {
     lines.push("", "Sources:");
     used.forEach((id, i) => {
+      const ss = suppSources.get(id);
+      if (ss) return lines.push(`${i + 1}. ${ss.title} — ${ss.url} (accessed ${ss.accessed})`);
       const s = d.sources.find((x) => x.id === id)!;
       lines.push(`${i + 1}. ${s.title ?? s.kind} — ${s.url} (accessed ${s.accessed_on})`);
     });

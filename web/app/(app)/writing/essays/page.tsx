@@ -2,12 +2,15 @@ import { Suspense } from "react";
 import { EssaysPage } from "@/components/EssaysPage";
 import { getPlatforms, getSummaries } from "@/lib/data";
 import { getT } from "@/lib/i18n/server";
+import { forEssaysPage } from "@/lib/supplements";
+import { SUPPLEMENTS } from "@/lib/supplements-data";
 
 export const metadata = { title: "Essays" };
 
 async function Data() {
   const [colleges, platforms] = await Promise.all([getSummaries(), getPlatforms()]);
-  return <EssaysPage colleges={colleges} platforms={platforms} />;
+  // The student's list lives in the browser, so every college's prompts go along (slimmed: no finance, notes or extra sources).
+  return <EssaysPage colleges={colleges} platforms={platforms} supplements={forEssaysPage(SUPPLEMENTS)} />;
 }
 
 export default async function EssaysRoute() {

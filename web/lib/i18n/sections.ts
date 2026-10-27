@@ -15,6 +15,7 @@ import * as scholarships from "./messages/scholarships.ts";
 import * as settings from "./messages/settings.ts";
 import * as share from "./messages/share.ts";
 import * as status from "./messages/status.ts";
+import * as supplements from "./messages/supplements.ts";
 import * as teacher from "./messages/teacher.ts";
 import * as tools from "./messages/tools.ts";
 import * as transcript from "./messages/transcript.ts";
@@ -37,6 +38,7 @@ export const SECTIONS = {
   settings,
   share,
   status,
+  supplements,
   teacher,
   tools,
   transcript,

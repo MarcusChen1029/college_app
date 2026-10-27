@@ -32,7 +32,8 @@ import {
 import { scoredTests, testChoice } from "../test-plan";
 import { courseStatus, newTranscriptId, type TranscriptCourse, type TranscriptSchool } from "../transcript";
 import { planCourseUpdate, planMcpAdd, systemSubjectOverrides, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
-import type { CollegeSummary, Lookups } from "../types";
+import { collegeSupplements } from "../supplements-data";
+import type { CollegeDetail, CollegeSummary, Lookups } from "../types";
 import { userClient } from "./auth";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
 import type { McpAuth } from "./claims";
@@ -186,7 +187,7 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
     stage: stage(entry.status, c),
     checklist: {
       progress: `${p.done}/${p.total}`,
-      essays: { done: isDone("essays", c), noEssaysNeeded: !!c.no_essays, list: (c.essay_list ?? []).map((e) => ({ id: e.id, title: e.title, url: e.url || null, status: e.status })) },
+      essays: { done: isDone("essays", c), noEssaysNeeded: !!c.no_essays, list: (c.essay_list ?? []).map((e) => ({ id: e.id, title: e.title, url: e.url || null, status: e.status, ...(e.prompt_key ? { promptKey: e.prompt_key } : {}) })) },
       recommendations: isDone("recommendations", c),
       transcript: isDone("transcript", c),
       test_scores: { done: isDone("test_scores", c), plan: c.test_plan ?? null },
@@ -359,7 +360,7 @@ export function registerTools(server: McpServer) {
     "get_college",
     {
       title: "Get college details",
-      description: "The full sourced detail for one college as Markdown: admissions, test scores, deadlines, English requirements, application requirements, cost and aid, with numbered source links. Anything not published is left out; say so rather than guessing.",
+      description: "The full sourced detail for one college as Markdown: admissions, test scores, deadlines, English requirements, application requirements, supplemental essay prompts (exact text, limits, who must answer), international proof-of-funding documents, cost and aid, with numbered source links. Anything not published is left out; say so rather than guessing.",
       inputSchema: z.object({ slug: z.string().min(1).max(100) }),
       annotations: READ,
     },
@@ -369,7 +370,7 @@ export function registerTools(server: McpServer) {
       if (!college) return notFound(slug);
       const entry = list.find((e) => e.slug === slug);
       const lines = detailSection(
-        { college, plan: entry?.plan ?? null, status: entry?.status ?? "in_progress", checklist: entry?.checklist ?? {}, detail: detail ?? null },
+        { college, plan: entry?.plan ?? null, status: entry?.status ?? "in_progress", checklist: entry?.checklist ?? {}, detail: withSupplements(detail) },
         packLabels(lookups),
       );
       // The checklist block only means something for a listed college.
@@ -391,7 +392,7 @@ export function registerTools(server: McpServer) {
       const colleges = await Promise.all(
         list.flatMap((e) => {
           const college = findSummary(summaries, e.slug);
-          return college ? [getCollege(e.slug).then((detail) => ({ college, plan: e.plan, status: e.status, checklist: e.checklist, detail }), () => ({ college, plan: e.plan, status: e.status, checklist: e.checklist, detail: null }))] : [];
+          return college ? [getCollege(e.slug).then((detail) => ({ college, plan: e.plan, status: e.status, checklist: e.checklist, detail: withSupplements(detail) }), () => ({ college, plan: e.plan, status: e.status, checklist: e.checklist, detail: null }))] : [];
         }),
       );
       return text(buildContextPack({ profile: s.profile, colleges, deadlines, ...packLabels(lookups), full: true }));
@@ -851,6 +852,9 @@ const packLabels = (lookups: Lookups) => ({
   planLabels: Object.fromEntries(lookups.plans.map((p) => [p.key, p.label])),
   englishTestNames: Object.fromEntries(lookups.englishTests.map((t) => [t.key, t.name])),
 });
+
+/** A college record plus its supplemental prompts (static data), so detailSection can list them. */
+const withSupplements = (detail: CollegeDetail | null | undefined): CollegeDetail | null => (detail ? { ...detail, supplements: collegeSupplements(detail.slug) } : null);
 
 /** detailSection ends with the student's own checklist; for a college that isn't listed that block would read as "nothing done". */
 function dropChecklist(lines: string[]) {

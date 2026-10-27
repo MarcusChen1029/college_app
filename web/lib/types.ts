@@ -1,3 +1,4 @@
+import type { CollegeSupplements } from "./supplements.ts";
 import type { CollegeEnglish } from "./english-fit.ts";
 
 // Subject tiers are plain S–D; the general tier may also be S++, S+, A++, … D+.
@@ -202,6 +203,9 @@ export type CollegeDetail = {
     internal_transfer: string | null;
     notes: string | null;
   }[];
+  /** Not from the database: supplemental prompts from lib/data/supplements.json, attached by the AI-context callers
+   * (/api/college-details, MCP). undefined = not attached; null = no file for this college (not researched). */
+  supplements?: CollegeSupplements | null;
 };
 
 export type Lookups = {
