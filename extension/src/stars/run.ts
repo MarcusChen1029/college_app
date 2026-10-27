@@ -14,7 +14,16 @@ export type StarsTab = {
   /** Opens a STARS path ("/srt/...") in the same tab and resolves once its content script answers. */
   go?(path: string): Promise<void>;
 };
-export type StarsRunResult = { added: string[]; skippedExisting: number; stopped: string | null };
+/** `left`: courses not tried because a box needs the student (no level, a grade STARS doesn't list, no scale), with why. */
+export type StarsRunResult = { added: string[]; skippedExisting: number; stopped: string | null; left: { course: string; why: string }[] };
+
+/** Why a planned course can't be saved without the student, or null when every required box has a value. */
+export function starsRowNeeds(plan: StarsPagePlan, row: StarsPagePlan["rows"][number]): string | null {
+  const reasons = plan.skipped.filter((s) => s.course === row.name && s.field !== "course").map((s) => `${s.field}: ${s.reason}`);
+  const missing = !row.level || row.boxes.some((b) => !b.grade) || (plan.kind === "intl" && !row.scaleOptions.length);
+  if (!missing) return null;
+  return reasons.length ? reasons.join("; ") : "a required box has no value in the tracker";
+}
 
 const upper = (s: string) => s.normalize("NFKC").trim().toUpperCase().replace(/\s+/g, " ");
 
@@ -37,33 +46,39 @@ export async function runStarsYear(plan: StarsPagePlan, picked: readonly string[
   try {
     state = await page(tab);
   } catch (e) {
-    return { added, skippedExisting: 0, stopped: (e as Error).message };
+    return { added, skippedExisting: 0, stopped: (e as Error).message, left: [] };
   }
-  if (state.year !== plan.endYear || state.kind !== plan.kind) return { added, skippedExisting: 0, stopped: `Open the ${plan.endYear - 1}-${String(plan.endYear % 100).padStart(2, "0")} coursework page on STARS first.` };
-  const todo = starsRowsToAdd(plan.rows, state.existing);
-  const skippedExisting = plan.rows.length - todo.length;
+  if (state.year !== plan.endYear || state.kind !== plan.kind) return { added, skippedExisting: 0, stopped: `Open the ${plan.endYear - 1}-${String(plan.endYear % 100).padStart(2, "0")} coursework page on STARS first.`, left: [] };
+  const notOnPage = starsRowsToAdd(plan.rows, state.existing);
+  const skippedExisting = plan.rows.length - notOnPage.length;
+  // Nothing is guessed: a course missing a required box is not tried (it would stop on STARS's form) and is listed for the student.
+  const left = notOnPage.flatMap((row) => {
+    const why = starsRowNeeds(plan, row);
+    return why ? [{ course: row.name, why }] : [];
+  });
+  const todo = notOnPage.filter((row) => !left.some((l) => l.course === row.name));
   for (const [i, row] of todo.entries()) {
-    if (shouldStop()) return { added, skippedExisting, stopped: "Stopped." };
+    if (shouldStop()) return { added, skippedExisting, stopped: "Stopped.", left };
     progress(`Adding ${row.name} (${i + 1} of ${todo.length})...`);
     const scale = starsScaleFor(row, picked);
     const r = await tab.send({ type: "starsFill", row, scale, language });
-    if (r?.type !== "starsFill") return { added, skippedExisting, stopped: "The STARS page stopped responding. Reload it and try again." };
-    if (!r.ok) return { added, skippedExisting, stopped: `${row.name}: ${r.error}. Nothing was saved for it; fix it on STARS or in the tracker, then run again.` };
-    if (!r.saved) return { added, skippedExisting, stopped: `${row.name} is filled in but not saved: choose ${r.blanks.join(", ")} on STARS and press Save Course, then run again.` };
+    if (r?.type !== "starsFill") return { added, skippedExisting, stopped: "The STARS page stopped responding. Reload it and try again.", left };
+    if (!r.ok) return { added, skippedExisting, stopped: `${row.name}: ${r.error}. Nothing was saved for it; fix it on STARS or in the tracker, then run again.`, left };
+    if (!r.saved) return { added, skippedExisting, stopped: `${row.name} is filled in but not saved: choose ${r.blanks.join(", ")} on STARS and press Save Course, then run again.`, left };
     try {
       await tab.afterSave();
       state = await page(tab);
     } catch (e) {
       // No reload: STARS refused the save on the page. Its own message says why.
       const errors = (await page(tab).catch(() => null))?.errors ?? [];
-      return { added, skippedExisting, stopped: `${row.name}: ${errors.length ? `STARS says: ${errors.join("; ")}` : (e as Error).message}` };
+      return { added, skippedExisting, stopped: `${row.name}: ${errors.length ? `STARS says: ${errors.join("; ")}` : (e as Error).message}`, left };
     }
     if (!state.existing.some((n) => upper(n) === upper(row.name))) {
-      return { added, skippedExisting, stopped: `STARS did not save ${row.name}. Check the page for a message (a required box may be empty).` };
+      return { added, skippedExisting, stopped: `STARS did not save ${row.name}. Check the page for a message (a required box may be empty).`, left };
     }
     added.push(row.name);
   }
-  return { added, skippedExisting, stopped: null };
+  return { added, skippedExisting, stopped: null, left };
 }
 
 const yearText = (endYear: number) => `${endYear - 1}-${String(endYear % 100).padStart(2, "0")}`;
@@ -132,7 +147,7 @@ export async function runStarsPlans(
       problem = (e as Error).message;
     }
     if (problem) {
-      reports.push({ plan, result: { added: [], skippedExisting: 0, stopped: problem } });
+      reports.push({ plan, result: { added: [], skippedExisting: 0, stopped: problem, left: [] } });
       if (SIGNED_OUT.test(problem)) return { reports, stopped: true };
       continue;
     }

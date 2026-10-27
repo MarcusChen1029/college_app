@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { buildUcPlans, ucDiscipline, ucGrade } from "./uc-fill.ts";
+import { buildUcPlans, UC_SUBJECT_UNDECIDED, ucDiscipline, ucGrade } from "./uc-fill.ts";
 import { emptyCourse, emptySchool, type Term, type TranscriptCourse, type TranscriptSchool } from "./transcript.ts";
 
 const school = (o: Partial<TranscriptSchool> = {}): TranscriptSchool => ({ id: "s", createdAt: "2026-10-01T00:00:00Z", ...emptySchool(), name: "Kang Chiao", country: "Taiwan", kind: "high_school", defaultPeriod: "semester", ...o });
@@ -31,9 +31,11 @@ test("UC codes: NO, IP, PL; + and - dropped; Pass/Fail and decimals left blank",
   assert.deepEqual(q!.rows[0]!.grades, ["NO", null]);
 });
 
-test("subjects: language year from the name, history by name, unknown left for the student", () => {
-  assert.equal(ucDiscipline(course({ subject: "world_language", subSubject: null, name: "Chinese 2" }))?.text, "Yr 2 Lang Other Than English");
-  assert.equal(ucDiscipline(course({ subject: "world_language", subSubject: null, name: "Spanish V" }))?.text, "Yr 4+ Lang Other Than English");
+test("subjects: certain ones from the category, history by name; languages and anything unsure left for the student", () => {
+  // A language's UC level is the student's call (a native speaker's "Chinese I" was Level 4+ on a real application).
+  assert.equal(ucDiscipline(course({ subject: "world_language", subSubject: null, name: "Chinese 2" })), null);
+  assert.equal(ucDiscipline(course({ subject: "world_language", subSubject: null, name: "Chinese 2", overrides: { uc: { subject: "Yr 4+ Lang Other Than English" } } }))?.text, "Yr 4+ Lang Other Than English");
+  assert.equal(ucDiscipline(course({ subject: "arts", subSubject: "interdisciplinary", name: "Performing Arts 10" })), null);
   assert.equal(ucDiscipline(course({ subject: "history_social", subSubject: null, name: "AP US History" }))?.text, "U.S. History");
   assert.equal(ucDiscipline(course({ subject: "history_social", subSubject: null, name: "Psychology" })), null);
   assert.equal(ucDiscipline(course({ subject: "english", subSubject: null, name: "ESL 9" }))?.text, "English-ESL/ELD");
@@ -55,25 +57,10 @@ test("language course gets UC's language, Other Language when it isn't listed", 
   assert.deepEqual(p!.rows.map((r) => r.language), ["Chinese", "Other Language"]);
 });
 
-test("from the transcript: a language's year by its earlier years, computer science and AP Seminar as electives, with a warning each", () => {
-  const lang = (id: string, year: number, name: string) =>
-    course({ id, academicYear: year, gradeLevel: year - 2014, subject: "world_language", subSubject: null, name, languageName: "Chinese" });
-  const plans = buildUcPlans([school()], [
-    lang("a", 2023, "Honors Chinese Language and Culture I"), lang("b", 2024, "Honors Chinese Language and Culture II"), lang("c", 2025, "AP Chinese Language and Culture"),
-    course({ id: "d", academicYear: 2024, gradeLevel: 10, subject: "computer_science", subSubject: null, name: "Information Technology 10" }),
-    course({ id: "e", academicYear: 2024, gradeLevel: 10, subject: "other", subSubject: null, level: "ap", name: "AP Seminar" }),
-  ]);
-  const row = (name: string) => plans.flatMap((p) => p.rows).find((r) => r.name === name)!;
-  assert.equal(row("AP Chinese Language and Culture").discipline?.text, "Yr 3 Lang Other Than English");
-  assert.equal(row("Information Technology 10").discipline?.text, "Elective -Math -Computer Science");
-  assert.equal(row("AP Seminar").discipline?.text, "Elective -Interdisciplinary");
-  assert.equal(plans.flatMap((p) => p.warnings).filter((w) => /entered as/.test(w)).length, 3);
-});
-
-test("courses with no A-G area (home economics, counseling) are left out like PE, not left for the student", () => {
-  const [p] = buildUcPlans([school()], [course({ id: "h", subject: "other", subSubject: null, name: "Home Economics 9" }), course({ id: "k", subject: "other", subSubject: null, name: "College Counseling 11" })]);
-  assert.equal(p!.rows.length, 0);
-  assert.deepEqual(p!.skipped.map((s) => s.field), ["course", "course"]);
+test("an undecided course is not added and is listed for the student with the reason", () => {
+  const [p] = buildUcPlans([school()], [course({ id: "h", subject: "other", subSubject: null, name: "Home Economics 9" }), course({ id: "l", subject: "world_language", subSubject: null, name: "Japanese I", languageName: "Japanese" })]);
+  assert.deepEqual(p!.rows.map((r) => [r.name, r.discipline]), [["Home Economics 9", null], ["Japanese I", null]]);
+  assert.deepEqual(p!.skipped.filter((s) => s.reason === UC_SUBJECT_UNDECIDED).map((s) => s.course), ["Home Economics 9", "Japanese I"]);
 });
 
 test("a UC subject chosen for a course wins over the category that would leave it out", () => {

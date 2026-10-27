@@ -36,7 +36,7 @@ function fakeTab(existing: string[], opts: { year?: number; failSave?: boolean; 
 test("adds every course not on the page, confirming each one after the reload", async () => {
   const { tab, sent } = fakeTab(["ALGEBRA 1"]);
   const r = await runStarsYear(plan([row("Algebra 1"), row("Geometry")]), ["100-Point (100-90=A, 80-89=B...Pass=60)"], "English", tab, () => false, () => {});
-  assert.deepEqual(r, { added: ["Geometry"], skippedExisting: 1, stopped: null });
+  assert.deepEqual(r, { added: ["Geometry"], skippedExisting: 1, stopped: null, left: [] });
   const fill = sent.find((m) => m.type === "starsFill");
   assert.equal(fill?.type === "starsFill" && fill.scale, "100-Point (100-90=A, 80-89=B...Pass=60)");
 });
