@@ -3,6 +3,7 @@
 // (academics_hs_classes_add_<i>_subject / _class_title / _honors / _grade<n> / _subject_language_code), read live 2026-10-27.
 // Courses already on the page are never changed; new ones go into empty rows, adding rows with "Add another course".
 
+import { sameCourseName } from "../../../web/lib/course-names.ts";
 import type { UcGradePlan, UcRow } from "../../../web/lib/uc-fill.ts";
 
 export const UC_TIMING = { stepMs: 100, rowMs: 5000 };
@@ -88,15 +89,15 @@ export type UcFillResult = { added: string[]; skippedExisting: number; left: str
 /** Adds the plan's new courses. A course with a box the tracker can't fill (subject, a grade) is left out and listed in `left`. Presses
  *  "Save & continue" only when at least one course was added. */
 export async function fillUcPage(doc: Document, plan: UcGradePlan): Promise<UcFillResult> {
-  const have = new Map<string, number>();
-  for (const n of ucExistingNames(doc)) have.set(key(n), (have.get(key(n)) ?? 0) + 1);
+  // Courses already on the page, each matched at most once (a student may have typed a name a little differently: sameCourseName).
+  const have = ucExistingNames(doc);
   const added: string[] = [];
   const left: string[] = [];
   let skippedExisting = 0;
   for (const row of plan.rows) {
-    const n = have.get(key(row.name)) ?? 0;
-    if (n > 0) {
-      have.set(key(row.name), n - 1);
+    const at = have.findIndex((n) => sameCourseName(n, row.name));
+    if (at >= 0) {
+      have.splice(at, 1);
       skippedExisting++;
       continue;
     }

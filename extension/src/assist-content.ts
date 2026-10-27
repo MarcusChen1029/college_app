@@ -11,7 +11,7 @@ import { runCsuSchool } from "./csu/run.ts";
 import { onCourseworkPage } from "./csu/fill.ts";
 import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
 import { starsSchools, starsSummaryPath, starsYearPath, starsYears } from "./stars/nav.ts";
-import { ucClassesLink } from "./uc/nav.ts";
+import { ucClassesLink, ucCoursesButtons } from "./uc/nav.ts";
 
 /** A STARS page's HTML, read like opening it (same site, the student's own session). null when STARS sent the sign-in page instead. */
 async function starsHtml(path: string): Promise<string | null> {
@@ -109,14 +109,16 @@ ${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
       );
       return true; // async response
     case "ucOpenClasses": {
-      const link = ucClassesLink(document, msg.grade, { name: msg.schoolName, code: msg.schoolCode });
-      if (typeof link === "string") {
-        sendResponse({ type: "ucOpenClasses", ok: false, error: link });
-        return false;
-      }
-      sendResponse({ type: "ucOpenClasses", ok: true });
-      setTimeout(() => link.click(), 50); // after the answer: the click leaves the page
-      return false;
+      // UC may draw the school years a moment after the page loads: wait for a courses button before saying there is none.
+      void (async () => {
+        const start = Date.now();
+        while (!ucCoursesButtons(document, msg.grade).length && Date.now() - start < 8000) await new Promise((r) => setTimeout(r, 200));
+        const link = ucClassesLink(document, msg.grade, { name: msg.schoolName, code: msg.schoolCode });
+        if (typeof link === "string") return sendResponse({ type: "ucOpenClasses", ok: false, error: link });
+        sendResponse({ type: "ucOpenClasses", ok: true });
+        setTimeout(() => link.click(), 50); // after the answer: the click leaves the page
+      })();
+      return true; // async response
     }
     case "csuStop":
       csuStop = true;

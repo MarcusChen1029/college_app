@@ -3,7 +3,7 @@ import { test } from "node:test";
 import type { UcGradePlan } from "../../../web/lib/uc-fill.ts";
 import { html } from "../commonapp/test-dom.ts";
 import type { AssistMessage, AssistResponse } from "../messages.ts";
-import { ucClassesLink } from "./nav.ts";
+import { ucClassesLink, ucCoursesButtons } from "./nav.ts";
 import { runUcPlans, type UcTab } from "./run.ts";
 
 // Shaped like the live 9th grade page (2026-10-27): one card per school with an a#edit_<NN><id> link.
@@ -17,7 +17,17 @@ test("ucClassesLink: the only school's link, or the one whose card has the schoo
   assert.equal((ucClassesLink(two, 9, { name: "Kang Chiao International School Linkou Campus" }) as HTMLElement).id, "edit_091");
   assert.equal((ucClassesLink(two, 9, { name: "TAS", code: "694100" }) as HTMLElement).id, "edit_092");
   assert.match(ucClassesLink(two, 9, { name: "Elsewhere Academy" }) as string, /matches none/);
-  assert.match(ucClassesLink(html("<p>10th grade</p>"), 10, { name: "X" }) as string, /add 10th grade to the school/);
+  assert.match(ucClassesLink(html("<p>10th grade</p>"), 10, { name: "X" }) as string, /check that 10th grade is added to the school/);
+});
+
+test("a school year that already has courses shows Edit instead: that Edit is found, the school's own Edit and Delete are not", () => {
+  const page = html(`<div><div><p>KANG CHIAO INTL SCH LINKOU CMP</p><p>School code: 694132</p><a href="/my-application/acadHistFrInfo?action=edit&schId=1">Edit</a></div>
+    <div><div><h3>2023 - 2024 academic year</h3><button id="del_0919055667">Delete</button><a id="edit_0919055667" href="javascript:void(0)">Edit</a></div>
+    <table><tr><th>Course name</th></tr><tr><td>Geometry</td></tr></table></div></div>`);
+  assert.deepEqual(ucCoursesButtons(page, 9).map((e) => e.id), ["edit_0919055667"]);
+  // Without the id, the year's Edit is still found by its place next to the academic year, and the school's Edit is not.
+  const noId = html(`<div><div><p>KANG CHIAO</p><p>School code: 694132</p><a href="/x">Edit</a></div><div><div><h3>2023 - 2024 academic year</h3><button>Delete</button><button>Edit</button></div></div></div>`);
+  assert.deepEqual(ucCoursesButtons(noId, 9).map((e) => e.tagName), ["BUTTON"]);
 });
 
 const plan = (gradeLevel: number, names: string[]): UcGradePlan => ({

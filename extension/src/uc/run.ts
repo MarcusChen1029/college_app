@@ -1,6 +1,7 @@
 // Runs UC grades like Common App's "Fill selected": for each chosen grade it opens the grade page, clicks the school's "Enter courses &
 // grades", adds the courses not on the page yet, presses "Save & continue" and checks the saved list. Free of chrome.* for tests.
 
+import { sameCourseName } from "../../../web/lib/course-names.ts";
 import type { UcGradePlan } from "../../../web/lib/uc-fill.ts";
 import type { AssistMessage, AssistResponse } from "../messages.ts";
 import { ucGradePath } from "./nav.ts";
@@ -14,7 +15,6 @@ export type UcTab = {
 };
 export type UcGradeReport = { plan: UcGradePlan; added: string[]; skippedExisting: number; left: string[]; problem: string | null };
 
-const key = (s: string) => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 const NO_ANSWER = "The UC page stopped responding. Reload it and try again";
 
 async function oneGrade(plan: UcGradePlan, all: readonly UcGradePlan[], tab: UcTab): Promise<UcGradeReport> {
@@ -40,8 +40,8 @@ async function oneGrade(plan: UcGradePlan, all: readonly UcGradePlan[], tab: UcT
   if (saving) {
     await tab.afterReload();
     const after = await tab.send({ type: "ucPage" });
-    const names = after?.type === "ucPage" ? after.names.map(key) : [];
-    const missing = added.filter((n) => !names.includes(key(n)));
+    const names = after?.type === "ucPage" ? after.names : [];
+    const missing = added.filter((n) => !names.some((x) => sameCourseName(x, n)));
     if (missing.length) report.problem = `UC does not list ${missing.join(", ")} after saving: check the page for a message`;
   }
   return report;
