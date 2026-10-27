@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useT } from "@/lib/i18n/client";
 import { groupByDate, monthGrid, monthOf, monthTitle, shiftMonth } from "@/lib/calendar";
+import { isCustomSlug } from "@/lib/custom-college";
 import { daysUntil, fmtDate } from "@/lib/format";
 import { deadlineTone, type Tone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
@@ -109,9 +110,13 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
             {listed.map((e) => (
               <li key={e.id} className="flex items-baseline justify-between gap-3 py-2 text-sm">
                 <span className="min-w-0">
-                  <Link href={`/colleges/${e.slug}`} className="font-semibold hover:text-blue-700">
-                    {e.college}
-                  </Link>
+                  {isCustomSlug(e.slug) ? (
+                    <span className="font-semibold">{e.college}</span>
+                  ) : (
+                    <Link href={`/colleges/${e.slug}`} className="font-semibold hover:text-blue-700">
+                      {e.college}
+                    </Link>
+                  )}
                   <span className="text-zinc-500"> · {e.label}</span>
                 </span>
                 {!picked && <span className={`shrink-0 text-xs ${e.date < today ? "text-zinc-400" : "text-zinc-600"}`}>{fmtDate(e.date)}</span>}
