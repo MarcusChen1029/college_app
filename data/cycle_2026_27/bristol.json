@@ -1,0 +1,88 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Bristol - English language requirements, Profile E (Computer Science, Mechanical Engineering; Economics is Profile G)",
+      "url": "https://www.bristol.ac.uk/study/language-requirements/profile-e/",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "University of Bristol - International undergraduate applications (equal consideration deadline 13 January 2027)",
+      "url": "https://www.bristol.ac.uk/study/undergraduate/apply/international/",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS equal-consideration deadline (6 pm UK time)",
+      "notes": "Bristol says the final deadline for all international undergraduate applications is 30 June, but some courses fill up and may close on 13 January. Medicine, dentistry and veterinary courses: 15 October 2026.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Course pages: required if English is not your first language, unless you hold GCSE English Language grade C/4 or an alternative qualification listed in the profile (on the Profile E page the US options are AP Language and Composition or AP Literature and Composition at 3, ACT English 23 with 7 in Writing, or SAT Reading 33 and Writing 33). Profile E (lowest band, Computer Science and Mechanical Engineering) shown; Economics is Profile G (IELTS 6.5 overall with 7.0 in reading and listening).",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, Profile E. Profile G (Economics): 7.0 in reading and listening, no score below 6.0.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 88,
+      "subs": {
+        "reading": 20,
+        "listening": 19,
+        "speaking": 22,
+        "writing": 22
+      },
+      "notes": "Old 0-120 scale (tests taken up to 20 January 2026), Profile E. Profile G (Economics): 88 overall with R24 L22 S22 W22.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4.5
+      },
+      "notes": "New 1-6 scale (tests taken from 21 January 2026), Profile E. Profile G (Economics): 4.5 overall with 5 in reading and listening and 4.5 in speaking and writing.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 67,
+      "subs": {
+        "each_component": 64
+      },
+      "notes": "PTE Academic (test centre), Profile E. Profile G (Economics): 67 overall, 71 in reading and listening, 64 in other skills. The page notes PTE Academic Online was valid for 2023 entry only.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "B++"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 17th of 130 UK universities (B = ranks 16-40 on the national scale)."
+  }
+}

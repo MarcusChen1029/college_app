@@ -1,0 +1,107 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "Macquarie University - English language requirements (scores from 1 March 2026)",
+      "url": "https://www.mq.edu.au/study/admissions-and-entry/apply/international/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "Macquarie University - Bachelor of Information Technology: How to apply (important dates; the Economics and Engineering (Honours) pages list the same dates)",
+      "url": "https://www.mq.edu.au/study/find-a-course/courses/bachelor-of-information-technology/",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-08",
+      "label": "International applications close - Session 1, 2027 (North Ryde)",
+      "notes": "Applications open 1 January 2026; Session 1 starts 22 February 2027. Session 2 applications close 12 July 2027 (starts 26 July 2027). The page says the closing date may vary by location and advises checking with the local representative; applying early is recommended to arrange visa, travel and accommodation. Australian Year 12 students apply through UAC.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_all_international",
+    "waiver_notes": "All applicants must provide evidence of English proficiency, but the evidence need not be a test: it may be a qualification from an approved country with English as the language of instruction, an approved high school qualification or foundation program studied in English, or an approved English for Academic Purposes program. Test scores must be less than two years old at course commencement; the university may still ask any applicant for a test. Applicants below the English level may get a packaged offer with an English program at the Macquarie University English Language Centre.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, 'Competent' level of English, which applies to most undergraduate and postgraduate courses (IELTS One Skill Retake accepted).",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 86,
+      "subs": {
+        "reading": 18,
+        "writing": 20,
+        "listening": 17,
+        "speaking": 20
+      },
+      "notes": "Old 0-120 scoring table, 'Competent' level, scores from 1 March 2026. TOEFL iBT Home Edition is not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4.0
+      },
+      "notes": "New 1-6 scoring scale, 'Competent' level (reading, writing, listening and speaking each 4.0).",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "subs": {
+        "reading": 51,
+        "writing": 55,
+        "listening": 50,
+        "speaking": 54
+      },
+      "notes": "PTE Academic, 'Competent' level, scores from 1 March 2026. The online version is not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "subs": {
+        "each_component": 169
+      },
+      "notes": "Cambridge English C1 Advanced or C2 Proficiency, 'Competent' level, scores from 1 March 2026.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "The Duolingo English Test is accepted only for Standard Foundation Program applicants, study abroad and exchange, remote students where attending a test centre would be a hardship, and (case by case) transnational programs; it is not an option for ordinary direct entry to these degrees.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 126, 11th of the Australian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

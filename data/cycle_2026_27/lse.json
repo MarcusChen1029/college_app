@@ -1,0 +1,98 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "admissions_site",
+      "title": "LSE - BSc Economics: key information (application deadline 13 January 2027)",
+      "url": "https://www.lse.ac.uk/study-at-lse/undergraduate/bsc-economics",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "LSE - English language requirements (undergraduate)",
+      "url": "https://www.lse.ac.uk/study-at-lse/Undergraduate/Prospective-Students/How-to-Apply/English-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (LSE undergraduate programmes)",
+      "notes": "As stated on the LSE course pages (13 January 2027); UCAS closes at 18:00 UK time. Economics also requires the TMUA.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not required if you are a national of Canada or a UKVI majority English-speaking country and your first language is English, or you completed a 3-year undergraduate degree, a 1-year postgraduate taught degree or a PhD in one of those countries. Proof is only requested if LSE makes an offer.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 7.0,
+      "subs": {
+        "each_component": 7.0
+      },
+      "notes": "IELTS Academic (including online), one sitting only; valid for 2 years before 1 September of entry.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 100,
+      "subs": {
+        "writing": 27,
+        "reading": 25,
+        "listening": 24,
+        "speaking": 24
+      },
+      "notes": "Old 0-120 scale; one sitting only; valid for 2 years before 1 September of entry.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 5.5,
+      "subs": {
+        "each_component": 5
+      },
+      "notes": "Updated 1-6 scale (tests from January 2026): 5.5 overall, at least 5 in Writing, Reading, Listening and Speaking.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 70,
+      "subs": {
+        "each_component": 70
+      },
+      "notes": "PTE Academic, in-person test only; 70 overall with 70 in all components in one sitting.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 185,
+      "subs": {
+        "each_component": 185
+      },
+      "notes": "C1 Advanced or C2 Proficiency: 185 overall and 185 in each component, one sitting.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S+"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 3rd of 130 UK universities (S = ranks 1-5 on the national scale)."
+  }
+}

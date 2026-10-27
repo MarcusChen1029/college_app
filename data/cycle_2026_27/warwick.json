@@ -1,0 +1,114 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - 2027 entry application deadlines (13 Jan 2027, 18:00 UK time, equal consideration date for most undergraduate courses)",
+      "url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Warwick - English language requirements (undergraduate; page last updated 4 Feb 2026, September 2026 entry)",
+      "url": "https://warwick.ac.uk/study/undergraduate/applying/english-language-requirements/",
+      "accessed": "2026-10-27"
+    },
+    "usa": {
+      "kind": "admissions_site",
+      "title": "University of Warwick - USA country information (English requirements)",
+      "url": "https://warwick.ac.uk/study/international/countryinformation/northamerica/usa/",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (Warwick undergraduate courses)",
+      "notes": "18:00 UK time. UCAS equal consideration date for 2027 entry.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Warwick's USA page says applicants from the USA, or educated in the USA for at least one academic year completed in the past two years, may be accepted without an English Language qualification. Many applicants meet it through GCSE English Language or IB English instead. Course bands differ: Band A (Computer Science, Mechanical Engineering) is the lowest shown here; Economics is Band C.",
+    "src": "usa"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_component": 5.5
+      },
+      "notes": "IELTS Academic, Band A. Band C (Economics) is 7.0 overall with 6.5 in each component. One sitting; One Skill Retake not accepted. Page is for September 2026 entry.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 87,
+      "subs": {
+        "listening": 21,
+        "writing": 21,
+        "reading": 22,
+        "speaking": 23
+      },
+      "notes": "Old 0-120 scale, tests taken before 21 Jan 2026, Band A. Band C is 100 with the same section minimums. MyBest scores not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4.5
+      },
+      "notes": "New 1-6 scale, tests taken from 21 Jan 2026, Band A. Band C is 5.0 with 4.5 in each component.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "subs": {
+        "each_communicative_skill": 59
+      },
+      "notes": "PTE Academic, Band A. Band C is 75 with no less than 59 in any skill.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "min": 110,
+      "subs": {
+        "each_component": 100
+      },
+      "notes": "Band A. Band C is 130 overall with 120 in each component. The page says acceptable for September 2026 entry only; 2027 status not stated.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 170,
+      "subs": {
+        "each_component": 165
+      },
+      "notes": "Cambridge C1 Advanced or C2 Proficiency, Band A (or grade A/C with no less than Borderline in any element). Band C is 190 overall with 180 in each component.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A++"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 7th of 130 UK universities (A = ranks 6-15 on the national scale)."
+  }
+}

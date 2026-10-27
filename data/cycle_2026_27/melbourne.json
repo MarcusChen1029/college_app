@@ -1,0 +1,91 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Melbourne - Undergraduate English language requirements",
+      "url": "https://study.unimelb.edu.au/how-to-apply/english-language-requirements/undergraduate-english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "University of Melbourne - Bachelor of Science: How to apply (international key dates)",
+      "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science/how-to-apply/",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-11-30",
+      "label": "International direct applications close - start-year (Semester 1) 2027 intake",
+      "notes": "Listed as 'Start year intake 2027 - direct applications close' on the Bachelor of Science and Bachelor of Commerce international key dates. The mid-year intake 2027 closes 31 March 2027. International students studying the VCE, an Australian Year 12 or the IB in Australia or New Zealand apply through VTAC instead.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Not needed if you meet 'citizenship or residency' (citizen, or 10+ years' resident, of a recognised English-speaking country) AND 'education in English' (final four years of secondary or higher education, or a full secondary qualification, entirely in English in a recognised English-speaking country, or a year of full-time study in a recognised bachelor's degree in an English-speaking country); or if you pass an approved secondary English subject, e.g. IB English or English B at grade 4 or higher (SL or HL), a C or higher in A/AS Level General Paper, General Studies, English Language, English Literature or English Language and Literature, or a 3 or higher in AP English Language and Composition or AP English Literature and Composition. Secondary English subjects count for 24 months if studied where English is not an official language and 60 months where it is.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic. University of Melbourne English level 1, which applies to the Bachelor of Science and Bachelor of Commerce.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 81,
+      "subs": {
+        "writing": 19,
+        "speaking": 19,
+        "reading": 16,
+        "listening": 16
+      },
+      "notes": "Old 0-120 scale, English level 1. The page gives no score on the new 1-6 scale.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "each_skill": 60
+      },
+      "notes": "Pearson Test of English Academic, English level 1.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 169,
+      "subs": {
+        "writing": 170,
+        "speaking": 179,
+        "reading": 163,
+        "listening": 163
+      },
+      "notes": "Cambridge C1 Advanced, English level 1. The page also lists LanguageCert Academic 67 (writing 64, speaking 70, reading 60, listening 57) and Michigan English Test 58 (writing 57, speaking 48, reading 55, listening 56). Duolingo is not among the tests listed on this page.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 22, 2nd of the Australian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

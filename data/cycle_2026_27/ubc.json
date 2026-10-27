@@ -1,0 +1,118 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "UBC - English language competency (Vancouver)",
+      "url": "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "UBC - Dates and deadlines (Vancouver, Winter Session starting September 2027)",
+      "url": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "UBC Vancouver final application deadline (Winter Session 2027/28)",
+      "notes": "11:59 p.m. PST. Applications open early October 2026. English documents are due 15 Feb 2027; US and other non-Canadian high school applicants submit required documents by 15 Mar 2027.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-11-15",
+      "label": "International Scholars Program award application",
+      "notes": "11:59 p.m. PST. International applicants must apply to UBC and submit an award application by this date to be considered for the UBC International Scholars Program awards; supporting documents are due 31 Jan 2027. The page lists the International Major Entrance Scholarships and the Outstanding International Student Award only as March to April 2027 announcements and gives no separate application deadline for them.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Every applicant must meet the English Language Admission Standard, but there are nine ways to do so without a test, for example four or more consecutive years of full-time education in English in Canada or an English-principal country immediately before UBC, four or more years at an eligible English-medium international secondary school, specified AP/IB English grades, six credits of first-year English at a recognized university in an English-speaking country, or a degree from an accredited English-medium university. Applicants who are fully proficient but meet no pathway can request a waiver by 15 Feb.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, single sitting. IELTS General, IELTS Indicator and IELTS One Skill Retake are not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 90,
+      "subs": {
+        "reading": 22,
+        "listening": 22,
+        "writing": 21,
+        "speaking": 21
+      },
+      "notes": "1-120 scale, UBC code 0965, single sitting.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "reading": 4.5,
+        "listening": 5,
+        "writing": 4.5,
+        "speaking": 4
+      },
+      "notes": "1-6 scale, UBC code 0965, single sitting.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 125,
+      "subs": {
+        "reading": 115,
+        "listening": 115,
+        "writing": 120,
+        "speaking": 120
+      },
+      "notes": "Duolingo English Test; minimums are per part.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 65,
+      "subs": {
+        "each_skill": 60
+      },
+      "notes": "PTE Academic; Reading, Listening, Writing and Speaking 60 each.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "notes": "B2 First, C1 Advanced or C2 Proficiency; 180 on each part.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 45, 3rd of the Canadian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "UTS - English language requirements (undergraduate coursework minimums)",
+      "url": "https://www.uts.edu.au/for-students/admissions-entry/eligibility/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "UTS - International applications: application closing dates by session",
+      "url": "https://www.uts.edu.au/for-students/admissions-entry/how-to-apply/international-applicants",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-11-30",
+      "label": "International closing date, Autumn session (February/March 2027 start), applicants outside Australia",
+      "notes": "The UTS page lists 30 November (outside Australia) and 15 January (in Australia) for the Autumn session without printing a year; for the Autumn 2027 intake these fall on 30 Nov 2026 and 15 Jan 2027. Spring (July) closes 30 April (outside Australia).",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No test is needed if you hold an assessable qualification (secondary or tertiary) undertaken in English in a listed country (incl. UK, USA, Canada, Ireland, Singapore, Australia, NZ, South Africa), or have completed at least one year of full-time secondary/post-secondary study taught in English at a recognised institution (with a letter from the institution), or hold UTS College AE5, an IB English A subject (if the Diploma was not taught in English), HKDSE English level 4+, or Cambridge C2 Proficiency 176/169. Otherwise a recognised test taken within two years.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "writing": 6.0
+      },
+      "notes": "IELTS Academic (online and One Skill Retake also listed): 6.5 overall, 6.0 writing. Minimum for most undergraduate coursework courses; Computing Science, Economics and Mechanical Engineering use it.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "subs": {
+        "writing": 21
+      },
+      "notes": "Old 0-120 scale (internet-based and Home Edition): 79 overall, 21 writing.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "subs": {
+        "writing": 4.5
+      },
+      "notes": "New 1-6 scale (internet-based and Home Edition): 4 overall, 4.5 writing.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "subs": {
+        "writing": 50
+      },
+      "notes": "PTE Academic: 58 overall, 50 writing.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "subs": {
+        "writing": 169
+      },
+      "notes": "C1 Advanced or C2 Proficiency: 176 overall, 169 writing.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 87, 9th of the Australian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

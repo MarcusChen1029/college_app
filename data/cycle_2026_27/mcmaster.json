@@ -1,0 +1,134 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "McMaster University - English proficiency (undergraduate)",
+      "url": "https://future.mcmaster.ca/apply/requirements/english-proficiency/",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "McMaster University - Admission Requirements tool (program dates and deadlines, applicants outside Canada)",
+      "url": "https://future.mcmaster.ca/requirements/admission-requirements/",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "OUAC application deadline - Engineering and Computer Science",
+      "notes": "Recommended early application date 12 Nov 2026. Applying through OUAC. The Honours Economics I entry lists 1 Apr 2027 as its application deadline.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-04-01",
+      "label": "Application deadline - Honours Economics I (applicants outside Canada)",
+      "notes": "No supplementary application is listed for this program.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-01-28",
+      "label": "Engineering and Computer Science: supplementary application due (11:59 p.m. ET)",
+      "notes": "Recommended early submission 26 Nov 2026 (11:59 p.m. ET). Details at eng.mcmaster.ca/supplementary-application.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-04-01",
+      "label": "Supporting documents (transcripts, English proficiency test) deadline for applicants not at an Ontario high school",
+      "notes": "Submit new grades as soon as available.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exemption is at McMaster's discretion (not automatic): four or more years of full-time (non-ESL) study immediately before the start at an accredited secondary school or college in an English-speaking country or at an accredited English-medium school; one year at an accredited English-medium university; or four years' residence in an English-speaking country. Students on GCE, IB or AP curricula may be considered for a waiver with high grades in acceptable courses. Canadian citizenship or a Grade 12 English credit alone is not enough.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic or Academic UKVI; 6.5 overall with at least 6.0 in Reading, Writing, Speaking and Listening; valid 2 years. IELTS One Skill Retake accepted. IELTS organization ID 114599.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 86,
+      "subs": {
+        "each_component": 20
+      },
+      "notes": "Old 0-120 scale, tests completed before 21 Jan 2026: 86 overall with at least 20 in each component. Home Edition accepted; TOEFL Essentials and MyBest not accepted. Institution code 0936.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "reading": 4.0,
+        "writing": 4.0,
+        "speaking": 4.0,
+        "listening": 4.5
+      },
+      "notes": "New 1-6 scale, tests completed on or after 21 Jan 2026: 4.5 overall with at least 4.0 in Reading, Writing and Speaking and 4.5 in Listening; valid 2 years.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "subs": {
+        "writing": 60,
+        "speaking": 60
+      },
+      "notes": "PTE Academic: 60 overall with at least 60 in Writing and Speaking; valid 2 years.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "subs": {
+        "reading": 115,
+        "writing": 125,
+        "listening": 110,
+        "speaking": 115
+      },
+      "notes": "Duolingo English Test: 120 overall for direct-entry undergraduate programs with at least 115 in Reading, 125 in Writing, 110 in Listening and 115 in Speaking.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "subs": {
+        "each_component": 176
+      },
+      "notes": "C1 Advanced or C2 Proficiency: 180 overall with at least 176 in each component; valid 2 years.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A++"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank =174, 8th of the Canadian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "McGill - English language proficiency (undergraduate)",
+      "url": "https://www.mcgill.ca/undergraduate-admissions/apply/english-proficiency",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "McGill - Entrance requirements: high school outside Canada and the U.S. (deadlines for admission, Fall 2027)",
+      "url": "https://www.mcgill.ca/undergraduate-admissions/apply/requirements/international",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "McGill application deadline (Fall 2027; Arts, Science, Engineering)",
+      "notes": "Applies to applicants from high schools outside Canada and the U.S. and also to U.S. diploma holders. Supporting documents are due March 1, 2027; the Music and Religious Studies programs have their own listed deadlines.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-03-01",
+      "label": "Supporting documents deadline",
+      "notes": "For programs without a separate deadline.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2027-01-21",
+      "label": "Major Entrance Scholarship application and documents",
+      "notes": "As listed on the same page.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No proof of English needed if you lived and attended high school and/or university for at least four consecutive years in a country where English is the acknowledged primary language (list on the page, includes Canada, UK, USA, Australia, Singapore, South Africa and others), or you completed IB Group 1 English with a 5 or better, A-Level English with grade C or better, GCSE/IGCSE/O-Level English with grade B (or 5) or better, or another exemption listed on the page. McGill may request proof from any applicant.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic (regular and UKVI accepted); scores must be sent electronically by IELTS; One Skill Retake not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 90,
+      "subs": {
+        "reading": 21,
+        "listening": 21,
+        "writing": 21,
+        "speaking": 21
+      },
+      "notes": "Old 0-120 scale, tests up to 20 Jan 2026. Arts, Engineering, Science and most other programs; Management and Education (TESL) need 100. MyBest scores not used. Institution code 0935-00.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "reading": 4.5,
+        "listening": 4.5,
+        "writing": 4.5,
+        "speaking": 4.0
+      },
+      "notes": "New 1-6 scale, tests from 21 Jan 2026. Management and Education (TESL) need 5.0.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 125,
+      "notes": "130 for B.Ed. (TESL) and B.Com.; institutional versions not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 65,
+      "subs": {
+        "each_component": 60
+      },
+      "notes": "Pearson Test of English Academic; results sent electronically by Pearson.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "notes": "C1 Advanced: grade B or better; C2 Proficiency: grade C or better. Results sent electronically by Cambridge.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S++"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 30, 1st of the Canadian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

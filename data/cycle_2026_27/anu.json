@@ -1,0 +1,100 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "ANU - Policy: English language admission requirements and post-admission support (ANUP_000408), Table 2: undergraduate programs",
+      "url": "https://policies.anu.edu.au/ppl/document/ANUP_000408",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "ANU - International undergraduate and postgraduate applications (Semester 1, 2027 key dates)",
+      "url": "https://study.anu.edu.au/apply/international-applications",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-12-15",
+      "label": "International applications close - Semester 1, 2027",
+      "notes": "Stated as 'Applications are now open and will close on the 15 December 2026' for Semester 1, 2027. Deadlines for programs with additional selection criteria may vary. Acceptance deadline for Semester 1 is 15 January 2027 if overseas, 31 January 2027 if in Australia. Applicants completing the IB Diploma, an Australian Year 12 or the NCEA apply through UAC International instead.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Requirement is also met by prior education: citizens of Group A countries (including the United Kingdom, United States, Canada excluding Quebec, Australia, New Zealand, Ireland, Singapore and South Africa) who completed at least one year of full-time Year 11 and/or Year 12 (or equivalent) senior secondary education in English at a recognised institution in a Group A country; or non-citizens of Group A countries who completed senior secondary education in English at a recognised institution in a Group A country. Tests must be taken in person at an official test centre, within two years of the application date (four years if the student has since completed one year of full-time study in English within the last two years).",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic or IELTS UKVI Academic (including One Skill Retake); must be taken at an IELTS test centre, online results are not accepted. Undergraduate programs.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 81,
+      "subs": {
+        "reading": 16,
+        "writing": 19,
+        "listening": 16,
+        "speaking": 19
+      },
+      "notes": "Old 0-120 scale, for study commencing on or after 1 January 2027 (for study before that date: 80 overall, reading 20, writing 20, listening 18, speaking 18). Home Edition not accepted; for tests taken on or after 21 January 2026 only TOEFL iBT Australia is accepted. ANU institution code 0506. The policy gives no score on the new 1-6 scale.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "reading": 60,
+        "writing": 60,
+        "listening": 60,
+        "speaking": 60
+      },
+      "notes": "PTE Academic or PTE Academic UKVI (not PTE Academic Online), for study commencing on or after 1 January 2027 (before that date the communicative skills minimum is 55 each).",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 169,
+      "subs": {
+        "reading": 163,
+        "writing": 170,
+        "listening": 163,
+        "speaking": 179
+      },
+      "notes": "Cambridge C1 Advanced, for study commencing on or after 1 January 2027 (before that date: overall 176 and 169 in each part).",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "The Duolingo English Test is not among the tests listed in Table 2 of the ANU policy for undergraduate admission (accepted: IELTS Academic, TOEFL iBT, Cambridge C1 Advanced, PTE Academic, Michigan English Test, LanguageCert Academic).",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 29, 4th of the Australian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

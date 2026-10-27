@@ -1,0 +1,92 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "Monash University - English language requirements",
+      "url": "https://www.monash.edu/admissions/entry-requirements/english-language",
+      "accessed": "2026-10-27"
+    },
+    "apply": {
+      "kind": "admissions_site",
+      "title": "Monash University - Apply for an undergraduate or honours course (international students)",
+      "url": "https://www.monash.edu/admissions/apply/international-ug",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Met without a test if you completed six years of schooling at an English medium institution in an English-speaking country before age 19 and hold, for example, a VCE English, Literature or English Language study score of 25 (units 3 and 4) or an equivalent result in an equivalent English subject in a senior secondary qualification as listed in Monash's study credit and admissions eligibility search; or by tertiary study (e.g. half a year of full-time diploma-level or higher study in an English medium institution). Applicants without six years of English-medium schooling have separate secondary, tertiary and test routes listed on the page. Monash does not accept competency-based qualifications as evidence of English. Time limits on tests apply.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic (also UKVI, One Skill Retake and Online). English Level A, which applies to the Computer Science, Economics and Engineering (Honours) courses.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "subs": {
+        "reading": 13,
+        "listening": 12,
+        "speaking": 18,
+        "writing": 21
+      },
+      "notes": "Old 0-120 scale (the 79 total is on the 0-120 scale), English Level A.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4,
+      "subs": {
+        "reading": 3.5,
+        "listening": 3,
+        "speaking": 3.5,
+        "writing": 4.5
+      },
+      "notes": "New 1-6 scale, English Level A.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "subs": {
+        "each_skill": 50
+      },
+      "notes": "Pearson Test of English Academic (also UKVI), English Level A; no communicative skills score below 50.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "subs": {
+        "each_skill": 169
+      },
+      "notes": "C1 Advanced or C2 Proficiency, English Level A. The page also lists TOEFL Essentials 8 overall (reading 7, listening 7, writing 9, speaking 7) and LanguageCert Academic 67 (reading 60, listening 57, writing 64, speaking 70). Duolingo is not among the tests listed; other tests may be assessed at application.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 31, 5th of the Australian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

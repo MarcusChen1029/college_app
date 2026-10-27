@@ -1,0 +1,93 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Calgary - English language requirement (undergraduate)",
+      "url": "https://www.ucalgary.ca/future-students/undergraduate/admissions/how-to-apply/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "english_calendar": {
+      "kind": "admissions_site",
+      "title": "UCalgary Calendar - A.12 English Language Proficiency (acceptable tests and scores)",
+      "url": "https://calendar.ucalgary.ca/pages/e9845c2c03e84596bcaf892d52666fbf",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "UCalgary - Admission requirements, Computer Science (international applications for Fall 2027: 15 Aug 2026 to 1 Apr 2027)",
+      "url": "https://www.ucalgary.ca/future-students/undergraduate/admissions/requirements?field_ugrad_student_types=1335&field_ugrad_education_systems=1388&field_ugrad_reqs_programs=1902",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-04-01",
+      "label": "Fall 2027 application for international applicants (closing date)",
+      "notes": "The requirements pages for Computer Science, Economics and Engineering give international application dates for the Fall 2027 intake as 15 Aug 2026 to 1 Apr 2027. The general dates page (https://www.ucalgary.ca/future-students/undergraduate/admissions/dates) separately lists 1 March as the Fall application deadline (application fee and program choices) and 15 March for unofficial transcripts and supporting documents, so aim for 1 March. Most offers are made after first-term Grade 12 transcripts arrive.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "All applicants must meet the English language requirement. Without a test: 3 years of study in an ELP-exempt country (the list includes the United States, United Kingdom, Canada, Australia, India, Ireland, Nigeria, Singapore, South Africa) or at an accredited Canadian, American, British or CIS school; 2 years at a recognized post-secondary institution; Alberta English 30-1 at 80%; IB English A 5+ or English B HL 6+; AP English Language or Literature 4+; GCSE/AS/A-level English (non-ESL) grade B (6 on the 9-point scale) or better; or a UCalgary English course at B- or better. ESL-only study requires a test.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "notes": "IELTS Academic (or IELTS Indicator); no band minimum for most undergraduate programs. Nursing and Education need higher scores.",
+      "src": "english_calendar"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 86,
+      "notes": "Old 0-120 scale, tests taken before 21 Jan 2026; no section minimum for most programs. School code 0813.",
+      "src": "english_calendar"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "notes": "New 1-6 scale, tests on or after 21 Jan 2026; no section minimum for most programs.",
+      "src": "english_calendar"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "notes": "Most undergraduate programs; Nursing needs 130 and Education 150 with integrated subscores.",
+      "src": "english_calendar"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "notes": "PTE Academic; Nursing needs 65 and Education 80 with skill minimums.",
+      "src": "english_calendar"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "notes": "Cambridge C1 Advanced or C2 Proficiency (180 for most programs). CAEL 70 is also accepted.",
+      "src": "english_calendar"
+    }
+  ],
+  "tiers": {
+    "general": "A+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 249, 11th of the Canadian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

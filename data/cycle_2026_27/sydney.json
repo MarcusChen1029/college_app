@@ -1,0 +1,90 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Sydney - English language requirements (international, undergraduate) and accepted tests",
+      "url": "https://www.sydney.edu.au/study/applying/how-to-apply/international-students/english-language-requirements.html",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "University of Sydney - Application and semester dates (international undergraduate closing dates)",
+      "url": "https://www.sydney.edu.au/study/applying/application-dates.html",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-12-01",
+      "label": "International undergraduate closing date, Semester 1 (February) 2027",
+      "notes": "Page: Semester 1 (Feb) closes 1 December of the year prior to commencement; Semester 2 (Aug) closes 29 May. Applications may close earlier once capacity is reached (check the course page). Students currently in an Australian Year 12 qualification, or an IB diploma in Australia, apply via UAC and follow its dates instead.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "English as a first language requires citizenship or long-term (10+ years) residency and completed secondary or tertiary study in a recognised English-speaking country (list includes the UK, USA, Canada excluding Quebec, Ireland, Singapore, Australia, New Zealand). Otherwise proof can be a recognised secondary qualification undertaken in English (e.g. Cambridge GCE A Levels or IB Diploma), a foundation or preparation program, a diploma or one year of bachelor's study in English, or an accepted English test taken within two years.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic (not IELTS Online). 6.5 overall and 6.0 in each band is the course-page requirement for Advanced Computing and Mechanical Engineering; the Bachelor of Economics needs 7.0 overall with 6.0 in each band.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 85,
+      "subs": {
+        "reading": 17,
+        "listening": 17,
+        "speaking": 17,
+        "writing": 19
+      },
+      "notes": "Old 0-120 scale; only the TOEFL Australia version is accepted (Home Edition not accepted). Course-page figures for Advanced Computing and Mechanical Engineering; Economics needs 96 overall (same sub-scores). The page gives no 1-6 scale score.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "each_skill": 60
+      },
+      "notes": "PTE Academic. 64 overall and 60 in each band for Advanced Computing and Mechanical Engineering; Economics needs 72 overall.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "notes": "Cambridge C1 Advanced and C2 Proficiency are listed as accepted, except for courses with external registration or accreditation requirements. No minimum score on the page.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "Not in the page's list of accepted tests (IELTS Academic, TOEFL iBT Australia version, PTE Academic, LanguageCert Academic, Cambridge C1/C2).",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 28, 3rd of the Australian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

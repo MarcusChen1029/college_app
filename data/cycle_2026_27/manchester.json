@@ -1,0 +1,81 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "The University of Manchester - BSc Economics 2027 entry: English language requirements (lowest band of the three courses)",
+      "url": "https://www.manchester.ac.uk/study/undergraduate/courses/2027/10224/bsc-economics/",
+      "accessed": "2026-10-27"
+    },
+    "english_cs": {
+      "kind": "admissions_site",
+      "title": "The University of Manchester - BSc Computer Science 2027 entry: English language requirements (TOEFL 1-6 scale)",
+      "url": "https://www.manchester.ac.uk/study/undergraduate/courses/2027/00560/bsc-computer-science/",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "The University of Manchester - How to apply (equal consideration closing date 13 January 2027, 6pm GMT)",
+      "url": "https://www.manchester.ac.uk/study/undergraduate/applying/how-to-apply/",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS equal-consideration closing date (6pm GMT)",
+      "notes": "Manchester states this is the closing date for receipt of applications to be given equal consideration. UCAS also gives school or college deadlines that are likely to be earlier.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_all_international",
+    "waiver_notes": "The page says all applicants from the UK and overseas must show English language proficiency; GCSE/IGCSE English Language grade C/4 (or IGCSE English as a Second Language at the grade stated on the course page) counts. Using the lowest band (Economics); Computer Science and Mechanical Engineering need IELTS 6.5 with no subskill below 6.5. Tests are valid for two years.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "Economics band; Computer Science and Mechanical Engineering need no subskill below 6.5. In-person IELTS at official test centres only.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 90,
+      "subs": {
+        "each_component": 20
+      },
+      "notes": "Old 0-120 scale. Economics band (20 in each subset); Computer Science and Mechanical Engineering need 22 in each subskill.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4.5
+      },
+      "notes": "New 1-6 scale, as printed on the Computer Science and Mechanical Engineering pages; the Economics page gives no 1-6 figure.",
+      "src": "english_cs"
+    }
+  ],
+  "tiers": {
+    "general": "B+"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 24th of 130 UK universities (B = ranks 16-40 on the national scale)."
+  }
+}

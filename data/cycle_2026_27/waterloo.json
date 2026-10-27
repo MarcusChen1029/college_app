@@ -1,0 +1,143 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Waterloo - English language requirements (undergraduate)",
+      "url": "https://uwaterloo.ca/future-students/admissions/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "University of Waterloo - Application and document deadlines (September 2027 entry)",
+      "url": "https://uwaterloo.ca/future-students/admissions/deadlines",
+      "accessed": "2026-10-27"
+    },
+    "aif": {
+      "kind": "admissions_site",
+      "title": "University of Waterloo - Admission Information Form (AIF) and other supplementary forms",
+      "url": "https://uwaterloo.ca/future-students/admissions/admission-information-form",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-02-01",
+      "label": "Application deadline - programs other than Engineering (apply through OUAC)",
+      "notes": "International students have the same deadlines. Documents due 15 Feb 2027. The deadline may be extended if a program is not yet full; later applications are reviewed only if spaces are available.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "Application deadline - Engineering programs (other than Architecture)",
+      "notes": "Documents due 1 Feb 2027. Admission Information Form and online interview are required for all Engineering programs.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-02-15",
+      "label": "Documents deadline and Admission Information Form (Faculty of Mathematics programs incl. Computer Science)",
+      "notes": "AIF deadline for programs other than Engineering is 15 Feb 2027.",
+      "src": "aif"
+    },
+    {
+      "kind": "other",
+      "due": "2027-02-01",
+      "label": "Engineering: Admission Information Form, online interview and supplementary forms due (11:59 p.m. ET)",
+      "notes": "Also the Engineering documents deadline.",
+      "src": "aif"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "A test score is required if your four most recent years of full-time education were NOT in an English-language school system. Not required if those four years were in Canada, or in an entirely English-language school system in Canada or another country (official transcripts showing language of instruction or a hardcopy principal's letter by the document deadline), or for bilingual Francophone Canadians. ESL programs do not count. Only scores completed on or after 1 May 2025 are accepted.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "writing": 6.5,
+        "speaking": 6.5,
+        "reading": 6.0,
+        "listening": 6.0
+      },
+      "notes": "IELTS Academic; IELTS One Skill Retake accepted. An overall 7.0 with at least 6.0 in every component is also acceptable.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 90,
+      "subs": {
+        "writing": 25,
+        "speaking": 25
+      },
+      "notes": "Old 0-120 scale, for tests completed before 21 Jan 2026. Home Edition and Paper Edition accepted; MyBest scores and TOEFL Essentials not used. Institution code 0996, department code 00.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "writing": 5,
+        "speaking": 5
+      },
+      "notes": "New 1-6 scale, for tests completed as of 21 Jan 2026: 4.5 overall with 5 in writing and 5 in speaking.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 63,
+      "subs": {
+        "writing": 65,
+        "speaking": 65
+      },
+      "notes": "PTE Academic (including PTE Academic Online): 63 overall with 65 in writing and 65 in speaking.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "subs": {
+        "literacy": 125,
+        "production": 125
+      },
+      "notes": "Tests completed after 1 July 2024: overall 120 with Literacy and Production 125; results without subscores are not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "subs": {
+        "writing": 176,
+        "reading": 176,
+        "speaking": 176,
+        "listening": 176
+      },
+      "notes": "C1 Advanced or C2 Proficiency: 180 overall with 176 in each component.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank =113, 5th of the Canadian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

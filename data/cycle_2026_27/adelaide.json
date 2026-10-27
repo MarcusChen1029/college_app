@@ -1,0 +1,85 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "Adelaide University - English language proficiency (international undergraduate) and equivalency table",
+      "url": "https://adelaide.edu.au/study/international-students/how-to-apply/entry-requirements/english-language-proficiency/",
+      "accessed": "2026-10-27"
+    },
+    "institution": {
+      "kind": "other",
+      "title": "Adelaide University - 'A bold new future for Australian higher education begins today' (5 January 2026)",
+      "url": "https://adelaide.edu.au/about/news/2026/a-bold-new-future-for-australian-higher-education-begins-today/",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International students from non-English speaking backgrounds must meet the minimum. Other accepted ways: Australian Year 12 with a passing grade in a recognised English as a Second Language or English Language subject; International Baccalaureate Diploma (including specific language subjects undertaken in English); foundation program at another Australian university; in limited circumstances previous academic qualifications or professional use of English (with certified documentation).",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic overall 6.5, each band 6. Same on the Computer Science, Economics and Mechanical Engineering degree pages.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 79,
+      "subs": {
+        "speaking": 18,
+        "reading": 13,
+        "listening": 12,
+        "writing": 21
+      },
+      "notes": "Old 0-120 scale, from the page's equivalency table: overall 79 is the IELTS 6.5 column; the sub-scores are from the IELTS 6.0 column because the degrees require 6.0 in each IELTS band. No 1-6 scale score given.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "each_skill": 60
+      },
+      "notes": "From the equivalency table: overall 64 (IELTS 6.5 column); 60 per skill is the IELTS 6.0 column.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "subs": {
+        "each_skill": 169
+      },
+      "notes": "Cambridge C1 Advanced / C2 Proficiency: overall 176 (IELTS 6.5 column), 169 per skill (IELTS 6.0 column).",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "Not in the page's list of accepted tests (IELTS, PTE, TOEFL iBT, Cambridge C1/C2, OET for some degrees).",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A++"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 79, 8th of the Australian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

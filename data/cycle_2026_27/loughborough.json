@@ -1,0 +1,104 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - Dates and deadlines for uni applications (2027 entry: 13 Jan 2027, 18:00 UK time, equal consideration date for most undergraduate courses)",
+      "url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "Loughborough - English language requirements (approved qualifications)",
+      "url": "https://www.lboro.ac.uk/study/apply/english-language-requirements/",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (Loughborough undergraduate courses)",
+      "notes": "18:00 UK time. UCAS equal-consideration date for 2027 entry; applications after it are not guaranteed equal consideration.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_all_international",
+    "waiver_notes": "Everyone applying must hold an English language qualification, whether or not English is their first language. School-based qualifications are accepted if taken within 10 years (e.g. GCSE or O Level English Language grade C / 4); the course page says English studied within certain country qualifications is normally sufficient. Medium of instruction letters are not accepted.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic (incl. Online and One Skill Retake), university standard. A few other courses (e.g. BA Politics, Philosophy and Economics, LLB Law, Psychology and Sport Science courses) need a higher level. Tests must be no more than 2 years old.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 88,
+      "subs": {
+        "listening": 21,
+        "reading": 21,
+        "speaking": 21,
+        "writing": 21
+      },
+      "notes": "Tests taken before 21 January 2026 (0-120 scale); at least 21 in each test.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "listening": 4.5,
+        "reading": 4.0,
+        "speaking": 4.0,
+        "writing": 4.5
+      },
+      "notes": "Tests taken from 21 January 2026 (1-6 scale): 4.5 overall, at least 4.5 in Writing and Listening and at least 4.0 in Speaking and Reading.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 65,
+      "subs": {
+        "each_component": 61
+      },
+      "notes": "Pearson Test of Academic English (centre-based test): 65 overall, not less than 61 in each sub-test.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "min": 120,
+      "subs": {
+        "speaking": 110,
+        "writing": 115,
+        "reading": 110,
+        "listening": 105
+      },
+      "notes": "Overall 120 with the stated minimum in each integrated and individual sub-test.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A++"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 8th of 130 UK universities (A = ranks 6-15 on the national scale)."
+  }
+}

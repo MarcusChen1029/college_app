@@ -1,0 +1,97 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - Dates and deadlines for uni applications (2027 entry: 13 Jan 2027, 18:00 UK time, equal consideration date for most undergraduate courses)",
+      "url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "Nottingham - English language equivalencies (undergraduate; last updated November 2025)",
+      "url": "https://www.nottingham.ac.uk/studywithus/international-applicants/english-language/english-language-equivalencies.aspx",
+      "accessed": "2026-10-27"
+    },
+    "policy": {
+      "kind": "admissions_site",
+      "title": "Nottingham - Minimum English language entry requirements (policy)",
+      "url": "https://www.nottingham.ac.uk/qualitymanual/admissions/pol-min-english-entry-requirements.aspx",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (Nottingham undergraduate courses)",
+      "notes": "18:00 UK time. UCAS equal-consideration date for 2027 entry; applications after it are not guaranteed equal consideration.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Exempt if the applicant completed the whole of secondary education up to and including the equivalent of year 12 (including a GCSE-equivalent English language qualification) in a country on the Home Office's list of recognised countries, or has completed a recognised UK degree. US applicants: a US national with GCSE-equivalent (Grade 11) qualifications to the required level needs no additional evidence (US country page).",
+    "src": "policy"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_component": 5.5
+      },
+      "notes": "IELTS Academic. Lowest undergraduate band (6.0 / 5.5, e.g. Mechanical Engineering BEng); Computer Science and Economics need 6.5 with 6.0 in each element; the highest band is 7.0 with 6.0. Tests valid for 2 years.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "accepted",
+      "min": 80,
+      "subs": {
+        "listening": 17,
+        "reading": 18,
+        "speaking": 20,
+        "writing": 17
+      },
+      "notes": "Tests taken up to January 2026 (0-120 scale), lowest band. Middle band (6.5 IELTS) 90 overall: Writing/Listening 19, Reading 20, Speaking 22. No best-score combining across tests.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "accepted",
+      "min": 4.5,
+      "subs": {
+        "listening": 4.0,
+        "reading": 4.0,
+        "speaking": 4.0,
+        "writing": 4.0
+      },
+      "notes": "Tests taken after January 2026 (1-6 scale), lowest band: 4.5 overall with no less than 4.0 in each element. Middle band (6.5 IELTS): 4.5 overall with no less than 4.5 in each element; highest band 5.0 with no less than 4.5.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "accepted",
+      "min": 65,
+      "subs": {
+        "each_component": 59
+      },
+      "notes": "PTE Academic, lowest band: 65 (minimum 59). Middle band (6.5 IELTS): 71 (minimum 65); highest band 76 (minimum 65).",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "B+"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 26th of 130 UK universities (B = ranks 16-40 on the national scale)."
+  }
+}

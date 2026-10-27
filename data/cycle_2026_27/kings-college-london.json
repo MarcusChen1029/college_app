@@ -1,0 +1,102 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - 2027 entry application deadlines (13 Jan 2027, 18:00 UK time, equal consideration date for most undergraduate courses)",
+      "url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "King's College London - Undergraduate English language entry requirements (valid for 2027/28 entry)",
+      "url": "https://www.kcl.ac.uk/study/undergraduate/how-to-apply/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (King's undergraduate courses)",
+      "notes": "18:00 UK time. UCAS equal consideration date for 2027 entry. The King's course pages leave the application deadline field blank, so the UCAS date applies.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Nationals of listed majority English-speaking countries (including the U.S.A.) who completed a high school level 3 (A-level equivalent) qualification in a majority English-speaking country do not need an additional test; King's Foundations excepted. The requirement band depends on the course: band D (e.g. Computer Science) is the lowest undergraduate band shown here; Economics and General Engineering are band B.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, band D (e.g. Computer Science). Band B (Economics, General Engineering) is 7.0 overall and 6.5 in each skill. Test dated within two years of 1 Sept 2027.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 92,
+      "subs": {
+        "writing": 23,
+        "each_other_skill": 20
+      },
+      "notes": "Old 0-120 scale, tests taken before 21 Jan 2026, band D. Band B is 100 overall with 25 in writing and 23 in each other skill.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_skill": 4.0
+      },
+      "notes": "New 1-6 scale, tests taken from 21 Jan 2026, band D. Band B is 5 overall with 4.5 in each skill.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 62,
+      "subs": {
+        "each_skill": 59
+      },
+      "notes": "PTE Academic (UKVI version also accepted; PTE Online not accepted), band D. Band B is 69 with 62 in each skill.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 176,
+      "subs": {
+        "each_skill": 169
+      },
+      "notes": "Cambridge C1 Advanced or C2 Proficiency, band D. Band B is 185 overall with 176 in each skill.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "Not on King's list of accepted tests; the page says a test that is not listed cannot be accepted.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "B++"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 16th of 130 UK universities (B = ranks 16-40 on the national scale)."
+  }
+}
