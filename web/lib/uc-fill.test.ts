@@ -41,12 +41,12 @@ test("subjects: language year from the name, history by name, unknown left for t
   assert.equal(ucDiscipline(course({ overrides: { uc: { subSubject: "Statistics" } } }))?.value, "15");
 });
 
-test("college, PE and business courses are left out; honors abroad is NH, AP and IB keep their code", () => {
+test("college, PE and business courses are left out; honors abroad is HL, AP and IB keep their code", () => {
   const [p] = buildUcPlans([school()], [
     course({ id: "1", isCollege: true }), course({ id: "2", subject: "pe_health", name: "PE" }), course({ id: "3", level: "honors", name: "Hon Chem", subject: "science", subSubject: "chemistry" }),
     course({ id: "4", level: "ap", name: "AP Calc", subSubject: "calculus" }), course({ id: "5", level: "ib_hl", name: "IB Bio", subject: "science", subSubject: "biology" }),
   ]);
-  assert.deepEqual(p!.rows.map((r) => [r.name, r.honors]), [["Hon Chem", "NH"], ["AP Calc", "AP"], ["IB Bio", "IB"]]);
+  assert.deepEqual(p!.rows.map((r) => [r.name, r.honors]), [["Hon Chem", "HL"], ["AP Calc", "AP"], ["IB Bio", "IB"]]);
   assert.equal(p!.skipped.length, 2);
 });
 
@@ -74,4 +74,9 @@ test("courses with no A-G area (home economics, counseling) are left out like PE
   const [p] = buildUcPlans([school()], [course({ id: "h", subject: "other", subSubject: null, name: "Home Economics 9" }), course({ id: "k", subject: "other", subSubject: null, name: "College Counseling 11" })]);
   assert.equal(p!.rows.length, 0);
   assert.deepEqual(p!.skipped.map((s) => s.field), ["course", "course"]);
+});
+
+test("a UC subject chosen for a course wins over the category that would leave it out", () => {
+  const [p] = buildUcPlans([school()], [course({ id: "t", subject: "career_technical", subSubject: null, name: "Life Technology 11", overrides: { uc: { subject: "Computer Science (Mathematics)" } } })]);
+  assert.deepEqual(p!.rows.map((r) => [r.name, r.discipline?.value]), [["Life Technology 11", "16"]]);
 });
