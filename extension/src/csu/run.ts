@@ -12,7 +12,7 @@ export async function runCsuSchool(doc: Document, plan: CsuSchoolPlan, shouldSto
   const added: string[] = [];
   let have: string[];
   try {
-    have = await existingTitles(doc, plan.schoolName);
+    have = await existingTitles(doc, plan.schoolName, plan.schoolCode);
   } catch (e) {
     return { added, skippedExisting: 0, stopped: (e as Error).message };
   }
@@ -26,12 +26,12 @@ export async function runCsuSchool(doc: Document, plan: CsuSchoolPlan, shouldSto
   for (const row of todo) {
     if (shouldStop()) return { added, skippedExisting: plan.rows.length - todo.length, stopped: "Stopped." };
     try {
-      await openCourseForm(doc, plan.schoolName);
+      await openCourseForm(doc, plan.schoolName, plan.schoolCode);
       const { blanks } = await fillCsuCourse(doc, row);
       if (blanks.length) {
         return { added, skippedExisting: plan.rows.length - todo.length, stopped: `${row.name} is filled in but not saved: choose ${blanks.join(", ")} and press Save, then run again.` };
       }
-      const now = await existingTitles(doc, plan.schoolName);
+      const now = await existingTitles(doc, plan.schoolName, plan.schoolCode);
       if (now.filter((n) => key(n) === key(row.name)).length <= have.filter((n) => key(n) === key(row.name)).length) {
         return { added, skippedExisting: plan.rows.length - todo.length, stopped: `Cal State Apply did not list ${row.name} after saving. Check the form for a message.` };
       }

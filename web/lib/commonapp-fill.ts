@@ -29,6 +29,8 @@ export type Skipped = { where: CgGradeKey | "current"; course: string; field: st
 export type CgGradePlan = {
   grade: CgGradeKey;
   schoolName: string;
+  /** The school code (CEEB) from the transcript, when the student entered one: portals are matched by it first. */
+  schoolCode?: string;
   schoolYear: string;
   scale: CommonAppScale;
   scheduleStem: ScheduleStem;
@@ -249,7 +251,7 @@ export function buildCgPlan(schools: TranscriptSchool[], courses: TranscriptCour
       return { trackerId: c.id, name: c.name, subject, level, grades: cells.grades, credits: creditNA ? {} : cells.credits, creditNA };
     });
 
-    plans.push({ grade, schoolName: mainSchool.name, schoolYear: schoolYearLabel(mainYear), scale, scheduleStem: stem, rows, skipped, warnings });
+    plans.push({ grade, schoolName: mainSchool.name, schoolCode: mainSchool.schoolCode, schoolYear: schoolYearLabel(mainYear), scale, scheduleStem: stem, rows, skipped, warnings });
   }
   return plans;
 }

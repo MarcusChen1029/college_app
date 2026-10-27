@@ -92,7 +92,7 @@ test("Keep mode never changes a header the existing rows depend on", () => {
 test("schoolMissingText names up to five options read and both ways out", () => {
   assert.equal(
     schoolMissingText("Lincoln High", ["West Lafayette Junior-Senior High School"]),
-    "Your tracker school 'Lincoln High' doesn't match any school in Common App's list ('West Lafayette Junior-Senior High School'). Rename it in the tracker to match exactly, or add it in Common App's Education section.",
+    "Your tracker school 'Lincoln High' doesn't match any school in Common App's list ('West Lafayette Junior-Senior High School'). Rename it in the tracker to match, or add it in Common App's Education section.",
   );
   const seven = ["A", "B", "C", "D", "E", "F", "G"];
   assert.match(schoolMissingText("X", seven), /\('A', 'B', 'C', 'D', 'E', and 2 more\)/);

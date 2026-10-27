@@ -53,6 +53,10 @@ export function TranscriptSchoolForm({ initial, submitLabel, onSave, onCancel }:
         <input className={fieldClass} value={f.country} maxLength={LIMITS.short} onChange={(e) => set("country", e.target.value)} placeholder={t("transcript.countryPh")} />
       </label>
       <label className="text-sm font-medium">
+        {t("transcript.schoolCode")} <span className="font-normal text-zinc-500">{t("transcript.schoolCodeHint")}</span>
+        <input className={fieldClass} value={f.schoolCode} maxLength={12} onChange={(e) => set("schoolCode", e.target.value)} placeholder="694132" />
+      </label>
+      <label className="text-sm font-medium">
         {t("transcript.kind")}
         <select className={fieldClass} value={f.kind} onChange={(e) => set("kind", e.target.value as SchoolInput["kind"])}>
           {SCHOOL_KINDS.map((k) => (

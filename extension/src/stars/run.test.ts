@@ -78,3 +78,10 @@ test("planForPage matches page kind and year, and the school name when two schoo
   assert.equal(planForPage([us1, us2], { year: 2025, kind: "us", pageText: "Selected School: NORTHERN VALLEY REGIONAL DEMAREST HIGH SCHOOL" }), us1);
   assert.equal(planForPage([us1, us2], { year: 2025, kind: "us", pageText: "no name here" }), null);
 });
+
+test("planForPage tolerates other spellings of the school and prefers its code (selCeeb)", () => {
+  const kc = { ...plan([row("A")]), schoolName: "Kang Chiao International School Linkou Campus", schoolCode: "694132" };
+  const other = { ...plan([row("B")]), schoolName: "Taipei American School", schoolCode: "694100" };
+  assert.equal(planForPage([kc, other], { year: 2024, kind: "intl", pageText: "Selected School: KANG CHIAO INTL SCH LINKOU CMP" }), kc);
+  assert.equal(planForPage([kc, other], { year: 2024, kind: "intl", pageText: "694100 Selected School: TAS" }), other);
+});

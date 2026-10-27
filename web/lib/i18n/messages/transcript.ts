@@ -65,6 +65,8 @@ export const en = {
   "transcript.notSure": "Not sure",
   "transcript.weighted": "Weighted",
   "transcript.unweighted": "Unweighted",
+  "transcript.schoolCode": "School code",
+  "transcript.schoolCodeHint": "(CEEB, optional; helps the filler find your school)",
   "transcript.classRank": "Class rank",
   "transcript.classRankHint": "(as printed, optional)",
   // Course form
@@ -227,6 +229,8 @@ export const zhTW: Translation<typeof en> = {
   "transcript.notSure": "不確定",
   "transcript.weighted": "有加權",
   "transcript.unweighted": "未加權",
+  "transcript.schoolCode": "學校代碼",
+  "transcript.schoolCodeHint": "（CEEB 代碼，選填；幫助自動填寫找到你的學校）",
   "transcript.classRank": "班級排名",
   "transcript.classRankHint": "（照成績單所印，選填）",
   "transcript.courseName": "課程名稱",

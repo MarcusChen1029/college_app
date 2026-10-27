@@ -63,6 +63,7 @@ export function transcriptFormatText(): string {
       "defaultPeriod": "semester",
       "firstYear": 2022, "lastYear": 2026,
       "printedGpa": "GPA exactly as printed, or empty", "printedGpaScale": "e.g. 4.0, 100", "gpaWeighted": null, "classRank": "as printed, or empty",
+      "schoolCode": "the school's CEEB / College Board code if printed (often 6 digits), or empty",
       "courses": [
         {
           "academicYear": 2025,

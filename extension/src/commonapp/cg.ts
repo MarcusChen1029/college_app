@@ -3,7 +3,8 @@
 // then Continue only if nothing failed. On a locator failure the dialog is left OPEN and nothing is pressed (X would save).
 // Never touches the C&G intro question, never ticks "I have reported all of my courses", never submits.
 
-import { matchOption, matchStem, NO_GRADE, rowsToAdd, type CgGradeKey, type CgGradePlan, type CommonAppScale, type FillRow, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
+import { matchStem, NO_GRADE, rowsToAdd, type CgGradeKey, type CgGradePlan, type CommonAppScale, type FillRow, type Skipped, type TermColumn } from "../../../web/lib/commonapp-fill.ts";
+import { bestSchoolMatch } from "../../../web/lib/school-match.ts";
 import {
   cgCreditId,
   cgDialog,
@@ -91,7 +92,7 @@ export function cgGradeBox(doc: Document, scale: CommonAppScale, n: number, col:
 /** Keep mode: a header that already holds another value. Changing it would change the courses already there, so the grade is skipped. */
 export function headerMismatch(doc: Document, plan: CgGradePlan): string | null {
   const checks: [string, string, string, (shown: string) => boolean][] = [
-    ["schoolNameControl1", "School Name", plan.schoolName, (s) => sameText(s, plan.schoolName)],
+    ["schoolNameControl1", "School Name", plan.schoolName, (s) => schoolOption([s], plan) !== null],
     ["schoolYearControl1", "School Year", plan.schoolYear, (s) => sameText(s, plan.schoolYear)],
     ["gradingScaleControl1", "Grading Scale", plan.scale, (s) => sameText(s, plan.scale)],
     ["scheduleControl1", "Schedule", plan.scheduleStem, (s) => matchStem([s], plan.scheduleStem) !== null],
@@ -198,17 +199,22 @@ export function schoolMissingText(name: string, options: readonly string[]): str
   const shown = options.slice(0, 5).map((o) => `'${o}'`);
   if (options.length > 5) shown.push(`and ${options.length - 5} more`);
   const list = shown.length ? shown.join(", ") : "no schools";
-  return `Your tracker school '${name}' doesn't match any school in Common App's list (${list}). Rename it in the tracker to match exactly, or add it in Common App's Education section.`;
+  return `Your tracker school '${name}' doesn't match any school in Common App's list (${list}). Rename it in the tracker to match, or add it in Common App's Education section.`;
+}
+
+/** Common App's School Name option for the plan's school: exact text, else the one option whose name reads as the same school. */
+function schoolOption(options: readonly string[], plan: CgGradePlan): string | null {
+  return options.find((o) => sameText(o, plan.schoolName)) ?? bestSchoolMatch(options.filter(Boolean), { name: plan.schoolName }, (o) => ({ name: o }));
 }
 
 /** School Name and School Year. false = not in Common App's list: the grade is skipped (a blank says why). */
 async function setSchoolAndYear(doc: Document, plan: CgGradePlan, blank: (course: string, field: string, reason: string) => void): Promise<boolean> {
   const school = await header(doc, "schoolNameControl1", "School Name");
-  if (!sameText(matShownText(school), plan.schoolName)) {
+  if (schoolOption([matShownText(school)], plan) === null) {
     let options: string[] = [];
     const picked = await chooseMatOption(school, (opts) => {
       options = opts.filter((o) => o !== CLEAR_SELECTION);
-      return matchOption(options, plan.schoolName);
+      return schoolOption(options, plan);
     });
     if (picked === null) {
       blank("", "school", `${schoolMissingText(plan.schoolName, options)} ${LEFT_OPEN}`);

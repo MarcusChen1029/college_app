@@ -19,7 +19,7 @@ export type UcRow = {
   language: string | null;
 };
 export type UcSkip = { course: string; field: string; reason: string };
-export type UcGradePlan = { schoolName: string; gradeLevel: number; year: string; rows: UcRow[]; skipped: UcSkip[]; warnings: string[] };
+export type UcGradePlan = { schoolName: string; schoolCode?: string; gradeLevel: number; year: string; rows: UcRow[]; skipped: UcSkip[]; warnings: string[] };
 
 const LETTER = /^([A-F])[+-]?$/i;
 const byText = (t: string) => UC_DISCIPLINES.find((d) => d.text === t)!;
@@ -101,7 +101,7 @@ export function buildUcPlans(schools: TranscriptSchool[], courses: TranscriptCou
       if (gl == null || gl < 9 || gl > 12) continue; // 7th/8th grade has its own page (math and languages only, no grades)
       let plan = plans.get(gl);
       if (!plan) {
-        plan = { schoolName: school.name, gradeLevel: gl, year: `${c.academicYear} - ${c.academicYear + 1}`, rows: [], skipped: [], warnings: [] };
+        plan = { schoolName: school.name, schoolCode: school.schoolCode, gradeLevel: gl, year: `${c.academicYear} - ${c.academicYear + 1}`, rows: [], skipped: [], warnings: [] };
         plans.set(gl, plan);
       }
       const skip = (field: string, reason: string) => plan!.skipped.push({ course: c.name, field, reason });

@@ -4,6 +4,7 @@
 
 import { csuGradeLevelLabel, csuGradeLevelOption } from "../../../web/lib/csu-labels.ts";
 import type { CsuRow } from "../../../web/lib/csu-fill.ts";
+import { bestSchoolMatch, codeInText } from "../../../web/lib/school-match.ts";
 
 export const CSU_TIMING = { stepMs: 100, listMs: 4000, drawerMs: 8000 };
 
@@ -49,7 +50,7 @@ export function onCourseworkPage(doc: Document): boolean {
 }
 
 /** The school's "Add course" / "N Courses" button on the coursework page. Matches the school's name as Cal State Apply shows it (upper case). */
-export function schoolButton(doc: Document, schoolName: string): HTMLElement {
+export function schoolButton(doc: Document, schoolName: string, schoolCode?: string): HTMLElement {
   const buttons = [...doc.querySelectorAll("main button")].filter((b) => /^(add course|\d+ courses?)$/i.test(text(b)));
   /** The text of the button's school card: its nearest ancestor (up to 6 levels) that holds no other school's button. */
   const cardText = (b: Element): string => {
@@ -59,17 +60,24 @@ export function schoolButton(doc: Document, schoolName: string): HTMLElement {
       if (buttons.some((o) => o !== b && up.contains(o))) break;
       el = up;
     }
-    return text(el);
+    // Each text node separately: textContent runs the name into the next line ("...LINKOU CMPPORTLAND").
+    const parts: string[] = [];
+    const walk = (n: Node) => (n.nodeType === 3 ? parts.push(n.textContent ?? "") : n.childNodes.forEach(walk));
+    if (el) walk(el);
+    return parts.join(" ").replace(/\s+/g, " ").trim();
   };
-  const named = buttons.filter((b) => cardText(b).toLowerCase().includes(schoolName.toLowerCase()));
-  if (named.length === 1) return named[0] as HTMLElement;
+  // A card holds the school's name (in Cal State Apply's own spelling) plus its city and dates: matched by code, else word by word.
+  const byCode = schoolCode ? buttons.filter((b) => codeInText(schoolCode, cardText(b))) : [];
+  if (byCode.length === 1) return byCode[0] as HTMLElement;
+  const named = bestSchoolMatch(buttons, { name: schoolName }, (b) => ({ name: cardText(b) }));
+  if (named) return named as HTMLElement;
   if (buttons.length === 1) return buttons[0] as HTMLElement;
-  throw new CsuStop(`Could not tell which school on Cal State Apply is "${schoolName}". Add courses for that school by hand, or give it the same name in the tracker.`);
+  throw new CsuStop(`Could not tell which school on Cal State Apply is "${schoolName}". Add courses for that school by hand, or add its school code in the tracker.`);
 }
 
 /** Course titles already on the school (read from its course list drawer, which this opens and leaves open). */
-export async function existingTitles(doc: Document, schoolName: string): Promise<string[]> {
-  const btn = schoolButton(doc, schoolName);
+export async function existingTitles(doc: Document, schoolName: string, schoolCode?: string): Promise<string[]> {
+  const btn = schoolButton(doc, schoolName, schoolCode);
   if (/^add course$/i.test(text(btn))) return [];
   btn.click();
   const drawer = await until(() => {
@@ -189,12 +197,12 @@ export async function fillCsuCourse(doc: Document, row: CsuRow): Promise<CsuCour
 }
 
 /** Opens the course form for the school: from its course list drawer ("+ Add course") or straight from the page ("Add course"). */
-export async function openCourseForm(doc: Document, schoolName: string): Promise<void> {
+export async function openCourseForm(doc: Document, schoolName: string, schoolCode?: string): Promise<void> {
   const top = topDrawer(doc);
   if (top && /High School Courses/.test(text(top))) {
     drawerButton(top, "Add Course").click();
   } else {
-    schoolButton(doc, schoolName).click();
+    schoolButton(doc, schoolName, schoolCode).click();
     await sleep(500);
     const d = topDrawer(doc);
     if (d && /High School Courses/.test(text(d))) drawerButton(d, "Add Course").click();

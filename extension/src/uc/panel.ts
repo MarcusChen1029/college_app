@@ -1,6 +1,7 @@
 // Side panel section for the UC application: "Add courses" for the grade whose Enter courses & grades page is open. New courses go into
 // empty rows and are saved with UC's own "Save & continue"; courses already on the page are left alone.
 
+import { schoolOnPage } from "../../../web/lib/school-match.ts";
 import type { UcGradePlan } from "../../../web/lib/uc-fill.ts";
 import { afterReload, sendTo } from "../tab-wait.ts";
 import { button, h } from "../ui.ts";
@@ -11,8 +12,8 @@ const key = (s: string) => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " "
 export function ucPlanForPage(plans: UcGradePlan[], grade: number, pageText: string): UcGradePlan | null {
   const same = plans.filter((p) => p.gradeLevel === grade);
   if (same.length <= 1) return same[0] ?? null;
-  const named = same.filter((p) => key(pageText).includes(key(p.schoolName)));
-  return named.length === 1 ? named[0]! : null;
+  // UC shows "School code: 694132" on the page; names are compared word by word.
+  return schoolOnPage(same, pageText, (p) => ({ name: p.schoolName, code: p.schoolCode }));
 }
 
 export async function ucAutoView(plans: UcGradePlan[], tabId: number): Promise<HTMLElement> {
