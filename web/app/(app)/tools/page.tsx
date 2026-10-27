@@ -45,6 +45,16 @@ export default async function ToolsPage() {
         </Link>
       </section>
 
+      <section aria-labelledby="match-heading" className={`${card} space-y-3`}>
+        <h2 id="match-heading" className="text-xl font-bold">
+          {t("match.card.heading")}
+        </h2>
+        <p className="text-sm text-zinc-600">{t("match.card.blurb")}</p>
+        <Link href="/tools/match" className={buttonClass("primary")}>
+          {t("match.card.cta")}
+        </Link>
+      </section>
+
       <section aria-labelledby="interests-heading" className={`${card} space-y-3`}>
         <h2 id="interests-heading" className="text-xl font-bold">
           {t("tools.interests.heading")}

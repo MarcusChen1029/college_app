@@ -197,3 +197,10 @@ export function programFields(name: string): FieldKey[] {
 /** Every CIP prefix the definitions reference, sorted (the content of fields-cips.json). */
 export const referencedCips = (): string[] =>
   [...new Set(FIELDS.flatMap((f) => [...f.cips, ...(f.exclude ?? [])]))].sort();
+
+/** The saved study directions: known keys only ("undecided" is the absence of a choice), no repeats, at most 2. */
+export const MAX_STUDY_FIELDS = 2;
+export const cleanStudyFields = (v: unknown): FieldKey[] =>
+  Array.isArray(v)
+    ? [...new Set(v.filter((k): k is FieldKey => typeof k === "string" && k !== "undecided" && BY_KEY.has(k as FieldKey)))].slice(0, MAX_STUDY_FIELDS)
+    : [];

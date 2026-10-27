@@ -5,6 +5,7 @@
 import type { ActivityData } from "./activities.ts";
 import type { Checklist } from "./checklist.ts";
 import { customSlug, type CustomCollege } from "./custom-college.ts";
+import { cleanStudyFields } from "./fields.ts";
 import type { StudentProfile } from "./fit.ts";
 import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
 import type { PersonalEssays } from "./personal-essays.ts";
@@ -54,6 +55,7 @@ export type ProfileRow = {
   gpa_unweighted: number | null;
   is_international: boolean;
   target_regions: string[] | null;
+  study_fields?: string[] | null;
   reminder_emails: boolean;
   plan: PlanKey;
   test_details: TestDetails | null;
@@ -82,7 +84,7 @@ export type CollegeRow = {
   institutions: { slug: string } | null;
 };
 
-const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, reminder_emails, plan, test_details, interested, activities, resume, essays";
+const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, is_international, target_regions, study_fields, reminder_emails, plan, test_details, interested, activities, resume, essays";
 const COLLEGE_BASE = "id, custom, institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
 
 /** What the website reads (includes the saved logins). */
@@ -104,6 +106,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   gpa: r.gpa_unweighted != null ? Number(r.gpa_unweighted) : null,
   international: r.is_international,
   targetRegions: r.target_regions ?? [],
+  studyFields: cleanStudyFields(r.study_fields),
   reminderEmails: r.reminder_emails,
   plan: r.plan,
   tests: r.test_details ?? {},
@@ -120,6 +123,7 @@ export const fromProfile = (userId: string, p: StudentProfile) => ({
   gpa_unweighted: p.gpa ?? null,
   is_international: !!p.international,
   target_regions: p.targetRegions ?? [],
+  study_fields: cleanStudyFields(p.studyFields),
   reminder_emails: p.reminderEmails ?? true,
   plan: p.plan ?? DEFAULT_PLAN,
   test_details: p.tests ?? {},

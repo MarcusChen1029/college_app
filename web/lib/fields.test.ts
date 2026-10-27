@@ -2,7 +2,10 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { FIELD_AREAS, FIELDS, TIER_CATEGORIES, cipContains, fieldByKey, fieldGrads, programFields, referencedCips } from "./fields.ts";
+import { en } from "./i18n/en.ts";
+import { zhTW } from "./i18n/zh-TW.ts";
+import { fromProfile, toProfile } from "./student-rows.ts";
+import { FIELD_AREAS, FIELDS, TIER_CATEGORIES, cipContains, cleanStudyFields, fieldByKey, fieldGrads, programFields, referencedCips } from "./fields.ts";
 
 const cipsFile: string[] = JSON.parse(readFileSync(new URL("./fields-cips.json", import.meta.url), "utf8"));
 
@@ -95,4 +98,34 @@ test("programFields classifies non-US course names", () => {
   lacks("Economics BA (via Honours Arts)", "visual_arts_design");
   lacks("Computer Science (BCS or BMath)", "business");
   assert.deepEqual(programFields("Underwater basket weaving"), []);
+});
+
+test("every direction, area and tier category has a label in English and Traditional Chinese", () => {
+  const keys = [
+    ...FIELDS.map((f) => `match.field.${f.key}`),
+    ...FIELD_AREAS.map((a) => `match.area.${a}`),
+    ...TIER_CATEGORIES.map((c) => `match.tierCat.${c}`),
+  ];
+  for (const k of keys) {
+    for (const [locale, dict] of [["en", en], ["zh-TW", zhTW]] as const) {
+      const v = (dict as Record<string, string>)[k];
+      assert.ok(typeof v === "string" && v.trim() !== "", `${locale} ${k}`);
+    }
+    assert.notEqual((zhTW as Record<string, string>)[k], (en as Record<string, string>)[k], `${k} is not translated`);
+  }
+});
+
+test("cleanStudyFields keeps known directions only, no repeats, at most 2", () => {
+  assert.deepEqual(cleanStudyFields(["business", "nope", "business", "economics", "pre_law"]), ["business", "economics"]);
+  assert.deepEqual(cleanStudyFields(["undecided", "pre_med"]), ["pre_med"]);
+  assert.deepEqual(cleanStudyFields(null), []);
+  assert.deepEqual(cleanStudyFields("business"), []);
+});
+
+test("study directions round-trip through the profile row mapping", () => {
+  const row = { sat_total: null, act_composite: null, gpa_unweighted: null, is_international: false, target_regions: [], study_fields: ["pre_law", "bogus", "business", "economics"], reminder_emails: true, plan: "free", test_details: null, interested: null, activities: null, resume: null, essays: null } as const;
+  const profile = toProfile(row as never);
+  assert.deepEqual(profile.studyFields, ["pre_law", "business"]);
+  assert.deepEqual(fromProfile("u1", profile).study_fields, ["pre_law", "business"]);
+  assert.deepEqual(toProfile({ ...row, study_fields: undefined } as never).studyFields, []);
 });

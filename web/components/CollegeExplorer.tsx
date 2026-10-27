@@ -359,12 +359,19 @@ export function CollegeExplorer({
     </div>
   );
 
+  const matchLink = (
+    <Link href="/tools/match" className={buttonClass("secondary", "sm")}>
+      {t("match.link")}
+    </Link>
+  );
+
   if (view === "table") {
     return (
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
           <div className="w-full max-w-xs">{toggle}</div>
           <div className="w-full max-w-xs">{regionSwitch}</div>
+          {matchLink}
         </div>
         <CollegeBrowser key={region} colleges={inRegion} lookups={lookups} />
       </div>
@@ -383,6 +390,7 @@ export function CollegeExplorer({
       <aside className="order-last flex min-h-0 flex-col gap-3 lg:order-first">
         {toggle}
         {regionSwitch}
+        {matchLink}
         <Link href={stats.length ? "/profile" : "/start"} className="rounded-2xl bg-blue-50 px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-blue-100">
           {stats.length ? (
             <>
