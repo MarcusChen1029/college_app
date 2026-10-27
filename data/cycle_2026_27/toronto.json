@@ -1,0 +1,128 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Toronto - English language requirements (undergraduate)",
+      "url": "https://future.utoronto.ca/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "University of Toronto - Dates & deadlines (2027 admissions)",
+      "url": "https://future.utoronto.ca/deadlines",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "OUAC application deadline (Arts & Science St. George and Applied Science & Engineering)",
+      "notes": "International applicants have the same deadlines as listed. Apply through OUAC. Recommended early application date is 7 Nov 2026 (see below).",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2026-11-07",
+      "label": "Recommended early application date (apply by 7 Nov, documents by 1 Dec 2026)",
+      "notes": "Applicants who apply by 7 Nov and submit available documents by 1 Dec 2026 are eligible for the first admission round.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-01-15",
+      "label": "Engineering: Engineering Supplemental Application (ESA) and supporting documents due",
+      "notes": "Mandatory for every Engineering program; the application is not considered without it.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-02-01",
+      "label": "Arts & Science St. George: supporting documents and Computer Science Supplementary Application due",
+      "notes": "Document deadline for Arts & Science St. George is 1 Feb 2027; the Computer Science Supplementary Application is also due 1 Feb 2027.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Required if English is not your first language (the language learned at home as a child), unless exempt: four or more years of full-time study in a recognized Canadian school in Canada, or four or more years of full-time study in an English-language school in a country where the dominant language is English. Exemption is requested after applying through the applicant portal.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic (including IELTS Online and UKVI); overall band 6.5 with no band below 6.0, on a single date. IELTS Indicator and One Skill Retake are not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 89,
+      "subs": {
+        "writing": 22,
+        "speaking": 22
+      },
+      "notes": "Old 0-120 scale, for tests completed before 21 Jan 2026: 89 total with 22 in each of Speaking and Writing. Single sitting; MyBest scores not used; TOEFL Essentials not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "writing": 4.5,
+        "speaking": 4.0
+      },
+      "notes": "New 1-6 scale, for tests completed on or after 21 Jan 2026: 4.5 overall with 4.5 in Writing and 4.0 in Speaking. Single sitting; MyBest scores not used.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 65,
+      "subs": {
+        "each_component": 60
+      },
+      "notes": "PTE Academic (UKVI accepted): overall 65 with no part below 60.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "subs": {
+        "production": 120
+      },
+      "notes": "For tests completed on or after 1 July 2024: overall 120 with 120 in Production.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 180,
+      "subs": {
+        "each_component": 170
+      },
+      "notes": "C1 Advanced or C2 Proficiency: overall 180 with at least 170 in each component. B2 First is not accepted.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 32, 2nd of the Canadian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

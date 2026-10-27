@@ -1,0 +1,65 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - 2027 entry deadlines (Oxford, Cambridge and most Medicine: 15 Oct 2026, 18:00 UK time)",
+      "url": "https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "Cambridge - Entry requirements: English language requirements (undergraduate)",
+      "url": "https://www.undergraduate.study.cam.ac.uk/apply/before/entry-requirements",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-10-15",
+      "label": "UCAS deadline for 2027 entry to Cambridge",
+      "notes": "18:00 UK time. All Cambridge courses use the 15 October deadline; Cambridge sets its own admissions assessment (TMUA / ESAT) and interviews.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Applies if you are not from a majority English speaking country as defined by the UK Home Office. The offering College decides the condition, which may be based on a high school qualification grade or an approved test; a school-leaving qualification demonstrating C1 or above can be enough.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 7.5,
+      "subs": {
+        "each_component": 7.0
+      },
+      "notes": "IELTS Academic, normally 7.5 overall, usually 7.0 or above in each element. Recommended at application for interview: 6.5 overall, no element below 6.0.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 200,
+      "subs": {
+        "each_component": 185
+      },
+      "notes": "C2 Proficiency: minimum overall 200, no element lower than 185. C1 Advanced is accepted at overall 193, no element lower than 185, alongside other evidence of competence in English.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S++"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 1st of 130 UK universities (S = ranks 1-5 on the national scale)."
+  }
+}

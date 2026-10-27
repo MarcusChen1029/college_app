@@ -115,7 +115,7 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0035**; 0001-0034 are all applied to the project as of 2026-10-27) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0036**; 0001-0035 are all applied to the project as of 2026-10-27) **and** apply it to the project.
 - **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
   through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
   differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a
@@ -129,14 +129,20 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - Commit messages: conventional style (`feat:`, `fix:`, `data:`, `docs:`).
 
 ## Multi-country (started 2026-10-22)
-Colleges have `country_code` (US, GB, CA, AU; the UK is "GB"; CA and AU are regions with a map and no colleges yet). Students pick **target regions** in the profile (`student_profiles.target_regions`,
+Colleges have `country_code` (US, GB, CA, AU; the UK is "GB"). Students pick **target regions** in the profile (`student_profiles.target_regions`,
 first = default region on `/colleges`); the Map/Table page has a US/UK switch (`web/lib/regions.ts`, `web/lib/region-geo.ts`).
-UK colleges apply **by course through UCAS** and are grade-based: set `"country_code": "GB"` in `data/colleges/<slug>.json`, omit SAT/ACT/CDS
-fields, and put courses in a `"programs"` array (table `programs`, migration 0015). Fit labels only exist for US colleges.
-Loaded so far: Oxford, UCL, Edinburgh (3 courses each). Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
+UK, Canadian and Australian colleges admit **by course** and are grade-based: set `country_code` in `data/colleges/<slug>.json`, omit SAT/ACT/CDS
+fields, and put courses in a `"programs"` array (table `programs`, migrations 0015 + 0035). Per course: `apply_via` (UCAS / OUAC / Direct...),
+`a_level_offer`, `ib_offer`/`ib_points`, `ap_offer` (US diploma + AP/SAT/ACT route), `atar` (AU only), `ucas_code` (GB only) and one fee column
+in the country's currency (`intl_fee_gbp` / `intl_fee_cad` / `intl_fee_aud`; `build_seed.py` enforces these). Helpers: `web/lib/programs.ts`.
+Fit labels only exist for US colleges. General tiers use a **national** scale: UK = Complete University Guide 2027 rank, CA/AU = position among
+that country's universities in QS World University Rankings 2027 (S 1-5, A 6-15, B 16-40; ++/+/plain = top/middle/bottom of the band).
+Loaded: Oxford, UCL, Edinburgh (2026-10-22); 15 English, 10 Canadian, 10 Australian universities with CS, Economics and Engineering courses
+(2026-10-27, brief `docs/superpowers/research/2026-10-27-uk-ca-au-brief.md`). Many fees are 2026-27 values (2027 not published) and say so in
+`notes`. Not sourced: Edinburgh fees/stats, Oxford CS fee (page shows £66,580, re-verify).
 
 ## Current status (2026-10-26)
-Safety waves 1-6 (316 colleges) loaded insert-only; 419 institutions live (416 US + 3 UK). Both candidate pools are used up
+Safety waves 1-6 (316 colleges) loaded insert-only; 419 institutions live (416 US + 3 UK); 454 after the 2026-10-27 UK/CA/AU wave (+15 England, +10 Canada, +10 Australia). Both candidate pools are used up
 (pool 1 from College Scorecard, pool 2 from local IPEDS HD2024 + ADM2023 + EF2023A). Held: central-arkansas (uca.edu was
 unreachable, no sourced data). Skipped: NJCU (merged into Kean, July 2026) and mostly-online schools. Many later-wave schools
 are IPEDS baselines (no current CDS). Process, for the next wave: one shared brief, 3 colleges per sonnet agent (the harness

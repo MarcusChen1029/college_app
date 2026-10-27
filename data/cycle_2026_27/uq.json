@@ -1,0 +1,88 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "UQ - Bachelor of Computer Science (2027): English language requirements and entry requirements",
+      "url": "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "UQ - Bachelor of Computer Science (2027): How to apply, important dates for international applicants",
+      "url": "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-11-30",
+      "label": "Direct applications to UQ close - Semester 1 2027 intake",
+      "notes": "Page text: 'To commence study in semester 1 - November 30 of the previous year' (semester 2: May 31 of the year of commencement). Same dates on the Computer Science, Economics and Engineering (Honours) pages. International students whose senior schooling is Australian Year 12 (in Australia or elsewhere) or IB in Australia apply through QTAC and should check QTAC's closing date.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "The program page states only that 'there are other ways to meet the English language requirements' and links to UQ's English language requirements page (not read in detail); no exemption list is quoted here.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic overall 6.5; reading 6, writing 6, speaking 6, listening 6. Same on the Computer Science, Economics and Engineering (Honours) pages.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 87,
+      "subs": {
+        "listening": 19,
+        "reading": 19,
+        "writing": 21,
+        "speaking": 19
+      },
+      "notes": "TOEFL iBT (including Paper Edition), old 0-120 scale. The page gives no score on the new 1-6 scale.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "each_skill": 60
+      },
+      "notes": "PTE Academic overall 64 and 60 in all sub bands.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "subs": {
+        "each_skill": 169
+      },
+      "notes": "Listed on the page as 'CES - Overall 176 and 169 in all sub bands'.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A++"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 40, 6th of the Australian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

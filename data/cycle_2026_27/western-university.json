@@ -1,0 +1,122 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "Western University - English Language Proficiency (undergraduate)",
+      "url": "https://welcome.uwo.ca/next-steps/requirements/english-language-proficiency.html",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "Western University - Note Your Deadlines (Fall 2027 entry)",
+      "url": "https://welcome.uwo.ca/next-steps/apply/admission-deadlines.html",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-15",
+      "label": "OUAC equal-consideration deadline for full-time undergraduate studies",
+      "notes": "Later applications are accepted but space is not guaranteed. Engineering also requires the Casper test (last test date March 2, 2027).",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-01-15",
+      "label": "Ivey AEO (Advanced Entry Opportunity) application deadline",
+      "notes": "Separate Ivey application; listed on Western's key-dates page.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-03-02",
+      "label": "Last Casper test date (Engineering)",
+      "notes": "Engineering applicants cannot receive an offer without Casper results.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "If English is not your first language you must provide proof. A waiver may be possible if you attended four years of secondary school in English full-time, or two years of an Ontario college in English full-time, or one year of university in English full-time (classes in English, academic courses, no ESL courses, and Grade 12 English if the school is in Canada). Western may ask anyone for proof. Tests must be written before March 2027 and not before January 1, 2025; results are due by mid April 2027.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic; scores must be sent electronically by the test centre. A lower score (5.5 overall) can lead to the English Boost Program.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 83,
+      "subs": {
+        "each_component": 20
+      },
+      "notes": "Tests taken before 21 Jan 2026 (old 0-120 scale). Institution code 0984.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "reading": 4.0,
+        "speaking": 4.0,
+        "writing": 4.0,
+        "listening": 4.5
+      },
+      "notes": "Tests taken on or after 21 Jan 2026 (new 1-6 scale). Institution code 0984.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 115,
+      "subs": {
+        "each_component": 100
+      },
+      "notes": "115 overall with at least 100 in each subscore.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 58,
+      "subs": {
+        "each_component": 56
+      },
+      "notes": "PTE Academic.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "subs": {
+        "each_component": 169
+      },
+      "notes": "C1 Advanced or C2 Proficiency, 176 overall with at least 169 in each section.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A++"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank =142, 6th of the Canadian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

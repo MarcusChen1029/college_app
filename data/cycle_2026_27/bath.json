@@ -1,0 +1,92 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "University of Bath - Computer Science BSc (Hons) 2027 entry: English language requirements (Category C)",
+      "url": "https://www.bath.ac.uk/courses/undergraduate-2027/computer-science/bsc-computer-science/",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "University of Bath - Computer Science BSc (Hons) 2027 entry: application information (overseas deadline 13 January 2027)",
+      "url": "https://www.bath.ac.uk/courses/undergraduate-2027/computer-science/bsc-computer-science/",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS equal-consideration deadline (Overseas application deadline)",
+      "notes": "The course pages list 13 January 2027 as both the Home and Overseas application deadline.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "A suitable English language qualification is needed only if you do not meet the GCSE English requirement (GCSE English Language or Literature grade 4/C, or equivalent). Category C (lowest band, used for Computer Science and Mechanical Engineering); Economics needs Category B (IELTS 7.0 with 6.5 in each component).",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "Category C (Computer Science, Mechanical Engineering). Category B (Economics): 7.0 overall, 6.5 in each component.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 90,
+      "subs": {
+        "each_component": 21
+      },
+      "notes": "Old 0-120 scale (tests up to 21 January 2026). Category C. Category B (Economics): 100 overall, 24 in each component.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4.0
+      },
+      "notes": "New 1-6 scale (tests after 21 January 2026). Category C. Category B (Economics): 5 overall, 4.5 in each component.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 62,
+      "subs": {
+        "each_component": 59
+      },
+      "notes": "PTE Academic, Category C. Category B (Economics): 69 overall, 62 in each element. PTE Academic Online is not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "min": 120,
+      "notes": "Category C: 120 overall for tests taken after 1 July 2024, with sub scores of Speaking 110, Writing 110, Reading 110, Listening 105. Category B (Economics): 130 overall.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A+"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 9th of 130 UK universities (A = ranks 6-15 on the national scale)."
+  }
+}

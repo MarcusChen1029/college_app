@@ -1,0 +1,112 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "Queen's University - English Proficiency Requirements (undergraduate)",
+      "url": "https://www.queensu.ca/admission/applicants/english-proficiency",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "Queen's University - Undergraduate Admission Deadlines (2026-27 cycle, Fall 2027 entry)",
+      "url": "https://www.queensu.ca/admission/applying/dates-deadlines",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Canadian list as reported by MTL Blog",
+      "url": "https://www.mtlblog.com/mcgill-university-canada-ranking-qs-2027",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-03-01",
+      "label": "Application deadline: first-year full-time programs except Commerce, Health Sciences and Nursing",
+      "notes": "Applies to Computing, Arts (Economics) and Engineering. Applications open October 1, 2026. Apply through OUAC, Common App or the Queen's International Application portal. Commerce, Health Sciences and Nursing are due February 1, 2027 (not covered here).",
+      "src": "deadlines"
+    },
+    {
+      "kind": "other",
+      "due": "2027-03-31",
+      "label": "Deadline to submit all documents, including transcripts and English test scores",
+      "notes": "As listed on the deadlines page.",
+      "src": "deadlines"
+    },
+    {
+      "kind": "scholarship",
+      "due": "2026-12-08",
+      "label": "Major Admission Award (MAA) application on SOLUS",
+      "notes": "Queen's recommends applying to Queen's by November 20 (the page also says November 15 in one line) so the MAA application is accessible.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "No English test needed if you completed an IB diploma (completing SL English B is not sufficient), or lived in a country where English is the acknowledged primary language for the most recent three years before starting university, or attended a full-time education institution taught in English for the most recent three years. Queen's may request a test from any applicant. Test results are valid for two years.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, no band below 6.0.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 88,
+      "subs": {
+        "each_component": 20
+      },
+      "notes": "Old 0-120 scale (before January 2026): 88 overall, minimum 20 on Writing, Speaking, Reading and Listening. Institution code 0949.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4.0
+      },
+      "notes": "New 1-6 scale: 4.5 overall with no skill lower than 4.0. Institution code 0949.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "required_option",
+      "min": 120,
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 60,
+      "notes": "PTE Academic overall score of 60.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 175,
+      "subs": {
+        "each_component": 170
+      },
+      "notes": "Cambridge English scale score 175 with no component below 170.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A+"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank =179, 9th of the Canadian universities in the table (A = ranks 6-15 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

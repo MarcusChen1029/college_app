@@ -1,0 +1,107 @@
+{
+  "sources": {
+    "ucas": {
+      "kind": "other",
+      "title": "UCAS - Dates and deadlines for uni applications (2027 entry: 13 Jan 2027, 18:00 UK time, equal consideration date for most undergraduate courses)",
+      "url": "https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications",
+      "accessed": "2026-10-27"
+    },
+    "english": {
+      "kind": "admissions_site",
+      "title": "Southampton - English language test band score requirements (undergraduate; band C applies to these courses)",
+      "url": "https://www.southampton.ac.uk/international/english-language-requirements/test-band-scores",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline (Southampton undergraduate courses)",
+      "notes": "18:00 UK time. UCAS equal-consideration date for 2027 entry; applications after it are not guaranteed equal consideration.",
+      "src": "ucas"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "Course pages: if English is not your first language, you must show that you can use English to the level required (test, accepted qualification, or pre-sessional programme). See the English language pages for accepted qualifications.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, band C (listening/reading/writing/speaking 6.0 each). Tests must be awarded within 2 years of the course start. IELTS Online and One Skill Retake are listed separately on the page.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 92,
+      "subs": {
+        "listening": 21,
+        "reading": 22,
+        "speaking": 23,
+        "writing": 21
+      },
+      "notes": "Tests taken before 21 January 2026 (0-120 scale), band C.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "listening": 4.0,
+        "reading": 4.0,
+        "speaking": 4.0,
+        "writing": 4.0
+      },
+      "notes": "Tests taken on or after 21 January 2026 (1-6 scale), band C.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "accepted",
+      "min": 120,
+      "subs": {
+        "listening": 105,
+        "reading": 110,
+        "speaking": 110,
+        "writing": 110
+      },
+      "notes": "Band C; scores must be achieved in individual sub-scores, not integrated sub-scores. Listed under online English language tests; check that it meets your visa route.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "accepted",
+      "min": 67,
+      "subs": {
+        "listening": 64,
+        "reading": 64,
+        "speaking": 64,
+        "writing": 64
+      },
+      "notes": "PTE Academic (non-UKVI), band C. PTE Academic UKVI (SELT) is listed with the same band C scores.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 15th of 130 UK universities (A = ranks 6-15 on the national scale)."
+  }
+}

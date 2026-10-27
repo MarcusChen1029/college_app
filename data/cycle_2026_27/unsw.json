@@ -1,0 +1,94 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "UNSW Sydney - English language requirements (undergraduate, by faculty)",
+      "url": "https://www.unsw.edu.au/study/how-to-apply/english-language-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "UNSW Sydney - International student admissions (Term 1 2027 offer round schedule)",
+      "url": "https://www.unsw.edu.au/study/international-students/admissions-info",
+      "accessed": "2026-10-27"
+    },
+    "qs": {
+      "kind": "other",
+      "title": "QS World University Rankings 2027 (18 June 2026), Australian list as reported by Time Out",
+      "url": "https://www.timeout.com/australia/news/nine-australian-universities-rank-among-the-worlds-top-100-for-2027-as-a-new-no-1-emerges-062426",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2026-11-15",
+      "label": "Final Term 1 2027 completed-application deadline (offshore applicants)",
+      "notes": "Page: offshore applications for Term 1 2027 remain open until 15 November 2026; an outcome is promised by 10 December 2026 but not guaranteed for late applications. Earlier offer rounds close on 14 May, 16 July, 20 August and 24 September 2026 (offers released from August); applying early gives the best chance of a place. Applicants holding an Australian qualification apply through UAC.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "You may need to provide evidence of English proficiency; it is indicated in your application. Evidence can be an accepted English test taken within two years before starting, prior study in the medium of English, or other qualifications (degree page); UNSW College academic English programs are the pathway if you need to improve.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.5,
+      "subs": {
+        "each_component": 6.0
+      },
+      "notes": "IELTS Academic, One Skill Retake and UKVI only (IELTS Online not accepted). Engineering and Arts, Design & Architecture undergraduate: 6.5 overall, 6.0 each subtest. Business School undergraduate (Economics): 7.0 overall, 6.0 each subtest.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 90,
+      "subs": {
+        "reading": 22,
+        "listening": 22,
+        "speaking": 22,
+        "writing": 23
+      },
+      "notes": "Old 0-120 scale. Engineering undergraduate: 90 overall (writing 23, others 22). Business School undergraduate: 94 overall (writing 25, others 23). The page says the new TOEFL format is under review and is not being accepted until further notice; register as 'Taking TOEFL for Australia'. MyBest scores not accepted.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "each_skill": 54
+      },
+      "notes": "PTE Academic. Engineering undergraduate: 64 overall, 54 each subtest. Business School undergraduate: 65 overall, 54 each subtest.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "required_option",
+      "min": 176,
+      "subs": {
+        "each_skill": 169
+      },
+      "notes": "C1 Advanced or C2 Proficiency. Engineering undergraduate: 176 overall, 169 each subtest. Business School undergraduate: 185 overall, 169 each subtest.",
+      "src": "english"
+    },
+    {
+      "test": "DUOLINGO",
+      "status": "not_accepted",
+      "notes": "Not in the page's list of accepted tests (IELTS, TOEFL iBT, PTE Academic, Cambridge C1/C2, ANU Access Program; LanguageCert Academic and MET from Term 1 2027).",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "S++"
+  },
+  "tier_notes": {
+    "general": "QS World University Rankings 2027: world rank 19, 1st of the Australian universities in the table (S = ranks 1-5 on the national scale; a national scale, so not comparable with US tiers)."
+  }
+}

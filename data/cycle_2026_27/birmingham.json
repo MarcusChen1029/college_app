@@ -1,0 +1,98 @@
+{
+  "sources": {
+    "english": {
+      "kind": "admissions_site",
+      "title": "Birmingham - International entry requirements and English language requirements (undergraduate)",
+      "url": "https://www.birmingham.ac.uk/study/undergraduate/apply/entry-requirements/international-entry-requirements",
+      "accessed": "2026-10-27"
+    },
+    "deadlines": {
+      "kind": "admissions_site",
+      "title": "Birmingham - Computer Science BSc course page (UCAS deadline for September 2027 entry)",
+      "url": "https://www.birmingham.ac.uk/study/undergraduate/subjects/computer-science-courses/computer-science-bsc",
+      "accessed": "2026-10-27"
+    },
+    "cug": {
+      "kind": "other",
+      "title": "The Complete University Guide - University League Tables 2027 (published 2 June 2026)",
+      "url": "https://www.thecompleteuniversityguide.co.uk/league-tables/rankings",
+      "accessed": "2026-10-27"
+    }
+  },
+  "deadlines": [
+    {
+      "kind": "application",
+      "plan": "RD",
+      "due": "2027-01-13",
+      "label": "UCAS deadline for September 2027 entry",
+      "notes": "Applications close at 18:00 GMT, as printed on the Computer Science, Economics and Mechanical Engineering course pages.",
+      "src": "deadlines"
+    }
+  ],
+  "english_policy": {
+    "policy": "required_nonnative",
+    "waiver_notes": "International students must show a suitable level of English proficiency, usually through IELTS or an equivalent test, or a Presessional English course. Tests normally need to have been taken within two years of the start date. Only the most recent test score is accepted.",
+    "src": "english"
+  },
+  "english": [
+    {
+      "test": "IELTS",
+      "status": "required_option",
+      "min": 6.0,
+      "subs": {
+        "each_component": 5.5
+      },
+      "notes": "Group A (Computer Science, Mechanical Engineering and most science/engineering courses): 6.0 overall with no less than 5.5 in any band. Group B (Business, including Economics, and others) needs more: Economics BSc requires 6.5 overall with 6.5 in Writing and Speaking and 6.0 in Listening and Reading.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT",
+      "status": "required_option",
+      "min": 80,
+      "subs": {
+        "reading": 19,
+        "listening": 19,
+        "speaking": 21,
+        "writing": 19
+      },
+      "notes": "Group A, tests taken before Jan 2026 (old 0-120 scale). Economics BSc (Group B) requires 88 overall with no less than 21 in Reading, 20 in Listening, 22 in Speaking and Writing.",
+      "src": "english"
+    },
+    {
+      "test": "TOEFL_IBT_2026",
+      "status": "required_option",
+      "min": 4.5,
+      "subs": {
+        "each_component": 4
+      },
+      "notes": "Group A, tests taken from Jan 2026 (new 1-6 scale): 4.5 overall with no less than 4 in each skill. Economics BSc (Group B) requires 4.5 overall with no less than 4.5 in speaking and writing and 4 in reading and listening.",
+      "src": "english"
+    },
+    {
+      "test": "PTE",
+      "status": "required_option",
+      "min": 64,
+      "subs": {
+        "each_component": 59
+      },
+      "notes": "Group A: PTE 64 with no less than 59 in all four skills. Economics BSc (Group B): 67 overall, with 67 in Writing and Speaking and no less than 64 in Reading and Listening.",
+      "src": "english"
+    },
+    {
+      "test": "CAMBRIDGE",
+      "status": "accepted",
+      "min": 169,
+      "subs": {
+        "each_component": 162
+      },
+      "notes": "Group A: Cambridge English Advanced (exams taken from 2015), minimum overall score 169 with no less than 162 in any component. Economics BSc (Group B): 176 overall.",
+      "src": "english"
+    }
+  ],
+  "tiers": {
+    "general": "A"
+  },
+  "tier_notes": {
+    "general": "Complete University Guide 2027 overall ranking: 12th of 130 UK universities (A = ranks 6-15 on the national scale)."
+  }
+}
