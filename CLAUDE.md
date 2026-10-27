@@ -108,6 +108,7 @@ cd web && npx tsc --noEmit && npm run lint && npm test && npm run build   # run 
 python3 scripts/build_seed.py               # after editing data/*.json
 cd extension && npm test && npx tsc --noEmit && node build.mjs   # Common App filler extension; live check is extension/TESTING.md
 cd extension && npm run package   # rebuilds web/public/downloads/common-app-filler.zip (live-site build) after extension changes
+cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpacked in Chrome; package does not touch it)
 ```
 
 ## Rules for this repo
