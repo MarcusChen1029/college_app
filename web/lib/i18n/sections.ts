@@ -6,6 +6,7 @@ import * as common from "./messages/common.ts";
 import * as home from "./messages/home.ts";
 import * as match from "./messages/match.ts";
 import * as misc from "./messages/misc.ts";
+import * as outcomes from "./messages/outcomes.ts";
 import * as portals from "./messages/portals.ts";
 import * as profile from "./messages/profile.ts";
 import * as quiz from "./messages/quiz.ts";
@@ -27,6 +28,7 @@ export const SECTIONS = {
   home,
   match,
   misc,
+  outcomes,
   portals,
   profile,
   quiz,

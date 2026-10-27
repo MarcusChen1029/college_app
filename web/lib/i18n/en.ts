@@ -9,6 +9,7 @@ export const en = {
   ...S.home.en,
   ...S.match.en,
   ...S.misc.en,
+  ...S.outcomes.en,
   ...S.portals.en,
   ...S.profile.en,
   ...S.quiz.en,

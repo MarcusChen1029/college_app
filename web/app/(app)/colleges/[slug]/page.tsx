@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Pill, TierBadge } from "@/components/badges";
 import { CollegeActions } from "@/components/CollegeActions";
+import { CollegeOutcomes } from "@/components/CollegeOutcomes";
 import { DeadlineChip, StatusIcon, StatusPill } from "@/components/StatusPill";
 import { getCollege, getLookups } from "@/lib/data";
 import {
@@ -445,6 +446,8 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         </Section>
       </div>
       )}
+
+      {isUS && <CollegeOutcomes slug={c.slug} />}
 
       {/* Factors */}
       {c.admission_factors.length > 0 && (
