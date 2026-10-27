@@ -79,7 +79,7 @@ export function transcriptFormatText(): string {
           "level": "ap",
           "credit": null, "creditUnit": "carnegie",
           "subject": "mathematics", "subSubject": "calculus", "languageName": "",
-          "systemSubjects": { "common_app": "Calculus", "stars": "Mathematics", "csu": "C – Mathematics", "uc": "C – Mathematics", "uiuc": "Mathematics", "ut": "Mathematics" },
+          "systemSubjects": { "common_app": "Calculus", "stars": "Mathematics", "csu": "C – Mathematics", "uc": "Calculus", "uiuc": "Mathematics", "ut": "Mathematics" },
           "starsTitle": "CALCULUS",
           "isSummer": false, "isRepeat": false, "isCollege": false, "collegeName": "", "isWithdrawn": false,
           "notes": "anything you were unsure about"
@@ -113,7 +113,15 @@ Rules:
 6. Credits: if the transcript prints each term's credit, put it on that term as "credit" (as printed, terms can differ) and leave the course "credit" null;
    do not add them up yourself (the app adds them up). If it prints one credit for the whole course, put it in the course "credit".
 7. academicYear is the calendar year the school year starts (2025 for 2025-26).
-8. Every application names its subjects differently. For EACH course fill "systemSubjects" with one entry per application key below, choosing the option from that application's own list that best fits the course and copying it exactly. If nothing fits, use that application's "Other" option; never invent an option. "subject" and "subSubject" (above) are our own general categories; keep filling them too.
+8. Every application names its subjects differently. For EACH course fill "systemSubjects" with one entry per application key below, copying
+   an option from that application's own list exactly. Only pick an option the transcript makes certain. If you are not sure (the transcript
+   doesn't show which fits, or two could), write "" for that application: the course is then left for the student to decide, which is far
+   better than a wrong subject. Use an application's "Other" option only when the course clearly belongs nowhere else; never invent an option.
+   - uc is UC's "Subject Area/Course Category". A language course's UC level is the student's level, not the number in its name (a native
+     speaker's "Chinese I" can be "Yr 4+ Lang Other Than English"): if the transcript doesn't show the level, write "". Pick Music, Theater,
+     Dance or Visual Arts only when the course name says which. Courses that are not college-prep academics (physical education, health,
+     home economics, counseling) get "" for uc.
+   "subject" and "subSubject" (above) are our own general categories; keep filling them too.
 9. Also fill "starsTitle", STARS's generic course title ("Course/Exam Content"), copied exactly from the list below for the school's location
    and the course's STARS subject area (outside the US, English courses are under Languages). Pick the title that names the same course (an
    honors or AP course takes the plain title, e.g. "AP Calculus BC" -> "CALCULUS 2 (BC)" for a US school, "CALCULUS" outside the US); if none
@@ -155,7 +163,7 @@ export type ImportPlan = { error: string | null; schools: ImportSchool[]; rows: 
 const isObject = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
 
 /**
- * Turns an AI's `systemSubjects` ({ common_app: "Calculus", uc: "C – Mathematics", ... }) into per-application subject overrides,
+ * Turns an AI's `systemSubjects` ({ common_app: "Calculus", uc: "Calculus", ... }) into per-application subject overrides,
  * merged onto `base`. Each value must match an option of that application's own list (see matchSubjectOption); anything else is left
  * out with a warning, so a wrong tag never blocks a course.
  */
