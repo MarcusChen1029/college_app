@@ -97,6 +97,8 @@ test("programFields classifies non-US course names", () => {
   lacks("Economics HBA (Faculty of Arts & Science, St. George; Social Sciences admission category)", "social_sciences");
   lacks("Economics BA (via Honours Arts)", "visual_arts_design");
   lacks("Computer Science (BCS or BMath)", "business");
+  lacks("Economics, Finance and Data Science BSc", "business");
+  has("Economics, Finance and Data Science BSc", "finance_accounting");
   assert.deepEqual(programFields("Underwater basket weaving"), []);
 });
 

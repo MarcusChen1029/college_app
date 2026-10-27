@@ -90,7 +90,8 @@ export const FIELDS: FieldDef[] = [
   {
     key: "business", area: "business", cips: ["52"],
     tiers: [{ category: "business", weight: 1 }],
-    keywords: /business|management|commerce|accounting|financ|marketing|\bBBA\b|\bBCom\b/i,
+    // Not finance/accounting: "Economics, Finance and Data Science" is not a business degree; those have their own field.
+    keywords: /business|management|commerce|marketing|\bBBA\b|\bBCom\b/i,
   },
   {
     key: "finance_accounting", area: "business", cips: ["52.08", "52.03"],
