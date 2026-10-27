@@ -88,10 +88,12 @@ Page facts are in `docs/superpowers/research/2026-10-27-portal-dom.md`.
 
 STARS (school outside the US):
 1. On the throwaway record, the school needs Grade Scale, dates, Education System, school year and "I plan to graduate" before
-   "Enter Courses" opens. Open a year (e.g. "Enter Coursework/Exams taken in 9th Grade (2023-2024)").
-2. In the side panel, "Fill for" switches to STARS. Under "Add 2023-24 courses automatically", answer the Grading Scale question if asked
-   (100-point schools: pass mark 60 or 70) and press "Add courses to STARS". Expected: the page reloads once per course; each course appears in
-   STARS's table with the tracker's name (upper-cased by STARS), the grades per term, and the credit. Names already in the table are skipped.
+   "Enter Courses" opens. Any STARS page can be open.
+2. In the side panel, "Fill for" switches to STARS. Under "Add your courses to STARS" every school year with courses is ticked; answer the
+   Grading Scale question if asked (100-point schools: pass mark 60 or 70) and press "Fill selected". Expected: the tab opens each year's
+   coursework page by itself (school found by code, else by name; the address comes from STARS's own summary page), the page reloads once per
+   course, each course appears in STARS's table with the tracker's name (upper-cased by STARS), grades per term and credit, and names already
+   there are skipped. The panel then shows one short report per year; only problems and courses left for you are listed.
 3. Open one added course with Edit: name, level, length, scale, grade and credit match the tracker. Press Cancel Edit.
 Verified on 2026-10-27 by injecting the page filler into a live record (semester course with In Progress, full-year Honors course with
 credit 1); the panel's run loop is covered by unit tests only. US school: the same button works on "EnterCoursework"; STARS first needs the
@@ -105,8 +107,10 @@ Cal State Apply (US high school only; schools outside the US skip course entry):
 3. Set A-G areas yourself on A-G Matching (the panel lists the code for each course).
 Verified end to end on 2026-10-27 (the run skipped 2 existing courses, added 2, one with a new grade level). Report the panel's message if it stops.
 
-UC: open Academic history > a grade > "Enter courses & grades". Press "Add Nth grade courses to UC": new courses go into empty rows (rows are
-added as needed), "Save & continue" is pressed once, and the panel checks the grade page lists every added course. Courses whose UC subject
+UC: open any UC page (one tab only). Under "Add your courses to UC" the grades with courses are ticked; press "Fill selected". For each grade
+the tab opens /my-application/acadHistFrGrades/<NN>, clicks the school's "Enter courses & grades" (school found by code, else by name), new
+courses go into empty rows (rows are added as needed), "Save & continue" is pressed once, and the panel checks the grade page lists every
+added course. A grade UC has no page for is reported and the run goes on. Courses whose UC subject
 can't be told from the tracker (e.g. history without "U.S."/"World" in the name, computer science, languages without a year number) are left
 for you and listed; tag them for UC in the tracker or with the AI import. Verified end to end on 2026-10-27 (3 added, 1 existing skipped).
 

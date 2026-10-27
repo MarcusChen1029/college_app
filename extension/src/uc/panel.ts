@@ -1,12 +1,14 @@
-// Side panel section for the UC application: "Add courses" for the grade whose Enter courses & grades page is open. New courses go into
-// empty rows and are saved with UC's own "Save & continue"; courses already on the page are left alone.
+// Side panel section for the UC application, like Common App's: tick the grades, press "Fill selected", and the extension opens each
+// grade's "Enter courses & grades" page itself, adds the courses not there yet and saves with UC's own "Save & continue". Courses
+// already on UC are left alone. Works from any UC page.
 
 import { schoolOnPage } from "../../../web/lib/school-match.ts";
 import type { UcGradePlan } from "../../../web/lib/uc-fill.ts";
-import { afterReload, sendTo } from "../tab-wait.ts";
-import { button, h } from "../ui.ts";
-
-const key = (s: string) => s.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+import { autoView, type AutoReport } from "../auto-view.ts";
+import { SITE_ORIGINS } from "../sites.ts";
+import { afterReload, navigate, sendTo } from "../tab-wait.ts";
+import { h } from "../ui.ts";
+import { runUcPlans, type UcGradeReport, type UcTab } from "./run.ts";
 
 /** The plan for the open page: its grade level, and the school whose name the page shows when there are several. */
 export function ucPlanForPage(plans: UcGradePlan[], grade: number, pageText: string): UcGradePlan | null {
@@ -16,58 +18,42 @@ export function ucPlanForPage(plans: UcGradePlan[], grade: number, pageText: str
   return schoolOnPage(same, pageText, (p) => ({ name: p.schoolName, code: p.schoolCode }));
 }
 
-export async function ucAutoView(plans: UcGradePlan[], tabId: number): Promise<HTMLElement> {
-  const page = await sendTo(tabId, { type: "ucPage" });
-  if (page?.type !== "ucPage" || page.grade == null) {
-    return h("p", { class: "note" }, "To add courses automatically, open Academic history > a grade > \"Enter courses & grades\" on UC.");
-  }
-  const grade = page.grade;
-  const plan = ucPlanForPage(plans, grade, page.pageText);
-  if (!plan || !plan.rows.length) return h("p", { class: "note" }, `Your transcript has no ${grade}th grade courses to add here (or its school name matches none on this page).`);
-  const status = h("p", { class: "status" }, `${plan.rows.length} courses for ${grade}th grade (${plan.year}); names already on the page are left alone.`);
-  const go = button(`Add ${grade}th grade courses to UC`, async () => {
-    go.disabled = true;
-    status.className = "status";
-    status.textContent = "Filling UC's course rows...";
-    const r = await sendTo(tabId, { type: "ucFill", plan });
-    if (r?.type !== "ucFill" || !r.ok) {
-      go.disabled = false;
-      status.className = "status warn";
-      status.textContent = r?.type === "ucFill" && !r.ok ? `${r.error}. Nothing was saved.` : "The UC page stopped responding. Reload it and try again.";
-      return;
-    }
-    const { added, skippedExisting, left, saving } = r.result;
-    let check = "";
-    let ok = true;
-    if (saving) {
-      try {
-        await afterReload(tabId, "UC");
-        const after = await sendTo(tabId, { type: "ucPage" });
-        const names = after?.type === "ucPage" ? after.names.map(key) : [];
-        const missing = added.filter((n) => !names.includes(key(n)));
-        ok = missing.length === 0;
-        check = ok ? "UC lists every added course." : `UC does not list ${missing.join(", ")} after saving: check the page for a message.`;
-      } catch (e) {
-        ok = false;
-        check = (e as Error).message;
-      }
-    }
-    go.disabled = false;
-    status.className = ok ? "status" : "status warn";
-    status.textContent = [
-      `Added ${added.length} course${added.length === 1 ? "" : "s"}${added.length ? `: ${added.join(", ")}` : ""}.`,
-      skippedExisting ? `${skippedExisting} already there were left alone.` : "",
-      left.length ? `Left for you (a box the tracker can't fill): ${left.join(", ")}.` : "",
-      check,
-    ].filter(Boolean).join(" ");
-  }, "btn primary");
-  return h(
-    "section",
-    { class: "item" },
-    h("h3", {}, `Add ${grade}th grade courses automatically`),
-    status,
-    h("div", { class: "row" }, go),
-    plan.warnings.length ? h("ul", { class: "warnings" }, ...plan.warnings.map((w) => h("li", {}, w))) : false,
-    plan.skipped.length ? h("details", {}, h("summary", {}, `Left for you (${plan.skipped.length})`), h("ul", {}, ...plan.skipped.map((s) => h("li", {}, `${s.course}: ${s.field}: ${s.reason}`)))) : false,
-  );
+const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
+
+export function ucReport(r: UcGradeReport, schools: number): AutoReport {
+  const done: string[] = [];
+  if (r.added.length) done.push(`Added ${plural(r.added.length, "course")} and saved.`);
+  if (r.skippedExisting) done.push(`${plural(r.skippedExisting, "course")} already on UC left alone.`);
+  if (!done.length && !r.problem && !r.left.length) done.push("Nothing new to add.");
+  return {
+    title: `${r.plan.gradeLevel}th grade (${r.plan.year})${schools > 1 ? `, ${r.plan.schoolName}` : ""}`,
+    done,
+    problems: r.problem ? [r.problem] : [],
+    left: r.left,
+  };
+}
+
+export function ucAutoView(plans: UcGradePlan[], tabId: number): HTMLElement {
+  const items = plans.filter((p) => p.rows.length);
+  const schools = new Set(items.map((p) => p.schoolName)).size;
+  const tab: UcTab = {
+    send: (m) => sendTo(tabId, m),
+    go: (path) => navigate(tabId, `${SITE_ORIGINS.uc[0]}${path}`, "UC"),
+    afterReload: () => afterReload(tabId, "UC"),
+  };
+  const warnings = items.flatMap((p) => p.warnings);
+  const skipped = items.flatMap((p) => p.skipped);
+  return autoView({
+    title: "Add your courses to UC",
+    intro: "Tick the grades, then Fill selected. The extension opens each grade's Enter courses & grades page in this tab, adds the courses that are not there yet and saves. Nothing is removed or submitted.",
+    items: items.map((p) => ({ plan: p, label: `${p.gradeLevel}th grade (${p.year})${schools > 1 ? ` at ${p.schoolName}` : ""}: ${plural(p.rows.length, "course")}` })),
+    run: async (chosen, shouldStop, progress) => {
+      const { reports, stopped } = await runUcPlans(chosen, tab, shouldStop, progress);
+      return { reports: reports.map((r) => ucReport(r, schools)), stopped };
+    },
+    footer: [
+      warnings.length ? h("ul", { class: "warnings" }, ...[...new Set(warnings)].map((w) => h("li", {}, w))) : false,
+      skipped.length ? h("details", {}, h("summary", {}, `Not added automatically (${skipped.length})`), h("ul", {}, ...skipped.map((s) => h("li", {}, `${s.course}: ${s.field}: ${s.reason}`)))) : false,
+    ],
+  });
 }

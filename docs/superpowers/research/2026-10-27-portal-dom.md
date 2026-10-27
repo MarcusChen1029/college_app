@@ -13,6 +13,10 @@ the live pages with the built-in browser; nothing was submitted. Where a fact is
   `academic_calendar_year` (A traditional fall start, C calendar year), "I plan to graduate/have graduated from this school" `graduated_yn`.
   All of these are required before "Enter Courses" (`goStep('ceeb','<ceeb>')`), else a "Required Fields Missing" dialog.
 - Summary: `/srt/SchoolSummary.aspx?sel_sender_ceeb=<ceeb>`, one link per year: `openCourseEntry('<ceeb>','<endYear>','9th Grade (2023-2024)')`.
+  Its openCourseEntry() opens `<course_url>?selCeeb=<ceeb>&yr=<endYear>&sel_sender_ceeb=<ceeb>` (+ `&gl=09`..`12` from a "9th"... label, `&ms=Y`
+  for "Middle School"); course_url is the function's last `course_url = "..."`. Enter Schools links each school as `goStep('ceeb','<ceeb>')`
+  titled "Enter Coursework taken at <name>". The extension reads both pages with fetch (`extension/src/stars/nav.ts`). An idle session
+  redirects requests to `LogoutBridge.aspx?message=timeout`.
 - Coursework for a school outside the US: `/srt/EnterInternationalCoursework-yr-<endYear>.aspx?selCeeb=<ceeb>&yr=<endYear>&sel_sender_ceeb=<ceeb>`
   (`yr` = the year the school year ends: 2024 = 2023-24).
 - Coursework for a US school: `/srt/EnterCoursework-yr-<n>.aspx?selCeeb=<ceeb>&yr=<endYear>&...` (the file name's number is NOT the year; use `yr`).
@@ -86,7 +90,8 @@ are full page loads.
   -> `/acadHistFrInfo?action=add&schId=<code>...`: start/end month+year selects, grading system checkboxes (exact list `UC_GRADING_SYSTEMS`),
   term system checkboxes ("Semester (2 final grades per year)" etc.), grades attended rows (`attendgrade<i>` 9th-12th + `attendsyear<i>`
   "2023 - 2024", summer tick), graduation Yes/No, degree, graduation month/year, language of instruction. All plain `<select>`s / checkboxes.
-- Grade pages: `/acadHistFrGrades/09` ... `/12`, then "Enter courses & grades" -> `/acadHistFrHighSchoolClasses/editClasses/<NN>/<id>`.
+- Grade pages: `/my-application/acadHistFrGrades/09` ... `/12`; each school card (name, "School code: 694132", "2023 - 2024 academic year") has
+  `a#edit_<NN><id>` "Enter courses & grades" (href javascript:void(0), a click handler) -> `/acadHistFrHighSchoolClasses/editClasses/<NN>/<id>`.
   Rows `academics_hs_classes_add_<i>_subject` (course category with A-G optgroups, `UC_DISCIPLINES`; two options are both "Computer Science",
   value 16 under Mathematics and 50 under Science), `_class_title`, `_honors` (HL / IB / NH / AP), `_grade1`..`_grade4` (hidden boxes 3-4 exist
   on a Semester school), `_subject_language_code` (LOTE language, `UC_LANGUAGES`). Grade options on "0-100 (Taiwan)": 100..0 and NO; 12th grade

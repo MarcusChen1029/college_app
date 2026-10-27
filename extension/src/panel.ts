@@ -151,10 +151,10 @@ async function readyView(): Promise<void> {
     if (!transcript) return void refresh();
     const onSite = tab.site === site ? tab.id : null;
     const auto =
-      onSite == null ? null
+      onSite == null ? (site === "stars" || site === "uc" || site === "csu" ? h("p", { class: "note" }, `Open ${SITE_LABEL[site]} in this window (signed in), and the extension adds your courses for you.`) : null)
       : site === "stars" ? await starsAutoView(buildStarsPlans(transcript.schools, transcript.courses), onSite)
       : site === "csu" ? csuAutoView(buildCsuPlans(transcript.schools, transcript.courses), onSite)
-      : site === "uc" ? await ucAutoView(buildUcPlans(transcript.schools, transcript.courses), onSite)
+      : site === "uc" ? ucAutoView(buildUcPlans(transcript.schools, transcript.courses), onSite)
       : null;
     const node = await assistView(buildSystemPlan(site, transcript.schools, transcript.courses), onSite, auto);
     if (view !== "ready" || shownSite !== site) return;

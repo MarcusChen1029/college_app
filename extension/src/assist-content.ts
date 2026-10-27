@@ -10,6 +10,16 @@ import { SITE_ORIGINS } from "./sites.ts";
 import { runCsuSchool } from "./csu/run.ts";
 import { onCourseworkPage } from "./csu/fill.ts";
 import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
+import { starsSchools, starsSummaryPath, starsYearPath, starsYears } from "./stars/nav.ts";
+import { ucClassesLink } from "./uc/nav.ts";
+
+/** A STARS page's HTML, read like opening it (same site, the student's own session). null when STARS sent the sign-in page instead. */
+async function starsHtml(path: string): Promise<string | null> {
+  const r = await fetch(path, { credentials: "same-origin" });
+  const html = await r.text();
+  // Seen live: an idle session redirects to LogoutBridge.aspx?message=timeout.
+  return !r.ok || /login\.aspx|logout/i.test(r.url) ? null : html;
+}
 
 let csuStop = false;
 
@@ -86,6 +96,28 @@ ${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
         (e: unknown) => sendResponse({ type: "ucFill", ok: false, error: e instanceof Error ? e.message : String(e) }),
       );
       return true; // async response
+    case "starsSchools":
+      starsHtml("/srt/EnterSchools.aspx").then(
+        (html) => sendResponse(html == null ? { type: "starsSchools", ok: false, error: "STARS signed you out: sign in again, then run again" } : { type: "starsSchools", ok: true, schools: starsSchools(html) }),
+        () => sendResponse({ type: "starsSchools", ok: false, error: "STARS did not answer: reload the page and try again" }),
+      );
+      return true; // async response
+    case "starsYearPath":
+      starsHtml(starsSummaryPath(msg.ceeb)).then(
+        (html) => sendResponse({ type: "starsYearPath", path: html == null ? null : starsYearPath(html, msg.ceeb, msg.year), years: html == null ? [] : starsYears(html, msg.ceeb).map((y) => y.year) }),
+        () => sendResponse({ type: "starsYearPath", path: null, years: [] }),
+      );
+      return true; // async response
+    case "ucOpenClasses": {
+      const link = ucClassesLink(document, msg.grade, { name: msg.schoolName, code: msg.schoolCode });
+      if (typeof link === "string") {
+        sendResponse({ type: "ucOpenClasses", ok: false, error: link });
+        return false;
+      }
+      sendResponse({ type: "ucOpenClasses", ok: true });
+      setTimeout(() => link.click(), 50); // after the answer: the click leaves the page
+      return false;
+    }
     case "csuStop":
       csuStop = true;
       sendResponse({ type: "csuStop" });
