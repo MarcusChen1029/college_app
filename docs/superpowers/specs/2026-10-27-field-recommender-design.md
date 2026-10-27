@@ -128,8 +128,8 @@ For each college C and field F:
 - All UI text in a new i18n section `lib/i18n/messages/match.ts` (en + zh-TW), incl. field labels.
 
 ## Saved choice
-- Migration `0036_study_fields.sql`: `student_profiles.study_fields text[] not null default '{}'` with
-  `check (cardinality(study_fields) <= 2)`. `StudentProfile.studyFields?: string[]`, mapped in `student-rows.ts`,
+- Migration `0036_study_fields.sql` (applied 2026-10-27): `student_profiles.study_fields jsonb not null default '[]'`,
+  an array of at most 2 field keys (same shape as `target_regions`). `StudentProfile.studyFields?: string[]`, mapped in `student-rows.ts`,
   stored in localStorage when signed out like every other profile field. Teacher RPCs are untouched (explicit lists).
 
 ## Tests (node --test)
