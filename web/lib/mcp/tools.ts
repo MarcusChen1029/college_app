@@ -30,7 +30,7 @@ import {
   type TranscriptSchoolRow,
 } from "../student-rows";
 import { courseStatus, newTranscriptId, type TranscriptCourse, type TranscriptSchool } from "../transcript";
-import { planCourseUpdate, planMcpAdd, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
+import { planCourseUpdate, planMcpAdd, systemSubjectOverrides, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
 import type { CollegeSummary, Lookups } from "../types";
 import { userClient } from "./auth";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
@@ -708,7 +708,7 @@ export function registerTools(server: McpServer) {
     "get_transcript",
     {
       title: "Get the transcript",
-      description: "The student's transcript: every school with its courses (ids for update_transcript_course / delete_transcript_course, term grades and term credits exactly as printed, level, credit (the sum of the term credits when they are listed per term), category, status and where the course came from).",
+      description: "The student's transcript: every school with its courses (ids for update_transcript_course / delete_transcript_course, term grades and term credits exactly as printed, level, credit (the sum of the term credits when they are listed per term), category, each application's subject tag (`systemSubjects`; missing = not chosen, so the filler leaves the course for the student), status and where the course came from).",
       inputSchema: z.object({}),
       annotations: READ,
     },
@@ -752,6 +752,9 @@ export function registerTools(server: McpServer) {
               collegeName: c.collegeName || null,
               isWithdrawn: c.isWithdrawn,
               notes: c.notes || null,
+              // Per-application subject tags (the same keys update_transcript_course takes as `systemSubjects`); a missing key = not chosen.
+              systemSubjects: Object.fromEntries(Object.entries(c.overrides).flatMap(([sys, o]) => (o?.subject ? [[sys, o.subject]] : []))),
+              starsTitle: c.overrides.stars?.genericTitle ?? null,
               status: courseStatus(c),
               source: c.source,
             })),
@@ -797,7 +800,7 @@ export function registerTools(server: McpServer) {
     "update_transcript_course",
     {
       title: "Update a transcript course",
-      description: "Change fields of one transcript course. Only the fields in `patch` change; the school can't be changed. Grades stay exactly as printed. When any term carries a `credit`, the course credit is always the sum of the term credits (patch `terms` to change it). ids come from get_transcript.",
+      description: "Change fields of one transcript course. Only the fields in `patch` change; the school can't be changed. Grades stay exactly as printed. To set an application's subject, patch `systemSubjects` (e.g. { \"uc\": \"Yr 4+ Lang Other Than English\" }) with an option copied exactly from get_transcript_format; a value that is not an option is left out and named in `warnings`. When any term carries a `credit`, the course credit is always the sum of the term credits (patch `terms` to change it). ids come from get_transcript.",
       inputSchema: z.object({ id: z.string().min(1).max(100), patch: z.record(z.string(), z.unknown()) }),
       annotations: WRITE,
     },
@@ -809,7 +812,9 @@ export function registerTools(server: McpServer) {
       if (!r.ok) return toolError(`The change was rejected: ${r.errors.join(" ")}`);
       const upd = await s.db.from("transcript_courses").update(transcriptCourseColumns(r.value)).eq("id", id).eq("user_id", s.userId);
       check(upd.error, "the course");
-      return json({ updated: id });
+      // A subject tag that is not one of the application's options is left out; say so instead of dropping it silently.
+      const { warnings } = systemSubjectOverrides(patch.systemSubjects);
+      return json(warnings.length ? { updated: id, warnings } : { updated: id });
     }),
   );
 
