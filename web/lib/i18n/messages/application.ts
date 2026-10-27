@@ -55,9 +55,13 @@ export const en = {
   "application.upcomingDates": "Upcoming dates",
   "application.noUpcoming": "No upcoming dates.",
   "application.allSent.label": "Sent to every college:",
+  "application.allSent.transcript": "All transcripts sent",
+  "application.allSent.recs": "All recommendation letters sent",
   "application.allSent.tests": "All test scores sent",
   "application.allSent.english": "All English test scores sent",
-  "application.allSent.nothing": "Already ticked for every college that takes scores.",
+  "application.allSent.nothing": "Already ticked for every college that needs it.",
+  "application.allSent.transcriptConfirm": "Mark your transcript as sent for {n} colleges?",
+  "application.allSent.recsConfirm": "Mark all recommendation letters as sent for {n} colleges?",
   "application.allSent.testsConfirm":
     "Mark SAT/ACT scores as sent for {n} colleges? Colleges set to test optional are skipped. An undecided test is set to your SAT or ACT if you have only one.",
   "application.allSent.englishConfirm":
@@ -276,9 +280,13 @@ export const zhTW: Translation<typeof en> = {
   "application.upcomingDates": "近期截止日期",
   "application.noUpcoming": "近期沒有截止日期。",
   "application.allSent.label": "一次送給所有學校：",
+  "application.allSent.transcript": "所有成績單已送出",
+  "application.allSent.recs": "所有推薦信已送出",
   "application.allSent.tests": "所有考試成績已送出",
   "application.allSent.english": "所有英文檢定成績已送出",
-  "application.allSent.nothing": "所有需要成績的學校都已勾選。",
+  "application.allSent.nothing": "所有需要的學校都已勾選。",
+  "application.allSent.transcriptConfirm": "要把 {n} 所學校的成績單標記為已送出嗎？",
+  "application.allSent.recsConfirm": "要把 {n} 所學校的推薦信全部標記為已送出嗎？",
   "application.allSent.testsConfirm":
     "要把 {n} 所學校的 SAT/ACT 成績標記為已送出嗎？設為不送成績（test optional）的學校會略過。若你只有 SAT 或 ACT 其中一項，尚未決定的學校會自動設為該考試。",
   "application.allSent.englishConfirm":

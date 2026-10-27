@@ -40,6 +40,13 @@ test("markSent ticks scores sent and fills an undecided plan from the student's 
   assert.equal(isDone("english_test", markSent({}, "english_test", "toefl")!), true);
 });
 
+test("markSent ticks transcript and recommendations unless already ticked", () => {
+  assert.deepEqual(markSent({ test_plan: "sat" }, "transcript"), { test_plan: "sat", transcript: true });
+  assert.deepEqual(markSent({}, "recommendations"), { recommendations: true });
+  assert.equal(markSent({ transcript: true }, "transcript"), null);
+  assert.equal(markSent({ recommendations: true }, "recommendations"), null);
+});
+
 test("onlyTestPlan / onlyEnglishPlan pick a plan only when there is exactly one test", () => {
   assert.equal(onlyTestPlan(1400, null), "sat");
   assert.equal(onlyTestPlan(null, 30), "act");
