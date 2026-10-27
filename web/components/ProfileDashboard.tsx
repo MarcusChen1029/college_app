@@ -7,6 +7,7 @@ import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
 import { isDeadlineDone } from "@/lib/application";
+import { deadlineApplies } from "@/lib/deadline-rules";
 import { useStudent } from "@/lib/student-store";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
@@ -42,7 +43,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   const events: CalendarEvent[] = entries.flatMap(({ entry, college }) =>
     deadlines
       .filter((d) => d.institution_id === college.id && d.due_date)
-      .filter((d) => d.kind !== "application" || !entry.plan || d.plan_key === entry.plan)
+      .filter((d) => deadlineApplies(d, { plan: entry.plan, international: !!profile.international }))
       .map((d) => ({
         id: d.id,
         date: d.due_date!,

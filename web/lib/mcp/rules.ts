@@ -23,6 +23,7 @@ import {
 } from "../activities.ts";
 import { hasDecision, isSubmitted } from "../application.ts";
 import { CHECKLIST, ENGLISH_PLANS, ESSAY_STATUSES, isDone, newEssay, progress, safeLink, TEST_PLANS, type Checklist, type Essay } from "../checklist.ts";
+import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
 import { canAddMore, getPlan } from "../plans.ts";
@@ -456,14 +457,14 @@ export type UpcomingDeadline = { slug: string; college: string; due_date: string
 
 /**
  * Dates for listed colleges, soonest first, within `days` days (all future dates when omitted). Same filter as My list:
- * once the student picked a plan, only that plan's application deadline is shown.
+ * once the student picked a plan, only that plan's application deadline is shown; international students get no FAFSA-only dates.
  */
-export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date()): UpcomingDeadline[] {
+export function upcomingDeadlines(listed: ListedCollege[], deadlines: Deadline[], days?: number, today = new Date(), international = false): UpcomingDeadline[] {
   return listed
     .flatMap((c) =>
       deadlines
         .filter((d) => d.institution_id === c.id && d.due_date && daysUntil(d.due_date, today) >= 0 && (days == null || daysUntil(d.due_date, today) <= days))
-        .filter((d) => d.kind !== "application" || !c.plan || d.plan_key === c.plan)
+        .filter((d) => deadlineApplies(d, { plan: c.plan, international }))
         .map((d) => ({ slug: c.slug, college: c.name, due_date: d.due_date!, days: daysUntil(d.due_date!, today), kind: d.kind, plan_key: d.plan_key, label: d.label })),
     )
     .sort((a, b) => a.due_date.localeCompare(b.due_date));
