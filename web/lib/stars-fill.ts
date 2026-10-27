@@ -3,6 +3,7 @@
 // STARS's own words. Pure data in, pure data out; the extension types it in.
 // Lists and page facts: transcript-maps/stars-lists.ts and docs/superpowers/research/2026-10-27-portal-dom.md §1.
 
+import { sameCourseName } from "./course-names.ts";
 import { matchStarsTitle } from "./transcript-maps/stars-titles.ts";
 import { isNonUs } from "./transcript-maps/types.ts";
 import {
@@ -184,8 +185,8 @@ export function buildStarsPlans(schools: TranscriptSchool[], courses: Transcript
 
 /** Keep mode: rows whose name is not already in the page's table (STARS shows names upper-cased; one existing row per term). */
 export function starsRowsToAdd(rows: StarsRow[], existingNames: string[]): StarsRow[] {
-  const have = new Set(existingNames.map(upper));
-  return rows.filter((r) => !have.has(upper(r.name)));
+  // Tolerant of how the student typed a name there before (punctuation, a trailing grade number, one typo): see sameCourseName.
+  return rows.filter((r) => !existingNames.some((n) => sameCourseName(n, r.name)));
 }
 
 /** The international page's plans only. */
