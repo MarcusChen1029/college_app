@@ -6,6 +6,7 @@ import { computeFit } from "@/lib/fit";
 import { fmtPct } from "@/lib/format";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { FitBadge, TierBadge } from "./badges";
@@ -19,7 +20,7 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
   if (!mounted || !student.ready) return null;
 
   const rows = student.interested.flatMap((slug) => colleges.filter((c) => c.slug === slug));
-  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const hasScores = scoredTests(student.profile).length > 0;
 
   if (rows.length === 0) {
     return (

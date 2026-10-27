@@ -1,13 +1,20 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useId, useState, useSyncExternalStore, type ReactNode } from "react";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishTestKey, type ScoreScale, type SectionScores } from "@/lib/scores";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
+import { planMonthText } from "@/lib/i18n/test-plan-text";
 import { useStudent } from "@/lib/student-store";
+import { choiceWith, planMonthOptions, TEST_CHOICES, testChoice, unusedScores, withPlanned, withTestChoice, type AdmissionTest, type TestChoice } from "@/lib/test-plan";
 import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
+/** This month as YYYY-MM; "" while rendering on the server, so the month list never differs between server and client. */
+const thisMonth = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+};
 const field = "w-24 rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
 
 /** Section name for a score box, translated by its key (falls back to the English label). */
@@ -93,6 +100,112 @@ export function ActEditor() {
   );
 }
 
+/** A round option button backed by a real radio (arrow keys, screen readers); same look as the region pills. */
+function Pill({ name, checked, onChange, children }: { name: string; checked: boolean; onChange: () => void; children: ReactNode }) {
+  return (
+    <label
+      className={`flex cursor-pointer items-center gap-2 rounded-full border-2 border-ink px-3 py-1.5 font-medium has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-blue-400 ${checked ? "bg-sun" : "bg-white hover:bg-sun/40"}`}
+    >
+      <input type="radio" name={name} className="accent-ink" checked={checked} onChange={onChange} />
+      {children}
+    </label>
+  );
+}
+
+/** "Planning to take": which test, and when (optional). Nothing is scored until the student has a result. */
+function PlannedEditor() {
+  const t = useT();
+  const locale = useLocale();
+  const { profile, setProfile } = useStudent();
+  const name = useId();
+  const tests = profile.tests ?? {};
+  const planned = tests.plan?.planned ?? { test: "sat" as AdmissionTest, month: null };
+  const nowYM = useSyncExternalStore(noop, thisMonth, () => "");
+  const save = (patch: { test?: AdmissionTest; month?: string | null }) => setProfile({ ...profile, tests: { ...tests, plan: withPlanned(tests.plan, patch) } });
+  const past = !!planned.month && !!nowYM && planned.month < nowYM;
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-end gap-x-6 gap-y-3">
+        <fieldset className="space-y-1">
+          <legend className="mb-1 text-xs text-zinc-500">{t("profile.test.plannedWhich")}</legend>
+          <div className="flex gap-2">
+            {(["sat", "act"] as const).map((x) => (
+              <Pill key={x} name={name} checked={planned.test === x} onChange={() => save({ test: x })}>
+                {x.toUpperCase()}
+              </Pill>
+            ))}
+          </div>
+        </fieldset>
+        <label className="flex flex-col gap-1">
+          <span className="text-xs text-zinc-500">{t("profile.test.plannedMonth")}</span>
+          <select className={`${field} w-auto`} value={planned.month ?? ""} onChange={(e) => save({ month: e.target.value || null })}>
+            <option value="">{t("profile.test.plannedNoMonth")}</option>
+            {planMonthOptions(nowYM, planned.month).map((m) => (
+              <option key={m} value={m}>
+                {planMonthText(locale, m)}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <p className="text-xs text-zinc-500">{past ? t("profile.test.plannedPast", { test: planned.test.toUpperCase() }) : t("profile.test.plannedHint")}</p>
+    </div>
+  );
+}
+
+/**
+ * "Which test are you using?": SAT, ACT, both, planning to take one, or not taking one. Only the chosen test's
+ * boxes show. Switching never deletes a score; it only decides which one counts (lib/test-plan.ts).
+ */
+export function TestChoiceEditor() {
+  const t = useT();
+  const { profile, setProfile } = useStudent();
+  const name = useId();
+  const tests = profile.tests ?? {};
+  const choice = testChoice(profile);
+  const choose = (c: TestChoice) => setProfile({ ...profile, tests: { ...tests, plan: withTestChoice(tests.plan, c) } });
+  const unused = unusedScores(profile);
+  return (
+    <div className="space-y-4 text-sm">
+      <fieldset className="space-y-2">
+        <legend className="mb-1 text-xs text-zinc-500">{t("profile.test.question")}</legend>
+        <div className="flex flex-wrap gap-2">
+          {TEST_CHOICES.map((c) => (
+            <Pill key={c} name={name} checked={choice === c} onChange={() => choose(c)}>
+              {t(`profile.test.choice.${c}`)}
+            </Pill>
+          ))}
+        </div>
+      </fieldset>
+
+      {choice === null && <p className="text-xs text-zinc-500">{t("profile.test.pick")}</p>}
+      {(choice === "sat" || choice === "both") && (
+        <div className="space-y-1.5">
+          {choice === "both" && <p className="font-semibold">SAT</p>}
+          <SatEditor />
+        </div>
+      )}
+      {(choice === "act" || choice === "both") && (
+        <div className="space-y-1.5">
+          {choice === "both" && <p className="font-semibold">ACT</p>}
+          <ActEditor />
+        </div>
+      )}
+      {choice === "planned" && <PlannedEditor />}
+      {choice === "none" && <p className="text-xs text-zinc-500">{t("profile.test.noneHint")}</p>}
+
+      {unused.map((test) => (
+        <p key={test} className="text-xs text-zinc-500">
+          {t("profile.test.keptUnused", { test: test.toUpperCase(), score: (test === "sat" ? profile.sat : profile.act) ?? "" })}{" "}
+          <button type="button" onClick={() => choose(choiceWith(profile, test))} className="font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900">
+            {t("profile.test.useAgain")}
+          </button>
+        </p>
+      ))}
+    </div>
+  );
+}
+
 export function EnglishEditor() {
   const t = useT();
   const { profile, setProfile } = useStudent();
@@ -174,12 +287,8 @@ export function TestScoresForm() {
   return (
     <div className="space-y-6 text-sm">
       <fieldset className="space-y-2">
-        <legend className="font-semibold">SAT</legend>
-        <SatEditor />
-      </fieldset>
-      <fieldset className="space-y-2">
-        <legend className="font-semibold">ACT</legend>
-        <ActEditor />
+        <legend className="font-semibold">{t("profile.test.title")}</legend>
+        <TestChoiceEditor />
       </fieldset>
       <fieldset className="space-y-3">
         <legend className="font-semibold">{t("profile.englishTests")}</legend>

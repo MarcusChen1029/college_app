@@ -10,6 +10,7 @@ import { useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { REGIONS, cleanRegions, type RegionCode } from "@/lib/regions";
 import { useStudent } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import { buttonClass } from "@/lib/ui";
 
 const BUCKETS: Bucket[] = ["reach", "target", "safety", "unknown"];
@@ -41,7 +42,7 @@ export function FieldMatch({ colleges, evidence }: { colleges: MatchRow[]; evide
   );
   const [open, setOpen] = useState<Partial<Record<Bucket, boolean>>>({});
   const total = BUCKETS.reduce((n, b) => n + result.buckets[b].length, 0);
-  const hasScores = profile.sat != null || profile.act != null;
+  const hasScores = scoredTests(profile).length > 0;
 
   const setFields = (next: FieldKey[]) => student.updateProfile({ studyFields: cleanStudyFields(next) });
   const fieldName = second ? `${label(main)} + ${label(second)}` : label(main);

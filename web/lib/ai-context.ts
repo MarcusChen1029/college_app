@@ -21,10 +21,13 @@ import {
   TEST_POLICY,
   TRANSFER,
 } from "./format.ts";
+import { makeT } from "./i18n/index.ts";
+import { testPlanText } from "./i18n/test-plan-text.ts";
 import { programApplyVia, programFee } from "./programs.ts";
 import { regionLabel } from "./regions.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "./scores.ts";
 import type { Status } from "./student-store";
+import { scoredTests } from "./test-plan.ts";
 import type { CollegeDetail, CollegeSummary, Deadline } from "./types";
 
 export type PackCollege = {
@@ -68,13 +71,18 @@ function profileSection(p: StudentProfile): string[] {
     const parts = ENGLISH_TESTS[k].sections.filter((x) => s.sections?.[x.key] != null).map((x) => `${x.label} ${s.sections[x.key]}`).join(" / ");
     return [`  - ${ENGLISH_TESTS[k].label}: ${s.total}${parts ? ` (${parts})` : ""}${s.date ? `, taken ${fmtDate(s.date)}` : ""}`];
   });
+  const used = scoredTests(p);
+  const unused = (test: "sat" | "act") => (used.includes(test) ? "" : " (saved, but I'm not using this test)");
+  const planText = p.tests?.plan ? testPlanText(makeT("en"), "en", p.tests) : "";
   return [
     "## About me",
     `- Applicant type: ${p.international ? "International student" : "Not marked as international"}`,
     `- Target regions: ${p.targetRegions?.length ? p.targetRegions.map(regionLabel).join(", ") : "not chosen"}`,
     `- GPA (unweighted, 4.0 scale): ${p.gpa ?? "not entered"}`,
-    `- SAT: ${sat}`,
-    `- ACT: ${act}`,
+    ...(p.gpaWeighted != null ? [`- GPA (weighted, as on my transcript; the school's own scale, so not comparable with college averages): ${p.gpaWeighted}`] : []),
+    ...(planText ? [`- Admission test: ${planText}`] : []),
+    `- SAT: ${sat}${p.sat != null ? unused("sat") : ""}`,
+    `- ACT: ${act}${p.act != null ? unused("act") : ""}`,
     english.length ? "- English tests:" : "- English tests: none entered",
     ...english,
   ];
@@ -107,7 +115,7 @@ function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, st
 
 function listSection(input: PackInput, today: Date): string[] {
   if (!input.colleges.length) return ["## My list", "No colleges on my list yet."];
-  const hasScores = input.profile.sat != null || input.profile.act != null;
+  const hasScores = scoredTests(input.profile).length > 0;
   const intl = !!input.profile.international;
   return [
     `## My list (${input.colleges.length} colleges)`,

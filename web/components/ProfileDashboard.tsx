@@ -8,6 +8,7 @@ import { isoOf } from "@/lib/calendar";
 import { CHECKLIST, progress } from "@/lib/checklist";
 import { isDeadlineDone } from "@/lib/application";
 import { useStudent } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
@@ -26,7 +27,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
     .map((e) => ({ entry: e, college: colleges.find((c) => c.slug === e.slug) }))
     .filter((x): x is { entry: typeof x.entry; college: CollegeSummary } => !!x.college);
 
-  const hasScores = profile.sat != null || profile.act != null;
+  const hasScores = scoredTests(profile).length > 0;
   const counts = { super_reach: 0, reach: 0, target: 0, safety: 0 };
   if (hasScores)
     entries.forEach(({ college }) => {

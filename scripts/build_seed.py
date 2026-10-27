@@ -155,6 +155,20 @@ def program_row(slug, iid, p, country):
     check(p.get("ucas_code") is None or re.fullmatch(r"[A-Z0-9]{4}", p["ucas_code"]) is not None, f"{where}: ucas_code {p.get('ucas_code')!r} is not 4 characters")
     return {"id": uid("prog", slug, str(ps)), "institution_id": iid, "slug": ps, **{k: p.get(k) for k in PROGRAM_COLS}}
 
+# The site shows `short_name ?? name` everywhere (home, map, lists, compare). Two colleges must never show the
+# same text, and a college must never be labelled with a region code (the UI also has US/UK/CA/AU region switches).
+REGION_LABELS = {"US", "USA", "UK", "GB", "CA", "AU"} | ENUMS["country"]
+
+def check_display_names(colleges):
+    """Fail on duplicate display names (case-insensitive) or a display name equal to a region code."""
+    seen = {}
+    for c in colleges:
+        shown = (c.get("short_name") or c["name"]).strip()
+        key = " ".join(shown.lower().split())
+        check(key not in seen, f"display name {shown!r} is shown by both {seen.get(key)} and {c['slug']}; give one a distinct short_name")
+        seen.setdefault(key, c["slug"])
+        check(shown.upper() not in REGION_LABELS, f"{c['slug']}: display name {shown!r} is a region code; use a real short_name")
+
 def build(only=None, insert_only=False):
     colleges = [json.load(open(p, encoding="utf-8")) for p in sorted(glob.glob(os.path.join(ROOT, "data/colleges/*.json")))]
     cycle = json.load(open(os.path.join(ROOT, "data/cycle_2026_27.json"), encoding="utf-8"))
@@ -162,6 +176,7 @@ def build(only=None, insert_only=False):
         cycle[os.path.splitext(os.path.basename(p))[0]] = json.load(open(p, encoding="utf-8"))
     slugs = [c["slug"] for c in colleges]
     check(len(slugs) == len(set(slugs)), "duplicate slugs in data/colleges")
+    check_display_names(colleges)
     if only:
         check(not set(only) - set(slugs), f"--only: unknown slugs {sorted(set(only) - set(slugs))}")
         colleges = [c for c in colleges if c["slug"] in only]
