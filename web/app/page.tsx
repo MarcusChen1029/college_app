@@ -14,7 +14,7 @@ const STEPS = [
 ] as const;
 
 // Well-known colleges spread across the tiers, so the strip also shows what S through D look like.
-const STRIP_SLUGS = ["stanford", "mit", "cmu", "umich", "nyu", "uiuc", "purdue", "ohio-state", "penn-state", "asu"];
+const STRIP_SLUGS = ["stanford", "mit", "carnegie-mellon", "umich", "nyu", "uiuc", "purdue", "ohio-state", "penn-state", "asu"];
 
 async function CollegeStrip() {
   const all = await getSummaries();
