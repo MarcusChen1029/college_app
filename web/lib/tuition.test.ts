@@ -66,6 +66,8 @@ test("withinBudget: known, same currency, at or under the cap", () => {
   assert.equal(withinBudget(t, 40000, "USD"), false);
   assert.equal(withinBudget(t, 50000, "GBP"), false);
   assert.equal(withinBudget({ ...t, amount: null }, 70000, "USD"), false);
+  // An in-state figure shown to an international student may be far too low: it never passes a cap.
+  assert.equal(withinBudget({ ...t, amount: 12000, maybeLow: true }, 70000, "USD"), false);
 });
 
 test("money formatting", () => {

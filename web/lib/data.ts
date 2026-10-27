@@ -19,6 +19,18 @@ function unwrap<T>(res: { data: T | null; error: { message: string } | null }, w
   return res.data as T;
 }
 
+// The API returns at most 1000 rows per request, and deadlines, English requirements and score codes are past that.
+// Bulk reads page through with range(); each `page` must order by a unique key so pages neither overlap nor skip rows.
+const PAGE = 1000;
+async function allRows<T>(page: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>, what: string): Promise<T[]> {
+  const out: T[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const rows = unwrap(await page(from, from + PAGE - 1), what);
+    out.push(...rows);
+    if (rows.length < PAGE) return out;
+  }
+}
+
 // College data changes a few times a year, so cache for hours. Pages call these at request
 // time (after connection()) so builds never need network access to Supabase.
 
@@ -26,8 +38,8 @@ async function cachedSummaries(): Promise<CollegeSummary[]> {
   "use cache";
   cacheLife("hours");
   cacheTag("colleges");
-  const res = await supabase().from("college_summary").select("*").order("name");
-  return unwrap(res, "colleges");
+  const db = supabase();
+  return allRows((from, to) => db.from("college_summary").select("*").order("name").order("slug").range(from, to), "colleges");
 }
 
 async function cachedCollege(slug: string): Promise<CollegeDetail | null> {
@@ -53,8 +65,8 @@ async function cachedDeadlines(): Promise<Deadline[]> {
   "use cache";
   cacheLife("hours");
   cacheTag("colleges");
-  const res = await supabase().from("deadlines").select("*").order("due_date", { nullsFirst: false });
-  return unwrap(res, "deadlines");
+  const db = supabase();
+  return allRows((from, to) => db.from("deadlines").select("*").order("due_date", { nullsFirst: false }).order("id").range(from, to), "deadlines");
 }
 
 async function cachedEnglish(): Promise<Record<string, EnglishSummary>> {
@@ -63,13 +75,16 @@ async function cachedEnglish(): Promise<Record<string, EnglishSummary>> {
   cacheTag("colleges");
   const db = supabase();
   const [reqs, policies] = await Promise.all([
-    db.from("english_requirements").select("institution_id, test_key, status, min_total, min_subscores"),
-    db.from("english_policies").select("institution_id, policy"),
+    allRows(
+      (from, to) => db.from("english_requirements").select("institution_id, test_key, status, min_total, min_subscores").order("institution_id").order("test_key").range(from, to),
+      "english requirements",
+    ),
+    allRows((from, to) => db.from("english_policies").select("institution_id, policy").order("institution_id").range(from, to), "english policies"),
   ]);
   const out: Record<string, EnglishSummary> = {};
   const slot = (id: string) => (out[id] ??= { policy: null, toefl: null, toefl2026: null, ielts: null, duolingo: null, tests: {} });
-  for (const p of unwrap(policies, "english policies")) slot(p.institution_id).policy = p.policy;
-  for (const r of unwrap(reqs, "english requirements")) {
+  for (const p of policies) slot(p.institution_id).policy = p.policy;
+  for (const r of reqs) {
     const s = slot(r.institution_id);
     const min = r.min_total == null ? null : Number(r.min_total);
     s.tests[r.test_key as EnglishReqKey] = { status: r.status, min, subscores: !!r.min_subscores && Object.keys(r.min_subscores).length > 0 };
@@ -85,8 +100,12 @@ async function cachedSatEstimates(): Promise<Record<string, SatEstimate>> {
   "use cache";
   cacheLife("hours");
   cacheTag("colleges");
-  const res = await supabase().from("test_score_percentiles").select("institution_id, cds_year, test, p25, p50, p75").in("test", ["SAT_ERW", "SAT_MATH"]);
-  const rows = unwrap(res, "SAT section scores");
+  const db = supabase();
+  const rows = await allRows(
+    (from, to) =>
+      db.from("test_score_percentiles").select("institution_id, cds_year, test, p25, p50, p75").in("test", ["SAT_ERW", "SAT_MATH"]).order("institution_id").order("cds_year").order("test").range(from, to),
+    "SAT section scores",
+  );
   const latest = new Map<string, string>();
   for (const r of rows) if (!latest.has(r.institution_id) || r.cds_year > latest.get(r.institution_id)!) latest.set(r.institution_id, r.cds_year);
   const out: Record<string, SatEstimate> = {};
@@ -104,9 +123,10 @@ async function cachedProgramFees(): Promise<Record<string, ProgramFees>> {
   "use cache";
   cacheLife("hours");
   cacheTag("colleges");
-  const res = await supabase().from("programs").select("institution_id, intl_fee_gbp, intl_fee_cad, intl_fee_aud");
+  const db = supabase();
+  const fees = await allRows((from, to) => db.from("programs").select("institution_id, intl_fee_gbp, intl_fee_cad, intl_fee_aud").order("id").range(from, to), "course fees");
   const byCollege = new Map<string, { intl_fee_gbp: number | null; intl_fee_cad: number | null; intl_fee_aud: number | null }[]>();
-  for (const r of unwrap(res, "course fees")) byCollege.set(r.institution_id, [...(byCollege.get(r.institution_id) ?? []), r]);
+  for (const r of fees) byCollege.set(r.institution_id, [...(byCollege.get(r.institution_id) ?? []), r]);
   const out: Record<string, ProgramFees> = {};
   for (const [id, rows] of byCollege) {
     const range = programFeeRange(rows);
@@ -119,9 +139,13 @@ async function cachedScoreCodes(): Promise<ScoreCode[]> {
   "use cache";
   cacheLife("hours");
   cacheTag("colleges", "score-codes");
-  const res = await supabase().from("score_codes").select("institution_id, test_key, code, notes, sources(url)");
+  const db = supabase();
+  const rows = await allRows(
+    (from, to) => db.from("score_codes").select("institution_id, test_key, code, notes, sources(url)").order("institution_id").order("test_key").range(from, to),
+    "score codes",
+  );
   type Row = Omit<ScoreCode, "source_url"> & { sources: { url: string } | null };
-  return (unwrap(res, "score codes") as unknown as Row[]).map(({ sources, ...r }) => ({ ...r, source_url: sources?.url ?? null }));
+  return (rows as unknown as Row[]).map(({ sources, ...r }) => ({ ...r, source_url: sources?.url ?? null }));
 }
 
 /** institution_id → application platforms (common_app, uc_app, …), merged over every cycle on file. */
@@ -129,9 +153,10 @@ async function cachedPlatforms(): Promise<Record<string, string[]>> {
   "use cache";
   cacheLife("hours");
   cacheTag("colleges");
-  const res = await supabase().from("application_requirements").select("institution_id, platforms");
+  const db = supabase();
+  const reqs = await allRows((from, to) => db.from("application_requirements").select("institution_id, platforms").order("institution_id").order("cycle").range(from, to), "application platforms");
   const out: Record<string, string[]> = {};
-  for (const r of unwrap(res, "application platforms")) out[r.institution_id] = [...new Set([...(out[r.institution_id] ?? []), ...(r.platforms ?? [])])];
+  for (const r of reqs) out[r.institution_id] = [...new Set([...(out[r.institution_id] ?? []), ...(r.platforms ?? [])])];
   return out;
 }
 

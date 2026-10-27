@@ -82,6 +82,7 @@ export const fmtMoney = (n: number, currency: Currency): string => `${SYMBOL[cur
 /** "$30k" style, for filter steps and chips. */
 export const fmtMoneyShort = (n: number, currency: Currency): string => `${SYMBOL[currency]}${Math.round(n / 1000)}k`;
 
-/** Max-tuition filter: the figure is known, in the cap's currency, and within the cap (for courses: at least one course is). */
+/** Max-tuition filter: the figure is known, in the cap's currency, and within the cap (for courses: at least one course is).
+ * A figure that may be too low (a public college's in-state rate shown to an international student) never passes a cap. */
 export const withinBudget = (t: TuitionEstimate, cap: number | null, capCurrency: Currency): boolean =>
-  cap == null || (t.amount != null && t.currency === capCurrency && t.amount <= cap);
+  cap == null || (t.amount != null && !t.maybeLow && t.currency === capCurrency && t.amount <= cap);

@@ -7,7 +7,7 @@ import { customSummary } from "@/lib/custom-college";
 import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayDoc, type PersonalEssays } from "@/lib/personal-essays";
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
-import { entrySupplements, reuseGroups, type SupplementsData } from "@/lib/supplements";
+import { entrySupplements, reuseGroups, slotPrompts, withRequiredSlots, type SupplementsData } from "@/lib/supplements";
 import { toneClass } from "@/lib/ui";
 import type { CollegeSummary } from "@/lib/types";
 import { CollegeEssayCard } from "./CollegeEssayCard";
@@ -183,7 +183,18 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
       }
     : undefined;
 
-  if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
+  // Store the prompts every applicant must write as "not started" essays, so "Essays" on the checklist can't read
+  // done while one of them was never begun (e.g. only a hand-added essay is final). Runs once the list is loaded.
+  const ready = mounted && student.ready;
+  useEffect(() => {
+    if (!ready) return;
+    for (const entry of student.list) {
+      const next = withRequiredSlots(entry.checklist, slotPrompts(entrySupplements(supplements, entry.slug)));
+      if (next !== entry.checklist) student.update(entry.slug, { checklist: next });
+    }
+  }, [ready, student, supplements]);
+
+  if (!ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
   // Custom colleges have no row in our data; without them here their Essays item could never be finished.
   const entries = student.list.flatMap((entry) => {

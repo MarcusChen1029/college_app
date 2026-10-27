@@ -32,7 +32,8 @@ import {
 import { scoredTests, testChoice } from "../test-plan";
 import { courseStatus, newTranscriptId, type TranscriptCourse, type TranscriptSchool } from "../transcript";
 import { planCourseUpdate, planMcpAdd, systemSubjectOverrides, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
-import { collegeSupplements } from "../supplements-data";
+import { entrySupplements, slotPrompts, withRequiredSlots } from "../supplements";
+import { collegeSupplements, SUPPLEMENTS } from "../supplements-data";
 import type { CollegeDetail, CollegeSummary, Lookups } from "../types";
 import { userClient } from "./auth";
 import { modifyWithRetry, type Outcome, type Planned } from "./concurrency";
@@ -175,7 +176,7 @@ function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Stud
   const c: Checklist = entry.checklist;
   const hasScores = scoredTests(s.profile).length > 0;
   const fit = college && hasScores ? computeFit(s.profile, college) : null;
-  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan }], deadlines)[0] : undefined;
+  const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan }], deadlines, undefined, new Date(), !!s.profile.international)[0] : undefined;
   const p = progress(c);
   return {
     slug: entry.slug,
@@ -576,7 +577,10 @@ export function registerTools(server: McpServer) {
       return reply(
         await changeEntry(s, slug, (entry) => {
           const r = addEssay(entry.checklist, fields);
-          return r.ok ? { columns: { checklist: r.value.checklist }, value: { added: r.value.essay } } : { error: r.error };
+          if (!r.ok) return { error: r.error };
+          // The college's required prompts go on the list too, so one finished essay can't mark Essays done.
+          const checklist = withRequiredSlots(r.value.checklist, slotPrompts(entrySupplements(SUPPLEMENTS, slug)));
+          return { columns: { checklist }, value: { added: r.value.essay } };
         }),
       );
     }),
