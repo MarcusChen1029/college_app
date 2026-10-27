@@ -205,7 +205,7 @@ select '9521067b-245f-520c-8f5a-f8cf94dbefff'::uuid, 'D', v.* from (values
 
 -- ── University of Alberta ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('74840523-d913-5685-be28-453765bdcf1f', 'alberta', 'University of Alberta', 'U of A', 'CA', 'Alberta', 'Edmonton', 53.5232, -113.5263, 'urban', 'public', 'https://www.ualberta.ca/', 'https://www.ualberta.ca/en/admissions/international-undergraduate-admission.html');
+ ('74840523-d913-5685-be28-453765bdcf1f', 'alberta', 'University of Alberta', 'Alberta', 'CA', 'Alberta', 'Edmonton', 53.5232, -113.5263, 'urban', 'public', 'https://www.ualberta.ca/', 'https://www.ualberta.ca/en/admissions/international-undergraduate-admission.html');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('26417144-2ff4-5f31-be8e-2e8157c8f44e', '74840523-d913-5685-be28-453765bdcf1f', 'admissions_site', 'University of Alberta - Language requirements (undergraduate admission)', 'https://www.ualberta.ca/en/admissions/how-to-apply/admission-requirements/language-requirements/index.html', '2026-10-27'),
  ('0c45cdcc-919d-5891-90c4-7b227b526849', '74840523-d913-5685-be28-453765bdcf1f', 'admissions_site', 'University of Alberta - Dates + deadlines (Fall 2027 timeline)', 'https://www.ualberta.ca/en/admissions/how-to-apply/dates-deadlines/index.html', '2026-10-27'),
@@ -506,7 +506,7 @@ select '6ab5f440-af61-563d-b068-bc8a4016e54f'::uuid, v.* from (values
 
 -- ── Arkansas State University (Jonesboro) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9c40c447-c028-5b75-abce-20786e52eb82', 'arkansas-state', 'Arkansas State University (Jonesboro)', 'A-State', 'US', 'AR', 'Jonesboro', 35.842388, -90.679988, 'urban', 'public', 'https://www.astate.edu', 'https://www.astate.edu/admissions-and-aid/undergraduate-admissions/', 106458, 11189, 7.67, 18, 'semester');
+ ('9c40c447-c028-5b75-abce-20786e52eb82', 'arkansas-state', 'Arkansas State University (Jonesboro)', 'Arkansas State', 'US', 'AR', 'Jonesboro', 35.842388, -90.679988, 'urban', 'public', 'https://www.astate.edu', 'https://www.astate.edu/admissions-and-aid/undergraduate-admissions/', 106458, 11189, 7.67, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('25ace5ed-8043-5904-9bcf-0506d4e2fa31', '9c40c447-c028-5b75-abce-20786e52eb82', 'cds', 'Arkansas State University Common Data Set 2025-2026 (PDF, A-State Knowledge Base ''Latest CDS'')', 'https://kb.astate.edu/attachments/2113', '2025-2026', '2026-10-26'),
  ('0063d44a-4ceb-5823-84e0-09c75673f0a9', '9c40c447-c028-5b75-abce-20786e52eb82', 'admissions_site', 'A-State - International undergraduate admissions requirements (English proficiency, deadlines)', 'https://www.astate.edu/admissions-and-aid/international-student-admission/undergraduate-students.html', null, '2026-10-26'),
@@ -562,7 +562,7 @@ select '9c40c447-c028-5b75-abce-20786e52eb82'::uuid, 'D', v.* from (values
 
 -- ── Arkansas Tech University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c06e200e-13d7-51e2-aced-d0a390ea7e7a', 'arkansas-tech', 'Arkansas Tech University', 'ATU', 'US', 'AR', 'Russellville', 35.296091, -93.137172, 'rural', 'public', 'https://www.atu.edu', 'https://www.atu.edu/admissions/', 106467, 8279, 1.12, 17, 'semester');
+ ('c06e200e-13d7-51e2-aced-d0a390ea7e7a', 'arkansas-tech', 'Arkansas Tech University', 'Arkansas Tech', 'US', 'AR', 'Russellville', 35.296091, -93.137172, 'rural', 'public', 'https://www.atu.edu', 'https://www.atu.edu/admissions/', 106467, 8279, 1.12, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('95f2e820-5303-5d1a-95df-75964a8009b1', 'c06e200e-13d7-51e2-aced-d0a390ea7e7a', 'cds', 'Arkansas Tech University Common Data Set 2025-2026 (PDF, ATU Institutional Research ''CDS_fall_2025'')', 'https://www.atu.edu/ir/docs/cds/CDS_fall_2025.pdf', '2025-2026', '2026-10-26'),
  ('255fd512-25ea-5967-88f4-b938ec149caa', 'c06e200e-13d7-51e2-aced-d0a390ea7e7a', 'admissions_site', 'ATU International Admissions Portal - FAQ (deadlines, English proficiency, funding, academic records)', 'https://admissions.atu.edu/portal/intl_informational_portal?cmd=faq', null, '2026-10-26'),
@@ -866,7 +866,7 @@ select 'ea8fc0ba-0290-5417-aa95-3e7545a023e1'::uuid, 'D', v.* from (values
 
 -- ── Augustana College (Rock Island) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('5b842314-18fb-575b-9d9c-b60c62c5291b', 'augustana-il', 'Augustana College (Rock Island)', 'Augustana', 'US', 'IL', 'Rock Island', 41.502365, -90.55057, 'urban', 'private_nonprofit', 'https://www.augustana.edu', 'https://www.augustana.edu/admissions/apply/international/procedure', 143084, 2536, 19.99, 12, 'semester');
+ ('5b842314-18fb-575b-9d9c-b60c62c5291b', 'augustana-il', 'Augustana College (Rock Island)', 'Augustana (IL)', 'US', 'IL', 'Rock Island', 41.502365, -90.55057, 'urban', 'private_nonprofit', 'https://www.augustana.edu', 'https://www.augustana.edu/admissions/apply/international/procedure', 143084, 2536, 19.99, 12, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('18a6d22d-72fb-56cc-907b-cc641a8bd0fd', '5b842314-18fb-575b-9d9c-b60c62c5291b', 'cds', 'Augustana College (IL) Common Data Set 2025-2026 (PDF)', 'https://www.augustana.edu/files/2026-04/2025-26_CDS_Augustana_College_IL_V2.pdf', '2025-2026', '2026-10-26'),
  ('594c6fbc-2aaa-5425-a476-c236316d7c3f', '5b842314-18fb-575b-9d9c-b60c62c5291b', 'admissions_site', 'Augustana - Application procedure for international students', 'https://www.augustana.edu/admissions/apply/international/procedure', null, '2026-10-26'),
@@ -929,7 +929,7 @@ select '5b842314-18fb-575b-9d9c-b60c62c5291b'::uuid, 'D', v.* from (values
 
 -- ── Auburn University at Montgomery ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('97cbc3c6-40b6-511e-a213-214853769290', 'aum', 'Auburn University at Montgomery', 'AUM', 'US', 'AL', 'Montgomery', 32.36736, -86.177544, 'urban', 'public', 'https://www.aum.edu', 'https://www.aum.edu/admissions/', 100830, 3649, 3.29, 13, 'semester');
+ ('97cbc3c6-40b6-511e-a213-214853769290', 'aum', 'Auburn University at Montgomery', 'Auburn Montgomery', 'US', 'AL', 'Montgomery', 32.36736, -86.177544, 'urban', 'public', 'https://www.aum.edu', 'https://www.aum.edu/admissions/', 100830, 3649, 3.29, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('d109e2e3-c233-518e-8a4a-2803280e32e1', '97cbc3c6-40b6-511e-a213-214853769290', 'cds', 'AUM Common Data Set 2025-2026 (PDF; fall 2025 data, template header reads 2026-2027)', 'https://www.aum.edu/wp-content/uploads/2026/07/CDS_2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('4a2497cb-60a5-57b9-b004-6016ad014b40', '97cbc3c6-40b6-511e-a213-214853769290', 'cds', 'AUM Common Data Set 2024-2025 (PDF; fall 2024 data)', 'https://www.aum.edu/wp-content/uploads/2025/05/CDS-2024-2025.pdf', '2024-2025', '2026-10-26'),
@@ -1011,7 +1011,7 @@ select '97cbc3c6-40b6-511e-a213-214853769290'::uuid, 'D', v.* from (values
 
 -- ── Austin Peay State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('390e7c21-63ee-549d-92f1-3faf350421fc', 'austin-peay', 'Austin Peay State University', 'APSU', 'US', 'TN', 'Clarksville', 36.533319, -87.354081, 'urban', 'public', 'https://www.apsu.edu', 'https://www.apsu.edu/admissions/', 219602, 9593, 2.19, 15, 'semester');
+ ('390e7c21-63ee-549d-92f1-3faf350421fc', 'austin-peay', 'Austin Peay State University', 'Austin Peay', 'US', 'TN', 'Clarksville', 36.533319, -87.354081, 'urban', 'public', 'https://www.apsu.edu', 'https://www.apsu.edu/admissions/', 219602, 9593, 2.19, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9711bbad-a9a7-5495-8320-ca1ba17ee434', '390e7c21-63ee-549d-92f1-3faf350421fc', 'cds', 'Austin Peay State University Common Data Set 2025-2026 (PDF)', 'https://www.apsu.edu/institutional-research/files/common-data-set-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('df8a559b-d9d2-59df-a44c-5eeede7d236a', '390e7c21-63ee-549d-92f1-3faf350421fc', 'admissions_site', 'APSU International Student Services - Undergraduate admissions (F-1)', 'https://www.apsu.edu/international/admissions/undergraduate.php', null, '2026-10-26'),
@@ -1068,7 +1068,7 @@ select '390e7c21-63ee-549d-92f1-3faf350421fc'::uuid, 'D', v.* from (values
 
 -- ── Azusa Pacific University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8202cb2b-ef85-56cf-ad89-bb0f8cfcab42', 'azusa-pacific', 'Azusa Pacific University', 'APU', 'US', 'CA', 'Azusa', 34.130047, -117.888375, 'suburban', 'private_nonprofit', 'https://www.apu.edu/', 'https://www.apu.edu/undergraduate-admissions/', 109785, 2759, 4.49, 9, 'semester');
+ ('8202cb2b-ef85-56cf-ad89-bb0f8cfcab42', 'azusa-pacific', 'Azusa Pacific University', 'Azusa Pacific', 'US', 'CA', 'Azusa', 34.130047, -117.888375, 'suburban', 'private_nonprofit', 'https://www.apu.edu/', 'https://www.apu.edu/undergraduate-admissions/', 109785, 2759, 4.49, 9, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('78e73e1b-cf53-5cd5-af94-eeeb62b7473b', '8202cb2b-ef85-56cf-ad89-bb0f8cfcab42', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=109785', '2023-2024', '2026-10-26'),
  ('8e1d13d8-f737-5851-83bd-03bb1b32b7de', '8202cb2b-ef85-56cf-ad89-bb0f8cfcab42', 'ipeds', 'College Navigator - Azusa Pacific University (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=109785', '2024-2025', '2026-10-26'),
@@ -1614,7 +1614,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── Black Hills State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a74f253c-0b62-54dc-b2e7-4e640be39963', 'black-hills-state', 'Black Hills State University', 'BHSU', 'US', 'SD', 'Spearfish', 44.494889, -103.870966, 'rural', 'public', 'https://www.bhsu.edu', 'https://www.bhsu.edu/admissions/', 219046, 3301, 1.54, 17, 'semester');
+ ('a74f253c-0b62-54dc-b2e7-4e640be39963', 'black-hills-state', 'Black Hills State University', 'Black Hills State', 'US', 'SD', 'Spearfish', 44.494889, -103.870966, 'rural', 'public', 'https://www.bhsu.edu', 'https://www.bhsu.edu/admissions/', 219046, 3301, 1.54, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('31f1ef01-fba0-581d-abcc-03e375394886', 'a74f253c-0b62-54dc-b2e7-4e640be39963', 'ipeds', 'IPEDS data via College Navigator, Black Hills State University (fall 2024 entering class)', 'https://nces.ed.gov/collegenavigator/?id=219046', '2024-2025', '2026-10-26'),
  ('f312aadb-0cf1-5318-9be4-53ca5b24feff', 'a74f253c-0b62-54dc-b2e7-4e640be39963', 'other', 'BHSU Student Right to Know Data - 2025 Fall Enrollment Profile', 'https://bhsu.edu/academics/academic-affairs/institutional-research/right-to-know.html', null, '2026-10-26'),
@@ -1735,7 +1735,7 @@ select '218cdcc6-8cc0-56b2-8ea0-231b57cd7372'::uuid, 'D', v.* from (values
 
 -- ── Boston College ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ff2bedac-6e20-5610-a123-b0eb89e63d92', 'boston-college', 'Boston College', 'BC', 'US', 'MA', 'Chestnut Hill', 42.335, -71.17028, 'suburban', 'private_nonprofit', 'https://www.bc.edu', 'https://www.bc.edu/bc-web/admission.html', 164924, 9654, 6.62, 10, 'semester');
+ ('ff2bedac-6e20-5610-a123-b0eb89e63d92', 'boston-college', 'Boston College', 'Boston College', 'US', 'MA', 'Chestnut Hill', 42.335, -71.17028, 'suburban', 'private_nonprofit', 'https://www.bc.edu', 'https://www.bc.edu/bc-web/admission.html', 164924, 9654, 6.62, 10, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f038a939-c9b1-5a72-9809-9bd59990a473', 'ff2bedac-6e20-5610-a123-b0eb89e63d92', 'cds', 'Boston College Common Data Set 2024-2025', 'https://www.bc.edu/content/dam/bc1/offices/irp/ir/cds/Boston_College_CDS_2024-2025_Final.pdf', '2024-2025', '2026-10-21'),
  ('2c4aad05-2dde-57d7-bca6-e5e7f98a9100', 'ff2bedac-6e20-5610-a123-b0eb89e63d92', 'admissions_site', 'Boston College Admission - Apply (deadlines and requirements)', 'https://www.bc.edu/bc-web/admission/apply.html', null, '2026-10-21'),
@@ -1813,7 +1813,7 @@ select 'ff2bedac-6e20-5610-a123-b0eb89e63d92'::uuid, v.* from (values
 
 -- ── Boston University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a2d4d562-20f9-5be0-b31a-3ebfe8cc2628', 'boston-university', 'Boston University', 'BU', 'US', 'MA', 'Boston', 42.34889, -71.10028, 'urban', 'private_nonprofit', 'https://www.bu.edu', 'https://www.bu.edu/admissions', 164988, 18289, 20.1, 10, 'semester');
+ ('a2d4d562-20f9-5be0-b31a-3ebfe8cc2628', 'boston-university', 'Boston University', 'Boston University', 'US', 'MA', 'Boston', 42.34889, -71.10028, 'urban', 'private_nonprofit', 'https://www.bu.edu', 'https://www.bu.edu/admissions', 164988, 18289, 20.1, 10, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f2a8dd63-2c30-50b8-94f6-3dd648a25675', 'a2d4d562-20f9-5be0-b31a-3ebfe8cc2628', 'cds', 'Boston University Common Data Set 2025-2026, Section C (first-year admission)', 'https://www.bu.edu/asir/files/2026/07/CDS-2025-2026-C-updated.pdf', '2025-2026', '2026-10-21'),
  ('f6ab69bb-0afb-5e4f-96a8-de773b08175c', 'a2d4d562-20f9-5be0-b31a-3ebfe8cc2628', 'cds', 'Boston University Common Data Set 2025-2026, Section B (enrollment)', 'https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-B.pdf', '2025-2026', '2026-10-21'),
@@ -2051,7 +2051,7 @@ select '8c3fbc68-5b15-5a4a-b8b3-26127a270ac9'::uuid, 'D', v.* from (values
 
 -- ── Bowling Green State University (Main Campus) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('abb7ef91-4abf-56c8-8c33-5e2c1d215274', 'bowling-green', 'Bowling Green State University (Main Campus)', 'BGSU', 'US', 'OH', 'Bowling Green', 41.375513, -83.640896, 'rural', 'public', 'https://www.bgsu.edu', 'https://www.bgsu.edu/admissions.html', 201441, 14783, 2.56, 17, 'semester');
+ ('abb7ef91-4abf-56c8-8c33-5e2c1d215274', 'bowling-green', 'Bowling Green State University (Main Campus)', 'Bowling Green', 'US', 'OH', 'Bowling Green', 41.375513, -83.640896, 'rural', 'public', 'https://www.bgsu.edu', 'https://www.bgsu.edu/admissions.html', 201441, 14783, 2.56, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('531947c0-2d57-50bf-a3ac-a892edbe94ee', 'abb7ef91-4abf-56c8-8c33-5e2c1d215274', 'ipeds', 'IPEDS via NCES College Navigator, fall 2024 admissions and enrollment (BGSU Main Campus)', 'https://nces.ed.gov/collegenavigator/?id=201441', '2024-2025', '2026-10-26'),
  ('aefa6640-6cd7-5e25-99e9-1de6f627da37', 'abb7ef91-4abf-56c8-8c33-5e2c1d215274', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=201441', '2023-2024', '2026-10-26'),
@@ -2417,7 +2417,7 @@ select 'e5c08f66-2d66-529a-80cc-64dc93c9cc03'::uuid, 'D', v.* from (values
 
 -- ── California State University, Bakersfield ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('25beb90f-00ad-5604-80e5-6bb7620f3e23', 'cal-state-bakersfield', 'California State University, Bakersfield', 'CSUB', 'US', 'CA', 'Bakersfield', 35.350005, -119.104711, 'urban', 'public', 'https://www.csub.edu', 'https://www.csub.edu/admissions/', 110486, 9897, 1.01, 22, 'semester');
+ ('25beb90f-00ad-5604-80e5-6bb7620f3e23', 'cal-state-bakersfield', 'California State University, Bakersfield', 'Cal State Bakersfield', 'US', 'CA', 'Bakersfield', 35.350005, -119.104711, 'urban', 'public', 'https://www.csub.edu', 'https://www.csub.edu/admissions/', 110486, 9897, 1.01, 22, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('151d7ee7-20e2-56aa-a2dd-610a8582206c', '25beb90f-00ad-5604-80e5-6bb7620f3e23', 'cds', 'CSUB Common Data Set 2025-26 (PDF file ''CDS-2025-2026_Data Collection_FINAL REVISED'', linked from the Institutional Research, Planning and Assessment reports page)', 'https://csub.box.com/s/lyzdwd5ky6ii1s73o65nojnlxzst8lha', '2025-2026', '2026-10-26'),
  ('2b6b6cfc-f44b-5eda-ab5d-cd3f9484472b', '25beb90f-00ad-5604-80e5-6bb7620f3e23', 'ipeds', 'IPEDS via NCES College Navigator: fall 2024 admissions summary, test-blind consideration, student-to-faculty ratio', 'https://nces.ed.gov/collegenavigator/?id=110486', '2024-2025', '2026-10-26'),
@@ -2462,7 +2462,7 @@ select '25beb90f-00ad-5604-80e5-6bb7620f3e23'::uuid, 'D', v.* from (values
 
 -- ── California State University, Dominguez Hills ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('1140af00-e2b0-58f7-b9c7-65135fc894f9', 'cal-state-dominguez-hills', 'California State University, Dominguez Hills', 'CSUDH', 'US', 'CA', 'Carson', 33.864766, -118.255917, 'urban', 'public', 'https://www.csudh.edu', 'https://www.csudh.edu/future-students/', 110547, 12632, 0.9, 21, 'semester');
+ ('1140af00-e2b0-58f7-b9c7-65135fc894f9', 'cal-state-dominguez-hills', 'California State University, Dominguez Hills', 'Cal State Dominguez Hills', 'US', 'CA', 'Carson', 33.864766, -118.255917, 'urban', 'public', 'https://www.csudh.edu', 'https://www.csudh.edu/future-students/', 110547, 12632, 0.9, 21, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('ee06fc75-0d99-5225-9db8-bbecd009d146', '1140af00-e2b0-58f7-b9c7-65135fc894f9', 'ipeds', 'IPEDS via NCES College Navigator: fall 2024 admissions summary (ADM2024), enrollment, test-blind consideration, student-to-faculty ratio', 'https://nces.ed.gov/collegenavigator/?id=110547', '2024-2025', '2026-10-26'),
  ('1bcdaf7c-258b-54d6-9e4e-3121e6e50911', '1140af00-e2b0-58f7-b9c7-65135fc894f9', 'ipeds', 'IPEDS ADM2024 first-time applicants, admits and enrollees (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=110547&sex=99', '2024-2025', '2026-10-26'),
@@ -2663,7 +2663,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── California State University, Monterey Bay ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3a321249-68bc-5661-a4ef-51741d25a62f', 'cal-state-monterey-bay', 'California State University, Monterey Bay', 'CSUMB', 'US', 'CA', 'Seaside', 36.652397, -121.796178, 'suburban', 'public', 'https://csumb.edu', 'https://csumb.edu/admissions-aid/', 409698, 6907, 1.94, 24, 'semester');
+ ('3a321249-68bc-5661-a4ef-51741d25a62f', 'cal-state-monterey-bay', 'California State University, Monterey Bay', 'Cal State Monterey Bay', 'US', 'CA', 'Seaside', 36.652397, -121.796178, 'suburban', 'public', 'https://csumb.edu', 'https://csumb.edu/admissions-aid/', 409698, 6907, 1.94, 24, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('403f82af-00ae-5c07-8ed0-1a63422f6934', '3a321249-68bc-5661-a4ef-51741d25a62f', 'ipeds', 'IPEDS via NCES College Navigator: fall 2024 admissions summary (ADM2024), enrollment, test-blind consideration, student-to-faculty ratio', 'https://nces.ed.gov/collegenavigator/?id=409698', '2024-2025', '2026-10-26'),
  ('af7fc4f0-74b6-5801-8314-3a33fd9c5de5', '3a321249-68bc-5661-a4ef-51741d25a62f', 'ipeds', 'IPEDS ADM2024 first-time applicants, admits and enrollees (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=409698&sex=99', '2024-2025', '2026-10-26'),
@@ -2782,7 +2782,7 @@ select 'bbfc906e-fab3-5038-b302-d0c4299fa697'::uuid, 'D', v.* from (values
 
 -- ── California State University San Marcos ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6c3e8639-f65c-565d-becf-9cf682d65265', 'cal-state-san-marcos', 'California State University San Marcos', 'CSUSM', 'US', 'CA', 'San Marcos', 33.130569, -117.159013, 'suburban', 'public', 'https://www.csusm.edu', 'https://www.csusm.edu/admissions/', 366711, 15770, 0.94, 24, 'semester');
+ ('6c3e8639-f65c-565d-becf-9cf682d65265', 'cal-state-san-marcos', 'California State University San Marcos', 'Cal State San Marcos', 'US', 'CA', 'San Marcos', 33.130569, -117.159013, 'suburban', 'public', 'https://www.csusm.edu', 'https://www.csusm.edu/admissions/', 366711, 15770, 0.94, 24, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('043c64cb-cc6c-5bcb-aa4d-56b3c48ad2c2', '6c3e8639-f65c-565d-becf-9cf682d65265', 'cds', 'CSUSM Common Data Set 2025-2026 (Excel workbook, Institutional Planning and Analysis)', 'https://www.csusm.edu/ipa/cds-files/cds-doc/cds_2025-2026.xlsx', '2025-2026', '2026-10-26'),
  ('8371111f-f6c3-5abb-bc7b-4127d7901e20', '6c3e8639-f65c-565d-becf-9cf682d65265', 'ipeds', 'IPEDS via NCES College Navigator: student-to-faculty ratio, fall 2024 admissions summary', 'https://nces.ed.gov/collegenavigator/?id=366711', '2024-2025', '2026-10-26'),
@@ -2849,7 +2849,7 @@ select '6c3e8639-f65c-565d-becf-9cf682d65265'::uuid, 'D', v.* from (values
 
 -- ── University of Calgary ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('9b87485f-359c-5664-a2d6-f29143bc2e76', 'calgary', 'University of Calgary', 'UCalgary', 'CA', 'Alberta', 'Calgary', 51.0775, -114.1406, 'urban', 'public', 'https://www.ucalgary.ca/', 'https://www.ucalgary.ca/future-students/undergraduate/admissions');
+ ('9b87485f-359c-5664-a2d6-f29143bc2e76', 'calgary', 'University of Calgary', 'Calgary', 'CA', 'Alberta', 'Calgary', 51.0775, -114.1406, 'urban', 'public', 'https://www.ucalgary.ca/', 'https://www.ucalgary.ca/future-students/undergraduate/admissions');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('ff8752dd-c0be-5eb8-af13-d8276c642b67', '9b87485f-359c-5664-a2d6-f29143bc2e76', 'admissions_site', 'University of Calgary - English language requirement (undergraduate)', 'https://www.ucalgary.ca/future-students/undergraduate/admissions/how-to-apply/english-language-requirements', '2026-10-27'),
  ('f830631b-a56e-5975-9af7-46a6bafdd755', '9b87485f-359c-5664-a2d6-f29143bc2e76', 'admissions_site', 'UCalgary Calendar - A.12 English Language Proficiency (acceptable tests and scores)', 'https://calendar.ucalgary.ca/pages/e9845c2c03e84596bcaf892d52666fbf', '2026-10-27'),
@@ -3083,8 +3083,8 @@ select '9ab76ce3-518d-5095-9fd1-2b2d5322b17c'::uuid, 'D', v.* from (values
  ('arts_design', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Case Western Reserve University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7e265859-92d1-5be8-b5aa-69601baaa5de', 'case-western', 'Case Western Reserve University', 'US', 'OH', 'Cleveland', 41.507419, -81.609596, 'urban', 'private_nonprofit', 'https://www.case.edu/', 'https://admission.case.edu/', 201645, 6437, 11.17, 9, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('7e265859-92d1-5be8-b5aa-69601baaa5de', 'case-western', 'Case Western Reserve University', 'Case Western', 'US', 'OH', 'Cleveland', 41.507419, -81.609596, 'urban', 'private_nonprofit', 'https://www.case.edu/', 'https://admission.case.edu/', 201645, 6437, 11.17, 9, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b8ed2631-6048-57e2-bbb5-8b6d9c02c5ed', '7e265859-92d1-5be8-b5aa-69601baaa5de', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=201645', '2023-2024', '2026-10-21'),
  ('e1e4a820-257d-526d-b709-bf93b2e0e940', '7e265859-92d1-5be8-b5aa-69601baaa5de', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?201645', null, '2026-10-21'),
@@ -3163,7 +3163,7 @@ select '7e265859-92d1-5be8-b5aa-69601baaa5de'::uuid, v.* from (values
 
 -- ── The Catholic University of America ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7e2fef4e-f682-5d6d-8660-c42316655c62', 'catholic-university', 'The Catholic University of America', 'CUA', 'US', 'DC', 'Washington', 38.933651, -76.997909, 'urban', 'private_nonprofit', 'https://www.catholic.edu/', 'https://www.catholic.edu/admission-aid/undergraduate-admission', 131283, 3177, 3.49, 11, 'semester');
+ ('7e2fef4e-f682-5d6d-8660-c42316655c62', 'catholic-university', 'The Catholic University of America', 'Catholic University', 'US', 'DC', 'Washington', 38.933651, -76.997909, 'urban', 'private_nonprofit', 'https://www.catholic.edu/', 'https://www.catholic.edu/admission-aid/undergraduate-admission', 131283, 3177, 3.49, 11, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c056ff96-6197-5f8c-bd85-43daa7cb6f82', '7e2fef4e-f682-5d6d-8660-c42316655c62', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=131283', '2023-2024', '2026-10-26'),
  ('0eaab03b-ca97-5928-bc6c-75a7ce6e41bf', '7e2fef4e-f682-5d6d-8660-c42316655c62', 'ipeds', 'College Navigator - The Catholic University of America (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=131283', '2024-2025', '2026-10-26'),
@@ -3218,7 +3218,7 @@ select '7e2fef4e-f682-5d6d-8660-c42316655c62'::uuid, 'D', v.* from (values
 
 -- ── Central Connecticut State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('709a39a5-13b7-5550-97c1-80c55c753cb7', 'central-connecticut', 'Central Connecticut State University', 'CCSU', 'US', 'CT', 'New Britain', 41.692502, -72.765991, 'suburban', 'public', 'https://www.ccsu.edu/', 'https://www.ccsu.edu/admissions', 128771, 9463, 1.73, 14, 'semester');
+ ('709a39a5-13b7-5550-97c1-80c55c753cb7', 'central-connecticut', 'Central Connecticut State University', 'Central Connecticut', 'US', 'CT', 'New Britain', 41.692502, -72.765991, 'suburban', 'public', 'https://www.ccsu.edu/', 'https://www.ccsu.edu/admissions', 128771, 9463, 1.73, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('efeca790-6cde-5bcd-ac3c-27d0db17184b', '709a39a5-13b7-5550-97c1-80c55c753cb7', 'cds', 'Central Connecticut State University Common Data Set 2025-2026 (XLSX)', 'https://docs.ccsu.edu/oira/institutionalData/commonDataSet/Common_Data_Set_2025-2026.xlsx', '2025-2026', '2026-10-26'),
  ('7c12ec23-6568-5a0e-804c-3e6f46cab8c2', '709a39a5-13b7-5550-97c1-80c55c753cb7', 'ipeds', 'College Navigator profile, Central Connecticut State University (student-to-faculty ratio, setting)', 'https://nces.ed.gov/collegenavigator/?id=128771', '2024-2025', '2026-10-26'),
@@ -3288,7 +3288,7 @@ select '709a39a5-13b7-5550-97c1-80c55c753cb7'::uuid, 'D', v.* from (values
 
 -- ── Central Michigan University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('5eca8745-e717-5cba-97cd-f2f51ae21e77', 'central-michigan', 'Central Michigan University', 'CMU', 'US', 'MI', 'Mount Pleasant', 43.591203, -84.77525, 'rural', 'public', 'https://www.cmich.edu', 'https://www.cmich.edu/undergraduate/apply', 169248, 10238, 2.78, 16.6, 'semester');
+ ('5eca8745-e717-5cba-97cd-f2f51ae21e77', 'central-michigan', 'Central Michigan University', 'Central Michigan', 'US', 'MI', 'Mount Pleasant', 43.591203, -84.77525, 'rural', 'public', 'https://www.cmich.edu', 'https://www.cmich.edu/undergraduate/apply', 169248, 10238, 2.78, 16.6, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fc9ac257-1c43-5469-83e3-a05eea4bda72', '5eca8745-e717-5cba-97cd-f2f51ae21e77', 'cds', 'Central Michigan University Common Data Set 2025-2026 (PDF)', 'https://www.cmich.edu/docs/default-source/academic-affairs-division/academic-administration/academic-planning-analysis/reports-(public)/common-data-sets/cds-2024-2025.pdf?sfvrsn=b0421437_16', '2025-2026', '2026-10-26'),
  ('3e1da1f6-f1c5-5a9f-ba5d-47c6d871374b', '5eca8745-e717-5cba-97cd-f2f51ae21e77', 'admissions_site', 'CMU - Apply as an International Undergraduate Student', 'https://www.cmich.edu/international-admissions/undergraduate/apply-international-freshman', null, '2026-10-26'),
@@ -3364,7 +3364,7 @@ select '5eca8745-e717-5cba-97cd-f2f51ae21e77'::uuid, 'D', v.* from (values
 
 -- ── University of Central Oklahoma ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('d8057782-44e3-5e2c-998a-2f53fcba2556', 'central-oklahoma', 'University of Central Oklahoma', 'UCO', 'US', 'OK', 'Edmond', 35.6552, -97.471508, 'suburban', 'public', 'https://www.uco.edu', 'https://www.uco.edu/admissions/', 206941, 10777, 2.91, 18, 'semester');
+ ('d8057782-44e3-5e2c-998a-2f53fcba2556', 'central-oklahoma', 'University of Central Oklahoma', 'Central Oklahoma', 'US', 'OK', 'Edmond', 35.6552, -97.471508, 'suburban', 'public', 'https://www.uco.edu', 'https://www.uco.edu/admissions/', 206941, 10777, 2.91, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7d2f2691-11a3-526e-a552-91d5a2c5136f', 'd8057782-44e3-5e2c-998a-2f53fcba2556', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=206941', '2024-2025', '2026-10-26'),
  ('70271a3d-1ee2-585b-8210-7f60baf732c9', 'd8057782-44e3-5e2c-998a-2f53fcba2556', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -3421,7 +3421,7 @@ select 'd8057782-44e3-5e2c-998a-2f53fcba2556'::uuid, 'D', v.* from (values
 
 -- ── Central Washington University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ea3382eb-01e4-5bef-a9f9-45507552ef54', 'central-washington', 'Central Washington University', 'CWU', 'US', 'WA', 'Ellensburg', 47.002687, -120.538368, 'rural', 'public', 'https://www.cwu.edu', 'https://www.cwu.edu/admissions-aid/', 234827, 10033, 2.13, 16.6, 'quarter');
+ ('ea3382eb-01e4-5bef-a9f9-45507552ef54', 'central-washington', 'Central Washington University', 'Central Washington', 'US', 'WA', 'Ellensburg', 47.002687, -120.538368, 'rural', 'public', 'https://www.cwu.edu', 'https://www.cwu.edu/admissions-aid/', 234827, 10033, 2.13, 16.6, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fff59c59-ba38-595d-add8-f1de37692985', 'ea3382eb-01e4-5bef-a9f9-45507552ef54', 'cds', 'Central Washington University 2024-25 Common Data Set (PDF; the 2025-26 edition was not posted)', 'https://cwu.cascadecms.com/renderfile/53dc57e10a0000431d7b610f5694c9b7/about/offices/institutional-effectiveness/_documents/cwu_cds_2024-25.pdf', '2024-2025', '2026-10-26'),
  ('14047c84-99bf-59bd-92c6-9912f3eee188', 'ea3382eb-01e4-5bef-a9f9-45507552ef54', 'ipeds', 'IPEDS via NCES College Navigator: fall 2024 admissions summary, campus setting', 'https://nces.ed.gov/collegenavigator/?id=234827', '2024-2025', '2026-10-26'),
@@ -3598,7 +3598,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── University of Cincinnati (Main Campus) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8a277593-1fe5-517c-a6dc-89613a207f44', 'cincinnati', 'University of Cincinnati (Main Campus)', 'UC', 'US', 'OH', 'Cincinnati', 39.131159, -84.51428, 'urban', 'public', 'https://www.uc.edu', 'https://admissions.uc.edu', 201885, 34447, 4.72, 19, 'semester');
+ ('8a277593-1fe5-517c-a6dc-89613a207f44', 'cincinnati', 'University of Cincinnati (Main Campus)', 'Cincinnati', 'US', 'OH', 'Cincinnati', 39.131159, -84.51428, 'urban', 'public', 'https://www.uc.edu', 'https://admissions.uc.edu', 201885, 34447, 4.72, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('02860089-7adb-563a-ae1d-0702b239a7b8', '8a277593-1fe5-517c-a6dc-89613a207f44', 'cds', 'University of Cincinnati Main Campus Common Data Set 2025-2026 (PDF, updated July 2026)', 'https://uc.edu/content/dam/refresh/provost-62/offices/ir/2026-2027-ay/CDS%202025%202026%20Main%20Campus%20updated%20faculty%20info%20and%20tuition%20and%20fees%2007062026.pdf', '2025-2026', '2026-10-26'),
  ('e18eb53d-718b-5c64-865c-0cf1f3dd715d', '8a277593-1fe5-517c-a6dc-89613a207f44', 'admissions_site', 'University of Cincinnati - Admissions deadlines', 'https://admissions.uc.edu/apply/deadlines.html', null, '2026-10-26'),
@@ -3686,8 +3686,8 @@ select '8a277593-1fe5-517c-a6dc-89613a207f44'::uuid, 'direct_major', true, v.* f
  ('38ea8c9d-5f8f-51c4-b82b-2721db839b46'::uuid, 'College of Nursing (BSN)', 'nursing', 'Priority application deadline Nov 1. For English proficiency Nursing accepts only SAT EBRW 480 or ACT English 19.')) v;
 
 -- ── Claremont McKenna College ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('869dac5f-e3ea-568c-9884-83ac4b395d73', 'claremont-mckenna', 'Claremont McKenna College', 'US', 'CA', 'Claremont', 34.102154, -117.711188, 'suburban', 'private_nonprofit', 'https://www.cmc.edu/', 'https://www.cmc.edu/admission', 112260, 1388, 14.84, 8, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('869dac5f-e3ea-568c-9884-83ac4b395d73', 'claremont-mckenna', 'Claremont McKenna College', 'Claremont McKenna', 'US', 'CA', 'Claremont', 34.102154, -117.711188, 'suburban', 'private_nonprofit', 'https://www.cmc.edu/', 'https://www.cmc.edu/admission', 112260, 1388, 14.84, 8, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('bfa058b2-79da-5bea-a60d-80e1bb7333ee', '869dac5f-e3ea-568c-9884-83ac4b395d73', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=112260', '2023-2024', '2026-10-21'),
  ('26d0a39f-6819-5751-92ee-d7e19c83a621', '869dac5f-e3ea-568c-9884-83ac4b395d73', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?112260', null, '2026-10-21'),
@@ -3920,7 +3920,7 @@ select 'ac92fb49-45d0-5adb-b5b1-e81459c44faa'::uuid, 'D', v.* from (values
 
 -- ── Carnegie Mellon University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'carnegie-mellon', 'Carnegie Mellon University', 'CMU', 'US', 'PA', 'Pittsburgh', 40.443322, -79.943583, 'urban', 'private_nonprofit', 'https://www.cmu.edu', 'https://www.cmu.edu/admission', 211440, 7728, 22.2, 6, 'semester');
+ ('1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'carnegie-mellon', 'Carnegie Mellon University', 'Carnegie Mellon', 'US', 'PA', 'Pittsburgh', 40.443322, -79.943583, 'urban', 'private_nonprofit', 'https://www.cmu.edu', 'https://www.cmu.edu/admission', 211440, 7728, 22.2, 6, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('535a410f-57a2-5cb6-a954-de668bd5fc38', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'cds', 'Carnegie Mellon Common Data Set 2025-26', 'https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds_2025_full_pdf.pdf', '2025-2026', '2026-10-20'),
  ('23833da6-b56d-5ed0-9895-a820c9b93118', '1ad8cde2-72f3-52c3-b937-9ec013f2677d', 'admissions_site', 'CMU — Application Plans & Deadlines', 'https://www.cmu.edu/admission/admission/application-plans-deadlines', null, '2026-10-20'),
@@ -4128,8 +4128,8 @@ select '9278dac9-8285-5b9b-9ec7-2601048bfe53'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Colorado State University (Fort Collins) ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f3343b57-3aa7-595f-a784-3933c99db9d2', 'colorado-state', 'Colorado State University (Fort Collins)', 'US', 'CO', 'Fort Collins', 40.574805, -105.080732, 'urban', 'public', 'https://www.colostate.edu/', 'https://admissions.colostate.edu/', 126818, 26490, 2.48, 17, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('f3343b57-3aa7-595f-a784-3933c99db9d2', 'colorado-state', 'Colorado State University (Fort Collins)', 'Colorado State', 'US', 'CO', 'Fort Collins', 40.574805, -105.080732, 'urban', 'public', 'https://www.colostate.edu/', 'https://admissions.colostate.edu/', 126818, 26490, 2.48, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b128fa85-c05b-5697-9d66-e313e267aee7', 'f3343b57-3aa7-595f-a784-3933c99db9d2', 'cds', 'Colorado State University Common Data Set FY2026 (2025-2026 edition, March 2026) (PDF)', 'https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/03/CSU_CDS_FY2026_Access.pdf', '2025-2026', '2026-10-26'),
  ('7672c3a8-f09a-5a51-9287-5c8573d9018d', 'f3343b57-3aa7-595f-a784-3933c99db9d2', 'admissions_site', 'CSU Admissions - International freshman application guide (deadlines, fee, documents)', 'https://admissions.colostate.edu/apply/international-freshmen/', null, '2026-10-26'),
@@ -4201,7 +4201,7 @@ select 'f3343b57-3aa7-595f-a784-3933c99db9d2'::uuid, v.* from (values
 
 -- ── Columbia College Chicago ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9aede4fb-48fd-5348-bd08-f3f35b3b44a2', 'columbia-college-chicago', 'Columbia College Chicago', 'Columbia Chicago', 'US', 'IL', 'Chicago', 41.874261, -87.624667, 'urban', 'private_nonprofit', 'https://www.colum.edu', 'https://www.colum.edu/admissions', 144281, 4346, 5.09, 15, 'semester');
+ ('9aede4fb-48fd-5348-bd08-f3f35b3b44a2', 'columbia-college-chicago', 'Columbia College Chicago', 'Columbia College Chicago', 'US', 'IL', 'Chicago', 41.874261, -87.624667, 'urban', 'private_nonprofit', 'https://www.colum.edu', 'https://www.colum.edu/admissions', 144281, 4346, 5.09, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('15d6bff4-edba-572d-8905-e80666fd0d97', '9aede4fb-48fd-5348-bd08-f3f35b3b44a2', 'cds', 'Columbia College Chicago Common Data Set 2025-2026 (PDF)', 'https://about.colum.edu/effectiveness/columbia_college_chicago_common_dataset_2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('0f3d94f1-b8f9-5fe9-b419-ccae1dc0bd9a', '9aede4fb-48fd-5348-bd08-f3f35b3b44a2', 'ipeds', 'IPEDS / College Navigator - Columbia College Chicago', 'https://nces.ed.gov/collegenavigator/?id=144281', '2024-2025', '2026-10-26'),
@@ -4276,8 +4276,8 @@ select '9aede4fb-48fd-5348-bd08-f3f35b3b44a2'::uuid, 'direct_major', false, v.* 
  ('c7119f97-d0a8-5c31-994c-4becfffe6093'::uuid, 'Arts and Entertainment Management (BA)', 'business', 'BA applicants submit a roughly 500-word essay on why they want to study business and management in the arts and media; a portfolio is not required.')) v;
 
 -- ── Columbia University in the City of New York ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e4af0c12-9413-5271-b664-f57c4f9f7d75', 'columbia', 'Columbia University in the City of New York', 'US', 'NY', 'New York', 40.808286, -73.961885, 'urban', 'private_nonprofit', 'https://www.columbia.edu/', 'https://www.columbia.edu/content/admissions', 190150, 8973, 19.73, 6, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('e4af0c12-9413-5271-b664-f57c4f9f7d75', 'columbia', 'Columbia University in the City of New York', 'Columbia', 'US', 'NY', 'New York', 40.808286, -73.961885, 'urban', 'private_nonprofit', 'https://www.columbia.edu/', 'https://www.columbia.edu/content/admissions', 190150, 8973, 19.73, 6, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b63b5d5a-228e-545a-b8fb-56d7ba1bc373', 'e4af0c12-9413-5271-b664-f57c4f9f7d75', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=190150', '2023-2024', '2026-10-21'),
  ('cd9b8ef2-a57c-5bfd-b37d-14031a0c6ce0', 'e4af0c12-9413-5271-b664-f57c4f9f7d75', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?190150', null, '2026-10-21'),
@@ -4415,7 +4415,7 @@ select '7c466251-3d10-59ed-a023-73ba15a4957c'::uuid, 'D', v.* from (values
 
 -- ── Commonwealth University of Pennsylvania ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('852a57a1-f08c-52b4-94e1-bae80989c193', 'commonwealth-pa', 'Commonwealth University of Pennsylvania', 'Commonwealth U', 'US', 'PA', 'Bloomsburg', 41.00782, -76.447844, 'rural', 'public', 'https://www.commonwealthu.edu', 'https://www.commonwealthu.edu/admissions', 498562, 9488, 0.61, 19.7, 'semester');
+ ('852a57a1-f08c-52b4-94e1-bae80989c193', 'commonwealth-pa', 'Commonwealth University of Pennsylvania', 'Commonwealth University', 'US', 'PA', 'Bloomsburg', 41.00782, -76.447844, 'rural', 'public', 'https://www.commonwealthu.edu', 'https://www.commonwealthu.edu/admissions', 498562, 9488, 0.61, 19.7, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7e67abc6-d0fc-5a20-9b1b-2bda6b8d0558', '852a57a1-f08c-52b4-94e1-bae80989c193', 'cds', 'Commonwealth University of Pennsylvania Common Data Set 2025-2026 (web page)', 'https://www.commonwealthu.edu/offices-directory/institutional-effectiveness/institutional-research/common-data-set-2025-2026', '2025-2026', '2026-10-26'),
  ('b84a71b8-18e0-55a2-af99-263d9424f599', '852a57a1-f08c-52b4-94e1-bae80989c193', 'admissions_site', 'Commonwealth University - International Students (how to apply, deadlines, English proficiency)', 'https://www.commonwealthu.edu/admissions/how-to-apply/international-students', null, '2026-10-26'),
@@ -4630,7 +4630,7 @@ select '74c3f3c1-3a51-53c9-aead-ee064957e7aa'::uuid, v.* from (values
 
 -- ── Colorado State University Pueblo ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c94c3281-178d-540d-badc-47c8d10093d4', 'csu-pueblo', 'Colorado State University Pueblo', 'CSU Pueblo', 'US', 'CO', 'Pueblo', 38.30859, -104.579033, 'urban', 'public', 'https://www.csupueblo.edu/', 'https://www.csupueblo.edu/admissions/index.html', 128106, 5086, 1.22, 16, 'semester');
+ ('c94c3281-178d-540d-badc-47c8d10093d4', 'csu-pueblo', 'Colorado State University Pueblo', 'Colorado State Pueblo', 'US', 'CO', 'Pueblo', 38.30859, -104.579033, 'urban', 'public', 'https://www.csupueblo.edu/', 'https://www.csupueblo.edu/admissions/index.html', 128106, 5086, 1.22, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3610b865-78ea-5ec8-b702-b3a3d23245c1', 'c94c3281-178d-540d-badc-47c8d10093d4', 'ipeds', 'College Navigator (IPEDS fall 2024 admissions, enrollment, test scores, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=128106', '2024-2025', '2026-10-26'),
  ('d41e1528-f175-5aa0-84fe-af8643b45ab0', 'c94c3281-178d-540d-badc-47c8d10093d4', 'ipeds', 'IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=128106&sex=99', '2024-2025', '2026-10-26'),
@@ -4681,7 +4681,7 @@ select 'c94c3281-178d-540d-badc-47c8d10093d4'::uuid, 'D', v.* from (values
 
 -- ── California State University, Northridge ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9ec622d0-627a-5f9a-ae04-95aa87aba48e', 'csun', 'California State University, Northridge', 'CSUN', 'US', 'CA', 'Northridge', 34.240126, -118.529319, 'urban', 'public', 'https://www.csun.edu', 'https://www.csun.edu/admissions-financial-aid', 110608, 32499, 2.92, 25, 'semester');
+ ('9ec622d0-627a-5f9a-ae04-95aa87aba48e', 'csun', 'California State University, Northridge', 'Cal State Northridge', 'US', 'CA', 'Northridge', 34.240126, -118.529319, 'urban', 'public', 'https://www.csun.edu', 'https://www.csun.edu/admissions-financial-aid', 110608, 32499, 2.92, 25, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('580222e7-6156-5c15-addc-820c19222352', '9ec622d0-627a-5f9a-ae04-95aa87aba48e', 'cds', 'CSUN Common Data Set (PDF listed as ''CDS 2025-2026''; its template and data are labelled 2024-2025, fall 2024 first-year class)', 'https://live-csu-northridge.pantheonsite.io/sites/default/files/2026-04/CDS%202025%20v2.pdf', '2024-2025', '2026-10-26'),
  ('8e8a900f-7b44-55ab-8da4-4d8fbbb0af8b', '9ec622d0-627a-5f9a-ae04-95aa87aba48e', 'ipeds', 'IPEDS via NCES College Navigator: student-to-faculty ratio and calendar (IC2024), fall 2024 admissions summary', 'https://nces.ed.gov/collegenavigator/?id=110608', '2024-2025', '2026-10-26'),
@@ -4731,8 +4731,8 @@ select '9ec622d0-627a-5f9a-ae04-95aa87aba48e'::uuid, 'arts_design', 'direct_majo
  ('7773dcb9-8b5a-502f-ad70-c5f7343702e9'::uuid, 'Cinema and Television Arts: Film Production and Television Production options', 'Impacted options; applications close Jan 31, 2027 for fall 2027.')) v;
 
 -- ── University of Colorado Boulder ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('91cd7fd8-46d3-565e-ad53-48ad2dbb4885', 'cu-boulder', 'University of Colorado Boulder', 'US', 'CO', 'Boulder', 40.008781, -105.270823, 'urban', 'public', 'https://www.colorado.edu/', 'https://www.colorado.edu/admissions', 126614, 31939, 2.56, 19);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('91cd7fd8-46d3-565e-ad53-48ad2dbb4885', 'cu-boulder', 'University of Colorado Boulder', 'CU Boulder', 'US', 'CO', 'Boulder', 40.008781, -105.270823, 'urban', 'public', 'https://www.colorado.edu/', 'https://www.colorado.edu/admissions', 126614, 31939, 2.56, 19);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b63e52cf-18e8-5c38-bc48-7a3f1f489521', '91cd7fd8-46d3-565e-ad53-48ad2dbb4885', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=126614', '2023-2024', '2026-10-21'),
  ('4d149465-725b-526c-9ca4-ade1f1a71929', '91cd7fd8-46d3-565e-ad53-48ad2dbb4885', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?126614', null, '2026-10-21'),
@@ -4976,7 +4976,7 @@ select '17beae99-fcfb-53dd-b194-b252dde85241'::uuid, 'D', v.* from (values
 
 -- ── College of Staten Island, CUNY ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('d885527f-0a9b-5759-bdcc-91faf00629a7', 'cuny-staten-island', 'College of Staten Island, CUNY', 'CSI', 'US', 'NY', 'Staten Island', 40.601831, -74.14849, 'urban', 'public', 'https://www.csi.cuny.edu/', 'https://www.csi.cuny.edu/admissions', 190558, 10051, 2.09, 17, 'semester');
+ ('d885527f-0a9b-5759-bdcc-91faf00629a7', 'cuny-staten-island', 'College of Staten Island, CUNY', 'College of Staten Island', 'US', 'NY', 'Staten Island', 40.601831, -74.14849, 'urban', 'public', 'https://www.csi.cuny.edu/', 'https://www.csi.cuny.edu/admissions', 190558, 10051, 2.09, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b84cd77a-4566-5fea-b951-30863ad41b41', 'd885527f-0a9b-5759-bdcc-91faf00629a7', 'ipeds', 'College Navigator (IPEDS fall 2024 admissions, enrollment, SAT, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=190558', '2024-2025', '2026-10-26'),
  ('4ffe9571-6cd8-54be-9279-ebf43bcdf803', 'd885527f-0a9b-5759-bdcc-91faf00629a7', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=190558', '2023-2024', '2026-10-26'),
@@ -5037,7 +5037,7 @@ select 'd885527f-0a9b-5759-bdcc-91faf00629a7'::uuid, 'D', v.* from (values
 
 -- ── Dallas Baptist University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('0c99222f-7d00-530a-a8b3-5f60aa695cce', 'dallas-baptist', 'Dallas Baptist University', 'DBU', 'US', 'TX', 'Dallas', 32.710017, -96.947006, 'urban', 'private_nonprofit', 'https://www.dbu.edu', 'https://www.dbu.edu/admissions/', 224226, 2785, 6.75, 16, 'semester');
+ ('0c99222f-7d00-530a-a8b3-5f60aa695cce', 'dallas-baptist', 'Dallas Baptist University', 'Dallas Baptist', 'US', 'TX', 'Dallas', 32.710017, -96.947006, 'urban', 'private_nonprofit', 'https://www.dbu.edu', 'https://www.dbu.edu/admissions/', 224226, 2785, 6.75, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('90ee5aae-9eca-5899-8a7b-1b6edc0edfdb', '0c99222f-7d00-530a-a8b3-5f60aa695cce', 'ipeds', 'IPEDS College Navigator - Dallas Baptist University (fall 2024 admissions, enrollment, test scores)', 'https://nces.ed.gov/collegenavigator/?id=224226', '2024-2025', '2026-10-26'),
  ('5db49b02-9815-57b6-a068-b933e6cdffd9', '0c99222f-7d00-530a-a8b3-5f60aa695cce', 'financial_aid_site', 'DBU Office of Financial Aid - 2026/27 Undergraduate Full-Time Cost of Attendance (PDF)', 'https://www.dbu.edu/cashier/_documents/federal-cost-of-attendance-disclosures-26-27.pdf', null, '2026-10-26'),
@@ -5491,7 +5491,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── East Carolina University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('b77cf73f-067f-55a3-a9b8-84bbaca99ff0', 'east-carolina', 'East Carolina University', 'ECU', 'US', 'NC', 'Greenville', 35.607186, -77.368291, 'urban', 'public', 'https://www.ecu.edu', 'https://admissions.ecu.edu', 198464, 21445, 0.69, 17, 'semester');
+ ('b77cf73f-067f-55a3-a9b8-84bbaca99ff0', 'east-carolina', 'East Carolina University', 'East Carolina', 'US', 'NC', 'Greenville', 35.607186, -77.368291, 'urban', 'public', 'https://www.ecu.edu', 'https://admissions.ecu.edu', 198464, 21445, 0.69, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('679f1dd2-17ce-58a5-bb8f-5598ec239a40', 'b77cf73f-067f-55a3-a9b8-84bbaca99ff0', 'cds', 'East Carolina University Common Data Set 2024-2025 (PDF)', 'https://ipar.ecu.edu/wp-content/pv-uploads/sites/130/CDS_2024-2025_Redacted.pdf', '2024-2025', '2026-10-26'),
  ('51b71bc5-fd4a-5ee3-a568-3307b135661e', 'b77cf73f-067f-55a3-a9b8-84bbaca99ff0', 'ipeds', 'IPEDS via College Navigator (undergraduate enrollment)', 'https://nces.ed.gov/collegenavigator/?id=198464', '2024-2025', '2026-10-26'),
@@ -5546,7 +5546,7 @@ select 'b77cf73f-067f-55a3-a9b8-84bbaca99ff0'::uuid, 'D', v.* from (values
 
 -- ── East Tennessee State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('30b8d056-c77f-5f72-8c70-f47ccc203ee1', 'east-tennessee-state', 'East Tennessee State University', 'ETSU', 'US', 'TN', 'Johnson City', 36.301643, -82.366954, 'urban', 'public', 'https://www.etsu.edu', 'https://www.etsu.edu/admissions/', 220075, 10829, 1.55, 15);
+ ('30b8d056-c77f-5f72-8c70-f47ccc203ee1', 'east-tennessee-state', 'East Tennessee State University', 'East Tennessee State', 'US', 'TN', 'Johnson City', 36.301643, -82.366954, 'urban', 'public', 'https://www.etsu.edu', 'https://www.etsu.edu/admissions/', 220075, 10829, 1.55, 15);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3734b3f5-b6d0-5837-8bbc-0ecde4a47024', '30b8d056-c77f-5f72-8c70-f47ccc203ee1', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator also shows fall 2024', 'https://nces.ed.gov/collegenavigator/?id=220075', '2023-2024', '2026-10-26'),
  ('21f8885e-fba9-594f-b1c1-36e06d519f12', '30b8d056-c77f-5f72-8c70-f47ccc203ee1', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=220075', '2023-2024', '2026-10-26'),
@@ -5687,7 +5687,7 @@ select '03788304-1a02-55e9-929c-46778bc8c026'::uuid, 'D', v.* from (values
 
 -- ── Eastern Illinois University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('37e3a003-e2a7-59b9-9746-83376dac260e', 'eastern-illinois', 'Eastern Illinois University', 'EIU', 'US', 'IL', 'Charleston', 39.479843, -88.175658, 'rural', 'public', 'https://www.eiu.edu', 'https://www.eiu.edu/admissions/', 144892, 4058, 2.98, 14, 'semester');
+ ('37e3a003-e2a7-59b9-9746-83376dac260e', 'eastern-illinois', 'Eastern Illinois University', 'Eastern Illinois', 'US', 'IL', 'Charleston', 39.479843, -88.175658, 'rural', 'public', 'https://www.eiu.edu', 'https://www.eiu.edu/admissions/', 144892, 4058, 2.98, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('114767d2-c125-51ab-b4c8-3daa1565784c', '37e3a003-e2a7-59b9-9746-83376dac260e', 'other', 'EIU Institutional Research - 2025 Key Publication Facts (PDF; first-time freshmen applications/acceptances/enrollments, fall 2025 profile)', 'https://www.eiu.edu/ir/docs/2025_EIU_Key_Publication_Facts.pdf', '2025-2026', '2026-10-26'),
  ('2f72086d-fb7e-59e1-8d34-82c7602a3f4d', '37e3a003-e2a7-59b9-9746-83376dac260e', 'ipeds', 'IPEDS via College Navigator - Eastern Illinois University (fall 2024 SAT percentiles, 2024-25 cost)', 'https://nces.ed.gov/collegenavigator/?id=144892', '2024-2025', '2026-10-26'),
@@ -5747,7 +5747,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Eastern Kentucky University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('b256e2a3-2fd9-577c-9a7f-428106a5c807', 'eastern-kentucky', 'Eastern Kentucky University', 'EKU', 'US', 'KY', 'Richmond', 37.740845, -84.300796, 'rural', 'public', 'https://www.eku.edu', 'https://www.eku.edu/admissions/', 156620, 13448, 0.67, 17, 'semester');
+ ('b256e2a3-2fd9-577c-9a7f-428106a5c807', 'eastern-kentucky', 'Eastern Kentucky University', 'Eastern Kentucky', 'US', 'KY', 'Richmond', 37.740845, -84.300796, 'rural', 'public', 'https://www.eku.edu', 'https://www.eku.edu/admissions/', 156620, 13448, 0.67, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('79a21866-2a27-55ac-bf5c-a3c4cb7f41fc', 'b256e2a3-2fd9-577c-9a7f-428106a5c807', 'ipeds', 'College Navigator (IPEDS fall 2024 admissions, enrollment, test scores, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=156620', '2024-2025', '2026-10-26'),
  ('fedba8a0-fb85-52b0-8937-17a544fc6112', 'b256e2a3-2fd9-577c-9a7f-428106a5c807', 'ipeds', 'IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=156620&sex=99', '2024-2025', '2026-10-26'),
@@ -5799,7 +5799,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Eastern Michigan University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('dd7d3e1b-ab8f-5e06-bf19-6cfb443a96b0', 'eastern-michigan', 'Eastern Michigan University', 'EMU', 'US', 'MI', 'Ypsilanti', 42.251675, -83.627443, 'suburban', 'public', 'https://www.emich.edu', 'https://www.emich.edu/admissions', 169798, 10470, 4.96, 14, 'semester');
+ ('dd7d3e1b-ab8f-5e06-bf19-6cfb443a96b0', 'eastern-michigan', 'Eastern Michigan University', 'Eastern Michigan', 'US', 'MI', 'Ypsilanti', 42.251675, -83.627443, 'suburban', 'public', 'https://www.emich.edu', 'https://www.emich.edu/admissions', 169798, 10470, 4.96, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1f0ffbd9-8447-5b04-b5c3-c48aa00ad5aa', 'dd7d3e1b-ab8f-5e06-bf19-6cfb443a96b0', 'ipeds', 'College Navigator - Eastern Michigan University (IPEDS fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=169798', '2024-2025', '2026-10-26'),
  ('17932572-8fea-5a13-937a-80f176042430', 'dd7d3e1b-ab8f-5e06-bf19-6cfb443a96b0', 'ipeds', 'IPEDS ADM2024 applicants, admits and enrollees (Urban Institute Education Data Portal mirror)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=169798', '2024-2025', '2026-10-26'),
@@ -5856,7 +5856,7 @@ select 'dd7d3e1b-ab8f-5e06-bf19-6cfb443a96b0'::uuid, 'D', v.* from (values
 
 -- ── Eastern University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7388bb03-f710-5100-b8e2-f9995049be53', 'eastern-university', 'Eastern University', 'Eastern', 'US', 'PA', 'St. Davids', 40.050448, -75.370316, 'suburban', 'private_nonprofit', 'https://www.eastern.edu', 'https://www.eastern.edu/admissions-financial-aid/undergraduate-admissions/apply-eastern/application-steps-international', 212133, 2500, 3.76, 21, 'semester');
+ ('7388bb03-f710-5100-b8e2-f9995049be53', 'eastern-university', 'Eastern University', 'Eastern University', 'US', 'PA', 'St. Davids', 40.050448, -75.370316, 'suburban', 'private_nonprofit', 'https://www.eastern.edu', 'https://www.eastern.edu/admissions-financial-aid/undergraduate-admissions/apply-eastern/application-steps-international', 212133, 2500, 3.76, 21, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('2213c44e-8981-5aa6-b683-217927c0689e', '7388bb03-f710-5100-b8e2-f9995049be53', 'cds', 'Eastern University Common Data Set 2024-2025 (PDF)', 'https://www.eastern.edu/sites/default/files/inline-files/CDS_2024_2025.pdf', '2024-2025', '2026-10-26'),
  ('f4698684-3539-55f8-8698-bb0d73cf3cab', '7388bb03-f710-5100-b8e2-f9995049be53', 'ipeds', 'College Navigator - Eastern University (enrollment, student-faculty ratio, test scores note)', 'https://nces.ed.gov/collegenavigator/?id=212133', '2024-2025', '2026-10-26'),
@@ -6345,7 +6345,7 @@ select '0e4c142b-41c5-5e3a-843a-9b8aa1bde7bc'::uuid, 'D', v.* from (values
 
 -- ── Florida Gulf Coast University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('99030f47-acca-5a5f-a607-18966c80d0cc', 'fgcu', 'Florida Gulf Coast University', 'FGCU', 'US', 'FL', 'Fort Myers', 26.463638, -81.7726, 'suburban', 'public', 'https://www.fgcu.edu', 'https://www.fgcu.edu/admissionsandaid/undergraduateadmissions/', 433660, 14434, 2.4, 20, 'semester');
+ ('99030f47-acca-5a5f-a607-18966c80d0cc', 'fgcu', 'Florida Gulf Coast University', 'Florida Gulf Coast', 'US', 'FL', 'Fort Myers', 26.463638, -81.7726, 'suburban', 'public', 'https://www.fgcu.edu', 'https://www.fgcu.edu/admissionsandaid/undergraduateadmissions/', 433660, 14434, 2.4, 20, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7da6a947-d840-533a-b55a-f05e9aeefd6c', '99030f47-acca-5a5f-a607-18966c80d0cc', 'cds', 'Florida Gulf Coast University Common Data Set 2024-2025 (PDF; the 2025-26 edition is not posted)', 'https://www.fgcu.edu/planning/institutionalresearch/files/cds-2024-2025-ada.pdf', '2024-2025', '2026-10-26'),
  ('896e2772-2a18-5cd8-8d76-87789a7be545', '99030f47-acca-5a5f-a607-18966c80d0cc', 'ipeds', 'IPEDS via NCES College Navigator - Florida Gulf Coast University (student-to-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=433660', '2024-2025', '2026-10-26'),
@@ -6522,7 +6522,7 @@ insert into institution_tiers (institution_id, category_key, tier_code, rational
 
 -- ── Florida Atlantic University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('cb7a90c7-d930-51aa-a6df-5f58830558c6', 'florida-atlantic', 'Florida Atlantic University', 'FAU', 'US', 'FL', 'Boca Raton', 26.372421, -80.102978, 'urban', 'public', 'https://www.fau.edu', 'https://www.fau.edu/admissions/', 133669, 25626, 2.83, 24, 'semester');
+ ('cb7a90c7-d930-51aa-a6df-5f58830558c6', 'florida-atlantic', 'Florida Atlantic University', 'Florida Atlantic', 'US', 'FL', 'Boca Raton', 26.372421, -80.102978, 'urban', 'public', 'https://www.fau.edu', 'https://www.fau.edu/admissions/', 133669, 25626, 2.83, 24, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('a9068e38-1935-5a3b-9c5e-82aeab84a0d8', 'cb7a90c7-d930-51aa-a6df-5f58830558c6', 'cds', 'Florida Atlantic University Common Data Set 2025-2026 (PDF)', 'https://www.fau.edu/iea/documents/pdf/cds/cds-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('ec66168f-17f9-5b83-a359-d37413f332e6', 'cb7a90c7-d930-51aa-a6df-5f58830558c6', 'ipeds', 'IPEDS / College Navigator - Florida Atlantic University (student-to-faculty ratio, fall 2024)', 'https://nces.ed.gov/collegenavigator/?id=133669', '2024-2025', '2026-10-26'),
@@ -6584,8 +6584,8 @@ select 'cb7a90c7-d930-51aa-a6df-5f58830558c6'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Florida State University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e255622a-e1b6-59ed-af98-7513808cd6de', 'florida-state', 'Florida State University', 'US', 'FL', 'Tallahassee', 30.443147, -84.295064, 'urban', 'public', 'https://www.fsu.edu/', 'https://admissions.fsu.edu/', 134097, 32212, 1.93, 17, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('e255622a-e1b6-59ed-af98-7513808cd6de', 'florida-state', 'Florida State University', 'Florida State', 'US', 'FL', 'Tallahassee', 30.443147, -84.295064, 'urban', 'public', 'https://www.fsu.edu/', 'https://admissions.fsu.edu/', 134097, 32212, 1.93, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b1caa561-6515-5abd-b65d-1bf76e4c0253', 'e255622a-e1b6-59ed-af98-7513808cd6de', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=134097', '2023-2024', '2026-10-21'),
  ('fb864f6a-944f-534d-b7c0-218f01d38e22', 'e255622a-e1b6-59ed-af98-7513808cd6de', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?134097', null, '2026-10-21'),
@@ -6721,7 +6721,7 @@ select '896861bc-d8aa-5153-8b28-3fbed6e8adae'::uuid, v.* from (values
 
 -- ── Fort Hays State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6956975b-d504-5733-8283-1364b242dbf1', 'fort-hays-state', 'Fort Hays State University', 'FHSU', 'US', 'KS', 'Hays', 38.872156, -99.342503, 'rural', 'public', 'https://www.fhsu.edu', 'https://www.fhsu.edu/admissions/', 155061, 10172, 2.09, 15, 'semester');
+ ('6956975b-d504-5733-8283-1364b242dbf1', 'fort-hays-state', 'Fort Hays State University', 'Fort Hays State', 'US', 'KS', 'Hays', 38.872156, -99.342503, 'rural', 'public', 'https://www.fhsu.edu', 'https://www.fhsu.edu/admissions/', 155061, 10172, 2.09, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b874e7a4-2327-5d51-9754-004c0d64dc77', '6956975b-d504-5733-8283-1364b242dbf1', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
  ('26c659d9-99d6-5362-bb95-1318e0a2314c', '6956975b-d504-5733-8283-1364b242dbf1', 'ipeds', 'College Navigator - Fort Hays State University (fall 2024 admissions, enrollment, student-to-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=155061', '2024-2025', '2026-10-26'),
@@ -7210,7 +7210,7 @@ select 'c6d4cc04-039e-5c41-85cb-83ece0f9a053'::uuid, v.* from (values
 
 -- ── Georgia Gwinnett College ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9c980e12-e2dc-51a8-90ec-e9f0c6ae2086', 'georgia-gwinnett', 'Georgia Gwinnett College', 'GGC', 'US', 'GA', 'Lawrenceville', 33.979409, -84.00459, 'suburban', 'public', 'https://www.ggc.edu', 'https://www.ggc.edu/admissions', 447689, 12230, 3.93, 19, 'semester');
+ ('9c980e12-e2dc-51a8-90ec-e9f0c6ae2086', 'georgia-gwinnett', 'Georgia Gwinnett College', 'Georgia Gwinnett', 'US', 'GA', 'Lawrenceville', 33.979409, -84.00459, 'suburban', 'public', 'https://www.ggc.edu', 'https://www.ggc.edu/admissions', 447689, 12230, 3.93, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f63007b3-a270-5369-8567-96cf00be2271', '9c980e12-e2dc-51a8-90ec-e9f0c6ae2086', 'ipeds', 'IPEDS / College Navigator - Georgia Gwinnett College (fall 2024 admissions, enrollment, campus setting: Suburb: Large)', 'https://nces.ed.gov/collegenavigator/?id=447689', '2024-2025', '2026-10-26'),
  ('27e02302-3620-5d2a-a92b-26e88886dc62', '9c980e12-e2dc-51a8-90ec-e9f0c6ae2086', 'other', 'NCES IPEDS fall 2024 admissions counts and nonresident-alien undergraduates (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=447689', '2024-2025', '2026-10-26'),
@@ -7253,8 +7253,8 @@ select '9c980e12-e2dc-51a8-90ec-e9f0c6ae2086'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Georgia Southern University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8d19f779-54e0-5fd9-9b70-ec4185dacdcf', 'georgia-southern', 'Georgia Southern University', 'US', 'GA', 'Statesboro', 32.426153, -81.784045, 'rural', 'public', 'https://www.georgiasouthern.edu', 'https://admissions.georgiasouthern.edu/', 139931, 23541, 1.39, 25, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('8d19f779-54e0-5fd9-9b70-ec4185dacdcf', 'georgia-southern', 'Georgia Southern University', 'Georgia Southern', 'US', 'GA', 'Statesboro', 32.426153, -81.784045, 'rural', 'public', 'https://www.georgiasouthern.edu', 'https://admissions.georgiasouthern.edu/', 139931, 23541, 1.39, 25, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3d5e0139-ff76-5bce-8f82-59b69b6f8721', '8d19f779-54e0-5fd9-9b70-ec4185dacdcf', 'ipeds', 'IPEDS / College Navigator - Georgia Southern University (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=139931', '2024-2025', '2026-10-26'),
  ('4ec4e6b0-b267-539e-805b-7c7eff3556a1', '8d19f779-54e0-5fd9-9b70-ec4185dacdcf', 'other', 'NCES IPEDS fall 2024 admissions counts and nonresident-alien undergraduates (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=139931', '2024-2025', '2026-10-26'),
@@ -7308,7 +7308,7 @@ select '8d19f779-54e0-5fd9-9b70-ec4185dacdcf'::uuid, 'D', v.* from (values
 
 -- ── Georgia Southwestern State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('b61d0a90-cb73-50f3-a9b9-d3b98291c91e', 'georgia-southwestern', 'Georgia Southwestern State University', 'GSW', 'US', 'GA', 'Americus', 32.054662, -84.217738, 'rural', 'public', 'https://gsw.edu', 'https://gsw.edu/admissions/undergraduate/international', 139764, 3024, 4.79, 18, 'semester');
+ ('b61d0a90-cb73-50f3-a9b9-d3b98291c91e', 'georgia-southwestern', 'Georgia Southwestern State University', 'Georgia Southwestern', 'US', 'GA', 'Americus', 32.054662, -84.217738, 'rural', 'public', 'https://gsw.edu', 'https://gsw.edu/admissions/undergraduate/international', 139764, 3024, 4.79, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('a8f09e35-33f8-5607-999e-53e224e4998f', 'b61d0a90-cb73-50f3-a9b9-d3b98291c91e', 'ipeds', 'IPEDS / College Navigator - Georgia Southwestern State University (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=139764', '2024-2025', '2026-10-26'),
  ('df750bf3-059c-5b6a-bc4f-eb70253fafd0', 'b61d0a90-cb73-50f3-a9b9-d3b98291c91e', 'other', 'NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=139764', '2024-2025', '2026-10-26'),
@@ -7360,7 +7360,7 @@ select 'b61d0a90-cb73-50f3-a9b9-d3b98291c91e'::uuid, 'D', v.* from (values
 
 -- ── Grand Valley State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9bd85eba-6736-55de-ba4f-0bfbfa121f33', 'grand-valley', 'Grand Valley State University', 'GVSU', 'US', 'MI', 'Allendale', 42.963001, -85.889826, 'rural', 'public', 'https://www.gvsu.edu', 'https://www.gvsu.edu/admissions/', 170082, 19154, 1.26, 14, 'semester');
+ ('9bd85eba-6736-55de-ba4f-0bfbfa121f33', 'grand-valley', 'Grand Valley State University', 'Grand Valley State', 'US', 'MI', 'Allendale', 42.963001, -85.889826, 'rural', 'public', 'https://www.gvsu.edu', 'https://www.gvsu.edu/admissions/', 170082, 19154, 1.26, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6955f0e9-aa8d-5400-b8b1-74e69adcabc0', '9bd85eba-6736-55de-ba4f-0bfbfa121f33', 'cds', 'Grand Valley State University Common Data Set 2025-2026 (XLSX)', 'https://www.gvsu.edu/cms4/asset/EFAB4AD2-A926-8D16-A5685AB71E0C7DC3/cds_2025-2026.xlsx', '2025-2026', '2026-10-26'),
  ('eabb6f3c-37b6-5a2e-96a6-dce51c043db3', '9bd85eba-6736-55de-ba4f-0bfbfa121f33', 'admissions_site', 'GVSU - International Application (undergraduate deadlines, English proficiency)', 'https://www.gvsu.edu/admissions/international-application-14', null, '2026-10-26'),
@@ -7436,8 +7436,8 @@ select '9bd85eba-6736-55de-ba4f-0bfbfa121f33'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── George Washington University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9c86dfbf-11f2-574a-82ad-4aca309eb19d', 'gwu', 'George Washington University', 'US', 'DC', 'Washington', 38.89923, -77.048363, 'urban', 'private_nonprofit', 'https://www.gwu.edu/', 'https://www.gwu.edu/admissions-aid', 131469, 11182, 7.19, 13, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('9c86dfbf-11f2-574a-82ad-4aca309eb19d', 'gwu', 'George Washington University', 'George Washington', 'US', 'DC', 'Washington', 38.89923, -77.048363, 'urban', 'private_nonprofit', 'https://www.gwu.edu/', 'https://www.gwu.edu/admissions-aid', 131469, 11182, 7.19, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f59b495e-1718-57e8-b414-9562e1e7106b', '9c86dfbf-11f2-574a-82ad-4aca309eb19d', 'cds', 'George Washington University Common Data Set 2025-2026 (PDF)', 'https://irp.gwu.edu/sites/g/files/zaxdzs6056/files/2026-08/CDS-2025-2026.pdf', '2025-2026', '2026-10-22'),
  ('b22e6b4b-f5c0-5167-8eb2-dcedecd7e11d', '9c86dfbf-11f2-574a-82ad-4aca309eb19d', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=131469', '2023-2024', '2026-10-21'),
@@ -7774,7 +7774,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Hawaii Pacific University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('4c2e2e25-41ca-544c-95a4-53d4e6f86916', 'hawaii-pacific', 'Hawaii Pacific University', 'HPU', 'US', 'HI', 'Honolulu', 21.310306, -157.859645, 'urban', 'private_nonprofit', 'https://www.hpu.edu', 'https://www.hpu.edu/admissions/', 141644, 3533, 9.68, 15, 'semester');
+ ('4c2e2e25-41ca-544c-95a4-53d4e6f86916', 'hawaii-pacific', 'Hawaii Pacific University', 'Hawaii Pacific', 'US', 'HI', 'Honolulu', 21.310306, -157.859645, 'urban', 'private_nonprofit', 'https://www.hpu.edu', 'https://www.hpu.edu/admissions/', 141644, 3533, 9.68, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('47cc220b-ba7d-531b-8329-4d987e5d1c39', '4c2e2e25-41ca-544c-95a4-53d4e6f86916', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
  ('bb62c4d5-6bfc-51a2-b2f3-82c2e3c007e6', '4c2e2e25-41ca-544c-95a4-53d4e6f86916', 'ipeds', 'College Navigator - Hawaii Pacific University (fall 2024 admissions, enrollment, student-to-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=141644', '2024-2025', '2026-10-26'),
@@ -7925,7 +7925,7 @@ select 'acda72c5-7e79-50ed-bfd6-8d012ead41bc'::uuid, v.* from (values
 
 -- ── Houston Christian University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('b349dd4c-cf43-5e9f-830b-8f568ddcc644', 'houston-christian', 'Houston Christian University', 'HCU', 'US', 'TX', 'Houston', 29.693819, -95.515954, 'urban', 'private_nonprofit', 'https://hc.edu', 'https://hc.edu/admissions/', 225399, 3277, 4.36, 17, 'semester');
+ ('b349dd4c-cf43-5e9f-830b-8f568ddcc644', 'houston-christian', 'Houston Christian University', 'Houston Christian', 'US', 'TX', 'Houston', 29.693819, -95.515954, 'urban', 'private_nonprofit', 'https://hc.edu', 'https://hc.edu/admissions/', 225399, 3277, 4.36, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c0752305-fd48-535b-9dd4-4efa2786bc94', 'b349dd4c-cf43-5e9f-830b-8f568ddcc644', 'cds', 'Houston Christian University Common Data Set 2025-2026 (PDF)', 'https://hc.edu/publications/IRE/ire2526/HCU-CDS-2025-2026_PDF_Publish_07-17-2026.pdf', '2025-2026', '2026-10-26'),
  ('e472939f-c8d0-592e-985b-737ff7d3a529', 'b349dd4c-cf43-5e9f-830b-8f568ddcc644', 'ipeds', 'College Navigator - Houston Christian University (IPEDS, fall 2024 admissions)', 'https://nces.ed.gov/collegenavigator/?id=225399', '2024-2025', '2026-10-26'),
@@ -8003,7 +8003,7 @@ select 'b349dd4c-cf43-5e9f-830b-8f568ddcc644'::uuid, 'D', v.* from (values
 
 -- ── University of Idaho ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('2165a52e-5175-5979-99f5-529eb649c1f3', 'idaho', 'University of Idaho', 'U of I', 'US', 'ID', 'Moscow', 46.727406, -117.014167, 'rural', 'public', 'https://www.uidaho.edu', 'https://www.uidaho.edu/admissions', 142285, 9269, 4.3, 17, 'semester');
+ ('2165a52e-5175-5979-99f5-529eb649c1f3', 'idaho', 'University of Idaho', 'Idaho', 'US', 'ID', 'Moscow', 46.727406, -117.014167, 'rural', 'public', 'https://www.uidaho.edu', 'https://www.uidaho.edu/admissions', 142285, 9269, 4.3, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6bc45d9d-e963-527f-9227-a375a67376fd', '2165a52e-5175-5979-99f5-529eb649c1f3', 'cds', 'University of Idaho Common Data Set (latest posted: fall 2023 / 2023-2024) (PDF)', 'https://content-hub.uidaho.edu/api/public/content/bf62e21cc0114b06bed65dc2a5e6c633?v=aee281dc', '2023-2024', '2026-10-26'),
  ('9a1bd8c3-0a0d-5928-a727-110a65de0bd8', '2165a52e-5175-5979-99f5-529eb649c1f3', 'ipeds', 'IPEDS Admissions survey, fall 2024 entering class (ADM2024), as published in the Urban Institute Education Data Portal', 'https://nces.ed.gov/collegenavigator/?id=142285', '2024-2025', '2026-10-26'),
@@ -8194,7 +8194,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── University of the Incarnate Word ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3d7af03f-1881-5da3-8aed-79037d39e6a9', 'incarnate-word', 'University of the Incarnate Word', 'UIW', 'US', 'TX', 'San Antonio', 29.46708, -98.46583, 'urban', 'private_nonprofit', 'https://www.uiw.edu', 'https://www.uiw.edu/admissions/', 225627, 4638, 3.92, 12, 'semester');
+ ('3d7af03f-1881-5da3-8aed-79037d39e6a9', 'incarnate-word', 'University of the Incarnate Word', 'Incarnate Word', 'US', 'TX', 'San Antonio', 29.46708, -98.46583, 'urban', 'private_nonprofit', 'https://www.uiw.edu', 'https://www.uiw.edu/admissions/', 225627, 4638, 3.92, 12, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('162413c7-358e-57d9-933f-7d6d21d43573', '3d7af03f-1881-5da3-8aed-79037d39e6a9', 'cds', 'University of the Incarnate Word Common Data Set 2024-2025 (PDF)', 'https://my.uiw.edu/ir/_docs/cds-24-25.pdf', '2024-2025', '2026-10-26'),
  ('bfeb57cc-dcf0-576c-b078-a7a7140e94e5', '3d7af03f-1881-5da3-8aed-79037d39e6a9', 'admissions_site', 'UIW - Admissions requirements (freshman: test optional, apply by Nov 1, rolling)', 'https://www.uiw.edu/admissions/freshman-admissions/admission-to-uiw.html', null, '2026-10-26'),
@@ -8310,8 +8310,8 @@ select 'd38493d8-6926-5a58-8acd-9f39efe3e7bb'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Indiana University-Bloomington ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3a0e4180-56b3-5912-93c3-0d67ad9fa3aa', 'indiana', 'Indiana University-Bloomington', 'US', 'IN', 'Bloomington', 39.16609, -86.526559, 'urban', 'public', 'https://bloomington.iu.edu/', 'https://bloomington.iu.edu/admissions/', 151351, 37806, 4.54, 18, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('3a0e4180-56b3-5912-93c3-0d67ad9fa3aa', 'indiana', 'Indiana University-Bloomington', 'IU Bloomington', 'US', 'IN', 'Bloomington', 39.16609, -86.526559, 'urban', 'public', 'https://bloomington.iu.edu/', 'https://bloomington.iu.edu/admissions/', 151351, 37806, 4.54, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6e9f4924-3b5b-5ebf-a956-f46514fff937', '3a0e4180-56b3-5912-93c3-0d67ad9fa3aa', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=151351', '2023-2024', '2026-10-21'),
  ('6cd55e68-0862-5cda-be39-37583dc1bacb', '3a0e4180-56b3-5912-93c3-0d67ad9fa3aa', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?151351', null, '2026-10-21'),
@@ -8732,7 +8732,7 @@ insert into institution_tiers (institution_id, category_key, tier_code, rational
 
 -- ── Indiana University of Pennsylvania ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ea1ff3c2-ddbd-5efc-8e29-f860f850b8c3', 'iup', 'Indiana University of Pennsylvania', 'IUP', 'US', 'PA', 'Indiana', 40.617531, -79.159332, 'rural', 'public', 'https://www.iup.edu/', 'https://www.iup.edu/admissions/', 213020, 7425, 0.79, 18, 'semester');
+ ('ea1ff3c2-ddbd-5efc-8e29-f860f850b8c3', 'iup', 'Indiana University of Pennsylvania', 'IUP (Indiana, PA)', 'US', 'PA', 'Indiana', 40.617531, -79.159332, 'rural', 'public', 'https://www.iup.edu/', 'https://www.iup.edu/admissions/', 213020, 7425, 0.79, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('cda8af5f-169c-5c4a-9cae-b114defd8a51', 'ea1ff3c2-ddbd-5efc-8e29-f860f850b8c3', 'cds', 'IUP Common Data Set 2025-2026 (PDF; page headers still read 2024-2025, data are fall 2025)', 'https://www.iup.edu/planningandassessment/files/university_data/common_data_set/cds-2025-26-iup-for-web.pdf', '2025-2026', '2026-10-26'),
  ('ae1403da-eaa8-545d-9371-e48e67a8921e', 'ea1ff3c2-ddbd-5efc-8e29-f860f850b8c3', 'cds', 'IUP Common Data Set 2025-2026, part 2 (PDF)', 'https://www.iup.edu/planningandassessment/files/university_data/common_data_set/cds-2025-26-iup-for-web-2.pdf', '2025-2026', '2026-10-26'),
@@ -8849,7 +8849,7 @@ insert into institution_tiers (institution_id, category_key, tier_code, rational
 
 -- ── Jacksonville State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9e2085cf-76e3-54d0-8305-7adfe5d9c12f', 'jacksonville-state', 'Jacksonville State University', 'JSU', 'US', 'AL', 'Jacksonville', 33.822938, -85.765321, 'suburban', 'public', 'https://www.jsu.edu', 'https://www.jsu.edu/admissions/', 101480, 9028, 2.56, 19, 'semester');
+ ('9e2085cf-76e3-54d0-8305-7adfe5d9c12f', 'jacksonville-state', 'Jacksonville State University', 'Jacksonville State', 'US', 'AL', 'Jacksonville', 33.822938, -85.765321, 'suburban', 'public', 'https://www.jsu.edu', 'https://www.jsu.edu/admissions/', 101480, 9028, 2.56, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4075863c-0ab9-5216-aa4c-8a90fdab088a', '9e2085cf-76e3-54d0-8305-7adfe5d9c12f', 'cds', 'Jacksonville State University Common Data Set 2025-2026 (PDF)', 'https://www.jsu.edu/ire/common-data-set/2025_2026-cds-jacksonville-state-university.pdf', '2025-2026', '2026-10-26'),
  ('23850207-d3df-5010-8d2e-cd2410e79659', '9e2085cf-76e3-54d0-8305-7adfe5d9c12f', 'ipeds', 'IPEDS / College Navigator - Jacksonville State University (campus setting: Suburb: Small)', 'https://nces.ed.gov/collegenavigator/?id=101480', '2024-2025', '2026-10-26'),
@@ -8906,8 +8906,8 @@ select '9e2085cf-76e3-54d0-8305-7adfe5d9c12f'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Johns Hopkins University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('665b5c1e-403e-5ec2-9562-eedc693580e7', 'johns-hopkins', 'Johns Hopkins University', 'US', 'MD', 'Baltimore', 39.328977, -76.621595, 'urban', 'private_nonprofit', 'https://www.jhu.edu/', 'https://apply.jhu.edu/', 162928, 5693, 15.21, 6);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('665b5c1e-403e-5ec2-9562-eedc693580e7', 'johns-hopkins', 'Johns Hopkins University', 'Johns Hopkins', 'US', 'MD', 'Baltimore', 39.328977, -76.621595, 'urban', 'private_nonprofit', 'https://www.jhu.edu/', 'https://apply.jhu.edu/', 162928, 5693, 15.21, 6);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f4e87f03-2d27-54fe-b7f3-96c5fd2ace5e', '665b5c1e-403e-5ec2-9562-eedc693580e7', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=162928', '2023-2024', '2026-10-21'),
  ('456680f4-eaf9-561b-bcde-2ebc46e29990', '665b5c1e-403e-5ec2-9562-eedc693580e7', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?162928', null, '2026-10-21'),
@@ -8963,7 +8963,7 @@ select '665b5c1e-403e-5ec2-9562-eedc693580e7'::uuid, v.* from (values
 
 -- ── Johnson & Wales University (Providence) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c33484bc-27e6-571b-a450-a6c1148de81b', 'johnson-wales', 'Johnson & Wales University (Providence)', 'JWU Providence', 'US', 'RI', 'Providence', 41.819956, -71.41277, 'urban', 'private_nonprofit', 'https://www.jwu.edu', 'https://www.jwu.edu/admissions/', 217235, 3908, 3.63, 14, 'semester');
+ ('c33484bc-27e6-571b-a450-a6c1148de81b', 'johnson-wales', 'Johnson & Wales University (Providence)', 'Johnson & Wales (RI)', 'US', 'RI', 'Providence', 41.819956, -71.41277, 'urban', 'private_nonprofit', 'https://www.jwu.edu', 'https://www.jwu.edu/admissions/', 217235, 3908, 3.63, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('de3ca31b-f618-529b-aff6-8e9e771fdedc', 'c33484bc-27e6-571b-a450-a6c1148de81b', 'ipeds', 'IPEDS data via NCES College Navigator, fall 2024 (Johnson & Wales University-Providence)', 'https://nces.ed.gov/collegenavigator/?id=217235', '2024-2025', '2026-10-26'),
  ('6ae0c0ac-3049-58b8-9cd9-d3a5c354a2e9', 'c33484bc-27e6-571b-a450-a6c1148de81b', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=217235', '2023-2024', '2026-10-26'),
@@ -9016,7 +9016,7 @@ insert into institution_tiers (institution_id, category_key, tier_code, rational
 
 -- ── Kansas State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('4fbefaaf-e530-51da-b425-1ee363f88308', 'kansas-state', 'Kansas State University', 'K-State', 'US', 'KS', 'Manhattan', 39.188648, -96.581077, 'urban', 'public', 'https://www.k-state.edu', 'https://www.k-state.edu/admissions/', 155399, 16555, 1.53, 19, 'semester');
+ ('4fbefaaf-e530-51da-b425-1ee363f88308', 'kansas-state', 'Kansas State University', 'Kansas State', 'US', 'KS', 'Manhattan', 39.188648, -96.581077, 'urban', 'public', 'https://www.k-state.edu', 'https://www.k-state.edu/admissions/', 155399, 16555, 1.53, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('40783cf9-72ae-5b9d-944e-aa527309fd0f', '4fbefaaf-e530-51da-b425-1ee363f88308', 'cds', 'Kansas State University Common Data Set 2025-2026 (PDF)', 'https://www.k-state.edu/data/institutional-research/resources/common-data-set/CDS_2025_2026.pdf', '2025-2026', '2026-10-26'),
  ('89500df9-6e60-5a8d-b4f2-8c61002ec48d', '4fbefaaf-e530-51da-b425-1ee363f88308', 'admissions_site', 'K-State Admissions - Detailed requirements for international students', 'https://www.k-state.edu/admissions/undergrad/manhattan/apply/international/requirements.html', null, '2026-10-26'),
@@ -9100,7 +9100,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── University of Kansas ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('907386ed-a5b4-53d3-92e0-6ec7d55d8e88', 'kansas', 'University of Kansas', 'KU', 'US', 'KS', 'Lawrence', 38.958549, -95.247567, 'urban', 'public', 'https://ku.edu', 'https://admissions.ku.edu', 155317, 22544, 3.06, 18.1, 'semester');
+ ('907386ed-a5b4-53d3-92e0-6ec7d55d8e88', 'kansas', 'University of Kansas', 'Kansas', 'US', 'KS', 'Lawrence', 38.958549, -95.247567, 'urban', 'public', 'https://ku.edu', 'https://admissions.ku.edu', 155317, 22544, 3.06, 18.1, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('d2d94904-8d37-534f-9daf-fc3550013cc8', '907386ed-a5b4-53d3-92e0-6ec7d55d8e88', 'cds', 'University of Kansas Common Data Set 2025-2026 (PDF, sections A-J)', 'https://aire.ku.edu/sites/air/files/files/CDS/KUCDS_2025_2026.pdf', '2025-2026', '2026-10-26'),
  ('85044ead-a674-56e7-a3dc-32f609fc2fcb', '907386ed-a5b4-53d3-92e0-6ec7d55d8e88', 'admissions_site', 'KU International Admissions - Apply (deadlines, fee, requirements)', 'https://world.ku.edu/apply', null, '2026-10-26'),
@@ -9232,7 +9232,7 @@ select 'cedc6699-7f2c-5649-b7b2-c405783ac973'::uuid, 'D', v.* from (values
 
 -- ── Kennesaw State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('dbd170dc-72e4-5c8c-b251-688e0cbcf0c1', 'kennesaw-state', 'Kennesaw State University', 'KSU', 'US', 'GA', 'Kennesaw', 34.038807, -84.583052, 'suburban', 'public', 'https://www.kennesaw.edu/', 'https://www.kennesaw.edu/admissions/', 486840, 46069, 1.96, 24, 'semester');
+ ('dbd170dc-72e4-5c8c-b251-688e0cbcf0c1', 'kennesaw-state', 'Kennesaw State University', 'Kennesaw State', 'US', 'GA', 'Kennesaw', 34.038807, -84.583052, 'suburban', 'public', 'https://www.kennesaw.edu/', 'https://www.kennesaw.edu/admissions/', 486840, 46069, 1.96, 24, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('889d1724-99f8-548a-81df-a9db3b04f591', 'dbd170dc-72e4-5c8c-b251-688e0cbcf0c1', 'cds', 'Kennesaw State University Common Data Set 2025-2026 (web page)', 'https://campus.kennesaw.edu/offices-services/data-strategy/institutional-research/publications/common-data-set/cds-2025-2026.php', '2025-2026', '2026-10-26'),
  ('52f0a10f-6a57-5c2f-b579-dd4a3a15e769', 'dbd170dc-72e4-5c8c-b251-688e0cbcf0c1', 'ipeds', 'IPEDS / College Navigator - Kennesaw State University (campus setting: Suburb: Large)', 'https://nces.ed.gov/collegenavigator/?id=486840', '2024-2025', '2026-10-26'),
@@ -9391,7 +9391,7 @@ insert into major_admissions (id, institution_id, program, admit_model, capped, 
 
 -- ── University of Kentucky ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('5e1b1341-fe14-595f-b676-31e917e3472d', 'kentucky', 'University of Kentucky', 'UK', 'US', 'KY', 'Lexington', 38.038911, -84.504747, 'urban', 'public', 'https://www.uky.edu/', 'https://www.uky.edu/admission/', 157085, 27386, 1.36, 18, 'semester');
+ ('5e1b1341-fe14-595f-b676-31e917e3472d', 'kentucky', 'University of Kentucky', 'Kentucky', 'US', 'KY', 'Lexington', 38.038911, -84.504747, 'urban', 'public', 'https://www.uky.edu/', 'https://www.uky.edu/admission/', 157085, 27386, 1.36, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('511ceb2e-a2e9-544f-b8fb-ea4732580a5e', '5e1b1341-fe14-595f-b676-31e917e3472d', 'cds', 'University of Kentucky Common Data Set 2025-2026 (PDF)', 'https://irads.uky.edu/sites/default/files/2026-07/university-of-kentucky-cds-2025-2026-flat.pdf', '2025-2026', '2026-10-26'),
  ('9930cc82-8c24-5ed8-879c-48f6769d1eac', '5e1b1341-fe14-595f-b676-31e917e3472d', 'ipeds', 'IPEDS / College Navigator - University of Kentucky (student-to-faculty ratio, calendar system, locale)', 'https://nces.ed.gov/collegenavigator/?id=157085', '2024-2025', '2026-10-26'),
@@ -9450,7 +9450,7 @@ select '5e1b1341-fe14-595f-b676-31e917e3472d'::uuid, v.* from (values
 
 -- ── King's College London ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('f3884da2-7d35-51ae-8109-9f12c6128262', 'kings-college-london', 'King''s College London', 'King''s', 'GB', 'England', 'London', 51.5115, -0.116, 'urban', 'public', 'https://www.kcl.ac.uk/', 'https://www.kcl.ac.uk/study/undergraduate/how-to-apply');
+ ('f3884da2-7d35-51ae-8109-9f12c6128262', 'kings-college-london', 'King''s College London', 'King''s College London', 'GB', 'England', 'London', 51.5115, -0.116, 'urban', 'public', 'https://www.kcl.ac.uk/', 'https://www.kcl.ac.uk/study/undergraduate/how-to-apply');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('f6c34330-0f58-5d83-a901-48e799744eeb', 'f3884da2-7d35-51ae-8109-9f12c6128262', 'other', 'UCAS - 2027 entry application deadlines (13 Jan 2027, 18:00 UK time, equal consideration date for most undergraduate courses)', 'https://www.ucas.com/applying/applying-to-university/dates-and-deadlines-for-uni-applications', '2026-10-27'),
  ('b51d8b55-6cbe-50b0-b3fa-751df9e0db39', 'f3884da2-7d35-51ae-8109-9f12c6128262', 'admissions_site', 'King''s College London - Undergraduate English language entry requirements (valid for 2027/28 entry)', 'https://www.kcl.ac.uk/study/undergraduate/how-to-apply/english-language-requirements', '2026-10-27'),
@@ -9914,7 +9914,7 @@ select 'b32a563a-004e-5775-bfaf-f40885be3093'::uuid, v.* from (values
 
 -- ── Lewis-Clark State College ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('198dfc4d-e541-54a6-878e-851b93ddf6cb', 'lewis-clark-state', 'Lewis-Clark State College', 'LC State', 'US', 'ID', 'Lewiston', 46.412199, -117.024875, 'urban', 'public', 'https://www.lcsc.edu/', 'https://www.lcsc.edu/admissions', 142328, 3793, 1.4, 16, 'semester');
+ ('198dfc4d-e541-54a6-878e-851b93ddf6cb', 'lewis-clark-state', 'Lewis-Clark State College', 'Lewis-Clark State', 'US', 'ID', 'Lewiston', 46.412199, -117.024875, 'urban', 'public', 'https://www.lcsc.edu/', 'https://www.lcsc.edu/admissions', 142328, 3793, 1.4, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f66d270b-d9be-595f-80b6-af792147b1de', '198dfc4d-e541-54a6-878e-851b93ddf6cb', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
  ('69d7cfaa-60ac-549c-8abb-deec195a576d', '198dfc4d-e541-54a6-878e-851b93ddf6cb', 'ipeds', 'College Navigator - Lewis-Clark State College (fall 2024 enrollment, student-faculty ratio, admissions)', 'https://nces.ed.gov/collegenavigator/?id=142328', '2024-2025', '2026-10-26'),
@@ -10237,7 +10237,7 @@ select '6bdf56a4-8bda-5a8b-852d-6cc43090159f'::uuid, v.* from (values
 
 -- ── University of Louisville ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9a7251f1-26c2-54b2-a6be-c1df5b422279', 'louisville', 'University of Louisville', 'UofL', 'US', 'KY', 'Louisville', 38.216862, -85.760412, 'urban', 'public', 'https://louisville.edu/', 'https://louisville.edu/admissions/', 157289, 16194, 1.44, 14, 'semester');
+ ('9a7251f1-26c2-54b2-a6be-c1df5b422279', 'louisville', 'University of Louisville', 'Louisville', 'US', 'KY', 'Louisville', 38.216862, -85.760412, 'urban', 'public', 'https://louisville.edu/', 'https://louisville.edu/admissions/', 157289, 16194, 1.44, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('182491c6-d233-5e13-8147-8c9d67c5b084', '9a7251f1-26c2-54b2-a6be-c1df5b422279', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); fall 2023 enrollment (EF2023A); College Navigator (2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=157289', '2023-2024', '2026-10-26'),
  ('02605501-105b-519c-b8fd-1eb79e445e62', '9a7251f1-26c2-54b2-a6be-c1df5b422279', 'admissions_site', 'UofL - Undergraduate International Application Requirements (fee, English tests, codes)', 'https://louisville.edu/admissions/apply/undergraduate-international-application-requirements', null, '2026-10-26'),
@@ -10455,7 +10455,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── Louisiana State University of Alexandria ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9c8c9e8a-864c-5383-a68c-3cd93cabecd5', 'lsu-alexandria', 'Louisiana State University of Alexandria', 'LSUA', 'US', 'LA', 'Alexandria', 31.178616, -92.414409, 'rural', 'public', 'https://www.lsua.edu/', 'https://www.lsua.edu/admissions', 159382, 6815, 1.04, 33, 'semester');
+ ('9c8c9e8a-864c-5383-a68c-3cd93cabecd5', 'lsu-alexandria', 'Louisiana State University of Alexandria', 'LSU Alexandria', 'US', 'LA', 'Alexandria', 31.178616, -92.414409, 'rural', 'public', 'https://www.lsua.edu/', 'https://www.lsua.edu/admissions', 159382, 6815, 1.04, 33, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3b162474-9970-53fc-8bae-5f1b44816c86', '9c8c9e8a-864c-5383-a68c-3cd93cabecd5', 'ipeds', 'IPEDS College Navigator (fall 2024 admissions and test scores, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=159382', '2024-2025', '2026-10-26'),
  ('45645a90-870d-5bd5-a0ea-015a86ea050f', '9c8c9e8a-864c-5383-a68c-3cd93cabecd5', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=159382', '2023-2024', '2026-10-26'),
@@ -10505,7 +10505,7 @@ select '9c8c9e8a-864c-5383-a68c-3cd93cabecd5'::uuid, 'D', v.* from (values
 
 -- ── Louisiana State University Shreveport ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('31bfe15e-cf47-57e9-ba0b-bc8a83d96498', 'lsu-shreveport', 'Louisiana State University Shreveport', 'LSUS', 'US', 'LA', 'Shreveport', 32.428465, -93.70561, 'urban', 'public', 'https://www.lsus.edu', 'https://www.lsus.edu/undergraduate-admissions', 159416, 2651, 3.7, 30, 'semester');
+ ('31bfe15e-cf47-57e9-ba0b-bc8a83d96498', 'lsu-shreveport', 'Louisiana State University Shreveport', 'LSU Shreveport', 'US', 'LA', 'Shreveport', 32.428465, -93.70561, 'urban', 'public', 'https://www.lsus.edu', 'https://www.lsus.edu/undergraduate-admissions', 159416, 2651, 3.7, 30, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4840a9ce-3098-5a34-b834-18edb14444d2', '31bfe15e-cf47-57e9-ba0b-bc8a83d96498', 'ipeds', 'IPEDS College Navigator (fall 2024 admissions and test scores, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=159416', '2024-2025', '2026-10-26'),
  ('d1fcbb4c-1a68-53f2-81e5-2f347121bccc', '31bfe15e-cf47-57e9-ba0b-bc8a83d96498', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=159416', '2023-2024', '2026-10-26'),
@@ -10645,7 +10645,7 @@ insert into programs (id, institution_id, slug, name, award, apply_via, duration
 
 -- ── University of Maine at Presque Isle ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a826f7b1-80e1-58d5-9336-23d374a467e1', 'maine-presque-isle', 'University of Maine at Presque Isle', 'UMPI', 'US', 'ME', 'Presque Isle', 46.672285, -68.016343, 'rural', 'public', 'https://www.umpi.edu/', 'https://www.umpi.edu/admissions/', 161341, 2758, 4.93, 30, 'semester');
+ ('a826f7b1-80e1-58d5-9336-23d374a467e1', 'maine-presque-isle', 'University of Maine at Presque Isle', 'Maine Presque Isle', 'US', 'ME', 'Presque Isle', 46.672285, -68.016343, 'rural', 'public', 'https://www.umpi.edu/', 'https://www.umpi.edu/admissions/', 161341, 2758, 4.93, 30, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('03156252-97f7-54fb-a7c8-e74b67493dd8', 'a826f7b1-80e1-58d5-9336-23d374a467e1', 'ipeds', 'IPEDS via College Navigator: University of Maine at Presque Isle (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=161341', '2024-2025', '2026-10-26'),
  ('38881f9a-2e51-520f-b447-6175540ca382', 'a826f7b1-80e1-58d5-9336-23d374a467e1', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=161341', '2023-2024', '2026-10-26'),
@@ -10696,7 +10696,7 @@ select 'a826f7b1-80e1-58d5-9336-23d374a467e1'::uuid, 'D', v.* from (values
 
 -- ── University of Maine ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7bbdecd0-1a14-5af7-857e-8f25967d4bee', 'maine', 'University of Maine', 'UMaine', 'US', 'ME', 'Orono', 44.899257, -68.669332, 'suburban', 'public', 'https://umaine.edu', 'https://go.umaine.edu/', 161253, 9601, 2.21, 15, 'semester');
+ ('7bbdecd0-1a14-5af7-857e-8f25967d4bee', 'maine', 'University of Maine', 'Maine', 'US', 'ME', 'Orono', 44.899257, -68.669332, 'suburban', 'public', 'https://umaine.edu', 'https://go.umaine.edu/', 161253, 9601, 2.21, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3b85df24-de53-5760-acfd-b36255ee8687', '7bbdecd0-1a14-5af7-857e-8f25967d4bee', 'ipeds', 'IPEDS via College Navigator: University of Maine (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=161253', '2024-2025', '2026-10-26'),
  ('700fb6b7-bafb-5f42-bd53-0d01c6b7f9e6', '7bbdecd0-1a14-5af7-857e-8f25967d4bee', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=161253', '2023-2024', '2026-10-26'),
@@ -10779,7 +10779,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── Marian University (Indianapolis) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('75ba06b5-d901-54f5-b510-1667170cbdd7', 'marian-in', 'Marian University (Indianapolis)', 'Marian', 'US', 'IN', 'Indianapolis', 39.813233, -86.202643, 'urban', 'private_nonprofit', 'https://www.marian.edu/', 'https://www.marian.edu/admissions', 151786, 2378, 2.73, 13, 'semester');
+ ('75ba06b5-d901-54f5-b510-1667170cbdd7', 'marian-in', 'Marian University (Indianapolis)', 'Marian (IN)', 'US', 'IN', 'Indianapolis', 39.813233, -86.202643, 'urban', 'private_nonprofit', 'https://www.marian.edu/', 'https://www.marian.edu/admissions', 151786, 2378, 2.73, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('87f8cb14-ed37-534a-84c1-f494245f03b6', '75ba06b5-d901-54f5-b510-1667170cbdd7', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=151786', '2023-2024', '2026-10-26'),
  ('4e79ddde-cfde-5174-b091-d85cb6690376', '75ba06b5-d901-54f5-b510-1667170cbdd7', 'ipeds', 'College Navigator - Marian University (enrollment fall 2024, student-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=151786', null, '2026-10-26'),
@@ -11409,7 +11409,7 @@ select '3d3ac0d3-4281-50eb-95c9-655473f5fba3'::uuid, 'D', v.* from (values
 
 -- ── Metropolitan State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('bc4c6efe-3fd4-5c60-b176-eac48d1783e9', 'metro-state-mn', 'Metropolitan State University', 'Metro State', 'US', 'MN', 'Saint Paul', 44.957256, -93.074361, 'urban', 'public', 'https://www.metrostate.edu', 'https://www.metrostate.edu/apply', 174020, 5904, 2.15, 15, 'semester');
+ ('bc4c6efe-3fd4-5c60-b176-eac48d1783e9', 'metro-state-mn', 'Metropolitan State University', 'Metro State (MN)', 'US', 'MN', 'Saint Paul', 44.957256, -93.074361, 'urban', 'public', 'https://www.metrostate.edu', 'https://www.metrostate.edu/apply', 174020, 5904, 2.15, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('09768b07-5b0f-5f48-a0ac-d382c73d310d', 'bc4c6efe-3fd4-5c60-b176-eac48d1783e9', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment and admissions)', 'https://nces.ed.gov/collegenavigator/?id=174020', '2023-2024', '2026-10-26'),
  ('4bc82634-d88f-50da-bc1e-8b0aa5ee31e8', 'bc4c6efe-3fd4-5c60-b176-eac48d1783e9', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=174020', '2023-2024', '2026-10-26'),
@@ -11518,8 +11518,8 @@ select 'e8f004d9-e85d-584b-b179-48f5a2d4c46b'::uuid, v.* from (values
  ('nursing', 'B', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Michigan State University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('d47e42b4-c1ae-59a6-8e16-044e4429a3bd', 'michigan-state', 'Michigan State University', 'US', 'MI', 'East Lansing', 42.73212, -84.476111, 'urban', 'public', 'https://www.msu.edu/', 'https://admissions.msu.edu/', 171100, 40922, 4.95, 17);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('d47e42b4-c1ae-59a6-8e16-044e4429a3bd', 'michigan-state', 'Michigan State University', 'Michigan State', 'US', 'MI', 'East Lansing', 42.73212, -84.476111, 'urban', 'public', 'https://www.msu.edu/', 'https://admissions.msu.edu/', 171100, 40922, 4.95, 17);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('0c115ae0-b60e-5b3e-a696-8aaef4a7aea5', 'd47e42b4-c1ae-59a6-8e16-044e4429a3bd', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=171100', '2023-2024', '2026-10-21'),
  ('ef1846e3-e5fd-5c7b-8628-c3fa32984387', 'd47e42b4-c1ae-59a6-8e16-044e4429a3bd', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?171100', null, '2026-10-21'),
@@ -11600,7 +11600,7 @@ select 'd47e42b4-c1ae-59a6-8e16-044e4429a3bd'::uuid, v.* from (values
 
 -- ── Middle Georgia State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e4cd761f-b3dc-5078-b573-b3b4ccd1c4a3', 'middle-georgia-state', 'Middle Georgia State University', 'MGA', 'US', 'GA', 'Macon', 32.808092, -83.732058, 'urban', 'public', 'https://www.mga.edu', 'https://www.mga.edu/admissions/international-students/index.php', 482158, 7692, 1.59, 18, 'semester');
+ ('e4cd761f-b3dc-5078-b573-b3b4ccd1c4a3', 'middle-georgia-state', 'Middle Georgia State University', 'Middle Georgia State', 'US', 'GA', 'Macon', 32.808092, -83.732058, 'urban', 'public', 'https://www.mga.edu', 'https://www.mga.edu/admissions/international-students/index.php', 482158, 7692, 1.59, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('061c1848-5fb8-5f9f-89e0-ad1af736639f', 'e4cd761f-b3dc-5078-b573-b3b4ccd1c4a3', 'ipeds', 'IPEDS / College Navigator - Middle Georgia State University (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=482158', '2024-2025', '2026-10-26'),
  ('7bfeb97b-43f2-5629-8095-b7a4be2966b9', 'e4cd761f-b3dc-5078-b573-b3b4ccd1c4a3', 'other', 'NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=482158', '2024-2025', '2026-10-26'),
@@ -11659,7 +11659,7 @@ select 'e4cd761f-b3dc-5078-b573-b3b4ccd1c4a3'::uuid, 'D', v.* from (values
 
 -- ── Middle Tennessee State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('749d1c5a-40b4-5875-91af-1172d119a2c6', 'middle-tennessee', 'Middle Tennessee State University', 'MTSU', 'US', 'TN', 'Murfreesboro', 35.848005, -86.360618, 'urban', 'public', 'https://www.mtsu.edu', 'https://www.mtsu.edu/how-to-apply/', 220978, 18444, 2.36, 16, 'semester');
+ ('749d1c5a-40b4-5875-91af-1172d119a2c6', 'middle-tennessee', 'Middle Tennessee State University', 'Middle Tennessee', 'US', 'TN', 'Murfreesboro', 35.848005, -86.360618, 'urban', 'public', 'https://www.mtsu.edu', 'https://www.mtsu.edu/how-to-apply/', 220978, 18444, 2.36, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4178a7e8-1c9d-5657-a1fb-b78fef485d18', '749d1c5a-40b4-5875-91af-1172d119a2c6', 'cds', 'Middle Tennessee State University Common Data Set 2025-2026 (PDF)', 'https://iepr.mtsu.edu/wp-content/uploads/sites/23/2026/07/CDS_2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('f009ac86-de98-54bd-810e-19f24c4c2586', '749d1c5a-40b4-5875-91af-1172d119a2c6', 'admissions_site', 'MTSU Office of International Affairs - Undergraduate admission', 'https://intered.mtsu.edu/admission/', null, '2026-10-26'),
@@ -11795,7 +11795,7 @@ select '35228703-5f8c-5c73-8e57-d772f27d443f'::uuid, v.* from (values
 
 -- ── Midwestern State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('d6b0ce8e-670e-59fc-88da-732f5163e976', 'midwestern-state', 'Midwestern State University', 'MSU Texas', 'US', 'TX', 'Wichita Falls', 33.874809, -98.519386, 'urban', 'public', 'https://msutexas.edu', 'https://msutexas.edu/admissions/index.php', 226833, 4303, 4.07, 18, 'semester');
+ ('d6b0ce8e-670e-59fc-88da-732f5163e976', 'midwestern-state', 'Midwestern State University', 'Midwestern State', 'US', 'TX', 'Wichita Falls', 33.874809, -98.519386, 'urban', 'public', 'https://msutexas.edu', 'https://msutexas.edu/admissions/index.php', 226833, 4303, 4.07, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('094a0436-1a7a-5c5a-987a-fd4dad324235', 'd6b0ce8e-670e-59fc-88da-732f5163e976', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=226833', '2024-2025', '2026-10-26'),
  ('2b6f43ca-2f02-52d2-b116-85e5181f9e2f', 'd6b0ce8e-670e-59fc-88da-732f5163e976', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -12070,7 +12070,7 @@ select '90f9a1f6-6c35-50ac-a4d0-0ec62e5f8c12'::uuid, v.* from (values
 
 -- ── Missouri Southern State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e4c071b9-1c42-5ad6-9065-598353629dfc', 'missouri-southern', 'Missouri Southern State University', 'MSSU', 'US', 'MO', 'Joplin', 37.095155, -94.461689, 'urban', 'public', 'https://www.mssu.edu', 'https://www.mssu.edu/admissions/international-incoming-students.php', 178341, 3917, 3.6, 15, 'semester');
+ ('e4c071b9-1c42-5ad6-9065-598353629dfc', 'missouri-southern', 'Missouri Southern State University', 'Missouri Southern', 'US', 'MO', 'Joplin', 37.095155, -94.461689, 'urban', 'public', 'https://www.mssu.edu', 'https://www.mssu.edu/admissions/international-incoming-students.php', 178341, 3917, 3.6, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7028b6fd-5585-552a-b1db-1eafe79c76d2', 'e4c071b9-1c42-5ad6-9065-598353629dfc', 'cds', 'Missouri Southern State University Common Data Set 2025-2026 (PDF)', 'https://www.mssu.edu/academics/institutional-effectiveness/files/CDS-2025-2026-Missouri-Southern-State-University-Final.pdf', '2025-2026', '2026-10-26'),
  ('07104a66-5d1f-5e1c-a49b-9d7e49fae4c1', 'e4c071b9-1c42-5ad6-9065-598353629dfc', 'admissions_site', 'MSSU - International incoming students (deadlines, fee, English minimums, steps)', 'https://www.mssu.edu/admissions/international-incoming-students.php', null, '2026-10-26'),
@@ -12310,7 +12310,7 @@ insert into programs (id, institution_id, slug, name, award, apply_via, duration
 
 -- ── Montana State University (Bozeman) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e9621290-b819-530e-8686-a29bcd22bd4b', 'montana-state', 'Montana State University (Bozeman)', 'MSU', 'US', 'MT', 'Bozeman', 45.666726, -111.048812, 'urban', 'public', 'https://www.montana.edu', 'https://www.montana.edu/admissions/', 180461, 15142, 1.14, 18, 'semester');
+ ('e9621290-b819-530e-8686-a29bcd22bd4b', 'montana-state', 'Montana State University (Bozeman)', 'Montana State', 'US', 'MT', 'Bozeman', 45.666726, -111.048812, 'urban', 'public', 'https://www.montana.edu', 'https://www.montana.edu/admissions/', 180461, 15142, 1.14, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('0fbe08cc-a702-571f-ad75-4749be2cd762', 'e9621290-b819-530e-8686-a29bcd22bd4b', 'cds', 'Montana State University Common Data Set 2025-2026 (PDF)', 'https://www.montana.edu/opa/common-data-set/cds25.pdf', '2025-2026', '2026-10-26'),
  ('58464e11-27cb-5df2-9ee3-788d06f1731c', 'e9621290-b819-530e-8686-a29bcd22bd4b', 'admissions_site', 'Montana State University - International undergraduate application instructions (deadlines, fee, codes)', 'https://www.montana.edu/international/admissions/appinstructions.html', null, '2026-10-26'),
@@ -12369,7 +12369,7 @@ select 'e9621290-b819-530e-8686-a29bcd22bd4b'::uuid, v.* from (values
 
 -- ── University of Montana (Missoula) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('234da3d0-2c41-5e5d-bb49-7d015ee5a369', 'montana', 'University of Montana (Missoula)', 'UM', 'US', 'MT', 'Missoula', 46.859312, -113.982912, 'urban', 'public', 'https://www.umt.edu', 'https://www.umt.edu/admissions/', 180489, 7874, 0.81, 17.9, 'semester');
+ ('234da3d0-2c41-5e5d-bb49-7d015ee5a369', 'montana', 'University of Montana (Missoula)', 'Montana', 'US', 'MT', 'Missoula', 46.859312, -113.982912, 'urban', 'public', 'https://www.umt.edu', 'https://www.umt.edu/admissions/', 180489, 7874, 0.81, 17.9, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('bf073c6d-9f96-5f6c-b080-e751d132c1f5', '234da3d0-2c41-5e5d-bb49-7d015ee5a369', 'cds', 'University of Montana Common Data Set 2024-2025 (PDF, with data)', 'https://www.umt.edu/institutional-research/data_reports/common_data_set_files/cds_2024-25-with-data.pdf', '2024-2025', '2026-10-26'),
  ('17e5210b-c675-5a8c-a560-3eb423d3c69d', '234da3d0-2c41-5e5d-bb49-7d015ee5a369', 'cds', 'University of Montana Common Data Set 2025-2026 (PDF; the posted file contains only sections A and B)', 'https://www.umt.edu/institutional-research/data_reports/cds-202526.pdf', '2025-2026', '2026-10-26'),
@@ -12879,7 +12879,7 @@ select '17197bf7-8219-5111-b172-b5e0a469e6ae'::uuid, 'D', v.* from (values
 
 -- ── North Dakota State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7a9ba862-21ec-5226-b8d2-260c9d5bd2ca', 'ndsu', 'North Dakota State University', 'NDSU', 'US', 'ND', 'Fargo', 46.893127, -96.800838, 'urban', 'public', 'https://www.ndsu.edu', 'https://www.ndsu.edu/admission', 200332, 9762, 1.01, 17, 'semester');
+ ('7a9ba862-21ec-5226-b8d2-260c9d5bd2ca', 'ndsu', 'North Dakota State University', 'North Dakota State', 'US', 'ND', 'Fargo', 46.893127, -96.800838, 'urban', 'public', 'https://www.ndsu.edu', 'https://www.ndsu.edu/admission', 200332, 9762, 1.01, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('617969b4-fafd-5a06-8dae-d5316fa77288', '7a9ba862-21ec-5226-b8d2-260c9d5bd2ca', 'cds', 'NDSU Common Data Set 2024-2025 (xlsx)', 'https://www.ndsu.edu/sites/default/files/fileadmin/oira/Common_Data_Set/NDSU_CDS_2024-2025.xlsx', '2024-2025', '2026-10-26'),
  ('1d8ecb51-2e8b-56c1-8be9-b9408a6d36b7', '7a9ba862-21ec-5226-b8d2-260c9d5bd2ca', 'admissions_site', 'NDSU - International undergraduate admission (apply, English proficiency, dates)', 'https://www.ndsu.edu/international/apply', null, '2026-10-26'),
@@ -12955,7 +12955,7 @@ select '7a9ba862-21ec-5226-b8d2-260c9d5bd2ca'::uuid, 'D', v.* from (values
 
 -- ── University of Nebraska at Kearney ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('cd94d931-611a-5f28-9d12-e2c1d4d1806d', 'nebraska-kearney', 'University of Nebraska at Kearney', 'UNK', 'US', 'NE', 'Kearney', 40.701452, -99.098699, 'rural', 'public', 'https://www.unk.edu', 'https://www.unk.edu/admissions/', 181215, 4056, 5.92, 14, 'semester');
+ ('cd94d931-611a-5f28-9d12-e2c1d4d1806d', 'nebraska-kearney', 'University of Nebraska at Kearney', 'Nebraska Kearney', 'US', 'NE', 'Kearney', 40.701452, -99.098699, 'rural', 'public', 'https://www.unk.edu', 'https://www.unk.edu/admissions/', 181215, 4056, 5.92, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('cb433b1d-a768-5948-8683-f4bbb6866bc0', 'cd94d931-611a-5f28-9d12-e2c1d4d1806d', 'cds', 'University of Nebraska at Kearney Common Data Set 2025-2026 (PDF; page headers print 2024-2025 but items ask for fall 2025 data)', 'https://www.unk.edu/factbook/_files/cds-2025-26-pdf_final.pdf', '2025-2026', '2026-10-26'),
  ('21474aa6-b38c-5c5b-8037-708a80796f56', 'cd94d931-611a-5f28-9d12-e2c1d4d1806d', 'admissions_site', 'UNK - Admissions Requirements (first-time freshmen)', 'https://www.unk.edu/admissions/undergraduate/admissions-requirements.php', null, '2026-10-26'),
@@ -13034,7 +13034,7 @@ select 'cd94d931-611a-5f28-9d12-e2c1d4d1806d'::uuid, 'D', v.* from (values
 
 -- ── University of Nebraska Omaha ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f45dc484-939f-5784-a6b0-dac075dc8596', 'nebraska-omaha', 'University of Nebraska Omaha', 'UNO', 'US', 'NE', 'Omaha', 41.258769, -96.008516, 'urban', 'public', 'https://www.unomaha.edu', 'https://www.unomaha.edu/admissions/', 181394, 11756, 3.31, 15, 'semester');
+ ('f45dc484-939f-5784-a6b0-dac075dc8596', 'nebraska-omaha', 'University of Nebraska Omaha', 'Nebraska Omaha', 'US', 'NE', 'Omaha', 41.258769, -96.008516, 'urban', 'public', 'https://www.unomaha.edu', 'https://www.unomaha.edu/admissions/', 181394, 11756, 3.31, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b01c9ab3-c904-5121-b68d-9afbabecd868', 'f45dc484-939f-5784-a6b0-dac075dc8596', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=181394', '2024-2025', '2026-10-26'),
  ('954490e8-92cd-5f47-9a73-0da596593cd1', 'f45dc484-939f-5784-a6b0-dac075dc8596', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -13176,7 +13176,7 @@ select 'a88c321f-2c01-5ce0-9d0c-59dea94f0e2b'::uuid, 'D', v.* from (values
 
 -- ── University of Nevada, Reno ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f13570fc-7449-57eb-8ffc-e1b7e1e94158', 'nevada-reno', 'University of Nevada, Reno', 'Nevada', 'US', 'NV', 'Reno', 39.543642, -119.815377, 'urban', 'public', 'https://www.unr.edu', 'https://www.unr.edu/admissions', 182290, 19117, 0.87, 17, 'semester');
+ ('f13570fc-7449-57eb-8ffc-e1b7e1e94158', 'nevada-reno', 'University of Nevada, Reno', 'Nevada Reno', 'US', 'NV', 'Reno', 39.543642, -119.815377, 'urban', 'public', 'https://www.unr.edu', 'https://www.unr.edu/admissions', 182290, 19117, 0.87, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b513aa40-08af-530e-a411-3cfc533a6c15', 'f13570fc-7449-57eb-8ffc-e1b7e1e94158', 'cds', 'University of Nevada, Reno Common Data Set 2025-2026 (Decision Support)', 'https://dataden.unr.edu/Resources/CDS/CDS_2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('6e7259b9-2ef2-5cd4-9522-f45fb7d015ef', 'f13570fc-7449-57eb-8ffc-e1b7e1e94158', 'ipeds', 'IPEDS via NCES College Navigator: fall 2024 undergraduate enrollment, student-to-faculty ratio', 'https://nces.ed.gov/collegenavigator/?id=182290', '2024-2025', '2026-10-26'),
@@ -13285,7 +13285,7 @@ select '67458d8f-f77b-54ff-9ee1-6921f2218365'::uuid, 'D', v.* from (values
 
 -- ── LSU New Orleans (formerly University of New Orleans) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('db5a2994-d21a-58ef-b5e1-3a1edba1c366', 'new-orleans', 'LSU New Orleans (formerly University of New Orleans)', 'UNO', 'US', 'LA', 'New Orleans', 30.027704, -90.067142, 'urban', 'public', 'https://www.lsuneworleans.edu', 'https://www.lsuneworleans.edu/admissions', 159939, 5419, 1.66, 19, 'semester');
+ ('db5a2994-d21a-58ef-b5e1-3a1edba1c366', 'new-orleans', 'LSU New Orleans (formerly University of New Orleans)', 'LSU New Orleans', 'US', 'LA', 'New Orleans', 30.027704, -90.067142, 'urban', 'public', 'https://www.lsuneworleans.edu', 'https://www.lsuneworleans.edu/admissions', 159939, 5419, 1.66, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('e846ca23-3fe3-5559-8cd5-6613d931f3f5', 'db5a2994-d21a-58ef-b5e1-3a1edba1c366', 'ipeds', 'College Navigator - University of New Orleans / LSU New Orleans (IPEDS, fall 2024 admissions, test scores, costs)', 'https://nces.ed.gov/collegenavigator/?id=159939', '2024-2025', '2026-10-26'),
  ('99aebfa7-351e-5bbd-ad8a-fb7775b55238', 'db5a2994-d21a-58ef-b5e1-3a1edba1c366', 'ipeds', 'IPEDS Admissions and Enrollment, fall 2024 (ADM2024) via the Urban Institute Education Data Portal', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=159939', '2024-2025', '2026-10-26'),
@@ -13450,7 +13450,7 @@ select '2a67d7ff-13ea-54f1-973f-4549ce8759c1'::uuid, 'D', v.* from (values
 
 -- ── New Mexico State University (Las Cruces) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9209cf3a-58fd-50ea-9b5e-3c5765f08d24', 'nmsu', 'New Mexico State University (Las Cruces)', 'NMSU', 'US', 'NM', 'Las Cruces', 32.281568, -106.752069, 'suburban', 'public', 'https://www.nmsu.edu', 'https://admissions.nmsu.edu/', 188030, 12507, 2.44, 16, 'semester');
+ ('9209cf3a-58fd-50ea-9b5e-3c5765f08d24', 'nmsu', 'New Mexico State University (Las Cruces)', 'New Mexico State', 'US', 'NM', 'Las Cruces', 32.281568, -106.752069, 'suburban', 'public', 'https://www.nmsu.edu', 'https://admissions.nmsu.edu/', 188030, 12507, 2.44, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('873f9753-a780-5869-a30f-abd11ad2db24', '9209cf3a-58fd-50ea-9b5e-3c5765f08d24', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=188030', '2024-2025', '2026-10-26'),
  ('137c8b68-d107-51f4-95fd-b4a9b77f5b97', '9209cf3a-58fd-50ea-9b5e-3c5765f08d24', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -13508,7 +13508,7 @@ select '9209cf3a-58fd-50ea-9b5e-3c5765f08d24'::uuid, 'D', v.* from (values
 
 -- ── University of North Alabama ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8db12264-f605-5e09-813c-7b1b398aa789', 'north-alabama', 'University of North Alabama', 'UNA', 'US', 'AL', 'Florence', 34.80731, -87.680407, 'urban', 'public', 'https://www.una.edu', 'https://www.una.edu/admissions/', 101879, 8437, 4.17, 18, 'semester');
+ ('8db12264-f605-5e09-813c-7b1b398aa789', 'north-alabama', 'University of North Alabama', 'North Alabama', 'US', 'AL', 'Florence', 34.80731, -87.680407, 'urban', 'public', 'https://www.una.edu', 'https://www.una.edu/admissions/', 101879, 8437, 4.17, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('0b23f6f6-941b-5152-8bc5-fd3b1f0d8143', '8db12264-f605-5e09-813c-7b1b398aa789', 'cds', 'University of North Alabama Common Data Set 2025-2026 (PDF; the page header still reads 2024-2025 but the data are for Fall 2025)', 'https://www.una.edu/research/Institutional%20Data/una-common-data-set-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('82bb9dec-ff7b-5b03-b4fb-a052d0b1a339', '8db12264-f605-5e09-813c-7b1b398aa789', 'admissions_site', 'UNA Office of International Affairs - Undergraduate admissions for international students', 'https://www.una.edu/international/admissions/undergraduate.html', null, '2026-10-26'),
@@ -13584,7 +13584,7 @@ select '8db12264-f605-5e09-813c-7b1b398aa789'::uuid, 'D', v.* from (values
 
 -- ── University of North Georgia ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('46f01fa0-44bc-5759-9b68-e4c7bad0cd91', 'north-georgia', 'University of North Georgia', 'UNG', 'US', 'GA', 'Dahlonega', 34.530219, -83.985694, 'rural', 'public', 'https://ung.edu', 'https://ung.edu/undergraduate-admissions/', 482680, 19321, 1.4, 19, 'semester');
+ ('46f01fa0-44bc-5759-9b68-e4c7bad0cd91', 'north-georgia', 'University of North Georgia', 'North Georgia', 'US', 'GA', 'Dahlonega', 34.530219, -83.985694, 'rural', 'public', 'https://ung.edu', 'https://ung.edu/undergraduate-admissions/', 482680, 19321, 1.4, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('57e06312-fd14-57ac-af9a-3d92290d22bb', '46f01fa0-44bc-5759-9b68-e4c7bad0cd91', 'cds', 'University of North Georgia Common Data Set 2025-2026 (Excel workbook)', 'https://ung.edu/institutional-effectiveness-research-administration/_uploads/files/common-data-sets/cds-2025-2026.xlsx', '2025-2026', '2026-10-26'),
  ('bf1105eb-4eef-56ff-96e5-f07e73fa3be6', '46f01fa0-44bc-5759-9b68-e4c7bad0cd91', 'admissions_site', 'UNG - How to apply as an international student (requirements, English proficiency, FAQ)', 'https://ung.edu/undergraduate-admissions/how-to-apply/international-student.php', null, '2026-10-26'),
@@ -13653,7 +13653,7 @@ select '46f01fa0-44bc-5759-9b68-e4c7bad0cd91'::uuid, 'D', v.* from (values
 
 -- ── Northeastern State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('14a7a9f5-0010-5198-8dd7-6ba0829052dc', 'northeastern-state', 'Northeastern State University', 'NSU', 'US', 'OK', 'Tahlequah', 35.919939, -94.967229, 'rural', 'public', 'https://www.nsuok.edu', 'https://offices.nsuok.edu/admissions/', 207263, 5085, 3.72, 16, 'semester');
+ ('14a7a9f5-0010-5198-8dd7-6ba0829052dc', 'northeastern-state', 'Northeastern State University', 'Northeastern State', 'US', 'OK', 'Tahlequah', 35.919939, -94.967229, 'rural', 'public', 'https://www.nsuok.edu', 'https://offices.nsuok.edu/admissions/', 207263, 5085, 3.72, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('2c09e74e-b547-5c09-a2f7-008e24449c81', '14a7a9f5-0010-5198-8dd7-6ba0829052dc', 'cds', 'Northeastern State University Common Data Set 2024-2025 (Excel)', 'https://offices.nsuok.edu/_resources/documents/Legacy-CDS_2024-2025.xlsx', '2024-2025', '2026-10-26'),
  ('e5c9592d-ce14-5881-a2e5-f091e7d0bf46', '14a7a9f5-0010-5198-8dd7-6ba0829052dc', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions and test scores, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=207263', '2024-2025', '2026-10-26'),
@@ -13812,7 +13812,7 @@ select '686653c1-e590-55bd-8477-28552c9b3669'::uuid, v.* from (values
 
 -- ── Northern Arizona University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('367be2ae-a805-58bb-9ea2-631bb3f88e3e', 'northern-arizona', 'Northern Arizona University', 'NAU', 'US', 'AZ', 'Flagstaff', 35.188449, -111.653724, 'urban', 'public', 'https://nau.edu/', 'https://nau.edu/admissions/', 105330, 22203, 1.76, 19, 'semester');
+ ('367be2ae-a805-58bb-9ea2-631bb3f88e3e', 'northern-arizona', 'Northern Arizona University', 'Northern Arizona', 'US', 'AZ', 'Flagstaff', 35.188449, -111.653724, 'urban', 'public', 'https://nau.edu/', 'https://nau.edu/admissions/', 105330, 22203, 1.76, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7aa63b2e-4bca-5c0b-b68a-b781f14a97c6', '367be2ae-a805-58bb-9ea2-631bb3f88e3e', 'cds', 'Northern Arizona University Common Data Set 2025-2026 (PDF)', 'https://in.nau.edu/wp-content/uploads/sites/129/2026/04/CDS-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('a015eb2a-a6c1-56af-aac4-0c349e91e876', '367be2ae-a805-58bb-9ea2-631bb3f88e3e', 'admissions_site', 'NAU - Steps to apply: international student (English proficiency, fee, documents)', 'https://nau.edu/how-to-apply/international/apply-steps/', null, '2026-10-26'),
@@ -13888,8 +13888,8 @@ select '367be2ae-a805-58bb-9ea2-631bb3f88e3e'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Northern Colorado ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('24252c63-25f4-5004-8fa0-5a633fd0a1e5', 'northern-colorado', 'University of Northern Colorado', 'US', 'CO', 'Greeley', 40.410855, -104.692777, 'urban', 'public', 'https://www.unco.edu/', 'https://www.unco.edu/admissions-aid/', 127741, 6480, 1.59, 14, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('24252c63-25f4-5004-8fa0-5a633fd0a1e5', 'northern-colorado', 'University of Northern Colorado', 'Northern Colorado', 'US', 'CO', 'Greeley', 40.410855, -104.692777, 'urban', 'public', 'https://www.unco.edu/', 'https://www.unco.edu/admissions-aid/', 127741, 6480, 1.59, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('50c8b6d1-0e87-5381-9e86-6fa477aea6eb', '24252c63-25f4-5004-8fa0-5a633fd0a1e5', 'cds', 'University of Northern Colorado Common Data Set 2023-2024 (PDF)', 'https://www.unco.edu/app/uploads/2025/10/UNC-Common-Data-Set-2023-24.pdf', '2023-2024', '2026-10-26'),
  ('34563512-8f37-50e8-bacb-72b6b62b9d97', '24252c63-25f4-5004-8fa0-5a633fd0a1e5', 'ipeds', 'College Navigator - University of Northern Colorado (IPEDS fall 2024)', 'https://nces.ed.gov/collegenavigator/?id=127741', '2024-2025', '2026-10-26'),
@@ -13964,7 +13964,7 @@ select '24252c63-25f4-5004-8fa0-5a633fd0a1e5'::uuid, 'D', v.* from (values
 
 -- ── University of Northern Iowa ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('aa657be8-4ecf-5b66-b69d-81f91cc59e1c', 'northern-iowa', 'University of Northern Iowa', 'UNI', 'US', 'IA', 'Cedar Falls', 42.514923, -92.459703, 'urban', 'public', 'https://www.uni.edu', 'https://admissions.uni.edu/international', 154095, 7800, 2.14, 18, 'semester');
+ ('aa657be8-4ecf-5b66-b69d-81f91cc59e1c', 'northern-iowa', 'University of Northern Iowa', 'Northern Iowa', 'US', 'IA', 'Cedar Falls', 42.514923, -92.459703, 'urban', 'public', 'https://www.uni.edu', 'https://admissions.uni.edu/international', 154095, 7800, 2.14, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fe126f61-482e-5663-bb93-0db90aa9d6e8', 'aa657be8-4ecf-5b66-b69d-81f91cc59e1c', 'cds', 'University of Northern Iowa Common Data Set 2025-2026 (PDF, updated 8.18.26)', 'https://ie.uni.edu/sites/default/files/inline-uploads/CDS-2025-2026%20Updated%208.18.26.pdf', '2025-2026', '2026-10-26'),
  ('0efa8b37-0854-50be-b343-185814808dd7', 'aa657be8-4ecf-5b66-b69d-81f91cc59e1c', 'admissions_site', 'UNI International Admissions - Admission policies (undergraduate)', 'https://admissions.uni.edu/international/undergraduate-students/admission-policies', null, '2026-10-26'),
@@ -14042,7 +14042,7 @@ select 'aa657be8-4ecf-5b66-b69d-81f91cc59e1c'::uuid, v.* from (values
 
 -- ── Northern Kentucky University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7a6abe7a-cbd8-507c-9228-8c111eec70aa', 'northern-kentucky', 'Northern Kentucky University', 'NKU', 'US', 'KY', 'Highland Heights', 39.029714, -84.463483, 'suburban', 'public', 'https://www.nku.edu', 'https://www.nku.edu/admissions-aid/index.html', 157447, 9927, 3.52, 18, 'semester');
+ ('7a6abe7a-cbd8-507c-9228-8c111eec70aa', 'northern-kentucky', 'Northern Kentucky University', 'Northern Kentucky', 'US', 'KY', 'Highland Heights', 39.029714, -84.463483, 'suburban', 'public', 'https://www.nku.edu', 'https://www.nku.edu/admissions-aid/index.html', 157447, 9927, 3.52, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8d37ee3c-ba69-5f3f-9d02-3d16001379ee', '7a6abe7a-cbd8-507c-9228-8c111eec70aa', 'cds', 'Northern Kentucky University Common Data Set 2023-2024 (PDF)', 'https://www.nku.edu/institutional-research/reports/_documents/CDS_2023-2024_Northern-Kentucky-University.pdf', '2023-2024', '2026-10-26'),
  ('508cf0d3-207d-5b0f-941b-7d3f512abc27', '7a6abe7a-cbd8-507c-9228-8c111eec70aa', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=157447', '2023-2024', '2026-10-26'),
@@ -14121,7 +14121,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Northern State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('16c61149-77aa-5b8c-9cde-09aac5d51eeb', 'northern-state', 'Northern State University', 'NSU', 'US', 'SD', 'Aberdeen', 45.450829, -98.484728, 'rural', 'public', 'https://northern.edu', 'https://northern.edu/admissions/international-students', 219259, 3169, 1.86, 19, 'semester');
+ ('16c61149-77aa-5b8c-9cde-09aac5d51eeb', 'northern-state', 'Northern State University', 'Northern State (SD)', 'US', 'SD', 'Aberdeen', 45.450829, -98.484728, 'rural', 'public', 'https://northern.edu', 'https://northern.edu/admissions/international-students', 219259, 3169, 1.86, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8bcef37f-b717-5a5e-aa4c-32cfb2d6d2b5', '16c61149-77aa-5b8c-9cde-09aac5d51eeb', 'ipeds', 'College Navigator - Northern State University (fall 2024 enrollment, 2024-25 student-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=219259', '2024-2025', '2026-10-26'),
  ('062d977a-edba-5d10-b10d-1017a7463a05', '16c61149-77aa-5b8c-9cde-09aac5d51eeb', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -14178,7 +14178,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Northwest Missouri State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('44b758d4-c446-5026-99bc-4dfcadf72d48', 'northwest-missouri-state', 'Northwest Missouri State University', 'Northwest', 'US', 'MO', 'Maryville', 40.351692, -94.883339, 'rural', 'public', 'https://www.nwmissouri.edu', 'https://www.nwmissouri.edu/admissions/international/', 178624, 5241, 2.31, 16, 'semester');
+ ('44b758d4-c446-5026-99bc-4dfcadf72d48', 'northwest-missouri-state', 'Northwest Missouri State University', 'Northwest Missouri State', 'US', 'MO', 'Maryville', 40.351692, -94.883339, 'rural', 'public', 'https://www.nwmissouri.edu', 'https://www.nwmissouri.edu/admissions/international/', 178624, 5241, 2.31, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8b4c8f33-b278-5909-a6d5-2d096acd8777', '44b758d4-c446-5026-99bc-4dfcadf72d48', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
  ('934f3d23-a901-5537-8b26-b8e4a19f9ff0', '44b758d4-c446-5026-99bc-4dfcadf72d48', 'ipeds', 'College Navigator - Northwest Missouri State University (fall 2024 admissions, enrollment, student-to-faculty ratio, tuition)', 'https://nces.ed.gov/collegenavigator/?id=178624', '2024-2025', '2026-10-26'),
@@ -14369,8 +14369,8 @@ select 'ddfb5add-5745-5e45-871d-72ffc63066da'::uuid, v.* from (values
  ('arts_design', 'A', 'School of Communication (theatre, radio/TV/film) and Bienen School of Music are among the best in the US.')) v;
 
 -- ── University of Notre Dame ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ca042073-2af7-5158-ba3a-bc286568be24', 'notre-dame', 'University of Notre Dame', 'US', 'IN', 'Notre Dame', 41.703058, -86.238959, 'suburban', 'private_nonprofit', 'https://www.nd.edu/', 'https://admissions.nd.edu/', 152080, 8818, 6.86, 8, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('ca042073-2af7-5158-ba3a-bc286568be24', 'notre-dame', 'University of Notre Dame', 'Notre Dame', 'US', 'IN', 'Notre Dame', 41.703058, -86.238959, 'suburban', 'private_nonprofit', 'https://www.nd.edu/', 'https://admissions.nd.edu/', 152080, 8818, 6.86, 8, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fb974950-2498-509c-8b15-ac220fb57ce1', 'ca042073-2af7-5158-ba3a-bc286568be24', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=152080', '2023-2024', '2026-10-21'),
  ('20bbd5e5-1a97-5533-895e-1505ef70f596', 'ca042073-2af7-5158-ba3a-bc286568be24', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?152080', null, '2026-10-21'),
@@ -14618,7 +14618,7 @@ select 'a89d4ad5-df02-5c82-9adc-dc8b82e72709'::uuid, 'school_college', v.* from 
 
 -- ── Oakland University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('563cfe51-3fa1-54a3-8d58-790c8f2253df', 'oakland', 'Oakland University', 'OU', 'US', 'MI', 'Rochester', 42.674573, -83.216418, 'suburban', 'public', 'https://www.oakland.edu', 'https://www.oakland.edu/futurestudents/', 171571, 12587, 1.93, 17, 'semester');
+ ('563cfe51-3fa1-54a3-8d58-790c8f2253df', 'oakland', 'Oakland University', 'Oakland', 'US', 'MI', 'Rochester', 42.674573, -83.216418, 'suburban', 'public', 'https://www.oakland.edu', 'https://www.oakland.edu/futurestudents/', 171571, 12587, 1.93, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1f8666cb-0db8-53ed-b80b-e515edd6fdff', '563cfe51-3fa1-54a3-8d58-790c8f2253df', 'cds', 'Oakland University Common Data Set 2024-2025 (PDF)', 'https://www.oakland.edu/media/Oakland/Assets/OIRA/files/Publications/CDS_2024-2025.pdf', '2024-2025', '2026-10-26'),
  ('cc80543d-c0d9-52fd-a1d0-fb6204d553cf', '563cfe51-3fa1-54a3-8d58-790c8f2253df', 'admissions_site', 'Oakland University - International undergraduate admissions (deadlines, English proficiency, costs)', 'https://www.oakland.edu/futurestudents/apply/international/', null, '2026-10-26'),
@@ -14697,8 +14697,8 @@ select '563cfe51-3fa1-54a3-8d58-790c8f2253df'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Ohio State University-Main Campus ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('2e85a67d-1b3b-514c-97a7-552372c12e68', 'ohio-state', 'Ohio State University-Main Campus', 'US', 'OH', 'Columbus', 39.999803, -83.007525, 'urban', 'public', 'https://www.osu.edu/', 'https://undergrad.osu.edu/', 204796, 45638, 7.61, 16);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('2e85a67d-1b3b-514c-97a7-552372c12e68', 'ohio-state', 'Ohio State University-Main Campus', 'Ohio State', 'US', 'OH', 'Columbus', 39.999803, -83.007525, 'urban', 'public', 'https://www.osu.edu/', 'https://undergrad.osu.edu/', 204796, 45638, 7.61, 16);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('37d9ce61-266c-5f27-81d7-84ead8772462', '2e85a67d-1b3b-514c-97a7-552372c12e68', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=204796', '2023-2024', '2026-10-21'),
  ('2cbcaf57-598e-5ecb-a88b-33a57933e9e6', '2e85a67d-1b3b-514c-97a7-552372c12e68', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?204796', null, '2026-10-21'),
@@ -14907,7 +14907,7 @@ select 'a2aec953-f2a7-5d9e-bb7b-e0a27429d1cc'::uuid, v.* from (values
 
 -- ── Old Dominion University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a49d80ae-e1a1-54b6-bceb-1e3bd69434dc', 'old-dominion', 'Old Dominion University', 'ODU', 'US', 'VA', 'Norfolk', 36.886418, -76.30666, 'urban', 'public', 'https://www.odu.edu/', 'https://www.odu.edu/admission', 232982, 17504, 1.21, 14, 'semester');
+ ('a49d80ae-e1a1-54b6-bceb-1e3bd69434dc', 'old-dominion', 'Old Dominion University', 'Old Dominion', 'US', 'VA', 'Norfolk', 36.886418, -76.30666, 'urban', 'public', 'https://www.odu.edu/', 'https://www.odu.edu/admission', 232982, 17504, 1.21, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6edf701e-88f3-5354-a9e6-cccfecf36c5f', 'a49d80ae-e1a1-54b6-bceb-1e3bd69434dc', 'cds', 'Old Dominion University Common Data Set 2025-2026 (PDF)', 'https://www.odu.edu/sites/default/files/2026/documents/cds-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('3ddd72d9-4702-5329-aba7-b4ed0bf5f40d', 'a49d80ae-e1a1-54b6-bceb-1e3bd69434dc', 'ipeds', 'IPEDS institutional directory (location, locale) via Urban Institute Education Data Portal', 'https://educationdata.urban.org/api/v1/college-university/ipeds/directory/2023/?unitid=232982', '2023-2024', '2026-10-26'),
@@ -15045,7 +15045,7 @@ select 'ff88d87f-2080-5255-91cf-71645b8f2cb1'::uuid, v.* from (values
 
 -- ── Olivet Nazarene University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('4c2b747a-e58e-5677-81da-c27164af9675', 'olivet-nazarene', 'Olivet Nazarene University', 'ONU', 'US', 'IL', 'Bourbonnais', 41.155237, -87.875165, 'suburban', 'private_nonprofit', 'https://www.olivet.edu/', 'https://www.olivet.edu/admissions', 147828, 2711, 1.95, 15, 'semester');
+ ('4c2b747a-e58e-5677-81da-c27164af9675', 'olivet-nazarene', 'Olivet Nazarene University', 'Olivet Nazarene', 'US', 'IL', 'Bourbonnais', 41.155237, -87.875165, 'suburban', 'private_nonprofit', 'https://www.olivet.edu/', 'https://www.olivet.edu/admissions', 147828, 2711, 1.95, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f0460fbc-7cad-5394-9bde-5eb9e1bc2875', '4c2b747a-e58e-5677-81da-c27164af9675', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=147828', '2023-2024', '2026-10-26'),
  ('f7e5e3b8-a7f2-5135-be16-02e95f982154', '4c2b747a-e58e-5677-81da-c27164af9675', 'ipeds', 'College Navigator - Olivet Nazarene University (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=147828', '2024-2025', '2026-10-26'),
@@ -15090,7 +15090,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Oral Roberts University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ff8bac88-a0f5-5b26-92d4-f24e401f31c1', 'oral-roberts', 'Oral Roberts University', 'ORU', 'US', 'OK', 'Tulsa', 36.049129, -95.952547, 'urban', 'private_nonprofit', 'https://oru.edu', 'https://oru.edu/admissions/international/index.php', 207582, 5017, 14.17, 18, 'semester');
+ ('ff8bac88-a0f5-5b26-92d4-f24e401f31c1', 'oral-roberts', 'Oral Roberts University', 'Oral Roberts', 'US', 'OK', 'Tulsa', 36.049129, -95.952547, 'urban', 'private_nonprofit', 'https://oru.edu', 'https://oru.edu/admissions/international/index.php', 207582, 5017, 14.17, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1cbfbc23-591f-5bfe-86c2-90b72ad5e3f7', 'ff8bac88-a0f5-5b26-92d4-f24e401f31c1', 'ipeds', 'College Navigator - Oral Roberts University (IPEDS fall 2024 admissions, enrollment, test scores)', 'https://nces.ed.gov/collegenavigator/?id=207582', '2024-2025', '2026-10-26'),
  ('ba897f8d-6c97-5c80-845a-2779f4213e84', 'ff8bac88-a0f5-5b26-92d4-f24e401f31c1', 'ipeds', 'IPEDS ADM2024 applicant/admit/enrolled counts (Urban Institute Education Data Portal API mirror of IPEDS)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=207582&sex=99', '2024-2025', '2026-10-26'),
@@ -15228,7 +15228,7 @@ insert into programs (id, institution_id, slug, name, ucas_code, a_level_offer, 
 
 -- ── Pacific Lutheran University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('a14127da-626d-5c5e-9f74-19ad2cbaadda', 'pacific-lutheran', 'Pacific Lutheran University', 'PLU', 'US', 'WA', 'Tacoma', 47.14516, -122.440421, 'suburban', 'private_nonprofit', 'https://www.plu.edu/', 'https://www.plu.edu/admission/', 236230, 2446, 3.56, 12);
+ ('a14127da-626d-5c5e-9f74-19ad2cbaadda', 'pacific-lutheran', 'Pacific Lutheran University', 'Pacific Lutheran', 'US', 'WA', 'Tacoma', 47.14516, -122.440421, 'suburban', 'private_nonprofit', 'https://www.plu.edu/', 'https://www.plu.edu/admission/', 236230, 2446, 3.56, 12);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('57b82f0f-a37b-5494-8db4-f353a55af781', 'a14127da-626d-5c5e-9f74-19ad2cbaadda', 'cds', 'Pacific Lutheran University Common Data Set 2025-26 (PDF)', 'https://www.plu.edu/institutional-research/wp-content/uploads/sites/170/2026/04/cds-2025-26-_-pacific-lutheran-university-fixed.pdf', '2025-2026', '2026-10-26'),
  ('6c1186e3-0852-517b-bb3e-7c89417446c8', 'a14127da-626d-5c5e-9f74-19ad2cbaadda', 'ipeds', 'IPEDS Admissions survey, fall 2024 entering class (ADM2024), via College Navigator', 'https://nces.ed.gov/collegenavigator/?id=236230', '2024-2025', '2026-10-26'),
@@ -15293,7 +15293,7 @@ select 'a14127da-626d-5c5e-9f74-19ad2cbaadda'::uuid, false, v.* from (values
 
 -- ── Palm Beach Atlantic University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('726b80ec-dd61-59b7-8150-d38c40267c04', 'palm-beach-atlantic', 'Palm Beach Atlantic University', 'PBA', 'US', 'FL', 'West Palm Beach', 26.7044, -80.05247, 'urban', 'private_nonprofit', 'https://www.pba.edu', 'https://www.pba.edu/admissions/undergraduate/international/', 136330, 3312, 6.85, 13, 'semester');
+ ('726b80ec-dd61-59b7-8150-d38c40267c04', 'palm-beach-atlantic', 'Palm Beach Atlantic University', 'Palm Beach Atlantic', 'US', 'FL', 'West Palm Beach', 26.7044, -80.05247, 'urban', 'private_nonprofit', 'https://www.pba.edu', 'https://www.pba.edu/admissions/undergraduate/international/', 136330, 3312, 6.85, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('74973546-98bf-58dd-a84c-bf1a522ecc80', '726b80ec-dd61-59b7-8150-d38c40267c04', 'ipeds', 'IPEDS / College Navigator - Palm Beach Atlantic University (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=136330', '2024-2025', '2026-10-26'),
  ('4772f58c-06ec-5c1b-9b8d-a3e607b0133b', '726b80ec-dd61-59b7-8150-d38c40267c04', 'other', 'NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=136330', '2024-2025', '2026-10-26'),
@@ -15640,8 +15640,8 @@ select '441ab975-fd7e-5bfa-82f9-ae559dd5d271'::uuid, v.* from (values
  ('humanities', 'D', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Pennsylvania State University-Main Campus ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a0bc31fd-5254-5914-a037-bb1297d08b8f', 'penn-state', 'Pennsylvania State University-Main Campus', 'US', 'PA', 'University Park', 40.7965, -77.862848, 'urban', 'public', 'https://www.psu.edu/', 'https://admissions.psu.edu/', 214777, 42284, 9.33, 16, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('a0bc31fd-5254-5914-a037-bb1297d08b8f', 'penn-state', 'Pennsylvania State University-Main Campus', 'Penn State', 'US', 'PA', 'University Park', 40.7965, -77.862848, 'urban', 'public', 'https://www.psu.edu/', 'https://admissions.psu.edu/', 214777, 42284, 9.33, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4fa59176-8f49-52d9-b13f-2bfa28fbf398', 'a0bc31fd-5254-5914-a037-bb1297d08b8f', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=214777', '2023-2024', '2026-10-21'),
  ('0eeaf098-a825-546b-afb1-10c5e45375d9', 'a0bc31fd-5254-5914-a037-bb1297d08b8f', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?214777', null, '2026-10-21'),
@@ -15857,8 +15857,8 @@ select '6a37a137-19e5-5455-a2ce-8901f5b5b815'::uuid, v.* from (values
  ('nursing', 'D', 'BSN started in fall 2025 (California BRN approval May 2025); national accreditation still pending.')) v;
 
 -- ── University of Pittsburgh-Pittsburgh Campus ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('2ea3c1e4-e561-5ad8-b07e-c39055855d32', 'pitt', 'University of Pittsburgh-Pittsburgh Campus', 'US', 'PA', 'Pittsburgh', 40.444388, -79.953254, 'urban', 'public', 'https://www.pitt.edu/', 'https://admissions.pitt.edu/', 215293, 20370, 4.49, 13);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('2ea3c1e4-e561-5ad8-b07e-c39055855d32', 'pitt', 'University of Pittsburgh-Pittsburgh Campus', 'Pitt', 'US', 'PA', 'Pittsburgh', 40.444388, -79.953254, 'urban', 'public', 'https://www.pitt.edu/', 'https://admissions.pitt.edu/', 215293, 20370, 4.49, 13);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('cac67963-63d1-59ce-af72-6e55be822118', '2ea3c1e4-e561-5ad8-b07e-c39055855d32', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=215293', '2023-2024', '2026-10-21'),
  ('3ea753a4-989e-5974-895a-f53fdc6bd72f', '2ea3c1e4-e561-5ad8-b07e-c39055855d32', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?215293', null, '2026-10-21'),
@@ -15917,7 +15917,7 @@ select '2ea3c1e4-e561-5ad8-b07e-c39055855d32'::uuid, v.* from (values
 
 -- ── Pittsburg State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3ed85bb8-49ac-57bf-904f-ad35eb296c5d', 'pittsburg-state', 'Pittsburg State University', 'Pitt State', 'US', 'KS', 'Pittsburg', 37.392071, -94.702473, 'rural', 'public', 'https://www.pittstate.edu', 'https://www.pittstate.edu/admission/international-admission-information.html', 155681, 4491, 2.96, 14, 'semester');
+ ('3ed85bb8-49ac-57bf-904f-ad35eb296c5d', 'pittsburg-state', 'Pittsburg State University', 'Pittsburg State', 'US', 'KS', 'Pittsburg', 37.392071, -94.702473, 'rural', 'public', 'https://www.pittstate.edu', 'https://www.pittstate.edu/admission/international-admission-information.html', 155681, 4491, 2.96, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7ba58c57-650f-55bf-8b49-4414ef54567e', '3ed85bb8-49ac-57bf-904f-ad35eb296c5d', 'cds', 'Pittsburg State University Common Data Set 2024-2025 (PDF)', 'https://www.pittstate.edu/oie/_files/documents/cds-final-2024-2025-for-psu-website1.pdf', '2024-2025', '2026-10-26'),
  ('afb17e9e-6b57-5671-bb69-4c087f835f8d', '3ed85bb8-49ac-57bf-904f-ad35eb296c5d', 'admissions_site', 'Pittsburg State University - International admission (undergraduate requirements, English proficiency, IEP)', 'https://www.pittstate.edu/admission/international-admission-information.html', null, '2026-10-26'),
@@ -16129,7 +16129,7 @@ select 'bce097fc-89d4-5738-9212-5701db129383'::uuid, v.* from (values
 
 -- ── Portland State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, student_faculty_ratio, academic_calendar) values
- ('acbf81e7-aae6-5e60-b80a-26230d495f5e', 'portland-state', 'Portland State University', 'PSU', 'US', 'OR', 'Portland', 45.511601, -122.686289, 'urban', 'public', 'https://www.pdx.edu', 'https://www.pdx.edu/admissions', 209807, 15426, 18, 'quarter');
+ ('acbf81e7-aae6-5e60-b80a-26230d495f5e', 'portland-state', 'Portland State University', 'Portland State', 'US', 'OR', 'Portland', 45.511601, -122.686289, 'urban', 'public', 'https://www.pdx.edu', 'https://www.pdx.edu/admissions', 209807, 15426, 18, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('76b8af45-487a-571d-ae1c-e10f8633f89d', 'acbf81e7-aae6-5e60-b80a-26230d495f5e', 'ipeds', 'IPEDS Admissions survey, fall 2024 entering class (ADM2024), as published in the Urban Institute Education Data Portal', 'https://nces.ed.gov/collegenavigator/?id=209807', '2024-2025', '2026-10-26'),
  ('78be8cfe-1b81-5a68-99a1-d66f7fae2ef4', 'acbf81e7-aae6-5e60-b80a-26230d495f5e', 'scorecard', 'College Scorecard (admission rate, SAT midpoints, cost)', 'https://collegescorecard.ed.gov/school/?209807', null, '2026-10-26'),
@@ -16189,7 +16189,7 @@ select 'acbf81e7-aae6-5e60-b80a-26230d495f5e'::uuid, v.* from (values
 
 -- ── Prairie View A&M University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c7fe9be4-7bbb-5f8e-b7d5-157c028b8b42', 'prairie-view-am', 'Prairie View A&M University', 'PVAMU', 'US', 'TX', 'Prairie View', 30.092425, -95.989475, 'rural', 'public', 'https://www.pvamu.edu/', 'https://www.pvamu.edu/admissions/', 227526, 8877, 0.74, 17, 'semester');
+ ('c7fe9be4-7bbb-5f8e-b7d5-157c028b8b42', 'prairie-view-am', 'Prairie View A&M University', 'Prairie View A&M', 'US', 'TX', 'Prairie View', 30.092425, -95.989475, 'rural', 'public', 'https://www.pvamu.edu/', 'https://www.pvamu.edu/admissions/', 227526, 8877, 0.74, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('d135e5e4-60e9-5582-b855-fdd6fbf63f83', 'c7fe9be4-7bbb-5f8e-b7d5-157c028b8b42', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=227526', '2023-2024', '2026-10-26'),
  ('fb1048e4-df07-5cf1-9bab-84bf935fb9b2', 'c7fe9be4-7bbb-5f8e-b7d5-157c028b8b42', 'ipeds', 'College Navigator - Prairie View A&M University (enrollment fall 2024, estimated expenses 2024-25)', 'https://nces.ed.gov/collegenavigator/?id=227526', null, '2026-10-26'),
@@ -16317,7 +16317,7 @@ select '1b4c4ac0-db93-58da-b4e1-aef54f7acd73'::uuid, v.* from (values
 
 -- ── Purdue University Fort Wayne ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('98ca9a0f-668c-539c-b3b5-cde3ce0f756c', 'purdue-fort-wayne', 'Purdue University Fort Wayne', 'PFW', 'US', 'IN', 'Fort Wayne', 41.117278, -85.108962, 'urban', 'public', 'https://www.pfw.edu/', 'https://www.pfw.edu/admissions-financial-aid/admissions', 151102, 6489, 2.31, 13, 'semester');
+ ('98ca9a0f-668c-539c-b3b5-cde3ce0f756c', 'purdue-fort-wayne', 'Purdue University Fort Wayne', 'Purdue Fort Wayne', 'US', 'IN', 'Fort Wayne', 41.117278, -85.108962, 'urban', 'public', 'https://www.pfw.edu/', 'https://www.pfw.edu/admissions-financial-aid/admissions', 151102, 6489, 2.31, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('e95d5525-d902-541a-b455-f293de48e9cc', '98ca9a0f-668c-539c-b3b5-cde3ce0f756c', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, student-faculty ratio, setting)', 'https://nces.ed.gov/collegenavigator/?id=151102', '2023-2024', '2026-10-26'),
  ('f8c668ed-17bd-5c1b-964f-beaf11c76eea', '98ca9a0f-668c-539c-b3b5-cde3ce0f756c', 'admissions_site', 'PFW International Education - Cost of attendance (2026-27 estimates)', 'https://www.pfw.edu/admissions-financial-aid/international-education/cost-attendance', null, '2026-10-26'),
@@ -16377,7 +16377,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Purdue University Northwest ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('88833a3e-a6f3-5039-a30f-9b9476759c18', 'purdue-northwest', 'Purdue University Northwest', 'PNW', 'US', 'IN', 'Hammond', 41.584324, -87.474236, 'suburban', 'public', 'https://www.pnw.edu/', 'https://www.pnw.edu/admissions/', 490805, 8201, 2.5, 17, 'semester');
+ ('88833a3e-a6f3-5039-a30f-9b9476759c18', 'purdue-northwest', 'Purdue University Northwest', 'Purdue Northwest', 'US', 'IN', 'Hammond', 41.584324, -87.474236, 'suburban', 'public', 'https://www.pnw.edu/', 'https://www.pnw.edu/admissions/', 490805, 8201, 2.5, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('424f072c-057a-51c9-8e83-f91a9271b8c4', '88833a3e-a6f3-5039-a30f-9b9476759c18', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, student-faculty ratio, setting)', 'https://nces.ed.gov/collegenavigator/?id=490805', '2023-2024', '2026-10-26'),
  ('2a3f5f3b-b703-5bcd-b03f-c6acc3f8c0ea', '88833a3e-a6f3-5039-a30f-9b9476759c18', 'financial_aid_site', 'PNW Financial Aid - Cost of attendance (fall 2026 and spring 2027 estimates)', 'https://www.pnw.edu/financial-aid/cost/', null, '2026-10-26'),
@@ -16516,7 +16516,7 @@ select 'd7b0e604-36c4-57ec-8afa-11e1217143fe'::uuid, true, v.* from (values
 
 -- ── Queen's University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('d050ee12-a86e-5768-8bfc-4698d974105c', 'queens-university', 'Queen''s University', 'Queen''s', 'CA', 'Ontario', 'Kingston', 44.2253, -76.4951, 'urban', 'public', 'https://www.queensu.ca/', 'https://www.queensu.ca/admission/international');
+ ('d050ee12-a86e-5768-8bfc-4698d974105c', 'queens-university', 'Queen''s University', 'Queen''s University', 'CA', 'Ontario', 'Kingston', 44.2253, -76.4951, 'urban', 'public', 'https://www.queensu.ca/', 'https://www.queensu.ca/admission/international');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('b028248b-6b8d-5515-bd38-ee731198ece2', 'd050ee12-a86e-5768-8bfc-4698d974105c', 'admissions_site', 'Queen''s University - English Proficiency Requirements (undergraduate)', 'https://www.queensu.ca/admission/applicants/english-proficiency', '2026-10-27'),
  ('901c0b54-64cd-5957-872b-9d0278e36ec7', 'd050ee12-a86e-5768-8bfc-4698d974105c', 'admissions_site', 'Queen''s University - Undergraduate Admission Deadlines (2026-27 cycle, Fall 2027 entry)', 'https://www.queensu.ca/admission/applying/dates-deadlines', '2026-10-27'),
@@ -16593,7 +16593,7 @@ insert into institution_tiers (institution_id, category_key, tier_code, rational
 
 -- ── University of Rhode Island ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c69d3daa-bbc3-594e-9e76-c875d3a7c2a3', 'rhode-island', 'University of Rhode Island', 'URI', 'US', 'RI', 'Kingston', 41.484691, -71.527356, 'suburban', 'public', 'https://www.uri.edu', 'https://web.uri.edu/admission/', 217484, 14466, 1.23, 17, 'semester');
+ ('c69d3daa-bbc3-594e-9e76-c875d3a7c2a3', 'rhode-island', 'University of Rhode Island', 'Rhode Island', 'US', 'RI', 'Kingston', 41.484691, -71.527356, 'suburban', 'public', 'https://www.uri.edu', 'https://web.uri.edu/admission/', 217484, 14466, 1.23, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9fb0aeb1-3444-5160-9c45-10cf2cf55de8', 'c69d3daa-bbc3-594e-9e76-c875d3a7c2a3', 'cds', 'University of Rhode Island Common Data Set 2025-2026 (PDF)', 'https://web.uri.edu/ir/wp-content/uploads/sites/276/CDS-PDF-2025-2026_fillablePDF.pdf', '2025-2026', '2026-10-26'),
  ('39344087-4e6f-5c0a-a504-a342787d416a', 'c69d3daa-bbc3-594e-9e76-c875d3a7c2a3', 'admissions_site', 'URI Admission - First-Year Student Admission (deadlines, test policy, requirements)', 'https://web.uri.edu/admission/apply/first-year/', null, '2026-10-26'),
@@ -16750,8 +16750,8 @@ select '7d143b07-c6d4-5ab5-aa68-8a12e1b0fea0'::uuid, v.* from (values
  ('arts_design', 'A', 'Rice Architecture and the Shepherd School of Music are both among the best in the US.')) v;
 
 -- ── Rochester Institute of Technology ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('72d50d3c-d19a-5f32-ab10-e884f6a72409', 'rit', 'Rochester Institute of Technology', 'US', 'NY', 'Rochester', 43.084188, -77.67386, 'suburban', 'private_nonprofit', 'https://www.rit.edu/', 'https://www.rit.edu/admissions/', 195003, 13215, 3.8, 13, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('72d50d3c-d19a-5f32-ab10-e884f6a72409', 'rit', 'Rochester Institute of Technology', 'RIT', 'US', 'NY', 'Rochester', 43.084188, -77.67386, 'suburban', 'private_nonprofit', 'https://www.rit.edu/', 'https://www.rit.edu/admissions/', 195003, 13215, 3.8, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c426ff66-e1fe-5209-a9fe-3072acd21618', '72d50d3c-d19a-5f32-ab10-e884f6a72409', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=195003', '2023-2024', '2026-10-21'),
  ('2ef59eee-88d9-542f-946c-2d8a2f79bbf6', '72d50d3c-d19a-5f32-ab10-e884f6a72409', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?195003', null, '2026-10-21'),
@@ -16830,7 +16830,7 @@ select '72d50d3c-d19a-5f32-ab10-e884f6a72409'::uuid, v.* from (values
 
 -- ── Robert Morris University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6f9b3733-13ea-5330-ab53-d4716bba2a81', 'robert-morris', 'Robert Morris University', 'RMU', 'US', 'PA', 'Moon Township', 40.520415, -80.210468, 'suburban', 'private_nonprofit', 'https://www.rmu.edu/', 'https://www.rmu.edu/admissions', 215655, 4325, 5.55, 14, 'semester');
+ ('6f9b3733-13ea-5330-ab53-d4716bba2a81', 'robert-morris', 'Robert Morris University', 'Robert Morris', 'US', 'PA', 'Moon Township', 40.520415, -80.210468, 'suburban', 'private_nonprofit', 'https://www.rmu.edu/', 'https://www.rmu.edu/admissions', 215655, 4325, 5.55, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('48cbc604-0ada-558b-831f-fcd3912d3b1a', '6f9b3733-13ea-5330-ab53-d4716bba2a81', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, student-faculty ratio, setting)', 'https://nces.ed.gov/collegenavigator/?id=215655', '2023-2024', '2026-10-26'),
  ('10d2b524-e2f2-5fa2-9427-8edadbc5772d', '6f9b3733-13ea-5330-ab53-d4716bba2a81', 'admissions_site', 'RMU - Undergraduate tuition (rates for fall 2026 and spring 2027)', 'https://www.rmu.edu/admissions/student-financial-services/undergrad-tuition', null, '2026-10-26'),
@@ -17004,8 +17004,8 @@ select '08f58800-de4a-56c0-a285-a6990b53e246'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Rensselaer Polytechnic Institute ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8ea56d2f-0a4b-5ce5-a0cd-79ba8b776875', 'rpi', 'Rensselaer Polytechnic Institute', 'US', 'NY', 'Troy', 42.729978, -73.676646, 'urban', 'private_nonprofit', 'https://www.rpi.edu/', 'https://admissions.rpi.edu/', 194824, 5714, 7.16, 14, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('8ea56d2f-0a4b-5ce5-a0cd-79ba8b776875', 'rpi', 'Rensselaer Polytechnic Institute', 'RPI', 'US', 'NY', 'Troy', 42.729978, -73.676646, 'urban', 'private_nonprofit', 'https://www.rpi.edu/', 'https://admissions.rpi.edu/', 194824, 5714, 7.16, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('93eedd66-7d32-5d1b-b095-a200ee3a2382', '8ea56d2f-0a4b-5ce5-a0cd-79ba8b776875', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=194824', '2023-2024', '2026-10-21'),
  ('4e479ab5-89d5-50e6-a88f-e089608b4d3e', '8ea56d2f-0a4b-5ce5-a0cd-79ba8b776875', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?194824', null, '2026-10-21'),
@@ -17188,8 +17188,8 @@ select 'e7989fe9-a980-51ae-b240-fddd56b72611'::uuid, 'school_college', false, 'O
  ('cf7bce04-28c2-53b7-bd8d-c27d6e643ff4'::uuid, 'Rutgers Business School-Newark', 'business')) v;
 
 -- ── Rutgers University-New Brunswick ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('095edeb3-f3f8-5647-ba8f-e2be1569a1cc', 'rutgers', 'Rutgers University-New Brunswick', 'US', 'NJ', 'New Brunswick', 40.498769, -74.446251, 'urban', 'public', 'https://newbrunswick.rutgers.edu/', 'https://admissions.rutgers.edu/', 186380, 37751, 7.28, 16, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('095edeb3-f3f8-5647-ba8f-e2be1569a1cc', 'rutgers', 'Rutgers University-New Brunswick', 'Rutgers', 'US', 'NJ', 'New Brunswick', 40.498769, -74.446251, 'urban', 'public', 'https://newbrunswick.rutgers.edu/', 'https://admissions.rutgers.edu/', 186380, 37751, 7.28, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6fd30bae-6d73-572d-ad34-a604c367dfc0', '095edeb3-f3f8-5647-ba8f-e2be1569a1cc', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=186380', '2023-2024', '2026-10-21'),
  ('2ba47749-d8a1-59ba-abc7-7e92194f776f', '095edeb3-f3f8-5647-ba8f-e2be1569a1cc', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?186380', null, '2026-10-21'),
@@ -17292,7 +17292,7 @@ select '302d28db-3a67-5e2c-8054-f4983c2aa253'::uuid, 'D', v.* from (values
 
 -- ── Saginaw Valley State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('80e21a51-1e05-5d4a-ab42-e214dfd62d08', 'saginaw-valley', 'Saginaw Valley State University', 'SVSU', 'US', 'MI', 'University Center', 43.51176, -83.964273, 'suburban', 'public', 'https://www.svsu.edu', 'https://www.svsu.edu/admissions/', 172051, 6280, 4.01, 16.3, 'semester');
+ ('80e21a51-1e05-5d4a-ab42-e214dfd62d08', 'saginaw-valley', 'Saginaw Valley State University', 'Saginaw Valley State', 'US', 'MI', 'University Center', 43.51176, -83.964273, 'suburban', 'public', 'https://www.svsu.edu', 'https://www.svsu.edu/admissions/', 172051, 6280, 4.01, 16.3, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('d6f9edff-9f8c-5fb2-b7b0-76cb8ed7903a', '80e21a51-1e05-5d4a-ab42-e214dfd62d08', 'cds', 'Saginaw Valley State University Common Data Set 2025-2026 (XLSX)', 'https://www.svsu.edu/media/officeofinstitutionalresearch/CDS%202025-2026.xlsx', '2025-2026', '2026-10-26'),
  ('9ce08d9e-8409-5bd3-9ac0-8269e2506509', '80e21a51-1e05-5d4a-ab42-e214dfd62d08', 'admissions_site', 'Office of International Programs - International First-Year Student Requirements (deadlines, fee, English)', 'https://www.svsu.edu/officeofinternationalprograms/admissions/first-yearstudent/', null, '2026-10-26'),
@@ -17561,7 +17561,7 @@ select 'bac622e1-1e19-5fdc-8554-9aef68c51d4d'::uuid, 'direct_major', false, v.* 
 
 -- ── Sam Houston State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9824935e-5942-5fe7-8a08-5e7152c36997', 'sam-houston-state', 'Sam Houston State University', 'SHSU', 'US', 'TX', 'Huntsville', 30.714738, -95.546205, 'rural', 'public', 'https://www.shsu.edu', 'https://www.shsu.edu/admissions', 227881, 17822, 0.85, 21, 'semester');
+ ('9824935e-5942-5fe7-8a08-5e7152c36997', 'sam-houston-state', 'Sam Houston State University', 'Sam Houston State', 'US', 'TX', 'Huntsville', 30.714738, -95.546205, 'rural', 'public', 'https://www.shsu.edu', 'https://www.shsu.edu/admissions', 227881, 17822, 0.85, 21, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('d3211960-1459-5b08-8c56-a126124da071', '9824935e-5942-5fe7-8a08-5e7152c36997', 'cds', 'Sam Houston State University Common Data Set 2025-2026 (PDF; page footers still read 2024-2025, data are the fall 2025 class)', 'https://www.shsu.edu/offices-departments/data-analytics-decision-support/documents/fall-2025-cds-final_v2.pdf', '2025-2026', '2026-10-26'),
  ('433284cd-dfbf-5d09-a222-be8499cdfcb8', '9824935e-5942-5fe7-8a08-5e7152c36997', 'admissions_site', 'SHSU - International Students: undergraduate freshman steps, deadlines and English proficiency', 'https://www.shsu.edu/admissions/apply/international-steps-checklist', null, '2026-10-26'),
@@ -17636,7 +17636,7 @@ select '9824935e-5942-5fe7-8a08-5e7152c36997'::uuid, 'D', v.* from (values
 
 -- ── San Jose State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('d32b990a-4357-5a99-81ab-626a5c04dcbe', 'san-jose-state', 'San Jose State University', 'SJSU', 'US', 'CA', 'San Jose', 37.336569, -121.880621, 'urban', 'public', 'https://www.sjsu.edu', 'https://www.sjsu.edu/admissions/', 122755, 29895, 5.32, 27, 'semester');
+ ('d32b990a-4357-5a99-81ab-626a5c04dcbe', 'san-jose-state', 'San Jose State University', 'San Jose State', 'US', 'CA', 'San Jose', 37.336569, -121.880621, 'urban', 'public', 'https://www.sjsu.edu', 'https://www.sjsu.edu/admissions/', 122755, 29895, 5.32, 27, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('487fe752-9351-569c-a435-0b9909c9db55', 'd32b990a-4357-5a99-81ab-626a5c04dcbe', 'cds', 'San Jose State University Common Data Set 2025-2026 (PDF)', 'https://www.sjsu.edu/irsa/docs/cds/20260113_CDS%202025%20FINAL.pdf', '2025-2026', '2026-10-26'),
  ('c51a5743-e615-5535-ab03-e04f0162c836', 'd32b990a-4357-5a99-81ab-626a5c04dcbe', 'admissions_site', 'SJSU - Admission Deadlines (Fall 2027)', 'https://www.sjsu.edu/admissions/deadlines/index.php', null, '2026-10-26'),
@@ -17985,7 +17985,7 @@ select 'f8633771-8100-5f47-a466-08a6399a6520'::uuid, 'D', v.* from (values
 
 -- ── Southern Illinois University Edwardsville ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('bcf9b470-86eb-5238-8ed1-73bef5fa1844', 'siue', 'Southern Illinois University Edwardsville', 'SIUE', 'US', 'IL', 'Edwardsville', 38.793949, -89.997779, 'suburban', 'public', 'https://www.siue.edu', 'https://www.siue.edu/admissions/', 149231, 8975, 2.44, 15, 'semester');
+ ('bcf9b470-86eb-5238-8ed1-73bef5fa1844', 'siue', 'Southern Illinois University Edwardsville', 'SIU Edwardsville', 'US', 'IL', 'Edwardsville', 38.793949, -89.997779, 'suburban', 'public', 'https://www.siue.edu', 'https://www.siue.edu/admissions/', 149231, 8975, 2.44, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('e6a7c99d-8290-508a-9858-c1bb6e4c53c9', 'bcf9b470-86eb-5238-8ed1-73bef5fa1844', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023) and fall 2023 enrollment (EF2023A)', 'https://nces.ed.gov/collegenavigator/?id=149231', '2023-2024', '2026-10-26'),
  ('88fb4119-c987-575a-a9d7-0e2c0cb9094b', 'bcf9b470-86eb-5238-8ed1-73bef5fa1844', 'ipeds', 'College Navigator profile (fall 2024 admissions summary, 2024-25 costs)', 'https://nces.ed.gov/collegenavigator/?id=149231', '2024-2025', '2026-10-26'),
@@ -18049,7 +18049,7 @@ select 'bcf9b470-86eb-5238-8ed1-73bef5fa1844'::uuid, 'D', v.* from (values
 
 -- ── Slippery Rock University of Pennsylvania ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('dd3198d3-b17b-5afc-a85b-e1f48c3c70f4', 'slippery-rock', 'Slippery Rock University of Pennsylvania', 'SRU', 'US', 'PA', 'Slippery Rock', 41.062719, -80.045965, 'rural', 'public', 'https://www.sru.edu', 'https://www.sru.edu/admissions', 216038, 7088, 3.5, 22, 'semester');
+ ('dd3198d3-b17b-5afc-a85b-e1f48c3c70f4', 'slippery-rock', 'Slippery Rock University of Pennsylvania', 'Slippery Rock', 'US', 'PA', 'Slippery Rock', 41.062719, -80.045965, 'rural', 'public', 'https://www.sru.edu', 'https://www.sru.edu/admissions', 216038, 7088, 3.5, 22, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('e2746f86-8786-582e-8c0c-b6c2495218b8', 'dd3198d3-b17b-5afc-a85b-e1f48c3c70f4', 'cds', 'Slippery Rock University Common Data Set 2025-2026 (PDF)', 'https://www.sru.edu/documents/offices/analytics-decision-support/CDS_2025-2026_SRU.pdf', '2025-2026', '2026-10-26'),
  ('3298a159-00ca-5002-9af9-707a21821367', 'dd3198d3-b17b-5afc-a85b-e1f48c3c70f4', 'ipeds', 'IPEDS / College Navigator - Slippery Rock University of Pennsylvania', 'https://nces.ed.gov/collegenavigator/?id=216038', '2024-2025', '2026-10-26'),
@@ -18127,8 +18127,8 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
  ('c6f5526b-41fe-535b-a118-accee990201e', 'dd3198d3-b17b-5afc-a85b-e1f48c3c70f4', 'Nursing (BSN and Nursing 1+2+1)', 'nursing', 'direct_major', true, 'Competitive and space-limited; BSN needs a 3.7 GPA (Nursing 1+2+1 a 3.6) with a Nov. 1 priority date. SRU cannot issue an I-20 or DS-2019 for Nursing, so students needing a student visa cannot enroll in it.');
 
 -- ── Southern Methodist University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('eeca49a7-1d63-5014-8498-5a597563d9f5', 'smu', 'Southern Methodist University', 'US', 'TX', 'Dallas', 32.843612, -96.783365, 'suburban', 'private_nonprofit', 'https://www.smu.edu/', 'https://www.smu.edu/admission', 228246, 7277, 3.83, 11);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('eeca49a7-1d63-5014-8498-5a597563d9f5', 'smu', 'Southern Methodist University', 'SMU', 'US', 'TX', 'Dallas', 32.843612, -96.783365, 'suburban', 'private_nonprofit', 'https://www.smu.edu/', 'https://www.smu.edu/admission', 228246, 7277, 3.83, 11);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('91ade604-9f67-5768-85e8-4dcdeb5d3aaf', 'eeca49a7-1d63-5014-8498-5a597563d9f5', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=228246', '2023-2024', '2026-10-21'),
  ('823f3f0e-3226-5147-bb80-acbdd882afd3', 'eeca49a7-1d63-5014-8498-5a597563d9f5', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?228246', null, '2026-10-21'),
@@ -18241,7 +18241,7 @@ select '5b6d9841-5cf6-5fb1-a78a-20817f6fc65d'::uuid, v.* from (values
 
 -- ── South Dakota State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('43709a15-6b1f-50c7-b209-bec4c4ba2c1b', 'south-dakota-state', 'South Dakota State University', 'SDSU', 'US', 'SD', 'Brookings', 44.317485, -96.782139, 'rural', 'public', 'https://www.sdstate.edu/', 'https://www.sdstate.edu/admissions', 219356, 10177, 3.02, 17, 'semester');
+ ('43709a15-6b1f-50c7-b209-bec4c4ba2c1b', 'south-dakota-state', 'South Dakota State University', 'South Dakota State', 'US', 'SD', 'Brookings', 44.317485, -96.782139, 'rural', 'public', 'https://www.sdstate.edu/', 'https://www.sdstate.edu/admissions', 219356, 10177, 3.02, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('160b6c1e-9762-517f-b093-7ef34c4b394b', '43709a15-6b1f-50c7-b209-bec4c4ba2c1b', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023) and Fall 2023 enrollment (EF2023A); College Navigator profile', 'https://nces.ed.gov/collegenavigator/?id=219356', '2023-2024', '2026-10-26'),
  ('c998ba82-2566-53f0-8126-0a121921c2b2', '43709a15-6b1f-50c7-b209-bec4c4ba2c1b', 'admissions_site', 'SDSU - Estimated Costs for International Students', 'https://www.sdstate.edu/international-student-scholar-engagement/estimated-costs-international-students', null, '2026-10-26'),
@@ -18297,7 +18297,7 @@ select '43709a15-6b1f-50c7-b209-bec4c4ba2c1b'::uuid, 'D', v.* from (values
 
 -- ── University of South Dakota ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e7afddbc-ddc1-5066-ad00-770337d69f80', 'south-dakota', 'University of South Dakota', 'USD', 'US', 'SD', 'Vermillion', 42.786019, -96.925283, 'rural', 'public', 'https://www.usd.edu/', 'https://www.usd.edu/admissions-and-aid', 219471, 7619, 5.36, 16, 'semester');
+ ('e7afddbc-ddc1-5066-ad00-770337d69f80', 'south-dakota', 'University of South Dakota', 'South Dakota', 'US', 'SD', 'Vermillion', 42.786019, -96.925283, 'rural', 'public', 'https://www.usd.edu/', 'https://www.usd.edu/admissions-and-aid', 219471, 7619, 5.36, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('942f9a38-2e95-5270-9361-566d8e7de369', 'e7afddbc-ddc1-5066-ad00-770337d69f80', 'cds', 'University of South Dakota Common Data Set 2024-2025 (PDF)', 'https://www.usd.edu/-/media/Project/USD/DotEdu/About/Departments-Offices-and-Resources/Institutional-Research-Planning-and-Assessment/USD-Common-Data-Set.pdf', '2024-2025', '2026-10-26'),
  ('fbbee215-9241-5d80-ac4e-9ee90c6c758e', 'e7afddbc-ddc1-5066-ad00-770337d69f80', 'ipeds', 'IPEDS College Navigator profile (student-to-faculty ratio, campus setting)', 'https://nces.ed.gov/collegenavigator/?id=219471', '2024-2025', '2026-10-26'),
@@ -18377,7 +18377,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── Southeast Missouri State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('bc39cf98-e440-55b8-8d89-db9c80d8d26a', 'southeast-missouri-state', 'Southeast Missouri State University', 'SEMO', 'US', 'MO', 'Cape Girardeau', 37.311107, -89.531187, 'urban', 'public', 'https://semo.edu', 'https://semo.edu/international/admissions/', 179557, 7682, 5.75, 20, 'semester');
+ ('bc39cf98-e440-55b8-8d89-db9c80d8d26a', 'southeast-missouri-state', 'Southeast Missouri State University', 'Southeast Missouri State', 'US', 'MO', 'Cape Girardeau', 37.311107, -89.531187, 'urban', 'public', 'https://semo.edu', 'https://semo.edu/international/admissions/', 179557, 7682, 5.75, 20, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4f4dcddc-b67f-5502-911f-414c68b3ef7d', 'bc39cf98-e440-55b8-8d89-db9c80d8d26a', 'cds', 'Southeast Missouri State University Common Data Set 2025-2026 (PDF)', 'https://semo.edu/institutional-research/_pdfs/accessible_version_cds-pdf-2025-2026-southeastmissouristateuniversity.pdf', '2025-2026', '2026-10-26'),
  ('5fd8c9a7-f85e-596a-922a-8a3309757b7b', 'bc39cf98-e440-55b8-8d89-db9c80d8d26a', 'admissions_site', 'SEMO - International undergraduate admission policies and guidelines (deadlines, English minimums, score codes)', 'https://semo.edu/international/admissions/policies', null, '2026-10-26'),
@@ -18457,7 +18457,7 @@ select 'bc39cf98-e440-55b8-8d89-db9c80d8d26a'::uuid, 'D', v.* from (values
 
 -- ── Southeastern Louisiana University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('d4e6da63-3306-597b-9a38-ce6a8293ad76', 'southeastern-louisiana', 'Southeastern Louisiana University', 'Southeastern', 'US', 'LA', 'Hammond', 30.514652, -90.468676, 'urban', 'public', 'https://www.southeastern.edu', 'https://www.southeastern.edu/apply/', 160612, 14294, 1.86, 22, 'semester');
+ ('d4e6da63-3306-597b-9a38-ce6a8293ad76', 'southeastern-louisiana', 'Southeastern Louisiana University', 'Southeastern Louisiana', 'US', 'LA', 'Hammond', 30.514652, -90.468676, 'urban', 'public', 'https://www.southeastern.edu', 'https://www.southeastern.edu/apply/', 160612, 14294, 1.86, 22, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('16cf22ec-6bf4-5892-b2b4-68d7a039e21b', 'd4e6da63-3306-597b-9a38-ce6a8293ad76', 'cds', 'Southeastern Louisiana University Common Data Set 2025, Section C: First-time First-year Admissions (PDF; Fall 2025 data, 2025-2026 edition)', 'https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-C-First-time-First-year-Admissions.pdf', '2025-2026', '2026-10-26'),
  ('d6ec6f8b-d149-56c3-8b56-3aa1bc854188', 'd4e6da63-3306-597b-9a38-ce6a8293ad76', 'cds', 'Southeastern Louisiana University Common Data Set 2025, Section B: Enrollment and Persistence (PDF)', 'https://www.southeastern.edu/wp-content/uploads/institutional-research/CDS-2025-B-Enrollment-and-Persistence.pdf', '2025-2026', '2026-10-26'),
@@ -18533,7 +18533,7 @@ select 'd4e6da63-3306-597b-9a38-ce6a8293ad76'::uuid, 'D', v.* from (values
 
 -- ── Southeastern Oklahoma State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c7d8efd0-af04-5b63-8af1-b9688f70f1de', 'southeastern-oklahoma', 'Southeastern Oklahoma State University', 'Southeastern', 'US', 'OK', 'Durant', 34.006808, -96.376864, 'rural', 'public', 'https://www.se.edu', 'https://www.se.edu/admissions/', 207847, 3224, 1.83, 25, 'semester');
+ ('c7d8efd0-af04-5b63-8af1-b9688f70f1de', 'southeastern-oklahoma', 'Southeastern Oklahoma State University', 'Southeastern Oklahoma', 'US', 'OK', 'Durant', 34.006808, -96.376864, 'rural', 'public', 'https://www.se.edu', 'https://www.se.edu/admissions/', 207847, 3224, 1.83, 25, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('eb591160-1055-5ad9-99cc-8814b9723d53', 'c7d8efd0-af04-5b63-8af1-b9688f70f1de', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=207847', '2024-2025', '2026-10-26'),
  ('aa0ea348-f86c-5528-b126-30bf5a6c830e', 'c7d8efd0-af04-5b63-8af1-b9688f70f1de', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -18590,7 +18590,7 @@ select 'c7d8efd0-af04-5b63-8af1-b9688f70f1de'::uuid, 'D', v.* from (values
 
 -- ── Southern Adventist University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('fecbbc18-e927-522a-a353-97c5349a8847', 'southern-adventist', 'Southern Adventist University', 'Southern', 'US', 'TN', 'Collegedale', 35.048254, -85.052088, 'suburban', 'private_nonprofit', 'https://www.southern.edu', 'https://www.southern.edu/undergrad/admissions/general-admissions.html', 221661, 2929, 6.28, 19, 'semester');
+ ('fecbbc18-e927-522a-a353-97c5349a8847', 'southern-adventist', 'Southern Adventist University', 'Southern Adventist', 'US', 'TN', 'Collegedale', 35.048254, -85.052088, 'suburban', 'private_nonprofit', 'https://www.southern.edu', 'https://www.southern.edu/undergrad/admissions/general-admissions.html', 221661, 2929, 6.28, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('792f8be1-b527-5440-a4df-1886554683de', 'fecbbc18-e927-522a-a353-97c5349a8847', 'ipeds', 'IPEDS Admissions & Enrollment survey, fall 2024 entering class (ADM2024), via the Urban Institute Education Data Portal', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=221661&sex=99', '2024-2025', '2026-10-26'),
  ('2de95390-ad98-50fd-86c2-7041c8e8f508', 'fecbbc18-e927-522a-a353-97c5349a8847', 'ipeds', 'NCES College Navigator - Southern Adventist University (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=221661', '2024-2025', '2026-10-26'),
@@ -18639,7 +18639,7 @@ select 'fecbbc18-e927-522a-a353-97c5349a8847'::uuid, 'D', v.* from (values
 
 -- ── University of Southern Indiana ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9cec1fe5-c450-59be-b15e-0dbb28fca6cd', 'southern-indiana', 'University of Southern Indiana', 'USI', 'US', 'IN', 'Evansville', 37.962374, -87.677214, 'suburban', 'public', 'https://www.usi.edu', 'https://www.usi.edu/admissions', 151306, 5372, 1.45, 15, 'semester');
+ ('9cec1fe5-c450-59be-b15e-0dbb28fca6cd', 'southern-indiana', 'University of Southern Indiana', 'Southern Indiana', 'US', 'IN', 'Evansville', 37.962374, -87.677214, 'suburban', 'public', 'https://www.usi.edu', 'https://www.usi.edu/admissions', 151306, 5372, 1.45, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('b2a3f55d-cef4-51c4-b992-5a5afedbd8e2', '9cec1fe5-c450-59be-b15e-0dbb28fca6cd', 'cds', 'University of Southern Indiana Common Data Set 2025-2026 (PDF; fall 2025 data, the file''s pages are headed 2024-2025)', 'https://www.usi.edu/media/qagpobie/cds-25-26-all-combined_klc_20260818.pdf', '2025-2026', '2026-10-26'),
  ('d39dca1f-6179-5f51-b858-0bd243b8ce95', '9cec1fe5-c450-59be-b15e-0dbb28fca6cd', 'admissions_site', 'USI International Admissions - How to apply (undergraduate requirements)', 'https://www.usi.edu/international/admissions/how-to-apply', null, '2026-10-26'),
@@ -18695,7 +18695,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── University of Southern Maine ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('683215a9-4836-5015-bea4-dba45f177776', 'southern-maine', 'University of Southern Maine', 'USM', 'US', 'ME', 'Portland', 43.662863, -70.274247, 'urban', 'public', 'https://usm.maine.edu/', 'https://usm.maine.edu/office-of-admissions/', 161554, 5525, 1.45, 14, 'semester');
+ ('683215a9-4836-5015-bea4-dba45f177776', 'southern-maine', 'University of Southern Maine', 'Southern Maine', 'US', 'ME', 'Portland', 43.662863, -70.274247, 'urban', 'public', 'https://usm.maine.edu/', 'https://usm.maine.edu/office-of-admissions/', 161554, 5525, 1.45, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('5359a61f-e91e-5dd0-9f35-1db24c8f583d', '683215a9-4836-5015-bea4-dba45f177776', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=161554', '2023-2024', '2026-10-26'),
  ('d774491a-a4dd-53c7-9088-f60ef643d7eb', '683215a9-4836-5015-bea4-dba45f177776', 'ipeds', 'College Navigator profile (fall 2024 admissions summary, enrollment, 2024-25 costs)', 'https://nces.ed.gov/collegenavigator/?id=161554', '2024-2025', '2026-10-26'),
@@ -18828,7 +18828,7 @@ select 'd09f2e3a-9467-5f06-b23a-7c98285f9359'::uuid, 'D', v.* from (values
 
 -- ── Southern Utah University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3de0c2b4-c4da-5f6e-a951-d3949ea73162', 'southern-utah', 'Southern Utah University', 'SUU', 'US', 'UT', 'Cedar City', 37.674617, -113.070146, 'rural', 'public', 'https://www.suu.edu', 'https://www.suu.edu/admissions/', 230603, 13176, 5.68, 22, 'semester');
+ ('3de0c2b4-c4da-5f6e-a951-d3949ea73162', 'southern-utah', 'Southern Utah University', 'Southern Utah', 'US', 'UT', 'Cedar City', 37.674617, -113.070146, 'rural', 'public', 'https://www.suu.edu', 'https://www.suu.edu/admissions/', 230603, 13176, 5.68, 22, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('715352fd-7034-5981-ae3b-abc415a88716', '3de0c2b4-c4da-5f6e-a951-d3949ea73162', 'cds', 'Southern Utah University Common Data Set 2025-2026 (PDF)', 'https://drive.google.com/file/d/1E5MHkccO8fNCM2z_GCuuxBe_Gxs06Lkx/view?usp=drive_link', '2025-2026', '2026-10-26'),
  ('85a6c448-3947-57d2-82bc-2c6b07f50b47', '3de0c2b4-c4da-5f6e-a951-d3949ea73162', 'ipeds', 'College Navigator - Southern Utah University (fall 2024 admissions summary)', 'https://nces.ed.gov/collegenavigator/?id=230603', '2024-2025', '2026-10-26'),
@@ -18878,7 +18878,7 @@ select '3de0c2b4-c4da-5f6e-a951-d3949ea73162'::uuid, 'D', v.* from (values
 
 -- ── Southwestern Oklahoma State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('2e1cf252-2d9e-5cf2-824d-6f6c42fbc5c4', 'southwestern-oklahoma', 'Southwestern Oklahoma State University', 'SWOSU', 'US', 'OK', 'Weatherford', 35.535281, -98.707768, 'rural', 'public', 'https://www.swosu.edu', 'https://www.swosu.edu/admissions/', 207865, 4347, 1.36, 19, 'semester');
+ ('2e1cf252-2d9e-5cf2-824d-6f6c42fbc5c4', 'southwestern-oklahoma', 'Southwestern Oklahoma State University', 'Southwestern Oklahoma', 'US', 'OK', 'Weatherford', 35.535281, -98.707768, 'rural', 'public', 'https://www.swosu.edu', 'https://www.swosu.edu/admissions/', 207865, 4347, 1.36, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('2e60f71e-eda7-5eff-bff7-082ab36af105', '2e1cf252-2d9e-5cf2-824d-6f6c42fbc5c4', 'ipeds', 'IPEDS College Navigator (profile, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=207865', '2024-2025', '2026-10-26'),
  ('3bbeea4f-8f4b-54de-871c-92d7e5ec1204', '2e1cf252-2d9e-5cf2-824d-6f6c42fbc5c4', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -18931,7 +18931,7 @@ select '2e1cf252-2d9e-5cf2-824d-6f6c42fbc5c4'::uuid, 'D', v.* from (values
 
 -- ── St. Cloud State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('09afff14-6d28-5867-a5bd-c05e44a6a170', 'st-cloud-state', 'St. Cloud State University', 'SCSU', 'US', 'MN', 'St. Cloud', 45.553227, -94.152657, 'urban', 'public', 'https://www.stcloudstate.edu/', 'https://www.stcloudstate.edu/internationaladmissions/', 174783, 8209, 9.31, 18, 'semester');
+ ('09afff14-6d28-5867-a5bd-c05e44a6a170', 'st-cloud-state', 'St. Cloud State University', 'St. Cloud State', 'US', 'MN', 'St. Cloud', 45.553227, -94.152657, 'urban', 'public', 'https://www.stcloudstate.edu/', 'https://www.stcloudstate.edu/internationaladmissions/', 174783, 8209, 9.31, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fa3adb2f-3e0a-5821-a50b-bc5fc12f747a', '09afff14-6d28-5867-a5bd-c05e44a6a170', 'cds', 'St. Cloud State University Common Data Set 2024-2025 (PDF)', 'https://www.stcloudstate.edu/AIR/_files/documents/common-data-sets/cds-2024-2025.pdf', '2024-2025', '2026-10-26'),
  ('1c647c48-3d43-5e0d-b946-d40e40e62c10', '09afff14-6d28-5867-a5bd-c05e44a6a170', 'ipeds', 'IPEDS College Navigator profile (student-to-faculty ratio, campus setting)', 'https://nces.ed.gov/collegenavigator/?id=174783', '2024-2025', '2026-10-26'),
@@ -19122,7 +19122,7 @@ insert into major_admissions (id, institution_id, program, admit_model, notes) v
 
 -- ── St. Mary's University (Texas) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('08316a6f-ed91-529f-a791-815c11ef3cdb', 'st-marys-tx', 'St. Mary''s University (Texas)', 'St. Mary''s', 'US', 'TX', 'San Antonio', 29.453244, -98.562778, 'urban', 'private_nonprofit', 'https://www.stmarytx.edu', 'https://www.stmarytx.edu/admission/', 228149, 2330, 5.28, 11, 'semester');
+ ('08316a6f-ed91-529f-a791-815c11ef3cdb', 'st-marys-tx', 'St. Mary''s University (Texas)', 'St. Mary''s (TX)', 'US', 'TX', 'San Antonio', 29.453244, -98.562778, 'urban', 'private_nonprofit', 'https://www.stmarytx.edu', 'https://www.stmarytx.edu/admission/', 228149, 2330, 5.28, 11, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('10625a68-7526-5b6a-b1ca-204eb085da6f', '08316a6f-ed91-529f-a791-815c11ef3cdb', 'cds', 'St. Mary''s University Common Data Set 2025-2026 (PDF)', 'https://cdn.stmarytx.edu/wp-content/uploads/2026/05/CDS_Completed-2025-2026-PDF.pdf', '2025-2026', '2026-10-26'),
  ('46307b5a-87de-5c76-8c38-0c39df5dc2d7', '08316a6f-ed91-529f-a791-815c11ef3cdb', 'other', 'St. Mary''s University - Consumer Information (Fall 2025 enrollment, student-to-teacher ratio)', 'https://www.stmarytx.edu/compliance/consumer-information/', null, '2026-10-26'),
@@ -19201,7 +19201,7 @@ select '08316a6f-ed91-529f-a791-815c11ef3cdb'::uuid, 'D', v.* from (values
 
 -- ── St. Thomas University (Florida) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('949547d9-66fc-5db6-b06f-4a3fa2f05c10', 'st-thomas-fl', 'St. Thomas University (Florida)', 'STU', 'US', 'FL', 'Miami Gardens', 25.922071, -80.253273, 'suburban', 'private_nonprofit', 'https://www.stu.edu', 'https://www.stu.edu/Admissions', 137476, 4486, 6.13, 17, 'semester');
+ ('949547d9-66fc-5db6-b06f-4a3fa2f05c10', 'st-thomas-fl', 'St. Thomas University (Florida)', 'St. Thomas (FL)', 'US', 'FL', 'Miami Gardens', 25.922071, -80.253273, 'suburban', 'private_nonprofit', 'https://www.stu.edu', 'https://www.stu.edu/Admissions', 137476, 4486, 6.13, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('bd4e5a1e-8a25-55f9-ab91-4879fe9246a6', '949547d9-66fc-5db6-b06f-4a3fa2f05c10', 'ipeds', 'IPEDS / College Navigator - St. Thomas University (FL) (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=137476', '2024-2025', '2026-10-26'),
  ('14081bbf-b489-5424-b76f-2d706b56d71d', '949547d9-66fc-5db6-b06f-4a3fa2f05c10', 'other', 'NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=137476', '2024-2025', '2026-10-26'),
@@ -19323,7 +19323,7 @@ insert into major_admissions (id, institution_id, program, admit_model, capped, 
 
 -- ── Stephen F. Austin State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7fba1c54-a6dc-55d7-ae82-35e1d9c44efa', 'stephen-f-austin', 'Stephen F. Austin State University', 'SFA', 'US', 'TX', 'Nacogdoches', 31.621056, -94.64908, 'rural', 'public', 'https://www.sfasu.edu', 'https://www.sfasu.edu/apply/first-year', 228431, 9905, 0.66, 18, 'semester');
+ ('7fba1c54-a6dc-55d7-ae82-35e1d9c44efa', 'stephen-f-austin', 'Stephen F. Austin State University', 'Stephen F. Austin', 'US', 'TX', 'Nacogdoches', 31.621056, -94.64908, 'rural', 'public', 'https://www.sfasu.edu', 'https://www.sfasu.edu/apply/first-year', 228431, 9905, 0.66, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('36c70b1a-d05c-574b-bf3b-f32d2dd1398c', '7fba1c54-a6dc-55d7-ae82-35e1d9c44efa', 'cds', 'Stephen F. Austin State University Common Data Set 2025-2026 (PDF)', 'https://www.sfasu.edu/docs/institutional-research/common-data-set-complete-25-26.pdf', '2025-2026', '2026-10-26'),
  ('4af361ad-545b-5312-bdf4-8c00c30171d9', '7fba1c54-a6dc-55d7-ae82-35e1d9c44efa', 'ipeds', 'IPEDS / College Navigator - Stephen F. Austin State University (fall 2024)', 'https://nces.ed.gov/collegenavigator/?id=228431', '2024-2025', '2026-10-26'),
@@ -19455,8 +19455,8 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
  ('6ba2fd58-a06f-5504-8982-11b7d1fddb7e', '1992b196-f9d8-50e8-97aa-7f63f2baf77e', 'Music (School of Music)', 'arts_design', 'school_college', false, 'A virtual or in-person audition is required for admission to the School of Music.');
 
 -- ── Stevens Institute of Technology ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
- ('20a7084b-1e32-5025-95a5-13e731c8f72c', 'stevens', 'Stevens Institute of Technology', 'US', 'NJ', 'Hoboken', 40.744776, -74.025334, 'suburban', 'private_nonprofit', 'https://www.stevens.edu/', 'https://www.stevens.edu/admission-aid/undergraduate-admissions/how-to-apply', 186867, 4222, 3.46, 11);
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio) values
+ ('20a7084b-1e32-5025-95a5-13e731c8f72c', 'stevens', 'Stevens Institute of Technology', 'Stevens', 'US', 'NJ', 'Hoboken', 40.744776, -74.025334, 'suburban', 'private_nonprofit', 'https://www.stevens.edu/', 'https://www.stevens.edu/admission-aid/undergraduate-admissions/how-to-apply', 186867, 4222, 3.46, 11);
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3066484f-d0ce-5e84-bb71-3bd97329f14b', '20a7084b-1e32-5025-95a5-13e731c8f72c', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=186867', '2023-2024', '2026-10-21'),
  ('2fc84a19-4902-5957-9fc6-bb04fa7d00d1', '20a7084b-1e32-5025-95a5-13e731c8f72c', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?186867', null, '2026-10-21'),
@@ -19993,7 +19993,7 @@ select '2e083b83-f0ff-575f-8101-e7547bf6ac25'::uuid, v.* from (values
 
 -- ── Texas A&M University-Corpus Christi ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ede00be9-8149-5aaa-9c78-6a86d28336bf', 'tamu-corpus-christi', 'Texas A&M University-Corpus Christi', 'TAMU-CC', 'US', 'TX', 'Corpus Christi', 27.713723, -97.32395, 'urban', 'public', 'https://www.tamucc.edu', 'https://www.tamucc.edu/admissions/', 224147, 8673, 1.72, 18, 'semester');
+ ('ede00be9-8149-5aaa-9c78-6a86d28336bf', 'tamu-corpus-christi', 'Texas A&M University-Corpus Christi', 'Texas A&M Corpus Christi', 'US', 'TX', 'Corpus Christi', 27.713723, -97.32395, 'urban', 'public', 'https://www.tamucc.edu', 'https://www.tamucc.edu/admissions/', 224147, 8673, 1.72, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4cf4fe20-d2c3-5afc-981b-90baaff6116e', 'ede00be9-8149-5aaa-9c78-6a86d28336bf', 'cds', 'Texas A&M University-Corpus Christi Common Data Set 2025-2026 (PDF)', 'https://www.tamucc.edu/president/pir/cds_2025-2026-word_web.pdf', '2025-2026', '2026-10-26'),
  ('ab5caa81-1473-571a-8e0e-f13123dc81a8', 'ede00be9-8149-5aaa-9c78-6a86d28336bf', 'ipeds', 'IPEDS College Navigator - Texas A&M University-Corpus Christi (expenses, 2024-25)', 'https://nces.ed.gov/collegenavigator/?id=224147', '2024-2025', '2026-10-26'),
@@ -20073,7 +20073,7 @@ select 'ede00be9-8149-5aaa-9c78-6a86d28336bf'::uuid, 'D', v.* from (values
 
 -- ── Texas A&M University-Kingsville ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('43261305-7384-5b16-8496-e718da0e2ede', 'tamu-kingsville', 'Texas A&M University-Kingsville', 'Texas A&M-Kingsville', 'US', 'TX', 'Kingsville', 27.525168, -97.882387, 'rural', 'public', 'https://www.tamuk.edu', 'https://www.tamuk.edu/enrollment-management/admission/future-students/international/index.html', 228705, 5386, 1.34, 18, 'semester');
+ ('43261305-7384-5b16-8496-e718da0e2ede', 'tamu-kingsville', 'Texas A&M University-Kingsville', 'Texas A&M Kingsville', 'US', 'TX', 'Kingsville', 27.525168, -97.882387, 'rural', 'public', 'https://www.tamuk.edu', 'https://www.tamuk.edu/enrollment-management/admission/future-students/international/index.html', 228705, 5386, 1.34, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('44027f06-d0b2-517c-97d4-547529aebd23', '43261305-7384-5b16-8496-e718da0e2ede', 'cds', 'Texas A&M University-Kingsville Common Data Set 2024-2025 (PDF; latest edition posted, fall 2024 class)', 'https://www.tamuk.edu/pes/_files_oir/CDS_reports/2024-2025_TAMUK_CDS.pdf', '2024-2025', '2026-10-26'),
  ('eb70ec90-a424-55e2-b6d5-84aa2eadef4c', '43261305-7384-5b16-8496-e718da0e2ede', 'admissions_site', 'Texas A&M-Kingsville - International undergraduate (first-year) admission', 'https://www.tamuk.edu/enrollment-management/admission/future-students/international/index.html', null, '2026-10-26'),
@@ -20152,7 +20152,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Texas A&M University-San Antonio ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('989bc60e-2a8d-5770-a34e-846babdf1dfc', 'tamu-san-antonio', 'Texas A&M University-San Antonio', 'A&M-San Antonio', 'US', 'TX', 'San Antonio', 29.304762, -98.52417, 'urban', 'public', 'https://www.tamusa.edu/', 'https://www.tamusa.edu/admissions/index.html', 459949, 6790, 0.4, 18, 'semester');
+ ('989bc60e-2a8d-5770-a34e-846babdf1dfc', 'tamu-san-antonio', 'Texas A&M University-San Antonio', 'Texas A&M San Antonio', 'US', 'TX', 'San Antonio', 29.304762, -98.52417, 'urban', 'public', 'https://www.tamusa.edu/', 'https://www.tamusa.edu/admissions/index.html', 459949, 6790, 0.4, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1f614f4b-1ff1-5c3d-8f9a-3267f55e9b8f', '989bc60e-2a8d-5770-a34e-846babdf1dfc', 'cds', 'Texas A&M University-San Antonio Common Data Set 2025-2026 (Excel)', 'https://www.tamusa.edu/office-institutional-research/documents/CDS-PDF-2025-2026-Excel_Template_updated_final_2.xlsx', '2025-2026', '2026-10-26'),
  ('31f21279-c578-5374-8cb3-3fa2b18a24e9', '989bc60e-2a8d-5770-a34e-846babdf1dfc', 'ipeds', 'IPEDS / College Navigator (student-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=459949', '2024-2025', '2026-10-26'),
@@ -20369,7 +20369,7 @@ select 'f2e822e3-2e82-5f19-9b68-f42810c44c82'::uuid, false, v.* from (values
 
 -- ── Tennessee State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e23f16a9-8a9a-5efc-82f6-1c1e61dad791', 'tennessee-state', 'Tennessee State University', 'TSU', 'US', 'TN', 'Nashville', 36.166321, -86.828275, 'urban', 'public', 'https://www.tnstate.edu', 'https://www.tnstate.edu/admissions/', 221838, 4221, 1.75, 11, 'semester');
+ ('e23f16a9-8a9a-5efc-82f6-1c1e61dad791', 'tennessee-state', 'Tennessee State University', 'Tennessee State', 'US', 'TN', 'Nashville', 36.166321, -86.828275, 'urban', 'public', 'https://www.tnstate.edu', 'https://www.tnstate.edu/admissions/', 221838, 4221, 1.75, 11, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4caaae2d-ff3c-5afd-94cb-f5abce8bf231', 'e23f16a9-8a9a-5efc-82f6-1c1e61dad791', 'cds', 'TSU Common Data Set 2025-2026, section C First-Time, First-Year Admission (PDF; file header says 2024-2025 but the data are fall 2025)', 'https://wst-media.sfo2.digitaloceanspaces.com/TSU/wp-content/uploads/2026/10/19212944/First-Time-First-Year-Admission-1.pdf', '2025-2026', '2026-10-26'),
  ('d6215c71-8e66-586d-81bd-2dfc0e38abff', 'e23f16a9-8a9a-5efc-82f6-1c1e61dad791', 'cds', 'TSU Common Data Set 2025-2026, section B Enrollment and Persistence (PDF)', 'https://wst-media.sfo2.digitaloceanspaces.com/TSU/wp-content/uploads/2026/10/19212910/Enrollment-And-Persistence-1.pdf', '2025-2026', '2026-10-26'),
@@ -20513,8 +20513,8 @@ select 'b1f3b44b-479e-5d43-a30d-b3219a644adf'::uuid, 'direct_major', false, v.* 
  ('60af4c95-9b55-5056-a627-13119af18593'::uuid, 'Nursing', 'nursing', 'Program GPA requirement 3.00 (same for health-related pre-professional programs); a student who meets the general requirements but not the program''s is admitted to Interdisciplinary Studies with a program-interest attribute. Higher test score requirements apply.')) v;
 
 -- ── Texas A&M University-College Station ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6310294e-4946-5b59-9434-db0e60773dcc', 'texas-am', 'Texas A&M University-College Station', 'US', 'TX', 'College Station', 30.618726, -96.336475, 'urban', 'public', 'https://www.tamu.edu/', 'https://admissions.tamu.edu/', 228723, 59615, 1.08, 20, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('6310294e-4946-5b59-9434-db0e60773dcc', 'texas-am', 'Texas A&M University-College Station', 'Texas A&M', 'US', 'TX', 'College Station', 30.618726, -96.336475, 'urban', 'public', 'https://www.tamu.edu/', 'https://admissions.tamu.edu/', 228723, 59615, 1.08, 20, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('eace72b0-8310-560d-a196-045c77184970', '6310294e-4946-5b59-9434-db0e60773dcc', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=228723', '2023-2024', '2026-10-21'),
  ('59367752-61cd-539a-aa3f-7e7e63e7709f', '6310294e-4946-5b59-9434-db0e60773dcc', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?228723', null, '2026-10-21'),
@@ -20590,7 +20590,7 @@ select '6310294e-4946-5b59-9434-db0e60773dcc'::uuid, v.* from (values
 
 -- ── Texas Southern University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6ad9d7bf-8578-5d42-8af0-cba533001c3a', 'texas-southern', 'Texas Southern University', 'TSU', 'US', 'TX', 'Houston', 29.721046, -95.361113, 'urban', 'public', 'https://www.tsu.edu/', 'https://www.tsu.edu/admissions/', 229063, 6844, 1.14, 19, 'semester');
+ ('6ad9d7bf-8578-5d42-8af0-cba533001c3a', 'texas-southern', 'Texas Southern University', 'Texas Southern', 'US', 'TX', 'Houston', 29.721046, -95.361113, 'urban', 'public', 'https://www.tsu.edu/', 'https://www.tsu.edu/admissions/', 229063, 6844, 1.14, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('5607d9d2-10cb-5e23-8c56-10934cfc6d11', '6ad9d7bf-8578-5d42-8af0-cba533001c3a', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=229063', '2023-2024', '2026-10-26'),
  ('f4c891ab-eaf8-545a-87c9-22cac1fa91b3', '6ad9d7bf-8578-5d42-8af0-cba533001c3a', 'ipeds', 'College Navigator - Texas Southern University (fall 2024 enrollment, 2024-25 cost)', 'https://nces.ed.gov/collegenavigator/?id=229063', '2024-2025', '2026-10-26'),
@@ -20724,7 +20724,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Texas Woman's University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('d68cd772-b2bd-5fb7-9721-8a336cfbe57d', 'texas-womans', 'Texas Woman''s University', 'TWU', 'US', 'TX', 'Denton', 33.226211, -97.127842, 'urban', 'public', 'https://twu.edu', 'https://twu.edu/admissions/', 229179, 9962, 1.62, 16, 'semester');
+ ('d68cd772-b2bd-5fb7-9721-8a336cfbe57d', 'texas-womans', 'Texas Woman''s University', 'Texas Woman''s', 'US', 'TX', 'Denton', 33.226211, -97.127842, 'urban', 'public', 'https://twu.edu', 'https://twu.edu/admissions/', 229179, 9962, 1.62, 16, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c31e8233-797b-55ca-bf6b-88a4805b5d15', 'd68cd772-b2bd-5fb7-9721-8a336cfbe57d', 'cds', 'Texas Woman''s University Common Data Set 2025-2026 (PDF)', 'https://twu.edu/media/documents/irdm/CDS_2025-2026-(1).pdf', '2025-2026', '2026-10-26'),
  ('df509b3d-824a-5097-93d4-328f20538c63', 'd68cd772-b2bd-5fb7-9721-8a336cfbe57d', 'ipeds', 'IPEDS College Navigator (profile, student-to-faculty ratio, programs, fall 2024)', 'https://nces.ed.gov/collegenavigator/?id=229179', '2024-2025', '2026-10-26'),
@@ -20831,7 +20831,7 @@ select '56be2e20-f239-56b0-9e15-076d0859a62d'::uuid, 'direct_major', false, v.* 
 
 -- ── University of Toledo ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7a1beb6d-516a-550b-beb8-6abf954e03ba', 'toledo', 'University of Toledo', 'UToledo', 'US', 'OH', 'Toledo', 41.660572, -83.614714, 'urban', 'public', 'https://www.utoledo.edu', 'https://www.utoledo.edu/admission', 206084, 10726, 7.6, 18, 'semester');
+ ('7a1beb6d-516a-550b-beb8-6abf954e03ba', 'toledo', 'University of Toledo', 'Toledo', 'US', 'OH', 'Toledo', 41.660572, -83.614714, 'urban', 'public', 'https://www.utoledo.edu', 'https://www.utoledo.edu/admission', 206084, 10726, 7.6, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9a112c26-0519-5772-88da-2d65e00c3097', '7a1beb6d-516a-550b-beb8-6abf954e03ba', 'cds', 'University of Toledo Common Data Set 2025-2026 (PDF)', 'https://www.utoledo.edu/offices/institutional-research/report-library/common-data-set/docs/cds-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('0a12520f-714d-56a1-b2ef-71568f755571', '7a1beb6d-516a-550b-beb8-6abf954e03ba', 'admissions_site', 'University of Toledo - Undergraduate international admission: how to apply and deadlines', 'https://www.utoledo.edu/admission/international/how-to-apply.html', null, '2026-10-26'),
@@ -20914,7 +20914,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── University of Toronto ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('1b5f28e3-fead-5a6c-9058-eaedb1557c03', 'toronto', 'University of Toronto', 'U of T', 'CA', 'Ontario', 'Toronto', 43.6629, -79.3957, 'urban', 'public', 'https://www.utoronto.ca/', 'https://future.utoronto.ca/requirements-international-high-schools');
+ ('1b5f28e3-fead-5a6c-9058-eaedb1557c03', 'toronto', 'University of Toronto', 'Toronto', 'CA', 'Ontario', 'Toronto', 43.6629, -79.3957, 'urban', 'public', 'https://www.utoronto.ca/', 'https://future.utoronto.ca/requirements-international-high-schools');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('13b78b07-9341-5925-8391-bdccbb12e7c6', '1b5f28e3-fead-5a6c-9058-eaedb1557c03', 'admissions_site', 'University of Toronto - English language requirements (undergraduate)', 'https://future.utoronto.ca/english-language-requirements', '2026-10-27'),
  ('fcf816a8-74fe-58f7-9b47-878171be5a49', '1b5f28e3-fead-5a6c-9058-eaedb1557c03', 'admissions_site', 'University of Toronto - Dates & deadlines (2027 admissions)', 'https://future.utoronto.ca/deadlines', '2026-10-27'),
@@ -21169,8 +21169,8 @@ select 'd5e1a4ce-6a1b-5c22-b3bb-c2404137110a'::uuid, v.* from (values
  ('arts_design', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Tulane University of Louisiana ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('e05402d5-aed6-59b2-af4b-44efe445bb9f', 'tulane', 'Tulane University of Louisiana', 'US', 'LA', 'New Orleans', 29.940069, -90.122144, 'urban', 'private_nonprofit', 'https://tulane.edu/', 'https://admission.tulane.edu/', 160755, 7767, 4.85, 7, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('e05402d5-aed6-59b2-af4b-44efe445bb9f', 'tulane', 'Tulane University of Louisiana', 'Tulane', 'US', 'LA', 'New Orleans', 29.940069, -90.122144, 'urban', 'private_nonprofit', 'https://tulane.edu/', 'https://admission.tulane.edu/', 160755, 7767, 4.85, 7, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1e84aedc-9054-519c-a846-9a92d255ed17', 'e05402d5-aed6-59b2-af4b-44efe445bb9f', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=160755', '2023-2024', '2026-10-21'),
  ('bf9aa78b-2756-5073-a863-924ec4ed2bbe', 'e05402d5-aed6-59b2-af4b-44efe445bb9f', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?160755', null, '2026-10-21'),
@@ -21303,7 +21303,7 @@ select '23f57a4f-b4c7-50ab-8ad5-429bc04463a7'::uuid, v.* from (values
 
 -- ── University of Arkansas-Fort Smith ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('633234d7-6014-58f7-8ef7-e9fd2cb5ec12', 'uafs', 'University of Arkansas-Fort Smith', 'UAFS', 'US', 'AR', 'Fort Smith', 35.384184, -94.373729, 'urban', 'public', 'https://uafs.edu', 'https://uafs.edu/admissions/', 108092, 5459, 1.08, 18, 'semester');
+ ('633234d7-6014-58f7-8ef7-e9fd2cb5ec12', 'uafs', 'University of Arkansas-Fort Smith', 'Arkansas Fort Smith', 'US', 'AR', 'Fort Smith', 35.384184, -94.373729, 'urban', 'public', 'https://uafs.edu', 'https://uafs.edu/admissions/', 108092, 5459, 1.08, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('cc133604-c41e-5ed5-80b1-24edc4a847e7', '633234d7-6014-58f7-8ef7-e9fd2cb5ec12', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, 2024-25 costs)', 'https://nces.ed.gov/collegenavigator/?id=108092', '2023-2024', '2026-10-26'),
  ('462b6476-4a68-5ad5-8f1a-e4001c63b516', '633234d7-6014-58f7-8ef7-e9fd2cb5ec12', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=108092', '2023-2024', '2026-10-26'),
@@ -21373,8 +21373,8 @@ insert into programs (id, institution_id, slug, name, award, apply_via, duration
  ('f26f221e-5194-51f3-922f-81fd1d27e9cf', '6ee30807-edad-5810-82f2-ad37594c767e', 'applied-science-engineering-first-year', 'Applied Science (Engineering) BASc, common first year', 'BASc', 'Direct', 4, 'No fixed grade offer published. UBC says the grades needed differ by degree and year; in past years a B average (mainly A and B grades) on your country''s grading scale was required. Applied Science needs A Level Math, A Level Chemistry or Physics, and GCSE Chemistry and Physics; preference is given to applicants presenting both A Level Chemistry and A Level Physics.', 'No IB points total published. Completed IB Diploma including at least three Higher Level courses. Applied Science needs IB Math Analysis and Approaches SL or HL, or Applications and Interpretations HL (AI SL is not acceptable), plus IB Chemistry and IB Physics; academically strong candidates missing either may be evaluated case by case.', 'US curriculum: graduation from a US regionally accredited school; three years of math to junior level; B- in junior-level English; SAT or ACT optional (applicants who do not submit scores are not disadvantaged); AP courses completed as part of the high school curriculum may be used to meet requirements. Applied Science (Engineering): Pre-Calculus, AP Chemistry (or two full years of Chemistry), AP Physics 2 or C; academically strong candidates missing either AP Chemistry or AP Physics may be evaluated case by case.', 'Math (Pre-Calculus / IB Math AA or AI HL / A Level Math), Chemistry and Physics (AP Chemistry or two years; AP Physics 2 or C; IB Chemistry and Physics; GCSE Chemistry and Physics).', 66200, '2027-01-15', 6.5, 6.0, 'TOEFL iBT 1-120 scale: 90 overall with Reading 22, Listening 22, Writing 21, Speaking 21. TOEFL iBT 1-6 scale: 4.5 overall with Reading 4.5, Listening 5, Writing 4.5, Speaking 4. Scores must come from a single sitting.', 'UBC English Language Admission Standard (ELAS): minimum scores are per part in a single sitting; many applicants meet it without a test (for example four or more consecutive years of full-time education in English).', 'UBC''s engineering page describes a foundational first year followed by choosing one of the BASc engineering programs (14 programs on two campuses); this entry is the Applied Science (Engineering) first-year admission, Vancouver campus. The 4-year length is as stated on the Vancouver Mechanical Engineering page (https://you.ubc.ca/programs/mechanical-engineering-vancouver/). Fee: 2026/27 international tuition for Applied Science - Engineering, first-year full course load (37 credits at $1,789.18 per credit = $66,199.66, shown here rounded to $66,200) from https://students.ubc.ca/finances/tuition-fees/undergraduate-tuition-fees/ ; the 2027/28 amount is not yet published. A Personal Profile is part of the online application for most degrees (https://you.ubc.ca/applying-ubc/how-to-apply/personal-profile/). Deadlines (Fall 2027 entry): final application 15 Jan 2027; international applicants who also want the International Scholars awards must apply by 15 Nov 2026 (https://you.ubc.ca/applying-ubc/dates-deadlines/). Requirements by curriculum: https://you.ubc.ca/applying-ubc/requirements/international-high-schools/ (US and UK selections, degree ''Applied Science (Engineering)'') and https://you.ubc.ca/applying-ubc/requirements/international-baccalaureate/ ; AP: https://you.ubc.ca/applying-ubc/requirements/advanced-placement/ .', 'https://you.ubc.ca/engineering/', '2026-10-27');
 
 -- ── University of California-Davis ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('03fa17b3-c2b4-5f3a-ae70-24468d33a246', 'uc-davis', 'University of California-Davis', 'US', 'CA', 'Davis', 38.539667, -121.749567, 'suburban', 'public', 'https://ucdavis.edu/', 'https://ucdavis.edu/admissions/', 110644, 32253, 12.85, 22, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('03fa17b3-c2b4-5f3a-ae70-24468d33a246', 'uc-davis', 'University of California-Davis', 'UC Davis', 'US', 'CA', 'Davis', 38.539667, -121.749567, 'suburban', 'public', 'https://ucdavis.edu/', 'https://ucdavis.edu/admissions/', 110644, 32253, 12.85, 22, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6cad9e37-e156-5ec9-add8-5fbc13e7a1fd', '03fa17b3-c2b4-5f3a-ae70-24468d33a246', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110644', '2023-2024', '2026-10-21'),
  ('2cd00b90-fb0a-58ab-b869-8084c1a13f59', '03fa17b3-c2b4-5f3a-ae70-24468d33a246', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110644', null, '2026-10-21'),
@@ -21440,8 +21440,8 @@ select '03fa17b3-c2b4-5f3a-ae70-24468d33a246'::uuid, v.* from (values
  ('arts_design', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of California-Irvine ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3850bc94-5863-5334-a47b-0ca0db068347', 'uc-irvine', 'University of California-Irvine', 'US', 'CA', 'Irvine', 33.648434, -117.841248, 'urban', 'public', 'https://www.uci.edu/', 'https://admissions.uci.edu/', 110653, 30197, 12.3, 19, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('3850bc94-5863-5334-a47b-0ca0db068347', 'uc-irvine', 'University of California-Irvine', 'UC Irvine', 'US', 'CA', 'Irvine', 33.648434, -117.841248, 'urban', 'public', 'https://www.uci.edu/', 'https://admissions.uci.edu/', 110653, 30197, 12.3, 19, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1a8e5d27-fefb-58ab-b656-8efea53035b4', '3850bc94-5863-5334-a47b-0ca0db068347', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110653', '2023-2024', '2026-10-21'),
  ('adfdcfb3-ef3d-536b-884e-9153b15a58af', '3850bc94-5863-5334-a47b-0ca0db068347', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110653', null, '2026-10-21'),
@@ -21513,8 +21513,8 @@ select '3850bc94-5863-5334-a47b-0ca0db068347'::uuid, v.* from (values
  ('nursing', 'B', 'Sue & Bill Gross School of Nursing BS.')) v;
 
 -- ── University of California-Riverside ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3df39cc8-bdaa-5452-9229-d21e2c26bf31', 'uc-riverside', 'University of California-Riverside', 'US', 'CA', 'Riverside', 33.97246, -117.32741, 'urban', 'public', 'https://www.ucr.edu/', 'https://admissions.ucr.edu/', 110671, 22593, 3.7, 22, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('3df39cc8-bdaa-5452-9229-d21e2c26bf31', 'uc-riverside', 'University of California-Riverside', 'UC Riverside', 'US', 'CA', 'Riverside', 33.97246, -117.32741, 'urban', 'public', 'https://www.ucr.edu/', 'https://admissions.ucr.edu/', 110671, 22593, 3.7, 22, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('59ef0f43-8716-5f90-98fa-7775d8f2933b', '3df39cc8-bdaa-5452-9229-d21e2c26bf31', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110671', '2023-2024', '2026-10-21'),
  ('09b54053-34f0-55f8-b4d5-60263dece17d', '3df39cc8-bdaa-5452-9229-d21e2c26bf31', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110671', null, '2026-10-21'),
@@ -21582,8 +21582,8 @@ select '3df39cc8-bdaa-5452-9229-d21e2c26bf31'::uuid, v.* from (values
  ('arts_design', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of California-San Diego ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ce406595-5873-549c-91cf-2c52d1405bd1', 'uc-san-diego', 'University of California-San Diego', 'US', 'CA', 'La Jolla', 32.877749, -117.235866, 'urban', 'public', 'https://www.ucsd.edu/', 'https://admissions.ucsd.edu/index.html', 110680, 34948, 11.13, 19, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('ce406595-5873-549c-91cf-2c52d1405bd1', 'uc-san-diego', 'University of California-San Diego', 'UC San Diego', 'US', 'CA', 'La Jolla', 32.877749, -117.235866, 'urban', 'public', 'https://www.ucsd.edu/', 'https://admissions.ucsd.edu/index.html', 110680, 34948, 11.13, 19, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9d4d3a84-658c-56e4-9ca6-85541ce71be6', 'ce406595-5873-549c-91cf-2c52d1405bd1', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110680', '2023-2024', '2026-10-21'),
  ('9cb940eb-3210-5244-90e4-f42aba689bed', 'ce406595-5873-549c-91cf-2c52d1405bd1', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110680', null, '2026-10-21'),
@@ -21658,8 +21658,8 @@ select 'ce406595-5873-549c-91cf-2c52d1405bd1'::uuid, v.* from (values
  ('arts_design', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of California-Santa Barbara ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f8f512ca-342a-5b20-a2b4-3303f3a7d1f4', 'uc-santa-barbara', 'University of California-Santa Barbara', 'US', 'CA', 'Santa Barbara', 34.416297, -119.846426, 'suburban', 'public', 'https://www.ucsb.edu/', 'https://www.admissions.ucsb.edu/', 110705, 23113, 8.76, 17, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('f8f512ca-342a-5b20-a2b4-3303f3a7d1f4', 'uc-santa-barbara', 'University of California-Santa Barbara', 'UC Santa Barbara', 'US', 'CA', 'Santa Barbara', 34.416297, -119.846426, 'suburban', 'public', 'https://www.ucsb.edu/', 'https://www.admissions.ucsb.edu/', 110705, 23113, 8.76, 17, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c809e572-94fc-5853-a209-90692c161be6', 'f8f512ca-342a-5b20-a2b4-3303f3a7d1f4', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110705', '2023-2024', '2026-10-21'),
  ('4fc20773-39eb-5181-a409-5aec08b6b928', 'f8f512ca-342a-5b20-a2b4-3303f3a7d1f4', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110705', null, '2026-10-21'),
@@ -21723,8 +21723,8 @@ select 'f8f512ca-342a-5b20-a2b4-3303f3a7d1f4'::uuid, v.* from (values
  ('arts_design', 'C', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of California-Santa Cruz ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f698d33c-bb66-5414-82a8-543cf4846078', 'uc-santa-cruz', 'University of California-Santa Cruz', 'US', 'CA', 'Santa Cruz', 36.995584, -122.058801, 'urban', 'public', 'https://www.ucsc.edu/', 'https://admissions.ucsc.edu/', 110714, 17940, 3.03, 22, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('f698d33c-bb66-5414-82a8-543cf4846078', 'uc-santa-cruz', 'University of California-Santa Cruz', 'UC Santa Cruz', 'US', 'CA', 'Santa Cruz', 36.995584, -122.058801, 'urban', 'public', 'https://www.ucsc.edu/', 'https://admissions.ucsc.edu/', 110714, 17940, 3.03, 22, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8b587c14-8394-5fc8-bb20-f7a66617e33e', 'f698d33c-bb66-5414-82a8-543cf4846078', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110714', '2023-2024', '2026-10-21'),
  ('c9a1e1d0-1e4b-5220-99a7-4c044d33f1ff', 'f698d33c-bb66-5414-82a8-543cf4846078', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110714', null, '2026-10-21'),
@@ -21920,8 +21920,8 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, a_level_
  ('341ef423-a7a0-5c01-a95a-52c48e7b105f', '1e062d68-6f87-5d72-a26f-11097d24530f', 'law-llb', 'Law LLB', 'LLB', 'M100', 'A*AA', '39 points', 39, null, 'LNAT', 36800, '2027-01-13', 7.5, 7.0, 'English language Level 4. From 21 Jan 2026 TOEFL iBT uses the 1-6 scale; tests before that use the old 0-120 scale. The Level 4 TOEFL thresholds were not extracted; see the UCL English language requirements page.', 'UCL English language requirement Level 4 (IELTS Academic).', null, 'https://www.ucl.ac.uk/study/prospective-students/undergraduate/courses/law-llb', '2026-10-22');
 
 -- ── University of California-Los Angeles ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('ba6f6326-df17-5b28-9055-e105ba1840ee', 'ucla', 'University of California-Los Angeles', 'US', 'CA', 'Los Angeles', 34.07178, -118.442179, 'urban', 'public', 'https://www.ucla.edu/', 'https://www.admissions.ucla.edu/', 110662, 33475, 7.69, 20, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('ba6f6326-df17-5b28-9055-e105ba1840ee', 'ucla', 'University of California-Los Angeles', 'UCLA', 'US', 'CA', 'Los Angeles', 34.07178, -118.442179, 'urban', 'public', 'https://www.ucla.edu/', 'https://www.admissions.ucla.edu/', 110662, 33475, 7.69, 20, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('ac27ca95-c3e6-5f96-adf5-1360314655e7', 'ba6f6326-df17-5b28-9055-e105ba1840ee', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=110662', '2023-2024', '2026-10-21'),
  ('561e0e9a-59f0-5bae-aa16-01bc46d4144b', 'ba6f6326-df17-5b28-9055-e105ba1840ee', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?110662', null, '2026-10-21'),
@@ -22057,8 +22057,8 @@ select 'c51a2307-17cd-5eda-bd83-4ca792e13f04'::uuid, v.* from (values
  ('humanities', 'D', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Connecticut ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('4ac12544-30b8-587f-bf7b-81735c06dd8c', 'uconn', 'University of Connecticut', 'US', 'CT', 'Storrs', 41.809098, -72.249948, 'rural', 'public', 'https://uconn.edu/', 'https://admissions.uconn.edu/', 129020, 19835, 6.96, 17, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('4ac12544-30b8-587f-bf7b-81735c06dd8c', 'uconn', 'University of Connecticut', 'UConn', 'US', 'CT', 'Storrs', 41.809098, -72.249948, 'rural', 'public', 'https://uconn.edu/', 'https://admissions.uconn.edu/', 129020, 19835, 6.96, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('efccf3c6-a8e9-5a00-85c1-761d66b1b235', '4ac12544-30b8-587f-bf7b-81735c06dd8c', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=129020', '2023-2024', '2026-10-21'),
  ('f2f3ad93-56c9-513d-9475-1beaec18b32f', '4ac12544-30b8-587f-bf7b-81735c06dd8c', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?129020', null, '2026-10-21'),
@@ -22238,7 +22238,7 @@ select '46975e20-28ac-5ece-bc3c-dd728fead7c0'::uuid, v.* from (values
 
 -- ── University of Houston-Clear Lake ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a4c5ce15-0c73-5075-8f25-bdb90d1efb99', 'uh-clear-lake', 'University of Houston-Clear Lake', 'UHCL', 'US', 'TX', 'Houston', 29.582523, -95.098129, 'urban', 'public', 'https://www.uhcl.edu', 'https://www.uhcl.edu/admissions/', 225414, 6139, 1.51, 15, 'semester');
+ ('a4c5ce15-0c73-5075-8f25-bdb90d1efb99', 'uh-clear-lake', 'University of Houston-Clear Lake', 'UH Clear Lake', 'US', 'TX', 'Houston', 29.582523, -95.098129, 'urban', 'public', 'https://www.uhcl.edu', 'https://www.uhcl.edu/admissions/', 225414, 6139, 1.51, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('5b5c4e17-efc5-59f4-8997-38064a52bad4', 'a4c5ce15-0c73-5075-8f25-bdb90d1efb99', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
  ('cbebd64d-072a-5f6d-91a2-d1eaf31c04d8', 'a4c5ce15-0c73-5075-8f25-bdb90d1efb99', 'ipeds', 'IPEDS College Navigator (enrollment, fall 2024 applicants and admit rate, student-to-faculty ratio, programs)', 'https://nces.ed.gov/collegenavigator/?id=225414', '2024-2025', '2026-10-26'),
@@ -22299,7 +22299,7 @@ select 'a4c5ce15-0c73-5075-8f25-bdb90d1efb99'::uuid, 'D', v.* from (values
 
 -- ── University of Houston-Downtown ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8fb2df3f-14e5-5968-a769-9d6e0158d975', 'uh-downtown', 'University of Houston-Downtown', 'UHD', 'US', 'TX', 'Houston', 29.7661, -95.359338, 'urban', 'public', 'https://www.uhd.edu', 'https://www.uhd.edu/admissions/', 225432, 12441, 1.84, 18, 'semester');
+ ('8fb2df3f-14e5-5968-a769-9d6e0158d975', 'uh-downtown', 'University of Houston-Downtown', 'UH Downtown', 'US', 'TX', 'Houston', 29.7661, -95.359338, 'urban', 'public', 'https://www.uhd.edu', 'https://www.uhd.edu/admissions/', 225432, 12441, 1.84, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('10a17964-a572-528a-98fd-eba5403c8b4b', '8fb2df3f-14e5-5968-a769-9d6e0158d975', 'cds', 'University of Houston-Downtown Common Data Set 2025-2026 (PDF)', 'https://www.uhd.edu/documents/provost/ie/institutional-research/common-data-set/cds-2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('13ed9c08-5420-557b-85a9-b59a14cb9a76', '8fb2df3f-14e5-5968-a769-9d6e0158d975', 'ipeds', 'IPEDS College Navigator (profile, student-faculty ratio, programs, fall 2024)', 'https://nces.ed.gov/collegenavigator/?id=225432', '2024-2025', '2026-10-26'),
@@ -22351,7 +22351,7 @@ select '8fb2df3f-14e5-5968-a769-9d6e0158d975'::uuid, 'D', v.* from (values
 
 -- ── Texas A&M University-Victoria ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6e7d5ba7-134f-5866-a653-0202ec1fb200', 'uh-victoria', 'Texas A&M University-Victoria', 'A&M-Victoria', 'US', 'TX', 'Victoria', 28.816248, -96.976334, 'urban', 'public', 'https://www.tamuv.edu', 'https://www.tamuv.edu/admissions/', 225502, 2627, 3.01, 15, 'semester');
+ ('6e7d5ba7-134f-5866-a653-0202ec1fb200', 'uh-victoria', 'Texas A&M University-Victoria', 'Texas A&M Victoria', 'US', 'TX', 'Victoria', 28.816248, -96.976334, 'urban', 'public', 'https://www.tamuv.edu', 'https://www.tamuv.edu/admissions/', 225502, 2627, 3.01, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f75c3612-ee0a-5c40-94e6-8302dd063ccc', '6e7d5ba7-134f-5866-a653-0202ec1fb200', 'ipeds', 'College Navigator profile - Texas A&M University-Victoria (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=225502', '2024-2025', '2026-10-26'),
  ('123ec4b1-d251-5712-a1eb-c56e62b697d6', '6e7d5ba7-134f-5866-a653-0202ec1fb200', 'ipeds', 'IPEDS Admissions survey, fall 2024 entering class (ADM2024), exact counts via the Urban Institute Education Data Portal mirror', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=225502', '2024-2025', '2026-10-26'),
@@ -22408,7 +22408,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── University of Illinois Springfield ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('426b3118-c3d0-5bfd-94d8-255d0a711d1b', 'uis', 'University of Illinois Springfield', 'UIS', 'US', 'IL', 'Springfield', 39.729524, -89.616796, 'urban', 'public', 'https://www.uis.edu', 'https://www.uis.edu/admission-aid', 148654, 2337, 3.29, 13, 'semester');
+ ('426b3118-c3d0-5bfd-94d8-255d0a711d1b', 'uis', 'University of Illinois Springfield', 'Illinois Springfield', 'US', 'IL', 'Springfield', 39.729524, -89.616796, 'urban', 'public', 'https://www.uis.edu', 'https://www.uis.edu/admission-aid', 148654, 2337, 3.29, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c924059b-58b2-5551-9cf3-5f00fb8ca1c9', '426b3118-c3d0-5bfd-94d8-255d0a711d1b', 'cds', 'University of Illinois Springfield Common Data Set 2025-2026 (Excel workbook, Office of Institutional Research data book)', 'https://uofi.box.com/s/juonuu87gethilt20zykjkpaqxggpi7k', '2025-2026', '2026-10-26'),
  ('75567b96-a371-597d-894a-ed5a6c77a2f8', '426b3118-c3d0-5bfd-94d8-255d0a711d1b', 'ipeds', 'IPEDS via College Navigator - University of Illinois Springfield (student-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=148654', '2024-2025', '2026-10-26'),
@@ -22563,7 +22563,7 @@ select '4bbd7e56-a2f5-5ab6-9af7-1e0b6c3abb6d'::uuid, 'direct_major', true, v.* f
 
 -- ── University of Louisiana Monroe ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('a1139982-6511-5fbf-a792-1cdacc8d9610', 'ul-monroe', 'University of Louisiana Monroe', 'ULM', 'US', 'LA', 'Monroe', 32.527748, -92.07374, 'urban', 'public', 'https://www.ulm.edu', 'https://www.ulm.edu/admissions/', 159993, 6761, 4.45, 18, 'semester');
+ ('a1139982-6511-5fbf-a792-1cdacc8d9610', 'ul-monroe', 'University of Louisiana Monroe', 'Louisiana Monroe', 'US', 'LA', 'Monroe', 32.527748, -92.07374, 'urban', 'public', 'https://www.ulm.edu', 'https://www.ulm.edu/admissions/', 159993, 6761, 4.45, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9316d2fe-88f6-5008-8150-a0b19241851c', 'a1139982-6511-5fbf-a792-1cdacc8d9610', 'ipeds', 'IPEDS via College Navigator (fall 2024 admissions and enrollment; 2024-25 prices)', 'https://nces.ed.gov/collegenavigator/?id=159993', '2024-2025', '2026-10-26'),
  ('6e4eca9f-de9a-5ba9-b82b-7d7a1841d962', 'a1139982-6511-5fbf-a792-1cdacc8d9610', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=159993', '2023-2024', '2026-10-26'),
@@ -22613,7 +22613,7 @@ select 'a1139982-6511-5fbf-a792-1cdacc8d9610'::uuid, 'D', v.* from (values
 
 -- ── University of Michigan-Flint ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('5936e534-1437-56ae-a762-ff38e77e1972', 'um-flint', 'University of Michigan-Flint', 'UM-Flint', 'US', 'MI', 'Flint', 43.01875, -83.690276, 'urban', 'public', 'https://www.umflint.edu', 'https://www.umflint.edu/admissions/international-students/first-year-international-students/', 171146, 5011, 1.18, 14, 'semester');
+ ('5936e534-1437-56ae-a762-ff38e77e1972', 'um-flint', 'University of Michigan-Flint', 'Michigan Flint', 'US', 'MI', 'Flint', 43.01875, -83.690276, 'urban', 'public', 'https://www.umflint.edu', 'https://www.umflint.edu/admissions/international-students/first-year-international-students/', 171146, 5011, 1.18, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8e4a3940-122f-5e5e-8008-516962f8142c', '5936e534-1437-56ae-a762-ff38e77e1972', 'cds', 'University of Michigan-Flint Common Data Set 2024-2025 (PDF, linked from the Institutional Analysis Common Data Set page)', 'https://drive.google.com/file/d/15mJs4jKML-Z_FF649KWTzgbnLlQpaHR2/view?usp=sharing', '2024-2025', '2026-10-26'),
  ('b4abc2a7-2d5d-5a89-a5e5-d20ab009994f', '5936e534-1437-56ae-a762-ff38e77e1972', 'admissions_site', 'UM-Flint - First-Year Student Admissions', 'https://www.umflint.edu/admissions/first-year-students/', null, '2026-10-26'),
@@ -22665,8 +22665,8 @@ select '5936e534-1437-56ae-a762-ff38e77e1972'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Massachusetts-Amherst ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('3e512b67-e6f8-5a28-ac52-6d439854761e', 'umass-amherst', 'University of Massachusetts-Amherst', 'US', 'MA', 'Amherst', 42.385999, -72.526728, 'urban', 'public', 'https://www.umass.edu/', 'https://www.umass.edu/admissions/', 166629, 23671, 7.62, 17, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('3e512b67-e6f8-5a28-ac52-6d439854761e', 'umass-amherst', 'University of Massachusetts-Amherst', 'UMass Amherst', 'US', 'MA', 'Amherst', 42.385999, -72.526728, 'urban', 'public', 'https://www.umass.edu/', 'https://www.umass.edu/admissions/', 166629, 23671, 7.62, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('fe6c814f-c803-526a-85b6-f61e45198e6a', '3e512b67-e6f8-5a28-ac52-6d439854761e', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=166629', '2023-2024', '2026-10-21'),
  ('370a6d05-9962-542d-8bc1-cc4885840a11', '3e512b67-e6f8-5a28-ac52-6d439854761e', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?166629', null, '2026-10-21'),
@@ -23053,7 +23053,7 @@ select '9ab5fc2c-d342-5565-8a8e-16005bf859a3'::uuid, 'direct_major', true, v.* f
 
 -- ── University of Maryland Eastern Shore ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6894f30d-eb57-54c0-9cda-fc0185e4c79b', 'umes', 'University of Maryland Eastern Shore', 'UMES', 'US', 'MD', 'Princess Anne', 38.207386, -75.686852, 'rural', 'public', 'https://www.umes.edu/', 'https://www.umes.edu/admissions', 163338, 2476, 2.46, 11, 'semester');
+ ('6894f30d-eb57-54c0-9cda-fc0185e4c79b', 'umes', 'University of Maryland Eastern Shore', 'Maryland Eastern Shore', 'US', 'MD', 'Princess Anne', 38.207386, -75.686852, 'rural', 'public', 'https://www.umes.edu/', 'https://www.umes.edu/admissions', 163338, 2476, 2.46, 11, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('91ca9c6d-1583-50a8-b295-08e397dfbda1', '6894f30d-eb57-54c0-9cda-fc0185e4c79b', 'ipeds', 'College Navigator (IPEDS fall 2024 admissions, enrollment, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=163338', '2024-2025', '2026-10-26'),
  ('01b27e5e-ab68-563a-b58f-243a859afed8', '6894f30d-eb57-54c0-9cda-fc0185e4c79b', 'ipeds', 'IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=163338&sex=99', '2024-2025', '2026-10-26'),
@@ -23190,8 +23190,8 @@ select '2347bb33-a0d0-572c-b800-0e821b009b7e'::uuid, v.* from (values
  ('6ee0d022-314a-5764-afc5-548df397e95c'::uuid, 'Nursing', 'nursing', 'direct_major', true, 'very_hard', null)) v;
 
 -- ── University of Minnesota-Twin Cities ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('b78d08d2-3ed6-5eba-bdad-7888146c3bc7', 'umn', 'University of Minnesota-Twin Cities', 'US', 'MN', 'Minneapolis', 44.972851, -93.235464, 'urban', 'public', 'https://twin-cities.umn.edu/', 'https://admissions.tc.umn.edu/', 174066, 31855, 6.2, 17, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('b78d08d2-3ed6-5eba-bdad-7888146c3bc7', 'umn', 'University of Minnesota-Twin Cities', 'Minnesota Twin Cities', 'US', 'MN', 'Minneapolis', 44.972851, -93.235464, 'urban', 'public', 'https://twin-cities.umn.edu/', 'https://admissions.tc.umn.edu/', 174066, 31855, 6.2, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('73d745a5-84fb-5428-b4f0-74503c45954d', 'b78d08d2-3ed6-5eba-bdad-7888146c3bc7', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=174066', '2023-2024', '2026-10-21'),
  ('594db4ab-a390-534a-9677-616299df3379', 'b78d08d2-3ed6-5eba-bdad-7888146c3bc7', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?174066', null, '2026-10-21'),
@@ -23473,8 +23473,8 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
  ('eaab920b-62ba-56a0-bf09-f364d86b1cc5', 'fd51551f-066b-55a6-8a40-cbe361308c63', 'Nursing, prelicensure BSN', 'nursing', 'pre_major_competitive', true, 'Students enter UNCP, complete 58-62 hours of lower-division prerequisites, then apply for the upper-division nursing phase (junior year). Needs a 2.5 GPA on the prerequisite hours, TEAS and a supplemental application (Feb 15). Admission to UNCP does not guarantee admission to nursing.');
 
 -- ── University of North Carolina at Chapel Hill ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('cda0864c-0713-5272-a8ef-41aead30c138', 'unc', 'University of North Carolina at Chapel Hill', 'US', 'NC', 'Chapel Hill', 35.911769, -79.050969, 'urban', 'public', 'https://www.unc.edu/', 'https://www.admissions.unc.edu/', 199120, 20752, 5.61, 15, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('cda0864c-0713-5272-a8ef-41aead30c138', 'unc', 'University of North Carolina at Chapel Hill', 'UNC Chapel Hill', 'US', 'NC', 'Chapel Hill', 35.911769, -79.050969, 'urban', 'public', 'https://www.unc.edu/', 'https://www.admissions.unc.edu/', 199120, 20752, 5.61, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8b73925c-ffe7-5e8a-b8b2-32206dc82290', 'cda0864c-0713-5272-a8ef-41aead30c138', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=199120', '2023-2024', '2026-10-21'),
  ('ee92e803-bb4a-5bdb-a4ee-d9628d45d601', 'cda0864c-0713-5272-a8ef-41aead30c138', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?199120', null, '2026-10-21'),
@@ -23773,8 +23773,8 @@ select '6d87d36e-d608-5dc1-8126-add453253093'::uuid, 'D', v.* from (values
  ('arts_design', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Pennsylvania ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('c23bd466-96a4-5d5a-b54d-13ebf4ac231c', 'upenn', 'University of Pennsylvania', 'US', 'PA', 'Philadelphia', 39.950929, -75.19391, 'urban', 'private_nonprofit', 'https://www.upenn.edu/', 'https://www.upenn.edu/admissions/', 215062, 10650, 12.59, 8, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('c23bd466-96a4-5d5a-b54d-13ebf4ac231c', 'upenn', 'University of Pennsylvania', 'Penn', 'US', 'PA', 'Philadelphia', 39.950929, -75.19391, 'urban', 'private_nonprofit', 'https://www.upenn.edu/', 'https://www.upenn.edu/admissions/', 215062, 10650, 12.59, 8, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('d17e04bf-c311-5ac0-ab71-cc223636c963', 'c23bd466-96a4-5d5a-b54d-13ebf4ac231c', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=215062', '2023-2024', '2026-10-21'),
  ('9343227b-deb4-55a5-9d39-420d05e4012a', 'c23bd466-96a4-5d5a-b54d-13ebf4ac231c', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?215062', null, '2026-10-21'),
@@ -23984,8 +23984,8 @@ select 'b13f8b0e-6d29-5ac0-a848-77420782c6c3'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Southern California ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('27ac595e-8dde-5e8c-8670-a6f952caa83b', 'usc', 'University of Southern California', 'US', 'CA', 'Los Angeles', 34.021281, -118.284169, 'urban', 'private_nonprofit', 'https://www.usc.edu/', 'https://admission.usc.edu/', 123961, 20443, 13.28, 9, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('27ac595e-8dde-5e8c-8670-a6f952caa83b', 'usc', 'University of Southern California', 'USC', 'US', 'CA', 'Los Angeles', 34.021281, -118.284169, 'urban', 'private_nonprofit', 'https://www.usc.edu/', 'https://admission.usc.edu/', 123961, 20443, 13.28, 9, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('501960bc-c57f-5ee0-a51f-66275f1ec507', '27ac595e-8dde-5e8c-8670-a6f952caa83b', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=123961', '2023-2024', '2026-10-21'),
  ('e120b777-6b3b-5ecc-ad79-f5a76ab01de5', '27ac595e-8dde-5e8c-8670-a6f952caa83b', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?123961', null, '2026-10-21'),
@@ -24126,8 +24126,8 @@ select '67a7428c-9258-589e-93cb-d9752e9ebd32'::uuid, 'D', 'Editorial judgment (v
  ('nursing')) v;
 
 -- ── The University of Texas at Austin ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('159ac21f-c009-5d9e-9d09-b6ff8f6e10ad', 'ut-austin', 'The University of Texas at Austin', 'US', 'TX', 'Austin', 30.282825, -97.738273, 'urban', 'public', 'https://www.utexas.edu/', 'https://www.admissions.utexas.edu/', 228778, 42855, 4.36, 18, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('159ac21f-c009-5d9e-9d09-b6ff8f6e10ad', 'ut-austin', 'The University of Texas at Austin', 'UT Austin', 'US', 'TX', 'Austin', 30.282825, -97.738273, 'urban', 'public', 'https://www.utexas.edu/', 'https://www.admissions.utexas.edu/', 228778, 42855, 4.36, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('c01193f1-9ebc-5c37-a598-4b87d573b15f', '159ac21f-c009-5d9e-9d09-b6ff8f6e10ad', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=228778', '2023-2024', '2026-10-21'),
  ('f54636b0-1c29-5351-8973-de0c3cac2caf', '159ac21f-c009-5d9e-9d09-b6ff8f6e10ad', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?228778', null, '2026-10-21'),
@@ -24186,7 +24186,7 @@ select '159ac21f-c009-5d9e-9d09-b6ff8f6e10ad'::uuid, v.* from (values
 
 -- ── The University of Tennessee at Chattanooga ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8cdc9d9c-a7c6-54d1-8e30-5ab04be6cb8d', 'ut-chattanooga', 'The University of Tennessee at Chattanooga', 'UTC', 'US', 'TN', 'Chattanooga', 35.047519, -85.300247, 'urban', 'public', 'https://www.utc.edu/', 'https://www.utc.edu/enrollment-management-and-student-affairs/admissions', 221740, 10202, 0.6, 18, 'semester');
+ ('8cdc9d9c-a7c6-54d1-8e30-5ab04be6cb8d', 'ut-chattanooga', 'The University of Tennessee at Chattanooga', 'UT Chattanooga', 'US', 'TN', 'Chattanooga', 35.047519, -85.300247, 'urban', 'public', 'https://www.utc.edu/', 'https://www.utc.edu/enrollment-management-and-student-affairs/admissions', 221740, 10202, 0.6, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('4d4afbb8-ac6c-54ce-8760-6f998f6f14ed', '8cdc9d9c-a7c6-54d1-8e30-5ab04be6cb8d', 'ipeds', 'College Navigator (IPEDS fall 2024 admissions, enrollment, test scores, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=221740', '2024-2025', '2026-10-26'),
  ('b2fdac26-6af8-5121-8273-1bdce612bb58', '8cdc9d9c-a7c6-54d1-8e30-5ab04be6cb8d', 'ipeds', 'IPEDS ADM2024 admissions counts (read through the Urban Institute Education Data Portal API)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=221740&sex=99', '2024-2025', '2026-10-26'),
@@ -24237,7 +24237,7 @@ select '8cdc9d9c-a7c6-54d1-8e30-5ab04be6cb8d'::uuid, 'D', v.* from (values
 
 -- ── The University of Texas Permian Basin ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('81d84e01-1c08-57f5-a6df-4c57b70596a7', 'ut-permian-basin', 'The University of Texas Permian Basin', 'UTPB', 'US', 'TX', 'Odessa', 31.889509, -102.329634, 'urban', 'public', 'https://www.utpb.edu', 'https://www.utpb.edu/admissions-aid/apply-to-ut-permian-basin/index', 229018, 3991, 4.94, 19, 'semester');
+ ('81d84e01-1c08-57f5-a6df-4c57b70596a7', 'ut-permian-basin', 'The University of Texas Permian Basin', 'UT Permian Basin', 'US', 'TX', 'Odessa', 31.889509, -102.329634, 'urban', 'public', 'https://www.utpb.edu', 'https://www.utpb.edu/admissions-aid/apply-to-ut-permian-basin/index', 229018, 3991, 4.94, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('7ff46818-a89d-501b-b8f4-e10dd36b7bff', '81d84e01-1c08-57f5-a6df-4c57b70596a7', 'cds', 'The University of Texas Permian Basin Common Data Set 2025-2026 (PDF)', 'https://www.utpb.edu/university-offices/institutional-research-and-effectiveness/docs/comondataset2026-accessible-final.pdf', '2025-2026', '2026-10-26'),
  ('09a3455f-7988-53c7-bf6a-29af7f3f6a11', '81d84e01-1c08-57f5-a6df-4c57b70596a7', 'ipeds', 'IPEDS College Navigator (profile, student-faculty ratio, fall 2024)', 'https://nces.ed.gov/collegenavigator/?id=229018', '2024-2025', '2026-10-26'),
@@ -24486,7 +24486,7 @@ select '839eb235-b785-5929-9260-730c382b6cd3'::uuid, 'D', v.* from (values
 
 -- ── The University of Texas Rio Grande Valley ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('43870941-5645-5abb-a696-bdbbca1f7b7a', 'utrgv', 'The University of Texas Rio Grande Valley', 'UTRGV', 'US', 'TX', 'Edinburg', 26.306759, -98.173567, 'urban', 'public', 'https://www.utrgv.edu', 'https://www.utrgv.edu/admissions/', 227368, 28674, 1.57, 20, 'semester');
+ ('43870941-5645-5abb-a696-bdbbca1f7b7a', 'utrgv', 'The University of Texas Rio Grande Valley', 'UT Rio Grande Valley', 'US', 'TX', 'Edinburg', 26.306759, -98.173567, 'urban', 'public', 'https://www.utrgv.edu', 'https://www.utrgv.edu/admissions/', 227368, 28674, 1.57, 20, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('2a5fef39-6d36-594f-9b6e-2b73b70e7e48', '43870941-5645-5abb-a696-bdbbca1f7b7a', 'ipeds', 'IPEDS College Navigator (profile, fall 2024 admissions, 2024-25 expenses)', 'https://nces.ed.gov/collegenavigator/?id=227368', '2024-2025', '2026-10-26'),
  ('577f4f4c-ad4d-587a-9381-a31a56f6eb70', '43870941-5645-5abb-a696-bdbbca1f7b7a', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023 data file)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -24651,8 +24651,8 @@ select 'c5aed17b-a2ae-55b9-92f7-a6d1c4954772'::uuid, 'D', v.* from (values
  ('arts_design', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Virginia-Main Campus ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('0372d659-4914-5a6d-bf27-942e155458e9', 'uva', 'University of Virginia-Main Campus', 'US', 'VA', 'Charlottesville', 38.035665, -78.503428, 'suburban', 'public', 'https://www.virginia.edu/', 'https://admission.virginia.edu/', 234076, 17597, 4.76, 15, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('0372d659-4914-5a6d-bf27-942e155458e9', 'uva', 'University of Virginia-Main Campus', 'UVA', 'US', 'VA', 'Charlottesville', 38.035665, -78.503428, 'suburban', 'public', 'https://www.virginia.edu/', 'https://admission.virginia.edu/', 234076, 17597, 4.76, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('cd9ba9f1-fe8b-54d0-b681-ebcac8c4b9cc', '0372d659-4914-5a6d-bf27-942e155458e9', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=234076', '2023-2024', '2026-10-21'),
  ('1e520b92-19d6-5017-9ae1-0ba5bbfcb5ab', '0372d659-4914-5a6d-bf27-942e155458e9', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?234076', null, '2026-10-21'),
@@ -24851,8 +24851,8 @@ select 'edcfaab5-448b-5f96-afe6-b2c3486580ed'::uuid, 'D', v.* from (values
  ('nursing', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Wisconsin-Madison ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('408c4ede-4468-5bbb-a10c-2f53e828bf0a', 'uw-madison', 'University of Wisconsin-Madison', 'US', 'WI', 'Madison', 43.075409, -89.404098, 'urban', 'public', 'https://www.wisc.edu/', 'https://www.admissions.wisc.edu/', 240444, 36902, 10.25, 18, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('408c4ede-4468-5bbb-a10c-2f53e828bf0a', 'uw-madison', 'University of Wisconsin-Madison', 'UW-Madison', 'US', 'WI', 'Madison', 43.075409, -89.404098, 'urban', 'public', 'https://www.wisc.edu/', 'https://www.admissions.wisc.edu/', 240444, 36902, 10.25, 18, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('28eddee3-50aa-5bbe-b0bf-55e8bee0f880', '408c4ede-4468-5bbb-a10c-2f53e828bf0a', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=240444', '2023-2024', '2026-10-21'),
  ('35981b12-a45b-536f-9aae-4c86b0d2b25f', '408c4ede-4468-5bbb-a10c-2f53e828bf0a', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?240444', null, '2026-10-21'),
@@ -24935,7 +24935,7 @@ select '408c4ede-4468-5bbb-a10c-2f53e828bf0a'::uuid, 'direct_major', true, v.* f
 
 -- ── University of Wisconsin-Milwaukee ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('cb2a3dbe-19e1-5294-93fc-de79851e7042', 'uw-milwaukee', 'University of Wisconsin-Milwaukee', 'UWM', 'US', 'WI', 'Milwaukee', 43.076848, -87.880488, 'urban', 'public', 'https://uwm.edu/', 'https://uwm.edu/undergrad-admission/', 240453, 19207, 1.99, 17, 'semester');
+ ('cb2a3dbe-19e1-5294-93fc-de79851e7042', 'uw-milwaukee', 'University of Wisconsin-Milwaukee', 'UW-Milwaukee', 'US', 'WI', 'Milwaukee', 43.076848, -87.880488, 'urban', 'public', 'https://uwm.edu/', 'https://uwm.edu/undergrad-admission/', 240453, 19207, 1.99, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('8e38b849-bc38-5907-a7ed-5b4cb0aafada', 'cb2a3dbe-19e1-5294-93fc-de79851e7042', 'cds', 'UW-Milwaukee Common Data Set 2025-2026 (public Excel)', 'https://uwm.edu/institutional-research/wp-content/uploads/sites/268/2026/10/CDS-PDF-2025-2026-Excel_Template_publish_redacted.xlsx', '2025-2026', '2026-10-26'),
  ('44948f45-300a-5dba-9adf-371a9fc429c4', 'cb2a3dbe-19e1-5294-93fc-de79851e7042', 'ipeds', 'IPEDS College Navigator profile (student-to-faculty ratio, campus setting)', 'https://nces.ed.gov/collegenavigator/?id=240453', '2024-2025', '2026-10-26'),
@@ -25002,7 +25002,7 @@ select 'cb2a3dbe-19e1-5294-93fc-de79851e7042'::uuid, 'D', v.* from (values
 
 -- ── University of Wisconsin Oshkosh ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7d77439f-974b-5f2b-a913-62dfc85d3075', 'uw-oshkosh', 'University of Wisconsin Oshkosh', 'UW Oshkosh', 'US', 'WI', 'Oshkosh', 44.026206, -88.549369, 'urban', 'public', 'https://www.uwosh.edu/', 'https://www.uwosh.edu/admissions/', 240365, 11994, 1.63, 22, 'semester');
+ ('7d77439f-974b-5f2b-a913-62dfc85d3075', 'uw-oshkosh', 'University of Wisconsin Oshkosh', 'UW-Oshkosh', 'US', 'WI', 'Oshkosh', 44.026206, -88.549369, 'urban', 'public', 'https://www.uwosh.edu/', 'https://www.uwosh.edu/admissions/', 240365, 11994, 1.63, 22, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('616fe7da-6ef9-57db-8fef-2b3a0458a3a7', '7d77439f-974b-5f2b-a913-62dfc85d3075', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023); College Navigator profile (fall 2024 enrollment, student-faculty ratio, setting)', 'https://nces.ed.gov/collegenavigator/?id=240365', '2023-2024', '2026-10-26'),
  ('26009335-43af-5103-8fe0-8fd9a913b3d0', '7d77439f-974b-5f2b-a913-62dfc85d3075', 'cds', 'UW Oshkosh Common Data Set 2023-2024, section C: First-Time, First-Year Admission (PDF)', 'https://www.uwosh.edu/oir/wp-content/uploads/sites/109/2024/11/CDS-C.pdf', '2023-2024', '2026-10-26'),
@@ -25045,7 +25045,7 @@ select '7d77439f-974b-5f2b-a913-62dfc85d3075'::uuid, 'D', v.* from (values
 
 -- ── University of Wisconsin-River Falls ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('aa7d3201-e519-5c01-a654-4d078ce4d364', 'uw-river-falls', 'University of Wisconsin-River Falls', 'UWRF', 'US', 'WI', 'River Falls', 44.8534, -92.622641, 'rural', 'public', 'https://www.uwrf.edu/', 'https://www.uwrf.edu/admissions/', 240471, 4880, 1.09, 19, 'semester');
+ ('aa7d3201-e519-5c01-a654-4d078ce4d364', 'uw-river-falls', 'University of Wisconsin-River Falls', 'UW-River Falls', 'US', 'WI', 'River Falls', 44.8534, -92.622641, 'rural', 'public', 'https://www.uwrf.edu/', 'https://www.uwrf.edu/admissions/', 240471, 4880, 1.09, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('71439e50-4645-5775-b1bd-e58eda73c794', 'aa7d3201-e519-5c01-a654-4d078ce4d364', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=240471', '2023-2024', '2026-10-26'),
  ('08a54b5c-4fe5-5350-93f1-a3f54ca63490', 'aa7d3201-e519-5c01-a654-4d078ce4d364', 'ipeds', 'College Navigator - University of Wisconsin-River Falls (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=240471', '2024-2025', '2026-10-26'),
@@ -25096,8 +25096,8 @@ select 'aa7d3201-e519-5c01-a654-4d078ce4d364'::uuid, 'D', v.* from (values
  ('arts_design', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── University of Washington-Seattle Campus ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('0bdbab7a-c9ef-5b09-a7cb-c393402bc138', 'uw-seattle', 'University of Washington-Seattle Campus', 'US', 'WA', 'Seattle', 47.65538, -122.30514, 'urban', 'public', 'https://www.washington.edu/', 'https://admit.washington.edu/', 236948, 31942, 11.73, 20, 'quarter');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('0bdbab7a-c9ef-5b09-a7cb-c393402bc138', 'uw-seattle', 'University of Washington-Seattle Campus', 'UW Seattle', 'US', 'WA', 'Seattle', 47.65538, -122.30514, 'urban', 'public', 'https://www.washington.edu/', 'https://admit.washington.edu/', 236948, 31942, 11.73, 20, 'quarter');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('6da75f72-ae6c-5012-8f4b-74732f0535af', '0bdbab7a-c9ef-5b09-a7cb-c393402bc138', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=236948', '2023-2024', '2026-10-21'),
  ('075a109e-78f5-5952-8f97-e5b324760707', '0bdbab7a-c9ef-5b09-a7cb-c393402bc138', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?236948', null, '2026-10-21'),
@@ -25385,7 +25385,7 @@ select '32827e83-1e8c-5565-8501-40529c72b567'::uuid, 'D', v.* from (values
 
 -- ── University of Western Australia ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('7ed71e5a-0ff7-5449-96f1-3524e0e66a49', 'uwa', 'University of Western Australia', 'UWA', 'AU', 'Western Australia', 'Perth', -31.9806, 115.8179, 'urban', 'public', 'https://www.uwa.edu.au/', 'https://www.uwa.edu.au/study/how-to-apply/international-applicants');
+ ('7ed71e5a-0ff7-5449-96f1-3524e0e66a49', 'uwa', 'University of Western Australia', 'Western Australia', 'AU', 'Western Australia', 'Perth', -31.9806, 115.8179, 'urban', 'public', 'https://www.uwa.edu.au/', 'https://www.uwa.edu.au/study/how-to-apply/international-applicants');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('f3bdd8a0-f1aa-59a9-a91e-f1110046fa4f', '7ed71e5a-0ff7-5449-96f1-3524e0e66a49', 'admissions_site', 'UWA - English language requirements (undergraduate)', 'https://www.uwa.edu.au/study/how-to-apply/pathways-and-eligibility/english-language-requirements', '2026-10-27'),
  ('e9c280ef-cf92-5026-97c2-c8e1faeed025', '7ed71e5a-0ff7-5449-96f1-3524e0e66a49', 'admissions_site', 'UWA - International applicants: application dates (Semester 1 2027: 11 January 2027)', 'https://www.uwa.edu.au/study/how-to-apply/international-applicants', '2026-10-27'),
@@ -25411,7 +25411,7 @@ insert into programs (id, institution_id, slug, name, award, apply_via, duration
 
 -- ── Valdosta State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('32e2ae27-77ab-517a-9f14-97d4380dc680', 'valdosta-state', 'Valdosta State University', 'VSU', 'US', 'GA', 'Valdosta', 30.847402, -83.289282, 'urban', 'public', 'https://www.valdosta.edu', 'https://www.valdosta.edu/admissions/undergraduate/student-information/international-students.php', 141264, 7166, 1.35, 17, 'semester');
+ ('32e2ae27-77ab-517a-9f14-97d4380dc680', 'valdosta-state', 'Valdosta State University', 'Valdosta State', 'US', 'GA', 'Valdosta', 30.847402, -83.289282, 'urban', 'public', 'https://www.valdosta.edu', 'https://www.valdosta.edu/admissions/undergraduate/student-information/international-students.php', 141264, 7166, 1.35, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('2c91d800-c294-53c8-9d08-465cf69e61a2', '32e2ae27-77ab-517a-9f14-97d4380dc680', 'cds', 'Valdosta State University Common Data Set - Fall 2024 (2024-2025 edition, PDF)', 'https://www.valdosta.edu/administration/institutional-research/documents/common-data-set/cds-2024-2025.pdf', '2024-2025', '2026-10-26'),
  ('7709fd49-5579-5e8d-bdbb-a073730f15cc', '32e2ae27-77ab-517a-9f14-97d4380dc680', 'ipeds', 'IPEDS / College Navigator - Valdosta State University (fall 2024 enrollment, student-faculty ratio)', 'https://nces.ed.gov/collegenavigator/?id=141264', '2024-2025', '2026-10-26'),
@@ -25704,7 +25704,7 @@ select '37250efa-f14d-584e-ad28-0d82b57eed74'::uuid, false, v.* from (values
 
 -- ── Vermont State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('946ba777-8f7b-5c47-8497-6439476b1c65', 'vermont-state', 'Vermont State University', 'VTSU', 'US', 'VT', 'Randolph', 43.939623, -72.604498, 'rural', 'public', 'https://vermontstate.edu/', 'https://vermontstate.edu/admission/', 231165, 4108, 2.6, 13, 'semester');
+ ('946ba777-8f7b-5c47-8497-6439476b1c65', 'vermont-state', 'Vermont State University', 'Vermont State', 'US', 'VT', 'Randolph', 43.939623, -72.604498, 'rural', 'public', 'https://vermontstate.edu/', 'https://vermontstate.edu/admission/', 231165, 4108, 2.6, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9303a967-f879-598a-bce8-4c5cf4e3365b', '946ba777-8f7b-5c47-8497-6439476b1c65', 'ipeds', 'IPEDS via College Navigator: Vermont State University (fall 2024 admissions and enrollment)', 'https://nces.ed.gov/collegenavigator/?id=231165', '2024-2025', '2026-10-26'),
  ('7d66c29d-9d0b-5d2c-936e-d6dc7051466b', '946ba777-8f7b-5c47-8497-6439476b1c65', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=231165', '2023-2024', '2026-10-26'),
@@ -25832,8 +25832,8 @@ select '1ce62010-20c1-5878-a296-f8ae611cde9b'::uuid, v.* from (values
  ('nursing', 'A', 'Fitzpatrick College of Nursing is a top-15 undergraduate nursing program.')) v;
 
 -- ── Virginia Polytechnic Institute and State University ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8889d13b-a5ef-5323-bc09-9bfd66dc6640', 'virginia-tech', 'Virginia Polytechnic Institute and State University', 'US', 'VA', 'Blacksburg', 37.229012, -80.423675, 'urban', 'public', 'https://www.vt.edu/', 'https://vt.edu/admissions/undergraduate.html', 233921, 30923, 4.61, 17, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('8889d13b-a5ef-5323-bc09-9bfd66dc6640', 'virginia-tech', 'Virginia Polytechnic Institute and State University', 'Virginia Tech', 'US', 'VA', 'Blacksburg', 37.229012, -80.423675, 'urban', 'public', 'https://www.vt.edu/', 'https://vt.edu/admissions/undergraduate.html', 233921, 30923, 4.61, 17, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('f81289ab-a620-57dc-8bb2-6f8b4aa333ea', '8889d13b-a5ef-5323-bc09-9bfd66dc6640', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=233921', '2023-2024', '2026-10-21'),
  ('23cad310-9aa6-54cb-b263-d1c804e77309', '8889d13b-a5ef-5323-bc09-9bfd66dc6640', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?233921', null, '2026-10-21'),
@@ -26018,7 +26018,7 @@ insert into programs (id, institution_id, slug, name, award, ucas_code, apply_vi
 
 -- ── Washington State University (Pullman) ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f4125e0a-3041-53dd-a4c4-4e8d97917c73', 'washington-state', 'Washington State University (Pullman)', 'WSU', 'US', 'WA', 'Pullman', 46.730448, -117.158168, 'rural', 'public', 'https://wsu.edu', 'https://admission.wsu.edu', 236939, 21400, 2.26, 14, 'semester');
+ ('f4125e0a-3041-53dd-a4c4-4e8d97917c73', 'washington-state', 'Washington State University (Pullman)', 'Washington State', 'US', 'WA', 'Pullman', 46.730448, -117.158168, 'rural', 'public', 'https://wsu.edu', 'https://admission.wsu.edu', 236939, 21400, 2.26, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('944fc8db-66e4-5279-8679-6aa534a28137', 'f4125e0a-3041-53dd-a4c4-4e8d97917c73', 'cds', 'Washington State University Common Data Set 2025-2026 (PDF)', 'https://wpcdn.web.wsu.edu/wsuwp/uploads/sites/3447/2026/05/CDS_2025-2026-PDF_For-Website.pdf', '2025-2026', '2026-10-26'),
  ('7c634bc3-d23c-5923-a815-486e6512fb6b', 'f4125e0a-3041-53dd-a4c4-4e8d97917c73', 'admissions_site', 'WSU Admissions - Admissions Dates & Deadlines 2026-2027', 'https://admission.wsu.edu/apply/admissions-dates-deadlines/', null, '2026-10-26'),
@@ -26094,8 +26094,8 @@ select 'f4125e0a-3041-53dd-a4c4-4e8d97917c73'::uuid, v.* from (values
  ('nursing', 'D', 'Editorial judgment (v1, reviewed 2026-10-20)')) v;
 
 -- ── Washington University in St Louis ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('29b755b7-4fc7-561e-b2a5-e257d04e010d', 'washu', 'Washington University in St Louis', 'US', 'MO', 'St. Louis', 38.647929, -90.310604, 'suburban', 'private_nonprofit', 'https://washu.edu/', 'https://admissions.washu.edu/', 179867, 7857, 9.05, 7, 'semester');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('29b755b7-4fc7-561e-b2a5-e257d04e010d', 'washu', 'Washington University in St Louis', 'WashU', 'US', 'MO', 'St. Louis', 38.647929, -90.310604, 'suburban', 'private_nonprofit', 'https://washu.edu/', 'https://admissions.washu.edu/', 179867, 7857, 9.05, 7, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('caea3f98-b344-5e73-9cb4-17858f26cd55', '29b755b7-4fc7-561e-b2a5-e257d04e010d', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=179867', '2023-2024', '2026-10-21'),
  ('b8fa89c0-31c3-520d-a6ae-11e4145c5b9d', '29b755b7-4fc7-561e-b2a5-e257d04e010d', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?179867', null, '2026-10-21'),
@@ -26423,7 +26423,7 @@ select '4bc510cd-fb37-5e33-85d5-fec61f03d70f'::uuid, 'direct_major', false, v.* 
 
 -- ── University of West Alabama ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('844babaf-ef1f-55cd-a85e-81d8baa2f4e7', 'west-alabama', 'University of West Alabama', 'UWA', 'US', 'AL', 'Livingston', 32.588132, -88.186329, 'rural', 'public', 'https://www.uwa.edu', 'https://www.uwa.edu/admissions/international-students/', 101587, 2983, 2.08, 19, 'semester');
+ ('844babaf-ef1f-55cd-a85e-81d8baa2f4e7', 'west-alabama', 'University of West Alabama', 'West Alabama', 'US', 'AL', 'Livingston', 32.588132, -88.186329, 'rural', 'public', 'https://www.uwa.edu', 'https://www.uwa.edu/admissions/international-students/', 101587, 2983, 2.08, 19, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('2ecf1943-cfbb-504c-8997-c32035e6cc84', '844babaf-ef1f-55cd-a85e-81d8baa2f4e7', 'ipeds', 'IPEDS / College Navigator - University of West Alabama (fall 2024 admissions, test scores, enrollment)', 'https://nces.ed.gov/collegenavigator/?id=101587', '2024-2025', '2026-10-26'),
  ('5e45db5b-75b0-5305-9ff8-db77db849d7a', '844babaf-ef1f-55cd-a85e-81d8baa2f4e7', 'other', 'NCES IPEDS fall 2024 admissions counts (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=101587', '2024-2025', '2026-10-26'),
@@ -26478,7 +26478,7 @@ select '844babaf-ef1f-55cd-a85e-81d8baa2f4e7'::uuid, 'D', v.* from (values
 
 -- ── West Texas A&M University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('6fa831fb-9732-5279-8ee8-b2c388a146fb', 'west-texas-am', 'West Texas A&M University', 'WTAMU', 'US', 'TX', 'Canyon', 34.982789, -101.914736, 'rural', 'public', 'https://www.wtamu.edu', 'https://www.wtamu.edu/student-support/international-student-services/Applicants/INSTRUCTIONS%20TO%20APPLY/international-undergraduate.html', 229814, 7110, 1.59, 15, 'semester');
+ ('6fa831fb-9732-5279-8ee8-b2c388a146fb', 'west-texas-am', 'West Texas A&M University', 'West Texas A&M', 'US', 'TX', 'Canyon', 34.982789, -101.914736, 'rural', 'public', 'https://www.wtamu.edu', 'https://www.wtamu.edu/student-support/international-student-services/Applicants/INSTRUCTIONS%20TO%20APPLY/international-undergraduate.html', 229814, 7110, 1.59, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('5d890b0c-e948-5077-a764-cac1fd93f69e', '6fa831fb-9732-5279-8ee8-b2c388a146fb', 'cds', 'West Texas A&M University Common Data Set 2025-2026 (PDF; page footers still read 2024-2025, data are the fall 2025 class)', 'https://www.wtamu.edu/_files/docs/academics/Institutional%20Research/CDS.pdf', '2025-2026', '2026-10-26'),
  ('f00166db-4c42-5bd5-ae6f-1492325a446a', '6fa831fb-9732-5279-8ee8-b2c388a146fb', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=229814', '2023-2024', '2026-10-26'),
@@ -26560,7 +26560,7 @@ select '6fa831fb-9732-5279-8ee8-b2c388a146fb'::uuid, 'D', v.* from (values
 
 -- ── West Virginia State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('8d9059ef-9d53-570b-8f98-cc677f0baf84', 'west-virginia-state', 'West Virginia State University', 'WVSU', 'US', 'WV', 'Institute', 38.380541, -81.765034, 'suburban', 'public', 'https://wvstateu.edu/', 'https://wvstateu.edu/admissions/', 237899, 3110, 0.13, 13, 'semester');
+ ('8d9059ef-9d53-570b-8f98-cc677f0baf84', 'west-virginia-state', 'West Virginia State University', 'West Virginia State', 'US', 'WV', 'Institute', 38.380541, -81.765034, 'suburban', 'public', 'https://wvstateu.edu/', 'https://wvstateu.edu/admissions/', 237899, 3110, 0.13, 13, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('86d1f01f-c260-5cff-a6b9-9436890d16ea', '8d9059ef-9d53-570b-8f98-cc677f0baf84', 'ipeds', 'IPEDS / College Navigator - West Virginia State University (fall 2024 admissions, test scores, enrollment, 2024-25 costs)', 'https://nces.ed.gov/collegenavigator/?id=237899', '2024-2025', '2026-10-26'),
  ('11c0b006-f64b-5ac3-a888-c86b97716744', '8d9059ef-9d53-570b-8f98-cc677f0baf84', 'other', 'NCES IPEDS fall 2024 admissions and fall enrollment counts (Urban Institute Education Data Portal)', 'https://educationdata.urban.org/api/v1/college-university/ipeds/admissions-enrollment/2024/?unitid=237899', '2024-2025', '2026-10-26'),
@@ -26673,7 +26673,7 @@ select '579eb60f-c4e2-5846-86cd-0a14de0f5f9b'::uuid, v.* from (values
 
 -- ── Western Carolina University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('490cfaec-cd3c-550a-ad1b-b32e8b9dee6a', 'western-carolina', 'Western Carolina University', 'WCU', 'US', 'NC', 'Cullowhee', 35.308979, -83.186258, 'rural', 'public', 'https://www.wcu.edu', 'https://www.wcu.edu/apply/undergraduate-admissions/index.aspx', 200004, 10268, 2.17, 15.5, 'semester');
+ ('490cfaec-cd3c-550a-ad1b-b32e8b9dee6a', 'western-carolina', 'Western Carolina University', 'Western Carolina', 'US', 'NC', 'Cullowhee', 35.308979, -83.186258, 'rural', 'public', 'https://www.wcu.edu', 'https://www.wcu.edu/apply/undergraduate-admissions/index.aspx', 200004, 10268, 2.17, 15.5, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('9ff119e2-ada7-5e06-8855-429ecd5222e3', '490cfaec-cd3c-550a-ad1b-b32e8b9dee6a', 'cds', 'Western Carolina University Common Data Set 2025-2026 (PDF)', 'https://www.wcu.edu/_files/CDS-2025-2026-WCU.pdf', '2025-2026', '2026-10-26'),
  ('2f1f5733-6187-564e-83cc-184d4e6223a3', '490cfaec-cd3c-550a-ad1b-b32e8b9dee6a', 'admissions_site', 'WCU - International students (undergraduate deadlines, English proficiency)', 'https://www.wcu.edu/learn/office-of-global-engagement/international-students/index.aspx', null, '2026-10-26'),
@@ -26749,7 +26749,7 @@ select '490cfaec-cd3c-550a-ad1b-b32e8b9dee6a'::uuid, 'D', v.* from (values
 
 -- ── Western Kentucky University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('f750efff-5353-5499-bf9c-cc6e8797a8f1', 'western-kentucky', 'Western Kentucky University', 'WKU', 'US', 'KY', 'Bowling Green', 36.985035, -86.456828, 'urban', 'public', 'https://www.wku.edu', 'https://www.wku.edu/admissions/', 157951, 13732, 0.54, 18.7, 'semester');
+ ('f750efff-5353-5499-bf9c-cc6e8797a8f1', 'western-kentucky', 'Western Kentucky University', 'Western Kentucky', 'US', 'KY', 'Bowling Green', 36.985035, -86.456828, 'urban', 'public', 'https://www.wku.edu', 'https://www.wku.edu/admissions/', 157951, 13732, 0.54, 18.7, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('3b1da309-670a-5bf0-aa49-2ae258cafea2', 'f750efff-5353-5499-bf9c-cc6e8797a8f1', 'cds', 'Western Kentucky University Common Data Set 2025-2026 (PDF)', 'https://www.wku.edu/instres/documents/cds_2025_2026.pdf', '2025-2026', '2026-10-26'),
  ('49e54279-97d0-5d7f-805f-84aefd9ea11a', 'f750efff-5353-5499-bf9c-cc6e8797a8f1', 'admissions_site', 'WKU International Admissions - Academic admission requirements (undergraduate)', 'https://wku.edu/international/intlreq.php', null, '2026-10-26'),
@@ -26810,7 +26810,7 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
 
 -- ── Western Michigan University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('98e9cab9-81a4-5cde-a912-c263d89f7f42', 'western-michigan', 'Western Michigan University', 'WMU', 'US', 'MI', 'Kalamazoo', 42.282194, -85.613759, 'urban', 'public', 'https://wmich.edu', 'https://wmich.edu/admissions', 172699, 13714, 9.36, 15, 'semester');
+ ('98e9cab9-81a4-5cde-a912-c263d89f7f42', 'western-michigan', 'Western Michigan University', 'Western Michigan', 'US', 'MI', 'Kalamazoo', 42.282194, -85.613759, 'urban', 'public', 'https://wmich.edu', 'https://wmich.edu/admissions', 172699, 13714, 9.36, 15, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('a196ff1d-8711-5e44-8d16-733a24c7fa27', '98e9cab9-81a4-5cde-a912-c263d89f7f42', 'cds', 'Western Michigan University Common Data Set 2025-2026 (PDF)', 'https://files.wmich.edu/s3fs-public/2026-02/wmu_cds_2025-26.pdf', '2025-2026', '2026-10-26'),
  ('ddfd588c-c1b6-5c0d-b6e4-10b3217ff428', '98e9cab9-81a4-5cde-a912-c263d89f7f42', 'admissions_site', 'WMU - International student application deadlines, cost of attendance and funding', 'https://wmich.edu/internationaladmissions', null, '2026-10-26'),
@@ -26888,7 +26888,7 @@ select '98e9cab9-81a4-5cde-a912-c263d89f7f42'::uuid, 'D', v.* from (values
 
 -- ── Western University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url) values
- ('8497ba1d-81c8-5d47-8126-2c88138220e2', 'western-university', 'Western University', 'Western', 'CA', 'Ontario', 'London', 43.0096, -81.2737, 'urban', 'public', 'https://www.uwo.ca/', 'https://welcome.uwo.ca/next-steps/requirements/international-high-school/index.html');
+ ('8497ba1d-81c8-5d47-8126-2c88138220e2', 'western-university', 'Western University', 'Western University', 'CA', 'Ontario', 'London', 43.0096, -81.2737, 'urban', 'public', 'https://www.uwo.ca/', 'https://welcome.uwo.ca/next-steps/requirements/international-high-school/index.html');
 insert into sources (id, institution_id, kind, title, url, accessed_on) values
  ('f4c3640c-cc56-5b2b-b108-2baf09165a6f', '8497ba1d-81c8-5d47-8126-2c88138220e2', 'admissions_site', 'Western University - English Language Proficiency (undergraduate)', 'https://welcome.uwo.ca/next-steps/requirements/english-language-proficiency.html', '2026-10-27'),
  ('a5ce1159-5882-5573-8753-b54b18e7bab3', '8497ba1d-81c8-5d47-8126-2c88138220e2', 'admissions_site', 'Western University - Note Your Deadlines (Fall 2027 entry)', 'https://welcome.uwo.ca/next-steps/apply/admission-deadlines.html', '2026-10-27'),
@@ -27236,7 +27236,7 @@ select '7e3e1d53-3af2-5072-94b1-18ac2faff41a'::uuid, 'D', v.* from (values
 
 -- ── Winona State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('7c85ddd8-639a-5e71-b21a-2b1f88888ed4', 'winona-state', 'Winona State University', 'WSU', 'US', 'MN', 'Winona', 44.046159, -91.643723, 'rural', 'public', 'https://www.winona.edu', 'https://www.winona.edu/admissions/apply/international/', 175272, 5317, 1.97, 14, 'semester');
+ ('7c85ddd8-639a-5e71-b21a-2b1f88888ed4', 'winona-state', 'Winona State University', 'Winona State', 'US', 'MN', 'Winona', 44.046159, -91.643723, 'rural', 'public', 'https://www.winona.edu', 'https://www.winona.edu/admissions/apply/international/', 175272, 5317, 1.97, 14, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('98ba4b76-586f-57d9-a8d9-a6e1a328a1cd', '7c85ddd8-639a-5e71-b21a-2b1f88888ed4', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=175272', '2023-2024', '2026-10-26'),
  ('98ed525e-7615-55e8-a627-5a3b0f9563d5', '7c85ddd8-639a-5e71-b21a-2b1f88888ed4', 'ipeds', 'IPEDS Data Center file ADM2023 (admissions counts and test percentiles)', 'https://nces.ed.gov/ipeds/datacenter/data/ADM2023.zip', '2023-2024', '2026-10-26'),
@@ -27427,8 +27427,8 @@ insert into major_admissions (id, institution_id, program, category_key, admit_m
  ('5d5a04aa-51fd-5e31-ad9f-422ebd7dbc1c', '8b254d23-dd7a-5c62-b72c-40cf53e4a173', 'Nursing (BSN Track I)', 'nursing', 'direct_major', false, 'not_possible', 'Selective major with rigorous criteria and a firm January 15 deadline; meeting the minimums does not guarantee admission, and current students cannot change their major to Nursing (BSN Track I).');
 
 -- ── Worcester Polytechnic Institute ──
-insert into institutions (id, slug, name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('0484af38-0265-5b9f-aea4-0095a7ef5c5e', 'wpi', 'Worcester Polytechnic Institute', 'US', 'MA', 'Worcester', 42.274853, -71.808339, 'urban', 'private_nonprofit', 'https://www.wpi.edu/', 'https://www.wpi.edu/admissions/undergraduate', 168421, 5447, 6.41, 13, 'other');
+insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
+ ('0484af38-0265-5b9f-aea4-0095a7ef5c5e', 'wpi', 'Worcester Polytechnic Institute', 'WPI', 'US', 'MA', 'Worcester', 42.274853, -71.808339, 'urban', 'private_nonprofit', 'https://www.wpi.edu/', 'https://www.wpi.edu/admissions/undergraduate', 168421, 5447, 6.41, 13, 'other');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('1463811a-919f-5bb1-a6d8-326a5ef715b3', '0484af38-0265-5b9f-aea4-0095a7ef5c5e', 'ipeds', 'IPEDS Admissions survey, fall 2023 entering class (ADM2023)', 'https://nces.ed.gov/collegenavigator/?id=168421', '2023-2024', '2026-10-21'),
  ('9a745069-8be0-594a-8775-dad5ad2ac5b2', '0484af38-0265-5b9f-aea4-0095a7ef5c5e', 'scorecard', 'College Scorecard (enrollment, cost)', 'https://collegescorecard.ed.gov/school/?168421', null, '2026-10-21'),
@@ -27581,7 +27581,7 @@ select 'c924079a-913d-5949-af67-21c8074dff6f'::uuid, 'D', v.* from (values
 
 -- ── University of Wyoming ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('9e70eb57-a907-5091-9a9f-9ad35fb4525e', 'wyoming', 'University of Wyoming', 'UW', 'US', 'WY', 'Laramie', 41.311773, -105.57931, 'rural', 'public', 'https://www.uwyo.edu', 'https://www.uwyo.edu/admissions/', 240727, 8138, 1.5, 12.4, 'semester');
+ ('9e70eb57-a907-5091-9a9f-9ad35fb4525e', 'wyoming', 'University of Wyoming', 'Wyoming', 'US', 'WY', 'Laramie', 41.311773, -105.57931, 'rural', 'public', 'https://www.uwyo.edu', 'https://www.uwyo.edu/admissions/', 240727, 8138, 1.5, 12.4, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('5bd208d7-1f85-55e1-9429-0d29bd6a655f', '9e70eb57-a907-5091-9a9f-9ad35fb4525e', 'cds', 'University of Wyoming Common Data Set 2025-2026 (PDF)', 'https://www.uwyo.edu/oia/_files/cds/cds2025-2026.pdf', '2025-2026', '2026-10-26'),
  ('95a010c1-c06b-5655-b8a0-08a0322c097f', '9e70eb57-a907-5091-9a9f-9ad35fb4525e', 'ipeds', 'IPEDS Fall Enrollment 2023 (EF2023A): undergraduate total and U.S. nonresident headcount', 'https://nces.ed.gov/collegenavigator/?id=240727', '2023-2024', '2026-10-26'),
@@ -27773,7 +27773,7 @@ select '7875d0ca-d49e-5efb-83d5-779bfec47c49'::uuid, v.* from (values
 
 -- ── Youngstown State University ──
 insert into institutions (id, slug, name, short_name, country_code, state_region, city, latitude, longitude, setting, control, website, admissions_url, ipeds_unit_id, undergrad_enrollment, pct_international_ug, student_faculty_ratio, academic_calendar) values
- ('63892b3f-7d76-58af-a7b1-6c8cd6ef393d', 'youngstown-state', 'Youngstown State University', 'YSU', 'US', 'OH', 'Youngstown', 41.104928, -80.64659, 'urban', 'public', 'https://ysu.edu', 'https://ysu.edu/admissions', 206695, 9688, 10.08, 20, 'semester');
+ ('63892b3f-7d76-58af-a7b1-6c8cd6ef393d', 'youngstown-state', 'Youngstown State University', 'Youngstown State', 'US', 'OH', 'Youngstown', 41.104928, -80.64659, 'urban', 'public', 'https://ysu.edu', 'https://ysu.edu/admissions', 206695, 9688, 10.08, 20, 'semester');
 insert into sources (id, institution_id, kind, title, url, cds_year, accessed_on) values
  ('30e8eb38-7944-5649-89f9-593eeccd82a8', '63892b3f-7d76-58af-a7b1-6c8cd6ef393d', 'cds', 'Youngstown State University Common Data Set 2025-2026 (Excel)', 'https://ysu.edu/sites/default/files/institutional-research/CDS_202526_UpdatedAnnualExpense.xlsx', '2025-2026', '2026-10-26'),
  ('11eef09f-cddb-58fb-bbe3-b71b8387050c', '63892b3f-7d76-58af-a7b1-6c8cd6ef393d', 'admissions_site', 'YSU International Programs Office - Apply as an International Freshman', 'https://ysu.edu/international-programs-office/apply-now/quick-menu/apply-as-international-freshman', null, '2026-10-26'),
