@@ -12,11 +12,13 @@ import type { PlanKey } from "./plans";
 import type { PortalData } from "./portals";
 import type { ResumeSettings } from "./resume";
 import type { TestDetails } from "./scores";
+import { scoredTests } from "./test-plan.ts";
 
 export type StudentProfile = {
   sat?: number | null;
   act?: number | null;
   gpa?: number | null; // unweighted, 4.0 scale
+  gpaWeighted?: number | null; // as printed on the transcript (the school's own scale, up to 6.0); never compared with colleges
   international?: boolean;
   targetRegions?: string[]; // countries applying to (US, GB); first = default on the colleges page
   studyFields?: FieldKey[]; // up to 2 study directions (lib/fields.ts); empty = undecided
@@ -59,6 +61,12 @@ function band(score: number | null | undefined, p25: number | null, p75: number 
   return "below";
 }
 
+/** The only GPA anything may compare with a college's published GPA: the unweighted one. Colleges report unweighted
+ * averages and weighted scales differ from school to school, so a weighted GPA never stands in for it. */
+export function comparableGpa(student: StudentProfile | null | undefined): number | null {
+  return student?.gpa ?? null;
+}
+
 export function computeFit(student: StudentProfile, college: FitInput): FitResult | null {
   const rate = student.international && college.intl_admit_rate != null ? college.intl_admit_rate : college.admit_rate;
   if (rate == null) return null;
@@ -71,8 +79,10 @@ export function computeFit(student: StudentProfile, college: FitInput): FitResul
   let scoreLabel = "";
   let score: FitReasonParts["score"] = null;
   if (college.test_policy !== "blind") {
-    const sat = band(student.sat, college.sat_p25, college.sat_p75);
-    const act = band(student.act, college.act_p25, college.act_p75);
+    // Only the tests the student chose to use (lib/test-plan.ts); a score they switched away from stays saved but is ignored.
+    const used = scoredTests(student);
+    const sat = band(used.includes("sat") ? student.sat : null, college.sat_p25, college.sat_p75);
+    const act = band(used.includes("act") ? student.act : null, college.act_p25, college.act_p75);
     // Use whichever test puts the student in the better position.
     const order: Band[] = ["above", "within", "below", "unknown"];
     scoreBand = order.indexOf(sat) <= order.indexOf(act) ? sat : act;

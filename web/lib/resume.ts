@@ -14,6 +14,7 @@ import {
 } from "./activities.ts";
 import type { StudentProfile } from "./fit";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "./scores.ts";
+import { scoredTests } from "./test-plan.ts";
 
 export type ResumeHeader = { fullName: string; email: string; phone: string; location: string; school: string; gradYear: string };
 export const EMPTY_HEADER: ResumeHeader = { fullName: "", email: "", phone: "", location: "", school: "", gradYear: "" };
@@ -91,11 +92,12 @@ function educationLines(p: StudentProfile): string[] {
   const lines: string[] = [];
   if (p.gpa != null) lines.push(`GPA ${p.gpa.toFixed(2)} (unweighted)`);
   const scores: string[] = [];
-  if (p.sat != null) {
+  const used = scoredTests(p); // a score the student switched away from stays off the résumé
+  if (p.sat != null && used.includes("sat")) {
     const s = sectionSummary(SAT_SCALE, t.sat);
     scores.push(`SAT ${p.sat}${s ? ` (${SAT_SCALE.sections.map((x) => `${x.label} ${t.sat?.[x.key] ?? "—"}`).join(", ")})` : ""}`);
   }
-  if (p.act != null) scores.push(`ACT ${p.act}`);
+  if (p.act != null && used.includes("act")) scores.push(`ACT ${p.act}`);
   for (const k of ENGLISH_TEST_KEYS) {
     const e = t.english?.[k];
     if (e?.total != null) scores.push(`${ENGLISH_TESTS[k].label.replace(/ \(.*\)$/, "")} ${e.total}`);

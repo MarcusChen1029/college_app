@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback } from "react";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
+import { testPlanText } from "@/lib/i18n/test-plan-text";
 import { collegeNames } from "@/lib/links-api";
 import { englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
 import { useLoad } from "@/lib/use-load";
@@ -37,7 +38,10 @@ function Score({ value, scale, sections }: { value: number | null; scale: ScoreS
 
 export function OverviewPanel({ detail }: { detail: StudentDetail }) {
   const t = useT();
+  const locale = useLocale();
   const p = detail.profile;
+  // Only a saved choice is shown (the SAT and ACT boxes already show scores); the RPC returns test_details, so no SQL change is needed.
+  const testPlan = p.testDetails.plan ? testPlanText(t, locale, p.testDetails) : "";
   const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
   return (
     <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -47,6 +51,7 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
       <Item label="ACT">
         <Score value={p.actComposite} scale={ACT_SCALE} sections={p.testDetails.act} />
       </Item>
+      {testPlan && <Item label={t("profile.test.planLabel")}>{testPlan}</Item>}
       <Item label={t("teacher.overview.gpa")}>{p.gpaUnweighted != null ? <p className="font-display text-xl font-bold">{p.gpaUnweighted}</p> : <Missing />}</Item>
       <Item label={english.length > 1 ? t("teacher.overview.englishTests") : t("teacher.overview.englishTest")}>
         {english.length > 0 ? (
