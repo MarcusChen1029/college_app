@@ -7,7 +7,7 @@ import { autoView, type AutoReport } from "../auto-view.ts";
 import { SITE_ORIGINS } from "../sites.ts";
 import { afterReload, navigate, sendTo as send } from "../tab-wait.ts";
 import { h } from "../ui.ts";
-import { runStarsPlans, type StarsTab, type StarsYearReport } from "./run.ts";
+import { runStarsPlans, starsRowNeeds, type StarsTab, type StarsYearReport } from "./run.ts";
 
 const PICKS_KEY = "starsScalePicks";
 
@@ -51,7 +51,7 @@ export function starsReport(r: StarsYearReport, schools: number): AutoReport {
     title: `${yearText(r.plan.endYear)}${schools > 1 ? `, ${r.plan.schoolName}` : ""}`,
     done,
     problems: stopped && stopped !== "Stopped." ? [stopped] : [],
-    left: r.plan.skipped.map((s) => s.course).filter((c, i, all) => all.indexOf(c) === i),
+    left: r.result.left,
   };
 }
 
@@ -84,6 +84,13 @@ export async function starsAutoView(plans: StarsPagePlan[], tabId: number): Prom
   return autoView({
     title: "Add your courses to STARS",
     intro: "Tick the school years, then Fill selected. The extension opens each year's coursework page in this tab and saves each new course with STARS's Save Course button. Courses already on STARS are left alone; nothing is removed or submitted.",
+    pending: items.map((p) => ({
+      title: `${yearText(p.endYear)}${schools > 1 ? `, ${p.schoolName}` : ""}`,
+      left: p.rows.flatMap((row) => {
+        const why = starsRowNeeds(p, row);
+        return why ? [{ course: row.name, why }] : [];
+      }),
+    })),
     items: items.map((p) => ({ plan: p, label: `${yearText(p.endYear)}${schools > 1 ? ` at ${p.schoolName}` : ""}: ${plural(p.rows.length, "course")}` })),
     options: [
       ...questions.map((q) => h("label", { class: "picker" }, "Grading Scale (your school's pass mark) ", q)),

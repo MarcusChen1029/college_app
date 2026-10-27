@@ -24,6 +24,8 @@ export type UcGradePlan = { schoolName: string; schoolCode?: string; gradeLevel:
 const LETTER = /^([A-F])[+-]?$/i;
 const byText = (t: string) => UC_DISCIPLINES.find((d) => d.text === t)!;
 
+export const UC_SUBJECT_UNDECIDED = "UC subject not chosen: pick its Subject Area/Course Category for UC in the tracker (Transcript > View as > UC > Override on the course), or add the course on UC yourself";
+
 /** UC's subject for a course: the student's (or AI's) choice when it is one of UC's options, else what the course's category says exactly. */
 export function ucDiscipline(c: TranscriptCourse): { area: string; text: string; value: string } | null {
   // A tag from the student or the AI (subject, or the older subSubject): one of UC's own labels. "Computer Science" alone is under both
@@ -46,16 +48,12 @@ export function ucDiscipline(c: TranscriptCourse): { area: string; text: string;
       return c.subSubject && m[c.subSubject] ? byText(m[c.subSubject]!) : null;
     }
     case "arts": {
-      const m: Record<string, string> = { visual: "Visual Arts", music: "Music", theater: "Theater", dance: "Dance", interdisciplinary: "Interdisciplinary Arts" };
+      // "interdisciplinary" is the tracker's catch-all (a "Performing Arts" class was Music on a real application): not certain enough.
+      const m: Record<string, string> = { visual: "Visual Arts", music: "Music", theater: "Theater", dance: "Dance" };
       return c.subSubject && m[c.subSubject] ? byText(m[c.subSubject]!) : null;
     }
-    case "world_language": {
-      // The year of study is in the course name ("Chinese 2", "Spanish III"); without it UC's year can't be told.
-      const roman: Record<string, number> = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6 };
-      const m = name.match(/\b([1-9]|I{1,3}|IV|V|VI)\b(?!.*\b([1-9]|I{1,3}|IV|V|VI)\b)/);
-      const n = m ? (roman[m[1]!] ?? Number(m[1])) : null;
-      return n ? byText(`Yr ${n >= 4 ? "4+" : n} Lang Other Than English`) : null;
-    }
+    // A language's UC level is not its course number: a native speaker's "Chinese I" is "Level 4+" (seen on a real application).
+    // Only the student (or the AI tag) can say it.
     case "history_social":
       if (/\b(U\.?S\.?|American|United States)\b.*\bHistory\b/i.test(name)) return byText("U.S. History");
       if (/\b(Civics|Government)\b/i.test(name)) return byText("Civics/American Government");
@@ -64,32 +62,6 @@ export function ucDiscipline(c: TranscriptCourse): { area: string; text: string;
     default:
       return null;
   }
-}
-
-/**
- * UC's subject when the course's category alone doesn't name one, from what the transcript itself shows, with a warning so the student
- * sees the choice. null = still left for the student.
- * - A language course without a year number ("AP Chinese Language and Culture"): its year is one more than the same language's courses in
- *   earlier school years at this school (Chinese I, Chinese II, then AP Chinese = year 3).
- * - Computer science: UC's college-prep elective for it ("Elective -Math -Computer Science"); UC also lists Computer Science under
- *   Mathematics and Science, which the student can pick instead.
- * - AP Seminar / AP Research (no single subject): "Elective -Interdisciplinary".
- */
-export function ucDisciplineFromTranscript(c: TranscriptCourse, mine: readonly TranscriptCourse[]): { discipline: UcRow["discipline"]; warning: string } | null {
-  if (c.subject === "world_language" && c.languageName.trim()) {
-    const before = mine.filter((x) => x.subject === "world_language" && normalizeName(x.languageName) === normalizeName(c.languageName) && x.academicYear < c.academicYear);
-    const years = new Set(before.map((x) => x.academicYear)).size;
-    const n = years + 1;
-    const text = `Yr ${n >= 4 ? "4+" : n} Lang Other Than English`;
-    return { discipline: byText(text), warning: `${c.name}: entered as "${text}" (year ${n} of ${c.languageName} on your transcript); change it on UC if your school counts it differently` };
-  }
-  if (c.subject === "computer_science") {
-    return { discipline: byText("Elective -Math -Computer Science"), warning: `${c.name}: entered as the college-prep elective "Elective -Math -Computer Science"; on UC you can pick Computer Science under Mathematics or Science instead` };
-  }
-  if (/\bAP\s+(Seminar|Research)\b/i.test(c.name)) {
-    return { discipline: byText("Elective -Interdisciplinary"), warning: `${c.name}: entered as the college-prep elective "Elective -Interdisciplinary"` };
-  }
-  return null;
 }
 
 /** A printed grade in UC's words: + and - dropped, whole numbers as printed. null = UC can't take it (Pass/Fail, decimals, other marks). */
@@ -141,20 +113,10 @@ export function buildUcPlans(schools: TranscriptSchool[], courses: TranscriptCou
         skip("course", "not an A-G course: UC says to leave it out here (it may go under Activities & awards > Other coursework)");
         continue;
       }
-      let discipline = ucDiscipline(c);
-      if (!discipline) {
-        const guess = ucDisciplineFromTranscript(c, mine);
-        if (guess) {
-          discipline = guess.discipline;
-          plan.warnings.push(guess.warning);
-        }
-      }
-      // Home economics, counseling, defence education and the like have no A-G area: UC says to leave them out, like PE.
-      if (!discipline && c.subject === "other") {
-        skip("course", "not an A-G subject: UC says to leave it out here (it may go under Activities & awards > Other coursework)");
-        continue;
-      }
-      if (!discipline) skip("Subject Area/Course Category", "UC's subject could not be told from the course; pick it on UC (or set it for UC in the tracker)");
+      // No guessing: schools name and group courses their own way, so a course whose UC subject isn't certain is not added and the
+      // student is told (the panel lists these prominently after the run).
+      const discipline = ucDiscipline(c);
+      if (!discipline) skip("Subject Area/Course Category", UC_SUBJECT_UNDECIDED);
       const grades = boxes.map((code): string | null => {
         if (c.period !== school.defaultPeriod) return null;
         const t = c.terms.find((x) => x.term === code) ?? (code === "FY" && c.finalGrade ? { term: "FY" as const, grade: c.finalGrade, status: "graded" as const } : undefined);

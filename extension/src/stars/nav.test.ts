@@ -51,7 +51,7 @@ test("builds a year's coursework address the way the summary page does", () => {
 
 const row = (name: string): StarsRow => ({
   trackerId: name, name, academicLevel: "Equivalent to U.S. High School 9th Grade", subject: "Mathematics", title: "ALGEBRA 1", level: "Standard",
-  length: "Semester", scaleOptions: [], boxes: [{ grade: "93", credit: null }],
+  length: "Semester", scaleOptions: ["100-Point (100-90=A, 80-89=B...Pass=60)"], boxes: [{ grade: "93", credit: null }],
 });
 const plan = (endYear: number, rows: StarsRow[], schoolName = "Kang Chiao International School Linkou Campus"): StarsPagePlan =>
   ({ kind: "intl", endYear, schoolName, scaleQuestions: [], rows, skipped: [], warnings: [], titleOther: [], creditsSplit: 0 });
@@ -103,8 +103,8 @@ test("runStarsPlans opens every year itself and fills it, from any STARS page", 
   const r = await runStarsPlans([plan(2024, [row("Algebra 1"), row("Geometry")]), plan(2025, [row("Biology")])], [], "English", site.tab, () => false, () => {});
   assert.equal(r.stopped, false);
   assert.deepEqual(r.reports.map((x) => x.result), [
-    { added: ["Geometry"], skippedExisting: 1, stopped: null },
-    { added: ["Biology"], skippedExisting: 0, stopped: null },
+    { added: ["Geometry"], skippedExisting: 1, stopped: null, left: [] },
+    { added: ["Biology"], skippedExisting: 0, stopped: null, left: [] },
   ]);
   assert.equal(site.visits.length, 2);
   assert.deepEqual(site.years[2025], ["BIOLOGY"]);
@@ -124,4 +124,14 @@ test("runStarsPlans: Stop ends the run before the next year", async () => {
   const r = await runStarsPlans([plan(2024, [row("A")]), plan(2025, [row("B")])], [], "English", site.tab, () => n++ > 0, () => {});
   assert.equal(r.stopped, true);
   assert.equal(r.reports.length, 1);
+});
+
+test("runStarsPlans: a course missing a required box is not tried, is listed with why, and the run goes on", async () => {
+  const site = fakeStars({});
+  const noLevel = { ...plan(2024, [{ ...row("Art Life"), level: null as unknown as string }, row("Geometry")]) };
+  noLevel.skipped = [{ course: "Art Life", field: "Proficiency Level", reason: "no single STARS level fits this course's level; pick it on STARS" }];
+  const r = await runStarsPlans([noLevel, plan(2025, [row("Biology")])], [], "English", site.tab, () => false, () => {});
+  assert.deepEqual(r.reports[0]!.result.added, ["Geometry"]);
+  assert.deepEqual(r.reports[0]!.result.left, [{ course: "Art Life", why: "Proficiency Level: no single STARS level fits this course's level; pick it on STARS" }]);
+  assert.deepEqual(r.reports[1]!.result.added, ["Biology"]);
 });

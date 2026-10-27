@@ -61,3 +61,7 @@ p.warn { padding: 8px 10px; background: var(--soon-bg); border: 1px solid var(--
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn:focus-visible, .link:focus-visible, .check:focus-within { outline: 2px solid var(--brand); outline-offset: 2px; }
 .link { padding: 0; border: 0; background: none; color: var(--brand-dark); font: inherit; text-decoration: underline; cursor: pointer; text-align: left; }
+.attention { padding: 12px; margin: 0 0 12px; background: var(--urgent-bg); border: 2px solid var(--urgent); border-radius: 8px; color: var(--ink); }
+.attention h3 { margin: 0 0 6px; font-size: 15px; color: var(--urgent); }
+.attention h4 { margin: 8px 0 2px; font-size: 13px; }
+.attention ul { margin: 0; }

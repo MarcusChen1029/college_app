@@ -4,7 +4,7 @@
 
 import { schoolOnPage } from "../../../web/lib/school-match.ts";
 import type { UcGradePlan } from "../../../web/lib/uc-fill.ts";
-import { autoView, type AutoReport } from "../auto-view.ts";
+import { autoView, type AutoReport, type NeedsYou } from "../auto-view.ts";
 import { SITE_ORIGINS } from "../sites.ts";
 import { afterReload, navigate, sendTo } from "../tab-wait.ts";
 import { h } from "../ui.ts";
@@ -20,16 +20,30 @@ export function ucPlanForPage(plans: UcGradePlan[], grade: number, pageText: str
 
 const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
 
+/** Why each named course of the plan needs the student (from the plan's notes on it). */
+const why = (plan: UcGradePlan, names: readonly string[]): NeedsYou[] =>
+  names.map((course) => ({
+    course,
+    why: plan.skipped.filter((s) => s.course === course && s.field !== "course").map((s) => s.reason).join("; ") || "a box UC requires has no value in the tracker",
+  }));
+
+/** The courses the filler will leave out of this grade because they need the student (same test as fillUcPage). */
+export function ucNeedsYou(plan: UcGradePlan): NeedsYou[] {
+  return why(plan, plan.rows.filter((r) => !r.discipline || r.grades.some((g) => g == null) || (r.language === null && r.discipline.area === "Language Other Than English")).map((r) => r.name));
+}
+
+const gradeTitle = (p: UcGradePlan, schools: number) => `${p.gradeLevel}th grade (${p.year})${schools > 1 ? `, ${p.schoolName}` : ""}`;
+
 export function ucReport(r: UcGradeReport, schools: number): AutoReport {
   const done: string[] = [];
   if (r.added.length) done.push(`Added ${plural(r.added.length, "course")} and saved.`);
   if (r.skippedExisting) done.push(`${plural(r.skippedExisting, "course")} already on UC left alone.`);
   if (!done.length && !r.problem && !r.left.length) done.push("Nothing new to add.");
   return {
-    title: `${r.plan.gradeLevel}th grade (${r.plan.year})${schools > 1 ? `, ${r.plan.schoolName}` : ""}`,
+    title: gradeTitle(r.plan, schools),
     done,
     problems: r.problem ? [r.problem] : [],
-    left: r.left,
+    left: why(r.plan, r.left),
   };
 }
 
@@ -46,6 +60,7 @@ export function ucAutoView(plans: UcGradePlan[], tabId: number): HTMLElement {
   return autoView({
     title: "Add your courses to UC",
     intro: "Tick the grades, then Fill selected. The extension opens each grade's Enter courses & grades page in this tab, adds the courses that are not there yet and saves. Nothing is removed or submitted.",
+    pending: items.map((p) => ({ title: gradeTitle(p, schools), left: ucNeedsYou(p) })),
     items: items.map((p) => ({ plan: p, label: `${p.gradeLevel}th grade (${p.year})${schools > 1 ? ` at ${p.schoolName}` : ""}: ${plural(p.rows.length, "course")}` })),
     run: async (chosen, shouldStop, progress) => {
       const { reports, stopped } = await runUcPlans(chosen, tab, shouldStop, progress);
