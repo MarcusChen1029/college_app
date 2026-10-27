@@ -12,7 +12,7 @@ import { fitLabel } from "@/lib/i18n/fit-text";
 import { BASE_TIERS, TIER_ORDER } from "@/lib/tiers";
 import { fmtMoneyShort, TUITION_CAPS, type Currency } from "@/lib/tuition";
 import type { Lookups, TierCode } from "@/lib/types";
-import { fitClass, fitDotClass, FIT_LEVEL } from "@/lib/ui";
+import { buttonClass, fitClass, fitDotClass, FIT_LEVEL } from "@/lib/ui";
 
 // One control style for the whole page (map sidebar, table bar, filter panel).
 export const CONTROL = "h-9 rounded-full border-2 border-zinc-200 bg-white px-3 text-sm focus:border-blue-400 focus:outline-none";
@@ -144,7 +144,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
   ];
   const sortSelect = (
     <select
-      className={`${CONTROL} ${compact ? "w-full" : "sm:ml-auto"}`}
+      className={`${CONTROL} ${compact ? "w-full" : "ml-auto"}`}
       value={f.sort.key}
       onChange={(e) => set({ sort: { key: e.target.value as SortKey, reverse: false } })}
       aria-label={t("colleges.sort")}
@@ -263,6 +263,12 @@ export function ExploreFilterBar(p: FilterBarProps) {
           </Link>
         )}
       </div>
+      {compact && (
+        // The open panel fills the narrow sidebar; this closes it and brings the (filtered) list back.
+        <button type="button" onClick={() => setOpen(false)} className={`${buttonClass("primary", "sm")} sticky bottom-0 w-full`}>
+          {t("colleges.showResults", { n: p.count })}
+        </button>
+      )}
     </div>
   );
 
@@ -299,11 +305,20 @@ export function ExploreFilterBar(p: FilterBarProps) {
           {fieldSelect}
           {tuitionSelect}
           {moreButton}
-          {sortSelect}
         </div>
       )}
       {open && panel}
-      <ActiveChips {...p} />
+      {compact ? (
+        <ActiveChips {...p} />
+      ) : (
+        // Sort sits with the result count: it changes the order of what is counted, not which colleges are in it.
+        <div className="flex flex-wrap items-start gap-2">
+          <div className="min-w-0 flex-1 pt-1.5">
+            <ActiveChips {...p} />
+          </div>
+          {sortSelect}
+        </div>
+      )}
     </div>
   );
 }

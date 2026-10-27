@@ -49,6 +49,8 @@ export function CollegeBrowser({
   const shown = useVisibleCount(resetKey, rows.length);
   const toggle = (slug: string) => setSelected((s) => (s.includes(slug) ? s.filter((x) => x !== slug) : s.length >= 4 ? s : [...s, slug]));
   const visible = rows.slice(0, shown.count);
+  // Colleges outside the US mostly publish no overall admit rate (they admit by course): skip an all-dash column.
+  const showAdmit = isUS || rows.some((r) => r.c.admit_rate != null);
 
   const listButton = (r: ExploreRow) => {
     const inList = student.has(r.c.slug);
@@ -91,7 +93,7 @@ export function CollegeBrowser({
     const on = sort.key === key;
     const desc = SORT_DESC[key] !== sort.reverse;
     return (
-      <button type="button" onClick={() => onSort(key)} className={`inline-flex items-center gap-1 uppercase tracking-wide hover:text-ink ${on ? "text-ink" : ""}`}>
+      <button type="button" onClick={() => onSort(key)} className={`inline-flex items-center gap-1 whitespace-nowrap uppercase tracking-wide hover:text-ink ${on ? "text-ink" : ""}`}>
         {label}
         <span aria-hidden="true" className={on ? "" : "opacity-0"}>
           {desc ? "↓" : "↑"}
@@ -140,9 +142,11 @@ export function CollegeBrowser({
               {isUS && r.fit && <FitBadge fit={r.fit.fit} result={r.fit} />}
             </div>
             <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
-              <Stat label={t("colleges.thAdmitRate")}>
-                <AdmitCell r={r} />
-              </Stat>
+              {showAdmit && (
+                <Stat label={t("colleges.thAdmitRate")}>
+                  <AdmitCell r={r} />
+                </Stat>
+              )}
               {isUS &&
                 tests.map((k) => (
                   <Stat key={k} label={t(k === "sat" ? "colleges.thSatMedian" : "colleges.thActMedian")}>
@@ -185,7 +189,7 @@ export function CollegeBrowser({
                   {sortButton("name", t("colleges.thCollege"))}
                 </span>
               </th>
-              {th("admit", t("colleges.thAdmitRate"), "text-right")}
+              {showAdmit && th("admit", t("colleges.thAdmitRate"), "text-right")}
               {isUS &&
                 tests.map((k) =>
                   th(
@@ -224,9 +228,11 @@ export function CollegeBrowser({
                     </div>
                   </div>
                 </td>
-                <td className="p-2 text-right">
-                  <AdmitCell r={r} />
-                </td>
+                {showAdmit && (
+                  <td className="p-2 text-right">
+                    <AdmitCell r={r} />
+                  </td>
+                )}
                 {isUS &&
                   tests.map((k) => (
                     <td key={k} className="p-2 text-right">
@@ -244,7 +250,7 @@ export function CollegeBrowser({
                 {isUS && <td className="p-2">{fitCell(r)}</td>}
                 <td className="hidden p-2 whitespace-nowrap tabular-nums xl:table-cell">{fmtDate(r.c.next_deadline)}</td>
                 {isUS && (
-                  <td className="hidden p-2 xl:table-cell">
+                  <td className="hidden whitespace-nowrap p-2 xl:table-cell">
                     {r.c.test_policy ? <Pill>{r.c.test_policy in TEST_POLICY ? t(`colleges.testPolicy.${r.c.test_policy}` as MessageKey) : r.c.test_policy}</Pill> : <span className="text-zinc-400">—</span>}
                   </td>
                 )}
@@ -343,7 +349,7 @@ function TuitionCell({ tu }: { tu: TuitionEstimate }) {
         {fmtMoney(tu.amount, tu.currency)}
         {tu.maybeLow && <span aria-hidden="true">*</span>}
       </span>
-      <span className="block text-[11px] text-zinc-500">
+      <span className="block whitespace-nowrap text-[11px] text-zinc-500">
         {tu.max != null
           ? t("colleges.tuitionUpTo", { amount: fmtMoney(tu.max, tu.currency) })
           : tu.outOfState != null
