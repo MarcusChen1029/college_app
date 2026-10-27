@@ -110,7 +110,9 @@ Verified end to end on 2026-10-27 (the run skipped 2 existing courses, added 2, 
 UC: open any UC page (one tab only). Under "Add your courses to UC" the grades with courses are ticked; press "Fill selected". For each grade
 the tab opens /my-application/acadHistFrGrades/<NN>, clicks the school's "Enter courses & grades" (school found by code, else by name), new
 courses go into empty rows (rows are added as needed), "Save & continue" is pressed once, and the panel checks the grade page lists every
-added course. A grade UC has no page for is reported and the run goes on. Courses whose UC subject
+added course. A grade UC has no page for is reported and the run goes on.
+Navigation verified live 2026-10-27 on both throwaway accounts: STARS's school/year addresses opened 2025-26 with the course form; UC's
+`edit_<NN><id>` click opened 10th grade's courses page. The filling and saving steps are the ones verified earlier the same day. Courses whose UC subject
 can't be told from the tracker (e.g. history without "U.S."/"World" in the name, computer science, languages without a year number) are left
 for you and listed; tag them for UC in the tracker or with the AI import. Verified end to end on 2026-10-27 (3 added, 1 existing skipped).
 
