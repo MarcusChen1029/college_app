@@ -1,20 +1,24 @@
-// Runs one STARS school year: adds every planned course that is not on the page yet, one Save Course at a time. Each save reloads the
-// page, so the panel drives the loop and checks after every reload that the course is in STARS's table. Free of chrome.* for tests.
+// Runs STARS school years: opens each year's coursework page itself, then adds every planned course that is not on the page yet, one
+// Save Course at a time. Each save reloads the page, so the panel drives the loop and checks after every reload that the course is in
+// STARS's table. Free of chrome.* for tests.
 
-import { schoolOnPage } from "../../../web/lib/school-match.ts";
+import { bestSchoolMatch, schoolOnPage } from "../../../web/lib/school-match.ts";
 import { starsRowsToAdd, starsScaleFor, type StarsPagePlan } from "../../../web/lib/stars-fill.ts";
 import type { AssistMessage, AssistResponse } from "../messages.ts";
+import type { StarsSchool } from "./nav.ts";
 
 export type StarsTab = {
   send(msg: AssistMessage): Promise<AssistResponse | null>;
   /** Resolves once the tab has reloaded after a save and its content script answers again. */
   afterSave(): Promise<void>;
+  /** Opens a STARS path ("/srt/...") in the same tab and resolves once its content script answers. */
+  go?(path: string): Promise<void>;
 };
 export type StarsRunResult = { added: string[]; skippedExisting: number; stopped: string | null };
 
 const upper = (s: string) => s.normalize("NFKC").trim().toUpperCase().replace(/\s+/g, " ");
 
-async function page(tab: StarsTab): Promise<{ year: number | null; kind: "intl" | "us" | null; existing: string[]; errors?: string[] }> {
+async function page(tab: StarsTab): Promise<{ year: number | null; kind: "intl" | "us" | null; existing: string[]; pageText: string; errors?: string[] }> {
   const r = await tab.send({ type: "starsPage" });
   if (r?.type !== "starsPage") throw new Error("The STARS page did not answer. Reload it and try again.");
   return r;
@@ -60,4 +64,81 @@ export async function runStarsYear(plan: StarsPagePlan, picked: readonly string[
     added.push(row.name);
   }
   return { added, skippedExisting, stopped: null };
+}
+
+const yearText = (endYear: number) => `${endYear - 1}-${String(endYear % 100).padStart(2, "0")}`;
+const SIGNED_OUT = /signed you out/i;
+
+/** The plan's school on STARS: the only one, else the one with the school's code, else the one whose name reads the same. */
+export function starsSchoolFor(plan: StarsPagePlan, schools: readonly StarsSchool[]): StarsSchool | null {
+  if (schools.length === 1) return schools[0]!;
+  return bestSchoolMatch(schools, { name: plan.schoolName, code: plan.schoolCode }, (s) => ({ name: s.name, code: s.ceeb }));
+}
+
+/** Puts the tab on the plan's coursework page (unless it is already there). null = ready; otherwise why not, for the report. */
+export async function openStarsYear(plan: StarsPagePlan, tab: StarsTab, schools: () => Promise<StarsSchool[] | string>): Promise<string | null> {
+  const list = await schools();
+  if (typeof list === "string") return list;
+  const school = starsSchoolFor(plan, list);
+  if (!school) return `STARS lists ${list.length ? list.map((s) => s.name).join(", ") : "no schools"} and none of them reads as "${plan.schoolName}": add the school (or its code) on STARS's Enter Schools page, or the school code in the tracker`;
+  const now = await page(tab);
+  const here = now.year === plan.endYear && now.kind === plan.kind && now.pageText.split("\n", 1)[0]!.trim() === school.ceeb;
+  if (!here) {
+    if (!tab.go) return `Open the ${yearText(plan.endYear)} coursework page on STARS first`;
+    const r = await tab.send({ type: "starsYearPath", ceeb: school.ceeb, year: plan.endYear });
+    if (r?.type !== "starsYearPath") return "The STARS page did not answer. Reload it and try again";
+    if (!r.path) {
+      return r.years.length
+        ? `STARS offers ${r.years.map(yearText).join(", ")} for ${school.name}, not ${yearText(plan.endYear)}: check the school's dates on STARS's Enter Schools page`
+        : `STARS did not show ${school.name}'s school years (it may have signed you out): open STARS's summary page, then run again`;
+    }
+    await tab.go(r.path);
+    const after = await page(tab);
+    if (after.year !== plan.endYear) return `STARS did not open the ${yearText(plan.endYear)} coursework page (it may have signed you out)`;
+    if (after.kind !== plan.kind) {
+      return `STARS treats ${school.name} as ${after.kind === "us" ? "a US" : "a non-US"} school and the tracker as ${plan.kind === "us" ? "a US" : "a non-US"} one: make the school's country match, then run again`;
+    }
+  }
+  return null;
+}
+
+export type StarsYearReport = { plan: StarsPagePlan; result: StarsRunResult };
+
+/**
+ * Every chosen year in turn, like Common App's "Fill selected": open the year, add its courses, go on to the next. A year that stops
+ * (a box STARS refused, a missing year) is reported and the run goes on; Stop, or STARS signing the student out, ends the run.
+ */
+export async function runStarsPlans(
+  plans: readonly StarsPagePlan[],
+  picked: readonly string[],
+  language: string | null,
+  tab: StarsTab,
+  shouldStop: () => boolean,
+  progress: (text: string) => void,
+): Promise<{ reports: StarsYearReport[]; stopped: boolean }> {
+  const reports: StarsYearReport[] = [];
+  let schools: Promise<StarsSchool[] | string> | null = null;
+  const loadSchools = () =>
+    (schools ??= tab.send({ type: "starsSchools" }).then((r) =>
+      r?.type !== "starsSchools" ? "The STARS page did not answer. Reload it and try again" : r.ok ? r.schools : r.error,
+    ));
+  for (const plan of plans) {
+    if (shouldStop()) return { reports, stopped: true };
+    progress(`Opening ${yearText(plan.endYear)} on STARS...`);
+    let problem: string | null;
+    try {
+      problem = await openStarsYear(plan, tab, loadSchools);
+    } catch (e) {
+      problem = (e as Error).message;
+    }
+    if (problem) {
+      reports.push({ plan, result: { added: [], skippedExisting: 0, stopped: problem } });
+      if (SIGNED_OUT.test(problem)) return { reports, stopped: true };
+      continue;
+    }
+    const result = await runStarsYear(plan, picked, plan.kind === "intl" ? language : null, tab, shouldStop, (t) => progress(`${yearText(plan.endYear)}: ${t}`));
+    reports.push({ plan, result });
+    if (result.stopped === "Stopped.") return { reports, stopped: true };
+  }
+  return { reports, stopped: false };
 }

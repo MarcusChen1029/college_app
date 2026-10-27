@@ -39,3 +39,12 @@ export function afterReload(tabId: number, what: string): Promise<void> {
     chrome.tabs.onUpdated.addListener(listener);
   });
 }
+
+/** Opens `url` in the portal tab (the same tab: UC signs out when a second one opens) and waits until its content script answers. */
+export async function navigate(tabId: number, url: string, what: string): Promise<void> {
+  const loaded = afterReload(tabId, what).catch(() => {
+    throw new Error(`The ${what} page did not open. Check the tab, then run again`);
+  });
+  await chrome.tabs.update(tabId, { url });
+  await loaded;
+}

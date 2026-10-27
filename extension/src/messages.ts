@@ -8,6 +8,7 @@ import type { UcGradePlan } from "../../web/lib/uc-fill.ts";
 import type { UcFillResult } from "./uc/fill.ts";
 import type { CsuRunResult } from "./csu/run.ts";
 import type { FillTarget } from "./commonapp/pages.ts";
+import type { StarsSchool } from "./stars/nav.ts";
 
 export type { FillTarget } from "./commonapp/pages.ts";
 export type { PageResult } from "./commonapp/dom.ts";
@@ -47,7 +48,12 @@ export type AssistMessage =
   | { type: "csuFill"; plan: CsuSchoolPlan }
   | { type: "csuStop" }
   | { type: "ucPage" }
-  | { type: "ucFill"; plan: UcGradePlan };
+  | { type: "ucFill"; plan: UcGradePlan }
+  /** STARS: the student's schools (read from Enter Schools), and the coursework page address of one school year. */
+  | { type: "starsSchools" }
+  | { type: "starsYearPath"; ceeb: string; year: number }
+  /** UC grade page: click the school's "Enter courses & grades". */
+  | { type: "ucOpenClasses"; grade: number; schoolName: string; schoolCode?: string };
 export type AssistResponse =
   | { type: "ready"; path: string }
   | { type: "assistTarget"; label: string | null }
@@ -61,6 +67,12 @@ export type AssistResponse =
   /** grade: the open "Enter courses & grades" page's grade level (null elsewhere); names: courses on it, or on a grade summary page. */
   | { type: "ucPage"; grade: number | null; names: string[]; pageText: string }
   | { type: "ucFill"; ok: true; result: UcFillResult }
-  | { type: "ucFill"; ok: false; error: string };
+  | { type: "ucFill"; ok: false; error: string }
+  | { type: "starsSchools"; ok: true; schools: StarsSchool[] }
+  | { type: "starsSchools"; ok: false; error: string }
+  /** path: null when STARS offers no such year for the school (years: the ones it does offer). */
+  | { type: "starsYearPath"; path: string | null; years: number[] }
+  | { type: "ucOpenClasses"; ok: true }
+  | { type: "ucOpenClasses"; ok: false; error: string };
 
 export type ExtensionMessage = PanelRequest | ContentMessage | AssistMessage;

@@ -1,10 +1,13 @@
-// Side panel section for STARS: "Add courses" for the school year whose coursework page is open. Each course is saved with STARS's own
-// Save Course button; the student's existing courses are never changed or removed (names already on the page are skipped).
+// Side panel section for STARS, like Common App's: tick the school years, answer the grading scale (and language) once, press "Fill
+// selected", and the extension opens each year's coursework page itself and adds the courses not there yet, one Save Course at a time.
+// The student's existing courses are never changed or removed. Works from any STARS page.
 
 import type { StarsPagePlan } from "../../../web/lib/stars-fill.ts";
-import { afterReload, sendTo as send } from "../tab-wait.ts";
-import { button, h } from "../ui.ts";
-import { planForPage, runStarsYear, type StarsTab } from "./run.ts";
+import { autoView, type AutoReport } from "../auto-view.ts";
+import { SITE_ORIGINS } from "../sites.ts";
+import { afterReload, navigate, sendTo as send } from "../tab-wait.ts";
+import { h } from "../ui.ts";
+import { runStarsPlans, type StarsTab, type StarsYearReport } from "./run.ts";
 
 const PICKS_KEY = "starsScalePicks";
 
@@ -36,25 +39,30 @@ async function loadLanguage(): Promise<string> {
 }
 
 const yearText = (endYear: number) => `${endYear - 1}-${String(endYear % 100).padStart(2, "0")}`;
+const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
 
-/** The section, or a note when this STARS page is not a coursework page. */
+export function starsReport(r: StarsYearReport, schools: number): AutoReport {
+  const { added, skippedExisting, stopped } = r.result;
+  const done: string[] = [];
+  if (added.length) done.push(`Added and saved ${plural(added.length, "course")}.`);
+  if (skippedExisting) done.push(`${plural(skippedExisting, "course")} already on STARS left alone.`);
+  if (!done.length && !stopped) done.push("Nothing new to add.");
+  return {
+    title: `${yearText(r.plan.endYear)}${schools > 1 ? `, ${r.plan.schoolName}` : ""}`,
+    done,
+    problems: stopped && stopped !== "Stopped." ? [stopped] : [],
+    left: r.plan.skipped.map((s) => s.course).filter((c, i, all) => all.indexOf(c) === i),
+  };
+}
+
+/** The STARS section for the student's whole transcript. */
 export async function starsAutoView(plans: StarsPagePlan[], tabId: number): Promise<HTMLElement> {
-  const page = await send(tabId, { type: "starsPage" });
-  const year = page?.type === "starsPage" ? page.year : null;
-  if (page?.type !== "starsPage" || year == null) {
-    return h("p", { class: "note" }, "To add courses automatically, open a year's coursework page on STARS (Enter Coursework, then a grade).");
-  }
-  const plan = planForPage(plans, page);
-  if (!plan || !plan.rows.length) {
-    const many = plans.filter((p) => p.kind === page.kind && p.endYear === year).length > 1;
-    return h("p", { class: "note" }, many
-      ? `Several schools in your transcript have ${yearText(year)} courses and this page's school name matches none of them exactly: give the school the same name in the tracker as on STARS.`
-      : `Your transcript has no courses to add for ${yearText(year)} at a ${page.kind === "us" ? "US" : "non-US"} school.`);
-  }
-  const existing = page?.type === "starsPage" ? page.existing : [];
-
+  const items = plans.filter((p) => p.rows.length).sort((a, b) => a.endYear - b.endYear);
+  const schools = new Set(items.map((p) => p.schoolName)).size;
   const picks = await loadPicks();
-  const questions = plan.scaleQuestions.map((options) => {
+  // One question per distinct set of scale choices, across all years.
+  const sets = [...new Map(items.flatMap((p) => p.scaleQuestions).map((q) => [q.join("|"), q])).values()];
+  const questions = sets.map((options) => {
     const select = h("select", { "aria-label": "Grading Scale" }) as HTMLSelectElement;
     select.append(h("option", { value: "" }, "Choose your school's scale..."));
     for (const o of options) {
@@ -66,60 +74,45 @@ export async function starsAutoView(plans: StarsPagePlan[], tabId: number): Prom
   });
   const chosen = () => questions.map((q) => q.value).filter(Boolean);
   // STARS's international page wants each course's language of instruction; the transcript doesn't say it, so the student says it once.
+  const intl = items.some((p) => p.kind === "intl");
   const language = h("input", { type: "text", value: await loadLanguage(), "aria-label": "Language of instruction" }) as HTMLInputElement;
-
-  const status = h("p", { class: "status" }, `${plan.rows.length} courses for ${yearText(year)}; names already on this page are skipped.`);
-  let stop = false;
-  const stopBtn = button("Stop", () => {
-    stop = true;
-    stopBtn.disabled = true;
-  }, "btn danger", true);
-  const go = button("Add courses to STARS", async () => {
-    if (questions.some((q) => !q.value)) {
-      status.textContent = "Choose the Grading Scale first (your school's passing mark decides which).";
-      status.className = "status warn";
-      return;
-    }
-    await savePicks([...new Set([...picks.filter((p) => !plan.scaleQuestions.flat().includes(p)), ...chosen()])]);
-    try {
-      await chrome.storage.local.set({ [LANGUAGE_KEY]: language.value.trim() });
-    } catch {
-      // asked again next time
-    }
-    stop = false;
-    go.disabled = true;
-    stopBtn.disabled = false;
-    const tab: StarsTab = { send: (m) => send(tabId, m), afterSave: () => afterReload(tabId, "STARS") };
-    const r = await runStarsYear(plan, chosen(), plan.kind === "intl" ? language.value.trim() || null : null, tab, () => stop, (t) => (status.textContent = t));
-    go.disabled = false;
-    stopBtn.disabled = true;
-    status.className = r.stopped ? "status warn" : "status";
-    status.textContent = [
-      `Added ${r.added.length} course${r.added.length === 1 ? "" : "s"}${r.added.length ? `: ${r.added.join(", ")}` : ""}.`,
-      r.skippedExisting ? `${r.skippedExisting} already on STARS were left alone.` : "",
-      r.stopped ?? "Done.",
-    ].filter(Boolean).join(" ");
-  }, "btn primary");
-
-  return h(
-    "section",
-    { class: "item" },
-    h("h3", {}, `Add ${yearText(year)} courses automatically`),
-    h("p", { class: "muted" }, `${existing.length ? `STARS already lists ${new Set(existing).size} course name(s) for this year; those are skipped. ` : ""}Each course is saved with STARS's Save Course button; nothing is removed or submitted.`),
-    ...questions.map((q) => h("label", { class: "picker" }, "Grading Scale (your school's pass mark) ", q)),
-    plan.kind === "intl" ? h("label", { class: "picker" }, "Language of instruction ", language) : false,
-    status,
-    h("div", { class: "row" }, go, stopBtn),
-    summary(plan),
-    plan.warnings.length ? h("ul", { class: "warnings" }, ...plan.warnings.map((w) => h("li", {}, w))) : false,
-    plan.skipped.length ? h("details", {}, h("summary", {}, `Left for you (${plan.skipped.length})`), h("ul", {}, ...plan.skipped.map((s) => h("li", {}, `${s.course}: ${s.field}: ${s.reason}`)))) : false,
-  );
+  const tab: StarsTab = {
+    send: (m) => send(tabId, m),
+    afterSave: () => afterReload(tabId, "STARS"),
+    go: (path) => navigate(tabId, `${SITE_ORIGINS.stars[0]}${path}`, "STARS"),
+  };
+  return autoView({
+    title: "Add your courses to STARS",
+    intro: "Tick the school years, then Fill selected. The extension opens each year's coursework page in this tab and saves each new course with STARS's Save Course button. Courses already on STARS are left alone; nothing is removed or submitted.",
+    items: items.map((p) => ({ plan: p, label: `${yearText(p.endYear)}${schools > 1 ? ` at ${p.schoolName}` : ""}: ${plural(p.rows.length, "course")}` })),
+    options: [
+      ...questions.map((q) => h("label", { class: "picker" }, "Grading Scale (your school's pass mark) ", q)),
+      intl ? h("label", { class: "picker" }, "Language of instruction ", language) : false,
+    ],
+    before: async () => {
+      if (questions.some((q) => !q.value)) return "Choose the Grading Scale first (your school's passing mark decides which).";
+      await savePicks([...new Set([...picks.filter((p) => !sets.flat().includes(p)), ...chosen()])]);
+      try {
+        await chrome.storage.local.set({ [LANGUAGE_KEY]: language.value.trim() });
+      } catch {
+        // asked again next time
+      }
+      return null;
+    },
+    run: async (chosenPlans, shouldStop, progress) => {
+      const { reports, stopped } = await runStarsPlans(chosenPlans, chosen(), intl ? language.value.trim() || null : null, tab, shouldStop, progress);
+      return { reports: reports.map((r) => starsReport(r, schools)), stopped };
+    },
+    footer: [summary(items), items.some((p) => p.warnings.length) ? h("ul", { class: "warnings" }, ...[...new Set(items.flatMap((p) => p.warnings))].map((w) => h("li", {}, w))) : false],
+  });
 }
 
 /** What the student may want to look at afterwards, in two lines instead of one note per course. */
-function summary(plan: StarsPagePlan): HTMLElement | false {
+function summary(plans: StarsPagePlan[]): HTMLElement | false {
   const lines: string[] = [];
-  if (plan.titleOther.length) lines.push(`STARS has no closer course title for ${plan.titleOther.join(", ")}: they go in as "OTHER ...". Change one on STARS only if a listed title fits better.`);
-  if (plan.creditsSplit) lines.push(`${plan.creditsSplit} course${plan.creditsSplit === 1 ? " prints" : "s print"} one credit for the whole course; it is split evenly over the terms.`);
+  const other = plans.flatMap((p) => p.titleOther);
+  const split = plans.reduce((n, p) => n + p.creditsSplit, 0);
+  if (other.length) lines.push(`STARS has no closer course title for ${other.join(", ")}: they go in as "OTHER ...". Change one on STARS only if a listed title fits better.`);
+  if (split) lines.push(`${split} course${split === 1 ? " prints" : "s print"} one credit for the whole course; it is split evenly over the terms.`);
   return lines.length ? h("ul", { class: "note" }, ...lines.map((l) => h("li", {}, l))) : false;
 }
