@@ -3,7 +3,7 @@
 // STARS's own words. Pure data in, pure data out; the extension types it in.
 // Lists and page facts: transcript-maps/stars-lists.ts and docs/superpowers/research/2026-10-27-portal-dom.md §1.
 
-import { mapCourse } from "./transcript-maps.ts";
+import { matchStarsTitle } from "./transcript-maps/stars-titles.ts";
 import { isNonUs } from "./transcript-maps/types.ts";
 import {
   STARS_INTL_ACADEMIC_LEVELS,
@@ -50,6 +50,10 @@ export type StarsPagePlan = {
   rows: StarsRow[];
   skipped: StarsSkip[];
   warnings: string[];
+  /** Course names whose generic title is STARS's "OTHER ..." (nothing in STARS's list matched the name). */
+  titleOther: string[];
+  /** How many courses print one credit for the whole course, split evenly over its terms. */
+  creditsSplit: number;
 };
 
 const LENGTH = { full_year: "Full Year", semester: "Semester", trimester: "Trimester", quarter: "Quarterly" } as const;
@@ -77,14 +81,14 @@ function subjectOf(c: TranscriptCourse, kind: StarsPageKind): string {
 }
 
 /** The generic title: the student's (or AI's) choice when it is in this subject's list, else the map (exact name match, else "OTHER …"). */
-function titleOf(school: TranscriptSchool, c: TranscriptCourse, kind: StarsPageKind, subject: string, warnings: string[]): string {
+/** The generic title: the student's (or AI's) choice when it is in this subject's list, else matched from the course name (stars-titles.ts). */
+function titleOf(c: TranscriptCourse, kind: StarsPageKind, subject: string, other: string[]): string {
   const list = LISTS[kind].titles[subject]!;
   const ov = c.overrides.stars?.genericTitle;
   if (ov && list.includes(upper(ov))) return upper(ov);
-  const f = mapCourse("stars", school, c).fields.find((x) => x.key === "genericTitle");
-  const value = f?.value && list.includes(f.value) ? f.value : list.find((t) => t.startsWith("OTHER"))!;
-  if (f?.status !== "verified" || value !== f.value) warnings.push(`${c.name}: Course/Exam Content set to ${value}; pick a closer title on STARS if there is one`);
-  return value;
+  const m = matchStarsTitle(c.name, c.subject, c.gradeLevel, list, kind);
+  if (m.how === "other") other.push(c.name);
+  return m.title;
 }
 
 function levelOf(c: TranscriptCourse, kind: StarsPageKind, skipped: StarsSkip[]): string | null {
@@ -105,7 +109,7 @@ export function starsUsGrade(printed: string): string | null {
   return STARS_INTL_GRADE_WORDS.find((w) => normalizeName(w) === normalizeName(g)) ?? g.toUpperCase();
 }
 
-function boxesOf(c: TranscriptCourse, kind: StarsPageKind, skipped: StarsSkip[], warnings: string[]): { length: StarsRow["length"]; boxes: StarsBox[] } {
+function boxesOf(c: TranscriptCourse, kind: StarsPageKind, skipped: StarsSkip[]): { length: StarsRow["length"]; boxes: StarsBox[]; split: boolean } {
   const grade = (printed: string, what: string): string | null => {
     const g = kind === "intl" ? starsIntlGrade(printed) : starsUsGrade(printed);
     if (g == null && printed.trim()) skipped.push({ course: c.name, field: `${what} grade`, reason: `"${printed}" is not a grade STARS lists on this scale; type it yourself` });
@@ -120,22 +124,26 @@ function boxesOf(c: TranscriptCourse, kind: StarsPageKind, skipped: StarsSkip[],
     const value = status === "in_progress" || status === "planned" ? IN_PROGRESS : g ? grade(g, "Year") : null;
     if (value == null && !g) skipped.push({ course: c.name, field: "Year grade", reason: "no year grade in the tracker" });
     const credit = c.credit ?? fy?.credit ?? null;
-    return { length: "Full Year", boxes: [{ grade: value, credit: credit == null ? null : creditText(credit) }] };
+    return { length: "Full Year", boxes: [{ grade: value, credit: credit == null ? null : creditText(credit) }], split: false };
   }
   const codes = TERMS_FOR_PERIOD[c.period].filter((t) => t !== "FY");
   const termOf = (code: string): Term | undefined => termOnly.find((t) => t.term === code);
   const hasTermCredits = termOnly.some((t) => t.status !== "none" && t.credit != null);
-  if (!hasTermCredits && c.credit != null) {
-    warnings.push(`${c.name}: the transcript lists ${c.credit} credit for the whole course; STARS's per-term credit default is kept, check it`);
-  }
+  // One credit printed for the whole course (no term credits): spread it evenly over the terms the course runs, so STARS's 0.5 default
+  // is not left in place.
+  const taken = codes.filter((code) => {
+    const t = termOf(code);
+    return t && t.status !== "none";
+  });
+  const share = !hasTermCredits && c.credit != null && taken.length ? creditText(c.credit / taken.length) : null;
   const boxes = codes.map((code): StarsBox => {
     const t = termOf(code);
-    if (!t || t.status === "none") return { grade: NOT_TAKEN, credit: termOnly.length && hasTermCredits ? "0" : null };
+    if (!t || t.status === "none") return { grade: NOT_TAKEN, credit: termOnly.length && (hasTermCredits || share) ? "0" : null };
     const g = t.status === "graded" ? (t.grade.trim() ? grade(t.grade, code) : null) : IN_PROGRESS;
     if (t.status === "graded" && !t.grade.trim()) skipped.push({ course: c.name, field: `${code} grade`, reason: "the grade is missing in the tracker" });
-    return { grade: g, credit: t.credit == null ? null : creditText(t.credit) };
+    return { grade: g, credit: t.credit != null ? creditText(t.credit) : share };
   });
-  return { length: LENGTH[c.period], boxes };
+  return { length: LENGTH[c.period], boxes, split: share != null };
 }
 
 /** One plan per (high school, school year), in transcript order; `kind` says which of STARS's two pages it is for. */
@@ -149,7 +157,7 @@ export function buildStarsPlans(schools: TranscriptSchool[], courses: Transcript
     const key = `${school.id}|${c.academicYear}`;
     let plan = plans.get(key);
     if (!plan) {
-      plan = { kind, endYear: c.academicYear + 1, schoolName: school.name, scaleQuestions: [], rows: [], skipped: [], warnings: [] };
+      plan = { kind, endYear: c.academicYear + 1, schoolName: school.name, scaleQuestions: [], rows: [], skipped: [], warnings: [], titleOther: [], creditsSplit: 0 };
       plans.set(key, plan);
     }
     const gl = c.gradeLevel;
@@ -158,9 +166,10 @@ export function buildStarsPlans(schools: TranscriptSchool[], courses: Transcript
       continue;
     }
     const subject = subjectOf(c, kind);
-    const title = titleOf(school, c, kind, subject, plan.warnings);
+    const title = titleOf(c, kind, subject, plan.titleOther);
     const level = levelOf(c, kind, plan.skipped);
-    const { length, boxes } = boxesOf(c, kind, plan.skipped, plan.warnings);
+    const { length, boxes, split } = boxesOf(c, kind, plan.skipped);
+    if (split) plan.creditsSplit++;
     // The US page has no per-course scale: STARS uses the school's Grade Scale from Enter Schools.
     const scaleOptions = kind === "intl" ? starsIntlScalesFor(c.scale, c.scaleMax) : [];
     if (scaleOptions.length > 1 && !plan.scaleQuestions.some((q) => q.join("|") === scaleOptions.join("|"))) plan.scaleQuestions.push(scaleOptions);

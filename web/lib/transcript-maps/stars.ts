@@ -3,7 +3,8 @@
 // lists were not retrievable, so those stay unverified.
 import { LEVELS, PERIOD_TYPES, SUBJECTS } from "../transcript.ts";
 import { isNonUs, table, unverified, verified, type SystemMap } from "./types.ts";
-import { STARS_INTL_SUBJECT, STARS_INTL_TITLES, STARS_US_SUBJECT, STARS_US_TITLES, starsIntlOtherTitle } from "./stars-lists.ts";
+import { STARS_INTL_SUBJECT, STARS_INTL_TITLES, STARS_US_SUBJECT, STARS_US_TITLES } from "./stars-lists.ts";
+import { matchStarsTitle } from "./stars-titles.ts";
 
 const HELP = "https://starsrecord.zendesk.com/hc/en-us/articles";
 const SUBJECT_SRC = `${HELP}/37027194180251`;
@@ -72,12 +73,12 @@ export const STARS_MAP: SystemMap = {
   ),
   genericTitle: (school, course) => {
     // Both pages' lists were read live (2026-10-27); a US school's page has its own titles ("ENGLISH 1" vs "ENGLISH 9 (FIRST YEAR)").
-    const title = course.name.normalize("NFKC").trim().toUpperCase().replace(/\s+/g, " ");
     const us = !isNonUs(school);
     const list = us ? STARS_US_TITLES[STARS_US_SUBJECT[course.subject]] : STARS_INTL_TITLES[STARS_INTL_SUBJECT[course.subject]];
-    if (list.includes(title)) return verified(title, LIVE);
-    const other = us ? list.find((t) => t.startsWith("OTHER"))! : starsIntlOtherTitle(course.subject);
-    return unverified(other, "No title in STARS's list matches the course name exactly; pick a closer one if there is", LIVE);
+    const m = matchStarsTitle(course.name, course.subject, course.gradeLevel, list, us ? "us" : "intl");
+    if (m.how === "exact") return verified(m.title, LIVE);
+    if (m.how === "matched") return unverified(m.title, "Matched from the course name; change it if a closer title fits", LIVE);
+    return unverified(m.title, "No title in STARS's list matches the course name; pick a closer one if there is", LIVE);
   },
   rules: (_school, course) => {
     const out: string[] = [];

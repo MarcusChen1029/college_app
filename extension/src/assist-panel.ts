@@ -4,7 +4,7 @@
 
 import { rowValues, type EntryRow, type FillSystem, type SystemPlan } from "../../web/lib/system-fill.ts";
 import type { AssistMessage, AssistResponse } from "./messages.ts";
-import { button, h } from "./ui.ts";
+import { button, h, type Child } from "./ui.ts";
 
 const STATUS_NOTE = { unverified: " (unconfirmed wording: check it matches the page)" } as const;
 
@@ -105,18 +105,18 @@ export async function assistView(plan: SystemPlan, tabId: number | null, auto: H
     );
   };
 
-  return h(
-    "div",
-    {},
-    h("h2", {}, `${plan.label}: fill assistant`),
-    auto,
+  const manual: Child[] = [
     status,
     h("p", { class: "muted" }, "Click the first box of a course on the page, then press \"Fill from here\" to type its values in page order, or press values one at a time. Nothing is saved or submitted for you."),
     plan.notes.length ? h("ul", { class: "warnings" }, ...plan.notes.map((n) => h("li", {}, n))) : false,
     ...plan.groups.flatMap((g) => [h("h3", {}, g.title), ...g.rows.map(rowEl)]),
     plan.groups.length ? false : h("p", { class: "note" }, "No courses from your transcript go into this system."),
     plan.skipped.length ? h("details", {}, h("summary", {}, `Not entered here (${plan.skipped.length})`), h("ul", {}, ...plan.skipped.map((s) => h("li", {}, `${s.course}: ${s.reason}`)))) : false,
-  );
+  ];
+  // Where a portal has "Add courses", the course-by-course buttons are only a fallback: keep them folded away.
+  return auto
+    ? h("div", {}, h("h2", {}, plan.label), auto, h("details", {}, h("summary", {}, "Fill by hand instead"), ...manual))
+    : h("div", {}, h("h2", {}, `${plan.label}: fill assistant`), ...manual);
 }
 
 function withTitle<T extends HTMLElement>(el: T, title: string): T {

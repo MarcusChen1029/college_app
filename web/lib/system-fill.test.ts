@@ -94,5 +94,5 @@ test("STARS for a school outside the US uses that page's lists: English is under
   assert.equal(field(row!, "level"), "Honors");
   const eng = only(buildSystemPlan("stars", [school({ country: "Taiwan" })], [course()]))[0]!;
   assert.equal(field(eng, "subject"), "Languages");
-  assert.equal(field(eng, "genericTitle"), "OTHER ENGLISH");
+  assert.equal(field(eng, "genericTitle"), "ENGLISH 10 (SECOND YEAR)");
 });

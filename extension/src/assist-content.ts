@@ -4,7 +4,7 @@
 
 import { insertValue, labelOf } from "./assist/insert.ts";
 import { nextBox } from "./assist/next.ts";
-import { fillStarsCourse, StarsStop, starsExistingNames, starsPageKind, starsPageYear } from "./stars/fill.ts";
+import { fillStarsCourse, StarsStop, starsErrors, starsExistingNames, starsPageKind, starsPageYear } from "./stars/fill.ts";
 import type { AssistMessage, AssistResponse } from "./messages.ts";
 import { SITE_ORIGINS } from "./sites.ts";
 import { runCsuSchool } from "./csu/run.ts";
@@ -56,14 +56,14 @@ chrome.runtime.onMessage.addListener((raw: unknown, sender, sendResponse: (r: As
       return true; // async response
     }
     case "starsPage":
-      sendResponse({ type: "starsPage", year: starsPageYear(location), kind: starsPageKind(location), existing: starsExistingNames(document), pageText: document.body.innerText.slice(0, 4000) });
+      sendResponse({ type: "starsPage", year: starsPageYear(location), kind: starsPageKind(location), existing: starsExistingNames(document), pageText: document.body.innerText.slice(0, 4000), errors: starsErrors(document) });
       return false;
     case "starsFill":
       if (!SITE_ORIGINS.stars.includes(location.origin) || starsPageYear(location) == null) {
         sendResponse({ type: "starsFill", ok: false, error: "This is not a STARS coursework page" });
         return false;
       }
-      fillStarsCourse(document, msg.row, msg.scale).then(
+      fillStarsCourse(document, msg.row, msg.scale, msg.language).then(
         (r) => sendResponse({ type: "starsFill", ok: true, saved: r.saved, blanks: r.blanks }),
         (e: unknown) => sendResponse({ type: "starsFill", ok: false, error: e instanceof StarsStop || e instanceof Error ? e.message : String(e) }),
       );
