@@ -54,3 +54,24 @@ test("language course gets UC's language, Other Language when it isn't listed", 
   const [p] = buildUcPlans([school()], [course({ subject: "world_language", subSubject: null, name: "Chinese 1", languageName: "chinese" }), course({ id: "x", subject: "world_language", subSubject: null, name: "Thai 1", languageName: "Thai" })]);
   assert.deepEqual(p!.rows.map((r) => r.language), ["Chinese", "Other Language"]);
 });
+
+test("from the transcript: a language's year by its earlier years, computer science and AP Seminar as electives, with a warning each", () => {
+  const lang = (id: string, year: number, name: string) =>
+    course({ id, academicYear: year, gradeLevel: year - 2014, subject: "world_language", subSubject: null, name, languageName: "Chinese" });
+  const plans = buildUcPlans([school()], [
+    lang("a", 2023, "Honors Chinese Language and Culture I"), lang("b", 2024, "Honors Chinese Language and Culture II"), lang("c", 2025, "AP Chinese Language and Culture"),
+    course({ id: "d", academicYear: 2024, gradeLevel: 10, subject: "computer_science", subSubject: null, name: "Information Technology 10" }),
+    course({ id: "e", academicYear: 2024, gradeLevel: 10, subject: "other", subSubject: null, level: "ap", name: "AP Seminar" }),
+  ]);
+  const row = (name: string) => plans.flatMap((p) => p.rows).find((r) => r.name === name)!;
+  assert.equal(row("AP Chinese Language and Culture").discipline?.text, "Yr 3 Lang Other Than English");
+  assert.equal(row("Information Technology 10").discipline?.text, "Elective -Math -Computer Science");
+  assert.equal(row("AP Seminar").discipline?.text, "Elective -Interdisciplinary");
+  assert.equal(plans.flatMap((p) => p.warnings).filter((w) => /entered as/.test(w)).length, 3);
+});
+
+test("courses with no A-G area (home economics, counseling) are left out like PE, not left for the student", () => {
+  const [p] = buildUcPlans([school()], [course({ id: "h", subject: "other", subSubject: null, name: "Home Economics 9" }), course({ id: "k", subject: "other", subSubject: null, name: "College Counseling 11" })]);
+  assert.equal(p!.rows.length, 0);
+  assert.deepEqual(p!.skipped.map((s) => s.field), ["course", "course"]);
+});
