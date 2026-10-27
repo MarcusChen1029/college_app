@@ -24,6 +24,7 @@ import {
   TRANSFER,
 } from "@/lib/format";
 import { estimateGpaPercentiles, GPA_BAND_ORDER } from "@/lib/gpa";
+import { programApplyVia, programFee } from "@/lib/programs";
 import { referenceTone } from "@/lib/status";
 import type { CollegeDetail } from "@/lib/types";
 import { toneClass } from "@/lib/ui";
@@ -226,6 +227,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <h3 className="text-base font-semibold">{p.name}</h3>
                     {p.ucas_code && <Pill>{p.ucas_code}</Pill>}
+                    {programApplyVia(p, c.country_code) && <Pill tone="blue">{t("college.applyVia", { x: programApplyVia(p, c.country_code)! })}</Pill>}
                     {p.award && <span className="text-xs text-zinc-500">{p.award}</span>}
                     {p.duration_years != null && <span className="text-xs text-zinc-500">{t("college.nYears", { n: p.duration_years })}</span>}
                     {p.application_deadline && (
@@ -235,11 +237,13 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   <dl className="mt-2 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
                     <Row k={t("college.aLevels")} v={p.a_level_offer ?? "—"} />
                     <Row k={t("college.ib")} v={p.ib_offer ?? (p.ib_points != null ? t("college.nPoints", { n: p.ib_points }) : "—")} />
+                    <Row k={t("college.apOffer")} v={p.ap_offer ?? "—"} />
+                    {(p.atar != null || c.country_code === "AU") && <Row k={t("college.atar")} v={p.atar != null ? Number(p.atar).toFixed(2) : "—"} />}
                     <Row k={t("college.subjects")} v={p.required_subjects ?? "—"} />
                     <Row k={t("college.admissionsTest")} v={p.admissions_test ?? t("college.noneListed")} />
                     <Row k={t("college.ielts")} v={p.ielts_overall != null ? `${t("college.ieltsOverall", { n: p.ielts_overall })}${p.ielts_component != null ? t("college.ieltsEach", { n: p.ielts_component }) : ""}` : "—"} />
                     {p.toefl_note && <Row k={t("college.toefl")} v={p.toefl_note} />}
-                    <Row k={t("college.intlFee")} v={p.intl_fee_gbp != null ? t("college.perYear", { fee: `£${p.intl_fee_gbp.toLocaleString("en-GB")}` }) : t("college.notFound")} />
+                    <Row k={t("college.intlFee")} v={programFee(p) ? t("college.perYear", { fee: programFee(p)! }) : t("college.notFound")} />
                     {p.success_pct != null && (
                       <Row
                         k={t("college.applicants")}
@@ -258,7 +262,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               ))}
           </ul>
           <p className="mt-2 text-xs text-zinc-500">
-            {t("college.ukNote")}
+            {t("college.courseNote")}
           </p>
         </Section>
       )}

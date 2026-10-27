@@ -110,13 +110,17 @@ def check(cond, msg):
 def arg(name):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else None
 
-PROGRAM_COLS = ["name", "award", "ucas_code", "duration_years", "a_level_offer", "ib_offer", "ib_points",
-                "required_subjects", "admissions_test", "interviewed_pct", "success_pct", "intake", "intl_fee_gbp",
+PROGRAM_COLS = ["name", "award", "ucas_code", "apply_via", "duration_years", "a_level_offer", "ib_offer", "ib_points",
+                "ap_offer", "atar", "required_subjects", "admissions_test", "interviewed_pct", "success_pct", "intake",
+                "intl_fee_gbp", "intl_fee_cad", "intl_fee_aud",
                 "application_deadline", "ielts_overall", "ielts_component", "toefl_note", "english_note", "notes",
                 "source_url", "retrieved_on"]
-# (min, max) sanity bounds for numeric program fields; mirrors the check constraints in 0015_programs.sql
+# (min, max) sanity bounds for numeric program fields; mirrors the check constraints in 0015_programs.sql + 0035
 PROGRAM_RANGES = {"duration_years": (1, 8), "ib_points": (0, 45), "interviewed_pct": (0, 100), "success_pct": (0, 100),
-                  "intake": (1, 100000), "intl_fee_gbp": (1000, 200000), "ielts_overall": (0, 9), "ielts_component": (0, 9)}
+                  "intake": (1, 100000), "intl_fee_gbp": (1000, 200000), "intl_fee_cad": (1000, 200000),
+                  "intl_fee_aud": (1000, 200000), "atar": (30, 99.95), "ielts_overall": (0, 9), "ielts_component": (0, 9)}
+# the one fee column (and country-only fields) each country may use
+FEE_COL = {"GB": "intl_fee_gbp", "CA": "intl_fee_cad", "AU": "intl_fee_aud"}
 
 def iso_date(v):
     try:
@@ -124,7 +128,7 @@ def iso_date(v):
     except (TypeError, ValueError):
         return False
 
-def program_row(slug, iid, p):
+def program_row(slug, iid, p, country):
     ps = p.get("slug")
     where = f"{slug}/{ps}"
     for k in ("slug", "name", "source_url", "retrieved_on"):
@@ -140,10 +144,14 @@ def program_row(slug, iid, p):
         v = p.get(k)
         if v is not None:
             check(isinstance(v, (int, float)) and not isinstance(v, bool) and lo <= v <= hi, f"{where}: {k} {v!r} outside {lo}..{hi}")
-    for k in ("duration_years", "ib_points", "intake", "intl_fee_gbp"):
+    for k in ("duration_years", "ib_points", "intake", "intl_fee_gbp", "intl_fee_cad", "intl_fee_aud"):
         check(p.get(k) is None or isinstance(p[k], int), f"{where}: {k} must be an integer")
     if p.get("ielts_overall") is not None and p.get("ielts_component") is not None:
         check(p["ielts_component"] <= p["ielts_overall"], f"{where}: ielts_component above ielts_overall")
+    for k in set(FEE_COL.values()) - {FEE_COL.get(country)}:
+        check(p.get(k) is None, f"{where}: {k} is not the fee currency of {country}")
+    check(p.get("ucas_code") is None or country == "GB", f"{where}: ucas_code on a non-UK course")
+    check(p.get("atar") is None or country == "AU", f"{where}: atar on a non-Australian course")
     check(p.get("ucas_code") is None or re.fullmatch(r"[A-Z0-9]{4}", p["ucas_code"]) is not None, f"{where}: ucas_code {p.get('ucas_code')!r} is not 4 characters")
     return {"id": uid("prog", slug, str(ps)), "institution_id": iid, "slug": ps, **{k: p.get(k) for k in PROGRAM_COLS}}
 
@@ -354,7 +362,7 @@ def build(only=None, insert_only=False):
         pslugs = [p.get("slug") for p in c.get("programs", [])]
         check(len(pslugs) == len(set(pslugs)), f"{slug}: duplicate program slugs")
         for p in c.get("programs", []):
-            out.append(insert("programs", program_row(slug, iid, p)))
+            out.append(insert("programs", program_row(slug, iid, p, c.get("country_code", "US"))))
 
     out.append("commit;")
     return "\n".join(render(out)) + "\n"

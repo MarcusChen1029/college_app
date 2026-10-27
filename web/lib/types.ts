@@ -96,23 +96,28 @@ export type EnglishRequirement = {
   source_id: string | null;
 };
 
-// A course at a university (UK / UCAS style: apply to a course, grade-based offers).
+// A course at a university outside the US (UK / Canada / Australia: apply to a course, grade-based offers).
 export type Program = {
   id: string;
   slug: string;
   name: string;
   award: string | null;
   ucas_code: string | null;
+  apply_via: string | null;
   duration_years: number | null;
   a_level_offer: string | null;
   ib_offer: string | null;
   ib_points: number | null;
+  ap_offer: string | null;
+  atar: number | null;
   required_subjects: string | null;
   admissions_test: string | null;
   interviewed_pct: number | null;
   success_pct: number | null;
   intake: number | null;
   intl_fee_gbp: number | null;
+  intl_fee_cad: number | null;
+  intl_fee_aud: number | null;
   application_deadline: string | null;
   ielts_overall: number | null;
   ielts_component: number | null;

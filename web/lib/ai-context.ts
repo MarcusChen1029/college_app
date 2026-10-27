@@ -21,6 +21,7 @@ import {
   TEST_POLICY,
   TRANSFER,
 } from "./format.ts";
+import { programApplyVia, programFee } from "./programs.ts";
 import { regionLabel } from "./regions.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "./scores.ts";
 import type { Status } from "./student-store";
@@ -254,13 +255,17 @@ export function detailSection(p: PackCollege, input: Pick<PackInput, "planLabels
   }
 
   if (d.programs.length) {
-    lines.push("- Courses (apply by course through UCAS):");
+    lines.push("- Courses (apply to a course, not the whole university):");
     for (const pr of d.programs) {
       lines.push(
         `  - ${pr.name}${pr.award ? ` (${pr.award})` : ""}: ${join([
+          programApplyVia(pr, d.country_code) && `apply via ${programApplyVia(pr, d.country_code)}`,
           pr.ucas_code && `UCAS ${pr.ucas_code}`,
           pr.a_level_offer && `A-level ${pr.a_level_offer}`,
           pr.ib_offer && `IB ${pr.ib_offer}`,
+          pr.ap_offer && `US diploma/AP ${pr.ap_offer}`,
+          pr.atar != null && `ATAR ${pr.atar}`,
+          programFee(pr) && `intl fee ${programFee(pr)}/year`,
           pr.required_subjects && `required: ${pr.required_subjects}`,
           pr.admissions_test && `test: ${pr.admissions_test}`,
           pr.application_deadline && `deadline ${fmtDate(pr.application_deadline)}`,
