@@ -66,6 +66,40 @@ export function progress(c: Checklist) {
   return { done, total: CHECKLIST.length, missing: CHECKLIST.length - done };
 }
 
+export type SentKind = "test_scores" | "english_test";
+
+/**
+ * "Scores sent" for one college when the student sends them to every college at once.
+ * An undecided plan takes `fallbackPlan` (the one test the student has a score for), else stays undecided.
+ * Null when there is nothing to change: already sent, or the college doesn't get scores (optional / not required).
+ */
+export function markSent(c: Checklist, kind: SentKind, fallbackPlan: TestPlan | EnglishPlan | null): Checklist | null {
+  const planKey = kind === "test_scores" ? "test_plan" : "english_plan";
+  const plan = c[planKey];
+  if (plan === "optional" || plan === "not_required") return null;
+  if (c[kind] && plan) return null;
+  if (c[kind] && !fallbackPlan) return null;
+  return { ...c, [kind]: true, ...(plan ? {} : fallbackPlan ? { [planKey]: fallbackPlan } : {}) };
+}
+
+/** The student's only SAT/ACT or English test with a total, as a checklist plan; null when none or more than one. */
+export function onlyTestPlan(sat: number | null | undefined, act: number | null | undefined): TestPlan | null {
+  if (sat != null && act == null) return "sat";
+  if (act != null && sat == null) return "act";
+  return null;
+}
+
+export function onlyEnglishPlan(english: Partial<Record<string, { total: number | null } | undefined>> | undefined): EnglishPlan | null {
+  const known = new Set(ENGLISH_PLANS.map(([k]) => k as string));
+  const plans = new Set(
+    Object.entries(english ?? {})
+      .filter(([, s]) => s?.total != null)
+      .map(([k]) => (k === "toefl_band" ? "toefl" : k))
+      .filter((k) => known.has(k)),
+  );
+  return plans.size === 1 ? ([...plans][0] as EnglishPlan) : null;
+}
+
 export function newEssay(): Essay {
   return { id: Math.random().toString(36).slice(2, 10), title: "", url: "", status: "not_started" };
 }

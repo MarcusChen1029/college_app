@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
-import { progress, type Checklist } from "@/lib/checklist";
+import { markSent, onlyEnglishPlan, onlyTestPlan, progress, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { useT } from "@/lib/i18n/client";
@@ -177,6 +177,37 @@ export function MyList({
     )
     .sort((a, b) => a.d.due_date!.localeCompare(b.d.due_date!));
 
+  // "Sent to all": tick scores sent on every listed college that takes them.
+  const sentFallback = {
+    test_scores: onlyTestPlan(student.profile.sat, student.profile.act),
+    english_test: onlyEnglishPlan(student.profile.tests?.english),
+  };
+  const sentPatches = (kind: SentKind) =>
+    entries.flatMap(({ entry }) => {
+      const next = markSent(entry.checklist, kind, sentFallback[kind]);
+      return next ? [{ slug: entry.slug, checklist: next }] : [];
+    });
+  const markAllSent = (kind: SentKind) => {
+    const patches = sentPatches(kind);
+    const msg = kind === "test_scores" ? "application.allSent.testsConfirm" : "application.allSent.englishConfirm";
+    if (!window.confirm(t(msg, { n: patches.length }))) return;
+    for (const p of patches) student.update(p.slug, { checklist: p.checklist });
+  };
+  const sentButton = (kind: SentKind, label: string) => {
+    const n = sentPatches(kind).length;
+    return (
+      <button
+        className="rounded border border-zinc-300 px-2 py-0.5 text-xs font-medium hover:bg-zinc-100 disabled:cursor-default disabled:text-zinc-400 disabled:hover:bg-transparent"
+        disabled={n === 0}
+        title={n === 0 ? t("application.allSent.nothing") : undefined}
+        onClick={() => markAllSent(kind)}
+      >
+        {label}
+        {n > 0 && ` (${n})`}
+      </button>
+    );
+  };
+
   const opened = entries.find(({ entry }) => entry.slug === openSlug);
   // A custom college doesn't say which plans it offers, so let the student pick any.
   const planOptions = (c: CollegeSummary) => (isCustomSlug(c.slug) ? plans : plans.filter((p) => (c.plans ?? []).includes(p.key)));
@@ -234,6 +265,12 @@ export function MyList({
       </Modal>
     )}
     <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
+      <div>
+      <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+        <span>{t("application.allSent.label")}</span>
+        {sentButton("test_scores", t("application.allSent.tests"))}
+        {sentButton("english_test", t("application.allSent.english"))}
+      </div>
       <div className="overflow-x-auto rounded-lg border border-zinc-200">
         <table className="w-full min-w-[560px] text-sm">
           <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
@@ -321,6 +358,7 @@ export function MyList({
             {t("application.multiEd")}
           </p>
         )}
+      </div>
       </div>
 
       <aside>
