@@ -22,6 +22,8 @@ Plan: all US colleges next, then UK/CA/AU.
   - Edge Function `deadline-reminders` + pg_cron job `deadline-reminders` (14:07 UTC daily). Auth via
     `x-cron-secret` header checked by `public.check_cron_secret()` against `private.app_config`.
     Sends via Resend; **dry-run until secrets `RESEND_API_KEY`, `REMINDER_FROM`, `APP_URL` are set.**
+    The same function also sends scholarship reminders (0027) and the opt-in weekly teacher digest (0029, `supabase/functions/_shared/teacher-digest.ts`);
+    version 3 deployed 2026-10-27. Deploy both files (`deadline-reminders/index.ts` + `_shared/teacher-digest.ts`, verify_jwt off).
 - **web/**: Next.js **16** (App Router, `cacheComponents: true`), React 19, Tailwind 4, supabase-js 2.118.
   **Next 16 has breaking changes. Read `web/node_modules/next/dist/docs/` before writing Next code** (see `web/AGENTS.md`).
   - Server data reads are in `web/lib/data.ts`: `await connection()` then a `"use cache"` + `cacheLife("hours")` function.
