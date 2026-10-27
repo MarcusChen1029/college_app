@@ -521,14 +521,19 @@ export function CollegeExplorer({
                 >
                   <SchoolLogo slug={c.slug} />
                   <TierBadge tier={c.general_tier} />
+                  {/* The fit badge sits under the name: beside it, the narrow sidebar cut names to a few letters. */}
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold">{c.short_name ?? c.name}</span>
                     <span className="block truncate text-xs text-zinc-500">
                       {[c.city, c.state_region].filter(Boolean).join(", ")}
                       {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
                     </span>
+                    {(fit || student.has(c.slug)) && (
+                      <span className="mt-1 flex">
+                        {fit ? <FitBadge fit={fit.fit} /> : <Pill tone="blue">{t("colleges.onList")}</Pill>}
+                      </span>
+                    )}
                   </span>
-                  {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) ? <Pill tone="blue">{t("colleges.onList")}</Pill> : null}
                 </button>
               </li>
             );
