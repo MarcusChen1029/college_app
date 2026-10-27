@@ -13,8 +13,12 @@ const STEPS = [
   { title: "home.step3.title", body: "home.step3.body", tint: "bg-coral/60" },
 ] as const;
 
+// Well-known colleges spread across the tiers, so the strip also shows what S through D look like.
+const STRIP_SLUGS = ["stanford", "mit", "cmu", "umich", "nyu", "uiuc", "purdue", "ohio-state", "penn-state", "asu"];
+
 async function CollegeStrip() {
-  const colleges = await getSummaries();
+  const all = await getSummaries();
+  const colleges = STRIP_SLUGS.flatMap((slug) => all.filter((c) => c.slug === slug));
   const t = await getT();
   return (
     <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
