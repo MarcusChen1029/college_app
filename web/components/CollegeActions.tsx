@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { computeFit, type FitInput } from "@/lib/fit";
 import { useStudent } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import { buttonClass } from "@/lib/ui";
 import { useT } from "@/lib/i18n/client";
 import { fitReasonText } from "@/lib/i18n/fit-text";
@@ -12,7 +13,7 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
   const t = useT();
   const student = useStudent();
   const inList = student.has(slug);
-  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const hasScores = scoredTests(student.profile).length > 0;
   const fit = hasScores && fitInput ? computeFit(student.profile, fitInput) : null; // no fit for grade-based (non-US) colleges
   if (student.role === "teacher") return null; // teachers have no personal college list
   return (

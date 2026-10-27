@@ -2,6 +2,13 @@
 // We estimate the 25th/50th/75th percentile by assuming students are spread evenly within
 // each band and treating "4.0" as a single point. Always label the result as an estimate.
 
+/** A GPA typed as text, rounded to 2 decimals; null when empty or outside min..max. */
+export function parseGpa(v: string, min: number, max: number): number | null {
+  if (v.trim() === "") return null;
+  const n = Number(v);
+  return Number.isFinite(n) && n >= min && n <= max ? Math.round(n * 100) / 100 : null;
+}
+
 type Band = { lo: number; hi: number; pct: number };
 
 function parseBands(dist: Record<string, number>): Band[] {

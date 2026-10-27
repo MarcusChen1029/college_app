@@ -29,6 +29,7 @@ import {
   type TranscriptCourseRow,
   type TranscriptSchoolRow,
 } from "../student-rows";
+import { scoredTests, testChoice } from "../test-plan";
 import { courseStatus, newTranscriptId, type TranscriptCourse, type TranscriptSchool } from "../transcript";
 import { planCourseUpdate, planMcpAdd, systemSubjectOverrides, TRANSCRIPT_FORMAT_VERSION, transcriptFormatText } from "../transcript-import";
 import type { CollegeSummary, Lookups } from "../types";
@@ -153,6 +154,7 @@ const profileColumns = (p: StudentProfile) => ({
   sat_total: p.sat ?? null,
   act_composite: p.act ?? null,
   gpa_unweighted: p.gpa ?? null,
+  gpa_weighted: p.gpaWeighted ?? null,
   is_international: !!p.international,
   target_regions: p.targetRegions ?? [],
   test_details: p.tests ?? {},
@@ -170,7 +172,7 @@ const notListedText = (slug: string) => `${slug} isn't on the student's list. Us
 /** One listed college as the AI sees it: checklist detail, next deadline and rough fit, no logins and no database ids. */
 function describe(entry: ListEntry, college: CollegeSummary | undefined, s: Student, deadlines: Awaited<ReturnType<typeof getDeadlines>>, lookups: Lookups) {
   const c: Checklist = entry.checklist;
-  const hasScores = s.profile.sat != null || s.profile.act != null;
+  const hasScores = scoredTests(s.profile).length > 0;
   const fit = college && hasScores ? computeFit(s.profile, college) : null;
   const next = college ? upcomingDeadlines([{ slug: entry.slug, name: nameOf(college), id: college.id, plan: entry.plan }], deadlines)[0] : undefined;
   const p = progress(c);
@@ -229,7 +231,8 @@ export function registerTools(server: McpServer) {
     "get_profile",
     {
       title: "Get student profile",
-      description: "The student's GPA (unweighted, 4.0 scale), SAT/ACT scores with sections, English test scores, international status, target regions and plan. Saved logins are never included.",
+      description:
+        "The student's GPA (unweighted, 4.0 scale, plus the weighted GPA from the transcript if given), SAT/ACT scores with sections, which admission test they use (sat, act, both, planned = will take one, none = not taking one) and the test they plan to take, English test scores, international status, target regions and plan. Saved logins are never included.",
       inputSchema: z.object({}),
       annotations: READ,
     },
@@ -237,8 +240,12 @@ export function registerTools(server: McpServer) {
       const t = profile.tests ?? {};
       return json({
         gpa: profile.gpa ?? null,
+        gpaWeighted: profile.gpaWeighted ?? null,
         sat: { total: profile.sat ?? null, sections: t.sat ?? {} },
         act: { composite: profile.act ?? null, sections: t.act ?? {} },
+        testChoice: testChoice(profile),
+        testsUsed: scoredTests(profile),
+        plannedTest: t.plan?.planned ?? null,
         english: t.english ?? {},
         international: !!profile.international,
         targetRegions: profile.targetRegions ?? [],
@@ -398,11 +405,15 @@ export function registerTools(server: McpServer) {
     {
       title: "Update student profile",
       description:
-        "Change GPA, SAT/ACT totals or sections, English test scores, international status or target regions. Scores are checked against each test's scale (SAT 400-1600 in steps of 10, ACT 1-36…). Set a value to null to clear it. Cannot change the plan, reminder emails or saved logins.",
+        "Change GPA, SAT/ACT totals or sections, which admission test the student uses, English test scores, international status or target regions. Scores are checked against each test's scale (SAT 400-1600 in steps of 10, ACT 1-36…). Set a value to null to clear it. Switching testChoice never deletes a score; it only decides which one counts. Cannot change the plan, reminder emails or saved logins.",
       inputSchema: z.object({
         patch: z
           .object({
             gpa: score.describe("Unweighted, 0-4."),
+            gpaWeighted: score.describe("Weighted GPA as printed on the transcript, 0-6. Not compared with colleges."),
+            testChoice: z.enum(["sat", "act", "both", "planned", "none"]).optional().describe("Which admission test counts: sat, act, both, planned (will take one, no score yet) or none (not taking one; test-optional)."),
+            plannedTest: z.enum(["sat", "act"]).optional().describe("The test they plan to take (used when testChoice is planned)."),
+            plannedMonth: z.string().nullable().optional().describe("Planned test month as YYYY-MM, or null if unknown."),
             sat: score.describe("Total, 400-1600."),
             act: score.describe("Composite, 1-36."),
             satSections: sections.optional().describe("{ ebrw: 200-800, math: 200-800 }. Both together fill in the total."),
@@ -424,7 +435,7 @@ export function registerTools(server: McpServer) {
           const r = applyProfilePatch(profile, patch);
           if (!r.ok) return { error: r.error };
           const p = r.value;
-          return { columns: profileColumns(p), value: { saved: true, gpa: p.gpa ?? null, sat: p.sat ?? null, act: p.act ?? null, international: !!p.international, targetRegions: p.targetRegions ?? [], tests: p.tests ?? {} } };
+          return { columns: profileColumns(p), value: { saved: true, gpa: p.gpa ?? null, gpaWeighted: p.gpaWeighted ?? null, testChoice: testChoice(p), sat: p.sat ?? null, act: p.act ?? null, international: !!p.international, targetRegions: p.targetRegions ?? [], tests: p.tests ?? {} } };
         }),
       );
     }),

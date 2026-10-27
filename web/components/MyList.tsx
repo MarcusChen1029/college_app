@@ -9,6 +9,7 @@ import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/applicat
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
+import { scoredTests } from "@/lib/test-plan";
 import { resultTone, stageTone } from "@/lib/status";
 import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
@@ -162,7 +163,7 @@ export function MyList({
     );
   }
 
-  const hasScores = student.profile.sat != null || student.profile.act != null;
+  const hasScores = scoredTests(student.profile).length > 0;
   const fits = new Map(entries.map(({ college }) => [college.slug, hasScores ? computeFit(student.profile, college) : null]));
   const counts = { super_reach: 0, reach: 0, target: 0, safety: 0 };
   fits.forEach((f) => f && counts[f.fit]++);
