@@ -3,6 +3,7 @@
 
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
 import { CHECKLIST, ESSAY_STATUSES, isDone, type Checklist } from "./checklist.ts";
+import { deadlineApplies } from "./deadline-rules.ts";
 import { computeFit, FIT_LABEL, type StudentProfile } from "./fit.ts";
 import {
   ADMIT_MODEL,
@@ -104,10 +105,10 @@ function activitiesSection(p: StudentProfile): string[] {
   ];
 }
 
-function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date) {
+function nextDeadline(p: PackCollege, all: Deadline[], labels: Record<string, string>, today: Date, international: boolean) {
   const d = all
     .filter((d) => d.institution_id === p.college.id && d.due_date && daysUntil(d.due_date, today) >= 0)
-    .filter((d) => d.kind !== "application" || !p.plan || d.plan_key === p.plan)
+    .filter((d) => deadlineApplies(d, { plan: p.plan, international }))
     .sort((a, b) => a.due_date!.localeCompare(b.due_date!))[0];
   if (!d) return "—";
   return `${fmtDate(d.due_date)} — ${d.label ?? (d.plan_key ? labels[d.plan_key] ?? d.plan_key : d.kind.replace(/_/g, " "))}`;
@@ -127,7 +128,7 @@ function listSection(input: PackInput, today: Date): string[] {
       const rate = intl && c.intl_admit_rate != null ? `${fmtPct(c.intl_admit_rate)} (international)` : fmtPct(c.admit_rate);
       const sat = c.sat_p25 != null && c.sat_p75 != null ? `${c.sat_p25}–${c.sat_p75}` : "—";
       const plan = p.plan ? input.planLabels[p.plan] ?? p.plan : "Undecided";
-      return `| ${[name(c), place(c) || "—", plan, statusLabel(p), fit ? FIT_LABEL[fit.fit] : "—", rate, sat, nextDeadline(p, input.deadlines, input.planLabels, today)].map(cell).join(" | ")} |`;
+      return `| ${[name(c), place(c) || "—", plan, statusLabel(p), fit ? FIT_LABEL[fit.fit] : "—", rate, sat, nextDeadline(p, input.deadlines, input.planLabels, today, intl)].map(cell).join(" | ")} |`;
     }),
     "",
     "Fit labels compare my scores with the college's admit rate and middle-50% scores. They are rough estimates, not predictions.",

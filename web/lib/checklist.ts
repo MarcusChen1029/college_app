@@ -38,12 +38,46 @@ export const ENGLISH_PLANS = [
 ] as const;
 export type EnglishPlan = (typeof ENGLISH_PLANS)[number][0];
 
-export type Checklist = Partial<Record<Exclude<ChecklistKey, "essays">, boolean>> & {
-  essay_list?: Essay[];
-  no_essays?: boolean;
-  test_plan?: TestPlan | null;
-  english_plan?: EnglishPlan | null;
+// Steps only international students have. Stored as booleans in the same checklist jsonb (additive keys), but they
+// never count toward progress() or "Ready": Ready means "the application can be submitted", and these come later or
+// run on their own clock (most colleges ask for proof of finances after admission, to issue the I-20).
+export const INTL_STEPS = [
+  ["intl_finances", "Proof of finances sent"],
+  ["i20", "I-20 received"],
+  ["passport", "Passport valid"],
+  ["sevis_fee", "SEVIS I-901 fee paid"],
+  ["visa_interview", "Visa interview booked"],
+] as const;
+export type IntlStepKey = (typeof INTL_STEPS)[number][0];
+
+export type Checklist = Partial<Record<Exclude<ChecklistKey, "essays">, boolean>> &
+  Partial<Record<IntlStepKey, boolean>> & {
+    essay_list?: Essay[];
+    no_essays?: boolean;
+    test_plan?: TestPlan | null;
+    english_plan?: EnglishPlan | null;
+  };
+
+export type IntlStep = {
+  key: IntlStepKey;
+  done: boolean;
+  /** Per-college timing text for the step (e.g. from data/supplements_2026_27 `intl_finance`); null until that data is loaded. */
+  when: string | null;
 };
+
+/**
+ * International steps for one college, in order; empty for a domestic student. Proof of finances applies to every
+ * application; the I-20 once admitted; the visa steps only at the college the student committed to (the SEVIS fee and the
+ * visa interview use that college's I-20, so they are done once, for one school).
+ */
+export function intlSteps(c: Checklist, status: string, opts: { international: boolean; financeWhen?: string | null }): IntlStep[] {
+  if (!opts.international) return [];
+  const step = (key: IntlStepKey, when: string | null = null): IntlStep => ({ key, done: !!c[key], when });
+  const out = [step("intl_finances", opts.financeWhen ?? null)];
+  if (status === "admitted" || status === "enrolled") out.push(step("i20"));
+  if (status === "enrolled") out.push(step("passport"), step("sevis_fee"), step("visa_interview"));
+  return out;
+}
 
 export function isDone(key: ChecklistKey, c: Checklist): boolean {
   switch (key) {

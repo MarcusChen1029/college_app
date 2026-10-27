@@ -4,6 +4,7 @@
 // Then it sends the opt-in weekly teacher digest (migration 0029, ../_shared/teacher-digest.ts); that part also stays a
 // dry run without APP_URL, and a failure there is reported in the response without touching the student reminders.
 import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2.118.0";
+import { isFafsaOnly } from "../_shared/fafsa.ts";
 import { renderTeacherDigest, selectDigest, type DigestRow } from "../_shared/teacher-digest.ts";
 
 type Due = {
@@ -158,6 +159,20 @@ Deno.serve(async (req) => {
   for (const d of (data ?? []) as Due[]) digest(d.user_id, d.email).colleges.push(d);
   for (const s of (sch.data ?? []) as ScholarshipDue[]) digest(s.user_id, s.email).scholarships.push(s);
 
+  // International students can't file FAFSA, so FAFSA-only dates are dropped from their digest (same rule as the web
+  // app, web/lib/deadline-rules.ts). If the lookup fails, everything is sent as before and the error is reported.
+  let profileError: string | null = null;
+  if (byUser.size) {
+    const profiles = await db.from("student_profiles").select("user_id, is_international").in("user_id", [...byUser.keys()]);
+    profileError = profiles.error?.message ?? null;
+    const intl = new Set(((profiles.data ?? []) as { user_id: string; is_international: boolean }[]).filter((p) => p.is_international).map((p) => p.user_id));
+    for (const [userId, g] of byUser) {
+      if (!intl.has(userId)) continue;
+      g.colleges = g.colleges.filter((d) => d.kind === "application" || !isFafsaOnly(d.deadline_label));
+      if (!g.colleges.length && !g.scholarships.length) byUser.delete(userId);
+    }
+  }
+
   const apiKey = Deno.env.get("RESEND_API_KEY");
   const from = Deno.env.get("REMINDER_FROM") ?? "College Tracker <onboarding@resend.dev>";
   const appUrl = (Deno.env.get("APP_URL") ?? "http://localhost:3000").replace(/\/$/, "");
@@ -206,5 +221,5 @@ Deno.serve(async (req) => {
     teacherDigestError = e instanceof Error ? e.message : String(e);
   }
 
-  return Response.json({ today, dryRun, users: byUser.size, scholarshipError, results, teacherDigests, teacherDigestError });
+  return Response.json({ today, dryRun, users: byUser.size, scholarshipError, profileError, results, teacherDigests, teacherDigestError });
 });

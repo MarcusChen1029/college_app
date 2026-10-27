@@ -283,7 +283,7 @@ export function registerTools(server: McpServer) {
         const c = findSummary(summaries, e.slug);
         return c ? [{ slug: e.slug, name: nameOf(c), id: c.id, plan: e.plan }] : [];
       });
-      return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days) });
+      return json({ days, deadlines: upcomingDeadlines(listed, deadlines, days, new Date(), !!s.profile.international) });
     }),
   );
 
