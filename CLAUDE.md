@@ -123,7 +123,12 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0037**; 0001-0036 are all applied to the project as of 2026-10-27) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0038**; 0001-0037 are all applied to the project as of 2026-10-27) **and** apply it to the project.
+- **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
+- **Supplemental essays + international finance steps** (2026-27): one researched file per college in `data/supplements_2026_27/<file>.json` (contract and source rules:
+  `docs/superpowers/research/2026-10-27-supplements-brief.md`; files are named after `data/colleges/` file names, output is keyed by the inner slug, e.g. cmu.json -> carnegie-mellon)
+  -> `python -I scripts/build_supplements.py` (validates; `--check` verifies) -> `web/lib/data/supplements.json`, read through `web/lib/supplements.ts`. 102 popular US colleges
+  are covered; "unknown"/not researched must never read as "no essays". Graduation rate and earnings: `scripts/build_outcomes.py` -> `web/lib/data/outcomes.json` (College Scorecard bulk files).
 - **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
   through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
   differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a
