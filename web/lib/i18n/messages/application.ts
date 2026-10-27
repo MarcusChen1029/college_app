@@ -54,6 +54,14 @@ export const en = {
   "application.multiEd": "You picked Early Decision at more than one college. ED is binding — you can only apply ED to one school per round.",
   "application.upcomingDates": "Upcoming dates",
   "application.noUpcoming": "No upcoming dates.",
+  "application.allSent.label": "Sent to every college:",
+  "application.allSent.tests": "All test scores sent",
+  "application.allSent.english": "All English test scores sent",
+  "application.allSent.nothing": "Already ticked for every college that takes scores.",
+  "application.allSent.testsConfirm":
+    "Mark SAT/ACT scores as sent for {n} colleges? Colleges set to test optional are skipped. An undecided test is set to your SAT or ACT if you have only one.",
+  "application.allSent.englishConfirm":
+    "Mark English test scores as sent for {n} colleges? Colleges set to not required are skipped. An undecided test is set to your English test if you have only one.",
 
   // Application plans (by key)
   "application.planLabel.ED": "Early Decision",
@@ -267,6 +275,14 @@ export const zhTW: Translation<typeof en> = {
   "application.multiEd": "你選了不只一所學校的提前決定（ED）。ED 具有約束力，每一輪只能向一所學校申請 ED。",
   "application.upcomingDates": "近期截止日期",
   "application.noUpcoming": "近期沒有截止日期。",
+  "application.allSent.label": "一次送給所有學校：",
+  "application.allSent.tests": "所有考試成績已送出",
+  "application.allSent.english": "所有英文檢定成績已送出",
+  "application.allSent.nothing": "所有需要成績的學校都已勾選。",
+  "application.allSent.testsConfirm":
+    "要把 {n} 所學校的 SAT/ACT 成績標記為已送出嗎？設為不送成績（test optional）的學校會略過。若你只有 SAT 或 ACT 其中一項，尚未決定的學校會自動設為該考試。",
+  "application.allSent.englishConfirm":
+    "要把 {n} 所學校的英文檢定成績標記為已送出嗎？設為不需要的學校會略過。若你只有一種英文檢定成績，尚未決定的學校會自動設為該考試。",
 
   // Application plans (by key)
   "application.planLabel.ED": "提前決定（ED）",
