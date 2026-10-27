@@ -164,6 +164,27 @@ export function promptCounts(prompts: readonly SupplementPrompt[]) {
   };
 }
 
+/**
+ * How many essays a college asks of every applicant: required prompts plus the picks from each choose-N group
+ * (a required essay with unpublished text counts as one). Null when we don't know (no research, "unknown")
+ * and for shared sets (UC), whose essays live in the Writing page's UC section.
+ */
+export function essaysToWrite(rec: CollegeSupplements | null): number | null {
+  if (!rec || isSharedSet(rec) || isUnknownStatus(supplementStatus(rec))) return null;
+  const c = promptCounts(slotPrompts(rec));
+  return c.required + c.groups.reduce((n, g) => n + g.pick, 0);
+}
+
+/** essaysToWrite for every researched college that asks for at least one essay, by slug. */
+export function essayCountsBySlug(data: SupplementsData): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const [slug, rec] of Object.entries(data.colleges)) {
+    const n = essaysToWrite(rec);
+    if (n) out[slug] = n;
+  }
+  return out;
+}
+
 // ── Slot titles (stored English, seen by teachers and in doc names) ──
 
 const CATEGORY_TITLE: Record<SupplementCategory, string> = {

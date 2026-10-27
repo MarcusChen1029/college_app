@@ -12,7 +12,9 @@ export function limitLabel(t: TFunction, p: Pick<SupplementPrompt, "word_limit" 
 }
 
 /** "Only for Honors College applicants"; text that already names its group ("All applicants except …") as is. */
-export const whoLabel = (t: TFunction, who: string): string => (/^all\b/i.test(who) ? who : t("supplements.onlyFor", { who }));
+// Data often starts "Applicants with…"; lower that generic first word after "Only for", but never a name ("Honors College…").
+const midSentence = (who: string): string => who.replace(/^(Applicants|Students|Those|Anyone)\b/, (w) => w.toLowerCase());
+export const whoLabel = (t: TFunction, who: string): string => (/^all\b/i.test(who) ? who : t("supplements.onlyFor", { who: midSentence(who) }));
 
 export const categoryLabel =(t: TFunction, p: Pick<SupplementPrompt, "category">) => t(`supplements.cat.${p.category}`);
 

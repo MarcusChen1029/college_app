@@ -15,6 +15,8 @@ type Props = {
   onOpen: (slug: string) => void;
   /** Ticks an item as sent for these colleges (asks first). */
   onMarkSent: (kind: SentKind, slugs: string[]) => void;
+  /** Essays each researched college asks of everyone (lib/supplements.ts essaysToWrite), by slug. */
+  essayCounts?: Record<string, number>;
 };
 
 const LINK = "text-blue-700 underline-offset-4 hover:underline";
@@ -44,11 +46,13 @@ const ITEM_LABEL = {
   english_test: "application.crunch.item.english_test",
 } as const;
 
-function essayDetail(t: TFunction, c: OpenCollege): string {
-  return c.reason === "no_essays_yet" ? t("application.crunch.essaysNone") : t("application.crunch.essaysFinal", { final: c.final ?? 0, total: c.total ?? 0 });
+// With research on file, "nothing started" reads as the number of essays the college asks for, matching the Essays page.
+function essayDetail(t: TFunction, c: OpenCollege, toWrite: number | undefined): string {
+  if (c.reason !== "no_essays_yet") return t("application.crunch.essaysFinal", { final: c.final ?? 0, total: c.total ?? 0 });
+  return toWrite ? t("application.crunch.essaysToWrite", { n: toWrite }) : t("application.crunch.essaysNone");
 }
 
-function OpenItem({ group, clusterSize, onOpen, onMarkSent }: { group: OpenGroup; clusterSize: number } & Pick<Props, "onOpen" | "onMarkSent">) {
+function OpenItem({ group, clusterSize, onOpen, onMarkSent, essayCounts }: { group: OpenGroup; clusterSize: number } & Pick<Props, "onOpen" | "onMarkSent" | "essayCounts">) {
   const t = useT();
   const notSent = group.colleges.filter((c) => c.reason === "not_sent");
   const undecided = group.colleges.filter((c) => c.reason === "plan_undecided");
@@ -58,7 +62,7 @@ function OpenItem({ group, clusterSize, onOpen, onMarkSent }: { group: OpenGroup
   // One line per reason. A shared item missing everywhere reads "for all 9" instead of nine names.
   const lines: React.ReactNode[] = [];
   if (group.key === "essays") {
-    lines.push(<Names key="e" colleges={group.colleges} onOpen={onOpen} detail={(s) => essayDetail(t, byslug.get(s)!)} />);
+    lines.push(<Names key="e" colleges={group.colleges} onOpen={onOpen} detail={(s) => essayDetail(t, byslug.get(s)!, essayCounts?.[s])} />);
   } else {
     if (notSent.length) {
       lines.push(
@@ -121,7 +125,7 @@ function OpenItem({ group, clusterSize, onOpen, onMarkSent }: { group: OpenGroup
  * Top of My list: the next week of application deadlines and exactly what is still open for them. Further out than
  * the "soon" window it shrinks to one line; with nothing upcoming it renders nothing.
  */
-export function CrunchCard({ crunch, onOpen, onMarkSent }: Props) {
+export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
   const t = useT();
   if (crunch.kind === "none") return null;
   if (crunch.kind === "later") {
@@ -157,7 +161,7 @@ export function CrunchCard({ crunch, onOpen, onMarkSent }: Props) {
           <h3 className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">{t("application.crunch.stillOpen")}</h3>
           <ul className="divide-y divide-zinc-100">
             {crunch.open.map((g) => (
-              <OpenItem key={g.key} group={g} clusterSize={n} onOpen={onOpen} onMarkSent={onMarkSent} />
+              <OpenItem key={g.key} group={g} clusterSize={n} onOpen={onOpen} onMarkSent={onMarkSent} essayCounts={essayCounts} />
             ))}
           </ul>
         </div>

@@ -76,6 +76,7 @@ export function MyList({
   englishTests,
   codes,
   intro,
+  essayCounts,
 }: {
   colleges: CollegeSummary[];
   deadlines: Deadline[];
@@ -84,6 +85,8 @@ export function MyList({
   codes: ScoreCode[];
   /** Explains the table; rendered just above it, below the "due soon" card and teacher tasks. */
   intro?: React.ReactNode;
+  /** Essays each researched college asks of everyone, by slug (for the "due soon" card). */
+  essayCounts?: Record<string, number>;
 }) {
   const t = useT();
   const planLabel = usePlanLabel();
@@ -263,7 +266,7 @@ export function MyList({
 
   return (
     <div className="space-y-4">
-    <CrunchCard crunch={crunch} onOpen={setOpenSlug} onMarkSent={markAllSent} />
+    <CrunchCard crunch={crunch} onOpen={setOpenSlug} onMarkSent={markAllSent} essayCounts={essayCounts} />
     <TeacherTasksForStudent />
     {intro}
     <div>

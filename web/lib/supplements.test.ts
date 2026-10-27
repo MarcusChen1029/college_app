@@ -3,7 +3,9 @@ import { test } from "node:test";
 import { isDone, type Checklist, type Essay } from "./checklist.ts";
 import {
   entrySupplements,
+  essayCountsBySlug,
   essaySlots,
+  essaysToWrite,
   GENERIC_PROMPT_KEY,
   includeSlot,
   promptTextMissing,
@@ -243,6 +245,18 @@ test("required without published prompt text: one generic required slot, never '
   assert.deepEqual(slotPrompts(rec([prompt("piq-1")], { shared_set: "uc-piq" })), []);
   assert.equal(slotPrompts(DATA.colleges.purdue).length, 5);
   assert.equal(promptTextMissing(DATA.colleges.williams), false);
+});
+
+test("essaysToWrite counts required prompts and choose-N picks; unknown and UC give null", () => {
+  const picks = [prompt("a", { choose: { group: "A", pick: 1 } }), prompt("b", { choose: { group: "A", pick: 1 } })];
+  assert.equal(essaysToWrite(rec([prompt("why-us"), ...picks, prompt("opt", { required: false }), prompt("hon", { applies_to: "Honors" })])), 2);
+  assert.equal(essaysToWrite(rec([], { supplements: "required" })), 1); // prompt text unpublished: one generic essay
+  assert.equal(essaysToWrite(rec([])), 0); // sourced "none"
+  assert.equal(essaysToWrite(rec([], { supplements: "unknown" })), null);
+  assert.equal(essaysToWrite(rec([prompt("piq-1")], { shared_set: "uc-piq" })), null);
+  assert.equal(essaysToWrite(null), null);
+  const counts = essayCountsBySlug({ cycle: "2026-27", colleges: { x: rec([prompt("a")]), y: rec([]) } });
+  assert.deepEqual(counts, { x: 1 });
 });
 
 test("a custom college reads as not researched and keeps a working essay list", () => {
