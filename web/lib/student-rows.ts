@@ -245,11 +245,12 @@ export type TranscriptSchoolRow = {
   printed_gpa_scale: string | null;
   gpa_weighted: boolean | null;
   class_rank: string | null;
+  school_code: string | null;
   notes: string | null;
   created_at: string;
 };
 export const TRANSCRIPT_SCHOOL_COLUMNS =
-  "id, name, country, kind, curriculum, default_scale, default_period, first_year, last_year, printed_gpa, printed_gpa_scale, gpa_weighted, class_rank, notes, created_at";
+  "id, name, country, kind, curriculum, default_scale, default_period, first_year, last_year, printed_gpa, printed_gpa_scale, gpa_weighted, class_rank, school_code, notes, created_at";
 export const toTranscriptSchool = (r: TranscriptSchoolRow): TranscriptSchool => ({
   id: r.id,
   name: r.name,
@@ -264,6 +265,7 @@ export const toTranscriptSchool = (r: TranscriptSchoolRow): TranscriptSchool => 
   printedGpaScale: r.printed_gpa_scale ?? "",
   gpaWeighted: r.gpa_weighted,
   classRank: r.class_rank ?? "",
+  schoolCode: r.school_code ?? "",
   notes: r.notes ?? "",
   createdAt: r.created_at,
 });
@@ -281,6 +283,8 @@ export const transcriptSchoolColumns = (s: SchoolInput) => ({
   printed_gpa_scale: s.printedGpaScale,
   gpa_weighted: s.gpaWeighted,
   class_rank: s.classRank,
+  // The column's check allows null or a real code, never "".
+  school_code: s.schoolCode || null,
   notes: s.notes,
 });
 export const fromTranscriptSchool = (userId: string, s: TranscriptSchool) => ({ id: s.id, user_id: userId, ...transcriptSchoolColumns(s) });

@@ -45,6 +45,8 @@ export type StarsPagePlan = {
   /** The school year's end ("yr" in the page URL): 2024 for 2023-24. */
   endYear: number;
   schoolName: string;
+  /** The school code (CEEB) from the transcript, when the student entered one: portals are matched by it first. */
+  schoolCode?: string;
   /** Every row's scale choices that need the student: each list has several options (the passing mark is not on the transcript). */
   scaleQuestions: string[][];
   rows: StarsRow[];
@@ -157,7 +159,7 @@ export function buildStarsPlans(schools: TranscriptSchool[], courses: Transcript
     const key = `${school.id}|${c.academicYear}`;
     let plan = plans.get(key);
     if (!plan) {
-      plan = { kind, endYear: c.academicYear + 1, schoolName: school.name, scaleQuestions: [], rows: [], skipped: [], warnings: [], titleOther: [], creditsSplit: 0 };
+      plan = { kind, endYear: c.academicYear + 1, schoolName: school.name, schoolCode: school.schoolCode, scaleQuestions: [], rows: [], skipped: [], warnings: [], titleOther: [], creditsSplit: 0 };
       plans.set(key, plan);
     }
     const gl = c.gradeLevel;

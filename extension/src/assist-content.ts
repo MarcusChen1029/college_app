@@ -56,7 +56,10 @@ chrome.runtime.onMessage.addListener((raw: unknown, sender, sendResponse: (r: As
       return true; // async response
     }
     case "starsPage":
-      sendResponse({ type: "starsPage", year: starsPageYear(location), kind: starsPageKind(location), existing: starsExistingNames(document), pageText: document.body.innerText.slice(0, 4000), errors: starsErrors(document) });
+      sendResponse({ type: "starsPage", year: starsPageYear(location), kind: starsPageKind(location), existing: starsExistingNames(document),
+      // The school's code is in the URL (selCeeb), not always on the page; put it first so a code match can find it.
+      pageText: `${new URLSearchParams(location.search).get("selCeeb") ?? ""}
+${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
       return false;
     case "starsFill":
       if (!SITE_ORIGINS.stars.includes(location.origin) || starsPageYear(location) == null) {

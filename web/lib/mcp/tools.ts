@@ -727,6 +727,7 @@ export function registerTools(server: McpServer) {
           printedGpaScale: sc.printedGpaScale || null,
           gpaWeighted: sc.gpaWeighted,
           classRank: sc.classRank || null,
+          schoolCode: sc.schoolCode || null,
           courses: t.courses
             .filter((c) => c.schoolId === sc.id)
             .map((c) => ({

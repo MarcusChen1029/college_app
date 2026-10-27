@@ -86,6 +86,8 @@ Plan: all US colleges next, then UK/CA/AU.
   the student approves it at `/extension/connect`, which mints a **transcript-only token** (migration 0031, table `extension_tokens`, applied; students revoke it under Settings > Connected extensions, then Fill says "Sign in again").
   **Never test fills on the owner's real Common App account.** Use the throwaway test account (Purdue, nothing submitted) in a separate Chrome profile signed in only to it.
   The live end-to-end run has not been done yet: follow `extension/TESTING.md`.
+  Schools are matched to the portal's school by `web/lib/school-match.ts`: the optional school code (CEEB, migration 0034 `transcript_schools.school_code`,
+  also returned by `extension_transcript`) first, then the name word by word with abbreviations expanded (Intl, Sch, Cmp, HS, St...), never a guess between two close names.
   Other portals (2026-10-27): the panel's "Fill for" picker follows the active tab (`extension/src/sites.ts`). STARS
   (both coursework pages), Cal State Apply (High School Coursework, US schools) and UC (Enter courses & grades) get "Add courses", each verified
   on a live test account (plans `web/lib/stars-fill.ts`, `csu-fill.ts`, `uc-fill.ts`); UIUC and UT get the fill assistant (click a box, press a
@@ -112,7 +114,7 @@ cd extension && npm run package   # rebuilds web/public/downloads/common-app-fil
 - **Never invent data.** Every number needs an official source (CDS, admissions or financial-aid site), recorded in `sources`.
   If it can't be confirmed, leave it null and note why. Mark estimates as estimates (e.g. GPA percentiles).
 - Edit `data/*.json`, not the generated SQL. Keep `scripts/build_seed.py --check` passing.
-- Schema changes = a new file in `supabase/migrations/` (next number: **0034**; 0001-0033 are all applied to the project as of 2026-10-27) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0035**; 0001-0034 are all applied to the project as of 2026-10-27) **and** apply it to the project.
 - **Known-red check:** GitHub's "Supabase Preview" fails with "Remote migration versions not found in local migrations directory". Migrations applied
   through the MCP are recorded remotely under timestamp versions (`20261024050323_user_roles`) while the repo uses `00NN_name.sql`, and the two lists also
   differ (remote has `profile_app_essays`, no local file; local has `0006_pg_net_schema`, no remote record). It failed the same way on PR #4 and is not a

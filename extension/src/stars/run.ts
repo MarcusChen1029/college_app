@@ -1,6 +1,7 @@
 // Runs one STARS school year: adds every planned course that is not on the page yet, one Save Course at a time. Each save reloads the
 // page, so the panel drives the loop and checks after every reload that the course is in STARS's table. Free of chrome.* for tests.
 
+import { schoolOnPage } from "../../../web/lib/school-match.ts";
 import { starsRowsToAdd, starsScaleFor, type StarsPagePlan } from "../../../web/lib/stars-fill.ts";
 import type { AssistMessage, AssistResponse } from "../messages.ts";
 
@@ -23,9 +24,7 @@ async function page(tab: StarsTab): Promise<{ year: number | null; kind: "intl" 
 export function planForPage(plans: StarsPagePlan[], page: { year: number | null; kind: "intl" | "us" | null; pageText: string }): StarsPagePlan | null {
   const same = plans.filter((p) => p.kind === page.kind && p.endYear === page.year);
   if (same.length <= 1) return same[0] ?? null;
-  const text = page.pageText.toLowerCase();
-  const named = same.filter((p) => text.includes(p.schoolName.toLowerCase()));
-  return named.length === 1 ? named[0]! : null;
+  return schoolOnPage(same, page.pageText, (p) => ({ name: p.schoolName, code: p.schoolCode }));
 }
 
 export async function runStarsYear(plan: StarsPagePlan, picked: readonly string[], language: string | null, tab: StarsTab, shouldStop: () => boolean, progress: (text: string) => void): Promise<StarsRunResult> {

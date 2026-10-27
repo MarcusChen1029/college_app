@@ -110,6 +110,8 @@ export type TranscriptSchool = {
   printedGpaScale: string;
   gpaWeighted: boolean | null;
   classRank: string;
+  /** The school's code (CEEB / College Board code) as the portals search by it, or empty. */
+  schoolCode: string;
   notes: string;
   createdAt: string;
 };
@@ -154,7 +156,7 @@ export const newTranscriptId = (): string => (typeof crypto !== "undefined" && "
 
 export const emptySchool = (): SchoolInput => ({
   name: "", country: "", kind: "high_school", curriculum: "us", defaultScale: "letter_plus_minus", defaultPeriod: "semester",
-  firstYear: null, lastYear: null, printedGpa: "", printedGpaScale: "", gpaWeighted: null, classRank: "", notes: "",
+  firstYear: null, lastYear: null, printedGpa: "", printedGpaScale: "", gpaWeighted: null, classRank: "", schoolCode: "", notes: "",
 });
 
 /** The year the current academic year started: Aug-Dec is this calendar year, Jan-Jul is last year. */
@@ -203,6 +205,13 @@ function choice<T extends string>(list: readonly T[], v: unknown, def: T, label:
   return def;
 }
 
+/** An optional school code: letters, digits and dashes, 1-12 long (CEEB codes are 6 digits; other systems use their own). */
+function schoolCode(v: unknown, errors: string[]): string {
+  const t = text(v, LIMITS.short, "School code", errors).replace(/\s+/g, "");
+  if (t && !/^[A-Za-z0-9-]{1,12}$/.test(t)) errors.push("School code may only use letters, digits and dashes (at most 12).");
+  return t;
+}
+
 export function validateSchool(i: Partial<Record<keyof SchoolInput, unknown>>): Validated<SchoolInput> {
   const errors: string[] = [];
   const name = text(i.name, LIMITS.schoolName, "School name", errors);
@@ -220,6 +229,7 @@ export function validateSchool(i: Partial<Record<keyof SchoolInput, unknown>>): 
     printedGpaScale: text(i.printedGpaScale, LIMITS.grade, "GPA scale", errors),
     gpaWeighted: typeof i.gpaWeighted === "boolean" ? i.gpaWeighted : null,
     classRank: text(i.classRank, LIMITS.short, "Class rank", errors),
+    schoolCode: schoolCode(i.schoolCode, errors),
     notes: text(i.notes, LIMITS.notes, "Notes", errors),
   };
   return errors.length ? { ok: false, errors } : { ok: true, value };

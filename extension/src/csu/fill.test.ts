@@ -19,6 +19,12 @@ test("finds the coursework page and the named school's button", () => {
   assert.throws(() => schoolButton(doc, "Kang Chiao"), /Could not tell which school/);
 });
 
+test("the named school's button is found under Cal State Apply's own spelling, or by the school code", () => {
+  const doc = page(card("KANG CHIAO INTL SCH LINKOU CMP", "Add course") + card("TAIPEI AMERICAN SCHOOL 694100", "1 Courses"));
+  assert.equal(schoolButton(doc, "Kang Chiao International School - Linkou Campus").textContent, "Add course");
+  assert.equal(schoolButton(doc, "TAS", "694100").textContent, "1 Courses");
+});
+
 test("with one school on the page its button is used whatever the tracker calls it", () => {
   const doc = page(card("CENTRAL CATHOLIC HIGH SCHOOL", "Add course"));
   assert.equal(schoolButton(doc, "Central Catholic HS").textContent, "Add course");

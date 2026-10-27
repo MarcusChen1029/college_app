@@ -138,7 +138,7 @@ test("a school that is not in Common App's list names the options read and both 
   assert.equal(result.blanks[0]!.field, "school");
   assert.ok(
     result.blanks[0]!.reason.startsWith(
-      "Your tracker school 'Lincoln High' doesn't match any school in Common App's list ('West Lafayette Junior-Senior High School'). Rename it in the tracker to match exactly, or add it in Common App's Education section.",
+      "Your tracker school 'Lincoln High' doesn't match any school in Common App's list ('West Lafayette Junior-Senior High School'). Rename it in the tracker to match, or add it in Common App's Education section.",
     ),
     result.blanks[0]!.reason,
   );

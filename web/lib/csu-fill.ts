@@ -27,7 +27,7 @@ export type CsuRow = {
   agCode: string | null;
 };
 export type CsuSkip = { course: string; field: string; reason: string };
-export type CsuSchoolPlan = { schoolId: string; schoolName: string; termType: string; rows: CsuRow[]; skipped: CsuSkip[]; warnings: string[] };
+export type CsuSchoolPlan = { schoolId: string; schoolName: string; schoolCode?: string; termType: string; rows: CsuRow[]; skipped: CsuSkip[]; warnings: string[] };
 
 export { csuGradeLevelLabel, csuGradeLevelOption, csuYear } from "./csu-labels.ts";
 
@@ -72,7 +72,7 @@ export function buildCsuPlans(schools: TranscriptSchool[], courses: TranscriptCo
   const out: CsuSchoolPlan[] = [];
   for (const school of schools) {
     if (school.kind !== "high_school" || isNonUs(school)) continue;
-    const plan: CsuSchoolPlan = { schoolId: school.id, schoolName: school.name, termType: CSU_TERM_TYPES[school.defaultPeriod], rows: [], skipped: [], warnings: [] };
+    const plan: CsuSchoolPlan = { schoolId: school.id, schoolName: school.name, schoolCode: school.schoolCode, termType: CSU_TERM_TYPES[school.defaultPeriod], rows: [], skipped: [], warnings: [] };
     const mine = courses.filter((c) => c.schoolId === school.id).sort((a, b) => (a.gradeLevel ?? 0) - (b.gradeLevel ?? 0) || a.academicYear - b.academicYear || a.sortOrder - b.sortOrder);
     for (const c of mine) {
       const skip = (field: string, reason: string) => plan.skipped.push({ course: c.name, field, reason });
