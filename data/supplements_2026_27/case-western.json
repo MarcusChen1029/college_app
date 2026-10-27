@@ -1,0 +1,41 @@
+{
+  "slug": "case-western",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Proof of financial support for one academic year (tuition and living expenses): an official bank or investment firm statement, or a sponsor letter for a scholarship/assistantship/fellowship, submitted through the VISA Office's electronic I-20 request",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "A bank or investment statement must state the country where the funds are held and the amount available for withdrawal for education. CWRU says additional information is provided after admission. The VISA Office page gives about 15-20 business days to generate the I-20 after all documents are submitted.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://case.edu/admission/apply/application-requirements-enhancements",
+      "title": "CWRU Undergraduate Admission: Deadlines and Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://case.edu/visa/international-students/admission-process",
+      "title": "CWRU VISA Office: Admission Process",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://case.edu/admission/apply/first-year-applicants",
+      "title": "CWRU Undergraduate Admission: First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://case.edu/admission/apply/international-students",
+      "title": "CWRU Undergraduate Admission: International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "General first-year applicants: the requirements and first-year pages list only the open-topic Common App/Coalition essay (\"What you share in your essay is completely up to you\") and no college-specific written questions, so supplements is none. Exceptions that are not covered by prompts: applicants to the Pre-Professional Scholars Program (PPSP) submit two additional essays through the application platform, but CWRU does not publish those prompts on the pages found; music and music education majors (and Arts Achievement Scholarship applicants) must submit an Arts Supplement (portfolio/audition, plus 250-word autobiography and program-of-study essays for the Arts Achievement Award), which are not Common App prompts. The pages do not state the cycle year; the deadlines shown (EA/ED I Nov. 1, RD Jan. 15) are for the current cycle. The VISA Office page gives no dollar amount or date for the financial proof; those arrive with instructions after admission. Source 1 and 3 are pages where the essay requirements were read; no source explicitly says CWRU has no supplement. Fact-check 2026-10-27: changed 'none' to 'required' (same convention as boston-university: a required supplement whose text is not published): source 3 says Pre-Professional Scholars applicants submit 'Two additional essays via your application platform', but no case.edu page read gives the prompt text or limits, so prompts stays empty (third-party guides quote them; not used). General applicants (not PPSP, not music) have no CWRU-specific essay: source 1 says all first-year students complete an essay via the Common App or Coalition with Scoir and the topic is up to them."
+}

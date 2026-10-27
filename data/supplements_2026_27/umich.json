@@ -1,0 +1,58 @@
+{
+  "slug": "umich",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "contribute-leaders",
+      "prompt": "At the University of Michigan, we are focused on developing leaders and citizens who will challenge the present and enrich the future. In your essay, share with us how you are prepared to contribute to these goals. This could include the people, places, experiences, or aspirations that have shaped your journey and future plans.",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "college-curriculum",
+      "prompt": "Describe the unique qualities that attract you to the specific undergraduate college or school (including preferred admission and dual degree programs) to which you are applying at the University of Michigan. How would that curriculum support your interests?",
+      "word_limit": 550,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial Resources Statement (U-M form) with supporting documentation and a copy of the passport photo page, to show full financial support before U-M issues the I-20",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "The form says only students who have been offered admission and have confirmed intent to enroll should complete it; preferred submission is upload to Enrollment Connect, email to ecredentials@umich.edu, or fax. The copy read is the 2025 form (cost figures are for 2025-2026); a 2026-27 version was not found. No deadline is published on the pages read.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions",
+      "title": "U-M Admissions: Essay Questions (first-year)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.umich.edu/apply/international-applicants/exams-visas",
+      "title": "U-M Admissions: International Applicants, Exams & Visas",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.umich.edu/sites/default/files/file/Financial_Resources_Statement.pdf",
+      "title": "U-M Financial Resources Statement (2025 form)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The U-M site blocks automated requests, so pages were read from Internet Archive copies of the official URLs (essay questions: 2026-09-29; exams & visas: 2026-10-04; form: 2025-07-27), not live pages. Both U-M questions are required for all applicants with a 100-word minimum (maximums 300 and 550) and are separate from the Common App personal statement (250-650 words). The page also notes the Common App's optional Challenges and Circumstances question (250 words), a Common App question rather than a U-M supplement, so it is not listed. Source 3 supplies the form details used in intl_finance. School-specific extras (for example Ross BBA, music, art, honors) were not researched."
+}

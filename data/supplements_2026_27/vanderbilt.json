@@ -1,0 +1,31 @@
+{
+  "slug": "vanderbilt",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "dare-to-grow",
+      "prompt": "Vanderbilt University’s motto, Crescere aude, is Latin for “dare to grow.” In your response, reflect on how one or more aspects of your identity, culture, or background has played a role in your personal growth, and how it will contribute to our campus community as you dare to grow at Vanderbilt.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial support documentation, submitted through the ISSS Portal together with a copy of the admission letter and a copy of the passport ID page, to request the I-20",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "ISSS emails portal instructions after admission. The accepted document types, amount and any date for undergraduates were not found on the pages read. This is separate from the CSS Profile or ISFAA, which are needed at application only for students requesting need-based aid.",
+    "source": 2
+  },
+  "sources": [
+    { "n": 1, "url": "https://admissions.vanderbilt.edu/apply/personal-essay-and-short-answer-prompts/", "title": "Vanderbilt Undergraduate Admissions: Personal Essay and Short Answer Prompts", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://www.vanderbilt.edu/isss/new-students-and-scholars/new-students/how-to-get-i-20-ds-2019/", "title": "Vanderbilt ISSS: How to get an I-20/DS-2019", "accessed": "2026-10-27" }
+  ],
+  "notes": "The prompts page carries no cycle label (its Common App link still points to a 2024-25 announcement), so 2026-27 is assumed from it being the live page. The page says approximately 250 words and does not use the word required for the short answer, but says applicants must complete it. The ISSS page mentions a 2024-2025 cost of attendance, so it may be partly out of date. The Common App personal essay is also required but is not recorded here."
+}

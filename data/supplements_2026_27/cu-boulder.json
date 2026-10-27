@@ -1,0 +1,53 @@
+{
+  "slug": "cu-boulder",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "academic-interests",
+      "prompt": "What do you hope to study, and why, at CU Boulder? Or if you don't know quite yet, think about your studies so far, extracurricular/after-school activities, jobs, volunteering, future goals or anything else that has shaped your interests.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All first-year applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Evidence of full financial support for all first-year expenses (proof of funding) plus a completed Financial Statement / Affidavit of Support",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Admissions says it is needed if the student is academically eligible and needs a Form I-20 or DS-2019, and that it must be received before CU Boulder can finalize the admission and issue the immigration form. The I-20 is emailed after Admissions has received and reviewed the proof of funding, the Financial Statement / Affidavit of Support, proof of English proficiency and a passport scan. The specific accepted document types, validity period and any due date are not on the admissions pages read.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.colorado.edu/admissions/process/first-year/apply",
+      "title": "CU Boulder Admissions: First-Year Apply (essays)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.colorado.edu/admissions/process/international/admitted",
+      "title": "CU Boulder Admissions: International - Admitted (Submit Proof of Financial Support)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.colorado.edu/admissions/process/international/plan/visa",
+      "title": "CU Boulder Admissions: International - Visa Information",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.colorado.edu/admissions/ready-set-apply-your-need-know-guide-2027-application-season",
+      "title": "CU Boulder Admissions: Ready? Set. Apply! 2027 application season guide",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "One required 250-word short answer on top of the Common App essay (250-650 words); it must differ from the Common App essay. The First-Year Apply page shows no year; the 2027 application-season guide (source 4) confirms the same two-part essay requirement (Common App essay plus a 250-word academic interest question), so the cycle is set to 2026-27. Music applicants also complete a separate College of Music application, which is not covered here. Exact financial document list and deadlines were not found on the admissions pages (source 3 also describes the I-20 steps)."
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "ut-austin",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "essay-any-topic",
+      "prompt": "Share an essay on any topic of your choice. It can be one you've already written, one that responds to a different prompt or one of your own design.",
+      "word_limit": 650,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "why-major",
+      "prompt": "Why are you interested in the major you indicated as your first-choice major?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "proudest-activity",
+      "prompt": "Think of all the activities — both in and outside of school — that you have been involved with during high school. Which one are you most proud of and why? (Guidance for students: This can include an extracurricular activity, a club/organization, volunteer activity, work or a family responsibility.)",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "circumstances-optional",
+      "prompt": "Please share background on events or special circumstances that you feel may have impacted your high school academic performance.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of funding (bank statement or bank certificate; plus a signed Statement of Financial Support if the account holder is not the student), uploaded through the Admissions Checklist in myIO",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "UT publishes no deadline for proof of funding, but the Form I-20/DS-2019 cannot be issued until it is received (UT ISSS page). Upon admission students get a welcome email from Texas Global with instructions for the myIO Admissions Checklist; documents sent by mail, email or fax are not accepted. F-1 students must show funds for the first academic year. Documents must be in English (or with a signed translation), current (proof of funding older than 6 months is not accepted), liquid, and no more than 10 pages. A bank statement must show official bank name and address, account holder, date of issuance, account type and total available balance (transaction history not required). A bank certificate must be on bank letterhead with the same details plus the name and signature of a bank official. Not accepted: mutual funds, stocks, crypto, tax returns, deeds, lines of credit, term life insurance, parent paycheck or stub. A funder who is not the student also supplies a Statement of Financial Support or Letter of Financial Support.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.utexas.edu/apply/application-materials/essays-and-short-answers",
+      "title": "UT Austin Admissions: Essays & Short Answers",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://global.utexas.edu/isss/immigration/f-1/financial-information",
+      "title": "UT Austin Texas Global ISSS: Financial Information for F-1 and J-1 Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.utexas.edu/apply/international/",
+      "title": "UT Austin Admissions: International Students, Freshman",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The UT Essays & Short Answers page (source 1) does not print a cycle label, but the international freshman page (source 3) on the same site lists Fall 2027 dates (decisions January 15, 2027 and February 15, 2027) and says to submit at least one essay and the required short answers as described on that page, so the prompts are recorded as 2026-27. The essay requirement is met by the Common App personal essay (the page says 500-650 words; recorded as word_limit 650). Short answers are limited to no more than 40 lines, about 250-300 words per prompt (typically one paragraph); no exact word limit is published, so word_limit is null. Short answers can be submitted with either Common App or ApplyTexas and must be completed to submit the application. The page also shows no major-specific freshman essay; some majors/colleges may ask for extra materials, which were not researched here. Honors/Texas Honors extra prompts were not checked."
+}

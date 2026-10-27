@@ -1,0 +1,47 @@
+{
+  "slug": "miami",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Bank letter or online bank statement (dated within the past 6 months), plus a copy of the passport biographical page and the enrollment deposit, before the I-20 is issued",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Bank letter or online bank statement and other I-20 items (fall entry)",
+        "date": null,
+        "note": "July 10; the FAQ page does not state the year"
+      }
+    ],
+    "notes": "Documents are emailed to mydocuments@miami.edu with Passport/Proof of Funds in the subject line, plus full name, date of birth and Cane ID. I-20s start processing in March for deposited Early Decision students and May for deposited Early Action and Regular Decision students. Acceptable proof (UM PDF, revised 10/24): signed bank letter on bank letterhead, bank-generated PDF statement, or stamped and signed account activity printout, all dated within 6 months; sponsor funds also need a letter from the account holder; a certified English translation is needed for other languages; add an Oanda conversion printout if funds are not in US dollars; letters for admission purposes only are not accepted from a government sponsor. If funds are late, UM may postpone enrollment to a later term.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://news.miami.edu/admissions/stories/2026/07/does-the-university-of-miami-require-a-supplemental-essay.html",
+      "title": "UM Admission (News@TheU, July 2026): Does the University of Miami Require a Supplemental Essay?",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.miami.edu/undergraduate/application-process/admission-requirements/freshman/index.html",
+      "title": "University of Miami Admissions: First-Year Admission Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admitted.miami.edu/frequently-asked-questions/freshman-fall-faqs/",
+      "title": "University of Miami Admitted Students: First-Year Fall FAQs (I-20 for international students)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admissions.miami.edu/_assets/pdf/types-of-acceptable-proof-of-financial-support-updated.pdf",
+      "title": "University of Miami Admissions: Types of Acceptable Proof of Financial Support (PDF)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: 'none' confirmed explicitly; source 1 (UM Admission, July 2026) says UM 'does not require a supplemental essay for first-year admission as of the 2026-2027 application cycle' and source 2 says 'The University does not require a supplemental essay.' The Frost School of Music and some theatre programs require their own supplemental applications, auditions or portfolios (source 2), which are not essays. Supplement status 'none' rests on the July 2026 UM Admission post, which says no supplemental essay is required for first-year admission as of the 2026-2027 application cycle (Common App personal statement only), and on the undated First-Year Admission Requirements page, which says the University does not require a supplemental essay. Older official pages still mention a 250-word resilience supplement (the Testing Policy page, under Test Required for Fall 2026, and an August 2025 letter to applicants), which looks like the earlier cycle; UM labels cycles inconsistently, so the student should confirm in the Common App. The FAQ page giving the July 10 date is undated; the date is not tied to a year. The CSS Profile on the requirements page is for need-based aid, not proof of funds."
+}

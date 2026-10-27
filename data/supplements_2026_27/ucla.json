@@ -1,0 +1,216 @@
+{
+  "slug": "ucla",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": "uc-piq",
+  "prompts": [
+    {
+      "key": "piq-1-leadership",
+      "prompt": "Describe an example of your leadership experience in which you have positively influenced others, helped resolve disputes or contributed to group efforts over time.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-2-creativity",
+      "prompt": "Every person has a creative side, and it can be expressed in many ways: problem solving, original and innovative thinking, and artistically, to name a few. Describe how you express your creative side.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-3-talent",
+      "prompt": "What would you say is your greatest talent or skill? How have you developed and demonstrated that talent over time?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-4-education",
+      "prompt": "Describe how you have taken advantage of a significant educational opportunity or worked to overcome an educational barrier you have faced.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-5-challenge",
+      "prompt": "Describe the most significant challenge you have faced and the steps you have taken to overcome this challenge. How has this challenge affected your academic achievement?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "piq-6-academic-subject",
+      "prompt": "Think about an academic subject that inspires you. Describe how you have furthered this interest inside and/or outside of the classroom.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "piq-7-community",
+      "prompt": "What have you done to make your school or your community a better place?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "piq-8-strong-candidate",
+      "prompt": "Beyond what has already been shared in your application, what do you believe makes you a strong candidate for admissions to the University of California?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "ftv-personal-essay",
+      "prompt": "The personal essay should include a summary of your background, creative interests, academic and professional goals. The personal essay may include unusual life experiences, important influences in your life, your motivation to study film and television, and the kind of creative work you hope to pursue. Do not use the personal essay to flatter us; use these few pages to create a very personal and vivid picture of yourself, what is most important to you, and your creative and professional goals.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Film and Television BA applicants (UCLA Film, Television, and Digital Media first-year supplemental application, due 2026-12-07)",
+      "choose": null,
+      "category": "identity",
+      "source": 6
+    },
+    {
+      "key": "ftv-life-challenge",
+      "prompt": "Describe the most significant challenge you have faced and the steps you have taken to overcome this challenge. How has this challenge affected your academic achievement? Things to consider: A challenge could be personal, or something you have faced in your community or school. Why was the challenge significant to you? This is a good opportunity to talk about any obstacles you’ve faced and what you’ve learned from the experience. Did you have support from someone else or did you handle it alone? If you’re currently working your way through a challenge, what are you doing now, and does that affect different aspects of your life? For example, ask yourself, “How has my life changed at home, at my school, with my friends, or with my family?” Please Note: This question is identical to optional Question #5 on the UC Application.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Film and Television BA applicants (UCLA Film, Television, and Digital Media first-year supplemental application, due 2026-12-07)",
+      "choose": null,
+      "category": "challenge",
+      "source": 6
+    },
+    {
+      "key": "ftv-critical-essay",
+      "prompt": "The critical essay is your analysis of a film or television program. This essay is NOT a review. You should assume the reader has seen the work you are discussing; do not include a plot summary. This essay is similar to what you would write in an English literature or film history course. It is your analysis of any aspect(s) of the work you have selected: the use of design, composition, color, lighting, sound, etc. as it relates to social observation or commentary, moral or philosophical elements, psychological aspects or relationships of the characters, dramatic structure, etc.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Film and Television BA applicants (UCLA Film, Television, and Digital Media first-year supplemental application, due 2026-12-07)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 6
+    },
+    {
+      "key": "ftv-creative-writing",
+      "prompt": "You may submit any one kind or combination of creative writing: a short story, a film treatment, a storyboard, a script or play excerpt (including a short synopsis of the complete script), etc. Those interested in submitting poetry, photographs, and/or drawings must submit one other type of creative work. The total of all submitted creative writing combined cannot exceed the 5 page maximum. No preference is given to one type of creative work over another. DO NOT SUBMIT FILMS, REELS, or LINKS.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Film and Television BA applicants (UCLA Film, Television, and Digital Media first-year supplemental application, due 2026-12-07)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 6
+    }
+  ],
+  "intl_finance": {
+    "document": "Confidential Financial Statement (CFS) with signatures, bank statement(s) dated within the last 6 months and/or supporting verification documents, for the UCLA I-20 or DS-2019; requested through the Dashew Center online portal after the Statement of Intent to Register",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Dashew Center: to request a UCLA I-20 you must first submit your SIR; you are then emailed instructions to request it through the online portal. The CFS form (source 4) says it must be completed and signed to verify financial support for the issuance of a UCLA I-20 or DS-2019, and requires a valid personal bank statement translated into English (and a sponsor's bank statement if a sponsor guarantees funds). Whether the portal asks new undergraduates for exactly this form is not stated on the newly admitted page (source 3). No dollar amount or date is published on the pages read.",
+    "source": 4
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/personal-insight-questions.html",
+      "title": "UC Admissions: Personal insight questions (first-year; 4 of 8, max 350 words each)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf",
+      "title": "UC Admissions: Presenting yourself on the first-year UC application 2026-27 (counselor guide)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://internationalcenter.ucla.edu/f-1-students/newly-admitted",
+      "title": "UCLA Dashew Center: Newly Admitted F-1 Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.internationalcenter.ucla.edu/Portals/104/documents/Forms/CFS/CFS.pdf",
+      "title": "UCLA Dashew Center: Confidential Financial Statement form",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://admission.ucla.edu/sites/default/files/documents/UCLA-International-Admission-Guide-2026.pdf",
+      "title": "UCLA Undergraduate Admission: International Applicants Guide to Applying (printed July 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 6,
+      "url": "https://www.tft.ucla.edu/app/uploads/2026/09/FTV_UG_Fresh_PDF.pdf",
+      "title": "UCLA TFT: First-Year Admissions, Film and Television BA Program (revised 09/2026)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The 8 Personal Insight Questions are the same for all UC campuses (answer 4, max 350 words each); text copied from the UC Admissions page (source 1), which does not print a cycle year. Source 2 (UC counselor guide titled 2026-27) confirms the same format for the 2026-27 application: respond to 4 of the 8 questions, 350 words maximum per response. The UC application also has optional Additional comments boxes (source 2); they are not essay prompts and are not listed here. Source 5 says applicants to the Schools of Arts and Architecture, Music, Nursing and Theater, Film and Television must submit a supplemental application in addition to the UC application. Only the Film and Television BA written items are included here (source 6, revised 09/2026): the personal essay and life challenge essay are each limited to 2 pages, the critical essay to 3 pages or the creative writing to 5 pages (applicant picks one of the two); these page limits are not word limits so word_limit is null. The FTV supplement also needs a 3-minute video interview (four questions), two recommendation letters and a $50 fee, which are not essay prompts and are not listed. Supplements for Nursing, Arts and Architecture, Music and Theater were not captured (the official prompts could not be found), so they are not in this file."
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "stevens",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Copy of a recent official bank statement (if personal funds cover all expenses); if a sponsor pays any part, the Stevens Financial Verification Form completed and signed by you and each sponsor, plus an official bank statement, uploaded to the student portal",
+    "when": "with_application",
+    "deadlines": [],
+    "notes": "Stevens strongly recommends (does not require) financial documentation with the application. The Financial Verification Form is required for the I-20 request: an incomplete form delays the I-20. The form is published for the 2026/2027 academic year and shows first-year expenses of $68,230 tuition and fees, $20,744 living expenses and $2,320 health insurance, books and supplies. The CSS Profile (code 2819) is for international merit scholarship consideration and is not a proof-of-finance document.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/first-year-students",
+      "title": "Stevens Undergraduate Admissions: First-Year Students, Application Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/international-students",
+      "title": "Stevens Undergraduate Admissions: International Students, Financial Documentation and Aid",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://assets.stevens.edu/mviowpldu823/tbhqxK7ZsNv9F8dewxHQT/9ef74729837467ddbe1d36d3caec2801/UG_FVF_AY_2026-2027.pdf",
+      "title": "Stevens ISSS: Financial Verification Form (FVF) - Undergraduate Studies 2026/2027",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: downgraded from 'none' to 'unknown'. The requirements list (source 1) says 'Essay (included on your application)', which does not say whether that is only the Common App personal essay; Stevens news has described Stevens-specific essay prompts in recent cycles and third-party guides report Stevens short responses and a 250-word essay for 2025-26 (not used as a source). No official page publishing or ruling out 2026-27 Stevens questions was found. Check the Stevens section of the Common App. 'none' rests on the first-year requirements list (source 1), which lists the Common/Coalition application, transcript, 'Essay (included on your application)', two recommendations and the fee, with no school-specific writing. The page does not name the cycle and was not dated; it states test-optional through Fall 2029. The FVF on file is for the 2026/2027 academic year; students entering in fall 2027 should check whether a 2027/2028 version replaces it. No published date for the financial documents was found."
+}

@@ -1,0 +1,64 @@
+{
+  "slug": "rpi",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "architecture",
+      "prompt": "State your reasons for choosing architecture as your profession.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Architecture (ARCH) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "physician-scientist",
+      "prompt": "State your reasons for aspiring to a career in medicine.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Accelerated Physician-Scientist (B.S./M.D.) Program (BIAM) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "International Student Financial Statement (ISFS) form plus supporting financial documents showing at least one year of liquid funding (approximately $80,000 USD), uploaded to the application portal",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "ISFS and supporting financial documents",
+        "date": null,
+        "note": "Upload to your application portal once you submit your enrollment deposit; no calendar date published."
+      }
+    ],
+    "notes": "Required for students who will study on a non-immigrant F-1 or J-1 visa. The international page says you must submit the ISFS if you are accepted and enroll. The first-year application FAQ (source 3) lists the ISFS and supporting documentation among documents students may upload themselves through the application portal. The Physician-Scientist (B.S./M.D.) program does not accept international students (source 2).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://undergrad.admissions.rpi.edu/apply",
+      "title": "RPI Undergraduate Admissions: The RPI Application (Fall 2027, Essay)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://undergrad.admissions.rpi.edu/apply/international-applicants",
+      "title": "RPI Undergraduate Admissions: International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://undergrad.admissions.rpi.edu/apply/first-year-applicants/application-frequently-asked-questions",
+      "title": "RPI Undergraduate Admissions: Application Frequently Asked Questions",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "RPI's page (labeled Application Options - Fall 2027) says the general essay/personal statement satisfies RPI's essay requirement except for Architecture and the Physician-Scientist program, which are answered on the Common App writing supplement (submitted separately from the Common App itself). Word or character limits are not stated. All other applicants need no RPI-specific essay."
+}

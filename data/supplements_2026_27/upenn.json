@@ -1,0 +1,207 @@
+{
+  "slug": "upenn",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "thank-you-note",
+      "prompt": "Write a short thank-you note to someone you have not yet thanked and would like to acknowledge. (We encourage you to share this note with that person, if possible, and reflect on the experience!)",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "community",
+      "prompt": "How will you explore community at Penn? Consider how Penn will help shape your perspective, and how your experiences and perspective will help shape Penn.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "school-nursing",
+      "prompt": "Penn Nursing intends to meet the health needs of society in a global and multicultural world by preparing its students to impact healthcare by advancing science. Why are you applying to Nursing, where do you see yourself professionally in the future, and how will you contribute to our mission of promoting equity in healthcare?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "School of Nursing applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-college-arts-sciences",
+      "prompt": "The College of Arts and Sciences is designed to foster discovery and connection. Describe something you are curious about—something you'd like to learn more about or find a new approach to—and how you might pursue that curiosity in the College.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "College of Arts and Sciences applicants",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "school-wharton",
+      "prompt": "Wharton prepares its students to make an impact by applying business methods and economic theory to real-world problems, including economic, political, and social issues. Discuss a current issue of importance to you and how you hope a Wharton education would help you explore it.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "The Wharton School applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "school-engineering",
+      "prompt": "Penn Engineering prepares its students to become leaders in technology by combining a strong foundation in the natural sciences and mathematics with depth of study in focused disciplinary majors. Describe how you plan to pursue your engineering interests at Penn, particularly within the intended major you selected.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Penn Engineering applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "huntsman-language",
+      "prompt": "Describe your experience with the target language you selected. You may wish to share the length of time you've studied or used this language, how you've learned it, the skills you've acquired, and/or the skills you still wish to develop. Please also explain why you are interested in studying this language and the region(s) of the world where it is spoken.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Huntsman Program in International Studies and Business applicants",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "huntsman-dual-degree",
+      "prompt": "The Huntsman Program supports the development of globally-minded scholars who become engaged citizens, creative innovators, and ethical leaders in the public, private, and non-profit sectors in the United States and around the world. What draws you to a dual degree in international studies and business, and how would you use what you learn to address a global issue where these two domains intersect?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Huntsman Program in International Studies and Business applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "lsm-program",
+      "prompt": "The Vagelos Life Sciences & Management (LSM) program brings together two powerful modes of understanding—scientific inquiry and strategic thinking—to prepare students to engage thoughtfully and creatively with some of the most complex challenges of our time. What questions, problems, or opportunities would you hope to explore through LSM, and how might the integration of life sciences and management shape your approach to them? Focus on the ideas, values, or questions that draw you to this intersection, rather than how LSM might advance your career, and make sure this essay is distinct from your single-degree application.",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Roy and Diana Vagelos Program in Life Sciences and Management (LSM) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "mt-engineering-business",
+      "prompt": "Explain how you will use the M&T program to pursue problems or opportunities that require both engineering and business perspectives.",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Jerome Fisher Program in Management and Technology (M&T) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "mt-created-built",
+      "prompt": "Describe something you created, designed, improved, or built. What motivated you, and what did you learn from the process?",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Jerome Fisher Program in Management and Technology (M&T) applicants",
+      "choose": null,
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "nhcm-program",
+      "prompt": "Describe your interest in nursing and health care management, and how Penn's coordinated dual-degree program in nursing and business would help you meet your goals. Please ensure that this essay is distinct from your single-degree application, if applicable.",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Nursing and Healthcare Management (NHCM) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "viper-majors",
+      "prompt": "VIPER students pursue dual degrees in science or math and engineering. Which major combination(s) interest you most right now and why? Your response to this prompt is not binding; students often shift majors as they learn more through the program.",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Roy and Diana Vagelos Integrated Program in Energy Research (VIPER) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "viper-interest",
+      "prompt": "Describe your interest in the VIPER program, including how any past experiences (academic, research, extracurricular, etc.) have shaped your interest in energy science and technology, and how you envision participation in VIPER fitting into your future goals.",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Roy and Diana Vagelos Integrated Program in Energy Research (VIPER) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "vic-program",
+      "prompt": "Discuss how your interests align with the Visual and Interactive Computing (VIC) program at the University of Pennsylvania",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "BSE in Visual and Interactive Computing (VIC) applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial cover sheet plus bank statement or bank cash-balance certificate (and an affidavit of support signed by a parent or other person who funds you), uploaded with the I-20 application to Penn ISSS",
+    "when": "before_i20",
+    "deadlines": [],
+    "notes": "Penn does not issue the I-20 automatically: admitted students apply to ISSS through iPenn and upload financial documents and a passport copy; the admissions FAQ says to submit the I-20 application immediately upon accepting the offer of admission. No fixed date is published. Only the first academic year (fall and spring, summer excluded) must be covered; the total of the documents must equal or exceed the program's figure listed by ISSS. Accepted sources: your own savings or checking account, a pre-approved loan in your name, Penn-awarded funding, a non-Penn scholarship or grant, or a bank account in a parent's name (affidavit of support letter signed by that person). Documents must show bank name, account holder's full name, account type, date and final balance, must not be older than 1 year at the time of the I-20 application, and must be in English or translated; converting to US dollars is highly recommended. Investments are not accepted; investment or wealth portfolios, asset valuations, proof of employment or salary, and pension or retirement plans are not accepted. Official bank statement is recommended for the visa interview. Processing takes up to 3 weeks, no expedited processing. The CSS Profile and tax documents for financial aid are separate and are not this requirement.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.upenn.edu/how-to-apply/preparing-your-application/writing",
+      "title": "Penn Admissions: 2026-27 Short Answer and Essay Prompts",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.upenn.edu/how-to-apply/first-year-applicants/application-requirements",
+      "title": "Penn Admissions: First-Year Application Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://global.upenn.edu/isss/new-app/",
+      "title": "Penn Global ISSS: Applying for Your I-20/DS-2019",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://ask.admissions.upenn.edu/support/solutions/articles/157000361239-how-and-when-do-i-receive-my-student-visa-from-penn-",
+      "title": "Ask Penn Admissions: How and when do I receive my student visa from Penn?",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Every applicant answers the two all-applicant prompts plus the one prompt for the single undergraduate school chosen; applicants to the coordinated dual-degree or specialized programs also answer that school prompt (for their single-degree school) plus the program prompts listed with applies_to (sources 1). The Huntsman applicant also selects one of eleven target languages, which is a selection and not a written prompt, so it is not recorded; it counts as the first of the three Huntsman-specific responses. The page gives ranges (50-200 or 50-400 words); only the upper limit is stored as word_limit. The thank-you note prompt includes the parenthetical encouragement to share the note, which Penn's FAQ says is only a suggestion. The ISSS financial page (source 3) and Ask Penn FAQ (source 4) have no stated cycle and are not dated; the ISSS financial amounts are linked on the page and not reproduced here. Source 4 itself does not mention financial documents; it is cited only for the timing of the I-20 application. Penn is need-aware for international applicants; aid materials (CSS Profile, tax return/earning statement) are due November 6 (ED) or February 1 (RD) per source 2 and are not proof of finances for the I-20."
+}

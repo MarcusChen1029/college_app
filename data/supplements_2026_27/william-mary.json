@@ -1,0 +1,41 @@
+{
+  "slug": "william-mary",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Financial documentation (proof of funding) uploaded through the iStart system, together with a copy of the passport identity page. Acceptable: bank statements, scholarship/funding letters, graduate/teaching assistantship letter, certificates of deposit, liquid investment accounts, loan confirmation letters. Not acceptable: pay stubs, property deeds/titles, salary confirmations. Documents must be legible, in English, and not more than 6 months old at the time of admission.",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Financial documents for the I-20 (iStart)",
+        "date": null,
+        "note": "After admission and paying the enrollment deposit, W&M sends an iStart email; no fixed date is published."
+      }
+    ],
+    "notes": "The estimate of funds used to issue the I-20 for Fall 2027 and Spring 2028 is $81,783 for a degree-seeking undergraduate (tuition and fees 56,211; living expenses 21,758; health insurance 3,814). W&M says it generally has no scholarships or loan funds for international undergraduates, so you must be able to fully finance your education. Scans are accepted, but bring the originals to the visa appointment. A new international student fee of $165 and a $85 per-semester service fee also apply.",
+    "source": 1
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.wm.edu/offices/revescenter/issp/visasandimmigration/f1student/requestingI20DS2019/finances/",
+      "title": "William & Mary ISSP: Financial Estimates and Acceptable Funding Documents",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/first-year-applicants/application-checklist/index.php",
+      "title": "William & Mary Admission: First-Year Application Checklist",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.wm.edu/offices/revescenter/issp/newstudents/visas/",
+      "title": "William & Mary ISSP: Visa Information (requesting your I-20 after the enrollment deposit)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The official checklist (source 2) says applicants are strongly encouraged to submit up to two of the 'optional essays' in the Common App, so college-specific essays exist and are optional. W&M's own pages do not print the prompt text or word limits, and the Common App W&M page could not be read, so no prompts are recorded and the 2026-27 wording is unconfirmed. Do not rely on third-party lists. Source 3 confirms the iStart step starts after admission and paying the enrollment deposit. The admissions international pages (applicationprocess, expensesaid) publish no financial document requirement; the I-20 funding rules above come from the ISSP office. Deadlines: Early Decision I November 1; Early Decision II and Regular Decision January 5."
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "swarthmore",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "identity-community",
+      "prompt": "What aspects of your self-identity or personal background are most significant to you? Reflecting on the elements of your home, school, or other communities that have shaped your life, explain how you have grown in your ability to navigate differences when engaging with others, or demonstrated your ability to collaborate in communities other than your own.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "fascinating-topic",
+      "prompt": "Tell us about a topic that has fascinated you recently – either inside or outside of the classroom. What made you curious about this? Has this topic connected across other areas of your interests? How has this experience shaped you and what encourages you to keep exploring?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Certificate of Finances and supporting bank statements, uploaded to the financial aid checklist in the applicant portal (not by email). Only for admitted students who plan to enroll, unless the Financial Aid Office asks earlier.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Complete the financial aid documentation (international aid applicants)",
+        "date": null,
+        "note": "within 7 days of receiving the admission decision"
+      }
+    ],
+    "notes": "Aid applicants must indicate intent to apply for financial aid on the admission application, then complete the financial aid application and documents after admission; admitted international students get a CSS Profile fee waiver. The 7-day rule is stated for the financial aid documentation; the page does not give a separate date for the Certificate of Finances.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.swarthmore.edu/admissions-aid/application-materials-deadlines",
+      "title": "Swarthmore Admissions & Aid: Application Materials & Deadlines (Short Answer, 2026-2027 cycle)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.swarthmore.edu/admissions-aid/international-students",
+      "title": "Swarthmore Admissions & Aid: International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Both short answers appear on the Common App and the Coalition (Scoir) application; QuestBridge applicants answer the same questions on the Swarthmore-QuestBridge Intent to Apply form. The page puts a short paragraph before each question; only the question text is copied here. Applicants attending school outside the U.S. must also submit one of: Swarthmore Video Response, English Proficiency Exam Result, or Initialview Video. Optional creative/video supplements exist but are not written prompts. Swarthmore is need-aware for international citizens. The exact bank-statement format and any dated Certificate of Finances deadline were not on the pages read; the linked financial aid instructions page was not read."
+}

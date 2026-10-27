@@ -1,0 +1,153 @@
+{
+  "slug": "dartmouth",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-dartmouth",
+      "prompt": "As you seek admission to Dartmouth's Class of 2031, what aspects of the college's academic program, community, and/or campus environment attract your interest? How is Dartmouth a good fit for you?",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants",
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "quaker-upbringing",
+      "prompt": "There is a Quaker saying: Let your life speak. Describe the environment in which you were raised and the impact it has had on the person you are today.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 2A or 2B)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "introduce-yourself",
+      "prompt": "\"Be yourself,\" Oscar Wilde advised. \"Everyone else is taken.\" Introduce yourself.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 2A or 2B)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "what-excites-you",
+      "prompt": "What excites you?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 3A to 3F)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "make-an-impact",
+      "prompt": "Labor leader and civil rights activist Dolores Huerta recommended a life of purpose. \"We must use our lives to make the world a better place to live, not just to acquire things,\" she said. \"That is what we are put on the earth for.\" In what ways do you hope to make—or are you already making—an impact? Why? How?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 3A to 3F)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "reading-other-lives",
+      "prompt": "In an Instagram post, best-selling British author Matt Haig cheered the impact of reading. \"A good novel is the best invention humans have ever created for imagining other lives,\" he wrote. How have you experienced such insight from reading? What did you read and how did it alter the way you understand yourself and others?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 3A to 3F)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "difficult-conversation",
+      "prompt": "The social and family interactions of wild chimpanzees have been the focus of Dame Jane Goodall's research for decades. Her understanding of animal behavior prompted the English primatologist to see a lesson for human communities as well: \"Change happens by listening and then starting a dialogue with the people who are doing something you don't believe is right.\" Channel Dame Goodall: Tell us about a moment when you engaged in a difficult conversation or encountered someone with an opinion or perspective that was different from your own. How did you find common ground?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 3A to 3F)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "nerdy-side",
+      "prompt": "Celebrate your nerdy side.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 3A to 3F)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "embracing-difference",
+      "prompt": "\"It's not easy being green…\" was the frequent refrain of Kermit the Frog. How has difference been a part of your life, and how have you embraced it as part of your identity, outlook, or sense of purpose?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants (choose one of prompts 3A to 3F)",
+      "choose": {
+        "group": "B",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Evidence of funding for one academic year (3 terms) uploaded to OVIS to request the Form I-20: Dartmouth financial aid award letter (issued within the last 3 months) and/or bank statement(s) dated within the last 3 months, sponsor bank statement plus a letter stating the relationship, amount and length of support, approved loan letter, home-government or organization support letter, or investment accounts worth at least 1.5x the required amount",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "OVIS must see financial documentation for the estimated cost of attendance for one academic year before a Form I-20 can be produced. The student first accepts the offer of admission, then requests the I-20 in iDartmouth. Undergraduates receiving financial aid must upload their most recent aid award letter; if it does not cover total program costs, proof of funding for the remainder is needed. Not acceptable: documents older than 3 months, income or salary statements, tax documents, funds that are not immediately accessible, real estate or car, life insurance statements, loan applications. No application-stage proof of finances is published for first-years; the CSS Profile / aid application is a separate matter. Spouse and child dependents need extra funds (amounts on the page). No dates are published.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.dartmouth.edu/glossary-term/writing-supplement",
+      "title": "Dartmouth Admissions: Writing Supplement (Class of 2031 prompts, updated July 22, 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://ovis-intl.dartmouth.edu/coming-dartmouth/undergraduates/pre-arrival-information",
+      "title": "Dartmouth OVIS: Pre-Arrival Information (Evidence of Funding for F-1 Students)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "All three prompts are required of all applicants; prompts 2 and 3 are choose-one groups (group A = prompt 2, A or B; group B = prompt 3, A to F). The OVIS page carries no explicit year, so the funding rules are the current published ones, not confirmed for fall 2027 specifically."
+}

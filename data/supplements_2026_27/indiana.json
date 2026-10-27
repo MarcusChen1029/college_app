@@ -1,0 +1,35 @@
+{
+  "slug": "indiana",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Proof of funding for one year uploaded to Atlas: bank statements (preferred), plus a Declaration of Financial Support form signed by each family or private sponsor with that person's bank statements, and scholarship, loan or government sponsor letters where they apply",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "The Office of International Services (OIS) cannot issue an immigration document until sufficient proof of funds is received, though the documents do not affect the admission decision. IU encourages submitting them as soon as possible after acceptance and publishes no separate date. Documents must show the specific amount and currency (not necessarily US dollars), be in English and dated no more than 12 months before classes begin. Not accepted: chartered accountant statements, payroll or expected income, tax statements, property assessments, non-liquid assets, insurance policies, bank statements without currency amounts. The enrollment deposit and intent to enroll are due May 1.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://bloomington.iu.edu/admissions/apply/application-faqs.html",
+      "title": "IU Bloomington Admissions: Application FAQs (Is an essay required?)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://bloomington.iu.edu/admissions/apply/freshman/",
+      "title": "IU Bloomington Admissions: Freshman Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://bloomington.iu.edu/admissions/apply/international/financial-documentation.html",
+      "title": "IU Bloomington Admissions: Financial Documents for International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: 'none' confirmed; the FAQ (source 1) answers 'Is an essay required?' by saying Common App applicants may choose from any of the Common App essay prompts, and only Apply IU applicants write the IU-specific essay. IU Bloomington has no school-specific supplement for Common App applicants: the FAQ and the freshman page say applicants submit one of the Common App essay prompts and list no other writing. Applicants who use Apply IU instead must answer the IU-specific essay (200-400 words: 'describe your academic and career plans and any special interest ... that you are eager to pursue as an undergraduate at Indiana University', with an optional account of obstacles overcome); this is not listed as a supplement because Common App users do not write it. The pages do not state a cycle year; they are current (2026 content). Honors college and program-specific applications were not checked."
+}

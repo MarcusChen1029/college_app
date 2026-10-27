@@ -1,0 +1,101 @@
+{
+  "slug": "princeton",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "academic-ab",
+      "prompt": "As a research institution that also prides itself on its liberal arts curriculum, Princeton allows students to explore areas across the humanities and the arts, the natural sciences, and the social sciences. What academic areas most pique your curiosity, and how do the programs offered at Princeton suit your particular interests?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "A.B. degree applicants or those who are undecided",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "academic-bse",
+      "prompt": "Please describe why you are interested in studying engineering at Princeton. Include any of your experiences in or exposure to engineering, and how you think the programs offered at the University suit your particular interests.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "B.S.E. degree applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "your-voice-lived-experience",
+      "prompt": "Princeton values community and encourages students, faculty, staff and leadership to engage in respectful conversations that can expand their perspectives and challenge their ideas and beliefs. As a prospective member of this community, reflect on how your lived experiences will impact the conversations you will have in the classroom, the dining hall or other campus spaces. What lessons have you learned in life thus far? What will your classmates learn from you? In short, how has your lived experience shaped you?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "your-voice-service",
+      "prompt": "Princeton has a longstanding commitment to understanding our responsibility to society through service and civic engagement. How does your own story intersect with these ideals?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "short-1",
+      "prompt": "What is a new skill you would like to learn in college?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-2",
+      "prompt": "What brings you joy?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-3",
+      "prompt": "What song represents the soundtrack of your life at this moment?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    }
+  ],
+  "intl_finance": null,
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.princeton.edu/apply/princeton-specific-questions",
+      "title": "Princeton Admission: Princeton-specific Questions (2026-27 application cycle)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.princeton.edu/apply/international-students",
+      "title": "Princeton Admission: For International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The first Your Voice question asks for 400-500 words (minimum 400); word_limit holds the 500 maximum. The three 'More About You' questions are each 50 words or fewer; the page says to respond to each. Princeton also requires a graded written paper, which is not an essay prompt and is not recorded here. For international first-years, Princeton's admission pages (source 2) only describe need-blind admission and need-based aid and list no proof-of-funds or I-20 step, so intl_finance is null. Princeton's Davis International Center pages (davisic.princeton.edu) would hold the post-admission I-20 and financial documentation steps, but they returned HTTP 403 to every fetch and could not be read, so nothing is recorded. Check the Davis International Center before relying on this."
+}

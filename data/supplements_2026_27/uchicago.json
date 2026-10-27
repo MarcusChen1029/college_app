@@ -1,0 +1,143 @@
+{
+  "slug": "uchicago",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-uchicago",
+      "prompt": "How does the University of Chicago, as you know it now, satisfy your desire for a particular kind of learning, community, and future? Please address with some specificity your own wishes and how they relate to UChicago.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "extended-1-how-thoughts-eat",
+      "prompt": "Food for thought: How do thoughts eat?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "extended-2-artistic-practice",
+      "prompt": "The James Webb Space Telescope, launched in 2021, utilized origami-inspired techniques to compactly store and deploy its sunshield in space. Choose an artistic practice and use its principles to propose an elegant solution to a problem.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "extended-3-mixed-metaphor",
+      "prompt": "Sometimes metaphors get mixed up. For one reason or another, one could say, “we'll burn that bridge when we get there” or “the world is your china shop”. Make up your own mixed metaphor. Explain how it could make sense, be understood, or even applied.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "extended-4-olympic-event",
+      "prompt": "The Olympics have long celebrated the pinnacle of human athletic achievement. But what if they expanded to honor the mundane? Imagine a new Olympic event built around an everyday activity like speed dishwashing or competitive grocery bagging. How is it scored, officiated, and judged? Why is it a worthy addition?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "extended-5-mistaken-acronym",
+      "prompt": "AI: Allen Iverson. NASA, or the North American Saxophone Alliance. Share a potentially confounding, comedic, or captivating example of MIA (Mistaken Identity of Acronym) and tell us its backstory.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "extended-7-choose-your-own",
+      "prompt": "And, as always… the classic choose your own adventure option! In the spirit of adventurous inquiry, choose one of our past prompts (or create a question of your own). Be original, creative, thought provoking. Draw on your best qualities as a writer, thinker, visionary, social critic, sage, citizen of the world, or future citizen of the University of Chicago; take a little risk, and have fun!",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documentation for the I-20 / DS-2019 request in the OIA Portal: your program's financial coversheet plus bank or financial statement(s) for personal funds, or a sponsor letter with the sponsor's bank statement, an award letter or a scholarship letter",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "The I-20 request is opened by the admitting program after you accept the offer of admission, together with a passport bio page and the unconditional admission letter. Funds must meet or exceed the total cost of attendance on the financial coversheet (first academic year). Statements must be dated within the past 6 months, show your or your sponsor's name, the current balance and the currency, be brief summaries (not multi-page histories), and be translated if not in English. Funds not in your name need the sponsor letter template plus the sponsor's statement. Not accepted: property, insurance or retirement accounts, business value, credit card statements, proof of income. A complete request is issued within about 3 weeks. No date is published. Separately, international applicants who may need aid at any point must apply for need-based aid when they apply (Student Financial Aid Worksheet with supporting documents such as bank statements); that is the aid application, not the I-20 proof of funds.",
+    "source": 4
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://collegeadmissions.uchicago.edu/apply/essay/",
+      "title": "UChicago College Admissions: Essay Questions (introducing the 2026-2027 essay prompts)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://collegeadmissions.uchicago.edu/apply/application/required-materials/",
+      "title": "UChicago College Admissions: Required Materials (UChicago Supplement)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://collegeadmissions.uchicago.edu/apply/uchicago-admissions-faq/",
+      "title": "UChicago Admissions FAQ (essay length guidance)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://internationalaffairs.uchicago.edu/students/admitted-students/financial-documents-requirements",
+      "title": "UChicago Office of International Affairs: Financial Documents Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://internationalaffairs.uchicago.edu/students/admitted-students/requesting-an-i-20-or-ds-2019",
+      "title": "UChicago Office of International Affairs: Requesting an I-20 or DS-2019",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The UChicago Supplement (Common App or Coalition) has Question 1 (required, Why UChicago) and Question 2, an extended essay where the applicant chooses one of the listed options. The essay page is rendered by JavaScript; prompt text was read from the page's own published content data (the page's video caption says 2026-2027 prompts). The page numbers the options 1 to 5 and 7; no option 6 is published, so none is listed. The 'Inspired by ...' attributions are left out. UChicago states there are no strict word limits (FAQ guideline: about 500-700 words for the extended essay and 300-600 for the Why UChicago essay, rough guidelines only), so word_limit is null; the Common App or Coalition platform may show its own limit. The I-20 steps (source 5) are written in general terms for admitted students and are not undergraduate-specific."
+}

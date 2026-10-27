@@ -1,0 +1,76 @@
+{
+  "slug": "babson",
+  "cycle": "2025-26",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-business",
+      "prompt": "The Babson education prepares students to think and act entrepreneurially, preparing them for careers across a variety of industries including business, entrepreneurship, social innovation, and more. Tell us about your interest in studying business, including any relevant experience you have or what your career aspirations are, and how you feel Babson can help prepare you to make an impact in your chosen field of business.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "inclusive-community",
+      "prompt": "A defining element of the Babson experience is learning and thriving in an equitable and inclusive community with a wide range of perspectives, experiences, and interests. Please share something about your background, lived experiences, or viewpoint(s) that speaks to: (1) your commitment to promoting access, connection, or understanding across differences; and/or (2) how you will contribute to and learn from Babson's collaborative community.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial documents showing funds for at least one year of total program expenses (bank letter on letterhead or bank statements), uploaded with the Form I-20 request in myISSS; a Financial Coversheet is recommended when funds come from more than one account, and a Sponsor Statement is recommended for the visa appointment",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Form I-20 requests for undergraduates (after deposit)",
+        "date": null,
+        "note": "Processed on a rolling basis starting each February after the deposit; the I-20 is issued electronically within two weeks of a complete request"
+      }
+    ],
+    "notes": "The required amount is shown inside the Form I-20 request and equals one year of total expenses including living costs. Babson only reviews funding documents submitted through the Form I-20/DS-2019 request. The Sponsor Statement is not required for the I-20 request. No fixed calendar date is published.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.babson.edu/undergraduate/admission/advice-for-high-school-students/how-to-write-a-college-essay/",
+      "title": "Babson: How to Write a College Essay (The Babson Writing Supplements; updated October 28, 2025)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.babson.edu/glavin-office/isss/the-student-visa-process/evidence-of-funding/",
+      "title": "Babson Glavin Office ISSS: Evidence of Funding",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.babson.edu/glavin-office/isss/the-student-visa-process/",
+      "title": "Babson Glavin Office ISSS: The Student Visa Process",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://undergraduatecatalog.babson.edu/application-checklist",
+      "title": "Babson Undergraduate Catalog: Application Checklist",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://www.babson.edu/undergraduate/admission/advice-for-high-school-students/how-to-make-a-video-essay-for-your-college-application/",
+      "title": "Babson: How to Make a Video Essay for Your College Application (August 11, 2026)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The only page that prints Babson's exact two prompts is dated 'Updated October 28, 2025' (the 2025-26 cycle), so the cycle is set to 2025-26 and the app should label these as last year's. Babson's current checklist (source 4) still says applicants submit two supplemental essays, and an August 11, 2026 Babson article (source 5) confirms the business-interest question is still the one offered as a video, but no 2026-27 page reprints the second prompt, so it could have changed. The first prompt may be answered with a 500-word essay or a one-minute video; the second must be an essay. Both are required. The I-20 timing comes from the ISSS Student Visa Process page (source 3)."
+}

@@ -1,0 +1,160 @@
+{
+  "slug": "uc-santa-barbara",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": "uc-piq",
+  "prompts": [
+    {
+      "key": "piq-1-leadership",
+      "prompt": "Describe an example of your leadership experience in which you have positively influenced others, helped resolve disputes or contributed to group efforts over time.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-2-creativity",
+      "prompt": "Every person has a creative side, and it can be expressed in many ways: problem solving, original and innovative thinking, and artistically, to name a few. Describe how you express your creative side.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-3-talent",
+      "prompt": "What would you say is your greatest talent or skill? How have you developed and demonstrated that talent over time?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "activity",
+      "source": 1
+    },
+    {
+      "key": "piq-4-education",
+      "prompt": "Describe how you have taken advantage of a significant educational opportunity or worked to overcome an educational barrier you have faced.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "piq-5-challenge",
+      "prompt": "Describe the most significant challenge you have faced and the steps you have taken to overcome this challenge. How has this challenge affected your academic achievement?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "piq-6-academic-subject",
+      "prompt": "Think about an academic subject that inspires you. Describe how you have furthered this interest inside and/or outside of the classroom.",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "piq-7-community",
+      "prompt": "What have you done to make your school or your community a better place?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "piq-8-strong-candidate",
+      "prompt": "Beyond what has already been shared in your application, what do you believe makes you a strong candidate for admissions to the University of California?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 4
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of funding for the first year (bank account statements translated to English, proof of guaranteed loans, financial award letters, or other official documents outlining liquid assets), uploaded in UCSBGlobal with the New I-20 Request, plus a Sponsor Endorsement Form if applicable",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "OISS says that after you are admitted and have returned your Statement of Intent to Register (SIR), you show first-year funding. Bank statements must show the account holder (you or your sponsor), a balance at least equal to the funding you indicated, be no more than 90 days old, and be signed or stamped by the bank. Life insurance and property values are not accepted. UCSB lists an undergraduate cost estimate of $80,000 for the year (an estimate; OISS verifies the first year only). Processing takes 4 weeks once everything is approved. No date is published.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/personal-insight-questions.html",
+      "title": "UC Admissions: Personal insight questions (first-year; 4 of 8, max 350 words each)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf",
+      "title": "UC Admissions: Presenting yourself on the first-year UC application 2026-27 (counselor guide)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://oiss.ucsb.edu/student/newly-admitted-students/newly-admitted-f-1-students/f-1-visa-financial-requirements",
+      "title": "UCSB OISS: F-1 Visa Financial Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://oiss.ucsb.edu/student/newly-admitted-students/newly-admitted-f-1-students",
+      "title": "UCSB OISS: Newly Admitted F-1 Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://admissions.sa.ucsb.edu/freshman-eligibility-selection",
+      "title": "UCSB Admissions: Freshman Eligibility and Selection",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The 8 Personal Insight Questions are the same for all UC campuses (answer 4, max 350 words each); text copied from the UC Admissions page (source 1), which does not print a cycle year. Source 2 (UC counselor guide titled 2026-27) confirms the same format for the 2026-27 application: respond to 4 of the 8 questions, 350 words maximum per response. The UC application also has optional Additional comments boxes (source 2); they are not essay prompts and are not listed here. Source 5 says the College of Letters and Science needs no supplemental application except an audition for dance or music performance, while the College of Creative Studies requires a supplemental application reviewed by Creative Studies faculty; the Creative Studies written requirements (a letter of intent that varies by major) were not captured, so they are not in this file. Source 4 describes the I-20 request steps after the SIR."
+}

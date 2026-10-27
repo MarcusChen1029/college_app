@@ -1,0 +1,89 @@
+{
+  "slug": "pomona",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "academic-interest",
+      "prompt": "What draws you to the subject(s) you selected as potential major(s)? If undecided, share more about one of your academic passions or interests.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "short-community",
+      "prompt": "Reflecting on a community that you are a part of, what values or perspectives from that community would you bring to Pomona?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "short-experience",
+      "prompt": "Describe an experience you had outside the classroom that changed the way you think and/or how you engage with your peers. What was that experience and what did you learn from it?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "short-described-by",
+      "prompt": "Choose any person or group of people in your life and share how they would describe you.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial verification for the I-20: Pomona financial aid award letter, bank statements, etc. (the F-1 request forms are in a Pomona-hosted Box folder)",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Pomona's immigration page lists 'Financial verification (Pomona financial aid award letter, bank statements, etc.)' among the documents to bring to the visa interview, and says the I-20 is created once the ISSS Office has received and approved the documents requested through the F-1 form. The International Applicant FAQ also says foreign nationals attending a U.S. high school 'must submit International Student Certification of Finances prior to enrollment'.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.pomona.edu/admissions/paths-apply",
+      "title": "Pomona Admissions: Paths to Apply (Pomona College-Specific Essay Prompts)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.pomona.edu/international-student-scholar-services/incoming-students/immigration-process",
+      "title": "Pomona ISSS: International Students, The Immigration Process",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.pomona.edu/admissions/apply/international-applicants/international-applicant-faqs",
+      "title": "Pomona Admissions: International Applicant FAQs",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The Paths to Apply page does not name an entry year or cycle for the first-year prompts; it is the live page as of 2026-10-27 and is listed as 2026-27 on that basis. The short-response essay is one choice of three (250 words). The experience prompt is filed as 'other' because it fits no listed category closely. International financial aid (CSS Profile or Pomona's own form, tax documents) is not I-20 proof of funds and is not recorded here. The content of Pomona's F-1 request form (Box folder) and any required balance could not be read. The FAQ's Certification of Finances line sits in the 'attends a U.S. high school' row of its table, so it is unclear whether students at schools outside the U.S. must also submit it; ask the ISSS Office (iss@pomona.edu)."
+}

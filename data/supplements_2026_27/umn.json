@@ -1,0 +1,58 @@
+{
+  "slug": "umn",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Certification of Finances form (online; a notice and link appear in the Application Tracker). No bank statement or other financial documents are wanted with it. If admitted and enrolling, ISSS collects financial documents with the I-20 request: recent bank statement or letter, sponsor letter or approved loan letter, no more than 3 months old, liquid funds covering one year of expenses.",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "Certification of Finances form",
+        "date": null,
+        "note": "Submit as soon as possible; the page says scholarship review begins in January. Page text was written for the previous cycle."
+      },
+      {
+        "label": "Undergraduate New Student I-20 Request (ISSS)",
+        "date": null,
+        "note": "As soon as possible but no later than August 1 (year not stated; the page read was written for fall 2026 entry)"
+      }
+    ],
+    "notes": "The form is asked of applicants who are on or need a temporary visa; the page says it is not legally required, but without it the committee may be unable to finalize an admission decision or assess scholarship eligibility.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.tc.umn.edu/apply/application-checklist/application-checklist-freshman",
+      "title": "UMN Twin Cities Admissions: Application Checklist for Freshman (fall 2027 applications)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.tc.umn.edu/apply/application-checklist/application-checklist-international-freshman",
+      "title": "UMN Twin Cities Admissions: Application Checklist for International Freshman",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.tc.umn.edu/certification-finances-form",
+      "title": "UMN Twin Cities Admissions: Certification of Finances Form",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admissions.tc.umn.edu/admissions/international-admission/checklist-admitted-international-freshman",
+      "title": "UMN Twin Cities Admissions: Checklist for Admitted International Freshman",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://isss.umn.edu/new-students/request-your-i20-ds2019/financial-documentation-policies",
+      "title": "UMN ISSS: Financial Documentation Policies",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Supplements 'none': the freshman checklist (source 1, which says the fall 2027 application launched Aug 1) lists Essay: 'Not required for admission' and no other written questions. Program-specific items (for example honors or music) were not researched. UMN's sites block automated requests, so pages were read from Internet Archive copies of the official URLs (source 1: 2026-08-20; source 2: 2026-04-22; source 3: 2026-05-11; source 4: 2026-05-11; source 5: 2026-09-11). The Certification of Finances page and the admitted-student checklist were written for the previous cycle (they mention scholarship letters by the end of March 2026 and the fall 2026 August 1 I-20 request date); 2026-27 dates were not confirmed. Source 4 gives the I-20 request step; source 5 gives the 3-month, liquid-funds document rules; source 2 confirms the Certification of Finances is part of the international freshman checklist."
+}

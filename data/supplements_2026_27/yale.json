@@ -1,0 +1,151 @@
+{
+  "slug": "yale",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "academic-areas",
+      "prompt": "As of this moment, what academic areas seem to fit your interests or goals most comfortably? Please indicate up to three.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "academic-topic",
+      "prompt": "Tell us about a topic or idea that excites you and is related to one or more academic areas you selected above. Why are you drawn to it? (200 words or fewer)",
+      "word_limit": 200,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "short-take-teach-write-create",
+      "prompt": "If you could teach any college course, write a book, or create an original piece of art of any kind, what would it be?",
+      "word_limit": null,
+      "char_limit": 200,
+      "required": true,
+      "applies_to": "Common Application or Coalition Application applicants",
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-take-grow",
+      "prompt": "What is one aspect of yourself that you hope to grow or develop during college?",
+      "word_limit": null,
+      "char_limit": 200,
+      "required": true,
+      "applies_to": "Common Application or Coalition Application applicants",
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "short-take-not-included",
+      "prompt": "What is something about you that is not included anywhere else in your application?",
+      "word_limit": null,
+      "char_limit": 200,
+      "required": true,
+      "applies_to": "Common Application or Coalition Application applicants",
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "essay-opposing-view",
+      "prompt": "Reflect on a time you discussed an issue important to you with someone holding an opposing view. Why did you find the experience meaningful?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Common Application or Coalition Application applicants",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "essay-community",
+      "prompt": "Reflect on your membership in a community to which you feel connected. Why is this community meaningful to you? You may define community however you like.",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Common Application or Coalition Application applicants",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "essay-personal-experience",
+      "prompt": "Reflect on an element of your personal experience that you feel will enrich your college. How has it shaped you?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Common Application or Coalition Application applicants",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Evidence of funding for the first year (for example a bank statement or a scholarship or financial aid award letter) uploaded to the OISS New Student Survey; Yale College students do not complete a financial certification form.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "OISS New Student Survey and funding documents (OISS emails the survey link 3 to 5 days after you accept the offer, starting mid to late March)",
+        "date": null,
+        "note": "OISS says there is no hard OISS deadline, but the I-20 is issued only after the survey and funding documents arrive, and then typically takes 7 to 10 business days."
+      }
+    ],
+    "notes": "Financial aid is separate and is not the I-20 proof of funds: international Early Action aid documents are due 2026-12-01 and Regular Decision aid documents on February 15 (source 5). The F-1 visa page https://oiss.yale.edu/getting-started/new-students/applying-for-your-us-visa/applying-for-the-f-1-student-visa gives a bank statement or an award letter as examples of funding evidence to bring to the visa interview.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.yale.edu/essays",
+      "title": "Yale Admissions: Essays (Yale-specific essay topics for the 2026-27 admissions cycle)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.yale.edu/posts/2026-08-17-application-update-2026-2027",
+      "title": "Yale Admissions: Application Update 2026-2027",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://oiss.yale.edu/getting-started/new-students/applying-for-your-us-visa",
+      "title": "Yale OISS: Applying for Your U.S. Visa (Submit Your Financial Certification)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://oiss.yale.edu/getting-started/new-students/faqs-for-new-students",
+      "title": "Yale OISS: FAQs for New Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://finaid.yale.edu/apply/prospective",
+      "title": "Yale Student Financial Services: Prospective Students (2027-28 priority deadlines)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The QuestBridge application answers only the two Short answers; the Short takes and the Yale essay are for Common App or Coalition applicants (source 1). The 'Why Yale' question was dropped this cycle (source 2). The Short takes limit is stated as no more than 200 characters (approximately 35 words); only the character limit is recorded. Source 4 confirms there is no hard OISS deadline and that Yale College students upload funding evidence to the New Student Survey. OISS gives no fixed date for funding documents. The aid deadlines in the intl_finance notes were read on the page for the 2027-28 academic year."
+}

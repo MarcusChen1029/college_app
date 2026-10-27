@@ -1,0 +1,53 @@
+{
+  "slug": "unc",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Official bank certification or statement (plus Affidavit of Financial Support and the sponsor's bank certification if a parent or other sponsor pays), uploaded to the ISSS Portal with the I-20 request",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Upload all I-20 documents to the ISSS Portal (admitted for the fall semester)",
+        "date": null,
+        "note": "The ISSS page says by July 1; it does not state the year. Spring admits: November 1."
+      }
+    ],
+    "notes": "Funds must cover tuition, fees, living expenses and health insurance (first year). Each document must be an official bank document (signed and stamped, or an official electronic monthly statement), in English, issued within the last 6 months, and show the account holder's full name, the account type, and the current balance and currency. Funds must be liquid. Screenshots and unofficial printouts are not valid. Other accepted sources: university award letter, external scholarship letter, education loan approval letter. Processing takes about three weeks after all forms are submitted. The ISSS page carries a notice that the DHS Duration of Status rule may change the process.",
+    "source": 4
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.unc.edu/short-essays-removed-from-carolinas-2026-2027-application/",
+      "title": "UNC Undergraduate Admissions: Short essays removed from Carolina's 2026-2027 application",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.unc.edu/application-prompts-for-2025-2026/",
+      "title": "UNC Undergraduate Admissions: Application Prompts for 2026-2027",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.unc.edu/apply/types-of-applications/first-year/",
+      "title": "UNC Undergraduate Admissions: First-Year Application",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://isss.unc.edu/financials/",
+      "title": "UNC ISSS: Financial Documentation Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://isss.unc.edu/newstudent/step3/",
+      "title": "UNC ISSS: Step 3: Request a Form I-20/DS-2019",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Supplements 'none' is based on source 1 (UNC announces it is removing the two short answer supplemental questions from the 2026-2027 application; the Common App essay, activities and additional information remain), source 2 (lists only the seven Common App essay prompts, no UNC-specific questions) and source 3 (lists no short-answer questions). The 'UNC supplement' named on source 3 is only for reporting college or university courses and grades, not an essay. Honors Carolina is an optional interest section of the application (source 3); no Honors Carolina written prompt for first-year applicants was found on any official UNC page, so none is recorded. The URL of source 2 still contains '2025-2026' but the page itself is titled 'Application Prompts for 2026-2027'. Source 1 shows no publication date."
+}

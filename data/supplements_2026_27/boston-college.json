@@ -1,0 +1,97 @@
+{
+  "slug": "boston-college",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "tradition",
+      "prompt": "Strong communities are sustained by traditions. Boston College's annual calendar is marked with both long-standing and newer traditions that help shape our community. Tell us about a meaningful tradition in your family or community. Why is it important to you, and how does it bring people together or strengthen the bonds of those who participate?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants except Human-Centered Engineering applicants (who answer prompt 5)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "conversation-partner",
+      "prompt": "The late BC theology professor, Father Michael Himes, argued that a university is not a place to which you go, but instead, a \"rigorous and sustained conversation about the great questions of human existence, among the widest possible circle of the best possible conversation partners.” Who has been your most meaningful conversation partner, and what profound questions have you considered together?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants except Human-Centered Engineering applicants (who answer prompt 5)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "single-story",
+      "prompt": "In her July 2009 Ted Talk, “The Danger of a Single Story,” Chimamanda Ngozi Adichie warned viewers against assigning people a “single story” through assumptions about their nationality, appearance, or background. Discuss a time when someone defined you by a single story. What challenges did this present and how did you overcome them?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants except Human-Centered Engineering applicants (who answer prompt 5)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "fourth-be",
+      "prompt": "Boston College’s Jesuit mission highlights “the three Be’s”: be attentive, be reflective, be loving – core to Jesuit education (see A Pocket Guide to Jesuit Education). If you could add a fourth “Be,” what would it be and why? How would this new value support your personal development and enrich the BC community?",
+      "word_limit": 400,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All applicants except Human-Centered Engineering applicants (who answer prompt 5)",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "hce-common-good",
+      "prompt": "One goal of a Jesuit education is to prepare students to serve the Common Good. Human-Centered Engineering at Boston College integrates technical knowledge, creativity, and a humanistic perspective to address societal challenges and opportunities. What societal problems are important to you and how will you use your HCE education to solve them?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Human-Centered Engineering (HCE) applicants only (answer this instead of prompts 1-4)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Boston College Certification of Finances form (link sent to admitted international students)",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Boston College does not offer need-based aid to non-citizens/non-permanent residents, so international students must be prepared to finance the full cost. The I-20 is not mailed until the student verifies they can meet the costs listed on the form. BC accepts only this form from admitted international students; applicants without an admission decision should not send it. 2026-27 published costs: tuition $75,075, mandatory fees $1,354, room and board $18,834, total $95,978 (plus a one-time $670 first-year orientation charge and $50 student ID charge; books and incidentals estimated at $3,250). No submission date is published on the page.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.bc.edu/bc-web/admission/apply.html",
+      "title": "Boston College Admission: Apply (Supplemental Questions 2026-27)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.bc.edu/bc-web/admission/apply/international.html",
+      "title": "Boston College Admission: International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Prompts 1-4 are a choose-one set of 400 words; the page does not state a word limit for prompt 5 (HCE), so word_limit is null. The page does not say whether the Common App Additional Information or other items apply; Carroll School of Management has no separate undergraduate first-year supplement listed on this page. The international page gives no date for the Certification of Finances."
+}

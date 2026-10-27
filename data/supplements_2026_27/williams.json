@@ -1,0 +1,29 @@
+{
+  "slug": "williams",
+  "cycle": "2026-27",
+  "supplements": "optional_only",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "optional-academic-paper",
+      "prompt": "Williams does not require a writing supplement, but we recognize that some students feel they do their best writing in an academic context rather than a personal narrative. If you would like to submit an example of your academic writing, you may share a 3- to 5-page paper (excluding citations) written in the last year. The paper may be creative or analytical, can cover any topic and need not be graded or include teacher comments. Please include a description of the assignment or prompt, and do not submit lab reports.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": null,
+  "sources": [
+    {
+      "n": 1,
+      "url": "http://web.archive.org/web/20260624001641/https://www.williams.edu/admission-aid/how-to-apply/first-year/",
+      "title": "Williams College: First-Year application (Internet Archive capture 2026-06-24)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "williams.edu blocks automated fetches, so this comes from the Internet Archive capture of the official first-year page dated 2026-06-24; the capture does not name the entry year, but it gives Regular Decision January 5 and Early Decision November 15. The only extra writing is an optional 3- to 5-page academic paper (an upload, not a question), submitted through any application platform (Common App, Apply Coalition with Scoir, or QuestBridge); no prompted short answers appear on the page. No international financial-document requirement was read: Williams International Student Services (iss.williams.edu, Obtain a U.S. Visa) covers the I-20 funds proof, but that page is blocked to automated fetches and has no archive copy, and the older first-year international timeline page that mentions a Certificate of Finance could not be read either. Check iss.williams.edu directly."
+}

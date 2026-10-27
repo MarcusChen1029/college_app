@@ -1,0 +1,92 @@
+{
+  "slug": "amherst",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "option-a-1",
+      "prompt": "\"Hope and curiosity — these are qualities that are the foundation of what Amherst College means, of everything that we do here. Curiosity is at the core of a liberal arts education — a spirit of inquiry that shapes not only what our students do in the classroom, but also how they learn from and about each other.\" — Michael A. Elliott, 20th President of Amherst College, address at Amherst College’s 203rd Commencement\nWhat does curiosity mean to you? How do you experience curiosity in your own life?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "option-a-2",
+      "prompt": "\"We seek an Amherst made stronger because it includes those whose experiences can enhance our understanding of our nation and our world. We do so in the faith that our humanity is an identity forged from diversity, and that our different perspectives enrich our inquiry, deepen our knowledge, strengthen our community, and prepare students to engage with an ever-changing world.\" — from the Trustee Statement on Diversity and Community\nIn what ways could your unique experiences enhance our understanding of our nation and our world?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "option-a-3",
+      "prompt": "\"We are working together to build a community that makes room for both true disagreement and true connection, one that practices the kind of recognition and robust negotiation that the everyday life of democracy requires, and one that explicitly prepares our students to work for the greater good in their professional and personal endeavors.\" — Presidential Priorities: Serving the Greater Good\nTell us about a time that you engaged with a viewpoint different from your own. How did you enter that engagement, and what did you learn about yourself from it?",
+      "word_limit": 350,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "option-b",
+      "prompt": "Submit a graded paper from your junior or senior year that best represents your writing skills and analytical abilities. We are particularly interested in your ability to construct a tightly reasoned, persuasive argument that calls upon literary, sociological or historical evidence. You should not submit a laboratory report, journal entry, creative writing sample or in-class essay. Also, if you have submitted an analytical essay in response to the \"essay topic of your choice\" prompt in the Common Application or Apply Coalition with Scoir writing section, you should not select Option B.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Final financial aid award details or a complete certificate of finances on file with the Office of Financial Aid (needed before the I-20 can be issued). Admitted F-1 students also upload a copy of the passport biographical page.",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "I-20 issuance",
+        "date": null,
+        "note": "I-20 issuance begins each year in May as financial aid information is finalized; most I-20s are issued 1-2 weeks after the passport and finances steps are complete. No fixed submission date is published."
+      }
+    ],
+    "notes": "The newly admitted students page lists this step after you commit (deposit or deposit waiver). The certificate-of-finances form itself and its exact contents were not read for this cycle; the only form found in search was a 2021-22 version. Amherst is need-blind and meets full need for international students who apply for aid; international aid applicants use the CSS Profile (that is a financial aid step, not the I-20 proof of funds).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.amherst.edu/admission/apply/firstyear/writingsupplement",
+      "title": "Amherst College: Writing Supplement Options (2026-27, Fall 2027 entry)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.amherst.edu/offices/immigration-services/international-student-resources/newly-admitted-students/how-to-get-a-u.s.-student-visa",
+      "title": "Amherst College Immigration Services: How to Get a US Student Visa",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The writing supplement is required of all applicants; they choose exactly one of Option A, B or C. Option A is shown here as the three quotation prompts the page lists (350 words maximum); Option B (a graded paper, no word limit stated) is listed in the same choose-one group. Option C (reuse the Access to Amherst writing supplement) is only for A2A applicants and is not listed as a prompt. The financial-document wording comes from the Immigration Services page, which is not dated for a specific cycle."
+}

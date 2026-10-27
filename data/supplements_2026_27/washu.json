@@ -1,0 +1,52 @@
+{
+  "slug": "washu",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-major",
+      "prompt": "Please tell us what you are interested in studying at college and why.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Affidavit of Financial Support (AOFS) plus certified bank statements in English showing funds for the first year's tuition and living expenses and a comparable amount for each later year, with statements of the amounts and sources of funds. Applicants who say they will not apply for need-based aid must also submit the International Financial Information form in the WashU Pathway.",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "International Financial Information form (applicants not applying for need-based aid)",
+        "date": null,
+        "note": "Required for the application to be complete; no separate date is published, so it follows the application deadline for your decision plan."
+      },
+      {
+        "label": "I-20 financial statements (enrolling students)",
+        "date": null,
+        "note": "WashU requires these before a Form I-20 can be processed; no fixed date is published."
+      }
+    ],
+    "notes": "The page says to get two original copies (with original signatures) of both the sponsor's letter and the bank letter, and keep a copy for the visa, because some embassies verify them. Financial aid offers may be deducted from the amount to be certified. International students are eligible for need-based aid only if they apply during the admission process (CSS Profile due with the aid deadline for each plan); that is a financial aid step, not the I-20 proof of funds.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.washu.edu/how-to-apply/whats-new/",
+      "title": "WashU Undergraduate Admissions: What's New for fall 2027 (supplemental materials)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.washu.edu/how-to-apply/first-year-international-applicants/",
+      "title": "WashU Undergraduate Admissions: First-Year International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "WashU no longer has an optional writing supplement for fall 2027; the only college-specific written item is the 250-word response above (the same question is listed on the first-year international page). The page does not say whether the limit is a maximum or exact, only '250-word response'. Separate from the application: priority scholarship applications (Signature Scholar Programs: Danforth, Ervin, Rodriguez) include a 250-word short answer in the WashU Pathway after the application is submitted (priority date December 16, 2026), and the Nemerov Writing Scholars Program takes a writing portfolio; the scholarship question text is not published on the pages read, so it is not listed. An optional video supplement also exists. Application deadlines: Early Action and Early Decision I November 2, Early Decision II and Regular Decision January 4."
+}

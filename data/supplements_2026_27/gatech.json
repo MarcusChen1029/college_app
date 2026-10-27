@@ -1,0 +1,65 @@
+{
+  "slug": "gatech",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "music-technology-essay",
+      "prompt": "Your essay should cover the following:\nPlease describe in detail your experience in music performance, composition, arranging, and/or theory. List primary instrument(s) or voice part and include any ensembles where you have had public performances.\nPlease describe in detail all of your direct experiences in music technology.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants whose primary major is Music Technology (supplemental form linked on the application status page after submitting; due by the document deadline of the round applied)",
+      "choose": null,
+      "category": "activity",
+      "source": 5
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial certification form plus supporting financial documents (such as a bank statement), uploaded in iStart with the I-20/DS-2019 request",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Georgia Tech Office of International Education must receive the completed undergraduate I-20 request by (Fall term: July 1; Spring: November 1; Summer: April 1)",
+        "date": null,
+        "note": "The page gives month and day only, no year; the date is not computed here."
+      }
+    ],
+    "notes": "Order of steps per the OIE page: Undergraduate Admissions admits the student, the student pays the deposit, Admissions starts the I-20 request in iStart, the student gets an email from OIE, then logs in to iStart and uploads financial documents if necessary. Documents must show liquid assets, show the date of issuance and be less than 6 months old when the I-20 is issued; if the funds are not in a personal bank account in the student’s name, sponsor verification (signature on the certification form) is required. Funding must be shown for at least one academic year.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.gatech.edu/first-year/personal-essays",
+      "title": "Georgia Tech Undergraduate Admission: Personal Essays",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://isss.oie.gatech.edu/isss/obtaining-initial-student-georgia-tech-i-20-or-ds-2019",
+      "title": "Georgia Tech OIE: Obtaining an Initial Student Georgia Tech I-20 or DS-2019",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://isss.oie.gatech.edu/content/oie-financial-document-requirements",
+      "title": "Georgia Tech OIE: Financial Document Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://admission.gatech.edu/first-year/major-selection",
+      "title": "Georgia Tech Undergraduate Admission: Major Selection",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://music.gatech.edu/bsmt-portfolio-requirements",
+      "title": "Georgia Tech School of Music: Portfolio Requirements for the B.S. in Music Technology",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Source 1 (“Below are the essay questions for 2026-27 applications”) lists only the Common App essay (one of seven Common App prompts) plus the optional Common App Responsibilities and Circumstances and Additional Information sections, and no Georgia Tech short answer, so supplements is none. News reports in July 2026 (not used as a source) say Georgia Tech dropped its supplemental short answer; the official page is consistent with that. Source 3 gives the document-age, sponsor and one-year funding rules for all international students and no undergraduate-specific amount. Source 2 says documents are uploaded “if necessary”, so it is not stated whether every admitted student must upload them. Fact-check 2026-10-27: changed 'none' to 'required' because the Major Selection page (source 4) says students selecting Music Technology as their primary major are required to submit a portfolio and essay, and the School of Music page (source 5) gives the essay content; no word limit is stated for the essay (the 250-word limit there is for describing portfolio samples). All other first-year applicants still have no Georgia Tech-specific essay (source 1, re-read 2026-10-27). The Music Technology page carries no cycle label."
+}

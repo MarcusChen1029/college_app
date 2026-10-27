@@ -1,0 +1,94 @@
+{
+  "slug": "duke",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-duke",
+      "prompt": "What is your impression of Duke as a university and community, and why do you believe it is a good match for your goals, values, and interests? If there is something specific that attracts you to our academic offerings in Trinity College of Arts and Sciences or the Pratt School of Engineering, or to our co-curricular opportunities, feel free to include that, too.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All first-year applicants",
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "communities",
+      "prompt": "We all belong to communities defined by place, faith, family, culture, interests or shared experience. Tell us about a community that has shaped who you are, any way it has set you apart, and what you’ve learned from being part of it that you hope to bring to Duke.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "All first-year applicants",
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "viewpoints-experiences",
+      "prompt": "We believe a wide range of viewpoints and experiences is essential to maintaining Duke’s vibrant living and learning community. Please share anything in this context that might help us better understand you and your potential contributions to Duke.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": false,
+      "applies_to": "Optional; applicants may answer one of the three optional prompts",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "difference-of-opinion",
+      "prompt": "Meaningful dialogue often involves respectful disagreement. Provide an example of a difference of opinion you’ve had with someone you care about. What did you learn from it?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": false,
+      "applies_to": "Optional; applicants may answer one of the three optional prompts",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "last-excited-about",
+      "prompt": "What’s the last thing that you’ve been really excited about?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": false,
+      "applies_to": "Optional; applicants may answer one of the three optional prompts",
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "intellectual",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Certificate of Financial Responsibility returned after accepting the offer; Duke Visa Services web form with proof of funding and a copy of the passport photo page, submitted to the admitting school for the Form I-20",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Duke does not require any financial forms as part of the admissions process. I-20 forms for incoming students are issued only after the student has accepted the offer of admission and returned a completed Certificate of Financial Responsibility. Foreign citizens must apply for need-based aid in the original first-year application to be eligible at any point. The exact funding rules are on Duke Visa Services' Funding Guidelines page, which was not read here. No dates are published.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.duke.edu/apply/",
+      "title": "Duke Undergraduate Admissions: Apply (Essays, 2026-27 cycle; International Applicants)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://visaservices.duke.edu/visa-categories/f-1-visa-classification/",
+      "title": "Duke Visa Services: F-1 Visa Classification",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The Duke Embark interest section says applicants who indicate interest complete a 150-word response, but the prompt text is not published on the Apply page, so it is not included. The Certificate of Financial Responsibility wording comes from the Apply page (source 1); the web form and proof-of-funding checklist from Visa Services (source 2). The Common App personal essay is separate."
+}

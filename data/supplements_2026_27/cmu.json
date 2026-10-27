@@ -1,0 +1,56 @@
+{
+  "slug": "cmu",
+  "cycle": "2025-26",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "passion-field",
+      "prompt": "Most students choose their intended major or area of study based on a passion or inspiration that’s developed over time — what passion or inspiration led you to choose this area of study?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "successful-college-experience",
+      "prompt": "Many students pursue college for a specific degree, career opportunity or personal goal. Whichever it may be, learning will be critical to achieve your ultimate goal. As you think ahead to the process of learning during your college years, how will you define a successful college experience?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "application-as-a-whole",
+      "prompt": "Consider your application as a whole. What do you personally want to emphasize about your application for the admission committee’s consideration? Highlight something that’s important to you or something you haven’t had a chance to share. Tell us, don’t show us (no websites please).",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Scanned financial documents (bank statement from a deposit account or bank letter on letterhead, approved loan or scholarship letters) uploaded in the MyOIE portal with the New Student Initial Document Request e-form, to get the I-20",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "Documents must be in English (a certified translation is needed if not; self-translations are not accepted), dated no more than six months before submission, and state the account holder's name, the account type and the currency. Investments and a sponsor's annual salary letter count at 50% of value. Property, jewelry, paystubs, Provident Fund accounts (unless a specific amount is stated for education) and unapproved loans are not accepted. OIE aims to issue the I-20 within 4 weeks of receiving everything, and also needs confirmation of enrollment from Undergraduate Admission. No published date or required dollar amount was found on the pages read.",
+    "source": 4
+  },
+  "sources": [
+    { "n": 1, "url": "https://www.cmu.edu/admission/admission/admission-consideration", "title": "CMU Undergraduate Admission: Admission Consideration (Essays)", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements", "title": "CMU Undergraduate Admission: Requirements", "accessed": "2026-10-27" },
+    { "n": 3, "url": "https://www.cmu.edu/oie/pre-arrival-and-settling-in/students/instructions/index.html", "title": "CMU Office of International Education: Pre-Arrival Instructions & Information", "accessed": "2026-10-27" },
+    { "n": 4, "url": "https://www.cmu.edu/oie/pre-arrival-and-settling-in/students/instructions/financial-support.html", "title": "CMU Office of International Education: Document Your Financial Support", "accessed": "2026-10-27" },
+    { "n": 5, "url": "https://www.cmu.edu/oie/myoie/initial-instructions.html", "title": "CMU Office of International Education: E-Form Instructions for New Students", "accessed": "2026-10-27" }
+  ],
+  "notes": "The prompt text comes from the Admission Consideration page (source 1), which still gives the testing policy for fall 2026 and was last updated in May 2026, so it is treated as the 2025-26 wording. The requirements page (source 2, updated 2026-08-24) still says the Common App Writing Supplement has three short-answer questions, and the CMU catalog says fall 2027 first-year applicants apply by Common App, but no page showing the exact 2026-27 prompts was found; the app should label these as last year's and the student should check the CMU questions inside the Common App. The page does not say whether the three answers are required (the requirements page lists the Writing Supplement as a required application material) and gives no differences by college. Page also mentions entering a Schoolhouse.world portfolio URL in the CMU questions of the Common App; that is not a written prompt and is not included."
+}

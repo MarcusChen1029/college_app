@@ -1,0 +1,53 @@
+{
+  "slug": "wpi",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Certification of Finances form, plus a bank statement or bank letter showing proof of funding and a copy of the passport information page. WPI asks for this from international applicants who are not applying for financial aid, only once they are accepted and will enroll; International House then emails instructions to submit financial documents and a passport copy, and issues the I-20 after receipt. Applicants applying for aid submit only the CSS Profile at application.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Certification of Finances and financial documents for the I-20",
+        "date": null,
+        "note": "No date found. WPI says the form is required only for students who are accepted and will enroll."
+      }
+    ],
+    "notes": "The latest copy of the form found (source 3) is the 2025-2026 version with a $86,746 estimated first-year total; the 2026-27 form was not seen. Source 4 (WPI FAQ) gives the I-20 step.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://web.archive.org/web/20260607201417/https://www.wpi.edu/admissions/undergraduate/apply/how-to",
+      "title": "WPI Admissions: How to Apply to WPI (Internet Archive capture 2026-06-07)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://web.archive.org/web/20261011123912/https://www.wpi.edu/admissions/tuition-aid/applying-for-aid/international-students",
+      "title": "WPI Admissions: Financial Aid for International Students (Internet Archive capture 2026-10-11)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://web.archive.org/web/20250226101434/https://www.wpi.edu/sites/default/files/2023-11/WPI_certification_of_finances.pdf",
+      "title": "WPI 2025-2026 Certification of Finances form (Internet Archive capture 2025-02-26)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://web.archive.org/web/20260213225123/https://www.wpi.edu/faq/What-do-I-need-to-do-if-Im-an-international-student",
+      "title": "WPI FAQ: What do I need to do if I am an international student? (Internet Archive capture 2026-02-13)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://web.archive.org/web/20260511234201/https://www.wpi.edu/admissions/undergraduate/apply/international-students",
+      "title": "WPI Admissions: International Students (Internet Archive capture 2026-05-11)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "wpi.edu blocks automated fetches, so Internet Archive copies of the official pages were read. WPI's how-to page (source 1) lists the Common App, fee, transcripts and two recommendations but says nothing about essays or supplements either way; the Common App 2026-27 requirements grid did not show a usable writing-supplement flag, so supplements are recorded as unknown, not none. Check WPI's Common App member page. Source 5 confirms international applicants seeking aid file the CSS Profile by the admissions deadline."
+}

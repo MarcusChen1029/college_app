@@ -1,0 +1,102 @@
+{
+  "slug": "rice",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "academic-interests",
+      "prompt": "Please explain what draws you to the academic areas you selected above and how you hope to explore them at Rice University.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "rice-experience",
+      "prompt": "Based upon your exploration of Rice University, what elements of the Rice experience appeal to you?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "community-residential-college",
+      "prompt": "The Residential College System is at the heart of Rice student life and is heavily influenced by the particular cultural traditions and unique life experiences each student brings. What life experiences and/or unique perspectives are you looking forward to sharing with fellow Owls in the residential college system?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "community-change-agents",
+      "prompt": "Rice is strengthened by its diverse community of learning and discovery that produces leaders and change agents across the spectrum of human endeavor. What perspectives shaped by your background, experiences, upbringing, and/or cultural identity inspire you to join our community of change agents at Rice?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": {
+        "group": "A",
+        "pick": 1
+      },
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "architecture-why",
+      "prompt": "Why are you determined to study architecture? Please explain your motivation and describe how your past experiences have led you to apply to the Rice School of Architecture in particular. Have you had an opportunity outside of school—such as an internship, building project, architecture summer program or other experience—that strengthened your interest in the field? If so, please describe how the experience further compels you to pursue a career in architecture.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Rice School of Architecture applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    },
+    {
+      "key": "architecture-place",
+      "prompt": "Describe a building, place, or city that you have encountered and found especially compelling. What specifically captured your attention, and why? In your response, reflect on how this experience has shaped your understanding of architecture and the built environment.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Rice School of Architecture applicants",
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "International Student Financial Statement (Rice Admission Student Portal) with bank statements or affidavits showing total funds, plus any scholarship award letters",
+    "when": "with_application",
+    "deadlines": [],
+    "notes": "Required of all international applicants, whether or not they request financial aid. Bank statements or affidavits must support total funds available toward the total cost of attendance; tax documents and proof of income are not accepted. If available funds are below $101,634, the applicant must explain how the rest will be covered. Documents must be in English and in U.S. dollars. The form is in the portal once the application is submitted, and the application is not complete until the statement and documents are submitted. The page publishes no separate date for it.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.rice.edu/apply/first-year-domestic-applicants",
+      "title": "Rice Admission: First-Year Domestic Applicants (Rice Supplement, Essay Prompts 2026-2027)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admission.rice.edu/apply/first-year-international-applicants",
+      "title": "Rice Admission: First-Year International Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Prompts 1 and 2 are required for everyone; prompt 3 is a choice of two (500 words). The two architecture questions are listed under Architecture Essay Prompts on the Rice page; the page does not say whether both are required, so both are recorded as required for School of Architecture applicants. QuestBridge applicants get the same prompts, but their prompt 3 is marked optional. The Rice Box is an image upload, not a written prompt, and is not recorded. The Shepherd School of Music and Art portfolio requirements are not essays. The international page still shows 2020-2021 dates in its deadline tables; its essay prompts are labelled 2026-2027 and match the domestic page. The $101,634 figure is the page's number as read on 2026-10-27."
+}

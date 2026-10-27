@@ -1,0 +1,53 @@
+{
+  "slug": "pepperdine",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "why-us-faith",
+      "prompt": "Pepperdine is a Christian university where all are welcomed and encouraged to challenge each other in the pursuit of truth. Students, faculty, and staff members from all backgrounds participate in conversations of faith inside and outside of the classroom. Considering that Pepperdine is a Christian university, why are you interested in attending and how would you contribute to conversations of faith on campus?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "International Student Data (ISD) form in the OISS portal with evidence of financial support: bank statement or bank letter (checking, savings, or certificate of deposit), scholarship letter, approved loan letter with affidavit, or sponsor letter with affidavit and bank statements; documents must cover the first year of expenses and be no more than 6 months old",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "ISD form for the I-20, fall semester",
+        "date": null,
+        "note": "July 15 (year not stated on the page)"
+      }
+    ],
+    "notes": "Pepperdine issues the I-20 after the student submits the Admission Response Form and the $750 Tuition Prepayment (Deposit); OISS portal login follows the deposit. Investments, income tax or salary statements, credit card lines of credit, property documents and promissory notes are not accepted. Documents must be in English (an unofficial translation with the original is accepted).",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admission.pepperdine.edu/apply/undergraduate/first-year-applicants.htm",
+      "title": "Pepperdine Admission: First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.pepperdine.edu/international-students/future-students/undergraduate/firstyear.htm",
+      "title": "Pepperdine International Students: First-Year Undergraduate Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.pepperdine.edu/international-students/new-students/undergraduate/",
+      "title": "Pepperdine International Students: New International Undergraduate Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The prompt is a required written response to a Pepperdine question in the Common App (alongside the Pepperdine Questions and Pepperdine Writing Supplement); the page gives the length as (300-500 words), recorded as word_limit 500 (the 300 is a minimum). The first-year page does not state its cycle; it carries a 2026 copyright and is treated as current. The new-international-undergraduate page mentions a July 15, 2026 transcript deadline, so it may still describe fall 2026 entry; the financial-document rules are likely unchanged but confirm with the Office of International Student Services. That page states the six-month rule in two ways ('dated no less than 6 months' and 'cannot be more than 6 months old'); the second is recorded."
+}

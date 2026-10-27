@@ -1,0 +1,81 @@
+{
+  "slug": "gwu",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "uhp-outside-major",
+      "prompt": "With small classes and a dedicated faculty, the University Honors Program (UHP) embraces the ideals of a liberal arts education. Within the UHP, students take classes in many different academic fields (philosophy, science, history, art, social science, etc.) and hone their critical thinking skills. Explain why, as a member of the UHP, you would value the opportunity to engage with topics outside your major field(s) of study.",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "University Honors Program applicants (the program requires two additional essays)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "uhp-community",
+      "prompt": "The UHP represents a community of scholars at GW. First-year UHP students live and take classes together on the Mount Vernon Campus. Upper-level UHP students remain connected to our community for the remainder of their time at GW through courses, faculty mentoring, advising, research, an optional Foggy Bottom housing opportunity, and our many co-curricular/social activities. How do you see yourself contributing to and/or benefiting from this community as a member of the UHP?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "University Honors Program applicants (the program requires two additional essays)",
+      "choose": null,
+      "category": "community",
+      "source": 1
+    },
+    {
+      "key": "bamd-impact",
+      "prompt": "George Washington University's location in Washington, DC places students at the intersection of medicine, science, policy, innovation, and public service. Imagine yourself 10 years after graduating from the B.A./B.S.-M.D. program. What impact do you hope to have on your patients, your profession, or society? Describe how specific opportunities at GW and in the DC metropolitan area would help you develop the experiences, relationships, and perspectives needed to achieve that vision.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "B.A./B.S.-M.D. Program applicants (open only to U.S. citizens, U.S. permanent residents and Canadian citizens; Regular Decision only, program deadline November 15)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Financial Certificate (signed by the student and the sponsor), plus a bank statement or bank letter from the sponsor (same name as on the certificate), plus a valid passport. Submitted by email to the international recruitment team (intadm@gwu.edu) or through the admissions portal.",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "The I-20 page is addressed to students who have submitted their declaration of intent and enrollment deposit; GW starts the I-20 only when all documents are received and says it typically takes two to three weeks. Bank statement: less than one year old, in English, liquid funds (checking, savings or deposit account); not accepted: stocks, investments, investment portfolios, real estate, crypto/virtual currency, bonds. If the sponsor is a government agency or scholarship, no sponsor signature is needed. The I-20 page says the bank letter must cover the total tuition on the certificate for the four years, and that self-sponsored students must show ability to pay all four years; the International Student Aid page says proof of one year of study is required, and the 2026 certificate form says a self-support bank statement must document sufficient cash for all years of study and a sponsor statement must cover at least 1 year. The 2026 form lists 2026-27 expenses totalling $97,351 (tuition $72,770). No date is published; the enrollment deposit date was not confirmed from an admissions page.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://undergraduate.admissions.gwu.edu/academics/special-interest-programs",
+      "title": "GW Undergraduate Admissions: Special Interest Programs (University Honors Program and B.A./B.S.-M.D. essays)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://undergraduate.admissions.gwu.edu/completing-your-i-20",
+      "title": "GW Undergraduate Admissions: Completing Your I-20",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://undergraduate.admissions.gwu.edu/sites/g/files/zaxdzs4676/files/2026-03/2026_financial_certificate.pdf",
+      "title": "GW Office of Undergraduate Admissions: 2026 Financial Certificate for International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://undergraduate.admissions.gwu.edu/financial-aid/international-student-aid",
+      "title": "GW Undergraduate Admissions: International Student Aid",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://undergraduate.admissions.gwu.edu/apply/first-year-applicants",
+      "title": "GW Undergraduate Admissions: First Year Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "GW's own pages do not print the prompts of its general Writing Supplement. Source 5 says an optional Writing Supplement is accepted ('those who do not submit it will not be penalized') and that the Common Application essay is a choice of one of two prompts, but the prompt wording is only shown inside the application, so no general supplement prompt is recorded here (only third-party sites showed it and they were not used). The listed prompts apply only to applicants to the University Honors Program and the B.A./B.S.-M.D. program, as printed on source 1, which carries no cycle year (live page on 2026-10-27, recorded as 2026-27). Corcoran Scholars needs a portfolio or audition via Slideroom, no essay. The You Are Welcome Here Scholarship (international applicants, due January 31, requires CSS Profile) asks for an essay or video response in the admissions portal; its prompt text and any limit were not published on the page. The university's website blocked automated page requests, so pages were read in a browser; the Financial Certificate was read as a PDF."
+}

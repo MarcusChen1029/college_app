@@ -1,0 +1,41 @@
+{
+  "slug": "syracuse",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Visa/Financial Support Information Form (in the applicant portal) plus a bank statement or letter from a bank showing proof of liquid funds, with a copy of the passport. Company-sponsored applicants submit a sponsorship letter stating the U.S. dollar amount.",
+    "when": "with_application",
+    "deadlines": [],
+    "notes": "F-1 applicants must show funds for one full academic year. Students applying for Spring/Fall 2027 must show sufficient funds per the University's current estimate of $100,526 for the 2026-27 academic year; the 2027-28 estimate is to be finalized in Spring 2027. Bank statements may be photocopies, must be in English, must clearly state the currency (USD not required), and the print date must be within a year of the start of the term applied for; screenshots are not accepted; tax returns or income statements do not count. Write name, date of birth and program on every uploaded document. Applicants may be conditionally admitted without an I-20 until English and/or funding proof is received.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.syracuse.edu/admissions-aid/application-process/undergraduate/first-year/requirements/",
+      "title": "Syracuse University: First-Year Admission Requirements",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.syracuse.edu/admissions-aid/application-process/international/undergraduate/requirements/",
+      "title": "Syracuse University: International Undergraduate Admission Requirements (Financial Requirements)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.syracuse.edu/admissions-aid/application-process/international/first-year-checklist/",
+      "title": "Syracuse University: Application Checklist for First-Year International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.syracuse.edu/admissions-aid/application-process/undergraduate/college-specific-requirements/",
+      "title": "Syracuse University: College-Specific Requirements and Standardized Test Policy",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "No supplemental essay prompts could be confirmed. The official first-year requirements, the international checklist and the college-specific requirements pages list the Common App or Coalition application, transcript, senior-year grade report, counselor evaluation, one academic recommendation, and portfolios/auditions for some programs, and none mention a writing supplement or any additional essay. None of them states that there is no supplement either, and the Common App member page was not read, so this is recorded as unknown rather than none. The international checklist (source 3) lists the Visa/Financial Support Information Form as a step of completing the application; no calendar deadline for it was found."
+}

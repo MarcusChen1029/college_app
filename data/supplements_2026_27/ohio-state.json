@@ -1,0 +1,70 @@
+{
+  "slug": "ohio-state",
+  "cycle": "2026-27",
+  "supplements": "optional_only",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "morrill-scholarship",
+      "prompt": "The Morrill Scholarship Program encourages students to lead with character while making a positive impact on their communities. In what ways have your life experiences and/or endeavors prepared you to be an active Morrill Scholar who will champion scholarship, leadership, and civic engagement while investing in Ohio State’s culture of service reflective of its land grant mission? Please answer fully, and when possible, provide specific examples.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": false,
+      "applies_to": "Columbus campus first-year applicants who check the box to be considered for the Morrill Scholarship Program",
+      "choose": null,
+      "category": "community",
+      "source": 2
+    }
+  ],
+  "intl_finance": {
+    "document": "Ohio State Visa Request Form (one signed copy per funding source: sponsor-supported or self-supported) plus required support documents such as bank statements, sponsorship or award letters, uploaded in the Admissions Uploader together with a copy of the passport picture page",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Visa Request Form, support documents and passport picture page (autumn 2027 admits)",
+        "date": null,
+        "note": "Published as 'the first week of June' for autumn admits; no exact date given."
+      },
+      {
+        "label": "Acceptance fee ($100, nonrefundable); financial support documents are reviewed once it is paid",
+        "date": null,
+        "note": "Published as May 1; the page gives no year."
+      }
+    ],
+    "notes": "Do not submit before being admitted and accepting; earlier uploads are not reviewed. The I-20 or DS-2019 is released after the acceptance fee, passport picture page and sufficient financial documentation are received. The Visa Request Form lists estimated expenses of $69,688 for one year (autumn 2025 through spring 2026 figures, subject to change).",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://undergrad.osu.edu/apply/freshmen-columbus/common-app",
+      "title": "Ohio State Undergraduate Admissions: The Common Application (Columbus first-years)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://hscounselors.osu.edu/web_resources/HSCounselors/prod/emails/COL-EM-CORP-CNSLR-Recruit2027-AdmissionsNews-Sept-OH.html",
+      "title": "Ohio State Admissions News for counselors (2026-2027 cycle), Morrill Scholarship Program essay prompt",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://undergrad.osu.edu/apply/international-freshmen/after-you-are-admitted",
+      "title": "Ohio State Undergraduate Admissions: After you are admitted, international freshmen",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://undergrad.osu.edu/visa-request.pdf",
+      "title": "Ohio State Visa Request Form for international students admitted to Ohio State",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://honors-scholars.osu.edu/scholars/apply",
+      "title": "Ohio State Honors and Scholars Center: Scholars Apply",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Ohio State's own Common App questions are checkboxes and menus (preferred plan, major, honors or scholars interest, Morrill interest); the only extra written prompt is the Morrill Scholarship Program essay, which appears only after checking the Morrill box (source 1). The Common App personal statement is required but is not a college-specific supplement. No word limit is published for the Morrill essay. University Honors and Ohio State Scholars interest is indicated on the Common App with no essay (source 5); Stamps Eminence uses a separate application that was not collected. The Morrill prompt text comes from Ohio State's counselor newsletter, not from the Common App itself. Engineering and Biomedical Science program essays apply after admission or on separate applications and were not collected. Source 4 gives the dollar figures cited in intl_finance notes."
+}

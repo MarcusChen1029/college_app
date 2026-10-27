@@ -1,0 +1,35 @@
+{
+  "slug": "brandeis",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Certification of Finances for International Students (through the DEISconnect portal) plus supporting financial documentation of the family's first-year contribution; applicants applying for aid submit the CSS Profile plus supporting financial documentation instead",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "Certification of Finances (non-aid applicants), submitted through DEISconnect",
+        "date": null,
+        "note": "Listed among the requirements for international first-year applicants; no separate date is published. Admission deadlines on Brandeis's deadlines page: Early Decision I and Early Action Nov. 2; Early Decision II and Regular Decision Jan. 15 (CSS Profile and FAFSA on the same dates)."
+      }
+    ],
+    "notes": "Examples of supporting documents named: statements of earnings from employers, certification of finances from banks or other financial institutions, or tax returns if available. The page does not give the I-20 amount.",
+    "source": 1
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.brandeis.edu/admissions/apply/application-process/first-year.html",
+      "title": "Brandeis Admissions: First-Year Applicants (International Applicants tab)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.brandeis.edu/admissions/apply/application-process/index.html",
+      "title": "Brandeis Admissions: Application Process and Deadlines",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Could not confirm Brandeis-specific essay prompts. Brandeis's official first-year requirements list (Common Application or Coalition Application, fee, transcripts, school report, recommendations, optional test scores, ED agreement) names no Brandeis supplemental essay, but no page read says outright that there is none, so 'none' was not claimed. The Common App Brandeis questions section was not accessible. Check the Brandeis section inside the Common App. brandeis.edu returns 403 to default clients; pages were read with a browser-style user agent. The Brandeis Online Writing Assessment is a post-admission placement test, not an application essay. The international tab does not print a cycle year; deadlines on the deadlines page mention Spring Admission for the Jan. 2027 semester, consistent with the current cycle."
+}

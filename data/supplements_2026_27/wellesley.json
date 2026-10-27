@@ -1,0 +1,47 @@
+{
+  "slug": "wellesley",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "wellesley-specific",
+      "prompt": "Wellesley students actively seek ways to build bridges and to change the world for the better. Tell us about an experience working with and alongside people of different backgrounds and/or perspectives from your own. Why was this important to you, and what lessons from this will you bring with you to Wellesley?",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Certification of Finances (COF) form, with supporting financial documents, uploaded to the MyWellesley Entering Student Checklist, plus a copy of the passport ID and expiration page. Wellesley issues the Form I-20 after it receives these and verifies financial support.",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "COF and supporting documents for the I-20",
+        "date": null,
+        "note": "No date is published. The page says the I-20 is sent by express mail within one week of receiving the completed documents."
+      }
+    ],
+    "notes": "The COF is downloaded from the checklist on Workday and must be signed at the bottom of page 4. Scanned copies are enough; keep the originals for the visa interview. The list of which supporting documents are accepted is on the COF itself and was not read. This text comes from an Internet Archive capture of the Slater International Center page dated 2024-10-13, which is the newest copy available; it was not re-confirmed for 2026-27. Separately, international applicants are prompted to complete a Financial Aid Intent Form after applying (a financial aid step, not the I-20 proof of funds).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "http://web.archive.org/web/20260617220406/https://www.wellesley.edu/admission-aid/apply/first-year-applicants",
+      "title": "Wellesley College: First-Year Applicants (Internet Archive capture 2026-06-17; page covers entry in fall 2027)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "http://web.archive.org/web/20241013160313/https://www1.wellesley.edu/international/entering/applying_for_a_visa",
+      "title": "Wellesley College Slater International Center: Applying For a Visa (Internet Archive capture 2024-10-13)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: word_limit set to null. The 400-word figure came only from a search-engine summary; the live page returned HTTP 403 / a bot check to curl, WebFetch and the browser pane (not bypassed), and the Internet Archive was offline or rate-limited, so no official page showing the limit could be read. The supplement deadlines mentioned below are likewise unverified. wellesley.edu blocks automated fetches, so the prompt text comes from the Internet Archive capture of the official first-year page dated 2026-06-17 (it refers to entry in fall 2027). That capture gives the prompt but no word count for the Wellesley-specific essay. The 400 limit (the page reportedly says 250 to 400 words) was reported by a search-engine summary of the live official page, not read directly, so verify it. The personal essay is 250 to 650 words. Search results also reported the supplement is due two days after the application (Early Decision I application November 1, supplement November 3; Early Decision II January 1 and January 3; Regular Decision January 8 and January 10); the archived page lists application dates only (November 1, January 5, January 8), so confirm dates on the live site."
+}

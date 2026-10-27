@@ -1,0 +1,59 @@
+{
+  "slug": "umd",
+  "cycle": "2026-27",
+  "supplements": "none",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Certification of Finances (proof of funds for one year of expenses), submitted after admission and enrollment confirmation. ISSS accepted documents: current bank statement dated within the past 3 months showing account holder name, account number, type and balance; a Letter of Sponsorship (sponsor outside the U.S.) or Form I-134 (sponsor in the U.S.) for sponsors.",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "UMD's international applicants page (source 6) says supporting international documents are only needed if admitted. The admissions pages give no submission deadline; admission may be cancelled if required materials are not received. The 3-month bank statement rule, sponsor documents and the limit of three funding sources uploaded come from the ISSS 'Proof of Financial Resources' page (source 4), written for admitted F-1/J-1 students in general, not only undergraduates.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.umd.edu/apply/freshman-applicants",
+      "title": "UMD Admissions: Freshman applicants (requirements, Common App or ApplyWeb)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.umd.edu/apply/essay-questions",
+      "title": "UMD Admissions: Essay Questions",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.umd.edu/apply/financial-certification",
+      "title": "UMD Admissions: Financial Certification",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://marylandglobal.umd.edu/global-learning-all/international-students-scholars/getting-started/international-students/admitted-f-1j-1-students/proof-financial-resources",
+      "title": "UMD ISSS: Proof of Financial Resources",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://admissions.umd.edu/apply/obtainingvisa",
+      "title": "UMD Admissions: Obtaining a Visa",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 6,
+      "url": "https://admissions.umd.edu/apply/international-applicants",
+      "title": "UMD Admissions: International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 7,
+      "url": "https://admissions.umd.edu/apply/application-faqs/freshman-application-faqs",
+      "title": "UMD Undergraduate Admissions: Freshman Application FAQs",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: 'none' confirmed for general applicants: the freshman page (source 1) lists one essay, the Essay Questions page (source 2) gives only the one-of-seven 650-word personal essay, and the FAQ (source 7) answers 'What essay questions will UMD use on the application?' only by pointing to that page; no UMD short-answer questions are published. Supplements 'none': the freshman requirements page (source 1; test-optional through the Spring and Fall 2027 cycles) lists one essay, an activities/awards list or resume, two recommendations, transcripts and the fee, and no additional written supplements (a School of Music application applies only to music applicants). The one required essay is the personal essay: UMD's Essay Questions page (source 2) asks applicants to answer one of seven prompts, 650 words maximum, with the question included at the start; the page names no cycle year. Those prompts are the personal statement, not a college-specific supplement, so they are not listed. Source 5 says Certification of Finances is for admitted students outside the U.S. and that Canadian citizens complete it without a visa. No official date was found; a 'June 1' recommendation seen in a search summary was not confirmed on a page and is not used."
+}

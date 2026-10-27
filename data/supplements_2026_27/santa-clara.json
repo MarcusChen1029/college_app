@@ -1,0 +1,59 @@
+{
+  "slug": "santa-clara",
+  "cycle": "2026-27",
+  "supplements": "optional_only",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "changemaker",
+      "prompt": "At Santa Clara University, we encourage our students to be creative, embrace challenges, and become changemakers. Think about an issue you care about and believe is important to address. This can be something happening in your local community or more globally. How can an SCU education help you prepare for and address this challenge?",
+      "word_limit": 300,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "SCU International Student Financial Resource Statement form (completed in the application status portal) plus uploaded supporting documents proving the funds claimed, covering the total cost of the first year of attendance",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "I-20 request packet (Fall term), which needs its own proof of funding",
+        "date": null,
+        "note": "SCU Global Engagement lists July 1 for the Fall quarter/semester; the page does not print the year."
+      }
+    ],
+    "notes": "The form appears in the application status portal only after the Common App is submitted, and supporting documents are uploaded when the form is submitted. Separately, the I-20 request (Global Engagement) requires official proof of funding: bank statements or bank letters in English with an issue date within three months of the request, covering at least one academic year. Loan documents, CDs maturing after the program start, stocks, retirement accounts and the Financial Resource Statement itself are not accepted for the I-20 proof of funding.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.scu.edu/admission/undergraduate/first-year-students/",
+      "title": "Santa Clara University Admission: First-Year Students (page last modified Oct 22, 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.scu.edu/admission/undergraduate/international-students/",
+      "title": "Santa Clara University Admission: International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.scu.edu/globalengagement/international-students/admitted-international-students/i-20-request-process/",
+      "title": "Santa Clara University Global Engagement: I-20 Request Process (page last modified Oct 22, 2026)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://www.scu.edu/admission/undergraduate/international-students/application-requirements/",
+      "title": "Santa Clara University Admission: International Application Requirements",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "SCU's page does not name the cycle; it is marked 2026-27 because the server shows it was modified Oct 22, 2026. The 150-300 word range is published; word_limit holds the maximum and the 150-word minimum is not stored. The essay is optional and can be submitted at any time through the SCU application portal. The international requirements page (source 4) lists the SCU Financial Resource Statement as required but links to a separate list of acceptable documents that was not readable as text. The international page still says test-optional for Fall 2025 only; that wording looks out of date and was not used."
+}

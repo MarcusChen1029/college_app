@@ -1,0 +1,65 @@
+{
+  "slug": "uconn",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "nursing-motivation",
+      "prompt": "Discuss the factors that have influenced your motivation to pursue a career in Nursing. Please include any activities, academics and/or life experiences that have shaped your interest in nursing.",
+      "word_limit": null,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Elisabeth DeLuca School of Nursing applicants",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Signed International Student Financial Declaration Form plus financial support documents (bank statements of the student or a sponsor, scholarship letter) covering the estimated first-year cost, uploaded to the ISSS Portal with the I-20/DS-2019 request",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "I-20/DS-2019 request with financial documents",
+        "date": null,
+        "note": "ISSS asks that the request be submitted at least one month before the semester starts; the F-1 process should begin immediately after the admission decision is released. No calendar date is published for fall 2027."
+      }
+    ],
+    "notes": "Prepare PDF or JPG copies only after you are admitted: passport copy, completed and signed Financial Declaration Form, financial support documents, current immigration documents if in the U.S., and the official UConn admission offer. Documents submitted with the application are not considered. The I-20 appears in the ISSS Portal after the documents and enrollment fee are received. Funding documents must show first-year costs, be issued within the last three months and in English (or with an official translation); bank statements must show the institution, account holder and currency (local currency allowed); sponsor or family funds must be liquid (savings or bank statements, certificates of deposit), not investment funds, retirement plans, salary confirmation or property; a personal sponsor completes Part 2 of the Financial Declaration form. The 2026-2027 estimated cost of attendance table is on the ISSS funding page.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admissions.uconn.edu/apply/first-year/instructions/",
+      "title": "UConn Admissions: First-Year Application Instructions (Fall 2027 applicants)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admissions.uconn.edu/apply/international/first-year/",
+      "title": "UConn Admissions: International First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://admissions.uconn.edu/apply/international/financial-visa/",
+      "title": "UConn Admissions: Financial & Visa Information for International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://international.global.uconn.edu/coa/",
+      "title": "UConn ISSS: Cost of Attendance (Funding Requirements)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 5,
+      "url": "https://international.global.uconn.edu/request-coe-form/",
+      "title": "UConn ISSS: New Students: Request Form I-20 or DS-2019",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "UConn's only general written item is the Common App or Coalition personal essay (250 to 650 words); the first-year instructions page (written for Fall 2027 applicants) lists no general supplement and says there is no separate supplement for Honors or scholarships. The only extra question found is the School of Nursing question, shown to Nursing applicants in the application; no word limit is stated. Fine Arts programs need a SlideRoom audition or portfolio rather than an essay. The Special Programs in Medicine and Law use separate supplemental applications with essays (recommended 600-800 words each) at a later stage and are not included. The funding pages (sources 3 to 5) are not dated to a cycle. The one-month timing comes from source 5."
+}

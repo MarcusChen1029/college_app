@@ -1,0 +1,47 @@
+{
+  "slug": "drexel",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "westphal-major-writing-supplement",
+      "prompt": "Reflect on your experiences, personal characteristics, and unique traits that have prepared you for the challenges and opportunities associated with your chosen major. How have these things shaped your goals, aspirations, and potential contributions to your field of study?",
+      "word_limit": 500,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to Architectural Studies, Architecture and Music Industry (Westphal College of Media Arts & Design)",
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "I-20/DS-2019 application through ISSS with a PDF scan of the passport photo page and proof of financial support covering the first academic year, uploaded to the DrexelOne portal: official bank letter/statement (typed, English, on bank letterhead or online printout showing bank name and address, no more than 4 months old, naming the account holder, currency and account type, with total available balance), official scholarship award letters, or approved educational loan letters",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "ISSS emails admitted students who have confirmed attendance with instructions to apply for the I-20 or DS-2019. Not acceptable: income/salary statements, tax returns, stocks/bonds/investments, pensions, retirement funds, life insurance, real estate, trust funds, credit card statements, time deposits maturing after the program begins, email-only scholarship offers, loan applications, unapproved or conditionally approved loans. Unacceptable or insufficient documents delay the I-20. The first-year instructions page only says proof of financial responsibility is required of non-citizens/non-permanent residents and points to ISSS. No fixed date is published; for winter-entry international students the deadlines page advises applying for the I-20 immediately upon confirming. International applicants must also submit the CSS Profile to be considered for institutional need-based aid (separate from proof of funds).",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://drexel.edu/admissions/apply/undergrad-instructions/first-year-instructions",
+      "title": "Drexel Admissions: First-Year Application Instructions (page modified 2026-10-26)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://drexel.edu/studentlife/student-success/international-student-support/new-international-students",
+      "title": "Drexel ISSS: New International Students (I-20/DS-2019 required documents)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://drexel.edu/admissions/apply/undergrad-instructions/first-year-instructions/application-deadlines",
+      "title": "Drexel Admissions: First-Year Application Deadlines (page modified 2026-06-26)",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "The instructions page lists no college-wide essay supplement beyond the Common App / Coalition essay (250-650 words); the only written supplement found is the 500-word Westphal one for Architectural Studies, Architecture and Music Industry applicants. Writers applying to Westphal programs must submit 8 to 12 pages of written work as a portfolio in Discover Drexel (not a prompt). Separate supplemental applications exist for BS+MD, BS+MS Psychology, Liberty Scholars, Honors, Maguire Scholars and STAR (via Discover Drexel after applying); their contents are not published on the instructions page and are not included. The instructions page shows no explicit year; cycle 2026-27 is inferred from its 2026-10-26 modification date and the Nov 15 / Jan 15 deadlines page."
+}

@@ -1,0 +1,70 @@
+{
+  "slug": "barnard",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "bold-question",
+      "prompt": "At Barnard, inquiry starts with asking bold questions about the world. What is one bold question on your mind and what about it piques your curiosity?",
+      "word_limit": 50,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    },
+    {
+      "key": "woman-lesson",
+      "prompt": "Barnard College is shaped by trailblazing women with a multitude of perspectives. Think of a woman - historical, fictional, contemporary, or personally significant - whose views or approach to problem-solving differ from your own, but who excels at bringing people together. What lesson from her approach would shape how you show up at Barnard both inside and outside of the classroom?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "community",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Form I-20 request form with supporting documentation, passport photo-page copy, and an Affidavit of Support from each sponsor (only if someone else supports you financially), sent as one PDF to iss@barnard.edu",
+    "when": "after_admission",
+    "deadlines": [
+      {
+        "label": "Form I-20 issued for the entering class",
+        "date": null,
+        "note": "Typically issued in late June, provided Barnard has received all necessary paperwork; no earlier submission date is published"
+      }
+    ],
+    "notes": "Barnard's current-student page states the I-20 is issued once the student is accepted and has provided financial documents showing the ability to pay for all expenses. The pages do not list required bank-statement format, minimum amount, or age of documents; the new-student page also contains out-of-date text (2022-2023 move-in dates), so confirm with iss@barnard.edu.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://barnard.edu/barnard-short-answer-questions",
+      "title": "Barnard Short Answer Questions (2026-2027 first-year)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://barnard.edu/new-full-degree-international-students",
+      "title": "Barnard: New Full-Degree International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://barnard.edu/international-students/current-full-degree-international-students",
+      "title": "Barnard: Current Full-Degree International Students",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 4,
+      "url": "https://barnard.edu/admissions/the-application-process",
+      "title": "Barnard: The Application Process, First-Year Applicants",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Both short answer questions are required and listed for 2026-2027 on the short answer page and on the application-process page. The prompt text omits the 'Required' label and the word-count parentheses, which are stored in word_limit. The second question is given as 200-250 words, so word_limit stores the 250 maximum."
+}

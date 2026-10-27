@@ -1,0 +1,41 @@
+{
+  "slug": "boston-university",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Confidential Statement for Financing Studies & Sponsorship Support Confirmation, with documents confirming available funds (for example an online deposit account statement or a signed bank letter)",
+    "when": "with_application",
+    "deadlines": [
+      {
+        "label": "Early Decision / Early Decision 2 applicants: financial documentation due by the application deadline",
+        "date": null,
+        "note": "BU's deadlines page lists Early Decision Nov. 2, Early Decision 2 Jan. 5 and Regular Decision Jan. 5 (no year printed). Regular Decision applicants are 'recommended' to submit with the application; no separate due date is published."
+      }
+    ],
+    "notes": "Documents must be current (within 12 months of the BU start date), written in English, readily available or liquid (stocks or non-liquid investments are not acceptable), and the bank account owner's name must match the sponsor signing the form. BU's example on the page reads 'for students enrolling in Fall 2026, financial documents must be dated between 9/2/2025 - 9/2/2026', so the Fall 2027 date window is not stated on the page; ask BU. Upload via the Common App (My Colleges, Other Information section of the Application Questions) or the MyBU Applicant Portal. For Early Decision applicants the Board of Admissions cannot start an academic review without them. A copy of the passport data page is also required.",
+    "source": 2
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.bu.edu/admissions/apply/first-year/",
+      "title": "Boston University Admissions: First-Year Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.bu.edu/admissions/apply/international/",
+      "title": "Boston University Admissions: International Applicants",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.bu.edu/admissions/apply/deadlines/",
+      "title": "Boston University Admissions: Important Deadlines",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "BU's official first-year page says Common App applicants must submit the personal statement and 'the Boston University supplemental essay', and that Kilachand Honors College consideration needs an additional required essay, so supplements is 'required'. The exact prompt text and word limits are not published on any official bu.edu page that could be read (the supplement lives inside the Common App), so prompts is empty rather than copied from third-party sites or earlier cycles. Check the BU section of the Common App for the 2026-27 wording. The Kilachand page (bu.edu/khc/admissions) confirms the honors essay but gives no prompt."
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "uw-seattle",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "interdisciplinary-honors",
+      "prompt": "We want to know why you are excited to push your education outside the areas of academic learning with which you are most comfortable. To help us understand your enthusiasm for exploring different ways of thinking and learning, tell us: What do you pay attention to? What is a unique lens through which you see the world? How does that connect to your current interests and future curiosities?",
+      "word_limit": 450,
+      "char_limit": null,
+      "required": true,
+      "applies_to": "Applicants to Interdisciplinary Honors (the Honors essay is part of the UW application; applying to Honors is optional)",
+      "choose": null,
+      "category": "intellectual",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Proof of funding for one academic year (bank statement or other financial verification issued within the last 6 months; scholarship, loan or sponsor letters if funds come from several sources) plus a copy of the passport photo page, uploaded in MyISSS to request the I-20",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "Request the I-20 in MyISSS (invitation comes 5-7 business days after the Enrollment Confirmation Deposit is processed)",
+        "date": null,
+        "note": "UW states there is no specific deadline, but a visa cannot be applied for until the I-20 is issued; allow up to 4 weeks of processing."
+      }
+    ],
+    "notes": "Proof of funding is needed for the I-20 request, not with the application. The page states $69,354 USD for students enrolling autumn quarter 2026, based on 2025-26 tuition; the figure for autumn 2027 entry was not found. Not accepted: documents older than 6 months, income or salary statements, funds not immediately accessible, non-liquid assets, life insurance statements, pension funds, tax returns.",
+    "source": 3
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://admit.washington.edu/academics/honors/",
+      "title": "UW Office of Admissions: Honors (2027 Honors application essay prompt)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://admit.washington.edu/apply/first-year/how-to-apply/writing-section/",
+      "title": "UW Office of Admissions: First-year writing section",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.washington.edu/newhuskies/must-do/international-students/",
+      "title": "University of Washington: International students immigration information",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Fact-check 2026-10-27: confirmed; the writing section page (source 2, re-read) requires only the Common App personal essay and lists the Common App challenges and circumstances and additional information sections as optional, with no UW short-response question. UW has no general college-specific supplement: the writing section (source 2) requires only the Common App personal statement (250-650 words) and lists the Common App challenges and circumstances (250 words) and additional information (300 words) sections as optional, so they are not recorded as prompts. Its linked prompt announcement is labeled 2025-2026 and the page footer shows 2026. The Honors page labels its prompt as the 2027 Honors application essay prompt; it is recorded here as the 2026-27 cycle (fall 2027 entry) on that basis."
+}

@@ -1,0 +1,87 @@
+{
+  "slug": "columbia",
+  "cycle": "2026-27",
+  "supplements": "required",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "reading-list",
+      "prompt": "List the titles of texts, resources and outlets that have contributed to your intellectual development outside of academic courses, including but not limited to books, journals, websites, podcasts, essays, plays, presentations, videos, museums and other content that you enjoy.",
+      "word_limit": 100,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "short_answer",
+      "source": 1
+    },
+    {
+      "key": "lived-experience",
+      "prompt": "Tell us about an aspect of your life so far or your lived experience that is important to you, and describe how it has shaped the way you would learn from and contribute to Columbia's multidimensional and collaborative environment.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    },
+    {
+      "key": "disagreement",
+      "prompt": "At Columbia, students representing a wide range of perspectives are invited to live and learn together. In such a community, questions and debates naturally arise. Please describe a time when you did not agree with someone and discuss how you engaged with them and what you took away from the interaction.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "adversity",
+      "prompt": "In college/university, students are often challenged in ways that they could not anticipate. Please describe a situation in which you have navigated through adversity and discuss how you changed as a result.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "challenge",
+      "source": 1
+    },
+    {
+      "key": "why-columbia",
+      "prompt": "Why are you interested in attending Columbia University? We encourage you to consider the aspect(s) that you find unique and compelling about Columbia.",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_us",
+      "source": 1
+    },
+    {
+      "key": "areas-of-study",
+      "prompt": "What attracts you to your preferred areas of study at Columbia College or Columbia Engineering?",
+      "word_limit": 150,
+      "char_limit": null,
+      "required": true,
+      "applies_to": null,
+      "choose": null,
+      "category": "why_major",
+      "source": 1
+    }
+  ],
+  "intl_finance": {
+    "document": "Bank letter or bank statement (no more than 3 months old) for personal or sponsor funds, or official approval letters for awards, loans or employer sponsorship, uploaded to ISSO to get the I-20 or DS-2019",
+    "when": "after_admission",
+    "deadlines": [],
+    "notes": "The ISSO checklist says a bank document must show the account holder's name (the sponsor's name if a sponsor pays), the current balance and the date. Foreign currencies do not need to be converted to US dollars. An English translation may be requested. Not accepted: pending or conditionally approved loans, investment portfolios, retirement accounts, rental income, real estate deeds, Chartered Accountant certifications, cryptocurrency, credit card balances, tax returns, salary statements, and letters about future earnings. Funds need not be frozen, but frozen funds must be accessible within one year.",
+    "source": 2
+  },
+  "sources": [
+    { "n": 1, "url": "https://undergrad.admissions.columbia.edu/apply/process/columbia-questions", "title": "Columbia Undergraduate Admissions: Columbia-Specific Application Questions (2026-2027)", "accessed": "2026-10-27" },
+    { "n": 2, "url": "https://isso.columbia.edu/sites/default/files/content/Forms/FundingDocumentsChecklist.pdf", "title": "Columbia ISSO: Student Funding Documents Checklist", "accessed": "2026-10-27" },
+    { "n": 3, "url": "https://isso.columbia.edu/content/applying-your-i-20ds-2019", "title": "Columbia ISSO: Applying for Your I-20 or DS-2019", "accessed": "2026-10-27" }
+  ],
+  "notes": "The Columbia page is headed 2026-2027 and was updated 2026-07-28. It says 'six short answer questions' at 150 words or fewer, but its list has six items in total, one of them the 100-word list question; all six are copied as shown. The page does not label any question required or optional, so all are marked required. The ISSO I-20 page (source 3) blocked direct download (Cloudflare 403); its content was only seen as a search-result excerpt, which says admitted students submit funding documents through the Compass portal, add a Sponsor Certification Form if an individual sponsor pays, and show funds for the first academic year plus a plan for later years. The exact dollar amount and any submission date were not confirmed; the excerpt pointed to an 'Estimated Expenses by School of Admission' page that was not read. Check the ISSO page for the amount and the dates. International applicants must say at application time that they want financial aid (undergraduate admissions international aid page); that is not part of the I-20 funding documents."
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "nyu",
+  "cycle": "2026-27",
+  "supplements": "unknown",
+  "shared_set": null,
+  "prompts": [],
+  "intl_finance": {
+    "document": "Proof of liquid funds covering at least one academic year (tuition and fees, living expenses, health insurance), in English and no older than 6 months; a sponsor (such as a parent) signs a Financial Support Agreement; income tax documents, cryptocurrency statements and paystubs are not accepted",
+    "when": "before_i20",
+    "deadlines": [
+      {
+        "label": "I-20/DS-2019 application to NYU Office of Global Services",
+        "date": null,
+        "note": "OGS states it has no deadline for the I-20 application and advises applying as soon as the documents are ready."
+      }
+    ],
+    "notes": "Read only through search-engine excerpts of the official page, because nyu.edu blocks automated fetching (HTTP 403). Confirm the wording, the one-year amount and the document list on the page before relying on them.",
+    "source": 1
+  },
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.nyu.edu/students/student-information-and-resources/student-visa-and-immigration/newly-admitted/before-you-arrive/get-a-us-visa/apply-for-an-i20-or-ds2019.html",
+      "title": "NYU Office of Global Services: Apply for an I-20 or DS-2019",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://meet.nyu.edu/advice/application-tips/your-guide-to-the-nyu-supplemental-essay/",
+      "title": "MEET NYU: Your Guide to the 2026-27 NYU Supplemental Essay Question",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://meet.nyu.edu/advice/application-tips/inside-the-2026-2027-common-application-for-nyu/",
+      "title": "MEET NYU: Inside the 2026-2027 NYU Common Application",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Exact prompt text not confirmed, so no prompts are listed. nyu.edu and meet.nyu.edu (NYU's official admissions blog) return HTTP 403 or a bot check to automated requests, and the browser pane hit the same check, which was not bypassed. Search excerpts of sources 2 and 3 say NYU's 2026-27 supplement is optional, about 250 words, and themed on bridging divides, and one prompt reads 'Tell us about a time you encountered a perspective different from your own. What did you learn—about yourself, the other person, or the world?'. The excerpts disagree on whether there are two or three prompts (the others concern someone who helps people think or work together, and working with others who have different perspectives), so the full list and wording need a manual check. Some NYU programs (for example Tisch portfolios, Clive Davis Institute, Gallatin) have their own writing or portfolio requirements that were not collected."
+}

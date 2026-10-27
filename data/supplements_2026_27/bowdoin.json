@@ -1,0 +1,52 @@
+{
+  "slug": "bowdoin",
+  "cycle": "2026-27",
+  "supplements": "optional_only",
+  "shared_set": null,
+  "prompts": [
+    {
+      "key": "the-offer",
+      "prompt": "Based on The Offer of the College, which represents Bowdoin's values, you have the option to reflect on any line of The Offer and how it has meaning to you:\nGenerations of students have found connection and meaning in Bowdoin’s “The Offer of the College,” written in 1906 by Bowdoin President William DeWitt Hyde.\nTo be at home in all lands and all ages;\nTo count Nature a familiar acquaintance, and Art an intimate friend;\nTo gain a standard for the appreciation of others' work\nAnd the criticism of your own;\nTo carry the keys of the world's library in your pocket,\nAnd feel its resources behind you in whatever task you undertake;\nTo make hosts of friends...who are to be leaders in all walks of life;\nTo lose yourself in generous enthusiasms and cooperate with others for common ends –\nThis is the offer of the college for the best four years of your life.\nWhich line from The Offer resonates most with you?",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "other",
+      "source": 1
+    },
+    {
+      "key": "navigating-differences",
+      "prompt": "Bowdoin believes that its broadly diverse and inclusive campus community prepares graduates to be contributing and useful citizens of the world. Every graduate of this institution should be confident in their preparation to be able to navigate through differences and in all sorts of situations. A Bowdoin education does not guarantee these skills, but it does impart a set of tools necessary to bravely enter unfamiliar conditions with the confidence to deal effectively with ambiguity.\nIf you wish, you may share anything about the unique experiences and perspectives that you would bring with you to the Bowdoin campus and community or an experience you have had that required you to navigate across or through difference.",
+      "word_limit": 250,
+      "char_limit": null,
+      "required": false,
+      "applies_to": null,
+      "choose": null,
+      "category": "identity",
+      "source": 1
+    }
+  ],
+  "intl_finance": null,
+  "sources": [
+    {
+      "n": 1,
+      "url": "https://www.bowdoin.edu/admissions/apply/",
+      "title": "Bowdoin Admissions: Apply (Bowdoin Supplement, optional essays)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 2,
+      "url": "https://www.bowdoin.edu/student-aid/apply-for-aid/international-students.html",
+      "title": "Bowdoin Student Aid: International Students (Class of 2031)",
+      "accessed": "2026-10-27"
+    },
+    {
+      "n": 3,
+      "url": "https://www.bowdoin.edu/admissions/apply/international-students/index.html",
+      "title": "Bowdoin Admissions: International Students",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "notes": "Both essays are optional (max 250 words each) and sit in the Bowdoin Supplement: the 'Questions' section of the Common App, or a separate web form for Coalition on Scoir and QuestBridge applicants. The supplement also has non-essay questions (such as the test-optional choice and how you learned about Bowdoin) that the page does not itemize. The prompts are not labelled with a cycle year; the cycle is inferred from the same page referencing the 2027-2028 CSS Profile and the aid page naming the Class of 2031. No proof-of-funds / I-20 financial document requirement is published on the admissions, student aid or incoming-international-student pages read, so intl_finance is null. What is published: international applicants (not Canadians) submit aid materials (CSS Profile, parents' 2025 tax or income documents via IDOC) only after admission, within seven days of the offer, and Bowdoin issues the I-20 after admission. Ask the Student Aid Office (sao@bowdoin.edu) or Admissions what funding proof the I-20 needs."
+}
