@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Pill, TierBadge } from "@/components/badges";
 import { CollegeActions } from "@/components/CollegeActions";
+import { EnglishFitLine } from "@/components/EnglishFit";
+import { collegeEnglishFrom } from "@/lib/english-fit";
 import { DeadlineChip, StatusIcon, StatusPill } from "@/components/StatusPill";
 import { getCollege, getLookups } from "@/lib/data";
 import {
@@ -309,6 +311,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           ) : (
             <p className="text-sm text-zinc-500">{t("college.notRecorded")}</p>
           )}
+          <EnglishFitLine english={collegeEnglishFrom(c.english_policies, c.english_requirements)} className="mb-3" />
           {c.english_requirements.length > 0 && (
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-zinc-500">

@@ -2,6 +2,8 @@ import "server-only";
 import { cacheLife, cacheTag } from "next/cache";
 import { connection } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import type { EnglishReqKey } from "./english-fit";
+import { programFeeRange, type ProgramFees } from "./tuition";
 import type { CollegeDetail, CollegeSummary, Deadline, EnglishSummary, Lookups, SatEstimate, ScoreCode } from "./types";
 
 // Reference data is public (RLS: read-only for anon), so the publishable key is enough.
@@ -61,15 +63,18 @@ async function cachedEnglish(): Promise<Record<string, EnglishSummary>> {
   cacheTag("colleges");
   const db = supabase();
   const [reqs, policies] = await Promise.all([
-    db.from("english_requirements").select("institution_id, test_key, min_total"),
+    db.from("english_requirements").select("institution_id, test_key, status, min_total, min_subscores"),
     db.from("english_policies").select("institution_id, policy"),
   ]);
   const out: Record<string, EnglishSummary> = {};
-  const slot = (id: string) => (out[id] ??= { policy: null, toefl: null, toefl2026: null, ielts: null, duolingo: null });
+  const slot = (id: string) => (out[id] ??= { policy: null, toefl: null, toefl2026: null, ielts: null, duolingo: null, tests: {} });
   for (const p of unwrap(policies, "english policies")) slot(p.institution_id).policy = p.policy;
   for (const r of unwrap(reqs, "english requirements")) {
-    const key = { TOEFL_IBT: "toefl", TOEFL_IBT_2026: "toefl2026", IELTS: "ielts", DUOLINGO: "duolingo" }[r.test_key as string] as keyof EnglishSummary | undefined;
-    if (key && key !== "policy") slot(r.institution_id)[key] = r.min_total == null ? null : Number(r.min_total);
+    const s = slot(r.institution_id);
+    const min = r.min_total == null ? null : Number(r.min_total);
+    s.tests[r.test_key as EnglishReqKey] = { status: r.status, min, subscores: !!r.min_subscores && Object.keys(r.min_subscores).length > 0 };
+    const key = ({ TOEFL_IBT: "toefl", TOEFL_IBT_2026: "toefl2026", IELTS: "ielts", DUOLINGO: "duolingo" } as const)[r.test_key as string];
+    if (key) s[key] = min;
   }
   return out;
 }
@@ -90,6 +95,22 @@ async function cachedSatEstimates(): Promise<Record<string, SatEstimate>> {
     const math = rows.find((r) => r.institution_id === id && r.cds_year === year && r.test === "SAT_MATH");
     if (!erw || !math || erw.p25 == null || erw.p50 == null || erw.p75 == null || math.p25 == null || math.p50 == null || math.p75 == null) continue;
     out[id] = { p25: erw.p25 + math.p25, p50: erw.p50 + math.p50, p75: erw.p75 + math.p75 };
+  }
+  return out;
+}
+
+/** institution_id → cheapest and dearest international course fee (colleges outside the US charge by course). */
+async function cachedProgramFees(): Promise<Record<string, ProgramFees>> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges");
+  const res = await supabase().from("programs").select("institution_id, intl_fee_gbp, intl_fee_cad, intl_fee_aud");
+  const byCollege = new Map<string, { intl_fee_gbp: number | null; intl_fee_cad: number | null; intl_fee_aud: number | null }[]>();
+  for (const r of unwrap(res, "course fees")) byCollege.set(r.institution_id, [...(byCollege.get(r.institution_id) ?? []), r]);
+  const out: Record<string, ProgramFees> = {};
+  for (const [id, rows] of byCollege) {
+    const range = programFeeRange(rows);
+    if (range) out[id] = range;
   }
   return out;
 }
@@ -160,6 +181,11 @@ export async function getEnglishSummaries() {
 export async function getSatEstimates() {
   await connection();
   return cachedSatEstimates();
+}
+
+export async function getProgramFees() {
+  await connection();
+  return cachedProgramFees();
 }
 
 export async function getPlatforms() {
