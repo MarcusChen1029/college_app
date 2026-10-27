@@ -6,9 +6,10 @@ import type { Rec } from "@/lib/field-match";
 import { reasonFor, type MatchRow } from "@/lib/field-match-view";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
+import { FEW_GRADUATES, formatEarnings, type FieldEarnings } from "@/lib/outcomes";
 
-/** One college. `reason` rows (famous but not strong) show why instead of a strength bar. */
-export function FieldMatchRow({ rec, reason = false }: { rec: Rec<MatchRow>; reason?: boolean }) {
+/** One college. `earnings`: Scorecard median earnings in the chosen field, added to the evidence line. `reason` rows (famous but not strong) show why instead of a strength bar. */
+export function FieldMatchRow({ rec, reason = false, earnings }: { rec: Rec<MatchRow>; reason?: boolean; earnings?: FieldEarnings }) {
   const t = useT();
   const locale = useLocale();
   const { college, score, fit } = rec;
@@ -22,6 +23,9 @@ export function FieldMatchRow({ rec, reason = false }: { rec: Rec<MatchRow>; rea
   else if (college.country_code !== "US" && score.depth === "established") parts.push(t("match.ev.course"));
   if (college.general_tier && (score.confidence === "estimated" || score.confidence === "partly_rated" || score.confidence === "general")) {
     parts.push(t("match.ev.general", { tier: college.general_tier }));
+  }
+  if (earnings) {
+    parts.push(t(earnings.n < FEW_GRADUATES ? "outcomes.match.earningsFew" : "outcomes.match.earnings", { amount: formatEarnings(earnings.median) }));
   }
   const why = reason ? reasonFor(score) : null;
 

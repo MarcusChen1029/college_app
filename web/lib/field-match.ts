@@ -3,6 +3,7 @@
 // Overall reputation never stands in for a field: no program -> not offered, no field evidence -> no data.
 import { computeFit, type FitInput, type FitResult, type StudentProfile } from "./fit.ts";
 import { FIELDS, fieldByKey, fieldGrads, programFields, type FieldKey } from "./fields.ts";
+import type { FieldEarnings } from "./outcomes.ts";
 import { tierLetter, tierRank } from "./tiers.ts";
 import type { CollegeSummary, TierCode } from "./types.ts";
 
@@ -40,6 +41,7 @@ export type FieldEvidence = {
   total: number | null; // IPEDS first-major bachelor's total; null for non-US
   grads: Partial<Record<FieldKey, number>>; // zero counts omitted
   programFields: FieldKey[]; // non-US: fields matched by course names
+  earnings?: Partial<Record<FieldKey, FieldEarnings>>; // Scorecard median earnings per field (US only; not used in scoring)
 };
 
 /** Shape of web/lib/data/field-completions.json (scripts/build_field_completions.py). */

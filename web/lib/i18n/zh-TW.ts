@@ -10,6 +10,7 @@ export const zhTW: Messages = {
   ...S.home.zhTW,
   ...S.match.zhTW,
   ...S.misc.zhTW,
+  ...S.outcomes.zhTW,
   ...S.portals.zhTW,
   ...S.profile.zhTW,
   ...S.quiz.zhTW,
