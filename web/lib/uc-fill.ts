@@ -106,11 +106,12 @@ function honorsOf(school: TranscriptSchool, c: TranscriptCourse, warnings: strin
   if (ov === "AP" || ov === "IB" || ov === "HL" || ov === "NH") return ov;
   if (c.level === "ap") return "AP";
   if (c.level === "ib" || c.level === "ib_hl" || c.level === "ib_sl") return "IB";
-  if ((c.level === "honors" || c.level === "high_honors") && !isNonUs(school)) {
-    warnings.push(`${c.name}: marked HL; UC counts honors only for courses on the school's UC-approved honors list`);
+  // An honors course is HL wherever the school is (a real application from a school in Taiwan lists its Honors courses as HL); UC
+  // itself decides which honors courses get extra weight.
+  if (c.level === "honors" || c.level === "high_honors") {
+    if (!isNonUs(school)) warnings.push(`${c.name}: marked HL; UC counts honors only for courses on the school's UC-approved honors list`);
     return "HL";
   }
-  if (c.level === "honors" || c.level === "high_honors") warnings.push(`${c.name}: an honors course at a school outside the US is NH on UC (only AP and IB get honors weight)`);
   return "NH";
 }
 
@@ -135,7 +136,8 @@ export function buildUcPlans(schools: TranscriptSchool[], courses: TranscriptCou
         skip("course", "college course: enter it under Colleges attended while in high school");
         continue;
       }
-      if (c.subject === "business" || c.subject === "pe_health" || c.subject === "career_technical") {
+      // A UC subject the student (or AI) chose wins over the category: e.g. a "career technical" course listed as Computer Science.
+      if (!ucDiscipline(c) && (c.subject === "business" || c.subject === "pe_health" || c.subject === "career_technical")) {
         skip("course", "not an A-G course: UC says to leave it out here (it may go under Activities & awards > Other coursework)");
         continue;
       }
