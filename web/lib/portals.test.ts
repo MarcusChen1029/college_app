@@ -7,22 +7,20 @@ import {
   collegeProgressKey,
   customProgressKey,
   EMPTY_LOGIN,
-  hasSavedFor,
+  groupProgress,
   hiddenLoginCount,
-  mainRoute,
-  neededSystems,
   openUrl,
-  progressCounts,
   progressNote,
   progressState,
   regionOfCollege,
+  ROUTE_ORDER,
+  routeGroups,
   savedCount,
+  starsPatches,
   SYSTEMS,
-  systemShown,
   systemsForRegion,
   withoutProgress,
   withProgress,
-  type ListedCollege,
   type PortalData,
 } from "./portals.ts";
 
@@ -94,27 +92,27 @@ test("hidden logins count only saved logins for countries not being applied to",
       { ...EMPTY_LOGIN, id: "3", name: "Blank", region: "GB" as const },
     ],
   };
-  assert.equal(hiddenLoginCount(data, ["US", "GB", "CA", "AU"]), 0);
+  const onList = ["commonapp", "ucas"];
+  assert.equal(hiddenLoginCount(data, ["US", "GB", "CA", "AU"], onList), 0);
   // Applying to the UK only: Common App and the UC campus are hidden; UCAS, TOEFL, unregioned and unknown are not.
-  assert.equal(hiddenLoginCount(data, ["GB"]), 2);
+  assert.equal(hiddenLoginCount(data, ["GB"], onList), 2);
   // Applying to the US only: UCAS and the UK custom portal are hidden.
-  assert.equal(hiddenLoginCount(data, ["US"]), 2);
-  assert.equal(hiddenLoginCount({}, ["US"]), 0);
+  assert.equal(hiddenLoginCount(data, ["US"], onList), 2);
+  assert.equal(hiddenLoginCount({}, ["US"], []), 0);
 });
 
-// Which systems each fake college accepts.
-const ACCEPTS: Record<string, string[]> = {
-  purdue: ["commonapp"],
-  "ut-austin": ["commonapp", "applytexas"],
-  "texas-am": ["applytexas"],
-  ucla: ["uc"],
-  clemson: ["commonapp", "stars"],
-  illinois: ["commonapp", "stars"],
-  oxford: ["ucas"],
-  mit: [],
+// The route (My list group) of each fake college.
+const ROUTES: Record<string, string> = {
+  purdue: "commonapp",
+  "ut-austin": "commonapp",
+  "texas-am": "applytexas",
+  ucla: "uc",
+  oxford: "ucas",
+  mit: "direct",
+  weird: "not-a-route",
 };
-const systemsOf = (slug: string) => ACCEPTS[slug] ?? [];
-const college = (slug: string, name = slug, custom = false): ListedCollege => ({ slug, name, ...(custom ? { custom } : {}) });
+const routeOf = (slug: string) => ROUTES[slug] ?? "direct";
+const item = (slug: string, custom = false) => ({ slug, ...(custom ? { custom } : {}) });
 
 test("every application system has a kind, optional systems have none, and STARS is an add-on", () => {
   for (const s of SYSTEMS) assert.equal(s.kind !== undefined, s.group === "application", s.key);
@@ -123,51 +121,75 @@ test("every application system has a kind, optional systems have none, and STARS
   assert.equal(SYSTEMS.find((s) => s.key === "commonapp")?.kind, "route");
 });
 
-test("an add-on is needed whenever a listed college uses it, on top of its route", () => {
-  const needed = neededSystems({}, [college("clemson", "Clemson"), college("illinois", "Illinois")], systemsOf);
-  assert.deepEqual(needed, { stars: ["Clemson", "Illinois"], commonapp: ["Clemson", "Illinois"] });
+test("ROUTE_ORDER is every route system, then direct", () => {
+  assert.equal(ROUTE_ORDER[ROUTE_ORDER.length - 1], "direct");
+  assert.deepEqual([...ROUTE_ORDER.slice(0, -1)].sort(), SYSTEMS.filter((s) => s.kind === "route").map((s) => s.key).sort());
+  assert.deepEqual(ROUTE_ORDER.slice(0, 5), ["commonapp", "coalition", "uc", "calstate", "applytexas"]);
 });
 
-test("Common App wins over ApplyTexas when a college accepts both", () => {
-  assert.equal(mainRoute(["applytexas", "commonapp"]), "commonapp");
-  assert.deepEqual(neededSystems({}, [college("ut-austin", "UT Austin")], systemsOf), { commonapp: ["UT Austin"] });
-  // A route-only Texas college still needs ApplyTexas; Coalition comes last.
-  assert.deepEqual(neededSystems({}, [college("texas-am", "Texas A&M")], systemsOf), { applytexas: ["Texas A&M"] });
-  assert.equal(mainRoute(["coalition", "commonapp"]), "commonapp");
-  assert.equal(mainRoute(["coalition", "applytexas"]), "applytexas");
-  assert.equal(mainRoute(["stars", "coalition"]), "coalition");
-  assert.equal(mainRoute(["stars"]), null);
-  assert.equal(mainRoute([]), null);
+test("routeGroups orders by ROUTE_ORDER and keeps list order inside a group", () => {
+  const groups = routeGroups([item("oxford"), item("texas-am"), item("purdue"), item("mit"), item("ucla"), item("ut-austin")], routeOf);
+  assert.deepEqual(
+    groups.map((g) => [g.route, g.items.map((i) => i.slug)]),
+    [
+      ["commonapp", ["purdue", "ut-austin"]],
+      ["uc", ["ucla"]],
+      ["applytexas", ["texas-am"]],
+      ["ucas", ["oxford"]],
+      ["direct", ["mit"]],
+    ],
+  );
 });
 
-test("a route the student already has saved also counts for the colleges that accept it", () => {
-  const colleges = [college("ut-austin", "UT Austin"), college("purdue", "Purdue")];
-  assert.deepEqual(neededSystems({}, colleges, systemsOf), { commonapp: ["UT Austin", "Purdue"] });
-  const withLogin: PortalData = { systems: { applytexas: EMPTY_LOGIN } };
-  assert.deepEqual(neededSystems(withLogin, colleges, systemsOf), { commonapp: ["UT Austin", "Purdue"], applytexas: ["UT Austin"] });
-  const marked: PortalData = { progress: { applytexas: { done: true } } };
-  assert.deepEqual(neededSystems(marked, colleges, systemsOf).applytexas, ["UT Austin"]);
+test("routeGroups puts custom colleges in direct, and unknown routes or slugs too", () => {
+  const groups = routeGroups([item("purdue", true), item("weird"), item("nobody"), item("ucla")], routeOf);
+  assert.deepEqual(
+    groups.map((g) => [g.route, g.items.map((i) => i.slug)]),
+    [
+      ["uc", ["ucla"]],
+      ["direct", ["purdue", "weird", "nobody"]],
+    ],
+  );
 });
 
-test("a college that only takes its own application adds nothing, and custom colleges add nothing", () => {
-  assert.deepEqual(neededSystems({}, [college("mit"), college("unknown-slug"), college("custom-1", "My college", true), college("ucla", "UCLA", true)], systemsOf), {});
-  assert.deepEqual(neededSystems({}, [], systemsOf), {});
+test("routeGroups omits empty routes", () => {
+  assert.deepEqual(routeGroups([], routeOf), []);
+  assert.deepEqual(routeGroups([item("oxford")], routeOf).map((g) => g.route), ["ucas"]);
 });
 
-test("unknown system keys in the data are ignored", () => {
-  assert.deepEqual(neededSystems({}, [college("x")], () => ["nope", "ucas"]), { ucas: ["x"] });
+test("groupProgress counts decisions as submitted", () => {
+  assert.deepEqual(groupProgress(["submitted", "admitted", "in_progress"]), { submitted: 2, total: 3, done: false });
+  assert.deepEqual(groupProgress(["interview", "rejected", "enrolled", "waitlisted"]), { submitted: 4, total: 4, done: true });
 });
 
-test("a system saved but not needed is still shown; a needed one is shown without anything saved", () => {
-  const needed = neededSystems({}, [college("oxford", "Oxford")], systemsOf);
-  assert.equal(systemShown({}, needed, "ucas"), true);
-  assert.equal(systemShown({}, needed, "commonapp"), false);
-  assert.equal(systemShown({ systems: { commonapp: EMPTY_LOGIN } }, needed, "commonapp"), true);
-  assert.equal(systemShown({ progress: { commonapp: { done: false } } }, needed, "commonapp"), true);
-  assert.equal(systemShown({ campuses: { [campusKey("uc", "UCLA")]: EMPTY_LOGIN } }, needed, "uc"), true);
-  assert.equal(systemShown({ progress: { [campusKey("uc", "UCLA")]: { done: true } } }, needed, "uc"), true);
-  assert.equal(hasSavedFor({ systems: { uc: EMPTY_LOGIN } }, "ucas"), false);
-  assert.equal(hasSavedFor({}, "uc"), false);
+test("groupProgress done when all submitted, never when empty", () => {
+  assert.deepEqual(groupProgress(["submitted"]), { submitted: 1, total: 1, done: true });
+  assert.deepEqual(groupProgress([]), { submitted: 0, total: 0, done: false });
+  assert.equal(groupProgress(["researching", "planning"]).done, false);
+});
+
+test("starsPatches skips ticked and non-STARS colleges", () => {
+  const requires = (slug: string) => slug === "clemson" || slug === "illinois";
+  const entries = [
+    { slug: "clemson", checklist: { transcript: true } },
+    { slug: "illinois", checklist: { stars: true } },
+    { slug: "purdue", checklist: {} },
+  ];
+  assert.deepEqual(starsPatches(entries, requires), [{ slug: "clemson", checklist: { transcript: true, stars: true } }]);
+  assert.deepEqual(starsPatches([], requires), []);
+  assert.equal(entries[0].checklist.hasOwnProperty("stars"), false);
+});
+
+test("hiddenLoginCount counts route logins with no group", () => {
+  const login = { ...EMPTY_LOGIN, username: "me@x.com" };
+  const data: PortalData = { systems: { commonapp: login, toefl: login } };
+  // A saved Common App login with no Common App college on the list stays stored and is counted as hidden.
+  assert.equal(hiddenLoginCount(data, ["US"], ["uc"]), 1);
+  assert.equal(hiddenLoginCount(data, ["US"], ["commonapp"]), 0);
+  // Counted once even when its country is hidden too.
+  assert.equal(hiddenLoginCount(data, ["GB"], ["uc"]), 1);
+  assert.equal(hiddenLoginCount({ systems: { commonapp: EMPTY_LOGIN } }, ["US"], []), 0);
+  assert.equal(hiddenLoginCount({}, ["US"], []), 0);
 });
 
 test("progress states: missing is unmarked, and counts as not done", () => {
@@ -177,9 +199,6 @@ test("progress states: missing is unmarked, and counts as not done", () => {
   assert.equal(progressState(data, "commonapp"), "unmarked");
   assert.equal(progressNote(data, "uc"), "send transcript");
   assert.equal(progressNote(data, "stars"), "");
-  assert.deepEqual(progressCounts(data, ["stars", "uc", "commonapp"]), { done: 1, total: 3 });
-  assert.deepEqual(progressCounts({}, ["a", "b", "a"]), { done: 0, total: 2 });
-  assert.deepEqual(progressCounts(data, []), { done: 0, total: 0 });
 });
 
 test("progress keys: system, campus, custom portal, submitted college", () => {

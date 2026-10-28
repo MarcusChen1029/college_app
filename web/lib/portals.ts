@@ -4,7 +4,10 @@
 // Links are only filled in where an official sign-in or landing page was confirmed; the rest are left
 // for the student, with a hint on where the login comes from.
 
+import { isSubmitted } from "./application.ts";
+import type { Checklist } from "./checklist.ts";
 import type { RegionCode } from "./regions";
+import type { Status } from "./student-store";
 
 export type Login = { url: string; username: string; password: string };
 export const EMPTY_LOGIN: Login = { url: "", username: "", password: "" };
@@ -148,14 +151,16 @@ export function savedCount(data: PortalData): number {
 }
 
 /**
- * Saved logins (with a username) that belong to a country outside `visible`, so the page can say they
- * are hidden. Country-free systems and custom portals with no region are never hidden.
+ * Saved logins (with a username) that Portals does not show, so the page can say they are hidden: those of a country
+ * outside `visible`, and those of an application route no college on the list uses (`routesOnList`; they live on
+ * My list groups). Each login counts once. Country-free systems and custom portals with no region are never hidden.
  */
-export function hiddenLoginCount(data: PortalData, visible: readonly RegionCode[]): number {
+export function hiddenLoginCount(data: PortalData, visible: readonly RegionCode[], routesOnList: readonly string[]): number {
   const hidden = (region: PortalRegion | undefined) => !!region && region !== "ANY" && !visible.includes(region);
   const regionOfKey = (key: string) => SYSTEMS.find((s) => s.key === key)?.region;
+  const unusedRoute = (key: string) => SYSTEMS.find((s) => s.key === key)?.kind === "route" && !routesOnList.includes(key);
   const saved = (l: Login) => l.username.trim() !== "";
-  const fromSystems = Object.entries(data.systems ?? {}).filter(([key, l]) => saved(l) && hidden(regionOfKey(key)));
+  const fromSystems = Object.entries(data.systems ?? {}).filter(([key, l]) => saved(l) && (hidden(regionOfKey(key)) || unusedRoute(key)));
   const fromCampuses = Object.entries(data.campuses ?? {}).filter(([key, l]) => saved(l) && hidden(regionOfKey(key.split(":")[0])));
   const fromCustom = (data.custom ?? []).filter((p) => saved(p) && hidden(p.region));
   return fromSystems.length + fromCampuses.length + fromCustom.length;
@@ -190,60 +195,35 @@ export function withoutProgress(data: PortalData, keys: readonly string[]): Port
   return { ...data, progress };
 }
 
-/** "3 of 7 done" for the rows shown: each distinct key counts once; an unmarked row is not done. */
-export function progressCounts(data: PortalData, keys: readonly string[]): { done: number; total: number } {
-  const distinct = [...new Set(keys)];
-  return { done: distinct.filter((k) => data.progress?.[k]?.done === true).length, total: distinct.length };
-}
+/**
+ * Order of the groups on My list: the route systems from most to least general (a college that takes several is listed
+ * under the first), then "direct" (the college's own application). scripts/build_application_systems.py has the same list.
+ */
+export const ROUTE_ORDER: readonly string[] = ["commonapp", "coalition", "uc", "calstate", "applytexas", "ucas", "ouac", "educationplannerbc", "applyalberta", "sram", "uac", "vtac", "qtac", "satac", "tisc", "direct"];
 
-/** Anything saved for an application system: its login row, a campus under it, or a progress mark. */
-export function hasSavedFor(data: PortalData, key: string): boolean {
-  const prefix = `${key}:`;
-  return (
-    !!data.systems?.[key] ||
-    Object.keys(data.campuses ?? {}).some((k) => k.startsWith(prefix)) ||
-    !!data.progress?.[key] ||
-    Object.keys(data.progress ?? {}).some((k) => k.startsWith(prefix))
-  );
-}
-
-/** Order in which a college's accepted routes are tried: Common App, UC, Cal State Apply, ApplyTexas, UCAS, OUAC, the other country systems, Coalition last. */
-const ROUTE_FIRST = ["commonapp", "uc", "calstate", "applytexas", "ucas", "ouac"];
-function routeRank(key: string): number {
-  if (key === "coalition") return 1000;
-  const i = ROUTE_FIRST.indexOf(key);
-  return i >= 0 ? i : ROUTE_FIRST.length + SYSTEMS.findIndex((s) => s.key === key);
-}
-
-/** The college's application route (its first accepted route in the order above); null when it only takes its own application. */
-export function mainRoute(accepted: readonly string[]): string | null {
-  const routes = accepted.filter((k) => SYSTEMS.find((s) => s.key === k)?.kind === "route");
-  return routes.length === 0 ? null : routes.reduce((best, k) => (routeRank(k) < routeRank(best) ? k : best));
-}
-
-export type ListedCollege = { slug: string; name: string; custom?: boolean };
+export type RouteGroup<T> = { route: string; items: T[] };
 
 /**
- * Application systems the student's list needs, as system key -> names of the colleges that need it (list order).
- * A college needs every add-on it uses and its main route; a route the student already has something saved for also
- * counts for every college that accepts it. Custom colleges have no data and add nothing.
+ * List entries grouped by application route, in ROUTE_ORDER, list order inside a group. Custom colleges and unknown
+ * routes go to "direct"; a route with no entries is left out.
  */
-export function neededSystems(data: PortalData, colleges: readonly ListedCollege[], systemsOf: (slug: string) => readonly string[]): Record<string, string[]> {
-  const out: Record<string, string[]> = {};
-  const add = (key: string, name: string) => {
-    const names = (out[key] ??= []);
-    if (!names.includes(name)) names.push(name);
-  };
-  for (const c of colleges) {
-    if (c.custom) continue;
-    const accepted = systemsOf(c.slug).filter((k) => SYSTEMS.some((s) => s.key === k));
-    for (const k of accepted) if (SYSTEMS.find((s) => s.key === k)?.kind === "addon") add(k, c.name);
-    const route = mainRoute(accepted);
-    if (route) add(route, c.name);
-    for (const k of accepted) if (SYSTEMS.find((s) => s.key === k)?.kind === "route" && hasSavedFor(data, k)) add(k, c.name);
+export function routeGroups<T extends { slug: string; custom?: boolean }>(items: readonly T[], routeOf: (slug: string) => string): RouteGroup<T>[] {
+  const byRoute = new Map<string, T[]>();
+  for (const item of items) {
+    const r = item.custom ? "direct" : routeOf(item.slug);
+    const route = ROUTE_ORDER.includes(r) ? r : "direct";
+    byRoute.set(route, [...(byRoute.get(route) ?? []), item]);
   }
-  return out;
+  return ROUTE_ORDER.filter((r) => byRoute.has(r)).map((route) => ({ route, items: byRoute.get(route)! }));
 }
 
-/** An application system row is shown when the list needs it or the student saved anything for it. */
-export const systemShown = (data: PortalData, needed: Record<string, string[]>, key: string): boolean => key in needed || hasSavedFor(data, key);
+/** "2 of 5 submitted" for one group; every status past submitting (interview, decisions) counts as submitted. */
+export function groupProgress(statuses: readonly Status[]): { submitted: number; total: number; done: boolean } {
+  const submitted = statuses.filter(isSubmitted).length;
+  return { submitted, total: statuses.length, done: statuses.length > 0 && submitted === statuses.length };
+}
+
+/** The colleges that ask for STARS and are not ticked yet, each with `stars` ticked: what marking the STARS account done writes. */
+export function starsPatches(entries: readonly { slug: string; checklist: Checklist }[], requires: (slug: string) => boolean): { slug: string; checklist: Checklist }[] {
+  return entries.filter((e) => requires(e.slug) && !e.checklist.stars).map((e) => ({ slug: e.slug, checklist: { ...e.checklist, stars: true } }));
+}

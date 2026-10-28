@@ -29,6 +29,11 @@ test("progress counts done and missing categories", () => {
   assert.deepEqual(progress({ transcript: true, no_essays: true, test_plan: "optional" }), { done: 3, total: 5, missing: 2 });
 });
 
+test("progress ignores stars", () => {
+  assert.deepEqual(progress({ stars: true }), progress({}));
+  assert.deepEqual(progress({ stars: true, transcript: true }), progress({ transcript: true }));
+});
+
 test("markSent ticks scores sent and fills an undecided plan from the student's only test", () => {
   assert.deepEqual(markSent({ test_plan: "act" }, "test_scores", "sat"), { test_plan: "act", test_scores: true });
   assert.deepEqual(markSent({}, "test_scores", "sat"), { test_scores: true, test_plan: "sat" });

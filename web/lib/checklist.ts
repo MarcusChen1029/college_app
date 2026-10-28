@@ -51,8 +51,14 @@ export const INTL_STEPS = [
 ] as const;
 export type IntlStepKey = (typeof INTL_STEPS)[number][0];
 
+// Steps that come after the application, for colleges that ask for them (STARS: lib/application-systems-data.ts
+// requiresStars). A stored boolean like the international steps; never counts toward progress() or "Ready".
+export const AFTER_APPLY = [["stars", "STARS self-reported transcript"]] as const;
+export type AfterApplyKey = (typeof AFTER_APPLY)[number][0];
+
 export type Checklist = Partial<Record<Exclude<ChecklistKey, "essays">, boolean>> &
-  Partial<Record<IntlStepKey, boolean>> & {
+  Partial<Record<IntlStepKey, boolean>> &
+  Partial<Record<AfterApplyKey, boolean>> & {
     essay_list?: Essay[];
     no_essays?: boolean;
     test_plan?: TestPlan | null;
