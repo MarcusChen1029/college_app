@@ -1,4 +1,4 @@
-# Coursework pages of STARS, Cal State Apply, UC and UT: live DOM facts
+# Coursework pages of STARS, Cal State Apply, UC and UT, and the Common App / UC activities pages: live DOM facts
 
 Recorded 2026-10-27 on throwaway test accounts created by the owner (never the owner's real applications). Everything below was read from
 the live pages with the built-in browser; nothing was submitted. Where a fact is a guess it says so.
@@ -147,3 +147,101 @@ Pages (left nav, in order; each has `#btn_save` "Save Progress" and `#btn_submit
   **`#btn_submit` here is "I'm done! Submit my record." - the FINAL submission. It has the same id as every page's Submit Page button:
   never click `#btn_submit` on /Preview.**
 - Status page `/Apply/Application/Status` lists "Self-Reported Academic Record" under Missing Items until the final submission.
+
+## 6. Common App Activities (apply.commonapp.org, 2026-27), recorded 2026-10-28
+
+Throwaway account (1 college on the list). Angular + Material; the page is `/common/7/232` ("Activities and experiences"), reached from the
+dashboard link `a[href="/common/7"]`. Questions come from `GET https://api26.commonapp.org/datacatalog/sections/232/questions` (headers:
+`Authorization: <Cognito idToken, no "Bearer">`, `X-APi-Key`, from the page; a plain `fetch` without them fails CORS). Values below are from that catalog.
+
+- Gate: question 1788 "Would you like to report any activities?" `mat-radio-group#radioGroup1788`, radios `#option_ques_1788_2371-input`
+  (Yes, value "0") / `_2372-input` (No, "1"). Yes shows the list; all 10 slots are pre-rendered (hidden) from the start.
+- Slots: `ca-add-another-question#text_ques_1020` > `ca-add-another-sub-group#subGroup1020_<14..23>` > `fieldset` with legend
+  `<strong>Activity N</strong>`. Question 1020 ("Add another activity", min 1, max 10) holds the count; its catalog `addAnotherConfig` lists the
+  14 question ids of each slot. Find fields by slot + label, not id arithmetic: slot 1's dates are 3029-3031 but slot 2's are 3038-3040.
+  Slot n (base b = 930 + 9(n-1)): type b, sport b+1, role b+2, grades b+3, plan b+4, time of year b+5, hours b+6, weeks b+7, description b+8;
+  organization 1957+n; leadership 3018+n; start/still/end 3029-3031 (n=1), 3038+3(n-2).. (n>=2).
+- "Add another activity" `#addQues1020` (aria-label "Add another activity, 9 of 10 available"). Slots 2+ have
+  `button[aria-label="Move Activity N question(s) up"]` and `button[aria-label="Remove Activity N question(s)"]`; Remove opens a confirm
+  dialog (`#alert_rc_c` Cancel, `#alert_rc_r` Remove) and sends nothing until the next save.
+- Fields per slot (control ids are `text_ques_<id>`; radios `option_ques_<id>_<choiceValueId>-input`):
+  | Field (label) | Control | Rule |
+  |---|---|---|
+  | Activity or experience type (930) | `ng-select` (searchable); chosen text shows as the input's `.value` | 30 types, see below |
+  | Sport/team (931) | `ng-select`, 48 sports | shown + required when type value is 2 or 3 (both Athletics) |
+  | Describe this activity... (938) | textarea maxlength 150 | required |
+  | Organization or group (if applicable) (1958) | textarea maxlength 100 | optional |
+  | Did you have a specific position or leadership role? (3019) | radio Yes "0" / No "1" | Yes shows role |
+  | What was your role? (932) | textarea maxlength 50 | |
+  | When did you participate? (933) | checkboxes `ca-checkboxList-*` values 0-4: 9th, 10th, 11th, 12th grade, After graduating high school | saved as an array `["0","4"]` |
+  | During high school: Time of year (935) | radio "0" During the school year, "1" During school break, "2" All year | shown when any of 9th-12th is ticked |
+  | After graduating high school: Start date (3029) | `mat-datepicker` input (min 1925-12-31, max 2027-12-30) | shown when "After graduating" ticked; typed "September 2025" or "6/15/2026" both parse; saved as "MM/YYYY" |
+  | Are you still participating? (3030) | radio Yes "0" / No "1" | shown with the start date; No shows End date (3031), and start must be <= end |
+  | Hours spent per week (936) / Weeks spent per year (937) | text maxlength 5, allowed `[0-9.]` | hidden front-end checks: hours 1-168, weeks 1-52 (decimals ok) |
+  | Do you plan on participating in this activity in college? (934) | radio "0" Yes, "1" No, "2" Not sure | required |
+- Type values (choice group 125): 0 Academic, 1 Art, 2 Athletics (other), 3 Athletics (JV or varsity), 4 Career readiness or practicums,
+  5 Community service or volunteer work, 6 Computer or technology, 7 Cultural, 8 Dance, 9 Debate or speech, 24 Employment or work (paid),
+  10 Environmental, 11 Family responsibilities, 13 Foreign language, 30 Hobby, 28 Internship, 14 Journalism or publishing, 16 LGBT+, 17 Music,
+  19 Religious, 27 Research, 26 Robotics, 15 R.O.T.C. or military, 20 School spirit, 21 Science or math, 29 Social justice or organizing,
+  22 Student government or politics, 12 Study abroad or foreign exchange, 23 Theater or drama, 25 Other (display order as listed).
+- Sports (group 128): Archery, Badminton, Baseball, Basketball, Bowling, Boxing, Cheerleading, Cricket, Cross-country, Diving, Equestrian,
+  Fencing, Field Hockey, Figure Skating, Football, Football (non-tackle), Golf, Gymnastics, Handball, Ice Hockey, Indoor Track, Judo, Lacrosse,
+  Other Sport, Outdoor Track, Racquetball, Rifle, Rock climbing, Bouldering, Rodeo, Rowing (Crew), Rugby, Sailing, Skiing, Skin Diving, Soccer,
+  Softball, Squash, Swim, Sync. swimming, Table Tennis, Tennis, Track and field, Triathlon, Ultimate Frisbee, Volleyball, Water polo,
+  Weight lifting, Wrestling. Type-ahead "Socc" + Enter picked Soccer (the existing `dom.ts` ng-select helper fits).
+- Saving: nothing is sent on blur. "Add another activity" and Continue (`#sectionContinue232`) POST
+  `https://api26.commonapp.org/answer/v2` `{"Answers":[{questionId,response,memberQuestionTemplateId:null}]}` with only the changed fields,
+  reply `{validAnswers, invalidAnswers}`. **A field that fails a front-end check (151 chars in a 150 box, hours 200, weeks 53) is silently
+  left out of the POST and Continue still moves on** (verified: after reload the old description stayed, hours/weeks were empty). Programmatic
+  value sets (native setter + input + blur) ignore `maxlength`, so the filler must enforce the limits and ranges itself and read back after saving.
+  Continue goes to `/common/7/250` "Responsibilities and circumstances" (two checkbox lists, personal; out of scope).
+- Idle logout: an Angular service watches DOM mutations (MutationObserver on `<html>`) and writes `localStorage.caAppLastUserActivity`;
+  after `idleTime` (default 30) minutes an "Inactive Session" dialog ("Okay") appears, then logout `timeout` (default 10) minutes later.
+
+## 7. UC Activities & awards (apply.universityofcalifornia.edu), recorded 2026-10-28
+
+Throwaway account. Server-rendered pages + jQuery/jquery.validate; every button is a full page load (POST). Single-tab rule as in §3: the guard
+checks `window.name === "applyUCtab" + #windowSession` on every button/link click, so the extension must drive the original tab only.
+- List page `/my-application/introactivitiesawards`, `form#activitiesForm` (hidden `commandType`, `type`, `activityId`, `activityIndex`).
+  Empty: `#add_activity` "Add an activity or award", `#no_activities` "I have no activities or awards to report". With items: `#add_activity`
+  "Add another activity or award", `#no_activities` "I've finished adding activities" (page-completion step; the filler should not press it).
+  Up to 20 items. Each item: `div.acordion > fieldset.form-section > section` with `a.expand` "N. <Category label>", `span.activitySubtitle`
+  (the name), `button#edit_<Cat>_<N>_<activityId>`, `button#delete_<Cat>_<N>_<activityId>`, and a read-only `div.section-content` of
+  `p.subsectionheader` / `p.description` pairs (e.g. "Name of the activity", "What you did", "When you did it" one `p` per grade,
+  "Time you spent" "5.5 hours per week" / "30.0 weeks per year"): usable for dedupe and read-back without opening Edit.
+  Delete opens popup `#mdl` "Are you sure you want to delete this activity?" `#warningYesButton` / `#warningNoButton`.
+- Add/edit page: `form#addActivitiesForm` POST `/my-application/addactivityaward`; add URL `/addactivityaward?action=add&src=introactivitiesawards&index=<N>`,
+  edit URL `...?action=edit&index=<N>&type=<Cat>&src=introactivitiesawards&id=<activityId>` (hidden `actionType` add|edit, `prevActivityType`,
+  `prevActivityId`, `source`). Heading "Activity/Award [N]". Buttons `#save` "Save & continue" (back to the list on success), `#cancel-btn` "Cancel".
+  Category `select#typeofactivity[name=activityType]`: Award = Award or honor, EdPrep = Educational preparation program, ExtraCurr = Extracurricular
+  activity, OtherCourse = Other coursework, Volunteer = Volunteer / Community service, WorkExp = Work experience. All categories' fields are in the
+  page; changing the select (jQuery `change`) shows one set. A save stores only the chosen category.
+- Textarea limits come from class `char_count_<N>` via `updateCharacterCountApp` (app.min2.js): length + number of `\n` must be <= N (a newline
+  counts 2), counter `#<id>_count` "N characters remaining"; it truncates on keyup and before submit, so over-long text is CUT, not rejected:
+  the filler must fit text itself. Text inputs have `maxlength` 60 (names/titles; `#edPrep_other` 30).
+- Hours/weeks (`input.hoursPerWeek`, plain text): jquery.validate on Save, "Please enter a number between 1 to 168. Use decimals for partial hours.
+  (1.50 = 90 mins)" (`#<id>-error`) and "Please enter a number between 1 and 52."; banner `#alertDiv` "There are some errors below..."; nothing is
+  saved. Weeks come back as "30.0".
+- Grade checkboxes (value "Y", Spring-style hidden `_name=on`) per category: `is<Prefix>9th|10th|11th|12th|After12th`, prefixes Award, EdPrep,
+  ExtraCurr, OtherCourse, Volunteer, WorkExp. "After 12th grade" (except Award) shows `<prefix>YearsAfter12` (0..10, 11 = "10+") and
+  `<prefix>MonthsAfter12` (0..11) selects ("How many months/years after 12th grade..."; WorkExp: `workExpAfter12thYears/Months`).
+  Hint: "If you participated during the summer, select the grade you were in before that summer."
+- Per category (all required unless noted):
+  | Category | Fields |
+  |---|---|
+  | Award | `awardName` (60) "What's the name of the award or honor?"; level checkboxes `isAwardLevelSchool/City/State/Region/National/Intl` (School, City / Community, State, Regional, National, International; hidden `awardLevel`); `awardType` radio `#Academic`=A / `#Non-academic`=O; grades `isAward*` (no years/months); `awardRequirements` (250) "What are the eligibility requirements..."; `awardAchievement` (350) "What did you do to achieve this award or honor?" |
+  | EdPrep | `edPrepId` select "What was the program name?" (27 programs + 18 = Other -> `edPrep_other` "Program Name" (30)); `edPrepDescription` (350) "Briefly describe the program."; grades; `edPrepHoursPerWeek`, `edPrepWeeksPerYear` |
+  | ExtraCurr | `extraCurName` (60) "What's the name of the activity?"; `extraCurrDescription` (350) "What did you do?" (hint asks about leadership); grades; `extraCurrHoursPerWeek`, `extraCurrWeeksPerYear` |
+  | OtherCourse | `otherCourseName` (60); `otherCourseDescription` (350) "Briefly describe the course."; grades; `otherCourseHoursPerWeek`, `otherCourseWeeksPerYear` ("time in class") |
+  | Volunteer | `volunteerOrg` (60); `volunteerOrgDesc` (250) "Please describe the organization, program, school or group."; `volunteerDescription` (350) "What did you do?"; grades; `volunteerHoursPerWeek`, `volunteerWeeksPerYear` |
+  | WorkExp | `workExpName` (60) "Where did you work?"; `workExpDesc` (250); `workExpPosTitle` (60) "What was your job title?"; `workExpPosDesc` (350) "What were your job responsibilities?"; per grade `isWorkExp<G>` -> `isWorkExpSchool<G>` + `workExp<G>SchoolHoursPerWeek` and `isWorkExpSummer<G>` + `workExp<G>SummerHoursPerWeek` (G = 9th..12th, After12th, which adds years/months); `isWorkExpCurrWorking` `#...No`=N shows start + end, `#...Yes`=Y start only: `workExpStartMonth` (01-12) / `workExpStartYear` (2026..), `workExpEndMonth` / `workExpEndYear` (2027..). No weeks per year here. |
+- EdPrep programs (`edPrepId` value=label): 1 ATDP (Academic Talent Development Program), 181 boost@BerkeleyHaas, 281 California State Summer School
+  for Mathematics and Science (COSMOS), 2 Cal-SOAP, 3 CAMP (California Alliance for Minority Participation in Science), 4 CBOP (Career Based Outreach
+  Program), 201 College Bound Academy Programs, 202 Council of African American Parents (CAAP), 63 C-STEM, 6 Early Academic Outreach Program (EAOP),
+  7 Educational Guidance Center (EGC), 8 Educational Talent Search, 10 GEAR UP, 11 MESA (...), 12 PDP (Professional Development Program), 13 Puente
+  Program, 241 UC Links, 65 UC Merced Transfer Initiative Programs, 64 UC Scholars, 203 UCD Sacramento Area Youth Speaks (SAYS), 161 UCLA Center for
+  Community College Partnerships (CCCP)/SITE, 62 UCLA VIP Scholars Program, 15 UCSC SAGE (...), 9 UCSF Internships, 16 Upward Bound, 261 Wonderful
+  Education, 18 Other.
+- Verified run (2026-10-28): ExtraCurr "Test Club (filler research)", 2-line description, 10th + 11th, 5.5 h / 30 wk saved and listed; Edit shows
+  the same values (newline kept). Session: no client idle timer; the server session is kept alive by any same-origin GET (a 4-minute
+  `fetch('/my-application/introactivitiesawards')` kept it signed in).
