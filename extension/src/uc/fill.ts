@@ -13,7 +13,7 @@ const P = (i: number, f: string) => `academics_hs_classes_add_${i}_${f}`;
 
 export class UcStop extends Error {}
 
-function fire(el: Element, type: string): void {
+export function fire(el: Element, type: string): void {
   const view = (el.ownerDocument?.defaultView ?? globalThis) as unknown as Record<string, typeof Event | undefined>;
   const Ctor = view.Event ?? Event;
   el.dispatchEvent(new Ctor(type, { bubbles: true }));
@@ -41,7 +41,7 @@ export function ucExistingNames(doc: Document): string[] {
 }
 
 /** Picks the option whose value (when given) or text is exactly `want`; throws UcStop when it isn't there. */
-function pick(doc: Document, id: string, want: { value?: string; text: string }, label: string): void {
+export function pick(doc: Document, id: string, want: { value?: string; text: string }, label: string): void {
   const sel = doc.getElementById(id) as HTMLSelectElement | null;
   if (!sel) throw new UcStop(`UC's ${label} box is not on the page`);
   const opts = [...sel.options];

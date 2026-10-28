@@ -11,6 +11,7 @@ import { SITE_ORIGINS } from "./sites.ts";
 import { runCsuSchool } from "./csu/run.ts";
 import { onCourseworkPage } from "./csu/fill.ts";
 import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
+import { clickUcAdd, deleteUcEntry, fillUcForm, readUcList, ucActivitiesPage } from "./uc/activities.ts";
 import { starsSchools, starsSummaryPath, starsYearPath, starsYears } from "./stars/nav.ts";
 import { ucClassesLink, ucCoursesButtons } from "./uc/nav.ts";
 import { fillUiucArea, uiucPageInfo, uiucSave } from "./uiuc/fill.ts";
@@ -102,6 +103,43 @@ ${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
         (e: unknown) => sendResponse({ type: "ucFill", ok: false, error: e instanceof Error ? e.message : String(e) }),
       );
       return true; // async response
+    case "ucActList":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "list") {
+        sendResponse({ type: "ucActList", ok: false, error: "Open UC's Activities & awards list first" });
+        return false;
+      }
+      sendResponse({ type: "ucActList", ok: true, items: readUcList(document) });
+      return false;
+    case "ucActDelete":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "list") {
+        sendResponse({ type: "ucActDelete", ok: false, error: "Open UC's Activities & awards list first" });
+        return false;
+      }
+      deleteUcEntry(document, msg.activityId).then(
+        () => sendResponse({ type: "ucActDelete", ok: true }),
+        (e: unknown) => sendResponse({ type: "ucActDelete", ok: false, error: e instanceof Error ? e.message : String(e) }),
+      );
+      return true; // async response
+    case "ucActAdd":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "list") {
+        sendResponse({ type: "ucActAdd", ok: false, error: "Open UC's Activities & awards list first" });
+        return false;
+      }
+      if (!document.getElementById("add_activity")) {
+        sendResponse({ type: "ucActAdd", ok: false, error: "UC's Add an activity or award button is not on the page" });
+        return false;
+      }
+      sendResponse({ type: "ucActAdd", ok: true });
+      setTimeout(() => clickUcAdd(document), 50); // after the answer: the click leaves the page
+      return false;
+    case "ucActFill":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "form") {
+        sendResponse({ type: "ucActFill", ok: false, error: "Open UC's add-activity page first (Add an activity or award)" });
+        return false;
+      }
+      // fillUcForm presses Save & continue itself; the answer goes out in the same turn, before the page can leave.
+      sendResponse({ type: "ucActFill", ...fillUcForm(document, msg.plan) });
+      return false;
     case "starsSchools":
       starsHtml("/srt/EnterSchools.aspx").then(
         (html) => sendResponse(html == null ? { type: "starsSchools", ok: false, error: "STARS signed you out: sign in again, then run again" } : { type: "starsSchools", ok: true, schools: starsSchools(html) }),

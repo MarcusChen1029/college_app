@@ -7,6 +7,8 @@ import type { InsertResult } from "./assist/insert.ts";
 import type { StarsRow } from "../../web/lib/stars-fill.ts";
 import type { CsuSchoolPlan } from "../../web/lib/csu-fill.ts";
 import type { UcGradePlan } from "../../web/lib/uc-fill.ts";
+import type { UcFormPlan } from "../../web/lib/uc-activities-fill.ts";
+import type { UcListed } from "./uc/activities.ts";
 import type { UcFillResult } from "./uc/fill.ts";
 import type { UiucRow } from "../../web/lib/uiuc-fill.ts";
 import type { UiucFillResult, UiucPageInfo } from "./uiuc/fill.ts";
@@ -67,6 +69,11 @@ export type AssistMessage =
   | { type: "csuStop" }
   | { type: "ucPage" }
   | { type: "ucFill"; plan: UcGradePlan }
+  /** UC Activities & awards: read the list page, delete one item (Delete, then Yes), press Add, fill the open add/edit form and press Save & continue. */
+  | { type: "ucActList" }
+  | { type: "ucActDelete"; activityId: string }
+  | { type: "ucActAdd" }
+  | { type: "ucActFill"; plan: UcFormPlan }
   /** STARS: the student's schools (read from Enter Schools), and the coursework page address of one school year. */
   | { type: "starsSchools" }
   | { type: "starsYearPath"; ceeb: string; year: number }
@@ -90,6 +97,14 @@ export type AssistResponse =
   | { type: "ucPage"; grade: number | null; names: string[]; pageText: string }
   | { type: "ucFill"; ok: true; result: UcFillResult }
   | { type: "ucFill"; ok: false; error: string }
+  | { type: "ucActList"; ok: true; items: UcListed[] }
+  | { type: "ucActList"; ok: false; error: string }
+  | { type: "ucActDelete"; ok: true }
+  | { type: "ucActDelete"; ok: false; error: string }
+  | { type: "ucActAdd"; ok: true }
+  | { type: "ucActAdd"; ok: false; error: string }
+  | { type: "ucActFill"; ok: true }
+  | { type: "ucActFill"; ok: false; error: string }
   | { type: "starsSchools"; ok: true; schools: StarsSchool[] }
   | { type: "starsSchools"; ok: false; error: string }
   /** path: null when STARS offers no such year for the school (years: the ones it does offer). */
