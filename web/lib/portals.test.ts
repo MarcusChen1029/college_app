@@ -94,10 +94,10 @@ test("hidden logins count only saved logins for countries not being applied to",
   };
   const onList = ["commonapp", "ucas"];
   assert.equal(hiddenLoginCount(data, ["US", "GB", "CA", "AU"], onList), 0);
-  // Applying to the UK only: Common App and the UC campus are hidden; UCAS, TOEFL, unregioned and unknown are not.
-  assert.equal(hiddenLoginCount(data, ["GB"], onList), 2);
-  // Applying to the US only: UCAS and the UK custom portal are hidden.
-  assert.equal(hiddenLoginCount(data, ["US"], onList), 2);
+  // Applying to the UK only: the UC campus is hidden; Common App and UCAS head My list groups, so they are not.
+  assert.equal(hiddenLoginCount(data, ["GB"], onList), 1);
+  // Applying to the US only: the UK custom portal is hidden (UCAS heads a My list group).
+  assert.equal(hiddenLoginCount(data, ["US"], onList), 1);
   assert.equal(hiddenLoginCount({}, ["US"], []), 0);
 });
 
@@ -180,14 +180,14 @@ test("starsPatches skips ticked and non-STARS colleges", () => {
   assert.equal(entries[0].checklist.hasOwnProperty("stars"), false);
 });
 
-test("hiddenLoginCount counts route logins with no group", () => {
+test("hiddenLoginCount hides a route login only when neither My list nor Portals shows it", () => {
   const login = { ...EMPTY_LOGIN, username: "me@x.com" };
   const data: PortalData = { systems: { commonapp: login, toefl: login } };
-  // A saved Common App login with no Common App college on the list stays stored and is counted as hidden.
-  assert.equal(hiddenLoginCount(data, ["US"], ["uc"]), 1);
-  assert.equal(hiddenLoginCount(data, ["US"], ["commonapp"]), 0);
-  // Counted once even when its country is hidden too.
+  // No Common App college on the list: the login shows on Portals under its country, so it is hidden only with that country.
+  assert.equal(hiddenLoginCount(data, ["US"], ["uc"]), 0);
   assert.equal(hiddenLoginCount(data, ["GB"], ["uc"]), 1);
+  // A Common App group on My list shows it whatever the regions.
+  assert.equal(hiddenLoginCount(data, ["GB"], ["commonapp"]), 0);
   assert.equal(hiddenLoginCount({ systems: { commonapp: EMPTY_LOGIN } }, ["US"], []), 0);
   assert.equal(hiddenLoginCount({}, ["US"], []), 0);
 });

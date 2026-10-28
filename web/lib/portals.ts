@@ -151,16 +151,16 @@ export function savedCount(data: PortalData): number {
 }
 
 /**
- * Saved logins (with a username) that Portals does not show, so the page can say they are hidden: those of a country
- * outside `visible`, and those of an application route no college on the list uses (`routesOnList`; they live on
- * My list groups). Each login counts once. Country-free systems and custom portals with no region are never hidden.
+ * Saved logins (with a username) that no page shows, so Portals can say they are hidden: those of a country outside
+ * `visible`. A route login heading a My list group (`routesOnList`) always shows there; one with no group shows on Portals
+ * under its country. Country-free systems and custom portals with no region are never hidden.
  */
 export function hiddenLoginCount(data: PortalData, visible: readonly RegionCode[], routesOnList: readonly string[]): number {
   const hidden = (region: PortalRegion | undefined) => !!region && region !== "ANY" && !visible.includes(region);
   const regionOfKey = (key: string) => SYSTEMS.find((s) => s.key === key)?.region;
-  const unusedRoute = (key: string) => SYSTEMS.find((s) => s.key === key)?.kind === "route" && !routesOnList.includes(key);
+  const onMyList = (key: string) => SYSTEMS.find((s) => s.key === key)?.kind === "route" && routesOnList.includes(key);
   const saved = (l: Login) => l.username.trim() !== "";
-  const fromSystems = Object.entries(data.systems ?? {}).filter(([key, l]) => saved(l) && (hidden(regionOfKey(key)) || unusedRoute(key)));
+  const fromSystems = Object.entries(data.systems ?? {}).filter(([key, l]) => saved(l) && hidden(regionOfKey(key)) && !onMyList(key));
   const fromCampuses = Object.entries(data.campuses ?? {}).filter(([key, l]) => saved(l) && hidden(regionOfKey(key.split(":")[0])));
   const fromCustom = (data.custom ?? []).filter((p) => saved(p) && hidden(p.region));
   return fromSystems.length + fromCampuses.length + fromCustom.length;

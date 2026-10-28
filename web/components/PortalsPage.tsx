@@ -36,6 +36,7 @@ import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
+import { useStarsSync } from "./useStarsSync";
 
 const noop = () => () => {};
 
@@ -75,6 +76,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
+  useStarsSync(student);
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
   const data: PortalData = student.profile.portals ?? {};
@@ -125,7 +127,9 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   // Accounts that are not a way to apply: testing, aid, visas and STARS (an add-on to the application).
   const isOther = (s: PortalSystem) => s.group === "optional" || s.kind === "addon";
   const otherShown = (s: PortalSystem) => !!data.systems?.[s.key] || (s.key === "stars" && starsListed);
-  const othersAdded = (region: PortalRegion) => systemsForRegion(region).filter((s) => isOther(s) && otherShown(s));
+  // A saved application-system login with no group on My list (e.g. Coalition) stays reachable here.
+  const leftoverRoute = (s: PortalSystem) => s.kind === "route" && !!data.systems?.[s.key] && !routesOnList.includes(s.key);
+  const othersAdded = (region: PortalRegion) => systemsForRegion(region).filter((s) => (isOther(s) && otherShown(s)) || leftoverRoute(s));
   const customIn = (region: PortalRegion) => custom.filter((p) => (p.region ?? "ANY") === region);
   // Campus logins the student saved earlier (UCLA, UT Austin MyStatus...); no new ones can be added here.
   const campusesIn = (region: PortalRegion) => systemsForRegion(region).flatMap((s) => campusesOf(data, s).map((c) => ({ s, c })));

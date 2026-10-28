@@ -25,6 +25,7 @@ import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
+import { useStarsSync } from "./useStarsSync";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -100,6 +101,7 @@ export function MyList({
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
+  useStarsSync(student);
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
   const international = !!student.profile.international;
 
@@ -360,7 +362,7 @@ export function MyList({
       </Modal>
     )}
     <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
-      <div>
+      <div className="min-w-0">
       <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
         <span>{t("application.allSent.label")}</span>
         {sentButton("transcript", t("application.allSent.transcript"))}
@@ -381,11 +383,11 @@ export function MyList({
             </tr>
           </thead>
           {groups.map((g) => (
-            <tbody key={g.route}>
-              <tr className="border-t-2 border-zinc-200 first:border-t-0">
-                <td colSpan={6} className="bg-zinc-50/60 p-2">
+            <tbody key={g.route} className="border-t-2 border-zinc-200 first-of-type:border-t-0">
+              <tr>
+                <th scope="rowgroup" colSpan={6} className="bg-zinc-50/60 p-2 text-left font-normal">
                   {groupHeader(g.route, g.items.map((x) => x.entry.status))}
-                </td>
+                </th>
               </tr>
               {g.items.map(({ entry, college }) => {
                 const fit = fits.get(college.slug);
