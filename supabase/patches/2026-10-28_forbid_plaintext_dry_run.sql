@@ -266,15 +266,15 @@ select pg_temp.chk('F15 MCP read list (slug filled)', 'ok:2/2', pg_temp.api(true
      from public.ai_student_colleges where user_id = '00000000-0000-4000-8000-0000000041a1' and institution_id is not null order by created_at) s$q$));
 select pg_temp.chk('F16 MCP add_college insert through the view', 'ok:1', pg_temp.api(true, '/ai_student_colleges',
   $q$with i as (select id from public.institutions where id not in (select institution_id from public.ai_student_colleges where institution_id is not null) order by slug limit 1),
-     x as (insert into public.ai_student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
-           select '00000000-0000-4000-8000-0000000041a1', id, null, 'in_progress', null, '{}' from i returning 1) select count(*)::text from x$q$));
+     x as (insert into public.ai_student_colleges (institution_id, plan_key, status, notes, checklist)
+           select id, null, 'in_progress', null, '{}' from i returning user_id) select count(*)::text from x where user_id = '00000000-0000-4000-8000-0000000041a1'$q$));
 select pg_temp.chk('F17 MCP update entry (updated_at check, returning updated_at)', 'ok:1', pg_temp.api(true, '/ai_student_colleges',
   $q$with x as (update public.ai_student_colleges set plan_key = null, status = 'planning', notes = 'via view', checklist = '{"transcript":true}'
      where user_id = '00000000-0000-4000-8000-0000000041a1' and institution_id = (select id from public.institutions order by slug limit 1)
        and updated_at = (select updated_at from public.ai_student_colleges where institution_id = (select id from public.institutions order by slug limit 1))
      returning updated_at)
      select count(*)::text from x$q$));
-select pg_temp.chk('F18 AI insert through the view for another user refused (check option)', 'refused 44000', pg_temp.api(true, '/ai_student_colleges',
+select pg_temp.chk('F18 AI insert naming another user refused (no insert right on user_id: no listed-college oracle)', 'refused 42501', pg_temp.api(true, '/ai_student_colleges',
   $q$with i as (select id from public.institutions order by slug offset 6 limit 1),
      x as (insert into public.ai_student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
            select '00000000-0000-4000-8000-0000000041a3', id, null, 'in_progress', null, '{}' from i returning 1) select count(*)::text from x$q$));

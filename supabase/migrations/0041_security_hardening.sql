@@ -201,7 +201,9 @@ grant update (sat_total, act_composite, gpa_unweighted, gpa_weighted, is_interna
               interested, activities, resume)
   on public.ai_student_profiles to authenticated;
 grant select on public.ai_student_colleges to authenticated;
-grant insert (user_id, institution_id, plan_key, status, notes, checklist) on public.ai_student_colleges to authenticated;
+-- No user_id: the base column defaults to auth.uid(). Letting a caller name another student's id would make the
+-- unique (user_id, institution_id) error tell them which colleges that student has listed.
+grant insert (institution_id, plan_key, status, notes, checklist) on public.ai_student_colleges to authenticated;
 grant update (plan_key, status, notes, checklist) on public.ai_student_colleges to authenticated;
 
 -- ───────────── 2. write limits ─────────────

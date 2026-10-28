@@ -432,9 +432,6 @@ function start() {
   window.addEventListener("focus", refreshIfStale);
 }
 
-/** True once this signed-in account has loaded, i.e. writes to it are allowed (pages check it before vault deletes). */
-export const accountLoaded = () => !!state.auth && loadedFor === state.auth.userId;
-
 // Remote writes are optimistic; on failure we reload the server copy and surface the error. Resolves true when the write worked.
 async function remote(op: () => PromiseLike<{ error: { message: string } | null }>): Promise<boolean> {
   if (!state.auth) return false;
@@ -512,14 +509,15 @@ export function useStudent() {
     if (a) void remote(() => db().from("student_colleges").insert(fromEntry(a.userId, entry)));
     return true;
   };
-  const setProfile = (profile: StudentProfile) => {
+  /** Resolves true once the account has the change (false when signed out, not loaded, or the save failed). */
+  const setProfile = (profile: StudentProfile): Promise<boolean> => {
     emit({ profile });
     const a = state.auth;
-    if (!a) return;
+    if (!a) return Promise.resolve(false);
     // Password keys the row still holds (not yet migrated) go back out unchanged; see storedPortals.
     const row = fromProfile(a.userId, profile, storedPortals);
     storedPortals = row.portals;
-    void remote(() => db().from("student_profiles").upsert(row));
+    return remote(() => db().from("student_profiles").upsert(row));
   };
   return {
     ...s,
@@ -529,7 +527,7 @@ export function useStudent() {
     setProfile,
     /** Merges into the latest saved profile, so back-to-back edits don't overwrite each other. */
     updateProfile(patch: Partial<StudentProfile>) {
-      setProfile({ ...state.profile, ...patch });
+      return setProfile({ ...state.profile, ...patch });
     },
     /** No payment yet: choosing a plan just saves it. */
     setPlan(plan: PlanKey) {

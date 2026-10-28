@@ -481,7 +481,7 @@ export function registerTools(server: McpServer) {
       if (!college) return notFound(slug);
       const c = checkAddCollege({ studentPlan: s.profile.plan, listedSlugs: list.map((e) => e.slug), slug, offeredPlans: college.plans, plan });
       if (!c.ok) return toolError(c.error);
-      const { error } = await s.db.from("ai_student_colleges").insert({ user_id: s.userId, institution_id: college.id, plan_key: c.value.plan, status: "in_progress", notes: null, checklist: {} });
+      const { error } = await s.db.from("ai_student_colleges").insert({ institution_id: college.id, plan_key: c.value.plan, status: "in_progress", notes: null, checklist: {} });
       check(error, slug);
       // Like the website's "move to list": an interested college leaves the interested list once it's listed.
       const cleared = await changeProfile(s, (p) => ((p.interested ?? []).includes(slug) ? { columns: { interested: (p.interested ?? []).filter((x) => x !== slug) }, value: true } : { columns: {}, value: false }));
