@@ -5,20 +5,21 @@ import { useSearchParams } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
 import { openSignIn } from "@/components/SignInDialog";
 import { createExtensionToken, extensionDenyRedirect, extensionRedirect } from "@/lib/extension-api";
+import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 const card = "mx-auto max-w-xl space-y-4 rounded-2xl border border-zinc-200 p-6";
 const skeleton = <div className="mx-auto h-60 max-w-xl animate-pulse rounded-2xl bg-zinc-100" />;
-const errMsg = (e: unknown) => (e instanceof Error ? e.message : "Something went wrong. Please try again.");
 
 /**
  * Where the Chrome extension's sign-in (chrome.identity.launchWebAuthFlow) lands: /extension/connect?redirect_uri=...
- * A signed-in student allows it, gets a transcript-only token and is sent back to the extension's own address with the
+ * A signed-in student allows it, gets a token that reads only the transcript and the activities and honors, and is sent back to the extension's own address with the
  * token in the URL fragment. The token is never logged, stored, or put in a query string.
  */
 export function ExtensionConnect() {
+  const t = useT();
   const redirectUri = useSearchParams().get("redirect_uri");
   const extensionId = process.env.NEXT_PUBLIC_EXTENSION_ID ?? "";
   const student = useStudent();
@@ -30,7 +31,7 @@ export function ExtensionConnect() {
   if (!extensionId) {
     return (
       <div className={card}>
-        <h1 className="font-display text-2xl font-bold">Extension sign-in isn&apos;t set up yet.</h1>
+        <h1 className="font-display text-2xl font-bold">{t("extension.notSetUp")}</h1>
       </div>
     );
   }
@@ -38,8 +39,8 @@ export function ExtensionConnect() {
   if (extensionRedirect(redirectUri, extensionId, "x") === null) {
     return (
       <div className={card}>
-        <h1 className="font-display text-2xl font-bold">This link didn&apos;t come from the extension.</h1>
-        <p className="text-sm text-zinc-600">Open the College application filler extension and choose Connect to start again.</p>
+        <h1 className="font-display text-2xl font-bold">{t("extension.wrongLink")}</h1>
+        <p className="text-sm text-zinc-600">{t("extension.wrongLinkBody")}</p>
       </div>
     );
   }
@@ -48,10 +49,10 @@ export function ExtensionConnect() {
   if (!student.auth) {
     return (
       <div className={card}>
-        <h1 className="font-display text-2xl font-bold">Sign in to continue</h1>
-        <p className="text-sm text-zinc-600">The College application filler extension is asking to connect. Sign in first, then you can allow or cancel.</p>
+        <h1 className="font-display text-2xl font-bold">{t("extension.signInTitle")}</h1>
+        <p className="text-sm text-zinc-600">{t("extension.signInBody")}</p>
         <button type="button" className={buttonClass("primary")} onClick={openSignIn}>
-          Sign in
+          {t("account.signIn")}
         </button>
       </div>
     );
@@ -59,7 +60,7 @@ export function ExtensionConnect() {
   if (student.role === "teacher") {
     return (
       <div className={card}>
-        <h1 className="font-display text-2xl font-bold">This extension is for students.</h1>
+        <h1 className="font-display text-2xl font-bold">{t("extension.studentsOnly")}</h1>
       </div>
     );
   }
@@ -67,12 +68,16 @@ export function ExtensionConnect() {
     // No account type yet. This page is exempt from the /welcome redirect (redirectFor) so the popup is not lost; say what to do instead.
     return (
       <div className={card}>
-        <h1 className="font-display text-2xl font-bold">Choose your account type first</h1>
+        <h1 className="font-display text-2xl font-bold">{t("extension.roleTitle")}</h1>
         <p className="text-sm text-zinc-600">
-          Choose &apos;Student&apos; first at <Link href="/welcome" className="font-medium underline">/welcome</Link>, then click Sign in in the extension again.
+          {t("extension.roleBefore")}{" "}
+          <Link href="/welcome" className="font-medium underline">
+            /welcome
+          </Link>
+          {t("extension.roleAfter")}
         </p>
         <Link href="/welcome" className={buttonClass("primary")}>
-          Go to /welcome
+          {t("extension.roleGo")}
         </Link>
       </div>
     );
@@ -85,11 +90,11 @@ export function ExtensionConnect() {
     try {
       const token = await createExtensionToken();
       const target = extensionRedirect(redirectUri, extensionId, token);
-      if (!target) throw new Error("This link didn't come from the extension.");
+      if (!target) throw new Error(t("extension.wrongLink"));
       setDone(true);
       window.location.replace(target);
     } catch (e) {
-      setError(errMsg(e));
+      setError(e instanceof Error ? e.message : t("common.tryAgain"));
       setBusy(false);
     }
   }
@@ -101,12 +106,12 @@ export function ExtensionConnect() {
 
   return (
     <div className={card}>
-      <h1 className="font-display text-2xl font-bold">Connect the extension</h1>
+      <h1 className="font-display text-2xl font-bold">{t("extension.title")}</h1>
       <p className="text-sm text-zinc-700">
-        <strong>College application filler</strong> wants to read your transcript (schools, courses, grades). It cannot see anything else in your account.
+        <strong>{t("extension.name")}</strong> {t("extension.consent")}
       </p>
       <p className="text-sm text-zinc-600">
-        Signed in as <span className="font-medium">{student.auth.email}</span>. You can disconnect it any time in Settings.
+        {t("extension.signedInAs")} <span className="font-medium">{student.auth.email}</span>. {t("extension.disconnectAnyTime")}
       </p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
@@ -114,14 +119,14 @@ export function ExtensionConnect() {
         </p>
       )}
       {done ? (
-        <p className="text-sm text-zinc-600">Returning to the extension…</p>
+        <p className="text-sm text-zinc-600">{t("extension.returning")}</p>
       ) : (
         <div className="flex flex-wrap gap-3">
           <button type="button" className={buttonClass("primary")} disabled={busy} onClick={allow}>
-            {busy ? "Allowing…" : "Allow"}
+            {busy ? t("extension.allowing") : t("extension.allow")}
           </button>
           <button type="button" className={buttonClass("secondary")} disabled={busy} onClick={cancel}>
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
       )}
