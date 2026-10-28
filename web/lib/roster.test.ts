@@ -106,7 +106,7 @@ test("parseStudentDetail keeps essays null when not shared and defaults missing 
   assert.equal(d.essays, null);
   assert.equal(d.shareEssays, false);
   assert.deepEqual(d.profile.targetRegions, []);
-  assert.deepEqual(d.activities, {});
+  assert.deepEqual(d.activities, { version: 2, commonApp: { activities: [], honors: [] }, uc: [] });
   assert.deepEqual(d.colleges, []);
   const shared = parseStudentDetail({ student_id: "a", share_essays: true, essays: { ps: { status: "drafting", url: "", prompt: 1 } }, profile: {}, colleges: [] });
   assert.equal(shared.essays?.ps?.status, "drafting");
@@ -122,4 +122,20 @@ test("worstSeverity ranks one imminent deadline above several minor flags", () =
 test("localDate is the viewer's calendar day, zero padded", () => {
   assert.equal(localDate(new Date(2026, 0, 5, 23, 59)), "2026-01-05");
   assert.equal(localDate(new Date(2026, 9, 24, 0, 1)), "2026-10-24");
+});
+
+test("parseStudentDetail returns activities in the 2026-27 format whatever the server stored", () => {
+  const old = {
+    commonApp: { activities: [{ id: "a1", type: "Work (Paid)", position: "Cashier", organization: "Cafe", description: "d", grades: ["11"], timing: ["school", "break"], hoursPerWeek: 5, weeksPerYear: 20, continueInCollege: true }], honors: [] },
+    uc: [{ id: "u1", category: "work", name: "Cashier", organization: "Cafe", description: "d", grades: ["11"] }, { id: "u2", category: "award", name: "Prize", awardLevel: "state" }],
+  };
+  const d = parseStudentDetail({ student_id: "a", profile: {}, colleges: [], activities: old });
+  assert.equal(d.activities.version, 2);
+  const [ca] = d.activities.commonApp!.activities;
+  assert.deepEqual([ca.type, ca.leadership, ca.timing, ca.continueInCollege], ["Employment or work (paid)", true, "all", "yes"]);
+  assert.deepEqual([d.activities.uc![0].jobTitle, d.activities.uc![0].name], ["Cashier", "Cafe"]);
+  assert.deepEqual(d.activities.uc![1].awardLevels, ["state"]);
+  // A current payload is unchanged, and a missing one is empty but current.
+  assert.deepEqual(parseStudentDetail({ student_id: "a", profile: {}, colleges: [], activities: d.activities }).activities, d.activities);
+  assert.deepEqual(parseStudentDetail({ student_id: "a", profile: {}, colleges: [] }).activities, { version: 2, commonApp: { activities: [], honors: [] }, uc: [] });
 });

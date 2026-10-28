@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { newCaActivity, newCaHonor } from "./activities.ts";
 import { buildContextPack, type PackCollege, type PackInput } from "./ai-context.ts";
 import type { CollegeDetail, CollegeSummary, Deadline } from "./types.ts";
 
@@ -102,6 +103,35 @@ test("profile lists scores, sections and English tests", () => {
   assert.match(md, /TOEFL iBT \(0–120\): 110 \(Reading 29\)/);
   assert.match(md, /International student/);
   assert.match(md, /Target regions: United States/);
+});
+
+test("activities list the 2026-27 fields as plain text and show the role only for a leadership role", () => {
+  const profile = {
+    ...input().profile,
+    activities: {
+      version: 2 as const,
+      commonApp: {
+        activities: [
+          { ...newCaActivity(), type: "Athletics (JV or varsity)", sport: "Soccer", leadership: true, position: "Captain", organization: "School team", description: "Midfielder.", grades: ["10" as const, "PG" as const], timing: "all" as const, afterStart: "2027-09", stillParticipating: false, afterEnd: "2028-05", hoursPerWeek: 8, weeksPerYear: 30, continueInCollege: "not_sure" as const, legacy: "private note" },
+          { ...newCaActivity(), type: "Art", leadership: false, position: "Treasurer", organization: "Studio", description: "Drew.", grades: ["11" as const], timing: "school" as const, continueInCollege: "yes" as const },
+        ],
+        honors: [{ ...newCaHonor(), title: "AIME", grades: ["11" as const], levels: ["national" as const] }],
+      },
+      uc: [],
+    },
+  };
+  const md = buildContextPack(input({ profile, full: true }));
+  assert.match(md, /1\. Captain, School team \(Athletics \(JV or varsity\): Soccer\)/);
+  assert.match(md, /grades 10, PG/);
+  assert.match(md, /all year/);
+  assert.match(md, /after high school 2027-09 to 2028-05/);
+  assert.match(md, /8 h\/week, 30 weeks\/year/);
+  assert.match(md, /plans to continue in college: not sure/);
+  assert.match(md, /2\. Studio \(Art\)/);
+  assert.match(md, /during the school year/);
+  assert.match(md, /plans to continue in college: yes/);
+  assert.doesNotMatch(md, /Treasurer|private note/);
+  assert.match(md, /- AIME \(grades 11\)/);
 });
 
 test("list row uses the international admit rate and the chosen plan's next deadline", () => {

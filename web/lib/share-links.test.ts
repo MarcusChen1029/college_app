@@ -162,3 +162,70 @@ test("portfolio without scores when the resume hides them", () => {
   assert.equal(normalizePortfolioView({ kind: "parent" }), null);
   assert.equal(normalizePortfolioView(null), null);
 });
+
+// What portfolio_view returns once migration 0038 is applied: the full 2026-27 entries (ids included).
+const RAW_PORTFOLIO_V2 = {
+  ...RAW_PORTFOLIO,
+  activities: {
+    version: 2,
+    commonApp: {
+      activities: [
+        {
+          id: "legacy-ca-0", type: "Robotics", sport: "", leadership: true, position: "Captain", organization: "Robo Club", description: "Built robots",
+          grades: ["11", "12", "13"], timing: "school", afterStart: null, stillParticipating: null, afterEnd: null, hoursPerWeek: 6, weeksPerYear: 30,
+          continueInCollege: null, legacy: "From your earlier version: private note", password: "x",
+        },
+      ],
+      honors: [{ id: "h0", title: "National Merit", grades: ["12"], levels: ["national", "galactic"] }],
+    },
+    uc: [
+      { id: "legacy-uc-0", category: "work", name: "Shop", jobTitle: "Cashier", extra: "", description: "Rang up sales", grades: ["12"], awardLevels: [], hoursPerWeek: null, weeksPerYear: null, workHours: { "12": { schoolYear: 10, summer: null } }, legacy: "x" },
+      { id: "legacy-uc-1", category: "extracurricular", name: "Robo Club", description: "", grades: [], awardLevels: [], fromId: "legacy-ca-0" },
+      { id: "z", category: "nonsense", name: "Dropped" },
+    ],
+  },
+};
+
+const withoutIds = (a: ReturnType<typeof normalizePortfolioView> & object) => {
+  const strip = <T extends { id: string; fromId?: string }>(xs: T[]) =>
+    xs.map((x) => {
+      const rest: Partial<T> = { ...x };
+      delete rest.id;
+      delete rest.fromId;
+      return rest;
+    });
+  return { ca: strip(a.activities.commonApp.activities), honors: strip(a.activities.commonApp.honors), uc: strip(a.activities.uc) };
+};
+
+test("portfolio: the current (earlier-format) RPC output is read as 2026-27 activities", () => {
+  const p = normalizePortfolioView(RAW_PORTFOLIO)!;
+  assert.equal(p.activities.version, 2);
+  const [ca] = p.activities.commonApp.activities;
+  assert.deepEqual([ca.type, ca.leadership, ca.position, ca.timing], ["Robotics", true, "Captain", "school"]);
+  const [work] = p.activities.uc;
+  assert.deepEqual([work.category, work.jobTitle, work.name], ["work", "Cashier", "Shop"]); // job title and workplace are no longer swapped
+});
+
+test("portfolio: the 2026-27 RPC output gives the same activities as the earlier one", () => {
+  const v1 = normalizePortfolioView(RAW_PORTFOLIO)!;
+  const v2 = normalizePortfolioView(RAW_PORTFOLIO_V2)!;
+  assert.deepEqual(v2.activities.commonApp.activities[0].timing, "school");
+  assert.deepEqual(withoutIds(v2), withoutIds(v1));
+  assert.equal(v2.activities.uc[1].fromId, "legacy-ca-0");
+  // Even if the RPC does not say version 2, its entries are recognised as current (no job title / workplace swap).
+  const noVersion = JSON.parse(JSON.stringify(RAW_PORTFOLIO_V2));
+  delete noVersion.activities.version;
+  assert.deepEqual(normalizePortfolioView(noVersion)!.activities.uc[0].jobTitle, "Cashier");
+});
+
+test("portfolio: private notes and the hours grid never reach the page; hours follow the resume option", () => {
+  for (const raw of [RAW_PORTFOLIO, RAW_PORTFOLIO_V2]) {
+    const hidden = normalizePortfolioView(raw)!;
+    const text = JSON.stringify(hidden);
+    for (const leak of ["private note", '"legacy"', "password", "schoolYear"]) assert.ok(!text.includes(leak), `leaked ${leak}`);
+  }
+  const shown = normalizePortfolioView({ ...RAW_PORTFOLIO_V2, options: { source: "both", showHours: true, showScores: true } })!;
+  assert.equal(shown.activities.commonApp.activities[0].hoursPerWeek, 6);
+  assert.equal(shown.activities.commonApp.activities[0].weeksPerYear, 30);
+  assert.ok(!JSON.stringify(shown).includes('"legacy"'));
+});

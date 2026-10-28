@@ -6,6 +6,8 @@ import {
   GRADES,
   HONOR_LEVELS,
   UC_AWARD_LEVELS,
+  UC_EDPREP_OTHER,
+  UC_EDPREP_PROGRAMS,
   type ActivityData,
   type CaActivity,
   type Grade,
@@ -54,10 +56,13 @@ const hoursText = (h: number | null, w: number | null) => (h != null && w != nul
 const join = (...parts: string[]) => parts.filter(Boolean).join(" · ");
 
 function caSection(a: CaActivity): SectionKey {
-  if (a.type === "Work (Paid)" || a.type === "Internship") return "work";
-  if (a.type === "Community Service (Volunteer)") return "service";
+  if (a.type === "Employment or work (paid)" || a.type === "Internship") return "work";
+  if (a.type === "Community service or volunteer work") return "service";
   return "leadership";
 }
+
+/** The role is only the student's answer to "Did you have a specific position or leadership role?" when that is yes. */
+export const caRole = (a: CaActivity) => (a.leadership === true ? a.position.trim() : "");
 
 const UC_SECTION: Record<UcCategory, SectionKey> = {
   award: "honors",
@@ -69,20 +74,30 @@ const UC_SECTION: Record<UcCategory, SectionKey> = {
 };
 
 function fromCa(a: CaActivity, o: ResumeOptions): ResumeItem {
-  const timing = a.timing.length === 1 ? CA_TIMING[a.timing[0]] : "";
+  const timing = a.timing === "school" || a.timing === "break" ? CA_TIMING[a.timing] : ""; // "all year" says nothing extra
+  const role = caRole(a);
   return {
-    title: a.position || a.organization,
-    organization: a.position ? a.organization : "",
+    title: role || a.organization || a.sport || a.type,
+    organization: role ? a.organization : "",
     meta: join(gradeText(a.grades), timing, o.showHours ? hoursText(a.hoursPerWeek, a.weeksPerYear) : ""),
     description: a.description,
   };
 }
 
+/** An education-prep entry is its program (UC's list), or the name the student typed when the program is Other. */
+export function ucName(e: UcEntry): string {
+  if (e.category !== "edprep") return e.name;
+  if (e.program === UC_EDPREP_OTHER) return e.name;
+  return UC_EDPREP_PROGRAMS.find((p) => p.value === e.program)?.label ?? "";
+}
+
 function fromUc(e: UcEntry, o: ResumeOptions): ResumeItem {
+  const work = e.category === "work" && e.jobTitle.trim() !== "";
   return {
-    title: e.name,
-    organization: e.organization,
-    meta: join(e.awardLevel ? UC_AWARD_LEVELS[e.awardLevel] : "", gradeText(e.grades), o.showHours ? hoursText(e.hoursPerWeek, e.weeksPerYear) : ""),
+    // Work: the job title, then the workplace. Everything else: the name alone.
+    title: work ? e.jobTitle : ucName(e),
+    organization: work ? e.name : "",
+    meta: join(e.awardLevels.map((l) => UC_AWARD_LEVELS[l]).join(", "), gradeText(e.grades), o.showHours ? hoursText(e.hoursPerWeek, e.weeksPerYear) : ""),
     description: e.description,
   };
 }
@@ -115,14 +130,19 @@ export function buildResume(profile: StudentProfile, header: ResumeHeader, o: Re
 
   const buckets = new Map<SectionKey, ResumeItem[]>(SECTION_ORDER.map((k) => [k, []]));
   if (o.source !== "uc") {
-    caActs.filter((x) => x.organization || x.position).forEach((x) => buckets.get(caSection(x))!.push(fromCa(x, o)));
+    caActs.filter((x) => x.organization || caRole(x) || x.description).forEach((x) => buckets.get(caSection(x))!.push(fromCa(x, o)));
     caHonors
       .filter((h) => h.title)
       .forEach((h) =>
         buckets.get("honors")!.push({ title: h.title, organization: "", meta: join(h.levels.map((l) => HONOR_LEVELS[l]).join(", "), gradeText(h.grades)), description: "" }),
       );
   }
-  if (o.source !== "common") uc.filter((e) => e.name).forEach((e) => buckets.get(UC_SECTION[e.category])!.push(fromUc(e, o)));
+  if (o.source !== "common") {
+    uc.forEach((e) => {
+      const item = fromUc(e, o);
+      if (item.title) buckets.get(UC_SECTION[e.category])!.push(item);
+    });
+  }
 
   return {
     education: { school: header.school, gradYear: header.gradYear, lines: o.showScores ? educationLines(profile) : [] },

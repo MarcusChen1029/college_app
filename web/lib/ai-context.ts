@@ -1,6 +1,7 @@
 // "Copy for AI": the student's profile, list and (on paid plans) each listed college's sourced facts as one
 // Markdown document to paste into ChatGPT, Claude or Gemini. Portal logins and private notes are never included.
 
+import type { CaContinue, CaTiming } from "./activities.ts";
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
 import { CHECKLIST, ESSAY_STATUSES, isDone, type Checklist } from "./checklist.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
@@ -24,6 +25,7 @@ import {
 } from "./format.ts";
 import { makeT } from "./i18n/index.ts";
 import { testPlanText } from "./i18n/test-plan-text.ts";
+import { caRole } from "./resume.ts";
 import { programApplyVia, programFee } from "./programs.ts";
 import { regionLabel } from "./regions.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, SAT_SCALE, sectionSummary } from "./scores.ts";
@@ -90,17 +92,30 @@ function profileSection(p: StudentProfile): string[] {
   ];
 }
 
+const TIMING_TEXT: Record<CaTiming, string> = { school: "during the school year", break: "during school break", all: "all year" };
+const CONTINUE_TEXT: Record<CaContinue, string> = { yes: "yes", no: "no", not_sure: "not sure" };
+
 function activitiesSection(p: StudentProfile): string[] {
   const ca = p.activities?.commonApp;
-  const acts = (ca?.activities ?? []).filter((a) => a.position || a.organization || a.description);
+  // The role is only the student's answer when they said they had a leadership role.
+  const acts = (ca?.activities ?? []).filter((a) => caRole(a) || a.organization || a.description);
   const honors = (ca?.honors ?? []).filter((h) => h.title);
   if (!acts.length && !honors.length) return [];
   return [
     "## My activities (Common App)",
     ...acts.map((a, i) => {
       const time = [a.hoursPerWeek != null && `${a.hoursPerWeek} h/week`, a.weeksPerYear != null && `${a.weeksPerYear} weeks/year`].filter(Boolean).join(", ");
-      const head = [a.position, a.organization].filter(Boolean).join(", ");
-      return `${i + 1}. ${head}${a.type ? ` (${a.type})` : ""}${a.grades.length ? ` — grades ${a.grades.join(", ")}` : ""}${time ? ` — ${time}` : ""}${a.description ? `: ${a.description}` : ""}`;
+      const head = [caRole(a), a.organization].filter(Boolean).join(", ");
+      const type = [a.type, a.sport].filter(Boolean).join(": ");
+      const after = a.grades.includes("PG") && a.afterStart ? `after high school ${a.afterStart} to ${a.stillParticipating === false && a.afterEnd ? a.afterEnd : "present"}` : "";
+      const details = [
+        a.grades.length ? `grades ${a.grades.join(", ")}` : "",
+        a.timing ? TIMING_TEXT[a.timing] : "",
+        after,
+        time,
+        a.continueInCollege ? `plans to continue in college: ${CONTINUE_TEXT[a.continueInCollege]}` : "",
+      ].filter(Boolean);
+      return `${i + 1}. ${head || type}${head && type ? ` (${type})` : ""}${details.map((d) => ` — ${d}`).join("")}${a.description ? `: ${a.description}` : ""}`;
     }),
     ...(honors.length ? ["", "Honors:", ...honors.map((h) => `- ${h.title}${h.grades.length ? ` (grades ${h.grades.join(", ")})` : ""}`)] : []),
   ];
