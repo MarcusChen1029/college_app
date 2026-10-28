@@ -131,7 +131,11 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with
   `requirements.platforms` -> `python -I scripts/build_application_systems.py` (`--check` verifies) -> `web/lib/data/application-systems.json`.
-  A system shows on Portals only when a listed college needs it (or something is saved for it); Done / Not done marks live in `profile.portals.progress`.
+  Every college gets exactly one `route` (Common App > Coalition > UC > Cal State Apply > ApplyTexas > UCAS > OUAC > EducationPlannerBC > ... > direct;
+  spec `docs/superpowers/specs/2026-10-28-apply-groups-design.md`). **My list** is grouped by route, with the shared login in each group header;
+  **Portals** holds only submitted colleges' portals and other accounts (tests, aid, visas, STARS). Done / Not done marks live in `profile.portals.progress`.
+  STARS is an account on Portals and the `checklist.stars` item (never counted in progress/Ready) on the 18 colleges that require it; marking the
+  account Done ticks them all (`useStarsSync`). Common App membership beyond `requirements.platforms` comes from commonapp.org/explore (86 added 2026-10-28).
 - **Supplemental essays + international finance steps** (2026-27): one researched file per college in `data/supplements_2026_27/<file>.json` (contract and source rules:
   `docs/superpowers/research/2026-10-27-supplements-brief.md`; files are named after `data/colleges/` file names, output is keyed by the inner slug, e.g. cmu.json -> carnegie-mellon)
   -> `python -I scripts/build_supplements.py` (validates; `--check` verifies) -> `web/lib/data/supplements.json`, read through `web/lib/supplements.ts`. 102 popular US colleges
