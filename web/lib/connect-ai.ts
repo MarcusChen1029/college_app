@@ -12,7 +12,7 @@ export const AI_CAN = [
 ] as const;
 
 export const AI_CANNOT = [
-  "See or change your portal usernames and passwords",
+  "See your portal passwords, or change your portal logins",
   "Remove a college from your list",
   "Delete an essay",
   "Change your subscription plan or reminder emails",
