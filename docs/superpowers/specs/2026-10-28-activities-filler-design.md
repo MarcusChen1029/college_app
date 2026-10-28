@@ -187,8 +187,8 @@ UC (server forms; research §7):
 ### 5.4 After writing
 - Read back, Common App (my call): before pressing Continue, check every touched control is valid on the page (Angular `ng-invalid`
   class on its form control; out-of-range and over-long values are invalid and would be silently left out of the save) and stop if any is.
-  After Continue has saved and moved on, nothing is dirty, so the panel navigates back to the section (in-app link, e.g.
-  `#tertiaryNavItem7_232`) and compares every field on the page with what was sent. The extension never calls Common App's private API.
+  After Continue has saved and moved on, nothing is dirty, so the panel reloads the section page (a full page load, ruling
+  R19; it then waits until the page has drawn its slots) and compares every field on the page with what was sent. The extension never calls Common App's private API.
 - Read back, UC: the list page's read-only `section-content` per entry. Report any field that did not stick.
 - Report: filled N, skipped/blocked items with reasons, "needs an answer" boxes left blank, entries replaced (names), and for "keep"
   runs which tracker items were not added.
