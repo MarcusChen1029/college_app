@@ -1,4 +1,4 @@
-import { loadTranscript, signIn, signOut } from "./auth.ts";
+import { loadActivities, loadTranscript, signIn, signOut } from "./auth.ts";
 import type { PanelRequest, PanelResponse } from "./messages.ts";
 
 chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(() => {});
@@ -12,12 +12,14 @@ async function handle(msg: PanelRequest): Promise<PanelResponse> {
       return { type: "signOut" };
     case "loadTranscript":
       return { type: "loadTranscript", result: await loadTranscript() };
+    case "loadActivities":
+      return { type: "loadActivities", result: await loadActivities() };
   }
 }
 
 chrome.runtime.onMessage.addListener((msg: unknown, _sender, sendResponse) => {
   const type = (msg as { type?: unknown } | null)?.type;
-  if (type !== "signIn" && type !== "signOut" && type !== "loadTranscript") return false;
+  if (type !== "signIn" && type !== "signOut" && type !== "loadTranscript" && type !== "loadActivities") return false;
   handle(msg as PanelRequest).then(sendResponse, () => sendResponse(undefined));
   return true; // async response
 });

@@ -1,7 +1,7 @@
 // Side panel UI. Pure logic lives in runner.ts and chrome-driver.ts; this file only renders and wires clicks. All text goes in with
 // textContent (never innerHTML): course names and Common App messages are data, not markup.
 
-import type { TranscriptResult } from "./auth.ts";
+import type { ActivitiesResult, TranscriptResult } from "./auth.ts";
 import { buildSystemPlan, FILL_SYSTEMS } from "../../web/lib/system-fill.ts";
 import { buildStarsPlans } from "../../web/lib/stars-fill.ts";
 import { assistView } from "./assist-panel.ts";
@@ -55,6 +55,15 @@ async function loadTranscript(): Promise<TranscriptResult> {
     return { ok: false, reason: "network" };
   }
 }
+/** Used by the activities fill (Common App / UC activities pages). A transcript-only token answers `reconnect`. */
+async function loadActivities(): Promise<ActivitiesResult> {
+  try {
+    const r = (await chrome.runtime.sendMessage({ type: "loadActivities" })) as PanelResponse | undefined;
+    return r?.type === "loadActivities" ? r.result : { ok: false, reason: "network" };
+  } catch {
+    return { ok: false, reason: "network" };
+  }
+}
 async function signIn(): Promise<boolean> {
   try {
     const r = (await chrome.runtime.sendMessage({ type: "signIn" })) as PanelResponse | undefined;
@@ -84,6 +93,9 @@ async function activeTab(): Promise<{ id: number | null; site: Site | null }> {
 
 // ---- views -------------------------------------------------------------------------------------------------------------
 
+const ACTIVITIES_RECONNECT = "Reconnect to allow activities";
+const ACTIVITIES_NETWORK = "Could not load your activities. Check your connection and try again.";
+
 let ticked = new Set<Target>();
 let transcript: { schools: Parameters<typeof buildPlans>[0]; courses: Parameters<typeof buildPlans>[1] } | null = null;
 /** The system the student picked in the panel; null = follow the active tab. */
@@ -98,7 +110,7 @@ function signedOutView(message?: string): void {
   view = "other";
   const note = h("p", { class: "note" }, message ?? "");
   show(
-    h("p", {}, "Sign in with your Trakur account so the extension can read your transcript. It cannot see anything else in your account."),
+    h("p", {}, "Sign in with your Trakur account so the extension can read your transcript, activities and honors. It cannot see anything else in your account."),
     message ? note : null,
     button("Sign in", async () => {
       note.textContent = "Waiting for the sign-in window...";
@@ -106,6 +118,29 @@ function signedOutView(message?: string): void {
       else signedOutView("Sign in did not finish. Try again.");
     }, "btn primary"),
   );
+}
+
+/**
+ * What the activities fill shows when activities can't be read. A token minted before activities access (scope `{transcript}`)
+ * gets "Reconnect to allow activities" with the usual sign-in button: signing in again asks the student for activities, and the
+ * transcript fill keeps working with the old token until then (consent is never widened silently).
+ */
+function activitiesProblem(reason: Exclude<ActivitiesResult, { ok: true }>["reason"]): HTMLElement {
+  if (reason === "reconnect" || reason === "signed_out") {
+    const note = h("p", { class: "note" }, reason === "reconnect" ? ACTIVITIES_RECONNECT : STATUS.signedOut);
+    return h(
+      "div",
+      {},
+      note,
+      button("Sign in", async () => {
+        note.textContent = "Waiting for the sign-in window...";
+        if (await signIn()) await refresh();
+        else note.textContent = "Sign in did not finish. Try again.";
+      }, "btn primary"),
+    );
+  }
+  if (reason === "students_only") return h("p", { class: "note" }, STATUS.studentsOnly);
+  return h("div", {}, h("p", { class: "note" }, ACTIVITIES_NETWORK), button("Try again", () => void refresh(), "btn primary"));
 }
 
 function messageView(text: string, ...actions: HTMLElement[]): void {

@@ -1,4 +1,4 @@
-import type { TranscriptResult } from "./auth.ts";
+import type { ActivitiesResult, TranscriptResult } from "./auth.ts";
 import type { CgGradeKey, CgGradePlan, CurrentYearPlan } from "../../web/lib/commonapp-fill.ts";
 import type { PageResult } from "./commonapp/dom.ts";
 import type { InsertResult } from "./assist/insert.ts";
@@ -16,10 +16,14 @@ export type { FillTarget } from "./commonapp/pages.ts";
 export type { PageResult } from "./commonapp/dom.ts";
 
 /** Panel -> background requests. Extended by later tasks (fill plan, page state). */
-export type PanelRequest = { type: "signIn" } | { type: "signOut" } | { type: "loadTranscript" };
+export type PanelRequest = { type: "signIn" } | { type: "signOut" } | { type: "loadTranscript" } | { type: "loadActivities" };
 
 /** Background -> panel responses, keyed by request type. */
-export type PanelResponse = { type: "signIn"; ok: boolean } | { type: "signOut" } | { type: "loadTranscript"; result: TranscriptResult };
+export type PanelResponse =
+  | { type: "signIn"; ok: boolean }
+  | { type: "signOut" }
+  | { type: "loadTranscript"; result: TranscriptResult }
+  | { type: "loadActivities"; result: ActivitiesResult };
 
 export type FillMode = "replace" | "keep";
 

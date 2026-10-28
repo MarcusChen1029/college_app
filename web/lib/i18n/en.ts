@@ -6,6 +6,7 @@ export const en = {
   ...S.college.en,
   ...S.colleges.en,
   ...S.common.en,
+  ...S.extension.en,
   ...S.home.en,
   ...S.match.en,
   ...S.misc.en,
