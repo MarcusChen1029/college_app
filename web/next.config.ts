@@ -1,9 +1,22 @@
 import type { NextConfig } from "next";
+import { securityHeaders, shareHeaders } from "./lib/security-headers";
 
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  poweredByHeader: false,
+  async headers() {
+    const base = securityHeaders({
+      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+      dev: process.env.NODE_ENV === "development",
+    });
+    return [
+      { source: "/:path*", headers: base },
+      { source: "/share/:path*", headers: shareHeaders },
+      { source: "/extension/:path*", headers: [{ key: "Cache-Control", value: "private, no-store" }] },
+    ];
+  },
   // Old URLs for routes that moved (My colleges tabs, Writing section, Tools, Settings).
   async redirects() {
     return [
