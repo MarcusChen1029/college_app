@@ -1,6 +1,7 @@
 import outcomesData from "@/lib/data/outcomes.json";
 import { fmtDate } from "@/lib/format";
 import { getT } from "@/lib/i18n/server";
+import { SECTION_TITLE } from "@/lib/ui";
 import { COHORT, collegeOutcomes, formatEarnings, scorecardUrl, type OutcomesData } from "@/lib/outcomes";
 
 /**
@@ -15,13 +16,13 @@ export async function CollegeOutcomes({ slug }: { slug: string }) {
   const any = o && (o.gradRate !== null || o.earnings10 !== null || o.earnings6 !== null);
 
   return (
-    <section aria-labelledby="outcomes-heading">
-      <h2 id="outcomes-heading" className="mb-3 text-lg font-semibold">
+    <section id="outcomes" aria-labelledby="outcomes-heading">
+      <h2 id="outcomes-heading" className={`mb-4 ${SECTION_TITLE}`}>
         {t("outcomes.title")}
       </h2>
       {any ? (
         <>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-3">
             <Figure
               label={t("outcomes.grad.label")}
               value={o.gradRate !== null ? `${o.gradRate}%` : null}
@@ -63,17 +64,17 @@ export async function CollegeOutcomes({ slug }: { slug: string }) {
 /** Same look as the key-number tiles at the top of the college page; a missing value is stated, never shown as 0 or a dash. */
 function Figure({ label, value, sub, missing, missingSub }: { label: string; value: string | null; sub: string; missing: string; missingSub: string }) {
   return (
-    <div className="rounded-lg border border-zinc-200 p-3">
-      <div className="text-xs text-zinc-500">{label}</div>
+    <div className="bg-white px-4 py-3.5">
+      <div className="text-xs font-medium text-zinc-500">{label}</div>
       {value !== null ? (
         <>
-          <div className="text-xl font-semibold tabular-nums">{value}</div>
-          <div className="text-xs text-zinc-500">{sub}</div>
+          <div className="mt-1 font-display text-2xl font-bold tabular-nums">{value}</div>
+          <div className="mt-0.5 text-xs text-zinc-500">{sub}</div>
         </>
       ) : (
         <>
-          <div className="text-xl font-semibold text-zinc-400">{missing}</div>
-          <div className="text-xs text-zinc-500">{missingSub}</div>
+          <div className="mt-1 font-display text-2xl font-bold text-zinc-400">{missing}</div>
+          <div className="mt-0.5 text-xs text-zinc-500">{missingSub}</div>
         </>
       )}
     </div>

@@ -71,15 +71,15 @@ export default async function Home() {
           </h1>
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-zinc-600">{t("home.hero.body")}</p>
 
-          <div className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-3 rounded-[2rem] border-2 border-ink bg-white p-2 shadow-[6px_6px_0_0_#cdeafc] sm:flex-row sm:rounded-full">
-            <span className="px-5 py-2 font-display text-lg font-bold sm:flex-1 sm:text-left">{t("home.ready")}</span>
-            <Link href="/colleges" className="rounded-full border-2 border-blue-200 px-5 py-2.5 text-sm font-semibold hover:bg-blue-50">
-              {t("home.browse")}
-            </Link>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/start" className={buttonClass("primary")}>
               {t("home.getStarted")}
             </Link>
+            <Link href="/colleges" className={buttonClass("secondary")}>
+              {t("home.browse")}
+            </Link>
           </div>
+          <p className="mt-4 text-sm text-zinc-500">{t("home.cta.body")}</p>
         </div>
         <Wave className="absolute bottom-0 left-0 h-14 w-full" fill="#e9f2fa" />
       </section>

@@ -13,13 +13,15 @@ import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { scoredTests } from "@/lib/test-plan";
 import { resultTone, stageTone } from "@/lib/status";
-import { toneClass } from "@/lib/ui";
+import { buttonClass, toneClass } from "@/lib/ui";
 import type { CollegeSummary, Deadline, Lookups, ScoreCode } from "@/lib/types";
 import { AddCustomCollege } from "./AddCustomCollege";
 import { StudentAiContextButton } from "./AiContextButton";
 import { FitBadge, TierBadge } from "./badges";
 import { ChecklistPanel, SELECT, SELECT_BASE, usePlanLabel, useResultLabel } from "./ChecklistPanel";
 import { CrunchCard } from "./CrunchCard";
+import { GradCap } from "./Doodles";
+import { EmptyState } from "./EmptyState";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -103,7 +105,7 @@ export function MyList({
   const allDeadlines = [...deadlines, ...student.list.flatMap((e) => (e.custom ? [customDeadline(e.rowId ?? e.slug, e.custom)] : [])).filter((d): d is Deadline => !!d)];
   const listed = student.list.flatMap((e) => colleges.filter((c) => c.slug === e.slug));
   const addCustomButton = (
-    <button className="rounded border border-zinc-300 px-2 py-0.5 text-xs font-medium hover:bg-zinc-100" onClick={() => setAdding(true)}>
+    <button className="rounded-full border border-zinc-300 bg-white px-3 py-1 text-xs font-semibold hover:border-zinc-400 hover:bg-zinc-50" onClick={() => setAdding(true)}>
       {t("application.addCustom")}
     </button>
   );
@@ -166,13 +168,22 @@ export function MyList({
       <div>
       {banner}
       {addDialog}
-      <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
-        {t("application.emptyPre")}
-        <Link href="/colleges" className="text-blue-600 underline">
-          {t("nav.colleges")}
-        </Link>
-        {t("application.emptyPost")}
-      </p>
+      <EmptyState
+        art={<GradCap className="h-16 w-auto" />}
+        title={t("application.emptyTitle")}
+        actions={
+          <>
+            <Link href="/colleges" className={buttonClass("primary")}>
+              {t("home.browse")}
+            </Link>
+            <Link href="/tools/match" className={buttonClass("secondary")}>
+              {t("match.card.cta")}
+            </Link>
+          </>
+        }
+      >
+        {t("application.emptyBody")}
+      </EmptyState>
       </div>
       </div>
     );

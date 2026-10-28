@@ -9,6 +9,7 @@ import { fmtDate } from "@/lib/format";
 import type { TFunction } from "@/lib/i18n";
 import { collegeSupplements } from "@/lib/supplements-data";
 import { choiceGroups, CURRENT_CYCLE, isLastYear, promptKind, promptTextMissing, supplementStatus, type CollegeSupplements, type SupplementPrompt } from "@/lib/supplements";
+import { SECTION_TITLE } from "@/lib/ui";
 import { categoryLabel, financeText, limitLabel, summaryText, whoLabel } from "./supplement-text";
 
 function Ref({ n }: { n: number | undefined }) {
@@ -49,15 +50,15 @@ export function EssaysRequirement({ slug, fallback, t }: { slug: string; fallbac
 
 function PromptItem({ p, t, n, showWho, choose }: { p: SupplementPrompt; t: TFunction; n: number | undefined; showWho?: boolean; choose?: string }) {
   return (
-    <li className="rounded-lg border border-zinc-200 p-3 text-sm">
-      <div className="mb-1 flex flex-wrap items-center gap-2">
-        <span className="font-medium">{categoryLabel(t, p)}</span>
+    <li className="px-4 py-3.5 text-sm">
+      <div className="mb-1.5 flex flex-wrap items-center gap-2">
+        <span className="font-semibold">{categoryLabel(t, p)}</span>
         <Pill>{limitLabel(t, p)}</Pill>
         {choose && <Pill>{choose}</Pill>}
         {showWho && p.applies_to && <Pill tone="blue">{whoLabel(t, p.applies_to)}</Pill>}
         <Ref n={n} />
       </div>
-      <p className="whitespace-pre-line text-zinc-700">{p.prompt}</p>
+      <p className="max-w-[75ch] whitespace-pre-line text-[15px] leading-relaxed text-zinc-700">{p.prompt}</p>
     </li>
   );
 }
@@ -77,9 +78,9 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
     p.choose ? t("supplements.chooseN", { pick: p.choose.pick, total: prompts.filter((x) => x.choose?.group === p.choose!.group).length }) : undefined;
 
   return (
-    <section id="supplemental-essays" className="scroll-mt-20">
-      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-        <h2 className="text-lg font-semibold">{t("supplements.sectionTitle", { cycle: CURRENT_CYCLE })}</h2>
+    <section id="supplemental-essays">
+      <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <h2 className={SECTION_TITLE}>{t("supplements.sectionTitle", { cycle: CURRENT_CYCLE })}</h2>
         {isLastYear(rec) && (
           <StatusPill tone="soon" title={t("supplements.lastYearHint")}>
             {t("supplements.lastYear", { cycle })}
@@ -160,7 +161,7 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
       )}
 
       {(status === "required" || status === "optional_only") && (
-        <Link href="/writing/essays" className="mt-3 inline-block text-sm text-blue-600 hover:underline">
+        <Link href="/writing/essays" className="mt-4 inline-block text-sm font-semibold text-blue-700 hover:underline">
           {t("supplements.planLink")}
         </Link>
       )}
@@ -171,8 +172,8 @@ export function CollegeSupplementsSection({ slug, offset, t }: { slug: string; o
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-500">{title}</h3>
-      <ul className="space-y-2">{children}</ul>
+      <h3 className="mb-2 text-sm font-semibold text-zinc-600">{title}</h3>
+      <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200">{children}</ul>
     </div>
   );
 }

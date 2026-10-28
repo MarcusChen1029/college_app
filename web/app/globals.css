@@ -93,9 +93,62 @@ h3,
   letter-spacing: -0.02em;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
 :focus-visible {
   outline: 3px solid var(--color-blue-400);
   outline-offset: 2px;
+}
+
+/* Browser surfaces in the site's palette: selection, caret, form accents, scrollbars, link underlines. */
+::selection {
+  background: var(--color-sun);
+  color: var(--color-ink);
+}
+
+input,
+textarea,
+select {
+  caret-color: var(--color-blue-600);
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress {
+  accent-color: var(--color-ink);
+}
+
+html {
+  scrollbar-color: var(--color-zinc-300) transparent;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Anchors and keyboard focus land below the sticky header (and the on-this-page bar where a page has one). */
+html {
+  scroll-padding-top: 5rem;
+}
+html:has([data-jump-nav]) {
+  scroll-padding-top: 8.5rem;
 }
 
 /* Highlighter stroke behind text. */

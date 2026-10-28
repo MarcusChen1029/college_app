@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { Pill, TierBadge } from "@/components/badges";
+import { Pill, SchoolLogo, TierBadge } from "@/components/badges";
+import { JumpNav, type JumpItem } from "@/components/JumpNav";
 import { CollegeActions } from "@/components/CollegeActions";
 import { CollegeSupplementsSection, EssaysRequirement, IntlFinanceNote, SupplementSourceItems } from "@/components/CollegeSupplements";
 import { CollegeOutcomes } from "@/components/CollegeOutcomes";
@@ -31,7 +32,7 @@ import { estimateGpaPercentiles, GPA_BAND_ORDER } from "@/lib/gpa";
 import { programApplyVia, programFee } from "@/lib/programs";
 import { referenceTone } from "@/lib/status";
 import type { CollegeDetail } from "@/lib/types";
-import { toneClass } from "@/lib/ui";
+import { SECTION_TITLE, toneClass } from "@/lib/ui";
 import { getT } from "@/lib/i18n/server";
 
 export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
@@ -65,59 +66,84 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const planLabel = (k: string | null) => lookups.plans.find((p) => p.key === k)?.label ?? k ?? "";
   const testName = (k: string) => lookups.englishTests.find((x) => x.key === k)?.name ?? k;
 
+  const jump: JumpItem[] = [
+    ...(isUS ? [{ id: "scores", label: t("college.nav.scores") }] : []),
+    ...(c.programs.length > 0 ? [{ id: "courses", label: t("college.nav.courses") }] : []),
+    { id: "deadlines", label: t("college.nav.deadlines") },
+    ...(isUS || c.english_requirements.length > 0 ? [{ id: "english", label: t("college.nav.english") }] : []),
+    ...(isUS ? [{ id: "requirements", label: t("college.nav.requirements") }] : []),
+    ...(isUS ? [{ id: "supplemental-essays", label: t("college.nav.essays") }] : []),
+    ...(isUS ? [{ id: "cost", label: t("college.nav.cost") }, { id: "tiers", label: t("college.nav.tiers") }, { id: "outcomes", label: t("college.nav.outcomes") }] : []),
+    ...(c.admission_factors.length > 0 ? [{ id: "factors", label: t("college.nav.factors") }] : []),
+    { id: "sources", label: t("college.nav.sources") },
+  ];
+
   return (
-    <article className="space-y-8">
-      <header className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex items-start gap-3">
-          <TierBadge tier={general} />
-          <div>
-            <h1 className="text-2xl font-semibold">{c.name}</h1>
-            <p className="text-sm text-zinc-500">
-              {c.city}, {c.state_region} · {c.control === "public" ? t("college.public") : t("college.private")}
-              {c.setting && ` · ${c.setting}`}
-              {c.academic_calendar && ` · ${t("college.calendar", { x: c.academic_calendar })}`}
-            </p>
-            <div className="mt-2 flex flex-wrap gap-3 text-sm">
-              {c.website && (
-                <a className="text-blue-600 hover:underline" href={c.website} target="_blank" rel="noreferrer">
-                  {t("college.website")}
-                </a>
-              )}
-              {c.admissions_url && (
-                <a className="text-blue-600 hover:underline" href={c.admissions_url} target="_blank" rel="noreferrer">
-                  {t("college.admissions")}
-                </a>
-              )}
+    <article>
+      <header className="rounded-3xl bg-blue-50 px-5 py-6 sm:px-8 sm:py-8">
+        <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-4">
+          <div className="flex min-w-0 items-start gap-4">
+            <div className="mt-1.5 hidden shrink-0 empty:hidden sm:block">
+              <SchoolLogo slug={c.slug} />
+            </div>
+            <div className="min-w-0">
+              <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{c.name}</h1>
+              <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-600">
+                <TierBadge tier={general} size="sm" />
+                <span>
+                  {c.city}, {c.state_region} · {c.control === "public" ? t("college.public") : t("college.private")}
+                  {c.setting && ` · ${c.setting}`}
+                  {c.academic_calendar && ` · ${t("college.calendar", { x: c.academic_calendar })}`}
+                </span>
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold">
+                {c.website && (
+                  <a className="text-blue-700 hover:underline" href={c.website} target="_blank" rel="noreferrer">
+                    {t("college.website")}
+                  </a>
+                )}
+                {c.admissions_url && (
+                  <a className="text-blue-700 hover:underline" href={c.admissions_url} target="_blank" rel="noreferrer">
+                    {t("college.admissions")}
+                  </a>
+                )}
+              </div>
             </div>
           </div>
+          <CollegeActions slug={c.slug} id={c.id} fitInput={isUS ? fitInputFrom(c, stats?.cds_year, policy?.policy ?? null) : undefined} />
         </div>
-        <CollegeActions slug={c.slug} id={c.id} fitInput={isUS ? fitInputFrom(c, stats?.cds_year, policy?.policy ?? null) : undefined} />
+
+        {isUS && (
+          <>
+            {/* Key numbers */}
+            <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-3 lg:grid-cols-6">
+              <Stat label={t("college.admitRate")} value={fmtPct(stats?.admit_rate)} sub={stats ? t("college.xOfY", { x: fmtInt(stats.admits), y: fmtInt(stats.applicants) }) : undefined} />
+              <Stat label={t("college.edAdmitRate")} value={fmtPct(stats?.ed_admit_rate)} sub={stats?.ed_applicants ? t("college.xOfY", { x: fmtInt(stats.ed_admits), y: fmtInt(stats.ed_applicants) }) : t("college.notReported")} />
+              <Stat label={t("college.intlAdmitRate")} value={fmtPct(stats?.intl_admit_rate)} sub={stats?.intl_applicants ? t("college.xOfY", { x: fmtInt(stats.intl_admits), y: fmtInt(stats.intl_applicants) }) : t("college.notReported")} />
+              <Stat label={t("college.undergrads")} value={fmtInt(c.undergrad_enrollment)} sub={c.pct_international_ug != null ? t("college.pctInternational", { x: fmtPct(c.pct_international_ug) }) : undefined} />
+              <Stat label={t("college.studentFaculty")} value={c.student_faculty_ratio ? `${Number(c.student_faculty_ratio)} : 1` : "—"} />
+              <Stat
+                label={t("college.waitlist")}
+                value={stats?.waitlist_admitted != null ? t("college.nAdmitted", { n: fmtInt(stats.waitlist_admitted) }) : "—"}
+                sub={stats?.waitlist_offered ? t("college.ofNOffered", { n: fmtInt(stats.waitlist_offered) }) : undefined}
+              />
+            </dl>
+            {stats && (
+              <p className="mt-2.5 text-xs text-zinc-600">
+                {stats.source_note ? t("college.admissionsSiteFigures") : t("college.cdsYear", { year: stats.cds_year })}
+                <Ref n={ref(stats.source_id)} />
+                {stats.notes && <> · {stats.notes}</>}
+              </p>
+            )}
+          </>
+        )}
       </header>
 
-      {isUS && (
-        <>
-      {/* Key numbers */}
-      <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        <Stat label={t("college.admitRate")} value={fmtPct(stats?.admit_rate)} sub={stats ? t("college.xOfY", { x: fmtInt(stats.admits), y: fmtInt(stats.applicants) }) : undefined} />
-        <Stat label={t("college.edAdmitRate")} value={fmtPct(stats?.ed_admit_rate)} sub={stats?.ed_applicants ? t("college.xOfY", { x: fmtInt(stats.ed_admits), y: fmtInt(stats.ed_applicants) }) : t("college.notReported")} />
-        <Stat label={t("college.intlAdmitRate")} value={fmtPct(stats?.intl_admit_rate)} sub={stats?.intl_applicants ? t("college.xOfY", { x: fmtInt(stats.intl_admits), y: fmtInt(stats.intl_applicants) }) : t("college.notReported")} />
-        <Stat label={t("college.undergrads")} value={fmtInt(c.undergrad_enrollment)} sub={c.pct_international_ug != null ? t("college.pctInternational", { x: fmtPct(c.pct_international_ug) }) : undefined} />
-        <Stat label={t("college.studentFaculty")} value={c.student_faculty_ratio ? `${Number(c.student_faculty_ratio)} : 1` : "—"} />
-        <Stat
-          label={t("college.waitlist")}
-          value={stats?.waitlist_admitted != null ? t("college.nAdmitted", { n: fmtInt(stats.waitlist_admitted) }) : "—"}
-          sub={stats?.waitlist_offered ? t("college.ofNOffered", { n: fmtInt(stats.waitlist_offered) }) : undefined}
-        />
-      </section>
-      {stats && (
-        <p className="-mt-5 text-xs text-zinc-500">
-          {stats.source_note ? t("college.admissionsSiteFigures") : t("college.cdsYear", { year: stats.cds_year })}
-          <Ref n={ref(stats.source_id)} />
-          {stats.notes && <> · {stats.notes}</>}
-        </p>
-      )}
+      <JumpNav items={jump} label={t("college.onThisPage")} />
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="mt-8 space-y-12">
+      {isUS && (
+      <div id="scores" className="grid gap-x-12 gap-y-12 lg:grid-cols-2">
         {/* Testing */}
         <Section title={t("college.testScoresTitle")}>
           <div className="mb-3 flex flex-wrap items-center gap-2 text-sm">
@@ -218,11 +244,10 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           )}
         </Section>
       </div>
-        </>
       )}
 
       {c.programs.length > 0 && (
-        <Section title={t("college.coursesTitle")}>
+        <Section id="courses" title={t("college.coursesTitle")}>
           <ul className="space-y-3">
             {[...c.programs]
               .sort((a, b) => a.name.localeCompare(b.name))
@@ -272,7 +297,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       )}
 
       {/* Deadlines */}
-      <Section title={t("college.deadlinesTitle", { cycle: deadlines[0]?.cycle ?? t("college.currentCycle") })}>
+      <Section id="deadlines" title={t("college.deadlinesTitle", { cycle: deadlines[0]?.cycle ?? t("college.currentCycle") })}>
         {deadlines.length ? (
           <ol className="relative space-y-3 border-l border-zinc-200 pl-5">
             {deadlines.map((d) => (
@@ -299,9 +324,9 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         )}
       </Section>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid gap-x-12 gap-y-12 lg:grid-cols-2">
         {/* English */}
-        {(isUS || c.english_requirements.length > 0) && <Section title={t("college.englishTitle")}>
+        {(isUS || c.english_requirements.length > 0) && <Section id="english" title={t("college.englishTitle")}>
           {c.english_policies ? (
             <>
               <p className="mb-2 text-sm">
@@ -354,7 +379,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         </Section>}
 
         {/* Requirements */}
-        {isUS && <Section title={t("college.requirementsTitle")}>
+        {isUS && <Section id="requirements" title={t("college.requirementsTitle")}>
           {req ? (
             <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm">
               <Row k={t("college.platform")} v={req.platforms.map((p) => PLATFORM[p] ?? p).join(", ") || "—"} />
@@ -384,9 +409,9 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       {isUS && <CollegeSupplementsSection slug={c.slug} offset={c.sources.length} t={t} />}
 
       {isUS && (
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid gap-x-12 gap-y-12 lg:grid-cols-2">
         {/* Cost & aid */}
-        <Section title={cost ? t("college.costTitleYear", { year: cost.year }) : t("college.costTitle")}>
+        <Section id="cost" title={cost ? t("college.costTitleYear", { year: cost.year }) : t("college.costTitle")}>
           {cost ? (
             <>
               <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm tabular-nums">
@@ -420,7 +445,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         </Section>
 
         {/* Tiers + majors */}
-        <Section title={t("college.tiersTitle")}>
+        <Section id="tiers" title={t("college.tiersTitle")}>
           <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {lookups.categories
               .filter((cat) => cat.key !== "general")
@@ -434,9 +459,9 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                 );
               })}
           </div>
-          <ul className="space-y-2 text-sm">
+          <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 text-sm">
             {c.major_admissions.map((m) => (
-              <li key={m.id} className="rounded-md border border-zinc-200 p-2">
+              <li key={m.id} className="px-3 py-2.5">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-medium">{m.program}</span>
                   {m.category_key && <Pill>{catLabel(m.category_key)}</Pill>}
@@ -458,7 +483,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
 
       {/* Factors */}
       {c.admission_factors.length > 0 && (
-        <Section title={t("college.factorsTitle", { year: c.admission_factors[0].cds_year })}>
+        <Section id="factors" title={t("college.factorsTitle", { year: c.admission_factors[0].cds_year })}>
           <div className="grid gap-4 sm:grid-cols-4">
             {["very_important", "important", "considered", "not_considered"].map((imp) => (
               <div key={imp}>
@@ -482,7 +507,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       )}
 
       {/* Sources */}
-      <Section title={t("college.sourcesTitle")}>
+      <Section id="sources" title={t("college.sourcesTitle")}>
         <ol className="space-y-1 text-sm">
           {c.sources.map((s, i) => (
             <li key={s.id} id={`src-${i + 1}`} className="flex gap-2">
@@ -497,9 +522,10 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         </ol>
       </Section>
 
-      <Link href="/colleges" className="inline-block text-sm text-blue-600 hover:underline">
+      <Link href="/colleges" className="inline-block text-sm font-semibold text-blue-700 hover:underline">
         {t("college.allColleges")}
       </Link>
+      </div>
     </article>
   );
 }
@@ -527,10 +553,10 @@ function Ref({ n }: { n: number | undefined }) {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <section>
-      <h2 className="mb-3 text-lg font-semibold">{title}</h2>
+    <section id={id} className="min-w-0">
+      <h2 className={`mb-4 ${SECTION_TITLE}`}>{title}</h2>
       {children}
     </section>
   );
@@ -538,10 +564,10 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
-    <div className="rounded-lg border border-zinc-200 p-3">
-      <div className="text-xs text-zinc-500">{label}</div>
-      <div className="text-xl font-semibold tabular-nums">{value}</div>
-      {sub && <div className="text-xs text-zinc-500">{sub}</div>}
+    <div className="bg-white px-4 py-3.5">
+      <dt className="text-xs font-medium text-zinc-500">{label}</dt>
+      <dd className={`mt-1 font-display text-xl font-bold tabular-nums sm:text-2xl ${value === "—" ? "text-zinc-400" : ""}`}>{value}</dd>
+      {sub && <dd className="mt-0.5 text-xs text-zinc-500">{sub}</dd>}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GradCap, Pencil, Star } from "@/components/Doodles";
 import { FillerDownload } from "@/components/FillerDownload";
 import { getT } from "@/lib/i18n/server";
 import type { TFunction } from "@/lib/i18n";
@@ -7,7 +8,7 @@ import { buttonClass, toneClass } from "@/lib/ui";
 
 export const metadata: Metadata = { title: "Tools" };
 
-const card = "rounded-2xl border border-zinc-200 p-6";
+const card = "rounded-3xl border border-zinc-200 p-6";
 
 const installSteps = (t: TFunction) => [
   t("tools.filler.step1"),
@@ -32,38 +33,14 @@ const installSteps = (t: TFunction) => [
 export default async function ToolsPage() {
   const t = await getT();
   return (
-    <div className="max-w-3xl space-y-6">
+    <div className="max-w-4xl space-y-8">
       <h1 className="font-display text-3xl font-bold">{t("tools.title")}</h1>
 
-      <section aria-labelledby="resume-heading" className={`${card} space-y-3`}>
-        <h2 id="resume-heading" className="text-xl font-bold">
-          {t("tools.resume.heading")}
-        </h2>
-        <p className="text-sm text-zinc-600">{t("tools.resume.blurb")}</p>
-        <Link href="/tools/resume" className={buttonClass("primary")}>
-          {t("tools.resume.open")}
-        </Link>
-      </section>
-
-      <section aria-labelledby="match-heading" className={`${card} space-y-3`}>
-        <h2 id="match-heading" className="text-xl font-bold">
-          {t("match.card.heading")}
-        </h2>
-        <p className="text-sm text-zinc-600">{t("match.card.blurb")}</p>
-        <Link href="/tools/match" className={buttonClass("primary")}>
-          {t("match.card.cta")}
-        </Link>
-      </section>
-
-      <section aria-labelledby="interests-heading" className={`${card} space-y-3`}>
-        <h2 id="interests-heading" className="text-xl font-bold">
-          {t("tools.interests.heading")}
-        </h2>
-        <p className="text-sm text-zinc-600">{t("tools.interests.blurb")}</p>
-        <Link href="/tools/interests" className={buttonClass("primary")}>
-          {t("tools.interests.cta")}
-        </Link>
-      </section>
+      <ul className="divide-y divide-zinc-200 rounded-3xl border border-zinc-200">
+        <ToolRow id="resume" art={<Pencil className="w-16" />} title={t("tools.resume.heading")} blurb={t("tools.resume.blurb")} href="/tools/resume" cta={t("tools.resume.open")} />
+        <ToolRow id="match" art={<GradCap className="w-16" />} title={t("match.card.heading")} blurb={t("match.card.blurb")} href="/tools/match" cta={t("match.card.cta")} />
+        <ToolRow id="interests" art={<Star className="w-12" />} title={t("tools.interests.heading")} blurb={t("tools.interests.blurb")} href="/tools/interests" cta={t("tools.interests.cta")} />
+      </ul>
 
       <section aria-labelledby="filler-heading" className={`${card} space-y-4`}>
         <div className="flex flex-wrap items-center gap-2">
@@ -99,5 +76,22 @@ export default async function ToolsPage() {
         </p>
       </section>
     </div>
+  );
+}
+
+function ToolRow({ id, art, title, blurb, href, cta }: { id: string; art: React.ReactNode; title: string; blurb: string; href: string; cta: string }) {
+  return (
+    <li className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:gap-6">
+      <div className="flex w-16 shrink-0 justify-center">{art}</div>
+      <div className="min-w-0 flex-1">
+        <h2 id={`${id}-heading`} className="text-lg font-bold">
+          {title}
+        </h2>
+        <p className="mt-1 max-w-prose text-sm text-zinc-600">{blurb}</p>
+      </div>
+      <Link href={href} className={`${buttonClass("secondary", "sm")} self-start sm:self-center`}>
+        {cta}
+      </Link>
+    </li>
   );
 }

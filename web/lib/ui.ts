@@ -40,6 +40,9 @@ const TIER: Record<ReturnType<typeof tierLetter>, string> = {
 };
 export const tierClass = (t: TierCode): string => TIER[tierLetter(t)];
 
+/** Section heading on long reading pages (the college page and its sections). */
+export const SECTION_TITLE = "font-display text-xl font-bold tracking-tight text-ink";
+
 const BUTTON_BASE =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50";
 const BUTTON_SIZE = { md: "h-11 px-5 text-[15px]", sm: "h-9 px-4 text-sm" } as const;
