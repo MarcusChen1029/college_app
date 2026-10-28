@@ -1,5 +1,6 @@
 // Filters, sorting and URL state for the Explore page (/colleges): the map list and the table share them. Pure.
 // The URL holds the whole state, so a filtered table can be bookmarked or shared.
+import type { ApplyTag } from "./apply-tags.ts";
 import { englishOk, type EnglishFit } from "./english-fit.ts";
 import { scoreField, type FieldEvidence } from "./field-match.ts";
 import { fieldByKey, type FieldKey } from "./fields.ts";
@@ -30,6 +31,8 @@ export type ExploreFilters = {
   maxTuition: number | null; // per year, in the region's currency
   intlAid: boolean;
   english: boolean; // meets my English score
+  noSupplements: boolean; // lib/apply-tags.ts
+  noAppFee: boolean;
   category: string; // tier category; "general" = overall
   minTier: TierCode | null;
   state: string;
@@ -49,6 +52,8 @@ export const DEFAULT_FILTERS: ExploreFilters = {
   maxTuition: null,
   intlAid: false,
   english: false,
+  noSupplements: false,
+  noAppFee: false,
   category: "general",
   minTier: null,
   state: "",
@@ -86,6 +91,8 @@ export function parseFilters(sp: Params): ExploreFilters {
   f.maxTuition = sp.get("max") && Number.isFinite(max) && max > 0 ? max : null;
   f.intlAid = sp.get("aid") === "1";
   f.english = sp.get("eng") === "1";
+  f.noSupplements = sp.get("nosupp") === "1";
+  f.noAppFee = sp.get("nofee") === "1";
   f.category = sp.get("cat") || "general";
   const tier = sp.get("tier");
   f.minTier = tier && (TIER_ORDER as string[]).includes(tier) ? (tier as TierCode) : null;
@@ -110,6 +117,8 @@ export function filtersToQuery(f: ExploreFilters): string {
   if (f.maxTuition != null) p.set("max", String(f.maxTuition));
   if (f.intlAid) p.set("aid", "1");
   if (f.english) p.set("eng", "1");
+  if (f.noSupplements) p.set("nosupp", "1");
+  if (f.noAppFee) p.set("nofee", "1");
   if (f.category !== "general") p.set("cat", f.category);
   if (f.minTier) p.set("tier", f.minTier);
   if (f.state) p.set("state", f.state);
@@ -153,6 +162,7 @@ export type FilterContext = {
   isUS: boolean; // fit labels exist only for US colleges
   hasScores: boolean; // fit filter needs SAT/ACT
   hasEnglish: boolean; // English filter needs an English score
+  applyTags: Record<string, readonly ApplyTag[]>; // by slug, only colleges that have one
 };
 
 /** Drops filters that cannot apply to this viewer or region (e.g. a shared link with a fit filter, opened by someone with no scores). */
@@ -163,6 +173,9 @@ export function effectiveFilters(f: ExploreFilters, ctx: Pick<FilterContext, "is
     english: ctx.hasEnglish ? f.english : false,
     intlAid: ctx.isUS ? f.intlAid : false,
     testPolicy: ctx.isUS ? f.testPolicy : "",
+    // Supplements and fees are researched for US colleges only.
+    noSupplements: ctx.isUS ? f.noSupplements : false,
+    noAppFee: ctx.isUS ? f.noAppFee : false,
   };
 }
 
@@ -196,6 +209,8 @@ export function rowMatches(r: ExploreRow, f: ExploreFilters, ctx: FilterContext)
   if (!withinBudget(r.tuition, f.maxTuition, ctx.currency)) return false;
   if (f.intlAid && !hasIntlAid(c)) return false;
   if (f.english && !englishOk(r.english)) return false;
+  if (f.noSupplements && !ctx.applyTags[c.slug]?.includes("no_supplements")) return false;
+  if (f.noAppFee && !ctx.applyTags[c.slug]?.includes("no_app_fee")) return false;
   const tier = tierFor(c, f.category);
   if (f.category !== "general" && !tier) return false;
   if (f.minTier && (!tier || tierRank(tier) > tierRank(f.minTier))) return false;
@@ -211,6 +226,8 @@ export function moreFilterCount(f: ExploreFilters): number {
     f.admitMin != null || f.admitMax != null,
     f.intlAid,
     f.english,
+    f.noSupplements,
+    f.noAppFee,
     f.category !== "general",
     !!f.minTier,
     !!f.state,
