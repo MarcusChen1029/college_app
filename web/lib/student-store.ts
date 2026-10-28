@@ -432,6 +432,9 @@ function start() {
   window.addEventListener("focus", refreshIfStale);
 }
 
+/** True once this signed-in account has loaded, i.e. writes to it are allowed (pages check it before vault deletes). */
+export const accountLoaded = () => !!state.auth && loadedFor === state.auth.userId;
+
 // Remote writes are optimistic; on failure we reload the server copy and surface the error. Resolves true when the write worked.
 async function remote(op: () => PromiseLike<{ error: { message: string } | null }>): Promise<boolean> {
   if (!state.auth) return false;
@@ -558,8 +561,10 @@ export function useStudent() {
       const a = state.auth;
       if (a && entry) {
         const key = rowKey(entry);
-        void remote(() => db().from("student_colleges").delete().eq(key.column, key.value));
-        forgetPassword(collegeSlot(entry));
+        // The password goes only once the row is really gone (not after a refused or failed write).
+        void remote(() => db().from("student_colleges").delete().eq(key.column, key.value)).then((ok) => {
+          if (ok) forgetPassword(collegeSlot(entry));
+        });
       }
     },
     update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist" | "portal" | "aidOfferUsd">>) {

@@ -62,7 +62,9 @@ begin
   if tg_op = 'UPDATE' then
     was := old.portals;
   else
-    select sp.portals into was from public.student_profiles sp where sp.user_id = new.user_id;
+    -- Only the caller's own row: comparing with someone else's would tell a guesser whether a password matched.
+    select sp.portals into was from public.student_profiles sp
+    where sp.user_id = new.user_id and sp.user_id = (select auth.uid());
   end if;
   if exists (
     select 1 from public.portal_password_values(new.portals) n

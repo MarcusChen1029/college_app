@@ -168,6 +168,38 @@ select pg_temp.chk('D4 service role: cannot change the stored key id', 'refused 
 select pg_temp.chk('D5 exactly one row', 'ok:1', pg_temp.run('postgres',
   $q$select count(*)::text from public.portal_vault_meta$q$));
 
+-- ── E. no cross-user oracle: another signed-in user gets the same refusal whatever password they guess ──
+insert into auth.users (id, email) values ('00000000-0000-4000-8000-0000000041a3', 'dry-0043-victim@example.invalid');
+alter table public.student_profiles disable trigger forbid_plaintext_password;
+insert into public.student_profiles (user_id, display_name, portals) values ('00000000-0000-4000-8000-0000000041a3', 'Dry V',
+  '{"systems":{"commonapp":{"url":"","username":"v","password":"VICTIM-MARKER"}}}');
+alter table public.student_profiles enable trigger forbid_plaintext_password;
+create function pg_temp.run_other(p_sql text) returns text language plpgsql as $$
+declare res text;
+begin
+  perform set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000041a2","role":"authenticated"}', true);
+  perform set_config('role', 'authenticated', true);
+  begin
+    execute p_sql into res;
+    res := 'ok:' || coalesce(res, 'null');
+  exception when others then
+    res := 'refused ' || sqlstate || ': ' || sqlerrm;
+  end;
+  perform set_config('role', 'postgres', true);
+  perform set_config('request.jwt.claims', '', true);
+  return res;
+end $$;
+select pg_temp.chk('E1 other user upserting the victim''s profile with the RIGHT password: plaintext refusal', 'refused 42501: Portal passwords are not stored', pg_temp.run_other(
+  $q$insert into public.student_profiles (user_id, portals) values ('00000000-0000-4000-8000-0000000041a3',
+     '{"systems":{"commonapp":{"url":"","username":"v","password":"VICTIM-MARKER"}}}')
+     on conflict (user_id) do update set portals = excluded.portals returning 'x'$q$));
+select pg_temp.chk('E2 same with a WRONG password: the identical refusal', 'refused 42501: Portal passwords are not stored', pg_temp.run_other(
+  $q$insert into public.student_profiles (user_id, portals) values ('00000000-0000-4000-8000-0000000041a3',
+     '{"systems":{"commonapp":{"url":"","username":"v","password":"WRONG-GUESS"}}}')
+     on conflict (user_id) do update set portals = excluded.portals returning 'x'$q$));
+select pg_temp.chk('E3 the victim''s row is unchanged', 'ok:VICTIM-MARKER', pg_temp.run('postgres',
+  $q$select portals #>> '{systems,commonapp,password}' from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000041a3'$q$));
+
 -- ── result: raises on purpose, so the transaction can never commit ──
 do $$
 declare f int; s text;

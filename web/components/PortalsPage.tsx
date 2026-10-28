@@ -33,7 +33,7 @@ import { forgetPassword } from "@/lib/portal-vault-client";
 import { activeRegions, regionLabel, type RegionCode } from "@/lib/regions";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
-import { registerColleges, useStudent } from "@/lib/student-store";
+import { accountLoaded, registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
@@ -91,26 +91,27 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     onNote: (note) => commit(withProgress(data, key, { note })),
   });
   const signedIn = !!student.auth;
-  // A removed login takes its saved password (in the encrypted store) with it.
+  // A removed login takes its saved password (in the encrypted store) with it, once the account has loaded
+  // (before that, the profile write is refused, so the password must stay too).
   const setSystem = (key: string, login: Login | null) => {
     const systems = { ...data.systems };
     if (login) systems[key] = login;
     else delete systems[key];
     commit(login ? { ...data, systems } : withoutProgress({ ...data, systems }, [key]));
-    if (!login) forgetPassword(portalSlot("system", key));
+    if (!login && accountLoaded()) forgetPassword(portalSlot("system", key));
   };
   const setCampus = (key: string, login: Login | null) => {
     const campuses = { ...data.campuses };
     if (login) campuses[key] = login;
     else delete campuses[key];
     commit(login ? { ...data, campuses } : withoutProgress({ ...data, campuses }, [key]));
-    if (!login) forgetPassword(portalSlot("campus", key));
+    if (!login && accountLoaded()) forgetPassword(portalSlot("campus", key));
   };
   const custom = data.custom ?? [];
   const setCustom = (next: CustomPortal[]) => commit({ ...data, custom: next });
   const removeCustom = (id: string) => {
     commit(withoutProgress({ ...data, custom: custom.filter((x) => x.id !== id) }, [customProgressKey(id)]));
-    forgetPassword(portalSlot("custom", id));
+    if (accountLoaded()) forgetPassword(portalSlot("custom", id));
   };
 
   // The countries the student is applying to (all of them while none is chosen), in profile order.

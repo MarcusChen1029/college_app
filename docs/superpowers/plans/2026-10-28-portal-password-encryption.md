@@ -95,3 +95,6 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 - No rate limit on `/api/portal-passwords` beyond Supabase's auth checks; each account is capped at 500 stored passwords.
 - The clipboard clear after Copy is best effort (the page must still be open, and it can clear something copied in
   another app within those 30 s); the UI says so.
+- Latent (only if a profile still holds old plaintext, none did on 2026-10-28): after setting or deleting a password whose
+  profile plaintext migrate couldn't move, the next profile edit is refused once by 0043 and reverted (nothing is lost);
+  the save after it works.
