@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Wave } from "@/components/Doodles";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { LocalMergeDialogHost } from "@/components/LocalMergeDialog";
 import { RoleGate } from "@/components/RoleGate";
 import { SignInDialogHost } from "@/components/SignInDialog";
 import { SiteNav } from "@/components/SiteNav";
@@ -93,6 +94,9 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
       </Suspense>
       <Suspense>
         <SignInDialogHost />
+      </Suspense>
+      <Suspense>
+        <LocalMergeDialogHost />
       </Suspense>
       <main className="flex-1">
         {missingEnv.length > 0 ? (

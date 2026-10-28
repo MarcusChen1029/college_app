@@ -1,4 +1,4 @@
-import { getCollege } from "@/lib/data";
+import { getCollege, getSummaries } from "@/lib/data";
 import { collegeSupplements } from "@/lib/supplements-data";
 
 // Full college records for the "Copy for AI" pack: GET /api/college-details?slugs=brown,rice.
@@ -9,7 +9,9 @@ export async function GET(request: Request) {
   const raw = new URL(request.url).searchParams.get("slugs") ?? "";
   const slugs = [...new Set(raw.split(",").map((s) => s.trim()).filter((s) => /^[a-z0-9-]{1,80}$/.test(s)))];
   if (!slugs.length || slugs.length > MAX) return Response.json({ error: `Pass 1–${MAX} college slugs.` }, { status: 400 });
-  const results = await Promise.allSettled(slugs.map((s) => getCollege(s)));
+  // Only real slugs reach the database: made-up ones would each miss the cache and cost a query.
+  const known = new Set((await getSummaries()).map((c) => c.slug));
+  const results = await Promise.allSettled(slugs.map((s) => (known.has(s) ? getCollege(s) : Promise.resolve(null))));
   // Supplemental prompts are static data (lib/data/supplements.json), attached here so the pack can include them.
   const colleges = Object.fromEntries(
     slugs.map((s, i) => {

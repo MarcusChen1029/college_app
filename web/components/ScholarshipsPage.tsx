@@ -16,6 +16,7 @@ import {
   type ScholarshipInput,
   type ScholarshipStatus,
 } from "@/lib/scholarships";
+import { safeLink } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
@@ -187,8 +188,8 @@ export function ScholarshipsPage() {
                       <div className="flex flex-wrap items-start justify-between gap-2">
                         <div>
                           <p className="font-medium">
-                            {s.url ? (
-                              <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline">
+                            {s.url && safeLink(s.url) ? (
+                              <a href={safeLink(s.url)!} target="_blank" rel="noopener noreferrer" className="underline">
                                 {s.name}
                               </a>
                             ) : (

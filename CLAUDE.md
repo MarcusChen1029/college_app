@@ -131,7 +131,23 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0040**; 0001-0037 are applied to the project as of 2026-10-27; 0038 = activities v2, 0039 = extension activities access) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0044**; 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
+  Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
+- **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
+  `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
+  rows or localStorage. AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
+  the views `ai_student_profiles`/`ai_student_colleges` (no portals, portal_url/portal_username, reminder or essay columns) and transcript_*;
+  after 0043 never the base student_profiles/student_colleges, so saved-login usernames and links are out of their reach too.
+  Every RPC, the password route, the Google routes and account deletion refuse them. Every page
+  sends a CSP (`web/lib/security-headers.ts`): a new third-party host the browser must reach needs adding there. Accounts are deleted at
+  Settings > Delete account (`/api/account/delete`; every table cascades from auth.users).
+- **AI connector containment (0041, 0043):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use the views
+  `ai_student_profiles` / `ai_student_colleges` and `transcript_schools` / `transcript_courses` (pre-request hook `api_request_guard`; 0041 still
+  allows the base student tables for the old MCP code, 0043 removes them and adds a restrictive `no_oauth_clients` policy on both), only the
+  columns/operations in `guard_oauth_student_writes`, and no RPC. The views are security-definer on purpose (owner postgres; isolation = their
+  `user_id = auth.uid()` WHERE + `with local check option`); their columns equal `AI_PROFILE_COLUMNS` / `AI_COLLEGE_COLUMNS` in
+  `web/lib/student-rows.ts` (`ai-views.test.ts` checks it). A new MCP tool that needs more must widen the hook, the trigger and the views in a migration.
+  Smoke test (0041 state): `supabase/patches/2026-10-28_security_hardening_smoke_test.sql`; 0043 state: `2026-10-28_forbid_plaintext_dry_run.sql`.
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with

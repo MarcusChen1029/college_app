@@ -12,11 +12,11 @@ export const AI_CAN = [
 ] as const;
 
 export const AI_CANNOT = [
-  "See or change your portal usernames and passwords",
+  "See your portal passwords, or change your portal logins",
   "Remove a college from your list",
-  "Delete an essay",
+  "Use Trakur's tools to delete an essay",
   "Change your subscription plan or reminder emails",
-  "Mark an application submitted before its checklist is complete, or record a decision before it is submitted",
+  "Use Trakur's tools to mark an application submitted before its checklist is complete, or record a decision before it is submitted",
 ] as const;
 
 export const AI_EXAMPLES = [
@@ -40,4 +40,34 @@ export function redirectHost(uri: string): string | null {
   } catch {
     return null;
   }
+}
+
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
+
+/**
+ * The address we may send the browser to after approve/deny. App registration is open (dynamic client
+ * registration), so the return address is chosen by whoever registered the app: anything but https
+ * (or http on this computer, for local MCP clients) could be a javascript:/data: URL running on our origin.
+ */
+export function safeReturnUrl(uri: string | null | undefined): string | null {
+  if (!uri) return null;
+  try {
+    const u = new URL(uri);
+    if (u.protocol === "https:" && u.hostname) return u.href;
+    if (u.protocol === "http:" && LOCAL_HOSTS.has(u.hostname)) return u.href;
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+// Return addresses of the AI apps the Connect AI page tells students to use. Anyone can register an app with
+// any name ("Claude"), so the consent page trusts the return host, never the name.
+const KNOWN_AI_HOSTS = ["claude.ai", "claude.com", "anthropic.com", "chatgpt.com", "openai.com"];
+
+export function isKnownAiHost(uri: string | null | undefined): boolean {
+  const host = uri ? redirectHost(uri) : null;
+  if (!host) return false;
+  const name = host.toLowerCase().replace(/:\d+$/, "");
+  return KNOWN_AI_HOSTS.some((h) => name === h || name.endsWith(`.${h}`));
 }

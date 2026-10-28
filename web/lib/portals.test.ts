@@ -9,6 +9,7 @@ import {
   EMPTY_LOGIN,
   groupProgress,
   hiddenLoginCount,
+  mergePortals,
   openUrl,
   progressNote,
   progressState,
@@ -226,4 +227,27 @@ test("withoutProgress removes only the named keys and returns the same object wh
   assert.equal(withoutProgress(data, ["nothing"]), data);
   assert.equal(withoutProgress({}, ["x"]).progress, undefined);
   assert.equal(data.progress!["custom:1"].done, false);
+});
+
+test("mergePortals adds the logins and marks the account lacks; the account's own win", () => {
+  const login = (username: string) => ({ ...EMPTY_LOGIN, username });
+  const account: PortalData = {
+    systems: { commonapp: login("account@x.com"), uc: EMPTY_LOGIN },
+    custom: [{ ...login("a"), id: "1", name: "Account portal" }],
+    progress: { commonapp: { done: true } },
+  };
+  const local: PortalData = {
+    systems: { commonapp: login("local@x.com"), uc: login("ucuser"), toefl: EMPTY_LOGIN },
+    campuses: { [campusKey("uc", "UCLA")]: login("bruin") },
+    custom: [{ ...login("dup"), id: "1", name: "Same id" }, { ...login("b"), id: "2", name: "Local portal" }],
+    progress: { commonapp: { done: false }, uc: { done: true } },
+  };
+  assert.deepEqual(mergePortals(account, local), {
+    systems: { commonapp: login("account@x.com"), uc: login("ucuser"), toefl: EMPTY_LOGIN },
+    campuses: { [campusKey("uc", "UCLA")]: login("bruin") },
+    custom: [{ ...login("a"), id: "1", name: "Account portal" }, { ...login("b"), id: "2", name: "Local portal" }],
+    progress: { commonapp: { done: true }, uc: { done: true } },
+  });
+  assert.deepEqual(mergePortals(account, {}), account);
+  assert.deepEqual(mergePortals({}, {}), {});
 });

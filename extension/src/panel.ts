@@ -5,6 +5,7 @@ import type { ActivitiesResult, TranscriptResult } from "./auth.ts";
 import { buildSystemPlan, FILL_SYSTEMS } from "../../web/lib/system-fill.ts";
 import { buildStarsPlans } from "../../web/lib/stars-fill.ts";
 import { assistView } from "./assist-panel.ts";
+import { DEV_BUILD, TRACKER_URL } from "./config.ts";
 import { starsAutoView } from "./stars/panel.ts";
 import { csuAutoView } from "./csu/panel.ts";
 import { ucAutoView } from "./uc/panel.ts";
@@ -111,6 +112,8 @@ function signedOutView(message?: string): void {
   const note = h("p", { class: "note" }, message ?? "");
   show(
     h("p", {}, "Sign in with your Trakur account so the extension can read your transcript, activities and honors. It cannot see anything else in your account."),
+    // A development build trusts a local tracker; say so, so nobody mistakes it for the student download.
+    DEV_BUILD ? h("p", { class: "warn" }, `Development build: it signs in at ${TRACKER_URL}.`) : null,
     message ? note : null,
     button("Sign in", async () => {
       note.textContent = "Waiting for the sign-in window...";

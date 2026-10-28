@@ -114,7 +114,10 @@ select status_code, content from net._http_response order by id desc limit 1;
 
 1. Edit `data/colleges/<slug>.json` or `data/cycle_2026_27.json` (keep a source URL for every number).
 2. `python3 scripts/build_seed.py`: checks the data and regenerates `supabase/seed/10_colleges.sql`.
-3. Paste the generated SQL into the Supabase SQL Editor and run it. It deletes and reloads those colleges.
+3. Don't run the full seed on the live project: deleting a college also deletes it from every student's list (the generated
+   file now refuses to run once any student has a list). Load new colleges with
+   `python3 scripts/build_seed.py --insert-only --only slug1,slug2 --out file.sql`, and change existing ones with a targeted
+   UPDATE patch in `supabase/patches/`.
 
 The site caches college data for a few hours; redeploy on Vercel to see changes immediately.
 

@@ -4,13 +4,14 @@ import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
-import { markSent, onlyEnglishPlan, onlyTestPlan, progress, type Checklist, type SentKind } from "@/lib/checklist";
+import { markSent, onlyEnglishPlan, onlyTestPlan, progress, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
 import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
+import { portalSlot } from "@/lib/portal-slots";
 import { EMPTY_LOGIN, groupProgress, routeGroups, SYSTEMS, type Login, type PortalData } from "@/lib/portals";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { scoredTests } from "@/lib/test-plan";
@@ -309,6 +310,8 @@ export function MyList({
           hint={sysText(t, "hint", sys.key, sys.hint)}
           official={sys.url}
           login={portalData.systems?.[sys.key] ?? EMPTY_LOGIN}
+          slot={portalSlot("system", sys.key)}
+          signedIn={!!student.auth}
           onSave={(l) => saveRouteLogin(sys.key, l)}
           status={pill}
         />
@@ -338,8 +341,8 @@ export function MyList({
                 {opened.college.name}
               </Link>
             )}
-            {opened.entry.custom?.website && (
-              <a href={opened.entry.custom.website} target="_blank" rel="noreferrer" className="text-xs text-blue-600 underline">
+            {opened.entry.custom?.website && safeLink(opened.entry.custom.website) && (
+              <a href={safeLink(opened.entry.custom.website)!} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline">
                 {t("application.website")}
               </a>
             )}
