@@ -143,7 +143,7 @@ const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
 
 async function main(args) {
   if (args[0] === "--generate") {
-    const migration = readFileSync(MIGRATION, "utf8");
+    const migration = readFileSync(MIGRATION, "utf8").replace(/\r\n/g, "\n"); // same patch whatever the checkout's line endings
     const problems = await listProblems(migration);
     for (const p of problems) console.error(`FAIL: ${p}`);
     if (problems.length) return 1;

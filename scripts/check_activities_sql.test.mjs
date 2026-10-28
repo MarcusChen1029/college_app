@@ -12,7 +12,8 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SCRIPT = join(ROOT, "scripts", "check_activities_sql.mjs");
 const v1 = JSON.parse(readFileSync(join(ROOT, "web/lib/fixtures/activities-v1.json"), "utf8"));
 const v2 = JSON.parse(readFileSync(join(ROOT, "web/lib/fixtures/activities-v2.json"), "utf8"));
-const migration = readFileSync(join(ROOT, "supabase/migrations/0038_activities_v2.sql"), "utf8");
+const lf = (s) => s.replace(/\r\n/g, "\n");
+const migration = lf(readFileSync(join(ROOT, "supabase/migrations/0038_activities_v2.sql"), "utf8"));
 const dir = mkdtempSync(join(tmpdir(), "activities-sql-"));
 
 /** The rows execute_sql would return if the SQL matched the fixture exactly. */
@@ -94,5 +95,5 @@ test("--generate writes the migration's function into pg_temp plus one row per v
   for (const s of v1) assert.ok(sql.includes(`'${s.student}', '${JSON.stringify(s.activities).replace(/'/g, "''")}'::jsonb`), s.student);
   assert.equal((sql.slice(sql.indexOf("from (values")).match(/::jsonb\)(,|\n\))/g) ?? []).length, v1.length);
   // The committed patch is up to date.
-  assert.equal(readFileSync(join(ROOT, "supabase/patches/2026-10-28-activities-v2-parity.sql"), "utf8"), sql);
+  assert.equal(lf(readFileSync(join(ROOT, "supabase/patches/2026-10-28-activities-v2-parity.sql"), "utf8")), sql);
 });
