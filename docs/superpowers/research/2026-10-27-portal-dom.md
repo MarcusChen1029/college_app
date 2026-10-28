@@ -245,3 +245,18 @@ checks `window.name === "applyUCtab" + #windowSession` on every button/link clic
 - Verified run (2026-10-28): ExtraCurr "Test Club (filler research)", 2-line description, 10th + 11th, 5.5 h / 30 wk saved and listed; Edit shows
   the same values (newline kept). Session: no client idle timer; the server session is kept alive by any same-origin GET (a 4-minute
   `fetch('/my-application/introactivitiesawards')` kept it signed in).
+## 8. Common App Honors (Education screen), recorded 2026-10-28
+
+Page `/common/4/25` "Honors" (Education screen 4 sections: 18 Current school, 19 Other schools, 21 Colleges, 23 Grades, 24 Current Year Courses,
+25 Honors, 22 Community-Based Organizations, 197 Future Plans). Catalog `GET /datacatalog/sections/25/questions` (same headers as §6).
+- Gate 1970 "Do you wish to report any honors related to your academic achievements beginning with the ninth grade or international
+  equivalent?" radios `#option_ques_1970_2371-input` Yes "0" / `_2372-input` No "1".
+- Counter 1971 (min 1, max 5): `#addQues1971` "Add another honors, 4 of 5 available"; slots `ca-add-another-sub-group#subGroup1971_<24..28>`,
+  legend "Honors N". Slot n: title `text_ques_<346+3n>` (textarea maxlength 100), grade checkboxes (`ca-checkboxList-*`, values 0-4 = 9, 10, 11,
+  12, Post-graduate), recognition checkboxes (values 0-3 = School, State/Regional, National, International). Labels "Honors N title",
+  "Grade level", "Level(s) of recognition". Same Move up / Remove controls as activities. Continue `#sectionContinue25`.
+- Saving (verified): leaving the page through the app's own router ALSO posts the dirty answers to `/answer/v2` (the gate Yes was saved on a
+  route change with no Continue). So "nothing is saved until Continue" is false on Common App: any in-app navigation saves.
+- Remove vs. erase (verified 2026-10-28, Activities): "Remove Activity N" + confirm only lowers the counter (POST `1020: 1`); the slot's answers
+  stay on the server (the hidden box still holds them) and come back when the slot is re-added. Slot 1 has no Remove. A text box cleared to ""
+  IS saved as `""` (required or not); only values failing a front-end check (length, hours/weeks range) are left out of the save.
