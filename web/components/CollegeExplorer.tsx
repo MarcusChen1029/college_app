@@ -31,12 +31,13 @@ import { useStudent } from "@/lib/student-store";
 import { scoredTests, testsToCompare } from "@/lib/test-plan";
 import { BASE_TIERS } from "@/lib/tiers";
 import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
+import type { ApplyTag } from "@/lib/apply-tags";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { buttonClass } from "@/lib/ui";
 import { CollegeBrowser } from "./CollegeBrowser";
 import { EnglishFitLine } from "./EnglishFit";
 import { ExploreFilterBar } from "./ExploreFilterBar";
-import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
+import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 import { TIER_FILL } from "./USMap";
 import { USMap3D } from "./USMap3D";
@@ -173,12 +174,14 @@ function DetailCard({
   college,
   english,
   sat,
+  tags,
   side,
   onClose,
 }: {
   college: CollegeSummary;
   english: EnglishSummary | undefined;
   sat: SatEstimate | undefined;
+  tags: ApplyTag[] | undefined;
   side: "left" | "right";
   onClose: () => void;
 }) {
@@ -213,6 +216,7 @@ function DetailCard({
             {[college.city, college.state_region].filter(Boolean).join(", ")}
             {college.control && <> · <span className="capitalize">{college.control.replace(/_/g, " ")}</span></>}
           </p>
+          <ApplyTags tags={tags} className="mt-1.5" />
         </div>
         <button type="button" onClick={onClose} aria-label={t("colleges.closeDetails")} className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-lg leading-none text-zinc-500 hover:bg-zinc-100">
           ×
@@ -295,6 +299,7 @@ export function CollegeExplorer({
   satEstimates,
   programFees,
   evidence,
+  applyTags,
 }: {
   colleges: CollegeSummary[];
   lookups: Lookups;
@@ -302,6 +307,8 @@ export function CollegeExplorer({
   satEstimates: Record<string, SatEstimate>;
   programFees: Record<string, ProgramFees>;
   evidence: Record<string, FieldEvidence>;
+  /** By slug, only colleges that have one (lib/apply-tags.ts). */
+  applyTags: Record<string, ApplyTag[]>;
 }) {
   const t = useT();
   const student = useStudent();
@@ -491,6 +498,7 @@ export function CollegeExplorer({
           sort={eff.sort}
           onSort={(key: SortKey) => set({ sort: nextSort(eff.sort, key) })}
           tierFor={(r) => tierFor(r.c, eff.category)}
+          applyTags={applyTags}
         />
       </div>
     );
@@ -528,9 +536,10 @@ export function CollegeExplorer({
                       {[c.city, c.state_region].filter(Boolean).join(", ")}
                       {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
                     </span>
-                    {(fit || student.has(c.slug)) && (
-                      <span className="mt-1 flex">
-                        {fit ? <FitBadge fit={fit.fit} /> : <Pill tone="blue">{t("colleges.onList")}</Pill>}
+                    {(fit || student.has(c.slug) || applyTags[c.slug]) && (
+                      <span className="mt-1 flex flex-wrap gap-1">
+                        {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) && <Pill tone="blue">{t("colleges.onList")}</Pill>}
+                        <ApplyTags tags={applyTags[c.slug]} />
                       </span>
                     )}
                   </span>
@@ -582,7 +591,7 @@ export function CollegeExplorer({
                 side === "right" ? "lg:right-4" : "lg:left-4"
               }`}
             >
-              <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} side={side} onClose={() => setSelected(null)} />
+              <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} tags={applyTags[current.slug]} side={side} onClose={() => setSelected(null)} />
             </div>
           )}
         </USMap3D>

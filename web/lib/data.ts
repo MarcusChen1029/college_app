@@ -135,6 +135,22 @@ async function cachedProgramFees(): Promise<Record<string, ProgramFees>> {
   return out;
 }
 
+/** institution_id → the latest cycle's application fee in USD (null = not published). */
+async function cachedAppFees(): Promise<Record<string, number | null>> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges");
+  const db = supabase();
+  const rows = await allRows(
+    (from, to) => db.from("application_requirements").select("institution_id, cycle, app_fee_usd").order("institution_id").order("cycle").range(from, to),
+    "application fees",
+  );
+  // Ordered by cycle, so the last row per college wins.
+  const out: Record<string, number | null> = {};
+  for (const r of rows) out[r.institution_id] = r.app_fee_usd == null ? null : Number(r.app_fee_usd);
+  return out;
+}
+
 async function cachedScoreCodes(): Promise<ScoreCode[]> {
   "use cache";
   cacheLife("hours");
@@ -211,6 +227,11 @@ export async function getSatEstimates() {
 export async function getProgramFees() {
   await connection();
   return cachedProgramFees();
+}
+
+export async function getAppFees() {
+  await connection();
+  return cachedAppFees();
 }
 
 export async function getPlatforms() {

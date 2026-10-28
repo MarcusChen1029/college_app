@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import type { ApplyTag } from "@/lib/apply-tags";
 import { SORT_DESC, type ExploreRow, type Median, type SortKey, type SortState } from "@/lib/explore-filters";
 import { fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
@@ -12,7 +13,7 @@ import { fmtMoney, type TuitionEstimate } from "@/lib/tuition";
 import type { TierCode } from "@/lib/types";
 import { buttonClass } from "@/lib/ui";
 import { EnglishFitBadge } from "./EnglishFit";
-import { FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
+import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 
 const TEST_NAME: Record<AdmissionTest, string> = { sat: "SAT", act: "ACT" };
@@ -29,6 +30,7 @@ export function CollegeBrowser({
   sort,
   onSort,
   tierFor,
+  applyTags,
 }: {
   rows: ExploreRow[];
   resetKey: string;
@@ -42,6 +44,7 @@ export function CollegeBrowser({
   sort: SortState;
   onSort: (key: SortKey) => void;
   tierFor: (r: ExploreRow) => TierCode | null;
+  applyTags: Record<string, ApplyTag[]>;
 }) {
   const t = useT();
   const student = useStudent();
@@ -138,6 +141,7 @@ export function CollegeBrowser({
                   {r.c.name}
                 </Link>
                 <p className="truncate text-xs text-zinc-500">{place(t, r)}</p>
+                <ApplyTags tags={applyTags[r.c.slug]} className="mt-1" />
               </div>
               {isUS && r.fit && <FitBadge fit={r.fit.fit} result={r.fit} />}
             </div>
@@ -225,6 +229,7 @@ export function CollegeBrowser({
                         {r.c.name}
                       </Link>
                       <div className="text-xs text-zinc-500">{place(t, r)}</div>
+                      <ApplyTags tags={applyTags[r.c.slug]} className="mt-1" />
                     </div>
                   </div>
                 </td>

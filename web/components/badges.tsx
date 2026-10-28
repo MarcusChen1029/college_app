@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { ApplyTag } from "@/lib/apply-tags";
 import { SCHOOL_DOMAINS } from "@/lib/school-domains";
 import type { Fit, FitResult } from "@/lib/fit";
 import { useT } from "@/lib/i18n/client";
@@ -41,6 +42,21 @@ export function FitBadge({ fit, result }: { fit: Fit; result?: FitResult }) {
 
 export function Pill({ children, tone = "zinc" }: { children: React.ReactNode; tone?: "zinc" | "blue" | "green" | "red" }) {
   return <span className={`inline-block rounded border px-1.5 py-0.5 text-xs font-medium ${toneClass(pillTone(tone))}`}>{children}</span>;
+}
+
+/** "No supplements" / "No app fee" (lib/apply-tags.ts). Renders nothing without tags. */
+export function ApplyTags({ tags, className = "" }: { tags: readonly ApplyTag[] | undefined; className?: string }) {
+  const t = useT();
+  if (!tags?.length) return null;
+  return (
+    <span className={`flex flex-wrap gap-1 ${className}`}>
+      {tags.map((tag) => (
+        <span key={tag} title={t(`colleges.tag.${tag}.title`)} className="whitespace-nowrap">
+          <Pill tone="green">{t(`colleges.tag.${tag}`)}</Pill>
+        </span>
+      ))}
+    </span>
+  );
 }
 
 /** The school's logo (its site icon), shown left of the tier. Hides itself when there is none. */
