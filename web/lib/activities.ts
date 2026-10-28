@@ -376,6 +376,26 @@ export function caActivityIssues(a: CaActivity): Issue[] {
   return c.issues;
 }
 
+/**
+ * The questions the portal shows for this activity, in its order (docs/superpowers/research/2026-10-27-portal-dom.md §6).
+ * Sport only for the athletics types, role only on leadership yes, time of year only with a school grade (9-12),
+ * dates and "still participating" only with PG, end date only on "no".
+ */
+export function caVisibleQuestions(a: CaActivity): (keyof CaActivity)[] {
+  const q: (keyof CaActivity)[] = ["type"];
+  if (CA_ATHLETIC_TYPES.includes(a.type)) q.push("sport");
+  q.push("description", "organization", "leadership");
+  if (a.leadership === true) q.push("position");
+  q.push("grades");
+  if (hasSchoolGrade(a.grades)) q.push("timing");
+  if (a.grades.includes("PG")) {
+    q.push("afterStart", "stillParticipating");
+    if (a.stillParticipating === false) q.push("afterEnd");
+  }
+  q.push("hoursPerWeek", "weeksPerYear", "continueInCollege");
+  return q;
+}
+
 export function caHonorIssues(h: CaHonor): Issue[] {
   const c = collector();
   if (!h.title.trim()) c.missing("title", "Enter the honor title.");

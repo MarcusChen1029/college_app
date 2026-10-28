@@ -9,6 +9,7 @@ import {
   UC_EDPREP_PROGRAMS,
   caActivityIssues,
   caHonorIssues,
+  caVisibleQuestions,
   move,
   newCaActivity,
   newCaHonor,
@@ -590,4 +591,23 @@ test("move swaps neighbours and stops at the ends", () => {
   assert.deepEqual(move([1, 2, 3], 0, 1), [2, 1, 3]);
   assert.deepEqual(move([1, 2, 3], 0, -1), [1, 2, 3]);
   assert.deepEqual(move([1, 2, 3], 2, 1), [1, 2, 3]);
+});
+
+test("caVisibleQuestions follows the portal's order and show/hide rules", () => {
+  const base = { ...newCaActivity(), type: "Robotics" };
+  assert.deepEqual(caVisibleQuestions(base), ["type", "description", "organization", "leadership", "grades", "hoursPerWeek", "weeksPerYear", "continueInCollege"]);
+  assert.deepEqual(caVisibleQuestions({ ...base, type: "" }).slice(0, 2), ["type", "description"]); // nothing chosen: no sport
+  for (const type of CA_ATHLETIC_TYPES) assert.deepEqual(caVisibleQuestions({ ...base, type }).slice(0, 3), ["type", "sport", "description"]);
+  assert.deepEqual(caVisibleQuestions({ ...base, leadership: true }).slice(2, 5), ["organization", "leadership", "position"]);
+  assert.ok(!caVisibleQuestions({ ...base, leadership: false }).includes("position"));
+  const g11 = caVisibleQuestions({ ...base, grades: ["11"] });
+  assert.deepEqual(g11.slice(4, 6), ["grades", "timing"]);
+  assert.ok(!g11.includes("afterStart"));
+  const pg = caVisibleQuestions({ ...base, grades: ["PG"] });
+  assert.deepEqual(pg.slice(4, 7), ["grades", "afterStart", "stillParticipating"]);
+  assert.ok(!pg.includes("timing") && !pg.includes("afterEnd"));
+  assert.ok(!caVisibleQuestions({ ...base, grades: ["PG"], stillParticipating: true }).includes("afterEnd"));
+  assert.deepEqual(caVisibleQuestions({ ...base, grades: ["PG"], stillParticipating: false }).slice(4, 8), ["grades", "afterStart", "stillParticipating", "afterEnd"]);
+  const all = caVisibleQuestions({ ...base, type: "Athletics (other)", leadership: true, grades: ["9", "PG"], stillParticipating: false });
+  assert.deepEqual(all, ["type", "sport", "description", "organization", "leadership", "position", "grades", "timing", "afterStart", "stillParticipating", "afterEnd", "hoursPerWeek", "weeksPerYear", "continueInCollege"]);
 });
