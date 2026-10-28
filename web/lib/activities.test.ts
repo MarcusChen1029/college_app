@@ -479,6 +479,62 @@ test("upgrading is idempotent and never throws", () => {
   assert.notEqual(upgradeActivities(null).commonApp.activities, EMPTY_ACTIVITIES.commonApp.activities); // a fresh object, not the shared constant
 });
 
+test("an entry with no usable id gets an id from its list and position, never a random one", () => {
+  const raw = {
+    commonApp: {
+      activities: [oldActivity({ id: undefined }), null, oldActivity({ id: "" }), oldActivity({ id: 42 }), oldActivity({ id: "   " }), oldActivity({ id: "keep" })],
+      honors: [{ title: "A" }, { id: 7, title: "B" }, { id: "h", title: "C" }],
+    },
+    uc: ["junk", oldUc({ id: undefined }), oldUc({ id: null })],
+  };
+  const out = upgradeActivities(raw);
+  assert.deepEqual(out.commonApp.activities.map((a) => a.id), ["legacy-ca-0", "legacy-ca-2", "legacy-ca-3", "legacy-ca-4", "keep"]); // the index counts dropped entries
+  assert.deepEqual(out.commonApp.honors.map((h) => h.id), ["legacy-honor-0", "legacy-honor-1", "h"]);
+  assert.deepEqual(out.uc.map((e) => e.id), ["legacy-uc-1", "legacy-uc-2"]);
+  assert.deepEqual(upgradeActivities(raw), out); // two calls, identical output
+  assert.deepEqual(upgradeActivities(out), out);
+});
+
+test("an old organization on a non-work UC entry is kept in the note", () => {
+  const e = upgradedUc({ category: "extracurricular", organization: "Chess Federation" });
+  assert.equal(e.legacy, "From your earlier version: organization Chess Federation");
+  assert.equal(upgradedUc({ category: "award", organization: "Math Society" }).legacy, "From your earlier version: organization Math Society");
+  assert.equal(upgradedUc({ category: "volunteer", organization: "   " }).legacy, undefined);
+  assert.equal(upgradedUc({ category: "volunteer", organization: "" }).legacy, undefined);
+  // Joined with the other note for the same entry.
+  const long = upgradedUc({ category: "edprep", name: "A Very Long Summer Program Name That Is Over Thirty", organization: "Local Org" });
+  assert.equal(long.legacy, "From your earlier version: A Very Long Summer Program Name That Is Over Thirty; From your earlier version: organization Local Org");
+  // A work entry's organization is its workplace, not a note.
+  assert.equal(upgradedUc({ category: "work", name: "Cashier", organization: "Cafe", hoursPerWeek: null, weeksPerYear: null }).legacy, undefined);
+});
+
+test("only the portals' own keys count as grades, levels and award levels", () => {
+  const a = upgradedCa({ grades: ["9", "13", "PG", 10, "constructor"] });
+  assert.deepEqual(a.grades, ["9", "PG"]);
+  const out = upgradeActivities(oldData([], [oldUc({ category: "award", awardLevel: "constructor" }), oldUc({ id: "v2", category: "award", awardLevel: "toString" })], [{ id: "h", title: "T", grades: ["x"], levels: ["national", "constructor", "toString", "bogus", "school"] }]));
+  assert.deepEqual(out.commonApp.honors[0], { id: "h", title: "T", grades: [], levels: ["national", "school"] });
+  assert.deepEqual(out.uc.map((e) => e.awardLevels), [[], []]);
+  assert.deepEqual(upgradeActivities({ version: 2, commonApp: { activities: [], honors: [] }, uc: [{ id: "q", category: "award", awardLevels: ["school", "hasOwnProperty", "state"] }] }).uc[0].awardLevels, ["school", "state"]);
+});
+
+test("an unknown UC category, whitespace role, and decimal work hours convert as written", () => {
+  assert.equal(upgradedUc({ category: "mystery" }).category, "extracurricular");
+  const blankRole = upgradedCa({ position: "   " });
+  assert.deepEqual([blankRole.leadership, blankRole.position], [null, "   "]);
+  assert.equal(upgradedUc({ category: "work", name: "Barista", organization: "Cafe", hoursPerWeek: 7.5, weeksPerYear: 12 }).legacy, "From your earlier version: 7.5 hours/week, 12 weeks/year");
+});
+
+test("an old educational prep name is trimmed and measured the way UC counts", () => {
+  const ed = (name: string) => upgradedUc({ category: "edprep", name });
+  assert.deepEqual([ed("   ").program, ed("   ").name, ed("   ").legacy], [null, "", undefined]);
+  const spaced = ed("  Local STEM camp  ");
+  assert.deepEqual([spaced.program, spaced.name], ["18", "Local STEM camp"]);
+  assert.equal(ed(`  ${"y".repeat(30)}  `).name, "y".repeat(30));
+  const lines = `${"y".repeat(15)}\n${"z".repeat(14)}`; // 30 characters, but UC counts the line break as 2
+  const over = ed(lines);
+  assert.deepEqual([over.program, over.name, over.legacy], ["18", "", `From your earlier version: ${lines}`]);
+});
+
 const fixtureDir = new URL("./fixtures/", import.meta.url);
 const fixture = (name: string): { student: string; activities: unknown }[] => JSON.parse(readFileSync(new URL(name, fixtureDir), "utf8"));
 
@@ -495,18 +551,32 @@ test("the v1 fixture upgrades to the v2 fixture exactly", () => {
 
 test("the fixtures cover every old type and rule", () => {
   const before = fixture("activities-v1.json");
-  const olds = before.flatMap((s) => ((s.activities as ReturnType<typeof oldData>).commonApp?.activities ?? []) as ReturnType<typeof oldActivity>[]);
-  assert.deepEqual(new Set(olds.map((a) => a.type)), new Set(OLD_TO_NEW_TYPES.map(([t]) => t)));
-  const timings = new Set(olds.map((a) => JSON.stringify([...a.timing].sort())));
-  assert.deepEqual(timings, new Set(['["break","school"]', '["school"]', '["break"]', "[]"]));
+  const olds = before.flatMap((s) => ((s.activities as ReturnType<typeof oldData>).commonApp?.activities ?? []) as ReturnType<typeof oldActivity>[]).filter((a) => a && typeof a === "object");
+  const oldTypes = new Set(OLD_TO_NEW_TYPES.map(([t]) => t));
+  const types = new Set(olds.map((a) => a.type));
+  for (const t of oldTypes) assert.ok(types.has(t), t);
+  assert.ok(types.has("") && types.has("Quidditch")); // blank and unknown types pass through
+  const timings = new Set(olds.map((a) => JSON.stringify([...(a.timing ?? [])].sort())));
+  for (const t of ['["break","school"]', '["school"]', '["break"]', "[]"]) assert.ok(timings.has(t), t);
   assert.deepEqual(new Set(olds.map((a) => a.continueInCollege)), new Set([true, false, null]));
-  assert.ok(olds.some((a) => a.position) && olds.some((a) => !a.position));
-  const ucs = before.flatMap((s) => ((s.activities as ReturnType<typeof oldData>).uc ?? []) as ReturnType<typeof oldUc>[]);
+  assert.ok(olds.some((a) => a.position) && olds.some((a) => !a.position) && olds.some((a) => a.position === "   "));
+  assert.ok(olds.some((a) => a.grades.some((g) => !["9", "10", "11", "12", "PG"].includes(g as string))));
+  // Entries without a usable id: missing, blank, whitespace, numeric, null; and a null entry in a list.
+  const ids = olds.filter((a) => a.id === undefined || typeof a.id !== "string" || !a.id.trim()).length;
+  assert.ok(ids >= 4);
+  assert.ok(olds.some((a) => typeof a.id === "number"));
+  assert.ok(before.some((s) => ((s.activities as ReturnType<typeof oldData>).commonApp?.activities ?? []).includes(null as never)));
+  const ucs = before.flatMap((s) => ((s.activities as ReturnType<typeof oldData>).uc ?? []) as ReturnType<typeof oldUc>[]).filter((e) => e && typeof e === "object");
   assert.ok(ucs.some((e) => e.awardLevel) && ucs.some((e) => e.category === "award" && !e.awardLevel));
   assert.ok(ucs.some((e) => e.category === "work"));
+  assert.ok(ucs.some((e) => !["award", "edprep", "extracurricular", "coursework", "volunteer", "work"].includes(e.category))); // unknown category
+  assert.ok(ucs.some((e) => e.category !== "work" && (e.organization ?? "").trim())); // organization on a non-work entry
+  assert.ok(ucs.some((e) => e.category === "work" && e.hoursPerWeek === 7.5));
+  assert.ok(ucs.some((e) => e.category === "edprep" && !(e.name ?? "").trim()) && ucs.some((e) => e.category === "edprep" && e.name !== (e.name ?? "").trim()));
   assert.ok(before.some((s) => Object.keys(s.activities as object).length === 0));
   const honors = before.flatMap((s) => (s.activities as ReturnType<typeof oldData>).commonApp?.honors ?? []) as { levels: string[] }[];
   assert.ok(honors.some((h) => h.levels.includes("state_regional")));
+  assert.ok(honors.some((h) => h.levels.includes("constructor")));
 });
 
 test("already-copied items are not copied again", () => {

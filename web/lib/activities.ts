@@ -472,7 +472,8 @@ export function ucEntryIssues(e: UcEntry): Issue[] {
 // Anything stored before the 2026-27 format (no `version`) is converted here; v2 data passes through
 // unchanged. Rules: docs/superpowers/specs/2026-10-28-activities-filler-design.md §3.1-§3.2. The SQL
 // backfill in migration 0038 applies the same rules and is checked against lib/fixtures/activities-v1.json
-// -> activities-v2.json, so keep this deterministic: ids and order are kept, nothing is minted or guessed.
+// -> activities-v2.json, so keep this deterministic: ids and order are kept, nothing random is minted or guessed
+// (an entry with no usable id gets `legacy-<list>-<index>`, the index in the stored list).
 
 const OLD_CA_TYPES = new Map<string, string>([
   ["Academic", "Academic"],
@@ -516,6 +517,10 @@ const numberOrNull = (v: unknown) => (typeof v === "number" && Number.isFinite(v
 const boolOrNull = (v: unknown) => (typeof v === "boolean" ? v : null);
 const monthOrNull = (v: unknown) => (typeof v === "string" && v !== "" ? v : null);
 const listOf = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
+/** An own key of `o` (not `constructor`, `toString`...). */
+const ownKey = (o: object, k: unknown): k is string => typeof k === "string" && Object.prototype.hasOwnProperty.call(o, k);
+/** The stored id, or a deterministic one from the list and the entry's index when it is missing, blank or not a string. */
+const idOf = (v: unknown, list: string, i: number) => (typeof v === "string" && v.trim() !== "" ? v : `legacy-${list}-${i}`);
 const gradesOf = (v: unknown): Grade[] => listOf(v).filter((g): g is Grade => GRADES.includes(g as Grade));
 /** Case-insensitive and whitespace-collapsed, for matching old free text to a program label. */
 const collapse = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
@@ -535,11 +540,11 @@ function caContinue(v: unknown): CaContinue | null {
   return v === "yes" || v === "no" || v === "not_sure" ? v : null;
 }
 
-function upgradeCaActivity(r: Raw): CaActivity {
+function upgradeCaActivity(r: Raw, i: number): CaActivity {
   const type = text(r.type);
   const position = text(r.position);
   const a: CaActivity = {
-    id: text(r.id) || newId(),
+    id: idOf(r.id, "ca", i),
     type: OLD_CA_TYPES.get(type) ?? type, // a current label is not an old key, so it passes through
     sport: text(r.sport),
     // The old form had no such question; a role was the only hint. Not answered is null, never false.
@@ -560,12 +565,12 @@ function upgradeCaActivity(r: Raw): CaActivity {
   return a;
 }
 
-function upgradeCaHonor(r: Raw): CaHonor {
+function upgradeCaHonor(r: Raw, i: number): CaHonor {
   return {
-    id: text(r.id) || newId(),
+    id: idOf(r.id, "honor", i),
     title: text(r.title),
     grades: gradesOf(r.grades),
-    levels: listOf(r.levels).filter((l): l is HonorLevel => typeof l === "string" && l in HONOR_LEVELS),
+    levels: listOf(r.levels).filter((l): l is HonorLevel => ownKey(HONOR_LEVELS, l)),
   };
 }
 
@@ -594,11 +599,11 @@ function workHoursOf(v: unknown): UcWorkHours {
 }
 
 /** `v1`: the entry is in the earlier shape, where work kept the job title in `name` and the employer in `organization`. */
-function upgradeUcEntry(r: Raw, v1: boolean): UcEntry {
+function upgradeUcEntry(r: Raw, i: number, v1: boolean): UcEntry {
   const category = UC_CATEGORY_KEYS.includes(r.category as UcCategory) ? (r.category as UcCategory) : "extracurricular";
   const level = r.awardLevel;
   const e: UcEntry = {
-    id: text(r.id) || newId(),
+    id: idOf(r.id, "uc", i),
     category,
     name: text(r.name),
     jobTitle: text(r.jobTitle),
@@ -611,8 +616,8 @@ function upgradeUcEntry(r: Raw, v1: boolean): UcEntry {
     afterMonths: numberOrNull(r.afterMonths),
     // Old entries held one level; current ones hold a list.
     awardLevels: Array.isArray(r.awardLevels)
-      ? r.awardLevels.filter((l): l is UcAwardLevel => typeof l === "string" && l in UC_AWARD_LEVELS)
-      : typeof level === "string" && level in UC_AWARD_LEVELS
+      ? r.awardLevels.filter((l): l is UcAwardLevel => ownKey(UC_AWARD_LEVELS, l))
+      : ownKey(UC_AWARD_LEVELS, level)
         ? [level as UcAwardLevel]
         : [],
     awardType: r.awardType === "academic" || r.awardType === "non_academic" ? r.awardType : null,
@@ -622,27 +627,31 @@ function upgradeUcEntry(r: Raw, v1: boolean): UcEntry {
     start: monthOrNull(r.start),
     end: monthOrNull(r.end),
   };
-  let legacy = text(r.legacy);
+  const notes = text(r.legacy) ? [text(r.legacy)] : [];
   if (v1 && category === "work") {
     e.jobTitle = text(r.name);
     e.name = text(r.organization);
     // The old hours have no matching question (UC asks per grade); keep them as a note rather than guess a grid.
     const hours = [e.hoursPerWeek !== null && `${e.hoursPerWeek} hours/week`, e.weeksPerYear !== null && `${e.weeksPerYear} weeks/year`].filter(Boolean);
-    if (hours.length) legacy = `${LEGACY_PREFIX}${hours.join(", ")}`;
+    if (hours.length) notes.push(`${LEGACY_PREFIX}${hours.join(", ")}`);
     e.hoursPerWeek = null;
     e.weeksPerYear = null;
-  } else if (v1 && category === "edprep") {
-    const old = text(r.name);
-    const program = ucProgramFor(old);
-    if (program) [e.program, e.name] = [program, ""];
-    else if (!collapse(old)) [e.program, e.name] = [null, ""]; // nothing to go on: left for the student
-    else if (old.length <= UC_LIMITS.otherProgramName) [e.program, e.name] = [UC_EDPREP_OTHER, old];
-    else {
-      [e.program, e.name] = [UC_EDPREP_OTHER, ""]; // too long for UC's Other box
-      legacy = `${LEGACY_PREFIX}${old}`;
+  } else if (v1) {
+    if (category === "edprep") {
+      const old = text(r.name).trim();
+      const program = ucProgramFor(old);
+      if (program) [e.program, e.name] = [program, ""];
+      else if (!old) [e.program, e.name] = [null, ""]; // nothing to go on: left for the student
+      else if (ucTextLength(old) <= UC_LIMITS.otherProgramName) [e.program, e.name] = [UC_EDPREP_OTHER, old];
+      else {
+        [e.program, e.name] = [UC_EDPREP_OTHER, ""]; // too long for UC's Other box
+        notes.push(`${LEGACY_PREFIX}${old}`);
+      }
     }
+    // Only work had an employer question, but the old MCP tool accepted `organization` on any category.
+    if (text(r.organization).trim()) notes.push(`${LEGACY_PREFIX}organization ${text(r.organization)}`);
   }
-  if (legacy) e.legacy = legacy;
+  if (notes.length) e.legacy = notes.join("; ");
   if (text(r.fromId)) e.fromId = text(r.fromId);
   return e;
 }
@@ -659,12 +668,10 @@ export function upgradeActivities(raw: unknown): ActivityData {
   return {
     version: 2,
     commonApp: {
-      activities: listOf(commonApp.activities).filter(isRecord).map(upgradeCaActivity),
-      honors: listOf(commonApp.honors).filter(isRecord).map(upgradeCaHonor),
+      activities: listOf(commonApp.activities).flatMap((r, i) => (isRecord(r) ? [upgradeCaActivity(r, i)] : [])),
+      honors: listOf(commonApp.honors).flatMap((r, i) => (isRecord(r) ? [upgradeCaHonor(r, i)] : [])),
     },
-    uc: listOf(src.uc)
-      .filter(isRecord)
-      .map((e) => upgradeUcEntry(e, v1)),
+    uc: listOf(src.uc).flatMap((r, i) => (isRecord(r) ? [upgradeUcEntry(r, i, v1)] : [])),
   };
 }
 

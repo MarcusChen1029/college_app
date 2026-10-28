@@ -926,6 +926,370 @@
     }
   },
   {
+    "student": "missing-ids",
+    "activities": {
+      "commonApp": {
+        "activities": [
+          {
+            "type": "Robotics",
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null
+          },
+          null,
+          {
+            "type": "Art",
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": ""
+          },
+          {
+            "type": "Dance",
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": 42
+          },
+          {
+            "type": "Cultural",
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "   "
+          },
+          {
+            "type": "Research",
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "keep-me"
+          }
+        ],
+        "honors": [
+          {
+            "title": "No id",
+            "grades": [
+              "9"
+            ],
+            "levels": [
+              "school"
+            ]
+          },
+          {
+            "id": 7,
+            "title": "Numeric",
+            "grades": [
+              "10"
+            ],
+            "levels": [
+              "national"
+            ]
+          }
+        ]
+      },
+      "uc": [
+        "junk",
+        {
+          "category": "extracurricular",
+          "name": "No id",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 1,
+          "weeksPerYear": 2
+        },
+        {
+          "id": null,
+          "category": "award",
+          "name": "Null id",
+          "awardLevel": "state",
+          "awardType": "academic",
+          "extra": "",
+          "description": "",
+          "grades": [],
+          "hoursPerWeek": null,
+          "weeksPerYear": null
+        }
+      ]
+    }
+  },
+  {
+    "student": "edge-rules",
+    "activities": {
+      "commonApp": {
+        "activities": [
+          {
+            "type": "",
+            "position": "   ",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "11",
+              "13",
+              "PG",
+              10,
+              "9"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "e1"
+          },
+          {
+            "type": "Quidditch",
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": [
+              "school"
+            ],
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "e2"
+          }
+        ],
+        "honors": [
+          {
+            "id": "eh1",
+            "title": "Odd levels",
+            "grades": [
+              "12",
+              "x"
+            ],
+            "levels": [
+              "national",
+              "constructor",
+              "bogus",
+              "school"
+            ]
+          }
+        ]
+      },
+      "uc": [
+        {
+          "id": "x1",
+          "category": "mystery",
+          "name": "Unknown category",
+          "organization": "",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "10",
+            "7"
+          ],
+          "hoursPerWeek": 1,
+          "weeksPerYear": 2,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x2",
+          "category": "edprep",
+          "name": "   ",
+          "organization": "",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x3",
+          "category": "edprep",
+          "name": "  Local STEM camp  ",
+          "organization": "",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x4",
+          "category": "edprep",
+          "name": "  yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy  ",
+          "organization": "",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x5",
+          "category": "edprep",
+          "name": "yyyyyyyyyyyyyyy\nzzzzzzzzzzzzzz",
+          "organization": "",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x6",
+          "category": "work",
+          "name": "Barista",
+          "organization": "Corner Cafe",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 7.5,
+          "weeksPerYear": 12,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x7",
+          "category": "extracurricular",
+          "name": "Chess Club",
+          "organization": "Chess Federation",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 3,
+          "weeksPerYear": 30,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x8",
+          "category": "award",
+          "name": "Prize",
+          "organization": "Math Society",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "awardLevel": "bogus",
+          "awardType": "non_academic"
+        },
+        {
+          "id": "x9",
+          "category": "edprep",
+          "name": "The Very Long Name Of A Regional Summer Program",
+          "organization": "Local Org",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "awardLevel": "constructor",
+          "awardType": null
+        },
+        {
+          "id": "x10",
+          "category": "volunteer",
+          "name": "Food Bank",
+          "organization": "   ",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 40,
+          "awardLevel": null,
+          "awardType": null
+        },
+        {
+          "id": "x11",
+          "category": "coursework",
+          "name": "Calculus",
+          "organization": "Community College",
+          "extra": "",
+          "description": "d",
+          "grades": [
+            "12"
+          ],
+          "hoursPerWeek": 4,
+          "weeksPerYear": 15,
+          "awardLevel": null,
+          "awardType": null
+        }
+      ]
+    }
+  },
+  {
     "student": "empty-profile",
     "activities": {}
   }
