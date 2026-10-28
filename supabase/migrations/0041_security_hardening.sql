@@ -592,3 +592,15 @@ begin
   update public.share_links set last_viewed_at = now() where id = l_id;
   return uid;
 end $$;
+
+-- ───────────── Account deletion reaches every copy ─────────────
+-- Settings > Delete account removes the auth user and relies on ON DELETE CASCADE. 0038's activities backup has no
+-- foreign key, so add one (not valid: rows of already-deleted users are left for the owner to drop with the table).
+do $$
+begin
+  if to_regclass('private.activities_backup_0038') is not null
+     and not exists (select 1 from pg_constraint where conname = 'activities_backup_0038_user_fk') then
+    alter table private.activities_backup_0038
+      add constraint activities_backup_0038_user_fk foreign key (user_id) references auth.users (id) on delete cascade not valid;
+  end if;
+end $$;

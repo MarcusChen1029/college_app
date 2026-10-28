@@ -3,12 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useT } from "@/lib/i18n/client";
+import { STORAGE_KEY as QUIZ_KEY } from "@/lib/interest-quiz";
+import { LEGACY_KEY } from "@/lib/student-local";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass } from "@/lib/ui";
 
 const CONFIRM = "DELETE"; // must match DELETE_CONFIRMATION in lib/account-server.ts
-const LOCAL_KEY = "college-tracker:v1"; // the signed-out copy in student-store.ts
+// What this browser keeps for the student: the signed-out copy (student-store.ts), its legacy passwords and the quiz answers.
+const LOCAL_KEYS = ["college-tracker:v1", LEGACY_KEY, QUIZ_KEY];
 
 /** Settings > Delete account: the student or teacher removes the account and all its data (POST /api/account/delete). */
 export function DeleteAccount() {
@@ -37,7 +40,7 @@ export function DeleteAccount() {
       return;
     }
     try {
-      window.localStorage.removeItem(LOCAL_KEY);
+      for (const k of LOCAL_KEYS) window.localStorage.removeItem(k);
     } catch {
       // storage blocked: nothing saved there either
     }
