@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { CA_PAGE_LIMIT, buildCaPagePlan, itemLabel, keepRoom, readBackMismatches, replacedNote, type CaAnswer } from "./activities-fill.ts";
+import { CA_PAGE_LIMIT, buildCaPagePlan, caQuestions, itemLabel, keepRoom, readBackMismatches, replacedNote, type CaAnswer } from "./activities-fill.ts";
 import { newCaActivity, newCaHonor, type ActivityData, type CaActivity, type CaHonor } from "./activities.ts";
 
 const robotics = (over: Partial<CaActivity> = {}): CaActivity => ({
@@ -240,4 +240,14 @@ test("readBackMismatches: dates match as Month YYYY or MM/YYYY; honors say Honor
 
   const hp = buildCaPagePlan(data([], [{ ...newCaHonor(), id: "h", title: "Award", grades: ["9"], levels: ["school"] }]), "honors");
   assert.deepEqual(readBackMismatches(hp, [{ title: "Awar", "Grade level": ["9"], "Level(s) of recognition": ["School"] }]), ['Honors 1: title shows "Awar" (sent "Award")']);
+});
+
+test("caQuestions lists each page's questions in the order and kinds a plan's answers use", () => {
+  const slot = buildCaPagePlan(data([robotics()]), "activities").slots[0]!;
+  assert.deepEqual(caQuestions("activities"), slot.answers.map(({ question, kind }) => ({ question, kind })));
+  assert.deepEqual(caQuestions("honors"), [
+    { question: "title", kind: "text" },
+    { question: "Grade level", kind: "checks" },
+    { question: "Level(s) of recognition", kind: "checks" },
+  ]);
 });

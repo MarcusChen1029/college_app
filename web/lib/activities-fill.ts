@@ -63,6 +63,12 @@ const HONOR_SPECS: Partial<Record<keyof CaHonor, Spec>> = {
 };
 const HONOR_ORDER = Object.keys(HONOR_SPECS) as (keyof CaHonor)[];
 
+/** Every question of one slot on `page`, in reveal order: the same `question` / `kind` pairs a plan's answers carry (the extension reads them back). */
+export function caQuestions(page: CaPage): { question: string; kind: CaAnswer["kind"] }[] {
+  const specs: Spec[] = page === "activities" ? ACTIVITY_ORDER.map((k) => ACTIVITY_SPECS[k]!) : HONOR_ORDER.map((k) => HONOR_SPECS[k]!);
+  return specs.map(({ question, kind }) => ({ question, kind }));
+}
+
 const ACTIVITY_GRADE_LABEL: Record<Grade, string> = { "9": "9th grade", "10": "10th grade", "11": "11th grade", "12": "12th grade", PG: "After graduating high school" };
 const HONOR_GRADE_LABEL: Record<Grade, string> = { "9": "9", "10": "10", "11": "11", "12": "12", PG: "Post-graduate" };
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
