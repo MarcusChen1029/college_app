@@ -255,3 +255,29 @@ test("fillUcForm: not on the add page, or a plan without its category first, pre
   assert.match((r2 as { error: string }).error, /does not start with its category/);
   assert.deepEqual(fake.log, []);
 });
+
+test("deleteUcEntry: a confirm popup already open (from another press) presses nothing, not even this item's Delete", async () => {
+  const fake = fakeUcList([TEST_CLUB, OTHER]);
+  fake.doc.getElementById("mdl")!.style.display = "block";
+  await assert.rejects(deleteUcEntry(fake.doc, "13836652"), /popup is already open/);
+  assert.deepEqual(fake.log, []);
+  assert.deepEqual(fake.items(), ["13836651", "13836652"]);
+});
+
+test("fillUcForm: a textarea with neither a char_count_<N> class nor a maxlength is refused (its limit is unknown); #save is not pressed", () => {
+  const fake = fakeUcForm();
+  fake.doc.getElementById("extraCurrDescription")!.removeAttribute("class");
+  const r = fillUcForm(fake.doc, planOf(club()));
+  assert.equal(r.ok, false);
+  assert.match((r as { error: string }).error, /no length limit/);
+  assert.equal(count(fake.log, "save"), 0);
+  assert.equal(fake.log.filter((l) => l.startsWith("type:")).length, 0);
+});
+
+test("fillUcForm: a textarea limited only by maxlength is accepted", () => {
+  const fake = fakeUcForm();
+  const area = fake.doc.getElementById("extraCurrDescription")!;
+  area.removeAttribute("class");
+  area.setAttribute("maxlength", "350");
+  assert.deepEqual(fillUcForm(fake.doc, planOf(club())), { ok: true });
+});

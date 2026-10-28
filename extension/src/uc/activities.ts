@@ -77,11 +77,13 @@ function deleteButtonOf(doc: Document, activityId: string): HTMLElement | null {
   return null;
 }
 
-/** Presses the item's own Delete, waits for UC's "Are you sure you want to delete this activity?" popup, then presses Yes (never No). Throws when
- *  the item or the popup is not there; nothing else is pressed then. */
+/** Async: await it. Presses the item's own Delete, waits for UC's "Are you sure you want to delete this activity?" popup, then presses Yes (never
+ *  No). Throws when the item or the popup is not there, or when a popup is already open before the press (its Yes could belong to another
+ *  item); nothing else is pressed then. */
 export async function deleteUcEntry(doc: Document, activityId: string): Promise<void> {
   const del = deleteButtonOf(doc, activityId);
   if (!del) throw new UcStop(`UC's list has no activity ${activityId} to delete`);
+  if (UC_ACT_DOM.visible(byId(doc, "mdl"))) throw new UcStop("A UC popup is already open on the list: close it, then run again. Nothing was deleted");
   del.click();
   const start = Date.now();
   for (;;) {
@@ -120,6 +122,12 @@ function field(doc: Document, f: UcFieldSet): HTMLInputElement {
   const el = byId(doc, f.id) as HTMLInputElement | null;
   if (!el) throw new UcStop(`UC's ${f.id} box is not on the page`);
   return el;
+}
+
+/** A textarea with neither class char_count_<N> nor a maxlength: its limit is unknown (UC cuts on keyup and before submit), so it is refused. */
+function unknownLimit(el: HTMLInputElement | HTMLTextAreaElement): boolean {
+  const max = el.getAttribute("maxlength");
+  return el.tagName.toUpperCase() === "TEXTAREA" && !CHAR_CLASS.test(el.getAttribute("class") ?? "") && !(max && /^\d+$/.test(max));
 }
 
 /** The text UC would keep of a box's value; null when it would keep it all. Textareas: class char_count_<N>, a line break counts 2. Text boxes: maxlength. */
@@ -208,6 +216,7 @@ export function fillUcForm(doc: Document, plan: UcFormPlan): UcFormResult {
     const cuts = rest.flatMap((f) => {
       if (f.kind !== "text") return [];
       const el = field(doc, f) as HTMLInputElement | HTMLTextAreaElement;
+      if (unknownLimit(el)) return [`${plan.label}: UC's ${nameOf(el, f.id)} box shows no length limit, so the filler cannot tell whether UC would cut the text`];
       const why = cutReason(el, String(f.value));
       return why ? [`${plan.label}: UC would cut the ${nameOf(el, f.id)} text (${why})`] : [];
     });
