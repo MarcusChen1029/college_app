@@ -119,6 +119,17 @@ const onUcList = (tab: { site: Site | null; path: string }) => tab.site === "uc"
 let view: "other" | "ready" = "other";
 let currentOffers: Offer[] = [];
 let stopRequested = false;
+/** One activities run at a time (Common App or UC): a second press of Fill while one runs is ignored. */
+let activitiesRunning = false;
+async function oneRun(run: () => Promise<void>): Promise<void> {
+  if (activitiesRunning) return;
+  activitiesRunning = true;
+  try {
+    await run();
+  } finally {
+    activitiesRunning = false;
+  }
+}
 
 function signedOutView(message?: string): void {
   view = "other";
@@ -249,7 +260,7 @@ function activitiesSection(tab: { id: number | null; site: Site | null; path: st
   const here = tabId === null ? null : caPageForPath(tab.path);
   const buttons = (["activities", "honors"] as CaPage[]).map((page) =>
     here === page
-      ? button(`Fill ${PAGE_NAME[page].plural}`, () => void runActivities(page), "btn primary")
+      ? button(`Fill ${PAGE_NAME[page].plural}`, () => void oneRun(() => runActivities(page)), "btn primary")
       : button(`Go to the ${PAGE_NAME[page].title} page`, () => void chrome.tabs.update(tabId!, { url: COMMONAPP_ORIGIN + CA_PAGE_FACTS[page].path }), "btn", tabId === null),
   );
   return h(
@@ -273,7 +284,7 @@ async function runActivities(page: CaPage): Promise<void> {
   }
   show(h("p", { class: "muted" }, "Loading your activities..."));
   const loaded = await loadActivities();
-  if (!loaded.ok) return show(activitiesProblem(loaded.reason, () => void runActivities(page)), h("div", { class: "row" }, button("Back", back)));
+  if (!loaded.ok) return show(activitiesProblem(loaded.reason, () => void oneRun(() => runActivities(page))), h("div", { class: "row" }, button("Back", back)));
 
   const status = h("p", { class: "status" }, "Checking the page...");
   const prompt = h("div", {});
@@ -315,7 +326,7 @@ function ucActivitiesSection(tabId: number, path: string): HTMLElement {
       "div",
       { class: "row" },
       here
-        ? button("Fill activities & awards", () => void runUcActivitiesView(tabId), "btn primary")
+        ? button("Fill activities & awards", () => void oneRun(() => runUcActivitiesView(tabId)), "btn primary")
         : button("Go to Activities & awards", () => void chrome.tabs.update(tabId, { url: SITE_ORIGINS.uc[0] + UC_ACTIVITIES_PATH }), "btn"),
     ),
   );
@@ -332,7 +343,7 @@ async function runUcActivitiesView(tabId: number): Promise<void> {
   }
   show(h("p", { class: "muted" }, "Loading your activities..."));
   const loaded = await loadActivities();
-  if (!loaded.ok) return show(activitiesProblem(loaded.reason, () => void runUcActivitiesView(tabId)), h("div", { class: "row" }, button("Back", back)));
+  if (!loaded.ok) return show(activitiesProblem(loaded.reason, () => void oneRun(() => runUcActivitiesView(tabId))), h("div", { class: "row" }, button("Back", back)));
 
   const status = h("p", { class: "status" }, "Checking the list...");
   const prompt = h("div", {});

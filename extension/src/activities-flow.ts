@@ -57,6 +57,11 @@ export type ActivitiesReport = {
   notes: string[];
   /** A plain result that is not a problem: a full page, nothing chosen, nothing in the tracker. */
   note: string | null;
+  /**
+   * UC: entries whose press went through (Save & continue, or Delete's Yes) but whose page load never came back, or that UC lists twice:
+   * they may be saved / removed. Never also in `filled` or `notAdded`, so a rerun does not add them blindly.
+   */
+  unsure?: string[];
 };
 
 export const STOPPED = "Stopped. Nothing was changed on Common App.";

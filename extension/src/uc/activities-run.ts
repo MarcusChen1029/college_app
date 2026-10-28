@@ -69,6 +69,7 @@ export async function runUcActivities(
   let pending: UcFormPlan[] = [];
   let deleted: string[] = [];
   let existingLabels: string[] = [];
+  const unsure: string[] = [];
 
   const halt = () => {
     if (shouldStop()) throw new RunStop(changed ? UC_STOPPED_PART : UC_STOPPED);
@@ -87,16 +88,33 @@ export async function runUcActivities(
     if (!r.ok) throw new RunStop(`Stopped: ${when}: ${sentence(r.error)}`);
     return r.items;
   };
+  /** A press went through (or may have) but the run cannot tell what UC did: listed under its own heading, never under Not added. */
+  const notSure = (label: string, what: string, why: string): never => {
+    changed = true;
+    unsure.push(`${label} (${what})`);
+    throw new RunStop(`Stopped: ${why}, so ${label} may have been ${what.replace(/^possibly /, "")}. Check UC's list before running again.`);
+  };
   /**
    * One press that leaves the page: the wait for the load starts BEFORE the press (the load can begin before the answer is back), and is
-   * awaited only when the press went through. `press` returns an error sentence when nothing was pressed.
+   * awaited only when the press went through. `press` returns an error sentence when nothing was pressed, or "no answer" when the page did
+   * not answer (it may have pressed). `item`: what the press saves or removes; when it went through (or may have) and the load never comes
+   * back, the item is reported as possibly saved / removed instead of "not added".
    */
-  const pressAndLoad = async (press: () => Promise<string | null>) => {
+  const pressAndLoad = async (press: () => Promise<string | null | "no answer">, item?: { label: string; what: "possibly saved" | "possibly removed" }) => {
     const loaded = tab.afterReload();
     loaded.catch(() => {}); // not awaited when the press failed
     const error = await press();
+    if (error === "no answer") {
+      if (item) notSure(item.label, item.what, "UC did not answer");
+      throw new RunStop(`Stopped: ${sentence(NO_ANSWER)}`);
+    }
     if (error) throw new RunStop(`Stopped: ${sentence(error)}`);
-    await loaded;
+    try {
+      await loaded;
+    } catch (e) {
+      if (item) notSure(item.label, item.what, "UC did not finish loading the page after the press");
+      throw e;
+    }
     await signedIn();
   };
 
@@ -127,13 +145,25 @@ export async function runUcActivities(
     report.notAdded = plan.forms.slice(room).map((f) => f.label);
 
     if (decision.mode === "replace") {
+      // UC binds a new Yes handler on every Delete click and never unbinds it (portal-dom.md §7): after a Delete -> No on another item, a
+      // later Yes could also delete that one. Every delete therefore starts from a freshly loaded list: this load before the first one,
+      // and each delete's own load before the next.
+      halt();
+      progress("Reloading UC's list before removing...");
+      await tab.go(UC_ACTIVITIES_PATH);
+      await signedIn();
+      const fresh = await list("reload UC's list before removing");
+      if (fresh.length !== before.length || before.some((x) => !fresh.some((y) => y.activityId === x.activityId))) {
+        throw new RunStop("Stopped: UC's list changed after the question. Nothing was changed; run again.");
+      }
       for (const x of before) {
         halt();
         progress(`Removing ${ucListedLabel(x)} from UC...`);
         await pressAndLoad(async () => {
-          const r = await ask({ type: "ucActDelete", activityId: x.activityId });
+          const r = await tab.send({ type: "ucActDelete", activityId: x.activityId });
+          if (r?.type !== "ucActDelete") return "no answer";
           return r.ok ? null : r.error;
-        });
+        }, { label: ucListedLabel(x), what: "possibly removed" });
         changed = true;
         deleted.push(ucListedLabel(x));
       }
@@ -153,15 +183,24 @@ export async function runUcActivities(
       });
       halt(); // the add page is open and nothing is typed yet: stopping here changes nothing
       // From here to the list check there is no Stop: the fill is sent once and its load is always waited for.
-      await pressAndLoad(async () => {
-        const r = await tab.send({ type: "ucActFill", plan: form });
-        if (r?.type !== "ucActFill") throw new RunStop(`Stopped: ${form.label}: UC did not answer after Save & continue, so it is not known whether it was saved. Check UC's list before running again.`);
-        return r.ok ? null : r.error;
-      });
+      try {
+        await pressAndLoad(async () => {
+          const r = await tab.send({ type: "ucActFill", plan: form });
+          if (r?.type !== "ucActFill") return "no answer";
+          return r.ok ? null : r.error;
+        }, { label: form.label, what: "possibly saved" });
+      } catch (e) {
+        if (unsure.length) pending.shift(); // possibly saved: not "Not added"
+        throw e;
+      }
       const now = await list(`${form.label}: UC did not go back to the list after Save & continue (check the page for a message)`);
       const fresh = now.filter((x) => !known.has(x.activityId));
       for (const x of now) known.add(x.activityId);
       if (fresh.length === 0) throw new RunStop(`Stopped: UC does not list ${form.label} after saving: check the page for a message.`);
+      if (fresh.length > 1) {
+        pending.shift();
+        notSure(form.label, "possibly saved twice", `one Save & continue added ${fresh.length} entries to UC's list`);
+      }
       changed = true;
       added.push({ plan: form, activityId: fresh[fresh.length - 1]!.activityId });
       report.filled.push(form.label);
@@ -181,6 +220,7 @@ export async function runUcActivities(
     const msg = e instanceof Error ? e.message : String(e);
     report.stopped = e instanceof RunStop ? msg : /^Stopped/.test(msg) ? msg : `Stopped: ${msg}`;
     report.notAdded = [...pending.map((f) => f.label), ...report.notAdded];
+    if (unsure.length) report.unsure = [...unsure];
     if (deleted.length) {
       const n = existingLabels.length;
       report.replaced =

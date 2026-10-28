@@ -178,19 +178,22 @@ The extension presses only an item's Delete (then Yes), "Add an activity or awar
 to report" / "I've finished adding activities" (`#no_activities`) or any submit.
 
 Setup: in the tracker (test student account) open Activities > UC and add 3 entries: an Extracurricular activity with a 2-line description,
-hours 5.5 and weeks 30; a Volunteer entry; an Award with two levels. Give a 4th entry 200 hours per week (it must be reported as not accepted).
+hours 5.5 and weeks 30; a Volunteer entry; an Award with two levels. Add a 4th entry with 200 hours per week (it must be reported as not accepted).
+The question counts every tracker entry (blocked ones too); only the entries ticked or added are checked against UC's limits.
 
 1. Panel offer. On UC open the Activities & awards list (`/my-application/introactivitiesawards`; panel: "Go to Activities & awards" if needed).
    Expected: the UC panel shows "Activities & awards" with "Fill activities & awards".
-2. Keep (adds 2). Press Fill. Expected: "UC already has 1 activity or award. Replace it with the 3 in your tracker?" naming "Extracurricular
-   activity: Test Club (filler research)". Press "No, let me choose what to add", tick 2 entries, "Add the chosen". Expected: the tab goes
-   list -> add page -> list once per entry (no second tab, no double save: each entry appears once), the 200-hour entry is under "Not added: UC
-   would not accept these", the report says "Done: 2 activities and awards filled and checked." and lists no read-back differences.
+2. Keep (adds 2). Press Fill. Expected: "UC already has 1 activity or award. Replace it with the 4 in your tracker?" naming "Extracurricular
+   activity: Test Club (filler research)". Press "No, let me choose what to add", tick 3 entries including the 200-hour one, "Add the chosen".
+   Expected: the tab goes list -> add page -> list once per valid entry (no second tab, no double save: each entry appears once), the 200-hour
+   entry is under "Not added: UC would not accept these", the report says "Done: 2 activities and awards filled, but some things need a look"
+   (the blocked one) and lists no read-back differences.
 3. Read-back wording. For the Volunteer and Award entries just added, note the list's `p.subsectionheader` texts (expand the item). Only
    Extracurricular headers were verified live; record the others in portal-dom.md §7 so `expectOf` (web/lib/uc-activities-fill.ts) can check
    more than the name. A line under "UC shows something different from what was entered" is a bug worth sending back.
-4. Replace. Press Fill again, "Yes, replace all". Expected: each listed entry is deleted one at a time (Delete, Yes, page load), then the 3
-   tracker entries are added in tracker order; the report repeats "Replaced the N activities and awards that were already on UC: ..." and has
+4. Replace. Press Fill again, "Yes, replace all". Expected: the tab first reloads the list (UC keeps a stale Yes handler from every earlier
+   Delete click, portal-dom.md §7), then each listed entry is deleted one at a time (Delete, Yes, page load), then the 3 valid tracker entries
+   are added in tracker order; the report repeats "Replaced the N activities and awards that were already on UC: ..." and has
    no read-back lines. "Test Club (filler research)" is gone: re-add it by hand afterwards if later research needs it.
 5. Full list. Only if cheap to set up (20 entries): Fill, "No, let me choose...". Expected: "This page is full (20 of 20). Nothing can be added."
    and nothing changes.
@@ -198,5 +201,8 @@ hours 5.5 and weeks 30; a Volunteer entry; an Award with two levels. Give a 4th 
    it is adding: the current entry finishes saving (its page load is waited for), then the report says Stopped and lists the rest under "Not added".
 7. Signed out. Sign out of UC (in the same tab), sign in again, open the list, then sign out in the middle of a run if practical. Expected:
    "UC signed you out. Sign in again; entries listed as added were saved." and no success line.
+
+A run that stops with "Not sure: check UC's list before running again" means a save or delete went through but its page load did not come
+back: look at UC's list before running again (untick an entry that is already there).
 
 If something fails, send the panel report and a screenshot of the UC page; do not retry more than once.

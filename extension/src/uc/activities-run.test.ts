@@ -35,6 +35,10 @@ type FakeOpts = {
   /** The n-th save goes back to the list without the new entry. */
   dropSave?: number;
   onFill?: (n: number) => void;
+  /** This press goes through (the entry is saved / deleted) but the wait for its page load fails: "fill:<n>" or "delete:<activityId>". */
+  hangOn?: string;
+  /** The n-th save lands twice on the list. */
+  doubleSave?: number;
 };
 
 /**
@@ -48,10 +52,10 @@ function fakeUc(o: FakeOpts = {}) {
   let reloads = 0;
   let fills = 0;
   let missed = false;
-  let waiters: (() => void)[] = [];
+  let waiters: { ok: () => void; fail: (e: Error) => void }[] = [];
   const log: string[] = [];
   // The load lands before the answer reaches the caller (a microtask queued ahead of it), the worst case for a late wait.
-  const load = (apply: () => void) =>
+  const load = (apply: () => void, press = "") =>
     queueMicrotask(() => {
       apply();
       reloads++;
@@ -63,7 +67,10 @@ function fakeUc(o: FakeOpts = {}) {
       }
       const w = waiters;
       waiters = [];
-      for (const f of w) f();
+      for (const f of w) {
+        if (press && press === o.hangOn) f.fail(new Error("UC did not finish saving (no reload). Check the page for a message"));
+        else f.ok();
+      }
     });
   const tab: UcTab = {
     async send(msg: AssistMessage): Promise<AssistResponse | null> {
@@ -76,7 +83,7 @@ function fakeUc(o: FakeOpts = {}) {
         case "ucActDelete":
           if (page !== "list") return { type: "ucActDelete", ok: false, error: "Open UC's Activities & awards list first" };
           log.push(`delete:${msg.activityId}`);
-          load(() => (items = items.filter((x) => x.activityId !== msg.activityId)));
+          load(() => (items = items.filter((x) => x.activityId !== msg.activityId)), `delete:${msg.activityId}`);
           return { type: "ucActDelete", ok: true };
         case "ucActAdd":
           if (page !== "list") return { type: "ucActAdd", ok: false, error: "Open UC's Activities & awards list first" };
@@ -98,7 +105,8 @@ function fakeUc(o: FakeOpts = {}) {
             const { activitySubtitle, ...rest } = o.shown?.(plan) ?? plan.expect;
             const name = activitySubtitle?.[0] ?? plan.label.split(": ").slice(1).join(": ");
             items.push({ activityId: String(nextId++), category: plan.category, index: items.length + 1, name, shown: rest });
-          });
+            if (o.doubleSave === n) items.push({ activityId: String(nextId++), category: plan.category, index: items.length + 1, name, shown: rest });
+          }, `fill:${n}`);
           return { type: "ucActFill", ok: true };
         }
         default:
@@ -107,10 +115,11 @@ function fakeUc(o: FakeOpts = {}) {
     },
     async go(path) {
       log.push(`go:${path}`);
+      page = "list";
     },
     afterReload() {
       if (missed) return Promise.reject(new Error("the run started waiting after the page had already loaded"));
-      return new Promise<void>((r) => waiters.push(r));
+      return new Promise<void>((ok, fail) => waiters.push({ ok, fail }));
     },
   };
   return { tab, log, items: () => items, fills: () => fills };
@@ -154,7 +163,7 @@ test("replace: deletes the 3 listed entries (one page load each), then adds 2 in
   assert.deepEqual(ask.calls, ["ask:3:2"]);
   assert.equal(r.stopped, null);
   const presses = uc.log.filter((l) => l !== "list" && l !== "reload");
-  assert.deepEqual(presses, ["delete:100", "delete:101", "delete:102", "add", "fill:Extracurricular activity: Club a", "add", "fill:Extracurricular activity: Club b"]);
+  assert.deepEqual(presses, ["go:/my-application/introactivitiesawards", "delete:100", "delete:101", "delete:102", "add", "fill:Extracurricular activity: Club a", "add", "fill:Extracurricular activity: Club b"]);
   assert.equal(uc.log.filter((l) => l === "reload").length, 3 + 2 * 2);
   assert.deepEqual(uc.items().map((x) => x.name), ["Club a", "Club b"]);
   assert.deepEqual(r.filled, ["Extracurricular activity: Club a", "Extracurricular activity: Club b"]);
@@ -275,4 +284,52 @@ test("an empty tracker: nothing is asked or pressed", async () => {
   const r = await runUcActivities(uc.tab, data([]), ask.ui);
   assert.equal(r.note, "Your tracker has no UC activities or awards to add.");
   assert.deepEqual(ask.calls, []);
+});
+
+test("replace: the list is loaded afresh before the first delete (UC's stale Yes handlers), and each later delete follows a load", async () => {
+  const uc = fakeUc({ items: listed(2) });
+  await runUcActivities(uc.tab, data([club("a")]), askUi({ replace: true }).ui);
+  const firstDelete = uc.log.indexOf("delete:100");
+  const go = uc.log.indexOf("go:/my-application/introactivitiesawards");
+  assert.ok(go >= 0 && go < firstDelete, uc.log.join(" "));
+  assert.equal(uc.log.slice(0, firstDelete).filter((l) => l.startsWith("go:")).length, 1);
+  assert.equal(uc.log[uc.log.indexOf("delete:101") - 1], "reload"); // delete:100 -> its load -> delete:101
+});
+
+test("replace: a list that changed since the question stops before any delete", async () => {
+  const uc = fakeUc({ items: listed(2) });
+  const ui: AskUi = { askReplace: async () => (uc.items().pop(), true), pick: async () => [] };
+  const r = await runUcActivities(uc.tab, data([club("a")]), ui);
+  assert.match(r.stopped!, /changed after the question/);
+  assert.ok(!uc.log.some((l) => l.startsWith("delete")));
+});
+
+test("a save whose page load never comes back: the entry is listed as possibly saved, not under Not added", async () => {
+  const uc = fakeUc({ hangOn: "fill:2" });
+  const r = await runUcActivities(uc.tab, data([club("a"), club("b"), club("c")]), askUi().ui);
+  assert.deepEqual(r.filled, ["Extracurricular activity: Club a"]);
+  assert.deepEqual(r.unsure, ["Extracurricular activity: Club b (possibly saved)"]);
+  assert.deepEqual(r.notAdded, ["Extracurricular activity: Club c"]);
+  assert.match(r.stopped!, /Club b may have been saved\. Check UC's list before running again\./);
+  assert.equal(uc.fills(), 2);
+});
+
+test("a delete whose page load never comes back: the entry is listed as possibly removed, not as removed", async () => {
+  const uc = fakeUc({ items: listed(3), hangOn: "delete:101" });
+  const r = await runUcActivities(uc.tab, data([club("a")]), askUi({ replace: true }).ui);
+  assert.deepEqual(r.unsure, ["Extracurricular activity: Old 2 (possibly removed)"]);
+  assert.match(r.replaced!, /Removed 1 of the 3 .* before stopping: Extracurricular activity: Old 1\./);
+  assert.match(r.stopped!, /Old 2 may have been removed/);
+  assert.deepEqual(r.notAdded, ["Extracurricular activity: Club a"]);
+  assert.ok(!uc.log.includes("delete:102"));
+});
+
+test("one save that shows up twice on the list stops the run as a possible double save", async () => {
+  const uc = fakeUc({ doubleSave: 1 });
+  const r = await runUcActivities(uc.tab, data([club("a"), club("b")]), askUi().ui);
+  assert.deepEqual(r.filled, []);
+  assert.deepEqual(r.unsure, ["Extracurricular activity: Club a (possibly saved twice)"]);
+  assert.deepEqual(r.notAdded, ["Extracurricular activity: Club b"]);
+  assert.match(r.stopped!, /added 2 entries to UC's list, so Extracurricular activity: Club a may have been saved twice/);
+  assert.equal(uc.log.filter((l) => l === "add").length, 1);
 });

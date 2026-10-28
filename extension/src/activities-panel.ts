@@ -106,7 +106,7 @@ const count = (n: number, page: ActPage) => `${n} ${noun(page, n)}`;
 export function reportStatus(page: ActPage, r: ActivitiesReport): { text: string; warn: boolean } {
   if (r.stopped) return { text: "Stopped", warn: true };
   if (r.note && r.filled.length === 0) return { text: r.note, warn: false };
-  const trouble = r.mismatches.length > 0 || r.blocked.length > 0 || r.blanks.length > 0 || r.notAdded.length > 0;
+  const trouble = (r.unsure?.length ?? 0) > 0 || r.mismatches.length > 0 || r.blocked.length > 0 || r.blanks.length > 0 || r.notAdded.length > 0;
   return { text: trouble ? `Done: ${count(r.filled.length, page)} filled, but some things need a look (below).` : `Done: ${count(r.filled.length, page)} filled and checked.`, warn: trouble };
 }
 
@@ -125,6 +125,9 @@ export function reportNodes(page: ActPage, r: ActivitiesReport): Child[] {
     ...r.notes.map((n) => h("p", { class: "note" }, n)),
     problemList(`Not added: ${portalOf(page)} would not accept these`, r.blocked),
     problemList("Added, but these questions are blank and need an answer", r.blanks),
+    r.unsure?.length
+      ? h("section", { class: "attention", role: "alert" }, h("h4", {}, `Not sure: check ${portalOf(page)}'s list before running again`), h("ul", {}, ...r.unsure.map((u) => h("li", {}, u))))
+      : false,
     r.notAdded.length ? h("p", { class: "warn" }, `Not added: ${r.notAdded.join(", ")}.`) : false,
     r.mismatches.length
       ? h("section", { class: "attention", role: "alert" }, h("h4", {}, `${portalOf(page)} shows something different from what was entered`), h("ul", {}, ...r.mismatches.map((m) => h("li", {}, m))))

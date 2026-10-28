@@ -123,3 +123,12 @@ test("UC: the same question, toggle list and report, worded for UC", async () =>
   assert.match(text, /UC would not accept these/);
   assert.match(text, /UC shows something different/);
 });
+
+test("UC: entries that may have been saved or removed get their own heading, and the status says to look", () => {
+  const r: ActivitiesReport = { filled: [], replaced: null, blocked: [], blanks: [], notAdded: ["C"], mismatches: [], stopped: null, notes: [], note: null, unsure: ["B (possibly saved)"] };
+  assert.match(reportStatus("uc", r).text, /need a look/);
+  const text = reportNodes("uc", r).map((n) => (typeof n === "object" && n ? (n as Node).textContent : "")).join("|");
+  assert.match(text, /Not sure: check UC's list before running again/);
+  assert.match(text, /B \(possibly saved\)/);
+  assert.doesNotMatch(text, /Not added: .*B/);
+});

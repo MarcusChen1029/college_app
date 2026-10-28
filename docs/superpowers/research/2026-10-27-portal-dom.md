@@ -210,6 +210,10 @@ checks `window.name === "applyUCtab" + #windowSession` on every button/link clic
   `p.subsectionheader` / `p.description` pairs (e.g. "Name of the activity", "What you did", "When you did it" one `p` per grade,
   "Time you spent" "5.5 hours per week" / "30.0 weeks per year"): usable for dedupe and read-back without opening Edit.
   Delete opens popup `#mdl` "Are you sure you want to delete this activity?" `#warningYesButton` / `#warningNoButton`.
+  Trap (live, 2026-10-29): every `.delete` click binds a NEW `$("#warningYesButton").click` handler (never unbound) that sets `commandType`=Delete,
+  `type`, `activityIndex`, `activityId` from the item clicked and submits `#activitiesForm` (full page load). After Delete -> No on item A, a later
+  Delete -> Yes on item B fires both handlers and the submit that wins may delete A. So start every delete from a freshly loaded list page
+  (the UC run reloads the list before the first delete; each delete's own load precedes the next).
 - Add/edit page: `form#addActivitiesForm` POST `/my-application/addactivityaward`; add URL `/addactivityaward?action=add&src=introactivitiesawards&index=<N>`,
   edit URL `...?action=edit&index=<N>&type=<Cat>&src=introactivitiesawards&id=<activityId>` (hidden `actionType` add|edit, `prevActivityType`,
   `prevActivityId`, `source`). Heading "Activity/Award [N]". Buttons `#save` "Save & continue" (back to the list on success), `#cancel-btn` "Cancel".
