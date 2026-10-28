@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { buildResume, resumeText } from "./resume.ts";
 import {
+  isExpired,
   isShareToken,
   lastViewedText,
   normalizeParentView,
@@ -31,6 +32,17 @@ test("shareUrl builds /share/<kind>/<token> on the origin only", () => {
   assert.equal(shareUrl("not a url", "parent", TOKEN), null);
   // @ts-expect-error: unknown kind
   assert.equal(shareUrl("https://a.example", "teacher", TOKEN), null);
+});
+
+test("isExpired: only a past expiry counts", () => {
+  const now = Date.parse("2026-10-28T12:00:00Z");
+  assert.equal(isExpired(null, now), false);
+  assert.equal(isExpired(undefined, now), false);
+  assert.equal(isExpired("", now), false);
+  assert.equal(isExpired("not a date", now), false);
+  assert.equal(isExpired("2027-04-26T12:00:00+00:00", now), false);
+  assert.equal(isExpired("2026-10-28T12:00:00Z", now), true);
+  assert.equal(isExpired("2026-10-27T23:59:59.123+00:00", now), true);
 });
 
 test("lastViewedText", () => {
