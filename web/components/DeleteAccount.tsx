@@ -3,10 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useT } from "@/lib/i18n/client";
-<<<<<<< HEAD
 import { STORAGE_KEY as QUIZ_KEY } from "@/lib/interest-quiz";
-=======
->>>>>>> fix/sec-vault
 import { LEGACY_KEY } from "@/lib/student-local";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
@@ -43,13 +40,8 @@ export function DeleteAccount() {
       return;
     }
     try {
-<<<<<<< HEAD
+      // Old-build passwords waiting here (LEGACY_KEY) go too, so the next sign-in in this browser can't take them.
       for (const k of LOCAL_KEYS) window.localStorage.removeItem(k);
-=======
-      window.localStorage.removeItem(LOCAL_KEY);
-      // Old-build passwords waiting in this browser (student-local.ts) go too, so the next sign-in here can't take them.
-      window.localStorage.removeItem(LEGACY_KEY);
->>>>>>> fix/sec-vault
     } catch {
       // storage blocked: nothing saved there either
     }
