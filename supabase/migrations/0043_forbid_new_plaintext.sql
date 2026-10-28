@@ -50,14 +50,23 @@ $$;
 revoke all on function public.portal_password_values(jsonb) from public, anon, authenticated;
 
 -- The trigger runs as the caller (authenticated), who has no EXECUTE on the helper above, so it is SECURITY DEFINER:
--- it reads nothing but NEW and OLD.
+-- it reads NEW, OLD and, for an INSERT, the student's existing row. The website saves profiles with an upsert
+-- (INSERT ... ON CONFLICT DO UPDATE), and BEFORE INSERT triggers fire for the proposed row even when it then becomes
+-- an update: so an INSERT is compared with the row already stored for that student (none = nothing to keep), exactly
+-- like an UPDATE is compared with OLD. Unchanged passwords pass; new or changed ones don't.
 create function public.forbid_plaintext_profile_password() returns trigger
 language plpgsql security definer set search_path = '' as $$
+declare
+  was jsonb;
 begin
+  if tg_op = 'UPDATE' then
+    was := old.portals;
+  else
+    select sp.portals into was from public.student_profiles sp where sp.user_id = new.user_id;
+  end if;
   if exists (
     select 1 from public.portal_password_values(new.portals) n
-    where tg_op = 'INSERT'
-       or not exists (select 1 from public.portal_password_values(old.portals) o where o.place = n.place and o.val = n.val)
+    where not exists (select 1 from public.portal_password_values(was) o where o.place = n.place and o.val = n.val)
   ) then
     raise exception 'Portal passwords are not stored here any more; save them on the website (they are encrypted).'
       using errcode = '42501';

@@ -2,8 +2,9 @@
 // student_colleges.portal_password and the password keys inside student_profiles.portals ("migrate"), and ones a
 // browser saved before sign-in ("import"). Pure decisions only; the server (portal-vault-server.ts) and
 // scripts/backfill-portal-passwords.mjs do the reading and writing. The rule both follow: a plaintext value is
-// removed only once the store holds a copy that opens with the current key (an existing row that opens, or a new row
-// read back and opened to the same value), and only with a compare-and-set on the exact value that was read.
+// removed only once the store holds a copy that opens with the current key to that same value (an existing row, or a
+// new row read back and opened), and only with a compare-and-set on the exact value that was read. Two different
+// values are never resolved silently, and a row sealed under another key is never trusted or overwritten.
 
 import { collegeSlot, isPortalSlot, PASSWORD_MAX, portalSlot, type SlotPassword } from "./portal-slots.ts";
 
@@ -18,6 +19,20 @@ export type CollegePlainRow = { id: string; institution_id: string | null; custo
 export type VaultRow = { slot: string; sealed: string };
 /** The password a stored row holds, or null when it doesn't open with the current key. */
 export type Opener = (slot: string, sealed: string) => string | null;
+/**
+ * How the running deployment reads stored rows: `open` as above; `ours` = the row names this key's id (a row naming
+ * another key id is foreign: it may well open elsewhere, so it is never kept, overwritten or used to strip).
+ */
+export type VaultReader = { open: Opener; ours: (sealed: string) => boolean };
+
+/** What to do with one value, given the store's row for its slot (if any). */
+function againstRow(password: string, slot: string, sealed: string | undefined, r: VaultReader): "keep" | "seal" | "failed" | "new" {
+  if (sealed === undefined) return "new";
+  if (!r.ours(sealed)) return "failed"; // sealed under another key: leave both for a person
+  const stored = r.open(slot, sealed);
+  if (stored === null) return "seal"; // ours but broken (tampered): the plaintext is the only good copy
+  return stored === password ? "keep" : "failed"; // two different values: no silent choice
+}
 
 type Loose = Record<string, unknown>;
 const isObj = (v: unknown): v is Loose => !!v && typeof v === "object" && !Array.isArray(v);
@@ -51,12 +66,13 @@ export function plaintextIn(colleges: readonly CollegePlainRow[], portals: unkno
 export type MigrationPlan = { keep: PlainValue[]; seal: PlainValue[]; failed: PlainValue[] };
 
 /**
- * For each plaintext value: `keep` when the store already has a row for its slot that opens (the stored value wins;
- * the plaintext can go), `seal` when there is no row or the row doesn't open (it is written, then read back and
- * opened before anything is removed), `failed` when it can't be placed, when a new slot would pass the account's cap
- * (`room` new slots left), or when two different values claim one slot. Failed values are never removed.
+ * For each plaintext value: `keep` when the store already has a row for its slot that opens to the same value (the
+ * plaintext can go), `seal` when there is no row, or one of ours that doesn't open (it is written, then read back and
+ * opened before anything is removed), `failed` when it can't be placed, when the store holds a different value or a
+ * row sealed under another key, when a new slot would pass the account's cap (`room` new slots left), or when two
+ * different plaintext values claim one slot. Failed values are never removed.
  */
-export function planMigration(plain: readonly PlainValue[], vault: readonly VaultRow[], open: Opener, room = Infinity): MigrationPlan {
+export function planMigration(plain: readonly PlainValue[], vault: readonly VaultRow[], reader: VaultReader, room = Infinity): MigrationPlan {
   const rows = new Map(vault.map((r) => [r.slot, r.sealed]));
   const plan: MigrationPlan = { keep: [], seal: [], failed: [] };
   const sealing = new Map<string, string>();
@@ -66,9 +82,9 @@ export function planMigration(plain: readonly PlainValue[], vault: readonly Vaul
       plan.failed.push(v);
       continue;
     }
-    const sealed = rows.get(v.slot);
-    if (sealed !== undefined && open(v.slot, sealed) !== null) {
-      plan.keep.push(v);
+    const verdict = againstRow(v.password, v.slot, rows.get(v.slot), reader);
+    if (verdict === "keep" || verdict === "failed") {
+      plan[verdict].push(v);
       continue;
     }
     const prev = sealing.get(v.slot);
@@ -77,11 +93,11 @@ export function planMigration(plain: readonly PlainValue[], vault: readonly Vaul
       (prev === v.password ? plan.seal : plan.failed).push(v);
       continue;
     }
-    if (sealed === undefined && left <= 0) {
+    if (verdict === "new" && left <= 0) {
       plan.failed.push(v);
       continue;
     }
-    if (sealed === undefined) left--;
+    if (verdict === "new") left--;
     sealing.set(v.slot, v.password);
     plan.seal.push(v);
   }
@@ -104,41 +120,54 @@ export function verifiedCopies<T extends { slot: string | null; password: string
   });
 }
 
-/** The portals jsonb with the password removed at exactly these places; everything else as it was. */
-export function withoutPasswordsAt(portals: unknown, at: readonly PlainAt[]): unknown {
+/**
+ * The portals jsonb with the password removed where it was copied: at each given place, and only while the value
+ * there is still exactly the one copied (two custom entries sharing an id keep any other value). Everything else as
+ * it was.
+ */
+export function withoutPasswordsAt(portals: unknown, copied: readonly { at: PlainAt; password: string }[]): unknown {
   if (!isObj(portals)) return portals;
   const out: Loose = { ...portals };
-  const drop = (l: unknown) => {
-    if (!isObj(l)) return l;
+  const drop = (l: unknown, values: ReadonlySet<string> | undefined) => {
+    if (!isObj(l) || !values || typeof l.password !== "string" || !values.has(l.password)) return l;
     const copy = { ...l };
     delete copy.password;
     return copy;
   };
+  const valuesAt = (match: (a: PlainAt) => string | null) => {
+    const m = new Map<string, Set<string>>();
+    for (const c of copied) {
+      const k = match(c.at);
+      if (k !== null) m.set(k, (m.get(k) ?? new Set()).add(c.password));
+    }
+    return m;
+  };
   for (const group of ["systems", "campuses"] as const) {
-    const keys = new Set(at.flatMap((a) => (a.table === "profile" && a.group === group ? [a.key] : [])));
+    const byKey = valuesAt((a) => (a.table === "profile" && a.group === group ? a.key : null));
     const logins = portals[group];
-    if (keys.size && isObj(logins)) out[group] = Object.fromEntries(Object.entries(logins).map(([k, l]) => [k, keys.has(k) ? drop(l) : l]));
+    if (byKey.size && isObj(logins)) out[group] = Object.fromEntries(Object.entries(logins).map(([k, l]) => [k, drop(l, byKey.get(k))]));
   }
-  const ids = new Set(at.flatMap((a) => (a.table === "profile" && a.group === "custom" && a.id ? [a.id] : [])));
-  if (ids.size && Array.isArray(portals.custom)) out.custom = portals.custom.map((l) => (isObj(l) && typeof l.id === "string" && ids.has(l.id) ? drop(l) : l));
+  const byId = valuesAt((a) => (a.table === "profile" && a.group === "custom" && a.id ? a.id : null));
+  if (byId.size && Array.isArray(portals.custom))
+    out.custom = portals.custom.map((l) => (isObj(l) && typeof l.id === "string" ? drop(l, byId.get(l.id)) : l));
   return out;
 }
 
 export type ImportPlan = { keep: SlotPassword[]; seal: SlotPassword[]; failed: SlotPassword[] };
 
 /**
- * Passwords a browser saved before sign-in: `keep` when the account already has a row for the slot that opens (the
- * account's value wins), `seal` when it has none or one that doesn't open, `failed` past the cap. The browser drops
- * only what comes back as kept or verified; failed ones stay in it for another try.
+ * Passwords a browser saved before sign-in: `keep` when the account already has a row for the slot that opens to the
+ * same value, `seal` when it has none (room permitting) or one of ours that doesn't open, `failed` past the cap, when
+ * the account holds a different value, or a row sealed under another key. The browser drops only what comes back as
+ * kept or verified; failed ones stay in it.
  */
-export function planImport(entries: readonly SlotPassword[], vault: readonly VaultRow[], open: Opener, room: number): ImportPlan {
+export function planImport(entries: readonly SlotPassword[], vault: readonly VaultRow[], reader: VaultReader, room: number): ImportPlan {
   const rows = new Map(vault.map((r) => [r.slot, r.sealed]));
   const plan: ImportPlan = { keep: [], seal: [], failed: [] };
   let left = room;
   for (const e of entries) {
-    const sealed = rows.get(e.slot);
-    if (sealed !== undefined && open(e.slot, sealed) !== null) plan.keep.push(e);
-    else if (sealed !== undefined) plan.seal.push(e);
+    const verdict = againstRow(e.password, e.slot, rows.get(e.slot), reader);
+    if (verdict !== "new") plan[verdict].push(e);
     else if (left > 0) {
       left--;
       plan.seal.push(e);

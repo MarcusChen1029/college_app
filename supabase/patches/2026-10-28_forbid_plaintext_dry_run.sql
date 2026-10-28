@@ -1,4 +1,4 @@
--- Dry run for migration 0043_forbid_new_plaintext. Run in the dashboard SQL Editor AFTER applying 0043, or paste
+-- Dry run for migration 0043_forbid_new_plaintext (and 0040's key table, section D). Run in the dashboard SQL Editor AFTER applying 0043, or paste
 -- 0043 at the marked line below to dry-run the migration and the checks together. It creates throwaway rows inside
 -- one transaction, acts as the website (authenticated), anon and the service role, and never commits: the LAST
 -- statement deliberately raises "DRY RUN RESULT: <n> failures" followed by one PASS/FAIL line per check.
@@ -84,6 +84,23 @@ select pg_temp.chk('B1 website: unrelated column update on a row with old plaint
   $q$update public.student_profiles set sat_total = 1400 where user_id = auth.uid() returning sat_total::text$q$));
 select pg_temp.chk('B2 website: portals saved with the old password passed through unchanged', 'ok:x', pg_temp.run('authenticated',
   $q$update public.student_profiles set portals = jsonb_set(portals, '{systems,commonapp,username}', '"ca2"') where user_id = auth.uid() returning 'x'$q$));
+-- The website saves profiles with an upsert (INSERT ... ON CONFLICT DO UPDATE, as supabase-js .upsert() sends it);
+-- BEFORE INSERT triggers fire for it too, so these prove the INSERT branch compares with the stored row.
+select pg_temp.chk('B2a website upsert: old password passed through unchanged', 'ok:1450', pg_temp.run('authenticated',
+  $q$insert into public.student_profiles (user_id, sat_total, portals)
+     select auth.uid(), 1450, portals from public.student_profiles where user_id = auth.uid()
+     on conflict (user_id) do update set sat_total = excluded.sat_total, portals = excluded.portals
+     returning sat_total::text$q$));
+select pg_temp.chk('B2b website upsert: changing the password refused', 'refused 42501', pg_temp.run('authenticated',
+  $q$insert into public.student_profiles (user_id, sat_total, portals)
+     select auth.uid(), 1460, jsonb_set(portals, '{systems,commonapp,password}', '"CHANGED-MARKER"') from public.student_profiles where user_id = auth.uid()
+     on conflict (user_id) do update set sat_total = excluded.sat_total, portals = excluded.portals
+     returning sat_total::text$q$));
+select pg_temp.chk('B2c website upsert: adding a password refused', 'refused 42501', pg_temp.run('authenticated',
+  $q$insert into public.student_profiles (user_id, sat_total, portals)
+     select auth.uid(), 1470, jsonb_set(portals, '{systems,ucas}', '{"url":"","username":"u","password":"NEW-MARKER"}') from public.student_profiles where user_id = auth.uid()
+     on conflict (user_id) do update set sat_total = excluded.sat_total, portals = excluded.portals
+     returning sat_total::text$q$));
 select pg_temp.chk('B3 website: adding a new password refused', 'refused 42501', pg_temp.run('authenticated',
   $q$update public.student_profiles set portals = jsonb_set(portals, '{systems,ucas}', '{"url":"","username":"u","password":"NEW-MARKER"}') where user_id = auth.uid() returning 'x'$q$));
 select pg_temp.chk('B4 website: changing the old password refused', 'refused 42501', pg_temp.run('authenticated',
@@ -138,6 +155,18 @@ select pg_temp.chk('C11 anon: no select', 'refused 42501', pg_temp.run('anon',
   $q$select id::text from public.student_colleges limit 1$q$));
 select pg_temp.chk('C12 service role: still reads portal_password', 'ok:null', pg_temp.run('service_role',
   $q$select portal_password from public.student_colleges where id = '00000000-0000-4000-8000-0000000041c1'$q$));
+
+-- ── D. 0040's key table: one row, service role only, never overwritten through the API ──
+select pg_temp.chk('D1 website: cannot read portal_vault_meta', 'refused 42501', pg_temp.run('authenticated',
+  $q$select key_id from public.portal_vault_meta limit 1$q$));
+select pg_temp.chk('D2 service role: claim (or already claimed: nothing changes)', 'ok:', pg_temp.run('service_role',
+  $q$insert into public.portal_vault_meta (id, key_id) values (true, 'DRYRUN0041keyid0') on conflict (id) do nothing returning 'x'$q$));
+select pg_temp.chk('D3 service role: a second row refused', 'refused 23514', pg_temp.run('service_role',
+  $q$insert into public.portal_vault_meta (id, key_id) values (false, 'DRYRUN0041keyid1') returning 'x'$q$));
+select pg_temp.chk('D4 service role: cannot change the stored key id', 'refused 42501', pg_temp.run('service_role',
+  $q$update public.portal_vault_meta set key_id = 'DRYRUN0041keyid2' returning 'x'$q$));
+select pg_temp.chk('D5 exactly one row', 'ok:1', pg_temp.run('postgres',
+  $q$select count(*)::text from public.portal_vault_meta$q$));
 
 -- ── result: raises on purpose, so the transaction can never commit ──
 do $$

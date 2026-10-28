@@ -11,9 +11,15 @@ copy, keep or leave), `web/lib/portal-vault.ts` (crypto, token check), `web/lib/
 `web/lib/student-local.ts`, `web/components/LoginRow.tsx`, `web/components/LocalMergeDialog.tsx`.
 
 Key: `PORTAL_ENCRYPTION_KEY` if set, else the existing `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64 of 32 bytes; already set
-in Production). Decide once: passwords sealed under one key don't open under the other. A key change no longer loses
-anything silently: a row that doesn't open is treated as missing, so plaintext that still exists is copied again and
-nothing is removed until a copy opens; but passwords that exist only in the store become "unreadable" (re-type).
+in Production). Decide once: passwords sealed under one key don't open under the other.
+
+Key guard (0040 `portal_vault_meta`): the store belongs to one key, recorded as its public fingerprint (`vaultKeyId`,
+never the key). The production deployment (`VERCEL_ENV=production`, or `PORTAL_VAULT_CLAIM=1` elsewhere) writes it on
+its first password request. Every other deployment only compares: a Preview, `npm run dev` with the service-role key,
+or the backfill script holding a different key answers `503 key_mismatch` (or `key_unclaimed` before production
+claimed it) for every action and touches nothing. Each sealed value also names the fingerprint (`v1.<key id>.<...>`):
+a row sealed under another key is never trusted, overwritten or used to remove plaintext. Changing the key on purpose
+means re-sealing every row first, then updating the one `portal_vault_meta` row in the SQL Editor.
 
 ## How existing passwords move (no owner step needed)
 
@@ -21,14 +27,18 @@ On each signed-in student's next page load, before the page reads or writes the 
 `migrate`. The server, with the service role and for that student only:
 
 1. reads their plaintext (college rows and profile `portals`) and their store rows;
-2. keeps a store row that already opens with the current key, otherwise seals the plaintext, writes it, reads it back
-   and opens it to the same value;
+2. keeps a store row only when it opens to the same value; seals and writes the plaintext when there is no row (or
+   one of ours that no longer opens), then reads it back and opens it to the same value. A row holding a different
+   value, or sealed under another key, leaves the plaintext alone (counted as failed, for a person to decide);
 3. only then removes that plaintext, through 0043's compare-and-set functions (`strip_college_portal_password`,
    `replace_profile_portals`), which refuse if the row changed since it was read and can only remove passwords;
 4. answers counts only: `{ migrated, kept, failed }`. Failed values stay plaintext and are tried again next visit.
 
 Until then nothing on the site removes plaintext: list saves never touch `portal_password`, and profile saves put
-back the password keys the row still holds (`keepStoredPasswords`). Passwords a browser saved while signed out stay in
+back the password keys the row still holds (`keepStoredPasswords`; 0043's trigger compares an upsert with the stored
+row, so those unchanged keys pass). No account write happens until the account has loaded on that page. Setting or
+deleting a password on the site also removes any plaintext copy left at that slot (once 0043 is applied), so a
+deleted password can't come back from it. Passwords a browser saved while signed out stay in
 that browser (key `college-tracker:v1:legacy-passwords`) until the account confirms it stored them, or the student
 chooses "Don't add" / "Remove from this browser"; a password whose account login has a different username is held back.
 
@@ -37,8 +47,12 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 1. **Apply migrations `0040` → `0041` → `0042`.** The live (old) site keeps working with these.
    Check: `select has_table_privilege('authenticated', 'public.portal_passwords', 'select')` is `false`.
 
-2. **Deploy the code.** It never reads or writes `portal_password`. Until 0043 exists its `migrate` call fails
-   harmlessly (the store then passes stored password keys through untouched), so nothing is lost in this gap.
+2. **Deploy the code, to Production first**, and open one signed-in page there: its first password request claims the
+   store with Production's key (`select key_id, created_at from portal_vault_meta` then shows one row). Before that,
+   Previews and local servers answer `key_unclaimed`; after it, any deployment with another key answers `key_mismatch`;
+   neither changes anything. The code never reads or writes `portal_password`. Until 0043 exists its `migrate` call
+   removes nothing (the strip functions don't exist yet, and the store passes stored password keys through untouched),
+   so nothing is lost in this gap.
 
 3. **Apply `0043`** right after the deploy is live (not before: 0043 removes `portal_password` from client grants, and
    the old site's list load reads that column, so applying 0043 first would break My list until the deploy).
@@ -57,8 +71,9 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 5. **Wait** for students to visit. Watch `2026-10-28-portal-plaintext-counts.sql`. Optional, for students who don't
    come back: `node scripts/backfill-portal-passwords.mjs --dry-run`, then without `--dry-run`, run with the
    Production values of `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` and the key (e.g. `vercel env pull`).
-   It follows the same verify-before-remove rule and prints counts only. "unplaceable" values (outside the slot format,
-   over 512 characters) can't be moved by either; decide about them by hand.
+   It follows the same verify-before-remove rule, refuses to run unless its key's id is the one in `portal_vault_meta`
+   (it never claims the store), and prints counts only. "failed" values (outside the slot format, over 512 characters,
+   a store row with a different value) can't be moved by either; decide about them by hand.
 
 6. **Only when every plaintext count is 0** (and no old build is in use): `supabase/patches/2026-10-28-drop-portal-password-column.sql`.
    It refuses to run while any plaintext is left, then drops 0043's college trigger and function and the column, and

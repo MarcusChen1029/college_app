@@ -1,4 +1,4 @@
-import { hkdfSync } from "node:crypto";
+import { createHmac, hkdfSync } from "node:crypto";
 import { parseKey, seal, unseal } from "./google-docs.ts";
 
 // Encryption for saved portal passwords (table portal_passwords, migration 0040) and the token check that keeps AI
@@ -24,18 +24,51 @@ export function vaultKey(env: Record<string, string | undefined> = process.env):
 
 const subkey = (master: Buffer) => Buffer.from(hkdfSync("sha256", master, Buffer.alloc(0), INFO, 32));
 
+/**
+ * A short public fingerprint of the key (16 base64url characters, an HMAC of a fixed label under the subkey; it reveals
+ * nothing about the key). Stored once in portal_vault_meta (migration 0040) and inside every sealed value, so a
+ * deployment running another key refuses to act, and a row sealed under another key is recognised as foreign.
+ */
+export function vaultKeyId(master: Buffer): string {
+  return createHmac("sha256", subkey(master)).update("college-tracker portal-vault key-id").digest("base64url").slice(0, 16);
+}
+
 /** Associated data: a ciphertext copied onto another user's row, or into another slot, won't open. */
 export const vaultAad = (userId: string, slot: string) => `user:${userId}|slot:${slot}`;
 
-/** "v1." + base64url(IV | tag | AES-256-GCM ciphertext); a fresh IV every time. */
+/** "v1.<key id>." + base64url(IV | tag | AES-256-GCM ciphertext); a fresh IV every time. */
 export function sealPassword(master: Buffer, userId: string, slot: string, password: string): string {
-  return PREFIX + seal(subkey(master), password, vaultAad(userId, slot));
+  return `${PREFIX}${vaultKeyId(master)}.${seal(subkey(master), password, vaultAad(userId, slot))}`;
 }
 
-/** The password, or null when it can't be opened (wrong user, slot or key; tampered; garbled; unknown version). */
-export function openPassword(master: Buffer, userId: string, slot: string, sealed: string): string | null {
+/** The key id a sealed value names, or null when it isn't in the "v1.<key id>.<body>" form. */
+export function sealedKeyId(sealed: string): string | null {
   if (typeof sealed !== "string" || !sealed.startsWith(PREFIX)) return null;
-  return unseal(subkey(master), sealed.slice(PREFIX.length), vaultAad(userId, slot));
+  const rest = sealed.slice(PREFIX.length);
+  const dot = rest.indexOf(".");
+  return dot > 0 ? rest.slice(0, dot) : null;
+}
+
+/** True when the value was sealed under this key (whether or not it then opens). */
+export const sealedWithKey = (master: Buffer, sealed: string) => sealedKeyId(sealed) === vaultKeyId(master);
+
+/**
+ * The password, or null when it can't be opened: sealed under another key (another key id), wrong user or slot,
+ * tampered, garbled, or an unknown version.
+ */
+export function openPassword(master: Buffer, userId: string, slot: string, sealed: string): string | null {
+  if (!sealedWithKey(master, sealed)) return null;
+  return unseal(subkey(master), sealed.slice(PREFIX.length + vaultKeyId(master).length + 1), vaultAad(userId, slot));
+}
+
+/**
+ * What a deployment may do, given the key id stored in portal_vault_meta (null: no row yet), its own key id, and
+ * whether it may claim the store (production only). "claim": insert its own id, then decide again on what was stored.
+ * Anything but "ok" means every vault action answers 503 and touches nothing.
+ */
+export function keyDecision(stored: string | null, mine: string, mayClaim: boolean): "ok" | "claim" | "mismatch" | "unclaimed" {
+  if (stored === null) return mayClaim ? "claim" : "unclaimed";
+  return stored === mine ? "ok" : "mismatch";
 }
 
 /** The token of an "Authorization: Bearer <token>" header, or null. */

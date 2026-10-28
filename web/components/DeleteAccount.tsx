@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useT } from "@/lib/i18n/client";
+import { LEGACY_KEY } from "@/lib/student-local";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass } from "@/lib/ui";
@@ -38,6 +39,8 @@ export function DeleteAccount() {
     }
     try {
       window.localStorage.removeItem(LOCAL_KEY);
+      // Old-build passwords waiting in this browser (student-local.ts) go too, so the next sign-in here can't take them.
+      window.localStorage.removeItem(LEGACY_KEY);
     } catch {
       // storage blocked: nothing saved there either
     }
