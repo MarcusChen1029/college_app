@@ -7,19 +7,20 @@ import { buildStarsPlans } from "../../web/lib/stars-fill.ts";
 import { assistView } from "./assist-panel.ts";
 import { starsAutoView } from "./stars/panel.ts";
 import { csuAutoView } from "./csu/panel.ts";
-import { ucAutoView } from "./uc/panel.ts";
+import { ucAutoView, ucTab } from "./uc/panel.ts";
+import { runUcActivities, UC_ACTIVITIES_PATH, UC_STOPPED } from "./uc/activities-run.ts";
 import { uiucAutoView } from "./uiuc/panel.ts";
 import { buildUiucPlans } from "../../web/lib/uiuc-fill.ts";
 import { buildUcPlans } from "../../web/lib/uc-fill.ts";
 import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
 import type { CaPage } from "../../web/lib/activities-fill.ts";
-import { runCaPage, STOPPED, type CaDriver } from "./activities-flow.ts";
+import { runCaPage, STOPPED, type ActPage, type CaDriver } from "./activities-flow.ts";
 import { createAskUi, PAGE_NAME, reportNodes, reportStatus } from "./activities-panel.ts";
 import { createCaDriver, createDriver, type TabsApi } from "./chrome-driver.ts";
 import { CA_PAGE_FACTS, caPageForPath, COMMONAPP_ORIGIN, targetUrl } from "./commonapp/pages.ts";
 import type { ActivitiesReport } from "./activities-flow.ts";
 import type { PanelResponse } from "./messages.ts";
-import { SITE_HOME, SITE_LABEL, siteOf, type Site } from "./sites.ts";
+import { SITE_HOME, SITE_LABEL, SITE_ORIGINS, siteOf, type Site } from "./sites.ts";
 import { button, h, type Child } from "./ui.ts";
 import {
   askText,
@@ -112,6 +113,9 @@ let transcript: { schools: Parameters<typeof buildPlans>[0]; courses: Parameters
 let picked: Site | null = null;
 /** The system shown last, so a tab change re-renders only when it changes what is shown. */
 let shownSite: Site | null = null;
+/** Whether the UC tab was on its Activities & awards list when the panel was drawn (the Fill / Go to button depends on it). */
+let shownUcList = false;
+const onUcList = (tab: { site: Site | null; path: string }) => tab.site === "uc" && tab.path.replace(/\/+$/, "").toLowerCase() === UC_ACTIVITIES_PATH;
 let view: "other" | "ready" = "other";
 let currentOffers: Offer[] = [];
 let stopRequested = false;
@@ -195,6 +199,7 @@ async function readyView(): Promise<void> {
   if (view !== "ready") return; // the view changed while we looked at the tabs
   const site: Site = picked ?? tab.site ?? "common_app";
   shownSite = site;
+  shownUcList = onUcList(tab);
   if (site !== "common_app") {
     if (!transcript) return void refresh();
     const onSite = tab.site === site ? tab.id : null;
@@ -210,6 +215,7 @@ async function readyView(): Promise<void> {
     show(
       sitePicker(site),
       tab.site !== site && button(`Open ${SITE_LABEL[site]}`, () => void chrome.tabs.create({ url: SITE_HOME[site] }), "link"),
+      site === "uc" && onSite != null && ucActivitiesSection(onSite, tab.path),
       node,
       h("div", { class: "row" }, button("Reload transcript", () => void refresh()), button("Sign out", async () => { await signOut(); signedOutView(); })),
     );
@@ -297,7 +303,54 @@ async function runActivities(page: CaPage): Promise<void> {
   activitiesReportView(page, await runCaPage(page, loaded.data, driver, ui, () => stopRequested));
 }
 
-function activitiesReportView(page: CaPage, report: ActivitiesReport): void {
+/** "Activities & awards" on UC: Fill on the list page, otherwise a button that opens it in the same tab (a second tab signs UC out). */
+function ucActivitiesSection(tabId: number, path: string): HTMLElement {
+  const here = onUcList({ site: "uc", path });
+  return h(
+    "section",
+    { class: "item" },
+    h("h3", {}, "Activities & awards"),
+    h("p", { class: "muted" }, "Fills UC's Activities & awards list from your tracker, one entry at a time, in this tab. Open that list, then press Fill. Nothing is submitted."),
+    h(
+      "div",
+      { class: "row" },
+      here
+        ? button("Fill activities & awards", () => void runUcActivitiesView(tabId), "btn primary")
+        : button("Go to Activities & awards", () => void chrome.tabs.update(tabId, { url: SITE_ORIGINS.uc[0] + UC_ACTIVITIES_PATH }), "btn"),
+    ),
+  );
+}
+
+/** UC's Activities & awards list: load the tracker's entries, ask what to do with what UC already lists, add one by one, read back, report. */
+async function runUcActivitiesView(tabId: number): Promise<void> {
+  view = "other";
+  stopRequested = false;
+  const back = () => void readyView();
+  const tab = await activeTab();
+  if (tab.id !== tabId || !onUcList(tab)) {
+    return messageView(PAGE_NAME.uc.openHint, button("Back", back, "btn primary"));
+  }
+  show(h("p", { class: "muted" }, "Loading your activities..."));
+  const loaded = await loadActivities();
+  if (!loaded.ok) return show(activitiesProblem(loaded.reason, () => void runUcActivitiesView(tabId)), h("div", { class: "row" }, button("Back", back)));
+
+  const status = h("p", { class: "status" }, "Checking the list...");
+  const prompt = h("div", {});
+  const { ui, cancel } = createAskUi(prompt, "uc");
+  const stop = button("Stop", () => {
+    stopRequested = true;
+    cancel(new Error(UC_STOPPED)); // a pending question must not keep the run blocked; a press already sent finishes its page load first
+    status.textContent = "Stopping after the current step...";
+    stop.disabled = true;
+  }, "btn danger");
+  show(status, prompt, h("div", { class: "row" }, stop));
+  const report = await runUcActivities(ucTab(tabId), loaded.data, ui, () => stopRequested, (text) => {
+    if (!stopRequested) status.textContent = text;
+  });
+  activitiesReportView("uc", report);
+}
+
+function activitiesReportView(page: ActPage, report: ActivitiesReport): void {
   view = "other";
   const s = reportStatus(page, report);
   show(
@@ -391,8 +444,9 @@ function reportView(outcome: FillOutcome, targets: Target[], tabId: number): voi
 const retab = async () => {
   if (view !== "ready") return;
   // The assistant keeps its place (scroll, status) unless the tab moved to another system.
-  const { site } = await activeTab();
-  if (shownSite !== "common_app" && (picked ?? site ?? "common_app") === shownSite) return;
+  const now = await activeTab();
+  const { site } = now;
+  if (shownSite !== "common_app" && (picked ?? site ?? "common_app") === shownSite && !(shownSite === "uc" && onUcList(now) !== shownUcList)) return;
   void readyView();
 };
 chrome.tabs.onActivated.addListener(() => void retab());

@@ -104,3 +104,22 @@ test("report: a run where every item was blocked headlines the note, not Done", 
   const r = report({ note: "Nothing was changed on Common App.", blocked: [{ label: "Band", reasons: ["Description: too long"] }] });
   assert.deepEqual(reportStatus("activities", r), { text: "Nothing was changed on Common App.", warn: false });
 });
+
+test("UC: the same question, toggle list and report, worded for UC", async () => {
+  const prompt = doc().createElement("div");
+  const { ui } = createAskUi(prompt, "uc");
+  const asked = ui.askReplace(["Extracurricular activity: Old"], 3);
+  assert.match(prompt.textContent!, /UC already has 1 activity or award\. Replace it with the 3 in your tracker\?/);
+  assert.match(prompt.textContent!, /would be removed from UC/);
+  ([...prompt.querySelectorAll("button")] as HTMLButtonElement[])[0]!.click();
+  assert.equal(await asked, false);
+  const picked = ui.pick(items, 2);
+  assert.match(prompt.textContent!, /already on UC/);
+  ([...prompt.querySelectorAll("button")] as HTMLButtonElement[]).find((b) => /Add none/.test(b.textContent!))!.click();
+  assert.deepEqual(await picked, []);
+  const r: ActivitiesReport = { filled: ["A"], replaced: null, blocked: [{ label: "B", reasons: ["x"] }], blanks: [], notAdded: [], mismatches: ["m"], stopped: null, notes: [], note: null };
+  assert.equal(reportStatus("uc", r).text, "Done: 1 activity or award filled, but some things need a look (below).");
+  const text = reportNodes("uc", r).map((n) => (typeof n === "object" && n ? (n as Node).textContent : "")).join("|");
+  assert.match(text, /UC would not accept these/);
+  assert.match(text, /UC shows something different/);
+});

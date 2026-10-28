@@ -168,3 +168,35 @@ than 150 characters (it must be reported as not accepted) and leave one activity
    mid-fill: the report says Stopped and that Continue was not pressed.
 
 If something fails, send the panel report and a screenshot of the Common App page; do not retry more than once.
+
+## J. Activities & awards on UC (not yet run end to end)
+
+Built 2026-10-28/29 (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`, page facts in `docs/superpowers/research/2026-10-27-portal-dom.md`
+§7). Throwaway UC account ONLY (memory `portal-test-accounts`; it holds "Test Club (filler research)"), in the separate Chrome profile. UC signs
+out when the application is opened in a second tab: keep exactly one UC tab and let the extension drive it (every button is a full page load).
+The extension presses only an item's Delete (then Yes), "Add an activity or award" and "Save & continue"; never "I have no activities or awards
+to report" / "I've finished adding activities" (`#no_activities`) or any submit.
+
+Setup: in the tracker (test student account) open Activities > UC and add 3 entries: an Extracurricular activity with a 2-line description,
+hours 5.5 and weeks 30; a Volunteer entry; an Award with two levels. Give a 4th entry 200 hours per week (it must be reported as not accepted).
+
+1. Panel offer. On UC open the Activities & awards list (`/my-application/introactivitiesawards`; panel: "Go to Activities & awards" if needed).
+   Expected: the UC panel shows "Activities & awards" with "Fill activities & awards".
+2. Keep (adds 2). Press Fill. Expected: "UC already has 1 activity or award. Replace it with the 3 in your tracker?" naming "Extracurricular
+   activity: Test Club (filler research)". Press "No, let me choose what to add", tick 2 entries, "Add the chosen". Expected: the tab goes
+   list -> add page -> list once per entry (no second tab, no double save: each entry appears once), the 200-hour entry is under "Not added: UC
+   would not accept these", the report says "Done: 2 activities and awards filled and checked." and lists no read-back differences.
+3. Read-back wording. For the Volunteer and Award entries just added, note the list's `p.subsectionheader` texts (expand the item). Only
+   Extracurricular headers were verified live; record the others in portal-dom.md §7 so `expectOf` (web/lib/uc-activities-fill.ts) can check
+   more than the name. A line under "UC shows something different from what was entered" is a bug worth sending back.
+4. Replace. Press Fill again, "Yes, replace all". Expected: each listed entry is deleted one at a time (Delete, Yes, page load), then the 3
+   tracker entries are added in tracker order; the report repeats "Replaced the N activities and awards that were already on UC: ..." and has
+   no read-back lines. "Test Club (filler research)" is gone: re-add it by hand afterwards if later research needs it.
+5. Full list. Only if cheap to set up (20 entries): Fill, "No, let me choose...". Expected: "This page is full (20 of 20). Nothing can be added."
+   and nothing changes.
+6. Stop. Start a replace run and press Stop while the question is open: "Stopped. Nothing was changed on UC." Start another and press Stop while
+   it is adding: the current entry finishes saving (its page load is waited for), then the report says Stopped and lists the rest under "Not added".
+7. Signed out. Sign out of UC (in the same tab), sign in again, open the list, then sign out in the middle of a run if practical. Expected:
+   "UC signed you out. Sign in again; entries listed as added were saved." and no success line.
+
+If something fails, send the panel report and a screenshot of the UC page; do not retry more than once.

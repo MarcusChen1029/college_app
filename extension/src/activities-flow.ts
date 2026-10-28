@@ -62,16 +62,28 @@ export type ActivitiesReport = {
 export const STOPPED = "Stopped. Nothing was changed on Common App.";
 export const SIGNED_OUT = "Common App signed you out. Sign in again; nothing after this point was saved.";
 
-const NOUN: Record<CaPage, { one: string; many: string }> = { activities: { one: "activity", many: "activities" }, honors: { one: "honor", many: "honors" } };
-const noun = (page: CaPage, n: number) => (n === 1 ? NOUN[page].one : NOUN[page].many);
+/** A page the activities filler fills: Common App's Activities or Honors, or UC's Activities & awards list (uc/activities-run.ts). */
+export type ActPage = CaPage | "uc";
+
+/** UC's list holds at most 20 entries (portal-dom.md §7). */
+export const UC_PAGE_LIMIT = 20;
+export const PAGE_LIMIT: Record<ActPage, number> = { ...CA_PAGE_LIMIT, uc: UC_PAGE_LIMIT };
+
+const NOUN: Record<ActPage, { one: string; many: string }> = {
+  activities: { one: "activity", many: "activities" },
+  honors: { one: "honor", many: "honors" },
+  uc: { one: "activity or award", many: "activities and awards" },
+};
+export const noun = (page: ActPage, n: number) => (n === 1 ? NOUN[page].one : NOUN[page].many);
+export const portalOf = (page: ActPage): "Common App" | "UC" => (page === "uc" ? "UC" : "Common App");
 
 /** The Replace question. */
-export function askReplaceText(page: CaPage, existing: number, incoming: number): string {
-  return `Common App already has ${existing} ${noun(page, existing)}. Replace ${existing === 1 ? "it" : "all of them"} with the ${incoming} in your tracker?`;
+export function askReplaceText(page: ActPage, existing: number, incoming: number): string {
+  return `${portalOf(page)} already has ${existing} ${noun(page, existing)}. Replace ${existing === 1 ? "it" : "all of them"} with the ${incoming} in your tracker?`;
 }
 
-export function fullText(page: CaPage, existing: number): string {
-  return `This page is full (${existing} of ${CA_PAGE_LIMIT[page]}). Nothing can be added.`;
+export function fullText(page: ActPage, existing: number): string {
+  return `This page is full (${existing} of ${PAGE_LIMIT[page]}). Nothing can be added.`;
 }
 
 /** Empty page -> keep everything, no question. Entries -> ask; No -> toggles capped at the room (none when the page is full). */
@@ -88,7 +100,7 @@ export async function decide(existing: string[], items: { id: string; label: str
 const isLogin = (path: string) => path.startsWith("/login");
 
 /** A run that ended before anything could be written. */
-function emptyReport(over: Partial<ActivitiesReport> = {}): ActivitiesReport {
+export function emptyReport(over: Partial<ActivitiesReport> = {}): ActivitiesReport {
   return { filled: [], replaced: null, blocked: [], blanks: [], notAdded: [], mismatches: [], stopped: null, notes: [], note: null, ...over };
 }
 
