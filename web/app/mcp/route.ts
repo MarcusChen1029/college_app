@@ -8,7 +8,7 @@ import { registerTools } from "@/lib/mcp/tools";
 const handler = createMcpHandler(registerTools, {
   serverInfo: { name: "college-tracker", version: "1.0.0" },
   instructions:
-    "College Tracker holds one student's college applications. Call get_applications and get_profile first to see where they stand. " +
+    "Trakur holds one student's college applications. Call get_applications and get_profile first to see where they stand. " +
     "Use the data from these tools instead of guessing, and say when something isn't published. " +
     "Confirm with the student before deleting an activity or marking an application submitted.",
 });

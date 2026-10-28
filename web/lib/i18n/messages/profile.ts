@@ -140,7 +140,7 @@ export const en = {
   "profile.start.saveSignIn": "Save, then sign in",
   "profile.start.seeColleges": "See my colleges",
   // Welcome
-  "profile.welcome.title": "Welcome to College Tracker",
+  "profile.welcome.title": "Welcome to Trakur",
   "profile.welcome.signInPrompt": "Sign in to set up your account as a student or as a teacher/counselor.",
   "profile.welcome.signedInAs": "Signed in as {email}. You can only choose once.",
   "profile.welcome.student": "I'm a student",
@@ -286,7 +286,7 @@ export const zhTW: Translation<typeof en> = {
   "profile.start.valAll": "全部",
   "profile.start.saveSignIn": "儲存並登入",
   "profile.start.seeColleges": "查看我的學校",
-  "profile.welcome.title": "歡迎使用 College Tracker",
+  "profile.welcome.title": "歡迎使用 Trakur",
   "profile.welcome.signInPrompt": "請登入，以學生或老師／升學輔導老師的身分設定你的帳號。",
   "profile.welcome.signedInAs": "已登入：{email}。身分只能選擇一次。",
   "profile.welcome.student": "我是學生",

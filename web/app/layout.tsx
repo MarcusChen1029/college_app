@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Wave } from "@/components/Doodles";
@@ -25,7 +26,7 @@ const body = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: { default: "College Tracker", template: "%s · College Tracker" },
+  title: { default: "Trakur", template: "%s · Trakur" },
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
 
@@ -34,11 +35,9 @@ const NAV = "mx-auto flex max-w-7xl items-center gap-x-4 px-4 lg:gap-x-6 py-3 te
 
 function Brand() {
   return (
-    <Link href="/" className="shrink-0 whitespace-nowrap font-display text-lg font-bold tracking-tight">
-      <span aria-hidden className="mr-1.5 inline-block rounded-md bg-blue-500 px-1.5 text-white">
-        C
-      </span>
-      College Tracker
+    <Link href="/" className="flex shrink-0 items-center gap-1.5 whitespace-nowrap font-display text-lg font-bold tracking-tight">
+      <Image src="/logo.png" alt="" width={28} height={28} priority />
+      Trakur
     </Link>
   );
 }

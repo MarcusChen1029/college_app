@@ -1,5 +1,5 @@
 // Daily deadline reminder digest. Called by pg_cron (see migration 0005) with x-cron-secret.
-// Env (Supabase function secrets): RESEND_API_KEY, REMINDER_FROM ("College Tracker <reminders@yourdomain>"),
+// Env (Supabase function secrets): RESEND_API_KEY, REMINDER_FROM ("Trakur <reminders@yourdomain>"),
 // APP_URL (e.g. https://college-tracker.vercel.app). Without RESEND_API_KEY it does a dry run.
 // Then it sends the opt-in weekly teacher digest (migration 0029, ../_shared/teacher-digest.ts); that part also stays a
 // dry run without APP_URL, and a failure there is reported in the response without touching the student reminders.
@@ -85,7 +85,7 @@ function render(items: Due[], scholarships: ScholarshipDue[], appUrl: string) {
     subject,
     html: `<div style="font-family:system-ui,sans-serif;font-size:14px;color:#18181b">
 ${parts.join("\n")}
-<p style="color:#71717a;font-size:12px">You get these because reminders are on in your College Tracker account. <a href="${appUrl}/settings#reminders">Turn them off</a>.</p>
+<p style="color:#71717a;font-size:12px">You get these because reminders are on in your Trakur account. <a href="${appUrl}/settings#reminders">Turn them off</a>.</p>
 </div>`,
     text: `${texts.join("\n\n")}\nTurn reminders off: ${appUrl}/settings#reminders`,
   };
@@ -174,7 +174,7 @@ Deno.serve(async (req) => {
   }
 
   const apiKey = Deno.env.get("RESEND_API_KEY");
-  const from = Deno.env.get("REMINDER_FROM") ?? "College Tracker <onboarding@resend.dev>";
+  const from = Deno.env.get("REMINDER_FROM") ?? "Trakur <onboarding@resend.dev>";
   const appUrl = (Deno.env.get("APP_URL") ?? "http://localhost:3000").replace(/\/$/, "");
   const dryRun = !apiKey || body.dryRun === true;
 
