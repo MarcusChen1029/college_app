@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { ReminderToggle } from "@/components/AccountPanel";
 import { ConnectedExtensions } from "@/components/ConnectedExtensions";
+import { DeleteAccount } from "@/components/DeleteAccount";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { MyCounselors } from "@/components/MyCounselors";
@@ -135,6 +136,7 @@ function SignedIn() {
       {student.role === "student" && <ShareLinkPanel kind="parent" id="share" />}
       {student.role === "student" && <ConnectedExtensions />}
       <RoleSwitcher />
+      <DeleteAccount />
     </>
   );
 }

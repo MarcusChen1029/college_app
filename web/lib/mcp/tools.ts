@@ -366,9 +366,10 @@ export function registerTools(server: McpServer) {
       annotations: READ,
     },
     guarded(async (s, { slug }) => {
-      const [summaries, detail, lookups, list] = await Promise.all([getSummaries(), getCollege(slug), getLookups(), readList(s)]);
-      const college = findSummary(summaries, slug);
+      // Check the slug against the cached list first, so made-up slugs never cost a database query.
+      const college = findSummary(await getSummaries(), slug);
       if (!college) return notFound(slug);
+      const [detail, lookups, list] = await Promise.all([getCollege(slug), getLookups(), readList(s)]);
       const entry = list.find((e) => e.slug === slug);
       const lines = detailSection(
         { college, plan: entry?.plan ?? null, status: entry?.status ?? "in_progress", checklist: entry?.checklist ?? {}, detail: withSupplements(detail) },
