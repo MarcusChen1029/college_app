@@ -74,7 +74,7 @@ notify pgrst, 'reload config';
 
 -- (b) Every table that holds per-user data, except the four MCP tables, refuses OAuth clients outright.
 -- Found from the catalog (a user_id / teacher_id / student_id column), so a table added before this migration runs
--- (e.g. 0038 portal_passwords) is covered too. Tables with no grant or policy for authenticated are already closed;
+-- (e.g. 0040 portal_passwords) is covered too. Tables with no grant or policy for authenticated are already closed;
 -- the extra policy there is harmless.
 do $$
 declare t text;
@@ -180,7 +180,7 @@ alter table public.student_colleges
   add constraint student_colleges_checklist_size check (octet_length(checklist::text) <= 65536) not valid,
   add constraint student_colleges_custom_size check (octet_length(custom::text) <= 16384) not valid;
 
--- The saved-login columns may be moved out by 0038; cap them only while they exist.
+-- The saved-login columns may be moved out by 0040; cap them only while they exist.
 do $$
 declare r record;
 begin

@@ -15,7 +15,7 @@ import {
 import type { SlotPassword } from "./portal-slots";
 import { openPassword, sealPassword, vaultKey } from "./portal-vault";
 
-// Server side of the saved portal passwords (POST /api/portal-passwords). The table (portal_passwords, 0038) has no
+// Server side of the saved portal passwords (POST /api/portal-passwords). The table (portal_passwords, 0040) has no
 // policies and no grants for anon/authenticated, so only this file, with the service-role key, reads or writes it,
 // always filtered to the one verified user. Values are sealed before they leave this process and opened only for
 // "reveal". Never log a password, a sealed value or a token; thrown errors carry no row data. Passwords travel to
@@ -112,7 +112,7 @@ async function writeAndReadBack(cfg: VaultConfig, userId: string, rows: readonly
  * Moves this student's plaintext passwords (student_colleges.portal_password, password keys in student_profiles.portals)
  * into the store. A value is removed only after the store holds a copy that opens with the current key (a row that
  * already opens, or a new one read back and opened to the same value), and only by a compare-and-set on the exact
- * value read (migration 0041's service-role functions). Anything else stays in plaintext for the next try.
+ * value read (migration 0043's service-role functions). Anything else stays in plaintext for the next try.
  * Counts only, never values: migrated = copied then removed, kept = the store already had it, failed = still plaintext.
  */
 export async function migratePlaintext(cfg: VaultConfig, userId: string): Promise<{ migrated: number; kept: number; failed: number }> {

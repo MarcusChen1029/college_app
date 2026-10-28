@@ -9,7 +9,7 @@ export type TranscriptResult =
 const TOKEN_KEY = "token";
 
 /**
- * The columns extension_transcript returns (migration 0040): only what the fill planners and portal pickers read. Keep this list and the
+ * The columns extension_transcript returns (migration 0042): only what the fill planners and portal pickers read. Keep this list and the
  * SQL in step: a column the fill starts reading has to be added to both.
  */
 export type ExtensionSchoolRow = Pick<TranscriptSchoolRow, "id" | "name" | "country" | "kind" | "default_period" | "school_code">;
@@ -47,7 +47,7 @@ export function parseTranscriptResponse(body: unknown): TranscriptResult {
   }
   if (b.ok !== true || !Array.isArray(b.schools) || !Array.isArray(b.courses)) return network;
   try {
-    // Spread order: a server that still sends the old full rows (before migration 0040) keeps its real values.
+    // Spread order: a server that still sends the old full rows (before migration 0042) keeps its real values.
     return {
       ok: true,
       schools: (b.schools as unknown[]).map((r) => toTranscriptSchool({ ...SCHOOL_BLANK, ...rowOf(r) } as TranscriptSchoolRow)),
@@ -83,7 +83,7 @@ export async function signIn(): Promise<boolean> {
 /** How long Sign out waits for the server before it signs out locally anyway. */
 export const REVOKE_TIMEOUT_MS = 5000;
 
-/** Tells the server this token is finished, so a copy of it stops working (migration 0040). Best effort: never throws. */
+/** Tells the server this token is finished, so a copy of it stops working (migration 0042). Best effort: never throws. */
 export async function revokeToken(token: string): Promise<void> {
   try {
     await fetch(`${SUPABASE_URL}/rest/v1/rpc/revoke_my_extension_token`, {
@@ -93,7 +93,7 @@ export async function revokeToken(token: string): Promise<void> {
       signal: AbortSignal.timeout(REVOKE_TIMEOUT_MS),
     });
   } catch {
-    // offline, timed out, or the server predates migration 0040: the local sign-out below still happens
+    // offline, timed out, or the server predates migration 0042: the local sign-out below still happens
   }
 }
 

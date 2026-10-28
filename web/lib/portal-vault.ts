@@ -1,7 +1,7 @@
 import { hkdfSync } from "node:crypto";
 import { parseKey, seal, unseal } from "./google-docs.ts";
 
-// Encryption for saved portal passwords (table portal_passwords, migration 0038) and the token check that keeps AI
+// Encryption for saved portal passwords (table portal_passwords, migration 0040) and the token check that keeps AI
 // connections away from them. Pure (node:crypto only, no Supabase), so the server (portal-vault-server.ts), its tests
 // and scripts/backfill-portal-passwords.mjs all share one format. Never log a password or a sealed value.
 

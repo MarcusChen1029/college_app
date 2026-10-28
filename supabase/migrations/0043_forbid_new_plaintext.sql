@@ -1,4 +1,4 @@
--- Portal passwords, step 2 of 2 (after 0038's encrypted store portal_passwords):
+-- Portal passwords, step 2 of 2 (after 0040's encrypted store portal_passwords):
 -- 1. No new plaintext. Triggers reject an INSERT or UPDATE that puts a non-empty password into
 --    student_colleges.portal_password, or a non-empty "password" value into student_profiles.portals (systems.*,
 --    campuses.*, custom[]) that the OLD row didn't already hold at the same place. Rows not migrated yet still take
@@ -8,13 +8,13 @@
 --    web/lib/portal-vault-server.ts; scripts/backfill-portal-passwords.mjs). They remove a plaintext password only if
 --    the row still holds exactly the value that was copied, and they can only remove passwords. service_role only:
 --    the password travels in the request body, never in a URL filter.
--- 3. Client roles lose portal_password entirely (an AI connector token, which 0039 still lets read student_colleges,
+-- 3. Client roles lose portal_password entirely (an AI connector token, which 0041 still lets read student_colleges,
 --    can no longer SELECT it). anon/authenticated keep exactly their other privileges on student_colleges, now per
 --    column: a NEW column on student_colleges must be granted to authenticated explicitly, or the website and the
 --    AI tools can't read or write it. Columns from the live catalog, 2026-10-28.
 -- Before patch 2026-10-28-drop-portal-password-column.sql drops the column, it drops trigger forbid_plaintext_password
 -- on student_colleges and the function strip_college_portal_password (both depend on it).
--- Trigger and helper functions get no client grants and an empty search_path (0039 rules).
+-- Trigger and helper functions get no client grants and an empty search_path (0041 rules).
 
 -- ───────────── 1. no new plaintext ─────────────
 
@@ -133,7 +133,7 @@ begin
     and column_name not in ('id', 'user_id', 'institution_id', 'plan_key', 'status', 'fit_override', 'checklist', 'portal_url',
                             'aid_offer_usd', 'notes', 'created_at', 'updated_at', 'portal_username', 'portal_password', 'custom');
   if extra is not null then
-    raise exception '0041: student_colleges has columns this migration does not grant: %', extra;
+    raise exception '0043: student_colleges has columns this migration does not grant: %', extra;
   end if;
 end $$;
 

@@ -6,6 +6,7 @@
 // Portal passwords are not part of either copy: they live only in the encrypted store (portal-vault-client.ts).
 
 import { useSyncExternalStore } from "react";
+import { upgradeActivities } from "./activities";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
@@ -175,6 +176,9 @@ function loadLocal(): Local {
     rawLegacy = window.localStorage.getItem(LEGACY_KEY);
   } catch {}
   const { data, passwords, inCopy } = parseLocal(raw, rawLegacy);
+  // Activities saved in this browser before the 2026-27 format are upgraded as they are read, so the merge on
+  // first sign-in (and everything else) only ever sees the current format.
+  if (data.profile.activities != null) data.profile.activities = upgradeActivities(data.profile.activities);
   localPasswords = passwords;
   // A copy that still embeds passwords counts as unsaved: the next save moves them under LEGACY_KEY, then rewrites it.
   storedJson = raw && !inCopy ? serializeLocal(data) : null;
@@ -244,7 +248,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       return { passwordsFailed: 0 };
     }
     // Before reading (and so before any write from this page): the server moves this student's plaintext passwords
-    // from before migration 0038 into the encrypted store, removing each one only after a verified copy exists.
+    // from before migration 0040 into the encrypted store, removing each one only after a verified copy exists.
     // Once per page load; a failed request is tried again on the next load. What it leaves behind stays safe:
     // profile saves put back the password keys still in the row (storedPortals), and list saves never touch them.
     if (migratedFor !== userId && (await migrateStoredPasswords())) migratedFor = userId;

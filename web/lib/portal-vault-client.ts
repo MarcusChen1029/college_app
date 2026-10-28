@@ -128,7 +128,7 @@ export function forgetPassword(slot: string | null) {
 }
 
 /**
- * Asks the server to move this account's plaintext passwords (from before migration 0038) into the store. It removes
+ * Asks the server to move this account's plaintext passwords (from before migration 0040) into the store. It removes
  * a plaintext value only after a verified copy exists, so a failed or partial run loses nothing. True when the
  * request went through (some values may still be waiting; the profile writes keep them, see keepStoredPasswords).
  */

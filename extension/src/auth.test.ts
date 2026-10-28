@@ -119,7 +119,7 @@ test("signOut revokes the token on the server, then clears it from storage", asy
 test("signOut still clears the token when the server cannot be reached or refuses", async () => {
   for (const impl of [
     async () => { throw new TypeError("Failed to fetch"); }, // offline
-    async () => ({ ok: false, status: 404, json: async () => ({}) }), // the server predates migration 0040
+    async () => ({ ok: false, status: 404, json: async () => ({}) }), // the server predates migration 0042
     async () => ({ ok: false, status: 500, json: async () => { throw new Error("no body"); } }),
   ]) {
     const f = withFakes({ token: "tok123" }, impl);
@@ -157,15 +157,15 @@ test("loadTranscript: a token the server calls invalid is cleared locally withou
 
 // ---- extension_transcript returns only what the fill reads (EXT-6) -------------------------------------------------------------
 
-const MIGRATION = readFileSync(new URL("../../supabase/migrations/0040_extension_hardening.sql", import.meta.url), "utf8");
+const MIGRATION = readFileSync(new URL("../../supabase/migrations/0042_extension_hardening.sql", import.meta.url), "utf8");
 /** The columns the migration's extension_transcript selects from `table`, minus created_at (selected only to order the rows). */
 function selectedColumns(table: string): string[] {
   const m = MIGRATION.match(new RegExp(`\\(\\s*select\\s+([^()]*?)\\s+from public\\.${table}\\b`));
-  assert.ok(m, `0040 selects from ${table}`);
+  assert.ok(m, `0042 selects from ${table}`);
   return m[1].split(",").map((c) => c.trim()).filter((c) => c && c !== "created_at");
 }
 
-test("migration 0040 leaves out the notes, class rank and GPA fields the fill never reads", () => {
+test("migration 0042 leaves out the notes, class rank and GPA fields the fill never reads", () => {
   const schools = selectedColumns("transcript_schools");
   const courses = selectedColumns("transcript_courses");
   for (const gone of ["notes", "class_rank", "printed_gpa", "printed_gpa_scale", "gpa_weighted"]) {
@@ -223,7 +223,7 @@ const allPlans = (schools: TranscriptSchool[], courses: TranscriptCourse[]) => (
   systems: FILL_SYSTEMS.map((s) => buildSystemPlan(s, schools, courses)),
 });
 
-test("rows with only the columns migration 0040 returns give every fill planner exactly the plans the full rows gave", () => {
+test("rows with only the columns migration 0042 returns give every fill planner exactly the plans the full rows gave", () => {
   const { schools, courses } = fixture();
   const keep = (row: Record<string, unknown>, cols: string[]) => Object.fromEntries(cols.filter((c) => c in row).map((c) => [c, row[c]]));
   const fullSchools = schools.map((s) => ({ ...fromTranscriptSchool("u1", s), created_at: s.createdAt, updated_at: s.createdAt }));

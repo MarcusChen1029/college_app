@@ -1,5 +1,5 @@
 -- Read-only: how many plaintext portal passwords are still waiting to move into the encrypted store
--- (portal_passwords, migration 0038). Nothing here changes data. The site moves a student's passwords itself on their
+-- (portal_passwords, migration 0040). Nothing here changes data. The site moves a student's passwords itself on their
 -- next visit (POST /api/portal-passwords "migrate": copy, read back, open, then compare-and-set remove), and
 -- scripts/backfill-portal-passwords.mjs can do the same for students who don't come back.
 -- Run before patch 2026-10-28-drop-portal-password-column.sql: that patch refuses to run unless every count is 0.
@@ -16,7 +16,7 @@ where coalesce(portal_password, '') <> '';
 with pw as (
   select sp.user_id, v.place, v.val
   from public.student_profiles sp
-  cross join lateral public.portal_password_values(sp.portals) v   -- migration 0041
+  cross join lateral public.portal_password_values(sp.portals) v   -- migration 0043
 )
 select count(*)                                                     as profile_plaintext,
        count(distinct user_id)                                      as students,

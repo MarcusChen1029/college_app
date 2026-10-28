@@ -2,182 +2,49 @@
 
 import { useState, useSyncExternalStore } from "react";
 import {
-  CA_ACTIVITY_TYPES,
+  CA_ATHLETIC_TYPES,
   CA_LIMITS,
-  GRADES,
+  caActivityIssues,
+  caHonorIssues,
   move,
   newCaActivity,
   newCaHonor,
   newUcEntry,
-  UC_AWARD_LEVELS,
   UC_CATEGORIES,
-  UC_CATEGORY_KEYS,
   UC_LIMITS,
   ucDraftsFromCommonApp,
+  ucEntryIssues,
+  upgradeActivities,
   type ActivityData,
   type CaActivity,
   type CaHonor,
-  type CaTiming,
   type Grade,
-  type HonorLevel,
-  type UcAwardLevel,
-  type UcCategory,
+  type Issue,
   type UcEntry,
 } from "@/lib/activities";
+import { CaActivityFields } from "@/components/activities/CaActivityFields";
+import { CaHonorFields, HONOR_KEYS } from "@/components/activities/CaHonorFields";
+import { AWARD_KEYS, UcFields, UC_FORM_KEYS } from "@/components/activities/UcFields";
 import { SignInButton } from "@/components/SignInDialog";
-import type { MessageKey, TFunction } from "@/lib/i18n";
+import { caTypeLabel as typeLabel } from "@/lib/i18n/ca-types";
 import { useT } from "@/lib/i18n/client";
+import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, toneClass } from "@/lib/ui";
 
 const noop = () => () => {};
-const input = "w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
-
-// Stored values stay English (Common App activity types, enum ids); these maps only supply the visible label.
-const CA_TYPE_KEYS: Record<(typeof CA_ACTIVITY_TYPES)[number], MessageKey> = {
-  Academic: "writing.caType.academic",
-  Art: "writing.caType.art",
-  "Athletics: Club": "writing.caType.athleticsClub",
-  "Athletics: JV/Varsity": "writing.caType.athleticsVarsity",
-  "Career Oriented": "writing.caType.careerOriented",
-  "Community Service (Volunteer)": "writing.caType.communityService",
-  "Computer/Technology": "writing.caType.computerTech",
-  Cultural: "writing.caType.cultural",
-  Dance: "writing.caType.dance",
-  "Debate/Speech": "writing.caType.debateSpeech",
-  Environmental: "writing.caType.environmental",
-  "Family Responsibilities": "writing.caType.familyResponsibilities",
-  "Foreign Exchange": "writing.caType.foreignExchange",
-  "Foreign Language": "writing.caType.foreignLanguage",
-  Internship: "writing.caType.internship",
-  "Journalism/Publication": "writing.caType.journalism",
-  "Junior R.O.T.C.": "writing.caType.rotc",
-  LGBT: "writing.caType.lgbt",
-  "Music: Instrumental": "writing.caType.musicInstrumental",
-  "Music: Vocal": "writing.caType.musicVocal",
-  Religious: "writing.caType.religious",
-  Research: "writing.caType.research",
-  Robotics: "writing.caType.robotics",
-  "School Spirit": "writing.caType.schoolSpirit",
-  "Science/Math": "writing.caType.scienceMath",
-  "Social Justice": "writing.caType.socialJustice",
-  "Student Govt./Politics": "writing.caType.studentGovt",
-  "Theater/Drama": "writing.caType.theater",
-  "Work (Paid)": "writing.caType.workPaid",
-  "Other Club/Activity": "writing.caType.otherClub",
-};
-const typeLabel = (t: TFunction, type: string) => {
-  const key = (CA_TYPE_KEYS as Record<string, MessageKey | undefined>)[type];
-  return key ? t(key) : type;
-};
-const CA_TIMING_KEYS: Record<CaTiming, MessageKey> = { school: "writing.timing.school", break: "writing.timing.break" };
-const HONOR_KEYS: Record<HonorLevel, MessageKey> = {
-  school: "writing.honorLevel.school",
-  state_regional: "writing.honorLevel.state_regional",
-  national: "writing.honorLevel.national",
-  international: "writing.honorLevel.international",
-};
-const AWARD_KEYS: Record<UcAwardLevel, MessageKey> = {
-  school: "writing.awardLevel.school",
-  city: "writing.awardLevel.city",
-  state: "writing.awardLevel.state",
-  regional: "writing.awardLevel.regional",
-  national: "writing.awardLevel.national",
-  international: "writing.awardLevel.international",
-};
-const UC_FORM_KEYS: Record<UcCategory, { label: MessageKey; name: MessageKey; organization?: MessageKey; extra?: MessageKey; description: MessageKey }> = {
-  award: { label: "writing.uc.award.label", name: "writing.uc.award.name", extra: "writing.uc.award.extra", description: "writing.uc.award.description" },
-  edprep: { label: "writing.uc.edprep.label", name: "writing.uc.edprep.name", description: "writing.uc.edprep.description" },
-  extracurricular: { label: "writing.uc.extracurricular.label", name: "writing.uc.extracurricular.name", description: "writing.uc.extracurricular.description" },
-  coursework: { label: "writing.uc.coursework.label", name: "writing.uc.coursework.name", description: "writing.uc.coursework.description" },
-  volunteer: { label: "writing.uc.volunteer.label", name: "writing.uc.volunteer.name", extra: "writing.uc.volunteer.extra", description: "writing.uc.volunteer.description" },
-  work: {
-    label: "writing.uc.work.label",
-    name: "writing.uc.work.name",
-    organization: "writing.uc.work.organization",
-    extra: "writing.uc.work.extra",
-    description: "writing.uc.work.description",
-  },
-};
-const labels = <K extends string>(keys: Record<K, MessageKey>, t: TFunction) =>
-  Object.fromEntries((Object.keys(keys) as K[]).map((k) => [k, t(keys[k])])) as Record<K, string>;
-
-// ── small fields ──
-
-/** Text box with a live character count; saves on blur. */
-function TextField({ label, value, max, rows, onSave }: { label: string; value: string; max: number; rows?: number; onSave: (v: string) => void }) {
-  const [v, setV] = useState(value);
-  const props = { className: input, maxLength: max, value: v, onBlur: () => v !== value && onSave(v) };
-  return (
-    <label className="flex flex-col gap-1">
-      <span className="flex justify-between text-xs text-zinc-500">
-        {label}
-        <span className={`tabular-nums ${v.length >= max ? "font-semibold text-soon" : ""}`}>
-          {v.length}/{max}
-        </span>
-      </span>
-      {rows ? (
-        <textarea {...props} rows={rows} onChange={(e) => setV(e.target.value)} />
-      ) : (
-        <input {...props} onChange={(e) => setV(e.target.value)} />
-      )}
-    </label>
-  );
-}
-
-function NumberField({ label, value, max, onSave }: { label: string; value: number | null; max: number; onSave: (n: number | null) => void }) {
-  return (
-    <label className="flex flex-col gap-1">
-      <span className="text-xs text-zinc-500">{label}</span>
-      <input
-        key={value ?? "empty"}
-        className={`${input} w-24`}
-        inputMode="numeric"
-        placeholder={`0–${max}`}
-        defaultValue={value ?? ""}
-        onBlur={(e) => {
-          const raw = e.target.value.trim();
-          const n = raw === "" ? null : Number(raw);
-          if (n != null && !(Number.isInteger(n) && n >= 0 && n <= max)) {
-            e.target.value = value?.toString() ?? "";
-            return;
-          }
-          if (n !== value) onSave(n);
-        }}
-      />
-    </label>
-  );
-}
-
-function Checks<K extends string>({ label, options, value, onChange }: { label: string; options: Record<K, string>; value: K[]; onChange: (v: K[]) => void }) {
-  const keys = Object.keys(options) as K[];
-  return (
-    <fieldset className="flex flex-col gap-1">
-      <legend className="mb-1 text-xs text-zinc-500">{label}</legend>
-      <div className="flex flex-wrap gap-x-3 gap-y-1">
-        {keys.map((k) => (
-          <label key={k} className="flex items-center gap-1.5 text-sm">
-            <input
-              type="checkbox"
-              checked={value.includes(k)}
-              onChange={(e) => onChange(e.target.checked ? keys.filter((x) => x === k || value.includes(x)) : value.filter((x) => x !== k))}
-            />
-            {options[k]}
-          </label>
-        ))}
-      </div>
-    </fieldset>
-  );
-}
-
-const gradeOptions = (t: TFunction) => Object.fromEntries(GRADES.map((g) => [g, g === "PG" ? t("writing.grade.PG") : g])) as Record<Grade, string>;
 
 // ── entry card ──
+
+function Pill({ tone, children }: { tone: "soon" | "urgent"; children: React.ReactNode }) {
+  return <span className={`rounded border px-1.5 py-0.5 text-xs font-medium ${toneClass(tone)}`}>{children}</span>;
+}
 
 function Card({
   index,
   title,
   subtitle,
+  issues,
   open,
   onToggle,
   onMove,
@@ -187,6 +54,7 @@ function Card({
   index: number;
   title: string;
   subtitle?: string;
+  issues: Issue[];
   open: boolean;
   onToggle: () => void;
   onMove: (dir: -1 | 1) => void;
@@ -195,6 +63,8 @@ function Card({
 }) {
   const t = useT();
   const btn = "grid h-7 w-7 place-items-center rounded-md text-zinc-500 hover:bg-zinc-100";
+  const missing = issues.some((i) => i.kind === "missing");
+  const invalid = issues.some((i) => i.kind === "invalid");
   return (
     <li className="rounded-2xl border border-zinc-200">
       <div className="flex items-center gap-2 p-3">
@@ -202,6 +72,12 @@ function Card({
         <button type="button" onClick={onToggle} className="min-w-0 flex-1 text-left" aria-expanded={open}>
           <span className="block truncate font-semibold">{title || <span className="font-normal text-zinc-400">{t("writing.untitled")}</span>}</span>
           {subtitle && <span className="block truncate text-xs text-zinc-500">{subtitle}</span>}
+          {(missing || invalid) && (
+            <span className="mt-1 flex flex-wrap gap-1">
+              {missing && <Pill tone="soon">{t("writing.needsAnswer")}</Pill>}
+              {invalid && <Pill tone="urgent">{t("writing.needsFix")}</Pill>}
+            </span>
+          )}
         </button>
         <button type="button" className={btn} onClick={() => onMove(-1)} aria-label={t("writing.moveUp")}>
           ↑
@@ -218,128 +94,6 @@ function Card({
   );
 }
 
-const wide = "sm:col-span-2";
-
-function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<CaActivity>) => void }) {
-  const t = useT();
-  return (
-    <>
-      <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">{t("writing.activityType")}</span>
-        <select className={input} value={a.type} onChange={(e) => set({ type: e.target.value })}>
-          <option value="">{t("writing.choose")}</option>
-          {CA_ACTIVITY_TYPES.map((type) => (
-            <option key={type} value={type}>
-              {typeLabel(t, type)}
-            </option>
-          ))}
-        </select>
-      </label>
-      <TextField label={t("writing.position")} value={a.position} max={CA_LIMITS.position} onSave={(position) => set({ position })} />
-      <div className={wide}>
-        <TextField label={t("writing.organizationName")} value={a.organization} max={CA_LIMITS.organization} onSave={(organization) => set({ organization })} />
-      </div>
-      <div className={wide}>
-        <TextField label={t("writing.caDescription")} value={a.description} max={CA_LIMITS.description} rows={2} onSave={(description) => set({ description })} />
-      </div>
-      <Checks label={t("writing.gradeLevels")} options={gradeOptions(t)} value={a.grades} onChange={(grades) => set({ grades })} />
-      <Checks<CaTiming> label={t("writing.timing")} options={labels(CA_TIMING_KEYS, t)} value={a.timing} onChange={(timing) => set({ timing })} />
-      <div className="flex gap-3">
-        <NumberField label={t("writing.hoursWeek")} value={a.hoursPerWeek} max={168} onSave={(hoursPerWeek) => set({ hoursPerWeek })} />
-        <NumberField label={t("writing.weeksYear")} value={a.weeksPerYear} max={52} onSave={(weeksPerYear) => set({ weeksPerYear })} />
-      </div>
-      <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">{t("writing.continueCollege")}</span>
-        <select
-          className={`${input} w-auto`}
-          value={a.continueInCollege == null ? "" : a.continueInCollege ? "yes" : "no"}
-          onChange={(e) => set({ continueInCollege: e.target.value === "" ? null : e.target.value === "yes" })}
-        >
-          <option value="">—</option>
-          <option value="yes">{t("common.yes")}</option>
-          <option value="no">{t("common.no")}</option>
-        </select>
-      </label>
-    </>
-  );
-}
-
-function CaHonorFields({ h, set }: { h: CaHonor; set: (p: Partial<CaHonor>) => void }) {
-  const t = useT();
-  return (
-    <>
-      <div className={wide}>
-        <TextField label={t("writing.honorTitle")} value={h.title} max={CA_LIMITS.honorTitle} onSave={(title) => set({ title })} />
-      </div>
-      <Checks label={t("writing.gradeLevels")} options={gradeOptions(t)} value={h.grades} onChange={(grades) => set({ grades })} />
-      <Checks<HonorLevel> label={t("writing.honorLevels")} options={labels(HONOR_KEYS, t)} value={h.levels} onChange={(levels) => set({ levels })} />
-    </>
-  );
-}
-
-function UcFields({ e, set }: { e: UcEntry; set: (p: Partial<UcEntry>) => void }) {
-  const t = useT();
-  const form = UC_CATEGORIES[e.category];
-  const fk = UC_FORM_KEYS[e.category];
-  return (
-    <>
-      <label className="flex flex-col gap-1">
-        <span className="text-xs text-zinc-500">{t("writing.category")}</span>
-        <select className={input} value={e.category} onChange={(ev) => set({ category: ev.target.value as UcCategory })}>
-          {UC_CATEGORY_KEYS.map((k) => (
-            <option key={k} value={k}>
-              {t(UC_FORM_KEYS[k].label)}
-            </option>
-          ))}
-        </select>
-      </label>
-      <TextField key={`name-${e.category}`} label={t(fk.name)} value={e.name} max={UC_LIMITS.name} onSave={(name) => set({ name })} />
-      {fk.organization && <TextField label={t(fk.organization)} value={e.organization} max={UC_LIMITS.name} onSave={(organization) => set({ organization })} />}
-      {e.category === "award" && (
-        <div className="flex flex-wrap gap-3">
-          <label className="flex flex-col gap-1">
-            <span className="text-xs text-zinc-500">{t("writing.levelOfRecognition")}</span>
-            <select className={`${input} w-auto`} value={e.awardLevel ?? ""} onChange={(ev) => set({ awardLevel: (ev.target.value || null) as UcAwardLevel | null })}>
-              <option value="">—</option>
-              {(Object.keys(UC_AWARD_LEVELS) as UcAwardLevel[]).map((k) => (
-                <option key={k} value={k}>
-                  {t(AWARD_KEYS[k])}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex flex-col gap-1">
-            <span className="text-xs text-zinc-500">{t("writing.awardType")}</span>
-            <select
-              className={`${input} w-auto`}
-              value={e.awardType ?? ""}
-              onChange={(ev) => set({ awardType: (ev.target.value || null) as UcEntry["awardType"] })}
-            >
-              <option value="">—</option>
-              <option value="academic">{t("writing.awardAcademic")}</option>
-              <option value="non_academic">{t("writing.awardNonAcademic")}</option>
-            </select>
-          </label>
-        </div>
-      )}
-      {fk.extra && (
-        <div className={wide}>
-          <TextField key={`extra-${e.category}`} label={t(fk.extra)} value={e.extra} max={UC_LIMITS.extra} rows={2} onSave={(extra) => set({ extra })} />
-        </div>
-      )}
-      <div className={wide}>
-        <TextField key={`desc-${e.category}`} label={t(fk.description)} value={e.description} max={UC_LIMITS.description} rows={4} onSave={(description) => set({ description })} />
-      </div>
-      <Checks label={t("writing.gradeLevels")} options={gradeOptions(t)} value={e.grades} onChange={(grades) => set({ grades })} />
-      {form.hours && (
-        <div className="flex gap-3">
-          <NumberField label={t("writing.hoursWeek")} value={e.hoursPerWeek} max={168} onSave={(hoursPerWeek) => set({ hoursPerWeek })} />
-          <NumberField label={t("writing.weeksYear")} value={e.weeksPerYear} max={52} onSave={(weeksPerYear) => set({ weeksPerYear })} />
-        </div>
-      )}
-    </>
-  );
-}
 
 // ── lists ──
 
@@ -355,6 +109,7 @@ function EntryList<T extends Item>({
   make,
   title,
   subtitle,
+  issues,
   render,
   extraAction,
 }: {
@@ -366,6 +121,8 @@ function EntryList<T extends Item>({
   make: () => T;
   title: (item: T) => string;
   subtitle: (item: T) => string;
+  /** The item's unanswered / invalid questions, shown as badges on its header. */
+  issues?: (item: T) => Issue[];
   render: (item: T, set: (p: Partial<T>) => void) => React.ReactNode;
   extraAction?: React.ReactNode;
 }) {
@@ -405,6 +162,7 @@ function EntryList<T extends Item>({
               index={i}
               title={title(item)}
               subtitle={subtitle(item)}
+              issues={issues ? issues(item) : []}
               open={open === item.id}
               onToggle={() => setOpen(open === item.id ? null : item.id)}
               onMove={(dir) => onChange(move(items, i, dir))}
@@ -430,14 +188,13 @@ export function ActivitiesEditor() {
   const [tab, setTab] = useState<"common" | "uc">("common");
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-3xl bg-zinc-100" />;
 
-  const raw = student.profile.activities ?? {};
-  const data: ActivityData = {
-    commonApp: { activities: raw.commonApp?.activities ?? [], honors: raw.commonApp?.honors ?? [] },
-    uc: raw.uc ?? [],
-  };
+  const data: ActivityData = upgradeActivities(student.profile.activities);
   const save = (next: ActivityData) => student.updateProfile({ activities: next });
   const drafts = ucDraftsFromCommonApp(data);
   const room = UC_LIMITS.entries - data.uc.length;
+  const needAnswer = [...data.commonApp.activities.map(caActivityIssues), ...data.commonApp.honors.map(caHonorIssues)].filter((is) => is.some((i) => i.kind === "missing")).length;
+
+  const ucNeedAnswer = data.uc.map(ucEntryIssues).filter((is) => is.some((i) => i.kind === "missing")).length;
 
   const grades = (g: Grade[]) => (g.length ? t("writing.gradesList", { list: g.join(", ") }) : "");
   const hours = (h: number | null, w: number | null) => (h != null || w != null ? t("writing.hoursSummary", { h: h ?? "?", w: w ?? "?" }) : "");
@@ -465,6 +222,7 @@ export function ActivitiesEditor() {
 
       {tab === "common" ? (
         <>
+          {needAnswer > 0 && <p className={`rounded-lg border px-3 py-2 text-sm ${toneClass("soon")}`}>{t("writing.needsCount", { n: needAnswer })}</p>}
           <EntryList<CaActivity>
             heading={t("writing.headingActivities")}
             items={data.commonApp.activities}
@@ -472,8 +230,12 @@ export function ActivitiesEditor() {
             addLabel={t("writing.addActivity")}
             make={newCaActivity}
             onChange={(activities) => save({ ...data, commonApp: { ...data.commonApp, activities } })}
-            title={(a) => a.organization || a.position}
-            subtitle={(a) => join(typeLabel(t, a.type), a.position && a.organization ? a.position : "", grades(a.grades), hours(a.hoursPerWeek, a.weeksPerYear))}
+            // Only what the form shows: the role when the leadership answer is yes, the sport for the athletics types.
+            title={(a) => a.organization || caRole(a)}
+            subtitle={(a) =>
+              join(typeLabel(t, a.type), CA_ATHLETIC_TYPES.includes(a.type) ? a.sport : "", caRole(a) && a.organization ? caRole(a) : "", grades(a.grades), hours(a.hoursPerWeek, a.weeksPerYear))
+            }
+            issues={caActivityIssues}
             render={(a, set) => <CaActivityFields a={a} set={set} />}
           />
           <EntryList<CaHonor>
@@ -485,6 +247,7 @@ export function ActivitiesEditor() {
             onChange={(honors) => save({ ...data, commonApp: { ...data.commonApp, honors } })}
             title={(h) => h.title}
             subtitle={(h) => join(h.levels.map((l) => t(HONOR_KEYS[l])).join(", "), grades(h.grades))}
+            issues={caHonorIssues}
             render={(h, set) => <CaHonorFields h={h} set={set} />}
           />
           <p className="text-xs text-zinc-500">
@@ -498,6 +261,7 @@ export function ActivitiesEditor() {
         </>
       ) : (
         <>
+          {ucNeedAnswer > 0 && <p className={`rounded-lg border px-3 py-2 text-sm ${toneClass("soon")}`}>{t("writing.needsCount", { n: ucNeedAnswer })}</p>}
           <EntryList<UcEntry>
             heading={t("writing.headingUc")}
             items={data.uc}
@@ -505,8 +269,18 @@ export function ActivitiesEditor() {
             addLabel={t("writing.addEntry")}
             make={() => newUcEntry("extracurricular")}
             onChange={(uc) => save({ ...data, uc })}
-            title={(e) => e.name}
-            subtitle={(e) => join(t(UC_FORM_KEYS[e.category].label), grades(e.grades), UC_CATEGORIES[e.category].hours ? hours(e.hoursPerWeek, e.weeksPerYear) : "")}
+            // Only what the form shows for this category: the program (not a stale name), the job title for work, levels for an award.
+            title={ucName}
+            subtitle={(e) =>
+              join(
+                t(UC_FORM_KEYS[e.category].label),
+                e.category === "work" ? e.jobTitle : "",
+                e.category === "award" ? e.awardLevels.map((l) => t(AWARD_KEYS[l])).join(", ") : "",
+                grades(e.grades),
+                UC_CATEGORIES[e.category].hours ? hours(e.hoursPerWeek, e.weeksPerYear) : "",
+              )
+            }
+            issues={ucEntryIssues}
             render={(e, set) => <UcFields e={e} set={set} />}
             extraAction={
               drafts.length > 0 && (

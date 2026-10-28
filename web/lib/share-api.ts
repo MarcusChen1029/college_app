@@ -41,7 +41,7 @@ const LINK_COLUMNS = "id, kind, label, created_at, revoked_at, last_viewed_at";
 export async function listShareLinks(kind: ShareKind): Promise<ShareLink[]> {
   const query = (columns: string) => db().from("share_links").select(columns).eq("kind", kind).order("created_at", { ascending: false });
   let res = await query(`${LINK_COLUMNS}, expires_at`);
-  // expires_at comes with migration 0039; until that is applied (42703 = no such column), list the links without it.
+  // expires_at comes with migration 0041; until that is applied (42703 = no such column), list the links without it.
   if (res.error?.code === "42703") res = await query(LINK_COLUMNS);
   const rows = check(res) as unknown as ShareLinkRow[];
   const now = Date.now();

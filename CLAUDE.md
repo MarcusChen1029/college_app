@@ -30,6 +30,11 @@ Plan: all US colleges next, then UK/CA/AU.
     Builds never touch Supabase; pages wrap data in `<Suspense>`.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
     signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
+  - Activities (`student_profiles.activities`) are stored in the 2026-27 portal format, `"version": 2` (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`).
+    `upgradeActivities` in `web/lib/activities.ts` reads any older shape; migration 0038's `public.activities_v2(jsonb)` is its SQL twin (backfill +
+    `portfolio_view`). Change one, change both: `node scripts/check_activities_sql.mjs --generate` rebuilds the parity patch
+    `supabase/patches/2026-10-28-activities-v2-parity.sql` (fixtures `web/lib/fixtures/activities-v1.json` -> `activities-v2.json`); run it in one
+    `execute_sql`, save the rows, then `node scripts/check_activities_sql.mjs <rows.json>` must exit 0. Script tests: `node --test scripts/check_activities_sql.test.mjs`.
   - Google Docs (Writing > Essays page, `/writing/essays`, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
     Needs server env vars `GOOGLE_DOCS_CLIENT_ID`, `GOOGLE_DOCS_CLIENT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`,
     `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64, 32 bytes) and migration 0016 (`google_tokens`, applied).
@@ -126,15 +131,15 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0042**; 0001-0037 are all applied to the project as of 2026-10-27, 0038-0041 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
-  Since 0039 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0044**; 0001-0038 are applied (0038 = activities v2); 0039 is reserved for extension activities access (branch feat/activities-v2); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
+  Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
   `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
   rows or localStorage. AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
   student_profiles/student_colleges/transcript_*; every RPC, the password route, the Google routes and account deletion refuse them. Every page
   sends a CSP (`web/lib/security-headers.ts`): a new third-party host the browser must reach needs adding there. Accounts are deleted at
   Settings > Delete account (`/api/account/delete`; every table cascades from auth.users).
-- **AI connector containment (0039):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use `student_profiles`,
+- **AI connector containment (0041):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use `student_profiles`,
   `student_colleges`, `transcript_schools`, `transcript_courses` (pre-request hook `api_request_guard`), only the columns/operations in
   `guard_oauth_student_writes`, and no RPC. A new MCP tool that needs more must widen those two functions in a migration.
   Smoke test: `supabase/patches/2026-10-28_security_hardening_smoke_test.sql`.

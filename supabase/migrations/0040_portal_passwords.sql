@@ -9,7 +9,7 @@
 -- AI connection's alike) can't read or write it. Only the server, with the service-role key, touches it, through
 -- POST /api/portal-passwords, which also refuses AI-connection tokens.
 -- The old plaintext columns are left alone here: the server moves each student's passwords on their next visit
--- (verified copy first, then a compare-and-set removal through 0041's functions), and 0041 stops new plaintext.
+-- (verified copy first, then a compare-and-set removal through 0043's functions), and 0043 stops new plaintext.
 -- Runbook: docs/superpowers/plans/2026-10-28-portal-password-encryption.md.
 
 create table public.portal_passwords (

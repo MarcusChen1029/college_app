@@ -1,5 +1,5 @@
--- Dry run for migration 0041_forbid_new_plaintext. Run in the dashboard SQL Editor AFTER applying 0041, or paste
--- 0041 at the marked line below to dry-run the migration and the checks together. It creates throwaway rows inside
+-- Dry run for migration 0043_forbid_new_plaintext. Run in the dashboard SQL Editor AFTER applying 0043, or paste
+-- 0043 at the marked line below to dry-run the migration and the checks together. It creates throwaway rows inside
 -- one transaction, acts as the website (authenticated), anon and the service role, and never commits: the LAST
 -- statement deliberately raises "DRY RUN RESULT: <n> failures" followed by one PASS/FAIL line per check.
 -- Success = "DRY RUN RESULT: 0 failures". The plaintext values below are markers, not real passwords.
@@ -8,9 +8,9 @@ begin;
 
 -- ── setup (postgres): one student with a not-yet-migrated college password and profile password ──
 insert into auth.users (id, email) values
-  ('00000000-0000-4000-8000-0000000041a1', 'dry-0041-s@example.invalid'),
-  ('00000000-0000-4000-8000-0000000041a2', 'dry-0041-new@example.invalid');
--- (If 0041 is already applied, its triggers would refuse this setup: switch them off for these two inserts.)
+  ('00000000-0000-4000-8000-0000000041a1', 'dry-0043-s@example.invalid'),
+  ('00000000-0000-4000-8000-0000000041a2', 'dry-0043-new@example.invalid');
+-- (If 0043 is already applied, its triggers would refuse this setup: switch them off for these two inserts.)
 do $$ begin
   if exists (select 1 from pg_trigger where tgname = 'forbid_plaintext_password' and tgrelid = 'public.student_colleges'::regclass) then
     alter table public.student_colleges disable trigger forbid_plaintext_password;
@@ -30,7 +30,7 @@ do $$ begin
   end if;
 end $$;
 
--- ── paste 0041 here to dry-run the migration itself ──
+-- ── paste 0043 here to dry-run the migration itself ──
 
 create temp table dry (n serial primary key, name text, expect text, got text) on commit drop;
 

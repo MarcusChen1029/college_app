@@ -139,7 +139,7 @@ application (SRAR not final-submitted): run it only when the owner is watching, 
 
 The code and unit tests for these are done (`src/background-guards.test.ts`, `save-guard.test.ts`, `sites.test.ts`, `tab-wait.test.ts`,
 `uiuc/dialogs.test.ts`, `auth.test.ts`, `manifest.test.ts`); nothing below was run against a real portal. Use the throwaway test accounts only.
-Apply `supabase/migrations/0040_extension_hardening.sql` first (the new extension also works against the old server: the revoke call just fails quietly).
+Apply `supabase/migrations/0042_extension_hardening.sql` first (the new extension also works against the old server: the revoke call just fails quietly).
 1. Sign out revokes: sign in, copy the token from the service worker console (`await chrome.storage.local.get("token")`), press Sign out, then in the
    service worker console `await fetch(".../rest/v1/rpc/extension_transcript", {method:"POST", headers:{apikey:"<publishable key>","Content-Type":"application/json"}, body: JSON.stringify({p_token:"<copied token>"})}).then(r=>r.json())`.
    Expected: `{ok:false, error:"invalid_token"}`. Sign out with the network off: the panel still signs out.

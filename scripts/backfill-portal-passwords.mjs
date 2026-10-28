@@ -3,7 +3,7 @@
 // web/lib/portal-migrate.ts decides, web/lib/portal-vault.ts seals and opens. A plaintext password
 // (student_colleges.portal_password, or a "password" key in student_profiles.portals) is removed only after the
 // encrypted store holds a copy that opens with the key given here (an existing row that opens, or a new row read back
-// and opened to the same value), and only through migration 0041's compare-and-set functions, which refuse if the row
+// and opened to the same value), and only through migration 0043's compare-and-set functions, which refuse if the row
 // changed since it was read. Anything else stays plaintext. Running it again is safe.
 // It never prints a password, a sealed value or a key; --dry-run reads and counts only.
 //
@@ -12,7 +12,7 @@
 //
 // The key rule is the server's: PORTAL_ENCRYPTION_KEY if set, else GOOGLE_TOKEN_ENCRYPTION_KEY. With a key that
 // differs from the deployed site's, existing rows don't open and new ones are written under the wrong key: use the
-// Production values exactly (e.g. from `vercel env pull`). Needs migrations 0038 and 0041 and Node 22.18+.
+// Production values exactly (e.g. from `vercel env pull`). Needs migrations 0040 and 0043 and Node 22.18+.
 // Runbook: docs/superpowers/plans/2026-10-28-portal-password-encryption.md
 
 import { pathToFileURL } from "node:url";

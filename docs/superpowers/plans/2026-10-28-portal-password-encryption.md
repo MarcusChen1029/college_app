@@ -23,7 +23,7 @@ On each signed-in student's next page load, before the page reads or writes the 
 1. reads their plaintext (college rows and profile `portals`) and their store rows;
 2. keeps a store row that already opens with the current key, otherwise seals the plaintext, writes it, reads it back
    and opens it to the same value;
-3. only then removes that plaintext, through 0041's compare-and-set functions (`strip_college_portal_password`,
+3. only then removes that plaintext, through 0043's compare-and-set functions (`strip_college_portal_password`,
    `replace_profile_portals`), which refuse if the row changed since it was read and can only remove passwords;
 4. answers counts only: `{ migrated, kept, failed }`. Failed values stay plaintext and are tried again next visit.
 
@@ -34,19 +34,19 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 
 ## Order
 
-1. **Apply migrations `0038` → `0039` → `0040`.** The live (old) site keeps working with these.
+1. **Apply migrations `0040` → `0041` → `0042`.** The live (old) site keeps working with these.
    Check: `select has_table_privilege('authenticated', 'public.portal_passwords', 'select')` is `false`.
 
-2. **Deploy the code.** It never reads or writes `portal_password`. Until 0041 exists its `migrate` call fails
+2. **Deploy the code.** It never reads or writes `portal_password`. Until 0043 exists its `migrate` call fails
    harmlessly (the store then passes stored password keys through untouched), so nothing is lost in this gap.
 
-3. **Apply `0041`** right after the deploy is live (not before: 0041 removes `portal_password` from client grants, and
-   the old site's list load reads that column, so applying 0041 first would break My list until the deploy).
-   Dry run first: `supabase/patches/2026-10-28_forbid_plaintext_dry_run.sql` with 0041 pasted at its marker must end
-   in `DRY RUN RESULT: 0 failures` (it can never commit). 0041 stops with an error if `student_colleges` has a column
+3. **Apply `0043`** right after the deploy is live (not before: 0043 removes `portal_password` from client grants, and
+   the old site's list load reads that column, so applying 0043 first would break My list until the deploy).
+   Dry run first: `supabase/patches/2026-10-28_forbid_plaintext_dry_run.sql` with 0043 pasted at its marker must end
+   in `DRY RUN RESULT: 0 failures` (it can never commit). 0043 stops with an error if `student_colleges` has a column
    it doesn't know; add the column to its grant list first.
    Check: `select has_column_privilege('authenticated', 'public.student_colleges', 'portal_password', 'select')` is `false`.
-   From here on old open tabs can't write a password back (0041 refuses it; those tabs show a save error and reload),
+   From here on old open tabs can't write a password back (0043 refuses it; those tabs show a save error and reload),
    AI-connection tokens can't read `portal_password`, and each student's plaintext moves on their next visit.
 
 4. **Verify** with a test account that has a plaintext password from before (one system login, one college login):
@@ -61,12 +61,12 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
    over 512 characters) can't be moved by either; decide about them by hand.
 
 6. **Only when every plaintext count is 0** (and no old build is in use): `supabase/patches/2026-10-28-drop-portal-password-column.sql`.
-   It refuses to run while any plaintext is left, then drops 0041's college trigger and function and the column, and
+   It refuses to run while any plaintext is left, then drops 0043's college trigger and function and the column, and
    removes leftover empty `password` keys. Supabase backups keep old values until they age out.
 
 ## Rollback
 
-- Code: an older build can't read `portal_password` after 0041 (its list load fails), so roll back 0041's grants too
+- Code: an older build can't read `portal_password` after 0043 (its list load fails), so roll back 0043's grants too
   (`grant select, insert, update on public.student_colleges to authenticated`) if the old build must run again.
 - Data: every password the new site moved now exists only in `portal_passwords`. An old build shows those as empty.
   Rolling back therefore needs a restore (open each row with the key and write it back to its place); there is no

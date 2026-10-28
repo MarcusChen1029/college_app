@@ -2,7 +2,22 @@ import "server-only";
 import type { CallToolResult, McpServer, ServerContext } from "@modelcontextprotocol/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import { CA_LIMITS, UC_LIMITS } from "../activities";
+import {
+  CA_ACTIVITY_TYPES,
+  CA_LIMITS,
+  CA_SPORTS,
+  caActivityIssues,
+  caHonorIssues,
+  GRADES,
+  UC_AWARD_LEVELS,
+  UC_CATEGORY_KEYS,
+  UC_EDPREP_OTHER,
+  UC_EDPREP_PROGRAMS,
+  UC_LIMITS,
+  ucEntryIssues,
+  type Grade,
+  type Issue,
+} from "../activities";
 import { buildContextPack, detailSection } from "../ai-context";
 import { stage } from "../application";
 import { CHECKLIST, isDone, progress, type Checklist } from "../checklist";
@@ -293,16 +308,23 @@ export function registerTools(server: McpServer) {
     "get_activities",
     {
       title: "Get activities",
-      description: "Common App activities and honors and UC entries, each with an id for update_activity / delete_activity, plus the list limits.",
+      description:
+        "Common App activities and honors and UC entries (2026-27 forms), each with an id for update_activity / delete_activity, plus the list limits. needsAnswer lists, per item, the questions still unanswered (problem: missing) or answers the application would reject (problem: invalid); ask the student about them, never guess. `legacy` on an item is an old value that has no exact place in the new form, kept as a note for the student to place.",
       inputSchema: z.object({}),
       annotations: READ,
     },
     guarded(async ({ profile }) => {
       const a = normalizeActivities(profile.activities);
+      const open = (kind: string, id: string, issues: Issue[]) => issues.map((i) => ({ kind, id, field: i.field, problem: i.kind, message: i.message }));
       return json({
         commonAppActivities: a.commonApp.activities,
         commonAppHonors: a.commonApp.honors,
         ucEntries: a.uc,
+        needsAnswer: [
+          ...a.commonApp.activities.flatMap((x) => open("common_app_activity", x.id, caActivityIssues(x))),
+          ...a.commonApp.honors.flatMap((x) => open("common_app_honor", x.id, caHonorIssues(x))),
+          ...a.uc.flatMap((x) => open("uc_entry", x.id, ucEntryIssues(x))),
+        ],
         limits: { commonAppActivities: CA_LIMITS.activities, commonAppHonors: CA_LIMITS.honors, ucEntries: UC_LIMITS.entries },
       });
     }),
@@ -610,32 +632,55 @@ export function registerTools(server: McpServer) {
   );
 
   const kind = z.enum(ACTIVITY_KINDS).describe("common_app_activity (max 10), common_app_honor (max 5) or uc_entry (max 20).");
+  const enumOf = (values: readonly string[]) => z.enum(values as [string, ...string[]]);
+  const grade = z.enum(GRADES as [Grade, ...Grade[]]);
+  const hours = z.object({ schoolYear: z.number().nullable().optional(), summer: z.number().nullable().optional() }).strict();
   const activityFields = z
     .object({
-      type: z.string().optional().describe("Common App activity type, e.g. Robotics, Research, Work (Paid)."),
-      position: z.string().optional().describe("Common App activity: max 50 characters."),
-      organization: z.string().optional().describe("Common App activity: max 100 characters. UC: max 60."),
-      description: z.string().optional().describe("Common App activity: max 150 characters. UC entry: max 350."),
+      // Common App activity (2026-27 form: up to 10)
+      type: enumOf(CA_ACTIVITY_TYPES).optional().describe("Common App activity type, exactly as the Common App shows it, e.g. Robotics, Research, Employment or work (paid)."),
+      sport: z.union([enumOf(CA_SPORTS), z.literal("")]).optional().describe('Common App activity: the sport or team; asked only for the two athletics types ("Athletics (other)", "Athletics (JV or varsity)"). "" clears it.'),
+      leadership: z.boolean().nullable().optional().describe('Common App activity: "Did you have a specific position or leadership role?" Giving a position sets this to true if it was unanswered; position with leadership false is refused. Leave null if the student has not said.'),
+      position: z.string().optional().describe("Common App activity: the role, max 50 characters. Used only when leadership is true."),
+      organization: z.string().optional().describe("Common App activity: max 100 characters."),
+      description: z.string().optional().describe("Common App activity: max 150 characters. UC entry: max 350 (a line break counts as 2)."),
+      timing: z.enum(["school", "break", "all"]).nullable().optional().describe('Common App activity, when a grade 9-12 is ticked: "school" (during the school year), "break" (during school break) or "all" (all year).'),
+      afterStart: z.string().nullable().optional().describe('Common App activity with "PG" in grades: when it started, "YYYY-MM" (years 1926-2027).'),
+      stillParticipating: z.boolean().nullable().optional().describe('Common App activity with "PG" in grades: still taking part?'),
+      afterEnd: z.string().nullable().optional().describe('Common App activity with "PG" in grades and stillParticipating false: when it ended, "YYYY-MM", not before afterStart.'),
+      continueInCollege: z.enum(["yes", "no", "not_sure"]).nullable().optional().describe("Common App activity: do you intend to participate in college?"),
+      // Common App honor (up to 5)
       title: z.string().optional().describe("Common App honor: max 100 characters."),
-      name: z.string().optional().describe("UC entry: max 60 characters."),
-      category: z.string().optional().describe("UC entry, on add only: award, edprep, extracurricular, coursework, volunteer or work."),
-      extra: z.string().optional().describe("UC entry: max 250 characters."),
-      grades: z.array(z.string()).optional().describe('Any of "9", "10", "11", "12", "PG".'),
-      timing: z.array(z.string()).optional().describe('Common App activity: "school" and/or "break".'),
-      levels: z.array(z.string()).optional().describe("Common App honor: school, state_regional, national, international."),
-      hoursPerWeek: z.number().nullable().optional(),
-      weeksPerYear: z.number().nullable().optional(),
-      continueInCollege: z.boolean().nullable().optional(),
-      awardLevel: z.string().nullable().optional().describe("UC award: school, city, state, regional, national, international."),
-      awardType: z.string().nullable().optional().describe("UC award: academic or non_academic."),
+      levels: z.array(z.enum(["school", "state_regional", "national", "international"])).optional().describe("Common App honor: levels of recognition."),
+      // UC entry (up to 20)
+      category: enumOf(UC_CATEGORY_KEYS).optional().describe("UC entry, on add only: award, edprep, extracurricular, coursework, volunteer or work."),
+      name: z.string().optional().describe("UC entry: max 60 characters. The award, activity, course or organization; for work, where the student worked; for edprep, the program name only when program is Other (max 30)."),
+      jobTitle: z.string().optional().describe("UC work entry: the job title, max 60 characters."),
+      extra: z.string().optional().describe("UC entry: max 250 characters (a line break counts as 2). Award: eligibility requirements. Volunteering: describe the organization. Work: describe the workplace."),
+      program: enumOf(UC_EDPREP_PROGRAMS.map((p) => p.value)).nullable().optional().describe(`UC edprep entry: the program's value. ${UC_EDPREP_PROGRAMS.map((p) => `"${p.value}" ${p.label}`).join("; ")}. "${UC_EDPREP_OTHER}" (Other) also needs name.`),
+      awardLevels: z.array(z.enum(Object.keys(UC_AWARD_LEVELS) as [string, ...string[]])).optional().describe("UC award: every level that applies (school, city, state, regional, national, international)."),
+      awardType: z.enum(["academic", "non_academic"]).nullable().optional().describe("UC award: academic or non_academic."),
+      workHours: z.partialRecord(grade, hours).optional().describe('UC work entry: hours per week for each ticked grade, e.g. { "11": { "schoolYear": 10, "summer": 30 } }; null = did not work in that season, but at least one is needed per grade.'),
+      stillWorking: z.boolean().nullable().optional().describe("UC work entry: still working there?"),
+      start: z.string().nullable().optional().describe('UC work entry: when the job started, "YYYY-MM".'),
+      end: z.string().nullable().optional().describe('UC work entry, when stillWorking is false: when it ended, "YYYY-MM", not before start.'),
+      afterYears: z.union([z.number(), z.literal("10+")]).nullable().optional().describe('UC entry with "PG" in grades (not awards): years after 12th grade, 0-10 or "10+".'),
+      afterMonths: z.number().nullable().optional().describe('UC entry with "PG" in grades (not awards): months after 12th grade, 0-11.'),
+      // Both
+      grades: z.array(grade).optional().describe('Any of "9", "10", "11", "12", "PG" (PG = after graduating / after 12th grade).'),
+      hoursPerWeek: z.number().nullable().optional().describe("Common App activity and UC entries other than award and work: 1-168."),
+      weeksPerYear: z.number().nullable().optional().describe("Common App activity and UC entries other than award and work: 1-52."),
     })
     .loose();
+  const needsAnswer = (issues: Issue[]) => issues.map(({ field, message }) => ({ field, question: message }));
+  const NEEDS_ANSWER =
+    "Fields the student has not answered yet are saved blank and come back as needsAnswer: ask the student; never guess. Values the application would reject (wrong option, too long, out of range) are refused and nothing is saved.";
 
   server.registerTool(
     "add_activity",
     {
       title: "Add an activity or honor",
-      description: "Add a Common App activity, Common App honor or UC entry. Limits and character counts follow the application forms; a too-long field is rejected, not cut.",
+      description: `Add a Common App activity, Common App honor or UC entry (the 2026-27 forms). Limits and character counts follow the application forms; a too-long field is rejected, not cut. ${NEEDS_ANSWER}`,
       inputSchema: z.object({ kind, fields: activityFields }),
       annotations: WRITE,
     },
@@ -643,7 +688,7 @@ export function registerTools(server: McpServer) {
       return reply(
         await changeProfile(s, (p) => {
           const r = addActivity(p.activities, kind, fields);
-          return r.ok ? { columns: { activities: r.value.data }, value: { added: r.value.item } } : { error: r.error };
+          return r.ok ? { columns: { activities: r.value.data }, value: { added: r.value.item, needsAnswer: needsAnswer(r.value.needsAnswer) } } : { error: r.error };
         }),
       );
     }),
@@ -653,7 +698,7 @@ export function registerTools(server: McpServer) {
     "update_activity",
     {
       title: "Update an activity or honor",
-      description: "Change fields of an existing activity, honor or UC entry. Only the fields in `patch` change. ids come from get_activities.",
+      description: `Change fields of an existing activity, honor or UC entry. Only the fields in \`patch\` change. ids come from get_activities. ${NEEDS_ANSWER}`,
       inputSchema: z.object({ kind, id: z.string().min(1).max(100), patch: activityFields }),
       annotations: WRITE,
     },
@@ -661,7 +706,7 @@ export function registerTools(server: McpServer) {
       return reply(
         await changeProfile(s, (p) => {
           const r = updateActivity(p.activities, kind, id, patch);
-          return r.ok ? { columns: { activities: r.value.data }, value: { updated: r.value.item } } : { error: r.error };
+          return r.ok ? { columns: { activities: r.value.data }, value: { updated: r.value.item, needsAnswer: needsAnswer(r.value.needsAnswer) } } : { error: r.error };
         }),
       );
     }),

@@ -9,7 +9,7 @@ import type { Checklist } from "./checklist.ts";
 import type { RegionCode } from "./regions";
 import type { Status } from "./student-store";
 
-// No password here: saved passwords live only in the encrypted store (portal_passwords, migration 0038), found by slot
+// No password here: saved passwords live only in the encrypted store (portal_passwords, migration 0040), found by slot
 // (portal-slots.ts). Rows written by older builds may still carry one; portal-slots.ts strips it on read and write.
 export type Login = { url: string; username: string };
 export const EMPTY_LOGIN: Login = { url: "", username: "" };

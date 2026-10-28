@@ -2,7 +2,7 @@
 // it. Pure so it can be tested. The site never stores a new password in the browser. Passwords an older build left
 // in a stored copy are not dropped either: before the copy is rewritten without them they move, unchanged, to their
 // own key (LEGACY_KEY), and stay there until they are imported into the encrypted store (portal_passwords, migration
-// 0038) after sign-in, or the student removes them ("Don't add", "Remove from this browser").
+// 0040) after sign-in, or the student removes them ("Don't add", "Remove from this browser").
 
 import type { StudentProfile } from "./fit.ts";
 import { isPortalSlot, PASSWORD_MAX, passwordsIn, portalWithoutPassword, withoutPasswords, type SlotPassword } from "./portal-slots.ts";

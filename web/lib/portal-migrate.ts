@@ -1,4 +1,4 @@
-// Moving saved portal passwords into the encrypted store (portal_passwords, migration 0038): plaintext ones from
+// Moving saved portal passwords into the encrypted store (portal_passwords, migration 0040): plaintext ones from
 // student_colleges.portal_password and the password keys inside student_profiles.portals ("migrate"), and ones a
 // browser saved before sign-in ("import"). Pure decisions only; the server (portal-vault-server.ts) and
 // scripts/backfill-portal-passwords.mjs do the reading and writing. The rule both follow: a plaintext value is

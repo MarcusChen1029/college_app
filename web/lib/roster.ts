@@ -1,7 +1,7 @@
 // Teacher-side view models: parsing the teacher_roster / teacher_student / teacher_deadlines RPC results
 // (migration 0022) and computing the roster's progress numbers and "needs attention" flags.
 
-import type { ActivityData } from "./activities";
+import { upgradeActivities, type ActivityData } from "./activities.ts";
 import { progress, type Checklist } from "./checklist.ts";
 import type { PersonalEssays } from "./personal-essays";
 import type { TestDetails } from "./scores";
@@ -64,7 +64,7 @@ export type StudentDetail = {
     interested: string[];
     updatedAt: string | null;
   };
-  activities: Partial<ActivityData>;
+  activities: ActivityData;
   /** null when the student doesn't share essays with this teacher. */
   essays: PersonalEssays | null;
   colleges: DetailCollege[];
@@ -136,7 +136,7 @@ export function parseStudentDetail(raw: unknown): StudentDetail {
       interested: arr<string>(p.interested),
       updatedAt: str(p.updated_at),
     },
-    activities: obj(r.activities) as Partial<ActivityData>,
+    activities: upgradeActivities(r.activities), // teacher_student passes the stored jsonb through, in whatever format it is in
     essays: r.essays == null ? null : (obj(r.essays) as PersonalEssays),
     colleges: arr<Raw>(r.colleges).map((c) => ({
       slug: String(c.slug),

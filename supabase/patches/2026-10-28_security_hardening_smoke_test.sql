@@ -1,5 +1,5 @@
--- Smoke test for migration 0039_security_hardening. Run in the dashboard SQL Editor AFTER applying 0039
--- (or paste 0039 right after "begin;" to dry-run the migration and the test together).
+-- Smoke test for migration 0041_security_hardening. Run in the dashboard SQL Editor AFTER applying 0041
+-- (or paste 0041 right after "begin;" to dry-run the migration and the test together).
 -- It creates throwaway users inside one transaction, acts as each of them (website session = JWT without client_id,
 -- AI connector = the same JWT plus client_id), and never commits: the LAST statement deliberately raises
 -- "SMOKE RESULT: <n> failures" followed by one PASS/FAIL line per check, which aborts the transaction.
@@ -13,10 +13,10 @@ begin;
 
 -- ── setup (postgres) ──
 insert into auth.users (id, email) values
-  ('00000000-0000-4000-8000-0000000039a1', 'smoke-0039-s@example.invalid'),
-  ('00000000-0000-4000-8000-0000000039a2', 'smoke-0039-s2@example.invalid'),
-  ('00000000-0000-4000-8000-0000000039a3', 'smoke-0039-s3@example.invalid'),
-  ('00000000-0000-4000-8000-0000000039b1', 'smoke-0039-t@example.invalid');
+  ('00000000-0000-4000-8000-0000000039a1', 'smoke-0041-s@example.invalid'),
+  ('00000000-0000-4000-8000-0000000039a2', 'smoke-0041-s2@example.invalid'),
+  ('00000000-0000-4000-8000-0000000039a3', 'smoke-0041-s3@example.invalid'),
+  ('00000000-0000-4000-8000-0000000039b1', 'smoke-0041-t@example.invalid');
 insert into public.user_roles (user_id, role) values
   ('00000000-0000-4000-8000-0000000039a1', 'student'), ('00000000-0000-4000-8000-0000000039a2', 'student'),
   ('00000000-0000-4000-8000-0000000039a3', 'student'), ('00000000-0000-4000-8000-0000000039b1', 'teacher');
@@ -213,9 +213,9 @@ select pg_temp.chk('H11 college notes of 10 001 chars refused', 'refused 23514',
 select pg_temp.chk('H12 college notes of 10 000 chars allowed', 'ok:1', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', false), '/student_colleges', $q$with x as (update public.student_colleges set notes = repeat('a', 10000) where user_id = '00000000-0000-4000-8000-0000000039a1' and institution_id is not null returning 1) select count(*)::text from x$q$));
 
 -- ── I. catalog ──
-create function public.smoke_probe_0039() returns int language sql as 'select 1';
-select pg_temp.chk('I1 a new function gets no PUBLIC/anon/authenticated EXECUTE', 'true', (select (proacl::text !~ '(^|[{,])=X|anon=|authenticated=')::text from pg_proc where proname = 'smoke_probe_0039'));
-select pg_temp.chk('I2 SECURITY DEFINER functions executable by authenticated / by anon (33/3 before 0040; 0040 adds revoke_my_extension_token)', '34/4',
+create function public.smoke_probe_0041() returns int language sql as 'select 1';
+select pg_temp.chk('I1 a new function gets no PUBLIC/anon/authenticated EXECUTE', 'true', (select (proacl::text !~ '(^|[{,])=X|anon=|authenticated=')::text from pg_proc where proname = 'smoke_probe_0041'));
+select pg_temp.chk('I2 SECURITY DEFINER functions executable by authenticated / by anon (33/3 before 0042; 0042 adds revoke_my_extension_token)', '34/4',
   (select count(*) filter (where has_function_privilege('authenticated', p.oid, 'execute')) || '/' || count(*) filter (where has_function_privilege('anon', p.oid, 'execute'))
      from pg_proc p where p.pronamespace = 'public'::regnamespace and p.prosecdef));
 select pg_temp.chk('I3 pre-request hook registered', 'true', (select (setconfig::text like '%pgrst.db_pre_request=public.api_request_guard%')::text from pg_db_role_setting where setrole = 'authenticator'::regrole and setdatabase = 0));

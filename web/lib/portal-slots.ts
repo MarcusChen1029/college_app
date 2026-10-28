@@ -1,11 +1,11 @@
-// Where each saved portal password lives in the encrypted store (table portal_passwords, migration 0038), and the
+// Where each saved portal password lives in the encrypted store (table portal_passwords, migration 0040), and the
 // helpers that keep passwords out of everything else: the profile/list rows and the browser's localStorage copy.
 // Pure (no React, no Supabase, no node:crypto): shared by the browser store, POST /api/portal-passwords and
 // scripts/backfill-portal-passwords.mjs, so all three name a login the same way.
 
 import type { PortalData } from "./portals.ts";
 
-export const SLOT_MAX = 200; // also the table's check (0038)
+export const SLOT_MAX = 200; // also the table's check (0040)
 export const PASSWORD_MAX = 512;
 export const IMPORT_MAX = 300; // entries per "import" request
 
@@ -124,7 +124,7 @@ function eachLogin(portals: unknown, list: readonly EntryLike[], visit: (slot: s
 
 /**
  * The passwords still inside old-shaped data (an older build's localStorage copy, or a profile row written before
- * 0038), by slot: what gets imported into the encrypted store. Empty, over-long and unplaceable ones are skipped;
+ * 0040), by slot: what gets imported into the encrypted store. Empty, over-long and unplaceable ones are skipped;
  * the first one wins when two share a slot.
  */
 export function passwordsIn(portals: unknown, list: readonly EntryLike[] = []): SlotPassword[] {

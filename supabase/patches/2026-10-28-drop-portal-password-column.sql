@@ -19,7 +19,7 @@ begin
   end if;
 end $$;
 
--- 0041's trigger and compare-and-set function depend on the column.
+-- 0043's trigger and compare-and-set function depend on the column.
 drop trigger forbid_plaintext_password on public.student_colleges;
 drop function public.forbid_plaintext_college_password();
 drop function public.strip_college_portal_password(uuid, uuid, text);
