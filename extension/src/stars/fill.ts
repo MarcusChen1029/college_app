@@ -3,6 +3,7 @@
 // Review/Submit. Every pick is an exact option text; a missing option stops this course with a sentence for the report.
 
 import type { StarsRow } from "../../../web/lib/stars-fill.ts";
+import { pressSaveLater, saveButtonRefusal } from "../save-guard.ts";
 
 export const STARS_TIMING = { stepMs: 100, listMs: 4000, postbackMs: 8000, settleMs: 1500, quietMs: 700 };
 
@@ -28,10 +29,13 @@ async function until<T>(probe: () => T | null | undefined | false, ms: number, w
   }
 }
 
-/** The coursework page's kind: a school outside the US ("EnterInternationalCoursework") or in the US ("EnterCoursework"), else null. */
+/**
+ * The coursework page's kind: a school outside the US ("EnterInternationalCoursework") or in the US ("EnterCoursework"), else null.
+ * The whole file name must match (EnterCoursework-yr-2023.aspx), so a different page that merely starts the same (a review page) is not one.
+ */
 export function starsPageKind(loc: { pathname: string }): "intl" | "us" | null {
-  if (/\/srt\/EnterInternationalCoursework/i.test(loc.pathname)) return "intl";
-  if (/\/srt\/EnterCoursework/i.test(loc.pathname)) return "us";
+  if (/\/srt\/EnterInternationalCoursework(?:-yr-\d{4})?\.aspx$/i.test(loc.pathname)) return "intl";
+  if (/\/srt\/EnterCoursework(?:-yr-\d{4})?\.aspx$/i.test(loc.pathname)) return "us";
   return null;
 }
 
@@ -175,11 +179,21 @@ export async function fillStarsCourse(doc: Document, row: StarsRow, scale: strin
     for (const p of wrongPicks) await pickRad(doc, p.name, p.value, p.label);
     await fillTail(doc, row);
   }
+  pressStarsSave(doc);
+  return { saved: true, blanks };
+}
+
+/**
+ * Presses Save Course, and only a button that reads like Save: STARS's id for it is `btn_submit`, so the id proves nothing (save-guard.ts).
+ * Throws StarsStop, pressing nothing, when the button is missing or reads like a submit.
+ */
+export function pressStarsSave(doc: Document): void {
   const save = doc.getElementById(ID("btn_submit")) as HTMLElement | null;
   if (!save) throw new StarsStop("STARS's Save Course button is not on the page");
+  const why = saveButtonRefusal(save);
+  if (why) throw new StarsStop(`Refused to press ${why}: the extension only presses Save Course on STARS and never submits anything`);
   // Let the panel get the answer before the page posts and this script goes away.
-  setTimeout(() => save.click(), 50);
-  return { saved: true, blanks };
+  pressSaveLater(save);
 }
 
 /** Grades, then credits, then the course name (every pick before them can reset them). */
