@@ -42,6 +42,18 @@ test("weighted GPA and the test plan round-trip through the profile row mapping"
   assert.match(PROFILE_COLUMNS_NO_LOGINS, /gpa_weighted/);
 });
 
+test("stored activities in the earlier format are read, and written back, in the current format", () => {
+  const old = { commonApp: { activities: [{ id: "c1", type: "Work (Paid)", organization: "Cafe", description: "d", grades: ["11"], timing: ["school"] }], honors: [] }, uc: [] };
+  const profile = toProfile({ ...row, activities: old as never });
+  assert.equal(profile.activities?.version, 2);
+  assert.equal(profile.activities?.commonApp?.activities[0].type, "Employment or work (paid)");
+  assert.equal(toProfile(row).activities?.version, 2); // no stored activities: an empty current-format record
+  const saved = fromProfile("u1", { ...profile, activities: old as never });
+  assert.equal((saved.activities as { version: number }).version, 2);
+  assert.deepEqual(saved.activities, profile.activities);
+  assert.deepEqual(fromProfile("u1", { gpa: 3 }).activities, { version: 2, commonApp: { activities: [], honors: [] }, uc: [] });
+});
+
 test("fit ignores a score the student switched away from, but keeps it saved", () => {
   const both: StudentProfile = { sat: 1500, act: 20 };
   const actOnly: StudentProfile = { ...both, tests: { plan: withTestChoice(undefined, "act") } };

@@ -7,7 +7,12 @@
 
 import {
   CA_ACTIVITY_TYPES,
+  CA_CONTINUE,
   CA_LIMITS,
+  CA_SPORTS,
+  CA_TIMING,
+  caActivityIssues,
+  caHonorIssues,
   GRADES,
   HONOR_LEVELS,
   newCaActivity,
@@ -15,11 +20,17 @@ import {
   newUcEntry,
   UC_AWARD_LEVELS,
   UC_CATEGORY_KEYS,
+  UC_EDPREP_PROGRAMS,
   UC_LIMITS,
+  ucEntryIssues,
+  upgradeActivities,
   type ActivityData,
   type CaActivity,
   type CaHonor,
+  type Grade,
+  type Issue,
   type UcEntry,
+  type UcWorkHours,
 } from "../activities.ts";
 import { hasDecision, isSubmitted } from "../application.ts";
 import { CHECKLIST, ENGLISH_PLANS, ESSAY_STATUSES, isDone, newEssay, progress, safeLink, TEST_PLANS, type Checklist, type Essay } from "../checklist.ts";
@@ -196,32 +207,71 @@ const oneOf = (allowed: readonly string[], nullable = false): Spec => (v, name) 
   (nullable && v === null) || (typeof v === "string" && allowed.includes(v)) ? ok(v) : fail(`${name} must be one of: ${allowed.join(", ")}${nullable ? ", or null" : ""}.`);
 const listOf = (allowed: readonly string[]): Spec => (v, name) =>
   Array.isArray(v) && v.every((x) => typeof x === "string" && allowed.includes(x)) ? ok([...new Set(v)]) : fail(`${name} must be a list drawn from: ${allowed.join(", ")}.`);
-const numberOrNull = (min: number, max: number): Spec => (v, name) =>
-  v === null || (typeof v === "number" && Number.isFinite(v) && v >= min && v <= max) ? ok(v) : fail(`${name} must be a number from ${min} to ${max}, or null.`);
 const boolOrNull: Spec = (v, name) => (v === null || typeof v === "boolean" ? ok(v) : fail(`${name} must be true, false or null.`));
+
+// Specs only check that a value has the right shape and is one of the portal's own labels. Limits and ranges
+// (hours 1-168, weeks 1-52, dates, who needs what) are decided afterwards by the same validators the page uses.
+const anyNumberOrNull: Spec = (v, name) => (v === null || (typeof v === "number" && Number.isFinite(v)) ? ok(v) : fail(`${name} must be a number, or null.`));
+/** "YYYY-MM" or null; an empty string clears it. The year range is the validators' job. */
+const monthOrNull: Spec = (v, name) => (v === null || v === "" ? ok(null) : typeof v === "string" ? ok(v) : fail(`${name} must be a month like "2026-09", or null.`));
+const UC_YEAR_CHOICES: readonly unknown[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "10+"];
+const afterYears: Spec = (v, name) => (v === null || UC_YEAR_CHOICES.includes(v) ? ok(v) : fail(`${name} must be 0 to 10, "10+", or null.`));
+/** Work experience: for each grade, hours per week in the school year and the summer (null = did not work then). */
+const workHours: Spec = (v, name) => {
+  if (typeof v !== "object" || v === null || Array.isArray(v)) return fail(`${name} must be an object like { "11": { "schoolYear": 10, "summer": null } }, keyed by grade (${GRADES.join(", ")}).`);
+  const out: UcWorkHours = {};
+  for (const [g, h] of Object.entries(v)) {
+    if (!GRADES.includes(g as Grade)) return fail(`${name} has the unknown grade "${g}". Use ${GRADES.join(", ")}.`);
+    if (typeof h !== "object" || h === null || Array.isArray(h)) return fail(`${name}.${g} must be { "schoolYear": hours or null, "summer": hours or null }.`);
+    const { schoolYear = null, summer = null, ...rest } = h as Record<string, unknown>;
+    if (Object.keys(rest).length) return fail(`${name}.${g} only takes schoolYear and summer (got ${Object.keys(rest).join(", ")}).`);
+    for (const [season, x] of [["schoolYear", schoolYear], ["summer", summer]] as const) {
+      if (x !== null && !(typeof x === "number" && Number.isFinite(x))) return fail(`${name}.${g}.${season} must be a number of hours per week, or null.`);
+    }
+    out[g as Grade] = { schoolYear: schoolYear as number | null, summer: summer as number | null };
+  }
+  return ok(out);
+};
+/** Like oneOf, but an empty string clears the answer. */
+const oneOfOrBlank = (allowed: readonly string[]): Spec => (v, name) => (v === "" ? ok("") : oneOf(allowed)(v, name));
 
 const CA_ACTIVITY_SPEC: Record<string, Spec> = {
   type: oneOf(CA_ACTIVITY_TYPES),
+  sport: oneOfOrBlank(CA_SPORTS),
+  leadership: boolOrNull,
   position: text(CA_LIMITS.position),
   organization: text(CA_LIMITS.organization),
   description: text(CA_LIMITS.description),
   grades: listOf(GRADES),
-  timing: listOf(["school", "break"]),
-  hoursPerWeek: numberOrNull(0, 168),
-  weeksPerYear: numberOrNull(0, 52),
-  continueInCollege: boolOrNull,
+  timing: oneOf(Object.keys(CA_TIMING), true),
+  afterStart: monthOrNull,
+  stillParticipating: boolOrNull,
+  afterEnd: monthOrNull,
+  hoursPerWeek: anyNumberOrNull,
+  weeksPerYear: anyNumberOrNull,
+  continueInCollege: oneOf(Object.keys(CA_CONTINUE), true),
 };
 const CA_HONOR_SPEC: Record<string, Spec> = { title: text(CA_LIMITS.honorTitle), grades: listOf(GRADES), levels: listOf(Object.keys(HONOR_LEVELS)) };
 const UC_SPEC: Record<string, Spec> = {
   name: text(UC_LIMITS.name),
-  organization: text(UC_LIMITS.name),
+  jobTitle: text(UC_LIMITS.name),
   extra: text(UC_LIMITS.extra),
   description: text(UC_LIMITS.description),
   grades: listOf(GRADES),
-  hoursPerWeek: numberOrNull(0, 168),
-  weeksPerYear: numberOrNull(0, 52),
-  awardLevel: oneOf(Object.keys(UC_AWARD_LEVELS), true),
+  hoursPerWeek: anyNumberOrNull,
+  weeksPerYear: anyNumberOrNull,
+  afterYears,
+  afterMonths: anyNumberOrNull,
+  awardLevels: listOf(Object.keys(UC_AWARD_LEVELS)),
   awardType: oneOf(["academic", "non_academic"], true),
+  program: (v, name) =>
+    v === null || UC_EDPREP_PROGRAMS.some((p) => p.value === v)
+      ? ok(v)
+      : fail(`${name} must be one of these values (or null): ${UC_EDPREP_PROGRAMS.map((p) => `"${p.value}" = ${p.label}`).join("; ")}.`),
+  workHours,
+  stillWorking: boolOrNull,
+  start: monthOrNull,
+  end: monthOrNull,
 };
 
 const SPECS: Record<ActivityKind, Record<string, Spec>> = { common_app_activity: CA_ACTIVITY_SPEC, common_app_honor: CA_HONOR_SPEC, uc_entry: UC_SPEC };
@@ -241,10 +291,8 @@ function checkFields(kind: ActivityKind, fields: Record<string, unknown>, extra:
   return ok(out);
 }
 
-export const normalizeActivities = (a: Partial<ActivityData> | null | undefined): ActivityData => ({
-  commonApp: { activities: a?.commonApp?.activities ?? [], honors: a?.commonApp?.honors ?? [] },
-  uc: a?.uc ?? [],
-});
+/** Stored activities in any shape (earlier format, current format, nothing) as the current format. */
+export const normalizeActivities = (a: unknown): ActivityData => upgradeActivities(a);
 
 const LIMIT_OF: Record<ActivityKind, { max: number; label: string }> = {
   common_app_activity: { max: CA_LIMITS.activities, label: "Common App activities" },
@@ -260,7 +308,27 @@ function withItems(d: ActivityData, kind: ActivityKind, items: Item[]): Activity
   return { ...d, uc: items as UcEntry[] };
 }
 
-export function addActivity(current: Partial<ActivityData> | null | undefined, kind: ActivityKind, fields: Record<string, unknown>): Check<{ data: ActivityData; item: Item }> {
+/** The same checks the website's editor shows, for whichever kind of item this is. */
+function issuesOf(kind: ActivityKind, item: Item): Issue[] {
+  return kind === "common_app_activity" ? caActivityIssues(item as CaActivity) : kind === "common_app_honor" ? caHonorIssues(item as CaHonor) : ucEntryIssues(item as UcEntry);
+}
+
+/**
+ * Answers the portal would reject (`invalid`) stop the save. On an update, only the fields being changed (or
+ * problems that did not exist before) count, so an old value never blocks an unrelated edit. Unanswered
+ * questions (`missing`) are saved and returned, so the AI can ask the student.
+ */
+function judge(kind: ActivityKind, item: Item, before?: { item: Item; changed: string[] }): Check<Issue[]> {
+  const issues = issuesOf(kind, item);
+  const was = before ? issuesOf(kind, before.item) : [];
+  const blocking = issues.filter((i) => i.kind === "invalid" && (!before || before.changed.includes(i.field) || !was.some((w) => w.field === i.field && w.message === i.message)));
+  if (blocking.length) return fail(`Nothing was saved. ${blocking.map((i) => `${i.field}: ${i.message}`).join(" ")}`);
+  return ok(issues.filter((i) => i.kind === "missing"));
+}
+
+type Saved = { data: ActivityData; item: Item; /** Questions still without an answer ("needs an answer"); the AI should ask the student, never guess. */ needsAnswer: Issue[] };
+
+export function addActivity(current: unknown, kind: ActivityKind, fields: Record<string, unknown>): Check<Saved> {
   const data = normalizeActivities(current);
   const items = itemsOf(data, kind);
   const { max, label } = LIMIT_OF[kind];
@@ -269,20 +337,24 @@ export function addActivity(current: Partial<ActivityData> | null | undefined, k
   if (!f.ok) return f;
   let item: Item;
   if (kind === "common_app_activity") {
-    item = { ...newCaActivity(), ...f.value };
-    if (!(item as CaActivity).organization && !(item as CaActivity).position) return fail("A Common App activity needs an organization or a position.");
+    const a = { ...newCaActivity(), ...f.value } as CaActivity;
+    if (!a.type && !a.organization && !a.position && !a.description.trim()) return fail("A Common App activity needs at least a type, an organization, a position or a description.");
+    item = a;
   } else if (kind === "common_app_honor") {
     item = { ...newCaHonor(), ...f.value };
     if (!(item as CaHonor).title.trim()) return fail("A Common App honor needs a title.");
   } else {
     if (typeof f.value.category !== "string") return fail(`A UC entry needs a category: ${UC_CATEGORY_KEYS.join(", ")}.`);
-    item = { ...newUcEntry(f.value.category as UcEntry["category"]), ...f.value };
-    if (!(item as UcEntry).name.trim()) return fail("A UC entry needs a name.");
+    const e = { ...newUcEntry(f.value.category as UcEntry["category"]), ...f.value } as UcEntry;
+    if (!e.name.trim() && !(e.category === "edprep" && e.program)) return fail(e.category === "edprep" ? "A UC educational preparation program needs a program (or a name for Other)." : "A UC entry needs a name.");
+    item = e;
   }
-  return ok({ data: withItems(data, kind, [...items, item]), item });
+  const j = judge(kind, item);
+  if (!j.ok) return j;
+  return ok({ data: withItems(data, kind, [...items, item]), item, needsAnswer: j.value });
 }
 
-export function updateActivity(current: Partial<ActivityData> | null | undefined, kind: ActivityKind, id: string, fields: Record<string, unknown>): Check<{ data: ActivityData; item: Item }> {
+export function updateActivity(current: unknown, kind: ActivityKind, id: string, fields: Record<string, unknown>): Check<Saved> {
   const data = normalizeActivities(current);
   const items = itemsOf(data, kind);
   const existing = items.find((i) => i.id === id);
@@ -290,10 +362,12 @@ export function updateActivity(current: Partial<ActivityData> | null | undefined
   const f = checkFields(kind, fields);
   if (!f.ok) return f;
   const item = { ...existing, ...f.value } as Item;
-  return ok({ data: withItems(data, kind, items.map((i) => (i.id === id ? item : i))), item });
+  const j = judge(kind, item, { item: existing, changed: Object.keys(f.value) });
+  if (!j.ok) return j;
+  return ok({ data: withItems(data, kind, items.map((i) => (i.id === id ? item : i))), item, needsAnswer: j.value });
 }
 
-export function deleteActivity(current: Partial<ActivityData> | null | undefined, kind: ActivityKind, id: string): Check<{ data: ActivityData; removed: Item }> {
+export function deleteActivity(current: unknown, kind: ActivityKind, id: string): Check<{ data: ActivityData; removed: Item }> {
   const data = normalizeActivities(current);
   const items = itemsOf(data, kind);
   const removed = items.find((i) => i.id === id);
