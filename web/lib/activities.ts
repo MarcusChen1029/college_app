@@ -377,6 +377,17 @@ export function caActivityIssues(a: CaActivity): Issue[] {
 }
 
 /**
+ * The "invalid" issues an edit would cause, for blocking it before it is saved: those on the edited fields, plus any
+ * the edit newly creates on other fields (moving the start date past a stored end date makes the END date invalid).
+ * Problems the activity already had on other fields do not block an unrelated edit.
+ */
+export function draftIssues(a: CaActivity, patch: Partial<CaActivity>): Issue[] {
+  const edited = new Set<string>(Object.keys(patch));
+  const had = new Set(caActivityIssues(a).filter((i) => i.kind === "invalid").map((i) => i.field));
+  return caActivityIssues({ ...a, ...patch }).filter((i) => i.kind === "invalid" && (edited.has(i.field) || !had.has(i.field)));
+}
+
+/**
  * The questions the portal shows for this activity, in its order (docs/superpowers/research/2026-10-27-portal-dom.md §6).
  * Sport only for the athletics types, role only on leadership yes, time of year only with a school grade (9-12),
  * dates and "still participating" only with PG, end date only on "no".

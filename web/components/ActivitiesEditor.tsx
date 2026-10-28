@@ -8,6 +8,7 @@ import {
   caActivityIssues,
   caHonorIssues,
   caVisibleQuestions,
+  draftIssues,
   GRADES,
   move,
   newCaActivity,
@@ -33,6 +34,7 @@ import {
 } from "@/lib/activities";
 import { SignInButton } from "@/components/SignInDialog";
 import type { MessageKey, TFunction } from "@/lib/i18n";
+import { caTypeLabel as typeLabel } from "@/lib/i18n/ca-types";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, toneClass } from "@/lib/ui";
@@ -40,43 +42,6 @@ import { buttonClass, toneClass } from "@/lib/ui";
 const noop = () => () => {};
 const input = "w-full rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm";
 
-// Stored values stay English (Common App activity types, enum ids); these maps only supply the visible label.
-const CA_TYPE_KEYS: Record<string, MessageKey> = {
-  Academic: "writing.caType.academic",
-  Art: "writing.caType.art",
-  "Athletics (other)": "writing.caType.athleticsOther",
-  "Athletics (JV or varsity)": "writing.caType.athleticsVarsity",
-  "Career readiness or practicums": "writing.caType.careerReadiness",
-  "Community service or volunteer work": "writing.caType.communityService",
-  "Computer or technology": "writing.caType.computerTech",
-  Cultural: "writing.caType.cultural",
-  Dance: "writing.caType.dance",
-  "Debate or speech": "writing.caType.debateSpeech",
-  "Employment or work (paid)": "writing.caType.employment",
-  Environmental: "writing.caType.environmental",
-  "Family responsibilities": "writing.caType.familyResponsibilities",
-  "Foreign language": "writing.caType.foreignLanguage",
-  Hobby: "writing.caType.hobby",
-  Internship: "writing.caType.internship",
-  "Journalism or publishing": "writing.caType.journalism",
-  "LGBT+": "writing.caType.lgbt",
-  Music: "writing.caType.music",
-  Religious: "writing.caType.religious",
-  Research: "writing.caType.research",
-  Robotics: "writing.caType.robotics",
-  "R.O.T.C. or military": "writing.caType.rotc",
-  "School spirit": "writing.caType.schoolSpirit",
-  "Science or math": "writing.caType.scienceMath",
-  "Social justice or organizing": "writing.caType.socialJustice",
-  "Student government or politics": "writing.caType.studentGovt",
-  "Study abroad or foreign exchange": "writing.caType.studyAbroad",
-  "Theater or drama": "writing.caType.theater",
-  Other: "writing.caType.other",
-};
-const typeLabel = (t: TFunction, type: string) => {
-  const key = CA_TYPE_KEYS[type];
-  return key ? t(key) : type;
-};
 const CA_TIMING_KEYS: Record<CaTiming, MessageKey> = { school: "writing.timing.school", break: "writing.timing.break", all: "writing.timing.all" };
 const CA_CONTINUE_KEYS: Record<CaContinue, MessageKey> = { yes: "common.yes", no: "common.no", not_sure: "writing.ca.notSure" };
 const HONOR_KEYS: Record<HonorLevel, MessageKey> = {
@@ -265,11 +230,15 @@ function MonthField({
         value={v}
         aria-invalid={error ? true : undefined}
         onChange={(e) => {
+          // "" can also mean a segment was cleared mid-edit, so a cleared box is only saved on blur.
           const next = e.target.value;
           setV(next);
-          if (next === "") {
-            if (value !== null) onSave(null);
-          } else if (!validate(next) && next !== value) onSave(next);
+          if (next !== "" && !validate(next) && next !== value) onSave(next);
+        }}
+        onBlur={(e) => {
+          if (v !== "" || value === null) return;
+          if (e.target.validity.badInput) setV(value); // half-typed date: put the stored one back
+          else onSave(null);
         }}
       />
       <FieldError message={error} />
@@ -497,11 +466,13 @@ function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<CaActivi
   const missing = (f: keyof CaActivity) => issues.some((i) => i.field === f && i.kind === "missing");
   /** The error for a stored value, shown on fields that are not edited as a draft (selects). */
   const stored = (f: keyof CaActivity) => (issues.some((i) => i.field === f && i.kind === "invalid") ? caErrorText(t, f, a) : null);
-  /** The error for a draft of the single field in `patch`, checked with everything else as stored. */
+  /** The error for a draft of the single field in `patch`, including a problem it would cause on another field (a start date after the stored end date). */
   const draft = (patch: Partial<CaActivity>) => {
     const next = { ...a, ...patch };
     const f = Object.keys(patch)[0];
-    return caActivityIssues(next).some((i) => i.field === f && i.kind === "invalid") ? caErrorText(t, f, next) : null;
+    const found = draftIssues(a, patch);
+    if (found.length === 0) return null;
+    return caErrorText(t, (found.find((i) => i.field === f) ?? found[0]).field, next);
   };
   const yesNo = { yes: t("common.yes"), no: t("common.no") };
 

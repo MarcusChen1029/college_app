@@ -10,6 +10,7 @@ import {
   caActivityIssues,
   caHonorIssues,
   caVisibleQuestions,
+  draftIssues,
   move,
   newCaActivity,
   newCaHonor,
@@ -24,6 +25,9 @@ import {
   type Issue,
   type UcEntry,
 } from "./activities.ts";
+import { CA_TYPE_KEYS } from "./i18n/ca-types.ts";
+import { en } from "./i18n/en.ts";
+import { zhTW } from "./i18n/zh-TW.ts";
 
 const data = (): ActivityData => ({
   version: 2,
@@ -610,4 +614,33 @@ test("caVisibleQuestions follows the portal's order and show/hide rules", () => 
   assert.deepEqual(caVisibleQuestions({ ...base, grades: ["PG"], stillParticipating: false }).slice(4, 8), ["grades", "afterStart", "stillParticipating", "afterEnd"]);
   const all = caVisibleQuestions({ ...base, type: "Athletics (other)", leadership: true, grades: ["9", "PG"], stillParticipating: false });
   assert.deepEqual(all, ["type", "sport", "description", "organization", "leadership", "position", "grades", "timing", "afterStart", "stillParticipating", "afterEnd", "hoursPerWeek", "weeksPerYear", "continueInCollege"]);
+});
+
+test("draftIssues blocks an edit that would make the dates inconsistent, whichever date is moved", () => {
+  const pg: CaActivity = { ...robotics(), grades: ["PG"], timing: null, afterStart: "2027-01", stillParticipating: false, afterEnd: "2027-06" };
+  assert.deepEqual(caActivityIssues(pg), []);
+  const startAfterEnd = draftIssues(pg, { afterStart: "2027-09" });
+  assert.deepEqual(startAfterEnd.map((i) => [i.field, i.kind]), [["afterEnd", "invalid"]]); // the start edit breaks the end date
+  const endBeforeStart = draftIssues(pg, { afterEnd: "2026-12" });
+  assert.deepEqual(endBeforeStart.map((i) => [i.field, i.kind]), [["afterEnd", "invalid"]]);
+  assert.deepEqual(draftIssues(pg, { afterStart: "2027-03" }), []); // valid moves
+  assert.deepEqual(draftIssues(pg, { afterEnd: "2027-12" }), []);
+  assert.equal(draftIssues(pg, { afterStart: "1900-01" })[0].field, "afterStart"); // out of the portal's year range
+  assert.deepEqual(draftIssues({ ...pg, stillParticipating: true }, { afterStart: "2027-09" }), []); // no end date to conflict with
+});
+
+test("draftIssues ignores problems the activity already had on other fields", () => {
+  const a = { ...robotics(), description: "x".repeat(200) };
+  assert.deepEqual(draftIssues(a, { hoursPerWeek: 12 }), []);
+  assert.deepEqual(draftIssues(a, { hoursPerWeek: 500 }).map((i) => i.field), ["hoursPerWeek"]);
+  assert.deepEqual(draftIssues(a, { description: "y".repeat(151) }).map((i) => i.field), ["description"]); // an edit to the long field stays blocked
+});
+
+test("every Common App activity type has a translation key in both languages", () => {
+  for (const type of CA_ACTIVITY_TYPES) {
+    const key = CA_TYPE_KEYS[type];
+    assert.ok(key, `no CA_TYPE_KEYS entry for "${type}"`);
+    assert.ok(key in en && key in zhTW, `${key} missing from a dictionary`);
+  }
+  assert.deepEqual(Object.keys(CA_TYPE_KEYS).sort(), [...CA_ACTIVITY_TYPES].sort()); // no stale entries either
 });
