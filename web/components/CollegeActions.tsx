@@ -17,7 +17,7 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
   const fit = hasScores && fitInput ? computeFit(student.profile, fitInput) : null; // no fit for grade-based (non-US) colleges
   if (student.role === "teacher") return null; // teachers have no personal college list
   return (
-    <div className="flex flex-col items-end gap-2">
+    <div className="flex flex-col items-start gap-2 sm:items-end">
       {!inList && !student.canAdd ? (
         <Link href="/pricing" className={buttonClass("secondary", "sm")}>
           {t("college.listFull", { plan: student.plan.name })}
@@ -40,11 +40,11 @@ export function CollegeActions({ slug, id, fitInput }: { slug: string; id: strin
         </button>
       )}
       {fit ? (
-        <div className="max-w-xs text-right text-xs text-zinc-500">
+        <div className="max-w-xs text-xs text-zinc-600 sm:text-right">
           <FitBadge fit={fit.fit} /> <span className="ml-1">{fitReasonText(t, fit)}</span>
         </div>
       ) : fitInput ? (
-        <div className="text-xs text-zinc-400">
+        <div className="text-xs text-zinc-600">
           {t("college.addScoresPre")}{" "}
           <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
             {t("college.profile")}

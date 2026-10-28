@@ -14,7 +14,6 @@ export const en = {
   "home.hero.after": "without the chaos.",
   "home.hero.body":
     "Compare US colleges by tier, test scores, deadlines and English requirements. Made for students applying from anywhere, and every number links to its official source.",
-  "home.ready": "Ready when you are",
   "home.browse": "Browse colleges",
   "home.getStarted": "Get started now",
   "home.stepsTitle": "Three steps from “where do I even start?” to a finished list.",
@@ -45,7 +44,6 @@ export const zhTW: Translation<typeof en> = {
   "home.hero.highlight": "學校清單",
   "home.hero.after": "，不再手忙腳亂。",
   "home.hero.body": "依等級、考試成績、截止日期和英文門檻比較美國大學。專為來自世界各地的申請者設計，每個數字都連結到官方來源。",
-  "home.ready": "準備好就開始吧",
   "home.browse": "瀏覽學校",
   "home.getStarted": "立即開始",
   "home.stepsTitle": "三個步驟，從「我該從哪裡開始？」到完成學校清單。",

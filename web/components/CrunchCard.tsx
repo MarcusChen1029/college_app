@@ -141,7 +141,7 @@ export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
   const n = crunch.apps.length;
   const readyAll = crunch.ready.length === n;
   return (
-    <section id="crunch" aria-labelledby="crunch-title" className="scroll-mt-20 space-y-3 rounded-lg border border-zinc-200 p-4 sm:p-5">
+    <section id="crunch" aria-labelledby="crunch-title" className="space-y-3 rounded-lg border border-zinc-200 p-4 sm:p-5">
       <h2 id="crunch-title" className="font-display text-lg font-bold">
         {n === 1 ? t("application.crunch.titleOne") : t("application.crunch.title", { n })}
       </h2>

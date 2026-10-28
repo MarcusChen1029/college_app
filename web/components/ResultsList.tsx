@@ -11,6 +11,8 @@ import { toneClass } from "@/lib/ui";
 import type { CollegeSummary, Lookups } from "@/lib/types";
 import { TierBadge } from "./badges";
 import { SELECT_BASE, usePlanLabel, useResultLabel } from "./ChecklistPanel";
+import { PaperPlane } from "./Doodles";
+import { EmptyState } from "./EmptyState";
 
 const noop = () => () => {};
 
@@ -32,13 +34,13 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
 
   if (rows.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
+      <EmptyState art={<PaperPlane className="h-16 w-auto" />} title={t("application.res.emptyTitle")}>
         {t("application.res.emptyPre")}
-        <Link href="/application/list" className="text-blue-600 underline">
+        <Link href="/application/list" className="font-semibold text-blue-700 underline">
           {t("nav.myList")}
         </Link>
         {t("application.res.emptyPost")}
-      </p>
+      </EmptyState>
     );
   }
 

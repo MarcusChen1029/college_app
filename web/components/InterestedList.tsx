@@ -10,6 +10,8 @@ import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, toneClass } from "@/lib/ui";
 import { FitBadge, TierBadge } from "./badges";
+import { Star } from "./Doodles";
+import { EmptyState } from "./EmptyState";
 
 const noop = () => () => {};
 
@@ -24,15 +26,19 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
 
   if (rows.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
+      <EmptyState
+        art={<Star className="h-14 w-auto" />}
+        title={t("application.int.emptyTitle")}
+        actions={
+          <Link href="/colleges" className={buttonClass("primary")}>
+            {t("home.browse")}
+          </Link>
+        }
+      >
         {t("application.int.emptyPre")}
-        <span className="font-medium">{t("application.int.emptyStar")}</span>
+        <span className="font-semibold text-ink">{t("application.int.emptyStar")}</span>
         {t("application.int.emptyMid")}
-        <Link href="/colleges" className="text-blue-600 underline">
-          {t("nav.colleges")}
-        </Link>
-        {t("application.int.emptyPost")}
-      </p>
+      </EmptyState>
     );
   }
 

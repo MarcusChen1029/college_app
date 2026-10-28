@@ -272,7 +272,7 @@ export function CollegeEssayCard({
   const sourceUrl = rec?.sources[0]?.url;
 
   return (
-    <section id={`essays-${college.slug}`} className="scroll-mt-20 rounded-3xl border-2 border-zinc-200 p-5">
+    <section id={`essays-${college.slug}`} className="rounded-3xl border-2 border-zinc-200 p-5">
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <span
           className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${done ? "bg-done text-white" : "border border-zinc-300"}`}

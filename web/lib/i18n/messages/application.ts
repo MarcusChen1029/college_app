@@ -33,8 +33,8 @@ export const en = {
   "application.dismiss": "dismiss",
 
   // Empty list
-  "application.emptyPre": "Your list is empty. Add colleges from the ",
-  "application.emptyPost": " page.",
+  "application.emptyTitle": "Your list is empty",
+  "application.emptyBody": "Add the colleges you're applying to. Each one gets its own checklist and deadlines.",
 
   // Table
   "application.website": "Website ↗",
@@ -181,10 +181,10 @@ export const en = {
   "application.ai.cardLoading": "Loading…",
 
   // Interested
-  "application.int.emptyPre": "Nothing here yet. On any college's page, tap ",
+  "application.int.emptyTitle": "Nothing here yet",
+  "application.int.emptyPre": "On any college's page, tap ",
   "application.int.emptyStar": "☆ Interested",
-  "application.int.emptyMid": " to park it here while you decide. Browse the ",
-  "application.int.emptyPost": " page.",
+  "application.int.emptyMid": " to park it here while you decide.",
   "application.int.fullPre": "Your list is full on the {plan} plan. Remove a college from ",
   "application.int.fullMid": " or ",
   "application.int.fullUpgrade": "upgrade",
@@ -195,7 +195,8 @@ export const en = {
   "application.int.move": "Move to my list",
 
   // Results
-  "application.res.emptyPre": "No submitted applications yet. Mark a college Submitted on ",
+  "application.res.emptyTitle": "No submitted applications yet",
+  "application.res.emptyPre": "Mark a college Submitted on ",
   "application.res.emptyPost": " once its checklist is complete.",
   "application.res.count": "{n} {label}",
   "application.res.decisionFor": "Decision for {name}",
@@ -296,8 +297,8 @@ export const zhTW: Translation<typeof en> = {
   "application.dismiss": "關閉",
 
   // Empty list
-  "application.emptyPre": "你的清單還是空的。請到 ",
-  "application.emptyPost": " 頁面加入學校。",
+  "application.emptyTitle": "你的清單還是空的",
+  "application.emptyBody": "加入你要申請的學校，每一所都會有自己的待辦清單和截止日期。",
 
   // Table
   "application.website": "網站 ↗",
@@ -438,10 +439,10 @@ export const zhTW: Translation<typeof en> = {
   "application.ai.cardLoading": "載入中…",
 
   // Interested
-  "application.int.emptyPre": "這裡還沒有學校。在任何學校的頁面點選 ",
+  "application.int.emptyTitle": "這裡還沒有學校",
+  "application.int.emptyPre": "在任何學校的頁面點選 ",
   "application.int.emptyStar": "☆ 有興趣",
-  "application.int.emptyMid": "，就能先放在這裡，慢慢決定。你可以到 ",
-  "application.int.emptyPost": " 頁面逛逛。",
+  "application.int.emptyMid": "，就能先放在這裡，慢慢決定。",
   "application.int.fullPre": "你的清單在 {plan} 方案下已滿。請從 ",
   "application.int.fullMid": " 移除一所學校，或 ",
   "application.int.fullUpgrade": "升級方案",
@@ -452,7 +453,8 @@ export const zhTW: Translation<typeof en> = {
   "application.int.move": "移到我的清單",
 
   // Results
-  "application.res.emptyPre": "還沒有已送出的申請。待辦清單全部完成後，請到 ",
+  "application.res.emptyTitle": "還沒有已送出的申請",
+  "application.res.emptyPre": "待辦清單全部完成後，請到 ",
   "application.res.emptyPost": " 把學校標記為已送出。",
   "application.res.count": "{label} {n}",
   "application.res.decisionFor": "{name} 的錄取結果",

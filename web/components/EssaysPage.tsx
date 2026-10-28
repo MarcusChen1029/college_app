@@ -80,7 +80,7 @@ function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChan
   const picks = uc.picks ?? [];
   const setUc = (patch: NonNullable<PersonalEssays["uc"]>) => onChange({ ...essays, uc: { ...uc, ...patch } });
   return (
-    <section id="uc-essays" className={`${SHARED_CARD} scroll-mt-20`}>
+    <section id="uc-essays" className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
         <h2 className="text-xl font-bold">{t("writing.ucHeading")}</h2>
         <span className="text-xs text-zinc-500">

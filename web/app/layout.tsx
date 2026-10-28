@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
 
-const HEADER = "sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white/95";
+const HEADER = "sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white";
 const NAV = "mx-auto flex max-w-7xl items-center gap-x-4 px-4 lg:gap-x-6 py-3 text-sm font-medium";
 
 function Brand() {
