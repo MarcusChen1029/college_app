@@ -97,7 +97,7 @@ const reader = (cfg: VaultConfig, userId: string): VaultReader => ({
 // ── the store ──
 
 async function vaultRows(cfg: VaultConfig, userId: string): Promise<VaultRow[]> {
-  const { data, error } = await admin(cfg).from(TABLE).select("slot, sealed").eq("user_id", userId).order("slot").range(0, MAX_SLOTS_PER_USER - 1);
+  const { data, error } = await admin(cfg).from(TABLE).select("slot, sealed, updated_at").eq("user_id", userId).order("slot").range(0, MAX_SLOTS_PER_USER - 1);
   if (error) throw new Error("portal_passwords read failed");
   return (data ?? []) as VaultRow[];
 }
@@ -151,7 +151,7 @@ async function writeAndReadBack(cfg: VaultConfig, userId: string, rows: readonly
   if (!rows.length) return new Map();
   const db = admin(cfg);
   const now = new Date().toISOString();
-  const was = new Map(existing.map((r) => [r.slot, r.sealed]));
+  const was = new Map(existing.map((r) => [r.slot, r.updated_at ?? ""]));
   const row = (r: SlotPassword) => ({ user_id: userId, slot: r.slot, sealed: sealPassword(cfg.key, userId, r.slot, r.password), updated_at: now });
   const fresh = rows.filter((r) => !was.has(r.slot));
   if (fresh.length) {
@@ -160,7 +160,8 @@ async function writeAndReadBack(cfg: VaultConfig, userId: string, rows: readonly
   }
   for (const r of rows.filter((x) => was.has(x.slot))) {
     const { sealed, updated_at } = row(r);
-    const { error } = await db.from(TABLE).update({ sealed, updated_at }).eq("user_id", userId).eq("slot", r.slot).eq("sealed", was.get(r.slot)!);
+    // Unchanged since it was read = same updated_at (a filter on the timestamp, never on the sealed value: filters are URLs).
+    const { error } = await db.from(TABLE).update({ sealed, updated_at }).eq("user_id", userId).eq("slot", r.slot).eq("updated_at", was.get(r.slot)!);
     if (error) return new Map();
   }
   return new Map((await vaultRows(cfg, userId)).map((r) => [r.slot, r.sealed]));
