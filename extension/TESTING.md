@@ -149,3 +149,86 @@ Apply `supabase/migrations/0042_extension_hardening.sql` first (the new extensio
 4. Content scripts cannot read the token: in DevTools on a portal tab, pick the extension's context in the console context menu and run `await chrome.storage.local.get("token")`. Expected: an error or nothing.
 5. STARS "Save Course" and UC "Save & continue" are still pressed after a fill (the label check passes on the real buttons). If the panel reports "Refused to press ...", copy the quoted label: it is a real button wording the guard must learn.
 6. UT: open MyStatus and check the fill assistant still attaches; then see whether `https://admissions.utexas.edu/*` is needed at all.
+
+## J. Activities & honors on Common App (not yet run end to end)
+
+Built 2026-10-28 (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`, page facts in `docs/superpowers/research/2026-10-27-portal-dom.md`
+§6 Activities, §8 Honors). Throwaway Common App account ONLY, in the separate Chrome profile from section A (the fill overwrites Activity 1 test data).
+The extension never presses Common App's Responsibilities page or any submit. It needs a token that has activities access: an older
+transcript-only connection shows "Reconnect to allow activities" (press Sign in; the panel returns to the activities fill).
+
+Setup: in the tracker (test student account) open Activities and add 7 Common App activities and 3 honors; give one activity a description longer
+than 150 characters (it must be reported as not accepted) and leave one activity's hours empty (it must be reported as "needs an answer").
+
+1. Empty page. On Common App open Activities (panel: "Go to the Activities page" if needed) with no activity entered. Press "Fill activities".
+   Expected: no question; every tracker activity is added in tracker order (the over-long one is listed under "Not added: Common App would not
+   accept these", the empty-hours one under "Added, but these questions are blank"); the report ends "Done: N activities filled and checked." or lists
+   read-back differences. Common App shows the same text on the page.
+   The panel waits for the page to finish drawing before it reads it (a page still loading is never read as empty).
+2. Replace. Run it again. Expected: "Common App already has N activities. Replace all of them with the M from your tracker that can be sent?"
+   (M = the 6 that can be sent, not 7) with the existing names listed and, below them, the over-long one named with its reason as not counted.
+   Press "Yes, replace all". Expected: slots rewritten, surplus slots removed from the end, and the report repeats "Replaced the N activities
+   that were already on Common App: ..." with the names.
+3. Keep with toggles. Edit one entry by hand, run again, press "No, let me choose what to add". Expected: the tracker items as toggles, the
+   over-long one greyed out with "cannot be sent: ..." and never tickable; a counter "Room left on the page: X of Y"; once X is 0 the unticked
+   toggles are disabled; "Add the chosen" adds only the ticked ones after the existing entries (numbered after them in any read-back message),
+   never over an existing entry, and the report ends with "Not added (not chosen): ..." naming the ones left unticked.
+4. Full page. With 10 activities on the page press Fill, then "No, let me choose...". Expected: "This page is full (10 of 10). Nothing can be added."
+   and nothing changes.
+5. Honors. Repeat 1-4 on the Honors page (limit 5; question text says honors, singular "honor"). Honors Level(s) and Grade level boxes match the tracker.
+6. Read-back. After each fill the panel reloads the page and compares what Common App shows with what was sent. Expected: the page reloads once at
+   the end of each fill and the report has no lines under "Common App shows something different from what was entered" when the page matches the
+   tracker. Any line there is a bug worth sending back (it names the portal slot, e.g. "Activity 4").
+7. Signed out. Sign out of Common App in another tab, then press Fill. Expected: "Common App signed you out. Sign in again; nothing after this point
+   was saved." and no success line. If practical, sign out while the panel shows "Checking what Common App shows..." (after Continue): the
+   report keeps "Filled N activities: ..." and says "Common App signed you out. Saved by Continue, but not checked: sign in again and look at
+   the page." A sign-out during the fill itself lists the entries under "Not sure: check the Common App page before running again".
+8. Stop. Start a fill and press Stop while the Replace question is open: "Stopped. Nothing was changed on Common App." Start another and press Stop
+   mid-fill: the report says Stopped and that Continue was not pressed.
+
+If something fails, send the panel report and a screenshot of the Common App page; do not retry more than once.
+
+## K. Activities & awards on UC (not yet run end to end)
+
+Built 2026-10-28/29 (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`, page facts in `docs/superpowers/research/2026-10-27-portal-dom.md`
+§7). Throwaway UC account ONLY (memory `portal-test-accounts`; it holds "Test Club (filler research)"), in the separate Chrome profile. UC signs
+out when the application is opened in a second tab: keep exactly one UC tab and let the extension drive it (every button is a full page load).
+The extension presses only an item's Delete (then Yes), "Add an activity or award" and "Save & continue"; never "I have no activities or awards
+to report" / "I've finished adding activities" (`#no_activities`) or any submit.
+
+Setup: in the tracker (test student account) open Activities > UC and add 3 entries: an Extracurricular activity with a 2-line description,
+hours 5.5 and weeks 30; a Volunteer entry; an Award with two levels. Add a 4th entry with 200 hours per week (it must be reported as not accepted)
+and a 5th, a Volunteer entry with its description left empty (UC refuses to save an entry with a blank required box, so it must be reported as
+"Not added: UC would not accept these" with "UC requires an answer for: What did you do?" and never sent).
+The question counts only the entries that can be sent (the 3 valid ones) and names the other 2 with their reasons.
+
+1. Panel offer. On UC open the Activities & awards list (`/my-application/introactivitiesawards`; panel: "Go to Activities & awards" if needed).
+   Expected: the UC panel shows "Activities & awards" with "Fill activities & awards".
+2. Keep (adds 2). Press Fill. Expected: "UC already has 1 activity or award. Replace it with the 3 from your tracker that can be sent?" naming
+   "Extracurricular activity: Test Club (filler research)", and below it the 200-hour entry and the blank-description entry as not counted, each
+   with its reason. Press "No, let me choose what to add": those 2 are greyed out ("cannot be sent: ...") and cannot be ticked. Tick 2 of the 3
+   valid entries, "Add the chosen". Expected: the tab goes list -> add page -> list once per chosen entry (no second tab, no double save: each
+   entry appears once); the 2 blocked entries are under "Not added: UC would not accept these" (one says "UC requires an answer for: What did you
+   do?"), the unticked one under "Not added (not chosen)"; the report says "Done: 2 activities and awards filled, but some things need a look"
+   (the blocked ones) and lists no read-back differences.
+3. Read-back wording. For the Volunteer and Award entries just added, note the list's `p.subsectionheader` texts (expand the item). Only
+   Extracurricular headers were verified live; record the others in portal-dom.md §7 so `expectOf` (web/lib/uc-activities-fill.ts) can check
+   more than the name. A line under "UC shows something different from what was entered" is a bug worth sending back.
+4. Replace. Press Fill again, "Yes, replace all". Expected: the tab first reloads the list (UC keeps a stale Yes handler from every earlier
+   Delete click, portal-dom.md §7), then each listed entry is deleted one at a time (Delete, Yes, page load), then the 3 valid tracker entries
+   are added in tracker order; the report repeats "Replaced the N activities and awards that were already on UC: ..." and has
+   no read-back lines. "Test Club (filler research)" is gone: re-add it by hand afterwards if later research needs it.
+5. Full list. Only if cheap to set up (20 entries): Fill, "No, let me choose...". Expected: "This page is full (20 of 20). Nothing can be added."
+   and nothing changes.
+6. Stop. Start a replace run and press Stop while the question is open: "Stopped. Nothing was changed on UC." Start another and press Stop while
+   it is adding: the current entry finishes saving (its page load is waited for), then the report says Stopped and lists the rest under "Not added".
+7. Signed out. Sign out of UC (in the same tab), sign in again, open the list, then sign out in the middle of a run if practical. Expected:
+   "UC signed you out. Sign in again; entries listed as added were saved." and no success line; an entry whose Save & continue had just gone
+   through is under "Not sure: check UC's list before running again" as "(possibly saved)", never under "Not added".
+8. Wording. A run with nothing to look at ends "Done: N activities and awards filled; names checked on UC's list." (step 3 above decides
+   whether more than the names can be checked).
+
+A run that stops with "Not sure: check UC's list before running again" means a save or delete went through but its page load did not come
+back: look at UC's list before running again (untick an entry that is already there).
+
+If something fails, send the panel report and a screenshot of the UC page; do not retry more than once.

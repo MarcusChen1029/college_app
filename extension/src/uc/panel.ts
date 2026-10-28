@@ -47,14 +47,19 @@ export function ucReport(r: UcGradeReport, schools: number): AutoReport {
   };
 }
 
-export function ucAutoView(plans: UcGradePlan[], tabId: number): HTMLElement {
-  const items = plans.filter((p) => p.rows.length);
-  const schools = new Set(items.map((p) => p.schoolName)).size;
-  const tab: UcTab = {
+/** The student's UC tab (the only one: a second tab signs UC out). */
+export function ucTab(tabId: number): UcTab {
+  return {
     send: (m) => sendTo(tabId, m),
     go: (path) => navigate(tabId, `${SITE_ORIGINS.uc[0]}${path}`, "UC", "uc"),
     afterReload: () => afterReload(tabId, "UC"),
   };
+}
+
+export function ucAutoView(plans: UcGradePlan[], tabId: number): HTMLElement {
+  const items = plans.filter((p) => p.rows.length);
+  const schools = new Set(items.map((p) => p.schoolName)).size;
+  const tab = ucTab(tabId);
   const warnings = items.flatMap((p) => p.warnings);
   const skipped = items.flatMap((p) => p.skipped);
   return autoView({

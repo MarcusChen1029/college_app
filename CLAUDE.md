@@ -110,6 +110,12 @@ Plan: all US colleges next, then UK/CA/AU.
   Academic; page alerts are caught by a MAIN-world hook (`src/uiuc-main.ts`). Built from the live DOM facts in portal-dom.md §5 but not yet run
   end to end. UT gets the fill assistant (click a box, press a value; plans `web/lib/system-fill.ts`). Live DOM facts:
   `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
+  Activities filler (2026-10-28/29, spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`; needs a token with activities access, older
+  transcript-only tokens get "Reconnect"): fills Common App Activities / Honors (`src/activities-flow.ts`, plans `web/lib/activities-fill.ts`) and UC's
+  Activities & awards list (`src/uc/activities-run.ts` across page loads, `src/uc/activities.ts` page side, plans `web/lib/uc-activities-fill.ts`), with
+  one shared question / toggle list / report (`src/activities-panel.ts`). Owner's rule: empty page = add all; entries = ask "replace all?", No = pick
+  up to the room (CA 10/5, UC 20). Every save is read back. Never presses UC's `#no_activities`, Common App's Responsibilities page or any submit.
+  UC was built from portal-dom.md §7; its live run is `extension/TESTING.md` §J (Common App §I).
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every

@@ -1,10 +1,14 @@
 import type { ActivitiesResult, TranscriptResult } from "./auth.ts";
 import type { CgGradeKey, CgGradePlan, CurrentYearPlan } from "../../web/lib/commonapp-fill.ts";
 import type { PageResult } from "./commonapp/dom.ts";
+import type { CaPage, CaPagePlan } from "../../web/lib/activities-fill.ts";
+import type { CaPageResult } from "./commonapp/activities.ts";
 import type { InsertResult } from "./assist/insert.ts";
 import type { StarsRow } from "../../web/lib/stars-fill.ts";
 import type { CsuSchoolPlan } from "../../web/lib/csu-fill.ts";
 import type { UcGradePlan } from "../../web/lib/uc-fill.ts";
+import type { UcFormPlan } from "../../web/lib/uc-activities-fill.ts";
+import type { UcListed } from "./uc/activities.ts";
 import type { UcFillResult } from "./uc/fill.ts";
 import type { UiucRow } from "../../web/lib/uiuc-fill.ts";
 import type { UiucFillResult, UiucPageInfo } from "./uiuc/fill.ts";
@@ -33,7 +37,11 @@ export type ContentMessage =
   | { type: "stop" }
   | { type: "inspect"; target: FillTarget }
   | { type: "fill"; target: CgGradeKey; plan: CgGradePlan; mode: FillMode }
-  | { type: "fill"; target: "current"; plan: CurrentYearPlan; mode: FillMode };
+  | { type: "fill"; target: "current"; plan: CurrentYearPlan; mode: FillMode }
+  /** Activities (/common/7/232) and honors (/common/4/25): entries on the page, fill it, read what it shows (for the read-back). */
+  | { type: "caInspect"; page: CaPage }
+  | { type: "caFill"; plan: CaPagePlan; mode: FillMode; existing: number }
+  | { type: "caRead"; page: CaPage };
 
 /** Content script -> extension. `ok: false` carries a sentence for the report (e.g. "Answer Yes on the Courses & Grades intro first"). */
 export type ContentResponse =
@@ -42,7 +50,13 @@ export type ContentResponse =
   | { type: "inspect"; ok: true; existing: string[] }
   | { type: "inspect"; ok: false; error: string }
   | { type: "fill"; ok: true; result: PageResult }
-  | { type: "fill"; ok: false; error: string };
+  | { type: "fill"; ok: false; error: string }
+  | { type: "caInspect"; ok: true; existing: string[] }
+  | { type: "caInspect"; ok: false; error: string }
+  | { type: "caFill"; ok: true; result: CaPageResult }
+  | { type: "caFill"; ok: false; error: string }
+  | { type: "caRead"; ok: true; rows: Record<string, string | string[]>[] }
+  | { type: "caRead"; ok: false; error: string };
 
 /** Side panel -> fill assistant content script (UC, STARS, Cal State Apply, UIUC, UT). `advance` moves focus to the next box after. */
 export type AssistMessage =
@@ -55,6 +69,11 @@ export type AssistMessage =
   | { type: "csuStop" }
   | { type: "ucPage" }
   | { type: "ucFill"; plan: UcGradePlan }
+  /** UC Activities & awards: read the list page, delete one item (Delete, then Yes), press Add, fill the open add/edit form and press Save & continue. */
+  | { type: "ucActList" }
+  | { type: "ucActDelete"; activityId: string }
+  | { type: "ucActAdd" }
+  | { type: "ucActFill"; plan: UcFormPlan }
   /** STARS: the student's schools (read from Enter Schools), and the coursework page address of one school year. */
   | { type: "starsSchools" }
   | { type: "starsYearPath"; ceeb: string; year: number }
@@ -78,6 +97,14 @@ export type AssistResponse =
   | { type: "ucPage"; grade: number | null; names: string[]; pageText: string }
   | { type: "ucFill"; ok: true; result: UcFillResult }
   | { type: "ucFill"; ok: false; error: string }
+  | { type: "ucActList"; ok: true; items: UcListed[] }
+  | { type: "ucActList"; ok: false; error: string }
+  | { type: "ucActDelete"; ok: true }
+  | { type: "ucActDelete"; ok: false; error: string }
+  | { type: "ucActAdd"; ok: true }
+  | { type: "ucActAdd"; ok: false; error: string }
+  | { type: "ucActFill"; ok: true }
+  | { type: "ucActFill"; ok: false; error: string }
   | { type: "starsSchools"; ok: true; schools: StarsSchool[] }
   | { type: "starsSchools"; ok: false; error: string }
   /** path: null when STARS offers no such year for the school (years: the ones it does offer). */
