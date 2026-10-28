@@ -126,8 +126,14 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0041**; 0001-0037 are all applied to the project as of 2026-10-27, 0038-0040 are the 2026-10-28 security fixes) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0042**; 0001-0037 are all applied to the project as of 2026-10-27, 0038-0041 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
   Since 0039 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
+- **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
+  `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
+  rows or localStorage. AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
+  student_profiles/student_colleges/transcript_*; every RPC, the password route, the Google routes and account deletion refuse them. Every page
+  sends a CSP (`web/lib/security-headers.ts`): a new third-party host the browser must reach needs adding there. Accounts are deleted at
+  Settings > Delete account (`/api/account/delete`; every table cascades from auth.users).
 - **AI connector containment (0039):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use `student_profiles`,
   `student_colleges`, `transcript_schools`, `transcript_courses` (pre-request hook `api_request_guard`), only the columns/operations in
   `guard_oauth_student_writes`, and no RPC. A new MCP tool that needs more must widen those two functions in a migration.

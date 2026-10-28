@@ -34,29 +34,33 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 
 ## Order
 
-1. **Apply migrations `0038` → `0039` → `0040` → `0041`** (0039 and 0040 come from fix/security-hardening).
-   Before 0041, dry-run it: `supabase/patches/2026-10-28_forbid_plaintext_dry_run.sql` with 0041 pasted at its marker
-   must end in `DRY RUN RESULT: 0 failures` (it can never commit). 0041 stops with an error if `student_colleges` has a
-   column it doesn't know; add the column to its grant list first.
-   Check: `select has_table_privilege('authenticated', 'public.portal_passwords', 'select')` is `false`;
-   `select has_column_privilege('authenticated', 'public.student_colleges', 'portal_password', 'select')` is `false`.
+1. **Apply migrations `0038` → `0039` → `0040`.** The live (old) site keeps working with these.
+   Check: `select has_table_privilege('authenticated', 'public.portal_passwords', 'select')` is `false`.
 
-2. **Deploy the code.** From here on the site keeps no password in plaintext, and old open tabs can't write one back
-   (0041 refuses it; those tabs show a save error and reload). AI-connection tokens can't read `portal_password` any
-   more (0041 column grants), and can't reach the store at all.
+2. **Deploy the code.** It never reads or writes `portal_password`. Until 0041 exists its `migrate` call fails
+   harmlessly (the store then passes stored password keys through untouched), so nothing is lost in this gap.
 
-3. **Verify** with a test account that has a plaintext password from before (one system login, one college login):
+3. **Apply `0041`** right after the deploy is live (not before: 0041 removes `portal_password` from client grants, and
+   the old site's list load reads that column, so applying 0041 first would break My list until the deploy).
+   Dry run first: `supabase/patches/2026-10-28_forbid_plaintext_dry_run.sql` with 0041 pasted at its marker must end
+   in `DRY RUN RESULT: 0 failures` (it can never commit). 0041 stops with an error if `student_colleges` has a column
+   it doesn't know; add the column to its grant list first.
+   Check: `select has_column_privilege('authenticated', 'public.student_colleges', 'portal_password', 'select')` is `false`.
+   From here on old open tabs can't write a password back (0041 refuses it; those tabs show a save error and reload),
+   AI-connection tokens can't read `portal_password`, and each student's plaintext moves on their next visit.
+
+4. **Verify** with a test account that has a plaintext password from before (one system login, one college login):
    open the site signed in, then on Portals press Show on both: the old values appear. `2026-10-28-portal-plaintext-counts.sql`
    shows that student gone from the plaintext counts. Network tab: profile/list requests carry no password;
    `/api/portal-passwords` answers `Cache-Control: no-store`; an AI-connection token gets `403 {"error":"forbidden"}`.
 
-4. **Wait** for students to visit. Watch `2026-10-28-portal-plaintext-counts.sql`. Optional, for students who don't
+5. **Wait** for students to visit. Watch `2026-10-28-portal-plaintext-counts.sql`. Optional, for students who don't
    come back: `node scripts/backfill-portal-passwords.mjs --dry-run`, then without `--dry-run`, run with the
    Production values of `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` and the key (e.g. `vercel env pull`).
    It follows the same verify-before-remove rule and prints counts only. "unplaceable" values (outside the slot format,
    over 512 characters) can't be moved by either; decide about them by hand.
 
-5. **Only when every plaintext count is 0** (and no old build is in use): `supabase/patches/2026-10-28-drop-portal-password-column.sql`.
+6. **Only when every plaintext count is 0** (and no old build is in use): `supabase/patches/2026-10-28-drop-portal-password-column.sql`.
    It refuses to run while any plaintext is left, then drops 0041's college trigger and function and the column, and
    removes leftover empty `password` keys. Supabase backups keep old values until they age out.
 
