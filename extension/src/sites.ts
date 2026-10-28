@@ -33,6 +33,25 @@ export const SITE_HOME: Record<Site, string> = {
   ut: "https://utdirect.utexas.edu/apps/adm/mystatus/",
 };
 
+/**
+ * True when `url` is an https address on one of `site`'s own origins, with no user:password part. Every tab navigation goes through this
+ * (tab-wait.ts, chrome-driver.ts), so a path that was ever built from page content (`@evil.example/`, `//evil.example`) cannot leave the portal.
+ */
+export function isPortalUrl(url: string, site: Site): boolean {
+  let u: URL;
+  try {
+    u = new URL(url);
+  } catch {
+    return false;
+  }
+  return u.protocol === "https:" && !u.username && !u.password && SITE_ORIGINS[site].includes(u.origin);
+}
+
+/** Throws unless `url` is on `site`'s origins; `what` names the portal in the sentence ("STARS"). */
+export function assertPortalUrl(url: string, site: Site, what: string): void {
+  if (!isPortalUrl(url, site)) throw new Error(`Refused to open an address outside ${what}`);
+}
+
 /** The system a URL belongs to, or null. Matches the origin exactly (no look-alike hosts). */
 export function siteOf(url: string | undefined | null): Site | null {
   if (!url) return null;
