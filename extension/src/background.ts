@@ -1,4 +1,4 @@
-import { loadTranscript, signIn, signOut } from "./auth.ts";
+import { loadActivities, loadTranscript, signIn, signOut } from "./auth.ts";
 import { createPanelListener, restrictStorageToTrustedContexts, type StorageAreaLike } from "./background-guards.ts";
 import type { PanelRequest, PanelResponse } from "./messages.ts";
 
@@ -15,6 +15,8 @@ async function handle(msg: PanelRequest): Promise<PanelResponse> {
       return { type: "signOut" };
     case "loadTranscript":
       return { type: "loadTranscript", result: await loadTranscript() };
+    case "loadActivities":
+      return { type: "loadActivities", result: await loadActivities() };
   }
 }
 

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { extensionDenyRedirect, extensionRedirect } from "./extension-api.ts";
+import { extensionDenyRedirect, extensionRedirect, extensionTokenArgs } from "./extension-api.ts";
 
 const ID = "abcdefghijklmnopabcdefghijklmnop";
 const OK = `https://${ID}.chromiumapp.org/`;
@@ -33,4 +33,10 @@ test("extensionDenyRedirect returns the exact address with an error and no token
   assert.equal(extensionDenyRedirect(null, ID), `${OK}#error=access_denied`);
   assert.equal(extensionDenyRedirect(`https://${ID}.chromiumapp.org.evil.com/`, ID), null);
   assert.equal(extensionDenyRedirect(OK, ""), null);
+});
+
+test("extensionTokenArgs asks for transcript and activities by default (new tokens), with or without a label", () => {
+  assert.deepEqual(extensionTokenArgs(), { p_scopes: ["transcript", "activities"] });
+  assert.deepEqual(extensionTokenArgs("Laptop"), { p_label: "Laptop", p_scopes: ["transcript", "activities"] });
+  assert.deepEqual(extensionTokenArgs(undefined, ["transcript"]), { p_scopes: ["transcript"] });
 });

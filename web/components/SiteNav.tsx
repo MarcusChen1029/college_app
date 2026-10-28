@@ -127,7 +127,8 @@ export function SiteNav() {
           </>
         )}
       </div>
-      <div className="ml-auto md:hidden">
+      <div className="ml-auto flex items-center gap-1 md:hidden">
+        {!auth && role !== "teacher" && <SignInButton className={buttonClass("quiet", "sm")}>{t("account.signIn")}</SignInButton>}
         <Suspense fallback={<MenuButton open={false} />}>
           <PhoneMenu items={items} account={account} />
         </Suspense>

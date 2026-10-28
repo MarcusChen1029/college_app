@@ -8,7 +8,7 @@ import { buildSystemPlan, FILL_SYSTEMS } from "../../web/lib/system-fill.ts";
 import { emptyCourse, emptySchool, LEVELS, SUBJECTS, type TranscriptCourse, type TranscriptSchool } from "../../web/lib/transcript.ts";
 import { buildUcPlans } from "../../web/lib/uc-fill.ts";
 import { buildUiucPlans } from "../../web/lib/uiuc-fill.ts";
-import { parseTokenFromRedirect, parseTranscriptResponse, REVOKE_TIMEOUT_MS, signOut, loadTranscript } from "./auth.ts";
+import { parseActivitiesResponse, parseTokenFromRedirect, parseTranscriptResponse, REVOKE_TIMEOUT_MS, signOut, loadTranscript } from "./auth.ts";
 import { SUPABASE_KEY, SUPABASE_URL } from "./config.ts";
 import { buildPlans } from "./runner.ts";
 
@@ -264,4 +264,49 @@ test("parseTranscriptResponse fills the columns the server no longer sends, and 
   assert.deepEqual(r.courses[0].overrides, {});
   assert.deepEqual(parseTranscriptResponse({ ok: true, schools: [null], courses: [] }), { ok: false, reason: "network" });
   assert.deepEqual(parseTranscriptResponse({ ok: true, schools: [], courses: ["x"] }), { ok: false, reason: "network" });
+});
+
+// ---- activities (extension_activities, migration 0039) ----------------------------------------------------------------
+
+const v1Fixture = JSON.parse(readFileSync(new URL("../../web/lib/fixtures/activities-v1.json", import.meta.url), "utf8")) as {
+  student: string;
+  activities: unknown;
+}[];
+
+test("parseActivitiesResponse maps error bodies (an old transcript-only token must reconnect)", () => {
+  assert.deepEqual(parseActivitiesResponse({ ok: false, error: "no_scope" }), { ok: false, reason: "reconnect" });
+  assert.deepEqual(parseActivitiesResponse({ ok: false, error: "invalid_token" }), { ok: false, reason: "signed_out" });
+  assert.deepEqual(parseActivitiesResponse({ ok: false, error: "students_only" }), { ok: false, reason: "students_only" });
+  assert.deepEqual(parseActivitiesResponse({ ok: false, error: "something_else" }), { ok: false, reason: "network" });
+});
+
+test("parseActivitiesResponse treats garbage as a network failure", () => {
+  assert.deepEqual(parseActivitiesResponse("x"), { ok: false, reason: "network" });
+  assert.deepEqual(parseActivitiesResponse(null), { ok: false, reason: "network" });
+  assert.deepEqual(parseActivitiesResponse([]), { ok: false, reason: "network" });
+  assert.deepEqual(parseActivitiesResponse({ ok: true }), { ok: false, reason: "network" });
+  assert.deepEqual(parseActivitiesResponse({ ok: true, activities: "x" }), { ok: false, reason: "network" });
+  assert.deepEqual(parseActivitiesResponse({ ok: true, activities: [] }), { ok: false, reason: "network" });
+});
+
+test("parseActivitiesResponse upgrades a v1-shaped body to version 2", () => {
+  const v1 = v1Fixture.find((f) => f.student === "types-1-10")!.activities;
+  const r = parseActivitiesResponse({ ok: true, activities: v1 });
+  assert.equal(r.ok, true);
+  if (!r.ok) return;
+  assert.equal(r.data.version, 2);
+  assert.equal(r.data.commonApp.activities.length, 10);
+  assert.equal(r.data.commonApp.activities[0].organization, "Org 01");
+  assert.ok(Array.isArray(r.data.commonApp.honors));
+  assert.ok(Array.isArray(r.data.uc));
+});
+
+test("parseActivitiesResponse keeps a v2 body and reads an empty one as no entries", () => {
+  const v2 = { version: 2, commonApp: { activities: [], honors: [{ id: "h1", title: "Science Olympiad medal", grades: ["11"], levels: ["national"] }] }, uc: [] };
+  const r = parseActivitiesResponse({ ok: true, activities: v2 });
+  assert.equal(r.ok, true);
+  if (!r.ok) return;
+  assert.deepEqual(r.data.commonApp.honors, [{ id: "h1", title: "Science Olympiad medal", grades: ["11"], levels: ["national"] }]);
+  const empty = parseActivitiesResponse({ ok: true, activities: {} });
+  assert.deepEqual(empty, { ok: true, data: { version: 2, commonApp: { activities: [], honors: [] }, uc: [] } });
 });

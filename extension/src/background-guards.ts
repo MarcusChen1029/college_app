@@ -14,10 +14,10 @@ export function isOwnPageSender(sender: MessageSender | null | undefined, extens
   return !!sender && sender.id === extensionId && !sender.tab && typeof sender.url === "string" && sender.url.startsWith(extensionUrl);
 }
 
-const PANEL_TYPES = ["signIn", "signOut", "loadTranscript"];
+const PANEL_TYPES = ["signIn", "signOut", "loadTranscript", "loadActivities"];
 
 /**
- * The runtime.onMessage listener for the panel's three requests (sign in, sign out, load the transcript). Every one of them is
+ * The runtime.onMessage listener for the panel's requests (sign in, sign out, load the transcript or the activities). Every one of them is
  * privileged, so a message from anything but the extension's own page is not answered at all. Content scripts send the background nothing.
  */
 export function createPanelListener(deps: { extensionId: string; extensionUrl: string; handle: (msg: PanelRequest) => Promise<PanelResponse> }) {

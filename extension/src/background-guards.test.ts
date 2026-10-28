@@ -35,6 +35,7 @@ function listener() {
   const handle = async (msg: PanelRequest): Promise<PanelResponse> => {
     handled.push(msg);
     if (msg.type === "loadTranscript") return { type: "loadTranscript", result: { ok: false, reason: "signed_out" } };
+    if (msg.type === "loadActivities") return { type: "loadActivities", result: { ok: false, reason: "signed_out" } };
     if (msg.type === "signOut") return { type: "signOut" };
     return { type: "signIn", ok: true };
   };
@@ -43,17 +44,17 @@ function listener() {
 
 test("the panel's requests are answered", async () => {
   const { on, handled } = listener();
-  for (const type of ["loadTranscript", "signIn", "signOut"] as const) {
+  for (const type of ["loadTranscript", "loadActivities", "signIn", "signOut"] as const) {
     const answer = new Promise<PanelResponse | undefined>((resolve) => assert.equal(on({ type }, panel, resolve), true));
     assert.equal((await answer)?.type, type);
   }
-  assert.deepEqual(handled.map((m) => m.type), ["loadTranscript", "signIn", "signOut"]);
+  assert.deepEqual(handled.map((m) => m.type), ["loadTranscript", "loadActivities", "signIn", "signOut"]);
 });
 
 test("a content script (any tab) gets no transcript, no sign-in window and no sign-out", async () => {
   const { on, handled } = listener();
   let answered = 0;
-  for (const type of ["loadTranscript", "signIn", "signOut"]) assert.equal(on({ type }, contentScript, () => answered++), false);
+  for (const type of ["loadTranscript", "loadActivities", "signIn", "signOut"]) assert.equal(on({ type }, contentScript, () => answered++), false);
   await new Promise((r) => setTimeout(r, 10));
   assert.deepEqual(handled, []);
   assert.equal(answered, 0);

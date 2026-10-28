@@ -1,7 +1,7 @@
 "use client";
 
-// The Chrome extension for the Common App fill signs in through /extension/connect and gets a
-// transcript-only token (migration 0031). These are the page's helpers and typed RPC wrappers.
+// The Chrome extension (college application filler) signs in through /extension/connect and gets a token that reads
+// only the transcript and the activities and honors (migrations 0031, 0039). These are the page's helpers and typed RPC wrappers.
 // The token is only ever put in the URL fragment of the extension's own address, never stored or logged.
 
 import { browserSupabase } from "./supabase-browser.ts";
@@ -31,9 +31,19 @@ export function extensionDenyRedirect(redirectUri: string | null, extensionId: s
   return (redirectUri ?? allowed) === allowed ? `${allowed}#error=access_denied` : null;
 }
 
-/** Creates a transcript-only token for the signed-in student. This is the only time the token exists in clear. */
-export async function createExtensionToken(label?: string): Promise<string> {
-  const res = await db().rpc("create_extension_token", label ? { p_label: label } : {});
+export type ExtensionScope = "transcript" | "activities";
+
+/** What /extension/connect asks for: tokens made before migration 0039 hold only "transcript" and must reconnect for activities. */
+export const EXTENSION_SCOPES: readonly ExtensionScope[] = ["transcript", "activities"];
+
+/** The create_extension_token arguments (p_label only when given). */
+export function extensionTokenArgs(label?: string, scopes: readonly ExtensionScope[] = EXTENSION_SCOPES): { p_label?: string; p_scopes: ExtensionScope[] } {
+  return { ...(label ? { p_label: label } : {}), p_scopes: [...scopes] };
+}
+
+/** Creates a token for the signed-in student that can read `scopes` (the server requires "transcript"). The only time it exists in clear. */
+export async function createExtensionToken(label?: string, scopes: readonly ExtensionScope[] = EXTENSION_SCOPES): Promise<string> {
+  const res = await db().rpc("create_extension_token", extensionTokenArgs(label, scopes));
   return check(res) as string;
 }
 
