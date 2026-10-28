@@ -1,0 +1,47 @@
+{
+  "_about": "Which application systems (beyond Common App, Coalition and UC, which come from requirements.platforms in the cycle data) each college uses, for the Portals page. One entry per system key in SYSTEMS (web/lib/portals.ts): {\"source\": official URL listing the members, \"checked\": \"YYYY-MM-DD\", \"members\": [college slugs from data/colleges/], \"notes\": optional text}. Built by scripts/build_application_systems.py. Every list needs an official source; leave a system out until it is researched.",
+  "systems": {
+    "commonapp": {
+      "source": "https://www.commonapp.org/explore/",
+      "checked": "2026-10-28",
+      "members": ["angelo-state", "dallas-baptist", "houston-christian", "midwestern-state", "stephen-f-austin", "tamu-san-antonio", "tarleton-state", "texas-womans", "utep", "west-texas-am"],
+      "notes": "Texas colleges listed in Common App's own directory whose requirements.platforms lack common_app (checked while researching ApplyTexas). Every other college's Common App membership comes from requirements.platforms."
+    },
+    "applytexas": {
+      "source": "https://www.applytexas.org/school-search/",
+      "checked": "2026-10-28",
+      "members": ["angelo-state", "dallas-baptist", "east-texas-am", "houston-christian", "incarnate-word", "lamar", "midwestern-state", "prairie-view-am", "sam-houston-state", "smu", "st-edwards", "st-marys-tx", "stephen-f-austin", "tamu-corpus-christi", "tamu-kingsville", "tamu-san-antonio", "tarleton-state", "texas-am", "texas-southern", "texas-state", "texas-womans", "uh-clear-lake", "uh-downtown", "uh-victoria", "unt", "ut-arlington", "ut-austin", "ut-permian-basin", "ut-tyler", "utep", "utrgv", "utsa", "west-texas-am"],
+      "notes": "Our colleges in ApplyTexas's School Search (114 entries, read 2026-10-28). Rice is not a member. uh-victoria is Texas A&M University-Victoria, listed under that name. No Common App per Common App's directory: prairie-view-am, tamu-kingsville, texas-southern, uh-clear-lake, uh-downtown, uh-victoria, utrgv; ut-tyler unclear (its two apply pages disagree)."
+    },
+    "calstate": {
+      "source": "https://www.calstate.edu/attend/campuses",
+      "checked": "2026-10-28",
+      "members": ["cal-state-bakersfield", "cal-state-dominguez-hills", "cal-state-east-bay", "cal-state-fullerton", "cal-state-la", "cal-state-monterey-bay", "cal-state-san-bernardino", "cal-state-san-marcos", "chico-state", "csun", "fresno-state", "sacramento-state", "san-jose-state", "sf-state"],
+      "notes": "Our CSU campuses; Cal State Apply is the single CSU application (https://www.calstate.edu/apply/freshman, Fall 2027 window Aug 1 - Nov 30, 2026)."
+    },
+    "stars": {
+      "source": "https://starsrecord.zendesk.com/hc/en-us/articles/35363280510235-Which-Colleges-Use-STARS",
+      "checked": "2026-10-28",
+      "members": ["clemson", "florida-atlantic", "florida-state", "nyu", "penn-state", "rutgers", "rutgers-camden", "rutgers-newark", "temple", "texas-am", "uconn", "uf", "oregon", "pitt", "rhode-island", "ut-arlington", "uw-seattle", "virginia-tech"],
+      "notes": "STARS is the former SRAR/SSAR (its login page says so). Members = our colleges on the official STARS list that require it (UConn: required for Early Decision). Left out because STARS is optional there: buffalo, kean, montclair-state, umass-amherst, umn, utsa; left out as unconfirmed: new-orleans (requirement level not found), uconn-stamford and Penn State branch campuses (list names no campus). Required/optional per College Kickstart (2026-06-29) and each college's page. Many exempt international applicants from non-US-style schools (Pitt, UT Arlington, Oregon, URI, Temple, UF, FAU); UW Seattle and Texas A&M require it of internationals too. The list gives no cycle."
+    },
+    "ucas": {
+      "source": "https://www.ucas.com/international",
+      "checked": "2026-10-28",
+      "members": ["bath", "birmingham", "bristol", "cambridge", "durham", "edinburgh", "exeter", "imperial", "kings-college-london", "leeds", "loughborough", "lse", "manchester", "nottingham", "oxford", "southampton", "ucl", "warwick"],
+      "notes": "UK undergraduate courses are applied for through UCAS, including by international applicants."
+    },
+    "ouac": {
+      "source": "https://www.ouac.on.ca/ouac-105/",
+      "checked": "2026-10-28",
+      "members": ["mcmaster", "queens-university", "toronto", "waterloo", "western-university"],
+      "notes": "OUAC 105 (applicants outside Ontario high schools). McMaster, Waterloo and Western: OUAC only; Toronto and Queen's also list a direct route (Queen's also Common App). Each university's international admissions page was the per-college source."
+    },
+    "educationplannerbc": {
+      "source": "https://www.sfu.ca/students/admission/apply.html",
+      "checked": "2026-10-28",
+      "members": ["simon-fraser"],
+      "notes": "Simon Fraser takes applications through EducationPlannerBC. UBC's page mentions EducationPlannerBC but its apply links go to UBC's own application, so UBC is not listed. Alberta, Calgary, McGill and every Australian university take international applicants directly."
+    }
+  }
+}
