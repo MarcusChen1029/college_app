@@ -21,10 +21,13 @@ Pick one:
 - **Or add the Supabase MCP server yourself:** create a personal access token at
   supabase.com → Account → Access Tokens, then:
   ```bash
-  claude mcp add supabase -s project -e SUPABASE_ACCESS_TOKEN=<your-token> -- \
+  claude mcp add supabase -s local -e SUPABASE_ACCESS_TOKEN=<your-token> -- \
     npx -y @supabase/mcp-server-supabase@latest --project-ref=eyvmtaggayqizllaseiu
   ```
-  Never commit the token. `-s project` writes `.mcp.json`; keep the token out of it, or use `-s local`.
+  `-s local` keeps the token in your own Claude config, outside the repo. Don't use `-s project`: it writes the token into
+  `.mcp.json` in this (public) repo. The token can control every project in your Supabase account, so never commit it.
+- Sessions that read web pages (research waves) should run **without** the Supabase server connected: a planted instruction
+  in a page could ask the agent to run SQL against student data.
 
 Locally you'll see approval prompts for UPDATE/DELETE statements and can approve them, unlike in the cloud session.
 

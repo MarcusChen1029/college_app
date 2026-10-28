@@ -3,3 +3,13 @@ __pycache__/
 extension/dist/
 extension/node_modules/
 *.pem
+# Secrets and local tool config: never commit
+.env
+.env.*
+!.env.example
+supabase/functions/.env
+supabase/.temp/
+.mcp.json
+*.key
+*.p12
+.claude/

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import type { OAuthAuthorizationDetails } from "@supabase/supabase-js";
-import { AI_CAN, AI_CANNOT, isAuthorizationId, redirectHost } from "@/lib/connect-ai";
+import { AI_CAN, AI_CANNOT, isAuthorizationId, isKnownAiHost, redirectHost, safeReturnUrl } from "@/lib/connect-ai";
 import { useStudent } from "@/lib/student-store";
 import { browserSupabase } from "@/lib/supabase-browser";
 import { buttonClass, toneClass } from "@/lib/ui";
@@ -12,6 +12,7 @@ import { GoogleSignIn } from "./GoogleSignIn";
 
 const noop = () => () => {};
 const card = "mx-auto max-w-xl space-y-4 rounded-2xl border border-zinc-200 p-6";
+const BAD_RETURN = "This app's return address isn't a normal web address, so Trakur won't send you there. Don't connect this app.";
 
 type Load = { state: "loading" } | { state: "redirecting" } | { state: "error"; message: string } | { state: "ready"; details: OAuthAuthorizationDetails };
 
@@ -24,6 +25,7 @@ export function OAuthConsent() {
   const signedIn = mounted && student.ready && !!student.auth;
   const [load, setLoad] = useState<Load>({ state: "loading" });
   const [busy, setBusy] = useState<"approve" | "deny" | null>(null);
+  const [vouched, setVouched] = useState(false);
 
   useEffect(() => {
     if (!id || !signedIn) return;
@@ -35,9 +37,12 @@ export function OAuthConsent() {
         if (error || !data) return setLoad({ state: "error", message: error?.message ?? "No details came back." });
         // Already approved earlier: Supabase hands back the redirect straight away.
         if ("redirect_url" in data) {
+          const next = safeReturnUrl(data.redirect_url);
+          if (!next) return setLoad({ state: "error", message: BAD_RETURN });
           setLoad({ state: "redirecting" });
-          window.location.assign(data.redirect_url);
-        } else setLoad({ state: "ready", details: data });
+          window.location.assign(next);
+        } else if (!safeReturnUrl(data.redirect_uri)) setLoad({ state: "error", message: BAD_RETURN });
+        else setLoad({ state: "ready", details: data });
       })
       .catch((e: Error) => live && setLoad({ state: "error", message: e.message }));
     return () => {
@@ -55,7 +60,13 @@ export function OAuthConsent() {
       setLoad({ state: "error", message: error?.message ?? "No redirect came back." });
       return;
     }
-    window.location.assign(data.redirect_url);
+    const next = safeReturnUrl(data.redirect_url);
+    if (!next) {
+      setBusy(null);
+      setLoad({ state: "error", message: BAD_RETURN });
+      return;
+    }
+    window.location.assign(next);
   };
 
   if (!id) {
@@ -94,19 +105,34 @@ export function OAuthConsent() {
 
   const senior = student.plan.key === "senior";
   const { client, redirect_uri } = load.details;
-  const host = redirectHost(redirect_uri);
+  const host = redirectHost(redirect_uri) ?? redirect_uri;
+  const known = isKnownAiHost(redirect_uri);
   return (
     <div className={card}>
-      <h1 className="font-display text-2xl font-bold">Connect {client.name} to Trakur?</h1>
+      <h1 className="font-display text-2xl font-bold">
+        Connect {client.name} <span className="break-all text-lg font-semibold text-zinc-600">({host})</span> to Trakur?
+      </h1>
       <p className="text-sm text-zinc-600">
-        Signed in as <span className="font-medium">{student.auth.email}</span>. If you approve, {client.name} can use your tracker data until you disconnect it on the Connect AI page.
+        Signed in as <span className="font-medium">{student.auth.email}</span>. If you approve, this app can use your tracker data until you disconnect it on the Connect AI page.
       </p>
-      <div className={`rounded-lg border p-3 text-sm ${toneClass("soon")}`}>
+      <div className={`rounded-lg border p-3 text-sm ${toneClass(known ? "soon" : "urgent")}`}>
         <p>
-          After you allow, you&apos;ll be sent back to: <strong className="break-all text-base">{host ?? redirect_uri}</strong>
+          After you allow, you&apos;ll be sent back to: <strong className="break-all text-base">{host}</strong>
         </p>
         {client.uri && <p className="mt-1 break-all text-xs">App website: {client.uri}</p>}
-        <p className="mt-1 text-xs">Only allow if you started this from ChatGPT or Claude yourself.</p>
+        {known ? (
+          <p className="mt-1 text-xs">Only allow if you started this from ChatGPT or Claude yourself.</p>
+        ) : (
+          <>
+            <p className="mt-1 font-semibold">
+              Trakur doesn&apos;t recognise this app. Any app can call itself &quot;{client.name}&quot;. Approve only if you set it up yourself and you trust {host}.
+            </p>
+            <label className="mt-2 flex items-start gap-2 text-xs">
+              <input type="checkbox" checked={vouched} onChange={(e) => setVouched(e.target.checked)} className="mt-0.5" />
+              I set this app up myself and I trust {host}.
+            </label>
+          </>
+        )}
       </div>
       <div className="grid gap-4 text-sm sm:grid-cols-2">
         <div>
@@ -144,7 +170,7 @@ export function OAuthConsent() {
       <div className="flex flex-wrap gap-3">
         <button
           className={buttonClass("primary")}
-          disabled={!senior || busy != null}
+          disabled={!senior || busy != null || (!known && !vouched)}
           onClick={() => decide(true)}
         >
           {busy === "approve" ? "Approving…" : "Approve"}

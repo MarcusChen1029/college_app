@@ -36,6 +36,24 @@ const ISO = /^\d{4}-\d{2}-\d{2}$/;
 
 export const escapeHtml = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 
+/**
+ * Student-typed text (names, custom college names, task titles) goes out in mail from our domain. Keep it one short
+ * line and break anything that looks like a web address (a zero-width space after each dot), so mail apps can't turn
+ * "verify at evil.example" into a clickable link.
+ */
+export function plainText(s: string, max: number): string {
+  const one = s.replace(/\s+/g, " ").trim();
+  const cut = one.length > max ? `${one.slice(0, max - 1).trimEnd()}…` : one;
+  return cut.replace(/\.(?=\S)/g, ".​").replace(/:\/\//g, ":​//");
+}
+
+/** The edge function's caller may pass `today` for testing; only a real date within a day of now is honoured. */
+export function clampToday(raw: unknown, now = new Date()): string {
+  const real = now.toISOString().slice(0, 10);
+  if (typeof raw !== "string" || !ISO.test(raw)) return real;
+  return Math.abs(daysBetween(real, raw)) <= 1 ? raw : real;
+}
+
 /** Whole days from `today` to `date` (both yyyy-mm-dd); negative when `date` is past. */
 export function daysBetween(today: string, date: string): number {
   return Math.round((Date.parse(`${date}T00:00:00Z`) - Date.parse(`${today}T00:00:00Z`)) / 86_400_000);
@@ -57,11 +75,11 @@ export function selectDigest(rows: readonly DigestRow[], today: string): DigestS
     if (!isTask && (r.item !== "deadline" || days < 0)) continue;
     let s = byStudent.get(r.student_id);
     if (!s) {
-      const name = (r.student_name ?? "").trim() || "Student";
+      const name = plainText(r.student_name ?? "", 60) || "Student";
       byStudent.set(r.student_id, (s = { studentId: r.student_id, name, overdue: [], tasksDue: [], deadlines: [] }));
     }
     const entry: DigestEntry = {
-      title: (r.title ?? "").trim() || (isTask ? "Task" : "College"),
+      title: plainText(r.title ?? "", 120) || (isTask ? "Task" : "College"),
       label: isTask ? null : (r.label ?? "").trim() || "Application deadline",
       dueOn: r.due_on,
       days,

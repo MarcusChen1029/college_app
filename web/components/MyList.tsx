@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
-import { markSent, onlyEnglishPlan, onlyTestPlan, progress, type Checklist, type SentKind } from "@/lib/checklist";
+import { markSent, onlyEnglishPlan, onlyTestPlan, progress, safeLink, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
 import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
@@ -338,8 +338,8 @@ export function MyList({
                 {opened.college.name}
               </Link>
             )}
-            {opened.entry.custom?.website && (
-              <a href={opened.entry.custom.website} target="_blank" rel="noreferrer" className="text-xs text-blue-600 underline">
+            {opened.entry.custom?.website && safeLink(opened.entry.custom.website) && (
+              <a href={safeLink(opened.entry.custom.website)!} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline">
                 {t("application.website")}
               </a>
             )}

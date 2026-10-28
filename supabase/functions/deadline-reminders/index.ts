@@ -5,7 +5,7 @@
 // dry run without APP_URL, and a failure there is reported in the response without touching the student reminders.
 import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2.118.0";
 import { isFafsaOnly } from "../_shared/fafsa.ts";
-import { renderTeacherDigest, selectDigest, type DigestRow } from "../_shared/teacher-digest.ts";
+import { clampToday, renderTeacherDigest, selectDigest, type DigestRow } from "../_shared/teacher-digest.ts";
 
 type Due = {
   user_id: string;
@@ -141,7 +141,8 @@ Deno.serve(async (req) => {
   if (authErr || !ok) return new Response("forbidden", { status: 403 });
 
   const body = await req.json().catch(() => ({}));
-  const today: string = body.today ?? new Date().toISOString().slice(0, 10);
+  // A replayed or leaked secret must not be able to mail reminders for arbitrary dates, or push the digest log ahead.
+  const today = clampToday(body?.today);
   const { data, error } = await db.rpc("due_reminders", { today });
   if (error) return Response.json({ error: error.message }, { status: 500 });
 
