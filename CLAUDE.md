@@ -126,7 +126,12 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0038**; 0001-0037 are all applied to the project as of 2026-10-27) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0041**; 0001-0037 are all applied to the project as of 2026-10-27, 0038-0040 are the 2026-10-28 security fixes) **and** apply it to the project.
+  Since 0039 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
+- **AI connector containment (0039):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use `student_profiles`,
+  `student_colleges`, `transcript_schools`, `transcript_courses` (pre-request hook `api_request_guard`), only the columns/operations in
+  `guard_oauth_student_writes`, and no RPC. A new MCP tool that needs more must widen those two functions in a migration.
+  Smoke test: `supabase/patches/2026-10-28_security_hardening_smoke_test.sql`.
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with

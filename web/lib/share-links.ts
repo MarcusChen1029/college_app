@@ -34,6 +34,13 @@ export function shareUrl(origin: string, kind: ShareKind, token: string): string
   return `${base.origin}/share/${kind}/${token}`;
 }
 
+/** Links expire 180 days after they are made (migration 0039). No expiry recorded = not expired. */
+export function isExpired(expiresAt: string | null | undefined, nowMs: number): boolean {
+  if (!expiresAt) return false;
+  const t = Date.parse(expiresAt);
+  return Number.isFinite(t) && t <= nowMs;
+}
+
 /** "Never opened" / "Last opened Oct 27, 2026" for the management UI. */
 export function lastViewedText(iso: string | null | undefined): string {
   return iso ? `Last opened ${fmtDate(iso.slice(0, 10))}` : "Never opened";
