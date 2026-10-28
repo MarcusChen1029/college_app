@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { safeLink } from "@/lib/checklist";
+import { PASSWORD_MAX } from "@/lib/portal-slots";
+import { copySecret, copyText, deletePassword, loadSlots, revealPassword, savePassword, useVault, type VaultError } from "@/lib/portal-vault-client";
 import { openUrl, type Login, type ProgressState } from "@/lib/portals";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
@@ -47,6 +49,8 @@ function ProgressButtons({ label, progress }: { label: string; progress: RowProg
   );
 }
 
+const smallButton = "shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 disabled:opacity-50";
+
 function CopyButton({ value, label }: { value: string; label: string }) {
   const t = useT();
   const [done, setDone] = useState(false);
@@ -54,10 +58,10 @@ function CopyButton({ value, label }: { value: string; label: string }) {
   return (
     <button
       type="button"
-      className="shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800"
+      className={smallButton}
       aria-label={label}
       onClick={async () => {
-        await navigator.clipboard.writeText(value);
+        if (!(await copyText(value))) return;
         setDone(true);
         setTimeout(() => setDone(false), 1500);
       }}
@@ -67,15 +71,181 @@ function CopyButton({ value, label }: { value: string; label: string }) {
   );
 }
 
+const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
+  unauthorized: "portals.passwordSignedOutNote",
+  unavailable: "portals.passwordUnavailable",
+  not_found: "portals.passwordMissing",
+  unreadable: "portals.passwordUnreadable",
+  too_many: "portals.passwordTooMany",
+  failed: "portals.passwordError",
+};
+
+/**
+ * The password of one login. It is never part of the login data: the page learns which slots hold a password
+ * (once), and one password is fetched from the encrypted store only for Show or Copy, held by this field while the
+ * row is open, and forgotten on Hide. Typing a new one saves it on blur; Clear deletes it. Signed out it stays off:
+ * passwords are only kept, encrypted, in an account.
+ */
+function PasswordField({ slot, signedIn, label }: { slot: string | null; signedIn: boolean; label: string }) {
+  const t = useT();
+  const vault = useVault();
+  const [draft, setDraft] = useState("");
+  const [revealed, setRevealed] = useState<string | null>(null); // the saved password, once fetched for Show
+  const [show, setShow] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [note, setNote] = useState<MessageKey | null>(null);
+  const noteTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (signedIn && slot) void loadSlots();
+  }, [signedIn, slot]);
+  useEffect(() => () => {
+    if (noteTimer.current) clearTimeout(noteTimer.current);
+  }, []);
+
+  const flash = (key: MessageKey) => {
+    setNote(key);
+    if (noteTimer.current) clearTimeout(noteTimer.current);
+    noteTimer.current = setTimeout(() => setNote(null), 6000);
+  };
+  const forget = () => {
+    setDraft("");
+    setRevealed(null);
+    setShow(false);
+  };
+
+  const usable = signedIn && !!slot && vault.status !== "unavailable";
+  const saved = !!slot && vault.slots.has(slot);
+  const editing = draft !== (revealed ?? "");
+
+  const fetchSaved = async (): Promise<string | null> => {
+    if (!slot) return null;
+    if (revealed !== null) return revealed;
+    setBusy(true);
+    const r = await revealPassword(slot);
+    setBusy(false);
+    if ("error" in r) {
+      flash(VAULT_ERROR_TEXT[r.error]);
+      return null;
+    }
+    return r.password;
+  };
+
+  const commit = async () => {
+    if (!usable || !slot || !editing) return;
+    const value = draft;
+    setBusy(true);
+    const err = await savePassword(slot, value); // "" (a shown password erased) deletes it
+    setBusy(false);
+    if (err) return flash(VAULT_ERROR_TEXT[err]);
+    forget();
+    flash(value ? "portals.passwordSavedNote" : "portals.passwordDeletedNote");
+  };
+
+  const toggleShow = async () => {
+    if (show) {
+      // Hiding an unchanged saved password forgets it; a half-typed one is only masked again.
+      if (!editing) forget();
+      else setShow(false);
+      return;
+    }
+    if (draft) return setShow(true);
+    const pw = await fetchSaved();
+    if (pw === null) return;
+    setRevealed(pw);
+    setDraft(pw);
+    setShow(true);
+  };
+
+  const copy = async () => {
+    const pw = await fetchSaved();
+    if (pw !== null && (await copySecret(pw))) flash("portals.clipboardClears");
+  };
+
+  const clear = async () => {
+    if (!slot || !window.confirm(t("portals.clearPasswordConfirm", { label }))) return;
+    setBusy(true);
+    const err = await deletePassword(slot);
+    setBusy(false);
+    if (err) return flash(VAULT_ERROR_TEXT[err]);
+    forget();
+    flash("portals.passwordDeletedNote");
+  };
+
+  const placeholder = !signedIn
+    ? t("portals.passwordSignedOut")
+    : vault.status === "unavailable"
+      ? t("portals.passwordOff")
+      : saved
+        ? t("portals.passwordSaved")
+        : vault.status === "loading"
+          ? t("portals.passwordChecking")
+          : t("portals.passwordPlaceholder");
+  const standing: MessageKey | null = !signedIn
+    ? "portals.passwordSignedOutNote"
+    : vault.status === "unavailable"
+      ? "portals.passwordUnavailable"
+      : vault.status === "error"
+        ? "portals.passwordError"
+        : null;
+  const shown = note ?? standing;
+  // Keeps focus in the field while a button is pressed, so pressing Show doesn't first save a half-typed password.
+  const keepFocus = (e: React.MouseEvent) => e.preventDefault();
+
+  return (
+    <div className="min-w-0">
+      <div className="flex items-center gap-1">
+        <input
+          type={show ? "text" : "password"}
+          className={`${input} flex-1 disabled:bg-zinc-50`}
+          value={draft}
+          maxLength={PASSWORD_MAX}
+          disabled={!usable}
+          placeholder={placeholder}
+          // A portal's password, not this site's: keep browsers and password managers from saving or filling it here.
+          autoComplete="off"
+          data-1p-ignore="true"
+          data-lpignore="true"
+          aria-label={t("portals.passwordFor", { label })}
+          onChange={(e) => setDraft(e.target.value)}
+          onBlur={() => void commit()}
+        />
+        {usable && (draft || saved) && (
+          <button type="button" className={smallButton} disabled={busy} onMouseDown={keepFocus} onClick={() => void toggleShow()}>
+            {show ? t("portals.hide") : t("portals.show")}
+          </button>
+        )}
+        {usable && saved && !editing && (
+          <>
+            <button type="button" className={smallButton} disabled={busy} aria-label={t("portals.copyPassword", { label })} onMouseDown={keepFocus} onClick={() => void copy()}>
+              {t("common.copy")}
+            </button>
+            <button type="button" className={smallButton} disabled={busy} aria-label={t("portals.clearPasswordFor", { label })} onMouseDown={keepFocus} onClick={() => void clear()}>
+              {t("portals.clearPassword")}
+            </button>
+          </>
+        )}
+      </div>
+      {shown && (
+        <p className="mt-1 text-xs text-zinc-500" role="status">
+          {t(shown)}
+        </p>
+      )}
+    </div>
+  );
+}
+
 /**
  * One portal as a collapsible box. The name opens the portal in a new tab; clicking anywhere
- * else on the box shows the saved login for checking or editing (saved on blur).
+ * else on the box shows the saved login for checking or editing (saved on blur). The password is
+ * kept apart from `login`, in the encrypted store under `slot` (portal-slots.ts).
  */
 export function LoginRow({
   name,
   hint,
   official,
   login,
+  slot,
+  signedIn,
   onSave,
   onRemove,
   onRename,
@@ -86,6 +256,9 @@ export function LoginRow({
   hint?: string;
   official?: string | null;
   login: Login;
+  /** Where this login's password is kept; null when it can't have one yet. */
+  slot: string | null;
+  signedIn: boolean;
   onSave: (l: Login) => void;
   onRemove?: () => void;
   onRename?: (name: string) => void;
@@ -95,10 +268,9 @@ export function LoginRow({
 }) {
   const t = useT();
   const [open, setOpen] = useState(!name && !!onRename);
-  const [show, setShow] = useState(false);
   const save = (patch: Partial<Login>) => {
     const next = { ...login, ...patch };
-    if (next.url !== login.url || next.username !== login.username || next.password !== login.password) onSave(next);
+    if (next.url !== login.url || next.username !== login.username) onSave(next);
   };
   const link = safeLink(openUrl(login, official ?? null));
   const label = name || t("portals.untitled");
@@ -191,21 +363,7 @@ export function LoginRow({
                 />
                 <CopyButton value={login.username} label={t("portals.copyUsername", { label })} />
               </div>
-              <div className="flex items-center gap-1">
-                <input
-                  type={show ? "text" : "password"}
-                  className={`${input} flex-1`}
-                  defaultValue={login.password}
-                  placeholder={t("portals.passwordPlaceholder")}
-                  autoComplete="new-password"
-                  aria-label={t("portals.passwordFor", { label })}
-                  onBlur={(e) => save({ password: e.target.value })}
-                />
-                <button type="button" className="shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc-100" onClick={() => setShow((v) => !v)}>
-                  {show ? t("portals.hide") : t("portals.show")}
-                </button>
-                <CopyButton value={login.password} label={t("portals.copyPassword", { label })} />
-              </div>
+              <PasswordField slot={slot} signedIn={signedIn} label={label} />
             </div>
             {onRemove && (
               <button type="button" className={buttonClass("danger", "sm")} onClick={onRemove}>

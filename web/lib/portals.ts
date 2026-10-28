@@ -9,8 +9,10 @@ import type { Checklist } from "./checklist.ts";
 import type { RegionCode } from "./regions";
 import type { Status } from "./student-store";
 
-export type Login = { url: string; username: string; password: string };
-export const EMPTY_LOGIN: Login = { url: "", username: "", password: "" };
+// No password here: saved passwords live only in the encrypted store (portal_passwords, migration 0038), found by slot
+// (portal-slots.ts). Rows written by older builds may still carry one; portal-slots.ts strips it on read and write.
+export type Login = { url: string; username: string };
+export const EMPTY_LOGIN: Login = { url: "", username: "" };
 
 /** "application" systems are always listed; "optional" ones (testing, aid, visas) are added under Other when needed. */
 export type PortalGroup = "application" | "optional";
@@ -185,6 +187,31 @@ export function withProgress(data: PortalData, key: string, patch: { done?: bool
   const note = (patch.note ?? prev?.note ?? "").trim();
   const next: PortalProgress = { done: patch.done ?? prev?.done ?? false, ...(note ? { note } : {}) };
   return { ...data, progress: { ...data.progress, [key]: next } };
+}
+
+const blank = (l: Login | undefined) => !l || (!l.url?.trim() && !l.username?.trim());
+
+/**
+ * The account's portals plus the logins and marks it lacks from a copy saved in this browser before sign-in: a
+ * system or campus it doesn't have (or has with no link and no username), a custom portal it doesn't have, a
+ * progress mark it hasn't set. Whatever the account already holds wins.
+ */
+export function mergePortals(account: PortalData, local: PortalData): PortalData {
+  const fill = (a: Record<string, Login> | undefined, l: Record<string, Login> | undefined) => {
+    const out = { ...a };
+    for (const [k, v] of Object.entries(l ?? {})) if (!(k in out) || (blank(out[k]) && !blank(v))) out[k] = v;
+    return out;
+  };
+  const ids = new Set((account.custom ?? []).map((p) => p.id));
+  const custom = [...(account.custom ?? []), ...(local.custom ?? []).filter((p) => !ids.has(p.id))];
+  const progress = { ...local.progress, ...account.progress };
+  return {
+    ...account,
+    ...(account.systems || local.systems ? { systems: fill(account.systems, local.systems) } : {}),
+    ...(account.campuses || local.campuses ? { campuses: fill(account.campuses, local.campuses) } : {}),
+    ...(custom.length ? { custom } : {}),
+    ...(Object.keys(progress).length ? { progress } : {}),
+  };
 }
 
 /** The data without the progress entries for these keys (a removed portal or campus keeps no mark). */

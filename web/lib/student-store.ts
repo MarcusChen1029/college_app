@@ -2,13 +2,18 @@
 
 // Student profile + college list.
 // Signed out: kept in localStorage. Signed in: stored in Supabase (student_profiles /
-// student_colleges, per-user RLS); anything saved locally is merged in on first sign-in.
+// student_colleges, per-user RLS); what was saved locally is added to the account at sign-in if the student says so.
+// Portal passwords are not part of either copy: they live only in the encrypted store (portal-vault-client.ts).
 
 import { useSyncExternalStore } from "react";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
+import { collegeSlot, loginCount, passwordsIn, withoutPasswords, type SlotPassword } from "./portal-slots";
+import { forgetPassword, importPasswords } from "./portal-vault-client";
+import { mergePortals } from "./portals";
 import { parseRole, type Role } from "./roles";
+import { EMPTY_LOCAL, hasLocalData, parseLocal, profileHasData, serializeLocal, type LocalData } from "./student-local";
 import {
   COLLEGE_COLUMNS,
   fromEntry,
@@ -72,6 +77,8 @@ export type CollegeRef = { slug: string; id: string };
 
 type Auth = { userId: string; email: string | null } | null;
 export type TeacherProfile = { displayName: string; school: string | null };
+/** What this browser saved while signed out, as offered to the account at sign-in. */
+export type LocalFound = { colleges: number; logins: number; passwords: number };
 // role: undefined while loading or signed out; null when signed in but no role chosen yet (/welcome).
 type State = {
   profile: StudentProfile;
@@ -90,16 +97,43 @@ type State = {
   sessionChecked: boolean; // the initial session lookup has resolved (with or without a user)
   syncing: boolean;
   error: string | null;
+  /** Signed in with data still saved in this browser from before: the sign-in dialog asks whether to add it. */
+  localFound: LocalFound | null;
+  /** Signed out: passwords an older build saved in this browser, waiting to be moved into an account. */
+  localPasswordCount: number;
 };
 
 const KEY = "college-tracker:v1";
-const EMPTY_PORTAL: Portal = { url: "", username: "", password: "" };
-const EMPTY: State = { profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], auth: null, role: undefined, teacherProfile: null, ready: false, sessionChecked: false, syncing: false, error: null };
+const EMPTY_PORTAL: Portal = { url: "", username: "" };
+const EMPTY: State = {
+  profile: {},
+  list: [],
+  recommenders: [],
+  scholarships: [],
+  transcriptSchools: [],
+  transcriptCourses: [],
+  auth: null,
+  role: undefined,
+  teacherProfile: null,
+  ready: false,
+  sessionChecked: false,
+  syncing: false,
+  error: null,
+  localFound: null,
+  localPasswordCount: 0,
+};
 const listeners = new Set<() => void>();
 let state: State = EMPTY;
 let started = false;
 let lastLoad = 0; // when the account copy was last read
 let savesInFlight = 0;
+// Passwords an older build saved in this browser's copy: memory only (never written back), imported at sign-in.
+let localPasswords: SlotPassword[] = [];
+// The stored copy as last read or written (without passwords), so a state that hasn't changed isn't rewritten.
+let storedJson: string | null = null;
+// "later" after "Not now" in the sign-in dialog: don't ask again until the next page load or sign-in.
+let mergeChoice: "ask" | "later" = "ask";
+let remoteLegacyImported = false;
 
 function emit(patch: Partial<State>) {
   state = { ...state, ...patch };
@@ -107,54 +141,63 @@ function emit(patch: Partial<State>) {
   listeners.forEach((l) => l());
 }
 
-type Local = Pick<State, "profile" | "list" | "recommenders" | "scholarships" | "transcriptSchools" | "transcriptCourses">;
-const EMPTY_LOCAL: Local = { profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [] };
+type Local = LocalData;
+const pickLocal = (s: State): Local => ({
+  profile: s.profile,
+  list: s.list,
+  recommenders: s.recommenders,
+  scholarships: s.scholarships,
+  transcriptSchools: s.transcriptSchools,
+  transcriptCourses: s.transcriptCourses,
+});
 
 function loadLocal(): Local {
+  let raw: string | null = null;
   try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return EMPTY_LOCAL;
-    const parsed = JSON.parse(raw);
-    // v1 entries predate institutionId/checklist; keep what we can.
-    const list = (parsed.list ?? []).map((e: Partial<ListEntry>) => ({ checklist: {}, institutionId: "", portal: EMPTY_PORTAL, ...e }));
-    return {
-      profile: parsed.profile ?? {},
-      list,
-      recommenders: Array.isArray(parsed.recommenders) ? parsed.recommenders : [],
-      scholarships: Array.isArray(parsed.scholarships) ? parsed.scholarships : [],
-      transcriptSchools: Array.isArray(parsed.transcriptSchools) ? parsed.transcriptSchools : [],
-      transcriptCourses: Array.isArray(parsed.transcriptCourses) ? parsed.transcriptCourses : [],
-    };
-  } catch {
-    return EMPTY_LOCAL;
-  }
+    raw = window.localStorage.getItem(KEY);
+  } catch {}
+  const { data, passwords } = parseLocal(raw);
+  localPasswords = passwords;
+  storedJson = raw ? serializeLocal(data) : null;
+  return data;
 }
 
+/** The signed-out view of this browser's copy. */
+const localState = () => ({ ...loadLocal(), localPasswordCount: localPasswords.length });
+
 function saveLocal() {
+  const json = serializeLocal(pickLocal(state));
+  // Nothing changed: leave the stored copy alone. A copy from an older build may still hold passwords; they stay
+  // until sign-in moves them into the account (the Google sign-in reloads the page) or the student removes them.
+  if (json === storedJson) return;
   try {
-    window.localStorage.setItem(
-      KEY,
-      JSON.stringify({
-        profile: state.profile,
-        list: state.list,
-        recommenders: state.recommenders,
-        scholarships: state.scholarships,
-        transcriptSchools: state.transcriptSchools,
-        transcriptCourses: state.transcriptCourses,
-      }),
-    );
+    window.localStorage.setItem(KEY, json);
+    storedJson = json;
   } catch {
     // storage unavailable (private mode) — keep in memory only
   }
 }
 
-function clearLocal() {
+/** Replaces the stored copy (removing it when empty). Never holds a password. */
+function writeLocal(d: Local) {
   try {
-    window.localStorage.removeItem(KEY);
+    if (hasLocalData(d, [])) {
+      const json = serializeLocal(d);
+      window.localStorage.setItem(KEY, json);
+      storedJson = json;
+    } else {
+      window.localStorage.removeItem(KEY);
+      storedJson = null;
+    }
   } catch {}
 }
 
-async function loadRemote(userId: string, email: string | null) {
+function clearLocal() {
+  localPasswords = [];
+  writeLocal(EMPTY_LOCAL);
+}
+
+async function loadRemote(userId: string, email: string | null, opts: { merge?: boolean } = {}): Promise<{ passwordsFailed: number }> {
   const db = browserSupabase();
   emit({ syncing: true, error: null });
   try {
@@ -170,10 +213,12 @@ async function loadRemote(userId: string, email: string | null) {
         if (t.data) teacherProfile = { displayName: t.data.display_name, school: t.data.school };
       }
       lastLoad = Date.now();
-      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false });
-      return;
+      emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false, localFound: null });
+      return { passwordsFailed: 0 };
     }
     const local = loadLocal();
+    const localPw = localPasswords;
+    const merge = !!opts.merge;
     const [p, l] = await Promise.all([
       db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
       db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at"),
@@ -181,23 +226,52 @@ async function loadRemote(userId: string, email: string | null) {
     if (p.error) throw p.error;
     if (l.error) throw l.error;
 
-    // First sign-in on this browser: move local data into the account.
-    let profile = p.data ? toProfile(p.data as ProfileRow) : null;
-    if (!profile && Object.values(local.profile).some((v) => v != null && v !== false && !(Array.isArray(v) && v.length === 0))) {
-      const up = await db.from("student_profiles").upsert(fromProfile(userId, local.profile));
-      if (up.error) throw up.error;
-      profile = local.profile;
+    // A profile row written before migration 0038 can still hold passwords inside `portals` (until the strip patch
+    // runs). Copy them into the encrypted store once per page, before any save here (which never writes them) drops
+    // them. Once every one is in the store, take them out of the row too (the portals column only), so a password the
+    // student clears later can't come back from it. If any couldn't be copied, the row is left as it is.
+    const remoteLegacy = p.data ? passwordsIn((p.data as ProfileRow).portals) : [];
+    if (remoteLegacy.length && !remoteLegacyImported) {
+      remoteLegacyImported = true;
+      if ((await importPasswords(remoteLegacy)) === 0)
+        await db.from("student_profiles").update({ portals: withoutPasswords((p.data as ProfileRow).portals) }).eq("user_id", userId);
     }
+
+    let profile = p.data ? toProfile(p.data as ProfileRow) : null;
     let list = ((l.data ?? []) as unknown as CollegeRow[]).map(toEntry);
     const missing = local.list.filter((e) =>
       e.custom ? !!e.rowId && !list.some((x) => x.rowId === e.rowId) : e.institutionId && !list.some((x) => x.institutionId === e.institutionId),
     );
-    if (missing.length) {
-      const ins = await db
-        .from("student_colleges")
-        .upsert(missing.map((e) => fromEntry(userId, e)), { onConflict: "user_id,institution_id", ignoreDuplicates: true });
-      if (ins.error) throw ins.error;
-      list = [...list, ...missing];
+    // Data saved in this browser before sign-in is only added when the student said so (the sign-in dialog).
+    const offer = !merge && mergeChoice === "ask" && hasLocalData(local, localPw);
+    let passwordsFailed = 0;
+    if (merge) {
+      // A new account takes the local profile; an existing one keeps its own and gains the local logins it lacks.
+      if (!profile && profileHasData(local.profile)) {
+        const up = await db.from("student_profiles").upsert(fromProfile(userId, local.profile));
+        if (up.error) throw up.error;
+        profile = local.profile;
+      } else if (profile && local.profile.portals) {
+        const portals = mergePortals(profile.portals ?? {}, local.profile.portals);
+        if (JSON.stringify(portals) !== JSON.stringify(profile.portals ?? {})) {
+          const next = { ...profile, portals };
+          const up = await db.from("student_profiles").upsert(fromProfile(userId, next));
+          if (up.error) throw up.error;
+          profile = next;
+        }
+      }
+      if (missing.length) {
+        const ins = await db
+          .from("student_colleges")
+          .upsert(missing.map((e) => fromEntry(userId, e)), { onConflict: "user_id,institution_id", ignoreDuplicates: true });
+        if (ins.error) throw ins.error;
+        list = [...list, ...missing];
+      }
+      // The profile and list are in the account: move the passwords into the encrypted store, then take the profile,
+      // the list and every password out of this browser now, whatever happens to the reads below.
+      if (localPw.length) passwordsFailed = await importPasswords(localPw);
+      localPasswords = [];
+      writeLocal({ ...local, profile: {}, list: [] });
     }
     // Recommenders are separate from the list so a missing table (migration 0026 not applied yet) can't take the whole list down;
     // when they can't be read, the local copy is kept (not cleared) and nothing is merged.
@@ -209,7 +283,7 @@ async function loadRemote(userId: string, email: string | null) {
     } else {
       recommenders = ((rr.data ?? []) as unknown as RecommenderRow[]).map(toRecommender);
       const missingRecs = local.recommenders.filter((x) => x?.id && !recommenders.some((y) => y.id === x.id));
-      if (missingRecs.length) {
+      if (merge && missingRecs.length) {
         const ins = await db.from("recommenders").upsert(missingRecs.map((x) => fromRecommender(userId, x)), { onConflict: "id", ignoreDuplicates: true });
         if (ins.error) recError = `Couldn't move your recommenders into your account: ${ins.error.message}`;
         else recommenders = [...recommenders, ...missingRecs];
@@ -224,7 +298,7 @@ async function loadRemote(userId: string, email: string | null) {
     } else {
       scholarships = ((sr.data ?? []) as unknown as ScholarshipRow[]).map(toScholarship);
       const missingSch = local.scholarships.filter((x) => x?.id && !scholarships.some((y) => y.id === x.id));
-      if (missingSch.length) {
+      if (merge && missingSch.length) {
         const ins = await db.from("scholarships").upsert(missingSch.map((x) => fromScholarship(userId, x)), { onConflict: "id", ignoreDuplicates: true });
         if (ins.error) schError = `Couldn't move your scholarships into your account: ${ins.error.message}`;
         else scholarships = [...scholarships, ...missingSch];
@@ -246,7 +320,7 @@ async function loadRemote(userId: string, email: string | null) {
         transcriptSchools = ((ts.data ?? []) as unknown as TranscriptSchoolRow[]).map(toTranscriptSchool);
         transcriptCourses = ((tc.data ?? []) as unknown as TranscriptCourseRow[]).map(toTranscriptCourse);
         const merged = mergeTranscripts(
-          { schools: local.transcriptSchools.filter((x) => x?.id), courses: local.transcriptCourses.filter((x) => x?.id && x.schoolId) },
+          merge ? { schools: local.transcriptSchools.filter((x) => x?.id), courses: local.transcriptCourses.filter((x) => x?.id && x.schoolId) } : { schools: [], courses: [] },
           { schools: transcriptSchools, courses: transcriptCourses },
         );
         if (merged.toInsertSchools.length) {
@@ -265,13 +339,16 @@ async function loadRemote(userId: string, email: string | null) {
     } catch (e) {
       txError = `Couldn't load your transcript: ${(e as Error).message}`;
     }
-    if (!recError && !schError && !txError) clearLocal();
+    if (merge && !recError && !schError && !txError) clearLocal();
     lastLoad = Date.now();
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
-    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error });
+    const localFound = offer ? { colleges: missing.length, logins: loginCount(local.profile.portals, local.list, localPw), passwords: localPw.length } : null;
+    emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound });
+    return { passwordsFailed };
   } catch (e) {
     lastLoad = Date.now();
     emit({ auth: { userId, email }, ready: true, sessionChecked: true, syncing: false, error: `Couldn't load your saved list: ${(e as Error).message}` });
+    return { passwordsFailed: 0 };
   }
 }
 
@@ -284,7 +361,7 @@ function refreshIfStale() {
 function start() {
   if (started || typeof window === "undefined") return;
   started = true;
-  state = { ...state, ...loadLocal(), ready: true };
+  state = { ...state, ...localState(), ready: true };
   let supabase;
   try {
     supabase = browserSupabase();
@@ -300,7 +377,9 @@ function start() {
     } else if (!user && state.auth) {
       // Back to the browser's own copy (empty for former students, whose local data moved into the account),
       // so a teacher who signs out doesn't overwrite local data they never merged.
-      emit({ auth: null, role: undefined, teacherProfile: null, ...loadLocal(), error: null });
+      mergeChoice = "ask";
+      remoteLegacyImported = false;
+      emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null });
     }
   });
   document.addEventListener("visibilitychange", () => {
@@ -340,7 +419,7 @@ function subscribe(l: () => void) {
   listeners.add(l);
   const onStorage = (e: StorageEvent) => {
     if (e.key === KEY && !state.auth) {
-      state = { ...state, ...loadLocal() };
+      state = { ...state, ...localState() };
       l();
     }
   };
@@ -427,6 +506,7 @@ export function useStudent() {
       if (a && entry) {
         const key = rowKey(entry);
         void remote(() => db().from("student_colleges").delete().eq(key.column, key.value));
+        forgetPassword(collegeSlot(entry));
       }
     },
     update(slug: string, patch: Partial<Pick<ListEntry, "plan" | "status" | "notes" | "checklist" | "portal" | "aidOfferUsd">>) {
@@ -567,6 +647,32 @@ export function useStudent() {
     },
     clearError() {
       emit({ error: null });
+    },
+    /**
+     * The sign-in dialog's "Add to this account": merges this browser's signed-out copy into the account and moves
+     * its passwords into the encrypted store. Resolves to how many passwords couldn't be moved.
+     */
+    async addLocalData(): Promise<{ passwordsFailed: number }> {
+      const a = state.auth;
+      if (!a) return { passwordsFailed: 0 };
+      emit({ localFound: null });
+      return loadRemote(a.userId, a.email, { merge: true });
+    },
+    /** "Don't add": deletes this browser's signed-out copy, passwords included. */
+    discardLocalData() {
+      clearLocal();
+      emit({ localFound: null });
+    },
+    /** "Not now" (or closing the dialog): keeps the copy in this browser, unmerged; asks again on the next page load. */
+    keepLocalForLater() {
+      mergeChoice = "later";
+      emit({ localFound: null });
+    },
+    /** Signed out: removes the passwords an older build saved in this browser. */
+    forgetLocalPasswords() {
+      localPasswords = [];
+      writeLocal(pickLocal(state));
+      emit({ localPasswordCount: 0 });
     },
   };
 }
