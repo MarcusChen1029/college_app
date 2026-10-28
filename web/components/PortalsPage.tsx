@@ -28,6 +28,8 @@ import {
   type PortalRegion,
   type PortalSystem,
 } from "@/lib/portals";
+import { collegeSlot, portalSlot } from "@/lib/portal-slots";
+import { forgetPassword } from "@/lib/portal-vault-client";
 import { activeRegions, regionLabel, type RegionCode } from "@/lib/regions";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
@@ -88,21 +90,28 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     onDone: (done) => commit(done === null ? withoutProgress(data, [key]) : withProgress(data, key, { done })),
     onNote: (note) => commit(withProgress(data, key, { note })),
   });
+  const signedIn = !!student.auth;
+  // A removed login takes its saved password (in the encrypted store) with it.
   const setSystem = (key: string, login: Login | null) => {
     const systems = { ...data.systems };
     if (login) systems[key] = login;
     else delete systems[key];
     commit(login ? { ...data, systems } : withoutProgress({ ...data, systems }, [key]));
+    if (!login) forgetPassword(portalSlot("system", key));
   };
   const setCampus = (key: string, login: Login | null) => {
     const campuses = { ...data.campuses };
     if (login) campuses[key] = login;
     else delete campuses[key];
     commit(login ? { ...data, campuses } : withoutProgress({ ...data, campuses }, [key]));
+    if (!login) forgetPassword(portalSlot("campus", key));
   };
   const custom = data.custom ?? [];
   const setCustom = (next: CustomPortal[]) => commit({ ...data, custom: next });
-  const removeCustom = (id: string) => commit(withoutProgress({ ...data, custom: custom.filter((x) => x.id !== id) }, [customProgressKey(id)]));
+  const removeCustom = (id: string) => {
+    commit(withoutProgress({ ...data, custom: custom.filter((x) => x.id !== id) }, [customProgressKey(id)]));
+    forgetPassword(portalSlot("custom", id));
+  };
 
   // The countries the student is applying to (all of them while none is chosen), in profile order.
   const regions = activeRegions(student.profile.targetRegions);
@@ -191,6 +200,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
               hint={sysText(t, "hint", s.key, s.hint)}
               official={s.url}
               login={data.systems?.[s.key] ?? EMPTY_LOGIN}
+              slot={portalSlot("system", s.key)}
+              signedIn={signedIn}
               onSave={(l) => setSystem(s.key, l)}
               onRemove={s.key === "stars" && starsListed ? undefined : () => window.confirm(t("portals.removeConfirm", { name: sysName(s) })) && setSystem(s.key, null)}
               progress={s.key === "stars" ? markStars() : mark(s.key)}
@@ -201,6 +212,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
               key={campusKey(s.key, c)}
               name={`${c} (${sysName(s)})`}
               login={data.campuses![campusKey(s.key, c)]}
+              slot={portalSlot("campus", campusKey(s.key, c))}
+              signedIn={signedIn}
               onSave={(l) => setCampus(campusKey(s.key, c), l)}
               onRemove={() => setCampus(campusKey(s.key, c), null)}
               progress={mark(campusKey(s.key, c))}
@@ -211,6 +224,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
               key={p.id}
               name={p.name}
               login={p}
+              slot={portalSlot("custom", p.id)}
+              signedIn={signedIn}
               onRename={(name) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, name } : x)))}
               onSave={(l) => setCustom(custom.map((x) => (x.id === p.id ? { ...x, ...l } : x)))}
               onRemove={() => window.confirm(t("portals.removeCustomConfirm", { name: p.name || t("portals.thisPortal") })) && removeCustom(p.id)}
@@ -245,6 +260,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
                     name={college.short_name ?? college.name}
                     hint={t("portals.submittedHint")}
                     login={entry.portal}
+                    slot={collegeSlot(entry)}
+                    signedIn={signedIn}
                     onSave={(portal) => student.update(college.slug, { portal })}
                     status={
                       !entry.custom && requiresStars(college.slug) ? (
@@ -271,13 +288,26 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   return (
     <div className="space-y-6">
       <p className={`rounded-lg border px-3 py-2 text-xs ${toneClass("soon")}`}>
-        {student.auth ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
+        {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
         {" · "}
         {(() => {
           const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
           return n === 1 ? t("portals.loginsSavedOne", { n }) : t("portals.loginsSavedMany", { n });
         })()}
       </p>
+
+      {!signedIn && student.localPasswordCount > 0 && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
+          <p className="min-w-0 flex-1">
+            {student.localPasswordCount === 1
+              ? t("portals.legacyLocalOne", { n: student.localPasswordCount })
+              : t("portals.legacyLocalMany", { n: student.localPasswordCount })}
+          </p>
+          <button type="button" className={buttonClass("secondary", "sm")} onClick={() => student.forgetLocalPasswords()}>
+            {t("portals.legacyLocalRemove")}
+          </button>
+        </div>
+      )}
 
       {hiddenCount > 0 && (
         <p className="rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
