@@ -14,9 +14,9 @@ export const AI_CAN = [
 export const AI_CANNOT = [
   "See your portal passwords, or change your portal logins",
   "Remove a college from your list",
-  "Delete an essay",
+  "Use Trakur's tools to delete an essay",
   "Change your subscription plan or reminder emails",
-  "Mark an application submitted before its checklist is complete, or record a decision before it is submitted",
+  "Use Trakur's tools to mark an application submitted before its checklist is complete, or record a decision before it is submitted",
 ] as const;
 
 export const AI_EXAMPLES = [

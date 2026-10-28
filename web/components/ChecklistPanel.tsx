@@ -192,6 +192,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
         <textarea
           id={`notes-${entry.slug}`}
           rows={2}
+          maxLength={10000}
           className={`${INPUT} w-full`}
           defaultValue={entry.notes}
           placeholder={t("application.cl.notesPlaceholder")}
