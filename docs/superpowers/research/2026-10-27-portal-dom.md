@@ -223,8 +223,10 @@ checks `window.name === "applyUCtab" + #windowSession` on every button/link clic
   (1.50 = 90 mins)" (`#<id>-error`) and "Please enter a number between 1 and 52."; banner `#alertDiv` "There are some errors below..."; nothing is
   saved. Weeks come back as "30.0".
 - Grade checkboxes (value "Y", Spring-style hidden `_name=on`) per category: `is<Prefix>9th|10th|11th|12th|After12th`, prefixes Award, EdPrep,
-  ExtraCurr, OtherCourse, Volunteer, WorkExp. "After 12th grade" (except Award) shows `<prefix>YearsAfter12` (0..10, 11 = "10+") and
-  `<prefix>MonthsAfter12` (0..11) selects ("How many months/years after 12th grade..."; WorkExp: `workExpAfter12thYears/Months`).
+  ExtraCurr, OtherCourse, Volunteer, WorkExp. "After 12th grade" (except Award) shows two selects, years (0..10, 11 = "10+") and months (0..11) ("How many months/years after 12th
+  grade..."), with these exact ids (live dump 2026-10-28): `edPrepYearsAfter12` / `edPrepMonthsAfter12`, `extraCurrYearsAfter12` / `extraCurrMonthsAfter12`,
+  `otherCourseYearsAfter12` / `otherCourseMonthsAfter12`, `volunteerYearsAfter12` / `volunteerMonthsAfter12`, `workExpAfter12thYears` / `workExpAfter12thMonths`.
+  The Award grade checkbox is `isAwardAfter12th` (no years/months).
   Hint: "If you participated during the summer, select the grade you were in before that summer."
 - Per category (all required unless noted):
   | Category | Fields |

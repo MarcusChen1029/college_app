@@ -99,6 +99,8 @@ export function ucItemLabel(e: UcEntry): string {
 
 const text = (s: string) => s.replace(/\r\n?/g, "\n").trim();
 const num = (n: number) => String(n);
+/** The stored number exactly as typed ("5.5", "1.25"); a whole number gets the ".0" the list shows ("30.0"). Never rounded: `canon` compares numerically. */
+const listed = (n: number) => (Number.isInteger(n) ? n.toFixed(1) : String(n));
 
 function reasonsOf(e: UcEntry, issues: Issue[], kind: Issue["kind"]): string[] {
   return issues.filter((i) => i.kind === kind).map((i) => (kind === "missing" ? `${questionName(e, i.field)}: needs an answer` : `${questionName(e, i.field)}: ${i.message}`));
@@ -203,7 +205,7 @@ function expectOf(e: UcEntry): Record<string, string[]> {
     if (e.description.trim()) out["What you did"] = [text(e.description)];
     const when = GRADES.filter((g) => g !== "PG" && e.grades.includes(g)).map((g) => `${GRADE_ID[g]} grade`);
     if (when.length) out["When you did it"] = when;
-    if (e.hoursPerWeek !== null && e.weeksPerYear !== null) out["Time you spent"] = [`${e.hoursPerWeek.toFixed(1)} hours per week`, `${e.weeksPerYear.toFixed(1)} weeks per year`];
+    if (e.hoursPerWeek !== null && e.weeksPerYear !== null) out["Time you spent"] = [`${listed(e.hoursPerWeek)} hours per week`, `${listed(e.weeksPerYear)} weeks per year`];
     return out;
   }
   // An educational preparation program from UC's list shows the program's label, which is not the stored name: nothing to expect then.

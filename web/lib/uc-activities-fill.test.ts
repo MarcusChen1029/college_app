@@ -241,7 +241,17 @@ test("read-back: matching list-page text passes, whitespace, case and decimals a
   assert.deepEqual(ucReadBackMismatches(p, shown), []);
 });
 
-test("read-back: a changed value, a missing grade and a missing section are each reported with the item's label", () => {
+test("read-back keeps two-decimal hours exact: 1.25 passes as 1.25 and fails if UC shows 1.3", () => {
+  const p = plan(club({ hoursPerWeek: 1.25 }));
+  assert.deepEqual(p.expect["Time you spent"], ["1.25 hours per week", "30.0 weeks per year"]);
+  const base = { "Name of the activity": ["Robotics Club"], "What you did": ["Built and drove a competition robot."], "When you did it": ["10th grade", "11th grade"] };
+  assert.deepEqual(ucReadBackMismatches(p, { ...base, "Time you spent": ["1.25 hours per week", "30.0 weeks per year"] }), []);
+  const bad = ucReadBackMismatches(p, { ...base, "Time you spent": ["1.3 hours per week", "30.0 weeks per year"] });
+  assert.equal(bad.length, 1);
+  assert.ok(bad[0]!.includes("1.25 hours per week"));
+});
+
+test("read-back: a changed value,a missing grade and a missing section are each reported with the item's label", () => {
   const p = plan(club());
   const out = ucReadBackMismatches(p, { "Name of the activity": ["Robotics Clu"], "When you did it": ["10th grade"], "Time you spent": ["5.5 hours per week", "30.0 weeks per year"] });
   assert.equal(out.length, 3);
