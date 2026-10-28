@@ -31,6 +31,15 @@ export const metadata: Metadata = {
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
 
+const FOOTER_LINKS = [
+  ["/privacy", "legal.footer.privacy"],
+  ["/terms", "legal.footer.terms"],
+  ["/security", "legal.footer.security"],
+  ["/contact", "legal.footer.contact"],
+  ["/pricing", "nav.pricing"],
+  ["/help", "nav.help"],
+] as const;
+
 const HEADER = "sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white";
 const NAV = "mx-auto flex max-w-7xl items-center gap-x-4 px-4 lg:gap-x-6 py-3 text-sm font-medium";
 
@@ -110,7 +119,19 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
       </main>
       <footer className="relative mt-0 print:hidden bg-zinc-100 pb-6 pt-2 text-center text-xs text-zinc-500">
         <Wave className="absolute -top-[39px] left-0 h-10 w-full" fill="#e9f2fa" />
-        <p className="mx-auto max-w-2xl px-4 pt-6">{t("footer.disclaimer")}</p>
+        <nav aria-label={t("legal.footer.label")} className="mx-auto max-w-2xl px-4 pt-6">
+          {/* Phones: two even rows of three; wider screens: one centered row. */}
+          <ul className="grid grid-cols-3 gap-y-2 text-center text-sm font-medium text-zinc-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-6">
+            {FOOTER_LINKS.map(([href, key]) => (
+              <li key={href}>
+                <Link href={href} className="hover:text-zinc-900 hover:underline underline-offset-4">
+                  {t(key)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="mx-auto max-w-2xl px-4 pt-4">{t("footer.disclaimer")}</p>
       </footer>
     </I18nProvider>
   );

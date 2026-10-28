@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LegalRich } from "@/components/LegalRich";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
@@ -32,6 +33,9 @@ export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
         {busy ? t("signIn.opening") : t("signIn.google")}
       </button>
       {error && <p className="text-sm text-urgent">{error}</p>}
+      <p className="text-xs text-zinc-500">
+        <LegalRich text={t("legal.signIn.consent")} newTab linkClassName="underline underline-offset-2 hover:text-zinc-800" />
+      </p>
     </>
   );
 }

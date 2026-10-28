@@ -74,13 +74,17 @@ export function ConnectAi() {
           <GoogleSignIn returnTo="/connect-ai" />
         </section>
       ) : !senior ? (
-        <section className={`${card} space-y-3 border-blue-200 bg-blue-50/50`}>
-          <h2 className="font-semibold">{t("misc.connect.seniorTitle")}</h2>
-          <p className="text-sm text-zinc-600">{t("misc.connect.seniorBody", { name: student.plan.name })}</p>
-          <Link href="/pricing" className={button}>
-            {t("misc.connect.seePlans")}
-          </Link>
-        </section>
+        <>
+          <section className={`${card} space-y-3 border-blue-200 bg-blue-50/50`}>
+            <h2 className="font-semibold">{t("misc.connect.seniorTitle")}</h2>
+            <p className="text-sm text-zinc-600">{t("misc.connect.seniorBody", { name: student.plan.name })}</p>
+            <Link href="/pricing" className={button}>
+              {t("misc.connect.seePlans")}
+            </Link>
+          </section>
+          {/* Every plan can still disconnect: an app approved while on Senior keeps its grant after a plan change. */}
+          <Connected />
+        </>
       ) : (
         <>
           <Setup />
