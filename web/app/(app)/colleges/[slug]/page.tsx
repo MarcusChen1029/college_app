@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { Pill, SchoolLogo, TierBadge } from "@/components/badges";
+import { ApplyTags, Pill, SchoolLogo, TierBadge } from "@/components/badges";
 import { JumpNav, type JumpItem } from "@/components/JumpNav";
+import { applyTags } from "@/lib/apply-tags";
+import { collegeSupplements } from "@/lib/supplements-data";
 import { CollegeActions } from "@/components/CollegeActions";
 import { CollegeSupplementsSection, EssaysRequirement, IntlFinanceNote, SupplementSourceItems } from "@/components/CollegeSupplements";
 import { CollegeOutcomes } from "@/components/CollegeOutcomes";
@@ -96,6 +98,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   {c.academic_calendar && ` · ${t("college.calendar", { x: c.academic_calendar })}`}
                 </span>
               </p>
+              <ApplyTags tags={applyTags(collegeSupplements(c.slug), req?.app_fee_usd)} className="mt-2" />
               <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold">
                 {c.website && (
                   <a className="text-blue-700 hover:underline" href={c.website} target="_blank" rel="noreferrer">
