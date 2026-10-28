@@ -12,6 +12,9 @@
 --    can no longer SELECT it). anon/authenticated keep exactly their other privileges on student_colleges, now per
 --    column: a NEW column on student_colleges must be granted to authenticated explicitly, or the website and the
 --    AI tools can't read or write it. Columns from the live catalog, 2026-10-28.
+-- 4. AI-connection (OAuth client_id) tokens lose the base student_profiles / student_colleges tables: the deployed MCP
+--    tools use 0041's column-limited views ai_student_profiles / ai_student_colleges instead, so saved-login usernames,
+--    links and progress (portals, portal_url, portal_username), reminder settings and essays are out of their reach.
 -- Before patch 2026-10-28-drop-portal-password-column.sql drops the column, it drops trigger forbid_plaintext_password
 -- on student_colleges and the function strip_college_portal_password (both depend on it).
 -- Trigger and helper functions get no client grants and an empty search_path (0041 rules).
@@ -158,3 +161,26 @@ grant
   update (id, user_id, institution_id, plan_key, status, fit_override, checklist, portal_url, aid_offer_usd, notes,
           created_at, updated_at, portal_username, custom)
   on public.student_colleges to authenticated;
+
+-- ───────────── 4. AI tokens: the views only ─────────────
+
+-- Same as 0041, minus the two base tables. Applied after the deploy whose web/lib/mcp/tools.ts reads and writes the
+-- views (before it, the live MCP code still uses the base tables and every AI tool would fail).
+create or replace function public.api_request_guard() returns void
+language plpgsql stable set search_path = '' as $$
+declare
+  p text;
+begin
+  if not public.is_oauth_client() then return; end if;
+  p := regexp_replace(coalesce(current_setting('request.path', true), ''), '^(/rest/v1)?/+', '');
+  if p in ('ai_student_profiles', 'ai_student_colleges', 'transcript_schools', 'transcript_courses') then return; end if;
+  raise exception 'Connected AI apps can only use the student tables.' using errcode = '42501';
+end $$;
+
+-- Second layer, like 0041 (b): if the pre-request hook is ever reset, an OAuth token still sees and changes no base
+-- row. The views are unaffected: they are owned by postgres, which bypasses RLS (checked 2026-10-29: rolbypassrls,
+-- and neither table forces RLS). Website sessions carry no client_id and pass.
+create policy no_oauth_clients on public.student_profiles as restrictive for all to authenticated
+  using (not (select public.is_oauth_client())) with check (not (select public.is_oauth_client()));
+create policy no_oauth_clients on public.student_colleges as restrictive for all to authenticated
+  using (not (select public.is_oauth_client())) with check (not (select public.is_oauth_client()));

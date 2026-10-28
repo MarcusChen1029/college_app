@@ -27,18 +27,18 @@ import { getPlan, listLimit } from "../plans";
 import { REGIONS } from "../regions";
 import { DEFAULT_OPTIONS, EMPTY_HEADER } from "../resume";
 import {
-  COLLEGE_COLUMNS_NO_LOGINS,
+  AI_COLLEGE_COLUMNS,
+  AI_PROFILE_COLUMNS,
+  fromAiCollegeRow,
   fromTranscriptCourse,
   fromTranscriptSchool,
-  PROFILE_COLUMNS_NO_LOGINS,
-  toEntry,
   toProfile,
   toTranscriptCourse,
   toTranscriptSchool,
   TRANSCRIPT_COURSE_COLUMNS,
   TRANSCRIPT_SCHOOL_COLUMNS,
   transcriptCourseColumns,
-  type CollegeRow,
+  type AiCollegeRow,
   type ListEntry,
   type ProfileRow,
   type TranscriptCourseRow,
@@ -77,8 +77,9 @@ import {
 } from "./rules";
 
 // Every tool acts as the signed-in student through a client carrying their token, so row-level
-// security limits what any query can touch. Student tables are always read with the explicit
-// *_NO_LOGINS column lists, never "*", and nothing here writes the saved-login columns.
+// security limits what any query can touch. The profile and the list are read and written only through the views
+// ai_student_profiles / ai_student_colleges (migration 0041 section 1e), which have no saved-login, reminder or essay
+// columns; after 0043 an AI token can't reach the base tables at all. Reads use the explicit AI_* column lists, never "*".
 
 type Student = { db: SupabaseClient; userId: string; origin: string; profile: StudentProfile };
 type Handler<A> = (s: Student, args: A) => Promise<CallToolResult>;
@@ -93,7 +94,7 @@ function guarded<A>(handler: Handler<A>) {
     if (!auth?.extra?.userId) return toolError("Not signed in. Reconnect the connector and approve access.");
     try {
       const db = userClient(auth.token);
-      const { data, error } = await db.from("student_profiles").select(PROFILE_COLUMNS_NO_LOGINS).eq("user_id", auth.extra.userId).maybeSingle();
+      const { data, error } = await db.from("ai_student_profiles").select(AI_PROFILE_COLUMNS).eq("user_id", auth.extra.userId).maybeSingle();
       if (error) return toolError(`Couldn't load the student's profile: ${error.message}`);
       const profile = toProfile((data ?? { plan: "free" }) as ProfileRow);
       if (!isSenior(profile.plan)) return toolError(seniorOnlyMessage(auth.extra.origin));
@@ -105,9 +106,9 @@ function guarded<A>(handler: Handler<A>) {
 }
 
 async function readList(s: Student): Promise<ListEntry[]> {
-  const { data, error } = await s.db.from("student_colleges").select(COLLEGE_COLUMNS_NO_LOGINS).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
+  const { data, error } = await s.db.from("ai_student_colleges").select(AI_COLLEGE_COLUMNS).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
   if (error) throw new Error(error.message);
-  return ((data ?? []) as unknown as CollegeRow[]).map(toEntry);
+  return ((data ?? []) as unknown as AiCollegeRow[]).map(fromAiCollegeRow);
 }
 
 const check = (error: { message: string } | null, what: string) => {
@@ -124,7 +125,7 @@ const reply = <T,>(o: Outcome<T>): CallToolResult => (o.ok ? json(o.value) : too
 function changeProfile<T>(s: Student, plan: (profile: StudentProfile) => Planned<T>): Promise<Outcome<T>> {
   return modifyWithRetry(
     async () => {
-      const { data, error } = await s.db.from("student_profiles").select(`${PROFILE_COLUMNS_NO_LOGINS}, updated_at`).eq("user_id", s.userId).maybeSingle();
+      const { data, error } = await s.db.from("ai_student_profiles").select(`${AI_PROFILE_COLUMNS}, updated_at`).eq("user_id", s.userId).maybeSingle();
       if (error) throw new Error(`Couldn't load the profile: ${error.message}`);
       const row = data as unknown as (ProfileRow & { updated_at: string }) | null;
       if (!row) throw new Error("No profile found.");
@@ -132,7 +133,7 @@ function changeProfile<T>(s: Student, plan: (profile: StudentProfile) => Planned
     },
     ({ profile }) => plan(profile),
     async ({ version }, columns) => {
-      const { data, error } = await s.db.from("student_profiles").update(columns).eq("user_id", s.userId).eq("updated_at", version).select("updated_at");
+      const { data, error } = await s.db.from("ai_student_profiles").update(columns).eq("user_id", s.userId).eq("updated_at", version).select("updated_at");
       check(error, "the profile");
       return (data ?? []).length > 0;
     },
@@ -143,10 +144,10 @@ function changeProfile<T>(s: Student, plan: (profile: StudentProfile) => Planned
 function changeEntry<T>(s: Student, slug: string, plan: (entry: ListEntry, list: ListEntry[]) => Planned<T>): Promise<Outcome<T>> {
   return modifyWithRetry(
     async () => {
-      const { data, error } = await s.db.from("student_colleges").select(`${COLLEGE_COLUMNS_NO_LOGINS}, updated_at`).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
+      const { data, error } = await s.db.from("ai_student_colleges").select(`${AI_COLLEGE_COLUMNS}, updated_at`).eq("user_id", s.userId).not("institution_id", "is", null).order("created_at");
       if (error) throw new Error(error.message);
-      const rows = (data ?? []) as unknown as (CollegeRow & { updated_at: string })[];
-      return { list: rows.map(toEntry), versions: new Map(rows.map((r) => [r.institution_id ?? "", r.updated_at])) };
+      const rows = (data ?? []) as unknown as (AiCollegeRow & { updated_at: string })[];
+      return { list: rows.map(fromAiCollegeRow), versions: new Map(rows.map((r) => [r.institution_id ?? "", r.updated_at])) };
     },
     ({ list }) => {
       const entry = list.find((e) => e.slug === slug);
@@ -155,7 +156,7 @@ function changeEntry<T>(s: Student, slug: string, plan: (entry: ListEntry, list:
     async ({ list, versions }, columns) => {
       const entry = list.find((e) => e.slug === slug)!;
       const { data, error } = await s.db
-        .from("student_colleges")
+        .from("ai_student_colleges")
         .update(columns)
         .eq("user_id", s.userId)
         .eq("institution_id", entry.institutionId)
@@ -480,7 +481,7 @@ export function registerTools(server: McpServer) {
       if (!college) return notFound(slug);
       const c = checkAddCollege({ studentPlan: s.profile.plan, listedSlugs: list.map((e) => e.slug), slug, offeredPlans: college.plans, plan });
       if (!c.ok) return toolError(c.error);
-      const { error } = await s.db.from("student_colleges").insert({ user_id: s.userId, institution_id: college.id, plan_key: c.value.plan, status: "in_progress", notes: null, checklist: {} });
+      const { error } = await s.db.from("ai_student_colleges").insert({ user_id: s.userId, institution_id: college.id, plan_key: c.value.plan, status: "in_progress", notes: null, checklist: {} });
       check(error, slug);
       // Like the website's "move to list": an interested college leaves the interested list once it's listed.
       const cleared = await changeProfile(s, (p) => ((p.interested ?? []).includes(slug) ? { columns: { interested: (p.interested ?? []).filter((x) => x !== slug) }, value: true } : { columns: {}, value: false }));

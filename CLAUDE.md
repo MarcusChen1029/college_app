@@ -136,13 +136,18 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
   `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
   rows or localStorage. AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
-  student_profiles/student_colleges/transcript_*; every RPC, the password route, the Google routes and account deletion refuse them. Every page
+  the views `ai_student_profiles`/`ai_student_colleges` (no portals, portal_url/portal_username, reminder or essay columns) and transcript_*;
+  after 0043 never the base student_profiles/student_colleges, so saved-login usernames and links are out of their reach too.
+  Every RPC, the password route, the Google routes and account deletion refuse them. Every page
   sends a CSP (`web/lib/security-headers.ts`): a new third-party host the browser must reach needs adding there. Accounts are deleted at
   Settings > Delete account (`/api/account/delete`; every table cascades from auth.users).
-- **AI connector containment (0041):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use `student_profiles`,
-  `student_colleges`, `transcript_schools`, `transcript_courses` (pre-request hook `api_request_guard`), only the columns/operations in
-  `guard_oauth_student_writes`, and no RPC. A new MCP tool that needs more must widen those two functions in a migration.
-  Smoke test: `supabase/patches/2026-10-28_security_hardening_smoke_test.sql`.
+- **AI connector containment (0041, 0043):** an OAuth token (JWT with a `client_id` claim, used by `web/lib/mcp/tools.ts`) may only use the views
+  `ai_student_profiles` / `ai_student_colleges` and `transcript_schools` / `transcript_courses` (pre-request hook `api_request_guard`; 0041 still
+  allows the base student tables for the old MCP code, 0043 removes them and adds a restrictive `no_oauth_clients` policy on both), only the
+  columns/operations in `guard_oauth_student_writes`, and no RPC. The views are security-definer on purpose (owner postgres; isolation = their
+  `user_id = auth.uid()` WHERE + `with local check option`); their columns equal `AI_PROFILE_COLUMNS` / `AI_COLLEGE_COLUMNS` in
+  `web/lib/student-rows.ts` (`ai-views.test.ts` checks it). A new MCP tool that needs more must widen the hook, the trigger and the views in a migration.
+  Smoke test (0041 state): `supabase/patches/2026-10-28_security_hardening_smoke_test.sql`; 0043 state: `2026-10-28_forbid_plaintext_dry_run.sql`.
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with

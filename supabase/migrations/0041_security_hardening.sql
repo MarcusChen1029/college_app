@@ -3,16 +3,20 @@
 -- 1. AI connector containment (SRV-1). The MCP server (web/lib/mcp/tools.ts) calls the Data API with the student's
 --    OAuth access token: an ordinary Supabase JWT (role "authenticated") that also carries a client_id claim. Website
 --    sessions never carry client_id. Without this migration that token could do everything the student can: mint
---    extension tokens and share links, redeem join codes, switch roles, change reminder settings. Four layers now keep
+--    extension tokens and share links, redeem join codes, switch roles, change reminder settings. Five layers now keep
 --    it to what tools.ts actually does (student_profiles, student_colleges, transcript_schools, transcript_courses):
 --    a. api_request_guard() runs before every Data API request (PostgREST db-pre-request) and refuses an OAuth-client
---       token on any path except those four tables. This is the central gate.
+--       token on any path except those four tables and the two views of (e). This is the central gate.
 --    b. A RESTRICTIVE policy "no_oauth_clients" on every other user-data table.
 --    c. is_role() is false for an OAuth client, so every role-gated RPC refuses it; every other authenticated RPC calls
 --       refuse_oauth_client() first. All 33 client RPCs refuse an OAuth client even without (a).
 --    d. guard_oauth_student_writes() limits an OAuth client to the columns and operations tools.ts uses
 --       (no portal logins, plan, reminders, essays; no deletes except transcript courses).
---    A new MCP tool that needs another table, RPC or column must widen (a) and (d) in a new migration.
+--    e. Views ai_student_profiles / ai_student_colleges hold only the columns tools.ts reads or writes (no portals,
+--       portal_url, portal_username, portal_password, reminder settings, essays, aid offer). The deployed tools use
+--       them; 0043 (applied after that deploy) then refuses the two base tables to OAuth clients, so saved-login
+--       usernames and links are out of an AI token's reach. Until 0043, (a) allows both, for the MCP code still live.
+--    A new MCP tool that needs another table, RPC or column must widen (a), (d) and (e) in a new migration.
 -- 2. Write limits (DB-2): size CHECKs (NOT VALID: existing rows are not re-checked, but every new or changed row is),
 --    per-account row caps, and housekeeping of old revoked/expired share links, extension tokens and join codes.
 -- 3. Join codes: per-user lock around the rate limit (DB-3), unbiased CSPRNG codes (DB-10), role-row locks (DB-14).
@@ -55,7 +59,8 @@ revoke all on function public.refuse_oauth_client() from public, anon, authentic
 
 -- (a) Runs before every Data API request, as the request's role, after PostgREST has set request.path
 -- (the raw path, e.g. '/student_profiles' or '/rpc/create_share_link') and request.jwt.claims.
--- An OAuth-client token may only reach the four tables web/lib/mcp/tools.ts uses.
+-- An OAuth-client token may only reach the four tables web/lib/mcp/tools.ts used before (e) and the two views of (e).
+-- 0043 drops the two base tables from this list once the code that uses the views is deployed.
 create function public.api_request_guard() returns void
 language plpgsql stable set search_path = '' as $$
 declare
@@ -63,7 +68,8 @@ declare
 begin
   if not public.is_oauth_client() then return; end if;
   p := regexp_replace(coalesce(current_setting('request.path', true), ''), '^(/rest/v1)?/+', '');
-  if p in ('student_profiles', 'student_colleges', 'transcript_schools', 'transcript_courses') then return; end if;
+  if p in ('student_profiles', 'student_colleges', 'transcript_schools', 'transcript_courses',
+           'ai_student_profiles', 'ai_student_colleges') then return; end if;
   raise exception 'Connected AI apps can only use the student tables.' using errcode = '42501';
 end $$;
 revoke all on function public.api_request_guard() from public;
@@ -153,6 +159,50 @@ create trigger oauth_guard before insert or update or delete on public.student_c
   for each row execute function public.guard_oauth_student_writes();
 create trigger oauth_guard before delete on public.transcript_schools
   for each row execute function public.guard_oauth_student_writes();
+
+-- (e) The AI tools' views. RLS is per row, so on the base tables an OAuth token could still select portals (saved-login
+-- usernames, links, progress), portal_url / portal_username, reminder settings and essays. These views hold exactly the
+-- columns web/lib/mcp/tools.ts reads or writes (AI_PROFILE_COLUMNS / AI_COLLEGE_COLUMNS in web/lib/student-rows.ts;
+-- slug replaces the institutions(slug) embed), and their grants are exactly its operations:
+--   ai_student_profiles: select; update of the guard_oauth_student_writes columns. No insert, no delete.
+--   ai_student_colleges: select; insert (add_college); update of plan_key / status / notes / checklist. No delete.
+-- SECURITY DEFINER views on purpose (owned by postgres, no security_invoker), so the Supabase advisor reports them as
+-- security_definer_view; that is expected. The caller needs no privilege on the base tables, which lets 0043 take the
+-- base tables away from OAuth clients while the views keep working. postgres bypasses RLS, so the isolation is the
+-- view's own: WHERE user_id = the caller (auth.uid() reads the request's JWT, not the view owner), WITH LOCAL CHECK
+-- OPTION (an insert or update can't produce another user's row: SQLSTATE 44000) and security_barrier (a caller's
+-- filter functions can't see rows before that WHERE). Writes reach the base-table triggers (oauth_guard, row_cap,
+-- touch) with the caller's JWT claims, so (d) still applies to them.
+create view public.ai_student_profiles with (security_barrier = true) as
+  select user_id, sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan,
+         test_details, interested, activities, resume, updated_at
+    from public.student_profiles
+   where user_id = (select auth.uid())
+  with local check option;
+
+create view public.ai_student_colleges with (security_barrier = true) as
+  select sc.user_id, sc.institution_id, (select i.slug from public.institutions i where i.id = sc.institution_id) as slug,
+         sc.plan_key, sc.status, sc.notes, sc.checklist, sc.created_at, sc.updated_at
+    from public.student_colleges sc
+   where sc.user_id = (select auth.uid())
+  with local check option;
+
+alter view public.ai_student_profiles owner to postgres;
+alter view public.ai_student_colleges owner to postgres;
+comment on view public.ai_student_profiles is
+  'AI connector (MCP OAuth) view of the caller''s profile: no saved logins, reminders or essays. Security definer on purpose (0041 section 1e).';
+comment on view public.ai_student_colleges is
+  'AI connector (MCP OAuth) view of the caller''s list: no saved logins, aid offer or custom-college details. Security definer on purpose (0041 section 1e).';
+
+-- Supabase's default privileges grant everything on a new relation in public to anon, authenticated and service_role.
+revoke all on public.ai_student_profiles, public.ai_student_colleges from public, anon, authenticated, service_role;
+grant select on public.ai_student_profiles to authenticated;
+grant update (sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, test_details,
+              interested, activities, resume)
+  on public.ai_student_profiles to authenticated;
+grant select on public.ai_student_colleges to authenticated;
+grant insert (user_id, institution_id, plan_key, status, notes, checklist) on public.ai_student_colleges to authenticated;
+grant update (plan_key, status, notes, checklist) on public.ai_student_colleges to authenticated;
 
 -- ───────────── 2. write limits ─────────────
 

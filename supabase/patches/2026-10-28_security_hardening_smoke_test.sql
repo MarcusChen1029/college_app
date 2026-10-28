@@ -1,5 +1,7 @@
 -- Smoke test for migration 0041_security_hardening. Run in the dashboard SQL Editor AFTER applying 0041
 -- (or paste 0041 right after "begin;" to dry-run the migration and the test together).
+-- It checks the 0041 state, before 0043: once 0043 is applied, A1/A2/A5 and D13/D14 are refused (AI tokens get only
+-- the ai_* views then) and I4 counts 18/2. The 0043 state is checked by 2026-10-28_forbid_plaintext_dry_run.sql (F).
 -- It creates throwaway users inside one transaction, acts as each of them (website session = JWT without client_id,
 -- AI connector = the same JWT plus client_id), and never commits: the LAST statement deliberately raises
 -- "SMOKE RESULT: <n> failures" followed by one PASS/FAIL line per check, which aborts the transaction.
@@ -61,7 +63,7 @@ create function pg_temp.chk(p_name text, p_expect text, p_got text) returns void
   insert into smoke (name, expect, got) values (p_name, p_expect, p_got)
 $$;
 
--- ── A. pre-request hook: an AI token reaches only the four MCP tables ──
+-- ── A. pre-request hook: an AI token reaches only the four MCP tables (and the two AI views, section J) ──
 select pg_temp.chk('A1 hook: AI /student_profiles passes', 'ok:', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/student_profiles', $q$select public.api_request_guard()::text$q$));
 select pg_temp.chk('A2 hook: AI /student_colleges passes', 'ok:', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/student_colleges', $q$select public.api_request_guard()::text$q$));
 select pg_temp.chk('A3 hook: AI /transcript_schools passes', 'ok:', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/transcript_schools', $q$select public.api_request_guard()::text$q$));
@@ -169,6 +171,89 @@ select pg_temp.chk('E18 AI update transcript_courses allowed', 'ok:1', pg_temp.r
 select pg_temp.chk('E19 AI delete transcript_courses allowed', 'ok:1', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/transcript_courses', $q$with x as (delete from public.transcript_courses where user_id = '00000000-0000-4000-8000-0000000039a1' returning 1) select count(*)::text from x$q$));
 select pg_temp.chk('E20 web delete student_colleges allowed', 'ok:1', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', false), '/student_colleges', $q$with x as (delete from public.student_colleges where user_id = '00000000-0000-4000-8000-0000000039a1' and notes = 'n' and status = 'planning' and institution_id = (select id from public.institutions order by slug offset 1 limit 1) returning 1) select count(*)::text from x$q$));
 select pg_temp.chk('E21 portals untouched after AI attempts', 'SMOKESECRET', (select portals #>> '{x,password}' from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000039a1'));
+
+-- ── J. the AI views (0041 1e): own rows only, no login columns, every tools.ts query shape works through them ──
+-- (before F/H: H fills S's list to the 500 cap). S3 gets a college row to be "another user's row".
+insert into public.student_colleges (user_id, institution_id, status, checklist)
+  select '00000000-0000-4000-8000-0000000039a3', id, 'researching', '{}' from public.institutions order by slug limit 1;
+-- Like pg_temp.run, but the pre-request hook runs first, as PostgREST does for every Data API request.
+create function pg_temp.req(p_claims jsonb, p_path text, p_sql text) returns text language plpgsql as $$
+declare res text;
+begin
+  perform set_config('request.jwt.claims', coalesce(p_claims::text, ''), true);
+  perform set_config('request.path', coalesce(p_path, ''), true);
+  perform set_config('role', case when p_claims is null then 'anon' else 'authenticated' end, true);
+  begin
+    perform public.api_request_guard();
+    execute p_sql into res;
+    res := 'ok:' || coalesce(res, 'null');
+  exception when others then
+    res := 'refused ' || sqlstate || ': ' || sqlerrm;
+  end;
+  perform set_config('role', 'postgres', true);
+  perform set_config('request.jwt.claims', '', true);
+  return res;
+end $$;
+select pg_temp.chk('J1 hook: AI /ai_student_profiles passes', 'ok:', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles', $q$select public.api_request_guard()::text$q$));
+select pg_temp.chk('J2 hook: AI /rest/v1/ai_student_colleges passes', 'ok:', pg_temp.run(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/rest/v1/ai_student_colleges', $q$select public.api_request_guard()::text$q$));
+select pg_temp.chk('J3 profile view columns (no portals, reminders, essays)', 'user_id,sat_total,act_composite,gpa_unweighted,gpa_weighted,is_international,target_regions,plan,test_details,interested,activities,resume,updated_at',
+  (select string_agg(column_name, ',' order by ordinal_position) from information_schema.columns where table_schema = 'public' and table_name = 'ai_student_profiles'));
+select pg_temp.chk('J4 college view columns (no portal_*, aid, custom)', 'user_id,institution_id,slug,plan_key,status,notes,checklist,created_at,updated_at',
+  (select string_agg(column_name, ',' order by ordinal_position) from information_schema.columns where table_schema = 'public' and table_name = 'ai_student_colleges'));
+select pg_temp.chk('J5 AI profile view: own row only (3 profiles exist)', 'ok:1/00000000-0000-4000-8000-0000000039a1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles', $q$select count(*) || '/' || min(user_id::text) from public.ai_student_profiles$q$));
+select pg_temp.chk('J6 AI college view: own rows only (S3 has one too)', 'ok:1/00000000-0000-4000-8000-0000000039a1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges', $q$select count(*) || '/' || min(user_id::text) from public.ai_student_colleges$q$));
+select pg_temp.chk('J7 AI select portals through the view refused', 'refused 42703', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles', $q$select portals::text from public.ai_student_profiles$q$));
+select pg_temp.chk('J8 AI select portal_username through the view refused', 'refused 42703', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges', $q$select portal_username from public.ai_student_colleges$q$));
+select pg_temp.chk('J9 anon: no access to the views', 'refused 42501', pg_temp.req(null, '/ai_student_profiles', $q$select count(*)::text from public.ai_student_profiles$q$));
+-- tools.ts query shapes, in order: guarded()/changeProfile read, changeProfile write, readList/changeEntry read, add_college, changeEntry write.
+select pg_temp.chk('J10 MCP read profile (AI_PROFILE_COLUMNS, updated_at)', 'ok:1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles',
+  $q$select count(*)::text from (select sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan, test_details, interested, activities, resume, updated_at
+     from public.ai_student_profiles where user_id = '00000000-0000-4000-8000-0000000039a1') s$q$));
+select pg_temp.chk('J11 MCP update profile (every profile column, updated_at check, returning updated_at)', 'ok:1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles',
+  $q$with x as (update public.ai_student_profiles set sat_total = 1500, act_composite = 34, gpa_unweighted = 3.9, gpa_weighted = 4.3, is_international = true, target_regions = '["US","GB"]',
+       test_details = '{"sat":{"math":800}}', interested = '["mit"]', activities = '{"version":2}', resume = '{"options":{"showHours":true}}'
+     where user_id = '00000000-0000-4000-8000-0000000039a1' and updated_at = (select updated_at from public.ai_student_profiles where user_id = '00000000-0000-4000-8000-0000000039a1') returning updated_at)
+     select count(*)::text from x$q$));
+select pg_temp.chk('J12 MCP read list (AI_COLLEGE_COLUMNS, updated_at; slug filled)', 'ok:1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$select count(*) filter (where slug is not null)::text from (select institution_id, slug, plan_key, status, notes, checklist, created_at, updated_at
+     from public.ai_student_colleges where user_id = '00000000-0000-4000-8000-0000000039a1' and institution_id is not null order by created_at) s$q$));
+select pg_temp.chk('J13 MCP add_college insert through the view', 'ok:1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$with i as (select id from public.institutions order by slug offset 2 limit 1),
+     x as (insert into public.ai_student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
+           select '00000000-0000-4000-8000-0000000039a1', id, null, 'in_progress', null, '{}' from i returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J14 MCP update entry (plan/status/notes/checklist, updated_at check, returning updated_at)', 'ok:1', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$with x as (update public.ai_student_colleges set plan_key = null, status = 'planning', notes = 'via view', checklist = '{"transcript":true}'
+     where user_id = '00000000-0000-4000-8000-0000000039a1' and institution_id = (select id from public.institutions order by slug offset 2 limit 1)
+       and updated_at = (select updated_at from public.ai_student_colleges where institution_id = (select id from public.institutions order by slug offset 2 limit 1))
+     returning updated_at) select count(*)::text from x$q$));
+select pg_temp.chk('J15 AI insert through the view for another user refused (check option)', 'refused 44000', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$with i as (select id from public.institutions order by slug offset 3 limit 1),
+     x as (insert into public.ai_student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
+           select '00000000-0000-4000-8000-0000000039a3', id, null, 'in_progress', null, '{}' from i returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J16 AI update of another user''s college through the view touches nothing', 'ok:0', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$with x as (update public.ai_student_colleges set notes = 'evil' where user_id = '00000000-0000-4000-8000-0000000039a3' returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J17 AI update of another user''s profile through the view touches nothing', 'ok:0', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles',
+  $q$with x as (update public.ai_student_profiles set sat_total = 400 where user_id = '00000000-0000-4000-8000-0000000039a2' returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J18 AI moving its own row to another user through the view refused (user_id not updatable)', 'refused 42501', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$with x as (update public.ai_student_colleges set user_id = '00000000-0000-4000-8000-0000000039a3' where user_id = '00000000-0000-4000-8000-0000000039a1' returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J19 AI update plan through the view refused (no column privilege)', 'refused 42501', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles',
+  $q$with x as (update public.ai_student_profiles set plan = 'senior' where user_id = '00000000-0000-4000-8000-0000000039a1' returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J20 AI insert into the profile view refused', 'refused 42501', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles',
+  $q$with x as (insert into public.ai_student_profiles (user_id) values ('00000000-0000-4000-8000-0000000039a1') returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('J21 AI delete through the college view refused', 'refused 42501', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_colleges',
+  $q$with x as (delete from public.ai_student_colleges where user_id = '00000000-0000-4000-8000-0000000039a1' returning 1) select count(*)::text from x$q$));
+-- guard_oauth_student_writes still sees the AI token through a view: with a column privilege granted for this check only,
+-- the base-table trigger refuses the write.
+grant update (plan) on public.ai_student_profiles to authenticated;
+select pg_temp.chk('J22 base-table guard trigger fires for writes through the view', 'refused 42501: Connected AI apps cannot change those fields', pg_temp.req(pg_temp.c('00000000-0000-4000-8000-0000000039a1', true), '/ai_student_profiles',
+  $q$with x as (update public.ai_student_profiles set plan = 'senior' where user_id = '00000000-0000-4000-8000-0000000039a1' returning 1) select count(*)::text from x$q$));
+revoke update (plan) on public.ai_student_profiles from authenticated;
+select pg_temp.chk('J23 others'' rows and S''s logins unchanged', 'SMOKESECRET/researching/null/null',
+  (select (select portals #>> '{x,password}' from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000039a1') || '/' ||
+          (select string_agg(status || '/' || coalesce(notes, 'null'), ',') from public.student_colleges where user_id = '00000000-0000-4000-8000-0000000039a3') || '/' ||
+          coalesce((select sat_total::text from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000039a2'), 'null')));
+-- H11/H12 expect S to have one listed institution again.
+delete from public.student_colleges where user_id = '00000000-0000-4000-8000-0000000039a1' and notes = 'via view';
 
 -- ── F. share links expire; old rows are cleaned up; recent rows are capped ──
 select pg_temp.chk('F1 every share link (incl. pre-existing) expires in 180 days', 'true', (select (count(*) filter (where expires_at = now() + interval '180 days') = count(*))::text from public.share_links));

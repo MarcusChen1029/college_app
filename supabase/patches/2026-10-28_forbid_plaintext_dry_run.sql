@@ -3,6 +3,7 @@
 -- one transaction, acts as the website (authenticated), anon and the service role, and never commits: the LAST
 -- statement deliberately raises "DRY RUN RESULT: <n> failures" followed by one PASS/FAIL line per check.
 -- Success = "DRY RUN RESULT: 0 failures". The plaintext values below are markers, not real passwords.
+-- Needs 0041 applied (section F uses its pre-request hook, is_oauth_client() and the ai_* views).
 
 begin;
 
@@ -139,13 +140,13 @@ select pg_temp.chk('C5 website: merge upsert (on conflict do nothing)', 'ok:null
 select pg_temp.chk('C6 website: list update (store.update columns)', 'ok:EA', pg_temp.run('authenticated',
   $q$update public.student_colleges set plan_key = 'EA', status = 'submitted', notes = 'n', checklist = '{"stars":true}', portal_url = 'https://x.example',
        portal_username = 'kid2', aid_offer_usd = 1000 where id = '00000000-0000-4000-8000-0000000041c1' returning plan_key$q$));
-select pg_temp.chk('C7 AI tools: read COLLEGE_COLUMNS_NO_LOGINS + updated_at', 'ok:2', pg_temp.run('authenticated',
+select pg_temp.chk('C7 website: read without login columns + updated_at', 'ok:2', pg_temp.run('authenticated',
   $q$select count(*)::text from (select id, custom, institution_id, plan_key, status, notes, checklist, created_at, updated_at
        from public.student_colleges where user_id = auth.uid()) s$q$));
-select pg_temp.chk('C8 AI tools: update plan/status/notes/checklist returning updated_at', 'ok:true', pg_temp.run('authenticated',
+select pg_temp.chk('C8 website: update plan/status/notes/checklist returning updated_at', 'ok:true', pg_temp.run('authenticated',
   $q$update public.student_colleges set plan_key = 'RD', status = 'in_progress', notes = null, checklist = '{}'
      where id = '00000000-0000-4000-8000-0000000041c1' returning (updated_at is not null)::text$q$));
-select pg_temp.chk('C9 AI tools: add_college insert', 'ok:x', pg_temp.run('authenticated',
+select pg_temp.chk('C9 website: insert without login columns', 'ok:x', pg_temp.run('authenticated',
   $q$insert into public.student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
      select auth.uid(), id, null, 'in_progress', null, '{}' from public.institutions where id not in
        (select institution_id from public.student_colleges where user_id = auth.uid() and institution_id is not null) order by slug limit 1 returning 'x'$q$));
@@ -199,6 +200,91 @@ select pg_temp.chk('E2 same with a WRONG password: the identical refusal', 'refu
      on conflict (user_id) do update set portals = excluded.portals returning 'x'$q$));
 select pg_temp.chk('E3 the victim''s row is unchanged', 'ok:VICTIM-MARKER', pg_temp.run('postgres',
   $q$select portals #>> '{systems,commonapp,password}' from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000041a3'$q$));
+
+-- ── F. AI-connection tokens: the ai_* views only (0043 section 4) ──
+-- The student (41a1) as the website (no client_id) or as the AI connector (client_id). With a path, the pre-request
+-- hook runs first, as PostgREST does; with a null path it is skipped (a request the hook doesn't see, or a reset hook).
+insert into public.student_colleges (user_id, institution_id, status, checklist)
+  select '00000000-0000-4000-8000-0000000041a3', id, 'researching', '{}' from public.institutions order by slug limit 1;
+create function pg_temp.api(p_ai boolean, p_path text, p_sql text) returns text language plpgsql as $$
+declare res text;
+begin
+  perform set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000041a1","role":"authenticated"'
+    || case when p_ai then ',"client_id":"dry-client"}' else '}' end, true);
+  perform set_config('request.path', coalesce(p_path, ''), true);
+  perform set_config('role', 'authenticated', true);
+  begin
+    if p_path is not null then perform public.api_request_guard(); end if;
+    execute p_sql into res;
+    res := 'ok:' || coalesce(res, 'null');
+  exception when others then
+    res := 'refused ' || sqlstate || ': ' || sqlerrm;
+  end;
+  perform set_config('role', 'postgres', true);
+  perform set_config('request.jwt.claims', '', true);
+  return res;
+end $$;
+select pg_temp.chk('F1 AI: base student_profiles refused by the hook', 'refused 42501', pg_temp.api(true, '/student_profiles',
+  $q$select count(*)::text from public.student_profiles$q$));
+select pg_temp.chk('F2 AI: base student_colleges refused by the hook', 'refused 42501', pg_temp.api(true, '/rest/v1/student_colleges',
+  $q$select portal_username from public.student_colleges limit 1$q$));
+select pg_temp.chk('F3 AI: an RPC still refused by the hook', 'refused 42501', pg_temp.api(true, '/rpc/create_share_link',
+  $q$select 'x'$q$));
+select pg_temp.chk('F4 AI: transcript tables still allowed', 'ok:0', pg_temp.api(true, '/transcript_courses',
+  $q$select count(*)::text from public.transcript_courses$q$));
+select pg_temp.chk('F5 website: base student_profiles still read, with portals', 'ok:ca2', pg_temp.api(false, '/student_profiles',
+  $q$select portals #>> '{systems,commonapp,username}' from public.student_profiles where user_id = auth.uid()$q$));
+select pg_temp.chk('F6 website: base student_colleges still read, with portal_username', 'ok:2/kid2', pg_temp.api(false, '/student_colleges',
+  $q$select count(*) || '/' || max(portal_username) from public.student_colleges$q$));
+select pg_temp.chk('F7 AI without the hook: base tables show no row (no_oauth_clients)', 'ok:0/0', pg_temp.api(true, null,
+  $q$select (select count(*) from public.student_profiles) || '/' || (select count(*) from public.student_colleges)$q$));
+select pg_temp.chk('F8 AI without the hook: base update changes nothing', 'ok:0', pg_temp.api(true, null,
+  $q$with x as (update public.student_colleges set notes = 'evil' where user_id = auth.uid() returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('F9 AI without the hook: base insert refused', 'refused 42501', pg_temp.api(true, null,
+  $q$insert into public.student_colleges (user_id, institution_id, status, checklist)
+     select auth.uid(), id, 'in_progress', '{}' from public.institutions order by slug offset 5 limit 1 returning 'x'$q$));
+select pg_temp.chk('F10 AI profile view: own row only, no portals column', 'ok:1/00000000-0000-4000-8000-0000000041a1/0', pg_temp.api(true, '/ai_student_profiles',
+  $q$select count(*) || '/' || min(user_id::text) || '/' ||
+       (select count(*) from information_schema.columns where table_schema = 'public' and table_name in ('ai_student_profiles', 'ai_student_colleges')
+          and column_name in ('portals', 'portal_url', 'portal_username', 'portal_password', 'reminder_emails', 'essays', 'aid_offer_usd', 'custom'))
+     from public.ai_student_profiles$q$));
+select pg_temp.chk('F11 AI select portals through the view refused', 'refused 42703', pg_temp.api(true, '/ai_student_profiles',
+  $q$select portals::text from public.ai_student_profiles$q$));
+select pg_temp.chk('F12 AI select portal_username through the view refused', 'refused 42703', pg_temp.api(true, '/ai_student_colleges',
+  $q$select portal_username from public.ai_student_colleges$q$));
+-- tools.ts query shapes: guarded()/changeProfile read, changeProfile write, readList/changeEntry read, add_college, changeEntry write.
+select pg_temp.chk('F13 MCP read profile', 'ok:1450', pg_temp.api(true, '/ai_student_profiles',
+  $q$select sat_total::text from (select sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan, test_details, interested, activities, resume, updated_at
+     from public.ai_student_profiles where user_id = '00000000-0000-4000-8000-0000000041a1') s$q$));
+select pg_temp.chk('F14 MCP update profile (updated_at check, returning updated_at)', 'ok:1', pg_temp.api(true, '/ai_student_profiles',
+  $q$with x as (update public.ai_student_profiles set sat_total = 1500, act_composite = 34, gpa_unweighted = 3.9, gpa_weighted = 4.3, is_international = true, target_regions = '["US"]',
+       test_details = '{}', interested = '[]', activities = '{"version":2}', resume = '{}'
+     where user_id = '00000000-0000-4000-8000-0000000041a1' and updated_at = (select updated_at from public.ai_student_profiles where user_id = '00000000-0000-4000-8000-0000000041a1') returning updated_at)
+     select count(*)::text from x$q$));
+select pg_temp.chk('F15 MCP read list (slug filled)', 'ok:2/2', pg_temp.api(true, '/ai_student_colleges',
+  $q$select count(*) || '/' || count(slug) from (select institution_id, slug, plan_key, status, notes, checklist, created_at, updated_at
+     from public.ai_student_colleges where user_id = '00000000-0000-4000-8000-0000000041a1' and institution_id is not null order by created_at) s$q$));
+select pg_temp.chk('F16 MCP add_college insert through the view', 'ok:1', pg_temp.api(true, '/ai_student_colleges',
+  $q$with i as (select id from public.institutions where id not in (select institution_id from public.ai_student_colleges where institution_id is not null) order by slug limit 1),
+     x as (insert into public.ai_student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
+           select '00000000-0000-4000-8000-0000000041a1', id, null, 'in_progress', null, '{}' from i returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('F17 MCP update entry (updated_at check, returning updated_at)', 'ok:1', pg_temp.api(true, '/ai_student_colleges',
+  $q$with x as (update public.ai_student_colleges set plan_key = null, status = 'planning', notes = 'via view', checklist = '{"transcript":true}'
+     where user_id = '00000000-0000-4000-8000-0000000041a1' and institution_id = (select id from public.institutions order by slug limit 1)
+       and updated_at = (select updated_at from public.ai_student_colleges where institution_id = (select id from public.institutions order by slug limit 1))
+     returning updated_at)
+     select count(*)::text from x$q$));
+select pg_temp.chk('F18 AI insert through the view for another user refused (check option)', 'refused 44000', pg_temp.api(true, '/ai_student_colleges',
+  $q$with i as (select id from public.institutions order by slug offset 6 limit 1),
+     x as (insert into public.ai_student_colleges (user_id, institution_id, plan_key, status, notes, checklist)
+           select '00000000-0000-4000-8000-0000000041a3', id, null, 'in_progress', null, '{}' from i returning 1) select count(*)::text from x$q$));
+select pg_temp.chk('F19 AI update of another user''s rows through the views touches nothing', 'ok:0/0', pg_temp.api(true, '/ai_student_colleges',
+  $q$with a as (update public.ai_student_colleges set notes = 'evil' where user_id = '00000000-0000-4000-8000-0000000041a3' returning 1),
+          b as (update public.ai_student_profiles set sat_total = 400 where user_id = '00000000-0000-4000-8000-0000000041a3' returning 1)
+     select (select count(*) from a) || '/' || (select count(*) from b)$q$));
+select pg_temp.chk('F20 the other user''s rows are unchanged', 'ok:researching/null/null', pg_temp.run('postgres',
+  $q$select (select status || '/' || coalesce(notes, 'null') from public.student_colleges where user_id = '00000000-0000-4000-8000-0000000041a3') || '/' ||
+            coalesce((select sat_total::text from public.student_profiles where user_id = '00000000-0000-4000-8000-0000000041a3'), 'null')$q$));
 
 -- ── result: raises on purpose, so the transaction can never commit ──
 do $$

@@ -8,7 +8,7 @@ import { makeT } from "./i18n/index.ts";
 import { planMonthText, testCardView, testPlanText } from "./i18n/test-plan-text.ts";
 import { applyProfilePatch } from "./mcp/rules.ts";
 import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER } from "./resume.ts";
-import { fromProfile, PROFILE_COLUMNS_NO_LOGINS, toProfile, type ProfileRow } from "./student-rows.ts";
+import { AI_PROFILE_COLUMNS, fromProfile, toProfile, type ProfileRow } from "./student-rows.ts";
 import { withTestChoice } from "./test-plan.ts";
 
 const row: ProfileRow = {
@@ -39,7 +39,7 @@ test("weighted GPA and the test plan round-trip through the profile row mapping"
   assert.equal(toProfile({ ...row, gpa_weighted: "4.55" as never }).gpaWeighted, 4.55); // numeric can arrive as text
   assert.equal(toProfile({ ...row, gpa_weighted: undefined }).gpaWeighted, null); // a row read before migration 0037
   assert.equal(fromProfile("u1", { ...profile, gpaWeighted: null }).gpa_weighted, null);
-  assert.match(PROFILE_COLUMNS_NO_LOGINS, /gpa_weighted/);
+  assert.match(AI_PROFILE_COLUMNS, /gpa_weighted/);
 });
 
 test("stored activities in the earlier format are read, and written back, in the current format", () => {

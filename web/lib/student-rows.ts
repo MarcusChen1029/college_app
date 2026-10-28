@@ -66,7 +66,7 @@ export type ProfileRow = {
   activities: unknown; // any stored shape; toProfile upgrades it to ActivityData
   resume: ResumeSettings | null;
   essays: PersonalEssays | null;
-  /** Absent when the row was read with PROFILE_COLUMNS_NO_LOGINS. */
+  /** Absent when the row was read through the AI view (AI_PROFILE_COLUMNS). */
   portals?: PortalData | null;
 };
 export type CollegeRow = {
@@ -77,29 +77,51 @@ export type CollegeRow = {
   status: Status;
   notes: string | null;
   checklist: Checklist | null;
-  /** The portal_* fields are absent when the row was read with COLLEGE_COLUMNS_NO_LOGINS. Passwords are never read (0040). */
+  /** Passwords are never read (0040). */
   portal_url?: string | null;
   portal_username?: string | null;
-  /** Absent when the row was read with COLLEGE_COLUMNS_NO_LOGINS. */
   aid_offer_usd?: number | null;
   created_at: string;
   institutions: { slug: string } | null;
 };
-
-const PROFILE_BASE = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, test_details, interested, activities, resume, essays";
-const COLLEGE_BASE = "id, custom, institution_id, plan_key, status, notes, checklist, created_at, institutions(slug)";
 
 /**
  * What the website reads: links and usernames of the saved logins, never a password (those are only in the encrypted
  * store, read one at a time through /api/portal-passwords). Profile rows from before 0040 may still hold passwords
  * inside `portals` until the strip patch runs; toProfile drops them.
  */
-export const PROFILE_COLUMNS = `${PROFILE_BASE}, portals`;
+export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, test_details, interested, activities, resume, essays, portals";
 export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, aid_offer_usd, created_at, institutions(slug)";
 
-/** What server-side code acting for an AI must read: explicit columns that leave the saved logins out. */
-export const PROFILE_COLUMNS_NO_LOGINS = PROFILE_BASE;
-export const COLLEGE_COLUMNS_NO_LOGINS = COLLEGE_BASE;
+/**
+ * The Connect AI tools (web/lib/mcp/tools.ts) never touch the base tables: they read and write the views
+ * ai_student_profiles / ai_student_colleges (migration 0041 section 1e), which hold only these columns plus user_id and
+ * updated_at. No saved logins, reminder settings, essays, study fields, aid offer or custom-college details. A tool that
+ * needs another column must add it to the view in a migration first (ai-views.test.ts checks the two stay equal).
+ */
+export const AI_PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan, test_details, interested, activities, resume";
+export const AI_COLLEGE_COLUMNS = "institution_id, slug, plan_key, status, notes, checklist, created_at";
+/** A row of ai_student_colleges read with AI_COLLEGE_COLUMNS. slug is null for a custom college (no institution). */
+export type AiCollegeRow = {
+  institution_id: string | null;
+  slug: string | null;
+  plan_key: string | null;
+  status: Status;
+  notes: string | null;
+  checklist: Checklist | null;
+  created_at: string;
+};
+/** The list entry an AI tool sees: no login, no aid offer. */
+export const fromAiCollegeRow = (r: AiCollegeRow): ListEntry => ({
+  slug: r.slug ?? "",
+  institutionId: r.institution_id ?? "",
+  plan: r.plan_key,
+  status: r.status,
+  notes: r.notes ?? "",
+  checklist: r.checklist ?? {},
+  portal: { url: "", username: "" },
+  addedAt: r.created_at,
+});
 
 /** A tab left open can hold old data (an AI may have changed it). Reload when the tab is used again, at most every 30 s, never mid-save. */
 export const REFRESH_MIN_MS = 30_000;

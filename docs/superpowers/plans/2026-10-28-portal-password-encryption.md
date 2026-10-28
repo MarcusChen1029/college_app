@@ -55,13 +55,16 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
    so nothing is lost in this gap.
 
 3. **Apply `0043`** right after the deploy is live (not before: 0043 removes `portal_password` from client grants, and
-   the old site's list load reads that column, so applying 0043 first would break My list until the deploy).
+   the old site's list load reads that column, so applying 0043 first would break My list until the deploy; it also
+   refuses AI-connection tokens the base student tables, which the old MCP code reads, so every AI tool would fail).
    Dry run first: `supabase/patches/2026-10-28_forbid_plaintext_dry_run.sql` with 0043 pasted at its marker must end
    in `DRY RUN RESULT: 0 failures` (it can never commit). 0043 stops with an error if `student_colleges` has a column
    it doesn't know; add the column to its grant list first.
-   Check: `select has_column_privilege('authenticated', 'public.student_colleges', 'portal_password', 'select')` is `false`.
+   Check: `select has_column_privilege('authenticated', 'public.student_colleges', 'portal_password', 'select')` is `false`,
+   and a connected AI app still answers `get_applications` (it reads through `ai_student_colleges`).
    From here on old open tabs can't write a password back (0043 refuses it; those tabs show a save error and reload),
-   AI-connection tokens can't read `portal_password`, and each student's plaintext moves on their next visit.
+   AI-connection tokens can't read `portal_password` or any saved-login username or link, and each student's
+   plaintext moves on their next visit.
 
 4. **Verify** with a test account that has a plaintext password from before (one system login, one college login):
    open the site signed in, then on Portals press Show on both: the old values appear. `2026-10-28-portal-plaintext-counts.sql`
@@ -89,8 +92,10 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 
 ## Still open
 
-- Usernames and links stay in `student_profiles.portals` / `student_colleges.portal_username`, readable by an
-  AI-connection token through the Data API.
+- Usernames and links stay in `student_profiles.portals` / `student_colleges.portal_url` / `portal_username` (the
+  website shows them). AI-connection tokens can no longer read them once 0043 is applied: the MCP tools use 0041's
+  column-limited views `ai_student_profiles` / `ai_student_colleges`, and 0043 refuses those tokens the base tables.
+  Between applying 0041 and 0043 they still can (the MCP code live before the deploy reads the base tables).
 - The server, and anyone with both the service-role key and the encryption key (Vercel env), can decrypt.
 - No rate limit on `/api/portal-passwords` beyond Supabase's auth checks; each account is capped at 500 stored passwords.
 - The clipboard clear after Copy is best effort (the page must still be open, and it can clear something copied in
