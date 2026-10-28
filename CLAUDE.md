@@ -128,6 +128,10 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
 - Schema changes = a new file in `supabase/migrations/` (next number: **0038**; 0001-0037 are all applied to the project as of 2026-10-27) **and** apply it to the project.
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
+- **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
+  (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with
+  `requirements.platforms` -> `python -I scripts/build_application_systems.py` (`--check` verifies) -> `web/lib/data/application-systems.json`.
+  A system shows on Portals only when a listed college needs it (or something is saved for it); Done / Not done marks live in `profile.portals.progress`.
 - **Supplemental essays + international finance steps** (2026-27): one researched file per college in `data/supplements_2026_27/<file>.json` (contract and source rules:
   `docs/superpowers/research/2026-10-27-supplements-brief.md`; files are named after `data/colleges/` file names, output is keyed by the inner slug, e.g. cmu.json -> carnegie-mellon)
   -> `python -I scripts/build_supplements.py` (validates; `--check` verifies) -> `web/lib/data/supplements.json`, read through `web/lib/supplements.ts`. 102 popular US colleges

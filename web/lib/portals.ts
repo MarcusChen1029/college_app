@@ -15,16 +15,20 @@ export type PortalGroup = "application" | "optional";
 /** "ANY" = not tied to a country (English tests). */
 export type PortalRegion = RegionCode | "ANY";
 
-export type PortalSystem = { key: string; name: string; group: PortalGroup; region: PortalRegion; url: string | null; hint: string; campuses?: string[] };
+/** An application system is either a way to apply ("route") or something needed on top of the application ("addon", e.g. STARS). */
+export type SystemKind = "route" | "addon";
+
+export type PortalSystem = { key: string; name: string; group: PortalGroup; region: PortalRegion; url: string | null; hint: string; campuses?: string[]; kind?: SystemKind };
 
 // Keys are what students' saved logins are stored under: never rename one.
 export const SYSTEMS: PortalSystem[] = [
   // United States
-  { key: "commonapp", name: "Common App", group: "application", region: "US", url: "https://apply.commonapp.org", hint: "One login for every Common App college." },
+  { key: "commonapp", name: "Common App", group: "application", region: "US", url: "https://apply.commonapp.org", hint: "One login for every Common App college.", kind: "route" },
   {
     key: "uc",
     name: "UC Application",
     group: "application",
+    kind: "route",
     region: "US",
     url: "https://apply.universityofcalifornia.edu",
     hint: "One application for all nine UC campuses. After you apply, each campus sends its own portal login.",
@@ -34,20 +38,22 @@ export const SYSTEMS: PortalSystem[] = [
     key: "applytexas",
     name: "ApplyTexas",
     group: "application",
+    kind: "route",
     region: "US",
     url: "https://www.applytexas.org",
     hint: "Texas public universities. UT Austin then emails a UT EID for its MyStatus portal.",
     campuses: ["UT Austin (MyStatus)", "UT Dallas", "UT Arlington", "UT San Antonio", "UT El Paso", "Texas A&M", "Texas Tech", "University of Houston"],
   },
-  { key: "calstate", name: "Cal State Apply", group: "application", region: "US", url: "https://www.calstate.edu/apply", hint: "One application for the CSU campuses." },
-  { key: "coalition", name: "Coalition (on Scoir)", group: "application", region: "US", url: "https://app.scoir.com/signin", hint: "Your Scoir account is your Coalition login." },
+  { key: "calstate", name: "Cal State Apply", group: "application", region: "US", url: "https://www.calstate.edu/apply", hint: "One application for the CSU campuses.", kind: "route" },
+  { key: "coalition", name: "Coalition (on Scoir)", group: "application", region: "US", url: "https://app.scoir.com/signin", hint: "Your Scoir account is your Coalition login.", kind: "route" },
   {
     key: "stars",
     name: "STARS self-reported transcript",
     group: "application",
+    kind: "addon",
     region: "US",
-    url: null,
-    hint: "No central login: each college that uses it (e.g. Clemson, Virginia Tech, Oregon) links to it from its applicant portal. One record can be shared.",
+    url: "https://ssar.selfreportedtranscript.com/Login.aspx",
+    hint: "Self-reported transcript (formerly SRAR/SSAR). Colleges that use it link to it from their applicant portal; one record can be shared.",
   },
   { key: "collegeboard", name: "College Board (SAT, AP, score sends)", group: "optional", region: "US", url: "https://www.collegeboard.org", hint: "SAT and AP scores and score sending." },
   { key: "act", name: "MyACT", group: "optional", region: "US", url: "https://my.act.org", hint: "ACT registration and score sending." },
@@ -55,7 +61,7 @@ export const SYSTEMS: PortalSystem[] = [
   { key: "fafsa", name: "FAFSA (StudentAid.gov)", group: "optional", region: "US", url: "https://studentaid.gov", hint: "US citizens and eligible non-citizens only." },
 
   // United Kingdom
-  { key: "ucas", name: "UCAS", group: "application", region: "GB", url: "https://www.ucas.com", hint: "Undergraduate applications to UK universities, and where you follow your choices and offers." },
+  { key: "ucas", name: "UCAS", group: "application", region: "GB", url: "https://www.ucas.com", hint: "Undergraduate applications to UK universities, and where you follow your choices and offers.", kind: "route" },
   { key: "ukvi", name: "UK Student visa (UKVI)", group: "optional", region: "GB", url: "https://www.gov.uk/student-visa", hint: "Student visa application; once granted you get an eVisa through a UKVI account." },
 
   // Canada
@@ -63,13 +69,14 @@ export const SYSTEMS: PortalSystem[] = [
     key: "ouac",
     name: "OUAC (Ontario)",
     group: "application",
+    kind: "route",
     region: "CA",
     url: null,
     hint: "Ontario universities. Your login is the OUAC account you create on the OUAC site when you apply (link not confirmed here).",
   },
-  { key: "applyalberta", name: "ApplyAlberta", group: "application", region: "CA", url: "https://prod.applyalberta.ca", hint: "Alberta post-secondary applications and transcript transfer. Sign-in goes through an Alberta.ca account." },
-  { key: "educationplannerbc", name: "EducationPlannerBC", group: "application", region: "CA", url: "https://signon.educationplannerbc.ca/signin", hint: "British Columbia post-secondary applications and transcripts." },
-  { key: "sram", name: "SRAM (Quebec)", group: "application", region: "CA", url: "https://admission.sram.qc.ca/mon-dossier", hint: "Applications to cégeps (college-level programs) in the Montréal area. The site is in French." },
+  { key: "applyalberta", name: "ApplyAlberta", group: "application", region: "CA", url: "https://prod.applyalberta.ca", hint: "Alberta post-secondary applications and transcript transfer. Sign-in goes through an Alberta.ca account.", kind: "route" },
+  { key: "educationplannerbc", name: "EducationPlannerBC", group: "application", region: "CA", url: "https://signon.educationplannerbc.ca/signin", hint: "British Columbia post-secondary applications and transcripts.", kind: "route" },
+  { key: "sram", name: "SRAM (Quebec)", group: "application", region: "CA", url: "https://admission.sram.qc.ca/mon-dossier", hint: "Applications to cégeps (college-level programs) in the Montréal area. The site is in French.", kind: "route" },
   {
     key: "ircc",
     name: "IRCC account (study permit)",
@@ -80,14 +87,15 @@ export const SYSTEMS: PortalSystem[] = [
   },
 
   // Australia
-  { key: "uac", name: "UAC (NSW and ACT)", group: "application", region: "AU", url: "https://apply.uac.edu.au/welcome", hint: "Universities Admissions Centre: undergraduate applications for NSW and ACT." },
-  { key: "vtac", name: "VTAC (Victoria)", group: "application", region: "AU", url: "https://vtacapplicantsportal.vtac.edu.au/signin", hint: "Victorian Tertiary Admissions Centre applicant portal." },
-  { key: "qtac", name: "QTAC (Queensland)", group: "application", region: "AU", url: "https://applications.qtac.edu.au/sign-in", hint: "Queensland Tertiary Admissions Centre application portal." },
-  { key: "satac", name: "SATAC (South Australia and NT)", group: "application", region: "AU", url: "https://www.satac.edu.au/undergraduate-apply-login", hint: "Create or log in to your mySATAC account to apply." },
+  { key: "uac", name: "UAC (NSW and ACT)", group: "application", region: "AU", url: "https://apply.uac.edu.au/welcome", hint: "Universities Admissions Centre: undergraduate applications for NSW and ACT.", kind: "route" },
+  { key: "vtac", name: "VTAC (Victoria)", group: "application", region: "AU", url: "https://vtacapplicantsportal.vtac.edu.au/signin", hint: "Victorian Tertiary Admissions Centre applicant portal.", kind: "route" },
+  { key: "qtac", name: "QTAC (Queensland)", group: "application", region: "AU", url: "https://applications.qtac.edu.au/sign-in", hint: "Queensland Tertiary Admissions Centre application portal.", kind: "route" },
+  { key: "satac", name: "SATAC (South Australia and NT)", group: "application", region: "AU", url: "https://www.satac.edu.au/undergraduate-apply-login", hint: "Create or log in to your mySATAC account to apply.", kind: "route" },
   {
     key: "tisc",
     name: "TISC (Western Australia)",
     group: "application",
+    kind: "route",
     region: "AU",
     url: null,
     hint: "Western Australian university applications. Your login is the TISC account you create on the TISC site (link not confirmed here).",
@@ -112,11 +120,16 @@ export const regionOfCollege = (c: { country_code?: string | null }): string => 
 /** No region = "any country" (everything saved before regions existed). */
 export type CustomPortal = Login & { id: string; name: string; region?: RegionCode };
 
+/** The student's own tick: done or not, with an optional note on what is left. */
+export type PortalProgress = { done: boolean; note?: string };
+
 export type PortalData = {
   systems?: Record<string, Login>;
   /** Keyed "<system key>:<campus name>"; present once the student adds that campus. */
   campuses?: Record<string, Login>;
   custom?: CustomPortal[];
+  /** Keyed by system key, campus key ("uc:UCLA"), "custom:<id>" or "college:<slug>". Missing = not marked, counted as not done. */
+  progress?: Record<string, PortalProgress>;
 };
 
 export const campusKey = (system: string, campus: string) => `${system}:${campus}`;
@@ -147,3 +160,90 @@ export function hiddenLoginCount(data: PortalData, visible: readonly RegionCode[
   const fromCustom = (data.custom ?? []).filter((p) => saved(p) && hidden(p.region));
   return fromSystems.length + fromCampuses.length + fromCustom.length;
 }
+
+export const customProgressKey = (id: string) => `custom:${id}`;
+export const collegeProgressKey = (slug: string) => `college:${slug}`;
+
+/** Marked done / not done; "unmarked" is counted as not done but shows neither button pressed. */
+export type ProgressState = "done" | "notDone" | "unmarked";
+
+export function progressState(data: PortalData, key: string): ProgressState {
+  const p = data.progress?.[key];
+  return !p ? "unmarked" : p.done ? "done" : "notDone";
+}
+
+export const progressNote = (data: PortalData, key: string): string => data.progress?.[key]?.note ?? "";
+
+/** The data with one progress entry changed. A blank note is dropped; the note is kept when the row is ticked done. */
+export function withProgress(data: PortalData, key: string, patch: { done?: boolean; note?: string }): PortalData {
+  const prev = data.progress?.[key];
+  const note = (patch.note ?? prev?.note ?? "").trim();
+  const next: PortalProgress = { done: patch.done ?? prev?.done ?? false, ...(note ? { note } : {}) };
+  return { ...data, progress: { ...data.progress, [key]: next } };
+}
+
+/** The data without the progress entries for these keys (a removed portal or campus keeps no mark). */
+export function withoutProgress(data: PortalData, keys: readonly string[]): PortalData {
+  if (!data.progress || !keys.some((k) => k in data.progress!)) return data;
+  const progress = { ...data.progress };
+  for (const k of keys) delete progress[k];
+  return { ...data, progress };
+}
+
+/** "3 of 7 done" for the rows shown: each distinct key counts once; an unmarked row is not done. */
+export function progressCounts(data: PortalData, keys: readonly string[]): { done: number; total: number } {
+  const distinct = [...new Set(keys)];
+  return { done: distinct.filter((k) => data.progress?.[k]?.done === true).length, total: distinct.length };
+}
+
+/** Anything saved for an application system: its login row, a campus under it, or a progress mark. */
+export function hasSavedFor(data: PortalData, key: string): boolean {
+  const prefix = `${key}:`;
+  return (
+    !!data.systems?.[key] ||
+    Object.keys(data.campuses ?? {}).some((k) => k.startsWith(prefix)) ||
+    !!data.progress?.[key] ||
+    Object.keys(data.progress ?? {}).some((k) => k.startsWith(prefix))
+  );
+}
+
+/** Order in which a college's accepted routes are tried: Common App, UC, Cal State Apply, ApplyTexas, UCAS, OUAC, the other country systems, Coalition last. */
+const ROUTE_FIRST = ["commonapp", "uc", "calstate", "applytexas", "ucas", "ouac"];
+function routeRank(key: string): number {
+  if (key === "coalition") return 1000;
+  const i = ROUTE_FIRST.indexOf(key);
+  return i >= 0 ? i : ROUTE_FIRST.length + SYSTEMS.findIndex((s) => s.key === key);
+}
+
+/** The college's application route (its first accepted route in the order above); null when it only takes its own application. */
+export function mainRoute(accepted: readonly string[]): string | null {
+  const routes = accepted.filter((k) => SYSTEMS.find((s) => s.key === k)?.kind === "route");
+  return routes.length === 0 ? null : routes.reduce((best, k) => (routeRank(k) < routeRank(best) ? k : best));
+}
+
+export type ListedCollege = { slug: string; name: string; custom?: boolean };
+
+/**
+ * Application systems the student's list needs, as system key -> names of the colleges that need it (list order).
+ * A college needs every add-on it uses and its main route; a route the student already has something saved for also
+ * counts for every college that accepts it. Custom colleges have no data and add nothing.
+ */
+export function neededSystems(data: PortalData, colleges: readonly ListedCollege[], systemsOf: (slug: string) => readonly string[]): Record<string, string[]> {
+  const out: Record<string, string[]> = {};
+  const add = (key: string, name: string) => {
+    const names = (out[key] ??= []);
+    if (!names.includes(name)) names.push(name);
+  };
+  for (const c of colleges) {
+    if (c.custom) continue;
+    const accepted = systemsOf(c.slug).filter((k) => SYSTEMS.some((s) => s.key === k));
+    for (const k of accepted) if (SYSTEMS.find((s) => s.key === k)?.kind === "addon") add(k, c.name);
+    const route = mainRoute(accepted);
+    if (route) add(route, c.name);
+    for (const k of accepted) if (SYSTEMS.find((s) => s.key === k)?.kind === "route" && hasSavedFor(data, k)) add(k, c.name);
+  }
+  return out;
+}
+
+/** An application system row is shown when the list needs it or the student saved anything for it. */
+export const systemShown = (data: PortalData, needed: Record<string, string[]>, key: string): boolean => key in needed || hasSavedFor(data, key);
