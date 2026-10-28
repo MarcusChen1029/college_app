@@ -269,6 +269,32 @@ test("activities v2: every v2 field can be set, and unanswered questions are rep
   assert.equal((prog.value.item as unknown as { afterYears: unknown }).afterYears, "10+");
 });
 
+test("activities v2: a role given without a leadership answer counts as leadership, and a contradiction is refused", () => {
+  const added = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", position: "Captain" });
+  assert.ok(added.ok);
+  const a = added.value.item as unknown as { id: string; leadership: boolean | null; position: string };
+  assert.deepEqual([a.leadership, a.position], [true, "Captain"]);
+
+  const plain = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC" });
+  assert.ok(plain.ok);
+  const upd = updateActivity(plain.value.data, "common_app_activity", plain.value.item.id, { position: "Treasurer" });
+  assert.ok(upd.ok);
+  const u = upd.value.item as unknown as { leadership: boolean | null; position: string };
+  assert.deepEqual([u.leadership, u.position], [true, "Treasurer"]);
+  assert.ok(!upd.value.needsAnswer.some((i) => i.field === "position"));
+
+  const no = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", leadership: false, position: "Captain" });
+  assert.equal(no.ok, false);
+  assert.match(!no.ok ? no.error : "", /leadership: true/);
+  const flip = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", leadership: false });
+  assert.ok(flip.ok);
+  assert.equal(updateActivity(flip.value.data, "common_app_activity", flip.value.item.id, { position: "Captain" }).ok, false);
+  assert.equal(updateActivity(flip.value.data, "common_app_activity", flip.value.item.id, { leadership: true, position: "Captain" }).ok, true);
+  assert.equal(addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", leadership: false, position: "" }).ok, true); // an empty role is no role
+  const cleared = updateActivity(added.value.data, "common_app_activity", a.id, { sport: "" });
+  assert.ok(cleared.ok);
+});
+
 test("activities v2: update_activity sets several award levels and reports what is still open", () => {
   const added = addActivity(undefined, "uc_entry", { category: "award", name: "Science fair", awardLevels: ["state"] });
   assert.ok(added.ok);

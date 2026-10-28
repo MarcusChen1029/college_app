@@ -638,8 +638,8 @@ export function registerTools(server: McpServer) {
     .object({
       // Common App activity (2026-27 form: up to 10)
       type: enumOf(CA_ACTIVITY_TYPES).optional().describe("Common App activity type, exactly as the Common App shows it, e.g. Robotics, Research, Employment or work (paid)."),
-      sport: enumOf(CA_SPORTS).optional().describe('Common App activity: the sport or team; asked only for the two athletics types ("Athletics (other)", "Athletics (JV or varsity)").'),
-      leadership: z.boolean().nullable().optional().describe('Common App activity: "Did you have a specific position or leadership role?" Set true before giving a position. Leave null if the student has not said.'),
+      sport: z.union([enumOf(CA_SPORTS), z.literal("")]).optional().describe('Common App activity: the sport or team; asked only for the two athletics types ("Athletics (other)", "Athletics (JV or varsity)"). "" clears it.'),
+      leadership: z.boolean().nullable().optional().describe('Common App activity: "Did you have a specific position or leadership role?" Giving a position sets this to true if it was unanswered; position with leadership false is refused. Leave null if the student has not said.'),
       position: z.string().optional().describe("Common App activity: the role, max 50 characters. Used only when leadership is true."),
       organization: z.string().optional().describe("Common App activity: max 100 characters."),
       description: z.string().optional().describe("Common App activity: max 150 characters. UC entry: max 350 (a line break counts as 2)."),

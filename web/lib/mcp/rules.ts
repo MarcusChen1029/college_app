@@ -326,6 +326,17 @@ function judge(kind: ActivityKind, item: Item, before?: { item: Item; changed: s
   return ok(issues.filter((i) => i.kind === "missing"));
 }
 
+/**
+ * A role the student gave is their answer to "Did you have a leadership role?" (the converter reads an old
+ * position the same way), so a position with no leadership answer sets it to true. A position beside
+ * leadership false is a contradiction and is refused, since the role would otherwise be silently dropped.
+ */
+function withLeadership(a: CaActivity, suppliedPosition: boolean): Check<CaActivity> {
+  if (!a.position.trim()) return ok(a);
+  if (a.leadership === false) return suppliedPosition ? fail("Nothing was saved. position needs leadership: true, but leadership is false. Set leadership: true to keep the role, or drop position.") : ok(a);
+  return ok(a.leadership === null ? { ...a, leadership: true } : a);
+}
+
 type Saved = { data: ActivityData; item: Item; /** Questions still without an answer ("needs an answer"); the AI should ask the student, never guess. */ needsAnswer: Issue[] };
 
 export function addActivity(current: unknown, kind: ActivityKind, fields: Record<string, unknown>): Check<Saved> {
@@ -339,7 +350,9 @@ export function addActivity(current: unknown, kind: ActivityKind, fields: Record
   if (kind === "common_app_activity") {
     const a = { ...newCaActivity(), ...f.value } as CaActivity;
     if (!a.type && !a.organization && !a.position && !a.description.trim()) return fail("A Common App activity needs at least a type, an organization, a position or a description.");
-    item = a;
+    const l = withLeadership(a, true);
+    if (!l.ok) return l;
+    item = l.value;
   } else if (kind === "common_app_honor") {
     item = { ...newCaHonor(), ...f.value };
     if (!(item as CaHonor).title.trim()) return fail("A Common App honor needs a title.");
@@ -361,7 +374,12 @@ export function updateActivity(current: unknown, kind: ActivityKind, id: string,
   if (!existing) return fail(`No ${kind} with id "${id}". Use get_activities to see the ids.`);
   const f = checkFields(kind, fields);
   if (!f.ok) return f;
-  const item = { ...existing, ...f.value } as Item;
+  let item = { ...existing, ...f.value } as Item;
+  if (kind === "common_app_activity") {
+    const l = withLeadership(item as CaActivity, typeof f.value.position === "string" && f.value.position.trim() !== "");
+    if (!l.ok) return l;
+    item = l.value;
+  }
   const j = judge(kind, item, { item: existing, changed: Object.keys(f.value) });
   if (!j.ok) return j;
   return ok({ data: withItems(data, kind, items.map((i) => (i.id === id ? item : i))), item, needsAnswer: j.value });
