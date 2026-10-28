@@ -319,7 +319,7 @@ export function buildContextPack(input: PackInput): string {
   const parts: string[][] = [
     [
       "# My college application context",
-      `Exported from College Tracker on ${iso}. Admissions numbers come from each college's Common Data Set (CDS), IPEDS or official admissions pages${input.full ? "; the numbered links under each college are the sources" : ""}.`,
+      `Exported from Trakur on ${iso}. Admissions numbers come from each college's Common Data Set (CDS), IPEDS or official admissions pages${input.full ? "; the numbered links under each college are the sources" : ""}.`,
     ],
     profileSection(input.profile),
   ];

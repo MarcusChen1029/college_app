@@ -75,7 +75,7 @@ export function OAuthConsent() {
     return (
       <div className={card}>
         <h1 className="font-display text-2xl font-bold">Sign in to continue</h1>
-        <p className="text-sm text-zinc-600">An AI is asking to connect to your College Tracker account. Sign in first, then you can approve or decline.</p>
+        <p className="text-sm text-zinc-600">An AI is asking to connect to your Trakur account. Sign in first, then you can approve or decline.</p>
         <GoogleSignIn returnTo={`/oauth/consent?authorization_id=${encodeURIComponent(id)}`} />
       </div>
     );
@@ -97,7 +97,7 @@ export function OAuthConsent() {
   const host = redirectHost(redirect_uri);
   return (
     <div className={card}>
-      <h1 className="font-display text-2xl font-bold">Connect {client.name} to College Tracker?</h1>
+      <h1 className="font-display text-2xl font-bold">Connect {client.name} to Trakur?</h1>
       <p className="text-sm text-zinc-600">
         Signed in as <span className="font-medium">{student.auth.email}</span>. If you approve, {client.name} can use your tracker data until you disconnect it on the Connect AI page.
       </p>

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "College application filler",
   "version": "0.1.0",
-  "description": "Fills your courses and grades into Common App, UC, STARS, Cal State Apply, UIUC and UT Austin from your College Tracker transcript.",
+  "description": "Fills your courses and grades into Common App, UC, STARS, Cal State Apply, UIUC and UT Austin from your Trakur transcript.",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6SS2a8nN+nnYOc5k3C6RsynLlmfwrBTO2vONuZYMIwsVmAUE5XHcTbaENrrUkE6uUHVNbBHtJTxpOn1VhOdwefJOx/jpZSyXflogUjal47tbC0I1tPwpYTl6OjjKgy6jtmk2eul5VQKxkvCWLGrvTiQ2/CmATpz3oiSS304cqg0pDdX/AbbF5fYyiFCtJHhiB6u1+ELFzpekH8xys1b4p0dCVXdqW12qfO6Ty+bKC7nKYIJWWPUa0zXtYDIVTuy7LAFPZPrTtrrRWrlDbV7v7e396oVopaVKURdqeN08L8b+6EqhrWrnrgcvOjMs46svFunO/42rG6vxlhoBvFPEhQIDAQAB",
   "permissions": [
     "identity",

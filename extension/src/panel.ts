@@ -98,7 +98,7 @@ function signedOutView(message?: string): void {
   view = "other";
   const note = h("p", { class: "note" }, message ?? "");
   show(
-    h("p", {}, "Sign in with your College Tracker account so the extension can read your transcript. It cannot see anything else in your account."),
+    h("p", {}, "Sign in with your Trakur account so the extension can read your transcript. It cannot see anything else in your account."),
     message ? note : null,
     button("Sign in", async () => {
       note.textContent = "Waiting for the sign-in window...";

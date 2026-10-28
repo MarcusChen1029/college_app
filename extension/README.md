@@ -1,6 +1,6 @@
 # College application filler (Chrome extension)
 
-Chrome MV3 side panel that fills courses and grades from the transcript in the College Tracker: Common App's Courses & Grades and Current Year Courses in one click, and a fill assistant for the UC application, STARS, Cal State Apply, UIUC's SRAR (myIllini) and UT Austin's coursework form (MyStatus). It signs in with a transcript-only token (never a Supabase session) obtained from the tracker's `/extension/connect` page.
+Chrome MV3 side panel that fills courses and grades from the transcript in Trakur: Common App's Courses & Grades and Current Year Courses in one click, and a fill assistant for the UC application, STARS, Cal State Apply, UIUC's SRAR (myIllini) and UT Austin's coursework form (MyStatus). It signs in with a transcript-only token (never a Supabase session) obtained from the tracker's `/extension/connect` page.
 
 Pinned extension id: `omnpdpbgbbdbnnaimhppoclimbeeognl` (derived from the public `key` in `manifest.json`; also `NEXT_PUBLIC_EXTENSION_ID` in `web/.env.example`). The private key was discarded and must never be committed (`*.pem` is gitignored).
 

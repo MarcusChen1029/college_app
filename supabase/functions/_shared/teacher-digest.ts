@@ -157,7 +157,7 @@ ${blocks}
 <p>${escapeHtml(intro)} Tasks are ones you assigned that are overdue or due in the next ${DIGEST_DAYS} days and not done; deadlines are college application deadlines in the next ${DIGEST_DAYS} days that haven't been submitted.</p>
 ${htmlStudents}
 <p><a href="${appUrl}/teacher">Open your dashboard</a> · Always confirm dates on the college's own website.</p>
-<p style="color:#71717a;font-size:12px">You get this weekly summary because you turned it on in your College Tracker account. <a href="${manage}">Turn it off</a>.</p>
+<p style="color:#71717a;font-size:12px">You get this weekly summary because you turned it on in your Trakur account. <a href="${manage}">Turn it off</a>.</p>
 </div>`,
     text: `${hello ? `Hi ${hello},` : "Hi,"}\n\n${intro}\n\n${textStudents}\n\nOpen your dashboard: ${appUrl}/teacher\nTurn this summary off: ${manage}`,
   };
