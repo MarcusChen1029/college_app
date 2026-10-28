@@ -60,6 +60,15 @@ test("checkPackage: flags missing files, a changed key and a build that is not p
   assert.match(checkPackage(fakeEntries({ "background.js": 'fetch("http://localhost:3000")' }), manifestText).join(), /does not contain https:\/\/www\.track-ur-college\.com/);
 });
 
+test("checkPackage: a package that trusts the local dev address, or any non-https tracker, is refused (EXT-11)", () => {
+  // A dead fallback branch counts too: the live package must not mention the address at all.
+  const withDev = checkPackage(fakeEntries({ "background.js": `const u = "${LIVE_TRACKER_URL}"; const d = "http://localhost:3000";` }), manifestText);
+  assert.match(withDev.join(), /background\.js mentions the dev address localhost:3000/);
+  assert.match(checkPackage(fakeEntries({ "panel.js": "x = 'http://localhost:3000'" }), manifestText).join(), /panel\.js mentions the dev address/);
+  assert.match(checkPackage(fakeEntries({ "background.js": 'const u = "http://localhost:3000";' }), manifestText, "http://localhost:3000").join(), /must be built for an https tracker/);
+  assert.match(checkPackage(fakeEntries({ "background.js": 'const u = "http://x.example";' }), manifestText, "http://x.example").join(), /must be built for an https tracker/);
+});
+
 test("the committed download zip is complete, keeps the pinned key and points at the live site", () => {
   const zip = readFileSync(DEFAULT_OUT);
   assert.ok(zip.length < 1024 * 1024, "zip should be under 1 MB");
@@ -67,4 +76,10 @@ test("the committed download zip is complete, keeps the pinned key and points at
   assert.deepEqual(checkPackage(entries, manifestText), []);
   const names = entries.map((e) => e.name);
   for (const f of REQUIRED_FILES) assert.ok(names.includes(f), `${f} at the zip root`);
+  // The download is built from the current manifest: no "tabs" permission, no Supabase host permission, no dev address anywhere.
+  const packed = JSON.parse(entries.find((e) => e.name === "manifest.json").data.toString("utf8"));
+  assert.deepEqual(packed.permissions, JSON.parse(manifestText).permissions);
+  assert.ok(!packed.permissions.includes("tabs"));
+  assert.ok(!packed.host_permissions.some((h) => h.includes("supabase.co")));
+  for (const e of entries) assert.ok(!e.data.includes("localhost:3000"), `${e.name} has no dev address`);
 });

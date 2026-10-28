@@ -6,6 +6,7 @@ import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, wr
 import { tmpdir } from "node:os";
 import { dirname, join, relative, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { TRACKER_URL_PATTERN } from "./tracker-url.mjs";
 import { makeZip, readZip } from "./zip.mjs";
 
 export const LIVE_TRACKER_URL = "https://www.track-ur-college.com";
@@ -42,6 +43,9 @@ export function checkPackage(entries, sourceManifest, trackerUrl = LIVE_TRACKER_
   }
   const bg = byName.get("background.js");
   if (bg && !bg.toString("utf8").includes(trackerUrl)) problems.push(`background.js does not contain ${trackerUrl}`);
+  // What students install must trust only an https tracker: the local dev address belongs to development builds (EXT-11).
+  if (!TRACKER_URL_PATTERN.test(trackerUrl)) problems.push(`a package must be built for an https tracker, not ${trackerUrl}`);
+  for (const e of entries) if (e.data.includes("localhost:3000")) problems.push(`${e.name} mentions the dev address localhost:3000`);
   return problems;
 }
 
