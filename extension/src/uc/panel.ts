@@ -52,7 +52,7 @@ export function ucAutoView(plans: UcGradePlan[], tabId: number): HTMLElement {
   const schools = new Set(items.map((p) => p.schoolName)).size;
   const tab: UcTab = {
     send: (m) => sendTo(tabId, m),
-    go: (path) => navigate(tabId, `${SITE_ORIGINS.uc[0]}${path}`, "UC"),
+    go: (path) => navigate(tabId, `${SITE_ORIGINS.uc[0]}${path}`, "UC", "uc"),
     afterReload: () => afterReload(tabId, "UC"),
   };
   const warnings = items.flatMap((p) => p.warnings);

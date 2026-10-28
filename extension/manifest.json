@@ -7,8 +7,7 @@
   "permissions": [
     "identity",
     "storage",
-    "sidePanel",
-    "tabs"
+    "sidePanel"
   ],
   "host_permissions": [
     "https://apply.commonapp.org/*",
@@ -19,8 +18,7 @@
     "https://myillini.illinois.edu/*",
     "https://utdirect.utexas.edu/*",
     "https://mystatus.admissions.utexas.edu/*",
-    "https://admissions.utexas.edu/*",
-    "https://eyvmtaggayqizllaseiu.supabase.co/*"
+    "https://admissions.utexas.edu/*"
   ],
   "action": {
     "default_title": "College application filler"

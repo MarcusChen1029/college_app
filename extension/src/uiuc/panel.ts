@@ -44,7 +44,7 @@ export function uiucAutoView(plans: UiucGradePlan[], tabId: number): HTMLElement
   const schools = new Set(items.map((p) => p.schoolName)).size;
   const tab: UiucTab = {
     send: (m) => sendTo(tabId, m),
-    go: (path) => navigate(tabId, `${SITE_ORIGINS.uiuc[0]}${path}`, "myIllini"),
+    go: (path) => navigate(tabId, `${SITE_ORIGINS.uiuc[0]}${path}`, "myIllini", "uiuc"),
     afterReload: () => afterReload(tabId, "myIllini"),
   };
   const warnings = items.flatMap((p) => p.warnings);

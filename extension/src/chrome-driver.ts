@@ -5,6 +5,7 @@
 import type { ContentMessage, ContentResponse } from "./messages.ts";
 import { CG_GRADE_PATH, targetUrl } from "./commonapp/pages.ts";
 import type { Driver, FillMode, Plans, Target } from "./runner.ts";
+import { assertPortalUrl } from "./sites.ts";
 
 /** The slice of chrome.tabs this file uses, so tests can fake it. */
 export type TabsApi = {
@@ -22,6 +23,7 @@ const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 /** Starts a full page load of `url` and resolves when the tab reports "complete" after "loading" (or, if no load ever starts, after a grace period). */
 export async function navigate(tabs: TabsApi, tabId: number, url: string): Promise<void> {
+  assertPortalUrl(url, "common_app", "Common App"); // before the tab is touched
   let sawLoading = false;
   let finish: () => void = () => {};
   const done = new Promise<void>((resolve) => (finish = resolve));

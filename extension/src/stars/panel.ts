@@ -79,7 +79,7 @@ export async function starsAutoView(plans: StarsPagePlan[], tabId: number): Prom
   const tab: StarsTab = {
     send: (m) => send(tabId, m),
     afterSave: () => afterReload(tabId, "STARS"),
-    go: (path) => navigate(tabId, `${SITE_ORIGINS.stars[0]}${path}`, "STARS"),
+    go: (path) => navigate(tabId, `${SITE_ORIGINS.stars[0]}${path}`, "STARS", "stars"),
   };
   return autoView({
     title: "Add your courses to STARS",
