@@ -3,13 +3,35 @@ import { test } from "node:test";
 import {
   DIGEST_DAYS,
   MAX_PER_SECTION,
+  clampToday,
   daysBetween,
   escapeHtml,
+  plainText,
   relativeDay,
   renderTeacherDigest,
   selectDigest,
   type DigestRow,
 } from "../../supabase/functions/_shared/teacher-digest.ts";
+
+test("plainText keeps student text to one short line with no clickable addresses", () => {
+  assert.equal(plainText("  Ana \n Lee ", 60), "Ana Lee");
+  assert.equal(plainText("x".repeat(100), 10), `${"x".repeat(9)}…`);
+  const phish = plainText("Locked! verify at https://evil.example/login", 120);
+  assert.ok(!phish.includes("evil.example"));
+  assert.ok(!phish.includes("https://"));
+  assert.equal(plainText("St. Mary's", 60), "St. Mary's"); // a dot before a space is left alone
+});
+
+test("clampToday honours only a real date within a day of now", () => {
+  const now = new Date("2026-10-28T12:00:00Z");
+  assert.equal(clampToday(undefined, now), "2026-10-28");
+  assert.equal(clampToday("2026-10-27", now), "2026-10-27");
+  assert.equal(clampToday("2026-10-29", now), "2026-10-29");
+  assert.equal(clampToday("2027-01-01", now), "2026-10-28");
+  assert.equal(clampToday("2026-01-01", now), "2026-10-28");
+  assert.equal(clampToday("garbage", now), "2026-10-28");
+  assert.equal(clampToday(20261028, now), "2026-10-28");
+});
 
 const TODAY = "2026-10-25";
 const row = (p: Partial<DigestRow>): DigestRow => ({

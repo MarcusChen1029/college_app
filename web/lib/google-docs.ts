@@ -26,7 +26,8 @@ function derive(master: Buffer, purpose: string) {
 const IV = 12;
 const TAG = 16;
 
-function seal(key: Buffer, plaintext: string, aad: string): string {
+// AES-256-GCM: base64url(12-byte IV | 16-byte tag | ciphertext). Also used by portal-vault.ts, with its own subkey.
+export function seal(key: Buffer, plaintext: string, aad: string): string {
   const iv = randomBytes(IV);
   const c = createCipheriv("aes-256-gcm", key, iv);
   c.setAAD(Buffer.from(aad, "utf8"));
@@ -34,7 +35,8 @@ function seal(key: Buffer, plaintext: string, aad: string): string {
   return Buffer.concat([iv, c.getAuthTag(), body]).toString("base64url");
 }
 
-function unseal(key: Buffer, sealed: string, aad: string): string | null {
+/** Null for anything that isn't a ciphertext of this key and AAD (wrong key, wrong AAD, tampered, garbled). */
+export function unseal(key: Buffer, sealed: string, aad: string): string | null {
   try {
     const buf = Buffer.from(sealed, "base64url");
     if (buf.length <= IV + TAG) return null;

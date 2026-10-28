@@ -9,7 +9,8 @@ The Supabase connector can't run UPDATE/DELETE from cloud sessions, so these are
 1. `supabase/patches/2026-10-20_tier_review.sql`: tier review v1 (replaces all `institution_tiers` rows and adds a rationale to each)
 2. `supabase/migrations/0006_pg_net_schema.sql`: moves `pg_net` out of `public` (clears the security-advisor warning)
 
-Both are safe to re-run.
+Both have already been applied. Don't re-run the tier review: it replaces every `institution_tiers` row, so it would wipe the tiers of
+every college added after 2026-10-20.
 
 ## 2. Vercel (web app)
 
@@ -25,7 +26,10 @@ Both are safe to re-run.
 
 - **Authentication → URL Configuration**
   - Site URL: your Vercel production URL
-  - Redirect URLs: `https://<your-domain>/**`, `https://*-<your-vercel-team>.vercel.app/**` (preview deploys), `http://localhost:3000/**`
+  - Redirect URLs: `https://<your-domain>/**` and `http://localhost:3000/**` only.
+  - **Never add a `*.vercel.app` wildcard** (such as `https://*-<team>.vercel.app/**`). Anyone can create a Vercel project whose
+    address matches it, send a student a sign-in link that returns to that address, and take over the student's account
+    (including their saved logins). Test sign-in on the production domain or on a preview domain you own.
 - **Authentication → Sign In / Providers → Google:** turn it on. It needs a Google OAuth client:
   1. [Google Cloud Console](https://console.cloud.google.com/apis/credentials) → Create credentials → OAuth client ID → type **Web application** (set up the OAuth consent screen first if asked: app name, support email, "External").
   2. Authorized JavaScript origins: your Vercel URL and `http://localhost:3000`.

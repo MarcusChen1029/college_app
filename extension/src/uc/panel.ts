@@ -51,7 +51,7 @@ export function ucReport(r: UcGradeReport, schools: number): AutoReport {
 export function ucTab(tabId: number): UcTab {
   return {
     send: (m) => sendTo(tabId, m),
-    go: (path) => navigate(tabId, `${SITE_ORIGINS.uc[0]}${path}`, "UC"),
+    go: (path) => navigate(tabId, `${SITE_ORIGINS.uc[0]}${path}`, "UC", "uc"),
     afterReload: () => afterReload(tabId, "UC"),
   };
 }

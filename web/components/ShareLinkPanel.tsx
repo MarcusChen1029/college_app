@@ -36,7 +36,9 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
     };
   }, [kind, t]);
 
-  const active = links?.find((l) => !l.revokedAt) ?? null;
+  const active = links?.find((l) => !l.revokedAt && !l.expired) ?? null;
+  // The newest link ran out on its own (180 days) rather than being turned off: say so next to the create button.
+  const lapsed = !active && links?.[0] && !links[0].revokedAt && links[0].expired ? links[0] : null;
 
   async function create() {
     setBusy(true);
@@ -119,6 +121,7 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-zinc-600">
                 {t("settings.share.onSince", { date: fmtDate(active.createdAt.slice(0, 10)) })} · {lastViewed(active.lastViewedAt)}
+                {active.expiresAt && <> · {t("settings.share.expires", { date: fmtDate(active.expiresAt.slice(0, 10)) })}</>}
               </p>
               <div className="flex flex-wrap gap-2">
                 <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={create}>
@@ -130,9 +133,12 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
               </div>
             </div>
           ) : (
-            <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={create}>
-              {busy ? t("settings.share.creating") : t(text.create)}
-            </button>
+            <>
+              {lapsed?.expiresAt && <p className="text-zinc-600">{t("settings.share.expired", { date: fmtDate(lapsed.expiresAt.slice(0, 10)) })}</p>}
+              <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={create}>
+                {busy ? t("settings.share.creating") : t(text.create)}
+              </button>
+            </>
           )}
           {active && !url && <p className="text-xs text-zinc-500">{t("settings.share.lost")}</p>}
         </div>

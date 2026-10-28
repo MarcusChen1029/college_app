@@ -3,8 +3,10 @@
 import { build } from "esbuild";
 import { copyFileSync, mkdirSync, rmSync } from "node:fs";
 import { join } from "node:path";
+import { DEV_TRACKER_URL, resolveTrackerUrl } from "./scripts/tracker-url.mjs";
 
-const trackerUrl = process.env.TRACKER_URL || "http://localhost:3000";
+// Without TRACKER_URL this is a DEV build that trusts http://localhost:3000; any other value must be a bare https origin.
+const trackerUrl = resolveTrackerUrl();
 const out = process.env.OUT_DIR || "dist";
 
 rmSync(out, { recursive: true, force: true });
@@ -25,3 +27,6 @@ copyFileSync("manifest.json", join(out, "manifest.json"));
 copyFileSync("panel.html", join(out, "panel.html"));
 copyFileSync("panel.css", join(out, "panel.css"));
 console.log(`built ${out}/ (TRACKER_URL=${trackerUrl})`);
+if (trackerUrl === DEV_TRACKER_URL) {
+  console.warn(`DEV BUILD: this extension signs in at ${DEV_TRACKER_URL}. Load it only in a test profile; for students use "npm run package".`);
+}

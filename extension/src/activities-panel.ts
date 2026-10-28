@@ -113,7 +113,7 @@ export function reportStatus(page: ActPage, r: ActivitiesReport): { text: string
   if (r.note && r.filled.length === 0) return { text: r.note, warn: false };
   const trouble = (r.unsure?.length ?? 0) > 0 || r.mismatches.length > 0 || r.blocked.length > 0 || filledBlanks(r).length > 0 || r.notAdded.length > 0;
   if (trouble) return { text: `Done: ${count(r.filled.length, page)} filled, but some things need a look (below).`, warn: true };
-  // UC's read-back compares only what the list shows (for most categories just the name) until TESTING.md §J.3 extends expectOf.
+  // UC's read-back compares only what the list shows (for most categories just the name) until TESTING.md §K.3 extends expectOf.
   return { text: page === "uc" ? `Done: ${count(r.filled.length, page)} filled; names checked on UC's list.` : `Done: ${count(r.filled.length, page)} filled and checked.`, warn: false };
 }
 

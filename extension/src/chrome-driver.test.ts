@@ -44,6 +44,22 @@ test("navigate waits for loading then complete, and removes its listener", async
   assert.equal(listeners.size, 0);
 });
 
+test("navigate refuses an address outside Common App before it touches the tab", async () => {
+  const { tabs, updates, listeners } = fakeTabs();
+  for (const url of [
+    "https://evil.example/common/13/55",
+    "http://apply.commonapp.org/common/13/55",
+    "https://apply.commonapp.org@evil.example/",
+    "https://apply.commonapp.org.evil.example/",
+    "https://user:pw@apply.commonapp.org/",
+    "https://myillini.illinois.edu/", // another portal
+  ]) {
+    await assert.rejects(navigate(tabs, 7, url), /Refused to open an address outside Common App/, url);
+  }
+  assert.deepEqual(updates, []);
+  assert.equal(listeners.size, 0);
+});
+
 test("navigate gives up waiting for a load that never starts, instead of hanging", async () => {
   const saved = { ...DRIVER_TIMING };
   DRIVER_TIMING.noNavigationMs = 20;

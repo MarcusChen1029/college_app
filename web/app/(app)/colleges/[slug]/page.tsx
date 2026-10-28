@@ -11,7 +11,7 @@ import { CollegeOutcomes } from "@/components/CollegeOutcomes";
 import { EnglishFitLine } from "@/components/EnglishFit";
 import { collegeEnglishFrom } from "@/lib/english-fit";
 import { DeadlineChip, StatusIcon, StatusPill } from "@/components/StatusPill";
-import { getCollege, getLookups } from "@/lib/data";
+import { getCollege, getLookups, getSummaries } from "@/lib/data";
 import {
   ADMIT_MODEL,
   ENGLISH_POLICY,
@@ -48,6 +48,8 @@ export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
 async function College({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const t = await getT();
+  // Unknown slugs stop at the cached list, so made-up URLs can't each cost a database query.
+  if (!(await getSummaries()).some((s) => s.slug === slug)) notFound();
   const [c, lookups] = await Promise.all([getCollege(slug), getLookups()]);
   if (!c) notFound();
 

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useSyncExternalStore, type ReactNode } from "react";
-import { openSignIn } from "@/components/SignInDialog";
+import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { testCardView } from "@/lib/i18n/test-plan-text";
 import { cleanRegions } from "@/lib/regions";
@@ -57,18 +57,6 @@ export function StartWizard() {
   const finish = (to = "/colleges") => {
     commitFocus();
     router.push(to);
-  };
-  // The dialog host lives in the root layout, so it survives the navigation; open it once /profile is showing.
-  const saveThenSignIn = () => {
-    finish("/profile");
-    // returnTo is read when the dialog opens, so wait until the URL really is /profile (give up after ~10s).
-    let tries = 0;
-    const timer = setInterval(() => {
-      if (window.location.pathname === "/profile") {
-        clearInterval(timer);
-        openSignIn();
-      } else if (++tries > 100) clearInterval(timer);
-    }, 100);
   };
 
   return (
@@ -190,20 +178,25 @@ export function StartWizard() {
               </li>
             ))}
           </ul>
+          {/* Signed-out students can't be emailed, so offer the account (reminders are on by default for new accounts). */}
+          {!student.auth && (
+            <section aria-labelledby="start-remind" className="mt-5 rounded-2xl border-2 border-blue-200 bg-blue-50 p-4">
+              <h3 id="start-remind" className="font-semibold">
+                {t("profile.start.remindTitle")}
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600">{t("profile.start.remindBody")}</p>
+              <div className="mt-3">
+                <GoogleSignIn returnTo="/colleges" />
+              </div>
+            </section>
+          )}
           <div className="mt-6 flex items-center justify-between">
             <button type="button" onClick={() => go(2)} className="text-sm font-semibold text-zinc-600 hover:text-blue-600">
               {t("common.back")}
             </button>
-            <div className="flex items-center gap-4">
-              {!student.auth && (
-                <button type="button" onClick={saveThenSignIn} className="text-sm font-semibold text-blue-700 underline underline-offset-4">
-                  {t("profile.start.saveSignIn")}
-                </button>
-              )}
-              <button type="button" onClick={() => finish()} className={buttonClass("primary")}>
-                {t("profile.start.seeColleges")}
-              </button>
-            </div>
+            <button type="button" onClick={() => finish()} className={buttonClass("primary")}>
+              {t("profile.start.seeColleges")}
+            </button>
           </div>
         </div>
       )}

@@ -66,7 +66,7 @@ Check it from the SQL editor (replace the user id with yours; this simulates a t
 begin;
 set local role authenticated;
 select set_config('request.jwt.claims', '{"sub":"<your-user-id>","role":"authenticated","client_id":"test"}', true);
-select auth.uid(), (select count(*) from public.student_colleges);
+select auth.uid(), (select count(*) from public.ai_student_colleges);
 rollback;
 ```
 
@@ -82,8 +82,9 @@ Also report back: the exact error text Claude shows, and the Vercel function log
   and that Disconnect cuts access immediately.
 - Saves from the AI use optimistic concurrency on `updated_at` (retry up to 3 times, then "Your data changed while saving; try again.").
   The website's own saves are still last-write-wins; an open tab reloads from the account when you return to it (at most every 30 s).
-- The Senior check reads `student_profiles.plan`, which students can edit until payments exist. Same honor system as the list limits.
-- An OAuth token is a normal signed-in token for the Supabase API. Anyone holding it could call Supabase directly and read the saved
-  logins. Tokens sit with OpenAI or Anthropic, so the risk is low; the follow-up is moving logins to a table that rejects tokens
-  with a `client_id` claim. The MCP tools themselves never select, return or write them.
+- The Senior check reads `plan` (through `ai_student_profiles`), which students can edit until payments exist. Same honor system as the list limits.
+- An OAuth token is a normal signed-in token for the Supabase API, but the database treats it as an AI connection (it has a `client_id`
+  claim): it reaches only the views `ai_student_profiles` / `ai_student_colleges` and the transcript tables, never an RPC, and, once
+  migration 0043 is applied, never the base profile/list tables. So even a token used outside the tools can't read saved-login
+  usernames, links or passwords (passwords are encrypted elsewhere). The MCP tools themselves never select, return or write them.
 - The token is not bound to this site as its audience yet (follow-up: a custom access-token hook).

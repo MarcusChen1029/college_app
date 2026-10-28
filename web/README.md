@@ -16,7 +16,7 @@ Pages:
 - `/colleges/[slug]`: full profile, including CDS stats, an estimated GPA distribution, deadlines, English requirements, application requirements, cost & aid, how majors are admitted, admission factors and numbered sources
 - `/compare?c=mit,purdue`: compare up to 4 colleges side by side
 - `/application/list`: your list (My colleges; `/my-list` redirects here) with plan, status, application checklist, notes and upcoming dates
-- `/settings`: account, reminders and teacher links (`/account` redirects here). Sign-in is a dialog (`openSignIn()`). Signed out, the profile and list stay in localStorage. Signed in, they're stored in `student_profiles` / `student_colleges` (per-user RLS), and anything saved locally is merged in on first sign-in.
+- `/settings`: account, reminders and teacher links (`/account` redirects here). Sign-in is a dialog (`openSignIn()`). Signed out, the profile and list stay in localStorage. Signed in, they're stored in `student_profiles` / `student_colleges` (per-user RLS); at sign-in a dialog asks whether to add what was saved locally. Portal passwords are in neither: they're sealed server-side in `portal_passwords` (migration 0040) and go through `POST /api/portal-passwords` (runbook `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`).
 
 Auth setup in the Supabase dashboard (Authentication → URL Configuration): set the Site URL to the deployed domain and add `http://localhost:3000/**` and `https://<your-domain>/**` to the redirect URLs. The built-in email sender is rate-limited (a few emails per hour), so configure custom SMTP before real users sign up.
 

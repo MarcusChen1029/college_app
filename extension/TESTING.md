@@ -135,8 +135,22 @@ application (SRAR not final-submitted): run it only when the owner is watching, 
    page showed.
 3. Check the rows on myIllini, then press Submit Page on each courses page and Other Academic Information yourself.
 
+## I. Security hardening (2026-10-28): live checks still to run
 
-## I. Activities & honors on Common App (not yet run end to end)
+The code and unit tests for these are done (`src/background-guards.test.ts`, `save-guard.test.ts`, `sites.test.ts`, `tab-wait.test.ts`,
+`uiuc/dialogs.test.ts`, `auth.test.ts`, `manifest.test.ts`); nothing below was run against a real portal. Use the throwaway test accounts only.
+Apply `supabase/migrations/0042_extension_hardening.sql` first (the new extension also works against the old server: the revoke call just fails quietly).
+1. Sign out revokes: sign in, copy the token from the service worker console (`await chrome.storage.local.get("token")`), press Sign out, then in the
+   service worker console `await fetch(".../rest/v1/rpc/extension_transcript", {method:"POST", headers:{apikey:"<publishable key>","Content-Type":"application/json"}, body: JSON.stringify({p_token:"<copied token>"})}).then(r=>r.json())`.
+   Expected: `{ok:false, error:"invalid_token"}`. Sign out with the network off: the panel still signs out.
+2. The panel still follows the active tab with no `tabs` permission: with a Common App, a STARS, a UC and an unrelated tab, "Fill for" switches to the matching system
+   and back to Common App for the unrelated tab. The extension card on `chrome://extensions` no longer lists "Read your browsing history".
+3. `loadTranscript` works with no Supabase host permission, and the panel passes the background's new sender check (the first sign-in after loading the new build shows the course list; Sign in, Sign out and Reload transcript all answer).
+4. Content scripts cannot read the token: in DevTools on a portal tab, pick the extension's context in the console context menu and run `await chrome.storage.local.get("token")`. Expected: an error or nothing.
+5. STARS "Save Course" and UC "Save & continue" are still pressed after a fill (the label check passes on the real buttons). If the panel reports "Refused to press ...", copy the quoted label: it is a real button wording the guard must learn.
+6. UT: open MyStatus and check the fill assistant still attaches; then see whether `https://admissions.utexas.edu/*` is needed at all.
+
+## J. Activities & honors on Common App (not yet run end to end)
 
 Built 2026-10-28 (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`, page facts in `docs/superpowers/research/2026-10-27-portal-dom.md`
 §6 Activities, §8 Honors). Throwaway Common App account ONLY, in the separate Chrome profile from section A (the fill overwrites Activity 1 test data).
@@ -174,7 +188,7 @@ than 150 characters (it must be reported as not accepted) and leave one activity
 
 If something fails, send the panel report and a screenshot of the Common App page; do not retry more than once.
 
-## J. Activities & awards on UC (not yet run end to end)
+## K. Activities & awards on UC (not yet run end to end)
 
 Built 2026-10-28/29 (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`, page facts in `docs/superpowers/research/2026-10-27-portal-dom.md`
 §7). Throwaway UC account ONLY (memory `portal-test-accounts`; it holds "Test Club (filler research)"), in the separate Chrome profile. UC signs

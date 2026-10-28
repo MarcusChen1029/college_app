@@ -5,6 +5,7 @@
 
 import { sameCourseName } from "../../../web/lib/course-names.ts";
 import type { UcGradePlan, UcRow } from "../../../web/lib/uc-fill.ts";
+import { pressSaveLater, saveButtonRefusal } from "../save-guard.ts";
 
 export const UC_TIMING = { stepMs: 100, rowMs: 5000 };
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -110,10 +111,20 @@ export async function fillUcPage(doc: Document, plan: UcGradePlan): Promise<UcFi
     added.push(row.name);
   }
   if (!added.length) return { added, skippedExisting, left, saving: false };
+  pressUcSave(doc);
+  return { added, skippedExisting, left, saving: true };
+}
+
+/**
+ * Presses "Save & continue", and only a button that reads like Save (save-guard.ts): UC's id for it is the short `save`, which proves
+ * nothing about what the button does. Throws UcStop, pressing nothing, when it is missing or reads like a submit.
+ */
+export function pressUcSave(doc: Document): void {
   const save = doc.getElementById("save") as HTMLElement | null;
   if (!save) throw new UcStop("UC's Save & continue button is not on the page");
-  setTimeout(() => save.click(), 50);
-  return { added, skippedExisting, left, saving: true };
+  const why = saveButtonRefusal(save);
+  if (why) throw new UcStop(`Refused to press ${why}: the extension only presses Save & continue on UC and never submits anything`);
+  pressSaveLater(save);
 }
 
 /** Course names on the grade's summary page after saving (its table's "Course name" column). */

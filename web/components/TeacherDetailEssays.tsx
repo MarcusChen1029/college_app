@@ -2,6 +2,7 @@
 
 import { essayStatusText } from "@/components/TeacherText";
 import { safeLink } from "@/lib/checklist";
+import { redirectHost } from "@/lib/connect-ai";
 import { useT } from "@/lib/i18n/client";
 import { PS_PROMPTS, UC_PIQS, UC_PICKS } from "@/lib/personal-essays";
 import type { StudentDetail } from "@/lib/roster";
@@ -9,6 +10,8 @@ import type { StudentDetail } from "@/lib/roster";
 function Doc({ status, url }: { status?: string; url?: string }) {
   const t = useT();
   const href = url ? safeLink(url) : null;
+  // Students type these links, so show where one goes before the teacher clicks it.
+  const host = href ? redirectHost(href) : null;
   return (
     <p className="text-sm">
       <span className="font-semibold">{essayStatusText(t, status ?? "not_started")}</span>
@@ -18,6 +21,7 @@ function Doc({ status, url }: { status?: string; url?: string }) {
           <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline underline-offset-4">
             {t("teacher.essays.openDoc")}
           </a>
+          {host && <span className="text-zinc-500"> ({host})</span>}
         </>
       ) : url ? (
         <span className="text-zinc-500"> · {t("teacher.essays.badLink")}</span>
