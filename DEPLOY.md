@@ -64,3 +64,13 @@ select net.http_post(
 ```
 
 Remove `"dryRun": true` to send for real.
+
+## Encryption key for saved portal passwords (read before touching Vercel env vars)
+
+Saved portal passwords are sealed with `PORTAL_ENCRYPTION_KEY`, or, while that is unset, with `GOOGLE_TOKEN_ENCRYPTION_KEY`.
+The first production request records the key's fingerprint in `portal_vault_meta`; a deployment with any other key
+refuses every password action (503 `key_mismatch`) instead of touching data. So:
+- **Never change or delete the key that sealed the passwords.** Without it the stored passwords can't be opened again.
+- To rotate the Google key later, first set `PORTAL_ENCRYPTION_KEY` (Production) to the *current*
+  `GOOGLE_TOKEN_ENCRYPTION_KEY` value and redeploy; after that the two keys are independent.
+- Keep a copy of the key in a password manager; Vercel is the only other place it exists.
