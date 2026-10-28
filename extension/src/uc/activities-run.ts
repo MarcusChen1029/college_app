@@ -14,7 +14,7 @@
 import { UC_CATEGORIES, type ActivityData, type UcCategory } from "../../../web/lib/activities.ts";
 import { replacedNote } from "../../../web/lib/activities-fill.ts";
 import { buildUcFormPlans, ucItemLabel, ucReadBackMismatches, type UcFormCategory, type UcFormPlan } from "../../../web/lib/uc-activities-fill.ts";
-import { decide, emptyReport, fullText, noun, UC_PAGE_LIMIT, type ActivitiesReport, type AskUi } from "../activities-flow.ts";
+import { decide, emptyReport, fullText, notChosenOf, noun, pickItems, UC_PAGE_LIMIT, type ActivitiesReport, type AskUi } from "../activities-flow.ts";
 import type { AssistMessage, AssistResponse } from "../messages.ts";
 import type { UcListed } from "./activities.ts";
 import type { UcTab } from "./run.ts";
@@ -115,7 +115,16 @@ export async function runUcActivities(
       if (item) notSure(item.label, item.what, "UC did not finish loading the page after the press");
       throw e;
     }
-    await signedIn();
+    try {
+      await signedIn();
+    } catch (e) {
+      // The press went through and its page loaded, but UC shows its sign-in page: the run cannot see the list to tell what UC kept.
+      if (item && e instanceof RunStop) {
+        changed = true;
+        unsure.push(`${item.label} (${item.what})`);
+      }
+      throw e;
+    }
   };
 
   try {
@@ -126,17 +135,27 @@ export async function runUcActivities(
     existingLabels = before.map(ucListedLabel);
     if (items.length === 0) return emptyReport({ note: "Your tracker has no UC activities or awards to add." });
 
-    const decision = await decide(existingLabels, items, UC_PAGE_LIMIT, ui);
+    // The plan for every entry first: the question counts only what will be sent and names what cannot be (incl. blank required answers).
+    const full = buildUcFormPlans(data.uc);
+    report.blocked = full.blocked;
+    if (full.forms.length === 0) {
+      // Every entry is blocked: nothing to type, nothing to ask, and Replace must not empty the list.
+      report.note = "Nothing was changed on UC.";
+      return report;
+    }
+    const choices = pickItems(items, full.forms.map((f) => f.sourceId), full.blocked);
+    const decision = await decide(existingLabels, choices, UC_PAGE_LIMIT, ui);
     halt();
     if (decision.mode === "keep" && decision.pickIds.length === 0) {
-      return emptyReport({ note: before.length >= UC_PAGE_LIMIT ? fullText("uc", before.length) : "You chose nothing to add, so nothing was changed." });
+      report.note = before.length >= UC_PAGE_LIMIT ? fullText("uc", before.length) : "You chose nothing to add, so nothing was changed.";
+      return report;
     }
 
-    const plan = buildUcFormPlans(data.uc, decision.mode === "keep" ? decision.pickIds : undefined);
-    report.blocked = plan.blocked;
+    const plan = decision.mode === "keep" ? buildUcFormPlans(data.uc, decision.pickIds) : full;
     report.blanks = plan.blanks;
+    const notChosen = notChosenOf(choices, decision);
+    if (notChosen) report.notChosen = notChosen;
     if (plan.forms.length === 0) {
-      // Every chosen entry is blocked: nothing to type, and Replace must not empty the list.
       report.note = "Nothing was changed on UC.";
       return report;
     }

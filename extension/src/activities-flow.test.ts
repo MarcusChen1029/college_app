@@ -5,6 +5,8 @@ import { newCaActivity, newCaHonor, type ActivityData, type CaActivity, type CaH
 import type { FillMode } from "./messages.ts";
 import {
   SIGNED_OUT,
+  SIGNED_OUT_SAVED,
+  SIGNED_OUT_UNSURE,
   STOPPED,
   askReplaceText,
   decide,
@@ -253,25 +255,135 @@ test("signed out when the question was answered (path call 3): no fill, stopped 
   assert.ok(!calls.some((c) => c.startsWith("fill")));
 });
 
-test("signed out right after the fill (path call 4): never a success, filled stays empty, no reopen or read-back", async () => {
-  const { driver, calls } = fake({ paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/login"] });
-  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
-  assert.equal(report.stopped, SIGNED_OUT);
-  assert.deepEqual(report.filled, []);
-  assert.ok(calls.includes("fill:keep:0:2"));
+test("signed out right after a fill that pressed Continue (path call 4): what Continue saved stays listed, not checked, no read-back", async () => {
+  const { driver, calls } = fake({ existing: ["Old A"], paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/login"] });
+  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi({ replace: true }).ui);
+  assert.equal(report.stopped, SIGNED_OUT_SAVED);
+  assert.equal(SIGNED_OUT_SAVED, "Common App signed you out. Saved by Continue, but not checked: sign in again and look at the page.");
+  assert.deepEqual(report.filled, ["Team a1", "Team a2"]);
+  assert.equal(report.replaced, "Replaced the 1 activity that was already on Common App: Old A.");
+  assert.ok(calls.includes("fill:replace:1:2"));
   assert.ok(!calls.includes("reopen"));
   assert.ok(!calls.includes("read"));
 });
 
-test("signed out when the page is reopened for the read-back (path call 5): no read, never a success", async () => {
+test("signed out when the page is reopened for the read-back (path call 5): what Continue saved stays listed, no read", async () => {
   const { driver, calls } = fake({ paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/common/7/232", "/login"] });
   const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
-  assert.equal(report.stopped, SIGNED_OUT);
-  assert.deepEqual(report.filled, []);
+  assert.equal(report.stopped, SIGNED_OUT_SAVED);
+  assert.deepEqual(report.filled, ["Team a1", "Team a2"]);
   assert.deepEqual(report.mismatches, []);
   assert.ok(calls.includes("fill:keep:0:2"));
   assert.ok(calls.includes("reopen"));
   assert.ok(!calls.includes("read"));
+});
+
+test("the read-back fails after Continue: what was saved stays listed and the report says it was not checked", async () => {
+  const { driver } = fake();
+  driver.read = async () => {
+    throw new Error("The Activities and experiences page did not finish loading. Wait until it shows, then press Fill again.");
+  };
+  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
+  assert.deepEqual(report.filled, ["Team a1", "Team a2"]);
+  assert.match(report.stopped!, /^Saved by Continue, but not checked: The Activities and experiences page did not finish loading\./);
+});
+
+test("the fill was sent but no answer came back: everything it could have written is under unsure, never filled or not added", async () => {
+  const { driver } = fake({ existing: ["E1", "E2"] });
+  driver.fill = async () => {
+    throw new Error("The Common App page stopped responding");
+  };
+  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi({ pick: () => ["a1", "a2"] }).ui);
+  assert.deepEqual(report.filled, []);
+  assert.deepEqual(report.notAdded, []);
+  assert.deepEqual(report.unsure, ["Team a1 (possibly saved)", "Team a2 (possibly saved)"]);
+  assert.match(report.stopped!, /^Stopped: The Common App page stopped responding\. Common App may have saved part of this \("Add another" saves the page\)/);
+});
+
+test("the fill was sent but no answer came back in a replace: the old entries may have been overwritten; signed out says so", async () => {
+  const { driver } = fake({ existing: ["Old A", "Old B"], paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/login"] });
+  driver.fill = async () => {
+    throw new Error("The Common App page stopped responding");
+  };
+  const report = await runCaPage("activities", data(acts(1)), driver, fakeUi({ replace: true }).ui);
+  assert.deepEqual(report.unsure, ["Team a1 (possibly saved)", "Old A (possibly overwritten)", "Old B (possibly overwritten)"]);
+  assert.equal(report.replaced, null);
+  assert.equal(report.stopped, SIGNED_OUT_UNSURE);
+  assert.equal(SIGNED_OUT_UNSURE, "Common App signed you out during the fill. Sign in again and look at the page: part of this may have been saved.");
+});
+
+test("a fill refused before it was sent (Stop pressed at the last look) is a plain stop, nothing unsure", async () => {
+  const { driver } = fake();
+  driver.fill = async () => {
+    throw new Error(STOPPED);
+  };
+  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
+  assert.equal(report.stopped, STOPPED);
+  assert.equal(report.unsure, undefined);
+});
+
+test("a fill that stopped before Continue and then found the sign-in page: the typed entries are only possibly saved", async () => {
+  const { driver } = fake({
+    paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/login"],
+    fillResult: () => ({ filled: 1, blanks: [], firstSlot: 1, stoppedReason: "Common App's page changed (no Continue button)." }),
+  });
+  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
+  assert.equal(report.stopped, SIGNED_OUT_UNSURE);
+  assert.deepEqual(report.filled, []);
+  assert.deepEqual(report.unsure, ["Team a1 (possibly saved)"]);
+  assert.deepEqual(report.notAdded, ["Team a2"]);
+});
+
+// ── Item 3: the Replace question counts only what will be written ──
+
+test("Replace question: blocked items are not counted, they are named with their reasons, and the toggle list shows them disabled", async () => {
+  const items = [act("a1"), act("a2", { description: "x".repeat(151) }), act("a3")];
+  const seen: { incoming?: number; blocked?: string[]; picks?: { id: string; blocked?: string[] }[] } = {};
+  const ui: AskUi = {
+    async askReplace(_existing, incoming, blocked) {
+      seen.incoming = incoming;
+      seen.blocked = (blocked ?? []).map((b) => b.label);
+      return false;
+    },
+    async pick(list) {
+      seen.picks = list.map((i) => ({ id: i.id, ...(i.blocked ? { blocked: i.blocked } : {}) }));
+      return ["a2", "a3"]; // a blocked id is never sent even if the list returned it
+    },
+  };
+  const { driver, calls } = fake({ existing: ["E1"] });
+  const report = await runCaPage("activities", data(items), driver, ui);
+  assert.equal(seen.incoming, 2);
+  assert.deepEqual(seen.blocked, ["Team a2"]);
+  assert.deepEqual(seen.picks!.map((p) => p.id), ["a1", "a2", "a3"]);
+  assert.ok(seen.picks![1]!.blocked![0]!.startsWith("Description:"));
+  assert.ok(calls.includes("fill:keep:1:1"));
+  assert.deepEqual(report.filled, ["Team a3"]);
+  assert.deepEqual(report.blocked.map((b) => b.label), ["Team a2"]);
+  assert.deepEqual(report.notChosen, ["Team a1"]);
+});
+
+test("every tracker item blocked: no Replace question at all, nothing is filled", async () => {
+  const { driver, calls } = fake({ existing: ["E1"] });
+  const { ui, log } = fakeUi({ replace: true });
+  const report = await runCaPage("activities", data([act("a1", { hoursPerWeek: 500 })]), driver, ui);
+  assert.deepEqual(log, []);
+  assert.deepEqual(calls, ["inspect"]);
+  assert.equal(report.note, "Nothing was changed on Common App.");
+  assert.equal(report.blocked.length, 1);
+});
+
+test("question text names how many can be sent when some cannot", () => {
+  assert.equal(askReplaceText("activities", 4, 5, 2), "Common App already has 4 activities. Replace all of them with the 5 from your tracker that can be sent?");
+  assert.equal(askReplaceText("uc", 1, 3, 1), "UC already has 1 activity or award. Replace it with the 3 from your tracker that can be sent?");
+});
+
+test("a keep run names the tracker items that were not chosen; a replace or empty-page run names none", async () => {
+  const keep = await runCaPage("activities", data(acts(3)), fake({ existing: ["E1"] }).driver, fakeUi({ pick: () => ["a2"] }).ui);
+  assert.deepEqual(keep.notChosen, ["Team a1", "Team a3"]);
+  const empty = await runCaPage("activities", data(acts(3)), fake().driver, fakeUi().ui);
+  assert.equal(empty.notChosen, undefined);
+  const replace = await runCaPage("activities", data(acts(3)), fake({ existing: ["E1"] }).driver, fakeUi({ replace: true }).ui);
+  assert.equal(replace.notChosen, undefined);
 });
 
 test("a driver error becomes the stopped sentence", async () => {
@@ -384,6 +496,17 @@ test("a stopped Replace is worded as partial; a complete one as replaced", async
   const r1 = await runCaPage("activities", data(acts(2)), stopped.driver, fakeUi({ replace: true }).ui);
   assert.equal(r1.replaced, "Overwrote 2 of the 4 activities that were already on Common App before stopping: A, B, C, D.");
   assert.equal(r1.stopped, "Stopped.");
+});
+
+test("a replace that stopped on a problem in slot 1: nothing counts as filled, but the report still says an old entry was overwritten", async () => {
+  const { driver } = fake({
+    existing: ["A", "B", "C"],
+    fillResult: () => ({ filled: 0, written: 1, blanks: [], firstSlot: 1, stoppedReason: 'Activity 1 "Hours spent per week" is marked not valid on the page.' }),
+  });
+  const r = await runCaPage("activities", data(acts(2)), driver, fakeUi({ replace: true }).ui);
+  assert.deepEqual(r.filled, []);
+  assert.deepEqual(r.notAdded, ["Team a1", "Team a2"]);
+  assert.equal(r.replaced, "Overwrote 1 of the 3 activities that were already on Common App before stopping: A, B, C.");
 });
 
 test("every chosen item blocked: nothing was changed, and the report says so", async () => {

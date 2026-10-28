@@ -180,6 +180,34 @@ export function inspectCaPage(doc: Document, page: CaPage): { existing: string[]
   };
 }
 
+/**
+ * Waits until the page has drawn what inspect / read look at: the content script answers at document_idle, before Angular draws the section,
+ * and an immediate read would see 0 entries (and skip the Replace question). Ready = the gate question is there and, when it is answered Yes,
+ * the slots are shown and read the same on two polls in a row. A timeout says the page did not finish loading: never "0 entries".
+ */
+export async function waitForCaPage(doc: Document, page: CaPage): Promise<void> {
+  const f = CA_PAGE_FACTS[page];
+  let path = "";
+  let last: string | null = null;
+  try {
+    await waitFor(() => {
+      path = currentPath();
+      if (path !== f.path) return false;
+      const yes = doc.getElementById(`option_ques_${f.gate}_${CA_GATE_YES}-input`);
+      if (!yes) return false;
+      if (!isChecked(yes)) return true; // No / unanswered: the slots are hidden, so the page has no entries to read
+      if (!shownSlots(doc, page).length) return false;
+      const now = JSON.stringify(readCaPage(doc, page));
+      const stable = now === last;
+      last = now;
+      return stable;
+    }, { timeoutMs: TIMING.pageMs });
+  } catch {
+    if (path && path !== f.path) throw new Error(`Not on the ${PAGE_TITLE[page]} page (Common App shows ${path}).`);
+    throw new Error(`The ${PAGE_TITLE[page]} page did not finish loading. Wait until it shows, then press Fill again.`);
+  }
+}
+
 /** Per shown slot (in order): question (the plan's `question`) -> what the page shows; a hidden or absent question reads "" ([] for checks). */
 export function readCaPage(doc: Document, page: CaPage): Row[] {
   return shownSlots(doc, page).map(({ el }) => readSlot(el, page));
@@ -270,7 +298,8 @@ async function setAnswer(q: Question, ans: CaAnswer, where: string, problems: st
   }
 }
 
-type Touched = { q: Question; where: string };
+/** `i`: the slot's index in the plan's slots being written (0 = the first slot this fill wrote). */
+type Touched = { q: Question; where: string; i: number };
 
 const isBlank = (ans: CaAnswer) => ans.value === null || (Array.isArray(ans.value) && !ans.value.length);
 
@@ -281,7 +310,7 @@ const isBlank = (ans: CaAnswer) => ans.value === null || (Array.isArray(ans.valu
  * stale role) is left alone: Common App ignores hidden questions, and the run never toggles a parent just to reach it (controller ruling,
  * Task 10 fix round 1). Then a forward pass in reveal order writes the values; a question with a value must be shown.
  */
-async function writeSlot(slot: Element, page: CaPage, n: number, plan: CaSlotPlan, problems: string[], touched: Touched[]): Promise<void> {
+async function writeSlot(slot: Element, page: CaPage, n: number, plan: CaSlotPlan, problems: string[], touched: Touched[], i: number): Promise<void> {
   const noun = CA_PAGE_FACTS[page].noun;
   for (const ans of [...plan.answers].reverse()) {
     checkStop();
@@ -302,7 +331,7 @@ async function writeSlot(slot: Element, page: CaPage, n: number, plan: CaSlotPla
     }, `${noun} ${n} shows no "${ans.question}" question`);
     const where = `${noun} ${n} "${labelText(q)}"`;
     await setAnswer(q, ans, where, problems);
-    touched.push({ q, where });
+    touched.push({ q, where, i });
   }
 }
 
@@ -352,13 +381,17 @@ async function reachPage(doc: Document, page: CaPage): Promise<HTMLElement> {
   }
 }
 
-/** `firstSlot`: the portal slot the plan's first item went to (read-back compares readCaPage(...).slice(firstSlot - 1) with the plan). */
-export type CaPageResult = PageResult & { firstSlot?: number };
+/**
+ * `firstSlot`: the portal slot the plan's first item went to (read-back compares readCaPage(...).slice(firstSlot - 1) with the plan).
+ * `written`: slots the fill typed into, including one that then had a problem (>= `filled`); a replace run overwrote that many old entries.
+ */
+export type CaPageResult = PageResult & { firstSlot?: number; written?: number };
 
 /**
  * Fills the page. Replace: slots 1..M become the plan's items (slots added as needed), then surplus slots are removed from the end.
- * Keep: the items go after the `existing` entries, at most keepRoom of them. `filled` = slots written. Messages name the portal's slot.
- * After the first problem (e.g. an option the page lacks) no new slot is started and nothing is removed.
+ * Keep: the items go after the `existing` entries, at most keepRoom of them, and a shown slot that already has answers is never written.
+ * `filled` = the slots written without a problem, before the first slot that had one. Messages name the portal's slot.
+ * After the first problem (e.g. an option the page lacks, or a control marked ng-invalid) no new slot is started and nothing is removed.
  */
 export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode, existing: number): Promise<CaPageResult> {
   resetStop();
@@ -369,11 +402,13 @@ export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode
   const problems: string[] = [];
   const touched: Touched[] = [];
   let filled = 0;
+  let written = 0;
   let changed = false;
   let firstSlot: number | undefined;
   const result = (stoppedReason?: string): CaPageResult => ({
     filled,
     blanks: [],
+    ...(written ? { written } : {}),
     ...(firstSlot !== undefined ? { firstSlot } : {}),
     ...(notes.length ? { notes } : {}),
     ...(stoppedReason ? { stoppedReason } : {}),
@@ -407,17 +442,31 @@ export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode
     if (left.length) notes.push(`Not added, because Common App holds at most ${limit} ${f.what}: ${left.map((s) => s.label).join(", ")}.`);
     if (todo.length) firstSlot = first;
 
-    // 3. Every answer of every slot written; after a problem no new slot is started.
+    // 3. Every answer of every slot written; after a problem no new slot is started, and a slot with a problem does not count as filled.
     for (const [i, slotPlan] of todo.entries()) {
       if (problems.length) break;
       const n = first + i;
+      if (mode === "keep") {
+        // Keep never overwrites: a slot already shown with answers is an entry (e.g. one drawn after the page was read), not room.
+        const shownNow = allSlots(doc, page).find((s) => s.n === n && visible(s.el));
+        if (shownNow && answered(readSlot(shownNow.el, page))) throw new PageChanged(`${f.noun} ${n} already has answers, and adding never overwrites an entry`);
+      }
       changed = true;
       const slot = await openSlot(doc, page, n);
-      await writeSlot(slot, page, n, slotPlan, problems, touched);
-      filled++;
+      written = i + 1;
+      const before = problems.length;
+      await writeSlot(slot, page, n, slotPlan, problems, touched, i);
+      if (problems.length === before) filled++;
     }
 
-    // 4. Replace: surplus slots removed from the end (not after a problem: the student looks at the page first).
+    // 4. Nothing goes to Continue that Common App would silently drop. Checked before any removal: Remove saves the page.
+    for (const t of touched)
+      if (invalid(t.q)) {
+        problems.push(`${t.where} is marked not valid on the page, so Common App would not save it`);
+        filled = Math.min(filled, t.i); // `filled` counts the slots before the first one with a problem
+      }
+
+    // 5. Replace: surplus slots removed from the end (not after a problem: the student looks at the page first).
     const removed: string[] = [];
     if (mode === "replace" && todo.length && !problems.length)
       for (let n = lastShown(doc, page); n > todo.length; n = lastShown(doc, page)) {
@@ -426,8 +475,6 @@ export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode
       }
     if (removed.length) notes.push(`Removed ${removed.reverse().join(", ")} from the end of the page.`);
 
-    // 5. Nothing goes to Continue that Common App would silently drop.
-    for (const t of touched) if (invalid(t.q)) problems.push(`${t.where} is marked not valid on the page, so Common App would not save it`);
     if (problems.length) return result(`${problems.join("; ")}. Continue was not pressed: fix this on the page, then press Continue yourself.`);
 
     checkStop();

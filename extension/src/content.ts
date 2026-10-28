@@ -1,7 +1,7 @@
 // Content script on https://apply.commonapp.org/*: answers ready / inspect / fill / stop for the page this tab is on.
 // It acts only inside the Courses & Grades grade pages/dialogs, the Current Year Courses page and the Activities / Honors pages (spec anti-goals).
 
-import { fillCaPage, inspectCaPage, readCaPage } from "./commonapp/activities.ts";
+import { fillCaPage, inspectCaPage, readCaPage, waitForCaPage } from "./commonapp/activities.ts";
 import { fillCgGrade, inspectCgGrade } from "./commonapp/cg.ts";
 import { fillCurrentYear, inspectCurrentYear } from "./commonapp/current-year.ts";
 import { requestStop } from "./commonapp/dom.ts";
@@ -13,8 +13,15 @@ let busy = false;
 type Busy = Extract<ContentMessage, { type: "inspect" | "fill" | "caInspect" | "caFill" | "caRead" }>;
 
 async function handle(msg: Busy): Promise<ContentResponse> {
-  if (msg.type === "caInspect") return { type: "caInspect", ok: true, existing: inspectCaPage(document, msg.page).existing };
-  if (msg.type === "caRead") return { type: "caRead", ok: true, rows: readCaPage(document, msg.page) };
+  // `ready` answers at document_idle, before Angular draws the section: wait for the page to settle before reading it (never "0 entries").
+  if (msg.type === "caInspect") {
+    await waitForCaPage(document, msg.page);
+    return { type: "caInspect", ok: true, existing: inspectCaPage(document, msg.page).existing };
+  }
+  if (msg.type === "caRead") {
+    await waitForCaPage(document, msg.page);
+    return { type: "caRead", ok: true, rows: readCaPage(document, msg.page) };
+  }
   if (msg.type === "caFill") return { type: "caFill", ok: true, result: await fillCaPage(document, msg.plan, msg.mode, msg.existing) };
   if (msg.type === "inspect") {
     const { existing } = msg.target === "current" ? await inspectCurrentYear() : await inspectCgGrade(msg.target);

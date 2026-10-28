@@ -1,7 +1,8 @@
 // Side panel pieces of the activities fill (Common App activities / honors, UC activities & awards): the Replace question, the "which to add"
 // toggle list and the report.
 // No chrome.* here: panel.ts wires the run (activities-flow.ts) to these. All text goes in with textContent (names are data, not markup).
-// The panel is English-only (it has no i18n layer); the tracker's display translations live in web/lib/i18n.
+// The panel is English-only (it has no i18n layer; ruling R18: spec §8's en + zh-TW applies to the web app); the tracker's display
+// translations live in web/lib/i18n.
 
 import { askReplaceText, noun, portalOf, type ActivitiesReport, type ActPage, type AskUi } from "./activities-flow.ts";
 import { button, h, type Child } from "./ui.ts";
@@ -25,7 +26,7 @@ export function createAskUi(prompt: HTMLElement, page: ActPage): { ui: AskUi; ca
     prompt.replaceChildren();
   };
   const ui: AskUi = {
-    askReplace(existing, incoming) {
+    askReplace(existing, incoming, blocked = []) {
       if (cancelled) return Promise.reject(cancelled);
       return new Promise<boolean>((resolve, rej) => {
         reject = rej;
@@ -37,9 +38,11 @@ export function createAskUi(prompt: HTMLElement, page: ActPage): { ui: AskUi; ca
           h(
             "div",
             { class: "ask" },
-            h("p", {}, askReplaceText(page, existing.length, incoming)),
+            h("p", {}, askReplaceText(page, existing.length, incoming, blocked.length)),
             h("p", { class: "note" }, `${existing.length === 1 ? "This one" : "These"} would be removed from ${portalOf(page)}:`),
             h("ul", {}, ...existing.map((name) => h("li", {}, name))),
+            blocked.length ? h("p", { class: "note" }, `${blocked.length === 1 ? "This one" : "These"} from your tracker cannot be sent to ${portalOf(page)}, so ${blocked.length === 1 ? "it is" : "they are"} not counted:`) : false,
+            blocked.length ? h("ul", {}, ...blocked.map((p) => h("li", {}, h("strong", {}, p.label), ` — ${p.reasons.join("; ")}`))) : false,
             h(
               "div",
               { class: "row" },
@@ -63,16 +66,18 @@ export function createAskUi(prompt: HTMLElement, page: ActPage): { ui: AskUi; ca
         const boxes = items.map((item) => {
           const box = h("input", { type: "checkbox" }) as HTMLInputElement;
           box.addEventListener("change", () => {
-            if (box.checked) on.add(item.id);
+            if (box.checked && !item.blocked) on.add(item.id);
             else on.delete(item.id);
             sync();
           });
-          return { box, label: h("label", { class: "check" }, box, h("span", {}, item.label)) };
+          // A blocked item is shown with its reasons and can never be switched on.
+          const text = item.blocked ? `${item.label} — cannot be sent: ${item.blocked.join("; ")}` : item.label;
+          return { box, blocked: Boolean(item.blocked), label: h("label", { class: item.blocked ? "check muted" : "check" }, box, h("span", {}, text)) };
         });
         // Once the page's room is used up, the switches that are off cannot be turned on.
         function sync(): void {
           counter.textContent = `Room left on the page: ${max - on.size} of ${max}`;
-          for (const { box } of boxes) box.disabled = !box.checked && on.size >= max;
+          for (const { box, blocked } of boxes) box.disabled = blocked || (!box.checked && on.size >= max);
           add.disabled = on.size === 0;
         }
         sync();
@@ -106,9 +111,14 @@ const count = (n: number, page: ActPage) => `${n} ${noun(page, n)}`;
 export function reportStatus(page: ActPage, r: ActivitiesReport): { text: string; warn: boolean } {
   if (r.stopped) return { text: "Stopped", warn: true };
   if (r.note && r.filled.length === 0) return { text: r.note, warn: false };
-  const trouble = (r.unsure?.length ?? 0) > 0 || r.mismatches.length > 0 || r.blocked.length > 0 || r.blanks.length > 0 || r.notAdded.length > 0;
-  return { text: trouble ? `Done: ${count(r.filled.length, page)} filled, but some things need a look (below).` : `Done: ${count(r.filled.length, page)} filled and checked.`, warn: trouble };
+  const trouble = (r.unsure?.length ?? 0) > 0 || r.mismatches.length > 0 || r.blocked.length > 0 || filledBlanks(r).length > 0 || r.notAdded.length > 0;
+  if (trouble) return { text: `Done: ${count(r.filled.length, page)} filled, but some things need a look (below).`, warn: true };
+  // UC's read-back compares only what the list shows (for most categories just the name) until TESTING.md §J.3 extends expectOf.
+  return { text: page === "uc" ? `Done: ${count(r.filled.length, page)} filled; names checked on UC's list.` : `Done: ${count(r.filled.length, page)} filled and checked.`, warn: false };
 }
+
+/** The "needs an answer" lists of the items that were actually written (a blank on an item that never got onto the page is not news). */
+const filledBlanks = (r: ActivitiesReport) => r.blanks.filter((b) => r.filled.includes(b.label));
 
 const problemList = (title: string, items: { label: string; reasons: string[] }[]): Child =>
   items.length
@@ -124,11 +134,12 @@ export function reportNodes(page: ActPage, r: ActivitiesReport): Child[] {
     r.replaced ? h("p", { class: "note" }, r.replaced) : false,
     ...r.notes.map((n) => h("p", { class: "note" }, n)),
     problemList(`Not added: ${portalOf(page)} would not accept these`, r.blocked),
-    problemList("Added, but these questions are blank and need an answer", r.blanks),
+    problemList("Added, but these questions are blank and need an answer", filledBlanks(r)),
     r.unsure?.length
-      ? h("section", { class: "attention", role: "alert" }, h("h4", {}, `Not sure: check ${portalOf(page)}'s list before running again`), h("ul", {}, ...r.unsure.map((u) => h("li", {}, u))))
+      ? h("section", { class: "attention", role: "alert" }, h("h4", {}, `Not sure: check ${page === "uc" ? "UC's list" : "the Common App page"} before running again`), h("ul", {}, ...r.unsure.map((u) => h("li", {}, u))))
       : false,
     r.notAdded.length ? h("p", { class: "warn" }, `Not added: ${r.notAdded.join(", ")}.`) : false,
+    r.notChosen?.length ? h("p", { class: "note" }, `Not added (not chosen): ${r.notChosen.join(", ")}.`) : false,
     r.mismatches.length
       ? h("section", { class: "attention", role: "alert" }, h("h4", {}, `${portalOf(page)} shows something different from what was entered`), h("ul", {}, ...r.mismatches.map((m) => h("li", {}, m))))
       : false,

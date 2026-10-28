@@ -213,6 +213,12 @@ function expectOf(e: UcEntry): Record<string, string[]> {
   return { activitySubtitle: [text(e.name)] };
 }
 
+/**
+ * `blocked`: entries that are never sent, with the reasons. Unlike Common App, UC refuses Save & continue while a required question is blank
+ * (and a replace run has already deleted the old entries by then), so an entry with any missing required answer is blocked too: "UC requires
+ * an answer for: <questions>" (controller ruling R17). Every "missing" issue of ucEntryIssues is on a question UC requires. `blanks` is
+ * always empty for UC; it is kept so the report has the same shape as Common App's.
+ */
 export function buildUcFormPlans(entries: UcEntry[], pickIds?: string[]): { forms: UcFormPlan[]; blocked: PlanProblem[]; blanks: PlanProblem[] } {
   const items = pickIds ? pickIds.flatMap((id) => entries.filter((x) => x.id === id).slice(0, 1)) : entries;
   const out = { forms: [] as UcFormPlan[], blocked: [] as PlanProblem[], blanks: [] as PlanProblem[] };
@@ -221,13 +227,13 @@ export function buildUcFormPlans(entries: UcEntry[], pickIds?: string[]): { form
     const label = ucItemLabel(e);
     const issues = ucEntryIssues(e);
     const blocked = reasonsOf(e, issues, "invalid");
+    const missing = [...new Set(issues.filter((i) => i.kind === "missing").map((i) => questionName(e, i.field)))];
+    if (missing.length) blocked.push(`UC requires an answer for: ${missing.join(", ")}`);
     if (blocked.length) {
       out.blocked.push({ label, reasons: blocked });
       continue;
     }
     out.forms.push({ sourceId: e.id, label, category: FORMS[e.category].type, fields: fieldsOf(e), expect: expectOf(e) });
-    const blanks = reasonsOf(e, issues, "missing");
-    if (blanks.length) out.blanks.push({ label, reasons: blanks });
   }
   return out;
 }

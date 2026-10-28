@@ -200,15 +200,68 @@ test("a fill error on the 2nd form stops the run: forms 3+ are not added and lis
   assert.equal(uc.log.filter((l) => l === "add").length, 2);
 });
 
-test("UC's sign-in page after a load stops the run with the signed-out text; what was saved stays listed as added", async () => {
+test("UC's sign-in page after a save's load: what was saved stays listed as added, the entry just saved is possibly saved", async () => {
   // Loads: 1 add, 2 save (Club a), 3 add, 4 save (Club b) -> signed out.
   const uc = fakeUc({ loginAfterReload: 4 });
   const r = await runUcActivities(uc.tab, data([club("a"), club("b"), club("c")]), askUi().ui);
   assert.equal(r.stopped, UC_SIGNED_OUT);
   assert.equal(UC_SIGNED_OUT, "UC signed you out. Sign in again; entries listed as added were saved.");
   assert.deepEqual(r.filled, ["Extracurricular activity: Club a"]);
-  assert.deepEqual(r.notAdded, ["Extracurricular activity: Club b", "Extracurricular activity: Club c"]);
+  assert.deepEqual(r.unsure, ["Extracurricular activity: Club b (possibly saved)"]);
+  assert.deepEqual(r.notAdded, ["Extracurricular activity: Club c"]);
   assert.equal(r.note, null);
+});
+
+test("UC's sign-in page after the Add press's load: the entry was never typed, so it stays under Not added", async () => {
+  // Loads: 1 add (Club a) -> signed out.
+  const uc = fakeUc({ loginAfterReload: 1 });
+  const r = await runUcActivities(uc.tab, data([club("a"), club("b")]), askUi().ui);
+  assert.equal(r.stopped, UC_SIGNED_OUT);
+  assert.equal(r.unsure, undefined);
+  assert.deepEqual(r.notAdded, ["Extracurricular activity: Club a", "Extracurricular activity: Club b"]);
+});
+
+test("Replace question on UC: counts only the entries that can be sent (blank required answers too), names the rest, never offers them", async () => {
+  const uc = fakeUc({ items: listed(1) });
+  let asked: { incoming: number; blocked: string[] } | null = null;
+  let offered: { id: string; blocked?: string[] }[] = [];
+  const ui: AskUi = {
+    async askReplace(_e, incoming, blocked) {
+      asked = { incoming, blocked: (blocked ?? []).map((b) => `${b.label}: ${b.reasons.join("; ")}`) };
+      return false;
+    },
+    async pick(items) {
+      offered = items;
+      return items.map((i) => i.id); // ticks everything, the blocked ones included: they are still never sent
+    },
+  };
+  const r = await runUcActivities(uc.tab, data([club("a"), club("b", { description: "" }), club("c", { hoursPerWeek: 500 }), club("d")]), ui);
+  assert.deepEqual(asked, {
+    incoming: 2,
+    blocked: ["Extracurricular activity: Club b: UC requires an answer for: What did you do?", "Extracurricular activity: Club c: Hours per week: UC accepts 1 to 168 hours per week."],
+  });
+  assert.deepEqual(offered.map((i) => [i.id, Boolean(i.blocked)]), [["a", false], ["b", true], ["c", true], ["d", false]]);
+  assert.deepEqual(uc.log.filter((l) => l.startsWith("fill:")), ["fill:Extracurricular activity: Club a", "fill:Extracurricular activity: Club d"]);
+  assert.deepEqual(r.blocked.map((b) => b.label), ["Extracurricular activity: Club b", "Extracurricular activity: Club c"]);
+  assert.deepEqual(r.blanks, []);
+  assert.equal(r.notChosen, undefined);
+});
+
+test("a keep run on UC names the tracker entries that were not chosen", async () => {
+  const uc = fakeUc({ items: listed(1) });
+  const r = await runUcActivities(uc.tab, data([club("a"), club("b"), club("c")]), askUi({ pick: () => ["b"] }).ui);
+  assert.deepEqual(r.filled, ["Extracurricular activity: Club b"]);
+  assert.deepEqual(r.notChosen, ["Extracurricular activity: Club a", "Extracurricular activity: Club c"]);
+});
+
+test("a replace with blank required answers in the tracker: the question counts only the sendable entry, and the blank one is never sent", async () => {
+  const uc = fakeUc({ items: listed(2) });
+  const ask = askUi({ replace: true });
+  const r = await runUcActivities(uc.tab, data([club("a"), club("b", { grades: [] })]), ask.ui);
+  assert.deepEqual(ask.calls, ["ask:2:1"]);
+  assert.deepEqual(r.filled, ["Extracurricular activity: Club a"]);
+  assert.deepEqual(r.blocked, [{ label: "Extracurricular activity: Club b", reasons: ["UC requires an answer for: When you took part"] }]);
+  assert.equal(uc.fills(), 1);
 });
 
 test("signed out before anything: nothing is asked or pressed", async () => {

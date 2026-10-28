@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { buildCaPagePlan, readBackMismatches, type CaPagePlan } from "../../../web/lib/activities-fill.ts";
 import { newCaActivity, newCaHonor, type CaActivity, type CaHonor } from "../../../web/lib/activities.ts";
-import { fillCaPage, inspectCaPage, readCaPage } from "./activities.ts";
+import { fillCaPage, inspectCaPage, readCaPage, waitForCaPage } from "./activities.ts";
 import { requestStop, TIMING } from "./dom.ts";
 import { fakeActivities, type FakeValue } from "./fake-activities.ts";
 
@@ -111,9 +111,73 @@ test("after the first problem no new slot is started and nothing is removed", as
   p.slots[0]!.answers.find((a) => a.question === "Sport/team")!.value = "Quidditch";
   const result = await fillCaPage(fake.doc, p, "replace", 3);
   assert.match(result.stoppedReason ?? "", /Activity 1 "Sport\/team": "Quidditch" is not in Common App's list/);
-  assert.equal(result.filled, 1);
+  assert.equal(result.filled, 0); // the slot with the problem is not counted as filled
   assert.deepEqual(fake.log.filter((l) => /^(set|clear):2:|^add:|^remove|^confirm|^continue/.test(l)), []);
   assert.equal(fake.count(), 3);
+});
+
+test("a problem in the 2nd slot: only the 1st counts as filled", async () => {
+  const fake = fakeActivities({ count: 0 });
+  const p = plan([act("a"), act("b", { type: "Athletics (JV or varsity)", sport: "Soccer" })]);
+  p.slots[1]!.answers.find((a) => a.question === "Sport/team")!.value = "Quidditch";
+  const result = await fillCaPage(fake.doc, p, "replace", 0);
+  assert.match(result.stoppedReason ?? "", /Activity 2 "Sport\/team"/);
+  assert.equal(result.filled, 1);
+});
+
+test("replace: an answer the page marks ng-invalid is caught BEFORE any surplus slot is removed (removal saves the page)", async () => {
+  const fake = fakeActivities({ count: 3, slots: { 1: OLD(1), 2: OLD(2), 3: OLD(3) } });
+  const p = plan([act("a")]);
+  p.slots[0]!.answers.find((a) => a.question === "Hours spent per week")!.value = "200";
+  const result = await fillCaPage(fake.doc, p, "replace", 3);
+  assert.match(result.stoppedReason ?? "", /Activity 1 "Hours spent per week" is marked not valid/);
+  assert.ok(!fake.log.some((l) => /^(remove|confirm)/.test(l)), fake.log.join(" "));
+  assert.equal(fake.count(), 3);
+  assert.equal(result.filled, 0);
+  assert.equal(count(fake.log, "continue"), 0);
+});
+
+test("keep never overwrites: a slot that turns up already answered (a late render) stops the run before it is written", async () => {
+  // Slot 3 is hidden at the start and holds an older entry; it shows up while slot 2 is being written.
+  const fake = fakeActivities({ count: 1, slots: { 1: OLD(1), 3: OLD(3) } });
+  let shown = false;
+  fake.doc.addEventListener("input", () => {
+    if (shown) return;
+    shown = true;
+    fake.doc.querySelector('[data-n="3"]')!.removeAttribute("hidden");
+  });
+  const result = await fillCaPage(fake.doc, plan([act("a"), act("b")]), "keep", 1);
+  assert.match(result.stoppedReason ?? "", /Activity 3 already has answers/);
+  assert.equal(result.filled, 1);
+  assert.equal(fake.raw(3)["Organization or group"], "Old club 3");
+  assert.equal(count(fake.log, "continue"), 0);
+});
+
+test("waitForCaPage: waits until late-rendered slots are shown and stable, so inspect sees every entry", async () => {
+  const fake = fakeActivities({ count: 2, slots: { 1: OLD(1), 2: OLD(2) } });
+  const list = fake.doc.getElementById("text_ques_1020")!;
+  list.setAttribute("hidden", "");
+  setTimeout(() => list.removeAttribute("hidden"), 20);
+  assert.deepEqual(inspectCaPage(fake.doc, "activities").existing, []); // what an immediate read saw
+  await waitForCaPage(fake.doc, "activities");
+  assert.deepEqual(inspectCaPage(fake.doc, "activities").existing, ["Old club 1", "Old club 2"]);
+});
+
+test("waitForCaPage: a gate answered No (or unanswered) is ready at once; a page that never draws its gate times out, never 0 entries", async () => {
+  await waitForCaPage(fakeActivities({ gate: "no" }).doc, "activities");
+  await waitForCaPage(fakeActivities({ page: "honors", count: 0 }).doc, "honors");
+  const fake = fakeActivities({ count: 1, slots: { 1: OLD(1) } });
+  fake.doc.getElementById("radioGroup1788")!.remove();
+  await assert.rejects(waitForCaPage(fake.doc, "activities"), /The Activities and experiences page did not finish loading/);
+  const slotless = fakeActivities({ count: 1, slots: { 1: OLD(1) } });
+  slotless.doc.getElementById("text_ques_1020")!.setAttribute("hidden", "");
+  await assert.rejects(waitForCaPage(slotless.doc, "activities"), /did not finish loading/);
+});
+
+test("waitForCaPage: on another page it says so", async () => {
+  const fake = fakeActivities({ count: 1 });
+  (globalThis as { location?: unknown }).location = { pathname: "/common/7/250" };
+  await assert.rejects(waitForCaPage(fake.doc, "activities"), /^Error: Not on the Activities and experiences page/);
 });
 
 test("keep with a stale entry count (more than the slots shown) stops before adding anything", async () => {
@@ -130,6 +194,7 @@ test("a written answer the page marks ng-invalid stops before Continue and names
   const result = await fillCaPage(fake.doc, p, "keep", 2);
   assert.match(result.stoppedReason ?? "", /Activity 3 "Hours spent per week"/);
   assert.match(result.stoppedReason ?? "", /Continue was not pressed/);
+  assert.equal(result.filled, 0);
   assert.equal(count(fake.log, "continue"), 0);
 });
 

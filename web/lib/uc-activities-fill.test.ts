@@ -206,15 +206,21 @@ test("the legacy note and ids are never sent", () => {
   assert.ok(!dump.includes("secret") && !dump.includes("ca-77") && !dump.includes("x1"));
 });
 
-test("missing answers: the form is planned without them and listed in blanks", () => {
-  const r = buildUcFormPlans([club({ hoursPerWeek: null, grades: [] })]);
-  assert.equal(r.blocked.length, 0);
-  assert.equal(r.forms.length, 1);
-  assert.ok(!r.forms[0]!.fields.some((f) => f.id === "extraCurrHoursPerWeek"));
-  assert.equal(r.blanks.length, 1);
-  assert.equal(r.blanks[0]!.label, "Extracurricular activity: Robotics Club");
-  assert.ok(r.blanks[0]!.reasons.every((x) => x.endsWith("needs an answer")));
-  assert.equal(r.blanks[0]!.reasons.length, 2);
+test("missing required answers: UC would refuse the save, so the entry is blocked (never sent) and names the questions (ruling R17)", () => {
+  const r = buildUcFormPlans([club({ hoursPerWeek: null, grades: [] }), club({ id: "x2", name: "Chess" })]);
+  assert.deepEqual(r.forms.map((f) => f.sourceId), ["x2"]);
+  assert.deepEqual(r.blanks, []);
+  assert.deepEqual(r.blocked, [{ label: "Extracurricular activity: Robotics Club", reasons: ["UC requires an answer for: When you took part, Hours per week"] }]);
+});
+
+test("an entry with both a value UC rejects and a blank required answer lists both reasons; repeated questions are named once", () => {
+  const r = buildUcFormPlans([work({ workHours: {} })]);
+  assert.equal(r.forms.length, 0);
+  assert.deepEqual(r.blocked[0]!.reasons, ["UC requires an answer for: Hours per week for each grade"]);
+  const both = buildUcFormPlans([club({ hoursPerWeek: 500, description: "" })]);
+  assert.equal(both.blocked[0]!.reasons.length, 2);
+  assert.match(both.blocked[0]!.reasons[0]!, /^Hours per week: /);
+  assert.equal(both.blocked[0]!.reasons[1], "UC requires an answer for: What did you do?");
 });
 
 test("pickIds selects and orders entries; unknown ids are ignored", () => {

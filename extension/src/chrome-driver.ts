@@ -104,7 +104,11 @@ export function createDriver(tabs: TabsApi, tabId: number, plans: Plans): Driver
   };
 }
 
-/** The activities / honors page of one tab. `reopen` is a fresh load of the page (after Continue nothing is dirty). */
+/**
+ * The activities / honors page of one tab. `reopen` is a fresh load of the page (after Continue nothing is dirty; ruling R19: a full load
+ * instead of the in-app link). `inspect` and `read` are answered once the content script saw the page settle (commonapp/activities.ts
+ * waitForCaPage), so a page that is still drawing is never read as empty. A `fill` that rejects here (no answer) may have been received.
+ */
 export function createCaDriver(tabs: TabsApi, tabId: number, page: CaPage): CaDriver {
   return {
     async inspect() {

@@ -124,6 +124,57 @@ test("UC: the same question, toggle list and report, worded for UC", async () =>
   assert.match(text, /UC shows something different/);
 });
 
+test("the Replace question names the items that cannot be sent, with reasons; the toggle list shows them disabled", async () => {
+  const prompt = doc().createElement("div");
+  const { ui } = createAskUi(prompt, "activities");
+  const asked = ui.askReplace(["Old A"], 2, [{ label: "Band", reasons: ["Description: too long"] }]);
+  assert.match(prompt.textContent!, /Replace it with the 2 from your tracker that can be sent\?/);
+  assert.match(prompt.textContent!, /cannot be sent/);
+  assert.match(prompt.textContent!, /Band — Description: too long/);
+  ([...prompt.querySelectorAll("button")] as HTMLButtonElement[])[0]!.click();
+  assert.equal(await asked, false);
+
+  const picked = ui.pick([{ id: "a", label: "A" }, { id: "b", label: "Band", blocked: ["Description: too long"] }, { id: "c", label: "C" }], 1);
+  const [a, b, c] = boxes(prompt) as [HTMLInputElement, HTMLInputElement, HTMLInputElement];
+  assert.equal(b.disabled, true);
+  assert.match(prompt.textContent!, /Band — cannot be sent: Description: too long/);
+  assert.match(prompt.textContent!, /Room left on the page: 1 of 1/);
+  tick(c, true);
+  assert.equal(a.disabled, true);
+  tick(c, false);
+  assert.equal(a.disabled, false);
+  assert.equal(b.disabled, true); // freeing room never enables a blocked item
+  tick(a, true);
+  ([...prompt.querySelectorAll("button")] as HTMLButtonElement[]).find((x) => /Add the chosen/.test(x.textContent!))!.click();
+  assert.deepEqual(await picked, ["a"]);
+});
+
+test("report: blanks are listed only for items that were filled; not-chosen items get their own line and are not trouble", () => {
+  const r = report({
+    filled: ["Robotics"],
+    blanks: [{ label: "Robotics", reasons: ["Hours spent per week: needs an answer"] }, { label: "Chess", reasons: ["Role: needs an answer"] }],
+    notAdded: ["Chess"],
+  });
+  const text = reportNodes("activities", r).map((n) => (typeof n === "object" && n ? (n as Node).textContent : "")).join("|");
+  assert.match(text, /Robotics — Hours spent per week/);
+  assert.doesNotMatch(text, /Chess — Role/);
+  const kept = report({ filled: ["A"], notChosen: ["B", "C"] });
+  const keptText = reportNodes("activities", kept).map((n) => (typeof n === "object" && n ? (n as Node).textContent : "")).join("|");
+  assert.match(keptText, /Not added \(not chosen\): B, C\./);
+  assert.deepEqual(reportStatus("activities", kept), { text: "Done: 1 activity filled and checked.", warn: false });
+});
+
+test("UC: a clean run says the names were checked on UC's list, not that everything was checked", () => {
+  assert.deepEqual(reportStatus("uc", report({ filled: ["A", "B"] })), { text: "Done: 2 activities and awards filled; names checked on UC's list.", warn: false });
+});
+
+test("Common App: entries that may have been saved get the same heading, worded for Common App's page", () => {
+  const r = report({ unsure: ["Team a (possibly saved)"], stopped: "x" });
+  const text = reportNodes("activities", r).map((n) => (typeof n === "object" && n ? (n as Node).textContent : "")).join("|");
+  assert.match(text, /Not sure: check the Common App page before running again/);
+  assert.match(text, /Team a \(possibly saved\)/);
+});
+
 test("UC: entries that may have been saved or removed get their own heading, and the status says to look", () => {
   const r: ActivitiesReport = { filled: [], replaced: null, blocked: [], blanks: [], notAdded: ["C"], mismatches: [], stopped: null, notes: [], note: null, unsure: ["B (possibly saved)"] };
   assert.match(reportStatus("uc", r).text, /need a look/);

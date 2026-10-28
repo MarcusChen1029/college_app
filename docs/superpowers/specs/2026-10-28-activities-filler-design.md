@@ -152,6 +152,8 @@ Common to all categories: `id`, `category` (award / edprep / extracurricular / c
    entry's name (Common App activity: organization, else description start; honor: title; UC: category + name).
 2. Validate every tracker item against the portal's rules (§3). Items that break a rule are listed with the reason and are not sent;
    items with blank required answers are sent with those boxes left blank (the student finishes them in the portal) and listed.
+   Exception, UC (ruling R17, 2026-10-29): UC refuses Save & continue while a required box is blank, so such an entry is not sent and is
+   listed as "UC requires an answer for: <questions>". The Replace question counts only the items that will be sent.
 
 ### 5.2 The owner's rule for pages with entries
 - Page empty: fill every tracker item in tracker order. No question.
