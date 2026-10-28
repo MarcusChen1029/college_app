@@ -3,7 +3,9 @@
 // and loading the URL again discards it (nothing was saved).
 
 import type { ContentMessage, ContentResponse } from "./messages.ts";
-import { CG_GRADE_PATH, targetUrl } from "./commonapp/pages.ts";
+import { CA_PAGE_FACTS, CG_GRADE_PATH, COMMONAPP_ORIGIN, targetUrl } from "./commonapp/pages.ts";
+import type { CaPage } from "../../web/lib/activities-fill.ts";
+import type { CaDriver } from "./activities-flow.ts";
 import type { Driver, FillMode, Plans, Target } from "./runner.ts";
 
 /** The slice of chrome.tabs this file uses, so tests can fake it. */
@@ -46,13 +48,13 @@ export async function navigate(tabs: TabsApi, tabId: number, url: string): Promi
   }
 }
 
-/** Polls the tab's content script until it answers `ready`. */
-export async function waitForReady(tabs: TabsApi, tabId: number): Promise<void> {
+/** Polls the tab's content script until it answers `ready`; returns the page's path. */
+export async function waitForReady(tabs: TabsApi, tabId: number): Promise<string> {
   const start = Date.now();
   for (;;) {
     try {
       const r = await tabs.sendMessage(tabId, { type: "ready" });
-      if (r?.type === "ready") return;
+      if (r?.type === "ready") return r.path;
     } catch {
       // no receiver yet: the content script has not started on the new page
     }
@@ -99,5 +101,35 @@ export function createDriver(tabs: TabsApi, tabId: number, plans: Plans): Driver
       if (!r.ok) throw new Error(r.error);
       return r.result;
     },
+  };
+}
+
+/** The activities / honors page of one tab. `reopen` is a fresh load of the page (after Continue nothing is dirty). */
+export function createCaDriver(tabs: TabsApi, tabId: number, page: CaPage): CaDriver {
+  return {
+    async inspect() {
+      const r = await send(tabs, tabId, { type: "caInspect", page });
+      if (r.type !== "caInspect") throw new Error("Unexpected answer from the Common App page");
+      if (!r.ok) throw new Error(r.error);
+      return r.existing;
+    },
+    async fill(plan, mode, existing) {
+      const r = await send(tabs, tabId, { type: "caFill", plan, mode, existing });
+      if (r.type !== "caFill") throw new Error("Unexpected answer from the Common App page");
+      if (!r.ok) throw new Error(r.error);
+      return r.result;
+    },
+    async reopen() {
+      await navigate(tabs, tabId, COMMONAPP_ORIGIN + CA_PAGE_FACTS[page].path);
+      await waitForReady(tabs, tabId);
+    },
+    async read() {
+      const r = await send(tabs, tabId, { type: "caRead", page });
+      if (r.type !== "caRead") throw new Error("Unexpected answer from the Common App page");
+      if (!r.ok) throw new Error(r.error);
+      return r.rows;
+    },
+    // Polls: a redirect to the sign-in page is a full load, during which the content script is briefly absent.
+    path: () => waitForReady(tabs, tabId),
   };
 }

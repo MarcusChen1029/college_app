@@ -202,7 +202,8 @@ test("page limits and room", () => {
 
 test("replacedNote text", () => {
   assert.equal(replacedNote("Common App", "activities", ["A", "B"]), "Replaced the 2 activities that were already on Common App: A, B.");
-  assert.equal(replacedNote("UC", "entries", ["X"]), "Replaced the 1 entries that were already on UC: X.");
+  assert.equal(replacedNote("UC", "entry", ["X"]), "Replaced the 1 entry that was already on UC: X.");
+  assert.equal(replacedNote("Common App", "honor", ["Award"]), "Replaced the 1 honor that was already on Common App: Award.");
 });
 
 test("readBackMismatches reports what the portal shows against what was sent", () => {
@@ -228,6 +229,11 @@ test("readBackMismatches reports what the portal shows against what was sent", (
   assert.deepEqual(readBackMismatches(plan, stale), ['Activity 1: Sport/team shows "Soccer" (sent nothing)']);
 
   assert.deepEqual(readBackMismatches(plan, [good[0]!]), ["Activity 2: not found on the page"]);
+});
+
+test("readBackMismatches numbers messages from firstSlot (a Keep fill after existing entries)", () => {
+  const plan = buildCaPagePlan(data([robotics({ id: "a" }), robotics({ id: "b" })]), "activities");
+  assert.deepEqual(readBackMismatches(plan, [], 4), ["Activity 4: not found on the page", "Activity 5: not found on the page"]);
 });
 
 test("readBackMismatches: dates match as Month YYYY or MM/YYYY; honors say Honors N", () => {

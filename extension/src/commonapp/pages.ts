@@ -44,6 +44,12 @@ export function targetUrl(target: FillTarget): string {
   return COMMONAPP_ORIGIN + (target === "current" ? CURRENT_YEAR_PATH : CG_GRADE_PATH[target]);
 }
 
+/** Which activities page a path is (tolerates a trailing slash); null for any other page. */
+export function caPageForPath(path: string): CaPage | null {
+  const p = path.length > 1 ? path.replace(/\/+$/, "") : path;
+  return p === CA_ACTIVITIES_PATH ? "activities" : p === CA_HONORS_PATH ? "honors" : null;
+}
+
 /** The page's path without a trailing slash ("" outside a browser). */
 export function currentPath(): string {
   const p = (globalThis as { location?: { pathname?: string } }).location?.pathname ?? "";

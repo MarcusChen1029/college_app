@@ -12,8 +12,12 @@ import { uiucAutoView } from "./uiuc/panel.ts";
 import { buildUiucPlans } from "../../web/lib/uiuc-fill.ts";
 import { buildUcPlans } from "../../web/lib/uc-fill.ts";
 import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
-import { createDriver, type TabsApi } from "./chrome-driver.ts";
-import { targetUrl } from "./commonapp/pages.ts";
+import type { CaPage } from "../../web/lib/activities-fill.ts";
+import { runCaPage, type CaDriver } from "./activities-flow.ts";
+import { createAskUi, PAGE_NAME, reportNodes, reportStatus } from "./activities-panel.ts";
+import { createCaDriver, createDriver, type TabsApi } from "./chrome-driver.ts";
+import { CA_PAGE_FACTS, caPageForPath, COMMONAPP_ORIGIN, targetUrl } from "./commonapp/pages.ts";
+import type { ActivitiesReport } from "./activities-flow.ts";
 import type { PanelResponse } from "./messages.ts";
 import { SITE_HOME, SITE_LABEL, siteOf, type Site } from "./sites.ts";
 import { button, h, type Child } from "./ui.ts";
@@ -81,12 +85,18 @@ async function signOut(): Promise<void> {
 }
 
 /** The active tab of this window and the application system it is on (null for any other site). */
-async function activeTab(): Promise<{ id: number | null; site: Site | null }> {
+async function activeTab(): Promise<{ id: number | null; site: Site | null; path: string }> {
   try {
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-    return { id: tab?.id ?? null, site: siteOf(tab?.url) };
+    let path = "";
+    try {
+      path = tab?.url ? new URL(tab.url).pathname : "";
+    } catch {
+      // not a URL: no path
+    }
+    return { id: tab?.id ?? null, site: siteOf(tab?.url), path };
   } catch {
-    return { id: null, site: null };
+    return { id: null, site: null, path: "" };
   }
 }
 
@@ -123,9 +133,10 @@ function signedOutView(message?: string): void {
 /**
  * What the activities fill shows when activities can't be read. A token minted before activities access (scope `{transcript}`)
  * gets "Reconnect to allow activities" with the usual sign-in button: signing in again asks the student for activities, and the
- * transcript fill keeps working with the old token until then (consent is never widened silently).
+ * transcript fill keeps working with the old token until then (consent is never widened silently). After signing in, `retry`
+ * returns to the activities fill (not the transcript view).
  */
-function activitiesProblem(reason: Exclude<ActivitiesResult, { ok: true }>["reason"]): HTMLElement {
+function activitiesProblem(reason: Exclude<ActivitiesResult, { ok: true }>["reason"], retry: () => void): HTMLElement {
   if (reason === "reconnect" || reason === "signed_out") {
     const note = h("p", { class: "note" }, reason === "reconnect" ? ACTIVITIES_RECONNECT : STATUS.signedOut);
     return h(
@@ -134,13 +145,13 @@ function activitiesProblem(reason: Exclude<ActivitiesResult, { ok: true }>["reas
       note,
       button("Sign in", async () => {
         note.textContent = "Waiting for the sign-in window...";
-        if (await signIn()) await refresh();
+        if (await signIn()) retry();
         else note.textContent = "Sign in did not finish. Try again.";
       }, "btn primary"),
     );
   }
   if (reason === "students_only") return h("p", { class: "note" }, STATUS.studentsOnly);
-  return h("div", {}, h("p", { class: "note" }, ACTIVITIES_NETWORK), button("Try again", () => void refresh(), "btn primary"));
+  return h("div", {}, h("p", { class: "note" }, ACTIVITIES_NETWORK), button("Try again", retry, "btn primary"));
 }
 
 function messageView(text: string, ...actions: HTMLElement[]): void {
@@ -220,7 +231,78 @@ async function readyView(): Promise<void> {
     sitePicker("common_app"),
     currentOffers.length ? h("div", { class: "list" }, ...boxes) : h("p", { class: "note" }, "No courses with grades or current-year courses were found in your transcript."),
     tabId === null && h("p", { class: "note" }, "Open your Common App in this window first."),
-    h("div", { class: "row" }, fill, button("Sign out", async () => { await signOut(); signedOutView(); })),
+    h("div", { class: "row" }, fill),
+    activitiesSection(tab),
+    h("div", { class: "row" }, button("Sign out", async () => { await signOut(); signedOutView(); })),
+  );
+}
+
+/** "Activities & honors": Fill on the matching Common App page, otherwise a button that opens it. */
+function activitiesSection(tab: { id: number | null; site: Site | null; path: string }): HTMLElement {
+  const tabId = tab.site === "common_app" ? tab.id : null;
+  const here = tabId === null ? null : caPageForPath(tab.path);
+  const buttons = (["activities", "honors"] as CaPage[]).map((page) =>
+    here === page
+      ? button(`Fill ${PAGE_NAME[page].plural}`, () => void runActivities(page), "btn primary")
+      : button(`Go to the ${PAGE_NAME[page].title} page`, () => void chrome.tabs.update(tabId!, { url: COMMONAPP_ORIGIN + CA_PAGE_FACTS[page].path }), "btn", tabId === null),
+  );
+  return h(
+    "section",
+    { class: "item" },
+    h("h3", {}, "Activities & honors"),
+    h("p", { class: "muted" }, "Fills the Activities or Honors page of Common App from your tracker. Open that page, then press Fill."),
+    h("div", { class: "row" }, ...buttons),
+  );
+}
+
+/** One activities or honors page: load the tracker's entries, ask what to do with what Common App already has, fill, read back, report. */
+async function runActivities(page: CaPage): Promise<void> {
+  view = "other";
+  stopRequested = false;
+  const back = () => void readyView();
+  const tab = await activeTab();
+  const tabId = tab.id;
+  if (tabId === null || tab.site !== "common_app" || caPageForPath(tab.path) !== page) {
+    return messageView(PAGE_NAME[page].openHint, button("Back", back, "btn primary"));
+  }
+  show(h("p", { class: "muted" }, "Loading your activities..."));
+  const loaded = await loadActivities();
+  if (!loaded.ok) return show(activitiesProblem(loaded.reason, () => void runActivities(page)), h("div", { class: "row" }, button("Back", back)));
+
+  const status = h("p", { class: "status" }, "Checking the page...");
+  const prompt = h("div", {});
+  const { ui, cancel } = createAskUi(prompt, page);
+  const stop = button("Stop", () => {
+    stopRequested = true;
+    cancel(new Error("Stopped. Nothing was changed on Common App.")); // a pending question must not keep the run blocked
+    status.textContent = "Stopping...";
+    stop.disabled = true;
+    chrome.tabs.sendMessage(tabId, { type: "stop" }).catch(() => {});
+  }, "btn danger");
+  show(status, prompt, h("div", { class: "row" }, stop));
+
+  const real = createCaDriver(chrome.tabs as unknown as TabsApi, tabId, page);
+  const driver: CaDriver = {
+    ...real,
+    async fill(plan, mode, existing) {
+      status.textContent = `Filling ${PAGE_NAME[page].plural}...`;
+      return real.fill(plan, mode, existing);
+    },
+    async reopen() {
+      status.textContent = "Checking what Common App shows...";
+      return real.reopen();
+    },
+  };
+  activitiesReportView(page, await runCaPage(page, loaded.data, driver, ui));
+}
+
+function activitiesReportView(page: CaPage, report: ActivitiesReport): void {
+  view = "other";
+  const s = reportStatus(page, report);
+  show(
+    h("p", { class: s.warn ? "status warn" : "status" }, s.text),
+    ...reportNodes(page, report),
+    h("div", { class: "row" }, button("Back", () => void readyView(), "btn primary")),
   );
 }
 

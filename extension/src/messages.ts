@@ -1,6 +1,8 @@
 import type { ActivitiesResult, TranscriptResult } from "./auth.ts";
 import type { CgGradeKey, CgGradePlan, CurrentYearPlan } from "../../web/lib/commonapp-fill.ts";
 import type { PageResult } from "./commonapp/dom.ts";
+import type { CaPage, CaPagePlan } from "../../web/lib/activities-fill.ts";
+import type { CaPageResult } from "./commonapp/activities.ts";
 import type { InsertResult } from "./assist/insert.ts";
 import type { StarsRow } from "../../web/lib/stars-fill.ts";
 import type { CsuSchoolPlan } from "../../web/lib/csu-fill.ts";
@@ -33,7 +35,11 @@ export type ContentMessage =
   | { type: "stop" }
   | { type: "inspect"; target: FillTarget }
   | { type: "fill"; target: CgGradeKey; plan: CgGradePlan; mode: FillMode }
-  | { type: "fill"; target: "current"; plan: CurrentYearPlan; mode: FillMode };
+  | { type: "fill"; target: "current"; plan: CurrentYearPlan; mode: FillMode }
+  /** Activities (/common/7/232) and honors (/common/4/25): entries on the page, fill it, read what it shows (for the read-back). */
+  | { type: "caInspect"; page: CaPage }
+  | { type: "caFill"; plan: CaPagePlan; mode: FillMode; existing: number }
+  | { type: "caRead"; page: CaPage };
 
 /** Content script -> extension. `ok: false` carries a sentence for the report (e.g. "Answer Yes on the Courses & Grades intro first"). */
 export type ContentResponse =
@@ -42,7 +48,13 @@ export type ContentResponse =
   | { type: "inspect"; ok: true; existing: string[] }
   | { type: "inspect"; ok: false; error: string }
   | { type: "fill"; ok: true; result: PageResult }
-  | { type: "fill"; ok: false; error: string };
+  | { type: "fill"; ok: false; error: string }
+  | { type: "caInspect"; ok: true; existing: string[] }
+  | { type: "caInspect"; ok: false; error: string }
+  | { type: "caFill"; ok: true; result: CaPageResult }
+  | { type: "caFill"; ok: false; error: string }
+  | { type: "caRead"; ok: true; rows: Record<string, string | string[]>[] }
+  | { type: "caRead"; ok: false; error: string };
 
 /** Side panel -> fill assistant content script (UC, STARS, Cal State Apply, UIUC, UT). `advance` moves focus to the next box after. */
 export type AssistMessage =

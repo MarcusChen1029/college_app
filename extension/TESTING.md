@@ -135,3 +135,36 @@ application (SRAR not final-submitted): run it only when the owner is watching, 
    page showed.
 3. Check the rows on myIllini, then press Submit Page on each courses page and Other Academic Information yourself.
 
+
+## I. Activities & honors on Common App (not yet run end to end)
+
+Built 2026-10-28 (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`, page facts in `docs/superpowers/research/2026-10-27-portal-dom.md`
+§6 Activities, §8 Honors). Throwaway Common App account ONLY, in the separate Chrome profile from section A (the fill overwrites Activity 1 test data).
+The extension never presses Common App's Responsibilities page or any submit. It needs a token that has activities access: an older
+transcript-only connection shows "Reconnect to allow activities" (press Sign in; the panel returns to the activities fill).
+
+Setup: in the tracker (test student account) open Activities and add 7 Common App activities and 3 honors; give one activity a description longer
+than 150 characters (it must be reported as not accepted) and leave one activity's hours empty (it must be reported as "needs an answer").
+
+1. Empty page. On Common App open Activities (panel: "Go to the Activities page" if needed) with no activity entered. Press "Fill activities".
+   Expected: no question; every tracker activity is added in tracker order (the over-long one is listed under "Not added: Common App would not
+   accept these", the empty-hours one under "Added, but these questions are blank"); the report ends "Done: N activities filled and checked." or lists
+   read-back differences. Common App shows the same text on the page.
+2. Replace. Run it again. Expected: "Common App already has N activities. Replace all of them with the M in your tracker?" with the existing names
+   listed. Press "Yes, replace all". Expected: slots rewritten, surplus slots removed from the end, and the report repeats "Replaced the N activities that
+   were already on Common App: ..." with the names.
+3. Keep with toggles. Edit one entry by hand, run again, press "No, let me choose what to add". Expected: the tracker items as toggles, a counter
+   "Room left on the page: X of Y"; once X is 0 the unticked toggles are disabled; "Add the chosen" adds only the ticked ones after the existing
+   entries (numbered after them in any read-back message).
+4. Full page. With 10 activities on the page press Fill, then "No, let me choose...". Expected: "This page is full (10 of 10). Nothing can be added."
+   and nothing changes.
+5. Honors. Repeat 1-4 on the Honors page (limit 5; question text says honors, singular "honor"). Honors Level(s) and Grade level boxes match the tracker.
+6. Read-back. After each fill the panel reloads the page and compares what Common App shows with what was sent. Expected: the page reloads once at
+   the end of each fill and the report has no lines under "Common App shows something different from what was entered" when the page matches the
+   tracker. Any line there is a bug worth sending back (it names the portal slot, e.g. "Activity 4").
+7. Signed out. Sign out of Common App in another tab, then press Fill. Expected: "Common App signed you out. Sign in again; nothing after this point
+   was saved." and no success line.
+8. Stop. Start a fill and press Stop while the Replace question is open: "Stopped. Nothing was changed on Common App." Start another and press Stop
+   mid-fill: the report says Stopped and that Continue was not pressed.
+
+If something fails, send the panel report and a screenshot of the Common App page; do not retry more than once.

@@ -126,8 +126,9 @@ export function keepRoom(page: CaPage, existing: number): number {
   return Math.max(0, CA_PAGE_LIMIT[page] - existing);
 }
 
+/** `what` is the noun already in the right number for `names.length` ("activity" for 1, "activities" for 2). */
 export function replacedNote(portal: "Common App" | "UC", what: string, names: string[]): string {
-  return `Replaced the ${names.length} ${what} that were already on ${portal}: ${names.join(", ")}.`;
+  return `Replaced the ${names.length} ${what} that ${names.length === 1 ? "was" : "were"} already on ${portal}: ${names.join(", ")}.`;
 }
 
 /** Hours / weeks that pass the range check but would need more than 5 typed characters (e.g. 10.1234): the portal drops those. */
@@ -225,21 +226,23 @@ function shownFor(shown: Record<string, string | string[]>, question: string): s
 /**
  * Compares what the portal shows after the fill (`shown[i]` = slot i, keyed by question) with what the plan sent, e.g.
  * `Activity 2: Hours spent per week shows "" (sent "10")`. A cleared question must show nothing.
+ * `shown[0]` is portal slot `firstSlot` (default 1), so messages name the portal's slot when a Keep fill started after existing entries.
  */
-export function readBackMismatches(plan: CaPagePlan, shown: Record<string, string | string[]>[]): string[] {
+export function readBackMismatches(plan: CaPagePlan, shown: Record<string, string | string[]>[], firstSlot = 1): string[] {
   const noun = plan.page === "activities" ? "Activity" : "Honors";
   const out: string[] = [];
   plan.slots.forEach((slot, i) => {
     const row = shown[i];
+    const n = firstSlot + i;
     if (!row) {
-      out.push(`${noun} ${i + 1}: not found on the page`);
+      out.push(`${noun} ${n}: not found on the page`);
       return;
     }
     for (const ans of slot.answers) {
       const got = shownFor(row, ans.question);
       if (normalize(ans.kind, got) === normalize(ans.kind, ans.value)) continue;
       const sent = ans.value === null ? "nothing" : `"${show(ans.value)}"`;
-      out.push(`${noun} ${i + 1}: ${ans.question} shows "${show(got)}" (sent ${sent})`);
+      out.push(`${noun} ${n}: ${ans.question} shows "${show(got)}" (sent ${sent})`);
     }
   });
   return out;
