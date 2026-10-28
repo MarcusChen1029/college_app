@@ -364,14 +364,14 @@ export function CollegeExplorer({
     [inRegion, hasScores, isUS, profile, myEnglish, english, international, programFees, satEstimates],
   );
 
-  const ctx: FilterContext = { evidence, currency, isUS, hasScores, hasEnglish };
+  const ctx: FilterContext = { evidence, currency, isUS, hasScores, hasEnglish, applyTags };
   const eff = effectiveFilters(f, ctx);
   const effKey = filtersToQuery({ ...eff, view: "map", region: null });
   const rows = useMemo(
     () => sortRows(enriched.filter((r) => rowMatches(r, eff, ctx)), eff.sort, eff.category),
     // eff/ctx are rebuilt each render; effKey (their query string) captures every value that matters.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [enriched, effKey, evidence],
+    [enriched, effKey, evidence, applyTags],
   );
   const fieldHidden = useMemo(
     () => (eff.field ? inRegion.filter((c) => scoreField(c, evidence[c.slug], eff.field!).status === "no_data").length : 0),

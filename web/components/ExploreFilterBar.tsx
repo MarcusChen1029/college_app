@@ -256,6 +256,8 @@ export function ExploreFilterBar(p: FilterBarProps) {
         )}
       <div className="space-y-2 self-end">
         {p.isUS && checkbox(f.intlAid, (v) => set({ intlAid: v }), t("colleges.aidForIntl"))}
+        {p.isUS && checkbox(f.noSupplements, (v) => set({ noSupplements: v }), t("colleges.tag.no_supplements"), false, t("colleges.tag.no_supplements.title"))}
+        {p.isUS && checkbox(f.noAppFee, (v) => set({ noAppFee: v }), t("colleges.tag.no_app_fee"), false, t("colleges.tag.no_app_fee.title"))}
         {checkbox(f.english, (v) => set({ english: v }), t("colleges.englishFilter"), !p.hasEnglish, p.hasEnglish ? t("colleges.englishFilterTitle") : t("colleges.englishFilterNoScore"))}
         {!p.hasEnglish && (
           <Link href="/profile" className="block pl-6 text-[11px] font-semibold text-blue-700 underline-offset-4 hover:underline">
@@ -335,6 +337,8 @@ function ActiveChips(p: FilterBarProps) {
     chips.push({ key: "admit", text: t("colleges.admitChip", { range: `${f.admitMin ?? 0}–${f.admitMax ?? 100}%` }), clear: { admitMin: null, admitMax: null } });
   if (f.intlAid) chips.push({ key: "aid", text: t("colleges.aidForIntl"), clear: { intlAid: false } });
   if (f.english) chips.push({ key: "eng", text: t("colleges.englishFilter"), clear: { english: false } });
+  if (f.noSupplements) chips.push({ key: "nosupp", text: t("colleges.tag.no_supplements"), clear: { noSupplements: false } });
+  if (f.noAppFee) chips.push({ key: "nofee", text: t("colleges.tag.no_app_fee"), clear: { noAppFee: false } });
   if (f.category !== "general") {
     const cat = p.lookups.categories.find((c) => c.key === f.category)?.label ?? f.category;
     chips.push({ key: "cat", text: t("colleges.tierOf", { label: cat }), clear: { category: "general", minTier: null } });

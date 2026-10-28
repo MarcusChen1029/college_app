@@ -47,7 +47,7 @@ const row = (c: Partial<CollegeSummary> = {}, extra: Partial<ExploreRow> = {}): 
   };
 };
 
-const ctx: FilterContext = { evidence: {}, currency: "USD", isUS: true, hasScores: true, hasEnglish: true };
+const ctx: FilterContext = { evidence: {}, currency: "USD", isUS: true, hasScores: true, hasEnglish: true, applyTags: {} };
 const f = (over: Partial<ExploreFilters>): ExploreFilters => ({ ...DEFAULT_FILTERS, ...over });
 const params = (q: string) => new URLSearchParams(q);
 
@@ -55,7 +55,7 @@ test("URL round trip keeps every filter and leaves defaults out", () => {
   assert.equal(filtersToQuery(DEFAULT_FILTERS), "");
   const full = f({
     view: "table", region: "GB", q: "tech", fit: ["safety", "target"], field: "computer_science", admitMin: 10, admitMax: 40,
-    maxTuition: 30000, intlAid: true, english: true, category: "engineering", minTier: "B", state: "CA", testPolicy: "optional",
+    maxTuition: 30000, intlAid: true, english: true, noSupplements: true, noAppFee: true, category: "engineering", minTier: "B", state: "CA", testPolicy: "optional",
     plan: "ED", sort: { key: "sat", reverse: true },
   });
   const q = filtersToQuery(full);
@@ -140,6 +140,15 @@ test("intl aid and English filters", () => {
   assert.equal(rowMatches(row({}, { english: { status: "below" } }), f({ english: true }), ctx), false);
 });
 
+test("no-supplements and no-app-fee filters keep only tagged colleges", () => {
+  const tagged = { ...ctx, applyTags: { alpha: ["no_app_fee"] as const } };
+  assert.equal(rowMatches(row(), f({ noAppFee: true }), tagged), true);
+  assert.equal(rowMatches(row(), f({ noSupplements: true }), tagged), false);
+  assert.equal(rowMatches(row(), f({ noAppFee: true }), ctx), false);
+  assert.equal(rowMatches(row({ slug: "beta" }), f({ noAppFee: true }), tagged), false);
+  assert.equal(moreFilterCount(f({ noSupplements: true, noAppFee: true })), 2);
+});
+
 test("search, tier, state, test policy and plan filters", () => {
   assert.equal(rowMatches(row(), f({ q: "palo" }), ctx), true);
   assert.equal(rowMatches(row(), f({ q: "boston" }), ctx), false);
@@ -154,12 +163,12 @@ test("search, tier, state, test policy and plan filters", () => {
 });
 
 test("effectiveFilters drops filters that cannot apply to this viewer or region", () => {
-  const all = f({ fit: ["target"], english: true, intlAid: true, testPolicy: "optional" });
+  const all = f({ fit: ["target"], english: true, intlAid: true, testPolicy: "optional", noSupplements: true, noAppFee: true });
   assert.deepEqual(effectiveFilters(all, { isUS: true, hasScores: true, hasEnglish: true }), all);
   const noScores = effectiveFilters(all, { isUS: true, hasScores: false, hasEnglish: false });
   assert.deepEqual([noScores.fit, noScores.english], [[], false]);
   const uk = effectiveFilters(all, { isUS: false, hasScores: true, hasEnglish: true });
-  assert.deepEqual([uk.fit, uk.intlAid, uk.testPolicy, uk.english], [[], false, "", true]);
+  assert.deepEqual([uk.fit, uk.intlAid, uk.testPolicy, uk.english, uk.noSupplements, uk.noAppFee], [[], false, "", true, false, false]);
 });
 
 test("filter counts and clear-all", () => {
