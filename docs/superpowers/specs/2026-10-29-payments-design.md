@@ -3,6 +3,19 @@
 Status: draft for owner review, 2026-10-29. Research behind the provider choice:
 `docs/superpowers/research/2026-10-29-payment-providers.md`.
 
+## Changes made while planning (2026-10-29, builder calls; the plan `docs/superpowers/plans/2026-10-29-payments.md` wins)
+
+- Parent links live in their own table `pay_links` (token hash, entry year, expiry); each parent checkout makes a
+  new `plan_orders` row pointing at it. ECPay never accepts a `MerchantTradeNo` twice, so no order is reused, and
+  `plan_orders` has no token column.
+- The parent page is `/share/pay/<token>` (it inherits the share pages' no-referrer / noindex / no-store headers and
+  stays out of the role redirect). Function routes are `/pay-links...`.
+- Stage testers are rows in `private.payment_testers`, not an env var; stage mode needs no secrets at all (ECPay's
+  public stage merchant 3002607 is built in). Production needs the three ECPay secrets or the function refuses.
+- The site's CSP `form-action` gains `https://payment-stage.ecpay.com.tw` and `https://payment.ecpay.com.tw`
+  (the checkout is a form POST to ECPay).
+- The home page still says "Senior plan" (`home.ts`); it is off limits here and is reported as a follow-up.
+
 ## Why
 
 Today `web/lib/plans.ts` offers Free (3 colleges), Junior NT$50/month (10) and Senior NT$150/month (unlimited +
