@@ -300,7 +300,7 @@ select pg_temp.chk('H12 college notes of 10 000 chars allowed', 'ok:1', pg_temp.
 -- ── I. catalog ──
 create function public.smoke_probe_0041() returns int language sql as 'select 1';
 select pg_temp.chk('I1 a new function gets no PUBLIC/anon/authenticated EXECUTE', 'true', (select (proacl::text !~ '(^|[{,])=X|anon=|authenticated=')::text from pg_proc where proname = 'smoke_probe_0041'));
-select pg_temp.chk('I2 SECURITY DEFINER functions executable by authenticated / by anon (33/3 before 0042; 0042 adds revoke_my_extension_token)', '34/4',
+select pg_temp.chk('I2 SECURITY DEFINER functions executable by authenticated / by anon (33/3 before; +1 each: 0039 extension_activities, live since 2026-10-28, and 0042 revoke_my_extension_token)', '35/5',
   (select count(*) filter (where has_function_privilege('authenticated', p.oid, 'execute')) || '/' || count(*) filter (where has_function_privilege('anon', p.oid, 'execute'))
      from pg_proc p where p.pronamespace = 'public'::regnamespace and p.prosecdef));
 select pg_temp.chk('I3 pre-request hook registered', 'true', (select (setconfig::text like '%pgrst.db_pre_request=public.api_request_guard%')::text from pg_db_role_setting where setrole = 'authenticator'::regrole and setdatabase = 0));

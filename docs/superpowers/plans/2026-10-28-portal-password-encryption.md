@@ -44,7 +44,8 @@ chooses "Don't add" / "Remove from this browser"; a password whose account login
 
 ## Order
 
-1. **Apply migrations `0040` → `0041` → `0042`.** The live (old) site keeps working with these.
+1. **Apply migrations `0040` → `0041` → `0042`** (0038 and 0039 are already live; 0041 hardens 0039's two-argument
+   `create_extension_token` instead of adding a second one). The live (old) site keeps working with these.
    Check: `select has_table_privilege('authenticated', 'public.portal_passwords', 'select')` is `false`.
 
 2. **Deploy the code, to Production first**, and open one signed-in page there: its first password request claims the

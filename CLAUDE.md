@@ -131,7 +131,7 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0044**; 0001-0038 are applied (0038 = activities v2); 0039 is reserved for extension activities access (branch feat/activities-v2); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0044**; 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
   Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
   `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
