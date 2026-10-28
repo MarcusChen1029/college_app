@@ -45,6 +45,7 @@ test("replace: 2 items over 3 entries -> slots 1-2 rewritten, slot 3 removed thr
   const result = await fillCaPage(fake.doc, p, "replace", 3);
   assert.equal(result.stoppedReason, undefined);
   assert.equal(result.filled, 2);
+  assert.equal(result.firstSlot, 1);
   const shown = readCaPage(fake.doc, "activities");
   assert.equal(shown.length, 2);
   assert.deepEqual(readBackMismatches(p, shown), []);
@@ -61,6 +62,7 @@ test("keep: 1 entry + 2 picks -> slots 2-3 added and filled, slot 1 untouched", 
   const result = await fillCaPage(fake.doc, p, "keep", 1);
   assert.equal(result.stoppedReason, undefined);
   assert.equal(result.filled, 2);
+  assert.equal(result.firstSlot, 2);
   const shown = readCaPage(fake.doc, "activities");
   assert.equal(shown.length, 3);
   assert.deepEqual(shown[0], before);
@@ -81,12 +83,44 @@ test("a re-added slot holding stale answers ends with exactly the plan's answers
   assert.equal(result.stoppedReason, undefined);
   const shown = readCaPage(fake.doc, "activities");
   assert.deepEqual(readBackMismatches(p, shown.slice(1)), []);
-  assert.equal(fake.raw(2)["Organization or group"], "");
-  assert.deepEqual(fake.raw(2)["When did you participate?"], ["10th grade", "11th grade"]);
-  assert.equal(shown[1]!["Sport/team"], "");
-  assert.equal(shown[1]!["What was your role?"], "");
-  assert.equal(shown[1]!["Start date"], "");
+  // Raw values, hidden or not: the shown children were cleared before their parents changed and hid them.
+  const raw = fake.raw(2);
+  assert.equal(raw["Organization or group"], "");
+  assert.deepEqual(raw["When did you participate?"], ["10th grade", "11th grade"]);
+  assert.equal(raw["Sport/team"], "");
+  assert.equal(raw["What was your role?"], "");
+  assert.equal(raw["Start date"], "");
+  assert.equal(raw["still participating"], "");
+  assert.equal(raw["Activity or experience type"], "Robotics");
+  assert.equal(raw["specific position or leadership role"], "No");
   assert.equal(count(fake.log, "continue"), 1);
+});
+
+test("a child already hidden by its own stale parent is left alone (Common App ignores hidden questions)", async () => {
+  // Stale leadership "No" hides a stale role; the plan also says "No", so the run never shows the role to clear it.
+  const fake = fakeActivities({ count: 1, slots: { 1: { ...OLD(1), "What was your role?": "Captain" } } });
+  const result = await fillCaPage(fake.doc, plan([act("a")]), "replace", 1);
+  assert.equal(result.stoppedReason, undefined);
+  assert.equal(fake.raw(1)["What was your role?"], "Captain");
+  assert.equal(readCaPage(fake.doc, "activities")[0]!["What was your role?"], "");
+});
+
+test("after the first problem no new slot is started and nothing is removed", async () => {
+  const fake = fakeActivities({ count: 3, slots: { 1: OLD(1), 2: OLD(2), 3: OLD(3) } });
+  const p = plan([act("a", { type: "Athletics (JV or varsity)", sport: "Soccer" }), act("b")]);
+  p.slots[0]!.answers.find((a) => a.question === "Sport/team")!.value = "Quidditch";
+  const result = await fillCaPage(fake.doc, p, "replace", 3);
+  assert.match(result.stoppedReason ?? "", /Activity 1 "Sport\/team": "Quidditch" is not in Common App's list/);
+  assert.equal(result.filled, 1);
+  assert.deepEqual(fake.log.filter((l) => /^(set|clear):2:|^add:|^remove|^confirm|^continue/.test(l)), []);
+  assert.equal(fake.count(), 3);
+});
+
+test("keep with a stale entry count (more than the slots shown) stops before adding anything", async () => {
+  const fake = fakeActivities({ count: 1, slots: { 1: OLD(1), 2: OLD(2), 3: OLD(3) } });
+  const result = await fillCaPage(fake.doc, plan([act("a")]), "keep", 3);
+  assert.match(result.stoppedReason ?? "", /^Common App's page changed \(Common App shows 1 activities slots, fewer than the 3 entries counted before\)/);
+  assert.deepEqual(fake.log, []);
 });
 
 test("a written answer the page marks ng-invalid stops before Continue and names the slot and question", async () => {
@@ -168,6 +202,7 @@ test("keep never fills past the page limit: 9 entries + 3 picks -> only the 10th
   const result = await fillCaPage(fake.doc, plan([act("a"), act("b"), act("c")]), "keep", 9);
   assert.equal(result.stoppedReason, undefined);
   assert.equal(result.filled, 1);
+  assert.equal(result.firstSlot, 10);
   assert.equal(fake.count(), 10);
   assert.equal(fake.raw(10)["Organization or group"], "Team a");
   assert.match((result.notes ?? []).join(" "), /Team b, Team c/);

@@ -272,13 +272,26 @@ async function setAnswer(q: Question, ans: CaAnswer, where: string, problems: st
 
 type Touched = { q: Question; where: string };
 
-/** Every answer of one slot, in reveal order: a hidden question is cleared only if shown, and a question with a value must be shown. */
+const isBlank = (ans: CaAnswer) => ans.value === null || (Array.isArray(ans.value) && !ans.value.length);
+
+/**
+ * Every answer of one slot. First a reverse pass clears every SHOWN question the plan leaves blank, children before their parents (end
+ * date, still participating, start date, role, sport, ...): writing a parent first would hide the child with its stale value, and Common
+ * App keeps a hidden question's value on the server. A child ALREADY hidden by its own stale parent (e.g. stale leadership "No" over a
+ * stale role) is left alone: Common App ignores hidden questions, and the run never toggles a parent just to reach it (controller ruling,
+ * Task 10 fix round 1). Then a forward pass in reveal order writes the values; a question with a value must be shown.
+ */
 async function writeSlot(slot: Element, page: CaPage, n: number, plan: CaSlotPlan, problems: string[], touched: Touched[]): Promise<void> {
   const noun = CA_PAGE_FACTS[page].noun;
+  for (const ans of [...plan.answers].reverse()) {
+    checkStop();
+    if (!isBlank(ans)) continue;
+    const q = findQuestion(slot, ans.question, ans.kind);
+    if (q && visible(q.label)) await clearAnswer(q, ans.kind, `${noun} ${n} "${labelText(q)}"`);
+  }
   for (const ans of plan.answers) {
     checkStop();
-    const blank = ans.value === null || (Array.isArray(ans.value) && !ans.value.length);
-    if (blank) {
+    if (isBlank(ans)) {
       const q = findQuestion(slot, ans.question, ans.kind);
       if (q && visible(q.label)) await clearAnswer(q, ans.kind, `${noun} ${n} "${labelText(q)}"`);
       continue;
@@ -339,11 +352,15 @@ async function reachPage(doc: Document, page: CaPage): Promise<HTMLElement> {
   }
 }
 
+/** `firstSlot`: the portal slot the plan's first item went to (read-back compares readCaPage(...).slice(firstSlot - 1) with the plan). */
+export type CaPageResult = PageResult & { firstSlot?: number };
+
 /**
  * Fills the page. Replace: slots 1..M become the plan's items (slots added as needed), then surplus slots are removed from the end.
  * Keep: the items go after the `existing` entries, at most keepRoom of them. `filled` = slots written. Messages name the portal's slot.
+ * After the first problem (e.g. an option the page lacks) no new slot is started and nothing is removed.
  */
-export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode, existing: number): Promise<PageResult> {
+export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode, existing: number): Promise<CaPageResult> {
   resetStop();
   const page = plan.page;
   const f = CA_PAGE_FACTS[page];
@@ -353,7 +370,14 @@ export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode
   const touched: Touched[] = [];
   let filled = 0;
   let changed = false;
-  const result = (stoppedReason?: string): PageResult => ({ filled, blanks: [], ...(notes.length ? { notes } : {}), ...(stoppedReason ? { stoppedReason } : {}) });
+  let firstSlot: number | undefined;
+  const result = (stoppedReason?: string): CaPageResult => ({
+    filled,
+    blanks: [],
+    ...(firstSlot !== undefined ? { firstSlot } : {}),
+    ...(notes.length ? { notes } : {}),
+    ...(stoppedReason ? { stoppedReason } : {}),
+  });
   if (!plan.slots.length) return result();
   try {
     // 1. The gate: Yes shows the slots.
@@ -373,14 +397,19 @@ export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode
     if (mode === "keep") {
       const lastAnswered = Math.max(0, ...shownSlots(doc, page).filter((s) => answered(readSlot(s.el, page))).map((s) => s.n));
       first = Math.max(existing, lastAnswered) + 1;
+      // A stale `existing` (more entries than slots shown) would re-show removed slots with old answers: stop instead.
+      const shown = lastShown(doc, page);
+      if (first > shown + 1) throw new PageChanged(`Common App shows ${shown} ${f.what} slots, fewer than the ${existing} entries counted before`);
       room = Math.min(keepRoom(page, existing), limit - first + 1);
     }
     const todo = plan.slots.slice(0, Math.max(0, room));
     const left = plan.slots.slice(todo.length);
     if (left.length) notes.push(`Not added, because Common App holds at most ${limit} ${f.what}: ${left.map((s) => s.label).join(", ")}.`);
+    if (todo.length) firstSlot = first;
 
-    // 3. Every answer of every slot written.
+    // 3. Every answer of every slot written; after a problem no new slot is started.
     for (const [i, slotPlan] of todo.entries()) {
+      if (problems.length) break;
       const n = first + i;
       changed = true;
       const slot = await openSlot(doc, page, n);
@@ -388,9 +417,9 @@ export async function fillCaPage(doc: Document, plan: CaPagePlan, mode: FillMode
       filled++;
     }
 
-    // 4. Replace: surplus slots removed from the end.
+    // 4. Replace: surplus slots removed from the end (not after a problem: the student looks at the page first).
     const removed: string[] = [];
-    if (mode === "replace" && todo.length)
+    if (mode === "replace" && todo.length && !problems.length)
       for (let n = lastShown(doc, page); n > todo.length; n = lastShown(doc, page)) {
         await removeSlot(doc, page, n);
         removed.push(`${f.noun} ${n}`);
