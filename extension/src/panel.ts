@@ -13,7 +13,7 @@ import { buildUiucPlans } from "../../web/lib/uiuc-fill.ts";
 import { buildUcPlans } from "../../web/lib/uc-fill.ts";
 import { buildCsuPlans } from "../../web/lib/csu-fill.ts";
 import type { CaPage } from "../../web/lib/activities-fill.ts";
-import { runCaPage, type CaDriver } from "./activities-flow.ts";
+import { runCaPage, STOPPED, type CaDriver } from "./activities-flow.ts";
 import { createAskUi, PAGE_NAME, reportNodes, reportStatus } from "./activities-panel.ts";
 import { createCaDriver, createDriver, type TabsApi } from "./chrome-driver.ts";
 import { CA_PAGE_FACTS, caPageForPath, COMMONAPP_ORIGIN, targetUrl } from "./commonapp/pages.ts";
@@ -274,7 +274,7 @@ async function runActivities(page: CaPage): Promise<void> {
   const { ui, cancel } = createAskUi(prompt, page);
   const stop = button("Stop", () => {
     stopRequested = true;
-    cancel(new Error("Stopped. Nothing was changed on Common App.")); // a pending question must not keep the run blocked
+    cancel(new Error(STOPPED)); // a pending question must not keep the run blocked, and a later one is refused
     status.textContent = "Stopping...";
     stop.disabled = true;
     chrome.tabs.sendMessage(tabId, { type: "stop" }).catch(() => {});
@@ -285,6 +285,7 @@ async function runActivities(page: CaPage): Promise<void> {
   const driver: CaDriver = {
     ...real,
     async fill(plan, mode, existing) {
+      if (stopRequested) throw new Error(STOPPED); // the last look before anything is typed
       status.textContent = `Filling ${PAGE_NAME[page].plural}...`;
       return real.fill(plan, mode, existing);
     },
@@ -293,7 +294,7 @@ async function runActivities(page: CaPage): Promise<void> {
       return real.reopen();
     },
   };
-  activitiesReportView(page, await runCaPage(page, loaded.data, driver, ui));
+  activitiesReportView(page, await runCaPage(page, loaded.data, driver, ui, () => stopRequested));
 }
 
 function activitiesReportView(page: CaPage, report: ActivitiesReport): void {

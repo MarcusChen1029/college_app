@@ -90,3 +90,17 @@ test("caPageForPath knows the two pages and nothing else", () => {
   assert.equal(caPageForPath("/common/13/55"), null);
   assert.equal(caPageForPath(""), null);
 });
+
+test("Stop pressed before any question: a question asked later is refused at once", async () => {
+  const prompt = doc().createElement("div");
+  const { ui, cancel } = createAskUi(prompt, "activities");
+  cancel(new Error("Stopped. Nothing was changed on Common App."));
+  await assert.rejects(ui.askReplace(["X"], 2), /Nothing was changed/);
+  await assert.rejects(ui.pick(items, 2), /Nothing was changed/);
+  assert.equal(prompt.children.length, 0);
+});
+
+test("report: a run where every item was blocked headlines the note, not Done", () => {
+  const r = report({ note: "Nothing was changed on Common App.", blocked: [{ label: "Band", reasons: ["Description: too long"] }] });
+  assert.deepEqual(reportStatus("activities", r), { text: "Nothing was changed on Common App.", warn: false });
+});

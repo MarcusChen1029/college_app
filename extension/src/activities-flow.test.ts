@@ -5,6 +5,7 @@ import { newCaActivity, newCaHonor, type ActivityData, type CaActivity, type CaH
 import type { FillMode } from "./messages.ts";
 import {
   SIGNED_OUT,
+  STOPPED,
   askReplaceText,
   decide,
   fullText,
@@ -244,18 +245,32 @@ test("signed out mid-run (after inspect): no fill, stopped with the sign-in text
   assert.ok(!calls.some((c) => c.startsWith("fill")));
 });
 
-test("signed out after the fill: never a success, filled stays empty, no read-back", async () => {
+test("signed out when the question was answered (path call 3): no fill, stopped with the sign-in text", async () => {
   const { driver, calls } = fake({ paths: ["/common/7/232", "/common/7/232", "/login"] });
   const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
   assert.equal(report.stopped, SIGNED_OUT);
   assert.deepEqual(report.filled, []);
-  assert.ok(!calls.includes("read"));
+  assert.ok(!calls.some((c) => c.startsWith("fill")));
 });
 
-test("signed out when the page is reopened for the read-back", async () => {
+test("signed out right after the fill (path call 4): never a success, filled stays empty, no reopen or read-back", async () => {
   const { driver, calls } = fake({ paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/login"] });
   const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
   assert.equal(report.stopped, SIGNED_OUT);
+  assert.deepEqual(report.filled, []);
+  assert.ok(calls.includes("fill:keep:0:2"));
+  assert.ok(!calls.includes("reopen"));
+  assert.ok(!calls.includes("read"));
+});
+
+test("signed out when the page is reopened for the read-back (path call 5): no read, never a success", async () => {
+  const { driver, calls } = fake({ paths: ["/common/7/232", "/common/7/232", "/common/7/232", "/common/7/232", "/login"] });
+  const report = await runCaPage("activities", data(acts(2)), driver, fakeUi().ui);
+  assert.equal(report.stopped, SIGNED_OUT);
+  assert.deepEqual(report.filled, []);
+  assert.deepEqual(report.mismatches, []);
+  assert.ok(calls.includes("fill:keep:0:2"));
+  assert.ok(calls.includes("reopen"));
   assert.ok(!calls.includes("read"));
 });
 
@@ -307,4 +322,76 @@ test("question text: grammar for 1 and many, activities and honors", () => {
   assert.equal(askReplaceText("activities", 1, 7), "Common App already has 1 activity. Replace it with the 7 in your tracker?");
   assert.equal(askReplaceText("honors", 2, 1), "Common App already has 2 honors. Replace all of them with the 1 in your tracker?");
   assert.equal(askReplaceText("honors", 1, 3), "Common App already has 1 honor. Replace it with the 3 in your tracker?");
+});
+
+// ── Stop ──
+
+/** A driver/ui pair whose Stop flag is flipped by `at`: during inspect, or when the question is answered. */
+function stopAt(at: "inspect" | "answer", existing: string[]) {
+  let stop = false;
+  const { driver, calls } = fake({ existing });
+  const realInspect = driver.inspect;
+  driver.inspect = async () => {
+    const r = await realInspect();
+    if (at === "inspect") stop = true;
+    return r;
+  };
+  const log: string[] = [];
+  const ui: AskUi = {
+    async askReplace() {
+      log.push("askReplace");
+      if (at === "answer") stop = true;
+      return true;
+    },
+    async pick() {
+      log.push("pick");
+      return [];
+    },
+  };
+  return { driver, calls, ui, log, shouldStop: () => stop };
+}
+
+test("Stop while the page is being checked: no question is shown and fill is never called", async () => {
+  const { driver, calls, ui, log, shouldStop } = stopAt("inspect", ["E1", "E2"]);
+  const report = await runCaPage("activities", data(acts(2)), driver, ui, shouldStop);
+  assert.equal(report.stopped, STOPPED);
+  assert.deepEqual(log, []);
+  assert.ok(!calls.some((c) => c.startsWith("fill")));
+  assert.equal(report.replaced, null);
+});
+
+test("Stop on an empty page before the fill: fill is never called", async () => {
+  const { driver, calls, ui, shouldStop } = stopAt("inspect", []);
+  const report = await runCaPage("activities", data(acts(2)), driver, ui, shouldStop);
+  assert.equal(report.stopped, STOPPED);
+  assert.deepEqual(calls, ["inspect"]);
+});
+
+test("Stop between the answer and the fill: a Yes does not start the Replace", async () => {
+  const { driver, calls, ui, log, shouldStop } = stopAt("answer", ["E1"]);
+  const report = await runCaPage("activities", data(acts(2)), driver, ui, shouldStop);
+  assert.deepEqual(log, ["askReplace"]);
+  assert.equal(report.stopped, STOPPED);
+  assert.ok(!calls.some((c) => c.startsWith("fill")));
+  assert.equal(report.replaced, null);
+});
+
+test("a stopped Replace is worded as partial; a complete one as replaced", async () => {
+  const stopped = fake({
+    existing: ["A", "B", "C", "D"],
+    fillResult: () => ({ filled: 2, blanks: [], firstSlot: 1, stoppedReason: "Stopped." }),
+  });
+  const r1 = await runCaPage("activities", data(acts(2)), stopped.driver, fakeUi({ replace: true }).ui);
+  assert.equal(r1.replaced, "Overwrote 2 of the 4 activities that were already on Common App before stopping: A, B, C, D.");
+  assert.equal(r1.stopped, "Stopped.");
+});
+
+test("every chosen item blocked: nothing was changed, and the report says so", async () => {
+  const { driver, calls } = fake({ existing: ["E1"] });
+  const bad = [act("a1", { description: "x".repeat(151) })];
+  const report = await runCaPage("activities", data(bad), driver, fakeUi({ replace: true }).ui);
+  assert.equal(report.note, "Nothing was changed on Common App.");
+  assert.equal(report.blocked.length, 1);
+  assert.deepEqual(report.filled, []);
+  assert.ok(!calls.some((c) => c.startsWith("fill")));
 });

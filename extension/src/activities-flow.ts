@@ -59,6 +59,7 @@ export type ActivitiesReport = {
   note: string | null;
 };
 
+export const STOPPED = "Stopped. Nothing was changed on Common App.";
 export const SIGNED_OUT = "Common App signed you out. Sign in again; nothing after this point was saved.";
 
 const NOUN: Record<CaPage, { one: string; many: string }> = { activities: { one: "activity", many: "activities" }, honors: { one: "honor", many: "honors" } };
@@ -91,18 +92,35 @@ function emptyReport(over: Partial<ActivitiesReport> = {}): ActivitiesReport {
   return { filled: [], replaced: null, blocked: [], blanks: [], notAdded: [], mismatches: [], stopped: null, notes: [], note: null, ...over };
 }
 
-export async function runCaPage(page: CaPage, data: ActivityData, driver: CaDriver, ui: AskUi): Promise<ActivitiesReport> {
+/**
+ * `shouldStop`: the Stop button's flag. It is checked before every step that could change the page (the question, the fill), so a Stop
+ * pressed while the page is still being checked ends the run before anything is asked or typed.
+ */
+export async function runCaPage(
+  page: CaPage,
+  data: ActivityData,
+  driver: CaDriver,
+  ui: AskUi,
+  shouldStop: () => boolean = () => false,
+): Promise<ActivitiesReport> {
   const all = page === "activities" ? data.commonApp.activities : data.commonApp.honors;
   const items = all.map((x) => ({ id: x.id, label: itemLabel(page, x) }));
   const limit = CA_PAGE_LIMIT[page];
   const report = emptyReport();
+  const halt = () => {
+    if (shouldStop()) throw new Error(STOPPED);
+  };
   try {
+    halt();
     if (isLogin(await driver.path())) return emptyReport({ stopped: SIGNED_OUT });
+    halt();
     const existing = await driver.inspect();
+    halt();
     if (isLogin(await driver.path())) return emptyReport({ stopped: SIGNED_OUT });
 
     if (items.length === 0) return emptyReport({ note: `Your tracker has no ${NOUN[page].many} to add.` });
     const decision = await decide(existing, items, limit, ui);
+    halt();
     if (isLogin(await driver.path())) return emptyReport({ stopped: SIGNED_OUT });
 
     if (decision.mode === "keep" && decision.pickIds.length === 0) {
@@ -111,8 +129,13 @@ export async function runCaPage(page: CaPage, data: ActivityData, driver: CaDriv
     const plan = buildCaPagePlan(data, page, decision.mode === "keep" ? decision.pickIds : undefined);
     report.blocked = plan.blocked;
     report.blanks = plan.blanks;
-    if (plan.slots.length === 0) return report; // every chosen item is blocked: nothing to type, and Replace must not clear the page
+    if (plan.slots.length === 0) {
+      // Every chosen item is blocked: nothing to type, and Replace must not clear the page.
+      report.note = "Nothing was changed on Common App.";
+      return report;
+    }
 
+    halt();
     const result = await driver.fill(plan, decision.mode, existing.length);
     if (isLogin(await driver.path())) return emptyReport({ stopped: SIGNED_OUT });
 
@@ -120,7 +143,10 @@ export async function runCaPage(page: CaPage, data: ActivityData, driver: CaDriv
     report.notAdded = plan.slots.slice(result.filled).map((s) => s.label);
     report.notes = (result.notes ?? []).filter((n) => !n.startsWith("Not added"));
     if (decision.mode === "replace" && result.filled > 0) {
-      report.replaced = replacedNote("Common App", noun(page, existing.length), existing);
+      // A stop before the surplus entries were removed leaves some of the old ones on the page: say so instead of "Replaced all".
+      report.replaced = result.stoppedReason
+        ? `Overwrote ${Math.min(result.filled, existing.length)} of the ${existing.length} ${noun(page, existing.length)} that ${existing.length === 1 ? "was" : "were"} already on Common App before stopping: ${existing.join(", ")}.`
+        : replacedNote("Common App", noun(page, existing.length), existing);
     }
     if (result.stoppedReason) {
       report.stopped = result.stoppedReason;

@@ -17,12 +17,15 @@ export const PAGE_NAME: Record<CaPage, { title: string; plural: string; openHint
  */
 export function createAskUi(prompt: HTMLElement, page: CaPage): { ui: AskUi; cancel(error: Error): void } {
   let reject: ((e: Error) => void) | null = null;
+  /** Set by cancel(): a question asked later (Stop pressed while the page was still being checked) is refused at once. */
+  let cancelled: Error | null = null;
   const finish = () => {
     reject = null;
     prompt.replaceChildren();
   };
   const ui: AskUi = {
     askReplace(existing, incoming) {
+      if (cancelled) return Promise.reject(cancelled);
       return new Promise<boolean>((resolve, rej) => {
         reject = rej;
         const answer = (yes: boolean) => {
@@ -47,6 +50,7 @@ export function createAskUi(prompt: HTMLElement, page: CaPage): { ui: AskUi; can
       });
     },
     pick(items, max) {
+      if (cancelled) return Promise.reject(cancelled);
       return new Promise<string[]>((resolve, rej) => {
         reject = rej;
         const on = new Set<string>();
@@ -87,6 +91,7 @@ export function createAskUi(prompt: HTMLElement, page: CaPage): { ui: AskUi; can
   return {
     ui,
     cancel(error) {
+      cancelled = error;
       const r = reject;
       finish();
       r?.(error);
