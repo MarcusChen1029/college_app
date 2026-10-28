@@ -16,7 +16,8 @@ export type PlainAt =
 /** One plaintext password. `slot` is null when the site can't place it (bad key or id, over 512 characters, not text). */
 export type PlainValue = { slot: string | null; password: string; at: PlainAt };
 export type CollegePlainRow = { id: string; institution_id: string | null; custom: unknown; portal_password: string | null };
-export type VaultRow = { slot: string; sealed: string };
+/** updated_at (server reads only) lets a replacement check the row is unchanged without putting `sealed` in a URL. */
+export type VaultRow = { slot: string; sealed: string; updated_at?: string };
 /** The password a stored row holds, or null when it doesn't open with the current key. */
 export type Opener = (slot: string, sealed: string) => string | null;
 /**
