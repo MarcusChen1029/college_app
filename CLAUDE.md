@@ -74,6 +74,10 @@ Plan: all US colleges next, then UK/CA/AU.
   - Languages: English + Traditional Chinese (zh-TW), `lang` cookie, no URL prefix (spec `docs/superpowers/specs/2026-10-27-i18n-design.md`). Dictionaries in
     `web/lib/i18n/` (zh-TW must match the English key type; `i18n.test.ts` fails on missing/unused keys). New UI text goes through the dictionaries; data,
     stored values and portal dropdown values stay English.
+  - Legal pages (2026-10-29, DRAFT, not lawyer-reviewed): `/privacy`, `/terms`, `/security`, `/contact`, linked from the footer and from the consent line under
+    every Google sign-in button. Text in `web/lib/i18n/messages/{privacy,security,legal}.ts` (each privacy item names its table in a comment; full map
+    `docs/legal/2026-10-29-privacy-data-map.md`); operator name, contact email and "last updated" date in `web/lib/legal.ts` (name/email still null).
+    The pages describe what the code does: when data handling changes (new table, teacher RPC field, AI tool, encryption), update them and `LEGAL_UPDATED`.
     Hashed tokens, one active link per kind; pure code in `web/lib/share-links.ts`, wrappers in `share-api.ts`.
   - Colors and buttons (UX redesign, spec `docs/superpowers/specs/2026-10-24-ux-redesign-design.md`; phases 0-1 done, 2-6 next):
     status tones in `web/lib/status.ts` (urgent ≤7 days, soon ≤21, done = application deadline submitted), classes in `web/lib/ui.ts`
