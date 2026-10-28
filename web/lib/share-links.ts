@@ -3,7 +3,7 @@
 // The views come from SECURITY DEFINER RPCs that already return an explicit field list; the normalizers
 // below pick those same fields again, so a future server change can't leak an extra field onto the page.
 
-import type { ActivityData, CaActivity, CaHonor, CaTiming, Grade, HonorLevel, UcAwardLevel, UcCategory, UcEntry } from "./activities.ts";
+import { upgradeActivities, type ActivityData, type UcCategory } from "./activities.ts";
 import { progress, type Checklist } from "./checklist.ts";
 import { fmtDate } from "./format.ts";
 import type { ResumeHeader, ResumeOptions, ResumeSource } from "./resume.ts";
@@ -48,10 +48,8 @@ const strOrNull = (v: unknown): string | null => (typeof v === "string" && v.tri
 const num = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) ? v : typeof v === "string" && v.trim() !== "" && Number.isFinite(Number(v)) ? Number(v) : null);
 const arr = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
 const oneOf = <T extends string>(v: unknown, allowed: readonly T[]): T | null => (typeof v === "string" && (allowed as readonly string[]).includes(v) ? (v as T) : null);
-const listOf = <T extends string>(v: unknown, allowed: readonly T[]): T[] => arr(v).flatMap((x) => (oneOf(x, allowed) ? [x as T] : []));
 const isoDate = (v: unknown): string | null => (typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v) ? v.slice(0, 10) : null);
 
-const GRADE_LIST: readonly Grade[] = ["9", "10", "11", "12", "PG"];
 const STATUS_LIST: readonly Status[] = ["researching", "planning", "in_progress", "submitted", "interview", "admitted", "deferred", "waitlisted", "rejected", "withdrawn", "enrolled"];
 
 // ── parent view ──
@@ -174,9 +172,6 @@ export type PortfolioView = {
 };
 
 const UC_CATS: readonly UcCategory[] = ["award", "edprep", "extracurricular", "coursework", "volunteer", "work"];
-const UC_LEVELS: readonly UcAwardLevel[] = ["school", "city", "state", "regional", "national", "international"];
-const HONOR_LEVEL_LIST: readonly HonorLevel[] = ["school", "state_regional", "national", "international"];
-const TIMINGS: readonly CaTiming[] = ["school", "break"];
 
 function sectionScores(v: unknown): SectionScores | undefined {
   if (!isObj(v)) return undefined;
@@ -207,52 +202,27 @@ export function normalizePortfolioView(raw: unknown): PortfolioView | null {
     showHours: o.showHours !== false,
     showScores: o.showScores !== false,
   };
-  const hours = (v: unknown) => (options.showHours ? num(v) : null);
 
+  // portfolio_view returns activities either in the earlier format (before migration 0038: a few chosen keys, `awardLevel`,
+  // `fromCommonApp`) or as full 2026-27 entries. upgradeActivities reads both and builds every entry from a fixed key list,
+  // so a key we don't know never gets through; the entries it can't use (an unknown UC category) are dropped first.
+  const ucRaw = arr(a.uc).flatMap((x): Obj[] => {
+    if (!isObj(x) || !oneOf(x.category, UC_CATS)) return [];
+    return [x.fromCommonApp === true && !x.fromId ? { ...x, fromId: "common-app" } : x];
+  });
+  // Entries with the new keys are current even if the payload does not say so (the work job title / workplace swap must not run on them).
+  const current = a.version === 2 || ucRaw.some((x) => "awardLevels" in x);
+  const upgraded = upgradeActivities({ ...(current ? { version: 2 } : {}), commonApp: { activities: arr(ca.activities), honors: arr(ca.honors) }, uc: ucRaw });
+  // `legacy` is the student's private editing note and never leaves their account; hours and the per-grade work grid follow the résumé's "show hours" option.
+  const shared = <T extends { hoursPerWeek: number | null; weeksPerYear: number | null; legacy?: string }>(x: T): T => {
+    const out = { ...x, hoursPerWeek: options.showHours ? x.hoursPerWeek : null, weeksPerYear: options.showHours ? x.weeksPerYear : null };
+    delete out.legacy;
+    return out;
+  };
   const activities: ActivityData = {
-    commonApp: {
-      activities: arr(ca.activities).flatMap((x, i): CaActivity[] =>
-        isObj(x)
-          ? [
-              {
-                id: `ca${i}`,
-                type: str(x.type),
-                position: str(x.position),
-                organization: str(x.organization),
-                description: str(x.description),
-                grades: listOf(x.grades, GRADE_LIST),
-                timing: listOf(x.timing, TIMINGS),
-                hoursPerWeek: hours(x.hoursPerWeek),
-                weeksPerYear: hours(x.weeksPerYear),
-                continueInCollege: null,
-              },
-            ]
-          : [],
-      ),
-      honors: arr(ca.honors).flatMap((x, i): CaHonor[] =>
-        isObj(x) ? [{ id: `h${i}`, title: str(x.title), grades: listOf(x.grades, GRADE_LIST), levels: listOf(x.levels, HONOR_LEVEL_LIST) }] : [],
-      ),
-    },
-    uc: arr(a.uc).flatMap((x, i): UcEntry[] => {
-      const category = isObj(x) ? oneOf(x.category, UC_CATS) : null;
-      if (!isObj(x) || !category) return [];
-      return [
-        {
-          id: `uc${i}`,
-          category,
-          name: str(x.name),
-          organization: str(x.organization),
-          extra: "",
-          description: str(x.description),
-          grades: listOf(x.grades, GRADE_LIST),
-          hoursPerWeek: hours(x.hoursPerWeek),
-          weeksPerYear: hours(x.weeksPerYear),
-          awardLevel: oneOf(x.awardLevel, UC_LEVELS),
-          awardType: null,
-          ...(x.fromCommonApp === true ? { fromId: "common-app" } : {}),
-        },
-      ];
-    }),
+    version: 2,
+    commonApp: { activities: upgraded.commonApp.activities.map(shared), honors: upgraded.commonApp.honors },
+    uc: upgraded.uc.map((e) => ({ ...shared(e), workHours: options.showHours ? e.workHours : {} })),
   };
 
   const s = options.showScores && isObj(raw.scores) ? raw.scores : null;

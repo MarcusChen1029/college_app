@@ -30,6 +30,11 @@ Plan: all US colleges next, then UK/CA/AU.
     Builds never touch Supabase; pages wrap data in `<Suspense>`.
   - Student state: `web/lib/student-store.ts` (`useSyncExternalStore`). localStorage when signed out, Supabase when
     signed in (Google OAuth via Supabase, PKCE, client-side only, no proxy/middleware). Local data is merged into the account on first sign-in.
+  - Activities (`student_profiles.activities`) are stored in the 2026-27 portal format, `"version": 2` (spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`).
+    `upgradeActivities` in `web/lib/activities.ts` reads any older shape; migration 0038's `public.activities_v2(jsonb)` is its SQL twin (backfill +
+    `portfolio_view`). Change one, change both: `node scripts/check_activities_sql.mjs --generate` rebuilds the parity patch
+    `supabase/patches/2026-10-28-activities-v2-parity.sql` (fixtures `web/lib/fixtures/activities-v1.json` -> `activities-v2.json`); run it in one
+    `execute_sql`, save the rows, then `node scripts/check_activities_sql.mjs <rows.json>` must exit 0. Script tests: `node --test scripts/check_activities_sql.test.mjs`.
   - Google Docs (Writing > Essays page, `/writing/essays`, one-click "+ New Google Doc"): `web/app/api/google/*` + `web/lib/google-docs.ts` / `google-server.ts`.
     Needs server env vars `GOOGLE_DOCS_CLIENT_ID`, `GOOGLE_DOCS_CLIENT_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`,
     `GOOGLE_TOKEN_ENCRYPTION_KEY` (base64, 32 bytes) and migration 0016 (`google_tokens`, applied).
@@ -126,7 +131,7 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0038**; 0001-0037 are all applied to the project as of 2026-10-27) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0040**; 0001-0037 are applied to the project as of 2026-10-27; 0038 = activities v2, 0039 = extension activities access) **and** apply it to the project.
 - **Bulk reads page past the API's 1000-row cap** (`allRows` in `web/lib/data.ts`): deadlines, English requirements and score codes are already over it. Any new whole-table read goes through `allRows` with an order on a unique key.
 - **Application systems per college** (Portals page, spec `docs/superpowers/specs/2026-10-28-portal-progress-design.md`): `data/application_systems_2026_27.json`
   (researched member lists with official sources: ApplyTexas, Cal State Apply, STARS = former SRAR, UCAS, OUAC, EducationPlannerBC) merged with

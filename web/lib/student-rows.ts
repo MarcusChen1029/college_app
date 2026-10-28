@@ -2,7 +2,7 @@
 // Shared by the browser store (student-store.ts) and the server-side Connect AI tools, so both
 // read and write the same shapes. No React and no Supabase client in here.
 
-import type { ActivityData } from "./activities.ts";
+import { upgradeActivities } from "./activities.ts";
 import type { Checklist } from "./checklist.ts";
 import { customSlug, type CustomCollege } from "./custom-college.ts";
 import { cleanStudyFields } from "./fields.ts";
@@ -61,7 +61,7 @@ export type ProfileRow = {
   plan: PlanKey;
   test_details: TestDetails | null;
   interested: string[] | null;
-  activities: Partial<ActivityData> | null;
+  activities: unknown; // any stored shape; toProfile upgrades it to ActivityData
   resume: ResumeSettings | null;
   essays: PersonalEssays | null;
   /** Absent when the row was read with PROFILE_COLUMNS_NO_LOGINS. */
@@ -113,7 +113,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   plan: r.plan,
   tests: r.test_details ?? {},
   interested: r.interested ?? [],
-  activities: r.activities ?? {},
+  activities: upgradeActivities(r.activities), // always the current format, whatever was stored
   resume: r.resume ?? {},
   essays: r.essays ?? {},
   portals: r.portals ?? {},
@@ -131,7 +131,7 @@ export const fromProfile = (userId: string, p: StudentProfile) => ({
   plan: p.plan ?? DEFAULT_PLAN,
   test_details: p.tests ?? {},
   interested: p.interested ?? [],
-  activities: p.activities ?? {},
+  activities: upgradeActivities(p.activities), // saves always write the current format (idempotent on current data)
   resume: p.resume ?? {},
   essays: p.essays ?? {},
   portals: p.portals ?? {},

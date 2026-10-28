@@ -5,6 +5,7 @@
 // student_colleges, per-user RLS); anything saved locally is merged in on first sign-in.
 
 import { useSyncExternalStore } from "react";
+import { upgradeActivities } from "./activities";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
@@ -117,8 +118,12 @@ function loadLocal(): Local {
     const parsed = JSON.parse(raw);
     // v1 entries predate institutionId/checklist; keep what we can.
     const list = (parsed.list ?? []).map((e: Partial<ListEntry>) => ({ checklist: {}, institutionId: "", portal: EMPTY_PORTAL, ...e }));
+    // Activities saved in this browser before the 2026-27 format are upgraded as they are read, so the merge on
+    // first sign-in (and everything else) only ever sees the current format.
+    const profile = parsed.profile ?? {};
+    if (profile.activities != null) profile.activities = upgradeActivities(profile.activities);
     return {
-      profile: parsed.profile ?? {},
+      profile,
       list,
       recommenders: Array.isArray(parsed.recommenders) ? parsed.recommenders : [],
       scholarships: Array.isArray(parsed.scholarships) ? parsed.scholarships : [],

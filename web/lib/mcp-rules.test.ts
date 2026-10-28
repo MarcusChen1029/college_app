@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { CA_LIMITS, UC_LIMITS, type ActivityData } from "./activities.ts";
+import { CA_LIMITS, EMPTY_ACTIVITIES, newCaActivity, UC_LIMITS, type ActivityData } from "./activities.ts";
 import {
   addActivity,
   addEssay,
@@ -13,6 +13,7 @@ import {
   deleteActivity,
   edWarnings,
   isSenior,
+  normalizeActivities,
   patchChecklist,
   updateActivity,
   updateEssay,
@@ -192,6 +193,147 @@ test("activities: field length limits and unknown fields are rejected", () => {
   assert.equal(addActivity(undefined, "common_app_activity", { organization: "x", grades: ["13"] }).ok, false);
   assert.equal(addActivity(undefined, "uc_entry", { name: "no category" }).ok, false);
   assert.equal(addActivity(undefined, "common_app_honor", {}).ok, false);
+});
+
+test("activities v2: a retired Common App type is rejected and the valid list is named", () => {
+  const r = addActivity(undefined, "common_app_activity", { type: "Work (Paid)", organization: "Cafe" });
+  assert.equal(r.ok, false);
+  assert.match(!r.ok ? r.error : "", /Employment or work \(paid\)/);
+  assert.match(!r.ok ? r.error : "", /Community service or volunteer work/);
+  assert.equal(addActivity(undefined, "common_app_activity", { type: "Employment or work (paid)", organization: "Cafe" }).ok, true);
+});
+
+test("activities v2: values the portals reject are refused with the page's own message", () => {
+  const hours = addActivity(undefined, "common_app_activity", { type: "Employment or work (paid)", organization: "Cafe", hoursPerWeek: 200 });
+  assert.equal(hours.ok, false);
+  assert.match(!hours.ok ? hours.error : "", /1 to 168/);
+  assert.equal(addActivity(undefined, "common_app_activity", { organization: "x", weeksPerYear: 0 }).ok, false);
+  assert.equal(addActivity(undefined, "common_app_activity", { type: "Athletics (other)", organization: "x", sport: "Chess" }).ok, false); // not one of the portal's sports
+  assert.equal(addActivity(undefined, "common_app_activity", { organization: "x", grades: ["PG"], afterStart: "1800-01" }).ok, false);
+  assert.equal(addActivity(undefined, "common_app_activity", { organization: "x", grades: ["PG"], afterStart: "2026-09", stillParticipating: false, afterEnd: "2026-01" }).ok, false);
+  assert.equal(addActivity(undefined, "uc_entry", { category: "edprep", program: "999" }).ok, false);
+  assert.equal(addActivity(undefined, "uc_entry", { category: "edprep", program: "18", name: "n".repeat(31) }).ok, false);
+  assert.equal(addActivity(undefined, "uc_entry", { category: "extracurricular", name: "Chess", description: "a\n".repeat(176) }).ok, false); // 352 counted: each line break counts twice
+  assert.equal(addActivity(undefined, "uc_entry", { category: "work", name: "Cafe", grades: ["11"], workHours: { "11": { schoolYear: 200, summer: null } } }).ok, false);
+});
+
+test("activities v2: every v2 field can be set, and unanswered questions are reported back", () => {
+  const ca = addActivity(undefined, "common_app_activity", {
+    type: "Athletics (JV or varsity)",
+    sport: "Soccer",
+    leadership: true,
+    position: "Captain",
+    organization: "School team",
+    description: "Played.",
+    grades: ["9", "PG"],
+    timing: "all",
+    afterStart: "2026-09",
+    stillParticipating: true,
+    hoursPerWeek: 6,
+    weeksPerYear: 30,
+    continueInCollege: "not_sure",
+  });
+  assert.ok(ca.ok);
+  const item = ca.value.item as unknown as Record<string, unknown>;
+  assert.deepEqual([item.sport, item.leadership, item.timing, item.afterStart, item.stillParticipating, item.continueInCollege], ["Soccer", true, "all", "2026-09", true, "not_sure"]);
+  assert.deepEqual(ca.value.needsAnswer, []);
+
+  const partial = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC" });
+  assert.ok(partial.ok);
+  assert.deepEqual(partial.value.needsAnswer.map((i) => i.field).sort(), ["continueInCollege", "description", "grades", "hoursPerWeek", "weeksPerYear"]);
+  assert.ok(partial.value.needsAnswer.every((i) => i.kind === "missing"));
+
+  const honor = addActivity(undefined, "common_app_honor", { title: "Olympiad", grades: ["11"], levels: ["state_regional"] });
+  assert.ok(honor.ok);
+  assert.deepEqual(honor.value.needsAnswer, []);
+
+  const work = addActivity(undefined, "uc_entry", {
+    category: "work",
+    name: "Cafe",
+    jobTitle: "Barista",
+    extra: "A coffee shop.",
+    description: "Made coffee.",
+    grades: ["11", "12"],
+    workHours: { "11": { schoolYear: null, summer: 20 }, "12": { schoolYear: 8, summer: 30 } },
+    stillWorking: false,
+    start: "2025-06",
+    end: "2026-08",
+  });
+  assert.ok(work.ok);
+  assert.deepEqual(work.value.needsAnswer, []);
+  assert.deepEqual((work.value.item as unknown as { workHours: unknown }).workHours, { "11": { schoolYear: null, summer: 20 }, "12": { schoolYear: 8, summer: 30 } });
+
+  const prog = addActivity(undefined, "uc_entry", { category: "edprep", program: "10", description: "Tutoring.", grades: ["PG"], afterYears: "10+", afterMonths: 3, hoursPerWeek: 2, weeksPerYear: 10 });
+  assert.ok(prog.ok);
+  assert.deepEqual(prog.value.needsAnswer, []);
+  assert.equal((prog.value.item as unknown as { afterYears: unknown }).afterYears, "10+");
+});
+
+test("activities v2: a role given without a leadership answer counts as leadership, and a contradiction is refused", () => {
+  const added = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", position: "Captain" });
+  assert.ok(added.ok);
+  const a = added.value.item as unknown as { id: string; leadership: boolean | null; position: string };
+  assert.deepEqual([a.leadership, a.position], [true, "Captain"]);
+
+  const plain = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC" });
+  assert.ok(plain.ok);
+  const upd = updateActivity(plain.value.data, "common_app_activity", plain.value.item.id, { position: "Treasurer" });
+  assert.ok(upd.ok);
+  const u = upd.value.item as unknown as { leadership: boolean | null; position: string };
+  assert.deepEqual([u.leadership, u.position], [true, "Treasurer"]);
+  assert.ok(!upd.value.needsAnswer.some((i) => i.field === "position"));
+
+  const no = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", leadership: false, position: "Captain" });
+  assert.equal(no.ok, false);
+  assert.match(!no.ok ? no.error : "", /leadership: true/);
+  const flip = addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", leadership: false });
+  assert.ok(flip.ok);
+  assert.equal(updateActivity(flip.value.data, "common_app_activity", flip.value.item.id, { position: "Captain" }).ok, false);
+  assert.equal(updateActivity(flip.value.data, "common_app_activity", flip.value.item.id, { leadership: true, position: "Captain" }).ok, true);
+  assert.equal(addActivity(undefined, "common_app_activity", { type: "Robotics", organization: "FRC", leadership: false, position: "" }).ok, true); // an empty role is no role
+  const cleared = updateActivity(added.value.data, "common_app_activity", a.id, { sport: "" });
+  assert.ok(cleared.ok);
+});
+
+test("activities v2: update_activity sets several award levels and reports what is still open", () => {
+  const added = addActivity(undefined, "uc_entry", { category: "award", name: "Science fair", awardLevels: ["state"] });
+  assert.ok(added.ok);
+  const upd = updateActivity(added.value.data, "uc_entry", added.value.item.id, { awardLevels: ["state", "regional"], awardType: "academic" });
+  assert.ok(upd.ok);
+  assert.deepEqual(upd.value.data.uc[0].awardLevels, ["state", "regional"]);
+  assert.equal(upd.value.data.uc[0].awardType, "academic");
+  assert.deepEqual(upd.value.needsAnswer.map((i) => i.field).sort(), ["extra", "description", "grades"].sort());
+  // the old single-level field is gone
+  assert.equal(updateActivity(upd.value.data, "uc_entry", added.value.item.id, { awardLevel: "state" }).ok, false);
+  assert.equal(updateActivity(upd.value.data, "uc_entry", added.value.item.id, { awardLevels: ["galaxy"] }).ok, false);
+});
+
+test("activities v2: an update is judged on what it changes, not on older values", () => {
+  const stored = { ...EMPTY_ACTIVITIES, commonApp: { activities: [{ ...newCaActivity(), id: "a1", type: "Art", organization: "x", description: "ok", hoursPerWeek: 999 }], honors: [] } };
+  const r = updateActivity(stored, "common_app_activity", "a1", { description: "better" }); // hoursPerWeek 999 was already wrong; this edit is fine
+  assert.ok(r.ok);
+  assert.equal(updateActivity(stored, "common_app_activity", "a1", { weeksPerYear: 99 }).ok, false);
+});
+
+test("activities v2: stored data in the earlier format comes back as the current format", () => {
+  const old = {
+    commonApp: { activities: [{ id: "c1", type: "Work (Paid)", position: "", organization: "Cafe", description: "d", grades: ["11"], timing: ["school", "break"], hoursPerWeek: 5, weeksPerYear: 20, continueInCollege: true }], honors: [] },
+    uc: [{ id: "u1", category: "work", name: "Barista", organization: "Cafe", description: "d", grades: ["11"], awardLevel: null }],
+  };
+  const n = normalizeActivities(old as unknown as Partial<ActivityData>);
+  assert.equal(n.version, 2);
+  assert.equal(n.commonApp.activities[0].type, "Employment or work (paid)");
+  assert.equal(n.commonApp.activities[0].timing, "all");
+  assert.equal(n.commonApp.activities[0].continueInCollege, "yes");
+  assert.equal(n.uc[0].name, "Cafe");
+  assert.equal(n.uc[0].jobTitle, "Barista");
+  assert.equal(normalizeActivities(undefined).version, 2);
+  assert.deepEqual(normalizeActivities(n), n);
+  // adding to old data upgrades it too
+  const added = addActivity(old as unknown as Partial<ActivityData>, "common_app_honor", { title: "Award" });
+  assert.ok(added.ok);
+  assert.equal(added.value.data.version, 2);
+  assert.equal(added.value.data.commonApp.activities[0].type, "Employment or work (paid)");
 });
 
 test("profile patch: validates scores with the website's scales", () => {

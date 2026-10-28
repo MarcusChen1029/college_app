@@ -1,0 +1,1673 @@
+[
+  {
+    "student": "types-1-10",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [
+          {
+            "id": "ca-01",
+            "type": "Academic",
+            "sport": "",
+            "leadership": true,
+            "position": "Captain",
+            "organization": "Org 01",
+            "description": "Did thing 01.",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 10,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-02",
+            "type": "Art",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 02",
+            "description": "Did thing 02.",
+            "grades": [
+              "11",
+              "12"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 11,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-03",
+            "type": "Athletics (other)",
+            "sport": "",
+            "leadership": true,
+            "position": "Treasurer",
+            "organization": "Org 03",
+            "description": "Did thing 03.",
+            "grades": [
+              "PG"
+            ],
+            "timing": "break",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5,
+            "weeksPerYear": null,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-04",
+            "type": "Athletics (JV or varsity)",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "",
+            "description": "Did thing 04.",
+            "grades": [
+              "9",
+              "10",
+              "11",
+              "12",
+              "PG"
+            ],
+            "timing": null,
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 6,
+            "weeksPerYear": 13,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-05",
+            "type": "Career readiness or practicums",
+            "sport": "",
+            "leadership": true,
+            "position": "Founder",
+            "organization": "Org 05",
+            "description": "Did thing 05.",
+            "grades": [
+              "12"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 14,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-06",
+            "type": "Community service or volunteer work",
+            "sport": "",
+            "leadership": true,
+            "position": "Captain",
+            "organization": "Org 06",
+            "description": "Did thing 06.",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 15,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-07",
+            "type": "Computer or technology",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 07",
+            "description": "Did thing 07.",
+            "grades": [
+              "11",
+              "12"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 9,
+            "weeksPerYear": 16,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-08",
+            "type": "Cultural",
+            "sport": "",
+            "leadership": true,
+            "position": "Treasurer",
+            "organization": "Org 08",
+            "description": "Did thing 08.",
+            "grades": [
+              "PG"
+            ],
+            "timing": "break",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 10,
+            "weeksPerYear": null,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-09",
+            "type": "Dance",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 09",
+            "description": "Did thing 09.",
+            "grades": [
+              "9",
+              "10",
+              "11",
+              "12",
+              "PG"
+            ],
+            "timing": null,
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 18,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-10",
+            "type": "Debate or speech",
+            "sport": "",
+            "leadership": true,
+            "position": "Founder",
+            "organization": "Org 10",
+            "description": "Did thing 10.",
+            "grades": [
+              "12"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 19,
+            "continueInCollege": "yes"
+          }
+        ],
+        "honors": [
+          {
+            "id": "h-1",
+            "title": "Honor roll",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "levels": [
+              "school"
+            ]
+          }
+        ]
+      },
+      "uc": []
+    }
+  },
+  {
+    "student": "types-11-20",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [
+          {
+            "id": "ca-11",
+            "type": "Environmental",
+            "sport": "",
+            "leadership": true,
+            "position": "Captain",
+            "organization": "",
+            "description": "Did thing 11.",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 3,
+            "weeksPerYear": 20,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-12",
+            "type": "Family responsibilities",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 12",
+            "description": "Did thing 12.",
+            "grades": [
+              "11",
+              "12"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 21,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-13",
+            "type": "Study abroad or foreign exchange",
+            "sport": "",
+            "leadership": true,
+            "position": "Treasurer",
+            "organization": "Org 13",
+            "description": "Did thing 13.",
+            "grades": [
+              "PG"
+            ],
+            "timing": "break",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": null,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-14",
+            "type": "Foreign language",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 14",
+            "description": "Did thing 14.",
+            "grades": [
+              "9",
+              "10",
+              "11",
+              "12",
+              "PG"
+            ],
+            "timing": null,
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 23,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-15",
+            "type": "Internship",
+            "sport": "",
+            "leadership": true,
+            "position": "Founder",
+            "organization": "Org 15",
+            "description": "Did thing 15.",
+            "grades": [
+              "12"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 7,
+            "weeksPerYear": 24,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-16",
+            "type": "Journalism or publishing",
+            "sport": "",
+            "leadership": true,
+            "position": "Captain",
+            "organization": "Org 16",
+            "description": "Did thing 16.",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 8,
+            "weeksPerYear": 25,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-17",
+            "type": "R.O.T.C. or military",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 17",
+            "description": "Did thing 17.",
+            "grades": [
+              "11",
+              "12"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 26,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-18",
+            "type": "LGBT+",
+            "sport": "",
+            "leadership": true,
+            "position": "Treasurer",
+            "organization": "",
+            "description": "Did thing 18.",
+            "grades": [
+              "PG"
+            ],
+            "timing": "break",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": null,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-19",
+            "type": "Music",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 19",
+            "description": "Did thing 19.",
+            "grades": [
+              "9",
+              "10",
+              "11",
+              "12",
+              "PG"
+            ],
+            "timing": null,
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 11,
+            "weeksPerYear": 28,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-20",
+            "type": "Music",
+            "sport": "",
+            "leadership": true,
+            "position": "Founder",
+            "organization": "Org 20",
+            "description": "Did thing 20.",
+            "grades": [
+              "12"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 12,
+            "weeksPerYear": 29,
+            "continueInCollege": "no"
+          }
+        ],
+        "honors": []
+      },
+      "uc": []
+    }
+  },
+  {
+    "student": "types-21-30",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [
+          {
+            "id": "ca-21",
+            "type": "Religious",
+            "sport": "",
+            "leadership": true,
+            "position": "Captain",
+            "organization": "Org 21",
+            "description": "Did thing 21.",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 30,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-22",
+            "type": "Research",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 22",
+            "description": "Did thing 22.",
+            "grades": [
+              "11",
+              "12"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 31,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-23",
+            "type": "Robotics",
+            "sport": "",
+            "leadership": true,
+            "position": "Treasurer",
+            "organization": "Org 23",
+            "description": "Did thing 23.",
+            "grades": [
+              "PG"
+            ],
+            "timing": "break",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5,
+            "weeksPerYear": null,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-24",
+            "type": "School spirit",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 24",
+            "description": "Did thing 24.",
+            "grades": [
+              "9",
+              "10",
+              "11",
+              "12",
+              "PG"
+            ],
+            "timing": null,
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 6,
+            "weeksPerYear": 33,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-25",
+            "type": "Science or math",
+            "sport": "",
+            "leadership": true,
+            "position": "Founder",
+            "organization": "",
+            "description": "Did thing 25.",
+            "grades": [
+              "12"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 34,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-26",
+            "type": "Social justice or organizing",
+            "sport": "",
+            "leadership": true,
+            "position": "Captain",
+            "organization": "Org 26",
+            "description": "Did thing 26.",
+            "grades": [
+              "9",
+              "10"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 35,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-27",
+            "type": "Student government or politics",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 27",
+            "description": "Did thing 27.",
+            "grades": [
+              "11",
+              "12"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 9,
+            "weeksPerYear": 36,
+            "continueInCollege": null
+          },
+          {
+            "id": "ca-28",
+            "type": "Theater or drama",
+            "sport": "",
+            "leadership": true,
+            "position": "Treasurer",
+            "organization": "Org 28",
+            "description": "Did thing 28.",
+            "grades": [
+              "PG"
+            ],
+            "timing": "break",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 10,
+            "weeksPerYear": null,
+            "continueInCollege": "yes"
+          },
+          {
+            "id": "ca-29",
+            "type": "Employment or work (paid)",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "Org 29",
+            "description": "Did thing 29.",
+            "grades": [
+              "9",
+              "10",
+              "11",
+              "12",
+              "PG"
+            ],
+            "timing": null,
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 5.5,
+            "weeksPerYear": 38,
+            "continueInCollege": "no"
+          },
+          {
+            "id": "ca-30",
+            "type": "Other",
+            "sport": "",
+            "leadership": true,
+            "position": "Founder",
+            "organization": "Org 30",
+            "description": "Did thing 30.",
+            "grades": [
+              "12"
+            ],
+            "timing": "all",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": null,
+            "weeksPerYear": 39,
+            "continueInCollege": null
+          }
+        ],
+        "honors": [
+          {
+            "id": "h-2",
+            "title": "AIME Qualifier",
+            "grades": [
+              "11"
+            ],
+            "levels": [
+              "school",
+              "state_regional"
+            ]
+          },
+          {
+            "id": "h-3",
+            "title": "Intl Olympiad",
+            "grades": [
+              "12",
+              "PG"
+            ],
+            "levels": [
+              "national",
+              "international"
+            ]
+          },
+          {
+            "id": "h-4",
+            "title": "Unranked",
+            "grades": [],
+            "levels": []
+          }
+        ]
+      },
+      "uc": []
+    }
+  },
+  {
+    "student": "uc-categories",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [],
+        "honors": []
+      },
+      "uc": [
+        {
+          "jobTitle": "",
+          "extra": "Top 5% on the AMC 12.",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [
+            "national"
+          ],
+          "awardType": "academic",
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-1",
+          "category": "award",
+          "name": "AIME Qualifier",
+          "description": "Studied.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "fromId": "h-2"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-2",
+          "category": "award",
+          "name": "Unranked",
+          "description": "",
+          "grades": [],
+          "hoursPerWeek": null,
+          "weeksPerYear": null
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-3",
+          "category": "extracurricular",
+          "name": "Chess Club",
+          "description": "Ran weekly games.",
+          "grades": [
+            "10",
+            "11"
+          ],
+          "hoursPerWeek": 3,
+          "weeksPerYear": 30,
+          "fromId": "ca-01"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-4",
+          "category": "coursework",
+          "name": "Linear Algebra",
+          "description": "Community college.",
+          "grades": [
+            "12"
+          ],
+          "hoursPerWeek": 4,
+          "weeksPerYear": 15
+        },
+        {
+          "jobTitle": "",
+          "extra": "Regional food bank.",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-5",
+          "category": "volunteer",
+          "name": "Food Bank",
+          "description": "Packed boxes.",
+          "grades": [
+            "PG"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 40
+        },
+        {
+          "jobTitle": "Cashier",
+          "extra": "Family-run cafe.",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-6",
+          "category": "work",
+          "name": "Corner Cafe",
+          "description": "Weekend shifts.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "legacy": "From your earlier version: 10 hours/week, 40 weeks/year"
+        },
+        {
+          "jobTitle": "Tutor",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-7",
+          "category": "work",
+          "name": "Learning Center",
+          "description": "",
+          "grades": [
+            "12"
+          ],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "legacy": "From your earlier version: 6 hours/week",
+          "fromId": "ca-29"
+        },
+        {
+          "jobTitle": "Intern",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-8",
+          "category": "work",
+          "name": "City Hall",
+          "description": "",
+          "grades": [],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "legacy": "From your earlier version: 8 weeks/year"
+        },
+        {
+          "jobTitle": "Lifeguard",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "uc-9",
+          "category": "work",
+          "name": "Pool",
+          "description": "",
+          "grades": [],
+          "hoursPerWeek": null,
+          "weeksPerYear": null
+        }
+      ]
+    }
+  },
+  {
+    "student": "edprep-programs",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [],
+        "honors": []
+      },
+      "uc": [
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "6",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-1",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "6",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-2",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "6",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-3",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "11",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-4",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-5",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": "Local STEM camp"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-6",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": "",
+          "legacy": "From your earlier version: The Very Long Name Of A Regional Summer Program"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-7",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-8",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-9",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": "Other"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "62",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-10",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "10",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-11",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "8",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "ed-12",
+          "category": "edprep",
+          "description": "Weekly.",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "name": ""
+        }
+      ]
+    }
+  },
+  {
+    "student": "missing-ids",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [
+          {
+            "type": "Robotics",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "legacy-ca-0"
+          },
+          {
+            "type": "Art",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "legacy-ca-2"
+          },
+          {
+            "type": "Dance",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "legacy-ca-3"
+          },
+          {
+            "type": "Cultural",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "legacy-ca-4"
+          },
+          {
+            "type": "Research",
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "keep-me"
+          }
+        ],
+        "honors": [
+          {
+            "id": "legacy-honor-0",
+            "title": "No id",
+            "grades": [
+              "9"
+            ],
+            "levels": [
+              "school"
+            ]
+          },
+          {
+            "id": "legacy-honor-1",
+            "title": "Numeric",
+            "grades": [
+              "10"
+            ],
+            "levels": [
+              "national"
+            ]
+          }
+        ]
+      },
+      "uc": [
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "legacy-uc-1",
+          "category": "extracurricular",
+          "name": "No id",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 1,
+          "weeksPerYear": 2
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [
+            "state"
+          ],
+          "awardType": "academic",
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "legacy-uc-2",
+          "category": "award",
+          "name": "Null id",
+          "description": "",
+          "grades": [],
+          "hoursPerWeek": null,
+          "weeksPerYear": null
+        }
+      ]
+    }
+  },
+  {
+    "student": "edge-rules",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [
+          {
+            "sport": "",
+            "leadership": null,
+            "position": "   ",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "11",
+              "PG",
+              "9"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "e1",
+            "type": ""
+          },
+          {
+            "sport": "",
+            "leadership": null,
+            "position": "",
+            "organization": "A",
+            "description": "d",
+            "grades": [
+              "10"
+            ],
+            "timing": "school",
+            "afterStart": null,
+            "stillParticipating": null,
+            "afterEnd": null,
+            "hoursPerWeek": 4,
+            "weeksPerYear": 30,
+            "continueInCollege": null,
+            "id": "e2",
+            "type": "Quidditch"
+          }
+        ],
+        "honors": [
+          {
+            "id": "eh1",
+            "title": "Odd levels",
+            "grades": [
+              "12"
+            ],
+            "levels": [
+              "national",
+              "school"
+            ]
+          }
+        ]
+      },
+      "uc": [
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x1",
+          "category": "extracurricular",
+          "name": "Unknown category",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 1,
+          "weeksPerYear": 2
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x2",
+          "category": "edprep",
+          "name": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x3",
+          "category": "edprep",
+          "name": "Local STEM camp",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x4",
+          "category": "edprep",
+          "name": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x5",
+          "category": "edprep",
+          "name": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "legacy": "From your earlier version: yyyyyyyyyyyyyyy\nzzzzzzzzzzzzzz"
+        },
+        {
+          "jobTitle": "Barista",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x6",
+          "category": "work",
+          "name": "Corner Cafe",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "legacy": "From your earlier version: 7.5 hours/week, 12 weeks/year"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x7",
+          "category": "extracurricular",
+          "name": "Chess Club",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 3,
+          "weeksPerYear": 30,
+          "legacy": "From your earlier version: organization Chess Federation"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": "non_academic",
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x8",
+          "category": "award",
+          "name": "Prize",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": null,
+          "weeksPerYear": null,
+          "legacy": "From your earlier version: organization Math Society"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": "18",
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x9",
+          "category": "edprep",
+          "name": "",
+          "description": "d",
+          "grades": [
+            "11"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 20,
+          "legacy": "From your earlier version: The Very Long Name Of A Regional Summer Program; From your earlier version: organization Local Org"
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x10",
+          "category": "volunteer",
+          "name": "Food Bank",
+          "description": "d",
+          "grades": [
+            "10"
+          ],
+          "hoursPerWeek": 2,
+          "weeksPerYear": 40
+        },
+        {
+          "jobTitle": "",
+          "extra": "",
+          "afterYears": null,
+          "afterMonths": null,
+          "awardLevels": [],
+          "awardType": null,
+          "program": null,
+          "workHours": {},
+          "stillWorking": null,
+          "start": null,
+          "end": null,
+          "id": "x11",
+          "category": "coursework",
+          "name": "Calculus",
+          "description": "d",
+          "grades": [
+            "12"
+          ],
+          "hoursPerWeek": 4,
+          "weeksPerYear": 15,
+          "legacy": "From your earlier version: organization Community College"
+        }
+      ]
+    }
+  },
+  {
+    "student": "empty-profile",
+    "activities": {
+      "version": 2,
+      "commonApp": {
+        "activities": [],
+        "honors": []
+      },
+      "uc": []
+    }
+  }
+]

@@ -1,4 +1,5 @@
--- Smoke test for migration 0032_share_links. Run in the dashboard SQL Editor AFTER applying 0032.
+-- Smoke test for migration 0032_share_links (portfolio_view as redefined by 0038_activities_v2). Run in the dashboard
+-- SQL Editor AFTER applying 0038.
 -- It creates throwaway users inside one transaction, acts as each of them through the real RPCs, and ROLLS BACK,
 -- so nothing is kept. Success = the final notice "share links smoke test: all checks passed".
 -- Any failed check raises an exception (and the transaction is rolled back anyway).
@@ -21,11 +22,19 @@ insert into public.student_profiles (user_id, display_name, sat_total, portals, 
    '{"personal":{"text":"SMOKESECRET essay body"}}',
    '{"header":{"fullName":"Smoke Student","email":"SMOKESECRET@example.invalid","phone":"SMOKESECRET-555","location":"SMOKESECRET town","school":"Smoke High","gradYear":"2027"},
      "options":{"source":"common","showHours":false,"showScores":false}}',
-   '{"commonApp":{"activities":[{"id":"a1","type":"Robotics","position":"Captain","organization":"Smoke Robotics","description":"Built robots",
-                                 "grades":["11","12"],"timing":["school"],"hoursPerWeek":6,"weeksPerYear":30,"continueInCollege":true}],
+   -- Activities in the 2026-27 format (migration 0038). The private note (`legacy`) and a role left over from a
+   -- "no" leadership answer must never reach the portfolio.
+   '{"version":2,
+     "commonApp":{"activities":[{"id":"a1","type":"Robotics","sport":"","leadership":true,"position":"Captain","organization":"Smoke Robotics",
+                                 "description":"Built robots","grades":["11","12"],"timing":"school","afterStart":null,"stillParticipating":null,
+                                 "afterEnd":null,"hoursPerWeek":6,"weeksPerYear":30,"continueInCollege":"yes","legacy":"SMOKESECRET private note"},
+                                {"id":"a2","type":"Art","sport":"","leadership":false,"position":"SMOKESECRET leftover role","organization":"Smoke Art",
+                                 "description":"Painted","grades":["12"],"timing":"all","afterStart":null,"stillParticipating":null,
+                                 "afterEnd":null,"hoursPerWeek":2,"weeksPerYear":10,"continueInCollege":"not_sure"}],
                   "honors":[{"id":"h1","title":"Smoke Award","grades":["12"],"levels":["national"]}]},
-     "uc":[{"id":"u1","category":"work","name":"SMOKESECRET uc-only entry","organization":"","extra":"","description":"","grades":[],
-            "hoursPerWeek":null,"weeksPerYear":null,"awardLevel":null,"awardType":null}]}');
+     "uc":[{"id":"u1","category":"work","name":"SMOKESECRET uc-only entry","jobTitle":"","extra":"","description":"","grades":[],
+            "hoursPerWeek":null,"weeksPerYear":null,"afterYears":null,"afterMonths":null,"awardLevels":[],"awardType":null,"program":null,
+            "workHours":{},"stillWorking":null,"start":null,"end":null}]}');
 insert into public.student_colleges (user_id, custom, status, plan_key, portal_url, portal_username, portal_password, aid_offer_usd, notes, checklist) values
   ('00000000-0000-4000-8000-0000000005a1', '{"name":"Smoke College","website":"SMOKESECRET-site"}', 'in_progress', null,
    'https://SMOKESECRET.invalid', 'SMOKESECRET-cu', 'SMOKESECRET-cp', 99999, 'SMOKESECRET note',
@@ -152,11 +161,22 @@ begin
   if pv #>> '{header,fullName}' is distinct from 'Smoke Student' or pv -> 'scores' is distinct from 'null'::jsonb then
     raise exception 'FAIL: portfolio header/scores wrong: %', pv;
   end if;
-  if jsonb_array_length(pv #> '{activities,commonApp,activities}') <> 1
+  if pv #> '{activities,version}' is distinct from '2'::jsonb
+     or jsonb_array_length(pv #> '{activities,commonApp,activities}') <> 2
      or pv #> '{activities,commonApp,activities,0,hoursPerWeek}' <> 'null'::jsonb
+     or pv #>> '{activities,commonApp,activities,0,timing}' is distinct from 'school'
+     or pv #> '{activities,commonApp,activities,0,leadership}' is distinct from 'true'::jsonb
+     or pv #>> '{activities,commonApp,activities,0,position}' is distinct from 'Captain'
+     or pv #>> '{activities,commonApp,activities,1,position}' is distinct from ''
      or jsonb_array_length(pv #> '{activities,uc}') <> 0 then
     raise exception 'FAIL: portfolio activities wrong: %', pv -> 'activities';
   end if;
+  -- Only resume fields: no private note, no ids, no questions the resume never shows.
+  select k into bad
+  from jsonb_path_query(pv -> 'activities', '$.**') p(x),
+       lateral jsonb_object_keys(case when jsonb_typeof(p.x) = 'object' then p.x else '{}'::jsonb end) k
+  where k in ('legacy', 'id', 'fromId', 'continueInCollege', 'afterStart', 'afterEnd', 'stillParticipating', 'extra') limit 1;
+  if bad is not null then raise exception 'FAIL: portfolio activities have the non-resume key %', bad; end if;
 end $$;
 reset role;
 
