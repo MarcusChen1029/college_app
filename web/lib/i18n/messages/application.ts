@@ -264,6 +264,15 @@ export const en = {
   "application.intl.visa_interview": "F-1 visa interview booked",
   "application.intl.financesHint":
     "A college needs proof you can pay for the first year before it issues your I-20. Many ask for it after admission; check the college's international admissions page for when.",
+
+  // After-you-apply checklist items (colleges that ask for them) and the My list groups (one per application system)
+  "application.after.title": "After you apply",
+  "application.after.notReady": "Not needed for Ready",
+  "application.after.stars": "STARS self-reported transcript sent",
+  "application.group.progress": "{submitted} of {total} submitted",
+  "application.group.done": "Done: all {total} submitted",
+  "application.group.direct": "Direct",
+  "application.group.directHint": "Apply on each college's own website",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -520,4 +529,12 @@ export const zhTW: Translation<typeof en> = {
   "application.intl.sevis_fee": "已繳 SEVIS I-901 費用",
   "application.intl.visa_interview": "已預約 F-1 簽證面談",
   "application.intl.financesHint": "學校要先確認你付得起第一年的費用，才會核發 I-20。很多學校在錄取後才要求，請到該校國際生招生頁面確認時間。",
+
+  "application.after.title": "申請之後",
+  "application.after.notReady": "不影響「已就緒」",
+  "application.after.stars": "已送出 STARS 自填成績單",
+  "application.group.progress": "已送出 {submitted} / {total}",
+  "application.group.done": "完成：{total} 所都已送出",
+  "application.group.direct": "直接申請",
+  "application.group.directHint": "到各校自己的網站申請",
 };
