@@ -53,7 +53,7 @@ const smallButton = "shrink-0 rounded px-1.5 text-xs text-zinc-500 hover:bg-zinc
 
 function CopyButton({ value, label }: { value: string; label: string }) {
   const t = useT();
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState<"copied" | "failed" | null>(null);
   if (!value) return null;
   return (
     <button
@@ -61,12 +61,11 @@ function CopyButton({ value, label }: { value: string; label: string }) {
       className={smallButton}
       aria-label={label}
       onClick={async () => {
-        if (!(await copyText(value))) return;
-        setDone(true);
-        setTimeout(() => setDone(false), 1500);
+        setDone((await copyText(value)) ? "copied" : "failed");
+        setTimeout(() => setDone(null), 2500);
       }}
     >
-      {done ? t("common.copied") : t("common.copy")}
+      {done === "copied" ? t("common.copied") : done === "failed" ? t("portals.copyFailedShort") : t("common.copy")}
     </button>
   );
 }
@@ -133,12 +132,14 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   const commit = async () => {
     if (!usable || !slot || !editing) return;
     const value = draft;
+    // An emptied field changes nothing (the saved password stays); deleting one takes Clear, which asks first.
+    if (!value) return forget();
     setBusy(true);
-    const err = await savePassword(slot, value); // "" (a shown password erased) deletes it
+    const err = await savePassword(slot, value);
     setBusy(false);
     if (err) return flash(VAULT_ERROR_TEXT[err]);
     forget();
-    flash(value ? "portals.passwordSavedNote" : "portals.passwordDeletedNote");
+    flash("portals.passwordSavedNote");
   };
 
   const toggleShow = async () => {
@@ -158,7 +159,9 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
 
   const copy = async () => {
     const pw = await fetchSaved();
-    if (pw !== null && (await copySecret(pw))) flash("portals.clipboardClears");
+    if (pw === null) return;
+    // The browser can refuse (permission, an iframe, an unfocused page): say so instead of failing silently.
+    flash((await copySecret(pw)) ? "portals.clipboardClears" : "portals.copyFailed");
   };
 
   const clear = async () => {

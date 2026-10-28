@@ -79,6 +79,29 @@ export function withoutPasswords(portals: PortalData | null | undefined): Portal
   return out as PortalData;
 }
 
+/**
+ * `next` (a portals value about to be written, without passwords) plus the password keys `stored` (the value last
+ * read from the database) still holds for the same logins. Until the server has moved a student's plaintext into the
+ * encrypted store, a profile save must not wipe it: only the server's verified migration removes a stored password.
+ * A login the student removed takes its password with it.
+ */
+export function keepStoredPasswords(next: PortalData, stored: unknown): PortalData {
+  if (!isObj(stored)) return next;
+  const pw = (l: unknown) => (isObj(l) && "password" in l && l.password !== undefined && l.password !== null && l.password !== "" ? l.password : undefined);
+  const out: Loose = { ...next };
+  for (const group of ["systems", "campuses"] as const) {
+    const was = stored[group];
+    const now = (next as Loose)[group];
+    if (!isObj(was) || !isObj(now)) continue;
+    out[group] = Object.fromEntries(Object.entries(now).map(([k, l]) => [k, isObj(l) && pw(was[k]) !== undefined ? { ...l, password: pw(was[k]) } : l]));
+  }
+  if (Array.isArray(stored.custom) && Array.isArray(next.custom)) {
+    const byId = new Map(stored.custom.flatMap((l) => (isObj(l) && typeof l.id === "string" && pw(l) !== undefined ? [[l.id, pw(l)] as const] : [])));
+    out.custom = next.custom.map((l) => (byId.has(l.id) ? { ...l, password: byId.get(l.id) } : l));
+  }
+  return out as PortalData;
+}
+
 /** A list entry's portal as the site keeps it: link and username only (old copies may still carry a password). */
 export function portalWithoutPassword(p: unknown): { url: string; username: string } {
   const o = isObj(p) ? p : {};
@@ -113,6 +136,37 @@ export function passwordsIn(portals: unknown, list: readonly EntryLike[] = []): 
   return out;
 }
 
+/** The username of each login in this data, by slot (logins that can't be placed are left out). */
+export function usernamesBySlot(portals: unknown, list: readonly EntryLike[]): Map<string, string> {
+  const out = new Map<string, string>();
+  eachLogin(portals, list, (slot, l) => {
+    if (slot && !out.has(slot)) out.set(slot, isObj(l) && typeof l.username === "string" ? l.username.trim() : "");
+  });
+  return out;
+}
+
+/**
+ * Splits passwords saved in this browser before sign-in into those that belong with the account's login (`send`: the
+ * account has no username for that slot, or the same one as this browser) and those that may not (`hold`: the
+ * account has a different username there, so the password could be for another account). Held ones stay in the
+ * browser; they are never paired with a username they weren't saved with.
+ */
+export function pairWithAccount(
+  passwords: readonly SlotPassword[],
+  account: { portals: unknown; list: readonly EntryLike[] },
+  local: { portals: unknown; list: readonly EntryLike[] },
+): { send: SlotPassword[]; hold: SlotPassword[] } {
+  const theirs = usernamesBySlot(account.portals, account.list);
+  const mine = usernamesBySlot(local.portals, local.list);
+  const send: SlotPassword[] = [];
+  const hold: SlotPassword[] = [];
+  for (const p of passwords) {
+    const a = theirs.get(p.slot) ?? "";
+    (a === "" || a === (mine.get(p.slot) ?? "") ? send : hold).push(p);
+  }
+  return { send, hold };
+}
+
 /** How many logins this data holds (a username, or a password in `passwords`), for "N logins found in this browser". */
 export function loginCount(portals: unknown, list: readonly EntryLike[], passwords: readonly SlotPassword[]): number {
   const slots = new Set(passwords.map((p) => p.slot));
@@ -125,9 +179,19 @@ export function loginCount(portals: unknown, list: readonly EntryLike[], passwor
   return slots.size + unplaced;
 }
 
+/**
+ * The entries an "import" reply did not confirm as stored: the ones it lists as failed, or all of them when the
+ * request itself failed. The browser keeps exactly these.
+ */
+export function importFailures(entries: readonly SlotPassword[], r: { status: number; data: Record<string, unknown> }): SlotPassword[] {
+  if (r.status !== 200 || !Array.isArray(r.data.failed)) return [...entries];
+  const failed = new Set(r.data.failed.filter((s): s is string => typeof s === "string"));
+  return entries.filter((e) => failed.has(e.slot));
+}
+
 /** The request body of POST /api/portal-passwords, checked. Error codes go back to the browser as they are. */
 export type VaultRequest =
-  | { action: "list" }
+  | { action: "list" | "migrate" }
   | { action: "reveal" | "delete"; slot: string }
   | { action: "set"; slot: string; password: string }
   | { action: "import"; entries: SlotPassword[] };
@@ -137,7 +201,7 @@ export function parseVaultRequest(body: unknown): { ok: true; req: VaultRequest 
   const fail = (error: VaultRequestError) => ({ ok: false as const, error });
   if (!isObj(body)) return fail("bad_request");
   const action = body.action;
-  if (action === "list") return { ok: true, req: { action } };
+  if (action === "list" || action === "migrate") return { ok: true, req: { action } };
   if (action === "reveal" || action === "delete") return isPortalSlot(body.slot) ? { ok: true, req: { action, slot: body.slot } } : fail("bad_slot");
   if (action === "set") {
     if (!isPortalSlot(body.slot)) return fail("bad_slot");

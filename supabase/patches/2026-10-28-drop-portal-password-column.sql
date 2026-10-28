@@ -1,36 +1,37 @@
--- LATER, final step of the portal password move (runbook step 6, docs/superpowers/plans/2026-10-28-portal-password-encryption.md):
--- drops student_colleges.portal_password and removes every "password" key still left in student_profiles.portals.
--- Run it only weeks after 2026-10-28-strip-plaintext-portal-passwords.sql, once the encrypted store has been live and
--- checked and no old build of the site is still in use (an old build selects the column and would fail to load lists).
--- This DELETES data: whatever is still here was not copied into portal_passwords (empty values, or passwords the site
--- can't place). Run the two count queries at the top of the strip patch first and accept what they show.
--- Supabase backups keep old values until they age out. DDL + UPDATE: run it in the dashboard SQL Editor.
---
--- Nothing else may still read the column (expect 0 rows):
--- select 'view' as kind, viewname as name from pg_views where schemaname = 'public' and definition ilike '%portal_password%'
--- union all
--- select 'function', p.proname from pg_proc p join pg_namespace n on n.oid = p.pronamespace
--- where n.nspname = 'public' and p.prosrc ilike '%portal_password%';
+-- LAST step of the portal password move (runbook step 5, docs/superpowers/plans/2026-10-28-portal-password-encryption.md):
+-- drops student_colleges.portal_password, and removes the empty "password" keys still left in student_profiles.portals.
+-- Run it only when 2026-10-28-portal-plaintext-counts.sql shows 0 everywhere, and no old build of the site is still
+-- in use. It REFUSES to run (raises, changes nothing) while any non-empty plaintext password is left in either place,
+-- so it can't delete one that was never copied. Supabase backups keep old values until they age out.
+-- DDL + UPDATE: run it in the dashboard SQL Editor.
 
 begin;
 
-update public.student_profiles sp
-set portals = sp.portals
-  || case when jsonb_typeof(sp.portals -> 'systems') = 'object' then jsonb_build_object('systems', (
-       select coalesce(jsonb_object_agg(e.key, case when jsonb_typeof(e.value) = 'object' then e.value - 'password' else e.value end), '{}'::jsonb)
-       from jsonb_each(sp.portals -> 'systems') e)) else '{}'::jsonb end
-  || case when jsonb_typeof(sp.portals -> 'campuses') = 'object' then jsonb_build_object('campuses', (
-       select coalesce(jsonb_object_agg(e.key, case when jsonb_typeof(e.value) = 'object' then e.value - 'password' else e.value end), '{}'::jsonb)
-       from jsonb_each(sp.portals -> 'campuses') e)) else '{}'::jsonb end
-  || case when jsonb_typeof(sp.portals -> 'custom') = 'array' then jsonb_build_object('custom', (
-       select coalesce(jsonb_agg(case when jsonb_typeof(c.value) = 'object' then c.value - 'password' else c.value end order by c.ord), '[]'::jsonb)
-       from jsonb_array_elements(sp.portals -> 'custom') with ordinality as c(value, ord))) else '{}'::jsonb end
-where jsonb_typeof(sp.portals) = 'object'
-  and (jsonb_path_exists(sp.portals, '$.systems.*.password')
-    or jsonb_path_exists(sp.portals, '$.campuses.*.password')
-    or jsonb_path_exists(sp.portals, '$.custom[*].password'));
+do $$
+declare
+  c bigint;
+  p bigint;
+begin
+  select count(*) into c from public.student_colleges where coalesce(portal_password, '') <> '';
+  select count(*) into p from public.student_profiles sp cross join lateral public.portal_password_values(sp.portals);
+  if c + p > 0 then
+    raise exception 'Not dropping: % college and % profile plaintext passwords are still waiting to be moved.', c, p;
+  end if;
+end $$;
+
+-- 0041's trigger and compare-and-set function depend on the column.
+drop trigger forbid_plaintext_password on public.student_colleges;
+drop function public.forbid_plaintext_college_password();
+drop function public.strip_college_portal_password(uuid, uuid, text);
 
 alter table public.student_colleges drop column portal_password;
+
+-- Only empty values are left (the check above); take the keys out too.
+update public.student_profiles
+set portals = public.portals_without_passwords(portals)
+where jsonb_path_exists(portals, '$.systems.*.password')
+   or jsonb_path_exists(portals, '$.campuses.*.password')
+   or jsonb_path_exists(portals, '$.custom[*].password');
 
 commit;
 

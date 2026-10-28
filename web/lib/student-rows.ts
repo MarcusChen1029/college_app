@@ -9,7 +9,7 @@ import { cleanStudyFields } from "./fields.ts";
 import type { StudentProfile } from "./fit.ts";
 import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
 import type { PersonalEssays } from "./personal-essays.ts";
-import { withoutPasswords } from "./portal-slots.ts";
+import { keepStoredPasswords, withoutPasswords } from "./portal-slots.ts";
 import type { PortalData } from "./portals.ts";
 import type { Recommender, RecommenderRole, RecommenderStatus } from "./recommenders.ts";
 import type { ResumeSettings } from "./resume.ts";
@@ -123,8 +123,12 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   essays: r.essays ?? {},
   portals: withoutPasswords(r.portals),
 });
-/** The row to write. `portals` goes out without any password, even if an old copy in memory still had one. */
-export const fromProfile = (userId: string, p: StudentProfile) => ({
+/**
+ * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
+ * last read from the database) puts back the password keys the database still has for logins that remain, so a save
+ * never removes a plaintext password the server hasn't verified-copied yet (portal-vault-server.ts migratePlaintext).
+ */
+export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
   user_id: userId,
   sat_total: p.sat ?? null,
   act_composite: p.act ?? null,
@@ -140,7 +144,7 @@ export const fromProfile = (userId: string, p: StudentProfile) => ({
   activities: p.activities ?? {},
   resume: p.resume ?? {},
   essays: p.essays ?? {},
-  portals: withoutPasswords(p.portals),
+  portals: keepStoredPasswords(withoutPasswords(p.portals), stored),
 });
 export const toEntry = (r: CollegeRow): ListEntry => ({
   slug: r.custom ? customSlug(r.id) : (r.institutions?.slug ?? ""),

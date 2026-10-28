@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { EMPTY_LOCAL, hasLocalData, parseLocal, profileHasData, serializeLocal, type LocalData } from "./student-local.ts";
+import { EMPTY_LOCAL, fillMissingProfile, hasLocalData, localWrites, parseLegacy, parseLocal, profileHasData, serializeLocal, type LocalData } from "./student-local.ts";
 
 const INST = "33333333-3333-4333-8333-333333333333";
 
@@ -57,8 +57,8 @@ test("the localStorage writer never contains a password, even when the state in 
 });
 
 test("unreadable or empty copies give empty data", () => {
-  assert.deepEqual(parseLocal(null), { data: EMPTY_LOCAL, passwords: [] });
-  assert.deepEqual(parseLocal("{not json"), { data: EMPTY_LOCAL, passwords: [] });
+  assert.deepEqual(parseLocal(null), { data: EMPTY_LOCAL, passwords: [], inCopy: false });
+  assert.deepEqual(parseLocal("{not json"), { data: EMPTY_LOCAL, passwords: [], inCopy: false });
   assert.deepEqual(parseLocal('{"profile":[1],"list":"x"}').data.profile, {});
 });
 
@@ -69,4 +69,52 @@ test("what counts as data worth offering to an account at sign-in", () => {
   assert.equal(hasLocalData(parseLocal(OLD_COPY).data, []), true);
   assert.equal(profileHasData({ sat: 1300 }), true);
   assert.equal(profileHasData({ portals: {} }), false);
+});
+
+test("saving keeps an older build's passwords in the browser (under their own key) and never adds a new one", () => {
+  // Load an old copy, then the student changes something while signed out (here: removes a college).
+  const first = parseLocal(OLD_COPY);
+  assert.equal(first.inCopy, true, "the copy still embeds them: the store rewrites it on the next save");
+  const changed = { ...first.data, list: first.data.list.slice(1) };
+  // A stale in-memory login with a password the browser never stored must not be written either.
+  (changed.profile.portals!.systems!.commonapp as Record<string, unknown>).password = "TYPED-IN-MEMORY";
+  const w = localWrites(changed, first.passwords);
+  assert.ok(!w.copy.includes("secret") && !w.copy.includes("password") && !w.copy.includes("TYPED"));
+  assert.ok(w.legacy && !w.legacy.includes("TYPED"));
+  // Reload (as after the Google sign-in redirect): every old password is still there, by slot.
+  const after = parseLocal(w.copy, w.legacy);
+  assert.deepEqual(after.passwords, first.passwords);
+  assert.equal(after.inCopy, false);
+  assert.equal(after.data.list.length, 1);
+  // Once imported or removed, the store writes none, and the key goes.
+  assert.equal(localWrites(changed, []).legacy, null);
+});
+
+test("passwords under the legacy key and inside the copy are merged by slot; malformed entries are dropped", () => {
+  const legacy = JSON.stringify([
+    { slot: "system:commonapp", password: "dup-ignored" },
+    { slot: "custom:zz", password: "only-in-key" },
+    { slot: "bad slot", password: "x" },
+    { slot: "custom:empty", password: "" },
+  ]);
+  const { passwords } = parseLocal(OLD_COPY, legacy);
+  assert.deepEqual(passwords.map((p) => p.slot), ["system:commonapp", "campus:uc:UCLA", "custom:abc-1", `college:${INST}`, "custom:zz"]);
+  assert.equal(passwords[0].password, "ca-secret", "the copy's value comes first");
+  assert.deepEqual(parseLegacy("not json"), []);
+  assert.deepEqual(parseLocal(null, legacy).passwords.map((p) => p.slot), ["system:commonapp", "custom:zz"]);
+});
+
+test("adding a browser's profile to an existing account fills only what the account lacks", () => {
+  const account = { sat: 1400, act: null, gpa: 3.9, interested: [], tests: {}, international: false, portals: { systems: {} } };
+  const local = { sat: 1200, act: 30, gpa: 3.5, interested: ["mit"], tests: { toefl: { total: 100 } }, international: true, studyFields: ["cs"], portals: { custom: [] } };
+  assert.deepEqual(fillMissingProfile(account as never, local as never), {
+    sat: 1400,
+    act: 30,
+    gpa: 3.9,
+    interested: ["mit"],
+    tests: { toefl: { total: 100 } },
+    international: false,
+    portals: { systems: {} },
+    studyFields: ["cs"],
+  });
 });

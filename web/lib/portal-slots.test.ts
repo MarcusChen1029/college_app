@@ -1,6 +1,20 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { collegeSlot, IMPORT_MAX, isPortalSlot, loginCount, parseVaultRequest, PASSWORD_MAX, passwordsIn, portalSlot, portalWithoutPassword, withoutPasswords } from "./portal-slots.ts";
+import {
+  collegeSlot,
+  IMPORT_MAX,
+  importFailures,
+  isPortalSlot,
+  keepStoredPasswords,
+  loginCount,
+  pairWithAccount,
+  parseVaultRequest,
+  PASSWORD_MAX,
+  passwordsIn,
+  portalSlot,
+  portalWithoutPassword,
+  withoutPasswords,
+} from "./portal-slots.ts";
 import { campusKey, type PortalData } from "./portals.ts";
 import { COLLEGE_COLUMNS, fromEntry, fromProfile, portalColumns, PROFILE_COLUMNS, toEntry, toProfile, type CollegeRow, type ProfileRow } from "./student-rows.ts";
 
@@ -137,4 +151,72 @@ test("the profile and list rows never read or write a password", () => {
   const entry = toEntry({ id: ROW, institution_id: INST, custom: null, plan_key: null, status: "in_progress", notes: null, checklist: null, portal_url: "u", portal_username: "n", portal_password: "p", created_at: "", institutions: { slug: "x" } } as CollegeRow);
   assert.deepEqual(entry.portal, { url: "u", username: "n" });
   assert.ok(!JSON.stringify(fromEntry("u1", { ...entry, portal: { url: "u", username: "n", password: "p" } as never })).includes("password"));
+});
+
+test("migrate is an action with no arguments", () => {
+  assert.deepEqual(parseVaultRequest({ action: "migrate" }), { ok: true, req: { action: "migrate" } });
+});
+
+test("profile saves keep the password keys the database still holds (until the server migrates them)", () => {
+  const stored = {
+    systems: { commonapp: { url: "", username: "ca", password: "OLD" }, uc: { url: "", username: "u", password: "" } },
+    campuses: { "uc:UCLA": { url: "", username: "b", password: "UCLA" } },
+    custom: [{ id: "c1", name: "H", url: "", username: "", password: "C1" }, { id: "gone", name: "", url: "", username: "", password: "G" }],
+  };
+  // What the page writes: no passwords, a username changed, one custom portal removed by the student.
+  const next: PortalData = {
+    systems: { commonapp: { url: "", username: "ca-new" }, uc: { url: "", username: "u" } },
+    campuses: { "uc:UCLA": { url: "", username: "b" } },
+    custom: [{ id: "c1", name: "H", url: "", username: "" }],
+    progress: { commonapp: { done: true } },
+  };
+  assert.deepEqual(keepStoredPasswords(next, stored), {
+    systems: { commonapp: { url: "", username: "ca-new", password: "OLD" }, uc: { url: "", username: "u" } },
+    campuses: { "uc:UCLA": { url: "", username: "b", password: "UCLA" } },
+    custom: [{ id: "c1", name: "H", url: "", username: "", password: "C1" }],
+    progress: { commonapp: { done: true } },
+  });
+  assert.deepEqual(keepStoredPasswords(next, null), next, "nothing stored: nothing added");
+  assert.deepEqual(keepStoredPasswords(next, withoutPasswords(stored as never)), next, "after migration the save carries none");
+  // fromProfile does the same with the value last read.
+  const row = fromProfile("u1", { portals: next }, stored);
+  assert.equal(row.portals.systems?.commonapp && (row.portals.systems.commonapp as Record<string, unknown>).password, "OLD");
+});
+
+test("an import reply: failed slots are kept, the rest confirmed; a failed request keeps everything", () => {
+  const entries = [
+    { slot: "system:uc", password: "a" },
+    { slot: "custom:x", password: "b" },
+  ];
+  assert.deepEqual(importFailures(entries, { status: 200, data: { imported: 1, kept: 0, failed: ["custom:x"] } }), [entries[1]]);
+  assert.deepEqual(importFailures(entries, { status: 200, data: { imported: 2, kept: 0, failed: [] } }), []);
+  assert.deepEqual(importFailures(entries, { status: 503, data: { configured: false } }), entries);
+  assert.deepEqual(importFailures(entries, { status: 0, data: { error: "network" } }), entries);
+  assert.deepEqual(importFailures(entries, { status: 200, data: {} }), entries, "an unexpected reply confirms nothing");
+});
+
+test("a local password joins the account's login only when the account has no username there, or the same one", () => {
+  const INST2 = "77777777-7777-4777-8777-777777777777";
+  const passwords = [
+    { slot: "system:commonapp", password: "legacy-pw" },
+    { slot: "system:ucas", password: "ucas-pw" },
+    { slot: "system:uc", password: "uc-pw" },
+    { slot: `college:${INST}`, password: "college-pw" },
+    { slot: `college:${INST2}`, password: "college2-pw" },
+  ];
+  const account = {
+    portals: { systems: { commonapp: { url: "", username: "ca_student" }, uc: { url: "", username: "same" } } },
+    list: [{ institutionId: INST, portal: { url: "", username: "" } }],
+  };
+  const local = {
+    portals: { systems: { commonapp: { url: "", username: "legacy_ca" }, ucas: { url: "", username: "uk" }, uc: { url: "", username: " same " } } },
+    list: [
+      { institutionId: INST, portal: { url: "", username: "kid" } },
+      { institutionId: INST2, portal: { url: "", username: "kid2" } },
+    ],
+  };
+  const { send, hold } = pairWithAccount(passwords, account, local);
+  // Common App: the account has ca_student, the browser saved the password with legacy_ca -> stays in the browser.
+  assert.deepEqual(hold.map((p) => p.slot), ["system:commonapp"]);
+  assert.deepEqual(send.map((p) => p.slot), ["system:ucas", "system:uc", `college:${INST}`, `college:${INST2}`]);
 });

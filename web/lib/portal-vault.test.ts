@@ -81,32 +81,30 @@ test("bearer header parsing", () => {
   assert.equal(bearerToken(null), null);
 });
 
-test("the backfill script seals rows the server can open, under the slots the site uses", async () => {
+test("the backfill script seals rows the server can open, and only verified copies become removable", async () => {
   const url = pathToFileURL(join(import.meta.dirname, "..", "..", "scripts", "backfill-portal-passwords.mjs")).href;
-  const { backfillEntries, sealRow } = await import(url);
+  const { planForUser, copiedAfterReadBack } = await import(url);
   const inst = "33333333-3333-4333-8333-333333333333";
   const row = "44444444-4444-4444-8444-444444444444";
-  const entries = backfillEntries(
-    [
-      { id: "55555555-5555-4555-8555-555555555555", user_id: USER, institution_id: inst, custom: null, portal_password: "college-pw" },
-      { id: row, user_id: USER, institution_id: null, custom: { name: "My College" }, portal_password: "custom-college-pw" },
-      { id: "66666666-6666-4666-8666-666666666666", user_id: OTHER, institution_id: inst, custom: null, portal_password: "" },
-    ],
-    [{ user_id: OTHER, portals: { systems: { commonapp: { url: "", username: "x", password: "ca-pw" }, uc: { username: "y", password: "" } }, campuses: { "uc:UCLA": { password: "bruin" } }, custom: [{ id: "abc-1", password: "c-pw" }] } }],
-  );
-  const bySlot = Object.fromEntries(entries.map((e: { userId: string; slot: string; password: string }) => [`${e.userId}|${e.slot}`, e.password]));
-  assert.deepEqual(bySlot, {
-    [`${USER}|college:${inst}`]: "college-pw",
-    [`${USER}|college:${row}`]: "custom-college-pw",
-    [`${OTHER}|system:commonapp`]: "ca-pw",
-    [`${OTHER}|campus:uc:UCLA`]: "bruin",
-    [`${OTHER}|custom:abc-1`]: "c-pw",
-  });
-  for (const e of entries) {
-    const r = sealRow(key, e);
-    assert.equal(r.user_id, e.userId);
-    assert.equal(r.slot, e.slot);
-    assert.ok(!r.sealed.includes(e.password));
-    assert.equal(openPassword(key, e.userId, e.slot, r.sealed), e.password);
+  const colleges = [
+    { id: "55555555-5555-4555-8555-555555555555", user_id: USER, institution_id: inst, custom: null, portal_password: "college-pw" },
+    { id: row, user_id: USER, institution_id: null, custom: { name: "My College" }, portal_password: "custom-college-pw" },
+  ];
+  const portals = { systems: { commonapp: { url: "", username: "x", password: "ca-pw" } }, custom: [{ id: "abc-1", password: "c-pw" }] };
+  // An existing row sealed under another key (a key mismatch): it must be replaced, not trusted.
+  const vault = [{ slot: "custom:abc-1", sealed: sealPassword(otherKey, USER, "custom:abc-1", "c-pw") }];
+  const planned = planForUser(key, USER, colleges, portals, vault);
+  type Row = { user_id: string; slot: string; sealed: string };
+  assert.deepEqual(planned.rows.map((r: Row) => r.slot), [`college:${inst}`, `college:${row}`, "system:commonapp", "custom:abc-1"]);
+  for (const r of planned.rows as Row[]) {
+    assert.equal(r.user_id, USER);
+    assert.ok(r.sealed.startsWith("v1.") && !r.sealed.includes("college-pw"));
   }
+  // Read back what was written: every value opens to itself, so all four may now be removed.
+  const copied = copiedAfterReadBack(planned, planned.rows);
+  assert.equal(copied.length, 4);
+  for (const v of copied) assert.equal(openPassword(key, USER, v.slot, planned.rows.find((r: Row) => r.slot === v.slot).sealed), v.password);
+  // Nothing (or a stale row) read back: nothing is removable.
+  assert.equal(copiedAfterReadBack(planned, []).length, 0);
+  assert.equal(copiedAfterReadBack(planned, vault).length, 0);
 });

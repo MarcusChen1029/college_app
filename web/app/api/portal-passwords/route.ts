@@ -1,13 +1,14 @@
 import { parseVaultRequest } from "@/lib/portal-slots";
 import { bearerToken, tokenSource } from "@/lib/portal-vault";
-import { deletePassword, importPasswords, listSlots, revealPassword, setPassword, vaultConfig, verifiedUser } from "@/lib/portal-vault-server";
+import { deletePassword, importPasswords, listSlots, migratePlaintext, revealPassword, setPassword, vaultConfig, verifiedUser } from "@/lib/portal-vault-server";
 
 // POST /api/portal-passwords (Authorization: Bearer <the website's Supabase access token>), JSON body { action, ... }:
-//   list                       -> { slots }                 which slots hold a password (never the values)
-//   reveal { slot }            -> { password }              404 not_found, 409 unreadable
-//   set { slot, password }     -> { ok }                    password <= 512 chars; "" deletes; 409 too_many
+//   list                       -> { slots }                     which slots hold a password (never the values)
+//   reveal { slot }            -> { password }                  404 not_found, 409 unreadable
+//   set { slot, password }     -> { ok }                        password <= 512 chars; "" deletes; 409 too_many
 //   delete { slot }            -> { ok }
-//   import { entries }         -> { imported, skipped }     <= 300 { slot, password }; slots that have one are skipped
+//   import { entries }         -> { imported, kept, failed }    <= 300 { slot, password }; failed = slots not safely stored
+//   migrate                    -> { migrated, kept, failed }    moves this student's plaintext passwords (counts only)
 // AI-connection tokens (they carry client_id) get 403 whatever they ask. Other methods get 405 from Next.
 // Every reply is no-store and has no CORS headers; error bodies are codes only; nothing here is logged.
 
@@ -59,6 +60,8 @@ export async function POST(req: Request) {
         return reply({ ok: true });
       case "import":
         return reply(await importPasswords(cfg, userId, r.entries));
+      case "migrate":
+        return reply(await migratePlaintext(cfg, userId));
     }
   } catch {
     return reply({ error: "server_error" }, 500);

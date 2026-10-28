@@ -3,10 +3,10 @@
 // The browser side of saved portal passwords: POST /api/portal-passwords with the website's own access token.
 // Passwords never go through the profile/list store (student-store.ts). A page asks once which slots hold a password
 // ("list"); a single password is fetched only when the student asks to see or copy it, and only kept by the open
-// login row. Nothing here touches localStorage.
+// login row. Nothing here touches localStorage. Pure helpers live in portal-slots.ts so tests can reach them.
 
 import { useSyncExternalStore } from "react";
-import { IMPORT_MAX, type SlotPassword } from "./portal-slots";
+import { IMPORT_MAX, importFailures, type SlotPassword } from "./portal-slots";
 import { browserSupabase } from "./supabase-browser";
 
 const ENDPOINT = "/api/portal-passwords";
@@ -128,16 +128,29 @@ export function forgetPassword(slot: string | null) {
 }
 
 /**
- * Moves passwords saved outside the store (this browser's old signed-out copy, or an old profile row) into it.
- * Slots that already hold a password keep theirs. Resolves to how many couldn't be sent (0 = all done).
+ * Asks the server to move this account's plaintext passwords (from before migration 0038) into the store. It removes
+ * a plaintext value only after a verified copy exists, so a failed or partial run loses nothing. True when the
+ * request went through (some values may still be waiting; the profile writes keep them, see keepStoredPasswords).
  */
-export async function importPasswords(entries: readonly SlotPassword[]): Promise<number> {
-  let failed = 0;
+export async function migrateStoredPasswords(): Promise<boolean> {
+  const r = await call({ action: "migrate" });
+  if (r.status === 200 && typeof r.data.migrated === "number" && r.data.migrated > 0) listing = null; // new slots: ask again
+  return r.status === 200;
+}
+
+/**
+ * Moves passwords this browser saved before sign-in into the store. A slot the account already holds keeps the
+ * account's value. Resolves to the entries that are NOT safely stored (the caller keeps those).
+ */
+export async function importPasswords(entries: readonly SlotPassword[]): Promise<SlotPassword[]> {
+  const failed: SlotPassword[] = [];
   for (let i = 0; i < entries.length; i += IMPORT_MAX) {
     const chunk = entries.slice(i, i + IMPORT_MAX);
     const r = await call({ action: "import", entries: chunk });
-    if (r.status === 200) chunk.forEach((e) => markSlot(e.slot, true));
-    else failed += chunk.length;
+    const bad = importFailures(chunk, r);
+    const badSlots = new Set(bad.map((e) => e.slot));
+    chunk.forEach((e) => !badSlots.has(e.slot) && markSlot(e.slot, true));
+    failed.push(...bad);
   }
   return failed;
 }

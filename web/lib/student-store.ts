@@ -9,11 +9,21 @@ import { useSyncExternalStore } from "react";
 import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
-import { collegeSlot, loginCount, passwordsIn, withoutPasswords, type SlotPassword } from "./portal-slots";
-import { forgetPassword, importPasswords } from "./portal-vault-client";
+import { collegeSlot, loginCount, pairWithAccount, type SlotPassword } from "./portal-slots";
+import { forgetPassword, importPasswords, migrateStoredPasswords } from "./portal-vault-client";
 import { mergePortals } from "./portals";
 import { parseRole, type Role } from "./roles";
-import { EMPTY_LOCAL, hasLocalData, parseLocal, profileHasData, serializeLocal, type LocalData } from "./student-local";
+import {
+  EMPTY_LOCAL,
+  fillMissingProfile,
+  hasLocalData,
+  LEGACY_KEY,
+  localWrites,
+  parseLocal,
+  profileHasData,
+  serializeLocal,
+  type LocalData,
+} from "./student-local";
 import {
   COLLEGE_COLUMNS,
   fromEntry,
@@ -127,13 +137,19 @@ let state: State = EMPTY;
 let started = false;
 let lastLoad = 0; // when the account copy was last read
 let savesInFlight = 0;
-// Passwords an older build saved in this browser's copy: memory only (never written back), imported at sign-in.
+// Passwords an older build saved in this browser (in the copy, or already moved to LEGACY_KEY). Only ever filled from
+// storage itself; kept in storage until imported into the account or removed by the student.
 let localPasswords: SlotPassword[] = [];
-// The stored copy as last read or written (without passwords), so a state that hasn't changed isn't rewritten.
+// The stored copy and LEGACY_KEY value as last read or written, so an unchanged state isn't rewritten.
 let storedJson: string | null = null;
+let storedLegacy: string | null = null;
 // "later" after "Not now" in the sign-in dialog: don't ask again until the next page load or sign-in.
 let mergeChoice: "ask" | "later" = "ask";
-let remoteLegacyImported = false;
+// The account's `portals` exactly as last read or written, password keys included: profile saves put back the ones
+// the database still holds (fromProfile), so only the server's verified migration ever removes them.
+let storedPortals: unknown = null;
+// Whose plaintext passwords the server was asked to move ("migrate") on this page load.
+let migratedFor: string | null = null;
 
 function emit(patch: Partial<State>) {
   state = { ...state, ...patch };
@@ -153,45 +169,56 @@ const pickLocal = (s: State): Local => ({
 
 function loadLocal(): Local {
   let raw: string | null = null;
+  let rawLegacy: string | null = null;
   try {
     raw = window.localStorage.getItem(KEY);
+    rawLegacy = window.localStorage.getItem(LEGACY_KEY);
   } catch {}
-  const { data, passwords } = parseLocal(raw);
+  const { data, passwords, inCopy } = parseLocal(raw, rawLegacy);
   localPasswords = passwords;
-  storedJson = raw ? serializeLocal(data) : null;
+  // A copy that still embeds passwords counts as unsaved: the next save moves them under LEGACY_KEY, then rewrites it.
+  storedJson = raw && !inCopy ? serializeLocal(data) : null;
+  storedLegacy = rawLegacy;
   return data;
 }
 
 /** The signed-out view of this browser's copy. */
 const localState = () => ({ ...loadLocal(), localPasswordCount: localPasswords.length });
 
+// Writes the copy (or removes it when `drop`), always putting the old passwords under LEGACY_KEY first, so the copy
+// can lose its passwords without the browser losing them. Throws when storage refuses (caller decides).
+function store(d: Local, drop = false) {
+  const w = localWrites(d, localPasswords);
+  if (w.legacy !== storedLegacy) {
+    if (w.legacy) window.localStorage.setItem(LEGACY_KEY, w.legacy);
+    else window.localStorage.removeItem(LEGACY_KEY);
+    storedLegacy = w.legacy;
+  }
+  if (drop) {
+    window.localStorage.removeItem(KEY);
+    storedJson = null;
+  } else if (w.copy !== storedJson) {
+    window.localStorage.setItem(KEY, w.copy);
+    storedJson = w.copy;
+  }
+}
+
 function saveLocal() {
-  const json = serializeLocal(pickLocal(state));
-  // Nothing changed: leave the stored copy alone. A copy from an older build may still hold passwords; they stay
-  // until sign-in moves them into the account (the Google sign-in reloads the page) or the student removes them.
-  if (json === storedJson) return;
   try {
-    window.localStorage.setItem(KEY, json);
-    storedJson = json;
+    store(pickLocal(state));
   } catch {
     // storage unavailable (private mode) — keep in memory only
   }
 }
 
-/** Replaces the stored copy (removing it when empty). Never holds a password. */
+/** Replaces the stored copy (removing it when empty); the old passwords stay under LEGACY_KEY. */
 function writeLocal(d: Local) {
   try {
-    if (hasLocalData(d, [])) {
-      const json = serializeLocal(d);
-      window.localStorage.setItem(KEY, json);
-      storedJson = json;
-    } else {
-      window.localStorage.removeItem(KEY);
-      storedJson = null;
-    }
+    store(d, !hasLocalData(d, []));
   } catch {}
 }
 
+/** Removes this browser's copy and every old password in it. */
 function clearLocal() {
   localPasswords = [];
   writeLocal(EMPTY_LOCAL);
@@ -216,6 +243,11 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false, localFound: null });
       return { passwordsFailed: 0 };
     }
+    // Before reading (and so before any write from this page): the server moves this student's plaintext passwords
+    // from before migration 0038 into the encrypted store, removing each one only after a verified copy exists.
+    // Once per page load; a failed request is tried again on the next load. What it leaves behind stays safe:
+    // profile saves put back the password keys still in the row (storedPortals), and list saves never touch them.
+    if (migratedFor !== userId && (await migrateStoredPasswords())) migratedFor = userId;
     const local = loadLocal();
     const localPw = localPasswords;
     const merge = !!opts.merge;
@@ -225,17 +257,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     ]);
     if (p.error) throw p.error;
     if (l.error) throw l.error;
-
-    // A profile row written before migration 0038 can still hold passwords inside `portals` (until the strip patch
-    // runs). Copy them into the encrypted store once per page, before any save here (which never writes them) drops
-    // them. Once every one is in the store, take them out of the row too (the portals column only), so a password the
-    // student clears later can't come back from it. If any couldn't be copied, the row is left as it is.
-    const remoteLegacy = p.data ? passwordsIn((p.data as ProfileRow).portals) : [];
-    if (remoteLegacy.length && !remoteLegacyImported) {
-      remoteLegacyImported = true;
-      if ((await importPasswords(remoteLegacy)) === 0)
-        await db.from("student_profiles").update({ portals: withoutPasswords((p.data as ProfileRow).portals) }).eq("user_id", userId);
-    }
+    storedPortals = p.data ? ((p.data as ProfileRow).portals ?? null) : null;
 
     let profile = p.data ? toProfile(p.data as ProfileRow) : null;
     let list = ((l.data ?? []) as unknown as CollegeRow[]).map(toEntry);
@@ -246,17 +268,24 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     const offer = !merge && mergeChoice === "ask" && hasLocalData(local, localPw);
     let passwordsFailed = 0;
     if (merge) {
-      // A new account takes the local profile; an existing one keeps its own and gains the local logins it lacks.
+      // Which local passwords may join the account's logins: only where the account has no username for that login,
+      // or the same one this browser saved (decided on the account as it was before this merge).
+      const paired = pairWithAccount(localPw, { portals: profile?.portals, list }, { portals: local.profile.portals, list: local.list });
+      // A new account takes the local profile; an existing one keeps what it has and gains the fields and portal
+      // logins it lacks.
       if (!profile && profileHasData(local.profile)) {
-        const up = await db.from("student_profiles").upsert(fromProfile(userId, local.profile));
+        const row = fromProfile(userId, local.profile, storedPortals);
+        const up = await db.from("student_profiles").upsert(row);
         if (up.error) throw up.error;
+        storedPortals = row.portals;
         profile = local.profile;
-      } else if (profile && local.profile.portals) {
-        const portals = mergePortals(profile.portals ?? {}, local.profile.portals);
-        if (JSON.stringify(portals) !== JSON.stringify(profile.portals ?? {})) {
-          const next = { ...profile, portals };
-          const up = await db.from("student_profiles").upsert(fromProfile(userId, next));
+      } else if (profile) {
+        const next = { ...fillMissingProfile(profile, local.profile), portals: mergePortals(profile.portals ?? {}, local.profile.portals ?? {}) };
+        if (JSON.stringify(next) !== JSON.stringify(profile)) {
+          const row = fromProfile(userId, next, storedPortals);
+          const up = await db.from("student_profiles").upsert(row);
           if (up.error) throw up.error;
+          storedPortals = row.portals;
           profile = next;
         }
       }
@@ -267,10 +296,13 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
         if (ins.error) throw ins.error;
         list = [...list, ...missing];
       }
-      // The profile and list are in the account: move the passwords into the encrypted store, then take the profile,
-      // the list and every password out of this browser now, whatever happens to the reads below.
-      if (localPw.length) passwordsFailed = await importPasswords(localPw);
-      localPasswords = [];
+      // The profile and list are in the account: move the passwords into the encrypted store, and take the profile
+      // and list out of this browser now, whatever happens to the reads below. A password leaves the browser only
+      // once the server confirmed it stored (or the account already had one that opens); the rest, and the ones held
+      // back for a different username, stay for next time.
+      const notStored = paired.send.length ? await importPasswords(paired.send) : [];
+      localPasswords = [...notStored, ...paired.hold];
+      passwordsFailed = localPasswords.length;
       writeLocal({ ...local, profile: {}, list: [] });
     }
     // Recommenders are separate from the list so a missing table (migration 0026 not applied yet) can't take the whole list down;
@@ -339,7 +371,8 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     } catch (e) {
       txError = `Couldn't load your transcript: ${(e as Error).message}`;
     }
-    if (merge && !recError && !schError && !txError) clearLocal();
+    // Everything moved: the copy goes (passwords not yet stored stay under LEGACY_KEY and are offered again).
+    if (merge && !recError && !schError && !txError) writeLocal(EMPTY_LOCAL);
     lastLoad = Date.now();
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
     const localFound = offer ? { colleges: missing.length, logins: loginCount(local.profile.portals, local.list, localPw), passwords: localPw.length } : null;
@@ -378,7 +411,8 @@ function start() {
       // Back to the browser's own copy (empty for former students, whose local data moved into the account),
       // so a teacher who signs out doesn't overwrite local data they never merged.
       mergeChoice = "ask";
-      remoteLegacyImported = false;
+      storedPortals = null;
+      migratedFor = null;
       emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null });
     }
   });
@@ -418,7 +452,7 @@ function subscribe(l: () => void) {
   start();
   listeners.add(l);
   const onStorage = (e: StorageEvent) => {
-    if (e.key === KEY && !state.auth) {
+    if ((e.key === KEY || e.key === LEGACY_KEY) && !state.auth) {
       state = { ...state, ...localState() };
       l();
     }
@@ -463,7 +497,11 @@ export function useStudent() {
   const setProfile = (profile: StudentProfile) => {
     emit({ profile });
     const a = state.auth;
-    if (a) void remote(() => db().from("student_profiles").upsert(fromProfile(a.userId, profile)));
+    if (!a) return;
+    // Password keys the row still holds (not yet migrated) go back out unchanged; see storedPortals.
+    const row = fromProfile(a.userId, profile, storedPortals);
+    storedPortals = row.portals;
+    void remote(() => db().from("student_profiles").upsert(row));
   };
   return {
     ...s,
@@ -650,7 +688,8 @@ export function useStudent() {
     },
     /**
      * The sign-in dialog's "Add to this account": merges this browser's signed-out copy into the account and moves
-     * its passwords into the encrypted store. Resolves to how many passwords couldn't be moved.
+     * its passwords into the encrypted store. Resolves to how many passwords couldn't be stored yet (they stay in
+     * this browser and are offered again).
      */
     async addLocalData(): Promise<{ passwordsFailed: number }> {
       const a = state.auth;

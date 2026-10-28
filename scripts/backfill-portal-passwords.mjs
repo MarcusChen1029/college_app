@@ -1,41 +1,39 @@
-// One-off backfill: copies every plaintext portal password (student_colleges.portal_password, and the "password"
-// fields inside student_profiles.portals) into the encrypted table portal_passwords (migration 0038). It seals with
-// the web server's own code (web/lib/portal-vault.ts) and names slots with web/lib/portal-slots.ts, so the site can
-// open what it writes. Slots that already hold a password are skipped, so running it again is safe. It never prints
-// a password, a sealed value or a key; --dry-run prints counts only and writes nothing. It does not touch the
-// plaintext columns (that is supabase/patches/2026-10-28-strip-plaintext-portal-passwords.sql, run after checking).
+// OPTIONAL backfill for students who don't visit the site: does for every student what the site's POST
+// /api/portal-passwords "migrate" does for one student on their next visit. Same code and the same rule:
+// web/lib/portal-migrate.ts decides, web/lib/portal-vault.ts seals and opens. A plaintext password
+// (student_colleges.portal_password, or a "password" key in student_profiles.portals) is removed only after the
+// encrypted store holds a copy that opens with the key given here (an existing row that opens, or a new row read back
+// and opened to the same value), and only through migration 0041's compare-and-set functions, which refuse if the row
+// changed since it was read. Anything else stays plaintext. Running it again is safe.
+// It never prints a password, a sealed value or a key; --dry-run reads and counts only.
 //
 //   NEXT_PUBLIC_SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=... GOOGLE_TOKEN_ENCRYPTION_KEY=... \
 //     node scripts/backfill-portal-passwords.mjs [--dry-run]
 //
-// The key rule is the server's: PORTAL_ENCRYPTION_KEY if set, else GOOGLE_TOKEN_ENCRYPTION_KEY. Use exactly the values
-// the deployed site has. Needs Node 22.18+ (it loads the TypeScript modules directly).
+// The key rule is the server's: PORTAL_ENCRYPTION_KEY if set, else GOOGLE_TOKEN_ENCRYPTION_KEY. With a key that
+// differs from the deployed site's, existing rows don't open and new ones are written under the wrong key: use the
+// Production values exactly (e.g. from `vercel env pull`). Needs migrations 0038 and 0041 and Node 22.18+.
 // Runbook: docs/superpowers/plans/2026-10-28-portal-password-encryption.md
 
 import { pathToFileURL } from "node:url";
-import { passwordsIn } from "../web/lib/portal-slots.ts";
-import { sealPassword, vaultKey } from "../web/lib/portal-vault.ts";
+import { planMigration, plaintextIn, sealOnce, verifiedCopies, withoutPasswordsAt } from "../web/lib/portal-migrate.ts";
+import { openPassword, sealPassword, vaultKey } from "../web/lib/portal-vault.ts";
 
-const PAGE = 1000; // PostgREST returns at most 1000 rows per request: page with Range over a unique order
-const WRITE_CHUNK = 500;
+const PAGE = 500; // read until an empty page, so a lower max-rows setting can't end the read early
+const MAX_SLOTS_PER_USER = 500; // web/lib/portal-vault-server.ts
 
-/** The (userId, slot, password) triples found in rows as PostgREST returns them; empty passwords are skipped. */
-export function backfillEntries(colleges, profiles) {
-  const byUser = new Map();
-  const add = (userId, found) => {
-    if (!found.length) return;
-    const slots = byUser.get(userId) ?? new Map();
-    for (const e of found) if (!slots.has(e.slot)) slots.set(e.slot, e.password);
-    byUser.set(userId, slots);
-  };
-  for (const p of profiles) add(p.user_id, passwordsIn(p.portals));
-  // Same slot as the site's collegeSlot(toEntry(row)): the row id for a custom college, else its institution_id.
-  for (const c of colleges) add(c.user_id, passwordsIn(null, [{ portal: { password: c.portal_password }, custom: c.custom, rowId: c.id, institutionId: c.institution_id ?? "" }]));
-  return [...byUser].flatMap(([userId, slots]) => [...slots].map(([slot, password]) => ({ userId, slot, password })));
+/** One student's plan, with the rows to write (sealed exactly as the server seals). Pure: tested in web/lib. */
+export function planForUser(key, userId, colleges, portals, vault) {
+  const open = (slot, sealed) => openPassword(key, userId, slot, sealed);
+  const plan = planMigration(plaintextIn(colleges, portals), vault, open, MAX_SLOTS_PER_USER - vault.length);
+  const rows = sealOnce(plan.seal).map((r) => ({ user_id: userId, slot: r.slot, sealed: sealPassword(key, userId, r.slot, r.password) }));
+  return { plan, rows, open };
 }
 
-/** The portal_passwords row for one entry, sealed exactly as POST /api/portal-passwords would. */
-export const sealRow = (key, e, now = new Date().toISOString()) => ({ user_id: e.userId, slot: e.slot, sealed: sealPassword(key, e.userId, e.slot, e.password), updated_at: now });
+/** The plaintext values that may now be removed: kept ones, plus sealed ones whose read-back row opens to the same value. */
+export function copiedAfterReadBack(planned, readBack) {
+  return [...planned.plan.keep, ...verifiedCopies(planned.plan.seal, new Map(readBack.map((r) => [r.slot, r.sealed])), planned.open)];
+}
 
 function config() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -48,56 +46,72 @@ function config() {
 
 const headers = (cfg) => ({ apikey: cfg.serviceKey, Authorization: `Bearer ${cfg.serviceKey}` });
 
-// Error messages carry the status only, never a response body (it could echo row data).
+// Error messages carry the status only, never a response body (it could echo row data). Filters in URLs hold ids only.
 async function readAll(cfg, path) {
   const rows = [];
   for (let from = 0; ; from += PAGE) {
     const res = await fetch(`${cfg.url}/rest/v1/${path}`, { headers: { ...headers(cfg), Range: `${from}-${from + PAGE - 1}`, "Range-Unit": "items" } });
     if (!res.ok) throw new Error(`reading ${path.split("?")[0]} failed: HTTP ${res.status}`);
     const page = await res.json();
+    if (!page.length) return rows;
     rows.push(...page);
-    if (page.length < PAGE) return rows;
   }
 }
 
-async function insert(cfg, rows) {
-  for (let i = 0; i < rows.length; i += WRITE_CHUNK) {
-    const res = await fetch(`${cfg.url}/rest/v1/portal_passwords?on_conflict=user_id,slot`, {
-      method: "POST",
-      headers: { ...headers(cfg), "Content-Type": "application/json", Prefer: "resolution=ignore-duplicates,return=minimal" },
-      body: JSON.stringify(rows.slice(i, i + WRITE_CHUNK)),
-    });
-    if (!res.ok) throw new Error(`writing portal_passwords failed: HTTP ${res.status}`);
-  }
+async function post(cfg, path, body, prefer) {
+  const res = await fetch(`${cfg.url}/rest/v1/${path}`, {
+    method: "POST",
+    headers: { ...headers(cfg), "Content-Type": "application/json", ...(prefer ? { Prefer: prefer } : {}) },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`${path.split("?")[0]} failed: HTTP ${res.status}`);
+  return prefer?.includes("return=minimal") ? null : res.json();
 }
 
 async function main() {
   const dryRun = process.argv.includes("--dry-run");
   const cfg = config();
-  const [colleges, profiles, existing] = await Promise.all([
+  const [colleges, profiles] = await Promise.all([
     readAll(cfg, "student_colleges?select=id,user_id,institution_id,custom,portal_password&portal_password=not.is.null&order=id"),
     readAll(cfg, "student_profiles?select=user_id,portals&portals=not.is.null&order=user_id"),
-    readAll(cfg, "portal_passwords?select=user_id,slot&order=user_id,slot"),
   ]);
-  const have = new Set(existing.map((r) => `${r.user_id}|${r.slot}`));
-  const entries = backfillEntries(colleges, profiles);
-  const todo = entries.filter((e) => !have.has(`${e.userId}|${e.slot}`));
-  const counts = {
-    collegeRowsWithPlaintext: colleges.filter((c) => c.portal_password).length,
-    profileRowsRead: profiles.length,
-    passwordsFound: entries.length,
-    usersWithPasswords: new Set(entries.map((e) => e.userId)).size,
-    alreadyInVault: entries.length - todo.length,
-    toWrite: todo.length,
-  };
-  console.log(JSON.stringify(counts, null, 2));
-  if (dryRun) {
-    console.log("dry run: nothing written");
-    return;
+  const users = new Map();
+  const userOf = (id) => users.get(id) ?? users.set(id, { colleges: [], portals: null }).get(id);
+  for (const c of colleges) userOf(c.user_id).colleges.push(c);
+  for (const p of profiles) if (plaintextIn([], p.portals).length) userOf(p.user_id).portals = p.portals;
+
+  const counts = { students: 0, plaintextFound: 0, kept: 0, migrated: 0, failed: 0 };
+  for (const [userId, u] of users) {
+    const vault = await readAll(cfg, `portal_passwords?select=slot,sealed&user_id=eq.${userId}&order=slot`);
+    const planned = planForUser(cfg.key, userId, u.colleges, u.portals, vault);
+    const total = planned.plan.keep.length + planned.plan.seal.length + planned.plan.failed.length;
+    if (!total) continue;
+    counts.students++;
+    counts.plaintextFound += total;
+    if (dryRun) {
+      counts.kept += planned.plan.keep.length;
+      counts.migrated += planned.plan.seal.length; // would be sealed, verified and removed
+      counts.failed += planned.plan.failed.length;
+      continue;
+    }
+    if (planned.rows.length) await post(cfg, "portal_passwords?on_conflict=user_id,slot", planned.rows, "resolution=merge-duplicates,return=minimal");
+    const readBack = planned.rows.length ? await readAll(cfg, `portal_passwords?select=slot,sealed&user_id=eq.${userId}&order=slot`) : [];
+    const copied = copiedAfterReadBack(planned, readBack);
+    const removed = new Set();
+    for (const v of copied)
+      if (v.at.table === "college" && (await post(cfg, "rpc/strip_college_portal_password", { p_user: userId, p_id: v.at.id, p_old: v.password })) === true) removed.add(v);
+    const inProfile = copied.filter((v) => v.at.table === "profile");
+    if (inProfile.length) {
+      const ok = await post(cfg, "rpc/replace_profile_portals", { p_user: userId, p_old: u.portals, p_new: withoutPasswordsAt(u.portals, inProfile.map((v) => v.at)) });
+      if (ok === true) inProfile.forEach((v) => removed.add(v));
+    }
+    const kept = planned.plan.keep.filter((v) => removed.has(v)).length;
+    counts.kept += kept;
+    counts.migrated += removed.size - kept;
+    counts.failed += total - removed.size;
   }
-  const now = new Date().toISOString();
-  await insert(cfg, todo.map((e) => sealRow(cfg.key, e, now)));
-  console.log(`wrote ${todo.length} sealed passwords`);
+  console.log(JSON.stringify(counts, null, 2));
+  console.log(dryRun ? "dry run: nothing written (kept/migrated/failed are what a real run would do)" : "done; failed = still plaintext (see the runbook)");
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

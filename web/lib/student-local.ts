@@ -1,10 +1,11 @@
 // The signed-out copy in localStorage ("college-tracker:v1"), as the browser store (student-store.ts) saves and loads
-// it. Pure so it can be tested. No password is ever written. Passwords an older build left in a stored copy come back
-// separately from parseLocal, so the store keeps them in memory only and can import them into the encrypted store
-// (portal_passwords, migration 0038) when the student signs in.
+// it. Pure so it can be tested. The site never stores a new password in the browser. Passwords an older build left
+// in a stored copy are not dropped either: before the copy is rewritten without them they move, unchanged, to their
+// own key (LEGACY_KEY), and stay there until they are imported into the encrypted store (portal_passwords, migration
+// 0038) after sign-in, or the student removes them ("Don't add", "Remove from this browser").
 
 import type { StudentProfile } from "./fit.ts";
-import { passwordsIn, portalWithoutPassword, withoutPasswords, type SlotPassword } from "./portal-slots.ts";
+import { isPortalSlot, PASSWORD_MAX, passwordsIn, portalWithoutPassword, withoutPasswords, type SlotPassword } from "./portal-slots.ts";
 import type { Recommender } from "./recommenders.ts";
 import type { Scholarship } from "./scholarships.ts";
 import type { ListEntry } from "./student-rows.ts";
@@ -37,15 +38,44 @@ export function serializeLocal(d: LocalData): string {
 
 const arr = <T>(v: unknown): T[] => (Array.isArray(v) ? (v as T[]) : []);
 
-/** Reads a stored copy: `data` without any password, and `passwords` (by slot) that an older build saved in it. */
-export function parseLocal(raw: string | null): { data: LocalData; passwords: SlotPassword[] } {
-  if (!raw) return { data: EMPTY_LOCAL, passwords: [] };
+/** Where an older build's passwords wait (as [{ slot, password }]) once the main copy has been rewritten without them. */
+export const LEGACY_KEY = "college-tracker:v1:legacy-passwords";
+
+/** The passwords under LEGACY_KEY; malformed entries are dropped. */
+export function parseLegacy(raw: string | null): SlotPassword[] {
+  if (!raw) return [];
+  try {
+    return arr<Record<string, unknown>>(JSON.parse(raw)).flatMap((e) =>
+      e && isPortalSlot(e.slot) && typeof e.password === "string" && e.password && e.password.length <= PASSWORD_MAX ? [{ slot: e.slot, password: e.password }] : [],
+    );
+  } catch {
+    return [];
+  }
+}
+
+/** What to store under LEGACY_KEY; null = remove the key. */
+export const serializeLegacy = (passwords: readonly SlotPassword[]): string | null =>
+  passwords.length ? JSON.stringify(passwords.map((p) => ({ slot: p.slot, password: p.password }))) : null;
+
+/** The first password per slot. */
+const unique = (list: readonly SlotPassword[]) => list.filter((p, i) => list.findIndex((q) => q.slot === p.slot) === i);
+
+/**
+ * Reads a stored copy: `data` without any password, and `passwords` (by slot) that an older build saved, whether
+ * still inside the copy (`inCopy`: the copy should be rewritten without them, after they are under LEGACY_KEY) or
+ * already moved to LEGACY_KEY.
+ */
+export function parseLocal(raw: string | null, rawLegacy: string | null = null): { data: LocalData; passwords: SlotPassword[]; inCopy: boolean } {
+  const legacy = parseLegacy(rawLegacy);
+  if (!raw) return { data: EMPTY_LOCAL, passwords: legacy, inCopy: false };
   try {
     const parsed = JSON.parse(raw);
     const profile: StudentProfile = parsed?.profile && typeof parsed.profile === "object" && !Array.isArray(parsed.profile) ? parsed.profile : {};
     // v1 entries predate institutionId/checklist; keep what we can.
     const list = arr<Partial<ListEntry>>(parsed?.list).map((e) => ({ checklist: {}, institutionId: "", ...e }) as ListEntry);
+    const inCopy = passwordsIn(profile.portals, list);
     return {
+      inCopy: inCopy.length > 0,
       data: {
         profile: cleanProfile(profile),
         list: cleanList(list),
@@ -54,11 +84,33 @@ export function parseLocal(raw: string | null): { data: LocalData; passwords: Sl
         transcriptSchools: arr(parsed.transcriptSchools),
         transcriptCourses: arr(parsed.transcriptCourses),
       },
-      passwords: passwordsIn(profile.portals, list),
+      passwords: unique([...inCopy, ...legacy]),
     };
   } catch {
-    return { data: EMPTY_LOCAL, passwords: [] };
+    return { data: EMPTY_LOCAL, passwords: legacy, inCopy: false };
   }
+}
+
+/**
+ * The two values a save writes: `copy` (the data, no password) for the main key, and `legacy` for LEGACY_KEY (null =
+ * remove it). `legacy` holds only the passwords given, which the store only ever has from storage itself, so a save
+ * keeps every old password and never adds one. Write `legacy` first: then a failed write can't lose a password.
+ */
+export function localWrites(d: LocalData, legacyPasswords: readonly SlotPassword[]): { copy: string; legacy: string | null } {
+  return { copy: serializeLocal(d), legacy: serializeLegacy(unique(legacyPasswords)) };
+}
+
+const isEmpty = (v: unknown) => v === undefined || v === null || v === "" || (typeof v === "object" && Object.keys(v as object).length === 0);
+
+/**
+ * The account's profile plus the fields it doesn't have yet from the copy saved in this browser (a field counts as
+ * missing when it is unset, empty text, an empty list or an empty object). Whatever the account holds wins; false and
+ * 0 are values. `portals` is left to mergePortals.
+ */
+export function fillMissingProfile(account: StudentProfile, local: StudentProfile): StudentProfile {
+  const out: Record<string, unknown> = { ...account };
+  for (const [k, v] of Object.entries(local)) if (k !== "portals" && isEmpty(out[k]) && !isEmpty(v)) out[k] = v;
+  return out as StudentProfile;
 }
 
 /** True when the profile holds something (empty arrays and objects, false and null don't count). */
