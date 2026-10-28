@@ -22,3 +22,19 @@ create table public.portal_passwords (
 alter table public.portal_passwords enable row level security;
 revoke all on table public.portal_passwords from public, anon, authenticated;
 grant select, insert, update, delete on table public.portal_passwords to service_role;
+
+-- Which key the store belongs to: one row, the public fingerprint of the key (web/lib/portal-vault.ts vaultKeyId:
+-- 16 characters of an HMAC under the derived subkey, never the key). The production deployment writes it on its first
+-- password request; any deployment whose key gives another fingerprint (a preview, a laptop pointed at this database,
+-- a backfill run with the wrong env) then answers 503 for every password action and touches nothing. Every sealed
+-- value also names the fingerprint ("v1.<key id>.<...>"), so a row sealed under another key is never trusted.
+-- To change the key on purpose: re-seal every row with the new key first; only then update this row (SQL Editor).
+create table public.portal_vault_meta (
+  id         boolean primary key default true check (id),
+  key_id     text not null check (key_id ~ '^[A-Za-z0-9_-]{16}$'),
+  created_at timestamptz not null default now()
+);
+alter table public.portal_vault_meta enable row level security;
+-- service_role too: Supabase's default privileges give it everything on new tables, and it must not update or delete.
+revoke all on table public.portal_vault_meta from public, anon, authenticated, service_role;
+grant select, insert on table public.portal_vault_meta to service_role;

@@ -10,24 +10,34 @@
 //   NEXT_PUBLIC_SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=... GOOGLE_TOKEN_ENCRYPTION_KEY=... \
 //     node scripts/backfill-portal-passwords.mjs [--dry-run]
 //
-// The key rule is the server's: PORTAL_ENCRYPTION_KEY if set, else GOOGLE_TOKEN_ENCRYPTION_KEY. With a key that
-// differs from the deployed site's, existing rows don't open and new ones are written under the wrong key: use the
-// Production values exactly (e.g. from `vercel env pull`). Needs migrations 0040 and 0043 and Node 22.18+.
+// The key rule is the server's: PORTAL_ENCRYPTION_KEY if set, else GOOGLE_TOKEN_ENCRYPTION_KEY. It stops before
+// reading anything if that key's id isn't the one in portal_vault_meta (claimed by the production site), so a wrong
+// environment can't write a single row. Needs migrations 0040 and 0043 and Node 22.18+.
 // Runbook: docs/superpowers/plans/2026-10-28-portal-password-encryption.md
 
 import { pathToFileURL } from "node:url";
 import { planMigration, plaintextIn, sealOnce, verifiedCopies, withoutPasswordsAt } from "../web/lib/portal-migrate.ts";
-import { openPassword, sealPassword, vaultKey } from "../web/lib/portal-vault.ts";
+import { keyDecision, openPassword, sealedWithKey, sealPassword, vaultKey, vaultKeyId } from "../web/lib/portal-vault.ts";
 
 const PAGE = 500; // read until an empty page, so a lower max-rows setting can't end the read early
 const MAX_SLOTS_PER_USER = 500; // web/lib/portal-vault-server.ts
 
+/**
+ * Refuses unless the store was claimed (portal_vault_meta, migration 0040) with this key: the script never claims
+ * it (the production site does, on its first password request), so a wrong `vercel env pull` can't take it over.
+ */
+export function backfillKeyCheck(stored, key) {
+  const d = keyDecision(stored ?? null, vaultKeyId(key), false);
+  if (d === "unclaimed") throw new Error("the store has no key id yet: let the production site serve one password request first");
+  if (d !== "ok") throw new Error("key mismatch: this key is not the one the store was claimed with (check the environment)");
+}
+
 /** One student's plan, with the rows to write (sealed exactly as the server seals). Pure: tested in web/lib. */
 export function planForUser(key, userId, colleges, portals, vault) {
-  const open = (slot, sealed) => openPassword(key, userId, slot, sealed);
-  const plan = planMigration(plaintextIn(colleges, portals), vault, open, MAX_SLOTS_PER_USER - vault.length);
+  const reader = { open: (slot, sealed) => openPassword(key, userId, slot, sealed), ours: (sealed) => sealedWithKey(key, sealed) };
+  const plan = planMigration(plaintextIn(colleges, portals), vault, reader, MAX_SLOTS_PER_USER - vault.length);
   const rows = sealOnce(plan.seal).map((r) => ({ user_id: userId, slot: r.slot, sealed: sealPassword(key, userId, r.slot, r.password) }));
-  return { plan, rows, open };
+  return { plan, rows, open: reader.open };
 }
 
 /** The plaintext values that may now be removed: kept ones, plus sealed ones whose read-back row opens to the same value. */
@@ -71,6 +81,8 @@ async function post(cfg, path, body, prefer) {
 async function main() {
   const dryRun = process.argv.includes("--dry-run");
   const cfg = config();
+  const meta = await readAll(cfg, "portal_vault_meta?select=key_id&id=eq.true");
+  backfillKeyCheck(meta[0]?.key_id ?? null, cfg.key);
   const [colleges, profiles] = await Promise.all([
     readAll(cfg, "student_colleges?select=id,user_id,institution_id,custom,portal_password&portal_password=not.is.null&order=id"),
     readAll(cfg, "student_profiles?select=user_id,portals&portals=not.is.null&order=user_id"),
@@ -102,7 +114,7 @@ async function main() {
       if (v.at.table === "college" && (await post(cfg, "rpc/strip_college_portal_password", { p_user: userId, p_id: v.at.id, p_old: v.password })) === true) removed.add(v);
     const inProfile = copied.filter((v) => v.at.table === "profile");
     if (inProfile.length) {
-      const ok = await post(cfg, "rpc/replace_profile_portals", { p_user: userId, p_old: u.portals, p_new: withoutPasswordsAt(u.portals, inProfile.map((v) => v.at)) });
+      const ok = await post(cfg, "rpc/replace_profile_portals", { p_user: userId, p_old: u.portals, p_new: withoutPasswordsAt(u.portals, inProfile) });
       if (ok === true) inProfile.forEach((v) => removed.add(v));
     }
     const kept = planned.plan.keep.filter((v) => removed.has(v)).length;

@@ -151,6 +151,9 @@ let mergeChoice: "ask" | "later" = "ask";
 let storedPortals: unknown = null;
 // Whose plaintext passwords the server was asked to move ("migrate") on this page load.
 let migratedFor: string | null = null;
+// Whose account copy has loaded successfully on this page. Until it has, account writes are refused: the page would
+// otherwise overwrite the account with whatever it holds in memory (and drop password keys it never read).
+let loadedFor: string | null = null;
 
 function emit(patch: Partial<State>) {
   state = { ...state, ...patch };
@@ -244,6 +247,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
         if (t.data) teacherProfile = { displayName: t.data.display_name, school: t.data.school };
       }
       lastLoad = Date.now();
+      loadedFor = userId;
       emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false, localFound: null });
       return { passwordsFailed: 0 };
     }
@@ -378,6 +382,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Everything moved: the copy goes (passwords not yet stored stay under LEGACY_KEY and are offered again).
     if (merge && !recError && !schError && !txError) writeLocal(EMPTY_LOCAL);
     lastLoad = Date.now();
+    loadedFor = userId;
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
     const localFound = offer ? { colleges: missing.length, logins: loginCount(local.profile.portals, local.list, localPw), passwords: localPw.length } : null;
     emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound });
@@ -417,6 +422,7 @@ function start() {
       mergeChoice = "ask";
       storedPortals = null;
       migratedFor = null;
+      loadedFor = null;
       emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null });
     }
   });
@@ -429,6 +435,11 @@ function start() {
 // Remote writes are optimistic; on failure we reload the server copy and surface the error. Resolves true when the write worked.
 async function remote(op: () => PromiseLike<{ error: { message: string } | null }>): Promise<boolean> {
   if (!state.auth) return false;
+  if (loadedFor !== state.auth.userId) {
+    // Same wording style as the other store errors; the next successful load (focus, reload) re-enables saving.
+    emit({ error: "Couldn't save: your account didn't load. Reload the page and try again." });
+    return false;
+  }
   savesInFlight++;
   let error: { message: string } | null;
   try {
