@@ -382,9 +382,13 @@ export function caActivityIssues(a: CaActivity): Issue[] {
  * Problems the activity already had on other fields do not block an unrelated edit.
  */
 export function draftIssues(a: CaActivity, patch: Partial<CaActivity>): Issue[] {
+  return invalidAfter(caActivityIssues, a, patch);
+}
+
+function invalidAfter<T extends object>(issuesOf: (x: T) => Issue[], x: T, patch: Partial<T>): Issue[] {
   const edited = new Set<string>(Object.keys(patch));
-  const had = new Set(caActivityIssues(a).filter((i) => i.kind === "invalid").map((i) => i.field));
-  return caActivityIssues({ ...a, ...patch }).filter((i) => i.kind === "invalid" && (edited.has(i.field) || !had.has(i.field)));
+  const had = new Set(issuesOf(x).filter((i) => i.kind === "invalid").map((i) => i.field));
+  return issuesOf({ ...x, ...patch }).filter((i) => i.kind === "invalid" && (edited.has(i.field) || !had.has(i.field)));
 }
 
 /**
@@ -497,6 +501,39 @@ export function ucEntryIssues(e: UcEntry): Issue[] {
     }
   }
   return c.issues;
+}
+
+/** Same as `draftIssues`, for a UC entry: the "invalid" issues an edit would cause, including cross-field ones (start/end dates). */
+export function ucDraftIssues(e: UcEntry, patch: Partial<UcEntry>): Issue[] {
+  return invalidAfter(ucEntryIssues, e, patch);
+}
+
+/**
+ * The questions UC shows for this entry, in its order (docs/superpowers/research/2026-10-27-portal-dom.md §7).
+ * Years/months after 12th grade only with PG and not for an award, the program name only when the program is Other,
+ * the hours grid only once a grade is ticked, the end date only on "no longer working". Work has no weeks per year.
+ */
+export function ucVisibleQuestions(e: UcEntry): (keyof UcEntry)[] {
+  const q: (keyof UcEntry)[] = [];
+  if (e.category === "edprep") {
+    q.push("program");
+    if (e.program === UC_EDPREP_OTHER) q.push("name");
+  } else {
+    q.push("name");
+  }
+  if (e.category === "award") return [...q, "awardLevels", "awardType", "grades", "extra", "description"];
+  if (UC_CATEGORIES[e.category].extra) q.push("extra");
+  if (e.category === "work") q.push("jobTitle");
+  q.push("description", "grades");
+  if (e.grades.includes("PG")) q.push("afterYears", "afterMonths");
+  if (e.category === "work") {
+    if (e.grades.length > 0) q.push("workHours");
+    q.push("stillWorking", "start");
+    if (e.stillWorking === false) q.push("end");
+  } else {
+    q.push("hoursPerWeek", "weeksPerYear");
+  }
+  return q;
 }
 
 // ── Upgrading stored data ──
@@ -724,16 +761,19 @@ function ucCategoryFor(type: string): UcCategory {
  */
 export function ucDraftsFromCommonApp(data: ActivityData): UcEntry[] {
   const copied = new Set(data.uc.map((e) => e.fromId).filter(Boolean));
+  // The role is only the student's answer when the leadership question is "yes"; a leftover value is not copied.
+  const roleOf = (a: CaActivity) => (a.leadership === true ? a.position.trim() : "");
   const fromActivities = data.commonApp.activities
-    .filter((a) => !copied.has(a.id) && (a.organization || a.position || a.description))
+    .filter((a) => !copied.has(a.id) && (a.organization || roleOf(a) || a.description))
     .map((a): UcEntry => {
       const category = ucCategoryFor(a.type);
+      const role = roleOf(a);
       if (category === "work") {
         // UC work asks for the workplace and the job title separately, and hours per grade instead of per week.
         return {
           ...newUcEntry(category),
           name: a.organization.slice(0, UC_LIMITS.name),
-          jobTitle: a.position.slice(0, UC_LIMITS.name),
+          jobTitle: role.slice(0, UC_LIMITS.name),
           description: a.description.slice(0, UC_LIMITS.description),
           grades: a.grades,
           fromId: a.id,
@@ -741,8 +781,8 @@ export function ucDraftsFromCommonApp(data: ActivityData): UcEntry[] {
       }
       return {
         ...newUcEntry(category),
-        name: (a.organization || a.position).slice(0, UC_LIMITS.name),
-        description: [a.position, a.description].filter(Boolean).join(" — ").slice(0, UC_LIMITS.description),
+        name: (a.organization || role).slice(0, UC_LIMITS.name),
+        description: [role, a.description].filter(Boolean).join(" — ").slice(0, UC_LIMITS.description),
         grades: a.grades,
         hoursPerWeek: a.hoursPerWeek,
         weeksPerYear: a.weeksPerYear,

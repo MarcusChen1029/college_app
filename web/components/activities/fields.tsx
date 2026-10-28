@@ -39,6 +39,7 @@ export function TextField({
   onSave,
   validate,
   missing,
+  measure = (v) => v.length,
 }: {
   label: string;
   value: string;
@@ -47,9 +48,12 @@ export function TextField({
   onSave: (v: string) => void;
   validate?: (v: string) => string | null;
   missing?: boolean;
+  /** How the portal counts the box (UC counts a line break as 2); the counter and its colours use it. Default: characters. */
+  measure?: (v: string) => number;
 }) {
   const [v, setV] = useState(value);
   const error = validate ? validate(v) : null;
+  const size = measure(v);
   const props = { className: input, maxLength: validate ? undefined : max, value: v, "aria-invalid": error ? true : undefined, onBlur: () => v !== value && !error && onSave(v) };
   return (
     <label className="flex flex-col gap-1">
@@ -58,8 +62,8 @@ export function TextField({
           {label}
           <Needs show={!!missing} />
         </span>
-        <span className={`tabular-nums ${v.length > max ? "font-semibold text-urgent" : v.length >= max ? "font-semibold text-soon" : ""}`}>
-          {v.length}/{max}
+        <span className={`tabular-nums ${size > max ? "font-semibold text-urgent" : size >= max ? "font-semibold text-soon" : ""}`}>
+          {size}/{max}
         </span>
       </span>
       {rows ? (
@@ -68,30 +72,6 @@ export function TextField({
         <input {...props} onChange={(e) => setV(e.target.value)} />
       )}
       <FieldError message={error} />
-    </label>
-  );
-}
-
-export function NumberField({ label, value, max, onSave }: { label: string; value: number | null; max: number; onSave: (n: number | null) => void }) {
-  return (
-    <label className="flex flex-col gap-1">
-      <span className="text-xs text-zinc-500">{label}</span>
-      <input
-        key={value ?? "empty"}
-        className={`${input} w-24`}
-        inputMode="numeric"
-        placeholder={`0–${max}`}
-        defaultValue={value ?? ""}
-        onBlur={(e) => {
-          const raw = e.target.value.trim();
-          const n = raw === "" ? null : Number(raw);
-          if (n != null && !(Number.isInteger(n) && n >= 0 && n <= max)) {
-            e.target.value = value?.toString() ?? "";
-            return;
-          }
-          if (n !== value) onSave(n);
-        }}
-      />
     </label>
   );
 }
@@ -143,12 +123,16 @@ export function MonthField({
   onSave,
   validate,
   missing,
+  min = "1926-01",
+  max = "2027-12",
 }: {
   label: string;
   value: string | null;
   onSave: (v: string | null) => void;
   validate: (v: string) => string | null;
   missing?: boolean;
+  min?: string;
+  max?: string;
 }) {
   const [v, setV] = useState(value ?? "");
   const error = v === "" ? null : validate(v);
@@ -160,8 +144,8 @@ export function MonthField({
       </span>
       <input
         type="month"
-        min="1926-01"
-        max="2027-12"
+        min={min}
+        max={max}
         className={input}
         value={v}
         aria-invalid={error ? true : undefined}

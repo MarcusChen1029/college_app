@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from "react";
 import {
+  CA_ATHLETIC_TYPES,
   CA_LIMITS,
   caActivityIssues,
   caHonorIssues,
@@ -12,6 +13,7 @@ import {
   UC_CATEGORIES,
   UC_LIMITS,
   ucDraftsFromCommonApp,
+  ucEntryIssues,
   upgradeActivities,
   type ActivityData,
   type CaActivity,
@@ -22,10 +24,11 @@ import {
 } from "@/lib/activities";
 import { CaActivityFields } from "@/components/activities/CaActivityFields";
 import { CaHonorFields, HONOR_KEYS } from "@/components/activities/CaHonorFields";
-import { UcFields, UC_FORM_KEYS } from "@/components/activities/UcFields";
+import { AWARD_KEYS, UcFields, UC_FORM_KEYS } from "@/components/activities/UcFields";
 import { SignInButton } from "@/components/SignInDialog";
 import { caTypeLabel as typeLabel } from "@/lib/i18n/ca-types";
 import { useT } from "@/lib/i18n/client";
+import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, toneClass } from "@/lib/ui";
 
@@ -191,6 +194,8 @@ export function ActivitiesEditor() {
   const room = UC_LIMITS.entries - data.uc.length;
   const needAnswer = [...data.commonApp.activities.map(caActivityIssues), ...data.commonApp.honors.map(caHonorIssues)].filter((is) => is.some((i) => i.kind === "missing")).length;
 
+  const ucNeedAnswer = data.uc.map(ucEntryIssues).filter((is) => is.some((i) => i.kind === "missing")).length;
+
   const grades = (g: Grade[]) => (g.length ? t("writing.gradesList", { list: g.join(", ") }) : "");
   const hours = (h: number | null, w: number | null) => (h != null || w != null ? t("writing.hoursSummary", { h: h ?? "?", w: w ?? "?" }) : "");
 
@@ -225,8 +230,11 @@ export function ActivitiesEditor() {
             addLabel={t("writing.addActivity")}
             make={newCaActivity}
             onChange={(activities) => save({ ...data, commonApp: { ...data.commonApp, activities } })}
-            title={(a) => a.organization || a.position}
-            subtitle={(a) => join(typeLabel(t, a.type), a.position && a.organization ? a.position : "", grades(a.grades), hours(a.hoursPerWeek, a.weeksPerYear))}
+            // Only what the form shows: the role when the leadership answer is yes, the sport for the athletics types.
+            title={(a) => a.organization || caRole(a)}
+            subtitle={(a) =>
+              join(typeLabel(t, a.type), CA_ATHLETIC_TYPES.includes(a.type) ? a.sport : "", caRole(a) && a.organization ? caRole(a) : "", grades(a.grades), hours(a.hoursPerWeek, a.weeksPerYear))
+            }
             issues={caActivityIssues}
             render={(a, set) => <CaActivityFields a={a} set={set} />}
           />
@@ -253,6 +261,7 @@ export function ActivitiesEditor() {
         </>
       ) : (
         <>
+          {ucNeedAnswer > 0 && <p className={`rounded-lg border px-3 py-2 text-sm ${toneClass("soon")}`}>{t("writing.needsCount", { n: ucNeedAnswer })}</p>}
           <EntryList<UcEntry>
             heading={t("writing.headingUc")}
             items={data.uc}
@@ -260,8 +269,18 @@ export function ActivitiesEditor() {
             addLabel={t("writing.addEntry")}
             make={() => newUcEntry("extracurricular")}
             onChange={(uc) => save({ ...data, uc })}
-            title={(e) => e.name}
-            subtitle={(e) => join(t(UC_FORM_KEYS[e.category].label), grades(e.grades), UC_CATEGORIES[e.category].hours ? hours(e.hoursPerWeek, e.weeksPerYear) : "")}
+            // Only what the form shows for this category: the program (not a stale name), the job title for work, levels for an award.
+            title={ucName}
+            subtitle={(e) =>
+              join(
+                t(UC_FORM_KEYS[e.category].label),
+                e.category === "work" ? e.jobTitle : "",
+                e.category === "award" ? e.awardLevels.map((l) => t(AWARD_KEYS[l])).join(", ") : "",
+                grades(e.grades),
+                UC_CATEGORIES[e.category].hours ? hours(e.hoursPerWeek, e.weeksPerYear) : "",
+              )
+            }
+            issues={ucEntryIssues}
             render={(e, set) => <UcFields e={e} set={set} />}
             extraAction={
               drafts.length > 0 && (

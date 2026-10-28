@@ -1,7 +1,7 @@
 // "Copy for AI": the student's profile, list and (on paid plans) each listed college's sourced facts as one
 // Markdown document to paste into ChatGPT, Claude or Gemini. Portal logins and private notes are never included.
 
-import type { CaContinue, CaTiming } from "./activities.ts";
+import { CA_ATHLETIC_TYPES, type CaContinue, type CaTiming } from "./activities.ts";
 import { hasDecision, RESULT_LABEL, resultStatus, stage } from "./application.ts";
 import { CHECKLIST, ESSAY_STATUSES, isDone, type Checklist } from "./checklist.ts";
 import { deadlineApplies } from "./deadline-rules.ts";
@@ -106,7 +106,7 @@ function activitiesSection(p: StudentProfile): string[] {
     ...acts.map((a, i) => {
       const time = [a.hoursPerWeek != null && `${a.hoursPerWeek} h/week`, a.weeksPerYear != null && `${a.weeksPerYear} weeks/year`].filter(Boolean).join(", ");
       const head = [caRole(a), a.organization].filter(Boolean).join(", ");
-      const type = [a.type, a.sport].filter(Boolean).join(": ");
+      const type = [a.type, CA_ATHLETIC_TYPES.includes(a.type) ? a.sport : ""].filter(Boolean).join(": "); // a sport only goes with the athletics types
       const after = a.grades.includes("PG") && a.afterStart ? `after high school ${a.afterStart} to ${a.stillParticipating === false && a.afterEnd ? a.afterEnd : "present"}` : "";
       const details = [
         a.grades.length ? `grades ${a.grades.join(", ")}` : "",

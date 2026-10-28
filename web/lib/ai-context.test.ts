@@ -134,6 +134,27 @@ test("activities list the 2026-27 fields as plain text and show the role only fo
   assert.match(md, /- AIME \(grades 11\)/);
 });
 
+test("a sport left over from a different activity type is not listed", () => {
+  const profile = {
+    ...input().profile,
+    activities: {
+      version: 2 as const,
+      commonApp: {
+        activities: [
+          { ...newCaActivity(), type: "Athletics (other)", sport: "Soccer", organization: "City league", description: "Played." },
+          { ...newCaActivity(), type: "Robotics", sport: "Tennis", organization: "Robo Club", description: "Built robots." },
+        ],
+        honors: [],
+      },
+      uc: [],
+    },
+  };
+  const md = buildContextPack(input({ profile, full: true }));
+  assert.match(md, /City league \(Athletics \(other\): Soccer\)/);
+  assert.match(md, /Robo Club \(Robotics\)/);
+  assert.doesNotMatch(md, /Tennis/);
+});
+
 test("list row uses the international admit rate and the chosen plan's next deadline", () => {
   const md = buildContextPack(input());
   const row = md.split("\n").find((l) => l.startsWith("| Brown"))!;

@@ -15,9 +15,11 @@ import {
   newCaActivity,
   newCaHonor,
   newUcEntry,
+  ucDraftIssues,
   ucDraftsFromCommonApp,
   ucEntryIssues,
   ucTextLength,
+  ucVisibleQuestions,
   upgradeActivities,
   type ActivityData,
   type CaActivity,
@@ -33,8 +35,8 @@ const data = (): ActivityData => ({
   version: 2,
   commonApp: {
     activities: [
-      { ...newCaActivity(), type: "Robotics", position: "Captain", organization: "FRC Team 1234", description: "Led 30 students.", grades: ["10", "11"], hoursPerWeek: 10, weeksPerYear: 30 },
-      { ...newCaActivity(), type: "Employment or work (paid)", position: "Cashier", organization: "Corner Cafe", description: "Weekend shifts." },
+      { ...newCaActivity(), type: "Robotics", leadership: true, position: "Captain", organization: "FRC Team 1234", description: "Led 30 students.", grades: ["10", "11"], hoursPerWeek: 10, weeksPerYear: 30 },
+      { ...newCaActivity(), type: "Employment or work (paid)", leadership: true, position: "Cashier", organization: "Corner Cafe", description: "Weekend shifts." },
       newCaActivity(), // blank slot: not copied
     ],
     honors: [{ ...newCaHonor(), title: "AIME Qualifier", grades: ["11"], levels: ["school", "national"] }],
@@ -643,4 +645,96 @@ test("every Common App activity type has a translation key in both languages", (
     assert.ok(key in en && key in zhTW, `${key} missing from a dictionary`);
   }
   assert.deepEqual(Object.keys(CA_TYPE_KEYS).sort(), [...CA_ACTIVITY_TYPES].sort()); // no stale entries either
+});
+
+test("ucVisibleQuestions follows UC's questions per category", () => {
+  const award = newUcEntry("award");
+  assert.deepEqual(ucVisibleQuestions(award), ["name", "awardLevels", "awardType", "grades", "extra", "description"]);
+  assert.deepEqual(ucVisibleQuestions({ ...award, grades: ["PG"] }), ["name", "awardLevels", "awardType", "grades", "extra", "description"]); // an award has no years/months
+  const edprep = newUcEntry("edprep");
+  assert.deepEqual(ucVisibleQuestions(edprep), ["program", "description", "grades", "hoursPerWeek", "weeksPerYear"]);
+  assert.ok(!ucVisibleQuestions({ ...edprep, program: "6" }).includes("name")); // a listed program needs no name
+  assert.deepEqual(ucVisibleQuestions({ ...edprep, program: "18" }).slice(0, 3), ["program", "name", "description"]);
+  const hours = ["hoursPerWeek", "weeksPerYear"];
+  assert.deepEqual(ucVisibleQuestions(newUcEntry("extracurricular")), ["name", "description", "grades", ...hours]);
+  assert.deepEqual(ucVisibleQuestions(newUcEntry("coursework")), ["name", "description", "grades", ...hours]);
+  assert.deepEqual(ucVisibleQuestions(newUcEntry("volunteer")), ["name", "extra", "description", "grades", ...hours]);
+  for (const key of ["extracurricular", "edprep", "coursework", "volunteer"] as const) {
+    const pg = ucVisibleQuestions({ ...newUcEntry(key), program: "6", grades: ["PG"] });
+    assert.deepEqual(pg.slice(pg.indexOf("grades"), pg.indexOf("grades") + 3), ["grades", "afterYears", "afterMonths"], key);
+    assert.ok(!ucVisibleQuestions({ ...newUcEntry(key), grades: ["12"] }).includes("afterYears"), key);
+  }
+});
+
+test("ucVisibleQuestions for work: hours grid only once a grade is ticked, end date only on 'no'", () => {
+  const work = newUcEntry("work");
+  assert.deepEqual(ucVisibleQuestions(work), ["name", "extra", "jobTitle", "description", "grades", "stillWorking", "start"]);
+  const g10 = ucVisibleQuestions({ ...work, grades: ["10"] });
+  assert.deepEqual(g10, ["name", "extra", "jobTitle", "description", "grades", "workHours", "stillWorking", "start"]);
+  assert.ok(!g10.includes("hoursPerWeek") && !g10.includes("weeksPerYear")); // work has no weeks per year
+  assert.ok(!ucVisibleQuestions({ ...work, grades: ["10"], stillWorking: true }).includes("end"));
+  assert.deepEqual(ucVisibleQuestions({ ...work, grades: ["10"], stillWorking: false }).slice(-3), ["stillWorking", "start", "end"]);
+  assert.deepEqual(ucVisibleQuestions({ ...work, grades: ["PG"] }).slice(4, 8), ["grades", "afterYears", "afterMonths", "workHours"]);
+});
+
+test("ucVisibleQuestions agrees with ucEntryIssues: a hidden question is never flagged", () => {
+  for (const make of Object.values(uc)) {
+    const e = make();
+    for (const variant of [e, { ...e, grades: [] }, { ...e, program: null }, { ...e, program: "18" }, { ...e, stillWorking: false, end: null }]) {
+      const visible = new Set<string>(ucVisibleQuestions(variant));
+      for (const i of ucEntryIssues(variant)) assert.ok(visible.has(i.field), `${variant.category}: ${i.field} is flagged but not shown`);
+    }
+  }
+});
+
+test("ucDraftIssues blocks an edit that would break the work dates, whichever date is moved", () => {
+  const w: UcEntry = { ...uc.work(), stillWorking: false, start: "2026-01", end: "2026-06" };
+  assert.deepEqual(ucEntryIssues(w), []);
+  assert.deepEqual(ucDraftIssues(w, { start: "2026-09" }).map((i) => [i.field, i.kind]), [["end", "invalid"]]); // the start edit breaks the end date
+  assert.deepEqual(ucDraftIssues(w, { end: "2025-12" }).map((i) => [i.field, i.kind]), [["end", "invalid"]]);
+  assert.deepEqual(ucDraftIssues(w, { start: "2026-03" }), []);
+  assert.deepEqual(ucDraftIssues(w, { end: "2027-12" }), []);
+  assert.equal(ucDraftIssues(w, { start: "1900-01" })[0].field, "start");
+  assert.deepEqual(ucDraftIssues({ ...w, stillWorking: true }, { start: "2026-09" }), []); // no end date to conflict with
+});
+
+test("ucDraftIssues blocks over-long text counted the UC way, and out-of-range numbers", () => {
+  const e = uc.extracurricular();
+  assert.deepEqual(ucDraftIssues(e, { description: "x".repeat(350) }), []);
+  assert.deepEqual(ucDraftIssues(e, { description: "x".repeat(349) + "\n" }).map((i) => i.field), ["description"]);
+  assert.deepEqual(ucDraftIssues(e, { name: "x".repeat(61) }).map((i) => i.field), ["name"]);
+  assert.deepEqual(ucDraftIssues(e, { hoursPerWeek: 169 }).map((i) => i.field), ["hoursPerWeek"]);
+  assert.deepEqual(ucDraftIssues(e, { hoursPerWeek: 1.5 }), []);
+  assert.deepEqual(ucDraftIssues(uc.work(), { workHours: { "11": { schoolYear: 0, summer: null } } }).map((i) => i.field), ["workHours"]);
+  assert.deepEqual(ucDraftIssues({ ...uc.edprep(), program: "18" }, { name: "x".repeat(31) }).map((i) => i.field), ["name"]);
+  assert.deepEqual(ucDraftIssues({ ...uc.edprep(), program: "18" }, { name: "x".repeat(30) }), []);
+});
+
+test("ucDraftIssues ignores problems the entry already had on other fields", () => {
+  const e = { ...uc.extracurricular(), description: "x".repeat(400) };
+  assert.deepEqual(ucDraftIssues(e, { hoursPerWeek: 12 }), []);
+  assert.deepEqual(ucDraftIssues(e, { hoursPerWeek: 500 }).map((i) => i.field), ["hoursPerWeek"]);
+  assert.deepEqual(ucDraftIssues(e, { description: "y".repeat(351) }).map((i) => i.field), ["description"]);
+});
+
+test("a stale role is not copied to UC unless the student answered yes to the leadership question", () => {
+  const act = (patch: Partial<CaActivity>) => ({
+    ...EMPTY_ACTIVITIES,
+    commonApp: { activities: [{ ...newCaActivity(), type: "Robotics", organization: "Robo Club", position: "Treasurer", description: "Built robots.", ...patch }], honors: [] },
+  });
+  for (const leadership of [false, null]) {
+    const [d] = ucDraftsFromCommonApp(act({ leadership }));
+    assert.equal(d.description, "Built robots.", String(leadership));
+    assert.ok(!JSON.stringify(d).includes("Treasurer"), String(leadership));
+  }
+  assert.equal(ucDraftsFromCommonApp(act({ leadership: true }))[0].description, "Treasurer — Built robots.");
+  assert.equal(ucDraftsFromCommonApp(act({ leadership: false, organization: "", description: "" })).length, 0); // only a stale role: nothing to copy
+  assert.equal(ucDraftsFromCommonApp(act({ leadership: true, organization: "", description: "" }))[0].name, "Treasurer");
+  assert.equal(ucDraftsFromCommonApp(act({ type: "Employment or work (paid)", leadership: false }))[0].jobTitle, "");
+  assert.equal(ucDraftsFromCommonApp(act({ type: "Employment or work (paid)", leadership: true }))[0].jobTitle, "Treasurer");
+});
+
+test("a stale sport is not copied to UC", () => {
+  const act = (type: string) => ({ ...EMPTY_ACTIVITIES, commonApp: { activities: [{ ...newCaActivity(), type, sport: "Soccer", organization: "Club", description: "Played." }], honors: [] } });
+  for (const type of ["Robotics", "Athletics (other)"]) assert.ok(!JSON.stringify(ucDraftsFromCommonApp(act(type))).includes("Soccer"), type);
 });
