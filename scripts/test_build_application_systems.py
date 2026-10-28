@@ -1,5 +1,5 @@
 """Tests for scripts/build_application_systems.py. Run: python -I scripts/test_build_application_systems.py"""
-import copy, importlib.util, json, os, tempfile, unittest
+import copy, importlib.util, json, os, re, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 spec = importlib.util.spec_from_file_location("build_application_systems", os.path.join(HERE, "build_application_systems.py"))
@@ -46,16 +46,49 @@ class ValidateTest(unittest.TestCase):
 
 class BuildTest(unittest.TestCase):
     def test_members_use_database_slugs_and_merge_with_platforms(self):
-        colleges, sources = bas.build(VALID, {"purdue": {"commonapp"}, "ut-austin": {"commonapp"}}, SLUGS)
+        colleges, routes, sources = bas.build(VALID, {"purdue": {"commonapp"}, "ut-austin": {"commonapp"}}, SLUGS)
         self.assertEqual(colleges, {"purdue": ["commonapp", "stars"], "ut-austin": ["commonapp"], "carnegie-mellon": ["stars"]})
+        self.assertEqual(routes, {"purdue": "commonapp", "ut-austin": "commonapp", "carnegie-mellon": "direct"})
         self.assertEqual(sources, {"stars": "https://stars.example.org/colleges"})
 
     def test_render_is_valid_sorted_json(self):
-        text = bas.render({"b": ["x"], "a": ["y", "z"]}, {"stars": "https://s.example"})
+        text = bas.render({"b": ["x"], "a": ["y", "z"]}, {"b": "direct", "a": "uc"}, {"stars": "https://s.example"})
         data = json.loads(text)
         self.assertEqual(list(data["colleges"]), ["a", "b"])
+        self.assertEqual(list(data["routes"]), ["a", "b"])
         self.assertEqual(data["sources"], {"stars": "https://s.example"})
-        self.assertEqual(json.loads(bas.render({}, {}))["colleges"], {})
+        empty = json.loads(bas.render({}, {}, {}))
+        self.assertEqual((empty["colleges"], empty["routes"]), ({}, {}))
+
+
+class RouteTest(unittest.TestCase):
+    def test_route_prefers_common_app(self):
+        self.assertEqual(bas.route_of(["applytexas", "commonapp"]), "commonapp")
+
+    def test_route_coalition_before_uc(self):
+        self.assertEqual(bas.route_of(["coalition", "uc"]), "coalition")
+
+    def test_route_direct_when_no_route(self):
+        self.assertEqual(bas.route_of(["stars"]), "direct")
+        self.assertEqual(bas.route_of([]), "direct")
+
+    def test_every_college_has_route(self):
+        colleges, routes, _ = bas.build(VALID, {"purdue": {"commonapp"}}, SLUGS)
+        self.assertEqual(set(routes), set(SLUGS.values()))
+        self.assertEqual(routes, {"purdue": "commonapp", "ut-austin": "direct", "carnegie-mellon": "direct"})
+        self.assertEqual(colleges["carnegie-mellon"], ["stars"])
+
+    def test_render_writes_routes(self):
+        data = json.loads(bas.render({"a": ["y"]}, {"a": "direct", "b": "uc"}, {"stars": "https://s.example"}))
+        self.assertEqual(data["routes"], {"a": "direct", "b": "uc"})
+
+    def test_route_order_matches_route_systems_in_portals_ts(self):
+        with open(bas.PORTALS_TS, encoding="utf-8") as f:
+            text = f.read()
+        start = text.index("export const SYSTEMS")
+        end = text.index("\n];", start)
+        blocks = re.findall(r"\{\s*key:\s*\"([a-z0-9]+)\"[^}]*?kind:\s*\"route\"", text[start:end], re.S)
+        self.assertEqual(sorted(blocks), sorted(bas.ROUTE_ORDER))
 
 
 class PlatformsTest(unittest.TestCase):

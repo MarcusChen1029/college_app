@@ -6,10 +6,12 @@ import { computeFit } from "@/lib/fit";
 import { daysUntil } from "@/lib/format";
 import { markSent, onlyEnglishPlan, onlyTestPlan, progress, type Checklist, type SentKind } from "@/lib/checklist";
 import { hasDecision, isDeadlineDone, resultStatus, stage } from "@/lib/application";
+import { collegeRoute } from "@/lib/application-systems-data";
 import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
+import { EMPTY_LOGIN, groupProgress, routeGroups, SYSTEMS, type Login, type PortalData } from "@/lib/portals";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
 import { scoredTests } from "@/lib/test-plan";
 import { resultTone, stageTone } from "@/lib/status";
@@ -22,6 +24,8 @@ import { ChecklistPanel, SELECT, SELECT_BASE, usePlanLabel, useResultLabel } fro
 import { CrunchCard } from "./CrunchCard";
 import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
+import { LoginRow, sysText } from "./LoginRow";
+import { useStarsSync } from "./useStarsSync";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -97,6 +101,7 @@ export function MyList({
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
+  useStarsSync(student);
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
   const international = !!student.profile.international;
 
@@ -275,6 +280,42 @@ export function MyList({
     );
   const place = (c: CollegeSummary, e: ListEntry) => [c.city, c.state_region, e.custom?.country].filter(Boolean).join(", ");
 
+  // One group per application route (Common App, UC, ..., Direct); the shared login for a route sits on its group header.
+  const groups = routeGroups(
+    entries.map((x) => ({ ...x, slug: x.entry.slug, custom: !!x.entry.custom })),
+    collegeRoute,
+  );
+  const portalData: PortalData = student.profile.portals ?? {};
+  const saveRouteLogin = (route: string, login: Login) => student.updateProfile({ portals: { ...portalData, systems: { ...portalData.systems, [route]: login } } });
+  const groupHeader = (route: string, statuses: ListEntry["status"][]) => {
+    const { submitted, total, done } = groupProgress(statuses);
+    const pill = (
+      <StatusPill tone={done ? "done" : "neutral"}>{done ? t("application.group.done", { total }) : t("application.group.progress", { submitted, total })}</StatusPill>
+    );
+    const sys = SYSTEMS.find((s) => s.key === route);
+    if (!sys) {
+      return (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 px-1 py-1">
+          <h3 className="font-semibold">{t("application.group.direct")}</h3>
+          <span className="text-xs text-zinc-500">{t("application.group.directHint")}</span>
+          <span className="ml-auto">{pill}</span>
+        </div>
+      );
+    }
+    return (
+      <ul>
+        <LoginRow
+          name={sysText(t, "name", sys.key, sys.name)}
+          hint={sysText(t, "hint", sys.key, sys.hint)}
+          official={sys.url}
+          login={portalData.systems?.[sys.key] ?? EMPTY_LOGIN}
+          onSave={(l) => saveRouteLogin(sys.key, l)}
+          status={pill}
+        />
+      </ul>
+    );
+  };
+
   return (
     <div className="space-y-4">
     <CrunchCard crunch={crunch} onOpen={setOpenSlug} onMarkSent={markAllSent} essayCounts={essayCounts} />
@@ -321,7 +362,7 @@ export function MyList({
       </Modal>
     )}
     <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
-      <div>
+      <div className="min-w-0">
       <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
         <span>{t("application.allSent.label")}</span>
         {sentButton("transcript", t("application.allSent.transcript"))}
@@ -341,69 +382,76 @@ export function MyList({
               <th className="w-8 p-2" />
             </tr>
           </thead>
-          <tbody>
-            {entries.map(({ entry, college }) => {
-              const fit = fits.get(college.slug);
-              return (
-                <tr
-                  key={entry.slug}
-                  className="cursor-pointer border-t border-zinc-100 hover:bg-zinc-50"
-                  onClick={(e) => {
-                    if (!(e.target as HTMLElement).closest("a, select, input, button")) setOpenSlug(entry.slug);
-                  }}
-                >
-                  <td className="p-2">
-                    <div className="flex items-center gap-2">
-                      <TierBadge tier={college.general_tier} size="sm" />
-                      <div>
-                        {collegeLink(college, college.short_name ?? college.name, "font-medium hover:underline")}
-                        {entry.custom && (
-                          <div className="text-[11px] text-zinc-500">{t("application.custom")}{place(college, entry) && ` · ${place(college, entry)}`}</div>
-                        )}
+          {groups.map((g) => (
+            <tbody key={g.route} className="border-t-2 border-zinc-200 first-of-type:border-t-0">
+              <tr>
+                <th scope="rowgroup" colSpan={6} className="bg-zinc-50/60 p-2 text-left font-normal">
+                  {groupHeader(g.route, g.items.map((x) => x.entry.status))}
+                </th>
+              </tr>
+              {g.items.map(({ entry, college }) => {
+                const fit = fits.get(college.slug);
+                return (
+                  <tr
+                    key={entry.slug}
+                    className="cursor-pointer border-t border-zinc-100 hover:bg-zinc-50"
+                    onClick={(e) => {
+                      if (!(e.target as HTMLElement).closest("a, select, input, button")) setOpenSlug(entry.slug);
+                    }}
+                  >
+                    <td className="p-2">
+                      <div className="flex items-center gap-2">
+                        <TierBadge tier={college.general_tier} size="sm" />
+                        <div>
+                          {collegeLink(college, college.short_name ?? college.name, "font-medium hover:underline")}
+                          {entry.custom && (
+                            <div className="text-[11px] text-zinc-500">{t("application.custom")}{place(college, entry) && ` · ${place(college, entry)}`}</div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="p-2">{fit ? <FitBadge fit={fit.fit} result={fit} /> : <span className="text-xs text-zinc-400">—</span>}</td>
-                  <td className="p-2">
-                    <select
-                      className={SELECT}
-                      value={entry.plan ?? ""}
-                      onChange={(e) => student.update(entry.slug, { plan: e.target.value || null })}
-                      aria-label={t("application.planFor", { name: college.name })}
-                    >
-                      <option value="">{t("application.undecided")}</option>
-                      {planOptions(college).map((p) => (
-                        <option key={p.key} value={p.key}>
-                          {planLabel(p.key, p.label)}
-                          {p.binding ? t("application.binding") : ""}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                  <td className="p-2">
-                    <StatusCell
-                      entry={entry}
-                      name={college.name}
-                      onSubmit={(submitted) => student.update(entry.slug, { status: submitted ? "submitted" : "in_progress" })}
-                    />
-                  </td>
-                  <td className="p-2">
-                    <ProgressBadge checklist={entry.checklist} />
-                  </td>
-                  <td className="p-2 text-right">
-                    <button
-                      className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-                      onClick={() => setOpenSlug(entry.slug)}
-                      aria-haspopup="dialog"
-                      aria-label={t("application.openChecklist", { name: college.name })}
-                    >
-                      ▸
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+                    </td>
+                    <td className="p-2">{fit ? <FitBadge fit={fit.fit} result={fit} /> : <span className="text-xs text-zinc-400">—</span>}</td>
+                    <td className="p-2">
+                      <select
+                        className={SELECT}
+                        value={entry.plan ?? ""}
+                        onChange={(e) => student.update(entry.slug, { plan: e.target.value || null })}
+                        aria-label={t("application.planFor", { name: college.name })}
+                      >
+                        <option value="">{t("application.undecided")}</option>
+                        {planOptions(college).map((p) => (
+                          <option key={p.key} value={p.key}>
+                            {planLabel(p.key, p.label)}
+                            {p.binding ? t("application.binding") : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td className="p-2">
+                      <StatusCell
+                        entry={entry}
+                        name={college.name}
+                        onSubmit={(submitted) => student.update(entry.slug, { status: submitted ? "submitted" : "in_progress" })}
+                      />
+                    </td>
+                    <td className="p-2">
+                      <ProgressBadge checklist={entry.checklist} />
+                    </td>
+                    <td className="p-2 text-right">
+                      <button
+                        className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
+                        onClick={() => setOpenSlug(entry.slug)}
+                        aria-haspopup="dialog"
+                        aria-label={t("application.openChecklist", { name: college.name })}
+                      >
+                        ▸
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          ))}
         </table>
         {hasScores && (
           <p className="border-t border-zinc-100 p-2 text-xs text-zinc-500">

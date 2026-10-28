@@ -9,7 +9,8 @@ Sources of "college uses system":
   - requirements.platforms in data/cycle_2026_27.json (keyed by slug) and data/cycle_2026_27/<file>.json:
     common_app -> commonapp, coalition -> coalition, uc_app -> uc; own and questbridge add nothing.
 Output is keyed by the college's database slug (the "slug" field in data/colleges/<file>.json, else the file name),
-like build_supplements.py. System keys are read from SYSTEMS in web/lib/portals.ts so the two cannot drift.
+like build_supplements.py. "routes" gives EVERY college in data/colleges/ exactly one application route (ROUTE_ORDER,
+else "direct"): My list groups colleges by it. System keys are read from SYSTEMS in web/lib/portals.ts so the two cannot drift.
 Every error names the file and the field. Nothing is written while anything is invalid.
 The app reads the output through web/lib/application-systems-data.ts.
 """
@@ -25,6 +26,9 @@ OUT = os.path.join(ROOT, "web/lib/data/application-systems.json")
 
 PLATFORM_TO_SYSTEM = {"common_app": "commonapp", "coalition": "coalition", "uc_app": "uc"}
 PLATFORMS_IGNORED = {"own", "questbridge"}
+# A college that takes several routes is listed under the first of these it takes (most general first); none = "direct".
+# Must list every kind: "route" system in web/lib/portals.ts (a test checks).
+ROUTE_ORDER = ["commonapp", "coalition", "uc", "calstate", "applytexas", "ucas", "ouac", "educationplannerbc", "applyalberta", "sram", "uac", "vtac", "qtac", "satac", "tisc"]
 TOP_KEYS = {"_about", "systems"}
 SYSTEM_KEYS = {"source", "checked", "members"}
 SYSTEM_OPTIONAL = {"notes"}
@@ -169,22 +173,35 @@ def load_platforms(slugs, main_path=CYCLE_MAIN, dir_path=CYCLE_DIR):
     return out, errors
 
 
+def route_of(keys):
+    """The one route a college is listed under: the first of ROUTE_ORDER it takes, else "direct"."""
+    return next((r for r in ROUTE_ORDER if r in keys), "direct")
+
+
 def build(rec, platforms, slugs):
-    """(colleges: database slug -> sorted system keys, sources: system key -> URL)."""
+    """(colleges: database slug -> sorted system keys, routes: every database slug -> route key, sources: system key -> URL)."""
     colleges = {slug: set(keys) for slug, keys in platforms.items()}
     for key, sysrec in rec["systems"].items():
         for m in sysrec["members"]:
             colleges.setdefault(slugs.get(m, m), set()).add(key)
-    return {slug: sorted(keys) for slug, keys in colleges.items() if keys}, {k: v["source"] for k, v in rec["systems"].items()}
+    colleges = {slug: sorted(keys) for slug, keys in colleges.items() if keys}
+    routes = {slug: route_of(colleges.get(slug, [])) for slug in sorted(set(slugs.values()) | set(colleges))}
+    return colleges, routes, {k: v["source"] for k, v in rec["systems"].items()}
 
 
-def render(colleges, sources):
+def render(colleges, routes, sources):
     """One college per line: small diffs, still valid JSON."""
     lines = ["{", '  "source": "data/application_systems_2026_27.json + requirements.platforms via scripts/build_application_systems.py",', '  "colleges": {']
     items = sorted(colleges.items())
     for i, (slug, keys) in enumerate(items):
         comma = "," if i < len(items) - 1 else ""
         lines.append(f"    {json.dumps(slug)}: {json.dumps(keys, separators=(',', ':'))}{comma}")
+    lines.append("  },")
+    lines.append('  "routes": {')
+    route_items = sorted(routes.items())
+    for i, (slug, route) in enumerate(route_items):
+        comma = "," if i < len(route_items) - 1 else ""
+        lines.append(f"    {json.dumps(slug)}: {json.dumps(route)}{comma}")
     lines.append("  },")
     lines.append('  "sources": {')
     src_items = sorted(sources.items())
@@ -214,14 +231,22 @@ def main():
         for e in errors:
             print(f"  {e}")
         sys.exit(1)
-    colleges, sources = build(rec, platforms, slugs)
-    text = render(colleges, sources)
+    colleges, routes, sources = build(rec, platforms, slugs)
+    missing = sorted(set(slugs.values()) - set(routes))
+    if missing:  # build() routes every college, so this only trips if that ever changes
+        print(f"no route for: {', '.join(missing)}")
+        sys.exit(1)
+    text = render(colleges, routes, sources)
     json.loads(text)  # sanity: the hand-assembled layout must parse
     counts = {}
     for keys in colleges.values():
         for k in keys:
             counts[k] = counts.get(k, 0) + 1
     summary = ", ".join(f"{k} {v}" for k, v in sorted(counts.items())) or "no systems"
+    route_counts = {}
+    for r in routes.values():
+        route_counts[r] = route_counts.get(r, 0) + 1
+    summary += "; routes: " + ", ".join(f"{r} {route_counts[r]}" for r in [*ROUTE_ORDER, "direct"] if r in route_counts)
     if check:
         current = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""
         if current != text:

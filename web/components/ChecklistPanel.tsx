@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { requiresStars } from "@/lib/application-systems-data";
 import {
+  AFTER_APPLY,
   ENGLISH_PLANS,
   intlSteps,
   isDone,
@@ -56,6 +58,8 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
   const essays = c.essay_list ?? [];
   const finals = essays.filter((e) => e.status === "final").length;
   const steps = intlSteps(c, entry.status, { international, financeWhen });
+  // AFTER_APPLY holds only STARS today, so the college's STARS requirement decides whether the section shows.
+  const afterApply = requiresStars(college.slug) ? AFTER_APPLY : [];
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
@@ -137,6 +141,16 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
             </Check>
           ))}
           <p className="text-[11px] text-zinc-500">{t("application.intl.financesHint")}</p>
+        </Section>
+      )}
+
+      {afterApply.length > 0 && (
+        <Section title={t("application.after.title")} done={afterApply.every(([k]) => !!c[k])} hint={t("application.after.notReady")} className="md:col-span-2">
+          {afterApply.map(([k]) => (
+            <Check key={k} checked={!!c[k]} onChange={(v) => set({ [k]: v })}>
+              {t(`application.after.${k}`)}
+            </Check>
+          ))}
         </Section>
       )}
 
