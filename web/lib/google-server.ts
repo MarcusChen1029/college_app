@@ -1,6 +1,7 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import { CALLBACK_PATH, decryptToken, encryptToken, oauthOrigin, parseKey } from "./google-docs";
+import { tokenSource } from "./portal-vault";
 
 // Server side of "create a Google Doc for an essay". The app has no cookie sessions, so the browser sends its
 // Supabase access token as a bearer. The service-role key is used only here, for the google_tokens table.
@@ -46,10 +47,13 @@ export function fail(code: string, status: number) {
   return Response.json({ error: code }, { status });
 }
 
-/** The signed-in student's id, checked with Supabase (rejects tokens whose session was signed out). */
+/**
+ * The signed-in student's id, checked with Supabase (rejects tokens whose session was signed out). Only the website's own
+ * session counts: a connected AI app's token (it carries client_id) must not link a Google account or make docs.
+ */
 export async function bearerUser(req: Request, cfg: GoogleConfig): Promise<string | null> {
   const m = /^Bearer\s+(\S+)$/i.exec(req.headers.get("authorization") ?? "");
-  if (!m) return null;
+  if (!m || tokenSource(m[1]) !== "website") return null;
   try {
     const { data, error } = await createClient(cfg.supabaseUrl, cfg.publishableKey, { auth: NO_SESSION }).auth.getUser(m[1]);
     return error || !data.user ? null : data.user.id;
@@ -101,6 +105,20 @@ async function tokenRequest(params: Record<string, string>): Promise<{ ok: boole
 
 export function exchangeCode(cfg: GoogleConfig, code: string, verifier: string, redirect: string) {
   return tokenRequest({ grant_type: "authorization_code", code, code_verifier: verifier, redirect_uri: redirect, client_id: cfg.clientId, client_secret: cfg.clientSecret });
+}
+
+/** Tells Google to drop a refresh token (account deletion). Best effort: the stored copy is deleted either way. */
+export async function revokeAtGoogle(refreshToken: string): Promise<boolean> {
+  try {
+    const res = await fetch("https://oauth2.googleapis.com/revoke", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ token: refreshToken }),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }
 
 export function refreshAccess(cfg: GoogleConfig, refreshToken: string) {

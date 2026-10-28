@@ -140,6 +140,9 @@ test("essays cannot be removed: updating never shrinks the list and the module h
 });
 
 test("activities: add, update, delete a Common App activity", () => {
+  for (const key of ["constructor", "toString", "hasOwnProperty"]) {
+    assert.equal(addActivity(undefined, "common_app_activity", { [key]: { ok: true, value: "<x>" } }).ok, false, key);
+  }
   const added = addActivity(undefined, "common_app_activity", { type: "Robotics", position: "Captain", organization: "FRC 1234", description: "Led 20 students.", grades: ["10", "11"], hoursPerWeek: 12 });
   assert.ok(added.ok);
   assert.equal(added.value.data.commonApp.activities.length, 1);

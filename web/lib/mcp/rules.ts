@@ -232,7 +232,8 @@ function checkFields(kind: ActivityKind, fields: Record<string, unknown>, extra:
   const out: Record<string, unknown> = {};
   for (const [key, v] of Object.entries(fields)) {
     if (v === undefined) continue;
-    const s = spec[key];
+    // Own keys only: "constructor" or "__proto__" must not resolve to something inherited from Object.prototype.
+    const s = Object.hasOwn(spec, key) ? spec[key] : undefined;
     if (!s) return fail(`Unknown field "${key}" for ${kind}. Allowed: ${Object.keys(spec).join(", ")}.`);
     const r = s(v, key);
     if (!r.ok) return r;
@@ -343,7 +344,7 @@ export function applyProfilePatch(profile: StudentProfile, patch: Record<string,
   const tests = (): TestDetails => next.tests as TestDetails;
   for (const [key, v] of Object.entries(patch)) {
     if (v === undefined) continue;
-    if (PROFILE_FORBIDDEN[key]) return fail(PROFILE_FORBIDDEN[key]);
+    if (Object.hasOwn(PROFILE_FORBIDDEN, key)) return fail(PROFILE_FORBIDDEN[key]);
     switch (key) {
       case "gpa": {
         if (v !== null && !(typeof v === "number" && Number.isFinite(v) && v >= 0 && v <= 4)) return fail("gpa must be a number from 0 to 4 (unweighted, 4.0 scale), or null.");
