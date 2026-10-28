@@ -468,21 +468,221 @@ export function ucEntryIssues(e: UcEntry): Issue[] {
   return c.issues;
 }
 
+// ── Upgrading stored data ──
+// Anything stored before the 2026-27 format (no `version`) is converted here; v2 data passes through
+// unchanged. Rules: docs/superpowers/specs/2026-10-28-activities-filler-design.md §3.1-§3.2. The SQL
+// backfill in migration 0038 applies the same rules and is checked against lib/fixtures/activities-v1.json
+// -> activities-v2.json, so keep this deterministic: ids and order are kept, nothing is minted or guessed.
+
+const OLD_CA_TYPES = new Map<string, string>([
+  ["Academic", "Academic"],
+  ["Art", "Art"],
+  ["Athletics: Club", "Athletics (other)"],
+  ["Athletics: JV/Varsity", "Athletics (JV or varsity)"],
+  ["Career Oriented", "Career readiness or practicums"],
+  ["Community Service (Volunteer)", "Community service or volunteer work"],
+  ["Computer/Technology", "Computer or technology"],
+  ["Cultural", "Cultural"],
+  ["Dance", "Dance"],
+  ["Debate/Speech", "Debate or speech"],
+  ["Environmental", "Environmental"],
+  ["Family Responsibilities", "Family responsibilities"],
+  ["Foreign Exchange", "Study abroad or foreign exchange"],
+  ["Foreign Language", "Foreign language"],
+  ["Internship", "Internship"],
+  ["Journalism/Publication", "Journalism or publishing"],
+  ["Junior R.O.T.C.", "R.O.T.C. or military"],
+  ["LGBT", "LGBT+"],
+  ["Music: Instrumental", "Music"],
+  ["Music: Vocal", "Music"],
+  ["Religious", "Religious"],
+  ["Research", "Research"],
+  ["Robotics", "Robotics"],
+  ["School Spirit", "School spirit"],
+  ["Science/Math", "Science or math"],
+  ["Social Justice", "Social justice or organizing"],
+  ["Student Govt./Politics", "Student government or politics"],
+  ["Theater/Drama", "Theater or drama"],
+  ["Work (Paid)", "Employment or work (paid)"],
+  ["Other Club/Activity", "Other"],
+]);
+
+const LEGACY_PREFIX = "From your earlier version: ";
+
+type Raw = Record<string, unknown>;
+const isRecord = (v: unknown): v is Raw => typeof v === "object" && v !== null && !Array.isArray(v);
+const text = (v: unknown) => (typeof v === "string" ? v : "");
+const numberOrNull = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? v : null);
+const boolOrNull = (v: unknown) => (typeof v === "boolean" ? v : null);
+const monthOrNull = (v: unknown) => (typeof v === "string" && v !== "" ? v : null);
+const listOf = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
+const gradesOf = (v: unknown): Grade[] => listOf(v).filter((g): g is Grade => GRADES.includes(g as Grade));
+/** Case-insensitive and whitespace-collapsed, for matching old free text to a program label. */
+const collapse = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
+
+function caTiming(v: unknown): CaTiming | null {
+  if (Array.isArray(v)) {
+    const school = v.includes("school");
+    const brk = v.includes("break");
+    return school && brk ? "all" : school ? "school" : brk ? "break" : null;
+  }
+  return v === "school" || v === "break" || v === "all" ? v : null;
+}
+
+function caContinue(v: unknown): CaContinue | null {
+  if (v === true) return "yes";
+  if (v === false) return "no";
+  return v === "yes" || v === "no" || v === "not_sure" ? v : null;
+}
+
+function upgradeCaActivity(r: Raw): CaActivity {
+  const type = text(r.type);
+  const position = text(r.position);
+  const a: CaActivity = {
+    id: text(r.id) || newId(),
+    type: OLD_CA_TYPES.get(type) ?? type, // a current label is not an old key, so it passes through
+    sport: text(r.sport),
+    // The old form had no such question; a role was the only hint. Not answered is null, never false.
+    leadership: r.leadership === undefined ? (position.trim() ? true : null) : boolOrNull(r.leadership),
+    position,
+    organization: text(r.organization),
+    description: text(r.description),
+    grades: gradesOf(r.grades),
+    timing: caTiming(r.timing),
+    afterStart: monthOrNull(r.afterStart),
+    stillParticipating: boolOrNull(r.stillParticipating),
+    afterEnd: monthOrNull(r.afterEnd),
+    hoursPerWeek: numberOrNull(r.hoursPerWeek),
+    weeksPerYear: numberOrNull(r.weeksPerYear),
+    continueInCollege: caContinue(r.continueInCollege),
+  };
+  if (text(r.legacy)) a.legacy = text(r.legacy);
+  return a;
+}
+
+function upgradeCaHonor(r: Raw): CaHonor {
+  return {
+    id: text(r.id) || newId(),
+    title: text(r.title),
+    grades: gradesOf(r.grades),
+    levels: listOf(r.levels).filter((l): l is HonorLevel => typeof l === "string" && l in HONOR_LEVELS),
+  };
+}
+
+/** The UC program an old free-text name stands for: its full label, the text in its last "( )", or the name before its first " (". */
+function ucProgramFor(name: string): string | null {
+  const key = collapse(name);
+  if (!key) return null;
+  for (const p of UC_EDPREP_PROGRAMS) {
+    if (p.value === UC_EDPREP_OTHER) continue; // "Other" is the fallback, not a match
+    const keys = [p.label, /\(([^()]*)\)[^()]*$/.exec(p.label)?.[1], p.label.split(" (")[0]];
+    if (keys.some((k) => k && collapse(k) === key)) return p.value;
+  }
+  return null;
+}
+
+const UC_YEARS_LIST: readonly unknown[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "10+"];
+
+function workHoursOf(v: unknown): UcWorkHours {
+  const out: UcWorkHours = {};
+  if (!isRecord(v)) return out;
+  for (const g of GRADES) {
+    const h = v[g];
+    if (isRecord(h)) out[g] = { schoolYear: numberOrNull(h.schoolYear), summer: numberOrNull(h.summer) };
+  }
+  return out;
+}
+
+/** `v1`: the entry is in the earlier shape, where work kept the job title in `name` and the employer in `organization`. */
+function upgradeUcEntry(r: Raw, v1: boolean): UcEntry {
+  const category = UC_CATEGORY_KEYS.includes(r.category as UcCategory) ? (r.category as UcCategory) : "extracurricular";
+  const level = r.awardLevel;
+  const e: UcEntry = {
+    id: text(r.id) || newId(),
+    category,
+    name: text(r.name),
+    jobTitle: text(r.jobTitle),
+    extra: text(r.extra),
+    description: text(r.description),
+    grades: gradesOf(r.grades),
+    hoursPerWeek: numberOrNull(r.hoursPerWeek),
+    weeksPerYear: numberOrNull(r.weeksPerYear),
+    afterYears: UC_YEARS_LIST.includes(r.afterYears) ? (r.afterYears as UcAfterYears) : null,
+    afterMonths: numberOrNull(r.afterMonths),
+    // Old entries held one level; current ones hold a list.
+    awardLevels: Array.isArray(r.awardLevels)
+      ? r.awardLevels.filter((l): l is UcAwardLevel => typeof l === "string" && l in UC_AWARD_LEVELS)
+      : typeof level === "string" && level in UC_AWARD_LEVELS
+        ? [level as UcAwardLevel]
+        : [],
+    awardType: r.awardType === "academic" || r.awardType === "non_academic" ? r.awardType : null,
+    program: typeof r.program === "string" && r.program !== "" ? r.program : null,
+    workHours: workHoursOf(r.workHours),
+    stillWorking: boolOrNull(r.stillWorking),
+    start: monthOrNull(r.start),
+    end: monthOrNull(r.end),
+  };
+  let legacy = text(r.legacy);
+  if (v1 && category === "work") {
+    e.jobTitle = text(r.name);
+    e.name = text(r.organization);
+    // The old hours have no matching question (UC asks per grade); keep them as a note rather than guess a grid.
+    const hours = [e.hoursPerWeek !== null && `${e.hoursPerWeek} hours/week`, e.weeksPerYear !== null && `${e.weeksPerYear} weeks/year`].filter(Boolean);
+    if (hours.length) legacy = `${LEGACY_PREFIX}${hours.join(", ")}`;
+    e.hoursPerWeek = null;
+    e.weeksPerYear = null;
+  } else if (v1 && category === "edprep") {
+    const old = text(r.name);
+    const program = ucProgramFor(old);
+    if (program) [e.program, e.name] = [program, ""];
+    else if (!collapse(old)) [e.program, e.name] = [null, ""]; // nothing to go on: left for the student
+    else if (old.length <= UC_LIMITS.otherProgramName) [e.program, e.name] = [UC_EDPREP_OTHER, old];
+    else {
+      [e.program, e.name] = [UC_EDPREP_OTHER, ""]; // too long for UC's Other box
+      legacy = `${LEGACY_PREFIX}${old}`;
+    }
+  }
+  if (legacy) e.legacy = legacy;
+  if (text(r.fromId)) e.fromId = text(r.fromId);
+  return e;
+}
+
+/**
+ * Reads stored activities in any shape (earlier format, current format, `{}`, null) and returns the
+ * current one. Never throws; missing values become null / "" / [] so the validators never see
+ * `undefined`. Upgrading already-current data changes nothing.
+ */
+export function upgradeActivities(raw: unknown): ActivityData {
+  const src = isRecord(raw) ? raw : {};
+  const v1 = src.version !== 2;
+  const commonApp = isRecord(src.commonApp) ? src.commonApp : {};
+  return {
+    version: 2,
+    commonApp: {
+      activities: listOf(commonApp.activities).filter(isRecord).map(upgradeCaActivity),
+      honors: listOf(commonApp.honors).filter(isRecord).map(upgradeCaHonor),
+    },
+    uc: listOf(src.uc)
+      .filter(isRecord)
+      .map((e) => upgradeUcEntry(e, v1)),
+  };
+}
+
 // ── Common App → UC drafts ──
-// NOTE: still the v1 conversion, kept compiling against the v2 types; rewritten in Task 2.
 
 const CA_TO_UC_LEVEL: Record<HonorLevel, UcAwardLevel> = { school: "school", state_regional: "state", national: "national", international: "international" };
 
 /** Pick the UC category a Common App activity most likely belongs in. */
 function ucCategoryFor(type: string): UcCategory {
-  if (type === "Work (Paid)" || type === "Internship") return "work";
-  if (type === "Community Service (Volunteer)") return "volunteer";
+  if (type === "Employment or work (paid)" || type === "Internship") return "work";
+  if (type === "Community service or volunteer work") return "volunteer";
   return "extracurricular";
 }
 
 /**
  * UC drafts for Common App items not copied yet, in Common App order (activities, then honors).
  * Text is carried over as a starting point; the UC boxes are longer, so students should expand it.
+ * Questions UC asks that Common App does not (work dates and hours, award type) stay blank.
  */
 export function ucDraftsFromCommonApp(data: ActivityData): UcEntry[] {
   const copied = new Set(data.uc.map((e) => e.fromId).filter(Boolean));
@@ -490,10 +690,21 @@ export function ucDraftsFromCommonApp(data: ActivityData): UcEntry[] {
     .filter((a) => !copied.has(a.id) && (a.organization || a.position || a.description))
     .map((a): UcEntry => {
       const category = ucCategoryFor(a.type);
+      if (category === "work") {
+        // UC work asks for the workplace and the job title separately, and hours per grade instead of per week.
+        return {
+          ...newUcEntry(category),
+          name: a.organization.slice(0, UC_LIMITS.name),
+          jobTitle: a.position.slice(0, UC_LIMITS.name),
+          description: a.description.slice(0, UC_LIMITS.description),
+          grades: a.grades,
+          fromId: a.id,
+        };
+      }
       return {
         ...newUcEntry(category),
-        name: (category === "work" ? a.position : a.organization || a.position).slice(0, UC_LIMITS.name),
-        description: [category === "work" ? "" : a.position, a.description].filter(Boolean).join(" — ").slice(0, UC_LIMITS.description),
+        name: (a.organization || a.position).slice(0, UC_LIMITS.name),
+        description: [a.position, a.description].filter(Boolean).join(" — ").slice(0, UC_LIMITS.description),
         grades: a.grades,
         hoursPerWeek: a.hoursPerWeek,
         weeksPerYear: a.weeksPerYear,
@@ -503,9 +714,11 @@ export function ucDraftsFromCommonApp(data: ActivityData): UcEntry[] {
   const fromHonors = data.commonApp.honors
     .filter((h) => !copied.has(h.id) && h.title)
     .map((h): UcEntry => {
-      // UC takes one level; use the highest one ticked.
-      const top = [...h.levels].sort((a, b) => Object.keys(HONOR_LEVELS).indexOf(b) - Object.keys(HONOR_LEVELS).indexOf(a))[0];
-      return { ...newUcEntry("award"), name: h.title.slice(0, UC_LIMITS.name), grades: h.grades, awardLevels: top ? [CA_TO_UC_LEVEL[top]] : [], fromId: h.id };
+      // UC splits State and Regional, so State/Regional is copied as State and flagged rather than ticking both.
+      const levels = (Object.keys(UC_AWARD_LEVELS) as UcAwardLevel[]).filter((l) => h.levels.some((hl) => CA_TO_UC_LEVEL[hl] === l));
+      const e: UcEntry = { ...newUcEntry("award"), name: h.title.slice(0, UC_LIMITS.name), grades: h.grades, awardLevels: levels, fromId: h.id };
+      if (h.levels.includes("state_regional")) e.legacy = "Check the level: Common App's State/Regional was copied as State.";
+      return e;
     });
   return [...fromActivities, ...fromHonors];
 }

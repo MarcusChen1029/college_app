@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   CA_ACTIVITY_TYPES,
@@ -15,6 +16,7 @@ import {
   ucDraftsFromCommonApp,
   ucEntryIssues,
   ucTextLength,
+  upgradeActivities,
   type ActivityData,
   type CaActivity,
   type CaHonor,
@@ -258,18 +260,253 @@ test("new entries start blank with nothing answered for the student", () => {
   assert.equal(EMPTY_ACTIVITIES.version, 2);
 });
 
-// rewritten in Task 2: the converter still reads the v1 shape (organization, awardLevel).
-test.skip("Common App items become UC drafts in the matching category", () => {
+test("Common App items become UC drafts in the matching category", () => {
   const drafts = ucDraftsFromCommonApp(data());
   assert.deepEqual(
     drafts.map((d) => [d.category, d.name]),
     [
       ["extracurricular", "FRC Team 1234"],
-      ["work", "Cashier"],
+      ["work", "Corner Cafe"],
       ["award", "AIME Qualifier"],
     ],
   );
   assert.equal(drafts[0].description, "Captain — Led 30 students.");
+  assert.deepEqual([drafts[0].hoursPerWeek, drafts[0].weeksPerYear, drafts[0].grades], [10, 30, ["10", "11"]]);
+  const d = data();
+  const drafted = ucDraftsFromCommonApp(d);
+  assert.deepEqual(drafted.map((e) => e.fromId), [d.commonApp.activities[0].id, d.commonApp.activities[1].id, d.commonApp.honors[0].id]);
+});
+
+test("a Common App type maps to the UC category it belongs in", () => {
+  const category = (type: string) => ucDraftsFromCommonApp({ ...EMPTY_ACTIVITIES, commonApp: { activities: [{ ...newCaActivity(), type, organization: "X" }], honors: [] } })[0].category;
+  assert.equal(category("Employment or work (paid)"), "work");
+  assert.equal(category("Internship"), "work");
+  assert.equal(category("Community service or volunteer work"), "volunteer");
+  for (const t of ["Robotics", "Athletics (other)", "Other", "Music", ""]) assert.equal(category(t), "extracurricular", t);
+});
+
+test("a work draft takes the employer as the workplace and the role as the job title, with no hours", () => {
+  const d = data();
+  const [work] = ucDraftsFromCommonApp({ ...d, commonApp: { ...d.commonApp, activities: [{ ...d.commonApp.activities[1], hoursPerWeek: 8, weeksPerYear: 20, grades: ["11"] }] } });
+  assert.deepEqual([work.category, work.name, work.jobTitle, work.description], ["work", "Corner Cafe", "Cashier", "Weekend shifts."]);
+  assert.deepEqual([work.hoursPerWeek, work.weeksPerYear, work.workHours, work.stillWorking, work.start, work.end], [null, null, {}, null, null, null]);
+  assert.deepEqual(work.grades, ["11"]);
+  assert.deepEqual(ucEntryIssues(work).filter((i) => i.kind === "invalid"), []);
+});
+
+test("an honor becomes an award with every level mapped, and State/Regional is flagged", () => {
+  const honor = (levels: CaHonor["levels"]) => ucDraftsFromCommonApp({ ...EMPTY_ACTIVITIES, commonApp: { activities: [], honors: [{ ...newCaHonor(), title: "Prize", grades: ["11"], levels }] } })[0];
+  const flagged = honor(["school", "state_regional"]);
+  assert.equal(flagged.category, "award");
+  assert.deepEqual(flagged.awardLevels, ["school", "state"]);
+  assert.equal(flagged.legacy, "Check the level: Common App's State/Regional was copied as State.");
+  assert.deepEqual([flagged.awardType, flagged.name, flagged.grades], [null, "Prize", ["11"]]);
+  const plain = honor(["national", "international"]);
+  assert.deepEqual(plain.awardLevels, ["national", "international"]);
+  assert.equal(plain.legacy, undefined);
+  assert.deepEqual(honor([]).awardLevels, []);
+});
+
+test("drafts keep UC's limits", () => {
+  const long = { ...newCaActivity(), type: "Robotics", position: "p".repeat(50), organization: "o".repeat(100), description: "d".repeat(150) };
+  const [robotics_] = ucDraftsFromCommonApp({ ...EMPTY_ACTIVITIES, commonApp: { activities: [long], honors: [] } });
+  assert.equal(robotics_.name.length, 60);
+  assert.ok(ucTextLength(robotics_.description) <= 350);
+  const [honor] = ucDraftsFromCommonApp({ ...EMPTY_ACTIVITIES, commonApp: { activities: [], honors: [{ ...newCaHonor(), title: "t".repeat(100) }] } });
+  assert.equal(honor.name.length, 60);
+});
+
+// ── Upgrading stored data from the earlier format ──
+
+const OLD_TO_NEW_TYPES: [string, string][] = [
+  ["Academic", "Academic"],
+  ["Art", "Art"],
+  ["Athletics: Club", "Athletics (other)"],
+  ["Athletics: JV/Varsity", "Athletics (JV or varsity)"],
+  ["Career Oriented", "Career readiness or practicums"],
+  ["Community Service (Volunteer)", "Community service or volunteer work"],
+  ["Computer/Technology", "Computer or technology"],
+  ["Cultural", "Cultural"],
+  ["Dance", "Dance"],
+  ["Debate/Speech", "Debate or speech"],
+  ["Environmental", "Environmental"],
+  ["Family Responsibilities", "Family responsibilities"],
+  ["Foreign Exchange", "Study abroad or foreign exchange"],
+  ["Foreign Language", "Foreign language"],
+  ["Internship", "Internship"],
+  ["Journalism/Publication", "Journalism or publishing"],
+  ["Junior R.O.T.C.", "R.O.T.C. or military"],
+  ["LGBT", "LGBT+"],
+  ["Music: Instrumental", "Music"],
+  ["Music: Vocal", "Music"],
+  ["Religious", "Religious"],
+  ["Research", "Research"],
+  ["Robotics", "Robotics"],
+  ["School Spirit", "School spirit"],
+  ["Science/Math", "Science or math"],
+  ["Social Justice", "Social justice or organizing"],
+  ["Student Govt./Politics", "Student government or politics"],
+  ["Theater/Drama", "Theater or drama"],
+  ["Work (Paid)", "Employment or work (paid)"],
+  ["Other Club/Activity", "Other"],
+];
+
+// What the app stored before the 2026-27 format (no `version`).
+const oldActivity = (o: Record<string, unknown> = {}) => ({
+  id: "a1",
+  type: "Robotics",
+  position: "",
+  organization: "FRC",
+  description: "Built robots.",
+  grades: ["10"],
+  timing: ["school"],
+  hoursPerWeek: 4,
+  weeksPerYear: 30,
+  continueInCollege: null,
+  ...o,
+});
+const oldUc = (o: Record<string, unknown> = {}) => ({
+  id: "u1",
+  category: "extracurricular",
+  name: "Chess Club",
+  organization: "",
+  extra: "",
+  description: "Played.",
+  grades: ["11"],
+  hoursPerWeek: 3,
+  weeksPerYear: 30,
+  awardLevel: null,
+  awardType: null,
+  ...o,
+});
+const oldData = (activities: unknown[] = [], uc: unknown[] = [], honors: unknown[] = []) => ({ commonApp: { activities, honors }, uc });
+const upgradedUc = (o: Record<string, unknown>) => upgradeActivities(oldData([], [oldUc(o)])).uc[0];
+const upgradedCa = (o: Record<string, unknown>) => upgradeActivities(oldData([oldActivity(o)])).commonApp.activities[0];
+
+test("all 30 old Common App types convert to the new labels", () => {
+  assert.equal(OLD_TO_NEW_TYPES.length, 30);
+  for (const [oldType, newType] of OLD_TO_NEW_TYPES) {
+    assert.equal(upgradedCa({ type: oldType }).type, newType, oldType);
+    assert.ok(CA_ACTIVITY_TYPES.includes(newType), newType);
+  }
+  assert.equal(upgradedCa({ type: "" }).type, ""); // a blank slot stays blank
+  assert.equal(upgradedCa({ type: "Something else" }).type, "Something else"); // never guessed; the validator flags it
+});
+
+test("old time of year, role, plan to continue convert without guessing", () => {
+  assert.equal(upgradedCa({ timing: ["school", "break"] }).timing, "all");
+  assert.equal(upgradedCa({ timing: ["break", "school"] }).timing, "all");
+  assert.equal(upgradedCa({ timing: ["school"] }).timing, "school");
+  assert.equal(upgradedCa({ timing: ["break"] }).timing, "break");
+  assert.equal(upgradedCa({ timing: [] }).timing, null);
+  const captain = upgradedCa({ position: "Captain" });
+  assert.deepEqual([captain.leadership, captain.position], [true, "Captain"]);
+  const none = upgradedCa({ position: "" });
+  assert.deepEqual([none.leadership, none.position], [null, ""]); // never answered, so not false
+  assert.equal(upgradedCa({ continueInCollege: true }).continueInCollege, "yes");
+  assert.equal(upgradedCa({ continueInCollege: false }).continueInCollege, "no");
+  assert.equal(upgradedCa({ continueInCollege: null }).continueInCollege, null);
+  const a = upgradedCa({});
+  assert.deepEqual([a.sport, a.afterStart, a.stillParticipating, a.afterEnd], ["", null, null, null]);
+  assert.deepEqual([a.id, a.organization, a.description, a.grades, a.hoursPerWeek, a.weeksPerYear], ["a1", "FRC", "Built robots.", ["10"], 4, 30]);
+});
+
+test("missing or undefined fields become null so the validators never see undefined", () => {
+  const a = upgradedCa({ hoursPerWeek: undefined, weeksPerYear: undefined, continueInCollege: undefined, timing: undefined });
+  assert.deepEqual([a.hoursPerWeek, a.weeksPerYear, a.continueInCollege, a.timing, a.afterStart, a.stillParticipating, a.afterEnd, a.leadership], Array(8).fill(null));
+  assert.doesNotThrow(() => caActivityIssues(a));
+  // A half-old v2 object: new keys present, others absent.
+  const half = upgradeActivities({ version: 2, commonApp: { activities: [{ id: "x", type: "Robotics", leadership: false }], honors: [{ id: "h" }] }, uc: [{ id: "u", category: "work", name: "Cafe" }] });
+  const [ca] = half.commonApp.activities;
+  assert.deepEqual([ca.leadership, ca.position, ca.organization, ca.grades, ca.hoursPerWeek, ca.timing, ca.sport], [false, "", "", [], null, null, ""]);
+  assert.deepEqual(half.commonApp.honors, [{ id: "h", title: "", grades: [], levels: [] }]);
+  const [u] = half.uc;
+  assert.deepEqual([u.jobTitle, u.extra, u.hoursPerWeek, u.afterYears, u.afterMonths, u.awardLevels, u.awardType, u.program, u.workHours, u.stillWorking, u.start, u.end], ["", "", null, null, null, [], null, null, {}, null, null, null]);
+  assert.doesNotThrow(() => ucEntryIssues(u));
+  assert.equal(u.name, "Cafe"); // v2 work keeps name = workplace
+});
+
+test("UC award level becomes a list", () => {
+  assert.deepEqual(upgradedUc({ category: "award", awardLevel: "national" }).awardLevels, ["national"]);
+  assert.deepEqual(upgradedUc({ category: "award", awardLevel: null }).awardLevels, []);
+});
+
+test("an old work entry swaps job title and employer, and parks the hours in a note", () => {
+  const w = upgradedUc({ category: "work", name: "Cashier", organization: "Corner Cafe", hoursPerWeek: 10, weeksPerYear: 40 });
+  assert.deepEqual([w.jobTitle, w.name, w.workHours, w.legacy], ["Cashier", "Corner Cafe", {}, "From your earlier version: 10 hours/week, 40 weeks/year"]);
+  assert.deepEqual([w.hoursPerWeek, w.weeksPerYear, w.stillWorking, w.start, w.end], [null, null, null, null, null]);
+  assert.equal(upgradedUc({ category: "work", name: "Cashier", organization: "Cafe", hoursPerWeek: null, weeksPerYear: null }).legacy, undefined);
+  assert.equal(upgradedUc({ category: "work", name: "A", organization: "B", hoursPerWeek: 5, weeksPerYear: null }).legacy, "From your earlier version: 5 hours/week");
+});
+
+test("an old educational prep name finds its UC program, by acronym or full label", () => {
+  const ed = (name: string) => upgradedUc({ category: "edprep", name });
+  for (const name of ["EAOP", "eaop", "Early Academic Outreach Program (EAOP)", "  early   ACADEMIC outreach program (eaop) "]) {
+    const e = ed(name);
+    assert.deepEqual([e.program, e.name, e.legacy], ["6", "", undefined], name);
+  }
+  assert.equal(ed("GEAR UP").program, "10");
+  assert.equal(ed("mesa").program, "11"); // acronym before the long bracket
+  assert.equal(ed("UCLA VIP Scholars Program").program, "62");
+  const local = ed("Local STEM camp");
+  assert.deepEqual([local.program, local.name, local.legacy], ["18", "Local STEM camp", undefined]);
+  const long = ed("A Very Long Summer Program Name That Is Over Thirty");
+  assert.deepEqual([long.program, long.name, long.legacy], ["18", "", "From your earlier version: A Very Long Summer Program Name That Is Over Thirty"]);
+  assert.deepEqual([ed("x".repeat(30)).name.length, ed("x".repeat(31)).name], [30, ""]);
+  assert.deepEqual([ed("").program, ed("").name], [null, ""]); // nothing to match: left for the student
+  assert.deepEqual([ed("Other").program, ed("Other").name], ["18", "Other"]);
+});
+
+test("old entries keep their ids, order, grades and fromId", () => {
+  const out = upgradeActivities(oldData([oldActivity({ id: "z" }), oldActivity({ id: "a" })], [oldUc({ id: "q", fromId: "z" }), oldUc({ id: "b", grades: ["PG", "9"] })], [{ id: "h2", title: "T", grades: ["12"], levels: ["national"] }]));
+  assert.deepEqual(out.commonApp.activities.map((a) => a.id), ["z", "a"]);
+  assert.deepEqual(out.uc.map((e) => e.id), ["q", "b"]);
+  assert.equal(out.uc[0].fromId, "z");
+  assert.equal("fromId" in out.uc[1], false);
+  assert.deepEqual(out.uc[1].grades, ["PG", "9"]);
+  assert.deepEqual(out.commonApp.honors, [{ id: "h2", title: "T", grades: ["12"], levels: ["national"] }]);
+  assert.equal(out.version, 2);
+});
+
+test("upgrading is idempotent and never throws", () => {
+  const once = upgradeActivities(oldData([oldActivity({ position: "Captain", timing: ["school", "break"], continueInCollege: true })], [oldUc({ category: "work", name: "Cashier", organization: "Cafe", hoursPerWeek: 10 }), oldUc({ id: "e", category: "edprep", name: "EAOP" })]));
+  assert.deepEqual(upgradeActivities(once), once);
+  assert.deepEqual(upgradeActivities(upgradeActivities(once)), once);
+  for (const bad of [null, undefined, {}, [], "text", 7, { commonApp: null, uc: "x" }, { commonApp: { activities: [null, 3, "x"], honors: 5 }, uc: [null, []] }]) {
+    const out = upgradeActivities(bad);
+    assert.deepEqual(out, EMPTY_ACTIVITIES, JSON.stringify(bad));
+  }
+  assert.notEqual(upgradeActivities(null).commonApp.activities, EMPTY_ACTIVITIES.commonApp.activities); // a fresh object, not the shared constant
+});
+
+const fixtureDir = new URL("./fixtures/", import.meta.url);
+const fixture = (name: string): { student: string; activities: unknown }[] => JSON.parse(readFileSync(new URL(name, fixtureDir), "utf8"));
+
+test("the v1 fixture upgrades to the v2 fixture exactly", () => {
+  const before = fixture("activities-v1.json");
+  const after = fixture("activities-v2.json");
+  assert.equal(before.length, after.length);
+  for (const [i, b] of before.entries()) {
+    assert.equal(after[i].student, b.student);
+    assert.deepEqual(upgradeActivities(b.activities), after[i].activities, b.student);
+    assert.deepEqual(upgradeActivities(after[i].activities), after[i].activities, `${b.student} (already v2)`);
+  }
+});
+
+test("the fixtures cover every old type and rule", () => {
+  const before = fixture("activities-v1.json");
+  const olds = before.flatMap((s) => ((s.activities as ReturnType<typeof oldData>).commonApp?.activities ?? []) as ReturnType<typeof oldActivity>[]);
+  assert.deepEqual(new Set(olds.map((a) => a.type)), new Set(OLD_TO_NEW_TYPES.map(([t]) => t)));
+  const timings = new Set(olds.map((a) => JSON.stringify([...a.timing].sort())));
+  assert.deepEqual(timings, new Set(['["break","school"]', '["school"]', '["break"]', "[]"]));
+  assert.deepEqual(new Set(olds.map((a) => a.continueInCollege)), new Set([true, false, null]));
+  assert.ok(olds.some((a) => a.position) && olds.some((a) => !a.position));
+  const ucs = before.flatMap((s) => ((s.activities as ReturnType<typeof oldData>).uc ?? []) as ReturnType<typeof oldUc>[]);
+  assert.ok(ucs.some((e) => e.awardLevel) && ucs.some((e) => e.category === "award" && !e.awardLevel));
+  assert.ok(ucs.some((e) => e.category === "work"));
+  assert.ok(before.some((s) => Object.keys(s.activities as object).length === 0));
+  const honors = before.flatMap((s) => (s.activities as ReturnType<typeof oldData>).commonApp?.honors ?? []) as { levels: string[] }[];
+  assert.ok(honors.some((h) => h.levels.includes("state_regional")));
 });
 
 test("already-copied items are not copied again", () => {
