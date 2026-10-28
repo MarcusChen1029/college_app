@@ -512,6 +512,50 @@ end $$;
 
 -- Same as 0031, plus: OAuth clients refused; serialised per student; tokens revoked or expired more than 30 days ago
 -- are deleted, and at most 50 rows (active + recently revoked) are kept per student (DB-2). Still at most 5 active.
+-- Migration 0039 (extension activities access, another branch) replaces the one-argument version with
+-- create_extension_token(p_label, p_scopes). Whichever lands first, harden the version that exists and never add a
+-- second overload (PostgREST can't choose between two for a call with only p_label).
+do $do$
+begin
+  if to_regprocedure('public.create_extension_token(text, text[])') is not null then
+    execute $f$
+create or replace function public.create_extension_token(p_label text default 'Chrome extension', p_scopes text[] default '{transcript}')
+returns text language plpgsql security definer set search_path = '' as $$
+declare
+  uid uuid := auth.uid();
+  tok text;
+  sc text[];
+begin
+  perform public.refuse_oauth_client();
+  if uid is null or not public.is_role(uid, 'student') then raise exception 'students only'; end if;
+  if p_scopes is null or cardinality(p_scopes) = 0 or array_position(p_scopes, null) is not null
+     or not (p_scopes <@ array['transcript', 'activities']::text[]) or not ('transcript' = any (p_scopes)) then
+    raise exception 'invalid scopes';
+  end if;
+  sc := array_remove(array[
+          case when 'transcript' = any (p_scopes) then 'transcript' end,
+          case when 'activities' = any (p_scopes) then 'activities' end], null);
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('extension_tokens:' || uid::text, 0));
+  delete from public.extension_tokens
+   where user_id = uid and (revoked_at < now() - interval '30 days' or expires_at < now() - interval '30 days');
+  if (select count(*) from public.extension_tokens where user_id = uid) >= 50 then
+    raise exception 'Too many new extension connections recently. Try again later.';
+  end if;
+  tok := encode(extensions.gen_random_bytes(32), 'hex');
+  insert into public.extension_tokens (user_id, token_hash, label, scopes)
+  values (uid, extensions.digest(tok, 'sha256'), coalesce(nullif(btrim(p_label), ''), 'Chrome extension'), sc);
+  update public.extension_tokens set revoked_at = now()
+  where id in (
+    select id from public.extension_tokens
+    where user_id = uid and revoked_at is null
+    order by created_at desc, id
+    offset 5
+  );
+  return tok;
+end $$;
+$f$;
+  else
+    execute $f$
 create or replace function public.create_extension_token(p_label text default 'Chrome extension')
 returns text language plpgsql security definer set search_path = '' as $$
 declare
@@ -538,6 +582,9 @@ begin
   );
   return tok;
 end $$;
+$f$;
+  end if;
+end $do$;
 
 -- ───────────── 4. essays are not shared with a new teacher by default (DB-5) ─────────────
 
