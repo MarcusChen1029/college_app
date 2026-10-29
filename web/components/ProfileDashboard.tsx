@@ -43,19 +43,15 @@ function SetupChecklist({ items }: { items: SetupItem[] }) {
   const done = items.filter((i) => i.done).length;
   if (done === items.length) return null;
   return (
-    <section aria-labelledby="setup-heading" className={`${PANEL} p-6`}>
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h2 id="setup-heading" className={SECTION_TITLE}>
-          {t("profile.setup.title")}
-        </h2>
-        <span className="text-[15px] font-semibold tabular-nums">{t("profile.setup.count", { done, total: items.length })}</span>
-      </div>
-      <div className="mt-3 h-2 overflow-hidden rounded-full bg-white" aria-hidden="true">
-        <div className="h-full rounded-full bg-ink" style={{ width: `${(done / items.length) * 100}%` }} />
-      </div>
+    // Fills its column beside the calendar; the count and its bar close the panel, so any extra height sits above a total,
+    // not under the last row.
+    <section aria-labelledby="setup-heading" className={`${PANEL} flex flex-1 flex-col p-6`}>
+      <h2 id="setup-heading" className={SECTION_TITLE}>
+        {t("profile.setup.title")}
+      </h2>
       <ul className="mt-4 divide-y divide-zinc-200">
         {items.map((i) => (
-          <li key={i.key} className="flex min-h-12 flex-wrap items-center gap-x-3 gap-y-2 py-2">
+          <li key={i.key} className="flex min-h-16 flex-wrap items-center gap-x-3 gap-y-2 py-3">
             <span className={i.done ? "text-done" : "text-zinc-400"}>
               <StatusIcon tone={i.done ? "done" : "neutral"} />
             </span>
@@ -67,6 +63,12 @@ function SetupChecklist({ items }: { items: SetupItem[] }) {
           </li>
         ))}
       </ul>
+      <div className="mt-auto pt-5">
+        <p className="text-[15px] font-semibold tabular-nums">{t("profile.setup.count", { done, total: items.length })}</p>
+        <div className="mt-2 h-2 overflow-hidden rounded-full bg-white" aria-hidden="true">
+          <div className="h-full rounded-full bg-ink" style={{ width: `${(done / items.length) * 100}%` }} />
+        </div>
+      </div>
     </section>
   );
 }
@@ -157,7 +159,8 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
   return (
     <div className="space-y-8">
-      <section className="flex flex-wrap items-center gap-4 rounded-3xl bg-blue-50 p-6">
+      {/* On a phone "Redo setup" sits under the name instead of wrapping beside it. */}
+      <section className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-3xl bg-blue-50 p-6 sm:grid-cols-[auto_minmax(0,1fr)_auto]">
         <span aria-hidden className="grid h-16 w-16 place-items-center rounded-full bg-sun font-display text-2xl font-bold">
           {name.charAt(0).toUpperCase()}
         </span>
@@ -169,7 +172,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
             {profile.international ? t("profile.fromAbroad") : t("profile.fromUS")}
           </p>
         </div>
-        <Link href="/start" className={buttonClass("secondary", "sm")}>
+        <Link href="/start" className={`${buttonClass("secondary", "sm")} col-start-2 justify-self-start sm:col-start-3 sm:row-start-1`}>
           {t("profile.redoSetup")}
         </Link>
       </section>
@@ -178,52 +181,42 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         {/* Stacked with the grid gap, so the setup steps and the list read as one column beside the calendar. */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           <SetupChecklist items={setup} />
+          {entries.length > 0 && (
           <section className={`${PANEL} p-6`}>
             <h2 className={SECTION_TITLE}>{t("profile.listHeading")}</h2>
-            {entries.length === 0 ? (
-              <p className="mt-3 text-base text-ink">
-                {t("profile.emptyPre")}{" "}
-                <Link href="/colleges" className="font-semibold text-blue-700 underline underline-offset-4">
-                  {t("nav.colleges")}
-                </Link>{" "}
-                {t("profile.emptyPost")}
-              </p>
+            {hasScores ? (
+              <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
+                {(["super_reach", "reach", "target", "safety"] as const).map((f) => (
+                  <div key={f} className="flex flex-col items-center gap-2 rounded-2xl bg-white p-3">
+                    <p className="font-display text-3xl font-bold tabular-nums">{counts[f]}</p>
+                    <FitBadge fit={f} />
+                  </div>
+                ))}
+              </div>
             ) : (
-              <>
-                {hasScores ? (
-                  <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
-                    {(["super_reach", "reach", "target", "safety"] as const).map((f) => (
-                      <div key={f} className="flex flex-col items-center gap-2 rounded-2xl bg-white p-3">
-                        <p className="font-display text-3xl font-bold tabular-nums">{counts[f]}</p>
-                        <FitBadge fit={f} />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="mt-2 text-sm text-zinc-600">{t("profile.scoresHint")}</p>
-                )}
-                <div className="mt-5">
-                  <div className="flex justify-between text-sm">
-                    <span>{t("profile.checklistProgress")}</span>
-                    <span className="font-semibold">
-                      {t("profile.checklistCount", { done: checklistDone, total: checklistTotal })}
-                    </span>
-                  </div>
-                  <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-zinc-200">
-                    <div className="h-full rounded-full bg-blue-500" style={{ width: `${checklistTotal ? (checklistDone / checklistTotal) * 100 : 0}%` }} />
-                  </div>
-                  <p className="mt-2 text-sm text-zinc-600">
-                    {t("profile.submittedCount", { submitted, total: entries.length })}{" "}
-                    <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
-                      {t("profile.openList")}
-                    </Link>
-                  </p>
-                </div>
-              </>
+              <p className="mt-2 text-sm text-zinc-600">{t("profile.scoresHint")}</p>
             )}
+            <div className="mt-5">
+              <div className="flex justify-between text-sm">
+                <span>{t("profile.checklistProgress")}</span>
+                <span className="font-semibold">
+                  {t("profile.checklistCount", { done: checklistDone, total: checklistTotal })}
+                </span>
+              </div>
+              <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-zinc-200">
+                <div className="h-full rounded-full bg-blue-500" style={{ width: `${checklistTotal ? (checklistDone / checklistTotal) * 100 : 0}%` }} />
+              </div>
+              <p className="mt-2 text-sm text-zinc-600">
+                {t("profile.submittedCount", { submitted, total: entries.length })}{" "}
+                <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
+                  {t("profile.openList")}
+                </Link>
+              </p>
+            </div>
           </section>
+          )}
         </div>
 
         <aside aria-labelledby="deadlines-heading" className={`h-fit space-y-4 ${PANEL} p-6`}>

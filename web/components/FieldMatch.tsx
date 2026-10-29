@@ -16,6 +16,8 @@ import { buttonClass, PANEL } from "@/lib/ui";
 
 const BUCKETS: Bucket[] = ["reach", "target", "safety", "unknown"];
 const PER_BUCKET = 8;
+/** The directions most applicants pick, offered as one-click chips while the field is undecided (lib/fields.ts keys). */
+const POPULAR: FieldKey[] = ["computer_science", "engineering", "business", "economics", "biology", "pre_med", "psychology", "math_physical", "data_science", "international_relations"];
 const select =
   "h-10 w-full rounded-xl border border-zinc-300 bg-white px-3 text-[15px] font-normal text-ink hover:border-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:cursor-not-allowed disabled:bg-zinc-50";
 
@@ -125,6 +127,27 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
                 </Link>
               </p>
             )}
+          </div>
+        )}
+
+        {/* Undecided: the common directions one click away, right above the results they would re-rank. */}
+        {undecided && (
+          <div role="group" aria-labelledby="match-pick" className="space-y-2">
+            <p id="match-pick" className="text-[15px] font-semibold text-ink">
+              {t("match.pickDirection")}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {POPULAR.map((k) => (
+                <button
+                  key={k}
+                  type="button"
+                  onClick={() => setFields([k])}
+                  className="inline-flex h-9 items-center rounded-full bg-white px-3.5 text-sm font-semibold text-ink ring-1 ring-inset ring-zinc-300 transition-shadow hover:ring-ink"
+                >
+                  {label(k)}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 

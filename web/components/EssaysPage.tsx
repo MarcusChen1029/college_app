@@ -78,8 +78,9 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
           )}
         </legend>
         <ul className="grid gap-2 lg:grid-cols-2">
-          {PS_PROMPTS.map((p) => (
-            <li key={p.id}>
+          {PS_PROMPTS.map((p, i) => (
+            // An odd last prompt (the seventh) runs the full width rather than leaving half a row empty.
+            <li key={p.id} className={i === PS_PROMPTS.length - 1 && PS_PROMPTS.length % 2 === 1 ? "lg:col-span-2" : undefined}>
               <label className="flex h-full cursor-pointer items-start gap-3 rounded-xl bg-white p-3 text-[15px] leading-relaxed text-ink ring-ink transition-shadow hover:ring-1 has-[:checked]:ring-2 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-blue-400">
                 <input type="radio" name="ps-prompt" className="mt-1.5 shrink-0 accent-ink" checked={ps.prompt === p.id} onChange={() => set({ prompt: p.id })} />
                 <span>
