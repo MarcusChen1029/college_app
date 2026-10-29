@@ -18,7 +18,7 @@ function CollegeCard({ college: c, now }: { college: DetailCollege; now: Date })
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <h3 className="font-display text-lg font-bold">
-            {c.name} {c.custom && <span className="align-middle text-xs font-normal text-zinc-500">{t("teacher.colleges.custom")}</span>}
+            {c.name} {c.custom && <span className="align-middle text-[13px] font-normal text-zinc-500">{t("teacher.colleges.custom")}</span>}
           </h3>
           <p className="text-sm text-zinc-500">{c.plan ? t("teacher.colleges.plan", { plan: c.plan }) : t("teacher.colleges.noPlan")}</p>
         </div>

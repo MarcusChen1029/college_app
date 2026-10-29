@@ -12,7 +12,8 @@ import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib
 
 function Item({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-1 rounded-2xl border border-zinc-200 p-4">
+    // A cell of one spec sheet: hairlines on top and left, pulled 1px out so the sheet's own border covers the outer ones.
+    <div className="-mt-px -ml-px space-y-1 border-t border-l border-zinc-200 p-4 sm:p-5">
       <dt className="text-[13px] font-medium text-zinc-600">{label}</dt>
       <dd className="text-sm">{children}</dd>
     </div>
@@ -21,7 +22,7 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
 
 function Missing() {
   const t = useT();
-  return <span className="text-zinc-400">{t("teacher.overview.notEntered")}</span>;
+  return <span className="text-zinc-500">{t("teacher.overview.notEntered")}</span>;
 }
 
 /** A headline score with the filled-in section scores underneath. */
@@ -44,7 +45,8 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
   const testPlan = p.testDetails.plan ? testPlanText(t, locale, p.testDetails) : "";
   const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
   return (
-    <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div>
+    <dl className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white sm:grid-cols-2 lg:grid-cols-3">
       <Item label="SAT">
         <Score value={p.satTotal} scale={SAT_SCALE} sections={p.testDetails.sat} />
       </Item>
@@ -71,11 +73,15 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
         )}
       </Item>
       <Item label={t("teacher.overview.field")}>{p.intendedCategory ? humanize(p.intendedCategory) : <Missing />}</Item>
-      <Item label={t("teacher.overview.regions")}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-400">{t("teacher.overview.notChosen")}</span>}</Item>
+      <Item label={t("teacher.overview.regions")}>{p.targetRegions.length > 0 ? p.targetRegions.map(regionLabel).join(", ") : <span className="text-zinc-500">{t("teacher.overview.notChosen")}</span>}</Item>
       <Item label={t("teacher.overview.international")}>{p.isInternational ? t("common.yes") : t("common.no")}</Item>
       <Item label={t("teacher.overview.needsAid")}>{p.needsAid ? t("common.yes") : t("common.no")}</Item>
-      <Item label={t("teacher.overview.updated")}>{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : <span className="text-zinc-400">{t("teacher.time.never")}</span>}</Item>
     </dl>
+    {/* When the profile last changed is about the record, not the student: a line under the sheet, not a cell in it. */}
+    <p className="mt-2 text-[13px] text-zinc-600">
+      {t("teacher.overview.updated")} {p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : t("teacher.time.never")}
+    </p>
+    </div>
   );
 }
 

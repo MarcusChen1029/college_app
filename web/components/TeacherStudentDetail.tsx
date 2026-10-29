@@ -27,7 +27,7 @@ function Back() {
   );
 }
 
-const badge = "rounded-full px-2.5 py-0.5 text-xs font-semibold";
+const badge = "rounded-full px-2.5 py-0.5 text-[13px] font-semibold";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** Read-only view of one linked student: header with attention flags, then Overview / Colleges / Activities / Essays / Interested tabs. */
@@ -65,7 +65,7 @@ export function TeacherStudentDetail({ id }: { id: string }) {
       <Back />
       <header className="space-y-3">
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="font-display text-3xl font-bold [overflow-wrap:anywhere]">{detail.displayName}</h1>
+          <h1 className="font-display text-2xl font-bold sm:text-3xl [overflow-wrap:anywhere]">{detail.displayName}</h1>
           {detail.profile.isInternational && <span className={`${badge} bg-blue-50 text-blue-700`}>{t("teacher.detail.international")}</span>}
           {detail.profile.needsAid && <span className={`${badge} bg-zinc-100 text-zinc-700`}>{t("teacher.detail.needsAid")}</span>}
         </div>
@@ -74,7 +74,7 @@ export function TeacherStudentDetail({ id }: { id: string }) {
           <span aria-hidden="true">·</span>
           {t("teacher.linked", { date: new Date(detail.linkedAt).toLocaleDateString() })}
           {detail.classes.map((c) => (
-            <span key={c.id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700">
+            <span key={c.id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-[13px] text-zinc-700">
               {c.name}
             </span>
           ))}

@@ -29,7 +29,7 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
             {t("teacher.notes.editAria", { when })}
           </label>
           <textarea id={id} value={draft} maxLength={NOTE_MAX} rows={4} onChange={(e) => setDraft(e.target.value)} className={area} />
-          <p className="mt-1 text-xs text-zinc-500">
+          <p className="mt-1 text-[13px] text-zinc-500">
             {draft.length} / {NOTE_MAX}
           </p>
         </div>
@@ -37,7 +37,7 @@ function NoteItem({ note, busy, run }: { note: TeacherNote; busy: boolean; run: 
         <p className="whitespace-pre-wrap text-sm [overflow-wrap:anywhere]">{note.body}</p>
       )}
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-xs text-zinc-500">
+        <p className="text-[13px] text-zinc-500">
           <time dateTime={note.createdAt}>{when}</time>
           {noteEdited(note.createdAt, note.updatedAt) && <span> {t("teacher.notes.edited")}</span>}
         </p>
@@ -169,7 +169,7 @@ export function TeacherNotes({ studentId, studentName }: { studentId: string; st
             </label>
             <textarea id={`${id}-new`} value={draft} maxLength={NOTE_MAX} rows={4} onChange={(e) => setDraft(e.target.value)} className={area} />
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="text-xs text-zinc-500">
+              <p className="text-[13px] text-zinc-500">
                 {draft.length} / {NOTE_MAX}
               </p>
               <button type="submit" disabled={busy || !noteSaveable(draft, NOTE_MAX)} className={primary}>

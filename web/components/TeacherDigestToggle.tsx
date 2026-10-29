@@ -51,7 +51,7 @@ export function TeacherDigestToggle() {
         <input type="checkbox" className="mt-1" checked={enabled === true} disabled={enabled === null || busy} onChange={(e) => void toggle(e.target.checked)} />
         <span>
           {t("settings.digestToggle")}
-          <span className="block text-xs text-zinc-500">{t("settings.digestHint")}</span>
+          <span className="block text-[13px] text-zinc-500">{t("settings.digestHint")}</span>
         </span>
       </label>
       {error && (

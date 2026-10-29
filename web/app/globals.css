@@ -560,6 +560,22 @@ html:has([data-explorer]) body > header > nav {
   }
 }
 
+/* ---- Teacher screens (app/(app)/teacher/*, components/Teacher*.tsx, components/teacher/*) ---- */
+@layer components {
+  /* A teacher's header carries eight links; between 768px and 1023px they, the name and the language switch ran 45px
+     past the screen. Tighter gaps and 13px links keep the row inside it on every page a teacher sees.
+     (The lasting fix belongs in SiteNav: fold Explore and Compare into the menu at this width.) */
+  @media (min-width: 48rem) and (max-width: 63.99rem) {
+    html:has([data-site-links] a[href="/teacher/tasks"]) [data-site-links] > div {
+      column-gap: 0.5rem !important;
+      font-size: 0.8125rem !important;
+    }
+    html:has([data-site-links] a[href="/teacher/tasks"]) nav:has(> [data-site-links]) {
+      column-gap: 0.5rem !important;
+    }
+  }
+}
+
 /* Resume prints with letter-size margins. */
 @page {
   margin: 0.6in;
