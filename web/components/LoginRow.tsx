@@ -283,7 +283,7 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
     standing = "portals.passwordUnreadable";
   } else if (vault.lock === "none") {
     body = (
-      <button type="button" className={wideVaultButton} onClick={() => openVaultDialog("setup")}>
+      <button type="button" className={wideVaultButton} aria-label={t("portals.vault.setUpFor", { label })} onClick={() => openVaultDialog("setup")}>
         {t("portals.vault.setUp")}
       </button>
     );
@@ -298,7 +298,7 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
         {unlockButton}
       </>
     ) : (
-      <button type="button" className={wideVaultButton} aria-label={t("portals.vault.unlockFor", { label })} onClick={() => openVaultDialog("unlock")}>
+      <button type="button" className={wideVaultButton} aria-label={t("portals.vault.unlockToAddFor", { label })} onClick={() => openVaultDialog("unlock")}>
         {t("portals.vault.unlockToAdd")}
       </button>
     );

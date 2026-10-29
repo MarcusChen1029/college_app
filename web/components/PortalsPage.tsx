@@ -29,7 +29,7 @@ import {
   type PortalSystem,
 } from "@/lib/portals";
 import { collegeSlot, portalSlot } from "@/lib/portal-slots";
-import { forgetPassword, lock as lockVault, useVault } from "@/lib/portal-vault-client";
+import { forgetPassword } from "@/lib/portal-vault-client";
 import { activeRegions, regionLabel, type RegionCode } from "@/lib/regions";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
@@ -39,6 +39,7 @@ import { buttonClass, toneClass } from "@/lib/ui";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
 import { useStarsSync } from "./useStarsSync";
+import { VaultUnlockedBar } from "./VaultDialogs";
 
 const noop = () => () => {};
 
@@ -76,7 +77,6 @@ function Group({ title, aside, children }: { title: string; aside?: React.ReactN
 export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const t = useT();
   const student = useStudent();
-  const vault = useVault();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   useEffect(() => registerColleges(colleges), [colleges, student.list.length]);
   useStarsSync(student);
@@ -299,21 +299,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         })()}
       </p>
 
-      {signedIn && vault.lock === "unlocked" && (
-        <div className="flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
-          <p className="min-w-0 flex-1" role="status">
-            {vault.moved !== null && vault.moved > 0 && (
-              <span className="font-semibold">
-                {vault.moved === 1 ? t("portals.vault.movedOne", { n: vault.moved }) : t("portals.vault.movedMany", { n: vault.moved })}{" "}
-              </span>
-            )}
-            {t("portals.vault.unlockedNote")}
-          </p>
-          <button type="button" className={buttonClass("secondary", "sm")} onClick={() => lockVault()}>
-            {t("portals.vault.lockNow")}
-          </button>
-        </div>
-      )}
+      {signedIn && <VaultUnlockedBar />}
 
       {!signedIn && student.localPasswordCount > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">

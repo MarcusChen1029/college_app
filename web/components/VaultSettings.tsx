@@ -166,7 +166,8 @@ function ChangePassphrase({ email, onDone }: { email: string | null; onDone: () 
   const [code, setCode] = useState("");
   const np = useNewPassphrase(email);
   const [msg, setMsg] = useState<Msg | null>(null);
-  const [uncertain, setUncertain] = useState(false); // an earlier try may have gone through
+  // The current passphrase of a try whose result couldn't be confirmed (it may have gone through), until another is used.
+  const [uncertainFor, setUncertainFor] = useState<string | null>(null);
   const { busy, run } = useRunner();
 
   const submit = () =>
@@ -178,12 +179,12 @@ function ChangePassphrase({ email, onDone }: { email: string | null; onDone: () 
       setMsg(null);
       const r = await changePassphrase(useCode ? { recovery: code } : { passphrase: current }, np.first);
       if (r === null) return onDone();
-      // After an unconfirmed try, the old passphrase failing most likely means that try went through.
-      if (r === "wrong" && uncertain && !useCode) return setMsg({ key: "settings.vault.changeMaybeDone" });
+      // After an unconfirmed try with this very passphrase, it failing now most likely means that try went through.
+      if (r === "wrong" && !useCode && uncertainFor === current) return setMsg({ key: "settings.vault.changeMaybeDone" });
       if (r === "wrong") return setMsg({ key: useCode ? "portals.vault.unlock.wrongCode" : "portals.vault.unlock.wrong" });
       // The new passphrase may be live already (only the reply lost): keep everything typed and offer the same step again.
       if (r === "failed") {
-        setUncertain(true);
+        setUncertainFor(useCode ? null : current);
         return setMsg({ key: "settings.vault.changeUnconfirmed" });
       }
       setMsg({ key: DIALOG_ERROR[r] });
@@ -224,16 +225,22 @@ function ChangePassphrase({ email, onDone }: { email: string | null; onDone: () 
   );
 }
 
+// Where the new-code flow is. One value, so a new prepared code always replaces the whole state and no flag of an earlier
+// code can outlive it. "retry" = the store of `p` with the group `typed` could not be confirmed (it may have landed).
+type CodeFlow =
+  | { step: "passphrase" }
+  | { step: "show"; p: PreparedRecovery }
+  | { step: "check"; p: PreparedRecovery }
+  | { step: "retry"; p: PreparedRecovery; typed: string };
+
 // Passphrase -> a new code made in memory (prepareRecovery) -> shown -> one group typed back -> stored (commitRecovery).
 // Until it is stored the old code is the only one that works. A "failed" store may have landed after all, so the code
-// stays on screen and the same step can be tried again.
+// stays on screen and the same store is offered again, with the same group.
 function NewRecoveryCode({ onDone }: { onDone: () => void }) {
   const t = useT();
   const [passphrase, setPassphrase] = useState("");
-  const [prepared, setPrepared] = useState<PreparedRecovery | null>(null);
-  const [step, setStep] = useState<"passphrase" | "show" | "check">("passphrase");
-  const [typed, setTyped] = useState("");
-  const [unconfirmed, setUnconfirmed] = useState(false);
+  const [flow, setFlow] = useState<CodeFlow>({ step: "passphrase" });
+  const [typed, setTyped] = useState(""); // the group being typed on the check step
   const [msg, setMsg] = useState<Msg | null>(null);
   const { busy, run } = useRunner();
 
@@ -246,53 +253,57 @@ function NewRecoveryCode({ onDone }: { onDone: () => void }) {
       if (r === "locked") return setMsg({ key: "portals.vault.err.locked" });
       if (typeof r === "string") return setMsg({ key: DIALOG_ERROR[r] });
       setPassphrase("");
-      setPrepared(r);
       setTyped("");
-      setStep("show");
+      setFlow({ step: "show", p: r });
     });
 
-  const confirm = () =>
+  const store = (p: PreparedRecovery, group: string) =>
     run(async () => {
-      if (!prepared) return;
       setMsg(null);
-      const r = await commitRecovery(prepared, typed);
+      const r = await commitRecovery(p, group);
       if (r === null) return onDone();
-      if (r === "group_mismatch") return setMsg({ key: "portals.vault.check.mismatch", vars: { n: prepared.confirmGroup } });
+      if (r === "group_mismatch") {
+        // Back to the code itself, so the student can check it against where they saved it.
+        setFlow({ step: "show", p });
+        return setMsg({ key: "portals.vault.check.mismatch", vars: { n: p.confirmGroup } });
+      }
       if (r === "changed") {
-        // The vault moved on meanwhile: this code was not stored and the old one still works. Make a new one.
-        setPrepared(null);
+        // The vault moved on meanwhile: this code may not be the one that works. Make a new one from the passphrase.
         setTyped("");
-        setStep("passphrase");
+        setFlow({ step: "passphrase" });
         return setMsg({ key: "settings.vault.codeChanged" });
       }
       if (r === "failed") {
-        setUnconfirmed(true);
+        setFlow({ step: "retry", p, typed: group });
         return setMsg({ key: "settings.vault.codeUnconfirmed" });
       }
       setMsg({ key: DIALOG_ERROR[r] });
     });
 
-  if (prepared && unconfirmed) {
+  if (flow.step === "retry") {
+    const { p, typed: group } = flow;
     return (
       <div className="space-y-3 pb-4">
-        <RecoveryCodeView code={prepared.recoveryCode} />
+        <RecoveryCodeView code={p.recoveryCode} />
         <MessageLine msg={msg} />
-        <button type="button" className={buttonClass("primary", "sm")} disabled={busy} onClick={() => void confirm()}>
+        <button type="button" className={buttonClass("primary", "sm")} disabled={busy} onClick={() => void store(p, group)}>
           {busy ? t("common.saving") : t("portals.vault.retry")}
         </button>
       </div>
     );
   }
-  if (prepared && step === "show") {
+  if (flow.step === "show") {
+    const { p } = flow;
     return (
       <div className="space-y-3 pb-4">
-        <RecoveryCodeView code={prepared.recoveryCode} />
+        <RecoveryCodeView code={p.recoveryCode} />
+        <MessageLine msg={msg} />
         <button
           type="button"
           className={buttonClass("primary", "sm")}
           onClick={() => {
             setMsg(null);
-            setStep("check");
+            setFlow({ step: "check", p });
           }}
         >
           {t("portals.vault.code.saved")}
@@ -300,11 +311,12 @@ function NewRecoveryCode({ onDone }: { onDone: () => void }) {
       </div>
     );
   }
-  if (prepared && step === "check") {
+  if (flow.step === "check") {
+    const { p } = flow;
     return (
       <div className="space-y-3 pb-4">
         <GroupCheck
-          group={prepared.confirmGroup}
+          group={p.confirmGroup}
           value={typed}
           onChange={setTyped}
           busy={busy}
@@ -312,9 +324,9 @@ function NewRecoveryCode({ onDone }: { onDone: () => void }) {
           busyLabel={t("common.saving")}
           onBack={() => {
             setMsg(null);
-            setStep("show");
+            setFlow({ step: "show", p });
           }}
-          onSubmit={() => void confirm()}
+          onSubmit={() => void store(p, typed)}
         />
         <MessageLine msg={msg} />
       </div>

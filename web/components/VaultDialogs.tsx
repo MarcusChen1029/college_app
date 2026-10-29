@@ -9,6 +9,7 @@ import {
   closeVaultDialog,
   commit,
   copyText,
+  lock,
   openVaultDialog,
   prepare,
   resetVault,
@@ -236,12 +237,16 @@ export function GroupCheck({
   );
 }
 
-/** "Delete all saved passwords and start over": typed confirmation, then the vault and every saved password go. */
-export function StartOver({ onDone }: { onDone?: () => void }) {
+/**
+ * "Delete all saved passwords and start over": typed confirmation, then the vault and every saved password go. Pass the
+ * surrounding flow's `runner` so its own buttons wait while this runs (and this waits for them).
+ */
+export function StartOver({ onDone, runner }: { onDone?: () => void; runner?: ReturnType<typeof useRunner> }) {
   const t = useT();
   const [typed, setTyped] = useState("");
   const [msg, setMsg] = useState<Msg | null>(null);
-  const { busy, run } = useRunner();
+  const own = useRunner();
+  const { busy, run } = runner ?? own;
   const ready = typed.trim() === RESET_WORD;
   const go = () =>
     run(async () => {
@@ -275,6 +280,29 @@ export function StartOver({ onDone }: { onDone?: () => void }) {
   );
 }
 
+/** One line while this tab's vault is open: how many old passwords were just moved into it, and a Lock button. */
+export function VaultUnlockedBar({ className = "" }: { className?: string }) {
+  const t = useT();
+  const vault = useVault();
+  if (vault.lock !== "unlocked") return null;
+  const moved = vault.moved ?? 0;
+  return (
+    <div className={`flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>
+      <p className="min-w-0 flex-1" role="status">
+        {moved > 0 && (
+          <span className="font-semibold">
+            {moved === 1 ? t("portals.vault.movedOne", { n: moved }) : t("portals.vault.movedMany", { n: moved })}{" "}
+          </span>
+        )}
+        {t("portals.vault.unlockedNote")}
+      </p>
+      <button type="button" className={buttonClass("secondary", "sm")} onClick={() => lock()}>
+        {t("portals.vault.lockNow")}
+      </button>
+    </div>
+  );
+}
+
 /** The open vault dialog, if any (mounted once in app/layout.tsx). Signed-out pages have none. */
 export function VaultDialogHost() {
   const vault = useVault();
@@ -297,7 +325,8 @@ function SetupDialog({ email }: { email: string | null }) {
   const [typed, setTyped] = useState("");
   const [msg, setMsg] = useState<Msg | null>(null);
   const [blocked, setBlocked] = useState<"exists" | "orphans" | null>(null);
-  const { busy, run } = useRunner();
+  const runner = useRunner(); // shared with the Start over below, so Create vault waits while it runs
+  const { busy, run } = runner;
 
   const begin = () =>
     run(async () => {
@@ -321,7 +350,11 @@ function SetupDialog({ email }: { email: string | null }) {
       setBlocked(null);
       const r = await commit(prepared, typed);
       if (r === "ok") return closeVaultDialog();
-      if (r === "group_mismatch") return setMsg({ key: "portals.vault.check.mismatch", vars: { n: prepared.confirmGroup } });
+      if (r === "group_mismatch") {
+        // Back to the code itself, so the student can check it against where they saved it.
+        setStep(2);
+        return setMsg({ key: "portals.vault.check.mismatch", vars: { n: prepared.confirmGroup } });
+      }
       // Another tab (or a double click whose reply was lost) may have just made a vault: never jump to Start over for it.
       if (r === "exists" || r === "orphans") return setBlocked(r);
       // The vault may have been stored and only the reply lost: the same step again is safe (it finds its own vault).
@@ -362,6 +395,7 @@ function SetupDialog({ email }: { email: string | null }) {
         {step === 2 && prepared && (
           <>
             <RecoveryCodeView code={prepared.recoveryCode} />
+            <MessageLine msg={msg} />
             <button
               type="button"
               className={buttonClass("primary", "sm")}
@@ -407,6 +441,7 @@ function SetupDialog({ email }: { email: string | null }) {
                   {t("portals.vault.setup.orphans")}
                 </p>
                 <StartOver
+                  runner={runner}
                   onDone={() => {
                     setBlocked(null);
                     setMsg({ key: "portals.vault.setup.resetDone", ok: true });

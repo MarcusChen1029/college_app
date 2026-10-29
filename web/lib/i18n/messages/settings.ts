@@ -247,7 +247,7 @@ export const zhTW: Translation<typeof en> = {
   "settings.vault.changeDone": "主密碼已變更。從現在起請使用新的主密碼。",
   "settings.vault.changeUnconfirmed": "無法確認是否已變更（沒有網路連線，或伺服器沒有回應）。變更可能已經完成：請用相同的資料再試一次。",
   "settings.vault.changeMaybeDone": "目前的主密碼已經不符合，表示剛才那次很可能已經變更成功。請試試你的新主密碼。",
-  "settings.vault.newCode": "產生新的復原碼",
+  "settings.vault.newCode": "新的復原碼",
   "settings.vault.newCodeIntro": "產生一組新的復原碼。確認新的復原碼之後，舊的就會失效。",
   "settings.vault.makeCode": "產生新的復原碼",
   "settings.vault.saveCode": "儲存新的復原碼",
