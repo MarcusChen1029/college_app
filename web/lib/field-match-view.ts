@@ -42,15 +42,15 @@ export type MatchCourse = {
   fields: FieldKey[];
   aLevel: string | null; // "A*AA" or "A*AA–ABB"
   ib: number | null; // IB points
+  ibText: string | null; // the IB offer's first clause when no points total is published ("30-33 is required for consideration")
   atar: number | null; // Australia
-  full: string; // the published offer text, for a tooltip
 };
 
-// Three or four A-level grades (A* counts as one), optionally "to" a second set: "A*AA", "A*A*A to AAA".
-const GRADES = /(?<![A-Za-z])((?:A\*|[A-E]){3,4})(?:\s*(?:to|-|–)\s*((?:A\*|[A-E]){3,4}))?(?![A-Za-z])/;
+// Three or four A-level grades (A* counts as one), optionally "to" a second set: "A*AA", "A*A*A to AAA", "A*A*A* down to AAB".
+const GRADES = /(?<![A-Za-z])((?:A\*|[A-E]){3,4})(?:\s*(?:down\s+to|to|-|–)\s*((?:A\*|[A-E]){3,4}))?(?![A-Za-z])/;
 
 /** The A-level grades in a published offer ("A*AA, with A* in Maths" -> "A*AA"; "A-Levels A*AA to ABB (...)" ->
- *  "A*AA–ABB"); null when the offer states no grades (a points score, say). */
+ *  "A*AA–ABB"; "A*A*A* down to AAB" -> "A*A*A*–AAB"); null when the offer states no grades (a points score, say). */
 export function aLevelGrades(offer: string | null | undefined): string | null {
   const m = offer ? GRADES.exec(offer) : null;
   if (!m) return null;
@@ -63,22 +63,66 @@ export function gradeScore(grades: string): number {
   return (grades.match(/A\*|[A-E]/g) ?? []).reduce((n, g) => n + GRADE_POINTS[g], 0);
 }
 
+const SUMMARY_MAX = 72;
+
+/** An IB offer's first sentence, for a course that publishes no points total. Bracketed asides are detail and go whole
+ *  ("Range from 43 points (777 at HL) down to 34 points (665 at HL), with HL Maths" -> "Range from 43 points down to 34
+ *  points, with HL Maths"), so a cut never lands inside one; a sentence still too long ends at its last comma that fits,
+ *  with "…". Null when the text says nothing is published ("No IB points total published. ...") or there is none. */
+export function ibSummary(offer: string | null | undefined): string | null {
+  let text = offer?.trim() ?? "";
+  if (!text || /^no\b/i.test(text)) return null;
+  for (let prev = ""; prev !== text; ) [prev, text] = [text, text.replace(/\s*\([^()]*\)/g, "")];
+  const first = text.split(/;|\.\s/)[0].trim().replace(/\.$/, "");
+  if (first.length <= SUMMARY_MAX) return first;
+  const cut = first.slice(0, SUMMARY_MAX);
+  const at = cut.lastIndexOf(",") > 20 ? cut.lastIndexOf(",") : cut.lastIndexOf(" ");
+  return `${cut.slice(0, at).trimEnd()}…`;
+}
+
 /** One course's offer in a short phrase, "A-level A*AA · IB 39"; null when it publishes none of the three. */
-export function courseOffer(c: Pick<MatchCourse, "aLevel" | "ib" | "atar">): string | null {
-  const parts = [c.aLevel && `A-level ${c.aLevel}`, c.ib != null && `IB ${c.ib}`, c.atar != null && `ATAR ${c.atar}`].filter(Boolean);
+export function courseOffer(c: Pick<MatchCourse, "aLevel" | "ib" | "ibText" | "atar">): string | null {
+  const ib = c.ib != null ? `IB ${c.ib}` : c.ibText ? (/\bIB\b/.test(c.ibText) ? c.ibText : `IB ${c.ibText}`) : null;
+  const parts = [c.aLevel && `A-level ${c.aLevel}`, ib, c.atar != null && `ATAR ${c.atar}`].filter(Boolean);
   return parts.length ? parts.join(" · ") : null;
 }
 
-/** The spread of offers across a college's courses, "A-level A*A*A–AAA · IB 33–39"; null when none is published. */
-export function offerRange(courses: readonly MatchCourse[]): string | null {
+/** A college row's offer while no field is chosen: `text` when it holds for every course shown, `varies` when the courses
+ *  publish different things, null when none publishes an offer. */
+export type OfferSummary = { text: string } | { varies: true };
+
+/** A course's name without its faculty or campus note: "Mechanical Engineering BASc (Faculty of ...)" -> "Mechanical Engineering BASc". */
+export const courseLabel = (name: string): string => name.split(" (")[0].trim();
+
+/** What can be said about a college's offers as a whole. A measure (A-level, IB, ATAR) is summarised only when every course
+ *  shown publishes it, so the range is true of each of them ("A-level A*A*A–AAA · IB 33–39"); IB words count only when every
+ *  course has the same ones. When only one course publishes a number, the offer is named with its course ("Medicine: A-level
+ *  AAA"). Anything else is `varies`: the row never lends one course's offer to the others. */
+export function offerRange(courses: readonly MatchCourse[]): OfferSummary | null {
+  if (!courses.length) return null;
   const span = (lo: number, hi: number) => (lo === hi ? String(lo) : `${lo}–${hi}`);
-  const grades = courses.flatMap((c) => (c.aLevel ? c.aLevel.split("–") : [])).sort((a, b) => gradeScore(b) - gradeScore(a));
-  const ib = courses.flatMap((c) => (c.ib != null ? [c.ib] : []));
-  const atar = courses.flatMap((c) => (c.atar != null ? [c.atar] : []));
+  const every = <T,>(pick: (c: MatchCourse) => T | null): T[] | null => {
+    const values = courses.map(pick);
+    return values.every((v) => v != null) ? (values as T[]) : null;
+  };
+  const grades = every((c) => c.aLevel)
+    ?.flatMap((g) => g.split("–"))
+    .sort((a, b) => gradeScore(b) - gradeScore(a));
+  const ib = every((c) => c.ib);
+  const ibWords = every((c) => (c.ib == null ? c.ibText : null));
+  const sameWords = ibWords && new Set(ibWords).size === 1 ? ibWords[0] : null;
+  const atar = every((c) => c.atar);
   const parts = [
-    grades.length && `A-level ${grades[0] === grades[grades.length - 1] ? grades[0] : `${grades[0]}–${grades[grades.length - 1]}`}`,
-    ib.length && `IB ${span(Math.min(...ib), Math.max(...ib))}`,
-    atar.length && `ATAR ${span(Math.min(...atar), Math.max(...atar))}`,
+    grades && `A-level ${grades[0] === grades[grades.length - 1] ? grades[0] : `${grades[0]}–${grades[grades.length - 1]}`}`,
+    ib ? `IB ${span(Math.min(...ib), Math.max(...ib))}` : sameWords && (/\bIB\b/.test(sameWords) ? sameWords : `IB ${sameWords}`),
+    atar && `ATAR ${span(Math.min(...atar), Math.max(...atar))}`,
   ].filter(Boolean);
-  return parts.length ? parts.join(" · ") : null;
+  if (parts.length) return { text: parts.join(" · ") };
+
+  const published = courses.filter((c) => courseOffer(c) != null);
+  if (!published.length) return null;
+  const only = published.length === 1 ? published[0] : null;
+  // Named with its course only when the offer is a number or grades (short and exact); one course's words say "varies".
+  if (only && !(only.ib == null && only.ibText)) return { text: `${courseLabel(only.name)}: ${courseOffer(only)}` };
+  return { varies: true };
 }

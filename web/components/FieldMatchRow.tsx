@@ -58,10 +58,12 @@ export function FieldMatchRow({
   // while undecided, said plainly when the data is missing (never a bare dash).
   const byCourse = college.country_code !== "US";
   const fieldCourse = !undecided && field ? courses?.find((c) => c.fields.includes(field)) : undefined;
+  const range = undecided && courses?.length ? offerRange(courses) : null;
+  const rangeText = range == null ? t("match.offerNoFixed") : "varies" in range ? t("match.offerVaries") : range.text;
   const offerText = byCourse
     ? undecided
       ? courses?.length
-        ? [t("match.offerCourses", { n: courses.length }), offerRange(courses) ?? t("match.offerNoFixed")].join(" · ")
+        ? [t("match.offerCourses", { n: courses.length }), rangeText].join(" · ")
         : t("match.offerNone")
       : fieldCourse
         ? (courseOffer(fieldCourse) ?? t("match.offerNoFixed"))
@@ -69,7 +71,7 @@ export function FieldMatchRow({
           ? t("match.offerNoField", { field: t(`match.field.${field}` as MessageKey) })
           : t("match.offerNone")
     : null;
-  const offerTitle = undecided ? courses?.map((c) => `${c.name}: ${courseOffer(c) ?? "—"}`).join("\n") : fieldCourse ? `${fieldCourse.name}\n${fieldCourse.full}` : undefined;
+  const offerTitle = undecided ? courses?.map((c) => `${c.name}: ${courseOffer(c) ?? t("match.offerNoFixed")}`).join("\n") : fieldCourse?.name;
   if (offerText && !undecided && !why) parts.push(offerText);
 
   return (
@@ -88,7 +90,7 @@ export function FieldMatchRow({
         </Link>
         {undecided && (
           // Phone: the name takes the first line and the rate follows the chip on the second; wider: the rate mid-row.
-          <span className="order-last whitespace-nowrap text-sm text-zinc-700 tabular-nums sm:order-none sm:min-w-0 sm:flex-1">
+          <span className={`order-last text-sm text-zinc-700 tabular-nums sm:order-none sm:min-w-0 sm:flex-1 ${byCourse ? "" : "whitespace-nowrap"}`}>
             {byCourse ? (
               <span title={offerTitle}>{offerText}</span>
             ) : rate != null ? (
