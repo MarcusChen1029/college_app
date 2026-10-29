@@ -8,6 +8,7 @@ import {
   sealE1,
   unlockVault,
   type NewVault,
+  type Secret,
 } from "./vault-crypto.ts";
 import {
   b64u,
@@ -76,6 +77,17 @@ async function handUnwrap(bits: Uint8Array<ArrayBuffer>, wrapped: string, aad: s
   return new Uint8Array(vk);
 }
 
+// A wrap of `vk` under the first half of `bits`, laid out as the vault stores it: IV, then ciphertext and tag.
+async function handWrap(bits: Uint8Array<ArrayBuffer>, vk: Uint8Array<ArrayBuffer>, aad: string): Promise<string> {
+  const kek = await subtle.importKey("raw", bits.slice(0, 32), "AES-GCM", false, ["encrypt"]);
+  const iv = globalThis.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(12)));
+  const ct = new Uint8Array(await subtle.encrypt({ name: "AES-GCM", iv, additionalData: enc.encode(aad) }, kek, vk));
+  const out = new Uint8Array(new ArrayBuffer(12 + ct.length));
+  out.set(iv);
+  out.set(ct, 12);
+  return b64u(out);
+}
+
 const recAad = (keyId: string) => `vault:e1|user:${USER}|key:${keyId}|by:recovery`;
 const passAad = (keyId: string) => `vault:e1|user:${USER}|key:${keyId}|by:passphrase`;
 
@@ -100,6 +112,9 @@ test("round trip: create, unlock with the passphrase, seal and open", async () =
   // The key a later unlock returns opens what the creating key sealed, and the other way round.
   const unlocked = asKey(await unlockVault(USER, v.record, { passphrase: PASS }));
   assert.equal(unlocked.extractable, false);
+  assert.equal(unlocked.algorithm.name, "AES-GCM");
+  assert.equal((unlocked.algorithm as AesKeyAlgorithm).length, 256);
+  assert.deepEqual([...unlocked.usages].sort(), ["decrypt", "encrypt"], "unwrapKey is not a usage of the vault key");
   assert.equal(await openE1(unlocked, v.record.key_id, USER, SLOT, sealed), "p@ss w0rd ✓");
   const sealed2 = await sealE1(unlocked, v.record.key_id, USER, SLOT, "second");
   assert.equal(await openE1(v.key, v.record.key_id, USER, SLOT, sealed2), "second");
@@ -122,6 +137,30 @@ test("sealE1 refuses what could never be opened again, without echoing the passw
   // An empty password is shorter than the smallest value the format accepts.
   await assert.rejects(sealE1(v.key, v.record.key_id, USER, SLOT, ""));
   await assert.rejects(sealE1(v.key, "not a key id", USER, SLOT, "hunter2-secret"), (e: Error) => !e.message.includes("hunter2-secret"));
+});
+
+test("sealE1 refuses a lone surrogate, which would silently come back as U+FFFD", async () => {
+  const v = await sharedVault();
+  for (const pw of ["ab\uD800cd", "\uDC00", "tail\uD83D", "swapped\uDE00\uD83D"]) {
+    await assert.rejects(sealE1(v.key, v.record.key_id, USER, SLOT, pw), { message: "seal_input_invalid" }, JSON.stringify(pw));
+  }
+  // A proper pair (one emoji) is fine and comes back exactly.
+  const ok = "pair 🔐 ok";
+  assert.equal(await openE1(v.key, v.record.key_id, USER, SLOT, await sealE1(v.key, v.record.key_id, USER, SLOT, ok)), ok);
+});
+
+test("a secret that is not an object is \"wrong\" and never throws", async () => {
+  const v = await sharedVault();
+  // A bare string used to reach `"recovery" in secret`, whose TypeError message quotes the string.
+  for (const secret of ["hunter2-secret-string", "", null, undefined, 42]) {
+    const s = secret as unknown as Secret;
+    assert.equal(await unlockVault(USER, v.record, s), "wrong", `unlock with ${JSON.stringify(secret)}`);
+    assert.equal(await rewrapPassphrase(USER, v.record, s, "a new passphrase"), "wrong", `rewrap with ${JSON.stringify(secret)}`);
+  }
+  // Objects of the wrong shape.
+  for (const secret of [{}, { passphrase: 5 }, { recovery: 5 }, { passphrase: null }]) {
+    assert.equal(await unlockVault(USER, v.record, secret as unknown as Secret), "wrong", JSON.stringify(secret));
+  }
 });
 
 test("wrong passphrase is \"wrong\", and the passphrase is never trimmed", async () => {
@@ -189,13 +228,8 @@ test("rewrapPassphrase never lowers the iteration count", async () => {
   const iterations = 650_000;
   const salt = globalThis.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(16)));
   const bits = await handBits({ passphrase: PASS }, b64u(salt), iterations);
-  const kek = await subtle.importKey("raw", bits.slice(0, 32), "AES-GCM", false, ["encrypt"]);
-  const iv = globalThis.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(12)));
-  const ct = new Uint8Array(await subtle.encrypt({ name: "AES-GCM", iv, additionalData: enc.encode(passAad(v.record.key_id)) }, kek, vk));
-  const wrapped = new Uint8Array(new ArrayBuffer(60));
-  wrapped.set(iv);
-  wrapped.set(ct, 12);
-  const high: VaultRecord = { ...v.record, pass_salt: b64u(salt), pass_iterations: iterations, pass_check: await handCheck(bits), pass_wrapped: b64u(wrapped) };
+  const pass_wrapped = await handWrap(bits, vk, passAad(v.record.key_id));
+  const high: VaultRecord = { ...v.record, pass_salt: b64u(salt), pass_iterations: iterations, pass_check: await handCheck(bits), pass_wrapped };
 
   asKey(await unlockVault(USER, high, { passphrase: PASS })); // the hand-built record is valid
   const r = asRecord(await rewrapPassphrase(USER, high, { passphrase: PASS }, "the next passphrase"));
@@ -287,6 +321,48 @@ test("planted wrapped key never unlocks", async () => {
   // The same record read as another account, or under another key id.
   assert.equal(await unlockVault(OTHER_USER, a.record, { recovery: a.recoveryCode }), "bad_record");
   assert.equal(await unlockVault(USER, { ...a.record, key_id: newKeyId() }, { recovery: a.recoveryCode }), "bad_record");
+});
+
+test("the check is compared before the wrapped key is opened", async () => {
+  const a = await sharedVault();
+  const x = "a different passphrase, X";
+  // This record's own salt and check, but a wrapped key that is a perfectly valid wrap of a random vault key under the key
+  // derived from X, with the real additional data. A build that opened the blob before comparing the check would accept X.
+  const bitsX = await handBits({ passphrase: x }, a.record.pass_salt, a.record.pass_iterations);
+  const randomVk = globalThis.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(32)));
+  const planted: VaultRecord = { ...a.record, pass_wrapped: await handWrap(bitsX, randomVk, passAad(a.record.key_id)) };
+  assert.deepEqual(await handUnwrap(bitsX, planted.pass_wrapped, passAad(a.record.key_id)), randomVk, "the planted blob opens under X's key");
+
+  assert.equal(await unlockVault(USER, planted, { passphrase: x }), "wrong");
+  assert.equal(await rewrapPassphrase(USER, planted, { passphrase: x }, "some new passphrase"), "wrong");
+  assert.equal(await rewrapRecovery(USER, planted, x), "wrong");
+});
+
+test("unlock never holds the vault key as raw bytes: the wrapped key goes straight into a non-extractable key", async () => {
+  const v = await sharedVault();
+  const sealed = await sealE1(v.key, v.record.key_id, USER, SLOT, "spy target");
+  const { decrypt, unwrapKey } = subtle;
+  let decrypts = 0;
+  let unwraps = 0;
+  subtle.decrypt = (...args: Parameters<typeof decrypt>) => {
+    decrypts++;
+    return decrypt.apply(subtle, args);
+  };
+  subtle.unwrapKey = (...args: Parameters<typeof unwrapKey>) => {
+    unwraps++;
+    return unwrapKey.apply(subtle, args);
+  };
+  try {
+    const key = asKey(await unlockVault(USER, v.record, { recovery: v.recoveryCode }));
+    assert.equal(decrypts, 0, "no decrypt of the wrapped key to bytes");
+    assert.equal(unwraps, 1, "one unwrapKey into a key object");
+    // The spy is live: opening a password is a decrypt, and the unlocked key does it.
+    assert.equal(await openE1(key, v.record.key_id, USER, SLOT, sealed), "spy target");
+    assert.equal(decrypts, 1);
+  } finally {
+    subtle.decrypt = decrypt;
+    subtle.unwrapKey = unwrapKey;
+  }
 });
 
 test("iterations below the floor, and records that are not records, are bad_record", async () => {

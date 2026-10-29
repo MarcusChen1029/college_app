@@ -48,6 +48,16 @@ function copy(b: Uint8Array): Bytes {
   return out;
 }
 
+// False when the string holds a lone surrogate, which UTF-8 encoding would silently turn into U+FFFD. String iteration
+// yields a proper pair as one code point, so any surrogate it yields is unpaired. (Not String.isWellFormed: that is 2023+.)
+function isWellFormed(s: string): boolean {
+  for (const ch of s) {
+    const c = ch.codePointAt(0) ?? 0;
+    if (c >= 0xd800 && c <= 0xdfff) return false;
+  }
+  return true;
+}
+
 // Compared as bytes, never as text: fromB64u accepts several spellings of the same bytes.
 function sameBytes(a: Uint8Array, b: Uint8Array): boolean {
   if (a.length !== b.length) return false;
@@ -70,13 +80,14 @@ function newRecoveryCode(): string {
 }
 
 // 512 derived bits are a 256-bit key-encryption key followed by a 256-bit check; only the SHA-256 of the check is stored.
+// The key-encryption key can encrypt (wrap), decrypt (re-wrap) and unwrapKey (unlock, which never sees VK as bytes).
 type Derived = { kek: CryptoKey; check: Bytes };
 
 async function split(bits: ArrayBuffer): Promise<Derived> {
   const all = new Uint8Array(bits);
   const checkBits = all.slice(32);
   try {
-    const kek = await subtle().importKey("raw", all.subarray(0, 32), "AES-GCM", false, ["encrypt", "decrypt"]);
+    const kek = await subtle().importKey("raw", all.subarray(0, 32), "AES-GCM", false, ["encrypt", "decrypt", "unwrapKey"]);
     return { kek, check: new Uint8Array(await subtle().digest("SHA-256", checkBits)) };
   } finally {
     all.fill(0);
@@ -114,18 +125,6 @@ async function wrap(vk: Bytes, kek: CryptoKey, additionalData: Bytes): Promise<s
   return b64u(out);
 }
 
-/** VK's 32 raw bytes, or null when the blob has the wrong size or does not authenticate. */
-async function unwrap(wrapped: string, kek: CryptoKey, additionalData: Bytes): Promise<Bytes | null> {
-  const w = fromB64u(wrapped);
-  if (!w || w.length !== IV_BYTES + VK_BYTES + TAG_BYTES) return null;
-  try {
-    const iv = copy(w.subarray(0, IV_BYTES));
-    return new Uint8Array(await subtle().decrypt({ name: "AES-GCM", iv, additionalData }, kek, copy(w.subarray(IV_BYTES))));
-  } catch {
-    return null;
-  }
-}
-
 // VK as the key everything else uses: it cannot be exported, so nothing outside this file can ever read it back.
 const importVk = (vk: Bytes): Promise<CryptoKey> => subtle().importKey("raw", vk, "AES-GCM", false, ["encrypt", "decrypt"]);
 
@@ -136,14 +135,17 @@ function checked(record: VaultRecord): VaultRecord {
   return parsed;
 }
 
-type Opened = { record: VaultRecord; vk: Bytes };
+// A secret that matched its check: the validated record, the key-encryption key, and the wrapped VK it guards (not yet opened).
+type Verified = { record: VaultRecord; by: By; kek: CryptoKey; wrapped: Bytes };
 
 /**
  * The shared first half of unlock and both re-wraps: re-validate the record (the iteration floor included), derive from
- * the secret, compare the check hash, and only then decrypt the wrapped VK, so one attempt tests exactly one secret even
- * if someone planted a crafted wrapped key. The caller zeroes `vk`.
+ * the secret and compare the check hash. Nothing is decrypted here, so one attempt tests exactly one secret even if
+ * someone planted a crafted wrapped key.
  */
-async function openVk(userId: string, input: VaultRecord, secret: Secret): Promise<Opened | "wrong" | "bad_record"> {
+async function verifySecret(input: VaultRecord, secret: Secret): Promise<Verified | "wrong" | "bad_record"> {
+  // A bare string (or null) is not a secret object; `in` on it would throw an error that quotes the string.
+  if (!secret || typeof secret !== "object") return "wrong";
   const record = parseVaultRecord(input);
   if (!record) return "bad_record";
 
@@ -172,8 +174,42 @@ async function openVk(userId: string, input: VaultRecord, secret: Secret): Promi
 
   const stored = fromB64u(checkText);
   if (!stored || !sameBytes(derived.check, stored)) return "wrong";
-  const vk = await unwrap(wrappedText, derived.kek, wrapData(userId, record.key_id, by));
-  return vk ? { record, vk } : "bad_record"; // the check matched but the blob did not open: the row is damaged or planted
+  const wrapped = fromB64u(wrappedText);
+  if (!wrapped || wrapped.length !== IV_BYTES + VK_BYTES + TAG_BYTES) return "bad_record";
+  return { record, by, kek: derived.kek, wrapped: copy(wrapped) };
+}
+
+// The wrapped VK decrypts with the user, key id and wrapping secret as additional data, so a blob moved here does not open.
+const aadOf = (userId: string, v: Verified): Bytes => wrapData(userId, v.record.key_id, v.by);
+
+/**
+ * Unlock: AES-GCM unwrapKey turns the wrapped VK straight into a non-extractable key, so the raw bytes never exist in
+ * this code. Null when the blob does not authenticate (the check matched, so the row is damaged or planted).
+ */
+async function unwrapToKey(userId: string, v: Verified): Promise<CryptoKey | null> {
+  const how = { name: "AES-GCM", iv: v.wrapped.subarray(0, IV_BYTES), additionalData: aadOf(userId, v) };
+  try {
+    return await subtle().unwrapKey("raw", v.wrapped.subarray(IV_BYTES), v.kek, how, "AES-GCM", false, ["encrypt", "decrypt"]);
+  } catch {
+    return null;
+  }
+}
+
+type Opened = { record: VaultRecord; vk: Bytes };
+
+/**
+ * The re-wraps need VK's raw bytes to encrypt them again: verify, then decrypt. Like create, the caller zeroes `vk`.
+ */
+async function openRaw(userId: string, input: VaultRecord, secret: Secret): Promise<Opened | "wrong" | "bad_record"> {
+  const v = await verifySecret(input, secret);
+  if (typeof v === "string") return v;
+  try {
+    const iv = v.wrapped.subarray(0, IV_BYTES);
+    const vk = new Uint8Array(await subtle().decrypt({ name: "AES-GCM", iv, additionalData: aadOf(userId, v) }, v.kek, v.wrapped.subarray(IV_BYTES)));
+    return { record: v.record, vk };
+  } catch {
+    return "bad_record";
+  }
 }
 
 /**
@@ -209,16 +245,13 @@ export async function createVault(userId: string, passphrase: string): Promise<N
 
 /**
  * Open the vault with the passphrase or the recovery code. "wrong" is a secret that does not match; "bad_record" is a row
- * that fails the format check (an iteration count under the floor included) or whose wrapped key will not open.
+ * that fails the format check (an iteration count under the floor included) or whose wrapped key will not open. VK goes
+ * from the wrapped blob into a non-extractable key without ever being raw bytes here.
  */
 export async function unlockVault(userId: string, record: VaultRecord, secret: Secret): Promise<CryptoKey | "wrong" | "bad_record"> {
-  const opened = await openVk(userId, record, secret);
-  if (typeof opened === "string") return opened;
-  try {
-    return await importVk(opened.vk);
-  } finally {
-    opened.vk.fill(0);
-  }
+  const verified = await verifySecret(record, secret);
+  if (typeof verified === "string") return verified;
+  return (await unwrapToKey(userId, verified)) ?? "bad_record";
 }
 
 /**
@@ -232,7 +265,7 @@ export async function rewrapPassphrase(
   newPassphrase: string,
 ): Promise<VaultRecord | "wrong" | "bad_record"> {
   if (typeof newPassphrase !== "string" || newPassphrase.length === 0) throw new Error("passphrase_empty");
-  const opened = await openVk(userId, record, secret);
+  const opened = await openRaw(userId, record, secret);
   if (typeof opened === "string") return opened;
   const { record: current, vk } = opened;
   try {
@@ -257,7 +290,7 @@ export async function rewrapRecovery(
   record: VaultRecord,
   passphrase: string,
 ): Promise<{ record: VaultRecord; recoveryCode: string } | "wrong" | "bad_record"> {
-  const opened = await openVk(userId, record, { passphrase });
+  const opened = await openRaw(userId, record, { passphrase });
   if (typeof opened === "string") return opened;
   const { record: current, vk } = opened;
   try {
@@ -278,8 +311,8 @@ export async function rewrapRecovery(
 
 /** One password as "e1.<key id>.<base64url of iv, ciphertext and tag>", bound to this user, vault key id and slot. */
 export async function sealE1(key: CryptoKey, keyId: string, userId: string, slot: string, password: string): Promise<string> {
-  // An empty password would be a value the format itself refuses to read back.
-  if (!isKeyId(keyId) || typeof password !== "string" || password.length === 0) throw new Error("seal_input_invalid");
+  // An empty password would be a value the format itself refuses to read back, and a lone surrogate would come back as U+FFFD.
+  if (!isKeyId(keyId) || typeof password !== "string" || password.length === 0 || !isWellFormed(password)) throw new Error("seal_input_invalid");
   const iv = random(IV_BYTES);
   const plain = utf8(password);
   try {
