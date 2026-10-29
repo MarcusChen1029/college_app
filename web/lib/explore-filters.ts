@@ -39,6 +39,8 @@ export type ExploreFilters = {
   testPolicy: string;
   plan: string;
   sort: SortState;
+  /** The college open on the map (its slug, `?c=`), so a shared link opens the same card. Not a filter: it never narrows the rows. */
+  college: string | null;
 };
 
 export const DEFAULT_FILTERS: ExploreFilters = {
@@ -60,7 +62,11 @@ export const DEFAULT_FILTERS: ExploreFilters = {
   testPolicy: "",
   plan: "",
   sort: { key: "tier", reverse: false },
+  college: null,
 };
+
+/** College slugs are lowercase words joined by hyphens (data/colleges/<slug>.json); anything else in `?c=` is ignored. */
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /** Steps offered by the admit-rate range selects. */
 export const ADMIT_STEPS = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90];
@@ -102,6 +108,8 @@ export function parseFilters(sp: Params): ExploreFilters {
   const sort = sp.get("sort") ?? "";
   const key = sort.replace(/^-/, "") as SortKey;
   if (SORT_KEYS.includes(key)) f.sort = { key, reverse: sort.startsWith("-") };
+  const college = sp.get("c") ?? "";
+  if (college.length <= 80 && SLUG.test(college)) f.college = college;
   return f;
 }
 
@@ -125,6 +133,7 @@ export function filtersToQuery(f: ExploreFilters): string {
   if (f.testPolicy) p.set("test", f.testPolicy);
   if (f.plan) p.set("plan", f.plan);
   if (f.sort.key !== "tier" || f.sort.reverse) p.set("sort", `${f.sort.reverse ? "-" : ""}${f.sort.key}`);
+  if (f.college) p.set("c", f.college);
   return p.toString();
 }
 
@@ -239,8 +248,8 @@ export function moreFilterCount(f: ExploreFilters): number {
 /** Any filter on at all (search excluded: it has its own clear button). */
 export const anyFilter = (f: ExploreFilters): boolean => f.fit.length > 0 || !!f.field || f.maxTuition != null || moreFilterCount(f) > 0;
 
-/** Clears every filter, keeping the view, region, search and sort. */
-export const clearFilters = (f: ExploreFilters): ExploreFilters => ({ ...DEFAULT_FILTERS, view: f.view, region: f.region, q: f.q, sort: f.sort });
+/** Clears every filter, keeping the view, region, search, sort and the open college. */
+export const clearFilters = (f: ExploreFilters): ExploreFilters => ({ ...DEFAULT_FILTERS, view: f.view, region: f.region, q: f.q, sort: f.sort, college: f.college });
 
 function sortValue(r: ExploreRow, key: SortKey, category: string): number | string | null {
   switch (key) {

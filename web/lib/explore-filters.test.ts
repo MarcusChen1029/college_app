@@ -56,12 +56,24 @@ test("URL round trip keeps every filter and leaves defaults out", () => {
   const full = f({
     view: "table", region: "GB", q: "tech", fit: ["safety", "target"], field: "computer_science", admitMin: 10, admitMax: 40,
     maxTuition: 30000, intlAid: true, english: true, noSupplements: true, noAppFee: true, category: "engineering", minTier: "B", state: "CA", testPolicy: "optional",
-    plan: "ED", sort: { key: "sat", reverse: true },
+    plan: "ED", sort: { key: "sat", reverse: true }, college: "cu-boulder",
   });
   const q = filtersToQuery(full);
   assert.match(q, /fit=target%2Csafety/); // canonical order
   assert.match(q, /sort=-sat/);
+  assert.match(q, /(^|&)c=cu-boulder(&|$)/);
   assert.deepEqual(parseFilters(params(q)), { ...full, fit: ["target", "safety"] });
+});
+
+test("the open college (?c=) round-trips alone and ignores anything that is not a slug", () => {
+  assert.equal(filtersToQuery(f({ college: "stanford" })), "c=stanford");
+  assert.equal(parseFilters(params("c=stanford")).college, "stanford");
+  assert.equal(parseFilters(params("c=university-of-chicago&view=table")).college, "university-of-chicago");
+  for (const junk of ["", "Stanford", "a b", "../x", "-mit", "mit-", "mit--x", "x".repeat(81), "<script>"]) {
+    assert.equal(parseFilters(params(`c=${encodeURIComponent(junk)}`)).college, null, junk);
+  }
+  // Clearing filters keeps the card open; it is not a filter.
+  assert.equal(clearFilters(f({ college: "mit", fit: ["safety"] })).college, "mit");
 });
 
 test("parseFilters ignores junk", () => {
