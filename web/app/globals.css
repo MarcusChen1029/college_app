@@ -524,8 +524,71 @@ html:has([data-explorer]) body > header > nav {
      the footer at full width while the content keeps the app frame. */
   html:has([data-start-page]) main,
   html:has([data-help-page]) main,
-  html:has([data-legal-page]) main {
+  html:has([data-legal-page]) main,
+  html:has([data-share-page]) main {
     background-color: var(--color-blue-100);
+  }
+  /* A printed share page is a white sheet: no sky ground behind it. */
+  @media print {
+    html:has([data-share-page]) main {
+      background-color: #fff;
+    }
+  }
+  /* Share pages' stamps are pressed down one after another, then each photograph settles slowly (as the home hero). */
+  @keyframes share-stamp {
+    from {
+      opacity: 0;
+      scale: 1.25;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  .share-stamp {
+    animation: share-stamp 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(300ms + var(--i, 0) * 110ms);
+  }
+  /* The photographs move without growing past their frames (a scaled image would widen the page's measured edges):
+     stamps develop like a print, the hero campus pans slowly inside its frame. */
+  @keyframes share-develop {
+    from {
+      opacity: 0.25;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes share-pan {
+    from {
+      object-position: 50% 30%;
+    }
+    to {
+      object-position: 50% 62%;
+    }
+  }
+  .share-stamp img {
+    animation: share-develop 1.4s ease-out 0.4s both;
+  }
+  .share-pan img {
+    animation: share-pan 18s cubic-bezier(0.2, 0.6, 0.3, 1) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .share-stamp,
+    .share-stamp img,
+    .share-pan img {
+      animation: none;
+    }
+  }
+  /* Printing right after the page opens must not catch rows mid-entrance (opacity 0): no entrance animations in print. */
+  @media print {
+    .ticket-in,
+    .timetable-row,
+    .share-stamp,
+    .share-stamp img,
+    .share-pan img {
+      animation: none !important;
+    }
   }
 
   /* The /start flow keeps one quiet frame from the first question to "Add and open my list": the logo, Sign in (or the

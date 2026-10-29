@@ -11,15 +11,15 @@ import { archiveClass, newCode, revokeCode, type LinkedStudent, type TeacherClas
 
 export const btn = buttonClass("ghost", "sm");
 
-/** Runs an action, then the parent reloads. */
-export type Run = (fn: () => Promise<unknown>) => void;
+/** Runs an action, then the parent reloads; then (optional) runs after both, e.g. to put focus back. */
+export type Run = (fn: () => Promise<unknown>, then?: () => void) => void;
 
 /** A live code's own actions, for a "⋯" menu: New code (asks first, the old code stops working) and Turn code off. */
 export function codeActions(t: TFunction, code: string | null, onNew: () => void, onOff: () => void): MenuAction[] {
   if (!code) return [];
   return [
-    { label: t("teacher.classes.newCode"), onSelect: () => confirm(t("teacher.classes.renewConfirm")) && onNew() },
-    { label: t("teacher.classes.turnOff"), onSelect: onOff },
+    { id: "new-code", label: t("teacher.classes.newCode"), onSelect: () => confirm(t("teacher.classes.renewConfirm")) && onNew() },
+    { id: "code-off", label: t("teacher.classes.turnOff"), onSelect: onOff },
   ];
 }
 
@@ -83,10 +83,12 @@ export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNe
   );
 }
 
-type ClassCardProps = { cls: TeacherClass; members: LinkedStudent[]; now: number; busy: boolean; run: Run };
+/** onRemoved: called after Archive took the card out of its list, so focus can land on the next card. */
+/** label: the name that tells this class apart from a same-named one (year or code added); defaults to its name. */
+type ClassCardProps = { cls: TeacherClass; label?: string; members: LinkedStudent[]; now: number; busy: boolean; run: Run; onRemoved?: () => void };
 
 /** One class: name, the code with Copy, one "⋯" menu (new code, code off, archive) and how many students it has. */
-export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
+export function ClassCard({ cls, label = cls.name, members, now, busy, run, onRemoved }: ClassCardProps) {
   const t = useT();
 
   const actions: MenuAction[] = [
@@ -97,9 +99,10 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
       () => run(() => revokeCode("class", cls.id)),
     ),
     {
+      id: "archive",
       label: t("teacher.classes.archive"),
       danger: true,
-      onSelect: () => confirm(t("teacher.classes.archiveConfirm", { name: cls.name })) && run(() => archiveClass(cls.id, true)),
+      onSelect: () => confirm(t("teacher.classes.archiveConfirm", { name: label })) && run(() => archiveClass(cls.id, true), onRemoved),
     },
   ];
 
@@ -115,7 +118,7 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
             {t("teacher.classes.restore")}
           </button>
         ) : (
-          <ActionsMenu label={t("teacher.menu.more", { name: cls.name })} actions={actions} disabled={busy} />
+          <ActionsMenu label={t("teacher.menu.more", { name: label })} actions={actions} disabled={busy} />
         )}
       </div>
       {!cls.archived && (

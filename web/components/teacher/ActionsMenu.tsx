@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
-/** One menu entry. Destructive entries keep their own confirm() inside onSelect. */
-export type MenuAction = { label: string; onSelect: () => void; danger?: boolean };
+/** One menu entry. `id` must be unique within the menu (labels can repeat). Destructive entries keep their own confirm(). */
+export type MenuAction = { id: string; label: string; onSelect: () => void; danger?: boolean };
 
 /**
  * A "⋯" button that opens a small menu of actions, so a card or row shows one quiet control instead of a row of equal
@@ -76,7 +76,7 @@ export function ActionsMenu({ label, actions, disabled = false }: { label: strin
         <div id={menuId} role="menu" aria-label={label} onKeyDown={onMenuKey} className="absolute right-0 top-full z-30 mt-2 w-52 rounded-xl border-2 border-ink bg-white p-1 shadow-lg">
           {actions.map((a, i) => (
             <button
-              key={a.label}
+              key={a.id}
               ref={(el) => {
                 items.current[i] = el;
               }}
