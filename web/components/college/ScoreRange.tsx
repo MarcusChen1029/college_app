@@ -47,7 +47,7 @@ export function ScoreRange({ test, label, p25, p50, p75 }: { test: "sat" | "act"
         <div className="absolute top-8 h-2.5 rounded-full bg-blue-500" style={{ left: at(p25), width: `calc(${at(p75)} - ${at(p25)})` }} aria-hidden="true" />
         {p50 != null && <div className="absolute top-[26px] h-[22px] w-[3px] -translate-x-1/2 rounded-full bg-ink" style={{ left: at(p50) }} aria-hidden="true" />}
         {you != null && (
-          <div className="absolute top-[29px] h-4 w-4 -translate-x-1/2 rounded-full border-[3px] border-white bg-coral ring-1 ring-ink" style={{ left: at(you) }} aria-hidden="true" />
+          <div className="absolute top-[29px] h-4 w-4 -translate-x-1/2 rounded-full border-[3px] border-white bg-ink ring-1 ring-ink" style={{ left: at(you) }} aria-hidden="true" />
         )}
       </div>
       <div className="relative h-5 text-[13px] text-zinc-600 tabular-nums" aria-hidden="true">

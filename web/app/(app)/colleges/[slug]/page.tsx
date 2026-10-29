@@ -8,13 +8,16 @@ import { collegeSupplements } from "@/lib/supplements-data";
 import { CollegeActions } from "@/components/CollegeActions";
 import { CollegeSupplementsSection, EssaysRequirement, IntlFinanceNote, SupplementSourceItems } from "@/components/CollegeSupplements";
 import { CollegeOutcomes } from "@/components/CollegeOutcomes";
+import { aidRowUsOnly } from "@/components/college/aid-rows";
+import { EnglishCheck } from "@/components/college/EnglishCheck";
 import { FitAnswer } from "@/components/college/FitAnswer";
+import { IntlSwap } from "@/components/college/IntlSwap";
+import { YouRow } from "@/components/college/YouRow";
 import { Note } from "@/components/college/Note";
 import { Ref } from "@/components/college/Ref";
 import { ScoreRange } from "@/components/college/ScoreRange";
 import { SourceItem } from "@/components/college/SourceItem";
 import { Tag } from "@/components/college/Tag";
-import { EnglishFitLine } from "@/components/EnglishFit";
 import { collegeEnglishFrom } from "@/lib/english-fit";
 import { getCollege, getLookups, getSummaries } from "@/lib/data";
 import {
@@ -59,7 +62,7 @@ export default function CollegePage({ params }: PageProps<"/colleges/[slug]">) {
 }
 
 /** A row of the deadline timetable: a college deadline, or (for course-based universities with none) the courses that close on one date. */
-type Entry = { key: string; date: string | null; title: string; tags: string[]; kind: string | null; decision: string | null; notes: string | null; n: number | undefined; application: boolean; aid: boolean };
+type Entry = { key: string; date: string | null; title: string; plan: string | null; tags: string[]; kind: string | null; decision: string | null; notes: string | null; n: number | undefined; application: boolean; aid: boolean };
 /** The plans lookup is read with select("*"), so its description column arrives too (lib/types.ts does not list it yet). */
 type PlanRow = Lookups["plans"][number] & { description?: string | null };
 // Non-US general tiers are national rank bands (CLAUDE.md "Multi-country"); only S, A and B are in use outside the US.
@@ -104,7 +107,8 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         key: d.id,
         date: d.due_date,
         title: d.label ?? planLabel(d.plan_key),
-        tags: d.plan_key && d.label ? [d.plan_key] : [],
+        plan: d.plan_key,
+        tags: isUS && d.plan_key && d.label ? [d.plan_key] : [],
         kind: d.kind !== "application" ? d.kind.replace("_", " ") : null,
         decision: d.notification_date || d.notification_note ? t("college.decision", { x: d.notification_date ? fmtDate(d.notification_date) : (d.notification_note ?? "") }) : null,
         notes: d.notes,
@@ -114,14 +118,28 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
       }))
     : [...new Set(programs.map((p) => p.application_deadline).filter((x): x is string => !!x))].sort().map((date) => {
         const on = programs.filter((p) => p.application_deadline === date);
-        return { key: `course-${date}`, date, title: on.map((p) => p.name).join(" · "), tags: [...new Set(on.map((p) => programApplyVia(p, c.country_code)).filter((x): x is string => !!x))], kind: null, decision: null, notes: null, n: undefined, application: true, aid: false };
+        return { key: `course-${date}`, date, title: on.map((p) => p.name).join(" · "), plan: null, tags: [...new Set(on.map((p) => programApplyVia(p, c.country_code)).filter((x): x is string => !!x))], kind: null, decision: null, notes: null, n: undefined, application: true, aid: false };
       });
   // The band's "next deadline" is an application deadline only (never a deposit, scholarship or aid date). Plans that close
   // on the same day are named together ("Early Decision or Early Action").
   const appUpcoming = entries.filter((e) => e.application && e.date && daysUntil(e.date) >= 0);
   const next = appUpcoming[0];
   const nextGroup = next ? appUpcoming.filter((e) => e.date === next.date) : [];
-  const nextTitle = nextGroup.map((e) => e.title).join(t("college.planOr"));
+  // The band names the round briefly ("Early Action"); the timetable keeps each deadline's full name.
+  const scopeOf = (title: string) => {
+    const s = title.replace(/^(application\s+)?deadline\s*[-–:]\s*/i, "").replace(/\s*\([^)]*\)/g, "").trim();
+    const cap = s.charAt(0).toUpperCase() + s.slice(1);
+    return cap.length <= 34 ? cap : `${cap.slice(0, cap.lastIndexOf(" ", 32))}…`;
+  };
+  const shortName = (e: Entry) =>
+    e.title.length <= 30
+      ? e.title
+      : isUS && e.plan
+        ? /\binternational\b/i.test(e.title)
+          ? t("college.planIntl", { plan: planLabel(e.plan) })
+          : planLabel(e.plan)
+        : scopeOf(e.title) || t("college.applicationDeadline");
+  const nextTitle = [...new Set(nextGroup.map(shortName))].join(t("college.planOr"));
   const nextRefs = [...new Set(nextGroup.map((e) => e.n).filter((n): n is number => n !== undefined))];
   const then = next && appUpcoming.find((e) => e.date !== next.date);
   const rolling = !next ? entries.find((e) => e.application && !e.date) : undefined;
@@ -129,12 +147,16 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
   const firstUpcoming = entries.findIndex((e) => e.date && daysUntil(e.date) >= 0);
   // Aid deadlines an international applicant cannot use: every aid date when the college gives internationals no aid,
   // and FAFSA-only dates anywhere (FAFSA is US federal aid).
-  const noIntlAid = cost?.intl_aid_policy === "none";
-  const usOnly = (e: Entry) => e.aid && (noIntlAid || (/\bFAFSA\b/.test(e.title) && !/CSS|IDOC|international/i.test(e.title)));
+  // Need-based forms (CSS Profile, FAFSA) are no use to an international applicant where the college gives them no aid or
+  // merit aid only.
+  const noIntlAid = cost?.intl_aid_policy === "none" || cost?.intl_aid_policy === "merit_only";
+  const usOnly = (e: Entry) => e.aid && aidRowUsOnly(e.title, e.notes, cost?.intl_aid_policy);
   // The Today row counts down to the same application deadline as the band, or says there is none (never to a payment date).
-  const todayTarget = next?.date ? { date: next.date, title: nextTitle } : null;
+  const todayTarget = next?.date
+    ? { date: next.date, title: isUS ? nextTitle : t("college.theDeadline", { scope: nextTitle }) }
+    : { date: null, title: datedApps.length ? t("college.noUpcoming") : rolling ? t("college.rollingSub", { plan: rolling.title }) : t("college.appNotPublishedYet") };
   // The plans this college's deadlines use (ED, EA, RD...), and whether each one binds the student.
-  const plansHere = [...new Set(deadlines.map((d) => d.plan_key).filter((k): k is string => !!k))]
+  const plansHere = [...new Set((isUS ? deadlines : []).map((d) => d.plan_key).filter((k): k is string => !!k))]
     .map((k) => lookups.plans.find((p) => p.key === k))
     .filter((p): p is PlanRow => !!p)
     .filter((p, _, all) => all.length > 1 || !["RD", "ROLLING"].includes(p.key)); // a lone Regular Decision (a UCAS "RD") says nothing worth a column
@@ -147,6 +169,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
     .sort((a, b) => a - b);
   const feeText = (n: number) => programFee({ intl_fee_gbp: programs.some((p) => p.intl_fee_gbp != null) ? n : null, intl_fee_cad: programs.some((p) => p.intl_fee_cad != null) ? n : null, intl_fee_aud: programs.some((p) => p.intl_fee_aud != null) ? n : null }) ?? "";
   const isPublic = c.control === "public";
+  const hasIntlRate = stats?.intl_admit_rate != null;
   const bandTuition = !cost
     ? null
     : cost.tuition_intl_usd != null
@@ -156,6 +179,20 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         : cost.tuition_usd != null
           ? { v: cost.tuition_usd, label: t("college.tuition"), note: isPublic ? t("college.publicNoOut") : null }
           : null;
+  // A published total lower than the tuition an international student pays (plus housing, when published) cannot be their
+  // cost: it is almost always the in-state figure. Say so beside it rather than let it read as the bill.
+  const intlTuition = cost?.tuition_intl_usd ?? cost?.tuition_out_of_state_usd ?? null;
+  const floor = intlTuition != null ? intlTuition + (cost?.room_board_usd ?? 0) : null;
+  const inStateTotal =
+    isPublic && cost?.total_coa_usd != null && floor != null && cost.total_coa_usd < floor
+      ? {
+          sum: floor,
+          what: t(cost.tuition_intl_usd != null ? (cost.room_board_usd != null ? "college.whatIntlHousing" : "college.whatIntl") : cost.room_board_usd != null ? "college.whatOutHousing" : "college.whatOut"),
+        }
+      : null;
+  // Otherwise, a published total below the lines listed above it (Brown: $91,676 against $74,650 + $18,514) is explained too.
+  const partsSum = cost ? [bandTuition?.v, cost.required_fees_usd, cost.intl_extra_fees_usd, cost.room_board_usd].reduce<number>((a, x) => a + (x ?? 0), 0) : 0;
+  const partsBelow = !inStateTotal && cost?.total_coa_usd != null && partsSum > cost.total_coa_usd ? partsSum : null;
   const success = programs.map((p) => p.success_pct).filter((x): x is number => x != null).sort((a, b) => a - b);
   const satTotal = score("SAT_TOTAL");
   const actComp = score("ACT_COMPOSITE");
@@ -164,12 +201,13 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
     actComp?.p25 != null && actComp.p75 != null ? { test: "act" as const, label: t("college.actComposite"), p25: actComp.p25, p50: actComp.p50, p75: actComp.p75 } : null,
   ].filter((x) => x !== null);
   const tags = applyTags(collegeSupplements(c.slug), req?.app_fee_usd);
+  const recommended = Object.fromEntries(c.english_requirements.filter((e) => e.recommended_total != null).map((e) => [e.test_key, Number(e.recommended_total)]));
   // The best subject tier and the fields that hold it ("S in Business"), read from the subject tiers further down.
   const subjectTiers = c.institution_tiers.filter((x) => x.category_key !== "general");
   const tierRank = (code: TierCode) => lookups.tiers.find((x) => x.code === code)?.sort_order ?? 99;
   const bestRank = Math.min(...subjectTiers.map((x) => tierRank(x.tier_code)));
   const best = subjectTiers.filter((x) => tierRank(x.tier_code) === bestRank);
-  const strongest = best.length ? { tier: best[0].tier_code, list: best.slice(0, 3).map((x) => catLabel(x.category_key)).join(", ") + (best.length > 3 ? ` +${best.length - 3}` : "") } : null;
+  const strongest = best.length && (!general || bestRank < tierRank(general)) ? { tier: best[0].tier_code, list: best.slice(0, 3).map((x) => catLabel(x.category_key)).join(", ") + (best.length > 3 ? ` +${best.length - 3}` : "") } : null;
   const generalRow = c.institution_tiers.find((x) => x.category_key === "general");
   const nationalRange = general && !isUS ? NATIONAL_RANGE[tierLetter(general)] : undefined;
   const tierText = !general
@@ -179,7 +217,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
         ? t("college.tierUK", { range: nationalRange })
         : t("college.tierQS", { range: nationalRange, country: c.country_code === "CA" ? t("college.countryCA") : c.country_code === "AU" ? t("college.countryAU") : c.country_code })
       : (lookups.tiers.find((x) => x.code === general)?.description ?? t("status.tier", { tier: general }));
-  const word = (text: string) => <span className="font-display text-lg leading-tight text-blue-200 sm:text-2xl lg:text-[26px]">{text}</span>;
+  const word = (text: string) => <span className="block font-display text-lg leading-[1.15] text-blue-200 sm:text-2xl lg:text-[26px]">{text}</span>;
   const missing = word(t("college.notPublished"));
 
   const jump: JumpItem[] = [
@@ -239,31 +277,64 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
           <CollegeActions slug={c.slug} id={c.id} />
         </div>
 
-        {/* The answer band: the four things a student decides on, in the page's largest type. */}
-        <dl className="mt-7 grid overflow-hidden rounded-2xl bg-ink text-white sm:grid-cols-2 lg:grid-cols-4">
+        {/* The answer band: the four things a student decides on, in the page's largest type, headed by the student's own read
+            of this college ("For you") once their profile holds a score. */}
+        <div className="mt-7 overflow-hidden rounded-2xl bg-ink text-white">
+        {isUS && <YouRow fitInput={fitInputFrom(c, stats?.cds_year, policy?.policy ?? null)} english={collegeEnglishFrom(c.english_policies, c.english_requirements)} recommended={recommended} />}
+        <dl className="grid sm:grid-cols-2 lg:grid-cols-4">
           {isUS ? (
             <Answer
-              label={t("college.admitRate")}
-              figure={stats?.admit_rate != null ? fmtPct(stats.admit_rate) : missing}
-              detail={stats?.intl_admit_rate != null ? t("college.intlShort", { x: fmtPct(stats.intl_admit_rate) }) : t("college.intlShortNone")}
+              label={<IntlSwap all={t("college.admitRate")} intl={hasIntlRate ? t("college.intlAdmitRate") : undefined} />}
+              figure={stats?.admit_rate != null ? <IntlSwap all={fmtPct(stats.admit_rate)} intl={hasIntlRate ? fmtPct(stats.intl_admit_rate) : undefined} /> : missing}
+              detail={
+                <>
+                  <IntlSwap
+                    all={stats?.intl_admit_rate != null ? t("college.intlShort", { x: fmtPct(stats.intl_admit_rate) }) : t("college.intlShortNone")}
+                    intl={hasIntlRate ? t("college.allShort", { x: fmtPct(stats?.admit_rate) }) : undefined}
+                  />
+                  <Ref n={ref(stats?.source_id)} light />
+                </>
+              }
             >
-              {stats?.admits != null && stats.applicants != null && (
-                <p>
-                  {t("college.admittedOf", { x: fmtInt(stats.admits), y: fmtInt(stats.applicants) })}
-                  <Ref n={ref(stats.source_id)} light />
-                </p>
-              )}
-              <p className="mt-1">
-                {stats?.intl_admit_rate != null ? (
+              <IntlSwap
+                all={
                   <>
-                    {t("college.intlAdmitRate")} <span className="font-semibold text-white">{fmtPct(stats.intl_admit_rate)}</span>
-                    {stats.intl_applicants != null && ` (${t("college.xOfY", { x: fmtInt(stats.intl_admits), y: fmtInt(stats.intl_applicants) })})`}
+                    {stats?.admits != null && stats.applicants != null && (
+                      <p>
+                        {t("college.admittedOf", { x: fmtInt(stats.admits), y: fmtInt(stats.applicants) })}
+                        <Ref n={ref(stats.source_id)} light />
+                      </p>
+                    )}
+                    <p className="mt-1">
+                      {stats?.intl_admit_rate != null ? (
+                        <>
+                          {t("college.intlAdmitRate")} <span className="font-semibold text-white">{fmtPct(stats.intl_admit_rate)}</span>
+                          {stats.intl_applicants != null && ` (${t("college.xOfY", { x: fmtInt(stats.intl_admits), y: fmtInt(stats.intl_applicants) })})`}
+                        </>
+                      ) : (
+                        t("college.intlNotPublished")
+                      )}
+                    </p>
                   </>
-                ) : (
-                  t("college.intlNotPublished")
-                )}
-              </p>
-              <FitAnswer fitInput={fitInputFrom(c, stats?.cds_year, policy?.policy ?? null)} />
+                }
+                intl={
+                  hasIntlRate ? (
+                    <>
+                      {stats?.intl_admits != null && stats.intl_applicants != null && (
+                        <p>
+                          {t("college.intlAdmittedOf", { x: fmtInt(stats.intl_admits), y: fmtInt(stats.intl_applicants) })}
+                          <Ref n={ref(stats.source_id)} light />
+                        </p>
+                      )}
+                      <p className="mt-1">
+                        {t("college.allApplicants")} <span className="font-semibold text-white">{fmtPct(stats?.admit_rate)}</span>
+                        {stats?.admits != null && stats.applicants != null && ` (${t("college.xOfY", { x: fmtInt(stats.admits), y: fmtInt(stats.applicants) })})`}
+                      </p>
+                    </>
+                  ) : undefined
+                }
+              />
+              <FitAnswer />
             </Answer>
           ) : (
             <Answer
@@ -277,14 +348,24 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
 
           <Answer
             label={t("college.nextDeadline")}
-            figure={next?.date ? monthDay(next.date) : rolling ? word(t("college.rolling")) : word(t("college.noUpcoming"))}
+            figure={next?.date ? monthDay(next.date) : rolling ? word(t("college.rolling")) : word(datedApps.length ? t("college.noUpcoming") : t("college.notPublishedYet"))}
             detail={
               next?.date ? (
                 <>
-                  {nextTitle} · <span className={`font-semibold ${bandTone(referenceTone(daysUntil(next.date)))}`}>{daysWords(t, daysUntil(next.date))}</span>
+                  {/* Phone only: the round on one line, the days on the next, so no separator is left hanging. */}
+                  <span className="block">
+                    {nextTitle}
+                    {nextRefs.map((n) => (
+                      <Ref key={n} n={n} light />
+                    ))}
+                  </span>
+                  <span className={`block font-semibold whitespace-nowrap ${bandTone(referenceTone(daysUntil(next.date)))}`}>{daysWords(t, daysUntil(next.date))}</span>
                 </>
               ) : rolling ? (
-                rolling.title
+                <>
+                  {shortName(rolling)}
+                  <Ref n={rolling.n} light />
+                </>
               ) : undefined
             }
           >
@@ -299,7 +380,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                 <p className="mt-1">
                   {fmtDate(next.date)} · <span className={`font-semibold ${bandTone(referenceTone(daysUntil(next.date)))}`}>{daysWords(t, daysUntil(next.date))}</span>
                 </p>
-                {then?.date && <p className="mt-1">{t("college.thenPlan", { plan: then.title, date: fmtDate(then.date) })}</p>}
+                {then?.date && <p className="mt-1">{t("college.thenPlan", { plan: shortName(then), date: fmtDate(then.date) })}</p>}
               </>
             ) : rolling ? (
               <p>
@@ -319,7 +400,18 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             <Answer
               label={bandTuition?.label ?? t("college.tuition")}
               figure={bandTuition ? fmtUsd(bandTuition.v) : missing}
-              detail={cost ? (cost.intl_aid_policy ? INTL_AID[cost.intl_aid_policy] : t("college.aidNotVerified")) : undefined}
+              detail={
+                cost ? (
+                  <>
+                    {cost.intl_aid_policy ? INTL_AID[cost.intl_aid_policy] : t("college.aidNotVerified")}
+                    {bandTuition?.note && <span className="block">{bandTuition.note}</span>}
+                    <span className="block">
+                      {t("college.figuresFor", { year: cost.year })}
+                      <Ref n={ref(cost.source_id)} light />
+                    </span>
+                  </>
+                ) : undefined
+              }
             >
               {cost && (
                 <>
@@ -349,9 +441,10 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             {strongest && <p className="mt-3 font-semibold text-white">{t("college.strongest", { tier: strongest.tier, list: strongest.list })}</p>}
           </Answer>
         </dl>
+        </div>
         {isUS && (
-          <div className="mt-4 sm:hidden">
-            <FitAnswer fitInput={fitInputFrom(c, stats?.cds_year, policy?.policy ?? null)} light />
+          <div className="mt-4 empty:hidden sm:hidden">
+            <FitAnswer light />
           </div>
         )}
 
@@ -578,7 +671,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
             <div className="mt-6 grid items-start gap-x-16 gap-y-10 lg:grid-cols-12">
               <ol className={`-mx-2 border-t-2 border-ink sm:-mx-3 ${plansHere.length ? "lg:col-span-8" : "lg:col-span-12"}`}>
                 {entries.map((e, i) => (
-                  <TimetableRows key={e.key} e={e} t={t} usOnly={usOnly(e)} today={i === firstUpcoming ? (todayTarget ?? { date: null, title: "" }) : null} />
+                  <TimetableRows key={e.key} e={e} t={t} usOnly={usOnly(e)} today={i === firstUpcoming ? todayTarget : null} />
                 ))}
                 {firstUpcoming < 0 && entries.some((e) => e.date) && <TodayRow t={t} text={t("college.allPassed", { cycle })} />}
               </ol>
@@ -624,7 +717,7 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
               ) : c.english_requirements.length === 0 ? (
                 <p className="mt-3 text-base">{t("college.notRecorded")}</p>
               ) : null}
-              <EnglishFitLine english={collegeEnglishFrom(c.english_policies, c.english_requirements)} className="mt-3" />
+              <EnglishCheck english={collegeEnglishFrom(c.english_policies, c.english_requirements)} recommended={recommended} className="mt-3" />
               {c.english_requirements.length > 0 && (
                 <>
                   <table className="mt-6 hidden w-full text-base sm:table">
@@ -696,7 +789,21 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                   <Row k={t("college.interview")} v={req.interview ? INTERVIEW[req.interview] : <Muted>{t("college.notPublished")}</Muted>} />
                   <Row k={t("college.portfolio")} v={req.portfolio ?? <Muted>{t("college.notPublished")}</Muted>} />
                   {req.midyear_report != null && <Row k={t("college.midyearReport")} v={req.midyear_report ? t("college.required") : t("college.notRequired")} />}
-                  {(req.css_profile_required || req.fafsa_required) && <Row k={t("college.aidForms")} v={[req.css_profile_required && "CSS Profile", req.fafsa_required && "FAFSA"].filter(Boolean).join(" + ")} />}
+                  {(req.css_profile_required || req.fafsa_required) && (
+                    <Row
+                      k={t("college.aidForms")}
+                      v={
+                        <>
+                          {[req.css_profile_required && "CSS Profile", req.fafsa_required && "FAFSA"].filter(Boolean).join(" + ")}
+                          {noIntlAid ? (
+                            <span className="block text-sm font-semibold text-zinc-600">{t("college.notForIntl")}</span>
+                          ) : (
+                            req.fafsa_required && <span className="block text-sm text-zinc-600">{t("college.fafsaUsOnly")}</span>
+                          )}
+                        </>
+                      }
+                    />
+                  )}
                 </dl>
               ) : (
                 <p className="mt-4 text-base">{t("college.notRecordedYet")}</p>
@@ -736,11 +843,13 @@ async function College({ params }: { params: Promise<{ slug: string }> }) {
                     <div className="mt-6 rounded-2xl bg-zinc-50 p-5">
                       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                         <span className="font-semibold">
-                          {t("college.totalCoaPublished")}
+                          {inStateTotal ? t("college.totalLikelyInState") : t("college.totalCoaPublished")}
                           <Ref n={ref(cost.source_id)} />
                         </span>
-                        <span className="font-display text-2xl font-bold tabular-nums">{fmtUsd(cost.total_coa_usd)}</span>
+                        <span className={`font-display tabular-nums ${inStateTotal ? "text-xl font-semibold text-zinc-600" : "text-2xl font-bold"}`}>{fmtUsd(cost.total_coa_usd)}</span>
                       </div>
+                      {inStateTotal && <p className="mt-2 text-base leading-snug font-semibold">{t("college.totalBelow", { what: inStateTotal.what, sum: fmtUsd(inStateTotal.sum) })}</p>}
+                      {partsBelow != null && <p className="mt-2 text-base leading-snug font-semibold">{t("college.totalBelowParts", { sum: fmtUsd(partsBelow) })}</p>}
                       <p className="mt-2 text-sm leading-relaxed text-zinc-700">{cost.notes ?? t("college.totalCoaNoNote")}</p>
                     </div>
                   ) : (
@@ -903,7 +1012,7 @@ const WEIGHT_BAR: Record<string, string> = { very_important: "bg-ink", important
 
 /** One of the four answers in the navy band: four across on a desktop, two by two on a tablet, and on a phone a list where the
  *  label and the figure share a line and the detail runs under them. The dividers are an opaque step (zinc-700) off the ink. */
-function Answer({ label, figure, detail, desktopOnly = false, children }: { label: string; figure: React.ReactNode; detail?: React.ReactNode; desktopOnly?: boolean; children?: React.ReactNode }) {
+function Answer({ label, figure, detail, desktopOnly = false, children }: { label: React.ReactNode; figure: React.ReactNode; detail?: React.ReactNode; desktopOnly?: boolean; children?: React.ReactNode }) {
   return (
     <div
       className={`min-w-0 grid-cols-[1fr_auto] items-center gap-x-4 border-t border-zinc-700 px-5 py-3.5 first:border-t-0 sm:block sm:border-t-0 sm:px-7 sm:py-6 sm:nth-[2n]:border-l sm:nth-[n+3]:border-t lg:border-l lg:px-6 lg:py-7 lg:first:border-l-0 lg:nth-[n+3]:border-t-0 xl:px-7 ${desktopOnly ? "hidden" : "grid"}`}
@@ -944,7 +1053,7 @@ function TimetableRows({ e, t, today, usOnly }: { e: Entry; t: TFunction; today:
   const past = days !== null && days < 0;
   return (
     <>
-      {today && !today.date && <TodayRow t={t} text={t("college.noUpcoming")} />}
+      {today && !today.date && <TodayRow t={t} text={today.title} />}
       {today?.date && (
         <TodayRow
           t={t}
