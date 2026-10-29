@@ -4,7 +4,8 @@
 // carrying the session) so the whole thing runs against the real handler in Node tests (vault-flows.test.ts).
 // The passphrase, the recovery code, the vault key and every plaintext password stay in this code and the crypto it
 // calls (vault-crypto.ts): a request body holds only the vault record's salts, checks and wrapped keys, or values
-// already sealed here. Nothing here logs. A reply code that isn't one of the known ones is "failed".
+// already sealed here. Nothing here logs. A reply code that isn't one of the known ones is "failed". A write whose
+// reply is lost is not assumed to have failed: the vault is read back (storeRecord, commitVault).
 
 import { importFailures, IMPORT_MAX, isPortalSlot, SEALED_MAX, type SlotPassword } from "./portal-slots.ts";
 import type { SlotState } from "./portal-vault-handler.ts";
@@ -42,6 +43,11 @@ export type Unlocked = { userId: string; keyId: string; key: CryptoKey };
 export type ServerVault = { record: VaultRecord; updatedAt: string };
 /** A vault made in memory and not yet stored. `confirmGroup` (1..7) is the group of the recovery code to type back. */
 export type Prepared = NewVault & { passphrase: string; confirmGroup: number };
+/**
+ * A new recovery code made in memory and not yet live: `record` is the vault with the new code's wrapper, `expected` the
+ * `updated_at` of the vault it was made from. Until commitRecoveryCode stores it, the old code is the only one that works.
+ */
+export type PreparedRecovery = { record: VaultRecord; recoveryCode: string; confirmGroup: number; expected: string };
 
 type Reply = Awaited<ReturnType<Call>>;
 type Loose = Record<string, unknown>;
@@ -89,6 +95,21 @@ async function sealChecked(u: Unlocked, slot: string, password: string): Promise
   }
 }
 
+// The nine keys of a VaultRecord and nothing else: parseVaultRecord wants exactly these, so a field the server adds to its
+// reply later (a created_at, say) must not turn every unlock into "bad_record". The type makes TypeScript refuse a missing
+// or misspelt key here.
+const recordOf = (v: Loose): Record<keyof VaultRecord, unknown> => ({
+  version: v.version,
+  key_id: v.key_id,
+  pass_salt: v.pass_salt,
+  pass_iterations: v.pass_iterations,
+  pass_check: v.pass_check,
+  pass_wrapped: v.pass_wrapped,
+  rec_salt: v.rec_salt,
+  rec_check: v.rec_check,
+  rec_wrapped: v.rec_wrapped,
+});
+
 /** The account's vault row, null when there is none, or why it couldn't be read. A row that fails the format check is "bad_record". */
 export async function fetchVault(call: Call): Promise<ServerVault | null | { error: FlowError }> {
   const r = await send(call, { action: "vault" });
@@ -96,9 +117,8 @@ export async function fetchVault(call: Call): Promise<ServerVault | null | { err
   const v = r.data.vault;
   if (v === null) return null;
   if (!isObj(v) || typeof v.updated_at !== "string") return { error: "failed" };
-  const { updated_at, ...rest } = v; // the crypto wants exactly the nine record keys
-  const record = parseVaultRecord(rest);
-  return record ? { record, updatedAt: updated_at } : { error: "bad_record" };
+  const record = parseVaultRecord(recordOf(v));
+  return record ? { record, updatedAt: v.updated_at } : { error: "bad_record" };
 }
 
 const KINDS: ReadonlySet<unknown> = new Set(["e1", "v1", "other"]);
@@ -154,30 +174,43 @@ function normalizeGroup(typed: string): string | null {
   return code ? code.slice(0, 4) : null;
 }
 
+// Whether what the student typed is the group of the code that was asked for (the proof that the code was saved).
+function groupMatches(recoveryCode: string, confirmGroup: number, typedGroup: string): boolean {
+  const want = recoveryGroup(recoveryCode, confirmGroup);
+  return want !== "" && typeof typedGroup === "string" && normalizeGroup(typedGroup) === want;
+}
+
 /**
  * The last step of setup: the typed group must match the one asked for ("group_mismatch" creates nothing and sends
- * nothing), then the vault is stored. A second click that meets its own vault ("exists" with the same key id) is a
- * success; any other vault is "exists", and an `e1` row without a vault is "orphans".
+ * nothing), then the vault is stored. A second click that meets its own vault, or a reply that was lost after the
+ * vault was stored, is a success (the stored vault has this key id); any other vault is "exists", and an `e1` row
+ * without a vault is "orphans".
  */
 export async function commitVault(call: Call, userId: string, p: Prepared, typedGroup: string): Promise<Unlocked | "group_mismatch" | FlowError> {
-  const want = recoveryGroup(p.recoveryCode, p.confirmGroup);
-  const typed = typeof typedGroup === "string" ? normalizeGroup(typedGroup) : null;
-  if (!want || typed !== want) return "group_mismatch";
+  if (!groupMatches(p.recoveryCode, p.confirmGroup, typedGroup)) return "group_mismatch";
   const unlocked: Unlocked = { userId, keyId: p.record.key_id, key: p.key };
   const r = await send(call, { action: "vault_create", record: p.record });
   if (done(r)) return unlocked;
-  const error = errorOf(r);
-  if (error !== "exists") return error;
   const there = await fetchVault(call);
-  if (there && "error" in there) return there.error;
-  return there && there.record.key_id === p.record.key_id ? unlocked : "exists";
+  return there && !("error" in there) && there.record.key_id === p.record.key_id ? unlocked : errorOf(r);
 }
 
-// Stores a record made by a rewrap, if the vault is still the one it was made from.
-async function storeRecord(call: Call, from: ServerVault, next: VaultRecord | "wrong" | "bad_record" | "failed"): Promise<null | "wrong" | FlowError> {
-  if (typeof next === "string") return next;
-  const r = await send(call, { action: "vault_update", record: next, expected: from.updatedAt });
-  return done(r) ? null : errorOf(r);
+// The same vault, for a record that was sent and a vault that was read back: the key id and both checks. A new passphrase
+// or a new recovery code always brings a new salt, so a changed wrapper always has a new check.
+const sameVault = (a: VaultRecord, b: VaultRecord) => a.key_id === b.key_id && a.pass_check === b.pass_check && a.rec_check === b.rec_check;
+
+/**
+ * Stores a record made by a rewrap or a new recovery code, if the vault still has `expected` as updated_at. A reply that
+ * isn't a clean "ok" may hide a write that did happen (the connection dropped after the commit, a 5xx, a mangled body),
+ * and then the new passphrase or code is already live while the caller thinks it isn't. So on anything but a clean ok the
+ * stored vault is read back: if it holds this record's checks the write happened (null), otherwise the reply's error. This
+ * also makes a second click on the same step a success instead of "changed".
+ */
+async function storeRecord(call: Call, record: VaultRecord, expected: string): Promise<null | FlowError> {
+  const r = await send(call, { action: "vault_update", record, expected });
+  if (done(r)) return null;
+  const there = await fetchVault(call);
+  return there && !("error" in there) && sameVault(there.record, record) ? null : errorOf(r);
 }
 
 /**
@@ -192,18 +225,29 @@ export async function unlockWith(call: Call, userId: string, secret: Secret, new
   const key = await attempt(() => unlockVault(userId, from.record, secret));
   if (typeof key === "string") return key;
   if (newPassphrase !== undefined) {
-    const stored = await storeRecord(call, from, await attempt(() => rewrapPassphrase(userId, from.record, secret, newPassphrase)));
+    const next = await attempt(() => rewrapPassphrase(userId, from.record, secret, newPassphrase));
+    if (typeof next === "string") return next;
+    const stored = await storeRecord(call, next, from.updatedAt);
     if (stored) return stored;
   }
   return { userId, keyId: from.record.key_id, key };
 }
 
-/** One saved password, or why it can't be shown. "other_vault" = the stored value doesn't open with this vault (an older vault, a moved or damaged value, or one not handed over yet). */
-export async function revealOne(call: Call, u: Unlocked, slot: string): Promise<{ password: string } | { error: FlowError | "other_vault" }> {
+// Every old server-sealed value starts with this (VAULT_VERSION in portal-vault.ts, which can't be imported here).
+const LEGACY_PREFIX = "v1.";
+
+/**
+ * One saved password, or why it can't be shown. "legacy" = an old server-sealed value that hasn't been handed over (its
+ * handover failed or hasn't run); it is waiting to be moved and must never be offered for deletion. "other_vault" = the
+ * stored value doesn't open with this vault (an older vault, a moved or damaged value).
+ */
+export async function revealOne(call: Call, u: Unlocked, slot: string): Promise<{ password: string } | { error: FlowError | "other_vault" | "legacy" }> {
   const r = await send(call, { action: "get", slot });
   if (r.status !== 200) return { error: errorOf(r) };
-  if (typeof r.data.sealed !== "string") return { error: "failed" };
-  const password = await openE1(u.key, u.keyId, u.userId, slot, r.data.sealed); // null for another key id, slot, user or v1 value
+  const sealed = r.data.sealed;
+  if (typeof sealed !== "string") return { error: "failed" };
+  if (sealed.startsWith(LEGACY_PREFIX)) return { error: "legacy" };
+  const password = await openE1(u.key, u.keyId, u.userId, slot, sealed); // null for another key id, slot or user, or a damaged value
   return password === null ? { error: "other_vault" } : { password };
 }
 
@@ -296,17 +340,35 @@ export async function changePassphrase(call: Call, userId: string, secret: Secre
   const from = await fetchVault(call);
   if (from === null) return "no_vault";
   if ("error" in from) return from.error;
-  return storeRecord(call, from, await attempt(() => rewrapPassphrase(userId, from.record, secret, newPassphrase)));
+  const next = await attempt(() => rewrapPassphrase(userId, from.record, secret, newPassphrase));
+  if (typeof next === "string") return next;
+  return storeRecord(call, next, from.updatedAt);
 }
 
-/** A new recovery code (28 plain characters), stored as soon as it is made; the old code stops working. Needs the passphrase. */
-export async function newRecoveryCode(call: Call, userId: string, passphrase: string): Promise<{ recoveryCode: string } | "wrong" | FlowError> {
+/**
+ * Step 1 of a new recovery code (needs the passphrase): makes the code and the vault record that carries it, in memory.
+ * The only request is the one that reads the vault, so the old code keeps working and the new one is not live until
+ * commitRecoveryCode stores it. Like prepareVault, the new code must open the new record before it is handed back.
+ */
+export async function prepareRecoveryCode(call: Call, userId: string, passphrase: string): Promise<PreparedRecovery | "wrong" | FlowError> {
   const from = await fetchVault(call);
   if (from === null) return "no_vault";
   if ("error" in from) return from.error;
   const made = await attempt(() => rewrapRecovery(userId, from.record, passphrase));
   if (typeof made === "string") return made;
-  return (await storeRecord(call, from, made.record)) ?? { recoveryCode: made.recoveryCode };
+  const test = await attempt(() => unlockVault(userId, made.record, { recovery: made.recoveryCode }));
+  if (typeof test === "string") return "failed";
+  return { record: made.record, recoveryCode: made.recoveryCode, confirmGroup: randomGroup(), expected: from.updatedAt };
+}
+
+/**
+ * Step 2: the typed group must match the one asked for ("group_mismatch" sends nothing and the old code stays the only
+ * one), then the record is stored if the vault is still the one the code was made from ("changed" otherwise; make a new
+ * code). A reply that was lost after the write counts as done: the stored vault is read back (storeRecord).
+ */
+export async function commitRecoveryCode(call: Call, p: PreparedRecovery, typedGroup: string): Promise<null | "group_mismatch" | FlowError> {
+  if (!groupMatches(p.recoveryCode, p.confirmGroup, typedGroup)) return "group_mismatch";
+  return storeRecord(call, p.record, p.expected);
 }
 
 /** "Start over": the vault and every saved password are deleted on the server. Null when it worked. */
