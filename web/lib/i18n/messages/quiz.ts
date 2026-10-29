@@ -173,9 +173,13 @@ export const en = {
   "quiz.reqBach": "Usually needs a bachelor's degree",
   "quiz.matchPct": "{n}% match",
   "quiz.programsHeading": "College programs to look at",
-  "quiz.programsBlurb": "Programs the NCES crosswalk links to your top careers. A program name here is a starting point; check each college's own major list.",
+  "quiz.programsBlurb": "Undergraduate programs the NCES crosswalk links to your top careers, the ones your closest careers share first. A program name here is a starting point; check each college's own major list.",
   "quiz.retake": "Retake",
   "quiz.changeLast": "Change my last answer",
+  "quiz.keys": "Keys 1 to 5 answer; Backspace goes back.",
+  "quiz.live.title": "Your code so far",
+  "quiz.live.careers": "Careers that fit so far",
+  "quiz.live.empty": "Answer the first six statements, one of each type, and the careers that fit your answers start to show here.",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -350,7 +354,11 @@ export const zhTW: Translation<typeof en> = {
   "quiz.reqBach": "通常需要學士學位",
   "quiz.matchPct": "符合度 {n}%",
   "quiz.programsHeading": "值得看看的大學學系",
-  "quiz.programsBlurb": "這些是 NCES 對照表連結到你最適合職業的學系。這裡的學系名稱只是起點，請再查看各學校自己的主修清單。",
+  "quiz.programsBlurb": "這些是 NCES 對照表連結到你最適合職業的大學部學系，和你最相符的職業共有的排在前面。這裡的學系名稱只是起點，請再查看各學校自己的主修清單。",
   "quiz.retake": "重做",
   "quiz.changeLast": "修改我的最後一題",
+  "quiz.keys": "按 1 到 5 作答，按 Backspace 回上一題。",
+  "quiz.live.title": "目前的興趣代碼",
+  "quiz.live.careers": "目前最相符的職業",
+  "quiz.live.empty": "回答前六題（每種類型各一題）後，和你的回答相符的職業就會出現在這裡。",
 };

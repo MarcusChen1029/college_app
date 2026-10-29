@@ -18,7 +18,9 @@ export default async function ResumePage() {
         <p className={`${PAGE_INTRO} mt-3`}>{t("tools.resume.pageBlurb")}</p>
       </div>
       <ResumeBuilder />
-      <PortfolioShare />
+      <div className="print:hidden">
+        <PortfolioShare />
+      </div>
     </div>
   );
 }

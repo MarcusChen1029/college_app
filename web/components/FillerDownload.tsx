@@ -19,7 +19,7 @@ export function FillerDownload({ children }: { children: ReactNode }) {
     <div className="space-y-3 rounded-xl border border-blue-200 bg-blue-50/50 p-4">
       <p className="text-sm font-semibold">{t("tools.filler.seniorOnly")}</p>
       <p className="text-sm text-zinc-600">{t("tools.filler.onPlan", { plan: student.plan.name })}</p>
-      <Link href="/pricing" className={buttonClass("primary", "sm")}>
+      <Link href="/pricing" className={buttonClass("secondary", "sm")}>
         {t("tools.filler.seePlans")}
       </Link>
     </div>
