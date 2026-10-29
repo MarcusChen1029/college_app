@@ -31,6 +31,7 @@ import { useT } from "@/lib/i18n/client";
 import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, toneClass } from "@/lib/ui";
+import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
 
@@ -129,6 +130,11 @@ function EntryList<T extends Item>({
   const t = useT();
   const [open, setOpen] = useState<string | null>(null);
   const full = items.length >= limit;
+  const add = () => {
+    const item = make();
+    onChange([...items, item]);
+    setOpen(item.id);
+  };
   return (
     <section className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
@@ -142,18 +148,22 @@ function EntryList<T extends Item>({
             type="button"
             disabled={full}
             className={buttonClass("primary", "sm")}
-            onClick={() => {
-              const item = make();
-              onChange([...items, item]);
-              setOpen(item.id);
-            }}
+            onClick={add}
           >
             {addLabel}
           </button>
         </span>
       </div>
       {items.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500">{t("writing.nothingYet")}</p>
+        <EmptyNote
+          action={
+            <button type="button" disabled={full} className={buttonClass("secondary", "sm")} onClick={add}>
+              {addLabel}
+            </button>
+          }
+        >
+          {t("writing.nothingYet")}
+        </EmptyNote>
       ) : (
         <ol className="space-y-2">
           {items.map((item, i) => (
@@ -216,7 +226,7 @@ export function ActivitiesEditor() {
         {tabBtn("uc", t("writing.tabUc"))}
         <span className="ml-auto text-xs text-zinc-500">
           {student.auth ? t("writing.synced") : t("writing.savedLocal")}
-          {!student.auth && <SignInButton className="text-blue-600 underline">{t("account.signIn")}</SignInButton>}
+          {!student.auth && <SignInButton className="text-blue-700 underline">{t("account.signIn")}</SignInButton>}
         </span>
       </div>
 

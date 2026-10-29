@@ -9,7 +9,7 @@ export default function NotFound() {
     <div className="py-20 text-center">
       <h1 className="text-2xl font-semibold">{t("notFound.title")}</h1>
       <p className="mt-2 text-sm text-zinc-500">{t("notFound.body")}</p>
-      <Link href="/colleges" className="mt-4 inline-block text-sm text-blue-600 hover:underline">
+      <Link href="/colleges" className="mt-4 inline-block text-sm text-blue-700 hover:underline">
         {t("notFound.back")}
       </Link>
     </div>

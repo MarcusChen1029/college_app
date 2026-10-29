@@ -31,12 +31,12 @@ import {
   type SupplementPrompt,
 } from "@/lib/supplements";
 import type { CollegeSummary } from "@/lib/types";
-import { buttonClass, toneClass } from "@/lib/ui";
+import { buttonClass, PANEL, toneClass } from "@/lib/ui";
 import { EssayRow, type GoogleAccess, type GoogleDocs } from "./EssayRow";
 import { categoryLabel, limitLabel, whoLabel } from "./supplement-text";
 
-const PROMPT_CARD = "rounded-xl border border-zinc-200 p-3";
-const SUBHEAD = "text-xs font-semibold uppercase tracking-wide text-zinc-500";
+const PROMPT_CARD = "rounded-xl bg-white p-3";
+const SUBHEAD = "text-[15px] font-semibold text-ink";
 const ADD_BUTTON = "rounded-md border border-dashed border-zinc-300 px-3 py-1 text-sm text-zinc-600 hover:border-zinc-400 hover:text-zinc-900";
 const LONG_PROMPT = 280;
 
@@ -272,7 +272,7 @@ export function CollegeEssayCard({
   const sourceUrl = rec?.sources[0]?.url;
 
   return (
-    <section id={`essays-${college.slug}`} className="rounded-3xl border-2 border-zinc-200 p-5">
+    <section id={`essays-${college.slug}`} className={`${PANEL} p-5 sm:p-6`}>
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <span
           className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-xs ${done ? "bg-done text-white" : "border border-zinc-300"}`}
@@ -324,7 +324,7 @@ export function CollegeEssayCard({
             <p className="text-sm">
               {t("supplements.noneFact")}{" "}
               {sourceUrl && (
-                <a href={sourceUrl} target="_blank" rel="noreferrer" className="text-xs text-blue-600 hover:underline">
+                <a href={sourceUrl} target="_blank" rel="noreferrer" className="text-xs text-blue-700 hover:underline">
                   ↗
                 </a>
               )}
@@ -335,7 +335,7 @@ export function CollegeEssayCard({
         {shared && (
           <div className="flex flex-wrap items-center gap-3">
             <p className="text-sm">
-              <a href="#uc-essays" className="text-blue-600 hover:underline">
+              <a href="#uc-essays" className="text-blue-700 hover:underline">
                 {t("supplements.ucUses")}
               </a>
             </p>

@@ -14,7 +14,7 @@ export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undef
   const t = useT();
   if (!tier) return <span className="text-zinc-400">—</span>;
   const plus = tier.length > 1;
-  const dims = size === "sm" ? `h-5 text-[11px] ${plus ? "min-w-5 px-1" : "w-5"}` : `h-7 text-sm ${plus ? "min-w-7 px-1.5" : "w-7"}`;
+  const dims = size === "sm" ? `h-6 text-[13px] ${plus ? "min-w-6 px-1" : "w-6"}` : `h-7 text-sm ${plus ? "min-w-7 px-1.5" : "w-7"}`;
   return (
     <span className={`inline-flex items-center justify-center rounded-md font-display font-bold ${dims} ${tierClass(tier)}`} title={t("status.tier", { tier })}>
       {tier}
@@ -22,15 +22,17 @@ export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undef
   );
 }
 
-// Chips are 12px by default; size "md" (13px) is for screens that keep every word at 13px or more (the Explore page).
-const CHIP_TEXT = { sm: "text-xs", md: "text-[13px]" } as const;
+// Every chip reads at 13px (app screens keep words at 13px or more). Both sizes are now the same; the prop stays so the
+// callers that pass size="md" (the Explore page) need not change.
+const CHIP_TEXT = { sm: "text-[13px] py-0.5", md: "text-[13px] py-0.5" } as const;
 
-/** `result` (from computeFit) gives the hover text in the visitor's language. */
+/** A flat chip in the band's pale fill with its word in the band's ink, and four dots that fill harder-to-easier, so the
+ *  band reads without colour too. `result` (from computeFit) gives the hover text in the visitor's language. */
 export function FitBadge({ fit, result, size = "sm" }: { fit: Fit; result?: FitResult; size?: "sm" | "md" }) {
   const t = useT();
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 ${CHIP_TEXT[size]} font-semibold whitespace-nowrap ${fitClass(fit)}`}
+      className={`inline-flex flex-none items-center gap-1.5 rounded-full border px-2.5 ${CHIP_TEXT[size]} font-semibold whitespace-nowrap ${fitClass(fit)}`}
       title={result ? fitReasonText(t, result) : undefined}
     >
       <span className="flex gap-0.5" aria-hidden="true">
@@ -44,7 +46,7 @@ export function FitBadge({ fit, result, size = "sm" }: { fit: Fit; result?: FitR
 }
 
 export function Pill({ children, tone = "zinc", size = "sm" }: { children: React.ReactNode; tone?: "zinc" | "blue" | "green" | "red"; size?: "sm" | "md" }) {
-  return <span className={`inline-block whitespace-nowrap rounded border px-1.5 py-0.5 ${CHIP_TEXT[size]} font-medium ${toneClass(pillTone(tone))}`}>{children}</span>;
+  return <span className={`inline-block flex-none whitespace-nowrap rounded border px-1.5 ${CHIP_TEXT[size]} font-medium ${toneClass(pillTone(tone))}`}>{children}</span>;
 }
 
 /** "No supplements" / "No app fee" (lib/apply-tags.ts). Renders nothing without tags. */

@@ -4,6 +4,7 @@ import { getPlatforms, getSummaries } from "@/lib/data";
 import { getT } from "@/lib/i18n/server";
 import { forEssaysPage } from "@/lib/supplements";
 import { SUPPLEMENTS } from "@/lib/supplements-data";
+import { PAGE_INTRO } from "@/lib/ui";
 
 export const metadata = { title: "Essays" };
 
@@ -17,7 +18,7 @@ export default async function EssaysRoute() {
   const t = await getT();
   return (
     <div className="space-y-4">
-      <p className="text-sm text-zinc-500">
+      <p className={PAGE_INTRO}>
         {t("writing.essaysIntroPre")}
         <strong>{t("writing.newDocName")}</strong>
         {t("writing.essaysIntroMid")}

@@ -125,7 +125,7 @@ export function MyList({
       ) : (
         <span className="text-zinc-500">
           {t("application.localOnly")}{" "}
-          <SignInButton className="text-blue-600 underline">{t("account.signIn")}</SignInButton>{" "}
+          <SignInButton className="text-blue-700 underline">{t("account.signIn")}</SignInButton>{" "}
           {t("application.keepList")}
         </span>
       )}
@@ -137,7 +137,7 @@ export function MyList({
             {t("application.collegesSuffix")}
           </span>{" "}
           · {t("application.planName", { name: student.plan.name })} ·{" "}
-          <Link href="/pricing" className="text-blue-600 underline">
+          <Link href="/pricing" className="text-blue-700 underline">
             {student.plan.key === "senior" ? t("application.plans") : t("application.upgrade")}
           </Link>
         </span>
@@ -342,7 +342,7 @@ export function MyList({
               </Link>
             )}
             {opened.entry.custom?.website && safeLink(opened.entry.custom.website) && (
-              <a href={safeLink(opened.entry.custom.website)!} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline">
+              <a href={safeLink(opened.entry.custom.website)!} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-700 underline">
                 {t("application.website")}
               </a>
             )}
@@ -375,7 +375,7 @@ export function MyList({
       </div>
       <div className="overflow-x-auto rounded-lg border border-zinc-200">
         <table className="w-full min-w-[560px] text-sm">
-          <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
+          <thead className="text-left text-[13px] font-medium text-zinc-600">
             <tr>
               <th className="p-2">{t("application.col.college")}</th>
               <th className="p-2">{t("application.col.fit")}</th>

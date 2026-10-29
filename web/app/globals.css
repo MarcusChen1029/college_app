@@ -22,7 +22,8 @@
   --color-zinc-200: #d6e5f1;
   --color-zinc-300: #b9cfe2;
   --color-zinc-400: #8ba6bd;
-  --color-zinc-500: #5b768f;
+  /* 500 is the lightest grey that carries words: >= 4.5:1 on white and on every tone step (zinc-50/100, blue-50/100). */
+  --color-zinc-500: #526c85;
   --color-zinc-600: #3f5a73;
   --color-zinc-700: #2c445b;
   --color-zinc-800: #1d3550;
@@ -65,18 +66,27 @@
   --color-neutral: #3f5a73;
   --color-neutral-bg: #e9f2fa;
   --color-neutral-line: #d6e5f1;
-  --color-fit-super-reach: #86198f;
-  --color-fit-super-reach-bg: #fdf4ff;
-  --color-fit-super-reach-line: #f0abfc;
-  --color-fit-reach: #7e22ce;
-  --color-fit-reach-bg: #faf5ff;
-  --color-fit-reach-line: #d8b4fe;
-  --color-fit-target: #4338ca;
-  --color-fit-target-bg: #eef2ff;
-  --color-fit-target-line: #a5b4fc;
-  --color-fit-safety: #0f766e;
-  --color-fit-safety-bg: #f0fdfa;
-  --color-fit-safety-line: #5eead4;
+  /* Fit: one ordinal scale on the brand's navy-to-teal, harder = darker. Four roles per band:
+     the word (text, >= 5.7:1 on its fill and on white), the fill (a pale chip, L* 79 / 85 / 91 / 96, so chips step too),
+     the line (= the fill: chips are flat), and the mark (dots, the share bar, map pins: L* 19 / 32 / 45 / 56, each
+     >= 3:1 on white, zinc-50, sky-100 and its own fill; adjacent marks stay >= 10 L* apart for colour-blind and
+     greyscale readers). Not purple, and well clear of the urgent/soon/done tones. */
+  --color-fit-super-reach: #12304a;
+  --color-fit-super-reach-bg: #b2c6d9;
+  --color-fit-super-reach-line: #b2c6d9;
+  --color-fit-super-reach-mark: #12304a;
+  --color-fit-reach: #00507e;
+  --color-fit-reach-bg: #b8d9ed;
+  --color-fit-reach-line: #b8d9ed;
+  --color-fit-reach-mark: #00507e;
+  --color-fit-target: #005c88;
+  --color-fit-target-bg: #cceaf7;
+  --color-fit-target-line: #cceaf7;
+  --color-fit-target-mark: #0072a8;
+  --color-fit-safety: #006362;
+  --color-fit-safety-bg: #e5f9f6;
+  --color-fit-safety-line: #e5f9f6;
+  --color-fit-safety-mark: #00969b;
 }
 
 body {
@@ -494,6 +504,31 @@ html:has([data-explorer]) body > header > nav {
     .slip {
       transition: none;
     }
+  }
+}
+
+/* ---- Start and Help pages (app/(app)/start, app/(app)/help, components/start/*, components/help/*) ---- */
+@layer components {
+  /* The page's <main> takes the home page's sky ground (its rate-sheet section), so the band runs from the header to
+     the footer at full width while the content keeps the app frame. */
+  html:has([data-start-page]) main,
+  html:has([data-help-page]) main {
+    background-color: var(--color-blue-100);
+  }
+
+  /* The /start flow keeps one quiet frame from the first question to "Add and open my list": the logo, Sign in (or the
+     account menu) and the language switch; no site links, no "Build my list", no menu; a slim footer without the
+     wordmark. Hooks: components/SiteNav.tsx and app/layout.tsx. !important because the hooked elements carry Tailwind
+     display and padding utilities, and an important rule in this earlier layer outranks them. */
+  html:has([data-start-flow]) [data-site-links],
+  html:has([data-start-flow]) [data-site-extra],
+  html:has([data-start-flow]) [data-site-menu],
+  html:has([data-start-flow]) [data-footer-wordmark] {
+    display: none !important;
+  }
+  html:has([data-start-flow]) [data-site-footer] > div {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 }
 

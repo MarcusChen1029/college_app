@@ -79,11 +79,11 @@ export function ResumeBuilder() {
           </label>
           <p className="pt-1 text-xs text-zinc-500">
             {t("tools.rb.scoresFrom")}
-            <Link href="/profile" className="text-blue-600 underline">
+            <Link href="/profile" className="text-blue-700 underline">
               {t("tools.rb.profile")}
             </Link>
             {t("tools.rb.entriesFrom")}
-            <Link href="/writing/activities" className="text-blue-600 underline">
+            <Link href="/writing/activities" className="text-blue-700 underline">
               {t("tools.rb.activities")}
             </Link>
             {t("tools.rb.sentenceEnd")}
@@ -149,7 +149,7 @@ export function ResumeBuilder() {
         {empty && (
           <p className="mt-8 text-center font-sans text-sm text-zinc-500 print:hidden">
             {t("tools.rb.emptyA")}
-            <Link href="/writing/activities" className="text-blue-600 underline">
+            <Link href="/writing/activities" className="text-blue-700 underline">
               {t("tools.rb.activities")}
             </Link>
             {t("tools.rb.emptyB")}

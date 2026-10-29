@@ -4,18 +4,57 @@ import type { Translation } from "../core.ts";
 export const en = {
   // ── help ──
   "misc.help.title": "Help",
+  "misc.help.lead": "Answers about your list, where the numbers come from, and how teachers and counselors fit in.",
+  "misc.help.contents": "On this page",
+  "misc.help.questionsN": "{n} questions",
+  "misc.help.backToQuestions": "Back to questions",
+  "misc.help.figFit": "The fit chip and its reasons on {college}, for a student applying from abroad with SAT {sat}.",
+  "misc.help.figPlans": "Room in My list on each plan.",
+  "misc.help.figColleges": "{n} colleges",
+  "misc.help.figNoLimit": "No limit",
+  "misc.help.figDeadline": "{college}'s next application deadline, counted down the way My list shows it.",
+  "misc.help.figSource": "A fact from {college}'s college page and the source it links to.",
+  "misc.help.figAdmitRate": "Admit rate",
+  "misc.help.figAccessed": "Accessed {date}",
+  "misc.help.groupList": "Your list",
+  "misc.help.groupData": "The numbers",
+  "misc.help.groupTeachers": "Teachers and counselors",
+  "misc.help.groupAccount": "Account and language",
+  "misc.help.noAccountQ": "Do I need an account?",
+  "misc.help.noAccountA":
+    "No. Without one, your list and profile are saved in this browser. <b>Sign in with Google</b> to keep them on every device; when you do, we ask whether to add what this browser saved to your account.",
+  "misc.help.fitQ": "How are reach, target and safety decided?",
+  "misc.help.fitA":
+    "From two published numbers: the college's admit rate (its international admit rate if you apply from abroad and it publishes one) and where your SAT or ACT falls against its middle 50%. Under a 10% admit rate is a super reach for everyone, and under 15% at least a reach. Above that, a score at or above the 75th percentile makes a college one step easier, and one below the 25th makes it one step harder. Test-blind colleges ignore scores, and your GPA is not part of the label. It is a rough guide, and every label shows its reasoning.",
+  "misc.help.planQ": "How many colleges can I keep?",
+  "misc.help.planA":
+    "My list holds {plans}. Colleges you only mark as interested don't count toward it. The plans are on the [Pricing](/pricing) page.",
+  "misc.help.planLimit": "{n} colleges on {plan}",
+  "misc.help.planNoLimit": "any number on {plan}",
+  "misc.help.wrongQ": "A number looks wrong. What should I do?",
+  "misc.help.wrongA":
+    "Open the source link beside it first: colleges update their pages during the year. If the official page says something different, tell us on the [Contact](/contact) page with the college's name and the link.",
+  "misc.help.teacherSeesQ": "What can my teacher see?",
+  "misc.help.teacherSeesA":
+    "Once you link with a teacher, they can follow your list and its deadlines. They never see your portal logins and passwords, your notes, your résumé, your financial-aid offers or your Transcript. Your essay titles and links show only while <b>Let them see my essays</b> is on for that teacher in <s>Settings</s>.",
+  "misc.help.languageQ": "Can I use Trakur in Chinese?",
+  "misc.help.languageA":
+    "Yes. The <b>中文</b> button in the top bar switches every page to Traditional Chinese, and <b>EN</b> switches back. College names, official data and the values you copy into application portals stay in English, as the colleges and portals publish them.",
+  "misc.help.contactTitle": "Didn't find your answer?",
+  "misc.help.contactBody": "Write to us with the page you were on and what you were looking for.",
+  "misc.help.contactCta": "Contact us",
   "misc.help.accountQ": "Where do my account details live?",
   "misc.help.accountA":
     "<b>Settings</b> (in the menu under your name once you're signed in) holds your email and account type, and <b>Sign out</b> ends your session. Students also find deadline reminders and their counselors in Settings, and their scores under <b>Profile</b> in the main menu.",
   "misc.help.dataQ": "Where does the data come from?",
   "misc.help.dataA":
     "Every number on a college page comes from an official source (Common Data Set, the college's own admissions or financial-aid pages) and links back to it. If something could not be confirmed it is left blank rather than guessed.",
-  "misc.help.shareQ": "Sharing my list with a teacher or counselor",
+  "misc.help.shareQ": "How do I share my list with a teacher or counselor?",
   "misc.help.shareA": "Your teacher gives you a class code or a personal code. Enter it under <b>My counselors and teachers</b> in <s>Settings</s>. You can leave at any time.",
-  "misc.help.teacherQ": "Teacher and counselor accounts",
+  "misc.help.teacherQ": "I'm a teacher or counselor. How do I start?",
   "misc.help.teacherA":
     "Create classes and join codes on the Classes page, then follow your students on the Students and Deadlines pages. You can switch between student and teacher in Settings once no students or teachers are linked.",
-  "misc.help.remindersQ": "Deadline reminders",
+  "misc.help.remindersQ": "How do deadline reminders work?",
   "misc.help.remindersA": "Signed-in students can get email reminders 14, 3 and 1 days before each deadline on their list. Turn them on or off in <s>Settings</s>.",
 
   // ── pricing ──
@@ -96,16 +135,53 @@ export const en = {
 
 export const zhTW: Translation<typeof en> = {
   "misc.help.title": "說明",
+  "misc.help.lead": "關於你的清單、這些數字的來源，以及老師和升學輔導老師如何參與的解答。",
+  "misc.help.contents": "本頁內容",
+  "misc.help.questionsN": "{n} 個問題",
+  "misc.help.backToQuestions": "回到問題列表",
+  "misc.help.figFit": "{college} 的合適度標籤和判斷理由，以從海外申請、SAT {sat} 的學生為例。",
+  "misc.help.figPlans": "各方案「我的清單」可放的學校數。",
+  "misc.help.figColleges": "{n} 所",
+  "misc.help.figNoLimit": "不限數量",
+  "misc.help.figDeadline": "{college} 的下一個申請截止日期，倒數方式和「我的清單」相同。",
+  "misc.help.figSource": "{college} 學校頁面上的一個數字，以及它連結的來源。",
+  "misc.help.figAdmitRate": "錄取率",
+  "misc.help.figAccessed": "查閱日期：{date}",
+  "misc.help.groupList": "你的清單",
+  "misc.help.groupData": "資料與數字",
+  "misc.help.groupTeachers": "老師與升學輔導老師",
+  "misc.help.groupAccount": "帳號與語言",
+  "misc.help.noAccountQ": "需要註冊帳號嗎？",
+  "misc.help.noAccountA":
+    "不需要。沒有帳號時，你的清單和個人檔案會存在這個瀏覽器裡。<b>用 Google 登入</b>就能在每台裝置上使用；登入時，我們會詢問是否要把這個瀏覽器儲存的資料加入你的帳號。",
+  "misc.help.fitQ": "衝刺、目標、保底是怎麼判斷的？",
+  "misc.help.fitA":
+    "依據兩個公開的數字：學校的錄取率（如果你從海外申請、而學校有公布國際生錄取率，就用國際生錄取率），以及你的 SAT 或 ACT 落在該校中間 50% 的哪個位置。錄取率低於 10% 的學校對每個人都是極難衝刺校，低於 15% 至少是衝刺校。其他學校中，成績達到或高於第 75 百分位會讓學校往容易的方向移一級，低於第 25 百分位則往困難的方向移一級。不看成績（test-blind）的學校會忽略分數，GPA 也不列入判斷。這只是粗略的參考，每個標籤旁都會顯示判斷理由。",
+  "misc.help.planQ": "我的清單可以放幾所學校？",
+  "misc.help.planA": "「我的清單」可放的學校數：{plans}。只標記為「有興趣」的學校不算在內。方案說明請見[方案價格](/pricing)頁面。",
+  "misc.help.planLimit": "{plan} 方案 {n} 所",
+  "misc.help.planNoLimit": "{plan} 方案不限數量",
+  "misc.help.wrongQ": "某個數字看起來不對，該怎麼辦？",
+  "misc.help.wrongA": "請先打開旁邊的來源連結：學校一年中會更新網頁。如果官方網頁的內容不一樣，請到[聯絡我們](/contact)頁面告訴我們學校名稱和連結。",
+  "misc.help.teacherSeesQ": "老師看得到我的哪些資料？",
+  "misc.help.teacherSeesA":
+    "和老師連結後，老師可以追蹤你的清單和截止日期。老師永遠看不到你的申請系統帳號密碼、筆記、履歷、財務補助通知或成績單。只有在<s>設定</s>中為該老師開啟<b>讓對方查看我的文書</b>時，才會顯示你的文書標題和連結。",
+  "misc.help.languageQ": "可以用中文使用 Trakur 嗎？",
+  "misc.help.languageA":
+    "可以。頂端列的 <b>中文</b> 按鈕會把每個頁面切換成繁體中文，按 <b>EN</b> 就會切回英文。學校名稱、官方資料，以及你要複製到申請系統的選項值，會維持學校和申請系統公布的英文。",
+  "misc.help.contactTitle": "沒找到答案嗎？",
+  "misc.help.contactBody": "寫信告訴我們你在哪個頁面，以及想找什麼。",
+  "misc.help.contactCta": "聯絡我們",
   "misc.help.accountQ": "我的帳號資料在哪裡？",
   "misc.help.accountA":
     "<b>設定</b>（登入後在你名字下方的選單中）有你的電子郵件和帳號類型，<b>登出</b>則會結束這次登入。學生也能在設定中找到截止日期提醒和升學輔導老師，並在主選單的<b>個人檔案</b>中找到自己的成績。",
   "misc.help.dataQ": "資料是從哪裡來的？",
   "misc.help.dataA": "學校頁面上的每個數字都來自官方來源（Common Data Set、學校自己的入學或財務補助網頁），並附上來源連結。如果無法確認，我們會留白，不會用猜的。",
-  "misc.help.shareQ": "把我的清單分享給老師或升學輔導老師",
+  "misc.help.shareQ": "怎麼把清單分享給老師或升學輔導老師？",
   "misc.help.shareA": "老師會給你班級代碼或個人代碼。請到<s>設定</s>的<b>我的升學輔導老師與老師</b>輸入代碼。你隨時都可以退出。",
-  "misc.help.teacherQ": "老師與升學輔導老師帳號",
+  "misc.help.teacherQ": "我是老師或升學輔導老師，要怎麼開始？",
   "misc.help.teacherA": "在「班級」頁面建立班級和加入代碼，再到「學生」和「截止日期」頁面追蹤你的學生。當沒有任何已連結的學生或老師時，你可以在設定中切換學生與老師身分。",
-  "misc.help.remindersQ": "截止日期提醒",
+  "misc.help.remindersQ": "截止日期提醒怎麼運作？",
   "misc.help.remindersA": "登入的學生可以在清單上每個截止日期前 14 天、3 天和 1 天收到電子郵件提醒。你可以在<s>設定</s>中開啟或關閉。",
 
   "misc.pricing.title": "方案與價格",

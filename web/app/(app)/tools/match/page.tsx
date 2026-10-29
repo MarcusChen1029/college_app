@@ -8,6 +8,7 @@ import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/
 import { toMatchRow } from "@/lib/field-match-view";
 import { getT } from "@/lib/i18n/server";
 import { fieldEarningsFor, type OutcomesData } from "@/lib/outcomes";
+import { PAGE_INTRO, PAGE_TITLE } from "@/lib/ui";
 
 export const metadata: Metadata = { title: "College match by field" };
 
@@ -28,9 +29,9 @@ export default async function MatchPage() {
   const t = await getT();
   return (
     <div className="max-w-4xl space-y-6">
-      <div className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">{t("match.title")}</h1>
-        <p className="text-zinc-600">{t("match.intro")}</p>
+      <div className="space-y-3">
+        <h1 className={PAGE_TITLE}>{t("match.title")}</h1>
+        <p className={PAGE_INTRO}>{t("match.intro")}</p>
       </div>
       <Suspense fallback={<div className="h-64 animate-pulse rounded-2xl bg-zinc-100" />}>
         <Match />

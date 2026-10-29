@@ -117,7 +117,7 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
         )}
       </main>
       {/* The close of every page: links and the data note, then the name across the full width. */}
-      <footer className="overflow-hidden bg-zinc-100 text-ink print:hidden">
+      <footer data-site-footer className="overflow-hidden bg-zinc-100 text-ink print:hidden">
         <div className="mx-auto w-full max-w-7xl px-4 pt-14 sm:px-8 sm:pt-20">
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <p className="max-w-md text-base leading-relaxed">{t("footer.disclaimer")}</p>
@@ -134,7 +134,7 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
             </nav>
           </div>
           {/* The name and what it means, set like the home page's title. */}
-          <p aria-hidden className="mt-14 select-none whitespace-nowrap pb-6 font-display text-[clamp(2.5rem,10.4vw,9.5rem)] font-extrabold leading-none tracking-[-0.045em] sm:mt-20">
+          <p aria-hidden data-footer-wordmark className="mt-14 select-none whitespace-nowrap pb-6 font-display text-[clamp(2.5rem,10.4vw,9.5rem)] font-extrabold leading-none tracking-[-0.045em] sm:mt-20">
             Track ur college
           </p>
         </div>

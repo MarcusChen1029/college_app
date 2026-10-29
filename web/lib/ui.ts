@@ -23,11 +23,13 @@ const FIT: Record<Fit, string> = {
 };
 export const fitClass = (f: Fit): string => FIT[f];
 
+// Marks (dots, the share bar, legend swatches) use the band's mark colour: an even lightness ladder, darker = harder,
+// so the four bands stay apart at bar size, in greyscale and for colour-blind readers (globals.css, the fit tokens).
 const FIT_DOT: Record<Fit, string> = {
-  super_reach: "bg-fit-super-reach",
-  reach: "bg-fit-reach",
-  target: "bg-fit-target",
-  safety: "bg-fit-safety",
+  super_reach: "bg-fit-super-reach-mark",
+  reach: "bg-fit-reach-mark",
+  target: "bg-fit-target-mark",
+  safety: "bg-fit-safety-mark",
 };
 export const fitDotClass = (f: Fit): string => FIT_DOT[f];
 
@@ -40,8 +42,23 @@ const TIER: Record<ReturnType<typeof tierLetter>, string> = {
 };
 export const tierClass = (t: TierCode): string => TIER[tierLetter(t)];
 
-/** Section heading on long reading pages (the college page and its sections). */
-export const SECTION_TITLE = "font-display text-xl font-bold tracking-tight text-ink";
+/** Section heading on long reading pages (the college page and its sections) and inside app screens. */
+export const SECTION_TITLE = "font-display text-2xl font-bold tracking-tight text-ink";
+
+/** An app screen's title (My colleges, Writing, Tools, Profile, Compare): a confident 24-30px noun, never a landing-page size. */
+export const PAGE_TITLE = "font-display text-2xl font-bold leading-tight tracking-tight text-ink sm:text-[30px]";
+
+/** The sentence under a page title or a tab: what this screen holds, in full ink at reading size (never small grey text). */
+export const PAGE_INTRO = "max-w-3xl text-base leading-relaxed text-ink";
+
+/** A panel on an app screen: a tone step from the white page, no outline (forms and tables inside keep their own lines). */
+export const PANEL = "rounded-3xl bg-zinc-50";
+
+/** A small heading inside a panel ("Submitted colleges", "Other accounts"): sentence case at reading size, never tracked caps. */
+export const LABEL = "text-[15px] font-semibold text-ink";
+
+/** A table header row: 13px grey sentence case, no fill band. */
+export const TABLE_HEAD = "text-left text-[13px] font-medium text-zinc-600";
 
 const BUTTON_BASE =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50";
@@ -88,10 +105,10 @@ export const TIER_DOT: Record<TierLetter | "none", { cls: string; token: string;
   none: { cls: "bg-zinc-300 ring-1 ring-inset ring-ink/20", token: "--color-zinc-300", hex: "#b9cfe2" },
 };
 
-/** Map dots by fit (when the student has scores): the fit badge colours (`fitDotClass`), as CSS tokens for the WebGL map. */
+/** Map dots by fit (when the student has scores): the fit mark colours (`fitDotClass`), as CSS tokens for the WebGL map. */
 export const FIT_DOT_COLOR: Record<Fit, { token: string; hex: string }> = {
-  super_reach: { token: "--color-fit-super-reach", hex: "#86198f" },
-  reach: { token: "--color-fit-reach", hex: "#7e22ce" },
-  target: { token: "--color-fit-target", hex: "#4338ca" },
-  safety: { token: "--color-fit-safety", hex: "#0f766e" },
+  super_reach: { token: "--color-fit-super-reach-mark", hex: "#12304a" },
+  reach: { token: "--color-fit-reach-mark", hex: "#00507e" },
+  target: { token: "--color-fit-target-mark", hex: "#0072a8" },
+  safety: { token: "--color-fit-safety-mark", hex: "#00969b" },
 };

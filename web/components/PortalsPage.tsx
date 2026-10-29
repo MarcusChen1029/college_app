@@ -35,7 +35,8 @@ import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
-import { buttonClass, toneClass } from "@/lib/ui";
+import { buttonClass, LABEL, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
+import { EmptyNote } from "./EmptyState";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
 import { useStarsSync } from "./useStarsSync";
@@ -50,9 +51,9 @@ const regionName = (t: TFunction, code: string) => {
 
 function Section({ title, aside, children }: { title: string; aside?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <section className="rounded-3xl border-2 border-zinc-200 p-5">
+    <section className={`${PANEL} p-5 sm:p-6`}>
       <div className="mb-3 flex flex-wrap items-center gap-3">
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className={SECTION_TITLE}>{title}</h2>
         <span className="ml-auto">{aside}</span>
       </div>
       {children}
@@ -65,7 +66,7 @@ function Group({ title, aside, children }: { title: string; aside?: React.ReactN
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">{title}</h3>
+        <h3 className={LABEL}>{title}</h3>
         <span className="ml-auto">{aside}</span>
       </div>
       {children}
@@ -190,9 +191,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     );
     const body =
       added.length === 0 && mine.length === 0 && campuses.length === 0 ? (
-        <p className="text-sm text-zinc-500">
-          {region === "ANY" ? t("portals.anyHelp") : t("portals.countryHelp")}
-        </p>
+        <EmptyNote on="panel">{region === "ANY" ? t("portals.anyHelp") : t("portals.countryHelp")}</EmptyNote>
       ) : (
         <ul className="space-y-2">
           {added.map((s) => (
@@ -244,16 +243,22 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     const { menu, body } = otherBlock(region);
     return (
       <Section key={region} title={regionName(t, region)}>
-        <div className="space-y-5">
+        {/* The two groups sit side by side on a wide screen, so a country is one short band, not two stretched lines. */}
+        <div className="grid gap-5 xl:grid-cols-2 xl:gap-6">
           <Group title={t("portals.groupSubmitted")}>
             {inCountry.length === 0 ? (
-              <p className="text-sm text-zinc-500">
+              <EmptyNote
+                on="panel"
+                action={
+                  <Link href="/application/list" className={buttonClass("secondary", "sm")}>
+                    {t("application.openMyList")}
+                  </Link>
+                }
+              >
                 {t("portals.submittedEmptyPre")}
-                <Link href="/application/list" className="text-blue-600 underline">
-                  {t("portals.myList")}
-                </Link>
+                <strong className="font-semibold">{t("portals.myList")}</strong>
                 {t("portals.submittedEmptyPost")}
-              </p>
+              </EmptyNote>
             ) : (
               <ul className="space-y-2">
                 {inCountry.map(({ entry, college }) => (
@@ -289,7 +294,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
 
   return (
     <div className="space-y-6">
-      <p className={`rounded-lg border px-3 py-2 text-xs ${toneClass("soon")}`}>
+      <p className={`rounded-2xl border px-4 py-2.5 text-sm ${toneClass("soon")}`}>
         {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
         {" · "}
         {(() => {
@@ -299,7 +304,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       </p>
 
       {!signedIn && student.localPasswordCount > 0 && (
-        <div className="flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
+        <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">
           <p className="min-w-0 flex-1">
             {student.localPasswordCount === 1
               ? t("portals.legacyLocalOne", { n: student.localPasswordCount })
@@ -312,9 +317,9 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       )}
 
       {hiddenCount > 0 && (
-        <p className="rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700">
+        <p className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">
           {hiddenCount === 1 ? t("portals.hiddenOnePre", { n: hiddenCount }) : t("portals.hiddenManyPre", { n: hiddenCount })}
-          <Link href="/profile" className="text-blue-600 underline">
+          <Link href="/profile" className="text-blue-700 underline">
             {t("portals.yourProfile")}
           </Link>
           {t("portals.hiddenPost")}

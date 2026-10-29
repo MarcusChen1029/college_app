@@ -15,6 +15,7 @@ import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
 import { ProfileCards } from "./ProfileCards";
+import { buttonClass, PAGE_TITLE, PANEL, SECTION_TITLE } from "@/lib/ui";
 
 const noop = () => () => {};
 
@@ -68,18 +69,18 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   return (
     <div className="space-y-8">
       <section className="flex flex-wrap items-center gap-4 rounded-3xl bg-blue-50 p-6">
-        <span aria-hidden className="grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-sun font-display text-2xl font-bold">
+        <span aria-hidden className="grid h-16 w-16 place-items-center rounded-full bg-sun font-display text-2xl font-bold">
           {name.charAt(0).toUpperCase()}
         </span>
         <div className="min-w-0 flex-1">
-          <h1 className="truncate text-3xl font-bold">{name}</h1>
-          <p className="text-sm text-zinc-600">
+          <h1 className={`${PAGE_TITLE} truncate`}>{name}</h1>
+          <p className="mt-1 text-base text-ink">
             {student.auth ? t("profile.signedInAs", { email: student.auth.email ?? "" }) : t("profile.notSignedIn")}
             {" · "}
             {profile.international ? t("profile.fromAbroad") : t("profile.fromUS")}
           </p>
         </div>
-        <Link href="/start" className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold hover:bg-white">
+        <Link href="/start" className={buttonClass("secondary", "sm")}>
           {t("profile.redoSetup")}
         </Link>
       </section>
@@ -88,10 +89,10 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-8">
-          <section className="rounded-3xl border-2 border-zinc-200 p-6">
-            <h2 className="text-xl font-bold">{t("profile.listHeading")}</h2>
+          <section className={`${PANEL} p-6`}>
+            <h2 className={SECTION_TITLE}>{t("profile.listHeading")}</h2>
             {entries.length === 0 ? (
-              <p className="mt-2 text-sm text-zinc-600">
+              <p className="mt-3 text-base text-ink">
                 {t("profile.emptyPre")}{" "}
                 <Link href="/colleges" className="font-semibold text-blue-700 underline underline-offset-4">
                   {t("nav.colleges")}
@@ -103,8 +104,8 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
                 {hasScores ? (
                   <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
                     {(["super_reach", "reach", "target", "safety"] as const).map((f) => (
-                      <div key={f} className="flex flex-col items-center gap-2 rounded-2xl bg-zinc-50 p-3">
-                        <p className="font-display text-3xl font-bold">{counts[f]}</p>
+                      <div key={f} className="flex flex-col items-center gap-2 rounded-2xl bg-white p-3">
+                        <p className="font-display text-3xl font-bold tabular-nums">{counts[f]}</p>
                         <FitBadge fit={f} />
                       </div>
                     ))}
@@ -119,7 +120,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
                       {t("profile.checklistCount", { done: checklistDone, total: checklistTotal })}
                     </span>
                   </div>
-                  <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-zinc-100">
+                  <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-zinc-200">
                     <div className="h-full rounded-full bg-blue-500" style={{ width: `${checklistTotal ? (checklistDone / checklistTotal) * 100 : 0}%` }} />
                   </div>
                   <p className="mt-2 text-sm text-zinc-600">
@@ -134,12 +135,12 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
           </section>
         </div>
 
-        <aside aria-labelledby="deadlines-heading" className="h-fit space-y-4 rounded-3xl border-2 border-zinc-200 p-6">
-          <h2 id="deadlines-heading" className="text-xl font-bold">
+        <aside aria-labelledby="deadlines-heading" className={`h-fit space-y-4 ${PANEL} p-6`}>
+          <h2 id="deadlines-heading" className={SECTION_TITLE}>
             {t("nav.deadlines")}
           </h2>
           <DeadlineCalendar events={events} today={today} />
-          <p className="border-t border-zinc-100 pt-4 text-sm text-zinc-600">
+          <p className="border-t border-zinc-200 pt-4 text-sm text-zinc-700">
             {t("profile.reminderEmails")}{" "}
             <Link href="/settings#reminders" className="font-semibold text-blue-700 underline underline-offset-4">
               {t("nav.settings")}

@@ -7,7 +7,7 @@ import { relativeText } from "@/components/TeacherText";
 import { useT } from "@/lib/i18n/client";
 import { relativeTime, type RosterRow } from "@/lib/roster-view";
 
-const th = "px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-zinc-500";
+const th = "px-3 py-2 text-left text-[13px] font-medium text-zinc-600";
 const td = "px-3 py-3 align-top";
 
 export const studentHref = (id: string) => `/teacher/students?s=${encodeURIComponent(id)}`;

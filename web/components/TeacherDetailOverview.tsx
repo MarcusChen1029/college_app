@@ -13,7 +13,7 @@ import { ACT_SCALE, SAT_SCALE, type ScoreScale, type SectionScores } from "@/lib
 function Item({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1 rounded-2xl border border-zinc-200 p-4">
-      <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">{label}</dt>
+      <dt className="text-[13px] font-medium text-zinc-600">{label}</dt>
       <dd className="text-sm">{children}</dd>
     </div>
   );

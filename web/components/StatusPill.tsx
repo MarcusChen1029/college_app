@@ -48,7 +48,7 @@ export function StatusIcon({ tone }: { tone: Tone }) {
 export function StatusPill({ tone, children, title }: { tone: Tone; children: React.ReactNode; title?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${toneClass(tone)}`}
+      className={`inline-flex flex-none items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[13px] font-semibold whitespace-nowrap ${toneClass(tone)}`}
       title={title}
     >
       <StatusIcon tone={tone} />

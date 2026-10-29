@@ -34,6 +34,7 @@ export const en = {
 
   // Empty list
   "application.emptyTitle": "Your list is empty",
+  "application.openMyList": "Open My list",
   "application.emptyBody": "Add the colleges you're applying to. Each one gets its own checklist and deadlines.",
 
   // Table
@@ -183,7 +184,7 @@ export const en = {
   // Interested
   "application.int.emptyTitle": "Nothing here yet",
   "application.int.emptyPre": "On any college's page, tap ",
-  "application.int.emptyStar": "☆ Interested",
+  "application.int.emptyStar": "Interested",
   "application.int.emptyMid": " to park it here while you decide.",
   "application.int.fullPre": "Your list is full on the {plan} plan. Remove a college from ",
   "application.int.fullMid": " or ",
@@ -307,6 +308,7 @@ export const zhTW: Translation<typeof en> = {
 
   // Empty list
   "application.emptyTitle": "你的清單還是空的",
+  "application.openMyList": "打開學校清單",
   "application.emptyBody": "加入你要申請的學校，每一所都會有自己的待辦清單和截止日期。",
 
   // Table
@@ -450,7 +452,7 @@ export const zhTW: Translation<typeof en> = {
   // Interested
   "application.int.emptyTitle": "這裡還沒有學校",
   "application.int.emptyPre": "在任何學校的頁面點選 ",
-  "application.int.emptyStar": "☆ 有興趣",
+  "application.int.emptyStar": "有興趣",
   "application.int.emptyMid": "，就能先放在這裡，慢慢決定。",
   "application.int.fullPre": "你的清單在 {plan} 方案下已滿。請從 ",
   "application.int.fullMid": " 移除一所學校，或 ",

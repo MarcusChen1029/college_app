@@ -21,7 +21,8 @@ import {
   type TranscriptCourse,
   type TranscriptSchool,
 } from "@/lib/transcript";
-import { toneClass, buttonClass } from "@/lib/ui";
+import { buttonClass, PAGE_INTRO, PANEL, toneClass } from "@/lib/ui";
+import { EmptyNote } from "./EmptyState";
 
 type Tab = "edit" | "import" | "view";
 const TABS: readonly [Tab, "transcript.tabEdit" | "transcript.tabImport" | "transcript.tabView"][] = [
@@ -150,7 +151,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
   }
 
   return (
-    <section aria-labelledby={`school-${school.id}`} className="space-y-3 rounded-lg border border-zinc-200 p-5">
+    <section aria-labelledby={`school-${school.id}`} className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
       {editingSchool ? (
         <TranscriptSchoolForm
           initial={school}
@@ -194,13 +195,13 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
           </ul>
         </div>
       )}
-      {courses.length === 0 && !adding && <p className="text-sm text-zinc-500">{t("transcript.noCourses")}</p>}
+      {courses.length === 0 && !adding && <EmptyNote on="panel">{t("transcript.noCourses")}</EmptyNote>}
       {years.map((year) => (
         <div key={year} className="space-y-1">
           <h3 className="text-sm font-semibold text-zinc-700">
             {yearLabel(year)}
           </h3>
-          <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
+          <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200 bg-white">
             {rest
               .filter((c) => c.academicYear === year)
               .sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name))
@@ -210,7 +211,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
       ))}
 
       {adding ? (
-        <div className="rounded-lg border border-zinc-200 p-4">
+        <div className="rounded-lg bg-white p-4">
           <TranscriptCourseForm
             initial={{ ...emptyCourse(school.id, school), sortOrder: nextOrder }}
             school={school}
@@ -240,12 +241,12 @@ function EditTab() {
       {!ready ? (
         <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
       ) : transcriptSchools.length === 0 && !addingSchool ? (
-        <p className="text-sm text-zinc-500">{t("transcript.noTranscript")}</p>
+        <EmptyNote>{t("transcript.noTranscript")}</EmptyNote>
       ) : (
         transcriptSchools.map((s) => <SchoolSection key={s.id} school={s} />)
       )}
       {addingSchool ? (
-        <section aria-labelledby="school-add" className="space-y-3 rounded-lg border border-zinc-200 p-5">
+        <section aria-labelledby="school-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
           <h2 id="school-add" className="font-display text-lg font-bold">
             {t("transcript.addSchoolHeading")}
           </h2>
@@ -275,7 +276,7 @@ export function TranscriptPage() {
   const [tab, setTab] = useState<Tab>("edit");
   return (
     <div className="space-y-5">
-      <p className="text-sm text-zinc-500">{t("transcript.intro")}</p>
+      <p className={PAGE_INTRO}>{t("transcript.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
           {error}{" "}

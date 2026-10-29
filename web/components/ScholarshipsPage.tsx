@@ -20,7 +20,8 @@ import { safeLink } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, PAGE_INTRO, PANEL } from "@/lib/ui";
+import { EmptyNote } from "./EmptyState";
 
 const statusLabel = (t: TFunction, s: ScholarshipStatus) => t(`scholarships.status.${s}` as MessageKey);
 
@@ -136,7 +137,7 @@ export function ScholarshipsPage() {
 
   return (
     <div className="space-y-5">
-      <p className="text-sm text-zinc-500">{t("scholarships.intro")}</p>
+      <p className={PAGE_INTRO}>{t("scholarships.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
           {error}{" "}
@@ -146,7 +147,7 @@ export function ScholarshipsPage() {
         </p>
       )}
 
-      <section aria-labelledby="sch-add" className="space-y-3 rounded-lg border border-zinc-200 p-5">
+      <section aria-labelledby="sch-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
         <h2 id="sch-add" className="font-display text-lg font-bold">
           {t("scholarships.addTitle")}
         </h2>
@@ -165,7 +166,7 @@ export function ScholarshipsPage() {
         {!ready ? (
           <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
         ) : sorted.length === 0 ? (
-          <p className="text-sm text-zinc-500">{t("scholarships.empty")}</p>
+          <EmptyNote>{t("scholarships.empty")}</EmptyNote>
         ) : (
           <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
             {sorted.map((s) => {

@@ -8,11 +8,12 @@ import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayD
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import { entrySupplements, reuseGroups, slotPrompts, withRequiredSlots, type SupplementsData } from "@/lib/supplements";
-import { toneClass } from "@/lib/ui";
+import { buttonClass, PANEL, toneClass } from "@/lib/ui";
 import type { CollegeSummary } from "@/lib/types";
 import { CollegeEssayCard } from "./CollegeEssayCard";
 import { EssayReusePanel } from "./EssayReusePanel";
 import { EssayRow, GOOGLE_NOTICE, googlePost, initialNotice, type GoogleAccess, type GoogleDocs, type GoogleStatus } from "./EssayRow";
+import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
 
@@ -33,8 +34,8 @@ function SharedDoc({ name, display, doc, onChange, google }: { name: string; dis
   );
 }
 
-const SHARED_CARD = "space-y-3 rounded-3xl border-2 border-zinc-200 p-5";
-const PROMPT_BOX = "rounded-xl border border-zinc-200 p-3";
+const SHARED_CARD = `space-y-3 ${PANEL} p-5 sm:p-6`;
+const PROMPT_BOX = "rounded-xl bg-white p-3";
 
 function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess }) {
   const t = useT();
@@ -211,13 +212,17 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
 
   if (entries.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
+      <EmptyNote
+        action={
+          <Link href="/application/list" className={buttonClass("primary", "sm")}>
+            {t("application.openMyList")}
+          </Link>
+        }
+      >
         {t("writing.emptyPre")}
-        <Link href="/application/list" className="text-blue-600 underline">
-          {t("nav.myList")}
-        </Link>
+        <strong className="font-semibold">{t("nav.myList")}</strong>
         {t("writing.emptyPost")}
-      </p>
+      </EmptyNote>
     );
   }
 
