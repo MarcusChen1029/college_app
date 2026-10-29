@@ -159,24 +159,52 @@ export function daysBetween(from: string, to: string): number {
   return Math.round((day(to) - day(from)) / 86_400_000);
 }
 
-/** One published application deadline as the page ships it: [date, plan, 1 when it is narrow (isNarrowDeadline)]. */
+/** One published application deadline as the page ships it: [date, plan, 1 when it is narrow (narrowFlags)]. */
 export type DeadlineRow = readonly [string, string, (0 | 1)?];
 
+// A program or field named as a deadline's subject. Arts tracks are here too, so "Final deadline: Acting (BFA)" counts.
+const PROGRAM =
+  "nursing|engineering|computer science|architecture|commerce|business|economics|health sciences?|kinesiology|pharmacy|medicine|" +
+  "dentistry|education|honou?rs|music|musical theat(?:re|er)|theat(?:re|er)|drama|dance|acting|film|fine arts|design|bfa|bmus";
+// "Nursing deadline", "Engineering programs", "music applicants"; "deadline - Engineering and Computer Science", "deadline: Acting".
+const PROGRAM_SUBJECT = new RegExp(
+  `\\b(?:${PROGRAM})\\s+(?:deadlines?|programs?|applicants?|majors?|students?)\\b|\\bdeadline\\s*(?:[-–—:]|for)\\s*(?:the\\s+)?(?:${PROGRAM})\\b`,
+  "gi",
+);
+// Words that turn a program mention into an exception: "programs other than Engineering", "except Commerce … and Nursing",
+// "also the final deadline for nursing".
+const EXCEPTING = /\b(?:except|excluding|other than|also)\b/i;
+
 /**
- * A deadline that holds for only part of the applicants, read from its label (notes are not used: they often mention a
- * program on a general row, "Also the Nursing deadline"). Narrow when the label
- *  - restricts who may use it: "nursing applicants only", "first-generation college students only";
- *  - is for another intake than fall: "International spring 2027 …" (a label naming spring or summer and not fall/autumn;
- *    "summer and autumn quarter" is general, and so is UBC's "Winter Session", its September intake);
- *  - is a performing-arts or portfolio track: "Regular Decision — Drama & Music", "(performing arts majors)", "Acting (BFA)",
- *    "RD with optional arts portfolio", unless it says "also" ("…; also the final deadline for nursing and the Honors portfolio").
- * A narrow date is never shown as a college's next deadline.
+ * Who a published deadline is for, read from its label (notes are not used: they often mention a program on a general row).
+ *  - "narrow", always: it restricts who may use it ("nursing applicants only"); it is for another intake than fall
+ *    ("International spring 2027 …": spring or summer and not fall/autumn; UBC's "Winter Session" is its September intake);
+ *    or a program is its subject ("First-year Nursing deadline", "Application deadline - Engineering programs (other than
+ *    Architecture)", "Final deadline: Acting (BFA) …"), unless that program follows except / other than / also.
+ *  - "limited": narrow only when the college has a general row beside it (narrowFlags). The domestic-only page of a college
+ *    whose internationals apply on rolling dates ("domestic freshman page; … rolling admission only"), and a performing-arts or
+ *    portfolio track ("Regular Decision — Drama & Music", "RD with optional arts portfolio") unless it says "also": at an arts
+ *    college "College of Music Early Action" is the general row.
+ *  - "general": everything else.
  */
-export function isNarrowDeadline(label: string | null | undefined): boolean {
+export function deadlineScope(label: string | null | undefined): "general" | "limited" | "narrow" {
   const l = label ?? "";
-  if (/\b(applicants|students|majors|programs?)\s+only\b/i.test(l)) return true;
-  if (/\b(spring|summer)\b/i.test(l) && !/\b(fall|autumn)\b/i.test(l)) return true;
-  return /\b(drama|music|dance|acting|performing arts|portfolio|audition|bfa|bmus)\b/i.test(l) && !/\balso\b/i.test(l);
+  if (/\b(?:applicants|students|majors|programs?)\s+only\b/i.test(l)) return "narrow";
+  if (/\b(?:spring|summer)\b/i.test(l) && !/\b(?:fall|autumn)\b/i.test(l)) return "narrow";
+  for (const m of l.matchAll(PROGRAM_SUBJECT)) if (!EXCEPTING.test(l.slice(0, m.index))) return "narrow";
+  if ((/\bdomestic\b/i.test(l) && !/\bdomestic\s+(?:and|or|&)\s+international\b/i.test(l)) || /\badmission only\b/i.test(l)) return "limited";
+  if (/\b(?:drama|music|dance|acting|performing arts|portfolio|audition|bfa|bmus)\b/i.test(l) && !/\balso\b/i.test(l)) return "limited";
+  return "general";
+}
+
+/**
+ * Which of one college's application deadlines (all its rows, past ones included) are narrow: the "narrow" ones, and the
+ * "limited" ones when a "general" row sits beside them. A narrow date is never shown as the college's next deadline.
+ */
+export function narrowFlags(labels: readonly (string | null | undefined)[]): boolean[] {
+  const scopes = labels.map(deadlineScope);
+  const general = scopes.includes("general");
+  return scopes.map((s) => s === "narrow" || (s === "limited" && general));
 }
 
 /**

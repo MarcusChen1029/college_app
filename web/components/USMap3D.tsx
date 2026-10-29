@@ -298,6 +298,7 @@ function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureColle
 
 type Api = {
   setPins: (pins: MapDot[]) => void;
+  setFit: (on: boolean) => void;
   select: (slug: string | null, side: "left" | "right") => void;
   resizeTo: (w: number, h: number) => void;
   hover: (slug: string | null) => void;
@@ -312,23 +313,25 @@ export function USMap3D(props: {
   region?: RegionCode;
   /** Gets a handle for lighting up a dot from outside the map (null when the map goes away or has no WebGL). */
   onReady?: (handle: MapHandle | null) => void;
+  /** Frame the colleges shown instead of the whole country while none is picked (a search down to a handful). */
+  fit?: boolean;
   children?: React.ReactNode;
 }) {
-  const { pins, selected, onSelect, cardSide, region = "US", onReady, children } = props;
+  const { pins, selected, onSelect, cardSide, region = "US", onReady, fit = false, children } = props;
   const box = useRef<HTMLDivElement>(null);
   const tip = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
   const labels = useRef(new Map<string, HTMLButtonElement>());
   const onSelectRef = useRef(onSelect);
   const onReadyRef = useRef(onReady);
-  const latest = useRef({ pins, selected, cardSide });
+  const latest = useRef({ pins, selected, cardSide, fit });
   const regionRef = useRef(region);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     onSelectRef.current = onSelect;
     onReadyRef.current = onReady;
-    latest.current = { pins, selected, cardSide };
+    latest.current = { pins, selected, cardSide, fit };
   });
 
   useEffect(() => {
@@ -639,8 +642,9 @@ export function USMap3D(props: {
       });
       for (const p of pinMap.values()) if (!keep.has(p.slug) && p.leaving == null) p.leaving = now;
       buildDots();
-      // The focused college was filtered out: head back to the whole map.
+      // The focused college was filtered out: head back to the whole map (or to the colleges left, when they are framed).
       if (selSlug && !keep.has(selSlug)) flyTo(targetRig());
+      reframeSoon();
       wake();
     };
 
@@ -655,7 +659,7 @@ export function USMap3D(props: {
     for (const s of states) for (const r of s.rings) for (let i = 0; i < r.length; i += Math.max(1, Math.floor(r.length / 40))) landPts.push(new THREE.Vector3(r[i][0], SLAB, r[i][1]));
     let fitFor = "";
     let fitRig: Rig | null = null;
-    const measure = (r: Rig) => {
+    const measure = (r: Rig, pts: readonly THREE.Vector3[] = landPts) => {
       fitCam.aspect = w / h;
       fitCam.position.set(...rigPosition(r));
       fitCam.lookAt(r.tx, r.ty, r.tz);
@@ -665,7 +669,7 @@ export function USMap3D(props: {
       let x1 = -Infinity;
       let y0 = Infinity;
       let y1 = -Infinity;
-      for (const p of landPts) {
+      for (const p of pts) {
         v0.copy(p).project(fitCam);
         x0 = Math.min(x0, v0.x);
         x1 = Math.max(x1, v0.x);
@@ -710,11 +714,74 @@ export function USMap3D(props: {
     let selSlug: string | null = null;
     let selSide: "left" | "right" = "right";
     let extHover: string | null = null;
+    // How close the camera comes to a picked college; a framed handful never comes closer than this, so its state shows.
+    const nearDist = () => 380 * Math.max(1, 1.25 / aspect());
+    // A short result list (a search down to a few colleges) is framed on its own: the colleges left, measured on screen like
+    // the whole-map fit, with room around them for their dots and labels. Never closer than a picked college, never wider than
+    // the whole map (colleges spread across the country simply get the whole map).
+    let fitPins = false;
+    const shownPins = () => [...pinMap.values()].filter((p) => p.leaving == null);
+    const pinsRig = (): Rig => {
+      const full = overview();
+      const pts = shownPins().map((p) => new THREE.Vector3(p.x, SLAB, p.z));
+      if (!pts.length) return full;
+      let x0 = Infinity;
+      let x1 = -Infinity;
+      let z0 = Infinity;
+      let z1 = -Infinity;
+      for (const p of pts) {
+        x0 = Math.min(x0, p.x);
+        x1 = Math.max(x1, p.x);
+        z0 = Math.min(z0, p.z);
+        z1 = Math.max(z1, p.z);
+      }
+      const pad = Math.round(Math.min(w, h) * 0.18) + 24;
+      // Closer than a picked college's view the state slabs read as walls, and colleges on the same block (Columbia and
+      // Barnard) would still touch: a city's handful stays a cluster, now in its region rather than lost in the country.
+      const near = nearDist();
+      const r: Rig = { tx: (x0 + x1) / 2, ty: SLAB, tz: (z0 + z1) / 2, dist: near, polar: OVERVIEW_POLAR, az: 0, ax: 0.5, ay: 0.5 };
+      for (let k = 0; k < 4; k++) {
+        const b = measure(r, pts);
+        const grow = Math.max((b.right - b.left) / Math.max(1, w - 2 * pad), (b.bottom - b.top) / Math.max(1, h - 2 * pad));
+        r.dist = Math.min(full.dist, Math.max(near, r.dist * grow));
+      }
+      if (r.dist >= full.dist * 0.85) return full;
+      const b = measure(r, pts);
+      r.ax = 0.5 + (w / 2 - (b.left + b.right) / 2) / w;
+      r.ay = 0.5 + (h / 2 - (b.top + b.bottom) / 2) / h;
+      return r;
+    };
+    // What the camera frames while no college is picked: "" for the whole map, else the colleges framed. It moves only when
+    // that changes, so typing in the search box never restarts a flight to the same place.
+    const frameKey = () => (fitPins ? shownPins().map((p) => p.slug).sort().join(",") : "");
+    let framed = "";
+    const reframe = () => {
+      const key = frameKey();
+      if (key === framed) return;
+      framed = key;
+      if (!selSlug) flyTo(targetRig());
+      wake();
+    };
+    // New pins and the fit switch arrive from two effects in the same commit: reframe once, after both.
+    let reframeQueued = false;
+    const reframeSoon = () => {
+      if (reframeQueued) return;
+      reframeQueued = true;
+      queueMicrotask(() => {
+        reframeQueued = false;
+        if (api.current) reframe();
+      });
+    };
+    const setFit = (on: boolean) => {
+      if (on === fitPins) return;
+      fitPins = on;
+      reframeSoon();
+    };
     const targetRig = (): Rig => {
       const p = selSlug ? pinMap.get(selSlug) : null;
-      if (!p || p.leaving != null) return overview();
+      if (!p || p.leaving != null) return fitPins ? pinsRig() : overview();
       const sheet = !window.matchMedia("(min-width: 1024px)").matches;
-      const dist = 380 * Math.max(1, 1.25 / aspect());
+      const dist = nearDist();
       return {
         tx: p.x,
         ty: SLAB + 10,
@@ -752,6 +819,7 @@ export function USMap3D(props: {
       selSlug = slug;
       selSide = side;
       const next = slug ? pinMap.get(slug) : undefined;
+      if (!slug) framed = frameKey();
       const dur = flyTo(targetRig());
       wake();
       if (!changed || !next || reduced) return;
@@ -1106,8 +1174,15 @@ export function USMap3D(props: {
     io.observe(el);
     wake();
 
-    api.current = { setPins, select, resizeTo, hover };
+    api.current = { setPins, setFit, select, resizeTo, hover };
+    fitPins = latest.current.fit;
     setPins(latest.current.pins);
+    // Opened on a short result list (a shared search link): its framing is the first frame, not a glide from the whole map.
+    framed = frameKey();
+    if (framed) {
+      rig = targetRig();
+      applyRig(rig);
+    }
     if (latest.current.selected) select(latest.current.selected, latest.current.cardSide);
     onReadyRef.current?.({ hover: (slug) => api.current?.hover(slug) });
 
@@ -1175,6 +1250,9 @@ export function USMap3D(props: {
   useEffect(() => {
     api.current?.setPins(pins);
   }, [pins]);
+  useEffect(() => {
+    api.current?.setFit(fit);
+  }, [fit]);
   useEffect(() => {
     api.current?.select(selected, cardSide);
   }, [selected, cardSide]);

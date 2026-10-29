@@ -43,7 +43,7 @@ import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
 import type { ApplyTag } from "@/lib/apply-tags";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { buttonClass, FIT_DOT_COLOR, fitDotClass, SEGMENT_TRACK, segmentClass, TIER_DOT } from "@/lib/ui";
-import { CollegeBrowser, DayHead, DueChip, dueText, PlanChip } from "./CollegeBrowser";
+import { CollegeBrowser, DayHead, DueChip, dueText, PlanText } from "./CollegeBrowser";
 import { EnglishFitLine } from "./EnglishFit";
 import { ExploreFilterBar } from "./ExploreFilterBar";
 import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
@@ -56,6 +56,8 @@ const policyLabel = (t: TFunction, group: "testPolicy" | "englishPolicy", map: R
 
 // Tailwind's lg breakpoint: from here the card floats over the map; below it, it sits under the map.
 const LG = "(min-width: 1024px)";
+// Up to this many colleges left (a search, a narrow filter), the map frames them instead of the whole country.
+const FIT_MAX = 12;
 const onLgChange = (cb: () => void) => {
   const m = window.matchMedia(LG);
   m.addEventListener("change", cb);
@@ -494,7 +496,12 @@ export function CollegeExplorer({
     : null;
 
   const selIndex = selected ? listRows.findIndex((r) => r.c.slug === selected) : -1;
-  const shown = useVisibleCount(`${region}|${effKey}`, listRows.length, selIndex);
+  const resultKey = `${region}|${effKey}`;
+  const shown = useVisibleCount(resultKey, listRows.length, selIndex);
+  // A short result list (a search down to a handful) is framed on the map rather than lost in the whole country; "Whole map"
+  // brings the country back for that list, and the next search frames again.
+  const [wholeFor, setWholeFor] = useState<string | null>(null);
+  const fitMap = rows.length > 0 && rows.length <= FIT_MAX && rows.length < inRegion.length && wholeFor !== resultKey;
 
   // The map colours each college by its fit once the student has scores (US only), else by its tier; the legend counts the rows shown.
   const byFit = hasScores && isUS;
@@ -754,14 +761,22 @@ export function CollegeExplorer({
                     {/* The fit badge sits under the name: beside it, the narrow sidebar cut names to a few letters. */}
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-base font-semibold leading-snug text-ink">{c.short_name ?? c.name}</span>
-                      <span className="mt-0.5 block truncate text-sm text-zinc-600">
-                        {[c.city, c.state_region].filter(Boolean).join(", ")}
-                        {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
+                      {/* In the timetable the plan ends this line (the day is in the heading); the place gives way, never the plan. */}
+                      <span className="mt-0.5 flex min-w-0 text-sm text-zinc-600">
+                        <span className="truncate">
+                          {[c.city, c.state_region].filter(Boolean).join(", ")}
+                          {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
+                        </span>
+                        {due && (
+                          <span className="shrink-0 whitespace-pre">
+                            {" · "}
+                            <PlanText plan={due.plan} />
+                          </span>
+                        )}
                       </span>
-                      {(due || fit || student.has(c.slug) || applyTags[c.slug]) && (
+                      {(fit || student.has(c.slug) || applyTags[c.slug]) && (
                         <span className="mt-1.5 flex flex-wrap gap-1">
-                          {due && <PlanChip plan={due.plan} />}
-                          {fit ? <FitBadge fit={fit.fit} size="md" /> : student.has(c.slug) && <Pill tone="blue" size="md">{t("colleges.onList")}</Pill>}
+                          {fit ?<FitBadge fit={fit.fit} size="md" /> : student.has(c.slug) && <Pill tone="blue" size="md">{t("colleges.onList")}</Pill>}
                           <ApplyTags tags={applyTags[c.slug]} size="md" />
                         </span>
                       )}
@@ -790,9 +805,22 @@ export function CollegeExplorer({
             <div className="space-y-2 border-b border-zinc-200 bg-white px-4 py-2.5">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 {lensSwitch}
-                {lensSentence && <p className="text-[15px] font-semibold text-ink">{lensSentence}</p>}
-                {current && (
-                  <button type="button" onClick={() => setSelected(null)} className={`ml-auto ${buttonClass("ghost", "sm")} h-8`}>
+                {/* Balanced, so a phone breaks it into two even lines, never "… in the next / 7 days" (an inline style: the global
+                    `p { text-wrap: pretty }` is unlayered and outranks a utility class). */}
+                {lensSentence && (
+                  <p className="text-[15px] font-semibold text-ink" style={{ textWrap: "balance" }}>
+                    {lensSentence}
+                  </p>
+                )}
+                {(current || fitMap) && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelected(null);
+                      setWholeFor(resultKey);
+                    }}
+                    className={`ml-auto ${buttonClass("ghost", "sm")} h-8`}
+                  >
                     {t("colleges.wholeMap")}
                   </button>
                 )}
@@ -831,6 +859,7 @@ export function CollegeExplorer({
                 selected={selected}
                 onSelect={setSelected}
                 cardSide={side}
+                fit={fitMap}
                 onReady={(handle) => {
                   mapApi.current = handle;
                 }}

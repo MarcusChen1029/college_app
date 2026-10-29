@@ -5,7 +5,7 @@ import { getAppFees, getDeadlines, getEnglishSummaries, getLookups, getProgramFe
 import { collegeSupplements } from "@/lib/supplements-data";
 import completions from "@/lib/data/field-completions.json";
 import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/field-match";
-import { isNarrowDeadline, type DeadlineRow } from "@/lib/explore-filters";
+import { narrowFlags, type DeadlineRow } from "@/lib/explore-filters";
 
 export const metadata = { title: "Colleges" };
 
@@ -27,14 +27,25 @@ async function Explorer() {
   ]);
   // The "when" lens: each college's published application deadlines for a plan (EA, ED, RD…), as [date, plan, narrow] rows.
   // Plan-less rows are left out (they are program or applicant-group dates: nursing, international-only), and so is anything
-  // computed. Rows whose label limits them to some applicants or another intake are flagged narrow (lib/explore-filters.ts
-  // isNarrowDeadline) and never become a college's next deadline. The browser picks the next one from the reader's own today;
-  // anything two or more days past here can't be next anywhere.
+  // computed. Rows whose label limits them to some applicants, a program or another intake are flagged narrow, judged with
+  // the college's other rows (lib/explore-filters.ts narrowFlags), and never become its next deadline. The browser picks the
+  // next one from the reader's own today; anything two or more days past here can't be next anywhere.
   const { today, floor } = serverDates();
-  const appDeadlines: Record<string, DeadlineRow[]> = {};
+  const byCollege = new Map<string, (typeof deadlines)[number][]>();
   for (const d of deadlines) {
-    if (d.kind !== "application" || !d.plan_key || !d.due_date || d.due_date < floor) continue;
-    (appDeadlines[d.institution_id] ??= []).push([d.due_date, d.plan_key, isNarrowDeadline(d.label) ? 1 : 0]);
+    if (d.kind !== "application" || !d.plan_key || !d.due_date) continue;
+    const list = byCollege.get(d.institution_id);
+    if (list) list.push(d);
+    else byCollege.set(d.institution_id, [d]);
+  }
+  const appDeadlines: Record<string, DeadlineRow[]> = {};
+  for (const [id, rows] of byCollege) {
+    const narrow = narrowFlags(rows.map((d) => d.label));
+    const kept: DeadlineRow[] = [];
+    rows.forEach((d, i) => {
+      if (d.due_date! >= floor) kept.push([d.due_date!, d.plan_key!, narrow[i] ? 1 : 0]);
+    });
+    if (kept.length) appDeadlines[id] = kept;
   }
   // Only the tags go to the browser, not the supplements file.
   const applyTags = applyTagsBySlug(colleges, collegeSupplements, appFees);

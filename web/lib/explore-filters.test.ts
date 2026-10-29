@@ -14,7 +14,8 @@ import {
   effectiveFilters,
   filtersToQuery,
   hasIntlAid,
-  isNarrowDeadline,
+  deadlineScope,
+  narrowFlags,
   matchesAdmit,
   medianFor,
   moreFilterCount,
@@ -117,32 +118,79 @@ test("nextDue skips narrow deadlines: Longwood's nursing-only ED never beats its
   assert.equal(onlyNarrowAhead(undefined, "2026-10-29"), false);
 });
 
-test("isNarrowDeadline reads the label (real labels from the deadlines table)", () => {
+test("deadlineScope reads the label (real labels from the deadlines table)", () => {
   const narrow = [
     "Early Decision, nursing applicants only (fall 2027 entry)",
     "Early Action (first-generation college students only)",
     "International spring 2027 application deadline",
     "International spring 2027 (January) application deadline (regular)",
     "Regular Decision, spring 2027 entry",
+    // A program as the subject.
+    "First-year Nursing deadline (fall 2027 entry)",
+    "Application deadline - Engineering programs (other than Architecture)",
+    "OUAC application deadline - Engineering and Computer Science",
+    "Application deadline - Honours Economics I (applicants outside Canada)",
+    "Final deadline: Acting (BFA), Comedy Writing and Performance (BFA), Fashion Design (BFA), Musical Theatre (BFA), Performance and Songwriting (BMus)",
+  ];
+  const limited = [
+    "Early Action (non-binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "Domestic first-year application deadline, fall 2027",
     "Regular Decision — Drama & Music",
     "Regular Decision (performing arts majors)",
-    "Final deadline: Acting (BFA), Comedy Writing and Performance (BFA), Fashion Design (BFA), Musical Theatre (BFA), Performance and Songwriting (BMus)",
     "RD with optional arts portfolio",
+    "College of Music Early Action",
   ];
   const general = [
     null,
     "Early Decision (binding)",
     "Early Decision (most majors)",
     "Early Action (non-binding, autumn only)",
+    // A program after except / other than / also is an exception, not the subject.
     "Early Action (fall 2027 entry); also the final deadline for nursing and the Honors portfolio",
+    "Application deadline - programs other than Engineering (apply through OUAC)",
+    "Application deadline: first-year full-time programs except Commerce, Health Sciences and Nursing",
     "Early Action (priority for admission, merit aid and Honors College), fall 2027",
     "Application deadline (summer and autumn quarter)",
     "UBC Vancouver final application deadline (Winter Session 2027/28)",
     "International first-year early action",
+    "International fall applicants: recommended completion date",
     "International applications close - Semester 1, 2027",
+    "Regular Decision (domestic and international applicants)",
   ];
-  for (const l of narrow) assert.equal(isNarrowDeadline(l), true, l);
-  for (const l of general) assert.equal(isNarrowDeadline(l), false, String(l));
+  for (const l of narrow) assert.equal(deadlineScope(l), "narrow", l);
+  for (const l of limited) assert.equal(deadlineScope(l), "limited", l);
+  for (const l of general) assert.equal(deadlineScope(l), "general", String(l));
+});
+
+test("narrowFlags judges a college's rows together", () => {
+  // Coastal Carolina: the dated rows are its domestic page; internationals apply on rolling dates, so those win.
+  const coastal = [
+    "Early Decision (binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "Early Action (non-binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "Regular Decision, fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
+    "International fall applicants: recommended completion date",
+  ];
+  const flags = narrowFlags(coastal);
+  assert.deepEqual(flags, [true, true, true, false]);
+  const dates = ["2026-10-15", "2026-11-15", "2027-02-01", "2027-06-01"];
+  const plans = ["ED", "EA", "RD", "ROLLING"];
+  const rows = coastal.map((_, i) => [dates[i], plans[i], flags[i] ? 1 : 0] as const);
+  assert.deepEqual(nextDue(rows, "2026-10-29"), { date: "2027-06-01", plan: "ROLLING", days: 215 });
+  // Salem State: once its EA passes, the nursing date must not become its next deadline.
+  assert.deepEqual(
+    narrowFlags(["First-year Early Action (fall 2027 entry)", "First-year Nursing deadline (fall 2027 entry)", "International first-year fall deadline (applicants residing abroad)"]),
+    [false, true, false],
+  );
+  // Waterloo: Engineering's Jan 15 is narrow; "programs other than Engineering" is the general date.
+  assert.deepEqual(
+    narrowFlags(["Application deadline - Engineering programs (other than Architecture)", "Application deadline - programs other than Engineering (apply through OUAC)"]),
+    [true, false],
+  );
+  // An arts college's own rows stay general; beside a general row the arts track is narrow.
+  assert.deepEqual(narrowFlags(["College of Music Early Action", "College of Music Regular Decision"]), [false, false]);
+  assert.deepEqual(narrowFlags(["Early Action", "College of Music Early Action"]), [false, true]);
+  // A program as the subject is narrow even alone (Columbia College Chicago's BFA final deadline).
+  assert.deepEqual(narrowFlags(["Final deadline: Acting (BFA), Musical Theatre (BFA)"]), [true]);
 });
 
 test("daysBetween counts calendar days across months, years and DST changes", () => {
