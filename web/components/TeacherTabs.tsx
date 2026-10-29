@@ -21,9 +21,15 @@ export function TeacherTabs({ tabs, label }: { tabs: TabDef[]; label: string }) 
     buttons.current[tabs[next].id]?.focus();
   }
 
+  // Styled as the shared SectionTabs (filled ink pill for the current tab, no hairline, a phone row that scrolls inside
+  // itself and fades at its edge). SectionTabs itself links routes; these are in-page tabs, so they keep tab semantics.
   return (
     <div className="space-y-5">
-      <div role="tablist" aria-label={label} className="flex flex-wrap gap-1 border-b border-zinc-200">
+      <div
+        role="tablist"
+        aria-label={label}
+        className="flex gap-1 overflow-x-auto py-1.5 pl-1 pr-10 [mask-image:linear-gradient(to_right,#000_calc(100%-2.5rem),transparent)] [scrollbar-width:none] sm:flex-wrap sm:overflow-visible sm:p-0 sm:[mask-image:none] [&::-webkit-scrollbar]:hidden"
+      >
         {tabs.map((t, i) => {
           const on = t.id === current.id;
           return (
@@ -40,7 +46,9 @@ export function TeacherTabs({ tabs, label }: { tabs: TabDef[]; label: string }) 
               tabIndex={on ? 0 : -1}
               onClick={() => setSelected(t.id)}
               onKeyDown={(e) => onKeyDown(e, i)}
-              className={`-mb-px border-b-2 px-4 py-2 text-sm font-semibold ${on ? "border-blue-600 text-blue-700" : "border-transparent text-zinc-600 hover:text-zinc-900"}`}
+              className={`inline-flex h-10 shrink-0 items-center rounded-full px-4 text-[15px] font-semibold whitespace-nowrap transition-colors ${
+                on ? "bg-ink text-white" : "text-zinc-700 hover:bg-zinc-100 hover:text-ink"
+              }`}
             >
               {t.label}
             </button>

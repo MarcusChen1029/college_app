@@ -25,6 +25,9 @@ import { errMsg, useLoad } from "@/lib/use-load";
 
 const field = "mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm";
 const btn = buttonClass("ghost", "sm");
+// Archive asks first and can be undone (Restore), so it is a quiet outline, but in the danger tone.
+const archiveBtn =
+  "inline-flex h-9 items-center justify-center rounded-full border border-urgent/40 bg-white px-4 text-sm font-semibold text-urgent transition-colors hover:border-urgent hover:bg-urgent-bg disabled:cursor-not-allowed disabled:opacity-50";
 
 /** Title, details and due date. With `targets` it also has the class / student picker (new tasks only). */
 function TaskForm({
@@ -212,7 +215,7 @@ function TaskRow({ task, today, run }: { task: TeacherTask; today: Date; run: (f
         )}
         <button
           type="button"
-          className={btn}
+          className={task.archived ? btn : archiveBtn}
           aria-label={t(task.archived ? "teacher.tasks.restoreAria" : "teacher.tasks.archiveAria", { title: task.title })}
           onClick={() => {
             if (!task.archived && !confirm(t("teacher.tasks.archiveConfirm", { title: task.title }))) return;
@@ -236,6 +239,8 @@ function TasksBoard() {
   const { data, error, retry } = useLoad(load);
   const [actionError, setActionError] = useState<string | null>(null);
   const [showArchived, setShowArchived] = useState(false);
+  // Phones: the form waits behind "+ Assign a task" so the tasks lead the screen; from lg it is always open beside them.
+  const [formOpen, setFormOpen] = useState(false);
 
   const run = async (fn: () => Promise<unknown>) => {
     setActionError(null);
@@ -267,7 +272,7 @@ function TasksBoard() {
   const archived = sorted.filter((t) => t.archived);
   const noTargets = data.students.length === 0 && !data.classes.some((c) => !c.archived);
 
-  // The tasks and who has done them on the left; assigning a new one in a column beside them (first on phones).
+  // The tasks and who has done them on the left; assigning a new one in a column beside them (behind a button on phones).
   return (
     <div className="space-y-6">
       {actionError && (
@@ -275,8 +280,22 @@ function TasksBoard() {
           {errorText(t, actionError)}
         </p>
       )}
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
-      <section aria-labelledby="task-add" className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-8">
+      <div className="lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
+      <button
+        type="button"
+        aria-expanded={formOpen}
+        aria-controls="task-add-card"
+        onClick={() => setFormOpen((o) => !o)}
+        className={`${buttonClass(formOpen ? "ghost" : "secondary", "sm")} lg:hidden`}
+      >
+        {formOpen ? t("teacher.tasks.assignClose") : t("teacher.tasks.assignOpen")}
+      </button>
+      <section
+        id="task-add-card"
+        aria-labelledby="task-add"
+        className={`${formOpen ? "mt-3 block" : "hidden"} space-y-3 rounded-2xl border border-zinc-200 bg-white p-5 lg:mt-0 lg:block`}
+      >
         <h2 id="task-add" className="font-display text-lg font-bold">
           {t("teacher.tasks.assignHeading")}
         </h2>
@@ -299,6 +318,7 @@ function TasksBoard() {
           {t("teacher.tasks.limitNote", { max: TASK_LIMITS.activePerTeacher, n: activeTaskCount(data.tasks) })}
         </p>
       </section>
+      </div>
 
       <div className="space-y-6 lg:col-start-1 lg:row-start-1">
       <section aria-labelledby="task-list" className="space-y-3">

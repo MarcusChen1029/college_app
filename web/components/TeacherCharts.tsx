@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { btn } from "@/components/TeacherClassCard";
 import { TeacherGate } from "@/components/TeacherGate";
 import { errorText, statusText } from "@/components/TeacherText";
@@ -16,6 +16,7 @@ import {
   OUTCOME_LABEL,
   OUTCOMES,
   outcomeCounts,
+  type ChartBox,
   type ClassOutcomes,
   type CollegeOutcomes,
   type Outcome,
@@ -67,21 +68,36 @@ function Legend({ college }: { college: CollegeOutcomes }) {
   );
 }
 
+/** The chart is drawn at the width it is shown (1 unit = 1 screen pixel), so its labels stay 13px on a phone too. */
+function useWidth(ref: React.RefObject<HTMLElement | null>): number | null {
+  const [width, setWidth] = useState<number | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => setWidth(Math.round(entry.contentRect.width)));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [ref]);
+  return width;
+}
+
 function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMetric }) {
   const t = useT();
-  const m = buildChart(college.points, metric);
-  const b = CHART_BOX;
+  const box = useRef<HTMLElement>(null);
+  const width = useWidth(box);
+  const b: ChartBox = width && width > 0 ? { ...CHART_BOX, width, height: Math.round(Math.min(480, Math.max(260, width * 0.62))) } : CHART_BOX;
+  const m = buildChart(college.points, metric, b);
   const plotBottom = b.height - b.bottom;
   const plotRight = b.width - b.right;
   const counts = outcomeCounts(college.points);
   const label = t("teacher.charts.scatterAria", { college: college.name, metric: metricText(t, metric), total: counts.total, admitted: counts.admitted, waitlisted: counts.waitlisted, denied: counts.denied });
   return (
-    <figure className="space-y-2">
+    <figure ref={box} className="space-y-2">
       <svg viewBox={`0 0 ${b.width} ${b.height}`} className="w-full" role="img" aria-label={label}>
         {m.yTicks.map((t) => (
           <g key={`y${t.value}`}>
             <line x1={b.left} x2={plotRight} y1={t.pos} y2={t.pos} className="stroke-zinc-200" strokeWidth={1} />
-            <text x={b.left - 8} y={t.pos} textAnchor="end" dominantBaseline="middle" className="fill-zinc-500 text-[11px]">
+            <text x={b.left - 8} y={t.pos} textAnchor="end" dominantBaseline="middle" className="fill-zinc-600 text-[13px]">
               {t.value}
             </text>
           </g>
@@ -89,17 +105,17 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
         {m.xTicks.map((t) => (
           <g key={`x${t.value}`}>
             <line x1={t.pos} x2={t.pos} y1={b.top} y2={plotBottom} className="stroke-zinc-200" strokeWidth={1} />
-            <text x={t.pos} y={plotBottom + 16} textAnchor="middle" className="fill-zinc-500 text-[11px]">
+            <text x={t.pos} y={plotBottom + 16} textAnchor="middle" className="fill-zinc-600 text-[13px]">
               {t.value.toFixed(1)}
             </text>
           </g>
         ))}
         <line x1={b.left} x2={plotRight} y1={plotBottom} y2={plotBottom} className="stroke-zinc-400" strokeWidth={1} />
         <line x1={b.left} x2={b.left} y1={b.top} y2={plotBottom} className="stroke-zinc-400" strokeWidth={1} />
-        <text x={(b.left + plotRight) / 2} y={b.height - 6} textAnchor="middle" className="fill-zinc-700 text-[12px] font-semibold">
+        <text x={(b.left + plotRight) / 2} y={b.height - 6} textAnchor="middle" className="fill-zinc-700 text-[13px] font-semibold">
           {t("teacher.charts.axisGpa")}
         </text>
-        <text x={14} y={(b.top + plotBottom) / 2} textAnchor="middle" transform={`rotate(-90 14 ${(b.top + plotBottom) / 2})`} className="fill-zinc-700 text-[12px] font-semibold">
+        <text x={14} y={(b.top + plotBottom) / 2} textAnchor="middle" transform={`rotate(-90 14 ${(b.top + plotBottom) / 2})`} className="fill-zinc-700 text-[13px] font-semibold">
           {metricText(t, metric)}
         </text>
         {m.points.map((p, i) => (

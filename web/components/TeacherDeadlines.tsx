@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
-import { StatusPill } from "@/components/StatusPill";
+import { StatusIcon, StatusPill } from "@/components/StatusPill";
 import { btn } from "@/components/TeacherClassCard";
 import { ChecklistBar, studentHref } from "@/components/TeacherRosterTable";
 import { TeacherGate } from "@/components/TeacherGate";
@@ -13,6 +13,7 @@ import { useLocale, useT } from "@/lib/i18n/client";
 import { teacherDeadlines, teacherRoster } from "@/lib/links-api";
 import { daysUntil } from "@/lib/roster";
 import { groupDeadlines, statusLabel, statusTone } from "@/lib/roster-view";
+import { isDoneDeadline } from "@/lib/roster-week";
 import { useLoad } from "@/lib/use-load";
 
 const RANGES = [30, 60, 90, 180] as const;
@@ -21,9 +22,10 @@ function DeadlineList({ days }: { days: number }) {
   const t = useT();
   const locale = useLocale();
   // The roster rides along for each college's checklist, so a row shows how far the application is, not only its date.
+  // It is optional: if it fails, the deadlines still show (the checklist column reads "-").
   const load = useCallback(async () => {
-    const [list, roster] = await Promise.all([teacherDeadlines(days), teacherRoster()]);
-    const checklists = new Map(roster.flatMap((s) => s.colleges.map((c) => [`${s.studentId}|${c.slug}`, progress(c.checklist)] as const)));
+    const [list, roster] = await Promise.all([teacherDeadlines(days), teacherRoster().catch(() => null)]);
+    const checklists = new Map((roster ?? []).flatMap((s) => s.colleges.map((c) => [`${s.studentId}|${c.slug}`, progress(c.checklist)] as const)));
     return { list, checklists, now: new Date() };
   }, [days]);
   const { data, error, retry } = useLoad(load);
@@ -65,31 +67,42 @@ function DeadlineList({ days }: { days: number }) {
           <h2 className="sr-only">{dateHeading(t, locale, g.date, data.now)}</h2>
           <DayStamp date={g.date} days={daysUntil(g.date, data.now)} />
           <ul className="divide-y divide-zinc-100">
-            {g.items.map((d) => (
-              <li
-                key={`${d.studentId}-${d.collegeSlug}-${d.kind}-${d.label}`}
-                className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1.5 py-3 first:pt-0 last:pb-0 md:grid md:grid-cols-[minmax(0,1fr)_10rem_9rem_9.5rem] md:gap-x-6"
-              >
-                <div className="min-w-0">
-                  <Link href={studentHref(d.studentId)} className="font-semibold text-blue-700 underline-offset-4 hover:underline">
-                    {d.studentName}
-                  </Link>
-                  <p className="text-[15px] text-ink [overflow-wrap:anywhere]">{d.collegeName}</p>
-                  <p className="text-[13px] text-zinc-600 md:hidden">{d.label}</p>
-                </div>
-                {/* From md up the plan and the checklist get columns, so a day reads across like a timetable row. */}
-                <p className="hidden pt-0.5 text-sm text-zinc-700 md:block">{d.label}</p>
-                <div className="hidden pt-1.5 md:block">
-                  {(() => {
-                    const p = data.checklists.get(`${d.studentId}|${d.collegeSlug}`);
-                    return p ? <ChecklistBar done={p.done} total={p.total} /> : <span className="text-zinc-500">-</span>;
-                  })()}
-                </div>
-                <span className="md:justify-self-end">
-                  <StatusPill tone={statusTone(d.status)}>{statusText(t, statusLabel(d.status))}</StatusPill>
-                </span>
-              </li>
-            ))}
+            {g.items.map((d) => {
+              // A submitted application is done: the row goes quiet, and "Submitted" stands where the checklist bar was
+              // (a half-full bar on a sent application read as "submitted half-done").
+              const done = isDoneDeadline(d);
+              const label = statusLabel(d.status);
+              const p = data.checklists.get(`${d.studentId}|${d.collegeSlug}`);
+              return (
+                <li
+                  key={`${d.studentId}-${d.collegeSlug}-${d.kind}-${d.label}`}
+                  className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1.5 py-3 first:pt-0 last:pb-0 md:grid md:grid-cols-[minmax(0,1fr)_10rem_9rem_9.5rem] md:gap-x-6"
+                >
+                  <div className="min-w-0">
+                    <Link href={studentHref(d.studentId)} className={`font-semibold underline-offset-4 hover:underline ${done ? "text-zinc-700" : "text-blue-700"}`}>
+                      {d.studentName}
+                    </Link>
+                    <p className={`text-[15px] [overflow-wrap:anywhere] ${done ? "text-zinc-600" : "text-ink"}`}>{d.collegeName}</p>
+                    <p className="text-[13px] text-zinc-600 md:hidden">{d.label}</p>
+                  </div>
+                  {/* From md up the plan and the checklist get columns, so a day reads across like a timetable row. */}
+                  <p className={`hidden pt-0.5 text-sm md:block ${done ? "text-zinc-600" : "text-zinc-700"}`}>{d.label}</p>
+                  {/* The checklist only matters while the application is open; a sent one leaves the cell empty. */}
+                  <div className="hidden pt-1.5 md:block">{done ? null : p ? <ChecklistBar done={p.done} total={p.total} /> : <span className="text-zinc-500">—</span>}</div>
+                  {/* Status column: a sent application reads as a quiet "✓ Submitted"; a decision keeps its pill. */}
+                  <span className="md:justify-self-end">
+                    {done && label === "Submitted" ? (
+                      <span className="inline-flex items-center gap-1.5 pt-0.5 text-sm font-medium whitespace-nowrap text-zinc-600">
+                        <StatusIcon tone="done" />
+                        {statusText(t, label)}
+                      </span>
+                    ) : (
+                      <StatusPill tone={statusTone(d.status)}>{statusText(t, label)}</StatusPill>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </li>
       ))}
