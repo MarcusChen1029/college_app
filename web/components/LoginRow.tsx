@@ -74,9 +74,18 @@ const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
   unauthorized: "portals.passwordSignedOutNote",
   unavailable: "portals.passwordUnavailable",
   not_found: "portals.passwordMissing",
-  unreadable: "portals.passwordUnreadable",
   too_many: "portals.passwordTooMany",
   failed: "portals.passwordError",
+  // The vault codes (Task 7 gives these their own texts and handling).
+  other_vault: "portals.passwordUnreadable",
+  locked: "portals.passwordError",
+  legacy: "portals.passwordError",
+  no_vault: "portals.passwordError",
+  wrong_vault: "portals.passwordError",
+  changed: "portals.passwordError",
+  exists: "portals.passwordError",
+  orphans: "portals.passwordError",
+  bad_record: "portals.passwordError",
 };
 
 /**

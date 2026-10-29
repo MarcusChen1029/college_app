@@ -11,7 +11,7 @@ import type { StudentProfile } from "./fit";
 import { customSlug, type CustomCollege } from "./custom-college";
 import { canAddMore, getPlan, type PlanKey } from "./plans";
 import { collegeSlot, loginCount, pairWithAccount, type SlotPassword } from "./portal-slots";
-import { forgetPassword, importPasswords, migrateStoredPasswords } from "./portal-vault-client";
+import { forgetPassword, importPasswords, onUnlock } from "./portal-vault-client";
 import { mergePortals } from "./portals";
 import { parseRole, type Role } from "./roles";
 import {
@@ -110,7 +110,7 @@ type State = {
   error: string | null;
   /** Signed in with data still saved in this browser from before: the sign-in dialog asks whether to add it. */
   localFound: LocalFound | null;
-  /** Signed out: passwords an older build saved in this browser, waiting to be moved into an account. */
+  /** Passwords an older build saved in this browser, waiting to be moved into an account (signed in: waiting for the vault to open). */
   localPasswordCount: number;
 };
 
@@ -147,10 +147,13 @@ let storedLegacy: string | null = null;
 // "later" after "Not now" in the sign-in dialog: don't ask again until the next page load or sign-in.
 let mergeChoice: "ask" | "later" = "ask";
 // The account's `portals` exactly as last read or written, password keys included: profile saves put back the ones
-// the database still holds (fromProfile), so only the server's verified migration ever removes them.
+// the database still holds (fromProfile), so a profile save never drops a password key it did not put there.
 let storedPortals: unknown = null;
-// Whose plaintext passwords the server was asked to move ("migrate") on this page load.
-let migratedFor: string | null = null;
+// Passwords the student agreed to add to this account (the sign-in dialog's "Add to this account") that the vault could
+// not take yet because it was locked or not set up: they move when it opens (moveLocalPasswords). Only that merge fills
+// it, so "Not now" and the logins held back for a different username (pairWithAccount) never move on their own.
+let movePending: { userId: string; slots: Set<string> } | null = null;
+let moving = false;
 // Whose account copy has loaded successfully on this page. Until it has, account writes are refused: the page would
 // otherwise overwrite the account with whatever it holds in memory (and drop password keys it never read).
 let loadedFor: string | null = null;
@@ -231,6 +234,34 @@ function clearLocal() {
   writeLocal(EMPTY_LOCAL);
 }
 
+/**
+ * Runs when the vault opens (portal-vault-client.ts onUnlock): sends the passwords the sign-in merge could not store
+ * (movePending) and keeps the ones the server did not confirm, with the same bookkeeping as the merge. Never throws.
+ */
+async function moveLocalPasswords() {
+  const pending = movePending;
+  const a = state.auth;
+  if (moving || !pending || !a || a.userId !== pending.userId) return;
+  moving = true;
+  try {
+    const send = localPasswords.filter((p) => pending.slots.has(p.slot));
+    const notStored = send.length ? await importPasswords(send) : [];
+    const left = new Set(notStored.map((p) => p.slot));
+    // This browser's copy as it is now (the signed-in state holds the account's data and must not be written there):
+    // drop the sent passwords that are stored, keep everything else.
+    const local = loadLocal();
+    const sent = new Set(send.map((p) => p.slot));
+    localPasswords = localPasswords.filter((p) => !sent.has(p.slot) || left.has(p.slot));
+    writeLocal(local);
+    if (movePending === pending) movePending = left.size ? { userId: pending.userId, slots: left } : null;
+    emit({ localPasswordCount: localPasswords.length });
+  } catch {
+    // nothing was removed; the next unlock tries again
+  } finally {
+    moving = false;
+  }
+}
+
 async function loadRemote(userId: string, email: string | null, opts: { merge?: boolean } = {}): Promise<{ passwordsFailed: number }> {
   const db = browserSupabase();
   emit({ syncing: true, error: null });
@@ -251,11 +282,6 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       emit({ auth: { userId, email }, role, teacherProfile, profile: {}, list: [], recommenders: [], scholarships: [], transcriptSchools: [], transcriptCourses: [], ready: true, sessionChecked: true, syncing: false, localFound: null });
       return { passwordsFailed: 0 };
     }
-    // Before reading (and so before any write from this page): the server moves this student's plaintext passwords
-    // from before migration 0040 into the encrypted store, removing each one only after a verified copy exists.
-    // Once per page load; a failed request is tried again on the next load. What it leaves behind stays safe:
-    // profile saves put back the password keys still in the row (storedPortals), and list saves never touch them.
-    if (migratedFor !== userId && (await migrateStoredPasswords())) migratedFor = userId;
     const local = loadLocal();
     const localPw = localPasswords;
     const merge = !!opts.merge;
@@ -306,11 +332,13 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       }
       // The profile and list are in the account: move the passwords into the encrypted store, and take the profile
       // and list out of this browser now, whatever happens to the reads below. A password leaves the browser only
-      // once the server confirmed it stored (or the account already had one that opens); the rest, and the ones held
-      // back for a different username, stay for next time.
+      // once the server confirmed it stored it; the rest (every one while the vault is locked or not set up), and the
+      // ones held back for a different username, stay for next time. The ones the student agreed to add move when the
+      // vault opens (moveLocalPasswords); the held ones never move on their own.
       const notStored = paired.send.length ? await importPasswords(paired.send) : [];
       localPasswords = [...notStored, ...paired.hold];
       passwordsFailed = localPasswords.length;
+      movePending = notStored.length ? { userId, slots: new Set(notStored.map((p) => p.slot)) } : null;
       writeLocal({ ...local, profile: {}, list: [] });
     }
     // Recommenders are separate from the list so a missing table (migration 0026 not applied yet) can't take the whole list down;
@@ -403,6 +431,8 @@ function refreshIfStale() {
 function start() {
   if (started || typeof window === "undefined") return;
   started = true;
+  // The vault opening is when passwords waiting in this browser can be sealed and sent.
+  onUnlock(() => void moveLocalPasswords());
   state = { ...state, ...localState(), ready: true };
   let supabase;
   try {
@@ -421,7 +451,7 @@ function start() {
       // so a teacher who signs out doesn't overwrite local data they never merged.
       mergeChoice = "ask";
       storedPortals = null;
-      migratedFor = null;
+      movePending = null;
       loadedFor = null;
       emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null });
     }
@@ -514,7 +544,7 @@ export function useStudent() {
     emit({ profile });
     const a = state.auth;
     if (!a) return Promise.resolve(false);
-    // Password keys the row still holds (not yet migrated) go back out unchanged; see storedPortals.
+    // Password keys the row still holds go back out unchanged; see storedPortals.
     const row = fromProfile(a.userId, profile, storedPortals);
     storedPortals = row.portals;
     return remote(() => db().from("student_profiles").upsert(row));
