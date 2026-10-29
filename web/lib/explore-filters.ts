@@ -41,7 +41,13 @@ export type ExploreFilters = {
   sort: SortState;
   /** The college open on the map (its slug, `?c=`), so a shared link opens the same card. Not a filter: it never narrows the rows. */
   college: string | null;
+  /** The "when" lens (`?due=`): only colleges whose next application deadline falls in the next 7 or 30 days. */
+  due: DueWindow | null;
 };
+
+/** The deadline windows the lens offers, in days from today (today counts as day 0). */
+export const DUE_WINDOWS = [7, 30] as const;
+export type DueWindow = (typeof DUE_WINDOWS)[number];
 
 export const DEFAULT_FILTERS: ExploreFilters = {
   view: "map",
@@ -63,6 +69,7 @@ export const DEFAULT_FILTERS: ExploreFilters = {
   plan: "",
   sort: { key: "tier", reverse: false },
   college: null,
+  due: null,
 };
 
 /** College slugs are lowercase words joined by hyphens (data/colleges/<slug>.json); anything else in `?c=` is ignored. */
@@ -110,6 +117,8 @@ export function parseFilters(sp: Params): ExploreFilters {
   if (SORT_KEYS.includes(key)) f.sort = { key, reverse: sort.startsWith("-") };
   const college = sp.get("c") ?? "";
   if (college.length <= 80 && SLUG.test(college)) f.college = college;
+  const due = Number(sp.get("due"));
+  f.due = (DUE_WINDOWS as readonly number[]).includes(due) ? (due as DueWindow) : null;
   return f;
 }
 
@@ -134,8 +143,33 @@ export function filtersToQuery(f: ExploreFilters): string {
   if (f.plan) p.set("plan", f.plan);
   if (f.sort.key !== "tier" || f.sort.reverse) p.set("sort", `${f.sort.reverse ? "-" : ""}${f.sort.key}`);
   if (f.college) p.set("c", f.college);
+  if (f.due) p.set("due", String(f.due));
   return p.toString();
 }
+
+// ───────────── The "when" lens: application deadlines from today ─────────────
+
+/** A college's next application deadline from today: its date, its plan (EA, ED, RD…) and the days left (0 = today). */
+export type NextDue = { date: string; plan: string; days: number };
+
+/** Whole days from `today` to `date` (both ISO yyyy-mm-dd, compared as calendar days, so time zones and DST never shift it). */
+export function daysUntil(today: string, date: string): number {
+  const day = (iso: string) => Date.UTC(Number(iso.slice(0, 4)), Number(iso.slice(5, 7)) - 1, Number(iso.slice(8, 10)));
+  return Math.round((day(date) - day(today)) / 86_400_000);
+}
+
+/**
+ * The first deadline on or after today from a college's application deadlines ([date, plan] pairs, any order). Only real
+ * published dates go in (lib/data.ts deadlines with kind "application" and a plan); nothing is computed or guessed here.
+ */
+export function nextDue(deadlines: readonly (readonly [string, string])[] | undefined, today: string): NextDue | null {
+  let best: readonly [string, string] | null = null;
+  for (const d of deadlines ?? []) if (d[0] >= today && (!best || d[0] < best[0] || (d[0] === best[0] && d[1] < best[1]))) best = d;
+  return best ? { date: best[0], plan: best[1], days: daysUntil(today, best[0]) } : null;
+}
+
+/** In the lens window: a next deadline from today up to `window` days ahead (day 0 to day `window`, inclusive). */
+export const dueWithin = (due: NextDue | null, window: DueWindow): boolean => due != null && due.days >= 0 && due.days <= window;
 
 // ───────────── Per-college values the filters and columns share ─────────────
 
@@ -248,8 +282,8 @@ export function moreFilterCount(f: ExploreFilters): number {
 /** Any filter on at all (search excluded: it has its own clear button). */
 export const anyFilter = (f: ExploreFilters): boolean => f.fit.length > 0 || !!f.field || f.maxTuition != null || moreFilterCount(f) > 0;
 
-/** Clears every filter, keeping the view, region, search, sort and the open college. */
-export const clearFilters = (f: ExploreFilters): ExploreFilters => ({ ...DEFAULT_FILTERS, view: f.view, region: f.region, q: f.q, sort: f.sort, college: f.college });
+/** Clears every filter, keeping the view, region, search, sort, the open college and the "when" lens (it has its own switch). */
+export const clearFilters = (f: ExploreFilters): ExploreFilters => ({ ...DEFAULT_FILTERS, view: f.view, region: f.region, q: f.q, sort: f.sort, college: f.college, due: f.due });
 
 function sortValue(r: ExploreRow, key: SortKey, category: string): number | string | null {
   switch (key) {
