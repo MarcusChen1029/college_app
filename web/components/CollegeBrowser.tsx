@@ -90,17 +90,15 @@ export function CollegeBrowser({
     </label>
   );
 
-  // Without scores there is no fit to show: a dash per row, and the way to get one once, in the column's header.
-  const fitCell = (r: ExploreRow) => (r.fit ? <FitBadge fit={r.fit.fit} result={r.fit} /> : <span className="text-zinc-500">—</span>);
-  const fitHeader = hasScores ? (
-    t("colleges.thYourFit")
-  ) : (
-    <>
-      {t("colleges.thFit")}
-      <Link href="/start" className="block font-semibold whitespace-nowrap text-blue-700 underline-offset-4 hover:underline">
-        {t("colleges.addScoresShort")}
-      </Link>
-    </>
+  // The Fit column exists only once the student has scores (without them it would be a column of dashes; the title row asks for
+  // the scores instead). A college the fit can't be worked out for gets a dash.
+  const showFit = isUS && hasScores;
+  const fitCell = (r: ExploreRow) => (r.fit ? <FitBadge fit={r.fit.fit} result={r.fit} size="md" /> : <span className="text-zinc-500">—</span>);
+  // Tier badges differ in width (S++, S+, S): a fixed slot keeps every college name on one edge.
+  const tierSlot = (r: ExploreRow) => (
+    <span className="w-11 shrink-0">
+      <TierBadge tier={tierFor(r)} />
+    </span>
   );
 
   const ariaSort = (keys: SortKey[]) => (keys.includes(sort.key) ? (SORT_DESC[sort.key] !== sort.reverse ? "descending" : "ascending") : undefined);
@@ -147,16 +145,18 @@ export function CollegeBrowser({
         {visible.map((r) => (
           <li key={r.c.slug} className="rounded-2xl border border-zinc-200 bg-white p-4">
             <div className="flex items-start gap-2.5">
-              <SchoolLogo slug={r.c.slug} />
-              <TierBadge tier={tierFor(r)} />
+              <span className="grid h-7 w-7 shrink-0 place-items-center">
+                <SchoolLogo slug={r.c.slug} />
+              </span>
+              {tierSlot(r)}
               <div className="min-w-0 flex-1">
                 <Link href={`/colleges/${r.c.slug}`} className="block text-base font-semibold leading-tight text-ink hover:underline">
                   {r.c.name}
                 </Link>
                 <p className="mt-0.5 truncate text-sm text-zinc-600">{place(t, r)}</p>
-                <ApplyTags tags={applyTags[r.c.slug]} className="mt-1" />
+                <ApplyTags tags={applyTags[r.c.slug]} className="mt-1" size="md" />
               </div>
-              {isUS && r.fit && <FitBadge fit={r.fit.fit} result={r.fit} />}
+              {isUS && r.fit && <FitBadge fit={r.fit.fit} result={r.fit} size="md" />}
             </div>
             <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 text-sm">
               {showAdmit && (
@@ -218,9 +218,18 @@ export function CollegeBrowser({
                     "text-right",
                   ),
                 )}
-              {th("tuition", t("colleges.thTuition"), "text-right", t("colleges.thTuitionTitle"))}
+              {th(
+                "tuition",
+                // The usual basis is said once here; a cell names its basis only when it is another one (in-state, by course…).
+                <span className="text-right">
+                  {t("colleges.thTuition")}
+                  <span className="block font-normal text-zinc-600">{t("colleges.thTuitionNote")}</span>
+                </span>,
+                "text-right",
+                t("colleges.thTuitionTitle"),
+              )}
               {showEnglish && th(null, t("colleges.thEnglish"))}
-              {isUS && th(null, fitHeader)}
+              {showFit && th(null, t("colleges.thYourFit"))}
               {th("deadline", t("colleges.thNextDeadline"), "hidden xl:table-cell")}
               {isUS && th(null, t("colleges.thTesting"), "hidden xl:table-cell")}
               {isUS && th(null, t("colleges.thPlans"), "hidden 2xl:table-cell")}
@@ -238,13 +247,13 @@ export function CollegeBrowser({
                     <span className="grid h-7 w-7 shrink-0 place-items-center">
                       <SchoolLogo slug={r.c.slug} />
                     </span>
-                    <TierBadge tier={tierFor(r)} />
+                    {tierSlot(r)}
                     <div className="min-w-0">
                       <Link href={`/colleges/${r.c.slug}`} className="text-base font-semibold text-ink hover:underline">
                         {r.c.name}
                       </Link>
                       <div className="text-[13px] text-zinc-600">{place(t, r)}</div>
-                      <ApplyTags tags={applyTags[r.c.slug]} className="mt-1" />
+                      <ApplyTags tags={applyTags[r.c.slug]} className="mt-1" size="md" />
                     </div>
                   </div>
                 </td>
@@ -260,18 +269,18 @@ export function CollegeBrowser({
                     </td>
                   ))}
                 <td className="px-3 py-3 text-right">
-                  <TuitionCell tu={r.tuition} />
+                  <TuitionCell tu={r.tuition} quietPublished />
                 </td>
                 {showEnglish && (
                   <td className="px-3 py-3">
                     <EnglishFitBadge fit={r.english} />
                   </td>
                 )}
-                {isUS && <td className="px-3 py-3">{fitCell(r)}</td>}
+                {showFit && <td className="px-3 py-3">{fitCell(r)}</td>}
                 <td className="hidden px-3 py-3 whitespace-nowrap tabular-nums xl:table-cell">{fmtDate(r.c.next_deadline)}</td>
                 {isUS && (
                   <td className="hidden whitespace-nowrap px-3 py-3 xl:table-cell">
-                    {r.c.test_policy ? <Pill>{r.c.test_policy in TEST_POLICY ? t(`colleges.testPolicy.${r.c.test_policy}` as MessageKey) : r.c.test_policy}</Pill> : <span className="text-zinc-500">—</span>}
+                    {r.c.test_policy ? <Pill size="md">{r.c.test_policy in TEST_POLICY ? t(`colleges.testPolicy.${r.c.test_policy}` as MessageKey) : r.c.test_policy}</Pill> : <span className="text-zinc-500">—</span>}
                   </td>
                 )}
                 {isUS && <td className="hidden px-3 py-3 text-[13px] 2xl:table-cell">{[...(r.c.plans ?? [])].sort().join(" · ") || <span className="text-zinc-500">—</span>}</td>}
@@ -348,7 +357,8 @@ function MedianCell({ m, test, you }: { m: Median; test: AdmissionTest; you: num
   );
 }
 
-function TuitionCell({ tu }: { tu: TuitionEstimate }) {
+/** `quietPublished`: the table says "published rate" once in its header, so a cell on that basis shows just the figure. */
+function TuitionCell({ tu, quietPublished = false }: { tu: TuitionEstimate; quietPublished?: boolean }) {
   const t = useT();
   if (tu.amount == null || !tu.basis)
     return (
@@ -369,6 +379,7 @@ function TuitionCell({ tu }: { tu: TuitionEstimate }) {
         {fmtMoney(tu.amount, tu.currency)}
         {tu.maybeLow && <span aria-hidden="true">*</span>}
       </span>
+      {!(quietPublished && tu.basis === "published" && tu.max == null && tu.outOfState == null) && (
       <span className="block whitespace-nowrap text-[13px] text-zinc-600">
         {tu.max != null
           ? t("colleges.tuitionUpTo", { amount: fmtMoney(tu.max, tu.currency) })
@@ -376,6 +387,7 @@ function TuitionCell({ tu }: { tu: TuitionEstimate }) {
             ? t("colleges.tuitionOos", { amount: fmtMoney(tu.outOfState, tu.currency) })
             : t(`colleges.tuitionBasis.${tu.basis}`)}
       </span>
+      )}
     </span>
   );
 }

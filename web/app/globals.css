@@ -279,6 +279,11 @@ html:has([data-jump-nav]) {
 .map-sky {
   background: var(--color-zinc-50);
 }
+/* On the explorer (/colleges, marked data-explorer) the site bar takes the explorer's frame (app/(explore)/layout.tsx:
+   1600px, the same 16px side padding), so the logo and the page below share one left edge and one right edge. */
+html:has([data-explorer]) body > header > nav {
+  max-width: 1600px;
+}
 .map-tip {
   opacity: 0;
   transition: opacity 120ms ease;

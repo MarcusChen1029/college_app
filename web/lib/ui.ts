@@ -83,7 +83,8 @@ export const TIER_DOT: Record<TierLetter | "none", { cls: string; token: string;
   A: { cls: "bg-blue-700", token: "--color-blue-700", hex: "#0a6ba1" },
   B: { cls: "bg-blue-500", token: "--color-blue-500", hex: "#1fa4e4" },
   C: { cls: "bg-blue-300 ring-1 ring-inset ring-ink/25", token: "--color-blue-300", hex: "#87d1f6" },
-  D: { cls: "bg-white ring-2 ring-inset ring-blue-500", token: "--color-blue-500", hex: "#1fa4e4", ring: true },
+  // The ring is a step darker than B's fill, so 320 open rings still hold 3:1 against the map's pale ground.
+  D: { cls: "bg-white ring-2 ring-inset ring-blue-600", token: "--color-blue-600", hex: "#0b86c6", ring: true },
   none: { cls: "bg-zinc-300 ring-1 ring-inset ring-ink/20", token: "--color-zinc-300", hex: "#b9cfe2" },
 };
 

@@ -59,7 +59,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
       onChange={(e) => set({ q: e.target.value })}
       placeholder={t("colleges.searchPlaceholder")}
       aria-label={t("colleges.searchAria")}
-      className={`${CONTROL} w-full ${compact ? "" : "sm:w-60"}`}
+      className={`${CONTROL} w-full ${compact ? "" : "col-span-2 lg:w-60"}`}
     />
   );
 
@@ -94,7 +94,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
   ) : null;
 
   const fieldSelect = (
-    <select className={`${CONTROL} ${compact ? "w-full" : "max-w-[13rem]"}`} value={f.field ?? ""} onChange={(e) => set({ field: (e.target.value || null) as FieldKey | null })} aria-label={t("colleges.fieldFilter")}>
+    <select className={`${CONTROL} ${compact ? "w-full" : "w-full min-w-0 lg:w-auto lg:max-w-[13rem]"}`} value={f.field ?? ""} onChange={(e) => set({ field: (e.target.value || null) as FieldKey | null })} aria-label={t("colleges.fieldFilter")}>
       <option value="">{t("colleges.anyField")}</option>
       {yours.length > 0 && (
         <optgroup label={t("colleges.yourFields")}>
@@ -119,7 +119,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
 
   const tuitionSelect = (
     <select
-      className={`${CONTROL} ${compact ? "w-full" : ""}`}
+      className={`${CONTROL} ${compact ? "w-full" : "w-full min-w-0 lg:w-auto"}`}
       value={f.maxTuition ?? ""}
       onChange={(e) => set({ maxTuition: e.target.value ? Number(e.target.value) : null })}
       aria-label={t("colleges.maxTuition")}
@@ -142,9 +142,10 @@ export function ExploreFilterBar(p: FilterBarProps) {
     ["deadline", "colleges.sortByDeadline"],
     ["name", "colleges.sortByName"],
   ];
-  const sortSelect = (
+  // The table bar draws it twice: in the control grid below lg, beside the result count from lg (one is always display:none).
+  const sortSelect = (cls: string) => (
     <select
-      className={`${CONTROL} ${compact ? "w-full" : "ml-auto"}`}
+      className={`${CONTROL} ${cls}`}
       value={f.sort.key}
       onChange={(e) => set({ sort: { key: e.target.value as SortKey, reverse: false } })}
       aria-label={t("colleges.sort")}
@@ -280,7 +281,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
       aria-expanded={open}
       aria-controls={panelId}
       onClick={() => setOpen((o) => !o)}
-      className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors ${open ? "border-ink bg-zinc-100 text-ink" : "border-zinc-300 bg-white text-ink hover:border-zinc-400"}`}
+      className={`inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors ${compact ? "" : "w-full lg:w-auto"} ${open ? "border-ink bg-zinc-100 text-ink" : "border-zinc-300 bg-white text-ink hover:border-zinc-400"}`}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
         <path d="M4 6h16M7 12h10M10 18h4" />
@@ -297,29 +298,32 @@ export function ExploreFilterBar(p: FilterBarProps) {
           {search}
           <div className="flex gap-2">
             {moreButton}
-            {sortSelect}
+            {sortSelect("w-full")}
           </div>
         </>
       ) : (
-        <div className="flex flex-wrap items-center gap-2">
+        // Below lg: a two-column grid of full-width cells (search across; field | tuition; more filters | sort), so no row
+        // ends ragged. From lg: one row.
+        <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap lg:items-center">
           {search}
-          {/* Without scores the table already asks for them (title row, Fit column): no third link here. */}
-          {p.hasScores && fitChips}
+          {/* Without scores the table already asks for them in the title row: no second link here. */}
+          {p.hasScores && <div className="col-span-2">{fitChips}</div>}
           {fieldSelect}
           {tuitionSelect}
           {moreButton}
+          {sortSelect("w-full min-w-0 lg:hidden")}
         </div>
       )}
       {open && panel}
       {compact ? (
         <ActiveChips {...p} />
       ) : (
-        // Sort sits with the result count: it changes the order of what is counted, not which colleges are in it.
+        // From lg, sort sits with the result count: it changes the order of what is counted, not which colleges are in it.
         <div className="flex flex-wrap items-start gap-2">
           <div className="min-w-0 flex-1 pt-1.5">
             <ActiveChips {...p} />
           </div>
-          {sortSelect}
+          {sortSelect("ml-auto max-lg:hidden")}
         </div>
       )}
     </div>

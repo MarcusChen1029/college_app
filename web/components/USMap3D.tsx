@@ -11,15 +11,21 @@ import { useT } from "@/lib/i18n/client";
 import { flight, overviewDistance, rigPosition, type Rig } from "@/lib/map-camera";
 import { fitWorld, regionGeo, type RegionGeo } from "@/lib/region-geo";
 import type { RegionCode } from "@/lib/regions";
-import type { MapPin } from "./USMap";
+import type { TierCode } from "@/lib/types";
+
+/** A college's place on the map. */
+export type MapPin = { slug: string; name: string; lat: number | null; lng: number | null; tier: TierCode | null };
 
 // World units: the region's land is fitted into ±halfW × ±halfD (US: 960 × 600), centred on the origin, y up.
 // Camera framing and pan limits scale from that box; see lib/region-geo.ts.
 const SLAB = 9; // state thickness
 const GAP = 0.985; // states shrink a touch about their centroid, so the map reads as puzzle pieces
 const FOV = 32;
-// The camera keeps one fixed tilt and heading (no rotating); people can only zoom and pan.
-const OVERVIEW_POLAR = 0.74;
+// The camera keeps one fixed tilt and heading (no rotating); people can only zoom and pan. A gentle tilt: the slabs still read
+// as 3D, and the country stays tall enough to fill a landscape panel instead of floating in it.
+const OVERVIEW_POLAR = 0.52;
+// The whole-map view frames the land itself (measured on screen) with this margin, smaller on a phone-width canvas.
+const FIT_INSET = 24;
 // With nothing left to animate, ambient motion (pin bob, ripples) keeps going this long after the last interaction, then the map stops redrawing.
 const IDLE_MS = 3000;
 // Fill cost grows with the pixels drawn (about 60 ms a frame at a 1200x860 canvas on 1.5x density, 35 ms at 1x), so
@@ -392,31 +398,37 @@ export function USMap3D(props: {
     // Every college in view as one dot: a single THREE.Points draw (one call for all 416), coloured by tier or fit, a white ring
     // keeping clusters apart and a slightly darker rim so the paler tiers still read on white land; `ring` dots (tier D) are open
     // rings. Dots skip the depth test so the land they sit on never clips them; the selected college's dot steps aside once its
-    // pin has landed.
+    // pin has landed. On a narrow canvas (a phone) the dots shrink with the map, so a dense region stays dots, not one blob.
+    const dotScale = () => Math.min(1, Math.max(0.68, w / 900));
     const dotMat = new THREE.ShaderMaterial({
       transparent: true,
       depthTest: false,
       depthWrite: false,
-      uniforms: { uPx: { value: renderer.getPixelRatio() }, uAlpha: { value: reduced ? 1 : 0 }, uInk: { value: new THREE.Vector3(...srgbOf(INK)) } },
+      uniforms: {
+        uPx: { value: renderer.getPixelRatio() },
+        uScale: { value: dotScale() },
+        uAlpha: { value: reduced ? 1 : 0 },
+        uInk: { value: new THREE.Vector3(...srgbOf(INK)) },
+      },
       vertexShader: /* glsl */ `
         attribute vec3 aColor; attribute float aSize; attribute float aShow; attribute float aRing;
-        uniform float uPx;
+        uniform float uPx; uniform float uScale;
         varying vec3 vColor; varying float vSize; varying float vShow; varying float vRing;
         void main() {
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-          vSize = aSize * uPx;
+          vSize = aSize * uScale * uPx;
           gl_PointSize = vSize;
           vColor = aColor;
           vShow = aShow;
           vRing = aRing;
         }`,
       fragmentShader: /* glsl */ `
-        uniform float uPx; uniform float uAlpha; uniform vec3 uInk;
+        uniform float uPx; uniform float uScale; uniform float uAlpha; uniform vec3 uInk;
         varying vec3 vColor; varying float vSize; varying float vShow; varying float vRing;
         void main() {
           float d = length(gl_PointCoord - 0.5) * 2.0;
           float aa = 2.0 / vSize;
-          float halo = 4.0 * uPx / vSize;
+          float halo = 4.0 * uPx * max(uScale, 0.85) / vSize;
           float core = 1.0 - halo;
           float outer = 1.0 - smoothstep(1.0 - aa, 1.0, d);
           float fill = 1.0 - smoothstep(core - aa, core, d);
@@ -552,8 +564,53 @@ export function USMap3D(props: {
 
     // Camera rig.
     const aspect = () => w / h;
-    // A portrait map (a phone) is fitted by its width and has height to spare: sit the land a little low, clear of the key at the top.
-    const overview = (): Rig => ({ tx: 0, ty: 0, tz: 18, dist: overviewDistance(aspect(), FOV, OVERVIEW_POLAR, halfW + 20, halfD + 20), polar: OVERVIEW_POLAR, az: 0, ax: 0.5, ay: aspect() < 1.1 ? 0.6 : 0.5 });
+    // The whole-map view: start from the box fit, then measure the land's outline on screen with a scratch camera and scale and
+    // shift until it fills the canvas less the inset (perspective makes the near edge, Alaska and the Gulf, wider than the box
+    // predicts). Cached per canvas size.
+    const fitCam = new THREE.PerspectiveCamera(FOV, 1, 5, 8000);
+    const v0 = new THREE.Vector3();
+    const landPts: THREE.Vector3[] = [];
+    for (const s of states) for (const r of s.rings) for (let i = 0; i < r.length; i += Math.max(1, Math.floor(r.length / 40))) landPts.push(new THREE.Vector3(r[i][0], SLAB, r[i][1]));
+    let fitFor = "";
+    let fitRig: Rig | null = null;
+    const measure = (r: Rig) => {
+      fitCam.aspect = w / h;
+      fitCam.position.set(...rigPosition(r));
+      fitCam.lookAt(r.tx, r.ty, r.tz);
+      fitCam.setViewOffset(w, h, (0.5 - r.ax) * w, (0.5 - r.ay) * h, w, h);
+      fitCam.updateMatrixWorld();
+      let x0 = Infinity;
+      let x1 = -Infinity;
+      let y0 = Infinity;
+      let y1 = -Infinity;
+      for (const p of landPts) {
+        v0.copy(p).project(fitCam);
+        x0 = Math.min(x0, v0.x);
+        x1 = Math.max(x1, v0.x);
+        y0 = Math.min(y0, v0.y);
+        y1 = Math.max(y1, v0.y);
+      }
+      // In CSS pixels, y down.
+      return { left: ((x0 + 1) / 2) * w, right: ((x1 + 1) / 2) * w, top: ((1 - y1) / 2) * h, bottom: ((1 - y0) / 2) * h };
+    };
+    const overview = (): Rig => {
+      const key = `${w}x${h}`;
+      if (fitRig && fitFor === key) return { ...fitRig };
+      const inset = Math.round(Math.min(FIT_INSET, Math.max(10, w * 0.03)));
+      const r: Rig = { tx: 0, ty: 0, tz: 0, dist: overviewDistance(aspect(), FOV, OVERVIEW_POLAR, halfW + 20, halfD + 20), polar: OVERVIEW_POLAR, az: 0, ax: 0.5, ay: 0.5 };
+      if (landPts.length) {
+        for (let k = 0; k < 4; k++) {
+          const b = measure(r);
+          r.dist *= Math.max((b.right - b.left) / (w - 2 * inset), (b.bottom - b.top) / (h - 2 * inset));
+        }
+        const b = measure(r);
+        r.ax = 0.5 + (w / 2 - (b.left + b.right) / 2) / w;
+        r.ay = 0.5 + (h / 2 - (b.top + b.bottom) / 2) / h;
+      }
+      fitFor = key;
+      fitRig = r;
+      return { ...r };
+    };
     let rig: Rig = overview();
     let fly: { at: (t: number) => Rig; t0: number; dur: number } | null = null;
     const applyRig = (r: Rig) => {
@@ -583,9 +640,9 @@ export function USMap3D(props: {
         dist,
         polar: OVERVIEW_POLAR,
         az: 0,
-        // Below lg the card is a sheet over the lower two-thirds, so the pin rides in the strip above it.
+        // Below lg the card sits under the map, so the pin is centred (a little low, leaving room for its label above).
         ax: sheet ? 0.5 : selSide === "right" ? 0.31 : 0.69,
-        ay: sheet ? 0.22 : 0.56,
+        ay: sheet ? 0.58 : 0.56,
       };
     };
     const flyTo = (to: Rig, dur?: number) => {
@@ -711,6 +768,7 @@ export function USMap3D(props: {
       renderer.setSize(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
+      dotMat.uniforms.uScale.value = dotScale();
       fly = null;
       controls.enabled = true;
       rig = targetRig();
@@ -905,9 +963,16 @@ export function USMap3D(props: {
           tipEl.dataset.show = String(!!tipPin);
         }
         if (tipPin) {
+          // Above the dot, kept inside the canvas: slid in from the side edges, and below the dot when there is no room above.
           pv.set(tipPin.x, dotY(tipPin), tipPin.z).project(camera);
-          const lift = (tipPin.size * (1 + 0.45 * tipPin.hover)) / 2 + 6;
-          tipEl.style.transform = `translate3d(${((pv.x + 1) / 2) * w}px, ${((1 - pv.y) / 2) * h - lift}px, 0) translate(-50%, -100%)`;
+          const lift = (tipPin.size * dotScale() * (1 + 0.45 * tipPin.hover)) / 2 + 6;
+          const tw = tipEl.offsetWidth;
+          const th = tipEl.offsetHeight;
+          const px = ((pv.x + 1) / 2) * w;
+          const py = ((1 - pv.y) / 2) * h;
+          const left = Math.min(Math.max(6, px - tw / 2), w - tw - 6);
+          const top = py - lift - th >= 6 ? py - lift - th : py + lift;
+          tipEl.style.transform = `translate3d(${left}px, ${top}px, 0)`;
         }
       }
 
@@ -969,9 +1034,11 @@ export function USMap3D(props: {
 
     // The pin and the rings stay hidden until a college is picked, and the first selection used to freeze for a few hundred
     // milliseconds: shaders were built on first use, and the first draw of each object costs the graphics driver more again.
-    // Show them just long enough to compile in parallel with the intro, then draw them once.
+    // Show the rings and ONE pin (every pin shares the same geometry and shader, whatever its colour) just long enough to compile
+    // in parallel with the intro, then draw them once: a handful of extra draws, not one per college.
     let disposed = false;
-    const unseen = [...ripples];
+    const samplePin = pinMap.values().next().value?.root;
+    const unseen: THREE.Object3D[] = samplePin ? [...ripples, samplePin] : [...ripples];
     const wasShown = unseen.map((o) => o.visible);
     unseen.forEach((o) => (o.visible = true));
     const compiled = renderer.compileAsync(scene, camera);
@@ -979,13 +1046,10 @@ export function USMap3D(props: {
     compiled
       .then(() => {
         if (disposed) return;
-        const hidden: THREE.Object3D[] = [];
-        scene.traverse((o) => {
-          if (!o.visible) hidden.push(o);
-        });
-        hidden.forEach((o) => (o.visible = true));
+        const shown = unseen.map((o) => o.visible);
+        unseen.forEach((o) => (o.visible = true));
         renderer.render(scene, camera);
-        hidden.forEach((o) => (o.visible = false));
+        unseen.forEach((o, i) => (o.visible = shown[i]));
         // The canvas keeps whatever was drawn last while the loop sleeps, so put the real frame back.
         renderer.render(scene, camera);
       })
@@ -1045,7 +1109,8 @@ export function USMap3D(props: {
 
   const sel = pins.find((p) => p.slug === selected);
   return (
-    <div ref={box} className="map-sky relative h-full min-h-[360px] w-full touch-none overflow-hidden rounded-2xl border border-zinc-200">
+    // The panel around the map (its edge, its corners, the key above it) belongs to the page; this fills it.
+    <div ref={box} className="map-sky relative h-full w-full touch-none overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
         <div
           ref={tip}
@@ -1125,31 +1190,47 @@ function FlatMap({ region, pins, selected, onSelect, children }: { region: Regio
     [pins, geo, selected],
   );
   const sel = dots.find((p) => p.slug === selected);
+  // Nearest wins, as on the WebGL map: one handler finds the dot whose centre is closest to the pointer (within HIT_PX), so a
+  // small dot next to a large one is still the one you get.
+  const nearest = (e: React.PointerEvent<SVGSVGElement> | React.MouseEvent<SVGSVGElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    let best: (typeof dots)[number] | null = null;
+    let bestD = HIT_PX * HIT_PX;
+    for (const p of dots) {
+      const d = (p.x - x) ** 2 + (p.y - y) ** 2;
+      if (d < bestD) {
+        bestD = d;
+        best = p;
+      }
+    }
+    return best;
+  };
   return (
-    <div ref={box} className="map-sky relative h-full min-h-[360px] w-full overflow-hidden rounded-2xl border border-zinc-200">
-      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="group" aria-label={t(`colleges.mapLabel.${region}` as MessageKey)} className="absolute inset-0 block h-full w-full">
-        <rect width={w} height={h} fill="transparent" onClick={() => onSelect(null)} />
+    <div ref={box} className="map-sky relative h-full w-full overflow-hidden">
+      <svg
+        width={w}
+        height={h}
+        viewBox={`0 0 ${w} ${h}`}
+        role="group"
+        aria-label={t(`colleges.mapLabel.${region}` as MessageKey)}
+        className="absolute inset-0 block h-full w-full"
+        onClick={(e) => onSelect(nearest(e)?.slug ?? null)}
+        onPointerMove={(e) => (e.currentTarget.style.cursor = nearest(e) ? "pointer" : "default")}
+      >
         {geo.context.map((s) => (
           <path key={s.id} d={s.d} fill="#eef3f7" stroke="#d5e6f0" strokeLinejoin="round" />
         ))}
         {geo.land.map((s) => (
-          <path key={s.id} d={s.d} fill="#ffffff" stroke="#b7e3fb" strokeLinejoin="round" onClick={() => onSelect(null)} />
+          <path key={s.id} d={s.d} fill="#ffffff" stroke="#b7e3fb" strokeLinejoin="round" />
         ))}
         {dots.map((p) => {
           const on = p.slug === selected;
           const r = dotPx(p.tier) / 2 - 1;
           return (
-            <g
-              key={p.slug}
-              transform={`translate(${p.x} ${p.y})`}
-              style={{ cursor: "pointer" }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onSelect(p.slug);
-              }}
-            >
+            <g key={p.slug} transform={`translate(${p.x} ${p.y})`}>
               <title>{p.note ? `${p.name} · ${p.note}` : p.name}</title>
-              <circle r={HIT_PX} fill="transparent" />
               {p.tone.ring && !on ? (
                 <circle r={r - 1} fill="#ffffff" style={{ stroke: `var(${p.tone.token}, ${p.tone.hex})` }} strokeWidth={2.5} />
               ) : (
