@@ -74,7 +74,10 @@ function logger() {
   return { lines, log: (msg: string) => void lines.push(msg) };
 }
 
-// A signed ECPay notice. `over` is applied before signing; use `signed(form, keys)` to sign a hand-built form.
+// Signs a hand-built notice form the way ECPay does (CheckMacValue added). The MAC is case-blind in key names as well
+// as in values (keys are sorted ignoring case and the whole string is lowercased before hashing), and "&" / "=" move
+// freely between a key and its neighbour's value, so the signature survives such edits: tests that rely on that
+// check `verifyCheckMac` on the edited form first, to show the refusal comes from handleNotice and not from the MAC.
 async function signed(form: Record<string, string>, keys: { hashKey: string; hashIv: string } = STAGE_KEYS): Promise<Record<string, string>> {
   return { ...form, CheckMacValue: await checkMacValue(form, keys) };
 }
@@ -327,6 +330,114 @@ test("a real payment under the production config upgrades", async () => {
   assert.deepEqual(await handleNotice(form, { store, config: PRODUCTION, log }), OK);
   assert.equal(calls.applyPaid.length, 1);
   assert.equal(calls.markSimulated.length, 0);
+});
+
+// ---------------------------------------------------------------- handleNotice: the MAC is case-blind
+
+// The signed form with one key renamed (value and CheckMacValue untouched). Proves the MAC still verifies.
+async function renamed(form: Record<string, string>, from: string, to: string, keys: EcpayKeys = STAGE_KEYS): Promise<Record<string, string>> {
+  const copy: Record<string, string> = {};
+  for (const [key, value] of Object.entries(await signed(form, keys))) copy[key === from ? to : key] = value;
+  assert.equal(await verifyCheckMac(copy, keys), true, `precondition: renaming ${from} to ${to} keeps the MAC valid`);
+  return copy;
+}
+
+test("a simulated production notice with SimulatePaid renamed simulatePaid is refused, not upgraded", async () => {
+  const { store, calls } = fakeStore([order({ mode: "production" })]);
+  const { lines, log } = logger();
+  const form = await renamed(paidForm({ SimulatePaid: "1" }, PRODUCTION_KEYS.merchantId), "SimulatePaid", "simulatePaid", PRODUCTION_KEYS);
+  const res = await handleNotice(form, { store, config: PRODUCTION, log });
+  assert.deepEqual(res, { status: 400, body: "0|Fields" });
+  assert.equal(calls.lookups.length + writes(calls), 0);
+  assert.match(lines[0], /simulatePaid/);
+});
+
+test("every field name handleNotice reads is refused when spelled in another case", async () => {
+  const { store, calls } = fakeStore([order()]);
+  const { log } = logger();
+  const base = paidForm({ BankCode: "812", vAccount: "9103522175887271", ExpireDate: "2026/11/01", PaymentNo: "LLL26102912345" });
+  const names = ["MerchantID", "MerchantTradeNo", "RtnCode", "RtnMsg", "TradeNo", "TradeAmt", "PaymentDate", "PaymentType", "SimulatePaid", "BankCode", "vAccount", "ExpireDate", "PaymentNo"];
+  for (const name of names) {
+    const first = name[0] === name[0].toUpperCase() ? name[0].toLowerCase() : name[0].toUpperCase();
+    for (const spelling of [name.toLowerCase(), name.toUpperCase(), first + name.slice(1)]) {
+      const form = await renamed(base, name, spelling);
+      assert.deepEqual(await handleNotice(form, { store, config: STAGE, log }), { status: 400, body: "0|Fields" }, `${name} -> ${spelling}`);
+    }
+  }
+  assert.equal(calls.lookups.length + writes(calls), 0);
+});
+
+test("a second CheckMacValue spelled checkMacValue is refused", async () => {
+  // verifyCheckMac excludes only the exact name, so the variant is hashed as an ordinary field and the MAC stays valid.
+  const { store, calls } = fakeStore([order()]);
+  const { log } = logger();
+  const form = await signed(paidForm({ checkMacValue: "A".repeat(64) }));
+  assert.equal(await verifyCheckMac(form, STAGE_KEYS), true);
+  assert.deepEqual(await handleNotice(form, { store, config: STAGE, log }), { status: 400, body: "0|Fields" });
+  assert.equal(calls.lookups.length + writes(calls), 0);
+});
+
+test("two keys that differ only in case are refused, read fields or not", async () => {
+  const { store, calls } = fakeStore([order({ mode: "production" })]);
+  const { log } = logger();
+  const pairs: Array<[Record<string, string>, EcpayKeys]> = [
+    [paidForm({ SimulatePaid: "0", simulatepaid: "1" }, PRODUCTION_KEYS.merchantId), PRODUCTION_KEYS],
+    [paidForm({ RtnMsg: "ok", rtnmsg: "other" }), STAGE_KEYS],
+    [paidForm({ CustomField1: "", customfield1: "x" }), STAGE_KEYS],
+  ];
+  for (const [form, keys] of pairs) {
+    const signedForm = await signed(form, keys);
+    assert.equal(await verifyCheckMac(signedForm, keys), true);
+    const config = keys === PRODUCTION_KEYS ? PRODUCTION : STAGE;
+    assert.deepEqual(await handleNotice(signedForm, { store, config, log }), { status: 400, body: "0|Fields" });
+  }
+  assert.equal(calls.lookups.length + writes(calls), 0);
+});
+
+test("a key that only looks like a field we never read, in another case, is harmless", async () => {
+  const { store, calls } = fakeStore([order()]);
+  const { log } = logger();
+  const form = paidForm();
+  delete (form as Record<string, string | undefined>).StoreID;
+  assert.deepEqual(await handleNotice(await signed({ ...form, storeid: "" }), { store, config: STAGE, log }), OK);
+  assert.equal(calls.applyPaid.length, 1);
+});
+
+test("a paid production notice without SimulatePaid, or with another value, is refused", async () => {
+  const { store, calls } = fakeStore([order({ mode: "production" })]);
+  const { log } = logger();
+  const missing = paidForm({}, PRODUCTION_KEYS.merchantId);
+  delete (missing as Record<string, string | undefined>).SimulatePaid;
+  const cases: Array<Record<string, string>> = [missing];
+  for (const SimulatePaid of ["", "2", "true", "01", " 0", "0 "]) cases.push(paidForm({ SimulatePaid }, PRODUCTION_KEYS.merchantId));
+  for (const form of cases) {
+    const res = await handleNotice(await signed(form, PRODUCTION_KEYS), { store, config: PRODUCTION, log });
+    assert.deepEqual(res, { status: 400, body: "0|SimulatePaid" }, JSON.stringify(form.SimulatePaid));
+  }
+  assert.equal(writes(calls), 0);
+});
+
+test("SimulatePaid=1 folded into RtnMsg's value is refused in production", async () => {
+  // Sorted, RtnMsg is followed by SimulatePaid, so "RtnMsg=x&SimulatePaid=1" hashes the same as two separate fields.
+  // The genuine notice is a simulated payment; this copy has no SimulatePaid key at all.
+  const { store, calls } = fakeStore([order({ mode: "production" })]);
+  const { log } = logger();
+  const simulated = paidForm({ SimulatePaid: "1" }, PRODUCTION_KEYS.merchantId);
+  const form = { ...(await signed(simulated, PRODUCTION_KEYS)), RtnMsg: `${simulated.RtnMsg}&SimulatePaid=1` };
+  delete (form as Record<string, string | undefined>).SimulatePaid;
+  assert.equal(await verifyCheckMac(form, PRODUCTION_KEYS), true, "precondition: the folded notice is still validly signed");
+  const res = await handleNotice(form, { store, config: PRODUCTION, log });
+  assert.deepEqual(res, { status: 400, body: "0|SimulatePaid" });
+  assert.equal(writes(calls), 0);
+});
+
+test("a paid notice without SimulatePaid still upgrades under the stage config", async () => {
+  const { store, calls } = fakeStore([order()]);
+  const { log } = logger();
+  const form = paidForm();
+  delete (form as Record<string, string | undefined>).SimulatePaid;
+  assert.deepEqual(await handleNotice(await signed(form), { store, config: STAGE, log }), OK);
+  assert.equal(calls.applyPaid.length, 1);
 });
 
 // ---------------------------------------------------------------- handleNotice: payment info and other codes

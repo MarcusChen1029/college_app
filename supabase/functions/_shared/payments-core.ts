@@ -3,13 +3,21 @@
 // Web tests (web/lib/payments-core.test.ts) run this same file under Node, so: no npm: imports, no Deno.*, `.ts` imports.
 // After editing, redeploy every edge function that imports this file.
 //
+// The CheckMacValue is case-blind: ECPay sorts the keys ignoring case and lowercases the whole string before hashing,
+// so a notice stays validly signed when the case of a value OR of a key name changes ("SimulatePaid" and "simulatePaid"
+// hash the same), and when "&" or "=" move between a key and its neighbour's value. The MAC alone therefore pins
+// neither identity nor amount nor which fields exist; everything below is checked against our own records.
+//
 // Trust model for a notice, checked in this order, any failure answers 400 and nothing is written:
 //   1. CheckMacValue is valid for this mode's keys.
+//   1b. No key that handleNotice reads is spelled in another case, and no two keys differ only in case ("0|Fields"):
+//      form.SimulatePaid must mean what ECPay signed, not what a renamed key left undefined.
 //   2. MerchantID is ours.
-//   3. The order exists under the exact MerchantTradeNo. ECPay lowercases values before hashing, so the MAC alone does
-//      not pin the case of MerchantTradeNo (or of any other text value): never trust it for identity or amount.
+//   3. The order exists under the exact MerchantTradeNo (the lookup may be case-blind: compare what comes back).
 //   4. The order was made in this mode (the stage keys are public, anyone can sign a stage notice).
 //   5. TradeAmt equals the amount stored on the order (compared here, not taken from the notice).
+//   6. A paid notice in production must say SimulatePaid=0 exactly to upgrade; "1" is recorded only; absent or
+//      anything else is refused ("0|SimulatePaid"), because a field can vanish into a neighbour's value unseen.
 // A store that throws is not caught: the edge function then answers a non-200 and ECPay retries the notice.
 
 import { offeredEntryYears, passWindow } from "./pass.ts";
@@ -66,6 +74,39 @@ function isNonEmpty(value: unknown): value is string {
   return typeof value === "string" && value !== "";
 }
 
+// Every field name handleNotice (and verifyCheckMac) reads, spelled exactly as ECPay sends it.
+const READ_FIELDS = [
+  "CheckMacValue",
+  "MerchantID",
+  "MerchantTradeNo",
+  "RtnCode",
+  "RtnMsg",
+  "TradeNo",
+  "TradeAmt",
+  "PaymentDate",
+  "PaymentType",
+  "SimulatePaid",
+  "BankCode",
+  "vAccount",
+  "ExpireDate",
+  "PaymentNo",
+];
+const READ_FIELDS_FOLDED = new Map(READ_FIELDS.map((name) => [name.toLowerCase(), name]));
+
+// The first key that the case-blind MAC would let through under a different spelling: it equals another key ignoring
+// case, or it is one of READ_FIELDS in the wrong case (the exact spelling is then absent and the read gives undefined).
+function caseVariantKey(form: Record<string, string>): string | null {
+  const seen = new Set<string>();
+  for (const key of Object.keys(form)) {
+    const folded = key.toLowerCase();
+    if (seen.has(folded)) return key;
+    seen.add(folded);
+    const read = READ_FIELDS_FOLDED.get(folded);
+    if (read !== undefined && read !== key) return key;
+  }
+  return null;
+}
+
 // ECPay sends times as "yyyy/MM/dd HH:mm:ss" and dates as "yyyy/MM/dd", both on the Taipei clock.
 function validDay(y: number, mo: number, d: number): boolean {
   const t = new Date(Date.UTC(y, mo - 1, d));
@@ -109,6 +150,10 @@ export async function handleNotice(
   // 1. Signature. Nothing else in the form is believed (or logged) before this passes.
   if (!(await verifyCheckMac(form, config.keys))) return reject("CheckMacValue");
 
+  // 1b. The MAC ignores key case, so a renamed key keeps it valid while the exact name reads as missing.
+  const variant = caseVariantKey(form);
+  if (variant !== null) return reject("Fields", variant);
+
   // 2. Merchant. An unset merchant id in our own config must not match an absent one.
   if (!isNonEmpty(config.keys.merchantId) || form.MerchantID !== config.keys.merchantId) return reject("MerchantID");
   const rtnCode = form.RtnCode;
@@ -133,11 +178,15 @@ export async function handleNotice(
 
   // 6. Paid.
   if (rtnCode === "1") {
-    // ECPay's "simulate payment" button sends a genuine-looking paid notice. On the live site it must never upgrade.
-    if (form.SimulatePaid === "1" && config.mode === "production") {
-      await store.markSimulated(order.merchant_trade_no);
-      log(`ecpay notice: simulated payment recorded, not upgraded ${brief(tradeNo)}`);
-      return ACK;
+    // ECPay's "simulate payment" button sends a genuine-looking paid notice. On the live site it must never upgrade,
+    // so there only an explicit SimulatePaid=0 upgrades; a missing or odd value is refused, not assumed real.
+    if (config.mode === "production") {
+      if (form.SimulatePaid === "1") {
+        await store.markSimulated(order.merchant_trade_no);
+        log(`ecpay notice: simulated payment recorded, not upgraded ${brief(tradeNo)}`);
+        return ACK;
+      }
+      if (form.SimulatePaid !== "0") return reject("SimulatePaid", tradeNo);
     }
     const paidWhen = parseTaipeiDateTime(form.PaymentDate);
     if (!paidWhen) return reject("PaymentDate", tradeNo);
