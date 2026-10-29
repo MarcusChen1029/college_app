@@ -40,7 +40,7 @@ const FOOTER_LINKS = [
   ["/help", "nav.help"],
 ] as const;
 
-const HEADER = "sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white";
+const HEADER = "sticky top-0 z-20 print:hidden bg-zinc-50";
 const NAV = "mx-auto flex max-w-7xl items-center gap-x-4 px-4 lg:gap-x-6 py-3 text-sm font-medium";
 
 function Brand() {
@@ -117,7 +117,7 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
           children
         )}
       </main>
-      <footer className="relative mt-0 print:hidden bg-zinc-100 pb-6 pt-2 text-center text-xs text-zinc-500">
+      <footer className="relative mt-0 print:hidden bg-zinc-100 pb-6 pt-2 text-center text-[13px] text-zinc-600">
         <Wave className="absolute -top-[39px] left-0 h-10 w-full" fill="#e9f2fa" />
         <nav aria-label={t("legal.footer.label")} className="mx-auto max-w-2xl px-4 pt-6">
           {/* Phones: two even rows of three; wider screens: one centered row. */}
