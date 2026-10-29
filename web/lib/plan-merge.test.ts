@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { splitMerge, splitPasswords } from "./plan-merge.ts";
+import { mergeOffer, splitMerge, splitPasswords } from "./plan-merge.ts";
 
 const e = (slug: string, addedAt: string) => ({ slug, addedAt });
 const slugs = (xs: readonly { slug: string }[]) => xs.map((x) => x.slug);
@@ -59,4 +59,17 @@ test("a kept college's own portal password stays in the browser; every other pas
   assert.deepEqual(split.movable.map((p) => p.slot), [`college:${listed}`, "system:common_app", "custom:abc"]);
   assert.equal(split.stay.length + split.movable.length, passwords.length); // nothing dropped
   assert.deepEqual(splitPasswords([], passwords), { movable: passwords, stay: [] });
+});
+
+test("the sign-in offer counts only the colleges that fit; the rest is the leftover My list explains", () => {
+  const counts = (o: { offerCount: number; leftover: number }) => ({ offerCount: o.offerCount, leftover: o.leftover });
+  const two = [e("b", "2026-01-02T00:00:00.000Z"), e("a", "2026-01-01T00:00:00.000Z")];
+  const four = [e("d", "2026-01-04T00:00:00.000Z"), e("a", "2026-01-01T00:00:00.000Z"), e("c", "2026-01-03T00:00:00.000Z"), e("b", "2026-01-02T00:00:00.000Z")];
+  assert.deepEqual(counts(mergeOffer(5, two, 5)), { offerCount: 0, leftover: 2 }); // Free and full: nothing to offer
+  assert.deepEqual(counts(mergeOffer(3, four, 5)), { offerCount: 2, leftover: 2 });
+  assert.deepEqual(counts(mergeOffer(5, two, null)), { offerCount: 2, leftover: 0 }); // the pass: everything fits
+  assert.deepEqual(counts(mergeOffer(0, [], 5)), { offerCount: 0, leftover: 0 });
+  // The offered and kept colleges are exactly splitMerge's.
+  const o = mergeOffer(3, four, 5);
+  assert.deepEqual({ insert: slugs(o.insert), keep: slugs(o.keep) }, { insert: ["a", "b"], keep: ["c", "d"] });
 });

@@ -21,3 +21,13 @@ export function splitPasswords<P extends { slot: string }>(keep: readonly { cust
   const kept = new Set(keep.map((e) => collegeSlot(e)).filter((s): s is string => !!s));
   return { movable: passwords.filter((p) => !kept.has(p.slot)), stay: passwords.filter((p) => kept.has(p.slot)) };
 }
+
+/**
+ * What a sign-in can offer from this browser's colleges, worked out again on every account read: only those that fit
+ * the account's plan today (`insert`, `offerCount`). The rest (`keep`, `leftover`) are never offered; My list says
+ * they stay in this browser until a pass makes room.
+ */
+export function mergeOffer<T extends { addedAt: string }>(listLength: number, missing: readonly T[], limit: number | null): { insert: T[]; keep: T[]; offerCount: number; leftover: number } {
+  const { insert, keep } = splitMerge(listLength, missing, limit);
+  return { insert, keep, offerCount: insert.length, leftover: keep.length };
+}
