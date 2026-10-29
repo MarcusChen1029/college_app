@@ -110,6 +110,12 @@ Plan: all US colleges next, then UK/CA/AU.
   Academic; page alerts are caught by a MAIN-world hook (`src/uiuc-main.ts`). Built from the live DOM facts in portal-dom.md §5 but not yet run
   end to end. UT gets the fill assistant (click a box, press a value; plans `web/lib/system-fill.ts`). Live DOM facts:
   `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
+  Activities filler (2026-10-28/29, spec `docs/superpowers/specs/2026-10-28-activities-filler-design.md`; needs a token with activities access, older
+  transcript-only tokens get "Reconnect"): fills Common App Activities / Honors (`src/activities-flow.ts`, plans `web/lib/activities-fill.ts`) and UC's
+  Activities & awards list (`src/uc/activities-run.ts` across page loads, `src/uc/activities.ts` page side, plans `web/lib/uc-activities-fill.ts`), with
+  one shared question / toggle list / report (`src/activities-panel.ts`). Owner's rule: empty page = add all; entries = ask "replace all?", No = pick
+  up to the room (CA 10/5, UC 20). Every save is read back. Never presses UC's `#no_activities`, Common App's Responsibilities page or any submit.
+  UC was built from portal-dom.md §7; its live run is `extension/TESTING.md` §J (Common App §I).
 - **Payments** (2026-10-29; spec `docs/superpowers/specs/2026-10-29-payments-design.md`, plan `docs/superpowers/plans/2026-10-29-payments.md`): Free = 5 colleges; the only
   paid product is the NT$990 **admission-year pass** (TWD, one payment, ECPay 綠界), valid from its start to July 31 of the entry year the student picks. The plan is decided by
   the server only. Edge Function `payments` (verify_jwt off; routes `/status`, `/checkout`, `/pay-links...`, `/notify`; code in `supabase/functions/_shared/payments-*.ts` + `ecpay.ts`,
@@ -147,8 +153,8 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0046**; 0044-0045 are the payments migrations (see **Payments**); 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
-  Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0046**; 0044 = no default table grants (after it is applied); 0044-0045 are the payments migrations (see **Payments**); 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
+  Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it. Since 0044 the same holds for new tables and sequences: grant what clients need explicitly (and keep RLS on).
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
   `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
   rows or localStorage. AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only

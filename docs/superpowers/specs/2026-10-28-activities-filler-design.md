@@ -152,6 +152,8 @@ Common to all categories: `id`, `category` (award / edprep / extracurricular / c
    entry's name (Common App activity: organization, else description start; honor: title; UC: category + name).
 2. Validate every tracker item against the portal's rules (§3). Items that break a rule are listed with the reason and are not sent;
    items with blank required answers are sent with those boxes left blank (the student finishes them in the portal) and listed.
+   Exception, UC (ruling R17, 2026-10-29): UC refuses Save & continue while a required box is blank, so such an entry is not sent and is
+   listed as "UC requires an answer for: <questions>". The Replace question counts only the items that will be sent.
 
 ### 5.2 The owner's rule for pages with entries
 - Page empty: fill every tracker item in tracker order. No question.
@@ -185,8 +187,8 @@ UC (server forms; research §7):
 ### 5.4 After writing
 - Read back, Common App (my call): before pressing Continue, check every touched control is valid on the page (Angular `ng-invalid`
   class on its form control; out-of-range and over-long values are invalid and would be silently left out of the save) and stop if any is.
-  After Continue has saved and moved on, nothing is dirty, so the panel navigates back to the section (in-app link, e.g.
-  `#tertiaryNavItem7_232`) and compares every field on the page with what was sent. The extension never calls Common App's private API.
+  After Continue has saved and moved on, nothing is dirty, so the panel reloads the section page (a full page load, ruling
+  R19; it then waits until the page has drawn its slots) and compares every field on the page with what was sent. The extension never calls Common App's private API.
 - Read back, UC: the list page's read-only `section-content` per entry. Report any field that did not stick.
 - Report: filled N, skipped/blocked items with reasons, "needs an answer" boxes left blank, entries replaced (names), and for "keep"
   runs which tracker items were not added.

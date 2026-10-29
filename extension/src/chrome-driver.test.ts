@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { buildPlans } from "./runner.ts";
 import { emptyCourse, emptySchool } from "../../web/lib/transcript.ts";
 import type { ContentMessage, ContentResponse } from "./messages.ts";
-import { createDriver, DRIVER_TIMING, navigate, waitForReady, type TabsApi } from "./chrome-driver.ts";
+import { createCaDriver, createDriver, DRIVER_TIMING, navigate, waitForReady, type TabsApi } from "./chrome-driver.ts";
 
 type Listener = (tabId: number, change: { status?: string }) => void;
 
@@ -125,4 +125,39 @@ test("driver turns a content-script error, a missing answer and a dead tab into 
   const dead = createDriver(fakeTabs({ answer: () => new Error("gone") }).tabs, 7, p);
   await assert.rejects(dead.fill("9", "keep"), /stopped responding/);
   await assert.rejects(createDriver(fakeTabs().tabs, 7, p).fill("11", "keep"), /No courses to fill/);
+});
+
+test("activities driver: inspect / fill / read go to the content script, reopen loads the page, path polls ready", async () => {
+  const plan = { page: "activities" as const, slots: [], blocked: [], blanks: [] };
+  const { tabs, sent, updates } = fakeTabs({
+    answer: (m) =>
+      m.type === "caInspect" ? { type: "caInspect", ok: true, existing: ["Team A"] }
+      : m.type === "caFill" ? { type: "caFill", ok: true, result: { filled: 2, blanks: [], firstSlot: 3 } }
+      : m.type === "caRead" ? { type: "caRead", ok: true, rows: [{ "Hours spent per week": "10" }] }
+      : undefined,
+  });
+  const saved = { ...DRIVER_TIMING };
+  DRIVER_TIMING.readyPollMs = 2;
+  try {
+    const driver = createCaDriver(tabs, 7, "activities");
+    assert.deepEqual(await driver.inspect(), ["Team A"]);
+    assert.deepEqual(await driver.fill(plan, "keep", 2), { filled: 2, blanks: [], firstSlot: 3 });
+    const fill = sent.find((m) => m.type === "caFill")!;
+    assert.deepEqual(fill, { type: "caFill", plan, mode: "keep", existing: 2 });
+    await driver.reopen();
+    assert.deepEqual(updates, ["https://apply.commonapp.org/common/7/232"]);
+    assert.deepEqual(await driver.read(), [{ "Hours spent per week": "10" }]);
+    assert.equal(await driver.path(), "/common/13/55");
+    await createCaDriver(tabs, 7, "honors").reopen();
+    assert.equal(updates.at(-1), "https://apply.commonapp.org/common/4/25");
+  } finally {
+    Object.assign(DRIVER_TIMING, saved);
+  }
+});
+
+test("activities driver turns a content-script error and a missing answer into thrown sentences", async () => {
+  const bad = createCaDriver(fakeTabs({ answer: () => ({ type: "caInspect", ok: false, error: "Already filling this page" }) }).tabs, 7, "honors");
+  await assert.rejects(bad.inspect(), /Already filling this page/);
+  const none = createCaDriver(fakeTabs({ answer: () => undefined }).tabs, 7, "honors");
+  await assert.rejects(none.read(), /did not answer/);
 });

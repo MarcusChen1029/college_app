@@ -11,6 +11,7 @@ import { SITE_ORIGINS } from "./sites.ts";
 import { runCsuSchool } from "./csu/run.ts";
 import { onCourseworkPage } from "./csu/fill.ts";
 import { fillUcPage, ucExistingNames, ucPageGrade, ucSummaryNames } from "./uc/fill.ts";
+import { clickUcAdd, deleteUcEntry, fillUcForm, readUcList, ucActivitiesPage } from "./uc/activities.ts";
 import { starsSchools, starsSummaryPath, starsYearPath, starsYears } from "./stars/nav.ts";
 import { ucClassesLink, ucCoursesButtons } from "./uc/nav.ts";
 import { fillUiucArea, uiucPageInfo, uiucSave } from "./uiuc/fill.ts";
@@ -18,6 +19,13 @@ import { pageDialogs } from "./uiuc/dialogs.ts";
 
 const onMyIllini = () => SITE_ORIGINS.uiuc.includes(location.origin);
 let uiucBusy = false;
+/**
+ * UC Activities & awards: set when a press that leaves the page (Delete + Yes, Add, Save & continue) has gone through, and never cleared on
+ * this page: the next page load brings a fresh content script. A second delete / add / fill arriving while the page is still loading is
+ * refused, so Save & continue can never be pressed twice (a duplicate activity). Also set while a delete waits for its popup.
+ */
+let ucActBusy = false;
+const UC_BUSY = "UC is still loading the last step: wait for the page to finish, then run again";
 
 /** A STARS page's HTML, read like opening it (same site, the student's own session). null when STARS sent the sign-in page instead. */
 async function starsHtml(path: string): Promise<string | null> {
@@ -102,6 +110,71 @@ ${document.body.innerText.slice(0, 4000)}`, errors: starsErrors(document) });
         (e: unknown) => sendResponse({ type: "ucFill", ok: false, error: e instanceof Error ? e.message : String(e) }),
       );
       return true; // async response
+    case "ucActList":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "list") {
+        sendResponse({ type: "ucActList", ok: false, error: "Open UC's Activities & awards list first" });
+        return false;
+      }
+      sendResponse({ type: "ucActList", ok: true, items: readUcList(document) });
+      return false;
+    case "ucActDelete":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "list") {
+        sendResponse({ type: "ucActDelete", ok: false, error: "Open UC's Activities & awards list first" });
+        return false;
+      }
+      if (ucActBusy) {
+        sendResponse({ type: "ucActDelete", ok: false, error: UC_BUSY });
+        return false;
+      }
+      ucActBusy = true;
+      deleteUcEntry(document, msg.activityId).then(
+        () => sendResponse({ type: "ucActDelete", ok: true }), // Yes was pressed: stay busy until the page reloads
+        (e: unknown) => {
+          ucActBusy = false; // nothing was confirmed: no load is coming
+          sendResponse({ type: "ucActDelete", ok: false, error: e instanceof Error ? e.message : String(e) });
+        },
+      );
+      return true; // async response
+    case "ucActAdd":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "list") {
+        sendResponse({ type: "ucActAdd", ok: false, error: "Open UC's Activities & awards list first" });
+        return false;
+      }
+      if (ucActBusy) {
+        sendResponse({ type: "ucActAdd", ok: false, error: UC_BUSY });
+        return false;
+      }
+      if (!document.getElementById("add_activity")) {
+        sendResponse({ type: "ucActAdd", ok: false, error: "UC's Add an activity or award button is not on the page" });
+        return false;
+      }
+      ucActBusy = true;
+      sendResponse({ type: "ucActAdd", ok: true });
+      setTimeout(() => clickUcAdd(document), 50); // after the answer: the click leaves the page
+      return false;
+    case "ucActFill":
+      if (!SITE_ORIGINS.uc.includes(location.origin) || ucActivitiesPage(document) !== "form") {
+        sendResponse({ type: "ucActFill", ok: false, error: "Open UC's add-activity page first (Add an activity or award)" });
+        return false;
+      }
+      if (ucActBusy) {
+        sendResponse({ type: "ucActFill", ok: false, error: UC_BUSY });
+        return false;
+      }
+      {
+        // fillUcForm presses Save & continue itself; the answer goes out in the same turn, before the page can leave. Once #save was
+        // pressed this page stays busy, even when UC showed errors: the run stops then, and a new run starts from the list (a new load).
+        let pressed = false;
+        const mark = () => (pressed = true);
+        const save = document.getElementById("save");
+        save?.addEventListener("click", mark, { capture: true, once: true });
+        ucActBusy = true;
+        const result = fillUcForm(document, msg.plan);
+        save?.removeEventListener("click", mark, { capture: true });
+        ucActBusy = pressed || result.ok;
+        sendResponse({ type: "ucActFill", ...result });
+      }
+      return false;
     case "starsSchools":
       starsHtml("/srt/EnterSchools.aspx").then(
         (html) => sendResponse(html == null ? { type: "starsSchools", ok: false, error: "STARS signed you out: sign in again, then run again" } : { type: "starsSchools", ok: true, schools: starsSchools(html) }),

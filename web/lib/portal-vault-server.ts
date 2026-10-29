@@ -97,7 +97,7 @@ const reader = (cfg: VaultConfig, userId: string): VaultReader => ({
 // ── the store ──
 
 async function vaultRows(cfg: VaultConfig, userId: string): Promise<VaultRow[]> {
-  const { data, error } = await admin(cfg).from(TABLE).select("slot, sealed").eq("user_id", userId).order("slot").range(0, MAX_SLOTS_PER_USER - 1);
+  const { data, error } = await admin(cfg).from(TABLE).select("slot, sealed, updated_at").eq("user_id", userId).order("slot").range(0, MAX_SLOTS_PER_USER - 1);
   if (error) throw new Error("portal_passwords read failed");
   return (data ?? []) as VaultRow[];
 }
@@ -142,17 +142,28 @@ async function deletePassword(cfg: VaultConfig, userId: string, slot: string) {
   await stripLeftovers(cfg, userId, slot);
 }
 
-/** Seals and writes (replacing a row of ours that doesn't open), then reads the rows back for verification. */
-async function writeAndReadBack(cfg: VaultConfig, userId: string, rows: readonly SlotPassword[]): Promise<Map<string, string>> {
+/**
+ * Seals and writes, then reads the rows back for verification. A new slot is only inserted if it is still empty, and a
+ * row of ours that doesn't open is only replaced if it still holds exactly what was read: a password another tab set in
+ * the meantime is never overwritten (its read-back then won't match this value, so the caller keeps its copy).
+ */
+async function writeAndReadBack(cfg: VaultConfig, userId: string, rows: readonly SlotPassword[], existing: readonly VaultRow[]): Promise<Map<string, string>> {
   if (!rows.length) return new Map();
+  const db = admin(cfg);
   const now = new Date().toISOString();
-  const { error } = await admin(cfg)
-    .from(TABLE)
-    .upsert(
-      rows.map((r) => ({ user_id: userId, slot: r.slot, sealed: sealPassword(cfg.key, userId, r.slot, r.password), updated_at: now })),
-      { onConflict: "user_id,slot" },
-    );
-  if (error) return new Map(); // nothing verified: every value stays where it is
+  const was = new Map(existing.map((r) => [r.slot, r.updated_at ?? ""]));
+  const row = (r: SlotPassword) => ({ user_id: userId, slot: r.slot, sealed: sealPassword(cfg.key, userId, r.slot, r.password), updated_at: now });
+  const fresh = rows.filter((r) => !was.has(r.slot));
+  if (fresh.length) {
+    const { error } = await db.from(TABLE).upsert(fresh.map(row), { onConflict: "user_id,slot", ignoreDuplicates: true });
+    if (error) return new Map(); // nothing verified: every value stays where it is
+  }
+  for (const r of rows.filter((x) => was.has(x.slot))) {
+    const { sealed, updated_at } = row(r);
+    // Unchanged since it was read = same updated_at (a filter on the timestamp, never on the sealed value: filters are URLs).
+    const { error } = await db.from(TABLE).update({ sealed, updated_at }).eq("user_id", userId).eq("slot", r.slot).eq("updated_at", was.get(r.slot)!);
+    if (error) return new Map();
+  }
   return new Map((await vaultRows(cfg, userId)).map((r) => [r.slot, r.sealed]));
 }
 
@@ -215,7 +226,7 @@ async function migratePlaintext(cfg: VaultConfig, userId: string): Promise<{ mig
   const r = reader(cfg, userId);
   const existing = await vaultRows(cfg, userId);
   const plan = planMigration(plain, existing, r, MAX_SLOTS_PER_USER - existing.length);
-  const verified = verifiedCopies(plan.seal, await writeAndReadBack(cfg, userId, sealOnce(plan.seal)), r.open);
+  const verified = verifiedCopies(plan.seal, await writeAndReadBack(cfg, userId, sealOnce(plan.seal), existing), r.open);
   const removed = await removePlaintext(cfg, userId, [...plan.keep, ...verified], portals);
   const kept = plan.keep.filter((v) => removed.has(v)).length;
   return { migrated: removed.size - kept, kept, failed: plain.length - removed.size };
@@ -230,7 +241,7 @@ async function importPasswords(cfg: VaultConfig, userId: string, entries: readon
   const r = reader(cfg, userId);
   const existing = await vaultRows(cfg, userId);
   const plan = planImport(entries, existing, r, MAX_SLOTS_PER_USER - existing.length);
-  const verified = new Set(verifiedCopies(plan.seal, await writeAndReadBack(cfg, userId, plan.seal), r.open));
+  const verified = new Set(verifiedCopies(plan.seal, await writeAndReadBack(cfg, userId, plan.seal, existing), r.open));
   const failed = [...plan.failed, ...plan.seal.filter((e) => !verified.has(e))].map((e) => e.slot);
   return { imported: verified.size, kept: plan.keep.length, failed };
 }
