@@ -42,7 +42,7 @@ Plan: all US colleges next, then UK/CA/AU.
   - Roles (migration 0020, plan in `docs/superpowers/specs/2026-10-24-teacher-counselor-design.md`): each account is a `student` or a `teacher`,
     chosen once at `/welcome` via RPC `set_my_role` (tables `user_roles`, `teacher_profiles`; existing users were backfilled as students).
     `student-store.ts` loads the role first and only students load/merge list data. `RoleGate` redirects, `SiteNav` swaps the nav, `/teacher` is the
-    teacher home. Teachers must never get SELECT on student tables (portal passwords live in them); later phases read through SECURITY DEFINER RPCs.
+    teacher home. Teachers must never get SELECT on student tables (saved-login links and usernames live in them); later phases read through SECURITY DEFINER RPCs.
   - Linking (migration 0021): teachers make `classes` and `join_codes` (class code, or one personal "individual" code); a student redeems a code via
     `preview_code`/`redeem_code` (failures are returned as `{ok:false}`, not raised, so the 10/hour rate limit sticks) which creates a `teacher_links`
     row (the access grant later phases check) and a `class_members` row. All writes go through SECURITY DEFINER RPCs; client wrappers are in `web/lib/links-api.ts`.
@@ -141,11 +141,15 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0045**; 0044 = no default table grants (after it is applied); 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0046**; 0045 = browser-locked portal password vaults (branch feat/e2e-portal-vault, apply at ship); 0044 = no default table grants (after it is applied); 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
   Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it. Since 0044 the same holds for new tables and sequences: grant what clients need explicitly (and keep RLS on).
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
-  `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
-  rows or localStorage. AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
+  `portal_passwords` (service-role only, served by `/api/portal-passwords`), never in profile/list rows or localStorage. Since 2026-10-29 they are
+  **locked in the student's browser** with their vault passphrase (plus a recovery code; `web/lib/vault-*.ts`; `portal_passwords` holds only "e1."
+  ciphertext, `portal_vaults` the wrapped keys and salts; migration 0045; design `docs/superpowers/specs/2026-10-29-e2e-portal-vault-design.md`), so the
+  server, the database and the site owner can't open them. Old server-sealed "v1." rows (`web/lib/portal-vault.ts`, key `PORTAL_ENCRYPTION_KEY`) move into
+  the vault when that student next unlocks (`handover`); a follow-up then removes that code and key (`DEPLOY.md`). The Security and Privacy pages state
+  the limits (offline guessing of weak passphrases; a changed version of the site's own code). AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
   the views `ai_student_profiles`/`ai_student_colleges` (no portals, portal_url/portal_username, reminder or essay columns) and transcript_*;
   after 0043 never the base student_profiles/student_colleges, so saved-login usernames and links are out of their reach too.
   Every RPC, the password route, the Google routes and account deletion refuse them. Every page

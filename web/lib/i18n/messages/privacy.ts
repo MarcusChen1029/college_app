@@ -13,7 +13,7 @@ export const en = {
   "privacy.summary.noSale": "We don’t sell your data, show ads, or use analytics or tracking tools.",
   "privacy.summary.control":
     "Apart from us (we can reach the database to run the service) and the service providers listed below, your records are visible only to you and the people and apps you choose: a teacher whose code you enter, someone you send a share link, an extension or AI app you connect.",
-  "privacy.summary.logins": "Saved application-system passwords are <b>not</b> encrypted with a separate key, and an AI app you connect could reach them; read [Security](/security#logins) before saving them.",
+  "privacy.summary.logins": "Saved application-system passwords are locked in your browser with a vault passphrase only you know, so we, teachers and an AI app you connect can’t open them; read the limits in [Security](/security#logins) before saving them.",
   "privacy.summary.delete": "You can change or delete most things yourself. To delete your whole account, [contact us](/contact).",
 
   // PDPA Art. 8: collector, purposes (codes 090, 135, 136), categories, period/region/recipients, rights, effect of not providing.
@@ -31,9 +31,11 @@ export const en = {
   // student_colleges: institution_id, custom, plan_key, status, checklist (incl. essay_list), notes, aid_offer_usd (0001, 0017).
   "privacy.collect.list":
     "<b>Your college list.</b> The colleges you add (including ones you type in yourself), your application plan, status and decisions, checklist, essay titles, links and progress, your private notes and any financial-aid offers you record.",
-  // student_colleges.portal_url/_username/_password (0007); student_profiles.portals {systems, campuses, custom, progress} (0013). Plain text.
+  // Address + username: student_colleges.portal_url/_username (0007); student_profiles.portals {systems, campuses, custom, progress} (0013), stored as typed (not locked).
+  // Password: portal_passwords (0040) holds only browser-locked "e1." values (0045); portal_vaults (0045) holds the vault's wrapped keys,
+  // salts and check values. No passphrase, recovery code or readable password reaches the server.
   "privacy.collect.logins":
-    "<b>Application-system logins</b>, only if you save them: the website address, username and password for systems such as the Common App, UC or a college portal, and your done / not done marks. They are stored as you type them, without separate encryption ([details](/security#logins)).",
+    "<b>Application-system logins</b>, only if you save them: the website address and username for systems such as the Common App, UC or a college portal, your done / not done marks, and the password. The address and username are stored as you type them. The password is stored only in locked form: your browser locks it with your vault passphrase before it is saved, and we keep that locked value together with the vault’s wrapped keys (copies of the vault key, each locked by your passphrase or your recovery code) and salts. We never receive your passphrase, your recovery code or a readable password ([details](/security#logins)).",
   // transcript_schools (incl. school_code 0034), transcript_courses (0030).
   "privacy.collect.transcript":
     "<b>Transcript.</b> Your schools (name, country, school code, printed GPA, class rank, notes) and courses (year, level, subject, grades as printed, credits, notes).",
@@ -102,7 +104,7 @@ export const en = {
   "privacy.ai.connect":
     "<b>Connect AI</b> lets an AI app you approve, such as ChatGPT or Claude, use Trakur tools. They can read your profile, scores, college list (including your private notes on colleges, essay titles and links), deadlines, activities, résumé details (including email, phone and location) and transcript. They can change your profile and scores, add colleges and change their plan, status, notes and checklist, add and edit essays, change your résumé details, and add, change or <b>permanently delete</b> activities and transcript courses. They can’t remove a college or delete an essay.",
   "privacy.ai.token":
-    "Trakur’s tools never read your saved logins, but the app’s token works like your own sign-in, so a misbehaving app could reach other data, including saved logins ([details](/security#ai)). Data the tools return goes to that AI company and is handled under its privacy policy. Disconnect an app on the [Connect AI](/connect-ai) page, or [ask us](/contact) to.",
+    "Trakur’s tools never read your saved logins, but the app’s token works like your own sign-in, so a misbehaving app could reach other data, including the links and usernames of saved logins. It can’t open saved passwords, which are locked with a passphrase it never has ([details](/security#ai)). Data the tools return goes to that AI company and is handled under its privacy policy. Disconnect an app on the [Connect AI](/connect-ai) page, or [ask us](/contact) to.",
 
   // Supabase ap-northeast-1; Vercel region not set in repo; Resend; Google.
   "privacy.storage.title": "Where your data is kept",
@@ -111,7 +113,7 @@ export const en = {
   // localStorage college-tracker:v1 (lib/student-store.ts), sb-…-auth-token (supabase-js default), interest-quiz-v1 (lib/interest-quiz.ts),
   // cookie lang (lib/i18n/core.ts), cookie gdocs_oauth (app/api/google/start/route.ts).
   "privacy.storage.p2":
-    "Some data stays in your browser. While you’re signed out, everything you enter (including logins) is saved only in this browser’s local storage, and moves to your account when you sign in. The browser also keeps your sign-in session, your interest-quiz answers (never sent to us), a language cookie and, for a few minutes while you connect Google Docs, a security cookie. If you use the Chrome extension, its key is kept in the extension’s own storage. There are no advertising or analytics cookies.",
+    "Some data stays in your browser. While you’re signed out, everything you enter (including login links and usernames, but not passwords) is saved only in this browser’s local storage, and moves to your account when you sign in. The browser also keeps your sign-in session, your interest-quiz answers (never sent to us), a language cookie and, for a few minutes while you connect Google Docs, a security cookie. If you use the Chrome extension, its key is kept in the extension’s own storage. There are no advertising or analytics cookies.",
 
   "privacy.retention.title": "How long we keep it",
   "privacy.retention.p1":
@@ -162,7 +164,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.summary.noAccount": "不需要帳號就能瀏覽學校資料。其他所有資料都由你決定要不要輸入。",
   "privacy.summary.noSale": "我們不販售你的資料、不放廣告，也不使用任何分析或追蹤工具。",
   "privacy.summary.control": "除了我們（為了營運服務可以存取資料庫）和下方列出的服務供應商之外，你的資料只有你自己，以及你選擇的人和應用程式看得到：你輸入其代碼的老師、你傳送分享連結的對象，以及你連接的擴充功能或 AI 應用程式。",
-  "privacy.summary.logins": "儲存的申請系統密碼<b>沒有</b>用另外的金鑰加密，你連接的 AI 應用程式也可能存取到；儲存之前請先閱讀[資料安全](/security#logins)。",
+  "privacy.summary.logins": "儲存的申請系統密碼會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住，所以我們、老師和你連接的 AI 應用程式都無法開啟；儲存之前請先閱讀[資料安全](/security#logins)中說明的限制。",
   "privacy.summary.delete": "大部分資料你可以自己修改或刪除。如要刪除整個帳號，請[聯絡我們](/contact)。",
 
   "privacy.collect.title": "我們蒐集的資料",
@@ -174,7 +176,7 @@ export const zhTW: Translation<typeof en> = {
     "<b>個人檔案與成績。</b>GPA、SAT、ACT 與英文檢定成績（含各科分數與考試日期）、是否為國際生、目標地區、想讀的領域、有興趣的學校、你選的方案，以及提醒信設定。",
   "privacy.collect.list": "<b>學校清單。</b>你加入的學校（包括你自行輸入的學校）、申請方案、申請狀態與結果、待辦清單、文書標題、連結與進度、你的私人筆記，以及你記錄的財務補助金額。",
   "privacy.collect.logins":
-    "<b>申請系統登入資料</b>（僅限你選擇儲存時）：Common App、UC 或學校申請入口等系統的網址、帳號與密碼，以及你標記的完成／未完成。這些資料照你輸入的內容儲存，沒有另外加密（[詳細說明](/security#logins)）。",
+    "<b>申請系統登入資料</b>（僅限你選擇儲存時）：Common App、UC 或學校申請入口等系統的網址與使用者名稱、你標記的完成／未完成，以及密碼。網址與使用者名稱照你輸入的內容儲存；密碼只以上鎖後的形式儲存：你的瀏覽器會先用你的保險箱主密碼把它鎖住才儲存，我們保存的是這個上鎖後的值，以及保險箱的包裹金鑰（保險箱金鑰的副本，分別被你的主密碼和復原碼鎖住）與隨機鹽值。我們不會收到你的主密碼、復原碼或可讀取的密碼（[詳細說明](/security#logins)）。",
   "privacy.collect.transcript": "<b>成績單。</b>你的學校（校名、國家、學校代碼、成績單上的 GPA、班級排名、備註）與課程（年度、程度、科目、成績單上的原始成績、學分、備註）。",
   "privacy.collect.writing":
     "<b>課外活動、文書與履歷。</b>你的課外活動與獎項（描述、職位、時數、年級）、文書進度與你的 Google 文件連結（我們不儲存文書內文），以及你輸入的履歷資料（姓名、電子郵件、電話、所在地、學校、畢業年份）。",
@@ -220,12 +222,12 @@ export const zhTW: Translation<typeof en> = {
   "privacy.ai.connect":
     "<b>連接 AI</b> 讓你核准的 AI 應用程式（例如 ChatGPT 或 Claude）使用 Trakur 的工具。它們可以讀取你的個人檔案、成績、學校清單（包括你對學校的私人筆記、文書標題與連結）、截止日期、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單。它們可以修改你的個人檔案與成績、加入學校並修改其申請方案、狀態、筆記與待辦清單、新增與編輯文書、修改履歷資料，以及新增、修改或<b>永久刪除</b>課外活動與成績單課程。它們無法移除學校或刪除文書。",
   "privacy.ai.token":
-    "Trakur 的工具絕不會讀取你儲存的登入資料，但該應用程式拿到的權杖和你自己的登入狀態效力相同，所以行為不當的應用程式可能存取到其他資料，包括已儲存的登入資料（[詳細說明](/security#ai)）。工具回傳的資料會送到該 AI 公司，並依其隱私權政策處理。你可以在[連接 AI](/connect-ai) 頁面中斷連結，或[請我們](/contact)處理。",
+    "Trakur 的工具絕不會讀取你儲存的登入資料，但該應用程式拿到的權杖和你自己的登入狀態效力相同，所以行為不當的應用程式可能存取到其他資料，包括已儲存登入資料的連結與使用者名稱。它無法開啟已儲存的密碼，因為這些密碼是用它拿不到的主密碼鎖住的（[詳細說明](/security#ai)）。工具回傳的資料會送到該 AI 公司，並依其隱私權政策處理。你可以在[連接 AI](/connect-ai) 頁面中斷連結，或[請我們](/contact)處理。",
 
   "privacy.storage.title": "資料存放地點",
   "privacy.storage.p1": "你的帳號資料存放在 Supabase 位於日本東京的資料中心。我們的其他服務供應商（Vercel、Resend 與 Google）可能在其他國家（包括美國）處理這些資料。使用 Trakur 即表示你同意資料傳輸到台灣以外的地區。",
   "privacy.storage.p2":
-    "有些資料會留在你的瀏覽器裡。未登入時，你輸入的所有內容（包括登入資料）只會存在這個瀏覽器的本機儲存空間，登入後才會移到你的帳號。瀏覽器也會保存你的登入狀態、興趣測驗的答案（不會傳給我們）、一個語言設定 cookie，以及連接 Google 文件時短暫存在幾分鐘的安全 cookie。如果你使用 Chrome 擴充功能，它的金鑰會存在擴充功能自己的儲存空間。我們沒有任何廣告或分析用的 cookie。",
+    "有些資料會留在你的瀏覽器裡。未登入時，你輸入的所有內容（包括登入資料的連結與使用者名稱，但不包括密碼）只會存在這個瀏覽器的本機儲存空間，登入後才會移到你的帳號。瀏覽器也會保存你的登入狀態、興趣測驗的答案（不會傳給我們）、一個語言設定 cookie，以及連接 Google 文件時短暫存在幾分鐘的安全 cookie。如果你使用 Chrome 擴充功能，它的金鑰會存在擴充功能自己的儲存空間。我們沒有任何廣告或分析用的 cookie。",
 
   "privacy.retention.title": "保存期間",
   "privacy.retention.p1": "你的帳號存在期間，我們會保存你的資料。你在網站上刪除的內容，會從我們的資料庫刪除。帳號被刪除時，所有相關資料都會一併刪除，包括學校清單、成績單、登入資料、連結與金鑰。",

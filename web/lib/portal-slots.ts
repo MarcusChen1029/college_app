@@ -83,9 +83,9 @@ export function withoutPasswords(portals: PortalData | null | undefined): Portal
 
 /**
  * `next` (a portals value about to be written, without passwords) plus the password keys `stored` (the value last
- * read from the database) still holds for the same logins. Until the server has moved a student's plaintext into the
- * encrypted store, a profile save must not wipe it: only the server's verified migration removes a stored password.
- * A login the student removed takes its password with it.
+ * read from the database) still holds for the same logins. The old plaintext keys in the profile row were already
+ * removed from the live database and the server no longer migrates them, so on current data this adds nothing; it only
+ * keeps a profile save from wiping a leftover key. A login the student removed takes its password with it.
  */
 export function keepStoredPasswords(next: PortalData, stored: unknown): PortalData {
   if (!isObj(stored)) return next;
