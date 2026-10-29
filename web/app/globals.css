@@ -306,181 +306,173 @@ html:has([data-jump-nav]) {
 }
 
 /* ---- Home page: pieces of printed stationery (app/page.tsx, components/home/*) ---- */
+/* In the components layer, so a Tailwind utility on the same element (absolute, rotate...) always wins. */
+@layer components {
 
-/* Campus photographs in two inks. On navy: the photo's light and shade in navy, dimmed behind white type.
-   On paper (.plate): grey photo printed onto sky blue. */
-.duotone-dim {
-  filter: grayscale(1) contrast(1.15);
-  mix-blend-mode: luminosity;
-  opacity: 0.42;
-}
-.plate {
-  background: var(--color-blue-300);
-  isolation: isolate;
-  overflow: hidden;
-}
-.plate img {
-  filter: grayscale(1) contrast(1.08) brightness(1.06);
-  mix-blend-mode: multiply;
-}
-
-/* The ticket: a body and a tear-off stub, notched where they meet, perforated between. */
-.ticket-body {
-  mask:
-    radial-gradient(circle 16px at 0 100%, #0000 98%, #000) left / 51% 100% no-repeat,
-    radial-gradient(circle 16px at 100% 100%, #0000 98%, #000) right / 51% 100% no-repeat;
-}
-.ticket-stub {
-  border-top: 4px dotted rgb(18 48 74 / 0.3);
-  mask:
-    radial-gradient(circle 16px at 0 0, #0000 98%, #000) left / 51% 100% no-repeat,
-    radial-gradient(circle 16px at 100% 0, #0000 98%, #000) right / 51% 100% no-repeat;
-}
-
-/* A sheet with scalloped top and bottom edges. */
-.paper-scallop {
-  --r: 11px;
-  mask:
-    radial-gradient(var(--r) at 50% 0, #0000 calc(100% - 0.5px), #000) top / calc(2 * var(--r)) 51% repeat-x,
-    radial-gradient(var(--r) at 50% 100%, #0000 calc(100% - 0.5px), #000) bottom / calc(2 * var(--r)) 51% repeat-x;
-}
-
-/* Dot leader between a name and its value. */
-.leader {
-  border-bottom: 4px dotted rgb(18 48 74 / 0.28);
-  translate: 0 -0.35em;
-}
-
-/* The tear line across a receipt. */
-.tear {
-  border-top: 4px dotted rgb(18 48 74 / 0.28);
-}
-
-/* A postage stamp: perforated edges. */
-.stamp {
-  rotate: 4deg;
-  padding: 5px;
-  background: var(--color-zinc-50);
-  mask:
-    radial-gradient(circle 3.5px at 50% 0, #0000 98%, #000) top / 10px 51% repeat-x,
-    radial-gradient(circle 3.5px at 50% 100%, #0000 98%, #000) bottom / 10px 51% repeat-x;
-}
-.stamp img {
-  filter: grayscale(1) contrast(1.08);
-}
-
-/* Receipts standing along the bottom of their section; the section cuts them off. */
-@media (min-width: 1024px) {
-  .slips {
-    margin-bottom: -5rem;
+  /* Every campus photograph in one two-ink treatment: shadows in navy ink, light in sky blue. */
+  .duo {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--color-ink);
   }
+  .duo img {
+    filter: grayscale(1) contrast(1.12);
+    mix-blend-mode: screen;
+  }
+  .duo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-blue-200);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+
+  /* The ticket: a body and a tear-off stub, notched where they meet, perforated between. */
+  .ticket-body {
+    mask:
+      radial-gradient(circle 16px at 0 100%, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 16px at 100% 100%, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+  .ticket-stub {
+    border-top: 4px dotted rgb(18 48 74 / 0.3);
+    mask:
+      radial-gradient(circle 16px at 0 0, #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 16px at 100% 0, #0000 98%, #000) right / 51% 100% no-repeat;
+  }
+
+  /* A sheet with scalloped top and bottom edges. */
+  .paper-scallop {
+    --r: 11px;
+    mask:
+      radial-gradient(var(--r) at 50% 0, #0000 calc(100% - 0.5px), #000) top / calc(2 * var(--r)) 51% repeat-x,
+      radial-gradient(var(--r) at 50% 100%, #0000 calc(100% - 0.5px), #000) bottom / calc(2 * var(--r)) 51% repeat-x;
+  }
+
+  /* A receipt torn off along its bottom edge. */
+  .torn {
+    mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 16px 100%;
+  }
+
+  /* Dot leader between a name and its value. */
+  .leader {
+    border-bottom: 4px dotted rgb(18 48 74 / 0.28);
+    translate: 0 -0.35em;
+  }
+
+  /* The tear line across a receipt. */
+  .tear {
+    border-top: 4px dotted rgb(18 48 74 / 0.28);
+  }
+
+  /* A postage stamp: perforated edges. */
+  .stamp {
+    rotate: 4deg;
+    padding: 5px;
+    background: var(--color-zinc-50);
+    mask:
+      radial-gradient(circle 3.5px at 50% 0, #0000 98%, #000) top / 10px 51% repeat-x,
+      radial-gradient(circle 3.5px at 50% 100%, #0000 98%, #000) bottom / 10px 51% repeat-x;
+  }
+
   .slip {
-    height: calc(var(--h, 420px) + 5rem);
+    transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-}
-.slip {
-  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.slip:hover,
-.slip:focus-within {
-  transform: translateY(-10px);
-}
+  .slip:hover,
+  .slip:focus-within {
+    transform: translateY(-10px);
+  }
 
-.names-section {
-  height: 1180px;
-}
-.names-card {
-  rotate: -1.2deg;
-}
-.reply-card {
-  rotate: 2deg;
-}
-@media (max-width: 639px) {
-  .names-section {
-    height: 1100px;
-  }
-  .names-card {
-    rotate: -0.8deg;
+  @media (min-width: 1024px) {
+    .names-card {
+      rotate: -0.6deg;
+    }
   }
   .reply-card {
-    rotate: 1deg;
+    rotate: 2deg;
   }
-}
+  @media (max-width: 639px) {
+    .reply-card {
+      rotate: 1deg;
+    }
+  }
 
-.home-range {
-  height: 2.75rem;
-  accent-color: var(--color-ink);
-  cursor: pointer;
-}
+  .home-range {
+    height: 2.75rem;
+    accent-color: var(--color-ink);
+    cursor: pointer;
+  }
 
-/* Motion: the ticket rises, its rows follow; the photo settles; numbers roll; sections enter as they arrive. */
-@keyframes rise {
-  from {
-    opacity: 0;
-    translate: 0 28px;
+  /* Motion: the ticket rises, its rows follow; the campus settles; numbers roll; sections enter as they arrive. */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 28px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
   }
-  to {
-    opacity: 1;
-    translate: 0 0;
+  @keyframes settle {
+    from {
+      scale: 1.12;
+    }
+    to {
+      scale: 1;
+    }
   }
-}
-@keyframes settle {
-  from {
-    scale: 1.12;
+  @keyframes roll {
+    from {
+      opacity: 0;
+      translate: 0 45%;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
   }
-  to {
-    scale: 1;
+  .ticket-in {
+    animation: rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 100ms both;
   }
-}
-@keyframes roll {
-  from {
-    opacity: 0;
-    translate: 0 45%;
+  .timetable-row {
+    animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(450ms + var(--i, 0) * 90ms);
   }
-  to {
-    opacity: 1;
-    translate: 0 0;
+  .hero-photo img {
+    animation: settle 16s cubic-bezier(0.2, 0.6, 0.3, 1) both;
   }
-}
-.ticket-in {
-  animation: rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 100ms both;
-}
-.timetable-row {
-  animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: calc(450ms + var(--i, 0) * 90ms);
-}
-.hero-drift {
-  animation: settle 16s cubic-bezier(0.2, 0.6, 0.3, 1) both;
-}
-.roll {
-  display: inline-block;
-  animation: roll 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-.reveal-ready [data-reveal] {
-  opacity: 0;
-  translate: 0 32px;
-  transition:
-    opacity 800ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    translate 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  transition-delay: calc(var(--i, 0) * 80ms);
-}
-.reveal-ready [data-reveal][data-in] {
-  opacity: 1;
-  translate: 0 0;
-}
-@media (prefers-reduced-motion: reduce) {
-  .ticket-in,
-  .timetable-row,
-  .hero-drift,
   .roll {
-    animation: none;
+    display: inline-block;
+    animation: roll 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
   .reveal-ready [data-reveal] {
-    translate: none;
-    transition: opacity 300ms linear;
+    opacity: 0;
+    translate: 0 32px;
+    transition:
+      opacity 800ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      translate 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
   }
-  .slip {
-    transition: none;
+  .reveal-ready [data-reveal][data-in] {
+    opacity: 1;
+    translate: 0 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticket-in,
+    .timetable-row,
+    .hero-photo img,
+    .roll {
+      animation: none;
+    }
+    .reveal-ready [data-reveal] {
+      translate: none;
+      transition: opacity 300ms linear;
+    }
+    .slip {
+      transition: none;
+    }
   }
 }
 

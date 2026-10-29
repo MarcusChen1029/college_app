@@ -60,4 +60,5 @@ export const CAMPUS = {
     "https://creativecommons.org/licenses/by-sa/4.0",
     "Columbia_University_New_York_November_2016_002.jpg",
   ),
+  princeton: photo("princeton.jpg", 1200, 800, "Nassau Hall, Princeton", "Smallbones", "CC0 1.0", "https://creativecommons.org/publicdomain/zero/1.0/", "Nassau_Hall_Princeton.JPG"),
 } as const satisfies Record<string, CampusPhoto>;

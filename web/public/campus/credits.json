@@ -110,5 +110,19 @@
     "focus": "left of centre (Sather Tower) with Doe Library on the right, wide lawn and sky. Sather Tower over Memorial Glade with streaked sky and an empty lawn; no people.",
     "credit_line": "\"Sather Tower from Memorial Glade\" by Coolcaesar, CC BY-SA 4.0, via Wikimedia Commons",
     "changes": "resized, recompressed"
+  },
+  {
+    "file": "princeton.jpg",
+    "college_slug_guess": "princeton",
+    "title": "Nassau Hall Princeton",
+    "creator": "Smallbones",
+    "licence": "CC0",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Nassau_Hall_Princeton.JPG",
+    "width": 1200,
+    "height": 800,
+    "focus": "centre (cupola and the arched entrance sit on the vertical axis at about 49% across, so a 3:4 centre crop keeps both). Front view of Nassau Hall from the paved path on a bare-tree winter afternoon; ivy on the brownstone facade; no people.",
+    "credit_line": "\"Nassau Hall Princeton\" by Smallbones, CC0, via Wikimedia Commons",
+    "changes": "resized, recompressed"
   }
 ]

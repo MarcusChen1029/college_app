@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { Wave } from "@/components/Doodles";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { LocalMergeDialogHost } from "@/components/LocalMergeDialog";
 import { RoleGate } from "@/components/RoleGate";
@@ -117,21 +116,31 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
           children
         )}
       </main>
-      <footer className="relative mt-0 print:hidden bg-zinc-100 pb-6 pt-2 text-center text-[13px] text-zinc-600">
-        <Wave className="absolute -top-[39px] left-0 h-10 w-full" fill="#e9f2fa" />
-        <nav aria-label={t("legal.footer.label")} className="mx-auto max-w-2xl px-4 pt-6">
-          {/* Phones: two even rows of three; wider screens: one centered row. */}
-          <ul className="grid grid-cols-3 gap-y-2 text-center text-sm font-medium text-zinc-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-6">
-            {FOOTER_LINKS.map(([href, key]) => (
-              <li key={href}>
-                <Link href={href} className="hover:text-zinc-900 hover:underline underline-offset-4">
-                  {t(key)}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <p className="mx-auto max-w-2xl px-4 pt-4">{t("footer.disclaimer")}</p>
+      {/* The close of every page: links and the data note, then the name across the full width. */}
+      <footer className="overflow-hidden bg-blue-100 text-ink print:hidden">
+        <div className="mx-auto w-full max-w-7xl px-4 pt-14 sm:px-8 sm:pt-20">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+            <p className="max-w-md text-base leading-relaxed">{t("footer.disclaimer")}</p>
+            <nav aria-label={t("legal.footer.label")}>
+              <ul className="grid grid-cols-3 gap-x-6 gap-y-3 text-base font-semibold sm:flex sm:flex-wrap sm:justify-end">
+                {FOOTER_LINKS.map(([href, key]) => (
+                  <li key={href}>
+                    <Link href={href} className="underline-offset-4 hover:underline">
+                      {t(key)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          {/* The name and what it means, set like the home page's title. */}
+          <p
+            aria-hidden
+            className="-mb-[0.14em] mt-14 select-none font-display text-[clamp(3.75rem,18vw,5.5rem)] font-extrabold leading-[0.86] tracking-[-0.045em] sm:mt-20 sm:flex sm:justify-between sm:text-[clamp(4rem,8.4vw,8.5rem)]"
+          >
+            <span>Track</span> <span>ur</span> <span className="max-sm:block">college</span>
+          </p>
+        </div>
       </footer>
     </I18nProvider>
   );
