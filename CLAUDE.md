@@ -110,6 +110,18 @@ Plan: all US colleges next, then UK/CA/AU.
   Academic; page alerts are caught by a MAIN-world hook (`src/uiuc-main.ts`). Built from the live DOM facts in portal-dom.md §5 but not yet run
   end to end. UT gets the fill assistant (click a box, press a value; plans `web/lib/system-fill.ts`). Live DOM facts:
   `docs/superpowers/research/2026-10-27-portal-dom.md`. Portals sign out after ~15-20 min idle (UC also on a second tab); the agent cannot sign in.
+- **Payments** (2026-10-29; spec `docs/superpowers/specs/2026-10-29-payments-design.md`, plan `docs/superpowers/plans/2026-10-29-payments.md`): Free = 5 colleges; the only
+  paid product is the NT$990 **admission-year pass** (TWD, one payment, ECPay 綠界), valid from its start to July 31 of the entry year the student picks. The plan is decided by
+  the server only. Edge Function `payments` (verify_jwt off; routes `/status`, `/checkout`, `/pay-links...`, `/notify`; code in `supabase/functions/_shared/payments-*.ts` + `ecpay.ts`,
+  unit-tested from `web/lib/payments-*.test.ts`); web: `lib/plans.ts` (effective plan from `plan_windows`), `/pricing`, the parent page `/share/pay/<token>`, payment history in Settings.
+  Tables `plan_orders`, `pay_links`, `private.payment_testers`; `student_profiles.plan_windows` is written only by the server (trigger `guard_plan_columns` resets client writes), and
+  **the paid DB key stays `senior`** (only the display name changed). Migration **0044** is applied first; **0045** (`enforce_plan_limit`, the server-side 5-college cap) only after the
+  new web code is live, because the old client's first-sign-in merge aborts on any insert error. Function secrets: `ECPAY_MODE` (`stage` unless `production`), `ECPAY_MERCHANT_ID`,
+  `ECPAY_HASH_KEY`, `ECPAY_HASH_IV` (production only), optional `APP_ORIGINS`. Stage mode uses ECPay's public stage merchant and lets only users in `private.payment_testers` check out
+  (the database is the live one); everyone else sees "Payment opens soon". Refunds are manual: refund in the ECPay back office, then run `supabase/patches/refund-order.sql`
+  (`refund_order`; its `payments_needing_review` view lists double payments). Order records are kept up to 5 years (there is no purge job yet) and anonymized on account deletion.
+  Smoke test: `supabase/patches/2026-10-29_payments_smoke_test.sql`. `OPERATOR_NAME` / `CONTACT_EMAIL` in `web/lib/legal.ts` are still null: fill them before payments open.
+  Counselor / school plan is roadmap item 15 only.
 - **Data pipeline:** `data/colleges/<slug>.json` (CDS, or an IPEDS/College Scorecard baseline where no CDS was readable)
   + current cycle (tiers, tier_notes, deadlines, English, aid, codes) in `data/cycle_2026_27.json` (original 10 + `_tier_rules`)
   or one file per college in `data/cycle_2026_27/<slug>.json` → `python3 scripts/build_seed.py` (validates, incl. every
@@ -135,7 +147,7 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
 - **Display names:** the site shows `short_name ?? name`. Use the college's own common name ("Penn State", "Central Michigan", "UT Austin"), never a
   bare acronym that another school could share (CMU, UWA, NSU, UK...). `--check` fails on duplicate display names (case-insensitive) or one equal to a region code.
   The 2026-10-27 rename went out as `supabase/patches/2026-10-27-short-names.sql` (old -> new list in its header).
-- Schema changes = a new file in `supabase/migrations/` (next number: **0044**; 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
+- Schema changes = a new file in `supabase/migrations/` (next number: **0046**; 0044-0045 are the payments migrations (see **Payments**); 0001-0038 are applied (0038 = activities v2); 0039 = extension activities access (branch feat/activities-v2, applied live 2026-10-28; 0041 hardens its two-argument create_extension_token); 0040-0043 are the 2026-10-28 security fixes, rollout order in `docs/superpowers/plans/2026-10-28-portal-password-encryption.md`) **and** apply it to the project.
   Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it.
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
   `portal_passwords` (service-role only, AES-256-GCM sealed by `web/lib/portal-vault.ts`, served by `/api/portal-passwords`), never in profile/list
