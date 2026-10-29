@@ -46,7 +46,7 @@ export function InterestedList({ colleges }: { colleges: CollegeSummary[] }) {
     <div className="space-y-3">
       {!student.canAdd && (
         <p className={`rounded border px-3 py-2 text-xs ${toneClass("soon")}`}>
-          {t("application.int.fullPre", { plan: student.plan.name })}
+          {t("application.int.fullPre", { plan: t(`payments.planName.${student.plan.key}`) })}
           <Link href="/application/list" className="underline">
             {t("nav.myList")}
           </Link>

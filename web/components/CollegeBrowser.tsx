@@ -59,7 +59,7 @@ export function CollegeBrowser({
     const inList = student.has(r.c.slug);
     if (!inList && !student.canAdd)
       return (
-        <Link href="/pricing" className={`${buttonClass("secondary", "sm")} whitespace-nowrap`} title={t("colleges.planFull", { plan: student.plan.name })}>
+        <Link href="/pricing" className={`${buttonClass("secondary", "sm")} whitespace-nowrap`} title={t("colleges.planFull", { plan: t(`payments.planName.${student.plan.key}`) })}>
           {t("colleges.upgrade")}
         </Link>
       );

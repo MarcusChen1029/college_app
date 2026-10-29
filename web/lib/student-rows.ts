@@ -7,7 +7,7 @@ import type { Checklist } from "./checklist.ts";
 import { customSlug, type CustomCollege } from "./custom-college.ts";
 import { cleanStudyFields } from "./fields.ts";
 import type { StudentProfile } from "./fit.ts";
-import { DEFAULT_PLAN, type PlanKey } from "./plans.ts";
+import type { PlanKey, PlanWindow } from "./plans.ts";
 import type { PersonalEssays } from "./personal-essays.ts";
 import { keepStoredPasswords, withoutPasswords } from "./portal-slots.ts";
 import type { PortalData } from "./portals.ts";
@@ -61,6 +61,8 @@ export type ProfileRow = {
   study_fields?: string[] | null;
   reminder_emails: boolean;
   plan: PlanKey;
+  /** Server-written (0044): one window per paid pass. Absent from rows read without the column; checked by toProfile. */
+  plan_windows?: PlanWindow[] | null;
   test_details: TestDetails | null;
   interested: string[] | null;
   activities: unknown; // any stored shape; toProfile upgrades it to ActivityData
@@ -90,7 +92,7 @@ export type CollegeRow = {
  * store, read one at a time through /api/portal-passwords). Profile rows from before 0040 may still hold passwords
  * inside `portals` until the strip patch runs; toProfile drops them.
  */
-export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, test_details, interested, activities, resume, essays, portals";
+export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals";
 export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, aid_offer_usd, created_at, institutions(slug)";
 
 /**
@@ -128,6 +130,18 @@ export const REFRESH_MIN_MS = 30_000;
 export const shouldRefresh = (x: { signedIn: boolean; now: number; lastLoad: number; savesInFlight: number; loading: boolean }) =>
   x.signedIn && x.savesInFlight === 0 && !x.loading && x.now - x.lastLoad >= REFRESH_MIN_MS;
 
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const isWindow = (w: unknown): w is PlanWindow => {
+  const o = w as Record<string, unknown> | null;
+  return !!o && typeof o === "object" && Number.isInteger(o.entry_year) && typeof o.from === "string" && ISO_DAY.test(o.from) && typeof o.until === "string" && ISO_DAY.test(o.until);
+};
+/** The well-formed windows only (dates are compared as strings, so anything not "YYYY-MM-DD" is dropped). */
+const planWindowsOf = (v: unknown): PlanWindow[] => (Array.isArray(v) ? v.filter(isWindow).map((w) => ({ entry_year: w.entry_year, from: w.from, until: w.until })) : []);
+
+/** The two server-owned plan columns, re-read alone after a payment (student-store.ts reloadPlan). */
+export const PLAN_COLUMNS = "plan, plan_windows";
+export const toPlanFields = (r: Pick<ProfileRow, "plan" | "plan_windows">): Pick<StudentProfile, "plan" | "planWindows"> => ({ plan: r.plan, planWindows: planWindowsOf(r.plan_windows) });
+
 export const toProfile = (r: ProfileRow): StudentProfile => ({
   sat: r.sat_total,
   act: r.act_composite,
@@ -137,7 +151,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   targetRegions: r.target_regions ?? [],
   studyFields: cleanStudyFields(r.study_fields),
   reminderEmails: r.reminder_emails,
-  plan: r.plan,
+  ...toPlanFields(r),
   tests: r.test_details ?? {},
   interested: r.interested ?? [],
   activities: upgradeActivities(r.activities), // always the current format, whatever was stored
@@ -149,6 +163,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
  * last read from the database) puts back the password keys the database still has for logins that remain, so a save
  * never removes a plaintext password the server hasn't verified-copied yet (portal-vault-server.ts migratePlaintext).
+ * `plan` and `plan_windows` are never written: only the server sets them (0044's trigger ignores a client's value).
  */
 export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
   user_id: userId,
@@ -160,7 +175,6 @@ export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown)
   target_regions: p.targetRegions ?? [],
   study_fields: cleanStudyFields(p.studyFields),
   reminder_emails: p.reminderEmails ?? true,
-  plan: p.plan ?? DEFAULT_PLAN,
   test_details: p.tests ?? {},
   interested: p.interested ?? [],
   activities: upgradeActivities(p.activities), // saves always write the current format (idempotent on current data)

@@ -8,7 +8,7 @@ import { makeT } from "./i18n/index.ts";
 import { planMonthText, testCardView, testPlanText } from "./i18n/test-plan-text.ts";
 import { applyProfilePatch } from "./mcp/rules.ts";
 import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER } from "./resume.ts";
-import { AI_PROFILE_COLUMNS, fromProfile, toProfile, type ProfileRow } from "./student-rows.ts";
+import { AI_PROFILE_COLUMNS, fromProfile, PROFILE_COLUMNS, toProfile, type ProfileRow } from "./student-rows.ts";
 import { withTestChoice } from "./test-plan.ts";
 
 const row: ProfileRow = {
@@ -40,6 +40,20 @@ test("weighted GPA and the test plan round-trip through the profile row mapping"
   assert.equal(toProfile({ ...row, gpa_weighted: undefined }).gpaWeighted, null); // a row read before migration 0037
   assert.equal(fromProfile("u1", { ...profile, gpaWeighted: null }).gpa_weighted, null);
   assert.match(AI_PROFILE_COLUMNS, /gpa_weighted/);
+});
+
+test("pass windows are read from the row (malformed entries dropped) and a save never writes plan or plan_windows", () => {
+  const w = { entry_year: 2027, from: "2026-10-29", until: "2027-07-31" };
+  assert.deepEqual(toProfile({ ...row, plan_windows: [w] }).planWindows, [w]);
+  assert.deepEqual(toProfile(row).planWindows, []); // a row read before 0044, or without the column
+  assert.deepEqual(toProfile({ ...row, plan_windows: null }).planWindows, []);
+  const junk = [w, null, "x", { entry_year: "2028", from: "2027-01-01", until: "2028-07-31" }, { entry_year: 2028, from: "2027/1/1", until: "2028-07-31" }, { entry_year: 2028, from: "2027-01-01" }];
+  assert.deepEqual(toProfile({ ...row, plan_windows: junk as never }).planWindows, [w]);
+  assert.deepEqual(toProfile({ ...row, plan_windows: { 0: w } as never }).planWindows, []);
+  const saved = fromProfile("u1", { ...toProfile({ ...row, plan: "senior", plan_windows: [w] }), plan: "senior" });
+  assert.equal("plan" in saved, false);
+  assert.equal("plan_windows" in saved, false);
+  assert.match(PROFILE_COLUMNS, /\bplan_windows\b/);
 });
 
 test("stored activities in the earlier format are read, and written back, in the current format", () => {

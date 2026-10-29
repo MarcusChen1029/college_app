@@ -9,6 +9,7 @@ import * as legal from "./messages/legal.ts";
 import * as match from "./messages/match.ts";
 import * as misc from "./messages/misc.ts";
 import * as outcomes from "./messages/outcomes.ts";
+import * as payments from "./messages/payments.ts";
 import * as portals from "./messages/portals.ts";
 import * as privacy from "./messages/privacy.ts";
 import * as profile from "./messages/profile.ts";
@@ -36,6 +37,7 @@ export const SECTIONS = {
   match,
   misc,
   outcomes,
+  payments,
   portals,
   privacy,
   profile,

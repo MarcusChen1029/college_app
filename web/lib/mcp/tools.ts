@@ -23,7 +23,7 @@ import { stage } from "../application";
 import { CHECKLIST, isDone, progress, type Checklist } from "../checklist";
 import { getCollege, getDeadlines, getLookups, getSummaries } from "../data";
 import { computeFit, FIT_LABEL, type StudentProfile } from "../fit";
-import { getPlan, listLimit } from "../plans";
+import { effectivePlanKey, listLimit, taipeiToday, type PlanKey } from "../plans";
 import { REGIONS } from "../regions";
 import { DEFAULT_OPTIONS, EMPTY_HEADER } from "../resume";
 import {
@@ -81,13 +81,14 @@ import {
 // ai_student_profiles / ai_student_colleges (migration 0041 section 1e), which have no saved-login, reminder or essay
 // columns; after 0043 an AI token can't reach the base tables at all. Reads use the explicit AI_* column lists, never "*".
 
-type Student = { db: SupabaseClient; userId: string; origin: string; profile: StudentProfile };
+/** `plan` is the effective plan on today's Taipei date (from `profile.planWindows`), never the stored `plan` column. */
+type Student = { db: SupabaseClient; userId: string; origin: string; profile: StudentProfile; plan: PlanKey };
 type Handler<A> = (s: Student, args: A) => Promise<CallToolResult>;
 
 const text = (t: string): CallToolResult => ({ content: [{ type: "text", text: t }] });
 const json = (v: unknown): CallToolResult => text(JSON.stringify(v, null, 2));
 const toolError = (message: string): CallToolResult => ({ isError: true, content: [{ type: "text", text: message }] });
-/** Wraps a tool: finds the student from the token, enforces the Senior plan, and turns thrown errors into tool errors. */
+/** Wraps a tool: finds the student from the token, requires an active pass today (Taipei), and turns thrown errors into tool errors. */
 function guarded<A>(handler: Handler<A>) {
   return async (args: A, ctx: ServerContext): Promise<CallToolResult> => {
     const auth = ctx.http?.authInfo as (McpAuth & { extra?: McpAuth["extra"] }) | undefined;
@@ -97,8 +98,10 @@ function guarded<A>(handler: Handler<A>) {
       const { data, error } = await db.from("ai_student_profiles").select(AI_PROFILE_COLUMNS).eq("user_id", auth.extra.userId).maybeSingle();
       if (error) return toolError(`Couldn't load the student's profile: ${error.message}`);
       const profile = toProfile((data ?? { plan: "free" }) as ProfileRow);
-      if (!isSenior(profile.plan)) return toolError(seniorOnlyMessage(auth.extra.origin));
-      return await handler({ db, userId: auth.extra.userId, origin: auth.extra.origin, profile }, args);
+      const today = taipeiToday();
+      if (!isSenior(profile, today)) return toolError(seniorOnlyMessage(auth.extra.origin));
+      const plan = effectivePlanKey(profile.planWindows, today);
+      return await handler({ db, userId: auth.extra.userId, origin: auth.extra.origin, profile, plan }, args);
     } catch (e) {
       return toolError(`Something went wrong: ${(e as Error).message}`);
     }
@@ -254,7 +257,7 @@ export function registerTools(server: McpServer) {
       inputSchema: z.object({}),
       annotations: READ,
     },
-    guarded(async ({ profile }) => {
+    guarded(async ({ profile, plan }) => {
       const t = profile.tests ?? {};
       return json({
         gpa: profile.gpa ?? null,
@@ -267,7 +270,7 @@ export function registerTools(server: McpServer) {
         english: t.english ?? {},
         international: !!profile.international,
         targetRegions: profile.targetRegions ?? [],
-        plan: getPlan(profile.plan).key,
+        plan,
       });
     }),
   );
@@ -283,7 +286,7 @@ export function registerTools(server: McpServer) {
     },
     guarded(async (s) => {
       const a = await applications(s);
-      return json({ listLimit: listLimit(s.profile.plan), applications: a.items, interested: s.profile.interested ?? [] });
+      return json({ listLimit: listLimit(s.plan), applications: a.items, interested: s.profile.interested ?? [] });
     }),
   );
 
@@ -479,7 +482,7 @@ export function registerTools(server: McpServer) {
       const [summaries, list] = await Promise.all([getSummaries(), readList(s)]);
       const college = findSummary(summaries, slug);
       if (!college) return notFound(slug);
-      const c = checkAddCollege({ studentPlan: s.profile.plan, listedSlugs: list.map((e) => e.slug), slug, offeredPlans: college.plans, plan });
+      const c = checkAddCollege({ studentPlan: s.plan, listedSlugs: list.map((e) => e.slug), slug, offeredPlans: college.plans, plan });
       if (!c.ok) return toolError(c.error);
       const { error } = await s.db.from("ai_student_colleges").insert({ institution_id: college.id, plan_key: c.value.plan, status: "in_progress", notes: null, checklist: {} });
       check(error, slug);

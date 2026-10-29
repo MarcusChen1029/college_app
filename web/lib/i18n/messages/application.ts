@@ -162,7 +162,7 @@ export const en = {
   "application.ai.intro":
     "Paste this into ChatGPT, Claude or Gemini so it starts from your real scores, list and deadlines instead of guessing. Portal logins and notes are never included.",
   "application.ai.full":
-    "Full version ({plan} plan): each college's deadlines, English minimums, essays, cost and aid, how majors are admitted, your activities and a numbered source link for every number.",
+    "Full version ({plan}): each college's deadlines, English minimums, essays, cost and aid, how majors are admitted, your activities and a numbered source link for every number.",
   "application.ai.freePre": "Free version: your profile and a one-line summary per college. ",
   "application.ai.freeUpgrade": "Upgrade",
   "application.ai.freePost":
@@ -431,7 +431,7 @@ export const zhTW: Translation<typeof en> = {
   "application.ai.title": "複製給 AI",
   "application.ai.button": "✦ 複製給 AI",
   "application.ai.intro": "把這段內容貼到 ChatGPT、Claude 或 Gemini，AI 就能根據你真實的成績、清單和截止日期回答，不用亂猜。內容不會包含申請入口的登入資料和備註。",
-  "application.ai.full": "完整版（{plan} 方案）：包含每所學校的截止日期、英文檢定最低要求、文書、費用與補助、主修的錄取方式、你的課外活動，以及每個數字的編號來源連結。",
+  "application.ai.full": "完整版（{plan}）：包含每所學校的截止日期、英文檢定最低要求、文書、費用與補助、主修的錄取方式、你的課外活動，以及每個數字的編號來源連結。",
   "application.ai.freePre": "免費版：包含你的個人檔案，以及每所學校的一行摘要。",
   "application.ai.freeUpgrade": "升級",
   "application.ai.freePost": " 後，就能加入每所學校的截止日期、英文檢定最低要求、文書、費用與補助、你的課外活動，以及每個數字的來源連結，讓你的 AI 能對照官方資料檢查答案。",

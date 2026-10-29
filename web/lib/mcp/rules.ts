@@ -37,7 +37,7 @@ import { CHECKLIST, ENGLISH_PLANS, ESSAY_STATUSES, isDone, newEssay, progress, s
 import { deadlineApplies } from "../deadline-rules.ts";
 import type { StudentProfile } from "../fit.ts";
 import { daysUntil } from "../format.ts";
-import { canAddMore, getPlan } from "../plans.ts";
+import { canAddMore, effectivePlanKey, getPlan, type PlanKey, type PlanWindow } from "../plans.ts";
 import { cleanRegions, isRegion } from "../regions.ts";
 import { DEFAULT_OPTIONS, EMPTY_HEADER, type ResumeHeader, type ResumeSettings, type ResumeSource } from "../resume.ts";
 import { ACT_SCALE, ENGLISH_TEST_KEYS, ENGLISH_TESTS, parseScore, SAT_SCALE, satTotal, type EnglishScore, type ScoreScale, type SectionScores, type TestDetails } from "../scores.ts";
@@ -49,11 +49,15 @@ export type Check<T> = { ok: true; value: T; warnings: string[] } | { ok: false;
 const ok = <T,>(value: T, warnings: string[] = []): Check<T> => ({ ok: true, value, warnings });
 const fail = (error: string): Check<never> => ({ ok: false, error });
 
-// ── Senior gate ──
+// ── Pass gate ──
 
-export const isSenior = (plan: string | null | undefined) => getPlan(plan).key === "senior";
+/**
+ * True while one of the student's passes (the server-written `plan_windows`) covers `today`, a Taipei date
+ * (taipeiToday()). The stored `plan` column is not consulted: it is only a cache and goes stale the day a pass ends.
+ */
+export const isSenior = (profile: { planWindows?: readonly PlanWindow[] | null }, today: string): boolean => effectivePlanKey(profile.planWindows, today) === "senior";
 
-export const seniorOnlyMessage = (origin: string) => `Connect AI is a Senior plan feature. The student can upgrade at ${origin}/pricing.`;
+export const seniorOnlyMessage = (origin: string) => `Connect AI comes with the admission-year pass, and the student has no active pass. They can buy one at ${origin}/pricing.`;
 
 // ── Adding colleges, plans, statuses ──
 
@@ -69,7 +73,8 @@ export function checkPlanKey(plan: string | null, offered: string[] | null | und
   return ok(plan);
 }
 
-export function checkAddCollege(input: { studentPlan: string | null | undefined; listedSlugs: string[]; slug: string; offeredPlans: string[] | null | undefined; plan?: string | null }): Check<{ plan: string | null }> {
+/** `studentPlan` is the effective plan (effectivePlanKey of the student's windows today), not the stored `plan` column. */
+export function checkAddCollege(input: { studentPlan: PlanKey; listedSlugs: string[]; slug: string; offeredPlans: string[] | null | undefined; plan?: string | null }): Check<{ plan: string | null }> {
   if (input.listedSlugs.includes(input.slug)) return fail(`${input.slug} is already on the student's list.`);
   if (!canAddMore(input.studentPlan, input.listedSlugs.length)) {
     return fail(`The list is full for the ${getPlan(input.studentPlan).name} plan (${input.listedSlugs.length} colleges).`);

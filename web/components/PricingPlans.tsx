@@ -22,7 +22,8 @@ export function PricingPlans() {
   const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
-  const [justChose, setJustChose] = useState<PlanKey | null>(null);
+  // Plans can no longer be picked here (a pass is bought; checkout comes with the pricing rewrite), so nothing sets this yet.
+  const [justChose] = useState<PlanKey | null>(null);
   const current = mounted && student.ready ? student.plan.key : null;
   const listed = student.list.length;
 
@@ -98,11 +99,7 @@ export function PricingPlans() {
               )}
               <button
                 className={`mt-5 ${buttonClass(isCurrent ? "secondary" : "primary")}`}
-                disabled={isCurrent || current == null}
-                onClick={() => {
-                  student.setPlan(p.key);
-                  setJustChose(p.key);
-                }}
+                disabled
               >
                 {isCurrent ? t("misc.pricing.currentPlan") : t("misc.pricing.choose", { name: p.name })}
               </button>
