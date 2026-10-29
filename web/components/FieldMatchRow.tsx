@@ -9,8 +9,9 @@ import type { MessageKey } from "@/lib/i18n";
 import { FEW_GRADUATES, formatEarnings, type FieldEarnings } from "@/lib/outcomes";
 
 /** One college. `earnings`: Scorecard median earnings in the chosen field, added to the evidence line. `reason` rows (famous but not strong) show why instead of a strength bar.
- *  `confidence: false` drops the per-row confidence pill when the page says it once for every row (an undecided field). */
-export function FieldMatchRow({ rec, reason = false, earnings, confidence = true }: { rec: Rec<MatchRow>; reason?: boolean; earnings?: FieldEarnings; confidence?: boolean }) {
+ *  `undecided`: no field chosen, so every row is ranked by its overall tier alone. The page says that once; a row shows its tier
+ *  badge only, without the strength bar, the confidence pill or an "Overall tier" line that would say the same thing again. */
+export function FieldMatchRow({ rec, reason = false, earnings, undecided = false }: { rec: Rec<MatchRow>; reason?: boolean; earnings?: FieldEarnings; undecided?: boolean }) {
   const t = useT();
   const locale = useLocale();
   const { college, score, fit } = rec;
@@ -39,7 +40,7 @@ export function FieldMatchRow({ rec, reason = false, earnings, confidence = true
           {college.short_name ?? college.name}
         </Link>
         {fit && <FitBadge fit={fit.fit} result={fit} />}
-        {!reason && score.strength != null && (
+        {!reason && !undecided && score.strength != null && (
           <span className="flex items-center gap-2" title={t("match.strength", { n: score.strength })}>
             <span className="h-2 w-20 overflow-hidden rounded-full bg-zinc-200" aria-hidden="true">
               <span className="block h-full rounded-full bg-ink" style={{ width: `${score.strength}%` }} />
@@ -47,9 +48,9 @@ export function FieldMatchRow({ rec, reason = false, earnings, confidence = true
             <span className="w-7 text-right text-sm font-bold tabular-nums">{score.strength}</span>
           </span>
         )}
-        {!reason && confidence && score.confidence && <Pill tone={score.confidence === "rated" ? "blue" : "zinc"}>{t(`match.conf.${score.confidence}` as MessageKey)}</Pill>}
+        {!reason && !undecided && score.confidence && <Pill tone={score.confidence === "rated" ? "blue" : "zinc"}>{t(`match.conf.${score.confidence}` as MessageKey)}</Pill>}
       </div>
-      <p className="mt-1 text-[13px] text-zinc-600">{why ? t(why.key, why.vars) : parts.join(" · ")}</p>
+      {(why || (!undecided && parts.length > 0)) && <p className="mt-1 text-[13px] text-zinc-600">{why ? t(why.key, why.vars) : parts.join(" · ")}</p>}
     </li>
   );
 }

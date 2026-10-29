@@ -95,10 +95,16 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
                 type="button"
                 aria-pressed={regions.includes(r.code)}
                 onClick={() => toggleRegion(r.code)}
-                className={`h-9 rounded-full px-3.5 text-sm font-semibold transition-colors ${
-                  regions.includes(r.code) ? "bg-white text-ink ring-2 ring-inset ring-ink" : "text-zinc-700 ring-1 ring-inset ring-zinc-300 hover:bg-white hover:text-ink"
+                className={`inline-flex h-9 items-center gap-1.5 rounded-full px-3.5 text-sm font-semibold transition-colors ${
+                  regions.includes(r.code) ? "bg-blue-200 text-ink" : "bg-white text-zinc-700 ring-1 ring-inset ring-zinc-300 hover:text-ink"
                 }`}
               >
+                {/* Selected: a filled chip with a tick, so the state reads at a glance. */}
+                {regions.includes(r.code) && (
+                  <svg aria-hidden="true" viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                )}
                 {t(`colleges.region.${r.code}` as MessageKey)}
               </button>
             ))}
@@ -136,7 +142,7 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
               </div>
               <ul className="space-y-2">
                 {(all ? list : list.slice(0, PER_BUCKET)).map((rec) => (
-                  <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} confidence={!undecided} />
+                  <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} undecided={undecided} />
                 ))}
               </ul>
               {list.length > PER_BUCKET && (
@@ -168,7 +174,7 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
             <p className="mt-2 text-[15px] text-zinc-700">{t("match.weakerIntro")}</p>
             <ul className="mt-2 space-y-2">
               {result.weaker.map((rec) => (
-                <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} confidence={!undecided} />
+                <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} undecided={undecided} />
               ))}
             </ul>
           </details>

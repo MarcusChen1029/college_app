@@ -27,10 +27,12 @@ import { CaHonorFields, HONOR_KEYS } from "@/components/activities/CaHonorFields
 import { AWARD_KEYS, UcFields, UC_FORM_KEYS } from "@/components/activities/UcFields";
 import { SignInButton } from "@/components/SignInDialog";
 import { caTypeLabel as typeLabel } from "@/lib/i18n/ca-types";
+import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
+import { input } from "./activities/fields";
 import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
@@ -42,6 +44,7 @@ function Pill({ tone, children }: { tone: "soon" | "urgent"; children: React.Rea
 }
 
 function Card({
+  entryId,
   index,
   title,
   subtitle,
@@ -52,6 +55,8 @@ function Card({
   onRemove,
   children,
 }: {
+  /** The entry's id, on the card as data-entry-id. */
+  entryId: string;
   index: number;
   title: string;
   subtitle?: string;
@@ -67,7 +72,7 @@ function Card({
   const missing = issues.some((i) => i.kind === "missing");
   const invalid = issues.some((i) => i.kind === "invalid");
   return (
-    <li className="rounded-2xl border border-zinc-200">
+    <li data-entry-id={entryId} className="rounded-2xl border border-zinc-200">
       <div className="flex items-center gap-2 p-3">
         <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-50 text-xs font-bold text-blue-700">{index + 1}</span>
         <button type="button" onClick={onToggle} className="min-w-0 flex-1 text-left" aria-expanded={open}>
@@ -113,6 +118,7 @@ function EntryList<T extends Item>({
   issues,
   render,
   extraAction,
+  ghost,
 }: {
   heading: string;
   items: T[];
@@ -126,14 +132,18 @@ function EntryList<T extends Item>({
   issues?: (item: T) => Issue[];
   render: (item: T, set: (p: Partial<T>) => void) => React.ReactNode;
   extraAction?: React.ReactNode;
+  /** While the list is empty: a first item drawn in place (fields with live counters) instead of the empty note.
+   *  `create` adds an item with what was typed, opens it and returns it. */
+  ghost?: (create: (patch: Partial<T>) => T) => React.ReactNode;
 }) {
   const t = useT();
   const [open, setOpen] = useState<string | null>(null);
   const full = items.length >= limit;
-  const add = () => {
-    const item = make();
+  const add = (patch: Partial<T> = {}): T => {
+    const item = { ...make(), ...patch };
     onChange([...items, item]);
     setOpen(item.id);
+    return item;
   };
   return (
     <section className="space-y-3">
@@ -146,16 +156,18 @@ function EntryList<T extends Item>({
           {extraAction}
           {/* While the section is empty its one Add button sits in the empty note below. */}
           {items.length > 0 && (
-            <button type="button" disabled={full} className={buttonClass("primary", "sm")} onClick={add}>
+            <button type="button" disabled={full} className={buttonClass("primary", "sm")} onClick={() => add()}>
               {addLabel}
             </button>
           )}
         </span>
       </div>
-      {items.length === 0 ? (
+      {items.length === 0 && ghost ? (
+        ghost(add)
+      ) : items.length === 0 ? (
         <EmptyNote
           action={
-            <button type="button" disabled={full} className={buttonClass("primary", "sm")} onClick={add}>
+            <button type="button" disabled={full} className={buttonClass("primary", "sm")} onClick={() => add()}>
               {addLabel}
             </button>
           }
@@ -167,6 +179,7 @@ function EntryList<T extends Item>({
           {items.map((item, i) => (
             <Card
               key={item.id}
+              entryId={item.id}
               index={i}
               title={title(item)}
               subtitle={subtitle(item)}
@@ -188,6 +201,84 @@ function EntryList<T extends Item>({
 }
 
 const join = (...parts: string[]) => parts.filter(Boolean).join(" · ");
+
+/** The empty Common App list drawn as its first activity: the three text boxes with live counters at the form's own
+ *  limits (lib/activities.ts CA_LIMITS). Moving between the boxes keeps the draft; the activity is created when focus
+ *  leaves the whole row (or from Add), and focus then lands on the same box in the new card. A typed role answers the
+ *  leadership question with yes, since the form only asks for a role after a yes; the card shows it as its title. */
+type GhostField = "position" | "organization" | "description";
+const GHOST_FIELDS: { key: GhostField; label: MessageKey; max: number; rows?: number }[] = [
+  { key: "position", label: "writing.position", max: CA_LIMITS.position },
+  { key: "organization", label: "writing.organizationName", max: CA_LIMITS.organization },
+  { key: "description", label: "writing.caDescription", max: CA_LIMITS.description, rows: 3 },
+];
+
+/** Focuses a named field inside an entry's card once React has drawn it (a few frames at most). */
+function focusField(entryId: string, names: readonly string[]) {
+  let tries = 0;
+  const step = () => {
+    const card = document.querySelector(`[data-entry-id="${entryId}"]`);
+    const el = names.map((n) => card?.querySelector<HTMLInputElement | HTMLTextAreaElement>(`[name="${n}"]`)).find(Boolean);
+    if (el) {
+      el.focus();
+      el.setSelectionRange(el.value.length, el.value.length);
+    } else if (++tries < 10) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function GhostActivity({ create, addLabel }: { create: (patch: Partial<CaActivity>) => CaActivity; addLabel: string }) {
+  const t = useT();
+  const [draft, setDraft] = useState<Record<GhostField, string>>({ position: "", organization: "", description: "" });
+  const [last, setLast] = useState<GhostField>("position");
+  const typed = Object.values(draft).some((v) => v.trim());
+  const commit = (field: GhostField) => {
+    const patch: Partial<CaActivity> = {};
+    if (draft.position.trim()) Object.assign(patch, { position: draft.position, leadership: true });
+    if (draft.organization.trim()) patch.organization = draft.organization;
+    if (draft.description.trim()) patch.description = draft.description;
+    const item = create(patch);
+    // The same box when the new card has it, else the first box it does have.
+    focusField(item.id, [field, "organization", "description", "position"]);
+  };
+  return (
+    <div
+      className="rounded-2xl bg-blue-50 p-5"
+      onBlur={(e) => {
+        if (typed && !e.currentTarget.contains(e.relatedTarget as Node | null)) commit(last);
+      }}
+    >
+      <p className="text-[15px] text-ink">{t("writing.ghostIntro")}</p>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {GHOST_FIELDS.map((f) => {
+          const size = draft[f.key].length;
+          const props = {
+            className: input,
+            name: f.key,
+            maxLength: f.max,
+            value: draft[f.key],
+            onFocus: () => setLast(f.key),
+            onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setDraft({ ...draft, [f.key]: e.target.value }),
+          };
+          return (
+            <label key={f.key} className={`flex flex-col gap-1 ${f.rows ? "md:col-span-2" : ""}`}>
+              <span className="flex justify-between gap-2 text-xs text-zinc-600">
+                <span>{t(f.label)}</span>
+                <span className={`tabular-nums ${size >= f.max ? "font-semibold text-soon" : ""}`}>
+                  {size}/{f.max}
+                </span>
+              </span>
+              {f.rows ? <textarea {...props} rows={f.rows} /> : <input {...props} />}
+            </label>
+          );
+        })}
+      </div>
+      <button type="button" className={`${buttonClass("primary", "sm")} mt-4`} onClick={() => commit(last)}>
+        {addLabel}
+      </button>
+    </div>
+  );
+}
 
 export function ActivitiesEditor() {
   const t = useT();
@@ -244,6 +335,7 @@ export function ActivitiesEditor() {
             }
             issues={caActivityIssues}
             render={(a, set) => <CaActivityFields a={a} set={set} />}
+            ghost={(create) => <GhostActivity create={create} addLabel={t("writing.addActivity")} />}
           />
           <EntryList<CaHonor>
             heading={t("writing.headingHonors")}
@@ -257,14 +349,7 @@ export function ActivitiesEditor() {
             issues={caHonorIssues}
             render={(h, set) => <CaHonorFields h={h} set={set} />}
           />
-          <p className="text-[13px] text-zinc-600">
-            {t("writing.caLimitsNote", {
-              position: CA_LIMITS.position,
-              organization: CA_LIMITS.organization,
-              description: CA_LIMITS.description,
-              honorTitle: CA_LIMITS.honorTitle,
-            })}
-          </p>
+          <p className="text-[13px] text-zinc-600">{t("writing.caLimitsNote")}</p>
         </>
       ) : (
         <>

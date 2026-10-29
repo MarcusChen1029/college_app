@@ -7,7 +7,7 @@ import type { Fit, FitResult } from "@/lib/fit";
 import { useT } from "@/lib/i18n/client";
 import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { pillTone } from "@/lib/status";
-import { fitClass, fitDotClass, FIT_LEVEL, tierClass, toneClass } from "@/lib/ui";
+import { fitClass, FIT_LEVEL, tierClass, toneClass } from "@/lib/ui";
 import type { TierCode } from "@/lib/types";
 
 export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undefined; size?: "sm" | "md" }) {
@@ -26,8 +26,8 @@ export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undef
 // callers that pass size="md" (the Explore page) need not change.
 const CHIP_TEXT = { sm: "text-[13px] py-0.5", md: "text-[13px] py-0.5" } as const;
 
-/** A flat chip in the band's pale fill with its word in the band's ink, and four dots that fill harder-to-easier, so the
- *  band reads without colour too. `result` (from computeFit) gives the hover text in the visitor's language. */
+/** A flat chip in the band's fill with its word in the band's ink, and four dots (filled in the chip's own ink) that fill
+ *  harder-to-easier, so the band reads without colour too. `result` (from computeFit) gives the hover text in the visitor's language. */
 export function FitBadge({ fit, result, size = "sm" }: { fit: Fit; result?: FitResult; size?: "sm" | "md" }) {
   const t = useT();
   return (
@@ -37,7 +37,7 @@ export function FitBadge({ fit, result, size = "sm" }: { fit: Fit; result?: FitR
     >
       <span className="flex gap-0.5" aria-hidden="true">
         {[1, 2, 3, 4].map((n) => (
-          <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[fit] ? fitDotClass(fit) : ""}`} />
+          <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[fit] ? "bg-current" : ""}`} />
         ))}
       </span>
       {fitLabel(t, fit)}

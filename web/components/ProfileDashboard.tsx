@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useT } from "@/lib/i18n/client";
 import { computeFit } from "@/lib/fit";
 import { isoOf } from "@/lib/calendar";
@@ -16,20 +16,23 @@ import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
-import { ProfileCards } from "./ProfileCards";
+import { ProfileCards, type CardKey } from "./ProfileCards";
 import { SignInButton } from "./SignInDialog";
 import { StatusIcon } from "./StatusPill";
 import { buttonClass, PAGE_TITLE, PANEL, SECTION_TITLE } from "@/lib/ui";
 
 const noop = () => () => {};
 
-/** Opens a profile tile (components/ProfileCards.tsx) and brings it into view. */
-function openCard(key: string) {
-  const button = document.querySelector<HTMLButtonElement>(`[data-profile-card="${key}"]`);
-  if (!button) return;
-  if (button.getAttribute("aria-expanded") !== "true") button.click();
-  button.scrollIntoView({ block: "center", behavior: "smooth" });
-  button.focus({ preventScroll: true });
+/** Brings an opened profile tile (components/ProfileCards.tsx) into view once it has rendered; no smooth scroll when the
+ *  visitor asks for reduced motion. */
+function revealCard(key: CardKey) {
+  setTimeout(() => {
+    const button = document.querySelector<HTMLButtonElement>(`[data-profile-card="${key}"]`);
+    if (!button) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    button.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    button.focus({ preventScroll: true });
+  }, 0);
 }
 
 type SetupItem = { key: string; label: string; done: boolean; action: React.ReactNode };
@@ -72,6 +75,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
   const t = useT();
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
+  const [openTile, setOpenTile] = useState<CardKey | null>(null);
   if (!mounted || !student.ready) return <div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />;
 
   const { profile } = student;
@@ -94,7 +98,11 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
 
   // The setup steps, in the order the labels need them.
   const plan = profile.tests?.plan;
-  const addButton = (key: string) => (
+  const openCard = (key: CardKey) => {
+    setOpenTile(key);
+    revealCard(key);
+  };
+  const addButton = (key: CardKey) => (
     <button type="button" className={buttonClass("ghost", "sm")} onClick={() => openCard(key)}>
       {t("profile.setup.add")}
     </button>
@@ -166,7 +174,7 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
         </Link>
       </section>
 
-      <ProfileCards />
+      <ProfileCards open={openTile} onOpen={setOpenTile} />
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         {/* Stacked with the grid gap, so the setup steps and the list read as one column beside the calendar. */}

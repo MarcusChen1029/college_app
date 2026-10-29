@@ -40,6 +40,7 @@ export function TextField({
   validate,
   missing,
   measure = (v) => v.length,
+  name,
 }: {
   label: string;
   value: string;
@@ -50,11 +51,13 @@ export function TextField({
   missing?: boolean;
   /** How the portal counts the box (UC counts a line break as 2); the counter and its colours use it. Default: characters. */
   measure?: (v: string) => number;
+  /** The input's name (e.g. "position"), so the page can find and focus this field. */
+  name?: string;
 }) {
   const [v, setV] = useState(value);
   const error = validate ? validate(v) : null;
   const size = measure(v);
-  const props = { className: input, maxLength: validate ? undefined : max, value: v, "aria-invalid": error ? true : undefined, onBlur: () => v !== value && !error && onSave(v) };
+  const props = { className: input, name, maxLength: validate ? undefined : max, value: v, "aria-invalid": error ? true : undefined, onBlur: () => v !== value && !error && onSave(v) };
   return (
     <label className="flex flex-col gap-1">
       <span className="flex justify-between gap-2 text-xs text-zinc-500">

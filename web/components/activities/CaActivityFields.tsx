@@ -96,6 +96,7 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               <div key={field} className={wide}>
                 <TextField
                   label={t("writing.caDescription")}
+                  name="description"
                   value={a.description}
                   max={CA_LIMITS.description}
                   rows={3}
@@ -110,6 +111,7 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               <div key={field} className={wide}>
                 <TextField
                   label={t("writing.organizationName")}
+                  name="organization"
                   value={a.organization}
                   max={CA_LIMITS.organization}
                   onSave={(organization) => set({ organization })}
@@ -132,6 +134,7 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               <TextField
                 key={field}
                 label={t("writing.position")}
+                name="position"
                 value={a.position}
                 max={CA_LIMITS.position}
                 onSave={(position) => set({ position })}

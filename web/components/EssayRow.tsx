@@ -61,6 +61,7 @@ export function EssayRow({
   onRemove,
   docs,
   label,
+  labelHidden = false,
   badge,
   detail,
   removeLabel,
@@ -73,6 +74,8 @@ export function EssayRow({
   docs?: GoogleDocs;
   /** A fixed name instead of an editable one (personal statement, UC questions, college prompts). */
   label?: string;
+  /** Keep the fixed name for screen readers only, when a heading right above already shows it (the personal statement). */
+  labelHidden?: boolean;
   /** Pills next to a fixed label (word limit, "Optional"…). */
   badge?: React.ReactNode;
   /** Shown under the name row: a college prompt's text. */
@@ -119,8 +122,8 @@ export function EssayRow({
     <li className="space-y-1.5 rounded-xl bg-white p-3">
       <div className="flex flex-wrap items-center gap-2">
         {label ? (
-          <span className="flex min-w-48 flex-1 flex-wrap items-center gap-2 text-sm font-medium">
-            {label}
+          <span className={`flex flex-1 flex-wrap items-center gap-2 text-sm font-medium ${labelHidden ? "min-w-0" : "min-w-48"}`}>
+            {labelHidden ? <span className="sr-only">{label}</span> : label}
             {badge}
           </span>
         ) : (
