@@ -54,6 +54,7 @@ function MenuButton({ open, onClick, buttonRef }: { open: boolean; onClick?: () 
       aria-expanded={open}
       aria-controls="site-menu"
       aria-haspopup="dialog"
+      data-site-menu
       onClick={onClick}
       className="flex size-11 items-center justify-center rounded-lg text-zinc-700 hover:bg-zinc-100"
     >
@@ -108,7 +109,8 @@ export function SiteNav() {
 
   return (
     <>
-      <div className="hidden items-center md:flex">
+      {/* data-site-links / data-site-extra / data-site-menu: what a focused flow (the /start wizard) hides; see globals.css. */}
+      <div data-site-links className="hidden items-center md:flex">
         <Suspense fallback={<NavLinks items={items} pathname={null} />}>
           <ActiveNavLinks items={items} />
         </Suspense>
@@ -119,8 +121,12 @@ export function SiteNav() {
         ) : (
           <>
             <SignInButton className={buttonClass("quiet", "sm")}>{t("account.signIn")}</SignInButton>
-            {started ? <AccountMenu label={t("account.more")} items={menu} /> : (
-              <Link href="/start" className={buttonClass("primary", "sm")}>
+            {started ? (
+              <span data-site-extra className="contents">
+                <AccountMenu label={t("account.more")} items={menu} />
+              </span>
+            ) : (
+              <Link href="/start" data-site-extra className={buttonClass("primary", "sm")}>
                 {t("account.getStarted")}
               </Link>
             )}

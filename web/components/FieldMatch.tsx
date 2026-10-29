@@ -12,7 +12,7 @@ import type { MessageKey } from "@/lib/i18n";
 import { REGIONS, cleanRegions, type RegionCode } from "@/lib/regions";
 import { useStudent } from "@/lib/student-store";
 import { scoredTests } from "@/lib/test-plan";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, PANEL } from "@/lib/ui";
 
 const BUCKETS: Bucket[] = ["reach", "target", "safety", "unknown"];
 const PER_BUCKET = 8;
@@ -148,7 +148,7 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
       )}
 
       {result.weaker.length > 0 && (
-        <details className="rounded-2xl border border-zinc-200 px-4 py-3">
+        <details className={`${PANEL} px-5 py-4`}>
           <summary className="cursor-pointer font-semibold">{t("match.weaker", { n: result.weaker.length })}</summary>
           <p className="mt-2 text-sm text-zinc-500">{t("match.weakerIntro")}</p>
           <ul className="mt-2 space-y-2">

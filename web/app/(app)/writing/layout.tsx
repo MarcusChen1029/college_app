@@ -1,5 +1,6 @@
 import { NavText, SectionTabs } from "@/components/SectionTabs";
 import type { NavItem } from "@/lib/roles";
+import { PAGE_TITLE } from "@/lib/ui";
 
 const TABS: readonly NavItem[] = [
   ["/writing/essays", "Essays"],
@@ -8,8 +9,8 @@ const TABS: readonly NavItem[] = [
 
 export default function WritingLayout({ children }: LayoutProps<"/writing">) {
   return (
-    <div className="space-y-5">
-      <h1 className="text-2xl font-semibold print:hidden">
+    <div className="space-y-6">
+      <h1 className={`${PAGE_TITLE} print:hidden`}>
         <NavText label="Writing" />
       </h1>
       <SectionTabs label="Writing" tabs={TABS} />

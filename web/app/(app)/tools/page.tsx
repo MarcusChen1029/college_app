@@ -4,11 +4,11 @@ import { GradCap, Pencil, Star } from "@/components/Doodles";
 import { FillerDownload } from "@/components/FillerDownload";
 import { getT } from "@/lib/i18n/server";
 import type { TFunction } from "@/lib/i18n";
-import { buttonClass, toneClass } from "@/lib/ui";
+import { buttonClass, PAGE_TITLE, PANEL, toneClass } from "@/lib/ui";
 
 export const metadata: Metadata = { title: "Tools" };
 
-const card = "rounded-3xl border border-zinc-200 p-6";
+const card = `${PANEL} p-6 sm:p-8`;
 
 const installSteps = (t: TFunction) => [
   t("tools.filler.step1"),
@@ -34,9 +34,9 @@ export default async function ToolsPage() {
   const t = await getT();
   return (
     <div className="max-w-4xl space-y-8">
-      <h1 className="font-display text-3xl font-bold">{t("tools.title")}</h1>
+      <h1 className={PAGE_TITLE}>{t("tools.title")}</h1>
 
-      <ul className="divide-y divide-zinc-200 rounded-3xl border border-zinc-200">
+      <ul className={`divide-y-2 divide-white ${PANEL}`}>
         <ToolRow id="resume" art={<Pencil className="w-16" />} title={t("tools.resume.heading")} blurb={t("tools.resume.blurb")} href="/tools/resume" cta={t("tools.resume.open")} />
         <ToolRow id="match" art={<GradCap className="w-16" />} title={t("match.card.heading")} blurb={t("match.card.blurb")} href="/tools/match" cta={t("match.card.cta")} />
         <ToolRow id="interests" art={<Star className="w-12" />} title={t("tools.interests.heading")} blurb={t("tools.interests.blurb")} href="/tools/interests" cta={t("tools.interests.cta")} />
@@ -47,7 +47,7 @@ export default async function ToolsPage() {
           <h2 id="filler-heading" className="text-xl font-bold">
             {t("tools.filler.heading")}
           </h2>
-          <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${toneClass("progress")}`}>{t("tools.filler.beta")}</span>
+          <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[13px] font-semibold ${toneClass("progress")}`}>{t("tools.filler.beta")}</span>
         </div>
         <p className="text-sm text-zinc-600">
           {t("tools.filler.blurb")}

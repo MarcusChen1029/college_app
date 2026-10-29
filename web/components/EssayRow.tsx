@@ -116,7 +116,7 @@ export function EssayRow({
     }
   };
   return (
-    <li className="space-y-1.5 rounded-xl border border-zinc-200 p-3">
+    <li className="space-y-1.5 rounded-xl bg-white p-3">
       <div className="flex flex-wrap items-center gap-2">
         {label ? (
           <span className="flex min-w-48 flex-1 flex-wrap items-center gap-2 text-sm font-medium">

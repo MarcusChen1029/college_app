@@ -4,6 +4,7 @@ import { getDeadlines, getLookups, getScoreCodes, getSummaries } from "@/lib/dat
 import { getT } from "@/lib/i18n/server";
 import { essayCountsBySlug } from "@/lib/supplements";
 import { SUPPLEMENTS } from "@/lib/supplements-data";
+import { PAGE_INTRO } from "@/lib/ui";
 
 export const metadata = { title: "My list" };
 
@@ -26,7 +27,7 @@ async function Data() {
 async function Intro() {
   const t = await getT();
   return (
-    <p className="text-sm text-zinc-500">
+    <p className={PAGE_INTRO}>
       {t("application.listIntroPre")}
       <strong>{t("application.listIntroReady")}</strong>
       {t("application.listIntroPost")}

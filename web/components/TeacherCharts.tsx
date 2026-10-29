@@ -147,7 +147,7 @@ function PointTable({ college, metric }: { college: CollegeOutcomes; metric: Tes
 function FloorNotice({ data }: { data: ClassOutcomes }) {
   const t = useT();
   return (
-    <div className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-600">
+    <div className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
       <p className="font-semibold text-ink">{t("teacher.charts.floorTitle")}</p>
       <p className="mt-2">
         {t("teacher.charts.floorBody", { min: MIN_STUDENTS, n: data.studentsWithOutcomes })}
@@ -187,7 +187,7 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
   if (!data.enough) return <FloorNotice data={data} />;
   if (data.colleges.length === 0) {
     return (
-      <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-600">
+      <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
         {data.hiddenColleges > 0
           ? t(data.hiddenColleges === 1 ? "teacher.charts.noCollegeHidden.one" : "teacher.charts.noCollegeHidden.other", { min: MIN_STUDENTS, n: data.hiddenColleges })
           : t("teacher.charts.noCollege", { min: MIN_STUDENTS })}

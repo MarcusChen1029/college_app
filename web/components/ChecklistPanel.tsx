@@ -70,7 +70,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
             : essays.length > 0
               ? t("application.cl.essaysFinal", { final: finals, total: essays.length })
               : t("application.cl.noEssaysYet")}{" "}
-          <Link href="/writing/essays" className="text-blue-600 underline">
+          <Link href="/writing/essays" className="text-blue-700 underline">
             {t("application.cl.manageEssays")}
           </Link>
         </p>
@@ -178,7 +178,7 @@ export function ChecklistPanel({ entry, college, international, financeWhen = nu
           />
           <span className="text-zinc-500">
             {t("application.cl.onlyYou")}{" "}
-            <Link href="/application/results" className="text-blue-600 underline">
+            <Link href="/application/results" className="text-blue-700 underline">
               {t("application.cl.compareOffers")}
             </Link>
           </span>
@@ -233,7 +233,7 @@ function Section({
         >
           {done ? "✓" : ""}
         </span>
-        <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-600">{title}</h3>
+        <h3 className="text-[15px] font-semibold text-ink">{title}</h3>
         {hint && <span className="ml-auto text-[11px] text-zinc-400">{hint}</span>}
       </div>
       <div className="space-y-1.5">{children}</div>

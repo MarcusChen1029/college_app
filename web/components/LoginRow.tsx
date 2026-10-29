@@ -279,7 +279,7 @@ export function LoginRow({
   const label = name || t("portals.untitled");
   return (
     <li>
-      <div className={`rounded-xl border ${open ? "border-blue-300 bg-blue-50/40" : "border-zinc-200"}`}>
+      <div className={`rounded-xl border ${open ? "border-blue-300 bg-blue-50" : "border-zinc-200 bg-white"}`}>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pr-3">
           <div
             role="button"

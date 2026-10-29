@@ -3,12 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { FitSheet, type FitSheetRow } from "@/components/home/FitSheet";
+import { DaysLeft, TimetableCaption } from "@/components/home/LocalDay";
 import { Reveal } from "@/components/home/Reveal";
 import { HomeStickyCta } from "@/components/HomeStickyCta";
 import { SignInButton } from "@/components/SignInDialog";
 import { CAMPUS, type CampusPhoto } from "@/lib/campus-photos";
 import { getDeadlines, getEnglishSummaries, getSummaries } from "@/lib/data";
-import { daysUntil, fmtInt, fmtUsd } from "@/lib/format";
+import { fmtInt, fmtUsd } from "@/lib/format";
 import { collegeCounts, hasSocialProof, seasonRows, SOCIAL_PROOF, type SeasonRow } from "@/lib/home-stats";
 import type { Locale } from "@/lib/i18n/core";
 import { getLocale, getT } from "@/lib/i18n/server";
@@ -52,12 +53,6 @@ const planLabel = (t: TFunction, plan: string) => t(`application.planLabel.${pla
 const nameOf = (c: CollegeSummary) => c.short_name ?? c.name;
 const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
-function leftText(t: TFunction, days: number) {
-  if (days <= 0) return t("status.deadline.today");
-  if (days === 1) return t("status.deadline.tomorrow");
-  return t("status.deadline.days", { n: days });
-}
-
 /** A campus photograph in the page's one treatment. The caller sizes the box. */
 function Duo({ photo, className = "", sizes, priority = false, decorative = false }: { photo: CampusPhoto; className?: string; sizes: string; priority?: boolean; decorative?: boolean }) {
   return (
@@ -73,7 +68,7 @@ function Timetable({ rows, locale, t }: { rows: SeasonRow[]; locale: Locale; t: 
   return (
     <table className="w-full text-left tabular-nums">
       <caption className="pb-3 text-left text-base font-semibold">
-        {t("home.timetable.caption", { date: fmtDay(today(), locale, { weekday: "short", month: "short", day: "numeric" }) })}
+        <TimetableCaption serverToday={today()} locale={locale} />
       </caption>
       <thead className="sr-only">
         <tr>
@@ -85,7 +80,6 @@ function Timetable({ rows, locale, t }: { rows: SeasonRow[]; locale: Locale; t: 
       </thead>
       <tbody className="border-t-[3px] border-ink">
         {rows.map((r, i) => {
-          const days = daysUntil(r.date);
           const more = r.count - r.names.length;
           const names = r.names.join(t("home.timetable.sep"));
           return (
@@ -99,8 +93,8 @@ function Timetable({ rows, locale, t }: { rows: SeasonRow[]; locale: Locale; t: 
               <td className="hidden whitespace-nowrap py-3 pr-4 align-top text-base sm:table-cell">
                 {r.count === 1 ? t("home.timetable.countOne") : t("home.timetable.count", { n: r.count })}
               </td>
-              <td className={`whitespace-nowrap py-3 text-right align-top text-base font-semibold ${days <= 7 ? "text-urgent" : days <= 21 ? "text-soon" : ""}`}>
-                {leftText(t, days)}
+              <td className="whitespace-nowrap py-3 text-right align-top text-base font-semibold">
+                <DaysLeft date={r.date} serverToday={today()} />
               </td>
             </tr>
           );

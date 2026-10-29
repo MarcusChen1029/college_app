@@ -41,7 +41,7 @@ function DeadlineList({ days }: { days: number }) {
   const groups = groupDeadlines(data.list, data.now);
   if (groups.length === 0) {
     return (
-      <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
+      <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
         {t("teacher.deadlines.nonePre", { n: days })}
         <Link href="/teacher/students" className="font-semibold text-blue-700 underline underline-offset-4">
           {t("teacher.deadlines.noneLink")}

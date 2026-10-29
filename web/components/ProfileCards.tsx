@@ -52,7 +52,7 @@ function Card({
     document.getElementById(buttonId)?.focus();
   };
   return (
-    <div onKeyDown={onKeyDown} className={`overflow-hidden rounded-3xl border-2 border-ink ${tint} ${open ? "col-span-full" : ""} ${className}`}>
+    <div onKeyDown={onKeyDown} className={`overflow-hidden rounded-3xl ${tint} ${open ? "col-span-full" : ""} ${className}`}>
       <button
         type="button"
         id={buttonId}
@@ -62,10 +62,10 @@ function Card({
         className="flex w-full items-start justify-between gap-2 p-4 text-left focus-visible:-outline-offset-4"
       >
         <span className="min-w-0 flex-1">
-          <span className="block text-xs font-medium text-ink/70">{label}</span>
+          <span className="block text-[13px] font-semibold text-ink">{label}</span>
           {summary}
         </span>
-        <span aria-hidden className={`mt-0.5 shrink-0 text-xs font-semibold text-ink/70 ${open ? "hidden" : ""}`}>
+        <span aria-hidden className={`mt-0.5 shrink-0 text-[13px] font-semibold text-ink underline underline-offset-4 ${open ? "hidden" : ""}`}>
           {t("common.edit")}
         </span>
       </button>
@@ -74,7 +74,7 @@ function Card({
         role="region"
         aria-labelledby={buttonId}
         inert={!open}
-        className={`grid transition-[grid-template-rows] duration-200 motion-reduce:transition-none ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+        className={`grid transition-[grid-template-rows,visibility] duration-200 motion-reduce:transition-none ${open ? "grid-rows-[1fr]" : "invisible grid-rows-[0fr]"}`}
       >
         <div className="min-h-0 overflow-hidden">
           <div className="space-y-4 border-t-2 border-ink/10 bg-white/70 p-4">
@@ -94,14 +94,14 @@ function Value({ value, sub }: { value: string | number | null | undefined; sub?
   if (value == null || value === "")
     return (
       <>
-        <span className="mt-1 block font-display text-lg font-bold text-ink/60">{t("profile.add")}</span>
-        {sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{sub}</span>}
+        <span className="mt-1 block font-display text-lg font-bold text-ink">{t("profile.add")}</span>
+        {sub && <span className="mt-0.5 block break-words text-[13px] text-ink">{sub}</span>}
       </>
     );
   return (
     <>
-      <span className="mt-1 block font-display text-3xl font-bold">{value}</span>
-      {sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{sub}</span>}
+      <span className="mt-1 block font-display text-3xl font-bold tabular-nums">{value}</span>
+      {sub && <span className="mt-0.5 block break-words text-[13px] text-ink">{sub}</span>}
     </>
   );
 }
@@ -196,7 +196,7 @@ export function ProfileCards() {
           test.small && test.value != null ? (
             <>
               <span className="mt-1 block font-display text-lg font-bold">{test.value}</span>
-              {test.sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{test.sub}</span>}
+              {test.sub && <span className="mt-0.5 block break-words text-[13px] text-ink">{test.sub}</span>}
             </>
           ) : (
             <Value value={test.value} sub={test.sub} />

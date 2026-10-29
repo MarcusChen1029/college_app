@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { InterestedList } from "@/components/InterestedList";
 import { getSummaries } from "@/lib/data";
 import { getT } from "@/lib/i18n/server";
+import { PAGE_INTRO } from "@/lib/ui";
 
 export const metadata = { title: "Interested" };
 
@@ -12,7 +13,7 @@ async function Data() {
 
 async function Intro() {
   const t = await getT();
-  return <p className="text-sm text-zinc-500">{t("application.interestedIntro")}</p>;
+  return <p className={PAGE_INTRO}>{t("application.interestedIntro")}</p>;
 }
 
 export default function InterestedPage() {

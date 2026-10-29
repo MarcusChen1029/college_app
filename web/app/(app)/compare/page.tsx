@@ -13,7 +13,7 @@ import { getT } from "@/lib/i18n/server";
 import type { TFunction } from "@/lib/i18n";
 import { collegeSupplements } from "@/lib/supplements-data";
 import type { CollegeSummary } from "@/lib/types";
-import { SECTION_TITLE, toneClass } from "@/lib/ui";
+import { PAGE_INTRO, PAGE_TITLE, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
 
 export const metadata = { title: "Compare" };
 
@@ -41,9 +41,9 @@ export default function ComparePage({ searchParams }: PageProps<"/compare">) {
 async function Heading() {
   const t = await getT();
   return (
-    <header className="max-w-2xl space-y-2">
-      <h1 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t("college.compareTitle")}</h1>
-      <p className="text-zinc-600">{t("college.compareLead")}</p>
+    <header className="max-w-3xl space-y-3">
+      <h1 className={PAGE_TITLE}>{t("college.compareTitle")}</h1>
+      <p className={PAGE_INTRO}>{t("college.compareLead")}</p>
     </header>
   );
 }
@@ -215,7 +215,7 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
               </tr>
               {s.rows.map((r) => (
                 <tr key={r.label} className="group">
-                  <th scope="row" className="sticky left-0 z-10 border-t border-zinc-200 bg-white py-3 pr-3 text-left align-top text-xs font-semibold text-zinc-500 md:static">
+                  <th scope="row" className="sticky left-0 z-10 border-t border-zinc-200 bg-white py-3 pr-3 text-left align-top text-[13px] font-medium text-zinc-600 md:static">
                     {r.label}
                   </th>
                   {picked.map((c) => (
@@ -230,7 +230,7 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
           ))}
         </table>
       </div>
-      {hidden && <p className="text-xs text-zinc-500">{t("college.compareHiddenRows")}</p>}
+      {hidden && <p className="text-[13px] text-zinc-600">{t("college.compareHiddenRows")}</p>}
     </div>
   );
 }
@@ -258,7 +258,7 @@ function RateBar({ value }: { value: number | null }) {
 function CollegeCard({ c, t, removeHref, tags }: { c: CollegeSummary; t: TFunction; removeHref: string; tags: ReturnType<typeof applyTags> }) {
   const name = displayName(c);
   return (
-    <div className="flex h-full min-h-36 flex-col gap-2 rounded-2xl border-2 border-zinc-200 bg-white p-3 text-left md:p-4">
+    <div className="flex h-full min-h-36 flex-col gap-2 rounded-2xl bg-zinc-50 p-3 text-left md:p-4">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
           <SchoolLogo slug={c.slug} />
@@ -277,13 +277,13 @@ function CollegeCard({ c, t, removeHref, tags }: { c: CollegeSummary; t: TFuncti
       <Link href={`/colleges/${c.slug}`} className="font-display text-base font-bold leading-snug text-ink hover:underline underline-offset-4">
         {name}
       </Link>
-      <span className="-mt-1.5 text-xs text-zinc-500">{placeOf(c)}</span>
+      <span className="-mt-1.5 text-[13px] text-zinc-600">{placeOf(c)}</span>
       <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-1">
         <CompareFitBadge college={c} />
         <ApplyTags tags={tags} />
       </div>
       {c.country_code !== "US" && (
-        <Link href={`/colleges/${c.slug}`} className="text-xs font-semibold text-blue-700 hover:underline underline-offset-4">
+        <Link href={`/colleges/${c.slug}`} className="text-[13px] font-semibold text-blue-700 hover:underline underline-offset-4">
           {t("college.byCourse")}
         </Link>
       )}
@@ -295,13 +295,13 @@ function EmptyCompare({ t, options, bySlug }: { t: TFunction; options: CompareOp
   const ideas = IDEAS.map((i) => ({ ...i, colleges: i.slugs.flatMap((s) => bySlug.get(s) ?? []) })).filter((i) => i.colleges.length >= 2);
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-      <section className="space-y-6 rounded-3xl border-2 border-zinc-200 bg-white p-6 sm:p-8">
+      <section className={`space-y-6 ${PANEL} p-6 sm:p-8`}>
         <div className="space-y-3">
           <h2 className={SECTION_TITLE}>{t("college.compareEmptyTitle")}</h2>
           <CompareAdd options={options} picked={[]} />
         </div>
         <CompareFromList options={options} />
-        <p className="text-sm text-zinc-500">
+        <p className="text-[15px] text-ink">
           {t("college.orTick")}{" "}
           <Link className="font-semibold text-blue-700 underline underline-offset-4" href="/colleges">
             {t("college.collegesLink")}
@@ -316,7 +316,7 @@ function EmptyCompare({ t, options, bySlug }: { t: TFunction; options: CompareOp
             <li key={i.key}>
               <Link
                 href={compareHref(i.colleges.map((c) => c.slug))}
-                className="group flex h-full flex-col gap-3 rounded-2xl border-2 border-zinc-200 bg-white p-4 transition-colors hover:border-ink"
+                className="group flex h-full flex-col gap-3 rounded-2xl bg-zinc-50 p-4 transition-colors hover:bg-zinc-100"
               >
                 <span className="flex items-center justify-between gap-2 font-display font-bold text-ink">
                   {t(`college.compareIdea.${i.key}`)}
@@ -326,7 +326,7 @@ function EmptyCompare({ t, options, bySlug }: { t: TFunction; options: CompareOp
                 </span>
                 <span className="flex flex-wrap gap-1.5">
                   {i.colleges.map((c) => (
-                    <span key={c.slug} className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-semibold text-zinc-700">
+                    <span key={c.slug} className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[13px] font-semibold text-zinc-700">
                       <span className="-ml-1.5 empty:hidden">
                         <SchoolLogo slug={c.slug} size="sm" />
                       </span>

@@ -51,7 +51,7 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
       <p className="text-sm text-zinc-600">{counts.map(([r, n]) => t("application.res.count", { n, label: resultLabel(r).toLowerCase() })).join(" · ")}</p>
       <div className="overflow-x-auto rounded-lg border border-zinc-200">
         <table className="w-full min-w-[480px] text-sm">
-          <thead className="bg-zinc-50 text-left text-xs uppercase tracking-wide text-zinc-500">
+          <thead className="text-left text-[13px] font-medium text-zinc-600">
             <tr>
               <th className="p-2">{t("application.col.college")}</th>
               <th className="p-2">{t("application.col.plan")}</th>
@@ -98,7 +98,7 @@ export function ResultsList({ colleges, plans }: { colleges: CollegeSummary[]; p
       </div>
       <p className="text-xs text-zinc-500">
         {t("application.res.undoPre", { label: resultLabel("submitted") })}
-        <Link href="/application/list" className="text-blue-600 underline">
+        <Link href="/application/list" className="text-blue-700 underline">
           {t("nav.myList")}
         </Link>
         {t("application.res.undoPost")}

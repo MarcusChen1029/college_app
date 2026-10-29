@@ -20,7 +20,8 @@ import {
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, PAGE_INTRO, PANEL } from "@/lib/ui";
+import { EmptyNote } from "./EmptyState";
 
 const roleLabel = (t: TFunction, r: RecommenderRole) => t(`recommenders.role.${r}` as MessageKey);
 const statusLabel = (t: TFunction, s: RecommenderStatus) => t(`recommenders.status.${s}` as MessageKey);
@@ -132,7 +133,7 @@ export function RecommendersPage() {
 
   return (
     <div className="space-y-5">
-      <p className="text-sm text-zinc-500">{t("recommenders.intro")}</p>
+      <p className={PAGE_INTRO}>{t("recommenders.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
           {error}{" "}
@@ -142,7 +143,7 @@ export function RecommendersPage() {
         </p>
       )}
 
-      <section aria-labelledby="rec-add" className="space-y-3 rounded-lg border border-zinc-200 p-5">
+      <section aria-labelledby="rec-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
         <h2 id="rec-add" className="font-display text-lg font-bold">
           {t("recommenders.addTitle")}
         </h2>
@@ -156,7 +157,7 @@ export function RecommendersPage() {
         {!ready ? (
           <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
         ) : sorted.length === 0 ? (
-          <p className="text-sm text-zinc-500">{t("recommenders.empty")}</p>
+          <EmptyNote>{t("recommenders.empty")}</EmptyNote>
         ) : (
           <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
             {sorted.map((r) => {

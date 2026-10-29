@@ -74,7 +74,7 @@ export function TeacherRoster() {
       <h1 className="font-display text-3xl font-bold">{t("teacher.students.heading")}</h1>
 
       {data.rows.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
+        <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
           {t("teacher.students.emptyPre")}
           <Link href="/teacher/classes" className="font-semibold text-blue-700 underline underline-offset-4">
             {t("teacher.students.emptyLink")}
@@ -124,7 +124,7 @@ export function TeacherRoster() {
             {t("teacher.students.showing", { shown: shown.length, total: data.rows.length })}
           </p>
           {shown.length === 0 ? (
-            <p className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">{t("teacher.students.noMatch")}</p>
+            <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">{t("teacher.students.noMatch")}</p>
           ) : (
             <TeacherRosterTable rows={shown} classNames={classNames} now={data.now} />
           )}
