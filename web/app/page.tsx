@@ -31,12 +31,14 @@ const DISPLAY = "font-display font-extrabold tracking-[-0.035em]";
 const H2 = `${DISPLAY} text-[clamp(2.5rem,4.4vw,4rem)] leading-[0.95]`;
 const BIG_BUTTON =
   "inline-flex h-14 shrink-0 items-center justify-center rounded-full bg-ink px-8 text-base font-semibold text-white transition-[background-color,transform] duration-200 hover:bg-zinc-800 active:scale-[0.98]";
+const LIGHT_BUTTON =
+  "inline-flex h-14 shrink-0 items-center justify-center rounded-full bg-zinc-50 px-8 text-base font-semibold text-ink transition-[background-color,transform] duration-200 hover:bg-blue-100 active:scale-[0.98]";
 const LINK = "font-semibold text-blue-700 underline underline-offset-4 hover:text-ink";
 
 // Public universities whose international admit rate is far below the overall one (CDS C1), plus Purdue for contrast.
 const FIT_SLUGS = ["arkansas", "oklahoma-state", "kansas-state", "western-michigan", "unm", "idaho", "iowa", "purdue"];
-const INDEX_SIZE = 150;
-const INDEX_ON_PHONES = 60;
+const INDEX_SIZE = 40;
+const INDEX_ON_PHONES = 24;
 
 const DATE_LOCALE: Record<Locale, string> = { en: "en-US", "zh-TW": "zh-TW" };
 const today = () => new Date().toISOString().slice(0, 10);
@@ -129,7 +131,7 @@ function buildSlips(t: TFunction, locale: Locale, bySlug: Map<string, CollegeSum
     ? deadlines
         .filter((d) => d.institution_id === umich.id && d.kind === "application" && d.plan_key && d.due_date)
         .sort((a, b) => a.due_date!.localeCompare(b.due_date!))
-        .map((d) => line(planLabel(t, d.plan_key!), fmtDay(d.due_date!, locale)))
+        .map((d) => line(d.plan_key === "ROLLING" ? planLabel(t, d.plan_key) : d.plan_key!, fmtDay(d.due_date!, locale)))
     : [];
   add("umich", t("home.slip.deadlines"), CAMPUS.michigan, umichDates, t("home.slip.admissionsSite"));
 
@@ -190,9 +192,9 @@ function buildSlips(t: TFunction, locale: Locale, bySlug: Map<string, CollegeSum
 
 function SlipCard({ slip, i, t }: { slip: Slip; i: number; t: TFunction }) {
   return (
-    <li data-reveal className="slip torn grid grid-cols-[104px_1fr] bg-zinc-50 pb-4 text-ink sm:block lg:flex-1" style={{ ...step(i), rotate: `${slip.tilt}deg` }}>
-      <Duo photo={slip.photo} sizes="(min-width: 1024px) 17vw, (min-width: 640px) 45vw, 104px" className="h-full min-h-32 sm:aspect-[3/2] sm:h-auto" />
-      <div className="p-4 sm:p-5">
+    <li data-reveal className="slip torn bg-zinc-50 pb-4 text-ink lg:flex-1" style={{ ...step(i), rotate: `${slip.tilt}deg` }}>
+      <Duo photo={slip.photo} sizes="(min-width: 1024px) 17vw, (min-width: 640px) 45vw, 100vw" className="aspect-[3/1] sm:aspect-[3/2]" />
+      <div className="p-4 sm:p-5 lg:p-4">
         <p className="font-display text-xl font-bold leading-tight">{slip.name}</p>
         <p className="text-base font-semibold text-zinc-600">{slip.kind}</p>
         <div aria-hidden className="tear mt-3" />
@@ -358,9 +360,9 @@ export default async function Home() {
                 </button>
               </form>
             </div>
-            <ul className="mt-12 columns-2 gap-x-8 text-base leading-8 sm:columns-3 lg:columns-5">
+            <ul className="mt-12 columns-2 gap-x-6 text-lg leading-snug sm:columns-3 sm:gap-x-8 sm:text-xl lg:columns-4">
               {index.map(({ c, phone }) => (
-                <li key={c.slug} className={`break-inside-avoid ${phone ? "" : "max-sm:hidden"}`}>
+                <li key={c.slug} className={`mb-3 break-inside-avoid pl-4 -indent-4 ${phone ? "" : "max-sm:hidden"}`}>
                   <Link href={`/colleges/${c.slug}`} className="underline-offset-4 hover:underline">
                     {nameOf(c)}
                   </Link>
@@ -376,34 +378,35 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* The rest of the season, set as a menu. */}
-      <section className="bg-blue-100 py-28 text-ink sm:py-40">
+      {/* The rest of the season, set as a price list in light ink on navy. */}
+      <section className="bg-ink py-28 text-white sm:py-40">
         <div className={FRAME}>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <h2 data-reveal className={H2}>
                 {t("home.more.title")}
               </h2>
-              <p data-reveal style={step(1)} className="mt-6 max-w-xl text-xl leading-relaxed">
+              <p data-reveal style={step(1)} className="mt-6 max-w-xl text-xl leading-relaxed text-blue-100">
                 {t("home.more.body")}
               </p>
             </div>
-            <Link data-reveal style={step(2)} href="/tools" className={`${BIG_BUTTON} self-start lg:self-end`}>
+            <Link data-reveal style={step(2)} href="/tools" className={`${LIGHT_BUTTON} self-start lg:self-end`}>
               {t("home.more.cta")}
             </Link>
           </div>
-          <div data-reveal className="paper-scallop mt-14 grid gap-12 bg-white px-6 pb-14 pt-16 sm:px-12 md:grid-cols-3 md:gap-10">
-            {MENU.map((g) => (
-              <div key={g.group}>
-                <h3 className="font-display text-[28px] font-bold tracking-tight">{t(g.group)}</h3>
-                <ul className="mt-6 space-y-6">
+          <div className="mt-16 grid gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+            {MENU.map((g, gi) => (
+              <div key={g.group} data-reveal style={step(gi)}>
+                <h3 className="font-display text-[28px] font-bold tracking-tight text-blue-200">{t(g.group)}</h3>
+                <ul className="mt-6 space-y-7">
                   {g.items.map(([name, body, value]) => (
                     <li key={name}>
-                      <div className="flex items-baseline justify-between gap-4">
-                        <span className="text-xl font-semibold leading-snug">{t(name)}</span>
-                        <span className={`shrink-0 text-base font-semibold ${value === "home.menu.senior" ? "text-blue-700" : "text-zinc-600"}`}>{t(value)}</span>
+                      <div className="flex items-baseline gap-3">
+                        <span className="text-2xl font-semibold leading-snug">{t(name)}</span>
+                        <span aria-hidden className="leader leader-light min-w-6 flex-1 max-sm:hidden" />
+                        <span className={`ml-auto shrink-0 text-base font-semibold ${value === "home.menu.senior" ? "text-sun" : "text-blue-200"}`}>{t(value)}</span>
                       </div>
-                      <p className="mt-1 text-base leading-snug">{t(body)}</p>
+                      <p className="mt-1 text-base leading-snug text-blue-100">{t(body)}</p>
                     </li>
                   ))}
                 </ul>
@@ -433,7 +436,7 @@ export default async function Home() {
       )}
 
       {/* The reply card. */}
-      <section className="relative overflow-hidden bg-ink text-white">
+      <section className="relative overflow-hidden bg-blue-200 text-ink">
         <div className={`${FRAME} grid gap-14 pt-24 sm:pt-32 lg:grid-cols-12 lg:items-end lg:gap-8`}>
           <div className="lg:col-span-4 lg:pb-24">
             <p data-reveal className="text-2xl leading-snug">
@@ -461,17 +464,17 @@ export default async function Home() {
           </div>
         </div>
         <div className={`${FRAME} pb-12 pt-12`}>
-          <details className="max-w-4xl text-[13px] leading-relaxed text-blue-100">
-            <summary className="cursor-pointer text-base font-semibold text-white">{t("home.photosSummary")}</summary>
+          <details className="max-w-4xl text-[13px] leading-relaxed">
+            <summary className="cursor-pointer text-base font-semibold">{t("home.photosSummary")}</summary>
             <p className="mt-3">
               {t("home.photos")}:{" "}
               {credits.map((p, i) => (
                 <span key={p.src}>
-                  <a href={p.sourcePage} className="underline underline-offset-2 hover:text-white">
+                  <a href={p.sourcePage} className="underline underline-offset-2 hover:text-blue-700">
                     {p.title}
                   </a>{" "}
                   ({p.creator},{" "}
-                  <a href={p.licenceUrl} className="underline underline-offset-2 hover:text-white">
+                  <a href={p.licenceUrl} className="underline underline-offset-2 hover:text-blue-700">
                     {p.licence}
                   </a>
                   ){i < credits.length - 1 ? "; " : "."}

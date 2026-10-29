@@ -361,12 +361,19 @@ html:has([data-jump-nav]) {
     translate: 0 -0.35em;
   }
 
+  .leader-light {
+    border-bottom-color: rgb(205 234 252 / 0.3);
+  }
+
   /* The tear line across a receipt. */
   .tear {
     border-top: 4px dotted rgb(18 48 74 / 0.28);
   }
 
   /* A postage stamp: perforated edges. */
+  .stamp .duo img {
+    filter: grayscale(1) contrast(1.45) brightness(0.92);
+  }
   .stamp {
     rotate: 4deg;
     padding: 5px;
