@@ -74,6 +74,16 @@ export function PlanChip({ plan }: { plan: string }) {
   );
 }
 
+/** The plan as a word in a line of text ("Stanford, CA · 4% admit · REA"), its full name on hover. */
+export function PlanText({ plan }: { plan: string }) {
+  const t = useT();
+  return (
+    <span title={planTitle(t, plan)} className="font-semibold text-ink">
+      {planShort(t, plan)}
+    </span>
+  );
+}
+
 /** A day of the timetable: "Sun, Nov 1 · 3 days" and how many of the colleges shown close on it. */
 export function DayHead({ group, withDays = true }: { group: DueGroup; withDays?: boolean }) {
   const t = useT();
