@@ -258,7 +258,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       <option value="">{t("portals.more")}</option>
       {addGroups.map((g) => (
         <optgroup key={g.region} label={g.region === "ANY" ? t("portals.anyCountry") : regionName(t, g.region)}>
-          {g.systems.map((s) => (
+          {/* The accounts with a chip above are not listed twice. */}
+          {g.systems.filter((s) => !QUICK.includes(s.key)).map((s) => (
             <option key={s.key} value={s.key}>
               {sysName(s)}
             </option>
@@ -270,8 +271,12 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   );
 
   const addRow = (
-    <div role="group" aria-label={t("portals.addPortalLabel")} className="flex flex-wrap items-center gap-2">
-      {quick}
+    <div className="flex flex-wrap items-center gap-2">
+      {quick.length > 0 && (
+        <div role="group" aria-label={t("portals.quickLabel")} className="flex flex-wrap items-center gap-2">
+          {quick}
+        </div>
+      )}
       {addMenu}
     </div>
   );
@@ -321,7 +326,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
               </ul>
             </Group>
           )}
-          {others && <Group title={t("portals.groupOther")}>{others}</Group>}
+          {/* Its own heading only beside the submitted colleges; alone, the country's heading says enough. */}
+          {others && (inCountry.length > 0 ? <Group title={t("portals.groupOther")}>{others}</Group> : others)}
         </div>
       </Section>
     );

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { FitBadge, Pill, SchoolLogo, TierBadge } from "@/components/badges";
 import type { Rec } from "@/lib/field-match";
-import { reasonFor, type MatchRow } from "@/lib/field-match-view";
+import { courseOffer, offerRange, reasonFor, type MatchCourse, type MatchRow } from "@/lib/field-match-view";
+import type { FieldKey } from "@/lib/fields";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { fmtPct } from "@/lib/format";
@@ -13,7 +14,23 @@ import { useStudent } from "@/lib/student-store";
 /** One college. `earnings`: Scorecard median earnings in the chosen field, added to the evidence line. `reason` rows (famous but not strong) show why instead of a strength bar.
  *  `undecided`: no field chosen, so every row is ranked by its overall tier alone. The page says that once; a row shows its tier
  *  badge only, without the strength bar, the confidence pill or an "Overall tier" line that would say the same thing again. */
-export function FieldMatchRow({ rec, reason = false, earnings, undecided = false }: { rec: Rec<MatchRow>; reason?: boolean; earnings?: FieldEarnings; undecided?: boolean }) {
+export function FieldMatchRow({
+  rec,
+  reason = false,
+  earnings,
+  undecided = false,
+  field,
+  courses,
+}: {
+  rec: Rec<MatchRow>;
+  reason?: boolean;
+  earnings?: FieldEarnings;
+  undecided?: boolean;
+  /** The chosen direction ("undecided" when none). */
+  field?: FieldKey;
+  /** A non-US university's courses and offers; undefined for US colleges or when none are loaded. */
+  courses?: MatchCourse[];
+}) {
   const t = useT();
   const locale = useLocale();
   const { college, score, fit } = rec;
@@ -37,12 +54,32 @@ export function FieldMatchRow({ rec, reason = false, earnings, undecided = false
   const { profile } = useStudent();
   const intl = !!profile.international && college.intl_admit_rate != null;
   const rate = intl ? college.intl_admit_rate : college.admit_rate;
+  // A university that admits by course: the offer of the course in the chosen field, or the spread across its courses
+  // while undecided, said plainly when the data is missing (never a bare dash).
+  const byCourse = college.country_code !== "US";
+  const fieldCourse = !undecided && field ? courses?.find((c) => c.fields.includes(field)) : undefined;
+  const offerText = byCourse
+    ? undecided
+      ? courses?.length
+        ? [t("match.offerCourses", { n: courses.length }), offerRange(courses) ?? t("match.offerNoFixed")].join(" · ")
+        : t("match.offerNone")
+      : fieldCourse
+        ? (courseOffer(fieldCourse) ?? t("match.offerNoFixed"))
+        : courses?.length && field
+          ? t("match.offerNoField", { field: t(`match.field.${field}` as MessageKey) })
+          : t("match.offerNone")
+    : null;
+  const offerTitle = undecided ? courses?.map((c) => `${c.name}: ${courseOffer(c) ?? "—"}`).join("\n") : fieldCourse ? `${fieldCourse.name}\n${fieldCourse.full}` : undefined;
+  if (offerText && !undecided && !why) parts.push(offerText);
 
   return (
     <li className="rounded-2xl bg-zinc-50 px-4 py-3">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
         <SchoolLogo slug={college.slug} name={college.short_name ?? college.name} />
-        <TierBadge tier={college.general_tier} />
+        {/* A fixed slot, so names line up whether the badge reads S++ or B. */}
+        <span className="inline-flex w-11 shrink-0">
+          <TierBadge tier={college.general_tier} />
+        </span>
         <Link
           href={`/colleges/${college.slug}`}
           className={`min-w-0 flex-1 truncate font-semibold hover:underline ${undecided ? "sm:flex-none sm:basis-64" : ""}`}
@@ -52,7 +89,13 @@ export function FieldMatchRow({ rec, reason = false, earnings, undecided = false
         {undecided && (
           // Phone: the name takes the first line and the rate follows the chip on the second; wider: the rate mid-row.
           <span className="order-last whitespace-nowrap text-sm text-zinc-700 tabular-nums sm:order-none sm:min-w-0 sm:flex-1">
-            {rate != null ? t(intl ? "match.admitIntl" : "match.admit", { rate: fmtPct(rate) }) : "—"}
+            {byCourse ? (
+              <span title={offerTitle}>{offerText}</span>
+            ) : rate != null ? (
+              t(intl ? "match.admitIntl" : "match.admit", { rate: fmtPct(rate) })
+            ) : (
+              t("match.admitNone")
+            )}
           </span>
         )}
         {fit && <FitBadge fit={fit.fit} result={fit} />}

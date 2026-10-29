@@ -61,11 +61,17 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
     return caErrorText(t, (found.find((i) => i.field === f) ?? found[0]).field, next);
   };
   const yesNo = { yes: t("common.yes"), no: t("common.no") };
+  // The card opens with what the student typed in the draft row, in the same order (role, organization, description),
+  // so nothing jumps when the draft becomes a card; the rest follows in the form's own order (lib/activities.ts).
+  const visible = caVisibleQuestions(a);
+  const FIRST: (keyof CaActivity)[] = ["position", "organization", "description"];
+  const ordered = [...FIRST.filter((f) => visible.includes(f)), ...visible.filter((f) => !FIRST.includes(f))];
+  const paired = visible.includes("position");
 
   return (
     <>
       {a.legacy && <LegacyNote text={a.legacy} onDismiss={() => set({ legacy: undefined })} />}
-      {caVisibleQuestions(a).map((field) => {
+      {ordered.map((field) => {
         switch (field) {
           case "type":
             return (
@@ -107,8 +113,9 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               </div>
             );
           case "organization":
+            // Beside the role, as in the draft row; full width when the form asks for no role.
             return (
-              <div key={field} className={wide}>
+              <div key={field} className={paired ? undefined : wide}>
                 <TextField
                   label={t("writing.organizationName")}
                   name="organization"

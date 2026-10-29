@@ -6,7 +6,7 @@ import { FieldMatchRow } from "@/components/FieldMatchRow";
 import { fmtDate } from "@/lib/format";
 import { FIELD_AREAS, FIELDS, cleanStudyFields, type FieldKey } from "@/lib/fields";
 import { recommend, type Bucket, type FieldEvidence } from "@/lib/field-match";
-import type { MatchRow } from "@/lib/field-match-view";
+import type { MatchCourse, MatchRow } from "@/lib/field-match-view";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { REGIONS, cleanRegions, type RegionCode } from "@/lib/regions";
@@ -21,7 +21,18 @@ const POPULAR: FieldKey[] = ["computer_science", "engineering", "business", "eco
 const select =
   "h-10 w-full rounded-xl border border-zinc-300 bg-white px-3 text-[15px] font-normal text-ink hover:border-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:cursor-not-allowed disabled:bg-zinc-50";
 
-export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRow[]; evidence: Record<string, FieldEvidence>; released: string }) {
+export function FieldMatch({
+  colleges,
+  evidence,
+  courses,
+  released,
+}: {
+  colleges: MatchRow[];
+  evidence: Record<string, FieldEvidence>;
+  /** Non-US universities' courses with their offers (app/(app)/tools/match/page.tsx). */
+  courses: Record<string, MatchCourse[]>;
+  released: string;
+}) {
   const t = useT();
   const student = useStudent();
   const profile = student.profile;
@@ -165,7 +176,7 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
               </div>
               <ul className="space-y-2">
                 {(all ? list : list.slice(0, PER_BUCKET)).map((rec) => (
-                  <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} undecided={undecided} />
+                  <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} undecided={undecided} field={main} courses={courses[rec.college.slug]} />
                 ))}
               </ul>
               {list.length > PER_BUCKET && (
@@ -185,7 +196,7 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
             </div>
             <ul className="space-y-2">
               {result.famousNotForField.map((rec) => (
-                <FieldMatchRow key={rec.college.slug} rec={rec} reason />
+                <FieldMatchRow key={rec.college.slug} rec={rec} reason field={main} courses={courses[rec.college.slug]} />
               ))}
             </ul>
           </section>
@@ -197,7 +208,7 @@ export function FieldMatch({ colleges, evidence, released }: { colleges: MatchRo
             <p className="mt-2 text-[15px] text-zinc-700">{t("match.weakerIntro")}</p>
             <ul className="mt-2 space-y-2">
               {result.weaker.map((rec) => (
-                <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} undecided={undecided} />
+                <FieldMatchRow key={rec.college.slug} rec={rec} earnings={earningsFor(rec.college.slug)} undecided={undecided} field={main} courses={courses[rec.college.slug]} />
               ))}
             </ul>
           </details>

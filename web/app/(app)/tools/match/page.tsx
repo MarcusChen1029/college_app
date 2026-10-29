@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { FieldMatch } from "@/components/FieldMatch";
-import { getSummaries } from "@/lib/data";
+import { getCourseOffers, getSummaries } from "@/lib/data";
 import completions from "@/lib/data/field-completions.json";
 import outcomes from "@/lib/data/outcomes.json";
 import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/field-match";
-import { toMatchRow } from "@/lib/field-match-view";
+import { aLevelGrades, toMatchRow, type MatchCourse } from "@/lib/field-match-view";
+import { programFields } from "@/lib/fields";
 import { getT } from "@/lib/i18n/server";
 import { fieldEarningsFor, type OutcomesData } from "@/lib/outcomes";
 import { PAGE_INTRO, PAGE_TITLE } from "@/lib/ui";
@@ -14,7 +15,21 @@ export const metadata: Metadata = { title: "College match by field" };
 
 // The IPEDS and Scorecard files stay on the server: only the evidence for the colleges in the list goes to the browser.
 async function Match() {
-  const colleges = (await getSummaries()).map(toMatchRow);
+  const [summaries, offers] = await Promise.all([getSummaries(), getCourseOffers()]);
+  const colleges = summaries.map(toMatchRow);
+  // Universities that admit by course: each course's fields and its offer, short (the full text for a tooltip).
+  const courses: Record<string, MatchCourse[]> = {};
+  for (const c of summaries) {
+    if (c.country_code === "US" || !offers[c.id]) continue;
+    courses[c.slug] = offers[c.id].map((o) => ({
+      name: o.name,
+      fields: programFields(o.name),
+      aLevel: aLevelGrades(o.a_level_offer),
+      ib: o.ib_points,
+      atar: o.atar,
+      full: [o.a_level_offer && `A-level: ${o.a_level_offer}`, o.ib_offer && `IB: ${o.ib_offer}`, o.atar != null && `ATAR ${o.atar}`].filter(Boolean).join("\n"),
+    }));
+  }
   const evidence: Record<string, FieldEvidence> = {};
   for (const c of colleges) {
     const ev = buildEvidence(completions as FieldCompletions, c.slug);
@@ -22,7 +37,7 @@ async function Match() {
     const earnings = c.country_code === "US" ? fieldEarningsFor(outcomes as OutcomesData, c.slug) : {};
     evidence[c.slug] = Object.keys(earnings).length ? { ...ev, earnings } : ev;
   }
-  return <FieldMatch colleges={colleges} evidence={evidence} released={(outcomes as OutcomesData).released} />;
+  return <FieldMatch colleges={colleges} evidence={evidence} courses={courses} released={(outcomes as OutcomesData).released} />;
 }
 
 export default async function MatchPage() {
