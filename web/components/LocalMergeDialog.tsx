@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "@/components/Modal";
 import { useT } from "@/lib/i18n/client";
+import { loadSlots, openVaultDialog, useVault } from "@/lib/portal-vault-client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
@@ -15,13 +16,7 @@ export function LocalMergeDialogHost() {
   const [failed, setFailed] = useState(0); // passwords that couldn't be moved, reported after "Add"
   const found = student.localFound;
 
-  if (failed > 0) {
-    return (
-      <Modal title={<h2 className="font-display text-lg font-bold">{t("signIn.merge.failedTitle")}</h2>} onClose={() => setFailed(0)} className="w-[min(28rem,calc(100vw-2rem))]">
-        <p className="text-sm text-zinc-700">{failed === 1 ? t("signIn.merge.failedOne", { n: failed }) : t("signIn.merge.failedMany", { n: failed })}</p>
-      </Modal>
-    );
-  }
+  if (failed > 0) return <PasswordsWaiting n={failed} onClose={() => setFailed(0)} />;
   if (!found) return null;
 
   const items = [
@@ -63,6 +58,36 @@ export function LocalMergeDialogHost() {
             {t("signIn.merge.later")}
           </button>
         </div>
+      </div>
+    </Modal>
+  );
+}
+
+// After "Add": the passwords that are not in the account yet. They stay in this browser and move into the vault once it
+// is unlocked (or set up), so this offers that step right away.
+function PasswordsWaiting({ n, onClose }: { n: number; onClose: () => void }) {
+  const t = useT();
+  const vault = useVault();
+  useEffect(() => {
+    void loadSlots();
+  }, []);
+  const next = vault.lock === "none" ? "setup" : vault.lock === "locked" ? "unlock" : null;
+  return (
+    <Modal title={<h2 className="font-display text-lg font-bold">{t("signIn.merge.failedTitle")}</h2>} onClose={onClose} className="w-[min(28rem,calc(100vw-2rem))]">
+      <div className="space-y-3">
+        <p className="text-sm text-zinc-700">{n === 1 ? t("signIn.merge.failedOne", { n }) : t("signIn.merge.failedMany", { n })}</p>
+        {next && (
+          <button
+            type="button"
+            className={buttonClass("primary", "sm")}
+            onClick={() => {
+              onClose();
+              openVaultDialog(next);
+            }}
+          >
+            {next === "setup" ? t("portals.vault.setUp") : t("portals.vault.unlockVault")}
+          </button>
+        )}
       </div>
     </Modal>
   );

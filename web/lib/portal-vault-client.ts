@@ -37,8 +37,9 @@ import {
   type Unlocked,
 } from "./vault-flows";
 
-// What the dialogs need to type their own state, so they import from here only. `Unlocked` (the key) is deliberately
-// not among them: no result of this module carries it.
+// What the dialogs need to type their own state, so they import from here only. `Unlocked` is deliberately not among
+// them. One result does carry a key: `Prepared` (from prepare()) holds the new vault's key, passphrase and recovery code
+// until commit() stores the vault; only the setup dialog holds it, in its own state, and drops it when it closes.
 export type { FlowError, Prepared, PreparedRecovery, Secret };
 
 const ENDPOINT = "/api/portal-passwords";
@@ -57,6 +58,8 @@ export type VaultView = {
   other: ReadonlySet<string>;
   /** How many slots still hold an old server-sealed value, waiting to be moved into the vault at the next unlock. */
   legacy: number;
+  /** Those slots themselves: a row needs to know its own, because such a password must never be offered for deletion. */
+  legacySlots: ReadonlySet<string>;
   dialog: VaultDialog;
   /** How many old rows the latest handover moved into the vault (0 when every row failed); null when none ran since the last lock. */
   moved: number | null;
@@ -64,7 +67,7 @@ export type VaultView = {
 /** Why a password could not be shown or saved. "locked" = this tab has no open vault; the rest are the flows' own codes. */
 export type VaultError = FlowError | "locked" | "other_vault" | "legacy";
 
-const INITIAL: VaultView = { status: "idle", lock: "unknown", slots: new Set(), other: new Set(), legacy: 0, dialog: null, moved: null };
+const INITIAL: VaultView = { status: "idle", lock: "unknown", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set(), dialog: null, moved: null };
 let view: VaultView = INITIAL;
 let viewUser: string | null = null; // whose slots `view` holds
 let listing: Promise<void> | null = null;
@@ -142,7 +145,7 @@ async function account(): Promise<string | null> {
 
 function markUnavailable() {
   kinds = new Map();
-  emit({ ...view, status: "unavailable", slots: new Set(), other: new Set(), legacy: 0 });
+  emit({ ...view, status: "unavailable", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set() });
 }
 
 const call: Call = async (body) => {
@@ -175,13 +178,13 @@ function errorOf(r: { status: number; data: Record<string, unknown> }): FlowErro
 function viewKinds(from: ReadonlyMap<string, SlotState["kind"]>) {
   const slots = new Set<string>();
   const other = new Set<string>();
-  let legacy = 0;
+  const legacySlots = new Set<string>();
   from.forEach((kind, slot) => {
     slots.add(slot);
     if (kind === "other") other.add(slot);
-    else if (kind === "v1") legacy++;
+    else if (kind === "v1") legacySlots.add(slot);
   });
-  return { slots, other, legacy };
+  return { slots, other, legacy: legacySlots.size, legacySlots };
 }
 
 // These slots now hold a value sealed under the vault (or none, when `has` is false). Ignored when the page has moved
@@ -458,7 +461,7 @@ export async function resetVault(): Promise<FlowError | null> {
   if (viewUser === uid) {
     setKey(null);
     kinds = new Map();
-    emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, moved: null });
+    emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set(), moved: null });
   }
   return null;
 }
