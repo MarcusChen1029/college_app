@@ -5,6 +5,7 @@ import { btn, ClassCard, CodeBox, codeActions } from "@/components/TeacherClassC
 import { ActionsMenu } from "@/components/teacher/ActionsMenu";
 import { errorText } from "@/components/TeacherText";
 import { useLocale, useT } from "@/lib/i18n/client";
+import { formatCode } from "@/lib/join-codes";
 import { shortDate } from "@/lib/roster-view";
 import { buttonClass } from "@/lib/ui";
 import {
@@ -16,6 +17,7 @@ import {
   removeStudent,
   revokeCode,
   type LinkedStudent,
+  type TeacherClass,
   type TeacherOverview,
 } from "@/lib/links-api";
 
@@ -27,6 +29,35 @@ type Data = { overview: TeacherOverview; students: LinkedStudent[] };
 async function fetchAll(): Promise<Data> {
   const [overview, students] = await Promise.all([loadTeacherOverview(), listStudents()]);
   return { overview, students };
+}
+
+/**
+ * A label per class that tells same-named classes apart (the school year when that is unique among them, else the join
+ * code, else its position), with an archived class saying so.
+ */
+function classLabels(classes: TeacherClass[], archivedSuffix: string): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const c of classes) {
+    const twins = classes.filter((x) => x.name === c.name);
+    let label = c.name;
+    if (twins.length > 1) {
+      const uniqueYear = c.schoolYear && twins.filter((x) => x.schoolYear === c.schoolYear).length === 1;
+      label = `${c.name} · ${uniqueYear ? c.schoolYear : c.code ? formatCode(c.code) : `#${twins.indexOf(c) + 1}`}`;
+    }
+    out.set(c.id, c.archived ? `${label} ${archivedSuffix}` : label);
+  }
+  return out;
+}
+
+/**
+ * After an action removed the row (or card) its menu sat in, focus the menu of the row that took its place (or the
+ * last one), or the list's heading when nothing is left, instead of letting focus fall back to the page.
+ */
+function focusAfterRemoval(listId: string, index: number, fallbackId: string) {
+  setTimeout(() => {
+    const menus = document.querySelectorAll<HTMLButtonElement>(`#${listId} button[aria-haspopup="menu"]`);
+    (menus[Math.min(index, menus.length - 1)] ?? document.getElementById(fallbackId))?.focus();
+  }, 0);
 }
 
 /** Teacher dashboard body: classes with join codes, and one-on-one students. Reloads after every action. */
@@ -81,7 +112,8 @@ export function TeacherClasses() {
       setBusy(false);
     }
   }
-  const run = (fn: () => Promise<unknown>) => void runAsync(fn);
+  // then: runs once the action and the reload are over (for example to put focus back after a row went away).
+  const run = (fn: () => Promise<unknown>, then?: () => void) => void runAsync(fn).then(then);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -112,7 +144,7 @@ export function TeacherClasses() {
   const active = overview.classes.filter((c) => !c.archived);
   const archived = overview.classes.filter((c) => c.archived);
   const members = (id: string) => students.filter((s) => s.classIds.includes(id));
-  const className = (id: string) => overview.classes.find((c) => c.id === id)?.name;
+  const labels = classLabels(overview.classes, t("teacher.charts.archivedSuffix"));
 
   // Classes and the people in them on the left; making a class and the one-on-one code in a column beside them.
   return (
@@ -129,16 +161,16 @@ export function TeacherClasses() {
         <h2 id="classes-heading" className="sr-only">
           {t("teacher.classes.title")}
         </h2>
-        <p className="text-sm font-medium text-zinc-600">
+        <p id="classes-summary" tabIndex={-1} className="text-sm font-medium text-zinc-600 focus:outline-none">
           {t(active.length === 1 ? "teacher.classes.count.one" : "teacher.classes.count.other", { n: active.length })} ·{" "}
           {t(students.length === 1 ? "teacher.classes.linkedCount.one" : "teacher.classes.linkedCount.other", { n: students.length })}
         </p>
         {active.length === 0 ? (
           <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">{t("teacher.classes.none")}</p>
         ) : (
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {active.map((c) => (
-              <ClassCard key={c.id} cls={c} members={members(c.id)} now={now} busy={busy} run={run} />
+          <ul id="class-cards" className="grid gap-4 sm:grid-cols-2">
+            {active.map((c, i) => (
+              <ClassCard key={c.id} cls={c} label={labels.get(c.id)} members={members(c.id)} now={now} busy={busy} run={run} onRemoved={() => focusAfterRemoval("class-cards", i, "classes-summary")} />
             ))}
           </ul>
         )}
@@ -147,7 +179,7 @@ export function TeacherClasses() {
             <summary className="cursor-pointer text-sm font-semibold">{t("teacher.classes.archived", { n: archived.length })}</summary>
             <ul className="mt-3 grid gap-4 sm:grid-cols-2">
               {archived.map((c) => (
-                <ClassCard key={c.id} cls={c} members={members(c.id)} now={now} busy={busy} run={run} />
+                <ClassCard key={c.id} cls={c} label={labels.get(c.id)} members={members(c.id)} now={now} busy={busy} run={run} />
               ))}
             </ul>
           </details>
@@ -155,14 +187,14 @@ export function TeacherClasses() {
       </section>
 
       <section className="space-y-3" aria-labelledby="linked-heading">
-        <h2 id="linked-heading" className="font-display text-xl font-bold">
+        <h2 id="linked-heading" tabIndex={-1} className="font-display text-xl font-bold focus:outline-none">
           {t("teacher.classes.allLinked", { n: students.length })}
         </h2>
         {students.length === 0 ? (
           <p className="text-sm text-zinc-500">{t("teacher.classes.noStudents")}</p>
         ) : (
-          <ul className="divide-y divide-zinc-100 rounded-2xl border border-zinc-200 bg-white px-5">
-            {students.map((s) => (
+          <ul id="linked-list" className="divide-y divide-zinc-100 rounded-2xl border border-zinc-200 bg-white px-5">
+            {students.map((s, i) => (
               <li key={s.studentId} className="flex items-center justify-between gap-3 py-3 text-sm">
                 <div className="min-w-0 space-y-1">
                   <p className="flex min-w-0 flex-wrap items-baseline gap-x-2">
@@ -175,7 +207,7 @@ export function TeacherClasses() {
                     {t("teacher.linked", { date: shortDate(s.linkedAt, locale) })}
                     {s.classIds.map((id) => (
                       <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 whitespace-nowrap text-zinc-700">
-                        {className(id) ?? t("teacher.col.classFallback")}
+                        {labels.get(id) ?? t("teacher.col.classFallback")}
                       </span>
                     ))}
                   </p>
@@ -184,22 +216,26 @@ export function TeacherClasses() {
                   label={t("teacher.menu.more", { name: s.displayName })}
                   disabled={busy}
                   actions={[
-                    // One "Remove from <class>" per class the student is in, then removing the link altogether.
+                    // One "Remove from <class>" per class the student is in (archived ones too), then removing the link altogether.
                     ...s.classIds.flatMap((id) => {
                       const cls = overview.classes.find((x) => x.id === id);
-                      if (!cls || cls.archived) return [];
+                      if (!cls) return [];
                       return [
                         {
-                          label: t("teacher.classes.removeFromNamed", { class: cls.name }),
+                          id: `remove-from-${cls.id}`,
+                          label: t("teacher.classes.removeFromNamed", { class: labels.get(cls.id) ?? cls.name }),
                           onSelect: () =>
-                            confirm(t("teacher.classes.removeFromConfirm", { student: s.displayName, class: cls.name })) && run(() => removeFromClass(cls.id, s.studentId)),
+                            confirm(t("teacher.classes.removeFromConfirm", { student: s.displayName, class: labels.get(cls.id) ?? cls.name })) && run(() => removeFromClass(cls.id, s.studentId)),
                         },
                       ];
                     }),
                     {
+                      id: "remove-student",
                       label: t("teacher.classes.removeStudent"),
                       danger: true,
-                      onSelect: () => confirm(t("teacher.classes.removeConfirm", { name: s.displayName })) && run(() => removeStudent(s.studentId)),
+                      onSelect: () =>
+                        confirm(t("teacher.classes.removeConfirm", { name: s.displayName })) &&
+                        run(() => removeStudent(s.studentId), () => focusAfterRemoval("linked-list", i, "linked-heading")),
                     },
                   ]}
                 />

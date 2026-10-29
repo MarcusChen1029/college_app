@@ -142,6 +142,7 @@ test("shortDate: month and day in the reader's language, the year only when it d
   assert.equal(shortDate("2026-11-02", "en", NOW), "Nov 2");
   assert.equal(shortDate("2025-08-31", "en", NOW), "Aug 31, 2025");
   assert.equal(shortDate("2026-11-02", "zh-TW", NOW), "11月2日");
-  assert.equal(shortDate("2026-08-31T12:00:00Z", "en", NOW), "Aug 31");
+  // A timestamp is read in local time: build it from a local noon so the test holds in every time zone.
+  assert.equal(shortDate(new Date(2026, 7, 31, 12).toISOString(), "en", NOW), "Aug 31");
   assert.equal(shortDate("not a date", "en", NOW), "not a date");
 });
