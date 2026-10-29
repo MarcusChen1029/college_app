@@ -299,10 +299,10 @@ export const zhTW: Translation<typeof en> = {
   "application.localOnly": "目前只儲存在這個瀏覽器。",
   "application.keepList": "後，就能在每台裝置上使用你的清單。",
   "application.collegesSuffix": " 所學校",
-  "application.planName": "{name} 方案",
+  "application.planName": "{name}",
   "application.plans": "方案",
   "application.upgrade": "升級",
-  "application.overLimit": "你的清單學校數超過 {name} 方案的上限（{limit}）。已加入的學校都會保留，但在移除部分學校或升級方案之前，無法再新增。",
+  "application.overLimit": "你的清單學校數超過{name}的上限（{limit}）。已加入的學校都會保留，但在移除部分學校或升級方案之前，無法再新增。",
   "application.dismiss": "關閉",
 
   // Empty list
@@ -452,7 +452,7 @@ export const zhTW: Translation<typeof en> = {
   "application.int.emptyPre": "在任何學校的頁面點選 ",
   "application.int.emptyStar": "☆ 有興趣",
   "application.int.emptyMid": "，就能先放在這裡，慢慢決定。",
-  "application.int.fullPre": "你的清單在 {plan} 方案下已滿。請從 ",
+  "application.int.fullPre": "你的清單在{plan}下已滿。請從 ",
   "application.int.fullMid": " 移除一所學校，或 ",
   "application.int.fullUpgrade": "升級方案",
   "application.int.fullPost": "，才能移入更多學校。",

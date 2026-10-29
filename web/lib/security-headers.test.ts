@@ -12,6 +12,12 @@ test("CSP blocks framing, plugins, base-tag hijacks and off-site form posts", ()
   assert.ok(csp.includes("form-action 'self'"));
 });
 
+test("CSP lets forms post only to this site and ECPay's checkout", () => {
+  const csp = contentSecurityPolicy({ supabaseUrl: url, dev: false });
+  const directive = csp.split("; ").find((d) => d.startsWith("form-action "));
+  assert.equal(directive, "form-action 'self' https://payment-stage.ecpay.com.tw https://payment.ecpay.com.tw");
+});
+
 test("CSP lets pages talk only to this site and Supabase", () => {
   const csp = contentSecurityPolicy({ supabaseUrl: url, dev: false });
   assert.ok(csp.includes("connect-src 'self' https://abc.supabase.co wss://abc.supabase.co;"));

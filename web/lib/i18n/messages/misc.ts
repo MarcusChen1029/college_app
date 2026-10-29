@@ -20,12 +20,10 @@ export const en = {
 
   // ── pricing ──
   "misc.pricing.title": "Pricing",
-  "misc.pricing.subtitle": "Every plan has the full tracker. Plans differ only in how many colleges you can keep in My list.",
+  "misc.pricing.subtitle": "Start free with a short list. Buy the admission-year pass once, for the year you start college. No subscription.",
   "misc.pricing.blurb.free": "Try the tracker with a short list.",
-  "misc.pricing.blurb.junior": "Enough for a full reach / target / safety list.",
   "misc.pricing.blurb.senior": "No cap — track every college you're considering.",
   "misc.pricing.free": "Free",
-  "misc.pricing.perMonth": "/ month",
   "misc.pricing.limitUnlimited": "<b>Unlimited</b> colleges in My list",
   "misc.pricing.limitUpTo": "<b>Up to {n}</b> colleges in My list",
   "misc.pricing.featChecklist": "Checklist, essays, portal logins and school codes",
@@ -35,13 +33,8 @@ export const en = {
   "misc.pricing.featConnect": "<b>Connect AI:</b> link your own ChatGPT or Claude and update your applications by chat",
   "misc.pricing.featFiller":
     "<b>College application filler (Beta):</b> a Chrome extension that fills Common App Courses & Grades from your transcript and helps with UC, STARS, Cal State Apply, UIUC and UT",
-  "misc.pricing.over": "You have {n} colleges. You'll keep them, but can't add more until you're under {limit}.",
   "misc.pricing.currentPlan": "Current plan",
-  "misc.pricing.choose": "Choose {name}",
-  "misc.pricing.onPlan": "You're on the {name} plan.",
   "misc.pricing.goToList": "Go to My list",
-  "misc.pricing.footer": "Payments aren't set up yet, so every plan is free to choose for now.",
-  "misc.pricing.footerSaved": "Your plan is saved in this browser; sign in to keep it on every device.",
 
   // ── connect AI ──
   "misc.connect.title": "Connect AI",
@@ -109,12 +102,10 @@ export const zhTW: Translation<typeof en> = {
   "misc.help.remindersA": "登入的學生可以在清單上每個截止日期前 14 天、3 天和 1 天收到電子郵件提醒。你可以在<s>設定</s>中開啟或關閉。",
 
   "misc.pricing.title": "方案與價格",
-  "misc.pricing.subtitle": "每個方案都有完整的追蹤功能，差別只在學校清單可以放幾所學校。",
+  "misc.pricing.subtitle": "先用免費版的簡短清單開始。為你入學的那一年買一次入學年度方案即可，不會自動續訂。",
   "misc.pricing.blurb.free": "用一份簡短的清單試用追蹤工具。",
-  "misc.pricing.blurb.junior": "足夠放進一份完整的衝刺校、目標校與保底校清單。",
   "misc.pricing.blurb.senior": "沒有上限，可以追蹤你考慮的每一所學校。",
   "misc.pricing.free": "免費",
-  "misc.pricing.perMonth": "/ 月",
   "misc.pricing.limitUnlimited": "學校清單<b>不限</b>學校數量",
   "misc.pricing.limitUpTo": "學校清單<b>最多 {n} 所</b>學校",
   "misc.pricing.featChecklist": "待辦清單、文書、申請入口登入資料與學校代碼",
@@ -124,13 +115,8 @@ export const zhTW: Translation<typeof en> = {
   "misc.pricing.featConnect": "<b>連結 AI：</b>連結你自己的 ChatGPT 或 Claude，用對話更新你的申請",
   "misc.pricing.featFiller":
     "<b>申請填寫助手（Beta）：</b>Chrome 擴充功能，可依成績單填寫 Common App 的 Courses & Grades，並協助填寫 UC、STARS、Cal State Apply、UIUC 和 UT",
-  "misc.pricing.over": "你有 {n} 所學校。這些學校會保留，但在低於 {limit} 所之前無法再新增。",
   "misc.pricing.currentPlan": "目前方案",
-  "misc.pricing.choose": "選擇 {name}",
-  "misc.pricing.onPlan": "你目前使用 {name} 方案。",
   "misc.pricing.goToList": "前往學校清單",
-  "misc.pricing.footer": "目前尚未開放付款，所以現在可以免費選擇任何方案。",
-  "misc.pricing.footerSaved": "你的方案儲存在這個瀏覽器中；登入後可在所有裝置上保留。",
 
   "misc.connect.title": "連結 AI",
   "misc.connect.intro": "把你自己的 ChatGPT 或 Claude 連結到追蹤工具，用對話就能更新你的申請。AI 讀取和修改的是網站上同一份資料，所以兩邊永遠一致。",

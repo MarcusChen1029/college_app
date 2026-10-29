@@ -316,7 +316,7 @@ export const zhTW: Translation<typeof en> = {
   "colleges.unknown": "未知",
   "colleges.addScoresShort": "輸入成績",
   "colleges.upgrade": "升級",
-  "colleges.planFull": "你的{plan}方案清單已滿",
+  "colleges.planFull": "你的{plan}清單已滿",
   "colleges.inList": "✓ 已在清單",
   "colleges.myListAdd": "+ 加入清單",
   "colleges.noFilterMatch": "沒有符合這些條件的學校。",

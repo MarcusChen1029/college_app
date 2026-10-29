@@ -150,12 +150,20 @@ export function MyList({
       </span>
       {student.plan.limit != null && student.list.length > student.plan.limit && (
         <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>
-          {t("application.overLimit", { name: planName, limit: student.plan.limit })}
+          {t("application.overLimit", { name: planName, limit: student.plan.limit })}{" "}
+          <Link href="/pricing" className="font-semibold underline">
+            {t("payments.getPass")}
+          </Link>
         </span>
       )}
       {/* Colleges the sign-in merge kept in this browser for lack of room (shown while the plan still has a limit). */}
       {student.localLeftover > 0 && student.plan.limit != null && (
-        <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>{t("payments.mergeLeftover", { n: student.localLeftover })}</span>
+        <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>
+          {t("payments.mergeLeftover", { n: student.localLeftover })}{" "}
+          <Link href="/pricing" className="font-semibold underline">
+            {t("payments.getPass")}
+          </Link>
+        </span>
       )}
       {student.error && (
         <span className={`rounded border px-2 py-0.5 ${toneClass("urgent")}`}>

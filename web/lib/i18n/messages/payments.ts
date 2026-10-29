@@ -1,4 +1,5 @@
-// Plans and the admission-year pass: plan names, the pass name, and what the sign-in merge kept in this browser.
+// Plans and the admission-year pass: plan names, the pass name, what the sign-in merge kept in this browser, and the
+// pricing / checkout / order-status texts. (The parent pay page and the payment history add their keys here too.)
 import type { Translation } from "../core.ts";
 
 export const en = {
@@ -7,6 +8,58 @@ export const en = {
   "payments.passFor": "Fall {year} pass",
   "payments.mergeLeftover":
     "{n} of the colleges saved in this browser didn't fit the Free plan. They're still saved in this browser; buy the pass to add them to your account.",
+  "payments.getPass": "Get the admission-year pass",
+
+  // Pricing page: the pass card and the buying form
+  "payments.priceNote": "one payment, no subscription",
+  "payments.yourPasses": "Your passes",
+  "payments.activePass": "{pass}, until {until}",
+  "payments.upcomingPass": "{pass}, from {from} until {until}",
+  "payments.chooseYear": "Which year will you start college?",
+  "payments.yearHint": "Applying now → {e0}. Applying next year → {e1}.",
+  "payments.yearHintNext": "Applying next year → {e1}.",
+  "payments.startsNow": "Active right after payment, until {until}",
+  "payments.startsOn": "Active from {from}, until {until}",
+  "payments.owned": "You already have this pass",
+  "payments.consent":
+    "I agree that this digital service is activated as soon as I pay, and I understand that the 7-day right of rescission does not apply under Taiwan's rules on reasonable exceptions to the right of rescission in distance sales (《通訊交易解除權合理例外情事適用準則》). Trakur separately offers a full refund if you write to us within 7 days of paying.",
+  "payments.pay": "Pay NT${price}",
+  "payments.paying": "Opening ECPay…",
+  "payments.askParent": "Ask a parent to pay",
+  "payments.askParentBusy": "Making the link…",
+  "payments.linkLabel": "Payment link for a parent",
+  "payments.linkReady": "Send this link to a parent. It works until {until}.",
+  "payments.signInFirst": "You'll be asked to sign in first.",
+  "payments.opensSoon": "Payment opens soon",
+  "payments.methods": "Pay by credit card, ATM transfer or convenience store through ECPay (綠界).",
+  "payments.refundLine": "Refunds: write to us within 7 days of paying and we refund you in full.",
+
+  // Why a payment call failed
+  "payments.error.closed": "Payment isn't open yet. Please check back soon.",
+  "payments.error.alreadyPaid": "You already have a pass for that year.",
+  "payments.error.badYear": "That year can't be bought right now. Pick one from the list.",
+  "payments.error.badOrigin": "This web address can't start a payment. Open Trakur from its usual address and try again.",
+  "payments.error.unauthorized": "Please sign in again, then try once more.",
+  "payments.error.notStudent": "Only student accounts can buy a pass.",
+  "payments.error.expired": "This payment link has expired. Ask the student to make a new one.",
+  "payments.error.network": "Couldn't reach the payment service. Check your connection and try again.",
+  "payments.error.server": "Something went wrong on our side. Please try again in a moment.",
+
+  // After ECPay: /pricing?order=<id>
+  "payments.order.confirming": "Confirming payment…",
+  "payments.order.slow": "Still waiting for ECPay. ATM and convenience-store payments can take a while; this page updates when it lands.",
+  "payments.order.paid": "Payment received. Your pass is active until {until}.",
+  "payments.order.paidLater": "Payment received. Your {pass} starts {from} and runs until {until}.",
+  "payments.order.atmTitle": "Pay by ATM transfer",
+  "payments.order.bankCode": "Bank code",
+  "payments.order.account": "Account number",
+  "payments.order.cvsTitle": "Pay at a convenience store",
+  "payments.order.cvsCode": "Payment code",
+  "payments.order.deadline": "Pay before {deadline}. This page updates when the payment arrives.",
+  "payments.order.expired": "This payment expired without being paid. Pick a year below to start again.",
+  "payments.order.refunded": "This payment was refunded.",
+  "payments.order.missing": "We couldn't find that payment. If you just paid, wait a minute and reload this page.",
+  "payments.order.signIn": "Sign in to see your payment.",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -14,4 +67,52 @@ export const zhTW: Translation<typeof en> = {
   "payments.planName.senior": "入學年度方案",
   "payments.passFor": "{year} 秋季入學方案",
   "payments.mergeLeftover": "這個瀏覽器裡有 {n} 所學校超出免費版的上限，沒有加入帳號。它們仍保存在這個瀏覽器中；購買入學年度方案後即可加入帳號。",
+  "payments.getPass": "購買入學年度方案",
+
+  "payments.priceNote": "一次付清，不會自動續訂",
+  "payments.yourPasses": "你的方案",
+  "payments.activePass": "{pass}，用到 {until}",
+  "payments.upcomingPass": "{pass}，{from} 起生效，用到 {until}",
+  "payments.chooseYear": "你預計哪一年入學？",
+  "payments.yearHint": "正在申請 → {e0}；明年申請 → {e1}",
+  "payments.yearHintNext": "明年申請 → {e1}",
+  "payments.startsNow": "付款後立即生效，用到 {until}",
+  "payments.startsOn": "{from} 起生效，用到 {until}",
+  "payments.owned": "你已經有這個年度的方案",
+  "payments.consent": "我同意付款後立即開通本數位服務，並了解依《通訊交易解除權合理例外情事適用準則》不適用七天解除權；Trakur 另提供付款後 7 天內來信全額退款。",
+  "payments.pay": "付款 NT${price}",
+  "payments.paying": "正在前往綠界…",
+  "payments.askParent": "請家長代付",
+  "payments.askParentBusy": "正在建立連結…",
+  "payments.linkLabel": "給家長的付款連結",
+  "payments.linkReady": "把這個連結傳給家長。連結有效至 {until}。",
+  "payments.signInFirst": "付款前需要先登入。",
+  "payments.opensSoon": "即將開放付款",
+  "payments.methods": "透過綠界（ECPay）以信用卡、ATM 轉帳或超商代碼付款。",
+  "payments.refundLine": "退款：付款後 7 天內來信，我們全額退款。",
+
+  "payments.error.closed": "目前尚未開放付款，請稍後再試。",
+  "payments.error.alreadyPaid": "你已經買過這個年度的方案了。",
+  "payments.error.badYear": "目前無法購買這個年度，請從清單中選擇。",
+  "payments.error.badOrigin": "這個網址無法發起付款，請從 Trakur 的正式網址開啟後再試。",
+  "payments.error.unauthorized": "請重新登入後再試一次。",
+  "payments.error.notStudent": "只有學生帳號可以購買方案。",
+  "payments.error.expired": "這個付款連結已過期，請請學生重新建立一個。",
+  "payments.error.network": "無法連上付款服務，請檢查網路後再試一次。",
+  "payments.error.server": "系統發生問題，請稍後再試。",
+
+  "payments.order.confirming": "正在確認付款…",
+  "payments.order.slow": "仍在等待綠界回報。ATM 與超商付款可能需要一些時間；款項入帳後，這個頁面會自動更新。",
+  "payments.order.paid": "已收到付款，你的方案用到 {until}。",
+  "payments.order.paidLater": "已收到付款。你的{pass}會在 {from} 生效，用到 {until}。",
+  "payments.order.atmTitle": "請以 ATM 轉帳付款",
+  "payments.order.bankCode": "銀行代碼",
+  "payments.order.account": "轉帳帳號",
+  "payments.order.cvsTitle": "請至超商付款",
+  "payments.order.cvsCode": "繳費代碼",
+  "payments.order.deadline": "請在 {deadline} 前付款。款項入帳後，這個頁面會自動更新。",
+  "payments.order.expired": "這筆付款已逾期且未付款。請在下方重新選擇年度。",
+  "payments.order.refunded": "這筆付款已退款。",
+  "payments.order.missing": "找不到這筆付款。如果你剛付完款，請等一分鐘後重新整理這個頁面。",
+  "payments.order.signIn": "請登入以查看這筆付款。",
 };
