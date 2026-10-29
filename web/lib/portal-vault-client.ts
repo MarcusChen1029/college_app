@@ -37,8 +37,9 @@ import {
   type Unlocked,
 } from "./vault-flows";
 
-// What the dialogs need to type their own state, so they import from here only.
-export type { FlowError, Prepared, PreparedRecovery, Secret, Unlocked };
+// What the dialogs need to type their own state, so they import from here only. `Unlocked` (the key) is deliberately
+// not among them: no result of this module carries it.
+export type { FlowError, Prepared, PreparedRecovery, Secret };
 
 const ENDPOINT = "/api/portal-passwords";
 
@@ -69,6 +70,7 @@ let viewUser: string | null = null; // whose slots `view` holds
 let listing: Promise<void> | null = null;
 let kinds = new Map<string, SlotState["kind"]>(); // every stored slot and what holds it, as last listed
 let unlocked: Unlocked | null = null; // this tab's vault key; see the header
+let keyEpoch = 0; // counts every change of the key, so a read that went out before one can tell it is out of date
 let following: Promise<void> = Promise.resolve(); // after-unlock jobs, one at a time
 let watching = false;
 const listeners = new Set<() => void>();
@@ -91,13 +93,19 @@ export const useVault = () => useSyncExternalStore(subscribe, () => view, () => 
 // The key, only while it belongs to the account this page is showing.
 const openKey = (): Unlocked | null => (unlocked && unlocked.userId === viewUser ? unlocked : null);
 
+// The one place the key is set or dropped.
+function setKey(next: Unlocked | null) {
+  unlocked = next;
+  keyEpoch++;
+}
+
 // A different account (or none): nothing of the old one stays, least of all its key. The first account of the page has
 // nothing to drop, so a dialog opened before anything asked for it (the merge dialog's "Unlock") stays open.
 function adopt(uid: string | null) {
   const first = viewUser === null && uid !== null;
   viewUser = uid;
   listing = null;
-  unlocked = null;
+  setKey(null);
   kinds = new Map();
   emit(first && view.dialog !== null ? { ...INITIAL, dialog: view.dialog } : INITIAL);
 }
@@ -191,10 +199,19 @@ function markSlots(uid: string, slots: readonly string[], has: boolean) {
 const markSlot = (uid: string, slot: string, has: boolean) => markSlots(uid, [slot], has);
 
 // Asks the server for the vault and the slot list together and shows both. A key that no longer fits the stored vault
-// (reset or replaced from another tab) is dropped here.
+// (reset or replaced from another tab) is dropped here, but only the key that was there when the reads went out: if the
+// key changed meanwhile (a vault made, a lock taken) the reads may predate that, so they are made again (twice at most).
 async function refresh(uid: string): Promise<"ok" | "unavailable" | "error"> {
-  const [vault, listed] = await Promise.all([fetchVault(call), listSlots(call)]);
-  if (viewUser !== uid) return "error";
+  let vault: Awaited<ReturnType<typeof fetchVault>>;
+  let listed: Awaited<ReturnType<typeof listSlots>>;
+  let before: Unlocked | null;
+  for (let again = 0; ; again++) {
+    const epoch = keyEpoch;
+    before = unlocked;
+    [vault, listed] = await Promise.all([fetchVault(call), listSlots(call)]);
+    if (viewUser !== uid) return "error";
+    if (epoch === keyEpoch || again >= 2) break;
+  }
   const failure = (vault !== null && "error" in vault ? vault.error : null) ?? (Array.isArray(listed) ? null : listed.error);
   if (failure === "unavailable") {
     markUnavailable();
@@ -205,7 +222,7 @@ async function refresh(uid: string): Promise<"ok" | "unavailable" | "error"> {
     return "error";
   }
   const keyId = vault && !("error" in vault) ? vault.record.key_id : null;
-  if (unlocked?.userId === uid && unlocked.keyId !== keyId) unlocked = null;
+  if (before && unlocked === before && before.userId === uid && before.keyId !== keyId) setKey(null);
   kinds = new Map(listed.map((s) => [s.slot, s.kind] as const));
   emit({ ...view, status: "ready", lock: keyId === null ? "none" : openKey() ? "unlocked" : "locked", ...viewKinds(kinds) });
   return "ok";
@@ -232,7 +249,7 @@ export function closeVaultDialog() {
 
 /** Locks this tab: the key is dropped, passwords need the passphrase (or recovery code) again. */
 export function lock() {
-  unlocked = null;
+  setKey(null);
   emit({ ...view, lock: view.lock === "unlocked" ? "locked" : view.lock, moved: null });
 }
 
@@ -256,11 +273,13 @@ async function afterUnlock(u: Unlocked) {
       tried = true;
       moved += (await handoverAll(call, u, [s])).moved;
     }
-    if (tried && viewUser === u.userId) emit({ ...view, moved });
+    if (tried && openKey() === u) emit({ ...view, moved });
     if (viewUser === u.userId) await refresh(u.userId);
   } catch {
     // the handover is retried at the next unlock
   }
+  // Locked, signed out or unlocked again (that unlock has its own job) meanwhile: nobody is told about this key.
+  if (openKey() !== u) return;
   for (const cb of [...unlockListeners]) {
     try {
       const result: unknown = cb();
@@ -275,7 +294,7 @@ async function afterUnlock(u: Unlocked) {
 // False when the page moved on to another account while the key was being made; the key is then simply not kept.
 function opened(u: Unlocked): boolean {
   if (viewUser !== u.userId) return false;
-  unlocked = u;
+  setKey(u);
   emit({ ...view, lock: "unlocked" });
   following = following.then(() => afterUnlock(u)).catch(() => {});
   return true;
@@ -284,7 +303,7 @@ function opened(u: Unlocked): boolean {
 // The stored vault is not the one this tab's key belongs to (reset or replaced elsewhere): lock, and look again.
 function dropStaleKey(u: Unlocked, code: string) {
   if (unlocked !== u || (code !== "wrong_vault" && code !== "no_vault")) return;
-  unlocked = null;
+  setKey(null);
   emit({ ...view, lock: "locked", moved: null });
   void refresh(u.userId);
 }
@@ -301,15 +320,15 @@ export async function prepare(passphrase: string): Promise<Prepared> {
 
 /**
  * Step 2: the typed group must match the one asked for ("group_mismatch" creates nothing), then the vault is stored and
- * this tab is unlocked. The `Unlocked` it returns is the key the module already holds: callers only check that the
- * result is not a string and never keep it. A "failed" may hide a vault that was stored after all; the next list shows it.
+ * this tab is unlocked ("ok"; the key stays inside this module, like unlock's). Old rows are moved in the background and
+ * the `onUnlock` listeners run after that. A "failed" may hide a vault that was stored after all; the next list shows it.
  */
-export async function commit(p: Prepared, typedGroup: string): ReturnType<typeof commitVault> {
+export async function commit(p: Prepared, typedGroup: string): Promise<"ok" | "group_mismatch" | FlowError> {
   const uid = await account();
   if (!uid) return "unauthorized";
   const r = await commitVault(call, uid, p, typedGroup);
   if (typeof r === "string") return r;
-  return opened(r) ? r : "unauthorized";
+  return opened(r) ? "ok" : "unauthorized";
 }
 
 /**
@@ -367,18 +386,35 @@ export function forgetPassword(slot: string | null) {
   void deletePassword(slot);
 }
 
+// Which of these entries the account already holds with the very same password: the import left such a slot alone, but
+// nothing is lost by dropping the browser's copy. Only slots listed as sealed under the current vault are tried, with the
+// open key; the account's value is only read, never replaced. A different password is a real conflict and stays.
+async function sameAsStored(u: Unlocked, entries: readonly SlotPassword[]): Promise<Set<string>> {
+  const same = new Set<string>();
+  for (const e of entries) {
+    if (openKey() !== u) break;
+    if (kinds.get(e.slot) !== "e1") continue;
+    const r = await revealOne(call, u, e.slot);
+    if ("password" in r && r.password === e.password) same.add(e.slot);
+  }
+  return same;
+}
+
 /**
  * Moves passwords this browser saved before sign-in into the vault, sealed here. A slot the account already holds keeps
- * the account's value. Resolves to the entries that are NOT confirmed stored (the caller keeps those); when the vault is
- * locked or doesn't exist yet that is every entry and nothing is sent.
+ * the account's value. Resolves to the entries that are NOT confirmed stored (the caller keeps those): every entry, with
+ * nothing sent, while the vault is locked or doesn't exist yet; an entry whose slot already holds the same password
+ * counts as stored, one that holds a different password does not.
  */
 export async function importPasswords(entries: readonly SlotPassword[]): Promise<SlotPassword[]> {
   const u = openKey();
   if (!u || entries.length === 0) return [...entries];
   const left = await importAll(call, u, entries);
-  const leftSlots = new Set(left.map((e) => e.slot));
-  markSlots(u.userId, entries.filter((e) => !leftSlots.has(e.slot)).map((e) => e.slot), true);
-  return left;
+  const same = left.length ? await sameAsStored(u, left) : new Set<string>();
+  const kept = left.filter((e) => !same.has(e.slot));
+  const keptSlots = new Set(kept.map((e) => e.slot));
+  markSlots(u.userId, entries.filter((e) => !keptSlots.has(e.slot)).map((e) => e.slot), true);
+  return kept;
 }
 
 /**
@@ -419,9 +455,11 @@ export async function resetVault(): Promise<FlowError | null> {
   if (!uid) return "unauthorized";
   const err = await resetAll(call);
   if (err) return err;
-  unlocked = null;
-  kinds = new Map();
-  emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, moved: null });
+  if (viewUser === uid) {
+    setKey(null);
+    kinds = new Map();
+    emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, moved: null });
+  }
   return null;
 }
 

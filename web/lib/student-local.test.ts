@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { EMPTY_LOCAL, fillMissingProfile, hasLocalData, localWrites, parseLegacy, parseLocal, profileHasData, serializeLocal, type LocalData } from "./student-local.ts";
+import { EMPTY_LOCAL, fillMissingProfile, hasLocalData, localWrites, parseLegacy, parseLocal, parseMove, profileHasData, serializeLocal, serializeMove, type LocalData } from "./student-local.ts";
 
 const INST = "33333333-3333-4333-8333-333333333333";
 
@@ -102,6 +102,19 @@ test("passwords under the legacy key and inside the copy are merged by slot; mal
   assert.equal(passwords[0].password, "ca-secret", "the copy's value comes first");
   assert.deepEqual(parseLegacy("not json"), []);
   assert.deepEqual(parseLocal(null, legacy).passwords.map((p) => p.slot), ["system:commonapp", "custom:zz"]);
+});
+
+test("the agreement to move passwords is stored by slot only and read back defensively", () => {
+  const raw = serializeMove({ userId: "u-1", slots: ["system:uc", "custom:abc-1"] });
+  assert.ok(raw && !raw.includes("password"));
+  assert.deepEqual(parseMove(raw), { userId: "u-1", slots: ["system:uc", "custom:abc-1"] });
+  assert.equal(serializeMove(null), null);
+  assert.equal(serializeMove({ userId: "u-1", slots: [] }), null);
+  // invalid and repeated slots are dropped; nothing valid left = no agreement
+  assert.deepEqual(parseMove(JSON.stringify({ userId: "u-1", slots: ["system:uc", "bad slot", 7, "system:uc", null] })), { userId: "u-1", slots: ["system:uc"] });
+  assert.equal(parseMove(JSON.stringify({ userId: "u-1", slots: ["bad slot"] })), null);
+  for (const bad of [null, "", "not json", "[]", "null", "7", JSON.stringify({ slots: ["system:uc"] }), JSON.stringify({ userId: "", slots: ["system:uc"] }), JSON.stringify({ userId: "u-1", slots: "system:uc" }), JSON.stringify({ userId: 5, slots: ["system:uc"] })])
+    assert.equal(parseMove(bad), null, String(bad));
 });
 
 test("adding a browser's profile to an existing account fills only what the account lacks", () => {

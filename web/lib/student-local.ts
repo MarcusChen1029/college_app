@@ -57,6 +57,32 @@ export function parseLegacy(raw: string | null): SlotPassword[] {
 export const serializeLegacy = (passwords: readonly SlotPassword[]): string | null =>
   passwords.length ? JSON.stringify(passwords.map((p) => ({ slot: p.slot, password: p.password }))) : null;
 
+/**
+ * Where the student's agreement to move browser passwords into the vault waits for the vault to open: the account and
+ * the slots, never a password (those stay under LEGACY_KEY). It outlives a reload, so a reload before the first unlock
+ * does not lose the agreement or make the sign-in dialog ask again.
+ */
+export const MOVE_KEY = "college-tracker:v1:legacy-move";
+export type MoveAgreement = { userId: string; slots: string[] };
+
+/** The agreement under MOVE_KEY; null for nothing, a malformed value or no valid slot. Invalid and repeated slots are dropped. */
+export function parseMove(raw: string | null): MoveAgreement | null {
+  if (!raw) return null;
+  try {
+    const v: unknown = JSON.parse(raw);
+    if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+    const { userId, slots } = v as Record<string, unknown>;
+    if (typeof userId !== "string" || !userId || userId.length > 100 || !Array.isArray(slots)) return null;
+    const valid = [...new Set(slots.filter((s): s is string => typeof s === "string" && isPortalSlot(s)))];
+    return valid.length ? { userId, slots: valid } : null;
+  } catch {
+    return null;
+  }
+}
+
+/** What to store under MOVE_KEY; null = remove the key. */
+export const serializeMove = (m: MoveAgreement | null): string | null => (m && m.slots.length ? JSON.stringify({ userId: m.userId, slots: m.slots }) : null);
+
 /** The first password per slot. */
 const unique = (list: readonly SlotPassword[]) => list.filter((p, i) => list.findIndex((q) => q.slot === p.slot) === i);
 

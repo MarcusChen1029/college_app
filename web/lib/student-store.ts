@@ -20,10 +20,14 @@ import {
   hasLocalData,
   LEGACY_KEY,
   localWrites,
+  MOVE_KEY,
   parseLocal,
+  parseMove,
   profileHasData,
   serializeLocal,
+  serializeMove,
   type LocalData,
+  type MoveAgreement,
 } from "./student-local";
 import {
   COLLEGE_COLUMNS,
@@ -149,10 +153,7 @@ let mergeChoice: "ask" | "later" = "ask";
 // The account's `portals` exactly as last read or written, password keys included: profile saves put back the ones
 // the database still holds (fromProfile), so a profile save never drops a password key it did not put there.
 let storedPortals: unknown = null;
-// Passwords the student agreed to add to this account (the sign-in dialog's "Add to this account") that the vault could
-// not take yet because it was locked or not set up: they move when it opens (moveLocalPasswords). Only that merge fills
-// it, so "Not now" and the logins held back for a different username (pairWithAccount) never move on their own.
-let movePending: { userId: string; slots: Set<string> } | null = null;
+// A move of the agreed passwords is running (moveLocalPasswords); the agreement itself is in storage (MOVE_KEY).
 let moving = false;
 // Whose account copy has loaded successfully on this page. Until it has, account writes are refused: the page would
 // otherwise overwrite the account with whatever it holds in memory (and drop password keys it never read).
@@ -228,23 +229,50 @@ function writeLocal(d: Local) {
   } catch {}
 }
 
-/** Removes this browser's copy and every old password in it. */
+// The student's agreement to move browser passwords into the vault (MOVE_KEY): slots only, never a password. It is
+// written by the sign-in merge for what the vault could not take yet (locked, or not set up), survives reloads, and
+// is what moveLocalPasswords works from. "Not now" and the logins the merge held back for a different username
+// (pairWithAccount) are never in it, so they never move on their own.
+function readMove(): MoveAgreement | null {
+  try {
+    return parseMove(window.localStorage.getItem(MOVE_KEY));
+  } catch {
+    return null;
+  }
+}
+function writeMove(m: MoveAgreement | null) {
+  try {
+    const raw = serializeMove(m);
+    if (raw) window.localStorage.setItem(MOVE_KEY, raw);
+    else window.localStorage.removeItem(MOVE_KEY);
+  } catch {}
+}
+/** The slots this account's student agreed to move that are still waiting. */
+function agreedSlots(userId: string): Set<string> {
+  const m = readMove();
+  return new Set(m && m.userId === userId ? m.slots : []);
+}
+
+/** Removes this browser's copy and every old password in it, and the agreement to move them. */
 function clearLocal() {
   localPasswords = [];
+  writeMove(null);
   writeLocal(EMPTY_LOCAL);
 }
 
 /**
- * Runs when the vault opens (portal-vault-client.ts onUnlock): sends the passwords the sign-in merge could not store
- * (movePending) and keeps the ones the server did not confirm, with the same bookkeeping as the merge. Never throws.
+ * Runs when the vault opens (portal-vault-client.ts onUnlock): sends the passwords the student agreed to move that the
+ * merge could not store, and keeps the ones the server did not confirm, with the same bookkeeping as the merge. Only for
+ * the account the agreement was made for. Never throws.
  */
 async function moveLocalPasswords() {
-  const pending = movePending;
   const a = state.auth;
-  if (moving || !pending || !a || a.userId !== pending.userId) return;
+  if (moving || !a) return;
+  const agreed = agreedSlots(a.userId);
+  if (!agreed.size) return;
   moving = true;
   try {
-    const send = localPasswords.filter((p) => pending.slots.has(p.slot));
+    const send = localPasswords.filter((p) => agreed.has(p.slot));
     const notStored = send.length ? await importPasswords(send) : [];
     const left = new Set(notStored.map((p) => p.slot));
     // This browser's copy as it is now (the signed-in state holds the account's data and must not be written there):
@@ -253,7 +281,12 @@ async function moveLocalPasswords() {
     const sent = new Set(send.map((p) => p.slot));
     localPasswords = localPasswords.filter((p) => !sent.has(p.slot) || left.has(p.slot));
     writeLocal(local);
-    if (movePending === pending) movePending = left.size ? { userId: pending.userId, slots: left } : null;
+    // The agreement shrinks to what is still waiting (re-read: a merge may have added to it while this ran).
+    const now = readMove();
+    if (now && now.userId === a.userId) {
+      const waiting = now.slots.filter((s) => localPasswords.some((p) => p.slot === s));
+      writeMove(waiting.length ? { userId: a.userId, slots: waiting } : null);
+    }
     emit({ localPasswordCount: localPasswords.length });
   } catch {
     // nothing was removed; the next unlock tries again
@@ -284,6 +317,9 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     }
     const local = loadLocal();
     const localPw = localPasswords;
+    // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
+    const agreed = agreedSlots(userId);
+    const offerPw = localPw.filter((p) => !agreed.has(p.slot));
     const merge = !!opts.merge;
     const [p, l] = await Promise.all([
       db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
@@ -299,7 +335,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       e.custom ? !!e.rowId && !list.some((x) => x.rowId === e.rowId) : e.institutionId && !list.some((x) => x.institutionId === e.institutionId),
     );
     // Data saved in this browser before sign-in is only added when the student said so (the sign-in dialog).
-    const offer = !merge && mergeChoice === "ask" && hasLocalData(local, localPw);
+    const offer = !merge && mergeChoice === "ask" && hasLocalData(local, offerPw);
     let passwordsFailed = 0;
     if (merge) {
       // Which local passwords may join the account's logins: only where the account has no username for that login,
@@ -333,12 +369,15 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
       // The profile and list are in the account: move the passwords into the encrypted store, and take the profile
       // and list out of this browser now, whatever happens to the reads below. A password leaves the browser only
       // once the server confirmed it stored it; the rest (every one while the vault is locked or not set up), and the
-      // ones held back for a different username, stay for next time. The ones the student agreed to add move when the
-      // vault opens (moveLocalPasswords); the held ones never move on their own.
+      // ones held back for a different username, stay for next time. The ones the student agreed to add (the ones sent
+      // here, and any agreed earlier that are still waiting) are remembered by slot in MOVE_KEY and move when the vault
+      // opens (moveLocalPasswords), even after a reload; the held ones never move on their own.
       const notStored = paired.send.length ? await importPasswords(paired.send) : [];
       localPasswords = [...notStored, ...paired.hold];
       passwordsFailed = localPasswords.length;
-      movePending = notStored.length ? { userId, slots: new Set(notStored.map((p) => p.slot)) } : null;
+      const waiting = new Set([...agreed, ...notStored.map((p) => p.slot)]);
+      const waitingSlots = localPasswords.filter((p) => waiting.has(p.slot)).map((p) => p.slot);
+      writeMove(waitingSlots.length ? { userId, slots: waitingSlots } : null);
       writeLocal({ ...local, profile: {}, list: [] });
     }
     // Recommenders are separate from the list so a missing table (migration 0026 not applied yet) can't take the whole list down;
@@ -407,12 +446,13 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     } catch (e) {
       txError = `Couldn't load your transcript: ${(e as Error).message}`;
     }
-    // Everything moved: the copy goes (passwords not yet stored stay under LEGACY_KEY and are offered again).
+    // Everything moved: the copy goes (passwords not yet stored stay under LEGACY_KEY: the agreed ones wait for the vault,
+    // the others are offered again).
     if (merge && !recError && !schError && !txError) writeLocal(EMPTY_LOCAL);
     lastLoad = Date.now();
     loadedFor = userId;
     const error = [recError, schError, txError].filter(Boolean).join(" ") || null;
-    const localFound = offer ? { colleges: missing.length, logins: loginCount(local.profile.portals, local.list, localPw), passwords: localPw.length } : null;
+    const localFound = offer ? { colleges: missing.length, logins: loginCount(local.profile.portals, local.list, offerPw), passwords: offerPw.length } : null;
     emit({ auth: { userId, email }, role, teacherProfile: null, profile: profile ?? {}, list, recommenders, scholarships, transcriptSchools, transcriptCourses, ready: true, sessionChecked: true, syncing: false, error, localFound });
     return { passwordsFailed };
   } catch (e) {
@@ -451,7 +491,6 @@ function start() {
       // so a teacher who signs out doesn't overwrite local data they never merged.
       mergeChoice = "ask";
       storedPortals = null;
-      movePending = null;
       loadedFor = null;
       emit({ auth: null, role: undefined, teacherProfile: null, ...localState(), error: null, localFound: null });
     }
@@ -758,6 +797,7 @@ export function useStudent() {
     /** Signed out: removes the passwords an older build saved in this browser. */
     forgetLocalPasswords() {
       localPasswords = [];
+      writeMove(null);
       writeLocal(pickLocal(state));
       emit({ localPasswordCount: 0 });
     },
