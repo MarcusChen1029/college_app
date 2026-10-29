@@ -29,6 +29,35 @@ export function nextDeadline<D extends DatedDeadline>(deadlines: readonly D[], i
   return best;
 }
 
+type PlannedDeadline = DatedDeadline & { kind: string; plan_key: string | null };
+type Named = { id: string; short_name: string | null; name: string; applicants: number | null };
+
+/** One line of the home page's timetable: every college closing one plan on one date. */
+export type SeasonRow = { date: string; plan: string; count: number; names: string[] };
+
+/**
+ * The season's timetable from today: application deadlines grouped by date and plan, earliest first.
+ * `names` holds the most-applied-to colleges in the group (at most `perRow`), so the line names schools people know.
+ */
+export function seasonRows(deadlines: readonly PlannedDeadline[], colleges: readonly Named[], today: string, limit: number, perRow = 3): SeasonRow[] {
+  const byId = new Map(colleges.map((c) => [c.id, c]));
+  const groups = new Map<string, { date: string; plan: string; ids: Set<string> }>();
+  for (const d of deadlines) {
+    if (d.kind !== "application" || !d.plan_key || d.due_date == null || d.due_date < today || !byId.has(d.institution_id)) continue;
+    const key = `${d.due_date}|${d.plan_key}`;
+    const g = groups.get(key) ?? { date: d.due_date, plan: d.plan_key, ids: new Set<string>() };
+    g.ids.add(d.institution_id);
+    groups.set(key, g);
+  }
+  return [...groups.values()]
+    .sort((a, b) => a.date.localeCompare(b.date) || b.ids.size - a.ids.size)
+    .slice(0, limit)
+    .map((g) => {
+      const named = [...g.ids].map((id) => byId.get(id)!).sort((a, b) => (b.applicants ?? 0) - (a.applicants ?? 0));
+      return { date: g.date, plan: g.plan, count: g.ids.size, names: named.slice(0, perRow).map((c) => c.short_name ?? c.name) };
+    });
+}
+
 /**
  * Social proof for the landing page. Real figures only: leave `students` null and `quotes` empty until there is a
  * counted number or a quote someone agreed to have published. The page hides the block while both are empty.
