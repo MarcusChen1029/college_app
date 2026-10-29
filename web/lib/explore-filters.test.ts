@@ -5,13 +5,16 @@ import {
   admitRateFor,
   anyFilter,
   clearFilters,
+  daysUntil,
   DEFAULT_FILTERS,
+  dueWithin,
   effectiveFilters,
   filtersToQuery,
   hasIntlAid,
   matchesAdmit,
   medianFor,
   moreFilterCount,
+  nextDue,
   nextSort,
   offersField,
   parseFilters,
@@ -56,7 +59,7 @@ test("URL round trip keeps every filter and leaves defaults out", () => {
   const full = f({
     view: "table", region: "GB", q: "tech", fit: ["safety", "target"], field: "computer_science", admitMin: 10, admitMax: 40,
     maxTuition: 30000, intlAid: true, english: true, noSupplements: true, noAppFee: true, category: "engineering", minTier: "B", state: "CA", testPolicy: "optional",
-    plan: "ED", sort: { key: "sat", reverse: true }, college: "cu-boulder",
+    plan: "ED", sort: { key: "sat", reverse: true }, college: "cu-boulder", due: 30,
   });
   const q = filtersToQuery(full);
   assert.match(q, /fit=target%2Csafety/); // canonical order
@@ -74,6 +77,46 @@ test("the open college (?c=) round-trips alone and ignores anything that is not 
   }
   // Clearing filters keeps the card open; it is not a filter.
   assert.equal(clearFilters(f({ college: "mit", fit: ["safety"] })).college, "mit");
+});
+
+test("the when lens (?due=) round-trips 7 and 30 and ignores anything else", () => {
+  assert.equal(filtersToQuery(f({ due: 7 })), "due=7");
+  assert.equal(parseFilters(params("due=7")).due, 7);
+  assert.equal(parseFilters(params("due=30&view=table")).due, 30);
+  for (const junk of ["", "0", "14", "-7", "7.5", "seven", "30days"]) assert.equal(parseFilters(params(`due=${junk}`)).due, null, junk);
+  // It has its own switch, so "Clear all" leaves it on.
+  assert.equal(clearFilters(f({ due: 7, fit: ["safety"] })).due, 7);
+});
+
+test("nextDue: the first real deadline on or after today, with its plan and days left", () => {
+  const ds = [["2026-11-15", "EA"], ["2026-11-01", "ED"], ["2027-01-05", "RD"], ["2026-10-15", "REA"]] as const;
+  assert.deepEqual(nextDue(ds, "2026-10-29"), { date: "2026-11-01", plan: "ED", days: 3 });
+  assert.deepEqual(nextDue(ds, "2026-11-01"), { date: "2026-11-01", plan: "ED", days: 0 }); // due today still counts
+  assert.deepEqual(nextDue(ds, "2026-11-02"), { date: "2026-11-15", plan: "EA", days: 13 });
+  assert.equal(nextDue(ds, "2027-01-06"), null); // all passed
+  assert.equal(nextDue(undefined, "2026-10-29"), null);
+  assert.equal(nextDue([], "2026-10-29"), null);
+  // Two plans on one date: a stable pick (alphabetical), so the chip never flickers between them.
+  assert.equal(nextDue([["2026-11-01", "ED"], ["2026-11-01", "EA"]], "2026-10-29")?.plan, "EA");
+});
+
+test("daysUntil counts calendar days across months, years and DST changes", () => {
+  assert.equal(daysUntil("2026-10-29", "2026-10-29"), 0);
+  assert.equal(daysUntil("2026-10-29", "2026-11-05"), 7);
+  assert.equal(daysUntil("2026-10-31", "2026-11-02"), 2); // US DST ends Nov 1
+  assert.equal(daysUntil("2026-12-30", "2027-01-02"), 3);
+  assert.equal(daysUntil("2026-11-05", "2026-10-29"), -7);
+});
+
+test("dueWithin: day 0 through the window's last day, inclusive", () => {
+  const at = (days: number) => ({ date: "x", plan: "EA", days });
+  assert.equal(dueWithin(at(0), 7), true);
+  assert.equal(dueWithin(at(7), 7), true);
+  assert.equal(dueWithin(at(8), 7), false);
+  assert.equal(dueWithin(at(8), 30), true);
+  assert.equal(dueWithin(at(30), 30), true);
+  assert.equal(dueWithin(at(31), 30), false);
+  assert.equal(dueWithin(null, 30), false);
 });
 
 test("parseFilters ignores junk", () => {

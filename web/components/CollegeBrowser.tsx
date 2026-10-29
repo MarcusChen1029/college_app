@@ -3,20 +3,46 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { ApplyTag } from "@/lib/apply-tags";
-import { SORT_DESC, type ExploreRow, type Median, type SortKey, type SortState } from "@/lib/explore-filters";
+import { SORT_DESC, type DueWindow, type ExploreRow, type Median, type NextDue, type SortKey, type SortState } from "@/lib/explore-filters";
 import { fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
+import { deadlineTone } from "@/lib/status";
 import { useStudent } from "@/lib/student-store";
 import type { AdmissionTest } from "@/lib/test-plan";
 import { fmtMoney, type TuitionEstimate } from "@/lib/tuition";
 import type { TierCode } from "@/lib/types";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, toneClass } from "@/lib/ui";
 import { EnglishFitBadge } from "./EnglishFit";
 import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
 
 const TEST_NAME: Record<AdmissionTest, string> = { sat: "SAT", act: "ACT" };
+
+/** "Nov 1": inside a 30-day window the year goes without saying (en-US, like fmtDate everywhere on the site). */
+const shortDate = (iso: string) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+};
+
+/**
+ * A college's next application deadline as a line of the timetable: plan, date and days left ("EA · Nov 1 · 3 days"), in the
+ * deadline tones (urgent within 7 days, soon within 21). 13px, unlike the 12px DeadlineChip, to keep this page at 13px or more.
+ */
+export function DueChip({ due }: { due: NextDue }) {
+  const t = useT();
+  return (
+    <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[13px] font-semibold whitespace-nowrap tabular-nums ${toneClass(deadlineTone(due.days, false))}`}>
+      {dueText(t, due)}
+    </span>
+  );
+}
+
+/** The chip's words, also used in the map's hover label: "EA · Nov 1 · 3 days". */
+export function dueText(t: TFunction, due: NextDue): string {
+  const left = due.days === 0 ? t("status.deadline.today") : due.days === 1 ? t("status.deadline.tomorrow") : t("status.deadline.days", { n: due.days });
+  return `${due.plan} · ${shortDate(due.date)} · ${left}`;
+}
 
 /** The table (wide screens) and card list (phones, tablets) of the Explore page. Rows arrive filtered and sorted. */
 export function CollegeBrowser({
@@ -31,6 +57,8 @@ export function CollegeBrowser({
   onSort,
   tierFor,
   applyTags,
+  dueFor,
+  lens,
 }: {
   rows: ExploreRow[];
   resetKey: string;
@@ -45,6 +73,10 @@ export function CollegeBrowser({
   onSort: (key: SortKey) => void;
   tierFor: (r: ExploreRow) => TierCode | null;
   applyTags: Record<string, ApplyTag[]>;
+  /** The college's next application deadline from today (lib/explore-filters.ts nextDue), for the lens chips. */
+  dueFor: (r: ExploreRow) => NextDue | null;
+  /** The "when" lens window, when on: rows arrive narrowed to it and sorted by date, and each shows its deadline chip. */
+  lens: DueWindow | null;
 }) {
   const t = useT();
   const student = useStudent();
@@ -94,6 +126,11 @@ export function CollegeBrowser({
   // the scores instead). A college the fit can't be worked out for gets a dash.
   const showFit = isUS && hasScores;
   const fitCell = (r: ExploreRow) => (r.fit ? <FitBadge fit={r.fit.fit} result={r.fit} size="md" /> : <span className="text-zinc-500">—</span>);
+  // With the lens on, the next deadline reads as its timetable chip; otherwise as the plain date.
+  const deadlineCell = (r: ExploreRow) => {
+    const due = lens ? dueFor(r) : null;
+    return due ? <DueChip due={due} /> : <span className="tabular-nums">{fmtDate(r.c.next_deadline)}</span>;
+  };
   // Tier badges differ in width (S++, S+, S): a fixed slot keeps every college name on one edge.
   const tierSlot = (r: ExploreRow) => (
     <span className="w-11 shrink-0">
@@ -140,7 +177,8 @@ export function CollegeBrowser({
         </div>
       )}
 
-      {/* Phones and tablets: one card per college */}
+      {/* Phones and tablets: one card per college. The usual tuition basis is said once, here, not on every card. */}
+      <p className="text-[13px] text-zinc-600 lg:hidden">{t("colleges.tuitionNoteCards")}</p>
       <ul className="grid gap-2 sm:grid-cols-2 lg:hidden">
         {visible.map((r) => (
           <li key={r.c.slug} className="rounded-2xl border border-zinc-200 bg-white p-4">
@@ -171,16 +209,14 @@ export function CollegeBrowser({
                   </Stat>
                 ))}
               <Stat label={t("colleges.thTuition")}>
-                <TuitionCell tu={r.tuition} />
+                <TuitionCell tu={r.tuition} quietPublished />
               </Stat>
               {showEnglish && (
                 <Stat label={t("colleges.thEnglish")}>
                   <EnglishFitBadge fit={r.english} />
                 </Stat>
               )}
-              <Stat label={t("colleges.thNextDeadline")}>
-                <span className="tabular-nums">{fmtDate(r.c.next_deadline)}</span>
-              </Stat>
+              <Stat label={t("colleges.thNextDeadline")}>{deadlineCell(r)}</Stat>
             </dl>
             <div className="mt-3 flex items-center justify-between gap-2">
               {compareBox(r, true)}
@@ -199,12 +235,12 @@ export function CollegeBrowser({
               <th scope="col" className="w-8 py-2.5 pl-4 pr-1">
                 <span className="sr-only">{t("colleges.compare")}</span>
               </th>
-              <th scope="col" className="min-w-[16rem] px-3 py-2.5 font-semibold" aria-sort={ariaSort(["tier", "name"])}>
-                <span className="inline-flex items-center gap-2">
-                  {sortButton("tier", t("colleges.thTier"))}
-                  <span aria-hidden="true">·</span>
-                  {sortButton("name", t("colleges.thCollege"))}
-                </span>
+              <th scope="col" className="w-16 px-3 py-2.5 font-semibold" aria-sort={ariaSort(["tier"])}>
+                {sortButton("tier", t("colleges.thTier"))}
+              </th>
+              {/* The college column takes the table's spare width, so the number columns sit at their own widths side by side. */}
+              <th scope="col" className="w-[40%] min-w-[16rem] px-3 py-2.5 font-semibold" aria-sort={ariaSort(["name"])}>
+                {sortButton("name", t("colleges.thCollege"))}
               </th>
               {showAdmit && th("admit", t("colleges.thAdmitRate"), "text-right")}
               {isUS &&
@@ -230,7 +266,7 @@ export function CollegeBrowser({
               )}
               {showEnglish && th(null, t("colleges.thEnglish"))}
               {showFit && th(null, t("colleges.thYourFit"))}
-              {th("deadline", t("colleges.thNextDeadline"), "hidden xl:table-cell")}
+              {th("deadline", t("colleges.thNextDeadline"), lens ? "" : "hidden xl:table-cell")}
               {isUS && th(null, t("colleges.thTesting"), "hidden xl:table-cell")}
               {isUS && th(null, t("colleges.thPlans"), "hidden 2xl:table-cell")}
               <th scope="col" className="py-2.5 pl-3 pr-4">
@@ -243,11 +279,13 @@ export function CollegeBrowser({
               <tr key={r.c.slug} className="border-t border-zinc-100 align-middle first:border-t-0 hover:bg-zinc-50">
                 <td className="py-3 pl-4 pr-1">{compareBox(r)}</td>
                 <td className="px-3 py-3">
+                  <TierBadge tier={tierFor(r)} />
+                </td>
+                <td className="px-3 py-3">
                   <div className="flex items-center gap-3">
                     <span className="grid h-7 w-7 shrink-0 place-items-center">
                       <SchoolLogo slug={r.c.slug} />
                     </span>
-                    {tierSlot(r)}
                     <div className="min-w-0">
                       <Link href={`/colleges/${r.c.slug}`} className="text-base font-semibold text-ink hover:underline">
                         {r.c.name}
@@ -277,7 +315,7 @@ export function CollegeBrowser({
                   </td>
                 )}
                 {showFit && <td className="px-3 py-3">{fitCell(r)}</td>}
-                <td className="hidden px-3 py-3 whitespace-nowrap tabular-nums xl:table-cell">{fmtDate(r.c.next_deadline)}</td>
+                <td className={`px-3 py-3 whitespace-nowrap tabular-nums ${lens ? "" : "hidden xl:table-cell"}`}>{deadlineCell(r)}</td>
                 {isUS && (
                   <td className="hidden whitespace-nowrap px-3 py-3 xl:table-cell">
                     {r.c.test_policy ? <Pill size="md">{r.c.test_policy in TEST_POLICY ? t(`colleges.testPolicy.${r.c.test_policy}` as MessageKey) : r.c.test_policy}</Pill> : <span className="text-zinc-500">—</span>}

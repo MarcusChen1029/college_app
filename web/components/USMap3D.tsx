@@ -33,9 +33,8 @@ const IDLE_MS = 3000;
 // been still for SHARPEN_MS.
 const MOTION_PIXELS = 1_000_000;
 const SHARPEN_MS = 600;
-// The map settles in within about a second: states rise west to east while the camera glides in, then the dots appear.
+// The map settles in within about a second: states rise west to east in place, then the dots appear.
 const RISE_MS = 700;
-const INTRO_MS = 1400;
 
 // The land is drawn in the site's palette: white state tops (a hair of variation so neighbours read apart), sky-blue sides and
 // edges, pale blue on the hovered and the selected state. The college dots carry the only strong colour on the map.
@@ -54,8 +53,11 @@ const GROUND = "#f4f9fd";
 
 /** A dot colour: a CSS colour token (lib/ui.ts TIER_DOT / FIT_DOT_COLOR) and the hex used until the stylesheet has it; `ring` draws it hollow. */
 export type DotTone = { token: string; hex: string; ring?: boolean };
-/** A college on the map: its dot colour and the short note shown after its name on hover (its tier, or its fit). */
-export type MapDot = MapPin & { tone: DotTone; note: string | null };
+/**
+ * A college on the map: its dot colour and the short note shown after its name on hover (its tier or fit, and its deadline when
+ * the "when" lens is on). With the lens on, `lit` dots (deadline in the window) carry an ink ring and the rest are `dim`.
+ */
+export type MapDot = MapPin & { tone: DotTone; note: string | null; lit?: boolean; dim?: boolean };
 /** What the page can do to the map from outside it: light up a college's dot (hovering its row in the list). */
 export type MapHandle = { hover: (slug: string | null) => void };
 
@@ -73,8 +75,13 @@ type StateMesh = {
   top: THREE.MeshStandardMaterial;
   baseTop: THREE.Color;
   edge: THREE.LineBasicMaterial;
-  rings: Ring[]; // world x/z, already shrunk about the centroid
+  rings: Ring[]; // world x/z where the piece is drawn, already shrunk about the centroid (hover picking, framing)
   box: [number, number, number, number];
+  // Where the projection put it (finding which state a college is in); differs from `rings` only for a moved inset.
+  srcRings: Ring[];
+  srcBox: [number, number, number, number];
+  // An inset (Alaska, Hawaii) is scaled by k about its centroid and moved by dx/dz; a college on it follows (`placeOn`).
+  inset: { k: number; dx: number; dz: number };
   cx: number;
   cz: number;
   delay: number;
@@ -89,6 +96,8 @@ type Pin3D = {
   hex: string;
   rgb: [number, number, number];
   ring: boolean;
+  lit: boolean;
+  dim: boolean;
   size: number;
   x: number;
   z: number;
@@ -137,8 +146,51 @@ function inRing(x: number, z: number, ring: Ring) {
   }
   return inside;
 }
-function stateAt(list: StateMesh[], x: number, z: number) {
-  return list.find((s) => x >= s.box[0] && x <= s.box[2] && z >= s.box[1] && z <= s.box[3] && s.rings.some((r) => inRing(x, z, r))) ?? null;
+/** The piece under a point: as drawn (`src` false: hover), or as projected (`src` true: which state a college is in). */
+function stateAt(list: StateMesh[], x: number, z: number, src = false) {
+  return (
+    list.find((s) => {
+      const b = src ? s.srcBox : s.box;
+      return x >= b[0] && x <= b[2] && z >= b[1] && z <= b[3] && (src ? s.srcRings : s.rings).some((r) => inRing(x, z, r));
+    }) ?? null
+  );
+}
+
+/** A projected point on a piece, moved with it when the piece is an inset. */
+const placeOn = (s: StateMesh, x: number, z: number): [number, number] => [s.cx + s.inset.dx + (x - s.cx) * s.inset.k, s.cz + s.inset.dz + (z - s.cz) * s.inset.k];
+
+/**
+ * Alaska and Hawaii as small insets in the lower 48's own bottom-left corner (the open Pacific under California), instead of
+ * where Albers USA puts them (hanging past the coast and below Texas). The map can then be framed on the lower 48 alone.
+ */
+function placeInsets(states: StateMesh[]) {
+  const ak = states.find((s) => s.id === "02");
+  const hi = states.find((s) => s.id === "15");
+  const main = states.filter((s) => s !== ak && s !== hi);
+  if (!ak || !hi || !main.length) return;
+  const minX = Math.min(...main.map((s) => s.box[0]));
+  const maxX = Math.max(...main.map((s) => s.box[2]));
+  const minZ = Math.min(...main.map((s) => s.box[1]));
+  const maxZ = Math.max(...main.map((s) => s.box[3]));
+  const W = maxX - minX;
+  const D = maxZ - minZ;
+  const put = (s: StateMesh, maxW: number, maxD: number, left: number) => {
+    const k = Math.min(1, maxW / (s.box[2] - s.box[0]), maxD / (s.box[3] - s.box[1]));
+    // Bottom-left of the scaled piece onto (left, the lower 48's southern edge).
+    const dx = left - (s.cx + (s.box[0] - s.cx) * k);
+    const dz = maxZ - (s.cz + (s.box[3] - s.cz) * k);
+    s.inset = { k, dx, dz };
+    s.mesh.position.x = s.cx + dx;
+    s.mesh.position.z = s.cz + dz;
+    s.mesh.scale.set(GAP * k, s.mesh.scale.y, GAP * k);
+    s.rings = s.srcRings.map((r) => r.map(([x, z]) => placeOn(s, x, z)));
+    const xs = s.rings.flat().map((p) => p[0]);
+    const zs = s.rings.flat().map((p) => p[1]);
+    s.box = [Math.min(...xs), Math.min(...zs), Math.max(...xs), Math.max(...zs)];
+    return s.box[2];
+  };
+  const akRight = put(ak, W * 0.19, D * 0.2, minX);
+  put(hi, W * 0.11, D * 0.09, akRight + W * 0.02);
 }
 
 function letterTexture(letter: string, color: string) {
@@ -213,6 +265,7 @@ function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureColle
     const world = rings.map((r) => r.map(([x, y]) => [cx + (x - cx) * GAP, cz + (y - cz) * GAP] as [number, number]));
     const xs = world.flat().map((p) => p[0]);
     const zs = world.flat().map((p) => p[1]);
+    const box: [number, number, number, number] = [Math.min(...xs), Math.min(...zs), Math.max(...xs), Math.max(...zs)];
     return {
       id: String(f.id),
       mesh,
@@ -220,7 +273,10 @@ function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureColle
       baseTop,
       edge,
       rings: world,
-      box: [Math.min(...xs), Math.min(...zs), Math.max(...xs), Math.max(...zs)],
+      box,
+      srcRings: world,
+      srcBox: box,
+      inset: { k: 1, dx: 0, dz: 0 },
       cx,
       cz,
       // The map rises in a quick wave from west to east.
@@ -348,6 +404,7 @@ export function USMap3D(props: {
 
     const projection = fitWorld(g);
     const states = buildStates(g, projection, g.land);
+    if (g.region === "US") placeInsets(states);
     // Context land (Ireland beside the UK) rises with the map but is never hovered, lifted or tinted.
     const context = buildStates(g, projection, g.context, true);
     for (const s of [...states, ...context]) {
@@ -410,33 +467,43 @@ export function USMap3D(props: {
         uAlpha: { value: reduced ? 1 : 0 },
         uInk: { value: new THREE.Vector3(...srgbOf(INK)) },
       },
+      // Sizes are worked out in CSS pixels. A lit dot (its deadline in the lens window) gets a 2px ink ring 2px outside it, so its
+      // sprite is 9px wider; a dim one is drawn at 22% so the lit ones stand out and the rest of the map still reads. Static: the
+      // ring never pulses (and so needs nothing different for reduced motion).
       vertexShader: /* glsl */ `
-        attribute vec3 aColor; attribute float aSize; attribute float aShow; attribute float aRing;
+        attribute vec3 aColor; attribute float aSize; attribute float aShow; attribute float aRing; attribute float aLit; attribute float aDim;
         uniform float uPx; uniform float uScale;
-        varying vec3 vColor; varying float vSize; varying float vShow; varying float vRing;
+        varying vec3 vColor; varying float vCss; varying float vDotR; varying float vShow; varying float vRing; varying float vLit; varying float vDim;
         void main() {
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-          vSize = aSize * uScale * uPx;
-          gl_PointSize = vSize;
+          vDotR = aSize * uScale * 0.5;
+          vCss = aSize * uScale + aLit * 9.0;
+          gl_PointSize = vCss * uPx;
           vColor = aColor;
           vShow = aShow;
           vRing = aRing;
+          vLit = aLit;
+          vDim = aDim;
         }`,
       fragmentShader: /* glsl */ `
         uniform float uPx; uniform float uScale; uniform float uAlpha; uniform vec3 uInk;
-        varying vec3 vColor; varying float vSize; varying float vShow; varying float vRing;
+        varying vec3 vColor; varying float vCss; varying float vDotR; varying float vShow; varying float vRing; varying float vLit; varying float vDim;
         void main() {
-          float d = length(gl_PointCoord - 0.5) * 2.0;
-          float aa = 2.0 / vSize;
-          float halo = 4.0 * uPx * max(uScale, 0.85) / vSize;
-          float core = 1.0 - halo;
-          float outer = 1.0 - smoothstep(1.0 - aa, 1.0, d);
-          float fill = 1.0 - smoothstep(core - aa, core, d);
-          float rim = smoothstep(core - halo * 0.6 - aa, core - halo * 0.6, d) * (1.0 - vRing);
-          float hole = vRing * (1.0 - smoothstep(core - halo * 1.1 - aa, core - halo * 1.1, d));
+          float r = length(gl_PointCoord - 0.5) * vCss;
+          float aa = 1.0 / uPx;
+          float halo = 2.0 * max(uScale, 0.85);
+          float core = vDotR - halo;
+          float outer = 1.0 - smoothstep(vDotR - aa, vDotR, r);
+          float fill = 1.0 - smoothstep(core - aa, core, r);
+          float rim = smoothstep(core - halo * 0.6 - aa, core - halo * 0.6, r) * (1.0 - vRing);
+          float hole = vRing * (1.0 - smoothstep(core - halo * 1.1 - aa, core - halo * 1.1, r));
           vec3 c = mix(vec3(1.0), mix(vColor, mix(vColor, uInk, 0.4), rim), fill);
           c = mix(c, vec3(1.0), hole);
-          float a = outer * uAlpha * vShow;
+          float a = outer;
+          float band = vLit * smoothstep(vDotR + 1.5 - aa, vDotR + 1.5, r) * (1.0 - smoothstep(vDotR + 3.5 - aa, vDotR + 3.5, r));
+          c = mix(c, uInk, band);
+          a = max(a, band);
+          a *= uAlpha * vShow * mix(1.0, 0.22, vDim);
           if (a < 0.01) discard;
           gl_FragColor = vec4(c, a);
         }`,
@@ -458,27 +525,35 @@ export function USMap3D(props: {
       p.parts.forEach((m) => (m.material = pinMat(hex)));
       p.letter.material = letterMat(p.tier, hex);
     };
-    // The dot buffer follows the pins: smallest first, so the larger, more selective colleges are drawn on top.
+    // The dot buffer follows the pins, in drawing order: faded ones first, then the rest, then the lit ones; within each, smallest
+    // first, so the larger, more selective colleges sit on top.
     const buildDots = () => {
-      dots = [...pinMap.values()].filter((p) => p.leaving == null).sort((a, b) => a.size - b.size);
+      const layer = (p: Pin3D) => (p.lit ? 2 : p.dim ? 0 : 1);
+      dots = [...pinMap.values()].filter((p) => p.leaving == null).sort((a, b) => layer(a) - layer(b) || a.size - b.size);
       const n = dots.length;
       const pos = new Float32Array(n * 3);
       const col = new Float32Array(n * 3);
       const size = new Float32Array(n);
       const show = new Float32Array(n).fill(1);
       const ring = new Float32Array(n);
+      const lit = new Float32Array(n);
+      const dim = new Float32Array(n);
       dots.forEach((p, i) => {
         pos.set([p.x, dotY(p), p.z], i * 3);
         col.set(p.rgb, i * 3);
         size[i] = p.size;
         ring[i] = p.ring ? 1 : 0;
+        lit[i] = p.lit ? 1 : 0;
+        dim[i] = p.dim ? 1 : 0;
       });
       const geom = new THREE.BufferGeometry()
         .setAttribute("position", new THREE.BufferAttribute(pos, 3))
         .setAttribute("aColor", new THREE.BufferAttribute(col, 3))
         .setAttribute("aSize", new THREE.BufferAttribute(size, 1))
         .setAttribute("aShow", new THREE.BufferAttribute(show, 1))
-        .setAttribute("aRing", new THREE.BufferAttribute(ring, 1));
+        .setAttribute("aRing", new THREE.BufferAttribute(ring, 1))
+        .setAttribute("aLit", new THREE.BufferAttribute(lit, 1))
+        .setAttribute("aDim", new THREE.BufferAttribute(dim, 1));
       dotLayer.geometry.dispose();
       dotLayer.geometry = geom;
     };
@@ -503,13 +578,15 @@ export function USMap3D(props: {
           existing.name = p.name;
           existing.note = p.note;
           existing.ring = !!p.tone.ring;
+          existing.lit = !!p.lit;
+          existing.dim = !!p.dim;
           if (existing.hex !== hex) paint(existing, hex);
           return;
         }
         const tier = p.tier ?? "";
-        const state = stateAt(states, xy[0], xy[1]);
-        const x = state ? state.cx + (xy[0] - state.cx) * GAP : xy[0];
-        const z = state ? state.cz + (xy[1] - state.cz) * GAP : xy[1];
+        // Which state the college is in, from where the projection put it; then onto that state as drawn (an inset moves it).
+        const state = stateAt(states, xy[0], xy[1], true);
+        const [x, z] = state ? placeOn(state, state.cx + (xy[0] - state.cx) * GAP, state.cz + (xy[1] - state.cz) * GAP) : [xy[0], xy[1]];
         const root = new THREE.Group();
         const body = new THREE.Group();
         const cone = new THREE.Mesh(coneGeom, pinMat(hex));
@@ -537,6 +614,8 @@ export function USMap3D(props: {
           hex,
           rgb: srgbOf(hex),
           ring: !!p.tone.ring,
+          lit: !!p.lit,
+          dim: !!p.dim,
           size: dotPx(p.tier),
           x,
           z,
@@ -660,12 +739,9 @@ export function USMap3D(props: {
       return fly.dur;
     };
 
-    // Intro: start a little further out and glide in to the overview while the states rise.
-    if (reduced) applyRig(rig);
-    else {
-      applyRig({ ...rig, dist: rig.dist * 1.45 });
-      flyTo(overview(), INTRO_MS);
-    }
+    // The first frame is the final framing: the states rise in place, the camera never glides in, so the map is never seen
+    // framed two ways.
+    applyRig(rig);
 
     const select = (slug: string | null, side: "left" | "right") => {
       if (slug === selSlug && side === selSide) return;
@@ -965,7 +1041,7 @@ export function USMap3D(props: {
         if (tipPin) {
           // Above the dot, kept inside the canvas: slid in from the side edges, and below the dot when there is no room above.
           pv.set(tipPin.x, dotY(tipPin), tipPin.z).project(camera);
-          const lift = (tipPin.size * dotScale() * (1 + 0.45 * tipPin.hover)) / 2 + 6;
+          const lift = (tipPin.size * dotScale() * (1 + 0.45 * tipPin.hover)) / 2 + (tipPin.lit ? 10 : 6);
           const tw = tipEl.offsetWidth;
           const th = tipEl.offsetHeight;
           const px = ((pv.x + 1) / 2) * w;

@@ -6,18 +6,23 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import { englishFit, hasEnglishScore } from "@/lib/english-fit";
 import {
   admitRateFor,
+  DUE_WINDOWS,
+  dueWithin,
   effectiveFilters,
   filtersToQuery,
   FITS,
   medianFor,
+  nextDue,
   nextSort,
   parseFilters,
   rowMatches,
   sortRows,
   tierFor,
+  type DueWindow,
   type ExploreFilters,
   type ExploreRow,
   type FilterContext,
+  type NextDue,
   type SortKey,
 } from "@/lib/explore-filters";
 import { scoreField, type FieldEvidence } from "@/lib/field-match";
@@ -35,7 +40,7 @@ import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
 import type { ApplyTag } from "@/lib/apply-tags";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { buttonClass, FIT_DOT_COLOR, fitDotClass, SEGMENT_TRACK, segmentClass, TIER_DOT } from "@/lib/ui";
-import { CollegeBrowser } from "./CollegeBrowser";
+import { CollegeBrowser, DueChip, dueText } from "./CollegeBrowser";
 import { EnglishFitLine } from "./EnglishFit";
 import { ExploreFilterBar } from "./ExploreFilterBar";
 import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
@@ -54,6 +59,13 @@ const onLgChange = (cb: () => void) => {
   return () => m.removeEventListener("change", cb);
 };
 const useWide = () => useSyncExternalStore(onLgChange, () => window.matchMedia(LG).matches, () => false);
+
+// The reader's calendar date (yyyy-mm-dd, local time): deadlines count from the reader's today, not the server's.
+const noSubscribe = () => () => {};
+const localToday = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
 
 // Eases a number from 0 up to `value` so stats feel like they land rather than appear.
 function useCountUp(value: number | null, ms = 800) {
@@ -186,6 +198,7 @@ function DetailCard({
   sat,
   tags,
   side,
+  due,
   onClose,
 }: {
   college: CollegeSummary;
@@ -193,6 +206,8 @@ function DetailCard({
   sat: SatEstimate | undefined;
   tags: ApplyTag[] | undefined;
   side: "left" | "right";
+  /** The next application deadline from today (plan, date, days left), when the college has one on file. */
+  due: NextDue | null;
   onClose: () => void;
 }) {
   const t = useT();
@@ -262,7 +277,7 @@ function DetailCard({
           <EnglishFitLine english={english} className="mt-1 justify-end text-right" />
         </Row>
         <Row label={t("colleges.nextDeadline")}>
-          <span className="tabular-nums">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</span>
+          {due ? <DueChip due={due} /> : <span className="tabular-nums">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</span>}
         </Row>
         {isUS && (
           <Row label={t("colleges.yourFit")}>
@@ -323,6 +338,8 @@ export function CollegeExplorer({
   programFees,
   evidence,
   applyTags,
+  appDeadlines,
+  serverToday,
 }: {
   colleges: CollegeSummary[];
   lookups: Lookups;
@@ -332,9 +349,24 @@ export function CollegeExplorer({
   evidence: Record<string, FieldEvidence>;
   /** By slug, only colleges that have one (lib/apply-tags.ts). */
   applyTags: Record<string, ApplyTag[]>;
+  /** By institution id: published application deadlines for a plan, as [date, plan] pairs (app/(explore)/colleges/page.tsx). */
+  appDeadlines: Record<string, [string, string][]>;
+  /** The server's date, used only while hydrating; after that the reader's own today decides what is next. */
+  serverToday: string;
 }) {
   const t = useT();
   const student = useStudent();
+  const today = useSyncExternalStore(noSubscribe, localToday, () => serverToday);
+  // Each college's next application deadline from the reader's today: real published dates only (lib/explore-filters.ts nextDue).
+  const dueById = useMemo(() => {
+    const m = new Map<string, NextDue>();
+    for (const c of colleges) {
+      const d = nextDue(appDeadlines[c.id], today);
+      if (d) m.set(c.id, d);
+    }
+    return m;
+  }, [colleges, appDeadlines, today]);
+  const dueOf = (r: ExploreRow) => dueById.get(r.c.id) ?? null;
   const profile = student.profile;
   const searchParams = useSearchParams();
   // The URL is the starting point (a shared or bookmarked view); after that React state leads and is mirrored back into
@@ -386,10 +418,15 @@ export function CollegeExplorer({
   const myScores = { sat: scoredTests(profile).includes("sat") ? (profile.sat ?? undefined) : undefined, act: scoredTests(profile).includes("act") ? (profile.act ?? undefined) : undefined };
   const currency = currencyFor(region);
 
-  // Everything a row shows or is filtered on, computed once per college.
+  // Everything a row shows or is filtered on, computed once per college. Its next deadline is the lens's (an application plan's,
+  // from today), so the list, the table column, the card and the deadline sort all name the same date; a college with no plan
+  // deadline on file keeps the summary's.
   const enriched = useMemo<ExploreRow[]>(
     () =>
-      inRegion.map((c) => ({
+      inRegion.map((raw) => {
+        const due = dueById.get(raw.id);
+        const c = due && due.date !== raw.next_deadline ? { ...raw, next_deadline: due.date } : raw;
+        return {
         c,
         fit: hasScores && isUS ? computeFit(profile, c) : null,
         english: englishFit(myEnglish, english[c.id]),
@@ -397,8 +434,9 @@ export function CollegeExplorer({
         sat: medianFor(c, "sat", satEstimates[c.id]),
         act: medianFor(c, "act"),
         admit: admitRateFor(c, international),
-      })),
-    [inRegion, hasScores, isUS, profile, myEnglish, english, international, programFees, satEstimates],
+        };
+      }),
+    [inRegion, dueById, hasScores, isUS, profile, myEnglish, english, international, programFees, satEstimates],
   );
 
   const ctx: FilterContext = { evidence, currency, isUS, hasScores, hasEnglish, applyTags };
@@ -419,8 +457,28 @@ export function CollegeExplorer({
   const states = useMemo(() => [...new Set(inRegion.map((c) => c.state_region).filter(Boolean))].sort() as string[], [inRegion]);
   const planKeys = useMemo(() => [...new Set(inRegion.flatMap((c) => c.plans ?? []))].sort(), [inRegion]);
 
-  const selIndex = selected ? rows.findIndex((r) => r.c.slug === selected) : -1;
-  const shown = useVisibleCount(`${region}|${effKey}`, rows.length, selIndex);
+  // The "when" lens. Counts for each window come from the rows the other filters leave (so they always match what a click shows);
+  // with a window on, the list and the table narrow to it, earliest deadline first (ties keep the chosen sort), and the map keeps
+  // every college but lights the ones in the window and fades the rest.
+  const lens = eff.due;
+  const lensCounts = useMemo(
+    () => Object.fromEntries(DUE_WINDOWS.map((w) => [w, rows.filter((r) => dueWithin(dueById.get(r.c.id) ?? null, w)).length])) as Record<DueWindow, number>,
+    [rows, dueById],
+  );
+  const listRows = useMemo(
+    () => (lens ? rows.filter((r) => dueWithin(dueById.get(r.c.id) ?? null, lens)).sort((a, b) => dueById.get(a.c.id)!.date.localeCompare(dueById.get(b.c.id)!.date)) : rows),
+    [rows, dueById, lens],
+  );
+  const lensSentence = lens
+    ? listRows.length === 0
+      ? t("colleges.lensNone", { days: lens })
+      : listRows.length === 1
+        ? t("colleges.lensSentenceOne", { days: lens })
+        : t("colleges.lensSentence", { n: listRows.length, days: lens })
+    : null;
+
+  const selIndex = selected ? listRows.findIndex((r) => r.c.slug === selected) : -1;
+  const shown = useVisibleCount(`${region}|${effKey}`, listRows.length, selIndex);
 
   // The map colours each college by its fit once the student has scores (US only), else by its tier; the legend counts the rows shown.
   const byFit = hasScores && isUS;
@@ -429,28 +487,34 @@ export function CollegeExplorer({
       rows.map(({ c, fit }) => {
         const tier = c.general_tier;
         const tone = byFit && fit ? FIT_DOT_COLOR[fit.fit] : TIER_DOT[byFit || !tier ? "none" : tierLetter(tier)];
-        const note = byFit ? (fit ? fitLabel(t, fit.fit) : t("colleges.legendNoFit")) : tier ? t("status.tier", { tier }) : null;
-        return { slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier, tone, note };
+        const base = byFit ? (fit ? fitLabel(t, fit.fit) : t("colleges.legendNoFit")) : tier ? t("status.tier", { tier }) : null;
+        const due = dueById.get(c.id) ?? null;
+        const lit = lens != null && dueWithin(due, lens);
+        // A lit college's hover label carries its line of the timetable too.
+        const note = lit && due ? [base, dueText(t, due)].filter(Boolean).join(" · ") : base;
+        return { slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier, tone, note, lit, dim: lens != null && !lit };
       }),
-    [rows, byFit, t],
+    [rows, byFit, t, dueById, lens],
   );
   const legend = useMemo(() => {
+    // The key counts what is lit: every college shown, or with the lens on, the ones closing in its window.
+    const keyRows = lens ? listRows : rows;
     if (byFit) {
-      const n = (k: string | null) => rows.filter((r) => (r.fit?.fit ?? null) === k).length;
+      const n = (k: string | null) => keyRows.filter((r) => (r.fit?.fit ?? null) === k).length;
       return [
         ...FITS.map((k) => ({ key: k, label: fitLabel(t, k), cls: fitDotClass(k), n: n(k) })),
         { key: "none", label: t("colleges.legendNoFit"), cls: TIER_DOT.none.cls, n: n(null) },
       ].filter((i) => i.n > 0);
     }
     // The key lists only the colours on the map right now (a UK view has no C or D).
-    const n = (k: string | null) => rows.filter((r) => (r.c.general_tier ? tierLetter(r.c.general_tier) : null) === k).length;
+    const n = (k: string | null) => keyRows.filter((r) => (r.c.general_tier ? tierLetter(r.c.general_tier) : null) === k).length;
     return [
       ...BASE_TIERS.map((k) => ({ key: k, label: k, cls: TIER_DOT[k].cls, n: n(k) })),
       { key: "none", label: t("colleges.legendNoTier"), cls: TIER_DOT.none.cls, n: n(null) },
     ].filter((i) => i.n > 0);
-  }, [rows, byFit, t]);
+  }, [rows, listRows, lens, byFit, t]);
 
-  const current = inRegion.find((c) => c.slug === selected) ?? null;
+  const current = enriched.find((r) => r.c.slug === selected)?.c ?? null;
   // Put the card on the side away from the pin so it never covers the college it describes.
   const side: "left" | "right" = current?.longitude != null ? cardSideFor(region, current.longitude) : "right";
   const wide = useWide();
@@ -470,7 +534,7 @@ export function CollegeExplorer({
     <ExploreFilterBar
       f={eff}
       set={set}
-      count={rows.length}
+      count={listRows.length}
       total={inRegion.length}
       fieldHidden={fieldHidden}
       isUS={isUS}
@@ -513,6 +577,25 @@ export function CollegeExplorer({
       {(["map", "table"] as const).map((v) => (
         <button key={v} type="button" aria-pressed={f.view === v} onClick={() => set({ view: v })} className={segmentClass(f.view === v)}>
           {t(v === "map" ? "colleges.viewMap" : "colleges.viewTable")}
+        </button>
+      ))}
+    </div>
+  );
+
+  // The "when" lens switch, each window with its live count (short labels on a phone, so the three fit one line).
+  const lensSwitch = (
+    <div className={SEGMENT_TRACK} role="group" aria-label={t("colleges.lensGroup")}>
+      {([null, ...DUE_WINDOWS] as const).map((w) => (
+        <button key={w ?? "any"} type="button" aria-pressed={lens === w} onClick={() => set({ due: w })} className={segmentClass(lens === w)}>
+          {w == null ? (
+            t("colleges.lensAny")
+          ) : (
+            <>
+              <span className="sm:hidden">{t(w === 7 ? "colleges.lens7Short" : "colleges.lens30Short")}</span>
+              <span className="max-sm:hidden">{t(w === 7 ? "colleges.lens7" : "colleges.lens30")}</span>
+              <span className="font-normal tabular-nums text-zinc-600">{lensCounts[w]}</span>
+            </>
+          )}
         </button>
       ))}
     </div>
@@ -562,9 +645,16 @@ export function CollegeExplorer({
     return (
       <div data-explorer className="space-y-4">
         {titleRow}
+        {/* The "when" lens, as on the map: the switch and, when it is on, its line of the timetable. */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          {lensSwitch}
+          {lensSentence && <p className="text-[15px] font-semibold text-ink">{lensSentence}</p>}
+        </div>
         {filterBar(false)}
         <CollegeBrowser
-          rows={rows}
+          rows={listRows}
+          dueFor={dueOf}
+          lens={lens}
           resetKey={`${region}|${effKey}`}
           isUS={isUS}
           tests={tests}
@@ -583,7 +673,15 @@ export function CollegeExplorer({
   const hover = (slug: string | null) => mapApi.current?.hover(slug);
 
   const card = current && (
-    <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} tags={applyTags[current.slug]} side={side} onClose={() => setSelected(null)} />
+    <DetailCard
+      college={current}
+      english={english[current.id]}
+      sat={satEstimates[current.id]}
+      tags={applyTags[current.slug]}
+      side={side}
+      due={dueById.get(current.id) ?? null}
+      onClose={() => setSelected(null)}
+    />
   );
 
   return (
@@ -597,8 +695,10 @@ export function CollegeExplorer({
             {inRegion.length > 0 && rows.length === 0 && (
               <li className="rounded-xl bg-zinc-50 p-4 text-sm text-zinc-600">{eff.q.trim() ? t("colleges.noMatch", { q: eff.q }) : t("colleges.noFilterMatch")}</li>
             )}
-            {rows.slice(0, shown.count).map(({ c, fit }) => {
+            {rows.length > 0 && listRows.length === 0 && <li className="rounded-xl bg-zinc-50 p-4 text-sm text-zinc-600">{lensSentence}</li>}
+            {listRows.slice(0, shown.count).map(({ c, fit }) => {
               const on = c.slug === selected;
+              const due = lens ? (dueById.get(c.id) ?? null) : null;
               return (
                 <li key={c.slug} data-slug={c.slug}>
                   <button
@@ -621,8 +721,9 @@ export function CollegeExplorer({
                         {[c.city, c.state_region].filter(Boolean).join(", ")}
                         {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
                       </span>
-                      {(fit || student.has(c.slug) || applyTags[c.slug]) && (
+                      {(due || fit || student.has(c.slug) || applyTags[c.slug]) && (
                         <span className="mt-1.5 flex flex-wrap gap-1">
+                          {due && <DueChip due={due} />}
                           {fit ? <FitBadge fit={fit.fit} size="md" /> : student.has(c.slug) && <Pill tone="blue" size="md">{t("colleges.onList")}</Pill>}
                           <ApplyTags tags={applyTags[c.slug]} size="md" />
                         </span>
@@ -644,36 +745,43 @@ export function CollegeExplorer({
         </aside>
 
         <div className="flex min-w-0 flex-col gap-3 lg:min-h-0">
-          {/* The map panel. Its header is the key: what each colour means and how many of the colleges shown have it (one line on a
-              phone), then the way to colour by fit, then the way back to the whole map. The map fills the rest, framed to the land. */}
+          {/* The map panel. Its header reads like a line of the season's timetable: when (the lens and, when on, how many colleges
+              close in it), then the key (what each colour means and how many of the colleges lit have it, one line on a phone) and
+              the way to colour by fit. The map fills the rest, framed to the lower 48 with Alaska and Hawaii as insets. */}
           <section aria-label={t(`colleges.mapLabel.${region}` as MessageKey)} className="flex flex-col overflow-hidden rounded-2xl border border-zinc-200 lg:min-h-0 lg:flex-1">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-zinc-200 bg-white px-4 py-2.5">
-              <p className="text-[13px] font-semibold text-ink max-sm:sr-only">{byFit ? t("colleges.yourFit") : t("colleges.legendTier")}</p>
-              <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[13px] max-sm:gap-x-2.5" aria-label={t("colleges.tierColours")}>
-                {legend.map((i) => (
-                  <li key={i.key} className="flex items-center gap-1.5 whitespace-nowrap">
-                    <span className={`h-3 w-3 rounded-full ${i.cls}`} aria-hidden="true" />
-                    <span className="font-semibold text-ink">{i.label}</span>
-                    <span className="tabular-nums text-zinc-600">{i.n}</span>
-                  </li>
-                ))}
-              </ul>
-              {isUS && (
-                <div className="text-[13px] leading-snug max-sm:hidden">
-                  {byFit ? (
-                    statsLink()
-                  ) : (
-                    <Link href="/start" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
-                      {t("colleges.colourByFit")}
-                    </Link>
-                  )}
-                </div>
-              )}
-              {current && (
-                <button type="button" onClick={() => setSelected(null)} className={`ml-auto ${buttonClass("ghost", "sm")} h-8`}>
-                  {t("colleges.wholeMap")}
-                </button>
-              )}
+            <div className="space-y-2 border-b border-zinc-200 bg-white px-4 py-2.5">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                {lensSwitch}
+                {lensSentence && <p className="text-[15px] font-semibold text-ink">{lensSentence}</p>}
+                {current && (
+                  <button type="button" onClick={() => setSelected(null)} className={`ml-auto ${buttonClass("ghost", "sm")} h-8`}>
+                    {t("colleges.wholeMap")}
+                  </button>
+                )}
+              </div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+                <p className="text-[13px] font-semibold text-ink max-sm:sr-only">{byFit ? t("colleges.yourFit") : t("colleges.legendTier")}</p>
+                <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[13px] max-sm:gap-x-2.5" aria-label={t("colleges.tierColours")}>
+                  {legend.map((i) => (
+                    <li key={i.key} className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className={`h-3 w-3 rounded-full ${i.cls}`} aria-hidden="true" />
+                      <span className="font-semibold text-ink">{i.label}</span>
+                      <span className="tabular-nums text-zinc-600">{i.n}</span>
+                    </li>
+                  ))}
+                </ul>
+                {isUS && (
+                  <div className="text-[13px] leading-snug max-sm:hidden">
+                    {byFit ? (
+                      statsLink()
+                    ) : (
+                      <Link href="/start" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
+                        {t("colleges.colourByFit")}
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
             {/* Below lg the canvas takes the country's own proportions, so the land fills it and the list follows close under it. */}
             <div className="aspect-[2/1] min-h-[180px] lg:aspect-auto lg:min-h-0 lg:flex-1">
