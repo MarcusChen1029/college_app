@@ -15,6 +15,7 @@ import {
   isSenior,
   normalizeActivities,
   patchChecklist,
+  planLimitRefusal,
   updateActivity,
   updateEssay,
   upcomingDeadlines,
@@ -54,6 +55,19 @@ test("add college: duplicate, plan limit and offered plans", () => {
   const bad = checkAddCollege({ ...base, slug: "brown", plan: "EA" });
   assert.equal(bad.ok, false);
   assert.match(!bad.ok ? bad.error : "", /doesn't offer "EA"/);
+});
+
+test("add college: the database's plan-limit refusal (0046) reads as a full list with /pricing, other errors don't", () => {
+  const origin = "https://www.track-ur-college.com";
+  const byHint = planLimitRefusal({ message: "Plan limit reached: the Free plan holds 5 colleges.", hint: "plan_limit" }, origin);
+  assert.match(byHint ?? "", /full for the Free plan \(5 colleges\)/);
+  assert.match(byHint ?? "", /https:\/\/www\.track-ur-college\.com\/pricing/);
+  assert.doesNotMatch(byHint ?? "", /Something went wrong|Couldn't save/);
+  // The message alone is enough (a client that drops the hint).
+  assert.equal(planLimitRefusal({ message: "Plan limit reached: the Free plan holds 5 colleges.", hint: null }, origin), byHint);
+  assert.equal(planLimitRefusal({ message: "duplicate key value violates unique constraint", hint: null }, origin), null);
+  assert.equal(planLimitRefusal({ message: "Too many rows", hint: "row_cap" }, origin), null);
+  assert.equal(planLimitRefusal(null, origin), null);
 });
 
 test("plan key must be one the college offers; null clears it", () => {

@@ -70,6 +70,7 @@ import {
   NOTES_MAX,
   normalizeActivities,
   patchChecklist,
+  planLimitRefusal,
   seniorOnlyMessage,
   updateActivity,
   updateEssay,
@@ -485,6 +486,9 @@ export function registerTools(server: McpServer) {
       const c = checkAddCollege({ studentPlan: s.plan, listedSlugs: list.map((e) => e.slug), slug, offeredPlans: college.plans, plan });
       if (!c.ok) return toolError(c.error);
       const { error } = await s.db.from("ai_student_colleges").insert({ institution_id: college.id, plan_key: c.value.plan, status: "in_progress", notes: null, checklist: {} });
+      // The database's Free limit (0046) can refuse even after the gate above, e.g. when the pass ended a moment ago.
+      const refused = planLimitRefusal(error, s.origin);
+      if (refused) return toolError(refused);
       check(error, slug);
       // Like the website's "move to list": an interested college leaves the interested list once it's listed.
       const cleared = await changeProfile(s, (p) => ((p.interested ?? []).includes(slug) ? { columns: { interested: (p.interested ?? []).filter((x) => x !== slug) }, value: true } : { columns: {}, value: false }));

@@ -83,6 +83,17 @@ export function checkAddCollege(input: { studentPlan: PlanKey; listedSlugs: stri
   return plan.ok ? ok({ plan: plan.value }) : plan;
 }
 
+/**
+ * The database's own Free-plan limit (migration 0046, trigger plan_limit: hint `plan_limit`, message "Plan limit reached…")
+ * as a readable "list is full" message pointing to /pricing. Null for any other error, which stays a save failure.
+ */
+export function planLimitRefusal(error: { message?: string | null; hint?: string | null } | null | undefined, origin: string): string | null {
+  if (!error) return null;
+  if (error.hint !== "plan_limit" && !(error.message ?? "").startsWith("Plan limit reached")) return null;
+  const free = getPlan("free");
+  return `The list is full for the ${free.name} plan (${free.limit} colleges). The admission-year pass has no list limit; the student can buy one at ${origin}/pricing.`;
+}
+
 /** Interested colleges are kept apart from the list: a listed college can't also be "interested". */
 export function checkSetInterested(input: { interested: string[]; listedSlugs: string[]; slug: string; value: boolean }): Check<string[]> {
   const has = input.interested.includes(input.slug);

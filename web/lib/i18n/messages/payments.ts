@@ -48,6 +48,8 @@ export const en = {
   // After ECPay: /pricing?order=<id>
   "payments.order.confirming": "Confirming payment…",
   "payments.order.slow": "Still waiting for ECPay. ATM and convenience-store payments can take a while; this page updates when it lands.",
+  "payments.order.unheard":
+    "We haven't heard from ECPay. If you paid, it will show here (reload this page to check); if the card was declined, you can try again.",
   "payments.order.paid": "Payment received. Your pass is active until {until}.",
   "payments.order.paidLater": "Payment received. Your {pass} starts {from} and runs until {until}.",
   "payments.order.atmTitle": "Pay by ATM transfer",
@@ -55,11 +57,17 @@ export const en = {
   "payments.order.account": "Account number",
   "payments.order.cvsTitle": "Pay at a convenience store",
   "payments.order.cvsCode": "Payment code",
+  "payments.order.amount": "Amount",
   "payments.order.deadline": "Pay before {deadline}. This page updates when the payment arrives.",
   "payments.order.expired": "This payment expired without being paid. Pick a year below to start again.",
   "payments.order.refunded": "This payment was refunded.",
   "payments.order.missing": "We couldn't find that payment. If you just paid, wait a minute and reload this page.",
   "payments.order.signIn": "Sign in to see your payment.",
+
+  // Pass card on /pricing: an ATM / convenience-store payment that was started and can still be paid
+  "payments.openOrder.title": "{pass}: payment not finished yet",
+  "payments.openOrder.deadline": "Pay before {deadline}.",
+  "payments.openOrder.hint": "Pay this to finish, or start a new payment below.",
 
   // Shared by the parent pay page and the payment history
   "payments.price": "NT${price}",
@@ -72,6 +80,7 @@ export const en = {
   "payments.parent.noAccount": "You don't need a Trakur account to pay.",
   "payments.parent.paidTitle": "Paid, thank you",
   "payments.parent.paidBody": "The {pass} runs until {until}. There is nothing more to do.",
+  "payments.parent.alreadyPaid": "This pass is already paid — nothing more to pay.",
   "payments.parent.expiredTitle": "This payment link has expired",
   "payments.parent.expiredBody": "A link works for 7 days. Ask the student to send you a new one.",
   "payments.parent.unavailable": "This pass can no longer be bought. Ask the student to send you a new link.",
@@ -146,6 +155,7 @@ export const zhTW: Translation<typeof en> = {
 
   "payments.order.confirming": "正在確認付款…",
   "payments.order.slow": "仍在等待綠界回報。ATM 與超商付款可能需要一些時間；款項入帳後，這個頁面會自動更新。",
+  "payments.order.unheard": "我們還沒收到綠界的通知。如果你已經付款，重新整理這個頁面就會看到；如果刷卡失敗，可以再試一次。",
   "payments.order.paid": "已收到付款，你的方案用到 {until}。",
   "payments.order.paidLater": "已收到付款。你的{pass}會在 {from} 生效，用到 {until}。",
   "payments.order.atmTitle": "請以 ATM 轉帳付款",
@@ -153,11 +163,16 @@ export const zhTW: Translation<typeof en> = {
   "payments.order.account": "轉帳帳號",
   "payments.order.cvsTitle": "請至超商付款",
   "payments.order.cvsCode": "繳費代碼",
+  "payments.order.amount": "金額",
   "payments.order.deadline": "請在 {deadline} 前付款。款項入帳後，這個頁面會自動更新。",
   "payments.order.expired": "這筆付款已逾期且未付款。請在下方重新選擇年度。",
   "payments.order.refunded": "這筆付款已退款。",
   "payments.order.missing": "找不到這筆付款。如果你剛付完款，請等一分鐘後重新整理這個頁面。",
   "payments.order.signIn": "請登入以查看這筆付款。",
+
+  "payments.openOrder.title": "「{pass}」尚未完成付款",
+  "payments.openOrder.deadline": "請在 {deadline} 前付款。",
+  "payments.openOrder.hint": "付完這筆即可完成購買，或在下方重新付款。",
 
   "payments.price": "NT${price}",
   "payments.retry": "再試一次",
@@ -168,6 +183,7 @@ export const zhTW: Translation<typeof en> = {
   "payments.parent.noAccount": "不需要 Trakur 帳號即可付款。",
   "payments.parent.paidTitle": "已付款，謝謝你",
   "payments.parent.paidBody": "「{pass}」用到 {until}，不需要再做任何事。",
+  "payments.parent.alreadyPaid": "這個方案已經付過款了，不需要再付款。",
   "payments.parent.expiredTitle": "這個付款連結已過期",
   "payments.parent.expiredBody": "連結的有效期限是 7 天，請學生再傳一個新連結給你。",
   "payments.parent.unavailable": "這個方案目前已無法購買，請學生再傳一個新連結給你。",

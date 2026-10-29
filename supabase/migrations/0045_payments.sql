@@ -149,6 +149,10 @@ declare
 begin
   if p_user is null then return; end if;
   insert into public.student_profiles (user_id) values (p_user) on conflict (user_id) do nothing;
+  -- Serializes rebuilds for one student: two paid notices at the same moment (say the student's card for one year and
+  -- a parent's ATM for another) would otherwise each aggregate before the other commits and keep only their own window.
+  -- The second waits here, and the select below (a new snapshot) then sees the first one's paid order.
+  perform 1 from public.student_profiles where user_id = p_user for update;
   select coalesce(jsonb_agg(jsonb_build_object('entry_year', o.entry_year, 'from', o.pass_from, 'until', o.pass_until)
                             order by o.pass_from, o.entry_year, o.created_at, o.id), '[]'::jsonb),
          coalesce(bool_or(o.pass_until >= (now() at time zone 'Asia/Taipei')::date), false)

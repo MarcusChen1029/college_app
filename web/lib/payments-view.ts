@@ -219,22 +219,33 @@ export function payInstructions(order: Pick<OrderView, "paymentInfo">): PayInstr
   return paymentNo !== null ? { kind: "cvs", paymentNo } : null;
 }
 
-/** The order page polls every 2 s for the first minute, then every 10 s (ATM and store payments can take days). */
+/**
+ * The order page polls every 2 s for the first minute, then every 10 s while an ATM / store order awaits payment (that can
+ * take days). A pending order (no codes, nothing heard) is polled for POLL_CAP_MS after the page opened, then left alone.
+ */
 export const POLL_FAST_MS = 2000;
 export const POLL_FAST_FOR_MS = 60_000;
 export const POLL_SLOW_MS = 10_000;
+export const POLL_CAP_MS = 10 * 60_000;
 
 export const pollDelay = (waitedMs: number): number => (waitedMs < POLL_FAST_FOR_MS ? POLL_FAST_MS : POLL_SLOW_MS);
 
-/** True once the order can't change any more, so polling stops. */
-export const isSettled = (status: OrderStatus): boolean => status === "paid" || status === "refunded" || status === "expired";
-
-export type OrderPhase = "confirming" | "slow" | "awaiting" | "paid" | "expired" | "refunded";
+export type OrderPhase = "confirming" | "slow" | "unheard" | "awaiting" | "paid" | "expired" | "refunded";
 
 /**
- * What the order page shows. A pending order is "confirming" for the first minute (counted from opening the page, or
- * from the order's creation when that is longer ago: an old link must not claim to be confirming), then "slow".
- * An ATM / store order with its codes is "awaiting" until the deadline, which ECPay never reports, then "expired".
+ * A pending order, or one not read yet: "confirming" for the first minute (counted from opening the page, or from the
+ * order's creation when that is longer ago: an old link must not claim to be confirming), then "slow", then "unheard"
+ * once the page itself has waited POLL_CAP_MS. The cap counts only the page's own wait, so a buyer who spent a long
+ * time on ECPay's page still gets the full wait for the notice. `ageMs` is NaN when the order's age is unknown.
+ */
+export function waitingPhase(waitedMs: number, ageMs: number): "confirming" | "slow" | "unheard" {
+  if (waitedMs >= POLL_CAP_MS) return "unheard";
+  return Math.max(waitedMs, Number.isFinite(ageMs) ? ageMs : 0) >= POLL_FAST_FOR_MS ? "slow" : "confirming";
+}
+
+/**
+ * What the order page shows. A pending order goes through waitingPhase. An ATM / store order with its codes is
+ * "awaiting" until the deadline, which ECPay never reports, then "expired".
  */
 export function orderPhase(order: OrderView, waitedMs: number, nowMs: number): OrderPhase {
   if (order.status === "paid") return "paid";
@@ -244,6 +255,28 @@ export function orderPhase(order: OrderView, waitedMs: number, nowMs: number): O
     const deadline = order.expiresAt === null ? NaN : Date.parse(order.expiresAt);
     return Number.isNaN(deadline) || deadline > nowMs ? "awaiting" : "expired";
   }
-  const age = nowMs - Date.parse(order.createdAt);
-  return Math.max(waitedMs, Number.isFinite(age) ? age : 0) >= POLL_FAST_FOR_MS ? "slow" : "confirming";
+  return waitingPhase(waitedMs, nowMs - Date.parse(order.createdAt));
+}
+
+/**
+ * True while the order page should read the order again. Paid, refunded and expired (an ATM / store order past its
+ * deadline included) can't change any more; "unheard" is a pending order after the cap.
+ */
+export const keepPolling = (phase: OrderPhase): boolean => phase === "confirming" || phase === "slow" || phase === "awaiting";
+
+/**
+ * The ATM / convenience-store orders the pass card on /pricing shows as "pay this to finish": codes issued, deadline not
+ * passed (orderPhase "awaiting"), and the year not already owned (paying it as well would pay that year twice).
+ * Keeps the order of `orders` (listOrders: newest first).
+ */
+export function openPayOrders(
+  orders: readonly OrderView[],
+  ownedYears: ReadonlySet<number>,
+  nowMs: number,
+): { order: OrderView; how: PayInstructions }[] {
+  return orders.flatMap((order) => {
+    if (order.status !== "awaiting_payment" || ownedYears.has(order.entryYear)) return [];
+    const how = payInstructions(order);
+    return how !== null && orderPhase(order, 0, nowMs) === "awaiting" ? [{ order, how }] : [];
+  });
 }

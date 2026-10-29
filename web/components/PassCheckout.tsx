@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { PayCodes, payDeadline } from "@/components/OrderStatus";
 import { openSignIn } from "@/components/SignInDialog";
 import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
-import { createPayLink, fetchPaymentStatus, startCheckout } from "@/lib/payments-api";
-import { fmtPassDate, fmtTaipei, PaymentError, paymentErrorKey } from "@/lib/payments-view";
+import { createPayLink, fetchPaymentStatus, listOrders, startCheckout } from "@/lib/payments-api";
+import { fmtPassDate, fmtTaipei, openPayOrders, PaymentError, paymentErrorKey, type OrderView } from "@/lib/payments-view";
 import { currentEntryYear, offeredEntryYears, PASS_PRICE_TWD, passWindow, taipeiToday } from "@/lib/plans";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, toneClass } from "@/lib/ui";
@@ -14,11 +15,13 @@ const noop = () => () => {};
 
 type Busy = "pay" | "link" | null;
 type MadeLink = { year: number; url: string; expiresAt: string };
+type Orders = { user: string; rows: OrderView[]; nowMs: number };
 
 /**
- * The buying part of the pass card on /pricing: the passes the account already has, a choice of entry year (nothing
- * preselected), the consent line, then "Pay" (to ECPay) or "Ask a parent to pay" (makes a link). While payment isn't
- * open for this visitor the buttons are replaced by "Payment opens soon".
+ * The buying part of the pass card on /pricing: the passes the account already has, any ATM / convenience-store payment
+ * that was started and can still be paid (its codes, amount and deadline), a choice of entry year (nothing preselected),
+ * the consent line, then "Pay" (to ECPay) or "Ask a parent to pay" (makes a link). While payment isn't open for this
+ * visitor the buttons are replaced by "Payment opens soon".
  */
 export function PassCheckout() {
   const t = useT();
@@ -34,6 +37,7 @@ export function PassCheckout() {
   const [link, setLink] = useState<MadeLink | null>(null);
   const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<{ user: string | null; open: boolean } | null>(null);
+  const [orders, setOrders] = useState<Orders | null>(null);
   const linkInput = useRef<HTMLInputElement>(null);
 
   // Whether buying is open depends on who is asking (stage-mode testers), so it is asked again when the account changes.
@@ -43,6 +47,22 @@ export function PassCheckout() {
     void fetchPaymentStatus().then((s) => {
       if (!cancelled) setStatus({ user: userId, open: s.open });
     });
+    return () => {
+      cancelled = true;
+    };
+  }, [student.ready, userId]);
+
+  // The account's orders, for an ATM / store payment that is still open. Only a reminder: the card works without it,
+  // so a failed read shows nothing.
+  useEffect(() => {
+    if (!student.ready || userId === null) return;
+    let cancelled = false;
+    listOrders().then(
+      (rows) => {
+        if (!cancelled) setOrders({ user: userId, rows, nowMs: Date.now() });
+      },
+      () => {},
+    );
     return () => {
       cancelled = true;
     };
@@ -74,6 +94,8 @@ export function PassCheckout() {
   const open = student.ready && status !== null && status.user === userId ? status.open : null;
   const passes = student.planWindows.filter((w) => w.until >= today).sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
   const madeLink = link !== null && link.year === selected ? link : null;
+  // A year that got paid meanwhile drops out (ownedYears), so a still-open ATM code for it is not offered twice.
+  const toPay = orders !== null && orders.user === userId ? openPayOrders(orders.rows, ownedYears, orders.nowMs) : [];
 
   const fail = (e: unknown) => {
     setError(paymentErrorKey(e));
@@ -148,6 +170,19 @@ export function PassCheckout() {
           </ul>
         </div>
       )}
+
+      {toPay.map(({ order, how }) => {
+        const deadline = payDeadline(order, how, locale);
+        return (
+          <div key={order.id} className={`space-y-2 rounded-md border p-3 text-sm ${toneClass("soon")}`}>
+            <p className="text-xs font-semibold">{t("payments.openOrder.title", { pass: t("payments.passFor", { year: order.entryYear }) })}</p>
+            <PayCodes order={order} how={how}>
+              {deadline !== null && <p>{t("payments.openOrder.deadline", { deadline })}</p>}
+              <p>{t("payments.openOrder.hint")}</p>
+            </PayCodes>
+          </div>
+        );
+      })}
 
       <fieldset className="space-y-2" disabled={open === false}>
         <legend className="text-sm font-semibold">{t("payments.chooseYear")}</legend>

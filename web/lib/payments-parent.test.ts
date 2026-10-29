@@ -31,7 +31,9 @@ test("payLinkPhase: paid wins over expired, expired over closed, closed over rea
 
 test("checkoutFailure: link changes become screens, anything else an error line", () => {
   const fail = (code: PaymentErrorCode) => checkoutFailure(new PaymentError(code));
-  assert.deepEqual(fail("already_paid"), { screen: "paid" });
+  // Paid some other way (say by the student): not the "Paid, thank you" screen, which is only for the view's paid: true.
+  assert.deepEqual(fail("already_paid"), { screen: "alreadyPaid" });
+  assert.notDeepEqual(fail("already_paid"), { screen: payLinkPhase({ paid: true, expired: false, open: true }) });
   assert.deepEqual(fail("expired"), { screen: "expired" });
   assert.deepEqual(fail("closed"), { screen: "closed" });
   assert.deepEqual(fail("bad_year"), { screen: "unavailable" });
@@ -48,7 +50,7 @@ test("checkoutFailure covers every payment error code with a defined result", ()
   for (const code of PAYMENT_ERROR_CODES) {
     const f = checkoutFailure(new PaymentError(code));
     if ("error" in f) assert.ok(f.error in en && f.error in zhTW, `${code} -> ${f.error} has no translation`);
-    else assert.ok(["paid", "expired", "closed", "unavailable", "missing"].includes(f.screen), code);
+    else assert.ok(["alreadyPaid", "expired", "closed", "unavailable", "missing"].includes(f.screen), code);
   }
 });
 

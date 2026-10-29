@@ -21,8 +21,11 @@ export function payLinkPhase(view: Pick<PayLinkView, "paid" | "expired" | "open"
   return "ready";
 }
 
-/** A screen reached after the view was loaded, because the checkout answered otherwise than the view said. */
-export type PayLinkScreen = PayLinkPhase | "unavailable" | "missing";
+/**
+ * A screen reached after the view was loaded, because the checkout answered otherwise than the view said.
+ * "alreadyPaid" = the year was paid some other way (say by the student), not through this link: no "thank you".
+ */
+export type PayLinkScreen = PayLinkPhase | "alreadyPaid" | "unavailable" | "missing";
 
 export type CheckoutFailure = { screen: PayLinkScreen } | { error: MessageKey };
 
@@ -35,7 +38,7 @@ export function checkoutFailure(e: unknown): CheckoutFailure {
   if (e instanceof PaymentError) {
     switch (e.code) {
       case "already_paid":
-        return { screen: "paid" };
+        return { screen: "alreadyPaid" };
       case "expired":
         return { screen: "expired" };
       case "closed":

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useEffectEvent, useState, type ReactNode } from "react";
 import { SignInButton } from "@/components/SignInDialog";
 import type { Locale } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
@@ -10,14 +10,15 @@ import { fetchOrder } from "@/lib/payments-api";
 import {
   fmtPassDate,
   fmtTaipei,
-  isSettled,
   isUuid,
+  keepPolling,
   orderPhase,
   payInstructions,
-  POLL_FAST_FOR_MS,
   pollDelay,
+  waitingPhase,
   type OrderPhase,
   type OrderView,
+  type PayInstructions,
 } from "@/lib/payments-view";
 import { taipeiToday } from "@/lib/plans";
 import { useStudent } from "@/lib/student-store";
@@ -35,6 +36,7 @@ type Seen = {
 const TONE: Record<OrderPhase | "missing", Tone> = {
   confirming: "progress",
   slow: "soon",
+  unheard: "neutral",
   awaiting: "soon",
   paid: "done",
   expired: "soon",
@@ -44,8 +46,9 @@ const TONE: Record<OrderPhase | "missing", Tone> = {
 
 /**
  * /pricing?order=<id>: where ECPay sends the buyer back. Reads the order every 2 s for the first minute (every 10 s after
- * that, until it is paid or ends) and shows what it is waiting for: confirmation, the ATM account or store code to pay
- * with, or the active pass. Lives under a Suspense boundary (it reads the query string).
+ * that) and shows what it is waiting for: confirmation, the ATM account or store code to pay with, or the active pass.
+ * Stops once the order is paid, refunded or expired (an ATM / store deadline passing included), and after 10 minutes
+ * for an order nothing was heard about (keepPolling). Lives under a Suspense boundary (it reads the query string).
  */
 export function OrderStatus() {
   const t = useT();
@@ -78,7 +81,9 @@ export function OrderStatus() {
       setSeen((prev) => ({ id: orderId, order: order === undefined ? (prev?.id === orderId ? prev.order : undefined) : order, waitedMs, nowMs }));
       if (order === null) return; // no such order for this account: nothing to wait for
       if (order?.status === "paid") refreshPlan(); // the pass was written on the server; read it into the store
-      if (order && isSettled(order.status)) return;
+      // A failed read counts as "not heard yet", so the cap stops a page whose every read fails as well.
+      const phase = order === undefined ? waitingPhase(waitedMs, NaN) : orderPhase(order, waitedMs, nowMs);
+      if (!keepPolling(phase)) return;
       timer = setTimeout(tick, pollDelay(waitedMs));
     };
     void tick();
@@ -103,7 +108,7 @@ export function OrderStatus() {
   let phase: OrderPhase | "missing";
   if (current !== null && current.order === null) phase = "missing";
   else if (order !== null && current !== null) phase = orderPhase(order, current.waitedMs, current.nowMs);
-  else phase = current !== null && current.waitedMs >= POLL_FAST_FOR_MS ? "slow" : "confirming";
+  else phase = waitingPhase(current?.waitedMs ?? 0, NaN);
 
   return (
     <section className={`rounded-2xl border p-5 text-sm ${toneClass(TONE[phase])}`} role="status" aria-live="polite">
@@ -135,35 +140,15 @@ function Body({ phase, order, locale }: { phase: OrderPhase | "missing"; order: 
   if (phase === "awaiting" && order !== null) {
     const how = payInstructions(order);
     if (how !== null) {
-      // An ATM account is due by the end of a day; a store code by a time of day.
-      const deadline = order.expiresAt === null ? null : fmtTaipei(order.expiresAt, locale, how.kind === "cvs");
-      return (
-        <div className="space-y-2">
-          <p className="font-semibold">{how.kind === "atm" ? t("payments.order.atmTitle") : t("payments.order.cvsTitle")}</p>
-          <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
-            {how.kind === "atm" ? (
-              <>
-                <dt>{t("payments.order.bankCode")}</dt>
-                <dd className="font-mono tabular-nums select-all">{how.bankCode}</dd>
-                <dt>{t("payments.order.account")}</dt>
-                <dd className="font-mono tabular-nums select-all">{how.account}</dd>
-              </>
-            ) : (
-              <>
-                <dt>{t("payments.order.cvsCode")}</dt>
-                <dd className="font-mono tabular-nums select-all">{how.paymentNo}</dd>
-              </>
-            )}
-          </dl>
-          {deadline !== null && <p>{t("payments.order.deadline", { deadline })}</p>}
-        </div>
-      );
+      const deadline = payDeadline(order, how, locale);
+      return <PayCodes order={order} how={how}>{deadline !== null && <p>{t("payments.order.deadline", { deadline })}</p>}</PayCodes>;
     }
   }
 
   const text: Record<OrderPhase | "missing", string> = {
     confirming: t("payments.order.confirming"),
     slow: t("payments.order.slow"),
+    unheard: t("payments.order.unheard"),
     awaiting: t("payments.order.confirming"),
     paid: t("payments.order.confirming"),
     expired: t("payments.order.expired"),
@@ -171,4 +156,40 @@ function Body({ phase, order, locale }: { phase: OrderPhase | "missing"; order: 
     missing: t("payments.order.missing"),
   };
   return <p className={phase === "confirming" ? "font-semibold" : undefined}>{text[phase]}</p>;
+}
+
+/** An ATM account is due by the end of a day, so only its date is shown; a store code is due by a time of day. */
+export function payDeadline(order: Pick<OrderView, "expiresAt">, how: PayInstructions, locale: Locale): string | null {
+  return order.expiresAt === null ? null : fmtTaipei(order.expiresAt, locale, how.kind === "cvs");
+}
+
+/**
+ * What to pay with for an open ATM / convenience-store order: the bank code and account, or the store code, and the
+ * amount. Shared by /pricing?order= and the pass card; `children` (the deadline line) go underneath.
+ */
+export function PayCodes({ order, how, children }: { order: Pick<OrderView, "amountTwd">; how: PayInstructions; children?: ReactNode }) {
+  const t = useT();
+  return (
+    <div className="space-y-2">
+      <p className="font-semibold">{how.kind === "atm" ? t("payments.order.atmTitle") : t("payments.order.cvsTitle")}</p>
+      <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
+        {how.kind === "atm" ? (
+          <>
+            <dt>{t("payments.order.bankCode")}</dt>
+            <dd className="font-mono tabular-nums select-all">{how.bankCode}</dd>
+            <dt>{t("payments.order.account")}</dt>
+            <dd className="font-mono tabular-nums select-all">{how.account}</dd>
+          </>
+        ) : (
+          <>
+            <dt>{t("payments.order.cvsCode")}</dt>
+            <dd className="font-mono tabular-nums select-all">{how.paymentNo}</dd>
+          </>
+        )}
+        <dt>{t("payments.order.amount")}</dt>
+        <dd className="tabular-nums">{t("payments.price", { price: order.amountTwd })}</dd>
+      </dl>
+      {children}
+    </div>
+  );
 }

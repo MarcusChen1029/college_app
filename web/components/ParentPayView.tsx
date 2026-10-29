@@ -227,6 +227,12 @@ function PayPage({
         </div>
       )}
 
+      {screen === "alreadyPaid" && (
+        <div role="status" className={`rounded-2xl border p-5 ${toneClass("done")}`}>
+          <p className="text-lg font-semibold">{t("payments.parent.alreadyPaid")}</p>
+        </div>
+      )}
+
       {screen === "expired" && (
         <div role="status" className={`space-y-1 rounded-2xl border p-5 ${toneClass("soon")}`}>
           <p className="text-lg font-semibold">{t("payments.parent.expiredTitle")}</p>

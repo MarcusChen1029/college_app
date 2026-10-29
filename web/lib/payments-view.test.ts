@@ -6,8 +6,9 @@ import {
   fmtPassDate,
   fmtTaipei,
   isEcpayCheckoutUrl,
-  isSettled,
   isUuid,
+  keepPolling,
+  openPayOrders,
   orderPhase,
   PAYMENT_ERROR_CODES,
   PaymentError,
@@ -18,8 +19,11 @@ import {
   parseOrder,
   parsePayLinkView,
   payInstructions,
+  POLL_CAP_MS,
   POLL_FAST_FOR_MS,
   pollDelay,
+  waitingPhase,
+  type OrderPhase,
   type OrderView,
 } from "./payments-view.ts";
 
@@ -192,10 +196,58 @@ test("orderPhase: paid, refunded, expired, and awaiting with the codes shown unt
   assert.equal(orderPhase(order({ status: "awaiting_payment", payment_info: null, created_at: "2026-10-29T08:59:30+00:00" }), 0, now), "confirming");
 });
 
-test("isSettled and pollDelay", () => {
-  assert.ok(isSettled("paid") && isSettled("refunded") && isSettled("expired"));
-  assert.ok(!isSettled("pending") && !isSettled("awaiting_payment"));
+test("pollDelay", () => {
   assert.equal(pollDelay(0), 2000);
   assert.equal(pollDelay(59_999), 2000);
   assert.equal(pollDelay(60_000), 10_000);
+});
+
+test("orderPhase: a pending order becomes unheard after 10 minutes of the page's own waiting", () => {
+  assert.equal(POLL_CAP_MS, 10 * 60_000);
+  const created = Date.parse("2026-10-29T08:00:00+00:00");
+  const fresh = order({ status: "pending" });
+  assert.equal(orderPhase(fresh, POLL_CAP_MS - 1, created + POLL_CAP_MS), "slow");
+  assert.equal(orderPhase(fresh, POLL_CAP_MS, created + POLL_CAP_MS), "unheard");
+  // A buyer who spent 30 minutes on ECPay's page still gets the full wait: the order's age alone never caps.
+  assert.equal(orderPhase(fresh, 0, created + 30 * 60_000), "slow");
+  // An awaiting_payment order without readable codes is capped like a pending one.
+  assert.equal(orderPhase(order({ status: "awaiting_payment", payment_info: null }), POLL_CAP_MS, created + POLL_CAP_MS), "unheard");
+  // ATM codes are not capped: paying at an ATM can take days.
+  const atm = order({ status: "awaiting_payment", payment_info: { BankCode: "812", vAccount: "123" }, expires_at: "2026-11-01T23:59:59+08:00" });
+  assert.equal(orderPhase(atm, POLL_CAP_MS * 6, created + POLL_CAP_MS * 6), "awaiting");
+});
+
+test("waitingPhase: an order not read yet (age unknown) goes confirming, slow, unheard", () => {
+  assert.equal(waitingPhase(0, NaN), "confirming");
+  assert.equal(waitingPhase(POLL_FAST_FOR_MS, NaN), "slow");
+  assert.equal(waitingPhase(POLL_CAP_MS, NaN), "unheard");
+  assert.equal(waitingPhase(0, 2 * POLL_FAST_FOR_MS), "slow");
+});
+
+test("keepPolling: stops on paid, refunded, expired (a passed ATM / store deadline included) and after the cap", () => {
+  const all: Record<OrderPhase, boolean> = { confirming: true, slow: true, awaiting: true, unheard: false, paid: false, refunded: false, expired: false };
+  for (const [phase, keep] of Object.entries(all)) assert.equal(keepPolling(phase as OrderPhase), keep, phase);
+  // An awaiting_payment order whose deadline passed: its status never changes, but its phase does, so polling stops.
+  const past = order({ status: "awaiting_payment", payment_info: { PaymentNo: "LLL22112515887" }, expires_at: "2026-11-01T12:00:00+08:00" });
+  assert.equal(keepPolling(orderPhase(past, 0, Date.parse("2026-11-01T12:00:01+08:00"))), false);
+  assert.equal(keepPolling(orderPhase(past, 0, Date.parse("2026-11-01T11:59:59+08:00"))), true);
+});
+
+test("openPayOrders: ATM / store orders with codes, before the deadline, for a year not owned", () => {
+  const now = Date.parse("2026-10-30T09:00:00+08:00");
+  const atm = order({ id: "11111111-1111-4111-8111-111111111111", status: "awaiting_payment", payment_info: { BankCode: "812", vAccount: "9103522175887271" }, expires_at: "2026-11-01T23:59:59+08:00" });
+  const cvs = order({ id: "22222222-2222-4222-8222-222222222222", entry_year: 2028, status: "awaiting_payment", payment_info: { PaymentNo: "LLL22112515887" }, expires_at: "2026-11-02T09:00:00+08:00" });
+  const late = order({ id: "33333333-3333-4333-8333-333333333333", status: "awaiting_payment", payment_info: { PaymentNo: "X1" }, expires_at: "2026-10-30T08:59:59+08:00" });
+  const noCodes = order({ id: "44444444-4444-4444-8444-444444444444", status: "awaiting_payment", payment_info: null });
+  const pending = order({ id: "55555555-5555-4555-8555-555555555555", status: "pending" });
+  const paid = order({ id: "66666666-6666-4666-8666-666666666666", status: "paid", pass_from: "2026-10-29", payment_info: { BankCode: "812", vAccount: "1" } });
+  const rows = [atm, cvs, late, noCodes, pending, paid];
+
+  const open = openPayOrders(rows, new Set(), now);
+  assert.deepEqual(open.map((o) => o.order.id), [atm.id, cvs.id]);
+  assert.deepEqual(open[0].how, { kind: "atm", bankCode: "812", account: "9103522175887271" });
+  assert.deepEqual(open[1].how, { kind: "cvs", paymentNo: "LLL22112515887" });
+  // The 2027 pass got paid some other way meanwhile: its ATM code is no longer offered.
+  assert.deepEqual(openPayOrders(rows, new Set([2027]), now).map((o) => o.order.id), [cvs.id]);
+  assert.deepEqual(openPayOrders([], new Set(), now), []);
 });
