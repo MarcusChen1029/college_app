@@ -12,7 +12,7 @@ async function CopyData() {
 
 export default function ConnectAiPage() {
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div data-app-screen className="mx-auto max-w-3xl space-y-6">
       <ConnectAi />
       <Suspense fallback={<div className="h-32 animate-pulse rounded-2xl bg-zinc-100" />}>
         <CopyData />

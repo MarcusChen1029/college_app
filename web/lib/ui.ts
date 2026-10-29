@@ -107,8 +107,8 @@ export const TIER_DOT: Record<TierLetter | "none", { cls: string; token: string;
 
 /** Map dots by fit (when the student has scores): the fit mark colours (`fitDotClass`), as CSS tokens for the WebGL map. */
 export const FIT_DOT_COLOR: Record<Fit, { token: string; hex: string }> = {
-  super_reach: { token: "--color-fit-super-reach-mark", hex: "#12304a" },
-  reach: { token: "--color-fit-reach-mark", hex: "#00507e" },
-  target: { token: "--color-fit-target-mark", hex: "#0072a8" },
-  safety: { token: "--color-fit-safety-mark", hex: "#00969b" },
+  super_reach: { token: "--color-fit-super-reach-mark", hex: "#004e54" },
+  reach: { token: "--color-fit-reach-mark", hex: "#007072" },
+  target: { token: "--color-fit-target-mark", hex: "#008787" },
+  safety: { token: "--color-fit-safety-mark", hex: "#379d9c" },
 };

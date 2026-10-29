@@ -8,7 +8,7 @@ import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayD
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import { entrySupplements, reuseGroups, slotPrompts, withRequiredSlots, type SupplementsData } from "@/lib/supplements";
-import { buttonClass, PANEL, toneClass } from "@/lib/ui";
+import { buttonClass, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
 import type { CollegeSummary } from "@/lib/types";
 import { CollegeEssayCard } from "./CollegeEssayCard";
 import { EssayReusePanel } from "./EssayReusePanel";
@@ -44,8 +44,8 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
   return (
     <section className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-xl font-bold">{t("writing.psHeading")}</h2>
-        <span className="text-xs text-zinc-500">{t("writing.psWords")} · {t("writing.psNote")}</span>
+        <h2 className={SECTION_TITLE}>{t("writing.psHeading")}</h2>
+        <span className="text-[13px] text-zinc-600">{t("writing.psWords")} · {t("writing.psNote")}</span>
       </div>
       <SharedDoc name="Common App Personal Statement" display={t("writing.psName")} doc={ps} onChange={set} google={google} />
       <details className={PROMPT_BOX}>
@@ -83,8 +83,8 @@ function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChan
   return (
     <section id="uc-essays" className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-xl font-bold">{t("writing.ucHeading")}</h2>
-        <span className="text-xs text-zinc-500">
+        <h2 className={SECTION_TITLE}>{t("writing.ucHeading")}</h2>
+        <span className="text-[13px] text-zinc-600">
           {t("writing.ucChoose", { pick: UC_PICKS, total: UC_PIQS.length })} · {t("writing.ucWords")} ·{" "}
           <span className={`tabular-nums ${picks.length === UC_PICKS ? "font-medium text-done" : ""}`}>
             {t("writing.ucChosen", { n: picks.length, pick: UC_PICKS })}
@@ -210,21 +210,8 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
     entries.map(({ entry, college }) => ({ slug: college.slug, name: college.short_name ?? college.name, rec: entrySupplements(supplements, college.slug), checklist: entry.checklist })),
   );
 
-  if (entries.length === 0) {
-    return (
-      <EmptyNote
-        action={
-          <Link href="/application/list" className={buttonClass("primary", "sm")}>
-            {t("application.openMyList")}
-          </Link>
-        }
-      >
-        {t("writing.emptyPre")}
-        <strong className="font-semibold">{t("nav.myList")}</strong>
-        {t("writing.emptyPost")}
-      </EmptyNote>
-    );
-  }
+  // The Common App personal statement shows before any college is on the list too: nearly every list needs it.
+  const showPs = entries.length === 0 || shared.commonApp;
 
   return (
     <div className="space-y-6">
@@ -234,25 +221,39 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
           className={`flex items-start gap-3 rounded-lg border px-3 py-2 text-sm ${toneClass(notice === "connected" ? "done" : "soon")}`}
         >
           <span className="flex-1">{t(GOOGLE_NOTICE[notice])}</span>
-          <button type="button" className="text-xs opacity-70 hover:opacity-100" aria-label={t("writing.dismiss")} onClick={() => setNotice(null)}>
-            ✕
+          <button type="button" className="text-base leading-none opacity-70 hover:opacity-100" aria-label={t("writing.dismiss")} onClick={() => setNotice(null)}>
+            ×
           </button>
         </p>
       )}
-      <EssayReusePanel groups={reuse} />
-      {shared.commonApp && <PersonalStatement essays={essays} onChange={saveEssays} google={google} />}
+      {entries.length > 0 && <EssayReusePanel groups={reuse} />}
+      {showPs && <PersonalStatement essays={essays} onChange={saveEssays} google={google} />}
       {shared.uc && <UcEssays essays={essays} onChange={saveEssays} google={google} />}
-      {entries.map(({ entry, college }) => (
-        <CollegeEssayCard
-          key={`${student.auth?.userId ?? "local"}-${entry.slug}`}
-          checklist={entry.checklist}
-          college={college}
-          rec={entrySupplements(supplements, college.slug)}
-          international={!!student.profile.international}
-          onChange={(checklist) => student.update(entry.slug, { checklist })}
-          google={google}
-        />
-      ))}
+      {entries.length === 0 ? (
+        <EmptyNote
+          action={
+            <Link href="/application/list" className={buttonClass("secondary", "sm")}>
+              {t("application.openMyList")}
+            </Link>
+          }
+        >
+          {t("writing.emptyPre")}
+          <strong className="font-semibold">{t("nav.myList")}</strong>
+          {t("writing.emptyPost")}
+        </EmptyNote>
+      ) : (
+        entries.map(({ entry, college }) => (
+          <CollegeEssayCard
+            key={`${student.auth?.userId ?? "local"}-${entry.slug}`}
+            checklist={entry.checklist}
+            college={college}
+            rec={entrySupplements(supplements, college.slug)}
+            international={!!student.profile.international}
+            onChange={(checklist) => student.update(entry.slug, { checklist })}
+            google={google}
+          />
+        ))
+      )}
     </div>
   );
 }

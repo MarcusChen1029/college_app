@@ -10,14 +10,63 @@ import { customDeadline, customSummary } from "@/lib/custom-college";
 import { isDeadlineDone } from "@/lib/application";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useStudent } from "@/lib/student-store";
+import { hasEnglishScore } from "@/lib/english-fit";
+import { cleanRegions } from "@/lib/regions";
 import { scoredTests } from "@/lib/test-plan";
 import type { CollegeSummary, Deadline } from "@/lib/types";
 import { FitBadge } from "./badges";
 import { DeadlineCalendar, type CalendarEvent } from "./DeadlineCalendar";
 import { ProfileCards } from "./ProfileCards";
+import { SignInButton } from "./SignInDialog";
+import { StatusIcon } from "./StatusPill";
 import { buttonClass, PAGE_TITLE, PANEL, SECTION_TITLE } from "@/lib/ui";
 
 const noop = () => () => {};
+
+/** Opens a profile tile (components/ProfileCards.tsx) and brings it into view. */
+function openCard(key: string) {
+  const button = document.querySelector<HTMLButtonElement>(`[data-profile-card="${key}"]`);
+  if (!button) return;
+  if (button.getAttribute("aria-expanded") !== "true") button.click();
+  button.scrollIntoView({ block: "center", behavior: "smooth" });
+  button.focus({ preventScroll: true });
+}
+
+type SetupItem = { key: string; label: string; done: boolean; action: React.ReactNode };
+
+/** What is still missing before the list and its labels work: each step done, or its one next action. Hidden once all are done. */
+function SetupChecklist({ items }: { items: SetupItem[] }) {
+  const t = useT();
+  const done = items.filter((i) => i.done).length;
+  if (done === items.length) return null;
+  return (
+    <section aria-labelledby="setup-heading" className={`${PANEL} p-6`}>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 id="setup-heading" className={SECTION_TITLE}>
+          {t("profile.setup.title")}
+        </h2>
+        <span className="text-[15px] font-semibold tabular-nums">{t("profile.setup.count", { done, total: items.length })}</span>
+      </div>
+      <div className="mt-3 h-2 overflow-hidden rounded-full bg-white" aria-hidden="true">
+        <div className="h-full rounded-full bg-ink" style={{ width: `${(done / items.length) * 100}%` }} />
+      </div>
+      <ul className="mt-4 divide-y divide-zinc-200">
+        {items.map((i) => (
+          <li key={i.key} className="flex min-h-12 flex-wrap items-center gap-x-3 gap-y-2 py-2">
+            <span className={i.done ? "text-done" : "text-zinc-400"}>
+              <StatusIcon tone={i.done ? "done" : "neutral"} />
+            </span>
+            <span className={`min-w-0 flex-1 text-[15px] ${i.done ? "text-zinc-600" : "font-semibold text-ink"}`}>
+              {i.label}
+              {i.done && <span className="sr-only"> ({t("status.done")})</span>}
+            </span>
+            {!i.done && i.action}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
 export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSummary[]; deadlines: Deadline[] }) {
   const t = useT();
@@ -42,6 +91,38 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
       const f = computeFit(profile, college);
       if (f) counts[f.fit]++;
     });
+
+  // The setup steps, in the order the labels need them.
+  const plan = profile.tests?.plan;
+  const addButton = (key: string) => (
+    <button type="button" className={buttonClass("ghost", "sm")} onClick={() => openCard(key)}>
+      {t("profile.setup.add")}
+    </button>
+  );
+  const setup: SetupItem[] = [
+    { key: "gpa", label: t("profile.setup.gpa"), done: profile.gpa != null, action: addButton("gpa") },
+    { key: "test", label: t("profile.setup.test"), done: hasScores || !!plan?.notTaking || !!plan?.planned, action: addButton("test") },
+    ...(profile.international
+      ? [{ key: "english", label: t("profile.setup.english"), done: hasEnglishScore(profile.tests?.english), action: addButton("english") }]
+      : []),
+    { key: "regions", label: t("profile.setup.regions"), done: cleanRegions(profile.targetRegions).length > 0, action: addButton("regions") },
+    {
+      key: "college",
+      label: t("profile.setup.college"),
+      done: student.list.length > 0,
+      action: (
+        <Link href="/colleges" className={buttonClass("ghost", "sm")}>
+          {t("home.browse")}
+        </Link>
+      ),
+    },
+    {
+      key: "account",
+      label: t("profile.setup.signIn"),
+      done: !!student.auth,
+      action: <SignInButton className={buttonClass("ghost", "sm")}>{t("account.signIn")}</SignInButton>,
+    },
+  ];
 
   const checklistTotal = entries.length * CHECKLIST.length;
   const checklistDone = entries.reduce((n, { entry }) => n + progress(entry.checklist).done, 0);
@@ -88,7 +169,9 @@ export function ProfileDashboard({ colleges, deadlines }: { colleges: CollegeSum
       <ProfileCards />
 
       <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-        <div className="space-y-8">
+        {/* Stacked with the grid gap, so the setup steps and the list read as one column beside the calendar. */}
+        <div className="space-y-6">
+          <SetupChecklist items={setup} />
           <section className={`${PANEL} p-6`}>
             <h2 className={SECTION_TITLE}>{t("profile.listHeading")}</h2>
             {entries.length === 0 ? (

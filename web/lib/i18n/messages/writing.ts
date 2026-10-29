@@ -54,7 +54,7 @@ export const en = {
   "writing.noEssaysYet": "No essays added yet.",
   "writing.addEssay": "+ Add essay",
   "writing.emptyPre": "Add colleges to ",
-  "writing.emptyPost": " and their essays will show up here.",
+  "writing.emptyPost": " and each college's own essays will show up here, under the personal statement.",
   // ── Activities route + editor ──
   "writing.activitiesTitle": "Activities",
   "writing.activitiesIntro": "Draft your Common App activities (10) and honors (5), and your UC activities & awards (20), with the same limits the forms use.",
@@ -256,7 +256,7 @@ export const zhTW: Translation<typeof en> = {
   "writing.noEssaysYet": "尚未新增文書。",
   "writing.addEssay": "+ 新增文書",
   "writing.emptyPre": "把學校加入",
-  "writing.emptyPost": "之後，它們的文書就會顯示在這裡。",
+  "writing.emptyPost": "之後，各校自己的文書就會顯示在這裡，排在個人陳述下方。",
   // ── Activities route + editor ──
   "writing.activitiesTitle": "課外活動",
   "writing.activitiesIntro": "草擬你的 Common App 課外活動（10 項）與獎項（5 項），以及 UC 的活動與獎項（20 項），數量與字數上限和申請表單一致。",

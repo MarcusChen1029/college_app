@@ -8,8 +8,9 @@ import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
 import { FEW_GRADUATES, formatEarnings, type FieldEarnings } from "@/lib/outcomes";
 
-/** One college. `earnings`: Scorecard median earnings in the chosen field, added to the evidence line. `reason` rows (famous but not strong) show why instead of a strength bar. */
-export function FieldMatchRow({ rec, reason = false, earnings }: { rec: Rec<MatchRow>; reason?: boolean; earnings?: FieldEarnings }) {
+/** One college. `earnings`: Scorecard median earnings in the chosen field, added to the evidence line. `reason` rows (famous but not strong) show why instead of a strength bar.
+ *  `confidence: false` drops the per-row confidence pill when the page says it once for every row (an undecided field). */
+export function FieldMatchRow({ rec, reason = false, earnings, confidence = true }: { rec: Rec<MatchRow>; reason?: boolean; earnings?: FieldEarnings; confidence?: boolean }) {
   const t = useT();
   const locale = useLocale();
   const { college, score, fit } = rec;
@@ -30,7 +31,7 @@ export function FieldMatchRow({ rec, reason = false, earnings }: { rec: Rec<Matc
   const why = reason ? reasonFor(score) : null;
 
   return (
-    <li className="rounded-2xl border border-zinc-200 px-3 py-2.5">
+    <li className="rounded-2xl bg-zinc-50 px-4 py-3">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
         <SchoolLogo slug={college.slug} />
         <TierBadge tier={college.general_tier} />
@@ -40,15 +41,15 @@ export function FieldMatchRow({ rec, reason = false, earnings }: { rec: Rec<Matc
         {fit && <FitBadge fit={fit.fit} result={fit} />}
         {!reason && score.strength != null && (
           <span className="flex items-center gap-2" title={t("match.strength", { n: score.strength })}>
-            <span className="h-2 w-20 overflow-hidden rounded-full bg-zinc-100" aria-hidden="true">
+            <span className="h-2 w-20 overflow-hidden rounded-full bg-zinc-200" aria-hidden="true">
               <span className="block h-full rounded-full bg-ink" style={{ width: `${score.strength}%` }} />
             </span>
             <span className="w-7 text-right text-sm font-bold tabular-nums">{score.strength}</span>
           </span>
         )}
-        {!reason && score.confidence && <Pill tone={score.confidence === "rated" ? "blue" : "zinc"}>{t(`match.conf.${score.confidence}` as MessageKey)}</Pill>}
+        {!reason && confidence && score.confidence && <Pill tone={score.confidence === "rated" ? "blue" : "zinc"}>{t(`match.conf.${score.confidence}` as MessageKey)}</Pill>}
       </div>
-      <p className="mt-1 text-xs text-zinc-500">{why ? t(why.key, why.vars) : parts.join(" · ")}</p>
+      <p className="mt-1 text-[13px] text-zinc-600">{why ? t(why.key, why.vars) : parts.join(" · ")}</p>
     </li>
   );
 }

@@ -24,6 +24,7 @@ function commitFocus() {
 
 function Card({
   id,
+  cardKey,
   label,
   tint,
   open,
@@ -34,6 +35,8 @@ function Card({
   children,
 }: {
   id: string;
+  /** The tile's name, on its button as data-profile-card, so the setup checklist can open it. */
+  cardKey: string;
   label: string;
   tint: string;
   open: boolean;
@@ -56,6 +59,7 @@ function Card({
       <button
         type="button"
         id={buttonId}
+        data-profile-card={cardKey}
         aria-expanded={open}
         aria-controls={panelId}
         onClick={onToggle}
@@ -170,7 +174,10 @@ export function ProfileCards() {
     commitFocus();
     setOpen(null);
   };
-  const props = (k: CardKey) => ({ id: `${base}-${k}`, open: open === k, onToggle: () => toggle(k), onClose: close });
+  const props = (k: CardKey) => ({ id: `${base}-${k}`, cardKey: k, open: open === k, onToggle: () => toggle(k), onClose: close });
+  // A tile takes its colour once it holds something; until then it is a quiet grey step, so an empty tile never reads as
+  // a warning.
+  const tint = (has: boolean, colour: string) => (has ? colour : "bg-zinc-100");
 
   const englishKeys = ENGLISH_TEST_KEYS.filter((k) => profile.tests?.english?.[k]?.total != null);
   const englishKey = englishKeys[0];
@@ -184,14 +191,14 @@ export function ProfileCards() {
 
   return (
     <section aria-label={t("profile.numbers")} className="grid grid-cols-2 gap-3 md:grid-cols-4">
-      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint="bg-sun/60" summary={<Value value={profile.gpa} sub={gpaSub || undefined} />}>
+      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint={tint(profile.gpa != null, "bg-sun/60")} summary={<Value value={profile.gpa} sub={gpaSub || undefined} />}>
         <GpaEditor />
         <InternationalToggle />
       </Card>
       <Card
         {...props("test")}
         label={test.label}
-        tint="bg-mint/50"
+        tint={tint(test.value != null, "bg-mint/50")}
         summary={
           test.small && test.value != null ? (
             <>
@@ -208,7 +215,7 @@ export function ProfileCards() {
       <Card
         {...props("english")}
         label={englishKey ? testLabel(t, englishKey, ENGLISH_TESTS[englishKey].label) : t("profile.englishTest")}
-        tint="bg-blue-100"
+        tint={tint(english?.total != null, "bg-blue-100")}
         summary={<Value value={english?.total} sub={englishSub} />}
       >
         <EnglishEditor />
@@ -216,14 +223,14 @@ export function ProfileCards() {
       <Card
         {...props("regions")}
         label={t("profile.regionsApplying")}
-        tint="bg-coral/40"
+        tint={tint(regions.length > 0, "bg-blue-50")}
         summary={
           regions.length === 0 ? (
             <Value value={null} />
           ) : (
             <span className="mt-1.5 flex flex-wrap gap-1.5">
               {regions.map((c, i) => (
-                <span key={c} className="rounded-full border-2 border-ink bg-white px-2 py-0.5 text-xs font-semibold">
+                <span key={c} className="rounded-full bg-white px-2.5 py-0.5 text-[13px] font-semibold">
                   {regionName(t, c)}
                   {i === 0 && regions.length > 1 && <span className="sr-only">{t("profile.defaultSr")}</span>}
                 </span>
