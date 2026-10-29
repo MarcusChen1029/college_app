@@ -145,10 +145,11 @@ cd extension && node build.mjs   # ALSO rebuild dist/ (what the owner loads unpa
   Since 0041 a new function in `public` gets no EXECUTE for anon/authenticated/PUBLIC, so grant each one explicitly to the roles that call it. Since 0044 the same holds for new tables and sequences: grant what clients need explicitly (and keep RLS on).
 - **Security model (2026-10-28 audit, reports in the session scratchpad; summary in `docs/security-2026-10-28.md`):** portal passwords live only in
   `portal_passwords` (service-role only, served by `/api/portal-passwords`), never in profile/list rows or localStorage. Since 2026-10-29 they are
-  **locked in the student's browser** with their vault passphrase (plus a recovery code; `web/lib/vault-*.ts`; `portal_passwords` holds only "e1."
-  ciphertext, `portal_vaults` the wrapped keys and salts; migration 0045; design `docs/superpowers/specs/2026-10-29-e2e-portal-vault-design.md`), so the
-  server, the database and the site owner can't open them. Old server-sealed "v1." rows (`web/lib/portal-vault.ts`, key `PORTAL_ENCRYPTION_KEY`) move into
-  the vault when that student next unlocks (`handover`); a follow-up then removes that code and key (`DEPLOY.md`). The Security and Privacy pages state
+  **locked in the student's browser** with their vault passphrase (plus a recovery code; `web/lib/vault-*.ts`; `portal_passwords` holds "e1."
+  values (browser-locked ciphertext) plus old server-sealed "v1." rows until each student's first unlock hands them over, `portal_vaults` the wrapped keys and
+  salts; migration 0045; design `docs/superpowers/specs/2026-10-29-e2e-portal-vault-design.md`), so once handed over the server, the database and the site owner
+  can't open them. The old "v1." rows (`web/lib/portal-vault.ts`, key `PORTAL_ENCRYPTION_KEY`) move into the vault when that student next unlocks
+  (`handover`); a follow-up then removes that code and key (`DEPLOY.md`; keep `tokenSource`/`bearerToken`, other server files use them). The Security and Privacy pages state
   the limits (offline guessing of weak passphrases; a changed version of the site's own code). AI-connection (MCP OAuth) tokens carry `client_id`: the `api_request_guard` pre-request hook lets them reach only
   the views `ai_student_profiles`/`ai_student_colleges` (no portals, portal_url/portal_username, reminder or essay columns) and transcript_*;
   after 0043 never the base student_profiles/student_colleges, so saved-login usernames and links are out of their reach too.

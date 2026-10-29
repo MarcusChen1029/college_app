@@ -32,10 +32,10 @@ export const en = {
   "privacy.collect.list":
     "<b>Your college list.</b> The colleges you add (including ones you type in yourself), your application plan, status and decisions, checklist, essay titles, links and progress, your private notes and any financial-aid offers you record.",
   // Address + username: student_colleges.portal_url/_username (0007); student_profiles.portals {systems, campuses, custom, progress} (0013), stored as typed (not locked).
-  // Password: portal_passwords (0040) holds only browser-locked "e1." values (0045); portal_vaults (0045) holds the vault's wrapped keys,
-  // salts and check values. No passphrase, recovery code or readable password reaches the server.
+  // Password: portal_passwords (0040) holds browser-locked "e1." values (0045), plus old server-sealed "v1." rows until handed over; portal_vaults (0045) holds the vault's wrapped keys,
+  // salts, one-way check values, key id and iteration count. No passphrase, recovery code or readable password reaches the server.
   "privacy.collect.logins":
-    "<b>Application-system logins</b>, only if you save them: the website address and username for systems such as the Common App, UC or a college portal, your done / not done marks, and the password. The address and username are stored as you type them. The password is stored only in locked form: your browser locks it with your vault passphrase before it is saved, and we keep that locked value together with the vault’s wrapped keys (copies of the vault key, each locked by your passphrase or your recovery code) and salts. We never receive your passphrase, your recovery code or a readable password ([details](/security#logins)).",
+    "<b>Application-system logins</b>, only if you save them: the website address and username for systems such as the Common App, UC or a college portal, your done / not done marks, and the password. The address and username are stored as you type them. The password is stored only in locked form: your browser locks it with your vault passphrase before it is saved, and we keep that locked value together with the vault’s wrapped keys (copies of the vault key, each locked by your passphrase or your recovery code), salts, one-way check values (they let your browser tell a right passphrase from a wrong one without revealing it), a key id and an iteration count (how many rounds the lock uses). We never receive your passphrase, your recovery code or a readable password ([details](/security#logins)).",
   // transcript_schools (incl. school_code 0034), transcript_courses (0030).
   "privacy.collect.transcript":
     "<b>Transcript.</b> Your schools (name, country, school code, printed GPA, class rank, notes) and courses (year, level, subject, grades as printed, credits, notes).",
@@ -176,7 +176,7 @@ export const zhTW: Translation<typeof en> = {
     "<b>個人檔案與成績。</b>GPA、SAT、ACT 與英文檢定成績（含各科分數與考試日期）、是否為國際生、目標地區、想讀的領域、有興趣的學校、你選的方案，以及提醒信設定。",
   "privacy.collect.list": "<b>學校清單。</b>你加入的學校（包括你自行輸入的學校）、申請方案、申請狀態與結果、待辦清單、文書標題、連結與進度、你的私人筆記，以及你記錄的財務補助金額。",
   "privacy.collect.logins":
-    "<b>申請系統登入資料</b>（僅限你選擇儲存時）：Common App、UC 或學校申請入口等系統的網址與使用者名稱、你標記的完成／未完成，以及密碼。網址與使用者名稱照你輸入的內容儲存；密碼只以上鎖後的形式儲存：你的瀏覽器會先用你的保險箱主密碼把它鎖住才儲存，我們保存的是這個上鎖後的值，以及保險箱的包裹金鑰（保險箱金鑰的副本，分別被你的主密碼和復原碼鎖住）與隨機鹽值。我們不會收到你的主密碼、復原碼或可讀取的密碼（[詳細說明](/security#logins)）。",
+    "<b>申請系統登入資料</b>（僅限你選擇儲存時）：Common App、UC 或學校申請入口等系統的網址與使用者名稱、你標記的完成／未完成，以及密碼。網址與使用者名稱照你輸入的內容儲存；密碼只以上鎖後的形式儲存：你的瀏覽器會先用你的保險箱主密碼把它鎖住才儲存，我們保存的是這個上鎖後的值，以及保險箱加密後的金鑰副本（分別被你的主密碼和復原碼鎖住）、隨機鹽值、單向的檢查值（讓瀏覽器分辨主密碼對不對，卻無法由它還原主密碼）、金鑰編號與運算回合數。我們不會收到你的主密碼、復原碼或可讀取的密碼（[詳細說明](/security#logins)）。",
   "privacy.collect.transcript": "<b>成績單。</b>你的學校（校名、國家、學校代碼、成績單上的 GPA、班級排名、備註）與課程（年度、程度、科目、成績單上的原始成績、學分、備註）。",
   "privacy.collect.writing":
     "<b>課外活動、文書與履歷。</b>你的課外活動與獎項（描述、職位、時數、年級）、文書進度與你的 Google 文件連結（我們不儲存文書內文），以及你輸入的履歷資料（姓名、電子郵件、電話、所在地、學校、畢業年份）。",
