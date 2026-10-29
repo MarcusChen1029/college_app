@@ -74,6 +74,48 @@ test("verifyCheckMac accepts a signed set and rejects a changed amount, a missin
   assert.equal(await verifyCheckMac(signed, { hashKey: KEYS.hashKey, hashIv: "other" }), false);
 });
 
+// What an attacker computes when the server's secret is missing: the same algorithm with the key text they can guess.
+function macWithKeyText(params: Record<string, string>, keyText: string, ivText: string): string {
+  const pairs = Object.keys(params)
+    .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
+    .map((k) => `${k}=${params[k]}`);
+  const raw = [`HashKey=${keyText}`, ...pairs, `HashIV=${ivText}`].join("&");
+  return createHash("sha256").update(ecpayUrlEncode(raw)).digest("hex").toUpperCase();
+}
+
+test("the attacker-side helper reproduces the real MAC when the keys are real (so the next tests mean something)", async () => {
+  assert.equal(macWithKeyText(DOC_PARAMS, KEYS.hashKey, KEYS.hashIv), DOC_MAC);
+});
+
+test("verifyCheckMac is false for a MAC signed with empty keys, whichever key is empty", async () => {
+  const forged = { ...DOC_PARAMS, CheckMacValue: macWithKeyText(DOC_PARAMS, "", "") };
+  assert.equal(await verifyCheckMac(forged, { hashKey: "", hashIv: "" }), false);
+  const keyOnly = { ...DOC_PARAMS, CheckMacValue: macWithKeyText(DOC_PARAMS, "", KEYS.hashIv) };
+  assert.equal(await verifyCheckMac(keyOnly, { hashKey: "", hashIv: KEYS.hashIv }), false);
+  const ivOnly = { ...DOC_PARAMS, CheckMacValue: macWithKeyText(DOC_PARAMS, KEYS.hashKey, "") };
+  assert.equal(await verifyCheckMac(ivOnly, { hashKey: KEYS.hashKey, hashIv: "" }), false);
+});
+
+test("verifyCheckMac is false for a MAC signed with the text 'undefined' when the keys are undefined", async () => {
+  const missing = undefined as unknown as string;
+  const forged = { ...DOC_PARAMS, CheckMacValue: macWithKeyText(DOC_PARAMS, "undefined", "undefined") };
+  assert.equal(await verifyCheckMac(forged, { hashKey: missing, hashIv: missing }), false);
+  assert.equal(await verifyCheckMac(forged, { hashKey: missing, hashIv: KEYS.hashIv }), false);
+  assert.equal(await verifyCheckMac(forged, { hashKey: KEYS.hashKey, hashIv: missing }), false);
+});
+
+test("checkMacValue refuses to sign with an empty or missing key or iv", async () => {
+  const missing = undefined as unknown as string;
+  await assert.rejects(checkMacValue(DOC_PARAMS, { hashKey: "", hashIv: KEYS.hashIv }));
+  await assert.rejects(checkMacValue(DOC_PARAMS, { hashKey: KEYS.hashKey, hashIv: "" }));
+  await assert.rejects(checkMacValue(DOC_PARAMS, { hashKey: "", hashIv: "" }));
+  await assert.rejects(checkMacValue(DOC_PARAMS, { hashKey: missing, hashIv: KEYS.hashIv }));
+  await assert.rejects(checkMacValue(DOC_PARAMS, { hashKey: KEYS.hashKey, hashIv: missing }));
+  await assert.rejects(checkMacValue(DOC_PARAMS, { hashKey: null as unknown as string, hashIv: KEYS.hashIv }));
+  // Real keys still sign.
+  assert.equal(await checkMacValue(DOC_PARAMS, KEYS), DOC_MAC);
+});
+
 test("verifyCheckMac returns false instead of throwing on text that cannot be encoded", async () => {
   // A lone surrogate makes encodeURIComponent throw; a bad notice must be rejected, not crash the handler.
   assert.equal(await verifyCheckMac({ ItemName: "\ud800", CheckMacValue: DOC_MAC }, KEYS), false);

@@ -28,12 +28,20 @@ function compareKeys(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
 }
 
+// A missing secret (an unset environment variable read as "" or undefined) must never turn into a usable key:
+// anyone can compute a MAC over "HashKey=" or "HashKey=undefined", so signing and checking refuse such keys.
+function assertKeyText(value: unknown, name: string): void {
+  if (typeof value !== "string" || value === "") throw new Error(`ECPay ${name} is missing or empty`);
+}
+
 // CheckMacValue: HashKey=..&k=v&...&HashIV=.. (keys sorted, CheckMacValue itself left out), urlencoded and
-// lowercased, SHA-256, upper-case hex.
+// lowercased, SHA-256, upper-case hex. Throws when hashKey or hashIv is not a non-empty string.
 export async function checkMacValue(
   params: Record<string, string>,
   keys: { hashKey: string; hashIv: string },
 ): Promise<string> {
+  assertKeyText(keys?.hashKey, "HashKey");
+  assertKeyText(keys?.hashIv, "HashIV");
   const pairs = Object.keys(params)
     .filter((k) => k !== "CheckMacValue")
     .sort(compareKeys)
@@ -52,7 +60,7 @@ function constantTimeEqual(a: string, b: string): boolean {
 }
 
 // True only when params carries a CheckMacValue equal to the one computed from the rest. Never throws:
-// a missing or empty value, or text that cannot be encoded, is false.
+// a missing or empty value, an empty or missing key, or text that cannot be encoded, is false.
 export async function verifyCheckMac(
   params: Record<string, string>,
   keys: { hashKey: string; hashIv: string },
