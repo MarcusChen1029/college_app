@@ -67,9 +67,9 @@ export const segmentClass = (on: boolean): string =>
     on ? "border-zinc-200 bg-white text-ink" : "border-transparent text-zinc-600 hover:text-ink"
   }`;
 
-/** Text fields and selects in filter rows: 36px, one 1px control border a step darker than card edges. */
+/** Text fields and selects in filter rows: 36px, one 1px control border a step darker than card edges. Disabled stays legible. */
 export const FIELD_CLASS =
-  "h-9 rounded-full border border-zinc-300 bg-white px-3.5 text-sm text-ink placeholder:text-zinc-500 hover:border-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200";
+  "h-9 rounded-full border border-zinc-300 bg-white px-3.5 text-sm text-ink placeholder:text-zinc-500 hover:border-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:cursor-not-allowed disabled:bg-zinc-50 disabled:hover:border-zinc-300";
 
 /** A filter that is on, removable: a pale chip with ink text (never a saturated blob). */
 export const CHIP_CLASS =

@@ -5,6 +5,7 @@ import { getAppFees, getDeadlines, getEnglishSummaries, getLookups, getProgramFe
 import { collegeSupplements } from "@/lib/supplements-data";
 import completions from "@/lib/data/field-completions.json";
 import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/field-match";
+import { isNarrowDeadline, type DeadlineRow } from "@/lib/explore-filters";
 
 export const metadata = { title: "Colleges" };
 
@@ -24,14 +25,16 @@ async function Explorer() {
     getAppFees(),
     getDeadlines(),
   ]);
-  // The "when" lens: each college's published application deadlines for a plan (EA, ED, RD…), as [date, plan] pairs. Plan-less
-  // rows are left out (they are program or applicant-group dates: nursing, international-only), and so is anything computed.
-  // The browser picks the next one from the reader's own today; anything two or more days past here can't be next anywhere.
+  // The "when" lens: each college's published application deadlines for a plan (EA, ED, RD…), as [date, plan, narrow] rows.
+  // Plan-less rows are left out (they are program or applicant-group dates: nursing, international-only), and so is anything
+  // computed. Rows whose label limits them to some applicants or another intake are flagged narrow (lib/explore-filters.ts
+  // isNarrowDeadline) and never become a college's next deadline. The browser picks the next one from the reader's own today;
+  // anything two or more days past here can't be next anywhere.
   const { today, floor } = serverDates();
-  const appDeadlines: Record<string, [string, string][]> = {};
+  const appDeadlines: Record<string, DeadlineRow[]> = {};
   for (const d of deadlines) {
     if (d.kind !== "application" || !d.plan_key || !d.due_date || d.due_date < floor) continue;
-    (appDeadlines[d.institution_id] ??= []).push([d.due_date, d.plan_key]);
+    (appDeadlines[d.institution_id] ??= []).push([d.due_date, d.plan_key, isNarrowDeadline(d.label) ? 1 : 0]);
   }
   // Only the tags go to the browser, not the supplements file.
   const applyTags = applyTagsBySlug(colleges, collegeSupplements, appFees);

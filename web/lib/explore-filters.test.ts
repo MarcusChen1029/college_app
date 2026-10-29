@@ -5,18 +5,23 @@ import {
   admitRateFor,
   anyFilter,
   clearFilters,
-  daysUntil,
+  dayHeading,
+  monthDay,
+  daysBetween,
   DEFAULT_FILTERS,
+  dueGroups,
   dueWithin,
   effectiveFilters,
   filtersToQuery,
   hasIntlAid,
+  isNarrowDeadline,
   matchesAdmit,
   medianFor,
   moreFilterCount,
   nextDue,
   nextSort,
   offersField,
+  onlyNarrowAhead,
   parseFilters,
   rowMatches,
   sortRows,
@@ -100,12 +105,85 @@ test("nextDue: the first real deadline on or after today, with its plan and days
   assert.equal(nextDue([["2026-11-01", "ED"], ["2026-11-01", "EA"]], "2026-10-29")?.plan, "EA");
 });
 
-test("daysUntil counts calendar days across months, years and DST changes", () => {
-  assert.equal(daysUntil("2026-10-29", "2026-10-29"), 0);
-  assert.equal(daysUntil("2026-10-29", "2026-11-05"), 7);
-  assert.equal(daysUntil("2026-10-31", "2026-11-02"), 2); // US DST ends Nov 1
-  assert.equal(daysUntil("2026-12-30", "2027-01-02"), 3);
-  assert.equal(daysUntil("2026-11-05", "2026-10-29"), -7);
+test("nextDue skips narrow deadlines: Longwood's nursing-only ED never beats its general EA", () => {
+  const longwood = [["2026-11-01", "ED", 1], ["2026-12-01", "EA", 0]] as const;
+  assert.deepEqual(nextDue(longwood, "2026-10-29"), { date: "2026-12-01", plan: "EA", days: 33 });
+  assert.equal(onlyNarrowAhead(longwood, "2026-10-29"), false);
+  // Only narrow dates ahead: no single next deadline (and the page shows none rather than the narrow one).
+  const bfaOnly = [["2026-12-01", "RD", 1]] as const;
+  assert.equal(nextDue(bfaOnly, "2026-10-29"), null);
+  assert.equal(onlyNarrowAhead(bfaOnly, "2026-10-29"), true);
+  assert.equal(onlyNarrowAhead(bfaOnly, "2026-12-02"), false); // passed: nothing ahead at all
+  assert.equal(onlyNarrowAhead(undefined, "2026-10-29"), false);
+});
+
+test("isNarrowDeadline reads the label (real labels from the deadlines table)", () => {
+  const narrow = [
+    "Early Decision, nursing applicants only (fall 2027 entry)",
+    "Early Action (first-generation college students only)",
+    "International spring 2027 application deadline",
+    "International spring 2027 (January) application deadline (regular)",
+    "Regular Decision, spring 2027 entry",
+    "Regular Decision — Drama & Music",
+    "Regular Decision (performing arts majors)",
+    "Final deadline: Acting (BFA), Comedy Writing and Performance (BFA), Fashion Design (BFA), Musical Theatre (BFA), Performance and Songwriting (BMus)",
+    "RD with optional arts portfolio",
+  ];
+  const general = [
+    null,
+    "Early Decision (binding)",
+    "Early Decision (most majors)",
+    "Early Action (non-binding, autumn only)",
+    "Early Action (fall 2027 entry); also the final deadline for nursing and the Honors portfolio",
+    "Early Action (priority for admission, merit aid and Honors College), fall 2027",
+    "Application deadline (summer and autumn quarter)",
+    "UBC Vancouver final application deadline (Winter Session 2027/28)",
+    "International first-year early action",
+    "International applications close - Semester 1, 2027",
+  ];
+  for (const l of narrow) assert.equal(isNarrowDeadline(l), true, l);
+  for (const l of general) assert.equal(isNarrowDeadline(l), false, String(l));
+});
+
+test("daysBetween counts calendar days across months, years and DST changes", () => {
+  assert.equal(daysBetween("2026-10-29", "2026-10-29"), 0);
+  assert.equal(daysBetween("2026-10-29", "2026-11-05"), 7);
+  assert.equal(daysBetween("2026-10-31", "2026-11-02"), 2); // US DST ends Nov 1
+  assert.equal(daysBetween("2026-12-30", "2027-01-02"), 3);
+  assert.equal(daysBetween("2026-11-05", "2026-10-29"), -7);
+});
+
+test("dayHeading names the weekday of a calendar date (Nov 1, 2026 is a Sunday)", () => {
+  assert.equal(dayHeading("2026-11-01"), "Sun, Nov 1");
+  assert.equal(dayHeading("2026-10-31"), "Sat, Oct 31");
+  assert.equal(dayHeading("2026-11-15"), "Sun, Nov 15");
+  assert.equal(dayHeading("2027-01-01"), "Fri, Jan 1");
+  assert.equal(dayHeading("2026-11-01", "zh-TW"), "11月1日（週日）");
+  assert.equal(dayHeading("2026-10-31", "zh-TW"), "10月31日（週六）");
+  assert.equal(dayHeading("2027-01-01", "zh-TW"), "1月1日（週五）");
+});
+
+test("monthDay prints a lens date without the year, in either language", () => {
+  assert.equal(monthDay("2026-11-01"), "Nov 1");
+  assert.equal(monthDay("2026-12-15", "zh-TW"), "12月15日");
+});
+
+test("dueGroups: one heading per deadline day on its first row, with the day's count", () => {
+  const due = (date: string, days: number) => ({ date, plan: "EA", days });
+  const rows = [
+    { k: "a", d: due("2026-10-31", 2) },
+    { k: "b", d: due("2026-11-01", 3) },
+    { k: "c", d: null },
+    { k: "d", d: due("2026-11-01", 3) },
+    { k: "e", d: due("2026-11-15", 17) },
+  ];
+  const g = dueGroups(rows, (r) => r.k, (r) => r.d);
+  assert.deepEqual([...g.entries()], [
+    ["a", { date: "2026-10-31", days: 2, n: 1 }],
+    ["b", { date: "2026-11-01", days: 3, n: 2 }],
+    ["e", { date: "2026-11-15", days: 17, n: 1 }],
+  ]);
+  assert.equal(dueGroups([], (r: { k: string }) => r.k, () => null).size, 0);
 });
 
 test("dueWithin: day 0 through the window's last day, inclusive", () => {
