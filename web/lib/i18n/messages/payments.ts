@@ -1,5 +1,5 @@
 // Plans and the admission-year pass: plan names, the pass name, what the sign-in merge kept in this browser, and the
-// pricing / checkout / order-status texts. (The parent pay page and the payment history add their keys here too.)
+// pricing / checkout / order-status texts, the parent pay page and the payment history in Settings.
 import type { Translation } from "../core.ts";
 
 export const en = {
@@ -60,6 +60,49 @@ export const en = {
   "payments.order.refunded": "This payment was refunded.",
   "payments.order.missing": "We couldn't find that payment. If you just paid, wait a minute and reload this page.",
   "payments.order.signIn": "Sign in to see your payment.",
+
+  // Shared by the parent pay page and the payment history
+  "payments.price": "NT${price}",
+  "payments.retry": "Try again",
+  "payments.contact": "Contact:",
+
+  // Parent pay page: /share/pay/<token>
+  "payments.parent.kicker": "Trakur · payment link",
+  "payments.parent.ask": "{who} asks you to buy the Trakur {pass}",
+  "payments.parent.noAccount": "You don't need a Trakur account to pay.",
+  "payments.parent.paidTitle": "Paid, thank you",
+  "payments.parent.paidBody": "The {pass} runs until {until}. There is nothing more to do.",
+  "payments.parent.expiredTitle": "This payment link has expired",
+  "payments.parent.expiredBody": "A link works for 7 days. Ask the student to send you a new one.",
+  "payments.parent.unavailable": "This pass can no longer be bought. Ask the student to send you a new link.",
+  "payments.parent.waiting":
+    "We haven't heard back from ECPay yet. Card payments confirm within a minute; ATM and convenience-store payments confirm after you pay. If you have already paid, please don't pay again: you can close this page, and the pass turns on as soon as the payment arrives.",
+
+  // Settings: plan and payment history
+  "payments.panel.title": "Plan and payments",
+  "payments.panel.currentPlan": "Current plan",
+  "payments.panel.nextPass": "Pre-ordered pass",
+  "payments.panel.buyAnother": "Buy a pass for another year",
+  "payments.panel.history": "Payment history",
+  "payments.panel.empty": "No payments yet.",
+  "payments.panel.details": "Payment details",
+  "payments.panel.viaParent": "Via parent link",
+  "payments.panel.col.date": "Date",
+  "payments.panel.col.amount": "Amount",
+  "payments.panel.col.method": "Method",
+  "payments.panel.col.pass": "Pass",
+  "payments.panel.col.valid": "Valid",
+  "payments.panel.col.status": "Status",
+  "payments.panel.method.card": "Credit card",
+  "payments.panel.method.atm": "ATM transfer",
+  "payments.panel.method.cvs": "Convenience store",
+  "payments.panel.method.other": "Other",
+  "payments.panel.status.paid": "Paid",
+  "payments.panel.status.awaiting": "Awaiting payment",
+  "payments.panel.status.pending": "Processing",
+  "payments.panel.status.expired": "Expired",
+  "payments.panel.status.refunded": "Refunded",
+  "payments.panel.status.stale": "Not completed",
 } as const;
 
 export const zhTW: Translation<typeof en> = {
@@ -115,4 +158,44 @@ export const zhTW: Translation<typeof en> = {
   "payments.order.refunded": "這筆付款已退款。",
   "payments.order.missing": "找不到這筆付款。如果你剛付完款，請等一分鐘後重新整理這個頁面。",
   "payments.order.signIn": "請登入以查看這筆付款。",
+
+  "payments.price": "NT${price}",
+  "payments.retry": "再試一次",
+  "payments.contact": "聯絡信箱：",
+
+  "payments.parent.kicker": "Trakur · 付款連結",
+  "payments.parent.ask": "{who} 請你代為購買 Trakur 的「{pass}」",
+  "payments.parent.noAccount": "不需要 Trakur 帳號即可付款。",
+  "payments.parent.paidTitle": "已付款，謝謝你",
+  "payments.parent.paidBody": "「{pass}」用到 {until}，不需要再做任何事。",
+  "payments.parent.expiredTitle": "這個付款連結已過期",
+  "payments.parent.expiredBody": "連結的有效期限是 7 天，請學生再傳一個新連結給你。",
+  "payments.parent.unavailable": "這個方案目前已無法購買，請學生再傳一個新連結給你。",
+  "payments.parent.waiting":
+    "綠界還沒有回報付款結果。信用卡通常一分鐘內確認；ATM 與超商則要等你繳費後才會確認。如果你已經付款，請不要重複付款，直接關閉這個頁面即可，款項入帳後方案就會開通。",
+
+  "payments.panel.title": "方案與付款",
+  "payments.panel.currentPlan": "目前的方案",
+  "payments.panel.nextPass": "已預購的方案",
+  "payments.panel.buyAnother": "購買其他年度的方案",
+  "payments.panel.history": "付款紀錄",
+  "payments.panel.empty": "還沒有付款紀錄。",
+  "payments.panel.details": "付款資訊",
+  "payments.panel.viaParent": "透過家長連結",
+  "payments.panel.col.date": "日期",
+  "payments.panel.col.amount": "金額",
+  "payments.panel.col.method": "付款方式",
+  "payments.panel.col.pass": "方案",
+  "payments.panel.col.valid": "有效期間",
+  "payments.panel.col.status": "狀態",
+  "payments.panel.method.card": "信用卡",
+  "payments.panel.method.atm": "ATM 轉帳",
+  "payments.panel.method.cvs": "超商代碼",
+  "payments.panel.method.other": "其他",
+  "payments.panel.status.paid": "已付款",
+  "payments.panel.status.awaiting": "等待付款",
+  "payments.panel.status.pending": "處理中",
+  "payments.panel.status.expired": "已逾期",
+  "payments.panel.status.refunded": "已退款",
+  "payments.panel.status.stale": "未完成",
 };
