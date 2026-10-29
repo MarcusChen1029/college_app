@@ -77,7 +77,7 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
   const label = t("teacher.charts.scatterAria", { college: college.name, metric: metricText(t, metric), total: counts.total, admitted: counts.admitted, waitlisted: counts.waitlisted, denied: counts.denied });
   return (
     <figure className="space-y-2">
-      <svg viewBox={`0 0 ${b.width} ${b.height}`} className="w-full max-w-2xl" role="img" aria-label={label}>
+      <svg viewBox={`0 0 ${b.width} ${b.height}`} className="w-full" role="img" aria-label={label}>
         {m.yTicks.map((t) => (
           <g key={`y${t.value}`}>
             <line x1={b.left} x2={plotRight} y1={t.pos} y2={t.pos} className="stroke-zinc-200" strokeWidth={1} />
@@ -107,7 +107,7 @@ function Scatter({ college, metric }: { college: CollegeOutcomes; metric: TestMe
         ))}
       </svg>
       {m.unplotted > 0 && (
-        <figcaption className="text-xs text-zinc-500">
+        <figcaption className="text-[13px] text-zinc-500">
           {t(m.unplotted === 1 ? "teacher.charts.unplotted.one" : "teacher.charts.unplotted.other", { n: m.unplotted, metric: metric.toUpperCase() })}
         </figcaption>
       )}
@@ -120,7 +120,7 @@ function PointTable({ college, metric }: { college: CollegeOutcomes; metric: Tes
   return (
     <details className="text-sm">
       <summary className="cursor-pointer font-medium text-blue-700">{t("teacher.charts.showTable")}</summary>
-      <table className="mt-2 w-full max-w-md text-left">
+      <table className="mt-2 w-full text-left">
         <thead className="text-zinc-500">
           <tr>
             <th className="py-1 pr-4 font-medium">GPA</th>
@@ -198,40 +198,57 @@ function OutcomesPanel({ classId }: { classId: string | null }) {
   const college = data.colleges.find((c) => c.collegeId === collegeId) ?? data.colleges[0];
   const metric = metricChoice ?? defaultMetric(college.points);
 
+  // The chart on its own sheet; beside it (below it on phones) the college index, the score axis and the table.
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-end gap-4">
-        <label className="text-sm font-medium">
-          {t("teacher.charts.college")}
-          <select
-            value={college.collegeId}
-            onChange={(e) => setCollegeId(e.target.value)}
-            className="ml-2 max-w-[18rem] rounded-md border border-zinc-300 px-3 py-2 text-sm"
-          >
-            {data.colleges.map((c) => (
-              <option key={c.collegeId} value={c.collegeId}>
-                {c.name} ({c.points.length})
-              </option>
-            ))}
-          </select>
-        </label>
-        <div role="group" aria-label={t("teacher.charts.axisGroup")} className="flex gap-2">
-          {(["sat", "act"] as const).map((k) => (
-            <button key={k} type="button" aria-pressed={metric === k} className={buttonClass("secondary", "sm", metric === k)} onClick={() => setMetricChoice(k)}>
-              {k.toUpperCase()}
-            </button>
-          ))}
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
+      <section aria-labelledby="chart-college" className="space-y-4 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6">
+        <div className="space-y-2">
+          <h2 id="chart-college" className="font-display text-xl font-bold [overflow-wrap:anywhere]">
+            {college.name}
+          </h2>
+          <Legend college={college} />
         </div>
-      </div>
-      <h2 className="font-display text-xl font-bold">{college.name}</h2>
-      <Legend college={college} />
-      <Scatter college={college} metric={metric} />
-      <PointTable college={college} metric={metric} />
-      {data.hiddenColleges > 0 && (
-        <p className="text-xs text-zinc-500">
-          {t(data.hiddenColleges === 1 ? "teacher.charts.hidden.one" : "teacher.charts.hidden.other", { n: data.hiddenColleges, min: MIN_STUDENTS })}
-        </p>
-      )}
+        <Scatter college={college} metric={metric} />
+      </section>
+      <aside className="space-y-5">
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-ink">{t("teacher.charts.college")}</h3>
+          <ul className="max-h-80 space-y-0.5 overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-1.5">
+            {data.colleges.map((c) => {
+              const on = c.collegeId === college.collegeId;
+              return (
+                <li key={c.collegeId}>
+                  <button
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => setCollegeId(c.collegeId)}
+                    className={`flex w-full items-baseline justify-between gap-3 rounded-xl px-3 py-2 text-left text-sm ${on ? "bg-blue-50 font-semibold text-ink" : "text-zinc-700 hover:bg-zinc-50"}`}
+                  >
+                    <span className="[overflow-wrap:anywhere]">{c.name}</span>
+                    <span className="tabular-nums text-zinc-600">{c.points.length}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-ink">{t("teacher.charts.axisGroup")}</h3>
+          <div role="group" aria-label={t("teacher.charts.axisGroup")} className="flex gap-2">
+            {(["sat", "act"] as const).map((k) => (
+              <button key={k} type="button" aria-pressed={metric === k} className={buttonClass("secondary", "sm", metric === k)} onClick={() => setMetricChoice(k)}>
+                {k.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
+        <PointTable college={college} metric={metric} />
+        {data.hiddenColleges > 0 && (
+          <p className="text-[13px] text-zinc-600">
+            {t(data.hiddenColleges === 1 ? "teacher.charts.hidden.one" : "teacher.charts.hidden.other", { n: data.hiddenColleges, min: MIN_STUDENTS })}
+          </p>
+        )}
+      </aside>
     </div>
   );
 }
@@ -246,7 +263,7 @@ function ChartsView() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="space-y-1">
-          <h1 className="font-display text-3xl font-bold">{t("teacher.charts.title")}</h1>
+          <h1 className="font-display text-2xl font-bold sm:text-3xl">{t("teacher.charts.title")}</h1>
           <p className="max-w-2xl text-sm text-zinc-600">
             {t("teacher.charts.intro", { min: MIN_STUDENTS })}
           </p>

@@ -71,7 +71,7 @@ export function TeacherRoster() {
 
   return (
     <div className="space-y-5">
-      <h1 className="font-display text-3xl font-bold">{t("teacher.students.heading")}</h1>
+      <h1 className="font-display text-2xl font-bold sm:text-3xl">{t("teacher.students.heading")}</h1>
 
       {data.rows.length === 0 ? (
         <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">
@@ -118,7 +118,7 @@ export function TeacherRoster() {
               {t("teacher.students.downloadCsv", { n: shown.length })}
             </button>
           </div>
-          <p className="text-xs text-zinc-500">{t("teacher.students.csvNote")}</p>
+          <p className="text-[13px] text-zinc-500">{t("teacher.students.csvNote")}</p>
 
           <p className="text-sm text-zinc-500" aria-live="polite">
             {t("teacher.students.showing", { shown: shown.length, total: data.rows.length })}

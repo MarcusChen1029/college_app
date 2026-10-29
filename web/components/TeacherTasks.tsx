@@ -24,7 +24,7 @@ import { buttonClass } from "@/lib/ui";
 import { errMsg, useLoad } from "@/lib/use-load";
 
 const field = "mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm";
-const btn = buttonClass("secondary", "sm");
+const btn = buttonClass("ghost", "sm");
 
 /** Title, details and due date. With `targets` it also has the class / student picker (new tasks only). */
 function TaskForm({
@@ -68,10 +68,12 @@ function TaskForm({
   }
 
   const classes = targets?.classes.filter((c) => !c.archived) ?? [];
+  // Laid out by the room it gets (a container query): one column in the side panel, two when editing a wide row.
   return (
-    <form onSubmit={submit} className="grid gap-3 sm:grid-cols-2">
+    <div className="@container">
+    <form onSubmit={submit} className="grid gap-3 @lg:grid-cols-2">
       {targets && (
-        <label className="text-sm font-medium sm:col-span-2">
+        <label className="text-sm font-medium @lg:col-span-2">
           {t("teacher.tasks.assignTo")}
           <select className={field} value={target} onChange={(e) => setTarget(e.target.value)}>
             <option value="">{t("teacher.tasks.choose")}</option>
@@ -96,11 +98,11 @@ function TaskForm({
           </select>
         </label>
       )}
-      <label className="text-sm font-medium sm:col-span-2">
+      <label className="text-sm font-medium @lg:col-span-2">
         {t("teacher.tasks.task")}
         <input className={field} value={f.title} maxLength={TASK_LIMITS.title} onChange={(e) => set("title", e.target.value)} placeholder={t("teacher.tasks.taskPlaceholder")} />
       </label>
-      <label className="text-sm font-medium sm:col-span-2">
+      <label className="text-sm font-medium @lg:col-span-2">
         {t("teacher.tasks.details")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
         <textarea className={field} rows={2} value={f.details} maxLength={TASK_LIMITS.details} onChange={(e) => set("details", e.target.value)} />
       </label>
@@ -108,7 +110,7 @@ function TaskForm({
         {t("teacher.tasks.due")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
         <input type="date" className={field} value={f.dueOn ?? ""} onChange={(e) => set("dueOn", e.target.value || null)} />
       </label>
-      <div className="flex flex-wrap items-end gap-2 sm:justify-end">
+      <div className="flex flex-wrap items-end gap-2 @lg:justify-end">
         {onCancel && (
           <button type="button" className={btn} onClick={onCancel}>
             {t("common.cancel")}
@@ -119,11 +121,12 @@ function TaskForm({
         </button>
       </div>
       {error && (
-        <p role="alert" className="text-sm text-urgent sm:col-span-2">
+        <p role="alert" className="text-sm text-urgent @lg:col-span-2">
           {errorText(t, error)}
         </p>
       )}
     </form>
+    </div>
   );
 }
 
@@ -209,7 +212,7 @@ function TaskRow({ task, today, run }: { task: TeacherTask; today: Date; run: (f
         )}
         <button
           type="button"
-          className={buttonClass(task.archived ? "secondary" : "danger", "sm")}
+          className={btn}
           aria-label={t(task.archived ? "teacher.tasks.restoreAria" : "teacher.tasks.archiveAria", { title: task.title })}
           onClick={() => {
             if (!task.archived && !confirm(t("teacher.tasks.archiveConfirm", { title: task.title }))) return;
@@ -264,6 +267,7 @@ function TasksBoard() {
   const archived = sorted.filter((t) => t.archived);
   const noTargets = data.students.length === 0 && !data.classes.some((c) => !c.archived);
 
+  // The tasks and who has done them on the left; assigning a new one in a column beside them (first on phones).
   return (
     <div className="space-y-6">
       {actionError && (
@@ -271,7 +275,8 @@ function TasksBoard() {
           {errorText(t, actionError)}
         </p>
       )}
-      <section aria-labelledby="task-add" className="space-y-3 rounded-lg border border-zinc-200 p-5">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+      <section aria-labelledby="task-add" className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
         <h2 id="task-add" className="font-display text-lg font-bold">
           {t("teacher.tasks.assignHeading")}
         </h2>
@@ -290,19 +295,20 @@ function TasksBoard() {
             }}
           />
         )}
-        <p className="text-xs text-zinc-500">
+        <p className="text-[13px] text-zinc-600">
           {t("teacher.tasks.limitNote", { max: TASK_LIMITS.activePerTeacher, n: activeTaskCount(data.tasks) })}
         </p>
       </section>
 
+      <div className="space-y-6 lg:col-start-1 lg:row-start-1">
       <section aria-labelledby="task-list" className="space-y-3">
         <h2 id="task-list" className="font-display text-lg font-bold">
           {t("teacher.tasks.active")} <span className="text-sm font-normal text-zinc-500">({active.length})</span>
         </h2>
         {active.length === 0 ? (
-          <p className="text-sm text-zinc-500">{t("teacher.tasks.noActive")}</p>
+          <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">{t("teacher.tasks.noActive")}</p>
         ) : (
-          <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
+          <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
             {active.map((t) => (
               <TaskRow key={t.id} task={t} today={data.now} run={run} />
             ))}
@@ -318,7 +324,7 @@ function TasksBoard() {
             </button>
           </h2>
           {showArchived && (
-            <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
+            <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
               {archived.map((t) => (
                 <TaskRow key={t.id} task={t} today={data.now} run={run} />
               ))}
@@ -326,6 +332,8 @@ function TasksBoard() {
           )}
         </section>
       )}
+      </div>
+      </div>
     </div>
   );
 }
@@ -336,7 +344,7 @@ export function TeacherTasks() {
   return (
     <TeacherGate returnTo="/teacher/tasks">
       <div className="space-y-5">
-        <h1 className="font-display text-3xl font-bold">{t("teacher.tasks.title")}</h1>
+        <h1 className="font-display text-2xl font-bold sm:text-3xl">{t("teacher.tasks.title")}</h1>
         <TasksBoard />
       </div>
     </TeacherGate>

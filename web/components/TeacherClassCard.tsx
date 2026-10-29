@@ -4,9 +4,10 @@ import { useState } from "react";
 import { StatusPill } from "@/components/StatusPill";
 import { useT } from "@/lib/i18n/client";
 import { formatCode } from "@/lib/join-codes";
+import { buttonClass } from "@/lib/ui";
 import { archiveClass, newCode, removeFromClass, revokeCode, type LinkedStudent, type TeacherClass } from "@/lib/links-api";
 
-export const btn = "rounded-md border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-50 disabled:opacity-60";
+export const btn = buttonClass("ghost", "sm");
 
 /** Runs an action, then the parent reloads. */
 export type Run = (fn: () => Promise<unknown>) => void;
@@ -24,7 +25,7 @@ type CodeBoxProps = {
   onOff: () => void;
 };
 
-/** A join code in large mono text with Copy / New code / Turn code off (or Turn code on when it is off). */
+/** A join code as a large printed ticket with Copy / New code / Turn code off (or Turn code on when it is off). */
 export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNew, onOff }: CodeBoxProps) {
   const t = useT();
   const [copied, setCopied] = useState(false);
@@ -59,7 +60,12 @@ export function CodeBox({ code, expiresAt, now, busy, turnOnLabel, subject, onNe
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-3">
-        <span className={`font-mono text-2xl font-bold tracking-widest ${expired ? "text-zinc-400 line-through" : ""}`}>{formatCode(code)}</span>
+        {/* The code as a printed ticket: display face, wide tracking, a dashed edge to tear along. */}
+        <span
+          className={`rounded-xl border border-dashed border-zinc-300 px-3 py-1 font-display text-2xl font-bold tracking-[0.14em] tabular-nums ${expired ? "text-zinc-500 line-through" : "text-ink"}`}
+        >
+          {formatCode(code)}
+        </span>
         {expired && <StatusPill tone="soon">{t("teacher.classes.expired")}</StatusPill>}
         <button type="button" className={btn} aria-label={subject ? t("teacher.classes.copyFor", { name: subject }) : t("teacher.classes.copyOwn")} onClick={copy}>
           {t("common.copy")}
@@ -94,7 +100,7 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <li className="space-y-3 rounded-2xl border border-zinc-200 p-5">
+    <li className="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-5">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <h3 className="font-display text-lg font-bold">{cls.name}</h3>
@@ -128,7 +134,7 @@ export function ClassCard({ cls, members, now, busy, run }: ClassCardProps) {
           onOff={() => run(() => revokeCode("class", cls.id))}
         />
       )}
-      <div>
+      <div className="mt-auto">
         <button
           type="button"
           aria-expanded={open}

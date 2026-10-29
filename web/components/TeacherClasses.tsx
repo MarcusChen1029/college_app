@@ -110,35 +110,29 @@ export function TeacherClasses() {
   const members = (id: string) => students.filter((s) => s.classIds.includes(id));
   const className = (id: string) => overview.classes.find((c) => c.id === id)?.name;
 
+  // Classes and the people in them on the left; making a class and the one-on-one code in a column beside them.
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {error && (
         <p role="alert" className="text-sm text-urgent">
           {errorText(t, error)}
         </p>
       )}
 
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+        <div className="space-y-8">
       <section className="space-y-4" aria-labelledby="classes-heading">
-        <h2 id="classes-heading" className="font-display text-xl font-bold">
+        <h2 id="classes-heading" className="sr-only">
           {t("teacher.classes.title")}
         </h2>
-        <form onSubmit={submit} className="flex flex-wrap items-end gap-3 rounded-2xl border border-zinc-200 p-5">
-          <label className="min-w-40 flex-1 text-sm font-medium">
-            {t("teacher.classes.className")}
-            <input value={name} onChange={(e) => setName(e.target.value)} className={input} placeholder={t("teacher.classes.classPlaceholder")} />
-          </label>
-          <label className="w-40 text-sm font-medium">
-            {t("teacher.classes.schoolYear")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
-            <input value={year} onChange={(e) => setYear(e.target.value)} className={input} placeholder="2026-27" />
-          </label>
-          <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
-            {t("teacher.classes.create")}
-          </button>
-        </form>
+        <p className="text-sm font-medium text-zinc-600">
+          {t(active.length === 1 ? "teacher.classes.count.one" : "teacher.classes.count.other", { n: active.length })} ·{" "}
+          {t(students.length === 1 ? "teacher.classes.linkedCount.one" : "teacher.classes.linkedCount.other", { n: students.length })}
+        </p>
         {active.length === 0 ? (
-          <p className="text-sm text-zinc-500">{t("teacher.classes.none")}</p>
+          <p className="rounded-2xl bg-blue-50 px-6 py-8 text-center text-[15px] text-ink">{t("teacher.classes.none")}</p>
         ) : (
-          <ul className="space-y-4">
+          <ul className="grid gap-4 sm:grid-cols-2">
             {active.map((c) => (
               <ClassCard key={c.id} cls={c} members={members(c.id)} now={now} busy={busy} run={run} />
             ))}
@@ -147,7 +141,7 @@ export function TeacherClasses() {
         {archived.length > 0 && (
           <details className="rounded-2xl border border-zinc-200 p-4">
             <summary className="cursor-pointer text-sm font-semibold">{t("teacher.classes.archived", { n: archived.length })}</summary>
-            <ul className="mt-3 space-y-4">
+            <ul className="mt-3 grid gap-4 sm:grid-cols-2">
               {archived.map((c) => (
                 <ClassCard key={c.id} cls={c} members={members(c.id)} now={now} busy={busy} run={run} />
               ))}
@@ -156,34 +150,21 @@ export function TeacherClasses() {
         )}
       </section>
 
-      <section className="space-y-4" aria-labelledby="one-on-one-heading">
-        <h2 id="one-on-one-heading" className="font-display text-xl font-bold">
-          {t("teacher.classes.oneOnOneHeading")}
+      <section className="space-y-3" aria-labelledby="linked-heading">
+        <h2 id="linked-heading" className="font-display text-xl font-bold">
+          {t("teacher.classes.allLinked", { n: students.length })}
         </h2>
-        <div className="space-y-2 rounded-2xl border border-zinc-200 p-5">
-          <p className="text-sm text-zinc-500">{t("teacher.classes.oneOnOneHelp")}</p>
-          <CodeBox
-            code={overview.individualCode}
-            expiresAt={overview.individualCodeExpiresAt}
-            now={now}
-            busy={busy}
-            turnOnLabel={t("teacher.classes.createOneOnOne")}
-            onNew={() => run(() => newCode("individual"))}
-            onOff={() => run(() => revokeCode("individual"))}
-          />
-        </div>
-        <h3 className="font-semibold">{t("teacher.classes.allLinked", { n: students.length })}</h3>
         {students.length === 0 ? (
           <p className="text-sm text-zinc-500">{t("teacher.classes.noStudents")}</p>
         ) : (
-          <ul className="divide-y divide-zinc-100 rounded-2xl border border-zinc-200 px-5">
+          <ul className="divide-y divide-zinc-100 rounded-2xl border border-zinc-200 bg-white px-5">
             {students.map((s) => (
               <li key={s.studentId} className="flex flex-wrap items-center justify-between gap-3 py-3 text-sm">
                 <div className="space-y-1">
                   <p>
                     <span className="font-medium">{s.displayName}</span> <span className="text-zinc-500">{s.email}</span>
                   </p>
-                  <p className="flex flex-wrap items-center gap-1.5 text-xs text-zinc-500">
+                  <p className="flex flex-wrap items-center gap-1.5 text-[13px] text-zinc-500">
                     {t("teacher.linked", { date: new Date(s.linkedAt).toLocaleDateString() })}
                     {s.classIds.map((id) => (
                       <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-zinc-700">
@@ -206,6 +187,45 @@ export function TeacherClasses() {
           </ul>
         )}
       </section>
+        </div>
+
+        <aside className="space-y-6 lg:sticky lg:top-24">
+          <section aria-labelledby="new-class-heading" className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5">
+            <h2 id="new-class-heading" className="font-display text-lg font-bold">
+              {t("teacher.classes.newHeading")}
+            </h2>
+            <form onSubmit={submit} className="space-y-3">
+              <label className="block text-sm font-medium">
+                {t("teacher.classes.className")}
+                <input value={name} onChange={(e) => setName(e.target.value)} className={input} placeholder={t("teacher.classes.classPlaceholder")} />
+              </label>
+              <label className="block text-sm font-medium">
+                {t("teacher.classes.schoolYear")} <span className="font-normal text-zinc-500">({t("common.optional")})</span>
+                <input value={year} onChange={(e) => setYear(e.target.value)} className={input} placeholder="2026-27" />
+              </label>
+              <button type="submit" disabled={busy} className={buttonClass("primary", "sm")}>
+                {t("teacher.classes.create")}
+              </button>
+            </form>
+          </section>
+
+          <section aria-labelledby="one-on-one-heading" className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5">
+            <h2 id="one-on-one-heading" className="font-display text-lg font-bold">
+              {t("teacher.classes.oneOnOneHeading")}
+            </h2>
+            <p className="text-sm text-zinc-600">{t("teacher.classes.oneOnOneHelp")}</p>
+            <CodeBox
+              code={overview.individualCode}
+              expiresAt={overview.individualCodeExpiresAt}
+              now={now}
+              busy={busy}
+              turnOnLabel={t("teacher.classes.createOneOnOne")}
+              onNew={() => run(() => newCode("individual"))}
+              onOff={() => run(() => revokeCode("individual"))}
+            />
+          </section>
+        </aside>
+      </div>
     </div>
   );
 }

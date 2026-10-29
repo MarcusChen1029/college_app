@@ -18,15 +18,15 @@ function Scores({ row }: { row: RosterRow }) {
   const parts = [satTotal != null && `SAT ${satTotal}`, actComposite != null && `ACT ${actComposite}`, gpaUnweighted != null && `GPA ${gpaUnweighted}`].filter(Boolean);
   return (
     <div className="space-y-0.5">
-      {parts.length === 0 ? <span className="text-zinc-400">-</span> : parts.map((p) => <p key={String(p)}>{p}</p>)}
-      {isInternational && <span className="inline-block rounded bg-blue-50 px-1.5 text-[11px] font-semibold text-blue-700">{t("teacher.col.intl")}</span>}
+      {parts.length === 0 ? <span className="text-zinc-500">-</span> : parts.map((p) => <p key={String(p)} className="whitespace-nowrap">{p}</p>)}
+      {isInternational && <span className="inline-block rounded bg-blue-50 px-1.5 text-[13px] font-semibold text-blue-700">{t("teacher.col.intl")}</span>}
     </div>
   );
 }
 
-function ChecklistBar({ done, total }: { done: number; total: number }) {
+export function ChecklistBar({ done, total }: { done: number; total: number }) {
   const t = useT();
-  if (total === 0) return <span className="text-zinc-400">-</span>;
+  if (total === 0) return <span className="text-zinc-500">-</span>;
   return (
     <div className="flex items-center gap-2">
       <div
@@ -39,7 +39,7 @@ function ChecklistBar({ done, total }: { done: number; total: number }) {
       >
         <div className={`h-full rounded-full ${done === total ? "bg-done" : "bg-zinc-500"}`} style={{ width: `${Math.round((done / total) * 100)}%` }} />
       </div>
-      <span className="text-xs tabular-nums text-zinc-600">
+      <span className="text-[13px] tabular-nums text-zinc-600">
         {done}/{total}
       </span>
     </div>
@@ -52,7 +52,9 @@ type Props = { rows: RosterRow[]; classNames: Map<string, string>; now: Date };
 export function TeacherRosterTable({ rows, classNames, now }: Props) {
   const t = useT();
   return (
-    <div className="overflow-x-auto rounded-2xl border border-zinc-200">
+    // relative: the pills' sr-only text is absolutely positioned, and without a positioned box here it escaped the
+    // scroller and widened the whole page on phones.
+    <div className="relative overflow-x-auto rounded-2xl border border-zinc-200">
       <table className="w-full min-w-[56rem] text-sm">
         <thead className="border-b border-zinc-200 bg-zinc-50">
           <tr>
@@ -74,11 +76,11 @@ export function TeacherRosterTable({ rows, classNames, now }: Props) {
                   <Link href={studentHref(s.studentId)} className="font-medium text-blue-700 underline-offset-4 [overflow-wrap:anywhere] hover:underline">
                     {s.displayName}
                   </Link>
-                  <p className="text-xs text-zinc-500 [overflow-wrap:anywhere]">{s.email}</p>
+                  <p className="text-[13px] text-zinc-500 [overflow-wrap:anywhere]">{s.email}</p>
                   {s.classIds.length > 0 && (
                     <p className="mt-1 flex flex-wrap gap-1">
                       {s.classIds.map((id) => (
-                        <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700">
+                        <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-[13px] text-zinc-700">
                           {classNames.get(id) ?? t("teacher.col.classFallback")}
                         </span>
                       ))}
@@ -99,10 +101,10 @@ export function TeacherRosterTable({ rows, classNames, now }: Props) {
                     <div className="space-y-1">
                       {/* Only active (not yet submitted) colleges get a next deadline, so it is never done. */}
                       <DeadlineChip date={row.next.date} days={row.next.days} done={false} />
-                      <p className="text-xs">{row.next.collegeName}</p>
+                      <p className="text-[13px]">{row.next.collegeName}</p>
                     </div>
                   ) : (
-                    <span className="text-zinc-400">-</span>
+                    <span className="text-zinc-500">-</span>
                   )}
                 </td>
                 <td className={td}>
