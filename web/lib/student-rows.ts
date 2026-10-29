@@ -99,7 +99,7 @@ export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, no
  * updated_at. No saved logins, reminder settings, essays, study fields, aid offer or custom-college details. A tool that
  * needs another column must add it to the view in a migration first (ai-views.test.ts checks the two stay equal).
  */
-export const AI_PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan, test_details, interested, activities, resume";
+export const AI_PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, plan, test_details, interested, activities, resume, plan_windows";
 export const AI_COLLEGE_COLUMNS = "institution_id, slug, plan_key, status, notes, checklist, created_at";
 /** A row of ai_student_colleges read with AI_COLLEGE_COLUMNS. slug is null for a custom college (no institution). */
 export type AiCollegeRow = {
