@@ -69,7 +69,7 @@
    "due": "2026-10-15",
    "notify": "2026-12-04",
    "label": "Early Action application deadline (summer/fall 2027 entry)",
-   "notes": "Dates print without a year; treated as fall 2027 entry. Materials due Oct 22, last scores considered Nov 20; outcomes are admit, defer or deny. Nursing BSN direct admit and Pre-Architecture also use Oct 15 (complete by Jan 15).",
+   "notes": "Dates are printed without a year, so fall 2027 entry is assumed. Materials due Oct 22, last scores considered Nov 20; outcomes are admit, defer or deny. Nursing BSN direct admit and Pre-Architecture also use Oct 15 (complete by Jan 15).",
    "src": "dates"
   },
   {
@@ -104,7 +104,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 4.5,
-   "notes": "The page prints 'iBT (4.5)/PBT (550)'; 4.5 is read as the new 1-6 scale. No separate 0-120 iBT minimum is published.",
+   "notes": "The page prints 'iBT (4.5)/PBT (550)'; 4.5 is assumed to be the new 1-6 scale. No separate 0-120 iBT minimum is published.",
    "src": "eng"
   },
   {

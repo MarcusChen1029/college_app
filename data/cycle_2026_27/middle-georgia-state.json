@@ -68,21 +68,21 @@
    "plan": "RD",
    "due": "2027-06-01",
    "label": "International application deadline (fall 2027)",
-   "notes": "International page: fall application June 1 and documents July 1; spring November 1 / December 1; summer April 1 / May 1. Printed without a year; treated as fall 2027. The admissions FAQ says the posted date is a priority deadline and applications are accepted after it.",
+   "notes": "International page: fall application June 1 and documents July 1; spring November 1 / December 1; summer April 1 / May 1. The dates are printed without a year, so fall 2027 is assumed. The admissions FAQ says the posted date is a priority deadline and applications are accepted after it.",
    "src": "intl"
   },
   {
    "kind": "other",
    "due": "2027-07-01",
    "label": "International documents deadline (fall 2027)",
-   "notes": "Fall document deadline from the same table; treated as 2027.",
+   "notes": "Fall document deadline from the same table; the year 2027 is assumed.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-05-01",
    "label": "International student scholarship deadline (fall)",
-   "notes": "Needs a completed admission application, 3.0 high school GPA, one-page statement of purpose and the Presidential Waiver Application. The page text refers to fall 2025; the date is printed without a year and treated as 2027. The out-of-state waiver page also gives May 1 for fall.",
+   "notes": "Needs a completed admission application, 3.0 high school GPA, one-page statement of purpose and the Presidential Waiver Application. The page text refers to fall 2025; the date is printed without a year, so 2027 is assumed. The out-of-state waiver page also gives May 1 for fall.",
    "src": "intl"
   }
  ],
@@ -127,7 +127,7 @@
   "tuition_out_of_state_usd": 20400,
   "tuition_intl_usd": 20970,
   "required_fees_usd": 862,
-  "notes": "From the Fall 2026/Spring 2027 table at 15 credit hours, doubled: in-state tuition $2,640 per semester; out-of-state total $10,631 and out-of-country total $10,916 per semester, each including $431 of mandatory fees (so tuition $10,200 and $10,485). Fees can be lower at Dublin, Eastman or Warner Robins (recreation fee $90). Housing and meal costs were not read, so they are null.",
+  "notes": "From the Fall 2026/Spring 2027 table at 15 credit hours, doubled: in-state tuition $2,640 per semester; out-of-state total $10,631 and out-of-country total $10,916 per semester, each including $431 of mandatory fees (so tuition $10,200 and $10,485). Fees can be lower at Dublin, Eastman or Warner Robins (recreation fee $90). Housing and meal costs were not collected, so they are not shown",
   "src": "tuition"
  },
  "aid": {

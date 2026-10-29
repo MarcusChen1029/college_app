@@ -45,7 +45,7 @@
     "intl_admits": 57,
     "pct_submit_sat": 28,
     "pct_submit_act": 11,
-    "notes": "CDS C1 residency table (fall 2025): applicants 6,171 in-state / 1,018 out-of-state / 167 international (7,356 total); admits 5,110 / 851 / 57 (6,018); enrolled 885 / 119 / 10 (1,014). International applicants were admitted at a much lower rate than the total (57 of 167). The CDS sex-split rows of C1 show only 6,171 applicants and 5,110 admits, so the residency table totals are used. Undergraduate enrollment 4,289 is the CDS B1 'Total all undergraduates' (fall 2025); 14:1 ratio is CDS I-2. Winthrop reports a high school GPA average of 3.99 (C12) and a GPA distribution whose alignment could not be read reliably, so GPA fields are omitted. SAT/ACT percentiles are for enrolled first-year students (C9). The CDS checkboxes in C7 contradict C8A (test scores marked very important yet not used), so the factors are omitted."
+    "notes": "From the Common Data Set residency table (fall 2025): applicants 6,171 in-state / 1,018 out-of-state / 167 international (7,356 total); admits 5,110 / 851 / 57 (6,018); enrolled 885 / 119 / 10 (1,014). International applicants were admitted at a much lower rate than the total (57 of 167). The Common Data Set rows split by sex show only 6,171 applicants and 5,110 admits, so the residency table totals are shown. Undergraduate enrollment 4,289 is the Common Data Set 'Total all undergraduates' figure (fall 2025); the 14:1 ratio is also from the Common Data Set. Winthrop reports a high school GPA average of 3.99 and a GPA breakdown whose alignment could not be read reliably, so GPA fields are not shown. SAT/ACT percentiles are for enrolled first-year students. The Common Data Set's admission factor checkboxes contradict its test policy answer (test scores marked very important yet not used), so the factors are not shown."
   },
   "scores_source": "cds",
   "scores": {
@@ -73,7 +73,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: 'We are test-optional for 2026-27 academic year. Decision has not been made for Fall 2027 admits.' C8A also marks SAT/ACT as not considered for admission."
+    "notes": "From the Common Data Set: 'We are test-optional for 2026-27 academic year. Decision has not been made for Fall 2027 admits.' It also marks SAT/ACT as not considered for admission."
   },
   "cost": {
     "year": "2025-2026",
@@ -85,6 +85,6 @@
     "books_usd": 1200,
     "intl_need_aid_awarded": 61,
     "intl_avg_award_usd": 24492,
-    "notes": "CDS G1 (first-year, 2025-26): in-state tuition $11,130, out-of-state $25,170, required fees $3,550, on-campus food and housing $14,112; G5 books $1,200, transportation $2,702 and other expenses $4,168 for residents. H6: 61 undergraduate degree-seeking nonresidents received institutional aid (avg $24,492; total $1,494,033); the need-based versus non-need-based checkbox could not be read."
+    "notes": "First-year costs from the Common Data Set (2025-26): in-state tuition $11,130, out-of-state $25,170, required fees $3,550, on-campus food and housing $14,112. Estimated expenses for residents: books $1,200, transportation $2,702 and other expenses $4,168. 61 undergraduate degree-seeking nonresidents received institutional aid (average $24,492; total $1,494,033); whether it was need-based or non-need-based could not be read"
   }
 }

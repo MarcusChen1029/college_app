@@ -42,7 +42,7 @@
       "2.50-2.99": 10.33,
       "2.0-2.49": 6.43
     },
-    "notes": "CDS C1 (Fall 2024): men 2,582 + women 4,466 applied; 2,551 + 4,435 admitted (99.1%). Enrolled first-years are 1,731 by residency (in-state 1,147, out-of-state 384, international 200); the by-sex rows sum to 1,745. USM reports no international applicant/admit counts. Only ACT scores are reported (98.6% of enrolled first-years submitted ACT, 1,721 students); no SAT percentiles. No early decision/early action, no waitlist, no application closing date. The 2025-2026 CDS was not found on usm.edu (checked 2026-10-26), so the 2024-2025 CDS is used. Undergraduate enrollment and nonresident count are B1/B2 'Total Undergraduates' (10,193; 484)."
+    "notes": "From the Common Data Set (Fall 2024): men 2,582 + women 4,466 applied; 2,551 + 4,435 admitted (99.1%). Enrolled first-years are 1,731 by residency (in-state 1,147, out-of-state 384, international 200); the by-sex rows sum to 1,745. USM reports no international applicant/admit counts. Only ACT scores are reported (98.6% of enrolled first-years submitted ACT, 1,721 students); no SAT percentiles. No early decision/early action, no waitlist, no application closing date. The 2025-2026 Common Data Set was not found on usm.edu (checked 2026-10-26), so the 2024-2025 one is used. Undergraduate enrollment and nonresident count are the 'Total Undergraduates' figures (10,193; 484)."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -95,6 +95,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 241,
     "intl_avg_award_usd": 13787,
-    "notes": "tuition_usd and tuition_out_of_state_usd are the official 2026-27 resident / non-resident annual rates from the USM freshman admissions page (the non-resident rate includes a $1,000 per semester non-resident fee; both include capital-improvement and activity fees). The rest comes from the International Student and Scholar Services cost page (I-20 budget for fall 2026 admits, which adds required health insurance $2,528 and uses an estimated $12,820 non-resident tuition plus $300 fees): total $34,188 for nine months. CDS H6 (2024-25): 241 nonresidents received institutional aid, average $13,787."
+    "notes": "In-state and out-of-state tuition are the official 2026-27 resident / non-resident annual rates from the USM freshman admissions page (the non-resident rate includes a $1,000 per semester non-resident fee; both include capital-improvement and activity fees). The rest comes from the International Student and Scholar Services cost page (I-20 budget for fall 2026 admits, which adds required health insurance $2,528 and uses an estimated $12,820 non-resident tuition plus $300 fees): total $34,188 for nine months. From the Common Data Set (2024-25): 241 nonresidents received institutional aid, average $13,787"
   }
 }

@@ -57,7 +57,7 @@
     "ed_admits": 1071,
     "pct_submit_sat": 42,
     "pct_submit_act": 16,
-    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C2, C9, C21). Totals are from the residency table; the gender table in the same CDS gives 33,395 applicants, 3,612 admits and 1,764 enrolled. Tufts left the GPA items (C11, C12) blank. Test-optional: SAT/ACT percentiles describe the 42% (SAT) and 16% (ACT) who submitted scores."
+    "notes": "Fall 2025 entering class (Common Data Set 2025-2026). Totals are from the residency table; the gender table in the same Common Data Set gives 33,395 applicants, 3,612 admits and 1,764 enrolled. Tufts did not report GPA data. Test-optional: SAT/ACT percentiles describe the 42% (SAT) and 16% (ACT) who sent scores."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 19566,
     "other_usd": 1846,
     "total_coa_usd": 92054,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

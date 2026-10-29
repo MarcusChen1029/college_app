@@ -47,7 +47,7 @@
     "enrolled": 420,
     "pct_submit_sat": 13,
     "pct_submit_act": 4,
-    "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). APU's own Common Data Set page lists files only through 2020-21, so no recent CDS was used; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 3,404 applicants, 88% admitted, 14% of admits enrolled, but only 12 SAT (3%) and 7 ACT (2%) score submitters (SAT EBRW 515/615, Math 468/623, ACT 25/30 as 25th/75th), so the fall 2023 scores are kept. Undergraduate enrollment 2,759 and student-faculty ratio 9:1 are from College Navigator (fall 2024)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). APU's own Common Data Set page lists files only through 2020-21, so no recent Common Data Set was used; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 3,404 applicants, 88% admitted, 14% of admits enrolled, but only 12 SAT (3%) and 7 ACT (2%) score submitters (SAT EBRW 515/615, Math 468/623, ACT 25/30 as 25th/75th), so the fall 2023 scores are kept. Undergraduate enrollment 2,759 and student-faculty ratio 9:1 are from College Navigator (fall 2024)."
   },
   "scores": {
     "SAT_ERW": [

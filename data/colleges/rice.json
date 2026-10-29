@@ -57,7 +57,7 @@
     "ed_admits": 647,
     "pct_submit_sat": 59,
     "pct_submit_act": 24,
-    "notes": "CDS 2025-26 (fall 2025 entering class). Rice did not report high school GPA (C11/C12 N/A). ED = Early Decision (C21)."
+    "notes": "From the Common Data Set 2025-26 (fall 2025 entering class). Rice did not report high school GPA. ED = Early Decision."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 19550,
     "other_usd": 4265,
     "total_coa_usd": 87824,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

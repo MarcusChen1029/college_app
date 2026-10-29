@@ -89,7 +89,7 @@
       "test": "DUOLINGO",
       "status": "required_option",
       "min": 125,
-      "notes": "130 for B.Ed. (TESL) and B.Com.; institutional versions not accepted.",
+      "notes": "130 for B.Ed. (TESL) and B.Com. Institutional versions are not accepted.",
       "src": "english"
     },
     {

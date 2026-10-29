@@ -65,7 +65,7 @@
       "2.50-2.99": 9,
       "2.0-2.49": 1
     },
-    "notes": "Residency split as printed in CDS C1 (in-state 36,127 / out-of-state 4,739 / international 4,771 applicants). No early decision; early action closes Nov 1 with rolling notification (C21/C22). The CDS reports average GPA on a 100-point scale (91.6), not 4.0, so gpa_avg is omitted. SAT composite percentiles were not published (only ERW and Math); mean SAT 649 ERW / 654 Math, mean ACT 29. All applicants may choose to be considered test-optional (C8)."
+    "notes": "Residency split as printed in the Common Data Set (in-state 36,127 / out-of-state 4,739 / international 4,771 applicants). No early decision; early action closes Nov 1 with rolling notification. The Common Data Set reports average GPA on a 100-point scale (91.6), not 4.0, so the average GPA is not shown. SAT composite percentiles were not published (only ERW and Math); mean SAT 649 ERW / 654 Math, mean ACT 29. All applicants may choose to be considered test-optional."
   },
   "scores": {
     "SAT_ERW": [
@@ -92,7 +92,7 @@
     "room_board_usd": 18064,
     "other_usd": 5322,
     "total_coa_usd": 31688,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 32466
   },
   "factors": {

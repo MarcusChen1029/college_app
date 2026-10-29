@@ -101,7 +101,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 3.5,
-   "notes": "For tests taken after January 21, 2026; the page lists 3.5 without naming the scale, read as the new 1-6 scale.",
+   "notes": "For tests taken after January 21, 2026; the page lists 3.5 without naming the scale, so it is assumed to be the new 1-6 scale.",
    "src": "eng"
   },
   {
@@ -139,7 +139,7 @@
   "books_usd": 1300,
   "other_usd": 6854,
   "total_coa_usd": 48160,
-  "notes": "ETSU international estimated cost of attendance 2026-27 (undergraduate, 15 credit hours per semester): tuition and fees $30,686 (fees included, not split out), housing $5,000, board $4,320, textbooks and supplies $1,300, health insurance $1,614 and miscellaneous $5,240 (other = $6,854), total $48,160. The international cost-and-scholarships page shows a lower illustrative total of $40,006 (tuition $15,343 plus housing and meal plan $4,660 per semester, before insurance and miscellaneous).",
+  "notes": "ETSU international estimated cost of attendance 2026-27 (undergraduate, 15 credit hours per semester): tuition and fees $30,686 (fees included, not split out), housing $5,000, board $4,320, textbooks and supplies $1,300, health insurance $1,614 and miscellaneous $5,240 (other = $6,854), total $48,160. The international cost-and-scholarships page shows a lower illustrative total of $40,006 (tuition $15,343 plus housing and meal plan $4,660 per semester, before insurance and miscellaneous)",
   "src": "coa"
  },
  "aid": {

@@ -45,7 +45,7 @@
       "plan": "ROLLING",
       "due": "2027-05-15",
       "label": "Recommended deadline for international applicants: all documents in by mid-May (fall 2027 entry)",
-      "notes": "Rolling review; applicants are urged to submit everything by May 15 for fall (Nov. 15 for spring). Pages print no year; treated as fall 2027. The 2024-25 CDS lists a Feb. 1 priority date and rolling decisions beginning Oct. 1.",
+      "notes": "Rolling review; applicants are urged to submit everything by May 15 for fall (Nov. 15 for spring). The pages give no year, so fall 2027 is assumed. The 2024-25 Common Data Set lists a Feb. 1 priority date and rolling decisions beginning Oct. 1.",
       "src": "intl"
     },
     {
@@ -110,7 +110,7 @@
     "meets_full_need": false,
     "merit_scholarships": true,
     "merit_separate_app": false,
-    "notes": "All international applicants are considered for scholarships at application, no separate application. Destination Oswego Scholarship: $9,000 per year ($4,500/semester) beginning fall 2027 for full-time first-year students who are international or non-NY residents; must live on campus, keep a 3.0 GPA each semester, renewable up to eight semesters. First-year merit awards by typical HS average: Presidential $6,000 (96+), Dean's $4,000 (93-95), Merit Plus $2,500 (90-92), Merit $750 (85-89) per year; the page does not say whether international students are eligible for these. CDS H6 (2024-25) shows 172 nonresident undergraduates received institutional aid averaging $6,888 (the aid-type checkbox is unreadable). English pathway: applicants below the minimum can enroll in the English for Academic Purposes (EAP) program through Oxford International Digital Institute, and proof of enrollment can lead to conditional admission; another admissions page says below-minimum students need intensive English study before admission. The international page estimates total cost of attendance at $41,493 per year (year not stated).",
+    "notes": "All international applicants are considered for scholarships at application, no separate application. Destination Oswego Scholarship: $9,000 per year ($4,500/semester) beginning fall 2027 for full-time first-year students who are international or non-NY residents; must live on campus, keep a 3.0 GPA each semester, renewable up to eight semesters. First-year merit awards by typical HS average: Presidential $6,000 (96+), Dean's $4,000 (93-95), Merit Plus $2,500 (90-92), Merit $750 (85-89) per year; the page does not say whether international students are eligible for these. The Common Data Set (2024-25) shows 172 nonresident undergraduates received institutional aid averaging $6,888 (the aid-type checkbox is unreadable). English pathway: applicants below the minimum can enroll in the English for Academic Purposes (EAP) program through Oxford International Digital Institute, and proof of enrollment can lead to conditional admission; another admissions page says below-minimum students need intensive English study before admission. The international page estimates total cost of attendance at $41,493 per year (year not stated).",
     "src": "sch"
   },
   "score_codes": {
@@ -154,6 +154,6 @@
     "humanities": "D"
   },
   "tier_notes": {
-    "general": "Admit rate about 81% (94% for international applicants in the 2024-25 CDS), but CDS SAT middle 50% of 1080-1250 among the 23% who submit is a notch above open-access SUNY colleges. Editorial judgment, wave 4 (2026-10-26)."
+    "general": "Admit rate about 81% (94% for international applicants in the 2024-25 Common Data Set), but the Common Data Set SAT middle 50% of 1080-1250 among the 23% who submit is a notch above open-access SUNY colleges. This is our estimate (2026-10-26)."
   }
 }

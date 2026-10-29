@@ -36,7 +36,7 @@
     "out_state_admits": 338,
     "intl_applicants": 43,
     "intl_admits": 33,
-    "notes": "CDS C1 (fall 2025 first-years); residency rows sum to the totals (admit rate 93.7%; international 33 of 43 admitted). The CDS prints 49 international first-years enrolled, more than the 33 admitted, so the enrolled-by-residency row is not reliable and is not used. No waitlist; rolling admission, no early decision or early action. C9 prints 92% SAT / 11% ACT submitters next to counts of 1,523 / 182 that do not match those percentages, so pct_submit_sat/act are left null. C11/C12 (high school GPA) were left blank, so GPA fields are omitted. Class rank (C10, 84% reporting): top tenth 11%, top quarter 34%. Undergraduate enrollment 17,822 is B1 total undergraduates; international 151 is the B2 degree-seeking nonresident count. Student-faculty ratio 21:1 is CDS I-2 (IPEDS College Navigator shows 19:1)."
+    "notes": "From the Common Data Set (fall 2025 first-years); residency rows add up to the totals (admit rate 93.7%; international 33 of 43 admitted). The Common Data Set prints 49 international first-years enrolled, more than the 33 admitted, so the enrolled-by-residency row is not reliable and is not shown. No waitlist; rolling admission, no early decision or early action. It prints 92% SAT / 11% ACT submitters next to counts of 1,523 / 182 that do not match those percentages, so the share of students who sent scores is not shown. Sam Houston State did not report high school GPA, so no GPA is shown. Class rank (84% reporting): top tenth 11%, top quarter 34%. Undergraduate enrollment is 17,822 (total undergraduates); international undergraduates number 151 (the degree-seeking nonresident count). The student-faculty ratio is 21:1 from the Common Data Set (IPEDS College Navigator shows 19:1)."
   },
   "scores_source": "cds",
   "scores": {
@@ -94,7 +94,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -108,6 +108,6 @@
     "other_usd": 3796,
     "intl_need_aid_awarded": 59,
     "intl_avg_award_usd": 17724,
-    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $7,320, nonresident tuition $19,470, required fees $4,050 (a comment in the CDS says required fees are included in the total tuition, so the fee line may overlap; confirm with the bursar), on-campus food and housing $11,984 (housing $6,658 + meal plan $5,500). G5: books $1,380, transportation $2,004, other $1,792 (other_usd = transportation + other). Per-credit-hour: $244 resident, $654 nonresident. H6: 59 degree-seeking nonresident undergraduates received institutional aid, average $17,724 (total $1,045,721)."
+    "notes": "From the Common Data Set (first-year, 2026-27): in-state tuition $7,320, nonresident tuition $19,470, required fees $4,050 (a comment in the Common Data Set says required fees are included in the total tuition, so the fee line may overlap; confirm with the bursar), on-campus food and housing $11,984 (housing $6,658 + meal plan $5,500). Estimated expenses: books $1,380, transportation $2,004, other $1,792 (transportation and other are shown together as other costs). Per-credit-hour: $244 resident, $654 nonresident. The Common Data Set shows 59 degree-seeking nonresident undergraduates received institutional aid, average $17,724 (total $1,045,721)"
   }
 }

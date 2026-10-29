@@ -59,7 +59,7 @@
       "plan": "ROLLING",
       "due": "2027-08-01",
       "label": "Fall semester preferred deadline (fall 2027 entry)",
-      "notes": "Catalog: 'preferred deadlines' (fall Aug. 1, spring Jan. 2, summer Mar. 1), which the Office of Admissions may extend; the page prints no year and no separate international date, so it is treated as fall 2027. International applicants needing an F-1 visa should allow time for the financial statement and I-20.",
+      "notes": "Catalog: 'preferred deadlines' (fall Aug. 1, spring Jan. 2, summer Mar. 1), which the Office of Admissions may extend; the page gives no year and no separate international date, so fall 2027 is assumed. International applicants needing an F-1 visa should allow time for the financial statement and I-20.",
       "src": "dates"
     }
   ],

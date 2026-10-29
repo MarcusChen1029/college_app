@@ -49,7 +49,7 @@
       "2.50-2.99": 17.8,
       "2.0-2.49": 2.6
     },
-    "notes": "CDS C1/C9/C11/C12 (fall 2025). International first-years were admitted at a much lower rate (226 of 780, about 29%) than domestic applicants (about 83%), so UNM is not a near-certain admit for international applicants. The CDS PDF lost its checkbox states, so C7 factors and C8 test policy could not be read and are omitted (test policy comes from the admissions site). Student-faculty ratio is I-2 (fall 2025, 15 to 1). Undergrad and international counts are the B1 total (18,466) and B2 nonresident total-undergraduate column (308)."
+    "notes": "From the Common Data Set (fall 2025). International first-years were admitted at a much lower rate (226 of 780, about 29%) than domestic applicants (about 83%), so UNM is not a near-certain admit for international applicants. The Common Data Set PDF lost its checkbox states, so the admission factors and test policy could not be read and are not shown (test policy comes from the admissions site). The student-faculty ratio is 15 to 1 (fall 2025). Undergraduate enrollment is the total (18,466) and the international count is the nonresident total-undergraduate column (308)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -90,6 +90,6 @@
     "tuition_out_of_state_usd": 34734,
     "required_fees_usd": 1640,
     "room_board_usd": 12471,
-    "notes": "CDS G1 (first-year, 2026-27): in-state $11,585, out-of-state/nonresident $34,734, required fees $1,639.80 (rounded), food and housing $12,471. International students pay the nonresident rate unless they receive a scholarship (see aid)."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: in-state $11,585, out-of-state/nonresident $34,734, required fees $1,639.80 (rounded), food and housing $12,471. International students pay the nonresident rate unless they receive a scholarship (see aid)"
   }
 }

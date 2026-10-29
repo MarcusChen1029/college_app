@@ -40,7 +40,7 @@
     "enrolled": 2141,
     "pct_submit_sat": 7,
     "pct_submit_act": 80,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); no recent Common Data Set is published (ETSU's CDS page lists only 2004-05 through 2010-11). College Navigator's fall 2024 figures: 10,050 applicants, 86% admitted, 25% of admits enrolled; SAT 7% and ACT 76% of enrollees; middle-50% SAT EBRW 510-620, SAT Math 470-580, ACT composite 19-26. International applicant and admit counts, GPA and residency splits are not available. 10,829 undergraduates is the fall 2024 College Navigator count; the international undergraduate count is left blank (ETSU says nearly 350 international students of all levels, from 60+ countries)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no recent Common Data Set is published (ETSU's Common Data Set page lists only 2004-05 through 2010-11). College Navigator's fall 2024 figures: 10,050 applicants, 86% admitted, 25% of admits enrolled; SAT 7% and ACT 76% of enrollees; middle-50% SAT EBRW 510-620, SAT Math 470-580, ACT composite 19-26. International applicant and admit counts, GPA and residency splits are not available. 10,829 undergraduates is the fall 2024 College Navigator count; the international undergraduate count is not shown (ETSU says nearly 350 international students of all levels, from 60+ countries)."
   },
   "scores": {
     "SAT_ERW": [

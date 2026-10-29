@@ -47,7 +47,7 @@
     "enrolled": 841,
     "pct_submit_sat": 25,
     "pct_submit_act": 14,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was read, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 25%, ACT 14%). International undergraduates are left null; the school says students come from about 75-85 countries."
+    "notes": "Figures from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES file via the Urban Institute Education Data Portal). No Common Data Set was used, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 25%, ACT 14%). The number of international undergraduates is not shown; the school says students come from about 75-85 countries."
   },
   "scores": {
     "SAT_ERW": [

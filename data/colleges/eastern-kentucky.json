@@ -47,7 +47,7 @@
     "enrolled": 2635,
     "pct_submit_sat": 1,
     "pct_submit_act": 97,
-    "notes": "Baseline from IPEDS fall 2024 (admit rate 77.6%). No Common Data Set could be read: EKU's Institutional Research data page is a login/JavaScript app and no CDS PDF was found in two attempts, so no international split, GPA or residency data. Test scores from College Navigator cover enrolled first-time students (2,561 ACT, 97%; only 9 SAT, 1%, so SAT percentiles are omitted). International applicant counts are not published."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024; admit rate 77.6%). No Common Data Set could be read: EKU's Institutional Research data page is a login/JavaScript app and no Common Data Set PDF was found in two attempts, so no international split, GPA or residency data. Test scores from College Navigator cover enrolled first-time students (2,561 ACT, 97%; only 9 SAT, 1%, so SAT percentiles are not shown). International applicant counts are not published."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -72,6 +72,6 @@
     "tuition_usd": 10320,
     "tuition_out_of_state_usd": 21230,
     "room_board_usd": 12268,
-    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $10,320, out-of-state $21,230; on-campus food and housing $12,268; other expenses $3,650."
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $10,320, out-of-state $21,230; on-campus food and housing $12,268; other expenses $3,650"
   }
 }

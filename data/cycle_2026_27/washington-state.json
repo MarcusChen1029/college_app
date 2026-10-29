@@ -54,7 +54,7 @@
    "own"
   ],
   "app_fee_usd": 70,
-  "notes": "Apply with the WSU application, the Common App (first-year), or Cialfo if your school is a member. International first-year applicants need a minimum 2.70 GPA on a U.S. 4.0 scale as converted by WSU (12 years of schooling with humanities, math, basic sciences and social sciences). Admission is decided from unofficial transcripts; official ones are required before arrival. A passport copy is required. CDS C7: essay is 'considered'; recommendations and tests are not considered.",
+  "notes": "Apply with the WSU application, the Common App (first-year), or Cialfo if your school is a member. International first-year applicants need a minimum 2.70 GPA on a U.S. 4.0 scale as converted by WSU (12 years of schooling with humanities, math, basic sciences and social sciences). Admission is decided from unofficial transcripts; official ones are required before arrival. A passport copy is required. The Common Data Set lists the essay as 'considered'; recommendations and tests are not considered.",
   "src": "req"
  },
  "deadlines": [
@@ -141,7 +141,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students are automatically considered for scholarships on admission. The International Academic Award is guaranteed to high-achieving first-year admits: $4,000 per year tuition waiver for GPA 3.60+ or $2,000 per year for GPA 3.0-3.59, renewable 3 more years (3.0 GPA, 12 credits a term). Students who finish the Undergraduate Foundation program with a 3.5 GPA get a $4,000 per year Year One Progression Award instead. A $2,000-per-semester International Merit Award is available after enrolling. CDS H6: only non-need-based institutional aid for nonresidents.",
+  "notes": "International students are automatically considered for scholarships on admission. The International Academic Award is guaranteed to high-achieving first-year admits: $4,000 per year tuition waiver for GPA 3.60+ or $2,000 per year for GPA 3.0-3.59, renewable 3 more years (3.0 GPA, 12 credits a term). Students who finish the Undergraduate Foundation program with a 3.5 GPA get a $4,000 per year Year One Progression Award instead. A $2,000-per-semester International Merit Award is available after enrolling. The Common Data Set shows only non-need-based institutional aid for nonresidents.",
   "src": "schol"
  },
  "majors": [],
@@ -191,9 +191,9 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "computer_science": "CS offered within a research-active engineering college; placed C as a solid regional program. Editorial judgment, not a ranking.",
-  "engineering": "Voiland College of Engineering and Architecture is a research-active engineering college; placed C as a solid regional program. Editorial judgment, not a ranking.",
-  "business": "Carson College of Business; placed C as a solid regional program. Editorial judgment, not a ranking.",
-  "biology_life_sci": "WSU's data page reports $403M total R&D expenditures in FY24 (ranked 86th), with large life-science and agricultural research; placed C. Editorial judgment, not a ranking."
+  "computer_science": "CS is offered within an engineering college with ongoing research activity; placed C as a solid regional program. Our estimate, not a ranking.",
+  "engineering": "Voiland College of Engineering and Architecture is an engineering college with ongoing research activity; placed C as a solid regional program. Our estimate, not a ranking.",
+  "business": "Carson College of Business; placed C as a solid regional program. Our estimate, not a ranking.",
+  "biology_life_sci": "WSU's data page reports $403M total R&D expenditures in FY24 (ranked 86th), with large life-science and agricultural research activity; placed C. Our estimate, not a ranking."
  }
 }

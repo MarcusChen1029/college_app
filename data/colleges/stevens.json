@@ -69,7 +69,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "From the 2025-26 CDS PDF, whose text layer is partly garbled; figures were cross-checked (C1 totals add up, the GPA distribution reproduces the 3.83 average). Factor importance (C7) and academic calendar could not be read from the PDF and are not filled. Residency counts are for fall 2025."
+    "notes": "From the 2025-26 Common Data Set PDF, whose text is partly garbled; figures were cross-checked (the totals add up, the GPA breakdown reproduces the 3.83 average). How important each admission factor is, and the academic calendar, could not be read from the PDF and are not shown. Residency counts are for fall 2025."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -111,6 +111,6 @@
     "room_board_usd": 20000,
     "other_usd": 1050,
     "total_coa_usd": 80947,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

@@ -33,7 +33,7 @@
    "plan": "EA",
    "due": "2026-11-01",
    "label": "Early Action I (fall 2027 entry)",
-   "notes": "The page prints no year; taken as the current cycle. Test-optional applicants may use this round.",
+   "notes": "The page prints no year, so the current cycle is assumed. Test-optional applicants may use this round.",
    "src": "intl"
   },
   {
@@ -94,7 +94,7 @@
   "intl_extra_fees_usd": 3487,
   "total_coa_usd": 62567,
   "src": "intl",
-  "notes": "International page, 'Estimated Expenses for the 2025 Academic Year' (taken as 2025-26): tuition and fees $41,488; room and board $13,298; books and personal/miscellaneous $4,294; required health insurance $3,487; total $62,567. In-state tuition is not given on this page."
+  "notes": "International page, 'Estimated Expenses for the 2025 Academic Year' (assumed to be 2025-26): tuition and fees $41,488; room and board $13,298; books and personal/miscellaneous $4,294; required health insurance $3,487; total $62,567. In-state tuition is not given on this page"
  },
  "aid": {
   "intl_need_aid": null,

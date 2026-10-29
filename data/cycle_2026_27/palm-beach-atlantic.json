@@ -85,7 +85,7 @@
  "cost": {
   "year": "2026-2027",
   "tuition_usd": 43000,
-  "notes": "Full-time day undergraduate tuition $21,500 per semester ($43,000 per year, 12-18 credits). General fees for full-time students and room and board are not printed on the tuition page, so they are left null. College Navigator lists 2024-25 food and housing of $13,800 on campus.",
+  "notes": "Full-time day undergraduate tuition $21,500 per semester ($43,000 per year, 12-18 credits). General fees for full-time students and room and board are not printed on the tuition page, so they are not shown. College Navigator lists 2024-25 food and housing of $13,800 on campus",
   "src": "tuition"
  },
  "aid": {

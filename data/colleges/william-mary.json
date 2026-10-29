@@ -60,7 +60,7 @@
       "3.25-3.49": 0.8,
       "3.00-3.24": 0.1
     },
-    "notes": "Applicants/admits/enrolled are sums of the men, women and unknown-sex rows in C1. The in-state/out-of-state/international residency table was left blank in the CDS. ED counts (C21) are labelled 'Fall 2024 entering class' in the file. GPA is W&M's recalculated weighted GPA (average 4.34, above 4.0). Standardized tests are optional (C8F)."
+    "notes": "Applicants, admits and enrolled are totals of the men, women and unknown-sex counts. W&M did not report the in-state/out-of-state/international residency table in the Common Data Set. The ED counts are labelled 'Fall 2024 entering class' in the file. GPA is W&M's recalculated weighted GPA (average 4.34, above 4.0). Standardized tests are optional."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -102,7 +102,7 @@
     "room_board_usd": 16601,
     "other_usd": 2660,
     "total_coa_usd": 45606,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 52725
   },
   "factors": {

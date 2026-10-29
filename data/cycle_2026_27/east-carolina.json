@@ -87,7 +87,7 @@
       "test": "TOEFL_IBT_2026",
       "status": "required_option",
       "min": 4,
-      "notes": "Page wording: '2026 onward, a minimum score of 4'; the page does not name the scale or iBT, so it is read as the new 1-6 scale.",
+      "notes": "Page wording: '2026 onward, a minimum score of 4'; the page does not name the scale or iBT, so it is assumed to be the new 1-6 scale.",
       "src": "intl"
     },
     {
@@ -110,7 +110,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "No international-specific scholarship, amount or need-based program is published on the pages read. Merit scholarships are applied for through the ECUAWard portal after admission (freshman deadline Dec 15, 2026 for eligibility); some also consider FAFSA need, which F-1 students cannot file. CDS H6: 53 nonresident undergraduates received institutional aid, average $19,182.",
+    "notes": "No international-specific scholarship, amount or need-based program is published on the pages read. Merit scholarships are applied for through the ECUAWard portal after admission (freshman deadline Dec 15, 2026 for eligibility); some also consider FAFSA need, which F-1 students cannot file. In the Common Data Set, 53 nonresident undergraduates received institutional aid, average $19,182.",
     "src": "fy"
   },
   "score_codes": {

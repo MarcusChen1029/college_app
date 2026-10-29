@@ -15,12 +15,12 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted. The CDS also states that SAT/ACT scores are not required for admission to American University.",
+  "notes": "From the Common Data Set (Fall 2027): SAT/ACT not required, considered if submitted. The Common Data Set also states that SAT/ACT scores are not required for admission to American University.",
   "src": "cds"
  },
  "requirements": {
   "app_fee_usd": 75,
-  "notes": "Application fee amount from CDS C13. Platform, recommendations, essays, interview and English proficiency requirements could not be confirmed: american.edu admissions pages returned a bot-check page and were not readable this session.",
+  "notes": "Application fee amount from the Common Data Set. Platform, recommendations, essays, interview and English proficiency requirements are not yet confirmed: american.edu admissions pages returned a bot-check page and could not be read.",
   "src": "cds"
  },
  "deadlines": [
@@ -30,7 +30,7 @@
    "due": "2026-11-01",
    "notify": "2027-01-31",
    "label": "Early Action (non-binding)",
-   "notes": "Dates from CDS C22.",
+   "notes": "Dates from the Common Data Set.",
    "src": "cds"
   },
   {
@@ -39,7 +39,7 @@
    "due": "2026-11-01",
    "notify": "2026-12-31",
    "label": "Early Decision I (binding)",
-   "notes": "Closing date from CDS C21; notification 'by December 31' from the AU financial aid guide.",
+   "notes": "Closing date from the Common Data Set; notification 'by December 31' from the AU financial aid guide.",
    "src": "cds"
   },
   {
@@ -48,7 +48,7 @@
    "due": "2027-01-15",
    "notify": "2027-02-15",
    "label": "Early Decision II (binding)",
-   "notes": "Closing date from CDS C21; notification 'by February 15' from the AU financial aid guide.",
+   "notes": "Closing date from the Common Data Set; notification 'by February 15' from the AU financial aid guide.",
    "src": "cds"
   },
   {
@@ -57,7 +57,7 @@
    "due": "2027-01-15",
    "notify": "2027-04-01",
    "label": "Regular Decision",
-   "notes": "Closing date from CDS C14; notification 'by April 1' from the AU financial aid guide.",
+   "notes": "Closing date from the Common Data Set; notification 'by April 1' from the AU financial aid guide.",
    "src": "cds"
   },
   {

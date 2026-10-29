@@ -60,7 +60,7 @@
     ],
     "supplemental_essays": "No essay component on the HCU application.",
     "app_fee_usd": 0,
-    "notes": "HCU's own online application (the page does not mention the Common App); 'no fee for undergraduate applications' (CDS C13 also says no application fee). International freshmen outside the U.S. submit: high school transcripts for grades 9, 10 and 11 (a foreign transcript evaluation may be requested; WAEC-type regional exam results are not accepted), proof of English proficiency, a passport copy valid 6 months beyond arrival, and financial documentation (HCU Financial Affidavit plus 3 months of bank statements or an official bank letter showing one academic year of funds) for the I-20. Interview and recommendation requirements are not stated on the pages reviewed.",
+    "notes": "HCU's own online application (the page does not mention the Common App); 'no fee for undergraduate applications' (the Common Data Set also says no application fee). International freshmen outside the U.S. submit: high school transcripts for grades 9, 10 and 11 (a foreign transcript evaluation may be requested; WAEC-type regional exam results are not accepted), proof of English proficiency, a passport copy valid 6 months beyond arrival, and financial documentation (HCU Financial Affidavit plus 3 months of bank statements or an official bank letter showing one academic year of funds) for the I-20. Interview and recommendation requirements are not stated on the pages reviewed.",
     "src": "intl"
   },
   "deadlines": [
@@ -68,7 +68,7 @@
       "kind": "application",
       "due": "2027-06-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "HCU's International Student Admissions Guide gives Fall: June 1, Spring: November 1, Summer: March 1 (no year printed; treated as fall 2027). CDS C14 says the university has no application closing date for domestic first-years, and admission decisions are quick once all documents are in. Allow time for the I-20 and visa.",
+      "notes": "HCU's International Student Admissions Guide gives Fall: June 1, Spring: November 1, Summer: March 1 (no year printed, so fall 2027 is assumed). The Common Data Set says the university has no application closing date for domestic first-years, and admission decisions are quick once all documents are in. Allow time for the I-20 and visa.",
       "src": "guide"
     }
   ],
@@ -118,7 +118,7 @@
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "HCU merit scholarships are applied automatically and 'open to international students; the requirements remain the same for all applicants.' Freshman awards for the 2027-28 year (unweighted HS GPA, test-optional): Founders up to $27,000 (GPA 3.88-4.0), President's up to $24,000 (3.68-3.87), Legacy up to $22,000 (3.30-3.67), University Grant I up to $16,000 (3.0-3.29), University Grant II up to $14,000 (2.99 or below), per year; SAT/ACT awards of $2,000-$3,000 stack on top. Merit renewal needs a 3.0 (Founders, President's) or 2.5 (Legacy, grants) HCU GPA and full-time enrollment. International students cannot receive federal aid. CDS H6 marks both institutional need-based and non-need-based aid as available to nonresidents (113 recipients, average $31,106); the website describes only merit awards.",
+    "notes": "HCU merit scholarships are applied automatically and 'open to international students; the requirements remain the same for all applicants.' Freshman awards for the 2027-28 year (unweighted HS GPA, test-optional): Founders up to $27,000 (GPA 3.88-4.0), President's up to $24,000 (3.68-3.87), Legacy up to $22,000 (3.30-3.67), University Grant I up to $16,000 (3.0-3.29), University Grant II up to $14,000 (2.99 or below), per year; SAT/ACT awards of $2,000-$3,000 stack on top. Merit renewal needs a 3.0 (Founders, President's) or 2.5 (Legacy, grants) HCU GPA and full-time enrollment. International students cannot receive federal aid. The Common Data Set marks both the college's own need-based and non-need-based aid as available to nonresidents (113 recipients, average $31,106); the website describes only merit awards.",
     "src": "merit"
   },
   "score_codes": {

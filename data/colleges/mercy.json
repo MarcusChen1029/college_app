@@ -45,6 +45,6 @@
     "applicants": 8642,
     "admits": 7418,
     "enrolled": 1064,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; enrollment and student-faculty ratio from College Navigator. No public Common Data Set was found. College Navigator shows no SAT/ACT percentiles or submission rates; GPA, residency splits and international applicant counts are not available. Undergraduate enrollment is the IPEDS fall 2024 headcount (6,774) across Mercy's Westchester, Manhattan and Bronx sites."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; enrollment and student-faculty ratio from College Navigator. No public Common Data Set was found. College Navigator shows no SAT/ACT percentiles or submission rates; GPA, residency splits and international applicant counts are not available. Undergraduate enrollment is the IPEDS fall 2024 headcount (6,774) across Mercy's Westchester, Manhattan and Bronx sites."
   }
 }

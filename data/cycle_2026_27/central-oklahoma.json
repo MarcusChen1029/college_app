@@ -57,7 +57,7 @@
    "kind": "scholarship",
    "due": "2027-05-31",
    "label": "Priority deadline for automatic international admission scholarships (fall 2027)",
-   "notes": "The scholarships page lists 'May 31 (Fall)' with no year, treated as fall 2027. No separate scholarship application is needed.",
+   "notes": "The scholarships page lists 'May 31 (Fall)' with no year, so fall 2027 is assumed. No separate scholarship application is needed.",
    "src": "schol"
   }
  ],
@@ -109,7 +109,7 @@
   "books_usd": null,
   "other_usd": 2260,
   "total_coa_usd": 32460,
-  "notes": "International tuition page (undated, accessed 2026-10-26; labeled 2026-2027 as the current page): undergraduate tuition and fees $19,900 per year at 12 credit hours per semester, housing and dining $10,300 (nine months), books, insurance and miscellaneous $2,260 (in other_usd), total $32,460."
+  "notes": "International tuition page (undated, accessed 2026-10-26; labeled 2026-2027 as the current page): undergraduate tuition and fees $19,900 per year at 12 credit hours per semester, housing and dining $10,300 (nine months), books, insurance and miscellaneous $2,260 (shown as other costs), total $32,460"
  },
  "majors": [],
  "score_codes": {

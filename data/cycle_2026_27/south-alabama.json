@@ -50,7 +50,7 @@
       "plan": "ROLLING",
       "due": "2027-04-01",
       "label": "International application deadline, applicants outside the U.S. (fall 2027 entry)",
-      "notes": "International page: fall Apr 1 (outside the U.S.) and Jul 15 (inside the U.S.); later applications are considered for the next session. Printed without a year, treated as 2027. Domestic priority date for fall is also Jul 15.",
+      "notes": "International page: fall Apr 1 (outside the U.S.) and Jul 15 (inside the U.S.); later applications are considered for the next session. Printed without a year, so 2027 is assumed. Domestic priority date for fall is also Jul 15.",
       "src": "intl"
     },
     {
@@ -114,14 +114,14 @@
     "books_usd": 1000,
     "other_usd": 3439,
     "total_coa_usd": 34255,
-    "notes": "International estimate used for I-20 issuance: tuition and fees $20,486 (12 credit hours per fall and spring semester), housing and food $9,330, books $1,000, health insurance $3,439 (other), total $34,255. Per-credit-hour undergraduate tuition is $386 in-state and $772 out-of-state for Arts and Sciences, higher in Computing and Allied Health ($802 out-of-state), Business ($822), Engineering ($832) and Nursing ($870); the tuition page's title says 2025-2026 but the rate tables are headed 2026-2027.",
+    "notes": "International estimate used for I-20 issuance: tuition and fees $20,486 (12 credit hours per fall and spring semester), housing and food $9,330, books $1,000, health insurance $3,439 (other), total $34,255. Per-credit-hour undergraduate tuition is $386 in-state and $772 out-of-state for Arts and Sciences, higher in Computing and Allied Health ($802 out-of-state), Business ($822), Engineering ($832) and Nursing ($870); the tuition page's title says 2025-2026 but the rate tables are headed 2026-2027",
     "src": "exp"
   },
   "aid": {
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Global Freshman Scholars Talent and Ability Scholarship (from fall 2026): competitive, for degree-seeking international freshmen on F-1/H-4/L-2 with a 3.0+ high school GPA; the award is in-state tuition rates, renewable up to four years with a 3.0 GPA each year; no dollar figure is listed. Endowed awards (Carter GlobalUSA, Pitsios, Constantine) need 3.0-3.5 GPAs; apply through JagSPOT. The CDS H6 section on aid to nonresidents is not reliably legible.",
+    "notes": "Global Freshman Scholars Talent and Ability Scholarship (from fall 2026): competitive, for degree-seeking international freshmen on F-1/H-4/L-2 with a 3.0+ high school GPA; the award is in-state tuition rates, renewable up to four years with a 3.0 GPA each year; no dollar figure is listed. Endowed awards (Carter GlobalUSA, Pitsios, Constantine) need 3.0-3.5 GPAs; apply through JagSPOT. The Common Data Set section on aid to nonresidents is not reliably legible.",
     "src": "schol"
   },
   "majors": [],
@@ -167,6 +167,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Admits about 71% (IPEDS) to 94% (CDS) of applicants with an SAT middle 50% around 1010-1200 (CDS); slightly above a plain D because it is a large research-oriented public with engineering, computing and nursing programs."
+    "general": "Admits about 71% (IPEDS) to 94% (Common Data Set) of applicants with an SAT middle 50% around 1010-1200 (Common Data Set); slightly above a plain D because it is a large research-oriented public with engineering, computing and nursing programs."
   }
 }

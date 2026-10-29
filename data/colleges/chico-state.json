@@ -50,7 +50,7 @@
       "2.0-2.49": 1.2,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 fall 2025 first-year class (residency table: 22,542 applicants, 20,528 admits, 2,041 enrolled; 7 applicants and 1 admit had unknown residency). International applicants 239 and admits 150 (63%) is far lower than the overall admit rate of about 91%. Chico State has no waitlist and no early decision or early action. Undergraduate enrollment 13,599 and 145 nonresident undergraduates are the B1/B2 'Total Undergraduates' figures. The CSU is test-blind: only 3% (69) of enrolled first-years submitted SAT and 0.5% (8) ACT, so score ranges are omitted. C7 factor 'standardized test scores' is marked very important in the CDS, which contradicts C8 (SAT/ACT not used), so that single factor is left out."
+    "notes": "From the Common Data Set, fall 2025 first-year class (residency table: 22,542 applicants, 20,528 admits, 2,041 enrolled; 7 applicants and 1 admit had unknown residency). International applicants numbered 239 and admits 150 (63%), a rate far lower than the overall admit rate of about 91%. Chico State has no waitlist and no early decision or early action. Undergraduate enrollment 13,599 and 145 nonresident undergraduates are the 'Total Undergraduates' figures. The CSU is test-blind: only 3% (69) of enrolled first-years sent SAT scores and 0.5% (8) sent ACT scores, so score ranges are not shown. The admission factor 'standardized test scores' is marked very important in the Common Data Set, which contradicts its test policy answer (SAT/ACT not used), so that single factor is left out."
   },
   "scores": {},
   "factors": {
@@ -75,6 +75,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "CDS C8A: SAT/ACT not used in admission decisions ('Not considered for admission, even if submitted'); scores are used only for math and English placement."
+    "notes": "From the Common Data Set: SAT/ACT not used in admission decisions ('Not considered for admission, even if submitted'); scores are used only for math and English placement."
   }
 }

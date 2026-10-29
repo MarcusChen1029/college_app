@@ -51,7 +51,7 @@
       "plan": "EA",
       "due": "2026-11-15",
       "label": "Early Action, recommended date (fall 2027 entry)",
-      "notes": "Domestic first-year page; printed without a year and the page header still says 'Apply for Fall 2026', taken as the fall 2027 cycle. No separate international deadline is published.",
+      "notes": "Domestic first-year page; it is printed without a year and the page header still says 'Apply for Fall 2026', so the fall 2027 cycle is assumed. No separate international deadline is published.",
       "src": "fy"
     },
     {
@@ -59,7 +59,7 @@
       "plan": "ROLLING",
       "due": "2027-03-15",
       "label": "Recommended application date, fall 2027 entry",
-      "notes": "Applications are reviewed on a rolling, first-come basis after the recommended dates until enrollment goals are met; spring entry date is Oct. 15. Printed without a year, taken as fall 2027. International applicants need time for the I-20 and visa, so apply well before March.",
+      "notes": "Applications are reviewed on a rolling, first-come basis after the recommended dates until enrollment goals are met; spring entry date is Oct. 15. Printed without a year, so fall 2027 is assumed. International applicants need time for the I-20 and visa, so apply well before March.",
       "src": "fy"
     }
   ],
@@ -92,7 +92,7 @@
     "required_fees_usd": 1352,
     "room_board_usd": 15340,
     "src": "bursar",
-    "notes": "Bursar table is per semester; annual figures are twice the printed amounts. Out-of-state/international full-time tuition $9,460 per semester ($7,070 a year for NY residents); mandatory fees $676 per semester (college, activity, athletic, health service, technology, transportation), plus a one-time $100-150 orientation fee. Room and board = Woodlands double $4,445 + Panther's All-Access meal plan $3,225 per semester; the Tuition & Aid page shows $14,990, so confirm. Health insurance not included."
+    "notes": "Bursar table is per semester; annual figures are twice the printed amounts. Out-of-state/international full-time tuition $9,460 per semester ($7,070 a year for NY residents); mandatory fees $676 per semester (college, activity, athletic, health service, technology, transportation), plus a one-time $100-150 orientation fee. Room and board = Woodlands double $4,445 + Panther's All-Access meal plan $3,225 per semester; the Tuition & Aid page shows $14,990, so confirm. Health insurance not included"
   },
   "aid": {
     "intl_need_aid": false,

@@ -45,7 +45,7 @@
     "admits": 5457,
     "enrolled": 1267,
     "pct_submit_act": 39,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023). UW-Stout's 2025-26 Common Data Set is linked from uwstout.edu but sits behind a Microsoft SharePoint sign-in and could not be read as text, so CDS figures (international applicants/admits, GPA, SAT/ACT) are not added. IPEDS reports ACT scores only (no SAT) and no residency split. College Navigator also shows fall 2024: 5,547 applicants, 88% admitted, 24% of admits enrolled; about 5% of undergraduates are U.S. nonresidents (fall 2024)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). UW-Stout's 2025-26 Common Data Set is linked from uwstout.edu but sits behind a Microsoft SharePoint sign-in and could not be extracted as text, so Common Data Set figures (international applicants/admits, GPA, SAT/ACT) are not added. IPEDS reports ACT scores only (no SAT) and no residency split. College Navigator also shows fall 2024: 5,547 applicants, 88% admitted, 24% of admits enrolled; about 5% of undergraduates are U.S. nonresidents (fall 2024)."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -71,6 +71,6 @@
     "room_board_usd": 9132,
     "other_usd": 2010,
     "total_coa_usd": 32927,
-    "notes": "UW-Stout international undergraduate estimate for 2026-27 (30 credits): tuition and fees $21,785; housing $5,340 plus food and living expenses $3,792 (room_board_usd = $9,132); mandatory health insurance $2,010 (other_usd); total $32,927. The page expects about 8 percent yearly increases. ESL Institute students: tuition and fees $12,299, total $23,441. Domestic in-state and out-of-state tuition not recorded."
+    "notes": "UW-Stout international undergraduate estimate for 2026-27 (30 credits): tuition and fees $21,785; housing $5,340 plus food and living expenses $3,792 (shown as housing and food, $9,132); mandatory health insurance $2,010 (shown as other costs); total $32,927. The page expects about 8 percent yearly increases. ESL Institute students: tuition and fees $12,299, total $23,441. Domestic in-state and out-of-state tuition is not shown"
   }
 }

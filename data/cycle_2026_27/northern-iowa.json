@@ -39,7 +39,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "International first-year applicants do not need SAT or ACT; scores may be considered for scholarships (International Scholars Award can use SAT 1020+ instead of a 3.0 GPA). CDS C8 lists SAT/ACT as 'considered if submitted'; the University's Presidential Scholar award uses ACT 29+/SAT 1340+.",
+  "notes": "International first-year applicants do not need SAT or ACT; scores may be considered for scholarships (International Scholars Award can use SAT 1020+ instead of a 3.0 GPA). The Common Data Set lists SAT/ACT as 'considered if submitted'; the University's Presidential Scholar award uses ACT 29+/SAT 1340+.",
   "src": "pol"
  },
  "requirements": {
@@ -48,7 +48,7 @@
    "own"
   ],
   "app_fee_usd": 50,
-  "notes": "International first-year file: application, $50 non-refundable fee, high school transcripts (unofficial accepted for admission, official required later), English test scores and financial documents. Apply with the UNI International Application or the Common App; a paper application is also accepted. Domestic application fee is $40 (CDS C13). Essay, recommendations and interview are not listed as required for international applicants.",
+  "notes": "International first-year file: application, $50 non-refundable fee, high school transcripts (unofficial accepted for admission, official required later), English test scores and financial documents. Apply with the UNI International Application or the Common App; a paper application is also accepted. Domestic application fee is $40 (from the Common Data Set). Essay, recommendations and interview are not listed as required for international applicants.",
   "src": "pol"
  },
  "deadlines": [
@@ -65,7 +65,7 @@
    "plan": null,
    "due": "2027-02-01",
    "label": "UNI Scholarship Application priority deadline",
-   "notes": "The application opens July 1 and the page prints no year; taken as Feb. 1, 2027. Applicants must be admitted first. The International Scholars Award ($2,000-$5,000/yr) needs no application.",
+   "notes": "The application opens July 1 and the page gives no year, so Feb. 1, 2027 is assumed. Applicants must be admitted first. The International Scholars Award ($2,000-$5,000/yr) needs no application.",
    "src": "schol"
   }
  ],
@@ -116,7 +116,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Automatic International Scholars Award of $2,000-$5,000 per year (renewable up to four years) for a 3.0 GPA or SAT 1020+, no separate application. International Excel Award $1,000-$4,000 per year (needs proof of English, leadership/service examples and the UNI Scholarship Application); Presidential Scholar Award $4,000 per year (3.80+ GPA and ACT 29+/SAT 1340+, or 3.95+ GPA test-optional). Partner-state students (e.g. Taiwan, Hebei, Maharashtra) get an extra $4,000 award. CDS H6: 68 nonresident undergraduates received non-need institutional aid, average $5,771.",
+  "notes": "Automatic International Scholars Award of $2,000-$5,000 per year (renewable up to four years) for a 3.0 GPA or SAT 1020+, no separate application. International Excel Award $1,000-$4,000 per year (needs proof of English, leadership/service examples and the UNI Scholarship Application); Presidential Scholar Award $4,000 per year (3.80+ GPA and ACT 29+/SAT 1340+, or 3.95+ GPA test-optional). Partner-state students (e.g. Taiwan, Hebei, Maharashtra) get an extra $4,000 award. The Common Data Set shows 68 nonresident undergraduates received non-need institutional aid, average $5,771.",
   "src": "schol"
  },
  "cost": {
@@ -126,7 +126,7 @@
   "room_board_usd": 10646,
   "books_usd": 500,
   "total_coa_usd": 38196,
-  "notes": "International page, undergraduate, Aug 2026-May 2027: tuition $21,578, fees $1,451, mandatory health insurance $2,520, books $500, housing and meals $10,646, personal $1,500, total $38,196. College of Business majors pay about $2,058 more as juniors/seniors.",
+  "notes": "International page, undergraduate, Aug 2026-May 2027: tuition $21,578, fees $1,451, mandatory health insurance $2,520, books $500, housing and meals $10,646, personal $1,500, total $38,196. College of Business majors pay about $2,058 more as juniors/seniors",
   "src": "tuit"
  },
  "majors": [],

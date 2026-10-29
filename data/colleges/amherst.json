@@ -55,7 +55,7 @@
     "waitlist_admitted": 44,
     "pct_submit_sat": 40,
     "pct_submit_act": 16,
-    "notes": "CDS C1/C2/C9 (Fall 2025 entering class). The CDS C11/C12 GPA items are blank (school does not track GPA); the C21 early-decision counts are labelled 'Fall 2024' in the form, and C7 marks could not be read reliably, so neither is included. Test-optional, so percentiles describe the 40% (SAT) / 16% (ACT) who submitted."
+    "notes": "From the Common Data Set (Fall 2025 entering class). Amherst did not report GPA (the school does not track GPA). The early-decision counts are labelled 'Fall 2024' in the form, and the admission-factor marks could not be read reliably, so neither is included. Test-optional, so percentiles describe the 40% (SAT) / 16% (ACT) who submitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -97,6 +97,6 @@
     "room_board_usd": 19260,
     "other_usd": 1800,
     "total_coa_usd": 90670,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

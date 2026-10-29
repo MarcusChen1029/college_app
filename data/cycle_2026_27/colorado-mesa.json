@@ -33,7 +33,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "International page: 'The SAT or ACT test is optional but recommended'; students without scores may need math and English placement exams. CDS C6 reports an open admission policy for all students and C8 lists SAT/ACT as not required but considered if submitted.",
+    "notes": "International page: 'The SAT or ACT test is optional but recommended'; students without scores may need math and English placement exams. The Common Data Set reports an open admission policy for all students and lists SAT/ACT as not required but considered if submitted.",
     "src": "ug"
   },
   "requirements": {
@@ -51,7 +51,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "International: fully admitted with I-20 issued (fall 2027 entry)",
-      "notes": "The international page states that for fall an applicant must be fully admitted and have an I-20 issued by May 1 (visa appointment secured by Aug. 1); the page prints no year, so treated as fall 2027. Spring: admitted with I-20 by Oct. 1. Applicants who miss it defer to the next semester. Applying earlier is needed because the I-20 requires financial documents.",
+      "notes": "The international page states that for fall an applicant must be fully admitted and have an I-20 issued by May 1 (visa appointment secured by Aug. 1); the page gives no year, so fall 2027 is assumed. Spring: admitted with I-20 by Oct. 1. Applicants who miss it defer to the next semester. Applying earlier is needed because the I-20 requires financial documents.",
       "src": "ug"
     }
   ],
@@ -94,7 +94,7 @@
     "intl_need_aid": null,
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "CMU International Merit Scholarship: $9,000 per year ($4,500 per semester) for a U.S.-equivalent cumulative GPA of 3.0 or higher (transfers 2.5), renewable for up to 9 semesters excluding summers. Returning International Student Scholarship: $1,000 per year after 30 CMU credits at a 3.75 GPA, combinable. CDS H6 ticks both need-based and non-need-based institutional aid as available to nonresidents, but the counts and amounts are blank and the international pages list only these merit awards.",
+    "notes": "CMU International Merit Scholarship: $9,000 per year ($4,500 per semester) for a U.S.-equivalent cumulative GPA of 3.0 or higher (transfers 2.5), renewable for up to 9 semesters excluding summers. Returning International Student Scholarship: $1,000 per year after 30 CMU credits at a 3.75 GPA, combinable. The Common Data Set marks both need-based and non-need-based institutional aid as available to nonresidents, but CMU did not report the counts and amounts, and the international pages list only these merit awards.",
     "src": "schol"
   },
   "score_codes": {

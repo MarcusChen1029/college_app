@@ -60,7 +60,7 @@
       "2.0-2.49": 0.0,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 fall 2025 first-year class, read from the PDF's fillable fields: 2,704 men + 2,904 women + 8 unknown = 5,616 applicants; 4,852 admitted (86%); 1,157 enrolled. Residency: in-state 4,585 applied / 4,067 admitted / 1,126 enrolled; out-of-state 982 / 740 / 16; international 49 / 45 / 15 (92% admitted). UW Bothell has an early action plan (Nov 15) and a waitlist. Undergraduate enrollment 5,753 and 139 nonresident undergraduates are the B1/B2 totals. The SAT range comes from the 14.8% (172) of enrolled first-years who submitted SAT; UW Bothell is test-optional, so it is not an admission benchmark. SAT ERW/Math and ACT percentiles are fractional in the CDS and are not loaded. The C7 factor checkboxes could not be mapped reliably, so factors are omitted."
+    "notes": "From the Common Data Set (fall 2025 first-year class, read from the PDF's fillable fields): 2,704 men + 2,904 women + 8 unknown = 5,616 applicants; 4,852 admitted (86%); 1,157 enrolled. Residency: in-state 4,585 applied / 4,067 admitted / 1,126 enrolled; out-of-state 982 / 740 / 16; international 49 / 45 / 15 (92% admitted). UW Bothell has an early action plan (Nov 15) and a waitlist. Undergraduate enrollment 5,753 and 139 nonresident undergraduates are the enrollment totals. The SAT range comes from the 14.8% (172) of enrolled first-years who submitted SAT; UW Bothell is test-optional, so it is not an admission benchmark. SAT ERW/Math and ACT percentiles are fractional in the Common Data Set and are not shown. The admission-factor checkboxes could not be mapped reliably, so admission factors are not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -72,6 +72,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A answers 'No' to using SAT/ACT in admission decisions; the admissions FAQ says scores are not required and welcome to be sent with no advantage or disadvantage."
+    "notes": "The Common Data Set answers 'No' to using SAT/ACT in admission decisions; the admissions FAQ says scores are not required and welcome to be sent with no advantage or disadvantage."
   }
 }

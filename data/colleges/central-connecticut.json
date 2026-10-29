@@ -58,7 +58,7 @@
       "2.0-2.49": 9.6,
       "1.0-1.99": 0.4
     },
-    "notes": "CDS C1 (fall 2025): international first-year applicants 390, admitted 70 (18%), enrolled 10, far below the 79% overall admit rate, so international applicants are not near-certain admits. No waitlist, no early decision or early action. GPA distribution is the 'all enrolled students' column of C11 (average 3.15 on a 4.0 scale, reported by 98%). SAT percentiles are of the 751 enrolled first-years who submitted SAT; ACT is reported by only 6 students so ACT percentiles are omitted. Undergraduate enrollment 9,463 is CDS B1 and the 164 nonresident undergraduates are CDS B2 (156 degree-seeking). Student-to-faculty ratio 14:1 is College Navigator."
+    "notes": "From the Common Data Set (fall 2025): international first-year applicants 390, admitted 70 (18%), enrolled 10, far below the 79% overall admit rate, so international applicants are not near-certain admits. No waitlist, no early decision or early action. The GPA breakdown is the 'all enrolled students' column (average 3.15 on a 4.0 scale, reported by 98%). SAT percentiles are of the 751 enrolled first-years who sent SAT scores; ACT is reported by only 6 students so ACT percentiles are not shown. Undergraduate enrollment is 9,463 and there are 164 nonresident undergraduates (156 degree-seeking). The student-to-faculty ratio of 14:1 is from College Navigator."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -100,7 +100,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027 applicants): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2027 applicants): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -115,6 +115,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 115,
     "intl_avg_award_usd": 9918,
-    "notes": "CDS G1 (2026-27): tuition in-state $6,998, out-of-state (New England/NEBHE rate) $10,498, nonresident $20,938; required fees $6,052; on-campus food and housing $13,472. The admissions-site tuition page lists an international full-time rate of $13,455 per term ($26,910 a year, tuition plus fees), within $80 of CDS nonresident tuition plus fees. Other = transportation $672 plus other expenses $1,589 (G5, residents). H6: only institutional non-need-based aid is available to nonresidents; 115 nonresident undergraduates received it, averaging $9,918."
+    "notes": "From the Common Data Set (2026-27): tuition in-state $6,998, out-of-state (New England/NEBHE rate) $10,498, nonresident $20,938; required fees $6,052; on-campus food and housing $13,472. The admissions-site tuition page lists an international full-time rate of $13,455 per term ($26,910 a year, tuition plus fees), within $80 of the Common Data Set nonresident tuition plus fees. Other costs = transportation $672 plus other expenses $1,589 (estimated expenses for residents). Only the college's own non-need-based aid is available to nonresidents; 115 nonresident undergraduates received it, averaging $9,918"
   }
 }

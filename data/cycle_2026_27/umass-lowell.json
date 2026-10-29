@@ -57,7 +57,7 @@
       "plan": "EA",
       "due": "2026-11-05",
       "label": "Early Action I (fall 2027 entry)",
-      "notes": "Listed under first-year deadlines on the Deadlines and Fees page; the page prints no year, taken as fall 2027 entry. Nursing applicants must use EA I or II. The international section of the same page lists only July 25 for fall.",
+      "notes": "Listed under first-year deadlines on the Deadlines and Fees page; the page prints no year, so fall 2027 entry is assumed. Nursing applicants must use EA I or II. The international section of the same page lists only July 25 for fall.",
       "src": "dates"
     },
     {
@@ -79,7 +79,7 @@
       "plan": "ROLLING",
       "due": "2027-07-25",
       "label": "International final application deadline (fall 2027 entry)",
-      "notes": "The page prints no year, taken as fall 2027 entry; international applicants are advised to start at least 12 months before enrollment. Visa (I-20) deadline for admitted applicants outside the U.S.: Aug. 2.",
+      "notes": "The page prints no year, so fall 2027 entry is assumed; international applicants are advised to start at least 12 months before enrollment. Visa (I-20) deadline for admitted applicants outside the U.S.: Aug. 2.",
       "src": "intl"
     }
   ],
@@ -128,7 +128,7 @@
     "intl_extra_fees_usd": 3617,
     "total_coa_usd": 57610,
     "src": "coa",
-    "notes": "Out-of-state (international) on-campus estimate for 2026-27 (12 credits): tuition $36,610, fees $850, housing $11,402 (weighted average) and food $6,080, books $1,200, loan fees $68, transportation $500, miscellaneous $900 (total $57,610). Required student health insurance for international students is $3,617 (ISSO expense page) and is not in the total. New England regional students pay a reduced rate."
+    "notes": "Out-of-state (international) on-campus estimate for 2026-27 (12 credits): tuition $36,610, fees $850, housing $11,402 (weighted average) and food $6,080, books $1,200, loan fees $68, transportation $500, miscellaneous $900 (total $57,610). Required student health insurance for international students is $3,617 (ISSO expense page) and is not in the total. New England regional students pay a reduced rate"
   },
   "aid": {
     "intl_need_aid": false,
@@ -194,8 +194,8 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: an 83% admit rate (fall 2024) but a 1200-1360 SAT middle range among the 27% who submit and a 3.72 average GPA put it above the open-access publics in this tracker.",
-    "computer_science": "Editorial judgment (not source-verified): large computing program at a research university, mid-field nationally.",
-    "engineering": "Editorial judgment (not source-verified): engineering at a research university, mid-field nationally."
+    "general": "Our estimate: an 83% admit rate (fall 2024) but a 1200-1360 SAT middle range among the 27% who submit and a 3.72 average GPA put it above the open-access publics we list.",
+    "computer_science": "Our estimate (not confirmed by any source): large computing program at a research university, mid-field nationally.",
+    "engineering": "Our estimate (not confirmed by any source): engineering at a research university, mid-field nationally."
   }
 }

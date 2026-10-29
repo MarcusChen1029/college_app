@@ -58,7 +58,7 @@
       "2.0-2.49": 4.92,
       "1.0-1.99": 0.16
     },
-    "notes": "Fall 2023 entering class (C1, C9, C11, C12). NKU's 2024-2025 CDS PDF on its site is an unfilled template and no 2025-2026 CDS is posted, so 2023-2024 is the latest usable one. International first-year applicants 1,625, admitted 299, enrolled 12 (C1 residency table); a further 6 applicants of unknown residency (3 admitted) are not in the in-state/out-of-state/international columns. No waitlist."
+    "notes": "Fall 2023 entering class (from the Common Data Set). NKU's 2024-2025 Common Data Set PDF on its site is an unfilled template and no 2025-2026 Common Data Set is posted, so 2023-2024 is the latest usable one. International first-year applicants 1,625, admitted 299, enrolled 12 (from the residency table); a further 6 applicants of unknown residency (3 admitted) are not in the in-state/out-of-state/international columns. No waitlist."
   },
   "scores": {
     "SAT_ERW": [
@@ -110,13 +110,13 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS 2023-2024 C8F: ACT/SAT required for any student under 21 with a high school GPA below 2.75 seeking a degree program; students with 2.75+ applying to select programs may be required to submit scores."
+    "notes": "Common Data Set 2023-2024: ACT/SAT required for any student under 21 with a high school GPA below 2.75 seeking a degree program; students with 2.75+ applying to select programs may be required to submit scores."
   },
   "cost": {
     "year": "2025-2026",
     "source": "cds",
     "intl_need_aid_awarded": 298,
     "intl_avg_award_usd": 15100,
-    "notes": "CDS 2023-2024 H6: 298 undergraduate degree-seeking nonresidents received institutional aid, average $15,100 (total $4,499,790); the CDS does not say whether it was need- or non-need-based. CDS G1 tuition fields were not readable; tuition and fees come from NKU's international costs page."
+    "notes": "In the 2023-2024 Common Data Set, 298 undergraduate degree-seeking nonresidents received institutional aid, average $15,100 (total $4,499,790); the Common Data Set does not say whether it was need- or non-need-based. The tuition entries in the Common Data Set were not readable; tuition and fees come from NKU's international costs page"
   }
 }

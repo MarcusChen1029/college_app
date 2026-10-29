@@ -33,7 +33,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "International students are exempt: the international page says ACT or SAT is not required for international admission. Domestic freshmen under 21 need a 2.25 high school GPA or ACT 21 (CDS C8F: ACT 21 or SAT 1060 as the alternative).",
+    "notes": "International students are exempt: the international page says ACT or SAT is not required for international admission. Domestic freshmen under 21 need a 2.25 high school GPA or ACT 21 (the Common Data Set gives ACT 21 or SAT 1060 as the alternative).",
     "src": "intl"
   },
   "requirements": {
@@ -50,7 +50,7 @@
       "plan": "RD",
       "due": "2027-06-01",
       "label": "International fall 2027 application deadline",
-      "notes": "International deadlines are June 1 (fall, August start) and October 15 (spring, January start). The page prints no year; June 1 is taken as 2027 for fall 2027 entry. No summer deadline is listed for degree programs. Domestic freshman dates (Feb. 1 application/ACT checklist date, Nov. 1 scholarship priority) are on the requirements page.",
+      "notes": "International deadlines are June 1 (fall, August start) and October 15 (spring, January start). The page gives no year, so June 1 is assumed to be 2027 for fall 2027 entry. No summer deadline is listed for degree programs. Domestic freshman dates (Feb. 1 application/ACT checklist date, Nov. 1 scholarship priority) are on the requirements page.",
       "src": "intl"
     }
   ],
@@ -100,7 +100,7 @@
     "intl_aid_policy": null,
     "meets_full_need": null,
     "merit_scholarships": true,
-    "notes": "Gorilla International Scholarship for new international freshmen and transfers in degree programs: up to $6,000 per year by GPA (3.8-4.0 $6,000; 3.6-3.79 $5,000; 3.4-3.59 $4,000; 3.2-3.39 $3,000; 2.7-3.19 $2,000), a tuition waiver for up to four years of full-time enrollment, rescindable if cumulative GPA falls below 3.0, not valid in summer. English test scores, activities and need are also factors; no deadline is printed. An International Academic Excellence Scholarship also exists (no amount listed). CDS H6 marks both need-based and non-need-based institutional aid as available to nonresidents.",
+    "notes": "Gorilla International Scholarship for new international freshmen and transfers in degree programs: up to $6,000 per year by GPA (3.8-4.0 $6,000; 3.6-3.79 $5,000; 3.4-3.59 $4,000; 3.2-3.39 $3,000; 2.7-3.19 $2,000), a tuition waiver for up to four years of full-time enrollment, rescindable if cumulative GPA falls below 3.0, not valid in summer. English test scores, activities and need are also factors; no deadline is printed. An International Academic Excellence Scholarship also exists (no amount listed). The Common Data Set marks both need-based and non-need-based institutional aid as available to nonresidents.",
     "src": "schol"
   },
   "majors": [],
@@ -115,7 +115,7 @@
     "room_board_usd": 10634,
     "books_usd": 1000,
     "total_coa_usd": 34603,
-    "notes": "Costs page, 2026-27, per year (2 x semester amounts): nonresident flat-rate tuition including campus fees $10,114 per semester = $20,228 (resident $4,442 per semester = $8,884); residence hall living estimate $5,317 per semester = $10,634 (no meal plan is listed); books and supplies $500 per semester = $1,000. International table adds sickness/accident insurance $2,661 and orientation/SEVIS compliance $80 (extra fees $2,741), for an estimated international academic-year total of $34,603. International students are charged the nonresident rate."
+    "notes": "Costs page, 2026-27, per year (2 x semester amounts): nonresident flat-rate tuition including campus fees $10,114 per semester = $20,228 (resident $4,442 per semester = $8,884); residence hall living estimate $5,317 per semester = $10,634 (no meal plan is listed); books and supplies $500 per semester = $1,000. International table adds sickness/accident insurance $2,661 and orientation/SEVIS compliance $80 (extra fees $2,741), for an estimated international academic-year total of $34,603. International students are charged the nonresident rate"
   },
   "score_codes": {
     "sat": {

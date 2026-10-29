@@ -40,7 +40,7 @@
     "enrolled": 846,
     "pct_submit_sat": 36,
     "pct_submit_act": 18,
-    "notes": "Baseline from IPEDS (fall 2023 entering class): 5,184 applied, 3,521 admitted, 846 enrolled. No readable Common Data Set was found on Lander's site, so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 4,565 applicants, about 81% admitted (rounded %), 3,776 undergraduates (used for enrollment here). Test optional; students submitting SAT/ACT are a minority."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class): 5,184 applied, 3,521 admitted, 846 enrolled. No readable Common Data Set was found on Lander's site, so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 4,565 applicants, about 81% admitted (a rounded percentage), 3,776 undergraduates (the enrollment figure shown here). Test optional; students submitting SAT/ACT are a minority."
   },
   "scores": {
     "SAT_ERW": [

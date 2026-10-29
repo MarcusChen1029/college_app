@@ -50,7 +50,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International application deadline, fall 2027",
-   "notes": "July 1 for fall (spring Nov. 15, summer March 15); later applications may be considered case by case, and MSU encourages applying six months earlier. The page prints no year; treated as fall 2027. The CDS (C14) lists a 9/15 first priority date with rolling action afterwards.",
+   "notes": "July 1 for fall (spring Nov. 15, summer March 15); later applications may be considered case by case, and MSU encourages applying six months earlier. The page prints no year, so fall 2027 is assumed. The Common Data Set lists a 9/15 first priority date with rolling action afterwards.",
    "src": "app"
   }
  ],
@@ -150,7 +150,7 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "engineering": "College of Engineering at a university MSU describes as among the top 3% for research spending; placed C as a solid regional program. Editorial judgment, not a ranking.",
-  "biology_life_sci": "Research-active university (top 3% for research expenditures per MSU); placed C as a solid regional program. Editorial judgment, not a ranking."
+  "engineering": "College of Engineering at a university MSU describes as among the top 3% for research spending; placed C as a solid regional program. Our estimate, not a published ranking.",
+  "biology_life_sci": "Research-active university (top 3% for research expenditures per MSU); placed C as a solid regional program. Our estimate, not a published ranking."
  }
 }

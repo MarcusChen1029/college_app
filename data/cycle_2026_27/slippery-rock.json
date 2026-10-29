@@ -56,7 +56,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "International fall admission date (fall 2027 entry)",
-   "notes": "The international admissions page lists 'Fall Admission: May 1' (spring: Oct. 1) without a year; taken as fall 2027. The catalog says first-year students are admitted on a rolling basis for all terms and should apply early. Admission offers not confirmed with a deposit may be rescinded after May 1.",
+   "notes": "The international admissions page lists 'Fall Admission: May 1' (spring: Oct. 1) without a year, so fall 2027 is assumed. The catalog says first-year students are admitted on a rolling basis for all terms and should apply early. Admission offers not confirmed with a deposit may be rescinded after May 1.",
    "src": "intl"
   }
  ],
@@ -105,7 +105,7 @@
   "books_usd": 800,
   "other_usd": 1700,
   "total_coa_usd": 29265,
-  "notes": "International cost matrix 2026-27 (bachelor's degree, 15 credits, average on-campus room and meals): tuition $12,504 (SRU gives international students a reduced out-of-state rate, about $3,996 below the full non-Pennsylvania rate of $16,500; the international page says about $3,500), fees $3,271, room and meal $10,900, enrollment deposit $90, books $800, personal $1,700 = $29,265; the $1,500 Provost Scholarship brings the I-20 financial verification amount to $27,765. The 2027-28 estimate is $26,934."
+  "notes": "International cost matrix 2026-27 (bachelor's degree, 15 credits, average on-campus room and meals): tuition $12,504 (SRU gives international students a reduced out-of-state rate, about $3,996 below the full non-Pennsylvania rate of $16,500; the international page says about $3,500), fees $3,271, room and meal $10,900, enrollment deposit $90, books $800, personal $1,700 = $29,265; the $1,500 Provost Scholarship brings the I-20 financial verification amount to $27,765. The 2027-28 estimate is $26,934"
  },
  "aid": {
   "intl_need_aid": null,

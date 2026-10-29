@@ -64,7 +64,7 @@
       "2.0-2.49": 8,
       "1.0-1.99": 1
     },
-    "notes": "CDS C1 (fall 2024 entering class): international = 'Nonresidents' row (2,763 applied, 2,712 admitted, 197 enrolled); 4 applicants had unknown residency. SAT percentiles come from only 13 enrolled students. This is the newest CDS posted (no 2025-26 file found). The CDS prints average GPA as 3.3 and percent reporting as 0.9. No early decision or early action."
+    "notes": "From the Common Data Set (fall 2024 entering class): international students are in the 'Nonresidents' row (2,763 applied, 2,712 admitted, 197 enrolled); 4 applicants had unknown residency. SAT percentiles come from only 13 enrolled students. This is the newest Common Data Set posted (no 2025-26 file found). The Common Data Set prints average GPA as 3.3 and percent reporting as 0.9. No early decision or early action."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -121,7 +121,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (2024-25) marks SAT/ACT as 'Recommended'; the admissions site says SCSU is completely test optional, which is used instead."
+    "notes": "The Common Data Set (2024-25) marks SAT/ACT as 'Recommended'; the admissions site says SCSU is completely test optional, and that is the policy shown here."
   },
   "cost": {
     "year": "2025-2026",
@@ -131,6 +131,6 @@
     "room_board_usd": 10970,
     "other_usd": 5476,
     "total_coa_usd": 37830,
-    "notes": "SCSU international costs page (updated 2025-07-25, 9 months): tuition with the Academic and Cultural Sharing Scholarship (ACSS) $11,258; tuition and fees without it $21,384 ($19,910 tuition + $1,474 fees); room and board $10,970; insurance, books and supplies $5,476. The page's I-20 total WITH ACSS is $29,178; $37,830 here is the sum of the published no-scholarship lines."
+    "notes": "SCSU international costs page (updated 2025-07-25, 9 months): tuition with the Academic and Cultural Sharing Scholarship (ACSS) $11,258; tuition and fees without it $21,384 ($19,910 tuition + $1,474 fees); room and board $10,970; insurance, books and supplies $5,476. The page's I-20 total WITH ACSS is $29,178; $37,830 here is the sum of the published no-scholarship lines"
   }
 }

@@ -47,7 +47,7 @@
     "enrolled": 1426,
     "pct_submit_sat": 24,
     "pct_submit_act": 4,
-    "notes": "Baseline from IPEDS (fall 2024 entering class), which reports LIU's two main campuses (LIU Post in Brookville and LIU Brooklyn) together: applicants, admits and enrollees from the Education Data Portal; test percentiles from College Navigator. No public Common Data Set was found. SAT/ACT percentiles cover the 24% (343) / 4% (57) of enrollees who submitted scores. GPA, residency splits and international applicant counts are not available; College Navigator shows 5% of first-time students from foreign countries. Undergraduate enrollment is the IPEDS fall 2024 headcount (12,072)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class), which reports LIU's two main campuses (LIU Post in Brookville and LIU Brooklyn) together: applicants, admits and enrollees from the Education Data Portal; test percentiles from College Navigator. No public Common Data Set was found. SAT/ACT percentiles cover the 24% (343) / 4% (57) of enrollees who sent scores. GPA, residency splits and international applicant counts are not available; College Navigator shows 5% of first-time students from foreign countries. Undergraduate enrollment is the IPEDS fall 2024 headcount (12,072)."
   },
   "scores": {
     "SAT_ERW": [

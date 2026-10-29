@@ -56,7 +56,7 @@
       "kind": "priority",
       "due": "2027-08-15",
       "label": "Priority date (fall 2027 entry)",
-      "notes": "CDS C14 lists 'Priority Date 8/15' (no year; treated as fall 2027). USI's international page says admission is rolling with no application deadline and encourages applying as early as possible to leave time for embassy processing of immigration documents.",
+      "notes": "The Common Data Set lists 'Priority Date 8/15' (no year, so fall 2027 is assumed). USI's international page says admission is rolling with no application deadline and encourages applying as early as possible to leave time for embassy processing of immigration documents.",
       "src": "cds"
     }
   ],
@@ -113,7 +113,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "CDS H6: only institutional non-need-based aid is available to nonresidents; 81 nonresident undergraduates received it (avg $5,225). USI's international tuition page lists no international scholarships and the nonresident application asks for an award application, 2 recommendation letters and 2 essays (CDS H7). The David L. Rice merit scholarship targets Indiana and nearby Kentucky/Illinois residents.",
+    "notes": "From the Common Data Set: only institutional non-need-based aid is available to nonresidents; 81 nonresident undergraduates received it (avg $5,225). USI's international tuition page lists no international scholarships and the nonresident application asks for an award application, 2 recommendation letters and 2 essays (per the Common Data Set). The David L. Rice merit scholarship targets Indiana and nearby Kentucky/Illinois residents.",
     "src": "cost"
   },
   "cost": {
@@ -126,7 +126,7 @@
     "books_usd": 810,
     "other_usd": 3655,
     "total_coa_usd": 40240,
-    "notes": "USI international page, 2026-2027: tuition $21,820 (30 credits), university fees $1,830 plus a $475 first-semester-only fee, on-campus housing $5,778 and meal plan $5,872, textbooks $810, mandatory health insurance $1,655 and personal $2,000 (other = 3,655). Excludes travel, the $40 application fee, $50 housing application and $300 housing prepayment. Proof of funds: signed Statement of Finances and a bank statement of 3 months' transactions, +$3,000 per dependent; no total amount is published.",
+    "notes": "USI international page, 2026-2027: tuition $21,820 (30 credits), university fees $1,830 plus a $475 first-semester-only fee, on-campus housing $5,778 and meal plan $5,872, textbooks $810, mandatory health insurance $1,655 and personal $2,000 (other = 3,655). Excludes travel, the $40 application fee, $50 housing application and $300 housing prepayment. Proof of funds: signed Statement of Finances and a bank statement of 3 months' transactions, +$3,000 per dependent; no total amount is published",
     "src": "cost"
   },
   "majors": [

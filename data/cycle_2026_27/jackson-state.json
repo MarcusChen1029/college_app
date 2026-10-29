@@ -61,14 +61,14 @@
       "kind": "priority",
       "due": "2027-08-12",
       "label": "International priority deadline, fall 2027 entry",
-      "notes": "International admissions page prints 'Fall: August 12' (priority) without a year (treated as fall 2027). It advises applying four months before the term. The admission policy separately says students are encouraged to apply on or before July 15 for fall. Spring priority date Jan. 13.",
+      "notes": "The international admissions page prints 'Fall: August 12' (priority) without a year, so fall 2027 is assumed. It advises applying four months before the term. The admission policy separately says students are encouraged to apply on or before July 15 for fall. Spring priority date Jan. 13.",
       "src": "intl"
     },
     {
       "kind": "other",
       "due": "2027-07-15",
       "label": "Recommended apply-by date for fall (admission policy)",
-      "notes": "Policy document: 'encouraged to apply on or before' July 15 for fall; year not printed (treated as 2027).",
+      "notes": "Policy document: 'encouraged to apply on or before' July 15 for fall; the year is not printed, so 2027 is assumed.",
       "src": "pol"
     },
     {
@@ -112,7 +112,7 @@
     "tuition_usd": 9408,
     "tuition_out_of_state_usd": 13408,
     "required_fees_usd": 440,
-    "notes": "JSU 2026-27 undergraduate fee sheet, per semester at 12-19 credit hours: Mississippi-resident tuition $4,704, non-resident adds $2,000 (total tuition $6,704), mandatory fees $220; totals $4,924 resident / $6,924 non-resident. Annual figures here are two semesters (tuition $9,408 resident, $13,408 non-resident; fees $440). F-1 students also pay a $100 international student fee per semester (JSU Global). Whether international students are billed the non-resident rate is not stated, so the international tuition field is blank. Housing and meal prices for 2026-27 were not clear enough to record.",
+    "notes": "JSU 2026-27 undergraduate fee sheet, per semester at 12-19 credit hours: Mississippi-resident tuition $4,704, non-resident adds $2,000 (total tuition $6,704), mandatory fees $220; totals $4,924 resident / $6,924 non-resident. Annual figures here are two semesters (tuition $9,408 resident, $13,408 non-resident; fees $440). F-1 students also pay a $100 international student fee per semester (JSU Global). Whether international students are billed the non-resident rate is not stated, so the international tuition field is blank. Housing and meal prices for 2026-27 were not clear enough to record",
     "src": "fees"
   },
   "aid": {

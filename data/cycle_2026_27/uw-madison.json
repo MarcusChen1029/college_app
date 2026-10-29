@@ -99,7 +99,7 @@
  "aid": {
   "intl_need_aid": false,
   "intl_aid_policy": "none",
-  "notes": "CDS H6 (2025-2026): institutional scholarship or grant aid is not available to nonresident undergraduates. The admissions site mentions limited scholarship opportunities for students from particular countries (for example King-Morgridge) and a Wisconsin Scholarship Hub; check eligibility individually.",
+  "notes": "From the Common Data Set (2025-2026): the college's own scholarship or grant aid is not available to nonresident undergraduates. The admissions site mentions limited scholarship opportunities for students from particular countries (for example King-Morgridge) and a Wisconsin Scholarship Hub; check eligibility individually.",
   "src": "intl"
  },
  "majors": [

@@ -51,7 +51,7 @@
   "books_usd": 1200,
   "other_usd": 2300,
   "total_coa_usd": 36300,
-  "notes": "International estimated expenses, 9 months fall/spring (2026-27): tuition and fees combined $20,100, housing and meals $12,700, books $1,200, medical insurance $2,300 (shown as other_usd) = $36,300 before scholarships; $30,800 after the Global Select scholarship. Kansas rates are announced in July, so actual cost may differ. One-time $200 international enrollment fee and $150 orientation fee."
+  "notes": "International estimated expenses, 9 months fall/spring (2026-27): tuition and fees combined $20,100, housing and meals $12,700, books $1,200, medical insurance $2,300 (shown as other costs) = $36,300 before scholarships; $30,800 after the Global Select scholarship. Kansas rates are announced in July, so actual cost may differ. One-time $200 international enrollment fee and $150 orientation fee"
  },
  "test_policy": {
   "policy": "optional",
@@ -188,6 +188,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "engineering": "Editorial judgment: College of Engineering with strong aerospace ties (National Institute for Aviation Research); in the roughly 41-100 national band."
+  "engineering": "Our estimate: College of Engineering with strong aerospace ties (National Institute for Aviation Research); roughly 41-100 nationally."
  }
 }

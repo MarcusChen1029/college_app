@@ -27,7 +27,7 @@
   "app_fee_usd": 70,
   "supplemental_essays": 0,
   "counselor_rec": false,
-  "notes": "Clemson Application, Coalition (Scoir) and Common App are all accepted with no preference. Personal statements, letters of recommendation and resumes can be uploaded in the portal but are not required. First-year applicants self-report their transcript through STARS; official transcripts are required only after admission. International applicants pick two intended majors, and South Carolina residents get priority as a public university. The international page lists May 1 as the last day to apply for fall entry (apply much earlier for scholarship and capacity reasons); the page does not state a year, so dates are taken as the current cycle (application opens Aug 1).",
+  "notes": "Clemson Application, Coalition (Scoir) and Common App are all accepted with no preference. Personal statements, letters of recommendation and resumes can be uploaded in the portal but are not required. First-year applicants self-report their transcript through STARS; official transcripts are required only after admission. International applicants pick two intended majors, and South Carolina residents get priority as a public university. The international page lists May 1 as the last day to apply for fall entry (apply much earlier for scholarship and capacity reasons); the page does not state a year, so dates are assumed to be for the current cycle (application opens Aug 1).",
   "src": "apply"
  },
  "deadlines": [

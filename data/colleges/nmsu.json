@@ -47,7 +47,7 @@
     "enrolled": 2391,
     "pct_submit_sat": 71,
     "pct_submit_act": 22,
-    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 15,201 applicants, 11,511 admitted, 2,391 enrolled. College Navigator fall 2024: 13,095 applicants, 89% admitted. IPEDS reports no nonresident-alien applicant counts for NMSU, so international admit figures are null; nonresidents are about 3% of undergraduates (fall 2024, rounded). Undergraduate enrollment 12,507 and 16:1 ratio are fall 2024. No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+    "notes": "IPEDS, the US government's college data (fall 2023 first-time students): 15,201 applicants, 11,511 admitted, 2,391 enrolled. College Navigator fall 2024: 13,095 applicants, 89% admitted. IPEDS reports no nonresident-alien applicant counts for NMSU, so no international admit rate can be shown; nonresidents are about 3% of undergraduates (fall 2024, rounded). Undergraduate enrollment 12,507 and 16:1 ratio are fall 2024. No readable Common Data Set was found for this college, so the figures come from IPEDS; GPA, residency and class-rank details are not included."
   },
   "scores": {
     "SAT_ERW": [
@@ -85,6 +85,6 @@
     "room_board_usd": 12282,
     "other_usd": 4536,
     "total_coa_usd": 43375,
-    "notes": "College Navigator 2024-25: tuition and fees in-state $8,183, out-of-state $25,307; on-campus food and housing $12,282, other $4,536; total_coa_usd is the out-of-state on-campus total. NMSU's International Competitive Scholarship can reduce an international student's tuition to the in-state rate (see aid notes)."
+    "notes": "College Navigator 2024-25: tuition and fees in-state $8,183, out-of-state $25,307; on-campus food and housing $12,282, other $4,536; the total cost of attendance shown is the out-of-state on-campus total. NMSU's International Competitive Scholarship can reduce an international student's tuition to the in-state rate (see aid notes)"
   }
 }

@@ -57,7 +57,7 @@
       "2.0-2.49": 8.5,
       "1.0-1.99": 0.3
     },
-    "notes": "CDS section C of the posted 2025-26 workbook (C1 residency split: in-state 4,526 / out-of-state 517 / international 113 applicants; 98 international admits). Its counts match the fall 2024 entering class (College Navigator also shows 5,156 applicants), so they are not fall 2025 counts. 141 students (17.87%) submitted SAT and only 3 submitted ACT, so ACT percentiles are not recorded. Test-optional; SAT/ACT not required (C8)."
+    "notes": "From the admissions section of the posted 2025-26 Common Data Set workbook (residency split: in-state 4,526 / out-of-state 517 / international 113 applicants; 98 international admits). Its counts match the fall 2024 entering class (College Navigator also shows 5,156 applicants), so they are not fall 2025 counts. 141 students (17.87%) sent SAT scores and only 3 sent ACT scores, so ACT percentiles are not shown. Test-optional; SAT/ACT not required."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -85,7 +85,7 @@
     "other_usd": 1892,
     "total_coa_usd": 29353,
     "tuition_out_of_state_usd": 17866,
-    "notes": "College Navigator 2024-25 estimated expenses for full-time beginning undergraduates: tuition and required fees $11,786 in-state, $17,866 out-of-state (international students pay out-of-state); on-campus total $29,353 in-state, $35,433 out-of-state. Newer-year figures were not found; the CDS 2025-26 workbook leaves section G blank."
+    "notes": "College Navigator 2024-25 estimated expenses for full-time beginning undergraduates: tuition and required fees $11,786 in-state, $17,866 out-of-state (international students pay out-of-state); on-campus total $29,353 in-state, $35,433 out-of-state. Newer-year figures were not found; the CDS 2025-26 workbook leaves section G blank"
   },
   "factors": {
     "rigor": "VI",

@@ -29,7 +29,7 @@
    "own"
   ],
   "app_fee_usd": null,
-  "notes": "Apply through EMU's own application (app.emich.edu). Decisions can be made on academic performance, but admission is not final until the English requirement is met and the I-20 process is complete. Application fee, GPA minimums and document lists were not read: emich.edu blocks automated access, and these notes come from search-result excerpts of the EMU pages, so verify on the page.",
+  "notes": "Apply through EMU's own application (app.emich.edu). Decisions can be made on academic performance, but admission is not final until the English requirement is met and the I-20 process is complete. Application fee, GPA minimums and document lists could not be read directly: emich.edu blocks automated access, and this information comes from search-result excerpts of the EMU pages, so confirm it on the page.",
   "src": "eng"
  },
  "deadlines": [
@@ -79,7 +79,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "Per EMU's cost page (read via search excerpt): scholarships are awarded at admission with no extra application. 3.0+ GPA with 25+ ACT or 1200+ SAT gets $5,000 per year tuition plus a $2,000 housing award; 3.0+ GPA with no scores gets $3,000 plus the $2,000 housing award. EMU also says it does not charge international undergraduates non-resident tuition, and a 4WARD Graduation Scholarship (3.0+ GPA) has EMU pay tuition in years 3 and 4 after two years at the current rate. Verify the current terms on the page.",
+  "notes": "From EMU's cost page (seen through a search excerpt): scholarships are awarded at admission with no extra application. 3.0+ GPA with 25+ ACT or 1200+ SAT gets $5,000 per year tuition plus a $2,000 housing award; 3.0+ GPA with no scores gets $3,000 plus the $2,000 housing award. EMU also says it does not charge international undergraduates non-resident tuition, and a 4WARD Graduation Scholarship (3.0+ GPA) has EMU pay tuition in years 3 and 4 after two years at the current rate. Confirm the current terms on the page.",
   "src": "aid"
  },
  "majors": [],

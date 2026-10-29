@@ -43,7 +43,7 @@
     "out_state_admits": 2726,
     "intl_applicants": 27,
     "intl_admits": 27,
-    "notes": "Fall 2024 entering class from CDS C1 (the CDS has no 2025-26 edition yet). Applicants and admits are the printed residency totals (in-state, out-of-state, international 27, and 127 of unknown residency are also included in the totals); enrolled 1,962 is the sum of the printed full- and part-time counts by gender. The printed enrolled residency row (1,710 / 290 / 7 / 127) does not sum to 1,962, so enrolled splits are not recorded. College Navigator shows 11,622 applicants and a 99% admit rate for the same year. Only 27 international first-year applicants (all admitted) are recorded, so the sample is tiny. MSU Denver is an access institution; the CDS does not print SAT/ACT percentiles, GPA or class rank (all NA). Undergraduate enrollment and the nonresident count (105) are B1/B2 total undergraduates."
+    "notes": "Fall 2024 entering class from the Common Data Set (it has no 2025-26 edition yet). Applicants and admits are the printed residency totals (in-state, out-of-state, international 27, and 127 of unknown residency are also included in the totals); enrolled 1,962 is the sum of the printed full- and part-time counts by gender. The printed enrolled residency row (1,710 / 290 / 7 / 127) does not sum to 1,962, so enrolled splits are not shown. College Navigator shows 11,622 applicants and a 99% admit rate for the same year. Only 27 international first-year applicants (all admitted) are recorded, so the sample is tiny. MSU Denver is an access institution; the Common Data Set does not print SAT/ACT percentiles, GPA or class rank (all NA). Undergraduate enrollment and the nonresident count (105) are total undergraduates."
   },
   "factors": {
     "rigor": "C",
@@ -67,7 +67,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 answers 'No' to using SAT/ACT in admission decisions (not considered even if submitted) and C8F says 'Test Optional'."
+    "notes": "The Common Data Set answers 'No' to using SAT/ACT in admission decisions (not considered even if submitted) and says 'Test Optional'."
   },
   "cost": {
     "year": "2025-2026",
@@ -79,6 +79,6 @@
     "books_usd": 1460,
     "intl_need_aid": false,
     "intl_merit_aid": false,
-    "notes": "CDS G1 (2025-26). On-campus food and housing is not reported (MSU Denver is mostly commuter); G5 lists $13,167 housing and $4,491 food for a commuter not living at home. The international admissions page estimates $48,488 for 2025-26 for F-1 degree-seeking students (tuition and fees $23,766, living $17,070, health insurance, books and supplies $7,652); that tuition figure is lower than the CDS nonresident tuition plus fees, which the page does not explain. CDS H6: institutional scholarship and grant aid is not available to nonresidents."
+    "notes": "From the Common Data Set (2025-26). On-campus food and housing is not reported (MSU Denver is mostly commuter); the Common Data Set's estimated expenses list $13,167 housing and $4,491 food for a commuter not living at home. The international admissions page estimates $48,488 for 2025-26 for F-1 degree-seeking students (tuition and fees $23,766, living $17,070, health insurance, books and supplies $7,652); that tuition figure is lower than the Common Data Set nonresident tuition plus fees, which the page does not explain. The Common Data Set says the college's own scholarship and grant aid is not available to nonresidents"
   }
 }

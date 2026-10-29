@@ -43,7 +43,7 @@
     "applicants": 7788,
     "admits": 5615,
     "enrolled": 632,
-    "notes": "Baseline from IPEDS (fall 2023 first-time degree-seeking entering class); no readable Common Data Set was found on saintleo.edu, so SAT/ACT, GPA, residency and international splits are not available (intl_applicants/intl_admits left null). IPEDS does not separate University Campus (residential) first-years from online students; only 632 enrolled, so the cohort is mostly residential. College Navigator's fall 2024 figures: 6,684 applicants, 78% admitted, 13% of admitted enrolled (admit counts not printed). Saint Leo is test-optional and reported no SAT/ACT submitters in IPEDS 2023. Undergraduate enrollment 7,516 (fall 2024) and the 25:1 student-faculty ratio are university-wide and include the large online/WorldWide population; Saint Leo says international students are over 22% of its University Campus undergraduates (about 600 students on campus), which is not in IPEDS."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 first-time degree-seeking entering class); no readable Common Data Set was found on saintleo.edu, so SAT/ACT, GPA, residency and international splits are not available (international applicants and admits are not shown). IPEDS does not separate University Campus (residential) first-years from online students; only 632 enrolled, so the cohort is mostly residential. College Navigator's fall 2024 figures: 6,684 applicants, 78% admitted, 13% of admitted enrolled (admit counts not printed). Saint Leo is test-optional and reported no SAT/ACT submitters in IPEDS 2023. Undergraduate enrollment 7,516 (fall 2024) and the 25:1 student-faculty ratio are university-wide and include the large online/WorldWide population; Saint Leo says international students are over 22% of its University Campus undergraduates (about 600 students on campus), which is not in IPEDS."
   },
   "cost": {
     "year": "2026-2027",
@@ -55,6 +55,6 @@
     "other_usd": 5760,
     "total_coa_usd": 60668,
     "intl_need_aid": false,
-    "notes": "University Campus undergraduate, full-time, living on campus, per year (Saint Leo's own cost sheet): tuition $35,000; average housing $9,306 + 19-meal plan $7,520; fees $1,880 (student services $1,100 + activity $280 + one-time orientation $500); books $1,110; miscellaneous $2,772 + transportation $2,988 = $5,760 (federal loan fees of $92 not counted). Total cost of attendance $60,668 as printed. Health insurance ($1,937) is extra unless waived. Figures are for the residential University Campus program (not online/WorldWide), taken from Saint Leo's cost sheet because no CDS was found."
+    "notes": "University Campus undergraduate, full-time, living on campus, per year (Saint Leo's own cost sheet): tuition $35,000; average housing $9,306 + 19-meal plan $7,520; fees $1,880 (student services $1,100 + activity $280 + one-time orientation $500); books $1,110; miscellaneous $2,772 + transportation $2,988 = $5,760 (federal loan fees of $92 not counted). Total cost of attendance $60,668 as printed. Health insurance ($1,937) is extra unless waived. Figures are for the residential University Campus program (not online/WorldWide), taken from Saint Leo's cost sheet because no CDS was found"
   }
 }

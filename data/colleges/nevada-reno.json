@@ -49,7 +49,7 @@
   "pct_submit_act": 61,
   "gpa_avg": 3.42,
   "pct_reporting_gpa": 99.9,
-  "notes": "CDS C1 fall 2025 first-year class: 19,136 applied (7,614 men + 11,453 women + 69 unknown sex), 15,908 admitted (83%), 3,747 enrolled (men 1,612, women 2,114, unknown sex 21, full-time plus part-time). The CDS left the C1 residency breakdown (in-state, out-of-state, international) blank, so international applicants and admits are null. College Navigator (fall 2024) shows 17,679 applicants and 74% admitted. SAT/ACT percentiles cover the 16% (SAT, 593 students) and 61% (ACT, 2,284 students) of enrollees who submitted scores. The C11 GPA table prints only two populated columns (students who submitted scores / did not) and a blank all-students column, so no GPA distribution is stored. The C7 factor check boxes could not be read reliably, so factors are omitted."
+  "notes": "From the Common Data Set, fall 2025 first-year class: 19,136 applied (7,614 men + 11,453 women + 69 unknown sex), 15,908 admitted (83%), 3,747 enrolled (men 1,612, women 2,114, unknown sex 21, full-time plus part-time). The university did not report the residency breakdown (in-state, out-of-state, international), so no international admit rate can be shown. College Navigator (fall 2024) shows 17,679 applicants and 74% admitted. SAT/ACT percentiles cover the 16% (SAT, 593 students) and 61% (ACT, 2,284 students) of enrollees who submitted scores. The GPA table prints only two populated columns (students who submitted scores / did not) and a blank all-students column, so no GPA breakdown is shown. The admission-factor check boxes could not be read reliably, so factors are omitted."
  },
  "scores": {
   "SAT_TOTAL": [

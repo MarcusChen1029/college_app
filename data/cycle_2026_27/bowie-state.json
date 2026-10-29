@@ -45,7 +45,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "Applicants can be admitted without SAT or ACT scores if their high school GPA is 2.5 or higher, based on the transcript alone; GPA 2.50-2.99 with the USM college-readiness course core is placed in English and math by department criteria. Honors Program applicants must still submit test scores. CDS C8A also lists SAT/ACT as not required but considered if submitted.",
+  "notes": "Applicants can be admitted without SAT or ACT scores if their high school GPA is 2.5 or higher, based on the transcript alone; GPA 2.50-2.99 with the USM college-readiness course core is placed in English and math by department criteria. Honors Program applicants must still submit test scores. The Common Data Set also lists SAT/ACT as not required but considered if submitted.",
   "src": "topt"
  },
  "requirements": {
@@ -53,7 +53,7 @@
    "own"
   ],
   "app_fee_usd": 40,
-  "notes": "The $40 fee comes from CDS C13 (waivable for applicants with financial need); the apply page only says application fees vary by program and applicant type. There is no separate international application: apply as a freshman and choose 'Student Visa' in the Citizenship section. International applicants submit a NACES credential evaluation of foreign records (certified English translations if needed) and, for the I-20, a bank statement showing at least $30,000 (plus $3,000 per dependent). Essays and recommendations are 'considered' per CDS C7, not required. Which application platforms are accepted besides Bowie State's own is not stated on the pages read.",
+  "notes": "The $40 fee comes from the Common Data Set (waivable for applicants with financial need); the apply page only says application fees vary by program and applicant type. There is no separate international application: apply as a freshman and choose 'Student Visa' in the Citizenship section. International applicants submit a NACES credential evaluation of foreign records (certified English translations if needed) and, for the I-20, a bank statement showing at least $30,000 (plus $3,000 per dependent). The Common Data Set lists essays and recommendations as 'considered', not required. The pages checked do not say which application platforms are accepted besides Bowie State's own.",
   "src": "intl"
  },
  "deadlines": [
@@ -126,7 +126,7 @@
   "intl_aid_policy": null,
   "meets_full_need": null,
   "merit_scholarships": null,
-  "notes": "No scholarship or aid page for international undergraduates was found, and the CDS H6 section on institutional aid for nonresidents is blank. The scholarships page lists private donor and departmental scholarships (nursing, computer science cybersecurity, education, band) open to new full-time students without saying whether F-1 students qualify. F-1 students are not eligible for the FAFSA (school code 002062 applies to U.S. aid applicants). Ask internationaloffice@bowiestate.edu or financial aid before relying on any award."
+  "notes": "No scholarship or aid page for international undergraduates was found, and the Common Data Set section on the college's own aid for nonresidents is blank. The scholarships page lists private donor and departmental scholarships (nursing, computer science cybersecurity, education, band) open to new full-time students without saying whether F-1 students qualify. F-1 students are not eligible for the FAFSA (school code 002062 applies to U.S. aid applicants). Ask internationaloffice@bowiestate.edu or financial aid before relying on any award."
  },
  "cost": {
   "year": "2026-2027",
@@ -134,7 +134,7 @@
   "tuition_usd": 6672,
   "tuition_out_of_state_usd": 17880,
   "required_fees_usd": 3534,
-  "notes": "Fall 2026 / spring 2027 full-time undergraduate (12+ credits) annual tuition: in-state $6,672, out-of-state $17,880. Annual mandatory fees (same for both): athletic $1,250, intramural and recreation $64, health service $191, university construction $218, student center $1,250, student activity $221, technology $309, plus sustainability $2.50 and Bulldog Card $13 per semester (total $3,534). The page does not state that international students pay the out-of-state rate, so tuition_intl_usd is left null. Housing runs about $3,936 to $6,854 per semester depending on hall and meals $551 to $3,282 per semester, so room_board_usd is left null; the CDS G1 cost section is blank."
+  "notes": "Fall 2026 / spring 2027 full-time undergraduate (12+ credits) annual tuition: in-state $6,672, out-of-state $17,880. Annual mandatory fees (same for both): athletic $1,250, intramural and recreation $64, health service $191, university construction $218, student center $1,250, student activity $221, technology $309, plus sustainability $2.50 and Bulldog Card $13 per semester (total $3,534). The page does not state that international students pay the out-of-state rate, so international tuition is not shown. Housing runs about $3,936 to $6,854 per semester depending on hall, and meals $551 to $3,282 per semester, so housing and food is not shown. Bowie State did not report the cost section of its Common Data Set"
  },
  "majors": [],
  "score_codes": {

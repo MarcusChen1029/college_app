@@ -46,7 +46,7 @@
     "admits": 785,
     "pct_submit_sat": 5,
     "pct_submit_act": 81,
-    "notes": "Baseline from IPEDS (fall 2024): 1,917 applicants and a 51% admit rate (31% of admitted students enrolled). The admits figure is derived (51% x 1,917, rounded), because IPEDS publishes only the percentage. Enrolled count, residency splits, international applicant/admit numbers and GPA are not published: no Common Data Set newer than 2016-17 is posted on lsus.edu. Undergraduate enrollment is the fall 2024 IPEDS figure; the student-faculty ratio of 30 to 1 is as printed by College Navigator (year not stated). SAT percentiles rest on only 15 submitting students; 247 submitted ACT. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024): 1,917 applicants and a 51% admit rate (31% of admitted students enrolled). The number admitted is worked out from the percentage (51% x 1,917, rounded), because IPEDS publishes only the percentage. The enrolled count, residency splits, international applicant and admit numbers and GPA are not published: no Common Data Set newer than 2016-17 is posted on lsus.edu. Undergraduate enrollment is the fall 2024 IPEDS figure; the student-faculty ratio of 30 to 1 is as printed by College Navigator (year not stated). SAT percentiles rest on only 15 submitting students; 247 submitted ACT. The applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate.",
     "enrolled": 285
   },
   "scores": {

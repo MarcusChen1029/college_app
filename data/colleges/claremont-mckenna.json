@@ -57,7 +57,7 @@
     "ed_admits": 216,
     "pct_submit_sat": 34,
     "pct_submit_act": 14,
-    "notes": "CDS C1 totals are for the fall 2025 entering class (in-state = California; international enrollees 57). C21: ED I closes 11/1 (notified 12/15), ED II closes 1/10 (notified 2/15 per CDS dates as printed); no early action. High school GPA is not reported (C11/C12 blank), so no GPA figures. Test-optional: SAT/ACT 'not required but considered if submitted' (C8A)."
+    "notes": "Totals from the Common Data Set are for the fall 2025 entering class (in-state = California; international enrollees 57). ED I closes 11/1 (notified 12/15), ED II closes 1/10 (notified 2/15 per the Common Data Set dates as printed); no early action. High school GPA is not reported, so no GPA figures are shown. Test-optional: SAT/ACT 'not required but considered if submitted'."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 22190,
     "other_usd": 1500,
     "total_coa_usd": 91510,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

@@ -52,7 +52,7 @@
       "2.0-2.49": 6.8,
       "1.0-1.99": 2.3
     },
-    "notes": "CDS C1 (fall 2025): applicants = 5,886 men + 7,279 women; admits = 4,879 men + 6,067 women (the unknown-sex admit cell is suppressed, 'C or t', and unknown-sex applicants are 0). CMU reports an open admission policy for all students (C6, with selective admission to some programs). The in-state/out-of-state/international split of applicants and admits is suppressed in the CDS, so intl_applicants and intl_admits are null; degree-seeking nonresident undergraduates were 101 in B2 (the total-undergraduate nonresident cell is suppressed). The GPA distribution in C11 is only printed for the 'students who submitted scores' column; the average GPA of 3.38 (C12) covers all who submitted a GPA. Undergraduate enrollment is B1 'Total All Undergraduates' (9,459)."
+    "notes": "From the Common Data Set (fall 2025): applicants = 5,886 men + 7,279 women; admits = 4,879 men + 6,067 women (the unknown-sex admit cell is suppressed, 'C or t', and unknown-sex applicants are 0). CMU reports an open admission policy for all students (with selective admission to some programs). The in-state/out-of-state/international split of applicants and admits is suppressed in the Common Data Set, so no international admit rate can be shown; degree-seeking nonresident undergraduates were 101 (the total-undergraduate nonresident cell is suppressed). The GPA breakdown is only printed for the 'students who submitted scores' column; the average GPA of 3.38 covers all who submitted a GPA. Undergraduate enrollment is the 'Total All Undergraduates' figure (9,459)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -119,6 +119,6 @@
     "room_board_usd": 13904,
     "books_usd": 2400,
     "intl_merit_aid": true,
-    "notes": "CDS G1 (first-year, 2026-27). The CDS tuition cells (11,480 in-state; 29,325 out-of-state and international) equal the G6 per-credit rates ($336.90 / $931.70) plus the $45.80 per-credit required fee, times 30 credits, so they appear to include required fees; required_fees_usd is therefore left null. Food and housing on campus $13,904 (housing $7,850 + meal plan $6,054). CMU's international admissions page estimates $42,259 per year for undergraduates (tuition and fees $23,460 for 24 in-person credits, residence hall and meal plan $13,151, health insurance $1,148, books and other $4,500)."
+    "notes": "First-year costs for 2026-27 from the Common Data Set. Its tuition figures (11,480 in-state; 29,325 out-of-state and international) equal the per-credit rates ($336.90 / $931.70) plus the $45.80 per-credit required fee, times 30 credits, so they appear to include required fees; required fees are therefore not shown separately. Food and housing on campus $13,904 (housing $7,850 + meal plan $6,054). CMU's international admissions page estimates $42,259 per year for undergraduates (tuition and fees $23,460 for 24 in-person credits, residence hall and meal plan $13,151, health insurance $1,148, books and other $4,500)"
   }
 }

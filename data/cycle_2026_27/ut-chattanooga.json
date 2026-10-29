@@ -36,7 +36,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International application documentation deadline, fall 2027",
-      "notes": "The international page lists an Application Documentation Deadline of July 1 without naming the term; an older catalog says materials are due July 1 for fall and Nov. 1 for spring, so it is treated as fall 2027. The general first-year page lists a fall priority date, but sources disagree (Dec. 1 vs May 1), so it is not recorded.",
+      "notes": "The international page lists an Application Documentation Deadline of July 1 without naming the term; an older catalog says materials are due July 1 for fall and Nov. 1 for spring, so it is assumed to be for fall 2027. The general first-year page lists a fall priority date, but sources disagree (Dec. 1 vs May 1), so it is not shown.",
       "src": "intl"
     },
     {

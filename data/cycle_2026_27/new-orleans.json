@@ -72,14 +72,14 @@
       "kind": "scholarship",
       "due": "2026-12-15",
       "label": "Priority date for international scholarships and awards (fall 2027 entry)",
-      "notes": "Scholarships page lists a December 15 priority deadline for the International Tuition Award and International Book Award; the international checklist also says transcripts, test results and admission by January 15 are needed for fall scholarship consideration. Year is not printed; treated as the 2026-27 cycle.",
+      "notes": "Scholarships page lists a December 15 priority deadline for the International Tuition Award and International Book Award; the international checklist also says transcripts, test results and admission by January 15 are needed for fall scholarship consideration. Year is not printed, so the 2026-27 cycle is assumed.",
       "src": "sch"
     },
     {
       "kind": "application",
       "due": "2027-06-01",
       "label": "International undergraduate application deadline, fall 2027",
-      "notes": "Listed as the international fall deadline on both the deadlines page and the International Admissions page (domestic first-time freshmen: August 7). No year is printed; treated as fall 2027. The spring international deadline is November 1 and summer April 1.",
+      "notes": "Listed as the international fall deadline on both the deadlines page and the International Admissions page (domestic first-time freshmen: August 7). No year is printed, so fall 2027 is assumed. The spring international deadline is November 1 and summer April 1.",
       "src": "dates"
     }
   ],

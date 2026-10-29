@@ -39,7 +39,7 @@
    "plan": "ROLLING",
    "due": "2027-03-01",
    "label": "Priority date (fall 2027 entry)",
-   "notes": "CDS C14 lists March 1 as the priority date without a year; treated as 2027. Ball State admits on a rolling basis.",
+   "notes": "The Common Data Set lists March 1 as the priority date without a year, so 2027 is assumed. Ball State admits on a rolling basis.",
    "src": "cds"
   },
   {
@@ -47,14 +47,14 @@
    "plan": "ROLLING",
    "due": "2027-06-15",
    "label": "International application materials due (fall 2027 entry)",
-   "notes": "Page says 'Fall Term - application materials due by June 15th' without a year; treated as 2027. Spring term: November 15.",
+   "notes": "Page says 'Fall Term - application materials due by June 15th' without a year, so 2027 is assumed. Spring term: November 15.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-03-31",
    "label": "#YouAreWelcomeHere Scholarship application (essay or video)",
-   "notes": "Two annual $14,000 awards for incoming first-year international students; the page gives March 31 without a year (treated as 2027). The Global scholarships need no separate application per the page.",
+   "notes": "Two annual $14,000 awards for incoming first-year international students; the page gives March 31 without a year (so 2027 is assumed). The Global scholarships need no separate application per the page.",
    "src": "sch"
   }
  ],

@@ -65,7 +65,7 @@
    "kind": "scholarship",
    "due": "2027-04-15",
    "label": "Freshman merit scholarship: apply for admission by this date to be eligible",
-   "notes": "Freshman merit page says applicants must have applied by April 15 (awards made Sept. 1 to April 15) and register for orientation by June 1. The page prints no year (it is partly out of date); treated as fall 2027. International eligibility is not stated.",
+   "notes": "Freshman merit page says applicants must have applied by April 15 (awards made Sept. 1 to April 15) and register for orientation by June 1. The page gives no year (it is partly out of date), so fall 2027 is assumed. International eligibility is not stated.",
    "src": "merit"
   }
  ],
@@ -104,7 +104,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Freshman merit scholarships are automatic at admission, no application: Falcon Elite $4,000/yr (3.90+ unweighted GPA), Excellence $3,000 (3.70-3.89), Achievement $2,000 (3.35-3.69), Recognition $1,000 (3.25-3.34); renewable up to 4 years with 12 credits per term and a 2.50 GPA. The scholarship pages do not say whether international students qualify, and the 2025-26 catalog states 'The University has no financial aid available for international students.' CDS H6 (as extracted from the PDF text; the need/non-need box was unreadable) shows 103 undergraduate nonresidents with institutional aid, average $6,683.",
+  "notes": "Freshman merit scholarships are automatic at admission, no application: Falcon Elite $4,000/yr (3.90+ unweighted GPA), Excellence $3,000 (3.70-3.89), Achievement $2,000 (3.35-3.69), Recognition $1,000 (3.25-3.34); renewable up to 4 years with 12 credits per term and a 2.50 GPA. The scholarship pages do not say whether international students qualify, and the 2025-26 catalog states 'The University has no financial aid available for international students.' The Common Data Set (as copied from the PDF text; the need-based or non-need-based box was unreadable) shows 103 undergraduate nonresidents with institutional aid, average $6,683.",
   "src": "merit"
  },
  "majors": [],

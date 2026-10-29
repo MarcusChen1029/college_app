@@ -47,7 +47,7 @@
   "enrolled": 1035,
   "pct_submit_sat": 2,
   "pct_submit_act": 76,
-  "notes": "No current Common Data Set found on nwmissouri.edu (searched 2026-10-26), so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 5,185 applicants, 86% admitted, 22% of admitted enrolled (no admit count printed, so none is computed). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. Undergraduate enrollment 5,241 and student-to-faculty ratio 16:1 are College Navigator fall 2024. Only 19 SAT submitters in 2023 (2%), so SAT percentiles rest on a very small group."
+  "notes": "No current Common Data Set was found on nwmissouri.edu (searched 2026-10-26), so these are figures from IPEDS, the US government's college data, for the fall 2023 entering class. College Navigator's newer fall 2024 figures: 5,185 applicants, 86% admitted, 22% of admitted enrolled (no admit count printed, so none is computed). Counts are institution-wide first-time students; IPEDS gives no international split or GPA data. Undergraduate enrollment 5,241 and student-to-faculty ratio 16:1 are College Navigator fall 2024. Only 19 SAT submitters in 2023 (2%), so SAT percentiles rest on a very small group."
  },
  "scores": {
   "SAT_ERW": [

@@ -45,7 +45,7 @@
       "2.0-2.49": 1.66,
       "1.0-1.99": 0.2
     },
-    "notes": "Counts are CDS C1 (fall 2025), summed from the male and female rows; CMU left the in-state, out-of-state and international rows of C1 blank (reported as 0), so intl_applicants and intl_admits are null. CMU's international admissions page says its fall 2023 acceptance rate was 52.8% for international undergraduate freshmen (vs about 91% overall), so this school is less of a sure thing than the overall rate suggests. No waiting list, early decision or early action. GPA distribution is the C11 'all enrolled' column. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 285)."
+    "notes": "Counts are from the Common Data Set (fall 2025), added up from the male and female rows. CMU did not report the in-state, out-of-state and international rows (they show as 0), so no international admit rate can be shown. CMU's international admissions page says its fall 2023 acceptance rate was 52.8% for international undergraduate freshmen (vs about 91% overall), so this school is less of a sure thing than the overall rate suggests. No waiting list, early decision or early action. The GPA breakdown is the 'all enrolled' column. Undergraduate and international counts come from 'Total Undergraduates' (nonresident 285)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -102,7 +102,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but consider if submitted'."
+    "notes": "From the Common Data Set (fall 2027): SAT or ACT 'not required for admission, but consider if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -116,6 +116,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 27,
     "intl_avg_award_usd": 16805,
-    "notes": "CDS G1 first-year 2026-27: resident and non-resident US students pay the same $15,570; the international rate is $27,000 (before merit awards). H6: only institutional non-need-based aid is available to nonresidents; 27 nonresident undergraduates received it in 2024-25 (avg $16,805). The CDS file is named 'cds-2024-2025' but its cover and sections are the 2025-2026 edition."
+    "notes": "From the Common Data Set, first-year 2026-27: resident and non-resident US students pay the same $15,570; the international rate is $27,000 (before merit awards). Only the college's own non-need-based aid is available to nonresidents; 27 nonresident undergraduates received it in 2024-25 (avg $16,805). The Common Data Set file is named 'cds-2024-2025' but its cover and sections are the 2025-2026 edition"
   }
 }

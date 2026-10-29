@@ -59,7 +59,7 @@
       "2.0-2.49": 0.1,
       "1.0-1.99": 0
     },
-    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. Residency split and C9 test-score percentiles are blank in the UCLA CDS (test-blind). GPA distribution: the 4.0 row appears to include weighted GPAs at/above 4.0 (UC-calculated); treat as UC-weighted GPA."
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. The UCLA Common Data Set does not report the residency split or test-score percentiles (UC is test-blind). GPA breakdown: the 4.0 row appears to include weighted GPAs at/above 4.0 (UC-calculated), so treat it as a UC-weighted GPA."
   },
   "scores": {},
   "cost": {
@@ -70,7 +70,7 @@
     "room_board_usd": 18960,
     "other_usd": 6798,
     "total_coa_usd": 41373,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 53331
   },
   "factors": {

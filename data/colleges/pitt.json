@@ -47,7 +47,7 @@
     "waitlist_offered": 6245,
     "waitlist_accepted": 3198,
     "waitlist_admitted": 84,
-    "notes": "CDS C1 totals are male + female counts (unknown-sex counts are suppressed in the CDS, so totals may be a few students low). CDS C21/C22 report no early decision and no early action plan. The 2025-26 CDS marks C9-C12 (test scores, GPA) as 'coming soon', so SAT/ACT ranges below remain the IPEDS baseline (fall 2023 entering class); C7 factors and the academic calendar are check-box fields not readable from the PDF text and are left blank."
+    "notes": "Totals add up the male and female counts (unknown-sex counts are left out of the Common Data Set, so totals may be a few students low). The Common Data Set reports no early decision and no early action plan. The 2025-26 Common Data Set marks its test score and GPA sections as 'coming soon', so the SAT/ACT ranges below are still the IPEDS figures (fall 2023 entering class). The admission factors and the academic calendar are check-box fields that could not be read from the PDF text, so they are not shown."
   },
   "scores": {
     "SAT_ERW": [
@@ -84,7 +84,7 @@
     "room_board_usd": 15728,
     "other_usd": 2872,
     "total_coa_usd": 38719,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 43432
   }
 }

@@ -66,7 +66,7 @@
       "2.0-2.49": 0.1,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C11 all-enrolled column. Only 24.9% of enrolled first-years submitted SAT, so SAT/ACT ranges describe a small self-selected group. ACT submit rate omitted: the CDS prints 0.3% beside a count of 160 (about 3.0%), which conflict. GPA average is a weighted figure (above 4.0). Early action closes 11/5. Fall 2025 entering class."
+    "notes": "GPA figures come from the all-enrolled column of the Common Data Set. Only 24.9% of enrolled first-years sent SAT scores, so SAT/ACT ranges describe a small self-selected group. The share who sent ACT scores is not shown: the Common Data Set prints 0.3% beside a count of 160 (about 3.0%), which conflict. The average GPA is a weighted figure (above 4.0). Early action closes 11/5. Fall 2025 entering class."
   },
   "scores": {
     "SAT_TOTAL": [

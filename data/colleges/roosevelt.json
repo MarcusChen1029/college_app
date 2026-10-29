@@ -47,7 +47,7 @@
     "enrolled": 631,
     "pct_submit_sat": 23,
     "pct_submit_act": 4,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Roosevelt's website (its consumer-information pages carry enrollment statistics only). Counts from the IPEDS ADM2024 file via the Urban Institute API mirror: 7,427 applicants, 7,216 admitted (97%), 631 enrolled (630 full-time + 1 part-time); College Navigator shows the same 7,427 applicants and 97% admitted. International and residency splits and GPA are not published. SAT/ACT percentiles are for the 143 SAT and 27 ACT submitters among enrolled first-time students (test-optional). Undergraduate enrollment 2,868 and student-to-faculty ratio 11:1 are College Navigator fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found on Roosevelt's website (its consumer-information pages carry enrollment statistics only). Counts from IPEDS, accessed through the Urban Institute's copy of the data: 7,427 applicants, 7,216 admitted (97%), 631 enrolled (630 full-time + 1 part-time); College Navigator shows the same 7,427 applicants and 97% admitted. International and residency splits and GPA are not published. SAT/ACT percentiles are for the 143 SAT and 27 ACT submitters among enrolled first-time students (test-optional). Undergraduate enrollment 2,868 and student-to-faculty ratio 11:1 are College Navigator fall 2024."
   },
   "scores": {
     "SAT_ERW": [

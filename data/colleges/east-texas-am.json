@@ -57,7 +57,7 @@
       "2.0-2.49": 8.53,
       "1.0-1.99": 1.33
     },
-    "notes": "CDS C1 (fall 2025 first-year class). Residency split: in-state 10,937 applied / 8,463 admitted / 1,092 enrolled; out-of-state 2,130 / 1,577 / 51; international 408 / 315 / 19 (about 77% of international applicants admitted). Undergraduate enrollment 10,260 and nonresident undergraduates 217 are the B1/B2 'Total Undergraduates' figures; the 16:1 student-to-faculty ratio is CDS section I (College Navigator shows 17:1). No waiting list, early decision or early action. Test-optional in practice, so SAT/ACT percentiles describe the 43% (SAT) and 8% (ACT) of enrollees who submitted scores."
+    "notes": "From the Common Data Set (fall 2025 first-year class). Residency split: in-state 10,937 applied / 8,463 admitted / 1,092 enrolled; out-of-state 2,130 / 1,577 / 51; international 408 / 315 / 19 (about 77% of international applicants admitted). Undergraduate enrollment 10,260 and nonresident undergraduates 217 are the 'Total Undergraduates' figures; the 16:1 student-to-faculty ratio is from the Common Data Set (College Navigator shows 17:1). No waiting list, early decision or early action. Test-optional in practice, so SAT/ACT percentiles describe the 43% (SAT) and 8% (ACT) of enrollees who submitted scores."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -114,7 +114,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "flexible",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'recommended'. Admission is granted on any one of top-30% class rank, ACT 21 or SAT 1060."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'recommended'. Admission is granted on any one of top-30% class rank, ACT 21 or SAT 1060."
   },
   "cost": {
     "year": "2025-2026",
@@ -129,6 +129,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 24,
     "intl_avg_award_usd": 9622,
-    "notes": "CDS G1/G5 (first-year; 'other' is the resident-student figure). Tuition and fees are flat per year under the university's guaranteed tuition plan; the university cost page for 2025-26 shows a slightly different non-resident tuition-and-fees total ($22,266 vs $22,176 here). H6: institutional need-based and non-need-based aid are both available to nonresidents; 24 received it (average $9,622, total $230,923)."
+    "notes": "First-year costs from the Common Data Set ('other' is the resident-student figure). Tuition and fees are flat per year under the university's guaranteed tuition plan; the university cost page for 2025-26 shows a slightly different non-resident tuition-and-fees total ($22,266 vs $22,176 here). The Common Data Set says institutional need-based and non-need-based aid are both available to nonresidents; 24 received it (average $9,622, total $230,923)"
   }
 }

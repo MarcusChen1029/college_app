@@ -122,7 +122,7 @@
   "tuition_intl_usd": 42975,
   "required_fees_usd": 125,
   "intl_extra_fees_usd": 1417,
-  "notes": "Full-time tuition $14,325 per quarter ($42,975 for three quarters, 15 credit hours). $125 annual student health fee (Savannah campus); mandatory international student health insurance $1,417 for Sept. 1, 2026 - Aug. 31, 2027. Housing in Savannah about $10,065-$18,849 per year plus a $750 application fee; meal plans $1,575-$6,750 per year (not summed into a room and board figure). One-time $500 enrollment fee and $100 application fee.",
+  "notes": "Full-time tuition $14,325 per quarter ($42,975 for three quarters, 15 credit hours). $125 annual student health fee (Savannah campus); mandatory international student health insurance $1,417 for Sept. 1, 2026 - Aug. 31, 2027. Housing in Savannah about $10,065-$18,849 per year plus a $750 application fee; meal plans $1,575-$6,750 per year (not summed into a room and board figure). One-time $500 enrollment fee and $100 application fee",
   "src": "tuition"
  },
  "aid": {
@@ -165,6 +165,6 @@
   "arts_design": "B"
  },
  "tier_notes": {
-  "arts_design": "Editorial estimate: SCAD is one of the largest US art and design universities with well-known animation, film, illustration, fashion and design programs; no ranking cited, so placed in the 16-40 band."
+  "arts_design": "Our estimate: SCAD is one of the largest US art and design universities with well-known animation, film, illustration, fashion and design programs; no ranking cited, so it is placed in the 16-40 range."
  }
 }

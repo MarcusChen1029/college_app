@@ -50,14 +50,14 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "Fall application deadline for students outside the U.S.",
-      "notes": "The page prints no year; taken as fall 2027. Spring deadline is Nov. 15. Students inside the U.S. have a July 25 fall deadline.",
+      "notes": "The page prints no year, so fall 2027 is assumed. Spring deadline is Nov. 15. Students inside the U.S. have a July 25 fall deadline.",
       "src": "apply"
     },
     {
       "kind": "scholarship",
       "due": "2027-05-01",
       "label": "Fall scholarship application deadline (complete application by this date)",
-      "notes": "The KU CDS (C14) separately lists Dec. 1 as the priority date for institutional scholarships.",
+      "notes": "The KU Common Data Set separately lists Dec. 1 as the priority date for the university's own scholarships.",
       "src": "aid"
     }
   ],

@@ -58,7 +58,7 @@
    "due": "2026-11-02",
    "notify": "2026-12-14",
    "label": "Early Decision (binding)",
-   "notes": "Enrollment deposit due early-mid January. Page lists month/day only (Nov 2, Dec 14); read as the fall 2026 cycle.",
+   "notes": "Enrollment deposit due early-mid January. The page lists month and day only (Nov 2, Dec 14), so the fall 2026 cycle is assumed.",
    "src": "dates"
   },
   {
@@ -150,7 +150,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "BU Financial Assistance does not offer need-based University scholarship or grant aid to international students (except through select partner organizations). International first-year applicants are considered for merit scholarships; apply for admission by December 1 for scholarship consideration. CDS H6 for 2025-2026 also lists non-need-based aid only for nonresidents.",
+  "notes": "BU Financial Assistance does not offer need-based University scholarship or grant aid to international students (except through select partner organizations). International first-year applicants are considered for merit scholarships; apply for admission by December 1 for scholarship consideration. The Common Data Set for 2025-2026 also lists non-need-based aid only for nonresidents.",
   "src": "aid"
  },
  "majors": [],

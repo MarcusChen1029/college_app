@@ -56,7 +56,7 @@
       "kind": "application",
       "due": "2027-06-01",
       "label": "International application deadline, fall term (fall 2027 entry)",
-      "notes": "The international page says 'Fall applications - due June 1' (spring: October 1); the general admissions page gives August 1 for fall. No year is printed, so treated as fall 2027. Late international applications: contact intinfo@mcneese.edu.",
+      "notes": "The international page says 'Fall applications - due June 1' (spring: October 1); the general admissions page gives August 1 for fall. No year is printed, so fall 2027 is assumed. Late international applications: contact intinfo@mcneese.edu.",
       "src": "intl"
     }
   ],
@@ -112,7 +112,7 @@
     "books_usd": 1385,
     "intl_need_aid": false,
     "intl_merit_aid": true,
-    "notes": "Estimated costs page (based on 2025-26 actual costs, subject to change): annual tuition and fees $9,668 Louisiana, $10,668 out of state, $11,668 international (so the tuition figures here include required fees). Health insurance for international students only is $500 per year (shown as extra fees). On-campus housing and meal plan $9,500-$11,900; off-campus housing and food $12,572; transportation $3,754 and personal expenses $2,742 are not charged by the university."
+    "notes": "Estimated costs page (based on 2025-26 actual costs, subject to change): annual tuition and fees $9,668 Louisiana, $10,668 out of state, $11,668 international (so the tuition figures here include required fees). Health insurance for international students only is $500 per year (shown as extra fees). On-campus housing and meal plan $9,500-$11,900; off-campus housing and food $12,572; transportation $3,754 and personal expenses $2,742 are not charged by the university"
   },
   "aid": {
     "intl_need_aid": false,

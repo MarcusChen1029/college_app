@@ -35,7 +35,7 @@
   "teacher_recs": 2,
   "counselor_rec": true,
   "interview": "not_offered",
-  "notes": "Common App, Apply Coalition with Scoir, or QuestBridge. No required writing supplement (an academic writing sample is optional). Counselor letter plus two teacher letters; mid-year report due Feb 6. Williams does not conduct interviews (InitialView interviews may be shared). The pages do not print the entry year; dates are treated as the fall 2027 cycle (the aid page references 2027-2028).",
+  "notes": "Common App, Apply Coalition with Scoir, or QuestBridge. No required writing supplement (an academic writing sample is optional). Counselor letter plus two teacher letters; mid-year report due Feb 6. Williams does not conduct interviews (InitialView interviews may be shared). The pages do not give the entry year, so the dates are assumed to be for the fall 2027 cycle (the aid page references 2027-2028).",
   "src": "fy"
  },
  "deadlines": [

@@ -51,7 +51,7 @@
       "2.0-2.49": 3.4,
       "1.0-1.99": 0.3
     },
-    "notes": "CDS C1 (fall 2025): 3,412 applicants, 2,764 admitted, 379 enrolled (369 full-time + 10 part-time). The CDS does not report international applicants or admits in C1 and gives no in-state/out-of-state split. SAT 44.7% and ACT 4.2% of enrolled first-years submitted scores (C9). No class rank reported. Undergrad enrollment is B1 'Total All Undergraduates' (2,661); the international undergraduate count is left null (B2 nonresident cells are not reliably readable from the PDF). Student-faculty ratio 11:1 from CDS I-2."
+    "notes": "From the Common Data Set (fall 2025): 3,412 applicants, 2,764 admitted, 379 enrolled (369 full-time + 10 part-time). The Common Data Set does not report international applicants or admits and gives no in-state/out-of-state split. 44.7% of enrolled first-years sent SAT scores and 4.2% sent ACT scores. No class rank reported. Undergraduate enrollment is 2,661 (all undergraduates); the number of international undergraduates is not shown (the nonresident cells are not reliably readable from the PDF). Student-faculty ratio 11:1 from the Common Data Set."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -87,6 +87,6 @@
     "other_usd": 2946,
     "intl_need_aid_awarded": 127,
     "intl_avg_award_usd": 12824,
-    "notes": "CDS G1/G5 (2025-26): nonresident-alien tuition equals the standard private tuition ($43,440 for 15 credits per term); fees $2,400; on-campus room and board $12,484; books $1,874; other $2,946 (transportation $2,528 is not included in other). CDS H6: 127 undergraduate degree-seeking nonresident aliens received institutional aid (need or non-need, the PDF does not say which), average $12,824. The tuition page shows an undated annual estimate of $47,850 tuition and fees (30 credits), $60,830 total."
+    "notes": "From the Common Data Set (2025-26): nonresident-alien tuition equals the standard private tuition ($43,440 for 15 credits per term); fees $2,400; on-campus room and board $12,484; books $1,874; other costs $2,946 (transportation $2,528 is not included in other costs). 127 undergraduate degree-seeking nonresident aliens received aid from the college (need-based or non-need-based, the PDF does not say which), averaging $12,824. The tuition page shows an undated annual estimate of $47,850 tuition and fees (30 credits), $60,830 total"
   }
 }

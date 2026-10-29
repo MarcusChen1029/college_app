@@ -66,7 +66,7 @@
       "2.50-2.99": 3.3,
       "2.0-2.49": 1.7
     },
-    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C2, C9, C11, C12). GPA distribution is the all-enrolled-students column (sums to 100.1 in the CDS). Early decision counts are not included because the CDS labels them 'Fall 2024 entering class'. Test-optional: SAT/ACT percentiles describe the 28% (SAT) and 8% (ACT) who submitted scores."
+    "notes": "Fall 2025 entering class (Common Data Set 2025-2026). The GPA breakdown is the all-enrolled-students column (it sums to 100.1 in the Common Data Set). Early decision counts are not shown because the Common Data Set labels them 'Fall 2024 entering class'. Test-optional: SAT/ACT percentiles describe the 28% (SAT) and 8% (ACT) who sent scores."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
     "room_board_usd": 20954,
     "other_usd": 1200,
     "total_coa_usd": 90169,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

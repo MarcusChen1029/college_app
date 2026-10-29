@@ -109,7 +109,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "required",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT required."
+    "notes": "Common Data Set (Fall 2027): SAT or ACT required."
   },
   "cost": {
     "year": "2026-2027",
@@ -120,6 +120,6 @@
     "required_fees_usd": 274,
     "room_board_usd": 16734,
     "intl_need_aid": null,
-    "notes": "CDS G1 West Lafayette block (H6 checkboxes not captured in the spreadsheet; intl aid policy from the admissions site)."
+    "notes": "Costs are from the Common Data Set, West Lafayette block. The Common Data Set's nonresident aid checkboxes could not be captured from the spreadsheet; the international aid policy comes from the admissions site"
   }
 }

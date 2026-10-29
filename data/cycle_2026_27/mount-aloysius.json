@@ -63,7 +63,7 @@
    "plan": "ROLLING",
    "due": "2027-01-01",
    "label": "Priority date for nursing and health sciences (fall 2027 entry)",
-   "notes": "The apply page says students interested in nursing and health sciences are encouraged to apply by January 1; no year is printed, so it is taken as January 1, 2027 for fall 2027 entry.",
+   "notes": "The apply page says students interested in nursing and health sciences are encouraged to apply by January 1; no year is printed, so January 1, 2027 is assumed for fall 2027 entry.",
    "src": "apply"
   },
   {
@@ -77,7 +77,7 @@
    "kind": "deposit",
    "due": "2027-05-01",
    "label": "National enrollment deadline (fall 2027 entry)",
-   "notes": "The FAQ says the college follows the national May 1 enrollment deadline; no year is printed, so it is taken as May 1, 2027. The enrollment deposit is $250 (the I-20 is issued when it is received).",
+   "notes": "The FAQ says the college follows the national May 1 enrollment deadline; no year is printed, so May 1, 2027 is assumed. The enrollment deposit is $250 (the I-20 is issued when it is received).",
    "src": "faq"
   }
  ],
@@ -129,7 +129,7 @@
   "tuition_usd": 27218,
   "required_fees_usd": 1504,
   "total_coa_usd": 50232,
-  "notes": "Tuition is $13,609 per semester (General Studies, doubled to a year); Health Studies $14,773 and Nursing $15,382 per semester. Comprehensive fee $752 per semester. Resident students must buy a meal plan: shared-room housing plus meals runs $5,465 to $7,777 per semester, so room_board_usd is left null. total_coa_usd is the college's on-campus budget for most majors (Health Studies $52,560, Nursing $53,778). The page does not give a separate international tuition rate. Housing is mandatory for traditional-age full-time international students."
+  "notes": "Tuition is $13,609 per semester (General Studies, doubled to a year); Health Studies $14,773 and Nursing $15,382 per semester. Comprehensive fee $752 per semester. Resident students must buy a meal plan: shared-room housing plus meals runs $5,465 to $7,777 per semester, so housing and food is not shown. The total cost of attendance shown is the college's on-campus budget for most majors (Health Studies $52,560, Nursing $53,778). The page does not give a separate international tuition rate. Housing is mandatory for traditional-age full-time international students"
  },
  "majors": [
   {

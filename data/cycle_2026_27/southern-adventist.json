@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": null,
-    "notes": "Apply online at Southern's own application. International documents: evaluated high school transcripts (SpanTran is recommended, about $140; not needed for Bermuda and Bahamas), ACT/SAT, English proficiency scores, declaration of finances, passport page, and a $3,000 international commitment deposit. Minimum 2.5 GPA on a 4.0 scale including English, math, natural science, religion, social science and foreign language. Applicants below the standard can be admitted on academic probation (GPA 2.25+ and ACT 16 or SAT 880). The application fee is not stated on the admissions pages (College Navigator listed $25 for 2024-25), so it is left blank.",
+    "notes": "Apply online at Southern's own application. International documents: evaluated high school transcripts (SpanTran is recommended, about $140; not needed for Bermuda and Bahamas), ACT/SAT, English proficiency scores, declaration of finances, passport page, and a $3,000 international commitment deposit. Minimum 2.5 GPA on a 4.0 scale including English, math, natural science, religion, social science and foreign language. Applicants below the standard can be admitted on academic probation (GPA 2.25+ and ACT 16 or SAT 880). The application fee is not stated on the admissions pages (College Navigator listed $25 for 2024-25), so it is not shown.",
     "src": "intl"
   },
   "deadlines": [
@@ -43,7 +43,7 @@
       "kind": "priority",
       "due": "2027-03-01",
       "label": "Freshman priority deadline (priority processing and scholarship consideration), fall 2027",
-      "notes": "Dates are printed without a year; treated as fall 2027. There is no priority deadline for winter or summer.",
+      "notes": "Dates are printed without a year, so fall 2027 is assumed. There is no priority deadline for winter or summer.",
       "src": "gen"
     },
     {
@@ -101,7 +101,7 @@
     "required_fees_usd": 1500,
     "room_board_usd": 9900,
     "total_coa_usd": 40300,
-    "notes": "Sample yearly cost for a residence hall student: tuition $28,900 (12-16 hours), general fee $1,500, residence hall rent $6,000, food allowance $3,900 = $40,300; commuter total $30,400. Southern says the typical out-of-pocket amount is $11,800 per year after scholarships and grants. The page does not mention separate international fees or health insurance."
+    "notes": "Sample yearly cost for a residence hall student: tuition $28,900 (12-16 hours), general fee $1,500, residence hall rent $6,000, food allowance $3,900 = $40,300; commuter total $30,400. Southern says the typical out-of-pocket amount is $11,800 per year after scholarships and grants. The page does not mention separate international fees or health insurance"
   },
   "majors": [],
   "score_codes": {},

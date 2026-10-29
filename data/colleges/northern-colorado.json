@@ -59,7 +59,7 @@
       "2.0-2.49": 1.72,
       "1.0-1.99": 0.1
     },
-    "notes": "Fall 2023 entering class from CDS C1 (applicants 3,332 men + 6,137 women + 10 another gender; admits 3,077 + 5,803 + 0; enrolled 373 + 856). UNC's newer 2024-25 CDS is an image-only PDF that could not be read as text, so the 2023-24 CDS is used. The residency split of applicants/admits is suppressed in the CDS, so intl_applicants/intl_admits are null (nonresidents were 103 of 6,616 undergraduates in fall 2023). College Navigator (IPEDS fall 2024) shows 11,127 applicants and an 86% admit rate. Undergraduate enrollment (6,480) and student-faculty ratio (14:1) are from College Navigator, fall 2024."
+    "notes": "Fall 2023 entering class from the Common Data Set (applicants 3,332 men + 6,137 women + 10 another gender; admits 3,077 + 5,803 + 0; enrolled 373 + 856). UNC's newer 2024-25 Common Data Set is an image-only PDF whose text could not be read, so the 2023-24 Common Data Set is used. The Common Data Set withholds the residency split of applicants and admits, so no international admit rate is shown (nonresidents were 103 of 6,616 undergraduates in fall 2023). College Navigator (IPEDS fall 2024) shows 11,127 applicants and an 86% admit rate. Undergraduate enrollment (6,480) and student-faculty ratio (14:1) are from College Navigator, fall 2024."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -116,7 +116,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS 2023-24 C8 (for fall 2025 admission, latest readable): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the 2023-24 Common Data Set (for fall 2025 admission, the latest readable one): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2024-2025",
@@ -129,6 +129,6 @@
     "books_usd": 1200,
     "intl_avg_award_usd": 6037,
     "intl_merit_aid": true,
-    "notes": "CDS G1 (first-year, 2024-25; the 2023-24 CDS reports the following year's prices). UNC's tuition page for 2026-27 lists nonresident tuition of $13,047 per semester at 15 credits, plus per-credit fees (activity $72.58, capital $59.30 and LEAF $1.00, each capped at 10 credits; technology $15.23) and a one-time $260 new-student fee; it gives no housing figure. CDS H6: 49 degree-seeking nonresidents received institutional aid in 2023-24 (average $6,037, total $295,797)."
+    "notes": "First-year costs from the Common Data Set (2024-25; the 2023-24 Common Data Set reports the following year's prices). UNC's tuition page for 2026-27 lists nonresident tuition of $13,047 per semester at 15 credits, plus per-credit fees (activity $72.58, capital $59.30 and LEAF $1.00, each capped at 10 credits; technology $15.23) and a one-time $260 new-student fee; it gives no housing figure. In the Common Data Set, 49 degree-seeking nonresidents received the college's own aid in 2023-24 (average $6,037, total $295,797)"
   }
 }

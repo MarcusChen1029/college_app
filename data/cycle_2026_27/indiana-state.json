@@ -56,7 +56,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International priority deadline, fall 2027 entry",
-      "notes": "Printed without a year, treated as fall 2027. Domestic freshman priority deadline is Aug. 1; the CDS lists application closing date Aug. 1 and priority June 1.",
+      "notes": "Printed without a year, so fall 2027 is assumed. Domestic freshman priority deadline is Aug. 1; the Common Data Set lists application closing date Aug. 1 and priority June 1.",
       "src": "intl"
     },
     {
@@ -64,7 +64,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "Admission needed by this date for an I-20 (fall 2027 entry)",
-      "notes": "Page says students must be admitted by July 1 to receive an I-20 for fall; spring is Oct. 15 priority and Nov. 15 admit-by. Printed without a year, treated as fall 2027.",
+      "notes": "Page says students must be admitted by July 1 to receive an I-20 for fall; spring is Oct. 15 priority and Nov. 15 admit-by. Printed without a year, so fall 2027 is assumed.",
       "src": "intl"
     }
   ],
@@ -107,7 +107,7 @@
     "intl_need_aid": false,
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
-    "notes": "An International Scholar Award of $5,000 a year (renewable up to three more years, first-year international students not fully sponsored, 3.0 high school GPA, automatic consideration when admitted by the deadline) appears in a university scholarship listing, but that listing is not dated for fall 2027 (its status field reads 'Ended on 03/01/2021') and the current page could not be reached, so confirm with scholarships@indstate.edu. The freshman scholarships page says many awards give first consideration to students admitted by Dec. 1 and does not mention international status. The CDS H6 policy checkboxes are not legible. International students are not eligible for federal aid.",
+    "notes": "An International Scholar Award of $5,000 a year (renewable up to three more years, first-year international students not fully sponsored, 3.0 high school GPA, automatic consideration when admitted by the deadline) appears in a university scholarship listing, but that listing is not dated for fall 2027 (its status reads 'Ended on 03/01/2021') and the current page could not be reached, so confirm with scholarships@indstate.edu. The freshman scholarships page says many awards give first consideration to students admitted by Dec. 1 and does not mention international status. The aid-policy checkboxes in the Common Data Set are not legible. International students are not eligible for federal aid.",
     "src": "award"
   },
   "score_codes": {

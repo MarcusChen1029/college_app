@@ -61,7 +61,7 @@
       "kind": "priority",
       "due": "2027-03-01",
       "label": "Recommended date for F-1 applicants (fall 2027 entry)",
-      "notes": "Recommended so there is time for the I-20, SEVIS fee and visa interview. No year is printed; the page links the Fall 2027 application, so this is taken as March 1, 2027.",
+      "notes": "Recommended so there is time for the I-20, SEVIS fee and visa interview. No year is printed; the page links the Fall 2027 application, so March 1, 2027 is assumed.",
       "src": "intl"
     },
     {
@@ -117,7 +117,7 @@
     "books_usd": 1350,
     "other_usd": 5876,
     "total_coa_usd": 39258,
-    "notes": "UH Hilo 2026-27 international budget as on the I-20: tuition $20,448, estimated fees $770, meals and housing $10,814, books and supplies $1,350, and other $5,876 (transportation $1,500 + personal care $2,776 + required medical insurance $1,600), total $39,258. The page's summary line for books and medical insurance ($2,935) does not match its itemized $2,950, so the itemized figures are used.",
+    "notes": "UH Hilo 2026-27 international budget as on the I-20: tuition $20,448, estimated fees $770, meals and housing $10,814, books and supplies $1,350, and other $5,876 (transportation $1,500 + personal care $2,776 + required medical insurance $1,600), total $39,258. The page's summary line for books and medical insurance ($2,935) does not match its itemized $2,950, so the itemized figures are used",
     "src": "cost"
   },
   "majors": [

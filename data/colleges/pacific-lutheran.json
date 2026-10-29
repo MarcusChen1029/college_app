@@ -50,7 +50,7 @@
     "out_state_admits": 1293,
     "intl_applicants": 489,
     "intl_admits": 408,
-    "notes": "CDS 2025-26 (fall 2025 entering class), C1. The PDF text layer holds only the typed values, not the printed labels, so each number was identified by its position in the standard CDS C1 layout; applicants and admits by gender (5,306 and 4,595) equal the sums of the residency columns, which checks the totals and splits. Enrolled count left null: the value at the enrolled position is ambiguous. For comparison IPEDS fall 2024 shows 4,992 applicants and 78% admitted. Factors, GPA and class-rank tables are not extracted (labels missing). SAT/ACT percentiles are from IPEDS fall 2024 (81 SAT and 12 ACT submitters among enrolled first-years). Undergraduate enrollment (2,446) and student-faculty ratio (12 to 1) are College Navigator figures."
+    "notes": "Common Data Set 2025-26 (fall 2025 entering class). The PDF text holds only the typed values, not the printed labels, so each number was identified by its position in the standard Common Data Set layout; applicants and admits by gender (5,306 and 4,595) equal the sums of the residency columns, which checks the totals and splits. The enrolled count is not shown because the value at the enrolled position is ambiguous. For comparison IPEDS fall 2024 shows 4,992 applicants and 78% admitted. Factors, GPA and class-rank tables are not included (labels missing). SAT/ACT percentiles are from IPEDS fall 2024 (81 SAT and 12 ACT submitters among enrolled first-years). Undergraduate enrollment (2,446) and student-faculty ratio (12 to 1) are College Navigator figures."
   },
   "scores": {
     "SAT_ERW": [
@@ -87,6 +87,6 @@
     "room_board_usd": 13008,
     "other_usd": 2745,
     "total_coa_usd": 68792,
-    "notes": "College Navigator estimated expenses 2024-2025 for beginning undergraduates (tuition and fees; on-campus food and housing). Superseded for international students by the cycle-file cost."
+    "notes": "College Navigator estimated expenses 2024-2025 for beginning undergraduates (tuition and fees; on-campus food and housing). Superseded for international students by the cycle-file cost"
   }
 }

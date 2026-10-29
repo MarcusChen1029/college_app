@@ -50,7 +50,7 @@
       "kind": "application",
       "due": "2027-06-01",
       "label": "International application deadline (fall 2027 entry)",
-      "notes": "Admission decisions are made on a rolling basis. The page prints no year, so the fall date is taken as 2027. The catalog also asks international applicants to apply at least 60 days before the start term.",
+      "notes": "Admission decisions are made on a rolling basis. The page gives no year, so the fall date is assumed to be 2027. The catalog also asks international applicants to apply at least 60 days before the start term.",
       "src": "intl"
     },
     {

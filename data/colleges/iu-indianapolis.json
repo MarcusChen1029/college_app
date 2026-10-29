@@ -50,7 +50,7 @@
       "2.0-2.49": 2.13,
       "1.0-1.99": 0.2
     },
-    "notes": "CDS C1 (Fall 2025 first-time first-year, IU Indianapolis campus): 16,460 applied, 12,846 admitted (78%). International: 625 applied, 350 admitted (56%), 19 enrolled, so international applicants are admitted far less often than domestic ones. No early decision; no waitlist. C9: 28.5% of enrolled students submitted SAT (918), 2.4% ACT (78). IU Indianapolis was created in 2024 when IUPUI was split; every figure here is the IU Indianapolis Fall 2025 CDS, no IUPUI-era figure is used. C7 factor checkboxes could not be read reliably from the text and are omitted. Undergraduate enrollment and intl_undergrads are the B1/B2 'Total Undergraduates' figures (14,834; nonresident 273 including non-degree students)."
+    "notes": "From the Common Data Set (Fall 2025 first-time first-year, IU Indianapolis campus): 16,460 applied, 12,846 admitted (78%). International: 625 applied, 350 admitted (56%), 19 enrolled, so international applicants are admitted far less often than domestic ones. No early decision; no waitlist. 28.5% (918) of enrolled students sent SAT scores and 2.4% (78) sent ACT scores. IU Indianapolis was created in 2024 when IUPUI was split; every figure here is from the IU Indianapolis Fall 2025 Common Data Set, and no IUPUI-era figure is included. The admission-factor checkboxes could not be read reliably from the text, so they are left out. Undergraduate enrollment and the number of international undergraduates come from the 'Total Undergraduates' figures (14,834; nonresident 273 including non-degree students)."
   },
   "scores_source": "cds",
   "scores": {
@@ -88,7 +88,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: IU Indianapolis has a test-optional admission policy; the applicant decides at application whether SAT or ACT scores are considered."
+    "notes": "From the Common Data Set: IU Indianapolis has a test-optional admission policy; the applicant decides at application whether SAT or ACT scores are considered."
   },
   "cost": {
     "year": "2026-2027",
@@ -103,6 +103,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 117,
     "intl_avg_award_usd": 12369,
-    "notes": "CDS G1 first-year 2026-27: in-state tuition $9,518, out-of-state $33,983 (international students pay the out-of-state rate), required fees $1,244, on-campus food and housing $13,656; G5 books $1,290. The international office estimates $36,110 tuition and fees (incl. the $331/year international services fee) and $56,258 total for 9 months. H6: 117 nonresident undergraduates received institutional aid, average $12,369; the need-based/non-need-based checkboxes in H6 are ambiguous in the text, so intl_need_aid is left unset."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: in-state tuition $9,518, out-of-state $33,983 (international students pay the out-of-state rate), required fees $1,244, on-campus food and housing $13,656, books $1,290. The international office estimates $36,110 tuition and fees (including the $331/year international services fee) and $56,258 total for 9 months. 117 nonresident undergraduates received aid from the college itself, averaging $12,369. The need-based and non-need-based boxes in the Common Data Set are ambiguous in the text, so need-based aid for international students is not shown"
   }
 }

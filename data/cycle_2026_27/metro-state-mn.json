@@ -61,7 +61,7 @@
       "kind": "application",
       "due": "2027-05-01",
       "label": "Final application date for out-of-country international students, fall 2027 entry",
-      "notes": "The page prints no year; treated as fall 2027. These are final submission dates, not the date by which materials should arrive; apply well ahead because transcript evaluation takes time. Spring entry: Sept. 1; summer: March 15. In-country transfer students: fall Aug. 1. The domestic first-year priority date is March 1 (not stated for international applicants).",
+      "notes": "The page gives no year, so fall 2027 is assumed. These are final submission dates, not the date by which materials should arrive; apply well ahead because transcript evaluation takes time. Spring entry: Sept. 1; summer: March 15. In-country transfer students: fall Aug. 1. The domestic first-year priority date is March 1 (not stated for international applicants).",
       "src": "intl"
     }
   ],
@@ -115,7 +115,7 @@
     "books_usd": 1500,
     "other_usd": 9064,
     "total_coa_usd": 37357,
-    "notes": "Metro State charges the same tuition rate to all students regardless of residency ($322.00 per undergraduate credit plus $42.30 per credit in standard course fees). The $10,930 is the university's own estimate for 15 credits per term over two terms. Cost of attendance page (2026-27): tuition and fees $10,930, books $1,500, living allowance $15,864, personal expenses $5,246, transportation $3,818, total $37,357. Other = personal + transportation. There is no campus housing, so the living figure is an allowance only. Nursing BSN and natural sciences courses carry extra per-credit differentials.",
+    "notes": "Metro State charges the same tuition rate to all students regardless of residency ($322.00 per undergraduate credit plus $42.30 per credit in standard course fees). The $10,930 is the university's own estimate for 15 credits per term over two terms. Cost of attendance page (2026-27): tuition and fees $10,930, books $1,500, living allowance $15,864, personal expenses $5,246, transportation $3,818, total $37,357. Other = personal + transportation. There is no campus housing, so the living figure is an allowance only. Nursing BSN and natural sciences courses carry extra per-credit differentials",
     "src": "coa"
   },
   "aid": {

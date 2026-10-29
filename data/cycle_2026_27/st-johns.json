@@ -122,7 +122,7 @@
     "other_usd": 3188,
     "total_coa_usd": 83790,
     "src": "coa",
-    "notes": "Queens campus, living on campus, 2026-27: tuition $56,140 (12-18 credits per semester), fees $1,660, housing $13,728, food $8,230, books $844, loan fees $58, personal $2,110, transportation $1,020 (total $83,790). Business majors in years 3-4 pay a tuition differential. One tuition rate for all students."
+    "notes": "Queens campus, living on campus, 2026-27: tuition $56,140 (12-18 credits per semester), fees $1,660, housing $13,728, food $8,230, books $844, loan fees $58, personal $2,110, transportation $1,020 (total $83,790). Business majors in years 3-4 pay a tuition differential. One tuition rate for all students"
   },
   "aid": {
     "intl_need_aid": false,
@@ -163,6 +163,6 @@
     "arts_design": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: an 83% admit rate (fall 2024) with SAT section medians of 620 EBRW / 620 Math among the 23% who submit, and a New York City campus, place it just above the open-access D tier."
+    "general": "Our estimate: an 83% admit rate (fall 2024) with SAT section medians of 620 EBRW / 620 Math among the 23% who submit, and a New York City campus, place it just above the open-access D tier."
   }
 }

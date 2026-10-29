@@ -18,7 +18,7 @@
     "pct_submit_sat": 79, "pct_submit_act": 27,
     "gpa_avg": 4.22, "pct_reporting_gpa": 99.1,
     "gpa_distribution": {"4.0": 74.70, "3.75-3.99": 20.38, "3.50-3.74": 3.49, "3.25-3.49": 0.98, "3.00-3.24": 0.18, "2.50-2.99": 0.18, "2.0-2.49": 0.09},
-    "notes": "Average GPA reported as 4.22 (likely weighted despite the CDS 4.0-scale instruction). SAT composite percentiles left blank in the CDS; only section scores reported. Waitlist offered/accepted not reported. Restrictive early action 11/1 → 12/16."
+    "notes": "Average GPA reported as 4.22 (likely weighted despite the Common Data Set's 4.0-scale instruction). Harvard did not report SAT composite percentiles in the Common Data Set; only section scores are reported. Waitlist offered/accepted not reported. Restrictive early action 11/1 → 12/16."
   },
   "scores": {
     "SAT_TOTAL": [null, null, null], "SAT_ERW": [720, 750, 770], "SAT_MATH": [730, 770, 790],
@@ -30,10 +30,10 @@
     "first_generation": "C", "alumni_relation": "C", "geographic_residence": "C", "state_residency": "NC",
     "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
   },
-  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "CDS C8A (Fall 2027): SAT or ACT required."},
+  "cds_test_policy": {"cycle": "2026-27", "policy": "required", "notes": "From the Common Data Set (Fall 2027): SAT or ACT required."},
   "cost": {
     "year": "2025-2026", "source": "cds",
     "intl_need_aid": true, "intl_need_aid_awarded": 805, "intl_avg_award_usd": 83013,
-    "notes": "CDS G1 cost fields left blank by Harvard; see financial aid site. H6: need-based aid available to nonresidents."
+    "notes": "Harvard did not report its cost figures in the Common Data Set; see its financial aid site. Need-based aid is available to nonresidents."
   }
 }

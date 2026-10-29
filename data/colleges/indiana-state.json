@@ -50,7 +50,7 @@
       "2.50-2.99": 27.7,
       "2.0-2.49": 4.44
     },
-    "notes": "Fall 2025 first-time first-year class (CDS C1 residency breakdown: 440 international applicants, 390 admitted, 26 enrolled; 2 applicants of unknown residency). Undergrad enrollment 6,352 and intl 104 are the B2 total undergraduates / nonresident figures. GPA distribution is the 'all enrolled students' column of C11 (the 1.0-1.99 and below-1.0 rows are blank). CDS C7 factor checkboxes are not legible in the PDF text, so factors are omitted. Student-to-faculty ratio is blank in the CDS."
+    "notes": "Fall 2025 first-time first-year class (Common Data Set residency breakdown: 440 international applicants, 390 admitted, 26 enrolled; 2 applicants of unknown residency). Undergraduate enrollment is 6,352 and there are 104 international undergraduates (the total undergraduates and nonresident figures). The GPA breakdown is the 'all enrolled students' column (the 1.0-1.99 and below-1.0 rows are blank). The factor checkboxes in the Common Data Set are not legible in the PDF text, so factors are not shown. The student-to-faculty ratio is blank in the Common Data Set."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -87,7 +87,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A answered 'No' (SAT/ACT not used in admission); admissions site says scores are not required for admission."
+    "notes": "The Common Data Set answered 'No' (SAT/ACT not used in admission); the admissions site says scores are not required for admission."
   },
   "cost": {
     "year": "2025-2026",
@@ -98,6 +98,6 @@
     "required_fees_usd": 280,
     "room_board_usd": 12408,
     "books_usd": 1290,
-    "notes": "CDS G1/G5 (2025-26, first-year): the CDS lists one nonresident tuition figure ($22,646) equal to out-of-state tuition, used as the international rate. The university tuition page lists 2026-27 out-of-state/international tuition of $11,641 per semester (about $23,282 per year; in-state $4,989 per semester unchanged)."
+    "notes": "From the Common Data Set (2025-26, first-year): it lists one nonresident tuition figure ($22,646) equal to out-of-state tuition, shown here as international tuition. The university tuition page lists 2026-27 out-of-state/international tuition of $11,641 per semester (about $23,282 per year; in-state $4,989 per semester unchanged)"
   }
 }

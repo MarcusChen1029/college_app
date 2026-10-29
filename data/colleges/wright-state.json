@@ -51,7 +51,7 @@
       "2.0-2.49": 6.8,
       "1.0-1.99": 0.4
     },
-    "notes": "Counts are CDS C1 (fall 2025), Dayton campus only. International admit rate is 95.4% (3,160 of 3,313), close to the overall 96.2%. No waiting list, early decision or early action. Only 71 enrollees submitted SAT (4%) vs 879 ACT (52%), so SAT percentiles describe a very small group. GPA distribution is the C11 'all enrolled' column. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 480)."
+    "notes": "Counts are from the Common Data Set (fall 2025), Dayton campus only. The international admit rate is 95.4% (3,160 of 3,313), close to the overall 96.2%. No waiting list, early decision or early action. Only 71 enrollees (4%) sent SAT scores vs 879 (52%) who sent ACT scores, so SAT percentiles describe a very small group. The GPA breakdown is the 'all enrolled' column. Undergraduate and international counts are the 'Total Undergraduates' figures (nonresident 480)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but consider if submitted'."
+    "notes": "Common Data Set (fall 2027): SAT or ACT 'not required for admission, but consider if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 437,
     "intl_avg_award_usd": 11014,
-    "notes": "CDS G1 first-year 2026-27 (flat full-time tuition; housing $6,276 + food $4,406). H6: only institutional non-need-based aid is available to nonresidents; 437 nonresident undergraduates received it in 2024-25 (avg $11,014)."
+    "notes": "First-year costs from the Common Data Set, 2026-27 (flat full-time tuition; housing $6,276 + food $4,406). Only institutional non-need-based aid is available to nonresidents; 437 nonresident undergraduates received it in 2024-25 (average $11,014)"
   }
 }

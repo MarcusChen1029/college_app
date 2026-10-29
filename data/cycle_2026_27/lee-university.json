@@ -51,7 +51,7 @@
       "plan": "ROLLING",
       "due": null,
       "label": "Rolling admission, no application closing date (fall 2027 entry)",
-      "notes": "CDS C14 says there is no application closing date and C16 says decisions are rolling beginning Aug. 1; no international deadline is published, only advice to apply well ahead of entry for the I-20 and visa.",
+      "notes": "The Common Data Set says there is no application closing date and that decisions are rolling beginning Aug. 1; no international deadline is published, only advice to apply well ahead of entry for the I-20 and visa.",
       "src": "book"
     },
     {
@@ -96,12 +96,12 @@
     "tuition_usd": 25440,
     "tuition_intl_usd": 25440,
     "required_fees_usd": 820,
-    "notes": "Full-time tuition (12-16 hours) is $12,720 per semester ($25,440 per year) and the student services fee is $410 per semester ($820 per year). Lee's estimated average cost is $18,825 per semester with housing and a meal plan ($13,130 without), excluding books and course fees. Double room $1,890-$2,860 per semester by hall; meal plans $2,370-$2,710 per semester. The international booklet (older edition) used a $41,000 yearly budget for proof of funds."
+    "notes": "Full-time tuition (12-16 hours) is $12,720 per semester ($25,440 per year) and the student services fee is $410 per semester ($820 per year). Lee's estimated average cost is $18,825 per semester with housing and a meal plan ($13,130 without), excluding books and course fees. Double room $1,890-$2,860 per semester by hall; meal plans $2,370-$2,710 per semester. The international booklet (older edition) used a $41,000 yearly budget for proof of funds"
   },
   "aid": {
     "intl_aid_policy": "merit_only",
     "merit_scholarships": true,
-    "notes": "CDS 2024-25 H6 shows only institutional non-need-based aid for nonresidents: 73 of 85 degree-seeking nonresident undergraduates received it, averaging $17,750 ($1,295,778 total). The admissions page says merit awards consider ACT/SAT and high school transcript automatically with the Scholarship Profile; amounts are not published there. The booklet says Lee has no loans for international undergraduates and U.S. federal aid is unavailable.",
+    "notes": "The 2024-25 Common Data Set shows only the college's own non-need-based aid for nonresidents: 73 of 85 degree-seeking nonresident undergraduates received it, averaging $17,750 ($1,295,778 total). The admissions page says merit awards consider ACT/SAT and high school transcript automatically with the Scholarship Profile; amounts are not published there. The booklet says Lee has no loans for international undergraduates and U.S. federal aid is unavailable.",
     "src": "intl"
   },
   "score_codes": {

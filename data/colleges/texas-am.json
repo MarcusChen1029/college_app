@@ -52,7 +52,7 @@
     "intl_admits": 1422,
     "pct_submit_sat": 76.7,
     "pct_submit_act": 18.7,
-    "notes": "CDS C1/C9. GPA (C11/C12) is not reported in the CDS and there is no waitlist data. No early decision; nonbinding early action (CDS closing date 10/15). Top-10% Texas class rank is a major pathway for in-state students (CDS C10: 71.6% of reporting enrollees in top tenth)."
+    "notes": "Figures are from the Common Data Set. It does not report GPA, and there is no waitlist data. No early decision; nonbinding early action (closing date 10/15). Top-10% Texas class rank is a major pathway for in-state students (71.6% of reporting enrollees in top tenth)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -94,7 +94,7 @@
     "room_board_usd": 12522,
     "other_usd": 5864,
     "total_coa_usd": 32796,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 39974
   },
   "factors": {

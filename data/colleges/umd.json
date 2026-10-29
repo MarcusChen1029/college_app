@@ -50,7 +50,7 @@
       "2.50-2.99": 0.27,
       "2.0-2.49": 0.15
     },
-    "notes": "CDS C1 residency split reports only in-state and out-of-state; international applicants are included in the out-of-state figures (not broken out). No early decision; non-binding early action (Nov 1). C11/C12 GPA is on a weighted scale (average 4.41, 89% shown as 4.0), so it is not comparable to unweighted GPAs. Competitive admission to Limited Enrollment Programs (e.g. Computer Science, Engineering, Business) is reviewed separately."
+    "notes": "The Common Data Set residency split reports only in-state and out-of-state; international applicants are included in the out-of-state figures (not broken out). No early decision; non-binding early action (Nov 1). GPA is on a weighted scale (average 4.41, 89% shown as 4.0), so it is not comparable to unweighted GPAs. Competitive admission to Limited Enrollment Programs (e.g. Computer Science, Engineering, Business) is reviewed separately."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT/ACT 'not required for admission, but considered if submitted'; C8F says UMD is true test-optional."
+    "notes": "The Common Data Set marks SAT/ACT 'not required for admission, but considered if submitted' and says UMD is true test-optional."
   },
   "cost": {
     "year": "2026-2027",
@@ -120,6 +120,6 @@
     "books_usd": 1250,
     "other_usd": 1200,
     "intl_need_aid": false,
-    "notes": "CDS G1/G5 (first-year, flat undergraduate rate; 23.8% of undergraduates pay more because business/engineering/CS charge differential tuition). The CDS also ticks 'final 2026-2027 costs not yet available', so treat these as estimates. other_usd is miscellaneous personal expenses; transportation estimate ($1,514) not included. UMD charges $125 per semester to students needing an I-20/DS-2019. CDS H6: no institutional scholarship or grant aid for nonresident undergraduates."
+    "notes": "First-year costs from the Common Data Set (flat undergraduate rate; 23.8% of undergraduates pay more because business/engineering/CS charge differential tuition). The Common Data Set also ticks 'final 2026-2027 costs not yet available', so treat these as estimates. Other costs are miscellaneous personal expenses; the transportation estimate ($1,514) is not included. UMD charges $125 per semester to students needing an I-20/DS-2019. The Common Data Set shows no institutional scholarship or grant aid for nonresident undergraduates"
   }
 }

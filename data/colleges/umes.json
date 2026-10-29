@@ -44,7 +44,7 @@
     "applicants": 9306,
     "admits": 8972,
     "enrolled": 774,
-    "notes": "Baseline from IPEDS fall 2024 (admit rate 96.4%). No Common Data Set was found on umes.edu (site search and its Decision Science & Visualization pages), so no international split, GPA or residency data. UMES is test-optional and College Navigator reports no SAT/ACT percentiles. College Navigator shows about 2% of undergraduates from foreign countries (rounded)."
+    "notes": "Figures from IPEDS, the US government's college data, for fall 2024 (admit rate 96.4%). No Common Data Set was found on umes.edu (site search and its Decision Science & Visualization pages), so no international split, GPA or residency data. UMES is test-optional and College Navigator reports no SAT/ACT percentiles. College Navigator shows about 2% of undergraduates from foreign countries (rounded)."
   },
   "cost": {
     "year": "2024-2025",
@@ -55,6 +55,6 @@
     "books_usd": 1250,
     "other_usd": 5000,
     "total_coa_usd": 37723,
-    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $9,076, out-of-state $20,122; books $1,250; on-campus food and housing $11,351; other expenses $5,000; total on campus out-of-state $37,723."
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $9,076, out-of-state $20,122; books $1,250; on-campus food and housing $11,351; other expenses $5,000; total on campus out-of-state $37,723"
   }
 }

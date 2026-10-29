@@ -49,14 +49,14 @@
    "kind": "priority",
    "due": "2027-05-01",
    "label": "Priority application deadline, fall semester (fall 2027 entry)",
-   "notes": "The Priority tab of the deadlines page lists Fall May 1, Spring Nov. 1, Summer April 1 (no year printed; treated as fall 2027). The Regular tab currently shows only Spring 2027 (applications Dec. 1, documents Dec. 15); a regular fall 2027 date is not yet published. Applications are open for Spring, Summer and Fall 2027. Dates may be extended.",
+   "notes": "The Priority tab of the deadlines page lists Fall May 1, Spring Nov. 1, Summer April 1 (no year printed, so fall 2027 is assumed). The Regular tab currently shows only Spring 2027 (applications Dec. 1, documents Dec. 15); a regular fall 2027 date is not yet published. Applications are open for Spring, Summer and Fall 2027. Dates may be extended.",
    "src": "dl"
   },
   {
    "kind": "scholarship",
    "due": "2027-07-01",
    "label": "International out-of-state tuition waiver application window closes",
-   "notes": "Window runs April 1 to July 1; a second window runs Oct. 1 to Dec. 15. The page does not say which term each window covers. Competitive, limited and not guaranteed. Year not printed; treated as 2027.",
+   "notes": "Window runs April 1 to July 1; a second window runs Oct. 1 to Dec. 15. The page does not say which term each window covers. Competitive, limited and not guaranteed. The year is not printed, so 2027 is assumed.",
    "src": "req"
   }
  ],
@@ -89,7 +89,7 @@
   "room_board_usd": 15810,
   "books_usd": 1670,
   "other_usd": 3080,
-  "notes": "Tuition page (Fall 2026 to Summer 2027), flat rate for 15+ credits per semester, doubled for two semesters: in-state $2,070, out-of-state $8,280, out-of-country $8,520 per semester. Mandatory fees are the sum of the listed per-semester fees ($622) doubled; the cost-of-attendance page shows tuition plus mandatory fees of $17,814 for out-of-state residents (it is not specific to out-of-country tuition). Housing and meals $15,810 (on campus), books $1,670, miscellaneous $3,080; transportation $2,880 is not included in other_usd. Total cost of attendance for out-of-country students is not published.",
+  "notes": "Tuition page (Fall 2026 to Summer 2027), flat rate for 15+ credits per semester, doubled for two semesters: in-state $2,070, out-of-state $8,280, out-of-country $8,520 per semester. Mandatory fees are the sum of the listed per-semester fees ($622) doubled; the cost-of-attendance page shows tuition plus mandatory fees of $17,814 for out-of-state residents (it is not specific to out-of-country tuition). Housing and meals $15,810 (on campus), books $1,670, miscellaneous $3,080; transportation $2,880 is not included in other costs. Total cost of attendance for out-of-country students is not published",
   "src": "tuit"
  },
  "aid": {

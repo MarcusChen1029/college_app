@@ -41,7 +41,7 @@
    "own"
   ],
   "app_fee_usd": 0,
-  "notes": "International degree-seeking application fees are currently waived (CDS C13 also lists $0). Required: official secondary coursework sent from the issuing school (a NACES/AICE evaluation is an optional alternative), minimum 2.00 GPA (converted by the International Admissions Office), proof of English proficiency, and ACT/SAT for some majors. CDS C7 checkboxes were unreadable, so essay/recommendation policy is not recorded.",
+  "notes": "International degree-seeking application fees are currently waived (the Common Data Set also lists $0). Required: official secondary coursework sent from the issuing school (a NACES/AICE evaluation is an optional alternative), minimum 2.00 GPA (converted by the International Admissions Office), proof of English proficiency, and ACT/SAT for some majors. The Common Data Set's admission-factor checkboxes were unreadable, so the essay and recommendation policy is not shown.",
   "src": "intl"
  },
  "deadlines": [
@@ -107,7 +107,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students are treated as nonresidents for scholarships. The John Marshall Scholarship (freshman merit; high school GPA and, where applicable, test scores) pays nonresidents $14,000 (GPA 3.9+ with ACT 30/SAT 1360), $9,000 (GPA 3.8), $7,000 (GPA 3.5) or $5,000 (GPA 3.0) per year; it is renewable for four years. Only institutional non-need-based aid is available to nonresidents (CDS H6).",
+  "notes": "International students count as nonresidents for scholarships. The John Marshall Scholarship (freshman merit; high school GPA and, where applicable, test scores) pays nonresidents $14,000 (GPA 3.9+ with ACT 30/SAT 1360), $9,000 (GPA 3.8), $7,000 (GPA 3.5) or $5,000 (GPA 3.0) per year; it is renewable for four years. Only the college's own non-need-based aid is available to nonresidents (Common Data Set).",
   "src": "merit"
  },
  "majors": [],

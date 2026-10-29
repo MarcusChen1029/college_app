@@ -38,14 +38,14 @@
       "kind": "priority",
       "due": "2026-12-01",
       "label": "Priority application deadline, fall 2027 entry",
-      "notes": "Loyola keeps admitting after Dec. 1 as long as space is available; the page prints no year, taken as fall 2027. No early decision or early action. For merit scholarship consideration the Financial Aid Office asks for a completed application by Dec. 1 so the student can be admitted by Feb. 1.",
+      "notes": "Loyola keeps admitting after Dec. 1 as long as space is available; the page gives no year, so fall 2027 is assumed. No early decision or early action. For merit scholarship consideration the Financial Aid Office asks for a completed application by Dec. 1 so the student can be admitted by Feb. 1.",
       "src": "intl"
     },
     {
       "kind": "priority",
       "due": "2026-11-01",
       "label": "Priority application deadline, spring 2027 entry",
-      "notes": "Spring start; enrollment deposit due Jan. 1. The page prints no year, taken as spring 2027.",
+      "notes": "Spring start; enrollment deposit due Jan. 1. The page gives no year, so spring 2027 is assumed.",
       "src": "intl"
     },
     {
@@ -100,7 +100,7 @@
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": null,
     "merit_scholarships": true,
-    "notes": "International applicants are automatically considered for merit scholarships when they apply; the award is in the acceptance letter. The Financial Aid Office lists academic scholarships of $14,000 to $34,000 per year for students entering fall 2026, while the admissions page says $20,000 to $34,000; the range for fall 2027 entrants is not published. Special scholarships needing separate applications (portal, early January) run from $2,500 to full tuition. International students cannot get federal aid. CDS H6: institutional need-based and non-need-based aid are available to nonresidents; 229 received it, average $26,906.",
+    "notes": "International applicants are automatically considered for merit scholarships when they apply; the award is in the acceptance letter. The Financial Aid Office lists academic scholarships of $14,000 to $34,000 per year for students entering fall 2026, while the admissions page says $20,000 to $34,000; the range for fall 2027 entrants is not published. Special scholarships needing separate applications (portal, early January) run from $2,500 to full tuition. International students cannot get federal aid. From the Common Data Set: the college's own need-based and non-need-based aid are available to nonresidents; 229 received it, average $26,906.",
     "src": "sch"
   },
   "majors": [],
@@ -149,7 +149,7 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "D+: 75% overall admit rate and about 47% for international applicants, but a mid-size Jesuit research university whose test-submitting enrollees have SAT 1220-1390; editorial judgment, not a published ranking.",
+    "general": "D+: 75% overall admit rate and about 47% for international applicants, but a mid-size Jesuit research university whose test-submitting enrollees have SAT 1220-1390; our estimate, not a published ranking.",
     "engineering": "No stand-alone undergraduate engineering school confirmed, so no tier."
   }
 }

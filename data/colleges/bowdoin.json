@@ -55,7 +55,7 @@
     "ed_admits": 296,
     "pct_submit_sat": 34.76,
     "pct_submit_act": 17.28,
-    "notes": "CDS C1. Test-optional. Bowdoin did not report GPA (C11/C12) or waitlist offered/accepted counts. Early decision (ED1/ED2) only; no early action."
+    "notes": "From the Common Data Set. Test-optional. Bowdoin did not report GPA or waitlist offered and accepted counts. Early decision (ED1/ED2) only; no early action."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -97,7 +97,7 @@
     "room_board_usd": 19560,
     "other_usd": 1660,
     "total_coa_usd": 88820,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

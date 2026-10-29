@@ -48,7 +48,7 @@
       "2.0-2.49": 1.0,
       "1.0-1.99": 0.1
     },
-    "notes": "CDS covers the whole ASU Campus Immersion (Tempe, Downtown Phoenix, Polytechnic, West Valley); Tempe-only figures are not published separately. Undergrad enrollment and intl count are the B1/B2 'Total Undergraduates' columns (64,662; nonresident 5,300). No early decision or early action; no waitlist policy. ASU did not report SAT/ACT percentiles or percent submitting scores in C9."
+    "notes": "The Common Data Set covers the whole ASU Campus Immersion (Tempe, Downtown Phoenix, Polytechnic, West Valley); Tempe-only figures are not published separately. Undergraduate enrollment and the international count are the 'Total Undergraduates' columns (64,662; nonresident 5,300). No early decision or early action; no waitlist policy. ASU did not report SAT/ACT percentiles or the share of students sending scores."
   },
   "factors": {
     "rigor": "I",
@@ -73,7 +73,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -87,6 +87,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 3344,
     "intl_avg_award_usd": 12660,
-    "notes": "CDS G1 (first-year, 2026-27). H6: only institutional NON-need-based aid is available to nonresidents; 3,344 nonresidents received it (avg $12,660). Tuition varies by program (G4)."
+    "notes": "First-year costs from the Common Data Set (2026-27). Only non-need-based aid from the college is available to nonresidents; 3,344 nonresidents received it (avg $12,660). Tuition varies by program"
   }
 }

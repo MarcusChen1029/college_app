@@ -50,7 +50,7 @@
       "2.0-2.49": 3.3,
       "1.0-1.99": 1.0
     },
-    "notes": "CDS C1 (Fall 2024 entering class): 2,011 applied, 1,998 admitted (99.4%), 664 enrolled (592 in-state, 57 out-of-state, 15 international). The CDS gives no international applicant or admit counts. IPEDS College Navigator reports 1,727 applicants and 100% admitted for fall 2024, which differs from the CDS. NSU's 2025-2026 CDS Excel file was also posted but is incomplete and internally inconsistent (admits exceed applicants, SAT and cost sections blank), so the 2024-2025 CDS is used. Open-style admission with rolling decisions; no early decision or early action, no waitlist. The CDS reports ACT scores only (84.6% submitted; no SAT percentiles; College Navigator shows 4% submitted the SAT). Undergraduate enrollment 5,085 and nonresident count 189 are the B1/B2 'Total Undergraduates' figures (fall 2024)."
+    "notes": "From the Common Data Set (fall 2024 entering class): 2,011 applied, 1,998 admitted (99.4%), 664 enrolled (592 in-state, 57 out-of-state, 15 international). The Common Data Set gives no international applicant or admit counts. IPEDS College Navigator reports 1,727 applicants and 100% admitted for fall 2024, which differs from the Common Data Set. NSU's 2025-2026 Common Data Set Excel file was also posted but is incomplete and internally inconsistent (admits exceed applicants, SAT and cost sections blank), so the 2024-2025 Common Data Set is used. Open-style admission with rolling decisions; no early decision or early action, no waitlist. The Common Data Set reports ACT scores only (84.6% submitted; no SAT percentiles; College Navigator shows 4% submitted the SAT). Undergraduate enrollment is 5,085 and the nonresident count is 189 ('Total Undergraduates' figures, fall 2024)."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -90,6 +90,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "recommended",
-    "notes": "CDS C8A (2024-2025): ACT 'required for some'; the CDS marks standardized tests 'very important'. The CDS cost section (G) is blank."
+    "notes": "From the Common Data Set (2024-2025): ACT 'required for some'; the Common Data Set marks standardized tests 'very important'. The college did not report the cost section of the Common Data Set."
   }
 }

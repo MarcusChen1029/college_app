@@ -62,7 +62,7 @@
       "plan": "ROLLING",
       "due": "2027-07-15",
       "label": "International application deadline, fall (August) intake (fall 2027 entry)",
-      "notes": "The international admissions page says the application deadline for the August (Fall) intake is July 15th and November 15th for the January (Spring) intake; no year is printed, so the date is treated as fall 2027. Domestic admission has no published deadline and decisions are made immediately.",
+      "notes": "The international admissions page says the application deadline for the August (Fall) intake is July 15th and November 15th for the January (Spring) intake; no year is printed, so fall 2027 is assumed. Domestic admission has no published deadline and decisions are made immediately.",
       "src": "intl"
     }
   ],
@@ -111,7 +111,7 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 74,
     "intl_avg_award_usd": 25437,
-    "notes": "Undergraduate on campus 2026-27: tuition $1,190 per credit hour, $35,700 per year; technology fee $225 and campus services fee $275 per semester ($1,000 per year). Housing and food in the cost estimate: $13,388. The page states tuition and fees are the same for international and domestic students. Books and a total are not published on the page. CDS H6 (fall 2023): 74 undergraduate nonresidents received institutional aid, average $25,437 (the CDS does not say need or non-need).",
+    "notes": "Undergraduate on campus 2026-27: tuition $1,190 per credit hour, $35,700 per year; technology fee $225 and campus services fee $275 per semester ($1,000 per year). Housing and food in the cost estimate: $13,388. The page states tuition and fees are the same for international and domestic students. Books and a total are not published on the page. The Common Data Set (fall 2023) shows 74 undergraduate nonresidents received institutional aid, average $25,437 (it does not say need or non-need)",
     "src": "tuit"
   },
   "aid": {

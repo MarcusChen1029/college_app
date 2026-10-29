@@ -56,21 +56,21 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International first-year application deadline, fall 2027 entry",
-   "notes": "International page prints 'Fall Semester: June 1st' with no year (treated as fall 2027 entry). Spring semester is Nov. 1. Domestic applicants: most programs are rolling with no closing date (CDS C14).",
+   "notes": "The international page gives 'Fall Semester: June 1st' with no year, so fall 2027 entry is assumed. Spring semester is Nov. 1. Domestic applicants: most programs are rolling with no closing date (Common Data Set).",
    "src": "intl"
   },
   {
    "kind": "priority",
    "due": "2026-11-15",
    "label": "Priority deadline for selective programs (nursing, accelerated health science, medical imaging)",
-   "notes": "Nov. 15 priority consideration for Nursing (BSN at Bloomsburg and Mansfield, ASN at Lock Haven), accelerated 3+2 PA and 3+3 PT, Medical Imaging; Music (BS/BM) is Dec. 15. Year not printed; taken as the 2027-28 cycle.",
+   "notes": "Nov. 15 priority consideration for Nursing (BSN at Bloomsburg and Mansfield, ASN at Lock Haven), accelerated 3+2 PA and 3+3 PT, Medical Imaging; Music (BS/BM) is Dec. 15. The year is not printed, so the 2027-28 cycle is assumed.",
    "src": "apply"
   },
   {
    "kind": "scholarship",
    "due": "2027-05-01",
    "label": "International merit scholarship: complete application and pay deposit by May 1",
-   "notes": "Scholarship page: international students must complete their application and pay the deposit by May 1 of the senior year (year not printed; taken as 2027). Funding is limited and first come, first served.",
+   "notes": "Scholarship page: international students must complete their application and pay the deposit by May 1 of the senior year (year not printed, so 2027 is assumed). Funding is limited and first come, first served.",
    "src": "schol"
   }
  ],
@@ -125,7 +125,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Scholarship page: GPA-based merit scholarships for international first-years who apply and pay the deposit by May 1; the page says award amounts will be finalized once the institutional aid budget is approved, so no amounts are given here. CDS H6 instead marks need-based (not non-need-based) institutional aid for nonresidents, with 31 recipients averaging $10,413. International students are not eligible for federal aid.",
+  "notes": "Scholarship page: GPA-based merit scholarships for international first-years who apply and pay the deposit by May 1; the page says award amounts will be finalized once the institutional aid budget is approved, so no amounts are given here. The Common Data Set instead marks need-based (not non-need-based) institutional aid for nonresidents, with 31 recipients averaging $10,413. International students are not eligible for federal aid.",
   "src": "schol"
  },
  "majors": [
@@ -195,6 +195,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "nursing": "D: a selective BSN program on two campuses with its own priority round, but a regional program rather than a nationally ranked one (no ranking evidence for C). Editorial judgment."
+  "nursing": "D: a selective BSN program on two campuses with its own priority round, but a regional program rather than a nationally ranked one (no ranking evidence for C). This is our estimate."
  }
 }

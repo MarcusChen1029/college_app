@@ -47,7 +47,7 @@
     "enrolled": 854,
     "pct_submit_sat": 18,
     "pct_submit_act": 75,
-    "notes": "Baseline from IPEDS fall 2024 (no Common Data Set found on harding.edu): 2,714 applied, 1,914 admitted (71%), 854 enrolled (45% yield). College Navigator: SAT/ACT, GPA, secondary school record, recommendations and an English proficiency test are 'required to be considered'; essay and rank are not considered. SAT submitted by 157 enrolled first-time students (18%), ACT by 643 (75%); Harding also accepts the CLT. No SAT total percentile is published (only section scores). International applicant counts, GPA distribution and residency splits are not published."
+    "notes": "Figures from IPEDS, the US government's college data, fall 2024 (no Common Data Set found on harding.edu): 2,714 applied, 1,914 admitted (71%), 854 enrolled (45% yield). College Navigator: SAT/ACT, GPA, secondary school record, recommendations and an English proficiency test are 'required to be considered'; essay and rank are not considered. SAT scores were sent by 157 enrolled first-time students (18%) and ACT scores by 643 (75%); Harding also accepts the CLT. No SAT total percentile is published (only section scores). International applicant counts, the GPA breakdown and residency splits are not published."
   },
   "scores": {
     "SAT_ERW": [

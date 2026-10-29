@@ -33,7 +33,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "Maryville is test-optional for freshman and transfer admission: SAT/ACT scores may be sent for admission, scholarship or placement consideration but are not required. The international checklist also says official SAT or ACT scores are optional. (CDS C8A answers No to using SAT/ACT in admission decisions, which is stricter than the catalog wording; the catalog is followed here.) Automatic scholarships can be earned by GPA or by ACT/SAT. Test-optional does not apply to applicants from schools that give only narrative evaluations.",
+    "notes": "Maryville is test-optional for freshman and transfer admission: SAT/ACT scores may be sent for admission, scholarship or placement consideration but are not required. The international checklist also says official SAT or ACT scores are optional. (The Common Data Set answers No to using SAT/ACT in admission decisions, which is stricter than the catalog wording; the catalog is followed here.) Automatic scholarships can be earned by GPA or by ACT/SAT. Test-optional does not apply to applicants from schools that give only narrative evaluations.",
     "src": "cat"
   },
   "requirements": {
@@ -42,7 +42,7 @@
       "own"
     ],
     "app_fee_usd": 0,
-    "notes": "Freshman requirements: high school diploma with 22 units (4 English, 3 math, 3 science, 3 social science, 3 other) and at least a 2.5 GPA; below that, case-by-case with a possible personal statement. International applicants submit the application, passport, secondary transcripts (a third-party evaluation is no longer required but may be requested) and proof of English proficiency. CDS C13 reports no application fee. Some programs (nursing, design and visual art, direct-entry therapy programs and others) require a program-specific minimum GPA.",
+    "notes": "Freshman requirements: high school diploma with 22 units (4 English, 3 math, 3 science, 3 social science, 3 other) and at least a 2.5 GPA; below that, case-by-case with a possible personal statement. International applicants submit the application, passport, secondary transcripts (a third-party evaluation is no longer required but may be requested) and proof of English proficiency. The Common Data Set reports no application fee. Some programs (nursing, design and visual art, direct-entry therapy programs and others) require a program-specific minimum GPA.",
     "src": "cat"
   },
   "deadlines": [
@@ -51,7 +51,7 @@
       "plan": "ROLLING",
       "due": "2026-12-01",
       "label": "Priority date and scholarship deadline (fall 2027 entry)",
-      "notes": "Maryville admits on a rolling basis (decisions from Sep. 1). CDS C14 gives a Dec. 1 priority date and the freshman scholarships page gives Dec. 1 for the automatic and competitive scholarships. The pages print no year, taken as the 2026-27 cycle (fall 2027 entry).",
+      "notes": "Maryville admits on a rolling basis (decisions from Sep. 1). The Common Data Set gives a Dec. 1 priority date and the freshman scholarships page gives Dec. 1 for the automatic and competitive scholarships. The pages give no year, so the 2026-27 cycle (fall 2027 entry) is assumed.",
       "src": "schol"
     },
     {
@@ -59,7 +59,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "Recommended international application date (fall 2027 entry)",
-      "notes": "The International FAQ says there is no application deadline, but overseas applicants should apply by June 1 for fall (Nov. 1 for spring) to allow time for the I-20 and the U.S. embassy interview. No year is printed, taken as fall 2027. A $250 advance tuition payment and certified proof of finances (dated within 3 months) are needed for the I-20.",
+      "notes": "The International FAQ says there is no application deadline, but overseas applicants should apply by June 1 for fall (Nov. 1 for spring) to allow time for the I-20 and the U.S. embassy interview. No year is printed, so fall 2027 is assumed. A $250 advance tuition payment and certified proof of finances (dated within 3 months) are needed for the I-20.",
       "src": "faq"
     }
   ],
@@ -110,7 +110,7 @@
     "meets_full_need": false,
     "merit_scholarships": true,
     "merit_separate_app": false,
-    "notes": "International undergraduates are eligible for scholarships: automatic academic awards are based on GPA and/or test score; competitive awards have a Dec. 1 deadline (fall entry only). The freshman scholarships page lists Saints $14,000/yr (GPA 3.5 or ACT 27/SAT 1290), Big Red $11,000/yr (GPA 3.0 or ACT 24/SAT 1180), Maryville Opportunity Award $9,000/yr (GPA 2.5 or ACT 22/SAT 1110), and Presidential (full tuition plus room and board) and Trustee (full tuition) at GPA 3.75 or ACT 27/SAT 1290. That page does not say these amounts apply to international students, so confirm with admissions. CDS H6: 145 nonresident undergraduates received institutional aid (average $22,996).",
+    "notes": "International undergraduates are eligible for scholarships: automatic academic awards are based on GPA and/or test score; competitive awards have a Dec. 1 deadline (fall entry only). The freshman scholarships page lists Saints $14,000/yr (GPA 3.5 or ACT 27/SAT 1290), Big Red $11,000/yr (GPA 3.0 or ACT 24/SAT 1180), Maryville Opportunity Award $9,000/yr (GPA 2.5 or ACT 22/SAT 1110), and Presidential (full tuition plus room and board) and Trustee (full tuition) at GPA 3.75 or ACT 27/SAT 1290. That page does not say these amounts apply to international students, so confirm with admissions. From the Common Data Set: 145 nonresident undergraduates received the college's own aid (average $22,996).",
     "src": "schol"
   },
   "majors": [],

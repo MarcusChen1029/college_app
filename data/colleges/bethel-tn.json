@@ -40,7 +40,7 @@
     "enrolled": 402,
     "pct_submit_sat": 25,
     "pct_submit_act": 100,
-    "notes": "Baseline from IPEDS (fall 2023 entering class): 3,318 applied, 3,224 admitted, 402 enrolled. No Common Data Set was found for Bethel (TN), so GPA and international applicant/admit counts are not available. SAT percentiles rest on only 101 submitters. Newer College Navigator figures (fall 2024) differ sharply: 1,486 applicants, about 60% admitted (rounded %), ACT 15/18/21, SAT ERW 410/460/570, SAT Math 420/460/550; 2,674 undergraduates (used for enrollment here). Test optional with weighted GPA 2.25 or above."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class): 3,318 applied, 3,224 admitted, 402 enrolled. No Common Data Set was found for Bethel (TN), so GPA and international applicant/admit counts are not available. SAT percentiles rest on only 101 submitters. Newer College Navigator figures (fall 2024) differ sharply: 1,486 applicants, about 60% admitted (rounded %), ACT 15/18/21, SAT ERW 410/460/570, SAT Math 420/460/550; 2,674 undergraduates (shown here as enrollment). Test optional with weighted GPA 2.25 or above."
   },
   "scores": {
     "SAT_ERW": [

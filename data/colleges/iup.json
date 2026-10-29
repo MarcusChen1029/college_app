@@ -58,7 +58,7 @@
       "2.0-2.49": 7,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1 (fall 2025 entering class; applicants = male 2,755 + female 5,196). International first-years: 113 applied, 111 admitted (98%), 8 enrolled, so IUP admitted almost every international applicant. Open to nearly all applicants (91% overall admit rate). SAT/ACT optional (C8A). SAT percentiles are for the 25% (460) of enrolled first-years who submitted; ACT figures come from only 11 students and are unreliable. GPA distribution is the all-enrolled column of C11. Undergraduate enrollment 7,425 is the CDS B1 total; 59 nonresident degree-seeking undergraduates is CDS B2 (135 counting non-degree-seeking). The CDS PDF text is jumbled in places; values were cross-checked by sums (residency totals match C1)."
+    "notes": "From the Common Data Set (fall 2025 entering class; applicants = male 2,755 + female 5,196). International first-years: 113 applied, 111 admitted (98%), 8 enrolled, so IUP admitted almost every international applicant. Open to nearly all applicants (91% overall admit rate). SAT/ACT are optional. SAT percentiles are for the 25% (460) of enrolled first-years who sent scores; ACT figures come from only 11 students and are unreliable. The GPA breakdown is for all enrolled students. Undergraduate enrollment is 7,425 (total); there are 59 nonresident degree-seeking undergraduates (135 counting non-degree-seeking). The Common Data Set PDF text is jumbled in places; values were cross-checked by sums (residency totals match the applicant counts)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -115,7 +115,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT/ACT not required for admission, but considered if submitted; C8F says 'We are test optional at this time.'"
+    "notes": "From the Common Data Set: SAT/ACT not required for admission, but considered if submitted; it also says 'We are test optional at this time.'"
   },
   "cost": {
     "year": "2026-2027",
@@ -129,6 +129,6 @@
     "other_usd": 2080,
     "intl_need_aid_awarded": 32,
     "intl_avg_award_usd": 2198,
-    "notes": "CDS G1/G5/H6 as printed: first-year tuition $7,994 in-state, $11,592 out-of-state, $19,842 nonresident; fees $3,730; food and housing $13,350; books $1,100; other_usd = transportation $500 + other $1,580. These CDS tuition figures are lower than IUP's current 2026-27 billing page, which is used for the cost figures. CDS H6: 32 undergraduate degree-seeking nonresidents received institutional aid averaging $2,198 (total $70,336); non-need-based institutional aid is ticked as available."
+    "notes": "First-year figures as printed in the Common Data Set: tuition $7,994 in-state, $11,592 out-of-state, $19,842 nonresident; fees $3,730; food and housing $13,350; books $1,100; other costs = transportation $500 + other $1,580. These Common Data Set tuition figures are lower than IUP's current 2026-27 billing page, which the cost figures are based on. 32 undergraduate degree-seeking nonresidents received aid from the college averaging $2,198 (total $70,336); non-need-based aid from the college is ticked as available"
   }
 }

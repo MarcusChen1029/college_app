@@ -24,7 +24,7 @@
       "own"
     ],
     "app_fee_usd": 20,
-    "notes": "The international page says the fee is non-refundable and paid at the end of the online application but does not state the amount; $20 is the fee reported in the CDS (C13) and College Navigator for 2024-25. The CDS lists a Common App page for USD; the international page describes USD's online application. Immunization form (2 MMR) and Academic Health Plans health insurance are required before arrival. Contingent admission is possible with unofficial or partial transcripts (official transcripts due 30 days before classes).",
+    "notes": "The international page says the fee is non-refundable and paid at the end of the online application but does not state the amount; $20 is the fee reported in the Common Data Set and College Navigator for 2024-25. The Common Data Set lists a Common App page for USD; the international page describes USD's online application. Immunization form (2 MMR) and Academic Health Plans health insurance are required before arrival. Contingent admission is possible with unofficial or partial transcripts (official transcripts due 30 days before classes).",
     "src": "intl"
   },
   "deadlines": [
@@ -95,7 +95,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "The international cost page lists automatic awards for first-time undergraduates: Coyote Beginnings Scholarship up to $4,000 per year based on high school GPA, and Coyote Beginnings Grant $1,500-$2,500 per year for a qualifying SAT/ACT score (stackable); International Transfer Scholarship $3,000 per year (3.0+ U.S. college GPA). The page does not explicitly say these apply to every international freshman, so confirm with USD. CDS H6 nonresident-aid figures looked inconsistent and are not used.",
+    "notes": "The international cost page lists automatic awards for first-time undergraduates: Coyote Beginnings Scholarship up to $4,000 per year based on high school GPA, and Coyote Beginnings Grant $1,500-$2,500 per year for a qualifying SAT/ACT score (stackable); International Transfer Scholarship $3,000 per year (3.0+ U.S. college GPA). The page does not explicitly say these apply to every international freshman, so confirm with USD. The Common Data Set's nonresident aid figures looked inconsistent and are not used.",
     "src": "intlcost"
   },
   "majors": [],

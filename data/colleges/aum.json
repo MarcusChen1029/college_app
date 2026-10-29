@@ -59,7 +59,7 @@
       "2.50-2.99": 7,
       "2.0-2.49": 3
     },
-    "notes": "Fall 2024 first-time first-year class from the 2024-25 CDS. Applicants 2,694 / admitted 2,467 / enrolled 364 are the sums of the C1 men and women rows and match College Navigator (2,694 applicants, 92% admitted, 15% of admits enrolled). The C1 residency table in the same CDS does not reconcile (its totals are 2,512 applicants / 162 enrolled, and out-of-state shows 57 applied but 199 admitted), so only the international row is used: 638 applied, 621 admitted, 30 enrolled (the 30 matches the B2 nonresident first-time count); the in-state/out-of-state split is left out. The 2025-26 CDS (fall 2025) reports 410 applicants, 407 admits and 407 enrolled in C1, i.e. the enrolled count in all three rows, so it was not used for admit rates. GPA is the 'all enrolled students' column of C11 (sums to 99 as printed). Admission factors, test-score percentiles, enrollment (3,649 undergraduates, 120 nonresident, fall 2025) and costs come from the 2025-26 CDS. SAT percentiles come from only 11 enrolled students (3%); 208 students (51%) submitted ACT."
+    "notes": "Fall 2024 first-time first-year class from the 2024-25 Common Data Set. Applicants 2,694 / admitted 2,467 / enrolled 364 are the sums of the men and women rows and match College Navigator (2,694 applicants, 92% admitted, 15% of admits enrolled). The residency table in the same Common Data Set does not add up (its totals are 2,512 applicants / 162 enrolled, and out-of-state shows 57 applied but 199 admitted), so only the international row is shown: 638 applied, 621 admitted, 30 enrolled (the 30 matches the nonresident first-time count); the in-state/out-of-state split is left out. The 2025-26 Common Data Set (fall 2025) reports 410 applicants, 407 admits and 407 enrolled, meaning the enrolled count appears in all three rows, so it was not used for admit rates. The GPA breakdown is the 'all enrolled students' column (sums to 99 as printed). Admission factors, test-score percentiles, enrollment (3,649 undergraduates, 120 nonresident, fall 2025) and costs come from the 2025-26 Common Data Set. SAT percentiles come from only 11 enrolled students (3%); 208 students (51%) submitted ACT."
   },
   "scores_source": "cds",
   "scores": {
@@ -117,7 +117,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027) ticks 'Recommended' for SAT or ACT; the admissions site says scores are not required for admission."
+    "notes": "The Common Data Set (Fall 2027) ticks 'Recommended' for SAT or ACT; the admissions site says scores are not required for admission."
   },
   "cost": {
     "year": "2026-2027",
@@ -130,6 +130,6 @@
     "total_coa_usd": 51908,
     "intl_need_aid": true,
     "intl_avg_award_usd": 14645,
-    "notes": "CDS G1 for 2026-27 (30 credit hours): in-state $11,820, out-of-state and international $26,520; required fees, housing and food were not filled in (suppressed). Housing and food $19,368, books $2,500 and total cost of attendance $51,908 (non-Alabama resident, 13 credits a semester, includes about $1,890 personal and $3,625 transportation) are from AUM's Tuition & Fees page. International students also pay for health insurance (about $826.50 for fall 2026). CDS H6 (nonresident undergraduates): both need-based and non-need-based institutional aid are available; total $1,069,071 at an average of $14,645 (the printed count of 130 recipients does not fit those two figures, which imply about 73)."
+    "notes": "From the Common Data Set for 2026-27 (30 credit hours): in-state $11,820, out-of-state and international $26,520; required fees, housing and food were not filled in (suppressed). Housing and food $19,368, books $2,500 and total cost of attendance $51,908 (non-Alabama resident, 13 credits a semester, includes about $1,890 personal and $3,625 transportation) are from AUM's Tuition & Fees page. International students also pay for health insurance (about $826.50 for fall 2026). Aid to nonresident undergraduates (Common Data Set): both need-based and non-need-based aid from the college are available; total $1,069,071 at an average of $14,645 (the printed count of 130 recipients does not fit those two figures, which imply about 73)"
   }
 }

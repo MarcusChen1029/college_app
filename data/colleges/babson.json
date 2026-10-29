@@ -44,7 +44,7 @@
     "applicants": 10552,
     "admits": 1705,
     "enrolled": 692,
-    "notes": "CDS C1 totals (men + women + unknown sex) and C9 percentiles only. The published form leaves the C1 residency table, waitlist, C7, C11/C12 and C21 blank or unreadable, so those are not included. Test-optional (SAT/ACT considered if submitted)."
+    "notes": "Common Data Set totals (men + women + unknown sex) and test-score percentiles only. The published form leaves the residency table, waitlist, admission factors, GPA and early decision counts blank or unreadable, so those are not shown. Test-optional (SAT/ACT considered if submitted)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -86,6 +86,6 @@
     "room_board_usd": 22346,
     "other_usd": 2100,
     "total_coa_usd": 82076,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

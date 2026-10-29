@@ -53,7 +53,7 @@
     "admits": 4085,
     "enrolled": 606,
     "pct_submit_sat": 1,
-    "notes": "Baseline from IPEDS via College Navigator (fall 2024, Metropolitan Campus only): 5,826 applicants, 91% admitted, 12% of admits enrolled; admit and enrollee counts are not printed, so they are left null. The Common Data Set is published for the whole university (Metropolitan plus Florham: 11,478 applicants, 10,665 admitted) and has no international split, so it is not used for campus figures. Only 4 enrolled first-years (1%) submitted SAT scores, so SAT/ACT percentiles are not reported. Undergraduate enrollment 5,690 is fall 2024. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator (fall 2024, Metropolitan Campus only): 5,826 applicants, 91% admitted, 12% of admits enrolled; admit and enrollee counts are not printed there. The Common Data Set is published for the whole university (Metropolitan plus Florham: 11,478 applicants, 10,665 admitted) and has no international split, so it is not used for campus figures. Only 4 enrolled first-years (1%) sent SAT scores, so SAT/ACT percentiles are not reported. Undergraduate enrollment is 5,690 (fall 2024). Applicant, admit and enrolled counts were replaced with the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate."
   },
   "cost": {
     "year": "2024-2025",
@@ -63,6 +63,6 @@
     "room_board_usd": 16270,
     "other_usd": 5812,
     "total_coa_usd": 61326,
-    "notes": "College Navigator 2024-25 for full-time beginning undergraduates living on campus; tuition includes required fees. Current international estimate is in the cycle file."
+    "notes": "College Navigator 2024-25 for full-time beginning undergraduates living on campus; tuition includes required fees. Current international estimate is in the cycle file"
   }
 }

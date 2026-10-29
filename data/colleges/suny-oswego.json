@@ -54,7 +54,7 @@
     "gpa_avg": 3.11,
     "pct_reporting_gpa": 99,
     "pct_submit_sat": 23,
-    "notes": "CDS C1 (fall 2024 first-year class; residency by known physical address): 462 of 491 international applicants were admitted (94%) versus 81% overall; 31 international students enrolled. Average high school GPA 3.11 uses the CDS conversion (HS average x 0.08 - 4.0 from a 100-point scale); the GPA band table could not be read from the PDF text. 23% (291 students) submitted SAT; the CDS shows no ACT submitters (IPEDS: 3%, 34 students). IPEDS fall 2024 ranges: SAT EBRW 530-630, Math 540-640, ACT composite 23-29. No early decision/early action. Undergrad enrollment (5,517) is from College Navigator, fall 2024; it lists 3% nonresident (no headcount)."
+    "notes": "From the Common Data Set (fall 2024 first-year class; residency by known physical address): 462 of 491 international applicants were admitted (94%) versus 81% overall; 31 international students enrolled. The average high school GPA of 3.11 uses the Common Data Set conversion (HS average x 0.08 - 4.0 from a 100-point scale); the GPA band table could not be read from the PDF text. 23% (291 students) sent SAT scores; the Common Data Set shows no ACT submitters (IPEDS: 3%, 34 students). IPEDS fall 2024 ranges: SAT EBRW 530-630, Math 540-640, ACT composite 23-29. No early decision/early action. Undergraduate enrollment (5,517) is from College Navigator, fall 2024; it lists 3% nonresident (no headcount)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -72,6 +72,6 @@
     "required_fees_usd": 1755,
     "room_board_usd": 17026,
     "books_usd": 1000,
-    "notes": "CDS G1 (first-year, 2024-25): nonresident tuition $17,320, required fees $1,755, food and housing on campus $17,026. These are 2024-25 figures; 2026-27 rates were not confirmed."
+    "notes": "From the Common Data Set (first-year, 2024-25): nonresident tuition $17,320, required fees $1,755, food and housing on campus $17,026. These are 2024-25 figures; 2026-27 rates were not confirmed"
   }
 }

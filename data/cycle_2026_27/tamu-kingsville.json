@@ -27,7 +27,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "SAT/ACT are not required for admission; they may be used for placement (catalog) and CDS C8F says an ACT composite of 19 or SAT 1000 meets the admission requirement. Test scores are required for all Engineering majors. Scores can also serve as English proficiency (SAT 27 Reading or ACT English 21).",
+    "notes": "SAT/ACT are not required for admission; they may be used for placement (catalog) and the Common Data Set says an ACT composite of 19 or SAT 1000 meets the admission requirement. Test scores are required for all Engineering majors. Scores can also serve as English proficiency (SAT 27 Reading or ACT English 21).",
     "src": "cat"
   },
   "requirements": {
@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": 75,
-    "notes": "Apply through the Texas A&M-Kingsville application (admissions.tamuk.edu) or ApplyTexas; international application fee $75, non-refundable (CDS C13: $25 domestic, $75 international). Needed: official secondary school transcript, a university-approved foreign credential evaluation sent by the agency, a letter of sponsorship (dated within 6 months of first enrollment), a bank statement in U.S. dollars (within 12 months; amounts on the OISSS I-20 requirements page), and English proficiency. The I-20 follows admission; decisions take about two months if all documents arrive together. TSI testing is required before registration but is not an admission requirement.",
+    "notes": "Apply through the Texas A&M-Kingsville application (admissions.tamuk.edu) or ApplyTexas; international application fee $75, non-refundable (Common Data Set: $25 domestic, $75 international). Needed: official secondary school transcript, a university-approved foreign credential evaluation sent by the agency, a letter of sponsorship (dated within 6 months of first enrollment), a bank statement in U.S. dollars (within 12 months; amounts on the OISSS I-20 requirements page), and English proficiency. The I-20 follows admission; decisions take about two months if all documents arrive together. TSI testing is required before registration but is not an admission requirement.",
     "src": "intl"
   },
   "deadlines": [
@@ -43,14 +43,14 @@
       "kind": "application",
       "due": "2027-06-01",
       "label": "International application and all documents, fall 2027",
-      "notes": "Printed as Fall (August) June 1, Spring (January) Oct. 1, Summer (June) May 1, with no year; treated as fall 2027. The catalog lists the same dates. Documents must be in the office before these dates; allow time for TOEFL/IELTS (tests at least 8 weeks before the deadline).",
+      "notes": "Printed as Fall (August) June 1, Spring (January) Oct. 1, Summer (June) May 1, with no year, so fall 2027 is assumed. The catalog lists the same dates. Documents must be in the office before these dates; allow time for TOEFL/IELTS (tests at least 8 weeks before the deadline).",
       "src": "intl"
     },
     {
       "kind": "scholarship",
       "due": "2027-02-15",
       "label": "Merit scholarship priority date (first-time students)",
-      "notes": "Complete application including fee, transcripts and test scores by Feb. 15 (no year printed; treated as 2027). The page does not say whether international students are eligible; confirm with scholarships@tamuk.edu.",
+      "notes": "Complete application including fee, transcripts and test scores by Feb. 15 (no year printed, so 2027 is assumed). The page does not say whether international students are eligible; confirm with scholarships@tamuk.edu.",
       "src": "merit"
     }
   ],
@@ -91,7 +91,7 @@
   ],
   "aid": {
     "meets_full_need": false,
-    "notes": "No international-specific scholarship is listed. Merit scholarships are automatic for at least 50% of admitted first-time students (Presidential $5,000-$12,000 per year, typical profile SAT 1300 / ACT 27 and top 10% rank; Academic Excellence $1,000-$4,000, SAT 1170 / ACT 24, top 20%), but the page does not say international students are eligible. Out-of-state recipients of the competitive merit scholarship pay in-state tuition in the semesters it is disbursed (not summer). CDS H6: 17 nonresident undergraduates received institutional aid, average $1,522. Cost of attendance page for out-of-state/international students (dorm): tuition and fees $21,994, food and housing $11,946, books $1,391, transportation $1,390, miscellaneous $2,246 = $38,967 (the table sits under the 2026-27 heading but its header reads 'Academic Year 25-26').",
+    "notes": "No international-specific scholarship is listed. Merit scholarships are automatic for at least 50% of admitted first-time students (Presidential $5,000-$12,000 per year, typical profile SAT 1300 / ACT 27 and top 10% rank; Academic Excellence $1,000-$4,000, SAT 1170 / ACT 24, top 20%), but the page does not say international students are eligible. Out-of-state recipients of the competitive merit scholarship pay in-state tuition in the semesters it is disbursed (not summer). The Common Data Set shows 17 nonresident undergraduates received institutional aid, average $1,522. Cost of attendance page for out-of-state/international students (dorm): tuition and fees $21,994, food and housing $11,946, books $1,391, transportation $1,390, miscellaneous $2,246 = $38,967 (the table sits under the 2026-27 heading but its header reads 'Academic Year 25-26').",
     "src": "merit"
   },
   "majors": [

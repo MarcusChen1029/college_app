@@ -83,7 +83,7 @@
       "plan": "ROLLING",
       "due": "2027-02-15",
       "label": "Priority application deadline, international (fall 2027 entry)",
-      "notes": "International Services page: Feb. 15 is the recommended priority date for admission and scholarship consideration (no year printed; treated as fall 2027). Admission is rolling and a waiting list may begin before the final date. The domestic freshman page lists Mar. 1 priority instead.",
+      "notes": "International Services page: Feb. 15 is the recommended priority date for admission and scholarship consideration (no year printed, so fall 2027 is assumed). Admission is rolling and a waiting list may begin before the final date. The domestic freshman page lists Mar. 1 priority instead.",
       "src": "dates"
     },
     {
@@ -98,7 +98,7 @@
       "kind": "application",
       "due": "2026-11-15",
       "label": "BSN Nursing freshman deadline (fall 2027 entry)",
-      "notes": "Freshman page: all BSN materials, including prerequisite proof and a one-page nursing goals statement, are due by Nov. 15 (taken as Nov. 15, 2026 for fall 2027). BSN applicants should show a 3.5 minimum GPA. International eligibility for the BSN is not stated.",
+      "notes": "Freshman page: all BSN materials, including prerequisite proof and a one-page nursing goals statement, are due by Nov. 15 (Nov. 15, 2026 is assumed for fall 2027). BSN applicants should show a 3.5 minimum GPA. International eligibility for the BSN is not stated.",
       "src": "fy"
     }
   ],
@@ -150,7 +150,7 @@
     "required_fees_usd": 800,
     "room_board_usd": 11290,
     "total_coa_usd": 58070,
-    "notes": "APU 2026-27 estimate for a first-year living on campus: tuition (12-18 units) $45,980, university service fee $800, housing $6,490, dining plan $4,800 = $58,070 (books and other costs not included). For F-1/J-1 visas the International Services page says proof of funds must show $65,871 for undergraduates, pending new health insurance costs.",
+    "notes": "APU 2026-27 estimate for a first-year living on campus: tuition (12-18 units) $45,980, university service fee $800, housing $6,490, dining plan $4,800 = $58,070 (books and other costs not included). For F-1/J-1 visas the International Services page says proof of funds must show $65,871 for undergraduates, pending new health insurance costs",
     "src": "cost"
   },
   "majors": [

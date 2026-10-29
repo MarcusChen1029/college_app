@@ -44,7 +44,7 @@
       "plan": "RD",
       "due": "2027-06-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Page prints 'Fall Semester: June 1' without a year; treated as fall 2027. All required materials must be received by this date. Spring semester deadline is Oct. 15.",
+      "notes": "The page prints 'Fall Semester: June 1' without a year, so fall 2027 is assumed. All required materials must be received by this date. Spring semester deadline is Oct. 15.",
       "src": "intl"
     }
   ],

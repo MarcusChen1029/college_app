@@ -33,7 +33,7 @@
   },
   "test_policy": {
     "policy": "required",
-    "notes": "The international freshman materials page states 'The SAT or ACT is required for beginning freshman international students to gain admission'; scores must come directly from the testing company. The CDS (C8) instead marks SAT/ACT as recommended, and the freshman criteria page uses ACT/SAT only for English (ACT English 18 / SAT ERW 500) and math placement (ACT Math 19 or SAT Math 510 for college math). Plan to submit a score.",
+    "notes": "The international freshman materials page states 'The SAT or ACT is required for beginning freshman international students to gain admission'; scores must come directly from the testing company. The Common Data Set instead marks SAT/ACT as recommended, and the freshman criteria page uses ACT/SAT only for English (ACT English 18 / SAT ERW 500) and math placement (ACT Math 19 or SAT Math 510 for college math). Plan to submit a score.",
     "src": "mat"
   },
   "requirements": {
@@ -41,7 +41,7 @@
       "own"
     ],
     "app_fee_usd": 30,
-    "notes": "International application fee is $30 if the application and fee are submitted by July 15 (fall) and $80 after that. Required: official secondary school records with notarized English translation (sent directly; no email or fax), SAT or ACT scores, TOEFL or IELTS (education outside the US), proof of immunization, passport copy, and a financial statement of support for the I-20 (estimated costs at least $31,618 per year). Minimum secondary school GPA 2.35. Students in F-1 status cannot enter online-only programs. CDS C4 says a college-preparatory program is required and C5 lists a 19-unit distribution (4 English, 4 math, 4 science, 4 social studies, 2 foreign language, 1 arts); CDS C7 rates GPA very important.",
+    "notes": "International application fee is $30 if the application and fee are submitted by July 15 (fall) and $80 after that. Required: official secondary school records with notarized English translation (sent directly; no email or fax), SAT or ACT scores, TOEFL or IELTS (education outside the US), proof of immunization, passport copy, and a financial statement of support for the I-20 (estimated costs at least $31,618 per year). Minimum secondary school GPA 2.35. Students in F-1 status cannot enter online-only programs. The Common Data Set says a college-preparatory program is required and lists a 19-unit distribution (4 English, 4 math, 4 science, 4 social studies, 2 foreign language, 1 arts); it rates GPA very important.",
     "src": "crit"
   },
   "deadlines": [
@@ -49,7 +49,7 @@
       "kind": "priority",
       "due": "2027-06-01",
       "label": "International priority filing date, fall term (fall 2027 entry)",
-      "notes": "Priority-filing deadline for completed applications and fees so that the I-20/DS-2019 can be issued in time. The page prints no year, so treated as 2027. I-20s may not be issued for students outside the US if the application was not complete by July 1.",
+      "notes": "Priority-filing deadline for completed applications and fees so that the I-20/DS-2019 can be issued in time. The page prints no year, so 2027 is assumed. I-20s may not be issued for students outside the US if the application was not complete by July 1.",
       "src": "dates"
     },
     {
@@ -93,13 +93,13 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Non-resident fee waiver for international beginning freshmen (the admission application is the application): minimum TOEFL 75 iBT, IELTS 6.0 or Duolingo 100, a recognized secondary program with GPA 2.25 or higher, and no developmental coursework. It waives the out-of-state fees, which the page lists as up to $6,238 per semester for 12+ hours. Renewal needs full-time status and good standing. The Southeastern Honor Scholarship is also open to international students (ACT-based; SAT is converted). CDS H6: 229 nonresident aliens received institutional non-need-based aid averaging $15,939.",
+    "notes": "Non-resident fee waiver for international beginning freshmen (the admission application is the application): minimum TOEFL 75 iBT, IELTS 6.0 or Duolingo 100, a recognized secondary program with GPA 2.25 or higher, and no developmental coursework. It waives the out-of-state fees, which the page lists as up to $6,238 per semester for 12+ hours. Renewal needs full-time status and good standing. The Southeastern Honor Scholarship is also open to international students (ACT-based; SAT is converted). Common Data Set: 229 nonresident aliens received institutional non-need-based aid averaging $15,939.",
     "src": "sch"
   },
   "cost": {
     "total_coa_usd": 31618,
     "src": "mat",
-    "notes": "The international materials page says expenses are 'at least $31,618' per year for undergraduates (tuition, housing, meals, textbook rental and health insurance, excluding travel); it prints no academic year. Before any fee waiver."
+    "notes": "The international materials page says expenses are 'at least $31,618' per year for undergraduates (tuition, housing, meals, textbook rental and health insurance, excluding travel); it prints no academic year. Before any fee waiver"
   },
   "score_codes": {
     "sat": {

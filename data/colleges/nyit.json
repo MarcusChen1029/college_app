@@ -40,7 +40,7 @@
     "enrolled": 908,
     "pct_submit_sat": 22,
     "pct_submit_act": 2,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; test submission rates and percentiles from College Navigator. No public Common Data Set was found (NYIT's planning pages list a fact sheet only), so GPA, residency splits and international applicant counts are not available. SAT/ACT percentiles cover the 22% (198) / 2% (15) of enrollees who submitted scores. Undergraduate enrollment and the nonresident count (290, about 8%) are IPEDS fall 2024 undergraduate headcounts. NYIT's test-optional page gives a mid-range of 1050-1270 for admitted students who submit SAT scores."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; test submission rates and percentiles from College Navigator. No public Common Data Set was found (NYIT's planning pages list a fact sheet only), so GPA, residency splits and international applicant counts are not available. SAT/ACT percentiles cover the 22% (198) / 2% (15) of enrollees who submitted scores. Undergraduate enrollment and the nonresident count (290, about 8%) are IPEDS fall 2024 undergraduate headcounts. NYIT's test-optional page gives a mid-range of 1050-1270 for admitted students who submit SAT scores."
   },
   "scores": {
     "SAT_ERW": [

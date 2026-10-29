@@ -38,7 +38,7 @@
     "admits": 8256,
     "enrolled": 1037,
     "pct_submit_sat": 0,
-    "notes": "Baseline from IPEDS fall 2024 (exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal; College Navigator shows 90% admitted and 13% of admits enrolled). No usable Common Data Set: the university's CDS page lists nothing newer than 2021-22, so GPA, international applicants/admits and factors are not recorded. IPEDS shows only 2 enrolled first-years (0%) submitting SAT, so SAT/ACT percentiles are not published; William Paterson is test-optional. Undergraduate enrollment 6,647 and 172 nonresident-alien undergraduates are IPEDS fall 2024 (College Navigator and Urban Institute Education Data Portal)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024). Exact counts come from the NCES admissions file via the Urban Institute Education Data Portal; College Navigator shows 90% admitted and 13% of admits enrolled. There is no usable Common Data Set: the university's Common Data Set page lists nothing newer than 2021-22, so GPA, international applicants and admits and admission factors are not shown. IPEDS shows only 2 enrolled first-years (0%) sending SAT scores, so SAT/ACT percentiles are not published; William Paterson is test-optional. Undergraduate enrollment of 6,647 and 172 nonresident-alien undergraduates are IPEDS fall 2024 figures (College Navigator and Urban Institute Education Data Portal)."
   },
   "cds_test_policy": {
     "cycle": "2026-27",

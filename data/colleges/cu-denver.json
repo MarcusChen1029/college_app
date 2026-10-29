@@ -48,7 +48,7 @@
       "3.00-3.24": 16,
       "2.50-2.99": 13
     },
-    "notes": "CDS C1/C9/C11/C12 (fall 2024). Scorecard/IPEDS id 126562 covers CU Denver | Anschutz Medical Campus together; the undergraduate program and these figures are for the Denver (Auraria) campus, and the map point is the Denver campus, approximate, not the IPEDS location. Only 341 (23%) enrolled students submitted SAT and 31 (2%) ACT, so percentiles describe a small group. International applicants were admitted at about 34% (631 of 1,854); the CDS shows no international first-years in the enrolled residency table although B2 lists 68 nonresident first-time students. A 2025-26 CDS was not found on the OIRE site. No waitlist; no early decision plan. Student-faculty ratio is I-2 (fall 2024, 17 to 1)."
+    "notes": "From the Common Data Set (fall 2024). Scorecard/IPEDS id 126562 covers CU Denver | Anschutz Medical Campus together; the undergraduate program and these figures are for the Denver (Auraria) campus, and the map point is the Denver campus, approximate, not the IPEDS location. Only 341 (23%) enrolled students submitted SAT and 31 (2%) ACT, so percentiles describe a small group. International applicants were admitted at about 34% (631 of 1,854); the Common Data Set shows no international first-years in the enrolled residency table although its enrollment table lists 68 nonresident first-time students. A 2025-26 Common Data Set was not found on the OIRE site. No waitlist; no early decision plan. Student-faculty ratio is 17 to 1 (fall 2024)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -112,6 +112,6 @@
     "books_usd": 1460,
     "intl_need_aid_awarded": 129,
     "intl_avg_award_usd": 8675,
-    "notes": "CDS G1 (2025-26): out-of-state $36,270, nonresident $39,870, fees $1,163, food and housing $16,598 (the in-state tuition line is blank in the CDS). H6: need-based and non-need-based institutional aid are both available to nonresidents; 129 degree-seeking nonresident undergraduates received aid (avg $8,675)."
+    "notes": "Costs for 2025-26 from the Common Data Set: out-of-state $36,270, nonresident $39,870, fees $1,163, food and housing $16,598 (the Common Data Set has no in-state tuition figure). The Common Data Set says need-based and non-need-based institutional aid are both available to nonresidents; 129 degree-seeking nonresident undergraduates received aid (avg $8,675)"
   }
 }

@@ -64,7 +64,7 @@
       "2.50-2.99": 26.92,
       "2.0-2.49": 1.39
     },
-    "notes": "Fall 2024 first-time first-year cohort, CDS C1 residency table (in-state / out-of-state / international: 17,413 / 8,643 / 313 applied; 16,367 / 6,867 / 292 admitted; 3,308 / 701 / 13 enrolled). The 2024-2025 CDS is the newest ECU publishes (no 2025-2026 edition found). Only 10% (403) of enrollees submitted SAT and 23% (918) ACT. GPA distribution is the 'all enrolled students' column of C11. Undergraduate enrollment (21,445) is from College Navigator, not the CDS (the CDS B1 table is an image). C7 factor checkboxes are not machine-readable, so factors are omitted."
+    "notes": "Fall 2024 first-time first-year cohort, from the Common Data Set residency table (in-state / out-of-state / international: 17,413 / 8,643 / 313 applied; 16,367 / 6,867 / 292 admitted; 3,308 / 701 / 13 enrolled). The 2024-2025 Common Data Set is the newest ECU publishes (no 2025-2026 edition found). Only 10% (403) of enrollees submitted SAT and 23% (918) ACT. The GPA breakdown is the 'all enrolled students' column. Undergraduate enrollment (21,445) is from College Navigator, not the Common Data Set (its enrollment table is an image). The admission-factor checkboxes are not machine-readable, so factors are not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -101,7 +101,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: students with a weighted high school GPA below 2.8 must submit an ACT or SAT score; 2.8 or higher are not required to submit."
+    "notes": "From the Common Data Set: students with a weighted high school GPA below 2.8 must submit an ACT or SAT score; 2.8 or higher are not required to submit."
   },
   "cost": {
     "year": "2024-2025",
@@ -115,6 +115,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 53,
     "intl_avg_award_usd": 19182,
-    "notes": "CDS G1 (2024-25, first-year): in-state tuition $4,452, out-of-state/nonresident $20,729, required fees $2,909, on-campus housing $6,498 + food $4,852 = $11,350; books $1,510. The CDS shows 2025-26 costs were not yet final. H6: 53 degree-seeking nonresident undergraduates received institutional aid (average $19,182, total $1,016,624); the CDS text does not show whether it was need- or non-need-based. The tuition_usd field is the in-state figure."
+    "notes": "First-year costs for 2024-25 from the Common Data Set: in-state tuition $4,452, out-of-state/nonresident $20,729, required fees $2,909, on-campus housing $6,498 + food $4,852 = $11,350; books $1,510. The Common Data Set shows 2025-26 costs were not yet final. 53 degree-seeking nonresident undergraduates received institutional aid (average $19,182, total $1,016,624); the Common Data Set text does not show whether it was need- or non-need-based. The tuition shown is the in-state figure"
   }
 }

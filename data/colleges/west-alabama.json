@@ -47,7 +47,7 @@
     "enrolled": 389,
     "pct_submit_sat": 3,
     "pct_submit_act": 61,
-    "notes": "Baseline from IPEDS fall 2024 (exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal; percentages and percentiles from College Navigator). No Common Data Set was found on UWA's site (the Institutional Effectiveness pages link none), so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 3%, ACT 61%); the SAT figures rest on very few students. The 43% admit rate is as IPEDS reports it; UWA's published minimums are low (ACT 17, SAT 920 or 2.5 GPA), so the counting of applicants may differ from other schools."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024). Exact counts come from the NCES admissions file via the Urban Institute Education Data Portal; percentages and percentiles come from College Navigator. No Common Data Set was found on UWA's site (the Institutional Effectiveness pages link none), so international applicants and admits, GPA, SAT total and admission factors are not shown. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 3%, ACT 61%); the SAT figures rest on very few students. The 43% admit rate is as IPEDS reports it; UWA's published minimums are low (ACT 17, SAT 920 or 2.5 GPA), so the counting of applicants may differ from other schools."
   },
   "scores": {
     "SAT_ERW": [
@@ -83,6 +83,6 @@
     "tuition_out_of_state_usd": 20090,
     "books_usd": 1206,
     "room_board_usd": 8230,
-    "notes": "College Navigator (IPEDS 2024-25): published tuition and fees $10,990 in-state, $20,090 out-of-state; on-campus food and housing $8,230; books and supplies $1,206. Current 2026-27 direct costs for international undergraduates are on the UWA Tuition & Fees page (see cycle data)."
+    "notes": "College Navigator (IPEDS 2024-25): published tuition and fees $10,990 in-state, $20,090 out-of-state; on-campus food and housing $8,230; books and supplies $1,206. Current 2026-27 direct costs for international undergraduates are on the UWA Tuition & Fees page (see cycle data)"
   }
 }

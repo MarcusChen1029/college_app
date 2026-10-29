@@ -56,7 +56,7 @@
    "plan": "ROLLING",
    "due": "2027-08-01",
    "label": "International fall application deadline (fall 2027)",
-   "notes": "Winter (January) deadline is Dec 1 and spring/summer is April 1. The page gives month/day only; the year is assumed for fall 2027. CDS C14 also lists Aug 1 as the first-year closing date.",
+   "notes": "Winter (January) deadline is Dec 1 and spring/summer is April 1. The page gives month/day only; the year is assumed for fall 2027. The Common Data Set also lists Aug 1 as the first-year closing date.",
    "src": "dl"
   },
   {
@@ -114,7 +114,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "No citizenship needed for admission or merit awards; all incoming students are considered automatically. Fall 2027 first-year awards: Warrior Award $6,500 per year, Gold Award $4,500 per year, Green Award up to $2,500 per year, each for four years (3.0 GPA and full-time enrollment to keep). Federal aid is for US citizens and permanent residents only. CDS H6 boxes show both need-based and non-need-based institutional aid for nonresidents, but Wayne State's pages describe only merit awards.",
+  "notes": "No citizenship needed for admission or merit awards; all incoming students are considered automatically. Fall 2027 first-year awards: Warrior Award $6,500 per year, Gold Award $4,500 per year, Green Award up to $2,500 per year, each for four years (3.0 GPA and full-time enrollment to keep). Federal aid is for US citizens and permanent residents only. The Common Data Set shows both need-based and non-need-based institutional aid for nonresidents, but Wayne State's pages describe only merit awards.",
   "src": "fr"
  },
  "majors": [],
@@ -164,6 +164,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "general": "Public research university in Detroit; 84% overall admit rate and SAT middle 50% of 1060-1290 (CDS 2025-26). Placed just above D because of its research profile and test profile."
+  "general": "Public research university in Detroit; 84% overall admit rate and SAT middle 50% of 1060-1290 (Common Data Set 2025-26). Placed just above D because of its research profile and test profile."
  }
 }

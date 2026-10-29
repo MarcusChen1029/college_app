@@ -109,7 +109,7 @@
    "kind": "scholarship",
    "due": "2027-03-01",
    "label": "#YouAreWelcomeHere Scholarship (50% of tuition, new F-1 international students)",
-   "notes": "Separate paper application with an essay emailed to international@hpu.edu; recipients notified in April. The page gives March 1 without a year, so it is treated as 2027. Not stackable with other scholarships; fall term only.",
+   "notes": "Separate paper application with an essay emailed to international@hpu.edu; recipients notified in April. The page gives March 1 without a year, so 2027 is assumed. Not stackable with other scholarships; fall term only.",
    "src": "schol"
   },
   {
@@ -176,7 +176,7 @@
   "books_usd": 800,
   "other_usd": 4532,
   "total_coa_usd": 65962,
-  "notes": "HPU 2026-27 cost of attendance, independent undergraduate, non-nursing (nursing tuition is $44,616). Food and housing is an estimate; other_usd is personal $1,800 + transportation $2,600 + loan fees $132. No separate international tuition rate is listed.",
+  "notes": "HPU 2026-27 cost of attendance, independent undergraduate, non-nursing (nursing tuition is $44,616). Food and housing is an estimate; other costs are personal $1,800 + transportation $2,600 + loan fees $132. No separate international tuition rate is listed",
   "src": "coa"
  },
  "aid": {

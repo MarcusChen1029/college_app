@@ -56,7 +56,7 @@
       "2.0-2.49": 2.01,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2024) - the 2025-26 CDS is not posted yet. International applicants: 369 of 1,013 admitted (36%). Undergrad enrollment 18,206 is B1/B2 total undergraduates; intl_undergrads 314 is the B2 nonresident total. SAT composite 25/50/75 = 1010/1110/1210. GPA distribution is the 'all enrolled students' column (0.19% had GPA below 1.0). CDS C7 importance ratings and the C8A test-policy checkboxes could not be read from the PDF text, so factors are left out; the admissions site says tests are optional. No early decision/action reported here."
+    "notes": "From the Common Data Set (fall 2024); the 2025-26 Common Data Set is not posted yet. International applicants: 369 of 1,013 admitted (36%). Undergraduate enrollment is 18,206 (total undergraduates); international undergraduates number 314 (total nonresident). SAT composite 25/50/75 = 1010/1110/1210. The GPA breakdown is the 'all enrolled students' column (0.19% had GPA below 1.0). The Common Data Set's admission factor ratings and test-policy checkboxes could not be read from the PDF text, so admission factors are not shown; the admissions site says tests are optional. No early decision or early action is reported."
   },
   "scores_source": "cds",
   "scores": {
@@ -96,6 +96,6 @@
     "room_board_usd": 14582,
     "books_usd": 950,
     "other_usd": 2050,
-    "notes": "CDS G1/G5 (first-year, 2024-25). Nonresident tuition per credit hour $1,133, resident $362. Transportation estimate $1,290 not included in other_usd. CDS H6: 200 nonresident undergraduates received institutional aid, average $21,636; the PDF text does not show which aid-type boxes are checked."
+    "notes": "First-year costs from the Common Data Set (2024-25). Nonresident tuition per credit hour $1,133, resident $362. The transportation estimate of $1,290 is not included in other costs. From the Common Data Set: 200 nonresident undergraduates received institutional aid, average $21,636; the PDF text does not show which aid-type boxes are checked"
   }
 }

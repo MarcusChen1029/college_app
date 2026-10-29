@@ -53,7 +53,7 @@
       "own"
     ],
     "app_fee_usd": 0,
-    "notes": "International applicants use AUM's online international application, which has no application fee (domestic freshmen pay $25 per CDS C13). Send a passport copy, the official high school transcript (with English translation if needed), proof of English proficiency (unless exempt), a bank statement and sponsor letter (the requirements page says the statement should show at least $33,233) and a supplemental international student form. A non-refundable $100 I-20 processing fee is charged after acceptance. CDS C7 lists essays and recommendations as not considered; no interview.",
+    "notes": "International applicants use AUM's online international application, which has no application fee (domestic freshmen pay $25 per the Common Data Set). Send a passport copy, the official high school transcript (with English translation if needed), proof of English proficiency (unless exempt), a bank statement and sponsor letter (the requirements page says the statement should show at least $33,233) and a supplemental international student form. A non-refundable $100 I-20 processing fee is charged after acceptance. The Common Data Set lists essays and recommendations as not considered; no interview.",
     "src": "req"
   },
   "deadlines": [
@@ -62,7 +62,7 @@
       "plan": "ROLLING",
       "due": "2027-07-15",
       "label": "International applicants: fall 2027 application deadline",
-      "notes": "AUM's international requirements page says it accepts students throughout the year and asks fall applicants to apply by July 15 (no year printed; treated as fall 2027). Spring: Nov 15; summer: April 15. The domestic undergraduate page lists Aug 1 for fall, but the international date is used here. Undergraduate international applications are processed in 5 to 8 business days once complete.",
+      "notes": "AUM's international requirements page says it accepts students throughout the year and asks fall applicants to apply by July 15 (no year printed, so fall 2027 is assumed). Spring: Nov 15; summer: April 15. The domestic undergraduate page lists Aug 1 for fall, but the international date is the one shown. Undergraduate international applications are processed in 5 to 8 business days once complete.",
       "src": "req"
     }
   ],
@@ -117,7 +117,7 @@
     "meets_full_need": false,
     "merit_scholarships": true,
     "merit_separate_app": false,
-    "notes": "International Undergrad AUM Scholarship: $2,000 a year ($8,000 total over four years) for freshmen with a 2.75/4.0 high school GPA or TOEFL iBT 68 / paper 520 / IELTS 6.0. International Undergrad Warhawk Scholarship: $4,000 a year ($16,000 total) with a 3.0 GPA or TOEFL iBT 76 / paper 540 / IELTS 6.5. AUM's international page says scholarships are 'up to $4,000 per year'; how to apply and whether the two combine are not stated. CDS H6 ticks both need-based and non-need-based institutional aid for nonresident undergraduates, but AUM's international pages list only these merit awards. International students are not eligible for federal aid.",
+    "notes": "International Undergrad AUM Scholarship: $2,000 a year ($8,000 total over four years) for freshmen with a 2.75/4.0 high school GPA or TOEFL iBT 68 / paper 520 / IELTS 6.0. International Undergrad Warhawk Scholarship: $4,000 a year ($16,000 total) with a 3.0 GPA or TOEFL iBT 76 / paper 540 / IELTS 6.5. AUM's international page says scholarships are 'up to $4,000 per year'; how to apply and whether the two combine are not stated. The Common Data Set ticks both need-based and non-need-based aid from the college for nonresident undergraduates, but AUM's international pages list only these merit awards. International students are not eligible for federal aid.",
     "src": "sch"
   },
   "majors": [],

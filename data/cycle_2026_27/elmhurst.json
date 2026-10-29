@@ -57,7 +57,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "International first-year application window closes (fall 2027 entry)",
-   "notes": "Page says apply between September 1 and May 1, or until all spaces are filled, with no priority date. No year is printed; taken as the fall 2027 cycle (opens Sep 1, 2026). Spring entry: Aug 1 to Nov 1.",
+   "notes": "The page says apply between September 1 and May 1, or until all spaces are filled, with no priority date. The page gives no year, so the fall 2027 cycle is assumed (opens Sep 1, 2026). Spring entry: Aug 1 to Nov 1.",
    "src": "intl"
   }
  ],
@@ -123,7 +123,7 @@
   "required_fees_usd": 600,
   "room_board_usd": 13170,
   "books_usd": 1290,
-  "notes": "Full-time undergraduate tuition $45,258 (2026-27), student fee $300 per term, room $7,454 plus 17-meal board $5,716.30; first-year students also pay a $275 matriculation fee. The cost-of-attendance page lists different room ($8,150) and food ($7,880) estimates, so budgets can differ from billed charges.",
+  "notes": "Full-time undergraduate tuition $45,258 (2026-27), student fee $300 per term, room $7,454 plus 17-meal board $5,716.30; first-year students also pay a $275 matriculation fee. The cost-of-attendance page lists different room ($8,150) and food ($7,880) estimates, so budgets can differ from billed charges",
   "src": "tuit"
  },
  "majors": [],

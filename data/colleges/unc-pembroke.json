@@ -51,7 +51,7 @@
       "2.0-2.49": 3,
       "1.0-1.99": 0
     },
-    "notes": "Fall 2025 first-time first-year cohort, CDS C1 residency table (in-state / out-of-state / international: 5,406 / 1,430 / 1,690 applied; 5,300 / 1,337 / 1,641 admitted; 755 / 104 / 40 enrolled). Only 34 enrolled students (4%) submitted SAT and 125 (14%) ACT, so the score percentiles describe a small group. No early decision or early action in the CDS (C21/C22); no waitlist."
+    "notes": "Fall 2025 first-time first-year cohort, from the Common Data Set residency table (in-state / out-of-state / international: 5,406 / 1,430 / 1,690 applied; 5,300 / 1,337 / 1,641 admitted; 755 / 104 / 40 enrolled). Only 34 enrolled students (4%) sent SAT scores and 125 (14%) sent ACT scores, so the score percentiles describe a small group. The Common Data Set lists no early decision or early action; no waitlist."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'required for some' applicants (weighted HS GPA 2.50-2.79 must submit ACT 17 / SAT 930)."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'required for some' applicants (weighted HS GPA 2.50-2.79 must submit ACT 17 / SAT 930)."
   },
   "cost": {
     "year": "2026-2027",
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 66,
     "intl_avg_award_usd": 6293,
-    "notes": "CDS G1 (2026-27, first-year): in-state tuition $1,000 and out-of-state/nonresident $7,000 (NC Promise tuition); housing $6,094 + food $6,026 = $12,120. CDS H6: only institutional non-need-based aid is available to nonresidents; 66 nonresident undergraduates received it (avg $6,293, total $415,326). The tuition_usd field is the in-state figure."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: in-state tuition $1,000 and out-of-state/nonresident $7,000 (NC Promise tuition); housing $6,094 + food $6,026 = $12,120. The Common Data Set says only institutional non-need-based aid is available to nonresidents; 66 nonresident undergraduates received it (average $6,293, total $415,326). The tuition shown is the in-state figure"
   }
 }

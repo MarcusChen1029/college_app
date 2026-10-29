@@ -57,7 +57,7 @@
       "2.0-2.49": 0.08,
       "1.0-1.99": 0.03
     },
-    "notes": "CDS C1 (Fall 2025 first-time first-year): 22,193 applied, 19,141 admitted (86%); international 1,520 applied and 1,443 admitted (95%), 42 enrolled. C9 SAT/ACT figures describe enrolled students: 31% submitted SAT (1,156) but only 1% ACT (21), so the ACT percentiles rest on very few students. No early decision or early action; no waitlist. C7 factor checkboxes were not readable from the PDF text and are omitted. Undergraduate enrollment is B1 total undergraduates (15,950); the nonresident count in B2 was not readable, so intl_undergrads is left null."
+    "notes": "From the Common Data Set (Fall 2025 first-time first-year): 22,193 applied, 19,141 admitted (86%); international 1,520 applied and 1,443 admitted (95%), 42 enrolled. SAT/ACT figures describe enrolled students: 31% submitted SAT (1,156) but only 1% ACT (21), so the ACT percentiles rest on very few students. No early decision or early action; no waitlist. The admission-factor checkboxes could not be read from the PDF text and are not shown. Undergraduate enrollment is 15,950 (total undergraduates); the nonresident count could not be read, so the number of international undergraduates is not shown."
   },
   "scores_source": "cds",
   "scores": {
@@ -85,7 +85,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A/C8F (Fall 2027): SAT or ACT not required for admission, but considered if submitted; Ball State is test-optional and the student may elect to submit scores."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT not required for admission, but considered if submitted; Ball State is test-optional and the student may elect to submit scores."
   },
   "cost": {
     "year": "2026-2027",
@@ -100,6 +100,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 189,
     "intl_avg_award_usd": 19716,
-    "notes": "CDS G1 first-year 2026-27: in-state tuition $8,948, nonresident tuition $27,496 (international students pay the nonresident rate), required fees $2,134, on-campus food and housing $12,832; G5 books $782. Tuition varies by program (G4). H6: only institutional NON-need-based aid is available to nonresidents; 189 nonresidents received institutional aid, average $19,716."
+    "notes": "First-year costs from the Common Data Set (2026-27): in-state tuition $8,948, nonresident tuition $27,496 (international students pay the nonresident rate), required fees $2,134, on-campus food and housing $12,832; books $782. Tuition varies by program. Only non-need-based aid from the college is available to nonresidents; 189 nonresidents received aid from the college, average $19,716"
   }
 }

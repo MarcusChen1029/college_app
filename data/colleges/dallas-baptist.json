@@ -53,7 +53,7 @@
     "enrolled": 579,
     "pct_submit_sat": 29,
     "pct_submit_act": 15,
-    "notes": "Baseline from IPEDS College Navigator (fall 2024 entering class): 6,163 applicants, 89% admitted, 11% of admitted enrolled. College Navigator prints only rounded percentages, so admit and enrolled counts are left null. DBU's Common Data Set could not be found on dbu.edu (the Institutional Effectiveness and Research pages link none), so international applicant counts, GPA and ED data are not available. Test-score percentiles come from only 180 SAT and 91 ACT submitters (29% and 15% of enrollees). Undergraduate enrollment 2,785 and student-faculty ratio 16:1 are IPEDS fall 2024. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator (fall 2024 entering class): 6,163 applicants, 89% admitted, 11% of admitted enrolled. College Navigator prints only rounded percentages, so it gives no admit or enrolled counts. DBU's Common Data Set could not be found on dbu.edu (the Institutional Effectiveness and Research pages link none), so international applicant counts, GPA and ED data are not available. Test-score percentiles come from only 180 SAT and 91 ACT submitters (29% and 15% of enrollees). Undergraduate enrollment 2,785 and student-faculty ratio 16:1 are IPEDS fall 2024. Applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate."
   },
   "scores": {
     "SAT_ERW": [
@@ -91,6 +91,6 @@
     "books_usd": 1290,
     "other_usd": 2892,
     "total_coa_usd": 60640,
-    "notes": "DBU 2026/27 on-campus cost of attendance: block tuition $41,190 ($20,595 per semester, 12-18 hours), fees $2,370, housing $5,898 and meals $7,000 (budget estimates), books $1,290, other = transportation $1,150 + personal $1,650 + loan fees $92. The same rates apply to international students."
+    "notes": "DBU 2026/27 on-campus cost of attendance: block tuition $41,190 ($20,595 per semester, 12-18 hours), fees $2,370, housing $5,898 and meals $7,000 (budget estimates), books $1,290, other = transportation $1,150 + personal $1,650 + loan fees $92. The same rates apply to international students"
   }
 }

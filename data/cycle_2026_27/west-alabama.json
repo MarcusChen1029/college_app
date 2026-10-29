@@ -50,14 +50,14 @@
    "plan": "RD",
    "due": "2027-06-01",
    "label": "International fall application deadline (fall 2027 entry)",
-   "notes": "International page: documents due Fall Semester June 1, Spring Semester October 1, Summer Semester March 1. The page prints no year; treated as fall 2027. The domestic undergraduate page lists no application deadline.",
+   "notes": "International page: documents due Fall Semester June 1, Spring Semester October 1, Summer Semester March 1. The page gives no year, so fall 2027 is assumed. The domestic undergraduate page lists no application deadline.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-04-15",
    "label": "Trustee scholarship application deadline",
-   "notes": "Trustee Academic awards range from $2,000 to $12,000 per year (3.0 GPA to renew). April 15 is printed without a year; treated as 2027. Not available to international students attending through a partnership or memorandum of agreement. The international talent and exceptional-student awards list no deadline.",
+   "notes": "Trustee Academic awards range from $2,000 to $12,000 per year (3.0 GPA to renew). April 15 is printed without a year, so 2027 is assumed. Not available to international students attending through a partnership or memorandum of agreement. The international talent and exceptional-student awards list no deadline.",
    "src": "schol"
   }
  ],

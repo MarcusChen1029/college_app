@@ -35,7 +35,7 @@
    "own"
   ],
   "app_fee_usd": null,
-  "notes": "Application link is to SFA's own application-for-admission page; the CDS lists applytexas.org and commonapp.org as application URLs. CDS C13 shows an application fee of $50, but the admissions pages read do not state a fee, so it is not recorded as the live figure. International first-year applicants need a minimum 2.5 cumulative GPA on a course-by-course credential evaluation of all secondary schools. SAT code 6682, ACT code 4188.",
+  "notes": "Application link is to SFA's own application-for-admission page; the Common Data Set lists applytexas.org and commonapp.org as application URLs. The Common Data Set shows an application fee of $50, but the admissions pages reviewed do not state a fee, so it is not shown as the current fee. International first-year applicants need a minimum 2.5 cumulative GPA on a course-by-course credential evaluation of all secondary schools. SAT code 6682, ACT code 4188.",
   "src": "intl"
  },
  "deadlines": [
@@ -44,7 +44,7 @@
    "plan": "RD",
    "due": "2027-06-01",
    "label": "International fall application deadline (fall 2027 entry)",
-   "notes": "International page: fall, submit all documents by June 1; spring, October 1; summer has no listed deadline (email international@sfasu.edu). The page prints no year; treated as fall 2027. Domestic first-year admission is rolling with no application deadline; CDS C16 says decisions begin March 15.",
+   "notes": "International page: fall, submit all documents by June 1; spring, October 1; summer has no listed deadline (email international@sfasu.edu). The page prints no year, so fall 2027 is assumed. Domestic first-year admission is rolling with no application deadline; the Common Data Set says decisions begin March 15.",
    "src": "intl"
   }
  ],
@@ -65,7 +65,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 4.5,
-   "notes": "Listed minimum for tests taken after Jan. 21, 2026. The page does not name the scale for 4.5; it is read as the new 1-6 scale.",
+   "notes": "Listed minimum for tests taken after Jan. 21, 2026. The page does not name the scale for 4.5, so it is assumed to be the new 1-6 scale.",
    "src": "eng"
   },
   {

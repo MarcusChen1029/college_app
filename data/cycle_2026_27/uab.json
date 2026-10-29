@@ -62,14 +62,14 @@
       "kind": "priority",
       "due": "2027-06-01",
       "label": "Fall 2027 priority admission deadline (international freshman)",
-      "notes": "UAB's international freshman page and catalog list June 1 for fall without a year; treated as fall 2027. Later applications are considered as space allows. UAB advises international students to apply at least six months before the start date. Applicants outside the US apply through INTO UAB, whose fall 2027 date is not published.",
+      "notes": "UAB's international freshman page and catalog list June 1 for fall without a year, so fall 2027 is assumed. Later applications are considered as space allows. UAB advises international students to apply at least six months before the start date. Applicants outside the US apply through INTO UAB, whose fall 2027 date is not published.",
       "src": "intl"
     },
     {
       "kind": "scholarship",
       "due": "2027-05-01",
       "label": "Accepted by this date to be considered for the UAB International Scholarship (August intake)",
-      "notes": "The page gives no year; treated as 2027. Students must already be accepted by May 1 (Nov 1 for the January intake), so the application should be complete well before then.",
+      "notes": "The page gives no year, so 2027 is assumed. Students must already be accepted by May 1 (Nov 1 for the January intake), so the application should be complete well before then.",
       "src": "sch"
     }
   ],
@@ -152,9 +152,9 @@
     "nursing": "C"
   },
   "tier_notes": {
-    "general": "Public research university with an academic medical center; admits about 94% of applicants (CDS 2025-26). Placed just above D for its research profile.",
-    "biology_life_sci": "Editorial estimate: large life-science programs next to a major academic medical center; no ranking cited.",
-    "pre_med": "Editorial estimate: UAB has its own medical school and early medical/dental/optometry acceptance programs (test-optional page); no ranking cited.",
-    "nursing": "Editorial estimate: School of Nursing in an academic medical center; no ranking cited."
+    "general": "Public research university with an academic medical center; admits about 94% of applicants (Common Data Set 2025-26). Placed just above D for its research profile.",
+    "biology_life_sci": "Our estimate: large life-science programs next to a major academic medical center; no ranking cited.",
+    "pre_med": "Our estimate: UAB has its own medical school and early medical/dental/optometry acceptance programs (test-optional page); no ranking cited.",
+    "nursing": "Our estimate: School of Nursing in an academic medical center; no ranking cited."
   }
 }

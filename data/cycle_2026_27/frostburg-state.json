@@ -76,7 +76,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Page says 'apply by June 1st for Fall and October 15th for Spring' to allow time for visa processing; no year printed, taken as 2027. Domestic applications open August 1 and are accepted until space runs out.",
+      "notes": "Page says 'apply by June 1st for Fall and October 15th for Spring' to allow time for visa processing; the page gives no year, so 2027 is assumed. Domestic applications open August 1 and are accepted until space runs out.",
       "src": "intl"
     },
     {
@@ -84,14 +84,14 @@
       "plan": "EA",
       "due": "2026-11-15",
       "label": "Early Action (non-binding)",
-      "notes": "Domestic first-year page: apply by November 15 for a decision in 2-4 weeks; regular applications are 'encouraged by February 1'. No year printed, taken as the fall 2027 cycle. International applicants have the June 1 deadline above.",
+      "notes": "Domestic first-year page: apply by November 15 for a decision in 2-4 weeks; regular applications are 'encouraged by February 1'. The page gives no year, so the fall 2027 cycle is assumed. International applicants have the June 1 deadline above.",
       "src": "apply"
     },
     {
       "kind": "scholarship",
       "due": "2027-03-01",
       "label": "Foundation scholarship priority deadline",
-      "notes": "Foundation scholarship applications are accepted until August 1. Year not printed; taken as 2027.",
+      "notes": "Foundation scholarship applications are accepted until August 1. The year is not printed, so 2027 is assumed.",
       "src": "dates"
     }
   ],
@@ -129,7 +129,7 @@
     "tuition_out_of_state_usd": 23306,
     "required_fees_usd": 3138,
     "room_board_usd": 15242,
-    "notes": "Rates for Fall 2026-Spring 2027 on the tuition page: Maryland resident tuition $7,640, out-of-state tuition $23,306, fees $3,138, housing and meals $15,242 (depends on accommodation). The page lists no separate international rate (international students are non-residents, so the out-of-state rate is the one that can apply, but this is not stated). Regional rate $17,198 is for residents of nearby PA/VA/WV/OH counties only.",
+    "notes": "Rates for Fall 2026-Spring 2027 on the tuition page: Maryland resident tuition $7,640, out-of-state tuition $23,306, fees $3,138, housing and meals $15,242 (depends on accommodation). The page lists no separate international rate (international students are non-residents, so the out-of-state rate is the one that can apply, but this is not stated). Regional rate $17,198 is for residents of nearby PA/VA/WV/OH counties only",
     "src": "tf"
   },
   "aid": {

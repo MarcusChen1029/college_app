@@ -44,7 +44,7 @@
     "intl_admits": 917,
     "pct_submit_sat": 40.0,
     "pct_submit_act": 8.0,
-    "notes": "CDS C1 totals (men 19,128 + women 22,122 applicants; 29,242 admitted; 6,388 enrolled). The C2 residency table sums to 41,247 applicants (in-state 36,749 / out-of-state 2,245 / international 2,253); admits and enrolled agree. International first-year admit rate is 40.7% (917 of 2,253) versus 72.9% in-state; the CDS does not say why. UNT left high school GPA (C11/C12) blank, so GPA fields are omitted. Undergraduate enrollment 34,414 is CDS B2 total undergraduates (degree-seeking nonresidents: 1,546). The CDS file prints year digits incompletely, so the 2025-2026 label comes from the file name. Student-faculty ratio 25:1 is from IPEDS College Navigator."
+    "notes": "From the Common Data Set, applications and admissions totals (men 19,128 + women 22,122 applicants; 29,242 admitted; 6,388 enrolled). The residency table sums to 41,247 applicants (in-state 36,749 / out-of-state 2,245 / international 2,253); admits and enrolled agree. International first-year admit rate is 40.7% (917 of 2,253) versus 72.9% in-state; the Common Data Set does not say why. UNT did not report high school GPA, so GPA is not shown. Undergraduate enrollment 34,414 is the total undergraduates (degree-seeking nonresidents: 1,546). The Common Data Set file prints year digits incompletely, so the 2025-2026 label comes from the file name. Student-faculty ratio 25:1 is from IPEDS College Navigator."
   },
   "scores_source": "cds",
   "scores": {
@@ -99,7 +99,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set: SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2025-2026",
@@ -112,6 +112,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 1075,
     "intl_avg_award_usd": 5928,
-    "notes": "CDS G1 first-year full-year amounts (nonresident tuition equals out-of-state $20,823; per credit hour $685 nonresident vs $280 in-state). The CDS marks 2026-27 costs as not yet available, so these are most likely 2025-26 amounts. CDS H6: only institutional non-need-based aid is available to nonresidents; 1,075 degree-seeking nonresident undergraduates received it (avg $5,928). CDS C7 rows for test scores, essay and recommendations were left unmarked, so they are omitted."
+    "notes": "First-year full-year amounts from the Common Data Set (nonresident tuition equals out-of-state $20,823; per credit hour $685 nonresident vs $280 in-state). The Common Data Set marks 2026-27 costs as not yet available, so these are most likely 2025-26 amounts. The Common Data Set says only institutional non-need-based aid is available to nonresidents; 1,075 degree-seeking nonresident undergraduates received it (average $5,928). The admission factor rows for test scores, essay and recommendations were left unmarked, so they are not shown"
   }
 }

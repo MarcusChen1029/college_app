@@ -49,14 +49,14 @@
    "kind": "application",
    "due": "2027-05-31",
    "label": "International first-year application deadline, Cal State Apply (fall 2027)",
-   "notes": "Filing opens Oct 1, 2026. The page prints 'May 31' without a year and its landing page says fall 2027 applications are open, so it is treated as May 31, 2027. The office strongly encourages applying early because visa processing can take weeks after the I-20 is issued; some academic programs may have earlier deadlines.",
+   "notes": "Filing opens Oct 1, 2026. The page gives 'May 31' without a year and its landing page says fall 2027 applications are open, so May 31, 2027 is assumed. The office strongly encourages applying early because visa processing can take weeks after the I-20 is issued; some academic programs may have earlier deadlines.",
    "src": "dates"
   },
   {
    "kind": "other",
    "due": "2027-06-15",
    "label": "International Admissions document deadline (fall applicants)",
-   "notes": "The page prints 'June 15' without a year; treated as 2027. Official documents must be submitted before registering for classes.",
+   "notes": "The page gives 'June 15' without a year, so 2027 is assumed. Official documents must be submitted before registering for classes.",
    "src": "dates"
   }
  ],
@@ -117,7 +117,7 @@
   "room_board_usd": 18509,
   "other_usd": 1500,
   "total_coa_usd": 44505,
-  "notes": "From the school's non-resident estimate for students beginning Spring 2027 (15 units per semester): tuition and fees $24,496 combined (stored as tuition_intl_usd; the page does not split fees out), health insurance $1,500 (stored in other_usd), living expenses $18,509 (stored in room_board_usd), total I-20 amount $44,505. Dependents need $5,000 extra per spouse and per child.",
+  "notes": "From the school's non-resident estimate for students beginning Spring 2027 (15 units per semester): tuition and fees $24,496 combined (shown as international tuition; the page does not split fees out), health insurance $1,500 (shown under other costs), living expenses $18,509 (shown as housing and food), total I-20 amount $44,505. Dependents need $5,000 extra per spouse and per child",
   "src": "fees"
  },
  "majors": [],

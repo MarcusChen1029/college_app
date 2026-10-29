@@ -51,7 +51,7 @@
       "2.0-2.49": 11.38,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2025 first-year class): 7,804 applied, 7,536 admitted, 1,502 enrolled. The in-state / out-of-state / international split in C1 was left blank, so international applicants and admits are not published. Undergraduate enrollment 9,962 and nonresident undergraduates 161 are the CDS B1/B2 'Total Undergraduates' figures; the student-to-faculty ratio (16:1) is the fall 2024 College Navigator figure. TWU is coeducational but 8,790 of its 9,962 undergraduates are women. No waiting list, early decision or early action. TWU is test-optional, so SAT percentiles describe the 48% (SAT) and 8% (ACT) of enrollees who submitted scores; no ACT percentiles were reported. The PDF header says 'Common Data Set 2024-2025' but its data are for fall 2025 and it is posted as the 2025-2026 edition. CDS C7 factor checkboxes could not be read from the PDF text, so no factors are recorded."
+    "notes": "From the Common Data Set (fall 2025 first-year class): 7,804 applied, 7,536 admitted, 1,502 enrolled. TWU did not report the in-state / out-of-state / international split, so international applicants and admits are not published. Undergraduate enrollment is 9,962 and nonresident undergraduates number 161 (both 'Total Undergraduates' figures); the student-to-faculty ratio (16:1) is the fall 2024 College Navigator figure. TWU is coeducational but 8,790 of its 9,962 undergraduates are women. No waiting list, early decision or early action. TWU is test-optional, so SAT percentiles describe the 48% (SAT) and 8% (ACT) of enrollees who submitted scores; no ACT percentiles were reported. The PDF header says 'Common Data Set 2024-2025' but its data are for fall 2025 and it is posted as the 2025-2026 edition. The admission-factor checkboxes could not be read from the PDF text, so no factors are shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -73,7 +73,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: 'TWU is test-optional. Scores should be submitted if a student is using their scores to claim a TSI exemption.'"
+    "notes": "'TWU is test-optional. Scores should be submitted if a student is using their scores to claim a TSI exemption.' This is the Common Data Set's test policy."
   },
   "cost": {
     "year": "2026-2027",
@@ -87,6 +87,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 55,
     "intl_avg_award_usd": 6683,
-    "notes": "CDS G1 (first-year): nonresident tuition $19,980, required fees $3,850, on-campus food and housing $13,230 (the form's G1 text asks for 2026-27 costs; the filing does not say otherwise). H6: institutional need-based and non-need-based aid are both available to nonresident undergraduates; 55 received it (average $6,683, total $240,274)."
+    "notes": "From the Common Data Set (first-year): nonresident tuition $19,980, required fees $3,850, on-campus food and housing $13,230 (the form asks for 2026-27 costs; the filing does not say otherwise). Institutional need-based and non-need-based aid are both available to nonresident undergraduates; 55 received it (average $6,683, total $240,274)"
   }
 }

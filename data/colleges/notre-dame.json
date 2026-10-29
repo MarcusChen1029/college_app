@@ -55,7 +55,7 @@
     "waitlist_admitted": 54,
     "pct_submit_sat": 34,
     "pct_submit_act": 33,
-    "notes": "CDS 2025-26 (fall 2025 entering class). No Early Decision plan (restrictive early action only). The CDS gives only the number submitting SAT (726) and ACT (693) out of 2,118 enrolled; the percentages are computed from those counts. High school GPA (C11/C12) was not reported."
+    "notes": "Common Data Set 2025-26 (fall 2025 entering class). No Early Decision plan (restrictive early action only). The Common Data Set gives only the number submitting SAT (726) and ACT (693) out of 2,118 enrolled; the percentages are computed from those counts. High school GPA was not reported."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -87,7 +87,7 @@
     "room_board_usd": 18438,
     "other_usd": 1950,
     "total_coa_usd": 86125,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

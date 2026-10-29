@@ -69,14 +69,14 @@
    "plan": "ROLLING",
    "due": "2027-05-15",
    "label": "International (F-1) application deadline, fall term (fall 2027 entry)",
-   "notes": "The page prints 'Fall Term Deadline: May 15th' and 'Spring Term Deadline: Nov 15th' without a year; treated as fall 2027. Applications should arrive at least 3 months before the intended start; some programs have earlier deadlines.",
+   "notes": "The page prints 'Fall Term Deadline: May 15th' and 'Spring Term Deadline: Nov 15th' without a year, so fall 2027 is assumed. Applications should arrive at least 3 months before the intended start; some programs have earlier deadlines.",
    "src": "steps"
   },
   {
    "kind": "priority",
    "due": "2026-12-01",
    "label": "Priority / early action date (fall 2027 entry)",
-   "notes": "From CDS C14 and C22 (Dec. 1, rolling notification), not repeated on the admissions pages; treated as the date for fall 2027 entry.",
+   "notes": "From the Common Data Set (Dec. 1, rolling notification), not repeated on the admissions pages; it is assumed to be the date for fall 2027 entry.",
    "src": "cds"
   }
  ],
@@ -133,7 +133,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "UIS says financial assistance for international students is limited. First-year, international and transfer applicants are automatically reviewed for merit scholarships (Star Scholar Award $3,000-$7,000/yr by unweighted GPA on the 2025-26 schedule, renewable; Capital Scholars Honors up to $8,000/yr), and donor-funded scholarships (apply early Nov to mid-Feb) are open to international students. The Out-of-State Scholarship is not available to international or UIS Global students. CDS H6: 52 nonresident undergraduates received institutional aid, average $13,083.",
+  "notes": "UIS says financial assistance for international students is limited. First-year, international and transfer applicants are automatically reviewed for merit scholarships (Star Scholar Award $3,000-$7,000/yr by unweighted GPA on the 2025-26 schedule, renewable; Capital Scholars Honors up to $8,000/yr), and donor-funded scholarships (apply early Nov to mid-Feb) are open to international students. The Out-of-State Scholarship is not available to international or UIS Global students. The Common Data Set shows 52 nonresident undergraduates received institutional aid, average $13,083.",
   "src": "intlaid"
  },
  "score_codes": {

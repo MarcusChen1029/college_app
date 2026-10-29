@@ -54,7 +54,7 @@
       "2.50-2.99": 9.16,
       "2.0-2.49": 0.18
     },
-    "notes": "Read from the CDS form fields (C1, C9, C11, C12). The university's Consumer Information page lists slightly different first-year counts (4,267 applied, 4,055 admitted, 566 enrolled); the CDS figures are used here. International row: 427 applicants, 378 admitted. C9: 218 SAT and 55 ACT submitters among 569 enrollees (percent not stated reliably, so pct_submit is omitted). No wait list; no early decision or early action. SAT total (composite) percentiles are not published, only ERW and Math. Undergraduate enrollment 2,330 and the 11:1 ratio are from the university's Consumer Information page (fall 2025); 123 nonresident undergraduates are from CDS B2."
+    "notes": "Read from the Common Data Set form fields. The university's Consumer Information page lists slightly different first-year counts (4,267 applied, 4,055 admitted, 566 enrolled); the Common Data Set figures are the ones shown here. International row: 427 applicants, 378 admitted. Test scores: 218 SAT and 55 ACT submitters among 569 enrollees (percent not stated reliably, so the percentage who sent scores is omitted). No wait list; no early decision or early action. SAT total (composite) percentiles are not published, only ERW and Math. Undergraduate enrollment 2,330 and the 11:1 ratio are from the university's Consumer Information page (fall 2025); 123 nonresident undergraduates are from the Common Data Set."
   },
   "scores": {
     "SAT_ERW": [
@@ -106,7 +106,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: not required for admission, but considered if submitted; students applying without scores submit a personal statement."
+    "notes": "Test policy from the Common Data Set: not required for admission, but considered if submitted; students applying without scores submit a personal statement."
   },
   "cost": {
     "year": "2026-2027",
@@ -117,6 +117,6 @@
     "books_usd": 1300,
     "intl_need_aid_awarded": 55,
     "intl_avg_award_usd": 42263,
-    "notes": "CDS G1 (full 2026-2027 year): tuition $38,404, required fees $1,478, food and housing $13,438; books $1,300. CDS H6: 55 degree-seeking nonresidents received institutional aid, average $42,263 (total $2,324,499) for the aid year the CDS marks as 2023-24; the CDS does not say whether this is need-based or merit aid."
+    "notes": "From the Common Data Set (full 2026-2027 year): tuition $38,404, required fees $1,478, food and housing $13,438; books $1,300. Aid: 55 degree-seeking nonresidents received institutional aid, average $42,263 (total $2,324,499) for the aid year the Common Data Set marks as 2023-24; the Common Data Set does not say whether this is need-based or merit aid"
   }
 }

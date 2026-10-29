@@ -58,7 +58,7 @@
       "2.0-2.49": 1.58,
       "1.0-1.99": 0.08
     },
-    "notes": "CDS C1 (Fall 2025 entering class): 6,865 applied, 5,479 admitted (79.8%), 1,359 enrolled; residency rows (in-state / out-of-state / international) sum to the totals. International (nonresident) first-years: 57 applied, 55 admitted (96%), 35 enrolled. No early decision or early action, no waitlist, rolling admission. GPA columns are the 'all enrolled students' set; 0.17% had a GPA below 1.0 and is omitted. Undergraduate enrollment 10,103 and nonresident count 295 are the B1/B2 'Total Undergraduates' figures. The CDS lists SAT composite 25th/50th percentiles (860/990) but the 75th percentile cells are blank (#REF!), so the SAT/ACT percentile ranges shown come from IPEDS (fall 2024) instead."
+    "notes": "From the Common Data Set (Fall 2025 entering class): 6,865 applied, 5,479 admitted (79.8%), 1,359 enrolled; residency rows (in-state / out-of-state / international) add up to the totals. International (nonresident) first-years: 57 applied, 55 admitted (96%), 35 enrolled. No early decision or early action, no waitlist, rolling admission. The GPA breakdown covers 'all enrolled students'; 0.17% had a GPA below 1.0 and is left out. Undergraduate enrollment (10,103) and the nonresident count (295) are the 'Total Undergraduates' figures. The Common Data Set lists SAT composite 25th/50th percentiles (860/990) but the 75th percentile cells are blank, so the SAT/ACT percentile ranges shown come from IPEDS (fall 2024) instead."
   },
   "scores": {
     "SAT_ERW": [
@@ -100,7 +100,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT or ACT 'recommended'; ACT-only and SAT-only 'not required for admission, but considered if submitted'. C8F: Angelo State has a test-optional policy; applicants can ask to be reviewed without scores."
+    "notes": "From the Common Data Set: SAT or ACT 'recommended'; ACT-only and SAT-only 'not required for admission, but considered if submitted'. Angelo State has a test-optional policy; applicants can ask to be reviewed without scores."
   },
   "cost": {
     "year": "2025-2026",
@@ -116,6 +116,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 13,
     "intl_avg_award_usd": 8347,
-    "notes": "CDS G1 (first-year, full-time; the CDS ticks '2026-27 costs not available', so these are the 2025-26 figures): in-state tuition $5,620, nonresident tuition $17,770, required fees $3,964, on-campus food and housing $13,800 (housing $8,800 + meal plan $5,000). G5 estimates: books $1,200, transportation $2,050, other $1,950 (other_usd = transportation + other). Per-credit-hour: $188 in-state, $593 nonresident. H6: institutional need-based and non-need-based aid is available to nonresidents; 13 nonresidents received it (average $8,347)."
+    "notes": "First-year, full-time costs from the Common Data Set. It ticks '2026-27 costs not available', so these are the 2025-26 figures: in-state tuition $5,620, nonresident tuition $17,770, required fees $3,964, on-campus food and housing $13,800 (housing $8,800 + meal plan $5,000). Estimated expenses: books $1,200, transportation $2,050, other $1,950 (other costs shown = transportation + other). Per-credit-hour: $188 in-state, $593 nonresident. The college's own need-based and non-need-based aid is available to nonresidents; 13 nonresidents received it (average $8,347)"
   }
 }

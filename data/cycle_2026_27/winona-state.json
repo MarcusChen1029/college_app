@@ -87,7 +87,7 @@
    "test": "DUOLINGO",
    "status": "required_option",
    "min": null,
-   "notes": "The undergraduate cell on the page reads just '5' (graduate 110+, nursing graduate 115+), which looks like a typo, so no minimum is stored. Confirm with admissions before testing.",
+   "notes": "The undergraduate cell on the page reads just '5' (graduate 110+, nursing graduate 115+), which looks like a typo, so no minimum is shown. Confirm with admissions before testing.",
    "src": "intl"
   },
   {
@@ -113,7 +113,7 @@
   "required_fees_usd": 1304,
   "intl_extra_fees_usd": 150,
   "room_board_usd": 10240,
-  "notes": "Tuition of $8,934 already includes the Cross-Cultural Scholarship. Year label is as printed on the page (2025-2026); 2026-27 rates not found.",
+  "notes": "Tuition of $8,934 already includes the Cross-Cultural Scholarship. Year label is as printed on the page (2025-2026); 2026-27 rates not found",
   "src": "tuit"
  },
  "majors": [],

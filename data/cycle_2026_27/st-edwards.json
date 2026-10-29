@@ -50,7 +50,7 @@
    "kind": "application",
    "due": "2026-12-01",
    "label": "Early Application (fall 2027 entry)",
-   "notes": "No application fee if applied by this date. Dates are printed without a year and treated as the fall 2027 cycle.",
+   "notes": "No application fee if applied by this date. Dates are printed without a year, so the fall 2027 cycle is assumed.",
    "src": "intl"
   },
   {
