@@ -1,13 +1,13 @@
 import outcomesData from "@/lib/data/outcomes.json";
 import { fmtDate } from "@/lib/format";
 import { getT } from "@/lib/i18n/server";
-import { SECTION_TITLE } from "@/lib/ui";
 import { COHORT, collegeOutcomes, formatEarnings, scorecardUrl, type OutcomesData } from "@/lib/outcomes";
 
 /**
  * "Graduation & earnings" for a US college: official College Scorecard figures (lib/data/outcomes.json).
  * Self-contained so the college page only needs <CollegeOutcomes slug={...} />. Server component: call it below the
  * page's Suspense boundary (it reads the visitor's language).
+ * The three figures are set as type on one ruled line (no tiles); the caveat about international students is running text.
  */
 export async function CollegeOutcomes({ slug }: { slug: string }) {
   const t = await getT();
@@ -17,12 +17,12 @@ export async function CollegeOutcomes({ slug }: { slug: string }) {
 
   return (
     <section id="outcomes" aria-labelledby="outcomes-heading">
-      <h2 id="outcomes-heading" className={`mb-4 ${SECTION_TITLE}`}>
+      <h2 id="outcomes-heading" className="font-display text-2xl font-bold tracking-tight text-ink">
         {t("outcomes.title")}
       </h2>
       {any ? (
         <>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-3">
+          <dl className="mt-6 grid border-y border-zinc-200 sm:grid-cols-3">
             <Figure
               label={t("outcomes.grad.label")}
               value={o.gradRate !== null ? `${o.gradRate}%` : null}
@@ -44,37 +44,37 @@ export async function CollegeOutcomes({ slug }: { slug: string }) {
               missing={t("outcomes.missing")}
               missingSub={t("outcomes.missingSub")}
             />
-          </div>
-          <p className="mt-3 text-sm text-zinc-600">{t("outcomes.caveat")}</p>
-          <p className="mt-2 text-xs text-zinc-500">{t("outcomes.unitNote")}</p>
-          <p className="mt-1 text-xs text-zinc-500">
+          </dl>
+          <p className="mt-6 max-w-[72ch] text-base leading-relaxed">{t("outcomes.caveat")}</p>
+          <p className="mt-3 max-w-[72ch] text-sm leading-relaxed text-zinc-600">{t("outcomes.unitNote")}</p>
+          <p className="mt-1 text-sm text-zinc-600">
             {t("outcomes.source", { date: fmtDate(data.released) })}{" "}
-            <a className="text-blue-600 hover:underline" href={scorecardUrl(o.scorecardId)} target="_blank" rel="noreferrer">
+            <a className="font-semibold text-blue-700 hover:underline" href={scorecardUrl(o.scorecardId)} target="_blank" rel="noreferrer">
               {t("outcomes.view")}
             </a>
           </p>
         </>
       ) : (
-        <p className="text-sm text-zinc-500">{t("outcomes.none")}</p>
+        <p className="mt-4 text-base">{t("outcomes.none")}</p>
       )}
     </section>
   );
 }
 
-/** Same look as the key-number tiles at the top of the college page; a missing value is stated, never shown as 0 or a dash. */
+/** One outcome figure; a missing value is stated in words, never shown as 0 or a dash. */
 function Figure({ label, value, sub, missing, missingSub }: { label: string; value: string | null; sub: string; missing: string; missingSub: string }) {
   return (
-    <div className="bg-white px-4 py-3.5">
-      <div className="text-xs font-medium text-zinc-500">{label}</div>
+    <div className="border-b border-zinc-200 py-5 sm:border-b-0 sm:border-l sm:px-8 sm:first:border-l-0 sm:first:pl-0">
+      <dt className="text-sm font-semibold text-zinc-600">{label}</dt>
       {value !== null ? (
         <>
-          <div className="mt-1 font-display text-2xl font-bold tabular-nums">{value}</div>
-          <div className="mt-0.5 text-xs text-zinc-500">{sub}</div>
+          <dd className="mt-2 font-display text-4xl leading-none font-bold tabular-nums">{value}</dd>
+          <dd className="mt-2 text-sm text-zinc-600">{sub}</dd>
         </>
       ) : (
         <>
-          <div className="mt-1 font-display text-2xl font-bold text-zinc-400">{missing}</div>
-          <div className="mt-0.5 text-xs text-zinc-500">{missingSub}</div>
+          <dd className="mt-2 font-display text-2xl leading-tight font-bold text-zinc-600">{missing}</dd>
+          <dd className="mt-2 text-sm text-zinc-600">{missingSub}</dd>
         </>
       )}
     </div>
