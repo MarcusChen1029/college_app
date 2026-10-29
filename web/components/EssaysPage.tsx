@@ -19,7 +19,22 @@ const noop = () => () => {};
 
 /** One essay with a fixed name (status + Google Doc), stored on the profile rather than on a college. */
 /** `name` is the English name used for the Google Doc title; `display` is what the student sees. */
-function SharedDoc({ name, display, doc, onChange, google }: { name: string; display: string; doc: Partial<EssayDoc>; onChange: (patch: Partial<EssayDoc>) => void; google?: GoogleAccess }) {
+function SharedDoc({
+  name,
+  display,
+  displayHidden = false,
+  doc,
+  onChange,
+  google,
+}: {
+  name: string;
+  display: string;
+  /** The heading above already names it: keep the name for screen readers only. */
+  displayHidden?: boolean;
+  doc: Partial<EssayDoc>;
+  onChange: (patch: Partial<EssayDoc>) => void;
+  google?: GoogleAccess;
+}) {
   const docs: GoogleDocs | undefined = google && { connected: google.connected, connect: google.connect, create: () => google.createNamed(name) };
   return (
     <ul>
@@ -27,6 +42,7 @@ function SharedDoc({ name, display, doc, onChange, google }: { name: string; dis
         essay={{ id: name, title: name, url: doc.url ?? "", status: doc.status ?? "not_started" }}
         index={0}
         label={display}
+        labelHidden={displayHidden}
         docs={docs}
         onChange={(p) => onChange({ ...(p.status ? { status: p.status } : {}), ...(p.url !== undefined ? { url: p.url } : {}) })}
       />
@@ -47,30 +63,33 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
         <h2 className={SECTION_TITLE}>{t("writing.psHeading")}</h2>
         <span className="text-[13px] text-zinc-600">{t("writing.psWords")} · {t("writing.psNote")}</span>
       </div>
-      <SharedDoc name="Common App Personal Statement" display={t("writing.psName")} doc={ps} onChange={set} google={google} />
-      <details className={PROMPT_BOX}>
-        <summary className="cursor-pointer text-sm font-medium">
-          {t("writing.psPrompts")}
-          {ps.prompt ? t("writing.psChose", { n: ps.prompt }) : ""}
-        </summary>
-        <ul className="mt-2 space-y-2">
+      <SharedDoc name="Common App Personal Statement" display={t("writing.psName")} displayHidden doc={ps} onChange={set} google={google} />
+      {/* The seven prompts are the most useful thing here: always shown, picked like a list, the choice ringed in ink. */}
+      <fieldset className="space-y-3 pt-2">
+        <legend className="flex flex-wrap items-baseline gap-x-3 text-[15px] font-semibold text-ink">
+          <span>
+            {t("writing.psPrompts")}
+            {ps.prompt ? t("writing.psChose", { n: ps.prompt }) : ""}
+          </span>
+          {ps.prompt && (
+            <button type="button" className="text-sm font-medium text-zinc-600 underline underline-offset-4 hover:text-ink" onClick={() => set({ prompt: null })}>
+              {t("writing.clearChoice")}
+            </button>
+          )}
+        </legend>
+        <ul className="grid gap-2 lg:grid-cols-2">
           {PS_PROMPTS.map((p) => (
             <li key={p.id}>
-              <label className="flex items-start gap-2 text-sm">
-                <input type="radio" name="ps-prompt" className="mt-1" checked={ps.prompt === p.id} onChange={() => set({ prompt: p.id })} />
+              <label className="flex h-full cursor-pointer items-start gap-3 rounded-xl bg-white p-3 text-[15px] leading-relaxed text-ink ring-ink transition-shadow hover:ring-1 has-[:checked]:ring-2 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-blue-400">
+                <input type="radio" name="ps-prompt" className="mt-1.5 shrink-0 accent-ink" checked={ps.prompt === p.id} onChange={() => set({ prompt: p.id })} />
                 <span>
-                  <strong>{p.id}.</strong> {p.text}
+                  <strong className="tabular-nums">{p.id}.</strong> {p.text}
                 </span>
               </label>
             </li>
           ))}
         </ul>
-        {ps.prompt && (
-          <button type="button" className="mt-2 text-xs text-zinc-500 hover:text-urgent" onClick={() => set({ prompt: null })}>
-            {t("writing.clearChoice")}
-          </button>
-        )}
-      </details>
+      </fieldset>
     </section>
   );
 }

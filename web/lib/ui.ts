@@ -25,11 +25,12 @@ export const fitClass = (f: Fit): string => FIT[f];
 
 // Marks (dots, the share bar, legend swatches) use the band's mark colour: an even lightness ladder, darker = harder,
 // so the four bands stay apart at bar size, in greyscale and for colour-blind readers (globals.css, the fit tokens).
+// Each mark carries a 1px ring a step darker than itself, so a light mark (safety) still holds 3:1 against its ground.
 const FIT_DOT: Record<Fit, string> = {
-  super_reach: "bg-fit-super-reach-mark",
-  reach: "bg-fit-reach-mark",
-  target: "bg-fit-target-mark",
-  safety: "bg-fit-safety-mark",
+  super_reach: "bg-fit-super-reach-mark ring-1 ring-inset ring-fit-super-reach-edge",
+  reach: "bg-fit-reach-mark ring-1 ring-inset ring-fit-reach-edge",
+  target: "bg-fit-target-mark ring-1 ring-inset ring-fit-target-edge",
+  safety: "bg-fit-safety-mark ring-1 ring-inset ring-fit-safety-edge",
 };
 export const fitDotClass = (f: Fit): string => FIT_DOT[f];
 
@@ -107,8 +108,8 @@ export const TIER_DOT: Record<TierLetter | "none", { cls: string; token: string;
 
 /** Map dots by fit (when the student has scores): the fit mark colours (`fitDotClass`), as CSS tokens for the WebGL map. */
 export const FIT_DOT_COLOR: Record<Fit, { token: string; hex: string }> = {
-  super_reach: { token: "--color-fit-super-reach-mark", hex: "#004e54" },
-  reach: { token: "--color-fit-reach-mark", hex: "#007072" },
-  target: { token: "--color-fit-target-mark", hex: "#008787" },
-  safety: { token: "--color-fit-safety-mark", hex: "#379d9c" },
+  super_reach: { token: "--color-fit-super-reach-mark", hex: "#003e44" },
+  reach: { token: "--color-fit-reach-mark", hex: "#006c70" },
+  target: { token: "--color-fit-target-mark", hex: "#009393" },
+  safety: { token: "--color-fit-safety-mark", hex: "#68bfba" },
 };

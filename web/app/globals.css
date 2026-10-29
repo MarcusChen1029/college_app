@@ -67,27 +67,36 @@
   --color-neutral-bg: #e9f2fa;
   --color-neutral-line: #d6e5f1;
   /* Fit: its own teal ramp, harder = darker (tiers keep the navy/sky ramp, so a colour never means both a tier and a
-     fit). Four roles per band: the word (dark teal, >= 5.3:1 on its fill, >= 9.9:1 on white), the fill (L* 63 / 76 /
-     86 / 94: super reach is the boldest chip, safety the palest; ink on every fill >= 4.7:1), the line (= the fill:
-     chips are flat), and the mark (dots, the share bar, map pins: L* 30 / 43 / 51 / 59, each >= 3:1 on white and
-     zinc-50; adjacent marks >= 8 L* and >= 8 dE apart under protan, deutan and tritan simulation). Not purple; >= 40 dE
-     from the done green, >= 70 from urgent and soon. */
-  --color-fit-super-reach: #002a30;
-  --color-fit-super-reach-bg: #10a9ab;
-  --color-fit-super-reach-line: #10a9ab;
-  --color-fit-super-reach-mark: #004e54;
-  --color-fit-reach: #003a41;
-  --color-fit-reach-bg: #7dc8cb;
-  --color-fit-reach-line: #7dc8cb;
-  --color-fit-reach-mark: #007072;
+     fit). Five roles per band:
+     - the word: on its fill >= 5.9:1 (super reach is light text on its deep fill, the others dark teal);
+     - the fill: L* 32 / 72 / 84 / 93. Super reach is a deep, quiet teal, the darkest and most serious chip, never the
+       brightest; the others step paler;
+     - the line (= the fill: chips are flat);
+     - the mark (dots, the share bar, map pins): L* 23 / 41 / 55 / 72, greyscale #37 / #61 / #84 / #b1, adjacent marks
+       >= 14 L* and >= 13 dE apart under protan, deutan and tritan simulation;
+     - the edge: a 1px ring a step darker than the mark, so every mark holds >= 3:1 where it sits (white, zinc-50, the
+       sky-100 ground of /start and /help) even when the mark itself is light. The WebGL map draws the same darker rim.
+     Not purple; >= 40 dE from the done green, >= 70 from urgent and soon. */
+  --color-fit-super-reach: #e4f8f8;
+  --color-fit-super-reach-bg: #125456;
+  --color-fit-super-reach-line: #125456;
+  --color-fit-super-reach-mark: #003e44;
+  --color-fit-super-reach-edge: #002c32;
+  --color-fit-reach: #00383f;
+  --color-fit-reach-bg: #6cbebe;
+  --color-fit-reach-line: #6cbebe;
+  --color-fit-reach-mark: #006c70;
+  --color-fit-reach-edge: #00494f;
   --color-fit-target: #00444a;
-  --color-fit-target-bg: #ade0e4;
-  --color-fit-target-line: #ade0e4;
-  --color-fit-target-mark: #008787;
+  --color-fit-target-bg: #a8dbdd;
+  --color-fit-target-line: #a8dbdd;
+  --color-fit-target-mark: #009393;
+  --color-fit-target-edge: #006265;
   --color-fit-safety: #004b4f;
-  --color-fit-safety-bg: #d1f4fb;
-  --color-fit-safety-line: #d1f4fb;
-  --color-fit-safety-mark: #379d9c;
+  --color-fit-safety-bg: #cef1f7;
+  --color-fit-safety-line: #cef1f7;
+  --color-fit-safety-mark: #68bfba;
+  --color-fit-safety-edge: #237b7c;
 }
 
 body {

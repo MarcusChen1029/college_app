@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useId, type KeyboardEvent, type ReactNode } from "react";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { testCardView } from "@/lib/i18n/test-plan-text";
@@ -15,7 +15,7 @@ export function regionName(t: TFunction, code: RegionCode): string {
   return t(`profile.region.${code}` as MessageKey);
 }
 
-type CardKey = "gpa" | "test" | "english" | "regions";
+export type CardKey = "gpa" | "test" | "english" | "regions";
 
 /** Saves whatever field is mid-edit (they save on blur) before its card closes or hides. */
 function commitFocus() {
@@ -160,19 +160,20 @@ export function RegionsEditor() {
   );
 }
 
-export function ProfileCards() {
+/** The four profile tiles. The open one is held by the page (ProfileDashboard), so its setup checklist can open a tile.
+ *  Until a tile holds a value the row stays hidden and the checklist leads; an Add there opens its tile. */
+export function ProfileCards({ open, onOpen }: { open: CardKey | null; onOpen: (k: CardKey | null) => void }) {
   const t = useT();
   const locale = useLocale();
   const { profile } = useStudent();
   const base = useId();
-  const [open, setOpen] = useState<CardKey | null>(null);
   const toggle = (k: CardKey) => {
     commitFocus();
-    setOpen((cur) => (cur === k ? null : k));
+    onOpen(open === k ? null : k);
   };
   const close = () => {
     commitFocus();
-    setOpen(null);
+    onOpen(null);
   };
   const props = (k: CardKey) => ({ id: `${base}-${k}`, cardKey: k, open: open === k, onToggle: () => toggle(k), onClose: close });
   // A tile takes its colour once it holds something; until then it is a quiet grey step, so an empty tile never reads as
@@ -188,6 +189,8 @@ export function ProfileCards() {
   const regions = cleanRegions(profile.targetRegions);
   const gpaSub = [profile.gpaWeighted != null && t("profile.gpaWeightedShort", { gpa: profile.gpaWeighted }), profile.international && t("profile.international")].filter(Boolean).join(" · ");
   const test = testCardView(t, locale, profile);
+  const anyValue = profile.gpa != null || test.value != null || english?.total != null || regions.length > 0;
+  if (!anyValue && open == null) return null;
 
   return (
     <section aria-label={t("profile.numbers")} className="grid grid-cols-2 gap-3 md:grid-cols-4">

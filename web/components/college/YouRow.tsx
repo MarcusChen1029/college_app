@@ -6,7 +6,7 @@ import { useT } from "@/lib/i18n/client";
 import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { useStudent } from "@/lib/student-store";
 import { scoredTests } from "@/lib/test-plan";
-import { fitClass, fitDotClass, FIT_LEVEL } from "@/lib/ui";
+import { fitClass, FIT_LEVEL } from "@/lib/ui";
 import { englishReadout, type Recommended } from "./EnglishCheck";
 
 /** The student's own read of this college, at the top of the navy answer band: their fit label set large, why (the admit
@@ -28,7 +28,7 @@ export function YouRow({ fitInput, english, recommended }: { fitInput: FitInput;
         <span className={`inline-flex h-10 shrink-0 items-center gap-2.5 rounded-full border px-4 font-display text-xl font-bold whitespace-nowrap ${fitClass(fit.fit)}`}>
           <span className="flex gap-1" aria-hidden="true">
             {[1, 2, 3, 4].map((n) => (
-              <span key={n} className={`h-2 w-2 rounded-full border border-current ${n <= FIT_LEVEL[fit.fit] ? fitDotClass(fit.fit) : ""}`} />
+              <span key={n} className={`h-2 w-2 rounded-full border border-current ${n <= FIT_LEVEL[fit.fit] ? "bg-current" : ""}`} />
             ))}
           </span>
           {fitLabel(t, fit.fit)}

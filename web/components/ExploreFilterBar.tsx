@@ -12,7 +12,7 @@ import { fitLabel } from "@/lib/i18n/fit-text";
 import { BASE_TIERS, TIER_ORDER } from "@/lib/tiers";
 import { fmtMoneyShort, TUITION_CAPS, type Currency } from "@/lib/tuition";
 import type { Lookups, TierCode } from "@/lib/types";
-import { buttonClass, CHIP_CLASS, FIELD_CLASS, fitClass, fitDotClass, FIT_LEVEL } from "@/lib/ui";
+import { buttonClass, CHIP_CLASS, FIELD_CLASS, fitClass, FIT_LEVEL } from "@/lib/ui";
 
 // One control style for the whole page (map sidebar, table bar, filter panel): 36px, a 1px control border.
 export const CONTROL = FIELD_CLASS;
@@ -80,7 +80,7 @@ export function ExploreFilterBar(p: FilterBarProps) {
             >
               <span className="flex gap-0.5" aria-hidden="true">
                 {[1, 2, 3, 4].map((n) => (
-                  <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[k] ? fitDotClass(k) : ""}`} />
+                  <span key={n} className={`h-1.5 w-1.5 rounded-full border border-current ${n <= FIT_LEVEL[k] ? "bg-current" : ""}`} />
                 ))}
               </span>
               {fitLabel(t, k)}

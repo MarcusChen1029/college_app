@@ -35,7 +35,7 @@ import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
-import { buttonClass, LABEL, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
+import { buttonClass, LABEL, PANEL, SECTION_TITLE } from "@/lib/ui";
 import { PaperPlane } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
@@ -216,14 +216,14 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     );
   };
 
-  // One "+ Add portal" for the whole page: every account not added yet, grouped by country (then "Any country"), and
-  // "Something else" for a portal of the student's own.
+  // One "+ Add portal" for the whole page: every account not added yet, grouped by country (then "Any country"); each
+  // group ends with "Something else…", which makes a portal of the student's own in that country (or in none, for Any).
   const seen = new Set<string>();
   const addGroups: { region: PortalRegion; systems: PortalSystem[] }[] = [];
   for (const region of [...regions, "ANY"] as PortalRegion[]) {
     const systems = systemsForRegion(region).filter((s) => isOther(s) && !otherShown(s) && !seen.has(s.key));
     systems.forEach((s) => seen.add(s.key));
-    if (systems.length) addGroups.push({ region, systems });
+    addGroups.push({ region, systems });
   }
   const addMenu = (
     <select
@@ -232,8 +232,11 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       aria-label={t("portals.addPortalLabel")}
       onChange={(e) => {
         const v = e.target.value;
-        if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "" }]);
-        else if (v) setSystem(v, EMPTY_LOGIN);
+        const group = addGroups.find((g) => v === `custom:${g.region}`);
+        if (group) {
+          const region = group.region;
+          setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "", ...(region === "ANY" ? {} : { region }) }]);
+        } else if (v) setSystem(v, EMPTY_LOGIN);
       }}
     >
       <option value="">{t("portals.addPortal")}</option>
@@ -244,10 +247,22 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
               {sysName(s)}
             </option>
           ))}
+          <option value={`custom:${g.region}`}>{t("portals.somethingElse")}</option>
         </optgroup>
       ))}
-      <option value="custom">{t("portals.somethingElse")}</option>
     </select>
+  );
+
+  // Where the logins live, said once beside the Add control in a neutral tone (not a warning).
+  const savedNote = (
+    <p className="basis-full text-sm text-zinc-700">
+      {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
+      {" · "}
+      {(() => {
+        const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
+        return n === 1 ? t("portals.loginsSavedOne", { n }) : t("portals.loginsSavedMany", { n });
+      })()}
+    </p>
   );
 
   // A country shows up once it holds something: a submitted college's portal, or an account added for it.
@@ -301,15 +316,6 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
 
   return (
     <div className="space-y-6">
-      <p className={`rounded-2xl border px-4 py-2.5 text-sm ${toneClass("soon")}`}>
-        {signedIn ? t("portals.noticeAccount") : t("portals.noticeBrowser")}
-        {" · "}
-        {(() => {
-          const n = savedCount(data) + submitted.filter(({ entry }) => entry.portal.username.trim()).length;
-          return n === 1 ? t("portals.loginsSavedOne", { n }) : t("portals.loginsSavedMany", { n });
-        })()}
-      </p>
-
       {!signedIn && student.localPasswordCount > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">
           <p className="min-w-0 flex-1">
@@ -334,7 +340,16 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
       )}
 
       {sections.length === 0 ? (
-        <EmptyState art={<PaperPlane className="h-16 w-auto" />} title={t("portals.emptyTitle")} actions={addMenu}>
+        <EmptyState
+          art={<PaperPlane className="h-16 w-auto" />}
+          title={t("portals.emptyTitle")}
+          actions={
+            <>
+              {addMenu}
+              {savedNote}
+            </>
+          }
+        >
           {t("portals.submittedEmptyPre")}
           <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
             {t("portals.myList")}
@@ -343,9 +358,10 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         </EmptyState>
       ) : (
         <>
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
             <p className="text-[15px] text-ink">{t("portals.countryHelp")}</p>
             {addMenu}
+            {savedNote}
           </div>
           {sections}
         </>

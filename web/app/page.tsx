@@ -239,8 +239,17 @@ const MENU = [
 
 // -------------------------------------------------------------------------------------------------------------- page
 
-// Reads the language cookie; app/layout.tsx renders every page inside a Suspense boundary, so this streams after the shell.
-export default async function Home() {
+// The page's data (and the language cookie) load inside the page's own Suspense boundary, as on /colleges: the shell
+// prerenders and the timetable streams in, with the hero's navy ground holding the space meanwhile.
+export default function Home() {
+  return (
+    <Suspense fallback={<div aria-hidden className="min-h-[100svh] bg-ink" />}>
+      <HomeContent />
+    </Suspense>
+  );
+}
+
+async function HomeContent() {
   const [t, locale, colleges, deadlines, english] = await Promise.all([getT(), getLocale(), getSummaries(), getDeadlines(), getEnglishSummaries()]);
   const bySlug = new Map(colleges.map((c) => [c.slug, c]));
   // Every count on this page comes from the loaded data (lib/home-stats.ts), never a typed-in number.

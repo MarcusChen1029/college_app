@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import { ApplyTags, Pill, SchoolLogo, TierBadge } from "@/components/badges";
 import { CompareAdd, CompareFitBadge, CompareFitHint, CompareFromList } from "@/components/ComparePicker";
 import { compareHref, MAX_COMPARE, parseCompare, type CompareOption } from "@/lib/compare";
 import { CompareRange } from "@/components/CompareRange";
+import { CompareTable } from "@/components/CompareTable";
 import { StatusIcon } from "@/components/StatusPill";
 import { applyTags } from "@/lib/apply-tags";
+import { narrowFlags } from "@/lib/explore-filters";
 import { getAppFees, getDeadlines, getLookups, getSummaries } from "@/lib/data";
 import { daysUntil, ENGLISH_POLICY, fmtDate, fmtInt, fmtPct, fmtUsd, INTL_AID, TEST_POLICY } from "@/lib/format";
 import { referenceTone, URGENT_DAYS } from "@/lib/status";
@@ -120,27 +122,38 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
           {
             label: t("college.rowDeadlines"),
             has: (c) => appDeadlines(c.id).length > 0,
-            cell: (c) => (
-              <ul className="space-y-2.5">
-                {appDeadlines(c.id).map((d) => {
-                  const days = daysUntil(d.due_date!);
-                  const tone = referenceTone(days);
-                  return (
-                    <li key={d.id} title={d.label ?? undefined} className="flex items-start gap-2">
-                      <span className={`mt-0.5 shrink-0 rounded-full border p-0.5 ${toneClass(tone)}`}>
-                        <StatusIcon tone={tone} />
-                      </span>
-                      <span className="min-w-0 leading-tight">
-                        <span className="font-semibold">{d.plan_key}</span> <span className="tabular-nums">{fmtDate(d.due_date)}</span>
-                        <span className={`block text-[13px] ${days < 0 ? "text-zinc-500" : days <= URGENT_DAYS ? "font-semibold text-urgent" : "text-zinc-600"}`}>
-                          {days < 0 ? t("status.deadline.passed") : days === 0 ? t("status.deadline.today") : days === 1 ? t("status.deadline.tomorrow") : t("status.deadline.days", { n: days })}
+            cell: (c) => {
+              const rows = appDeadlines(c.id);
+              // Judged as /colleges judges them: only rows with a plan go into narrowFlags. A plan-less row is a program or
+              // applicant-group date by nature, so it always names what it is for.
+              const planned = rows.filter((d) => d.plan_key);
+              const flags = narrowFlags(planned.map((d) => d.label));
+              const narrow = new Map(planned.map((d, i) => [d.id, flags[i]]));
+              const repeated = (plan: string | null) => rows.filter((d) => d.plan_key === plan).length > 1;
+              return (
+                <ul className="space-y-2.5">
+                  {rows.map((d) => {
+                    const days = daysUntil(d.due_date!);
+                    const tone = referenceTone(days);
+                    const scoped = d.label && (!d.plan_key || narrow.get(d.id) || repeated(d.plan_key));
+                    return (
+                      <li key={d.id} title={d.label ?? undefined} className="flex items-start gap-2">
+                        <span className={`mt-0.5 shrink-0 rounded-full border p-0.5 ${toneClass(tone)}`}>
+                          <StatusIcon tone={tone} />
                         </span>
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            ),
+                        <span className="min-w-0 leading-tight">
+                          <span className="font-semibold">{d.plan_key}</span> <span className="tabular-nums">{fmtDate(d.due_date)}</span>
+                          <span className={`block text-[13px] ${days < 0 ? "text-zinc-500" : days <= URGENT_DAYS ? "font-semibold text-urgent" : "text-zinc-600"}`}>
+                            {days < 0 ? t("status.deadline.passed") : days === 0 ? t("status.deadline.today") : days === 1 ? t("status.deadline.tomorrow") : t("status.deadline.days", { n: days })}
+                          </span>
+                          {scoped && <span className="mt-0.5 block text-[13px] text-zinc-700 [overflow-wrap:break-word]">{d.label}</span>}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            },
           },
         ],
       },
@@ -173,69 +186,36 @@ async function Compare({ searchParams }: { searchParams: Promise<Record<string, 
     const hidden = sections.some((s) => s.rows.some((r) => !picked.some(r.has)));
 
     const canAdd = !example && picked.length < MAX_COMPARE;
-    const Title = example ? "h3" : "h2";
-    const cols = picked.length + (canAdd ? 1 : 0);
+    const dash = <span className="text-zinc-400">—</span>;
 
     return (
       <div className="space-y-4">
         {!example && <CompareFitHint />}
-        <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:overflow-visible md:px-0">
-          <table className="w-full table-fixed border-separate border-spacing-0 text-sm" style={{ minWidth: `${6.5 + cols * 9}rem` }}>
-            <colgroup>
-              <col className="w-26 md:w-44" />
-              {Array.from({ length: cols }, (_, i) => (
-                <col key={i} />
-              ))}
-            </colgroup>
-            <thead>
-              <tr>
-                <th scope="col" className="sticky left-0 z-20 bg-white md:top-0 md:z-30">
-                  <span className="sr-only">{t("college.compareTitle")}</span>
-                </th>
-                {picked.map((c) => (
-                  <th key={c.slug} scope="col" className="bg-white px-1.5 pb-3 align-top font-normal md:sticky md:top-0 md:z-20 md:pt-2">
-                    <CollegeCard
-                      c={c}
-                      t={t}
-                      removeHref={example ? undefined : compareHref(pickedSlugs.filter((s) => s !== c.slug))}
-                      tags={applyTags(collegeSupplements(c.slug), appFees[c.id])}
-                    />
-                  </th>
-                ))}
-                {canAdd && (
-                  <th scope="col" className="bg-white px-1.5 pb-3 align-top font-normal md:sticky md:top-0 md:z-20 md:pt-2">
-                    <div className="flex h-full min-h-36 flex-col justify-center gap-3 rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-50 p-3 text-left md:p-4">
-                      <span className="font-display text-base font-bold text-ink">{t("college.compareAdd")}</span>
-                      <CompareAdd options={options} picked={pickedSlugs} />
-                    </div>
-                  </th>
-                )}
-              </tr>
-            </thead>
-            {shown.map((s) => (
-              <tbody key={s.title}>
-                <tr>
-                  <th scope="colgroup" colSpan={cols + 1} className="pt-8 pb-2 text-left font-normal">
-                    <Title className={`${SECTION_TITLE} sticky left-0 inline-block`}>{s.title}</Title>
-                  </th>
-                </tr>
-                {s.rows.map((r) => (
-                  <tr key={r.label} className="group">
-                    <th scope="row" className="sticky left-0 z-10 border-t border-zinc-200 bg-white py-3 pr-3 text-left align-top text-[13px] font-medium text-zinc-600 md:static">
-                      {r.label}
-                    </th>
-                    {picked.map((c) => (
-                      <td key={c.slug} className="border-t border-zinc-200 px-2 py-3 align-top text-ink group-hover:bg-zinc-50 md:px-3">
-                        {r.has(c) ? r.cell(c) : <span className="text-zinc-300">—</span>}
-                      </td>
-                    ))}
-                    {canAdd && <td className="border-t border-zinc-100" />}
-                  </tr>
-                ))}
-              </tbody>
-            ))}
-          </table>
-        </div>
+        <CompareTable
+          names={[...picked.map(displayName), ...(canAdd ? [t("college.compareAdd")] : [])]}
+          heads={picked.map((c) => (
+            <CollegeCard
+              key={c.slug}
+              c={c}
+              t={t}
+              removeHref={example ? undefined : compareHref(pickedSlugs.filter((s) => s !== c.slug))}
+              tags={applyTags(collegeSupplements(c.slug), appFees[c.id])}
+            />
+          ))}
+          add={
+            canAdd ? (
+              <div className="flex h-full min-h-36 flex-col justify-center gap-3 rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-50 p-3 text-left md:p-4">
+                <span className="font-display text-base font-bold text-ink">{t("college.compareAdd")}</span>
+                <CompareAdd options={options} picked={pickedSlugs} />
+              </div>
+            ) : undefined
+          }
+          sections={shown.map((sec) => ({
+            title: sec.title,
+            rows: sec.rows.map((r) => ({ label: r.label, cells: picked.map((c) => <Fragment key={c.slug}>{r.has(c) ? r.cell(c) : dash}</Fragment>) })),
+          }))}
+          titleTag={example ? "h3" : "h2"}
+        />
         {hidden && <p className="text-[13px] text-zinc-600">{t("college.compareHiddenRows")}</p>}
       </div>
     );

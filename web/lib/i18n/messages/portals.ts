@@ -1,7 +1,7 @@
 import type { Translation } from "../core.ts";
 
 export const en = {
-  "portals.intro": "Portals you get after you submit: each submitted college's applicant portal, plus testing, aid and visa accounts. Common App, UC and the other application logins are on My list. Click a name to open it; click anywhere else on its row to see or edit the login. Mark each one Done or Not done, and note what is left.",
+  "portals.intro": "Each submitted college's applicant portal, plus your testing, aid and visa accounts.",
   "portals.untitled": "Untitled portal",
   "portals.hideLogin": "Hide login for {label}",
   "portals.showLogin": "Show login for {label}",
@@ -118,7 +118,7 @@ export const en = {
 } as const;
 
 export const zhTW: Translation<typeof en> = {
-  "portals.intro": "送出申請之後才會拿到的入口：每所已送出學校的申請者入口，以及考試、財務補助與簽證帳號。Common App、UC 等申請系統的登入資料在「學校清單」。點擊名稱即可開啟；點擊該列的其他地方可查看或編輯登入資料。每一項都可以標示已完成或未完成，並註明還剩什麼。",
+  "portals.intro": "每所已送出學校的申請者入口，以及你的考試、財務補助與簽證帳號。",
   "portals.untitled": "未命名的申請入口",
   "portals.hideLogin": "隱藏 {label} 的登入資料",
   "portals.showLogin": "顯示 {label} 的登入資料",
