@@ -1,15 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { btn, ClassCard, CodeBox } from "@/components/TeacherClassCard";
+import { btn, ClassCard, CodeBox, codeActions } from "@/components/TeacherClassCard";
+import { ActionsMenu } from "@/components/teacher/ActionsMenu";
 import { errorText } from "@/components/TeacherText";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
+import { shortDate } from "@/lib/roster-view";
 import { buttonClass } from "@/lib/ui";
 import {
   createClass,
   listStudents,
   loadTeacherOverview,
   newCode,
+  removeFromClass,
   removeStudent,
   revokeCode,
   type LinkedStudent,
@@ -29,6 +32,7 @@ async function fetchAll(): Promise<Data> {
 /** Teacher dashboard body: classes with join codes, and one-on-one students. Reloads after every action. */
 export function TeacherClasses() {
   const t = useT();
+  const locale = useLocale();
   const [overview, setOverview] = useState<TeacherOverview | null>(null);
   const [students, setStudents] = useState<LinkedStudent[]>([]);
   const [now, setNow] = useState(0);
@@ -159,29 +163,46 @@ export function TeacherClasses() {
         ) : (
           <ul className="divide-y divide-zinc-100 rounded-2xl border border-zinc-200 bg-white px-5">
             {students.map((s) => (
-              <li key={s.studentId} className="flex flex-wrap items-center justify-between gap-3 py-3 text-sm">
-                <div className="space-y-1">
-                  <p>
-                    <span className="font-medium">{s.displayName}</span> <span className="text-zinc-500">{s.email}</span>
+              <li key={s.studentId} className="flex items-center justify-between gap-3 py-3 text-sm">
+                <div className="min-w-0 space-y-1">
+                  <p className="flex min-w-0 flex-wrap items-baseline gap-x-2">
+                    <span className="font-medium">{s.displayName}</span>
+                    <span className="min-w-0 truncate text-zinc-500" title={s.email}>
+                      {s.email}
+                    </span>
                   </p>
                   <p className="flex flex-wrap items-center gap-1.5 text-[13px] text-zinc-500">
-                    {t("teacher.linked", { date: new Date(s.linkedAt).toLocaleDateString() })}
+                    {t("teacher.linked", { date: shortDate(s.linkedAt, locale) })}
                     {s.classIds.map((id) => (
-                      <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 text-zinc-700">
+                      <span key={id} className="rounded-full bg-zinc-100 px-2 py-0.5 whitespace-nowrap text-zinc-700">
                         {className(id) ?? t("teacher.col.classFallback")}
                       </span>
                     ))}
                   </p>
                 </div>
-                <button
-                  type="button"
+                <ActionsMenu
+                  label={t("teacher.menu.more", { name: s.displayName })}
                   disabled={busy}
-                  className={btn}
-                  aria-label={t("teacher.classes.removeAria", { name: s.displayName })}
-                  onClick={() => confirm(t("teacher.classes.removeConfirm", { name: s.displayName })) && run(() => removeStudent(s.studentId))}
-                >
-                  {t("teacher.classes.removeStudent")}
-                </button>
+                  actions={[
+                    // One "Remove from <class>" per class the student is in, then removing the link altogether.
+                    ...s.classIds.flatMap((id) => {
+                      const cls = overview.classes.find((x) => x.id === id);
+                      if (!cls || cls.archived) return [];
+                      return [
+                        {
+                          label: t("teacher.classes.removeFromNamed", { class: cls.name }),
+                          onSelect: () =>
+                            confirm(t("teacher.classes.removeFromConfirm", { student: s.displayName, class: cls.name })) && run(() => removeFromClass(cls.id, s.studentId)),
+                        },
+                      ];
+                    }),
+                    {
+                      label: t("teacher.classes.removeStudent"),
+                      danger: true,
+                      onSelect: () => confirm(t("teacher.classes.removeConfirm", { name: s.displayName })) && run(() => removeStudent(s.studentId)),
+                    },
+                  ]}
+                />
               </li>
             ))}
           </ul>
@@ -189,8 +210,9 @@ export function TeacherClasses() {
       </section>
         </div>
 
-        <aside className="space-y-6 lg:sticky lg:top-24">
-          <section aria-labelledby="new-class-heading" className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5">
+        {/* One sheet with two parts, so neither part pairs up with a card in the left column. */}
+        <aside className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white lg:sticky lg:top-24">
+          <section aria-labelledby="new-class-heading" className="space-y-3 p-5">
             <h2 id="new-class-heading" className="font-display text-lg font-bold">
               {t("teacher.classes.newHeading")}
             </h2>
@@ -209,10 +231,22 @@ export function TeacherClasses() {
             </form>
           </section>
 
-          <section aria-labelledby="one-on-one-heading" className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5">
-            <h2 id="one-on-one-heading" className="font-display text-lg font-bold">
-              {t("teacher.classes.oneOnOneHeading")}
-            </h2>
+          <section aria-labelledby="one-on-one-heading" className="space-y-3 p-5">
+            <div className="flex items-start justify-between gap-2">
+              <h2 id="one-on-one-heading" className="font-display text-lg font-bold">
+                {t("teacher.classes.oneOnOneHeading")}
+              </h2>
+              <ActionsMenu
+                label={t("teacher.menu.moreOwn")}
+                disabled={busy}
+                actions={codeActions(
+                  t,
+                  overview.individualCode,
+                  () => run(() => newCode("individual")),
+                  () => run(() => revokeCode("individual")),
+                )}
+              />
+            </div>
             <p className="text-sm text-zinc-600">{t("teacher.classes.oneOnOneHelp")}</p>
             <CodeBox
               code={overview.individualCode}
@@ -221,7 +255,6 @@ export function TeacherClasses() {
               busy={busy}
               turnOnLabel={t("teacher.classes.createOneOnOne")}
               onNew={() => run(() => newCode("individual"))}
-              onOff={() => run(() => revokeCode("individual"))}
             />
           </section>
         </aside>

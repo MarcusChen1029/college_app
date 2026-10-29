@@ -4,7 +4,9 @@ import { useCallback } from "react";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { testPlanText } from "@/lib/i18n/test-plan-text";
 import { collegeNames } from "@/lib/links-api";
-import { englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { whenText } from "@/components/TeacherText";
+import { collegeSummary, englishTests, humanize, interestedNames, sectionScores } from "@/lib/roster-detail";
+import { daysLabel, shortDate } from "@/lib/roster-view";
 import { useLoad } from "@/lib/use-load";
 import type { StudentDetail } from "@/lib/roster";
 import { regionLabel } from "@/lib/regions";
@@ -37,7 +39,40 @@ function Score({ value, scale, sections }: { value: number | null; scale: ScoreS
   );
 }
 
-export function OverviewPanel({ detail }: { detail: StudentDetail }) {
+/** The first thing a counselor checks, above the profile facts: how the college list stands and what is due next. */
+function CollegeSummaryRow({ detail, now }: { detail: StudentDetail; now: Date }) {
+  const t = useT();
+  const locale = useLocale();
+  const s = collegeSummary(detail, now);
+  const n = s.total;
+  return (
+    <p className="mb-4 flex flex-col gap-y-1 rounded-2xl bg-blue-50 px-5 py-3.5 text-[15px] text-ink sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
+      <span>
+        <strong className="font-semibold">{t(n === 1 ? "teacher.week.colleges.one" : "teacher.week.colleges.other", { n })}</strong>
+        {s.submitted > 0 && <span className="text-zinc-700"> · {t("teacher.overview.sumSubmitted", { n: s.submitted })}</span>}
+      </span>
+      <span aria-hidden="true" className="text-zinc-500 max-sm:hidden">
+        ·
+      </span>
+      {s.next ? (
+        <>
+          <span className="[overflow-wrap:anywhere]">
+            {t("teacher.overview.sumNext")} <strong className="font-semibold">{shortDate(s.next.date, locale, now)}</strong>{" "}
+            <span className="text-zinc-700">({whenText(t, daysLabel(s.next.days))})</span> · {s.next.college}
+          </span>
+          <span aria-hidden="true" className="text-zinc-500 max-sm:hidden">
+            ·
+          </span>
+          <span className="text-zinc-700">{s.next.open === 0 ? t("teacher.week.allDone") : t("teacher.week.open", { n: s.next.open, total: s.next.items })}</span>
+        </>
+      ) : (
+        <span className="text-zinc-700">{t("teacher.overview.sumNoNext")}</span>
+      )}
+    </p>
+  );
+}
+
+export function OverviewPanel({ detail, now = new Date() }: { detail: StudentDetail; now?: Date }) {
   const t = useT();
   const locale = useLocale();
   const p = detail.profile;
@@ -46,6 +81,7 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
   const english = englishTests(p.testDetails, { key: p.englishTestKey, score: p.englishScore });
   return (
     <div>
+    <CollegeSummaryRow detail={detail} now={now} />
     <dl className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white sm:grid-cols-2 lg:grid-cols-3">
       <Item label="SAT">
         <Score value={p.satTotal} scale={SAT_SCALE} sections={p.testDetails.sat} />
@@ -79,7 +115,7 @@ export function OverviewPanel({ detail }: { detail: StudentDetail }) {
     </dl>
     {/* When the profile last changed is about the record, not the student: a line under the sheet, not a cell in it. */}
     <p className="mt-2 text-[13px] text-zinc-600">
-      {t("teacher.overview.updated")} {p.updatedAt ? new Date(p.updatedAt).toLocaleDateString() : t("teacher.time.never")}
+      {t("teacher.overview.updated")} {p.updatedAt ? shortDate(p.updatedAt, locale) : t("teacher.time.never")}
     </p>
     </div>
   );

@@ -28,12 +28,15 @@ function weekRange(locale: string, now: Date): string {
   return `${fmt(now)} – ${fmt(end)}`;
 }
 
-function Tally({ value, label }: { value: number; label: string }) {
+/** One count that is also the way to its list (the same page's section, or the page that holds it). */
+function Tally({ value, label, href }: { value: number; label: string; href: string }) {
   return (
-    <div className="flex flex-col-reverse justify-end px-4 py-3 sm:px-5">
-      <dt className="mt-1.5 text-[13px] font-medium text-zinc-600">{label}</dt>
-      <dd className="font-display text-[28px] leading-none font-bold tabular-nums text-ink">{value}</dd>
-    </div>
+    <li>
+      <Link href={href} className="group flex h-full flex-col-reverse justify-end px-4 py-3 hover:bg-zinc-50 sm:px-5">
+        <span className="mt-1.5 text-[13px] font-medium text-zinc-600 underline-offset-4 group-hover:text-blue-700 group-hover:underline">{label} →</span>
+        <span className="font-display text-[28px] leading-none font-bold tabular-nums text-ink">{value}</span>
+      </Link>
+    </li>
   );
 }
 
@@ -123,18 +126,18 @@ export function TeacherWeek() {
   const open = week.days.reduce((sum, d) => sum + d.items.length, 0);
   return (
     <div className="space-y-8">
-      <dl className={`${SHEET} grid grid-cols-2 divide-zinc-200 *:border-zinc-200 max-sm:[&>*:nth-child(-n+2)]:border-b max-sm:[&>*:nth-child(even)]:border-l sm:grid-cols-4 sm:divide-x`}>
-        <Tally value={open} label={t("teacher.week.tally.open")} />
-        <Tally value={week.submitted} label={t("teacher.week.tally.submitted")} />
-        <Tally value={week.checkIns.length} label={t("teacher.week.tally.checkIn")} />
-        <Tally value={week.students} label={t("teacher.week.tally.students")} />
-      </dl>
+      <ul className={`${SHEET} grid grid-cols-2 overflow-hidden divide-zinc-200 *:border-zinc-200 max-sm:[&>*:nth-child(-n+2)]:border-b max-sm:[&>*:nth-child(even)]:border-l sm:grid-cols-4 sm:divide-x`}>
+        <Tally value={open} label={t("teacher.week.tally.open")} href="#week-due" />
+        <Tally value={week.submitted} label={t("teacher.week.tally.submitted")} href="/teacher/deadlines" />
+        <Tally value={week.checkIns.length} label={t("teacher.week.tally.checkIn")} href="#week-check" />
+        <Tally value={week.students} label={t("teacher.week.tally.students")} href="/teacher/students" />
+      </ul>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start">
         <section aria-labelledby="week-due" className="space-y-3">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
             <div>
-              <h2 id="week-due" className="font-display text-xl font-bold">
+              <h2 id="week-due" className="scroll-mt-24 font-display text-xl font-bold">
                 {t("teacher.week.dueHeading")}
               </h2>
               <p className="text-[13px] text-zinc-600">{weekRange(locale, now)}</p>
@@ -156,7 +159,7 @@ export function TeacherWeek() {
 
         <section aria-labelledby="week-check" className="space-y-3">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2 id="week-check" className="font-display text-xl font-bold">
+            <h2 id="week-check" className="scroll-mt-24 font-display text-xl font-bold">
               {t("teacher.week.checkInHeading")}
             </h2>
             <Link href="/teacher/students" className={`text-sm ${LINK}`}>
