@@ -193,7 +193,7 @@ function buildSlips(t: TFunction, locale: Locale, bySlug: Map<string, CollegeSum
 function SlipCard({ slip, i, t }: { slip: Slip; i: number; t: TFunction }) {
   return (
     <li data-reveal className="slip torn bg-zinc-50 pb-4 text-ink lg:flex-1" style={{ ...step(i), rotate: `${slip.tilt}deg` }}>
-      <Duo photo={slip.photo} sizes="(min-width: 1024px) 17vw, (min-width: 640px) 45vw, 100vw" className="aspect-[3/1] sm:aspect-[3/2]" />
+      <Duo photo={slip.photo} sizes="(min-width: 1024px) 17vw, (min-width: 640px) 45vw, 100vw" className="aspect-[4/1] sm:aspect-[3/2]" />
       <div className="p-4 sm:p-5 lg:p-4">
         <p className="font-display text-xl font-bold leading-tight">{slip.name}</p>
         <p className="text-base font-semibold text-zinc-600">{slip.kind}</p>
@@ -396,7 +396,7 @@ export default async function Home() {
           </div>
           <div className="mt-16 grid gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
             {MENU.map((g, gi) => (
-              <div key={g.group} data-reveal style={step(gi)}>
+              <div key={g.group} data-reveal style={step(gi)} className={gi === MENU.length - 1 ? "md:col-span-2 lg:col-span-1" : undefined}>
                 <h3 className="font-display text-[28px] font-bold tracking-tight text-blue-200">{t(g.group)}</h3>
                 <ul className="mt-6 space-y-7">
                   {g.items.map(([name, body, value]) => (
@@ -437,16 +437,16 @@ export default async function Home() {
 
       {/* The reply card. */}
       <section className="relative overflow-hidden bg-blue-200 text-ink">
-        <div className={`${FRAME} grid gap-14 pt-24 sm:pt-32 lg:grid-cols-12 lg:items-end lg:gap-8`}>
-          <div className="lg:col-span-4 lg:pb-24">
-            <p data-reveal className="text-2xl leading-snug">
+        <div className={`${FRAME} grid gap-14 pt-24 sm:pt-32 lg:grid-cols-12 lg:gap-8`}>
+          <div className="lg:col-span-5 lg:pt-36">
+            <p data-reveal className="font-display text-2xl font-bold leading-[1.15] tracking-[-0.02em] sm:text-[28px] lg:text-[32px]">
               {t("home.cta.lead")}
             </p>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
-            <div data-reveal className="reply-card relative mx-auto max-w-[620px] bg-zinc-50 px-6 pb-24 pt-36 text-center text-ink sm:px-12 sm:pt-40">
-              <div className="stamp absolute right-6 top-6 w-[72px] sm:w-[88px]">
-                <Duo photo={CAMPUS.princeton} sizes="88px" className="aspect-[3/4]" />
+            <div data-reveal style={step(1)} className="reply-card relative mx-auto max-w-[620px] bg-zinc-50 px-6 pb-24 pt-40 text-center text-ink sm:px-12 sm:pt-48">
+              <div className="stamp absolute right-5 top-5 w-[96px] sm:w-[124px]">
+                <Duo photo={CAMPUS.princeton} sizes="(min-width: 640px) 124px, 96px" className="aspect-[4/5]" />
               </div>
               <h2 className={`${H2} mx-auto max-w-[12ch]`}>{t("home.cta.title")}</h2>
               <p className="mt-4 text-xl">{t("home.cta.body")}</p>
