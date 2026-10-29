@@ -6,7 +6,9 @@ import type { Rec } from "@/lib/field-match";
 import { reasonFor, type MatchRow } from "@/lib/field-match-view";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey } from "@/lib/i18n";
+import { fmtPct } from "@/lib/format";
 import { FEW_GRADUATES, formatEarnings, type FieldEarnings } from "@/lib/outcomes";
+import { useStudent } from "@/lib/student-store";
 
 /** One college. `earnings`: Scorecard median earnings in the chosen field, added to the evidence line. `reason` rows (famous but not strong) show why instead of a strength bar.
  *  `undecided`: no field chosen, so every row is ranked by its overall tier alone. The page says that once; a row shows its tier
@@ -30,15 +32,29 @@ export function FieldMatchRow({ rec, reason = false, earnings, undecided = false
     parts.push(t(earnings.n < FEW_GRADUATES ? "outcomes.match.earningsFew" : "outcomes.match.earnings", { amount: formatEarnings(earnings.median) }));
   }
   const why = reason ? reasonFor(score) : null;
+  // Undecided rows carry the admit rate mid-row (the international one for a student abroad, when it is published), so
+  // the row reads as data rather than a name and a chip far apart.
+  const { profile } = useStudent();
+  const intl = !!profile.international && college.intl_admit_rate != null;
+  const rate = intl ? college.intl_admit_rate : college.admit_rate;
 
   return (
     <li className="rounded-2xl bg-zinc-50 px-4 py-3">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-        <SchoolLogo slug={college.slug} />
+        <SchoolLogo slug={college.slug} name={college.short_name ?? college.name} />
         <TierBadge tier={college.general_tier} />
-        <Link href={`/colleges/${college.slug}`} className="min-w-0 flex-1 truncate font-semibold hover:underline">
+        <Link
+          href={`/colleges/${college.slug}`}
+          className={`min-w-0 flex-1 truncate font-semibold hover:underline ${undecided ? "sm:flex-none sm:basis-64" : ""}`}
+        >
           {college.short_name ?? college.name}
         </Link>
+        {undecided && (
+          // Phone: the name takes the first line and the rate follows the chip on the second; wider: the rate mid-row.
+          <span className="order-last whitespace-nowrap text-sm text-zinc-700 tabular-nums sm:order-none sm:min-w-0 sm:flex-1">
+            {rate != null ? t(intl ? "match.admitIntl" : "match.admit", { rate: fmtPct(rate) }) : "—"}
+          </span>
+        )}
         {fit && <FitBadge fit={fit.fit} result={fit} />}
         {!reason && !undecided && score.strength != null && (
           <span className="flex items-center gap-2" title={t("match.strength", { n: score.strength })}>

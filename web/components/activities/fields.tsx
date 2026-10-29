@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { createContext, useContext, useId, useState } from "react";
 import { GRADES, type Grade } from "@/lib/activities";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
@@ -13,10 +13,15 @@ export const labels = <K extends string>(keys: Record<K, MessageKey>, t: TFuncti
 
 // ── small fields ──
 
+/** True while a card is being filled in: its unanswered questions are not marked one by one (the card's header counts
+ *  them once the student leaves it). Provided by components/ActivitiesEditor.tsx Card. */
+export const QuietMissing = createContext(false);
+
 /** "Needs an answer" marker beside a question's label. */
 export function Needs({ show }: { show: boolean }) {
   const t = useT();
-  return show ? <span className="ml-2 font-semibold text-soon">{t("writing.needsAnswer")}</span> : null;
+  const quiet = useContext(QuietMissing);
+  return show && !quiet ? <span className="ml-2 font-semibold text-zinc-700">{t("writing.needsAnswer")}</span> : null;
 }
 
 export function FieldError({ message }: { message: string | null }) {

@@ -32,15 +32,16 @@ import { useT } from "@/lib/i18n/client";
 import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
-import { input } from "./activities/fields";
+import { input, QuietMissing } from "./activities/fields";
 import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
 
 // ── entry card ──
 
-function Pill({ tone, children }: { tone: "soon" | "urgent"; children: React.ReactNode }) {
-  return <span className={`rounded border px-1.5 py-0.5 text-xs font-medium ${toneClass(tone)}`}>{children}</span>;
+// Neutral for "n to answer" (unfinished is not a warning); urgent for an answer that has to be fixed.
+function Pill({ tone = "neutral", children }: { tone?: "neutral" | "urgent"; children: React.ReactNode }) {
+  return <span className={`rounded border px-1.5 py-0.5 text-[13px] font-medium ${toneClass(tone)}`}>{children}</span>;
 }
 
 function Card({
@@ -69,18 +70,36 @@ function Card({
 }) {
   const t = useT();
   const btn = "grid h-7 w-7 place-items-center rounded-md text-zinc-500 hover:bg-zinc-100";
-  const missing = issues.some((i) => i.kind === "missing");
+  const toAnswer = issues.filter((i) => i.kind === "missing").length;
   const invalid = issues.some((i) => i.kind === "invalid");
+  // A card being filled in for the first time stays quiet: no per-question markers, no count. Once the student leaves it
+  // (focus moves out, or it is closed), its header says how many questions are left, once. A card that loads closed has
+  // been left already.
+  const [left, setLeft] = useState(!open);
   return (
-    <li data-entry-id={entryId} className="rounded-2xl border border-zinc-200">
+    <li
+      data-entry-id={entryId}
+      className="rounded-2xl border border-zinc-200"
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setLeft(true);
+      }}
+    >
       <div className="flex items-center gap-2 p-3">
         <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-50 text-xs font-bold text-blue-700">{index + 1}</span>
-        <button type="button" onClick={onToggle} className="min-w-0 flex-1 text-left" aria-expanded={open}>
+        <button
+          type="button"
+          onClick={() => {
+            if (open) setLeft(true);
+            onToggle();
+          }}
+          className="min-w-0 flex-1 text-left"
+          aria-expanded={open}
+        >
           <span className="block truncate font-semibold">{title || <span className="font-normal text-zinc-400">{t("writing.untitled")}</span>}</span>
           {subtitle && <span className="block truncate text-xs text-zinc-500">{subtitle}</span>}
-          {(missing || invalid) && (
+          {((left && toAnswer > 0) || invalid) && (
             <span className="mt-1 flex flex-wrap gap-1">
-              {missing && <Pill tone="soon">{t("writing.needsAnswer")}</Pill>}
+              {left && toAnswer > 0 && <Pill>{t("writing.toAnswer", { n: toAnswer })}</Pill>}
               {invalid && <Pill tone="urgent">{t("writing.needsFix")}</Pill>}
             </span>
           )}
@@ -95,7 +114,11 @@ function Card({
           {t("common.remove")}
         </button>
       </div>
-      {open && <div className="grid gap-3 border-t border-zinc-100 p-3 sm:grid-cols-2">{children}</div>}
+      {open && (
+        <QuietMissing.Provider value={!left}>
+          <div className="grid gap-3 border-t border-zinc-100 p-3 sm:grid-cols-2">{children}</div>
+        </QuietMissing.Provider>
+      )}
     </li>
   );
 }
@@ -291,9 +314,7 @@ export function ActivitiesEditor() {
   const save = (next: ActivityData) => student.updateProfile({ activities: next });
   const drafts = ucDraftsFromCommonApp(data);
   const room = UC_LIMITS.entries - data.uc.length;
-  const needAnswer = [...data.commonApp.activities.map(caActivityIssues), ...data.commonApp.honors.map(caHonorIssues)].filter((is) => is.some((i) => i.kind === "missing")).length;
 
-  const ucNeedAnswer = data.uc.map(ucEntryIssues).filter((is) => is.some((i) => i.kind === "missing")).length;
 
   const grades = (g: Grade[]) => (g.length ? t("writing.gradesList", { list: g.join(", ") }) : "");
   const hours = (h: number | null, w: number | null) => (h != null || w != null ? t("writing.hoursSummary", { h: h ?? "?", w: w ?? "?" }) : "");
@@ -320,7 +341,6 @@ export function ActivitiesEditor() {
 
       {tab === "common" ? (
         <>
-          {needAnswer > 0 && <p className={`rounded-lg border px-3 py-2 text-sm ${toneClass("soon")}`}>{t("writing.needsCount", { n: needAnswer })}</p>}
           <EntryList<CaActivity>
             heading={t("writing.headingActivities")}
             items={data.commonApp.activities}
@@ -353,7 +373,6 @@ export function ActivitiesEditor() {
         </>
       ) : (
         <>
-          {ucNeedAnswer > 0 && <p className={`rounded-lg border px-3 py-2 text-sm ${toneClass("soon")}`}>{t("writing.needsCount", { n: ucNeedAnswer })}</p>}
           <EntryList<UcEntry>
             heading={t("writing.headingUc")}
             items={data.uc}

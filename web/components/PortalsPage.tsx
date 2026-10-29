@@ -225,9 +225,25 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
     systems.forEach((s) => seen.add(s.key));
     addGroups.push({ region, systems });
   }
+  // One click for the accounts most applicants abroad need: real presets from lib/portals.ts (never made up), only the
+  // ones not added yet and only for the countries the student applies to. Everything else is under "More…".
+  const QUICK = ["collegeboard", "toefl", "css", "ielts", "duolingo", "ukvi", "ircc", "immiaccount"];
+  const addable = new Map(addGroups.flatMap((g) => g.systems.map((sys) => [sys.key, sys] as const)));
+  const shortName = (sys: PortalSystem) => sysName(sys).replace(/\s*[(（].*[)）]\s*$/, "");
+  const quick = QUICK.flatMap((k) => addable.get(k) ?? []).map((sys) => (
+    <button
+      key={sys.key}
+      type="button"
+      title={sysName(sys)}
+      className="inline-flex h-9 items-center rounded-full bg-white px-3.5 text-sm font-semibold text-ink ring-1 ring-inset ring-zinc-300 transition-shadow hover:ring-ink"
+      onClick={() => setSystem(sys.key, EMPTY_LOGIN)}
+    >
+      + {shortName(sys)}
+    </button>
+  ));
   const addMenu = (
     <select
-      className={buttonClass("secondary", "sm")}
+      className={`${buttonClass("ghost", "sm")} w-32`}
       value=""
       aria-label={t("portals.addPortalLabel")}
       onChange={(e) => {
@@ -239,7 +255,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         } else if (v) setSystem(v, EMPTY_LOGIN);
       }}
     >
-      <option value="">{t("portals.addPortal")}</option>
+      <option value="">{t("portals.more")}</option>
       {addGroups.map((g) => (
         <optgroup key={g.region} label={g.region === "ANY" ? t("portals.anyCountry") : regionName(t, g.region)}>
           {g.systems.map((s) => (
@@ -251,6 +267,13 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         </optgroup>
       ))}
     </select>
+  );
+
+  const addRow = (
+    <div role="group" aria-label={t("portals.addPortalLabel")} className="flex flex-wrap items-center gap-2">
+      {quick}
+      {addMenu}
+    </div>
   );
 
   // Where the logins live, said once beside the Add control in a neutral tone (not a warning).
@@ -345,7 +368,7 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
           title={t("portals.emptyTitle")}
           actions={
             <>
-              {addMenu}
+              {addRow}
               {savedNote}
             </>
           }
@@ -358,9 +381,9 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         </EmptyState>
       ) : (
         <>
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <div className="space-y-3">
             <p className="text-[15px] text-ink">{t("portals.countryHelp")}</p>
-            {addMenu}
+            {addRow}
             {savedNote}
           </div>
           {sections}
