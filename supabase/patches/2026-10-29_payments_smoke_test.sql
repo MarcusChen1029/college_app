@@ -1,5 +1,5 @@
--- Smoke test for migration 0044_payments. Run in the dashboard SQL Editor AFTER applying 0044
--- (or paste 0044 right after "begin;" to dry-run the migration and the test together). Works with or without 0043.
+-- Smoke test for migration 0045_payments. Run in the dashboard SQL Editor AFTER applying 0045
+-- (or paste 0045 right after "begin;" to dry-run the migration and the test together). Works with or without 0043.
 -- It creates throwaway users inside one transaction, acts as each of them (website session = JWT without client_id,
 -- AI connector = the same JWT plus client_id, service role = the payments Edge Function, no JWT = the owner in the
 -- SQL Editor), and never commits: the LAST statement deliberately raises "SMOKE RESULT: <n> failures" followed by one
@@ -7,7 +7,7 @@
 --
 -- Cast: S1 student (website + AI, pays twice, refunds), S2 student with no profile yet (first sign-in), S3 another
 -- student (an ended pass, then a pre-order), S4 student who deletes the account, S5 student for the row caps.
--- Real users' rows are only read (section G), except what 0044 itself did to them inside this transaction.
+-- Real users' rows are only read (section G), except what 0045 itself did to them inside this transaction.
 
 begin;
 
@@ -293,7 +293,7 @@ select pg_temp.chk('E5 an ATM notice for an anonymized order', 'ok:', pg_temp.ru
   $q$select public.set_order_payment_info('SMK44D1', 'ATM_TAISHIN', '{"BankCode":"812"}', now())::text$q$));
 select pg_temp.chk('E5b ...stores no payment info', 'awaiting_payment/null', (select status || '/' || coalesce(payment_info::text, 'null') from public.plan_orders where merchant_trade_no = 'SMK44D1'));
 
--- ── G. grandfathering (real users, as 0044 left them in this transaction) ──
+-- ── G. grandfathering (real users, as 0045 left them in this transaction) ──
 select pg_temp.chk('G1 no plan outside free / senior', '0', (select count(*)::text from public.student_profiles where plan not in ('free', 'senior')));
 select pg_temp.chk('G2 every senior (not smoke) has exactly one grandfathered order and the Fall 2027 window', 'true',
   (with s as (select user_id, plan_windows from public.student_profiles where plan = 'senior' and user_id::text not like '00000000-0000-4000-8000-0000000044a%'),

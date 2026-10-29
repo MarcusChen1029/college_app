@@ -310,7 +310,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     let profile = p.data ? toProfile(p.data as ProfileRow) : null;
     let list = ((l.data ?? []) as unknown as CollegeRow[]).map(toEntry);
     // Only as many local colleges can join as the account's plan allows today (its own colleges count first, local
-    // ones go in oldest first; the server refuses the rest, 0045, and one refused row would fail the whole insert).
+    // ones go in oldest first; the server refuses the rest, 0046, and one refused row would fail the whole insert).
     // The others stay in this browser's copy untouched (status, notes, checklist, custom details, login and its
     // password) until a pass makes room. Worked out from the account as read, before any write below.
     const { fit, pw, found } = localOffer(local, localPw, list, profile);

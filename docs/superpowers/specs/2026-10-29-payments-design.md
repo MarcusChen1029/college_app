@@ -63,10 +63,10 @@ Anti-goals (a failure even if it "works"):
 
 ## How it works
 
-### Data model (migration 0044)
+### Data model (migration 0045)
 
-Repo migrations end at 0043 (0040-0042 applied to the project, 0043 not yet; it belongs to the security work). This
-feature takes **0044** and **0045**. Re-check `supabase/migrations/` and `list_migrations` before applying.
+Repo migrations end at 0044 (main's `0044_default_table_privileges`; 0043 and 0044 are applied to the project). This
+feature takes **0045** and **0046** (first written as 0044/0045, renumbered 2026-10-29 after main's 0044). Re-check `supabase/migrations/` and `list_migrations` before applying.
 
 - `student_profiles` gains `plan_windows jsonb` (default `[]`): one `{ "entry_year", "from", "until" }` per paid,
   unrefunded order, written only by the server (a cache of `plan_orders`, so the client and the MCP server read one
@@ -105,7 +105,7 @@ feature takes **0044** and **0045**. Re-check `supabase/migrations/` and `list_m
 - `ai_student_profiles` (0041 view) gains `plan_windows`; update `AI_PROFILE_COLUMNS` and keep
   `ai-views.test.ts` passing. Teacher, parent and portfolio views must keep not exposing plan data.
 
-### Migration 0045 (applied only after the new web code is live)
+### Migration 0046 (applied only after the new web code is live)
 
 `enforce_plan_limit` BEFORE INSERT on `student_colleges` (same advisory-lock pattern as `enforce_row_cap`): for a
 non-service request whose effective plan is Free and who already has >= 5 colleges, raise
@@ -177,13 +177,13 @@ tested with a known vector from ECPay's docs.
 
 ## Rollout order
 
-1. Apply **0044**. Live (old) client: profile saves keep working; picking a plan on the old /pricing silently does
+1. Apply **0045**. Live (old) client: profile saves keep working; picking a plan on the old /pricing silently does
    nothing (reverts on reload); grandfathered users stay unlimited.
 2. Deploy the `payments` function in **stage** mode with ECPay's public stage credentials and the test user in
    `ECPAY_TEST_USER_IDS`.
 3. Run the end-to-end test (below) from localhost.
 4. Merge and deploy the web app. Live students see "Payment opens soon" until production mode.
-5. Apply **0045** (DB limit) once the new client is live.
+5. Apply **0046** (DB limit) once the new client is live.
 6. Before payments open (and before the ECPay review, which checks the sales page's contact details): the legal
    pages (merged in PR #56) get the operator name and contact email in `web/lib/legal.ts`, the Terms "Plans and
    payments" section (`legal.terms.plans.*`, currently "Payment is not open yet") gets price, entry-year validity,
@@ -211,7 +211,7 @@ new (the web app calls the function under `NEXT_PUBLIC_SUPABASE_URL`).
 - SQL smoke test (`supabase/patches/2026-10-29_payments_smoke_test.sql`, run in a transaction that rolls back): as
   `authenticated`, updating or inserting `plan` / `plan_windows` leaves them unchanged / Free, and the same through
   `ai_student_profiles` with OAuth claims; as the service role, `apply_paid_order` upgrades; deleting the user keeps
-  an anonymized order; after 0045, a Free student's 6th college insert fails and a pass holder's succeeds.
+  an anonymized order; after 0046, a Free student's 6th college insert fails and a pass holder's succeeds.
 - End-to-end in ECPay stage: a throwaway student account (the owner signs it in once in the browser pane; the agent
   can't sign in with Google), card 4311-9522-2222-2222 on the public stage merchant. Screenshots: Free before
   paying, the ECPay page, the pass active only after the notify landed. Also one ATM order simulated paid in the

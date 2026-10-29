@@ -147,7 +147,7 @@ export function parsePayLinkView(body: unknown): PayLinkView | null {
 const ORDER_STATUSES = ["pending", "awaiting_payment", "paid", "expired", "refunded"] as const;
 export type OrderStatus = (typeof ORDER_STATUSES)[number];
 
-/** The plan_orders columns a student may read (RLS and column grants of migration 0044). */
+/** The plan_orders columns a student may read (RLS and column grants of migration 0045). */
 export const ORDER_COLUMNS =
   "id, merchant_trade_no, entry_year, amount_twd, pass_from, pass_until, payer, status, payment_type, payment_info, created_at, paid_at, expires_at";
 

@@ -1,4 +1,4 @@
--- Refund one admission-year pass (migration 0044). Template: copy it into the dashboard SQL Editor, fill in the
+-- Refund one admission-year pass (migration 0045). Template: copy it into the dashboard SQL Editor, fill in the
 -- number, run one step at a time. Policy: full refund if asked within 7 days of payment (spec, "Refunds").
 --
 -- 1. Refund in the ECPay back office (廠商管理後台) FIRST: find the order by its MerchantTradeNo, refund the full amount.

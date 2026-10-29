@@ -1,12 +1,12 @@
 // The Free plan's college limit is enforced twice: by the web app (FREE_LIMIT in plans.ts) and by the database
-// (migration 0045, trigger plan_limit on student_colleges). These checks keep the SQL's number, message and date rule
+// (migration 0046, trigger plan_limit on student_colleges). These checks keep the SQL's number, message and date rule
 // in step with the TypeScript, so changing one without the other fails here.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { FREE_LIMIT } from "./plans.ts";
 
-const sql = readFileSync(new URL("../../supabase/migrations/0045_plan_limit.sql", import.meta.url), "utf8");
+const sql = readFileSync(new URL("../../supabase/migrations/0046_plan_limit.sql", import.meta.url), "utf8");
 // Code without comments: a number or a name in a comment must not satisfy a check.
 const code = sql.replace(/--.*$/gm, "");
 

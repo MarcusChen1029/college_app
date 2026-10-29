@@ -58,7 +58,7 @@ export const en = {
   // Supabase Auth OAuth 2.1 server grants (auth schema, not in our migrations); app/mcp, components/OAuthConsent.tsx.
   "privacy.collect.ai": "<b>AI connections.</b> Which AI apps you approved and when (kept by our sign-in provider).",
   // plan_orders: merchant_trade_no, ecpay_trade_no, entry_year, amount_twd, payment_type, payment_info (ATM bank code + virtual account /
-  // CVS code, cleared on account deletion), paid_at, pass_from/until, payer (0044); pay_links; student_profiles.plan_windows (0044). No card data.
+  // CVS code, cleared on account deletion), paid_at, pass_from/until, payer (0045); pay_links; student_profiles.plan_windows (0045). No card data.
   "privacy.collect.p2":
     "<b>Payments.</b> If you buy a pass, we keep a record of the order: its date, amount, payment method (card, ATM or convenience store), the entry year, the trade numbers from us and from ECPay, and, for an ATM or convenience-store payment, the transfer account or payment code ECPay issued for it. Trakur never sees your card number or bank details; ECPay collects them on its own payment page (see [Who else receives it](/privacy#sharing)). We don’t ask for your date of birth or ID numbers, and we don’t track your location. If you don’t provide something, only the feature that needs it won’t work; sign-in needs a Google email address.",
 

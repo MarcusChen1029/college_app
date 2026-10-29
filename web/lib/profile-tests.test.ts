@@ -45,7 +45,7 @@ test("weighted GPA and the test plan round-trip through the profile row mapping"
 test("pass windows are read from the row (malformed entries dropped) and a save never writes plan or plan_windows", () => {
   const w = { entry_year: 2027, from: "2026-10-29", until: "2027-07-31" };
   assert.deepEqual(toProfile({ ...row, plan_windows: [w] }).planWindows, [w]);
-  assert.deepEqual(toProfile(row).planWindows, []); // a row read before 0044, or without the column
+  assert.deepEqual(toProfile(row).planWindows, []); // a row read before 0045, or without the column
   assert.deepEqual(toProfile({ ...row, plan_windows: null }).planWindows, []);
   const junk = [w, null, "x", { entry_year: "2028", from: "2027-01-01", until: "2028-07-31" }, { entry_year: 2028, from: "2027/1/1", until: "2028-07-31" }, { entry_year: 2028, from: "2027-01-01" }];
   assert.deepEqual(toProfile({ ...row, plan_windows: junk as never }).planWindows, [w]);

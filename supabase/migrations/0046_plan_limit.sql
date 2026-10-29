@@ -1,9 +1,9 @@
--- Paid plans with ECPay, step 2 of 2 (spec docs/superpowers/specs/2026-10-29-payments-design.md, "Migration 0045").
+-- Paid plans with ECPay, step 2 of 2 (spec docs/superpowers/specs/2026-10-29-payments-design.md, "Migration 0046").
 -- Makes the Free plan's 5-college limit hold on the server, not only in the web app: a BEFORE INSERT trigger on
 -- student_colleges refuses the 6th row of a student who has no active pass, for website sessions and AI connector
 -- tokens alike (the ai_student_colleges view inserts into the same table, so add_college is limited too).
 --
--- APPLY THIS ONLY AFTER THE NEW WEB CLIENT IS LIVE (0044 first, then the deploy, then 0045). The old client's first
+-- APPLY THIS ONLY AFTER THE NEW WEB CLIENT IS LIVE (0045 first, then the deploy, then 0046). The old client's first
 -- sign-in merge inserts the whole local list in one upsert and aborts the entire merge on any insert error, so one
 -- refused row would lose all of it. The new client works out how many colleges fit before it inserts.
 --

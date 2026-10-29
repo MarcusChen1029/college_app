@@ -1,5 +1,5 @@
 // The Connect AI tools reach the profile and the list only through the views of migration 0041 section 1e (later
-// migrations may redefine them, e.g. 0044 adds plan_windows). These checks keep the TypeScript column lists, the SQL
+// migrations may redefine them, e.g. 0045 adds plan_windows). These checks keep the TypeScript column lists, the SQL
 // views (as last defined) and the pre-request hook in step, and keep logins out of the views.
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";

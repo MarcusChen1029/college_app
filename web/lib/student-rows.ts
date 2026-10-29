@@ -61,7 +61,7 @@ export type ProfileRow = {
   study_fields?: string[] | null;
   reminder_emails: boolean;
   plan: PlanKey;
-  /** Server-written (0044): one window per paid pass. Absent from rows read without the column; checked by toProfile. */
+  /** Server-written (0045): one window per paid pass. Absent from rows read without the column; checked by toProfile. */
   plan_windows?: PlanWindow[] | null;
   test_details: TestDetails | null;
   interested: string[] | null;
@@ -163,7 +163,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
  * last read from the database) puts back the password keys the database still has for logins that remain, so a save
  * never removes a plaintext password the server hasn't verified-copied yet (portal-vault-server.ts migratePlaintext).
- * `plan` and `plan_windows` are never written: only the server sets them (0044's trigger ignores a client's value).
+ * `plan` and `plan_windows` are never written: only the server sets them (0045's trigger ignores a client's value).
  */
 export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
   user_id: userId,

@@ -1,5 +1,5 @@
--- Smoke test for migration 0045_plan_limit. Run in the dashboard SQL Editor AFTER applying 0045
--- (or paste 0044 and 0045 right after "begin;" to dry-run both migrations and the test together).
+-- Smoke test for migration 0046_plan_limit. Run in the dashboard SQL Editor AFTER applying 0046
+-- (or paste 0045 and 0046 right after "begin;" to dry-run both migrations and the test together).
 -- It creates throwaway users inside one transaction, acts as each of them (website session = JWT without client_id,
 -- AI connector = the same JWT plus client_id through the ai_student_colleges view, service role = the payments Edge
 -- Function, no JWT = the owner in the SQL Editor), and never commits: the LAST statement deliberately raises
@@ -17,7 +17,7 @@ create temp table smoke (n serial primary key, name text, expect text, got text)
 create temp table smoke_inst on commit drop as
   select (row_number() over (order by id))::int as n, id from (select id from public.institutions order by id limit 10) i;
 
--- ── helpers (the same style as the 0044 smoke test) ──
+-- ── helpers (the same style as the 0045 smoke test) ──
 -- Throwaway user k (1..10).
 create function pg_temp.u(k int) returns text language sql immutable as $$ select '00000000-0000-4000-8000-0000000045' || lpad(k::text, 2, '0') $$;
 -- Institution k (1..10).

@@ -22,7 +22,7 @@
 --    view payments_needing_review (a second paid order for an entry year the student already paid for).
 -- 5. Grandfathering: every senior profile gets a free Fall 2027 pass (paid order, amount 0, to 2027-07-31).
 -- 6. The AI profile view gains plan_windows (read only), so the MCP server can tell when a pass ends.
--- Smoke test: supabase/patches/2026-10-29_payments_smoke_test.sql. 0045 (the server-side college limit) comes later.
+-- Smoke test: supabase/patches/2026-10-29_payments_smoke_test.sql. 0046 (the server-side college limit) comes later.
 
 -- ───────────── 1. plan columns ─────────────
 
@@ -33,7 +33,7 @@ alter table public.student_profiles add constraint student_profiles_plan_check c
 alter table public.student_profiles
   add column plan_windows jsonb not null default '[]'::jsonb check (jsonb_typeof(plan_windows) = 'array');
 comment on column public.student_profiles.plan_windows is
-  'Paid passes as [{entry_year, from, until}] (Taipei dates, inclusive). Written only by public.recompute_plan (0044).';
+  'Paid passes as [{entry_year, from, until}] (Taipei dates, inclusive). Written only by public.recompute_plan (0045).';
 
 -- ───────────── 2. plan guard ─────────────
 
@@ -128,9 +128,9 @@ create policy "own orders" on public.plan_orders for select to authenticated
 grant all on public.plan_orders, public.pay_links to service_role;
 
 comment on table public.plan_orders is
-  'One row per checkout attempt (0044). Written only by the payments Edge Function (service role) and the owner.';
+  'One row per checkout attempt (0045). Written only by the payments Edge Function (service role) and the owner.';
 comment on table public.pay_links is
-  'Parent pay links (0044): SHA-256 hex of the token. Service role only.';
+  'Parent pay links (0045): SHA-256 hex of the token. Service role only.';
 
 -- Stage-mode testers (the owner adds rows in the SQL Editor). Not exposed through the Data API.
 create table private.payment_testers (

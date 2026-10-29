@@ -24,7 +24,7 @@ export type StudentProfile = {
   studyFields?: FieldKey[]; // up to 2 study directions (lib/fields.ts); empty = undecided
   reminderEmails?: boolean; // account setting; defaults to on
   plan?: PlanKey; // the server's cached plan; never decides anything (use planWindows + effectivePlanKey)
-  planWindows?: PlanWindow[]; // purchased passes, server-written (0044); read only, never saved by the site
+  planWindows?: PlanWindow[]; // purchased passes, server-written (0045); read only, never saved by the site
   tests?: TestDetails; // section scores + English tests
   interested?: string[]; // college slugs being considered but not on the list
   activities?: Partial<ActivityData>; // Common App + UC activity lists
