@@ -517,12 +517,14 @@ html:has([data-explorer]) body > header > nav {
   }
 }
 
-/* ---- Start and Help pages (app/(app)/start, app/(app)/help, components/start/*, components/help/*) ---- */
+/* ---- Start, Help and Legal pages (app/(app)/start, help, privacy, terms, security, contact; components/start/*,
+   components/help/*, components/legal/*) ---- */
 @layer components {
   /* The page's <main> takes the home page's sky ground (its rate-sheet section), so the band runs from the header to
      the footer at full width while the content keeps the app frame. */
   html:has([data-start-page]) main,
-  html:has([data-help-page]) main {
+  html:has([data-help-page]) main,
+  html:has([data-legal-page]) main {
     background-color: var(--color-blue-100);
   }
 
@@ -533,10 +535,13 @@ html:has([data-explorer]) body > header > nav {
   html:has([data-start-flow]) [data-site-links],
   html:has([data-start-flow]) [data-site-extra],
   html:has([data-start-flow]) [data-site-menu],
-  html:has([data-start-flow]) [data-footer-wordmark] {
+  html:has([data-start-flow]) [data-footer-wordmark],
+  html:has([data-slim-footer]) [data-footer-wordmark] {
     display: none !important;
   }
-  html:has([data-start-flow]) [data-site-footer] > div {
+  /* A short reading page (/contact, data-slim-footer) keeps the footer's links but not its full-width wordmark. */
+  html:has([data-start-flow]) [data-site-footer] > div,
+  html:has([data-slim-footer]) [data-site-footer] > div {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
   }

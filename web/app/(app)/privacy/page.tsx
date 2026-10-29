@@ -60,5 +60,5 @@ const SECTIONS: readonly LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalPage title="privacy.title" intro={["privacy.intro"]} sections={SECTIONS} contactSection="contact" />;
+  return <LegalPage title="privacy.title" intro={["privacy.intro"]} sections={SECTIONS} contactSection="contact" summary="summary" />;
 }
