@@ -1,12 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import type { ApplyTag } from "@/lib/apply-tags";
-import { SORT_DESC, type DueWindow, type ExploreRow, type Median, type NextDue, type SortKey, type SortState } from "@/lib/explore-filters";
+import {
+  dayHeading,
+  monthDay,
+  SORT_DESC,
+  type DueGroup,
+  type DueWindow,
+  type ExploreRow,
+  type Median,
+  type NextDue,
+  type SortKey,
+  type SortState,
+} from "@/lib/explore-filters";
 import { fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
+import type { Locale } from "@/lib/i18n/core";
 import { deadlineTone } from "@/lib/status";
 import { useStudent } from "@/lib/student-store";
 import type { AdmissionTest } from "@/lib/test-plan";
@@ -19,29 +31,62 @@ import { LoadMore, useVisibleCount } from "./LoadMore";
 
 const TEST_NAME: Record<AdmissionTest, string> = { sat: "SAT", act: "ACT" };
 
-/** "Nov 1": inside a 30-day window the year goes without saying (en-US, like fmtDate everywhere on the site). */
-const shortDate = (iso: string) => {
-  const [y, m, d] = iso.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-};
+// Plan codes on file (lib/i18n application.planLabel.* names each in full). EA, ED, ED2, REA and RD stay codes in every
+// language (the zh labels carry them too); ROLLING is a word, so it is translated.
+const PLAN_CODES = ["ED", "ED2", "EA", "REA", "RD", "ROLLING"];
+export const planShort = (t: TFunction, plan: string): string => (plan === "ROLLING" ? t("colleges.planRolling") : plan);
+const planTitle = (t: TFunction, plan: string): string => (PLAN_CODES.includes(plan) ? t(`application.planLabel.${plan}` as MessageKey) : plan);
+const daysLeft = (t: TFunction, days: number): string =>
+  days === 0 ? t("status.deadline.today") : days === 1 ? t("status.deadline.tomorrow") : t("status.deadline.days", { n: days });
+// Text-only deadline tones (the chips use toneClass, which also sets a fill).
+const TONE_TEXT = { urgent: "text-urgent", soon: "text-soon", neutral: "text-zinc-600", done: "text-done", progress: "text-progress" } as const;
 
 /**
  * A college's next application deadline as a line of the timetable: plan, date and days left ("EA · Nov 1 · 3 days"), in the
  * deadline tones (urgent within 7 days, soon within 21). 13px, unlike the 12px DeadlineChip, to keep this page at 13px or more.
+ * `withDays` is off in the HTML sent before hydration (the server does not know the reader's date).
  */
-export function DueChip({ due }: { due: NextDue }) {
+export function DueChip({ due, withDays = true }: { due: NextDue; withDays?: boolean }) {
   const t = useT();
+  const locale = useLocale();
   return (
-    <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[13px] font-semibold whitespace-nowrap tabular-nums ${toneClass(deadlineTone(due.days, false))}`}>
-      {dueText(t, due)}
+    <span
+      title={planTitle(t, due.plan)}
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[13px] font-semibold whitespace-nowrap tabular-nums ${toneClass(deadlineTone(due.days, false))}`}
+    >
+      {dueText(t, locale, due, withDays)}
     </span>
   );
 }
 
-/** The chip's words, also used in the map's hover label: "EA · Nov 1 · 3 days". */
-export function dueText(t: TFunction, due: NextDue): string {
-  const left = due.days === 0 ? t("status.deadline.today") : due.days === 1 ? t("status.deadline.tomorrow") : t("status.deadline.days", { n: due.days });
-  return `${due.plan} · ${shortDate(due.date)} · ${left}`;
+/** The chip's words, also used in the map's hover label: "EA · Nov 1 · 3 days" (the date in the reader's language). */
+export function dueText(t: TFunction, locale: Locale, due: NextDue, withDays = true): string {
+  return [planShort(t, due.plan), monthDay(due.date, locale), withDays ? daysLeft(t, due.days) : null].filter(Boolean).join(" · ");
+}
+
+/** In the timetable the day is in the heading, so a row shows only its plan (its full name on hover). */
+export function PlanChip({ plan }: { plan: string }) {
+  const t = useT();
+  return (
+    <span title={planTitle(t, plan)} className="inline-flex items-center rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[13px] font-semibold whitespace-nowrap text-ink">
+      {planShort(t, plan)}
+    </span>
+  );
+}
+
+/** A day of the timetable: "Sun, Nov 1 · 3 days" and how many of the colleges shown close on it. */
+export function DayHead({ group, withDays = true }: { group: DueGroup; withDays?: boolean }) {
+  const t = useT();
+  const locale = useLocale();
+  return (
+    <span className="flex items-baseline justify-between gap-3">
+      <span className="text-[15px] font-semibold text-ink">
+        {dayHeading(group.date, locale)}
+        {withDays && <span className={`font-semibold ${TONE_TEXT[deadlineTone(group.days, false)]}`}> · {daysLeft(t, group.days)}</span>}
+      </span>
+      <span className="text-[13px] tabular-nums text-zinc-600">{group.n === 1 ? t("colleges.groupCountOne") : t("colleges.groupCount", { n: group.n })}</span>
+    </span>
+  );
 }
 
 /** The table (wide screens) and card list (phones, tablets) of the Explore page. Rows arrive filtered and sorted. */
@@ -59,6 +104,8 @@ export function CollegeBrowser({
   applyTags,
   dueFor,
   lens,
+  groups,
+  hydrated,
 }: {
   rows: ExploreRow[];
   resetKey: string;
@@ -75,8 +122,12 @@ export function CollegeBrowser({
   applyTags: Record<string, ApplyTag[]>;
   /** The college's next application deadline from today (lib/explore-filters.ts nextDue), for the lens chips. */
   dueFor: (r: ExploreRow) => NextDue | null;
-  /** The "when" lens window, when on: rows arrive narrowed to it and sorted by date, and each shows its deadline chip. */
+  /** The "when" lens window, when on: rows arrive narrowed to it and sorted by date, printed as a timetable (a heading per day). */
   lens: DueWindow | null;
+  /** The timetable's days, keyed by the slug of each day's first row (lib/explore-filters.ts dueGroups). */
+  groups: Map<string, DueGroup>;
+  /** False in the HTML sent before hydration: days-left words wait for the reader's own date. */
+  hydrated: boolean;
 }) {
   const t = useT();
   const student = useStudent();
@@ -126,11 +177,13 @@ export function CollegeBrowser({
   // the scores instead). A college the fit can't be worked out for gets a dash.
   const showFit = isUS && hasScores;
   const fitCell = (r: ExploreRow) => (r.fit ? <FitBadge fit={r.fit.fit} result={r.fit} size="md" /> : <span className="text-zinc-500">—</span>);
-  // With the lens on, the next deadline reads as its timetable chip; otherwise as the plain date.
+  // With the lens on, the day is in the timetable heading above, so the row shows only its plan; otherwise the plain date.
   const deadlineCell = (r: ExploreRow) => {
     const due = lens ? dueFor(r) : null;
-    return due ? <DueChip due={due} /> : <span className="tabular-nums">{fmtDate(r.c.next_deadline)}</span>;
+    return due ? <PlanChip plan={due.plan} /> : <span className="tabular-nums">{fmtDate(r.c.next_deadline)}</span>;
   };
+  // The timetable heading printed before the first row of each day.
+  const headFor = (r: ExploreRow) => (lens ? groups.get(r.c.slug) : undefined);
   // Tier badges differ in width (S++, S+, S): a fixed slot keeps every college name on one edge.
   const tierSlot = (r: ExploreRow) => (
     <span className="w-11 shrink-0">
@@ -139,19 +192,30 @@ export function CollegeBrowser({
   );
 
   const ariaSort = (keys: SortKey[]) => (keys.includes(sort.key) ? (SORT_DESC[sort.key] !== sort.reverse ? "descending" : "ascending") : undefined);
-  const sortButton = (key: SortKey, label: React.ReactNode) => {
+  // While the lens orders the rows by date (`sort` then says deadline), the headers are labels, not sort buttons.
+  const sortButton = (key: SortKey, label: ReactNode) => {
     const on = sort.key === key;
     const desc = SORT_DESC[key] !== sort.reverse;
+    const arrow = (
+      <span aria-hidden="true" className={on ? "" : "opacity-0"}>
+        {desc ? "↓" : "↑"}
+      </span>
+    );
+    if (lens)
+      return (
+        <span className={`inline-flex items-center gap-1 whitespace-nowrap ${on ? "text-ink" : ""}`}>
+          {label}
+          {on && arrow}
+        </span>
+      );
     return (
       <button type="button" onClick={() => onSort(key)} className={`inline-flex items-center gap-1 whitespace-nowrap hover:text-ink ${on ? "text-ink" : ""}`}>
         {label}
-        <span aria-hidden="true" className={on ? "" : "opacity-0"}>
-          {desc ? "↓" : "↑"}
-        </span>
+        {arrow}
       </button>
     );
   };
-  const th = (key: SortKey | null, label: React.ReactNode, cls = "", title?: string) => (
+  const th = (key: SortKey | null, label: ReactNode, cls = "", title?: string) => (
     <th key={key ?? undefined} scope="col" className={`px-3 py-2.5 font-semibold ${cls}`} aria-sort={key ? ariaSort([key]) : undefined} title={title}>
       {key ? sortButton(key, label) : label}
     </th>
@@ -177,14 +241,23 @@ export function CollegeBrowser({
         </div>
       )}
 
-      {/* Phones and tablets: one card per college. The usual tuition basis is said once, here, not on every card. */}
-      <p className="text-[13px] text-zinc-600 lg:hidden">{t("colleges.tuitionNoteCards")}</p>
+      {/* Phones and tablets: one card per college (under a heading per day with the lens on). The usual tuition basis is said
+          once, here, not on every card. */}
+      <p className="text-[13px] text-zinc-600 lg:hidden">{t("colleges.tuitionNote")}</p>
       <ul className="grid gap-2 sm:grid-cols-2 lg:hidden">
-        {visible.map((r) => (
-          <li key={r.c.slug} className="rounded-2xl border border-zinc-200 bg-white p-4">
+        {visible.map((r) => {
+          const head = headFor(r);
+          return (
+          <Fragment key={r.c.slug}>
+          {head && (
+            <li className="pt-3 sm:col-span-2">
+              <DayHead group={head} withDays={hydrated} />
+            </li>
+          )}
+          <li className="rounded-2xl border border-zinc-200 bg-white p-4">
             <div className="flex items-start gap-2.5">
               <span className="grid h-7 w-7 shrink-0 place-items-center">
-                <SchoolLogo slug={r.c.slug} />
+                <SchoolLogo slug={r.c.slug} name={r.c.short_name ?? r.c.name} />
               </span>
               {tierSlot(r)}
               <div className="min-w-0 flex-1">
@@ -208,7 +281,7 @@ export function CollegeBrowser({
                     <MedianCell m={r[k]} test={k} you={myScores[k]} />
                   </Stat>
                 ))}
-              <Stat label={t("colleges.thTuition")}>
+              <Stat label={`${t("colleges.thTuition")}*`}>
                 <TuitionCell tu={r.tuition} quietPublished />
               </Stat>
               {showEnglish && (
@@ -223,7 +296,9 @@ export function CollegeBrowser({
               {listButton(r)}
             </div>
           </li>
-        ))}
+          </Fragment>
+          );
+        })}
         {rows.length === 0 && <li className="sm:col-span-2">{empty}</li>}
       </ul>
 
@@ -254,16 +329,9 @@ export function CollegeBrowser({
                     "text-right",
                   ),
                 )}
-              {th(
-                "tuition",
-                // The usual basis is said once here; a cell names its basis only when it is another one (in-state, by course…).
-                <span className="text-right">
-                  {t("colleges.thTuition")}
-                  <span className="block font-normal text-zinc-600">{t("colleges.thTuitionNote")}</span>
-                </span>,
-                "text-right",
-                t("colleges.thTuitionTitle"),
-              )}
+              {/* One line, so the column is as wide as its figures; the usual basis is the footnote under the table, and a cell
+                  names its basis only when it is another one (in-state, by course…). */}
+              {th("tuition", `${t("colleges.thTuition")}*`, "text-right", t("colleges.thTuitionTitle"))}
               {showEnglish && th(null, t("colleges.thEnglish"))}
               {showFit && th(null, t("colleges.thYourFit"))}
               {th("deadline", t("colleges.thNextDeadline"), lens ? "" : "hidden xl:table-cell")}
@@ -275,8 +343,19 @@ export function CollegeBrowser({
             </tr>
           </thead>
           <tbody>
-            {visible.map((r) => (
-              <tr key={r.c.slug} className="border-t border-zinc-100 align-middle first:border-t-0 hover:bg-zinc-50">
+            {visible.map((r) => {
+              const head = headFor(r);
+              return (
+              <Fragment key={r.c.slug}>
+              {/* The timetable: a heading row before each deadline day (it spans every column shown). */}
+              {head && (
+                <tr className="border-t border-zinc-200 first:border-t-0">
+                  <th scope="colgroup" colSpan={20} className="px-4 pb-2 pt-4 text-left font-normal">
+                    <DayHead group={head} withDays={hydrated} />
+                  </th>
+                </tr>
+              )}
+              <tr className="border-t border-zinc-100 align-middle first:border-t-0 hover:bg-zinc-50">
                 <td className="py-3 pl-4 pr-1">{compareBox(r)}</td>
                 <td className="px-3 py-3">
                   <TierBadge tier={tierFor(r)} />
@@ -284,7 +363,7 @@ export function CollegeBrowser({
                 <td className="px-3 py-3">
                   <div className="flex items-center gap-3">
                     <span className="grid h-7 w-7 shrink-0 place-items-center">
-                      <SchoolLogo slug={r.c.slug} />
+                      <SchoolLogo slug={r.c.slug} name={r.c.short_name ?? r.c.name} />
                     </span>
                     <div className="min-w-0">
                       <Link href={`/colleges/${r.c.slug}`} className="text-base font-semibold text-ink hover:underline">
@@ -324,11 +403,14 @@ export function CollegeBrowser({
                 {isUS && <td className="hidden px-3 py-3 text-[13px] 2xl:table-cell">{[...(r.c.plans ?? [])].sort().join(" · ") || <span className="text-zinc-500">—</span>}</td>}
                 <td className="py-3 pl-3 pr-4 text-right">{listButton(r)}</td>
               </tr>
-            ))}
+              </Fragment>
+              );
+            })}
           </tbody>
         </table>
         {rows.length === 0 && <div className="p-2">{empty}</div>}
       </div>
+      <p className="hidden text-[13px] text-zinc-600 lg:block">{t("colleges.tuitionNote")}</p>
 
       {shown.hasMore && <LoadMore key={shown.count} count={shown.count} onVisible={shown.more} />}
       <p className="text-[13px] text-zinc-600">{isUS ? t("colleges.footnote") : t("colleges.footnoteNonUS")}</p>

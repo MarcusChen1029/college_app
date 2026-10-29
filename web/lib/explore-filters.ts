@@ -5,6 +5,7 @@ import { englishOk, type EnglishFit } from "./english-fit.ts";
 import { scoreField, type FieldEvidence } from "./field-match.ts";
 import { fieldByKey, type FieldKey } from "./fields.ts";
 import type { Fit, FitResult } from "./fit.ts";
+import type { Locale } from "./i18n/core.ts";
 import { isRegion, type RegionCode } from "./regions.ts";
 import { tierRank, TIER_ORDER } from "./tiers.ts";
 import { withinBudget, type Currency, type TuitionEstimate } from "./tuition.ts";
@@ -152,24 +153,92 @@ export function filtersToQuery(f: ExploreFilters): string {
 /** A college's next application deadline from today: its date, its plan (EA, ED, RD…) and the days left (0 = today). */
 export type NextDue = { date: string; plan: string; days: number };
 
-/** Whole days from `today` to `date` (both ISO yyyy-mm-dd, compared as calendar days, so time zones and DST never shift it). */
-export function daysUntil(today: string, date: string): number {
+/** Whole days from `from` to `to` (both ISO yyyy-mm-dd, compared as calendar days, so time zones and DST never shift it). */
+export function daysBetween(from: string, to: string): number {
   const day = (iso: string) => Date.UTC(Number(iso.slice(0, 4)), Number(iso.slice(5, 7)) - 1, Number(iso.slice(8, 10)));
-  return Math.round((day(date) - day(today)) / 86_400_000);
+  return Math.round((day(to) - day(from)) / 86_400_000);
+}
+
+/** One published application deadline as the page ships it: [date, plan, 1 when it is narrow (isNarrowDeadline)]. */
+export type DeadlineRow = readonly [string, string, (0 | 1)?];
+
+/**
+ * A deadline that holds for only part of the applicants, read from its label (notes are not used: they often mention a
+ * program on a general row, "Also the Nursing deadline"). Narrow when the label
+ *  - restricts who may use it: "nursing applicants only", "first-generation college students only";
+ *  - is for another intake than fall: "International spring 2027 …" (a label naming spring or summer and not fall/autumn;
+ *    "summer and autumn quarter" is general, and so is UBC's "Winter Session", its September intake);
+ *  - is a performing-arts or portfolio track: "Regular Decision — Drama & Music", "(performing arts majors)", "Acting (BFA)",
+ *    "RD with optional arts portfolio", unless it says "also" ("…; also the final deadline for nursing and the Honors portfolio").
+ * A narrow date is never shown as a college's next deadline.
+ */
+export function isNarrowDeadline(label: string | null | undefined): boolean {
+  const l = label ?? "";
+  if (/\b(applicants|students|majors|programs?)\s+only\b/i.test(l)) return true;
+  if (/\b(spring|summer)\b/i.test(l) && !/\b(fall|autumn)\b/i.test(l)) return true;
+  return /\b(drama|music|dance|acting|performing arts|portfolio|audition|bfa|bmus)\b/i.test(l) && !/\balso\b/i.test(l);
 }
 
 /**
- * The first deadline on or after today from a college's application deadlines ([date, plan] pairs, any order). Only real
- * published dates go in (lib/data.ts deadlines with kind "application" and a plan); nothing is computed or guessed here.
+ * The first general deadline on or after today from a college's application deadlines (any order); narrow ones never count.
+ * Only real published dates go in (lib/data.ts deadlines with kind "application" and a plan); nothing is computed or guessed.
  */
-export function nextDue(deadlines: readonly (readonly [string, string])[] | undefined, today: string): NextDue | null {
-  let best: readonly [string, string] | null = null;
-  for (const d of deadlines ?? []) if (d[0] >= today && (!best || d[0] < best[0] || (d[0] === best[0] && d[1] < best[1]))) best = d;
-  return best ? { date: best[0], plan: best[1], days: daysUntil(today, best[0]) } : null;
+export function nextDue(deadlines: readonly DeadlineRow[] | undefined, today: string): NextDue | null {
+  let best: DeadlineRow | null = null;
+  for (const d of deadlines ?? []) if (!d[2] && d[0] >= today && (!best || d[0] < best[0] || (d[0] === best[0] && d[1] < best[1]))) best = d;
+  return best ? { date: best[0], plan: best[1], days: daysBetween(today, best[0]) } : null;
 }
+
+/** Only narrow deadlines ahead (no general one): the college has no single next deadline to show. */
+export const onlyNarrowAhead = (deadlines: readonly DeadlineRow[] | undefined, today: string): boolean =>
+  !!deadlines?.some((d) => d[2] && d[0] >= today) && !deadlines.some((d) => !d[2] && d[0] >= today);
 
 /** In the lens window: a next deadline from today up to `window` days ahead (day 0 to day `window`, inclusive). */
 export const dueWithin = (due: NextDue | null, window: DueWindow): boolean => due != null && due.days >= 0 && due.days <= window;
+
+// Deadline days in the reader's language. A calendar day, so UTC. zh-TW is built by hand rather than with Intl, so the server
+// (Node's ICU) and the browser print the same characters and the client render never differs from the server HTML.
+const ZH_WEEKDAY = "日一二三四五六";
+const calendarDay = (iso: string): Date => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d));
+};
+
+/** "Nov 1" / "11月1日": a deadline inside the lens window, where the year goes without saying. */
+export function monthDay(iso: string, locale: Locale = "en"): string {
+  const day = calendarDay(iso);
+  if (locale === "zh-TW") return `${day.getUTCMonth() + 1}月${day.getUTCDate()}日`;
+  return day.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+/** "Sun, Nov 1" / "11月1日（週日）": a deadline day as a printed timetable heads it. */
+export function dayHeading(iso: string, locale: Locale = "en"): string {
+  const day = calendarDay(iso);
+  if (locale === "zh-TW") return `${monthDay(iso, locale)}（週${ZH_WEEKDAY[day.getUTCDay()]}）`;
+  return day.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+/** One deadline day in the lens list: its date, the days left, and how many of the rows close on it. */
+export type DueGroup = { date: string; days: number; n: number };
+
+/**
+ * The lens list as a timetable. Rows arrive sorted by date; the result maps the key of each day's first row to that day, so a
+ * list can print the day's heading just before it. Rows without a deadline are skipped.
+ */
+export function dueGroups<R>(rows: readonly R[], key: (r: R) => string, due: (r: R) => NextDue | null): Map<string, DueGroup> {
+  const out = new Map<string, DueGroup>();
+  let head: DueGroup | null = null;
+  for (const r of rows) {
+    const d = due(r);
+    if (!d) continue;
+    if (!head || head.date !== d.date) {
+      head = { date: d.date, days: d.days, n: 0 };
+      out.set(key(r), head);
+    }
+    head.n++;
+  }
+  return out;
+}
 
 // ───────────── Per-college values the filters and columns share ─────────────
 

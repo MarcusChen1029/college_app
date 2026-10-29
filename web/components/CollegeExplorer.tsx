@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { englishFit, hasEnglishScore } from "@/lib/english-fit";
 import {
   admitRateFor,
@@ -12,12 +12,15 @@ import {
   filtersToQuery,
   FITS,
   medianFor,
+  dueGroups,
   nextDue,
   nextSort,
+  onlyNarrowAhead,
   parseFilters,
   rowMatches,
   sortRows,
   tierFor,
+  type DeadlineRow,
   type DueWindow,
   type ExploreFilters,
   type ExploreRow,
@@ -29,7 +32,7 @@ import { scoreField, type FieldEvidence } from "@/lib/field-match";
 import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
-import { useT } from "@/lib/i18n/client";
+import { useLocale, useT } from "@/lib/i18n/client";
 import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { activeRegions, isRegion, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
@@ -40,7 +43,7 @@ import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
 import type { ApplyTag } from "@/lib/apply-tags";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { buttonClass, FIT_DOT_COLOR, fitDotClass, SEGMENT_TRACK, segmentClass, TIER_DOT } from "@/lib/ui";
-import { CollegeBrowser, DueChip, dueText } from "./CollegeBrowser";
+import { CollegeBrowser, DayHead, DueChip, dueText, PlanChip } from "./CollegeBrowser";
 import { EnglishFitLine } from "./EnglishFit";
 import { ExploreFilterBar } from "./ExploreFilterBar";
 import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
@@ -159,15 +162,16 @@ function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | 
           </span>
         )}
       </div>
-      <p className="mt-1.5 flex justify-between text-[13px] tabular-nums text-zinc-600">
+      {/* Scale ends sit under the bar's ends; the range gets its own line, so a long "(section scores added)" never runs into them. */}
+      <p className="mt-1 flex justify-between text-[13px] tabular-nums text-zinc-500" aria-hidden="true">
         <span>400</span>
-        <span>
-          {t("colleges.middle50")}
-          {estimated && "≈ "}
-          {p25}–{p75}
-          {estimated && t("colleges.sectionAdded")}
-        </span>
         <span>1600</span>
+      </p>
+      <p className="mt-1 text-[13px] tabular-nums text-zinc-600">
+        {t("colleges.middle50")}
+        {estimated && "≈ "}
+        {p25}–{p75}
+        {estimated && t("colleges.sectionAdded")}
       </p>
     </div>
   );
@@ -212,6 +216,8 @@ function DetailCard({
 }) {
   const t = useT();
   const student = useStudent();
+  // Days left need the reader's own date, so they wait for hydration (a card opened from a shared ?c= link renders on the server).
+  const hydrated = useSyncExternalStore(noSubscribe, () => true, () => false);
   const inList = student.has(college.slug);
   const hasScores = scoredTests(student.profile).length > 0;
   const isUS = (college.country_code ?? "US") === "US";
@@ -235,7 +241,7 @@ function DetailCard({
       aria-labelledby={`card-${college.slug}`}
     >
       <header className="flex items-start gap-3">
-        <SchoolLogo slug={college.slug} />
+        <SchoolLogo slug={college.slug} name={college.short_name ?? college.name} />
         <div className="min-w-0 flex-1">
           <div className="flex items-start gap-2">
             <h2 id={`card-${college.slug}`} className="min-w-0 text-xl font-bold leading-tight text-ink">
@@ -277,7 +283,7 @@ function DetailCard({
           <EnglishFitLine english={english} className="mt-1 justify-end text-right" />
         </Row>
         <Row label={t("colleges.nextDeadline")}>
-          {due ? <DueChip due={due} /> : <span className="tabular-nums">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</span>}
+          {due ? <DueChip due={due} withDays={hydrated} /> : <span className="tabular-nums">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</span>}
         </Row>
         {isUS && (
           <Row label={t("colleges.yourFit")}>
@@ -349,14 +355,19 @@ export function CollegeExplorer({
   evidence: Record<string, FieldEvidence>;
   /** By slug, only colleges that have one (lib/apply-tags.ts). */
   applyTags: Record<string, ApplyTag[]>;
-  /** By institution id: published application deadlines for a plan, as [date, plan] pairs (app/(explore)/colleges/page.tsx). */
-  appDeadlines: Record<string, [string, string][]>;
-  /** The server's date, used only while hydrating; after that the reader's own today decides what is next. */
+  /** By institution id: published application deadlines for a plan, as [date, plan, narrow] rows (app/(explore)/colleges/page.tsx). */
+  appDeadlines: Record<string, DeadlineRow[]>;
+  /**
+   * The server's UTC date, used only for the HTML sent before hydration (which windows hold which colleges can differ from the
+   * reader's for a few hours around midnight). Days-left words are left out of that HTML, so no "3 days" changes on hydration.
+   */
   serverToday: string;
 }) {
   const t = useT();
+  const locale = useLocale();
   const student = useStudent();
   const today = useSyncExternalStore(noSubscribe, localToday, () => serverToday);
+  const hydrated = useSyncExternalStore(noSubscribe, () => true, () => false);
   // Each college's next application deadline from the reader's today: real published dates only (lib/explore-filters.ts nextDue).
   const dueById = useMemo(() => {
     const m = new Map<string, NextDue>();
@@ -425,7 +436,9 @@ export function CollegeExplorer({
     () =>
       inRegion.map((raw) => {
         const due = dueById.get(raw.id);
-        const c = due && due.date !== raw.next_deadline ? { ...raw, next_deadline: due.date } : raw;
+        // A college with only narrow dates ahead (one program's, another intake's) has no single next deadline: show none.
+        const next = due ? due.date : onlyNarrowAhead(appDeadlines[raw.id], today) ? null : raw.next_deadline;
+        const c = next !== raw.next_deadline ? { ...raw, next_deadline: next } : raw;
         return {
         c,
         fit: hasScores && isUS ? computeFit(profile, c) : null,
@@ -436,7 +449,7 @@ export function CollegeExplorer({
         admit: admitRateFor(c, international),
         };
       }),
-    [inRegion, dueById, hasScores, isUS, profile, myEnglish, english, international, programFees, satEstimates],
+    [inRegion, dueById, appDeadlines, today, hasScores, isUS, profile, myEnglish, english, international, programFees, satEstimates],
   );
 
   const ctx: FilterContext = { evidence, currency, isUS, hasScores, hasEnglish, applyTags };
@@ -469,6 +482,9 @@ export function CollegeExplorer({
     () => (lens ? rows.filter((r) => dueWithin(dueById.get(r.c.id) ?? null, lens)).sort((a, b) => dueById.get(a.c.id)!.date.localeCompare(dueById.get(b.c.id)!.date)) : rows),
     [rows, dueById, lens],
   );
+  // The lens list as a printed timetable: a heading for each deadline day, on that day's first row.
+  const groups = useMemo(() => dueGroups(lens ? listRows : [], (r) => r.c.slug, (r) => dueById.get(r.c.id) ?? null), [listRows, lens, dueById]);
+  // It counts colleges (each by its one next deadline), so the line says colleges.
   const lensSentence = lens
     ? listRows.length === 0
       ? t("colleges.lensNone", { days: lens })
@@ -491,10 +507,10 @@ export function CollegeExplorer({
         const due = dueById.get(c.id) ?? null;
         const lit = lens != null && dueWithin(due, lens);
         // A lit college's hover label carries its line of the timetable too.
-        const note = lit && due ? [base, dueText(t, due)].filter(Boolean).join(" · ") : base;
+        const note = lit && due ? [base, dueText(t, locale, due, hydrated)].filter(Boolean).join(" · ") : base;
         return { slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier, tone, note, lit, dim: lens != null && !lit };
       }),
-    [rows, byFit, t, dueById, lens],
+    [rows, byFit, t, locale, dueById, lens, hydrated],
   );
   const legend = useMemo(() => {
     // The key counts what is lit: every college shown, or with the lens on, the ones closing in its window.
@@ -532,7 +548,9 @@ export function CollegeExplorer({
 
   const filterBar = (compact: boolean) => (
     <ExploreFilterBar
-      f={eff}
+      // While a window is on the list is in date order, and the sort menu says so (locked until the window is turned off).
+      f={lens ? { ...eff, sort: { key: "deadline", reverse: false } } : eff}
+      sortLocked={lens != null}
       set={set}
       count={listRows.length}
       total={inRegion.length}
@@ -582,18 +600,27 @@ export function CollegeExplorer({
     </div>
   );
 
-  // The "when" lens switch, each window with its live count (short labels on a phone, so the three fit one line).
+  // The "when" lens switch, each window with its live count (short labels on a phone, so the three fit one line). A window
+  // with nothing in it (a UK view three months before UCAS closes) is disabled, its count saying why.
   const lensSwitch = (
     <div className={SEGMENT_TRACK} role="group" aria-label={t("colleges.lensGroup")}>
       {([null, ...DUE_WINDOWS] as const).map((w) => (
-        <button key={w ?? "any"} type="button" aria-pressed={lens === w} onClick={() => set({ due: w })} className={segmentClass(lens === w)}>
+        <button
+          key={w ?? "any"}
+          type="button"
+          aria-pressed={lens === w}
+          disabled={w != null && lensCounts[w] === 0 && lens !== w}
+          title={w != null && lensCounts[w] === 0 ? t("colleges.lensNone", { days: w }) : undefined}
+          onClick={() => set({ due: w })}
+          className={`${segmentClass(lens === w)} disabled:cursor-not-allowed disabled:text-zinc-400 disabled:hover:text-zinc-400`}
+        >
           {w == null ? (
             t("colleges.lensAny")
           ) : (
             <>
               <span className="sm:hidden">{t(w === 7 ? "colleges.lens7Short" : "colleges.lens30Short")}</span>
               <span className="max-sm:hidden">{t(w === 7 ? "colleges.lens7" : "colleges.lens30")}</span>
-              <span className="font-normal tabular-nums text-zinc-600">{lensCounts[w]}</span>
+              <span className="font-normal tabular-nums text-zinc-600 [button:disabled_&]:text-zinc-400">{lensCounts[w]}</span>
             </>
           )}
         </button>
@@ -655,13 +682,15 @@ export function CollegeExplorer({
           rows={listRows}
           dueFor={dueOf}
           lens={lens}
+          groups={groups}
+          hydrated={hydrated}
           resetKey={`${region}|${effKey}`}
           isUS={isUS}
           tests={tests}
           myScores={myScores}
           showEnglish={hasEnglish || international}
           hasScores={hasScores}
-          sort={eff.sort}
+          sort={lens ? { key: "deadline", reverse: false } : eff.sort}
           onSort={(key: SortKey) => set({ sort: nextSort(eff.sort, key) })}
           tierFor={(r) => tierFor(r.c, eff.category)}
           applyTags={applyTags}
@@ -699,8 +728,16 @@ export function CollegeExplorer({
             {listRows.slice(0, shown.count).map(({ c, fit }) => {
               const on = c.slug === selected;
               const due = lens ? (dueById.get(c.id) ?? null) : null;
+              const head = lens ? groups.get(c.slug) : undefined;
               return (
-                <li key={c.slug} data-slug={c.slug}>
+                <Fragment key={c.slug}>
+                {/* The timetable: each deadline day's heading stays at the top of the list while its colleges scroll under it. */}
+                {head && (
+                  <li className="sticky top-0 z-[1] bg-white px-3 pb-1.5 pt-3">
+                    <DayHead group={head} withDays={hydrated} />
+                  </li>
+                )}
+                <li data-slug={c.slug}>
                   <button
                     type="button"
                     aria-pressed={on}
@@ -712,7 +749,7 @@ export function CollegeExplorer({
                   >
                     {/* One fixed logo slot, so every name starts on the same edge whether or not the school has an icon. */}
                     <span className="grid h-7 w-7 shrink-0 place-items-center">
-                      <SchoolLogo slug={c.slug} />
+                      <SchoolLogo slug={c.slug} name={c.short_name ?? c.name} />
                     </span>
                     {/* The fit badge sits under the name: beside it, the narrow sidebar cut names to a few letters. */}
                     <span className="min-w-0 flex-1">
@@ -723,7 +760,7 @@ export function CollegeExplorer({
                       </span>
                       {(due || fit || student.has(c.slug) || applyTags[c.slug]) && (
                         <span className="mt-1.5 flex flex-wrap gap-1">
-                          {due && <DueChip due={due} />}
+                          {due && <PlanChip plan={due.plan} />}
                           {fit ? <FitBadge fit={fit.fit} size="md" /> : student.has(c.slug) && <Pill tone="blue" size="md">{t("colleges.onList")}</Pill>}
                           <ApplyTags tags={applyTags[c.slug]} size="md" />
                         </span>
@@ -734,6 +771,7 @@ export function CollegeExplorer({
                     </span>
                   </button>
                 </li>
+                </Fragment>
               );
             })}
             {shown.hasMore && (
@@ -783,8 +821,9 @@ export function CollegeExplorer({
                 )}
               </div>
             </div>
-            {/* Below lg the canvas takes the country's own proportions, so the land fills it and the list follows close under it. */}
-            <div className="aspect-[2/1] min-h-[180px] lg:aspect-auto lg:min-h-0 lg:flex-1">
+            {/* Below lg the canvas takes the land's own proportions (5:3 at this tilt), so the land fills it and the list follows close
+                under it. A fixed ratio and no minimum height: the framing is the same at every width, scrollbar or none. */}
+            <div className="aspect-[5/3] lg:aspect-auto lg:min-h-0 lg:flex-1">
               <USMap3D
                 key={region}
                 region={region}

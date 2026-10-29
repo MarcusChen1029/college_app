@@ -39,6 +39,8 @@ export type FilterBarProps = {
   sortTests: ("sat" | "act")[];
   /** Map sidebar: every filter behind one "Filters" button, narrow layout. */
   compact?: boolean;
+  /** The "when" lens is on: rows are in date order, so the sort menu shows "deadline" and is locked until the lens is off. */
+  sortLocked?: boolean;
 };
 
 export function ExploreFilterBar(p: FilterBarProps) {
@@ -149,6 +151,8 @@ export function ExploreFilterBar(p: FilterBarProps) {
       value={f.sort.key}
       onChange={(e) => set({ sort: { key: e.target.value as SortKey, reverse: false } })}
       aria-label={t("colleges.sort")}
+      disabled={p.sortLocked}
+      title={p.sortLocked ? t("colleges.sortLocked") : undefined}
     >
       {sortOptions.map(([k, key]) => (
         <option key={k} value={k}>

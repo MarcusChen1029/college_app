@@ -62,18 +62,58 @@ export function ApplyTags({ tags, className = "", size = "sm" }: { tags: readonl
   );
 }
 
-/** The school's logo (its site icon), shown left of the tier. Hides itself when there is none. */
-export function SchoolLogo({ slug, size = "md" }: { slug: string; size?: "sm" | "md" }) {
+// Words that never start a school's initials ("University of Houston-Downtown" → UH, not UO).
+const MINOR = new Set(["of", "the", "at", "and", "in", "for", "a"]);
+/**
+ * "Kansas State" → KS, "LSE" → LSE, "UH Downtown" → UH, "Cambridge" → C: up to 3 letters from the name people use. A
+ * four-letter acronym won't fit the square at 13px, so it keeps its first two ("NYIT" → NY, "UTEP" → UT), never a cut "NYI".
+ */
+export function initialsOf(name: string): string {
+  const words = name.replace(/[^\p{L}\s-]/gu, " ").split(/[\s-]+/).filter(Boolean);
+  if (!words.length) return "";
+  if (/^\p{Lu}{2,4}$/u.test(words[0])) return words[0].length === 4 ? words[0].slice(0, 2) : words[0];
+  return words
+    .filter((w) => !MINOR.has(w.toLowerCase()))
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+}
+
+/**
+ * The school's logo (its site icon), shown left of the tier. Without one it hides itself, or, given the school's `name`, shows
+ * its initials on a pale square so a list keeps a mark in every row.
+ */
+export function SchoolLogo({ slug, size = "md", name }: { slug: string; size?: "sm" | "md"; name?: string }) {
   const [failed, setFailed] = useState(false);
   const domain = SCHOOL_DOMAINS[slug];
   const dim = size === "sm" ? "h-5 w-5" : "h-7 w-7";
-  if (!domain || failed) return null;
+  // An icon that failed before hydration fired its error event while React was not yet listening: catch it at mount.
+  // (A site with no icon gets Google's grey globe, which loads like any image; at 16px it can't be told from a real small
+  // icon such as NYU's, and Google sends no CORS header to compare pixels, so the globe stays.)
+  const check = (img: HTMLImageElement) => {
+    if (img.naturalWidth === 0) setFailed(true);
+  };
+  if (!domain || failed) {
+    const ini = name ? initialsOf(name) : "";
+    if (!ini) return null;
+    return (
+      <span
+        aria-hidden="true"
+        className={`${dim} grid shrink-0 place-items-center rounded bg-zinc-100 font-display font-bold leading-none text-zinc-700 ${size === "sm" ? "text-[10px]" : ini.length > 2 ? "text-[13px] tracking-tighter" : "text-[13px]"}`}
+      >
+        {ini}
+      </span>
+    );
+  }
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
       alt=""
       loading="lazy"
+      ref={(img) => {
+        if (img?.complete) check(img);
+      }}
       onError={() => setFailed(true)}
       className={`${dim} shrink-0 rounded object-contain`}
     />

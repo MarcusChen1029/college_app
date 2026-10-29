@@ -476,8 +476,10 @@ export function USMap3D(props: {
         varying vec3 vColor; varying float vCss; varying float vDotR; varying float vShow; varying float vRing; varying float vLit; varying float vDim;
         void main() {
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          // On a phone-width map (uScale at its floor) the ring is drawn at 60%, so a dense region stays rings, not one clump.
+          float rk = mix(0.6, 1.0, clamp((uScale - 0.68) / 0.32, 0.0, 1.0));
           vDotR = aSize * uScale * 0.5;
-          vCss = aSize * uScale + aLit * 9.0;
+          vCss = aSize * uScale + aLit * 9.0 * rk;
           gl_PointSize = vCss * uPx;
           vColor = aColor;
           vShow = aShow;
@@ -500,7 +502,8 @@ export function USMap3D(props: {
           vec3 c = mix(vec3(1.0), mix(vColor, mix(vColor, uInk, 0.4), rim), fill);
           c = mix(c, vec3(1.0), hole);
           float a = outer;
-          float band = vLit * smoothstep(vDotR + 1.5 - aa, vDotR + 1.5, r) * (1.0 - smoothstep(vDotR + 3.5 - aa, vDotR + 3.5, r));
+          float rk = mix(0.6, 1.0, clamp((uScale - 0.68) / 0.32, 0.0, 1.0));
+          float band = vLit * smoothstep(vDotR + 1.5 * rk - aa, vDotR + 1.5 * rk, r) * (1.0 - smoothstep(vDotR + 3.5 * rk - aa, vDotR + 3.5 * rk, r));
           c = mix(c, uInk, band);
           a = max(a, band);
           a *= uAlpha * vShow * mix(1.0, 0.22, vDim);
