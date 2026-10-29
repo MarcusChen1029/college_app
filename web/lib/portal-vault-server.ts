@@ -1,42 +1,37 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
-import {
-  planImport,
-  planMigration,
-  plaintextIn,
-  sealOnce,
-  verifiedCopies,
-  withoutPasswordsAt,
-  type CollegePlainRow,
-  type PlainValue,
-  type VaultReader,
-  type VaultRow,
-} from "./portal-migrate";
-import type { SlotPassword } from "./portal-slots";
-import { keyDecision, openPassword, sealedWithKey, sealPassword, vaultKey, vaultKeyId } from "./portal-vault";
-import type { KeyStatus, VaultDeps } from "./portal-vault-handler";
+import type { SealedEntry } from "./portal-slots";
+import { keyDecision, openPassword, VAULT_VERSION, vaultKey, vaultKeyId } from "./portal-vault";
+import { slotKind, type KeyStatus, type PutResult, type SlotState, type VaultDeps } from "./portal-vault-handler";
+import { parseVaultRecord, type VaultRecord } from "./vault-format";
 
-// Server side of the saved portal passwords (POST /api/portal-passwords). The table (portal_passwords, 0040) has no
-// policies and no grants for anon/authenticated, so only this file, with the service-role key, reads or writes it,
-// always filtered to the one verified user. Values are sealed before they leave this process and opened only for
-// "reveal". Never log a password, a sealed value or a token; thrown errors carry no row data. Passwords travel to
-// the database only in request bodies (never in a URL filter).
+// Server side of the saved portal passwords (POST /api/portal-passwords). The tables (portal_passwords, 0040;
+// portal_vaults, 0045) have no policies and no grants for anon/authenticated, so only this file, with the
+// service-role key, reads or writes them, always filtered to the one verified user. Passwords are sealed in the
+// student's browser ("e1.", vault-format.ts) and this server can't open them: it stores the strings through the 0045
+// functions, says which slots hold one (never the values) and hands a value back only through "get". The one thing it
+// still opens is an old server-sealed "v1." row, once, for "handover" (lib/portal-vault.ts, with PORTAL_ENCRYPTION_KEY).
+// Never log a password, a sealed value or a token; thrown errors carry no row data. Sealed values travel to the
+// database only in request bodies (rpc), never in a URL filter. updated_at strings go back to the browser exactly as
+// PostgREST returned them, and come back from it the same way (compare-and-set needs the microseconds).
 
 const NO_SESSION = { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } as const;
 const TABLE = "portal_passwords";
-/** Most passwords one account may keep (every system, campus, custom portal and listed college fits many times over). */
+const VAULTS = "portal_vaults";
+const RECORD_COLUMNS = "version, key_id, pass_salt, pass_iterations, pass_check, pass_wrapped, rec_salt, rec_check, rec_wrapped";
+/** Most passwords one account may keep (every system, campus, custom portal and listed college fits many times over). Also in portal_vault_put (0045). */
 export const MAX_SLOTS_PER_USER = 500;
 
-export type VaultConfig = { key: Buffer; supabaseUrl: string; publishableKey: string; serviceKey: string };
+/** key = this deployment's PORTAL_ENCRYPTION_KEY, needed only to hand over old v1 rows (null: handover answers no_key). */
+export type VaultConfig = { key: Buffer | null; supabaseUrl: string; publishableKey: string; serviceKey: string };
 
-/** Null when any setting is missing; the route then answers 503 { configured: false }. */
+/** Null when a Supabase setting is missing; the route then answers 503 { configured: false }. */
 export function vaultConfig(): VaultConfig | null {
-  const key = vaultKey();
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!key || !supabaseUrl || !publishableKey || !serviceKey) return null;
-  return { key, supabaseUrl, publishableKey, serviceKey };
+  if (!supabaseUrl || !publishableKey || !serviceKey) return null;
+  return { key: vaultKey(), supabaseUrl, publishableKey, serviceKey };
 }
 
 /** The user the token belongs to, checked with Supabase (rejects bad signatures and signed-out sessions). */
@@ -51,7 +46,7 @@ async function verifiedUser(cfg: VaultConfig, token: string): Promise<string | n
 
 const admin = (cfg: VaultConfig) => createClient(cfg.supabaseUrl, cfg.serviceKey, { auth: NO_SESSION });
 
-// ── which key owns the store ──
+// ── which key owns the old v1 rows (handover only) ──
 
 /**
  * Only the production deployment may claim an unclaimed store with its key (VERCEL_ENV=production, or
@@ -64,9 +59,12 @@ let keyCheck: { kid: string; status: Promise<KeyStatus> } | null = null;
 /**
  * Compares this deployment's key id with the one stored in portal_vault_meta (migration 0040), once per process; an
  * unclaimed store is claimed by production (insert, on conflict nothing, then read again). A failed read is not cached.
+ * No key at all = "no_key". Only handover asks: every other action stores or returns strings this server can't open.
  */
-function keyStatus(cfg: VaultConfig): Promise<KeyStatus> {
-  const kid = vaultKeyId(cfg.key);
+function keyStatus(cfg: VaultConfig): Promise<KeyStatus | "no_key"> {
+  const key = cfg.key;
+  if (!key) return Promise.resolve("no_key");
+  const kid = vaultKeyId(key);
   if (keyCheck?.kid === kid) return keyCheck.status;
   const status = (async (): Promise<KeyStatus> => {
     const read = async () => {
@@ -88,162 +86,126 @@ function keyStatus(cfg: VaultConfig): Promise<KeyStatus> {
   return status;
 }
 
-/** How this deployment reads rows: a row naming another key id is foreign (never opened, kept or overwritten). */
-const reader = (cfg: VaultConfig, userId: string): VaultReader => ({
-  open: (slot, sealed) => openPassword(cfg.key, userId, slot, sealed),
-  ours: (sealed) => sealedWithKey(cfg.key, sealed),
-});
+// ── the vault record ──
 
-// ── the store ──
-
-async function vaultRows(cfg: VaultConfig, userId: string): Promise<VaultRow[]> {
-  const { data, error } = await admin(cfg).from(TABLE).select("slot, sealed, updated_at").eq("user_id", userId).order("slot").range(0, MAX_SLOTS_PER_USER - 1);
-  if (error) throw new Error("portal_passwords read failed");
-  return (data ?? []) as VaultRow[];
+/** The account's vault record as stored (checked again on the way out), or null. */
+async function readVault(cfg: VaultConfig, userId: string): Promise<(VaultRecord & { updated_at: string }) | null> {
+  const { data, error } = await admin(cfg).from(VAULTS).select(`${RECORD_COLUMNS}, updated_at`).eq("user_id", userId).maybeSingle();
+  if (error) throw new Error("portal_vaults read failed");
+  if (!data) return null;
+  const { updated_at, ...rest } = data as Record<string, unknown>;
+  const record = parseVaultRecord(rest);
+  if (!record || typeof updated_at !== "string") throw new Error("portal_vaults row malformed");
+  return { ...record, updated_at };
 }
 
-/** The slots that hold a password (never the values). */
-async function listSlots(cfg: VaultConfig, userId: string): Promise<string[]> {
-  return (await vaultRows(cfg, userId)).map((r) => r.slot);
+/** portal_vault_create (0045): "exists" = a vault is there, "orphans" = e1 rows of a vault that is gone. */
+async function createVault(cfg: VaultConfig, userId: string, r: VaultRecord): Promise<"ok" | "exists" | "orphans"> {
+  const { data, error } = await admin(cfg).rpc("portal_vault_create", { p_user: userId, p_record: r });
+  if (error) throw new Error("portal_vault_create failed");
+  if (data === "ok" || data === "exists" || data === "orphans") return data;
+  throw new Error("portal_vault_create: unexpected result");
 }
 
-/** The password, or why there is none: "missing" (slot empty) or "unreadable" (another key, or tampered). */
-async function revealPassword(cfg: VaultConfig, userId: string, slot: string): Promise<{ password: string } | { missing: "missing" | "unreadable" }> {
+/**
+ * A new updated_at for a compare-and-set write: now, or 1 ms past `expected` when this clock isn't past it, so the
+ * stored value always moves. Date.parse is used only for this comparison; the filter itself takes the exact string.
+ */
+function laterThan(expected: string): string {
+  return new Date(Math.max(Date.now(), Date.parse(expected) + 1)).toISOString();
+}
+
+/**
+ * Replaces the passphrase and recovery-code wrappers (new passphrase, new recovery code) of the same vault: only if
+ * the row still has exactly `expected` as updated_at and the same key id. There is no trigger on portal_vaults, so
+ * this write sets updated_at itself and reads back what was stored. When nothing matched, one more read tells apart
+ * no vault, another vault (another tab started over) and a vault changed since `expected`.
+ */
+async function updateVault(cfg: VaultConfig, userId: string, r: VaultRecord, expected: string): Promise<{ updated_at: string } | "changed" | "no_vault" | "wrong_vault"> {
+  const db = admin(cfg);
+  const { pass_salt, pass_iterations, pass_check, pass_wrapped, rec_salt, rec_check, rec_wrapped } = r;
+  const { data, error } = await db
+    .from(VAULTS)
+    .update({ pass_salt, pass_iterations, pass_check, pass_wrapped, rec_salt, rec_check, rec_wrapped, updated_at: laterThan(expected) })
+    .eq("user_id", userId)
+    .eq("key_id", r.key_id)
+    .eq("updated_at", expected)
+    .select("updated_at");
+  if (error) throw new Error("portal_vaults update failed");
+  const stored = (data ?? [])[0]?.updated_at;
+  if (typeof stored === "string") return { updated_at: stored };
+  const now = await db.from(VAULTS).select("key_id").eq("user_id", userId).maybeSingle();
+  if (now.error) throw new Error("portal_vaults read failed");
+  if (!now.data) return "no_vault";
+  return now.data.key_id === r.key_id ? "changed" : "wrong_vault";
+}
+
+// ── the passwords ──
+
+/** Every stored slot with its kind and updated_at; the sealed values are read only to classify them and never leave. */
+async function listSlots(cfg: VaultConfig, userId: string): Promise<SlotState[]> {
+  const db = admin(cfg);
+  const [rows, vault] = await Promise.all([
+    db.from(TABLE).select("slot, sealed, updated_at").eq("user_id", userId).order("slot").range(0, MAX_SLOTS_PER_USER - 1),
+    db.from(VAULTS).select("key_id").eq("user_id", userId).maybeSingle(),
+  ]);
+  if (rows.error) throw new Error("portal_passwords read failed");
+  if (vault.error) throw new Error("portal_vaults read failed");
+  const keyId = typeof vault.data?.key_id === "string" ? vault.data.key_id : null;
+  return ((rows.data ?? []) as { slot: string; sealed: string; updated_at: string }[]).map((r) => ({ slot: r.slot, kind: slotKind(r.sealed, keyId), updated_at: r.updated_at }));
+}
+
+/** The stored string at this slot, exactly as stored (never opened), or null. */
+async function getSealed(cfg: VaultConfig, userId: string, slot: string): Promise<string | null> {
   const { data, error } = await admin(cfg).from(TABLE).select("sealed").eq("user_id", userId).eq("slot", slot).maybeSingle();
   if (error) throw new Error("portal_passwords read failed");
-  if (!data) return { missing: "missing" };
-  const password = openPassword(cfg.key, userId, slot, data.sealed as string);
-  return password === null ? { missing: "unreadable" } : { password };
+  return data ? (data.sealed as string) : null;
 }
 
-/**
- * Saves (or replaces) one password; an empty one deletes the slot. "too_many" when a new slot would pass the cap.
- * Any plaintext copy still left at that slot is removed afterwards, so it can't be moved back over this choice.
- */
-async function setPassword(cfg: VaultConfig, userId: string, slot: string, password: string): Promise<"ok" | "too_many"> {
-  if (!password) {
-    await deletePassword(cfg, userId, slot);
-    return "ok";
-  }
-  const existing = await listSlots(cfg, userId);
-  if (!existing.includes(slot) && existing.length >= MAX_SLOTS_PER_USER) return "too_many";
-  const { error } = await admin(cfg)
-    .from(TABLE)
-    .upsert({ user_id: userId, slot, sealed: sealPassword(cfg.key, userId, slot, password), updated_at: new Date().toISOString() }, { onConflict: "user_id,slot" });
-  if (error) throw new Error("portal_passwords write failed");
-  await stripLeftovers(cfg, userId, slot);
-  return "ok";
+const PUT_RESULTS: readonly PutResult[] = ["ok", "no_vault", "wrong_vault", "changed", "occupied", "too_many"];
+
+/** portal_vault_put (0045), always with all five arguments; the sealed value goes in the request body. */
+async function putSealed(cfg: VaultConfig, userId: string, e: SealedEntry, expected: string | null, insertOnly: boolean): Promise<PutResult> {
+  const { data, error } = await admin(cfg).rpc("portal_vault_put", {
+    p_user: userId,
+    p_slot: e.slot,
+    p_sealed: e.sealed,
+    p_expected: expected,
+    p_insert_only: insertOnly,
+  });
+  if (error) throw new Error("portal_vault_put failed");
+  const result = PUT_RESULTS.find((x) => x === data);
+  if (!result) throw new Error("portal_vault_put: unexpected result");
+  return result;
 }
 
-/** Deletes one password, and any plaintext copy left at that slot, so "migrate" can't bring it back. */
-async function deletePassword(cfg: VaultConfig, userId: string, slot: string) {
+/** Deletes one stored password (any kind). */
+async function deleteSlot(cfg: VaultConfig, userId: string, slot: string) {
   const { error } = await admin(cfg).from(TABLE).delete().eq("user_id", userId).eq("slot", slot);
   if (error) throw new Error("portal_passwords delete failed");
-  await stripLeftovers(cfg, userId, slot);
 }
 
 /**
- * Seals and writes, then reads the rows back for verification. A new slot is only inserted if it is still empty, and a
- * row of ours that doesn't open is only replaced if it still holds exactly what was read: a password another tab set in
- * the meantime is never overwritten (its read-back then won't match this value, so the caller keeps its copy).
+ * Opens an old server-sealed row so the browser can seal it again (it then saves the new value with "set" and
+ * expected = this updated_at, which replaces the row only if it is still the one opened here). "not_legacy" = the
+ * row is not a v1 value; "unreadable" = sealed under another key, or tampered. The handler checks the key first.
  */
-async function writeAndReadBack(cfg: VaultConfig, userId: string, rows: readonly SlotPassword[], existing: readonly VaultRow[]): Promise<Map<string, string>> {
-  if (!rows.length) return new Map();
-  const db = admin(cfg);
-  const now = new Date().toISOString();
-  const was = new Map(existing.map((r) => [r.slot, r.updated_at ?? ""]));
-  const row = (r: SlotPassword) => ({ user_id: userId, slot: r.slot, sealed: sealPassword(cfg.key, userId, r.slot, r.password), updated_at: now });
-  const fresh = rows.filter((r) => !was.has(r.slot));
-  if (fresh.length) {
-    const { error } = await db.from(TABLE).upsert(fresh.map(row), { onConflict: "user_id,slot", ignoreDuplicates: true });
-    if (error) return new Map(); // nothing verified: every value stays where it is
-  }
-  for (const r of rows.filter((x) => was.has(x.slot))) {
-    const { sealed, updated_at } = row(r);
-    // Unchanged since it was read = same updated_at (a filter on the timestamp, never on the sealed value: filters are URLs).
-    const { error } = await db.from(TABLE).update({ sealed, updated_at }).eq("user_id", userId).eq("slot", r.slot).eq("updated_at", was.get(r.slot)!);
-    if (error) return new Map();
-  }
-  return new Map((await vaultRows(cfg, userId)).map((r) => [r.slot, r.sealed]));
+async function handover(cfg: VaultConfig, userId: string, slot: string): Promise<{ password: string; updated_at: string } | "missing" | "not_legacy" | "unreadable"> {
+  const key = cfg.key;
+  if (!key) throw new Error("no portal key");
+  const { data, error } = await admin(cfg).from(TABLE).select("sealed, updated_at").eq("user_id", userId).eq("slot", slot).maybeSingle();
+  if (error) throw new Error("portal_passwords read failed");
+  if (!data) return "missing";
+  const sealed = data.sealed as string;
+  if (!sealed.startsWith(`${VAULT_VERSION}.`)) return "not_legacy";
+  const password = openPassword(key, userId, slot, sealed);
+  return password === null ? "unreadable" : { password, updated_at: data.updated_at as string };
 }
 
-// ── plaintext from before 0040 ──
-
-/** This student's plaintext: college rows that have one, and the profile's portals value as stored. */
-async function readPlaintext(cfg: VaultConfig, userId: string): Promise<{ plain: PlainValue[]; portals: unknown }> {
-  const db = admin(cfg);
-  const [cols, prof] = await Promise.all([
-    db.from("student_colleges").select("id, institution_id, custom, portal_password").eq("user_id", userId).not("portal_password", "is", null),
-    db.from("student_profiles").select("portals").eq("user_id", userId).maybeSingle(),
-  ]);
-  // 42703 = the column is gone (patch 2026-10-28-drop-portal-password-column.sql): nothing left to move there.
-  if (cols.error && cols.error.code !== "42703") throw new Error("student_colleges read failed");
-  if (prof.error) throw new Error("student_profiles read failed");
-  const portals: unknown = prof.data?.portals ?? null;
-  return { plain: plaintextIn(cols.error ? [] : ((cols.data ?? []) as CollegePlainRow[]), portals), portals };
-}
-
-/**
- * Removes these plaintext values, each only if its row still holds exactly that value (0043's compare-and-set
- * functions; before 0043 they don't exist and nothing is removed). Returns the ones removed.
- */
-async function removePlaintext(cfg: VaultConfig, userId: string, values: readonly PlainValue[], portals: unknown): Promise<Set<PlainValue>> {
-  const db = admin(cfg);
-  const removed = new Set<PlainValue>();
-  for (const v of values) {
-    if (v.at.table !== "college") continue;
-    const { data, error } = await db.rpc("strip_college_portal_password", { p_user: userId, p_id: v.at.id, p_old: v.password });
-    if (!error && data === true) removed.add(v);
-  }
-  const inProfile = values.filter((v) => v.at.table === "profile");
-  if (inProfile.length) {
-    const { data, error } = await db.rpc("replace_profile_portals", { p_user: userId, p_old: portals, p_new: withoutPasswordsAt(portals, inProfile) });
-    if (!error && data === true) inProfile.forEach((v) => removed.add(v));
-  }
-  return removed;
-}
-
-/** After a set or delete: the plaintext left at that slot is stale; remove it (best effort). */
-async function stripLeftovers(cfg: VaultConfig, userId: string, slot: string) {
-  try {
-    const { plain, portals } = await readPlaintext(cfg, userId);
-    const here = plain.filter((v) => v.slot === slot);
-    if (here.length) await removePlaintext(cfg, userId, here, portals);
-  } catch {
-    // the password change itself is done; a leftover is tried again on the next set/delete
-  }
-}
-
-/**
- * Moves this student's plaintext passwords into the store. A value is removed only after the store holds a copy that
- * opens with the current key to that same value (a row that already does, or a new one read back and opened), and
- * only by a compare-and-set on the exact value read. Anything else stays in plaintext for the next try.
- * Counts only, never values: migrated = copied then removed, kept = the store already had it, failed = still plaintext.
- */
-async function migratePlaintext(cfg: VaultConfig, userId: string): Promise<{ migrated: number; kept: number; failed: number }> {
-  const { plain, portals } = await readPlaintext(cfg, userId);
-  if (!plain.length) return { migrated: 0, kept: 0, failed: 0 };
-  const r = reader(cfg, userId);
-  const existing = await vaultRows(cfg, userId);
-  const plan = planMigration(plain, existing, r, MAX_SLOTS_PER_USER - existing.length);
-  const verified = verifiedCopies(plan.seal, await writeAndReadBack(cfg, userId, sealOnce(plan.seal), existing), r.open);
-  const removed = await removePlaintext(cfg, userId, [...plan.keep, ...verified], portals);
-  const kept = plan.keep.filter((v) => removed.has(v)).length;
-  return { migrated: removed.size - kept, kept, failed: plain.length - removed.size };
-}
-
-/**
- * Passwords a browser saved before sign-in. A slot whose row opens to the same value is done; a missing row (room
- * permitting) or one of ours that doesn't open is written, read back and opened. Returns the slots that are NOT
- * safely stored (a different value or a foreign row in the account, past the cap, not verified): the browser keeps those.
- */
-async function importPasswords(cfg: VaultConfig, userId: string, entries: readonly SlotPassword[]): Promise<{ imported: number; kept: number; failed: string[] }> {
-  const r = reader(cfg, userId);
-  const existing = await vaultRows(cfg, userId);
-  const plan = planImport(entries, existing, r, MAX_SLOTS_PER_USER - existing.length);
-  const verified = new Set(verifiedCopies(plan.seal, await writeAndReadBack(cfg, userId, plan.seal, existing), r.open));
-  const failed = [...plan.failed, ...plan.seal.filter((e) => !verified.has(e))].map((e) => e.slot);
-  return { imported: verified.size, kept: plan.keep.length, failed };
+/** portal_vault_reset (0045): "start over" deletes the vault, then every stored password of the user. */
+async function reset(cfg: VaultConfig, userId: string) {
+  const { error } = await admin(cfg).rpc("portal_vault_reset", { p_user: userId });
+  if (error) throw new Error("portal_vault_reset failed");
 }
 
 /** The route's database work, for lib/portal-vault-handler.ts. */
@@ -251,11 +213,14 @@ export function vaultDeps(cfg: VaultConfig): VaultDeps {
   return {
     verifyUser: (token) => verifiedUser(cfg, token),
     keyStatus: () => keyStatus(cfg),
+    vault: (userId) => readVault(cfg, userId),
+    createVault: (userId, r) => createVault(cfg, userId, r),
+    updateVault: (userId, r, expected) => updateVault(cfg, userId, r, expected),
     list: (userId) => listSlots(cfg, userId),
-    reveal: (userId, slot) => revealPassword(cfg, userId, slot),
-    set: (userId, slot, password) => setPassword(cfg, userId, slot, password),
-    remove: (userId, slot) => deletePassword(cfg, userId, slot),
-    importPasswords: (userId, entries) => importPasswords(cfg, userId, entries),
-    migrate: (userId) => migratePlaintext(cfg, userId),
+    get: (userId, slot) => getSealed(cfg, userId, slot),
+    put: (userId, e, expected, insertOnly) => putSealed(cfg, userId, e, expected, insertOnly),
+    remove: (userId, slot) => deleteSlot(cfg, userId, slot),
+    handover: (userId, slot) => handover(cfg, userId, slot),
+    reset: (userId) => reset(cfg, userId),
   };
 }

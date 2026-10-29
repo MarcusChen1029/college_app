@@ -1,12 +1,14 @@
-// Where each saved portal password lives in the encrypted store (table portal_passwords, migration 0040), and the
-// helpers that keep passwords out of everything else: the profile/list rows and the browser's localStorage copy.
-// Pure (no React, no Supabase, no node:crypto): shared by the browser store, POST /api/portal-passwords and
-// scripts/backfill-portal-passwords.mjs, so all three name a login the same way.
+// Where each saved portal password lives in the encrypted store (table portal_passwords, migration 0040), the
+// helpers that keep passwords out of everything else (the profile/list rows and the browser's localStorage copy),
+// and the checked request body of POST /api/portal-passwords. Pure (no React, no Supabase, no node:crypto): shared
+// by the browser store and the route, so both name a login the same way.
 
 import type { PortalData } from "./portals.ts";
+import { parseE1, parseVaultRecord, type VaultRecord } from "./vault-format.ts";
 
 export const SLOT_MAX = 200; // also the table's check (0040)
 export const PASSWORD_MAX = 512;
+export const SEALED_MAX = 4096; // also the table's check on portal_passwords.sealed (0040)
 export const IMPORT_MAX = 300; // entries per "import" request
 
 export type SlotKind = "system" | "campus" | "custom" | "college";
@@ -181,42 +183,65 @@ export function loginCount(portals: unknown, list: readonly EntryLike[], passwor
 
 /**
  * The entries an "import" reply did not confirm as stored: the ones it lists as failed, or all of them when the
- * request itself failed. The browser keeps exactly these.
+ * request itself failed. The browser keeps exactly these. Works for any entry with a slot (plaintext or sealed).
  */
-export function importFailures(entries: readonly SlotPassword[], r: { status: number; data: Record<string, unknown> }): SlotPassword[] {
+export function importFailures<T extends { slot: string }>(entries: readonly T[], r: { status: number; data: Record<string, unknown> }): T[] {
   if (r.status !== 200 || !Array.isArray(r.data.failed)) return [...entries];
   const failed = new Set(r.data.failed.filter((s): s is string => typeof s === "string"));
   return entries.filter((e) => failed.has(e.slot));
 }
 
-/** The request body of POST /api/portal-passwords, checked. Error codes go back to the browser as they are. */
+/** A password sealed in the browser ("e1.<key id>.<...>", vault-format.ts), at its slot. The server never opens it. */
+export type SealedEntry = { slot: string; sealed: string };
+
+/**
+ * The request body of POST /api/portal-passwords, checked. Error codes go back to the browser as they are.
+ * `expected` is the updated_at string the server returned earlier, passed on unchanged (never through Date, which
+ * drops the microseconds the database compares).
+ */
 export type VaultRequest =
-  | { action: "list" | "migrate" }
-  | { action: "reveal" | "delete"; slot: string }
-  | { action: "set"; slot: string; password: string }
-  | { action: "import"; entries: SlotPassword[] };
-export type VaultRequestError = "bad_request" | "bad_slot" | "bad_password" | "too_many";
+  | { action: "vault" | "list" | "reset" }
+  | { action: "vault_create"; record: VaultRecord }
+  | { action: "vault_update"; record: VaultRecord; expected: string }
+  | { action: "get" | "delete" | "handover"; slot: string }
+  | { action: "set"; slot: string; sealed: string; expected: string | null }
+  | { action: "import"; entries: SealedEntry[] };
+export type VaultRequestError = "bad_request" | "bad_slot" | "bad_value" | "bad_record" | "too_many";
+
+// A timestamptz as PostgREST writes it ("2026-10-29T08:00:00.123456+00:00"), or with a Z.
+const TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,6})?(Z|[+-]\d{2}:\d{2})$/;
+const isTimestamp = (v: unknown): v is string => typeof v === "string" && TIMESTAMP.test(v) && !Number.isNaN(Date.parse(v));
+
+/** A browser-sealed value that fits the column; anything else (a bare password, "", an old v1 value) is refused. */
+const isSealed = (v: unknown): v is string => typeof v === "string" && v.length <= SEALED_MAX && parseE1(v) !== null;
 
 export function parseVaultRequest(body: unknown): { ok: true; req: VaultRequest } | { ok: false; error: VaultRequestError } {
   const fail = (error: VaultRequestError) => ({ ok: false as const, error });
   if (!isObj(body)) return fail("bad_request");
   const action = body.action;
-  if (action === "list" || action === "migrate") return { ok: true, req: { action } };
-  if (action === "reveal" || action === "delete") return isPortalSlot(body.slot) ? { ok: true, req: { action, slot: body.slot } } : fail("bad_slot");
+  if (action === "vault" || action === "list" || action === "reset") return { ok: true, req: { action } };
+  if (action === "vault_create" || action === "vault_update") {
+    const record = parseVaultRecord(body.record);
+    if (!record) return fail("bad_record");
+    if (action === "vault_create") return { ok: true, req: { action, record } };
+    return isTimestamp(body.expected) ? { ok: true, req: { action, record, expected: body.expected } } : fail("bad_request");
+  }
+  if (action === "get" || action === "delete" || action === "handover") return isPortalSlot(body.slot) ? { ok: true, req: { action, slot: body.slot } } : fail("bad_slot");
   if (action === "set") {
     if (!isPortalSlot(body.slot)) return fail("bad_slot");
-    // An empty password deletes the slot.
-    if (typeof body.password !== "string" || body.password.length > PASSWORD_MAX) return fail("bad_password");
-    return { ok: true, req: { action, slot: body.slot, password: body.password } };
+    if (!isSealed(body.sealed)) return fail("bad_value");
+    const expected = body.expected ?? null;
+    if (expected !== null && !isTimestamp(expected)) return fail("bad_request");
+    return { ok: true, req: { action, slot: body.slot, sealed: body.sealed, expected } };
   }
   if (action === "import") {
     if (!Array.isArray(body.entries)) return fail("bad_request");
     if (body.entries.length > IMPORT_MAX) return fail("too_many");
-    const entries: SlotPassword[] = [];
+    const entries: SealedEntry[] = [];
     for (const e of body.entries) {
       if (!isObj(e) || !isPortalSlot(e.slot)) return fail("bad_slot");
-      if (typeof e.password !== "string" || !e.password || e.password.length > PASSWORD_MAX) return fail("bad_password");
-      if (!entries.some((x) => x.slot === e.slot)) entries.push({ slot: e.slot, password: e.password });
+      if (!isSealed(e.sealed)) return fail("bad_value");
+      if (!entries.some((x) => x.slot === e.slot)) entries.push({ slot: e.slot, sealed: e.sealed });
     }
     return { ok: true, req: { action, entries } };
   }

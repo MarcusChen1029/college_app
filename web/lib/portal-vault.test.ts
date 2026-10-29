@@ -1,7 +1,5 @@
 import assert from "node:assert/strict";
-import { join } from "node:path";
 import { test } from "node:test";
-import { pathToFileURL } from "node:url";
 import { encryptToken } from "./google-docs.ts";
 import {
   bearerToken,
@@ -115,41 +113,4 @@ test("bearer header parsing", () => {
   assert.equal(bearerToken("Basic abc"), null);
   assert.equal(bearerToken("Bearer a b"), null);
   assert.equal(bearerToken(null), null);
-});
-
-test("the backfill script seals rows the server can open, and only verified copies become removable", async () => {
-  const url = pathToFileURL(join(import.meta.dirname, "..", "..", "scripts", "backfill-portal-passwords.mjs")).href;
-  const { planForUser, copiedAfterReadBack } = await import(url);
-  const inst = "33333333-3333-4333-8333-333333333333";
-  const row = "44444444-4444-4444-8444-444444444444";
-  const colleges = [
-    { id: "55555555-5555-4555-8555-555555555555", user_id: USER, institution_id: inst, custom: null, portal_password: "college-pw" },
-    { id: row, user_id: USER, institution_id: null, custom: { name: "My College" }, portal_password: "custom-college-pw" },
-  ];
-  const portals = { systems: { commonapp: { url: "", username: "x", password: "ca-pw" } }, custom: [{ id: "abc-1", password: "c-pw" }] };
-  // An existing row sealed under another key: neither trusted nor overwritten, and its plaintext stays.
-  const vault = [{ slot: "custom:abc-1", sealed: sealPassword(otherKey, USER, "custom:abc-1", "c-pw") }];
-  const planned = planForUser(key, USER, colleges, portals, vault);
-  type Row = { user_id: string; slot: string; sealed: string };
-  assert.deepEqual(planned.rows.map((r: Row) => r.slot), [`college:${inst}`, `college:${row}`, "system:commonapp"]);
-  assert.deepEqual(planned.plan.failed.map((v: { slot: string }) => v.slot), ["custom:abc-1"]);
-  for (const r of planned.rows as Row[]) {
-    assert.equal(r.user_id, USER);
-    assert.ok(r.sealed.startsWith(`v1.${vaultKeyId(key)}.`) && !r.sealed.includes("college-pw"));
-  }
-  // Read back what was written: every value opens to itself, so those three may now be removed.
-  const copied = copiedAfterReadBack(planned, planned.rows);
-  assert.equal(copied.length, 3);
-  for (const v of copied) assert.equal(openPassword(key, USER, v.slot, planned.rows.find((r: Row) => r.slot === v.slot).sealed), v.password);
-  // Nothing (or a foreign row) read back: nothing is removable.
-  assert.equal(copiedAfterReadBack(planned, []).length, 0);
-  assert.equal(copiedAfterReadBack(planned, vault).length, 0);
-});
-
-test("the backfill script refuses to run unless the store was claimed with its key", async () => {
-  const url = pathToFileURL(join(import.meta.dirname, "..", "..", "scripts", "backfill-portal-passwords.mjs")).href;
-  const { backfillKeyCheck } = await import(url);
-  assert.doesNotThrow(() => backfillKeyCheck(vaultKeyId(key), key));
-  assert.throws(() => backfillKeyCheck(vaultKeyId(otherKey), key), /key mismatch/);
-  assert.throws(() => backfillKeyCheck(null, key), /no key id yet/, "the script never claims the store itself");
 });
