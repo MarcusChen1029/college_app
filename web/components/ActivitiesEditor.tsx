@@ -30,7 +30,7 @@ import { caTypeLabel as typeLabel } from "@/lib/i18n/ca-types";
 import { useT } from "@/lib/i18n/client";
 import { caRole, ucName } from "@/lib/resume";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass, toneClass } from "@/lib/ui";
+import { buttonClass, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
 import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
@@ -138,26 +138,24 @@ function EntryList<T extends Item>({
   return (
     <section className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
-        <h2 className="text-xl font-bold">{heading}</h2>
-        <span className={`text-sm tabular-nums ${full ? "font-semibold text-soon" : "text-zinc-500"}`}>
+        <h2 className="font-display text-xl font-bold tracking-tight">{heading}</h2>
+        <span className={`text-sm tabular-nums ${full ? "font-semibold text-soon" : "text-zinc-600"}`}>
           {items.length} / {limit}
         </span>
         <span className="ml-auto flex flex-wrap gap-2">
           {extraAction}
-          <button
-            type="button"
-            disabled={full}
-            className={buttonClass("primary", "sm")}
-            onClick={add}
-          >
-            {addLabel}
-          </button>
+          {/* While the section is empty its one Add button sits in the empty note below. */}
+          {items.length > 0 && (
+            <button type="button" disabled={full} className={buttonClass("primary", "sm")} onClick={add}>
+              {addLabel}
+            </button>
+          )}
         </span>
       </div>
       {items.length === 0 ? (
         <EmptyNote
           action={
-            <button type="button" disabled={full} className={buttonClass("secondary", "sm")} onClick={add}>
+            <button type="button" disabled={full} className={buttonClass("primary", "sm")} onClick={add}>
               {addLabel}
             </button>
           }
@@ -209,22 +207,21 @@ export function ActivitiesEditor() {
   const grades = (g: Grade[]) => (g.length ? t("writing.gradesList", { list: g.join(", ") }) : "");
   const hours = (h: number | null, w: number | null) => (h != null || w != null ? t("writing.hoursSummary", { h: h ?? "?", w: w ?? "?" }) : "");
 
+  // Which application's list to edit: a pale segmented control, so it never reads as a second row of page tabs.
   const tabBtn = (key: typeof tab, label: string) => (
-    <button
-      type="button"
-      onClick={() => setTab(key)}
-      className={`rounded-full px-4 py-1.5 text-sm font-semibold ${tab === key ? "bg-ink text-white" : "text-zinc-600 hover:bg-zinc-100"}`}
-    >
+    <button type="button" aria-pressed={tab === key} onClick={() => setTab(key)} className={segmentClass(tab === key)}>
       {label}
     </button>
   );
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center gap-2">
-        {tabBtn("common", t("writing.tabCommonApp"))}
-        {tabBtn("uc", t("writing.tabUc"))}
-        <span className="ml-auto text-xs text-zinc-500">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className={SEGMENT_TRACK}>
+          {tabBtn("common", t("writing.tabCommonApp"))}
+          {tabBtn("uc", t("writing.tabUc"))}
+        </div>
+        <span className="ml-auto text-[13px] text-zinc-600">
           {student.auth ? t("writing.synced") : t("writing.savedLocal")}
           {!student.auth && <SignInButton className="text-blue-700 underline">{t("account.signIn")}</SignInButton>}
         </span>
@@ -260,7 +257,7 @@ export function ActivitiesEditor() {
             issues={caHonorIssues}
             render={(h, set) => <CaHonorFields h={h} set={set} />}
           />
-          <p className="text-xs text-zinc-500">
+          <p className="text-[13px] text-zinc-600">
             {t("writing.caLimitsNote", {
               position: CA_LIMITS.position,
               organization: CA_LIMITS.organization,
@@ -306,7 +303,7 @@ export function ActivitiesEditor() {
               )
             }
           />
-          <p className="text-xs text-zinc-500">
+          <p className="text-[13px] text-zinc-600">
             {t("writing.ucLimitsNote", { entries: UC_LIMITS.entries, description: UC_LIMITS.description, extra: UC_LIMITS.extra })}
           </p>
         </>

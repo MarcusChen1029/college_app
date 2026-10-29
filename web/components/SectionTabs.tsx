@@ -33,7 +33,12 @@ export function SectionTabs({ label, tabs }: { label: string; tabs: readonly Nav
 
   return (
     <nav aria-label={navLabel(t, label)} className="print:hidden">
-      <ul ref={rowRef} className="flex gap-1 overflow-x-auto px-1 py-1.5 [scrollbar-width:none] sm:p-0 sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
+      {/* On a phone the row fades out at its right edge (as the college page's jump bar does), so a cut label reads as
+          "scroll for more"; the end padding lets the last tab scroll clear of the fade. */}
+      <ul
+        ref={rowRef}
+        className="flex gap-1 overflow-x-auto py-1.5 pl-1 pr-10 [mask-image:linear-gradient(to_right,#000_calc(100%-2.5rem),transparent)] [scrollbar-width:none] sm:flex-wrap sm:overflow-visible sm:p-0 sm:[mask-image:none] [&::-webkit-scrollbar]:hidden"
+      >
         {tabs.map(([href, text]) => {
           const active = path === href;
           return (

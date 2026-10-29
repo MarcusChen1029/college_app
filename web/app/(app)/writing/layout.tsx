@@ -9,7 +9,7 @@ const TABS: readonly NavItem[] = [
 
 export default function WritingLayout({ children }: LayoutProps<"/writing">) {
   return (
-    <div className="space-y-6">
+    <div data-app-screen className="space-y-6">
       <h1 className={`${PAGE_TITLE} print:hidden`}>
         <NavText label="Writing" />
       </h1>

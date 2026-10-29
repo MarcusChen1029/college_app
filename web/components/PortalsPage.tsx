@@ -36,7 +36,8 @@ import type { MessageKey, TFunction } from "@/lib/i18n";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, LABEL, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
-import { EmptyNote } from "./EmptyState";
+import { PaperPlane } from "./Doodles";
+import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
 import { useStarsSync } from "./useStarsSync";
@@ -163,36 +164,14 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
   const hiddenCount =
     hiddenLoginCount(data, regions, routesOnList) + submitted.filter(({ entry, college }) => entry.portal.username.trim() && !visible.includes(regionOfCollege(college))).length;
 
-  // The accounts that are not a way to apply (testing, aid, visas, STARS) and custom portals of one country, or of "ANY".
-  const otherBlock = (region: PortalRegion) => {
+  // The accounts that are not a way to apply (testing, aid, visas, STARS) and custom portals of one country, or of "ANY";
+  // null while there are none, so an empty country shows nothing.
+  const otherRows = (region: PortalRegion) => {
     const added = othersAdded(region);
-    const left = systemsForRegion(region).filter((s) => isOther(s) && !otherShown(s));
     const mine = customIn(region);
     const campuses = campusesIn(region);
-    const menu = (
-      <select
-        className={buttonClass("primary", "sm")}
-        value=""
-        aria-label={region === "ANY" ? t("portals.addPortalLabel") : t("portals.addPortalLabelFor", { region: regionName(t, region) })}
-        onChange={(e) => {
-          const v = e.target.value;
-          if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "", ...(region === "ANY" ? {} : { region }) }]);
-          else if (v) setSystem(v, EMPTY_LOGIN);
-        }}
-      >
-        <option value="">{t("portals.addPortal")}</option>
-        {left.map((s) => (
-          <option key={s.key} value={s.key}>
-            {sysName(s)}
-          </option>
-        ))}
-        <option value="custom">{t("portals.somethingElse")}</option>
-      </select>
-    );
-    const body =
-      added.length === 0 && mine.length === 0 && campuses.length === 0 ? (
-        <EmptyNote on="panel">{region === "ANY" ? t("portals.anyHelp") : t("portals.countryHelp")}</EmptyNote>
-      ) : (
+    if (added.length === 0 && mine.length === 0 && campuses.length === 0) return null;
+    return (
         <ul className="space-y-2">
           {added.map((s) => (
             <LoginRow
@@ -234,32 +213,55 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
             />
           ))}
         </ul>
-      );
-    return { menu, body };
+    );
   };
 
+  // One "+ Add portal" for the whole page: every account not added yet, grouped by country (then "Any country"), and
+  // "Something else" for a portal of the student's own.
+  const seen = new Set<string>();
+  const addGroups: { region: PortalRegion; systems: PortalSystem[] }[] = [];
+  for (const region of [...regions, "ANY"] as PortalRegion[]) {
+    const systems = systemsForRegion(region).filter((s) => isOther(s) && !otherShown(s) && !seen.has(s.key));
+    systems.forEach((s) => seen.add(s.key));
+    if (systems.length) addGroups.push({ region, systems });
+  }
+  const addMenu = (
+    <select
+      className={buttonClass("secondary", "sm")}
+      value=""
+      aria-label={t("portals.addPortalLabel")}
+      onChange={(e) => {
+        const v = e.target.value;
+        if (v === "custom") setCustom([...custom, { ...EMPTY_LOGIN, id: newId(), name: "" }]);
+        else if (v) setSystem(v, EMPTY_LOGIN);
+      }}
+    >
+      <option value="">{t("portals.addPortal")}</option>
+      {addGroups.map((g) => (
+        <optgroup key={g.region} label={g.region === "ANY" ? t("portals.anyCountry") : regionName(t, g.region)}>
+          {g.systems.map((s) => (
+            <option key={s.key} value={s.key}>
+              {sysName(s)}
+            </option>
+          ))}
+        </optgroup>
+      ))}
+      <option value="custom">{t("portals.somethingElse")}</option>
+    </select>
+  );
+
+  // A country shows up once it holds something: a submitted college's portal, or an account added for it.
   const countrySection = (region: RegionCode) => {
     const inCountry = submittedIn(region);
-    const { menu, body } = otherBlock(region);
+    const others = otherRows(region);
+    if (inCountry.length === 0 && !others) return null;
+    const both = inCountry.length > 0 && !!others;
     return (
       <Section key={region} title={regionName(t, region)}>
-        {/* The two groups sit side by side on a wide screen, so a country is one short band, not two stretched lines. */}
-        <div className="grid gap-5 xl:grid-cols-2 xl:gap-6">
-          <Group title={t("portals.groupSubmitted")}>
-            {inCountry.length === 0 ? (
-              <EmptyNote
-                on="panel"
-                action={
-                  <Link href="/application/list" className={buttonClass("secondary", "sm")}>
-                    {t("application.openMyList")}
-                  </Link>
-                }
-              >
-                {t("portals.submittedEmptyPre")}
-                <strong className="font-semibold">{t("portals.myList")}</strong>
-                {t("portals.submittedEmptyPost")}
-              </EmptyNote>
-            ) : (
+        {/* With both groups, they sit side by side on a wide screen, so a country is one short band. */}
+        <div className={`grid gap-5 ${both ? "xl:grid-cols-2 xl:gap-6" : ""}`}>
+          {inCountry.length > 0 && (
+            <Group title={t("portals.groupSubmitted")}>
               <ul className="space-y-2">
                 {inCountry.map(({ entry, college }) => (
                   <LoginRow
@@ -279,18 +281,23 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
                   />
                 ))}
               </ul>
-            )}
-          </Group>
-
-          <Group title={t("portals.groupOther")} aside={menu}>
-            {body}
-          </Group>
+            </Group>
+          )}
+          {others && <Group title={t("portals.groupOther")}>{others}</Group>}
         </div>
       </Section>
     );
   };
 
-  const any = otherBlock("ANY");
+  const anyRows = otherRows("ANY");
+  const sections = [
+    ...regions.map(countrySection),
+    anyRows && (
+      <Section key="ANY" title={t("portals.anyCountry")}>
+        {anyRows}
+      </Section>
+    ),
+  ].filter(Boolean);
 
   return (
     <div className="space-y-6">
@@ -326,11 +333,23 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
         </p>
       )}
 
-      {regions.map(countrySection)}
-
-      <Section title={t("portals.anyCountry")} aside={any.menu}>
-        {any.body}
-      </Section>
+      {sections.length === 0 ? (
+        <EmptyState art={<PaperPlane className="h-16 w-auto" />} title={t("portals.emptyTitle")} actions={addMenu}>
+          {t("portals.submittedEmptyPre")}
+          <Link href="/application/list" className="font-semibold text-blue-700 underline underline-offset-4">
+            {t("portals.myList")}
+          </Link>
+          {t("portals.submittedEmptyPost")} {t("portals.countryHelp")}
+        </EmptyState>
+      ) : (
+        <>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-[15px] text-ink">{t("portals.countryHelp")}</p>
+            {addMenu}
+          </div>
+          {sections}
+        </>
+      )}
     </div>
   );
 }

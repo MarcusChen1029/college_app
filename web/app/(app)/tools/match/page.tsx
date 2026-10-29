@@ -28,7 +28,7 @@ async function Match() {
 export default async function MatchPage() {
   const t = await getT();
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className="space-y-8">
       <div className="space-y-3">
         <h1 className={PAGE_TITLE}>{t("match.title")}</h1>
         <p className={PAGE_INTRO}>{t("match.intro")}</p>

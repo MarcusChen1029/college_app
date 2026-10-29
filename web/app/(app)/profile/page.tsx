@@ -13,6 +13,8 @@ async function Data() {
 export default function ProfilePage() {
   return (
     <>
+      {/* An app screen: the slim footer (globals.css, "App screens"). */}
+      <span hidden data-app-screen />
       <LegacyAccountHash />
       <Suspense fallback={<div className="h-96 animate-pulse rounded-3xl bg-zinc-100" />}>
         <Data />

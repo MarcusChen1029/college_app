@@ -2,19 +2,11 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
-import { computeFit, type Fit, type FitInput } from "@/lib/fit";
+import { computeFit, type FitInput } from "@/lib/fit";
 import { useT } from "@/lib/i18n/client";
-import { fitLabel } from "@/lib/i18n/fit-text";
+import { FitBadge } from "@/components/badges";
 
 export type FitSheetRow = FitInput & { slug: string; name: string; place: string };
-
-// Filled labels: the home page separates surfaces by fill, never by outline. Full literal classes for Tailwind.
-const FIT_FILL: Record<Fit, string> = {
-  super_reach: "bg-fit-super-reach text-white",
-  reach: "bg-fit-reach-bg text-fit-reach",
-  target: "bg-fit-target-bg text-fit-target",
-  safety: "bg-fit-safety-bg text-fit-safety",
-};
 
 const SAT_MIN = 1000;
 const SAT_MAX = 1600;
@@ -102,9 +94,10 @@ export function FitSheet({ rows }: { rows: FitSheetRow[] }) {
                     </Link>
                     <span aria-hidden className="leader min-w-4 flex-1 max-lg:hidden" />
                     <span className="ml-auto flex shrink-0 items-baseline gap-3">
+                      {/* The shared fit chip, meter and all, so the four bands read apart without colour too. */}
                       {fit && (
-                        <span key={fit.fit} className={`roll self-center rounded-full px-3 py-1 text-[13px] font-semibold ${FIT_FILL[fit.fit]}`}>
-                          {fitLabel(t, fit.fit)}
+                        <span key={fit.fit} className="roll self-center">
+                          <FitBadge fit={fit.fit} result={fit} />
                         </span>
                       )}
                       <span key={`${rate}`} className="roll w-[3.4ch] text-right font-display text-[28px] font-extrabold leading-none tabular-nums">
