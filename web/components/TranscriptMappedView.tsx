@@ -243,6 +243,61 @@ function Field({ f, label, example, onOverride }: { f: MappedField; label: strin
   );
 }
 
+/** One read-only cell of the small preview: the system's label over its value. Same rule as `Field`: only a best guess is dashed. */
+function PreviewCell({ f, label }: { f: MappedField; label: string }) {
+  const t = useT();
+  const empty = f.value == null || f.value === "";
+  const check = f.status === "unverified";
+  return (
+    <div className="min-w-0">
+      <dt className="text-[13px] leading-5 text-zinc-600">{label}</dt>
+      <dd className={`mt-0.5 break-words rounded-md border px-2 py-1 text-sm leading-snug ${check ? `border-dashed ${toneClass("soon")}` : "border-zinc-200 bg-white text-ink"}`}>
+        {!empty && breakable(f.value as string)}
+        {empty && !check && <span className="text-zinc-500">—</span>}
+        {check && <span className="block text-[13px] font-semibold">{t("transcript.checkPortal")}</span>}
+      </dd>
+    </div>
+  );
+}
+
+const PREVIEW_SYSTEMS: readonly SystemId[] = ["common_app", "uc", "stars"];
+
+/**
+ * The first-run picture: the same example course as View as shows, laid out the way Common App, UC and STARS each ask for it.
+ * Read-only (no Copy, no inputs). One line per system when it fits, STARS's seven fields in four columns, two columns on a phone.
+ */
+export function ExamplePreview() {
+  const t = useT();
+  return (
+    <figure className="min-w-0 space-y-2" aria-labelledby="transcript-preview-caption">
+      <figcaption id="transcript-preview-caption" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-ink">
+        <span className={`whitespace-nowrap rounded-full border px-2 font-semibold ${toneClass("neutral")}`}>{t("transcript.example")}</span>
+        <span>{t("transcript.previewCaption")}</span>
+      </figcaption>
+      <ul className="space-y-2">
+        {PREVIEW_SYSTEMS.map((id) => {
+          const layout = LAYOUTS[id];
+          const m = mapCourse(id, EXAMPLE_SCHOOL, EXAMPLE_COURSE);
+          const oneLine = layout.columns.length <= 6;
+          return (
+            <li key={id} className="rounded-2xl bg-white p-3 sm:p-4">
+              <p className="text-[15px] font-semibold text-ink">{SYSTEMS[id].label}</p>
+              <dl
+                className={`mt-2 grid grid-cols-2 gap-2 ${oneLine ? "sm:grid-cols-(--row)" : "sm:grid-cols-4"}`}
+                style={oneLine ? ({ "--row": layout.columns.map((c) => width(c.key)).join(" ") } as React.CSSProperties) : undefined}
+              >
+                {layout.columns.map((c) => (
+                  <PreviewCell key={c.key} f={field(m, c.key)} label={c.label} />
+                ))}
+              </dl>
+            </li>
+          );
+        })}
+      </ul>
+    </figure>
+  );
+}
+
 /** The example course as it appears in every system at once: same course, six forms. */
 function ExampleRows({ onStart }: { onStart?: () => void }) {
   const t = useT();

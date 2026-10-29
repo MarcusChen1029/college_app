@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DeadlineChip, StatusPill } from "@/components/StatusPill";
+import { DeadlineChip, StatusSelect } from "@/components/StatusPill";
 import {
   emptyRecommender,
   isRecommenderClosed,
@@ -255,26 +255,17 @@ export function RecommendersPage() {
                           {r.requestedOn && <p className="text-[13px] text-zinc-600">{t("recommenders.asked", { date: new Date(`${r.requestedOn}T00:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) })}</p>}
                         </div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <StatusPill tone={recommenderTone(r, today)}>{statusLabel(t, r.status)}</StatusPill>
+                          <StatusSelect
+                            tone={recommenderTone(r, today)}
+                            value={r.status}
+                            options={RECOMMENDER_STATUSES.map((x) => ({ value: x, label: statusLabel(t, x) }))}
+                            label={t("recommenders.statusFor", { name: r.name })}
+                            onChange={(status) => updateRecommender(r.id, { status })}
+                          />
                           {r.dueOn && days != null && <DeadlineChip date={r.dueOn} days={days} done={closed} doneLabel={t("recommenders.received")} label={t("recommenders.due")} />}
                         </div>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
-                        <label className="text-sm">
-                          <span className="sr-only">{t("recommenders.statusFor", { name: r.name })}</span>
-                          <select
-                            aria-label={t("recommenders.statusFor", { name: r.name })}
-                            className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm"
-                            value={r.status}
-                            onChange={(e) => updateRecommender(r.id, { status: e.target.value as RecommenderStatus })}
-                          >
-                            {RECOMMENDER_STATUSES.map((s) => (
-                              <option key={s} value={s}>
-                                {statusLabel(t, s)}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
                         <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("recommenders.editFor", { name: r.name })} onClick={() => setEditing(r.id)}>
                           {t("common.edit")}
                         </button>

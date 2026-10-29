@@ -6,8 +6,23 @@ import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
 
-/** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). */
-export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
+/** "Continue with Google". `returnTo` is the path on this site to come back to (default: the profile page). `ariaLabel` names
+ *  the button when a page shows more than one (each for a different purpose); `consent={false}` leaves the consent line to the
+ *  page, which then shows it once under all of them. `onStart` runs just before the browser leaves for Google, `onFail` when
+ *  it could not. */
+export function GoogleSignIn({
+  returnTo,
+  ariaLabel,
+  consent = true,
+  onStart,
+  onFail,
+}: {
+  returnTo?: string;
+  ariaLabel?: string;
+  consent?: boolean;
+  onStart?: () => void;
+  onFail?: () => void;
+}) {
   const student = useStudent();
   const t = useT();
   const [error, setError] = useState<string | null>(null);
@@ -17,12 +32,15 @@ export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
       <button
         type="button"
         disabled={busy}
+        aria-label={ariaLabel}
         onClick={async () => {
           setBusy(true);
           setError(null);
+          onStart?.();
           // On success the browser leaves for Google, so only a failure comes back here.
           const err = await student.signInWithGoogle(returnTo);
           if (err) {
+            onFail?.();
             setError(err);
             setBusy(false);
           }
@@ -33,10 +51,18 @@ export function GoogleSignIn({ returnTo }: { returnTo?: string }) {
         {busy ? t("signIn.opening") : t("signIn.google")}
       </button>
       {error && <p className="text-sm text-urgent">{error}</p>}
-      <p className="text-xs text-zinc-500">
-        <LegalRich text={t("legal.signIn.consent")} newTab linkClassName="underline underline-offset-2 hover:text-zinc-800" />
-      </p>
+      {consent && <SignInConsent />}
     </>
+  );
+}
+
+/** The line under a sign-in button: signing in accepts the terms and privacy notice. */
+export function SignInConsent() {
+  const t = useT();
+  return (
+    <p className="text-xs text-zinc-500">
+      <LegalRich text={t("legal.signIn.consent")} newTab linkClassName="underline underline-offset-2 hover:text-zinc-800" />
+    </p>
   );
 }
 

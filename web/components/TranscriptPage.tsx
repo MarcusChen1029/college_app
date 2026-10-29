@@ -4,7 +4,7 @@ import { useState } from "react";
 import { StatusPill } from "@/components/StatusPill";
 import { TranscriptCourseForm } from "@/components/TranscriptCourseForm";
 import { TranscriptImport } from "@/components/TranscriptImport";
-import { TranscriptMappedView } from "@/components/TranscriptMappedView";
+import { ExamplePreview, TranscriptMappedView } from "@/components/TranscriptMappedView";
 import { TranscriptSchoolForm } from "@/components/TranscriptSchoolForm";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
@@ -22,8 +22,7 @@ import {
   type TranscriptSchool,
 } from "@/lib/transcript";
 import { buttonClass, PAGE_INTRO, PANEL, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
-import { Pencil } from "./Doodles";
-import { EmptyNote, EmptyState } from "./EmptyState";
+import { EmptyNote } from "./EmptyState";
 
 type Tab = "edit" | "import" | "view";
 const TABS: readonly [Tab, "transcript.tabEdit" | "transcript.tabImport" | "transcript.tabView"][] = [
@@ -241,23 +240,25 @@ function EditTab({ onImport }: { onImport: () => void }) {
       {!ready ? (
         <div className="h-24 animate-pulse rounded-3xl bg-zinc-100" />
       ) : empty && !addingSchool ? (
-        <EmptyState
-          // The pencil is wide: cap it below lg so the sentence and both buttons keep their width (22rem is wider than the art).
-          art={<Pencil className="max-w-32 lg:max-w-[22rem]" />}
-          title={t("transcript.emptyTitle")}
-          actions={
-            <>
+        // EmptyState's look (sky field, title, one sentence, the next steps), with the example preview where its doodle would be:
+        // EmptyState's art slot is a fixed-height decorative box, too small for three form rows and hidden from screen readers.
+        <section aria-labelledby="transcript-first-run" className="grid gap-8 rounded-3xl bg-blue-50 px-6 py-8 sm:px-10 sm:py-10 xl:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] xl:items-start xl:gap-10">
+          <div>
+            <h2 id="transcript-first-run" className="font-display text-2xl font-bold leading-tight tracking-tight text-ink sm:text-[28px]">
+              {t("transcript.emptyTitle")}
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-ink">{t("transcript.emptyBody")}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
               <button type="button" className={buttonClass("primary")} onClick={() => setAddingSchool(true)}>
                 {t("transcript.addSchoolButton")}
               </button>
               <button type="button" className={buttonClass("secondary")} onClick={onImport}>
                 {t("transcript.importWithAi")}
               </button>
-            </>
-          }
-        >
-          {t("transcript.emptyBody")}
-        </EmptyState>
+            </div>
+          </div>
+          <ExamplePreview />
+        </section>
       ) : (
         transcriptSchools.map((s) => <SchoolSection key={s.id} school={s} />)
       )}
