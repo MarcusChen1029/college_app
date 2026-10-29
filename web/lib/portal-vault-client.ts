@@ -91,13 +91,15 @@ export const useVault = () => useSyncExternalStore(subscribe, () => view, () => 
 // The key, only while it belongs to the account this page is showing.
 const openKey = (): Unlocked | null => (unlocked && unlocked.userId === viewUser ? unlocked : null);
 
-// A different account (or none): nothing of the old one stays, least of all its key.
+// A different account (or none): nothing of the old one stays, least of all its key. The first account of the page has
+// nothing to drop, so a dialog opened before anything asked for it (the merge dialog's "Unlock") stays open.
 function adopt(uid: string | null) {
+  const first = viewUser === null && uid !== null;
   viewUser = uid;
   listing = null;
   unlocked = null;
   kinds = new Map();
-  emit(INITIAL);
+  emit(first && view.dialog !== null ? { ...INITIAL, dialog: view.dialog } : INITIAL);
 }
 
 // Sign-out and switching accounts must lock this tab even when no password field is on screen to notice.
