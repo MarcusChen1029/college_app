@@ -525,7 +525,8 @@ html:has([data-explorer]) body > header > nav {
   html:has([data-start-page]) main,
   html:has([data-help-page]) main,
   html:has([data-legal-page]) main,
-  html:has([data-share-page]) main {
+  html:has([data-share-page]) main,
+  html:has([data-slip-page]) main {
     background-color: var(--color-blue-100);
   }
   /* A printed share page is a white sheet: no sky ground behind it. */
