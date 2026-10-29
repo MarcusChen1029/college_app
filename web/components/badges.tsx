@@ -22,12 +22,15 @@ export function TierBadge({ tier, size = "md" }: { tier: TierCode | null | undef
   );
 }
 
+// Chips are 12px by default; size "md" (13px) is for screens that keep every word at 13px or more (the Explore page).
+const CHIP_TEXT = { sm: "text-xs", md: "text-[13px]" } as const;
+
 /** `result` (from computeFit) gives the hover text in the visitor's language. */
-export function FitBadge({ fit, result }: { fit: Fit; result?: FitResult }) {
+export function FitBadge({ fit, result, size = "sm" }: { fit: Fit; result?: FitResult; size?: "sm" | "md" }) {
   const t = useT();
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${fitClass(fit)}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 ${CHIP_TEXT[size]} font-semibold whitespace-nowrap ${fitClass(fit)}`}
       title={result ? fitReasonText(t, result) : undefined}
     >
       <span className="flex gap-0.5" aria-hidden="true">
@@ -40,19 +43,19 @@ export function FitBadge({ fit, result }: { fit: Fit; result?: FitResult }) {
   );
 }
 
-export function Pill({ children, tone = "zinc" }: { children: React.ReactNode; tone?: "zinc" | "blue" | "green" | "red" }) {
-  return <span className={`inline-block rounded border px-1.5 py-0.5 text-xs font-medium ${toneClass(pillTone(tone))}`}>{children}</span>;
+export function Pill({ children, tone = "zinc", size = "sm" }: { children: React.ReactNode; tone?: "zinc" | "blue" | "green" | "red"; size?: "sm" | "md" }) {
+  return <span className={`inline-block whitespace-nowrap rounded border px-1.5 py-0.5 ${CHIP_TEXT[size]} font-medium ${toneClass(pillTone(tone))}`}>{children}</span>;
 }
 
 /** "No supplements" / "No app fee" (lib/apply-tags.ts). Renders nothing without tags. */
-export function ApplyTags({ tags, className = "" }: { tags: readonly ApplyTag[] | undefined; className?: string }) {
+export function ApplyTags({ tags, className = "", size = "sm" }: { tags: readonly ApplyTag[] | undefined; className?: string; size?: "sm" | "md" }) {
   const t = useT();
   if (!tags?.length) return null;
   return (
     <span className={`flex flex-wrap gap-1 ${className}`}>
       {tags.map((tag) => (
         <span key={tag} title={t(`colleges.tag.${tag}.title`)} className="whitespace-nowrap">
-          <Pill tone="green">{t(`colleges.tag.${tag}`)}</Pill>
+          <Pill tone="green" size={size}>{t(`colleges.tag.${tag}`)}</Pill>
         </span>
       ))}
     </span>

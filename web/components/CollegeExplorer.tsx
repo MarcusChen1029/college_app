@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { englishFit, hasEnglishScore } from "@/lib/english-fit";
 import {
   admitRateFor,
@@ -26,7 +26,7 @@ import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
 import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
-import { activeRegions, REGIONS, type RegionCode } from "@/lib/regions";
+import { activeRegions, isRegion, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import { scoredTests, testsToCompare } from "@/lib/test-plan";
@@ -45,6 +45,15 @@ import { USMap3D, type MapDot, type MapHandle } from "./USMap3D";
 // Lookup labels live in lib/format.ts (English, shared with tests); translate them here by stored value.
 const policyLabel = (t: TFunction, group: "testPolicy" | "englishPolicy", map: Record<string, string>, k: string) =>
   k in map ? t(`colleges.${group}.${k}` as MessageKey) : k;
+
+// Tailwind's lg breakpoint: from here the card floats over the map; below it, it sits under the map.
+const LG = "(min-width: 1024px)";
+const onLgChange = (cb: () => void) => {
+  const m = window.matchMedia(LG);
+  m.addEventListener("change", cb);
+  return () => m.removeEventListener("change", cb);
+};
+const useWide = () => useSyncExternalStore(onLgChange, () => window.matchMedia(LG).matches, () => false);
 
 // Eases a number from 0 up to `value` so stats feel like they land rather than appear.
 function useCountUp(value: number | null, ms = 800) {
@@ -204,9 +213,9 @@ function DetailCard({
         : null;
 
   return (
-    // The card floats over the map, so it alone carries a shadow.
+    // On wide screens the card floats over the map, so there (only) it carries a shadow.
     <article
-      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_18px_44px_-18px_rgb(18_48_74/0.4)] max-lg:rounded-b-none"
+      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-5 lg:shadow-[0_18px_44px_-18px_rgb(18_48_74/0.4)]"
       style={{ "--from": side === "right" ? "28px" : "-28px" } as React.CSSProperties}
       aria-labelledby={`card-${college.slug}`}
     >
@@ -225,7 +234,7 @@ function DetailCard({
             {[college.city, college.state_region].filter(Boolean).join(", ")}
             {college.control && <> · <span className="capitalize">{college.control.replace(/_/g, " ")}</span></>}
           </p>
-          <ApplyTags tags={tags} className="mt-2" />
+          <ApplyTags tags={tags} className="mt-2" size="md" />
         </div>
         <button type="button" onClick={onClose} aria-label={t("colleges.closeDetails")} className="-mr-1.5 -mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full text-xl leading-none text-zinc-600 hover:bg-zinc-100 hover:text-ink">
           ×
@@ -259,7 +268,7 @@ function DetailCard({
           <Row label={t("colleges.yourFit")}>
             {fit ? (
               <>
-                <FitBadge fit={fit.fit} />
+                <FitBadge fit={fit.fit} size="md" />
                 <span className="mt-1 block text-[13px] font-normal text-zinc-600">{fitReasonText(t, fit)}</span>
               </>
             ) : (
@@ -329,8 +338,17 @@ export function CollegeExplorer({
   const profile = student.profile;
   const searchParams = useSearchParams();
   // The URL is the starting point (a shared or bookmarked view); after that React state leads and is mirrored back into
-  // the URL with replaceState, so typing in the search box never fights the router. The open college is part of it (?c=).
-  const [f, setF] = useState<ExploreFilters>(() => parseFilters(searchParams));
+  // the URL with replaceState, so typing in the search box never fights the router. The open college is part of it (?c=):
+  // a shared card opens in its own country (written back as region=, whatever the reader's default country), and a slug
+  // that is no college here is dropped rather than left in the URL.
+  const [f, setF] = useState<ExploreFilters>(() => {
+    const p = parseFilters(searchParams);
+    const open = p.college ? colleges.find((c) => c.slug === p.college) : undefined;
+    if (p.college && !open) p.college = null;
+    const country = open?.country_code ?? "US";
+    if (open && isRegion(country)) p.region = country;
+    return p;
+  });
   useEffect(() => {
     const q = filtersToQuery(f);
     const next = `${window.location.pathname}${q ? `?${q}` : ""}`;
@@ -338,7 +356,6 @@ export function CollegeExplorer({
   }, [f]);
   const set = (patch: Partial<ExploreFilters>) => setF((cur) => ({ ...cur, ...patch }));
   const selected = f.college;
-  const setSelected = (slug: string | null) => set({ college: slug });
   // The map's handle for lighting up a dot while its list row is hovered (no React state: hovering never re-renders the list).
   const mapApi = useRef<MapHandle | null>(null);
   const listRef = useRef<HTMLUListElement>(null);
@@ -352,6 +369,8 @@ export function CollegeExplorer({
   }, [targets, f.region]);
   const region: RegionCode = f.region && offered.includes(f.region) ? f.region : offered[0];
   const isUS = region === "US";
+  // Opening a card also pins its country in the URL, so the shared link opens the same card for a reader in another country.
+  const setSelected = (slug: string | null) => set(slug ? { college: slug, region } : { college: null });
   const inRegion = useMemo(() => colleges.filter((c) => (c.country_code ?? "US") === region), [colleges, region]);
   const regionCounts = useMemo(() => {
     const n: Record<string, number> = {};
@@ -434,7 +453,7 @@ export function CollegeExplorer({
   const current = inRegion.find((c) => c.slug === selected) ?? null;
   // Put the card on the side away from the pin so it never covers the college it describes.
   const side: "left" | "right" = current?.longitude != null ? cardSideFor(region, current.longitude) : "right";
-  const other = side === "right" ? "left" : "right";
+  const wide = useWide();
 
   // A college picked on the map scrolls its row into view inside the list (never the page: on a phone the list sits under the map).
   useEffect(() => {
@@ -475,10 +494,11 @@ export function CollegeExplorer({
           key={r.code}
           type="button"
           aria-pressed={region === r.code}
-          onClick={() => {
-            // Budgets are in each country's own currency and states differ, so those two filters reset (and the open card closes).
-            if (r.code !== region) set({ region: r.code, maxTuition: null, state: "", college: null });
-          }}
+          onClick={() =>
+            // Budgets are in each country's own currency and states differ, so those two filters reset. Either way the open
+            // card closes: pressing the country you are in takes you back to its whole map.
+            set(r.code !== region ? { region: r.code, maxTuition: null, state: "", college: null } : { college: null })
+          }
           className={segmentClass(region === r.code)}
         >
           {t(`colleges.regionShort.${r.code}` as MessageKey)}
@@ -505,7 +525,8 @@ export function CollegeExplorer({
     international && t("colleges.statsIntl"),
   ].filter(Boolean);
 
-  const statsLink = (
+  // `short`: the phone's version of the call to add scores, so it shares a row with "Recommend by field".
+  const statsLink = (short = false) => (
     <Link href={stats.length ? "/profile" : "/start"} className="text-sm font-semibold text-zinc-600 hover:text-ink">
       {stats.length ? (
         <>
@@ -513,29 +534,33 @@ export function CollegeExplorer({
           <span className="text-blue-700 underline underline-offset-4">{t("colleges.statsEdit")}</span>
         </>
       ) : (
-        <span className="text-blue-700 underline-offset-4 hover:underline">{t("colleges.addScoresCta")}</span>
+        <span className="text-blue-700 underline-offset-4 hover:underline">{short ? `${t("colleges.addYourScores")} →` : t("colleges.addScoresCta")}</span>
       )}
     </Link>
   );
 
-  // One title row for both views: the page's name, how to look at it, which country, and the one way out to field matching.
+  // One title row for both views: the page's name, how to look at it, which country, and the way out to field matching. Wide:
+  // one line. Tablet: the name and its links, then the two switches. Phone: the name and the view switch, the countries, then
+  // the scores link sharing a line with "Recommend by field". On the map, from sm the scores link lives in the map's key instead.
   const titleRow = (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <h1 className="mr-1 font-display text-2xl font-bold tracking-tight text-ink">{t("colleges.heading")}</h1>
-      {toggle}
-      {regionSwitch}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:ml-auto">
-        {f.view === "table" && statsLink}
+      <h1 className="order-1 mr-1 font-display text-2xl font-bold tracking-tight text-ink">{t("colleges.heading")}</h1>
+      <div className="order-2 sm:order-4 lg:order-2">{toggle}</div>
+      <div className="order-3 min-w-0 sm:order-5 lg:order-3">{regionSwitch}</div>
+      <div className="order-4 flex w-full items-center justify-between gap-x-4 gap-y-2 sm:order-2 sm:ml-auto sm:w-auto sm:justify-end lg:order-4">
+        {(isUS || f.view === "table") && <span className={f.view === "table" ? "lg:hidden" : "sm:hidden"}>{statsLink(true)}</span>}
+        {f.view === "table" && <span className="max-lg:hidden">{statsLink()}</span>}
         <Link href="/tools/match" className={buttonClass("ghost", "sm")}>
           {t("match.link")}
         </Link>
       </div>
+      <span aria-hidden="true" className="order-3 hidden basis-full sm:block lg:hidden" />
     </div>
   );
 
   if (f.view === "table") {
     return (
-      <div className="space-y-4">
+      <div data-explorer className="space-y-4">
         {titleRow}
         {filterBar(false)}
         <CollegeBrowser
@@ -557,8 +582,12 @@ export function CollegeExplorer({
 
   const hover = (slug: string | null) => mapApi.current?.hover(slug);
 
+  const card = current && (
+    <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} tags={applyTags[current.slug]} side={side} onClose={() => setSelected(null)} />
+  );
+
   return (
-    <div className="space-y-3">
+    <div data-explorer className="space-y-3">
       {titleRow}
       <div className="grid gap-4 lg:h-[calc(100dvh-9.5rem)] lg:min-h-[540px] lg:grid-cols-[360px_1fr]">
         <aside className="order-last flex min-h-0 flex-col gap-3 lg:order-first">
@@ -594,8 +623,8 @@ export function CollegeExplorer({
                       </span>
                       {(fit || student.has(c.slug) || applyTags[c.slug]) && (
                         <span className="mt-1.5 flex flex-wrap gap-1">
-                          {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) && <Pill tone="blue">{t("colleges.onList")}</Pill>}
-                          <ApplyTags tags={applyTags[c.slug]} />
+                          {fit ? <FitBadge fit={fit.fit} size="md" /> : student.has(c.slug) && <Pill tone="blue" size="md">{t("colleges.onList")}</Pill>}
+                          <ApplyTags tags={applyTags[c.slug]} size="md" />
                         </span>
                       )}
                     </span>
@@ -614,62 +643,61 @@ export function CollegeExplorer({
           </ul>
         </aside>
 
-        {/* Below lg the map sits over the list: about as tall as the country is, so the list starts soon after it. */}
-        <div className="h-[46dvh] min-h-[360px] sm:h-[52dvh] lg:h-full lg:min-h-0">
-          <USMap3D
-            key={region}
-            region={region}
-            pins={pins}
-            selected={selected}
-            onSelect={setSelected}
-            cardSide={side}
-            onReady={(handle) => {
-              mapApi.current = handle;
-            }}
-          >
-            <div className={`pointer-events-none absolute top-3 flex max-w-[calc(100%-1.5rem)] items-start gap-2 ${other === "left" ? "left-3" : "right-3 flex-row-reverse"}`}>
-              {/* The key: what each colour means and how many of the colleges shown have it. On a phone an open card needs the room. */}
-              <div className={`pointer-events-auto rounded-xl border border-zinc-200 bg-white px-3 py-2 ${current ? "max-lg:hidden" : ""}`}>
-                <p className="text-[13px] font-semibold text-ink">{byFit ? t("colleges.yourFit") : t("colleges.legendTier")}</p>
-                <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[13px]" aria-label={t("colleges.tierColours")}>
-                  {legend.map((i) => (
-                    <li key={i.key} className="flex items-center gap-1.5 whitespace-nowrap">
-                      <span className={`h-3 w-3 rounded-full ${i.cls}`} aria-hidden="true" />
-                      <span className="font-semibold text-ink">{i.label}</span>
-                      <span className="tabular-nums text-zinc-600">{i.n}</span>
-                    </li>
-                  ))}
-                </ul>
-                {isUS && (
-                  <div className="mt-1.5 max-w-xs text-[13px] leading-snug">
-                    {byFit ? (
-                      statsLink
-                    ) : (
-                      <Link href="/start" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
-                        {t("colleges.colourByFit")}
-                      </Link>
-                    )}
-                  </div>
-                )}
-              </div>
+        <div className="flex min-w-0 flex-col gap-3 lg:min-h-0">
+          {/* The map panel. Its header is the key: what each colour means and how many of the colleges shown have it (one line on a
+              phone), then the way to colour by fit, then the way back to the whole map. The map fills the rest, framed to the land. */}
+          <section aria-label={t(`colleges.mapLabel.${region}` as MessageKey)} className="flex flex-col overflow-hidden rounded-2xl border border-zinc-200 lg:min-h-0 lg:flex-1">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-zinc-200 bg-white px-4 py-2.5">
+              <p className="text-[13px] font-semibold text-ink max-sm:sr-only">{byFit ? t("colleges.yourFit") : t("colleges.legendTier")}</p>
+              <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[13px] max-sm:gap-x-2.5" aria-label={t("colleges.tierColours")}>
+                {legend.map((i) => (
+                  <li key={i.key} className="flex items-center gap-1.5 whitespace-nowrap">
+                    <span className={`h-3 w-3 rounded-full ${i.cls}`} aria-hidden="true" />
+                    <span className="font-semibold text-ink">{i.label}</span>
+                    <span className="tabular-nums text-zinc-600">{i.n}</span>
+                  </li>
+                ))}
+              </ul>
+              {isUS && (
+                <div className="text-[13px] leading-snug max-sm:hidden">
+                  {byFit ? (
+                    statsLink()
+                  ) : (
+                    <Link href="/start" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
+                      {t("colleges.colourByFit")}
+                    </Link>
+                  )}
+                </div>
+              )}
               {current && (
-                <button type="button" onClick={() => setSelected(null)} className={`pointer-events-auto ${buttonClass("ghost", "sm")}`}>
+                <button type="button" onClick={() => setSelected(null)} className={`ml-auto ${buttonClass("ghost", "sm")} h-8`}>
                   {t("colleges.wholeMap")}
                 </button>
               )}
             </div>
-
-            {current && (
-              <div
-                key={current.slug}
-                className={`pointer-events-none absolute z-10 flex items-end max-lg:inset-x-0 max-lg:bottom-0 max-lg:h-[68%] lg:inset-y-3 lg:w-[384px] lg:items-center ${
-                  side === "right" ? "lg:right-3" : "lg:left-3"
-                }`}
+            {/* Below lg the canvas takes the country's own proportions, so the land fills it and the list follows close under it. */}
+            <div className="aspect-[2/1] min-h-[180px] lg:aspect-auto lg:min-h-0 lg:flex-1">
+              <USMap3D
+                key={region}
+                region={region}
+                pins={pins}
+                selected={selected}
+                onSelect={setSelected}
+                cardSide={side}
+                onReady={(handle) => {
+                  mapApi.current = handle;
+                }}
               >
-                <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} tags={applyTags[current.slug]} side={side} onClose={() => setSelected(null)} />
-              </div>
-            )}
-          </USMap3D>
+                {wide && current && (
+                  <div key={current.slug} className={`pointer-events-none absolute inset-y-3 z-10 flex w-[384px] items-center ${side === "right" ? "right-3" : "left-3"}`}>
+                    {card}
+                  </div>
+                )}
+              </USMap3D>
+            </div>
+          </section>
+          {/* Below lg the card sits under the map, where it can be read whole, instead of covering it. */}
+          {!wide && current && <div key={current.slug}>{card}</div>}
         </div>
       </div>
     </div>
