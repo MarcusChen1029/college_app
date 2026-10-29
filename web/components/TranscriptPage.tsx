@@ -21,8 +21,9 @@ import {
   type TranscriptCourse,
   type TranscriptSchool,
 } from "@/lib/transcript";
-import { buttonClass, PAGE_INTRO, PANEL, toneClass } from "@/lib/ui";
-import { EmptyNote } from "./EmptyState";
+import { buttonClass, PAGE_INTRO, PANEL, SEGMENT_TRACK, segmentClass, toneClass } from "@/lib/ui";
+import { Pencil } from "./Doodles";
+import { EmptyNote, EmptyState } from "./EmptyState";
 
 type Tab = "edit" | "import" | "view";
 const TABS: readonly [Tab, "transcript.tabEdit" | "transcript.tabImport" | "transcript.tabView"][] = [
@@ -59,7 +60,7 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
     <li className="space-y-2 p-4">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          {year && <p className="text-xs font-semibold text-zinc-600">{year}</p>}
+          {year && <p className="text-[13px] font-semibold text-zinc-600">{year}</p>}
           <p className="font-medium">
             {course.name}
             {course.isSummer && <span className="text-sm font-normal text-zinc-500"> · {t("transcript.summer")}</span>}
@@ -73,7 +74,7 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
             {course.credit != null ? ` · ${t("transcript.creditAmount", { credit: course.credit })}` : ""}
           </p>
           <p className="text-sm">{gradesText(course, t)}</p>
-          {course.notes && <p className="text-xs text-zinc-500">{course.notes}</p>}
+          {course.notes && <p className="text-[13px] text-zinc-600">{course.notes}</p>}
           {issues.length > 0 && (
             <ul className="mt-1 list-disc pl-5 text-sm text-urgent">
               {issues.map((m) => (
@@ -84,7 +85,7 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {course.source !== "manual" && (
-            <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${toneClass("neutral")}`} title={course.source === "mcp" ? t("transcript.aiMcp") : t("transcript.aiImport")}>
+            <span className={`whitespace-nowrap rounded-full border px-2 py-0.5 text-[13px] font-semibold ${toneClass("neutral")}`} title={course.source === "mcp" ? t("transcript.aiMcp") : t("transcript.aiImport")}>
               AI
             </span>
           )}
@@ -92,10 +93,10 @@ function CourseRow({ course, school, year, onEdit, onRemove }: { course: Transcr
         </div>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <button type="button" className={buttonClass("secondary", "sm")} aria-label={t("transcript.editCourseAria", { name: course.name })} onClick={onEdit}>
+        <button type="button" className={buttonClass("ghost", "sm")} aria-label={t("transcript.editCourseAria", { name: course.name })} onClick={onEdit}>
           {t("common.edit")}
         </button>
-        <button type="button" className={buttonClass("danger", "sm")} aria-label={t("transcript.removeCourseAria", { name: course.name })} onClick={onRemove}>
+        <button type="button" className={buttonClass("ghost", "sm")} aria-label={t("transcript.removeCourseAria", { name: course.name })} onClick={onRemove}>
           {t("transcript.remove")}
         </button>
       </div>
@@ -165,10 +166,10 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
       ) : (
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
-            <h2 id={`school-${school.id}`} className="font-display text-lg font-bold">
+            <h2 id={`school-${school.id}`} className="font-display text-xl font-bold text-ink">
               {school.name}
             </h2>
-            <p className="text-sm text-zinc-600">
+            <p className="text-[15px] text-zinc-600">
               {[KIND_LABEL[school.kind], school.country, school.printedGpa ? `GPA ${school.printedGpa}${school.printedGpaScale ? ` / ${school.printedGpaScale}` : ""}` : "", school.classRank ? t("transcript.rank", { rank: school.classRank }) : ""]
                 .filter(Boolean)
                 .join(" · ")}
@@ -190,7 +191,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
           <h3 className="text-sm font-semibold text-urgent">
             {t("transcript.needsGrade", { n: flagged.length })} <span className="font-normal text-zinc-600">{t("transcript.needsGradeHint")}</span>
           </h3>
-          <ul className="divide-y divide-urgent-line rounded-lg border border-urgent-line bg-urgent-bg" aria-label={t("transcript.missingGradeList")}>
+          <ul className="divide-y divide-urgent-line rounded-2xl border border-urgent-line bg-urgent-bg" aria-label={t("transcript.missingGradeList")}>
             {flagged.map((c) => row(c, yearLabel(c.academicYear)))}
           </ul>
         </div>
@@ -198,10 +199,8 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
       {courses.length === 0 && !adding && <EmptyNote on="panel">{t("transcript.noCourses")}</EmptyNote>}
       {years.map((year) => (
         <div key={year} className="space-y-1">
-          <h3 className="text-sm font-semibold text-zinc-700">
-            {yearLabel(year)}
-          </h3>
-          <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200 bg-white">
+          <h3 className="text-[15px] font-semibold text-ink">{yearLabel(year)}</h3>
+          <ul className="divide-y divide-zinc-100 rounded-2xl bg-white">
             {rest
               .filter((c) => c.academicYear === year)
               .sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name))
@@ -211,7 +210,7 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
       ))}
 
       {adding ? (
-        <div className="rounded-lg bg-white p-4">
+        <div className="rounded-2xl bg-white p-4">
           <TranscriptCourseForm
             initial={{ ...emptyCourse(school.id, school), sortOrder: nextOrder }}
             school={school}
@@ -232,22 +231,39 @@ function SchoolSection({ school }: { school: TranscriptSchool }) {
   );
 }
 
-function EditTab() {
+function EditTab({ onImport }: { onImport: () => void }) {
   const t = useT();
   const { transcriptSchools, ready, addTranscriptSchool } = useStudent();
   const [addingSchool, setAddingSchool] = useState(false);
+  const empty = ready && transcriptSchools.length === 0;
   return (
     <div className="space-y-5">
       {!ready ? (
-        <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
-      ) : transcriptSchools.length === 0 && !addingSchool ? (
-        <EmptyNote>{t("transcript.noTranscript")}</EmptyNote>
+        <div className="h-24 animate-pulse rounded-3xl bg-zinc-100" />
+      ) : empty && !addingSchool ? (
+        <EmptyState
+          // The pencil is wide: cap it below lg so the sentence and both buttons keep their width (22rem is wider than the art).
+          art={<Pencil className="max-w-32 lg:max-w-[22rem]" />}
+          title={t("transcript.emptyTitle")}
+          actions={
+            <>
+              <button type="button" className={buttonClass("primary")} onClick={() => setAddingSchool(true)}>
+                {t("transcript.addSchoolButton")}
+              </button>
+              <button type="button" className={buttonClass("secondary")} onClick={onImport}>
+                {t("transcript.importWithAi")}
+              </button>
+            </>
+          }
+        >
+          {t("transcript.emptyBody")}
+        </EmptyState>
       ) : (
         transcriptSchools.map((s) => <SchoolSection key={s.id} school={s} />)
       )}
       {addingSchool ? (
         <section aria-labelledby="school-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
-          <h2 id="school-add" className="font-display text-lg font-bold">
+          <h2 id="school-add" className="font-display text-xl font-bold text-ink">
             {t("transcript.addSchoolHeading")}
           </h2>
           <TranscriptSchoolForm
@@ -261,9 +277,12 @@ function EditTab() {
           />
         </section>
       ) : (
-        <button type="button" className={buttonClass("primary", "sm")} onClick={() => setAddingSchool(true)}>
-          {t("transcript.addSchoolButton")}
-        </button>
+        ready &&
+        !empty && (
+          <button type="button" className={buttonClass("primary", "sm")} onClick={() => setAddingSchool(true)}>
+            {t("transcript.addSchoolButton")}
+          </button>
+        )
       )}
     </div>
   );
@@ -285,16 +304,16 @@ export function TranscriptPage() {
           </button>
         </p>
       )}
-      <div className="flex flex-wrap gap-2" role="group" aria-label={t("transcript.viewsLabel")}>
+      <div className={SEGMENT_TRACK} role="group" aria-label={t("transcript.viewsLabel")}>
         {TABS.map(([key, label]) => (
-          <button key={key} type="button" aria-pressed={tab === key} className={buttonClass("secondary", "sm", tab === key)} onClick={() => setTab(key)}>
+          <button key={key} type="button" aria-pressed={tab === key} className={segmentClass(tab === key)} onClick={() => setTab(key)}>
             {t(label)}
           </button>
         ))}
       </div>
-      {tab === "edit" && <EditTab />}
+      {tab === "edit" && <EditTab onImport={() => setTab("import")} />}
       {tab === "import" && <TranscriptImport onDone={() => setTab("edit")} />}
-      {tab === "view" && <TranscriptMappedView />}
+      {tab === "view" && <TranscriptMappedView onStart={() => setTab("edit")} />}
     </div>
   );
 }

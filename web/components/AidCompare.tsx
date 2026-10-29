@@ -8,6 +8,7 @@ import { fmtUsd } from "@/lib/format";
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import type { CollegeSummary } from "@/lib/types";
+import { SECTION_TITLE } from "@/lib/ui";
 import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
@@ -30,10 +31,10 @@ export function AidCompare({ colleges }: { colleges: CollegeSummary[] }) {
   return (
     <section className="space-y-3" aria-labelledby="aid-compare-title">
       <div>
-        <h2 id="aid-compare-title" className="font-semibold">
+        <h2 id="aid-compare-title" className={SECTION_TITLE}>
           {t("application.aid.title")}
         </h2>
-        <p className="text-sm text-zinc-500">
+        <p className="mt-1 max-w-3xl text-[15px] text-zinc-700">
           {t("application.aid.introPre")}
           <Link href="/application/list" className="text-blue-700 underline">
             {t("nav.myList")}

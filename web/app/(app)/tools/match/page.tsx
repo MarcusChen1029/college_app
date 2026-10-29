@@ -5,7 +5,7 @@ import { getCourseOffers, getSummaries } from "@/lib/data";
 import completions from "@/lib/data/field-completions.json";
 import outcomes from "@/lib/data/outcomes.json";
 import { buildEvidence, type FieldCompletions, type FieldEvidence } from "@/lib/field-match";
-import { aLevelGrades, toMatchRow, type MatchCourse } from "@/lib/field-match-view";
+import { aLevelGrades, ibSummary, toMatchRow, type MatchCourse } from "@/lib/field-match-view";
 import { programFields } from "@/lib/fields";
 import { getT } from "@/lib/i18n/server";
 import { fieldEarningsFor, type OutcomesData } from "@/lib/outcomes";
@@ -17,7 +17,8 @@ export const metadata: Metadata = { title: "College match by field" };
 async function Match() {
   const [summaries, offers] = await Promise.all([getSummaries(), getCourseOffers()]);
   const colleges = summaries.map(toMatchRow);
-  // Universities that admit by course: each course's fields and its offer, short (the full text for a tooltip).
+  // Universities that admit by course: each course's fields and its offer, cut short on the server so the browser gets a few
+  // characters per course, not the published paragraphs.
   const courses: Record<string, MatchCourse[]> = {};
   for (const c of summaries) {
     if (c.country_code === "US" || !offers[c.id]) continue;
@@ -26,8 +27,8 @@ async function Match() {
       fields: programFields(o.name),
       aLevel: aLevelGrades(o.a_level_offer),
       ib: o.ib_points,
+      ibText: o.ib_points == null ? ibSummary(o.ib_offer) : null,
       atar: o.atar,
-      full: [o.a_level_offer && `A-level: ${o.a_level_offer}`, o.ib_offer && `IB: ${o.ib_offer}`, o.atar != null && `ATAR ${o.atar}`].filter(Boolean).join("\n"),
     }));
   }
   const evidence: Record<string, FieldEvidence> = {};

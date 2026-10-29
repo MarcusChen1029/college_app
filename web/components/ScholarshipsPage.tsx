@@ -20,7 +20,8 @@ import { safeLink } from "@/lib/checklist";
 import { useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass, PAGE_INTRO, PANEL } from "@/lib/ui";
+import { fmtDate } from "@/lib/format";
+import { buttonClass, PAGE_INTRO, PANEL, SECTION_TITLE } from "@/lib/ui";
 import { EmptyNote } from "./EmptyState";
 
 const statusLabel = (t: TFunction, s: ScholarshipStatus) => t(`scholarships.status.${s}` as MessageKey);
@@ -120,23 +121,65 @@ function ScholarshipForm({ initial, submitLabel, onSave, onCancel }: { initial: 
   );
 }
 
+/** The money: what was won, what is still in play, and the next deadline. Real zeros are printed as zeros. */
+function Ledger({ scholarships, today }: { scholarships: readonly Scholarship[]; today: Date }) {
+  const t = useT();
+  const awarded = awardedTotal(scholarships);
+  const live = scholarships.filter((s) => isScholarshipOpen(s.status) || s.status === "submitted");
+  const inPlay = live.reduce((n, s) => n + (s.amountUsd ?? 0), 0);
+  // A scholarship with no amount adds nothing to a total; the total says how many it leaves out, so $0 never reads as "none".
+  const noAmount = (items: readonly Scholarship[]) => items.filter((s) => s.amountUsd == null).length;
+  const missing = (n: number) =>
+    n > 0 && <span className="ml-2 font-sans text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.noAmount", { n })}</span>;
+  const next = scholarships
+    .filter((s) => isScholarshipOpen(s.status) && s.deadline && (scholarshipDays(s, today) ?? -1) >= 0)
+    .sort((a, b) => a.deadline!.localeCompare(b.deadline!))[0];
+  return (
+    <dl className="grid gap-x-8 gap-y-4 rounded-3xl bg-blue-50 px-6 py-5 sm:grid-cols-3">
+      <div className="flex flex-col-reverse">
+        <dt className="text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.awarded")}</dt>
+        <dd className="font-display text-[32px] font-bold leading-tight tabular-nums text-ink">
+          {usd(awarded)}
+          {missing(noAmount(scholarships.filter((s) => s.status === "awarded")))}
+        </dd>
+      </div>
+      <div className="flex flex-col-reverse">
+        <dt className="text-[15px] font-medium text-zinc-700">{t("scholarships.ledger.inPlay", { n: live.length })}</dt>
+        <dd className="font-display text-2xl font-bold leading-tight tabular-nums text-ink">
+          {usd(inPlay)}
+          {missing(noAmount(live))}
+        </dd>
+      </div>
+      <div className="flex flex-col-reverse">
+        <dt className="text-[15px] font-medium text-zinc-700">{next ? next.name : t("scholarships.ledger.next")}</dt>
+        <dd className="font-display text-2xl font-bold leading-tight text-ink">{next ? fmtDate(next.deadline!) : t("scholarships.ledger.noNext")}</dd>
+      </div>
+    </dl>
+  );
+}
+
 /** Student's scholarship tracker. Private: teachers never see it. */
 export function ScholarshipsPage() {
   const t = useT();
   const { scholarships, ready, error, addScholarship, updateScholarship, removeScholarship, clearError } = useStudent();
   const [editing, setEditing] = useState<string | null>(null);
+  const [adding, setAdding] = useState(false);
   const today = new Date();
   const sorted = sortScholarships(scholarships);
-  const open = scholarships.filter((s) => isScholarshipOpen(s.status)).length;
-  const awarded = awardedTotal(scholarships);
 
   function remove(s: Scholarship) {
     if (!confirm(t("scholarships.removeConfirm", { name: s.name }))) return;
     removeScholarship(s.id);
   }
 
+  const addButton = (
+    <button type="button" className={buttonClass("primary", "sm")} onClick={() => setAdding(true)}>
+      + {t("scholarships.addTitle")}
+    </button>
+  );
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       <p className={PAGE_INTRO}>{t("scholarships.intro")}</p>
       {error && (
         <p role="alert" className="text-sm text-urgent">
@@ -147,26 +190,36 @@ export function ScholarshipsPage() {
         </p>
       )}
 
-      <section aria-labelledby="sch-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
-        <h2 id="sch-add" className="font-display text-lg font-bold">
-          {t("scholarships.addTitle")}
-        </h2>
-        <ScholarshipForm initial={emptyScholarship()} submitLabel={t("scholarships.addButton")} onSave={addScholarship} />
-      </section>
+      {ready && <Ledger scholarships={scholarships} today={today} />}
+
+      {adding && (
+        <section aria-labelledby="sch-add" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
+          <h2 id="sch-add" className={SECTION_TITLE}>
+            {t("scholarships.addTitle")}
+          </h2>
+          <ScholarshipForm
+            initial={emptyScholarship()}
+            submitLabel={t("scholarships.addButton")}
+            onSave={(v) => {
+              addScholarship(v);
+              setAdding(false);
+            }}
+            onCancel={() => setAdding(false)}
+          />
+        </section>
+      )}
 
       <section aria-labelledby="sch-list" className="space-y-3">
-        <h2 id="sch-list" className="font-display text-lg font-bold">
-          {t("scholarships.listTitle")}{" "}
-          {scholarships.length > 0 && (
-            <span className="text-sm font-normal text-zinc-500">
-              {awarded > 0 ? t("scholarships.summaryOpenAwarded", { open, amount: usd(awarded) }) : t("scholarships.summaryOpen", { open })}
-            </span>
-          )}
-        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="sch-list" className={SECTION_TITLE}>
+            {t("scholarships.listTitle")}
+          </h2>
+          {!adding && sorted.length > 0 && addButton}
+        </div>
         {!ready ? (
           <div className="h-24 animate-pulse rounded-lg bg-zinc-100" />
         ) : sorted.length === 0 ? (
-          <EmptyNote>{t("scholarships.empty")}</EmptyNote>
+          <EmptyNote action={adding ? undefined : addButton}>{t("scholarships.empty")}</EmptyNote>
         ) : (
           <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200">
             {sorted.map((s) => {
