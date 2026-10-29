@@ -75,14 +75,14 @@
    "kind": "scholarship",
    "due": "2027-04-01",
    "label": "Jones International House Program application deadline (priority March 1)",
-   "notes": "Program gives a tuition and fees scholarship plus a housing scholarship for up to 2 years. The page prints March 1 (priority) and April 1 without a year; treated as 2027. Applicant must already have a JSU ID and be admitted; undergraduate international applicants need a 2.5/4.0 high school GPA.",
+   "notes": "Program gives a tuition and fees scholarship plus a housing scholarship for up to 2 years. The page prints March 1 (priority) and April 1 without a year, so 2027 is assumed. Applicant must already have a JSU ID and be admitted; undergraduate international applicants need a 2.5/4.0 high school GPA.",
    "src": "ih"
   },
   {
    "kind": "scholarship",
    "due": "2027-05-01",
    "label": "Test scores due for freshman merit-scholarship upgrades (fall admits)",
-   "notes": "Merit scholarships are awarded automatically on admission from the highest cumulative high school GPA; scores received by May 1 can raise the award. Year not printed; treated as 2027.",
+   "notes": "Merit scholarships are awarded automatically on admission from the highest cumulative high school GPA; scores received by May 1 can raise the award. The year is not printed, so 2027 is assumed.",
    "src": "merit"
   }
  ],
@@ -138,7 +138,7 @@
   "room_board_usd": 10394,
   "books_usd": 1056,
   "other_usd": 2260,
-  "notes": "Bursar page, 2026-2027 block tuition: 12-18 credit hours cost $5,400 per semester in-state and $10,800 per semester out-of-state and international, so the yearly figures are two semesters. Fees ($2,860) and room and board ($6,104 housing + $4,290 meals, on campus) are JSU's published average estimates; the in-state estimate lists $10,800 tuition. Other = miscellaneous $2,260; transportation estimate $2,106 not included. International student fee is $150 per semester. Total cost of attendance is not published for international students.",
+  "notes": "Bursar page, 2026-2027 block tuition: 12-18 credit hours cost $5,400 per semester in-state and $10,800 per semester out-of-state and international, so the yearly figures are two semesters. Fees ($2,860) and room and board ($6,104 housing + $4,290 meals, on campus) are JSU's published average estimates; the in-state estimate lists $10,800 tuition. Other = miscellaneous $2,260; transportation estimate $2,106 not included. International student fee is $150 per semester. Total cost of attendance is not published for international students",
   "src": "fees"
  },
  "aid": {
@@ -146,7 +146,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students are not eligible for financial aid but can earn scholarships. Freshman merit awards are automatic on admission, based on high school GPA (2027-28: $1,000-$8,000 a year for GPA 2.00-4.0+, up to $10,500 with ACT 31+/SAT 1390+), last up to 8 semesters, and out-of-state students who receive one pay the remaining tuition at the in-state rate. The merit page does not explicitly address international applicants, but JSU's international FAQ lists it. The Jones International House Program offers a tuition-and-fees plus housing scholarship (up to 2 years). CDS H6 reports 329 nonresidents with institutional aid, average $10,022, although B2 counts only 231 nonresident undergraduates, so treat that figure with caution.",
+  "notes": "International students are not eligible for financial aid but can earn scholarships. Freshman merit awards are automatic on admission, based on high school GPA (2027-28: $1,000-$8,000 a year for GPA 2.00-4.0+, up to $10,500 with ACT 31+/SAT 1390+), last up to 8 semesters, and out-of-state students who receive one pay the remaining tuition at the in-state rate. The merit page does not explicitly address international applicants, but JSU's international FAQ lists it. The Jones International House Program offers a tuition-and-fees plus housing scholarship (up to 2 years). The Common Data Set reports 329 nonresidents with aid from the college, averaging $10,022, although it counts only 231 nonresident undergraduates, so treat that figure with caution.",
   "src": "merit"
  },
  "score_codes": {

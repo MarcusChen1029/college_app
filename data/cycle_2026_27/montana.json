@@ -45,7 +45,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "Admission to four-year programs requires any one of: ACT 22, SAT 1120, a 2.50 cumulative GPA, or upper-half class rank, plus the college-prep courses; test scores are therefore not required. International first-year applicants are reviewed on the equivalent of a 2.5 U.S. GPA from a credential evaluation (ICER). The CDS C8 policy boxes could not be read.",
+  "notes": "Admission to four-year programs requires any one of: ACT 22, SAT 1120, a 2.50 cumulative GPA, or upper-half class rank, plus the college-prep courses; test scores are therefore not required. International first-year applicants are reviewed on the equivalent of a 2.5 U.S. GPA from a credential evaluation (ICER). The Common Data Set's test policy boxes could not be read.",
   "src": "fy"
  },
  "requirements": {
@@ -69,14 +69,14 @@
    "kind": "scholarship",
    "due": "2027-03-01",
    "label": "UMAAS merit scholarship consideration date",
-   "notes": "UMAAS page: apply by March 1 to be automatically considered. The page prints no year; treated as March 1, 2027 for fall 2027 entry. Awards need a transcript and an ICER-based GPA.",
+   "notes": "UMAAS page: apply by March 1 to be automatically considered. The page prints no year, so March 1, 2027 is assumed for fall 2027 entry. Awards need a transcript and an ICER-based GPA.",
    "src": "umaas"
   },
   {
    "kind": "scholarship",
    "due": "2026-12-01",
    "label": "Davidson Honors College Presidential Leadership Scholarship application",
-   "notes": "Freshmen apply with the Davidson Honors College application by December 1 (no year printed; treated as Dec. 1, 2026 for fall 2027 entry).",
+   "notes": "Freshmen apply with the Davidson Honors College application by December 1 (no year printed; Dec. 1, 2026 is assumed for fall 2027 entry).",
    "src": "exp"
   }
  ],
@@ -127,14 +127,14 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Fully admitted international first-year students (Mountain Campus, first bachelor's degree) are automatically considered for the UMAAS merit scholarship, based on the GPA in their ICER; no separate application. UMAAS is tuition-only, renewable for 4 years with a 2.5 GPA and 15 credits per semester; not available to conditional or pathway admits, Missoula College or online-only students. The current UMAAS pages do not print the award amounts by GPA, so none are given here. Davidson Honors College Presidential Leadership Scholarship is a separate application (Dec. 1). Minimum funds for I-20 (2026-27): $55,988 for four-year programs. English pathway: Pathway Admission (TOEFL 52-69, IELTS 5.0-5.5, Duolingo 85-104) and Conditional Admission (below that or no score) both use the English Language Institute, but UM says the ELI will not admit in-person Intensive English students during 2026-27; an online IEP interest form is offered. CDS 2024-25 H6 reports 2,005 'nonresident' aid recipients (avg $21,077), a figure that covers all out-of-state students, not only international.",
+  "notes": "Fully admitted international first-year students (Mountain Campus, first bachelor's degree) are automatically considered for the UMAAS merit scholarship, based on the GPA in their ICER; no separate application. UMAAS is tuition-only, renewable for 4 years with a 2.5 GPA and 15 credits per semester; not available to conditional or pathway admits, Missoula College or online-only students. The current UMAAS pages do not print the award amounts by GPA, so none are given here. Davidson Honors College Presidential Leadership Scholarship is a separate application (Dec. 1). Minimum funds for I-20 (2026-27): $55,988 for four-year programs. English pathway: Pathway Admission (TOEFL 52-69, IELTS 5.0-5.5, Duolingo 85-104) and Conditional Admission (below that or no score) both use the English Language Institute, but UM says the ELI will not admit in-person Intensive English students during 2026-27; an online IEP interest form is offered. The 2024-25 Common Data Set reports 2,005 'nonresident' aid recipients (avg $21,077), a figure that covers all out-of-state students, not only international.",
   "src": "umaas"
  },
  "cost": {
   "year": "2026-2027",
   "total_coa_usd": 55988,
   "src": "apply",
-  "notes": "total_coa_usd is UM's published minimum funding requirement for I-20 issuance for 2026-27 (four-year Mountain Campus programs), not an itemized cost of attendance. The undated expenses page gives $34,769 tuition and fees plus $21,074 living (total $55,843) and conflicts slightly, so only the dated figure is used."
+  "notes": "The total cost of attendance shown is UM's published minimum funding requirement for I-20 issuance for 2026-27 (four-year Mountain Campus programs), not an itemized cost of attendance. The undated expenses page gives $34,769 tuition and fees plus $21,074 living (total $55,843) and conflicts slightly, so only the dated figure is used"
  },
  "majors": [],
  "score_codes": {
@@ -181,6 +181,6 @@
   "arts_design": "D"
  },
  "tier_notes": {
-  "biology_life_sci": "Placed C as a solid regional program for a research-active state flagship. Editorial judgment, not a ranking."
+  "biology_life_sci": "Placed C as a solid regional program for a state flagship with research activity. Our estimate, not a published ranking."
  }
 }

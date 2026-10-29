@@ -33,7 +33,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "SAT/ACT are not required for admission (CDS C8: considered if submitted). A 26 ACT / 1240 SAT is the Sokolov Honors College threshold (for 2026-27, applicants with a 3.5+ GPA and no test are also encouraged to apply). SAT 920 or ACT 17 can be used to meet the English requirement.",
+  "notes": "SAT/ACT are not required for admission (Common Data Set: considered if submitted). A 26 ACT / 1240 SAT is the Sokolov Honors College threshold (for 2026-27, applicants with a 3.5+ GPA and no test are also encouraged to apply). SAT 920 or ACT 17 can be used to meet the English requirement.",
   "src": "aid"
  },
  "requirements": {
@@ -104,7 +104,7 @@
   "books_usd": 1200,
   "other_usd": 1491,
   "total_coa_usd": 31868,
-  "notes": "YSU International Programs Office estimate for 2026-27 (9 months, 12-18 credits): average tuition and fees $17,177, room and board $12,000, books $1,200, mandatory health insurance $1,491; total $31,868. The tuition rate is locked for four years from first enrollment. International undergraduates pay the non-resident rate.",
+  "notes": "YSU International Programs Office estimate for 2026-27 (9 months, 12-18 credits): average tuition and fees $17,177, room and board $12,000, books $1,200, mandatory health insurance $1,491; total $31,868. The tuition rate is locked for four years from first enrollment. International undergraduates pay the non-resident rate",
   "src": "cost"
  },
  "aid": {

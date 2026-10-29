@@ -37,6 +37,6 @@
     "applicants": 6153,
     "admits": 5876,
     "enrolled": 2612,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator; exact counts from the NCES IPEDS ADM2024 file via the Urban Institute Education Data Portal): 6,153 applied (2,416 men, 3,737 women), 5,876 admitted, 2,612 enrolled. GGC lists a 2025 Fall Semester Common Data Set, but its page and files block automated access (HTTP 403) and the Wayback copy was rate-limited, so no CDS figures (international applicants/admits, GPA, SAT/ACT percentiles, factors) are included. IPEDS shows no SAT/ACT score ranges for GGC (test-optional). International undergraduates (481) are IPEDS fall 2024 nonresident aliens, about 3.9% of 12,230 undergraduates."
+    "notes": "Figures from IPEDS, the US government's college data, fall 2024 (College Navigator; exact counts from the NCES IPEDS admissions file via the Urban Institute Education Data Portal): 6,153 applied (2,416 men, 3,737 women), 5,876 admitted, 2,612 enrolled. GGC lists a 2025 Fall Semester Common Data Set, but its page and files block automated access (HTTP 403) and the Wayback copy was rate-limited, so no Common Data Set figures (international applicants and admits, GPA, SAT/ACT percentiles, factors) are included. IPEDS shows no SAT/ACT score ranges for GGC (test-optional). International undergraduates (481) are IPEDS fall 2024 nonresident aliens, about 3.9% of 12,230 undergraduates."
   }
 }

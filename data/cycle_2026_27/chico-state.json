@@ -52,7 +52,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "The international freshman requirements page says no SAT or ACT scores are required, and CDS C8A says scores are not considered for admission even if submitted (they can place students into higher math or English courses). The CSU system as a whole is test-blind. Eligibility for international freshmen is a 3.0 GPA on the U.S. 4.0 scale.",
+  "notes": "The international freshman requirements page says no SAT or ACT scores are required, and the Common Data Set says scores are not considered for admission even if submitted (they can place students into higher math or English courses). The CSU system as a whole is test-blind. Eligibility for international freshmen is a 3.0 GPA on the U.S. 4.0 scale.",
   "src": "req"
  },
  "requirements": {
@@ -61,7 +61,7 @@
   ],
   "app_fee_usd": 70,
   "fee_waiver": false,
-  "notes": "Apply through Cal State Apply (not the Common App); $70 fee, and international applicants are not eligible for fee waivers. Requirements: 3.0 GPA on the U.S. 4-point scale, a college-preparatory high school program, and beginning algebra, geometry and intermediate algebra each with a C or better. Documents: transcripts with certified English translation, English exam scores if applicable, passport bio page. Financial documents are not required with the application; they are requested after admission so Chico State can issue the I-20. Reviewed on a rolling basis, as soon as two weeks after all materials arrive. Essays and recommendations are not considered (CDS C7).",
+  "notes": "Apply through Cal State Apply (not the Common App); $70 fee, and international applicants are not eligible for fee waivers. Requirements: 3.0 GPA on the U.S. 4-point scale, a college-preparatory high school program, and beginning algebra, geometry and intermediate algebra each with a C or better. Documents: transcripts with certified English translation, English exam scores if applicable, passport bio page. Financial documents are not required with the application; they are requested after admission so Chico State can issue the I-20. Reviewed on a rolling basis, as soon as two weeks after all materials arrive. Essays and recommendations are not considered (per the Common Data Set).",
   "src": "apply"
  },
  "deadlines": [
@@ -70,7 +70,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "International first-year application window closes (fall 2027)",
-   "notes": "The international pages print 'Fall (August start): August 1-May 1' with no year; treated as fall 2027 (opens Aug 1, 2026). Applications are reviewed on a rolling basis; late applications may be accepted case by case. The page lists the same window for undergraduate freshmen and transfers and gives no separate impacted-major dates, so confirm with apply@csuchico.edu.",
+   "notes": "The international pages print 'Fall (August start): August 1-May 1' with no year, so fall 2027 is assumed (opens Aug 1, 2026). Applications are reviewed on a rolling basis; late applications may be accepted case by case. The page lists the same window for undergraduate freshmen and transfers and gives no separate impacted-major dates, so confirm with apply@csuchico.edu.",
    "src": "intl"
   },
   {
@@ -131,7 +131,7 @@
   "books_usd": 1122,
   "other_usd": 3300,
   "total_coa_usd": 37426,
-  "notes": "Chico State's estimated 2026-27 budget for an international undergraduate (9-month year): tuition and fees $9,288 plus nonresident tuition $11,304 (12 units x $471 x 2) = $20,592 (tuition_intl_usd is tuition and required fees combined); housing $6,750 and meals $5,662 (room_board_usd $12,412); books $1,122; personal $1,800 and health insurance $1,500 (other_usd $3,300); total $37,426. The page calls these estimates. CDS G1 for 2025-26 listed tuition $6,450, nonresident tuition $19,552, required fees $2,446 and food and housing $16,668.",
+  "notes": "Chico State's estimated 2026-27 budget for an international undergraduate (9-month year): tuition and fees $9,288 plus nonresident tuition $11,304 (12 units x $471 x 2) = $20,592 (international tuition is tuition and required fees combined); housing $6,750 and meals $5,662 (housing and food together $12,412); books $1,122; personal $1,800 and health insurance $1,500 (other costs together $3,300); total $37,426. The page calls these estimates. The Common Data Set for 2025-26 listed tuition $6,450, nonresident tuition $19,552, required fees $2,446 and food and housing $16,668",
   "src": "coa"
  },
  "majors": [

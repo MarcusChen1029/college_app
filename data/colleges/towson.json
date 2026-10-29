@@ -69,7 +69,7 @@
       "2.50-2.99": 1.69,
       "2.0-2.49": 0.1
     },
-    "notes": "Fall 2025 first-time first-year cohort. Totals are the sum of the male + female + unknown-sex rows in CDS C1 (no single total is printed). The C1 residency table prints only in-state and out-of-state (together 20,332 applied and 16,332 admitted), so intl_applicants/intl_admits are left null; CDS B2 lists 15 nonresident first-year enrollees. TU says it is permanently test-optional; only 20% of enrollees submitted SAT (583 students) and 1% ACT (17), so the ACT percentiles rest on very few students. Average GPA 3.81 is weighted. Non-binding early action (C22): 15,387 applications, 12,668 admitted. No early decision, no waitlist."
+    "notes": "Fall 2025 first-time first-year cohort. Totals add up the male, female and unknown-sex rows in the Common Data Set (no single total is printed). The residency table lists only in-state and out-of-state applicants (together 20,332 applied and 16,332 admitted), so TU did not report international applicants or admits and no international admit rate is shown. The Common Data Set lists 15 nonresident first-year enrollees. TU says it is permanently test-optional. Only 20% of enrolled students (583) sent SAT scores and 1% (17) sent ACT scores, so the ACT percentiles rest on very few students. Average GPA 3.81 is weighted. Non-binding early action: 15,387 applications, 12,668 admitted. No early decision, no waitlist."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -126,7 +126,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A/C8F: SAT/ACT not required for admission, but considered if submitted; TU is permanently test-optional for admission and scholarships."
+    "notes": "From the Common Data Set: SAT/ACT are not required for admission but are considered if submitted. TU is permanently test-optional for admission and scholarships."
   },
   "cost": {
     "year": "2026-2027",
@@ -140,6 +140,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 53,
     "intl_avg_award_usd": 15746,
-    "notes": "CDS G1 (2026-27, first-year): in-state tuition $7,990, out-of-state/nonresident $28,248, required fees $4,700; housing $8,672 + food $6,290 = $14,962 (TU's cost page budgets Premium housing $10,076 + Silver dining $6,290). International students pay out-of-state tuition. CDS H6: only institutional non-need-based aid is available to nonresidents; 53 received it (avg $15,746, total $834,564). The tuition_usd field is the in-state figure."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: in-state tuition $7,990, out-of-state/nonresident tuition $28,248, required fees $4,700; housing $8,672 + food $6,290 = $14,962 (TU's cost page budgets Premium housing $10,076 + Silver dining $6,290). International students pay out-of-state tuition. The Common Data Set says only institutional non-need-based aid is available to nonresidents; 53 received it (average $15,746, total $834,564). The tuition shown is the in-state figure"
   }
 }

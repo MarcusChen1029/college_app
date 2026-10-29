@@ -51,7 +51,7 @@
       "2.0-2.49": 6,
       "1.0-1.99": 1
     },
-    "notes": "CDS C1 (Fall 2025). International: 93 applied, 91 admitted, 16 enrolled (C1 residency table). GPA distribution is the 'all enrolled students' column of C11. No early decision or early action; no waitlist. SAT composite percentiles 940/1040/1140 are also published; the composite is not a stored test type. The CDS file's page headers say 2024-2025 but the cohort and dates refer to Fall 2025. The C7 factor checkboxes could not be read reliably from the text, so no factors are recorded."
+    "notes": "From the Common Data Set (Fall 2025). International: 93 applied, 91 admitted, 16 enrolled (residency table). The GPA breakdown is the 'all enrolled students' column. No early decision or early action; no waitlist. SAT composite percentiles 940/1040/1140 are also published; the composite is not a test type shown here. The Common Data Set file's page headers say 2024-2025 but the cohort and dates refer to Fall 2025. The admission-factor checkboxes could not be read reliably from the text, so no factors are shown."
   },
   "scores": {
     "SAT_ERW": [
@@ -83,7 +83,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A says SAT/ACT are used in admission decisions (which box is ticked cannot be read from the text); the university catalog states test scores are not required for admission."
+    "notes": "The Common Data Set says SAT/ACT are used in admission decisions (which box is ticked cannot be read from the text); the university catalog states test scores are not required for admission."
   },
   "cost": {
     "year": "2026-2027",
@@ -97,6 +97,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 48,
     "intl_avg_award_usd": 23681,
-    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $7,770, out-of-state/nonresident $18,772, required fees $1,618, food and housing $13,826. Tuition varies by program (G4: 86.5% pay more than the G1 figure). CDS H6: only institutional non-need-based aid is available to nonresidents; 48 nonresidents received it (average $23,681)."
+    "notes": "From the Common Data Set (first-year, 2026-27): in-state tuition $7,770, out-of-state/nonresident $18,772, required fees $1,618, food and housing $13,826. Tuition varies by program (86.5% pay more than the listed first-year tuition). Only the college's own non-need-based aid is available to nonresidents; 48 nonresidents received it (average $23,681)"
   }
 }

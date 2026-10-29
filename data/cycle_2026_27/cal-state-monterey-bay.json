@@ -111,7 +111,7 @@
    "test": "IELTS",
    "status": "required_option",
    "min": 6.0,
-   "notes": "Overall band 6.0 per the Bachelor's requirements page (the how-to-apply page prints '60', treated as a typo).",
+   "notes": "Overall band 6.0 per the Bachelor's requirements page (the how-to-apply page prints '60', which looks like a typo).",
    "src": "bach"
   },
   {
@@ -141,7 +141,7 @@
   "year": "2026-2027",
   "tuition_usd": 6838,
   "required_fees_usd": 2349,
-  "notes": "Tuition $3,419 per semester (6.1+ units), $6,838 a year, and campus fees $2,349 a year are from CSUMB's 2026-27 tuition and fees page. The page gives no nonresident per-unit rate, so nonresident tuition is left null. CSUMB's international page (2025-2026 estimate, not updated) shows nonresident tuition and campus fees of $19,200 at 12 units per semester, living expenses $17,448, personal expenses and books $5,038 and mandatory health insurance $1,700, for a total of $43,386.",
+  "notes": "Tuition $3,419 per semester (6.1+ units), $6,838 a year, and campus fees $2,349 a year are from CSUMB's 2026-27 tuition and fees page. The page gives no nonresident per-unit rate, so nonresident tuition is not shown. CSUMB's international page (2025-2026 estimate, not updated) shows nonresident tuition and campus fees of $19,200 at 12 units per semester, living expenses $17,448, personal expenses and books $5,038 and mandatory health insurance $1,700, for a total of $43,386",
   "src": "fees"
  },
  "majors": [],

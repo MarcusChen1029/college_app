@@ -39,7 +39,7 @@
     "admits": null,
     "enrolled": null,
     "pct_submit_sat": 7,
-    "notes": "Baseline from College Navigator (IPEDS fall 2024): 14,002 applicants, 92% admitted (rounded; the number of admits is not shown), 17% of admits enrolled. Admits and enrolled left null because only rounded percentages are published; no Common Data Set was found on CSI's site (two attempts) and CSI is missing from the IPEDS ADM2023 file, so no exact counts, international split or GPA. CSI says the average high school average of its fall 2025 students was 87.9 (an average, not a cutoff)."
+    "notes": "Figures from College Navigator (IPEDS fall 2024): 14,002 applicants, 92% admitted (rounded; the number of admits is not shown), 17% of admits enrolled. Admits and enrolled counts are not shown because only rounded percentages are published; no Common Data Set was found on CSI's site (two attempts) and CSI is missing from the IPEDS admissions file, so no exact counts, international split or GPA. CSI says the average high school average of its fall 2025 students was 87.9 (an average, not a cutoff)."
   },
   "scores": {
     "SAT_ERW": [
@@ -62,6 +62,6 @@
     "room_board_usd": 21155,
     "other_usd": 6216,
     "total_coa_usd": 36361,
-    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus food and housing; total is the in-state on-campus figure (out-of-state on-campus $44,311). CSI states international students pay the out-of-state tuition and fees. CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time plus fees."
+    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus food and housing; total is the in-state on-campus figure (out-of-state on-campus $44,311). CSI states international students pay the out-of-state tuition and fees. CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time plus fees"
   }
 }

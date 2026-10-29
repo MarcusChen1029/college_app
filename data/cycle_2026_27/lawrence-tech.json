@@ -50,7 +50,7 @@
  ],
  "english_policy": {
   "policy": "required_nonnative",
-  "waiver_notes": "Considered met by U.S. high school graduates with at least two years of standard-level English at a B or higher, British curriculum or IB Diploma graduates, and holders of a bachelor's or master's degree from Australia, Canada, Ireland, New Zealand, the UK or the US. Applicants who need help are referred to ESL coursework at Language Center International. The page does not mention conditional admission or a pathway program with score cutoffs. The Michigan English Test (minimum 56) is also accepted but is not in this tracker's test list.",
+  "waiver_notes": "Considered met by U.S. high school graduates with at least two years of standard-level English at a B or higher, British curriculum or IB Diploma graduates, and holders of a bachelor's or master's degree from Australia, Canada, Ireland, New Zealand, the UK or the US. Applicants who need help are referred to ESL coursework at Language Center International. The page does not mention conditional admission or a pathway program with score cutoffs. The Michigan English Test (minimum 56) is also accepted but is not among the tests listed here.",
   "src": "intl"
  },
  "english": [
@@ -95,7 +95,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": null,
-  "notes": "First-year merit awards are $4,000-$16,000 per year (Presidential $16,000 down to Trustee Grant $4,000), tests not required for fall 2026; the page does not say whether international first-years are eligible. It states that all admitted international graduate students are automatically considered for $5,000-$10,000 per year international merit scholarships (3.0 GPA, renewable for up to two years). CDS H6: 127 nonresident undergraduates received institutional aid, average $12,824.",
+  "notes": "First-year merit awards are $4,000-$16,000 per year (Presidential $16,000 down to Trustee Grant $4,000), tests not required for fall 2026; the page does not say whether international first-years are eligible. It states that all admitted international graduate students are automatically considered for $5,000-$10,000 per year international merit scholarships (3.0 GPA, renewable for up to two years). From the Common Data Set: 127 nonresident undergraduates received aid from the college, averaging $12,824.",
   "src": "schol"
  },
  "majors": [

@@ -44,7 +44,7 @@
     "applicants": 4782,
     "admits": 4619,
     "enrolled": 437,
-    "notes": "Baseline: no Common Data Set found on lasalle.edu (2 searches, no CDS page). Exact counts are IPEDS ADM2024 (fall 2024 first-time degree-seeking: 4,782 applied, 4,619 admitted = 97%, 437 enrolled), matching College Navigator's 4,782 applicants and 97% admitted. IPEDS does not split international applicants, so intl_applicants/intl_admits are not available. SAT/ACT scores are not reported to IPEDS, so no percentiles."
+    "notes": "No Common Data Set was found on lasalle.edu (2 searches, no Common Data Set page). Exact counts are from IPEDS, the US government's college data (fall 2024 first-time degree-seeking: 4,782 applied, 4,619 admitted = 97%, 437 enrolled), matching College Navigator's 4,782 applicants and 97% admitted. IPEDS does not split international applicants, so international applicant and admit counts are not available. SAT/ACT scores are not reported to IPEDS, so no percentiles are shown."
   },
   "scores_source": "ipeds",
   "scores": {}

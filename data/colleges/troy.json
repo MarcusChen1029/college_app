@@ -50,7 +50,7 @@
       "2.0-2.49": 2.1,
       "1.0-1.99": 0.2
     },
-    "notes": "CDS C1 (Fall 2025). International applicants: 960 applied, 949 admitted (98.9%), 56 enrolled. The file is posted as cds-2025-2026.pdf but its page headers still read 2024-2025; its B1, C1 and D2 data are for Fall 2025 (the 2024-2025 file has Fall 2024 data). Enrollment figures cover Troy University as a whole (Troy, Dothan, Montgomery, Phenix City campuses and online): total undergraduates 10,130 and nonresidents 435 (B1/B2). SAT 5% (89 students), ACT 50% (906). Test-optional for students starting in 2027. No early decision/action; no waitlist; rolling decisions. C7 factor checkboxes could not be read, so 'factors' is omitted."
+    "notes": "From the Common Data Set (Fall 2025). International applicants: 960 applied, 949 admitted (98.9%), 56 enrolled. The file is posted as the 2025-2026 edition but its page headers still read 2024-2025; its figures are for Fall 2025 (the 2024-2025 file has Fall 2024 data). Enrollment figures cover Troy University as a whole (Troy, Dothan, Montgomery, Phenix City campuses and online): total undergraduates 10,130 and nonresidents 435. SAT scores were sent by 5% (89 students) and ACT scores by 50% (906). Test-optional for students starting in 2027. No early decision/action; no waitlist; rolling decisions. The admission factor checkboxes could not be read, so admission factors are not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -98,6 +98,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 351,
     "intl_avg_award_usd": 15702,
-    "notes": "CDS G1 gives tuition/fees/room-and-board; tuition_intl_usd and total_coa_usd come from Troy's international tuition page (2026-27 estimate for the Troy campus at 13 credit hours a semester at $746 per credit hour: tuition $19,864, fee $3,250, insurance $1,860, book bag $624, room $7,000, board $4,456, supplies $200 = $37,254; $27,322 after the $9,932 International Trojan Opportunity scholarship). H6: 351 nonresidents received institutional non-need-based aid (average $15,702, total $5,512,833)."
+    "notes": "The Common Data Set gives tuition, fees and room and board. International tuition and the total cost of attendance come from Troy's international tuition page (2026-27 estimate for the Troy campus at 13 credit hours a semester at $746 per credit hour: tuition $19,864, fee $3,250, insurance $1,860, book bag $624, room $7,000, board $4,456, supplies $200 = $37,254; $27,322 after the $9,932 International Trojan Opportunity scholarship). The Common Data Set shows 351 nonresidents received institutional non-need-based aid (average $15,702, total $5,512,833)"
   }
 }

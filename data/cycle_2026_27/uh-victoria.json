@@ -74,7 +74,7 @@
    "plan": "ROLLING",
    "due": "2027-06-15",
    "label": "International priority deadline, fall 2027 (students outside the U.S.)",
-   "notes": "The page prints 'June 15th' with no year; taken as June 15, 2027 for fall 2027 entry. Complete application and documents must be received by this date to guarantee a decision. June 15 is also the international scholarship deadline for fall.",
+   "notes": "The page prints 'June 15th' with no year, so June 15, 2027 is assumed for fall 2027 entry. Complete application and documents must be received by this date to guarantee a decision. June 15 is also the international scholarship deadline for fall.",
    "src": "dates"
   },
   {
@@ -82,14 +82,14 @@
    "plan": "ROLLING",
    "due": "2027-07-15",
    "label": "Last date to apply for fall 2027 (students outside the U.S.)",
-   "notes": "Students may apply until July 15th; applications after the priority date are reviewed case by case. Year not printed; taken as 2027. U.S.-based international transfer students have an Aug 18 fall deadline. Spring entry: priority Nov 15, apply until Dec 10.",
+   "notes": "Students may apply until July 15th; applications after the priority date are reviewed case by case. The year is not printed, so 2027 is assumed. U.S.-based international transfer students have an Aug 18 fall deadline. Spring entry: priority Nov 15, apply until Dec 10.",
    "src": "dates"
   },
   {
    "kind": "scholarship",
    "due": "2027-06-15",
    "label": "International Merit Scholarship application, fall 2027",
-   "notes": "Year not printed; taken as June 15, 2027. The student must already be admitted and both the general scholarship application and the international merit application must be complete.",
+   "notes": "The year is not printed, so June 15, 2027 is assumed. The student must already be admitted and both the general scholarship application and the international merit application must be complete.",
    "src": "merit"
   }
  ],
@@ -151,7 +151,7 @@
   "books_usd": 700,
   "other_usd": 3796,
   "total_coa_usd": 39693,
-  "notes": "Schedule of charges 2026-27, 12 credit hours per semester doubled to a year: resident tuition $2,555.28 per semester; non-resident and international tuition $7,691.28 per semester; fees $337.44 service + $585.60 extended access + $96.00 library per semester. The cost-of-attendance page shows a higher all-in figure for tuition and fees ($21,607 per year out-of-state/international, $8,767 in-state), which includes charges not itemized in the schedule. room_board_usd, books, other (transportation $1,425 plus miscellaneous $2,371) and total_coa_usd are the dorm column of that page's out-of-state/international per-year table. Freshmen must live on campus; the 2024-25 international cost page also lists mandatory F-1 health insurance of $3,147."
+  "notes": "Schedule of charges 2026-27, 12 credit hours per semester doubled to a year: resident tuition $2,555.28 per semester; non-resident and international tuition $7,691.28 per semester; fees $337.44 service + $585.60 extended access + $96.00 library per semester. The cost-of-attendance page shows a higher all-in figure for tuition and fees ($21,607 per year out-of-state/international, $8,767 in-state), which includes charges not itemized in the schedule. Housing and food, books, other costs (transportation $1,425 plus miscellaneous $2,371) and the total cost of attendance come from the dorm column of that page's out-of-state/international per-year table. Freshmen must live on campus; the 2024-25 international cost page also lists mandatory F-1 health insurance of $3,147"
  },
  "majors": [
   {
@@ -180,7 +180,7 @@
   },
   "ielts": {
    "code": null,
-   "note": "No institution code is listed; the page says applicants can submit their TRF number for staff to verify online.",
+   "note": "No institution code is listed; the page says applicants can submit their TRF number for staff to confirm online.",
    "src": "eng"
   },
   "duolingo": {

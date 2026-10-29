@@ -44,6 +44,6 @@
     "applicants": 5824,
     "admits": 5089,
     "enrolled": 806,
-    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 5,824 applicants, 5,089 admitted, 806 enrolled. College Navigator fall 2024: 7,803 applicants, 94% admitted, 13% of admitted enrolled. IPEDS reports no international applicant counts and no SAT/ACT percentiles for this college (it is test-optional), so those are null. Undergraduate enrollment 4,303 and student-faculty ratio 18:1 are fall 2024 College Navigator figures; nonresident students are about 6% of undergraduates (rounded). The latest Common Data Set found on msutexas.edu is from 2021-22/2022-23 (archive), too old to use, so this is the IPEDS baseline."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 first-time students): 5,824 applicants, 5,089 admitted, 806 enrolled. College Navigator fall 2024: 7,803 applicants, 94% admitted, 13% of admitted enrolled. IPEDS reports no international applicant counts and no SAT/ACT percentiles for this college (it is test-optional), so those are not shown. Undergraduate enrollment 4,303 and student-faculty ratio 18:1 are fall 2024 College Navigator figures; nonresident students are about 6% of undergraduates (rounded). The latest Common Data Set found on msutexas.edu is from 2021-22/2022-23 (archive), too old to use, so these are the IPEDS figures."
   }
 }

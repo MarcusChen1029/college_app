@@ -57,14 +57,14 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "Fall application deadline, fall 2027 entry (domestic and international)",
-      "notes": "Fall June 1 and spring Nov. 1 (international page) / Jan. 3 (first-year page); no year is printed, so treated as fall 2027. Rolling admissions. The 2024-25 CDS also lists a priority date of Jan. 3.",
+      "notes": "Fall June 1 and spring Nov. 1 (international page) / Jan. 3 (first-year page); no year is printed, so fall 2027 is assumed. Rolling admissions. The 2024-25 Common Data Set also lists a priority date of Jan. 3.",
       "src": "howto"
     },
     {
       "kind": "application",
       "due": "2027-01-15",
       "label": "Earlier deadline for Nursing and Professional Pilot (fall 2027)",
-      "notes": "Dates page: Nursing application and document deadline January 15 (TEAS by February 15); Professional Pilot application January 15, documents February 1; Dental Hygiene first priority January 15. No year printed; treated as fall 2027.",
+      "notes": "Dates page: Nursing application and document deadline January 15 (TEAS by February 15); Professional Pilot application January 15, documents February 1; Dental Hygiene first priority January 15. No year is printed, so fall 2027 is assumed.",
       "src": "dates"
     },
     {

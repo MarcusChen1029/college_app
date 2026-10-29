@@ -47,7 +47,7 @@
     "enrolled": 5634,
     "pct_submit_sat": 28,
     "pct_submit_act": 26,
-    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 13,542 applicants, 11,486 admitted, 5,634 enrolled. College Navigator fall 2024: 18,377 applicants, 94% admitted. IPEDS reports no nonresident-alien applicant counts for UTRGV, so international admit figures are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 28,674 and student-faculty ratio 20:1 are fall 2024 College Navigator figures. No readable Common Data Set was found for this college, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+    "notes": "From IPEDS, the US government's college data (fall 2023 first-time students): 13,542 applicants, 11,486 admitted, 5,634 enrolled. College Navigator fall 2024: 18,377 applicants, 94% admitted. IPEDS reports no nonresident-alien applicant counts for UTRGV, so no international admit figures are shown; nonresidents are about 2% of undergraduates (fall 2024, rounded). Undergraduate enrollment 28,674 and student-faculty ratio 20:1 are fall 2024 College Navigator figures. No readable Common Data Set was found for this college, so these are IPEDS figures only; GPA, residency and class-rank details are not included."
   },
   "scores": {
     "SAT_ERW": [
@@ -85,6 +85,6 @@
     "room_board_usd": 9728,
     "other_usd": 3918,
     "total_coa_usd": 34723,
-    "notes": "College Navigator 2024-25: tuition and fees in-state $9,987, out-of-state $19,827; on-campus food and housing $9,728, other expenses $3,918. total_coa_usd is the published out-of-state on-campus total (the rate an international student would normally face; UTRGV does not publish a separate international tuition rate on the pages read)."
+    "notes": "College Navigator 2024-25: tuition and fees in-state $9,987, out-of-state $19,827; on-campus food and housing $9,728, other expenses $3,918. The total cost of attendance shown is the published out-of-state on-campus total (the rate an international student would normally face; UTRGV does not publish a separate international tuition rate on the pages checked)"
   }
 }

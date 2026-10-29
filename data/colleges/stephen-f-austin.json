@@ -52,7 +52,7 @@
     "intl_admits": 83,
     "pct_submit_sat": 48,
     "pct_submit_act": 11,
-    "notes": "CDS C1 (fall 2025). Residency split as printed: in-state 16,847 / out-of-state 705 / international 182 / unknown 3,389 applicants (unknown: 6 admitted, 1 enrolled), so the four groups sum to the 21,123 total. International admit count 83 of 182 is as printed. CDS C11 (GPA) and C10 (class rank) were left blank, so no GPA is given. Undergraduate enrollment is the B1 total of all undergraduates (9,905); student-to-faculty ratio 18:1 from CDS I-2. SAT/ACT percentiles are for enrolled first-time students who submitted scores (SAT 48%, ACT 11%)."
+    "notes": "From the Common Data Set (fall 2025). Residency split as printed: in-state 16,847 / out-of-state 705 / international 182 / unknown 3,389 applicants (unknown: 6 admitted, 1 enrolled), so the four groups sum to the 21,123 total. International admit count 83 of 182 is as printed. The college did not report GPA or class rank, so no GPA is given. Undergraduate enrollment is the total of all undergraduates (9,905); student-to-faculty ratio 18:1 from the Common Data Set. SAT/ACT percentiles are for enrolled first-time students who submitted scores (SAT 48%, ACT 11%)."
   },
   "scores_source": "cds",
   "scores": {
@@ -90,7 +90,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 check marks sit in the 'not required for admission, but considered if submitted' column for SAT or ACT. Interview and level of applicant interest were left blank in C7."
+    "notes": "Test policy from the Common Data Set: the check marks sit in the 'not required for admission, but considered if submitted' column for SAT or ACT. The college did not report interview or level of applicant interest among the admission factors."
   },
   "cost": {
     "year": "2025-2026",
@@ -101,6 +101,6 @@
     "room_board_usd": 13940,
     "books_usd": 1206,
     "other_usd": 1850,
-    "notes": "CDS G1 (first-year, 2025-2026): in-state tuition $7,761, out-of-state $19,911, required fees $3,467, food and housing $13,940; G5 books $1,206 and other expenses $1,850. No separate international tuition figure is printed in the CDS (the nonresident row is blank)."
+    "notes": "From the Common Data Set (first-year, 2025-2026): in-state tuition $7,761, out-of-state $19,911, required fees $3,467, food and housing $13,940; books $1,206 and other expenses $1,850. No separate international tuition figure is printed in the Common Data Set (the nonresident row is blank)"
   }
 }

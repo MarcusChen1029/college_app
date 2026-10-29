@@ -56,7 +56,7 @@
    "plan": "ROLLING",
    "due": "2027-06-15",
    "label": "Fall 2027 international application deadline, living outside the US (best consideration)",
-   "notes": "Application and all supporting documents. The page prints June 15 without a year; treated as 2027. Spring entry: Oct. 15 for applicants outside the US.",
+   "notes": "Application and all supporting documents. The page prints June 15 without a year, so 2027 is assumed. Spring entry: Oct. 15 for applicants outside the US.",
    "src": "req"
   },
   {
@@ -119,7 +119,7 @@
   "room_board_usd": 9200,
   "other_usd": 2280,
   "total_coa_usd": 21213,
-  "notes": "Flat tuition for all students (12-18 credits): tuition $7,977.36 + college/NDSA $1,305.60 + technology $168 + Connect ND $132 = $9,582.96 (tuition schedule). The international cost page shows $9,733 tuition and fees (the $150 difference is entered as an extra international fee; the page does not itemize it), housing and food $9,200 (double room, base meal plan), mandatory health insurance $2,280 (entered as other), total $21,213. Books are not listed.",
+  "notes": "Flat tuition for all students (12-18 credits): tuition $7,977.36 + college/NDSA $1,305.60 + technology $168 + Connect ND $132 = $9,582.96 (tuition schedule). The international cost page shows $9,733 tuition and fees (the $150 difference is entered as an extra international fee; the page does not itemize it), housing and food $9,200 (double room, base meal plan), mandatory health insurance $2,280 (entered as other), total $21,213. Books are not listed",
   "src": "cost"
  },
  "aid": {

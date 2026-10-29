@@ -76,7 +76,7 @@
       "plan": "EA",
       "due": "2026-11-01",
       "label": "Early Action Round I (priority filing date, fall 2027 entry)",
-      "notes": "International applications are accepted on a rolling basis with these priority filing dates; a decision is made only once the file is complete. Notification mid-December (first-year page). The pages print no year; taken as the 2026-27 cycle.",
+      "notes": "International applications are accepted on a rolling basis with these priority filing dates; a decision is made only once the file is complete. Notification mid-December (first-year page). The pages give no year, so the 2026-27 cycle is assumed.",
       "src": "intl"
     },
     {
@@ -154,7 +154,7 @@
     "room_board_usd": 24930,
     "books_usd": 872,
     "other_usd": 3386,
-    "notes": "Boston undergraduate bachelor-degree tuition is $43,110 per academic year for 2026-27 (3-year accelerated programs $62,480; PharmD preprofessional phase also $43,110, professional phase $51,900). Other mandatory fees: comprehensive service fee $705 billed fall and spring (6+ credits), orientation fee $175, graduation fee $390. room_board_usd is the school's estimated Boston budget for housing $18,990 + food $5,940 (traditional year); other_usd is transportation $1,564 + miscellaneous $1,822. Residence hall rates vary (about $9,300-$9,750 per semester). The tuition page lists one rate; there is no separate international rate."
+    "notes": "Boston undergraduate bachelor-degree tuition is $43,110 per academic year for 2026-27 (3-year accelerated programs $62,480; PharmD preprofessional phase also $43,110, professional phase $51,900). Other mandatory fees: comprehensive service fee $705 billed fall and spring (6+ credits), orientation fee $175, graduation fee $390. Housing and food is the school's estimated Boston budget for housing $18,990 + food $5,940 (traditional year); other costs are transportation $1,564 + miscellaneous $1,822. Residence hall rates vary (about $9,300-$9,750 per semester). The tuition page lists one rate; there is no separate international rate"
   },
   "majors": [
     {
@@ -232,6 +232,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Admit rate about 85%, but a health-sciences-focused private university in Boston with direct-entry programs (6-year PharmD, accelerated BSN); SAT section medians of 610 ERW / 645 Math among the few (7%) who submit. Editorial judgment, wave 3 (2026-10-26)."
+    "general": "Admit rate about 85%, but a health-sciences-focused private university in Boston with direct-entry programs (6-year PharmD, accelerated BSN); SAT section medians of 610 ERW / 645 Math among the few (7%) who submit. Our estimate (2026-10-26)."
   }
 }

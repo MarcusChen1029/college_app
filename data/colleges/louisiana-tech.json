@@ -45,7 +45,7 @@
       "2.50-2.99": 10.94,
       "2.0-2.49": 1.59
     },
-    "notes": "CDS C1 (Fall 2025): 5,722 men + 6,083 women applied. The admitted total (8,477) equals the sum of the international (1,292) and 'unknown residency' (7,185) rows; the by-sex admit rows (4,083 + 4,394 + 51) sum to 8,528, so the total is used. International = 'Nonresidents' (2,343 applied, 1,292 admitted = 55%, 84 enrolled); domestic residency was reported as 'unknown', so no in-state/out-of-state split. Only 32% of enrolled first-years submitted scores (ACT 30%, 734 students; SAT 2%, 56), so the score ranges describe self-selected submitters. No early decision/action, no waitlist, no application closing date (priority date Jan 1 per C14). Undergraduate enrollment and nonresident count are B1/B2 totals (10,968; 296)."
+    "notes": "From the Common Data Set (Fall 2025): 5,722 men + 6,083 women applied. The admitted total (8,477) equals the sum of the international (1,292) and 'unknown residency' (7,185) rows; the by-sex admit rows (4,083 + 4,394 + 51) add up to 8,528, so the stated total is the figure shown. International = 'Nonresidents' (2,343 applied, 1,292 admitted = 55%, 84 enrolled); domestic residency was reported as 'unknown', so there is no in-state/out-of-state split. Only 32% of enrolled first-years sent scores (ACT 30%, 734 students; SAT 2%, 56), so the score ranges describe students who chose to send scores. No early decision/action, no waitlist, no application closing date (priority date Jan 1). Undergraduate enrollment is 10,968 and the nonresident count is 296."
   },
   "scores": {
     "SAT_ERW": [
@@ -104,6 +104,6 @@
     "books_usd": 1641,
     "intl_need_aid": false,
     "intl_merit_aid": true,
-    "notes": "CDS G1 first-year figures. The international admissions page gives its own nine-month budget: tuition and fees $23,418 ($12,369 with the Bulldog Out-of-State Scholarship), living expenses $5,370, books and insurance $1,900, total $30,688 ($19,639 with the scholarship); no year is printed on that page. CDS H6 says non-need-based institutional aid is available to nonresidents but gives no counts or amounts."
+    "notes": "First-year figures from the Common Data Set. The international admissions page gives its own nine-month budget: tuition and fees $23,418 ($12,369 with the Bulldog Out-of-State Scholarship), living expenses $5,370, books and insurance $1,900, total $30,688 ($19,639 with the scholarship); no year is printed on that page. The Common Data Set says non-need-based aid from the college is available to nonresidents but gives no counts or amounts"
   }
 }

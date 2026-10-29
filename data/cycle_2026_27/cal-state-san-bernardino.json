@@ -51,7 +51,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)', as for the rest of the CSU. CSUSB's own CDS C7/C8 form fields conflict with that (see the stats notes), so the CSU-wide policy is used. A first-year international applicant may use an SAT English score of 550+ or an ACT English score of 22+ as proof of English only. Eligibility for foreign high school graduates is a 2.5 overall GPA.",
+  "notes": "College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)', as for the rest of the CSU. CSUSB's own Common Data Set answers conflict with that (see the admission stats note), so the CSU-wide policy is used. A first-year international applicant may use an SAT English score of 550+ or an ACT English score of 22+ as proof of English only. Eligibility for foreign high school graduates is a 2.5 overall GPA.",
   "src": "ipeds"
  },
  "requirements": {
@@ -59,7 +59,7 @@
    "own"
   ],
   "app_fee_usd": 70,
-  "notes": "Apply through CSUApply / Cal State Apply (not the Common App); the $70 fee is non-refundable and international students are not eligible for a fee waiver (Admission FAQs). Needs a 2.5 overall GPA. Foreign high school applicants send official transcripts and diploma sealed in an envelope by the school, with certified English translations; also a passport copy and a statement of financial responsibility (bank statement / affidavit of support) plus proof of medical insurance. CDS C7: essays, recommendations and interviews are not considered.",
+  "notes": "Apply through CSUApply / Cal State Apply (not the Common App); the $70 fee is non-refundable and international students are not eligible for a fee waiver (Admission FAQs). Needs a 2.5 overall GPA. Foreign high school applicants send official transcripts and diploma sealed in an envelope by the school, with certified English translations; also a passport copy and a statement of financial responsibility (bank statement / affidavit of support) plus proof of medical insurance. The Common Data Set says essays, recommendations and interviews are not considered.",
   "src": "steps"
  },
  "deadlines": [
@@ -132,7 +132,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": null,
-  "notes": "The CSUSB catalog says scholarship aid for entering students is limited and none are specifically reserved for students from another country; no international merit scholarship or tuition waiver was found for undergraduates. The CDS (H6) reports no institutional aid recipients among degree-seeking nonresident undergraduates. Conditional admission is offered: students who are academically qualified but below the English minimum attend the CSUSB English Language Program (Level 3 for undergraduates, with an accelerated one-semester Level 3 option) before starting their degree; this needs two applications (one to the International Extension Program and one through Cal State Apply).",
+  "notes": "The CSUSB catalog says scholarship aid for entering students is limited and none are specifically reserved for students from another country; no international merit scholarship or tuition waiver was found for undergraduates. The Common Data Set reports no recipients of the college's own aid among degree-seeking nonresident undergraduates. Conditional admission is offered: students who are academically qualified but below the English minimum attend the CSUSB English Language Program (Level 3 for undergraduates, with an accelerated one-semester Level 3 option) before starting their degree; this needs two applications (one to the International Extension Program and one through Cal State Apply).",
   "src": "cat"
  },
  "cost": {
@@ -142,7 +142,7 @@
   "books_usd": 880,
   "other_usd": 9276,
   "total_coa_usd": 50301,
-  "notes": "From CSUSB's 2026-27 suggested international budget (undergraduate, 24 units): tuition and fees $20,359 combined, including the $471 per unit non-resident charge (stored as tuition_intl_usd; the page does not split fees out); living expenses $19,786 (stored in room_board_usd), books and supplies $880, and other = transportation $2,906 plus health insurance $1,956 plus personal $4,414. Total $50,301. Dependents need $6,000 each per academic year.",
+  "notes": "From CSUSB's 2026-27 suggested international budget (undergraduate, 24 units): tuition and fees $20,359 combined, including the $471 per unit non-resident charge (shown as international tuition; the page does not split fees out); living expenses $19,786 (shown as housing and food), books and supplies $880, and other costs = transportation $2,906 plus health insurance $1,956 plus personal $4,414. Total $50,301. Dependents need $6,000 each per academic year",
   "src": "fees"
  },
  "majors": [],

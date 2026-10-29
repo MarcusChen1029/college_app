@@ -44,7 +44,7 @@
     "source": "ipeds_adm2023",
     "applicants": 3130,
     "admits": 2605,
-    "notes": "Baseline from IPEDS / College Navigator (fall 2024): 3,529 applicants, 82% admitted (rounded; the admit count is not shown), 23% of admitted enrolled. No Common Data Set was found on vermontstate.edu (searched twice), so SAT/ACT percentiles, GPA, intl applicants/admits and C7 factors are not filled in. IPEDS lists SAT/ACT as not considered, while the admissions site says scores are optional and considered if submitted. Vermont State is a multi-campus university (Castleton, Johnson, Lyndon, Randolph, Williston and learning sites); IPEDS reports it as one institution. The Randolph address is the IPEDS main address. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS (the US government's college data) and College Navigator (fall 2024): 3,529 applicants, 82% admitted (rounded; the admit count is not printed), 23% of admitted enrolled. No Common Data Set was found on vermontstate.edu, so SAT/ACT percentiles, GPA, international applicants and admits, and admission factors are not shown. IPEDS lists SAT/ACT as not considered, while the admissions site says scores are optional and considered if submitted. Vermont State is a multi-campus university (Castleton, Johnson, Lyndon, Randolph, Williston and learning sites); IPEDS reports it as one institution. The Randolph address is the IPEDS main address. Applicant, admit and enrolled counts were replaced with exact IPEDS figures (fall 2023), because the newer source gives only a rounded admit rate.",
     "enrolled": 567
   }
 }

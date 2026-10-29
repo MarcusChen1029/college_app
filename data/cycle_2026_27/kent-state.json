@@ -29,7 +29,7 @@
    "own"
   ],
   "app_fee_usd": 70,
-  "notes": "International fee is $70 (CDS C13 lists $50 for domestic applicants). Minimum 2.5 GPA on a US 4.0 scale; some majors have selective requirements and applicants who miss them may be considered for the pre-major. Documents: passport page, English scores, secondary diploma and transcripts (certified English translation), and financial documents after acceptance. The page does not mention the Common App.",
+  "notes": "The international application fee is $70 (the Common Data Set lists $50 for domestic applicants). Minimum 2.5 GPA on a US 4.0 scale; some majors have selective requirements and applicants who miss them may be considered for the pre-major. Documents: passport page, English scores, secondary diploma and transcripts (certified English translation), and financial documents after acceptance. The page does not mention the Common App.",
   "src": "intl"
  },
  "deadlines": [
@@ -37,7 +37,7 @@
    "kind": "priority",
    "due": "2027-02-01",
    "label": "Priority date (fall 2027)",
-   "notes": "CDS C14 priority date 2/1 (not specific to international students).",
+   "notes": "From the Common Data Set: priority date 2/1 (not specific to international students).",
    "src": "cds"
   },
   {
@@ -45,7 +45,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International fall application deadline (fall 2027)",
-   "notes": "Spring deadline is Oct 1. Late applications are accepted, but international students are urged to apply early. CDS C14 lists a general closing date of Aug 1 and rolling notification beginning Oct 1.",
+   "notes": "Spring deadline is Oct 1. Late applications are accepted, but international students are urged to apply early. The Common Data Set lists a general closing date of Aug 1 and rolling notification beginning Oct 1.",
    "src": "intl"
   },
   {
@@ -59,7 +59,7 @@
    "kind": "deposit",
    "due": "2027-05-01",
    "label": "Reply date (May 1 or within 2 weeks if admitted later)",
-   "notes": "CDS C17.",
+   "notes": "From the Common Data Set (reply date).",
    "src": "cds"
   }
  ],
@@ -103,7 +103,7 @@
   "room_board_usd": 14360,
   "other_usd": 3935,
   "total_coa_usd": 42593,
-  "notes": "Kent State's estimated expenses for an international undergraduate (2026-27, used for I-20s): $24,298 tuition and fees combined for the year (out-of-state rate), $14,360 living expenses and $3,935 medical insurance plus books/supplies. International students must buy the university health plan unless they qualify for a waiver. The Kent CDS did not report 2026-27 tuition (G1 blank), so in-state tuition is left null.",
+  "notes": "Kent State's estimated expenses for an international undergraduate (2026-27, used for I-20s): $24,298 tuition and fees combined for the year (out-of-state rate), $14,360 living expenses and $3,935 medical insurance plus books/supplies. International students must buy the university health plan unless they qualify for a waiver. The Kent Common Data Set did not report 2026-27 tuition, so in-state tuition is not shown",
   "src": "aid"
  },
  "aid": {
@@ -112,7 +112,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "Global Scholarship (automatic on admission, Kent campus, F-1, first-year or transfer) per year by US GPA: 3.70+ $12,000; 3.60-3.69 $10,000; 3.50-3.59 $7,000; 3.49 and below $4,300; Honors College admits $15,000 plus a $2,000 Honors scholarship. Renewable for 8 semesters with full-time enrollment. Kent says scholarships are partial and could total up to $68,000 over four years. CDS H6: 551 nonresidents received institutional aid, average $10,799 (the CDS checkboxes for need-based vs non-need-based are inconsistent).",
+  "notes": "Global Scholarship (automatic on admission, Kent campus, F-1, first-year or transfer) per year by US GPA: 3.70+ $12,000; 3.60-3.69 $10,000; 3.50-3.59 $7,000; 3.49 and below $4,300; Honors College admits $15,000 plus a $2,000 Honors scholarship. Renewable for 8 semesters with full-time enrollment. Kent says scholarships are partial and could total up to $68,000 over four years. From the Common Data Set: 551 nonresidents received aid from the college, averaging $10,799 (its checkboxes for need-based vs non-need-based aid are inconsistent).",
   "src": "sch"
  },
  "majors": [

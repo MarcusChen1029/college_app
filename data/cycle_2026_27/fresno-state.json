@@ -50,14 +50,14 @@
    "kind": "application",
    "due": "2027-07-01",
    "label": "Fall international application deadline, applicants outside the U.S.",
-   "notes": "Applications open Aug 1. The page prints no year; treated as fall 2027. Consideration after the deadline is not guaranteed.",
+   "notes": "Applications open Aug 1. The page gives no year, so fall 2027 is assumed. Consideration after the deadline is not guaranteed.",
    "src": "intl"
   },
   {
    "kind": "application",
    "due": "2027-08-01",
    "label": "Fall international application deadline, applicants already in the U.S.",
-   "notes": "Opens and closes Aug 1. The page prints no year; treated as fall 2027.",
+   "notes": "Opens and closes Aug 1. The page gives no year, so fall 2027 is assumed.",
    "src": "intl"
   },
   {
@@ -123,7 +123,7 @@
   "room_board_usd": 11634,
   "other_usd": 2978,
   "total_coa_usd": 35591,
-  "notes": "Fresno State's estimate for Fall 2027/Spring 2028 (undergraduate, 12 units a semester): tuition and fees $20,979 (one combined figure), food and housing $11,634, books and insurance $2,978 (other), total $35,591. The Fall 2026/Spring 2027 estimate is $34,434. International students must buy the university-approved insurance.",
+  "notes": "Fresno State's estimate for Fall 2027/Spring 2028 (undergraduate, 12 units a semester): tuition and fees $20,979 (one combined figure), food and housing $11,634, books and insurance $2,978 (other), total $35,591. The Fall 2026/Spring 2027 estimate is $34,434. International students must buy the university-approved insurance",
   "src": "fees"
  },
  "score_codes": {

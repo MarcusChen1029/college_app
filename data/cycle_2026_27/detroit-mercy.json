@@ -42,7 +42,7 @@
    "own"
   ],
   "app_fee_usd": 0,
-  "notes": "Apply on Detroit Mercy's own application or the Common App. International freshman checklist: high school transcript, 250-word essay on any topic, one letter of recommendation (guidance counselor or teacher), bank statement showing funds for the first year, Statement of Financial Support form if the account is a sponsor's, and a passport copy. CDS C13 (2024-25) says Detroit Mercy has no application fee; the admissions pages do not mention a fee. Some programs have earlier deadlines or extra requirements (5-year Physician Assistant and 7-year Dental: January 15).",
+  "notes": "Apply on Detroit Mercy's own application or the Common App. International freshman checklist: high school transcript, 250-word essay on any topic, one letter of recommendation (guidance counselor or teacher), bank statement showing funds for the first year, Statement of Financial Support form if the account is a sponsor's, and a passport copy. The Common Data Set (2024-25) says Detroit Mercy has no application fee; the admissions pages do not mention a fee. Some programs have earlier deadlines or extra requirements (5-year Physician Assistant and 7-year Dental: January 15).",
   "src": "proc"
  },
  "deadlines": [
@@ -52,7 +52,7 @@
    "due": "2026-11-01",
    "notify": "2026-12-01",
    "label": "Early Action (fall 2027 entry)",
-   "notes": "Non-binding. The international page prints 'Early Action: November 1' with no year; taken as fall 2027. The catalog says early action applicants are notified by December 1.",
+   "notes": "Non-binding. The international page gives 'Early Action: November 1' with no year, so fall 2027 is assumed. The catalog says early action applicants are notified by December 1.",
    "src": "proc"
   },
   {
@@ -67,7 +67,7 @@
    "plan": "ROLLING",
    "due": "2027-03-01",
    "label": "Regular/rolling admission deadline (fall 2027 entry)",
-   "notes": "Decisions are released as applications are completed; the international page urges applying early because of visa time. CDS C14 also lists March 1 as the closing date and December 1 as the priority date.",
+   "notes": "Decisions are released as applications are completed; the international page urges applying early because of visa time. The Common Data Set also lists March 1 as the closing date and December 1 as the priority date.",
    "src": "proc"
   }
  ],
@@ -110,7 +110,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": null,
   "merit_scholarships": true,
-  "notes": "International freshmen who enroll full-time (and pass the English requirement) receive a Detroit Mercy scholarship of up to $10,000 per academic year based on cumulative high school GPA; it is renewable and cannot be combined with other university grants. Canadian freshmen can also earn a $1,000 Visit Grant. International students are not eligible for federal or state aid. CDS H6 (2024-25 est.): 126 degree-seeking undergraduate nonresidents received institutional aid averaging $18,443, which is above the published $10,000 scholarship cap, so other awards may exist; the aid page describes no need-based aid for international undergraduates.",
+  "notes": "International freshmen who enroll full-time (and pass the English requirement) receive a Detroit Mercy scholarship of up to $10,000 per academic year based on cumulative high school GPA; it is renewable and cannot be combined with other university grants. Canadian freshmen can also earn a $1,000 Visit Grant. International students are not eligible for federal or state aid. In the Common Data Set (2024-25 est.), 126 degree-seeking undergraduate nonresidents received institutional aid averaging $18,443, which is above the published $10,000 scholarship cap, so other awards may exist; the aid page describes no need-based aid for international undergraduates.",
   "src": "fa"
  },
  "majors": [],
@@ -123,7 +123,7 @@
   "room_board_usd": 11502,
   "books_usd": 1468,
   "total_coa_usd": 51654,
-  "notes": "2026-27 full-time on-campus cost of attendance for business, humanities, health professions and science: tuition $34,276, housing and food $11,502, books $1,468, transportation $1,190, personal $3,146, loan fees $72 = $51,654. Architecture and engineering tuition is $35,498 (total $52,876). No separate international tuition rate is published."
+  "notes": "2026-27 full-time on-campus cost of attendance for business, humanities, health professions and science: tuition $34,276, housing and food $11,502, books $1,468, transportation $1,190, personal $3,146, loan fees $72 = $51,654. Architecture and engineering tuition is $35,498 (total $52,876). No separate international tuition rate is published"
  },
  "score_codes": {
   "sat": {

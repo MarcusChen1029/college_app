@@ -39,7 +39,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "CSU does not require SAT/ACT. The admissions site says submitted scores are reviewed only if the applicant emails a request, are not given much weight, and are not used to decline an application or in scholarship decisions; CDS C8A answers 'No' to using SAT/ACT in admission.",
+  "notes": "CSU does not require SAT/ACT. The admissions site says submitted scores are reviewed only if the applicant emails a request, are not given much weight, and are not used to decline an application or in scholarship decisions; the Common Data Set answers 'No' to using SAT/ACT in admission.",
   "src": "docs"
  },
  "requirements": {
@@ -48,7 +48,7 @@
   ],
   "app_fee_usd": 65,
   "fee_waiver": true,
-  "notes": "International freshmen apply with the Common App: 250-650 word essay, most recent transcripts (certified English translation if needed), passport copy and financial-support documents for the I-20. The $65 fee is the international freshman fee (CDS C13 lists $50 generally). Review is holistic; students with a 3.0+ GPA and a steady or upward trend are generally admitted. Recommendation letters and interview are not mentioned on the page.",
+  "notes": "International freshmen apply with the Common App: 250-650 word essay, most recent transcripts (certified English translation if needed), passport copy and financial-support documents for the I-20. The $65 fee is the international freshman fee (the Common Data Set lists $50 generally). Review is holistic; students with a 3.0+ GPA and a steady or upward trend are generally admitted. Recommendation letters and interview are not mentioned on the page.",
   "src": "intl"
  },
  "deadlines": [
@@ -57,7 +57,7 @@
    "plan": "EA",
    "due": "2026-11-15",
    "label": "Early action (non-binding), fall 2027 entry",
-   "notes": "Complete file by Nov. 15 for full consideration and automatic scholarship review by Jan. 15. The page prints dates without a year; taken as the current cycle. CDS C14: priority date Nov. 15, closing date July 31, rolling notification from Oct. 1.",
+   "notes": "Complete file by Nov. 15 for full consideration and automatic scholarship review by Jan. 15. The page gives dates without a year, so the current cycle is assumed. Common Data Set: priority date Nov. 15, closing date July 31, rolling notification from Oct. 1.",
    "src": "intl"
   },
   {
@@ -115,7 +115,7 @@
   "intl_aid_policy": null,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "All admitted international undergraduates are automatically considered for scholarships of $2,000-$12,000 per year, renewable up to four years with good academic standing; no separate application. CSU says no institutional scholarship covers the full cost of attendance. Federal aid is limited to U.S. citizens and permanent residents. The CDS (H6) checks both need-based and non-need-based institutional aid for nonresidents, but the aid pages do not describe need-based aid for international students, so intl_need_aid is left unconfirmed.",
+  "notes": "All admitted international undergraduates are automatically considered for scholarships of $2,000-$12,000 per year, renewable up to four years with good academic standing; no separate application. CSU says no institutional scholarship covers the full cost of attendance. Federal aid is limited to U.S. citizens and permanent residents. The Common Data Set checks both need-based and non-need-based institutional aid for nonresidents, but the aid pages do not describe need-based aid for international students, so need-based aid for international students is not yet confirmed.",
   "src": "sch"
  },
  "score_codes": {
@@ -160,7 +160,7 @@
   "arts_design": "D"
  },
  "tier_notes": {
-  "engineering": "Editorial judgment: R1 research university with a broad engineering college; placed in the 41-100 band, not a published ranking.",
-  "biology_life_sci": "Editorial judgment: large life, agricultural and environmental science programs at an R1 university; placed in the 41-100 band, not a published ranking."
+  "engineering": "Our estimate: R1 research university with a broad engineering college; placed in the 41-100 band, not based on a published ranking.",
+  "biology_life_sci": "Our estimate: large life, agricultural and environmental science programs at an R1 university; placed in the 41-100 band, not based on a published ranking."
  }
 }

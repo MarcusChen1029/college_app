@@ -51,7 +51,7 @@
       "2.0-2.49": 0.03,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2025). The CDS leaves the in-state/out-of-state/international split blank, so international applicant and admit counts are not available. No waitlist; no early decision or early action. Undergrad enrollment is B1 total undergraduates (46,069, including non-degree-seeking); intl_undergrads is the B2 nonresident total (901). SAT composite 25/50/75 = 1010/1100/1210 (mean 1111); only the ACT composite mean (22.4) is given, so ACT percentiles are omitted. Note: KSU now requires SAT/ACT and raises the minimum high school GPA to 3.0 for fall 2027 entry, so the 2025 admit rate (79%) overstates how easy fall 2027 admission will be."
+    "notes": "From the Common Data Set (fall 2025). The college did not report the in-state/out-of-state/international split, so international applicant and admit counts are not available. No waitlist; no early decision or early action. Undergraduate enrollment is 46,069 (all undergraduates, including non-degree-seeking); international undergraduates number 901 (counted as nonresidents). SAT composite 25/50/75 = 1010/1100/1210 (mean 1111); only the ACT composite mean (22.4) is given, so ACT percentiles are not shown. Note: KSU now requires SAT/ACT and raises the minimum high school GPA to 3.0 for fall 2027 entry, so the 2025 admit rate (79%) overstates how easy fall 2027 admission will be."
   },
   "scores_source": "cds",
   "scores": {
@@ -96,6 +96,6 @@
     "room_board_usd": 14348,
     "books_usd": 1500,
     "other_usd": 3995,
-    "notes": "CDS G1/G5 (first-year, 2026-27): 'Nonresident' tuition $22,290 (out-of-state $21,660). Per credit hour: $192 in-state, $722 out-of-state, $743 nonresident. Transportation estimate $2,222 not included in other_usd. CDS H6 marks institutional aid for nonresidents as available but the counts and averages are N/A and the page does not show which aid type applies."
+    "notes": "From the Common Data Set (first-year, 2026-27): 'Nonresident' tuition $22,290 (out-of-state $21,660). Per credit hour: $192 in-state, $722 out-of-state, $743 nonresident. Transportation estimate $2,222 is not included in other costs. The Common Data Set marks aid from the college for nonresidents as available but the counts and averages are N/A and the page does not show which aid type applies"
   }
 }

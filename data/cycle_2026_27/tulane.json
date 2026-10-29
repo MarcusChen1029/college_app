@@ -21,7 +21,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "The application checklist lists \"SAT or ACT Scores\" as optional. The 2025-2026 Common Data Set (C8A, Fall 2027) also marks SAT/ACT as \"not required for admission, but considered if submitted\". The admissions pages do not state the policy in a single sentence.",
+  "notes": "The application checklist lists \"SAT or ACT Scores\" as optional. The 2025-2026 Common Data Set (Fall 2027) also marks SAT/ACT as \"not required for admission, but considered if submitted\". The admissions pages do not state the policy in a single sentence.",
   "src": "instructions"
  },
  "requirements": {
@@ -30,7 +30,7 @@
   ],
   "teacher_recs": 0,
   "counselor_rec": true,
-  "notes": "Checklist: application (activities list and personal statement), high school transcript, and the Secondary School Report / school counselor recommendation. \"We do not require teacher recommendations (only a counselor recommendation).\" SAT/ACT scores and portfolio or audition materials are optional. The pages reviewed do not state the application fee, a writing supplement, or an interview policy, so those are left blank. ED and ED II applicants must submit a CSS Profile.",
+  "notes": "Checklist: application (activities list and personal statement), high school transcript, and the Secondary School Report / school counselor recommendation. \"We do not require teacher recommendations (only a counselor recommendation).\" SAT/ACT scores and portfolio or audition materials are optional. The pages reviewed do not state the application fee, a writing supplement, or an interview policy, so those are not shown. ED and ED II applicants must submit a CSS Profile.",
   "src": "instructions"
  },
  "deadlines": [
@@ -67,7 +67,7 @@
    "due": "2027-01-15",
    "notify": "2027-04-01",
    "label": "Regular Decision",
-   "notes": "Decisions \"by April 1\" (includes deferred Early Action applicants); enrollment deposit due May 1. Need-based aid applications due February 15. The pages state no entry year; treated as the 2026-27 cycle (Fall 2027 entry).",
+   "notes": "Decisions \"by April 1\" (includes deferred Early Action applicants); enrollment deposit due May 1. Need-based aid applications due February 15. The pages state no entry year, so the 2026-27 cycle (Fall 2027 entry) is assumed.",
    "src": "dates"
   }
  ],
@@ -110,7 +110,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": null,
-  "notes": "\"Tulane University offers limited need-based financial assistance to international students\"; submit the CSS Profile by 15 February. International students must also complete the Certification of Finances form in the Green Wave Portal. The page gives no aid amounts, does not say whether admission is need-aware, and has no merit-scholarship information, so need_aware_limited is the closest category rather than a confirmed policy. Tulane offers 'limited need-based financial assistance' to international students; need-aware/need-blind status is not stated.",
+  "notes": "\"Tulane University offers limited need-based financial assistance to international students\"; submit the CSS Profile by 15 February. International students must also complete the Certification of Finances form in the Green Wave Portal. The page gives no aid amounts, does not say whether admission is need-aware, and has no merit-scholarship information, so need-aware with limited aid is the closest category rather than a confirmed policy. Tulane offers 'limited need-based financial assistance' to international students; need-aware/need-blind status is not stated.",
   "src": "intl"
  },
  "majors": [],

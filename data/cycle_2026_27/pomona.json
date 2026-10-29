@@ -57,7 +57,7 @@
    "due": "2026-11-08",
    "notify": "2026-12-15",
    "label": "Early Decision I",
-   "notes": "Notification 'by' Dec 15; reply Jan 1. CAUTION: the overview table does not print a year and some Pomona admissions pages still say 'Fall 2026 admission'; Pomona's Nov 8 / Jan 8 dates are fixed each year, but verify. Financial aid forms due Nov 15.",
+   "notes": "Notification 'by' Dec 15; reply Jan 1. Caution: the overview table does not print a year and some Pomona admissions pages still say 'Fall 2026 admission'. Pomona's Nov 8 / Jan 8 dates are fixed each year, but confirm them with the college. Financial aid forms due Nov 15.",
    "src": "overview"
   },
   {
@@ -66,7 +66,7 @@
    "due": "2027-01-08",
    "notify": "2027-02-15",
    "label": "Early Decision II",
-   "notes": "Notification 'by' Feb 15; reply March 1. Year not printed on page; verify. Financial aid forms due Jan 15.",
+   "notes": "Notification 'by' Feb 15; reply March 1. The page gives no year; confirm the date with the college. Financial aid forms due Jan 15.",
    "src": "overview"
   },
   {
@@ -75,7 +75,7 @@
    "due": "2027-01-08",
    "notify": "2027-04-01",
    "label": "Regular Decision",
-   "notes": "Notification 'by' April 1; reply May 1. Year not printed on page; verify. Financial aid forms due Jan 15.",
+   "notes": "Notification 'by' April 1; reply May 1. The page gives no year; confirm the date with the college. Financial aid forms due Jan 15.",
    "src": "overview"
   }
  ],
@@ -96,7 +96,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 5,
-   "notes": "Taken from a '5 - Minimum TOEFL' statistic on the international page; the scale is not stated there, interpreted as the new 1-6 scale. Verify.",
+   "notes": "The number comes from a '5 - Minimum TOEFL' statistic on the international page. The page does not state the scale, so it is assumed to be the new 1-6 scale; confirm with the college.",
    "src": "intl"
   },
   {

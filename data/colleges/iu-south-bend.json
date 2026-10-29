@@ -56,7 +56,7 @@
       "2.0-2.49": 16.25,
       "1.0-1.99": 1.26
     },
-    "notes": "CDS C1 (fall 2025 first-years, IU South Bend campus): 2,761 applied, 2,249 admitted, 938 enrolled; international 65 applied / 46 admitted (71%) / 5 enrolled, out-of-state 286 / 179 / 29. No waitlist. C9: 188 enrolled students submitted SAT (20.0%) and 13 submitted ACT (1.4%), so the ACT percentiles rest on very few students. GPA distribution is the 'all enrolled students' column of C11 as printed (sums to 100.01). Undergraduate enrollment is B1 'Total All Undergraduate Students' (4,206); intl_undergrads is the B2 'Nonresidents' total undergraduates (69; 14 first-years). Student-faculty ratio 15 is the CDS I-section ratio (3,874.69 students / 264 faculty)."
+    "notes": "From the Common Data Set (fall 2025 first-years, IU South Bend campus): 2,761 applied, 2,249 admitted, 938 enrolled; international 65 applied / 46 admitted (71%) / 5 enrolled, out-of-state 286 / 179 / 29. No waitlist. 188 enrolled students (20.0%) sent SAT scores and 13 (1.4%) sent ACT scores, so the ACT percentiles rest on very few students. The GPA breakdown is for all enrolled students, as printed (it adds up to 100.01). Undergraduate enrollment is 4,206 (all undergraduate students). International undergraduates (counted as nonresidents) number 69 (14 first-years). The student-faculty ratio of 15 comes from the Common Data Set (3,874.69 students / 264 faculty)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -113,7 +113,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; C8F: test scores are considered when a student is on the cusp of the Guided Pathways Program or 'conditional' admission cut-off."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. Test scores are considered when a student is on the cusp of the Guided Pathways Program or 'conditional' admission cut-off."
   },
   "cost": {
     "year": "2026-2027",
@@ -127,6 +127,6 @@
     "other_usd": 2724,
     "intl_need_aid_awarded": 23,
     "intl_avg_award_usd": 8059,
-    "notes": "Indiana University's approved 2026-27 full-time undergraduate rates for South Bend: resident tuition $7,716.78, nonresident tuition $22,547.78, combined mandatory fee $707.34 (nonresident total $23,255.12); international students are charged the nonresident rate (the CDS G1 shows $22,325, which equals the 2025-26 nonresident rate). Food and housing $9,816, books $1,290, and other $2,724 (transportation $364 + other expenses $2,360, resident student) are from CDS G1/G5; the CDS box says final 2026-27 costs were not yet available, so the room-and-board and expense figures may be 2025-26 estimates. No total cost of attendance is printed. CDS H6 (the aid year appears to be 2024-25 final; the checkbox is ambiguous in the text): both need-based and non-need-based institutional aid are ticked as available to nonresidents; 23 undergraduate nonresidents received it, average $8,059 (total $185,367). Program differentials (for example nursing $4,478.40) are extra."
+    "notes": "Indiana University's approved 2026-27 full-time undergraduate rates for South Bend: resident tuition $7,716.78, nonresident tuition $22,547.78, combined mandatory fee $707.34 (nonresident total $23,255.12); international students are charged the nonresident rate (the Common Data Set shows $22,325, which equals the 2025-26 nonresident rate). Food and housing $9,816, books $1,290, and other costs $2,724 (transportation $364 + other expenses $2,360, resident student) come from the Common Data Set; it says final 2026-27 costs were not yet available, so the room-and-board and expense figures may be 2025-26 estimates. No total cost of attendance is printed. For aid (the aid year appears to be 2024-25 final; the box is ambiguous in the text), the Common Data Set ticks both need-based and non-need-based aid from the college as available to nonresidents; 23 undergraduate nonresidents received it, averaging $8,059 (total $185,367). Program differentials (for example nursing $4,478.40) are extra"
   }
 }

@@ -51,7 +51,7 @@
       "2.0-2.49": 1.64,
       "1.0-1.99": 0.0
     },
-    "notes": "Fall 2025 entering class. International first-year applicants 1,640, admitted only 118 (7%), enrolled 56 (C1 residency table), so WCU admits far fewer internationals than domestic applicants. Enrolled is left null: C1 reports 2,936 enrolled (residency table; men 1,272 + women 1,679) but the full-time/part-time split (1,895) and the C9 test-submission counts imply a class near 1,900. WCU says it receives 9-10 applications per fall first-year space. Undergraduate total 10,268 and nonresident-alien undergraduates 223 are from CDS B1/B2."
+    "notes": "Fall 2025 entering class. International first-year applicants 1,640, admitted only 118 (7%), enrolled 56 (residency table), so WCU admits far fewer internationals than domestic applicants. The total enrolled is not shown: the Common Data Set reports 2,936 enrolled (residency table; men 1,272 + women 1,679), but the full-time/part-time split (1,895) and the test-submission counts imply a class near 1,900. WCU says it receives 9-10 applications per fall first-year space. The undergraduate total of 10,268 and the 223 nonresident-alien undergraduates are from the Common Data Set."
   },
   "scores": {
     "SAT_ERW": [
@@ -103,7 +103,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS 2025-2026 C8A: SAT/ACT recommended; WCU's admissions page requires a score only when the weighted high school GPA is below 2.80."
+    "notes": "Common Data Set 2025-2026: SAT/ACT recommended; WCU's admissions page requires a score only when the weighted high school GPA is below 2.80."
   },
   "cost": {
     "year": "2026-2027",
@@ -116,6 +116,6 @@
     "books_usd": 407,
     "intl_need_aid_awarded": 81,
     "intl_avg_award_usd": 6100,
-    "notes": "CDS 2025-2026 G1 (first-year, 2026-27): tuition $1,000 in-state, $7,000 out-of-state and international (NC Promise), required fees $3,598, housing $7,234 + food $5,799. H6: 81 undergraduate nonresidents received institutional aid (average $6,100, total $494,089); the CDS does not say whether it was need- or non-need-based."
+    "notes": "First-year costs from the 2025-2026 Common Data Set (2026-27): tuition $1,000 in-state, $7,000 out-of-state and international (NC Promise), required fees $3,598, housing $7,234 + food $5,799. 81 undergraduate nonresidents received institutional aid (average $6,100, total $494,089); the Common Data Set does not say whether it was need- or non-need-based"
   }
 }

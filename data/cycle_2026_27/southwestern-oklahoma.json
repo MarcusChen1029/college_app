@@ -51,7 +51,7 @@
       "kind": "scholarship",
       "due": "2027-03-01",
       "label": "Academic and Foundation scholarship paperwork: best-consideration date (fall 2027)",
-      "notes": "The 2025-26 catalog lists March 1 for Regents' baccalaureate or academic scholarship documents and for the Foundation Scholarship Application (no year printed, treated as 2027). The catalog does not say whether international students are eligible.",
+      "notes": "The 2025-26 catalog lists March 1 for Regents' baccalaureate or academic scholarship documents and for the Foundation Scholarship Application (no year printed, so 2027 is assumed). The catalog does not say whether international students are eligible.",
       "src": "cat"
     }
   ],
@@ -93,7 +93,7 @@
   },
   "cost": {
     "src": "tuition",
-    "notes": "2026-27 tuition page: undergraduate tuition $252 per credit hour resident and $582 nonresident ($252 + $330), plus mandatory fees of $29.20 per credit hour and an academic enhancement fee of $15 per hour. Catalog: international students are treated as nonresidents; fees include a $100 international maintenance fee per semester and mandatory health insurance. The Costs and Aid page (undated, accessed 2026-10-26) shows undergraduate annual estimates of $9,131 resident, $16,241 nonresident and $26,608 international, without saying what they include; these do not show the In-State Plus $1 rate. Confirm with SWOSU before relying on either figure."
+    "notes": "2026-27 tuition page: undergraduate tuition $252 per credit hour resident and $582 nonresident ($252 + $330), plus mandatory fees of $29.20 per credit hour and an academic enhancement fee of $15 per hour. Catalog: international students are classed as nonresidents; fees include a $100 international maintenance fee per semester and mandatory health insurance. The Costs and Aid page (undated, accessed 2026-10-26) shows undergraduate annual estimates of $9,131 resident, $16,241 nonresident and $26,608 international, without saying what they include; these do not show the In-State Plus $1 rate. Confirm with SWOSU before relying on either figure"
   },
   "majors": [],
   "score_codes": {

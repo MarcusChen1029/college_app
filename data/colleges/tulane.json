@@ -59,7 +59,7 @@
     "pct_submit_act": 27,
     "gpa_avg": 3.67,
     "pct_reporting_gpa": 99.73,
-    "notes": "Fall 2025 entering class. ED figure (C21) is for Early Decision. SAT 11% (203 students) / ACT 27% (496) of enrolled submitted scores. GPA distribution is for all enrolled students (C11).",
+    "notes": "Fall 2025 entering class. The ED figure is for Early Decision. 11% (203 students) of enrolled students sent SAT scores and 27% (496) sent ACT scores. The GPA breakdown is for all enrolled students.",
     "gpa_distribution": {
       "4.0": 11.49,
       "3.75-3.99": 34.11,
@@ -111,7 +111,7 @@
     "room_board_usd": 19726,
     "other_usd": 2784,
     "total_coa_usd": 91156,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

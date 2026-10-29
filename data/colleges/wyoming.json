@@ -58,7 +58,7 @@
       "2.0-2.49": 2.3,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2025 entering class). Applied and admitted counts include 1 applicant of unknown residency (6,167 total applied, 5,979 admitted); the international row (96 applied, 87 admitted, 10 enrolled) is by residency at application. SAT/ACT percentages are C9 (79% submitted either). GPA distribution is the published 'all enrolled students' column and sums to 100.2 because of rounding. Undergraduate enrollment is the CDS B1 'Total all undergraduates' (8,138) for fall 2025; student-faculty ratio is the fall 2025 CDS figure (12.4 to 1). No early decision or early action. intl_undergrads left null: the CDS B2 nonresident row could not be identified reliably from the extracted text."
+    "notes": "From the Common Data Set (fall 2025 entering class). Applied and admitted counts include 1 applicant of unknown residency (6,167 total applied, 5,979 admitted); the international row (96 applied, 87 admitted, 10 enrolled) is by residency at application. The SAT/ACT percentages come from the Common Data Set test-score table (79% submitted either). The GPA breakdown is the published 'all enrolled students' column and adds up to 100.2 because of rounding. Undergraduate enrollment is the Common Data Set 'Total all undergraduates' figure (8,138) for fall 2025; the student-faculty ratio is the fall 2025 figure (12.4 to 1). No early decision or early action. The number of international undergraduates is not shown: the nonresident row could not be identified reliably from the extracted text."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -95,7 +95,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (applying for fall 2027): the SAT/ACT policy check box could not be read from the PDF text; UW's admissions page says test scores are not required for admission."
+    "notes": "Common Data Set (applying for fall 2027): the SAT/ACT policy check box could not be read from the PDF text; UW's admissions page says test scores are not required for admission."
   },
   "cost": {
     "year": "2026-2027",
@@ -110,6 +110,6 @@
     "total_coa_usd": 45346,
     "intl_avg_award_usd": 12338,
     "intl_need_aid": false,
-    "notes": "CDS G1 (first-year, 2026-27): tuition $5,610 in-state / $22,470 nonresident; required fees $3,070 (includes about $510 of program fees; first-year students also pay a $150 matriculation fee); food and housing $14,406. Other = transportation $1,800 + other expenses $2,300 (CDS G5); books $1,300. total_coa_usd is the sum of those listed nonresident components (tuition + fees + food/housing + books + other). CDS H6: about 70 international degree-seeking undergraduates received institutional aid, average $12,338 (total $851,294); the CDS does not break this down further in readable text."
+    "notes": "First-year costs from the Common Data Set (2026-27): tuition $5,610 in-state / $22,470 nonresident; required fees $3,070 (includes about $510 of program fees; first-year students also pay a $150 matriculation fee); food and housing $14,406. Other costs are transportation $1,800 + other expenses $2,300; books $1,300. The total cost of attendance is the sum of those listed nonresident components (tuition + fees + food/housing + books + other). About 70 international degree-seeking undergraduates received institutional aid, average $12,338 (total $851,294); the Common Data Set does not break this down further in readable text"
   }
 }

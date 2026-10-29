@@ -62,14 +62,14 @@
    "plan": "EA",
    "due": "2026-12-01",
    "label": "First-year early action, fall term (fall 2027 entry)",
-   "notes": "From the first-year deadline chart (no year printed; treated as fall 2027); early action decisions come before the holiday break. The international page lists no separate international deadline.",
+   "notes": "From the first-year deadline chart (no year printed, so fall 2027 is assumed); early action decisions come before the holiday break. The international page lists no separate international deadline.",
    "src": "app"
   },
   {
    "kind": "scholarship",
    "due": "2027-01-01",
    "label": "Lasallian Scholarship Program deadline (apply and be admitted by this date)",
-   "notes": "Same chart; year treated as 2027.",
+   "notes": "Same chart; the year is assumed to be 2027.",
    "src": "app"
   },
   {

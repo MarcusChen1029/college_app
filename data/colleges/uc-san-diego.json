@@ -65,7 +65,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. C9 test-score percentiles are blank (UC test-blind). Enrolled split: 5,431 in-state / 961 out-of-state / 1,409 international."
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. Test-score percentiles are not reported (UC is test-blind). Enrolled split: 5,431 in-state / 961 out-of-state / 1,409 international."
   },
   "scores": {},
   "cost": {
@@ -76,7 +76,7 @@
     "room_board_usd": 19632,
     "other_usd": 6371,
     "total_coa_usd": 41664,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 54939
   },
   "factors": {

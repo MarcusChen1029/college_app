@@ -51,7 +51,7 @@
       "plan": "EA",
       "due": "2026-11-15",
       "label": "Early Action application deadline (fall 2027 entry)",
-      "notes": "The Dates & Deadlines page prints these dates under the heading 'Fall 2026' with no year on the day itself; taken as the same month and day for fall 2027 entry.",
+      "notes": "The Dates & Deadlines page prints these dates under the heading 'Fall 2026' with no year on the day itself, so the same month and day is assumed for fall 2027 entry.",
       "src": "dates"
     },
     {
@@ -93,7 +93,7 @@
       "test": "TOEFL_IBT_2026",
       "status": "required_option",
       "min": 4,
-      "notes": "Page prints 'TOEFL (79+ or 4+ scale score)'; read as 4.0 on the new 1-6 scale.",
+      "notes": "The page prints 'TOEFL (79+ or 4+ scale score)', which we take to mean 4.0 on the new 1-6 scale.",
       "src": "intl"
     },
     {

@@ -57,7 +57,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "Advisory international deadline, fall 2027",
-   "notes": "Rolling admission with no strict deadline; the page advises applying at least two months before term start for visa processing and gives the advisory date as Fall - June 1 (no year printed, treated as 2027). Spring: November 1.",
+   "notes": "Rolling admission with no strict deadline; the page advises applying at least two months before term start for visa processing and gives the advisory date as Fall - June 1 (no year printed, so 2027 is assumed). Spring: November 1.",
    "src": "intl"
   }
  ],
@@ -110,7 +110,7 @@
   "intl_aid_policy": null,
   "meets_full_need": null,
   "merit_scholarships": null,
-  "notes": "Millersville's admissions-scholarships page lists an 'International Scholarships' contact (717-871-7506, international@millersville.edu). Award names and amounts could not be confirmed: the international financial-assistance page was unreachable (404) when checked, so scholarship amounts are left null. Confirm with International Admissions.",
+  "notes": "Millersville's admissions-scholarships page lists an 'International Scholarships' contact (717-871-7506, international@millersville.edu). Award names and amounts could not be confirmed: the international financial-assistance page was unreachable (404) when checked, so scholarship amounts are not shown. Confirm with International Admissions.",
   "src": "schol"
  },
  "cost": {
@@ -120,7 +120,7 @@
   "room_board_usd": 13890,
   "other_usd": 1400,
   "total_coa_usd": 33660,
-  "notes": "International estimated annual proof-of-funding for 2026-2027: tuition and fees $17,620 (includes some mandatory fees; 12-18 credits per semester), living expenses $13,890, health insurance $750, books and miscellaneous $1,400, total $33,660. A separate $150 per semester international student fee ($300 per year) is charged in addition and is not in that total.",
+  "notes": "International estimated annual proof-of-funding for 2026-2027: tuition and fees $17,620 (includes some mandatory fees; 12-18 credits per semester), living expenses $13,890, health insurance $750, books and miscellaneous $1,400, total $33,660. A separate $150 per semester international student fee ($300 per year) is charged in addition and is not in that total",
   "src": "cost"
  },
  "majors": [],

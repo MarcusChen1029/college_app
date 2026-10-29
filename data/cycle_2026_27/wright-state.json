@@ -39,7 +39,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "SAT/ACT scores are optional for international applicants; the checklist says they are not mandatory but help with scholarship decisions. CDS C8 says scores are 'not required, but consider if submitted'. SAT EBRW 510 can be used to meet the English requirement.",
+  "notes": "SAT/ACT scores are optional for international applicants; the checklist says they are not mandatory but help with scholarship decisions. The Common Data Set says scores are 'not required, but consider if submitted'. SAT EBRW 510 can be used to meet the English requirement.",
   "src": "chk"
  },
  "requirements": {
@@ -47,7 +47,7 @@
    "own"
   ],
   "app_fee_usd": null,
-  "notes": "Applicants use Wright State's own admissions portal (the pages do not mention the Common App). The international landing page says international applicants can apply for free, while the checklist still mentions a $30 non-refundable fee, so the fee is left null. Minimum 2.5 cumulative high school GPA. Required: passport copy, official records from all schools, and an I-20 request form with a current bank statement in USD (the application-instructions page says proof of funds is not needed when applying). Admission decisions can take up to four weeks.",
+  "notes": "Applicants use Wright State's own admissions portal (the pages do not mention the Common App). The international landing page says international applicants can apply for free, while the checklist still mentions a $30 non-refundable fee, so no fee is shown. Minimum 2.5 cumulative high school GPA. Required: passport copy, official records from all schools, and an I-20 request form with a current bank statement in USD (the application-instructions page says proof of funds is not needed when applying). Admission decisions can take up to four weeks.",
   "src": "chk"
  },
  "deadlines": [
@@ -128,7 +128,7 @@
   "books_usd": null,
   "other_usd": 3000,
   "total_coa_usd": 37899,
-  "notes": "Wright State's international estimate (two semesters, 12 credit hours): tuition $22,862, fees $1,037 (includes a $150 per semester international student fee), living expenses $11,000, books and health insurance $3,000; total $37,899. The page does not state the academic year.",
+  "notes": "Wright State's international estimate (two semesters, 12 credit hours): tuition $22,862, fees $1,037 (includes a $150 per semester international student fee), living expenses $11,000, books and health insurance $3,000; total $37,899. The page does not state the academic year",
   "src": "cost"
  },
  "aid": {
@@ -137,7 +137,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "UCIE Undergraduate Merit Scholarship is automatic at admission: $6,000 (GPA 2.5-2.99), $8,000 (3.0-3.19) or $10,000 (3.2+) per year toward tuition, renewable with a 2.5 GPA and 24 credits; funds are limited. Vietnam and Southeast Asia Merit Scholarships are $12,000 per year (high school in the region required). International Ambassador Scholarship is $10,000 per year (essay, two awards). Only one institutional merit scholarship can be held. CDS H6 reports no need-based aid for nonresidents.",
+  "notes": "UCIE Undergraduate Merit Scholarship is automatic at admission: $6,000 (GPA 2.5-2.99), $8,000 (3.0-3.19) or $10,000 (3.2+) per year toward tuition, renewable with a 2.5 GPA and 24 credits; funds are limited. Vietnam and Southeast Asia Merit Scholarships are $12,000 per year (high school in the region required). International Ambassador Scholarship is $10,000 per year (essay, two awards). Only one institutional merit scholarship can be held. The Common Data Set reports no need-based aid for nonresidents.",
   "src": "aid"
  },
  "majors": [],

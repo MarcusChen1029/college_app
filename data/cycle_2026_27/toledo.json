@@ -48,7 +48,7 @@
    "own"
   ],
   "app_fee_usd": 0,
-  "notes": "Freshman applicants using the UToledo application or the Common App pay no application fee (CDS C13 lists $40). International freshmen still completing their last year of secondary school may use the Common App; the UToledo application (International Application option) is for gap-year and transfer applicants. Transcripts and English proficiency are required; Engineering (including Computer Science and Cyber Security) freshmen must show math knowledge: Engineering Science 22 ACT / 540 SAT Math or ALEKS 76, Engineering Technology 20 ACT / 520 SAT Math or ALEKS 61.",
+  "notes": "Freshman applicants using the UToledo application or the Common App pay no application fee (the Common Data Set lists $40). International freshmen still completing their last year of secondary school may use the Common App; the UToledo application (International Application option) is for gap-year and transfer applicants. Transcripts and English proficiency are required; Engineering (including Computer Science and Cyber Security) freshmen must show math knowledge: Engineering Science 22 ACT / 540 SAT Math or ALEKS 76, Engineering Technology 20 ACT / 520 SAT Math or ALEKS 61.",
   "src": "how"
  },
  "deadlines": [
@@ -57,7 +57,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International freshman application deadline (fall 2027 entry)",
-   "notes": "Suggested date based on visa wait times; later applications may still be reviewed or moved to the next term. CDS C14 says there is no closing date and C16 says decisions are rolling from Oct 1. Transfer students already in the US: Aug 1, 2027. Classes begin Aug 23, 2027.",
+   "notes": "Suggested date based on visa wait times; later applications may still be reviewed or moved to the next term. The Common Data Set says there is no closing date and that decisions are rolling from Oct 1. Transfer students already in the US: Aug 1, 2027. Classes begin Aug 23, 2027.",
    "src": "how"
   }
  ],

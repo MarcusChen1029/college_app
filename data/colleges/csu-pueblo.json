@@ -47,7 +47,7 @@
     "enrolled": 618,
     "pct_submit_sat": 1,
     "pct_submit_act": 3,
-    "notes": "Baseline from IPEDS fall 2024 (admit rate 94.9%). The 2025-2026 Common Data Set exists on csupueblo.edu but the www.csupueblo.edu host refused connections from this environment in several attempts, so no international split, GPA or residency data. Test scores from College Navigator cover only 18 ACT submitters (3%) and 4 SAT submitters (1%), so the ACT percentiles rest on a very small sample and SAT percentiles are not reported. International applicant counts are not published."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024; admit rate 94.9%). The 2025-2026 Common Data Set exists on csupueblo.edu but the www.csupueblo.edu host refused our connections in several attempts, so no international split, GPA or residency data is available. Test scores from College Navigator cover only 18 ACT submitters (3%) and 4 SAT submitters (1%), so the ACT percentiles rest on a very small sample and SAT percentiles are not reported. International applicant counts are not published."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -75,6 +75,6 @@
     "books_usd": 1460,
     "other_usd": 3294,
     "total_coa_usd": 34798,
-    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $9,720, out-of-state $17,944; books $1,460; on-campus food and housing $12,100; other expenses $3,294; total on campus out-of-state $34,798 (in-state $26,574). The 2026-27 cost-of-attendance page could not be read, so 2026-27 figures are not given."
+    "notes": "College Navigator 2024-25 (tuition and fees, first-year full-time): in-state $9,720, out-of-state $17,944; books $1,460; on-campus food and housing $12,100; other expenses $3,294; total on campus out-of-state $34,798 (in-state $26,574). The 2026-27 cost-of-attendance page could not be read, so 2026-27 figures are not given"
   }
 }

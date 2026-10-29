@@ -21,7 +21,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "The international admissions steps page asks for transcripts (minimum GPA 2.7) and English proof; SAT and ACT appear there only as ways to show English (SAT EBRW 500, ACT English 18). CDS C8A marks SAT/ACT as not required for admission but considered if submitted.",
+  "notes": "The international admissions steps page asks for transcripts (minimum GPA 2.7) and English proof; SAT and ACT appear there only as ways to show English (SAT EBRW 500, ACT English 18). The Common Data Set marks SAT/ACT as not required for admission but considered if submitted.",
   "src": "intl"
  },
  "requirements": {
@@ -38,7 +38,7 @@
    "kind": "priority",
    "due": "2027-03-01",
    "label": "Fall priority application deadline (fall 2027 entry)",
-   "notes": "Printed as March 01 without a year (treated as fall 2027). No later final fall deadline is listed on the page; late applications may be processed for the next available semester. Spring priority deadline is Oct. 1.",
+   "notes": "Printed as March 01 without a year, so fall 2027 is assumed. No later final fall deadline is listed on the page; late applications may be processed for the next available semester. Spring priority deadline is Oct. 1.",
    "src": "intl"
   },
   {
@@ -98,12 +98,12 @@
   "intl_extra_fees_usd": 250,
   "other_usd": 8442,
   "total_coa_usd": 46062,
-  "notes": "International undergraduate estimate for Fall 2026 and Spring 2027 (9 months, Logan): tuition and fees $29,222, international student fee $250, living expenses $8,148, personal expenses $8,442, total $46,062. The $29,222 tuition-and-fees estimate is higher than CDS tuition plus required fees ($25,717 + $793), and the page does not itemize the difference (it notes differential tuition and program fees may apply). Proof of one year of funds is required for the I-20.",
+  "notes": "International undergraduate estimate for Fall 2026 and Spring 2027 (9 months, Logan): tuition and fees $29,222, international student fee $250, living expenses $8,148, personal expenses $8,442, total $46,062. The $29,222 tuition-and-fees estimate is higher than CDS tuition plus required fees ($25,717 + $793), and the page does not itemize the difference (it notes differential tuition and program fees may apply). Proof of one year of funds is required for the I-20",
   "src": "costs"
  },
  "aid": {
   "merit_scholarships": true,
-  "notes": "The international undergraduate scholarship list shows the Afton B. Tew Scholarship ($1,000, 1-4 years), the Kim Nam Kyun Scholarship ($2,000, 1-4 years, must be admitted to apply), an International Nonresident Tuition Waiver (HB118, amount varies, 1-4 years) and an International Alumni Legacy Nonresident Waiver (amount varies, 1 year). CDS H6 checks both need-based and non-need-based institutional aid for nonresidents and reports 1,564 recipients averaging $15,299, but that count is far larger than the 218 nonresident undergraduates in B2, so it is not used as an international figure. Eligibility rules for each award were not reviewed.",
+  "notes": "The international undergraduate scholarship list shows the Afton B. Tew Scholarship ($1,000, 1-4 years), the Kim Nam Kyun Scholarship ($2,000, 1-4 years, must be admitted to apply), an International Nonresident Tuition Waiver (HB118, amount varies, 1-4 years) and an International Alumni Legacy Nonresident Waiver (amount varies, 1 year). The Common Data Set checks both need-based and non-need-based institutional aid for nonresidents and reports 1,564 recipients averaging $15,299, but that count is far larger than the 218 nonresident undergraduates in its enrollment figures, so it is not used as an international figure. Eligibility rules for each award were not reviewed.",
   "src": "costs"
  },
  "majors": [],
@@ -148,8 +148,8 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "general": "Admits about 92% of first-year applicants; D+ rather than D because USU is a large research university with a wide program range. Editorial judgment, not a ranking.",
-  "engineering": "Editorial judgment: civil, electrical and mechanical engineering bachelor's degrees awarded (IPEDS completions) at a research university; placed in the 41-100 band, not a published ranking.",
-  "biology_life_sci": "Editorial judgment: large life, agricultural and natural-resource programs at a land-grant research university; placed in the 41-100 band, not a published ranking."
+  "general": "Admits about 92% of first-year applicants; D+ rather than D because USU is a large research university with a wide program range. Our estimate, not a ranking.",
+  "engineering": "Our estimate: civil, electrical and mechanical engineering bachelor's degrees awarded (IPEDS completions) at a research university; roughly 41-100 nationally, not from a published ranking.",
+  "biology_life_sci": "Our estimate: large life, agricultural and natural-resource programs at a land-grant research university; roughly 41-100 nationally, not from a published ranking."
  }
 }

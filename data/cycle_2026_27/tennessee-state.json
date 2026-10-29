@@ -47,7 +47,7 @@
       "own"
     ],
     "app_fee_usd": 25,
-    "notes": "Apply through the Future Tiger Portal ($25). International freshmen send a high school transcript plus a credential evaluation for any school outside the US (WES, The Evaluation Company/SpanTran, ECE, AES or IEE), ACT/SAT scores if under 21, English proficiency proof, a passport copy, notarized financial evidence for the I-20 (dated within 6 months; ask oia@tnstate.edu for the amount) and health/immunization forms. CDS C7 lists essays, recommendations and interview as not considered.",
+    "notes": "Apply through the Future Tiger Portal ($25). International freshmen send a high school transcript plus a credential evaluation for any school outside the US (WES, The Evaluation Company/SpanTran, ECE, AES or IEE), ACT/SAT scores if under 21, English proficiency proof, a passport copy, notarized financial evidence for the I-20 (dated within 6 months; ask oia@tnstate.edu for the amount) and health/immunization forms. The Common Data Set lists essays, recommendations and interview as not considered.",
     "src": "intl"
   },
   "deadlines": [
@@ -55,7 +55,7 @@
       "kind": "application",
       "due": "2027-06-01",
       "label": "International applicants living overseas: fall 2027 application deadline",
-      "notes": "From the 'Students Currently Overseas' column (fall: June 1). Students already in the US have different dates (fall: July 1, documents Aug 1). The page gives no year; treated as fall 2027. Spring: Nov 1 overseas.",
+      "notes": "From the 'Students Currently Overseas' column (fall: June 1). Students already in the US have different dates (fall: July 1, documents Aug 1). The page gives no year, so fall 2027 is assumed. Spring: Nov 1 overseas.",
       "src": "intl"
     },
     {
@@ -106,7 +106,7 @@
     "meets_full_need": false,
     "merit_scholarships": true,
     "merit_separate_app": false,
-    "notes": "Institutional merit scholarships are open to first-time freshmen and international students and are considered automatically once the admission application, official transcript and ACT/SAT scores are in (some awards need a separate application). Amounts per year for out-of-state/international students: Renaissance $8,500 (weighted GPA 3.75+ or ACT 28/SAT 1300+), 1912 Heritage $6,500 (GPA 3.25-3.74 or ACT 25-27/SAT 1200-1290), Torch Scholars $4,500 (GPA 3.0-3.24 or ACT 20-24/SAT 1030-1190). Renewal needs a 3.0 GPA, 15 credits a semester and, as printed, a FAFSA each year, which international students cannot file, so ask TSU how renewal works for them. Only one merit scholarship can be held. The full-ride awards (Presidential, Watkins) are for U.S. citizens. CDS H6 ticks institutional need-based aid for nonresident undergraduates (84 recipients, average $19,162), but the TSU international pages describe only merit awards. Amounts and criteria are for Fall 2026 entry; Fall 2027 terms are not yet posted.",
+    "notes": "Institutional merit scholarships are open to first-time freshmen and international students and are considered automatically once the admission application, official transcript and ACT/SAT scores are in (some awards need a separate application). Amounts per year for out-of-state/international students: Renaissance $8,500 (weighted GPA 3.75+ or ACT 28/SAT 1300+), 1912 Heritage $6,500 (GPA 3.25-3.74 or ACT 25-27/SAT 1200-1290), Torch Scholars $4,500 (GPA 3.0-3.24 or ACT 20-24/SAT 1030-1190). Renewal needs a 3.0 GPA, 15 credits a semester and, as printed, a FAFSA each year, which international students cannot file, so ask TSU how renewal works for them. Only one merit scholarship can be held. The full-ride awards (Presidential, Watkins) are for U.S. citizens. The Common Data Set ticks institutional need-based aid for nonresident undergraduates (84 recipients, average $19,162), but the TSU international pages describe only merit awards. Amounts and criteria are for Fall 2026 entry; Fall 2027 terms are not yet posted.",
     "src": "sch"
   },
   "majors": [],

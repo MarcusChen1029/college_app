@@ -49,7 +49,7 @@
       "2.50-2.99": 5.02,
       "2.0-2.49": 0.1
     },
-    "notes": "CDS C1 (fall 2024 entering class); this is the newest CDS on UMass Lowell's Common Data Set page when checked, so the figures are one cycle old. Residency split (known physical address): in-state 10,271 / out-of-state 2,783 / international 622 applicants; 8,503 / 2,296 / 546 admitted; 1,778 / 193 / 40 enrolled. Undergrad enrollment is B1 'Total undergraduate Students' (6,897 + 5,211 + 3 + 11 = 12,122); the nonresident count (305) is the B2 'Total Undergraduates' column. SAT/ACT percentiles cover only the 27% (550) / 2% (46) of enrollees who submitted scores. CDS C14 (2024-25): priority date Nov. 5, closing date June 1."
+    "notes": "From the Common Data Set (fall 2024 entering class); this is the newest one on UMass Lowell's Common Data Set page when checked, so the figures are one cycle old. Residency split (known physical address): in-state 10,271 / out-of-state 2,783 / international 622 applicants; 8,503 / 2,296 / 546 admitted; 1,778 / 193 / 40 enrolled. Undergraduate enrollment is the 'Total undergraduate Students' figure (6,897 + 5,211 + 3 + 11 = 12,122); the nonresident count (305) is the 'Total Undergraduates' column. SAT/ACT percentiles cover only the 27% (550) / 2% (46) of enrollees who sent scores. Application dates in the Common Data Set (2024-25): priority date Nov. 5, closing date June 1."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -106,13 +106,13 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F (2024-25): freshmen applicants 'have the option to decide whether to have standardized test scores used in the evaluation process'."
+    "notes": "From the Common Data Set (2024-25): freshmen applicants 'have the option to decide whether to have standardized test scores used in the evaluation process'."
   },
   "cost": {
     "year": "2026-2027",
     "source": "cds",
     "intl_need_aid_awarded": 120,
     "intl_avg_award_usd": 12606,
-    "notes": "CDS H6 (2024-25): institutional non-need-based aid is available to nonresidents; 120 undergraduate degree-seeking nonresidents received it (average $12,606, total $1,512,741)."
+    "notes": "From the Common Data Set (2024-25): institutional non-need-based aid is available to nonresidents; 120 undergraduate degree-seeking nonresidents received it (average $12,606, total $1,512,741)"
   }
 }

@@ -48,7 +48,7 @@
     "pct_submit_act": 12,
     "gpa_avg": 3.18,
     "pct_reporting_gpa": 99.0,
-    "notes": "CDS 2024-2025 (fall 2024 entering class); the 2025-2026 edition was not posted on Columbus State's CDS page. C1 residency split (in-state / out-of-state / international): applicants 3,400 / 236 / 15, admits 3,370 / 232 / 15, enrolled 1,084 / 85 / 6; the extracted PDF layout was garbled, but each row sums exactly to the printed totals (3,651 / 3,617 / 1,175). The GPA band distribution is omitted because the C11 column layout could not be read reliably; the C12 average of 3.18 is explicit. Only 13% submitted SAT and 12% ACT scores, so the score ranges describe a small self-selected group. The CDS C7 factor checkboxes were unreadable and are omitted. No early decision or early action; no waitlist."
+    "notes": "Common Data Set 2024-2025 (fall 2024 entering class); the 2025-2026 edition was not posted on Columbus State's Common Data Set page. Residency split (in-state / out-of-state / international): applicants 3,400 / 236 / 15, admits 3,370 / 232 / 15, enrolled 1,084 / 85 / 6; the extracted PDF layout was garbled, but each row sums exactly to the printed totals (3,651 / 3,617 / 1,175). The GPA breakdown is not shown because the column layout could not be read reliably; the average GPA of 3.18 is clearly printed. Only 13% submitted SAT and 12% ACT scores, so the score ranges describe a small self-selected group. The admission-factor checkboxes were unreadable and are not shown. No early decision or early action; no waitlist."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -90,6 +90,6 @@
     "required_fees_usd": 1410,
     "room_board_usd": 12070,
     "books_usd": 1760,
-    "notes": "CDS G1 as printed for the full 2025-2026 year (30 credit hours): in-state tuition $5,610 ($187/credit), out-of-state $20,250 ($675/credit); the CDS also lists a separate 'Non-resident' tuition of $21,270 without saying who pays it, so tuition_intl is left empty. Required fees $1,410; on-campus food and housing $12,070; books $1,760 (G5)."
+    "notes": "Costs from the Common Data Set as printed for the full 2025-2026 year (30 credit hours): in-state tuition $5,610 ($187/credit), out-of-state $20,250 ($675/credit); the Common Data Set also lists a separate 'Non-resident' tuition of $21,270 without saying who pays it, so international tuition is not shown. Required fees $1,410; on-campus food and housing $12,070; books $1,760"
   }
 }

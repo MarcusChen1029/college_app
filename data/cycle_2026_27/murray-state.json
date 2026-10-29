@@ -117,7 +117,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "CDS H6: only institutional non-need-based aid for nonresidents. The first-year Academic Achievement scholarships ($1,000-$10,000, by GPA) and the Presidential Fellowship are domestic-only. International students can compete for general competitive scholarships after admission, and first-time transfer students get $1,500-$5,000 a year by GPA (2.75+). No published international freshman award schedule was found; ask msu.intl@murraystate.edu.",
+    "notes": "From the Common Data Set: only the college's own non-need-based aid for nonresidents. The first-year Academic Achievement scholarships ($1,000-$10,000, by GPA) and the Presidential Fellowship are domestic-only. International students can compete for general competitive scholarships after admission, and first-time transfer students get $1,500-$5,000 a year by GPA (2.75+). No published international freshman award schedule was found; ask msu.intl@murraystate.edu.",
     "src": "cost"
   },
   "cost": {
@@ -126,7 +126,7 @@
     "room_board_usd": 12484,
     "other_usd": 2232,
     "total_coa_usd": 30706,
-    "notes": "International costs page, bachelor's degree, one academic year: tuition and fees combined $15,990, housing and meals $12,484, books and insurance $2,232, total $30,706 (this is also the bank-balance requirement). The page does not print the academic year; its transfer scholarship table is labelled 2026-27.",
+    "notes": "International costs page, bachelor's degree, one academic year: tuition and fees combined $15,990, housing and meals $12,484, books and insurance $2,232, total $30,706 (this is also the bank-balance requirement). The page does not print the academic year; its transfer scholarship table is labelled 2026-27",
     "src": "cost"
   },
   "majors": [],

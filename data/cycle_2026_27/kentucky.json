@@ -38,7 +38,7 @@
    "kind": "priority",
    "due": "2026-12-01",
    "label": "Priority deadline, fall 2027 (August start), international",
-   "notes": "The page prints 'December 1 for Fall semester (August start)' and no year, so it is taken as the current cycle; spring priority is Oct. 15. The freshman scholarship deadline is also Dec. 1 and funds can run out earlier.",
+   "notes": "The page prints 'December 1 for Fall semester (August start)' and no year, so the current cycle is assumed; spring priority is Oct. 15. The freshman scholarship deadline is also Dec. 1 and funds can run out earlier.",
    "src": "req"
   },
   {
@@ -146,14 +146,14 @@
  },
  "tier_notes": {
   "general": "Public flagship with a 94% overall admit rate (90% for internationals) and SAT middle 50% of 1058-1270; large research university with an academic medical center.",
-  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "economics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "math_physics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "humanities": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure)."
+  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "economics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "math_physics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "humanities": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure)."
  }
 }

@@ -39,21 +39,21 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International freshman recommended application and documents date (fall 2027 entry)",
-   "notes": "The page says to submit the application and all supporting materials before 'Fall semester start: July 1' (year not printed; treated as fall 2027). Later applications may be considered depending on time left for visa processing. For comparison, the general freshman page recommends applying before May 1, 2027 and may close applications at capacity.",
+   "notes": "The page says to submit the application and all supporting materials before 'Fall semester start: July 1' (year not printed, so fall 2027 is assumed). Later applications may be considered depending on time left for visa processing. For comparison, the general freshman page recommends applying before May 1, 2027 and may close applications at capacity.",
    "src": "ia"
   },
   {
    "kind": "scholarship",
    "due": "2027-07-01",
    "label": "International Freshman Excellence scholarship: must be admitted by (fall 2027 entry)",
-   "notes": "Year not printed; treated as fall 2027. Excellence needs an equivalent GPA of 3.4 or higher.",
+   "notes": "Year not printed, so fall 2027 is assumed. Excellence needs an equivalent GPA of 3.4 or higher.",
    "src": "ia"
   },
   {
    "kind": "scholarship",
    "due": "2027-07-15",
    "label": "International Freshman Merit and Distinction scholarships: must be admitted by (fall 2027 entry)",
-   "notes": "Year not printed; treated as fall 2027. Merit needs an equivalent GPA of 2.5 or higher, Distinction 3.0 or higher.",
+   "notes": "Year not printed, so fall 2027 is assumed. Merit needs an equivalent GPA of 2.5 or higher, Distinction 3.0 or higher.",
    "src": "ia"
   }
  ],
@@ -107,7 +107,7 @@
   "room_board_usd": 8830,
   "other_usd": 3510,
   "total_coa_usd": 34276,
-  "notes": "2026-27 tuition and fees: $9,235 Wisconsin resident, $19,336 nonresident, $19,756 international (international page). The international room-and-food estimate is $8,830. Required UW System international student health insurance adds $2,180 a year, and personal expenses are estimated at $3,510; the $34,276 total (tuition and fees, housing and food, insurance, personal) is the amount the page lists as proof of funds for an I-20.",
+  "notes": "2026-27 tuition and fees: $9,235 Wisconsin resident, $19,336 nonresident, $19,756 international (international page). The international room-and-food estimate is $8,830. Required UW System international student health insurance adds $2,180 a year, and personal expenses are estimated at $3,510; the $34,276 total (tuition and fees, housing and food, insurance, personal) is the amount the page lists as proof of funds for an I-20",
   "src": "ia"
  },
  "aid": {

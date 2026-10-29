@@ -63,7 +63,7 @@
       "2.0-2.49": 15.5,
       "1.0-1.99": 5.2
     },
-    "notes": "CDS C1 (fall 2025 first-time, first-year): 3,745 applied, 3,554 admitted, 543 enrolled; the residency table lists 39 international applicants, all 39 admitted, 9 enrolled. Out-of-state counts exclude international. SAT scores were submitted by 7% (38 students) and ACT by 1% (6), so the SAT range rests on few students; no ACT percentiles were printed. C11 also shows 0.2% of students below a 1.0 GPA (not in the distribution). The average high school GPA in C12 is printed as '85.7 or 3' (a 100-point figure and a truncated 4.0 value), so gpa_avg is omitted.The CDS does not check the C6 open-admission boxes. Undergraduate enrollment 3,459 (IPEDS fall 2024) and 52 nonresident-alien undergraduates (IPEDS fall 2024 enrollment by race via the Urban Institute Education Data Portal)."
+    "notes": "From the Common Data Set (fall 2025 first-time, first-year): 3,745 applied, 3,554 admitted, 543 enrolled; the residency table lists 39 international applicants, all 39 admitted, 9 enrolled. Out-of-state counts exclude international. SAT scores were sent by 7% (38 students) and ACT scores by 1% (6), so the SAT range rests on few students; no ACT percentiles were printed. The GPA breakdown also shows 0.2% of students below a 1.0 GPA (not in the distribution). The average high school GPA is printed as '85.7 or 3' (a 100-point figure and a truncated 4.0 value), so the average GPA is not shown. The Common Data Set does not mark the open-admission boxes. Undergraduate enrollment is 3,459 (IPEDS fall 2024) and there are 52 nonresident-alien undergraduates (IPEDS fall 2024 enrollment by race via the Urban Institute Education Data Portal)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -111,6 +111,6 @@
     "room_board_usd": 15840,
     "other_usd": 2168,
     "total_coa_usd": 28050,
-    "notes": "College Navigator 2024-25: tuition includes required fees; total is the on-campus cost of attendance for New York residents ($32,880 at the out-of-state rate). The CDS G1 tuition boxes are blank in the PDF. See the cycle file for the published international cost table."
+    "notes": "College Navigator 2024-25: tuition includes required fees; total is the on-campus cost of attendance for New York residents ($32,880 at the out-of-state rate). The tuition boxes in the Common Data Set are blank in the PDF. The published international cost table is listed separately"
   }
 }

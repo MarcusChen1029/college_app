@@ -54,7 +54,7 @@
       "2.50-2.99": 16.14,
       "2.0-2.49": 3.17
     },
-    "notes": "CDS C1: international first-year applicants 1,491, admitted 689 (46%), enrolled 14, versus a 74% overall admit rate. Admission is test-free, so no SAT/ACT data are reported (C9 is blank). No early decision or early action; no waitlist. GPA distribution and 3.43 average are C11/C12 (all enrolled first-years). Factors are C7 'general' admission (programs with specific criteria, such as BFA/BMus portfolios and auditions, are decided on the work submitted). Undergraduate enrollment 4,346 and 221 nonresident undergraduates are CDS B1/B2 (fall 2025)."
+    "notes": "From the Common Data Set: international first-year applicants 1,491, admitted 689 (46%), enrolled 14, versus a 74% overall admit rate. Admission is test-free, so no SAT/ACT data are reported. No early decision or early action; no waitlist. The GPA breakdown and 3.43 average cover all enrolled first-years. Admission factors are those for 'general' admission (programs with specific criteria, such as BFA/BMus portfolios and auditions, are decided on the work submitted). Undergraduate enrollment is 4,346 and nonresident undergraduates number 221 (Common Data Set, fall 2025)."
   },
   "factors": {
     "rigor": "I",
@@ -79,7 +79,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "CDS C8 table marks could not be read; Columbia's freshman page says admission is entirely test-free, and C7 lists test scores as not considered."
+    "notes": "The test policy marks in the Common Data Set could not be read; Columbia's freshman page says admission is entirely test-free, and the Common Data Set's admission factors list test scores as not considered."
   },
   "cost": {
     "year": "2026-2027",
@@ -93,6 +93,6 @@
     "other_usd": 4340,
     "intl_need_aid_awarded": 178,
     "intl_avg_award_usd": 10942,
-    "notes": "CDS G1/G5: tuition $35,498 (12-18 credits, two semesters), required fees $1,892 (includes the estimated U-Pass), food and housing $19,466, books $1,950, transportation $1,100 plus other $3,240 (other_usd = $4,340). CDS H6: 178 degree-seeking nonresidents received institutional aid averaging $10,942 (total $1,947,625); the CDS marks both need-based and non-need-based institutional aid as available to nonresidents."
+    "notes": "Costs from the Common Data Set: tuition $35,498 (12-18 credits, two semesters), required fees $1,892 (includes the estimated U-Pass), food and housing $19,466, books $1,950, transportation $1,100 plus other $3,240 (together shown as other costs, $4,340). 178 degree-seeking nonresidents received institutional aid averaging $10,942 (total $1,947,625); the Common Data Set marks both need-based and non-need-based institutional aid as available to nonresidents"
   }
 }

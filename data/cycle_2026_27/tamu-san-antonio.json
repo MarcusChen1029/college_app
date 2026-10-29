@@ -35,7 +35,7 @@
    "own"
   ],
   "app_fee_usd": 30,
-  "notes": "Apply at BecomeAJaguar.com (fee waivers only through ApplyTexas). The first-year page states a $30 fee; the older international page says $50 by money order. International applicants need a course-by-course foreign credential evaluation sent directly from an approved agency (dated within 1 year), and meningitis vaccination evidence if 22 or younger. Essays and recommendations are not listed (CDS C7: not considered).",
+  "notes": "Apply at BecomeAJaguar.com (fee waivers only through ApplyTexas). The first-year page states a $30 fee; the older international page says $50 by money order. International applicants need a course-by-course foreign credential evaluation sent directly from an approved agency (dated within 1 year), and meningitis vaccination evidence if 22 or younger. Essays and recommendations are not listed (the Common Data Set marks them as not considered).",
   "src": "fy"
  },
  "deadlines": [
@@ -43,7 +43,7 @@
    "kind": "priority",
    "due": "2027-01-15",
    "label": "Priority application deadline (fall 2027 entry)",
-   "notes": "Listed on the first-year page for Fall 2027. The international page does not give separate dates and points to these first-year deadlines. CDS C14 lists a Feb 15 priority date, which differs from the website.",
+   "notes": "Listed on the first-year page for Fall 2027. The international page does not give separate dates and points to these first-year deadlines. The Common Data Set lists a Feb 15 priority date, which differs from the website.",
    "src": "fy"
   },
   {
@@ -51,7 +51,7 @@
    "plan": "ROLLING",
    "due": "2027-06-30",
    "label": "Final application deadline (fall 2027 entry)",
-   "notes": "Rolling admission (CDS C16); no notification date published. International F-1 applicants need time for credential evaluation and the I-20, so apply well before this date.",
+   "notes": "Rolling admission (per the Common Data Set); no notification date published. International F-1 applicants need time for credential evaluation and the I-20, so apply well before this date.",
    "src": "fy"
   }
  ],
@@ -101,7 +101,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": false,
-  "notes": "The international scholarship page lists only graduate awards (Graduate Merit, Hagan) and the Good Neighbor Scholarship (tuition exemption for talented students from eligible Western Hemisphere countries, not Cuba or the U.S.; undergraduate GPA 2.0+; deadline Feb 15; selected by the state). No undergraduate international merit scholarship amount is published. Admitted students with JagWire logins can use ScholarshipUniverse. After admission, international undergraduates must show funds of $40,450 for one year.",
+  "notes": "The international scholarship page lists only graduate awards (Graduate Merit, Hagan) and the Good Neighbor Scholarship (tuition exemption for talented students from eligible Western Hemisphere countries, not the U.S. or Cuba; undergraduate GPA 2.0+; deadline Feb 15; selected by the state). No undergraduate international merit scholarship amount is published. Admitted students with JagWire logins can use ScholarshipUniverse. After admission, international undergraduates must show funds of $40,450 for one year.",
   "src": "aid"
  },
  "majors": [],

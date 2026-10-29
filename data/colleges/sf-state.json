@@ -31,7 +31,7 @@
   "applicants": 29878,
   "admits": 28727,
   "enrolled": 2985,
-  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 28,221 applicants, 96% admitted, 9% of admitted students enrolled (percentages are rounded). No current Common Data Set was found on ir.sfsu.edu or air.sfsu.edu. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are left null. The CSU is test-blind, so no SAT/ACT percentiles are reported."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 28,221 applicants, 96% admitted, 9% of admitted students enrolled (percentages are rounded). No current Common Data Set was found on ir.sfsu.edu or air.sfsu.edu. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are not shown. The CSU is test-blind, so no SAT/ACT percentiles are reported."
  },
  "scores": {}
 }

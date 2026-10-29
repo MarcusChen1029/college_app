@@ -55,7 +55,7 @@
       "3.00-3.24": 13,
       "2.50-2.99": 25
     },
-    "notes": "CDS C1 (fall 2025 entering class); residency split from the C1 residency table (in-state 11,577 / out-of-state 3,236 / international 211 applicants; 10,701 / 2,820 / 204 admitted; 2,494 / 167 / 36 enrolled). Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (17,504; 212 nonresidents). SAT/ACT percentiles cover only the 7% (184) / 1% (24) of enrollees who submitted scores. The CDS gives no GPA band below 2.50 (distribution sums to 100). Domestic early action closes 12/1 (notified 1/15, CDS C22); no early decision."
+    "notes": "From the Common Data Set (fall 2025 entering class); the residency split is from its residency table (in-state 11,577 / out-of-state 3,236 / international 211 applicants; 10,701 / 2,820 / 204 admitted; 2,494 / 167 / 36 enrolled). Undergraduate enrollment is 17,504 and the nonresident count is 212 ('Total Undergraduates' figures). SAT/ACT percentiles cover only the 7% (184) / 1% (24) of enrollees who submitted scores. The Common Data Set gives no GPA band below 2.50 (the breakdown sums to 100). Domestic early action closes 12/1 (notified 1/15); no early decision."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -112,7 +112,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027): SAT or ACT marked 'required for some' (programs); the international admissions pages say SAT/ACT are optional."
+    "notes": "Common Data Set (fall 2027): SAT or ACT marked 'required for some' (programs); the international admissions pages say SAT/ACT are optional."
   },
   "cost": {
     "year": "2025-2026",
@@ -126,6 +126,6 @@
     "intl_need_aid": null,
     "intl_need_aid_awarded": 10,
     "intl_avg_award_usd": 16000,
-    "notes": "CDS G1 (first-year, 2025-26); 2026-27 rates not found. H6: both institutional need-based and non-need-based aid are marked available to nonresidents; 10 nonresidents were awarded aid, average $16,000 (the CDS lists a $300,000 total, which does not equal 10 x $16,000)."
+    "notes": "First-year costs from the Common Data Set (2025-26); 2026-27 rates not found. Both need-based and non-need-based aid from the college itself are marked available to nonresidents; 10 nonresidents were awarded aid, average $16,000 (the Common Data Set lists a $300,000 total, which does not equal 10 x $16,000)"
   }
 }

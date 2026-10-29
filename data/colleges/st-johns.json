@@ -40,7 +40,7 @@
     "enrolled": 2350,
     "pct_submit_sat": 23,
     "pct_submit_act": 2,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; test submission rates and percentiles from College Navigator. No public Common Data Set was found (St. John's Institutional Research page links only an At a Glance PDF and a fast fact card), so GPA, residency splits and international applicant counts are not available. SAT/ACT percentiles cover the 23% (538) / 2% (43) of enrollees who submitted scores. Undergraduate enrollment and the nonresident count (335, about 2%) are IPEDS fall 2024 undergraduate headcounts."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; test submission rates and percentiles from College Navigator. No public Common Data Set was found (St. John's Institutional Research page links only an At a Glance PDF and a fast fact card), so GPA, residency splits and international applicant counts are not available. SAT/ACT percentiles cover the 23% (538) / 2% (43) of enrollees who submitted scores. Undergraduate enrollment and the nonresident count (335, about 2%) are IPEDS fall 2024 undergraduate headcounts."
   },
   "scores": {
     "SAT_ERW": [

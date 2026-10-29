@@ -41,7 +41,7 @@
       "2.50-2.99": 7.7,
       "2.0-2.49": 0.1
     },
-    "notes": "CDS C1/C11/C12 (fall 2025 entering class). CSU does not consider SAT/ACT scores, so C9 percentiles are not reported. CDS gives no residency or international split for applicants/admits (C1 says N/A). Student-faculty ratio is I-2 (fall 2024, 17 to 1). Undergrad enrollment is the B1 total (26,490); the international count is the B2 nonresident total (657). No waitlist; early action only (no early decision)."
+    "notes": "From the Common Data Set (fall 2025 entering class). CSU does not consider SAT/ACT scores, so test score percentiles are not reported. The Common Data Set gives no residency or international split for applicants/admits (it says N/A). Student-faculty ratio is 17 to 1 (fall 2024). Undergraduate enrollment is the total in the enrollment table (26,490); the international count is the nonresident total (657). No waitlist; early action only (no early decision)."
   },
   "factors": {
     "rigor": "VI",
@@ -74,6 +74,6 @@
     "other_usd": 3240,
     "intl_need_aid_awarded": 295,
     "intl_avg_award_usd": 15607,
-    "notes": "CDS G1 lists 2024-25 costs (2025-26 costs were not final when the CDS was filed); no separate international tuition, so nonresident tuition applies. G4: 56% of full-time undergraduates pay more because tuition varies by program. H6: 295 degree-seeking nonresident undergraduates received institutional aid (avg $15,607); the CDS checks both need-based and non-need-based aid as available to nonresidents."
+    "notes": "The Common Data Set lists 2024-25 costs (2025-26 costs were not final when it was filed); there is no separate international tuition, so nonresident tuition applies. 56% of full-time undergraduates pay more because tuition varies by program. 295 degree-seeking nonresident undergraduates received institutional aid (avg $15,607); the Common Data Set checks both need-based and non-need-based aid as available to nonresidents"
   }
 }

@@ -51,7 +51,7 @@
   "interview": "optional_evaluative",
   "app_fee_usd": 70,
   "fee_waiver": true,
-  "notes": "One academic letter of recommendation from a core-subject teacher or counselor (the page says teacher or counselor). Sixth-semester (through grade 11) transcript required at application. Fee waiver for financial need per CDS C13. Nursing applicants must apply Regular Decision (deadlines page).",
+  "notes": "One academic letter of recommendation from a core-subject teacher or counselor (the page says teacher or counselor). Sixth-semester (through grade 11) transcript required at application. Fee waiver for financial need per the Common Data Set. Nursing applicants must apply Regular Decision (deadlines page).",
   "src": "fy"
  },
  "deadlines": [
@@ -164,7 +164,7 @@
   "intl_aid_policy": "merit_only",
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "CDS H6 (2025-26): only institutional non-need-based aid is available to nonresidents (145 recipients, average $36,013). All applicants are automatically considered for the George Pepperdine Achievement Award; no separate application. Regents Scholars Program needs SAT/ACT/CLT scores.",
+  "notes": "From the Common Data Set (2025-26): only institutional non-need-based aid is available to nonresidents (145 recipients, average $36,013). All applicants are automatically considered for the George Pepperdine Achievement Award; no separate application. Regents Scholars Program needs SAT/ACT/CLT scores.",
   "src": "cds"
  },
  "majors": [],

@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": 50,
-    "notes": "Apply with the Universities of Wisconsin application. International applicants need the official secondary transcript, diploma or exam results (certified English translation if needed), an English proficiency score, a bank statement or letter and a signed financial support statement, and a passport copy. The $50 application fee comes from the CDS (C13); the international page does not mention it and instead lists a $50 International Student Processing Fee payable after acceptance, before the I-20 is issued.",
+    "notes": "Apply with the Universities of Wisconsin application. International applicants need the official secondary transcript, diploma or exam results (certified English translation if needed), an English proficiency score, a bank statement or letter and a signed financial support statement, and a passport copy. The $50 application fee comes from the Common Data Set; the international page does not mention it and instead lists a $50 International Student Processing Fee payable after acceptance, before the I-20 is issued.",
     "src": "ap"
   },
   "deadlines": [
@@ -43,7 +43,7 @@
       "kind": "application",
       "due": "2027-07-01",
       "label": "Last day to apply for fall 2027 (international students)",
-      "notes": "The page says international deadlines stay the same each year and prints no year; treated as fall 2027. Documents to complete the application are due the next day (July 2). Spring: Dec. 1 (documents Dec. 2). The domestic first-year fall deadline is Aug. 23, 2027.",
+      "notes": "The page says international deadlines stay the same each year and prints no year, so fall 2027 is assumed. Documents to complete the application are due the next day (July 2). Spring: Dec. 1 (documents Dec. 2). The domestic first-year fall deadline is Aug. 23, 2027.",
       "src": "ap"
     }
   ],
@@ -90,14 +90,14 @@
     "intl_extra_fees_usd": 50,
     "room_board_usd": 8244,
     "books_usd": 800,
-    "notes": "Cost page for 2026-27: tuition and fees $9,133 for Wisconsin residents and $17,721 for out-of-state/non-resident students (fees included; international students pay the non-resident rate). Housing $4,854 plus meal plan $3,390 = $8,244 (as listed; the page does not say which room or plan). Books about $800; new student fee $217; optional parking $210. Extra fees $50 = one-time International Student Processing Fee after acceptance.",
+    "notes": "Cost page for 2026-27: tuition and fees $9,133 for Wisconsin residents and $17,721 for out-of-state/non-resident students (fees included; international students pay the non-resident rate). Housing $4,854 plus meal plan $3,390 = $8,244 (as listed; the page does not say which room or plan). Books about $800; new student fee $217; optional parking $210. Extra fees $50 = one-time International Student Processing Fee after acceptance",
     "src": "cost"
   },
   "aid": {
     "intl_aid_policy": null,
     "meets_full_need": null,
     "merit_scholarships": true,
-    "notes": "Phoenix Scholar Award is an automatic tuition remission (not a scholarship or financial aid) for new first-year or transfer out-of-state and international students in in-person classes: Gold (100% of the non-resident portion of tuition) with SAT 1230+, ACT 26+ or GPA 3.51+; Green (75%) with SAT 1130-1220, ACT 23-25 or GPA 3.25-3.50. Dollar amounts for international students are not published; the page says to call or email. The CDS H6 marks both institutional need-based and non-need-based aid as available to nonresidents, but no international need-based program is described, so the aid policy is left blank.",
+    "notes": "Phoenix Scholar Award is an automatic tuition remission (not a scholarship or financial aid) for new first-year or transfer out-of-state and international students in in-person classes: Gold (100% of the non-resident portion of tuition) with SAT 1230+, ACT 26+ or GPA 3.51+; Green (75%) with SAT 1130-1220, ACT 23-25 or GPA 3.25-3.50. Dollar amounts for international students are not published; the page says to call or email. The Common Data Set marks both institutional need-based and non-need-based aid as available to nonresidents, but no international need-based program is described, so no aid policy is shown.",
     "src": "psa"
   },
   "majors": [],

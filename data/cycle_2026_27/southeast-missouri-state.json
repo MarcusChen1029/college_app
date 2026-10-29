@@ -27,7 +27,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "Test scores are optional for admission on the first-year international page; they may qualify for merit scholarships and are used for math/English placement. SAT EBRW 450+ or ACT English and Reading 21+ can also serve as English proof. CDS C8F says 'Test optional'.",
+    "notes": "Test scores are optional for admission on the first-year international page; they may qualify for merit scholarships and are used for math/English placement. SAT EBRW 450+ or ACT English and Reading 21+ can also serve as English proof. The Common Data Set says 'Test optional'.",
     "src": "fy"
   },
   "requirements": {
@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": 60,
-    "notes": "Own online application; $60 non-refundable international fee, no waivers. No minimum high school GPA is stated for first-year international applicants (the acceptance letter lists conditions). Unofficial transcripts and English scores are enough at application; official ones are needed after admission. NACES/AICE credential evaluations are accepted for first-time freshmen. After admission: Affidavit of Financial Support and bank statement covering estimated annual cost minus scholarship; no tuition deposit. Nursing and some programs have higher English standards. CDS C7: GPA and rigor very important, test scores and class rank considered, essay and recommendations not considered.",
+    "notes": "Own online application; $60 non-refundable international fee, no waivers. No minimum high school GPA is stated for first-year international applicants (the acceptance letter lists conditions). Unofficial transcripts and English scores are enough at application; official ones are needed after admission. NACES/AICE credential evaluations are accepted for first-time freshmen. After admission: Affidavit of Financial Support and bank statement covering estimated annual cost minus scholarship; no tuition deposit. Nursing and some programs have higher English standards. Common Data Set admission factors: GPA and rigor very important, test scores and class rank considered, essay and recommendations not considered.",
     "src": "policies"
   },
   "deadlines": [
@@ -43,7 +43,7 @@
       "kind": "priority",
       "due": "2026-12-01",
       "label": "Priority date (fall 2027 entry)",
-      "notes": "CDS C14 lists a priority date of Dec 1 and an application closing date of July 1; no year is printed, taken as the fall 2027 cycle. What the priority date affects is not explained.",
+      "notes": "The Common Data Set lists a priority date of Dec 1 and an application closing date of July 1; no year is printed, so the fall 2027 cycle is assumed. What the priority date affects is not explained.",
       "src": "policies"
     },
     {
@@ -51,7 +51,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International fall 2027 application deadline (regular)",
-      "notes": "Fall (August) deadline is July 1; students applying web-only or already holding a valid US visa have July 15. No year is printed, taken as fall 2027.",
+      "notes": "Fall (August) deadline is July 1; students applying web-only or already holding a valid US visa have July 15. No year is printed, so fall 2027 is assumed.",
       "src": "policies"
     },
     {
@@ -59,7 +59,7 @@
       "plan": "ROLLING",
       "due": "2026-11-01",
       "label": "International spring 2027 (January) application deadline (regular)",
-      "notes": "Spring deadline is November 1 (November 15 for web-only or valid-US-visa applicants); no year printed, taken as spring 2027 entry.",
+      "notes": "Spring deadline is November 1 (November 15 for web-only or valid-US-visa applicants); no year printed, so spring 2027 entry is assumed.",
       "src": "policies"
     }
   ],
@@ -110,7 +110,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": null,
     "merit_scholarships": true,
-    "notes": "Automatic merit awards at admission, no separate application: International Academic Award $8,850 per year for freshmen with a 3.25 high school GPA (it covers the nonresident-minus-domestic tuition gap, estimated at 15 hours per semester; renewable up to 4 years with 2.75 GPA and 24 credit hours per year; also for the IEP pathway), or International Student Scholarship $2,000 per year for a 2.5 GPA. No international need-based aid was found on the scholarships page. CDS H6: 467 nonresidents received institutional aid, average $8,011.",
+    "notes": "Automatic merit awards at admission, no separate application: International Academic Award $8,850 per year for freshmen with a 3.25 high school GPA (it covers the nonresident-minus-domestic tuition gap, estimated at 15 hours per semester; renewable up to 4 years with 2.75 GPA and 24 credit hours per year; also for the IEP pathway), or International Student Scholarship $2,000 per year for a 2.5 GPA. No international need-based aid was found on the scholarships page. Common Data Set: 467 nonresidents received institutional aid, average $8,011.",
     "src": "schol"
   },
   "majors": [],

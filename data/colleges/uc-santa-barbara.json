@@ -65,7 +65,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. Reported GPA average of 4.29 is a UC-weighted, uncapped GPA (above a 4.0 scale); the 4.0 row therefore holds all students at or above 4.0. C9 test-score percentiles are blank (UC test-blind). Enrolled split: 3,770 in-state / 701 out-of-state / 610 international."
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. Reported GPA average of 4.29 is a UC-weighted, uncapped GPA (above a 4.0 scale); the 4.0 row therefore holds all students at or above 4.0. Test-score percentiles are not reported (UC is test-blind). Enrolled split: 3,770 in-state / 701 out-of-state / 610 international."
   },
   "scores": {},
   "cost": {
@@ -76,7 +76,7 @@
     "room_board_usd": 21975,
     "other_usd": 7063,
     "total_coa_usd": 44833,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 54591
   },
   "factors": {

@@ -18,7 +18,7 @@
     "waitlist_offered": 561, "waitlist_accepted": 468, "waitlist_admitted": 10,
     "pct_submit_sat": 83, "pct_submit_act": 31,
     "gpa_avg": null, "pct_reporting_gpa": null, "gpa_distribution": null,
-    "notes": "MIT reports GPA as N/Av in C11/C12. Residency breakdown of applicants not reported."
+    "notes": "MIT reports GPA as N/Av in its Common Data Set. Residency breakdown of applicants not reported."
   },
   "scores": {
     "SAT_TOTAL": [1520, 1550, 1570], "SAT_ERW": [740, 760, 780], "SAT_MATH": [780, 790, 800],
@@ -35,6 +35,6 @@
     "tuition_usd": 66720, "required_fees_usd": 420, "room_board_usd": 22194,
     "books_usd": 930, "other_usd": 2496,
     "intl_need_aid": true, "intl_need_aid_awarded": 411, "intl_avg_award_usd": 81991,
-    "notes": "CDS G1 food & housing on-campus. H6: institutional need-based aid available to nonresidents (2025-26 estimated)."
+    "notes": "On-campus food and housing, from the Common Data Set. The college's own need-based aid is available to nonresidents (2025-26 estimated)."
   }
 }

@@ -46,7 +46,7 @@
     "admits": 11120,
     "pct_submit_sat": 2,
     "pct_submit_act": 10,
-    "notes": "Baseline from IPEDS via College Navigator (fall 2024 entering class); no Common Data Set could be found on UNCG's institutional research site. Admits is derived from the reported 89% admit rate (12,948 x 0.89, so approximate); enrolled is left empty (College Navigator gives only 'percent admitted who enrolled', 21%). Only 48 enrollees submitted SAT and 232 ACT, so the score percentiles describe a small group. SAT total, GPA, residency/international splits are not available. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator (fall 2024 entering class); no Common Data Set could be found on UNCG's institutional research site. College Navigator reports an 89% admit rate, so an admit count from it would only be approximate (12,948 x 0.89); it gives no enrolled count, only 'percent admitted who enrolled', 21%. Only 48 enrollees sent SAT scores and 232 sent ACT scores, so the score percentiles describe a small group. SAT total, GPA, residency/international splits are not available. Applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate.",
     "enrolled": 2613
   },
   "scores": {
@@ -84,6 +84,6 @@
     "books_usd": 850,
     "room_board_usd": 10688,
     "other_usd": 3386,
-    "notes": "College Navigator estimated expenses for beginning undergraduates, 2024-25: tuition and fees in-state $7,661, out-of-state $24,012; books $850; on-campus food and housing $10,688; other $3,386. The current-cycle cost block (2026-27) overrides these."
+    "notes": "College Navigator estimated expenses for beginning undergraduates, 2024-25: tuition and fees in-state $7,661, out-of-state $24,012; books $850; on-campus food and housing $10,688; other $3,386. The current-cycle cost block (2026-27) overrides these"
   }
 }

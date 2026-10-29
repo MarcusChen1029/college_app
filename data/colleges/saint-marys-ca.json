@@ -67,12 +67,12 @@
       "2.0-2.49": 0.2,
       "1.0-1.99": 0.0
     },
-    "notes": "Fall 2023 first-years from the 2023-24 CDS, the newest edition readable as text: the 2024-25 and 2025-26 CDS PDFs are on a Google Drive link (the 2025-26 one asks for a sign-in; the 2024-25 one has numbers that cannot be extracted as text), so they were not used. CDS C1 residency table: in-state 2,873 applied / 2,650 admitted / 421 enrolled, out-of-state 898 / 783 / 66, international 518 / 370 / 16; total 4,289 / 3,803 / 503. GPA distribution is the 'all enrolled students' column of C11 as printed; average GPA is printed to one decimal (3.6). SAT/ACT percentiles, percent submitting scores and the C7 factor checkboxes could not be extracted as text, so they are left out. College Navigator fall 2024 (newer): 5,175 applicants, 87% admitted, 9% of admitted enrolled; undergraduate enrollment 1,954 and student-faculty ratio 10:1 are from College Navigator fall 2024. Saint Mary's is test-optional."
+    "notes": "Fall 2023 first-years from the 2023-24 Common Data Set, the newest edition readable as text: the 2024-25 and 2025-26 Common Data Set PDFs are on a Google Drive link (the 2025-26 one asks for a sign-in; the 2024-25 one has numbers that cannot be extracted as text), so they were not used. Residency table from the Common Data Set: in-state 2,873 applied / 2,650 admitted / 421 enrolled, out-of-state 898 / 783 / 66, international 518 / 370 / 16; total 4,289 / 3,803 / 503. The GPA breakdown is the 'all enrolled students' column as printed; average GPA is printed to one decimal (3.6). SAT/ACT percentiles, the share of students who sent scores and the admission factor checkboxes could not be extracted as text, so they are not shown. College Navigator fall 2024 (newer): 5,175 applicants, 87% admitted, 9% of admitted enrolled; undergraduate enrollment 1,954 and student-faculty ratio 10:1 are from College Navigator fall 2024. Saint Mary's is test-optional."
   },
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "The first-year admissions page says Saint Mary's will not require an SAT or ACT score. CDS 2023-24 C8 says: 'Saint Mary's has a Test Optional Policy.'"
+    "notes": "The Common Data Set 2023-24 says: 'Saint Mary's has a Test Optional Policy.' The first-year admissions page says Saint Mary's will not require an SAT or ACT score."
   },
   "cost": {
     "year": "2026-2027",
@@ -85,6 +85,6 @@
     "total_coa_usd": 87612,
     "intl_need_aid_awarded": 64,
     "intl_avg_award_usd": 51482,
-    "notes": "Saint Mary's own 2026-27 cost of attendance for a full-time, on-campus, non-nursing undergraduate: tuition $61,416 (12-18 units per semester) + fees $636 (student body $216, student enhancement $320, student experience $100) + food and housing $18,900 + books $1,304 + personal expenses $3,970 and transportation $1,386 (other_usd $5,356) = $87,612 as printed. Nursing (BSN) tuition is $76,770, total $102,330. The tuition_usd figure is the sticker price before merit aid. CDS 2023-24 H6 (aid year 2022-23): 64 undergraduate degree-seeking nonresidents received institutional aid, average $51,482 (total $3,294,877); the policy checkboxes are not readable as text."
+    "notes": "Saint Mary's own 2026-27 cost of attendance for a full-time, on-campus, non-nursing undergraduate: tuition $61,416 (12-18 units per semester) + fees $636 (student body $216, student enhancement $320, student experience $100) + food and housing $18,900 + books $1,304 + personal expenses $3,970 and transportation $1,386 ($5,356 together, shown as other costs) = $87,612 as printed. Nursing (BSN) tuition is $76,770, total $102,330. The tuition figure is the sticker price before merit aid. In the Common Data Set 2023-24 (aid year 2022-23), 64 undergraduate degree-seeking nonresidents received institutional aid, average $51,482 (total $3,294,877); the aid policy checkboxes are not readable as text"
   }
 }

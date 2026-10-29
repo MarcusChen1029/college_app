@@ -33,7 +33,7 @@
     "enrolled": 3117,
     "pct_submit_sat": 15,
     "pct_submit_act": 88,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). UofL's 2024-25 CDS is linked from its website only through a document-viewer page that could not be downloaded as text, and no 2025-26 CDS is posted, so SAT total, GPA and residency splits are not added. College Navigator for fall 2024 shows 15,668 applicants, 79% admitted, SAT ERW 530/580/640, Math 510/570/630, ACT 19/23/27. Undergrad enrollment (16,194) and nonresident-alien undergraduates (233) are fall 2023 IPEDS (EF2023A); student-to-faculty ratio 14:1 from College Navigator."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). UofL's 2024-25 Common Data Set is linked from its website only through a document-viewer page that could not be downloaded as text, and no 2025-26 Common Data Set is posted, so the SAT total, GPA and residency splits are not shown. College Navigator for fall 2024 shows 15,668 applicants, 79% admitted, SAT ERW 530/580/640, Math 510/570/630, ACT 19/23/27. Undergraduate enrollment (16,194) and nonresident-alien undergraduates (233) are fall 2023 IPEDS figures; student-to-faculty ratio 14:1 from College Navigator."
   },
   "scores": {
     "SAT_ERW": [
@@ -71,6 +71,6 @@
     "room_board_usd": 12576,
     "other_usd": 8132,
     "total_coa_usd": 51460,
-    "notes": "College Navigator (IPEDS) 2024-25: tuition includes required fees; on-campus cost of attendance for out-of-state students is $51,460. UofL's own international cost-of-attendance page was not read, so current-year figures may differ."
+    "notes": "College Navigator (IPEDS) 2024-25: tuition includes required fees; on-campus cost of attendance for out-of-state students is $51,460. UofL's own international cost-of-attendance page was not read, so current-year figures may differ"
   }
 }

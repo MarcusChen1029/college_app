@@ -40,7 +40,7 @@
     "enrolled": 632,
     "pct_submit_sat": 19,
     "pct_submit_act": 15,
-    "notes": "Baseline from IPEDS (fall 2023 entering class): 3,489 applied, 2,869 admitted, 632 enrolled. No Common Data Set could be found on fmarion.edu (the institutional research pages link none), so GPA, international applicant/admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 3,616 applicants, 86% admitted and 22% of those enrolled (rounded percentages), SAT EBRW 450/510/575, SAT Math 420/480/540, ACT composite 16/20/24, 3,692 undergraduates (used for enrollment here), student-to-faculty ratio 13 to 1. Test optional; 16% of fall 2024 enrollees submitted SAT and 11% ACT."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class): 3,489 applied, 2,869 admitted, 632 enrolled. No Common Data Set could be found on fmarion.edu (the institutional research pages link none), so GPA, international applicant and admit counts and SAT total are not available. Newer College Navigator figures (fall 2024): 3,616 applicants, 86% admitted and 22% of those enrolled (rounded percentages), SAT EBRW 450/510/575, SAT Math 420/480/540, ACT composite 16/20/24, 3,692 undergraduates (shown as undergraduate enrollment), student-to-faculty ratio 13 to 1. Test optional; 16% of fall 2024 enrollees sent SAT scores and 11% sent ACT scores."
   },
   "scores": {
     "SAT_ERW": [

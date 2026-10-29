@@ -45,6 +45,6 @@
     "applicants": 7760,
     "admits": 6490,
     "enrolled": 806,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; enrollment and student-faculty ratio from College Navigator. No public Common Data Set was found. College Navigator shows no SAT/ACT percentiles or submission rates (test-optional); GPA, residency splits and international applicant counts are not available. Undergraduate enrollment is the IPEDS fall 2024 headcount (4,260)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): applicants, admits and enrollees from the Education Data Portal; enrollment and student-faculty ratio from College Navigator. No public Common Data Set was found. College Navigator shows no SAT/ACT percentiles or submission rates (test-optional); GPA, residency splits and international applicant counts are not available. Undergraduate enrollment is the IPEDS fall 2024 headcount (4,260)."
   }
 }

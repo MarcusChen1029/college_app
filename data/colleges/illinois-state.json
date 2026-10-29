@@ -57,7 +57,7 @@
       "2.0-2.49": 0.14,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2025; residency split excludes 37 applicants / 29 admits of unknown residency). International: 345 of 382 admitted (90%). No waitlist; no early decision or early action. Undergrad enrollment is B1 total undergraduates (19,513); intl_undergrads is the B2 nonresident total (165). SAT composite 25/50/75 = 1000/1110/1210. GPA distribution is the 'all enrolled students' column. The university reports the middle 50% GPA of admitted fall 2026 freshmen as 3.29-4.05 (self-reported)."
+    "notes": "From the Common Data Set (fall 2025; the residency split excludes 37 applicants / 29 admits of unknown residency). International: 345 of 382 admitted (90%). No waitlist; no early decision or early action. Undergraduate enrollment is 19,513 (total undergraduates); the number of international undergraduates is 165 (nonresident total). SAT composite 25/50/75 = 1000/1110/1210. The GPA breakdown is the 'all enrolled students' column. The university reports the middle 50% GPA of admitted fall 2026 freshmen as 3.29-4.05 (self-reported)."
   },
   "scores_source": "cds",
   "scores": {
@@ -110,7 +110,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: standardized test scores are not required; applicants may submit an ACT or SAT score and it cannot affect their standing negatively."
+    "notes": "From the Common Data Set: standardized test scores are not required; applicants may submit an ACT or SAT score and it cannot affect their standing negatively."
   },
   "cost": {
     "year": "2026-2027",
@@ -122,6 +122,6 @@
     "room_board_usd": 12460,
     "books_usd": 830,
     "other_usd": 3422,
-    "notes": "CDS G1/G5 (first-year, 2026-27): required fees ($4,146.30) include student health insurance, automatically charged at 9+ credit hours and waivable with proof of insurance. Tuition varies by program for about 30% of undergraduates. Transportation estimate $2,452 not included in other_usd. The CDS H6 nonresident-aid section was left blank."
+    "notes": "From the Common Data Set (first-year, 2026-27): required fees ($4,146.30) include student health insurance, automatically charged at 9+ credit hours and waivable with proof of insurance. Tuition varies by program for about 30% of undergraduates. Transportation estimate $2,452 is not included in other costs. Illinois State did not fill in the nonresident-aid section of the Common Data Set"
   }
 }

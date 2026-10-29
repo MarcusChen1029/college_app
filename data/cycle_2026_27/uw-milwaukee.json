@@ -39,7 +39,7 @@
       "kind": "priority",
       "due": "2026-11-01",
       "label": "Priority date (fall 2027 entry)",
-      "notes": "CDS 2025-26 (C14) prints Nov. 1 as the priority date without a year; treated as the 2026-27 cycle.",
+      "notes": "The 2025-26 Common Data Set prints Nov. 1 as the priority date without a year, so the 2026-27 cycle is assumed.",
       "src": "fy"
     },
     {
@@ -54,7 +54,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International application deadline, fall 2027 (applicants outside the U.S.)",
-      "notes": "Applicants already inside the U.S.: Aug. 1. The page prints deadlines without a year; treated as fall 2027. CDS C14 lists Aug. 1 as the general closing date with rolling admission from Aug. 1.",
+      "notes": "Applicants already inside the U.S.: Aug. 1. The page prints deadlines without a year, so fall 2027 is assumed. The Common Data Set lists Aug. 1 as the general closing date with rolling admission from Aug. 1.",
       "src": "intl"
     }
   ],
@@ -104,7 +104,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Newly admitted international degree-seeking undergraduates are automatically considered for an academic-merit scholarship of up to $6,000 per academic year ($3,000 per semester), renewable for up to four years; no separate application. CDS H6 also ticks institutional need-based and non-need-based aid for nonresidents, but no international need-based program is described on the CIE page.",
+    "notes": "Newly admitted international degree-seeking undergraduates are automatically considered for an academic-merit scholarship of up to $6,000 per academic year ($3,000 per semester), renewable for up to four years; no separate application. The Common Data Set also ticks institutional need-based and non-need-based aid for nonresidents, but no international need-based program is described on the CIE page.",
     "src": "intlcost"
   },
   "majors": [],

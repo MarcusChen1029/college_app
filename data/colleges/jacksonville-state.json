@@ -51,7 +51,7 @@
       "2.0-2.49": 7.7,
       "1.0-1.99": 0.1
     },
-    "notes": "CDS C1 (fall 2025): 3,951 men + 7,322 women applied, 2,858 + 5,398 were admitted, 1,641 enrolled (full- and part-time). The CDS leaves the in-state / out-of-state / international split of applicants and admits blank, so international applicant and admit counts are not available. No early decision or early action. Only 76 enrolled students submitted SAT scores (4.6%), so the SAT percentiles rest on a small group. Undergrad enrollment is the B1 total (9,028); intl_undergrads is the B2 nonresident total (231; IPEDS fall 2024 reports 373). The GPA distribution is as printed in C11 (30.2% at 4.0). Test-optional; the C7 importance checkboxes are not readable in the PDF, so no factors are recorded."
+    "notes": "From the Common Data Set (fall 2025): 3,951 men + 7,322 women applied, 2,858 + 5,398 were admitted, 1,641 enrolled (full- and part-time). The college did not report the in-state / out-of-state / international split of applicants and admits, so international applicant and admit counts are not available. No early decision or early action. Only 76 enrolled students sent SAT scores (4.6%), so the SAT percentiles rest on a small group. Undergraduate enrollment is 9,028 (total); international undergraduates number 231 (counted as nonresidents; IPEDS fall 2024 reports 373). The GPA breakdown is as printed (30.2% at 4.0). Test-optional; the admission-factor checkboxes are not readable in the PDF, so no factors are shown."
   },
   "scores_source": "cds",
   "scores": {
@@ -69,6 +69,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: test optional for admission; SAT/ACT can improve an admission decision. Students under a 3.0 cumulative GPA are admitted conditionally unless they have an 18+ ACT or equivalent SAT."
+    "notes": "From the Common Data Set: test optional for admission; SAT/ACT can improve an admission decision. Students under a 3.0 cumulative GPA are admitted conditionally unless they have an 18+ ACT or equivalent SAT."
   }
 }

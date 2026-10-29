@@ -27,7 +27,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "ACT is 'not required for admissions but may be requested when enrolling in classes to assist with placement'; MSSU has been test optional since August 2020 (CDS C8F).",
+    "notes": "ACT is 'not required for admissions but may be requested when enrolling in classes to assist with placement'; MSSU has been test optional since August 2020 (from the Common Data Set).",
     "src": "ft"
   },
   "requirements": {
@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": 60,
-    "notes": "Own online application; $60 non-refundable international fee (must be paid before acceptance). Freshmen must meet one of: 2.25 cumulative GPA, top 50% of class, or ACT 21 / SAT 1060 (per the international guide). Needs passport photo page, transcripts (university work needs a credential evaluation), proof of finances for one year, and a health center screening. After getting a visa, a $3,000 enrollment deposit is required. CDS C13 shows a $30 fee (resident rate) and an Aug 1 priority date with no closing date for first-year domestic applicants. No faith or interview requirement found.",
+    "notes": "Own online application; $60 non-refundable international fee (must be paid before acceptance). Freshmen must meet one of: 2.25 cumulative GPA, top 50% of class, or ACT 21 / SAT 1060 (per the international guide). Needs passport photo page, transcripts (university work needs a credential evaluation), proof of finances for one year, and a health center screening. After getting a visa, a $3,000 enrollment deposit is required. The Common Data Set shows a $30 fee (resident rate) and an Aug 1 priority date with no closing date for first-year domestic applicants. No faith or interview requirement found.",
     "src": "intl"
   },
   "deadlines": [
@@ -44,7 +44,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International fall 2027 application deadline",
-      "notes": "Fall = June 1 on the international page; no year is printed, taken as fall 2027. An older MSSU catalog page gave July 1.",
+      "notes": "Fall = June 1 on the international page; no year is printed, so fall 2027 is assumed. An older MSSU catalog page gave July 1.",
       "src": "intl"
     },
     {
@@ -52,7 +52,7 @@
       "plan": "ROLLING",
       "due": "2026-11-01",
       "label": "International spring 2027 application deadline",
-      "notes": "Spring = November 1; no year printed, taken as spring 2027 entry. Summer = April 1.",
+      "notes": "Spring = November 1; no year printed, so spring 2027 entry is assumed. Summer = April 1.",
       "src": "intl"
     }
   ],
@@ -87,7 +87,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": null,
     "merit_scholarships": true,
-    "notes": "MOSO International Achievement Scholarship $5,500 for the first year (24 credit hours) for freshmen educated outside the US with 2.75 high school GPA and the English minimums (renewable up to 8 semesters with 2.75 college GPA); MOSO First-Year International Award $1,000 one-time (2.25 GPA); MOSO International Retention Scholarship $1,000 ($500 per semester) after 24 credits with 3.0 GPA. CDS H6: 99 nonresidents received non-need-based aid, average $7,899. No international need-based aid found.",
+    "notes": "MOSO International Achievement Scholarship $5,500 for the first year (24 credit hours) for freshmen educated outside the US with 2.75 high school GPA and the English minimums (renewable up to 8 semesters with 2.75 college GPA); MOSO First-Year International Award $1,000 one-time (2.25 GPA); MOSO International Retention Scholarship $1,000 ($500 per semester) after 24 credits with 3.0 GPA. From the Common Data Set: 99 nonresidents received non-need-based aid, average $7,899. No international need-based aid found.",
     "src": "schol"
   },
   "majors": [],

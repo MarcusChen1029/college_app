@@ -45,7 +45,7 @@
     "applicants": 706,
     "pct_submit_sat": 4,
     "pct_submit_act": 99,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): 959 applicants and a 92% admit rate (67% of those admitted enrolled). The admitted count is left null because IPEDS gives only the rounded percentage. No Common Data Set was found for LSUA; international applicant/admit counts, residency splits and GPA are not available. Undergraduate enrollment (6,815) is the fall 2024 IPEDS total and includes many part-time, dual-enrollment and online students. SAT percentiles rest on only 26 submitters; 580 submitted ACT. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): 959 applicants and a 92% admit rate (67% of those admitted enrolled). For that year IPEDS gives only the rounded percentage, not the number admitted. No Common Data Set was found for LSUA; international applicant and admit counts, residency splits and GPA are not available. Undergraduate enrollment (6,815) is the fall 2024 IPEDS total and includes many part-time, dual-enrollment and online students. SAT percentiles rest on only 26 submitters; 580 submitted ACT. The applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate.",
     "admits": 654,
     "enrolled": 482
   },
@@ -85,6 +85,6 @@
     "room_board_usd": 9598,
     "other_usd": 3332,
     "total_coa_usd": 28780,
-    "notes": "College Navigator 2024-25 (tuition and fees): in-state $7,050, out-of-state $14,650; on-campus total expenses $21,180 in-state and $28,780 out-of-state (total shown is out-of-state). Current 2026-27 per-semester figures are in the cycle file."
+    "notes": "College Navigator 2024-25 (tuition and fees): in-state $7,050, out-of-state $14,650; on-campus total expenses $21,180 in-state and $28,780 out-of-state (total shown is out-of-state). Current 2026-27 per-semester figures are in the cycle file"
   }
 }

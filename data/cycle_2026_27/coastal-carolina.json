@@ -54,7 +54,7 @@
       "own"
     ],
     "app_fee_usd": null,
-    "notes": "Apply on Coastal's own application or the Common App. The fee is not stated consistently: the international freshman page and the CDS say $45, while the freshman application pages say $60, so it is left blank. Also required: at least 3 years of official secondary transcripts or national exam results (original language plus official English translation) emailed to internationaladmissions@coastal.edu, and a copy of a valid passport (no decision is made without it). The Confidential Financial Statement and bank documents are needed before the I-20, not for the admission decision. Test-optional applicants may be asked for recommendation letters and an essay or personal statement.",
+    "notes": "Apply on Coastal's own application or the Common App. The fee is not stated consistently: the international freshman page and the Common Data Set say $45, while the freshman application pages say $60, so no fee is shown. Also required: at least 3 years of official secondary transcripts or national exam results (original language plus official English translation) emailed to internationaladmissions@coastal.edu, and a copy of a valid passport (no decision is made without it). The Confidential Financial Statement and bank documents are needed before the I-20, not for the admission decision. Test-optional applicants may be asked for recommendation letters and an essay or personal statement.",
     "src": "ifr"
   },
   "deadlines": [
@@ -64,7 +64,7 @@
       "due": "2026-10-15",
       "notify": "2026-12-01",
       "label": "Early Decision (binding), fall 2027 entry (domestic freshman page; international pages list rolling admission only)",
-      "notes": "Apply Oct. 15, know Dec. 1, enroll by Jan. 15 (years not printed; treated as the 2026-27 cycle). Listed on the freshman application page; the international pages do not mention ED or EA.",
+      "notes": "Apply Oct. 15, know Dec. 1, enroll by Jan. 15 (no years are printed, so the 2026-27 cycle is assumed). Listed on the freshman application page; the international pages do not mention ED or EA.",
       "src": "fa"
     },
     {
@@ -90,7 +90,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International fall applicants: recommended completion date",
-      "notes": "The international FAQ says Coastal has rolling admission (space permitting) and recommends complete fall applications by June 1 (spring Nov. 1, summer May 1). The international merit page uses June 1 as its fall priority date. Printed without a year; treated as fall 2027.",
+      "notes": "The international FAQ says Coastal has rolling admission (space permitting) and recommends complete fall applications by June 1 (spring Nov. 1, summer May 1). The international merit page uses June 1 as its fall priority date. Printed without a year, so fall 2027 is assumed.",
       "src": "faq"
     }
   ],
@@ -144,7 +144,7 @@
     "meets_full_need": false,
     "merit_scholarships": true,
     "merit_separate_app": false,
-    "notes": "All international applicants are automatically considered for merit awards (no separate application) if admitted by the priority dates (June 1 fall for international applicants, or Oct. 15 / Nov. 15 / Feb. 1 for freshmen). International freshman awards per year: Presidential $19,662 (SAT 1390+/ACT 31+/TOEFL 110/IELTS 8.0/Duolingo 130 and an A average), President's $13,000 (1300+/28+/102/7.5/120, B+), Provost's $10,000 (1200+/25+/90/7.0/110, B+), Coastal Scholar $7,500 (SAT 1100+/ACT 22+/TOEFL 79/IELTS 6.5/Duolingo 105, B+), Teal Scholar $4,500 (SAT 1030+/ACT 20+/TOEFL 74/IELTS 6.5/Duolingo 100, B). Applicants applying test optional are not scored on SAT/ACT. Awards are renewable annually; funding historically runs out after the priority dates. Non-Resident Tuition Waivers (in-state rate, about $18,286 savings) are limited to the Sister-State Program (Rhineland-Palatinate, Thuringia, Brandenburg, Queensland, Taiwan) and a limited number for Aruba and Iceland. CDS H6: only non-need-based institutional aid for nonresidents; 78 recipients, average $27,105. International students are not eligible for federal aid.",
+    "notes": "All international applicants are automatically considered for merit awards (no separate application) if admitted by the priority dates (June 1 fall for international applicants, or Oct. 15 / Nov. 15 / Feb. 1 for freshmen). International freshman awards per year: Presidential $19,662 (SAT 1390+/ACT 31+/TOEFL 110/IELTS 8.0/Duolingo 130 and an A average), President's $13,000 (1300+/28+/102/7.5/120, B+), Provost's $10,000 (1200+/25+/90/7.0/110, B+), Coastal Scholar $7,500 (SAT 1100+/ACT 22+/TOEFL 79/IELTS 6.5/Duolingo 105, B+), Teal Scholar $4,500 (SAT 1030+/ACT 20+/TOEFL 74/IELTS 6.5/Duolingo 100, B). Applicants applying test optional are not scored on SAT/ACT. Awards are renewable annually; funding historically runs out after the priority dates. Non-Resident Tuition Waivers (in-state rate, about $18,286 savings) are limited to the Sister-State Program (Rhineland-Palatinate, Thuringia, Brandenburg, Queensland, Taiwan) and a limited number for Aruba and Iceland. Common Data Set: only non-need-based institutional aid for nonresidents; 78 recipients, average $27,105. International students are not eligible for federal aid.",
     "src": "merit"
   },
   "cost": {
@@ -156,7 +156,7 @@
     "other_usd": 4534,
     "total_coa_usd": 49736,
     "intl_merit_aid": true,
-    "notes": "From the international costs page (2026-27, fall and spring only): undergraduate out-of-state tuition and fees combined $31,301 (stored as tuition_intl_usd; in-state and separate fee amounts are not given for 2026-27); housing $7,830 + meals $4,728 = $12,558; books $1,342; other living expenses $4,534; estimated undergraduate cost of attendance $49,736. F-1/J-1 applicants must show funds at least equal to this total. The 2025-26 CDS figures are in the colleges file."
+    "notes": "From the international costs page (2026-27, fall and spring only): undergraduate out-of-state tuition and fees combined $31,301 (shown as international tuition; in-state and separate fee amounts are not given for 2026-27); housing $7,830 + meals $4,728 = $12,558; books $1,342; other living expenses $4,534; estimated undergraduate cost of attendance $49,736. F-1/J-1 applicants must show funds at least equal to this total. The 2025-26 Common Data Set figures are given separately"
   },
   "score_codes": {
     "sat": {

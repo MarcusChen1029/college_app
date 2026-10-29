@@ -52,7 +52,7 @@
     "intl_admits": 6040,
     "pct_submit_sat": 7.3,
     "pct_submit_act": 33.6,
-    "notes": "CDS C1/C9. GPA (C11/C12) is not reported; waitlist numbers blank. No early decision; nonbinding early action. Only about 41% of enrollees submitted SAT/ACT, so score ranges describe test submitters only."
+    "notes": "From the Common Data Set. GPA and waitlist numbers are not reported. No early decision; nonbinding early action. Only about 41% of enrollees sent SAT/ACT scores, so score ranges describe test submitters only."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -94,7 +94,7 @@
     "room_board_usd": 14672,
     "other_usd": 2358,
     "total_coa_usd": 32137,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 41368
   },
   "factors": {

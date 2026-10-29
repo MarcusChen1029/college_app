@@ -47,7 +47,7 @@
     "enrolled": 708,
     "pct_submit_sat": 24,
     "pct_submit_act": 12,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); no Wingate Common Data Set could be found online. College Navigator now shows fall 2024: 30,339 applicants, 91% admitted, 3% of admits enrolled (counts for admits not shown there). No international split, GPA or residency data. Undergraduate enrollment 2,673 is fall 2024 (College Navigator)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no Wingate Common Data Set could be found online. College Navigator now shows fall 2024: 30,339 applicants, 91% admitted, 3% of admits enrolled (counts for admits not shown there). No international split, GPA or residency data. Undergraduate enrollment of 2,673 is the fall 2024 figure (College Navigator)."
   },
   "scores": {
     "SAT_ERW": [

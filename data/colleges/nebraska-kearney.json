@@ -51,7 +51,7 @@
       "2.0-2.49": 4.22,
       "1.0-1.99": 0.68
     },
-    "notes": "CDS C1 (fall 2025 entering class). International applicants were admitted at a much lower rate (150 of 253, 59%) than in-state (87.6%) or out-of-state (79.4%) applicants; international enrollees: 28. Only 28 students submitted SAT scores (3%) and 723 submitted ACT (90%), so SAT percentiles rest on a very small sample. No early decision or early action, no waitlist. Undergrad count and intl_undergrads are the B1 totals (4,056 undergraduates, 240 nonresidents). The posted PDF looks like a working copy (placeholder text in the respondent block and 2024-2025 page headers) although its items are for fall 2025."
+    "notes": "From the Common Data Set (fall 2025 entering class). International applicants were admitted at a much lower rate (150 of 253, 59%) than in-state (87.6%) or out-of-state (79.4%) applicants; international enrollees: 28. Only 28 students submitted SAT scores (3%) and 723 submitted ACT (90%), so SAT percentiles rest on a very small sample. No early decision or early action, no waitlist. The undergraduate count and the number of international undergraduates are the totals (4,056 undergraduates, 240 nonresidents). The posted PDF looks like a working copy (placeholder text in the respondent block and 2024-2025 page headers) although its items are for fall 2025."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027): SAT/ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2027): SAT/ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2025-2026",
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 63,
     "intl_avg_award_usd": 4301,
-    "notes": "CDS G1 first-year figures: in-state tuition $7,320, nonresident tuition $15,990 ($533 x 30 credits), required fees $2,153, food and housing $12,294; G5 books $798. The CDS box says 2026-27 costs were not yet final when it was completed, so the in-state tuition, fees and books may be 2025-26 values; the nonresident rate and housing match the UNK 2026-27 international cost page. CDS H6: only institutional non-need-based aid is available to nonresidents; 63 nonresident undergraduates received it (average $4,301)."
+    "notes": "First-year figures from the Common Data Set: in-state tuition $7,320, nonresident tuition $15,990 ($533 x 30 credits), required fees $2,153, food and housing $12,294; books $798. The Common Data Set box says 2026-27 costs were not yet final when it was completed, so the in-state tuition, fees and books may be 2025-26 values; the nonresident rate and housing match the UNK 2026-27 international cost page. In the Common Data Set, only the college's own non-need-based aid is available to nonresidents; 63 nonresident undergraduates received it (average $4,301)"
   }
 }

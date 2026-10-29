@@ -67,7 +67,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1/C2/C9/C11/C12, fall 2025 entering class. Early action closes 11/1 (notified by 1/31); no early decision. SAT/ACT optional (considered if submitted). Only 35.5% of enrollees reported class rank."
+    "notes": "From the Common Data Set, fall 2025 entering class. Early action closes 11/1 (notified by 1/31); no early decision. SAT/ACT optional (considered if submitted). Only 35.5% of enrollees reported class rank."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 14520,
     "other_usd": 3238,
     "total_coa_usd": 29943,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 44191
   },
   "factors": {

@@ -55,7 +55,7 @@
     "pct_submit_act": 1,
     "gpa_avg": 3.29,
     "pct_reporting_gpa": 99.46,
-    "notes": "CDS 2024-2025 (fall 2024 entering class), C1: exact counts; the residency columns also include 3 applicants of unknown residency. International admit rate 687 of 761. Only 10% of enrollees submitted SAT and 1% ACT (C9), so the percentiles come from a small group. The GPA distribution and the C7 importance checkboxes were not machine-readable, so they are omitted. The 2025-2026 CDS was not found as a file (the university's archive page stops at 2024-25); this is the latest readable year."
+    "notes": "From the Common Data Set 2024-2025 (fall 2024 entering class): exact counts; the residency columns also include 3 applicants of unknown residency. International admit rate 687 of 761. Only 10% of enrollees sent SAT scores and 1% sent ACT scores, so the percentiles come from a small group. The GPA breakdown and the admission factor checkboxes could not be read automatically, so they are not shown. The 2025-2026 Common Data Set was not found as a file (the university's archive page stops at 2024-25); this is the latest readable year."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -87,6 +87,6 @@
     "books_usd": 1400,
     "room_board_usd": 18566,
     "other_usd": 1772,
-    "notes": "College Navigator (IPEDS 2024-25): tuition figures include required fees; room and board and other expenses are on-campus. International students are charged the out-of-state rate (the CDS also mentions a NEBHE regional rate for some New England states). The international admissions page asks for proof of funds of at least $54,000."
+    "notes": "College Navigator (IPEDS 2024-25): tuition figures include required fees; room and board and other expenses are on-campus. International students are charged the out-of-state rate (the CDS also mentions a NEBHE regional rate for some New England states). The international admissions page asks for proof of funds of at least $54,000"
   }
 }

@@ -21,7 +21,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "International page: SAT/ACT are optional (the checklist adds 'though highly recommended'); FAQ: neither is required, but they are recommended for the ISS undergraduate scholarship. CDS C8A marks SAT/ACT as required for some programs. A sufficient SAT/ACT verbal score can also satisfy the English requirement.",
+  "notes": "International page: SAT/ACT are optional (the checklist adds 'though highly recommended'); FAQ: neither is required, but they are recommended for the ISS undergraduate scholarship. The Common Data Set marks SAT/ACT as required for some programs. A sufficient SAT/ACT verbal score can also satisfy the English requirement.",
   "src": "faq"
  },
  "requirements": {
@@ -38,7 +38,7 @@
    "plan": "ROLLING",
    "due": "2027-04-15",
    "label": "International fall (August) application deadline",
-   "notes": "Spring entry Oct. 1, summer entry Feb. 1. Late applications are reviewed at the discretion of International Admissions. The page prints no year; taken as fall 2027. Domestic first-year priority date 12/1 and closing 2/1 appear in the CDS (C14) without a year.",
+   "notes": "Spring entry Oct. 1, summer entry Feb. 1. Late applications are reviewed at the discretion of International Admissions. The page prints no year, so fall 2027 is assumed. Domestic first-year priority date 12/1 and closing 2/1 appear in the Common Data Set without a year.",
    "src": "intl"
   }
  ],

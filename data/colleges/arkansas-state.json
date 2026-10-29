@@ -50,7 +50,7 @@
       "2.0-2.49": 2.44,
       "1.0-1.99": 0.5
     },
-    "notes": "CDS C1 (Fall 2025): men 4,270 + women 5,950 + 13 unknown applied; residency rows (in-state / out-of-state / international / unknown) sum to the totals. International applicants: 3,026 applied, 2,033 admitted (67%), 152 enrolled. CDS C6 checks open admission for all students; no early decision or early action; no waitlist. The PDF stores its numbers in an unreadable font encoding, so digits were decoded and every total was cross-checked against its parts. C7 factor and C8 policy checkboxes could not be read, so 'factors' is omitted. Undergraduate enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (11,189; 858 nonresident) and include non-degree/dual-credit students."
+    "notes": "From the Common Data Set (Fall 2025): men 4,270 + women 5,950 + 13 unknown applied; the in-state / out-of-state / international / unknown rows add up to the totals. International applicants: 3,026 applied, 2,033 admitted (67%), 152 enrolled. The Common Data Set checks open admission for all students; no early decision or early action; no waitlist. The PDF uses an unreadable font encoding, so digits were decoded and every total was cross-checked against its parts. The admission-factor and test-policy checkboxes could not be read, so admission factors are not shown. Undergraduate enrollment and nonresident count are the 'Total Undergraduates' figures (11,189; 858 nonresident) and include non-degree/dual-credit students."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -97,6 +97,6 @@
     "intl_merit_aid": true,
     "intl_need_aid_awarded": 693,
     "intl_avg_award_usd": 6435,
-    "notes": "CDS G1 (30 credit hours): in-state $323/credit, nonresident $600/credit. tuition_intl_usd = 30 x the $626 international per-credit rate on the A-State international tuition page (which adds a $350 per-term international fee, a $50 application fee, a $280 health-screening fee and $570-650/semester required health insurance; its own 2026-27 undergraduate estimate is $29,646 for a 12-credit year including dorm room and board). H6: only institutional non-need-based aid for nonresidents; 693 nonresidents received it (average $6,435)."
+    "notes": "From the Common Data Set (30 credit hours): in-state $323/credit, nonresident $600/credit. International tuition is shown as 30 x the $626 international per-credit rate on the A-State international tuition page (which adds a $350 per-term international fee, a $50 application fee, a $280 health-screening fee and $570-650/semester required health insurance; its own 2026-27 undergraduate estimate is $29,646 for a 12-credit year including dorm room and board). Only non-need-based aid from the college is available to nonresidents; 693 nonresidents received it (average $6,435)"
   }
 }

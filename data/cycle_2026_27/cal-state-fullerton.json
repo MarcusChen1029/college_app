@@ -119,7 +119,7 @@
   "room_board_usd": 24034,
   "other_usd": 1820,
   "total_coa_usd": 44397,
-  "notes": "CSUF estimate for one academic year (24 units): tuition and fees $18,543, living expenses $24,034, health insurance $1,820 (other), total $44,397. The page does not state the academic year; it is treated as current. No separate books line is given.",
+  "notes": "CSUF estimate for one academic year (24 units): tuition and fees $18,543, living expenses $24,034, health insurance $1,820 (shown under other costs), total $44,397. The page does not state the academic year, so it is assumed to be the current one. No separate books line is given",
   "src": "coa"
  },
  "tiers": {
@@ -133,6 +133,6 @@
   "humanities": "D"
  },
  "tier_notes": {
-  "general": "Very large Orange County public (about 37,000 undergraduates) that receives over 50,000 first-year applications, admits about 87-91%, and has no test requirement; D+ is an editorial judgment, not a ranking."
+  "general": "Very large Orange County public (about 37,000 undergraduates) that receives over 50,000 first-year applications, admits about 87-91%, and has no test requirement; D+ is our estimate, not from a published ranking."
  }
 }

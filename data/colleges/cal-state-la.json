@@ -54,7 +54,7 @@
    "2.0-2.49": 7.22,
    "1.0-1.99": 0.47
   },
-  "notes": "CDS C1 fall 2025 first-year class; totals are the residency-table sums (in-state 33,359 + out-of-state 2,539 + international 796 applicants; 31,008 + 1,744 + 457 admits; 2,905 + 0 + 15 enrolled). C1's gender lines add to slightly lower totals (35,898 applicants, 32,752 admits, 2,938 enrolled), an inconsistency in the CDS. International applicants were admitted at about 57% versus about 91% overall. College Navigator shows fall 2024: 32,723 applicants, 91% admitted. C11 GPA ranges and the 3.21 average (C12) are for all enrolled first-year students. SAT/ACT are not used in admission (CDS C8A), so no test score ranges are reported. Undergraduate enrollment is the College Navigator fall 2024 headcount (19,586); the CDS B1 undergraduate total (22,077) does not reconcile with its own degree-seeking lines, so it was not used. intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (733)."
+  "notes": "From the Common Data Set, fall 2025 first-year class; totals are the residency-table sums (in-state 33,359 + out-of-state 2,539 + international 796 applicants; 31,008 + 1,744 + 457 admits; 2,905 + 0 + 15 enrolled). The gender lines add to slightly lower totals (35,898 applicants, 32,752 admits, 2,938 enrolled), an inconsistency in the Common Data Set. International applicants were admitted at about 57% versus about 91% overall. College Navigator shows fall 2024: 32,723 applicants, 91% admitted. The GPA ranges and the 3.21 average are for all enrolled first-year students. SAT/ACT are not used in admission (per the Common Data Set), so no test score ranges are reported. Undergraduate enrollment is the College Navigator fall 2024 headcount (19,586); the Common Data Set undergraduate total (22,077) does not reconcile with its own degree-seeking lines, so that figure is not used. International undergraduates number 733 (degree-seeking nonresident undergraduates)."
  },
  "scores": {},
  "factors": {
@@ -80,7 +80,7 @@
  "cds_test_policy": {
   "cycle": "2026-27",
   "policy": "blind",
-  "notes": "CDS 2025-2026 C8A marks SAT/ACT as not used in admission decisions."
+  "notes": "The 2025-2026 Common Data Set marks SAT/ACT as not used in admission decisions."
  },
  "cost": {
   "year": "2026-2027",
@@ -88,6 +88,6 @@
   "intl_need_aid": null,
   "intl_need_aid_awarded": 8,
   "intl_avg_award_usd": 9042,
-  "notes": "CDS H6: 8 degree-seeking nonresident undergraduates received institutional scholarship or grant aid (need-based or non-need-based, the CDS does not say which), average $9,042, total $72,335. The CDS tuition fields were not used; costs come from Cal State LA's fee and cost-of-attendance pages."
+  "notes": "In the Common Data Set, 8 degree-seeking nonresident undergraduates received the college's own scholarship or grant aid (need-based or non-need-based, the Common Data Set does not say which), average $9,042, total $72,335. The Common Data Set tuition figures are not used; costs come from Cal State LA's fee and cost-of-attendance pages"
  }
 }

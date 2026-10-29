@@ -44,7 +44,7 @@
     "source": "ipeds_adm2023",
     "applicants": 755,
     "admits": 733,
-    "notes": "Baseline from IPEDS / College Navigator (fall 2024): 757 applicants, 100% admitted (rounded; the admit count is not shown), 19% of admitted enrolled. The newest Common Data Set UMPI posts is 2021-2022 (umpi.edu/about/common-data-set), so it was not used; SAT/ACT percentiles, GPA, intl applicants/admits and C7 factors are not filled in. IPEDS lists SAT/ACT as not considered, while the admissions site says scores are optional and can qualify a student for the Merit Award. Enrollment (2,758 undergraduates) includes UMPI's large online/competency-based YourPace program; admissions figures are not split out by on-campus vs online. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS (the US government's college data) and College Navigator (fall 2024): 757 applicants, 100% admitted (rounded; the admit count is not printed), 19% of admitted enrolled. The newest Common Data Set UMPI posts is 2021-2022 (umpi.edu/about/common-data-set), so it was not used; SAT/ACT percentiles, GPA, international applicants and admits, and the admission factors are not shown. IPEDS lists SAT/ACT as not considered, while the admissions site says scores are optional and can qualify a student for the Merit Award. Enrollment (2,758 undergraduates) includes UMPI's large online/competency-based YourPace program; admissions figures are not split out by on-campus vs online. The applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate.",
     "enrolled": 132
   }
 }

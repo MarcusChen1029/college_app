@@ -41,7 +41,7 @@
    "own"
   ],
   "app_fee_usd": 50,
-  "notes": "Own online application. International first-year applicants pay a $50 application fee (domestic applicants pay none). Need a 2.5 GPA on a 4.0 scale (SVSU converts it; below 2.5 may be admitted on probation), a passport copy and a high school transcript (unofficial accepted for the decision, official on arrival). No essay or recommendation required (CDS C7). Direct admission to Nursing and Occupational Therapy exists for domestic freshmen on the admissions page.",
+  "notes": "Own online application. International first-year applicants pay a $50 application fee (domestic applicants pay none). Need a 2.5 GPA on a 4.0 scale (SVSU converts it; below 2.5 may be admitted on probation), a passport copy and a high school transcript (unofficial accepted for the decision, official on arrival). No essay or recommendation required (per the Common Data Set). Direct admission to Nursing and Occupational Therapy exists for domestic freshmen on the admissions page.",
   "src": "fy"
  },
  "deadlines": [
@@ -50,7 +50,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International first-year application deadline, fall 2027",
-   "notes": "The page prints 'July 1' for Fall (Nov 1 for Winter) with no year; taken as fall 2027. International first-years cannot start in Spring or Summer. SVSU admits on a rolling basis with no application closing date in the CDS.",
+   "notes": "The page prints 'July 1' for Fall (Nov 1 for Winter) with no year, so fall 2027 is assumed. International first-years cannot start in Spring or Summer. SVSU admits on a rolling basis with no application closing date in the Common Data Set.",
    "src": "fy"
   }
  ],
@@ -99,7 +99,7 @@
   "books_usd": 1220,
   "other_usd": 2640,
   "total_coa_usd": 29920,
-  "notes": "International page (2026-27): block tuition $14,280 for 12-18 credits per semester, housing and meals $13,000 (optional), miscellaneous $2,640 including mandatory health insurance; estimated total $29,920 (excludes the $1,220 books estimate). Out-of-state and international students have a standard tuition rate of $24,000 that the Red & White Scholarship reduces to $14,280 automatically. No fees for freshmen and sophomores; professional fees apply to select juniors and seniors.",
+  "notes": "International page (2026-27): block tuition $14,280 for 12-18 credits per semester, housing and meals $13,000 (optional), miscellaneous $2,640 including mandatory health insurance; estimated total $29,920 (excludes the $1,220 books estimate). Out-of-state and international students have a standard tuition rate of $24,000 that the Red & White Scholarship reduces to $14,280 automatically. No fees for freshmen and sophomores; professional fees apply to select juniors and seniors",
   "src": "aid"
  },
  "aid": {
@@ -108,7 +108,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "All applications are reviewed for scholarships with no separate application; awards renew with satisfactory progress. Red & White Award (largest; cuts international tuition from $24,000 to the resident rate of $14,280), President's International Scholarship ($1,000-$5,000 per year, competitive), Global Bridge Scholarship ($1,000-$5,000 per year), YES/FLEX Alumni Scholarship ($1,500 per year), GAC Pathway Scholarship ($2,000 one time). CDS H6: 245 nonresidents received institutional aid, average $11,403.",
+  "notes": "All applications are reviewed for scholarships with no separate application; awards renew with satisfactory progress. Red & White Award (largest; cuts international tuition from $24,000 to the resident rate of $14,280), President's International Scholarship ($1,000-$5,000 per year, competitive), Global Bridge Scholarship ($1,000-$5,000 per year), YES/FLEX Alumni Scholarship ($1,500 per year), GAC Pathway Scholarship ($2,000 one time). In the Common Data Set, 245 nonresidents received institutional aid, average $11,403.",
   "src": "aid"
  },
  "majors": [],

@@ -45,7 +45,7 @@
     "applicants": 4381,
     "admits": 3966,
     "enrolled": 454,
-    "notes": "Baseline from IPEDS ADM2023 (fall 2023 entering class; exact counts). No Common Data Set was found on saintpeters.edu or by web search (the Fact Book is behind a login), so there is no international split, GPA or SAT/ACT data; Saint Peter's reports no SAT/ACT percentiles to IPEDS (test-optional). College Navigator fall 2024: 5,217 applicants, 90% admitted, 11% of admits enrolled (admit counts not shown)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). No Common Data Set was found on saintpeters.edu or by web search (the Fact Book is behind a login), so there is no international split, GPA or SAT/ACT data; Saint Peter's reports no SAT/ACT percentiles to IPEDS (test-optional). College Navigator fall 2024: 5,217 applicants, 90% admitted, 11% of admits enrolled (admit counts not shown)."
   },
   "cds_test_policy": {
     "cycle": "2026-27",
@@ -59,6 +59,6 @@
     "tuition_out_of_state_usd": 41770,
     "tuition_intl_usd": 41770,
     "required_fees_usd": 1400,
-    "notes": "Saint Peter's Student Accounts, 2026-27 College of Arts & Sciences full-time flat rate $20,885 per semester ($41,770 per year, 12-18 credits); comprehensive fee $1,400 per year; one rate for all students (no separate non-resident or international rate listed). First-year double room $7,800 per year (Millennium or Whelan Hall); meal plans $3,990-$7,070 per year. Room and board total, books and other expenses are not summed because they depend on the housing and meal plan chosen. College Navigator 2024-25 estimates: books and supplies $1,000, on-campus food and housing $17,794, off-campus food and housing $7,500."
+    "notes": "Saint Peter's Student Accounts, 2026-27 College of Arts & Sciences full-time flat rate $20,885 per semester ($41,770 per year, 12-18 credits); comprehensive fee $1,400 per year; one rate for all students (no separate non-resident or international rate listed). First-year double room $7,800 per year (Millennium or Whelan Hall); meal plans $3,990-$7,070 per year. Room and board total, books and other expenses are not summed because they depend on the housing and meal plan chosen. College Navigator 2024-25 estimates: books and supplies $1,000, on-campus food and housing $17,794, off-campus food and housing $7,500"
   }
 }

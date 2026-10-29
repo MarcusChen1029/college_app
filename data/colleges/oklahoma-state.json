@@ -57,7 +57,7 @@
       "2.0-2.49": 0.78,
       "1.0-1.99": 0.12
     },
-    "notes": "CDS C1 (fall 2025). International (non-resident, by address at application) admit rate was only 305 of 1,655 (18%), far below the in-state 74% and out-of-state 79%, so do not assume an easy admit for international applicants who miss the 3.0 GPA + English 'assured admission' criteria. No waitlist; no early decision or early action. Undergrad enrollment is B1 total undergraduates (23,003); intl_undergrads is the B2 nonresident total (418). SAT composite 25/50/75 = 1060/1160/1250. GPA distribution is the 'all enrolled students' column (sums to 100.02)."
+    "notes": "From the Common Data Set (fall 2025). The international (non-resident, by address at application) admit rate was only 305 of 1,655 (18%), far below the in-state 74% and out-of-state 79%, so do not assume an easy admit for international applicants who miss the 3.0 GPA + English 'assured admission' criteria. No waitlist; no early decision or early action. Undergraduate enrollment is 23,003 (total undergraduates); international undergraduates number 418 (nonresident total). SAT composite 25/50/75 = 1060/1160/1250. The GPA breakdown is the 'all enrolled students' column (sums to 100.02)."
   },
   "scores_source": "cds",
   "scores": {
@@ -110,7 +110,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027): SAT/ACT use is marked as not required for admission; the CDS says students may apply 'without consideration of a test score' and be reviewed on their high school transcript."
+    "notes": "Common Data Set (fall 2027): SAT/ACT use is marked as not required for admission; the Common Data Set says students may apply 'without consideration of a test score' and be reviewed on their high school transcript."
   },
   "cost": {
     "year": "2025-2026",
@@ -125,6 +125,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 169,
     "intl_avg_award_usd": 10492,
-    "notes": "CDS G1/G5 (first-year, 2025-26): tuition is 30 credit hours at $180.55 resident / $697.90 nonresident per credit hour ($5,416.50 / $20,937.00); room and board is the on-campus food-and-housing figure. Transportation estimate $2,300 not included in other_usd. CDS H6: institutional need-based and non-need-based aid are both available to nonresidents; 169 nonresident undergraduates received it (avg $10,492)."
+    "notes": "First-year costs from the Common Data Set (2025-26): tuition is 30 credit hours at $180.55 resident / $697.90 nonresident per credit hour ($5,416.50 / $20,937.00); housing and food is the on-campus figure. The transportation estimate of $2,300 is not included in other costs. The college's own need-based and non-need-based aid are both available to nonresidents; 169 nonresident undergraduates received it (avg $10,492)"
   }
 }

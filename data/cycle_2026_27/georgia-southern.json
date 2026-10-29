@@ -38,7 +38,7 @@
    "kind": "priority",
    "due": "2027-04-01",
    "label": "Priority international undergraduate admission (fall 2027)",
-   "notes": "The international FAQ says priority admission for fall is typically the preceding April 1 (spring: Nov. 1). Dates print without a year; treated as fall 2027.",
+   "notes": "The international FAQ says priority admission for fall is typically the preceding April 1 (spring: Nov. 1). Dates are printed without a year, so fall 2027 is assumed.",
    "src": "faq"
   },
   {
@@ -90,7 +90,7 @@
   "other_usd": 4200,
   "intl_extra_fees_usd": 2936,
   "total_coa_usd": 37590,
-  "notes": "International page 'Annual Cost Estimate for Undergraduate Students (2026-2027)': tuition and fees $18,550 (12 credit hours), room and board $11,904, health insurance $2,936, personal expenses (books, supplies, transportation, entertainment) $4,200, total $37,590 (the page labels the total '2024-2025' by mistake). An I-20 requires proof of funds for at least one year of expenses.",
+  "notes": "International page 'Annual Cost Estimate for Undergraduate Students (2026-2027)': tuition and fees $18,550 (12 credit hours), room and board $11,904, health insurance $2,936, personal expenses (books, supplies, transportation, entertainment) $4,200, total $37,590 (the page labels the total '2024-2025' by mistake). An I-20 requires proof of funds for at least one year of expenses",
   "src": "ar"
  },
  "aid": {

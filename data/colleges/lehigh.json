@@ -57,7 +57,7 @@
     "ed_admits": 966,
     "pct_submit_sat": 33.03,
     "pct_submit_act": 10.29,
-    "notes": "Fall 2025 entering class. Lehigh did not report average high-school GPA or the GPA distribution (C11/C12 blank). ED figure (C21) covers Early Decision. SAT/ACT submission is optional: scores are considered only if the applicant asks to have them added."
+    "notes": "Fall 2025 entering class. Lehigh did not report the average high-school GPA or the GPA breakdown. The ED figure covers Early Decision. SAT/ACT submission is optional: scores are considered only if the applicant asks to have them added."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 18180,
     "other_usd": 1500,
     "total_coa_usd": 84497,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

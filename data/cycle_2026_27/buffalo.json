@@ -60,7 +60,7 @@
    "plan": "RD",
    "due": "2027-02-01",
    "label": "Regular Decision application completion deadline",
-   "notes": "Applications can continue to be submitted after this date until capacity is reached. Page states these dates for the international first-year tab; no year is printed, so they are taken as the current cycle (application opens Aug 1).",
+   "notes": "Applications can continue to be submitted after this date until capacity is reached. The page states these dates for the international first-year tab; no year is printed, so the current cycle is assumed (application opens Aug 1).",
    "src": "intl"
   },
   {

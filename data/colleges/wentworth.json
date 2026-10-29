@@ -50,7 +50,7 @@
       "2.50-2.99": 14.36,
       "2.0-2.49": 1.72
     },
-    "notes": "CDS C1 (fall 2025 entering class). International: 609 applied, 460 admitted (76%), 44 enrolled; overall admit rate 88%. The CDS also lists 5 applicants/admits of unknown residency. Early decision: C21 is answered No in the CDS, but the admissions site now lists an Early Decision round (see cycle file). No waitlist (C2). GPA distribution is the 'all enrolled students' column of C11. SAT/ACT submitted by 22%/2% of enrollees (test-optional). Undergrad enrollment is B1 total undergraduates (4,182); intl_undergrads is the B2 total nonresident-alien undergraduates (171)."
+    "notes": "Figures from the Common Data Set (fall 2025 entering class). International: 609 applied, 460 admitted (76%), 44 enrolled; overall admit rate 88%. The Common Data Set also lists 5 applicants/admits of unknown residency. Early decision: the Common Data Set answers No, but the admissions site now lists an Early Decision round (see Wentworth's deadlines). No waitlist. The GPA breakdown is the 'all enrolled students' column. 22% of enrollees sent SAT scores and 2% sent ACT scores (test-optional). Undergraduate enrollment is 4,182 (total undergraduates); international undergraduates number 171 (total nonresident-alien undergraduates)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -77,7 +77,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT/ACT 'not required for admission, but considered if submitted'. The admissions site says Wentworth adopted a test-optional policy in 2018."
+    "notes": "Common Data Set: SAT/ACT 'not required for admission, but considered if submitted'. The admissions site says Wentworth adopted a test-optional policy in 2018."
   },
   "cost": {
     "year": "2025-2026",
@@ -92,6 +92,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 158,
     "intl_avg_award_usd": 9677,
-    "notes": "CDS G1 (first-year, private institution, one tuition for all; room only $12,845, food only $6,706). The CDS G0 box says 2026-27 costs were not yet available, so these are most likely the 2025-26 figures. CDS H6 (checked 'need-based'): 158 nonresident undergraduates received institutional aid, average $9,677 (total $3,096,780). The international admissions page says a limited International Grant is available starting with fall 2026 applicants, and asks for proof of funds of USD $71,382."
+    "notes": "First-year costs from the Common Data Set (private institution, one tuition for all; room only $12,845, food only $6,706). The Common Data Set says 2026-27 costs were not yet available, so these are most likely the 2025-26 figures. The Common Data Set marks the college's own aid as 'need-based': 158 nonresident undergraduates received institutional aid, average $9,677 (total $3,096,780). The international admissions page says a limited International Grant is available starting with fall 2026 applicants, and asks for proof of funds of USD $71,382"
   }
 }

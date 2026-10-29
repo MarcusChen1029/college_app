@@ -27,7 +27,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "The international freshman page asks for SAT/ACT only from applicants whose native language is English (480 EBRW + 440 Math, or ACT 17 English or 17 Reading and 17 Math, only for those within 5 years of high school with under 30 college credits); applicants whose native language is not English prove English proficiency instead. The page says the test requirement is waived with a 3.0 in the required high school curriculum 'through Summer 2024', so it may be out of date. CDS C8A (2024-2025) lists SAT/ACT as 'required for some'.",
+    "notes": "The international freshman page asks for SAT/ACT only from applicants whose native language is English (480 EBRW + 440 Math, or ACT 17 English or 17 Reading and 17 Math, only for those within 5 years of high school with under 30 college credits); applicants whose native language is not English prove English proficiency instead. The page says the test requirement is waived with a 3.0 in the required high school curriculum 'through Summer 2024', so it may be out of date. The Common Data Set (2024-2025) lists SAT/ACT as 'required for some'.",
     "src": "intl"
   },
   "requirements": {
@@ -44,7 +44,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International freshman application deadline - fall 2027 entry",
-      "notes": "Page prints 'June 1' with no year; taken as fall 2027. Spring term deadline Nov 1; summer term deadline is March 1 on the freshmen page but May 1 on the FAQ page.",
+      "notes": "The page gives 'June 1' with no year, so fall 2027 is assumed. Spring term deadline Nov 1; summer term deadline is March 1 on the freshmen page but May 1 on the FAQ page.",
       "src": "intl"
     }
   ],
@@ -93,7 +93,7 @@
     "intl_need_aid": null,
     "intl_aid_policy": null,
     "merit_scholarships": null,
-    "notes": "The FAQ says F-1 students can apply for 'a limited number of service scholarships' through the Center for Global Engagement; no amounts are published. The scholarships page does not say whether international students qualify for institutional awards, and CDS H6 (nonresident aid policy) was unreadable. Conditional admission is available: students with insufficient English enroll in the English Language Institute until they meet the TOEFL minimum (up to three semesters). Health insurance is required and billed with tuition and fees.",
+    "notes": "The FAQ says F-1 students can apply for 'a limited number of service scholarships' through the Center for Global Engagement; no amounts are published. The scholarships page does not say whether international students qualify for institutional awards, and the Common Data Set's nonresident aid policy was unreadable. Conditional admission is available: students with insufficient English enroll in the English Language Institute until they meet the TOEFL minimum (up to three semesters). Health insurance is required and billed with tuition and fees.",
     "src": "faq"
   },
   "score_codes": {

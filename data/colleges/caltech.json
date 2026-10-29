@@ -41,7 +41,7 @@
     "waitlist_admitted": 1,
     "pct_submit_sat": 78,
     "pct_submit_act": 22,
-    "notes": "Restrictive early action (no ED): CDS C22 lists EA closing 11/1, notification 12/15; no ED plan (C21 = No). Applicants = 7,772 men + 3,513 women; admits = 224 + 204. C1 residency table and C11/C12 (GPA) are blank in the CDS; C10: 97.3% of the 14.9% who reported rank were in the top tenth. I2 student-to-faculty ratio is 7 to 1 overall (3 to 1 for undergraduates). 37 of the 248 enrolled first-years are nonresidents (B2)."
+    "notes": "Restrictive early action (no ED): the Common Data Set lists EA closing 11/1, notification 12/15; no ED plan. Applicants = 7,772 men + 3,513 women; admits = 224 + 204. Caltech did not report the residency table or GPA in the Common Data Set; 97.3% of the 14.9% who reported rank were in the top tenth. The student-to-faculty ratio is 7 to 1 overall (3 to 1 for undergraduates). 37 of the 248 enrolled first-years are nonresidents."
   },
   "scores": {
     "SAT_ERW": [760, 760, 780],
@@ -81,6 +81,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 59,
     "intl_avg_award_usd": 85696,
-    "notes": "CDS G1 (first-year, 2026-2027): tuition $68,574, required fees $3,255, food and housing $21,996; G5 residents: books $1,428, other expenses $3,969. H6: need-based institutional aid for nonresidents, 59 awarded, average $85,696, total $5,056,044. SAT composite percentiles are blank in CDS C9 (only section scores reported)."
+    "notes": "From the Common Data Set (first-year, 2026-2027): tuition $68,574, required fees $3,255, food and housing $21,996; estimated expenses for residents: books $1,428, other expenses $3,969. The college's own need-based aid for nonresidents: 59 awarded, average $85,696, total $5,056,044. SAT composite percentiles are blank in the Common Data Set (only section scores reported)"
   }
 }

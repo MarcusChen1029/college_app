@@ -44,6 +44,6 @@
     "applicants": 3546,
     "admits": 3018,
     "enrolled": 410,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on the University's website or by web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 3,546 applicants, 3,018 admitted, 410 enrolled (396 full-time + 14 part-time); fall 2023 was 3,775 / 3,195 / 489. UMSV is test-optional: only 8 enrolled first-time students (2%) submitted SAT scores in fall 2024, so SAT/ACT percentiles are not shown. International applicant counts and GPA data are not published. College Navigator shows 3% of undergraduates as U.S. nonresidents and 6% of first-time students from foreign countries. Undergraduate enrollment (2,725) includes 837 transfer-in students."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found on the University's website or by web search. Counts from the IPEDS file (via the Urban Institute API mirror): 3,546 applicants, 3,018 admitted, 410 enrolled (396 full-time + 14 part-time); fall 2023 was 3,775 / 3,195 / 489. UMSV is test-optional: only 8 enrolled first-time students (2%) submitted SAT scores in fall 2024, so SAT/ACT percentiles are not shown. International applicant counts and GPA data are not published. College Navigator shows 3% of undergraduates as U.S. nonresidents and 6% of first-time students from foreign countries. Undergraduate enrollment (2,725) includes 837 transfer-in students."
   }
 }

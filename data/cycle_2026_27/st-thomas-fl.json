@@ -33,7 +33,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "Priority deadline, fall 2027 entry (rolling)",
-   "notes": "Catalog: applications are reviewed on a rolling basis; the application opens July 1; the fall priority deadline is May 1 and the spring one is December 1. Late applications face limits on scholarships, courses, orientation and housing. Dates print without a year (treated as fall 2027); no separate international deadline is published.",
+   "notes": "Catalog: applications are reviewed on a rolling basis; the application opens July 1; the fall priority deadline is May 1 and the spring one is December 1. Late applications face limits on scholarships, courses, orientation and housing. Dates print without a year (so fall 2027 is assumed); no separate international deadline is published.",
    "src": "cat"
   }
  ],
@@ -85,7 +85,7 @@
  "cost": {
   "year": "2025-2026",
   "tuition_usd": 34554,
-  "notes": "2025-26 catalog: full-time undergraduate flat tuition $17,277 per semester (12-18 credits), so $34,554 per year; the same rate is shown for 2026 programs. Fees, room and board vary by hall and meal plan (for example a double room $4,030-$4,150 per semester and a 14-meal plan $2,825 per semester), so a single room-and-board figure is left null. College Navigator 2024-25 lists food and housing of $13,210.",
+  "notes": "2025-26 catalog: full-time undergraduate flat tuition $17,277 per semester (12-18 credits), so $34,554 per year; the same rate is shown for 2026 programs. Fees, room and board vary by hall and meal plan (for example a double room $4,030-$4,150 per semester and a 14-meal plan $2,825 per semester), so a single room-and-board figure is not shown. College Navigator 2024-25 lists food and housing of $13,210",
   "src": "cat"
  },
  "aid": {

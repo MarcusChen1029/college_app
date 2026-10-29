@@ -57,7 +57,7 @@
     "ed_admits": 1889,
     "pct_submit_sat": 43,
     "pct_submit_act": 13,
-    "notes": "Fall 2025 entering class. intl = CDS 'nonresidents'. Cornell does not report GPA (C11/C12 blank). C21 ED counts read from the CDS-C sheet (the xlsx Answer Sheet tab misaligns them)."
+    "notes": "Fall 2025 entering class. International means the Common Data Set's 'nonresidents'. Cornell does not report GPA. ED counts were read from the Common Data Set's section C sheet (the Excel Answer Sheet tab misaligns them)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 20574,
     "other_usd": 2208,
     "total_coa_usd": 92093,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",
@@ -124,6 +124,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "required",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT required to be considered."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT required to be considered."
   }
 }

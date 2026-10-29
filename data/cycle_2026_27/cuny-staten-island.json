@@ -80,7 +80,7 @@
       "plan": "ROLLING",
       "due": "2026-12-01",
       "label": "International first-year application deadline (fall 2027 entry)",
-      "notes": "Fall: application due December 1 and supporting documents due December 15 (CSI international page; same as the CUNY-wide international column). The pages print no year, so treated as fall 2027. CSI's general admissions calendar shows February 1 as the (domestic) priority date, with first decisions March 15 and an April 30 end of the application period; the international dates above are used.",
+      "notes": "Fall: application due December 1 and supporting documents due December 15 (CSI international page; same as the CUNY-wide international column). The pages give no year, so fall 2027 is assumed. CSI's general admissions calendar shows February 1 as the (domestic) priority date, with first decisions March 15 and an April 30 end of the application period; the international dates above are the ones shown.",
       "src": "fy"
     },
     {
@@ -140,7 +140,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "CSI: international students pay out-of-state tuition and fees. CSI, the CSI Foundation and departments award scholarships for academic excellence and service; the international cost page does not say whether international students are eligible, so the policy is left null.",
+    "notes": "CSI: international students pay out-of-state tuition and fees. CSI, the CSI Foundation and departments award scholarships for academic excellence and service; the international cost page does not say whether international students are eligible, so no aid policy is shown.",
     "src": "cost"
   },
   "score_codes": {
@@ -188,6 +188,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: about 92% of applicants admitted (College Navigator fall 2024), CUNY test-optional, and the lowest English minimums among CUNY four-year colleges (TOEFL 45 / IELTS 5.0), so an SAT ~1100 international applicant is a very likely admit."
+    "general": "Our estimate: about 92% of applicants admitted (College Navigator fall 2024), CUNY test-optional, and the lowest English minimums among CUNY four-year colleges (TOEFL 45 / IELTS 5.0), so an SAT ~1100 international applicant is a very likely admit."
   }
 }

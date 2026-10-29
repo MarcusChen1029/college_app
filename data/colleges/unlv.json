@@ -33,7 +33,7 @@
     "enrolled": 4583,
     "pct_submit_sat": 11,
     "pct_submit_act": 67,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). UNLV's 2025-26 and 2024-25 Common Data Set PDFs on it.unlv.edu have no readable text layer for the filled-in values (only the blank form text extracts), so the IPEDS baseline is used; GPA, residency splits and factors are not added. Undergrad enrollment (25,794) and nonresident undergrads (446) are IPEDS fall 2023 (EF2023A); student-faculty ratio 19 to 1 is College Navigator (fall 2024). College Navigator also shows fall 2024: 12,730 applicants, 96% admitted."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). UNLV's 2025-26 and 2024-25 Common Data Set PDFs on it.unlv.edu have no readable text layer for the filled-in values (only the blank form text extracts), so IPEDS figures are shown instead; GPA, residency splits and admission factors are not shown. Undergraduate enrollment (25,794) and nonresident undergraduates (446) are IPEDS fall 2023 figures; student-faculty ratio 19 to 1 is College Navigator (fall 2024). College Navigator also shows fall 2024: 12,730 applicants, 96% admitted."
   },
   "scores": {
     "SAT_ERW": [

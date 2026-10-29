@@ -44,7 +44,7 @@
       "2.0-2.49": 4.3,
       "1.0-1.99": 0.02
     },
-    "notes": "CDS C1 (fall 2025): 4,595 men + 5,493 women + 1 unknown applied, 4,379 + 5,324 + 1 admitted, 4,280 enrolled (1,996 men + 2,284 women). The in-state / out-of-state / international split of applicants and admits (C1 residency table) is blank, so international applicant and admit counts are not available; CDS B2 counts 56 nonresident first-time first-year students enrolled. Undergrad enrollment is the B1 total (19,321); intl_undergrads is the B2 nonresident total (270). No waitlist; no early decision or early action. SAT composite 25/50/75 = 1010/1100/1200 (ERW 510/560/620, Math 480/540/590); ACT composite 18/21/25. The fall 2025 admit rate is about 96%; current bachelor's admission routes (GPA-only or freshman index) are in the test policy."
+    "notes": "From the Common Data Set (fall 2025): 4,595 men + 5,493 women + 1 unknown applied, 4,379 + 5,324 + 1 admitted, 4,280 enrolled (1,996 men + 2,284 women). The in-state / out-of-state / international split of applicants and admits (residency table) is blank, so international applicant and admit counts are not available; the Common Data Set counts 56 nonresident first-time first-year students enrolled. Undergraduate enrollment is the total (19,321); the number of international undergraduates is the nonresident total (270). No waitlist; no early decision or early action. SAT composite 25/50/75 = 1010/1100/1200 (ERW 510/560/620, Math 480/540/590); ACT composite 18/21/25. The fall 2025 admit rate is about 96%; current bachelor's admission routes (GPA-only or freshman index) are in the test policy."
   },
   "scores_source": "cds",
   "scores": {
@@ -102,7 +102,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. C7 still marks standardized test scores as Very Important."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. The Common Data Set's admission factors still mark standardized test scores as Very Important."
   },
   "cost": {
     "year": "2026-2027",
@@ -114,6 +114,6 @@
     "room_board_usd": 12008,
     "books_usd": 1520,
     "other_usd": 2600,
-    "notes": "CDS G1 and G5 (first-year, 2026-27): in-state $5,730, out-of-state $21,150, nonresident $21,780, required fees $1,180, housing $7,164 + food $4,844. CDS G0 is checked to say final 2026-27 costs were not yet available (expected June), so the figures may be provisional; check the tuition estimator. Per credit hour (G6): $191 in-state. Transportation estimate $1,340 not included. Admissions says international applicants must prove about $43,000 (bachelor's) in funds and pay a one-time $200 international student fee on the Dahlonega campus; USG requires billed international student health insurance."
+    "notes": "From the Common Data Set (first-year, 2026-27): in-state $5,730, out-of-state $21,150, nonresident $21,780, required fees $1,180, housing $7,164 + food $4,844. A Common Data Set box is checked to say final 2026-27 costs were not yet available (expected June), so the figures may be provisional; check the tuition estimator. Per credit hour: $191 in-state. Transportation estimate $1,340 not included. Admissions says international applicants must prove about $43,000 (bachelor's) in funds and pay a one-time $200 international student fee on the Dahlonega campus; USG requires billed international student health insurance"
   }
 }

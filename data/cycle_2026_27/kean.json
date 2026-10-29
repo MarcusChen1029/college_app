@@ -57,7 +57,7 @@
       "plan": "ROLLING",
       "due": "2027-04-30",
       "label": "Preferred international freshman application deadline (fall 2027)",
-      "notes": "Applications are accepted on a rolling basis after this date. The FAQ prints no year; taken as fall 2027.",
+      "notes": "Applications are accepted on a rolling basis after this date. The FAQ prints no year, so fall 2027 is assumed.",
       "src": "faq"
     },
     {
@@ -123,7 +123,7 @@
     "books_usd": 1280,
     "other_usd": 3536,
     "total_coa_usd": 41422,
-    "notes": "Cost of attendance 2026-27, full-time undergraduate living on campus (double occupancy): tuition and fees $16,370, housing and food $20,168, books $1,280, transportation $1,620, personal $1,916, loan fees $68, total $41,422. Tuition = 2 x $6,788.50 and fees = $2,793.67 (rounded) per the Student Accounting schedule. Out-of-state tuition no longer exists (Board vote of Sept 15, 2025, effective fall 2026), so international students pay this single rate."
+    "notes": "Cost of attendance 2026-27, full-time undergraduate living on campus (double occupancy): tuition and fees $16,370, housing and food $20,168, books $1,280, transportation $1,620, personal $1,916, loan fees $68, total $41,422. Tuition = 2 x $6,788.50 and fees = $2,793.67 (rounded) per the Student Accounting schedule. Out-of-state tuition no longer exists (Board vote of Sept 15, 2025, effective fall 2026), so international students pay this single rate"
   },
   "score_codes": {
     "sat": {

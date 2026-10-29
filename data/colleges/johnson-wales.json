@@ -47,7 +47,7 @@
     "enrolled": 1056,
     "pct_submit_sat": 14,
     "pct_submit_act": 2,
-    "notes": "Baseline from IPEDS via College Navigator (fall 2024). JWU does not publish a Common Data Set that could be found (jwu.edu is behind a bot-protection page); the www.jwu.edu pages could not be read, so deadlines, test policy and requirements come from the JWU online catalog. College Navigator prints 7,828 applicants and 88% admitted (85% men, 90% women) but not the admit count, so admits is left null rather than back-computed; 16% of admitted students enrolled. Undergraduate enrollment is fall 2024 (3,908 of 4,303 total). International applicant counts, GPA, ED and residency splits are not available from this source. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator (fall 2024). No Common Data Set from JWU could be found (jwu.edu is behind a bot-protection page); the www.jwu.edu pages could not be read, so deadlines, test policy and requirements come from the JWU online catalog. College Navigator prints 7,828 applicants and 88% admitted (85% men, 90% women) but not the admit count, so the number admitted is not worked out from the percentage; 16% of admitted students enrolled. Undergraduate enrollment is fall 2024 (3,908 of 4,303 total). International applicant counts, GPA, ED and residency splits are not available from this source. The applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate."
   },
   "scores": {
     "SAT_ERW": [

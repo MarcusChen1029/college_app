@@ -54,7 +54,7 @@
       "own"
     ],
     "app_fee_usd": 0,
-    "notes": "Apply with the free Loyola application or the Common App; Loyola reviews both equally. CDS C13 reports no application fee. A high school transcript is required (non-English transcripts need an official course-by-course evaluation; SPANTRAN recommended). The international page says the affidavit of financial support and a passport copy are needed after admission/enrollment for I-20 processing, not to complete the application. Essay and recommendations are rated 'not considered' in CDS C7; audition or portfolio material is required for music, theatre, design, visual arts, music industry and digital film applicants. Deadlines are the same for domestic and international students.",
+    "notes": "Apply with the free Loyola application or the Common App; Loyola reviews both equally. The Common Data Set reports no application fee. A high school transcript is required (non-English transcripts need an official course-by-course evaluation; SPANTRAN recommended). The international page says the affidavit of financial support and a passport copy are needed after admission/enrollment for I-20 processing, not to complete the application. Essay and recommendations are rated 'not considered' in the Common Data Set; audition or portfolio material is required for music, theatre, design, visual arts, music industry and digital film applicants. Deadlines are the same for domestic and international students.",
     "src": "intl"
   },
   "deadlines": [
@@ -72,7 +72,7 @@
       "plan": "RD",
       "due": "2027-02-15",
       "label": "Priority admission (fall 2027 entry)",
-      "notes": "Page: priority applicants are considered for all scholarship and financial aid packages. Year not printed; treated as fall 2027.",
+      "notes": "The page says priority applicants are considered for all scholarship and financial aid packages. It gives no year, so fall 2027 is assumed.",
       "src": "fy"
     },
     {
@@ -80,7 +80,7 @@
       "plan": "RD",
       "due": "2027-04-15",
       "label": "Regular admission (fall 2027 entry)",
-      "notes": "Applications after this date are considered 'as space and funds are available.' Year not printed; treated as fall 2027.",
+      "notes": "Applications after this date are considered 'as space and funds are available.' The page gives no year, so fall 2027 is assumed.",
       "src": "fy"
     },
     {
@@ -94,7 +94,7 @@
       "kind": "deposit",
       "due": "2027-05-01",
       "label": "Enrollment deposit",
-      "notes": "Admitted students confirm their place by May 1 (CDS C17: reply by May 1).",
+      "notes": "Admitted students confirm their place by May 1 (Common Data Set: reply by May 1).",
       "src": "fy"
     }
   ],
@@ -137,7 +137,7 @@
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Loyola advertises 'a full range of merit-based scholarships up to and including full tuition for qualified international applicants' (generally a 3.0 cumulative GPA); no dollar amounts are published for international students. Merit awards renew for up to eight semesters; the Ignatian Scholarship is full tuition and fees (3.75 GPA, 30 ACT / 1360 SAT, apply by Dec. 1). International applicants are not eligible for federal need-based aid. CDS H6 marks institutional need-based and non-need-based aid as available to nonresidents (109 recipients, average $32,309).",
+    "notes": "Loyola advertises 'a full range of merit-based scholarships up to and including full tuition for qualified international applicants' (generally a 3.0 cumulative GPA); no dollar amounts are published for international students. Merit awards renew for up to eight semesters; the Ignatian Scholarship is full tuition and fees (3.75 GPA, 30 ACT / 1360 SAT, apply by Dec. 1). International applicants are not eligible for federal need-based aid. The Common Data Set marks the college's own need-based and non-need-based aid as available to nonresidents (109 recipients, average $32,309).",
     "src": "sch"
   },
   "score_codes": {
@@ -181,6 +181,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "D+: Jesuit regional university with a 90.6% admit rate (CDS 2025-26) and SAT middle 50% about 1090-1285, a bit stronger than typical D-tier safeties (GPA 3.54 average); not a top-100 national university profile. Editorial judgment."
+    "general": "D+: Jesuit regional university with a 90.6% admit rate (Common Data Set 2025-26) and SAT middle 50% about 1090-1285, a bit stronger than typical D-tier safeties (GPA 3.54 average); not a top-100 national university profile. Our estimate."
   }
 }

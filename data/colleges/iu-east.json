@@ -47,7 +47,7 @@
   "enrolled": 336,
   "pct_submit_sat": 23,
   "pct_submit_act": 8,
-  "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). IU's Common Data Set viewer (crimsoncatalog.iu.edu/cds) requires an IU login, so no CDS was read; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 2,035 applicants and 67% admitted (exact count not published there); undergraduate enrollment and the 15:1 student-faculty ratio are fall 2024. IU East reports no campus housing to IPEDS."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). IU's Common Data Set viewer (crimsoncatalog.iu.edu/cds) requires an IU login, so no Common Data Set was read; GPA, international and residency splits are not shown. College Navigator for fall 2024 shows 2,035 applicants and 67% admitted (exact count not published there); undergraduate enrollment and the 15:1 student-faculty ratio are fall 2024. IU East reports no campus housing to IPEDS."
  },
  "scores": {
   "SAT_ERW": [

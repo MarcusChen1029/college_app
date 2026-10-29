@@ -40,7 +40,7 @@
     "enrolled": 978,
     "pct_submit_sat": 12,
     "pct_submit_act": 29,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, exact counts). JSU's newest posted Common Data Set is 2019-2020, too old to use, so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 15,487 applicants, 93% admitted, 7% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 4,650 is fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class, exact counts). JSU's newest posted Common Data Set is 2019-2020, too old to use, so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 15,487 applicants, 93% admitted, 7% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 4,650 is fall 2024."
   },
   "scores": {
     "SAT_ERW": [

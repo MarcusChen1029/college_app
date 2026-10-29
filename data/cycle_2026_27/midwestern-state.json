@@ -61,14 +61,14 @@
    "kind": "priority",
    "due": "2027-03-01",
    "label": "Priority application date, fall (fall 2027 entry)",
-   "notes": "Undergraduate admissions page: priority March 1 for fall (Nov. 1 for spring). Page prints no year; treated as fall 2027. Not stated whether it applies to international applicants.",
+   "notes": "Undergraduate admissions page: priority March 1 for fall (Nov. 1 for spring). The page gives no year, so fall 2027 is assumed. Not stated whether it applies to international applicants.",
    "src": "adm"
   },
   {
    "kind": "application",
    "due": "2027-08-01",
    "label": "International application deadline, fall (applicants outside the U.S.)",
-   "notes": "International page: fall August 1, spring December 1 (no year printed; treated as fall 2027). Same dates for F-1 students already in the U.S. transferring. Proof-of-funds deadlines on the I-20 page for fall 2026 were July 1 (outside the U.S.) and Aug. 10 (inside the U.S.), so send financial documents well before Aug. 1.",
+   "notes": "International page: fall August 1, spring December 1 (no year printed, so fall 2027 is assumed). Same dates for F-1 students already in the U.S. transferring. Proof-of-funds deadlines on the I-20 page for fall 2026 were July 1 (outside the U.S.) and Aug. 10 (inside the U.S.), so send financial documents well before Aug. 1.",
    "src": "intl"
   }
  ],
@@ -121,7 +121,7 @@
   "books_usd": 1000,
   "other_usd": 3974,
   "total_coa_usd": 40358,
-  "notes": "MSU cost-of-attendance page, 2026-27: tuition and fees combined $10,732 (Texas resident) and $23,570 (U.S. non-resident); the international table repeats the non-resident figures. Total $40,358 is the non-resident on/off-campus total (housing and meals $11,814, books $1,000, transportation $1,600, personal $2,374); the international table prints books as $140, which does not add up to its total. College Navigator listed 2024-25 out-of-state tuition and fees of $12,530, far below the current $23,570, so confirm with MSU."
+  "notes": "MSU cost-of-attendance page, 2026-27: tuition and fees combined $10,732 (Texas resident) and $23,570 (U.S. non-resident); the international table repeats the non-resident figures. Total $40,358 is the non-resident on/off-campus total (housing and meals $11,814, books $1,000, transportation $1,600, personal $2,374); the international table prints books as $140, which does not add up to its total. College Navigator listed 2024-25 out-of-state tuition and fees of $12,530, far below the current $23,570, so confirm with MSU"
  },
  "majors": [],
  "score_codes": {

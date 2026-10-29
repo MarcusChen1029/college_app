@@ -67,7 +67,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "Average GPA 4.47 is a weighted GPA. Enrolled by residency: 4,063 in-state, 728 out-of-state, 300 international. The CDS residency table is headed 'Fall 2024' but its totals equal the Fall 2025 C1 totals. Early action closes Oct 15; no early decision."
+    "notes": "Average GPA 4.47 is a weighted GPA. Enrolled by residency: 4,063 in-state, 728 out-of-state, 300 international. The Common Data Set residency table is headed 'Fall 2024' but its totals equal the Fall 2025 totals of the applications and admissions section. Early action closes Oct 15; no early decision."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 15038,
     "other_usd": 3010,
     "total_coa_usd": 26949,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 45228
   },
   "factors": {

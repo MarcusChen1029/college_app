@@ -40,7 +40,7 @@
     "enrolled": 2282,
     "pct_submit_sat": 26,
     "pct_submit_act": 3,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); Morgan State does not appear to publish a Common Data Set (none found on its Institutional Research or Fact Book pages), so GPA, residency and international applicant splits are not available. College Navigator (fall 2024): 23,366 applicants, 82% admitted, 12% of admits enrolled. Undergraduate enrollment 8,300 and 562 nonresident-alien undergraduates are IPEDS fall 2023 (full-time plus part-time). Morgan's own release reports an average high school GPA of 3.16 for the fall 2024 class."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); Morgan State does not appear to publish a Common Data Set (none found on its Institutional Research or Fact Book pages), so GPA, residency and international applicant splits are not available. College Navigator (fall 2024): 23,366 applicants, 82% admitted, 12% of admits enrolled. Undergraduate enrollment 8,300 and 562 nonresident-alien undergraduates are IPEDS fall 2023 (full-time plus part-time). Morgan's own release reports an average high school GPA of 3.16 for the fall 2024 class."
   },
   "scores": {
     "SAT_ERW": [

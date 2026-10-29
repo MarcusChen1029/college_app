@@ -39,7 +39,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "CDS C8 (latest readable, 2023-24) lists SAT/ACT as not required but considered if submitted. The catalog first-year page lists ACT/SAT scores among application items, says they are not required for applicants 23 or older (or out of high school five years), and says scores are required for scholarship and placement purposes; the wording is unclear for traditional applicants, so confirm with the admissions office.",
+    "notes": "The Common Data Set (latest readable, 2023-24) lists SAT/ACT as not required but considered if submitted. The catalog first-year page lists ACT/SAT scores among application items, says they are not required for applicants 23 or older (or out of high school five years), and says scores are required for scholarship and placement purposes; the wording is unclear for traditional applicants, so confirm with the admissions office.",
     "src": "cds"
   },
   "requirements": {
@@ -56,7 +56,7 @@
       "plan": "ROLLING",
       "due": "2027-02-01",
       "label": "Priority date, domestic first-year (fall 2027 entry)",
-      "notes": "Catalog: rolling admission; fall priority Feb. 1 and final Aug. 1 (the catalog table is internally inconsistent about the fall opening date, and the 2023-24 CDS printed March 1 as the priority date). Printed without a year; treated as fall 2027.",
+      "notes": "Catalog: rolling admission; fall priority Feb. 1 and final Aug. 1 (the catalog table is internally inconsistent about the fall opening date, and the 2023-24 Common Data Set printed March 1 as the priority date). Printed without a year, so fall 2027 is assumed.",
       "src": "fy"
     },
     {
@@ -64,7 +64,7 @@
       "plan": "ROLLING",
       "due": "2027-06-15",
       "label": "International application deadline (fall 2027 entry)",
-      "notes": "The UNC international page lists fall June 15 (spring Nov. 30, summer March 29), printed without a year and treated as fall 2027. The undergraduate international admissions page separately says applications are due 90 calendar days before the semester starts and supporting documents 60 days before, which would be earlier than June 15 for a late-August start; apply well ahead.",
+      "notes": "The UNC international page lists fall June 15 (spring Nov. 30, summer March 29), printed without a year, so fall 2027 is assumed. The undergraduate international admissions page separately says applications are due 90 calendar days before the semester starts and supporting documents 60 days before, which would be earlier than June 15 for a late-August start; apply well ahead.",
       "src": "intldl"
     }
   ],
@@ -129,7 +129,7 @@
     "intl_need_aid": null,
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Automatic first-year scholarships listed for non-resident and international students for fall 2026/spring 2027 entry, by weighted GPA: Trustee $7,500 per year (4.00), Presidential $6,500 (3.80-3.99), Provost $5,000 (3.40-3.79), Bear $4,000 (3.00-3.39). Fall 2027 amounts were not yet published. 49 nonresidents received institutional aid in 2023-24 (CDS H6, average $6,037); the page names no international-only or need-based award.",
+    "notes": "Automatic first-year scholarships listed for non-resident and international students for fall 2026/spring 2027 entry, by weighted GPA: Trustee $7,500 per year (4.00), Presidential $6,500 (3.80-3.99), Provost $5,000 (3.40-3.79), Bear $4,000 (3.00-3.39). Fall 2027 amounts were not yet published. 49 nonresidents received institutional aid in 2023-24 (from the Common Data Set, average $6,037); the page names no international-only or need-based award.",
     "src": "schol"
   },
   "score_codes": {

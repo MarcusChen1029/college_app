@@ -51,7 +51,7 @@
       "2.0-2.49": 0.86,
       "1.0-1.99": 0.2
     },
-    "notes": "CDS is for the Kent campus only (Kent State publishes a separate CDS for each campus). Counts are CDS C1 (fall 2025); GPA distribution is the 'all enrolled students' column of C11. No early decision, early action or waiting list. The CDS admit rate (62.7%) is lower than the rate implied by the fall 2024 figures on third-party sites; only the CDS figures are used here. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 932)."
+    "notes": "The Common Data Set is for the Kent campus only (Kent State publishes a separate one for each campus). Counts are from the Common Data Set (fall 2025); the GPA breakdown is for all enrolled students. No early decision, early action or waiting list. The Common Data Set admit rate (62.7%) is lower than the rate implied by the fall 2024 figures on third-party sites; only the Common Data Set figures are shown here. Undergraduate and international counts come from the 'Total Undergraduates' line (nonresident 932)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,6 +108,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   }
 }

@@ -68,7 +68,7 @@
    "plan": null,
    "due": "2027-06-01",
    "label": "Undergraduate application deadline for fall 2027 (international)",
-   "notes": "The International Services page lists Fall undergraduate June 1 with no year, treated as fall 2027; the I-20 request deadline is also June 1 and I-20 issuance for fall starts March 1. Domestic first-year applicants hear first-round decisions by Dec. 15, 2026.",
+   "notes": "The International Services page lists Fall undergraduate June 1 with no year, so fall 2027 is assumed; the I-20 request deadline is also June 1 and I-20 issuance for fall starts March 1. Domestic first-year applicants hear first-round decisions by Dec. 15, 2026.",
    "src": "future"
   }
  ],
@@ -82,7 +82,7 @@
    "test": "TOEFL_IBT",
    "status": "required_option",
    "min": 61,
-   "notes": "Any single band below 15 requires an EAP course in the first semester. The policy document does not give a new 1-6 scale minimum, so no TOEFL_IBT_2026 value is listed.",
+   "notes": "Any single band below 15 requires an EAP course in the first semester. The policy document does not give a new 1-6 scale minimum, so no value on the new TOEFL iBT scale is listed.",
    "src": "cut"
   },
   {
@@ -126,7 +126,7 @@
   "books_usd": null,
   "other_usd": 15068,
   "total_coa_usd": 40519,
-  "notes": "International Costs page (undated, accessed 2026-10-26; labeled 2026-2027 as the current page): undergraduate tuition and fees $23,760 per year at 15 credit hours per semester, living expenses $15,068 (housing, food and personal, not itemised, in other_usd), health insurance $1,691, total $40,519. Before the 40% I Succeed reduction."
+  "notes": "International Costs page (undated, accessed 2026-10-26; labeled 2026-2027 as the current page): undergraduate tuition and fees $23,760 per year at 15 credit hours per semester, living expenses $15,068 (housing, food and personal, not itemised, shown as other costs), health insurance $1,691, total $40,519. Before the 40% I Succeed reduction"
  },
  "majors": [],
  "score_codes": {

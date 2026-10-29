@@ -40,7 +40,7 @@
     "enrolled": 1602,
     "pct_submit_sat": 49,
     "pct_submit_act": 19,
-    "notes": "Baseline from IPEDS (fall 2023 entering class); no Common Data Set was found on SIUE's Institutional Research and Studies pages, so GPA, residency and international applicant splits are not available. College Navigator (fall 2024): 10,150 applicants, 97% admitted, 16% of admits enrolled; fall 2024 SAT middle 50%: ERW 490-600, Math 460-590; ACT 20-27. Undergraduate enrollment 8,975 and 219 nonresident-alien undergraduates are IPEDS fall 2023 (full-time plus part-time). An undated SIUE FAQ gives middle 50% of 20-26 ACT and 1020-1270 SAT for first-year students."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no Common Data Set was found on SIUE's Institutional Research and Studies pages, so GPA, residency and international applicant splits are not available. College Navigator (fall 2024): 10,150 applicants, 97% admitted, 16% of admits enrolled; fall 2024 SAT middle 50%: ERW 490-600, Math 460-590; ACT 20-27. Undergraduate enrollment 8,975 and 219 nonresident-alien undergraduates are IPEDS fall 2023 (full-time plus part-time). An undated SIUE FAQ gives middle 50% of 20-26 ACT and 1020-1270 SAT for first-year students."
   },
   "scores": {
     "SAT_ERW": [

@@ -111,7 +111,7 @@
     "books_usd": 1330,
     "other_usd": 5002,
     "total_coa_usd": 45388,
-    "notes": "Augusta cost of attendance 2026-27, on-campus: out-of-state tuition $24,568, fees $1,350, food $4,574, housing $8,564, books $1,330, loan fee $96, miscellaneous $3,078, transportation $1,828 = $45,388 (in-state total $27,954 with tuition $7,134). Other = loan fee + miscellaneous + transportation. The page does not name an international rate; out-of-state is assumed.",
+    "notes": "Augusta cost of attendance 2026-27, on-campus: out-of-state tuition $24,568, fees $1,350, food $4,574, housing $8,564, books $1,330, loan fee $96, miscellaneous $3,078, transportation $1,828 = $45,388 (in-state total $27,954 with tuition $7,134). Other = loan fee + miscellaneous + transportation. The page does not name an international rate; out-of-state is assumed",
     "src": "coa"
   },
   "aid": {

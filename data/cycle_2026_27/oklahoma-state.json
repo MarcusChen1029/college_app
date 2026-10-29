@@ -57,7 +57,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International fall application deadline (applicants not living in the U.S.)",
-   "notes": "Applicants currently living in the U.S. have July 1. The page lists 'Fall: June 1' without printing a year; taken as the fall 2027 cycle. Spring is Nov. 1 (Dec. 1 if living in the U.S.).",
+   "notes": "Applicants currently living in the U.S. have July 1. The page lists 'Fall: June 1' without printing a year, so the fall 2027 cycle is assumed. Spring is Nov. 1 (Dec. 1 if living in the U.S.).",
    "src": "dates"
   },
   {
@@ -122,7 +122,7 @@
   "intl_aid_policy": "need_aware_limited",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International Achievement Freshmen Scholarships (automatic with the application, partial tuition waiver) range $5,000-$15,000 per year; the grid is by GPA and test (e.g. IELTS 6.0 / SAT 1160-1220 with 3.0-3.24 GPA = $9,500; 'GPA only, no test' awards $6,000-$9,000). Alumni legacy $5,000. College/department scholarships vary. CDS H6: need-based aid is also available to nonresidents (169 recipients, avg $10,492). The admissions page says $7,000-$15,000 and the scholarship page says $5,000-$15,000.",
+  "notes": "International Achievement Freshmen Scholarships (automatic with the application, partial tuition waiver) range $5,000-$15,000 per year; the grid is by GPA and test (e.g. IELTS 6.0 / SAT 1160-1220 with 3.0-3.24 GPA = $9,500; 'GPA only, no test' awards $6,000-$9,000). Alumni legacy $5,000. College/department scholarships vary. The Common Data Set says need-based aid is also available to nonresidents (169 recipients, avg $10,492). The admissions page says $7,000-$15,000 and the scholarship page says $5,000-$15,000.",
   "src": "aid"
  },
  "majors": [
@@ -189,7 +189,7 @@
   "computer_science": "D"
  },
  "tier_notes": {
-  "engineering": "Editorial judgment: established ABET-accredited engineering college (CEAT) in the roughly 41-100 national band.",
-  "business": "Editorial judgment: Spears School of Business, AACSB-accredited, roughly 41-100 band."
+  "engineering": "Our estimate: an established ABET-accredited engineering college (CEAT) in the roughly 41-100 national band.",
+  "business": "Our estimate: Spears School of Business, AACSB-accredited, roughly 41-100 nationally."
  }
 }

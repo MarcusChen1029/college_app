@@ -56,7 +56,7 @@
       "2.0-2.49": 4.64,
       "1.0-1.99": 2.44
     },
-    "notes": "CDS C1 (fall 2025 first-years): 12,350 of 12,357 applicants admitted (99.9%); international 295 of 301 admitted, 190 enrolled. GPA bands are the 'all enrolled students' column of C11 (a further 0.24% had GPA below 1.0). Only 91 enrollees submitted SAT and 129 ACT scores (C9), so the score percentiles describe a very small, self-selected group. The CDS C7 importance marks could not be read from the PDF text, so admission factors are omitted. Undergraduate enrollment 22,223 is CDS B1 total undergraduates; 843 is degree-seeking nonresident undergraduates (B2). Student-faculty ratio 21:1 is from IPEDS College Navigator."
+    "notes": "From the Common Data Set (fall 2025 first-years): 12,350 of 12,357 applicants admitted (99.9%); international 295 of 301 admitted, 190 enrolled. The GPA bands are the 'all enrolled students' column (a further 0.24% had GPA below 1.0). Only 91 enrollees submitted SAT and 129 ACT scores, so the score percentiles describe a very small, self-selected group. The admission-factor importance marks could not be read from the PDF text, so admission factors are not shown. Undergraduate enrollment is 22,223 (total undergraduates); 843 is degree-seeking nonresident undergraduates. Student-faculty ratio 21:1 is from IPEDS College Navigator."
   },
   "scores_source": "cds",
   "scores": {
@@ -94,7 +94,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "flexible",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT marked 'required for some' applicants."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT marked 'required for some' applicants."
   },
   "cost": {
     "year": "2026-2027",
@@ -108,6 +108,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 373,
     "intl_avg_award_usd": 10216,
-    "notes": "CDS G1 first-year full-year amounts for 2026-27 (nonresident tuition equals out-of-state; per credit hour $787 nonresident vs $262 in-state). The $11,500 food-and-housing line is printed without a label in the extracted text and is read as on-campus food and housing. CDS H6: institutional need-based and non-need-based aid exists for nonresidents; 373 degree-seeking nonresident undergraduates received aid (avg $10,216, total $3,810,516)."
+    "notes": "First-year, full-year amounts for 2026-27 from the Common Data Set (nonresident tuition equals out-of-state; per credit hour $787 nonresident vs $262 in-state). The $11,500 food-and-housing line is printed without a label in the text taken from the PDF, so it is assumed to be on-campus food and housing. The Common Data Set also says the college's own need-based and non-need-based aid exists for nonresidents; 373 degree-seeking nonresident undergraduates received aid (avg $10,216, total $3,810,516)"
   }
 }

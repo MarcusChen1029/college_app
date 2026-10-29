@@ -45,7 +45,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International preferred application deadline (fall 2027 entry)",
-      "notes": "International page: July 1 for fall (all requirements in by then; later files may delay admission to the next semester); November 1 for spring. Printed without a year, treated as 2027. The catalog's general dates are Aug 1 (application) and Aug 8 (credentials) and say international applications and credentials are needed at least two months before the term.",
+      "notes": "International page: July 1 for fall (all requirements in by then; later files may delay admission to the next semester); November 1 for spring. Printed without a year, so 2027 is assumed. The catalog's general dates are Aug 1 (application) and Aug 8 (credentials) and say international applications and credentials are needed at least two months before the term.",
       "src": "intl"
     },
     {
@@ -105,14 +105,14 @@
     "room_board_usd": 11761,
     "books_usd": 1385,
     "other_usd": 6497,
-    "notes": "Tuition and fees are computed from the Fall 2026 Natchitoches schedule at 15 credit hours: $5,087.05 per semester in-state (2 semesters = $10,174); nonresidents add the out-of-state fee of $5,394 per semester at 12+ hours (= $20,962 a year); international students also pay a $60 per semester international student fee (catalog) = $120. The cost-of-attendance page shows undergraduate tuition and fees of $10,772 without naming residency. Room and board is the on-campus figure; other = transportation $3,755 + miscellaneous $2,742 (COA page, 2026-27 aid year).",
+    "notes": "Tuition and fees are computed from the Fall 2026 Natchitoches schedule at 15 credit hours: $5,087.05 per semester in-state (2 semesters = $10,174); nonresidents add the out-of-state fee of $5,394 per semester at 12+ hours (= $20,962 a year); international students also pay a $60 per semester international student fee (catalog) = $120. The cost-of-attendance page shows undergraduate tuition and fees of $10,772 without naming residency. Room and board is the on-campus figure; other = transportation $3,755 + miscellaneous $2,742 (COA page, 2026-27 aid year)",
     "src": "fees"
   },
   "aid": {
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "The catalog describes academic/leadership scholarships based on test scores, GPA, rank and activities, but no international-specific scholarship or published award amounts were found, and it is not stated whether international freshmen qualify. CDS H6 (aid to nonresidents) is not legible in the PDF text.",
+    "notes": "The catalog describes academic/leadership scholarships based on test scores, GPA, rank and activities, but no international-specific scholarship or published award amounts were found, and it is not stated whether international freshmen qualify. The Common Data Set section on aid to nonresidents is not legible in the PDF text.",
     "src": "cat"
   },
   "majors": [],

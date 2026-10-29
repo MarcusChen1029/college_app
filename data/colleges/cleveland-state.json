@@ -45,7 +45,7 @@
     "applicants": 11050,
     "admits": 10089,
     "enrolled": 1580,
-    "notes": "Baseline from IPEDS (fall 2024 entering class; 91% admitted per College Navigator): the latest Cleveland State Common Data Set on its site is 2021-2022, so no CDS was used. Enrolled is full- plus part-time first-time students (1,550 full-time). International applicant counts, GPA and test-score percentiles are not in the baseline: College Navigator lists SAT/ACT as 'not considered' and shows no score table. Navigator shows U.S. nonresidents at about 6% of undergraduates (rounded), so intl_undergrads is left null. Undergrad enrollment 9,482 is fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class; 91% admitted per College Navigator): the latest Cleveland State Common Data Set on its site is 2021-2022, so no Common Data Set was used. Enrolled is full- plus part-time first-time students (1,550 full-time). International applicant counts, GPA and test-score percentiles are not included in these figures: College Navigator lists SAT/ACT as 'not considered' and shows no score table. Navigator shows U.S. nonresidents at about 6% of undergraduates (rounded), so the number of international undergraduates is not shown. Undergraduate enrollment 9,482 is fall 2024."
   },
   "cost": {
     "year": "2024-2025",
@@ -55,6 +55,6 @@
     "books_usd": 1000,
     "room_board_usd": 15104,
     "other_usd": 3700,
-    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25 (tuition and fees; on-campus food and housing)."
+    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25 (tuition and fees; on-campus food and housing)"
   }
 }

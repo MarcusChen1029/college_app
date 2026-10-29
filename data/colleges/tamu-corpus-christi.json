@@ -57,7 +57,7 @@
       "2.0-2.49": 3,
       "1.0-1.99": 0
     },
-    "notes": "CDS 2025-2026 (fall 2025 first-years). C1: 11,449 applied, 10,483 admitted (91.6%), 2,374 enrolled. International (by residency breakdown): 375 applied, 370 admitted (98.7%), 15 enrolled. Only 35% of enrollees reported a high school GPA (C12), so GPA figures cover a minority; the GPA distribution is the C11 'all enrolled' column. No early decision or early action; no waitlist reported. C7 marks standardized test scores 'very important' even though C8F and the admissions site say test scores are optional. Undergraduate enrollment 8,673 is CDS B1 full-time (6,943) plus part-time (1,730) undergraduates, including non-degree-seeking; 149 is the B2 nonresident count. Student-faculty ratio 18:1 is CDS I-2 (fall 2025)."
+    "notes": "From the Common Data Set 2025-2026 (fall 2025 first-years): 11,449 applied, 10,483 admitted (91.6%), 2,374 enrolled. International (by residency breakdown): 375 applied, 370 admitted (98.7%), 15 enrolled. Only 35% of enrollees reported a high school GPA, so GPA figures cover a minority; the GPA breakdown uses the 'all enrolled' column. No early decision or early action; no waitlist reported. The admission factors list standardized test scores as 'very important' even though the test policy and the admissions site say test scores are optional. Undergraduate enrollment is 8,673: full-time (6,943) plus part-time (1,730) undergraduates, including non-degree-seeking; 149 is the nonresident count. The student-faculty ratio is 18:1 (fall 2025)."
   },
   "scores_source": "cds",
   "scores": {
@@ -115,7 +115,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "recommended",
-    "notes": "CDS 2025-26 C8 (Fall 2027) ticks 'Recommended' for SAT or ACT, but C8F says scores are optional; the admissions site also says optional."
+    "notes": "The 2025-26 Common Data Set (Fall 2027) ticks 'Recommended' for SAT or ACT, but its test policy says scores are optional; the admissions site also says optional."
   },
   "cost": {
     "year": "2024-2025",
@@ -128,6 +128,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 91,
     "intl_avg_award_usd": 13584,
-    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; the out-of-state rate is the one that applies to international students (the university lists no separate international rate). The CDS left section G (2026-27 costs) blank. CDS H6: institutional aid for nonresidents is non-need-based only; 91 nonresident undergraduates received it (avg $13,584, total $1,236,168)."
+    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; the out-of-state rate is the one that applies to international students (the university lists no separate international rate). The Common Data Set did not report its 2026-27 costs. The Common Data Set says institutional aid for nonresidents is non-need-based only; 91 nonresident undergraduates received it (avg $13,584, total $1,236,168)"
   }
 }

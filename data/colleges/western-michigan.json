@@ -51,7 +51,7 @@
       "2.0-2.49": 0.9,
       "1.0-1.99": 0.1
     },
-    "notes": "Counts are CDS C1 (fall 2025). International first-year admit rate in the CDS is 28% (226 of 808), much lower than the overall 85.3%. GPA distribution is the 'all enrolled students' column of C11. No waiting list, early decision or early action. Only 84 enrollees submitted ACT scores, so ACT percentiles describe a small group. Undergrad and international counts are B1 'Total Undergraduates' (nonresident 1,284)."
+    "notes": "Counts are from the Common Data Set (fall 2025). The international first-year admit rate in the Common Data Set is 28% (226 of 808), much lower than the overall 85.3%. The GPA breakdown is the 'all enrolled students' column. No waiting list, early decision or early action. Only 84 enrollees sent ACT scores, so ACT percentiles describe a small group. Undergraduate and international counts are the 'Total Undergraduates' figures (nonresident 1,284)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,6 +108,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT/ACT are not considered in admission decisions, but C8F says scores are used only if they benefit the student and students are not penalized for them."
+    "notes": "Common Data Set (fall 2027): SAT/ACT are not considered in admission decisions, but it also says scores are used only if they benefit the student and students are not penalized for them."
   }
 }

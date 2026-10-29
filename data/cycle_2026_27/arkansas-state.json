@@ -50,7 +50,7 @@
       "plan": "ROLLING",
       "due": "2027-06-04",
       "label": "International application deadline (fall 2027 entry)",
-      "notes": "Application, fee and all documents are due by this date; orientation Aug 9, 2027, classes start Aug 18, 2027. Spring 2028 deadline is Nov 1, 2027. Domestic freshman admission has no closing date (CDS C14).",
+      "notes": "Application, fee and all documents are due by this date; orientation Aug 9, 2027, classes start Aug 18, 2027. Spring 2028 deadline is Nov 1, 2027. Domestic freshman admission has no closing date (Common Data Set).",
       "src": "intl"
     }
   ],
@@ -64,7 +64,7 @@
       "test": "TOEFL_IBT",
       "status": "required_option",
       "min": 61,
-      "notes": "The at-home TOEFL iBT is accepted. The page does not give a 1-6 band minimum, so TOEFL_IBT_2026 is not listed. ETS code 6011.",
+      "notes": "The at-home TOEFL iBT is accepted. The page does not give a 1-6 band minimum, so the new TOEFL iBT scale is not listed. ETS code 6011.",
       "src": "intl"
     },
     {
@@ -92,7 +92,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "A-State's international freshman scholarship is $3,000 per year (also $3,000 for transfers with 24+ hours); it requires full admission, a 3.25 GPA and English proficiency, and cannot be combined with other scholarships. International students are not eligible for federal aid; CDS H6 reports only non-need-based institutional aid for nonresidents (693 recipients, average $6,435).",
+    "notes": "A-State's international freshman scholarship is $3,000 per year (also $3,000 for transfers with 24+ hours); it requires full admission, a 3.25 GPA and English proficiency, and cannot be combined with other scholarships. International students are not eligible for federal aid; the Common Data Set reports only non-need-based aid from the college for nonresidents (693 recipients, average $6,435).",
     "src": "schol"
   },
   "score_codes": {

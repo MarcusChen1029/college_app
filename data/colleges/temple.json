@@ -45,7 +45,7 @@
     "intl_admits": 2469,
     "pct_submit_sat": 19,
     "pct_submit_act": 1,
-    "notes": "CDS C1 (fall 2025 entering class); residency split from the C1 residency table (in-state 14,512 / out-of-state 24,878 / international 3,434 applicants; 12,641 / 21,812 / 2,469 admitted; 3,339 / 1,779 / 185 enrolled). Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (21,031; 891 nonresidents). Nonbinding early action (closes 11/1, notified 1/10); no early decision. The GPA table (C11/C12) is blank in the CDS, so gpa_avg and the distribution are left null. SAT middle 50% is for the 19% (1,000 students) who submitted; ACT submitted by 1% (76 students). Temple is test optional."
+    "notes": "From the Common Data Set (fall 2025 entering class); the residency split comes from its residency table (in-state 14,512 / out-of-state 24,878 / international 3,434 applicants; 12,641 / 21,812 / 2,469 admitted; 3,339 / 1,779 / 185 enrolled). Undergraduate enrollment and the nonresident count are the 'Total Undergraduates' figures (21,031; 891 nonresidents). Nonbinding early action (closes 11/1, notified 1/10); no early decision. The GPA table is blank in the Common Data Set, so the average GPA and the GPA breakdown are not shown. The SAT middle 50% is for the 19% (1,000 students) who submitted; ACT was submitted by 1% (76 students). Temple is test optional."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -102,7 +102,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; C8F: 'We are test optional.'"
+    "notes": "From the Common Data Set (fall 2027): it says 'We are test optional.' and SAT or ACT is 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -116,6 +116,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 624,
     "intl_avg_award_usd": 17619,
-    "notes": "CDS G1 (first-year, 2026-27 update). Tuition is a weighted average because Temple has differential tuition by school/college (G4: 60% of undergraduates pay more). H6: only institutional non-need-based aid is available to nonresidents; 624 nonresidents received it (avg $17,619; total $10,994,319)."
+    "notes": "From the Common Data Set (first-year, 2026-27 update). Tuition is a weighted average because Temple has differential tuition by school/college (60% of undergraduates pay more). Only institutional non-need-based aid is available to nonresidents; 624 nonresidents received it (avg $17,619; total $10,994,319)"
   }
 }

@@ -50,7 +50,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "CDS fall 2024 first-year class (C1, C11, C12); the CDS gives no residency split and left the SAT/ACT percentile and percent-submitting cells blank. Undergraduate counts are the CDS B1/B2 totals (15,375 undergraduates, of whom 551 are nonresident). Student-faculty ratio 13.4:1 (CDS I-2). The newer fall 2025 class, with a residency split, is in the second statistics row."
+    "notes": "From the Common Data Set (fall 2024 first-year class); it gives no residency split and does not report the SAT/ACT percentiles or the share of students who sent scores. Undergraduate counts are the Common Data Set totals (15,375 undergraduates, of whom 551 are nonresident). Student-faculty ratio 13.4:1 (Common Data Set). The newer fall 2025 class, with a residency split, is in the second statistics row."
   },
   "stats_extra": [
     {
@@ -111,6 +111,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 255,
     "intl_avg_award_usd": 16080,
-    "notes": "CDS H6: 255 degree-seeking nonresident undergraduates received institutional aid (avg $16,080, total $4,100,332); the CDS does not make clear which aid year this covers and counts all nonresidents, not only international students."
+    "notes": "From the Common Data Set: 255 degree-seeking nonresident undergraduates received aid from the college itself (avg $16,080, total $4,100,332); it does not make clear which aid year this covers and counts all nonresidents, not only international students"
   }
 }

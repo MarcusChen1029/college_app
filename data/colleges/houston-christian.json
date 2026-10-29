@@ -54,7 +54,7 @@
       "2.0-2.49": 0.96,
       "1.0-1.99": 0.21
     },
-    "notes": "CDS fall 2025 entering class (C1). Applicants = men 4,428 + women 7,337 + unknown 3 (the CDS total cell was left at 0); admitted 10,174 (86.5%); enrolled 1,001. Admits by residency: Texas 8,951, other states 926, international 165, unknown 132. International enrolled first-years: 43. International applicants (C1 residency row) were not reported, so intl_applicants is left null. College Navigator shows 8,455 applicants / 84% admitted for fall 2024. C9: 254 enrollees (25.37%) submitted SAT and 41 (4.10%) ACT. C11/C12 GPA: 93.31% reported, average 3.43. Undergraduate enrollment 3,277 and nonresident 143 are the B1/B2 'Total Undergraduates' figures (all students, including part-time and non-degree). Student-faculty ratio 17:1 (3,742 students, 215 faculty; CDS I-2)."
+    "notes": "From the Common Data Set (fall 2025 entering class). Applicants = men 4,428 + women 7,337 + unknown 3 (the Common Data Set's total cell was left at 0); admitted 10,174 (86.5%); enrolled 1,001. Admits by residency: Texas 8,951, other states 926, international 165, unknown 132. International enrolled first-years: 43. International applicants were not reported, so no international admit rate is shown. College Navigator shows 8,455 applicants / 84% admitted for fall 2024. 254 enrollees (25.37%) sent SAT scores and 41 (4.10%) sent ACT scores. For GPA, 93.31% reported, average 3.43. Undergraduate enrollment (3,277) and nonresident count (143) are the 'Total Undergraduates' figures (all students, including part-time and non-degree). Student-faculty ratio 17:1 (3,742 students, 215 faculty)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -111,7 +111,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT not required for admission but considered if submitted. C8F: 'Freshmen applicants will have the option of applying with test scores or applying as \"test optional\" and not including scores.'"
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT not required for admission but considered if submitted. It also says: 'Freshmen applicants will have the option of applying with test scores or applying as \"test optional\" and not including scores.'"
   },
   "cost": {
     "year": "2026-2027",
@@ -125,6 +125,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 113,
     "intl_avg_award_usd": 31106,
-    "notes": "CDS G1/G5 (2026-27, residential): tuition $42,050; required fees $2,680; housing $9,072 + meals $4,570 = $13,642; books $1,330; transportation $1,919 + other $2,802 = $4,721. total_coa_usd is the sum of those components (not a printed total). CDS H6: institutional need-based and non-need-based aid are both marked available to nonresidents; 113 degree-seeking nonresidents received it, average $31,106, total $3,514,978."
+    "notes": "From the Common Data Set (2026-27, residential): tuition $42,050; required fees $2,680; housing $9,072 + meals $4,570 = $13,642; books $1,330; transportation $1,919 + other $2,802 = $4,721. The total cost of attendance is the sum of those components (not a printed total). The Common Data Set marks the college's own need-based and non-need-based aid as both available to nonresidents; 113 degree-seeking nonresidents received it, average $31,106, total $3,514,978"
   }
 }

@@ -45,7 +45,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "Cal State LA's CDS 2025-2026 (C8A) says SAT/ACT are not used in admission decisions, and College Navigator lists them as 'Not considered (Test Blind)'. Eligibility for non-U.S. high school graduates is a 3.00 GPA in academic coursework from the last 3 years of high school.",
+  "notes": "Cal State LA's 2025-2026 Common Data Set says SAT/ACT are not used in admission decisions, and College Navigator lists them as 'Not considered (Test Blind)'. Eligibility for non-U.S. high school graduates is a 3.00 GPA in academic coursework from the last 3 years of high school.",
   "src": "fresh"
  },
  "requirements": {
@@ -53,7 +53,7 @@
    "own"
   ],
   "app_fee_usd": 70,
-  "notes": "Apply through Cal State Apply (not the Common App); the $70 fee is from the CDS (C13) and College Navigator, the international pages do not repeat it. Needs a 3.00 GPA for non-U.S. high school graduates (2.50 for California residents/graduates, 3.00 for other U.S. graduates). Official academic records with the grading scale through the fall 2026 term, proof of high school completion by the end of spring 2027, official English scores if required, and proof of financial support for the I-20. CDS C7: essays, recommendations and interviews are not considered. Offers are provisional until final transcripts and scores are verified. Music (BM) applicants must also audition; Pre-Nursing has additional requirements (the Jan 15, 2027 NursingCAS supplemental deadline on the deadlines page is for upper-division transfers and second-bachelor's applicants, not freshmen).",
+  "notes": "Apply through Cal State Apply (not the Common App); the $70 fee is from the Common Data Set and College Navigator, and the international pages do not repeat it. Needs a 3.00 GPA for non-U.S. high school graduates (2.50 for California residents/graduates, 3.00 for other U.S. graduates). Official academic records with the grading scale through the fall 2026 term, proof of high school completion by the end of spring 2027, official English scores if required, and proof of financial support for the I-20. The Common Data Set says essays, recommendations and interviews are not considered. Offers are provisional until final transcripts and scores are confirmed. Music (BM) applicants must also audition; Pre-Nursing has additional requirements (the Jan 15, 2027 NursingCAS supplemental deadline on the deadlines page is for upper-division transfers and second-bachelor's applicants, not freshmen).",
   "src": "fresh"
  },
  "deadlines": [
@@ -133,7 +133,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": null,
-  "notes": "No international scholarship or admission-based merit award was found. Cal State LA's scholarship FAQ (undated) says it has no special funds to recruit international students, though enrolled international students can compete for scholarships with other students after performing well. The CDS (H6) does show 8 nonresident undergraduates received institutional aid averaging $9,042. No conditional admission or English program is described on the pages checked. Confirm with the admissions office.",
+  "notes": "No international scholarship or admission-based merit award was found. Cal State LA's scholarship FAQ (undated) says it has no special funds to recruit international students, though enrolled international students can compete for scholarships with other students after performing well. The Common Data Set does show 8 nonresident undergraduates received aid from the college itself, averaging $9,042. No conditional admission or English program is described on the pages checked. Confirm with the admissions office.",
   "src": "faq"
  },
  "cost": {
@@ -146,7 +146,7 @@
   "books_usd": 1128,
   "other_usd": 7780,
   "total_coa_usd": 52630,
-  "notes": "Computed from published rates: basic tuition $3,419 per semester (6.1+ units) twice, plus nonresident tuition of $471 per unit for an assumed 30 units a year ($14,130). Required fees = campus fees $547.04 per semester (Fall 2026 fee table: undergraduate total $3,966.04 minus tuition $3,419), doubled and rounded. Living costs are Cal State LA's on-campus 2026-27 budget: housing $13,682 plus food $7,972; other = transportation $3,002 plus personal $4,726 plus loan fees $52. Total = the school's $38,500 California-resident on-campus budget plus $14,130 nonresident tuition (its own tuition-and-fees line, $7,938, is $6 above the fee-table sum). International students must also carry health insurance; the cost was not found.",
+  "notes": "Computed from published rates: basic tuition $3,419 per semester (6.1+ units) twice, plus nonresident tuition of $471 per unit for an assumed 30 units a year ($14,130). Required fees = campus fees $547.04 per semester (Fall 2026 fee table: undergraduate total $3,966.04 minus tuition $3,419), doubled and rounded. Living costs are Cal State LA's on-campus 2026-27 budget: housing $13,682 plus food $7,972; other = transportation $3,002 plus personal $4,726 plus loan fees $52. Total = the school's $38,500 California-resident on-campus budget plus $14,130 nonresident tuition (its own tuition-and-fees line, $7,938, is $6 above the fee-table sum). International students must also carry health insurance; the cost was not found",
   "src": "coa"
  },
  "majors": [

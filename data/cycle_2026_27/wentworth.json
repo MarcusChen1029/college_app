@@ -51,7 +51,7 @@
    "plan": "ED",
    "due": "2026-11-01",
    "label": "Early Decision, fall 2027 entry",
-   "notes": "Notification by early December; enrollment deposit by May 1. The 2025-26 CDS answered No to an early decision plan, but the current admissions pages list this round. Pages print no year; taken as fall 2027 entry.",
+   "notes": "Notification by early December; enrollment deposit by May 1. The 2025-26 Common Data Set answered No to an early decision plan, but the current admissions pages list this round. The pages give no year, so fall 2027 entry is assumed.",
    "src": "fy"
   },
   {
@@ -59,7 +59,7 @@
    "plan": "EA",
    "due": "2026-11-15",
    "label": "Early Action round 1",
-   "notes": "Notified by mid-December. Early application scholarship ($2,000) is awarded to students applying by ED (Nov 1), EA1 (Nov 15) or EA2 (Jan 1). No year is printed; taken as fall 2027 entry.",
+   "notes": "Notified by mid-December. Early application scholarship ($2,000) is awarded to students applying by ED (Nov 1), EA1 (Nov 15) or EA2 (Jan 1). No year is printed, so fall 2027 entry is assumed.",
    "src": "fy"
   },
   {
@@ -147,7 +147,7 @@
   "intl_aid_policy": "need_aware_limited",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students are considered for merit scholarships based on secondary-school results; the Presidential Merit Scholarship (tuition, renewable 8 semesters) averages $20,000-$25,000 for Wentworth students generally (page not specific to international students). Starting with fall 2026 applicants a limited number of need-based International Grants are offered; the need-based aid application must be filed before the admission decision. CDS H6: 158 nonresidents received institutional aid, avg $9,677.",
+  "notes": "International students are considered for merit scholarships based on secondary-school results; the Presidential Merit Scholarship (tuition, renewable 8 semesters) averages $20,000-$25,000 for Wentworth students generally (page not specific to international students). Starting with fall 2026 applicants a limited number of need-based International Grants are offered; the need-based aid application must be filed before the admission decision. From the Common Data Set: 158 nonresidents received institutional aid, average $9,677.",
   "src": "intl"
  },
  "majors": [
@@ -223,8 +223,8 @@
   "arts_design": "C"
  },
  "tier_notes": {
-  "general": "Editorial judgment: an 88% admit rate (76% for international applicants) and a 1300 SAT median among the 22% who submit place Wentworth just above the open-access D tier.",
-  "engineering": "Editorial estimate: a technical institute in Boston with ABET-accredited engineering programs; no ranking cited, placed in the 41-100 band for undergraduate engineering.",
-  "arts_design": "Editorial estimate: accredited architecture, interior and industrial design programs; no ranking cited."
+  "general": "Our estimate: an 88% admit rate (76% for international applicants) and a 1300 SAT median among the 22% who submit place Wentworth just above the open-access D tier.",
+  "engineering": "Our estimate: a technical institute in Boston with ABET-accredited engineering programs; no ranking cited. Placed in the 41-100 range for undergraduate engineering.",
+  "arts_design": "Our estimate: accredited architecture, interior and industrial design programs; no ranking cited."
  }
 }

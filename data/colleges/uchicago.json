@@ -58,7 +58,7 @@
       "2.0-2.49": 0.09,
       "1.0-1.99": 0.0
     },
-    "notes": "Fall 2025 entering class. The PDF cover says 2025-2026 but interior page headers read 2024-2025; C1 counts are labelled Fall 2025. C12 average GPA is printed as 4.54 (not on a 4.0 scale), so it is left null. Residency split, waitlist counts and ED/EA counts are blank in the CDS."
+    "notes": "Fall 2025 entering class. The PDF cover says 2025-2026 but interior page headers read 2024-2025; the application counts are labelled Fall 2025. The average GPA is printed as 4.54 (not on a 4.0 scale), so it is not shown. The Common Data Set does not report the residency split, waitlist counts or ED/EA counts."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -100,7 +100,7 @@
     "room_board_usd": 20835,
     "other_usd": 2400,
     "total_coa_usd": 94971,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",
@@ -125,6 +125,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted."
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT not required, considered if submitted."
   }
 }

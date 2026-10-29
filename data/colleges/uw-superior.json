@@ -45,7 +45,7 @@
     "admits": 2163,
     "enrolled": 260,
     "pct_submit_act": 21,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023). UW-Superior's Common Data Set is linked from its institutional research page but sits behind a Microsoft sign-in and could not be read, so CDS figures (international applicants/admits, GPA) are not added. IPEDS reports ACT only (no SAT). College Navigator for fall 2024 shows 1,517 applicants, 93% admitted, 19% of admits enrolled."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). UW-Superior's Common Data Set is linked from its institutional research page but sits behind a Microsoft sign-in and could not be read, so Common Data Set figures (international applicants/admits, GPA) are not added. IPEDS reports ACT only (no SAT). College Navigator for fall 2024 shows 1,517 applicants, 93% admitted, 19% of admits enrolled."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -73,6 +73,6 @@
     "other_usd": 2255,
     "total_coa_usd": 32385,
     "intl_merit_aid": true,
-    "notes": "UW-Superior international page, 2026-27 estimate for full-time on-campus students: nonresident tuition and fees $18,155; most affordable double room with a 13-meal plan $7,945 (room_board_usd; the page suggests $1,285 more for extra meals); required health insurance $2,255 (other_usd); books about $1,090; orientation fee $255 once. total_coa_usd is the page's minimum funding to show for an F-1 visa without a scholarship ($32,385; it also includes personal expenses). With the NTW scholarship the page's total is $22,710 or $20,510."
+    "notes": "UW-Superior international page, 2026-27 estimate for full-time on-campus students: nonresident tuition and fees $18,155; most affordable double room with a 13-meal plan $7,945 (shown as housing and food; the page suggests $1,285 more for extra meals); required health insurance $2,255 (shown as other costs); books about $1,090; orientation fee $255 once. The total cost of attendance shown is the page's minimum funding to show for an F-1 visa without a scholarship ($32,385; it also includes personal expenses). With the NTW scholarship the page's total is $22,710 or $20,510"
   }
 }

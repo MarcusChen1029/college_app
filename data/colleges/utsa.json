@@ -44,7 +44,7 @@
     "intl_admits": 442,
     "pct_submit_sat": 61.0,
     "pct_submit_act": 7.0,
-    "notes": "CDS 2024-2025 (fall 2024 first-years), the newest CDS listed on UTSA's Institutional Research page (a 2025-26 file was not available). C1: 25,422 applicants, 22,063 admitted, 5,980 enrolled. International admit rate 96.5% (442 of 458), 104 enrolled. UTSA left high school GPA (C11/C12) blank, so GPA fields are omitted; 16% of enrollees were in the top tenth and 55% in the top quarter of their class (C10). Undergraduate enrollment 31,127 is CDS B1 total undergraduates; 427 is degree-seeking nonresident undergraduates (B2). Student-faculty ratio 23.8 is CDS I-2 (fall 2024)."
+    "notes": "Common Data Set 2024-2025 (fall 2024 first-years), the newest one listed on UTSA's Institutional Research page (a 2025-26 file was not available). 25,422 applicants, 22,063 admitted, 5,980 enrolled. International admit rate 96.5% (442 of 458), 104 enrolled. UTSA did not report a high school GPA, so GPA figures are not shown; 16% of enrollees were in the top tenth and 55% in the top quarter of their class. Undergraduate enrollment is 31,127 (total undergraduates); 427 is degree-seeking nonresident undergraduates. Student-faculty ratio 23.8 is from the Common Data Set (fall 2024)."
   },
   "scores_source": "cds",
   "scores": {
@@ -102,7 +102,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS 2024-25 C8A: SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set 2024-25: SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2024-2025",
@@ -115,6 +115,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 340,
     "intl_avg_award_usd": 6646,
-    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; on-campus food and housing $14,912. The CDS left section G (costs) blank. CDS 2024-25 H6: 340 degree-seeking nonresident undergraduates received institutional aid (avg $6,646, total $2,259,506); the CDS did not mark whether it was need- or non-need-based."
+    "notes": "IPEDS College Navigator 2024-25 first-time undergraduate expenses: tuition amounts include required fees; on-campus food and housing $14,912. The Common Data Set did not report costs. From the Common Data Set 2024-25: 340 degree-seeking nonresident undergraduates received institutional aid (avg $6,646, total $2,259,506); it did not mark whether the aid was need- or non-need-based"
   }
 }

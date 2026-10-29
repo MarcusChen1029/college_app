@@ -65,7 +65,7 @@
       "2.0-2.49": 4,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1 (fall 2024 first-year class; residency by known physical address): only 17 international applicants (13 admitted, 1 enrolled) and 234 other out-of-state applicants, so Farmingdale is overwhelmingly a Long Island/New York commuter college and the international admit rate rests on a tiny sample. 19% (340 students) submitted SAT and 2% (35) ACT. The GPA bands were read from the PDF text in high-to-low order and agree with the 3.27 average. No early decision/early action. Undergrad enrollment (10,007) is from College Navigator, fall 2024 (3% nonresident, no headcount)."
+    "notes": "From the Common Data Set (fall 2024 first-year class; residency by known physical address): only 17 international applicants (13 admitted, 1 enrolled) and 234 other out-of-state applicants, so Farmingdale is overwhelmingly a Long Island/New York commuter college and the international admit rate rests on a tiny sample. 19% (340 students) sent SAT scores and 2% (35) sent ACT scores. The GPA bands were read from the PDF text in high-to-low order and agree with the 3.27 average. No early decision/early action. Undergraduate enrollment (10,007) is from College Navigator, fall 2024 (3% nonresident, no headcount)."
   },
   "scores": {
     "SAT_ERW": [
@@ -94,6 +94,6 @@
     "room_board_usd": 16182,
     "books_usd": 1300,
     "intl_need_aid": false,
-    "notes": "CDS G1 (first-year, 2024-25): nonresident tuition $17,560, required fees $1,556, food and housing on campus $16,182. These are 2024-25 figures; 2026-27 rates were not confirmed."
+    "notes": "From the Common Data Set (first-year, 2024-25): nonresident tuition $17,560, required fees $1,556, food and housing on campus $16,182. These are 2024-25 figures; 2026-27 rates are not yet confirmed"
   }
 }

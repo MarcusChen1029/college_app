@@ -59,7 +59,7 @@
     "enrolled": 1529,
     "pct_submit_sat": 21,
     "pct_submit_act": 3,
-    "notes": "Baseline from IPEDS (fall 2024 entering class, ADM2024); exact totals (enrolled = full-time 1,467 + part-time 62). College Navigator shows 94% admitted and 27% of admits enrolled. PennWest is one institution (formed 2022 from California, Clarion and Edinboro universities) and no Common Data Set was found on its Institutional Research pages or by search, so GPA, international applicant counts and residency splits are not available. SAT/ACT percentiles are for enrolled first-time students (test-optional, self-selected)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); exact totals (enrolled = full-time 1,467 + part-time 62). College Navigator shows 94% admitted and 27% of admits enrolled. PennWest is one institution (formed 2022 from California, Clarion and Edinboro universities) and no Common Data Set was found on its Institutional Research pages or by search, so GPA, international applicant counts and residency splits are not available. SAT/ACT percentiles are for enrolled first-time students (test-optional, self-selected)."
   },
   "scores": {
     "SAT_ERW": [
@@ -98,6 +98,6 @@
     "room_board_usd": 12890,
     "books_usd": 1260,
     "intl_merit_aid": true,
-    "notes": "Tuition page 'Costs (2026-2027)', per term, 12-18 credits: in-state tuition $4,169 (tuition + fees $6,262.50); out-of-state/international tuition $6,254 (tuition + fees $8,824.50), so fees are $2,570.50 per term for out-of-state/international. The page gives no annual figures; the annual values here are two terms (semester calendar) x the per-term amounts: tuition $8,338 in-state and $12,508 out-of-state/international, fees $5,141. The page shows a single combined 'out-of-state/international' rate. room_board_usd = housing $8,100 + food $4,790 from the cost-of-attendance page, which does not name a year and shows different tuition ($11,574) and fees ($4,224) for out-of-state, so verify with the university. Scholarships may lower the tuition rate (see aid notes)."
+    "notes": "Tuition page 'Costs (2026-2027)', per term, 12-18 credits: in-state tuition $4,169 (tuition + fees $6,262.50); out-of-state/international tuition $6,254 (tuition + fees $8,824.50), so fees are $2,570.50 per term for out-of-state/international. The page gives no annual figures; the annual values here are two terms (semester calendar) x the per-term amounts: tuition $8,338 in-state and $12,508 out-of-state/international, fees $5,141. The page shows a single combined 'out-of-state/international' rate. Housing and food = housing $8,100 + food $4,790 from the cost-of-attendance page, which does not name a year and shows different tuition ($11,574) and fees ($4,224) for out-of-state, so confirm with the university. Scholarships may lower the tuition rate (see the aid notes)"
   }
 }

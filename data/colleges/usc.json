@@ -62,7 +62,7 @@
       "2.50-2.99": 0.7,
       "2.0-2.49": 0.2
     },
-    "notes": "Fall 2025 entering class (CDS 2025-2026 C1, C9, C11, C12). The CDS reports no early decision plan and no wait-list policy for 2025; USC's admissions site now lists ED and EA for the 2026-27 cycle. GPA distribution is the all-enrolled-students column. Test-optional: SAT/ACT percentiles describe the 33% (SAT) and 12% (ACT) who submitted scores. ACT English percentiles are blank in the CDS."
+    "notes": "Fall 2025 entering class (Common Data Set 2025-2026). The Common Data Set reports no early decision plan and no wait-list policy for 2025; USC's admissions site now lists ED and EA for the 2026-27 cycle. The GPA breakdown is the all-enrolled-students column. Test-optional: SAT/ACT percentiles describe the 33% (SAT) and 12% (ACT) who sent scores. ACT English percentiles are not reported in the Common Data Set."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,7 +99,7 @@
     "room_board_usd": 20817,
     "other_usd": 2006,
     "total_coa_usd": 95048,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

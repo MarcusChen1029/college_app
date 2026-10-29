@@ -82,7 +82,7 @@
    "plan": "EA",
    "due": "2026-11-01",
    "label": "Early Action (non-binding; international Honors College consideration)",
-   "notes": "Decision in mid-December. Early applicants get priority for the Honors College and merit scholarships. The page prints no year; taken as the current (fall 2027) cycle.",
+   "notes": "Decision in mid-December. Early applicants get priority for the Honors College and merit scholarships. The page gives no year, so the current (fall 2027) cycle is assumed.",
    "src": "dates"
   },
   {
@@ -206,15 +206,15 @@
  },
  "tier_notes": {
   "general": "Large public research university; admits about 87% of applicants, with a wide score range, so an SAT ~1100 international applicant is a likely admit.",
-  "computer_science": "Editorial estimate: large College of Engineering and Computing near Washington DC; no ranking cited.",
-  "engineering": "Editorial estimate: College of Engineering and Computing; no ranking cited.",
-  "business": "Editorial estimate: undergraduate business school at a large research university; no ranking cited.",
-  "biology_life_sci": "Editorial estimate; no ranking cited.",
-  "pre_med": "Editorial estimate; no ranking cited.",
-  "economics": "Editorial estimate; no ranking cited.",
-  "math_physics": "Editorial estimate; no ranking cited.",
-  "humanities": "Editorial estimate; no ranking cited.",
-  "arts_design": "Editorial estimate; no ranking cited.",
-  "nursing": "Editorial estimate: School of Nursing with a selective BSN; no ranking cited."
+  "computer_science": "Our estimate: large College of Engineering and Computing near Washington DC; no ranking cited.",
+  "engineering": "Our estimate: College of Engineering and Computing; no ranking cited.",
+  "business": "Our estimate: undergraduate business school at a large research university; no ranking cited.",
+  "biology_life_sci": "Our estimate; no ranking cited.",
+  "pre_med": "Our estimate; no ranking cited.",
+  "economics": "Our estimate; no ranking cited.",
+  "math_physics": "Our estimate; no ranking cited.",
+  "humanities": "Our estimate; no ranking cited.",
+  "arts_design": "Our estimate; no ranking cited.",
+  "nursing": "Our estimate: School of Nursing with a selective BSN; no ranking cited."
  }
 }

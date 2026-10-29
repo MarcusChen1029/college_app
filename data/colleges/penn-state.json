@@ -67,7 +67,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1/C2/C9/C11/C12, University Park, fall 2025 entering class. No early decision; early action closes 11/1. SAT/ACT optional (considered if submitted). Admission is to a specific college/major; competitive majors have separate criteria."
+    "notes": "From the Common Data Set, University Park, fall 2025 entering class. No early decision; early action closes 11/1. SAT/ACT optional (considered if submitted). Admission is to a specific college/major; competitive majors have separate criteria."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 15346,
     "other_usd": 5324,
     "total_coa_usd": 41003,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 43490
   },
   "factors": {

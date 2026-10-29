@@ -63,7 +63,7 @@
       "3.50-3.74": 3,
       "3.25-3.49": 1
     },
-    "notes": "CDS Fall 2025 entering class. Single-choice early action only (no binding ED). GPA distribution is for all enrolled students (C11). Applicants include 18 of unknown sex. Test-optional for the 2026-27 cycle; testing required again from 2027-28."
+    "notes": "From the Common Data Set, Fall 2025 entering class. Single-choice early action only (no binding ED). The GPA breakdown is for all enrolled students. Applicants include 18 of unknown sex. Test-optional for the 2026-27 cycle; testing required again from 2027-28."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -125,6 +125,6 @@
     "room_board_usd": 21170,
     "other_usd": 3950,
     "total_coa_usd": 87888,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

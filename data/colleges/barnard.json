@@ -51,7 +51,7 @@
     "ed_admits": 476,
     "pct_submit_sat": 38,
     "pct_submit_act": 16,
-    "notes": "CDS C1/C2/C9/C21 (Fall 2025 entering class); the CDS leaves the residency table, C11 GPA distribution and C12 average GPA blank. Test-optional through the 2027 cycle, so percentiles describe the 38% (SAT) / 16% (ACT) who submitted. ED closes Nov 1."
+    "notes": "From the Common Data Set (Fall 2025 entering class); it leaves the residency table, the GPA breakdown and the average GPA blank. Test-optional through the 2027 cycle, so percentiles describe the 38% (SAT) / 16% (ACT) who submitted. ED closes Nov 1."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -93,7 +93,7 @@
     "room_board_usd": 22691,
     "other_usd": 1830,
     "total_coa_usd": 93398,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

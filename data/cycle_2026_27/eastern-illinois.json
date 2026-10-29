@@ -65,7 +65,7 @@
    "own"
   ],
   "app_fee_usd": 30,
-  "notes": "International application fee is a non-refundable $30 (valid one year). Required: official secondary transcripts (the checklist says minimum 2.5 GPA on a 4.0 scale, the requirements page says 2.00), English proficiency scores or a waiver, financial affidavit with a bank statement showing one year of funding, and a passport copy. No I-20 is issued without official records. The page gives no year with the deadlines; treated as fall 2027.",
+  "notes": "International application fee is a non-refundable $30 (valid one year). Required: official secondary transcripts (the checklist says minimum 2.5 GPA on a 4.0 scale, the requirements page says 2.00), English proficiency scores or a waiver, financial affidavit with a bank statement showing one year of funding, and a passport copy. No I-20 is issued without official records. The page gives no year with the deadlines, so fall 2027 is assumed.",
   "src": "chk"
  },
  "deadlines": [
@@ -73,7 +73,7 @@
    "kind": "application",
    "due": "2027-05-15",
    "label": "International application deadline, fall term (fall 2027 entry)",
-   "notes": "The checklist prints 'May 15 for Fall Admission / November 1 for Spring Admission' without a year; treated as fall 2027 (the spring 2028 deadline would be Nov. 1, 2027).",
+   "notes": "The checklist prints 'May 15 for Fall Admission / November 1 for Spring Admission' without a year, so fall 2027 is assumed (the spring 2028 deadline would be Nov. 1, 2027).",
    "src": "chk"
   },
   {
@@ -81,7 +81,7 @@
    "due": "2026-12-01",
    "notify": "2027-01-31",
    "label": "Nursing (prelicensure BSN) direct-entry application, opens Oct. 1",
-   "notes": "Competitive, limited seats, needs a 3.75 high-school GPA; decisions by Jan. 31. Dates have no year on the page; treated as for fall 2027 entry. Other pre-nursing students apply to the major by March 1 of freshman year.",
+   "notes": "Competitive, limited seats, needs a 3.75 high-school GPA; decisions by Jan. 31. Dates have no year on the page, so fall 2027 entry is assumed. Other pre-nursing students apply to the major by March 1 of freshman year.",
    "src": "nurs"
   }
  ],

@@ -62,7 +62,7 @@
       "2.50-2.99": 10,
       "2.0-2.49": 7
     },
-    "notes": "CDS C1 (fall 2024 entering class; the 2025-26 CDS posted on the school's site has no readable values). 75% of all applicants were admitted, but only 242 of 1,110 international applicants (22%) were admitted and 33 enrolled, so international admission is far more selective than the overall rate. Early action available (non-binding); no early decision. C11 prints one GPA column (all enrolled students) with 'N/A' for the 3.00-3.24 band, so that band is omitted. Test-score submitters: 51% SAT (329 students), 6% ACT (39); the C9 heading says 'Fall 2023' but College Navigator shows the same percentiles for fall 2024."
+    "notes": "From the Common Data Set (fall 2024 entering class; the 2025-26 Common Data Set posted on the school's site has no readable values). 75% of all applicants were admitted, but only 242 of 1,110 international applicants (22%) were admitted and 33 enrolled, so international admission is far more selective than the overall rate. Early action available (non-binding); no early decision. The GPA breakdown is one column (all enrolled students) with 'N/A' for the 3.00-3.24 band, so that band is not shown. Test-score submitters: 51% SAT (329 students), 6% ACT (39); the test score table's heading says 'Fall 2023' but College Navigator shows the same percentiles for fall 2024."
   },
   "scores_source": "cds",
   "scores": {
@@ -120,7 +120,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2026) dropdown selections did not extract cleanly; the admissions site and catalog state that SAT/ACT are optional for most programs."
+    "notes": "The Common Data Set's test policy dropdown selections (fall 2026) did not extract cleanly; the admissions site and catalog state that SAT/ACT are optional for most programs."
   },
   "cost": {
     "year": "2025-2026",
@@ -132,6 +132,6 @@
     "books_usd": 1468,
     "intl_need_aid_awarded": 126,
     "intl_avg_award_usd": 18443,
-    "notes": "CDS G1 (2025-26 first-year): tuition $33,606, required fees $0, food and housing $10,636 (commuter food and housing $11,280 is also printed); G5 books and supplies $1,468. Tuition varies by program (G4: 15% of full-time undergraduates pay more). CDS H6 (2024-25 estimated): 126 degree-seeking undergraduate nonresidents received institutional aid, average $18,443 (total $2,323,779)."
+    "notes": "First-year costs for 2025-26 from the Common Data Set: tuition $33,606, required fees $0, food and housing $10,636 (commuter food and housing $11,280 is also printed); books and supplies $1,468. Tuition varies by program (15% of full-time undergraduates pay more). In the Common Data Set (2024-25 estimated), 126 degree-seeking undergraduate nonresidents received institutional aid, average $18,443 (total $2,323,779)"
   }
 }

@@ -56,21 +56,21 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International application deadline, fall 2027 entry (students who need a visa)",
-   "notes": "International page prints 'Fall Enrollment: June 1' with no year (treated as fall 2027); spring enrollment is Nov. 1. The page says the deadline can be extended for applicants already in the U.S. who do not need a visa.",
+   "notes": "International page prints 'Fall Enrollment: June 1' with no year (so fall 2027 is assumed); spring enrollment is Nov. 1. The page says the deadline can be extended for applicants already in the U.S. who do not need a visa.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-02-01",
    "label": "Scholarships of Distinction: apply for admission before Feb. 1 for full consideration",
-   "notes": "Merit awards of up to $4,000 per year for new first-time students; no separate application. Applicants after Feb. 1 are considered as funds allow. Year not printed; taken as 2027.",
+   "notes": "Merit awards of up to $4,000 per year for new first-time students; no separate application. Applicants after Feb. 1 are considered as funds allow. The year is not printed, so 2027 is assumed.",
    "src": "intl"
   },
   {
    "kind": "scholarship",
    "due": "2027-05-01",
    "label": "International Scholarship Application priority deadline (fall semester)",
-   "notes": "Priority deadline printed as 'Fall Semester - May 1' (spring semester Oct. 1); students must first be admitted and send final official transcripts. Year not printed; taken as 2027.",
+   "notes": "Priority deadline printed as 'Fall Semester - May 1' (spring semester Oct. 1); students must first be admitted and send final official transcripts. The year is not printed, so 2027 is assumed.",
    "src": "intl"
   }
  ],
@@ -116,7 +116,7 @@
   "books_usd": 1000,
   "other_usd": 1422,
   "total_coa_usd": 24227,
-  "notes": "Intl page, undergraduate 2026-27: tuition $376.40/credit x 30 = $11,292; general activity fees $1,203; international student fee $400 ($200/semester); discipline fees about $472 (not split out); standard double room $4,338 plus standard meal plan $4,100; health insurance $1,422 (shown in other_usd); books $1,000; total $24,227, excluding $2,000-$5,000 personal spending per semester. SD resident tuition $8,024 from the Tuition & Fees page; that page's financial-aid cost of attendance for a nonresident living on campus is $29,356 (includes miscellaneous and transportation).",
+  "notes": "International page, undergraduate 2026-27: tuition $376.40/credit x 30 = $11,292; general activity fees $1,203; international student fee $400 ($200/semester); discipline fees about $472 (not split out); standard double room $4,338 plus standard meal plan $4,100; health insurance $1,422 (shown under other costs); books $1,000; total $24,227, excluding $2,000-$5,000 personal spending per semester. SD resident tuition $8,024 from the Tuition & Fees page; that page's financial-aid cost of attendance for a nonresident living on campus is $29,356 (includes miscellaneous and transportation)",
   "src": "intl"
  },
  "aid": {

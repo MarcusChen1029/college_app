@@ -122,7 +122,7 @@
   "tuition_intl_usd": 41127,
   "room_board_usd": 15889,
   "src": "cost",
-  "notes": "VCU 2026-27 table: tuition and fees combined $17,963 (Virginia resident) / $41,127 (non-resident), based on 15 credits per semester; room $9,259 (first-year double in Rhoads Hall) plus dining $6,630. New first-years add a $250 one-time transition fee. Major-specific fees extra."
+  "notes": "VCU 2026-27 table: tuition and fees combined $17,963 (Virginia resident) / $41,127 (non-resident), based on 15 credits per semester; room $9,259 (first-year double in Rhoads Hall) plus dining $6,630. New first-years add a $250 one-time transition fee. Major-specific fees extra"
  },
  "aid": {
   "intl_need_aid": null,
@@ -130,7 +130,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "Out-of-state academic scholarships are open to international students: four-year awards of $10,000 (3.00 high school GPA) to $15,000 (4.00) per year, renewable up to three more years, no separate application; GPA tiers $10,000 / $11,000 (3.25) / $12,000 (3.50) / $14,000 (3.75) / $15,000 (4.00). University-level Provost and Deans' scholarships cover in-state costs only. CDS H6 (2024-25): 148 undergraduate nonresidents were awarded institutional aid, average $11,243; whether need-based aid exists for nonresidents could not be read from the CDS check boxes.",
+  "notes": "Out-of-state academic scholarships are open to international students: four-year awards of $10,000 (3.00 high school GPA) to $15,000 (4.00) per year, renewable up to three more years, no separate application; GPA tiers $10,000 / $11,000 (3.25) / $12,000 (3.50) / $14,000 (3.75) / $15,000 (4.00). University-level Provost and Deans' scholarships cover in-state costs only. From the Common Data Set (2024-25): 148 undergraduate nonresidents were awarded institutional aid, average $11,243; whether need-based aid exists for nonresidents could not be read from the Common Data Set check boxes.",
   "src": "sch"
  },
  "majors": [
@@ -185,11 +185,11 @@
  },
  "tier_notes": {
   "general": "Large urban public research university; admits about 84% of applicants (SAT middle 50% 1010-1260), so an SAT ~1100 international applicant is a likely admit.",
-  "business": "Editorial estimate: School of Business; no ranking cited.",
-  "biology_life_sci": "Editorial estimate: large research university with a medical campus; no ranking cited.",
-  "pre_med": "Editorial estimate: VCU has an academic medical center and Honors guaranteed-admission health programs; no ranking cited.",
-  "humanities": "Editorial estimate; no ranking cited.",
-  "arts_design": "Editorial estimate: School of the Arts is a large, well-known public arts school; no ranking cited.",
-  "nursing": "Editorial estimate: School of Nursing in an academic medical center; no ranking cited."
+  "business": "Our estimate: School of Business; no ranking cited.",
+  "biology_life_sci": "Our estimate: large research university with a medical campus; no ranking cited.",
+  "pre_med": "Our estimate: VCU has an academic medical center and Honors guaranteed-admission health programs; no ranking cited.",
+  "humanities": "Our estimate; no ranking cited.",
+  "arts_design": "Our estimate: School of the Arts is a large, well-known public arts school; no ranking cited.",
+  "nursing": "Our estimate: School of Nursing in an academic medical center; no ranking cited."
  }
 }

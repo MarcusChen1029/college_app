@@ -31,7 +31,7 @@
   "applicants": 25994,
   "admits": 24336,
   "enrolled": 3884,
-  "notes": "Baseline from IPEDS (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 27,702 applicants, 94% admitted, 15% of admitted students enrolled (percentages are rounded). The newest Sacramento State Common Data Set found online is 2022-2023, so it was not used. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are left null. The CSU is test-blind, so no SAT/ACT percentiles are reported."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2023 first-time, first-year class); College Navigator also shows fall 2024: 27,702 applicants, 94% admitted, 15% of admitted students enrolled (percentages are rounded). The newest Sacramento State Common Data Set found online is 2022-2023, so it was not used. Undergraduate enrollment and international (nonresident) undergraduates are IPEDS fall 2023 totals. Applications by residency (international applicants and admits), GPA and score ranges are not in IPEDS, so they are not shown. The CSU is test-blind, so no SAT/ACT percentiles are reported."
  },
  "scores": {}
 }

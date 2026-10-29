@@ -46,7 +46,7 @@
     "admits": 9372,
     "enrolled": 757,
     "pct_submit_sat": 3,
-    "notes": "Baseline from IPEDS ADM2023 (fall 2023 entering class; exact counts). No Common Data Set was found on Medgar Evers' institutional research page (it lists fact sheets and dashboards only), so no international split, GPA or residency data; international applicant counts are not published. College Navigator fall 2024: 12,015 applicants, 86% admitted, 6% of admits enrolled (admit counts not shown). SAT percentiles are for only 20 enrolled students (3%) who submitted SAT in fall 2024, so they are a thin sample. Mixed associate/bachelor's college: IPEDS counts include associate-degree applicants."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). No Common Data Set was found on Medgar Evers' institutional research page (it lists fact sheets and dashboards only), so no international split, GPA or residency data; international applicant counts are not published. College Navigator fall 2024: 12,015 applicants, 86% admitted, 6% of admits enrolled (admit counts not shown). SAT percentiles are for only 20 enrolled students (3%) who submitted SAT in fall 2024, so they are a thin sample. Mixed associate/bachelor's college: IPEDS counts include associate-degree applicants."
   },
   "scores": {
     "SAT_ERW": [
@@ -75,6 +75,6 @@
     "room_board_usd": 22260,
     "other_usd": 6216,
     "total_coa_usd": 45278,
-    "notes": "College Navigator 2024-25: tuition includes required fees; off-campus food and housing (Medgar Evers has no campus housing); total is the out-of-state off-campus figure (in-state off-campus $37,328). F-1/J-1 students pay the New York State non-resident rate (CUNY). CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time (12+ credits) plus fees."
+    "notes": "College Navigator 2024-25: tuition includes required fees; off-campus food and housing (Medgar Evers has no campus housing); total is the out-of-state off-campus figure (in-state off-campus $37,328). F-1/J-1 students pay the New York State non-resident rate (CUNY). CUNY's 2026-27 rates: $620 per credit non-resident, $3,465 per semester NYS resident full-time (12+ credits) plus fees"
   }
 }

@@ -47,7 +47,7 @@
     "enrolled": 793,
     "pct_submit_sat": 31,
     "pct_submit_act": 3,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023); Longwood's Common Data Set page lists files only through 2019-2020, so no recent CDS was read. College Navigator also shows fall 2024: 5,391 applicants, 90% admitted (exact admit count not given), SAT EBRW 530/580/630 and Math 500/540/580 for 205 submitters (25%). Longwood's admission-requirements page prints 'accepted students at a glance' (undated): mid-range GPA 3.35-4.02, SAT 1040-1230, ACT 21-27. ACT percentiles are not listed because only 23 enrolled students (3%) submitted ACT in fall 2023. International applicant and admit counts, GPA distribution and SAT total are not available from IPEDS."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); Longwood's Common Data Set page lists files only through 2019-2020, so no recent Common Data Set was used. College Navigator also shows fall 2024: 5,391 applicants, 90% admitted (exact admit count not given), SAT EBRW 530/580/630 and Math 500/540/580 for 205 students who sent scores (25%). Longwood's admission-requirements page prints 'accepted students at a glance' (undated): mid-range GPA 3.35-4.02, SAT 1040-1230, ACT 21-27. ACT percentiles are not listed because only 23 enrolled students (3%) sent ACT scores in fall 2023. International applicant and admit counts, GPA breakdown and SAT total are not available from IPEDS."
   },
   "scores": {
     "SAT_ERW": [

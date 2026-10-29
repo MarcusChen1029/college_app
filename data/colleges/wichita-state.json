@@ -57,7 +57,7 @@
       "2.0-2.49": 5.0,
       "1.0-1.99": 1.0
     },
-    "notes": "CDS C1 (fall 2025). International first-year applicants: 466 of 573 admitted (81%). No waitlist; no early decision or early action. Undergrad enrollment 14,906 is B1/B2 total undergraduates including non-degree-seeking; intl_undergrads 2,147 is the B2 nonresident total (only 438 of them degree-seeking undergraduates, 55 first-time first-year). Only 73 enrolled freshmen (4.2%) submitted SAT, so SAT percentiles (composite 1050/1160/1260) rest on a small group; ACT composite is 17/21/24. GPA distribution is the 'all enrolled students' column."
+    "notes": "From the Common Data Set (fall 2025). International first-year applicants: 466 of 573 admitted (81%). No waitlist; no early decision or early action. Undergraduate enrollment is 14,906 (total undergraduates, including non-degree-seeking); international undergraduates number 2,147 (total nonresident; only 438 of them degree-seeking undergraduates, 55 first-time first-year). Only 73 enrolled freshmen (4.2%) sent SAT scores, so SAT percentiles (composite 1050/1160/1260) rest on a small group; ACT composite is 17/21/24. The GPA breakdown is the 'all enrolled students' column."
   },
   "scores_source": "cds",
   "scores": {
@@ -112,6 +112,6 @@
     "source": "cds",
     "intl_need_aid_awarded": 118,
     "intl_avg_award_usd": 8358,
-    "notes": "CDS H6: 118 nonresident undergraduates received institutional aid, average $8,358 (the CDS ticks both need-based and non-need-based aid; the international aid page says scholarships are not based on financial need). CDS G1 costs were not filled in, so resident and nonresident tuition are not recorded."
+    "notes": "From the Common Data Set: 118 nonresident undergraduates received institutional aid, average $8,358 (it ticks both need-based and non-need-based aid; the international aid page says scholarships are not based on financial need). The cost section of the Common Data Set was not filled in, so resident and nonresident tuition are not shown"
   }
 }

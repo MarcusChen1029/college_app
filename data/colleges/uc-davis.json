@@ -65,7 +65,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. C1 by-sex enrolled total is 6,810; the residency table totals 6,824 (inconsistent in the source). C9 test-score percentiles are blank (UC test-blind). Reported GPA average of 4.03 is a UC-weighted GPA (above a 4.0 scale)."
+    "notes": "UC does not use SAT/ACT in admission and has no early decision/early action. The enrolled total by sex is 6,810; the residency table totals 6,824 (inconsistent in the source). Test-score percentiles are not reported (UC is test-blind). Reported GPA average of 4.03 is a UC-weighted GPA (above a 4.0 scale)."
   },
   "scores": {},
   "cost": {
@@ -76,7 +76,7 @@
     "room_board_usd": 20437,
     "other_usd": 6962,
     "total_coa_usd": 43191,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 54948
   },
   "factors": {

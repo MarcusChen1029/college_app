@@ -33,7 +33,7 @@
   "fee_waiver": true,
   "teacher_recs": 2,
   "counselor_rec": true,
-  "notes": "Common App or Coalition with Scoir. Required: official high school transcript, School Report, counselor recommendation, two teacher recommendations, an essay (all first-year students) and the $75 fee (waivers available). Music and music-education applicants need an Arts Supplement. Pre-Professional Scholars applicants write two additional essays plus an interview in late March if selected as a finalist. Applicants seeking need-based aid must indicate it on the application and submit financial aid documents for the application to be complete: non-U.S. residents submit the CSS Profile only (CSS code 1105); U.S. citizens and permanent residents submit FAFSA plus CSS Profile. The page does not state a year, so dates are taken as the current cycle.",
+  "notes": "Common App or Coalition with Scoir. Required: official high school transcript, School Report, counselor recommendation, two teacher recommendations, an essay (all first-year students) and the $75 fee (waivers available). Music and music-education applicants need an Arts Supplement. Pre-Professional Scholars applicants write two additional essays plus an interview in late March if selected as a finalist. Applicants seeking need-based aid must indicate it on the application and submit financial aid documents for the application to be complete: non-U.S. residents submit the CSS Profile only (CSS code 1105); U.S. citizens and permanent residents submit FAFSA plus CSS Profile. The page does not state a year, so the dates are assumed to be for the current cycle.",
   "src": "first"
  },
  "deadlines": [
@@ -117,7 +117,7 @@
  "aid": {
   "intl_need_aid": true,
   "merit_scholarships": true,
-  "notes": "The international page states financial aid is available to international students, all undergraduates are automatically evaluated for several scholarships (including full-tuition awards via scholarship competitions that need an essay), and CWRU awarded $213 million in institutional aid last year. Whether need is met in full for international students, and whether admission is need-blind, is not stated on the pages read, so intl_aid_policy is left unset.",
+  "notes": "The international page states financial aid is available to international students, all undergraduates are automatically evaluated for several scholarships (including full-tuition awards via scholarship competitions that need an essay), and CWRU awarded $213 million in institutional aid last year. Whether need is met in full for international students, and whether admission is need-blind, is not stated on the pages checked, so the aid policy is not shown.",
   "src": "intl"
  },
  "score_codes": {

@@ -47,7 +47,7 @@
     "enrolled": 1082,
     "pct_submit_sat": 3,
     "pct_submit_act": 82,
-    "notes": "Baseline from IPEDS (fall 2024 entering class). Nicholls' Common Data Set page (nicholls.edu/irep/common-data-set/) only lists CDS files through 2018-19, too old to use. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 3,369 applicants, 3,059 admitted, 1,082 enrolled (1,075 full-time + 7 part-time). College Navigator shows 3% submitting SAT (34 students) and 82% submitting ACT (884 students); SAT percentiles rest on a small group. International applicant counts, GPA and class rank are not published."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class). Nicholls' Common Data Set page (nicholls.edu/irep/common-data-set/) only lists Common Data Set files through 2018-19, too old to use. Counts from the IPEDS file (via the Urban Institute API mirror): 3,369 applicants, 3,059 admitted, 1,082 enrolled (1,075 full-time + 7 part-time). College Navigator shows 3% submitting SAT (34 students) and 82% submitting ACT (884 students); SAT percentiles rest on a small group. International applicant counts, GPA and class rank are not published."
   },
   "scores": {
     "SAT_ERW": [

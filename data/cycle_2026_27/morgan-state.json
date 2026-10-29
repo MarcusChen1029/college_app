@@ -62,7 +62,7 @@
       "kind": "application",
       "due": "2026-11-15",
       "label": "International applicants: fall 2027 application deadline",
-      "notes": "From the International Applicants column of the deadlines table (Fall 2027: Application Nov 15, Documents Due Dec 15). Freshman (domestic) dates differ: priority Dec 1, application Apr 1, documents Apr 30. The OISS page cites Dec 1 for the international fall application; the admissions table is used here.",
+      "notes": "From the International Applicants column of the deadlines table (Fall 2027: Application Nov 15, Documents Due Dec 15). Freshman (domestic) dates differ: priority Dec 1, application Apr 1, documents Apr 30. The OISS page cites Dec 1 for the international fall application; the date shown here comes from the admissions table.",
       "src": "dates"
     },
     {
@@ -111,7 +111,7 @@
     "tuition_usd": 5935,
     "tuition_out_of_state_usd": 17265,
     "required_fees_usd": 2531,
-    "notes": "Bursar schedule for fall 2026 - spring 2027, full-time (12+ credits) undergraduate, doubled to a year: Maryland resident tuition $2,967.50/semester, non-resident $8,632.50/semester, fees $1,265.50/semester. The page does not state that international students pay the non-resident rate, so tuition_intl_usd is left null. Mandatory health insurance is separate ($781.95 fall + $1,159.05 spring = $1,941.00). Room and board are not given as annual totals, so they are left null."
+    "notes": "Bursar schedule for fall 2026 to spring 2027, full-time (12+ credits) undergraduate, doubled to a year: Maryland resident tuition $2,967.50/semester, non-resident $8,632.50/semester, fees $1,265.50/semester. The page does not state that international students pay the non-resident rate, so international tuition is not shown. Mandatory health insurance is separate ($781.95 fall + $1,159.05 spring = $1,941.00). Room and board are not given as annual totals, so they are not shown"
   },
   "score_codes": {
     "sat": {

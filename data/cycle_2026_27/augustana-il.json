@@ -48,7 +48,7 @@
       "own"
     ],
     "app_fee_usd": null,
-    "notes": "Augustana Application or Common App (reviewed the same). Application fee: not stated on the pages read and the CDS fee boxes did not extract, so left null. Writing sample required of all applicants (case-by-case exceptions); admissions interview required for Early Decision and highly recommended for others; teacher/school letter of recommendation recommended, not required; international applicants must submit a Certification of Finances. Unofficial transcripts can be uploaded to apply, official ones are needed to matriculate. International applicants may enter in fall (late August) or spring (late January).",
+    "notes": "Augustana Application or Common App (reviewed the same). Application fee: not stated on the pages checked and the Common Data Set fee boxes could not be read, so no fee is shown. Writing sample required of all applicants (case-by-case exceptions); admissions interview required for Early Decision and highly recommended for others; teacher/school letter of recommendation recommended, not required; international applicants must submit a Certification of Finances. Unofficial transcripts can be uploaded to apply, official ones are needed to matriculate. International applicants may enter in fall (late August) or spring (late January).",
     "src": "pol"
   },
   "deadlines": [
@@ -58,7 +58,7 @@
       "due": "2026-11-01",
       "notify": "2026-12-01",
       "label": "Early Decision (binding), fall 2027 entry",
-      "notes": "Requires an admissions interview and signed ED agreement; tuition deposit due Dec. 20. Page prints no year; taken as the fall 2027 cycle.",
+      "notes": "Requires an admissions interview and signed ED agreement; tuition deposit due Dec. 20. The page gives no year, so the fall 2027 cycle is assumed.",
       "src": "proc"
     },
     {
@@ -67,7 +67,7 @@
       "due": "2026-11-01",
       "notify": "2026-12-18",
       "label": "Early Action (non-binding), fall 2027 entry",
-      "notes": "Deposit due May 1. Page prints no year; taken as the fall 2027 cycle.",
+      "notes": "Deposit due May 1. The page gives no year, so the fall 2027 cycle is assumed.",
       "src": "proc"
     },
     {
@@ -75,7 +75,7 @@
       "plan": "RD",
       "due": "2027-04-01",
       "label": "Regular Decision, fall 2027 entry",
-      "notes": "Rolling decisions starting in early January; deposit due May 1. Page prints no year; taken as 2027.",
+      "notes": "Rolling decisions start in early January; deposit due May 1. The page gives no year, so 2027 is assumed.",
       "src": "proc"
     },
     {
@@ -145,7 +145,7 @@
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": null,
     "merit_scholarships": true,
-    "notes": "Merit scholarships and need-based aid are both offered to international students. All applicants are automatically considered for merit awards; need-based aid requires the International Student Financial Aid application in the applicant portal. Published first-year academic merit awards for students first enrolling 2027-28: Presidential $33,000, Dean's $31,000, Founders $29,000 per year (renewable with GPA). Early Decision admits get a minimum $35,500 per year for campus residents with a full meal plan. Amounts for individual international students are set case by case. CDS H6: 506 nonresidents received institutional aid, average $39,902.",
+    "notes": "Merit scholarships and need-based aid are both offered to international students. All applicants are automatically considered for merit awards; need-based aid requires the International Student Financial Aid application in the applicant portal. Published first-year academic merit awards for students first enrolling 2027-28: Presidential $33,000, Dean's $31,000, Founders $29,000 per year (renewable with GPA). Early Decision admits get a minimum $35,500 per year for campus residents with a full meal plan. Amounts for individual international students are set case by case. From the Common Data Set: 506 nonresidents received aid from the college, average $39,902.",
     "src": "sch"
   },
   "majors": [],

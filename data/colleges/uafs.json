@@ -40,7 +40,7 @@
     "enrolled": 886,
     "pct_submit_sat": 0,
     "pct_submit_act": 81,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, exact counts). No Common Data Set was found (UAFS lists none on its institutional research pages), so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 2,769 applicants, 80% admitted, 40% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 5,459 and student-faculty ratio 18:1 are fall 2024 / 2024 figures. No SAT scores were reported to IPEDS for fall 2023 (0 SAT submitters)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class, exact counts). No Common Data Set was found (UAFS lists none on its institutional research pages), so SAT total, GPA, residency and international splits are not available. College Navigator fall 2024: 2,769 applicants, 80% admitted, 40% of admitted enrolled (admit count not published as a number). Undergraduate enrollment 5,459 and student-faculty ratio 18:1 are fall 2024 / 2024 figures. No SAT scores were reported to IPEDS for fall 2023 (0 SAT submitters)."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -67,6 +67,6 @@
     "books_usd": 1416,
     "room_board_usd": 10082,
     "other_usd": 5476,
-    "notes": "College Navigator 2024-25: tuition and fees $7,334 in-state / $12,182 out-of-state; on-campus food and housing $10,082. Published total cost on campus is $29,156 out-of-state ($24,308 in-state); total left blank because the two differ. International students pay the out-of-state rate (2026-27 per-credit rates are in the aid notes)."
+    "notes": "College Navigator 2024-25: tuition and fees $7,334 in-state / $12,182 out-of-state; on-campus food and housing $10,082. Published total cost on campus is $29,156 out-of-state ($24,308 in-state); the total is not shown because the two differ. International students pay the out-of-state rate (2026-27 per-credit rates are in the aid notes)"
   }
 }

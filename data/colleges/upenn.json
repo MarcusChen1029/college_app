@@ -68,7 +68,7 @@
       "2.50-2.99": 0,
       "1.0-1.99": 0
     },
-    "notes": "CDS Fall 2025 entering class (23 June 2026 edition). Binding ED plus RD; no early action. The CDS gives no SAT composite percentiles, so SAT_TOTAL is omitted."
+    "notes": "From the Common Data Set, Fall 2025 entering class (23 June 2026 edition). Binding ED plus RD; no early action. The Common Data Set gives no SAT composite percentiles, so the SAT total is not shown."
   },
   "scores": {
     "SAT_ERW": [
@@ -125,6 +125,6 @@
     "room_board_usd": 19876,
     "other_usd": 3088,
     "total_coa_usd": 92288,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

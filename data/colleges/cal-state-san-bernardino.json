@@ -57,7 +57,7 @@
    "2.0-2.49": 4.03,
    "1.0-1.99": 0.0
   },
-  "notes": "CDS C1 fall 2025 first-year class. Totals match the sum of the residency table (in-state 14,218 + out-of-state 326 + international 403 applicants; 13,472 + 288 + 335 admits; 2,138 + 13 + 11 enrolled). International applicants were admitted at about 83% versus about 94% overall. College Navigator shows fall 2024: 14,543 applicants, 94% admitted. SAT/ACT are not used in admission, so the score ranges below describe only the 15% of enrollees (317 students) who voluntarily submitted an SAT (ACT: 13 students, too few to report). The CDS C7 marks standardized test scores 'very important' and the C8 form field appears to mark SAT/ACT as recommended, which conflicts with the CSU-wide test-blind policy that College Navigator reports; the test_scores factor is therefore omitted. Undergraduate enrollment (15,948) is the CDS B1 total; intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (182)."
+  "notes": "From the Common Data Set, fall 2025 first-year class. Totals match the sum of the residency table (in-state 14,218 + out-of-state 326 + international 403 applicants; 13,472 + 288 + 335 admits; 2,138 + 13 + 11 enrolled). International applicants were admitted at about 83% versus about 94% overall. College Navigator shows fall 2024: 14,543 applicants, 94% admitted. SAT/ACT are not used in admission, so the score ranges below describe only the 15% of enrollees (317 students) who voluntarily sent an SAT score (ACT: 13 students, too few to report). Under admission factors, the Common Data Set marks standardized test scores 'very important', and its test policy answer appears to mark SAT/ACT as recommended, which conflicts with the CSU-wide test-blind policy that College Navigator reports; the test scores factor is therefore not shown. Undergraduate enrollment is 15,948 (the Common Data Set total); international undergraduates number 182 (degree-seeking nonresident undergraduates)."
  },
  "scores": {
   "SAT_TOTAL": [
@@ -100,6 +100,6 @@
   "source": "cds",
   "intl_need_aid": null,
   "intl_need_aid_awarded": 0,
-  "notes": "CDS H6 reports no institutional aid awarded to degree-seeking nonresident undergraduates (0 recipients). The CDS tuition fields were not used; costs come from CSUSB's international tuition-and-fees page."
+  "notes": "The Common Data Set reports no aid from the college itself awarded to degree-seeking nonresident undergraduates (0 recipients). The Common Data Set tuition figures are not used; costs come from CSUSB's international tuition-and-fees page"
  }
 }

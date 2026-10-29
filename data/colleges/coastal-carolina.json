@@ -62,7 +62,7 @@
       "2.0-2.49": 0.07,
       "1.0-1.99": 0.03
     },
-    "notes": "CDS C1 (fall 2025): 24,549 applied, 17,192 admitted, 2,931 enrolled; residency by known address at application: in-state 6,101 applied / 4,341 admitted, out-of-state 18,225 / 12,757, international 223 applied / 94 admitted / 20 enrolled (international admit rate is well below the overall rate). Early decision: 348 applied, 303 admitted. The CDS lists 29% of enrolled first-years submitting SAT and 10% ACT; Coastal runs a test-optional program for freshmen with a 3.5 HS GPA. GPA distribution is the C11 'all enrolled students' column (sums to 99.99). The C9 score table is laid out unevenly in the PDF text; SAT section, SAT total and ACT composite percentiles were matched against the score-range distributions printed beside them. ACT subscore percentiles were not readable and are omitted. The C7 factor checkboxes are garbled (several rows show two marks), so factors are omitted."
+    "notes": "From the Common Data Set (fall 2025): 24,549 applied, 17,192 admitted, 2,931 enrolled; residency by known address at application: in-state 6,101 applied / 4,341 admitted, out-of-state 18,225 / 12,757, international 223 applied / 94 admitted / 20 enrolled (international admit rate is well below the overall rate). Early decision: 348 applied, 303 admitted. The Common Data Set lists 29% of enrolled first-years submitting SAT and 10% ACT; Coastal runs a test-optional program for freshmen with a 3.5 HS GPA. The GPA breakdown is the 'all enrolled students' column (sums to 99.99). The test score table is laid out unevenly in the PDF text; SAT section, SAT total and ACT composite percentiles were matched against the score-range distributions printed beside them. ACT subscore percentiles were not readable and are not shown. The admission-factor checkboxes are garbled (several rows show two marks), so factors are not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -89,7 +89,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: tests are not required for applicants 22 or older; applicants can apply under a test-optional admissions program."
+    "notes": "From the Common Data Set: tests are not required for applicants 22 or older; applicants can apply under a test-optional admissions program."
   },
   "cost": {
     "year": "2025-2026",
@@ -102,6 +102,6 @@
     "books_usd": 1294,
     "intl_need_aid_awarded": 78,
     "intl_avg_award_usd": 27105,
-    "notes": "CDS G1 for 2025-26 (the 2026-27 costs were not yet final in the CDS): tuition in-state $11,460, out-of-state/nonresident $29,746; required fees $180; housing $7,830 + food $5,500 = $13,330; books $1,294. CDS H6: only institutional non-need-based aid is available to nonresidents; 78 nonresident undergraduates received it, average $27,105 (total $2,114,226). Tuition varies by program for 64.65% of full-time undergraduates (G4)."
+    "notes": "Costs for 2025-26 from the Common Data Set (the 2026-27 costs were not yet final in it): tuition in-state $11,460, out-of-state/nonresident $29,746; required fees $180; housing $7,830 + food $5,500 = $13,330; books $1,294. The Common Data Set says only institutional non-need-based aid is available to nonresidents; 78 nonresident undergraduates received it, average $27,105 (total $2,114,226). Tuition varies by program for 64.65% of full-time undergraduates"
   }
 }

@@ -46,7 +46,7 @@
       "due": "2026-11-15",
       "notify": "2026-12-01",
       "label": "Early Action (fall 2027 entry)",
-      "notes": "Catalog freshman section; notification 'begins' Dec. 1. Printed without a year, taken as the 2026-27 cycle (fall 2027 entry). Not stated whether international applicants use it.",
+      "notes": "Catalog freshman section; notification 'begins' Dec. 1. Printed without a year, so the 2026-27 cycle (fall 2027 entry) is assumed. Not stated whether international applicants use it.",
       "src": "cat"
     },
     {
@@ -55,14 +55,14 @@
       "due": "2026-12-15",
       "notify": "2027-01-02",
       "label": "Early Decision (fall 2027 entry)",
-      "notes": "Binding plan listed in the catalog freshman section; notification 'begins' Jan. 2. Printed without a year, taken as fall 2027 entry.",
+      "notes": "Binding plan listed in the catalog freshman section; notification 'begins' Jan. 2. Printed without a year, so fall 2027 entry is assumed.",
       "src": "cat"
     },
     {
       "kind": "scholarship",
       "due": "2026-12-01",
       "label": "Merit scholarship and housing consideration date, fall 2027",
-      "notes": "Catalog: submit by Dec. 1 for fall (Oct. 1 for spring) to be considered for all departmental and merit scholarships and on-campus housing. Printed without a year, taken as fall 2027.",
+      "notes": "Catalog: submit by Dec. 1 for fall (Oct. 1 for spring) to be considered for all departmental and merit scholarships and on-campus housing. Printed without a year, so fall 2027 is assumed.",
       "src": "cat"
     },
     {
@@ -70,7 +70,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Catalog: international applications by May 1 for fall or Nov. 1 for spring; LIU reviews on a rolling basis. Printed without a year, taken as fall 2027. The old Brooklyn page recommends applying 5-12 months before the start date.",
+      "notes": "Catalog: international applications by May 1 for fall or Nov. 1 for spring; LIU reviews on a rolling basis. Printed without a year, so fall 2027 is assumed. The old Brooklyn page recommends applying 5-12 months before the start date.",
       "src": "cat"
     }
   ],
@@ -116,7 +116,7 @@
     "required_fees_usd": 2116,
     "room_board_usd": 18938,
     "src": "tuit",
-    "notes": "Annual undergraduate tuition (24-36 credits) $41,874; full-time university fee $2,116; standard double room $12,384 plus Residential Meal Plan One $6,554 (room_board is their sum); student health insurance charge $2,158 and $150 dining dollars are listed separately. Same rates apply to international students. College Navigator lists books at $2,000 (2024-25)."
+    "notes": "Annual undergraduate tuition (24-36 credits) $41,874; full-time university fee $2,116; standard double room $12,384 plus Residential Meal Plan One $6,554 (housing and food is their sum); student health insurance charge $2,158 and $150 dining dollars are listed separately. Same rates apply to international students. College Navigator lists books at $2,000 (2024-25)"
   },
   "aid": {
     "intl_need_aid": null,
@@ -169,6 +169,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: an 86% admit rate (fall 2024) with SAT section medians of 620 EBRW / 600 Math among the 24% who submit, and a New York campus, place it just above the open-access D tier."
+    "general": "Our estimate: an 86% admit rate (fall 2024) with SAT section medians of 620 EBRW / 600 Math among the 24% who submit, and a New York campus, place it just above the open-access D tier."
   }
 }

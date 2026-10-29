@@ -50,7 +50,7 @@
       "2.0-2.49": 1.0,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (Fall 2025): men 1,997 + women 3,445 applied; residency rows sum to the totals (in-state 3,886 + out-of-state 1,228 + international 328 = 5,442). International: 328 applied, 298 admitted, 14 enrolled. No early decision or early action; no waitlist; deferral up to 1 year. Only 24 students (2%) reported SAT scores in C9, so SAT percentiles rest on a very small group; 680 (44%) reported ACT. GPA distribution is the 'all enrolled' column of C11. Undergraduate enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (7,800; 167 nonresident)."
+    "notes": "From the Common Data Set (fall 2025): men 1,997 + women 3,445 applied; the residency rows add up to the totals (in-state 3,886 + out-of-state 1,228 + international 328 = 5,442). International: 328 applied, 298 admitted, 14 enrolled. No early decision or early action; no waitlist; deferral up to 1 year. Only 24 students (2%) reported SAT scores, so SAT percentiles rest on a very small group; 680 (44%) reported ACT. The GPA breakdown is the 'all enrolled' column. Undergraduate enrollment is 7,800 and the nonresident count is 167 ('Total Undergraduates' figures)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: SAT and ACT are 'considered if submitted'."
+    "notes": "Common Data Set: SAT and ACT are 'considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -121,6 +121,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 68,
     "intl_avg_award_usd": 5771,
-    "notes": "CDS G1 (first-year, 2026-27); tuition varies by program for about 12.8% of undergraduates (G4). CDS H6: 68 nonresident undergraduates received institutional non-need-based aid, average $5,771; no need-based aid for nonresidents."
+    "notes": "First-year costs from the Common Data Set (2026-27); tuition varies by program for about 12.8% of undergraduates. In the Common Data Set, 68 nonresident undergraduates received the college's own non-need-based aid, average $5,771; there is no need-based aid for nonresidents"
   }
 }

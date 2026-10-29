@@ -55,7 +55,7 @@
     "waitlist_admitted": 356,
     "pct_submit_sat": 78,
     "pct_submit_act": 32,
-    "notes": "CDS 2025-26 (fall 2025 entering class). No Early Decision plan (restrictive early action only). 'In-state' is the CDS in-state column (District of Columbia). High school GPA (C11/C12) was not reported. Source file listed on Georgetown's Office of Assessment and Decision Support CDS page."
+    "notes": "From the 2025-26 Common Data Set (fall 2025 entering class). No Early Decision plan (restrictive early action only). 'In-state' is the Common Data Set's in-state column (District of Columbia). High school GPA was not reported. The file is listed on the Common Data Set page of Georgetown's Office of Assessment and Decision Support."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -97,7 +97,7 @@
     "room_board_usd": 21202,
     "other_usd": 2752,
     "total_coa_usd": 92563,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",
