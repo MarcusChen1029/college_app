@@ -1,57 +1,56 @@
 "use client";
 
 import Link from "next/link";
-import { computeFit, type FitInput } from "@/lib/fit";
 import { useStudent } from "@/lib/student-store";
-import { scoredTests } from "@/lib/test-plan";
 import { buttonClass } from "@/lib/ui";
 import { useT } from "@/lib/i18n/client";
-import { fitReasonText } from "@/lib/i18n/fit-text";
-import { FitBadge } from "./badges";
 
-export function CollegeActions({ slug, id, fitInput }: { slug: string; id: string; fitInput?: FitInput }) {
+/** The college page's list actions: add to (or remove from) my list, and an Interested toggle while the college isn't on the
+ *  list. Signed out both save to localStorage. Teachers have no personal list. The student's fit is shown in the page's
+ *  answer band (components/college/FitAnswer.tsx), next to the admit rate it is computed from. */
+export function CollegeActions({ slug, id }: { slug: string; id: string }) {
   const t = useT();
   const student = useStudent();
-  const inList = student.has(slug);
-  const hasScores = scoredTests(student.profile).length > 0;
-  const fit = hasScores && fitInput ? computeFit(student.profile, fitInput) : null; // no fit for grade-based (non-US) colleges
   if (student.role === "teacher") return null; // teachers have no personal college list
+  const inList = student.has(slug);
+  const interested = student.isInterested(slug);
   return (
-    <div className="flex flex-col items-start gap-2 sm:items-end">
+    <div className="flex flex-wrap items-center gap-2">
       {!inList && !student.canAdd ? (
-        <Link href="/pricing" className={buttonClass("secondary", "sm")}>
+        <Link href="/pricing" className={buttonClass("secondary")}>
           {t("college.listFull", { plan: student.plan.name })}
         </Link>
       ) : (
-      <button
-        className={buttonClass(inList ? "secondary" : "primary", "sm")}
-        onClick={() => (inList ? student.remove(slug) : student.add({ slug, id }))}
-      >
-        {inList ? t("college.inMyList") : t("college.addToList")}
-      </button>
+        <button
+          type="button"
+          className={buttonClass(inList ? "secondary" : "primary", "md", inList)}
+          onClick={() => (inList ? student.remove(slug) : student.add({ slug, id }))}
+        >
+          {inList ? <Icon d="M20 6 9 17l-5-5" /> : <Icon d="M12 5v14M5 12h14" />}
+          {inList ? t("college.inMyList") : t("college.addToList")}
+        </button>
       )}
       {!inList && (
         <button
-          className={buttonClass("secondary", "sm")}
+          type="button"
+          aria-pressed={interested}
+          className={buttonClass("secondary", "md", interested)}
           onClick={() => student.toggleInterested(slug)}
-          title={t("college.interestedTitle")}
+          title={interested ? t("college.interestedRemove") : t("college.interestedTitle")}
         >
-          {student.isInterested(slug) ? t("college.interestedRemove") : t("college.interested")}
+          <Icon d="m12 3.5 2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9z" filled={interested} />
+          {t("college.interested")}
         </button>
       )}
-      {fit ? (
-        <div className="max-w-xs text-xs text-zinc-600 sm:text-right">
-          <FitBadge fit={fit.fit} /> <span className="ml-1">{fitReasonText(t, fit)}</span>
-        </div>
-      ) : fitInput ? (
-        <div className="text-xs text-zinc-600">
-          {t("college.addScoresPre")}{" "}
-          <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
-            {t("college.profile")}
-          </Link>{" "}
-          {t("college.addScoresPost")}
-        </div>
-      ) : null}
     </div>
+  );
+}
+
+/** An 18px outline icon; `filled` is the pressed state of a toggle. */
+function Icon({ d, filled = false }: { d: string; filled?: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d={d} />
+    </svg>
   );
 }
