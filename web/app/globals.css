@@ -274,11 +274,19 @@ html:has([data-jump-nav]) {
   opacity: 1;
 }
 
-/* 3D map: a soft sky behind the diorama; pin labels appear on hover, focus or selection. */
+/* 3D map: one flat blue-grey ground under the land (the scene's fog matches it, components/USMap3D.tsx GROUND);
+   the selected pin's label shows once it has landed, and the hover label follows the dot under the pointer. */
 .map-sky {
-  background:
-    radial-gradient(ellipse 90% 70% at 50% 115%, #ffffff 0%, #e4f4fe 45%, transparent 75%),
-    linear-gradient(180deg, #bfe5fa 0%, #dcf1fd 55%, #eef8ff 100%);
+  background: var(--color-zinc-50);
+}
+.map-tip {
+  opacity: 0;
+  transition: opacity 120ms ease;
+  will-change: transform;
+  box-shadow: 0 6px 18px -8px rgb(18 48 74 / 0.4);
+}
+.map-tip[data-show="true"] {
+  opacity: 1;
 }
 .map-label {
   opacity: 0;
@@ -300,7 +308,8 @@ html:has([data-jump-nav]) {
   box-shadow: 0 8px 24px -6px rgb(18 48 74 / 0.45);
 }
 @media (prefers-reduced-motion: reduce) {
-  .map-label {
+  .map-label,
+  .map-tip {
     transition: none;
   }
 }

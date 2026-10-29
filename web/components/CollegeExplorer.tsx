@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { englishFit, hasEnglishScore } from "@/lib/english-fit";
 import {
   admitRateFor,
   effectiveFilters,
   filtersToQuery,
+  FITS,
   medianFor,
   nextSort,
   parseFilters,
@@ -24,23 +25,22 @@ import { computeFit } from "@/lib/fit";
 import { ENGLISH_POLICY, fmtDate, fmtPct, TEST_POLICY } from "@/lib/format";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
-import { fitReasonText } from "@/lib/i18n/fit-text";
+import { fitLabel, fitReasonText } from "@/lib/i18n/fit-text";
 import { activeRegions, REGIONS, type RegionCode } from "@/lib/regions";
 import { cardSideFor } from "@/lib/region-geo";
 import { useStudent } from "@/lib/student-store";
 import { scoredTests, testsToCompare } from "@/lib/test-plan";
-import { BASE_TIERS } from "@/lib/tiers";
+import { BASE_TIERS, tierLetter } from "@/lib/tiers";
 import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
 import type { ApplyTag } from "@/lib/apply-tags";
 import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, FIT_DOT_COLOR, fitDotClass, SEGMENT_TRACK, segmentClass, TIER_DOT } from "@/lib/ui";
 import { CollegeBrowser } from "./CollegeBrowser";
 import { EnglishFitLine } from "./EnglishFit";
 import { ExploreFilterBar } from "./ExploreFilterBar";
 import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
-import { TIER_FILL } from "./USMap";
-import { USMap3D } from "./USMap3D";
+import { USMap3D, type MapDot, type MapHandle } from "./USMap3D";
 
 // Lookup labels live in lib/format.ts (English, shared with tests); translate them here by stored value.
 const policyLabel = (t: TFunction, group: "testPolicy" | "englishPolicy", map: Record<string, string>, k: string) =>
@@ -80,28 +80,28 @@ function AdmitRing({ rate, label }: { rate: number | null; label: string }) {
   const C = 2 * Math.PI * R;
   const pct = rate == null ? 0 : Math.min(100, Math.max(0, rate));
   return (
-    <div className="flex items-center gap-3">
-      <svg width={88} height={88} viewBox="0 0 88 88" role="img" aria-label={`${label}: ${rate == null ? t("colleges.notReported") : `${rate}%`}`}>
-        <circle cx={44} cy={44} r={R} fill="none" stroke="#e9f2fa" strokeWidth={10} />
+    <div className="flex items-center gap-4">
+      <svg width={80} height={80} viewBox="0 0 80 80" role="img" aria-label={`${label}: ${rate == null ? t("colleges.notReported") : `${rate}%`}`}>
+        <circle cx={40} cy={40} r={R} fill="none" stroke="#e9f2fa" strokeWidth={6} />
         <circle
-          cx={44}
-          cy={44}
+          cx={40}
+          cy={40}
           r={R}
           fill="none"
-          stroke="#1fa4e4"
-          strokeWidth={10}
+          stroke="#0b86c6"
+          strokeWidth={6}
           strokeLinecap="round"
           strokeDasharray={C}
           strokeDashoffset={on ? C * (1 - Math.max(pct, 1.5) / 100) : C}
-          transform="rotate(-90 44 44)"
+          transform="rotate(-90 40 40)"
           style={{ transition: "stroke-dashoffset 1100ms cubic-bezier(.2,.8,.2,1)" }}
         />
-        <text x={44} y={50} textAnchor="middle" fontSize={19} fontWeight={800} fill="#12304a">
+        <text x={40} y={46} textAnchor="middle" fontSize={19} fontWeight={700} fill="#12304a" style={{ fontVariantNumeric: "tabular-nums" }}>
           {shown == null ? "—" : `${shown.toFixed(rate != null && rate < 10 ? 1 : 0)}%`}
         </text>
       </svg>
       <div>
-        <p className="text-xs font-medium text-zinc-500">{label}</p>
+        <p className="text-sm font-semibold text-ink">{label}</p>
         <p className="text-sm text-zinc-600">{t("colleges.ofApplicants")}</p>
       </div>
     </div>
@@ -119,29 +119,30 @@ function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | 
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <p className="text-xs font-medium text-zinc-500">{p50 != null ? t("colleges.satMedian") : t("colleges.satMiddle")}</p>
-        <p className="font-display text-lg font-bold">
+        <p className="text-sm font-semibold text-ink">{p50 != null ? t("colleges.satMedian") : t("colleges.satMiddle")}</p>
+        <p className="font-display text-lg font-bold tabular-nums">
           {estimated && "≈ "}
           {p50 ?? "—"}
         </p>
       </div>
-      <div className="relative mt-6 h-3 rounded-full bg-zinc-100">
+      <div className={`relative h-2.5 rounded-full bg-zinc-100 ${you != null ? "mt-7" : "mt-3"}`}>
         <div
           className="absolute inset-y-0 rounded-full bg-blue-300"
           style={{ left: pos(p25), width: on ? `calc(${pos(p75)} - ${pos(p25)})` : 0, transition: "width 900ms cubic-bezier(.2,.8,.2,1) 150ms" }}
         />
-        {p50 != null && <span className="absolute -top-1 h-5 w-1 -translate-x-1/2 rounded bg-ink" style={{ left: pos(p50) }} />}
+        {p50 != null && <span className="absolute -top-1 h-[18px] w-1 -translate-x-1/2 rounded bg-ink" style={{ left: pos(p50) }} />}
         {you != null && (
-          <span className="absolute -top-6 -translate-x-1/2 text-center text-[10px] font-bold leading-none text-coral" style={{ left: pos(you) }}>
+          <span className="absolute -top-6 -translate-x-1/2 text-center text-[13px] font-bold leading-none text-ink" style={{ left: pos(you) }}>
             {t("colleges.you")}
-            <span className="mx-auto mt-0.5 block h-3 w-3 translate-y-[5px] rounded-full border-2 border-white bg-coral shadow" />
+            <span className="mx-auto mt-0.5 block h-3 w-3 translate-y-[5px] rounded-full border-2 border-white bg-coral" />
           </span>
         )}
       </div>
-      <p className="mt-1 flex justify-between text-[11px] text-zinc-500">
+      <p className="mt-1.5 flex justify-between text-[13px] tabular-nums text-zinc-600">
         <span>400</span>
         <span>
-          {t("colleges.middle50")}{estimated && "≈ "}
+          {t("colleges.middle50")}
+          {estimated && "≈ "}
           {p25}–{p75}
           {estimated && t("colleges.sectionAdded")}
         </span>
@@ -153,9 +154,9 @@ function SatBar({ p25, p50, p75, estimated, you }: { p25: number; p50: number | 
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-start justify-between gap-3 border-t border-zinc-100 py-2 text-sm first:border-t-0">
-      <span className="shrink-0 text-zinc-500">{label}</span>
-      <span className="text-right font-semibold">{children}</span>
+    <div className="flex items-start justify-between gap-3 border-t border-zinc-100 py-2.5 text-sm first:border-t-0">
+      <span className="shrink-0 text-zinc-600">{label}</span>
+      <span className="text-right font-semibold text-ink">{children}</span>
     </div>
   );
 }
@@ -192,7 +193,7 @@ function DetailCard({
   const isUS = (college.country_code ?? "US") === "US";
   // Fit labels are built on SAT/ACT and US admit rates, so they only apply to US colleges for now.
   const fit = hasScores && isUS ? computeFit(student.profile, college) : null;
-  const intl =!!student.profile.international && college.intl_admit_rate != null;
+  const intl = !!student.profile.international && college.intl_admit_rate != null;
   const eng = englishText(t, english);
 
   const satRange =
@@ -203,74 +204,87 @@ function DetailCard({
         : null;
 
   return (
+    // The card floats over the map, so it alone carries a shadow.
     <article
-      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-3xl border-2 border-ink bg-white p-5 shadow-[6px_6px_0_0_#cdeafc] max-lg:rounded-b-none"
+      className="card-in pointer-events-auto max-h-full w-full overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_18px_44px_-18px_rgb(18_48_74/0.4)] max-lg:rounded-b-none"
       style={{ "--from": side === "right" ? "28px" : "-28px" } as React.CSSProperties}
+      aria-labelledby={`card-${college.slug}`}
     >
       <header className="flex items-start gap-3">
         <SchoolLogo slug={college.slug} />
-        <TierBadge tier={college.general_tier} />
         <div className="min-w-0 flex-1">
-          <h2 className="text-xl font-bold leading-tight">{college.name}</h2>
-          <p className="text-xs text-zinc-500">
+          <div className="flex items-start gap-2">
+            <h2 id={`card-${college.slug}`} className="min-w-0 text-xl font-bold leading-tight text-ink">
+              {college.name}
+            </h2>
+            <span className="mt-px shrink-0">
+              <TierBadge tier={college.general_tier} />
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-zinc-600">
             {[college.city, college.state_region].filter(Boolean).join(", ")}
             {college.control && <> · <span className="capitalize">{college.control.replace(/_/g, " ")}</span></>}
           </p>
-          <ApplyTags tags={tags} className="mt-1.5" />
+          <ApplyTags tags={tags} className="mt-2" />
         </div>
-        <button type="button" onClick={onClose} aria-label={t("colleges.closeDetails")} className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-lg leading-none text-zinc-500 hover:bg-zinc-100">
+        <button type="button" onClick={onClose} aria-label={t("colleges.closeDetails")} className="-mr-1.5 -mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full text-xl leading-none text-zinc-600 hover:bg-zinc-100 hover:text-ink">
           ×
         </button>
       </header>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-5 space-y-5">
         {(isUS || college.admit_rate != null) && (
           <AdmitRing rate={intl ? college.intl_admit_rate : college.admit_rate} label={intl ? t("colleges.intlAdmitRate") : t("colleges.admitRate")} />
         )}
         {!isUS ? (
-          <p className="text-sm text-zinc-500">{t("colleges.ukAdmission")}</p>
+          <p className="text-sm text-zinc-600">{t("colleges.ukAdmission")}</p>
         ) : satRange ? (
           <SatBar {...satRange} you={student.profile.sat ?? null} />
         ) : (
-          <p className="text-sm text-zinc-500">{t("colleges.noSat")}</p>
+          <p className="text-sm text-zinc-600">{t("colleges.noSat")}</p>
         )}
       </div>
 
-      <div className="mt-3">
+      <div className="mt-4">
         {isUS && <Row label={t("colleges.testing")}>{college.test_policy ? policyLabel(t, "testPolicy", TEST_POLICY, college.test_policy) : "—"}</Row>}
         <Row label={t("colleges.englishTest")}>
           {eng.mins}
-          {eng.note && <span className="block text-xs font-normal text-zinc-500">{eng.note}</span>}
+          {eng.note && <span className="block text-[13px] font-normal text-zinc-600">{eng.note}</span>}
           <EnglishFitLine english={english} className="mt-1 justify-end text-right" />
         </Row>
-        <Row label={t("colleges.nextDeadline")}>{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</Row>
-        {isUS && <Row label={t("colleges.yourFit")}>
-          {fit ? (
-            <>
-              <FitBadge fit={fit.fit} />
-              <span className="mt-1 block text-xs font-normal text-zinc-500">{fitReasonText(t, fit)}</span>
-            </>
-          ) : (
-            <Link href="/start" className="font-semibold text-blue-700 underline underline-offset-4">
-              {t("colleges.addYourScores")}
-            </Link>
-          )}
-        </Row>}
+        <Row label={t("colleges.nextDeadline")}>
+          <span className="tabular-nums">{college.next_deadline ? fmtDate(college.next_deadline) : "—"}</span>
+        </Row>
+        {isUS && (
+          <Row label={t("colleges.yourFit")}>
+            {fit ? (
+              <>
+                <FitBadge fit={fit.fit} />
+                <span className="mt-1 block text-[13px] font-normal text-zinc-600">{fitReasonText(t, fit)}</span>
+              </>
+            ) : (
+              <Link href="/start" className="font-semibold text-blue-700 underline underline-offset-4">
+                {t("colleges.addYourScores")}
+              </Link>
+            )}
+          </Row>
+        )}
       </div>
 
-      <div className="mt-4 flex gap-2">
+      {/* Labels never break inside a word (a long Chinese label wraps the row instead). */}
+      <div className="mt-4 flex flex-wrap gap-2 whitespace-nowrap">
         {!inList && !student.canAdd ? (
           <Link href="/pricing" className={`flex-1 ${buttonClass("secondary")}`}>
             {t("colleges.listFullUpgrade")}
           </Link>
         ) : (
-        <button
-          type="button"
-          onClick={() => (inList ? student.remove(college.slug) : student.add({ slug: college.slug, id: college.id }))}
-          className={`flex-1 ${buttonClass(inList ? "secondary" : "primary")}`}
-        >
-          {inList ? t("colleges.inMyList") : t("colleges.addToMyList")}
-        </button>
+          <button
+            type="button"
+            onClick={() => (inList ? student.remove(college.slug) : student.add({ slug: college.slug, id: college.id }))}
+            className={`flex-1 ${buttonClass(inList ? "secondary" : "primary")}`}
+          >
+            {inList ? t("colleges.inMyList") : t("colleges.addToMyList")}
+          </button>
         )}
         {!inList && (
           <button
@@ -315,7 +329,7 @@ export function CollegeExplorer({
   const profile = student.profile;
   const searchParams = useSearchParams();
   // The URL is the starting point (a shared or bookmarked view); after that React state leads and is mirrored back into
-  // the URL with replaceState, so typing in the search box never fights the router.
+  // the URL with replaceState, so typing in the search box never fights the router. The open college is part of it (?c=).
   const [f, setF] = useState<ExploreFilters>(() => parseFilters(searchParams));
   useEffect(() => {
     const q = filtersToQuery(f);
@@ -323,7 +337,11 @@ export function CollegeExplorer({
     if (next !== `${window.location.pathname}${window.location.search}`) window.history.replaceState(window.history.state, "", next);
   }, [f]);
   const set = (patch: Partial<ExploreFilters>) => setF((cur) => ({ ...cur, ...patch }));
-  const [selected, setSelected] = useState<string | null>(null);
+  const selected = f.college;
+  const setSelected = (slug: string | null) => set({ college: slug });
+  // The map's handle for lighting up a dot while its list row is hovered (no React state: hovering never re-renders the list).
+  const mapApi = useRef<MapHandle | null>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   // Only the regions the student is applying to are offered (all of them while none is chosen), plus one a shared link names.
   // Until the reader picks one, follow their first target region (it can arrive after sign-in loads).
@@ -366,7 +384,8 @@ export function CollegeExplorer({
 
   const ctx: FilterContext = { evidence, currency, isUS, hasScores, hasEnglish, applyTags };
   const eff = effectiveFilters(f, ctx);
-  const effKey = filtersToQuery({ ...eff, view: "map", region: null });
+  // The open college is not a filter: leaving it out keeps the rows (and how many are shown) when one is picked.
+  const effKey = filtersToQuery({ ...eff, view: "map", region: null, college: null });
   const rows = useMemo(
     () => sortRows(enriched.filter((r) => rowMatches(r, eff, ctx)), eff.sort, eff.category),
     // eff/ctx are rebuilt each render; effKey (their query string) captures every value that matters.
@@ -381,15 +400,52 @@ export function CollegeExplorer({
   const states = useMemo(() => [...new Set(inRegion.map((c) => c.state_region).filter(Boolean))].sort() as string[], [inRegion]);
   const planKeys = useMemo(() => [...new Set(inRegion.flatMap((c) => c.plans ?? []))].sort(), [inRegion]);
 
-  const shown = useVisibleCount(`${region}|${effKey}`, rows.length);
-  const pins = useMemo(
-    () => rows.map(({ c }) => ({ slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier: c.general_tier })),
-    [rows],
+  const selIndex = selected ? rows.findIndex((r) => r.c.slug === selected) : -1;
+  const shown = useVisibleCount(`${region}|${effKey}`, rows.length, selIndex);
+
+  // The map colours each college by its fit once the student has scores (US only), else by its tier; the legend counts the rows shown.
+  const byFit = hasScores && isUS;
+  const pins = useMemo<MapDot[]>(
+    () =>
+      rows.map(({ c, fit }) => {
+        const tier = c.general_tier;
+        const tone = byFit && fit ? FIT_DOT_COLOR[fit.fit] : TIER_DOT[byFit || !tier ? "none" : tierLetter(tier)];
+        const note = byFit ? (fit ? fitLabel(t, fit.fit) : t("colleges.legendNoFit")) : tier ? t("status.tier", { tier }) : null;
+        return { slug: c.slug, name: c.short_name ?? c.name, lat: c.latitude, lng: c.longitude, tier, tone, note };
+      }),
+    [rows, byFit, t],
   );
+  const legend = useMemo(() => {
+    if (byFit) {
+      const n = (k: string | null) => rows.filter((r) => (r.fit?.fit ?? null) === k).length;
+      return [
+        ...FITS.map((k) => ({ key: k, label: fitLabel(t, k), cls: fitDotClass(k), n: n(k) })),
+        { key: "none", label: t("colleges.legendNoFit"), cls: TIER_DOT.none.cls, n: n(null) },
+      ].filter((i) => i.n > 0);
+    }
+    // The key lists only the colours on the map right now (a UK view has no C or D).
+    const n = (k: string | null) => rows.filter((r) => (r.c.general_tier ? tierLetter(r.c.general_tier) : null) === k).length;
+    return [
+      ...BASE_TIERS.map((k) => ({ key: k, label: k, cls: TIER_DOT[k].cls, n: n(k) })),
+      { key: "none", label: t("colleges.legendNoTier"), cls: TIER_DOT.none.cls, n: n(null) },
+    ].filter((i) => i.n > 0);
+  }, [rows, byFit, t]);
+
   const current = inRegion.find((c) => c.slug === selected) ?? null;
   // Put the card on the side away from the pin so it never covers the college it describes.
   const side: "left" | "right" = current?.longitude != null ? cardSideFor(region, current.longitude) : "right";
   const other = side === "right" ? "left" : "right";
+
+  // A college picked on the map scrolls its row into view inside the list (never the page: on a phone the list sits under the map).
+  useEffect(() => {
+    const ul = listRef.current;
+    if (!ul || !selected || ul.scrollHeight <= ul.clientHeight) return;
+    const li = [...ul.children].find((el) => (el as HTMLElement).dataset.slug === selected) as HTMLElement | undefined;
+    if (!li) return;
+    if (li.offsetTop >= ul.scrollTop && li.offsetTop + li.offsetHeight <= ul.scrollTop + ul.clientHeight) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    ul.scrollTo({ top: li.offsetTop - (ul.clientHeight - li.offsetHeight) / 2, behavior: reduced ? "auto" : "smooth" });
+  }, [selected]);
 
   const filterBar = (compact: boolean) => (
     <ExploreFilterBar
@@ -413,48 +469,33 @@ export function CollegeExplorer({
   );
 
   const regionSwitch = (
-    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label={t("colleges.country")}>
+    <div className={SEGMENT_TRACK} role="group" aria-label={t("colleges.country")}>
       {REGIONS.filter((r) => offered.includes(r.code)).map((r) => (
         <button
           key={r.code}
           type="button"
           aria-pressed={region === r.code}
           onClick={() => {
-            // Budgets are in each country's own currency and states differ, so those two filters reset.
-            if (r.code !== region) set({ region: r.code, maxTuition: null, state: "" });
-            setSelected(null);
+            // Budgets are in each country's own currency and states differ, so those two filters reset (and the open card closes).
+            if (r.code !== region) set({ region: r.code, maxTuition: null, state: "", college: null });
           }}
-          className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${region === r.code ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
+          className={segmentClass(region === r.code)}
         >
           {t(`colleges.regionShort.${r.code}` as MessageKey)}
-          <span className="ml-1 text-xs font-normal opacity-70">{regionCounts[r.code] ?? 0}</span>
+          <span className="font-normal tabular-nums text-zinc-600">{regionCounts[r.code] ?? 0}</span>
         </button>
       ))}
     </div>
   );
 
-  const tab = (v: "map" | "table", label: string) => (
-    <button
-      type="button"
-      aria-pressed={f.view === v}
-      onClick={() => set({ view: v })}
-      className={`flex-1 rounded-full px-4 py-1.5 text-sm font-semibold ${f.view === v ? "bg-ink text-white" : "text-zinc-600 hover:bg-blue-50"}`}
-    >
-      {label}
-    </button>
-  );
-
   const toggle = (
-    <div className="flex gap-1 rounded-full border-2 border-blue-100 bg-white p-1" role="group" aria-label={t("colleges.view")}>
-      {tab("map", t("colleges.viewMap"))}
-      {tab("table", t("colleges.viewTable"))}
+    <div className={SEGMENT_TRACK} role="group" aria-label={t("colleges.view")}>
+      {(["map", "table"] as const).map((v) => (
+        <button key={v} type="button" aria-pressed={f.view === v} onClick={() => set({ view: v })} className={segmentClass(f.view === v)}>
+          {t(v === "map" ? "colleges.viewMap" : "colleges.viewTable")}
+        </button>
+      ))}
     </div>
-  );
-
-  const matchLink = (
-    <Link href="/tools/match" className={buttonClass("secondary", "sm")}>
-      {t("match.link")}
-    </Link>
   );
 
   const stats = [
@@ -465,27 +506,37 @@ export function CollegeExplorer({
   ].filter(Boolean);
 
   const statsLink = (
-    <Link href={stats.length ? "/profile" : "/start"} className="rounded-2xl bg-blue-50 px-4 py-2 text-xs font-semibold text-zinc-600 hover:bg-blue-100">
+    <Link href={stats.length ? "/profile" : "/start"} className="text-sm font-semibold text-zinc-600 hover:text-ink">
       {stats.length ? (
         <>
           {t("colleges.statsPrefix", { stats: stats.join(" · ") })}
-          <span className="text-blue-700 underline">{t("colleges.statsEdit")}</span>
+          <span className="text-blue-700 underline underline-offset-4">{t("colleges.statsEdit")}</span>
         </>
       ) : (
-        t("colleges.addScoresCta")
+        <span className="text-blue-700 underline-offset-4 hover:underline">{t("colleges.addScoresCta")}</span>
       )}
     </Link>
+  );
+
+  // One title row for both views: the page's name, how to look at it, which country, and the one way out to field matching.
+  const titleRow = (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <h1 className="mr-1 font-display text-2xl font-bold tracking-tight text-ink">{t("colleges.heading")}</h1>
+      {toggle}
+      {regionSwitch}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:ml-auto">
+        {f.view === "table" && statsLink}
+        <Link href="/tools/match" className={buttonClass("ghost", "sm")}>
+          {t("match.link")}
+        </Link>
+      </div>
+    </div>
   );
 
   if (f.view === "table") {
     return (
       <div className="space-y-4">
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="w-full sm:w-auto sm:min-w-56">{toggle}</div>
-          <div className="w-full sm:w-auto sm:min-w-56">{regionSwitch}</div>
-          {matchLink}
-          <div className="w-full sm:ml-auto sm:w-auto">{statsLink}</div>
-        </div>
+        {titleRow}
         {filterBar(false)}
         <CollegeBrowser
           rows={rows}
@@ -504,97 +555,122 @@ export function CollegeExplorer({
     );
   }
 
+  const hover = (slug: string | null) => mapApi.current?.hover(slug);
+
   return (
-    <div className="grid gap-4 lg:h-[calc(100dvh-5.25rem)] lg:grid-cols-[330px_1fr]">
-      <aside className="order-last flex min-h-0 flex-col gap-3 lg:order-first">
-        {toggle}
-        {regionSwitch}
-        {matchLink}
-        {statsLink}
-        {filterBar(true)}
-        <ul className="min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
-          {inRegion.length === 0 && <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{t("colleges.noneInRegion", { region: t(`colleges.region.${region}` as MessageKey) })}</li>}
-          {inRegion.length > 0 && rows.length === 0 && (
-            <li className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-500">{eff.q.trim() ? t("colleges.noMatch", { q: eff.q }) : t("colleges.noFilterMatch")}</li>
-          )}
-          {rows.slice(0, shown.count).map(({ c, fit }) => {
-            const on = c.slug === selected;
-            return (
-              <li key={c.slug}>
-                <button
-                  type="button"
-                  aria-pressed={on}
-                  onClick={() => setSelected(c.slug)}
-                  className={`flex w-full items-center gap-3 rounded-2xl border-2 px-3 py-2.5 text-left transition ${on ? "border-ink bg-blue-50" : "border-transparent hover:bg-blue-50"}`}
-                >
-                  <SchoolLogo slug={c.slug} />
-                  <TierBadge tier={c.general_tier} />
-                  {/* The fit badge sits under the name: beside it, the narrow sidebar cut names to a few letters. */}
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate font-semibold">{c.short_name ?? c.name}</span>
-                    <span className="block truncate text-xs text-zinc-500">
-                      {[c.city, c.state_region].filter(Boolean).join(", ")}
-                      {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
-                    </span>
-                    {(fit || student.has(c.slug) || applyTags[c.slug]) && (
-                      <span className="mt-1 flex flex-wrap gap-1">
-                        {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) && <Pill tone="blue">{t("colleges.onList")}</Pill>}
-                        <ApplyTags tags={applyTags[c.slug]} />
-                      </span>
-                    )}
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-          {shown.hasMore && (
-            <li>
-              <LoadMore key={shown.count} count={shown.count} onVisible={shown.more} />
-            </li>
-          )}
-        </ul>
-      </aside>
-
-      <div className="h-[58dvh] lg:h-full">
-        <USMap3D key={region} region={region} pins={pins} selected={selected} onSelect={setSelected} cardSide={side}>
-          <div className={`pointer-events-none absolute top-3 flex items-center gap-2 ${other === "left" ? "left-3" : "right-3"}`}>
-            <ul className="pointer-events-auto flex gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold shadow-sm" aria-label={t("colleges.tierColours")}>
-              {BASE_TIERS.map((tier) => (
-                <li key={tier} className="flex items-center gap-1">
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: TIER_FILL[tier] }} />
-                  {tier}
-                </li>
-              ))}
-            </ul>
-            {current && (
-              <button
-                type="button"
-                onClick={() => setSelected(null)}
-                className="pointer-events-auto rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold shadow-sm hover:bg-blue-50"
-              >
-                {t("colleges.wholeMap")}
-              </button>
+    <div className="space-y-3">
+      {titleRow}
+      <div className="grid gap-4 lg:h-[calc(100dvh-9.5rem)] lg:min-h-[540px] lg:grid-cols-[360px_1fr]">
+        <aside className="order-last flex min-h-0 flex-col gap-3 lg:order-first">
+          {filterBar(true)}
+          <ul ref={listRef} className="relative -mx-1 min-h-0 flex-1 space-y-0.5 overflow-y-auto px-1 pb-1" onMouseLeave={() => hover(null)}>
+            {inRegion.length === 0 && <li className="rounded-xl bg-zinc-50 p-4 text-sm text-zinc-600">{t("colleges.noneInRegion", { region: t(`colleges.region.${region}` as MessageKey) })}</li>}
+            {inRegion.length > 0 && rows.length === 0 && (
+              <li className="rounded-xl bg-zinc-50 p-4 text-sm text-zinc-600">{eff.q.trim() ? t("colleges.noMatch", { q: eff.q }) : t("colleges.noFilterMatch")}</li>
             )}
-          </div>
+            {rows.slice(0, shown.count).map(({ c, fit }) => {
+              const on = c.slug === selected;
+              return (
+                <li key={c.slug} data-slug={c.slug}>
+                  <button
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => setSelected(c.slug)}
+                    onMouseEnter={() => hover(c.slug)}
+                    onFocus={() => hover(c.slug)}
+                    onBlur={() => hover(null)}
+                    className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors ${on ? "bg-zinc-100" : "hover:bg-zinc-50"}`}
+                  >
+                    {/* One fixed logo slot, so every name starts on the same edge whether or not the school has an icon. */}
+                    <span className="grid h-7 w-7 shrink-0 place-items-center">
+                      <SchoolLogo slug={c.slug} />
+                    </span>
+                    {/* The fit badge sits under the name: beside it, the narrow sidebar cut names to a few letters. */}
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-base font-semibold leading-snug text-ink">{c.short_name ?? c.name}</span>
+                      <span className="mt-0.5 block truncate text-sm text-zinc-600">
+                        {[c.city, c.state_region].filter(Boolean).join(", ")}
+                        {c.admit_rate != null && ` · ${t("colleges.admitSuffix", { pct: fmtPct(c.admit_rate, 0) })}`}
+                      </span>
+                      {(fit || student.has(c.slug) || applyTags[c.slug]) && (
+                        <span className="mt-1.5 flex flex-wrap gap-1">
+                          {fit ? <FitBadge fit={fit.fit} /> : student.has(c.slug) && <Pill tone="blue">{t("colleges.onList")}</Pill>}
+                          <ApplyTags tags={applyTags[c.slug]} />
+                        </span>
+                      )}
+                    </span>
+                    <span className="shrink-0">
+                      <TierBadge tier={c.general_tier} />
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+            {shown.hasMore && (
+              <li>
+                <LoadMore key={shown.count} count={shown.count} onVisible={shown.more} />
+              </li>
+            )}
+          </ul>
+        </aside>
 
-          {!current && (
-            <p className="pointer-events-none absolute inset-x-0 bottom-4 mx-auto w-fit rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-lg">
-              <span className="lg:hidden">{t("colleges.pickBelow")}</span>
-              <span className="max-lg:hidden">{t("colleges.pickFromList")}</span>
-            </p>
-          )}
-
-          {current && (
-            <div
-              key={current.slug}
-              className={`pointer-events-none absolute z-10 flex items-end max-lg:inset-x-0 max-lg:bottom-0 max-lg:h-[56%] lg:inset-y-4 lg:w-[370px] lg:items-center ${
-                side === "right" ? "lg:right-4" : "lg:left-4"
-              }`}
-            >
-              <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} tags={applyTags[current.slug]} side={side} onClose={() => setSelected(null)} />
+        {/* Below lg the map sits over the list: about as tall as the country is, so the list starts soon after it. */}
+        <div className="h-[46dvh] min-h-[360px] sm:h-[52dvh] lg:h-full lg:min-h-0">
+          <USMap3D
+            key={region}
+            region={region}
+            pins={pins}
+            selected={selected}
+            onSelect={setSelected}
+            cardSide={side}
+            onReady={(handle) => {
+              mapApi.current = handle;
+            }}
+          >
+            <div className={`pointer-events-none absolute top-3 flex max-w-[calc(100%-1.5rem)] items-start gap-2 ${other === "left" ? "left-3" : "right-3 flex-row-reverse"}`}>
+              {/* The key: what each colour means and how many of the colleges shown have it. On a phone an open card needs the room. */}
+              <div className={`pointer-events-auto rounded-xl border border-zinc-200 bg-white px-3 py-2 ${current ? "max-lg:hidden" : ""}`}>
+                <p className="text-[13px] font-semibold text-ink">{byFit ? t("colleges.yourFit") : t("colleges.legendTier")}</p>
+                <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[13px]" aria-label={t("colleges.tierColours")}>
+                  {legend.map((i) => (
+                    <li key={i.key} className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className={`h-3 w-3 rounded-full ${i.cls}`} aria-hidden="true" />
+                      <span className="font-semibold text-ink">{i.label}</span>
+                      <span className="tabular-nums text-zinc-600">{i.n}</span>
+                    </li>
+                  ))}
+                </ul>
+                {isUS && (
+                  <div className="mt-1.5 max-w-xs text-[13px] leading-snug">
+                    {byFit ? (
+                      statsLink
+                    ) : (
+                      <Link href="/start" className="font-semibold text-blue-700 underline-offset-4 hover:underline">
+                        {t("colleges.colourByFit")}
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
+              {current && (
+                <button type="button" onClick={() => setSelected(null)} className={`pointer-events-auto ${buttonClass("ghost", "sm")}`}>
+                  {t("colleges.wholeMap")}
+                </button>
+              )}
             </div>
-          )}
-        </USMap3D>
+
+            {current && (
+              <div
+                key={current.slug}
+                className={`pointer-events-none absolute z-10 flex items-end max-lg:inset-x-0 max-lg:bottom-0 max-lg:h-[68%] lg:inset-y-3 lg:w-[384px] lg:items-center ${
+                  side === "right" ? "lg:right-3" : "lg:left-3"
+                }`}
+              >
+                <DetailCard college={current} english={english[current.id]} sat={satEstimates[current.id]} tags={applyTags[current.slug]} side={side} onClose={() => setSelected(null)} />
+              </div>
+            )}
+          </USMap3D>
+        </div>
       </div>
     </div>
   );
