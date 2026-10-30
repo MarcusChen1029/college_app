@@ -129,7 +129,7 @@ test("parseVaultRequest accepts every action in its exact shape", () => {
     ok: true,
     req: { action: "vault_update", record: RECORD, expected: STAMP },
   });
-  for (const action of ["get", "delete", "handover"]) assert.deepEqual(parseVaultRequest({ action, slot: "system:uc" }), { ok: true, req: { action, slot: "system:uc" } });
+  for (const action of ["get", "delete"]) assert.deepEqual(parseVaultRequest({ action, slot: "system:uc" }), { ok: true, req: { action, slot: "system:uc" } });
   assert.deepEqual(parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED }), { ok: true, req: { action: "set", slot: "system:uc", sealed: SEALED, expected: null } });
   assert.deepEqual(
     parseVaultRequest({ action: "set", slot: "system:uc", sealed: SEALED, expected: STAMP }),

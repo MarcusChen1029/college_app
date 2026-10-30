@@ -203,7 +203,7 @@ export type VaultRequest =
   | { action: "vault" | "list" | "reset" }
   | { action: "vault_create"; record: VaultRecord }
   | { action: "vault_update"; record: VaultRecord; expected: string }
-  | { action: "get" | "delete" | "handover"; slot: string }
+  | { action: "get" | "delete"; slot: string }
   | { action: "set"; slot: string; sealed: string; expected: string | null }
   | { action: "import"; entries: SealedEntry[] };
 export type VaultRequestError = "bad_request" | "bad_slot" | "bad_value" | "bad_record" | "too_many";
@@ -212,7 +212,7 @@ export type VaultRequestError = "bad_request" | "bad_slot" | "bad_value" | "bad_
 const TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,6})?(Z|[+-]\d{2}:\d{2})$/;
 const isTimestamp = (v: unknown): v is string => typeof v === "string" && TIMESTAMP.test(v) && !Number.isNaN(Date.parse(v));
 
-/** A browser-sealed value that fits the column; anything else (a bare password, "", an old v1 value) is refused. */
+/** A browser-sealed value that fits the column; anything else (a bare password, "") is refused. */
 const isSealed = (v: unknown): v is string => typeof v === "string" && v.length <= SEALED_MAX && parseE1(v) !== null;
 
 export function parseVaultRequest(body: unknown): { ok: true; req: VaultRequest } | { ok: false; error: VaultRequestError } {
@@ -226,7 +226,7 @@ export function parseVaultRequest(body: unknown): { ok: true; req: VaultRequest 
     if (action === "vault_create") return { ok: true, req: { action, record } };
     return isTimestamp(body.expected) ? { ok: true, req: { action, record, expected: body.expected } } : fail("bad_request");
   }
-  if (action === "get" || action === "delete" || action === "handover") return isPortalSlot(body.slot) ? { ok: true, req: { action, slot: body.slot } } : fail("bad_slot");
+  if (action === "get" || action === "delete") return isPortalSlot(body.slot) ? { ok: true, req: { action, slot: body.slot } } : fail("bad_slot");
   if (action === "set") {
     if (!isPortalSlot(body.slot)) return fail("bad_slot");
     if (!isSealed(body.sealed)) return fail("bad_value");

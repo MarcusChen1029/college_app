@@ -1,15 +1,13 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { IMPORT_MAX } from "./portal-slots.ts";
-import { handleVault, slotKind, type KeyStatus, type SlotState, type VaultDeps } from "./portal-vault-handler.ts";
-import { openPassword, sealPassword } from "./portal-vault.ts";
+import { handleVault, slotKind, type SlotState, type VaultDeps } from "./portal-vault-handler.ts";
 import { sealE1, type Secret } from "./vault-crypto.ts";
 import {
   changePassphrase as rawChangePassphrase,
   commitRecoveryCode as rawCommitRecoveryCode,
   commitVault as rawCommitVault,
   fetchVault,
-  handoverAll,
   importAll as rawImportAll,
   listSlots,
   prepareRecoveryCode as rawPrepareRecoveryCode,
@@ -30,11 +28,10 @@ import { formatRecoveryCode, normalizeRecoveryCode, parseVaultRecord, recoveryGr
 //
 // Secrets: every passphrase, recovery code and plaintext password a test hands to a flow is noted by the wrappers below,
 // and flowTest checks after EVERY test that none of them appears in any request body that test sent (replies from the
-// server to the browser, such as a handover's, are not requests and are not checked). Notes shorter than 8 characters are
+// server to the browser are not requests and are not checked). Notes shorter than 8 characters are
 // refused, because a short secret would match inside base64 by chance and make the check flaky or meaningless.
 
 const USER = "11111111-1111-4111-8111-111111111111";
-const MASTER = Buffer.alloc(32, 7); // the old server key: only the handover dep uses it
 const jwt = (claims: Record<string, unknown>) =>
   `${Buffer.from('{"alg":"ES256"}').toString("base64url")}.${Buffer.from(JSON.stringify(claims)).toString("base64url")}.sig`;
 const WEBSITE = jwt({ sub: USER, role: "authenticated" });
@@ -80,7 +77,6 @@ type Reply = { status: number; data: Record<string, unknown> };
 class MemoryServer {
   vault: StoredVault | null = null;
   rows = new Map<string, Row>();
-  key: KeyStatus | "no_key" = "ok";
   created = 0; // vault rows actually inserted
   updates = 0; // vault_update writes that took effect
   private tick = 0;
@@ -96,7 +92,6 @@ class MemoryServer {
 
   deps: VaultDeps = {
     verifyUser: async (token) => (token === WEBSITE ? USER : null),
-    keyStatus: async () => this.key,
     vault: async (userId) => {
       this.mine(userId);
       if (!this.vault) return null;
@@ -109,7 +104,7 @@ class MemoryServer {
     createVault: async (userId, r) => {
       this.mine(userId);
       if (this.vault) return "exists";
-      if ([...this.rows.values()].some((row) => row.sealed.startsWith("e1."))) return "orphans"; // v1 rows don't block
+      if ([...this.rows.values()].some((row) => row.sealed.startsWith("e1."))) return "orphans";
       this.vault = { ...r, updated_at: this.stamp() };
       this.created++;
       return "ok";
@@ -152,28 +147,12 @@ class MemoryServer {
       this.mine(userId);
       this.rows.delete(slot);
     },
-    handover: async (userId, slot) => {
-      this.mine(userId);
-      const row = this.rows.get(slot);
-      if (!row) return "missing";
-      if (!row.sealed.startsWith("v1.")) return "not_legacy";
-      const password = openPassword(MASTER, userId, slot, row.sealed);
-      return password === null ? "unreadable" : { password, updated_at: row.updated_at };
-    },
     reset: async (userId) => {
       this.mine(userId);
       this.vault = null; // the vault row first, then the passwords, like portal_vault_reset
       this.rows.clear();
     },
   };
-
-  /** An old server-sealed row, as it sits in the store before the handover. */
-  seedLegacy(slot: string, password: string): string {
-    known(password); // it must never come back out in a request
-    const sealed = sealPassword(MASTER, USER, slot, password);
-    this.rows.set(slot, { sealed, updated_at: this.stamp() });
-    return sealed;
-  }
 }
 
 /** One browser tab: a `call` into the real handler, with every request body kept for inspection. */
@@ -447,25 +426,19 @@ flowTest("stale tab save is refused", async () => {
   assert.deepEqual(await revealOne(a.call, uA2, "system:uc"), { password: "uc-pw-replaced" });
 });
 
-flowTest("reveal refuses what does not open; an old server-sealed row is legacy, never other_vault", async () => {
+flowTest("reveal refuses what does not open", async () => {
   const p = await vault1();
   const { server, t, u } = await setUp(p);
   assert.equal(await saveOne(t.call, u, "system:commonapp", "only-for-commonapp"), null);
   server.rows.set("system:uc", server.rows.get("system:commonapp")!); // a ciphertext moved to another slot
   assert.deepEqual(await revealOne(t.call, u, "system:uc"), { error: "other_vault" });
 
-  // A v1 row whose handover has not happened or failed: waiting to be moved, so it must not read as "can't be opened".
+  // A value that is not an e1 value at all (an old server-sealed one): nothing here can open it.
   server.rows.set("custom:old", { sealed: "v1.abcdefghijklmnop.c2VhbGVk", updated_at: server.stamp() });
-  server.seedLegacy("custom:real", "a real server-sealed password");
-  assert.deepEqual(await revealOne(t.call, u, "custom:old"), { error: "legacy" });
-  assert.deepEqual(await revealOne(t.call, u, "custom:real"), { error: "legacy" });
-  assert.deepEqual(
-    (await slotsOf(t.call)).filter((s) => s.slot.startsWith("custom:")).map((s) => s.kind),
-    ["v1", "v1"],
-    "and the list calls them v1 too",
-  );
+  assert.deepEqual(await revealOne(t.call, u, "custom:old"), { error: "other_vault" });
+  assert.equal((await slotsOf(t.call)).find((s) => s.slot === "custom:old")?.kind, "other");
 
-  // Damaged or unreadable e1 values are still other_vault.
+  // Damaged or unreadable e1 values are other_vault too.
   server.rows.set("custom:bad", { sealed: `e1.${p.record.key_id}.${"A".repeat(60)}`, updated_at: server.stamp() });
   assert.deepEqual(await revealOne(t.call, u, "custom:bad"), { error: "other_vault" });
   assert.deepEqual(await revealOne(t.call, u, "system:commonapp"), { password: "only-for-commonapp" });
@@ -693,126 +666,16 @@ flowTest("a vault row the server cannot read never gives a key, and only reads a
   assert.deepEqual(server.vault, planted, "and the vault row was not touched");
 });
 
-const LEGACY: Record<string, string> = { "system:commonapp": "legacy-one", "system:uc": "legacy two with spaces", "custom:abc": "legacy-3-ünï" };
-
-function seedAll(server: MemoryServer) {
-  return Object.fromEntries(Object.entries(LEGACY).map(([slot, pw]) => [slot, server.seedLegacy(slot, pw)]));
-}
-
-flowTest("handover moves v1 rows", async () => {
-  const p = await vault1();
-  const server = new MemoryServer();
-  const originals = seedAll(server);
-  const stamps = Object.fromEntries([...server.rows].map(([slot, row]) => [slot, row.updated_at]));
-  const { t, u } = await setUp(p, server); // old v1 rows don't block setup
-
-  const legacy = (await slotsOf(t.call)).filter((s) => s.kind === "v1");
-  assert.equal(legacy.length, 3);
-  const sent = t.bodies.length;
-  assert.deepEqual(await handoverAll(t.call, u, legacy), { moved: 3, failed: 0 });
-
-  assert.deepEqual((await slotsOf(t.call)).map((s) => s.kind), ["e1", "e1", "e1"]);
-  for (const [slot, pw] of Object.entries(LEGACY)) assert.deepEqual(await revealOne(t.call, u, slot), { password: pw }, slot);
-  assert.ok([...server.rows.values()].every((r) => !r.sealed.startsWith("v1.")), "no old copy is left");
-  assert.ok(Object.values(originals).every((v1) => ![...server.rows.values()].some((r) => r.sealed === v1)));
-
-  // One slot at a time: handover, set (compare-and-set on the exact timestamp the handover returned), get.
-  const mine = t.bodies.slice(sent).map((b) => JSON.parse(b) as Record<string, unknown>);
-  assert.deepEqual(mine.slice(0, 9).map((b) => b.action), ["handover", "set", "get", "handover", "set", "get", "handover", "set", "get"]);
-  for (const b of mine.slice(0, 9).filter((b) => b.action === "set")) assert.equal(b.expected, stamps[b.slot as string], `expected for ${b.slot}`);
-});
-
-flowTest("handover keeps v1 on failure", async () => {
-  const p = await vault1();
-  const server = new MemoryServer();
-  const originals = seedAll(server);
-  const { t, u } = await setUp(p, server);
-  const legacy = (await slotsOf(t.call)).filter((s) => s.kind === "v1");
-  const stamp = server.rows.get("system:uc")!.updated_at;
-
-  const realPut = server.deps.put;
-  server.deps.put = async (userId, e, expected, insertOnly) => {
-    if (e.slot === "system:uc") throw new Error("database unreachable");
-    return realPut(userId, e, expected, insertOnly);
-  };
-  const sent = t.bodies.length;
-  assert.deepEqual(await handoverAll(t.call, u, legacy), { moved: 2, failed: 1 });
-  assert.deepEqual(server.rows.get("system:uc"), { sealed: originals["system:uc"], updated_at: stamp }, "the old row is untouched");
-  assert.deepEqual(Object.fromEntries((await slotsOf(t.call)).map((s) => [s.slot, s.kind])), { "system:commonapp": "e1", "system:uc": "v1", "custom:abc": "e1" });
-  const acts = t.bodies.slice(sent).map((b) => (JSON.parse(b) as { action: string; slot?: string }));
-  assert.ok(!acts.some((a) => a.action === "delete" || a.action === "reset"), "nothing is ever deleted");
-  assert.deepEqual(await revealOne(t.call, u, "system:uc"), { error: "legacy" }, "and until it moves it reads as legacy, not as unopenable");
-
-  // The next unlock tries it again.
-  server.deps.put = realPut;
-  assert.deepEqual(await handoverAll(t.call, u, [(await slotsOf(t.call)).find((s) => s.kind === "v1")!]), { moved: 1, failed: 0 });
-  assert.deepEqual(await revealOne(t.call, u, "system:uc"), { password: LEGACY["system:uc"] });
-});
-
-flowTest("handover leaves a row alone when it changed, cannot be read, or the server key is not ours", async () => {
-  const p = await vault1();
-  const server = new MemoryServer();
-  const originals = seedAll(server);
-  const { t, u } = await setUp(p, server);
-  const legacy = (await slotsOf(t.call)).filter((s) => s.kind === "v1");
-
-  // 1. Another tab changes the row between the handover and the set: compare-and-set refuses it.
-  const realHandover = server.deps.handover;
-  let bumped = "";
-  server.deps.handover = async (userId, slot) => {
-    const r = await realHandover(userId, slot);
-    if (slot === "custom:abc") {
-      bumped = server.stamp();
-      server.rows.get(slot)!.updated_at = bumped;
-    }
-    return r;
-  };
-  // 2. A row the server key cannot open.
-  server.rows.set("system:uc", { sealed: "v1.abcdefghijklmnop.c2VhbGVk", updated_at: server.stamp() });
-  const garbled = server.rows.get("system:uc")!.sealed;
-  assert.deepEqual(await handoverAll(t.call, u, legacy), { moved: 1, failed: 2 });
-  assert.equal(server.rows.get("custom:abc")!.sealed, originals["custom:abc"]);
-  assert.equal(server.rows.get("custom:abc")!.updated_at, bumped);
-  assert.equal(server.rows.get("system:uc")!.sealed, garbled);
-  server.deps.handover = realHandover;
-
-  // 3. A server holding another key opens nothing (503), and e1 rows handed in by mistake are never touched.
-  server.key = "mismatch";
-  const v1s = (await slotsOf(t.call)).filter((s) => s.kind === "v1");
-  assert.equal(v1s.length, 2);
-  const e1 = (await slotsOf(t.call)).filter((s) => s.kind === "e1");
-  const sent = t.bodies.length;
-  assert.deepEqual(await handoverAll(t.call, u, [...v1s, ...e1]), { moved: 0, failed: 2 });
-  assert.equal(t.bodies.slice(sent).filter((b) => b.includes(e1[0].slot)).length, 0, "an e1 row is not asked about");
-  assert.equal(server.rows.get("custom:abc")!.sealed, originals["custom:abc"]);
-  assert.deepEqual(await revealOne(t.call, u, "custom:abc"), { error: "legacy" }, "a 503 leaves it legacy, which the UI must not offer to delete");
-});
-
-flowTest("handover counts a slot failed when it cannot be read back", async () => {
-  const p = await vault1();
-  const server = new MemoryServer();
-  seedAll(server);
-  const { t, u } = await setUp(p, server);
-  const legacy = (await slotsOf(t.call)).filter((s) => s.kind === "v1");
-
-  const realGet = server.deps.get;
-  server.deps.get = async (userId, slot) => {
-    if (slot === "system:commonapp") throw new Error("database unreachable"); // the read-back fails
-    if (slot === "system:uc") return sealE1(u.key, u.keyId, USER, slot, "not what was stored"); // a value that opens, but to something else
-    return realGet(userId, slot);
-  };
-  assert.deepEqual(await handoverAll(t.call, u, legacy), { moved: 1, failed: 2 });
-});
-
 flowTest("import keeps occupied and locked", async () => {
   const [p, next] = [await vault1(), await vault2()];
   const { server, t, u } = await setUp(p);
   assert.equal(await saveOne(t.call, u, "system:uc", "the account's own"), null);
-  const old = server.seedLegacy("custom:old", "still server-sealed");
+  assert.equal(await saveOne(t.call, u, "custom:old", "the account's second"), null);
+  const old = server.rows.get("custom:old")!.sealed;
 
   const left = await importAll(t.call, u, [
     { slot: "system:uc", password: "local copy for uc" }, // occupied by an e1 value
-    { slot: "custom:old", password: "local copy for old" }, // occupied by a v1 value
+    { slot: "custom:old", password: "local copy for old" }, // occupied by another e1 value
     { slot: "custom:new1", password: "local-pw-new-one" },
     { slot: "system:uc", password: "a later duplicate" }, // first one wins, the duplicate is not sent
     { slot: "custom:new2", password: "local-pw-new-two" },
@@ -891,17 +754,16 @@ flowTest("nothing secret crosses the wire", async () => {
   const p = await vault1();
   const server = new MemoryServer();
   const t = tab(server);
-  const LEGACY_PW = "legacy-plaintext-Zq9-1";
   const SAVED_PW = "saved-plaintext-Zq9-2";
   const IMPORTED_PW = "imported-plaintext-Zq9-3";
   const PASS_4 = "pässwörd ✓ four-4-four";
-  server.seedLegacy("custom:legacy", LEGACY_PW);
 
   const u = ok(await commitVault(t.call, USER, p, groupOf(p)));
   assert.equal(await saveOne(t.call, u, "system:commonapp", SAVED_PW), null);
   assert.deepEqual(await importAll(t.call, u, [{ slot: "system:uc", password: IMPORTED_PW }]), []);
-  assert.deepEqual(await handoverAll(t.call, u, (await slotsOf(t.call)).filter((s) => s.kind === "v1")), { moved: 1, failed: 0 });
-  assert.deepEqual(await revealOne(t.call, u, "custom:legacy"), { password: LEGACY_PW });
+  assert.deepEqual((await slotsOf(t.call)).map((s) => s.slot), ["system:commonapp", "system:uc"]);
+  assert.deepEqual(await revealOne(t.call, u, "system:commonapp"), { password: SAVED_PW });
+  assert.deepEqual(await revealOne(t.call, u, "system:uc"), { password: IMPORTED_PW });
   assert.equal(await changePassphrase(t.call, USER, { recovery: p.recoveryCode }, PASS_3), null);
   const prep = ok(await prepareRecoveryCode(t.call, USER, PASS_3));
   assert.equal(await commitRecoveryCode(t.call, prep, recoveryGroup(prep.recoveryCode, prep.confirmGroup)), null);
@@ -909,12 +771,12 @@ flowTest("nothing secret crosses the wire", async () => {
   assert.equal(await resetAll(t.call), null);
 
   const seen = new Set(t.actions());
-  for (const action of ["vault", "list", "vault_create", "set", "get", "import", "handover", "vault_update", "reset"])
+  for (const action of ["vault", "list", "vault_create", "set", "get", "import", "vault_update", "reset"])
     assert.ok(seen.has(action), `the scenario used ${action}`);
 
   // flowTest scans every test's bodies for the secrets it used; this test also names them and the forbidden field names.
   const named = [
-    PASS_1, PASS_3, PASS_4, LEGACY_PW, SAVED_PW, IMPORTED_PW,
+    PASS_1, PASS_3, PASS_4, SAVED_PW, IMPORTED_PW,
     p.recoveryCode, formatRecoveryCode(p.recoveryCode), prep.recoveryCode, formatRecoveryCode(prep.recoveryCode),
   ];
   const secretKeys = new Set(["password", "passphrase", "recovery", "recoveryCode", "key", "vaultKey"]);
@@ -924,15 +786,14 @@ flowTest("nothing secret crosses the wire", async () => {
     for (const s of named) assert.ok(!body.includes(s), `a request body contains "${s}": ${body.slice(0, 80)}`);
     for (const k of keysOf(JSON.parse(body))) assert.ok(!secretKeys.has(k), `a request body has a "${k}" field`);
   }
-  assert.ok(secrets.has(prep.recoveryCode) && secrets.has(PASS_4) && secrets.has(LEGACY_PW), "and the general scan knew about them");
+  assert.ok(secrets.has(prep.recoveryCode) && secrets.has(PASS_4) && secrets.has(SAVED_PW), "and the general scan knew about them");
 });
 
 flowTest("reply codes map to flow errors; anything unexpected is failed", async () => {
   const canned = (status: number, data: Record<string, unknown>): Call => async () => ({ status, data });
   const table: [number, Record<string, unknown>, FlowError][] = [
     [401, { error: "unauthorized" }, "unauthorized"],
-    [503, { error: "key_mismatch" }, "unavailable"],
-    [503, { error: "no_key" }, "unavailable"],
+    [503, { configured: false }, "unavailable"],
     [404, { error: "not_found" }, "not_found"],
     [404, { error: "no_vault" }, "no_vault"],
     [409, { error: "wrong_vault" }, "wrong_vault"],
@@ -954,7 +815,7 @@ flowTest("reply codes map to flow errors; anything unexpected is failed", async 
   assert.equal(await resetAll((async () => undefined) as unknown as Call), "failed", "a call that returns nothing");
 
   const STAMP = "2026-10-29T08:00:00.000001+00:00";
-  assert.deepEqual(await fetchVault(canned(503, { error: "key_mismatch" })), { error: "unavailable" });
+  assert.deepEqual(await fetchVault(canned(503, { configured: false })), { error: "unavailable" });
   assert.deepEqual(await fetchVault(canned(200, {})), { error: "failed" });
   assert.deepEqual(await fetchVault(canned(200, { vault: null })), null);
   assert.deepEqual(await fetchVault(canned(200, { vault: { version: "e1" } })), { error: "failed" });

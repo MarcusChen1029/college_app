@@ -1,6 +1,5 @@
 // Every browser-side flow of the portal vault, in one place and free of React, Supabase and the page: setup, unlock,
-// recovery, change of passphrase or code, saving, showing, handing old server-sealed rows over, importing passwords
-// saved before sign-in, and starting over. Each flow takes a `call` (one POST to /api/portal-passwords, already
+// recovery, change of passphrase or code, saving, showing, importing passwords saved before sign-in, and starting over. Each flow takes a `call` (one POST to /api/portal-passwords, already
 // carrying the session) so the whole thing runs against the real handler in Node tests (vault-flows.test.ts).
 // The passphrase, the recovery code, the vault key and every plaintext password stay in this code and the crypto it
 // calls (vault-crypto.ts): a request body holds only the vault record's salts, checks and wrapped keys, or values
@@ -71,7 +70,7 @@ const REPLY_CODES: ReadonlySet<string> = new Set(["not_found", "too_many", "no_v
 
 function errorOf(r: Reply): FlowError {
   if (r.status === 401) return "unauthorized";
-  if (r.status === 503) return "unavailable"; // the server key / setup, not the student's doing
+  if (r.status === 503) return "unavailable"; // a missing server setting, not the student's doing
   const code = r.data.error;
   return typeof code === "string" && REPLY_CODES.has(code) ? (code as FlowError) : "failed";
 }
@@ -124,7 +123,7 @@ export async function fetchVault(call: Call): Promise<ServerVault | null | { err
   return record ? { record, updatedAt: v.updated_at } : { error: "bad_record" };
 }
 
-const KINDS: ReadonlySet<unknown> = new Set(["e1", "v1", "other"]);
+const KINDS: ReadonlySet<unknown> = new Set(["e1", "other"]);
 
 /** Every stored slot with its kind (never the value). */
 export async function listSlots(call: Call): Promise<SlotState[] | { error: FlowError }> {
@@ -236,20 +235,15 @@ export async function unlockWith(call: Call, userId: string, secret: Secret, new
   return { userId, keyId: from.record.key_id, key };
 }
 
-// Every old server-sealed value starts with this (VAULT_VERSION in portal-vault.ts, which can't be imported here).
-const LEGACY_PREFIX = "v1.";
-
 /**
- * One saved password, or why it can't be shown. "legacy" = an old server-sealed value that hasn't been handed over (its
- * handover failed or hasn't run); it is waiting to be moved and must never be offered for deletion. "other_vault" = the
- * stored value doesn't open with this vault (an older vault, a moved or damaged value).
+ * One saved password, or why it can't be shown. "other_vault" = the stored value doesn't open with this vault (an older
+ * vault, a moved or damaged value).
  */
-export async function revealOne(call: Call, u: Unlocked, slot: string): Promise<{ password: string } | { error: FlowError | "other_vault" | "legacy" }> {
+export async function revealOne(call: Call, u: Unlocked, slot: string): Promise<{ password: string } | { error: FlowError | "other_vault" }> {
   const r = await send(call, { action: "get", slot });
   if (r.status !== 200) return { error: errorOf(r) };
   const sealed = r.data.sealed;
   if (typeof sealed !== "string") return { error: "failed" };
-  if (sealed.startsWith(LEGACY_PREFIX)) return { error: "legacy" };
   const password = await openE1(u.key, u.keyId, u.userId, slot, sealed); // null for another key id, slot or user, or a damaged value
   return password === null ? { error: "other_vault" } : { password };
 }
@@ -260,35 +254,6 @@ export async function saveOne(call: Call, u: Unlocked, slot: string, password: s
   if (sealed === null) return "failed";
   const r = await send(call, { action: "set", slot, sealed });
   return done(r) ? null : errorOf(r);
-}
-
-// One old row: the server opens it once, the browser seals it, checks it, stores it only if the row is still the one that
-// was opened, and reads it back. Any step failing leaves the old row exactly as it was.
-async function handoverOne(call: Call, u: Unlocked, slot: string): Promise<boolean> {
-  const opened = await send(call, { action: "handover", slot });
-  const { password, updated_at } = opened.data;
-  if (opened.status !== 200 || typeof password !== "string" || typeof updated_at !== "string") return false;
-  const sealed = await sealChecked(u, slot, password);
-  if (sealed === null) return false;
-  if (!done(await send(call, { action: "set", slot, sealed, expected: updated_at }))) return false;
-  const back = await send(call, { action: "get", slot });
-  if (back.status !== 200 || typeof back.data.sealed !== "string") return false;
-  return (await openE1(u.key, u.keyId, u.userId, slot, back.data.sealed)) === password;
-}
-
-/**
- * Re-locks old server-sealed (`v1`) rows one at a time. A slot that fails any step counts as failed, its old row is left
- * alone (nothing is deleted) and the next unlock tries it again. Rows of another kind are skipped.
- */
-export async function handoverAll(call: Call, u: Unlocked, legacy: readonly SlotState[]): Promise<{ moved: number; failed: number }> {
-  let moved = 0;
-  let failed = 0;
-  for (const s of legacy) {
-    if (s.kind !== "v1") continue;
-    if (await handoverOne(call, u, s.slot)) moved++;
-    else failed++;
-  }
-  return { moved, failed };
 }
 
 const IMPORT_BODY_MAX = 200_000; // bytes of JSON in one import request
