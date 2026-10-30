@@ -10,7 +10,7 @@ export function TeacherClassesPage() {
   return (
     <TeacherGate returnTo="/teacher/classes">
       <div className="space-y-6">
-        <h1 className="font-display text-3xl font-bold">{t("teacher.classes.title")}</h1>
+        <h1 className="font-display text-2xl font-bold sm:text-3xl">{t("teacher.classes.title")}</h1>
         <TeacherClasses />
       </div>
     </TeacherGate>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { Wave } from "@/components/Doodles";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { LocalMergeDialogHost } from "@/components/LocalMergeDialog";
 import { RoleGate } from "@/components/RoleGate";
@@ -13,6 +12,7 @@ import { missingSupabaseEnv } from "@/lib/config";
 import { HTML_LANG, makeT } from "@/lib/i18n";
 import { I18nProvider } from "@/lib/i18n/client";
 import { getLocale } from "@/lib/i18n/server";
+import { SITE_ORIGIN } from "@/lib/seo";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
 
@@ -28,6 +28,8 @@ const body = Figtree({
 });
 
 export const metadata: Metadata = {
+  // Makes every relative canonical (lib/seo.ts) absolute.
+  metadataBase: new URL(SITE_ORIGIN),
   title: { default: "Trakur", template: "%s · Trakur" },
   description: "Track US colleges: tiers, Common Data Set scores, deadlines, English requirements and costs.",
 };
@@ -41,7 +43,7 @@ const FOOTER_LINKS = [
   ["/help", "nav.help"],
 ] as const;
 
-const HEADER = "sticky top-0 z-20 print:hidden border-b border-blue-100 bg-white";
+const HEADER = "sticky top-0 z-20 print:hidden bg-zinc-50";
 const NAV = "mx-auto flex max-w-7xl items-center gap-x-4 px-4 lg:gap-x-6 py-3 text-sm font-medium";
 
 function Brand() {
@@ -121,21 +123,28 @@ async function LocaleRoot({ children }: { children: React.ReactNode }) {
           children
         )}
       </main>
-      <footer className="relative mt-0 print:hidden bg-zinc-100 pb-6 pt-2 text-center text-xs text-zinc-500">
-        <Wave className="absolute -top-[39px] left-0 h-10 w-full" fill="#e9f2fa" />
-        <nav aria-label={t("legal.footer.label")} className="mx-auto max-w-2xl px-4 pt-6">
-          {/* Phones: two even rows of three; wider screens: one centered row. */}
-          <ul className="grid grid-cols-3 gap-y-2 text-center text-sm font-medium text-zinc-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-6">
-            {FOOTER_LINKS.map(([href, key]) => (
-              <li key={href}>
-                <Link href={href} className="hover:text-zinc-900 hover:underline underline-offset-4">
-                  {t(key)}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <p className="mx-auto max-w-2xl px-4 pt-4">{t("footer.disclaimer")}</p>
+      {/* The close of every page: links and the data note, then the name across the full width. */}
+      <footer data-site-footer className="overflow-hidden bg-zinc-100 text-ink print:hidden">
+        <div className="mx-auto w-full max-w-7xl px-4 pt-14 sm:px-8 sm:pt-20">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+            <p className="max-w-md text-base leading-relaxed">{t("footer.disclaimer")}</p>
+            <nav aria-label={t("legal.footer.label")}>
+              <ul className="grid grid-cols-3 gap-x-6 gap-y-3 text-base font-semibold sm:flex sm:flex-wrap sm:justify-end">
+                {FOOTER_LINKS.map(([href, key]) => (
+                  <li key={href}>
+                    <Link href={href} className="underline-offset-4 hover:underline">
+                      {t(key)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          {/* The name and what it means, set like the home page's title. */}
+          <p aria-hidden data-footer-wordmark className="mt-14 select-none whitespace-nowrap pb-6 font-display text-[clamp(2.5rem,10.4vw,9.5rem)] font-extrabold leading-none tracking-[-0.045em] sm:mt-20">
+            Track ur college
+          </p>
+        </div>
       </footer>
     </I18nProvider>
   );

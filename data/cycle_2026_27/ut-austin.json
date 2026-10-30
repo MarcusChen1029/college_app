@@ -27,7 +27,7 @@
  },
  "test_policy": {
   "policy": "required",
-  "notes": "At least one official SAT or ACT score must be sent by the testing agency (self-report in MyStatus allowed, official must arrive by the deadline). Classic Learning Test (CLT) also satisfies the requirement. SAT Essay/ACT Writing not required. Matches CDS C8A (required to be considered).",
+  "notes": "At least one official SAT or ACT score must be sent by the testing agency (self-report in MyStatus allowed, official must arrive by the deadline). Classic Learning Test (CLT) also satisfies the requirement. SAT Essay/ACT Writing is not required. This matches the Common Data Set (required to be considered).",
   "src": "ut_fy"
  },
  "requirements": {

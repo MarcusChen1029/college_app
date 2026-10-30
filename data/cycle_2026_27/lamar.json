@@ -62,7 +62,7 @@
       "kind": "priority",
       "due": "2027-04-15",
       "label": "International priority deadline, fall 2027 entry",
-      "notes": "Fall priority April 15 (spring Sept. 1, summer Jan. 1). Printed without a year; treated as fall 2027.",
+      "notes": "Fall priority April 15 (spring Sept. 1, summer Jan. 1). Printed without a year, so fall 2027 is assumed.",
       "src": "dates"
     },
     {
@@ -77,7 +77,7 @@
       "kind": "scholarship",
       "due": "2027-01-15",
       "label": "Presidential Scholarship application closes",
-      "notes": "Presidential and Southeast Texas Legends applications (via myScholarships) open Aug. 15 and close Jan. 15 (year not printed; treated as 2027); endowed scholarships are awarded after the Jan. 15 priority date. Presidential applicants need an admission offer first; international students may qualify through SAT 1330+ or ACT 29+.",
+      "notes": "Presidential and Southeast Texas Legends applications (via myScholarships) open Aug. 15 and close Jan. 15 (the year is not printed, so 2027 is assumed); endowed scholarships are awarded after the Jan. 15 priority date. Presidential applicants need an admission offer first; international students may qualify through SAT 1330+ or ACT 29+.",
       "src": "pres"
     }
   ],
@@ -128,7 +128,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Incoming-freshman merit scholarships list international eligibility by SAT/ACT: Presidential (full four years: tuition, fees, room and board, books; SAT 1330+/ACT 29+), Cardinal Elite $40,000 (SAT 1330+/ACT 29+), Academic Excellence $32,000 (SAT 1200-1320/ACT 25-28), Distinguished Scholars $20,000 (SAT 1080-1190/ACT 21-24), University Scholars $8,000 (SAT 1010-1070/ACT 19-21). The page does not say whether the dollar figures are totals or per year, and some thresholds on it contain typos. The Presidential scholarship also needs an essay, resume and references. A scholarship of $1,000 or more can waive nonresident tuition under Texas rules (stated on Lamar's graduate page; not confirmed for undergraduates). CDS H6 ticks both need-based and non-need-based institutional aid for nonresidents (layout of the two ticks is unclear); 45 nonresident undergraduates received aid, average $17,442. International students are not eligible for federal aid.",
+    "notes": "Incoming-freshman merit scholarships list international eligibility by SAT/ACT: Presidential (full four years: tuition, fees, room and board, books; SAT 1330+/ACT 29+), Cardinal Elite $40,000 (SAT 1330+/ACT 29+), Academic Excellence $32,000 (SAT 1200-1320/ACT 25-28), Distinguished Scholars $20,000 (SAT 1080-1190/ACT 21-24), University Scholars $8,000 (SAT 1010-1070/ACT 19-21). The page does not say whether the dollar figures are totals or per year, and some thresholds on it contain typos. The Presidential scholarship also needs an essay, resume and references. A scholarship of $1,000 or more can waive nonresident tuition under Texas rules (stated on Lamar's graduate page; not confirmed for undergraduates). The Common Data Set ticks both need-based and non-need-based aid from the college for nonresidents (the layout of the two ticks is unclear); 45 nonresident undergraduates received aid, averaging $17,442. International students are not eligible for federal aid.",
     "src": "sch"
   },
   "score_codes": {

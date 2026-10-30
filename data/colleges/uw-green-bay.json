@@ -40,7 +40,7 @@
     "pct_submit_act": 29.7,
     "gpa_avg": 2.98,
     "pct_reporting_gpa": 98.89,
-    "notes": "CDS C1 and C2. International = the 'nonresident' row of C2 (840 applied, 525 admitted). The CDS shows no waitlist and no early plans. The CDS's by-residency enrollment counts are inconsistent with the total (in-state enrolled exceeds the 1,175 total) so they are not recorded. The GPA-range table could not be matched to its columns, so only the CDS C12 average is kept. SAT is not summarized because only 16 enrolled students submitted it. Undergrad 10,995 and 195 nonresident undergrads are the CDS B1 figures (fall 2025); ratio 25:1 is CDS I2. The CDS C7 table rates standardized test scores 'very important' although the admissions site says scores are optional and do not affect the admission decision; that single factor is therefore left out."
+    "notes": "From the Common Data Set. International means the 'nonresident' row (840 applied, 525 admitted). The Common Data Set shows no waitlist and no early plans. The by-residency enrollment counts are inconsistent with the total (in-state enrolled exceeds the 1,175 total) so they are not shown. The GPA-range table could not be matched to its columns, so only the average GPA is kept. SAT is not summarized because only 16 enrolled students submitted it. Undergraduate enrollment is 10,995 and nonresident undergraduates number 195 (fall 2025); ratio 25:1 is also from the Common Data Set. Its admission-factor table rates standardized test scores 'very important' although the admissions site says scores are optional and do not affect the admission decision; that single factor is therefore left out."
   },
   "scores": {
     "ACT_COMPOSITE": [

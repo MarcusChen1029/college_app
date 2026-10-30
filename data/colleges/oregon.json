@@ -62,7 +62,7 @@
    "2.0-2.49": 0.16,
    "1.0-1.99": 0.0
   },
-  "notes": "CDS C1 fall 2024 first-year class: 40,021 applied, 35,337 admitted (88%), 5,087 enrolled (full-time plus part-time). Oregon left the C1 residency breakdown (in-state, out-of-state, international) blank, so international applicants and admits are null; CDS H6 lists 40 degree-seeking nonresident undergraduates with institutional aid. GPA distribution is the 'all enrolled students' column of C11. SAT/ACT figures cover the 8% (SAT, 412 students) and 5% (ACT, 272 students) of enrollees who submitted scores; Oregon is test-optional. The C7 factor check boxes could not be read reliably, so factors are omitted. The CDS cost table is labelled 2024-25 and was not used; costs come from the financial aid office."
+  "notes": "From the Common Data Set (fall 2024 first-year class): 40,021 applied, 35,337 admitted (88%), 5,087 enrolled (full-time plus part-time). Oregon did not report the residency breakdown (in-state, out-of-state, international), so no international admit rate is shown; the Common Data Set lists 40 degree-seeking nonresident undergraduates with institutional aid. The GPA breakdown is the 'all enrolled students' column. SAT/ACT figures cover the 8% (SAT, 412 students) and 5% (ACT, 272 students) of enrollees who submitted scores; Oregon is test-optional. The admission factor check boxes could not be read reliably, so factors are omitted. The cost table in the Common Data Set is labelled 2024-25 and was not used; costs come from the financial aid office."
  },
  "scores": {
   "SAT_TOTAL": [

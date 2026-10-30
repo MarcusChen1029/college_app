@@ -64,7 +64,7 @@
    "plan": "ROLLING",
    "due": "2027-04-01",
    "label": "Priority application deadline (fall 2027 entry)",
-   "notes": "Fall priority date from the international first-year page (printed without a year; treated as fall 2027). No later final international deadline is published; decisions are rolling. Spring 2027: Oct. 1, 2026 for both priority and scholarships.",
+   "notes": "Fall priority date from the international first-year page (printed without a year, so fall 2027 is assumed). No later final international deadline is published; decisions are rolling. Spring 2027: Oct. 1, 2026 for both priority and scholarships.",
    "src": "intlfy"
   }
  ],
@@ -124,7 +124,7 @@
   "books_usd": 800,
   "other_usd": 4378,
   "total_coa_usd": 51549,
-  "notes": "International undergraduate estimate for 2026-27 from Boise State International Admissions: tuition and fees $29,477 (published as one figure), room and board $16,894, books $800, health insurance $2,175 and personal $2,203 (other_usd = 2,175 + 2,203), total $51,549. Pathway Program total is $38,427. Idaho resident tuition does not apply to international students.",
+  "notes": "International undergraduate estimate for 2026-27 from Boise State International Admissions: tuition and fees $29,477 (published as one figure), room and board $16,894, books $800, health insurance $2,175 and personal $2,203 (other costs = 2,175 + 2,203), total $51,549. Pathway Program total is $38,427. Idaho resident tuition does not apply to international students",
   "src": "cost"
  },
  "aid": {

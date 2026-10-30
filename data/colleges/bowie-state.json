@@ -57,7 +57,7 @@
       "2.0-2.49": 10.0,
       "1.0-1.99": 1.9
     },
-    "notes": "CDS C1 (fall 2025): applicants and admits are the male + female totals (1,934 + 3,908 applied; 1,535 + 3,279 admitted; 877 enrolled). The residency columns read from the C1 table by position (in-state, out-of-state, international) do not add up to the totals (in-state + out-of-state + international applicants = 5,955 vs 5,842), so the international counts (114 applied, 65 admitted, 5 enrolled) may be a subset of the out-of-state column. Waitlist: none. Only 35 enrolled first-years submitted SAT (4%) and 2 submitted ACT, so the SAT percentiles describe a very small group. The GPA band 'below 1.0' (0.1%) is omitted. Undergraduate enrollment is the B1 total (4,810, fall 2025) and the 86 international undergraduates are the B2 nonresident count in the 'Total Undergraduates' column."
+    "notes": "From the Common Data Set (fall 2025): applicants and admits are the male + female totals (1,934 + 3,908 applied; 1,535 + 3,279 admitted; 877 enrolled). The residency columns, matched to the table by their position (in-state, out-of-state, international), do not add up to the totals (in-state + out-of-state + international applicants = 5,955 vs 5,842), so the international counts (114 applied, 65 admitted, 5 enrolled) may be a subset of the out-of-state column. Waitlist: none. Only 35 enrolled first-years sent SAT scores (4%) and 2 sent ACT scores, so the SAT percentiles describe a very small group. The GPA band 'below 1.0' (0.1%) is not shown. Undergraduate enrollment is 4,810 (fall 2025), and the 86 international undergraduates are the nonresident count in the 'Total Undergraduates' column."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -99,6 +99,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (applicants for fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (applicants for fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   }
 }

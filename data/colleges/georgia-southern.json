@@ -40,7 +40,7 @@
     "enrolled": 5170,
     "pct_submit_sat": 35,
     "pct_submit_act": 18,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES IPEDS ADM2024 file via the Urban Institute Education Data Portal). A Common Data Set for 2025-2026 is listed on Georgia Southern's Digital Commons but its file is blocked behind a bot challenge and could not be read as text, so no CDS figures (international applicants/admits, GPA, SAT total, factors) are included. International undergraduates (327) are IPEDS fall 2024 nonresident aliens, about 1.4% of 23,541 undergraduates; the international page says about 500 students who are not U.S. citizens attend across all levels. College Navigator listed SAT/ACT as 'test optional' for fall 2024, but current admissions pages require scores."
+    "notes": "Figures from IPEDS, the US government's college data, fall 2024 (College Navigator percentages; exact counts from the NCES IPEDS admissions file via the Urban Institute Education Data Portal). A Common Data Set for 2025-2026 is listed on Georgia Southern's Digital Commons but its file is blocked behind a bot challenge and the text could not be read, so no Common Data Set figures (international applicants and admits, GPA, SAT total, factors) are included. International undergraduates (327) are IPEDS fall 2024 nonresident aliens, about 1.4% of 23,541 undergraduates; the international page says about 500 students who are not U.S. citizens attend across all levels. College Navigator listed SAT/ACT as 'test optional' for fall 2024, but current admissions pages require scores."
   },
   "scores": {
     "SAT_ERW": [

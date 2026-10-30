@@ -44,7 +44,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "Fall priority date / international document due date (fall 2027 entry)",
-      "notes": "CDS C14 lists a fall priority date of 5/1 and an archived UTEP catalog page lists May 1 as the fall international document due date; current admissions pages print no international deadline, so confirm with UTEP. Applications are accepted year-round and decisions are rolling (CDS C16). Files completed after the due date roll to the next semester.",
+      "notes": "The Common Data Set lists a fall priority date of 5/1 and an archived UTEP catalog page lists May 1 as the fall international document due date; current admissions pages print no international deadline, so confirm with UTEP. Applications are accepted year-round and decisions are rolling, according to the Common Data Set. Files completed after the due date roll to the next semester.",
       "src": "dates"
     }
   ],
@@ -58,7 +58,7 @@
       "test": "TOEFL_IBT",
       "status": "required_option",
       "min": 61,
-      "notes": "Or 500 on UTEP's institutional paper-based TOEFL; the current page does not mention the new 1-6 scale, so no TOEFL_IBT_2026 minimum is listed.",
+      "notes": "Or 500 on UTEP's institutional paper-based TOEFL; the current page does not mention the new 1-6 scale, so no minimum is listed on the new TOEFL iBT scale.",
       "src": "intl"
     },
     {
@@ -79,7 +79,7 @@
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "UTEP's catalog calls financial assistance for international students limited. Citizens of Mexico who meet the PASE requirements might qualify to pay Texas resident tuition. CDS H6 reports institutional need-based and non-need-based aid for nonresidents (373 recipients, avg $10,216). No international merit scholarship amounts were found on UTEP's admissions pages.",
+    "notes": "UTEP's catalog calls financial assistance for international students limited. Citizens of Mexico who meet the PASE requirements might qualify to pay Texas resident tuition. The Common Data Set reports the college's own need-based and non-need-based aid for nonresidents (373 recipients, avg $10,216). No international merit scholarship amounts were found on UTEP's admissions pages.",
     "src": "cat"
   },
   "majors": [],

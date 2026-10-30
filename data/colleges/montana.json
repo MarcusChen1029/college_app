@@ -51,7 +51,7 @@
       "2.0-2.49": 7,
       "1.0-1.99": 1
     },
-    "notes": "Admissions figures are the 2024-25 CDS (fall 2024 entering class): C1 applied 9,464, admitted 9,048, enrolled 1,652. UM's posted 2025-26 CDS contains only sections A and B (no admissions data), so fall 2025 admission counts are not available. The 2024-25 CDS residency table (in-state/out-of-state/international) is blank, so intl_applicants and intl_admits are null. Undergraduate enrollment (7,874) and nonresident-alien undergraduates (64, total undergraduates, B2) are from the 2025-26 CDS (fall 2025); student-faculty ratio is fall 2024 (17.9 to 1). SAT/ACT submitted percentages are for enrolled first-year students. No early decision or early action."
+    "notes": "Admissions figures are from the 2024-25 Common Data Set (fall 2024 entering class): applied 9,464, admitted 9,048, enrolled 1,652. UM's posted 2025-26 Common Data Set contains only sections A and B (no admissions data), so fall 2025 admission counts are not available. The 2024-25 Common Data Set residency table (in-state/out-of-state/international) is blank, so there are no international applicant or admit figures and no international admit rate is shown. Undergraduate enrollment (7,874) and nonresident-alien undergraduates (64, total undergraduates) are from the 2025-26 Common Data Set (fall 2025); student-faculty ratio is fall 2024 (17.9 to 1). SAT/ACT submitted percentages are for enrolled first-year students. No early decision or early action."
   },
   "scores": {
     "SAT_TOTAL": [

@@ -46,7 +46,7 @@
     "enrolled": 1749,
     "pct_submit_sat": 48,
     "pct_submit_act": 27,
-    "notes": "Fall 2025 entering class. Residency split, waitlist counts, ED counts and GPA (C11/C12) are blank in the CDS."
+    "notes": "Fall 2025 entering class. Duke did not report the residency split, waitlist counts, ED counts or GPA in the Common Data Set."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -88,7 +88,7 @@
     "room_board_usd": 19247,
     "other_usd": 3274,
     "total_coa_usd": 90696,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",
@@ -113,6 +113,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT not required, considered if submitted."
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT not required, considered if submitted."
   }
 }

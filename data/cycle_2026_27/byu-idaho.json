@@ -73,7 +73,7 @@
    "kind": "application",
    "due": "2027-05-01",
    "label": "International application deadline - fall semester 2027",
-   "notes": "International steps page lists Fall May 1, Winter August 15, Spring January 15, with no year printed (treated as fall 2027 entry) and advises starting six months early. The general How to Apply page lists Fall Sept. 1, Winter Dec. 15, Spring Apr. 1; the page does not say these are the domestic dates, so use the international ones.",
+   "notes": "The international steps page lists Fall May 1, Winter August 15, Spring January 15, with no year printed (so fall 2027 entry is assumed), and advises starting six months early. The general How to Apply page lists Fall Sept. 1, Winter Dec. 15, Spring Apr. 1; the page does not say these are the domestic dates, so use the international ones.",
    "src": "intl"
   }
  ],
@@ -140,7 +140,7 @@
   "tuition_intl_usd": 10176,
   "room_board_usd": 5796,
   "books_usd": 606,
-  "notes": "On-Track campus semester tuition 2026-27 is $2,544 for Church members and $5,088 for non-members (international students who are not members pay the non-member rate). Fields above are annualized as two semesters (tuition_usd = member rate 5,088; tuition_intl_usd = non-member rate 10,176; room_board = 2 x $2,898 on-campus housing and food for a single student aged 18-25; books = 2 x $303); BYU-Idaho runs three semesters a year, so a three-semester year costs more. The school's one-semester non-member cost of attendance for a single student aged 18-25 is $11,440 (tuition 5,088, loan fees 29, books 303, transportation 1,694, personal 1,428, housing and food 2,898). The international finances page (timestamped 2022, so possibly stale) asks for proof of funds of $23,750 a year for members and $29,000 for non-members and an initial deposit of at least $4,000 before the I-20 is issued; it lists a $6,000 foreign deposit for non-members in one table and about $4,000 elsewhere.",
+  "notes": "On-Track campus semester tuition 2026-27 is $2,544 for Church members and $5,088 for non-members (international students who are not members pay the non-member rate). The yearly figures shown above cover two semesters: tuition is the member rate (5,088); international tuition is the non-member rate (10,176); housing and food is 2 x $2,898 (on-campus housing and food for a single student aged 18-25); books are 2 x $303. BYU-Idaho runs three semesters a year, so a three-semester year costs more. The school's one-semester non-member cost of attendance for a single student aged 18-25 is $11,440 (tuition 5,088, loan fees 29, books 303, transportation 1,694, personal 1,428, housing and food 2,898). The international finances page (timestamped 2022, so possibly stale) asks for proof of funds of $23,750 a year for members and $29,000 for non-members and an initial deposit of at least $4,000 before the I-20 is issued; it lists a $6,000 foreign deposit for non-members in one table and about $4,000 elsewhere",
   "src": "tuition"
  },
  "aid": {

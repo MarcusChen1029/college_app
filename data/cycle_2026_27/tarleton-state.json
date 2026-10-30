@@ -44,7 +44,7 @@
    "plan": "ROLLING",
    "due": "2027-06-15",
    "label": "International fall application deadline (fall 2027 entry)",
-   "notes": "Enforced international deadlines: Spring Nov. 1, Summer Mar. 15 (generally not accepted for undergraduates except Medical Laboratory Science majors), Fall June 15. Years are not printed; fall 2027 assumed. Domestic freshmen: fall Aug. 1 (CDS C14 also lists a Mar. 1 priority date).",
+   "notes": "Enforced international deadlines: Spring Nov. 1, Summer Mar. 15 (generally not accepted for undergraduates except Medical Laboratory Science majors), Fall June 15. Years are not printed; fall 2027 assumed. Domestic freshmen: fall Aug. 1 (the Common Data Set also lists a Mar. 1 priority date).",
    "src": "adm"
   },
   {
@@ -57,7 +57,7 @@
  ],
  "english_policy": {
   "policy": "required_nonnative",
-  "waiver_notes": "Exempt: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Ghana, Nigeria, New Zealand, United Kingdom); 6 college hours of English incl. 3 of composition (C or better) at a U.S., Canadian (non-Quebec), British or Australian institution; SAT EBRW 550 or ACT English 21; two years at an accredited U.S. high school; a school letter verifying all secondary education was in English (reviewed by Admissions); or completion of Level 9 at The Language Company. Scores must be no more than 2 years old at the start of the term (TOEFL/IELTS valid 3 years, PTE/Duolingo 2 years per the footnote).",
+  "waiver_notes": "Exempt: citizens of listed English-speaking countries (e.g. Australia, Canada except Quebec, Ireland, Jamaica, Ghana, Nigeria, New Zealand, United Kingdom); 6 college hours of English incl. 3 of composition (C or better) at a U.S., Canadian (non-Quebec), British or Australian institution; SAT EBRW 550 or ACT English 21; two years at an accredited U.S. high school; a school letter confirming all secondary education was in English (reviewed by Admissions); or completion of Level 9 at The Language Company. Scores must be no more than 2 years old at the start of the term (TOEFL/IELTS valid 3 years, PTE/Duolingo 2 years per the footnote).",
   "src": "intl"
  },
  "english": [

@@ -45,7 +45,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International recommended application date, fall 2027 entry",
-   "notes": "UW admits on a rolling basis and keeps accepting applications after this date, but a later application may not leave time to finish immigration steps. Same page: spring Nov. 1, summer April 1. The page prints no year; treated as fall 2027. CDS C14 also lists June 1 and August 10 as fall closing dates (the extracted text does not label which is international).",
+   "notes": "UW admits on a rolling basis and keeps accepting applications after this date, but a later application may not leave time to finish immigration steps. Same page: spring Nov. 1, summer April 1. The page gives no year, so fall 2027 is assumed. The Common Data Set also lists June 1 and August 10 as fall closing dates (the extracted text does not label which is international).",
    "src": "fy"
   },
   {
@@ -150,6 +150,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "engineering": "Engineering college at Wyoming's only four-year university, which UW says holds Carnegie R1 status; placed C as a solid regional program. Editorial judgment, not a ranking."
+  "engineering": "Engineering college at Wyoming's only four-year university, which UW says holds Carnegie R1 status; placed C as a solid regional program. This is our estimate, not a ranking."
  }
 }

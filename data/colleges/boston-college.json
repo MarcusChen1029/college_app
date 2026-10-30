@@ -43,7 +43,7 @@
     "waitlist_admitted": 352,
     "pct_submit_sat": 30,
     "pct_submit_act": 15,
-    "notes": "Newest CDS published on bc.edu is 2024-2025 (Fall 2024 entering class); a 2025-2026 CDS was not found on the site as of 2026-10-21. In-state = Massachusetts. 21 applicants / 2 admits / 1 enrollee have unknown residency. GPA (C11/C12) is not reported in this CDS. Test-optional: 30% of enrollees submitted SAT, 15% ACT."
+    "notes": "The newest Common Data Set published on bc.edu is 2024-2025 (Fall 2024 entering class); a 2025-2026 Common Data Set was not found on the site as of 2026-10-21. In-state = Massachusetts. 21 applicants / 2 admits / 1 enrollee have unknown residency. GPA is not reported in this Common Data Set. Test-optional: 30% of enrollees submitted SAT, 15% ACT."
   },
   "scores": {
     "SAT_TOTAL": [1460, 1500, 1520],
@@ -75,7 +75,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (2024-2025 edition, applicants for Fall 2026): SAT/ACT not required, but considered if submitted."
+    "notes": "From the Common Data Set (2024-2025 edition, applicants for Fall 2026): SAT/ACT not required, but considered if submitted."
   },
   "cost": {
     "year": "2025-2026",
@@ -88,6 +88,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 20,
     "intl_avg_award_usd": 39634,
-    "notes": "CDS G1/G5 (2024-2025 edition, which lists 2025-2026 costs). Transportation varies and is not included in other_usd. H6 reports 2024-2025 aid to nonresidents: institutional non-need-based aid only; 20 awarded (need- or non-need-based), average $39,634. The interview row of C7 was left blank in the CDS and is omitted from factors."
+    "notes": "Costs from the Common Data Set (2024-2025 edition, which lists 2025-2026 costs). Transportation varies and is not included in other costs. The Common Data Set reports 2024-2025 aid to nonresidents: non-need-based aid from the college only; 20 awarded (need- or non-need-based), average $39,634. Boston College did not report the interview row of the admission factors, so it is not shown"
   }
 }

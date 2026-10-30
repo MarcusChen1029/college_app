@@ -60,8 +60,11 @@ export function JumpNav({ items, label }: { items: JumpItem[]; label: string }) 
 
   if (items.length < 2) return null;
   return (
-    <nav aria-label={label} data-jump-nav style={{ top }} className="sticky z-10 -mx-4 border-b border-zinc-200 bg-white px-4 print:hidden">
-      <ul ref={listRef} className="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    // The white bar runs into the page margins so content never peeks past it; its rule stays on the content's edges.
+    // Where the chips overflow (phones, tablets) the strip's right edge fades so a cut-off label reads as "scroll for more".
+    <nav aria-label={label} data-jump-nav style={{ top }} className="sticky z-10 -mx-4 bg-white px-4 print:hidden">
+      <div className="border-b border-zinc-200">
+      <ul ref={listRef} className="flex gap-1 overflow-x-auto py-2 pr-10 [mask-image:linear-gradient(to_right,#000_calc(100%_-_2.5rem),transparent)] [scrollbar-width:none] lg:pr-0 lg:[mask-image:none] [&::-webkit-scrollbar]:hidden">
         {items.map((i) => (
           <li key={i.id} data-id={i.id} className="shrink-0">
             <a
@@ -74,6 +77,7 @@ export function JumpNav({ items, label }: { items: JumpItem[]; label: string }) 
           </li>
         ))}
       </ul>
+      </div>
     </nav>
   );
 }

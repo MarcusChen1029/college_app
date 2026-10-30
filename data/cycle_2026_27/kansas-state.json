@@ -56,7 +56,7 @@
       "kind": "priority",
       "due": "2026-12-01",
       "label": "Priority application date (fall 2027)",
-      "notes": "From CDS C14 (priority date December 1st, no closing date); the Manhattan site refers to a 'Priority Application Date' for scholarships without printing it. The year is inferred as the 2026-27 cycle.",
+      "notes": "From the Common Data Set (priority date December 1st, no closing date); the Manhattan site refers to a 'Priority Application Date' for scholarships without printing it. The year is assumed to be the 2026-27 cycle.",
       "src": "sch"
     },
     {
@@ -128,7 +128,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Wildcat Nonresident Award (domestic and international, no ACT/SAT needed) discounts the nonresident part of tuition by GPA: 3.90+ 100% (about $19,101/yr), 3.75-3.89 80% (about $15,281/yr), 3.50-3.74 60% (about $11,461/yr), 3.25-3.49 50% (about $9,551/yr); renewable up to four years with a 3.0 K-State GPA. CDS H6: only institutional non-need-based aid is available to nonresidents.",
+    "notes": "Wildcat Nonresident Award (domestic and international, no ACT/SAT needed) discounts the nonresident part of tuition by GPA: 3.90+ 100% (about $19,101/yr), 3.75-3.89 80% (about $15,281/yr), 3.50-3.74 60% (about $11,461/yr), 3.25-3.49 50% (about $9,551/yr); renewable up to four years with a 3.0 K-State GPA. The Common Data Set says only the college's own non-need-based aid is available to nonresidents.",
     "src": "wna"
   },
   "majors": [

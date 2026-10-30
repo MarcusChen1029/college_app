@@ -27,7 +27,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "Test optional for applicants (scores sent by the testing agency are considered if submitted). CDS C8F: SAT or ACT is required for the Scholars for Medicine and Scholars for Dental Medicine honors programs.",
+  "notes": "Test optional for applicants (scores sent by the testing agency are considered if submitted). Per the Common Data Set, SAT or ACT is required for the Scholars for Medicine and Scholars for Dental Medicine honors programs.",
   "src": "fy"
  },
  "requirements": {

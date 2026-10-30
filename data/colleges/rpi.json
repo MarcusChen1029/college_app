@@ -59,7 +59,7 @@
     "pct_submit_act": 13,
     "gpa_avg": 3.93,
     "pct_reporting_gpa": 96,
-    "notes": "Fall 2025 entering class. In the CDS the enrolled split by sex/status is mis-entered (977 and 417), so only the total enrolled (1,394) and the residency enrolled counts (530 in-state, 833 out-of-state, 31 international) are used. ED figure (C21) combines the ED plans. SAT 53% / ACT 13% of enrolled submitted scores.",
+    "notes": "Fall 2025 entering class. In the Common Data Set the enrolled split by sex/status is entered incorrectly (977 and 417), so only the total enrolled (1,394) and the residency enrolled counts (530 in-state, 833 out-of-state, 31 international) are used. The ED figure combines the ED plans. 53% of enrolled students sent SAT scores and 13% sent ACT scores.",
     "gpa_distribution": {
       "4.0": 40,
       "3.75-3.99": 40,
@@ -101,7 +101,7 @@
     "room_board_usd": 18560,
     "other_usd": 1780,
     "total_coa_usd": 85291,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

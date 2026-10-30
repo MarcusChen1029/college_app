@@ -48,11 +48,45 @@ export function StatusIcon({ tone }: { tone: Tone }) {
 export function StatusPill({ tone, children, title }: { tone: Tone; children: React.ReactNode; title?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${toneClass(tone)}`}
+      className={`inline-flex flex-none items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[13px] font-semibold whitespace-nowrap ${toneClass(tone)}`}
       title={title}
     >
       <StatusIcon tone={tone} />
       {children}
+    </span>
+  );
+}
+
+/** A row's one status control: the status chip itself is a select, so the status shows once and changes in place. Same tone,
+ *  icon and size as StatusPill, with a chevron and a focus ring. */
+export function StatusSelect<T extends string>({
+  tone,
+  value,
+  options,
+  label,
+  onChange,
+}: {
+  tone: Tone;
+  value: T;
+  options: readonly { value: T; label: string }[];
+  label: string;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <span
+      className={`relative inline-flex flex-none items-center gap-1.5 rounded-full border py-0.5 pl-2.5 pr-2 text-[13px] font-semibold whitespace-nowrap focus-within:ring-2 focus-within:ring-ink focus-within:ring-offset-1 ${toneClass(tone)}`}
+    >
+      <StatusIcon tone={tone} />
+      <select aria-label={label} className="cursor-pointer appearance-none bg-transparent pr-4 font-semibold focus:outline-none" value={value} onChange={(e) => onChange(e.target.value as T)}>
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+      <svg aria-hidden width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="pointer-events-none absolute right-2">
+        <path d="m6 9 6 6 6-6" />
+      </svg>
     </span>
   );
 }

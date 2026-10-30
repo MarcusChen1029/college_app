@@ -60,14 +60,14 @@ export function DeadlineCalendar({ events, today }: { events: CalendarEvent[]; t
         </button>
       </div>
 
-      <div className="mt-3 grid grid-cols-7 text-center text-[11px] font-semibold uppercase tracking-wide text-zinc-400" aria-hidden>
+      <div className="mt-3 grid grid-cols-7 text-center text-[13px] font-medium text-zinc-600" aria-hidden>
         {WEEKDAYS.map((w) => (
           <span key={w} className="py-1">
             {t(w)}
           </span>
         ))}
       </div>
-      <div role="group" aria-label={t("profile.cal.deadlinesIn", { month: monthTitle(view.year, view.month) })} className="grid grid-cols-7 gap-y-1">
+      <div role="group" aria-label={t("profile.cal.deadlinesIn", { month: monthTitle(view.year, view.month) })} className="grid grid-cols-7 gap-y-1 tabular-nums">
         {weeks.flat().map((c) => {
           const here = byDate.get(c.iso) ?? [];
           const isToday = c.iso === today;

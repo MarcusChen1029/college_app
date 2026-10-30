@@ -36,7 +36,7 @@
    "own"
   ],
   "app_fee_usd": null,
-  "notes": "Apply through UA's own application. Required for first-time international students: official secondary transcripts with projected graduation date, a NACES course-by-course credential evaluation (TEC, WES, ECE, IEE or IFCS), and proof of English proficiency; SAT/ACT is optional. CDS C13 reports no application fee, but the International Center scholarship page mentions an 'application fee' in a deadline table, so the international fee is left null. First-time international students typically cannot start in summer. Official documents are needed for admission, scholarships and the I-20.",
+  "notes": "Apply through UA's own application. Required for first-time international students: official secondary transcripts with projected graduation date, a NACES course-by-course credential evaluation (TEC, WES, ECE, IEE or IFCS), and proof of English proficiency; SAT/ACT is optional. The Common Data Set reports no application fee, but the International Center scholarship page mentions an 'application fee' in a deadline table, so the international fee is not shown. First-time international students typically cannot start in summer. Official documents are needed for admission, scholarships and the I-20.",
   "src": "apply"
  },
  "deadlines": [
@@ -45,7 +45,7 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International application deadline, fall 2027 entry",
-   "notes": "Page lists 'Fall: June 1; Spring: October 1' without a year; taken as fall 2027 (spring 2027 would be Oct. 1, 2026). Rolling admission; if documents arrive after the deadline the application may be deferred to the next semester. Domestic first-years (CDS C14): priority date May 1, closing date Aug. 1, decisions rolling from Oct. 1. The scholarships page has a table with a May 1 fall date under its transfer-student heading; June 1 from the 'how to apply' page is used.",
+   "notes": "The page lists 'Fall: June 1; Spring: October 1' without a year, so fall 2027 is assumed (spring 2027 would be Oct. 1, 2026). Rolling admission; if documents arrive after the deadline the application may be deferred to the next semester. Domestic first-years (Common Data Set): priority date May 1, closing date Aug. 1, decisions rolling from Oct. 1. The scholarships page has a table with a May 1 fall date under its transfer-student heading; June 1 from the 'how to apply' page is the date shown.",
    "src": "apply"
   }
  ],
@@ -100,7 +100,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "New international freshmen are automatically considered for merit scholarships with admission (based on GPA and curriculum, amounts vary; 12+ credits per semester, normally renewable for four years while in good standing at 2.0 GPA). The 2026-27 scholarship table does not state international-specific amounts. CDS H6: 200 nonresident undergraduates received institutional non-need aid, average $9,112.",
+  "notes": "New international freshmen are automatically considered for merit scholarships with admission (based on GPA and curriculum, amounts vary; 12+ credits per semester, normally renewable for four years while in good standing at 2.0 GPA). The 2026-27 scholarship table does not state international-specific amounts. From the Common Data Set: 200 nonresident undergraduates received non-need aid from the college, average $9,112.",
   "src": "fa"
  },
  "majors": [],

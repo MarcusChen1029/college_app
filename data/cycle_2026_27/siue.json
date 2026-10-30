@@ -75,7 +75,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "Fall priority deadline - international (fall 2027 entry)",
-      "notes": "The page prints no year; taken as fall 2027. STEM and business applicants face the same May 1 (fall) cutoff and SIUE may not process applications from outside the US after it.",
+      "notes": "The page prints no year, so fall 2027 is assumed. STEM and business applicants face the same May 1 (fall) cutoff and SIUE may not process applications from outside the US after it.",
       "src": "dl"
     },
     {
@@ -144,7 +144,7 @@
     "tuition_intl_usd": 20531,
     "required_fees_usd": 3069,
     "total_coa_usd": 40970,
-    "notes": "SIUE's international estimate for 2026-27: tuition $20,531, general student fees $3,069, living expenses $17,370 (includes mandatory health insurance $2,583, food, housing, transportation, books and personal), total funds required $40,970. These figures are before any GEO Award reduction. The in-state tuition rate and room and board are not published on the pages reviewed."
+    "notes": "SIUE's international estimate for 2026-27: tuition $20,531, general student fees $3,069, living expenses $17,370 (includes mandatory health insurance $2,583, food, housing, transportation, books and personal), total funds required $40,970. These figures are before any GEO Award reduction. The in-state tuition rate and room and board are not published on the pages reviewed"
   },
   "score_codes": {
     "sat": {

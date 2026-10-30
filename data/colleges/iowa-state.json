@@ -51,7 +51,7 @@
       "2.0-2.49": 0.4,
       "1.0-1.99": 0.02
     },
-    "notes": "CDS C1 residency split (in-state 5,921 / out-of-state 15,521 / international 3,183 applicants; international admit rate computed 2,067/3,183 = 64.9%, 141 enrolled). Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (26,346; nonresident 985). No early decision or early action; no waitlist; no application closing date (rolling). GPA distribution is the 'all enrolled students' column; 0.13% had a GPA below 1.0 and is omitted."
+    "notes": "From the Common Data Set residency split (in-state 5,921 / out-of-state 15,521 / international 3,183 applicants; international admit rate computed 2,067/3,183 = 64.9%, 141 enrolled). Undergraduate enrollment and the number of international undergraduates are the 'Total Undergraduates' column (26,346; nonresident 985). No early decision or early action; no waitlist; no application closing date (rolling). The GPA breakdown is the 'all enrolled students' column; 0.13% had a GPA below 1.0 and is not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2025-2026",
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 566,
     "intl_avg_award_usd": 13144,
-    "notes": "CDS G1 first-year rates (the CDS ticks '2026-27 costs not available yet', so these are treated as 2025-26 rates; the 'Nonresident' tuition line is used for international students). H6 (final 2024-25): only institutional non-need-based aid is available to nonresidents; 566 degree-seeking nonresidents received institutional aid, averaging $13,144 ($7,439,681 total). Tuition varies by program (G4: 63% pay more than the G1 figure)."
+    "notes": "First-year rates from the Common Data Set (it ticks '2026-27 costs not available yet', so these are assumed to be 2025-26 rates; the 'Nonresident' tuition line is shown as international tuition). Aid (final 2024-25): only the college's own non-need-based aid is available to nonresidents; 566 degree-seeking nonresidents received aid from the college itself, averaging $13,144 ($7,439,681 total). Tuition varies by program (63% pay more than the first-year figure)"
   }
 }

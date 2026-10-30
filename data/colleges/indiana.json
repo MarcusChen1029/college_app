@@ -67,7 +67,7 @@
       "2.0-2.49": 0.01,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C11 all-enrolled column; GPA average is reported as 3.8. Early action closes 11/1 (decision by 1/15); no early decision. Fall 2025 entering class."
+    "notes": "The GPA breakdown is the Common Data Set's all-enrolled column; the average GPA is reported as 3.8. Early action closes 11/1 (decision by 1/15); no early decision. Fall 2025 entering class."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 14160,
     "other_usd": 3328,
     "total_coa_usd": 30517,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 42295
   },
   "factors": {

@@ -69,7 +69,7 @@
       "2.0-2.49": 0.58,
       "1.0-1.99": 0.13
     },
-    "notes": "CDS C1/C2/C9/C11/C12/C21 (Fall 2025 entering class). RIT is test-optional, so SAT/ACT percentiles describe only the 41% (SAT) / 8% (ACT) who submitted. Applicant totals include all first-year degree programs (RIT admits ~71% overall; selectivity varies by major). Early decision: binding, closes Nov 1."
+    "notes": "From the Common Data Set (Fall 2025 entering class). RIT is test-optional, so SAT/ACT percentiles describe only the 41% (SAT) / 8% (ACT) who submitted. Applicant totals include all first-year degree programs (RIT admits ~71% overall; selectivity varies by major). Early decision: binding, closes Nov 1."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -111,7 +111,7 @@
     "room_board_usd": 16750,
     "other_usd": 1790,
     "total_coa_usd": 77257,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

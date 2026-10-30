@@ -40,7 +40,7 @@
       "plan": "ROLLING",
       "due": "2027-05-01",
       "label": "International (non-Canadian) fall application deadline, fall 2027 entry",
-      "notes": "The International Admissions page prints 'May 1' for fall and 'Nov. 1' for spring with no year; treated as fall 2027. Niagara reviews on a rolling basis (decisions in about 3-4 weeks after the application is complete); domestic first-year applicants have no deadline.",
+      "notes": "The International Admissions page prints 'May 1' for fall and 'Nov. 1' for spring with no year, so fall 2027 is assumed. Niagara reviews on a rolling basis (decisions in about 3-4 weeks after the application is complete); domestic first-year applicants have no deadline.",
       "src": "intl"
     }
   ],

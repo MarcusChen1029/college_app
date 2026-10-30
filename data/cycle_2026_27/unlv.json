@@ -44,7 +44,7 @@
    "kind": "priority",
    "due": "2026-11-15",
    "label": "Fall first-year priority deadline",
-   "notes": "To get priority for institutional grants and scholarships an applicant must be admitted and complete the Institutional Aid Application / Alternative Need Form by this date; applications open Oct. 1. The page prints no year; taken as the current cycle.",
+   "notes": "To get priority for institutional grants and scholarships an applicant must be admitted and complete the Institutional Aid Application / Alternative Need Form by this date; applications open Oct. 1. The page prints no year, so the current cycle is assumed.",
    "src": "ug"
   },
   {
@@ -119,7 +119,7 @@
   "room_board_usd": 13448,
   "books_usd": 1290,
   "other_usd": 4664,
-  "notes": "UNLV cost page (2026-27, 15 credits, two semesters): the tuition figures already include required fees and a one-time $200 new-student fee; international (F-1) $31,710 includes a $145-per-semester international fee; mandatory health insurance for international students is estimated separately. room_board = on-campus housing $7,424 + food $6,024; other_usd = transportation $1,360 + miscellaneous $3,304. Estimated nonresident total cost living on campus $50,284.",
+  "notes": "UNLV cost page (2026-27, 15 credits, two semesters): the tuition figures already include required fees and a one-time $200 new-student fee; international (F-1) $31,710 includes a $145-per-semester international fee; mandatory health insurance for international students is estimated separately. Housing and food are on-campus housing $7,424 + food $6,024; other costs are transportation $1,360 + miscellaneous $3,304. Estimated nonresident total cost living on campus $50,284",
   "src": "cost"
  },
  "aid": {
@@ -158,6 +158,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "business": "Editorial judgment: the Harrah College of Hospitality is a nationally recognized strength; placed in the 41-100 band, not a published ranking."
+  "business": "Our estimate: the Harrah College of Hospitality is a nationally recognized strength; we placed it in the 41-100 band, which is not a published ranking."
  }
 }

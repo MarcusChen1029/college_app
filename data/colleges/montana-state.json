@@ -51,7 +51,7 @@
       "2.0-2.49": 3.93,
       "1.0-1.99": 1.03
     },
-    "notes": "CDS C1 (fall 2025 entering class): 19,892 applied, 19,769 admitted, 3,743 enrolled; the international row (182 applied, 181 admitted, 17 enrolled) is by residency at application. These admit counts are far higher than IPEDS for fall 2024 (21,652 applicants, 82% admitted), so treat the CDS admit rate with caution. Undergraduate enrollment is B1 'Total Undergraduate Students' (15,142); intl_undergrads is the B2 nonresident total for all undergraduates (172; 114 degree-seeking). Student-faculty ratio 18 to 1 (CDS I). The GPA distribution is the published 'all enrolled students' column. No early decision; early action is rolling. The CDS C7 factor check boxes could not be read, so factors are omitted."
+    "notes": "From the Common Data Set (fall 2025 entering class): 19,892 applied, 19,769 admitted, 3,743 enrolled; the international row (182 applied, 181 admitted, 17 enrolled) is by residency at application. These admit counts are far higher than IPEDS for fall 2024 (21,652 applicants, 82% admitted), so treat the Common Data Set admit rate with caution. Undergraduate enrollment is 15,142 ('Total Undergraduate Students'); the number of international undergraduates is the nonresident total for all undergraduates (172; 114 degree-seeking). Student-faculty ratio 18 to 1 (Common Data Set). The GPA breakdown is the published 'all enrolled students' column. No early decision; early action is rolling. The Common Data Set's admission-factor check boxes could not be read, so factors are omitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -88,7 +88,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: ACT and/or SAT are not required for admission or scholarship, but are encouraged for math and writing placement."
+    "notes": "From the Common Data Set: ACT and/or SAT are not required for admission or scholarship, but are encouraged for math and writing placement."
   },
   "cost": {
     "year": "2026-2027",
@@ -102,6 +102,6 @@
     "other_usd": 4110,
     "total_coa_usd": 53573,
     "intl_need_aid": false,
-    "notes": "CDS G1 (first-year, 2026-27): tuition $6,731 in-state / $31,216 nonresident; required fees $2,217; food and housing $14,580. Other = transportation $2,384 + other expenses $1,726 (G5); books $1,450. total_coa_usd is the sum of those nonresident components. MSU's international costs page (AY 2025-26) adds a $300 per year foreign student fee and mandatory health insurance (about $4,769 a year, waivable with proof of coverage), and lists $54,220 as the minimum funds for the undergraduate I-20. CDS H6 reports $417,761 of institutional aid to degree-seeking nonresidents with no recipient count in readable text."
+    "notes": "From the Common Data Set (first-year, 2026-27): tuition $6,731 in-state / $31,216 nonresident; required fees $2,217; food and housing $14,580. Other costs = transportation $2,384 + other expenses $1,726; books $1,450. The total cost of attendance is the sum of those nonresident components. MSU's international costs page (AY 2025-26) adds a $300 per year foreign student fee and mandatory health insurance (about $4,769 a year, waivable with proof of coverage), and lists $54,220 as the minimum funds for the undergraduate I-20. The Common Data Set reports $417,761 of institutional aid to degree-seeking nonresidents with no recipient count in readable text"
   }
 }

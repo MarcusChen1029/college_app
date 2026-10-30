@@ -70,7 +70,7 @@
       "2.0-2.49": 1.1,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2025): applicants 9,169 (3,306 men + 5,849 women + 14 unknown), admitted 8,196, enrolled 1,408; residency table: in-state 7,388/6,707, out-of-state 1,211/1,016, international 563/471 applied/admitted (18 international enrolled). The CDS reports no waitlist. GPA distribution is the 'all enrolled students' column of C11 as printed. Undergraduate enrollment is B1 'Total All Undergraduates' (6,206). Percent submitting ACT is printed as '<1%' (9 students), stored as 1. The CDS C7 factor checkboxes are unreadable as text, so factors are omitted. Student-faculty ratio 14:1 is from College Navigator (fall 2024); the CDS does not print it."
+    "notes": "From the Common Data Set (fall 2025): applicants 9,169 (3,306 men + 5,849 women + 14 unknown), admitted 8,196, enrolled 1,408; residency table: in-state 7,388/6,707, out-of-state 1,211/1,016, international 563/471 applied/admitted (18 international enrolled). The Common Data Set reports no waitlist. The GPA breakdown is the 'all enrolled students' column as printed. Undergraduate enrollment is 6,206 (the 'Total All Undergraduates' line). The share of students who sent ACT scores is printed as '<1%' (9 students) and shown as 1 percent. The admission factor checkboxes are unreadable as text, so the factors are omitted. The student-faculty ratio of 14:1 is from College Navigator (fall 2024); the Common Data Set does not print it."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -92,7 +92,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "The admissions site says Radford is test-optional and that submitting scores will not hurt a decision. CDS C8 (Fall 2027) ticks 'not considered for admission, even if submitted' for SAT/ACT and answers 'No' to using scores in admission decisions."
+    "notes": "The admissions site says Radford is test-optional and that submitting scores will not hurt a decision. The Common Data Set (Fall 2027) ticks 'not considered for admission, even if submitted' for SAT/ACT and answers 'No' to using scores in admission decisions."
   },
   "cost": {
     "year": "2026-2027",
@@ -104,6 +104,6 @@
     "room_board_usd": 13198,
     "intl_need_aid_awarded": 55,
     "intl_avg_award_usd": 11556,
-    "notes": "Bursar 2026-27 full-time rates (12-18 credits), Radford main campus. Out-of-state undergraduate tuition $22,892 a year; the international admissions page says international tuition equals the out-of-state rate. Required fees for out-of-state students $4,970 (technology $120 + comprehensive $4,382 + capital $468; in-state students pay $4,502 and in-state tuition is $8,894). Room and board is a multiple-occupancy residence hall room ($7,332) plus the Highlander Residential meal plan ($5,866). CDS H6 (nonresident aid, both need-based and non-need-based boxes ticked): 55 nonresidents, average $11,556, but the printed total of $1,120,934 does not equal 55 x $11,556, so the count and average may not be consistent. Books and other costs are not published on the pages reviewed. The international Minimum Funding table (labeled 2025-26 in search results) shows a $45,858 total whose line items add to $47,880."
+    "notes": "Bursar 2026-27 full-time rates (12-18 credits), Radford main campus. Out-of-state undergraduate tuition $22,892 a year; the international admissions page says international tuition equals the out-of-state rate. Required fees for out-of-state students $4,970 (technology $120 + comprehensive $4,382 + capital $468; in-state students pay $4,502 and in-state tuition is $8,894). Room and board is a multiple-occupancy residence hall room ($7,332) plus the Highlander Residential meal plan ($5,866). Common Data Set nonresident aid (both need-based and non-need-based boxes ticked): 55 nonresidents, average $11,556, but the printed total of $1,120,934 does not equal 55 x $11,556, so the count and average may not be consistent. Books and other costs are not published on the pages reviewed. The international Minimum Funding table (labeled 2025-26 in search results) shows a $45,858 total whose line items add to $47,880"
   }
 }

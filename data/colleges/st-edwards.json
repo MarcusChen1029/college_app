@@ -53,7 +53,7 @@
     "enrolled": 659,
     "pct_submit_sat": 18,
     "pct_submit_act": 4,
-    "notes": "Baseline from IPEDS College Navigator (fall 2024 entering class): 5,830 applicants, 81% admitted, 10% of admitted enrolled. College Navigator prints only rounded percentages, so admit and enrolled counts are left null. A St. Edward's Common Data Set could not be found (not on stedwards.edu via search or direct paths), so international applicant counts, GPA and ED data are not available. Test percentiles come from only 81 SAT and 20 ACT submitters (18% and 4% of enrollees); the ACT figures are especially thin. Undergraduate enrollment 2,499 and student-faculty ratio 12:1 are IPEDS fall 2024. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate."
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator (fall 2024 entering class): 5,830 applicants, 81% admitted, 10% of admitted enrolled. College Navigator prints only rounded percentages, not admit and enrolled counts. A St. Edward's Common Data Set could not be found (not on stedwards.edu via search or direct paths), so international applicant counts, GPA and ED data are not available. Test percentiles come from only 81 SAT and 20 ACT submitters (18% and 4% of enrollees); the ACT figures are especially thin. Undergraduate enrollment 2,499 and student-faculty ratio 12:1 are IPEDS fall 2024. Applicant, admit and enrolled counts were replaced with exact IPEDS figures (fall 2023), because the newer source gives only a rounded admit rate."
   },
   "scores": {
     "SAT_ERW": [
@@ -87,6 +87,6 @@
     "source": "cost",
     "tuition_usd": 51498,
     "required_fees_usd": 900,
-    "notes": "St. Edward's 2026-27: full-time flat tuition $25,749 per term (12-18 hours) = $51,498 a year; comprehensive fee $450 per semester. Housing ($4,382) and meal plan ($3,464) are listed as estimates without a stated period, and health insurance (est. $1,460 per semester) is billed unless waived, so room and board and total cost of attendance are left null. New first-years must live on campus. The university reports an average first-year tuition after scholarships and grants of $11,486 for 2026-27."
+    "notes": "St. Edward's 2026-27: full-time flat tuition $25,749 per term (12-18 hours) = $51,498 a year; comprehensive fee $450 per semester. Housing ($4,382) and meal plan ($3,464) are listed as estimates without a stated period, and health insurance (est. $1,460 per semester) is billed unless waived, so room and board and total cost of attendance are not shown. New first-years must live on campus. The university reports an average first-year tuition after scholarships and grants of $11,486 for 2026-27"
   }
 }

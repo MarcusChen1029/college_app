@@ -53,7 +53,7 @@
       "own"
     ],
     "app_fee_usd": null,
-    "notes": "Apply through the university's own portal (apply.findlay.edu). The application fee is not stated on the pages read (other search snippets conflict), so it is left null. International freshmen need high school transcripts and leaving certificate or diploma, a passport bio page copy, and a bank statement showing funds for at least the first year. No personal essay or recommendation letters are mentioned on the first-year page.",
+    "notes": "Apply through the university's own portal (apply.findlay.edu). The application fee is not stated on the pages checked (other search snippets conflict), so it is not shown. International freshmen need high school transcripts and leaving certificate or diploma, a passport bio page copy, and a bank statement showing funds for at least the first year. No personal essay or recommendation letters are mentioned on the first-year page.",
     "src": "crit"
   },
   "deadlines": [
@@ -61,7 +61,7 @@
       "kind": "application",
       "due": "2027-06-20",
       "label": "International application deadline, fall (August) start (fall 2027 entry)",
-      "notes": "The international criteria page lists Fall: June 20 and Spring: November 10 without a year, so the dates are treated as fall 2027. Start terms are Fall (August) and Spring (January). The first-year page lists no deadlines.",
+      "notes": "The international criteria page lists Fall: June 20 and Spring: November 10 without a year, so the dates are assumed to be for fall 2027. Start terms are Fall (August) and Spring (January). The first-year page lists no deadlines.",
       "src": "crit"
     }
   ],
@@ -110,7 +110,7 @@
     "books_usd": 1000,
     "other_usd": 1544,
     "intl_merit_aid": true,
-    "notes": "2026-27 undergraduate on-campus estimate (standard program, before aid): tuition $40,698, mandatory fees $1,500, housing $7,120 plus food $6,620, books and supplies $1,000, miscellaneous personal $1,544, transportation $1,030 (not included in other). The page shows no total, so total_coa is left null. Pharmacy, Equestrian and Animal Science programs have different rates.",
+    "notes": "2026-27 undergraduate on-campus estimate (standard program, before aid): tuition $40,698, mandatory fees $1,500, housing $7,120 plus food $6,620, books and supplies $1,000, miscellaneous personal $1,544, transportation $1,030 (not included in other costs). The page shows no total, so the total cost of attendance is not shown. Pharmacy, Equestrian and Animal Science programs have different rates",
     "src": "coa"
   },
   "aid": {

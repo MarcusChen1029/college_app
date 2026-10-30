@@ -33,7 +33,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "SAT/ACT scores are optional for first-year and international applicants (CDS C8A: not required, but considered if submitted). Candidates offered admission have achieved a minimum 2.0 GPA and a class rank in the top 50 percent.",
+    "notes": "SAT/ACT scores are optional for first-year and international applicants (Common Data Set: not required, but considered if submitted). Candidates offered admission have achieved a minimum 2.0 GPA and a class rank in the top 50 percent.",
     "src": "req"
   },
   "requirements": {
@@ -50,7 +50,7 @@
       "plan": "ROLLING",
       "due": "2027-04-01",
       "label": "International first-year apply-by date, fall 2027",
-      "notes": "Rolling admissions; international students 'should apply by' April 1 (fall) and November 1 (spring). The page prints no year; taken as fall 2027. The university may stop processing applications once class capacity is met. Domestic first-years have a May 1 preferred date; the CDS lists an application closing date of Aug 24, 2027.",
+      "notes": "Rolling admissions; international students 'should apply by' April 1 (fall) and November 1 (spring). The page prints no year, so fall 2027 is assumed. The university may stop processing applications once class capacity is met. Domestic first-years have a May 1 preferred date; the Common Data Set lists an application closing date of Aug 24, 2027.",
       "src": "fy"
     }
   ],
@@ -71,7 +71,7 @@
       "test": "TOEFL_IBT_2026",
       "status": "required_option",
       "min": 4.5,
-      "notes": "Page prints 'Internet minimum score of 4.5 (as of 1/1/26)' for the new TOEFL; read as the 1-6 band scale.",
+      "notes": "The page prints 'Internet minimum score of 4.5 (as of 1/1/26)' for the new TOEFL, so it is assumed to be the 1-6 band scale.",
       "src": "fy"
     },
     {
@@ -101,7 +101,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "Institutional aid for nonresidents is non-need-based only (CDS H6: 115 nonresident undergraduates received it, average $9,918). CCSU awards merit scholarships to select newly admitted first-year students with no separate application; no international-specific scholarship names or amounts are published on the pages reviewed. The Honors Program carries a $4,500-per-year scholarship.",
+    "notes": "The college's own aid for nonresidents is non-need-based only (Common Data Set: 115 nonresident undergraduates received it, average $9,918). CCSU awards merit scholarships to select newly admitted first-year students with no separate application; no international-specific scholarship names or amounts are published on the pages reviewed. The Honors Program carries a $4,500-per-year scholarship.",
     "src": "sch"
   },
   "majors": [],
@@ -115,7 +115,7 @@
     "room_board_usd": 13472,
     "books_usd": 1600,
     "other_usd": 2261,
-    "notes": "Tuition rates and fees are from CDS G1 for 2026-27; the CCSU tuition page lists the international full-time rate as $13,455 per term (tuition and fees together)."
+    "notes": "Tuition rates and fees are from the Common Data Set for 2026-27; the CCSU tuition page lists the international full-time rate as $13,455 per term (tuition and fees together)"
   },
   "score_codes": {
     "sat": {

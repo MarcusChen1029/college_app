@@ -33,7 +33,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "SAT/ACT are not required for admission; CDS C8F: scores are optional, used case by case to enhance the academic profile, and not required for scholarship consideration.",
+  "notes": "SAT/ACT are not required for admission. The Common Data Set says scores are optional, used case by case to enhance the academic profile, and not required for scholarship consideration.",
   "src": "fresh"
  },
  "requirements": {
@@ -57,7 +57,7 @@
    "plan": "ROLLING",
    "due": "2027-08-01",
    "label": "Application closing date, fall (CDS)",
-   "notes": "CDS C14 gives Aug. 1 (no year printed) and C16 says decisions are sent on a rolling basis. The international pages publish no hard deadline other than the priority dates.",
+   "notes": "The Common Data Set gives Aug. 1 (no year printed) as the application closing date and says decisions are sent on a rolling basis. The international pages publish no hard deadline other than the priority dates.",
    "src": "fresh"
   }
  ],
@@ -105,7 +105,7 @@
   "intl_aid_policy": "merit_only",
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "International Excellence Award (IEA): up to $11,000 per year as an out-of-state tuition waiver for first-time, full-time F-1 undergraduates on the Flagstaff campus with a 3.0+ GPA at admission; no separate application, awarded first come, first served; renewable with full-time enrollment and a 3.0 GPA. Not available to sponsored students or dual-degree or PIE students. CDS H6: nonresidents get institutional non-need-based aid only. Foreign citizens are not eligible for FAFSA.",
+  "notes": "International Excellence Award (IEA): up to $11,000 per year as an out-of-state tuition waiver for first-time, full-time F-1 undergraduates on the Flagstaff campus with a 3.0+ GPA at admission; no separate application, awarded first come, first served; renewable with full-time enrollment and a 3.0 GPA. Not available to sponsored students or dual-degree or PIE students. The Common Data Set says nonresidents get institutional non-need-based aid only. Foreign citizens are not eligible for FAFSA.",
   "src": "sch"
  },
  "score_codes": {

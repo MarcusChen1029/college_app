@@ -61,6 +61,7 @@ export function EssayRow({
   onRemove,
   docs,
   label,
+  labelHidden = false,
   badge,
   detail,
   removeLabel,
@@ -73,6 +74,8 @@ export function EssayRow({
   docs?: GoogleDocs;
   /** A fixed name instead of an editable one (personal statement, UC questions, college prompts). */
   label?: string;
+  /** Keep the fixed name for screen readers only, when a heading right above already shows it (the personal statement). */
+  labelHidden?: boolean;
   /** Pills next to a fixed label (word limit, "Optional"…). */
   badge?: React.ReactNode;
   /** Shown under the name row: a college prompt's text. */
@@ -115,12 +118,31 @@ export function EssayRow({
       setPasteFailed(true);
     }
   };
+  const status = (
+    <select
+      className={`${inputBase} ${toneClass(essayTone(essay.status))}`}
+      value={essay.status}
+      aria-label={t("writing.statusAria", { name: label ?? t("writing.essayN", { n: index + 1 }) })}
+      onChange={(e) => onChange({ status: e.target.value as Essay["status"] })}
+    >
+      {ESSAY_STATUSES.map(([k]) => (
+        <option key={k} value={k}>
+          {t(STATUS_KEYS[k])}
+        </option>
+      ))}
+    </select>
+  );
+  // A hidden label with nothing beside it leaves no first row: the status then closes the button row instead of floating
+  // alone above it.
+  const statusInActions = labelHidden && !badge && !onRemove;
   return (
-    <li className="space-y-1.5 rounded-xl border border-zinc-200 p-3">
+    <li className="space-y-1.5 rounded-xl bg-white p-3">
+      {labelHidden && <span className="sr-only">{label}</span>}
+      {!statusInActions && (
       <div className="flex flex-wrap items-center gap-2">
         {label ? (
-          <span className="flex min-w-48 flex-1 flex-wrap items-center gap-2 text-sm font-medium">
-            {label}
+          <span className={`flex flex-1 flex-wrap items-center gap-2 text-sm font-medium ${labelHidden ? "min-w-0" : "min-w-48"}`}>
+            {labelHidden ? null : label}
             {badge}
           </span>
         ) : (
@@ -136,24 +158,14 @@ export function EssayRow({
             />
           </>
         )}
-        <select
-          className={`${inputBase} ${toneClass(essayTone(essay.status))}`}
-          value={essay.status}
-          aria-label={t("writing.statusAria", { name: label ?? t("writing.essayN", { n: index + 1 }) })}
-          onChange={(e) => onChange({ status: e.target.value as Essay["status"] })}
-        >
-          {ESSAY_STATUSES.map(([k]) => (
-            <option key={k} value={k}>
-              {t(STATUS_KEYS[k])}
-            </option>
-          ))}
-        </select>
+        {status}
         {onRemove && (
           <button type="button" className="rounded px-1 text-zinc-400 hover:text-urgent" aria-label={removeLabel ?? t("writing.removeEssayAria", { n: index + 1 })} title={removeLabel} onClick={onRemove}>
             ✕
           </button>
         )}
       </div>
+      )}
       {detail}
       <div className={`flex flex-wrap items-center gap-2 ${label ? "" : "pl-7"}`}>
         {link ? (
@@ -177,6 +189,7 @@ export function EssayRow({
             <button type="button" className="text-xs text-zinc-500 hover:text-urgent" onClick={() => onChange({ url: "" })}>
               {t("writing.unlink")}
             </button>
+            {statusInActions && status}
           </>
         ) : (
           <>
@@ -222,6 +235,7 @@ export function EssayRow({
               aria-label={t("writing.docLinkAria", { n: index + 1 })}
               onBlur={(e) => e.target.value.trim() && onChange({ url: e.target.value.trim() })}
             />
+            {statusInActions && status}
             {pasteFailed && <span className="w-full text-xs text-urgent">{t("writing.pasteFailed")}</span>}
             {createFailed && <span className="w-full text-xs text-urgent">{t(GOOGLE_NOTICE.failed)}</span>}
           </>

@@ -44,7 +44,7 @@
       "2.50-2.99": 14.83,
       "2.0-2.49": 2.92
     },
-    "notes": "CDS C1 (fall 2025) gives applicants/admits/enrolled by gender only (summed); no residency or international split is published, so intl_applicants and intl_admits are null. B2 lists 74 nonresident undergraduates (all undergraduates incl. non-degree) and 13 nonresident first-time students. GPA distribution is the 'all enrolled' column of C11. No early decision or early action; no waitlist; rolling notification. SAT/ACT percentiles in C9 cover only the 246 SAT and 1,844 ACT submitters."
+    "notes": "From the Common Data Set (fall 2025): applicants, admits and enrolled are given by gender only (added together); no residency or international split is published, so no international admit rate is shown. The Common Data Set lists 74 nonresident undergraduates (all undergraduates, including non-degree) and 13 nonresident first-time students. The GPA breakdown is the 'all enrolled' column. No early decision or early action; no waitlist; rolling notification. SAT/ACT percentiles cover only the 246 SAT and 1,844 ACT submitters."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -81,7 +81,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. C8F: 2.50+ unweighted HS GPA needs no test; 2.00-2.49 GPA must submit a test and reach a Composite Admission Index of 60."
+    "notes": "Common Data Set (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. An unweighted HS GPA of 2.50+ needs no test; a GPA of 2.00-2.49 means the student must submit a test and reach a Composite Admission Index of 60."
   },
   "cost": {
     "year": "2025-2026",
@@ -94,6 +94,6 @@
     "intl_need_aid": null,
     "intl_need_aid_awarded": 45,
     "intl_avg_award_usd": 27705,
-    "notes": "CDS G1: WKU marked its 2026-27 costs not yet available and printed FINAL 2025-26 figures (tuition per year; required fees not readable in the CDS). International (nonresident) tuition $27,648 vs out-of-state $27,000. H6: institutional need-based AND non-need-based aid exists for nonresidents; 45 nonresident undergraduates received it (avg $27,705)."
+    "notes": "First-year costs from the Common Data Set: WKU marked its 2026-27 costs as not yet available and printed final 2025-26 figures (tuition per year; required fees not readable in the Common Data Set). International (nonresident) tuition $27,648 vs out-of-state $27,000. Institutional need-based and non-need-based aid both exist for nonresidents; 45 nonresident undergraduates received it (average $27,705)"
   }
 }

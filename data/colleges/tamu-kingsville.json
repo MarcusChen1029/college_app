@@ -50,7 +50,7 @@
       "2.0-2.49": 4,
       "1.0-1.99": 2
     },
-    "notes": "CDS C1 (fall 2024 first-years; the 2024-2025 edition is the newest on tamuk.edu/pes): 8,846 applied, 8,043 admitted (90.9%), 1,286 enrolled. International: 32 applied, 30 admitted, 5 enrolled; 6 applicants of unknown residency. No waitlist, no early decision or early action. GPA distribution is the 'all enrolled students' column (C11); average GPA 3.43 is C12. Class rank (C10, 94% reporting): top tenth 12%, top quarter 39%. SAT submitters 348 (27%), ACT 115 (9%). Undergraduate enrollment 5,386 and 72 nonresidents are B2 total undergraduates. Student-faculty ratio 18:1 is CDS I-2."
+    "notes": "From the Common Data Set (fall 2024 first-years; the 2024-2025 edition is the newest on tamuk.edu/pes): 8,846 applied, 8,043 admitted (90.9%), 1,286 enrolled. International: 32 applied, 30 admitted, 5 enrolled; 6 applicants of unknown residency. No waitlist, no early decision or early action. The GPA breakdown uses the 'all enrolled students' column; the average GPA is 3.43. Class rank (94% reporting): top tenth 12%, top quarter 39%. SAT scores were sent by 348 students (27%) and ACT scores by 115 (9%). Undergraduate enrollment is 5,386 and nonresidents number 72 (both total undergraduates). The student-faculty ratio is 18:1."
   },
   "scores_source": "cds",
   "scores": {
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2026): SAT or ACT 'not required for admission, but considered if submitted'. C8F: a composite ACT of 19 or a combined SAT of 1000 meets the admission requirement."
+    "notes": "From the Common Data Set (Fall 2026): SAT or ACT 'not required for admission, but considered if submitted'. It also says a composite ACT of 19 or a combined SAT of 1000 meets the admission requirement."
   },
   "cost": {
     "year": "2025-2026",
@@ -122,6 +122,6 @@
     "other_usd": 3322,
     "intl_need_aid_awarded": 17,
     "intl_avg_award_usd": 1522,
-    "notes": "CDS G1 (first-year, 2025-26; the CDS ticks that final 2025-26 costs were not yet available): in-state tuition $5,137, nonresident tuition $18,133, required fees $4,755, on-campus food and housing $10,823 (housing $6,400 + meal plan $4,423). G5 (residents): books $1,190, transportation $1,315, other $2,007 (other_usd = transportation + other). Per-credit-hour: $171 resident, $604 nonresident. H6: 17 degree-seeking nonresident undergraduates received institutional aid, average $1,522 (total $25,867)."
+    "notes": "From the Common Data Set (first-year, 2025-26; it ticks that final 2025-26 costs were not yet available): in-state tuition $5,137, nonresident tuition $18,133, required fees $4,755, on-campus food and housing $10,823 (housing $6,400 + meal plan $4,423). Estimated expenses for residents: books $1,190, transportation $1,315, other $2,007 (transportation and other are counted together as other costs). Per-credit-hour: $171 resident, $604 nonresident. 17 degree-seeking nonresident undergraduates received institutional aid, average $1,522 (total $25,867)"
   }
 }

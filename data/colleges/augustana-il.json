@@ -55,7 +55,7 @@
       "2.50-2.99": 15.5,
       "2.0-2.49": 1.64
     },
-    "notes": "Fall 2025 entering class (CDS C1 residency table: international 2,618 applied, 1,328 admitted, 139 enrolled). Early decision figures (93 applied, 87 admitted) are labelled 'Fall 2024 entering class' in CDS C21. GPA distribution is the 'all enrolled students' column of C11. The C7 factor checkboxes and C8A test-policy boxes did not extract from the PDF text, so factors are omitted; the test policy comes from the admissions site. Undergraduate enrollment 2,536 is B1 total undergraduates; international 507 is the B2 nonresident total-undergraduates column."
+    "notes": "Fall 2025 entering class (Common Data Set residency table: international 2,618 applied, 1,328 admitted, 139 enrolled). Early decision figures (93 applied, 87 admitted) are labelled 'Fall 2024 entering class' in the Common Data Set. The GPA breakdown is the 'all enrolled students' column. The admission-factor and test-policy checkboxes could not be read from the PDF text, so admission factors are not shown; the test policy comes from the admissions site. Undergraduate enrollment is 2,536 (total undergraduates); international undergraduates number 507 (the nonresident total)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -101,6 +101,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 506,
     "intl_avg_award_usd": 39902,
-    "notes": "CDS G1 (first-year, 2026-27): tuition $53,186, required fees $160, housing $6,440 + food $6,422 = $12,862; comprehensive $66,208. Private college with one tuition rate. CDS H6: 506 degree-seeking nonresidents were awarded institutional aid (need- or non-need-based), average $39,902."
+    "notes": "First-year costs from the Common Data Set (2026-27): tuition $53,186, required fees $160, housing $6,440 + food $6,422 = $12,862; comprehensive $66,208. Private college with one tuition rate. 506 degree-seeking nonresidents were awarded aid from the college (need- or non-need-based), average $39,902"
   }
 }

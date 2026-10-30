@@ -58,7 +58,7 @@
       "2.0-2.49": 0.0,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1-C2 (fall 2025 entering class): in-state 8,988 / out-of-state 22,358 / international 1,578 applicants. International admit rate is far lower than the overall rate (182 of 1,578 admitted); the CDS does not explain why. The GPA distribution is the only column UA filled in (students who submitted test scores) and the CDS does not say whether GPAs are weighted. Undergrad enrollment and nonresident count are the B1 'Total Undergraduates' column (29,252; nonresident 362). Student-to-faculty ratio 20:1 is from College Navigator. Waitlist and early-plan data not read."
+    "notes": "From the Common Data Set (fall 2025 entering class): in-state 8,988 / out-of-state 22,358 / international 1,578 applicants. The international admit rate is far lower than the overall rate (182 of 1,578 admitted); the Common Data Set does not explain why. The GPA breakdown is the only column UA filled in (students who submitted test scores) and the Common Data Set does not say whether GPAs are weighted. Undergraduate enrollment and the nonresident count are the 'Total Undergraduates' column (29,252; nonresident 362). Student-to-faculty ratio 20:1 is from College Navigator. Waitlist and early-plan data are not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -102,6 +102,6 @@
     "room_board_usd": 15694,
     "books_usd": 1270,
     "other_usd": 3452,
-    "notes": "CDS G1/G5 (first-year, 2026-27): in-state tuition $8,336; out-of-state/non-resident tuition $30,604 (international students pay the non-resident rate); required fees $2,580; housing $10,144 + food $5,550; other expenses $3,452 and transportation $2,656 (not included in other_usd)."
+    "notes": "First-year costs from the Common Data Set (2026-27): in-state tuition $8,336; out-of-state/non-resident tuition $30,604 (international students pay the non-resident rate); required fees $2,580; housing $10,144 + food $5,550; other expenses $3,452 and transportation $2,656 (not included in other costs)"
   }
 }

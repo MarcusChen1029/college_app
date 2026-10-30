@@ -8,5 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function ShareLayout({ children }: LayoutProps<"/share">) {
-  return <div className="mx-auto w-full max-w-4xl px-4 pb-24 pt-8 print:p-0">{children}</div>;
+  // The site's own frame (the header's and footer's max-w-7xl), so the page shares their two margins.
+  return <div className="mx-auto w-full max-w-7xl px-4 pb-24 pt-8 sm:px-8 print:p-0">{children}</div>;
 }

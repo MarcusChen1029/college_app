@@ -44,7 +44,7 @@
       "2.0-2.49": 8.68,
       "1.0-1.99": 0.92
     },
-    "notes": "CDS C1 (fall 2025): applicants, admits and enrollees are the sums of the men, women and unknown-sex rows (6,243+7,187+73 applied; 4,811+5,560+56 admitted; 1,056+1,087+26 enrolled). The residency table gives only enrollees: 2,004 in-state, 140 out-of-state, 25 international; applicants and admits by residency are blank, so intl_applicants/intl_admits are null. GPA distribution is the 'all enrolled students' column (0.05% below 1.0 not shown). Undergrad enrollment is B1 'Total All Undergraduates' (11,691); intl_undergrads is B2 nonresident-alien total undergraduates (226; 215 degree-seeking). CDS C8F: 'The University of Akron is test optional.' Class rank was reported by only 15.1% of first-years."
+    "notes": "From the Common Data Set (fall 2025): applicants, admits and enrollees are the sums of the men, women and unknown-sex counts (6,243+7,187+73 applied; 4,811+5,560+56 admitted; 1,056+1,087+26 enrolled). The residency table gives only enrollees: 2,004 in-state, 140 out-of-state, 25 international. Akron did not report applicants or admits by residency, so no international admit rate is shown. The GPA breakdown is the 'all enrolled students' column (0.05% below 1.0 not shown). Undergraduate enrollment is 11,691 (all undergraduates); international undergraduates number 226 (215 degree-seeking), counted as nonresident aliens. Test policy: 'The University of Akron is test optional.' Class rank was reported by only 15.1% of first-years."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -101,7 +101,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; C8F: 'The University of Akron is test optional.'"
+    "notes": "From the Common Data Set (Fall 2027): 'The University of Akron is test optional.' SAT or ACT is 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -115,6 +115,6 @@
     "other_usd": 1628,
     "intl_need_aid_awarded": 200,
     "intl_avg_award_usd": 9112,
-    "notes": "CDS G1/G5 (full 2026-27 year, first-year): nonresident and international tuition $19,216 (in-state $11,536) plus $2,400 required fees; food and housing $13,396; books $1,200; transportation $2,000 (residents) is not included in other. CDS H6: institutional NON-need-based aid is available to nonresident aliens; 200 received it (avg $9,112, total $1,822,425; the form flags aid year 2023). The International Center's own estimate (2025-26 rates) is $21,585 tuition and fees, $13,317 room and board, $1,328 health insurance, $2,559 books and personal expenses, total $38,789."
+    "notes": "First-year costs from the Common Data Set (full 2026-27 year): nonresident and international tuition $19,216 (in-state $11,536) plus $2,400 required fees; food and housing $13,396; books $1,200. Transportation $2,000 (residents) is not included in other costs. Non-need-based aid from the college is available to nonresident aliens; 200 received it (avg $9,112, total $1,822,425; the form flags aid year 2023). The International Center's own estimate (2025-26 rates) is $21,585 tuition and fees, $13,317 room and board, $1,328 health insurance, $2,559 books and personal expenses, total $38,789"
   }
 }

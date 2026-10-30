@@ -58,7 +58,7 @@
       "2.0-2.49": 1.1,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 (fall 2025 entering class). International: 1,086 applied, 976 admitted. SAT scores were submitted by 9% (600) and ACT by 48% (3,357) of enrollees. Undergrad enrollment and nonresident count are the B1 'Total Undergraduates' column (27,386; nonresident 372). Student-to-faculty ratio 18:1 is from College Navigator. Waitlist and early-plan data not read."
+    "notes": "From the Common Data Set (fall 2025 entering class). International: 1,086 applied, 976 admitted. 9% (600) of enrollees sent SAT scores and 48% (3,357) sent ACT scores. Undergraduate enrollment is 27,386 (all undergraduates), of whom 372 are nonresident. Student-to-faculty ratio 18:1 is from College Navigator. Waitlist and early-plan data are not shown."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -102,6 +102,6 @@
     "room_board_usd": 17048,
     "books_usd": 1200,
     "other_usd": 3240,
-    "notes": "CDS G1/G5 (first-year, 2026-27): in-state tuition $12,714; out-of-state/non-resident tuition $34,383 (international students pay the non-resident rate); required fees $1,463; housing $11,700 + food $5,348; books $1,200; other expenses $3,240 and transportation $2,592-$2,756 (not included in other_usd)."
+    "notes": "From the Common Data Set (first-year, 2026-27): in-state tuition $12,714; out-of-state/non-resident tuition $34,383 (international students pay the non-resident rate); required fees $1,463; housing $11,700 + food $5,348; books $1,200; other expenses $3,240 and transportation $2,592-$2,756 (not included in other costs)"
   }
 }

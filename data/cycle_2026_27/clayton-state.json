@@ -63,7 +63,7 @@
       "kind": "application",
       "due": "2027-07-15",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Deadline page prints 'Fall: July 15' for international applicants without a year (treated as fall 2027); late or incomplete applications are deferred to the following year. Spring deadline Nov. 15; international F-1 students cannot apply for summer terms. For comparison, domestic full-term fall dates are priority July 15 and regular Aug. 1.",
+      "notes": "The deadline page gives 'Fall: July 15' for international applicants without a year, so fall 2027 is assumed; late or incomplete applications are deferred to the following year. Spring deadline Nov. 15; international F-1 students cannot apply for summer terms. For comparison, domestic full-term fall dates are priority July 15 and regular Aug. 1.",
       "src": "dates"
     }
   ],
@@ -111,7 +111,7 @@
     "required_fees_usd": 1116,
     "room_board_usd": 12226,
     "books_usd": 1250,
-    "notes": "Clayton State financial aid 2026-27 cost of attendance, on campus: Georgia resident tuition $5,280, non-resident $20,400, fees $1,116, housing + food $12,226, books $1,250, transportation $1,385, personal $4,405; page totals $25,742 in-state and $40,862 out-of-state (incl. an $80 loan fee). International F-1/J-1 students are classed as non-residents for tuition (International Student Services page), so the international figure uses the non-resident tuition.",
+    "notes": "Clayton State financial aid 2026-27 cost of attendance, on campus: Georgia resident tuition $5,280, non-resident $20,400, fees $1,116, housing + food $12,226, books $1,250, transportation $1,385, personal $4,405; page totals $25,742 in-state and $40,862 out-of-state (incl. an $80 loan fee). International F-1/J-1 students are classed as non-residents for tuition (International Student Services page), so the international figure uses the non-resident tuition",
     "src": "coa"
   },
   "aid": {

@@ -81,7 +81,7 @@ function TaskList() {
                 <input type="checkbox" className="mt-1 size-4 shrink-0" checked={t.done} onChange={(e) => void toggle(t, e.target.checked)} />
                 <span className="min-w-0">
                   <span className={`block font-medium [overflow-wrap:anywhere] ${t.done ? "text-zinc-500 line-through" : ""}`}>{t.title}</span>
-                  <span className="block text-xs text-zinc-500">{tr("application.tasks.from", { name: t.teacherName })}</span>
+                  <span className="block text-[13px] text-zinc-500">{tr("application.tasks.from", { name: t.teacherName })}</span>
                   {t.details && <span className="mt-1 block text-sm whitespace-pre-line text-zinc-600 [overflow-wrap:anywhere]">{t.details}</span>}
                 </span>
               </label>

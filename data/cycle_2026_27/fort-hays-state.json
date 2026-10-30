@@ -55,7 +55,7 @@
    "kind": "application",
    "due": "2027-06-01",
    "label": "Fall 2027 on-campus international application deadline",
-   "notes": "Last day to submit a completed application including all admission documents. The page prints June 1 without a year; treated as 2027. Spring 2028 entry: Nov. 1 (the same page also prints Oct. 1 once). Summer is not permitted for on-campus international students.",
+   "notes": "Last day to submit a completed application including all admission documents. The page gives June 1 without a year, so 2027 is assumed. Spring 2028 entry: Nov. 1 (the same page also prints Oct. 1 once). Summer is not permitted for on-campus international students.",
    "src": "dates"
   },
   {
@@ -99,7 +99,7 @@
   "books_usd": 700,
   "other_usd": 4190,
   "total_coa_usd": 30239,
-  "notes": "FHSU international undergraduate estimate (12 credits per semester): tuition and fees $15,624 ($651 per credit before the July 1 final rate, entered as one combined figure); McMindes Hall room and board $9,725; mandatory health insurance $3,000, miscellaneous $1,000, orientation/registration $150, housing contract fee $40 (together $4,190, entered as other); books $700; total $30,239. Figures are provisional until July.",
+  "notes": "FHSU international undergraduate estimate (12 credits per semester): tuition and fees $15,624 ($651 per credit before the July 1 final rate, entered as one combined figure); McMindes Hall room and board $9,725; mandatory health insurance $3,000, miscellaneous $1,000, orientation/registration $150, housing contract fee $40 (together $4,190, entered as other); books $700; total $30,239. Figures are provisional until July",
   "src": "cost"
  },
  "aid": {

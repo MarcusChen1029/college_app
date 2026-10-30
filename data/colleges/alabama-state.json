@@ -40,7 +40,7 @@
     "enrolled": 1056,
     "pct_submit_sat": 1,
     "pct_submit_act": 34,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). Alabama State's institutional data page links Common Data Sets only through 2021-2022, so no CDS is used: international applicants/admits, GPA, SAT total and admission factors are not included. College Navigator prints 98% admitted. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 1%, ACT 34%), so the SAT range rests on very few students; no 50th percentiles are printed. Undergraduate enrollment 3,521 and nonresident-alien undergraduates 87 are IPEDS fall 2024 enrollment."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024): percentages from College Navigator, exact counts from the NCES file via the Urban Institute Education Data Portal. Alabama State's institutional data page links Common Data Sets only through 2021-2022, so no Common Data Set is used, and international applicants and admits, GPA, SAT total and admission factors are not shown. College Navigator prints 98% admitted. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 1%, ACT 34%), so the SAT range rests on very few students; no 50th percentiles are printed. Undergraduate enrollment 3,521 and nonresident-alien undergraduates 87 are IPEDS fall 2024 enrollment."
   },
   "scores": {
     "SAT_ERW": [
@@ -68,6 +68,6 @@
     "other_usd": 3392,
     "total_coa_usd": 24056,
     "tuition_out_of_state_usd": 19576,
-    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus cost of attendance for Alabama residents ($32,384 total at the out-of-state tuition rate). The university's tuition page for 2024-25 prints $11,068 in-state / $19,936 out-of-state tuition and fees; international students pay the out-of-state rate."
+    "notes": "College Navigator 2024-25: tuition includes required fees; on-campus cost of attendance for Alabama residents ($32,384 total at the out-of-state tuition rate). The university's tuition page for 2024-25 prints $11,068 in-state / $19,936 out-of-state tuition and fees; international students pay the out-of-state rate"
   }
 }

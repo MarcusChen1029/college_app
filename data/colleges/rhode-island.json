@@ -55,7 +55,7 @@
       "2.50-2.99": 7,
       "2.0-2.49": 1
     },
-    "notes": "CDS C1 (fall 2025 entering class). International: 553 applied, 411 admitted (74%), 34 enrolled; overall admit rate 75%. 'Enrolled' is the C1 total of first-time, first-year students (3,431, full- plus part-time). GPA distribution is the 'all enrolled students' column of C11. SAT scores are submitted by only 23% of enrollees (test-optional); CDS lists ED (Nov 1) applicants 202 / admitted 150 in C21. Undergrad enrollment is B1 total undergraduates (14,466); intl_undergrads is the B1 total nonresident-alien undergraduates (178)."
+    "notes": "From the Common Data Set (fall 2025 entering class). International: 553 applied, 411 admitted (74%), 34 enrolled; overall admit rate 75%. 'Enrolled' is the total of first-time, first-year students (3,431, full- plus part-time). The GPA breakdown is the 'all enrolled students' column. SAT scores are submitted by only 23% of enrollees (test-optional); the Common Data Set lists ED (Nov 1) applicants 202 / admitted 150. Undergraduate enrollment is 14,466 (total undergraduates); international undergraduates number 178 (total nonresident-alien undergraduates)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -102,7 +102,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8: students are not required to submit standardized test scores; scores are used for placement and considered if submitted."
+    "notes": "Common Data Set: students are not required to submit standardized test scores; scores are used for placement and considered if submitted."
   },
   "cost": {
     "year": "2026-2027",
@@ -117,6 +117,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 126,
     "intl_avg_award_usd": 26565,
-    "notes": "CDS G1 (first-year, 2026-27; room-only $9,470, board-only $5,600). CDS H6: only institutional non-need-based aid is available to nonresidents; 126 nonresident undergraduates received it, average $26,565. URI's international page says merit awards have historically ranged $8,750 to $15,000 per year (those are first-year awards; the H6 average covers all years and may include other awards)."
+    "notes": "From the Common Data Set (first-year, 2026-27; room-only $9,470, board-only $5,600). Only the college's own non-need-based aid is available to nonresidents; 126 nonresident undergraduates received it, average $26,565. URI's international page says merit awards have historically ranged $8,750 to $15,000 per year (those are first-year awards; the average above covers all years and may include other awards)"
   }
 }

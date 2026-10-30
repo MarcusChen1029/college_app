@@ -51,7 +51,7 @@
       "2.0-2.49": 1.27,
       "1.0-1.99": 0.0
     },
-    "notes": "Fall 2025 entering class. International first-year applicants 712, admitted 671, enrolled 14 (C1 residency table). A further 1,013 applicants of unknown residency were not admitted and are not in the in-state/out-of-state/international columns. The all-enrolled GPA column in C11 sums to 95.83% as reported by Murray State. Undergraduate total 8,217 and nonresident-alien undergraduates 760 are from CDS B1/B2."
+    "notes": "Fall 2025 entering class. International first-year applicants 712, admitted 671, enrolled 14 (Common Data Set residency table). A further 1,013 applicants of unknown residency were not admitted and are not in the in-state/out-of-state/international columns. The all-enrolled GPA column sums to 95.83% as reported by Murray State. Undergraduate total 8,217 and nonresident-alien undergraduates 760 are from the Common Data Set."
   },
   "scores": {
     "SAT_ERW": [
@@ -101,7 +101,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS 2025-2026 C8A: SAT/ACT are considered in admission decisions; Murray State's admissions page calls its process test-optional."
+    "notes": "Common Data Set 2025-2026: SAT/ACT are considered in admission decisions; Murray State's admissions page calls its process test-optional."
   },
   "cost": {
     "year": "2026-2027",
@@ -109,6 +109,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 642,
     "intl_avg_award_usd": 10874,
-    "notes": "CDS 2025-2026 H6: only institutional non-need-based aid is available to nonresidents; 642 undergraduate nonresidents received it (average $10,874, total $6,980,824). CDS G1 tuition fields were blank, so tuition and costs come from Murray State's international costs page."
+    "notes": "Common Data Set 2025-2026: only the college's own non-need-based aid is available to nonresidents; 642 undergraduate nonresidents received it (average $10,874, total $6,980,824). Murray State did not report tuition in the Common Data Set, so tuition and costs come from Murray State's international costs page"
   }
 }

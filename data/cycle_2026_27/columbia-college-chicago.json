@@ -74,7 +74,7 @@
    "plan": "ROLLING",
    "due": "2027-01-15",
    "label": "Application, transcripts and audition/portfolio materials for priority admission and scholarship review (all other programs)",
-   "notes": "Rolling review continues after this date. The 2025-26 CDS (C14) lists Aug. 1 as the fall application closing date; the current timeline page does not restate a closing date.",
+   "notes": "Rolling review continues after this date. The 2025-26 Common Data Set lists Aug. 1 as the fall application closing date; the current timeline page does not restate a closing date.",
    "src": "time"
   },
   {
@@ -130,7 +130,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "International students are automatically considered for the renewable Columbia Excellence Award by high school GPA: 3.75+ $12,500; 3.30-3.74 $10,500; 3.00-3.29 $8,500 (amounts as printed on the international page). A competitive, renewable talent-based scholarship (up to four years) needs creative work samples in the intended major. The FAFSA is US citizens and permanent residents only. CDS H6 marks both need-based and non-need-based institutional aid as available to nonresidents, but the international page describes only merit and talent awards.",
+  "notes": "International students are automatically considered for the renewable Columbia Excellence Award by high school GPA: 3.75+ $12,500; 3.30-3.74 $10,500; 3.00-3.29 $8,500 (amounts as printed on the international page). A competitive, renewable talent-based scholarship (up to four years) needs creative work samples in the intended major. The FAFSA is US citizens and permanent residents only. The Common Data Set marks both need-based and non-need-based institutional aid as available to nonresidents, but the international page describes only merit and talent awards.",
   "src": "intl"
  },
  "majors": [
@@ -209,6 +209,6 @@
   "arts_design": "C"
  },
  "tier_notes": {
-  "arts_design": "Editorial estimate: a large urban arts and media college with well-known film, audio, fashion and performance programs; no ranking cited, so placed in the 41-100 band."
+  "arts_design": "Our estimate: a large urban arts and media college with well-known film, audio, fashion and performance programs; no ranking cited, so placed in the 41-100 band."
  }
 }

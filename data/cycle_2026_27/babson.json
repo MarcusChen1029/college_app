@@ -33,7 +33,7 @@
   "teacher_recs": 1,
   "counselor_rec": true,
   "css_profile_required": true,
-  "notes": "Common App personal statement plus two Babson supplemental essays; one counselor and one teacher recommendation. The deadlines page lists CSS Profile aid deadlines (Nov 15 for ED I/EA, Feb 1 for ED II/RD); international applicants seeking need-based aid (Global Scholars) must submit the CSS Profile. Deadline pages do not print the entry year; dates are treated as the fall 2027 cycle. Interview policy not confirmed on pages checked.",
+  "notes": "Common App personal statement plus two Babson supplemental essays; one counselor and one teacher recommendation. The deadlines page lists CSS Profile aid deadlines (Nov 15 for ED I/EA, Feb 1 for ED II/RD); international applicants seeking need-based aid (Global Scholars) must submit the CSS Profile. Deadline pages do not print the entry year, so the dates are assumed to be for the fall 2027 cycle. Interview policy not confirmed on pages checked.",
   "src": "apply"
  },
  "deadlines": [

@@ -42,7 +42,7 @@
     "cds_year": "2023-2024",
     "source": "ipeds_adm2023",
     "applicants": 3161,
-    "notes": "Baseline from IPEDS via College Navigator, fall 2024 first-time applicants: 4,068 applied and 83% were admitted (percent only; the admit count is not computed from the rounded percentage). No Common Data Set for UW Tacoma could be found (the UW Seattle institutional data pages cover Seattle only), so admits, enrolled, international counts, GPA and test figures are left null. Undergraduate enrollment 4,207 and student-to-faculty ratio 15:1 are from College Navigator (fall 2024). UW Tacoma does not use SAT/ACT in its admission review, so no test-score percentiles are listed. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator, fall 2024 first-time applicants: 4,068 applied and 83% were admitted (percent only; the admit count is not computed from the rounded percentage). No Common Data Set for UW Tacoma could be found (the UW Seattle institutional data pages cover Seattle only), so international counts, GPA and test figures are not shown. Undergraduate enrollment 4,207 and student-to-faculty ratio 15:1 are from College Navigator (fall 2024). UW Tacoma does not use SAT/ACT in its admission review, so no test-score percentiles are listed. Applicant, admit and enrolled counts were replaced with exact IPEDS figures (fall 2023), because the newer source gives only a rounded admit rate.",
     "admits": 2622,
     "enrolled": 666
   },

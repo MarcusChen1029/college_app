@@ -34,7 +34,7 @@
  },
  "test_policy": {
   "policy": "blind",
-  "notes": "The CSU system no longer uses SAT/ACT in admission decisions; College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)'. CSUN's own CDS C8A check box could not be read reliably. Eligibility for international freshmen is based on a converted GPA of 3.0 or higher.",
+  "notes": "The CSU system no longer uses SAT/ACT in admission decisions; College Navigator (IPEDS fall 2024 admissions) lists SAT/ACT as 'Not considered (Test Blind)'. CSUN's own Common Data Set check box could not be read reliably. Eligibility for international freshmen is based on a converted GPA of 3.0 or higher.",
   "src": "nav"
  },
  "requirements": {
@@ -50,14 +50,14 @@
    "kind": "application",
    "due": "2027-05-15",
    "label": "International first-year application deadline, Cal State Apply (fall 2027)",
-   "notes": "Fall 2027 filing period is Aug 1, 2026 to May 15, 2027 (the page does not repeat the year; treated as 2027). Impacted majors close earlier: Music Jan 15, 2027; Cinema and Television Arts Film Production and Television Production Jan 31, 2027. CSUN notes international applicants may have different deadlines from domestic ones.",
+   "notes": "Fall 2027 filing period is Aug 1, 2026 to May 15, 2027 (the page does not repeat the year, so 2027 is assumed). Impacted majors close earlier: Music Jan 15, 2027; Cinema and Television Arts Film Production and Television Production Jan 31, 2027. CSUN notes international applicants may have different deadlines from domestic ones.",
    "src": "dates"
   },
   {
    "kind": "other",
    "due": "2027-06-15",
    "label": "International document deadline (fall applicants)",
-   "notes": "Page gives 'June 15' for fall international document deadlines without a year; treated as 2027.",
+   "notes": "Page gives 'June 15' for fall international document deadlines without a year, so 2027 is assumed.",
    "src": "dates"
   },
   {
@@ -131,7 +131,7 @@
   "tuition_out_of_state_usd": 20968,
   "tuition_intl_usd": 20968,
   "required_fees_usd": 1490,
-  "notes": "Computed from published rates: basic tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees = campus fees $745 per semester (Associated Students 135, Student Union 368, IRA 25, Health Facilities 3, Health Services 82, Campus Quality 132) twice. Housing, food, books and insurance not added because no international budget was found.",
+  "notes": "Computed from published rates: basic tuition $3,419 per semester (6.1+ units) twice, plus the nonresident charge of $471 per unit for an assumed 30 units a year ($14,130). Required fees = campus fees $745 per semester (Associated Students 135, Student Union 368, IRA 25, Health Facilities 3, Health Services 82, Campus Quality 132) twice. Housing, food, books and insurance not added because no international budget was found",
   "src": "fees"
  },
  "majors": [
@@ -169,6 +169,6 @@
   "arts_design": "D"
  },
  "tier_notes": {
-  "general": "Large Los Angeles public (about 32,500 undergraduates) that admits roughly 93% of applicants and has no test requirement; D+ is an editorial judgment, not a ranking."
+  "general": "Large Los Angeles public (about 32,500 undergraduates) that admits roughly 93% of applicants and has no test requirement; D+ is our estimate, not a ranking."
  }
 }

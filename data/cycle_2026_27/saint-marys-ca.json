@@ -45,7 +45,7 @@
    "plan": "EA",
    "due": "2026-11-01",
    "label": "Fall term Early Action (fall 2027 entry)",
-   "notes": "Non-binding. The page prints Nov. 1 without a year; taken as fall 2027 entry. Same dates are listed on the international page.",
+   "notes": "Non-binding. The page prints Nov. 1 without a year, so fall 2027 entry is assumed. Same dates are listed on the international page.",
    "src": "intl"
   },
   {
@@ -53,7 +53,7 @@
    "plan": "RD",
    "due": "2027-01-15",
    "label": "Fall term Regular Decision (fall 2027 entry)",
-   "notes": "The page prints Jan. 15 without a year; taken as fall 2027 entry. A Dec. 1 deadline is also listed for spring term.",
+   "notes": "The page prints Jan. 15 without a year, so fall 2027 entry is assumed. A Dec. 1 deadline is also listed for spring term.",
    "src": "intl"
   }
  ],

@@ -37,6 +37,23 @@ export function weekdayDate(date: string): string {
   return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
 }
 
+/**
+ * A short date in the reader's language: "Nov 2" (en) / "11月2日" (zh-TW), with the year only when it isn't `now`'s.
+ * Takes a yyyy-mm-dd day (read as that calendar day) or an ISO timestamp (read in local time). Bad input comes back as is.
+ */
+export function shortDate(value: string, locale: string, now: Date = new Date()): string {
+  const plain = /^\d{4}-\d{2}-\d{2}$/.test(value);
+  const d = plain ? new Date(`${value}T00:00:00Z`) : new Date(value);
+  if (Number.isNaN(d.getTime())) return value;
+  const year = plain ? d.getUTCFullYear() : d.getFullYear();
+  return d.toLocaleDateString(locale === "en" ? "en-US" : locale, {
+    month: "short",
+    day: "numeric",
+    ...(year !== now.getFullYear() ? { year: "numeric" } : {}),
+    ...(plain ? { timeZone: "UTC" } : {}),
+  });
+}
+
 // ───────── roster rows ─────────
 
 export type RosterRow = {

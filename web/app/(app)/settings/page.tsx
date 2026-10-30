@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: "Settings" };
 
 export default function Page() {
   return (
-    <div className="max-w-3xl">
+    <div data-app-screen className="max-w-3xl">
       <SettingsPage />
     </div>
   );

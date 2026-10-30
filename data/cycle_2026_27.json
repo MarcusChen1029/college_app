@@ -387,7 +387,7 @@
       "room_board_usd": 23192,
       "books_usd": 1000,
       "other_usd": 2500,
-      "notes": "Housing $14,250 + food $8,942. Transportation $0–5,000 extra.",
+      "notes": "Housing $14,250 + food $8,942. Transportation $0–5,000 extra",
       "src": "cost"
     },
     "aid": {
@@ -1046,7 +1046,7 @@
       },
       "toefl": {
         "code": null,
-        "note": "Admissions pages say TOEFL/IELTS can be self-reported; no first-year TOEFL code published. A Digital Media program page (https://dm.lmc.gatech.edu/admissions/international-students/) lists 'Georgia Tech Institution Code #5248 LMC', which is program-specific, so left null.",
+        "note": "Admissions pages say TOEFL/IELTS can be self-reported; no first-year TOEFL code is published. A Digital Media program page (https://dm.lmc.gatech.edu/admissions/international-students/) lists 'Georgia Tech Institution Code #5248 LMC', which is program-specific, so it is not shown.",
         "src": "codes2"
       },
       "ielts": {
@@ -1695,7 +1695,7 @@
       "tuition_usd": 18214,
       "room_board_usd": 16640,
       "total_coa_usd": 54674,
-      "notes": "Tuition & fees for the newest cohort; nonresidents (incl. international) add Nonresident Supplemental Tuition of $39,270. Housing in a residence hall; health insurance $5,066 extra. Total shown is the California-resident cost of attendance.",
+      "notes": "Tuition & fees for the newest cohort; nonresidents (incl. international) add Nonresident Supplemental Tuition of $39,270. Housing in a residence hall; health insurance $5,066 extra. Total shown is the California-resident cost of attendance",
       "src": "cost",
       "tuition_out_of_state_usd": 57484,
       "tuition_intl_usd": 57484

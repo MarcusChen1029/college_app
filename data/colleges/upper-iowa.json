@@ -47,7 +47,7 @@
     "enrolled": 148,
     "pct_submit_sat": 2,
     "pct_submit_act": 13,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Upper Iowa's website or in web search. Counts from the IPEDS ADM2024 file (via the Urban Institute API mirror): 452 applicants, 436 admitted, 148 enrolled (all full-time). College Navigator shows 2% of enrollees submitting SAT (3 students, no SAT percentiles reported) and 13% submitting ACT (19 students); ACT percentiles rest on that small group. International applicant counts, GPA and class rank are not published. Undergraduate enrollment (3,054, fall 2024) includes online and regional-center students, not only the Fayette campus."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found on Upper Iowa's website or in web search. Counts are from the IPEDS admissions file (via the Urban Institute API mirror): 452 applicants, 436 admitted, 148 enrolled (all full-time). College Navigator shows 2% of enrollees sending SAT scores (3 students, no SAT percentiles reported) and 13% sending ACT scores (19 students); ACT percentiles rest on that small group. International applicant counts, GPA and class rank are not published. Undergraduate enrollment (3,054, fall 2024) includes online and regional-center students, not only the Fayette campus."
   },
   "scores": {
     "ACT_COMPOSITE": [

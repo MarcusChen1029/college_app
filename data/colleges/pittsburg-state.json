@@ -49,7 +49,7 @@
       "2.0-2.49": 5.62,
       "1.0-1.99": 1.08
     },
-    "notes": "CDS 2024-2025, Fall 2024 first-time first-year class. C1 residency split: in-state 2,439 applied / 2,094 admitted; out-of-state 1,515 / 1,349; international 131 / 122 (enrolled split by residency was not reported). The enrolled figure 897 is the sum of full-time and part-time enrollees in C1. IPEDS (College Navigator) shows 3,138 applicants and 2,806 admits for the same fall, so the two sources differ. 64% (572 students) submitted ACT; no SAT scores reported. GPA distribution is the 'all enrolled students' column of C11. Undergraduate enrollment 4,491 and nonresident undergraduates 133 are the B1 'Total undergraduates' column (degree- and non-degree-seeking)."
+    "notes": "Common Data Set 2024-2025, Fall 2024 first-time first-year class. Residency split: in-state 2,439 applied / 2,094 admitted; out-of-state 1,515 / 1,349; international 131 / 122 (the enrolled split by residency was not reported). The enrolled figure 897 is the sum of full-time and part-time enrollees. IPEDS (College Navigator) shows 3,138 applicants and 2,806 admits for the same fall, so the two sources differ. 64% (572 students) sent ACT scores; no SAT scores were reported. The GPA breakdown is the 'all enrolled students' column. Undergraduate enrollment is 4,491 and nonresident undergraduates number 133, both from the 'Total undergraduates' column (degree- and non-degree-seeking)."
   },
   "scores": {
     "ACT_COMPOSITE": [

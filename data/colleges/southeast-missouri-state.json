@@ -50,7 +50,7 @@
       "2.0-2.49": 3.24,
       "1.0-1.99": 1.16
     },
-    "notes": "CDS C1 (fall 2025 first-time first-year): 10,541 applicants, 8,063 admitted, 1,307 enrolled. International: 3,214 applied, 1,637 admitted (about 51%, much lower than the 76% overall rate), 107 enrolled. GPA distribution is the 'all enrolled students' column of C11 (0.15% below 1.0 not shown). No early decision/action and no waitlist. Percentiles: SAT 8% (111 students) and ACT 56% (729) of enrolled first-years submitted scores; ACT Reading 19/23/28 and Science 18/21/24 are not stored. Undergraduate enrollment 7,682 and 442 nonresident undergraduates are the B1/B2 'Total Undergraduates' figures."
+    "notes": "From the Common Data Set (fall 2025 first-time first-year): 10,541 applicants, 8,063 admitted, 1,307 enrolled. International: 3,214 applied, 1,637 admitted (about 51%, much lower than the 76% overall rate), 107 enrolled. The GPA breakdown is the 'all enrolled students' column (0.15% below 1.0 not shown). No early decision/action and no waitlist. Percentiles: SAT 8% (111 students) and ACT 56% (729) of enrolled first-years submitted scores; ACT Reading 19/23/28 and Science 18/21/24 are not shown. Undergraduate enrollment 7,682 and 442 nonresident undergraduates are the 'Total Undergraduates' figures."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: 'Test optional'. (The C8A form field for SAT/ACT is set to 'recommended'.)"
+    "notes": "Test policy from the Common Data Set: 'Test optional'. (The form's SAT/ACT field is set to 'recommended'.)"
   },
   "cost": {
     "year": "2026-2027",
@@ -119,6 +119,6 @@
     "room_board_usd": 12150,
     "intl_merit_aid": true,
     "intl_avg_award_usd": 8011,
-    "notes": "CDS G1 (first-year, 2026-27): domestic/in-state and out-of-state US tuition $9,150, nonresident (international) tuition $18,000, required fees $1,410, food and housing $12,150. H6: 467 nonresident undergraduates received institutional aid, average $8,011 (the need-based/non-need-based boxes could not be read reliably). SEMO's cost page shows $600 per credit hour for international students ($19,410 with fees for 30 hours), housing $8,450 + meals $3,570, and a total estimate of $34,452.20 on campus ($29,391 off campus); that page's housing and meals total $12,020 vs the CDS $12,150."
+    "notes": "From the Common Data Set (first-year, 2026-27): domestic/in-state and out-of-state US tuition $9,150, nonresident (international) tuition $18,000, required fees $1,410, food and housing $12,150. Aid: 467 nonresident undergraduates received institutional aid, average $8,011 (the need-based/non-need-based boxes could not be read reliably). SEMO's cost page shows $600 per credit hour for international students ($19,410 with fees for 30 hours), housing $8,450 + meals $3,570, and a total estimate of $34,452.20 on campus ($29,391 off campus); that page's housing and meals total $12,020 vs $12,150 in the Common Data Set"
   }
 }

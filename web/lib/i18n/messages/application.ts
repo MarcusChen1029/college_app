@@ -34,6 +34,7 @@ export const en = {
 
   // Empty list
   "application.emptyTitle": "Your list is empty",
+  "application.openMyList": "Open My list",
   "application.emptyBody": "Add the colleges you're applying to. Each one gets its own checklist and deadlines.",
 
   // Table
@@ -183,7 +184,7 @@ export const en = {
   // Interested
   "application.int.emptyTitle": "Nothing here yet",
   "application.int.emptyPre": "On any college's page, tap ",
-  "application.int.emptyStar": "☆ Interested",
+  "application.int.emptyStar": "Interested",
   "application.int.emptyMid": " to park it here while you decide.",
   "application.int.fullPre": "Your list is full on the {plan} plan. Remove a college from ",
   "application.int.fullMid": " or ",
@@ -198,8 +199,15 @@ export const en = {
   "application.res.emptyTitle": "No submitted applications yet",
   "application.res.emptyPre": "Mark a college Submitted on ",
   "application.res.emptyPost": " once its checklist is complete.",
-  "application.res.count": "{n} {label}",
   "application.res.decisionFor": "Decision for {name}",
+  "application.res.col.admitted": "Admitted",
+  "application.res.col.waiting": "Waiting for decision",
+  "application.res.col.hold": "Deferred or waitlisted",
+  "application.res.col.closed": "Not admitted or withdrawn",
+  "application.res.colEmpty.admitted": "Every yes lands here.",
+  "application.res.colEmpty.waiting": "Submitted applications wait here until you hear back.",
+  "application.res.colEmpty.hold": "Deferrals and waitlist offers go here.",
+  "application.res.colEmpty.closed": "Noes and applications you withdraw go here.",
   "application.res.undoPre": "Submitted by mistake? Set it back to \"{label}\", then change it on ",
   "application.res.undoPost": ".",
 
@@ -307,6 +315,7 @@ export const zhTW: Translation<typeof en> = {
 
   // Empty list
   "application.emptyTitle": "你的清單還是空的",
+  "application.openMyList": "打開學校清單",
   "application.emptyBody": "加入你要申請的學校，每一所都會有自己的待辦清單和截止日期。",
 
   // Table
@@ -450,7 +459,7 @@ export const zhTW: Translation<typeof en> = {
   // Interested
   "application.int.emptyTitle": "這裡還沒有學校",
   "application.int.emptyPre": "在任何學校的頁面點選 ",
-  "application.int.emptyStar": "☆ 有興趣",
+  "application.int.emptyStar": "有興趣",
   "application.int.emptyMid": "，就能先放在這裡，慢慢決定。",
   "application.int.fullPre": "你的清單在 {plan} 方案下已滿。請從 ",
   "application.int.fullMid": " 移除一所學校，或 ",
@@ -465,8 +474,15 @@ export const zhTW: Translation<typeof en> = {
   "application.res.emptyTitle": "還沒有已送出的申請",
   "application.res.emptyPre": "待辦清單全部完成後，請到 ",
   "application.res.emptyPost": " 把學校標記為已送出。",
-  "application.res.count": "{label} {n}",
   "application.res.decisionFor": "{name} 的錄取結果",
+  "application.res.col.admitted": "已錄取",
+  "application.res.col.waiting": "等待錄取結果",
+  "application.res.col.hold": "延後或候補",
+  "application.res.col.closed": "未錄取或已撤回",
+  "application.res.colEmpty.admitted": "每一封錄取通知都會出現在這裡。",
+  "application.res.colEmpty.waiting": "已送出的申請會在這裡等到放榜。",
+  "application.res.colEmpty.hold": "延後審理和候補名單會放在這裡。",
+  "application.res.colEmpty.closed": "未錄取和你撤回的申請會放在這裡。",
   "application.res.undoPre": "不小心標成已送出？請改回「{label}」，再到 ",
   "application.res.undoPost": " 更改。",
 

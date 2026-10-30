@@ -61,11 +61,18 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
     return caErrorText(t, (found.find((i) => i.field === f) ?? found[0]).field, next);
   };
   const yesNo = { yes: t("common.yes"), no: t("common.no") };
+  // The card opens with what the draft row asked (role, organization, description). The leadership question comes first,
+  // with the role box beside it once the answer is yes, so answering never pushes the question down under the cursor;
+  // the rest follows in the form's own order (lib/activities.ts).
+  const visible = caVisibleQuestions(a);
+  const FIRST: (keyof CaActivity)[] = ["leadership", "position", "organization", "description"];
+  const ordered = [...FIRST.filter((f) => visible.includes(f)), ...visible.filter((f) => !FIRST.includes(f))];
+  const paired = visible.includes("position");
 
   return (
     <>
       {a.legacy && <LegacyNote text={a.legacy} onDismiss={() => set({ legacy: undefined })} />}
-      {caVisibleQuestions(a).map((field) => {
+      {ordered.map((field) => {
         switch (field) {
           case "type":
             return (
@@ -96,6 +103,7 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               <div key={field} className={wide}>
                 <TextField
                   label={t("writing.caDescription")}
+                  name="description"
                   value={a.description}
                   max={CA_LIMITS.description}
                   rows={3}
@@ -106,10 +114,12 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               </div>
             );
           case "organization":
+            // Full width under the question and the role; beside the question when the form asks for no role.
             return (
-              <div key={field} className={wide}>
+              <div key={field} className={paired ? wide : undefined}>
                 <TextField
                   label={t("writing.organizationName")}
+                  name="organization"
                   value={a.organization}
                   max={CA_LIMITS.organization}
                   onSave={(organization) => set({ organization })}
@@ -132,6 +142,7 @@ export function CaActivityFields({ a, set }: { a: CaActivity; set: (p: Partial<C
               <TextField
                 key={field}
                 label={t("writing.position")}
+                name="position"
                 value={a.position}
                 max={CA_LIMITS.position}
                 onSave={(position) => set({ position })}

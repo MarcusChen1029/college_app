@@ -47,7 +47,7 @@
   "enrolled": 649,
   "pct_submit_sat": 34,
   "pct_submit_act": 16,
-  "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). No Common Data Set was found on olivet.edu or by search, so no CDS was used; GPA, international and residency splits are not added. College Navigator for fall 2024 shows 5,789 applicants and a 56% admit rate (exact admit count not published there); undergraduate enrollment and the 15:1 student-faculty ratio are fall 2024."
+  "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). No Common Data Set was found on olivet.edu or by search, so none was used; GPA, international and residency splits are not shown. College Navigator for fall 2024 shows 5,789 applicants and a 56% admit rate (exact admit count not published there); undergraduate enrollment and the 15:1 student-faculty ratio are fall 2024."
  },
  "scores": {
   "SAT_ERW": [

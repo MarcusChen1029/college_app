@@ -50,7 +50,7 @@
       "2.50-2.99": 16.4,
       "2.0-2.49": 3.27
     },
-    "notes": "CDS C1 residency breakdown (fall 2025): international 68 applied / 63 admitted / 2 enrolled; 2 more with unknown residency. Only 2 international first-time students enrolled, so USI's first-year international cohort is tiny. The CDS file's pages are headed 'Common Data Set 2024-2025' but report fall 2025 data. GPA distribution is the 'all enrolled' column of C11; the average GPA of 3.42 uses unweighted GPAs only. No early decision or early action; no waitlist; rolling notification."
+    "notes": "From the Common Data Set residency breakdown (fall 2025): international 68 applied / 63 admitted / 2 enrolled; 2 more with unknown residency. Only 2 international first-time students enrolled, so USI's first-year international cohort is tiny. The Common Data Set file's pages are headed 'Common Data Set 2024-2025' but report fall 2025 data. The GPA breakdown is the 'all enrolled' column; the average GPA of 3.42 uses unweighted GPAs only. No early decision or early action; no waitlist; rolling notification."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -87,7 +87,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A/C8F: SAT or ACT 'not required for admission, but considered if submitted'; students choose whether to submit, and USI superscores."
+    "notes": "Test policy from the Common Data Set: SAT or ACT 'not required for admission, but considered if submitted'; students choose whether to submit, and USI superscores."
   },
   "cost": {
     "year": "2026-2027",
@@ -99,6 +99,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 81,
     "intl_avg_award_usd": 5225,
-    "notes": "CDS G1 (first-year): in-state tuition $9,035.70, fees $1,755, food and housing $11,644 (a second column prints fees of $1,240). H6: only institutional NON-need-based aid is available to nonresidents; 81 nonresident undergraduates received it (avg $5,225)."
+    "notes": "From the Common Data Set (first-year): in-state tuition $9,035.70, fees $1,755, food and housing $11,644 (a second column prints fees of $1,240). Only institutional non-need-based aid is available to nonresidents; 81 nonresident undergraduates received it (avg $5,225)"
   }
 }

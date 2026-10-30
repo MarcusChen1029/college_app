@@ -56,7 +56,7 @@
       "2.50-2.99": 20,
       "2.0-2.49": 2
     },
-    "notes": "CDS C1 (fall 2023 entering class). This is the newest CDS UMass Boston had posted on its Common Data Set page when checked (2023-2024; no 2024-25 or 2025-26 file listed), so the figures are two cycles old. Residency split: in-state 12,558 / out-of-state 6,279 / international 2,081 applicants; 10,044 / 5,470 / 1,839 admitted; 1,968 / 287 / 208 enrolled. Undergrad enrollment and nonresident count are the B1/B2 'Total Undergraduates' figures (12,234; 844 international). CDS C6 marks admission as open for most students with selective admission to some programs. SAT/ACT percentiles cover only the 28% (695) / 2% (54) of enrollees who submitted scores; the GPA 'all enrolled' column sums to 99%. CDS C14 (2023-24): priority date 11/1, closing date 2/15."
+    "notes": "From the Common Data Set (fall 2023 entering class). This is the newest Common Data Set UMass Boston had posted on its Common Data Set page when checked (2023-2024; no 2024-25 or 2025-26 file listed), so the figures are two cycles old. Residency split: in-state 12,558 / out-of-state 6,279 / international 2,081 applicants; 10,044 / 5,470 / 1,839 admitted; 1,968 / 287 / 208 enrolled. Undergraduate enrollment and the nonresident count are the 'Total Undergraduates' figures (12,234; 844 international). The Common Data Set marks admission as open for most students with selective admission to some programs. SAT/ACT percentiles cover only the 28% (695) / 2% (54) of enrollees who sent scores; the GPA 'all enrolled' column sums to 99%. Application dates in the Common Data Set (2023-24): priority date 11/1, closing date 2/15."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -113,6 +113,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (2023-24): SAT/ACT 'not required for admission, but considered for some'; the current admissions pages offer a test-optional plan to all first-year applicants including international applicants."
+    "notes": "From the Common Data Set (2023-24): SAT/ACT 'not required for admission, but considered for some'; the current admissions pages offer a test-optional plan to all first-year applicants including international applicants."
   }
 }

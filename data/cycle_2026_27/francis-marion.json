@@ -50,14 +50,14 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International degree-seeking students must be accepted by this date (fall 2027)",
-      "notes": "Accepted by July 1 for the fall semester (Nov. 1 spring; April 1 late spring/summer). Printed without a year; treated as fall 2027. Domestic undergraduate admission is rolling with a final cutoff at noon on the Friday before classes start; decisions are made as soon as the file is complete.",
+      "notes": "Accepted by July 1 for the fall semester (Nov. 1 spring; April 1 late spring/summer). Printed without a year, so fall 2027 is assumed. Domestic undergraduate admission is rolling with a final cutoff at noon on the Friday before classes start; decisions are made as soon as the file is complete.",
       "src": "req"
     },
     {
       "kind": "scholarship",
       "due": "2027-03-15",
       "label": "Admissions Scholarship application due",
-      "notes": "FMU Admission Scholarship application (also used for out-of-state waivers and other admissions scholarships) is due March 15; the year is not printed and is treated as 2027. Merit awards go out in rounds with larger awards earlier, so apply early.",
+      "notes": "FMU Admission Scholarship application (also used for out-of-state waivers and other admissions scholarships) is due March 15; the year is not printed, so 2027 is assumed. Merit awards go out in rounds with larger awards earlier, so apply early.",
       "src": "sch"
     }
   ],
@@ -103,7 +103,7 @@
     "tuition_intl_usd": 20768,
     "required_fees_usd": 776,
     "room_board_usd": 11370,
-    "notes": "From the 2026-27 fee sheet, full-time undergraduate per semester: tuition $5,192 for SC residents and $10,384 for non-residents, plus required fees (registration $20, activity $156, IT $112, facility $100 = $388); annual figures here are two semesters. Resident example total on the sheet: $5,580 per semester. Housing and dining: residence hall double room including the All-Access Plus meal plan is $5,685 per semester ($11,370 a year); apartments and other meal plans cost less or more. The sheet text is garbled in places; the non-resident tuition and housing figures were matched to the sheet's own structure (non-resident total = $10,772 per semester, which equals College Navigator's $21,544 annual tuition and fees for 2024-25). Books and other expenses not stated."
+    "notes": "From the 2026-27 fee sheet, full-time undergraduate per semester: tuition $5,192 for SC residents and $10,384 for non-residents, plus required fees (registration $20, activity $156, IT $112, facility $100 = $388); annual figures here are two semesters. Resident example total on the sheet: $5,580 per semester. Housing and dining: residence hall double room including the All-Access Plus meal plan is $5,685 per semester ($11,370 a year); apartments and other meal plans cost less or more. The sheet text is garbled in places; the non-resident tuition and housing figures were matched to the sheet's own structure (non-resident total = $10,772 per semester, which equals College Navigator's $21,544 annual tuition and fees for 2024-25). Books and other expenses not stated"
   },
   "score_codes": {
     "sat": {

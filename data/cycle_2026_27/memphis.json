@@ -76,7 +76,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International applicants outside the U.S. (first-time F-1): fall 2027 application deadline",
-   "notes": "File completion deadline July 15. Spring: Nov. 1 (file complete Dec. 1). Admission is rolling and space-available. Printed without a year, treated as fall 2027.",
+   "notes": "File completion deadline July 15. Spring: Nov. 1 (file complete Dec. 1). Admission is rolling and space-available. The dates are printed without a year, so fall 2027 is assumed.",
    "src": "dl"
   },
   {
@@ -131,7 +131,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Competitive merit scholarships go to newly admitted degree-seeking F-1/J-1 international students (dual citizens and permanent residents are not eligible). Two paths: GPA plus ACT/SAT, or GPA only for certain awards. Renewable for up to three more years with 12+ credit hours, good standing and service hours. Freshmen should apply by Dec. 1 for priority. Award amounts are not given in the page text. CDS H6: 165 nonresident undergraduates received institutional aid, average $18,732 (the CDS does not say whether it was need- or non-need-based).",
+  "notes": "Competitive merit scholarships go to newly admitted degree-seeking F-1/J-1 international students (dual citizens and permanent residents are not eligible). Two paths: GPA plus ACT/SAT, or GPA only for certain awards. Renewable for up to three more years with 12+ credit hours, good standing and service hours. Freshmen should apply by Dec. 1 for priority. Award amounts are not given in the page text. From the Common Data Set: 165 nonresident undergraduates received the college's own aid, average $18,732 (it does not say whether this was need- or non-need-based).",
   "src": "sch"
  },
  "score_codes": {

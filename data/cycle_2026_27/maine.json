@@ -67,7 +67,7 @@
       "plan": "ROLLING",
       "due": "2027-07-15",
       "label": "Final international deadline, living outside the US and Canada (fall 2027)",
-      "notes": "Later applications are reviewed on a space-available basis and most are moved to spring. The page prints no year; treated as 2027 for fall 2027 entry. International applicants residing in the US or Canada: final deadline Aug. 1, 2027.",
+      "notes": "Later applications are reviewed on a space-available basis and most are moved to spring. The page gives no year, so 2027 is assumed for fall 2027 entry. International applicants residing in the US or Canada: final deadline Aug. 1, 2027.",
       "src": "intl"
     }
   ],
@@ -128,7 +128,7 @@
     "books_usd": 1000,
     "other_usd": 2200,
     "total_coa_usd": 57006,
-    "notes": "UMaine cost of attendance 2026-27 (Orono): Maine/Canadian resident tuition $13,230; the Out-of-State and International rate is $38,340 (15 credits per semester); fees $1,070; double room plus Unlimited Flex meal plan $14,696; books $1,000; travel/misc $2,200; international students must have health insurance. Total COA $57,006 is for the out-of-state/international rate.",
+    "notes": "UMaine cost of attendance 2026-27 (Orono): Maine/Canadian resident tuition $13,230; the Out-of-State and International rate is $38,340 (15 credits per semester); fees $1,070; double room plus Unlimited Flex meal plan $14,696; books $1,000; travel/misc $2,200; international students must have health insurance. Total COA $57,006 is for the out-of-state/international rate",
     "src": "cost"
   },
   "majors": [

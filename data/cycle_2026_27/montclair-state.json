@@ -74,7 +74,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "Final international application deadline (fall 2027 entry)",
-      "notes": "Suggested deadline for students outside the U.S.; students already in the U.S. may have more flexibility. Decisions typically 3-6 weeks after the application is complete. The page's January-start (spring) line prints 'November 1, 2027', which is not used here.",
+      "notes": "Suggested deadline for students outside the U.S. Students already in the U.S. may have more flexibility. Decisions typically 3-6 weeks after the application is complete. The page's January-start (spring) line prints 'November 1, 2027', which is not the date shown here.",
       "src": "intl"
     },
     {
@@ -136,7 +136,7 @@
     "other_usd": 3882,
     "total_coa_usd": 51808,
     "src": "costs",
-    "notes": "Out-of-state on-campus estimate for 2026-27 (international F-1/J-1 students pay out-of-state tuition): tuition $27,924, fees $1,222, housing $10,838, food $6,612, books $1,330, travel $1,380, miscellaneous $2,430, loan fee $72 (total $51,808). In-state tuition is $16,588."
+    "notes": "Out-of-state on-campus estimate for 2026-27 (international F-1/J-1 students pay out-of-state tuition): tuition $27,924, fees $1,222, housing $10,838, food $6,612, books $1,330, travel $1,380, miscellaneous $2,430, loan fee $72 (total $51,808). In-state tuition is $16,588"
   },
   "aid": {
     "intl_need_aid": false,

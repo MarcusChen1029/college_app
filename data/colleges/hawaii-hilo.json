@@ -47,7 +47,7 @@
     "enrolled": 367,
     "pct_submit_sat": 23,
     "pct_submit_act": 41,
-    "notes": "Baseline from IPEDS (fall 2023 entering class; exact counts). UH Hilo does not publish a Common Data Set that could be found (its Institutional Research pages list none), so GPA, international and residency splits are not added; the international admit rate is unknown. College Navigator for fall 2024 shows 2,301 applicants, 61% admitted and 25% of admits enrolled (admit count not given as an exact number), SAT EBRW 490/610 and Math 455/565, ACT composite 15/22 (25th/75th), with 15% SAT and 41% ACT submitters. Undergraduate enrollment 2,292 and student-faculty ratio 11:1 are from College Navigator (fall 2024)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class; exact counts). UH Hilo does not publish a Common Data Set that could be found (its Institutional Research pages list none), so GPA, international and residency splits are not added; the international admit rate is unknown. College Navigator for fall 2024 shows 2,301 applicants, 61% admitted and 25% of admits enrolled (admit count not given as an exact number), SAT EBRW 490/610 and Math 455/565, ACT composite 15/22 (25th/75th), with 15% submitting SAT and 41% submitting ACT. Undergraduate enrollment is 2,292 and the student-faculty ratio is 11:1 (College Navigator, fall 2024)."
   },
   "scores": {
     "SAT_ERW": [

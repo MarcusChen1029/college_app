@@ -46,7 +46,7 @@
     "admits": 5051,
     "enrolled": 542,
     "gpa_avg": 3.68,
-    "notes": "Baseline: no Common Data Set was found on Elmhurst's site (it publishes an institutional Data Book instead). Counts are the Data Book's new FRESHMEN for Fall 2025 (6,743 applied, 5,051 admitted, 542 enrolled); average high school GPA 3.68 is the Data Book figure. International applicant and admit counts are not published; the Data Book shows 18 nonresident-alien new freshmen enrolled in Fall 2025 (37 in 2024). Test-score percentiles are IPEDS Fall 2024 (College Navigator): 23% of enrolled first-time students submitted SAT, 5% ACT; Elmhurst is test-optional. No official SAT total 25/50/75 is published, so SAT ERW and Math are listed separately (the Data Book gives an SAT composite 25th of 995 and 75th of 1,250 for Fall 2025)."
+    "notes": "No Common Data Set was found on Elmhurst's site (it publishes an institutional Data Book instead). Counts are the Data Book's new freshmen for Fall 2025 (6,743 applied, 5,051 admitted, 542 enrolled); the average high school GPA of 3.68 is the Data Book figure. International applicant and admit counts are not published; the Data Book shows 18 nonresident-alien new freshmen enrolled in Fall 2025 (37 in 2024). Test-score percentiles are from IPEDS, the US government's college data, for Fall 2024 (College Navigator): 23% of enrolled first-time students sent SAT scores and 5% sent ACT scores; Elmhurst is test-optional. No official SAT total 25/50/75 is published, so SAT ERW and Math are listed separately (the Data Book gives an SAT composite 25th of 995 and 75th of 1,250 for Fall 2025)."
   },
   "scores": {
     "SAT_ERW": [
@@ -88,6 +88,6 @@
     "room_board_usd": 13170,
     "books_usd": 1290,
     "intl_need_aid": false,
-    "notes": "Tuition, student fee ($300 per term) and room/board from Elmhurst's 2026-27 tuition page (room $7,454 + 17-meal board $5,716.30, rounded); books from its cost-of-attendance page. New full-time first-year students also pay a one-time $275 matriculation fee. Private university: no separate international tuition."
+    "notes": "Tuition, student fee ($300 per term) and room/board from Elmhurst's 2026-27 tuition page (room $7,454 + 17-meal board $5,716.30, rounded); books from its cost-of-attendance page. New full-time first-year students also pay a one-time $275 matriculation fee. Private university: no separate international tuition"
   }
 }

@@ -106,7 +106,7 @@
     "room_board_usd": 9020,
     "books_usd": 800,
     "total_coa_usd": 29538,
-    "notes": "NSU's 2026-27 F-1/J-1 estimate: tuition and fees (out-of-state, 30 credit hours) $18,367.50, international fees $300 (plus a one-time $50 orientation fee), health insurance about $1,000, books $800, housing and food $9,020; estimated total $29,537.50 (rounded to dollars here; the total includes the insurance and one-time fee). Non-resident tuition is $334.25 per undergraduate credit hour. The in-state rate is not on the pages read (College Navigator 2024-25: $7,810 in-state, $17,290 out-of-state).",
+    "notes": "NSU's 2026-27 F-1/J-1 estimate: tuition and fees (out-of-state, 30 credit hours) $18,367.50, international fees $300 (plus a one-time $50 orientation fee), health insurance about $1,000, books $800, housing and food $9,020; estimated total $29,537.50 (rounded to dollars here; the total includes the insurance and one-time fee). Non-resident tuition is $334.25 per undergraduate credit hour. The in-state rate is not on the pages read (College Navigator 2024-25: $7,810 in-state, $17,290 out-of-state)",
     "src": "intl"
   },
   "aid": {
@@ -114,7 +114,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "One-year international scholarships by GPA: Presidential (3.75) $2,000-$5,000, Academic Excellence (3.0) $1,000-$2,000, International Freshmen (2.75) $500-$1,000; applicants need a 2.75 GPA and full degree-program admission. A non-resident 50% tuition waiver (half of the $334.25 per-credit non-resident tuition) requires a 3.0 GPA for freshmen and living on campus. The 2024-2025 CDS (H6) reports no institutional aid awarded to nonresidents that year (0 recipients), so published awards are competitive and not guaranteed.",
+    "notes": "One-year international scholarships by GPA: Presidential (3.75) $2,000-$5,000, Academic Excellence (3.0) $1,000-$2,000, International Freshmen (2.75) $500-$1,000; applicants need a 2.75 GPA and full degree-program admission. A non-resident 50% tuition waiver (half of the $334.25 per-credit non-resident tuition) requires a 3.0 GPA for freshmen and living on campus. The 2024-2025 Common Data Set reports no institutional aid awarded to nonresidents that year (0 recipients), so published awards are competitive and not guaranteed.",
     "src": "schol"
   },
   "majors": [],

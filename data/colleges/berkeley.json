@@ -42,7 +42,7 @@
     "gpa_avg": null,
     "pct_reporting_gpa": null,
     "gpa_distribution": null,
-    "notes": "Counts from Berkeley Admissions student profile (fall 2025 entry). Berkeley's CDS is published as a multi-tab Google Sheet that could not be machine-read for this import; C7/C9/C11 values pending manual entry. UC campuses are test-blind, so there are no SAT/ACT percentiles."
+    "notes": "Counts from the Berkeley Admissions student profile (fall 2025 entry). Berkeley's Common Data Set is published as a multi-tab Google Sheet that could not be read automatically, so its admission factors, test scores and GPA values are not yet added. UC campuses are test-blind, so there are no SAT/ACT percentiles."
   },
   "stats_extra": [
     {

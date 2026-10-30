@@ -46,7 +46,7 @@
     "enrolled": 1378,
     "pct_submit_sat": 66,
     "pct_submit_act": 8,
-    "notes": "Baseline from IPEDS (fall 2023 entering class, ADM2023); no readable Common Data Set was found. IPEDS does not split applicants by residency, so international applicants/admits are not available. SAT total, GPA distribution, ED and residency splits are not added. College Navigator also shows fall 2024: 7,631 applicants, 84% admitted, 21% of admits enrolled; about 3% of undergraduates are U.S. nonresidents (fall 2024)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class); no readable Common Data Set was found. IPEDS does not split applicants by residency, so international applicants/admits are not available. SAT total, GPA breakdown, ED and residency splits are not shown. College Navigator also shows fall 2024: 7,631 applicants, 84% admitted, 21% of admits enrolled; about 3% of undergraduates are U.S. nonresidents (fall 2024)."
   },
   "scores": {
     "SAT_ERW": [
@@ -82,6 +82,6 @@
     "room_board_usd": 13108,
     "other_usd": 7196,
     "total_coa_usd": 45465,
-    "notes": "PFW international undergraduate estimate for 2026-27 (nine months): tuition and fees $25,161 (one combined figure), living $13,108 (based on a 4-bed, 2-bath on-campus apartment; on-campus living is not required), other $7,196 (books, health insurance, personal), total I-20 cost $45,465. The page says to expect 2-3 percent yearly increases. In-state and out-of-state tuition for 2026-27 not recorded."
+    "notes": "PFW international undergraduate estimate for 2026-27 (nine months): tuition and fees $25,161 (one combined figure), living $13,108 (based on a 4-bed, 2-bath on-campus apartment; on-campus living is not required), other $7,196 (books, health insurance, personal), total I-20 cost $45,465. The page says to expect 2-3 percent yearly increases. In-state and out-of-state tuition for 2026-27 not recorded"
   }
 }

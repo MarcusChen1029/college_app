@@ -54,7 +54,7 @@
     "enrolled": 4464,
     "pct_submit_sat": 19,
     "pct_submit_act": 2,
-    "notes": "Baseline from IPEDS (fall 2024 entering class): counts from the ADM2024 file via the Urban Institute Education Data Portal (25,234 applied, 22,074 admitted, 4,464 enrolled), matching College Navigator's 87% admitted / 20% yield. George Mason's 2025-2026 Common Data Set exists on oiep.gmu.edu but returned HTTP 403 (bot protection) to direct and tool fetches, so CDS-only items (SAT total, GPA, residency and international splits, admission factors) are not added. SAT/ACT percentiles cover only the 19% (829) / 2% (80) of enrollees who submitted scores. Undergrad enrollment 28,334 and nonresident undergrads 1,574 are IPEDS fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class): counts come from the NCES admissions file via the Urban Institute Education Data Portal (25,234 applied, 22,074 admitted, 4,464 enrolled), matching College Navigator's 87% admitted / 20% yield. George Mason's 2025-2026 Common Data Set exists on oiep.gmu.edu but returned HTTP 403 (bot protection) to direct and tool fetches, so items found only in the Common Data Set (SAT total, GPA, residency and international splits, admission factors) are not added. SAT/ACT percentiles cover only the 19% (829) / 2% (80) of enrollees who sent scores. Undergraduate enrollment is 28,334 and there are 1,574 nonresident undergraduates (IPEDS fall 2024)."
   },
   "scores": {
     "SAT_ERW": [
@@ -93,6 +93,6 @@
     "books_usd": 1288,
     "other_usd": 3667,
     "total_coa_usd": 34900,
-    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25: tuition and fees $14,220 in-state / $38,688 out-of-state; on-campus food and housing $15,725; books $1,288; other $3,667; total on-campus $34,900 in-state / $59,368 out-of-state. 2026-27 rates were not checked."
+    "notes": "College Navigator estimated expenses for full-time beginning undergraduates, 2024-25: tuition and fees $14,220 in-state / $38,688 out-of-state; on-campus food and housing $15,725; books $1,288; other $3,667; total on-campus $34,900 in-state / $59,368 out-of-state. 2026-27 rates were not checked"
   }
 }

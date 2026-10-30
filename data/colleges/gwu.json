@@ -55,7 +55,7 @@
     "waitlist_admitted": 616,
     "pct_submit_sat": 36.51,
     "pct_submit_act": 13.89,
-    "notes": "CDS C9 percentages are of enrolled first-years. GPA (C11/C12) and early-decision counts (C21) were left blank in the CDS. ED I closes 11/1 (decision 12/15); ED II closes 1/5 (decision 2/1). CDS C8A (Fall 2027) marks SAT/ACT as 'required for some' applicants."
+    "notes": "The Common Data Set's test-score percentages are of enrolled first-years. GWU did not report GPA or early-decision counts in the Common Data Set. ED I closes 11/1 (decision 12/15); ED II closes 1/5 (decision 2/1). The Common Data Set (Fall 2027) marks SAT/ACT as 'required for some' applicants."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -97,7 +97,7 @@
     "room_board_usd": 17600,
     "other_usd": 1700,
     "total_coa_usd": 87253,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

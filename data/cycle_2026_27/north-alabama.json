@@ -62,7 +62,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International application deadline, fall semester (fall 2027 entry)",
-      "notes": "Page says 'Fall Semester: June 1' (application and all supplemental materials due before June 1). The page prints no year, so treated as 2027. Spring semester deadline is October 1. The CDS reports no application closing date and rolling notification.",
+      "notes": "Page says 'Fall Semester: June 1' (application and all supplemental materials due before June 1). The page prints no year, so 2027 is assumed. Spring semester deadline is October 1. The Common Data Set reports no application closing date and rolling notification.",
       "src": "faq"
     }
   ],
@@ -103,13 +103,13 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "International recruitment scholarship: $10,000 for the first year ($5,000 per semester) for all admitted undergraduates who study on campus; the FAQ gives a range of $8,000-$10,000 per year. Keep a 2.5+ GPA after semester 3 to keep the full amount. The Global Learning Community scholarship adds $1,500 per semester applied to eligible UNA housing. No separate scholarship application or essay; UNA says it offers no fully-funded scholarships and states that 95% of international students receive scholarships. The CDS (H6) also ticks need-based institutional aid for nonresidents, but the international office describes only these automatic scholarships.",
+    "notes": "International recruitment scholarship: $10,000 for the first year ($5,000 per semester) for all admitted undergraduates who study on campus; the FAQ gives a range of $8,000-$10,000 per year. Keep a 2.5+ GPA after semester 3 to keep the full amount. The Global Learning Community scholarship adds $1,500 per semester applied to eligible UNA housing. No separate scholarship application or essay; UNA says it offers no fully-funded scholarships and states that 95% of international students receive scholarships. The Common Data Set also ticks need-based aid from the college for nonresidents, but the international office describes only these automatic scholarships.",
     "src": "sch"
   },
   "cost": {
     "total_coa_usd": 36527,
     "src": "costs",
-    "notes": "International office estimate for 30 undergraduate credit hours over nine months: tuition and fees $26,547 + living expenses $8,280 + books, supplies and technology $1,700 = $36,527. The page prints no academic year. Academic English Program (20 courses) is estimated at $24,477."
+    "notes": "International office estimate for 30 undergraduate credit hours over nine months: tuition and fees $26,547 + living expenses $8,280 + books, supplies and technology $1,700 = $36,527. The page prints no academic year. Academic English Program (20 courses) is estimated at $24,477"
   },
   "score_codes": {
     "sat": {

@@ -44,6 +44,6 @@
     "applicants": 1880,
     "admits": 1803,
     "enrolled": 221,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found for the university (the search result labelled as its CDS belongs to the University of Houston-Downtown, and tamuv.edu has no institutional-research CDS page), so test scores, GPA, residency and international applicant splits are not available. IPEDS shows 1,880 applicants, 1,803 admitted (96%) and 221 enrolled; College Navigator reports no SAT/ACT score percentiles. Undergraduate enrollment 2,627 and the 15-to-1 student-faculty ratio are from College Navigator (fall 2024). The school was named University of Houston-Victoria until 2025 and is now Texas A&M University-Victoria (IPEDS 225502)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found for the university (the search result labelled as its Common Data Set belongs to the University of Houston-Downtown, and tamuv.edu has no Common Data Set page under institutional research), so test scores, GPA, residency and international applicant splits are not available. IPEDS shows 1,880 applicants, 1,803 admitted (96%) and 221 enrolled; College Navigator reports no SAT/ACT score percentiles. Undergraduate enrollment 2,627 and the 15-to-1 student-faculty ratio are from College Navigator (fall 2024). The school was named University of Houston-Victoria until 2025 and is now Texas A&M University-Victoria (IPEDS 225502)."
   }
 }

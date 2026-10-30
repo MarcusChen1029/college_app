@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useId, type KeyboardEvent, type ReactNode } from "react";
 import { useLocale, useT } from "@/lib/i18n/client";
 import type { MessageKey, TFunction } from "@/lib/i18n";
 import { testCardView } from "@/lib/i18n/test-plan-text";
@@ -15,7 +15,7 @@ export function regionName(t: TFunction, code: RegionCode): string {
   return t(`profile.region.${code}` as MessageKey);
 }
 
-type CardKey = "gpa" | "test" | "english" | "regions";
+export type CardKey = "gpa" | "test" | "english" | "regions";
 
 /** Saves whatever field is mid-edit (they save on blur) before its card closes or hides. */
 function commitFocus() {
@@ -24,6 +24,7 @@ function commitFocus() {
 
 function Card({
   id,
+  cardKey,
   label,
   tint,
   open,
@@ -34,6 +35,8 @@ function Card({
   children,
 }: {
   id: string;
+  /** The tile's name, on its button as data-profile-card, so the setup checklist can open it. */
+  cardKey: string;
   label: string;
   tint: string;
   open: boolean;
@@ -52,20 +55,21 @@ function Card({
     document.getElementById(buttonId)?.focus();
   };
   return (
-    <div onKeyDown={onKeyDown} className={`overflow-hidden rounded-3xl border-2 border-ink ${tint} ${open ? "col-span-full" : ""} ${className}`}>
+    <div onKeyDown={onKeyDown} className={`overflow-hidden rounded-3xl ${tint} ${open ? "col-span-full" : ""} ${className}`}>
       <button
         type="button"
         id={buttonId}
+        data-profile-card={cardKey}
         aria-expanded={open}
         aria-controls={panelId}
         onClick={onToggle}
         className="flex w-full items-start justify-between gap-2 p-4 text-left focus-visible:-outline-offset-4"
       >
         <span className="min-w-0 flex-1">
-          <span className="block text-xs font-medium text-ink/70">{label}</span>
+          <span className="block text-[13px] font-semibold text-ink">{label}</span>
           {summary}
         </span>
-        <span aria-hidden className={`mt-0.5 shrink-0 text-xs font-semibold text-ink/70 ${open ? "hidden" : ""}`}>
+        <span aria-hidden className={`mt-0.5 shrink-0 text-[13px] font-semibold text-ink underline underline-offset-4 ${open ? "hidden" : ""}`}>
           {t("common.edit")}
         </span>
       </button>
@@ -74,7 +78,7 @@ function Card({
         role="region"
         aria-labelledby={buttonId}
         inert={!open}
-        className={`grid transition-[grid-template-rows] duration-200 motion-reduce:transition-none ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+        className={`grid transition-[grid-template-rows,visibility] duration-200 motion-reduce:transition-none ${open ? "grid-rows-[1fr]" : "invisible grid-rows-[0fr]"}`}
       >
         <div className="min-h-0 overflow-hidden">
           <div className="space-y-4 border-t-2 border-ink/10 bg-white/70 p-4">
@@ -94,14 +98,14 @@ function Value({ value, sub }: { value: string | number | null | undefined; sub?
   if (value == null || value === "")
     return (
       <>
-        <span className="mt-1 block font-display text-lg font-bold text-ink/60">{t("profile.add")}</span>
-        {sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{sub}</span>}
+        <span className="mt-1 block font-display text-lg font-bold text-ink">{t("profile.add")}</span>
+        {sub && <span className="mt-0.5 block break-words text-[13px] text-ink">{sub}</span>}
       </>
     );
   return (
     <>
-      <span className="mt-1 block font-display text-3xl font-bold">{value}</span>
-      {sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{sub}</span>}
+      <span className="mt-1 block font-display text-3xl font-bold tabular-nums">{value}</span>
+      {sub && <span className="mt-0.5 block break-words text-[13px] text-ink">{sub}</span>}
     </>
   );
 }
@@ -156,21 +160,25 @@ export function RegionsEditor() {
   );
 }
 
-export function ProfileCards() {
+/** The four profile tiles. The open one is held by the page (ProfileDashboard), so its setup checklist can open a tile.
+ *  Until a tile holds a value the row stays hidden and the checklist leads; an Add there opens its tile. */
+export function ProfileCards({ open, onOpen }: { open: CardKey | null; onOpen: (k: CardKey | null) => void }) {
   const t = useT();
   const locale = useLocale();
   const { profile } = useStudent();
   const base = useId();
-  const [open, setOpen] = useState<CardKey | null>(null);
   const toggle = (k: CardKey) => {
     commitFocus();
-    setOpen((cur) => (cur === k ? null : k));
+    onOpen(open === k ? null : k);
   };
   const close = () => {
     commitFocus();
-    setOpen(null);
+    onOpen(null);
   };
-  const props = (k: CardKey) => ({ id: `${base}-${k}`, open: open === k, onToggle: () => toggle(k), onClose: close });
+  const props = (k: CardKey) => ({ id: `${base}-${k}`, cardKey: k, open: open === k, onToggle: () => toggle(k), onClose: close });
+  // A tile takes its colour once it holds something; until then it is a quiet grey step, so an empty tile never reads as
+  // a warning.
+  const tint = (has: boolean, colour: string) => (has ? colour : "bg-zinc-100");
 
   const englishKeys = ENGLISH_TEST_KEYS.filter((k) => profile.tests?.english?.[k]?.total != null);
   const englishKey = englishKeys[0];
@@ -181,22 +189,24 @@ export function ProfileCards() {
   const regions = cleanRegions(profile.targetRegions);
   const gpaSub = [profile.gpaWeighted != null && t("profile.gpaWeightedShort", { gpa: profile.gpaWeighted }), profile.international && t("profile.international")].filter(Boolean).join(" · ");
   const test = testCardView(t, locale, profile);
+  const anyValue = profile.gpa != null || test.value != null || english?.total != null || regions.length > 0;
+  if (!anyValue && open == null) return null;
 
   return (
     <section aria-label={t("profile.numbers")} className="grid grid-cols-2 gap-3 md:grid-cols-4">
-      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint="bg-sun/60" summary={<Value value={profile.gpa} sub={gpaSub || undefined} />}>
+      <Card {...props("gpa")} label={t("profile.gpaUnweighted")} tint={tint(profile.gpa != null, "bg-sun/60")} summary={<Value value={profile.gpa} sub={gpaSub || undefined} />}>
         <GpaEditor />
         <InternationalToggle />
       </Card>
       <Card
         {...props("test")}
         label={test.label}
-        tint="bg-mint/50"
+        tint={tint(test.value != null, "bg-mint/50")}
         summary={
           test.small && test.value != null ? (
             <>
               <span className="mt-1 block font-display text-lg font-bold">{test.value}</span>
-              {test.sub && <span className="mt-0.5 block break-words text-xs text-ink/70">{test.sub}</span>}
+              {test.sub && <span className="mt-0.5 block break-words text-[13px] text-ink">{test.sub}</span>}
             </>
           ) : (
             <Value value={test.value} sub={test.sub} />
@@ -208,7 +218,7 @@ export function ProfileCards() {
       <Card
         {...props("english")}
         label={englishKey ? testLabel(t, englishKey, ENGLISH_TESTS[englishKey].label) : t("profile.englishTest")}
-        tint="bg-blue-100"
+        tint={tint(english?.total != null, "bg-blue-100")}
         summary={<Value value={english?.total} sub={englishSub} />}
       >
         <EnglishEditor />
@@ -216,14 +226,14 @@ export function ProfileCards() {
       <Card
         {...props("regions")}
         label={t("profile.regionsApplying")}
-        tint="bg-coral/40"
+        tint={tint(regions.length > 0, "bg-blue-50")}
         summary={
           regions.length === 0 ? (
             <Value value={null} />
           ) : (
             <span className="mt-1.5 flex flex-wrap gap-1.5">
               {regions.map((c, i) => (
-                <span key={c} className="rounded-full border-2 border-ink bg-white px-2 py-0.5 text-xs font-semibold">
+                <span key={c} className="rounded-full bg-white px-2.5 py-0.5 text-[13px] font-semibold">
                   {regionName(t, c)}
                   {i === 0 && regions.length > 1 && <span className="sr-only">{t("profile.defaultSr")}</span>}
                 </span>

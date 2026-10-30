@@ -69,7 +69,7 @@
       "2.0-2.49": 0,
       "1.0-1.99": 0
     },
-    "notes": "CDS C9 percentages are of enrolled first-years. ED counts are as printed in C21, which the CDS template labels 'Fall 2024 entering class'. ED I closes 11/1 (decision 12/31); ED II 1/7 (2/15). The C7 importance checkboxes and the ACT English range did not survive in the published PDF, so they are omitted."
+    "notes": "Test score percentages are of enrolled first-years. ED counts are as printed in the early decision section, which the Common Data Set template labels 'Fall 2024 entering class'. ED I closes 11/1 (decision 12/31); ED II 1/7 (2/15). The admission factor importance checkboxes and the ACT English range did not survive in the published PDF, so they are omitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -111,6 +111,6 @@
     "room_board_usd": 19446,
     "other_usd": 4602,
     "total_coa_usd": 84261,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   }
 }

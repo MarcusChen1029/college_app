@@ -142,7 +142,7 @@
   "books_usd": 1330,
   "other_usd": 4034,
   "total_coa_usd": 55760,
-  "notes": "UH Manoa 2026-27 budget for a full-time (12 credits a semester) non-resident living on campus: tuition $33,792, fees $914, books $1,330, housing $8,222, food $7,468, personal $2,698, transportation $1,336. Resident tuition is $11,760. Some programs (e.g. engineering, architecture, business) charge higher fees; health insurance for F-1 students is not itemized in this budget.",
+  "notes": "UH Manoa 2026-27 budget for a full-time (12 credits a semester) non-resident living on campus: tuition $33,792, fees $914, books $1,330, housing $8,222, food $7,468, personal $2,698, transportation $1,336. Resident tuition is $11,760. Some programs (e.g. engineering, architecture, business) charge higher fees; health insurance for F-1 students is not itemized in this budget",
   "src": "coa"
  },
  "majors": [],
@@ -192,7 +192,7 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "biology_life_sci": "Marine biology and tropical ecology benefit from the Hawaii location and an ocean and earth science school on campus; placed C. Editorial judgment, not a ranking.",
-  "math_physics": "Astronomy and physical science research benefit from the Hawaii location; placed C. Editorial judgment, not a ranking."
+  "biology_life_sci": "Marine biology and tropical ecology benefit from the Hawaii location and an ocean and earth science school on campus; placed C. Our estimate, not a ranking.",
+  "math_physics": "Astronomy and physical science research benefit from the Hawaii location; placed C. Our estimate, not a ranking."
  }
 }

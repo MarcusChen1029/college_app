@@ -51,7 +51,7 @@
       "plan": "ROLLING",
       "due": "2027-06-01",
       "label": "International fall application deadline (fall 2027 entry)",
-      "notes": "International FAQ: June 1 for fall and November 1 for spring. The undergraduate catalog instead says August 1 for fall (one month before the term), so the pages disagree; the page prints no year, so treated as fall 2027. Late applications may be considered as time permits; applying at least three months ahead is recommended.",
+      "notes": "International FAQ: June 1 for fall and November 1 for spring. The undergraduate catalog instead says August 1 for fall (one month before the term), so the pages disagree; the page prints no year, so fall 2027 is assumed. Late applications may be considered as time permits; applying at least three months ahead is recommended.",
       "src": "faq"
     },
     {
@@ -143,6 +143,6 @@
     "math_physics": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: small Jesuit regional university in Jersey City (near Manhattan) offering 50+ majors including business, nursing, biology and computer science; no nationally ranked programs found, so general and subject tiers are D."
+    "general": "Our estimate: small Jesuit regional university in Jersey City (near Manhattan) offering 50+ majors including business, nursing, biology and computer science; no nationally ranked programs found, so general and subject tiers are D."
   }
 }

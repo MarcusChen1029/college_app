@@ -67,7 +67,7 @@
       "2.0-2.49": 0.1,
       "1.0-1.99": 0
     },
-    "notes": "CDS 2025-26 (fall 2025 entering class). Waitlist offered/accepted were left blank in the CDS; only 207 admitted from the waitlist is reported. 'intl' = nonresident aliens (C1 residency table). GPA distribution is the all-enrolled column."
+    "notes": "From the Common Data Set 2025-26 (fall 2025 entering class). Vanderbilt did not report the waitlist offered and accepted counts; only 207 admitted from the waitlist is reported. 'International' means nonresident aliens (residency table). The GPA breakdown is the all-enrolled column."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 23048,
     "other_usd": 2000,
     "total_coa_usd": 94142,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

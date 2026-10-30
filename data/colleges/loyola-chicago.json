@@ -52,7 +52,7 @@
       "3.00-3.24": 6.6,
       "2.50-2.99": 3.3
     },
-    "notes": "Fall 2025 entering class (CDS C1; the PDF page headers still say 2024-2025 but the data are for Fall 2025 and the file is the 2025-26 CDS on the OIRA page). Residency split: in-state 20,089 / out-of-state 15,530 / international 7,973 / unknown 362 applicants (international admit rate about 47%). No early decision or early action (C21/C22) and no waitlist. Test-optional: only 39% (SAT) and 15% (ACT) of enrollees submitted scores, so the 25th-75th percentiles describe submitters, who are a stronger group than the whole class. The SAT section percentiles in C9 do not add up to the composite, so only the composite and ACT composite are stored. Undergraduate enrollment 12,640 is B1 total undergraduates; international 275 is the B2 nonresident total-undergraduates column. C7 factor boxes and C16 notification were not reliably readable, so factors are omitted."
+    "notes": "Fall 2025 entering class, from the Common Data Set (the PDF page headers still say 2024-2025 but the data are for Fall 2025 and the file is the 2025-26 Common Data Set on the OIRA page). Residency split: in-state 20,089 / out-of-state 15,530 / international 7,973 / unknown 362 applicants (international admit rate about 47%). No early decision or early action and no waitlist. Test-optional: only 39% (SAT) and 15% (ACT) of enrollees submitted scores, so the 25th-75th percentiles describe submitters, who are a stronger group than the whole class. The SAT section percentiles do not add up to the composite, so only the composite and ACT composite are shown. Undergraduate enrollment is 12,640 (total undergraduates); international undergraduates number 275 (the nonresident total). The admission-factor boxes and notification dates were not reliably readable, so the admission factors are omitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -69,7 +69,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -82,6 +82,6 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 229,
     "intl_avg_award_usd": 26906,
-    "notes": "CDS G1 (first-year, 2026-27): tuition $56,930, required fees $1,580, food and housing $17,980 (housing $11,270 + food $6,710). Private university with one tuition rate. CDS H6: institutional need-based and non-need-based aid are both available to nonresidents; 229 degree-seeking nonresidents received it, average $26,906 (total $6,161,586)."
+    "notes": "From the Common Data Set (first-year, 2026-27): tuition $56,930, required fees $1,580, food and housing $17,980 (housing $11,270 + food $6,710). Private university with one tuition rate. The college's own need-based and non-need-based aid are both available to nonresidents; 229 degree-seeking nonresidents received it, average $26,906 (total $6,161,586)"
   }
 }

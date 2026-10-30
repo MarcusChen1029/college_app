@@ -25,7 +25,7 @@
       "kind": "priority",
       "due": "2027-05-01",
       "label": "Preferred deadline, fall 2027 (international)",
-      "notes": "Page prints May 1 as the preferred fall deadline with no year; taken as fall 2027. Spring term: preferred October 1, final November 15. Students in F-1 status in the U.S. are considered after the deadline case by case.",
+      "notes": "Page prints May 1 as the preferred fall deadline with no year, so fall 2027 is assumed. Spring term: preferred October 1, final November 15. Students in F-1 status in the U.S. are considered after the deadline case by case.",
       "src": "intl"
     },
     {
@@ -33,7 +33,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "Final deadline, fall 2027 (international)",
-      "notes": "Applications and all required materials must arrive by 11:59 PM Central Time. No year is printed; taken as fall 2027.",
+      "notes": "Applications and all required materials must arrive by 11:59 PM Central Time. No year is printed, so fall 2027 is assumed.",
       "src": "intl"
     }
   ],

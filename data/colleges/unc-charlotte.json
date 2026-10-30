@@ -51,7 +51,7 @@
       "2.0-2.49": 0.4,
       "1.0-1.99": 0.1
     },
-    "notes": "Fall 2025 first-time first-year cohort, CDS C1 residency table (in-state / out-of-state / nonresident: 18,398 / 8,106 / 714 applied; 15,202 / 5,419 / 549 admitted; 4,305 / 497 / 132 enrolled). Only 16% of enrollees submitted SAT and 27% ACT, so the score percentiles describe part of the class. GPA distribution is the 'all enrolled students' column of C11. Undergraduate enrollment is the B1 total undergraduates (13,380 men + 12,833 women); intl_undergrads is the B2 nonresident total undergraduates (700). Early action exists (C22, closes Nov 1); no early decision and no waitlist."
+    "notes": "Fall 2025 first-time first-year cohort, from the Common Data Set residency table (in-state / out-of-state / nonresident: 18,398 / 8,106 / 714 applied; 15,202 / 5,419 / 549 admitted; 4,305 / 497 / 132 enrolled). Only 16% of enrollees sent SAT scores and 27% sent ACT scores, so the score percentiles describe part of the class. The GPA breakdown is the 'all enrolled students' column. Undergraduate enrollment is the total undergraduates (13,380 men + 12,833 women); the number of international undergraduates is the nonresident total (700). Early action exists (closes Nov 1); no early decision and no waitlist."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A: SAT or ACT 'required for some' (students with a weighted high school GPA below 2.80 must submit a score). Admissions site: for fall 2027 applicants tests are optional with a weighted GPA of 2.8 or higher at the end of junior year."
+    "notes": "From the Common Data Set: SAT or ACT 'required for some' (students with a weighted high school GPA below 2.80 must submit a score). Admissions site: for fall 2027 applicants tests are optional with a weighted GPA of 2.8 or higher at the end of junior year."
   },
   "cost": {
     "year": "2025-2026",
@@ -119,6 +119,6 @@
     "required_fees_usd": 3505,
     "room_board_usd": 12390,
     "intl_need_aid": false,
-    "notes": "CDS G1 (2025-26, first-year): in-state tuition $3,812, out-of-state/nonresident $20,018, required fees $3,505, on-campus housing $7,310 + food $5,080 = $12,390. The tuition_usd field is the in-state figure. The 2025-26 CDS has no nonresident-specific financial aid counts, so those fields are left empty."
+    "notes": "First-year costs for 2025-26 from the Common Data Set: in-state tuition $3,812, out-of-state/nonresident $20,018, required fees $3,505, on-campus housing $7,310 + food $5,080 = $12,390. The tuition shown is the in-state figure. The 2025-26 Common Data Set has no nonresident-specific financial aid counts, so those are not shown"
   }
 }

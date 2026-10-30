@@ -64,7 +64,7 @@
       "3.25-3.49": 4,
       "3.00-3.24": 1
     },
-    "notes": "CDS C1/C2/C9/C11/C12. Average GPA above 4.0 means Virginia Tech reports a weighted/recalculated GPA. No early decision; nonbinding early action. SAT composite percentiles are blank in the CDS (only section scores reported)."
+    "notes": "From the Common Data Set. Average GPA above 4.0 means Virginia Tech reports a weighted/recalculated GPA. No early decision; nonbinding early action. Virginia Tech did not report SAT composite percentiles (only section scores reported)."
   },
   "scores": {
     "SAT_ERW": [
@@ -101,7 +101,7 @@
     "room_board_usd": 16046,
     "other_usd": 5612,
     "total_coa_usd": 39324,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 38914
   },
   "factors": {

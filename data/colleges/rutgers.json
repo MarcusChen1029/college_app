@@ -52,7 +52,7 @@
     "intl_admits": 3345,
     "pct_submit_sat": 50.9,
     "pct_submit_act": 5.4,
-    "notes": "CDS C1/C9, fall 2023 entering class (newest CDS Rutgers has posted; no 2024-25 or 2025-26 edition found). GPA (C11/C12) left blank in the CDS; no waitlist data; no early decision; nonbinding early action."
+    "notes": "From the Common Data Set, fall 2023 entering class (the newest Common Data Set Rutgers has posted; no 2024-25 or 2025-26 edition found). Rutgers did not report GPA; no waitlist data; no early decision; nonbinding early action."
   },
   "scores": {
     "SAT_ERW": [
@@ -89,7 +89,7 @@
     "room_board_usd": 16720,
     "other_usd": 4548,
     "total_coa_usd": 36096,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 39649
   }
 }

@@ -47,7 +47,7 @@
    "own"
   ],
   "app_fee_usd": 0,
-  "notes": "Own online application; no essay or recommendation letters required (essay optional). International applicants submit transcripts (literal English translation if not in English; unofficial copies accepted for first-year), English test scores and financial documents. Application fee: CDS C13 answers No; the admissions pages read do not mention a fee. Direct admission to Nursing (BSN) applies by Oct 31 of senior year; music, theatre and dance majors require an audition.",
+  "notes": "Own online application; no essay or recommendation letters required (essay optional). International applicants submit transcripts (literal English translation if not in English; unofficial copies accepted for first-year), English test scores and financial documents. Application fee: the Common Data Set answers No; the admissions pages checked do not mention a fee. Direct admission to Nursing (BSN) applies by Oct 31 of senior year; music, theatre and dance majors require an audition.",
   "src": "intl"
  },
  "deadlines": [
@@ -56,7 +56,7 @@
    "plan": "ROLLING",
    "due": "2027-07-01",
    "label": "International application deadline, fall 2027",
-   "notes": "The page says to submit the completed application by July 1 for fall (Nov 1 winter, Mar 1 summer); no year is printed, so it is taken as fall 2027. Admission is rolling with decisions beginning July 1 per the CDS. Completed applications can be deferred up to one year.",
+   "notes": "The page says to submit the completed application by July 1 for fall (Nov 1 winter, Mar 1 summer); no year is printed, so fall 2027 is assumed. Admission is rolling with decisions beginning July 1 per the Common Data Set. Completed applications can be deferred up to one year.",
    "src": "intl"
   }
  ],
@@ -111,7 +111,7 @@
   "room_board_usd": 11454,
   "other_usd": 2292,
   "total_coa_usd": 33534,
-  "notes": "International page estimate (fall and winter, 12-14 credits per semester): out-of-state tuition $19,788, living expenses $11,454 (entered under room and board), medical insurance $2,292 (under other), total $33,534; budget about $4,000 more for books and personal costs. $15,426 is the in-state-equivalent tuition shown for Canadian/Mexican students with the Non-Resident Award. The page does not date this table. 2026-27 per-credit rates: non-resident lower division $795.75 (upper $853.25); Michigan lower division $574.50. OU charges no mandatory fees.",
+  "notes": "International page estimate (fall and winter, 12-14 credits per semester): out-of-state tuition $19,788, living expenses $11,454 (entered under room and board), medical insurance $2,292 (under other), total $33,534; budget about $4,000 more for books and personal costs. $15,426 is the in-state-equivalent tuition shown for Canadian/Mexican students with the Non-Resident Award. The page does not date this table. 2026-27 per-credit rates: non-resident lower division $795.75 (upper $853.25); Michigan lower division $574.50. OU charges no mandatory fees",
   "src": "intl"
  },
  "aid": {
@@ -120,7 +120,7 @@
   "meets_full_need": false,
   "merit_scholarships": true,
   "merit_separate_app": false,
-  "notes": "OU's scholarship page says international students are not eligible for OU scholarships except where noted; the Non-Resident Award (in-state tuition rate) goes to U.S. out-of-state students and to citizens and permanent residents of Canada and Mexico with a 2.5+ GPA, who must live on campus two years. The international viewbook nevertheless says competitive scholarships for international students exist and CDS H6 shows 127 nonresidents received institutional non-need-based aid (average $5,851), but no international award amounts are published.",
+  "notes": "OU's scholarship page says international students are not eligible for OU scholarships except where noted; the Non-Resident Award (in-state tuition rate) goes to U.S. out-of-state students and to citizens and permanent residents of Canada and Mexico with a 2.5+ GPA, who must live on campus two years. The international viewbook nevertheless says competitive scholarships for international students exist and the Common Data Set shows 127 nonresidents received institutional non-need-based aid (average $5,851), but no international award amounts are published.",
   "src": "aid"
  },
  "majors": [],

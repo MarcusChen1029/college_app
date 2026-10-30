@@ -38,7 +38,7 @@
    "kind": "application",
    "due": "2027-06-01",
    "label": "International application deadline, fall 2027 entry",
-   "notes": "The page says June 1 for a fall semester start (November 1 for spring); no year is printed, so June 1 is taken as 2027 for fall 2027. Applications are decided once all documents are received; the page does not say whether admission is rolling.",
+   "notes": "The page says June 1 for a fall semester start (November 1 for spring); no year is printed, so June 1 is assumed to mean 2027 for fall 2027. Applications are decided once all documents are received; the page does not say whether admission is rolling.",
    "src": "intl"
   }
  ],

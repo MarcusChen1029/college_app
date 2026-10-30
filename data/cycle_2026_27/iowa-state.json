@@ -56,7 +56,7 @@
       "kind": "scholarship",
       "due": "2027-02-15",
       "label": "International Merit Scholarship priority deadline (fall 2027)",
-      "notes": "Priority date for the OneApp International Merit Scholarship application (page prints no year; taken as the fall 2027 cycle) (Award of Achievement up to $40,000; Award of Distinction up to $16,000). Admission itself is rolling with no application closing date.",
+      "notes": "Priority date for the OneApp International Merit Scholarship application (the page gives no year, so the fall 2027 cycle is assumed) (Award of Achievement up to $40,000; Award of Distinction up to $16,000). Admission itself is rolling with no application closing date.",
       "src": "merit"
     },
     {
@@ -173,7 +173,7 @@
     "arts_design": "D"
   },
   "tier_notes": {
-    "engineering": "Editorial judgment (not from a cited ranking): one of the larger and better-known public engineering colleges in the Midwest.",
-    "computer_science": "Editorial judgment (not from a cited ranking): large CS program inside a well-regarded engineering college."
+    "engineering": "Our estimate (not from a cited ranking): one of the larger and better-known public engineering colleges in the Midwest.",
+    "computer_science": "Our estimate (not from a cited ranking): large CS program inside a well-regarded engineering college."
   }
 }

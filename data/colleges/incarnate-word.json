@@ -51,7 +51,7 @@
       "2.0-2.49": 2,
       "1.0-1.99": 1
     },
-    "notes": "CDS 2024-2025 is the latest posted (fall 2024 entering class); the 2025-2026 CDS is not on UIW's Institutional Research page yet. Residency split from the C1 table: 462 international applicants, 413 admitted (the unknown-residency row is 7 applicants). C9: 261 students submitted SAT and 58 ACT. B1/B2: undergraduate total 4,638 with 182 nonresident (international) undergraduates; student-to-faculty ratio 12:1. No early decision or early action; deferral up to 1 semester. The C7 importance checkboxes could not be read reliably from the PDF text, so factors are omitted."
+    "notes": "The 2024-2025 Common Data Set is the latest posted (fall 2024 entering class); the 2025-2026 Common Data Set is not on UIW's Institutional Research page yet. Residency split from the Common Data Set: 462 international applicants, 413 admitted (the unknown-residency row is 7 applicants). 261 students sent SAT scores and 58 sent ACT scores. Undergraduate total 4,638 with 182 nonresident (international) undergraduates; student-to-faculty ratio 12:1. No early decision or early action; deferral up to 1 semester. The importance checkboxes for admission factors could not be read reliably from the PDF text, so factors are not shown."
   },
   "scores": {
     "SAT_ERW": [
@@ -83,7 +83,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "The CDS C8A checkbox could not be read reliably from the PDF text; the admissions site states test submission is optional."
+    "notes": "The Common Data Set's test-policy checkbox could not be read reliably from the PDF text; the admissions site states test submission is optional."
   },
   "cost": {
     "year": "2025-2026",
@@ -95,6 +95,6 @@
     "other_usd": 2368,
     "intl_need_aid_awarded": 150,
     "intl_avg_award_usd": 28829,
-    "notes": "CDS G1 (2025-2026): tuition $36,450, required fees $2,200, food and housing $15,290; G5 books $300. CDS H6 (2024-25): 150 degree-seeking nonresidents received institutional aid, average $28,829 (total $4,324,408); the need/non-need boxes were not readable."
+    "notes": "From the Common Data Set (2025-2026): tuition $36,450, required fees $2,200, food and housing $15,290; books $300. Aid, from the Common Data Set (2024-25): 150 degree-seeking nonresidents received aid from the college itself, average $28,829 (total $4,324,408); the need/non-need boxes were not readable"
   }
 }

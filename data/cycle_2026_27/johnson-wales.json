@@ -54,7 +54,7 @@
    "plan": "EA",
    "due": "2026-11-16",
    "label": "Early Action I (non-binding), fall 2027 entry",
-   "notes": "Application and transcripts must be received by the deadline. The 2026-27 catalog prints no year; taken as the fall 2027 cycle. The pages do not give a separate international date.",
+   "notes": "Application and transcripts must be received by the deadline. The 2026-27 catalog prints no year, so the fall 2027 cycle is assumed. The pages do not give a separate international date.",
    "src": "apply"
   },
   {
@@ -134,7 +134,7 @@
   "tuition_intl_usd": 45408,
   "required_fees_usd": 250,
   "intl_extra_fees_usd": 1386,
-  "notes": "Providence catalog 2026-27 (estimated, subject to change): annual tuition $45,408; student activity fee $250; New International Student Services Fee $1,386 per year (the $476 new student fee does not apply to international students). Room only ranges $7,000-$16,000 depending on residence hall and occupancy; the Gold meal plan ($7,360) is required for new residential students (other plans $600-$6,212). Student health insurance $2,670. Room and board total, books and other costs are not given as a single figure, so they are left blank. ESL program students pay $5,250 tuition per semester and are not eligible for JWU scholarships or grants."
+  "notes": "Providence catalog 2026-27 (estimated, subject to change): annual tuition $45,408; student activity fee $250; New International Student Services Fee $1,386 per year (the $476 new student fee does not apply to international students). Room only ranges $7,000-$16,000 depending on residence hall and occupancy; the Gold meal plan ($7,360) is required for new residential students (other plans $600-$6,212). Student health insurance $2,670. Room and board total, books and other costs are not given as a single figure, so they are not shown. ESL program students pay $5,250 tuition per semester and are not eligible for JWU scholarships or grants"
  },
  "aid": {
   "intl_need_aid": null,

@@ -38,7 +38,7 @@
     "applicants": 21153,
     "pct_submit_sat": 21,
     "pct_submit_act": 61,
-    "notes": "Baseline from IPEDS (fall 2024 entering class) via College Navigator: 21,153 applicants, 81% admitted (80% of men, 82% of women), 21% of admitted enrolled. College Navigator gives only rounded percentages, so the admit count is left null. BGSU's Common Data Set is published only as an embedded Tableau dashboard that could not be read as text, so international applicant/admit counts, GPA and SAT total are not available. SAT/ACT percentiles are for enrolled first-time students; 21% submitted SAT, 61% ACT. Undergraduate enrollment is fall 2024 (14,783)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class), via College Navigator: 21,153 applicants, 81% admitted (80% of men, 82% of women), 21% of admitted enrolled. College Navigator gives only rounded percentages, so the admit count is not shown. BGSU's Common Data Set is published only as an embedded Tableau dashboard that could not be copied out as text, so international applicant and admit counts, GPA and SAT total are not available. SAT/ACT percentiles are for enrolled first-time students; 21% sent SAT scores and 61% sent ACT scores. Undergraduate enrollment is fall 2024 (14,783)."
   },
   "scores": {
     "SAT_ERW": [

@@ -49,7 +49,7 @@
    "kind": "priority",
    "due": "2026-11-01",
    "label": "Priority admission deadline (fall 2027, international)",
-   "notes": "Listed under 'Scholarship Deadlines' on the international page; the page prints no year, so it is taken as the current cycle.",
+   "notes": "Listed under 'Scholarship Deadlines' on the international page; the page prints no year, so the current cycle is assumed.",
    "src": "dates"
   },
   {
@@ -126,14 +126,14 @@
   "src": "cost",
   "year": "2026-2027",
   "total_coa_usd": 56256,
-  "notes": "UA's estimate for a non-resident undergraduate living in a dorm: tuition $30,604 + fees $2,580 + books $1,270 + room $10,144 + board $5,550 + personal $3,452 + transportation $2,656 = $56,256."
+  "notes": "UA's estimate for a non-resident undergraduate living in a dorm: tuition $30,604 + fees $2,580 + books $1,270 + room $10,144 + board $5,550 + personal $3,452 + transportation $2,656 = $56,256"
  },
  "aid": {
   "intl_need_aid": null,
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "UA does not provide loans to international students. Freshman academic scholarships are decided from the scholarship application, SAT/ACT and GPA (priority Nov. 15, final Feb. 1). The non-resident scholarship page says most awards require recipients to be U.S. citizens, residents or foreign nationals permitted to study in the U.S.; its automatic New Arkansan Non-Resident Tuition Award ($15,600-$20,000 a year) is listed only for applicants from nine named U.S. states, so no international-specific amounts were confirmed. Confirm with scholars@uark.edu.",
+  "notes": "UA does not provide loans to international students. Freshman academic scholarships are decided from the scholarship application, SAT/ACT and GPA (priority Nov. 15, final Feb. 1). The non-resident scholarship page says most awards require recipients to be U.S. citizens, residents or foreign nationals permitted to study in the U.S. Its automatic New Arkansan Non-Resident Tuition Award ($15,600-$20,000 a year) is listed only for applicants from nine named U.S. states, so no international-specific amounts were confirmed. Confirm with scholars@uark.edu.",
   "src": "sch"
  },
  "majors": [],
@@ -181,12 +181,12 @@
  },
  "tier_notes": {
   "general": "Public flagship with a 74% overall admit rate and SAT middle 50% of 1020-1210, but the CDS shows only 182 of 1,578 international applicants admitted, so it is not a sure safety for internationals.",
-  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure). Walton College is the undergraduate business school.",
-  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "economics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure).",
-  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (editorial judgment, not a sourced figure)."
+  "computer_science": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "engineering": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "business": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure). Walton College is the undergraduate business school.",
+  "biology_life_sci": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "pre_med": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "economics": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure).",
+  "nursing": "Roughly in the 41-100 national band for this field based on widely cited program reputations (our estimate, not a sourced figure)."
  }
 }

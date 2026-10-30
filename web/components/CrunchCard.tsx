@@ -6,7 +6,7 @@ import type { SentKind } from "@/lib/checklist";
 import type { Crunch, OpenCollege, OpenGroup } from "@/lib/crunch";
 import type { TFunction } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, PANEL } from "@/lib/ui";
 import { DeadlineChip, StatusPill } from "./StatusPill";
 
 type Props = {
@@ -141,7 +141,7 @@ export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
   const n = crunch.apps.length;
   const readyAll = crunch.ready.length === n;
   return (
-    <section id="crunch" aria-labelledby="crunch-title" className="space-y-3 rounded-lg border border-zinc-200 p-4 sm:p-5">
+    <section id="crunch" aria-labelledby="crunch-title" className={`space-y-3 ${PANEL} p-5 sm:p-6`}>
       <h2 id="crunch-title" className="font-display text-lg font-bold">
         {n === 1 ? t("application.crunch.titleOne") : t("application.crunch.title", { n })}
       </h2>
@@ -158,7 +158,7 @@ export function CrunchCard({ crunch, onOpen, onMarkSent, essayCounts }: Props) {
 
       {crunch.open.length > 0 && (
         <div>
-          <h3 className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">{t("application.crunch.stillOpen")}</h3>
+          <h3 className="text-[15px] font-semibold text-ink">{t("application.crunch.stillOpen")}</h3>
           <ul className="divide-y divide-zinc-100">
             {crunch.open.map((g) => (
               <OpenItem key={g.key} group={g} clusterSize={n} onOpen={onOpen} onMarkSent={onMarkSent} essayCounts={essayCounts} />

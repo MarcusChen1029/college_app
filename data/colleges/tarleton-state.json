@@ -39,7 +39,7 @@
     "intl_admits": 30,
     "pct_submit_sat": 47,
     "pct_submit_act": 14,
-    "notes": "CDS C1 (Fall 2024; the 2025-2026 CDS was not posted on Tarleton's Common Data Set page). International: 33 applied, 30 admitted, 12 enrolled (C1 residency table). Undergraduate enrollment and the 79 nonresident undergraduates are the B1/B2 totals (15,130 incl. non-degree). SAT composite 970/1060/1150 is also published (not a stored test type). The C11 GPA table and C12 average GPA were left blank in the CDS, and the C7 checkboxes are all marked so no factors are recorded. The C1 enrolled figure (3,018) is higher than the B1 degree-seeking first-time count (2,581); the C1 figure is stored as printed."
+    "notes": "From the Common Data Set (Fall 2024; the 2025-2026 edition was not posted on Tarleton's Common Data Set page). International: 33 applied, 30 admitted, 12 enrolled (residency table). Undergraduate enrollment and the 79 nonresident undergraduates are totals (15,130 incl. non-degree). SAT composite 970/1060/1150 is also published (not shown on this page). Tarleton did not report the GPA table or the average GPA, and all the admission-factor checkboxes are marked, so no factors are shown. The enrolled figure from the applications and admissions section (3,018) is higher than the degree-seeking first-time count from the enrollment section (2,581); the first figure is shown as printed."
   },
   "scores": {
     "SAT_ERW": [
@@ -82,6 +82,6 @@
     "required_fees_usd": 4183,
     "room_board_usd": 11676,
     "books_usd": 1560,
-    "notes": "CDS G1 (first-year, 2025-26; no 2026-27 figures are posted): in-state tuition $5,997, out-of-state/nonresident $18,297, required fees $4,183, food and housing $11,676. CDS H6 lists 479 nonresident undergraduates with institutional aid (average $5,926), but the checked H6 box is unreadable and that page is headed 2023-2024, so the aid fields are left null."
+    "notes": "From the Common Data Set (first-year, 2025-26; no 2026-27 figures are posted): in-state tuition $5,997, out-of-state/nonresident $18,297, required fees $4,183, food and housing $11,676. The Common Data Set lists 479 nonresident undergraduates with institutional aid (average $5,926), but the checked aid box is unreadable and that page is headed 2023-2024, so no aid figures are shown"
   }
 }

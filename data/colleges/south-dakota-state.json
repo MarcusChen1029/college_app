@@ -45,7 +45,7 @@
     "enrolled": 2274,
     "pct_submit_sat": 2,
     "pct_submit_act": 81,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). College Navigator's fall 2024 figures: 7,287 applicants, 98% admitted, 34% of admitted enrolled; ACT composite 19/22/25 (75% submitted), SAT ERW 530/570/610, SAT Math 530/560/630 (2% submitted). SDSU's only readable public CDS is 2021-22 (newer years are listed but not linked), so GPA, residency and international applicant splits are not added. IPEDS reported no international first-year applicants. Undergrad 10,177 and 307 nonresident-alien undergrads are IPEDS fall 2023 (EF2023A)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). College Navigator's fall 2024 figures: 7,287 applicants, 98% admitted, 34% of admitted enrolled; ACT composite 19/22/25 (75% submitted), SAT ERW 530/570/610, SAT Math 530/560/630 (2% submitted). SDSU's only readable public Common Data Set is 2021-22 (newer years are listed but not linked), so GPA, residency and international applicant splits are not added. IPEDS reported no international first-year applicants. Undergraduate enrollment 10,177 and 307 nonresident-alien undergraduates are from IPEDS (fall 2023)."
   },
   "scores": {
     "SAT_ERW": [
@@ -81,6 +81,6 @@
     "room_board_usd": 9814,
     "other_usd": 3697,
     "total_coa_usd": 29795,
-    "notes": "SDSU estimated annual cost for international undergraduates (page does not name the year): tuition and fees $16,284, living expenses $9,814, other $3,697, total $29,795; the page warns of annual increases up to 5%. SDSU's 2026-27 cost-of-attendance page for domestic nonresidents shows tuition and fees $13,479 and housing/food $11,024."
+    "notes": "SDSU estimated annual cost for international undergraduates (page does not name the year): tuition and fees $16,284, living expenses $9,814, other $3,697, total $29,795; the page warns of annual increases up to 5%. SDSU's 2026-27 cost-of-attendance page for domestic nonresidents shows tuition and fees $13,479 and housing/food $11,024"
   }
 }

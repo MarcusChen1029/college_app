@@ -55,7 +55,7 @@
       "kind": "application",
       "due": "2027-08-01",
       "label": "Fall admission deadline (fall 2027 entry)",
-      "notes": "Page prints no year; treated as fall 2027. Spring deadline Dec. 1, summer May 1. No separate international date is published; the catalog says all application materials must be received by this date.",
+      "notes": "The page gives no year, so fall 2027 is assumed. Spring deadline Dec. 1, summer May 1. No separate international date is published; the catalog says all application materials must be received by this date.",
       "src": "dates"
     }
   ],
@@ -107,7 +107,7 @@
     "tuition_out_of_state_usd": 12240,
     "tuition_intl_usd": 12240,
     "required_fees_usd": 1110,
-    "notes": "EKU cost-of-attendance table, 2026-27 full-time on-campus: in-state tuition $5,325 per semester, 'Out of State & International' $6,120 per semester (12-15 credit hours). Required fees per semester: $150 special use, $150 asset preservation, $255 Exceptional Eastern Experience (x2 = $1,110); a student health fee may also apply. Housing and food estimates on that table were ambiguous, so room_board is left to the 2024-25 College Navigator figure. Proof of funds required for the I-20: $28,614.",
+    "notes": "EKU cost-of-attendance table, 2026-27 full-time on-campus: in-state tuition $5,325 per semester, 'Out of State & International' $6,120 per semester (12-15 credit hours). Required fees per semester: $150 special use, $150 asset preservation, $255 Exceptional Eastern Experience (x2 = $1,110); a student health fee may also apply. Housing and food estimates on that table were ambiguous, so the housing and food figure comes from the 2024-25 College Navigator instead. Proof of funds required for the I-20: $28,614",
     "src": "cost"
   },
   "majors": [

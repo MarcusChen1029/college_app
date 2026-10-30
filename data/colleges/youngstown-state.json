@@ -51,7 +51,7 @@
       "2.0-2.49": 7.2,
       "1.0-1.99": 6.6
     },
-    "notes": "Counts are CDS C1 (fall 2025). International admit rate is 96.5% (3,218 of 3,333); 268 international first-years enrolled. No waiting list, early decision or early action. Only 20.8% of first-years had a high school GPA on file (C12), so the 3.07 average covers that group; the C11 'all enrolled' column also shows 3.1% below 1.0 (omitted here). Undergrad and international counts are B1 'Total Undergraduates' (nonresident 977)."
+    "notes": "Counts are from the Common Data Set (fall 2025). The international admit rate is 96.5% (3,218 of 3,333); 268 international first-years enrolled. No waiting list, early decision or early action. Only 20.8% of first-years had a high school GPA on file, so the 3.07 average covers that group; the 'all enrolled' GPA column also shows 3.1% below 1.0 (not shown here). Undergraduate and international counts are the 'Total Undergraduates' figures (nonresident 977)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "Common Data Set (fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "cost": {
     "year": "2026-2027",
@@ -120,6 +120,6 @@
     "room_board_usd": 12000,
     "books_usd": 1290,
     "intl_need_aid": false,
-    "notes": "CDS G1 first-year: the CDS prints one nonresident tuition rate ($12,077) for out-of-state and international students. H6: only institutional non-need-based aid is available to nonresidents; the recipient count and average were reported as N/A."
+    "notes": "First-year costs from the Common Data Set: it prints one nonresident tuition rate ($12,077) for out-of-state and international students. Only institutional non-need-based aid is available to nonresidents; the recipient count and average were reported as N/A"
   }
 }

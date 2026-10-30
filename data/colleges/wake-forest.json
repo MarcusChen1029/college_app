@@ -46,7 +46,7 @@
     "enrolled": 1544,
     "pct_submit_sat": 24,
     "pct_submit_act": 22,
-    "notes": "Fall 2025 entering class (totals from the male/female/unknown counts in C1). WFU left blank the residency split, waitlist, GPA distribution/average and ED counts, so those are not included. SAT 24% (365) / ACT 22% (338) of enrolled submitted scores. SAT/ACT are not required but considered if submitted."
+    "notes": "Fall 2025 entering class (totals add up the male, female and unknown counts). WFU did not report the residency split, waitlist, GPA breakdown or average, or ED counts, so those are not shown. 24% (365) of enrolled students sent SAT scores and 22% (338) sent ACT scores. SAT/ACT are not required but are considered if submitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -88,7 +88,7 @@
     "room_board_usd": 19054,
     "other_usd": 3430,
     "total_coa_usd": 91202,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

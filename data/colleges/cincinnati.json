@@ -51,7 +51,7 @@
       "2.0-2.49": 0.44,
       "1.0-1.99": 0.11
     },
-    "notes": "CDS is for the UC Main Campus. Counts are CDS C1 (fall 2025 first-time, first-year); GPA distribution is the 'all enrolled students' column of C11. No waiting list. Only 583 enrollees submitted SAT and 1,594 submitted ACT, so the percentiles describe small groups. CDS C7 marks talent/ability 'very important' (probably for CCM/DAAP programs). Undergrad and international counts are B1 'Total Undergraduates' (nonresident 1,625)."
+    "notes": "The Common Data Set is for the UC Main Campus. Counts are for the fall 2025 first-time, first-year class; the GPA breakdown is the 'all enrolled students' column. No waiting list. Only 583 enrollees submitted SAT and 1,594 submitted ACT, so the percentiles describe small groups. The Common Data Set marks talent/ability 'very important' (probably for CCM/DAAP programs). Undergraduate and international counts are the 'Total Undergraduates' figures (nonresident 1,625)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 (fall 2027): SAT/ACT optional; students choose whether to have test scores considered."
+    "notes": "From the Common Data Set (fall 2027): SAT/ACT optional; students choose whether to have test scores considered."
   },
   "cost": {
     "year": "2026-2027",
@@ -122,6 +122,6 @@
     "intl_need_aid": false,
     "intl_need_aid_awarded": 958,
     "intl_avg_award_usd": 14548,
-    "notes": "CDS G1 first-year 2026-27 (in-state figure is the instructional fee). The CDS lists one nonresident rate, used here as the international rate; UC's international web page only shows outdated 2022-23 costs. CDS H6: 958 nonresidents received non-need-based institutional aid, average $14,548."
+    "notes": "First-year costs for 2026-27 from the Common Data Set (the in-state figure is the instructional fee). The Common Data Set lists one nonresident rate, shown here as international tuition; UC's international web page only shows outdated 2022-23 costs. In the Common Data Set, 958 nonresidents received non-need-based institutional aid, average $14,548"
   }
 }

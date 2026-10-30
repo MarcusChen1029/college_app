@@ -55,7 +55,7 @@
     "waitlist_admitted": 85,
     "pct_submit_sat": 35,
     "pct_submit_act": 4,
-    "notes": "Out-of-state figures exclude international. The 2025-26 CDS has no C11/C12 GPA data. C7 factor check boxes could not be read reliably from the PDF text (every row lands in one column), so factors are left blank. CDS C8F: 'test optional; only considered for students who submit and request their submission be considered'."
+    "notes": "Out-of-state figures exclude international. The 2025-26 Common Data Set has no GPA data. The admission factor check boxes could not be read reliably from the PDF text (every row lands in one column), so admission factors are not shown. Test policy in the Common Data Set: 'test optional; only considered for students who submit and request their submission be considered'."
   },
   "scores": {
     "SAT_TOTAL": [

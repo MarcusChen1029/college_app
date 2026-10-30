@@ -44,7 +44,7 @@
    "plan": "ROLLING",
    "due": "2027-05-01",
    "label": "International fall 2027 application deadline",
-   "notes": "Rolling admission; the cost page prints Fall: May 1 without a year (treated as 2027). Spring: Oct. 1; summer: March 1.",
+   "notes": "Rolling admission; the cost page gives Fall: May 1 without a year (2027 is assumed). Spring: Oct. 1; summer: March 1.",
    "src": "cost"
   }
  ],
@@ -98,7 +98,7 @@
   "room_board_usd": 9950,
   "other_usd": 3000,
   "total_coa_usd": 28625,
-  "notes": "ESU international page (no academic year is printed; entered as 2026-2027 as the current page): non-resident undergraduate flat-rate tuition and fees $15,675 (12+ credit hours with at least one on campus), on-campus living $9,950, insurance/books/etc. $3,000 (entered as other), total $28,625. The page also lists a lower 'Partnership/Diversity Award' rate (tuition and fees $10,125, total $23,075) without stating who qualifies. Kansas resident total is $20,305.",
+  "notes": "ESU international page (no academic year is printed; entered as 2026-2027 as the current page): non-resident undergraduate flat-rate tuition and fees $15,675 (12+ credit hours with at least one on campus), on-campus living $9,950, insurance/books/etc. $3,000 (entered as other), total $28,625. The page also lists a lower 'Partnership/Diversity Award' rate (tuition and fees $10,125, total $23,075) without stating who qualifies. Kansas resident total is $20,305",
   "src": "cost"
  },
  "aid": {

@@ -56,7 +56,7 @@
       "plan": "ROLLING",
       "due": null,
       "label": "Rolling admission (fall 2027 entry): no application closing date published",
-      "notes": "The first-year and international pages print no application deadline. The 2024-25 Common Data Set (C14) lists 8/1 as the application closing date for fall entry, but the admissions pages do not say so for fall 2027.",
+      "notes": "The first-year and international pages give no application deadline. The 2024-25 Common Data Set lists 8/1 as the application closing date for fall entry, but the admissions pages do not say so for fall 2027.",
       "src": "fy"
     },
     {
@@ -116,7 +116,7 @@
     "tuition_usd": 40560,
     "required_fees_usd": 746,
     "room_board_usd": 14726,
-    "notes": "From the 2026-27 Tuition & Fees page (effective fall 2026 and spring 2027). Tuition $20,280 per semester x2 = $40,560 (12-18 credits). Student services fee $373 per semester x2 = $746. Room and board uses basic housing ($3,866 per semester) plus the board plan ($3,497 per semester) x2 = $14,726; other room types run up to $4,883 per semester (apartment) and a single-room premium of $775 per semester applies."
+    "notes": "From the 2026-27 Tuition & Fees page (effective fall 2026 and spring 2027). Tuition $20,280 per semester x2 = $40,560 (12-18 credits). Student services fee $373 per semester x2 = $746. Room and board uses basic housing ($3,866 per semester) plus the board plan ($3,497 per semester) x2 = $14,726; other room types run up to $4,883 per semester (apartment) and a single-room premium of $775 per semester applies"
   },
   "majors": [],
   "score_codes": {

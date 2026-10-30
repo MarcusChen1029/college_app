@@ -65,7 +65,7 @@
       "2.0-2.49": 0.02,
       "1.0-1.99": 0
     },
-    "notes": "UC campuses are test-blind and have no early plans, so C9 test-score percentiles and C21 are blank. Enrolled by residency: 4,183 in-state, 252 out-of-state, 161 international. Residency applicant/admit splits sum to 1 more than the C1 totals (as printed in the CDS). C7 admission-factor checkboxes are not machine-readable in this PDF, so no factors are recorded."
+    "notes": "UC campuses are test-blind and have no early plans, so test-score percentiles and early decision figures are not reported. Enrolled by residency: 4,183 in-state, 252 out-of-state, 161 international. The residency applicant and admit splits add up to 1 more than the overall applications and admissions totals (as printed in the Common Data Set). The admission factor checkboxes cannot be read automatically from this PDF, so no admission factors are shown."
   },
   "scores": {},
   "cost": {
@@ -76,7 +76,7 @@
     "room_board_usd": 20929,
     "other_usd": 7227,
     "total_coa_usd": 43867,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 54187
   }
 }

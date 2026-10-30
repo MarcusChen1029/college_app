@@ -27,7 +27,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "The international requirements page asks for no SAT/ACT (they appear only as English-proficiency alternatives: ACT English 20, SAT Reading and Writing 530 from March 2016). IPEDS fall 2024 lists SAT/ACT as 'not considered' for admission, while a search-result excerpt of CSU's catalog describes the university as test-optional through fall 2026 with scores used for scholarships and placement; the catalog page itself could not be loaded, so verify with CSU.",
+  "notes": "The international requirements page asks for no SAT/ACT (they appear only as English-proficiency alternatives: ACT English 20, SAT Reading and Writing 530 from March 2016). IPEDS fall 2024 lists SAT/ACT as 'not considered' for admission, while a search-result excerpt of CSU's catalog describes the university as test-optional through fall 2026 with scores used for scholarships and placement; the catalog page itself could not be loaded, so confirm with CSU.",
   "src": "ipeds"
  },
  "requirements": {
@@ -35,7 +35,7 @@
    "own"
   ],
   "app_fee_usd": null,
-  "notes": "Apply through CSU's own application portal. Minimum 2.3 cumulative high school GPA. Required: transcripts, passport copy and English proof; official transcripts must be evaluated by TEC, ECE or WES. Proof of funds for one year is needed for the I-20. First-year students must meet a math placement score. The international application fee is not stated on the pages read, so it is left null.",
+  "notes": "Apply through CSU's own application portal. Minimum 2.3 cumulative high school GPA. Required: transcripts, passport copy and English proof; official transcripts must be evaluated by TEC, ECE or WES. Proof of funds for one year is needed for the I-20. First-year students must meet a math placement score. The international application fee is not stated on the pages read, so no fee is shown.",
   "src": "req"
  },
  "deadlines": [
@@ -101,7 +101,7 @@
   "books_usd": 800,
   "other_usd": 7093,
   "total_coa_usd": 47150,
-  "notes": "CSU's international planning estimate for a bachelor's student (page does not state the year; assumed 2026-27): tuition and fees $22,457, room and meals $16,800, books $800, health insurance $3,523, local transportation $1,770 and personal expenses $1,800 (other = $7,093); total $47,150. Extra fees: $100 one-time international matriculation fee and $30 per semester international services fee. The CSU Guarantee locks tuition for four years.",
+  "notes": "CSU's international planning estimate for a bachelor's student (page does not state the year; assumed 2026-27): tuition and fees $22,457, room and meals $16,800, books $800, health insurance $3,523, local transportation $1,770 and personal expenses $1,800 (other = $7,093); total $47,150. Extra fees: $100 one-time international matriculation fee and $30 per semester international services fee. The CSU Guarantee locks tuition for four years",
   "src": "cost"
  },
  "aid": {

@@ -75,7 +75,7 @@
    "kind": "scholarship",
    "due": "2026-12-31",
    "label": "Competitive scholarship applications",
-   "notes": "Apply roadmap: 'Submit Competitive Scholarship Applications by December 31st' (no year printed; taken as the cycle for fall 2027). Faith-based and community scholarships close March 15. The page does not say whether these are open to international students.",
+   "notes": "Apply roadmap: 'Submit Competitive Scholarship Applications by December 31st' (no year printed; the cycle for fall 2027 is assumed). Faith-based and community scholarships close March 15. The page does not say whether these are open to international students.",
    "src": "apply"
   },
   {
@@ -96,7 +96,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 3.5,
-   "notes": "Catalog: 'TOEFL ... 3.5 or higher on the internet-based test' (paper-based 500). The catalog does not name the scale; 3.5 cannot be a 0-120 score, so it is read as the new 1-6 scale. No minimum on the old 0-120 scale is printed on Campbellsville's own pages (third-party sites list 61).",
+   "notes": "The catalog asks for 'TOEFL ... 3.5 or higher on the internet-based test' (paper-based 500) without naming the scale; 3.5 cannot be a 0-120 score, so it is assumed to be the new 1-6 scale. Campbellsville's own pages give no minimum on the old 0-120 scale (third-party sites list 61).",
    "src": "cat"
   },
   {
@@ -139,7 +139,7 @@
   "room_board_usd": 10984,
   "books_usd": 800,
   "total_coa_usd": 48362,
-  "notes": "Campbellsville campus, traditional undergraduate living on campus: tuition $14,880 per semester (12-18 hours) x 2 = $29,760; technology fee $300 + activity fee $200; food and housing $10,984; books $800; total COA $48,362 including personal expenses, transportation and loan fees (published). The tuition page lists room and board of $4,884-$5,920 per semester depending on the hall. No separate international tuition rate is published."
+  "notes": "Campbellsville campus, traditional undergraduate living on campus: tuition $14,880 per semester (12-18 hours) x 2 = $29,760; technology fee $300 + activity fee $200; food and housing $10,984; books $800; total COA $48,362 including personal expenses, transportation and loan fees (published). The tuition page lists room and board of $4,884-$5,920 per semester depending on the hall. No separate international tuition rate is published"
  },
  "score_codes": {
   "sat": {

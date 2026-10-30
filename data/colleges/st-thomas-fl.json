@@ -44,6 +44,6 @@
     "applicants": 7095,
     "admits": 6947,
     "enrolled": 726,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was read, so international applicants/admits, GPA and admission factors are not included. St. Thomas is test optional and reports no SAT/ACT percentiles."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024): percentages from College Navigator, exact counts from the NCES file via the Urban Institute Education Data Portal. No Common Data Set was read, so international applicants/admits, GPA and admission factors are not included. St. Thomas is test optional and reports no SAT/ACT percentiles."
   }
 }

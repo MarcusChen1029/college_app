@@ -44,7 +44,7 @@
       "2.0-2.49": 8.5,
       "1.0-1.99": 0.5
     },
-    "notes": "CDS C1 (fall 2025 first-time first-year): 21,235 applied, 19,562 admitted (92.1%), 4,594 enrolled (institution-wide CDS). The residency table (in-state / out-of-state / international) is blank in the CDS, so no international applicant or admit counts are available; B2 shows 22 nonresident first-year students enrolled. GPA distribution is copied exactly as printed in C11 (the 2.0-2.49 band shows 8.5%, which looks high next to a 3.6 average, but it is the published figure). Undergraduate enrollment is B1 'Total Undergraduates' (26,629 incl. part-time and non-degree; 20,236 degree-seeking); 218 nonresidents is the B2 total column (107 degree-seeking). No early decision/action; no waitlist; student-to-faculty ratio 20:1 (I-2). C7 lists GPA and test scores as very important even though C8A marks SAT/ACT as not required but considered."
+    "notes": "From the Common Data Set (fall 2025 first-time first-year students): 21,235 applied, 19,562 admitted (92.1%), 4,594 enrolled (institution-wide Common Data Set). Utah State did not fill in the residency table (in-state / out-of-state / international), so no international applicant or admit counts are available; the Common Data Set's enrollment table by race/ethnicity shows 22 nonresident first-year students enrolled. The GPA breakdown is copied exactly as printed (the 2.0-2.49 band shows 8.5%, which looks high next to a 3.6 average, but it is the published figure). Undergraduate enrollment is 26,629 ('Total Undergraduates', including part-time and non-degree; 20,236 degree-seeking); 218 nonresidents is the total column (107 degree-seeking). No early decision/action; no waitlist; student-to-faculty ratio 20:1. The admission factors list GPA and test scores as very important even though the test policy marks SAT/ACT as not required but considered."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -101,7 +101,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; scores are also used for advising (C8D) and placement (C8G)."
+    "notes": "From the Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'; scores are also used for advising and placement."
   },
   "cost": {
     "year": "2026-2027",
@@ -112,6 +112,6 @@
     "required_fees_usd": 793,
     "room_board_usd": 9746,
     "books_usd": 856,
-    "notes": "CDS G1/G5 first-year 2026-27: in-state tuition $8,272, out-of-state and nonresident $25,717, required fees $793, on-campus food and housing $9,746, books $856, transportation $2,648, other $1,628. Tuition varies by program (G4 = yes)."
+    "notes": "First-year costs for 2026-27 from the Common Data Set: in-state tuition $8,272, out-of-state and nonresident tuition $25,717, required fees $793, on-campus food and housing $9,746, books $856, transportation $2,648, other $1,628. Tuition varies by program"
   }
 }

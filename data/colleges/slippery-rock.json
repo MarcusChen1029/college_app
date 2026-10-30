@@ -54,7 +54,7 @@
       "3.00-3.24": 12,
       "2.50-2.99": 9
     },
-    "notes": "CDS C1: international first-year applicants 228, admitted 81 (36%), enrolled 6, far below the 74% overall admit rate, so SRU is not an automatic admit for international applicants; the CDS does not say why (for example incomplete applications). C2 says no waitlist policy, while SRU's admissions page describes a waitlist for applicants below the guidelines. 12% (178 students) of enrolled first-years submitted SAT; the CDS prints ACT as 0% with 30 students, so pct_submit_act is left null. SAT/ACT percentiles are for those submitters only (ACT: 30 students). C7 marks test scores 'important' although applications are test-optional. GPA distribution is the all-enrolled column of C11 (3.58 average). Undergraduate enrollment 7,088 and 248 nonresident undergraduates are CDS B1/B2 (fall 2025)."
+    "notes": "From the Common Data Set: international first-year applicants 228, admitted 81 (36%), enrolled 6, far below the 74% overall admit rate, so SRU is not an automatic admit for international applicants; the Common Data Set does not say why (for example incomplete applications). The waitlist section says there is no waitlist policy, while SRU's admissions page describes a waitlist for applicants below the guidelines. 12% (178 students) of enrolled first-years submitted SAT; the Common Data Set prints ACT as 0% with 30 students, so the share of students who sent ACT scores is not shown. SAT/ACT percentiles are for those submitters only (ACT: 30 students). The admission factors section marks test scores 'important' although applications are test-optional. The GPA breakdown is the all-enrolled column (3.58 average). Undergraduate enrollment 7,088 and 248 nonresident undergraduates are from the Common Data Set (fall 2025)."
   },
   "factors": {
     "rigor": "I",
@@ -79,7 +79,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
+    "notes": "Test policy from the Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'."
   },
   "scores_source": "cds",
   "scores": {
@@ -119,6 +119,6 @@
     "source": "cds",
     "intl_need_aid_awarded": 62,
     "intl_avg_award_usd": 1775,
-    "notes": "CDS H6: 62 undergraduate degree-seeking nonresidents received institutional aid, average $1,775 (total $110,038); the CDS text does not show whether it was need- or non-need-based. CDS G1 for 2026-27 lists tuition $7,994 in-state and $11,992 out-of-state/nonresident, required fees $3,470, food and housing $11,098; the international cost matrix is used for the cost figures."
+    "notes": "From the Common Data Set: 62 undergraduate degree-seeking nonresidents received institutional aid, average $1,775 (total $110,038); the Common Data Set text does not show whether it was need- or non-need-based. For 2026-27 the Common Data Set lists tuition $7,994 in-state and $11,992 out-of-state/nonresident, required fees $3,470, food and housing $11,098; the cost figures come from the international cost matrix"
   }
 }

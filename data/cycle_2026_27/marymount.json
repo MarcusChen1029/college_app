@@ -42,7 +42,7 @@
       "own"
     ],
     "app_fee_usd": 0,
-    "notes": "CDS C13 (2023-24) reports no application fee; not re-confirmed on the current admissions pages. International first-year applicants submit official transcripts sent by the school (with certified English translations; national exam results where relevant), English proficiency proof and, optionally, recommendations and a personal statement. A resume is requested for any gaps in enrollment. Admission is rolling with no deadline; decisions take about 4-6 weeks.",
+    "notes": "The 2023-24 Common Data Set reports no application fee; it has not been confirmed again on the current admissions pages. International first-year applicants submit official transcripts sent by the school (with certified English translations; national exam results where relevant), English proficiency proof and, optionally, recommendations and a personal statement. A resume is requested for any gaps in enrollment. Admission is rolling with no deadline; decisions take about 4-6 weeks.",
     "src": "intl"
   },
   "deadlines": [
@@ -58,7 +58,7 @@
       "kind": "scholarship",
       "due": "2027-03-01",
       "label": "Priority consideration for first-year academic scholarships",
-      "notes": "The international financial advice page asks for the application and supporting documents by March 1 for priority consideration; no year printed, taken as 2027.",
+      "notes": "The international financial advice page asks for the application and supporting documents by March 1 for priority consideration; the page gives no year, so 2027 is assumed.",
       "src": "fa"
     }
   ],
@@ -101,7 +101,7 @@
     "tuition_usd": 42678,
     "required_fees_usd": 1400,
     "intl_avg_award_usd": 18534,
-    "notes": "Full-time undergraduate (12-18 credits): tuition $21,339 per semester; fees per year: technology $550, student activity $250, health & well-being $200, facility $400. Excludes nursing fee ($2,300 per year), health insurance, and a one-time $450 new first-college freshman fee. Room and board is not on the tuition page (the 2023-24 CDS lists $17,000 for 2024-25). intl_avg_award_usd is the 2023-24 CDS H6 average institutional award to 133 degree-seeking nonresident undergraduates ($18,534).",
+    "notes": "Full-time undergraduate (12-18 credits): tuition $21,339 per semester; fees per year: technology $550, student activity $250, health & well-being $200, facility $400. Excludes nursing fee ($2,300 per year), health insurance, and a one-time $450 new first-college freshman fee. Room and board is not on the tuition page (the 2023-24 Common Data Set lists $17,000 for 2024-25). The average award is the 2023-24 Common Data Set average of the college's own awards to 133 degree-seeking nonresident undergraduates ($18,534)",
     "src": "tf"
   },
   "aid": {

@@ -48,7 +48,7 @@
    "own"
   ],
   "app_fee_usd": 0,
-  "notes": "CDS C13 answers 'No' to having an application fee. Required: application and an official high school transcript (self-reported grades are accepted for the decision; official transcript due by the end of the first semester). Writing sample and recommendation letters are optional. International applicants also send English translations, a professional equivalency evaluation of their transcripts, proof of English proficiency and, after admission, a Certification of Finances and bank proof of one year of funding for the I-20. The School of Music requires an audition.",
+  "notes": "The Common Data Set answers 'No' to having an application fee. Required: application and an official high school transcript (self-reported grades are accepted for the decision; official transcript due by the end of the first semester). Writing sample and recommendation letters are optional. International applicants also send English translations, a professional equivalency evaluation of their transcripts, proof of English proficiency and, after admission, a Certification of Finances and bank proof of one year of funding for the I-20. The School of Music requires an audition.",
   "src": "fyi"
  },
  "deadlines": [
@@ -58,7 +58,7 @@
    "due": "2026-11-01",
    "notify": "2026-12-01",
    "label": "Early Decision (binding) - fall 2027 entry",
-   "notes": "Enrollment deposit due Jan 15 for ED admits. Pages print no year; treated as fall 2027 entry. A search-engine snippet mentioned an Early Decision II round on Jan 5, which the current first-year page does not list (unconfirmed).",
+   "notes": "Enrollment deposit due Jan 15 for ED admits. The pages give no year, so fall 2027 entry is assumed. A search-engine snippet mentioned an Early Decision II round on Jan 5, which the current first-year page does not list (unconfirmed).",
    "src": "fyi"
   },
   {
@@ -67,7 +67,7 @@
    "due": "2026-11-15",
    "notify": "2026-12-15",
    "label": "Early Action (non-binding) - fall 2027 entry",
-   "notes": "Notification date is from CDS C16 (2024-25).",
+   "notes": "The notification date is from the Common Data Set (2024-25).",
    "src": "fyi"
   },
   {
@@ -75,14 +75,14 @@
    "plan": "ROLLING",
    "due": "2027-01-15",
    "label": "Regular admission - rolling, priority date",
-   "notes": "The current first-year page lists Regular Admission only as 'Rolling'; the 2025-26 catalog gives January 15 as the priority date and CDS C14 gives Nov 1 as a priority date. Jan 15 is shown as the latest published priority date. There is no separate international deadline.",
+   "notes": "The current first-year page lists Regular Admission only as 'Rolling'; the 2025-26 catalog gives January 15 as the priority date and the Common Data Set gives Nov 1 as a priority date. Jan 15 is shown as the latest published priority date. There is no separate international deadline.",
    "src": "cat"
   },
   {
    "kind": "deposit",
    "due": "2027-05-01",
    "label": "Enrollment deposit ($500, non-refundable)",
-   "notes": "Due May 1, or within 30 days if admitted later (CDS C17); the deposit must be received before the I-20 is issued.",
+   "notes": "Due May 1, or within 30 days if admitted later (per the Common Data Set); the deposit must be received before the I-20 is issued.",
    "src": "cat"
   }
  ],

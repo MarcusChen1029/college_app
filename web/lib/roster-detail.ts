@@ -1,7 +1,10 @@
 // Helpers for the teacher's student-detail page: the detail payload reshaped into the roster's row type (so the
 // same attention flags apply), and small display helpers for scores and names.
 
-import type { DetailCollege, RosterStudent, StudentDetail } from "./roster.ts";
+import { isSubmitted } from "./application.ts";
+import { progress } from "./checklist.ts";
+import { daysUntil, isActiveCollege, type DetailCollege, type RosterStudent, type StudentDetail } from "./roster.ts";
+import type { Status } from "./student-rows.ts";
 import { ENGLISH_TEST_KEYS, ENGLISH_TESTS, type EnglishTestKey, type ScoreScale, type SectionScores, type TestDetails } from "./scores.ts";
 
 const APPLICATION_KINDS = new Set(["application", "priority"]);
@@ -40,6 +43,34 @@ export function detailToRoster(d: StudentDetail): RosterStudent {
       nextDeadline: nextApplicationDeadline(c),
     })),
   };
+}
+
+export type CollegeSummary = {
+  total: number;
+  /** Still being worked on (researching, planning, in progress). */
+  active: number;
+  /** Sent, or with a decision. */
+  submitted: number;
+  /** The soonest application deadline still ahead on a college being worked on, and that college's open checklist. */
+  next: { date: string; days: number; college: string; open: number; items: number } | null;
+};
+
+/**
+ * The Overview's one-line college progress, from the detail payload alone (teacher_student already returns each
+ * college's status, checklist and upcoming deadlines): no other call and no field the RPC leaves out.
+ */
+export function collegeSummary(d: StudentDetail, now: Date): CollegeSummary {
+  const roster = detailToRoster(d);
+  const active = roster.colleges.filter(isActiveCollege);
+  let next: CollegeSummary["next"] = null;
+  for (const c of active) {
+    if (!c.nextDeadline) continue;
+    const days = daysUntil(c.nextDeadline, now);
+    if (days < 0 || (next && days >= next.days)) continue;
+    const p = progress(c.checklist);
+    next = { date: c.nextDeadline, days, college: c.name, open: p.missing, items: p.total };
+  }
+  return { total: d.colleges.length, active: active.length, submitted: d.colleges.filter((c) => isSubmitted(c.status as Status)).length, next };
 }
 
 /** "johns-hopkins" -> "Johns Hopkins"; custom colleges have no readable slug. */

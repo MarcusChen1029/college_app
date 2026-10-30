@@ -47,7 +47,7 @@
     "enrolled": 1968,
     "pct_submit_sat": 27,
     "pct_submit_act": 67,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). No Common Data Set was found on AAMU's institutional research pages, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 27%, ACT 67%)."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024): percentages from College Navigator, exact counts from the NCES file via the Urban Institute Education Data Portal. No Common Data Set was found on AAMU's institutional research pages, so international applicants and admits, GPA, SAT total and admission factors are not shown. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 27%, ACT 67%)."
   },
   "scores": {
     "SAT_ERW": [

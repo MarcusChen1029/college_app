@@ -1,5 +1,6 @@
 import { NavText, SectionTabs } from "@/components/SectionTabs";
 import type { NavItem } from "@/lib/roles";
+import { PAGE_TITLE } from "@/lib/ui";
 
 const TABS: readonly NavItem[] = [
   ["/application/interested", "Interested"],
@@ -13,8 +14,8 @@ const TABS: readonly NavItem[] = [
 
 export default function ApplicationLayout({ children }: LayoutProps<"/application">) {
   return (
-    <div className="space-y-5">
-      <h1 className="text-2xl font-semibold">
+    <div data-app-screen className="space-y-6">
+      <h1 className={`${PAGE_TITLE}`}>
         <NavText label="My colleges" />
       </h1>
       <SectionTabs label="My colleges" tabs={TABS} />

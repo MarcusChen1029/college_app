@@ -229,6 +229,29 @@ export async function getProgramFees() {
   return cachedProgramFees();
 }
 
+/** A course's published entry offers (colleges outside the US admit by course). */
+export type CourseOfferRow = { name: string; a_level_offer: string | null; ib_offer: string | null; ib_points: number | null; atar: number | null };
+
+/** institution_id -> its courses' names and entry offers, for the match page. */
+async function cachedCourseOffers(): Promise<Record<string, CourseOfferRow[]>> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("colleges");
+  const db = supabase();
+  const rows = await allRows(
+    (from, to) => db.from("programs").select("institution_id, name, a_level_offer, ib_offer, ib_points, atar").order("id").range(from, to),
+    "course offers",
+  );
+  const out: Record<string, CourseOfferRow[]> = {};
+  for (const r of rows) (out[r.institution_id] ??= []).push({ name: r.name, a_level_offer: r.a_level_offer, ib_offer: r.ib_offer, ib_points: r.ib_points, atar: r.atar });
+  return out;
+}
+
+export async function getCourseOffers() {
+  await connection();
+  return cachedCourseOffers();
+}
+
 export async function getAppFees() {
   await connection();
   return cachedAppFees();

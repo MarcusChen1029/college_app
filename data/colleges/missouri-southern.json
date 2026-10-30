@@ -50,7 +50,7 @@
       "2.0-2.49": 5.72,
       "1.0-1.99": 0.36
     },
-    "notes": "CDS C1 (fall 2025 first-time first-year): 2,613 applicants, 2,523 admitted (97%), 586 enrolled. International: 731 applied, 694 admitted (about 95%), 29 enrolled. GPA distribution is the 'all enrolled students' column of C11. Percentiles: only 27 SAT submitters (5%) vs 412 ACT (70%); ACT Reading 18/22/28 and Science 18/22/24 are not stored. Undergraduate enrollment 3,917 and 141 nonresident undergraduates are the B1/B2 'Total Undergraduates' figures. Open admission policy box is N/A; no early decision/action."
+    "notes": "From the Common Data Set (fall 2025 first-time first-year): 2,613 applicants, 2,523 admitted (97%), 586 enrolled. International: 731 applied, 694 admitted (about 95%), 29 enrolled. The GPA breakdown is the 'all enrolled students' column. Percentiles: only 27 SAT submitters (5%) vs 412 ACT (70%); ACT Reading 18/22/28 and Science 18/22/24 are not shown. Undergraduate enrollment 3,917 and 141 nonresident undergraduates are the 'Total Undergraduates' figures. Open admission policy box is N/A; no early decision/action."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,7 +107,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8F: 'ACT is not required, we have been test optional since August 2020.' C8A marks SAT/ACT as considered if submitted."
+    "notes": "From the Common Data Set: 'ACT is not required, we have been test optional since August 2020.' The Common Data Set also marks SAT/ACT as considered if submitted."
   },
   "cost": {
     "year": "2026-2027",
@@ -120,6 +120,6 @@
     "intl_extra_fees_usd": 100,
     "intl_merit_aid": true,
     "intl_avg_award_usd": 7899,
-    "notes": "CDS G1 (first-year, 2026-27): in-state tuition $9,405, out-of-state and international $18,810, required fees $900, room and board $9,032.40. H6: 99 nonresident undergraduates received non-need-based institutional aid, average $7,899. MSSU's 2026-27 international guide adds a $100 international student fee, $250 one-time orientation fee and $2,526.36 health insurance and book rental, for a year total of $31,618.76 (30 credits, double room, 19 meals). The intl_extra_fees_usd value is that $100 fee."
+    "notes": "From the Common Data Set (first-year, 2026-27): in-state tuition $9,405, out-of-state and international $18,810, required fees $900, room and board $9,032.40. The Common Data Set also shows that 99 nonresident undergraduates received non-need-based institutional aid, average $7,899. MSSU's 2026-27 international guide adds a $100 international student fee, $250 one-time orientation fee and $2,526.36 health insurance and book rental, for a year total of $31,618.76 (30 credits, double room, 19 meals). The international fee shown is that $100 fee"
   }
 }

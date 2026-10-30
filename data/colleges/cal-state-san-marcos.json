@@ -57,7 +57,7 @@
    "2.0-2.49": 3.96,
    "1.0-1.99": 0.0
   },
-  "notes": "CDS C1 fall 2025 first-year class: 20,881 applied, 19,864 admitted (95%), 2,705 enrolled (full-time plus part-time). Residency split as printed: international 173 applicants and 162 admitted (about 94%); 40 applicants (21 admitted) have unknown residency. The C11 GPA column for all enrolled students sums to 100.32% as printed. CSU campuses are test-blind; only 2.3% (SAT, 64 students) and 0.4% (ACT, 13 students) of enrollees had scores, so the SAT/ACT percentiles in C9 are omitted. intl_undergrads is the CDS B2 count of degree-seeking nonresident undergraduates (148); undergrad_enrollment is the CDS B total of all undergraduates (15,770). College Navigator (fall 2024) shows 19,721 applicants and 95% admitted."
+  "notes": "From the Common Data Set, fall 2025 first-year class: 20,881 applied, 19,864 admitted (95%), 2,705 enrolled (full-time plus part-time). Residency split as printed: international 173 applicants and 162 admitted (about 94%); 40 applicants (21 admitted) have unknown residency. The GPA column for all enrolled students sums to 100.32% as printed. CSU campuses are test-blind; only 2.3% (SAT, 64 students) and 0.4% (ACT, 13 students) of enrollees had scores, so the SAT/ACT percentiles are not shown. International undergraduates number 148 (degree-seeking nonresident undergraduates); undergraduate enrollment is 15,770 (all undergraduates). College Navigator (fall 2024) shows 19,721 applicants and 95% admitted."
  },
  "scores": {},
  "factors": {

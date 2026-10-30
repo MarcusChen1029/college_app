@@ -47,7 +47,7 @@
     "enrolled": 365,
     "pct_submit_sat": 8,
     "pct_submit_act": 58,
-    "notes": "No readable Common Data Set: Minot State's CDS page now points to a login-only SharePoint folder, so this is the IPEDS baseline for the fall 2023 entering class (ADM2023). College Navigator's newer fall 2024 figures: 701 applicants, 65% admitted, 78% of admitted enrolled (the admit rate fell from 72% in fall 2023, so it is not an open-admission school for every applicant). IPEDS gives no international applicant/admit split and no GPA data. Undergraduate enrollment 2,499 and student-to-faculty ratio 11:1 are College Navigator fall 2024."
+    "notes": "There is no readable Common Data Set: Minot State's Common Data Set page now points to a login-only SharePoint folder, so the figures come from IPEDS, the US government's college data (fall 2023 entering class). College Navigator's newer fall 2024 figures: 701 applicants, 65% admitted, 78% of admitted enrolled (the admit rate fell from 72% in fall 2023, so it is not an open-admission school for every applicant). IPEDS gives no international applicant/admit split and no GPA data. Undergraduate enrollment 2,499 and student-to-faculty ratio 11:1 are College Navigator fall 2024."
   },
   "scores": {
     "SAT_ERW": [

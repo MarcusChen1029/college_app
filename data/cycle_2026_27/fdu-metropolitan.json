@@ -69,7 +69,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International fall 2027 application deadline",
-      "notes": "Rolling admissions, allow 3-4 weeks for processing. Spring (January) deadline is December 1. The page prints no year; taken as fall 2027. Applicants already living in the U.S. have an August 1 fall date on the pathway page. Deadlines may vary by program.",
+      "notes": "Rolling admissions, allow 3-4 weeks for processing. Spring (January) deadline is December 1. The page gives no year, so fall 2027 is assumed. Applicants already living in the U.S. have an August 1 fall date on the pathway page. Deadlines may vary by program.",
       "src": "dates"
     }
   ],
@@ -90,7 +90,7 @@
       "test": "TOEFL_IBT_2026",
       "status": "required_option",
       "min": 4.5,
-      "notes": "The page prints 70/4.5 for TOEFL iBT without naming the scale; 4.5 is read as the new 1-6 band score. Pre-University Program 3.5.",
+      "notes": "The page prints 70/4.5 for TOEFL iBT without naming the scale; 4.5 is assumed to be the new 1-6 band score. Pre-University Program 3.5.",
       "src": "eng"
     },
     {
@@ -131,7 +131,7 @@
     "tuition_intl_usd": 42799,
     "room_board_usd": 17000,
     "total_coa_usd": 59799,
-    "notes": "FDU international estimate for 2026-27: tuition, fees and medical insurance $42,799 plus room and board $17,000 = $59,799; excludes books and personal expenses. The $42,799 figure combines tuition, fees and medical insurance and is not split on the page."
+    "notes": "FDU international estimate for 2026-27: tuition, fees and medical insurance $42,799 plus room and board $17,000 = $59,799; excludes books and personal expenses. The $42,799 figure combines tuition, fees and medical insurance and is not split on the page"
   },
   "score_codes": {
     "sat": {

@@ -50,7 +50,7 @@
     "out_state_admits": 6778,
     "intl_applicants": 67,
     "intl_admits": 51,
-    "notes": "CDS C1 (fall 2025 first-time first-year): 17,582 applied, 14,749 admitted (83.9%), 3,881 enrolled; residency table in-state 9,980/7,920, out-of-state 7,535/6,778, international 67/51 (76% admitted). Only about 67 international first-year applicants per year, so the international sample is small. In the 2025-26 CDS file the C7 factor boxes, C8 policy boxes, C9-C12 test-score/GPA tables and the G tuition table are blank in the text layer, so test scores, GPA and factors are not taken from it. Undergraduate enrollment is B1 'Total All Undergraduates' (25,308 incl. part-time and non-degree); 155 nonresident undergraduates is the B2 total column. No early decision/action; student-to-faculty ratio 20:1 (CDS I-2). Boise State is not test-blind for internationals (see test policy) but domestic admission ignores SAT/ACT."
+    "notes": "From the Common Data Set (fall 2025 first-time first-year): 17,582 applied, 14,749 admitted (83.9%), 3,881 enrolled; residency table in-state 9,980/7,920, out-of-state 7,535/6,778, international 67/51 (76% admitted). Only about 67 international first-year applicants per year, so the international sample is small. In the 2025-26 Common Data Set file the admission-factor boxes, test-policy boxes, test-score and GPA tables and the tuition table are blank in the PDF text, so test scores, GPA and admission factors are not taken from it. Undergraduate enrollment is 25,308 ('Total All Undergraduates', incl. part-time and non-degree); 155 nonresident undergraduates is the total column. No early decision/action; student-to-faculty ratio 20:1. Boise State is not test-blind for internationals (see test policy) but domestic admission ignores SAT/ACT."
   },
   "stats_extra": [
     {
@@ -79,7 +79,7 @@
         "2.0-2.49": 0.7,
         "1.0-1.99": 0.0
       },
-      "notes": "Fall 2024 first-year class from the 2024-25 CDS (the latest Boise State CDS whose GPA table is readable). C11 also lists 0.8% below 1.0 as printed, so the bands sum to about 100%. Residency: international 74 applied, 56 admitted, 13 enrolled. C9: 49% of enrollees submitted SAT (1,646) and 5% ACT (168); among submitters SAT composite 25th/75th percentile 960/1180, SAT ERW 490/610, ACT composite 20/26 (50th percentile and SAT math were not readable, so no score row is stored)."
+      "notes": "Fall 2024 first-year class from the 2024-25 Common Data Set (the latest Boise State Common Data Set whose GPA table is readable). The GPA table also lists 0.8% below 1.0 as printed, so the bands sum to about 100%. Residency: international 74 applied, 56 admitted, 13 enrolled. 49% of enrollees submitted SAT (1,646) and 5% ACT (168); among submitters SAT composite 25th/75th percentile 960/1180, SAT ERW 490/610, ACT composite 20/26 (50th percentile and SAT math were not readable, so no score row is shown)."
     }
   ]
 }

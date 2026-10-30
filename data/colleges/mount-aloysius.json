@@ -46,7 +46,7 @@
     "admits": 1294,
     "enrolled": 318,
     "pct_submit_sat": 10,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found for Mount Aloysius (search of the college site returned only the 2025-26 and 2026-27 catalogs), so GPA, residency and international applicant splits are not available. Undergraduate enrollment 2,942 and the 11-to-1 student-faculty ratio are from College Navigator (fall 2024). SAT percentiles are for only 32 enrolled first-time students (10% submitting); no ACT percentiles are reported. IPEDS shows 1,577 applicants, 1,294 admitted (82%) and 318 enrolled."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found for Mount Aloysius (search of the college site returned only the 2025-26 and 2026-27 catalogs), so GPA, residency and international applicant splits are not available. Undergraduate enrollment 2,942 and the 11-to-1 student-faculty ratio are from College Navigator (fall 2024). SAT percentiles are for only 32 enrolled first-time students (10% submitting); no ACT percentiles are reported. IPEDS shows 1,577 applicants, 1,294 admitted (82%) and 318 enrolled."
   },
   "scores": {
     "SAT_ERW": [

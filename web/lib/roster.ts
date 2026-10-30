@@ -214,7 +214,9 @@ export function checklistSummary(s: RosterStudent): { done: number; total: numbe
 const essaysNotStarted = (c: Checklist) => !c.no_essays && (c.essay_list ?? []).every((e) => e.status === "not_started");
 
 export type FlagKey = "no_colleges" | "deadline_soon" | "essay_not_started" | "no_scores" | "inactive";
-export type Flag = { key: FlagKey; label: string; detail: string };
+/** `detail` is the English sentence (tests and exports read it); `college` and `due` (yyyy-mm-dd) let a view write the date
+ *  in the reader's own format instead of the ISO date the sentence carries. */
+export type Flag = { key: FlagKey; label: string; detail: string; college?: string; due?: string };
 
 /** How urgent each flag is; used to rank students so one imminent deadline outranks a pile of minor flags. */
 export const FLAG_SEVERITY: Record<FlagKey, number> = { deadline_soon: 5, essay_not_started: 4, no_colleges: 3, inactive: 2, no_scores: 1 };
@@ -247,7 +249,8 @@ export function computeFlags(s: RosterStudent, now: Date): Flag[] {
   }
 
   const essay = active.find((c) => c.nextDeadline && daysUntil(c.nextDeadline, now) >= 0 && daysUntil(c.nextDeadline, now) <= ESSAY_DAYS && essaysNotStarted(c.checklist));
-  if (essay) flags.push({ key: "essay_not_started", label: "Essay not started", detail: `Nothing started for ${essay.name}, due ${essay.nextDeadline}.` });
+  if (essay)
+    flags.push({ key: "essay_not_started", label: "Essay not started", detail: `Nothing started for ${essay.name}, due ${essay.nextDeadline}.`, college: essay.name, due: essay.nextDeadline! });
 
   if (s.colleges.length === 0) flags.push({ key: "no_colleges", label: "No colleges yet", detail: "Hasn't added any college to their list." });
   if (s.satTotal == null && s.actComposite == null) flags.push({ key: "no_scores", label: "No test scores", detail: "No SAT or ACT score entered." });

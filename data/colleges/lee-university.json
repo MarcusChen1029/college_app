@@ -58,7 +58,7 @@
       "2.0-2.49": 1,
       "1.0-1.99": 1
     },
-    "notes": "CDS 2024-25 C1 (fall 2024): 2,388 applied, 1,684 admitted, 589 enrolled. International first-year applicants: 95 applied, 34 admitted, 23 enrolled, so international admission was much more selective than the overall admit rate. The 2025-26 CDS is listed on lee.edu but its PDF could not be retrieved, so 2024-25 is used. Undergraduate enrollment (3,271) and intl_undergrads (85 nonresidents, all undergraduates) are CDS B1. No waitlist, ED or EA; no application closing date (C14)."
+    "notes": "From the 2024-25 Common Data Set (fall 2024): 2,388 applied, 1,684 admitted, 589 enrolled. International first-year applicants: 95 applied, 34 admitted, 23 enrolled, so international admission was much more selective than the overall admit rate. The 2025-26 Common Data Set is listed on lee.edu but its PDF could not be retrieved, so the 2024-25 one is shown here. Undergraduate enrollment is 3,271; international undergraduates number 85 (nonresidents, all undergraduates). No waitlist, ED or EA; no application closing date."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -116,13 +116,13 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "recommended",
-    "notes": "CDS 2024-25 C8 (for fall 2025 entry): SAT or ACT 'recommend'. Students with 16 college semester hours (24 for Tennessee residents) are not required to provide scores. The admissions page now says applicants can apply test-optional."
+    "notes": "From the 2024-25 Common Data Set (for fall 2025 entry): SAT or ACT 'recommend'. Students with 16 college semester hours (24 for Tennessee residents) are not required to provide scores. The admissions page now says applicants can apply test-optional."
   },
   "cost": {
     "year": "2024-2025",
     "source": "cds",
     "tuition_usd": 24120,
     "required_fees_usd": 750,
-    "notes": "CDS 2024-25 G1 (first-year): tuition $24,120, required fees $750, on-campus housing only $5,290 and food only $5,160; non-resident tuition is the same. Current 2026-27 figures are in the cycle file."
+    "notes": "From the 2024-25 Common Data Set (first-year): tuition $24,120, required fees $750, on-campus housing only $5,290 and food only $5,160; non-resident tuition is the same. Current 2026-27 figures are shown separately"
   }
 }

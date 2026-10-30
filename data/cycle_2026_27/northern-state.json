@@ -68,7 +68,7 @@
    "kind": "scholarship",
    "due": "2027-03-01",
    "label": "WolfPACT scholarship priority deadline (first-year, fall 2027)",
-   "notes": "The page prints 'Priority deadline: March 1' without a year; taken as March 1, 2027. No separate application: send the admission application, fee, high school transcript and ACT/SAT scores (scores optional for the no-score track) for an official award notice.",
+   "notes": "The page prints 'Priority deadline: March 1' without a year, so March 1, 2027 is assumed. No separate application: send the admission application, fee, high school transcript and ACT/SAT scores (scores optional for the no-score track) for an official award notice.",
    "src": "wolf"
   }
  ],
@@ -115,7 +115,7 @@
   "tuition_out_of_state_usd": 12379,
   "tuition_intl_usd": null,
   "room_board_usd": 11274,
-  "notes": "2026-27 yearly estimates for 30 credit hours: tuition and fees combined $10,077 resident (includes new freshmen from the listed South Dakota Advantage states) and $12,379 out-of-state; housing $6,300 (average residence hall) plus food $4,974 (21 meals/week) = $11,274. The page does not say which rate international students pay, though the factsheet (titled 2023/2024) lists a $200 per-semester international student fee and ~$1,316 health insurance on top of tuition; current amounts are not confirmed. Out-of-state per-credit tuition is $376.40.",
+  "notes": "2026-27 yearly estimates for 30 credit hours: tuition and fees combined $10,077 resident (includes new freshmen from the listed South Dakota Advantage states) and $12,379 out-of-state; housing $6,300 (average residence hall) plus food $4,974 (21 meals/week) = $11,274. The page does not say which rate international students pay, though the factsheet (titled 2023/2024) lists a $200 per-semester international student fee and ~$1,316 health insurance on top of tuition; current amounts are not confirmed. Out-of-state per-credit tuition is $376.40",
   "src": "tuit"
  },
  "majors": [

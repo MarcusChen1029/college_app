@@ -8,17 +8,33 @@ import { PS_PROMPTS, sharedEssaysFor, togglePick, UC_PICKS, UC_PIQS, type EssayD
 import { useT } from "@/lib/i18n/client";
 import { registerColleges, useStudent } from "@/lib/student-store";
 import { entrySupplements, reuseGroups, slotPrompts, withRequiredSlots, type SupplementsData } from "@/lib/supplements";
-import { toneClass } from "@/lib/ui";
+import { buttonClass, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
 import type { CollegeSummary } from "@/lib/types";
 import { CollegeEssayCard } from "./CollegeEssayCard";
 import { EssayReusePanel } from "./EssayReusePanel";
 import { EssayRow, GOOGLE_NOTICE, googlePost, initialNotice, type GoogleAccess, type GoogleDocs, type GoogleStatus } from "./EssayRow";
+import { EmptyNote } from "./EmptyState";
 
 const noop = () => () => {};
 
 /** One essay with a fixed name (status + Google Doc), stored on the profile rather than on a college. */
 /** `name` is the English name used for the Google Doc title; `display` is what the student sees. */
-function SharedDoc({ name, display, doc, onChange, google }: { name: string; display: string; doc: Partial<EssayDoc>; onChange: (patch: Partial<EssayDoc>) => void; google?: GoogleAccess }) {
+function SharedDoc({
+  name,
+  display,
+  displayHidden = false,
+  doc,
+  onChange,
+  google,
+}: {
+  name: string;
+  display: string;
+  /** The heading above already names it: keep the name for screen readers only. */
+  displayHidden?: boolean;
+  doc: Partial<EssayDoc>;
+  onChange: (patch: Partial<EssayDoc>) => void;
+  google?: GoogleAccess;
+}) {
   const docs: GoogleDocs | undefined = google && { connected: google.connected, connect: google.connect, create: () => google.createNamed(name) };
   return (
     <ul>
@@ -26,6 +42,7 @@ function SharedDoc({ name, display, doc, onChange, google }: { name: string; dis
         essay={{ id: name, title: name, url: doc.url ?? "", status: doc.status ?? "not_started" }}
         index={0}
         label={display}
+        labelHidden={displayHidden}
         docs={docs}
         onChange={(p) => onChange({ ...(p.status ? { status: p.status } : {}), ...(p.url !== undefined ? { url: p.url } : {}) })}
       />
@@ -33,8 +50,8 @@ function SharedDoc({ name, display, doc, onChange, google }: { name: string; dis
   );
 }
 
-const SHARED_CARD = "space-y-3 rounded-3xl border-2 border-zinc-200 p-5";
-const PROMPT_BOX = "rounded-xl border border-zinc-200 p-3";
+const SHARED_CARD = `space-y-3 ${PANEL} p-5 sm:p-6`;
+const PROMPT_BOX = "rounded-xl bg-white p-3";
 
 function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssays; onChange: (e: PersonalEssays) => void; google?: GoogleAccess }) {
   const t = useT();
@@ -43,33 +60,37 @@ function PersonalStatement({ essays, onChange, google }: { essays: PersonalEssay
   return (
     <section className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-xl font-bold">{t("writing.psHeading")}</h2>
-        <span className="text-xs text-zinc-500">{t("writing.psWords")} · {t("writing.psNote")}</span>
+        <h2 className={SECTION_TITLE}>{t("writing.psHeading")}</h2>
+        <span className="text-[13px] text-zinc-600">{t("writing.psWords")} · {t("writing.psNote")}</span>
       </div>
-      <SharedDoc name="Common App Personal Statement" display={t("writing.psName")} doc={ps} onChange={set} google={google} />
-      <details className={PROMPT_BOX}>
-        <summary className="cursor-pointer text-sm font-medium">
-          {t("writing.psPrompts")}
-          {ps.prompt ? t("writing.psChose", { n: ps.prompt }) : ""}
-        </summary>
-        <ul className="mt-2 space-y-2">
-          {PS_PROMPTS.map((p) => (
-            <li key={p.id}>
-              <label className="flex items-start gap-2 text-sm">
-                <input type="radio" name="ps-prompt" className="mt-1" checked={ps.prompt === p.id} onChange={() => set({ prompt: p.id })} />
+      <SharedDoc name="Common App Personal Statement" display={t("writing.psName")} displayHidden doc={ps} onChange={set} google={google} />
+      {/* The seven prompts are the most useful thing here: always shown, picked like a list, the choice ringed in ink. */}
+      <fieldset className="space-y-3 pt-2">
+        <legend className="flex flex-wrap items-baseline gap-x-3 text-[15px] font-semibold text-ink">
+          <span>
+            {t("writing.psPrompts")}
+            {ps.prompt ? t("writing.psChose", { n: ps.prompt }) : ""}
+          </span>
+          {ps.prompt && (
+            <button type="button" className="text-sm font-medium text-zinc-600 underline underline-offset-4 hover:text-ink" onClick={() => set({ prompt: null })}>
+              {t("writing.clearChoice")}
+            </button>
+          )}
+        </legend>
+        <ul className="grid gap-2 lg:grid-cols-2">
+          {PS_PROMPTS.map((p, i) => (
+            // An odd last prompt (the seventh) runs the full width rather than leaving half a row empty.
+            <li key={p.id} className={i === PS_PROMPTS.length - 1 && PS_PROMPTS.length % 2 === 1 ? "lg:col-span-2" : undefined}>
+              <label className="flex h-full cursor-pointer items-start gap-3 rounded-xl bg-white p-3 text-[15px] leading-relaxed text-ink ring-ink transition-shadow hover:ring-1 has-[:checked]:ring-2 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-blue-400">
+                <input type="radio" name="ps-prompt" className="mt-1.5 shrink-0 accent-ink" checked={ps.prompt === p.id} onChange={() => set({ prompt: p.id })} />
                 <span>
-                  <strong>{p.id}.</strong> {p.text}
+                  <strong className="tabular-nums">{p.id}.</strong> {p.text}
                 </span>
               </label>
             </li>
           ))}
         </ul>
-        {ps.prompt && (
-          <button type="button" className="mt-2 text-xs text-zinc-500 hover:text-urgent" onClick={() => set({ prompt: null })}>
-            {t("writing.clearChoice")}
-          </button>
-        )}
-      </details>
+      </fieldset>
     </section>
   );
 }
@@ -82,8 +103,8 @@ function UcEssays({ essays, onChange, google }: { essays: PersonalEssays; onChan
   return (
     <section id="uc-essays" className={SHARED_CARD}>
       <div className="flex flex-wrap items-baseline gap-x-3">
-        <h2 className="text-xl font-bold">{t("writing.ucHeading")}</h2>
-        <span className="text-xs text-zinc-500">
+        <h2 className={SECTION_TITLE}>{t("writing.ucHeading")}</h2>
+        <span className="text-[13px] text-zinc-600">
           {t("writing.ucChoose", { pick: UC_PICKS, total: UC_PIQS.length })} · {t("writing.ucWords")} ·{" "}
           <span className={`tabular-nums ${picks.length === UC_PICKS ? "font-medium text-done" : ""}`}>
             {t("writing.ucChosen", { n: picks.length, pick: UC_PICKS })}
@@ -209,17 +230,8 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
     entries.map(({ entry, college }) => ({ slug: college.slug, name: college.short_name ?? college.name, rec: entrySupplements(supplements, college.slug), checklist: entry.checklist })),
   );
 
-  if (entries.length === 0) {
-    return (
-      <p className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500">
-        {t("writing.emptyPre")}
-        <Link href="/application/list" className="text-blue-600 underline">
-          {t("nav.myList")}
-        </Link>
-        {t("writing.emptyPost")}
-      </p>
-    );
-  }
+  // The Common App personal statement shows before any college is on the list too: nearly every list needs it.
+  const showPs = entries.length === 0 || shared.commonApp;
 
   return (
     <div className="space-y-6">
@@ -229,25 +241,39 @@ export function EssaysPage({ colleges, platforms, supplements }: { colleges: Col
           className={`flex items-start gap-3 rounded-lg border px-3 py-2 text-sm ${toneClass(notice === "connected" ? "done" : "soon")}`}
         >
           <span className="flex-1">{t(GOOGLE_NOTICE[notice])}</span>
-          <button type="button" className="text-xs opacity-70 hover:opacity-100" aria-label={t("writing.dismiss")} onClick={() => setNotice(null)}>
-            ✕
+          <button type="button" className="text-base leading-none opacity-70 hover:opacity-100" aria-label={t("writing.dismiss")} onClick={() => setNotice(null)}>
+            ×
           </button>
         </p>
       )}
-      <EssayReusePanel groups={reuse} />
-      {shared.commonApp && <PersonalStatement essays={essays} onChange={saveEssays} google={google} />}
+      {entries.length > 0 && <EssayReusePanel groups={reuse} />}
+      {showPs && <PersonalStatement essays={essays} onChange={saveEssays} google={google} />}
       {shared.uc && <UcEssays essays={essays} onChange={saveEssays} google={google} />}
-      {entries.map(({ entry, college }) => (
-        <CollegeEssayCard
-          key={`${student.auth?.userId ?? "local"}-${entry.slug}`}
-          checklist={entry.checklist}
-          college={college}
-          rec={entrySupplements(supplements, college.slug)}
-          international={!!student.profile.international}
-          onChange={(checklist) => student.update(entry.slug, { checklist })}
-          google={google}
-        />
-      ))}
+      {entries.length === 0 ? (
+        <EmptyNote
+          action={
+            <Link href="/application/list" className={buttonClass("secondary", "sm")}>
+              {t("application.openMyList")}
+            </Link>
+          }
+        >
+          {t("writing.emptyPre")}
+          <strong className="font-semibold">{t("nav.myList")}</strong>
+          {t("writing.emptyPost")}
+        </EmptyNote>
+      ) : (
+        entries.map(({ entry, college }) => (
+          <CollegeEssayCard
+            key={`${student.auth?.userId ?? "local"}-${entry.slug}`}
+            checklist={entry.checklist}
+            college={college}
+            rec={entrySupplements(supplements, college.slug)}
+            international={!!student.profile.international}
+            onChange={(checklist) => student.update(entry.slug, { checklist })}
+            google={google}
+          />
+        ))
+      )}
     </div>
   );
 }

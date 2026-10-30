@@ -37,7 +37,7 @@
   ],
   "teacher_recs": 1,
   "counselor_rec": true,
-  "notes": "Official high school transcript, senior-year grade report, high school counselor evaluation, and one academic recommendation; ED agreement if applying ED. Some programs add portfolio, audition or other requirements (e.g. School of Architecture and the College of Visual and Performing Arts require a portfolio or audition). Interviews are optional for international applicants (virtual interview or Vericant) and not required for admission. Application fee is not stated on the pages reviewed, so it is left blank. Fee waivers are available (SAT/ACT or NACAC waiver, or counselor request).",
+  "notes": "Official high school transcript, senior-year grade report, high school counselor evaluation, and one academic recommendation; ED agreement if applying ED. Some programs add portfolio, audition or other requirements (e.g. School of Architecture and the College of Visual and Performing Arts require a portfolio or audition). Interviews are optional for international applicants (virtual interview or Vericant) and not required for admission. The application fee is not stated on the pages reviewed, so it is not shown. Fee waivers are available (SAT/ACT or NACAC waiver, or counselor request).",
   "src": "reqs"
  },
  "deadlines": [
@@ -70,7 +70,7 @@
    "plan": "RD",
    "due": "2027-01-05",
    "label": "Regular Decision",
-   "notes": "Notification begins mid-March and continues weekly through spring; reply date May 1. Some programs (e.g. Drama acting/musical theater prescreen Dec 1; portfolio programs) have earlier or separate dates. The page states no entry year; treated as the 2026-27 cycle (Fall 2027 entry).",
+   "notes": "Notification begins mid-March and continues weekly through spring; reply date May 1. Some programs (e.g. Drama acting/musical theater prescreen Dec 1; portfolio programs) have earlier or separate dates. The page states no entry year, so it is assumed to be the 2026-27 cycle (Fall 2027 entry).",
    "src": "dates"
   }
  ],

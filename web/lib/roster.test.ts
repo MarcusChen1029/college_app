@@ -82,6 +82,13 @@ test("essay_not_started: within 30 days, no essay begun, and not marked as 'no e
   assert.ok(!keys(student({ colleges: [college({ nextDeadline: "2026-12-30" })] })).includes("essay_not_started"));
 });
 
+test("essay_not_started carries the college and due day for views; the English detail is unchanged", () => {
+  const flag = computeFlags(student({ colleges: [college({ name: "Y College", nextDeadline: "2026-11-15" })] }), NOW).find((f) => f.key === "essay_not_started");
+  assert.equal(flag?.detail, "Nothing started for Y College, due 2026-11-15.");
+  assert.equal(flag?.college, "Y College");
+  assert.equal(flag?.due, "2026-11-15");
+});
+
 test("inactive: more than 30 days since last change; a never-active student is judged from the link date", () => {
   assert.ok(keys(student({ lastActive: "2026-09-01T00:00:00Z" })).includes("inactive"));
   assert.ok(!keys(student({ lastActive: "2026-10-10T00:00:00Z" })).includes("inactive"));

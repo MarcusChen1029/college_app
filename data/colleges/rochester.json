@@ -67,7 +67,7 @@
       "3.00-3.24": 5.55,
       "2.50-2.99": 1.61
     },
-    "notes": "Enrolled by residency: 432 in-state, 546 out-of-state, 253 international. Two ED rounds (11/1 closing with mid-December notification; 1/5 closing with early-February notification); ED counts are for the Fall 2025 entering class and almost one-third of the class applied ED. No early action. Test-optional for all applicants (C8F); only a small share of enrollees submitted scores, so SAT/ACT percentiles describe submitters."
+    "notes": "Enrolled by residency: 432 in-state, 546 out-of-state, 253 international. Two ED rounds (11/1 closing with mid-December notification; 1/5 closing with early-February notification); ED counts are for the Fall 2025 entering class and almost one-third of the class applied ED. No early action. Test-optional for all applicants; only a small share of enrollees submitted scores, so SAT/ACT percentiles describe submitters."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 20698,
     "other_usd": 1380,
     "total_coa_usd": 89562,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance."
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance"
   },
   "factors": {
     "rigor": "VI",

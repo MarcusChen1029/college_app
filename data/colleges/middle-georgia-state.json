@@ -47,7 +47,7 @@
     "enrolled": 1319,
     "pct_submit_sat": 18,
     "pct_submit_act": 7,
-    "notes": "Baseline from IPEDS fall 2024 (College Navigator percentages; exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal). Admission is effectively open (99.7% admitted). No Common Data Set was found on MGA's institutional research pages, so international applicants/admits, GPA, SAT total and admission factors are not included. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 18%, ACT 7%)."
+    "notes": "Figures from IPEDS, the US government's college data, fall 2024 (College Navigator percentages; exact counts from the NCES file via the Urban Institute Education Data Portal). Admission is effectively open (99.7% admitted). No Common Data Set was found on MGA's institutional research pages, so international applicants and admits, GPA, SAT total and admission factors are not shown. SAT/ACT percentiles cover enrolled first-time students who submitted scores (SAT 18%, ACT 7%)."
   },
   "scores": {
     "SAT_ERW": [

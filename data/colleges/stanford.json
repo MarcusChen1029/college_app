@@ -43,7 +43,7 @@
       "3.25-3.49": 2.89,
       "3.00-3.24": 0.08
     },
-    "notes": "Restrictive early action (no ED). CDS C22 lists EA closing 11/1, notification 12/15."
+    "notes": "Restrictive early action (no ED). The Common Data Set lists EA closing 11/1, notification 12/15."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -107,11 +107,11 @@
     "intl_need_aid": true,
     "intl_need_aid_awarded": 260,
     "intl_avg_award_usd": 85424,
-    "notes": "CDS H6: need-based and non-need-based institutional aid available to nonresidents."
+    "notes": "From the Common Data Set: need-based and non-need-based institutional aid is available to nonresidents."
   },
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "required",
-    "notes": "CDS C8A: SAT or ACT required for admission."
+    "notes": "Test policy from the Common Data Set: SAT or ACT required for admission."
   }
 }

@@ -21,7 +21,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "ACT/SAT is marked optional for beginning freshmen in the 2026-27 catalog and CDS C8A says 'not required for admission, but considered if submitted'. Automatic admission paths for domestic applicants: unweighted GPA 3.0+ (with or without scores), GPA 2.5-2.99 with ACT 22 / SAT 1110, GPA 2.25-2.49 with ACT 25 / SAT 1210, or top 10% with a distinguished diploma; others get holistic review. Scores are still needed for certain scholarships. The international page lists no SAT/ACT requirement (SAT/ACT verbal appear only as English proficiency options).",
+    "notes": "ACT/SAT is marked optional for beginning freshmen in the 2026-27 catalog and the Common Data Set says 'not required for admission, but considered if submitted'. Automatic admission paths for domestic applicants: unweighted GPA 3.0+ (with or without scores), GPA 2.5-2.99 with ACT 22 / SAT 1110, GPA 2.25-2.49 with ACT 25 / SAT 1210, or top 10% with a distinguished diploma; others get holistic review. Scores are still needed for certain scholarships. The international page lists no SAT/ACT requirement (SAT/ACT verbal appear only as English proficiency options).",
     "src": "cat"
   },
   "requirements": {
@@ -39,7 +39,7 @@
       "plan": "ROLLING",
       "due": "2027-08-01",
       "label": "Application deadline, fall 2027",
-      "notes": "The page lists Fall Aug. 1, Spring Dec. 15, Summer May 15 with no year and no separate international column; treated as fall 2027. CDS C14 also shows an 8/1 priority and closing date. SHSU strongly encourages international students outside the U.S. to apply at least 90 days before the semester starts (about early May for fall) to allow time for the I-20 and visa.",
+      "notes": "The page lists Fall Aug. 1, Spring Dec. 15, Summer May 15 with no year and no separate international column, so fall 2027 is assumed. The Common Data Set also shows an 8/1 priority and closing date. SHSU strongly encourages international students outside the U.S. to apply at least 90 days before the semester starts (about early May for fall) to allow time for the I-20 and visa.",
       "src": "intl"
     },
     {
@@ -78,7 +78,7 @@
   ],
   "aid": {
     "meets_full_need": false,
-    "notes": "No international-specific scholarship is listed on the pages read. Per the scholarships page, a single competitive SHSU scholarship of at least $1,000 can earn a non-resident tuition waiver for the period it covers. CDS H6 (fall 2025): 59 degree-seeking nonresident undergraduates received institutional aid, average $17,724; the H6 policy boxes are all ticked, so whether it is need-based or merit is unclear. FAFSA is listed as the form for nonresident aid applicants.",
+    "notes": "No international-specific scholarship is listed on the pages read. Per the scholarships page, a single competitive SHSU scholarship of at least $1,000 can earn a non-resident tuition waiver for the period it covers. In the Common Data Set (fall 2025), 59 degree-seeking nonresident undergraduates received institutional aid, average $17,724; its nonresident aid policy boxes are all ticked, so whether it is need-based or merit is unclear. FAFSA is listed as the form for nonresident aid applicants.",
     "src": "sch"
   },
   "majors": [],

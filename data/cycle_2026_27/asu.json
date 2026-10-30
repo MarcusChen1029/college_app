@@ -60,7 +60,7 @@
    "own"
   ],
   "app_fee_usd": 90,
-  "notes": "Application fee is $55 Arizona residents, $85 domestic nonresidents, $90 international nonresidents. Applicants can use the ASU application or the Common App. CDS C7 lists essay and recommendations as not considered; teacher/counselor rec counts and interview policy are not stated on the admissions pages.",
+  "notes": "Application fee is $55 Arizona residents, $85 domestic nonresidents, $90 international nonresidents. Applicants can use the ASU application or the Common App. The Common Data Set lists essay and recommendations as not considered; teacher/counselor recommendation counts and interview policy are not stated on the admissions pages.",
   "src": "dates"
  },
  "deadlines": [
@@ -144,7 +144,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students do not qualify for federal/state aid. Merit-based New American University Scholarship (NAMU) is awarded to a limited number of qualified international undergraduates; colleges/departments also award scholarships. CDS H6: 3,344 nonresidents received institutional non-need-based aid, avg $12,660.",
+  "notes": "International students do not qualify for federal/state aid. Merit-based New American University Scholarship (NAMU) is awarded to a limited number of qualified international undergraduates; colleges/departments also award scholarships. From the Common Data Set: 3,344 nonresidents received non-need-based aid from the college, avg $12,660.",
   "src": "aid"
  },
  "majors": [

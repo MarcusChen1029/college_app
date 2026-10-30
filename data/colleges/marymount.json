@@ -63,7 +63,7 @@
     },
     "pct_submit_sat": 6,
     "pct_submit_act": 2,
-    "notes": "CDS 2023-24 is the newest Marymount posts that could be found (fall 2023 entering class). C1 residency table: international 632 applied, 330 admitted (52%). Enrolled 410 (CDS gender rows; matches IPEDS) while the residency enrollee row sums to 407. SAT/ACT percentiles not reported (the university does not use scores). Undergraduate enrollment 2,503 is fall 2024 (College Navigator)."
+    "notes": "The 2023-24 Common Data Set is the newest Marymount posts that could be found (fall 2023 entering class). Residency table: international 632 applied, 330 admitted (52%). Enrolled 410 (Common Data Set gender rows; matches IPEDS) while the residency enrollee row sums to 407. SAT/ACT percentiles not reported (the university does not use scores). Undergraduate enrollment 2,503 is fall 2024 (College Navigator)."
   },
   "factors": {
     "rigor": "VI",
@@ -88,6 +88,6 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "CDS C8 (2023-24): the institution does not use SAT/ACT scores in admission decisions, except for home-schooled applicants and applicants from unaccredited or ungraded schools."
+    "notes": "From the Common Data Set (2023-24): the institution does not use SAT/ACT scores in admission decisions, except for home-schooled applicants and applicants from unaccredited or ungraded schools."
   }
 }

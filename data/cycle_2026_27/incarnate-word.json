@@ -70,7 +70,7 @@
       "kind": "priority",
       "due": "2026-11-01",
       "label": "Freshmen encouraged to apply by Nov. 1 (fall 2027)",
-      "notes": "The freshman admissions page encourages applying by Nov. 1 for the following fall; it does not say this applies to international applicants and prints no year (treated as fall 2027).",
+      "notes": "The freshman admissions page encourages applying by Nov. 1 for the following fall; it does not say this applies to international applicants and gives no year (fall 2027 is assumed).",
       "src": "adm"
     }
   ],
@@ -118,7 +118,7 @@
     "intl_aid_policy": "merit_only",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "First-time freshmen are automatically considered for academic scholarships based on high school GPA: $9,000-$22,000 per year (effective Fall 2026); the page gives no per-GPA tiers. Renewal needs a 2.0 cumulative GPA and 12 UIW credits each semester. 15% tuition discounts (Fall 2026) for undergraduates applying independently of an agent from Latin America, or from Indonesia, the Philippines, Thailand or Vietnam. CDS H6: 150 nonresidents received institutional aid, average $28,829. Conditional admission: UIW partners with UNAM - San Antonio for intensive English; students may apply without English scores, UNAM issues an I-20 for English courses only, intakes August and January (the page does not say how students move into degree courses). No international need-based aid is described.",
+    "notes": "First-time freshmen are automatically considered for academic scholarships based on high school GPA: $9,000-$22,000 per year (effective Fall 2026); the page gives no per-GPA tiers. Renewal needs a 2.0 cumulative GPA and 12 UIW credits each semester. 15% tuition discounts (Fall 2026) for undergraduates applying independently of an agent from Latin America, or from Indonesia, the Philippines, Thailand or Vietnam. From the Common Data Set: 150 nonresidents received aid from the college itself, average $28,829. Conditional admission: UIW partners with UNAM - San Antonio for intensive English; students may apply without English scores, UNAM issues an I-20 for English courses only, intakes August and January (the page does not say how students move into degree courses). No international need-based aid is described.",
     "src": "sch"
   },
   "majors": [],

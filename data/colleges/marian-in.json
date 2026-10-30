@@ -50,7 +50,7 @@
     "applicants": 3883,
     "admits": 3702,
     "enrolled": 620,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). No Common Data Set could be found on marian.edu. IPEDS reports no SAT/ACT figures and the 2026-27 catalog says the university is test blind, so no score ranges are recorded. International applicant/admit counts and GPA are not available."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). No Common Data Set could be found on marian.edu. IPEDS reports no SAT/ACT figures and the 2026-27 catalog says the university is test blind, so no score ranges are shown. International applicant and admit counts and GPA are not available."
   },
   "scores": {},
   "cost": {
@@ -59,6 +59,6 @@
     "tuition_usd": 43400,
     "books_usd": 1200,
     "room_board_usd": 15040,
-    "notes": "Marian's tuition page for 2026/2027: full-time (12-19 hours) $21,700 per semester ($43,400 per year), room and board $15,040, book estimate $1,200 per year. The page's total on-campus cost is $58,440 (tuition plus room and board); the page does not state other expenses, so no total cost of attendance is recorded. Fall 2027 rates are not yet published."
+    "notes": "Marian's tuition page for 2026/2027: full-time (12-19 hours) $21,700 per semester ($43,400 per year), room and board $15,040, book estimate $1,200 per year. The page's total on-campus cost is $58,440 (tuition plus room and board); the page does not state other expenses, so no total cost of attendance is recorded. Fall 2027 rates are not yet published"
   }
 }

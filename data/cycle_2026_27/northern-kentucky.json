@@ -39,7 +39,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "NKU directly admits high school seniors with an unweighted GPA of 2.75 or higher (fall 2026 page); the page does not mention test scores. CDS 2023-2024 C8F says ACT/SAT are required for under-21 applicants below a 2.75 GPA, and select programs may require them. International freshmen must submit ONE of TOEFL, IELTS, PTE Academic, SAT or ACT as English proof, so a test report is effectively needed (SAT/ACT can serve as that proof).",
+    "notes": "NKU directly admits high school seniors with an unweighted GPA of 2.75 or higher (fall 2026 page); the page does not mention test scores. The 2023-2024 Common Data Set says ACT/SAT are required for under-21 applicants below a 2.75 GPA, and select programs may require them. International freshmen must submit one of TOEFL, IELTS, PTE Academic, SAT or ACT as English proof, so a test report is effectively needed (SAT/ACT can serve as that proof).",
     "src": "fy"
   },
   "requirements": {
@@ -56,21 +56,21 @@
       "plan": "ROLLING",
       "due": "2027-04-15",
       "label": "Final overseas application deadline, fall intake (fall 2027 entry)",
-      "notes": "Page prints no year; treated as fall 2027. Applications must come with all required documents. NKU admits on a rolling basis (CDS: notification begins mid-August for the fall 2023 cycle). Spring intake: final overseas application Oct. 15.",
+      "notes": "The page gives no year, so fall 2027 is assumed. Applications must come with all required documents. NKU admits on a rolling basis (Common Data Set: notification begins mid-August for the fall 2023 cycle). Spring intake: final overseas application Oct. 15.",
       "src": "intl"
     },
     {
       "kind": "other",
       "due": "2027-05-01",
       "label": "Undergraduate confirmation deadline (fall intake)",
-      "notes": "Page prints no year; treated as fall 2027. Spring-intake confirmation is Oct. 22.",
+      "notes": "The page gives no year, so fall 2027 is assumed. Spring-intake confirmation is Oct. 22.",
       "src": "intl"
     },
     {
       "kind": "other",
       "due": "2027-05-15",
       "label": "Final overseas I-20 request deadline (fall intake)",
-      "notes": "Page prints no year; treated as fall 2027. Needs the I-20 request form and valid financial documents. Spring-intake I-20 request: Nov. 1.",
+      "notes": "The page gives no year, so fall 2027 is assumed. Needs the I-20 request form and valid financial documents. Spring-intake I-20 request: Nov. 1.",
       "src": "intl"
     }
   ],
@@ -110,7 +110,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "NKU's international admission and cost pages publish no scholarship amounts for new international freshmen; the international-student scholarship page only lists awards for current NKU students (e.g. Weiss $500). CDS 2023-2024 H6 shows 298 nonresident undergraduates received institutional aid (average $15,100), so institutional aid exists but the program is not published; ask isss@nku.edu.",
+    "notes": "NKU's international admission and cost pages publish no scholarship amounts for new international freshmen; the international-student scholarship page only lists awards for current NKU students (e.g. Weiss $500). The 2023-2024 Common Data Set shows 298 nonresident undergraduates received institutional aid (average $15,100), so institutional aid exists but the program is not published; ask isss@nku.edu.",
     "src": "faq"
   },
   "cost": {
@@ -122,7 +122,7 @@
     "books_usd": 900,
     "other_usd": 1786,
     "total_coa_usd": 30850,
-    "notes": "NKU international costs page, standard rate: $625 per credit hour, $7,500 per semester (12+ credits); fees $850 (vary by program); residence hall $7,360 + meal plan $4,954 (typical); books $900; required health insurance $1,786; estimate $30,850. A lower $463/credit rate applies only to F-1 students graduating from Kentucky, Ohio or Indiana high schools. 2026-27 rates not yet posted.",
+    "notes": "NKU international costs page, standard rate: $625 per credit hour, $7,500 per semester (12+ credits); fees $850 (vary by program); residence hall $7,360 + meal plan $4,954 (typical); books $900; required health insurance $1,786; estimate $30,850. A lower $463/credit rate applies only to F-1 students graduating from Kentucky, Ohio or Indiana high schools. 2026-27 rates not yet posted",
     "src": "cost"
   },
   "majors": [

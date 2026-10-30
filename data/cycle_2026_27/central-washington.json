@@ -40,7 +40,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "CWU says it is a test-optional school: SAT/ACT scores are not required for admission but can be sent for class placement. The 2024-25 CDS (C8) says scores are not considered unless they would have a positive effect on the decision, and College Navigator lists SAT/ACT as 'Not considered (Test Blind)'. Admission is by high school GPA (2.7+ is guaranteed admission through the CWU Guaranteed Admission Program; 2.50-2.69 may need a personal statement; 2.00-2.49 requires a personal statement and holistic review) plus core courses (4 English, 4 math, 3 science, 3 social science, 2 world language, 1 arts for out-of-state applicants).",
+  "notes": "CWU says it is a test-optional school: SAT/ACT scores are not required for admission but can be sent for class placement. The 2024-25 Common Data Set says scores are not considered unless they would have a positive effect on the decision, and College Navigator lists SAT/ACT as 'Not considered (Test Blind)'. Admission is by high school GPA (2.7+ is guaranteed admission through the CWU Guaranteed Admission Program; 2.50-2.69 may need a personal statement; 2.00-2.49 requires a personal statement and holistic review) plus core courses (4 English, 4 math, 3 science, 3 social science, 2 world language, 1 arts for out-of-state applicants).",
   "src": "ug"
  },
  "requirements": {
@@ -49,7 +49,7 @@
    "own"
   ],
   "app_fee_usd": 60,
-  "notes": "Apply through the CWU portal or the Common App; $60 nonrefundable fee. A $400 enrollment deposit is required from first-year international students before the I-20 is issued. Documents: proof of English proficiency unless exempt, official transcripts (electronic accepted; a course-by-course evaluation may be requested), Confidential Financial Statement signed by the student and sponsor plus a bank statement dated within three months showing funds for one academic year (no dollar amount given). CDS C7 lists essays and recommendations as not considered (letters are read only on appeal).",
+  "notes": "Apply through the CWU portal or the Common App; $60 nonrefundable fee. A $400 enrollment deposit is required from first-year international students before the I-20 is issued. Documents: proof of English proficiency unless exempt, official transcripts (electronic accepted; a course-by-course evaluation may be requested), Confidential Financial Statement signed by the student and sponsor plus a bank statement dated within three months showing funds for one academic year (no dollar amount given). The Common Data Set lists essays and recommendations as not considered (letters are read only on appeal).",
   "src": "intl"
  },
  "deadlines": [
@@ -123,7 +123,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "All admitted international students are automatically considered for merit scholarships by incoming GPA: 2.7-2.9 gets $6,979, 3.0-3.6 gets $9,294, 3.7-4.0 gets $12,380 (annual amounts as listed, re-awarded each year from spring-quarter cumulative GPA). Eligible students are emailed within 2-3 weeks of admission and confirm through the International Student Scholarship form. Exchange, government-sponsored, UESL and resident-tuition students are not eligible. The CDS H6 nonresident aid figures could not be read consistently, so they are not used.",
+  "notes": "All admitted international students are automatically considered for merit scholarships by incoming GPA: 2.7-2.9 gets $6,979, 3.0-3.6 gets $9,294, 3.7-4.0 gets $12,380 (annual amounts as listed, re-awarded each year from spring-quarter cumulative GPA). Eligible students are emailed within 2-3 weeks of admission and confirm through the International Student Scholarship form. Exchange, government-sponsored, UESL and resident-tuition students are not eligible. The Common Data Set figures on aid to nonresidents could not be read consistently, so they are not used.",
   "src": "intl"
  },
  "cost": {
@@ -136,7 +136,7 @@
   "books_usd": 900,
   "other_usd": 2766,
   "total_coa_usd": 49383,
-  "notes": "CWU 2026-27 cost of attendance for a non-resident undergraduate on the Ellensburg campus: tuition $27,041, mandatory fees $2,396, housing $9,718 and food $6,562 (room_board_usd $16,280), books and supplies $900, personal $1,500, transportation $1,200 and loan fees $66 (other_usd $2,766), annual total $49,383. In-state tuition $7,716 per the cost page.",
+  "notes": "CWU 2026-27 cost of attendance for a non-resident undergraduate on the Ellensburg campus: tuition $27,041, mandatory fees $2,396, housing $9,718 and food $6,562 (housing and food together $16,280), books and supplies $900, personal $1,500, transportation $1,200 and loan fees $66 (other costs together $2,766), annual total $49,383. In-state tuition $7,716 per the cost page",
   "src": "coa"
  },
  "majors": [],

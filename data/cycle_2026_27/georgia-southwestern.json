@@ -44,14 +44,14 @@
    "plan": "RD",
    "due": "2027-07-01",
    "label": "International student application deadline (fall 2027)",
-   "notes": "Deadlines page: fall July 1, spring November 14, summer April 15 for international students (general undergraduate fall deadline July 21). Dates print without a year; treated as fall 2027. Allow time for the I-20 and visa.",
+   "notes": "Deadlines page: fall July 1, spring November 14, summer April 15 for international students (general undergraduate fall deadline July 21). Dates are printed without a year, so fall 2027 is assumed. Allow time for the I-20 and visa.",
    "src": "dl"
   },
   {
    "kind": "scholarship",
    "due": "2027-02-01",
    "label": "Freshman scholarship deadline (fall)",
-   "notes": "Also the priority date for the Promise Scholarship and the President Carter Leadership Program. Printed without a year; treated as 2027.",
+   "notes": "Also the priority date for the Promise Scholarship and the President Carter Leadership Program. Printed without a year, so 2027 is assumed.",
    "src": "dl"
   }
  ],
@@ -79,7 +79,7 @@
   "year": "2026-2027",
   "tuition_intl_usd": 21464,
   "room_board_usd": 9676,
-  "notes": "Non-resident table, 2026-27 header: matriculation $10,200 plus fees = $10,732 per semester (15 credits), so $21,464 per year. Housing and meals use the Oaks double room ($2,608) plus the Unlimited meal plan ($2,230) per semester, doubled; other halls cost more. Health insurance and personal expenses are not included. International students can seek a limited out-of-state tuition waiver worth about $13,000 (see aid).",
+  "notes": "Non-resident table, 2026-27 header: matriculation $10,200 plus fees = $10,732 per semester (15 credits), so $21,464 per year. Housing and meals use the Oaks double room ($2,608) plus the Unlimited meal plan ($2,230) per semester, doubled; other halls cost more. Health insurance and personal expenses are not included. International students can seek a limited out-of-state tuition waiver worth about $13,000 (see aid)",
   "src": "tuition"
  },
  "aid": {

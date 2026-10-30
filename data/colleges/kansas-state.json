@@ -51,7 +51,7 @@
       "2.0-2.49": 1,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1 residency split (in-state 7,088 / out-of-state 7,102 / international 1,401 applicants). International admit rate computed 463/1,401 = 33.0%, with 43 enrolled, much lower than the overall 87.5%, so international applicants should not assume near-certain admission. Undergrad enrollment and intl count are the B2 'Total Undergraduates' column (16,555; nonresident 253). No early decision or early action; no waitlist; no application closing date; priority date December 1. GPA distribution is the 'all enrolled students' column (reported by 86.5% of students)."
+    "notes": "From the Common Data Set, applicants by residency: 7,088 in-state, 7,102 out-of-state and 1,401 international. The international admit rate is calculated as 463/1,401 = 33.0%, with 43 enrolled, much lower than the overall 87.5%, so international applicants should not assume near-certain admission. Undergraduate enrollment is 16,555 (all undergraduates), of whom 253 are international (nonresident aliens). No early decision or early action; no waitlist; no application closing date; priority date December 1. The GPA breakdown is for all enrolled students (reported by 86.5% of students)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -108,7 +108,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'; scores are also used for advising and placement."
+    "notes": "From the Common Data Set (Fall 2027): SAT/ACT 'not required for admission, but considered if submitted'; scores are also used for advising and placement."
   },
   "cost": {
     "year": "2025-2026",
@@ -119,6 +119,6 @@
     "required_fees_usd": 978,
     "room_board_usd": 11520,
     "books_usd": 1062,
-    "notes": "CDS G1 first-year rates (the CDS ticks '2026-27 costs not available yet, expected 7/23/2026', so these are treated as 2025-26 rates; the 'Nonresident' tuition line is used for international students). H6: only institutional non-need-based aid is available to nonresidents; the CDS leaves the recipient count and dollar amounts blank."
+    "notes": "First-year rates from the Common Data Set (it ticks '2026-27 costs not available yet, expected 7/23/2026', so these are assumed to be 2025-26 rates; the 'Nonresident' tuition line is shown as international tuition). Only the college's own non-need-based aid is available to nonresidents; the Common Data Set does not report the recipient count or dollar amounts"
   }
 }

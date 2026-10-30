@@ -17,7 +17,7 @@
     "waitlist_offered": 6826, "waitlist_accepted": 4317, "waitlist_admitted": 1,
     "pct_submit_sat": 42.59, "pct_submit_act": 14.07,
     "gpa_avg": null, "pct_reporting_gpa": null, "gpa_distribution": null,
-    "notes": "UIUC does not report GPA in C11/C12. Residency breakdown in the CDS contains spreadsheet errors (#REF!) and is not used. EA closes 11/1, notification 1/30; no ED. Application fee $50 domestic / $75 international."
+    "notes": "UIUC does not report GPA in the Common Data Set. The residency breakdown in the Common Data Set contains spreadsheet errors (#REF!) and is not shown. EA closes 11/1, notification 1/30; no ED. Application fee $50 domestic / $75 international."
   },
   "scores": {
     "SAT_TOTAL": [1390, 1442, 1520], "SAT_ERW": [690, 720, 750], "SAT_MATH": [700, 760, 790],
@@ -29,12 +29,12 @@
     "first_generation": "VI", "alumni_relation": "NC", "geographic_residence": "C", "state_residency": "C",
     "religious_affiliation": "NC", "volunteer_work": "C", "work_experience": "C", "demonstrated_interest": "NC"
   },
-  "cds_test_policy": {"cycle": "2026-27", "policy": "optional", "notes": "CDS C8A (Fall 2027): not required, considered if submitted."},
+  "cds_test_policy": {"cycle": "2026-27", "policy": "optional", "notes": "From the Common Data Set (Fall 2027): not required, considered if submitted."},
   "cost": {
     "year": "2025-2026", "source": "cds",
     "tuition_usd": 12992, "tuition_out_of_state_usd": 33344, "tuition_intl_usd": 34338, "required_fees_usd": 5054,
     "room_board_usd": 15184,
     "intl_need_aid": false, "intl_merit_aid": true,
-    "notes": "Base tuition; many majors (engineering, business, CS) carry differential tuition. H6: only non-need-based (merit) institutional aid for nonresidents."
+    "notes": "Base tuition; many majors (engineering, business, CS) carry differential tuition. The Common Data Set shows only non-need-based (merit) institutional aid for nonresidents."
   }
 }

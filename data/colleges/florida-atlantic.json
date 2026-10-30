@@ -57,7 +57,7 @@
       "2.50-2.99": 0.38,
       "2.0-2.49": 0.12
     },
-    "notes": "Fall 2025 first-year class from the CDS C1 residency table (in-state 25,020 / out-of-state 15,063 / international 1,216 applicants; international admit rate 59.4% vs 58.2% overall). Undergrad enrollment and intl count are the B1/B2 'Total Undergraduates' figures (25,626; nonresident 724). The CDS C7 factor checkboxes and C8 test boxes are not machine-readable, so factors are omitted; SAT/ACT are required by Florida Board of Governors rule per the admissions site. GPA distribution is the 'all enrolled students' column of C11. ACT subscore percentiles omitted (rows misaligned in the text layer)."
+    "notes": "Fall 2025 first-year class from the Common Data Set residency table (in-state 25,020 / out-of-state 15,063 / international 1,216 applicants; international admit rate 59.4% vs 58.2% overall). Undergraduate enrollment and the number of international undergraduates are the 'Total Undergraduates' figures (25,626; nonresident 724). The factor checkboxes and test boxes in the Common Data Set are not machine-readable, so factors are not shown; SAT/ACT are required by Florida Board of Governors rule per the admissions site. The GPA breakdown is the 'all enrolled students' column. ACT subscore percentiles are not shown (rows are misaligned in the file's text)."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -91,6 +91,6 @@
     "books_usd": 1288,
     "intl_need_aid_awarded": 287,
     "intl_avg_award_usd": 14494,
-    "notes": "CDS G1/G5/H6 (30 credits for the full year at $203.29 per credit in-state / $721.84 per credit out-of-state; per-credit rates equal the 2024-25 IPEDS rates, so these may be carried forward). Food and housing on campus $16,414 (housing $11,324 + food $5,090). H6: 287 nonresident undergraduates received institutional aid, average $14,494. The international admissions page estimates $17,324 tuition and fees for 24 credits (fall + spring) and a $46,246 total cost of attendance."
+    "notes": "From the Common Data Set (30 credits for the full year at $203.29 per credit in-state / $721.84 per credit out-of-state; the per-credit rates equal the 2024-25 IPEDS rates, so these may be carried forward). Food and housing on campus $16,414 (housing $11,324 + food $5,090). 287 nonresident undergraduates received aid from the college itself, average $14,494. The international admissions page estimates $17,324 tuition and fees for 24 credits (fall + spring) and a $46,246 total cost of attendance"
   }
 }

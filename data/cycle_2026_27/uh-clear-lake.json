@@ -102,7 +102,7 @@
     "room_board_usd": 15500,
     "other_usd": 6500,
     "total_coa_usd": 48700,
-    "notes": "UHCL I-20 estimate for international undergraduates (page header 'I-20 Amounts Spring-Fall 2027'): tuition and fees $26,700 for 24 credit hours a year, living expenses $15,500 (on-campus housing), other (medical insurance, books) $6,500, total $48,700. For comparison College Navigator (2024-25) lists out-of-state tuition and fees $21,114 and in-state $7,770.",
+    "notes": "UHCL I-20 estimate for international undergraduates (page header 'I-20 Amounts Spring-Fall 2027'): tuition and fees $26,700 for 24 credit hours a year, living expenses $15,500 (on-campus housing), other (medical insurance, books) $6,500, total $48,700. For comparison College Navigator (2024-25) lists out-of-state tuition and fees $21,114 and in-state $7,770",
     "src": "cost"
   },
   "aid": {
@@ -110,7 +110,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "The international cost page lists the Hawk Scholars Scholarship for new international undergraduate and graduate students (amount and criteria not published on the pages read) and says many international students receive scholarships; the Hawk Housing Scholarship (international eligible) gives $1,000 for fall and $1,000 for spring toward a standard double room in Hunter Hall. Some international students may qualify for resident tuition. No CDS section H6 is available, so need-based aid for nonresidents is not confirmed.",
+    "notes": "The international cost page lists the Hawk Scholars Scholarship for new international undergraduate and graduate students (amount and criteria not published on the pages read) and says many international students receive scholarships; the Hawk Housing Scholarship (international eligible) gives $1,000 for fall and $1,000 for spring toward a standard double room in Hunter Hall. Some international students may qualify for resident tuition. No Common Data Set aid section for nonresidents is available, so need-based aid for nonresidents is not confirmed.",
     "src": "schol"
   },
   "majors": [],

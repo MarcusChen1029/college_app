@@ -57,13 +57,13 @@
    "plan": "ROLLING",
    "due": "2027-06-01",
    "label": "International fall application deadline ('apply by'); all documents due July 1",
-   "notes": "The international page lists Fall: apply by June 1, all documents by July 1, without printing a year; taken as fall 2027. Spring: Oct. 1 / Nov. 1. Domestic first-time freshman deadline is Aug. 1 (fall), Dec. 1 (spring); the page encourages early application because some majors are selective or capacity-limited.",
+   "notes": "The international page lists Fall: apply by June 1, all documents by July 1, without printing a year, so fall 2027 is assumed. Spring: Oct. 1 / Nov. 1. Domestic first-time freshman deadline is Aug. 1 (fall), Dec. 1 (spring); the page encourages early application because some majors are selective or capacity-limited.",
    "src": "intl"
   }
  ],
  "english_policy": {
   "policy": "required_nonnative",
-  "waiver_notes": "Exempt: citizens of listed countries (e.g. Australia, Canada, India, Nigeria, Pakistan, UK, Ghana, Kenya, Nepal, South Africa), IB Diploma holders, GCSE/GCE English A-C (or 4-9), 24+ transferable credits in a qualifying country, or students meeting academic admission while pursuing/earning a U.S. high school diploma. SAT EBRW 570 or ACT English 24 are also accepted. WVU does not accept expired scores, General IELTS or institutional TOEFL (ITP); WVU can verify scores directly so official reports are often unnecessary.",
+  "waiver_notes": "Exempt: citizens of listed countries (e.g. Australia, Canada, India, Nigeria, Pakistan, UK, Ghana, Kenya, Nepal, South Africa), IB Diploma holders, GCSE/GCE English A-C (or 4-9), 24+ transferable credits in a qualifying country, or students meeting academic admission while pursuing/earning a U.S. high school diploma. SAT EBRW 570 or ACT English 24 are also accepted. WVU does not accept expired scores, General IELTS or institutional TOEFL (ITP); WVU can check scores directly so official reports are often unnecessary.",
   "src": "eng"
  },
  "english": [
@@ -107,7 +107,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "International students are automatically considered for the Climb Higher Scholarship on admission (non-resident Morgantown amounts for students admitted for 2026-27: Level 1 GPA 3.8+ and SAT 1360/ACT 30 = $17,000/yr; Level 2 GPA 3.8+ = $14,000; Level 3 GPA 3.5-3.79 = $11,000; Level 4 GPA 3.0-3.49 = $8,000; renewable up to 8 semesters). The 2027-28 page lists non-resident amounts as TBD. University Merit scholarship needs a separate application. English Language Pathways Program and Intensive English Program offer conditional admission for Morgantown applicants. The PDF does not show whether need-based institutional aid is open to nonresidents.",
+  "notes": "International students are automatically considered for the Climb Higher Scholarship on admission (non-resident Morgantown amounts for students admitted for 2026-27: Level 1 GPA 3.8+ and SAT 1360/ACT 30 = $17,000/yr; Level 2 GPA 3.8+ = $14,000; Level 3 GPA 3.5-3.79 = $11,000; Level 4 GPA 3.0-3.49 = $8,000; renewable up to 8 semesters). The 2027-28 page says the non-resident amounts are still to be determined. University Merit scholarship needs a separate application. English Language Pathways Program and Intensive English Program offer conditional admission for Morgantown applicants. The PDF does not show whether need-based institutional aid is open to nonresidents.",
   "src": "aid"
  },
  "majors": [],
@@ -124,7 +124,7 @@
   },
   "toefl": {
    "code": "5904",
-   "note": "WVU TOEFL code; WVU can usually verify scores online without an official report.",
+   "note": "WVU TOEFL code; WVU can usually check scores online without an official report.",
    "src": "intl"
   },
   "ielts": {
@@ -157,7 +157,7 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "engineering": "Editorial judgment: Statler College is a long-established R1 engineering school (notably petroleum/mining), in the roughly 41-100 national band.",
-  "business": "Editorial judgment: AACSB-accredited John Chambers College of Business, roughly 41-100 band."
+  "engineering": "Our estimate: Statler College is a long-established R1 engineering school (notably petroleum/mining), roughly 41-100 nationally.",
+  "business": "Our estimate: AACSB-accredited John Chambers College of Business, roughly in the 41-100 range."
  }
 }

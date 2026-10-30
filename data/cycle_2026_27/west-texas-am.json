@@ -27,7 +27,7 @@
   },
   "test_policy": {
     "policy": "optional",
-    "notes": "CDS C8A (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. The international freshman page lists no SAT/ACT requirement; ACT English 21 or SAT EBRW 560 can be used as English proficiency (freshmen only).",
+    "notes": "Common Data Set (Fall 2027): SAT or ACT 'not required for admission, but considered if submitted'. The international freshman page lists no SAT/ACT requirement; ACT English 21 or SAT EBRW 560 can be used as English proficiency (freshmen only).",
     "src": "cds"
   },
   "requirements": {
@@ -44,7 +44,7 @@
       "kind": "application",
       "due": "2027-06-15",
       "label": "Application submission deadline, fall 2027",
-      "notes": "Dates are printed without a year; treated as fall 2027. Application fee payment is due July 1. Spring entry: application Nov. 1; summer: May 1 (no I-20s are issued for summer terms). No priority or final dates are listed.",
+      "notes": "The dates are printed without a year, so fall 2027 is assumed. Application fee payment is due July 1. Spring entry: application Nov. 1; summer: May 1 (no I-20s are issued for summer terms). No priority or final dates are listed.",
       "src": "dates"
     },
     {
@@ -112,7 +112,7 @@
   "cost": {
     "tuition_intl_usd": 22936,
     "total_coa_usd": 44847,
-    "notes": "International cost page 2026-27 (bachelor's, 15 credits per semester, Aug.-May): tuition $22,936, fees $3,558, room and board $10,279, books/supplies/travel $4,624, health insurance $3,450 = $44,847 (the minimum I-20 financial documentation). This differs from the CDS nonresident tuition ($21,837) and fees ($2,992); the international page is the more specific source.",
+    "notes": "International cost page 2026-27 (bachelor's, 15 credits per semester, Aug.-May): tuition $22,936, fees $3,558, room and board $10,279, books/supplies/travel $4,624, health insurance $3,450 = $44,847 (the minimum I-20 financial documentation). This differs from the CDS nonresident tuition ($21,837) and fees ($2,992); the international page is the more specific source",
     "src": "cost"
   },
   "aid": {

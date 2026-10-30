@@ -38,7 +38,7 @@
    "plan": null,
    "due": "2027-07-01",
    "label": "Fall 2027: application must be initiated",
-   "notes": "Published as 'July 1 (application initiated)' with no year, treated as fall 2027. NMSU says it has no university-wide deadline beyond these dates but advises applying 6 months or more ahead.",
+   "notes": "Published as 'July 1 (application initiated)' with no year, so fall 2027 is assumed. NMSU says it has no university-wide deadline beyond these dates but advises applying 6 months or more ahead.",
    "src": "adm"
   },
   {
@@ -46,14 +46,14 @@
    "plan": null,
    "due": "2027-07-15",
    "label": "Fall 2027: all supporting documents received",
-   "notes": "Published as 'July 15 (all documents submitted)' with no year, treated as fall 2027.",
+   "notes": "Published as 'July 15 (all documents submitted)' with no year, so fall 2027 is assumed.",
    "src": "adm"
   },
   {
    "kind": "scholarship",
    "due": "2027-07-15",
    "label": "International Competitive Scholarship window closes (fall 2027)",
-   "notes": "The application is open May 15 to July 15 for fall (year not printed, treated as 2027) and closes earlier once the available awards are used; it is only open to students with an I-20.",
+   "notes": "The application is open May 15 to July 15 for fall (year not printed, so 2027 is assumed) and closes earlier once the available awards are used; it is only open to students with an I-20.",
    "src": "schol"
   }
  ],

@@ -71,7 +71,7 @@
       "common_app"
     ],
     "app_fee_usd": 50,
-    "notes": "Apply through the Common App; $50 fee (CDS C13 and the Common App grid list the same fee for international applicants). Official transcript required (send through the first marking period of senior year and again after graduation). Required 17 college-prep units: 4 English, 4 math (incl. senior-year math), 3 lab science, 2 foreign language in one language (exemption possible for English language learners), 2 social science (incl. 1 US history), 2 electives. Applicants with a GPA of 2.5 or lower are advised to add test scores, a recommendation letter and an essay. Some majors (e.g. nursing) are more competitive and need early application.",
+    "notes": "Apply through the Common App; $50 fee (the Common Data Set and the Common App grid list the same fee for international applicants). Official transcript required (send through the first marking period of senior year and again after graduation). Required 17 college-prep units: 4 English, 4 math (incl. senior-year math), 3 lab science, 2 foreign language in one language (exemption possible for English language learners), 2 social science (incl. 1 US history), 2 electives. Applicants with a GPA of 2.5 or lower are advised to add test scores, a recommendation letter and an essay. Some majors (e.g. nursing) are more competitive and need early application.",
     "src": "req"
   },
   "deadlines": [
@@ -88,7 +88,7 @@
       "plan": "RD",
       "due": "2027-01-15",
       "label": "First-year Nursing deadline (fall 2027 entry)",
-      "notes": "Separate earlier deadline for first-year nursing applicants. The page prints no year; taken as fall 2027 entry.",
+      "notes": "Separate earlier deadline for first-year nursing applicants. The page gives no year, so fall 2027 entry is assumed.",
       "src": "dates"
     },
     {
@@ -96,7 +96,7 @@
       "plan": "ROLLING",
       "due": "2027-07-15",
       "label": "International first-year fall deadline (applicants residing abroad)",
-      "notes": "Applicants abroad should submit the application and all materials by this date so the Center for International Education can process documents; earlier program-specific deadlines (e.g. nursing) apply if earlier. The page prints no year; taken as fall 2027. The Common App grid lists 06/01/2027 as the final rolling date for first-years, so aim for June 1 to be safe. The spring-semester international deadline is Nov. 15.",
+      "notes": "Applicants abroad should submit the application and all materials by this date so the Center for International Education can process documents; earlier program-specific deadlines (e.g. nursing) apply if earlier. The page prints no year, so fall 2027 is assumed. The Common App grid lists 06/01/2027 as the final rolling date for first-years, so aim for June 1 to be safe. The spring-semester international deadline is Nov. 15.",
       "src": "dates"
     }
   ],
@@ -147,7 +147,7 @@
     "tuition_usd": 13090,
     "tuition_out_of_state_usd": 20719,
     "room_board_usd": 16183,
-    "notes": "2026-27 undergraduate tuition and fees combined: $13,089.60 in-state, $20,719.20 out-of-state, $15,034.20 NEBHE tuition break; room and board $16,183 (double room in Peabody or Bowditch Hall plus 7-day Silver dining plan). No separate international rate is published; international students are not residents, so the out-of-state rate is likely, but the page does not say so (tuition_intl_usd left empty). Books and supplies were $1,200 in 2024-25 (College Navigator)."
+    "notes": "2026-27 undergraduate tuition and fees combined: $13,089.60 in-state, $20,719.20 out-of-state, $15,034.20 NEBHE tuition break; room and board $16,183 (double room in Peabody or Bowditch Hall plus 7-day Silver dining plan). No separate international rate is published; international students are not residents, so the out-of-state rate is likely, but the page does not say so, so no international tuition is shown. Books and supplies were $1,200 in 2024-25 (College Navigator)"
   },
   "majors": [
     {

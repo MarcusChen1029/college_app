@@ -40,7 +40,7 @@
     "enrolled": 326,
     "pct_submit_sat": 2,
     "pct_submit_act": 2,
-    "notes": "Baseline from IPEDS fall 2024 (exact counts from the NCES ADM2024 file via the Urban Institute Education Data Portal; nonresident-alien undergraduates from NCES IPEDS fall 2024 enrollment by race (same portal)). No Common Data Set could be found online, so international applicants/admits, GPA and admission factors are not included. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 6 students, ACT 6 students), so they rest on very few students. Undergraduate enrollment 3,110 and 4 nonresident-alien undergraduates are IPEDS fall 2024; College Navigator prints the student-to-faculty ratio as 13 to 1."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024). Exact counts come from the NCES admissions file via the Urban Institute Education Data Portal; nonresident-alien undergraduates come from NCES IPEDS fall 2024 enrollment by race (same portal). No Common Data Set could be found online, so international applicants and admits, GPA and admission factors are not shown. SAT/ACT ranges cover enrolled first-time students who submitted scores (SAT 6 students, ACT 6 students), so they rest on very few students. Undergraduate enrollment of 3,110 and 4 nonresident-alien undergraduates are IPEDS fall 2024 figures; College Navigator prints the student-to-faculty ratio as 13 to 1."
   },
   "scores": {
     "SAT_ERW": [
@@ -68,6 +68,6 @@
     "room_board_usd": 13522,
     "other_usd": 3761,
     "total_coa_usd": 28059,
-    "notes": "College Navigator 2024-25: tuition includes required fees; total is the on-campus cost of attendance for West Virginia residents ($33,479 at the out-of-state rate)."
+    "notes": "College Navigator 2024-25: tuition includes required fees; total is the on-campus cost of attendance for West Virginia residents ($33,479 at the out-of-state rate)"
   }
 }

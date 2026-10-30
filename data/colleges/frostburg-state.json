@@ -43,11 +43,11 @@
     "source": "cds",
     "applicants": 4839,
     "admits": 4389,
-    "notes": "Only B1 and C1 are filled in the CDS PDF (first-year applicants 2,285 men + 2,554 women; admits 2,070 + 2,319). The enrolled count is left null because the form's C1 enrollee fields disagree with each other; the international and in-state/out-of-state split is blank; no test, GPA or C7 factor data. College Navigator (IPEDS fall 2024): 5,037 applicants, 89% admitted, 13% of admits enrolled. Undergraduate enrollment 3,436 is CDS B1 total undergraduates, fall 2025; student-faculty ratio 13:1 from College Navigator (the CDS gives 12:1)."
+    "notes": "Only the enrollment and the applications and admissions sections are filled in on the Common Data Set PDF (first-year applicants 2,285 men + 2,554 women; admits 2,070 + 2,319). The enrolled count is not shown because the form's enrollee fields disagree with each other; the international and in-state/out-of-state split is blank in the form; there is no test, GPA or admission-factor data. College Navigator (IPEDS fall 2024): 5,037 applicants, 89% admitted, 13% of admits enrolled. Undergraduate enrollment is 3,436 (total undergraduates in the Common Data Set, fall 2025); the student-faculty ratio is 13:1 from College Navigator (the Common Data Set gives 12:1)."
   },
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8 is blank; policy taken from the admissions site."
+    "notes": "The Common Data Set's test-policy item is blank; the policy comes from the admissions site."
   }
 }

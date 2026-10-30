@@ -44,7 +44,7 @@
    "plan": "ROLLING",
    "due": "2027-05-15",
    "label": "International recommended deadline, fall 2027 (August start)",
-   "notes": "Page states May 15 for the Fall 2026 semester; treated as the same date for fall 2027. Rolling admission, documents evaluated as received. Spring entry: November 1.",
+   "notes": "Page states May 15 for the Fall 2026 semester; the same date is assumed for fall 2027. Rolling admission, documents evaluated as received. Spring entry: November 1.",
    "src": "intl"
   },
   {
@@ -109,7 +109,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "Automatic international scholarship by U.S.-equivalent GPA, up to 8 semesters: 3.5-4.0 = $12,000 ($1,500/semester); 3.0-3.49 = $8,000 ($1,000/semester). NDSU states it offers no full scholarships. Applicants may also be considered for conditional admission. CDS H6 (2024-25): only institutional non-need-based aid for nonresidents; 53 received it, average $8,382.",
+  "notes": "Automatic international scholarship by U.S.-equivalent GPA, up to 8 semesters: 3.5-4.0 = $12,000 ($1,500/semester); 3.0-3.49 = $8,000 ($1,000/semester). NDSU states it offers no full scholarships. Applicants may also be considered for conditional admission. From the Common Data Set (2024-25): only the college's own non-need-based aid for nonresidents; 53 received it, average $8,382.",
   "src": "schol"
  },
  "cost": {
@@ -117,7 +117,7 @@
   "tuition_intl_usd": 20025,
   "room_board_usd": 10647,
   "books_usd": 1175,
-  "notes": "International base-rate undergraduate tuition AND fees estimate for 2 semesters of 12 credits ($753.32 tuition + $71.70 fees per credit); engineering $21,862. The cost page does not label the academic year. Housing $4,885 (shared) + 7-day meal plan $5,762 = $10,647. Also listed: ISS support fee $250, health insurance $2,190, one-time $200 new student fee. Page total $34,287 (base rate). Domestic tuition not checked.",
+  "notes": "International base-rate undergraduate tuition AND fees estimate for 2 semesters of 12 credits ($753.32 tuition + $71.70 fees per credit); engineering $21,862. The cost page does not label the academic year. Housing $4,885 (shared) + 7-day meal plan $5,762 = $10,647. Also listed: ISS support fee $250, health insurance $2,190, one-time $200 new student fee. Page total $34,287 (base rate). Domestic tuition not checked",
   "src": "cost"
  },
  "majors": [],

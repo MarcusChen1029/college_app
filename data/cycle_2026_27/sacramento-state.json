@@ -71,7 +71,7 @@
    "test": "TOEFL_IBT_2026",
    "status": "required_option",
    "min": 3.5,
-   "notes": "Tests on or after Jan 21, 2026; the page prints '3.5 IBT', which appears to be the 1-6 scale (verify with the university).",
+   "notes": "Tests on or after Jan 21, 2026; the page prints '3.5 IBT', which appears to be the 1-6 scale (confirm with the university).",
    "src": "intl"
   },
   {
@@ -112,7 +112,7 @@
   "books_usd": 1240,
   "other_usd": 5336,
   "total_coa_usd": 50574,
-  "notes": "Computed from the Bursar page: tuition $3,419 per semester (6+ units) twice, campus fees $1,409 per semester twice, and the nonresident tuition fee of $471 per unit for an assumed 30 units ($14,130). Living on campus $20,212, books $1,240, transportation $1,528 plus personal $3,808 (other). The Bursar page has no F-1 budget; health insurance is not included.",
+  "notes": "Computed from the Bursar page: tuition $3,419 per semester (6+ units) twice, campus fees $1,409 per semester twice, and the nonresident tuition fee of $471 per unit for an assumed 30 units ($14,130). Living on campus $20,212, books $1,240, transportation $1,528 plus personal $3,808 (other). The Bursar page has no F-1 budget; health insurance is not included",
   "src": "bursar"
  },
  "score_codes": {

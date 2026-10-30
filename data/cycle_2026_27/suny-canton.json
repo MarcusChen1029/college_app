@@ -39,7 +39,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "CDS C8 (applying for fall 2026): SAT/ACT is 'not required for admission, but considered if submitted'; scores must arrive by 8/15 if sent. The international requirements page lists no test requirement beyond a 2.0 GPA and English proficiency.",
+  "notes": "From the Common Data Set (applying for fall 2026): SAT/ACT is 'not required for admission, but considered if submitted'; scores must arrive by 8/15 if sent. The international requirements page lists no test requirement beyond a 2.0 GPA and English proficiency.",
   "src": "cds"
  },
  "requirements": {
@@ -48,7 +48,7 @@
    "own"
   ],
   "app_fee_usd": 50,
-  "notes": "SUNY Canton accepts ApplySUNY or the Common App; the $50 fee is from CDS C13. International applicants need a cumulative GPA of 2.0 or higher (US scale) plus English proficiency, transcripts translated into English (SpanTran evaluation strongly encouraged), the International Student Financial form with supporting documents, and a color copy of the passport bio page. Nursing, Practical Nursing, Physical Therapist Assistant and the veterinary programs are selective with a separate Feb. 1 preferred deadline.",
+  "notes": "SUNY Canton accepts ApplySUNY or the Common App; the $50 fee is from the Common Data Set. International applicants need a cumulative GPA of 2.0 or higher (US scale) plus English proficiency, transcripts translated into English (SpanTran evaluation strongly encouraged), the International Student Financial form with supporting documents, and a color copy of the passport bio page. Nursing, Practical Nursing, Physical Therapist Assistant and the veterinary programs are selective with a separate Feb. 1 preferred deadline.",
   "src": "req"
  },
  "deadlines": [
@@ -57,7 +57,7 @@
    "plan": "ROLLING",
    "due": "2027-04-01",
    "label": "Fall priority deadline (fall 2027 entry)",
-   "notes": "Rolling admission; April 1 is the priority date and students are encouraged to apply by December 15. The page prints no year, so this is treated as fall 2027. No separate international application deadline is printed.",
+   "notes": "Rolling admission; April 1 is the priority date and students are encouraged to apply by December 15. The page prints no year, so fall 2027 is assumed. No separate international application deadline is printed.",
    "src": "apply"
   },
   {
@@ -65,14 +65,14 @@
    "plan": "ROLLING",
    "due": "2027-02-01",
    "label": "Preferred fall deadline for selective programs",
-   "notes": "Nursing, Nursing Dual Degree, Practical Nursing, Physical Therapist Assistant, Veterinary Science Technology and Veterinary Technology; no year printed, treated as fall 2027.",
+   "notes": "Nursing, Nursing Dual Degree, Practical Nursing, Physical Therapist Assistant, Veterinary Science Technology and Veterinary Technology; no year is printed, so fall 2027 is assumed.",
    "src": "apply"
   },
   {
    "kind": "other",
    "due": "2027-07-01",
    "label": "International financial documentation due for I-20 (fall)",
-   "notes": "SUNY Canton considers I-20 status only for students who submit completed financial statements and documents by July 1 for fall (December 1 for spring); no year printed, treated as fall 2027.",
+   "notes": "SUNY Canton considers I-20 status only for students who submit completed financial statements and documents by July 1 for fall (December 1 for spring); no year is printed, so fall 2027 is assumed.",
    "src": "cost"
   }
  ],
@@ -121,7 +121,7 @@
   "room_board_usd": 18000,
   "other_usd": 3500,
   "total_coa_usd": 41000,
-  "notes": "International bachelor's-degree table (per year): tuition $17,500, comprehensive fees $2,000, books/health insurance/travel/misc. $3,500, room and board $18,000, estimated cost $41,000 (the I-20 financial-support amount). The page prints no academic year, so it is treated as current.",
+  "notes": "International bachelor's-degree table (per year): tuition $17,500, comprehensive fees $2,000, books/health insurance/travel/misc. $3,500, room and board $18,000, estimated cost $41,000 (the I-20 financial-support amount). The page prints no academic year, so it is assumed to be current",
   "src": "cost"
  },
  "majors": [],

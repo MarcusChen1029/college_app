@@ -46,7 +46,7 @@
    "due": "2026-11-01",
    "notify": "2026-12-01",
    "label": "Early Action I (fall 2027 entry)",
-   "notes": "Page prints no year; treated as the fall 2027 cycle. Decision and scholarship notice by Dec. 1.",
+   "notes": "The page gives no year, so the fall 2027 cycle is assumed. Decision and scholarship notice by Dec. 1.",
    "src": "intl"
   },
   {
@@ -121,7 +121,7 @@
   "room_board_usd": 14670,
   "other_usd": 4491,
   "total_coa_usd": 74921,
-  "notes": "PLU's 2026-2027 international student expense estimate: tuition and fees $55,760; room and meals $14,670; health insurance, books and personal expenses $4,491; total $74,921, which is the amount of the required financial guarantee minus the scholarship in the admission letter.",
+  "notes": "PLU's 2026-2027 international student expense estimate: tuition and fees $55,760; room and meals $14,670; health insurance, books and personal expenses $4,491; total $74,921, which is the amount of the required financial guarantee minus the scholarship in the admission letter",
   "src": "cost"
  },
  "majors": [

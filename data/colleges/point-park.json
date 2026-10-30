@@ -55,7 +55,7 @@
       "2.0-2.49": 6.0,
       "1.0-1.99": 0.0
     },
-    "notes": "CDS C1 for the fall 2025 entering class (enrolled 593 = 590 full-time + 3 part-time, matching the residency table total). The residency table has 9 applicants and 8 admits of unknown residency, so in-state + out-of-state + international do not sum to the totals. All 59 international applicants were admitted and 26 enrolled. Point Park is test-blind for domestic first-year applicants (C8A: SAT/ACT not used in admission), so no SAT/ACT percentiles are reported. Enrollment 2,498 and intl 108 are the B2 'Total Undergraduates' column (degree-seeking and non-degree; nonresident aliens)."
+    "notes": "From the Common Data Set, for the fall 2025 entering class (enrolled 593 = 590 full-time + 3 part-time, matching the residency table total). The residency table has 9 applicants and 8 admits of unknown residency, so in-state + out-of-state + international do not add up to the totals. All 59 international applicants were admitted and 26 enrolled. Point Park is test-blind for domestic first-year applicants (SAT/ACT are not used in admission), so no SAT/ACT percentiles are reported. Enrollment is 2,498 and international undergraduates number 108, both from the 'Total Undergraduates' column (degree-seeking and non-degree; nonresident aliens)."
   },
   "factors": {
     "rigor": "C",
@@ -80,7 +80,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "blind",
-    "notes": "CDS C8A (Fall 2027): 'No' - the university does not use SAT or ACT scores in admission; C7 lists standardized test scores as not considered."
+    "notes": "Common Data Set (Fall 2027): 'No', the university does not use SAT or ACT scores in admission; its list of admission factors shows standardized test scores as not considered."
   },
   "cost": {
     "year": "2026-2027",
@@ -94,6 +94,6 @@
     "intl_need_aid_awarded": 113,
     "intl_avg_award_usd": 31472,
     "intl_merit_aid": true,
-    "notes": "CDS G1 for the full 2026-2027 year (first-year and all undergraduates): tuition $40,260 (12-18 credits per term), required fees $2,280, food and housing $14,440 (housing $6,400 + meal plan $8,040), books $1,200. H6: only institutional non-need-based aid is available to nonresidents; 113 undergraduate degree-seeking nonresidents received it (average $31,472, total $3,556,282)."
+    "notes": "From the Common Data Set, for the full 2026-2027 year (first-year and all undergraduates): tuition $40,260 (12-18 credits per term), required fees $2,280, food and housing $14,440 (housing $6,400 + meal plan $8,040), books $1,200. Only the college's own non-need-based aid is available to nonresidents; 113 undergraduate degree-seeking nonresidents received it (average $31,472, total $3,556,282)"
   }
 }

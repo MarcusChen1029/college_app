@@ -46,7 +46,7 @@
     "enrolled": 2112,
     "pct_submit_sat": 85,
     "pct_submit_act": 24,
-    "notes": "Baseline from IPEDS (fall 2023 entering class). No current Common Data Set was found: the newest one on pvamu.edu/ir is an old edition from the 2016-2020 fact book. International applicant/admit counts, GPA and residency splits are not available."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2023 entering class). No current Common Data Set was found: the newest one on pvamu.edu/ir is an old edition from the 2016-2020 fact book. International applicant/admit counts, GPA and residency splits are not available."
   },
   "scores": {
     "SAT_ERW": [
@@ -84,6 +84,6 @@
     "other_usd": 4611,
     "total_coa_usd": 27798,
     "tuition_out_of_state_usd": 26874,
-    "notes": "College Navigator 2024-25 estimated expenses for full-time beginning undergraduates: tuition and fees $11,299 in-state, $26,874 out-of-state (international students pay out-of-state); on-campus total $27,798 in-state, $43,373 out-of-state."
+    "notes": "College Navigator 2024-25 estimated expenses for full-time beginning undergraduates: tuition and fees $11,299 in-state, $26,874 out-of-state (international students pay out-of-state); on-campus total $27,798 in-state, $43,373 out-of-state"
   }
 }

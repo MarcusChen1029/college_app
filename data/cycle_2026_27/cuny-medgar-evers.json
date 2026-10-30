@@ -62,7 +62,7 @@
       "plan": "ROLLING",
       "due": "2026-12-01",
       "label": "International applicant deadline - application (fall 2027 entry)",
-      "notes": "Medgar Evers and CUNY both list the international freshman/transfer application deadline as December 1 and supporting documents by December 15, with rolling decisions January to July. The pages print no year, so treated as fall 2027. U.S.-educated freshmen use a February 1 priority date instead.",
+      "notes": "Medgar Evers and CUNY both list the international freshman/transfer application deadline as December 1 and supporting documents by December 15, with rolling decisions January to July. The pages give no year, so fall 2027 is assumed. U.S.-educated freshmen use a February 1 priority date instead.",
       "src": "mecintl"
     },
     {
@@ -114,7 +114,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "International (F-1/J-1) students pay the NYS non-resident rate ($620 per credit in 2026-27, CUNY-wide). No merit scholarship for international first-year students was found on the pages checked, so the policy is left null.",
+    "notes": "International (F-1/J-1) students pay the NYS non-resident rate ($620 per credit in 2026-27, CUNY-wide). No merit scholarship for international first-year students was found on the pages checked, so no aid policy is shown.",
     "src": "tuit"
   },
   "score_codes": {
@@ -157,6 +157,6 @@
     "nursing": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: Brooklyn senior college in the CUNY system (mixed associate/bachelor's) with 20+ majors in business, health, education and social services; no nationally ranked programs found, so general and subject tiers are D."
+    "general": "Our estimate: Brooklyn senior college in the CUNY system (mixed associate/bachelor's) with 20+ majors in business, health, education and social services; no nationally ranked programs found, so general and subject tiers are D."
   }
 }

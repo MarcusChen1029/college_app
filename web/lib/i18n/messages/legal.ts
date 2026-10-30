@@ -12,6 +12,7 @@ export const en = {
   "legal.signIn.consent": "By continuing, you agree to the [Terms of Service](/terms) and the [Privacy Policy](/privacy).",
   "legal.updated": "Last updated: {date}",
   "legal.contents": "On this page",
+  "legal.backToContents": "Back to contents",
   "legal.operator.named": "Trakur (track-ur-college.com) is run by {name}, an individual in Taiwan (“we” or “us” on these pages).",
   "legal.operator.unnamed": "Trakur (track-ur-college.com) is run by an individual in Taiwan (“we” or “us” on these pages). The operator’s full name will be listed here.",
 
@@ -103,6 +104,7 @@ export const zhTW: Translation<typeof en> = {
   "legal.signIn.consent": "繼續即表示你同意[服務條款](/terms)與[隱私權政策](/privacy)。",
   "legal.updated": "最後更新：{date}",
   "legal.contents": "本頁內容",
+  "legal.backToContents": "回到本頁內容",
   "legal.operator.named": "Trakur（track-ur-college.com）由在台灣的個人 {name} 經營（本頁中稱「我們」）。",
   "legal.operator.unnamed": "Trakur（track-ur-college.com）由一位在台灣的個人經營（本頁中稱「我們」）。經營者的完整姓名將公布於此。",
 

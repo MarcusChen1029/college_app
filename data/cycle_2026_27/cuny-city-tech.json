@@ -68,7 +68,7 @@
       "plan": "ROLLING",
       "due": "2026-12-01",
       "label": "CUNY international applicant deadline - application (fall 2027 entry)",
-      "notes": "CUNY-wide: international applicants (those requesting a student visa or with credentials from outside the U.S.) must apply by December 1 and send supporting documents by December 15; decisions are rolling from January to July. The CUNY page prints no year, so treated as fall 2027. City Tech's own pages show only the general date (Fall: February 1); the CUNY international column is used here.",
+      "notes": "CUNY-wide: international applicants (those requesting a student visa or with credentials from outside the U.S.) must apply by December 1 and send supporting documents by December 15; decisions are rolling from January to July. The CUNY page gives no year, so fall 2027 is assumed. City Tech's own pages show only the general date (Fall: February 1); the CUNY international column is shown here.",
       "src": "dates"
     },
     {
@@ -128,7 +128,7 @@
     "intl_aid_policy": null,
     "meets_full_need": false,
     "merit_scholarships": null,
-    "notes": "International (F-1/J-1) students pay the NYS non-resident rate ($620 per credit in 2026-27, CUNY-wide). City Tech has a scholarships office, but no merit scholarship for international first-year students was found, so the policy is left null.",
+    "notes": "International (F-1/J-1) students pay the NYS non-resident rate ($620 per credit in 2026-27, CUNY-wide). City Tech has a scholarships office, but no merit scholarship for international first-year students was found, so no aid policy is shown.",
     "src": "tuit"
   },
   "score_codes": {
@@ -173,6 +173,6 @@
     "arts_design": "D"
   },
   "tier_notes": {
-    "general": "Editorial judgment: open-access style senior college (about 80% admit; few submit SAT, fall 2024 medians 510 EBRW / 500 Math), so an SAT ~1100 international applicant is a very likely admit if the English requirement is met."
+    "general": "Our estimate: open-access style senior college (about 80% admit; few submit SAT, fall 2024 medians 510 EBRW / 500 Math), so an SAT ~1100 international applicant is a very likely admit if the English requirement is met."
   }
 }

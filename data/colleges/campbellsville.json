@@ -45,6 +45,6 @@
     "applicants": 5000,
     "admits": 3987,
     "enrolled": 557,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on Campbellsville's website. Counts come from the IPEDS ADM2024 file (via the Urban Institute API mirror): 5,000 applicants, 3,987 admitted (80%), 557 enrolled (537 full-time + 20 part-time). The same source shows 1,015 applicants / 998 admitted for fall 2023, so the 2024 applicant count may include a reporting change. Campbellsville is test-optional and reports no SAT/ACT percentiles; international applicant counts, GPA and class-rank data are not published. Undergraduate enrollment (6,848, College Navigator fall 2024) includes online and regional-center students, not just the Campbellsville campus."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found on Campbellsville's website. Counts come from the IPEDS admissions file (via the Urban Institute API mirror): 5,000 applicants, 3,987 admitted (80%), 557 enrolled (537 full-time + 20 part-time). The same source shows 1,015 applicants / 998 admitted for fall 2023, so the 2024 applicant count may include a reporting change. Campbellsville is test-optional and reports no SAT/ACT percentiles; international applicant counts, GPA and class-rank data are not published. Undergraduate enrollment (6,848, College Navigator fall 2024) includes online and regional-center students, not just the Campbellsville campus."
   }
 }

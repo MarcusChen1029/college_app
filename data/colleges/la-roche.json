@@ -53,7 +53,7 @@
     "enrolled": 146,
     "pct_submit_sat": 16,
     "pct_submit_act": 4,
-    "notes": "Baseline from IPEDS (fall 2024 entering class, ADM2024); applicants, admits and enrollees are the exact IPEDS totals (enrolled = full-time 143 + part-time 3). College Navigator shows the same 1,976 applicants, 76% admitted and 10% of admits enrolled. No Common Data Set could be found on La Roche's site or by search, so GPA, international applicant counts and in-state/out-of-state splits are not available. SAT/ACT percentiles are for enrolled first-time students and are test-optional self-selected: SAT 21 students, ACT only 5 students."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); applicants, admits and enrollees are the exact IPEDS totals (enrolled = full-time 143 + part-time 3). College Navigator shows the same 1,976 applicants, 76% admitted and 10% of admits enrolled. No Common Data Set could be found on La Roche's site or by search, so GPA, international applicant counts and in-state/out-of-state splits are not available. SAT/ACT percentiles are for enrolled first-time students, and scores are optional, so only students who chose to send them are included: SAT 21 students, ACT only 5 students."
   },
   "scores": {
     "SAT_ERW": [
@@ -91,6 +91,6 @@
     "room_board_usd": 14942,
     "books_usd": 1000,
     "intl_merit_aid": true,
-    "notes": "Figures are the 'Undergraduate (International)' academic-year costs on La Roche's international cost page (tuition $17,509 + fees $760 per semester; resident room $9,294 + meal plan $5,630 per year; books estimated $1,000; off-campus commuter living estimated $11,000). The page does not name an academic year (it says the figures are the average costs for a nine-month term as shown on the Form I-20), so 2026-2027 is assumed because the page is current in fall 2026; verify with the university. A nonrefundable $5,000 payment toward first-semester tuition is required to be registered ($2,000 for ESL-only). College Navigator's 2024-25 tuition and fees were $34,052."
+    "notes": "Figures are the 'Undergraduate (International)' academic-year costs on La Roche's international cost page (tuition $17,509 + fees $760 per semester; resident room $9,294 + meal plan $5,630 per year; books estimated $1,000; off-campus commuter living estimated $11,000). The page does not name an academic year (it says the figures are the average costs for a nine-month term as shown on the Form I-20), so 2026-2027 is assumed because the page is current in fall 2026; confirm with the university. A nonrefundable $5,000 payment toward first-semester tuition is required to be registered ($2,000 for ESL-only). College Navigator's 2024-25 tuition and fees were $34,052"
   }
 }

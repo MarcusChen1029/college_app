@@ -27,7 +27,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "Wellesley states it will continue to be test optional for applicants entering in fall 2027. The 2025-26 CDS (C8A) also lists SAT/ACT as not required but considered if submitted. NOTE: wellesley.edu returns HTTP 403 to automated fetches, so the live pages were read only through search-extracted text; recheck the page before relying on exact wording.",
+  "notes": "Wellesley states it will continue to be test optional for applicants entering in fall 2027. The 2025-26 Common Data Set also lists SAT/ACT as not required but considered if submitted. Note: wellesley.edu returns HTTP 403 to automated fetches, so the live pages were read only through search-extracted text; recheck the page before relying on the exact wording.",
   "src": "apply"
  },
  "requirements": {
@@ -40,7 +40,7 @@
   "supplemental_essays": true,
   "teacher_recs": 2,
   "counselor_rec": true,
-  "notes": "Personal essay (250-650 words) plus a shorter Wellesley-specific writing supplement. Two teacher recommendations and the counselor School Report. Application fee: the 2025-26 CDS (C13) answers 'No' to having an application fee. Interview policy and CSS Profile requirement not confirmed. Wellesley is a women's college.",
+  "notes": "Personal essay (250-650 words) plus a shorter Wellesley-specific writing supplement. Two teacher recommendations and the counselor School Report. Application fee: the 2025-26 Common Data Set answers 'No' to having an application fee. The interview policy and whether the CSS Profile is required are not yet confirmed. Wellesley is a women's college.",
   "src": "apply"
  },
  "deadlines": [
@@ -49,7 +49,7 @@
    "plan": "ED",
    "due": "2026-11-01",
    "label": "Early Decision I",
-   "notes": "Decision mid-December (no exact date published); enrollment deposit due early January. Dates read via search-extracted page text (site blocks automated fetch); verify.",
+   "notes": "Decision mid-December (no exact date published); enrollment deposit due early January. The dates come from search-extracted page text because the site blocks automated fetching; confirm with the college.",
    "src": "apply"
   },
   {
@@ -57,7 +57,7 @@
    "plan": "ED2",
    "due": "2027-01-05",
    "label": "Early Decision II",
-   "notes": "Binding. Decision mid-February; deposit due by late February. Date read via search-extracted page text; verify.",
+   "notes": "Binding. Decision mid-February; deposit due by late February. The date comes from search-extracted page text; confirm with the college.",
    "src": "apply"
   },
   {
@@ -65,7 +65,7 @@
    "plan": "RD",
    "due": "2027-01-08",
    "label": "Regular Decision",
-   "notes": "Decision late March (no exact date published); reply by May 1. Date read via search-extracted page text; verify.",
+   "notes": "Decision late March (no exact date published); reply by May 1. The date comes from search-extracted page text; confirm with the college.",
    "src": "apply"
   }
  ],
@@ -104,7 +104,7 @@
   "intl_need_aid": true,
   "intl_aid_policy": "need_aware_full_need",
   "meets_full_need": true,
-  "notes": "Wellesley is need-blind only for U.S. citizens and permanent residents. For international citizens admission is need-aware and the College can fund only a limited number of awards, but admitted students receive their full calculated need. International applicants must request aid when applying (not accepted after the admission decision). Read via search-extracted page text (site blocks automated fetch); verify.",
+  "notes": "Wellesley is need-blind only for U.S. citizens and permanent residents. For international citizens admission is need-aware and the College can fund only a limited number of awards, but admitted students receive their full calculated need. International applicants must request aid when applying (not accepted after the admission decision). This comes from search-extracted page text because the site blocks automated fetching; confirm with the college.",
   "src": "aid"
  },
  "score_codes": {},

@@ -67,7 +67,7 @@
       "2.0-2.49": 0.07,
       "1.0-1.99": 0
     },
-    "notes": "CDS C1/C2/C9/C11/C12, fall 2025 entering class. No early decision or early action. CDS C8 marks SAT/ACT as not used in admission decisions (test-blind); scores shown are from the minority who submitted them."
+    "notes": "From the Common Data Set, fall 2025 entering class. No early decision or early action. The Common Data Set marks SAT/ACT as not used in admission decisions (test-blind); scores shown are from the minority who submitted them."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -109,7 +109,7 @@
     "room_board_usd": 18405,
     "other_usd": 3027,
     "total_coa_usd": 33524,
-    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance.",
+    "notes": "College Scorecard (IPEDS 2023-24): tuition includes required fees; on-campus cost of attendance",
     "tuition_out_of_state_usd": 44640
   },
   "factors": {

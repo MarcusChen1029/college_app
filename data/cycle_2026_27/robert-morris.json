@@ -37,7 +37,7 @@
       "kind": "application",
       "due": "2027-05-01",
       "label": "International application deadline, fall 2027 entry",
-      "notes": "Page says 'May 1 for Fall attendance and November 1 for Spring attendance' with no year; taken as fall 2027. The page does not say whether admission is rolling.",
+      "notes": "The page says 'May 1 for Fall attendance and November 1 for Spring attendance' with no year, so fall 2027 is assumed. The page does not say whether admission is rolling.",
       "src": "intl"
     }
   ],

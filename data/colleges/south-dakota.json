@@ -64,7 +64,7 @@
       "2.0-2.49": 2.68,
       "1.0-1.99": 0.59
     },
-    "notes": "CDS C1 residency table (fall 2024 entering class): the column under INTERNATIONAL gives 1,852 applied / 1,806 admitted / 197 enrolled (enrolled matches the B1 first-time nonresident count of 197). SAT percentiles are based on only 60 enrolled students. No early decision or early action; no waitlist. Applicant counts by residency sum to the total. Check marks for C7 (factors) are not readable in the PDF text, so factors are omitted."
+    "notes": "From the Common Data Set residency table (fall 2024 entering class): the column under International gives 1,852 applied / 1,806 admitted / 197 enrolled (enrolled matches the first-time nonresident count of 197 in the enrollment section). SAT percentiles are based on only 60 enrolled students. No early decision or early action; no waitlist. Applicant counts by residency sum to the total. Check marks for the admission factors are not readable in the PDF text, so factors are omitted."
   },
   "scores": {
     "SAT_TOTAL": [
@@ -101,7 +101,7 @@
   "cds_test_policy": {
     "cycle": "2026-27",
     "policy": "optional",
-    "notes": "CDS C8A (fall 2026) check boxes are not readable in the PDF text; policy taken from the international admissions page instead."
+    "notes": "The Common Data Set test policy check boxes (fall 2026) are not readable in the PDF text, so the policy is taken from the international admissions page instead."
   },
   "cost": {
     "year": "2026-2027",
@@ -110,6 +110,6 @@
     "room_board_usd": 9498,
     "other_usd": 2400,
     "total_coa_usd": 25514,
-    "notes": "USD international cost page (30 credits per year; the page does not name the academic year): tuition and fees $13,616, living expenses $9,498, other (books, insurance, discipline fees) $2,400. The page leaves the total blank; $25,514 is the sum of those three lines. The page also mentions an annual tuition fee of $13,299, which does not match its own table. The CDS (2024-25) G1 tuition figures ($7,773 / $11,283) look out of date and are not used."
+    "notes": "USD international cost page (30 credits per year; the page does not name the academic year): tuition and fees $13,616, living expenses $9,498, other (books, insurance, discipline fees) $2,400. The page gives no total; $25,514 is the sum of those three lines. The page also mentions an annual tuition fee of $13,299, which does not match its own table. The Common Data Set (2024-25) tuition figures ($7,773 / $11,283) look out of date and are not used"
   }
 }

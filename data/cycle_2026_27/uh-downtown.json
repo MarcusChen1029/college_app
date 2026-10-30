@@ -43,7 +43,7 @@
    "kind": "application",
    "due": "2027-06-01",
    "label": "International freshman application deadline, fall 2027",
-   "notes": "International page: freshman and freshman-transfer deadline June 1, 2027 (spring: Oct. 30, 2026; summer: April 2, 2027). The domestic freshman page lists a later fall priority date of Aug. 6, 2027; use the June 1 international date. CDS C14 also gives a fall closing date of 6/1.",
+   "notes": "International page: freshman and freshman-transfer deadline June 1, 2027 (spring: Oct. 30, 2026; summer: April 2, 2027). The domestic freshman page lists a later fall priority date of Aug. 6, 2027; use the June 1 international date. The Common Data Set also gives a fall closing date of 6/1.",
    "src": "intl"
   }
  ],
@@ -73,7 +73,7 @@
   "intl_aid_policy": null,
   "meets_full_need": false,
   "merit_scholarships": null,
-  "notes": "The international admissions pages list no scholarships for international students. UHD's Competitive Scholarship Tuition Waiver can reduce non-resident and international tuition for students holding a competitive scholarship of at least $1,000 per term from a college or department scholarship committee. The CDS nonresident-aid section (H6) could not be read from the PDF text.",
+  "notes": "The international admissions pages list no scholarships for international students. UHD's Competitive Scholarship Tuition Waiver can reduce non-resident and international tuition for students holding a competitive scholarship of at least $1,000 per term from a college or department scholarship committee. The nonresident aid section of the Common Data Set could not be read from the PDF text.",
   "src": "waiver"
  },
  "majors": [],

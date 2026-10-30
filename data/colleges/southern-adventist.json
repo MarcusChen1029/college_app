@@ -47,7 +47,7 @@
     "enrolled": 703,
     "pct_submit_sat": 46,
     "pct_submit_act": 60,
-    "notes": "Baseline from IPEDS fall 2024 (no Common Data Set found on southern.edu): 2,907 applied, 1,904 admitted (65%), 703 enrolled (37% yield). College Navigator: SAT/ACT 'not required, but considered'; GPA and secondary school record required; English proficiency test required. SAT submitted by 321 enrolled first-time students (46%), ACT by 420 (60%). International applicant counts, GPA distribution and residency splits are not published."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024; no Common Data Set found on southern.edu): 2,907 applied, 1,904 admitted (65%), 703 enrolled (37% yield). College Navigator: SAT/ACT 'not required, but considered'; GPA and secondary school record required; English proficiency test required. SAT submitted by 321 enrolled first-time students (46%), ACT by 420 (60%). International applicant counts, GPA distribution and residency splits are not published."
   },
   "scores": {
     "SAT_ERW": [

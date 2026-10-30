@@ -75,7 +75,7 @@
       "plan": "ROLLING",
       "due": "2027-07-01",
       "label": "International fall 2027 application completion deadline",
-      "notes": "Both international pages say 'Complete your application by July 1'; no year is printed, taken as fall 2027. ORU decides quickly after documents arrive.",
+      "notes": "Both international pages say 'Complete your application by July 1'; no year is printed, so fall 2027 is assumed. ORU decides quickly after documents arrive.",
       "src": "steps"
     },
     {
@@ -96,7 +96,7 @@
   ],
   "english_policy": {
     "policy": "required_nonnative",
-    "waiver_notes": "Required if English is not your country's official language. Accepted: Duolingo, TOEFL, IELTS or GaoKao English 115 (GaoKao is not in this tracker's test list); ACT or SAT also accepted as English proof per the freshman checklist. No conditional admission or ESL pathway program was found on the international undergraduate pages.",
+    "waiver_notes": "Required if English is not your country's official language. Accepted: Duolingo, TOEFL, IELTS or GaoKao English 115 (GaoKao is not in the tests listed here); ACT or SAT also accepted as English proof per the freshman checklist. No conditional admission or ESL pathway program was found on the international undergraduate pages.",
     "src": "steps"
   },
   "english": [
@@ -140,7 +140,7 @@
     "intl_extra_fees_usd": 400,
     "room_board_usd": 11560,
     "total_coa_usd": 50390,
-    "notes": "International undergraduate direct costs 2026-27: tuition $36,250, housing $4,910, food $6,650, general fee $1,320, technology fee $500, academic fee $360, international student fee $400 = $50,390 per year (double room, meal plan). Required fees $2,580 include the $400 international fee. Books (flat textbook fee $365 per semester per the new-student checklist) and travel are not in the total. Private university: one tuition rate for all students. The F-1 financial guarantee must cover the total minus any scholarship; add $6,000 for a spouse and $4,000 per child."
+    "notes": "International undergraduate direct costs 2026-27: tuition $36,250, housing $4,910, food $6,650, general fee $1,320, technology fee $500, academic fee $360, international student fee $400 = $50,390 per year (double room, meal plan). Required fees $2,580 include the $400 international fee. Books (flat textbook fee $365 per semester per the new-student checklist) and travel are not in the total. Private university: one tuition rate for all students. The F-1 financial guarantee must cover the total minus any scholarship; add $6,000 for a spouse and $4,000 per child"
   },
   "score_codes": {
     "sat": {

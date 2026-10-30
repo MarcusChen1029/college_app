@@ -44,7 +44,7 @@
       "plan": "RD",
       "due": "2027-05-01",
       "label": "International application deadline, fall 2027 entry (residing outside the U.S.)",
-      "notes": "Page prints 'May 1 (Fall)' without a year; treated as fall 2027. Spring deadline for applicants outside the U.S. is Nov. 1.",
+      "notes": "The page prints 'May 1 (Fall)' without a year, so fall 2027 is assumed. Spring deadline for applicants outside the U.S. is Nov. 1.",
       "src": "intl"
     },
     {
@@ -52,7 +52,7 @@
       "plan": "RD",
       "due": "2027-07-15",
       "label": "International application deadline, fall 2027 entry (residing within the U.S.)",
-      "notes": "Page prints 'July 15 (Fall)' without a year; treated as fall 2027. Spring deadline for applicants inside the U.S. is Dec. 1.",
+      "notes": "The page prints 'July 15 (Fall)' without a year, so fall 2027 is assumed. Spring deadline for applicants inside the U.S. is Dec. 1.",
       "src": "intl"
     }
   ],

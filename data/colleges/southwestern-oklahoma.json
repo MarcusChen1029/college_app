@@ -47,7 +47,7 @@
     "enrolled": 736,
     "pct_submit_sat": 0,
     "pct_submit_act": 78,
-    "notes": "IPEDS ADM2023 (fall 2023 first-time students): 1,689 applicants, 1,689 admitted, 736 enrolled. College Navigator says SWOSU has an open admission policy and reports no fall 2024 admissions or test data. IPEDS lists no international applicant or admit counts, so those are null; nonresidents are about 2% of undergraduates (fall 2024, rounded). SWOSU reports ACT only (no SAT percentiles). Undergraduate enrollment 4,347 is fall 2024; the 19:1 ratio has no year on College Navigator. The newest SWOSU Common Data Sets found online are 2019-20 and older, so this is the IPEDS baseline; GPA, residency and class-rank details are not included."
+    "notes": "IPEDS, the US government's college data (fall 2023 first-time students): 1,689 applicants, 1,689 admitted, 736 enrolled. College Navigator says SWOSU has an open admission policy and reports no fall 2024 admissions or test data. IPEDS lists no international applicant or admit counts, so those are not shown; nonresidents are about 2% of undergraduates (fall 2024, rounded). SWOSU reports ACT only (no SAT percentiles). Undergraduate enrollment 4,347 is fall 2024; the 19:1 ratio has no year on College Navigator. The newest SWOSU Common Data Sets found online are 2019-20 and older, so these figures come from IPEDS; GPA, residency and class-rank details are not included."
   },
   "scores": {
     "ACT_COMPOSITE": [
@@ -75,6 +75,6 @@
     "room_board_usd": 7634,
     "other_usd": 8746,
     "total_coa_usd": 26197,
-    "notes": "College Navigator 2024-25: tuition and fees in-state $8,469, out-of-state $8,499; on-campus food and housing $7,634, other $8,746; total_coa_usd is the out-of-state on-campus total. International students are classed as nonresidents; see the cycle notes for SWOSU's published international cost estimate."
+    "notes": "College Navigator 2024-25: tuition and fees in-state $8,469, out-of-state $8,499; on-campus food and housing $7,634, other costs $8,746; the total cost of attendance is the out-of-state on-campus total. International students are classed as nonresidents; see the other cost note for SWOSU's published international cost estimate"
   }
 }

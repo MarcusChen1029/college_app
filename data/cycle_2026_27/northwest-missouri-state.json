@@ -49,14 +49,14 @@
    "kind": "application",
    "due": "2027-06-15",
    "label": "International fall 2027 application deadline (applying from abroad)",
-   "notes": "Dates print without a year; treated as fall 2027. Applications incomplete by the deadline roll to the next session. Spring (January) entry: application Nov. 1, documents Nov. 15. Students transferring from a US school have later dates (fall: July 15).",
+   "notes": "The dates are printed without a year, so fall 2027 is assumed. Applications incomplete by the deadline roll to the next session. Spring (January) entry: application Nov. 1, documents Nov. 15. Students transferring from a US school have later dates (fall: July 15).",
    "src": "dates"
   },
   {
    "kind": "other",
    "due": "2027-07-01",
    "label": "International fall 2027 document deadline",
-   "notes": "All admission documents must be received by this date (year not printed; treated as 2027).",
+   "notes": "All admission documents must be received by this date (year not printed, so 2027 is assumed).",
    "src": "dates"
   }
  ],
@@ -112,7 +112,7 @@
   "room_board_usd": 12620,
   "other_usd": 2250,
   "total_coa_usd": 38120,
-  "notes": "Student Account Services estimate for international undergraduates (15 credit hours per semester): tuition $18,000 plus fees $5,250 (entered as one combined figure), on-campus living for 9 months $12,620 (South Complex double, Residential Unlimited food plan), health insurance about $1,650 plus orientation/student service fees $600 (entered as other), total $38,120. Personal expenses ($4,500) and one-time vaccine/TB costs are listed separately and not included. Textbooks and a laptop are provided to eligible students per the cost page, so no books figure. The admissions cost page shows a different 'international' direct-expense estimate of $39,622.",
+  "notes": "Student Account Services estimate for international undergraduates (15 credit hours per semester): tuition $18,000 plus fees $5,250 (entered as one combined figure), on-campus living for 9 months $12,620 (South Complex double, Residential Unlimited food plan), health insurance about $1,650 plus orientation/student service fees $600 (entered as other), total $38,120. Personal expenses ($4,500) and one-time vaccine/TB costs are listed separately and not included. Textbooks and a laptop are provided to eligible students per the cost page, so no books figure. The admissions cost page shows a different 'international' direct-expense estimate of $39,622",
   "src": "cost"
  },
  "aid": {

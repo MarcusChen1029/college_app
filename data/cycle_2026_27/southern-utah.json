@@ -27,7 +27,7 @@
   },
   "test_policy": {
     "policy": "blind",
-    "notes": "SUU does not use SAT/ACT scores in admission (CDS C8A). First-time freshmen with a cumulative unweighted GPA of 2.4 or higher are fully admitted; below 2.4 are provisionally admitted into the COMPASS program. International applicants need a foreign transcript that converts to at least a 2.0 on a 4.0 scale. An ACT 18 or SAT critical reading 450 can be used as English-proficiency proof (not as an admission test).",
+    "notes": "SUU does not use SAT/ACT scores in admission (per the Common Data Set). First-time freshmen with a cumulative unweighted GPA of 2.4 or higher are fully admitted; below 2.4 are provisionally admitted into the COMPASS program. International applicants need a foreign transcript that converts to at least a 2.0 on a 4.0 scale. An ACT 18 or SAT critical reading 450 can be used as English-proficiency proof (not as an admission test).",
     "src": "first"
   },
   "requirements": {
@@ -35,7 +35,7 @@
       "own"
     ],
     "app_fee_usd": 60,
-    "notes": "International application fee is $60 (US currency only); the CDS lists no application fee for domestic applicants. Applicants show funds for the first year with an official bank document and the International Student Financial Form. No essay or recommendations are listed on the international requirements page; CDS C7 reports no weight on essays, recommendations or interviews.",
+    "notes": "International application fee is $60 (US currency only); the Common Data Set lists no application fee for domestic applicants. Applicants show funds for the first year with an official bank document and the International Student Financial Form. No essay or recommendations are listed on the international requirements page; the Common Data Set reports no weight on essays, recommendations or interviews.",
     "src": "intl"
   },
   "deadlines": [
@@ -44,7 +44,7 @@
       "plan": "ROLLING",
       "due": "2027-04-15",
       "label": "Fall priority deadline - international (fall 2027 entry)",
-      "notes": "SUU admits on a rolling basis. The page prints no year; taken as fall 2027. Spring-semester priority date is October 15 and summer is February 15. Allow at least one month for processing, shipping and embassy appointments.",
+      "notes": "SUU admits on a rolling basis. The page prints no year, so fall 2027 is assumed. Spring-semester priority date is October 15 and summer is February 15. Allow at least one month for processing, shipping and embassy appointments.",
       "src": "intl"
     },
     {
@@ -94,7 +94,7 @@
     "meets_full_need": false,
     "merit_scholarships": true,
     "merit_separate_app": false,
-    "notes": "International scholarships are awarded automatically on the admission application (no separate application): International Founders' Scholarship $9,000/yr for 4 years, Deans' $7,000/yr for 4 years, Centurium $4,000/yr for 4 years. The committee weighs GPA (awardees typically 3.0), citizenship and financial need; international scholarships cannot be combined with other substantial SUU tuition scholarships. CDS H6: need-based and non-need-based institutional aid is available to nonresidents.",
+    "notes": "International scholarships are awarded automatically on the admission application (no separate application): International Founders' Scholarship $9,000/yr for 4 years, Deans' $7,000/yr for 4 years, Centurium $4,000/yr for 4 years. The committee weighs GPA (awardees typically 3.0), citizenship and financial need; international scholarships cannot be combined with other substantial SUU tuition scholarships. The Common Data Set says need-based and non-need-based institutional aid is available to nonresidents.",
     "src": "costs"
   },
   "majors": [],

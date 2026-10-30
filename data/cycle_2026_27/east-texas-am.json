@@ -43,7 +43,7 @@
     {
       "kind": "priority",
       "due": "2027-06-01",
-      "label": "Freshman priority date (fall 2027 entry, CDS C14)",
+      "label": "Freshman priority date (fall 2027 entry, from the Common Data Set)",
       "notes": "From the CDS (all freshmen); notification is rolling from Oct. 1. The CDS lists a domestic closing date of Aug. 15.",
       "src": "cds"
     },
@@ -96,7 +96,7 @@
     "intl_aid_policy": "need_aware_limited",
     "meets_full_need": false,
     "merit_scholarships": true,
-    "notes": "CDS H6: institutional need-based and non-need-based aid are both available to degree-seeking nonresident undergraduates (24 recipients, average $9,622). The international admissions page describes no scholarship amounts, and the cost page lists no non-resident tuition waiver.",
+    "notes": "The Common Data Set says institutional need-based and non-need-based aid are both available to degree-seeking nonresident undergraduates (24 recipients, average $9,622). The international admissions page describes no scholarship amounts, and the cost page lists no non-resident tuition waiver.",
     "src": "cost"
   },
   "majors": [],

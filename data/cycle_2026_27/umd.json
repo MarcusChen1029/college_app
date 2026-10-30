@@ -124,7 +124,7 @@
   "intl_need_aid": false,
   "intl_aid_policy": "none",
   "merit_scholarships": false,
-  "notes": "Institutional merit scholarships are open to US citizens and eligible non-citizens only; CDS H6 says no institutional scholarship or grant aid is available for nonresident undergraduates.",
+  "notes": "Institutional merit scholarships are open to US citizens and eligible non-citizens only; the Common Data Set says no institutional scholarship or grant aid is available for nonresident undergraduates.",
   "src": "merit"
  },
  "majors": [

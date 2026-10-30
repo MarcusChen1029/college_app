@@ -59,7 +59,7 @@
       "own"
     ],
     "app_fee_usd": null,
-    "notes": "Apply through Davenport's own online application. The high school page calls the application 'free'; an international-specific fee is not stated on the pages read, so the fee is left null. International applicants need official transcripts (course-by-course evaluation from a NACES member for schools outside the US/Canada), a signed financial support form, a bank letter or statement issued within 9 months of the intended start, a passport photo page copy, and English proof. Admission is reviewed on a rolling basis.",
+    "notes": "Apply through Davenport's own online application. The high school page calls the application 'free'; an international-specific fee is not stated on the pages read, so no fee is shown. International applicants need official transcripts (course-by-course evaluation from a NACES member for schools outside the US/Canada), a signed financial support form, a bank letter or statement issued within 9 months of the intended start, a passport photo page copy, and English proof. Admission is reviewed on a rolling basis.",
     "src": "cat"
   },
   "deadlines": [
@@ -117,7 +117,7 @@
     "other_usd": 3008,
     "total_coa_usd": 52023,
     "intl_merit_aid": true,
-    "notes": "Davenport's 2026-27 undergraduate budget (30 credits, 8 months, dependent on-campus column): tuition and fees $32,945 combined, food and housing $14,280, books and supplies $780, personal $3,008 (transportation $944 and loan fees $66 are not included in other), total $52,023. Per-credit tuition is $1,059 on the first rate listed and $1,148 on a second block that names the Great Lakes Bay, Lansing and Warren campuses; the Grand Rapids rate was not confirmed. Tuition is the same for international students on the pages read.",
+    "notes": "Davenport's 2026-27 undergraduate budget (30 credits, 8 months, dependent on-campus column): tuition and fees $32,945 combined, food and housing $14,280, books and supplies $780, personal $3,008 (transportation $944 and loan fees $66 are not included in other), total $52,023. Per-credit tuition is $1,059 on the first rate listed and $1,148 on a second block that names the Great Lakes Bay, Lansing and Warren campuses; the Grand Rapids rate was not confirmed. Tuition is the same for international students on the pages read",
     "src": "coa"
   },
   "aid": {

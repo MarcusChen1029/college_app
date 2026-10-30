@@ -47,7 +47,7 @@
     "enrolled": 935,
     "pct_submit_sat": 11,
     "pct_submit_act": 7,
-    "notes": "Baseline from IPEDS (fall 2024 entering class); no Common Data Set was found on ORU's website. Counts come from the IPEDS ADM2024 file (via the Urban Institute API mirror): 5,022 applicants, 4,967 admitted (99%), 935 enrolled (748 full-time + 187 part-time); College Navigator shows the same 5,022 applicants and 99% admitted. International and residency splits and GPA are not published. SAT/ACT percentiles are for the 93 SAT and 59 ACT submitters among enrolled first-time students (ORU is test-optional). Undergraduate enrollment 5,017 is fall 2024."
+    "notes": "Figures from IPEDS, the US government's college data (fall 2024 entering class); no Common Data Set was found on ORU's website. Counts come from the IPEDS file (via the Urban Institute API mirror): 5,022 applicants, 4,967 admitted (99%), 935 enrolled (748 full-time + 187 part-time); College Navigator shows the same 5,022 applicants and 99% admitted. International and residency splits and GPA are not published. SAT/ACT percentiles are for the 93 SAT and 59 ACT submitters among enrolled first-time students (ORU is test-optional). Undergraduate enrollment 5,017 is fall 2024."
   },
   "scores": {
     "SAT_ERW": [

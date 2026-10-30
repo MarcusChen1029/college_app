@@ -48,7 +48,7 @@
   "gpa_avg": 3.57,
   "pct_submit_sat": 24,
   "pct_submit_act": 4,
-  "notes": "No Common Data Set was found on lewisu.edu, so this is a baseline: first-year applicants/accepts/enrolled and average GPA (3.57) are from Lewis Quick Facts (fall 2024); test percentiles and submission rates (SAT 24%, ACT 4% of enrolled) are IPEDS fall 2024 via College Navigator. Quick Facts also gives averages (ACT 23.7, SAT 1084) and says 3.6% of the first-year class is international; international applicant/admit counts are not published. Undergraduate enrollment 4,326 is fall 2024."
+  "notes": "No Common Data Set was found on lewisu.edu, so the figures come from other sources: first-year applicants, admits and enrolled students and the average GPA (3.57) are from Lewis Quick Facts (fall 2024); test percentiles and submission rates (SAT 24%, ACT 4% of enrolled) are IPEDS fall 2024 figures via College Navigator. Quick Facts also gives averages (ACT 23.7, SAT 1084) and says 3.6% of the first-year class is international; international applicant/admit counts are not published. Undergraduate enrollment 4,326 is fall 2024."
  },
  "scores": {
   "SAT_ERW": [
@@ -75,6 +75,6 @@
   "room_board_usd": 13154,
   "books_usd": 1500,
   "intl_need_aid": false,
-  "notes": "Tuition $20,950 per semester (12-18 credits, traditional undergraduate, fall 2026/spring 2027); student fee $250 per semester; room is a first-year double ($3,742 per semester) plus default Meal Plan II ($2,835 per semester). Books are the College Navigator 2024-25 estimate. A total cost of attendance is not published on the pages reviewed, so none is given."
+  "notes": "Tuition $20,950 per semester (12-18 credits, traditional undergraduate, fall 2026/spring 2027); student fee $250 per semester; room is a first-year double ($3,742 per semester) plus default Meal Plan II ($2,835 per semester). Books are the College Navigator 2024-25 estimate. A total cost of attendance is not published on the pages reviewed, so none is given"
  }
 }

@@ -48,7 +48,7 @@
    "own"
   ],
   "app_fee_usd": 95,
-  "notes": "International Student Application online with a $95 non-refundable fee. Also needed: passport biographical page, official high school transcripts sent by the school to OISS@unr.edu or by mail, and English proof. CDS C7 check boxes were not readable, so essay and recommendation weight is unknown; the freshman page does not list an essay or recommendations as required.",
+  "notes": "International Student Application online with a $95 non-refundable fee. Also needed: passport biographical page, official high school transcripts sent by the school to OISS@unr.edu or by mail, and English proof. The Common Data Set's admission-factor check boxes were not readable, so essay and recommendation weight is unknown; the freshman page does not list an essay or recommendations as required.",
   "src": "intl"
  },
  "deadlines": [
@@ -130,7 +130,7 @@
   "intl_aid_policy": "merit_only",
   "meets_full_need": false,
   "merit_scholarships": true,
-  "notes": "The international admissions page says new international students can receive $1,000 to $12,000 scholarships, and general University scholarships range from $500 to $8,000 per year. OISS awards $300-$5,000 per year to degree-seeking F-1/J-1 students. Need-based help for international students is limited to the Institutional Methodology form after one year of study (priority Feb. 1). A Pack Exchange Program (200% of base tuition) exists only for international students who graduated from a U.S. high school in listed western states. CDS H6 (2025-26): 1,484 nonresident undergraduates received institutional aid, average $2,862. No conditional-admission or intensive-English pathway is described on the pages checked.",
+  "notes": "The international admissions page says new international students can receive $1,000 to $12,000 scholarships, and general University scholarships range from $500 to $8,000 per year. OISS awards $300-$5,000 per year to degree-seeking F-1/J-1 students. Need-based help for international students is limited to the Institutional Methodology form after one year of study (priority Feb. 1). A Pack Exchange Program (200% of base tuition) exists only for international students who graduated from a U.S. high school in listed western states. From the Common Data Set (2025-26): 1,484 nonresident undergraduates received the college's own aid, average $2,862. No conditional-admission or intensive-English pathway is described on the pages checked.",
   "src": "home"
  },
  "cost": {
@@ -140,7 +140,7 @@
   "room_board_usd": 12928,
   "books_usd": 1200,
   "total_coa_usd": 45541,
-  "notes": "UNR international undergraduate cost table (the page does not state an academic year; used as the current estimate): base tuition $9,383 ($312.75/credit, 30 credits) plus non-resident tuition fee $20,189 (tuition_intl 29,572), mandatory student fees $1,841 (incl. international student fees). On-campus housing $7,000-$11,000 and meals $5,928-$7,488; room_board and total use the low end (published total range $45,541-$51,101). The CDS 2025-26 G1 lists nonresident tuition $28,308 plus fees $1,642. Health insurance and personal costs are not in the total. A separate admissions page still says $23,562 a year in estimated tuition, which conflicts with the cost table.",
+  "notes": "UNR international undergraduate cost table (the page does not state an academic year; shown as the current estimate): base tuition $9,383 ($312.75/credit, 30 credits) plus non-resident tuition fee $20,189 (international tuition 29,572), mandatory student fees $1,841 (incl. international student fees). On-campus housing $7,000-$11,000 and meals $5,928-$7,488; the housing and food figure and the total both use the low end (published total range $45,541-$51,101). The 2025-26 Common Data Set lists nonresident tuition $28,308 plus fees $1,642. Health insurance and personal costs are not in the total. A separate admissions page still says $23,562 a year in estimated tuition, which conflicts with the cost table",
   "src": "cost"
  },
  "majors": [],
@@ -159,6 +159,6 @@
   "nursing": "D"
  },
  "tier_notes": {
-  "general": "Carnegie R1 flagship that admits about 83% of first-years with middle SAT 1170, so a little above an open-access school; D+ is an editorial judgment, not a ranking."
+  "general": "Carnegie R1 flagship that admits about 83% of first-years with middle SAT 1170, so a little above an open-access school; D+ is our estimate, not a published ranking."
  }
 }

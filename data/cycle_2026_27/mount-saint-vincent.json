@@ -58,7 +58,7 @@
    "plan": "EA",
    "due": "2026-11-15",
    "label": "Early Action, first-year (fall 2027 entry)",
-   "notes": "International checklist: 'Early Action: November 15'. No year is printed; taken as fall 2027 entry.",
+   "notes": "International checklist: 'Early Action: November 15'. No year is printed, so fall 2027 entry is assumed.",
    "src": "chk"
   },
   {
@@ -66,7 +66,7 @@
    "plan": "RD",
    "due": "2027-03-01",
    "label": "Final deadline, first-year (fall 2027 entry)",
-   "notes": "International checklist: 'Final Deadline: March 1' (no year printed; taken as fall 2027). The first-year page describes rolling admission with a March 1 priority date and a decision within four weeks of a complete application. Spring semester deadline is October 15.",
+   "notes": "International checklist: 'Final Deadline: March 1' (no year printed; fall 2027 is assumed). The first-year page describes rolling admission with a March 1 priority date and a decision within four weeks of a complete application. Spring semester deadline is October 15.",
    "src": "chk"
   }
  ],
@@ -121,7 +121,7 @@
   "tuition_intl_usd": 46500,
   "required_fees_usd": 1920,
   "room_board_usd": 16200,
-  "notes": "2026-27 catalog, first-year students: full-time tuition $46,500 per year (12-18 credits a term; $1,350 per credit part-time); room and board $16,200 (shared occupancy); technology fee $800, student activity fee $420 and academic service fee $700 (required_fees is their sum). Student health insurance $3,006 is required unless waived with proof of coverage. Program costs average $1,000 a year for texts and supplies. The catalog does not print a total cost of attendance."
+  "notes": "2026-27 catalog, first-year students: full-time tuition $46,500 per year (12-18 credits a term; $1,350 per credit part-time); room and board $16,200 (shared occupancy); technology fee $800, student activity fee $420 and academic service fee $700 (required fees are their sum). Student health insurance $3,006 is required unless waived with proof of coverage. Program costs average $1,000 a year for texts and supplies. The catalog does not print a total cost of attendance"
  },
  "score_codes": {
   "sat": {

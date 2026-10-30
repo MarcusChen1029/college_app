@@ -44,7 +44,7 @@
     "source": "ipeds_adm2023",
     "applicants": 6989,
     "pct_submit_sat": 18,
-    "notes": "Baseline from IPEDS via College Navigator (fall 2024 entering class); no readable Common Data Set: Millersville's CDS page says its PDFs were taken offline for accessibility and must be requested from ir@millersville.edu. College Navigator prints only rounded percentages (86% admitted, 18% of admitted enrolled), so admits and enrolled counts are left null. International applicant counts, GPA and class-rank splits are not available. SAT percentiles are from the 221 enrolled first-years who submitted SAT (18%); ACT percentiles are not published. Undergraduate enrollment and student-faculty ratio (19 to 1) are College Navigator figures. Applicant/admit/enrolled counts replaced with exact IPEDS ADM2023 (fall 2023) figures, because the newer source gives only a rounded admit rate.",
+    "notes": "Figures from IPEDS, the US government's college data, via College Navigator (fall 2024 entering class); no readable Common Data Set: Millersville's Common Data Set page says its PDFs were taken offline for accessibility and must be requested from ir@millersville.edu. College Navigator prints only rounded percentages (86% admitted, 18% of admitted enrolled), not the admit and enrolled counts. International applicant counts, GPA and class-rank splits are not available. SAT percentiles are from the 221 enrolled first-years who submitted SAT (18%); ACT percentiles are not published. Undergraduate enrollment and student-faculty ratio (19 to 1) are College Navigator figures. The applicant, admit and enrolled counts are the exact IPEDS figures for fall 2023, because the newer source gives only a rounded admit rate.",
     "admits": 6249,
     "enrolled": 1175
   },
@@ -68,6 +68,6 @@
     "books_usd": 1000,
     "room_board_usd": 12830,
     "other_usd": 3400,
-    "notes": "College Navigator estimated expenses 2024-2025 (tuition and fees; on-campus food and housing). Superseded for international students by the cycle-file international cost."
+    "notes": "College Navigator estimated expenses 2024-2025 (tuition and fees; on-campus food and housing). Superseded for international students by the cycle-file international cost"
   }
 }

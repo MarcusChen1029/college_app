@@ -21,7 +21,7 @@
  },
  "test_policy": {
   "policy": "optional",
-  "notes": "CDS C8 (fall 2027): SAT/ACT are not required for admission but considered if submitted. International admission needs transcripts and proof of English; the SAT (EBRW 520) or ACT (English 21) can be used to meet the English requirement.",
+  "notes": "From the Common Data Set (fall 2027): SAT/ACT are not required for admission but considered if submitted. International admission needs transcripts and proof of English; the SAT (EBRW 520) or ACT (English 21) can be used to meet the English requirement.",
   "src": "eng"
  },
  "requirements": {
@@ -83,7 +83,7 @@
   "books_usd": null,
   "other_usd": 1600,
   "total_coa_usd": 41246,
-  "notes": "CMU's international undergraduate estimate for 2026-27 (24 credits, on-campus housing with a meal plan): tuition and fees $22,050, living expenses $17,596, health insurance $1,600; total $41,246. First-years must live on campus for two years.",
+  "notes": "CMU's international undergraduate estimate for 2026-27 (24 credits, on-campus housing with a meal plan): tuition and fees $22,050, living expenses $17,596, health insurance $1,600; total $41,246. First-years must live on campus for two years",
   "src": "aid"
  },
  "aid": {
