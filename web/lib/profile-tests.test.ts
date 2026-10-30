@@ -8,7 +8,7 @@ import { makeT } from "./i18n/index.ts";
 import { planMonthText, testCardView, testPlanText } from "./i18n/test-plan-text.ts";
 import { applyProfilePatch } from "./mcp/rules.ts";
 import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER } from "./resume.ts";
-import { AI_PROFILE_COLUMNS, fromProfile, PROFILE_COLUMNS, toProfile, type ProfileRow } from "./student-rows.ts";
+import { AI_PROFILE_COLUMNS, fromProfile, passwordStorageRow, PROFILE_COLUMNS, toProfile, type ProfileRow } from "./student-rows.ts";
 import { withTestChoice } from "./test-plan.ts";
 
 const row: ProfileRow = {
@@ -54,6 +54,19 @@ test("pass windows are read from the row (malformed entries dropped) and a save 
   assert.equal("plan" in saved, false);
   assert.equal("plan_windows" in saved, false);
   assert.match(PROFILE_COLUMNS, /\bplan_windows\b/);
+});
+
+test("password storage mode is read from the row (vault unless 'device'), never written by a profile save, and not in the AI view", () => {
+  assert.equal(toProfile({ ...row, password_storage: "device" }).passwordStorage, "device");
+  assert.equal(toProfile({ ...row, password_storage: "vault" }).passwordStorage, "vault");
+  assert.equal(toProfile(row).passwordStorage, "vault"); // a row read without the column (before 0049)
+  assert.equal(toProfile({ ...row, password_storage: null }).passwordStorage, "vault");
+  assert.equal(toProfile({ ...row, password_storage: "Device" }).passwordStorage, "vault");
+  const saved = fromProfile("u1", toProfile({ ...row, password_storage: "device" }));
+  assert.equal("password_storage" in saved, false, "a whole-profile save never sends it");
+  assert.deepEqual(passwordStorageRow("u1", "device"), { user_id: "u1", password_storage: "device" });
+  assert.match(PROFILE_COLUMNS, /\bpassword_storage\b/);
+  assert.doesNotMatch(AI_PROFILE_COLUMNS, /password_storage/);
 });
 
 test("stored activities in the earlier format are read, and written back, in the current format", () => {

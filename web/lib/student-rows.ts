@@ -70,6 +70,8 @@ export type ProfileRow = {
   essays: PersonalEssays | null;
   /** Absent when the row was read through the AI view (AI_PROFILE_COLUMNS). */
   portals?: PortalData | null;
+  /** 0049. Absent when the row was read through the AI view or without the column; toProfile reads it as "vault". */
+  password_storage?: string | null;
 };
 export type CollegeRow = {
   id: string;
@@ -92,7 +94,22 @@ export type CollegeRow = {
  * store, read one at a time through /api/portal-passwords). Profile rows from before 0040 may still hold passwords
  * inside `portals` until the strip patch runs; toProfile drops them.
  */
-export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals";
+export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_weighted, is_international, target_regions, study_fields, reminder_emails, plan, plan_windows, test_details, interested, activities, resume, essays, portals, password_storage";
+
+/**
+ * Where an account keeps its saved portal passwords (student_profiles.password_storage, 0049): "vault" = sealed in the
+ * browser and stored on the server (synced, needs the passphrase); "device" = only in the browser that saved them.
+ */
+export type PasswordStorage = "vault" | "device";
+export const PASSWORD_STORAGE_COLUMN = "password_storage";
+/** A stored value as a mode: anything but "device" (absent, null, a value this build doesn't know) is "vault". */
+export const toPasswordStorage = (v: unknown): PasswordStorage => (v === "device" ? "device" : "vault");
+/**
+ * The only write of the column: this row alone, upserted (user_id + password_storage), so no other profile field is
+ * touched and a new account gets its row. fromProfile never sends it, so a whole-profile save from a tab that loaded
+ * before a switch can't switch it back.
+ */
+export const passwordStorageRow = (userId: string, mode: PasswordStorage) => ({ user_id: userId, password_storage: mode });
 export const COLLEGE_COLUMNS = "id, custom, institution_id, plan_key, status, notes, checklist, portal_url, portal_username, aid_offer_usd, created_at, institutions(slug)";
 
 /**
@@ -158,6 +175,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
   resume: r.resume ?? {},
   essays: r.essays ?? {},
   portals: withoutPasswords(r.portals),
+  passwordStorage: toPasswordStorage(r.password_storage),
 });
 /**
  * The row to write. `portals` goes out without any password the site holds in memory; `stored` (the portals value
@@ -165,6 +183,7 @@ export const toProfile = (r: ProfileRow): StudentProfile => ({
  * wipes one (see keepStoredPasswords). The old plaintext keys were already removed from the live database and the server
  * no longer migrates them, so on current data `stored` adds nothing.
  * `plan` and `plan_windows` are never written: only the server sets them (0045's trigger ignores a client's value).
+ * `password_storage` is never written here either: only passwordStorageRow does, when the student switches modes.
  */
 export const fromProfile = (userId: string, p: StudentProfile, stored?: unknown) => ({
   user_id: userId,

@@ -31,6 +31,9 @@ export type StudentProfile = {
   resume?: ResumeSettings; // resume generator header + options
   portals?: PortalData; // shared system, campus and custom portal logins
   essays?: PersonalEssays; // Common App personal statement + UC personal insight questions
+  // Where saved portal passwords live (0049; PasswordStorage in student-rows.ts). Read from the account; absent = "vault".
+  // Never written by a profile save: only the password client switches it (portal-vault-client.ts).
+  passwordStorage?: "vault" | "device";
 };
 
 export type FitInput = {

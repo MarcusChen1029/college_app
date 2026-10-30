@@ -198,7 +198,9 @@ test("migrate and reveal are gone", () => {
 
 test("the profile and list rows never read or write a password", () => {
   assert.ok(!COLLEGE_COLUMNS.includes("password"));
-  assert.ok(!PROFILE_COLUMNS.includes("password"));
+  // password_storage (0049) is the one exception: it says where passwords are kept ("vault" | "device"), never holds one.
+  const profileColumns = PROFILE_COLUMNS.split(",").map((c) => c.trim());
+  assert.deepEqual(profileColumns.filter((c) => c.includes("password")), ["password_storage"]);
   assert.ok(!("portal_password" in portalColumns({ url: "u", username: "n", password: "p" } as never)));
 
   // The portals jsonb is stripped before every profile write, even if a stale copy in memory still had passwords.
