@@ -243,13 +243,20 @@ const PASS_2 = "a different long passphrase";
 const PASS_3 = "third passphrase for the tab";
 let first: Promise<Prepared> | undefined;
 let second: Promise<Prepared> | undefined;
+const passphraseOf = new WeakMap<Prepared, string>(); // the tests' own copy: a Prepared doesn't carry its passphrase
+async function prepared(passphrase: string): Promise<Prepared> {
+  const p = await rawPrepareVault(USER, passphrase);
+  passphraseOf.set(p, passphrase);
+  return p;
+}
 function registered(p: Prepared): Prepared {
-  known(p.passphrase);
+  const passphrase = passphraseOf.get(p);
+  if (passphrase !== undefined) known(passphrase);
   knownCode(p.recoveryCode);
   return p;
 }
-const vault1 = async () => registered(await (first ??= rawPrepareVault(USER, PASS_1)));
-const vault2 = async () => registered(await (second ??= rawPrepareVault(USER, PASS_2)));
+const vault1 = async () => registered(await (first ??= prepared(PASS_1)));
+const vault2 = async () => registered(await (second ??= prepared(PASS_2)));
 const groupOf = (p: Prepared) => recoveryGroup(p.recoveryCode, p.confirmGroup);
 
 // The flows that take a secret, noted for the scan in flowTest.
@@ -312,7 +319,7 @@ async function setUp(p: Prepared, server = new MemoryServer(), typed = groupOf(p
 
 flowTest("prepareVault hands over a vault that opens by passphrase and by recovery code", async () => {
   const p = await vault1();
-  assert.equal(p.passphrase, PASS_1);
+  assert.ok(!("passphrase" in p) && !Object.values(p).includes(PASS_1), "the prepared vault doesn't keep the passphrase");
   assert.ok(Number.isInteger(p.confirmGroup) && p.confirmGroup >= 1 && p.confirmGroup <= 7, `group ${p.confirmGroup}`);
   assert.equal(p.recoveryCode.length, 28);
   assert.equal(groupOf(p).length, 4);

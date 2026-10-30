@@ -41,8 +41,11 @@ export type FlowError =
 export type Unlocked = { userId: string; keyId: string; key: CryptoKey };
 /** The account's vault row as the server holds it; `updatedAt` is the exact string to hand back as `expected`. */
 export type ServerVault = { record: VaultRecord; updatedAt: string };
-/** A vault made in memory and not yet stored. `confirmGroup` (1..7) is the group of the recovery code to type back. */
-export type Prepared = NewVault & { passphrase: string; confirmGroup: number };
+/**
+ * A vault made in memory and not yet stored. `confirmGroup` (1..7) is the group of the recovery code to type back. The
+ * passphrase is not part of it: nothing after the first step needs it, so it isn't kept through the next ones.
+ */
+export type Prepared = NewVault & { confirmGroup: number };
 /**
  * A new recovery code made in memory and not yet live: `record` is the vault with the new code's wrapper, `expected` the
  * `updated_at` of the vault it was made from. Until commitRecoveryCode stores it, the old code is the only one that works.
@@ -164,7 +167,7 @@ export async function prepareVault(userId: string, passphrase: string): Promise<
   } catch {
     throw new Error("self_test_failed");
   }
-  return { ...made, passphrase, confirmGroup: randomGroup() };
+  return { ...made, confirmGroup: randomGroup() };
 }
 
 // A typed group read the way a recovery code is (case, spaces and dashes ignored; I and L as 1, O as 0): padded to a

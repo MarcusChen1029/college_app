@@ -1,6 +1,20 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { EMPTY_LOCAL, fillMissingProfile, hasLocalData, localWrites, parseLegacy, parseLocal, parseMove, profileHasData, serializeLocal, serializeMove, type LocalData } from "./student-local.ts";
+import {
+  agreedFor,
+  byAgreement,
+  EMPTY_LOCAL,
+  fillMissingProfile,
+  hasLocalData,
+  localWrites,
+  parseLegacy,
+  parseLocal,
+  parseMove,
+  profileHasData,
+  serializeLocal,
+  serializeMove,
+  type LocalData,
+} from "./student-local.ts";
 
 const INST = "33333333-3333-4333-8333-333333333333";
 
@@ -115,6 +129,27 @@ test("the agreement to move passwords is stored by slot only and read back defen
   assert.equal(parseMove(JSON.stringify({ userId: "u-1", slots: ["bad slot"] })), null);
   for (const bad of [null, "", "not json", "[]", "null", "7", JSON.stringify({ slots: ["system:uc"] }), JSON.stringify({ userId: "", slots: ["system:uc"] }), JSON.stringify({ userId: "u-1", slots: "system:uc" }), JSON.stringify({ userId: 5, slots: ["system:uc"] })])
     assert.equal(parseMove(bad), null, String(bad));
+});
+
+test(`"Don't add" removes only the passwords the dialog offered; the ones already agreed to move stay, with their agreement`, () => {
+  // Two passwords were agreed at an earlier sign-in (the vault was locked); one more was held back and is offered again.
+  const held = { slot: "system:uc", password: "held-secret" };
+  const agreedA = { slot: "system:commonapp", password: "agreed-secret-1" };
+  const agreedB = { slot: "custom:abc-1", password: "agreed-secret-2" };
+  const stored = [held, agreedA, agreedB];
+  const move = serializeMove({ userId: "u-1", slots: ["system:commonapp", "custom:abc-1"] });
+  const split = byAgreement(stored, agreedFor(parseMove(move), "u-1"));
+  assert.deepEqual(split.offered, [held], "the dialog counts (and Don't add removes) the held one only");
+  assert.deepEqual(split.agreed, [agreedA, agreedB]);
+  // What the store writes after "Don't add" (writeLocal(EMPTY_LOCAL) with the kept passwords): the copy goes, the
+  // agreed passwords stay under LEGACY_KEY and read back by slot; MOVE_KEY is not touched, so they still move at unlock.
+  const w = localWrites(EMPTY_LOCAL, split.agreed);
+  assert.deepEqual(parseLocal(null, w.legacy).passwords, [agreedA, agreedB]);
+  assert.ok(w.legacy && !w.legacy.includes("held-secret"));
+  // Another account's agreement (or none) protects nothing: everything was offered, and everything goes.
+  assert.deepEqual(byAgreement(stored, agreedFor(parseMove(move), "u-2")), { agreed: [], offered: stored });
+  assert.deepEqual(byAgreement(stored, agreedFor(null, "u-1")), { agreed: [], offered: stored });
+  assert.equal(localWrites(EMPTY_LOCAL, byAgreement(stored, agreedFor(null, "u-1")).agreed).legacy, null);
 });
 
 test("adding a browser's profile to an existing account fills only what the account lacks", () => {

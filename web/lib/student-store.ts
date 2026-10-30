@@ -15,6 +15,8 @@ import { forgetPassword, importPasswords, onUnlock } from "./portal-vault-client
 import { mergePortals } from "./portals";
 import { parseRole, type Role } from "./roles";
 import {
+  agreedFor,
+  byAgreement,
   EMPTY_LOCAL,
   fillMissingProfile,
   hasLocalData,
@@ -248,17 +250,7 @@ function writeMove(m: MoveAgreement | null) {
   } catch {}
 }
 /** The slots this account's student agreed to move that are still waiting. */
-function agreedSlots(userId: string): Set<string> {
-  const m = readMove();
-  return new Set(m && m.userId === userId ? m.slots : []);
-}
-
-/** Removes this browser's copy and every old password in it, and the agreement to move them. */
-function clearLocal() {
-  localPasswords = [];
-  writeMove(null);
-  writeLocal(EMPTY_LOCAL);
-}
+const agreedSlots = (userId: string): Set<string> => agreedFor(readMove(), userId);
 
 /**
  * Runs when the vault opens (portal-vault-client.ts onUnlock): sends the passwords the student agreed to move that the
@@ -319,7 +311,7 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     const localPw = localPasswords;
     // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
     const agreed = agreedSlots(userId);
-    const offerPw = localPw.filter((p) => !agreed.has(p.slot));
+    const offerPw = byAgreement(localPw, agreed).offered;
     const merge = !!opts.merge;
     const [p, l] = await Promise.all([
       db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
@@ -784,10 +776,15 @@ export function useStudent() {
       emit({ localFound: null });
       return loadRemote(a.userId, a.email, { merge: true });
     },
-    /** "Don't add": deletes this browser's signed-out copy, passwords included. */
+    /**
+     * "Don't add": deletes this browser's signed-out copy and the passwords the dialog offered. Passwords the student
+     * already agreed to move (waiting for the vault to open) were not offered, so they stay, and so does that agreement.
+     */
     discardLocalData() {
-      clearLocal();
-      emit({ localFound: null });
+      const a = state.auth;
+      localPasswords = a ? byAgreement(localPasswords, agreedSlots(a.userId)).agreed : [];
+      writeLocal(EMPTY_LOCAL);
+      emit({ localFound: null, localPasswordCount: localPasswords.length });
     },
     /** "Not now" (or closing the dialog): keeps the copy in this browser, unmerged; asks again on the next page load. */
     keepLocalForLater() {

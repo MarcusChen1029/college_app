@@ -83,6 +83,18 @@ export function parseMove(raw: string | null): MoveAgreement | null {
 /** What to store under MOVE_KEY; null = remove the key. */
 export const serializeMove = (m: MoveAgreement | null): string | null => (m && m.slots.length ? JSON.stringify({ userId: m.userId, slots: m.slots }) : null);
 
+/** The slots an agreement covers for this account; another account's agreement covers none. */
+export const agreedFor = (m: MoveAgreement | null, userId: string): Set<string> => new Set(m && m.userId === userId ? m.slots : []);
+
+/**
+ * This browser's passwords as the sign-in dialog sees them: `agreed` = the ones the student already agreed to move into
+ * the vault (still waiting for it to open), `offered` = the rest, the only ones the dialog counts and asks about. "Don't
+ * add" removes `offered` and keeps `agreed` (and their agreement), so it never deletes a password it didn't ask about.
+ */
+export function byAgreement(passwords: readonly SlotPassword[], agreed: ReadonlySet<string>): { agreed: SlotPassword[]; offered: SlotPassword[] } {
+  return { agreed: passwords.filter((p) => agreed.has(p.slot)), offered: passwords.filter((p) => !agreed.has(p.slot)) };
+}
+
 /** The first password per slot. */
 const unique = (list: readonly SlotPassword[]) => list.filter((p, i) => list.findIndex((q) => q.slot === p.slot) === i);
 

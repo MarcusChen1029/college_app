@@ -38,8 +38,8 @@ import {
 } from "./vault-flows";
 
 // What the dialogs need to type their own state, so they import from here only. `Unlocked` is deliberately not among
-// them. One result does carry a key: `Prepared` (from prepare()) holds the new vault's key, passphrase and recovery code
-// until commit() stores the vault; only the setup dialog holds it, in its own state, and drops it when it closes.
+// them. One result does carry a key: `Prepared` (from prepare()) holds the new vault's key and recovery code (never the
+// passphrase) until commit() stores the vault; only the setup dialog holds it, in its own state, and drops it when it closes.
 export type { FlowError, Prepared, PreparedRecovery, Secret };
 
 const ENDPOINT = "/api/portal-passwords";
@@ -63,11 +63,26 @@ export type VaultView = {
   dialog: VaultDialog;
   /** How many old rows the latest handover moved into the vault (0 when every row failed); null when none ran since the last lock. */
   moved: number | null;
+  /**
+   * How many old rows that handover tried and could not move (a server key that is missing or not the one they were
+   * sealed with, a row the server can't read, a dropped connection); they stay exactly as they are. Null like `moved`.
+   */
+  notMoved: number | null;
 };
 /** Why a password could not be shown or saved. "locked" = this tab has no open vault; the rest are the flows' own codes. */
 export type VaultError = FlowError | "locked" | "other_vault" | "legacy";
 
-const INITIAL: VaultView = { status: "idle", lock: "unknown", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set(), dialog: null, moved: null };
+const INITIAL: VaultView = {
+  status: "idle",
+  lock: "unknown",
+  slots: new Set(),
+  other: new Set(),
+  legacy: 0,
+  legacySlots: new Set(),
+  dialog: null,
+  moved: null,
+  notMoved: null,
+};
 let view: VaultView = INITIAL;
 let viewUser: string | null = null; // whose slots `view` holds
 let listing: Promise<void> | null = null;
@@ -148,23 +163,30 @@ function markUnavailable() {
   emit({ ...view, status: "unavailable", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set() });
 }
 
-const call: Call = async (body) => {
-  const session = await currentSession();
-  if (!session) return { status: 401, data: { error: "unauthorized" } };
-  try {
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${session.access_token}`, "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-      cache: "no-store",
-    });
-    const data = (await res.json().catch(() => ({}))) as Record<string, unknown>;
-    if (res.status === 503 && viewUser === session.user.id) markUnavailable();
-    return { status: res.status, data };
-  } catch {
-    return { status: 0, data: { error: "network" } };
-  }
-};
+// The requests of a flow started for account `uid`. Each one carries the session's token only while that session is
+// still `uid`'s: after a sign-out, or a sign-in to another account in this tab, nothing more is sent and the flow sees
+// "unauthorized", so one account's record or passwords never reach another's.
+const callFor =
+  (uid: string): Call =>
+  async (body) => {
+    const session = await currentSession();
+    if (!session || session.user.id !== uid) return { status: 401, data: { error: "unauthorized" } };
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${session.access_token}`, "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        cache: "no-store",
+      });
+      const data = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+      // A 503 means the server isn't set up for passwords, except from a handover: there it only says that one old row's
+      // server key is missing or not the one it was sealed with, and the rest of the page works as before.
+      if (res.status === 503 && body.action !== "handover" && viewUser === uid) markUnavailable();
+      return { status: res.status, data };
+    } catch {
+      return { status: 0, data: { error: "network" } };
+    }
+  };
 
 // The same reply table as vault-flows.ts, for the one request it has no flow for (delete).
 const REPLY_CODES: ReadonlySet<string> = new Set(["not_found", "too_many", "no_vault", "wrong_vault", "changed", "exists", "orphans", "bad_record"]);
@@ -208,6 +230,7 @@ async function refresh(uid: string): Promise<"ok" | "unavailable" | "error"> {
   let vault: Awaited<ReturnType<typeof fetchVault>>;
   let listed: Awaited<ReturnType<typeof listSlots>>;
   let before: Unlocked | null;
+  const call = callFor(uid);
   for (let again = 0; ; again++) {
     const epoch = keyEpoch;
     before = unlocked;
@@ -253,7 +276,7 @@ export function closeVaultDialog() {
 /** Locks this tab: the key is dropped, passwords need the passphrase (or recovery code) again. */
 export function lock() {
   setKey(null);
-  emit({ ...view, lock: view.lock === "unlocked" ? "locked" : view.lock, moved: null });
+  emit({ ...view, lock: view.lock === "unlocked" ? "locked" : view.lock, moved: null, notMoved: null });
 }
 
 /** Runs `cb` after every successful unlock (passphrase, recovery code or a new vault), once old rows have been moved. Returns the way to stop. */
@@ -264,19 +287,21 @@ export function onUnlock(cb: () => void): () => void {
   };
 }
 
-// The key is in place: re-lock any old server-sealed rows one at a time (a lock in between stops the rest), show the
-// fresh list, then tell the listeners. Nothing in here may throw: a listener's error never reaches the unlock.
+// The key is in place: re-lock any old server-sealed rows one at a time (a lock in between stops the rest), say how many
+// moved and how many could not, show the fresh list, then tell the listeners. Nothing in here may throw: a listener's
+// error never reaches the unlock.
 async function afterUnlock(u: Unlocked) {
   try {
+    const call = callFor(u.userId);
     const listed = await listSlots(call);
     let moved = 0;
-    let tried = false;
+    let tried = 0;
     for (const s of Array.isArray(listed) ? listed : []) {
       if (s.kind !== "v1" || openKey() !== u) continue;
-      tried = true;
+      tried++;
       moved += (await handoverAll(call, u, [s])).moved;
     }
-    if (tried && openKey() === u) emit({ ...view, moved });
+    if (tried > 0 && openKey() === u) emit({ ...view, moved, notMoved: tried - moved });
     if (viewUser === u.userId) await refresh(u.userId);
   } catch {
     // the handover is retried at the next unlock
@@ -307,7 +332,7 @@ function opened(u: Unlocked): boolean {
 function dropStaleKey(u: Unlocked, code: string) {
   if (unlocked !== u || (code !== "wrong_vault" && code !== "no_vault")) return;
   setKey(null);
-  emit({ ...view, lock: "locked", moved: null });
+  emit({ ...view, lock: "locked", moved: null, notMoved: null });
   void refresh(u.userId);
 }
 
@@ -329,7 +354,7 @@ export async function prepare(passphrase: string): Promise<Prepared> {
 export async function commit(p: Prepared, typedGroup: string): Promise<"ok" | "group_mismatch" | FlowError> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  const r = await commitVault(call, uid, p, typedGroup);
+  const r = await commitVault(callFor(uid), uid, p, typedGroup);
   if (typeof r === "string") return r;
   return opened(r) ? "ok" : "unauthorized";
 }
@@ -342,7 +367,7 @@ export async function commit(p: Prepared, typedGroup: string): Promise<"ok" | "g
 export async function unlock(secret: Secret, newPassphrase?: string): Promise<"ok" | "wrong" | FlowError> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  const r = await unlockWith(call, uid, secret, newPassphrase);
+  const r = await unlockWith(callFor(uid), uid, secret, newPassphrase);
   if (typeof r === "string") return r;
   return opened(r) ? "ok" : "unauthorized";
 }
@@ -351,7 +376,7 @@ export async function unlock(secret: Secret, newPassphrase?: string): Promise<"o
 export async function revealPassword(slot: string): Promise<{ password: string } | { error: VaultError }> {
   const u = openKey();
   if (!u) return { error: "locked" };
-  const r = await revealOne(call, u, slot);
+  const r = await revealOne(callFor(u.userId), u, slot);
   if ("error" in r) {
     if (r.error === "not_found") markSlot(u.userId, slot, false);
     else dropStaleKey(u, r.error);
@@ -364,7 +389,7 @@ export async function savePassword(slot: string, password: string): Promise<Vaul
   if (password === "") return deletePassword(slot);
   const u = openKey();
   if (!u) return "locked";
-  const err = await saveOne(call, u, slot, password);
+  const err = await saveOne(callFor(u.userId), u, slot, password);
   if (err) {
     dropStaleKey(u, err);
     return err;
@@ -377,7 +402,7 @@ export async function savePassword(slot: string, password: string): Promise<Vaul
 export async function deletePassword(slot: string): Promise<VaultError | null> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  const r = await call({ action: "delete", slot });
+  const r = await callFor(uid)({ action: "delete", slot });
   if (r.status !== 200 || r.data.ok !== true) return errorOf(r);
   markSlot(uid, slot, false);
   return null;
@@ -394,6 +419,7 @@ export function forgetPassword(slot: string | null) {
 // open key; the account's value is only read, never replaced. A different password is a real conflict and stays.
 async function sameAsStored(u: Unlocked, entries: readonly SlotPassword[]): Promise<Set<string>> {
   const same = new Set<string>();
+  const call = callFor(u.userId);
   for (const e of entries) {
     if (openKey() !== u) break;
     if (kinds.get(e.slot) !== "e1") continue;
@@ -412,7 +438,7 @@ async function sameAsStored(u: Unlocked, entries: readonly SlotPassword[]): Prom
 export async function importPasswords(entries: readonly SlotPassword[]): Promise<SlotPassword[]> {
   const u = openKey();
   if (!u || entries.length === 0) return [...entries];
-  const left = await importAll(call, u, entries);
+  const left = await importAll(callFor(u.userId), u, entries);
   const same = left.length ? await sameAsStored(u, left) : new Set<string>();
   const kept = left.filter((e) => !same.has(e.slot));
   const keptSlots = new Set(kept.map((e) => e.slot));
@@ -428,7 +454,7 @@ export async function importPasswords(entries: readonly SlotPassword[]): Promise
 export async function changePassphrase(secret: Secret, newPassphrase: string): Promise<null | "wrong" | FlowError> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  return changePassphraseFlow(call, uid, secret, newPassphrase);
+  return changePassphraseFlow(callFor(uid), uid, secret, newPassphrase);
 }
 
 /**
@@ -439,7 +465,7 @@ export async function changePassphrase(secret: Secret, newPassphrase: string): P
 export async function prepareRecovery(passphrase: string): Promise<PreparedRecovery | "wrong" | FlowError | "locked"> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  return prepareRecoveryCode(call, uid, passphrase);
+  return prepareRecoveryCode(callFor(uid), uid, passphrase);
 }
 
 /**
@@ -449,19 +475,21 @@ export async function prepareRecovery(passphrase: string): Promise<PreparedRecov
  * reset anything, offer the same step again.
  */
 export async function commitRecovery(p: PreparedRecovery, typedGroup: string): Promise<null | "group_mismatch" | FlowError> {
-  return commitRecoveryCode(call, p, typedGroup);
+  const uid = await account();
+  if (!uid) return "unauthorized";
+  return commitRecoveryCode(callFor(uid), p, typedGroup);
 }
 
 /** "Start over": the vault and every saved password are deleted on the server, and this tab forgets its key. Null when it worked. */
 export async function resetVault(): Promise<FlowError | null> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  const err = await resetAll(call);
+  const err = await resetAll(callFor(uid));
   if (err) return err;
   if (viewUser === uid) {
     setKey(null);
     kinds = new Map();
-    emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set(), moved: null });
+    emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set(), moved: null, notMoved: null });
   }
   return null;
 }
