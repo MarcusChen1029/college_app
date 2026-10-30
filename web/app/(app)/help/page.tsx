@@ -8,8 +8,9 @@ import { PageMark } from "@/components/start/PageMark";
 import { HTML_LANG, type MessageKey } from "@/lib/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { PLANS } from "@/lib/plans";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Help" };
+export const metadata: Metadata = pageMetadata("/help");
 
 const LINK = "font-semibold text-blue-700 underline underline-offset-4 hover:text-ink";
 const BIG_BUTTON =

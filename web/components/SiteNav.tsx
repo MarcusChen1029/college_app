@@ -93,7 +93,9 @@ export function SiteNav() {
       <>
         <div className="hidden h-9 md:block" />
         <div className="ml-auto hidden h-9 w-40 md:block" />
-        <div className="ml-auto size-11 md:hidden" />
+        {/* The phone menu button's box. data-site-ph: the /start flow takes its height away (globals.css) but, unlike the real
+            button, keeps it in the row, so its auto margin still holds the language switch at the right edge. */}
+        <div data-site-ph className="ml-auto size-11 md:hidden" />
       </>
     );
   }

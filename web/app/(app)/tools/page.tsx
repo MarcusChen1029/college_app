@@ -12,8 +12,9 @@ import { getT } from "@/lib/i18n/server";
 import { REGIONS } from "@/lib/regions";
 import type { TFunction } from "@/lib/i18n";
 import { buttonClass, PAGE_TITLE, PANEL, toneClass } from "@/lib/ui";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Tools" };
+export const metadata: Metadata = pageMetadata("/tools");
 
 const installSteps = (t: TFunction) => [
   t("tools.filler.step1"),

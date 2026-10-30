@@ -10,8 +10,9 @@ import { programFields } from "@/lib/fields";
 import { getT } from "@/lib/i18n/server";
 import { fieldEarningsFor, type OutcomesData } from "@/lib/outcomes";
 import { PAGE_INTRO, PAGE_TITLE } from "@/lib/ui";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "College match by field" };
+export const metadata: Metadata = pageMetadata("/tools/match");
 
 // The IPEDS and Scorecard files stay on the server: only the evidence for the colleges in the list goes to the browser.
 async function Match() {

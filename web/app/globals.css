@@ -603,6 +603,17 @@ html:has([data-explorer]) body > header > nav {
   html:has([data-slim-footer]) [data-footer-wordmark] {
     display: none !important;
   }
+  /* One header height all through the flow, whoever is signed in. Here the phone menu button (44px) is hidden, so the row
+     is as tall as what is left: a 36px Sign in button for a visitor, but only the 28px logo and language switch for a
+     signed-in student or teacher. Without a floor the header would be 60px, then 52px once SiteNav knows the session. */
+  html:has([data-start-flow]) header > :first-child {
+    min-height: 3.75rem;
+  }
+  /* Before SiteNav knows the session it holds the phone menu button's 44px box (data-site-ph); the floor above is all the
+     height the row needs here. It stays in the row (its auto margin keeps the language switch at the right edge). */
+  html:has([data-start-flow]) [data-site-ph] {
+    height: 0 !important;
+  }
   /* A short reading page (/contact, data-slim-footer) keeps the footer's links but not its full-width wordmark. */
   html:has([data-start-flow]) [data-site-footer] > div,
   html:has([data-slim-footer]) [data-site-footer] > div {

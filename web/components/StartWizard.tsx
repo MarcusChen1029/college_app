@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent, type RefObject } from "react";
 import type { StudentProfile } from "@/lib/fit";
 import { fmtInt } from "@/lib/format";
 import { useLocale, useT } from "@/lib/i18n/client";
@@ -80,16 +80,121 @@ function StartTitle() {
 }
 
 const BODY = "ticket-body bg-white px-5 pb-10 pt-6 sm:px-10 sm:pb-12 sm:pt-10";
+// The ticket's foot: on phones and tablets it holds to the bottom of the screen (see the comment where the wizard uses it).
+const STUB = "ticket-stub z-10 bg-white px-5 pb-4 pt-3 max-lg:sticky max-lg:bottom-0 sm:px-10 lg:py-5";
 
-/** The page's shape while the colleges and the student's saved answers load: the ticket with its title, the sheet. */
-export function StartSkeleton() {
+/** The four-step progress bar. A step already reached (and not the current one) is a button back to it; given no `go` (the skeleton), none is. */
+function StepList({ step, reached, go }: { step: number; reached: number; go?: (to: number) => void }) {
+  const t = useT();
   return (
-    <div className={GRID}>
-      <div className={`${BODY} lg:col-span-7`}>
-        <StartTitle />
-        <div aria-hidden className="h-[360px] animate-pulse rounded-2xl bg-blue-50" />
+    <ol aria-label={t("profile.start.progress")} className="grid grid-cols-4 gap-2 sm:gap-3">
+      {STEPS.map((key, i) => {
+        const now = i === step;
+        const inner = (
+          <>
+            <span aria-hidden className={`block h-1.5 rounded-full transition-colors duration-300 ${i <= step ? "bg-ink" : "bg-zinc-200"}`} />
+            <span
+              className={`mt-2 block text-[13px] leading-tight sm:text-[15px] ${now ? "font-bold text-ink" : i < step ? "font-semibold text-ink group-hover:underline" : "font-semibold text-zinc-600 group-hover:underline"}`}
+            >
+              {t(key)}
+            </span>
+          </>
+        );
+        return (
+          <li key={key} aria-current={now ? "step" : undefined}>
+            {go && i <= reached && !now ? (
+              <button type="button" onClick={() => go(i)} className="group block w-full py-2 text-left underline-offset-4">
+                {inner}
+              </button>
+            ) : (
+              <div className="py-2">{inner}</div>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+/** The question for a step. Focus lands here after Next or Back, only to announce it: the global :focus-visible ring is for controls. */
+function Question({ step, headingRef }: { step: number; headingRef?: RefObject<HTMLHeadingElement | null> }) {
+  const t = useT();
+  return (
+    <h2
+      id="start-q"
+      ref={headingRef}
+      tabIndex={-1}
+      style={{ outline: "none" }}
+      className="mt-6 font-display text-[clamp(2rem,3.2vw,2.75rem)] font-extrabold leading-[1.02] tracking-[-0.035em] sm:mt-8"
+    >
+      {t(QUESTIONS[step])}
+    </h2>
+  );
+}
+
+/** Step 0: where the student applies from. Given no `onChoose` (the skeleton) it is the same paper, unanswered and inert. */
+function FromStep({ from, onChoose }: { from: boolean | null; onChoose?: (v: boolean) => void }) {
+  const t = useT();
+  return (
+    <div inert={onChoose ? undefined : true}>
+      <p className={BIG_HINT}>{t("profile.start.fromHint")}</p>
+      <div className="mt-5 grid gap-3 sm:mt-6 sm:grid-cols-2">
+        {([false, true] as const).map((v) => {
+          const on = from === v;
+          return (
+            <button key={String(v)} type="button" aria-pressed={on} onClick={() => onChoose?.(v)} className={`${TILE} ${on ? ON : OFF}`}>
+              <span className="flex w-full items-start justify-between gap-3">
+                <span className="text-xl font-semibold leading-tight sm:text-[22px]">{t(v ? "profile.start.abroad" : "profile.start.inUS")}</span>
+                <Tick on={on} />
+              </span>
+              <span className={`mt-2 block text-[15px] leading-snug sm:text-base ${on ? "text-blue-100" : "text-zinc-600"}`}>
+                {t(v ? "profile.start.abroadHint" : "profile.start.inUSHint")}
+              </span>
+            </button>
+          );
+        })}
       </div>
-      <div aria-hidden className="hidden h-[760px] animate-pulse bg-white/70 lg:col-span-5 lg:block" />
+    </div>
+  );
+}
+
+// What the real tally line and sheet measure, by screen width, for a first-time visitor (nothing answered yet). The skeleton
+// holds that space, so the footer does not jump when the wizard replaces it. Heights were measured on the finished page
+// (width -> px): tally 360-520 54, 560-600 34, 640-680 56.5, 720-1023 35.3; sheet 320 1017, 360 950, 400 928, 440 858,
+// 480-600 802, 640-720 722, 760-1000 700, 1040 890, 1100 845, 1150 798, 1200+ 722. Only needs to be close.
+const TALLY_RESERVE = "h-[54px] min-[560px]:h-[34px] min-[640px]:h-[56.5px] min-[720px]:h-[35.3px] lg:hidden";
+const SHEET_RESERVE =
+  "min-h-[calc(1446px_-_134vw)] min-[480px]:min-h-[802px] min-[640px]:min-h-[722px] min-[760px]:min-h-[700px] min-[1024px]:min-h-[calc(1514px_-_60vw)] min-[1120px]:min-h-[calc(2165px_-_120vw)] min-[1200px]:min-h-[722px]";
+
+/**
+ * The page's shape while the colleges and the student's saved answers load: step 0 of the ticket exactly as the wizard
+ * prints it (same components), a disabled Next, and a blank sheet that holds the sheet's height. Nothing in it is
+ * interactive. The question is real text, so it paints at once instead of waiting for hydration.
+ */
+export function StartSkeleton() {
+  const t = useT();
+  return (
+    <div className={GRID} aria-busy="true">
+      <div className="min-w-0 lg:col-span-7">
+        <div className={BODY}>
+          <StartTitle />
+          <StepList step={0} reached={0} />
+          <Question step={0} />
+          <FromStep from={null} />
+        </div>
+        <div className={STUB} inert>
+          <div aria-hidden className={TALLY_RESERVE} />
+          <div className="flex items-center justify-between gap-4">
+            <span />
+            <button type="button" disabled tabIndex={-1} className={BIG_BUTTON}>
+              {t("common.next")}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden className="min-w-0 lg:sticky lg:top-24 lg:col-span-5">
+        <div className={`paper-scallop bg-white px-5 pb-10 pt-12 sm:px-10 ${SHEET_RESERVE}`} />
+      </div>
     </div>
   );
 }
@@ -212,65 +317,11 @@ export function StartWizard({ pool, regionCounts, total }: { pool: StartCollege[
       <form onSubmit={submit} noValidate aria-labelledby="start-q" className="min-w-0 lg:col-span-7">
         <div className={BODY}>
           <StartTitle />
-          <ol aria-label={t("profile.start.progress")} className="grid grid-cols-4 gap-2 sm:gap-3">
-            {STEPS.map((key, i) => {
-              const now = i === step;
-              const inner = (
-                <>
-                  <span aria-hidden className={`block h-1.5 rounded-full transition-colors duration-300 ${i <= step ? "bg-ink" : "bg-zinc-200"}`} />
-                  <span
-                    className={`mt-2 block text-[13px] leading-tight sm:text-[15px] ${now ? "font-bold text-ink" : i < step ? "font-semibold text-ink group-hover:underline" : "font-semibold text-zinc-600 group-hover:underline"}`}
-                  >
-                    {t(key)}
-                  </span>
-                </>
-              );
-              return (
-                <li key={key} aria-current={now ? "step" : undefined}>
-                  {i <= reached && !now ? (
-                    <button type="button" onClick={() => go(i)} className="group block w-full py-2 text-left underline-offset-4">
-                      {inner}
-                    </button>
-                  ) : (
-                    <div className="py-2">{inner}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
+          <StepList step={step} reached={reached} go={go} />
 
-          <h2
-            id="start-q"
-            ref={heading}
-            tabIndex={-1}
-            // Focus lands here only to announce the new question; the global :focus-visible ring is for controls.
-            style={{ outline: "none" }}
-            className="mt-6 font-display text-[clamp(2rem,3.2vw,2.75rem)] font-extrabold leading-[1.02] tracking-[-0.035em] sm:mt-8"
-          >
-            {t(QUESTIONS[step])}
-          </h2>
+          <Question step={step} headingRef={heading} />
 
-          {step === 0 && (
-            <div>
-              <p className={BIG_HINT}>{t("profile.start.fromHint")}</p>
-              <div className="mt-5 grid gap-3 sm:mt-6 sm:grid-cols-2">
-                {([false, true] as const).map((v) => {
-                  const on = from === v;
-                  return (
-                    <button key={String(v)} type="button" aria-pressed={on} onClick={() => choose(v)} className={`${TILE} ${on ? ON : OFF}`}>
-                      <span className="flex w-full items-start justify-between gap-3">
-                        <span className="text-xl font-semibold leading-tight sm:text-[22px]">{t(v ? "profile.start.abroad" : "profile.start.inUS")}</span>
-                        <Tick on={on} />
-                      </span>
-                      <span className={`mt-2 block text-[15px] leading-snug sm:text-base ${on ? "text-blue-100" : "text-zinc-600"}`}>
-                        {t(v ? "profile.start.abroadHint" : "profile.start.inUSHint")}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          {step === 0 && <FromStep from={from} onChoose={choose} />}
 
           {step === 1 && (
             <div>
@@ -375,7 +426,7 @@ export function StartWizard({ pool, regionCounts, total }: { pool: StartCollege[
 
         {/* On phones and tablets the stub holds to the bottom of the screen while the form is in view: the one-line tally
             (a link down to the sheet below the form) over Back and Next, so every answer shows its effect at once. */}
-        <div className="ticket-stub z-10 bg-white px-5 pb-4 pt-3 max-lg:sticky max-lg:bottom-0 sm:px-10 lg:py-5">
+        <div className={STUB}>
           <SheetLine preview={preview} pool={usPool.length} />
           <div className="flex items-center justify-between gap-4">
             {step > 0 ? (

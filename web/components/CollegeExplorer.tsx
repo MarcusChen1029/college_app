@@ -23,6 +23,7 @@ import {
   type DeadlineRow,
   type DueWindow,
   type ExploreFilters,
+  type ExplorerCollege,
   type ExploreRow,
   type FilterContext,
   type NextDue,
@@ -41,14 +42,15 @@ import { scoredTests, testsToCompare } from "@/lib/test-plan";
 import { BASE_TIERS, tierLetter } from "@/lib/tiers";
 import { currencyFor, estimatedTuition, type ProgramFees } from "@/lib/tuition";
 import type { ApplyTag } from "@/lib/apply-tags";
-import type { CollegeSummary, EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
+import type { EnglishSummary, Lookups, SatEstimate } from "@/lib/types";
 import { buttonClass, FIT_DOT_COLOR, fitDotClass, SEGMENT_TRACK, segmentClass, TIER_DOT } from "@/lib/ui";
 import { CollegeBrowser, DayHead, DueChip, dueText, PlanText } from "./CollegeBrowser";
 import { EnglishFitLine } from "./EnglishFit";
 import { ExploreFilterBar } from "./ExploreFilterBar";
 import { ApplyTags, FitBadge, Pill, SchoolLogo, TierBadge } from "./badges";
 import { LoadMore, useVisibleCount } from "./LoadMore";
-import { USMap3D, type MapDot, type MapHandle } from "./USMap3D";
+import { ExplorerMap } from "./ExplorerMap";
+import type { MapDot, MapHandle } from "./map-dots";
 
 // Lookup labels live in lib/format.ts (English, shared with tests); translate them here by stored value.
 const policyLabel = (t: TFunction, group: "testPolicy" | "englishPolicy", map: Record<string, string>, k: string) =>
@@ -207,7 +209,7 @@ function DetailCard({
   due,
   onClose,
 }: {
-  college: CollegeSummary;
+  college: ExplorerCollege;
   english: EnglishSummary | undefined;
   sat: SatEstimate | undefined;
   tags: ApplyTag[] | undefined;
@@ -349,7 +351,7 @@ export function CollegeExplorer({
   appDeadlines,
   serverToday,
 }: {
-  colleges: CollegeSummary[];
+  colleges: ExplorerCollege[];
   lookups: Lookups;
   english: Record<string, EnglishSummary>;
   satEstimates: Record<string, SatEstimate>;
@@ -852,8 +854,7 @@ export function CollegeExplorer({
             {/* Below lg the canvas takes the land's own proportions (5:3 at this tilt), so the land fills it and the list follows close
                 under it. A fixed ratio and no minimum height: the framing is the same at every width, scrollbar or none. */}
             <div className="aspect-[5/3] lg:aspect-auto lg:min-h-0 lg:flex-1">
-              <USMap3D
-                key={region}
+              <ExplorerMap
                 region={region}
                 pins={pins}
                 selected={selected}
@@ -869,7 +870,7 @@ export function CollegeExplorer({
                     {card}
                   </div>
                 )}
-              </USMap3D>
+              </ExplorerMap>
             </div>
           </section>
           {/* Below lg the card sits under the map, where it can be read whole, instead of covering it. */}

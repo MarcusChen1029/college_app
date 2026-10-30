@@ -4,8 +4,9 @@ import { PageMark } from "@/components/start/PageMark";
 import type { StartCollege } from "@/components/start/start-preview";
 import { getDeadlines, getSummaries } from "@/lib/data";
 import { REGIONS, type RegionCode } from "@/lib/regions";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Get started" };
+export const metadata = pageMetadata("/start");
 
 const num = (v: number | null) => (v == null ? null : Number(v));
 

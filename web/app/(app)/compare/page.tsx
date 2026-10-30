@@ -16,8 +16,9 @@ import type { TFunction } from "@/lib/i18n";
 import { collegeSupplements } from "@/lib/supplements-data";
 import type { CollegeSummary } from "@/lib/types";
 import { buttonClass, PAGE_INTRO, PAGE_TITLE, PANEL, SECTION_TITLE, toneClass } from "@/lib/ui";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Compare" };
+export const metadata = pageMetadata("/compare");
 
 /** Ready-made comparisons for the empty page. Slugs missing from the data are dropped. */
 const IDEAS = [

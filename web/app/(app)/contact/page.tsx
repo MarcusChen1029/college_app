@@ -4,8 +4,9 @@ import { LegalList, LegalSection, LegalSheet, LegalStub, LegalTicket, LEGAL_TEXT
 import { LegalRich } from "@/components/LegalRich";
 import { getT } from "@/lib/i18n/server";
 import { CONTACT_EMAIL } from "@/lib/legal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = pageMetadata("/contact");
 
 // The same ticket as the other legal pages: the stub holds the title, the introduction and the address card; the sheet
 // says what to put in a message. The page is short, so it takes the slim footer. While lib/legal.ts has no address,

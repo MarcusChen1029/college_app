@@ -13,6 +13,33 @@ import type { CollegeSummary, SatEstimate, TierCode } from "./types.ts";
 
 export const FITS: Fit[] = ["super_reach", "reach", "target", "safety"];
 
+/**
+ * College columns the explorer never reads: no file the page loads in the browser (CollegeExplorer and everything it imports)
+ * mentions them. The server leaves them out of the page's props (forExplorer), which is ~94 kB of the 1 MB document.
+ * Because ExplorerCollege lacks them, reading one in the browser is a type error rather than a silent undefined.
+ */
+export const EXPLORER_UNREAD = [
+  "undergrad_enrollment",
+  "pct_international_ug",
+  "cds_year",
+  "admits",
+  "ed_admit_rate",
+  "gpa_avg",
+  "english_policy",
+  "total_coa_usd",
+  "setting",
+] as const satisfies readonly (keyof CollegeSummary)[];
+
+/** A college as the explorer receives it. */
+export type ExplorerCollege = Omit<CollegeSummary, (typeof EXPLORER_UNREAD)[number]>;
+
+/** The college without the columns the explorer never reads. */
+export function forExplorer(c: CollegeSummary): ExplorerCollege {
+  const out: Partial<CollegeSummary> = { ...c };
+  for (const k of EXPLORER_UNREAD) delete out[k];
+  return out as ExplorerCollege;
+}
+
 /** Aid policies that give internationals any institutional aid (the "Aid for internationals" filter). */
 export const INTL_AID_POLICIES = ["need_blind_full_need", "need_aware_full_need", "need_aware_limited", "merit_only"];
 
@@ -287,7 +314,7 @@ export const admitRateFor = (c: Pick<CollegeSummary, "admit_rate" | "intl_admit_
 
 /** Everything a row needs, computed once per college. */
 export type ExploreRow = {
-  c: CollegeSummary;
+  c: ExplorerCollege;
   fit: FitResult | null;
   english: EnglishFit;
   tuition: TuitionEstimate;
@@ -323,7 +350,7 @@ export const tierFor = (c: Pick<CollegeSummary, "general_tier" | "tiers">, categ
   (category === "general" ? c.general_tier : c.tiers?.[category]) ?? null;
 
 /** Offers the field by the /tools/match rule (lib/field-match.ts): no graduates in it = not offered, no data = not shown. */
-export const offersField = (c: CollegeSummary, evidence: FieldEvidence | undefined, field: FieldKey): boolean =>
+export const offersField = (c: ExplorerCollege, evidence: FieldEvidence | undefined, field: FieldKey): boolean =>
   scoreField(c, evidence, field).status === "ok";
 
 export function matchesSearch(c: Pick<CollegeSummary, "name" | "short_name" | "city" | "state_region">, q: string): boolean {
