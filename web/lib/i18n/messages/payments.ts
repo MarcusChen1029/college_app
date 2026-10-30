@@ -89,6 +89,7 @@ export const en = {
 
   // Settings: plan and payment history
   "payments.panel.title": "Plan and payments",
+  "payments.panel.desc": "Your pass, any pass bought ahead for a later year, and every payment, including ones a parent paid by link.",
   "payments.panel.currentPlan": "Current plan",
   "payments.panel.nextPass": "Pre-ordered pass",
   "payments.panel.buyAnother": "Buy a pass for another year",
@@ -191,6 +192,7 @@ export const zhTW: Translation<typeof en> = {
     "綠界還沒有回報付款結果。信用卡通常一分鐘內確認；ATM 與超商則要等你繳費後才會確認。如果你已經付款，請不要重複付款，直接關閉這個頁面即可，款項入帳後方案就會開通。",
 
   "payments.panel.title": "方案與付款",
+  "payments.panel.desc": "你的方案、預先購買的之後年份方案，以及每一筆付款，包括家長透過連結支付的款項。",
   "payments.panel.currentPlan": "目前的方案",
   "payments.panel.nextPass": "已預購的方案",
   "payments.panel.buyAnother": "購買其他年度的方案",

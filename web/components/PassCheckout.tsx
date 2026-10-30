@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { PayCodes, payDeadline } from "@/components/OrderStatus";
 import { openSignIn } from "@/components/SignInDialog";
+import { StatusPill } from "@/components/StatusPill";
 import type { MessageKey } from "@/lib/i18n";
 import { useLocale, useT } from "@/lib/i18n/client";
 import { createPayLink, fetchPaymentStatus, listOrders, startCheckout } from "@/lib/payments-api";
@@ -17,13 +18,23 @@ type Busy = "pay" | "link" | null;
 type MadeLink = { year: number; url: string; expiresAt: string };
 type Orders = { user: string; rows: OrderView[]; nowMs: number };
 
+/** The pass as a ticket: its face (`head`, the passes owned) on the navy body, the buying form on the sky stub. */
+function Ticket({ head, stub }: { head: ReactNode; stub: ReactNode }) {
+  return (
+    <div>
+      <div className="ticket-body bg-ink px-6 pb-10 pt-8 text-white sm:px-8">{head}</div>
+      <div className="ticket-stub bg-blue-100 px-6 pb-8 pt-7 sm:px-8">{stub}</div>
+    </div>
+  );
+}
+
 /**
  * The buying part of the pass card on /pricing: the passes the account already has, any ATM / convenience-store payment
  * that was started and can still be paid (its codes, amount and deadline), a choice of entry year (nothing preselected),
  * the consent line, then "Pay" (to ECPay) or "Ask a parent to pay" (makes a link). While payment isn't open for this
  * visitor the buttons are replaced by "Payment opens soon".
  */
-export function PassCheckout() {
+export function PassCheckout({ head }: { head: ReactNode }) {
   const t = useT();
   const locale = useLocale();
   const student = useStudent();
@@ -83,7 +94,7 @@ export function PassCheckout() {
     return () => clearTimeout(timer);
   }, [copied]);
 
-  if (!mounted) return <div className="mt-5 h-40 animate-pulse rounded-lg bg-zinc-100" />;
+  if (!mounted) return <Ticket head={head} stub={<div className="h-56 animate-pulse rounded-xl bg-white/60" />} />;
 
   const today = taipeiToday();
   const years = offeredEntryYears(today);
@@ -151,116 +162,125 @@ export function PassCheckout() {
   };
 
   return (
-    <div className="mt-5 space-y-4 border-t border-zinc-200 pt-5">
-      {passes.length > 0 && (
-        <div>
-          <h3 className="mb-2 text-sm font-semibold">{t("payments.yourPasses")}</h3>
-          <ul className="space-y-2">
-            {passes.map((w) => {
-              const pass = t("payments.passFor", { year: w.entry_year });
-              const active = w.from <= today;
+    <Ticket
+      head={
+        <>
+          {head}
+          {passes.length > 0 && (
+            <div className="mt-7">
+              <h3 className="text-sm font-semibold text-blue-100">{t("payments.yourPasses")}</h3>
+              <ul className="mt-2 space-y-1.5">
+                {passes.map((w) => {
+                  const pass = t("payments.passFor", { year: w.entry_year });
+                  const active = w.from <= today;
+                  return (
+                    <li key={`${w.entry_year}-${w.from}`} className={`text-base ${active ? "font-semibold text-white" : "text-blue-100"}`}>
+                      {active
+                        ? t("payments.activePass", { pass, until: fmtPassDate(w.until, locale) })
+                        : t("payments.upcomingPass", { pass, from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </>
+      }
+      stub={
+        <div className="space-y-6">
+          {toPay.map(({ order, how }) => {
+            const deadline = payDeadline(order, how, locale);
+            return (
+              <div key={order.id} className="space-y-3 rounded-xl bg-white px-4 py-4 text-base text-ink">
+                <StatusPill tone="soon">{t("payments.panel.status.awaiting")}</StatusPill>
+                <p className="font-semibold">{t("payments.openOrder.title", { pass: t("payments.passFor", { year: order.entryYear }) })}</p>
+                <PayCodes order={order} how={how}>
+                  {deadline !== null && <p>{t("payments.openOrder.deadline", { deadline })}</p>}
+                  <p>{t("payments.openOrder.hint")}</p>
+                </PayCodes>
+              </div>
+            );
+          })}
+
+          <fieldset className="space-y-2" disabled={open === false}>
+            <legend className="font-display text-lg font-bold text-ink">{t("payments.chooseYear")}</legend>
+            <p className="pb-1 text-sm text-ink">{years.includes(e0) ? t("payments.yearHint", { e0, e1: e0 + 1 }) : t("payments.yearHintNext", { e1: e0 + 1 })}</p>
+            {years.map((y) => {
+              const owned = ownedYears.has(y);
+              const w = passWindow(y, today);
               return (
-                <li key={`${w.entry_year}-${w.from}`} className={`rounded-md border px-3 py-2 text-sm ${toneClass(active ? "done" : "progress")}`}>
-                  {active
-                    ? t("payments.activePass", { pass, until: fmtPassDate(w.until, locale) })
-                    : t("payments.upcomingPass", { pass, from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })}
-                </li>
+                <label
+                  key={y}
+                  className={`flex items-start gap-3 rounded-xl border-2 px-4 py-3 text-base transition-colors ${
+                    owned ? "cursor-not-allowed border-transparent bg-white/50 text-zinc-600" : selected === y ? "cursor-pointer border-ink bg-white" : "cursor-pointer border-transparent bg-white hover:border-zinc-400"
+                  }`}
+                >
+                  <input type="radio" name="entry-year" value={y} className="mt-1 size-4 shrink-0 accent-ink" checked={selected === y} disabled={owned} onChange={() => setYear(y)} />
+                  <span>
+                    <span className={`block font-semibold ${owned ? "" : "text-ink"}`}>{t("payments.passFor", { year: y })}</span>
+                    <span className="block text-sm text-zinc-600">
+                      {owned
+                        ? t("payments.owned")
+                        : w.from > today
+                          ? t("payments.startsOn", { from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })
+                          : t("payments.startsNow", { until: fmtPassDate(w.until, locale) })}
+                    </span>
+                  </span>
+                </label>
               );
             })}
-          </ul>
+          </fieldset>
+
+          {open === false ? (
+            <p className={`rounded-xl border px-4 py-3 text-center text-base font-semibold ${toneClass("neutral")}`}>{t("payments.opensSoon")}</p>
+          ) : (
+            <>
+              <label className="flex items-start gap-2.5 text-sm leading-relaxed text-ink">
+                <input type="checkbox" className="mt-0.5 size-4 shrink-0 accent-ink" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
+                <span>{t("payments.consent")}</span>
+              </label>
+              <div className="flex flex-wrap gap-3">
+                <button type="button" className={buttonClass("primary")} disabled={selected === null || !consent || busy !== null || open !== true} onClick={pay}>
+                  {busy === "pay" ? t("payments.paying") : t("payments.pay", { price: PASS_PRICE_TWD })}
+                </button>
+                <button type="button" className={buttonClass("secondary")} disabled={selected === null || busy !== null || open !== true} onClick={askParent}>
+                  {busy === "link" ? t("payments.askParentBusy") : t("payments.askParent")}
+                </button>
+              </div>
+              {student.ready && !student.auth && <p className="text-sm text-ink">{t("payments.signInFirst")}</p>}
+            </>
+          )}
+
+          {error && (
+            <p role="alert" className={`rounded-xl border px-4 py-3 text-base ${toneClass("urgent")}`}>
+              {t(error)}
+            </p>
+          )}
+
+          {madeLink && (
+            <div className="space-y-3 rounded-xl bg-white px-4 py-4 text-base text-ink">
+              <p>{t("payments.linkReady", { until: fmtTaipei(madeLink.expiresAt, locale, true) })}</p>
+              <div className="flex flex-wrap gap-2">
+                <input
+                  ref={linkInput}
+                  readOnly
+                  value={madeLink.url}
+                  aria-label={t("payments.linkLabel")}
+                  onFocus={(e) => e.currentTarget.select()}
+                  className="h-9 min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 font-mono text-sm text-ink"
+                />
+                <button type="button" className={buttonClass("primary", "sm")} onClick={copy}>
+                  {copied ? t("common.copied") : t("common.copy")}
+                </button>
+              </div>
+            </div>
+          )}
+
+          <p className="text-sm leading-relaxed text-zinc-700">
+            {t("payments.methods")} {t("payments.refundLine")}
+          </p>
         </div>
-      )}
-
-      {toPay.map(({ order, how }) => {
-        const deadline = payDeadline(order, how, locale);
-        return (
-          <div key={order.id} className={`space-y-2 rounded-md border p-3 text-sm ${toneClass("soon")}`}>
-            <p className="text-xs font-semibold">{t("payments.openOrder.title", { pass: t("payments.passFor", { year: order.entryYear }) })}</p>
-            <PayCodes order={order} how={how}>
-              {deadline !== null && <p>{t("payments.openOrder.deadline", { deadline })}</p>}
-              <p>{t("payments.openOrder.hint")}</p>
-            </PayCodes>
-          </div>
-        );
-      })}
-
-      <fieldset className="space-y-2" disabled={open === false}>
-        <legend className="text-sm font-semibold">{t("payments.chooseYear")}</legend>
-        <p className="text-xs text-zinc-500">{years.includes(e0) ? t("payments.yearHint", { e0, e1: e0 + 1 }) : t("payments.yearHintNext", { e1: e0 + 1 })}</p>
-        {years.map((y) => {
-          const owned = ownedYears.has(y);
-          const w = passWindow(y, today);
-          return (
-            <label
-              key={y}
-              className={`flex items-start gap-3 rounded-lg border p-3 text-sm ${
-                owned ? "cursor-not-allowed border-zinc-200 opacity-60" : selected === y ? "cursor-pointer border-ink bg-zinc-50" : "cursor-pointer border-zinc-200 hover:border-zinc-400"
-              }`}
-            >
-              <input type="radio" name="entry-year" value={y} className="mt-1" checked={selected === y} disabled={owned} onChange={() => setYear(y)} />
-              <span>
-                <span className="block font-semibold">{t("payments.passFor", { year: y })}</span>
-                <span className="block text-zinc-500">
-                  {owned
-                    ? t("payments.owned")
-                    : w.from > today
-                      ? t("payments.startsOn", { from: fmtPassDate(w.from, locale), until: fmtPassDate(w.until, locale) })
-                      : t("payments.startsNow", { until: fmtPassDate(w.until, locale) })}
-                </span>
-              </span>
-            </label>
-          );
-        })}
-      </fieldset>
-
-      {open === false ? (
-        <p className={`rounded-md border p-3 text-center text-sm font-semibold ${toneClass("neutral")}`}>{t("payments.opensSoon")}</p>
-      ) : (
-        <>
-          <label className="flex items-start gap-2 text-xs text-zinc-600">
-            <input type="checkbox" className="mt-0.5" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-            <span>{t("payments.consent")}</span>
-          </label>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" className={buttonClass("primary")} disabled={selected === null || !consent || busy !== null || open !== true} onClick={pay}>
-              {busy === "pay" ? t("payments.paying") : t("payments.pay", { price: PASS_PRICE_TWD })}
-            </button>
-            <button type="button" className={buttonClass("secondary")} disabled={selected === null || busy !== null || open !== true} onClick={askParent}>
-              {busy === "link" ? t("payments.askParentBusy") : t("payments.askParent")}
-            </button>
-          </div>
-          {student.ready && !student.auth && <p className="text-xs text-zinc-500">{t("payments.signInFirst")}</p>}
-        </>
-      )}
-
-      {error && (
-        <p role="alert" className={`rounded-md border p-2 text-sm ${toneClass("urgent")}`}>
-          {t(error)}
-        </p>
-      )}
-
-      {madeLink && (
-        <div className={`space-y-2 rounded-md border p-3 text-sm ${toneClass("neutral")}`}>
-          <p>{t("payments.linkReady", { until: fmtTaipei(madeLink.expiresAt, locale, true) })}</p>
-          <div className="flex flex-wrap gap-2">
-            <input
-              ref={linkInput}
-              readOnly
-              value={madeLink.url}
-              aria-label={t("payments.linkLabel")}
-              onFocus={(e) => e.currentTarget.select()}
-              className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 font-mono text-xs text-ink"
-            />
-            <button type="button" className={buttonClass("primary", "sm")} onClick={copy}>
-              {copied ? t("common.copied") : t("common.copy")}
-            </button>
-          </div>
-        </div>
-      )}
-
-      <p className="text-xs text-zinc-500">
-        {t("payments.methods")} {t("payments.refundLine")}
-      </p>
-    </div>
+      }
+    />
   );
 }

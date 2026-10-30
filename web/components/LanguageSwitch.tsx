@@ -2,6 +2,7 @@
 
 import { LOCALE_NAMES, LOCALES, type Locale } from "@/lib/i18n/core";
 import { setLocale, useLocale, useT } from "@/lib/i18n/client";
+import { SEGMENT_TRACK, segmentClass } from "@/lib/ui";
 
 /** A compact "English | 繁體中文" control. `variant="header"` is the small header link; "settings" is a labelled pair of buttons. */
 export function LanguageSwitch({ variant = "header", className = "" }: { variant?: "header" | "settings"; className?: string }) {
@@ -25,7 +26,7 @@ export function LanguageSwitch({ variant = "header", className = "" }: { variant
   }
 
   return (
-    <div role="group" aria-label={t("lang.label")} className={`inline-flex rounded-xl border border-zinc-200 p-1 ${className}`}>
+    <div role="group" aria-label={t("lang.label")} className={`${SEGMENT_TRACK} ${className}`}>
       {LOCALES.map((l) => (
         <button
           key={l}
@@ -33,7 +34,7 @@ export function LanguageSwitch({ variant = "header", className = "" }: { variant
           lang={l === "en" ? "en" : "zh-Hant-TW"}
           aria-pressed={l === locale}
           onClick={() => l !== locale && setLocale(l)}
-          className={`rounded-lg px-4 py-1.5 text-sm font-semibold ${l === locale ? "bg-blue-700 text-white" : "text-zinc-600 hover:bg-zinc-100"}`}
+          className={segmentClass(l === locale)}
         >
           {LOCALE_NAMES[l]}
         </button>

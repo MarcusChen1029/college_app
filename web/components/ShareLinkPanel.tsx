@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import { fmtDate } from "@/lib/format";
 import type { MessageKey } from "@/lib/i18n";
 import { useT } from "@/lib/i18n/client";
@@ -15,7 +16,7 @@ const COPY: Record<ShareKind, { heading: MessageKey; intro: MessageKey; create: 
 };
 
 /** Create / copy / turn off the one active share link of a kind. Students only; the caller checks the role. */
-export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
+export function ShareLinkPanel({ kind, id, layout = "card" }: { kind: ShareKind; id?: string; layout?: "card" | "row" }) {
   const t = useT();
   const [links, setLinks] = useState<ShareLink[] | null>(null);
   const [url, setUrl] = useState<string | null>(null); // only right after creating; the token is never stored
@@ -83,12 +84,8 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
   const lastViewed = (iso: string | null | undefined) =>
     iso ? t("settings.share.lastOpened", { date: fmtDate(iso.slice(0, 10)) }) : t("settings.share.neverOpened");
 
-  return (
-    <section id={id} aria-labelledby={`share-${kind}-heading`} className="scroll-mt-4 rounded-2xl border border-zinc-200 p-6 print:hidden">
-      <h2 id={`share-${kind}-heading`} className="mb-1 text-xl font-bold">
-        {t(text.heading)}
-      </h2>
-      <p className="mb-3 text-sm text-zinc-500">{t(text.intro)}</p>
+  const body = (
+    <>
       {error && (
         <p role="alert" className="mb-2 text-sm text-urgent">
           {error}
@@ -143,6 +140,22 @@ export function ShareLinkPanel({ kind, id }: { kind: ShareKind; id?: string }) {
           {active && !url && <p className="text-xs text-zinc-500">{t("settings.share.lost")}</p>}
         </div>
       )}
+    </>
+  );
+  if (layout === "row") {
+    return (
+      <SettingsRow id={id} headingId={`share-${kind}-heading`} title={t(text.heading)} description={<p>{t(text.intro)}</p>} className="print:hidden">
+        {body}
+      </SettingsRow>
+    );
+  }
+  return (
+    <section id={id} aria-labelledby={`share-${kind}-heading`} className="scroll-mt-4 rounded-2xl border border-zinc-200 p-6 print:hidden">
+      <h2 id={`share-${kind}-heading`} className="mb-1 text-xl font-bold">
+        {t(text.heading)}
+      </h2>
+      <p className="mb-3 text-sm text-zinc-500">{t(text.intro)}</p>
+      {body}
     </section>
   );
 }

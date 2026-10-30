@@ -10,26 +10,40 @@ import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { MyCounselors } from "@/components/MyCounselors";
 import { PaymentsPanel } from "@/components/PaymentsPanel";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
+import { AccountGlance } from "@/components/settings/AccountGlance";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
 import { VaultSettings } from "@/components/VaultSettings";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
-import { buttonClass } from "@/lib/ui";
+import { buttonClass, PAGE_TITLE } from "@/lib/ui";
 
 const noop = () => () => {};
-const card = "rounded-2xl border border-zinc-200 p-6";
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-0.5 py-2 text-sm">
-      <dt className="w-32 shrink-0 text-zinc-500">{label}</dt>
-      <dd className="min-w-0 break-words font-medium">{children}</dd>
+    <div className="flex flex-wrap gap-x-6 gap-y-0.5 py-3 text-base">
+      <dt className="w-36 shrink-0 text-zinc-600">{label}</dt>
+      <dd className="min-w-0 break-words font-semibold text-ink">{children}</dd>
     </div>
   );
 }
 
-/** Everything about the account: language, username, email, student/teacher, reminders, counselors and the role switch. */
+function LanguageRow() {
+  const t = useT();
+  return (
+    <SettingsRow id="language" headingId="language-heading" title={t("settings.language")} description={<p>{t("settings.languageHint")}</p>}>
+      <LanguageSwitch variant="settings" />
+    </SettingsRow>
+  );
+}
+
+/**
+ * Everything about the account, one area per row: who is signed in, the plan and payments, saved passwords, connected
+ * extensions, reminders, language, counselors, the parent link, the role switch, and deleting the account last.
+ * A student sees the four states they come to check in one strip at the top.
+ */
 export function SettingsPage() {
   const student = useStudent();
   const t = useT();
@@ -50,16 +64,21 @@ export function SettingsPage() {
   }, [ready, signedIn, student.role]);
 
   return (
-    <div className="space-y-6">
-      <h1 className="font-display text-3xl font-bold">{t("settings.title")}</h1>
-      <section id="language" aria-labelledby="language-heading" className={`${card} scroll-mt-4`}>
-        <h2 id="language-heading" className="mb-1 text-xl font-bold">
-          {t("settings.language")}
-        </h2>
-        <p className="mb-3 text-sm text-zinc-500">{t("settings.languageHint")}</p>
-        <LanguageSwitch variant="settings" />
-      </section>
-      {!ready ? <div className="h-40 animate-pulse rounded-2xl bg-zinc-100" /> : student.auth ? <SignedIn /> : <SignedOut />}
+    <div className="space-y-8">
+      <div className="space-y-2">
+        <h1 className={PAGE_TITLE}>{t("settings.title")}</h1>
+        {ready && student.auth?.email && <p className="text-base text-zinc-700 [overflow-wrap:anywhere]">{t("misc.settings.signedInAs", { email: student.auth.email })}</p>}
+      </div>
+      {!ready ? (
+        <>
+          <div className="h-24 animate-pulse rounded-3xl bg-zinc-100" />
+          <LanguageRow />
+        </>
+      ) : student.auth ? (
+        <SignedIn />
+      ) : (
+        <SignedOut />
+      )}
     </div>
   );
 }
@@ -67,11 +86,12 @@ export function SettingsPage() {
 function SignedOut() {
   const t = useT();
   return (
-    <section aria-labelledby="signin-heading" className={`${card} space-y-3`}>
-      <h2 id="signin-heading" className="text-xl font-bold">{t("settings.signInTitle")}</h2>
-      <GoogleSignIn returnTo="/settings" />
-      <p className="text-xs text-zinc-500">{t("settings.signInNote")}</p>
-    </section>
+    <div>
+      <SettingsRow headingId="signin-heading" title={t("settings.signInTitle")} description={<p>{t("settings.signInNote")}</p>}>
+        <GoogleSignIn returnTo="/settings" />
+      </SettingsRow>
+      <LanguageRow />
+    </div>
   );
 }
 
@@ -85,62 +105,63 @@ function SignedIn() {
 
   return (
     <>
-      <section aria-labelledby="account-heading" className={card}>
-        <h2 id="account-heading" className="text-xl font-bold">{t("settings.account")}</h2>
-        <dl className="mt-2 divide-y divide-zinc-100">
-          <Row label={t("settings.username")}>{username}</Row>
-          <Row label={t("settings.email")}>{auth.email}</Row>
-          <Row label={t("settings.accountType")}>
-            {teacher ? t("settings.typeTeacher") : student.role === "student" ? t("settings.typeStudent") : t("settings.typeNone")}
-          </Row>
-          {teacher ? (
-            <>
-              {tp?.displayName && <Row label={t("settings.name")}>{tp.displayName}</Row>}
-              {tp?.school && <Row label={t("settings.school")}>{tp.school}</Row>}
-            </>
-          ) : (
-            <Row label={t("settings.applyingFrom")}>{student.profile.international ? t("settings.abroad") : t("settings.theUS")}</Row>
+      {student.role === "student" && <AccountGlance />}
+      <div>
+        <SettingsRow id="account" headingId="account-heading" title={t("settings.account")} description={<p>{t("misc.settings.accountDesc")}</p>}>
+          <dl className="divide-y divide-zinc-200">
+            <Row label={t("settings.username")}>{username}</Row>
+            <Row label={t("settings.email")}>{auth.email}</Row>
+            <Row label={t("settings.accountType")}>
+              {teacher ? t("settings.typeTeacher") : student.role === "student" ? t("settings.typeStudent") : t("settings.typeNone")}
+            </Row>
+            {teacher ? (
+              <>
+                {tp?.displayName && <Row label={t("settings.name")}>{tp.displayName}</Row>}
+                {tp?.school && <Row label={t("settings.school")}>{tp.school}</Row>}
+              </>
+            ) : (
+              <Row label={t("settings.applyingFrom")}>{student.profile.international ? t("settings.abroad") : t("settings.theUS")}</Row>
+            )}
+          </dl>
+          {!teacher && (
+            <p className="mt-4 text-[15px] leading-relaxed text-zinc-700">
+              {t("settings.savedBefore")}
+              {student.syncing ? t("settings.syncing") : ""}
+              {t("settings.savedMiddle")}{" "}
+              <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
+                {t("settings.profileLink")}
+              </Link>
+              {t("settings.savedAfter")}
+            </p>
           )}
-        </dl>
-        {!teacher && (
-          <p className="mt-3 text-sm text-zinc-500">
-            {t("settings.savedBefore")}
-            {student.syncing ? t("settings.syncing") : ""}
-            {t("settings.savedMiddle")}{" "}
-            <Link href="/profile" className="font-semibold text-blue-700 underline underline-offset-4">
-              {t("settings.profileLink")}
-            </Link>
-            {t("settings.savedAfter")}
-          </p>
+          {student.error && (
+            <p role="alert" className="mt-3 text-sm text-urgent">
+              {student.error}
+            </p>
+          )}
+          <button className={`mt-5 ${buttonClass("secondary", "sm")}`} onClick={() => student.signOut()}>
+            {t("account.signOut")}
+          </button>
+        </SettingsRow>
+        {student.role === "student" && <PaymentsPanel />}
+        {student.role === "student" && <VaultSettings />}
+        {student.role === "student" && <ConnectedExtensions />}
+        {student.role === "student" && (
+          <SettingsRow id="reminders" headingId="reminders-heading" title={t("settings.reminders")} description={<p>{t("misc.settings.remindersDesc")}</p>}>
+            <ReminderToggle />
+          </SettingsRow>
         )}
-        {student.error && (
-          <p role="alert" className="mt-3 text-sm text-urgent">
-            {student.error}
-          </p>
+        {teacher && (
+          <SettingsRow id="digest" headingId="digest-heading" title={t("settings.digest")} description={<p>{t("misc.settings.digestDesc")}</p>}>
+            <TeacherDigestToggle />
+          </SettingsRow>
         )}
-        <button className={`mt-4 ${buttonClass("secondary")}`} onClick={() => student.signOut()}>
-          {t("account.signOut")}
-        </button>
-      </section>
-      {student.role === "student" && (
-        <section id="reminders" aria-labelledby="reminders-heading" className={`${card} scroll-mt-4`}>
-          <h2 id="reminders-heading" className="mb-3 text-xl font-bold">{t("settings.reminders")}</h2>
-          <ReminderToggle />
-        </section>
-      )}
-      {teacher && (
-        <section id="digest" aria-labelledby="digest-heading" className={`${card} scroll-mt-4`}>
-          <h2 id="digest-heading" className="mb-3 text-xl font-bold">{t("settings.digest")}</h2>
-          <TeacherDigestToggle />
-        </section>
-      )}
-      {student.role === "student" && <MyCounselors />}
-      {student.role === "student" && <ShareLinkPanel kind="parent" id="share" />}
-      {student.role === "student" && <PaymentsPanel />}
-      {student.role === "student" && <VaultSettings />}
-      {student.role === "student" && <ConnectedExtensions />}
-      <RoleSwitcher />
-      <DeleteAccount />
+        <LanguageRow />
+        {student.role === "student" && <MyCounselors />}
+        {student.role === "student" && <ShareLinkPanel kind="parent" id="share" layout="row" />}
+        <RoleSwitcher />
+        <DeleteAccount />
+      </div>
     </>
   );
 }
