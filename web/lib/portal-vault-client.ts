@@ -22,8 +22,10 @@
 import { useSyncExternalStore } from "react";
 import { devicePasswords, type DevicePasswords } from "./device-passwords";
 import { idbDeviceStorage } from "./device-passwords-idb";
+import { oneAtATime } from "./one-at-a-time";
 import {
   clearServerVault,
+  dropUnreadable,
   importToDevice,
   moveToDevice,
   moveToVault,
@@ -106,6 +108,8 @@ export type VaultView = {
    * delete of the old vault on this page). Settings lists them; resolveConflict(slot, keep) keeps one copy.
    */
   conflicts: ReadonlySet<string>;
+  /** The result of a move into the vault that ran by itself once Setup / Unlock opened the vault (dismissAutoMoved clears it). */
+  autoMoved: ToVaultResult | null;
   /** Passwords this device holds for the account, in either mode (in vault mode they are left over: switchToVault moves them). */
   deviceCount: number;
   /** Device mode: passwords the old vault still holds on the server (0 = none); retryServerDelete deletes them. Always 0 in vault mode. */
@@ -128,6 +132,7 @@ const INITIAL: VaultView = {
   deviceAvailable: false,
   deviceChecked: false,
   conflicts: new Set(),
+  autoMoved: null,
   deviceCount: 0,
   serverLeft: 0,
 };
@@ -139,6 +144,7 @@ let devSlots = new Set<string>(); // this account's slots on this device, as las
 let devOther = new Set<string>(); // of those, the ones that didn't open here
 let deviceReadyFor: string | null = null; // the account whose device mode was last found ready (unlock listeners told)
 let conflictSlots = new Set<string>(); // see VaultView.conflicts
+let pendingMove: string | null = null; // the account whose move into the vault waits for the vault to open (moveIntoVault)
 let knownMode: { uid: string; mode: PasswordMode } | null = null; // the mode last read or written, for when a read fails
 let unlocked: Unlocked | null = null; // this tab's vault key; see the header
 let keyEpoch = 0; // counts every change of the key, so a read that went out before one can tell it is out of date
@@ -241,6 +247,7 @@ function adopt(uid: string | null) {
   devOther = new Set();
   deviceReadyFor = null;
   conflictSlots = new Set();
+  pendingMove = null;
   emit(first && view.dialog !== null ? { ...INITIAL, dialog: view.dialog } : INITIAL);
 }
 
@@ -511,6 +518,12 @@ async function afterUnlock(u: Unlocked) {
   // Locked, signed out or unlocked again (that unlock has its own job) meanwhile: nobody is told about this key.
   if (openKey() !== u) return;
   tellUnlockListeners();
+  // A move into the vault was waiting for this (a switch that needed a vault set up first, or "Move them into the
+  // vault" that needed an unlock): it runs now, on its own, and its result shows as view.autoMoved.
+  if (pendingMove === u.userId) {
+    pendingMove = null;
+    void finishPendingMove(u.userId);
+  }
 }
 
 // The `onUnlock` listeners: passwords can be stored now (the vault opened, or device mode is ready). Never throws.
@@ -743,9 +756,17 @@ const vaultSide = (call: Call, u: Unlocked | null): VaultSide => ({
  * device mode: ok, nothing done.
  */
 export async function switchToDevice(): Promise<ToDeviceResult> {
-  const fail = (error: ToDeviceError): ToDeviceResult => ({ ok: false, error, slots: [] });
   const uid = await account();
-  if (!uid) return fail("unauthorized");
+  if (!uid) return { ok: false, error: "unauthorized", slots: [] };
+  return oneAtATime(uid, () => switchToDeviceNow(uid));
+}
+
+// The account still signed in after waiting for the lock (another tab's step may have taken a while).
+const stillSignedIn = async (uid: string) => (await account()) === uid;
+
+async function switchToDeviceNow(uid: string): Promise<ToDeviceResult> {
+  const fail = (error: ToDeviceError): ToDeviceResult => ({ ok: false, error, slots: [] });
+  if (!(await stillSignedIn(uid))) return fail("unauthorized");
   const loaded = await refresh(uid);
   if (loaded !== "ok" || viewUser !== uid) return fail(loaded === "unavailable" ? "unavailable" : "failed");
   if (view.mode === "device") return { ok: true, serverLeft: view.serverLeft, resetError: null, slots: [] };
@@ -770,9 +791,14 @@ export async function switchToDevice(): Promise<ToDeviceResult> {
  * to view.conflicts. In vault mode: "no_vault" / "locked" before anything happens.
  */
 export async function switchToVault(): Promise<ToVaultResult> {
-  const fail = (error: ToVaultError): ToVaultResult => ({ ok: false, error, slots: [] });
   const uid = await account();
-  if (!uid) return fail("unauthorized");
+  if (!uid) return { ok: false, error: "unauthorized", slots: [] };
+  return oneAtATime(uid, () => switchToVaultNow(uid));
+}
+
+async function switchToVaultNow(uid: string): Promise<ToVaultResult> {
+  const fail = (error: ToVaultError): ToVaultResult => ({ ok: false, error, slots: [] });
+  if (!(await stillSignedIn(uid))) return fail("unauthorized");
   const loaded = await refresh(uid);
   if (loaded !== "ok" || viewUser !== uid) return fail(loaded === "unavailable" ? "unavailable" : "failed");
   if (view.lock === "unknown") return fail("failed");
@@ -781,6 +807,8 @@ export async function switchToVault(): Promise<ToVaultResult> {
   if (!fromDevice && view.lock === "none") return fail("no_vault");
   if (view.lock !== "none" && !u) return fail("locked");
   const r = await moveToVault({ userId: uid, vault: u ? vaultSide(callFor(uid), u) : null, device: device(), writeMode: fromDevice ? (m) => writeMode(uid, m) : null });
+  // No vault yet: once the student sets one up (the Setup dialog), the move runs by itself (afterUnlock).
+  if (r.ok && r.setupNeeded) pendingMove = uid;
   if (viewUser === uid) {
     if (r.ok) noteConflicts(uid, r.kept, true);
     await refresh(uid);
@@ -789,15 +817,50 @@ export async function switchToVault(): Promise<ToVaultResult> {
 }
 
 /**
+ * "Move them into the vault" (Settings, and the banner on Portals / My list) for passwords left on this device in vault
+ * mode. With the vault open it moves them now and resolves to the result. Otherwise it opens the Setup or Unlock dialog
+ * and resolves to "dialog": the move then runs by itself right after the vault opens, and its result appears as
+ * view.autoMoved. Same rules as switchToVault (insert-only, read back, deleted here only once confirmed).
+ */
+export async function moveIntoVault(): Promise<ToVaultResult | "dialog"> {
+  const uid = await account();
+  if (!uid) return { ok: false, error: "unauthorized", slots: [] };
+  if (view.mode === "vault" && view.status === "ready" && view.lock !== "unknown" && !openKey()) {
+    pendingMove = uid;
+    openVaultDialog(view.lock === "none" ? "setup" : "unlock");
+    return "dialog";
+  }
+  dismissAutoMoved();
+  return oneAtATime(uid, () => switchToVaultNow(uid));
+}
+
+// A move the vault's opening was waiting for: run it (one at a time, like every switch) and show its result.
+async function finishPendingMove(uid: string) {
+  const r = await oneAtATime(uid, () => switchToVaultNow(uid));
+  if (viewUser === uid) emit({ ...view, autoMoved: r });
+}
+
+/** Forgets the result of a move that ran by itself after Setup / Unlock (view.autoMoved), once it has been read. */
+export function dismissAutoMoved() {
+  if (view.autoMoved) emit({ ...view, autoMoved: null });
+}
+
+/**
  * Device mode, Settings: deletes the old vault and every password it still holds on the server (password-mode.ts
  * clearServerVault): each one is first copied to this device (or found here identically); a different password here
  * stops it ("conflict", logins in view.conflicts). A vault holding passwords must be unlocked ("locked": offer Unlock);
  * an empty one goes without. Refused with "wrong_mode" unless the account is in device mode as stored right now, so a
- * stale tab can never delete a vault another device switched back to.
+ * stale tab can never delete a vault another device switched back to. "unreadable": deleteUnreadableServerCopies is the
+ * way out.
  */
 export async function retryServerDelete(): Promise<ClearServerResult> {
   const uid = await account();
   if (!uid) return { ok: false, error: "unauthorized", slots: [] };
+  return oneAtATime(uid, () => retryServerDeleteNow(uid));
+}
+
+async function retryServerDeleteNow(uid: string): Promise<ClearServerResult> {
+  if (!(await stillSignedIn(uid))) return { ok: false, error: "unauthorized", slots: [] };
   const mode = await readMode(uid);
   if (mode === null) return { ok: false, error: "failed", slots: [] };
   if (mode !== "device") {
@@ -825,14 +888,38 @@ export async function retryServerDelete(): Promise<ClearServerResult> {
 export async function resolveConflict(slot: string, keep: "vault" | "device"): Promise<ResolveError | null> {
   const uid = await account();
   if (!uid) return "unauthorized";
-  const u = openKey();
-  if (!u) return "locked";
-  const r = await resolveConflictFlow({ userId: uid, mode: view.mode, slot, keep, vault: vaultSide(callFor(uid), u), device: device() });
-  if (viewUser === uid) {
-    if (r === null) noteConflicts(uid, [slot], false);
-    await refresh(uid);
-  }
-  return r;
+  return oneAtATime(uid, async () => {
+    if (!(await stillSignedIn(uid))) return "unauthorized";
+    const u = openKey();
+    if (!u) return "locked";
+    const r = await resolveConflictFlow({ userId: uid, mode: view.mode, slot, keep, vault: vaultSide(callFor(uid), u), device: device() });
+    if (viewUser === uid) {
+      if (r === null) noteConflicts(uid, [slot], false);
+      await refresh(uid);
+    }
+    return r;
+  });
+}
+
+/**
+ * Device mode, Settings, after "unreadable": deletes from the server only the old vault's passwords nobody can open
+ * (password-mode.ts dropUnreadable; confirm first). The others stay for retryServerDelete, which copies them here before
+ * the vault goes. "wrong_mode" unless the account is in device mode as stored right now.
+ */
+export async function deleteUnreadableServerCopies(): Promise<{ ok: true; removed: string[] } | { ok: false; error: FlowError | "wrong_mode"; slots: string[] }> {
+  const uid = await account();
+  if (!uid) return { ok: false, error: "unauthorized", slots: [] };
+  return oneAtATime(uid, async () => {
+    if (!(await stillSignedIn(uid))) return { ok: false, error: "unauthorized", slots: [] };
+    const mode = await readMode(uid);
+    if (mode !== "device") {
+      if (mode !== null) void refresh(uid);
+      return { ok: false, error: mode === null ? "failed" : "wrong_mode", slots: [] };
+    }
+    const r = await dropUnreadable(vaultSide(callFor(uid), openKey()));
+    if (viewUser === uid) await refresh(uid);
+    return r;
+  });
 }
 
 /** Settings: "Delete passwords on this device" for the signed-in account (any mode; confirm first). Null when it worked. */

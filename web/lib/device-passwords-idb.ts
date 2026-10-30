@@ -145,6 +145,18 @@ export function idbDeviceStorage(): DeviceStorage | null {
       inTx<void>(VALUES, "readwrite", undefined, (tx) => {
         tx.objectStore(VALUES).delete([userId, slot]);
       }),
+    // Read and write in the same readwrite transaction: no other write to this store can land between them.
+    putValueIf: (userId, slot, expected, value) =>
+      inTx(VALUES, "readwrite", false, (tx, set) => {
+        const store = tx.objectStore(VALUES);
+        const req = store.get([userId, slot]);
+        req.onsuccess = () => {
+          const now = (req.result as ValueRow | undefined)?.value ?? null;
+          if (now !== expected) return;
+          store.put({ userId, slot, value } satisfies ValueRow);
+          set(true);
+        };
+      }),
     // Read and delete in the same readwrite transaction: no other write to this store can land between them.
     deleteValueIf: (userId, slot, value) =>
       inTx(VALUES, "readwrite", false, (tx, set) => {

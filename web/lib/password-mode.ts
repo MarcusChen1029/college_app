@@ -42,7 +42,7 @@ export type WriteMode = (mode: PasswordStorage) => Promise<boolean>;
  * - conflict: this device already holds a different password for these logins (`slots`); nothing was written; keep
  *   one copy (resolveConflict), then try again
  * - copy_failed: a password couldn't be read from the vault, or copied here and read back (`slots`); copies made so
- *   far were taken off this device again
+ *   far were taken off this device again where the vault still holds them (and they are still exactly the copies)
  * - changed: passwords kept changing in another tab while copying; try again
  * - mode_not_saved: every copy verified but the account's mode wasn't saved; the vault is untouched and this device
  *   keeps the copies (each one equal to the vault's); trying again is safe
@@ -99,8 +99,9 @@ const MAX_PASSES = 3; // copy, then re-list until nothing changed in the vault m
 const unreadableOf = (listed: readonly SlotState[]) => listed.filter((s) => s.kind !== "e1").map((s) => s.slot);
 
 // A slot this device holds a copy of, as far as one flow knows: the vault row's updated_at it matches, what the slot held
-// here before the flow (null: nothing, or a value that couldn't be opened) and whether the flow wrote it.
-type Copied = { stamp: string; prev: string | null; wrote: boolean };
+// here before the flow (null: nothing, or a value that couldn't be opened), whether the flow wrote it, and the password
+// the slot holds as far as the flow knows (the one it wrote, or the equal one it found).
+type Copied = { stamp: string; prev: string | null; wrote: boolean; password: string };
 type Sync = { ok: true } | { ok: false; error: "conflict" | "copy_failed" | "device_unavailable"; slots: string[] };
 
 /**
@@ -108,47 +109,54 @@ type Sync = { ok: true } | { ok: false; error: "conflict" | "copy_failed" | "dev
  * them first and writes only then, so when it finds a conflict nothing of this round was written. A slot the flow
  * hasn't touched yet is compared with what this device already holds: the same password counts as copied; a different
  * one that opens here is a conflict and is never overwritten; none, or one that can't be opened, gets the vault's.
- * A slot the flow copied earlier (its own copy) follows the vault's newer value. Every write is read back.
+ * A slot the flow copied earlier (its own copy) follows the vault's newer value. Every write is a compare-and-save
+ * (a value another tab saved here meanwhile is never replaced: that is a conflict too) and is read back.
  */
 async function syncFromVault(userId: string, vault: VaultSide, device: DevicePasswords, listed: readonly SlotState[], copied: Map<string, Copied>): Promise<Sync> {
   const todo = listed.filter((s) => copied.get(s.slot)?.stamp !== s.updated_at);
-  const writes: { s: SlotState; password: string; prev: string | null }[] = [];
+  const writes: { s: SlotState; password: string; prev: string | null; current: string | null }[] = [];
   const conflicts: string[] = [];
   for (const s of todo) {
     const got = await settle(() => vault.reveal(s.slot), { error: "failed" });
     if (!("password" in got)) return { ok: false, error: "copy_failed", slots: [s.slot] };
     const known = copied.get(s.slot);
     if (known) {
-      writes.push({ s, password: got.password, prev: known.prev });
+      writes.push({ s, password: got.password, prev: known.prev, current: known.password });
       continue;
     }
     const had = await device.reveal(userId, s.slot);
     if ("password" in had) {
-      if (had.password === got.password) copied.set(s.slot, { stamp: s.updated_at, prev: had.password, wrote: false });
+      if (had.password === got.password) copied.set(s.slot, { stamp: s.updated_at, prev: had.password, wrote: false, password: had.password });
       else conflicts.push(s.slot);
       continue;
     }
     if (had.error === "unavailable") return { ok: false, error: "device_unavailable", slots: [s.slot] };
     if (had.error === "bad_input") return { ok: false, error: "copy_failed", slots: [s.slot] };
-    writes.push({ s, password: got.password, prev: null }); // nothing here, or nothing that opens
+    writes.push({ s, password: got.password, prev: null, current: null }); // nothing here, or nothing that opens
   }
   if (conflicts.length) return { ok: false, error: "conflict", slots: conflicts };
   for (const w of writes) {
-    copied.set(w.s.slot, { stamp: w.s.updated_at, prev: w.prev, wrote: true }); // before the save, so a half-done save is undone too
-    if ((await device.save(userId, w.s.slot, w.password)) !== null) return { ok: false, error: "copy_failed", slots: [w.s.slot] };
-    const back = await device.reveal(userId, w.s.slot);
-    if (!("password" in back) || back.password !== w.password) return { ok: false, error: "copy_failed", slots: [w.s.slot] };
+    const before = copied.get(w.s.slot);
+    // Recorded before the save, so a save that landed but failed its read-back is taken back too (takeBack only removes
+    // or replaces a value that is still exactly this one).
+    copied.set(w.s.slot, { stamp: w.s.updated_at, prev: w.prev, wrote: true, password: w.password });
+    const err = await device.saveIfSame(userId, w.s.slot, w.current, w.password);
+    if (err === "changed") {
+      if (before) copied.set(w.s.slot, before);
+      else copied.delete(w.s.slot);
+      return { ok: false, error: "conflict", slots: [w.s.slot] };
+    }
+    if (err) return { ok: false, error: "copy_failed", slots: [w.s.slot] };
   }
   return { ok: true };
 }
 
-// Takes back what a flow wrote to one slot: the earlier value where there was one, nothing where there wasn't.
-async function putBack(userId: string, device: DevicePasswords, slot: string, copied: Map<string, Copied>) {
-  const c = copied.get(slot);
-  copied.delete(slot);
-  if (!c?.wrote) return;
-  if (c.prev === null) await device.remove(userId, slot);
-  else await device.save(userId, slot, c.prev);
+// Takes back what a flow wrote to one slot (the earlier value where there was one, nothing where there wasn't), but only
+// while the slot still holds exactly what the flow wrote: a value another tab or flow saved meanwhile stays.
+async function takeBack(userId: string, device: DevicePasswords, slot: string, c: Copied) {
+  if (!c.wrote) return;
+  if (c.prev === null) await device.removeIfSame(userId, slot, c.password);
+  else await device.saveIfSame(userId, slot, c.password, c.prev);
 }
 
 /**
@@ -171,8 +179,16 @@ export async function moveToDevice(x: {
   if ((await device.slots(userId)) === "unavailable") return fail("device_unavailable");
 
   const copied = new Map<string, Copied>();
+  // Stopping: copies are taken back only where a fresh list shows the vault still holds that login (so the password is
+  // not lost) and only while the slot still holds exactly what this flow wrote. Another tab may have finished a switch
+  // and deleted the vault meanwhile: then these copies are the passwords, and they stay. No list = every copy stays.
   const abort = async (error: ToDeviceError, slots: string[] = []) => {
-    for (const slot of [...copied.keys()]) await putBack(userId, device, slot, copied);
+    const now = await settle(() => vault.list(), { error: "failed" as FlowError });
+    if (Array.isArray(now)) {
+      const inVault = new Set(now.filter((s) => s.kind === "e1").map((s) => s.slot));
+      for (const [slot, c] of copied) if (inVault.has(slot)) await takeBack(userId, device, slot, c);
+    }
+    copied.clear();
     return fail(error, slots);
   };
 
@@ -183,9 +199,10 @@ export async function moveToDevice(x: {
     listed = r;
     const unreadable = unreadableOf(listed);
     if (unreadable.length) return abort("unreadable", unreadable);
-    // Cleared in the vault since an earlier pass: the copy made of it goes too (an equal one that was here stays).
+    // Gone from the vault since an earlier pass (cleared in another tab, or the whole vault deleted by another tab's
+    // switch): the copy here is kept, since it may now be the only one; this flow just stops tracking it.
     const now = new Set(listed.map((s) => s.slot));
-    for (const slot of [...copied.keys()]) if (!now.has(slot)) await putBack(userId, device, slot, copied);
+    for (const slot of [...copied.keys()]) if (!now.has(slot)) copied.delete(slot);
     const todo = listed.filter((s) => copied.get(s.slot)?.stamp !== s.updated_at);
     if (todo.length === 0) break;
     if (pass >= MAX_PASSES) return abort("changed", todo.map((s) => s.slot));
@@ -230,6 +247,24 @@ export async function clearServerVault(x: { userId: string; open: boolean; vault
   }
   const err = await settle(() => x.vault.reset(), "failed" as FlowError);
   return err ? fail(err) : { ok: true };
+}
+
+/**
+ * Device mode, the way out of "unreadable": deletes from the server only the stored passwords nobody can open (sealed by
+ * a vault that no longer exists, or damaged), as listed now; openable ones are left for clearServerVault, which copies
+ * them here before the old vault goes. The server takes no new vault values in device mode, so nothing else can be
+ * caught by it. `removed` = the slots deleted.
+ */
+export async function dropUnreadable(vault: VaultSide): Promise<{ ok: true; removed: string[] } | { ok: false; error: FlowError; slots: string[] }> {
+  const listed = await settle(() => vault.list(), { error: "failed" as FlowError });
+  if (!Array.isArray(listed)) return { ok: false, error: listed.error, slots: [] };
+  const removed: string[] = [];
+  for (const slot of unreadableOf(listed)) {
+    const err = await settle(() => vault.remove(slot), "failed" as FlowError);
+    if (err) return { ok: false, error: err, slots: [slot] };
+    removed.push(slot);
+  }
+  return { ok: true, removed };
 }
 
 /**
@@ -320,10 +355,9 @@ export async function resolveConflict(x: {
   if (x.keep === "vault") {
     if (theirs === null) return "changed";
     if (x.mode === "device") {
-      const err = await device.save(userId, slot, theirs);
-      if (err) return err === "unavailable" ? "device_unavailable" : "failed";
-      const back = await device.reveal(userId, slot);
-      return "password" in back && back.password === theirs ? null : "failed";
+      // Only over the value compared above: one saved here by another tab since then is never replaced ("changed").
+      const err = await device.saveIfSame(userId, slot, mine, theirs);
+      return err === null || err === "changed" ? err : err === "unavailable" ? "device_unavailable" : "failed";
     }
     if (mine === null) return "error" in here && here.error === "not_found" ? null : deviceError(await device.remove(userId, slot));
     return deviceError(await device.removeIfSame(userId, slot, mine));

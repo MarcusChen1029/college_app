@@ -28,6 +28,8 @@ export interface DeviceStorage {
   deleteValue(userId: string, slot: string): Promise<void>;
   /** Deletes the slot's value only if it is exactly `value`, read and deleted in one step: false when it differs or is gone. */
   deleteValueIf(userId: string, slot: string, value: string): Promise<boolean>;
+  /** Writes `value` only if the slot still holds exactly `expected` (null: nothing), read and written in one step. */
+  putValueIf(userId: string, slot: string, expected: string | null, value: string): Promise<boolean>;
   listSlots(userId: string): Promise<string[]>;
   /** Every value of this account, and its key. */
   deleteAccount(userId: string): Promise<void>;
@@ -50,6 +52,12 @@ export type DevicePasswords = {
   reveal(userId: string, slot: string): Promise<{ password: string } | { error: DeviceRevealError }>;
   /** Saves (or replaces) one password, then reads it back: null only when the stored value opens to this password. */
   save(userId: string, slot: string, password: string): Promise<DeviceSaveError | null>;
+  /**
+   * Compare-and-save: replaces the slot's password only while it still opens to `current` (null: nothing there, or a
+   * value that doesn't open here), compared and written in one storage step, then reads it back. "changed" = it holds
+   * something else now (another tab saved meanwhile); nothing was written.
+   */
+  saveIfSame(userId: string, slot: string, current: string | null, password: string): Promise<DeviceSaveError | "changed" | null>;
   /**
    * Insert-only save: never replaces a value. null = the slot now holds this password (just stored and read back, or
    * it already did); "occupied" = it holds a different password, or one that doesn't open here (kept as it is).
@@ -214,6 +222,31 @@ export function devicePasswords(storage: DeviceStorage | null): DevicePasswords 
       const sealed = await sealChecked(key, userId, slot, password);
       if (sealed === null) return "failed";
       if ((await call((s) => s.putValue(userId, slot, sealed))) === FAIL) return "unavailable";
+      const back = await call((s) => s.getValue(userId, slot));
+      if (back === FAIL) return "unavailable";
+      return back === sealed ? null : "failed";
+    },
+
+    async saveIfSame(userId, slot, current, password) {
+      if (!isUserId(userId) || !isPortalSlot(slot) || !isPassword(password)) return "bad_input";
+      const stored = await call((s) => s.getValue(userId, slot));
+      if (stored === FAIL) return "unavailable";
+      const was = stored ?? null;
+      let opens: string | null = null;
+      if (was !== null) {
+        const key = await keyFor(userId, false);
+        if (key === FAIL) return "unavailable";
+        opens = key === null ? null : await openDevice(key, userId, slot, was);
+      }
+      if (opens !== current) return "changed";
+      const key = await keyFor(userId, true);
+      if (key === FAIL || key === null) return "unavailable";
+      const sealed = await sealChecked(key, userId, slot, password);
+      if (sealed === null) return "failed";
+      // The stored string decides inside one storage step: a value saved after the read above is never replaced.
+      const written = await call((s) => s.putValueIf(userId, slot, was, sealed));
+      if (written === FAIL) return "unavailable";
+      if (!written) return "changed";
       const back = await call((s) => s.getValue(userId, slot));
       if (back === FAIL) return "unavailable";
       return back === sealed ? null : "failed";

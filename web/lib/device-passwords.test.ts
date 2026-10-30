@@ -162,6 +162,7 @@ async function everyCall(device: DevicePasswords) {
     slots: await device.slots(A),
     reveal: await device.reveal(A, SLOT),
     save: await device.save(A, SLOT, PW),
+    saveIfSame: await device.saveIfSame(A, SLOT, null, PW),
     add: await device.add(A, SLOT, PW),
     remove: await device.remove(A, SLOT),
     removeIfSame: await device.removeIfSame(A, SLOT, PW),
@@ -172,6 +173,7 @@ const ALL_UNAVAILABLE = {
   slots: "unavailable",
   reveal: { error: "unavailable" },
   save: "unavailable",
+  saveIfSame: "unavailable",
   add: "unavailable",
   remove: "unavailable",
   removeIfSame: "unavailable",
@@ -213,7 +215,7 @@ test("device store: a storage that rejects, or even throws, reports unavailable 
   for (const throwSync of [false, true]) {
     const storage = new MemoryDeviceStorage();
     storage.throwSync = throwSync;
-    storage.failing = (["getKey", "addKey", "getValue", "putValue", "addValue", "deleteValue", "deleteValueIf", "listSlots", "deleteAccount"] as const).map((op) => ({ op }));
+    storage.failing = (["getKey", "addKey", "getValue", "putValue", "addValue", "deleteValue", "deleteValueIf", "putValueIf", "listSlots", "deleteAccount"] as const).map((op) => ({ op }));
     assert.deepEqual(await everyCall(devicePasswords(storage)), ALL_UNAVAILABLE, `throwSync=${throwSync}`);
   }
   // A write that fails after the key exists: unavailable, and nothing half-stored is reported as saved.

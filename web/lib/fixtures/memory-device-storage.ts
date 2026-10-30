@@ -60,6 +60,14 @@ export class MemoryDeviceStorage implements DeviceStorage {
     this.values.get(userId)?.delete(slot);
     return Promise.resolve();
   }
+  putValueIf(userId: string, slot: string, expected: string | null, value: string) {
+    const failed = this.check("putValueIf", slot);
+    if (failed) return failed;
+    const m = this.of(userId);
+    if ((m.get(slot) ?? null) !== expected) return Promise.resolve(false);
+    m.set(slot, value);
+    return Promise.resolve(true);
+  }
   deleteValueIf(userId: string, slot: string, value: string) {
     const failed = this.check("deleteValueIf", slot);
     if (failed) return failed;

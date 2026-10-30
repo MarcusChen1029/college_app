@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Modal } from "@/components/Modal";
 import { downloadText } from "@/lib/download";
@@ -11,6 +12,7 @@ import {
   copyText,
   loadSlots,
   lock,
+  moveIntoVault,
   openVaultDialog,
   prepare,
   resetVault,
@@ -314,6 +316,61 @@ export function DevicePasswordsNote({ className = "" }: { className?: string }) 
   }, [device]);
   if (!student.auth || vault.status !== "ready" || vault.mode !== "device" || !vault.deviceAvailable || vault.deviceCount > 0) return null;
   return <p className={`rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-700 ${className}`}>{t("portals.device.elsewhereNote")}</p>;
+}
+
+/**
+ * Vault mode, Portals and My list: passwords still kept on this device outside the vault (a switch whose Setup was
+ * closed midway, a different password in the vault, or a switch made on another device). One line with "Move them into
+ * the vault": it opens Setup or Unlock first when needed and the move then runs by itself (portal-vault-client.ts
+ * moveIntoVault). Says how many moved, and links to Settings when some differ from the vault. Passive: it shows once
+ * the page's login rows have loaded the password client.
+ */
+export function LeftoverPasswordsBanner({ className = "" }: { className?: string }) {
+  const t = useT();
+  const vault = useVault();
+  const student = useStudent();
+  const { busy, run } = useRunner();
+  const [moved, setMoved] = useState<number | null>(null);
+  const [error, setError] = useState<MessageKey | null>(null);
+  if (!student.auth || vault.status !== "ready" || vault.mode !== "vault" || !vault.deviceChecked) return null;
+  const n = vault.deviceCount;
+  const auto = vault.autoMoved;
+  const movedNow = moved ?? (auto?.ok && !auto.setupNeeded ? auto.moved.length : 0);
+  if (n === 0 && !movedNow) return null;
+  const move = () =>
+    run(async () => {
+      setError(null);
+      setMoved(null);
+      const r = await moveIntoVault();
+      if (r === "dialog") return;
+      if (r.ok) setMoved(r.moved.length);
+      else setError((DIALOG_ERROR as Partial<Record<string, MessageKey>>)[r.error] ?? "portals.leftover.failed");
+    });
+  return (
+    <div className={`flex flex-wrap items-center gap-2 rounded-lg border px-3 py-2 text-sm ${toneClass("soon")} ${className}`}>
+      {n > 0 && <p className="min-w-0 flex-1">{t(n === 1 ? "portals.leftover.one" : "portals.leftover.many", { n })}</p>}
+      {n > 0 && (
+        <button type="button" className={buttonClass("secondary", "sm")} disabled={busy} onClick={() => void move()}>
+          {busy ? t("settings.storage.toVault.busy") : t("settings.vault.leftoverMove")}
+        </button>
+      )}
+      {n > 0 && vault.conflicts.size > 0 && (
+        <Link href="/settings#passwords" className="font-medium underline">
+          {t("portals.leftover.conflicts")}
+        </Link>
+      )}
+      {movedNow > 0 && (
+        <p role="status" className="w-full text-done">
+          {t("portals.leftover.moved", { n: movedNow })}
+        </p>
+      )}
+      {error && (
+        <p role="alert" className="w-full text-urgent">
+          {t(error)}
+        </p>
+      )}
+    </div>
+  );
 }
 
 /** The open vault dialog, if any (mounted once in app/layout.tsx). Signed-out pages have none. */
