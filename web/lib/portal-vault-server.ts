@@ -1,16 +1,14 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import type { SealedEntry } from "./portal-slots";
-import { keyDecision, openPassword, VAULT_VERSION, vaultKey, vaultKeyId } from "./portal-vault";
-import { slotKind, type KeyStatus, type PutResult, type SlotState, type VaultDeps } from "./portal-vault-handler";
+import { slotKind, type PutResult, type SlotState, type VaultDeps } from "./portal-vault-handler";
 import { parseVaultRecord, type VaultRecord } from "./vault-format";
 
 // Server side of the saved portal passwords (POST /api/portal-passwords). The tables (portal_passwords, 0040;
 // portal_vaults, 0047) have no policies and no grants for anon/authenticated, so only this file, with the
 // service-role key, reads or writes them, always filtered to the one verified user. Passwords are sealed in the
 // student's browser ("e1.", vault-format.ts) and this server can't open them: it stores the strings through the 0047
-// functions, says which slots hold one (never the values) and hands a value back only through "get". The one thing it
-// still opens is an old server-sealed "v1." row, once, for "handover" (lib/portal-vault.ts, with PORTAL_ENCRYPTION_KEY).
+// functions, says which slots hold one (never the values) and hands a value back only through "get".
 // Never log a password, a sealed value or a token; thrown errors carry no row data. Sealed values travel to the
 // database only in request bodies (rpc), never in a URL filter. updated_at strings go back to the browser exactly as
 // PostgREST returned them, and come back from it the same way (compare-and-set needs the microseconds).
@@ -22,8 +20,7 @@ const RECORD_COLUMNS = "version, key_id, pass_salt, pass_iterations, pass_check,
 /** Most passwords one account may keep (every system, campus, custom portal and listed college fits many times over). Also in portal_vault_put (0047). */
 export const MAX_SLOTS_PER_USER = 500;
 
-/** key = this deployment's PORTAL_ENCRYPTION_KEY, needed only to hand over old v1 rows (null: handover answers no_key). */
-export type VaultConfig = { key: Buffer | null; supabaseUrl: string; publishableKey: string; serviceKey: string };
+export type VaultConfig = { supabaseUrl: string; publishableKey: string; serviceKey: string };
 
 /** Null when a Supabase setting is missing; the route then answers 503 { configured: false }. */
 export function vaultConfig(): VaultConfig | null {
@@ -31,7 +28,7 @@ export function vaultConfig(): VaultConfig | null {
   const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!supabaseUrl || !publishableKey || !serviceKey) return null;
-  return { key: vaultKey(), supabaseUrl, publishableKey, serviceKey };
+  return { supabaseUrl, publishableKey, serviceKey };
 }
 
 /** The user the token belongs to, checked with Supabase (rejects bad signatures and signed-out sessions). */
@@ -45,46 +42,6 @@ async function verifiedUser(cfg: VaultConfig, token: string): Promise<string | n
 }
 
 const admin = (cfg: VaultConfig) => createClient(cfg.supabaseUrl, cfg.serviceKey, { auth: NO_SESSION });
-
-// ── which key owns the old v1 rows (handover only) ──
-
-/**
- * Only the production deployment may claim an unclaimed store with its key (VERCEL_ENV=production, or
- * PORTAL_VAULT_CLAIM=1 on another host). A preview or a laptop pointed at the same database never claims it first.
- */
-const mayClaim = () => process.env.VERCEL_ENV === "production" || process.env.PORTAL_VAULT_CLAIM === "1";
-
-let keyCheck: { kid: string; status: Promise<KeyStatus> } | null = null;
-
-/**
- * Compares this deployment's key id with the one stored in portal_vault_meta (migration 0040), once per process; an
- * unclaimed store is claimed by production (insert, on conflict nothing, then read again). A failed read is not cached.
- * No key at all = "no_key". Only handover asks: every other action stores or returns strings this server can't open.
- */
-function keyStatus(cfg: VaultConfig): Promise<KeyStatus | "no_key"> {
-  const key = cfg.key;
-  if (!key) return Promise.resolve("no_key");
-  const kid = vaultKeyId(key);
-  if (keyCheck?.kid === kid) return keyCheck.status;
-  const status = (async (): Promise<KeyStatus> => {
-    const read = async () => {
-      const { data, error } = await admin(cfg).from("portal_vault_meta").select("key_id").eq("id", true).maybeSingle();
-      if (error) throw new Error("portal_vault_meta read failed");
-      return (data?.key_id as string | undefined) ?? null;
-    };
-    const first = keyDecision(await read(), kid, mayClaim());
-    if (first !== "claim") return first;
-    const { error } = await admin(cfg).from("portal_vault_meta").upsert({ id: true, key_id: kid }, { onConflict: "id", ignoreDuplicates: true });
-    if (error) throw new Error("portal_vault_meta write failed");
-    const again = keyDecision(await read(), kid, false);
-    return again === "ok" ? "ok" : "mismatch";
-  })();
-  keyCheck = { kid, status };
-  status.catch(() => {
-    if (keyCheck?.status === status) keyCheck = null;
-  });
-  return status;
-}
 
 // ── the vault record ──
 
@@ -185,23 +142,6 @@ async function deleteSlot(cfg: VaultConfig, userId: string, slot: string) {
   if (error) throw new Error("portal_passwords delete failed");
 }
 
-/**
- * Opens an old server-sealed row so the browser can seal it again (it then saves the new value with "set" and
- * expected = this updated_at, which replaces the row only if it is still the one opened here). "not_legacy" = the
- * row is not a v1 value; "unreadable" = sealed under another key, or tampered. The handler checks the key first.
- */
-async function handover(cfg: VaultConfig, userId: string, slot: string): Promise<{ password: string; updated_at: string } | "missing" | "not_legacy" | "unreadable"> {
-  const key = cfg.key;
-  if (!key) throw new Error("no portal key");
-  const { data, error } = await admin(cfg).from(TABLE).select("sealed, updated_at").eq("user_id", userId).eq("slot", slot).maybeSingle();
-  if (error) throw new Error("portal_passwords read failed");
-  if (!data) return "missing";
-  const sealed = data.sealed as string;
-  if (!sealed.startsWith(`${VAULT_VERSION}.`)) return "not_legacy";
-  const password = openPassword(key, userId, slot, sealed);
-  return password === null ? "unreadable" : { password, updated_at: data.updated_at as string };
-}
-
 /** portal_vault_reset (0047): "start over" deletes the vault, then every stored password of the user. */
 async function reset(cfg: VaultConfig, userId: string) {
   const { error } = await admin(cfg).rpc("portal_vault_reset", { p_user: userId });
@@ -212,7 +152,6 @@ async function reset(cfg: VaultConfig, userId: string) {
 export function vaultDeps(cfg: VaultConfig): VaultDeps {
   return {
     verifyUser: (token) => verifiedUser(cfg, token),
-    keyStatus: () => keyStatus(cfg),
     vault: (userId) => readVault(cfg, userId),
     createVault: (userId, r) => createVault(cfg, userId, r),
     updateVault: (userId, r, expected) => updateVault(cfg, userId, r, expected),
@@ -220,7 +159,6 @@ export function vaultDeps(cfg: VaultConfig): VaultDeps {
     get: (userId, slot) => getSealed(cfg, userId, slot),
     put: (userId, e, expected, insertOnly) => putSealed(cfg, userId, e, expected, insertOnly),
     remove: (userId, slot) => deleteSlot(cfg, userId, slot),
-    handover: (userId, slot) => handover(cfg, userId, slot),
     reset: (userId) => reset(cfg, userId),
   };
 }

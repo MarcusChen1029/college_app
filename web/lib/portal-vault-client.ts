@@ -2,8 +2,8 @@
 
 // The browser side of saved portal passwords, end to end: a password is sealed here, under a vault key that only this
 // tab holds, before it goes to POST /api/portal-passwords (with the website's own access token); the server stores and
-// returns opaque strings. Every vault step (setup, unlock, recovery, sealing, moving old rows over, importing passwords
-// saved before sign-in) is in vault-flows.ts; this file adds the page's state: which slots hold a password, whether the
+// returns opaque strings. Every vault step (setup, unlock, recovery, sealing, importing passwords saved before
+// sign-in) is in vault-flows.ts; this file adds the page's state: which slots hold a password, whether the
 // vault is locked, the open dialog, and the unlocked key.
 // The key lives in the module variable `unlocked` and nowhere else: not in React state, storage or a URL. lock(),
 // sign-out, another account and a vault that changed elsewhere drop it; a reload forgets it. A passphrase, a recovery
@@ -21,7 +21,6 @@ import {
   commitRecoveryCode,
   commitVault,
   fetchVault,
-  handoverAll,
   importAll,
   listSlots,
   prepareRecoveryCode,
@@ -52,36 +51,21 @@ export type VaultDialog = null | "setup" | "unlock";
 export type VaultView = {
   status: VaultStatus;
   lock: VaultLock;
-  /** Slots that hold a password of any kind (sealed under the vault, old server-sealed, or one this vault can't open). */
+  /** Slots that hold a password of any kind (sealed under the vault, or one this vault can't open). */
   slots: ReadonlySet<string>;
-  /** Slots whose stored value is neither of ours: nothing here can open it, only Clear helps. */
+  /** Slots whose stored value this vault can't open (another vault's, or a damaged one): only Clear helps. */
   other: ReadonlySet<string>;
-  /** How many slots still hold an old server-sealed value, waiting to be moved into the vault at the next unlock. */
-  legacy: number;
-  /** Those slots themselves: a row needs to know its own, because such a password must never be offered for deletion. */
-  legacySlots: ReadonlySet<string>;
   dialog: VaultDialog;
-  /** How many old rows the latest handover moved into the vault (0 when every row failed); null when none ran since the last lock. */
-  moved: number | null;
-  /**
-   * How many old rows that handover tried and could not move (a server key that is missing or not the one they were
-   * sealed with, a row the server can't read, a dropped connection); they stay exactly as they are. Null like `moved`.
-   */
-  notMoved: number | null;
 };
 /** Why a password could not be shown or saved. "locked" = this tab has no open vault; the rest are the flows' own codes. */
-export type VaultError = FlowError | "locked" | "other_vault" | "legacy";
+export type VaultError = FlowError | "locked" | "other_vault";
 
 const INITIAL: VaultView = {
   status: "idle",
   lock: "unknown",
   slots: new Set(),
   other: new Set(),
-  legacy: 0,
-  legacySlots: new Set(),
   dialog: null,
-  moved: null,
-  notMoved: null,
 };
 let view: VaultView = INITIAL;
 let viewUser: string | null = null; // whose slots `view` holds
@@ -160,7 +144,7 @@ async function account(): Promise<string | null> {
 
 function markUnavailable() {
   kinds = new Map();
-  emit({ ...view, status: "unavailable", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set() });
+  emit({ ...view, status: "unavailable", slots: new Set(), other: new Set() });
 }
 
 // The requests of a flow started for account `uid`. Each one carries the session's token only while that session is
@@ -179,9 +163,8 @@ const callFor =
         cache: "no-store",
       });
       const data = (await res.json().catch(() => ({}))) as Record<string, unknown>;
-      // A 503 means the server isn't set up for passwords, except from a handover: there it only says that one old row's
-      // server key is missing or not the one it was sealed with, and the rest of the page works as before.
-      if (res.status === 503 && body.action !== "handover" && viewUser === uid) markUnavailable();
+      // A 503 means the server isn't set up for passwords.
+      if (res.status === 503 && viewUser === uid) markUnavailable();
       return { status: res.status, data };
     } catch {
       return { status: 0, data: { error: "network" } };
@@ -200,13 +183,11 @@ function errorOf(r: { status: number; data: Record<string, unknown> }): FlowErro
 function viewKinds(from: ReadonlyMap<string, SlotState["kind"]>) {
   const slots = new Set<string>();
   const other = new Set<string>();
-  const legacySlots = new Set<string>();
   from.forEach((kind, slot) => {
     slots.add(slot);
     if (kind === "other") other.add(slot);
-    else if (kind === "v1") legacySlots.add(slot);
   });
-  return { slots, other, legacy: legacySlots.size, legacySlots };
+  return { slots, other };
 }
 
 // These slots now hold a value sealed under the vault (or none, when `has` is false). Ignored when the page has moved
@@ -276,10 +257,10 @@ export function closeVaultDialog() {
 /** Locks this tab: the key is dropped, passwords need the passphrase (or recovery code) again. */
 export function lock() {
   setKey(null);
-  emit({ ...view, lock: view.lock === "unlocked" ? "locked" : view.lock, moved: null, notMoved: null });
+  emit({ ...view, lock: view.lock === "unlocked" ? "locked" : view.lock });
 }
 
-/** Runs `cb` after every successful unlock (passphrase, recovery code or a new vault), once old rows have been moved. Returns the way to stop. */
+/** Runs `cb` after every successful unlock (passphrase, recovery code or a new vault), once the list is fresh. Returns the way to stop. */
 export function onUnlock(cb: () => void): () => void {
   unlockListeners.add(cb);
   return () => {
@@ -287,24 +268,13 @@ export function onUnlock(cb: () => void): () => void {
   };
 }
 
-// The key is in place: re-lock any old server-sealed rows one at a time (a lock in between stops the rest), say how many
-// moved and how many could not, show the fresh list, then tell the listeners. Nothing in here may throw: a listener's
-// error never reaches the unlock.
+// The key is in place: show the fresh list (what each stored value is depends on the vault), then tell the listeners.
+// Nothing in here may throw: a listener's error never reaches the unlock.
 async function afterUnlock(u: Unlocked) {
   try {
-    const call = callFor(u.userId);
-    const listed = await listSlots(call);
-    let moved = 0;
-    let tried = 0;
-    for (const s of Array.isArray(listed) ? listed : []) {
-      if (s.kind !== "v1" || openKey() !== u) continue;
-      tried++;
-      moved += (await handoverAll(call, u, [s])).moved;
-    }
-    if (tried > 0 && openKey() === u) emit({ ...view, moved, notMoved: tried - moved });
     if (viewUser === u.userId) await refresh(u.userId);
   } catch {
-    // the handover is retried at the next unlock
+    // the list is read again at the next load
   }
   // Locked, signed out or unlocked again (that unlock has its own job) meanwhile: nobody is told about this key.
   if (openKey() !== u) return;
@@ -332,7 +302,7 @@ function opened(u: Unlocked): boolean {
 function dropStaleKey(u: Unlocked, code: string) {
   if (unlocked !== u || (code !== "wrong_vault" && code !== "no_vault")) return;
   setKey(null);
-  emit({ ...view, lock: "locked", moved: null, notMoved: null });
+  emit({ ...view, lock: "locked" });
   void refresh(u.userId);
 }
 
@@ -348,8 +318,8 @@ export async function prepare(passphrase: string): Promise<Prepared> {
 
 /**
  * Step 2: the typed group must match the one asked for ("group_mismatch" creates nothing), then the vault is stored and
- * this tab is unlocked ("ok"; the key stays inside this module, like unlock's). Old rows are moved in the background and
- * the `onUnlock` listeners run after that. A "failed" may hide a vault that was stored after all; the next list shows it.
+ * this tab is unlocked ("ok"; the key stays inside this module, like unlock's). The list is read again in the background
+ * and the `onUnlock` listeners run after that. A "failed" may hide a vault that was stored after all; the next list shows it.
  */
 export async function commit(p: Prepared, typedGroup: string): Promise<"ok" | "group_mismatch" | FlowError> {
   const uid = await account();
@@ -361,7 +331,7 @@ export async function commit(p: Prepared, typedGroup: string): Promise<"ok" | "g
 
 /**
  * Opens the vault in this tab with the passphrase or the recovery code. With `newPassphrase` too (the "forgot it" path)
- * the vault is first re-wrapped under the new passphrase. "ok" = unlocked; old rows are moved in the background and the
+ * the vault is first re-wrapped under the new passphrase. "ok" = unlocked; the list is read again in the background and the
  * `onUnlock` listeners run after that. "wrong" = the secret doesn't match. The derivation is slow on purpose.
  */
 export async function unlock(secret: Secret, newPassphrase?: string): Promise<"ok" | "wrong" | FlowError> {
@@ -372,7 +342,7 @@ export async function unlock(secret: Secret, newPassphrase?: string): Promise<"o
   return opened(r) ? "ok" : "unauthorized";
 }
 
-/** One saved password, or why it can't be shown. "legacy" = an old row not moved yet (never offer to delete it); "other_vault" = this vault can't open it (Clear is the way out). */
+/** One saved password, or why it can't be shown. "other_vault" = this vault can't open it (Clear is the way out). */
 export async function revealPassword(slot: string): Promise<{ password: string } | { error: VaultError }> {
   const u = openKey();
   if (!u) return { error: "locked" };
@@ -489,7 +459,7 @@ export async function resetVault(): Promise<FlowError | null> {
   if (viewUser === uid) {
     setKey(null);
     kinds = new Map();
-    emit({ ...view, lock: "none", slots: new Set(), other: new Set(), legacy: 0, legacySlots: new Set(), moved: null, notMoved: null });
+    emit({ ...view, lock: "none", slots: new Set(), other: new Set() });
   }
   return null;
 }

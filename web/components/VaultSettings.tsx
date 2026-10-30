@@ -118,17 +118,12 @@ export function VaultSettings() {
       </h2>
       <p className="mb-3 text-sm text-zinc-500">{t("settings.vault.intro")}</p>
       <div className="flex flex-wrap items-center gap-3">{status}</div>
-      {vault.legacy > 0 && (
-        <p className="mt-2 text-sm text-zinc-700">
-          {vault.legacy === 1 ? t("settings.vault.legacyOne", { n: vault.legacy }) : t("settings.vault.legacyMany", { n: vault.legacy })}
-        </p>
-      )}
       {done && (
         <div className="mt-3">
           <MessageLine msg={done} />
         </div>
       )}
-      {/* Without a vault, only rows nobody can open (which block a new vault) need "start over"; old rows waiting to move don't. */}
+      {/* Without a vault, only rows nobody can open (which block a new vault) need "start over". */}
       {ready && (hasVault || vault.other.size > 0) && (
         <div className="mt-4 divide-y divide-zinc-100 border-t border-zinc-100">
           {hasVault && (

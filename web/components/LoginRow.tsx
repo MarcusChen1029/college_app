@@ -90,7 +90,6 @@ const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
   failed: "portals.passwordError",
   other_vault: "portals.passwordUnreadable",
   locked: "portals.vault.err.locked",
-  legacy: "portals.vault.err.legacy",
   no_vault: "portals.vault.err.noVault",
   wrong_vault: "portals.vault.err.wrongVault",
   changed: "portals.vault.err.changed",
@@ -99,7 +98,7 @@ const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
   bad_record: "portals.vault.err.badRecord",
 };
 
-// A box in place of the input when the password can't be typed or shown here (locked, being moved, unreadable).
+// A box in place of the input when the password can't be typed or shown here (locked, unreadable).
 const box = "min-w-0 flex-1 truncate rounded-md border border-zinc-300 bg-zinc-50 px-2 py-1 text-sm text-zinc-500";
 const vaultButton = "shrink-0 rounded-md border border-ink px-2 py-1 text-xs font-semibold text-ink hover:bg-zinc-100 disabled:opacity-50";
 const wideVaultButton = "min-w-0 flex-1 rounded-md border border-dashed border-zinc-400 px-2 py-1 text-left text-sm font-medium text-blue-700 hover:bg-zinc-50";
@@ -108,8 +107,7 @@ const wideVaultButton = "min-w-0 flex-1 rounded-md border border-dashed border-z
  * The password of one login. It is never part of the login data: the page learns which slots hold a password
  * (once), and one password is fetched and opened with this tab's vault key only for Show or Copy, held by this field
  * while the row is open, and forgotten on Hide or when the vault locks. Typing a new one saves it on blur; Clear
- * deletes it. Without a vault the field offers to set one up; while locked, to unlock. An old password that is still
- * being moved into the vault is never offered for deletion. Signed out it stays off.
+ * deletes it. Without a vault the field offers to set one up; while locked, to unlock. Signed out it stays off.
  */
 function PasswordField({ slot, signedIn, label }: { slot: string | null; signedIn: boolean; label: string }) {
   const t = useT();
@@ -162,7 +160,6 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   const usable = signedIn && !!slot && vault.status !== "unavailable";
   const saved = !!slot && vault.slots.has(slot);
   const unreadable = !!slot && vault.other.has(slot);
-  const moving = !!slot && vault.legacySlots.has(slot);
   const editing = draft !== (revealed ?? "");
 
   const fetchSaved = async (): Promise<string | null> => {
@@ -215,8 +212,7 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
   };
 
   const clear = async () => {
-    // Never for an old password that is still being moved into the vault: it would be lost for good.
-    if (!slot || moving || !window.confirm(t("portals.clearPasswordConfirm", { label }))) return;
+    if (!slot || !window.confirm(t("portals.clearPasswordConfirm", { label }))) return;
     setBusy(true);
     const err = await deletePassword(slot);
     setBusy(false);
@@ -287,7 +283,6 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
         {t("portals.vault.setUp")}
       </button>
     );
-    standing = moving ? "portals.vault.legacyNone" : null;
   } else if (vault.lock === "locked") {
     body = saved ? (
       <>
@@ -302,16 +297,6 @@ function PasswordField({ slot, signedIn, label }: { slot: string | null; signedI
         {t("portals.vault.unlockToAdd")}
       </button>
     );
-    standing = moving ? "portals.vault.legacyLocked" : null;
-  } else if (moving) {
-    // Unlocked, and this old password is being moved into the vault right now (or its move failed and waits for the next unlock).
-    body = (
-      <span className={box}>
-        {fieldName}
-        {t("portals.vault.moving")}
-      </span>
-    );
-    standing = "portals.vault.legacyMoving";
   } else {
     body = (
       <>

@@ -65,19 +65,16 @@ select net.http_post(
 
 Remove `"dryRun": true` to send for real.
 
-## Encryption keys: old saved portal passwords, and Google tokens (read before touching Vercel env vars)
+## Encryption keys: saved portal passwords, and Google tokens (read before touching Vercel env vars)
 
-Saved portal passwords are now locked in each student's browser with their own vault passphrase (migration 0047); no
-server key can open them, and none is needed for new ones. `PORTAL_ENCRYPTION_KEY` (or, while that is unset,
-`GOOGLE_TOKEN_ENCRYPTION_KEY`) is only needed until every old server-sealed row (`v1.` prefix in `portal_passwords.sealed`)
-has been handed over: the first time a student with old rows unlocks their vault, the site opens those rows with this key
-and re-locks them into the vault. The key's fingerprint is recorded in `portal_vault_meta`; a deployment with any other key
-refuses the handover (503 `key_mismatch`) instead of touching data. So:
-- **Never change or delete that key until no `v1.` row is left.** Check with
-  `select left(sealed, 3), count(*) from portal_passwords group by 1;` (only `e1.` rows left = handover finished).
-  Without the key, remaining old rows can't be opened again.
-- When only `e1.` rows remain, a follow-up change removes the handover code and `PORTAL_ENCRYPTION_KEY` can be deleted from Vercel.
-- `GOOGLE_TOKEN_ENCRYPTION_KEY` stays: Google Docs refresh tokens still use it. To rotate it while old rows remain, first set
-  `PORTAL_ENCRYPTION_KEY` (Production) to the *current* `GOOGLE_TOKEN_ENCRYPTION_KEY` value and redeploy; after that the two
-  keys are independent.
-- Keep a copy of the key in a password manager until then; Vercel is the only other place it exists.
+Saved portal passwords are locked in each student's browser with their own vault passphrase (migration 0047); no server key
+can open them, and none is needed. The old server-sealed `v1.` rows (and the handover that re-locked them into the vault)
+are gone from the code; the live database had 0 `v1.` rows and 7 `e1.` rows when this was checked on 2026-10-30.
+- **`PORTAL_ENCRYPTION_KEY` is no longer used after this deploy and can be deleted from Vercel.** Nothing reads it any
+  more, so deleting it, or leaving it set, changes nothing.
+- Rollout order: deploy the code first; only then apply migration `0048_vault_e1_only` (drops `portal_vault_meta`, which the
+  old code read, and makes `portal_passwords` accept only `e1.` values). Check before and after with
+  `supabase/patches/2026-10-30_vault_e1_only_check.sql`, or `select left(sealed, 3), count(*) from portal_passwords group by 1;`
+  (only `e1.` rows). Older database backups may still hold old copies of the passwords until they expire (the Security page says so).
+- **`GOOGLE_TOKEN_ENCRYPTION_KEY` stays**: Google Docs refresh tokens are still sealed with it (`web/lib/google-docs.ts`).
+  Changing it would make the stored Google connections unreadable.
