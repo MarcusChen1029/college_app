@@ -103,7 +103,7 @@ export function OAuthConsent() {
   }
   if (load.state !== "ready") return <div className="mx-auto h-60 max-w-xl animate-pulse rounded-2xl bg-zinc-100" aria-label={load.state === "redirecting" ? "Returning to your AI" : "Loading"} />;
 
-  const senior = student.plan.key === "senior";
+  const senior = student.plan.key === "senior"; // the plan in force today (store: pass windows, Taipei date)
   const { client, redirect_uri } = load.details;
   const host = redirectHost(redirect_uri) ?? redirect_uri;
   const known = isKnownAiHost(redirect_uri);
@@ -160,9 +160,9 @@ export function OAuthConsent() {
       </div>
       {!senior && (
         <p className={`rounded-md border p-3 text-sm ${toneClass("soon")}`}>
-          Connect AI is a Senior plan feature and you&apos;re on the {student.plan.name} plan.{" "}
+          Connect AI comes with the admission-year pass and you&apos;re on the {student.plan.name} plan.{" "}
           <Link href="/pricing" className="font-semibold underline">
-            Upgrade
+            Get the pass
           </Link>
           , then start the connection again.
         </p>

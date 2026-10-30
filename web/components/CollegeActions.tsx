@@ -18,7 +18,7 @@ export function CollegeActions({ slug, id }: { slug: string; id: string }) {
     <div className="flex flex-wrap items-center gap-2">
       {!inList && !student.canAdd ? (
         <Link href="/pricing" className={buttonClass("secondary")}>
-          {t("college.listFull", { plan: student.plan.name })}
+          {t("college.listFull", { plan: t(`payments.planName.${student.plan.key}`) })}
         </Link>
       ) : (
         <button

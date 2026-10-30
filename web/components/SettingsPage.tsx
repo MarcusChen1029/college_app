@@ -8,6 +8,7 @@ import { DeleteAccount } from "@/components/DeleteAccount";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { MyCounselors } from "@/components/MyCounselors";
+import { PaymentsPanel } from "@/components/PaymentsPanel";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
@@ -135,6 +136,7 @@ function SignedIn() {
       )}
       {student.role === "student" && <MyCounselors />}
       {student.role === "student" && <ShareLinkPanel kind="parent" id="share" />}
+      {student.role === "student" && <PaymentsPanel />}
       {student.role === "student" && <VaultSettings />}
       {student.role === "student" && <ConnectedExtensions />}
       <RoleSwitcher />

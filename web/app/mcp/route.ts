@@ -2,7 +2,7 @@ import { createMcpHandler, withMcpAuth } from "mcp-handler";
 import { verifyToken } from "@/lib/mcp/auth";
 import { registerTools } from "@/lib/mcp/tools";
 
-// Connect AI: an MCP server (stateless Streamable HTTP) that lets a Senior-plan student's ChatGPT or Claude read
+// Connect AI: an MCP server (stateless Streamable HTTP) that lets the ChatGPT or Claude of a student with an active pass read
 // and update their tracker data. Sign-in is Supabase's OAuth 2.1 server; every tool runs as the student (see tools.ts).
 
 const handler = createMcpHandler(registerTools, {

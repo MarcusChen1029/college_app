@@ -468,7 +468,7 @@ export const zhTW: Translation<typeof en> = {
   "college.nav.outcomes": "畢業與收入",
   "college.nav.factors": "錄取考量",
   "college.nav.sources": "資料來源",
-  "college.listFull": "清單已滿（{plan}方案）· 升級",
+  "college.listFull": "清單已滿（{plan}）· 升級",
   "college.inMyList": "已在我的清單（移除）",
   "college.addToList": "加入我的清單",
   "college.interestedTitle": "決定前先放在「有興趣」頁面",

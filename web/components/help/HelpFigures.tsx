@@ -59,7 +59,7 @@ export function PlanFigure({ t }: { t: TFunction }) {
       <dl className="space-y-2 text-base">
         {PLANS.map((p) => (
           <div key={p.key} className="flex items-baseline gap-3">
-            <dt className="font-semibold">{p.name}</dt>
+            <dt className="font-semibold">{t(`payments.planName.${p.key}`)}</dt>
             <span aria-hidden className="leader min-w-6 flex-1" />
             <dd className="tabular-nums">{p.limit == null ? t("misc.help.figNoLimit") : t("misc.help.figColleges", { n: p.limit })}</dd>
           </div>
