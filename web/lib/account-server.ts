@@ -4,8 +4,10 @@ import { googleConfig, loadToken, revokeAtGoogle } from "./google-server";
 import { tokenSource } from "./portal-vault";
 
 // Account deletion (Settings > Delete account). Deleting the auth user removes every row the student or teacher owns:
-// all public tables reference auth.users with ON DELETE CASCADE (checked 2026-10-28), portal_passwords and
-// google_tokens included. The service-role key is used only for that one admin call.
+// the public tables reference auth.users with ON DELETE CASCADE (checked 2026-10-28), portal_passwords and
+// google_tokens included. One exception: plan_orders (migration 0045) is ON DELETE SET NULL, so a payment record is
+// kept anonymized (user_id null, the ATM account / store code cleared by a trigger; date, amount, method and trade
+// numbers stay for the accounts). The service-role key is used only for that one admin call.
 
 const NO_SESSION = { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } as const;
 

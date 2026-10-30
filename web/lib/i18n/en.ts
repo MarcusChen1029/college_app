@@ -12,6 +12,7 @@ export const en = {
   ...S.match.en,
   ...S.misc.en,
   ...S.outcomes.en,
+  ...S.payments.en,
   ...S.portals.en,
   ...S.privacy.en,
   ...S.profile.en,

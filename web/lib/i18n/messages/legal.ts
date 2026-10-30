@@ -71,11 +71,21 @@ export const en = {
   "legal.terms.use.impersonate": "pretend to be someone else, including a teacher or a school.",
   "legal.terms.use.p2": "We may suspend or close an account that breaks these rules, and we’ll tell you why unless the law or someone’s safety stops us.",
   "legal.terms.plans.title": "Plans and payments",
-  "legal.terms.plans.p1":
-    "Trakur has a free plan and paid plans (see [Pricing](/pricing)). Payment is not open yet, so nothing is charged today. Before any payment starts, we will show the price, billing period, cancellation and refund terms, and you pay only if you choose to.",
+  "legal.terms.plans.p1": "Trakur has two plans (see [Pricing](/pricing)):",
+  "legal.terms.plans.free": "<b>Free:</b> up to 5 colleges on your list, and the basic Copy for AI summary.",
+  "legal.terms.plans.pass":
+    "<b>Admission-year pass:</b> NT$990 (New Taiwan dollars, TWD), paid once. It is not a subscription and does not renew. It gives you an unlimited college list, the full Copy for AI context, Connect AI and the application filler extension.",
+  "legal.terms.plans.validity":
+    "You choose the year you will start college, for example Fall 2027. The pass is valid from its start date until July 31 of that year (Taiwan time, that day included). It starts on the day you pay or, if you buy early, on January 1 of the year before that entry year. Paying before that date is a pre-order: you pay now, the pass starts on its start date, and you stay on the Free plan until then unless another pass of yours is active. A pass ends on its end date even if you are still applying afterwards. Your account then goes back to the Free plan automatically: nothing is deleted, but the paid features stop and you can’t add colleges while your list is over the Free limit.",
+  "legal.terms.plans.activation":
+    "Your pass is activated as soon as ECPay confirms your payment (a pre-order starts on its start date). You agree to this by ticking a box at checkout. Because this is a digital service that starts at your request, the 7-day right to cancel a distance sale does not apply, under Taiwan’s rules on reasonable exceptions to the right of rescission in distance sales (《通訊交易解除權合理例外情事適用準則》).",
+  "legal.terms.plans.refund":
+    "On top of that, we give a full refund if you ask within 7 days of paying. Write to us through [Contact](/contact) with the email you sign in with and the date you paid. We refund the whole amount through ECPay; how soon it reaches you depends on ECPay and your bank or card issuer. If a parent paid, the refund goes back to the parent’s payment. A refunded pass ends. If the same entry year is paid for twice by mistake, we refund the extra payment.",
+  "legal.terms.plans.processor":
+    "Payments are handled by ECPay (綠界科技). You pay by credit card, ATM transfer or convenience store on ECPay’s own page, and your card number never reaches Trakur. A parent or anyone else can pay for you through a payment link you send them; they don’t need an account, and the pass is then added to your account. What we keep about payments is explained under [How long we keep it](/privacy#retention) in the Privacy Policy.",
   "legal.terms.others.title": "Other services",
   "legal.terms.others.p1":
-    "Trakur relies on other companies’ services: Google (sign-in and Google Docs), Supabase (database and accounts), Vercel (hosting) and Resend (email). If you connect an AI app such as ChatGPT or Claude, or paste Trakur data into one, that app’s own terms and privacy policy cover what it does with your data.",
+    "Trakur relies on other companies’ services: Google (sign-in and Google Docs), Supabase (database and accounts), Vercel (hosting), Resend (email) and ECPay (payments). If you connect an AI app such as ChatGPT or Claude, or paste Trakur data into one, that app’s own terms and privacy policy cover what it does with your data.",
   "legal.terms.changes.title": "Changes, outages and leaving",
   "legal.terms.changes.p1":
     "Trakur is a small service that is still being built. Features may change or be removed, and the site may sometimes be unavailable. We’ll try to give notice before removing something you rely on.",
@@ -160,11 +170,21 @@ export const zhTW: Translation<typeof en> = {
   "legal.terms.use.impersonate": "冒充他人，包括冒充老師或學校。",
   "legal.terms.use.p2": "違反這些規範的帳號，我們可能暫停或關閉，並會告訴你原因，除非法律或他人安全不允許。",
   "legal.terms.plans.title": "方案與付款",
-  "legal.terms.plans.p1":
-    "Trakur 有免費方案與付費方案（見[方案價格](/pricing)）。目前尚未開放付款，所以現在不會收取任何費用。開始收費前，我們會先列出價格、計費週期、取消與退款條件，你自己選擇要付費才會付費。",
+  "legal.terms.plans.p1": "Trakur 有兩種方案（見[方案價格](/pricing)）：",
+  "legal.terms.plans.free": "<b>免費方案：</b>學校清單最多 5 所，以及基本版的「複製給 AI」摘要。",
+  "legal.terms.plans.pass":
+    "<b>入學年度方案：</b>新台幣 990 元，一次付清。這不是訂閱，也不會自動續訂。內容包含不限數量的學校清單、完整的「複製給 AI」內容、連接 AI，以及大學申請填寫工具（Chrome 擴充功能）。",
+  "legal.terms.plans.validity":
+    "你要選擇自己入學的年度，例如 2027 年秋季入學。方案從生效日起，用到該入學年度的 7 月 31 日為止（台灣時間，含當天）。生效日是你付款的當天；如果買得比較早，則是入學年度前一年的 1 月 1 日。在這個日期之前付款屬於預購：款項現在付清，方案到生效日才開始，在那之前你仍是免費方案，除非你另有一個方案正在生效。方案到期日一到就結束，即使你之後還在申請也一樣。到期後帳號會自動回到免費方案：不會刪除任何資料，但付費功能會停止，學校清單超過免費上限時也無法再新增學校。",
+  "legal.terms.plans.activation":
+    "ECPay 確認你的付款後，方案會立即開通（預購則從生效日開始）。你在結帳時勾選同意方塊，即表示同意立即開通。因為這是依你的要求立即開始的數位服務，依《通訊交易解除權合理例外情事適用準則》，不適用通訊交易的七天解除權。",
+  "legal.terms.plans.refund":
+    "除此之外，付款後 7 天內提出申請，我們全額退款。請透過[聯絡我們](/contact)來信，並附上你登入用的電子郵件與付款日期。我們會透過 ECPay 退還全額款項，款項多久會回到你手上，取決於 ECPay 以及你的銀行或發卡機構。若是家長代付，款項會退回家長的付款方式。已退款的方案隨即終止。若同一個入學年度不慎重複付款，我們會退還多出的那一筆。",
+  "legal.terms.plans.processor":
+    "付款由綠界科技（ECPay）處理。你在 ECPay 自己的頁面以信用卡、ATM 轉帳或超商付款，你的卡號不會經過 Trakur。家長或其他人可以透過你傳給他們的付款連結代為付款，不需要註冊帳號，付款完成後方案會加到你的帳號。我們保存哪些付款紀錄，請見隱私權政策的[保存期間](/privacy#retention)。",
   "legal.terms.others.title": "其他服務",
   "legal.terms.others.p1":
-    "Trakur 使用其他公司的服務：Google（登入與 Google 文件）、Supabase（資料庫與帳號）、Vercel（網站主機）與 Resend（電子郵件）。如果你連接 ChatGPT 或 Claude 等 AI 應用程式，或把 Trakur 的資料貼到其中，該應用程式如何處理你的資料，適用它自己的條款與隱私權政策。",
+    "Trakur 使用其他公司的服務：Google（登入與 Google 文件）、Supabase（資料庫與帳號）、Vercel（網站主機）、Resend（電子郵件）與綠界科技 ECPay（付款）。如果你連接 ChatGPT 或 Claude 等 AI 應用程式，或把 Trakur 的資料貼到其中，該應用程式如何處理你的資料，適用它自己的條款與隱私權政策。",
   "legal.terms.changes.title": "服務變更、中斷與離開",
   "legal.terms.changes.p1": "Trakur 是仍在開發中的小型服務。功能可能變更或移除，網站有時也可能無法使用。移除你依賴的功能前，我們會盡量事先通知。",
   "legal.terms.changes.p2": "你隨時可以停止使用 Trakur。如要關閉帳號並刪除資料，請見[你的權利與選擇](/privacy#rights)。",

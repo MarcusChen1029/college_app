@@ -57,8 +57,10 @@ export const en = {
   "privacy.collect.google": "<b>Google Docs connection.</b> An encrypted Google refresh token (a long-lived key from Google), so Trakur can create new Docs for you.",
   // Supabase Auth OAuth 2.1 server grants (auth schema, not in our migrations); app/mcp, components/OAuthConsent.tsx.
   "privacy.collect.ai": "<b>AI connections.</b> Which AI apps you approved and when (kept by our sign-in provider).",
+  // plan_orders: merchant_trade_no, ecpay_trade_no, entry_year, amount_twd, payment_type, payment_info (ATM bank code + virtual account /
+  // CVS code, cleared on account deletion), paid_at, pass_from/until, payer (0045); pay_links; student_profiles.plan_windows (0045). No card data.
   "privacy.collect.p2":
-    "We don’t ask for your date of birth, ID numbers or payment details, and we don’t track your location. If you don’t provide something, only the feature that needs it won’t work; sign-in needs a Google email address.",
+    "<b>Payments.</b> If you buy a pass, we keep a record of the order: its date, amount, payment method (card, ATM or convenience store), the entry year, the trade numbers from us and from ECPay, and, for an ATM or convenience-store payment, the transfer account or payment code ECPay issued for it. Trakur never sees your card number or bank details; ECPay collects them on its own payment page (see [Who else receives it](/privacy#sharing)). We don’t ask for your date of birth or ID numbers, and we don’t track your location. If you don’t provide something, only the feature that needs it won’t work; sign-in needs a Google email address.",
 
   "privacy.use.title": "How we use it",
   "privacy.use.p1": "We use your data only to run Trakur for you:",
@@ -86,7 +88,7 @@ export const en = {
   "privacy.sharing.title": "Who else receives it",
   // Supabase: DB + auth (ap-northeast-1); Vercel: hosting; Resend: api.resend.com (Edge Function); Google: sign-in, Drive API.
   "privacy.sharing.providers":
-    "<b>Service providers</b> that run parts of Trakur for us and may process your data only for that: Supabase (database and sign-in), Vercel (website hosting), Resend (sending email: your address and the email’s content) and Google (sign-in, and creating Google Docs: the essay title).",
+    "<b>Service providers</b> that run parts of Trakur for us and may process your data only for that: Supabase (database and sign-in), Vercel (website hosting), Resend (sending email: your address and the email’s content), Google (sign-in, and creating Google Docs: the essay title) and ECPay (綠界科技, which processes payments: it collects your card or bank details on its own page and tells us whether the payment went through, with its amount, method and trade numbers). If you send a payment link to a parent, whoever opens it sees your name (if you entered one), the pass and its price.",
   "privacy.sharing.chosen":
     "<b>People and apps you choose:</b> teachers you link (above), anyone with a share link you made, the Trakur extension in your own browser (it types your transcript or activities into the application websites you open), and AI apps you connect (below).",
   // parent_view / portfolio_view field lists (0032, 0038).
@@ -107,7 +109,7 @@ export const en = {
   // Supabase ap-northeast-1; Vercel region not set in repo; Resend; Google.
   "privacy.storage.title": "Where your data is kept",
   "privacy.storage.p1":
-    "Your account data is stored in Supabase’s data center in Tokyo, Japan. Our other providers (Vercel, Resend and Google) may process it in other countries, including the United States. By using Trakur you agree to this transfer outside Taiwan.",
+    "Your account data is stored in Supabase’s data center in Tokyo, Japan. Our other providers (Vercel, Resend and Google) may process it in other countries, including the United States. By using Trakur you agree to this transfer outside Taiwan. Payments are handled by ECPay (綠界科技), a company in Taiwan, under its own privacy policy.",
   // localStorage college-tracker:v1 (lib/student-store.ts), sb-…-auth-token (supabase-js default), interest-quiz-v1 (lib/interest-quiz.ts),
   // cookie lang (lib/i18n/core.ts), cookie gdocs_oauth (app/api/google/start/route.ts).
   "privacy.storage.p2":
@@ -115,7 +117,7 @@ export const en = {
 
   "privacy.retention.title": "How long we keep it",
   "privacy.retention.p1":
-    "We keep your data while your account exists. What you delete in the app is deleted from our database. When your account is deleted, all of its data goes with it, including your list, transcript, logins, links and tokens.",
+    "We keep your data while your account exists. What you delete in the app is deleted from our database. When your account is deleted, all of its data goes with it, including your list, transcript, logins, links and tokens. The one exception is payment records: for refunds, reconciliation with ECPay and tax, we keep each order’s date, amount, payment method, entry year and trade numbers for up to 5 years. When you delete your account, they are anonymized: the link to your account is removed, and any transfer account or payment code ECPay issued for the order is erased.",
   // reminder logs, revoked share_links / extension_tokens rows, archived classes/tasks: never purged (no retention job).
   // private.activities_backup_0038: no FK, survives account deletion -> must be deleted by hand.
   "privacy.retention.p2":
@@ -186,7 +188,8 @@ export const zhTW: Translation<typeof en> = {
   "privacy.collect.extension": "<b>Chrome 擴充功能連結。</b>每把擴充功能金鑰的雜湊值、它能讀取的範圍，以及建立、最後使用、到期或撤銷的時間。",
   "privacy.collect.google": "<b>Google 文件連結。</b>加密後的 Google 更新權杖（Google 發給的長期金鑰），讓 Trakur 可以為你建立新的文件。",
   "privacy.collect.ai": "<b>AI 連結。</b>你核准了哪些 AI 應用程式，以及核准時間（由我們的登入服務商保存）。",
-  "privacy.collect.p2": "我們不會要求你提供出生日期、身分證字號或付款資料，也不會追蹤你的位置。你不提供某項資料時，只有需要它的那個功能無法使用；登入則需要一個 Google 電子郵件地址。",
+  "privacy.collect.p2":
+    "<b>付款。</b>你購買方案時，我們會保存這筆訂單的紀錄：付款日期、金額、付款方式（信用卡、ATM 或超商）、入學年度、我們與 ECPay 各自的交易編號；如果是 ATM 或超商付款，還有 ECPay 為這筆訂單發出的轉帳帳號或繳費代碼。Trakur 看不到你的卡號或銀行資料，這些由 ECPay 在它自己的付款頁面收取（見[還有誰會收到你的資料](/privacy#sharing)）。我們不會要求你提供出生日期或身分證字號，也不會追蹤你的位置。你不提供某項資料時，只有需要它的那個功能無法使用；登入則需要一個 Google 電子郵件地址。",
 
   "privacy.use.title": "我們如何使用",
   "privacy.use.p1": "我們只為了替你提供 Trakur 服務而使用你的資料：",
@@ -208,7 +211,7 @@ export const zhTW: Translation<typeof en> = {
 
   "privacy.sharing.title": "還有誰會收到你的資料",
   "privacy.sharing.providers":
-    "<b>服務供應商</b>：替我們營運 Trakur 部分功能，且只能為此處理你的資料，包括 Supabase（資料庫與登入）、Vercel（網站主機）、Resend（寄送電子郵件：你的地址與信件內容）及 Google（登入，以及建立 Google 文件：文書標題）。",
+    "<b>服務供應商</b>：替我們營運 Trakur 部分功能，且只能為此處理你的資料，包括 Supabase（資料庫與登入）、Vercel（網站主機）、Resend（寄送電子郵件：你的地址與信件內容）、Google（登入，以及建立 Google 文件：文書標題），以及綠界科技 ECPay（處理付款：它在自己的頁面收取你的信用卡或銀行資料，只告訴我們這筆付款是否成功，以及金額、付款方式與交易編號）。如果你把付款連結傳給家長，打開連結的人會看到你的姓名（若你有填寫）、方案與價格。",
   "privacy.sharing.chosen":
     "<b>你選擇的人與應用程式</b>：你連結的老師（見上方）、拿到你分享連結的人、你自己瀏覽器裡的 Trakur 擴充功能（它會把你的成績單或課外活動填入你開啟的申請網站），以及你連接的 AI 應用程式（見下方）。",
   "privacy.sharing.links":
@@ -223,12 +226,12 @@ export const zhTW: Translation<typeof en> = {
     "Trakur 的工具絕不會讀取你儲存的登入資料，但該應用程式拿到的權杖和你自己的登入狀態效力相同，所以行為不當的應用程式可能存取到其他資料，包括已儲存的登入資料（[詳細說明](/security#ai)）。工具回傳的資料會送到該 AI 公司，並依其隱私權政策處理。你可以在[連接 AI](/connect-ai) 頁面中斷連結，或[請我們](/contact)處理。",
 
   "privacy.storage.title": "資料存放地點",
-  "privacy.storage.p1": "你的帳號資料存放在 Supabase 位於日本東京的資料中心。我們的其他服務供應商（Vercel、Resend 與 Google）可能在其他國家（包括美國）處理這些資料。使用 Trakur 即表示你同意資料傳輸到台灣以外的地區。",
+  "privacy.storage.p1": "你的帳號資料存放在 Supabase 位於日本東京的資料中心。我們的其他服務供應商（Vercel、Resend 與 Google）可能在其他國家（包括美國）處理這些資料。使用 Trakur 即表示你同意資料傳輸到台灣以外的地區。付款由台灣的綠界科技（ECPay）處理，適用它自己的隱私權政策。",
   "privacy.storage.p2":
     "有些資料會留在你的瀏覽器裡。未登入時，你輸入的所有內容（包括登入資料）只會存在這個瀏覽器的本機儲存空間，登入後才會移到你的帳號。瀏覽器也會保存你的登入狀態、興趣測驗的答案（不會傳給我們）、一個語言設定 cookie，以及連接 Google 文件時短暫存在幾分鐘的安全 cookie。如果你使用 Chrome 擴充功能，它的金鑰會存在擴充功能自己的儲存空間。我們沒有任何廣告或分析用的 cookie。",
 
   "privacy.retention.title": "保存期間",
-  "privacy.retention.p1": "你的帳號存在期間，我們會保存你的資料。你在網站上刪除的內容，會從我們的資料庫刪除。帳號被刪除時，所有相關資料都會一併刪除，包括學校清單、成績單、登入資料、連結與金鑰。",
+  "privacy.retention.p1": "你的帳號存在期間，我們會保存你的資料。你在網站上刪除的內容，會從我們的資料庫刪除。帳號被刪除時，所有相關資料都會一併刪除，包括學校清單、成績單、登入資料、連結與金鑰。唯一的例外是付款紀錄：為了退款、與 ECPay 對帳以及稅務，我們會保存每筆訂單的付款日期、金額、付款方式、入學年度與交易編號，最長 5 年。你刪除帳號時，這些紀錄會去識別化：與你帳號的關聯會被移除，ECPay 為該訂單發出的轉帳帳號或繳費代碼也會被清除。",
   "privacy.retention.p2":
     "有些紀錄會保留到帳號刪除為止：寄信紀錄、已關閉的分享連結與已撤銷的擴充功能金鑰（只保留雜湊值），以及已封存的班級與任務。2026 年 10 月 28 日格式升級時另外留存了一份課外活動備份；刪除你的帳號時，我們也會刪除你在備份中的資料。",
   "privacy.retention.p3": "服務供應商的紀錄檔與備份中的副本，會依各自的時程消失。我們無法刪除他人持有的副本：老師已下載的檔案、你自己雲端硬碟裡的 Google 文件，或你與 AI 應用程式的對話。",

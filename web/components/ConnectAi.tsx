@@ -20,7 +20,7 @@ export function ConnectAi() {
   const student = useStudent();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const ready = mounted && student.ready;
-  const senior = student.plan.key === "senior";
+  const senior = student.plan.key === "senior"; // the plan in force today (store: pass windows, Taipei date)
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -77,12 +77,12 @@ export function ConnectAi() {
         <>
           <section className={`${card} space-y-3 border-blue-200 bg-blue-50/50`}>
             <h2 className="font-semibold">{t("misc.connect.seniorTitle")}</h2>
-            <p className="text-sm text-zinc-600">{t("misc.connect.seniorBody", { name: student.plan.name })}</p>
+            <p className="text-sm text-zinc-600">{t("misc.connect.seniorBody", { name: t(`payments.planName.${student.plan.key}`) })}</p>
             <Link href="/pricing" className={button}>
               {t("misc.connect.seePlans")}
             </Link>
           </section>
-          {/* Every plan can still disconnect: an app approved while on Senior keeps its grant after a plan change. */}
+          {/* Every plan can still disconnect: an app approved during a pass keeps its grant after the pass ends. */}
           <Connected />
         </>
       ) : (

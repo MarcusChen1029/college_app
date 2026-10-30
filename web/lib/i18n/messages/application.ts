@@ -163,7 +163,7 @@ export const en = {
   "application.ai.intro":
     "Paste this into ChatGPT, Claude or Gemini so it starts from your real scores, list and deadlines instead of guessing. Portal logins and notes are never included.",
   "application.ai.full":
-    "Full version ({plan} plan): each college's deadlines, English minimums, essays, cost and aid, how majors are admitted, your activities and a numbered source link for every number.",
+    "Full version ({plan}): each college's deadlines, English minimums, essays, cost and aid, how majors are admitted, your activities and a numbered source link for every number.",
   "application.ai.freePre": "Free version: your profile and a one-line summary per college. ",
   "application.ai.freeUpgrade": "Upgrade",
   "application.ai.freePost":
@@ -307,10 +307,10 @@ export const zhTW: Translation<typeof en> = {
   "application.localOnly": "目前只儲存在這個瀏覽器。",
   "application.keepList": "後，就能在每台裝置上使用你的清單。",
   "application.collegesSuffix": " 所學校",
-  "application.planName": "{name} 方案",
+  "application.planName": "{name}",
   "application.plans": "方案",
   "application.upgrade": "升級",
-  "application.overLimit": "你的清單學校數超過 {name} 方案的上限（{limit}）。已加入的學校都會保留，但在移除部分學校或升級方案之前，無法再新增。",
+  "application.overLimit": "你的清單學校數超過{name}的上限（{limit}）。已加入的學校都會保留，但在移除部分學校或升級方案之前，無法再新增。",
   "application.dismiss": "關閉",
 
   // Empty list
@@ -440,7 +440,7 @@ export const zhTW: Translation<typeof en> = {
   "application.ai.title": "複製給 AI",
   "application.ai.button": "✦ 複製給 AI",
   "application.ai.intro": "把這段內容貼到 ChatGPT、Claude 或 Gemini，AI 就能根據你真實的成績、清單和截止日期回答，不用亂猜。內容不會包含申請入口的登入資料和備註。",
-  "application.ai.full": "完整版（{plan} 方案）：包含每所學校的截止日期、英文檢定最低要求、文書、費用與補助、主修的錄取方式、你的課外活動，以及每個數字的編號來源連結。",
+  "application.ai.full": "完整版（{plan}）：包含每所學校的截止日期、英文檢定最低要求、文書、費用與補助、主修的錄取方式、你的課外活動，以及每個數字的編號來源連結。",
   "application.ai.freePre": "免費版：包含你的個人檔案，以及每所學校的一行摘要。",
   "application.ai.freeUpgrade": "升級",
   "application.ai.freePost": " 後，就能加入每所學校的截止日期、英文檢定最低要求、文書、費用與補助、你的課外活動，以及每個數字的來源連結，讓你的 AI 能對照官方資料檢查答案。",
@@ -461,7 +461,7 @@ export const zhTW: Translation<typeof en> = {
   "application.int.emptyPre": "在任何學校的頁面點選 ",
   "application.int.emptyStar": "有興趣",
   "application.int.emptyMid": "，就能先放在這裡，慢慢決定。",
-  "application.int.fullPre": "你的清單在 {plan} 方案下已滿。請從 ",
+  "application.int.fullPre": "你的清單在{plan}下已滿。請從 ",
   "application.int.fullMid": " 移除一所學校，或 ",
   "application.int.fullUpgrade": "升級方案",
   "application.int.fullPost": "，才能移入更多學校。",

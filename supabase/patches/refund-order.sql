@@ -1,0 +1,30 @@
+-- Refund one admission-year pass (migration 0045). Template: copy it into the dashboard SQL Editor, fill in the
+-- number, run one step at a time. Policy: full refund if asked within 7 days of payment (spec, "Refunds").
+--
+-- 1. Refund in the ECPay back office (廠商管理後台) FIRST: find the order by its MerchantTradeNo, refund the full amount.
+--    The database only records what ECPay already did; it never sends money back by itself.
+--
+-- 2. (Optional) Find the order. Double payments for the same entry year (e.g. a parent paid by ATM after the student
+--    paid by card) are listed here; refund ONE of the pair:
+--
+--      select * from public.payments_needing_review;
+--
+--    A student's orders, newest first (their user id is in Authentication > Users):
+--
+--      select merchant_trade_no, status, entry_year, amount_twd, payer, payment_type, paid_at, pass_from, pass_until
+--        from public.plan_orders where user_id = '<user id>' order by created_at desc;
+--
+-- 3. Mark the order refunded. This also rebuilds the student's plan from their remaining paid orders (back to Free
+--    when none is left that hasn't ended):
+--
+--      select public.refund_order('<MerchantTradeNo>');
+--
+--    Result: 'refunded' (done), 'already_refunded', 'not_paid' (the order was never paid: nothing to do) or
+--    'not_found' (check the number).
+--
+-- 4. Check: the student's plan and windows, and that the pair is gone from step 2's list.
+--
+--      select plan, plan_windows from public.student_profiles where user_id = '<user id>';
+--      select * from public.payments_needing_review;
+--
+-- A refunded order stays refunded: a late or repeated ECPay notice for it never brings the pass back.

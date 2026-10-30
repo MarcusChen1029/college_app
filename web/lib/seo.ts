@@ -2,6 +2,7 @@
 // paths the sitemap lists. English only on purpose: crawlers send no `lang` cookie, so a translated description would never
 // be seen, and reading the cookie here would push every page's metadata to request time.
 import type { Metadata } from "next";
+import { FREE_LIMIT, PASS_PRICE_TWD } from "./plans.ts";
 import type { CollegeSummary } from "./types.ts";
 
 /** The public origin: metadataBase, canonical URLs, the sitemap and robots.txt all hang off it. */
@@ -45,7 +46,7 @@ export const PAGES = {
   },
   "/pricing": {
     title: "Pricing",
-    description: "Every Trakur plan has the full tracker; the plans differ only in how many colleges you can keep in My list. Compare the Free, Junior and Senior plans and their prices.",
+    description: `Start free with up to ${FREE_LIMIT} colleges in My list. The NT$${PASS_PRICE_TWD} admission-year pass, paid once with no subscription, adds an unlimited list, Connect AI and the application filler.`,
   },
   "/privacy": {
     title: "Privacy Policy",

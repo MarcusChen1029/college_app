@@ -29,7 +29,8 @@ export function contentSecurityPolicy(opts: { supabaseUrl?: string; dev: boolean
     "frame-src": ["'none'"],
     "object-src": ["'none'"],
     "base-uri": ["'self'"],
-    "form-action": ["'self'"],
+    // The checkout page posts a form to ECPay's hosted payment page (test and live hosts).
+    "form-action": ["'self'", "https://payment-stage.ecpay.com.tw", "https://payment.ecpay.com.tw"],
     "frame-ancestors": ["'none'"],
     "manifest-src": ["'self'"],
   };

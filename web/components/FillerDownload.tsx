@@ -8,7 +8,7 @@ import { buttonClass } from "@/lib/ui";
 
 const noop = () => () => {};
 
-/** The Common App filler download is a Senior plan feature, like Connect AI. */
+/** The Common App filler download comes with the admission-year pass, like Connect AI (`student.plan` is the plan in force today). */
 export function FillerDownload({ children }: { children: ReactNode }) {
   const t = useT();
   const student = useStudent();
@@ -18,7 +18,7 @@ export function FillerDownload({ children }: { children: ReactNode }) {
   return (
     <div className="space-y-3 rounded-xl border border-blue-200 bg-blue-50/50 p-4">
       <p className="text-sm font-semibold">{t("tools.filler.seniorOnly")}</p>
-      <p className="text-sm text-zinc-600">{t("tools.filler.onPlan", { plan: student.plan.name })}</p>
+      <p className="text-sm text-zinc-600">{t("tools.filler.onPlan", { plan: t(`payments.planName.${student.plan.key}`) })}</p>
       <Link href="/pricing" className={buttonClass("secondary", "sm")}>
         {t("tools.filler.seePlans")}
       </Link>
