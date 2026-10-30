@@ -10,10 +10,31 @@
 // code or a plaintext password is only passed straight through to the flows, by the component that holds it. Passwords
 // never go through the profile/list store (student-store.ts). Nothing here logs or touches localStorage. Pure helpers
 // live in portal-slots.ts so tests can reach them.
+// Device mode (0049, docs/superpowers/specs/2026-10-30-device-only-passwords-design.md): the account's
+// student_profiles.password_storage says where its passwords live. This file reads it with the vault and the slot list
+// (refresh) and writes it only through writeMode (one column, upserted). In "device" mode the same functions
+// (revealPassword, savePassword, deletePassword, forgetPassword, importPasswords) work on this browser's device store
+// (device-passwords.ts over IndexedDB) for the signed-in account instead of the server; nothing of it is ever sent in a
+// request. Switching is in password-mode.ts (switchToDevice / switchToVault below). Sign-out keeps the device store; it
+// is keyed by account, so another account never sees it. The student store hears about mode changes (onPasswordMode)
+// and tells this file when a profile load found a different one (noteProfileMode).
 
 import { useSyncExternalStore } from "react";
+import { devicePasswords, type DevicePasswords } from "./device-passwords";
+import { idbDeviceStorage } from "./device-passwords-idb";
+import {
+  importToDevice,
+  moveToDevice,
+  moveToVault,
+  type ToDeviceError,
+  type ToDeviceResult,
+  type ToVaultError,
+  type ToVaultResult,
+  type VaultSide,
+} from "./password-mode";
 import type { SlotPassword } from "./portal-slots";
 import type { SlotState } from "./portal-vault-handler";
+import { PASSWORD_STORAGE_COLUMN, passwordStorageRow, toPasswordStorage, type PasswordStorage } from "./student-rows";
 import { browserSupabase } from "./supabase-browser";
 import type { Secret } from "./vault-crypto";
 import {
@@ -40,24 +61,47 @@ import {
 // them. One result does carry a key: `Prepared` (from prepare()) holds the new vault's key and recovery code (never the
 // passphrase) until commit() stores the vault; only the setup dialog holds it, in its own state, and drops it when it closes.
 export type { FlowError, Prepared, PreparedRecovery, Secret };
+// The switch results (field meanings in password-mode.ts).
+export type { ToDeviceError, ToDeviceResult, ToVaultError, ToVaultResult };
+/** Where the signed-in account keeps its portal passwords: "vault" (server, synced, passphrase) or "device" (this browser only). */
+export type PasswordMode = PasswordStorage;
 
 const ENDPOINT = "/api/portal-passwords";
 
 /** idle: not asked yet; unavailable: the server isn't set up for passwords (503); error: couldn't reach it. */
 export type VaultStatus = "idle" | "loading" | "ready" | "unavailable" | "error";
-/** unknown: not asked yet (or the server couldn't say); none: the account has no vault; locked / unlocked: this tab can't / can open passwords. */
+/**
+ * The account's vault on the server, in either mode. unknown: not asked yet (or the server couldn't say); none: the
+ * account has no vault; locked / unlocked: this tab can't / can open its passwords. In device mode a vault is only left
+ * when deleting the old one failed (see serverLeft); passwords there are open when deviceAvailable (passwordsOpen).
+ */
 export type VaultLock = "unknown" | "none" | "locked" | "unlocked";
 export type VaultDialog = null | "setup" | "unlock";
 export type VaultView = {
   status: VaultStatus;
   lock: VaultLock;
-  /** Slots that hold a password of any kind (sealed under the vault, or one this vault can't open). */
+  /**
+   * Slots that hold a password of any kind. Vault mode: on the server (sealed under the vault, or one this vault can't
+   * open). Device mode: on this device for this account.
+   */
   slots: ReadonlySet<string>;
-  /** Slots whose stored value this vault can't open (another vault's, or a damaged one): only Clear helps. */
+  /** Slots whose stored value can't be opened (vault mode: another vault's or damaged; device mode: damaged here): only Clear helps. */
   other: ReadonlySet<string>;
   dialog: VaultDialog;
+  /** Where this account keeps its passwords (the profile's password_storage). "vault" until the first load says otherwise. */
+  mode: PasswordMode;
+  /** This browser can keep device-mode passwords (IndexedDB works). False until a load has checked; false = "This browser can't keep passwords". */
+  deviceAvailable: boolean;
+  /** Passwords this device holds for the account, in either mode (in vault mode they are left over: switchToVault moves them). */
+  deviceCount: number;
+  /** Device mode: passwords the old vault still holds on the server (0 = none); retryServerDelete deletes them. Always 0 in vault mode. */
+  serverLeft: number;
 };
-/** Why a password could not be shown or saved. "locked" = this tab has no open vault; the rest are the flows' own codes. */
+/**
+ * Why a password could not be shown or saved. "locked" = this tab has no open vault; the rest are the flows' own codes.
+ * Device mode uses the same codes: "unavailable" = this browser can't keep passwords, "other_vault" = the value saved
+ * here can't be opened, "not_found" = none saved here, "failed" = refused input or a write that didn't read back.
+ */
 export type VaultError = FlowError | "locked" | "other_vault";
 
 const INITIAL: VaultView = {
@@ -66,17 +110,29 @@ const INITIAL: VaultView = {
   slots: new Set(),
   other: new Set(),
   dialog: null,
+  mode: "vault",
+  deviceAvailable: false,
+  deviceCount: 0,
+  serverLeft: 0,
 };
 let view: VaultView = INITIAL;
 let viewUser: string | null = null; // whose slots `view` holds
 let listing: Promise<void> | null = null;
-let kinds = new Map<string, SlotState["kind"]>(); // every stored slot and what holds it, as last listed
+let kinds = new Map<string, SlotState["kind"]>(); // every slot stored on the server and what holds it, as last listed
+let devSlots = new Set<string>(); // this account's slots on this device, as last listed
+let devOther = new Set<string>(); // of those, the ones that didn't open here
+let deviceReadyFor: string | null = null; // the account whose device mode was last found ready (unlock listeners told)
 let unlocked: Unlocked | null = null; // this tab's vault key; see the header
 let keyEpoch = 0; // counts every change of the key, so a read that went out before one can tell it is out of date
 let following: Promise<void> = Promise.resolve(); // after-unlock jobs, one at a time
 let watching = false;
 const listeners = new Set<() => void>();
 const unlockListeners = new Set<() => void>();
+const modeListeners = new Set<(userId: string, mode: PasswordMode) => void>();
+
+// The device store of this browser, made on first use (null storage on the server side or without IndexedDB).
+let deviceStore: DevicePasswords | null = null;
+const device = (): DevicePasswords => (deviceStore ??= devicePasswords(typeof window === "undefined" ? null : idbDeviceStorage()));
 
 function emit(next: VaultView) {
   view = next;
@@ -91,6 +147,41 @@ function subscribe(l: () => void) {
 
 /** Which slots hold a password, whether the vault is open in this tab, and whether the store can be reached. */
 export const useVault = () => useSyncExternalStore(subscribe, () => view, () => INITIAL);
+
+/** Whether passwords can be shown and saved right now: device mode on a browser that can keep them, or an unlocked vault. */
+export const passwordsOpen = (v: VaultView): boolean => (v.mode === "device" ? v.deviceAvailable : v.lock === "unlocked");
+
+/** Runs `cb` whenever the account's mode is read or written (the student store keeps profile.passwordStorage with it). Returns the way to stop. */
+export function onPasswordMode(cb: (userId: string, mode: PasswordMode) => void): () => void {
+  modeListeners.add(cb);
+  return () => {
+    modeListeners.delete(cb);
+  };
+}
+function tellMode(userId: string, mode: PasswordMode) {
+  for (const cb of [...modeListeners]) {
+    try {
+      cb(userId, mode);
+    } catch {
+      // a listener's problem
+    }
+  }
+}
+
+/**
+ * The student store read the profile and found `mode`: if this page shows that account in the other mode (switched on
+ * another device, say), everything is read again so passwords go to the right place.
+ */
+export function noteProfileMode(userId: string, mode: PasswordMode) {
+  if (viewUser === userId && view.status === "ready" && view.mode !== mode) void refresh(userId);
+}
+
+// What the view shows for `mode`: the slots of the store passwords live in, and the counts of the other one.
+function lists(mode: PasswordMode) {
+  const deviceCount = devSlots.size;
+  if (mode === "device") return { slots: new Set(devSlots), other: new Set([...devOther].filter((s) => devSlots.has(s))), deviceCount, serverLeft: kinds.size };
+  return { ...viewKinds(kinds), deviceCount, serverLeft: 0 };
+}
 
 // The key, only while it belongs to the account this page is showing.
 const openKey = (): Unlocked | null => (unlocked && unlocked.userId === viewUser ? unlocked : null);
@@ -109,6 +200,9 @@ function adopt(uid: string | null) {
   listing = null;
   setKey(null);
   kinds = new Map();
+  devSlots = new Set();
+  devOther = new Set();
+  deviceReadyFor = null;
   emit(first && view.dialog !== null ? { ...INITIAL, dialog: view.dialog } : INITIAL);
 }
 
@@ -200,22 +294,79 @@ function markSlots(uid: string, slots: readonly string[], has: boolean) {
     else next.delete(slot);
   }
   kinds = next;
-  emit({ ...view, ...viewKinds(next) });
+  emit({ ...view, ...lists(view.mode) });
 }
 const markSlot = (uid: string, slot: string, has: boolean) => markSlots(uid, [slot], has);
 
-// Asks the server for the vault and the slot list together and shows both. A key that no longer fits the stored vault
-// (reset or replaced from another tab) is dropped here, but only the key that was there when the reads went out: if the
-// key changed meanwhile (a vault made, a lock taken) the reads may predate that, so they are made again (twice at most).
+// The same for this device's store: these slots now hold a password that opens here (or none).
+function markDevice(uid: string, slots: readonly string[], has: boolean) {
+  if (viewUser !== uid) return;
+  devSlots = new Set(devSlots);
+  devOther = new Set(devOther);
+  for (const slot of slots) {
+    if (has) devSlots.add(slot);
+    else devSlots.delete(slot);
+    devOther.delete(slot);
+  }
+  emit({ ...view, ...lists(view.mode) });
+}
+// A device value that turned out not to open here: only Clear helps.
+function markDeviceOther(uid: string, slot: string) {
+  if (viewUser !== uid || devOther.has(slot)) return;
+  devOther = new Set(devOther).add(slot);
+  emit({ ...view, ...lists(view.mode) });
+}
+
+// The account's mode as stored, or null when it couldn't be read (or the session is no longer `uid`'s). A database
+// without the column (migration 0049 not applied yet) can only mean "vault".
+async function readMode(uid: string): Promise<PasswordMode | null> {
+  const session = await currentSession();
+  if (!session || session.user.id !== uid) return null;
+  try {
+    const { data, error } = await browserSupabase().from("student_profiles").select(PASSWORD_STORAGE_COLUMN).eq("user_id", uid).maybeSingle();
+    if (error) return error.code === "42703" ? "vault" : null;
+    return toPasswordStorage((data as Record<string, unknown> | null)?.[PASSWORD_STORAGE_COLUMN]);
+  } catch {
+    return null;
+  }
+}
+
+// Saves the account's mode (this column only; see passwordStorageRow). True only once the stored value is confirmed: a
+// reply that was lost after the write landed is caught by reading it back. Then the page and the student store follow.
+async function writeMode(uid: string, mode: PasswordMode): Promise<boolean> {
+  const session = await currentSession();
+  if (!session || session.user.id !== uid) return false;
+  let ok = false;
+  try {
+    const { data, error } = await browserSupabase().from("student_profiles").upsert(passwordStorageRow(uid, mode)).select(PASSWORD_STORAGE_COLUMN).maybeSingle();
+    ok = !error && (data as Record<string, unknown> | null)?.[PASSWORD_STORAGE_COLUMN] === mode;
+  } catch {
+    // read back below
+  }
+  if (!ok) ok = (await readMode(uid)) === mode;
+  if (ok) {
+    if (viewUser === uid && view.mode !== mode) emit({ ...view, mode, ...lists(mode) });
+    tellMode(uid, mode);
+  }
+  return ok;
+}
+
+// Asks the server for the vault, the slot list and the account's mode, and this device for its slots, all together, and
+// shows them. A key that no longer fits the stored vault (reset or replaced from another tab) is dropped here, but only
+// the key that was there when the reads went out: if the key changed meanwhile (a vault made, a lock taken) the reads
+// may predate that, so they are made again (twice at most). The first time device mode is found ready for an account,
+// the unlock listeners run too: passwords waiting in this browser can be stored now.
 async function refresh(uid: string): Promise<"ok" | "unavailable" | "error"> {
   let vault: Awaited<ReturnType<typeof fetchVault>>;
   let listed: Awaited<ReturnType<typeof listSlots>>;
+  let mode: PasswordMode | null;
+  let dev: string[] | "unavailable";
   let before: Unlocked | null;
   const call = callFor(uid);
   for (let again = 0; ; again++) {
     const epoch = keyEpoch;
     before = unlocked;
-    [vault, listed] = await Promise.all([fetchVault(call), listSlots(call)]);
+    [vault, listed, mode, dev] = await Promise.all([fetchVault(call), listSlots(call), readMode(uid), device().slots(uid)]);
     if (viewUser !== uid) return "error";
     if (epoch === keyEpoch || again >= 2) break;
   }
@@ -224,14 +375,23 @@ async function refresh(uid: string): Promise<"ok" | "unavailable" | "error"> {
     markUnavailable();
     return "unavailable";
   }
-  if (failure || !Array.isArray(listed)) {
+  if (failure || !Array.isArray(listed) || mode === null) {
     emit({ ...view, status: "error" });
     return "error";
   }
   const keyId = vault && !("error" in vault) ? vault.record.key_id : null;
   if (before && unlocked === before && before.userId === uid && before.keyId !== keyId) setKey(null);
   kinds = new Map(listed.map((s) => [s.slot, s.kind] as const));
-  emit({ ...view, status: "ready", lock: keyId === null ? "none" : openKey() ? "unlocked" : "locked", ...viewKinds(kinds) });
+  const deviceAvailable = dev !== "unavailable";
+  devSlots = new Set(deviceAvailable ? dev : []);
+  devOther = new Set([...devOther].filter((s) => devSlots.has(s)));
+  emit({ ...view, status: "ready", mode, deviceAvailable, lock: keyId === null ? "none" : openKey() ? "unlocked" : "locked", ...lists(mode) });
+  tellMode(uid, mode);
+  if (mode !== "device" || !deviceAvailable) deviceReadyFor = null;
+  else if (deviceReadyFor !== uid) {
+    deviceReadyFor = uid;
+    following = following.then(() => tellUnlockListeners()).catch(() => {});
+  }
   return "ok";
 }
 
@@ -260,7 +420,10 @@ export function lock() {
   emit({ ...view, lock: view.lock === "unlocked" ? "locked" : view.lock });
 }
 
-/** Runs `cb` after every successful unlock (passphrase, recovery code or a new vault), once the list is fresh. Returns the way to stop. */
+/**
+ * Runs `cb` after every successful unlock (passphrase, recovery code or a new vault), once the list is fresh, and once
+ * when device mode is first found ready for an account on this page (passwords can be stored then too). Returns the way to stop.
+ */
 export function onUnlock(cb: () => void): () => void {
   unlockListeners.add(cb);
   return () => {
@@ -278,6 +441,11 @@ async function afterUnlock(u: Unlocked) {
   }
   // Locked, signed out or unlocked again (that unlock has its own job) meanwhile: nobody is told about this key.
   if (openKey() !== u) return;
+  tellUnlockListeners();
+}
+
+// The `onUnlock` listeners: passwords can be stored now (the vault opened, or device mode is ready). Never throws.
+function tellUnlockListeners() {
   for (const cb of [...unlockListeners]) {
     try {
       const result: unknown = cb();
@@ -342,8 +510,29 @@ export async function unlock(secret: Secret, newPassphrase?: string): Promise<"o
   return opened(r) ? "ok" : "unauthorized";
 }
 
-/** One saved password, or why it can't be shown. "other_vault" = this vault can't open it (Clear is the way out). */
+// The signed-in account while this page shows it in device mode; null otherwise (signed out, another account, vault mode).
+async function deviceAccount(): Promise<string | null> {
+  const uid = await account();
+  return uid && viewUser === uid && view.mode === "device" ? uid : null;
+}
+
+const deviceSaveError = (e: "bad_input" | "unavailable" | "failed"): VaultError => (e === "unavailable" ? "unavailable" : "failed");
+
+/**
+ * One saved password, or why it can't be shown. "other_vault" = this vault can't open it (Clear is the way out). In
+ * device mode it comes from this device ("other_vault" = the value saved here doesn't open; "unavailable" = this browser
+ * can't keep passwords).
+ */
 export async function revealPassword(slot: string): Promise<{ password: string } | { error: VaultError }> {
+  if (view.mode === "device") {
+    const uid = await deviceAccount();
+    if (!uid) return { error: "unauthorized" };
+    const r = await device().reveal(uid, slot);
+    if ("password" in r) return r;
+    if (r.error === "not_found") markDevice(uid, [slot], false);
+    if (r.error === "damaged") markDeviceOther(uid, slot);
+    return { error: r.error === "damaged" ? "other_vault" : r.error === "bad_input" ? "failed" : r.error };
+  }
   const u = openKey();
   if (!u) return { error: "locked" };
   const r = await revealOne(callFor(u.userId), u, slot);
@@ -354,9 +543,20 @@ export async function revealPassword(slot: string): Promise<{ password: string }
   return r;
 }
 
-/** Saves (or replaces) one password; "" deletes it. Null when it worked. Needs the vault open ("locked" otherwise). */
+/**
+ * Saves (or replaces) one password; "" deletes it. Null when it worked. Needs the vault open ("locked" otherwise). In
+ * device mode it is saved on this device only, and read back before null is returned.
+ */
 export async function savePassword(slot: string, password: string): Promise<VaultError | null> {
   if (password === "") return deletePassword(slot);
+  if (view.mode === "device") {
+    const uid = await deviceAccount();
+    if (!uid) return "unauthorized";
+    const err = await device().save(uid, slot, password);
+    if (err) return deviceSaveError(err);
+    markDevice(uid, [slot], true);
+    return null;
+  }
   const u = openKey();
   if (!u) return "locked";
   const err = await saveOne(callFor(u.userId), u, slot, password);
@@ -368,8 +568,12 @@ export async function savePassword(slot: string, password: string): Promise<Vaul
   return null;
 }
 
-/** Deletes one saved password (the vault need not be open). Null when it worked. */
-export async function deletePassword(slot: string): Promise<VaultError | null> {
+/** Deletes one saved password (the vault need not be open; in device mode, this device's copy). Null when it worked. */
+export function deletePassword(slot: string): Promise<VaultError | null> {
+  return view.mode === "device" ? deleteDeviceCopy(slot) : deleteServerCopy(slot);
+}
+
+async function deleteServerCopy(slot: string): Promise<VaultError | null> {
   const uid = await account();
   if (!uid) return "unauthorized";
   const r = await callFor(uid)({ action: "delete", slot });
@@ -378,10 +582,23 @@ export async function deletePassword(slot: string): Promise<VaultError | null> {
   return null;
 }
 
-/** For a removed login: deletes its password unless this page already knows there is none. Errors are ignored. */
+async function deleteDeviceCopy(slot: string): Promise<VaultError | null> {
+  const uid = await account();
+  if (!uid) return "unauthorized";
+  if (await device().remove(uid, slot)) return "unavailable";
+  markDevice(uid, [slot], false);
+  return null;
+}
+
+/**
+ * For a removed login: deletes its password wherever this page can reach it (the server's copy and this device's, in
+ * either mode), skipping a place this page already knows holds none. Errors are ignored.
+ */
 export function forgetPassword(slot: string | null) {
-  if (!slot || (view.status === "ready" && !view.slots.has(slot))) return;
-  void deletePassword(slot);
+  if (!slot) return;
+  const known = view.status === "ready";
+  if (!known || kinds.has(slot)) void deleteServerCopy(slot);
+  if (!known || devSlots.has(slot)) void deleteDeviceCopy(slot);
 }
 
 // Which of these entries the account already holds with the very same password: the import left such a slot alone, but
@@ -404,8 +621,11 @@ async function sameAsStored(u: Unlocked, entries: readonly SlotPassword[]): Prom
  * the account's value. Resolves to the entries that are NOT confirmed stored (the caller keeps those): every entry, with
  * nothing sent, while the vault is locked or doesn't exist yet; an entry whose slot already holds the same password
  * counts as stored, one that holds a different password does not.
+ * In device mode they go into this device's store instead, insert-only by the same rules (nothing is sent): every entry
+ * is kept while the page hasn't loaded the account or this browser can't keep passwords.
  */
 export async function importPasswords(entries: readonly SlotPassword[]): Promise<SlotPassword[]> {
+  if (view.mode === "device") return importIntoDevice(entries);
   const u = openKey();
   if (!u || entries.length === 0) return [...entries];
   const left = await importAll(callFor(u.userId), u, entries);
@@ -414,6 +634,105 @@ export async function importPasswords(entries: readonly SlotPassword[]): Promise
   const keptSlots = new Set(kept.map((e) => e.slot));
   markSlots(u.userId, entries.filter((e) => !keptSlots.has(e.slot)).map((e) => e.slot), true);
   return kept;
+}
+
+async function importIntoDevice(entries: readonly SlotPassword[]): Promise<SlotPassword[]> {
+  const uid = entries.length ? await deviceAccount() : null;
+  if (!uid || view.status !== "ready" || !view.deviceAvailable) return [...entries];
+  const left = await importToDevice(device(), uid, entries);
+  const leftSlots = new Set(left.map((e) => e.slot));
+  markDevice(uid, entries.filter((e) => !leftSlots.has(e.slot)).map((e) => e.slot), true);
+  return left;
+}
+
+// The vault calls a switch needs, for account `uid` with the vault key `u` (null: no vault, or not open in this tab).
+const vaultSide = (call: Call, u: Unlocked | null): VaultSide => ({
+  list: () => listSlots(call),
+  reveal: (slot) => (u ? revealOne(call, u, slot) : Promise.resolve({ error: "locked" })),
+  importAll: (entries) => (u ? importAll(call, u, entries) : Promise.resolve([...entries])),
+  reset: () => resetAll(call),
+});
+
+/**
+ * Settings: "This device only". Copies every vault password onto this device and reads each back; only if all verify,
+ * the account switches to device mode, and only then the vault and its server copies are deleted (password-mode.ts
+ * moveToDevice). Needs the vault unlocked in this tab when the account has one ("locked": offer Unlock); with no vault
+ * nothing needs copying. Errors before anything happened: "unauthorized", "unavailable"/"failed" (couldn't load),
+ * "device_unavailable" (this browser can't keep passwords). ok with serverLeft > 0: the server copies are still there;
+ * the view's serverLeft shows them until retryServerDelete() works. Already in device mode: ok, nothing done.
+ */
+export async function switchToDevice(): Promise<ToDeviceResult> {
+  const fail = (error: ToDeviceError): ToDeviceResult => ({ ok: false, error, slots: [] });
+  const uid = await account();
+  if (!uid) return fail("unauthorized");
+  const loaded = await refresh(uid);
+  if (loaded !== "ok" || viewUser !== uid) return fail(loaded === "unavailable" ? "unavailable" : "failed");
+  if (view.mode === "device") return { ok: true, serverLeft: view.serverLeft, resetError: null, replaced: [] };
+  if (!view.deviceAvailable) return fail("device_unavailable");
+  const u = openKey();
+  if (view.lock === "unknown") return fail("failed");
+  if (view.lock !== "none" && !u) return fail("locked");
+  const r = await moveToDevice({ userId: uid, hasVault: view.lock !== "none", vault: vaultSide(callFor(uid), u), device: device(), writeMode: (m) => writeMode(uid, m) });
+  if (viewUser === uid) await refresh(uid); // the new mode, this device's slots, what the server still holds
+  return r;
+}
+
+/**
+ * Settings: back to the locked vault, or (already in vault mode) moving passwords left on this device into it. Needs
+ * the vault unlocked ("locked": offer Unlock; "no_vault": offer Setup, both the existing dialogs). This device's
+ * passwords go into the vault insert-only and are read back; only then the account switches to vault mode, and only
+ * then the copies here are deleted (password-mode.ts moveToVault; `kept` = the vault already had a different one).
+ */
+export async function switchToVault(): Promise<ToVaultResult> {
+  const fail = (error: ToVaultError): ToVaultResult => ({ ok: false, error, slots: [] });
+  const uid = await account();
+  if (!uid) return fail("unauthorized");
+  const loaded = await refresh(uid);
+  if (loaded !== "ok" || viewUser !== uid) return fail(loaded === "unavailable" ? "unavailable" : "failed");
+  if (view.lock === "none") return fail("no_vault");
+  const u = openKey();
+  if (!u) return fail("locked");
+  const r = await moveToVault({ userId: uid, vault: vaultSide(callFor(uid), u), device: device(), writeMode: (m) => writeMode(uid, m) });
+  if (viewUser === uid) await refresh(uid);
+  return r;
+}
+
+/**
+ * Device mode, Settings: deletes the old vault and every password it still holds on the server (after a switch whose
+ * delete failed). Refused with "wrong_mode" unless the account is in device mode as stored right now, so a stale tab
+ * can never delete a vault another device switched back to. Null when it worked.
+ */
+export async function retryServerDelete(): Promise<FlowError | "wrong_mode" | null> {
+  const uid = await account();
+  if (!uid) return "unauthorized";
+  const mode = await readMode(uid);
+  if (mode === null) return "failed";
+  if (mode !== "device") {
+    void refresh(uid);
+    return "wrong_mode";
+  }
+  return resetVault();
+}
+
+/** Settings: "Delete passwords on this device" for the signed-in account (any mode; confirm first). Null when it worked. */
+export async function deleteDevicePasswords(): Promise<"unauthorized" | "unavailable" | null> {
+  const uid = await account();
+  if (!uid) return "unauthorized";
+  return deleteAccountDevicePasswords(uid);
+}
+
+/**
+ * Account deletion: deletes every password (and the key) this browser keeps for `userId`, without needing a session
+ * (call it after the account is deleted, before signing out). Null when it worked.
+ */
+export async function deleteAccountDevicePasswords(userId: string): Promise<"unavailable" | null> {
+  const err = await device().removeAll(userId);
+  if (!err && viewUser === userId) {
+    devSlots = new Set();
+    devOther = new Set();
+    emit({ ...view, ...lists(view.mode) });
+  }
+  return err;
 }
 
 /**
@@ -459,7 +778,7 @@ export async function resetVault(): Promise<FlowError | null> {
   if (viewUser === uid) {
     setKey(null);
     kinds = new Map();
-    emit({ ...view, lock: "none", slots: new Set(), other: new Set() });
+    emit({ ...view, lock: "none", ...lists(view.mode) });
   }
   return null;
 }
