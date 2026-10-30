@@ -5,9 +5,9 @@ import type { Feature, FeatureCollection } from "geojson";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+import { breathe } from "@/lib/yield-to-main";
 import { flight, overviewDistance, rigPosition, type Rig } from "@/lib/map-camera";
-import { fitWorld, regionGeo, type RegionGeo } from "@/lib/region-geo";
+import { fitWorldAsync, regionGeoAsync, type RegionGeo } from "@/lib/region-geo";
 import type { RegionCode } from "@/lib/regions";
 import { FlatMap } from "./FlatMap";
 import { dotPx, HIT_PX, HIT_PX_TOUCH, INK, type DotTone, type MapDot, type MapHandle } from "./map-dots";
@@ -31,6 +31,8 @@ const MOTION_PIXELS = 1_000_000;
 const SHARPEN_MS = 600;
 // The map settles in within about a second: states rise west to east in place, then the dots appear.
 const RISE_MS = 700;
+// The longest a slice of the scene's construction runs before it gives the main thread back (milliseconds).
+const SLICE_MS = 6;
 
 // The land is drawn in the site's palette: white state tops (a hair of variation so neighbours read apart), sky-blue sides and
 // edges, pale blue on the hovered and the selected state. The college dots carry the only strong colour on the map.
@@ -199,10 +201,22 @@ function blobTexture() {
   return new THREE.CanvasTexture(c);
 }
 
+// The room's diffuse light, as nine spherical-harmonic coefficients (computed once from three's RoomEnvironment with
+// LightProbeGenerator). It replaces scene.environment at 0.55: the shading matches to within a grey level on the land (mean
+// difference 0.2 of 255), and building it costs nothing, where the filtered environment map (PMREM) compiled a shader the
+// graphics driver needed about a second for on a cold start, with the main thread waiting on it.
+const ROOM_SH = [3.6976309113842905, 1.7063238749290293, 1.6457785625169685, 0.2808515230888025, 0.2259215719461584, 1.1009979078898244, 1.2536844893677261, -0.3273550316887642, -0.6235188524785119];
+function roomLight() {
+  const probe = new THREE.LightProbe();
+  ROOM_SH.forEach((v, i) => probe.sh.coefficients[i].set(v, v, v));
+  probe.intensity = 0.55;
+  return probe;
+}
+
 /** Extrudes each feature into a slab. `muted` pieces (context land) are greyed and never selectable. */
-function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureCollection, muted = false) {
+async function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureCollection, muted = false, cancelled: () => boolean = () => false) {
   const centroidOf = geoPath(projection);
-  const pieces = land.features.map((f: Feature, i) => {
+  const build = (f: Feature, i: number) => {
     const raw: Ring[] = [];
     let cur: Ring | null = null;
     const ctx: GeoContext = {
@@ -262,7 +276,18 @@ function buildStates(g: RegionGeo, projection: GeoProjection, land: FeatureColle
       lift: 0,
       shade: -1,
     } satisfies StateMesh;
-  });
+  };
+  // Built in slices of about SLICE_MS, with the main thread given back between them, so no one task from this is long.
+  const pieces: StateMesh[] = [];
+  let sliceStart = performance.now();
+  for (let i = 0; i < land.features.length; i++) {
+    pieces.push(build(land.features[i], i));
+    if (performance.now() - sliceStart > SLICE_MS) {
+      await breathe();
+      if (cancelled()) return [];
+      sliceStart = performance.now();
+    }
+  }
   // Pieces that project to nothing (e.g. territories outside Albers USA, specks of island) carry no mesh worth keeping.
   return pieces.filter((s) => {
     if (s.rings.length) return true;
@@ -293,15 +318,22 @@ export function USMap3D(props: {
   onReady?: (handle: MapHandle | null) => void;
   /** Frame the colleges shown instead of the whole country while none is picked (a search down to a handful). */
   fit?: boolean;
+  /** Called once the scene's shaders are built and its first frame is on the canvas (or at once if there is no WebGL). */
+  onFirstFrame?: () => void;
+  /** Called once if the scene cannot go on: the graphics context was lost (before or after the first frame) or the build threw.
+   *  The scene is already torn down; the parent shows its own flat map and may mount this component again to retry. */
+  onLost?: () => void;
   children?: React.ReactNode;
 }) {
-  const { pins, selected, onSelect, cardSide, region = "US", onReady, fit = false, children } = props;
+  const { pins, selected, onSelect, cardSide, region = "US", onReady, fit = false, onFirstFrame, onLost, children } = props;
   const box = useRef<HTMLDivElement>(null);
   const tip = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
   const labels = useRef(new Map<string, HTMLButtonElement>());
   const onSelectRef = useRef(onSelect);
   const onReadyRef = useRef(onReady);
+  const onFirstFrameRef = useRef(onFirstFrame);
+  const onLostRef = useRef(onLost);
   const latest = useRef({ pins, selected, cardSide, fit });
   const regionRef = useRef(region);
   const [failed, setFailed] = useState(false);
@@ -309,19 +341,45 @@ export function USMap3D(props: {
   useEffect(() => {
     onSelectRef.current = onSelect;
     onReadyRef.current = onReady;
+    onFirstFrameRef.current = onFirstFrame;
+    onLostRef.current = onLost;
     latest.current = { pins, selected, cardSide, fit };
   });
 
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const g = regionGeo(regionRef.current);
+    // The scene is built in slices (breathe() between them), so that no one task is long, and it is torn down from whichever
+    // stage it has reached if the page leaves meanwhile. Nothing is drawn until every shader is compiled (see the end).
+    let disposed = false;
+    const life: { teardown: (() => void) | null } = { teardown: null };
+    // The scene cannot go on (the graphics context was lost, or something in the build threw): tear down whatever stage it has reached
+    // and hand back to the flat map. Without this the canvas stays blank, because a lost context draws nothing and says nothing.
+    const giveUp = () => {
+      if (disposed) return;
+      disposed = true;
+      const down = life.teardown;
+      life.teardown = null;
+      down?.();
+      onLostRef.current?.();
+      setFailed(true); // standing alone (no parent to hand back to), this component shows its own flat map
+    };
+    const onContextLost = () => giveUp();
+    void (async () => {
+    await breathe();
+    if (disposed) return;
+    const g = await regionGeoAsync(regionRef.current);
     const { halfW, halfD } = g;
+    await breathe();
+    if (disposed) return;
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     } catch {
-      queueMicrotask(() => setFailed(true));
+      queueMicrotask(() => {
+        setFailed(true);
+        onFirstFrameRef.current?.(); // no scene to wait for: this component's own flat map takes over
+      });
       return;
     }
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -343,13 +401,19 @@ export function USMap3D(props: {
     canvas.className = "absolute inset-0 block h-full w-full";
     canvas.setAttribute("aria-hidden", "true");
     el.prepend(canvas);
+    canvas.addEventListener("webglcontextlost", onContextLost);
+    life.teardown = () => {
+      canvas.removeEventListener("webglcontextlost", onContextLost);
+      renderer.dispose();
+      renderer.forceContextLoss();
+      canvas.remove();
+    };
+    await breathe();
+    if (disposed) return;
 
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog(GROUND, 900, 3000);
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-    scene.environment = envTex;
-    scene.environmentIntensity = 0.55;
+    scene.add(roomLight());
 
     const camera = new THREE.PerspectiveCamera(FOV, w / h, 5, 8000);
     const controls = new OrbitControls(camera, canvas);
@@ -382,12 +446,25 @@ export function USMap3D(props: {
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);
+    life.teardown = () => {
+      canvas.removeEventListener("webglcontextlost", onContextLost);
+      controls.dispose();
+      renderer.dispose();
+      renderer.forceContextLoss();
+      canvas.remove();
+    };
+    await breathe();
+    if (disposed) return;
 
-    const projection = fitWorld(g);
-    const states = buildStates(g, projection, g.land);
+    const projection = await fitWorldAsync(g);
+    await breathe();
+    if (disposed) return;
+    const states = await buildStates(g, projection, g.land, false, () => disposed);
+    if (disposed) return;
     if (g.region === "US") placeInsets(states);
     // Context land (Ireland beside the UK) rises with the map but is never hovered, lifted or tinted.
-    const context = buildStates(g, projection, g.context, true);
+    const context = await buildStates(g, projection, g.context, true, () => disposed);
+    if (disposed) return;
     for (const s of [...states, ...context]) {
       if (!reduced) s.mesh.scale.y = 0.001;
       scene.add(s.mesh);
@@ -905,7 +982,8 @@ export function USMap3D(props: {
 
     // Frame loop. It runs only while something moves (camera, hover, intro, pins) or for IDLE_MS after the last interaction,
     // and never while the map is off-screen; otherwise the last frame stays up and the GPU rests.
-    const start = performance.now();
+    // `start` is when the intro begins: set again once the shaders are compiled (below), so the rise is not spent waiting.
+    let start = performance.now();
     let last = start;
     const v = new THREE.Vector3();
     const toCam = new THREE.Vector3();
@@ -916,6 +994,9 @@ export function USMap3D(props: {
     let time = 0;
     let running = false;
     let onScreen = true;
+    // The loop starts only when every shader is compiled: drawing with a program the graphics driver is still building makes the
+    // first frame wait for it on the main thread (about a second on a cold start).
+    let ready = false;
     let lastActive = performance.now();
     const tick = () => {
       const now = performance.now();
@@ -1137,7 +1218,7 @@ export function USMap3D(props: {
     // Called on any interaction or change; restarts the loop if it was asleep.
     function wake() {
       lastActive = performance.now();
-      if (running || !onScreen) return;
+      if (!ready || running || !onScreen) return;
       running = true;
       last = performance.now();
       renderer.setAnimationLoop(tick);
@@ -1152,43 +1233,9 @@ export function USMap3D(props: {
     io.observe(el);
     wake();
 
-    api.current = { setPins, setFit, select, resizeTo, hover };
-    fitPins = latest.current.fit;
-    setPins(latest.current.pins);
-    // Opened on a short result list (a shared search link): its framing is the first frame, not a glide from the whole map.
-    framed = frameKey();
-    if (framed) {
-      rig = targetRig();
-      applyRig(rig);
-    }
-    if (latest.current.selected) select(latest.current.selected, latest.current.cardSide);
-    onReadyRef.current?.({ hover: (slug) => api.current?.hover(slug) });
-
-    // The pin and the rings stay hidden until a college is picked, and the first selection used to freeze for a few hundred
-    // milliseconds: shaders were built on first use, and the first draw of each object costs the graphics driver more again.
-    // Show the rings and ONE pin (every pin shares the same geometry and shader, whatever its colour) just long enough to compile
-    // in parallel with the intro, then draw them once: a handful of extra draws, not one per college.
-    let disposed = false;
-    const samplePin = pinMap.values().next().value?.root;
-    const unseen: THREE.Object3D[] = samplePin ? [...ripples, samplePin] : [...ripples];
-    const wasShown = unseen.map((o) => o.visible);
-    unseen.forEach((o) => (o.visible = true));
-    const compiled = renderer.compileAsync(scene, camera);
-    unseen.forEach((o, i) => (o.visible = wasShown[i]));
-    compiled
-      .then(() => {
-        if (disposed) return;
-        const shown = unseen.map((o) => o.visible);
-        unseen.forEach((o) => (o.visible = true));
-        renderer.render(scene, camera);
-        unseen.forEach((o, i) => (o.visible = shown[i]));
-        // The canvas keeps whatever was drawn last while the loop sleeps, so put the real frame back.
-        renderer.render(scene, camera);
-      })
-      .catch(() => undefined);
-
-    return () => {
-      disposed = true;
+    // From here the scene can be torn down whole, at whichever point the page leaves.
+    life.teardown = () => {
+      canvas.removeEventListener("webglcontextlost", onContextLost);
       api.current = null;
       onReadyRef.current?.(null);
       renderer.setAnimationLoop(null);
@@ -1216,12 +1263,83 @@ export function USMap3D(props: {
         m.dispose();
       }
       sun.shadow.dispose();
-      envTex.dispose();
-      pmrem.dispose();
       renderer.dispose();
       // A region switch remounts the map; hand the GL context back now instead of waiting for GC.
       renderer.forceContextLoss();
       canvas.remove();
+    };
+    await breathe();
+    if (disposed) return;
+
+    api.current = { setPins, setFit, select, resizeTo, hover };
+    fitPins = latest.current.fit;
+    setPins(latest.current.pins);
+    // Opened on a short result list (a shared search link): its framing is the first frame, not a glide from the whole map.
+    framed = frameKey();
+    if (framed) {
+      rig = targetRig();
+      applyRig(rig);
+    }
+    if (latest.current.selected) select(latest.current.selected, latest.current.cardSide);
+    onReadyRef.current?.({ hover: (slug) => api.current?.hover(slug) });
+
+    await breathe();
+    if (disposed) return;
+
+    // The pin and the rings stay hidden until a college is picked, and the first selection used to freeze for a few hundred
+    // milliseconds: shaders were built on first use, and the first draw of each object costs the graphics driver more again.
+    // Show the rings and ONE pin (every pin shares the same geometry and shader, whatever its colour) just long enough to compile
+    // in parallel with the intro, then draw them once: a handful of extra draws, not one per college.
+    const samplePin = pinMap.values().next().value?.root;
+    const unseen: THREE.Object3D[] = samplePin ? [...ripples, samplePin] : [...ripples];
+    const wasShown = unseen.map((o) => o.visible);
+    unseen.forEach((o) => (o.visible = true));
+    const compiled = renderer.compileAsync(scene, camera);
+    unseen.forEach((o, i) => (o.visible = wasShown[i]));
+    // The shaders build on the graphics driver's own threads: wait for them without blocking this one (at most 4 s).
+    await Promise.race([compiled, new Promise<void>((resolve) => setTimeout(resolve, 4000))]).catch(() => undefined);
+    if (disposed) return;
+    // The first draw sends every slab's geometry to the graphics card: draw once with none shown (the lights, the ground and the dots
+    // take their first-use work here), then show them five at a time, drawing after each batch, so no one task is long. (The
+    // canvas is still covered by the flat map, so these partial frames are never seen.)
+    const slabs = [...states, ...context].map((st) => st.mesh);
+    const slabShown = slabs.map((m) => m.visible);
+    slabs.forEach((m) => (m.visible = false));
+    renderer.render(scene, camera);
+    await breathe();
+    if (disposed) return;
+    for (let i = 0; i < slabs.length; i += 5) {
+      for (let j = i; j < Math.min(i + 5, slabs.length); j++) slabs[j].visible = slabShown[j];
+      renderer.render(scene, camera);
+      await breathe();
+      if (disposed) return;
+    }
+    // The pin and rings, hidden until a college is picked, are drawn once now too.
+    const shown = unseen.map((o) => o.visible);
+    unseen.forEach((o) => (o.visible = true));
+    renderer.render(scene, camera);
+    unseen.forEach((o, i) => (o.visible = shown[i]));
+    await breathe();
+    if (disposed) return;
+    // The canvas keeps whatever was drawn last while the loop sleeps, so put the real frame back.
+    renderer.render(scene, camera);
+    // A context lost on the way (its event may not have been delivered yet) leaves a canvas that draws nothing: that is not a first frame.
+    if (renderer.getContext().isContextLost()) {
+      giveUp();
+      return;
+    }
+    onFirstFrameRef.current?.();
+    ready = true;
+    start = performance.now();
+    last = start;
+    wake();
+    })().catch((error: unknown) => {
+      console.error("The 3D map could not be built; showing the flat map.", error);
+      giveUp();
+    });
+    return () => {
+      disposed = true;
+      life.teardown?.();
     };
   }, []);
 
