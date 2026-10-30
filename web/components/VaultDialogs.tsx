@@ -43,6 +43,7 @@ export const DIALOG_ERROR: Record<FlowError, MessageKey> = {
   exists: "portals.vault.err.exists",
   orphans: "portals.vault.err.orphans",
   bad_record: "portals.vault.err.badRecord",
+  device_mode: "portals.vault.err.deviceMode",
   failed: "portals.passwordError",
 };
 

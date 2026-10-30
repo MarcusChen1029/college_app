@@ -12,7 +12,7 @@ import { PaymentsPanel } from "@/components/PaymentsPanel";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { ShareLinkPanel } from "@/components/ShareLinkPanel";
 import { TeacherDigestToggle } from "@/components/TeacherDigestToggle";
-import { VaultSettings } from "@/components/VaultSettings";
+import { VaultSettings, type CollegeNames } from "@/components/VaultSettings";
 import { useT } from "@/lib/i18n/client";
 import { useStudent } from "@/lib/student-store";
 import { buttonClass } from "@/lib/ui";
@@ -30,7 +30,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 }
 
 /** Everything about the account: language, username, email, student/teacher, reminders, counselors and the role switch. */
-export function SettingsPage() {
+export function SettingsPage({ collegeNames }: { collegeNames?: CollegeNames } = {}) {
   const student = useStudent();
   const t = useT();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -59,7 +59,7 @@ export function SettingsPage() {
         <p className="mb-3 text-sm text-zinc-500">{t("settings.languageHint")}</p>
         <LanguageSwitch variant="settings" />
       </section>
-      {!ready ? <div className="h-40 animate-pulse rounded-2xl bg-zinc-100" /> : student.auth ? <SignedIn /> : <SignedOut />}
+      {!ready ? <div className="h-40 animate-pulse rounded-2xl bg-zinc-100" /> : student.auth ? <SignedIn collegeNames={collegeNames} /> : <SignedOut />}
     </div>
   );
 }
@@ -75,7 +75,7 @@ function SignedOut() {
   );
 }
 
-function SignedIn() {
+function SignedIn({ collegeNames }: { collegeNames?: CollegeNames }) {
   const student = useStudent();
   const t = useT();
   const auth = student.auth!;
@@ -137,7 +137,7 @@ function SignedIn() {
       {student.role === "student" && <MyCounselors />}
       {student.role === "student" && <ShareLinkPanel kind="parent" id="share" />}
       {student.role === "student" && <PaymentsPanel />}
-      {student.role === "student" && <VaultSettings />}
+      {student.role === "student" && <VaultSettings collegeNames={collegeNames} />}
       {student.role === "student" && <ConnectedExtensions />}
       <RoleSwitcher />
       <DeleteAccount />

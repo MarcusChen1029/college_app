@@ -8,7 +8,7 @@ import { makeT } from "./i18n/index.ts";
 import { planMonthText, testCardView, testPlanText } from "./i18n/test-plan-text.ts";
 import { applyProfilePatch } from "./mcp/rules.ts";
 import { buildResume, DEFAULT_OPTIONS, EMPTY_HEADER } from "./resume.ts";
-import { AI_PROFILE_COLUMNS, fromProfile, passwordStorageRow, PROFILE_COLUMNS, toProfile, type ProfileRow } from "./student-rows.ts";
+import { AI_PROFILE_COLUMNS, fromProfile, passwordStorageRow, PROFILE_COLUMNS, PROFILE_COLUMNS_BEFORE_0049, toProfile, type ProfileRow } from "./student-rows.ts";
 import { withTestChoice } from "./test-plan.ts";
 
 const row: ProfileRow = {
@@ -67,6 +67,9 @@ test("password storage mode is read from the row (vault unless 'device'), never 
   assert.deepEqual(passwordStorageRow("u1", "device"), { user_id: "u1", password_storage: "device" });
   assert.match(PROFILE_COLUMNS, /\bpassword_storage\b/);
   assert.doesNotMatch(AI_PROFILE_COLUMNS, /password_storage/);
+  // A database without 0049 (42703): the same select without the column, and the row reads as "vault".
+  assert.deepEqual(PROFILE_COLUMNS_BEFORE_0049.split(", "), PROFILE_COLUMNS.split(", ").filter((c) => c !== "password_storage"));
+  assert.equal(PROFILE_COLUMNS_BEFORE_0049.split(", ").length, PROFILE_COLUMNS.split(", ").length - 1);
 });
 
 test("stored activities in the earlier format are read, and written back, in the current format", () => {

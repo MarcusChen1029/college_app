@@ -34,6 +34,8 @@ export type FlowError =
   | "exists"
   | "orphans"
   | "bad_record"
+  // The account keeps its passwords on its device now (0049): the server refuses vault writes. Reload to follow.
+  | "device_mode"
   | "failed";
 
 /** A tab with the vault open: the non-extractable vault key, and the user and vault key id every sealed value is bound to. */
@@ -66,7 +68,7 @@ async function send(call: Call, body: Loose): Promise<Reply> {
   }
 }
 
-const REPLY_CODES: ReadonlySet<string> = new Set(["not_found", "too_many", "no_vault", "wrong_vault", "changed", "exists", "orphans", "bad_record"]);
+const REPLY_CODES: ReadonlySet<string> = new Set(["not_found", "too_many", "no_vault", "wrong_vault", "changed", "exists", "orphans", "bad_record", "device_mode"]);
 
 function errorOf(r: Reply): FlowError {
   if (r.status === 401) return "unauthorized";
@@ -248,11 +250,14 @@ export async function revealOne(call: Call, u: Unlocked, slot: string): Promise<
   return password === null ? { error: "other_vault" } : { password };
 }
 
-/** Seals one password, opens it again to be sure, then stores it (replacing the slot's value). The plaintext never leaves. */
-export async function saveOne(call: Call, u: Unlocked, slot: string, password: string): Promise<FlowError | null> {
+/**
+ * Seals one password, opens it again to be sure, then stores it (replacing the slot's value). The plaintext never leaves.
+ * With `expected` (the slot's updated_at as listed) it is a compare-and-set: "changed" when the stored row moved on.
+ */
+export async function saveOne(call: Call, u: Unlocked, slot: string, password: string, expected?: string): Promise<FlowError | null> {
   const sealed = await sealChecked(u, slot, password);
   if (sealed === null) return "failed";
-  const r = await send(call, { action: "set", slot, sealed });
+  const r = await send(call, expected === undefined ? { action: "set", slot, sealed } : { action: "set", slot, sealed, expected });
   return done(r) ? null : errorOf(r);
 }
 

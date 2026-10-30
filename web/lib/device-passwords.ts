@@ -26,6 +26,8 @@ export interface DeviceStorage {
   /** Insert-only: false when the slot already holds a value (it is kept). */
   addValue(userId: string, slot: string, value: string): Promise<boolean>;
   deleteValue(userId: string, slot: string): Promise<void>;
+  /** Deletes the slot's value only if it is exactly `value`, read and deleted in one step: false when it differs or is gone. */
+  deleteValueIf(userId: string, slot: string, value: string): Promise<boolean>;
   listSlots(userId: string): Promise<string[]>;
   /** Every value of this account, and its key. */
   deleteAccount(userId: string): Promise<void>;
@@ -38,6 +40,11 @@ export type DeviceSaveError = "bad_input" | "unavailable" | "failed";
 
 /** The device store of one browser, for any account in it. Each call names the account; none of them throws. */
 export type DevicePasswords = {
+  /**
+   * False when this browser has no storage at all (no IndexedDB): then nothing can ever have been saved here. True
+   * otherwise, even while the storage fails ("unavailable" from a call then means "couldn't read", not "nothing here").
+   */
+  present: boolean;
   /** The account's saved slots on this device, or "unavailable" when this browser can't keep passwords. */
   slots(userId: string): Promise<string[] | "unavailable">;
   reveal(userId: string, slot: string): Promise<{ password: string } | { error: DeviceRevealError }>;
@@ -48,9 +55,14 @@ export type DevicePasswords = {
    * it already did); "occupied" = it holds a different password, or one that doesn't open here (kept as it is).
    */
   add(userId: string, slot: string, password: string): Promise<DeviceSaveError | "occupied" | null>;
-  /** Deletes one password (null also when there was none). */
+  /** Deletes one password (null also when there was none, or this browser has no storage at all). */
   remove(userId: string, slot: string): Promise<"unavailable" | null>;
-  /** Deletes every password of the account on this device, and its key. */
+  /**
+   * Deletes one password only while it is still `password` (compared and deleted in one storage step, so a newer value
+   * saved by another tab meanwhile stays). null = deleted, or nothing there; "changed" = it holds something else now.
+   */
+  removeIfSame(userId: string, slot: string, password: string): Promise<"changed" | "unavailable" | null>;
+  /** Deletes every password of the account on this device, and its key (null when this browser has no storage at all). */
   removeAll(userId: string): Promise<"unavailable" | null>;
 };
 
@@ -184,6 +196,8 @@ export function devicePasswords(storage: DeviceStorage | null): DevicePasswords 
   }
 
   return {
+    present: storage !== null,
+
     async slots(userId) {
       if (!isUserId(userId)) return "unavailable";
       const listed = await call((s) => s.listSlots(userId));
@@ -223,12 +237,27 @@ export function devicePasswords(storage: DeviceStorage | null): DevicePasswords 
     },
 
     async remove(userId, slot) {
-      if (!isUserId(userId) || !isPortalSlot(slot)) return null; // nothing like that can have been saved
+      // Nothing like that can have been saved, and nothing at all without storage.
+      if (!storage || !isUserId(userId) || !isPortalSlot(slot)) return null;
       return (await call((s) => s.deleteValue(userId, slot))) === FAIL ? "unavailable" : null;
     },
 
+    async removeIfSame(userId, slot, password) {
+      if (!storage || !isUserId(userId) || !isPortalSlot(slot)) return null;
+      const value = await call((s) => s.getValue(userId, slot));
+      if (value === FAIL) return "unavailable";
+      if (value === null || value === undefined) return null;
+      const key = await keyFor(userId, false);
+      if (key === FAIL) return "unavailable";
+      if (key === null || (await openDevice(key, userId, slot, value)) !== password) return "changed";
+      // The stored string decides inside one storage step: a value saved after the read above is not deleted.
+      const deleted = await call((s) => s.deleteValueIf(userId, slot, value));
+      if (deleted === FAIL) return "unavailable";
+      return deleted ? null : "changed";
+    },
+
     async removeAll(userId) {
-      if (!isUserId(userId)) return null;
+      if (!storage || !isUserId(userId)) return null;
       return (await call((s) => s.deleteAccount(userId))) === FAIL ? "unavailable" : null;
     },
   };

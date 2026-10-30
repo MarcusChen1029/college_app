@@ -49,8 +49,9 @@ export function DeleteAccount() {
     } catch {
       // storage blocked: nothing saved there either
     }
-    // This account's passwords kept on this device (device mode, or left over) go too; other accounts' stay.
-    if (userId) await deleteAccountDevicePasswords(userId);
+    // This account's passwords kept on this device (device mode, or left over) go too; other accounts' stay. When this
+    // browser's storage refuses, the student is told how to remove them (before the page moves on).
+    if (userId && (await deleteAccountDevicePasswords(userId)) === "unavailable") window.alert(t("settings.delete.deviceLeft"));
     await student.signOut().catch(() => {});
     router.replace("/");
   };

@@ -36,6 +36,7 @@ const DEFAULTS: Results = {
   put: "ok",
   remove: undefined,
   reset: undefined,
+  mode: "vault",
 };
 
 // Fake database work that records every call (and its arguments), so a test can prove what was and wasn't touched.
@@ -63,6 +64,7 @@ function fakeDeps(over: Partial<Results> = {}) {
     put: track("put"),
     remove: track("remove"),
     reset: track("reset"),
+    mode: track("mode"),
   };
   return { deps, calls, args };
 }
@@ -80,15 +82,16 @@ const BODIES = {
 } as const;
 type Action = keyof typeof BODIES;
 const ACTIONS = Object.keys(BODIES) as Action[];
+// The writes that add a vault or a value ask for the account's mode first (0049: none of them in device mode).
 const RUNS: Record<Action, (keyof Results)[]> = {
   vault: ["vault"],
-  vault_create: ["createVault"],
+  vault_create: ["mode", "createVault"],
   vault_update: ["updateVault"],
   list: ["list"],
   get: ["get"],
-  set: ["put"],
+  set: ["mode", "put"],
   delete: ["remove"],
-  import: ["put"],
+  import: ["mode", "put"],
   reset: ["reset"],
 };
 
@@ -208,6 +211,41 @@ test("vault_create and vault_update codes", async () => {
   assert.deepEqual(await call(BODIES.vault_update, fakeDeps({ updateVault: "changed" }).deps), { status: 409, body: { error: "changed" } });
   assert.deepEqual(await call(BODIES.vault_update, fakeDeps({ updateVault: "no_vault" }).deps), { status: 404, body: { error: "no_vault" } });
   assert.deepEqual(await call(BODIES.vault_update, fakeDeps({ updateVault: "wrong_vault" }).deps), { status: 409, body: { error: "wrong_vault" } });
+});
+
+test("device mode: vault_create, set and import are 409 device_mode with nothing written; reads, deletes and reset stay open", async () => {
+  for (const action of ["vault_create", "set", "import"] as const) {
+    const f = fakeDeps({ mode: "device" });
+    assert.deepEqual(await call(BODIES[action], f.deps), { status: 409, body: { error: "device_mode" } }, action);
+    assert.deepEqual(f.calls, ["verifyUser", "mode"], `${action}: no write reached the store`);
+  }
+  for (const action of ["vault", "vault_update", "list", "get", "delete", "reset"] as const) {
+    const f = fakeDeps({ mode: "device" });
+    assert.equal((await call(BODIES[action], f.deps)).status, 200, action);
+    assert.ok(!f.calls.includes("mode"), `${action} doesn't depend on the mode`);
+  }
+  // In vault mode the same writes go through after the one extra read.
+  const v = fakeDeps({ mode: "vault" });
+  assert.deepEqual(await call(BODIES.set, v.deps), { status: 200, body: { ok: true } });
+  assert.deepEqual(v.args.mode, [USER]);
+});
+
+test("device mode is checked after the token, AI, session and body checks", async () => {
+  let f = fakeDeps({ mode: "device" });
+  assert.deepEqual(await call(BODIES.set, f.deps, AI), { status: 403, body: { error: "forbidden" } });
+  assert.deepEqual(f.calls, []);
+  f = fakeDeps({ mode: "device" });
+  assert.deepEqual(await call(BODIES.set, f.deps, null), { status: 401, body: { error: "unauthorized" } });
+  assert.deepEqual(f.calls, []);
+  f = fakeDeps({ mode: "device" });
+  assert.deepEqual(await call(BODIES.import, f.deps, jwt({ sub: "someone" })), { status: 401, body: { error: "unauthorized" } });
+  assert.deepEqual(f.calls, ["verifyUser"]);
+  f = fakeDeps({ mode: "device" });
+  assert.deepEqual(await call({ action: "set", slot: "system:uc", sealed: "hunter2" }, f.deps), { status: 400, body: { error: "bad_value" } });
+  assert.deepEqual(f.calls, ["verifyUser"]);
+  f = fakeDeps({ mode: "device" });
+  assert.deepEqual(await call({ action: "vault_create", record: { version: "e1" } }, f.deps), { status: 400, body: { error: "bad_record" } });
+  assert.deepEqual(f.calls, ["verifyUser"]);
 });
 
 test("the removed handover action is now a plain 400 bad_request, before anything is opened or read", async () => {

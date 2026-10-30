@@ -43,6 +43,7 @@ import {
   PLAN_COLUMNS,
   portalColumns,
   PROFILE_COLUMNS,
+  PROFILE_COLUMNS_BEFORE_0049,
   RECOMMENDER_COLUMNS,
   recommenderColumns,
   rowKey,
@@ -60,6 +61,7 @@ import {
   TRANSCRIPT_SCHOOL_COLUMNS,
   transcriptCourseColumns,
   transcriptSchoolColumns,
+  UNDEFINED_COLUMN,
   type CollegeRow,
   type ListEntry,
   type Portal,
@@ -342,10 +344,13 @@ async function loadRemote(userId: string, email: string | null, opts: { merge?: 
     // Passwords the student already agreed to add (now waiting for the vault to open) are not offered again.
     const agreed = agreedSlots(userId);
     const merge = !!opts.merge;
-    const [p, l] = await Promise.all([
-      db.from("student_profiles").select(PROFILE_COLUMNS).eq("user_id", userId).maybeSingle(),
-      db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at"),
-    ]);
+    const readProfile = async (columns: string) => {
+      const r = await db.from("student_profiles").select(columns).eq("user_id", userId).maybeSingle();
+      return { data: r.data as unknown, error: r.error };
+    };
+    const [first, l] = await Promise.all([readProfile(PROFILE_COLUMNS), db.from("student_colleges").select(COLLEGE_COLUMNS).order("created_at")]);
+    // A database without 0049 yet: the profile without password_storage, which then reads as "vault".
+    const p = first.error?.code === UNDEFINED_COLUMN ? await readProfile(PROFILE_COLUMNS_BEFORE_0049) : first;
     if (p.error) throw p.error;
     if (l.error) throw l.error;
     storedPortals = p.data ? ((p.data as ProfileRow).portals ?? null) : null;

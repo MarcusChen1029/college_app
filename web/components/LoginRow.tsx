@@ -97,6 +97,7 @@ const VAULT_ERROR_TEXT: Record<VaultError, MessageKey> = {
   exists: "portals.vault.err.exists",
   orphans: "portals.vault.err.orphans",
   bad_record: "portals.vault.err.badRecord",
+  device_mode: "portals.vault.err.deviceMode",
 };
 
 /** "This device only" uses the same codes for this browser's own store; these read differently there. */

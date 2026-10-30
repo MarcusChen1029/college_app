@@ -102,6 +102,15 @@ export const PROFILE_COLUMNS = "sat_total, act_composite, gpa_unweighted, gpa_we
  */
 export type PasswordStorage = "vault" | "device";
 export const PASSWORD_STORAGE_COLUMN = "password_storage";
+/**
+ * PROFILE_COLUMNS for a database without migration 0049 (a deploy that got there first, or a preview on the live
+ * project): the profile select answers 42703 (no such column) and is made again with these; toProfile then reads "vault".
+ */
+export const PROFILE_COLUMNS_BEFORE_0049 = PROFILE_COLUMNS.split(", ")
+  .filter((c) => c !== PASSWORD_STORAGE_COLUMN)
+  .join(", ");
+/** Postgres "undefined column": the database doesn't have a column the select names (yet). */
+export const UNDEFINED_COLUMN = "42703";
 /** A stored value as a mode: anything but "device" (absent, null, a value this build doesn't know) is "vault". */
 export const toPasswordStorage = (v: unknown): PasswordStorage => (v === "device" ? "device" : "vault");
 /**

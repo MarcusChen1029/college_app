@@ -164,6 +164,7 @@ async function everyCall(device: DevicePasswords) {
     save: await device.save(A, SLOT, PW),
     add: await device.add(A, SLOT, PW),
     remove: await device.remove(A, SLOT),
+    removeIfSame: await device.removeIfSame(A, SLOT, PW),
     removeAll: await device.removeAll(A),
   };
 }
@@ -173,20 +174,46 @@ const ALL_UNAVAILABLE = {
   save: "unavailable",
   add: "unavailable",
   remove: "unavailable",
+  removeIfSame: "unavailable",
   removeAll: "unavailable",
 };
 
-test("device store: no storage at all (no IndexedDB, as in Node) reports unavailable and never throws", async () => {
+test("device store: no storage at all (no IndexedDB, as in Node) reports unavailable, deletes nothing that can't exist, never throws", async () => {
   assert.equal(idbDeviceStorage(), null, "Node has no indexedDB");
-  assert.deepEqual(await everyCall(devicePasswords(null)), ALL_UNAVAILABLE);
-  assert.deepEqual(await everyCall(devicePasswords(idbDeviceStorage())), ALL_UNAVAILABLE);
+  // Nothing can have been saved without storage, so the deletes say done; everything else says unavailable.
+  const none = { ...ALL_UNAVAILABLE, remove: null, removeIfSame: null, removeAll: null };
+  assert.deepEqual(await everyCall(devicePasswords(null)), none);
+  assert.deepEqual(await everyCall(devicePasswords(idbDeviceStorage())), none);
+  assert.equal(devicePasswords(null).present, false);
+  assert.equal(devicePasswords(new MemoryDeviceStorage()).present, true);
+});
+
+test("device store: removeIfSame deletes only while the value is still the one given", async () => {
+  const { storage, device } = setup();
+  await device.save(A, SLOT, PW);
+  assert.equal(await device.removeIfSame(A, SLOT, "not the stored one"), "changed");
+  assert.deepEqual(await device.reveal(A, SLOT), { password: PW });
+  assert.equal(await device.removeIfSame(A, SLOT, PW), null);
+  assert.deepEqual(await device.reveal(A, SLOT), { error: "not_found" });
+  assert.equal(await device.removeIfSame(A, SLOT, PW), null, "already gone");
+  // Another tab saves a new value between the read and the delete: the compare inside the storage step keeps it.
+  await device.save(A, SLOT, PW);
+  const getValue = storage.getValue.bind(storage);
+  storage.getValue = async (userId, slot) => {
+    const v = await getValue(userId, slot);
+    storage.getValue = getValue;
+    await device.save(A, SLOT, "typed in another tab");
+    return v;
+  };
+  assert.equal(await device.removeIfSame(A, SLOT, PW), "changed");
+  assert.deepEqual(await device.reveal(A, SLOT), { password: "typed in another tab" });
 });
 
 test("device store: a storage that rejects, or even throws, reports unavailable and never throws", async () => {
   for (const throwSync of [false, true]) {
     const storage = new MemoryDeviceStorage();
     storage.throwSync = throwSync;
-    storage.failing = (["getKey", "addKey", "getValue", "putValue", "addValue", "deleteValue", "listSlots", "deleteAccount"] as const).map((op) => ({ op }));
+    storage.failing = (["getKey", "addKey", "getValue", "putValue", "addValue", "deleteValue", "deleteValueIf", "listSlots", "deleteAccount"] as const).map((op) => ({ op }));
     assert.deepEqual(await everyCall(devicePasswords(storage)), ALL_UNAVAILABLE, `throwSync=${throwSync}`);
   }
   // A write that fails after the key exists: unavailable, and nothing half-stored is reported as saved.

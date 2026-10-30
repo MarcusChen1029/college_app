@@ -13,7 +13,7 @@ export const en = {
   "privacy.summary.noSale": "We don’t sell your data, show ads, or use analytics or tracking tools.",
   "privacy.summary.control":
     "Apart from us (we can reach the database to run the service) and the service providers listed below, your records are visible only to you and the people and apps you choose: a teacher whose code you enter, someone you send a share link, an extension or AI app you connect.",
-  "privacy.summary.logins": "Saved application-system passwords are locked in your browser with a vault passphrase only you know, so we, teachers and an AI app you connect can’t open them; read the limits in [Security](/security#logins) before saving them.",
+  "privacy.summary.logins": "Saved application-system passwords are locked in your browser with a vault passphrase only you know, so we, teachers and an AI app you connect can’t open them; read the limits in [Security](/security#logins) before saving them. Or choose “This device only” in [Settings](/settings): then your passwords stay in that browser and never reach us.",
   "privacy.summary.delete": "You can change or delete most things yourself. To delete your whole account, [contact us](/contact).",
 
   // PDPA Art. 8: collector, purposes (codes 090, 135, 136), categories, period/region/recipients, rights, effect of not providing.
@@ -169,7 +169,7 @@ export const zhTW: Translation<typeof en> = {
   "privacy.summary.noAccount": "不需要帳號就能瀏覽學校資料。其他所有資料都由你決定要不要輸入。",
   "privacy.summary.noSale": "我們不販售你的資料、不放廣告，也不使用任何分析或追蹤工具。",
   "privacy.summary.control": "除了我們（為了營運服務可以存取資料庫）和下方列出的服務供應商之外，你的資料只有你自己，以及你選擇的人和應用程式看得到：你輸入其代碼的老師、你傳送分享連結的對象，以及你連接的擴充功能或 AI 應用程式。",
-  "privacy.summary.logins": "儲存的申請系統密碼會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住，所以我們、老師和你連接的 AI 應用程式都無法開啟；儲存之前請先閱讀[資料安全](/security#logins)中說明的限制。",
+  "privacy.summary.logins": "儲存的申請系統密碼會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住，所以我們、老師和你連接的 AI 應用程式都無法開啟；儲存之前請先閱讀[資料安全](/security#logins)中說明的限制。你也可以在[設定](/settings)中選擇「只存在這台裝置」：密碼就只會留在那個瀏覽器中，完全不會傳給我們。",
   "privacy.summary.delete": "大部分資料你可以自己修改或刪除。如要刪除整個帳號，請[聯絡我們](/contact)。",
 
   "privacy.collect.title": "我們蒐集的資料",
