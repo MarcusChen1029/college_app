@@ -15,35 +15,59 @@ import {
   isSenior,
   normalizeActivities,
   patchChecklist,
+  planLimitRefusal,
   updateActivity,
   updateEssay,
   upcomingDeadlines,
 } from "./mcp/rules.ts";
 import type { Checklist } from "./checklist.ts";
+import type { StudentProfile } from "./fit.ts";
 import type { Deadline } from "./types.ts";
 
 const complete: Checklist = { recommendations: true, transcript: true, no_essays: true, test_plan: "optional", english_plan: "not_required" };
 
-test("only the senior plan passes the gate", () => {
-  assert.equal(isSenior("senior"), true);
-  assert.equal(isSenior("junior"), false);
-  assert.equal(isSenior("free"), false);
-  assert.equal(isSenior(undefined), false);
+test("the gate opens only while a pass window covers today (Taipei), whatever the stored plan says", () => {
+  const pass: StudentProfile = { planWindows: [{ entry_year: 2027, from: "2026-10-29", until: "2027-07-31" }] };
+  assert.equal(isSenior(pass, "2027-07-31"), true); // the last day still counts
+  assert.equal(isSenior(pass, "2027-08-01"), false);
+  assert.equal(isSenior(pass, "2026-10-29"), true);
+  assert.equal(isSenior(pass, "2026-10-28"), false); // not started yet
+  const later: StudentProfile = { planWindows: [{ entry_year: 2027, from: "2026-10-29", until: "2027-07-31" }, { entry_year: 2028, from: "2027-01-01", until: "2028-07-31" }] };
+  assert.equal(isSenior(later, "2027-08-01"), true); // the next year's pass carries on
+  const stale: StudentProfile = { plan: "senior", planWindows: [] };
+  assert.equal(isSenior(stale, "2027-01-01"), false);
+  assert.equal(isSenior({}, "2027-01-01"), false);
+  assert.equal(isSenior({ planWindows: null }, "2027-01-01"), false);
 });
 
 test("add college: duplicate, plan limit and offered plans", () => {
-  const base = { studentPlan: "senior", listedSlugs: ["rice"], offeredPlans: ["ED", "RD"] };
+  const base = { studentPlan: "senior" as const, listedSlugs: ["rice"], offeredPlans: ["ED", "RD"] };
   assert.equal(checkAddCollege({ ...base, slug: "rice" }).ok, false);
   const added = checkAddCollege({ ...base, slug: "brown", plan: "ED" });
   assert.deepEqual(added.ok && added.value, { plan: "ED" });
   const noPlan = checkAddCollege({ ...base, slug: "brown" });
   assert.deepEqual(noPlan.ok && noPlan.value, { plan: null });
-  const full = checkAddCollege({ ...base, studentPlan: "free", listedSlugs: ["a", "b", "c"], slug: "brown" });
+  const full = checkAddCollege({ ...base, studentPlan: "free", listedSlugs: ["a", "b", "c", "d", "e"], slug: "brown" });
   assert.equal(full.ok, false);
-  assert.match(!full.ok ? full.error : "", /full/);
+  assert.match(!full.ok ? full.error : "", /full for the Free plan \(5 colleges\)/);
+  assert.equal(checkAddCollege({ ...base, studentPlan: "free", listedSlugs: ["a", "b", "c", "d"], slug: "brown" }).ok, true);
+  assert.equal(checkAddCollege({ ...base, listedSlugs: ["a", "b", "c", "d", "e", "f"], slug: "brown" }).ok, true); // the pass has no limit
   const bad = checkAddCollege({ ...base, slug: "brown", plan: "EA" });
   assert.equal(bad.ok, false);
   assert.match(!bad.ok ? bad.error : "", /doesn't offer "EA"/);
+});
+
+test("add college: the database's plan-limit refusal (0046) reads as a full list with /pricing, other errors don't", () => {
+  const origin = "https://www.track-ur-college.com";
+  const byHint = planLimitRefusal({ message: "Plan limit reached: the Free plan holds 5 colleges.", hint: "plan_limit" }, origin);
+  assert.match(byHint ?? "", /full for the Free plan \(5 colleges\)/);
+  assert.match(byHint ?? "", /https:\/\/www\.track-ur-college\.com\/pricing/);
+  assert.doesNotMatch(byHint ?? "", /Something went wrong|Couldn't save/);
+  // The message alone is enough (a client that drops the hint).
+  assert.equal(planLimitRefusal({ message: "Plan limit reached: the Free plan holds 5 colleges.", hint: null }, origin), byHint);
+  assert.equal(planLimitRefusal({ message: "duplicate key value violates unique constraint", hint: null }, origin), null);
+  assert.equal(planLimitRefusal({ message: "Too many rows", hint: "row_cap" }, origin), null);
+  assert.equal(planLimitRefusal(null, origin), null);
 });
 
 test("plan key must be one the college offers; null clears it", () => {

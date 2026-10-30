@@ -12,7 +12,7 @@ export const AI_CAN = [
 ] as const;
 
 export const AI_CANNOT = [
-  "See your portal passwords, or change your portal logins",
+  "See your portal passwords (they are locked with your vault passphrase), or change your portal logins",
   "Remove a college from your list",
   "Use Trakur's tools to delete an essay",
   "Change your subscription plan or reminder emails",

@@ -1,6 +1,6 @@
 // The /security page: plain-language description of how data is protected, written against origin/main on 2026-10-29.
-// Every claim maps to code or a migration; the source is noted above each group. If the security-hardening branch
-// (encrypted portal passwords, AI-token containment, share-link expiry, account deletion) ships, update this page.
+// Every claim maps to code or a migration; the source is noted above each group. Saved portal passwords are locked in the
+// browser (vault: lib/vault-*.ts, migration 0047); if that design changes, update the logins group and the AI group.
 // DRAFT wording, not legal advice.
 import type { Translation } from "../core.ts";
 
@@ -17,17 +17,19 @@ export const en = {
     "Each student’s records can be read directly only with that student’s own sign-in. The database enforces this (row-level security), so other accounts can’t load your list, transcript or logins, apart from the limited teacher view described below for teachers you link.",
   "security.basics.google": "You sign in with Google. Trakur never sees or stores your Google password.",
 
-  // student_colleges.portal_url/_username/_password (0007), student_profiles.portals (0013): plain text, RLS only.
-  // Signed out: localStorage (lib/student-store.ts). Excluded from teacher RPCs, share views, extension RPCs, emails, ai-context.ts.
+  // Address + username: student_colleges.portal_url/_username (0007), student_profiles.portals (0013), stored as typed (not locked), RLS only.
+  // Password: portal_passwords (0040, "e1." values from 0047) + portal_vaults (0047), locked in the browser (lib/vault-*.ts);
+  // the server and database can't open them. Limits = design spec "Known limits". Signed out: localStorage, no passwords
+  // (lib/student-store.ts). Excluded from teacher RPCs, share views, extension RPCs, emails, ai-context.ts.
   "security.logins.title": "Application-system logins (passwords)",
   "security.logins.p1":
-    "If you save a login for the Common App, UC or another application system, Trakur stores the address, username and password exactly as you typed them. <b>They are not encrypted with a separate key.</b> They are protected by the same row-level security as the rest of your data, plus Supabase’s disk encryption.",
+    "If you save a login for the Common App, UC or another application system, Trakur stores the address and username as you typed them. <b>The password is locked in your browser, with a vault passphrase only you know, before it is saved.</b> Trakur’s servers and database hold only the locked version and can’t open it. The people who run Trakur can’t open it either, and neither can teachers, parent links or AI connections. Your passphrase and recovery code never leave your browser.",
   "security.logins.p2":
-    "So other students and your teachers can’t see them. But someone with administrator access to the database (the operator, or the database provider) could, and so could an AI app you connect, because its token works like your own sign-in at the database level (see [AI connections](/security#ai)). Saving passwords is optional; if you’re not comfortable with that, keep them somewhere else, such as a password manager.",
+    "You create the passphrase, and a recovery code, when you set up the vault. <b>Nobody can reset the passphrase for you.</b> If you forget it, your recovery code opens the vault and lets you choose a new passphrase. If you lose both, nobody can get your passwords back: you can delete them in [Settings](/settings) and start over (links and usernames stay). Saving passwords is optional; you can also keep them somewhere else, such as a password manager.",
   "security.logins.p3":
-    "While you’re signed out, everything you enter, logins included, is kept only in this browser’s local storage, unencrypted. Don’t save logins on a shared or public computer.",
+    "<b>Where this protection stops.</b> Locking protects the passwords you save from now on against database leaks, stolen server keys and the people who run Trakur looking at the data. It has three limits. First, someone who copied the database could try to guess a weak passphrase offline, as many times as they like, so choose a long one (at least 10 characters is required; several unrelated words is better). Second, the site’s own code runs in your browser, so a changed (malicious) version of the site could capture a password as you type it; locking can’t protect against the site’s code itself being changed. Third, backups our database provider made before the vault existed (if any are kept) may still hold your older saved passwords, either unlocked or locked only with a key on our web server, until those backups expire.",
   "security.logins.p4":
-    "Saved logins are never included in teacher views, share links, reminder emails, the Chrome extension or the “Copy for AI” text. Use a different password for each application system, and never your Google password.",
+    "Saved logins are never included in teacher views, share links, reminder emails, the Chrome extension or the “Copy for AI” text. While you’re signed out, the links and usernames you enter are kept only in this browser’s local storage, unencrypted, and passwords are not saved at all; don’t enter logins on a shared or public computer. Use a different password for each application system, and never your Google password.",
 
   // teacher_students / teacher_roster / teacher_student / teacher_deadlines (0021, 0023), share_essays default true (0021:34),
   // teacher_outcomes min 5 (0033), teacher_notes cascade (0024), role self-chosen (0020).
@@ -88,7 +90,7 @@ export const en = {
   "security.ai.connect":
     "<b>Connect AI</b> (ChatGPT or Claude): you approve the connection on a Trakur page. Trakur’s AI tools can read and change your profile, list (including your private notes), essays, activities, résumé details (including email, phone and location) and transcript, and can permanently delete activities and transcript courses. They never read or change your saved logins.",
   "security.ai.limit":
-    "The connection uses a sign-in token for your account, and today the database itself doesn’t stop that token from reaching data the tools don’t use, <b>including your saved logins</b>, or from doing anything your own sign-in can do. Connect only AI apps you trust, and disconnect them on the [Connect AI](/connect-ai) page when you no longer need them. A token that was already issued can keep working for a short time until it expires.",
+    "The connection uses a sign-in token for your account, and today the database itself doesn’t stop that token from reaching data the tools don’t use, <b>including the links and usernames of your saved logins</b>, or from doing anything your own sign-in can do. Your saved passwords are the exception: they are locked with your vault passphrase, which never leaves your browser, so a token can’t open them. Connect only AI apps you trust, and disconnect them on the [Connect AI](/connect-ai) page when you no longer need them. A token that was already issued can keep working for a short time until it expires.",
 
   // Operator has Supabase admin + service-role key; processors listed in /privacy.
   "security.people.title": "Who can reach the database",
@@ -99,7 +101,7 @@ export const en = {
 
   "security.you.title": "What you can do",
   "security.you.google": "Turn on 2-Step Verification for your Google account.",
-  "security.you.passwords": "Use a unique password for each application system, or don’t save it in Trakur.",
+  "security.you.passwords": "Use a unique password for each application system, choose a long vault passphrase, and keep your recovery code somewhere safe outside Trakur, such as a password manager. Or don’t save passwords in Trakur at all.",
   "security.you.shared": "On a shared computer, sign out when you’re done, and don’t enter logins while signed out.",
   "security.you.revoke": "Revoke extensions, share links and AI connections you no longer use.",
   "security.you.essays": "Turn off essay sharing if you don’t want teachers to see your essay links.",
@@ -121,12 +123,13 @@ export const zhTW: Translation<typeof en> = {
 
   "security.logins.title": "申請系統的登入資料（密碼）",
   "security.logins.p1":
-    "如果你儲存 Common App、UC 或其他申請系統的登入資料，Trakur 會照你輸入的內容儲存網址、帳號與密碼。<b>這些資料沒有用另外的金鑰加密。</b>它們和你的其他資料一樣，由列層級安全性與 Supabase 的硬碟加密保護。",
+    "如果你儲存 Common App、UC 或其他申請系統的登入資料，Trakur 會照你輸入的內容儲存網址與使用者名稱。<b>密碼在儲存之前，會先在你的瀏覽器中用只有你知道的保險箱主密碼鎖住。</b>Trakur 的伺服器和資料庫只保存上鎖後的版本，無法開啟；經營 Trakur 的人也無法開啟，老師、家長連結和 AI 連線同樣不行。你的主密碼和復原碼不會離開你的瀏覽器。",
   "security.logins.p2":
-    "也就是說，其他學生和你的老師都看不到。但擁有資料庫管理權限的人（經營者或資料庫服務商）看得到；你連接的 AI 應用程式也可能看得到，因為它的權杖在資料庫層級和你自己的登入狀態效力相同（見[AI 連結](/security#ai)）。儲存密碼是選擇性的；如果你不放心，請改用其他方式保存，例如密碼管理工具。",
-  "security.logins.p3": "未登入時，你輸入的所有內容（包括登入資料）只會以未加密的形式存在這個瀏覽器的本機儲存空間。請不要在共用或公用電腦上儲存登入資料。",
+    "主密碼和復原碼是你在設定保險箱時建立的。<b>沒有人能幫你重設主密碼。</b>如果你忘了主密碼，用復原碼就能開啟保險箱，並選一組新的主密碼。如果兩者都遺失，沒有人能找回你的密碼：你可以到[設定](/settings)把它們刪除，重新開始（連結和使用者名稱會保留）。儲存密碼是選擇性的；你也可以改用其他方式保存，例如密碼管理工具。",
+  "security.logins.p3":
+    "<b>這項保護的界線。</b>上鎖可以保護你從現在起儲存的密碼，不因資料庫外洩、伺服器金鑰被盜，或經營 Trakur 的人查看資料而被讀取。但它有三個限制。第一，拿到資料庫副本的人，可以在離線狀態下不限次數地猜測太弱的主密碼，所以請設定較長的主密碼（至少要 10 個字元，用幾個不相關的詞組成更好）。第二，網站本身的程式碼是在你的瀏覽器裡執行的，所以被竄改（惡意）的網站版本，可能在你輸入密碼時把它攔截下來；上鎖無法防範網站程式碼本身被改動。第三，我們資料庫服務商在保險箱出現之前做的備份（如果有保留的話），可能還留有你舊的已儲存密碼，那些密碼是未上鎖的，或只用我們網站伺服器上的金鑰鎖住，直到這些備份到期為止。",
   "security.logins.p4":
-    "已儲存的登入資料絕不會出現在老師的檢視畫面、分享連結、提醒信、Chrome 擴充功能或「複製給 AI」的文字中。每個申請系統請使用不同的密碼，也絕對不要使用你的 Google 密碼。",
+    "已儲存的登入資料絕不會出現在老師的檢視畫面、分享連結、提醒信、Chrome 擴充功能或「複製給 AI」的文字中。未登入時，你輸入的連結和使用者名稱只會以未加密的形式存在這個瀏覽器的本機儲存空間，密碼則完全不會儲存；請不要在共用或公用電腦上輸入登入資料。每個申請系統請使用不同的密碼，也絕對不要使用你的 Google 密碼。",
 
   "security.teachers.title": "老師與升學輔導老師看得到與看不到的資料",
   "security.teachers.p1": "你輸入老師的班級代碼或個人代碼之後，老師才看得到你。Trakur 不會驗證老師的身分，所以請只輸入你認識的老師或升學輔導老師給你的代碼。",
@@ -168,7 +171,7 @@ export const zhTW: Translation<typeof en> = {
   "security.ai.connect":
     "<b>連接 AI</b>（ChatGPT 或 Claude）：你要在 Trakur 的頁面上核准連結。Trakur 的 AI 工具可以讀取和修改你的個人檔案、學校清單（包括你的私人筆記）、文書、課外活動、履歷資料（包括電子郵件、電話與所在地）與成績單，也可以永久刪除課外活動與成績單課程。它們絕不會讀取或修改你儲存的登入資料。",
   "security.ai.limit":
-    "這個連結使用的是你帳號的登入權杖，而目前資料庫本身並不會阻止這個權杖存取 AI 工具用不到的資料（<b>包括你儲存的登入資料</b>），或做任何你自己登入後能做的事。請只連接你信任的 AI 應用程式，不再需要時請到[連接 AI](/connect-ai) 頁面中斷連結。已經發出的權杖在到期前可能還會短暫有效。",
+    "這個連結使用的是你帳號的登入權杖，而目前資料庫本身並不會阻止這個權杖存取 AI 工具用不到的資料（<b>包括你已儲存登入資料的連結與使用者名稱</b>），或做任何你自己登入後能做的事。唯獨你儲存的密碼例外：它們是用只留在你瀏覽器裡的保險箱主密碼鎖住的，權杖無法開啟。請只連接你信任的 AI 應用程式，不再需要時請到[連接 AI](/connect-ai) 頁面中斷連結。已經發出的權杖在到期前可能還會短暫有效。",
 
   "security.people.title": "誰能存取資料庫",
   "security.people.p1": "經營者擁有資料庫的管理權限，這是營運服務、修正問題，以及處理刪除帳號等請求所必需的。只有在這些情況需要時，我們才會查看個人資料。",
@@ -176,7 +179,7 @@ export const zhTW: Translation<typeof en> = {
 
   "security.you.title": "你可以做的事",
   "security.you.google": "為你的 Google 帳號開啟兩步驟驗證。",
-  "security.you.passwords": "每個申請系統使用不同的密碼，或乾脆不要存在 Trakur。",
+  "security.you.passwords": "每個申請系統使用不同的密碼，設定較長的保險箱主密碼，並把復原碼保存在 Trakur 以外的安全地方，例如密碼管理工具。或乾脆不要把密碼存在 Trakur。",
   "security.you.shared": "在共用電腦上用完請登出，未登入時也不要輸入登入資料。",
   "security.you.revoke": "撤銷不再使用的擴充功能、分享連結與 AI 連結。",
   "security.you.essays": "如果不想讓老師看到文書連結，請關閉文書分享。",

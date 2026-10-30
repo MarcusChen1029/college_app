@@ -41,6 +41,7 @@ import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText, type RowProgress } from "./LoginRow";
 import { StatusPill } from "./StatusPill";
 import { useStarsSync } from "./useStarsSync";
+import { VaultUnlockedBar } from "./VaultDialogs";
 
 const noop = () => () => {};
 
@@ -345,6 +346,8 @@ export function PortalsPage({ colleges }: { colleges: CollegeSummary[] }) {
 
   return (
     <div className="space-y-6">
+      {signedIn && <VaultUnlockedBar />}
+
       {!signedIn && student.localPasswordCount > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-zinc-100 px-4 py-3 text-sm text-ink">
           <p className="min-w-0 flex-1">

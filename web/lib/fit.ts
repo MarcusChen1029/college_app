@@ -8,7 +8,7 @@ export const FIT_LABEL: Record<Fit, string> = { super_reach: "Super reach", reac
 import type { ActivityData } from "./activities";
 import type { FieldKey } from "./fields";
 import type { PersonalEssays } from "./personal-essays";
-import type { PlanKey } from "./plans";
+import type { PlanKey, PlanWindow } from "./plans";
 import type { PortalData } from "./portals";
 import type { ResumeSettings } from "./resume";
 import type { TestDetails } from "./scores";
@@ -23,7 +23,8 @@ export type StudentProfile = {
   targetRegions?: string[]; // countries applying to (US, GB); first = default on the colleges page
   studyFields?: FieldKey[]; // up to 2 study directions (lib/fields.ts); empty = undecided
   reminderEmails?: boolean; // account setting; defaults to on
-  plan?: PlanKey; // defaults to free
+  plan?: PlanKey; // the server's cached plan; never decides anything (use planWindows + effectivePlanKey)
+  planWindows?: PlanWindow[]; // purchased passes, server-written (0045); read only, never saved by the site
   tests?: TestDetails; // section scores + English tests
   interested?: string[]; // college slugs being considered but not on the list
   activities?: Partial<ActivityData>; // Common App + UC activity lists

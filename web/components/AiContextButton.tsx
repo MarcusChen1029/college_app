@@ -53,7 +53,8 @@ function Dialog({
   onClose: () => void;
 }) {
   const tr = useT();
-  const full = plan.fullAiContext;
+  const full = plan.fullAiContext; // `plan` is student.plan: the plan in force today
+
   const load = useDetails(colleges.map((c) => c.college.slug), full);
   const [copied, setCopied] = useState<"copied" | "failed" | null>(null);
 
@@ -96,7 +97,7 @@ function Dialog({
         </p>
         {full ? (
           <p className={`rounded-md border p-2 text-xs ${toneClass("done")}`}>
-            {tr("application.ai.full", { plan: plan.name })}
+            {tr("application.ai.full", { plan: tr(`payments.planName.${plan.key}`) })}
           </p>
         ) : (
           <p className="rounded-md bg-blue-50 p-2 text-xs text-blue-900">

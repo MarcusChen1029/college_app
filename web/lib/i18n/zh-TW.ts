@@ -13,6 +13,7 @@ export const zhTW: Messages = {
   ...S.match.zhTW,
   ...S.misc.zhTW,
   ...S.outcomes.zhTW,
+  ...S.payments.zhTW,
   ...S.portals.zhTW,
   ...S.privacy.zhTW,
   ...S.profile.zhTW,

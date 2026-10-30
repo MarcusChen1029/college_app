@@ -1,5 +1,9 @@
 # Portal password encryption: rollout runbook (2026-10-28)
 
+> **Superseded (2026-10-29)** by `docs/superpowers/plans/2026-10-29-e2e-portal-vault.md`: saved passwords are now locked in the
+> student's browser with a vault passphrase, not sealed by the server. This runbook is kept as history; the server key described
+> below only matters for old `v1.` rows until they are handed over (see `DEPLOY.md`).
+
 Saved portal passwords move out of plaintext (`student_colleges.portal_password`, the `password` keys inside
 `student_profiles.portals`, signed-out localStorage) into `public.portal_passwords`: AES-256-GCM sealed by the web
 server, bound to user and slot, readable only with the service-role key through `POST /api/portal-passwords`, which

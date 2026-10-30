@@ -11,6 +11,7 @@ import { buildCrunch } from "@/lib/crunch";
 import { customDeadline, customSummary, isCustomSlug } from "@/lib/custom-college";
 import { deadlineApplies } from "@/lib/deadline-rules";
 import { useT } from "@/lib/i18n/client";
+import { activeWindow, taipeiToday } from "@/lib/plans";
 import { portalSlot } from "@/lib/portal-slots";
 import { EMPTY_LOGIN, groupProgress, routeGroups, SYSTEMS, type Login, type PortalData } from "@/lib/portals";
 import { registerColleges, useStudent, type ListEntry } from "@/lib/student-store";
@@ -27,6 +28,7 @@ import { GradCap } from "./Doodles";
 import { EmptyState } from "./EmptyState";
 import { LoginRow, sysText } from "./LoginRow";
 import { useStarsSync } from "./useStarsSync";
+import { VaultUnlockedBar } from "./VaultDialogs";
 import { Modal } from "./Modal";
 import { SignInButton } from "./SignInDialog";
 import { SchoolCodes } from "./SchoolCodes";
@@ -105,6 +107,8 @@ export function MyList({
   useStarsSync(student);
   if (!mounted || !student.ready) return <div className="h-64 animate-pulse rounded-lg bg-zinc-100" />;
   const international = !!student.profile.international;
+  const planName = t(`payments.planName.${student.plan.key}`);
+  const pass = activeWindow(student.planWindows, taipeiToday());
 
   // Custom colleges have no row in our data; build the same shape from what the student typed.
   const resolve = (e: ListEntry) => (e.custom ? customSummary(e.rowId ?? e.slug, e.custom) : colleges.find((c) => c.slug === e.slug));
@@ -136,7 +140,7 @@ export function MyList({
             {student.plan.limit != null && ` / ${student.plan.limit}`}
             {t("application.collegesSuffix")}
           </span>{" "}
-          · {t("application.planName", { name: student.plan.name })} ·{" "}
+          · {pass ? t("payments.passFor", { year: pass.entry_year }) : t("application.planName", { name: planName })} ·{" "}
           <Link href="/pricing" className="text-blue-700 underline">
             {student.plan.key === "senior" ? t("application.plans") : t("application.upgrade")}
           </Link>
@@ -147,7 +151,19 @@ export function MyList({
       </span>
       {student.plan.limit != null && student.list.length > student.plan.limit && (
         <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>
-          {t("application.overLimit", { name: student.plan.name, limit: student.plan.limit })}
+          {t("application.overLimit", { name: planName, limit: student.plan.limit })}{" "}
+          <Link href="/pricing" className="font-semibold underline">
+            {t("payments.getPass")}
+          </Link>
+        </span>
+      )}
+      {/* Colleges the sign-in merge kept in this browser for lack of room (shown while the plan still has a limit). */}
+      {student.localLeftover > 0 && student.plan.limit != null && (
+        <span className={`w-full rounded border px-2 py-1 text-xs ${toneClass("soon")}`}>
+          {t("payments.mergeLeftover", { n: student.localLeftover })}{" "}
+          <Link href="/pricing" className="font-semibold underline">
+            {t("payments.getPass")}
+          </Link>
         </span>
       )}
       {student.error && (
@@ -158,6 +174,7 @@ export function MyList({
           </button>
         </span>
       )}
+      {student.auth && <VaultUnlockedBar className="w-full" />}
     </div>
   );
 
